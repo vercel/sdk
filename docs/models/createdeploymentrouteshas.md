@@ -3,38 +3,38 @@
 
 ## Supported Types
 
-### `models.Has1`
+### `models.CreateDeploymentHas1`
 
 ```typescript
-const value: models.Has1 = {
+const value: models.CreateDeploymentHas1 = {
   type: "host",
-  value: {},
+  value: "<value>",
 };
 ```
 
-### `models.Has2`
+### `models.CreateDeploymentHas2`
 
 ```typescript
-const value: models.Has2 = {
-  type: "cookie",
+const value: models.CreateDeploymentHas2 = {
+  type: "query",
   key: "<key>",
 };
 ```
 
-### `models.Has2`
+### `models.CreateDeploymentHas2`
 
 ```typescript
-const value: models.Has2 = {
-  type: "cookie",
+const value: models.CreateDeploymentHas2 = {
+  type: "query",
   key: "<key>",
 };
 ```
 
-### `models.Has2`
+### `models.CreateDeploymentHas2`
 
 ```typescript
-const value: models.Has2 = {
-  type: "cookie",
+const value: models.CreateDeploymentHas2 = {
+  type: "query",
   key: "<key>",
 };
 ```

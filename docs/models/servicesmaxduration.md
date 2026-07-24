@@ -9,9 +9,9 @@
 const value: number = 1284.03;
 ```
 
-### `models.CreateDeploymentMaxDuration2`
+### `models.CancelDeploymentMaxDuration2`
 
 ```typescript
-const value: models.CreateDeploymentMaxDuration2 = "max";
+const value: models.CancelDeploymentMaxDuration2 = "max";
 ```
 

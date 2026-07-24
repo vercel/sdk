@@ -5,31 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { EightyNine } from "@vercel/sdk/models/usereventpayload70project.js";
+import { EightyNine } from "@vercel/sdk/models/twentythree.js";
 
 let value: EightyNine = {
-  job: {
-    prId: 1187.16,
-    type: "pr",
-    headInfo: {
-      org: "<value>",
-      ref: "<value>",
-      repo: "<value>",
-      repoId: 7689.26,
-      sha: "<value>",
-    },
-    installationId: 9930.19,
-    isPrivate: true,
-    org: "<value>",
-    repo: "<value>",
-    repoId: 6715.41,
-    provider: "github-custom-host",
-  },
+  projectId: "<id>",
+  projectName: "<value>",
+  hookName: "<value>",
+  ref: "<value>",
 };
 ```
 
 ## Fields
 
-| Field               | Type                | Required            | Description         |
-| ------------------- | ------------------- | ------------------- | ------------------- |
-| `job`               | *models.PayloadJob* | :heavy_check_mark:  | N/A                 |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `hookName`         | *string*           | :heavy_check_mark: | N/A                |
+| `ref`              | *string*           | :heavy_check_mark: | N/A                |

@@ -14,7 +14,7 @@ let value: ImportConnectorTokensRequestBody = {
         type: "user",
         id: "<id>",
       },
-      environment: "development",
+      environment: "preview",
     },
   ],
 };

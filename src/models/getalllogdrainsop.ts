@@ -56,6 +56,8 @@ export type GetAllLogDrainsDrainsLogDrainsAiGateway = {};
 
 export type GetAllLogDrainsDrainsLogDrainsAuditLog = {};
 
+export type GetAllLogDrainsDrainsLogDrainsConnect = {};
+
 export type GetAllLogDrainsDrainsLogDrainsSchemas = {
   log?: GetAllLogDrainsDrainsLogDrainsLog | undefined;
   trace?: GetAllLogDrainsDrainsLogDrainsTrace | undefined;
@@ -63,6 +65,7 @@ export type GetAllLogDrainsDrainsLogDrainsSchemas = {
   speedInsights?: GetAllLogDrainsDrainsSpeedInsights | undefined;
   aiGateway?: GetAllLogDrainsDrainsLogDrainsAiGateway | undefined;
   auditLog?: GetAllLogDrainsDrainsLogDrainsAuditLog | undefined;
+  connect?: GetAllLogDrainsDrainsLogDrainsConnect | undefined;
 };
 
 export const GetAllLogDrainsDeliveryTarget = {
@@ -297,16 +300,16 @@ export type GetAllLogDrainsFilterLog = {
   legacyExcludeCachedStaticAssetLogs?: boolean | undefined;
 };
 
-export const GetAllLogDrainsFilterEnvironments = {
+export const GetAllLogDrainsFilterLogDrainsEnvironments = {
   Preview: "preview",
   Production: "production",
 } as const;
-export type GetAllLogDrainsFilterEnvironments = ClosedEnum<
-  typeof GetAllLogDrainsFilterEnvironments
+export type GetAllLogDrainsFilterLogDrainsEnvironments = ClosedEnum<
+  typeof GetAllLogDrainsFilterLogDrainsEnvironments
 >;
 
 export type GetAllLogDrainsFilterLogDrainsDeployment = {
-  environments?: Array<GetAllLogDrainsFilterEnvironments> | undefined;
+  environments?: Array<GetAllLogDrainsFilterLogDrainsEnvironments> | undefined;
 };
 
 export type GetAllLogDrainsFilter1 = {
@@ -419,6 +422,8 @@ export type GetAllLogDrainsDrainsAiGateway = {};
 
 export type GetAllLogDrainsDrainsAuditLog = {};
 
+export type GetAllLogDrainsDrainsConnect = {};
+
 export type GetAllLogDrainsDrainsSchemas = {
   log?: GetAllLogDrainsDrainsLog | undefined;
   trace?: GetAllLogDrainsDrainsTrace | undefined;
@@ -426,6 +431,7 @@ export type GetAllLogDrainsDrainsSchemas = {
   speedInsights?: GetAllLogDrainsDrainsLogDrainsSpeedInsights | undefined;
   aiGateway?: GetAllLogDrainsDrainsAiGateway | undefined;
   auditLog?: GetAllLogDrainsDrainsAuditLog | undefined;
+  connect?: GetAllLogDrainsDrainsConnect | undefined;
 };
 
 export const GetAllLogDrainsDeliveryLogDrainsTarget = {
@@ -661,16 +667,16 @@ export type GetAllLogDrainsFilterLogDrainsLog = {
   legacyExcludeCachedStaticAssetLogs?: boolean | undefined;
 };
 
-export const GetAllLogDrainsFilterLogDrainsEnvironments = {
+export const GetAllLogDrainsFilterEnvironments = {
   Preview: "preview",
   Production: "production",
 } as const;
-export type GetAllLogDrainsFilterLogDrainsEnvironments = ClosedEnum<
-  typeof GetAllLogDrainsFilterLogDrainsEnvironments
+export type GetAllLogDrainsFilterEnvironments = ClosedEnum<
+  typeof GetAllLogDrainsFilterEnvironments
 >;
 
 export type GetAllLogDrainsFilterDeployment = {
-  environments?: Array<GetAllLogDrainsFilterLogDrainsEnvironments> | undefined;
+  environments?: Array<GetAllLogDrainsFilterEnvironments> | undefined;
 };
 
 export type GetAllLogDrainsFilterLogDrains1 = {
@@ -788,6 +794,7 @@ export const GetAllLogDrainsResponseBodyFramework = {
   Sveltekit: "sveltekit",
   Sveltekit1: "sveltekit-1",
   TanstackStart: "tanstack-start",
+  TanstackStartLovable: "tanstack-start-lovable",
   Umijs: "umijs",
   Vite: "vite",
   Vitepress: "vitepress",
@@ -979,6 +986,24 @@ export function getAllLogDrainsDrainsLogDrainsAuditLogFromJSON(
 }
 
 /** @internal */
+export const GetAllLogDrainsDrainsLogDrainsConnect$inboundSchema: z.ZodType<
+  GetAllLogDrainsDrainsLogDrainsConnect,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+export function getAllLogDrainsDrainsLogDrainsConnectFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllLogDrainsDrainsLogDrainsConnect, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetAllLogDrainsDrainsLogDrainsConnect$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllLogDrainsDrainsLogDrainsConnect' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetAllLogDrainsDrainsLogDrainsSchemas$inboundSchema: z.ZodType<
   GetAllLogDrainsDrainsLogDrainsSchemas,
   z.ZodTypeDef,
@@ -1001,6 +1026,9 @@ export const GetAllLogDrainsDrainsLogDrainsSchemas$inboundSchema: z.ZodType<
   ),
   audit_log: types.optional(
     z.lazy(() => GetAllLogDrainsDrainsLogDrainsAuditLog$inboundSchema),
+  ),
+  connect: types.optional(
+    z.lazy(() => GetAllLogDrainsDrainsLogDrainsConnect$inboundSchema),
   ),
 }).transform((v) => {
   return remap$(v, {
@@ -1517,9 +1545,9 @@ export function getAllLogDrainsFilterLogFromJSON(
 }
 
 /** @internal */
-export const GetAllLogDrainsFilterEnvironments$inboundSchema: z.ZodNativeEnum<
-  typeof GetAllLogDrainsFilterEnvironments
-> = z.nativeEnum(GetAllLogDrainsFilterEnvironments);
+export const GetAllLogDrainsFilterLogDrainsEnvironments$inboundSchema:
+  z.ZodNativeEnum<typeof GetAllLogDrainsFilterLogDrainsEnvironments> = z
+    .nativeEnum(GetAllLogDrainsFilterLogDrainsEnvironments);
 
 /** @internal */
 export const GetAllLogDrainsFilterLogDrainsDeployment$inboundSchema: z.ZodType<
@@ -1528,7 +1556,7 @@ export const GetAllLogDrainsFilterLogDrainsDeployment$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   environments: types.optional(
-    z.array(GetAllLogDrainsFilterEnvironments$inboundSchema),
+    z.array(GetAllLogDrainsFilterLogDrainsEnvironments$inboundSchema),
   ),
 });
 
@@ -1872,6 +1900,23 @@ export function getAllLogDrainsDrainsAuditLogFromJSON(
 }
 
 /** @internal */
+export const GetAllLogDrainsDrainsConnect$inboundSchema: z.ZodType<
+  GetAllLogDrainsDrainsConnect,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+export function getAllLogDrainsDrainsConnectFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllLogDrainsDrainsConnect, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllLogDrainsDrainsConnect$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllLogDrainsDrainsConnect' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetAllLogDrainsDrainsSchemas$inboundSchema: z.ZodType<
   GetAllLogDrainsDrainsSchemas,
   z.ZodTypeDef,
@@ -1890,6 +1935,9 @@ export const GetAllLogDrainsDrainsSchemas$inboundSchema: z.ZodType<
   ),
   audit_log: types.optional(
     z.lazy(() => GetAllLogDrainsDrainsAuditLog$inboundSchema),
+  ),
+  connect: types.optional(
+    z.lazy(() => GetAllLogDrainsDrainsConnect$inboundSchema),
   ),
 }).transform((v) => {
   return remap$(v, {
@@ -2410,9 +2458,9 @@ export function getAllLogDrainsFilterLogDrainsLogFromJSON(
 }
 
 /** @internal */
-export const GetAllLogDrainsFilterLogDrainsEnvironments$inboundSchema:
-  z.ZodNativeEnum<typeof GetAllLogDrainsFilterLogDrainsEnvironments> = z
-    .nativeEnum(GetAllLogDrainsFilterLogDrainsEnvironments);
+export const GetAllLogDrainsFilterEnvironments$inboundSchema: z.ZodNativeEnum<
+  typeof GetAllLogDrainsFilterEnvironments
+> = z.nativeEnum(GetAllLogDrainsFilterEnvironments);
 
 /** @internal */
 export const GetAllLogDrainsFilterDeployment$inboundSchema: z.ZodType<
@@ -2421,7 +2469,7 @@ export const GetAllLogDrainsFilterDeployment$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   environments: types.optional(
-    z.array(GetAllLogDrainsFilterLogDrainsEnvironments$inboundSchema),
+    z.array(GetAllLogDrainsFilterEnvironments$inboundSchema),
   ),
 });
 

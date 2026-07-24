@@ -1,0 +1,29 @@
+# ThreePayload
+
+## Example Usage
+
+```typescript
+import { ThreePayload } from "@vercel/sdk/models/getdeploymenteventsop.js";
+
+let value: ThreePayload = {
+  deploymentId: "<id>",
+  id: "<id>",
+  date: 4179.69,
+  serial: "<value>",
+};
+```
+
+## Fields
+
+| Field                                                                                                          | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
+| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `deploymentId`                                                                                                 | *string*                                                                                                       | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
+| `info`                                                                                                         | [models.GetDeploymentEvents3DeploymentsResponseInfo](../models/getdeploymentevents3deploymentsresponseinfo.md) | :heavy_minus_sign:                                                                                             | N/A                                                                                                            |
+| `text`                                                                                                         | *string*                                                                                                       | :heavy_minus_sign:                                                                                             | N/A                                                                                                            |
+| `id`                                                                                                           | *string*                                                                                                       | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
+| `date`                                                                                                         | *number*                                                                                                       | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
+| `serial`                                                                                                       | *string*                                                                                                       | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
+| `created`                                                                                                      | *number*                                                                                                       | :heavy_minus_sign:                                                                                             | N/A                                                                                                            |
+| `statusCode`                                                                                                   | *number*                                                                                                       | :heavy_minus_sign:                                                                                             | N/A                                                                                                            |
+| `requestId`                                                                                                    | *string*                                                                                                       | :heavy_minus_sign:                                                                                             | N/A                                                                                                            |
+| `proxy`                                                                                                        | [models.ThreeProxy](../models/threeproxy.md)                                                                   | :heavy_minus_sign:                                                                                             | N/A                                                                                                            |

@@ -34,12 +34,12 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 export type CreateIntegrationStoreDirectPropertiesIntegrationsItems = {
   type:
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema7Type;
+  default?: string | undefined;
   enum?: Array<string> | undefined;
   maxLength?: number | undefined;
   minLength?: number | undefined;
   pattern?: string | undefined;
   description?: string | undefined;
-  default?: string | undefined;
 };
 
 export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreUiControl =
@@ -183,10 +183,10 @@ export type CreateIntegrationStoreDirectProperties7 = {
   uiOptions: Array<
     CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiOptions
   >;
+  default?: Array<string> | undefined;
   maxItems?: number | undefined;
   minItems?: number | undefined;
   description?: string | undefined;
-  default?: Array<string> | undefined;
   uiLabel?: string | undefined;
   uiReadOnly?:
     | CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStore1
@@ -363,12 +363,12 @@ export type CreateIntegrationStoreDirectProperties6 = {
   uiControl:
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiControl;
   uiOptions: Array<CreateIntegrationStoreDirectPropertiesIntegrationsUiOptions>;
+  default?: string | undefined;
   enum?: Array<string> | undefined;
   maxLength?: number | undefined;
   minLength?: number | undefined;
   pattern?: string | undefined;
   description?: string | undefined;
-  default?: string | undefined;
   uiLabel?: string | undefined;
   uiReadOnly?:
     | CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody1
@@ -544,12 +544,12 @@ export type CreateIntegrationStoreDirectProperties5 = {
   uiControl:
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONUiControl;
   uiOptions: Array<CreateIntegrationStoreDirectPropertiesUiOptions>;
+  default?: string | undefined;
   enum?: Array<string> | undefined;
   maxLength?: number | undefined;
   minLength?: number | undefined;
   pattern?: string | undefined;
   description?: string | undefined;
-  default?: string | undefined;
   uiLabel?: string | undefined;
   uiReadOnly?:
     | CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJson1
@@ -598,12 +598,12 @@ export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applica
 export type CreateIntegrationStoreDirectPropertiesItems = {
   type:
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema4Type;
+  default?: number | undefined;
   maximum?: number | undefined;
   exclusiveMaximum?: number | undefined;
   minimum?: number | undefined;
   exclusiveMinimum?: number | undefined;
   description?: string | undefined;
-  default?: number | undefined;
 };
 
 export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiControl =
@@ -689,10 +689,10 @@ export type CreateIntegrationStoreDirectProperties4 = {
   uiControl:
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiControl;
   uiSteps: Array<number>;
+  default?: Array<number> | undefined;
   maxItems?: number | undefined;
   minItems?: number | undefined;
   description?: string | undefined;
-  default?: Array<number> | undefined;
   uiLabel?: string | undefined;
   uiReadOnly?:
     | CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse2001
@@ -805,8 +805,8 @@ export type CreateIntegrationStoreDirectProperties3 = {
   type: CreateIntegrationStoreDirectPropertiesIntegrationsResponseType;
   uiControl:
     CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiControl;
-  description?: string | undefined;
   default?: boolean | undefined;
+  description?: string | undefined;
   uiLabel?: string | undefined;
   uiReadOnly?:
     | CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse1
@@ -915,12 +915,12 @@ export type CreateIntegrationStoreDirectPropertiesIntegrationsUiFormattedValue =
 export type CreateIntegrationStoreDirectProperties2 = {
   type: CreateIntegrationStoreDirectPropertiesIntegrationsType;
   uiControl: CreateIntegrationStoreDirectPropertiesIntegrationsUiControl;
+  default?: number | undefined;
   maximum?: number | undefined;
   exclusiveMaximum?: number | undefined;
   minimum?: number | undefined;
   exclusiveMinimum?: number | undefined;
   description?: string | undefined;
-  default?: number | undefined;
   uiLabel?: string | undefined;
   uiReadOnly?:
     | CreateIntegrationStoreDirectUiReadOnlyIntegrations1
@@ -1028,12 +1028,12 @@ export type CreateIntegrationStoreDirectPropertiesUiFormattedValue = {
 export type CreateIntegrationStoreDirectProperties1 = {
   type: CreateIntegrationStoreDirectPropertiesType;
   uiControl: CreateIntegrationStoreDirectPropertiesUiControl;
+  default?: string | undefined;
   enum?: Array<string> | undefined;
   maxLength?: number | undefined;
   minLength?: number | undefined;
   pattern?: string | undefined;
   description?: string | undefined;
-  default?: string | undefined;
   uiLabel?: string | undefined;
   uiReadOnly?:
     | CreateIntegrationStoreDirectUiReadOnly1
@@ -1331,6 +1331,8 @@ export type Product = {
 export type CreateIntegrationStoreDirectExperimentation = {
   edgeConfigSyncingEnabled?: boolean | undefined;
   edgeConfigId?: string | undefined;
+  globalConfigId?: string | undefined;
+  globalConfigSyncingEnabled?: boolean | undefined;
   edgeConfigTokenId?: string | undefined;
 };
 
@@ -1363,12 +1365,12 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsItems$inboundSche
   > = z.object({
     type:
       CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema7Type$inboundSchema,
+    default: types.optional(types.string()),
     enum: types.optional(z.array(types.string())),
     maxLength: types.optional(types.number()),
     minLength: types.optional(types.number()),
     pattern: types.optional(types.string()),
     description: types.optional(types.string()),
-    default: types.optional(types.string()),
   });
 
 export function createIntegrationStoreDirectPropertiesIntegrationsItemsFromJSON(
@@ -1841,10 +1843,10 @@ export const CreateIntegrationStoreDirectProperties7$inboundSchema: z.ZodType<
       CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiOptions$inboundSchema
     ),
   ),
+  default: types.optional(z.array(types.string())),
   maxItems: types.optional(types.number()),
   minItems: types.optional(types.number()),
   description: types.optional(types.string()),
-  default: types.optional(z.array(types.string())),
   "ui:label": types.optional(types.string()),
   "ui:read-only": types.optional(
     smartUnion([
@@ -2378,12 +2380,12 @@ export const CreateIntegrationStoreDirectProperties6$inboundSchema: z.ZodType<
       CreateIntegrationStoreDirectPropertiesIntegrationsUiOptions$inboundSchema
     ),
   ),
+  default: types.optional(types.string()),
   enum: types.optional(z.array(types.string())),
   maxLength: types.optional(types.number()),
   minLength: types.optional(types.number()),
   pattern: types.optional(types.string()),
   description: types.optional(types.string()),
-  default: types.optional(types.string()),
   "ui:label": types.optional(types.string()),
   "ui:read-only": types.optional(
     smartUnion([
@@ -2900,12 +2902,12 @@ export const CreateIntegrationStoreDirectProperties5$inboundSchema: z.ZodType<
   "ui:options": z.array(
     z.lazy(() => CreateIntegrationStoreDirectPropertiesUiOptions$inboundSchema),
   ),
+  default: types.optional(types.string()),
   enum: types.optional(z.array(types.string())),
   maxLength: types.optional(types.number()),
   minLength: types.optional(types.number()),
   pattern: types.optional(types.string()),
   description: types.optional(types.string()),
-  default: types.optional(types.string()),
   "ui:label": types.optional(types.string()),
   "ui:read-only": types.optional(
     smartUnion([
@@ -3005,12 +3007,12 @@ export const CreateIntegrationStoreDirectPropertiesItems$inboundSchema:
   > = z.object({
     type:
       CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema4Type$inboundSchema,
+    default: types.optional(types.number()),
     maximum: types.optional(types.number()),
     exclusiveMaximum: types.optional(types.number()),
     minimum: types.optional(types.number()),
     exclusiveMinimum: types.optional(types.number()),
     description: types.optional(types.string()),
-    default: types.optional(types.number()),
   });
 
 export function createIntegrationStoreDirectPropertiesItemsFromJSON(
@@ -3315,10 +3317,10 @@ export const CreateIntegrationStoreDirectProperties4$inboundSchema: z.ZodType<
   "ui:control":
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiControl$inboundSchema,
   "ui:steps": z.array(types.number()),
+  default: types.optional(z.array(types.number())),
   maxItems: types.optional(types.number()),
   minItems: types.optional(types.number()),
   description: types.optional(types.string()),
-  default: types.optional(z.array(types.number())),
   "ui:label": types.optional(types.string()),
   "ui:read-only": types.optional(
     smartUnion([
@@ -3675,8 +3677,8 @@ export const CreateIntegrationStoreDirectProperties3$inboundSchema: z.ZodType<
     CreateIntegrationStoreDirectPropertiesIntegrationsResponseType$inboundSchema,
   "ui:control":
     CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiControl$inboundSchema,
-  description: types.optional(types.string()),
   default: types.optional(types.boolean()),
+  description: types.optional(types.string()),
   "ui:label": types.optional(types.string()),
   "ui:read-only": types.optional(
     smartUnion([
@@ -4027,12 +4029,12 @@ export const CreateIntegrationStoreDirectProperties2$inboundSchema: z.ZodType<
   type: CreateIntegrationStoreDirectPropertiesIntegrationsType$inboundSchema,
   "ui:control":
     CreateIntegrationStoreDirectPropertiesIntegrationsUiControl$inboundSchema,
+  default: types.optional(types.number()),
   maximum: types.optional(types.number()),
   exclusiveMaximum: types.optional(types.number()),
   minimum: types.optional(types.number()),
   exclusiveMinimum: types.optional(types.number()),
   description: types.optional(types.string()),
-  default: types.optional(types.number()),
   "ui:label": types.optional(types.string()),
   "ui:read-only": types.optional(
     smartUnion([
@@ -4369,12 +4371,12 @@ export const CreateIntegrationStoreDirectProperties1$inboundSchema: z.ZodType<
 > = z.object({
   type: CreateIntegrationStoreDirectPropertiesType$inboundSchema,
   "ui:control": CreateIntegrationStoreDirectPropertiesUiControl$inboundSchema,
+  default: types.optional(types.string()),
   enum: types.optional(z.array(types.string())),
   maxLength: types.optional(types.number()),
   minLength: types.optional(types.number()),
   pattern: types.optional(types.string()),
   description: types.optional(types.string()),
-  default: types.optional(types.string()),
   "ui:label": types.optional(types.string()),
   "ui:read-only": types.optional(
     smartUnion([
@@ -4849,6 +4851,8 @@ export const CreateIntegrationStoreDirectExperimentation$inboundSchema:
   > = z.object({
     edgeConfigSyncingEnabled: types.optional(types.boolean()),
     edgeConfigId: types.optional(types.string()),
+    globalConfigId: types.optional(types.string()),
+    globalConfigSyncingEnabled: types.optional(types.boolean()),
     edgeConfigTokenId: types.optional(types.string()),
   });
 

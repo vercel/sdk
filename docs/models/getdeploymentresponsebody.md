@@ -2,6 +2,7 @@
 
 Returns a reduced view of the deployment with public information only. Private fields are omitted when the requester is not the deployment owner.
 Returns the deployment object for the authenticated owner, including private fields such as environment variables, build log URLs, and internal metadata.
+Returns the reduced deployment view for anonymous (`vcn_`) callers, with an `anonymous.expiresAt` marking when the project and its token expire. Pool-team details are withheld.
 
 
 ## Supported Types
@@ -10,39 +11,59 @@ Returns the deployment object for the authenticated owner, including private fie
 
 ```typescript
 const value: models.GetDeploymentResponseBody1 = {
-  build: {
-    env: [],
+  aliasAssigned: true,
+  anonymous: {
+    expiresAt: 1753120000000,
   },
-  env: [
-    "<value 1>",
-    "<value 2>",
-  ],
-  inspectorUrl: "https://guilty-armoire.info/",
+  id: "dpl_89qyp1cskzkLrVicDaZoDbjyHuDJ",
+  name: "my-project",
+  url: "my-instant-deployment-3ij3cxz9qr.now.sh",
+  projectId: "<id>",
+  target: null,
+  createdAt: 1540257589405,
+  readyState: "READY",
+  aliasError: null,
+};
+```
+
+### `models.GetDeploymentResponseBody2`
+
+```typescript
+const value: models.GetDeploymentResponseBody2 = {
+  build: {
+    env: [
+      "<value 1>",
+    ],
+  },
+  env: [],
+  inspectorUrl: "https://worthwhile-giant.org",
   isInConcurrentBuildsQueue: false,
   isInSystemBuildsQueue: true,
   projectSettings: {},
   alias: [],
   aliasAssigned: true,
-  bootedAt: 8312.01,
-  buildingAt: 2272.68,
-  buildSkipped: true,
+  bootedAt: 6963.76,
+  buildingAt: 6799.19,
+  buildSkipped: false,
   creator: {
     uid: "96SnxkFiMyVKsK3pnoHfx3Hz",
     username: "john-doe",
   },
   public: false,
-  status: "CANCELED",
+  status: "QUEUED",
   userAliases: [
     "sub1.example.com",
     "sub2.example.com",
   ],
   previewCommentsEnabled: false,
   id: "dpl_89qyp1cskzkLrVicDaZoDbjyHuDJ",
+  name: "my-project",
+  url: "my-instant-deployment-3ij3cxz9qr.now.sh",
+  target: null,
   createdAt: 1540257589405,
   readyState: "READY",
-  name: "my-project",
-  type: "LAMBDAS",
   aliasError: null,
+  type: "LAMBDAS",
   deletedAt: 1540257589405,
   meta: {
     "key": "<value>",
@@ -52,45 +73,45 @@ const value: models.GetDeploymentResponseBody1 = {
   ],
   softDeletedByRetention: true,
   source: "cli",
-  target: null,
   undeletedAt: 1540257589405,
-  url: "my-instant-deployment-3ij3cxz9qr.now.sh",
   userConfiguredDeploymentId: "abc123",
   version: 2,
   projectId: "<id>",
-  plan: "hobby",
+  plan: "enterprise",
   createdIn: "<value>",
   ownerId: "<id>",
   routes: [],
 };
 ```
 
-### `models.GetDeploymentResponseBody2`
+### `models.GetDeploymentResponseBody3`
 
 ```typescript
-const value: models.GetDeploymentResponseBody2 = {
+const value: models.GetDeploymentResponseBody3 = {
   alias: [],
   aliasAssigned: true,
-  bootedAt: 3380.01,
-  buildingAt: 1303.95,
-  buildSkipped: true,
+  bootedAt: 3182.75,
+  buildingAt: 2485.22,
+  buildSkipped: false,
   creator: {
     uid: "96SnxkFiMyVKsK3pnoHfx3Hz",
     username: "john-doe",
   },
   public: false,
-  status: "INITIALIZING",
+  status: "BUILDING",
   userAliases: [
     "sub1.example.com",
     "sub2.example.com",
   ],
   previewCommentsEnabled: false,
   id: "dpl_89qyp1cskzkLrVicDaZoDbjyHuDJ",
+  name: "my-project",
+  url: "my-instant-deployment-3ij3cxz9qr.now.sh",
+  target: null,
   createdAt: 1540257589405,
   readyState: "READY",
-  name: "my-project",
-  type: "LAMBDAS",
   aliasError: null,
+  type: "LAMBDAS",
   deletedAt: 1540257589405,
   meta: {
     "key": "<value>",
@@ -102,9 +123,7 @@ const value: models.GetDeploymentResponseBody2 = {
   ],
   softDeletedByRetention: true,
   source: "cli",
-  target: null,
   undeletedAt: 1540257589405,
-  url: "my-instant-deployment-3ij3cxz9qr.now.sh",
   userConfiguredDeploymentId: "abc123",
   version: 2,
 };

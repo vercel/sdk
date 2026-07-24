@@ -170,7 +170,7 @@ async function $do(
     | SDKValidationError
   >(
     M.json(200, DeleteDriveResponseBody$inboundSchema),
-    M.fail([400, 401, 402, 403, 404, 409, 429, "4XX"]),
+    M.fail([400, 401, 403, 404, 409, 410, 429, "4XX"]),
     M.fail("5XX"),
   )(response, req);
   if (!result.ok) {

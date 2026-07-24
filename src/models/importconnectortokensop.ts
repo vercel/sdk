@@ -8,6 +8,7 @@ import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type SubjectTypeUser = {
@@ -22,7 +23,7 @@ export type SubjectTypeApp = {
   additionalProperties?: { [k: string]: any } | undefined;
 };
 
-export type ImportConnectorTokensSubject = SubjectTypeApp | SubjectTypeUser;
+export type Subject = SubjectTypeApp | SubjectTypeUser;
 
 export const ImportConnectorTokensEnvironment = {
   Development: "development",
@@ -33,7 +34,14 @@ export type ImportConnectorTokensEnvironment = ClosedEnum<
   typeof ImportConnectorTokensEnvironment
 >;
 
-export type ImportConnectorTokensAuthorizationDetails = {
+/**
+ * A built-in environment name or the stable env_* ID of a custom environment.
+ */
+export type ImportConnectorTokensEnvironmentTarget =
+  | ImportConnectorTokensEnvironment
+  | string;
+
+export type AuthorizationDetails = {
   type?: string | undefined;
   additionalProperties?: { [k: string]: any } | undefined;
 };
@@ -54,14 +62,15 @@ export type Tokens = {
   refreshToken?: string | undefined;
   refreshTokenExpiresAt?: number | undefined;
   subject: SubjectTypeApp | SubjectTypeUser;
-  environment: ImportConnectorTokensEnvironment;
+  /**
+   * A built-in environment name or the stable env_* ID of a custom environment.
+   */
+  environment: ImportConnectorTokensEnvironment | string;
   installationId?: string | undefined;
   audience?: Array<string> | undefined;
   scopes?: Array<string> | undefined;
   resources?: Array<string> | undefined;
-  authorizationDetails?:
-    | Array<ImportConnectorTokensAuthorizationDetails>
-    | undefined;
+  authorizationDetails?: Array<AuthorizationDetails> | undefined;
   name?: string | undefined;
   externalSubject?: string | undefined;
   installation?: Installation | undefined;
@@ -78,7 +87,7 @@ export type ImportConnectorTokensRequest = {
   requestBody?: ImportConnectorTokensRequestBody | undefined;
 };
 
-export type ImportConnectorTokensConnectAuthorizationDetails = {
+export type ImportConnectorTokensAuthorizationDetails = {
   type: string;
 };
 
@@ -102,7 +111,7 @@ export type Subject1 = {
   type: "app";
 };
 
-export type ImportConnectorTokensConnectSubject = Subject1 | Subject2;
+export type ImportConnectorTokensSubject = Subject1 | Subject2;
 
 export const ImportConnectorTokensConnectEnvironment = {
   Development: "development",
@@ -113,23 +122,31 @@ export type ImportConnectorTokensConnectEnvironment = ClosedEnum<
   typeof ImportConnectorTokensConnectEnvironment
 >;
 
+export type ImportConnectorTokensConnectEnvironmentTarget =
+  | string
+  | ImportConnectorTokensConnectEnvironment;
+
 export type ImportConnectorTokensTokens = {
   name?: string | undefined;
+  data?: { [k: string]: any } | undefined;
   installationId?: string | undefined;
   audience?: Array<string> | undefined;
   scopes?: Array<string> | undefined;
   resources?: Array<string> | undefined;
   authorizationDetails?:
-    | Array<ImportConnectorTokensConnectAuthorizationDetails>
+    | Array<ImportConnectorTokensAuthorizationDetails>
     | undefined;
   expiresAt: number;
   refreshTokenExpiresAt?: number | undefined;
   externalSubject?: string | undefined;
+  /**
+   * Claims extracted from the provider's tokens per the connector's `ForwardedClaims` allow-list. Currently sourced from the OIDC id_token only.
+   */
+  claims?: { [k: string]: any } | undefined;
   installation?: ImportConnectorTokensInstallation | undefined;
   tenant?: ImportConnectorTokensTenant | undefined;
-  data?: { [k: string]: any } | undefined;
   subject: Subject1 | Subject2;
-  environment: ImportConnectorTokensConnectEnvironment;
+  environment: string | ImportConnectorTokensConnectEnvironment;
   succeeded: boolean;
 };
 
@@ -200,28 +217,22 @@ export function subjectTypeAppToJSON(subjectTypeApp: SubjectTypeApp): string {
 }
 
 /** @internal */
-export type ImportConnectorTokensSubject$Outbound =
+export type Subject$Outbound =
   | SubjectTypeApp$Outbound
   | SubjectTypeUser$Outbound;
 
 /** @internal */
-export const ImportConnectorTokensSubject$outboundSchema: z.ZodType<
-  ImportConnectorTokensSubject$Outbound,
+export const Subject$outboundSchema: z.ZodType<
+  Subject$Outbound,
   z.ZodTypeDef,
-  ImportConnectorTokensSubject
+  Subject
 > = z.union([
   z.lazy(() => SubjectTypeApp$outboundSchema),
   z.lazy(() => SubjectTypeUser$outboundSchema),
 ]);
 
-export function importConnectorTokensSubjectToJSON(
-  importConnectorTokensSubject: ImportConnectorTokensSubject,
-): string {
-  return JSON.stringify(
-    ImportConnectorTokensSubject$outboundSchema.parse(
-      importConnectorTokensSubject,
-    ),
-  );
+export function subjectToJSON(subject: Subject): string {
+  return JSON.stringify(Subject$outboundSchema.parse(subject));
 }
 
 /** @internal */
@@ -230,37 +241,54 @@ export const ImportConnectorTokensEnvironment$outboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(ImportConnectorTokensEnvironment);
 
 /** @internal */
-export type ImportConnectorTokensAuthorizationDetails$Outbound = {
+export type ImportConnectorTokensEnvironmentTarget$Outbound = string | string;
+
+/** @internal */
+export const ImportConnectorTokensEnvironmentTarget$outboundSchema: z.ZodType<
+  ImportConnectorTokensEnvironmentTarget$Outbound,
+  z.ZodTypeDef,
+  ImportConnectorTokensEnvironmentTarget
+> = smartUnion([ImportConnectorTokensEnvironment$outboundSchema, z.string()]);
+
+export function importConnectorTokensEnvironmentTargetToJSON(
+  importConnectorTokensEnvironmentTarget:
+    ImportConnectorTokensEnvironmentTarget,
+): string {
+  return JSON.stringify(
+    ImportConnectorTokensEnvironmentTarget$outboundSchema.parse(
+      importConnectorTokensEnvironmentTarget,
+    ),
+  );
+}
+
+/** @internal */
+export type AuthorizationDetails$Outbound = {
   type?: string | undefined;
   [additionalProperties: string]: unknown;
 };
 
 /** @internal */
-export const ImportConnectorTokensAuthorizationDetails$outboundSchema:
-  z.ZodType<
-    ImportConnectorTokensAuthorizationDetails$Outbound,
-    z.ZodTypeDef,
-    ImportConnectorTokensAuthorizationDetails
-  > = z.object({
-    type: z.string().optional(),
-    additionalProperties: z.record(z.any()).optional(),
-  }).transform((v) => {
-    return {
-      ...v.additionalProperties,
-      ...remap$(v, {
-        additionalProperties: null,
-      }),
-    };
-  });
+export const AuthorizationDetails$outboundSchema: z.ZodType<
+  AuthorizationDetails$Outbound,
+  z.ZodTypeDef,
+  AuthorizationDetails
+> = z.object({
+  type: z.string().optional(),
+  additionalProperties: z.record(z.any()).optional(),
+}).transform((v) => {
+  return {
+    ...v.additionalProperties,
+    ...remap$(v, {
+      additionalProperties: null,
+    }),
+  };
+});
 
-export function importConnectorTokensAuthorizationDetailsToJSON(
-  importConnectorTokensAuthorizationDetails:
-    ImportConnectorTokensAuthorizationDetails,
+export function authorizationDetailsToJSON(
+  authorizationDetails: AuthorizationDetails,
 ): string {
   return JSON.stringify(
-    ImportConnectorTokensAuthorizationDetails$outboundSchema.parse(
-      importConnectorTokensAuthorizationDetails,
-    ),
+    AuthorizationDetails$outboundSchema.parse(authorizationDetails),
   );
 }
 
@@ -311,14 +339,12 @@ export type Tokens$Outbound = {
   refreshToken?: string | undefined;
   refreshTokenExpiresAt?: number | undefined;
   subject: SubjectTypeApp$Outbound | SubjectTypeUser$Outbound;
-  environment: string;
+  environment: string | string;
   installationId?: string | undefined;
   audience?: Array<string> | undefined;
   scopes?: Array<string> | undefined;
   resources?: Array<string> | undefined;
-  authorizationDetails?:
-    | Array<ImportConnectorTokensAuthorizationDetails$Outbound>
-    | undefined;
+  authorizationDetails?: Array<AuthorizationDetails$Outbound> | undefined;
   name?: string | undefined;
   externalSubject?: string | undefined;
   installation?: Installation$Outbound | undefined;
@@ -340,13 +366,16 @@ export const Tokens$outboundSchema: z.ZodType<
     z.lazy(() => SubjectTypeApp$outboundSchema),
     z.lazy(() => SubjectTypeUser$outboundSchema),
   ]),
-  environment: ImportConnectorTokensEnvironment$outboundSchema,
+  environment: smartUnion([
+    ImportConnectorTokensEnvironment$outboundSchema,
+    z.string(),
+  ]),
   installationId: z.string().optional(),
   audience: z.array(z.string()).optional(),
   scopes: z.array(z.string()).optional(),
   resources: z.array(z.string()).optional(),
   authorizationDetails: z.array(
-    z.lazy(() => ImportConnectorTokensAuthorizationDetails$outboundSchema),
+    z.lazy(() => AuthorizationDetails$outboundSchema),
   ).optional(),
   name: z.string().optional(),
   externalSubject: z.string().optional(),
@@ -415,28 +444,27 @@ export function importConnectorTokensRequestToJSON(
 }
 
 /** @internal */
-export const ImportConnectorTokensConnectAuthorizationDetails$inboundSchema:
-  z.ZodType<
-    ImportConnectorTokensConnectAuthorizationDetails,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    type: types.string(),
-  });
+export const ImportConnectorTokensAuthorizationDetails$inboundSchema: z.ZodType<
+  ImportConnectorTokensAuthorizationDetails,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.string(),
+});
 
-export function importConnectorTokensConnectAuthorizationDetailsFromJSON(
+export function importConnectorTokensAuthorizationDetailsFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  ImportConnectorTokensConnectAuthorizationDetails,
+  ImportConnectorTokensAuthorizationDetails,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      ImportConnectorTokensConnectAuthorizationDetails$inboundSchema.parse(
+      ImportConnectorTokensAuthorizationDetails$inboundSchema.parse(
         JSON.parse(x),
       ),
-    `Failed to parse 'ImportConnectorTokensConnectAuthorizationDetails' from JSON`,
+    `Failed to parse 'ImportConnectorTokensAuthorizationDetails' from JSON`,
   );
 }
 
@@ -521,8 +549,8 @@ export function subject1FromJSON(
 }
 
 /** @internal */
-export const ImportConnectorTokensConnectSubject$inboundSchema: z.ZodType<
-  ImportConnectorTokensConnectSubject,
+export const ImportConnectorTokensSubject$inboundSchema: z.ZodType<
+  ImportConnectorTokensSubject,
   z.ZodTypeDef,
   unknown
 > = z.union([
@@ -530,14 +558,13 @@ export const ImportConnectorTokensConnectSubject$inboundSchema: z.ZodType<
   z.lazy(() => Subject2$inboundSchema),
 ]);
 
-export function importConnectorTokensConnectSubjectFromJSON(
+export function importConnectorTokensSubjectFromJSON(
   jsonString: string,
-): SafeParseResult<ImportConnectorTokensConnectSubject, SDKValidationError> {
+): SafeParseResult<ImportConnectorTokensSubject, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      ImportConnectorTokensConnectSubject$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ImportConnectorTokensConnectSubject' from JSON`,
+    (x) => ImportConnectorTokensSubject$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ImportConnectorTokensSubject' from JSON`,
   );
 }
 
@@ -547,36 +574,67 @@ export const ImportConnectorTokensConnectEnvironment$inboundSchema:
     .nativeEnum(ImportConnectorTokensConnectEnvironment);
 
 /** @internal */
+export const ImportConnectorTokensConnectEnvironmentTarget$inboundSchema:
+  z.ZodType<
+    ImportConnectorTokensConnectEnvironmentTarget,
+    z.ZodTypeDef,
+    unknown
+  > = smartUnion([
+    types.string(),
+    ImportConnectorTokensConnectEnvironment$inboundSchema,
+  ]);
+
+export function importConnectorTokensConnectEnvironmentTargetFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ImportConnectorTokensConnectEnvironmentTarget,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ImportConnectorTokensConnectEnvironmentTarget$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ImportConnectorTokensConnectEnvironmentTarget' from JSON`,
+  );
+}
+
+/** @internal */
 export const ImportConnectorTokensTokens$inboundSchema: z.ZodType<
   ImportConnectorTokensTokens,
   z.ZodTypeDef,
   unknown
 > = z.object({
   name: types.optional(types.string()),
+  data: types.optional(z.record(z.any())),
   installationId: types.optional(types.string()),
   audience: types.optional(z.array(types.string())),
   scopes: types.optional(z.array(types.string())),
   resources: types.optional(z.array(types.string())),
   authorizationDetails: types.optional(
-    z.array(z.lazy(() =>
-      ImportConnectorTokensConnectAuthorizationDetails$inboundSchema
-    )),
+    z.array(
+      z.lazy(() => ImportConnectorTokensAuthorizationDetails$inboundSchema),
+    ),
   ),
   expiresAt: types.number(),
   refreshTokenExpiresAt: types.optional(types.number()),
   externalSubject: types.optional(types.string()),
+  claims: types.optional(z.record(z.any())),
   installation: types.optional(
     z.lazy(() => ImportConnectorTokensInstallation$inboundSchema),
   ),
   tenant: types.optional(
     z.lazy(() => ImportConnectorTokensTenant$inboundSchema),
   ),
-  data: types.optional(z.record(z.any())),
   subject: z.union([
     z.lazy(() => Subject1$inboundSchema),
     z.lazy(() => Subject2$inboundSchema),
   ]),
-  environment: ImportConnectorTokensConnectEnvironment$inboundSchema,
+  environment: smartUnion([
+    types.string(),
+    ImportConnectorTokensConnectEnvironment$inboundSchema,
+  ]),
   succeeded: types.boolean(),
 });
 

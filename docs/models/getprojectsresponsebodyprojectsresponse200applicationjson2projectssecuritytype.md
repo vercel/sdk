@@ -3,15 +3,15 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsSecurityType } from "@vercel/sdk/models/getprojectsresponsebodyissuermode.js";
+import { GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsSecurityType } from "@vercel/sdk/models/getprojectscontenthint3.js";
 
 let value:
   GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsSecurityType =
-    "scheme";
+    "region";
 ```
 
 ## Values
 
 ```typescript
-"cookie" | "environment" | "header" | "host" | "initial_request_path" | "ip_address" | "method" | "path" | "protocol" | "query" | "region" | "scheme" | "trusted_source"
+"cookie" | "domain_environment" | "environment" | "header" | "headers" | "host" | "initial_request_path" | "ip_address" | "method" | "path" | "protocol" | "query" | "region" | "scheme" | "trusted_source"
 ```

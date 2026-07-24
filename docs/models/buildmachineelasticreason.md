@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { BuildMachineElasticReason } from "@vercel/sdk/models/createprojectstaticips.js";
+import { BuildMachineElasticReason } from "@vercel/sdk/models/createprojectbuildmachineselection.js";
 
 let value: BuildMachineElasticReason = "high-peak-memory";
 ```

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Integrations } from "@vercel/sdk/models/createdeploymentvaluedeployments2.js";
+import { Integrations } from "@vercel/sdk/models/canceldeploymentservicesdeploymentsfunctions.js";
 
 let value: Integrations = {
   status: "timeout",
@@ -15,7 +15,7 @@ let value: Integrations = {
 
 | Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
 | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `status`                                                                                   | [models.CreateDeploymentDeploymentsStatus](../models/createdeploymentdeploymentsstatus.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `status`                                                                                   | [models.CancelDeploymentDeploymentsStatus](../models/canceldeploymentdeploymentsstatus.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
 | `startedAt`                                                                                | *number*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
 | `claimedAt`                                                                                | *number*                                                                                   | :heavy_minus_sign:                                                                         | N/A                                                                                        |
 | `completedAt`                                                                              | *number*                                                                                   | :heavy_minus_sign:                                                                         | N/A                                                                                        |

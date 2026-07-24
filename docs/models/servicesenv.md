@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ServicesEnv } from "@vercel/sdk/models/canceldeploymentgitrepodeploymentsresponseownertype.js";
+import { ServicesEnv } from "@vercel/sdk/models/canceldeploymentgitrepoownertype.js";
 
 let value: ServicesEnv = {
   type: "service-ref",
@@ -13,7 +13,7 @@ let value: ServicesEnv = {
 
 ## Fields
 
-| Field                                                                                                  | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
-| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| `type`                                                                                                 | [models.CancelDeploymentServicesDeploymentsType](../models/canceldeploymentservicesdeploymentstype.md) | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
-| `service`                                                                                              | *string*                                                                                               | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `type`                                                                           | [models.CancelDeploymentServicesType](../models/canceldeploymentservicestype.md) | :heavy_check_mark:                                                               | N/A                                                                              |
+| `service`                                                                        | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |

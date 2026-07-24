@@ -11,5 +11,5 @@ let value: PutFirewallConfigRulesSecurityResponse200Action = "challenge";
 ## Values
 
 ```typescript
-"bypass" | "challenge" | "deny" | "log" | "rate_limit" | "redirect"
+"allow" | "bypass" | "challenge" | "deny" | "log" | "rate_limit" | "redirect"
 ```

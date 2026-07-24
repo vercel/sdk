@@ -61,6 +61,7 @@ export type ListRepositoryTagsRequest = {
 };
 
 export const ListRepositoryTagsKind = {
+  Attestation: "attestation",
   Index: "index",
   Manifest: "manifest",
 } as const;

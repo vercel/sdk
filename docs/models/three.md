@@ -5,10 +5,12 @@ Metadata for {@link principalId}.
 ## Example Usage
 
 ```typescript
-import { Three } from "@vercel/sdk/models/threehundredandeighteen.js";
+import { Three } from "@vercel/sdk/models/threehundredandfortyone.js";
 
 let value: Three = {
-  type: "system",
+  type: "external",
+  id: "<id>",
+  name: "<value>",
 };
 ```
 
@@ -17,3 +19,6 @@ let value: Three = {
 | Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | `type`                                                                 | [models.UserEventPrincipal3Type](../models/usereventprincipal3type.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| `id`                                                                   | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `name`                                                                 | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `email`                                                                | *string*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |

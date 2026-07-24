@@ -12,13 +12,13 @@ import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type TypeSnowflakeWif = {
-  clientName: string;
+  clientName?: string | undefined;
   accountIdentifier?: string | undefined;
   extras?: { [k: string]: any } | undefined;
 };
 
 export type TypeSnowflake = {
-  clientName: string;
+  clientName?: string | undefined;
   accountIdentifier: string;
   defaultSessionRole?: string | undefined;
   extras?: { [k: string]: any } | undefined;
@@ -188,7 +188,7 @@ export type ServerConfig = {
 export type UserAuthorization = {
   enabled: boolean;
   /**
-   * Default scopes to request when token params specify scopes: ["*"].
+   * Default scopes to request when token params specify scopes: [\"*\"].
    */
   scopes?: Array<string> | undefined;
 };
@@ -200,15 +200,22 @@ export type RefreshTokens = {
 export type ClientCredentials = {
   enabled: boolean;
   /**
-   * Default scopes to request when token params specify scopes: ["*"].
+   * Default scopes to request when token params specify scopes: [\"*\"].
    */
   scopes?: Array<string> | undefined;
+};
+
+/**
+ * Allow-list of extra claims to propagate, keyed by source (idToken). Only claims named here and present in that source are exposed.
+ */
+export type ForwardedClaims = {
+  idToken?: Array<string> | undefined;
 };
 
 export type JwtBearer = {
   enabled?: boolean | undefined;
   /**
-   * Default scopes to request when token params specify scopes: ["*"].
+   * Default scopes to request when token params specify scopes: [\"*\"].
    */
   scopes?: Array<string> | undefined;
   sub?: string | undefined;
@@ -231,6 +238,10 @@ export type TypeOauth = {
   userAuthorization?: UserAuthorization | undefined;
   refreshTokens?: RefreshTokens | undefined;
   clientCredentials?: ClientCredentials | undefined;
+  /**
+   * Allow-list of extra claims to propagate, keyed by source (idToken). Only claims named here and present in that source are exposed.
+   */
+  forwardedClaims?: ForwardedClaims | undefined;
   defaultAudience?: string | undefined;
   authorizationUrlParams?: { [k: string]: string } | undefined;
   jwtBearer?: JwtBearer | undefined;
@@ -241,13 +252,26 @@ export type CreateConnectorData =
   | TypeSlack
   | TypeSalesforce
   | TypeLinear
-  | TypeSnowflake
   | TypeOauth
   | TypeApiKey
+  | TypeSnowflake
   | TypeSnowflakeWif
   | { [k: string]: any };
 
 export type CreateConnectorRequestBody = {
+  data:
+    | TypeGithub
+    | TypeSlack
+    | TypeSalesforce
+    | TypeLinear
+    | TypeOauth
+    | TypeApiKey
+    | TypeSnowflake
+    | TypeSnowflakeWif
+    | { [k: string]: any };
+  icon?: string | undefined;
+  backgroundColor?: string | undefined;
+  accentColor?: string | undefined;
   /**
    * Known types: api-key, github, linear, oauth, salesforce, slack, snowflake.
    */
@@ -263,7 +287,7 @@ export type CreateConnectorRequestBody = {
    */
   projectId?: string | undefined;
   /**
-   * Use these environments when linking to the project specified by the projectId.
+   * Use these built-in environment names or stable custom environment IDs when linking to projectId.
    */
   environments?: Array<string> | undefined;
   /**
@@ -274,28 +298,6 @@ export type CreateConnectorRequestBody = {
    * The list of the defaults trigger events for this connector.
    */
   events?: Array<string> | undefined;
-  /**
-   * Branding icon SHA-1 hash already uploaded to the Vercel avatar service.
-   */
-  icon?: string | undefined;
-  /**
-   * Branding background color (6-digit hex, e.g. "#000000").
-   */
-  backgroundColor?: string | undefined;
-  /**
-   * Branding accent color (6-digit hex, e.g. "#000000").
-   */
-  accentColor?: string | undefined;
-  data:
-    | TypeGithub
-    | TypeSlack
-    | TypeSalesforce
-    | TypeLinear
-    | TypeSnowflake
-    | TypeOauth
-    | TypeApiKey
-    | TypeSnowflakeWif
-    | { [k: string]: any };
 };
 
 export const CreatedByEnvironment = {
@@ -305,13 +307,15 @@ export const CreatedByEnvironment = {
 } as const;
 export type CreatedByEnvironment = ClosedEnum<typeof CreatedByEnvironment>;
 
+export type CreatedByEnvironmentTarget = string | CreatedByEnvironment;
+
 /**
  * Principal that originally created the connector — either a Vercel user (interactive dashboard / CLI flow) or a Vercel deployment (OIDC-authenticated project, used by runtime auto-provisioning). See {@link ConnexPrincipal}. Optional: pre-existing rows from before this shape was introduced may carry no attribution at all.
  */
 export type CreatedBy2 = {
   type: "project";
   id: string;
-  environment: CreatedByEnvironment;
+  environment: string | CreatedByEnvironment;
 };
 
 /**
@@ -331,13 +335,15 @@ export const UpdatedByEnvironment = {
 } as const;
 export type UpdatedByEnvironment = ClosedEnum<typeof UpdatedByEnvironment>;
 
+export type UpdatedByEnvironmentTarget = string | UpdatedByEnvironment;
+
 /**
  * Principal that most recently mutated the connector. Same shape as {@link createdBy} but tracks the most recent updater, not the original creator. At create time the two fields point at the same principal; they diverge on the first subsequent update.
  */
 export type UpdatedBy2 = {
   type: "project";
   id: string;
-  environment: UpdatedByEnvironment;
+  environment: string | UpdatedByEnvironment;
 };
 
 /**
@@ -350,11 +356,24 @@ export type UpdatedBy1 = {
 
 export type UpdatedBy = UpdatedBy1 | UpdatedBy2;
 
+/**
+ * How the connector row was originally created. New create paths stamp this explicitly; older rows may omit it.
+ */
+export const CreationMode = {
+  Managed: "managed",
+  Manual: "manual",
+} as const;
+/**
+ * How the connector row was originally created. New create paths stamp this explicitly; older rows may omit it.
+ */
+export type CreationMode = ClosedEnum<typeof CreationMode>;
+
 export const CreateConnectorType = {
   ApiKey: "api-key",
   Custom: "custom",
   Github: "github",
   Linear: "linear",
+  MicrosoftEntra: "microsoft-entra",
   Oauth: "oauth",
   Salesforce: "salesforce",
   Slack: "slack",
@@ -406,13 +425,23 @@ export type Triggers = {
  */
 export type TriggerDestinations = {
   projectId: string;
+  /**
+   * Stable custom-environment ID to route this destination to. Mutually exclusive with `branch`; omitted destinations keep the legacy production behavior.
+   */
+  customEnvironmentId?: string | undefined;
   branch?: string | undefined;
   path?: string | undefined;
+};
+
+export type CreateConnectorCustomEnvironments = {
+  id: string;
+  slug: string;
 };
 
 export type CreateConnectorProject = {
   id: string;
   name: string;
+  customEnvironments?: Array<CreateConnectorCustomEnvironments> | undefined;
 };
 
 export const CreateConnectorEnvironments = {
@@ -424,11 +453,15 @@ export type CreateConnectorEnvironments = ClosedEnum<
   typeof CreateConnectorEnvironments
 >;
 
+export type CreateConnectorEnvironmentTarget =
+  | string
+  | CreateConnectorEnvironments;
+
 export type CreateConnectorItems = {
   clientId: string;
   projectId: string;
   project?: CreateConnectorProject | undefined;
-  environments: Array<CreateConnectorEnvironments>;
+  environments: Array<string | CreateConnectorEnvironments>;
   createdAt: number;
   updatedAt: number;
 };
@@ -458,8 +491,16 @@ export type CreateConnectorResponseBody = {
   createdAt: number;
   updatedAt: number;
   deletedAt?: number | undefined;
+  /**
+   * Time when this connector started requiring reinstallation because an installation-affecting app-token grant changed.
+   */
+  reinstallAt?: number | undefined;
   createdBy?: CreatedBy1 | CreatedBy2 | undefined;
   updatedBy?: UpdatedBy1 | UpdatedBy2 | undefined;
+  /**
+   * How the connector row was originally created. New create paths stamp this explicitly; older rows may omit it.
+   */
+  creationMode?: CreationMode | undefined;
   public: boolean;
   uid: string;
   type: CreateConnectorType;
@@ -527,7 +568,7 @@ export type CreateConnectorResponseBody = {
 
 /** @internal */
 export type TypeSnowflakeWif$Outbound = {
-  clientName: string;
+  clientName?: string | undefined;
   accountIdentifier?: string | undefined;
   extras?: { [k: string]: any } | undefined;
 };
@@ -538,7 +579,7 @@ export const TypeSnowflakeWif$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TypeSnowflakeWif
 > = z.object({
-  clientName: z.string(),
+  clientName: z.string().optional(),
   accountIdentifier: z.string().optional(),
   extras: z.record(z.any()).optional(),
 });
@@ -553,7 +594,7 @@ export function typeSnowflakeWifToJSON(
 
 /** @internal */
 export type TypeSnowflake$Outbound = {
-  clientName: string;
+  clientName?: string | undefined;
   accountIdentifier: string;
   defaultSessionRole?: string | undefined;
   extras?: { [k: string]: any } | undefined;
@@ -565,7 +606,7 @@ export const TypeSnowflake$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TypeSnowflake
 > = z.object({
-  clientName: z.string(),
+  clientName: z.string().optional(),
   accountIdentifier: z.string(),
   defaultSessionRole: z.string().optional(),
   extras: z.record(z.any()).optional(),
@@ -1128,6 +1169,26 @@ export function clientCredentialsToJSON(
 }
 
 /** @internal */
+export type ForwardedClaims$Outbound = {
+  idToken?: Array<string> | undefined;
+};
+
+/** @internal */
+export const ForwardedClaims$outboundSchema: z.ZodType<
+  ForwardedClaims$Outbound,
+  z.ZodTypeDef,
+  ForwardedClaims
+> = z.object({
+  idToken: z.array(z.string()).optional(),
+});
+
+export function forwardedClaimsToJSON(
+  forwardedClaims: ForwardedClaims,
+): string {
+  return JSON.stringify(ForwardedClaims$outboundSchema.parse(forwardedClaims));
+}
+
+/** @internal */
 export type JwtBearer$Outbound = {
   enabled?: boolean | undefined;
   scopes?: Array<string> | undefined;
@@ -1165,13 +1226,14 @@ export type TypeOauth$Outbound = {
   serverConfig?: ServerConfig$Outbound | undefined;
   clientId: string;
   clientSecret?: string | undefined;
-  tokenEndpointAuthMethod: string;
+  tokenEndpointAuthMethod?: string | undefined;
   responseType?: string | undefined;
   pkceRequired?: boolean | undefined;
   codeChallengeMethod?: string | undefined;
   userAuthorization?: UserAuthorization$Outbound | undefined;
   refreshTokens?: RefreshTokens$Outbound | undefined;
   clientCredentials?: ClientCredentials$Outbound | undefined;
+  forwardedClaims?: ForwardedClaims$Outbound | undefined;
   defaultAudience?: string | undefined;
   authorizationUrlParams?: { [k: string]: string } | undefined;
   jwtBearer?: JwtBearer$Outbound | undefined;
@@ -1187,13 +1249,14 @@ export const TypeOauth$outboundSchema: z.ZodType<
   serverConfig: z.lazy(() => ServerConfig$outboundSchema).optional(),
   clientId: z.string(),
   clientSecret: z.string().optional(),
-  tokenEndpointAuthMethod: z.string().default("client_secret_post"),
+  tokenEndpointAuthMethod: z.string().optional(),
   responseType: z.string().optional(),
   pkceRequired: z.boolean().optional(),
   codeChallengeMethod: z.string().optional(),
   userAuthorization: z.lazy(() => UserAuthorization$outboundSchema).optional(),
   refreshTokens: z.lazy(() => RefreshTokens$outboundSchema).optional(),
   clientCredentials: z.lazy(() => ClientCredentials$outboundSchema).optional(),
+  forwardedClaims: z.lazy(() => ForwardedClaims$outboundSchema).optional(),
   defaultAudience: z.string().optional(),
   authorizationUrlParams: z.record(z.string()).optional(),
   jwtBearer: z.lazy(() => JwtBearer$outboundSchema).optional(),
@@ -1209,9 +1272,9 @@ export type CreateConnectorData$Outbound =
   | TypeSlack$Outbound
   | TypeSalesforce$Outbound
   | TypeLinear$Outbound
-  | TypeSnowflake$Outbound
   | TypeOauth$Outbound
   | TypeApiKey$Outbound
+  | TypeSnowflake$Outbound
   | TypeSnowflakeWif$Outbound
   | { [k: string]: any };
 
@@ -1225,9 +1288,9 @@ export const CreateConnectorData$outboundSchema: z.ZodType<
   z.lazy(() => TypeSlack$outboundSchema),
   z.lazy(() => TypeSalesforce$outboundSchema),
   z.lazy(() => TypeLinear$outboundSchema),
-  z.lazy(() => TypeSnowflake$outboundSchema),
   z.lazy(() => TypeOauth$outboundSchema),
   z.lazy(() => TypeApiKey$outboundSchema),
+  z.lazy(() => TypeSnowflake$outboundSchema),
   z.lazy(() => TypeSnowflakeWif$outboundSchema),
   z.record(z.any()),
 ]);
@@ -1242,6 +1305,19 @@ export function createConnectorDataToJSON(
 
 /** @internal */
 export type CreateConnectorRequestBody$Outbound = {
+  data:
+    | TypeGithub$Outbound
+    | TypeSlack$Outbound
+    | TypeSalesforce$Outbound
+    | TypeLinear$Outbound
+    | TypeOauth$Outbound
+    | TypeApiKey$Outbound
+    | TypeSnowflake$Outbound
+    | TypeSnowflakeWif$Outbound
+    | { [k: string]: any };
+  icon?: string | undefined;
+  backgroundColor?: string | undefined;
+  accentColor?: string | undefined;
   type: string;
   service?: string | undefined;
   uid?: string | undefined;
@@ -1250,19 +1326,6 @@ export type CreateConnectorRequestBody$Outbound = {
   environments?: Array<string> | undefined;
   triggers?: boolean | undefined;
   events?: Array<string> | undefined;
-  icon?: string | undefined;
-  backgroundColor?: string | undefined;
-  accentColor?: string | undefined;
-  data:
-    | TypeGithub$Outbound
-    | TypeSlack$Outbound
-    | TypeSalesforce$Outbound
-    | TypeLinear$Outbound
-    | TypeSnowflake$Outbound
-    | TypeOauth$Outbound
-    | TypeApiKey$Outbound
-    | TypeSnowflakeWif$Outbound
-    | { [k: string]: any };
 };
 
 /** @internal */
@@ -1271,6 +1334,20 @@ export const CreateConnectorRequestBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateConnectorRequestBody
 > = z.object({
+  data: smartUnion([
+    z.lazy(() => TypeGithub$outboundSchema),
+    z.lazy(() => TypeSlack$outboundSchema),
+    z.lazy(() => TypeSalesforce$outboundSchema),
+    z.lazy(() => TypeLinear$outboundSchema),
+    z.lazy(() => TypeOauth$outboundSchema),
+    z.lazy(() => TypeApiKey$outboundSchema),
+    z.lazy(() => TypeSnowflake$outboundSchema),
+    z.lazy(() => TypeSnowflakeWif$outboundSchema),
+    z.record(z.any()),
+  ]),
+  icon: z.string().optional(),
+  backgroundColor: z.string().optional(),
+  accentColor: z.string().optional(),
   type: z.string(),
   service: z.string().optional(),
   uid: z.string().optional(),
@@ -1279,20 +1356,6 @@ export const CreateConnectorRequestBody$outboundSchema: z.ZodType<
   environments: z.array(z.string()).optional(),
   triggers: z.boolean().optional(),
   events: z.array(z.string()).optional(),
-  icon: z.string().optional(),
-  backgroundColor: z.string().optional(),
-  accentColor: z.string().optional(),
-  data: smartUnion([
-    z.lazy(() => TypeGithub$outboundSchema),
-    z.lazy(() => TypeSlack$outboundSchema),
-    z.lazy(() => TypeSalesforce$outboundSchema),
-    z.lazy(() => TypeLinear$outboundSchema),
-    z.lazy(() => TypeSnowflake$outboundSchema),
-    z.lazy(() => TypeOauth$outboundSchema),
-    z.lazy(() => TypeApiKey$outboundSchema),
-    z.lazy(() => TypeSnowflakeWif$outboundSchema),
-    z.record(z.any()),
-  ]),
 });
 
 export function createConnectorRequestBodyToJSON(
@@ -1309,6 +1372,23 @@ export const CreatedByEnvironment$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(CreatedByEnvironment);
 
 /** @internal */
+export const CreatedByEnvironmentTarget$inboundSchema: z.ZodType<
+  CreatedByEnvironmentTarget,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), CreatedByEnvironment$inboundSchema]);
+
+export function createdByEnvironmentTargetFromJSON(
+  jsonString: string,
+): SafeParseResult<CreatedByEnvironmentTarget, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreatedByEnvironmentTarget$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreatedByEnvironmentTarget' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreatedBy2$inboundSchema: z.ZodType<
   CreatedBy2,
   z.ZodTypeDef,
@@ -1316,7 +1396,7 @@ export const CreatedBy2$inboundSchema: z.ZodType<
 > = z.object({
   type: types.literal("project"),
   id: types.string(),
-  environment: CreatedByEnvironment$inboundSchema,
+  environment: smartUnion([types.string(), CreatedByEnvironment$inboundSchema]),
 });
 
 export function createdBy2FromJSON(
@@ -1375,6 +1455,23 @@ export const UpdatedByEnvironment$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(UpdatedByEnvironment);
 
 /** @internal */
+export const UpdatedByEnvironmentTarget$inboundSchema: z.ZodType<
+  UpdatedByEnvironmentTarget,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), UpdatedByEnvironment$inboundSchema]);
+
+export function updatedByEnvironmentTargetFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdatedByEnvironmentTarget, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdatedByEnvironmentTarget$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdatedByEnvironmentTarget' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdatedBy2$inboundSchema: z.ZodType<
   UpdatedBy2,
   z.ZodTypeDef,
@@ -1382,7 +1479,7 @@ export const UpdatedBy2$inboundSchema: z.ZodType<
 > = z.object({
   type: types.literal("project"),
   id: types.string(),
-  environment: UpdatedByEnvironment$inboundSchema,
+  environment: smartUnion([types.string(), UpdatedByEnvironment$inboundSchema]),
 });
 
 export function updatedBy2FromJSON(
@@ -1434,6 +1531,10 @@ export function updatedByFromJSON(
     `Failed to parse 'UpdatedBy' from JSON`,
   );
 }
+
+/** @internal */
+export const CreationMode$inboundSchema: z.ZodNativeEnum<typeof CreationMode> =
+  z.nativeEnum(CreationMode);
 
 /** @internal */
 export const CreateConnectorType$inboundSchema: z.ZodNativeEnum<
@@ -1515,6 +1616,7 @@ export const TriggerDestinations$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   projectId: types.string(),
+  customEnvironmentId: types.optional(types.string()),
   branch: types.optional(types.string()),
   path: types.optional(types.string()),
 });
@@ -1530,6 +1632,26 @@ export function triggerDestinationsFromJSON(
 }
 
 /** @internal */
+export const CreateConnectorCustomEnvironments$inboundSchema: z.ZodType<
+  CreateConnectorCustomEnvironments,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: types.string(),
+  slug: types.string(),
+});
+
+export function createConnectorCustomEnvironmentsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateConnectorCustomEnvironments, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateConnectorCustomEnvironments$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateConnectorCustomEnvironments' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateConnectorProject$inboundSchema: z.ZodType<
   CreateConnectorProject,
   z.ZodTypeDef,
@@ -1537,6 +1659,9 @@ export const CreateConnectorProject$inboundSchema: z.ZodType<
 > = z.object({
   id: types.string(),
   name: types.string(),
+  customEnvironments: types.optional(
+    z.array(z.lazy(() => CreateConnectorCustomEnvironments$inboundSchema)),
+  ),
 });
 
 export function createConnectorProjectFromJSON(
@@ -1555,6 +1680,23 @@ export const CreateConnectorEnvironments$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(CreateConnectorEnvironments);
 
 /** @internal */
+export const CreateConnectorEnvironmentTarget$inboundSchema: z.ZodType<
+  CreateConnectorEnvironmentTarget,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), CreateConnectorEnvironments$inboundSchema]);
+
+export function createConnectorEnvironmentTargetFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateConnectorEnvironmentTarget, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateConnectorEnvironmentTarget$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateConnectorEnvironmentTarget' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateConnectorItems$inboundSchema: z.ZodType<
   CreateConnectorItems,
   z.ZodTypeDef,
@@ -1563,7 +1705,9 @@ export const CreateConnectorItems$inboundSchema: z.ZodType<
   clientId: types.string(),
   projectId: types.string(),
   project: types.optional(z.lazy(() => CreateConnectorProject$inboundSchema)),
-  environments: z.array(CreateConnectorEnvironments$inboundSchema),
+  environments: z.array(
+    smartUnion([types.string(), CreateConnectorEnvironments$inboundSchema]),
+  ),
   createdAt: types.number(),
   updatedAt: types.number(),
 });
@@ -1629,6 +1773,7 @@ export const CreateConnectorResponseBody$inboundSchema: z.ZodType<
   createdAt: types.number(),
   updatedAt: types.number(),
   deletedAt: types.optional(types.number()),
+  reinstallAt: types.optional(types.number()),
   createdBy: types.optional(
     z.union([
       z.lazy(() => CreatedBy1$inboundSchema),
@@ -1641,6 +1786,7 @@ export const CreateConnectorResponseBody$inboundSchema: z.ZodType<
       z.lazy(() => UpdatedBy2$inboundSchema),
     ]),
   ),
+  creationMode: types.optional(CreationMode$inboundSchema),
   public: types.boolean(),
   uid: types.string(),
   type: CreateConnectorType$inboundSchema,

@@ -10,14 +10,15 @@ import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
- * Whether the manifest is a multi-platform image index or a single-platform image manifest.
+ * Whether the manifest is a multi-platform image index, a single-platform image manifest or an attestation.
  */
 export const VcrTagKind = {
+  Attestation: "attestation",
   Index: "index",
   Manifest: "manifest",
 } as const;
 /**
- * Whether the manifest is a multi-platform image index or a single-platform image manifest.
+ * Whether the manifest is a multi-platform image index, a single-platform image manifest or an attestation.
  */
 export type VcrTagKind = ClosedEnum<typeof VcrTagKind>;
 
@@ -51,7 +52,7 @@ export type VcrTag = {
    */
   imageId: string;
   /**
-   * Whether the manifest is a multi-platform image index or a single-platform image manifest.
+   * Whether the manifest is a multi-platform image index, a single-platform image manifest or an attestation.
    */
   kind: VcrTagKind;
   /**

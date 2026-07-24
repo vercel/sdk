@@ -1,6 +1,6 @@
 # UpdateFirewallConfigRequestBody4
 
-Remove a custom rule
+Set the action for a consumed ruleset (project scope)
 
 ## Example Usage
 
@@ -10,6 +10,9 @@ import { UpdateFirewallConfigRequestBody4 } from "@vercel/sdk/models/updatefirew
 let value: UpdateFirewallConfigRequestBody4 = {
   action: "rules.remove",
   id: "<id>",
+  value: {
+    action: "log",
+  },
 };
 ```
 
@@ -19,4 +22,4 @@ let value: UpdateFirewallConfigRequestBody4 = {
 | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | `action`                                                                                                                           | [models.UpdateFirewallConfigRequestBodySecurityRequest4Action](../models/updatefirewallconfigrequestbodysecurityrequest4action.md) | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
 | `id`                                                                                                                               | *string*                                                                                                                           | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
-| `value`                                                                                                                            | *any*                                                                                                                              | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |
+| `value`                                                                                                                            | [models.UpdateFirewallConfigRequestBodySecurityValue](../models/updatefirewallconfigrequestbodysecurityvalue.md)                   | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |

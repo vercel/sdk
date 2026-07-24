@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentHas1 } from "@vercel/sdk/models/canceldeploymentservicesdeploymentsfunctions.js";
+import { CancelDeploymentHas1 } from "@vercel/sdk/models/canceldeploymentgitrepoownertype.js";
 
 let value: CancelDeploymentHas1 = {
   type: "host",
@@ -13,7 +13,7 @@ let value: CancelDeploymentHas1 = {
 
 ## Fields
 
-| Field                             | Type                              | Required                          | Description                       |
-| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
-| `type`                            | *"host"*                          | :heavy_check_mark:                | N/A                               |
-| `value`                           | *models.CancelDeploymentHasValue* | :heavy_check_mark:                | N/A                               |
+| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `type`                                                                                     | *"host"*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `value`                                                                                    | *models.CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServicesValue* | :heavy_check_mark:                                                                         | N/A                                                                                        |

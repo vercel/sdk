@@ -3,19 +3,19 @@
 
 ## Supported Types
 
-### `models.CreateDeploymentRoutes1`
+### `models.CancelDeploymentRoutes1`
 
 ```typescript
-const value: models.CreateDeploymentRoutes1 = {
+const value: models.CancelDeploymentRoutes1 = {
   src: "<value>",
 };
 ```
 
-### `models.CreateDeploymentRoutes2`
+### `models.CancelDeploymentRoutes2`
 
 ```typescript
-const value: models.CreateDeploymentRoutes2 = {
-  handle: "miss",
+const value: models.CancelDeploymentRoutes2 = {
+  handle: "rewrite",
 };
 ```
 

@@ -5,7 +5,7 @@ Environment to apply sampling to
 ## Example Usage
 
 ```typescript
-import { UpdateProjectEnv } from "@vercel/sdk/models/updateprojectprojectsbranchmatcher.js";
+import { UpdateProjectEnv } from "@vercel/sdk/models/updateprojectbranchmatcher.js";
 
 let value: UpdateProjectEnv = "production";
 ```

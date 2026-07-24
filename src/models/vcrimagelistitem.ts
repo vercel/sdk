@@ -23,14 +23,15 @@ export const VcrImageListItemStatus = {
 export type VcrImageListItemStatus = ClosedEnum<typeof VcrImageListItemStatus>;
 
 /**
- * Whether the manifest is a multi-platform image index or a single-platform image manifest.
+ * Whether the manifest is a multi-platform image index, a single-platform image manifest or an attestation.
  */
 export const VcrImageListItemKind = {
+  Attestation: "attestation",
   Index: "index",
   Manifest: "manifest",
 } as const;
 /**
- * Whether the manifest is a multi-platform image index or a single-platform image manifest.
+ * Whether the manifest is a multi-platform image index, a single-platform image manifest or an attestation.
  */
 export type VcrImageListItemKind = ClosedEnum<typeof VcrImageListItemKind>;
 
@@ -80,7 +81,7 @@ export type VcrImageListItem = {
    */
   manifestDigest: string;
   /**
-   * Whether the manifest is a multi-platform image index or a single-platform image manifest.
+   * Whether the manifest is a multi-platform image index, a single-platform image manifest or an attestation.
    */
   kind: VcrImageListItemKind;
   /**

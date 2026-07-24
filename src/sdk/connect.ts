@@ -3,22 +3,17 @@
  */
 
 import { connectCreateConnector } from "../funcs/connectCreateConnector.js";
-import { connectCreateConnectorAuthorizationRequest } from "../funcs/connectCreateConnectorAuthorizationRequest.js";
-import { connectGetConnectorToken } from "../funcs/connectGetConnectorToken.js";
+import { connectCreateConnectorInstallationRequest } from "../funcs/connectCreateConnectorInstallationRequest.js";
 import { connectImportConnectorTokens } from "../funcs/connectImportConnectorTokens.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import {
-  CreateConnectorAuthorizationRequestRequest,
-  CreateConnectorAuthorizationRequestResponseBody,
-} from "../models/createconnectorauthorizationrequestop.js";
+  CreateConnectorInstallationRequestRequest,
+  CreateConnectorInstallationRequestResponseBody,
+} from "../models/createconnectorinstallationrequestop.js";
 import {
   CreateConnectorRequestBody,
   CreateConnectorResponseBody,
 } from "../models/createconnectorop.js";
-import {
-  GetConnectorTokenRequest,
-  GetConnectorTokenResponseBody,
-} from "../models/getconnectortokenop.js";
 import {
   ImportConnectorTokensRequest,
   ImportConnectorTokensResponseBody,
@@ -44,23 +39,6 @@ export class Connect extends ClientSDK {
   }
 
   /**
-   * Get a Connect token
-   *
-   * @remarks
-   * Get an access token for a connector identified by the path parameter and scoped to the requester.
-   */
-  async getConnectorToken(
-    request: GetConnectorTokenRequest,
-    options?: RequestOptions,
-  ): Promise<GetConnectorTokenResponseBody> {
-    return unwrapAsync(connectGetConnectorToken(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
    * Import Connect tokens
    *
    * @remarks
@@ -78,16 +56,16 @@ export class Connect extends ClientSDK {
   }
 
   /**
-   * Create a Connect authorization request
+   * Create a Connect installation request
    *
    * @remarks
-   * Create an authorization request for a connector and return the URL and verifier details needed to complete the flow.
+   * Create an installation request for a connector and return the URL and verifier details needed to complete the flow.
    */
-  async createConnectorAuthorizationRequest(
-    request: CreateConnectorAuthorizationRequestRequest,
+  async createConnectorInstallationRequest(
+    request: CreateConnectorInstallationRequestRequest,
     options?: RequestOptions,
-  ): Promise<CreateConnectorAuthorizationRequestResponseBody> {
-    return unwrapAsync(connectCreateConnectorAuthorizationRequest(
+  ): Promise<CreateConnectorInstallationRequestResponseBody> {
+    return unwrapAsync(connectCreateConnectorInstallationRequest(
       this,
       request,
       options,

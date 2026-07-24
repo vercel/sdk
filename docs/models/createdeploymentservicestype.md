@@ -5,11 +5,11 @@
 ```typescript
 import { CreateDeploymentServicesType } from "@vercel/sdk/models/createdeploymentresponsebody.js";
 
-let value: CreateDeploymentServicesType = "service-ref";
+let value: CreateDeploymentServicesType = "web";
 ```
 
 ## Values
 
 ```typescript
-"service-ref"
+"cron" | "job" | "web" | "worker"
 ```

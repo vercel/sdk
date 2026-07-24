@@ -35,3 +35,22 @@ const value: models.GetDeploymentEventsResponseBodyDeployments2 = {
 };
 ```
 
+### `models.GetDeploymentEventsResponseBodyDeployments3`
+
+```typescript
+const value: models.GetDeploymentEventsResponseBodyDeployments3 = {
+  type: "alias-assigned",
+  deploymentId: "<id>",
+  date: 7833.06,
+  alias: [],
+  aliasError: {
+    code: "<value>",
+    message: "<value>",
+  },
+  aliasWarning: {
+    code: "<value>",
+    message: "<value>",
+  },
+};
+```
+

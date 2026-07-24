@@ -1,17 +1,17 @@
 # CreateDeploymentCustomEnvironmentType
 
-The type of matching to perform
+The type of environment (production, preview, or development)
 
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentCustomEnvironmentType } from "@vercel/sdk/models/createdeploymentvaluedeployments2.js";
+import { CreateDeploymentCustomEnvironmentType } from "@vercel/sdk/models/createdeploymentvaluedeploymentsresponse2.js";
 
-let value: CreateDeploymentCustomEnvironmentType = "equals";
+let value: CreateDeploymentCustomEnvironmentType = "preview";
 ```
 
 ## Values
 
 ```typescript
-"endsWith" | "equals" | "startsWith"
+"development" | "preview" | "production"
 ```

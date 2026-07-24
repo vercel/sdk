@@ -3,18 +3,18 @@
 
 ## Supported Types
 
-### `models.SubjectTypeApp`
+### `models.Subject1`
 
 ```typescript
-const value: models.SubjectTypeApp = {
+const value: models.Subject1 = {
   type: "app",
 };
 ```
 
-### `models.SubjectTypeUser`
+### `models.Subject2`
 
 ```typescript
-const value: models.SubjectTypeUser = {
+const value: models.Subject2 = {
   type: "user",
   id: "<id>",
 };

@@ -18,7 +18,7 @@ import {
 import {
   GetProjectsRequest,
   GetProjectsRequest$outboundSchema,
-} from "../models/getprojectsresponsebodyprojectsresponse200applicationjson3projectsreadysubstate.js";
+} from "../models/getprojectsresponsebodyprojectsresponse200applicationjsondeploymenttype.js";
 import {
   ConnectionError,
   InvalidRequestError,
@@ -180,7 +180,7 @@ async function $do(
     | SDKValidationError
   >(
     M.json(200, GetProjectsResponseBody$inboundSchema),
-    M.fail([400, 401, 403, "4XX"]),
+    M.fail([400, 401, 403, 410, "4XX"]),
     M.fail("5XX"),
   )(response, req);
   if (!result.ok) {

@@ -3,6 +3,7 @@
  */
 
 import { certsGetCertById } from "../funcs/certsGetCertById.js";
+import { certsGetCerts } from "../funcs/certsGetCerts.js";
 import { certsIssueCert } from "../funcs/certsIssueCert.js";
 import { certsRemoveCert } from "../funcs/certsRemoveCert.js";
 import { certsUploadCert } from "../funcs/certsUploadCert.js";
@@ -11,6 +12,7 @@ import {
   GetCertByIdRequest,
   GetCertByIdResponseBody,
 } from "../models/getcertbyidop.js";
+import { GetCertsRequest, GetCertsResponseBody } from "../models/getcertsop.js";
 import {
   IssueCertRequest,
   IssueCertResponseBody,
@@ -54,6 +56,23 @@ export class Certs extends ClientSDK {
     options?: RequestOptions,
   ): Promise<RemoveCertResponseBody> {
     return unwrapAsync(certsRemoveCert(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get certs
+   *
+   * @remarks
+   * Get certs
+   */
+  async getCerts(
+    request: GetCertsRequest,
+    options?: RequestOptions,
+  ): Promise<GetCertsResponseBody> {
+    return unwrapAsync(certsGetCerts(
       this,
       request,
       options,

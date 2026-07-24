@@ -5,7 +5,7 @@ Machine type that was used for the build.
 ## Example Usage
 
 ```typescript
-import { ResponseBodyPurchaseType } from "@vercel/sdk/models/getdeploymentresponsebody.js";
+import { ResponseBodyPurchaseType } from "@vercel/sdk/models/createdeploymentresponsebody.js";
 
 let value: ResponseBodyPurchaseType = "enhanced";
 ```
@@ -13,5 +13,5 @@ let value: ResponseBodyPurchaseType = "enhanced";
 ## Values
 
 ```typescript
-"enhanced" | "standard" | "turbo"
+"basic" | "enhanced" | "standard" | "turbo"
 ```

@@ -13,7 +13,7 @@ let value: CreateDeploymentMissingDeployments1 = {
 
 ## Fields
 
-| Field                                                       | Type                                                        | Required                                                    | Description                                                 |
-| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
-| `type`                                                      | *"host"*                                                    | :heavy_check_mark:                                          | N/A                                                         |
-| `value`                                                     | *models.CreateDeploymentMissingDeploymentsResponse200Value* | :heavy_check_mark:                                          | N/A                                                         |
+| Field                                                    | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `type`                                                   | *"host"*                                                 | :heavy_check_mark:                                       | N/A                                                      |
+| `value`                                                  | *models.CreateDeploymentMissingDeploymentsResponseValue* | :heavy_check_mark:                                       | N/A                                                      |

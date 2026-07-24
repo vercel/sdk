@@ -120,6 +120,10 @@ export type NamedSandbox = {
    */
   runtime?: string | undefined;
   /**
+   * Digest-pinned reference of the container image the sandbox was created from, when it was created from an image ("{repository}@{manifestDigest}").
+   */
+  image?: string | undefined;
+  /**
    * Timeout in milliseconds.
    */
   timeout?: number | undefined;
@@ -171,6 +175,10 @@ export type NamedSandbox = {
    * The time when the named sandbox was last updated, in milliseconds since the epoch.
    */
   updatedAt: number;
+  /**
+   * The time at which the currently running sandbox will time out, in milliseconds since the epoch. Only present while a session is running.
+   */
+  expiresAt?: number | undefined;
 };
 
 /** @internal */
@@ -264,6 +272,7 @@ export const NamedSandbox$inboundSchema: z.ZodType<
   vcpus: types.optional(types.number()),
   memory: types.optional(types.number()),
   runtime: types.optional(types.string()),
+  image: types.optional(types.string()),
   timeout: types.optional(types.number()),
   snapshotExpiration: types.optional(types.number()),
   keepLastSnapshots: types.optional(
@@ -279,6 +288,7 @@ export const NamedSandbox$inboundSchema: z.ZodType<
   mounts: types.optional(z.record(z.lazy(() => Mounts$inboundSchema))),
   createdAt: types.number(),
   updatedAt: types.number(),
+  expiresAt: types.optional(types.number()),
 });
 
 export function namedSandboxFromJSON(

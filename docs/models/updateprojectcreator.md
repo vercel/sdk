@@ -1,23 +1,53 @@
 # UpdateProjectCreator
 
-## Example Usage
+
+## Supported Types
+
+### `models.UpdateProjectCreator1`
 
 ```typescript
-import { UpdateProjectCreator } from "@vercel/sdk/models/updateprojectblock.js";
-
-let value: UpdateProjectCreator = {
-  email: "Jakob_Reinger-Barton93@hotmail.com",
-  uid: "<id>",
-  username: "Ambrose_Wolff55",
+const value: models.UpdateProjectCreator1 = {
+  type: "user",
+  via: {
+    type: "app",
+    app: {
+      id: "<id>",
+    },
+  },
+  user: {
+    id: "<id>",
+  },
 };
 ```
 
-## Fields
+### `models.UpdateProjectCreator2`
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `email`            | *string*           | :heavy_check_mark: | N/A                |
-| `githubLogin`      | *string*           | :heavy_minus_sign: | N/A                |
-| `gitlabLogin`      | *string*           | :heavy_minus_sign: | N/A                |
-| `uid`              | *string*           | :heavy_check_mark: | N/A                |
-| `username`         | *string*           | :heavy_check_mark: | N/A                |
+```typescript
+const value: models.UpdateProjectCreator2 = {
+  type: "app",
+  app: {
+    id: "<id>",
+  },
+};
+```
+
+### `models.UpdateProjectCreator3`
+
+```typescript
+const value: models.UpdateProjectCreator3 = {
+  type: "integration",
+  integration: {
+    integrationId: "<id>",
+    configurationId: "<id>",
+  },
+};
+```
+
+### `models.UpdateProjectCreator4`
+
+```typescript
+const value: models.UpdateProjectCreator4 = {
+  type: "system",
+};
+```
+

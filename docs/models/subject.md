@@ -3,35 +3,20 @@
 
 ## Supported Types
 
-### `models.TypeApp`
+### `models.SubjectTypeApp`
 
 ```typescript
-const value: models.TypeApp = {
+const value: models.SubjectTypeApp = {
   type: "app",
 };
 ```
 
-### `models.TypeUser`
+### `models.SubjectTypeUser`
 
 ```typescript
-const value: models.TypeUser = {
+const value: models.SubjectTypeUser = {
   type: "user",
-};
-```
-
-### `models.TypeJwtBearer`
-
-```typescript
-const value: models.TypeJwtBearer = {
-  type: "jwt-bearer",
-};
-```
-
-### `models.TypeOther`
-
-```typescript
-const value: models.TypeOther = {
-  type: "<value>",
+  id: "<id>",
 };
 ```
 

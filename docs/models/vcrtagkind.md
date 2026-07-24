@@ -1,6 +1,6 @@
 # VcrTagKind
 
-Whether the manifest is a multi-platform image index or a single-platform image manifest.
+Whether the manifest is a multi-platform image index, a single-platform image manifest or an attestation.
 
 ## Example Usage
 
@@ -13,5 +13,5 @@ let value: VcrTagKind = "index";
 ## Values
 
 ```typescript
-"index" | "manifest"
+"attestation" | "index" | "manifest"
 ```

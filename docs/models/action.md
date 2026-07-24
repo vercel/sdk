@@ -3,13 +3,14 @@
 ## Example Usage
 
 ```typescript
-import { Action } from "@vercel/sdk/models/action.js";
+import { Action } from "@vercel/sdk/models/aigatewayrule.js";
 
-let value: Action = "updated";
+let value: Action = {};
 ```
 
-## Values
+## Fields
 
-```typescript
-"archived" | "created" | "deleted" | "unarchived" | "updated"
-```
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `rewriteModel`     | *string*           | :heavy_minus_sign: | N/A                |
+| `reason`           | *string*           | :heavy_minus_sign: | N/A                |

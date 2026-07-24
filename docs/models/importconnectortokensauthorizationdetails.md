@@ -5,12 +5,13 @@
 ```typescript
 import { ImportConnectorTokensAuthorizationDetails } from "@vercel/sdk/models/importconnectortokensop.js";
 
-let value: ImportConnectorTokensAuthorizationDetails = {};
+let value: ImportConnectorTokensAuthorizationDetails = {
+  type: "<value>",
+};
 ```
 
 ## Fields
 
-| Field                  | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `type`                 | *string*               | :heavy_minus_sign:     | N/A                    |
-| `additionalProperties` | Record<string, *any*>  | :heavy_minus_sign:     | N/A                    |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `type`             | *string*           | :heavy_check_mark: | N/A                |

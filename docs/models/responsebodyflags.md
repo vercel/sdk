@@ -3,21 +3,19 @@
 
 ## Supported Types
 
-### `models.GetDeploymentFlags1`
+### `models.CreateDeploymentFlags1`
 
 ```typescript
-const value: models.GetDeploymentFlags1 = {
+const value: models.CreateDeploymentFlags1 = {
   definitions: {
     "key": {},
   },
 };
 ```
 
-### `models.GetDeploymentFlags2[]`
+### `models.CreateDeploymentFlags2[]`
 
 ```typescript
-const value: models.GetDeploymentFlags2[] = [
-  {},
-];
+const value: models.CreateDeploymentFlags2[] = [];
 ```
 

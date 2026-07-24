@@ -9,9 +9,9 @@
 const value: string = "<value>";
 ```
 
-### `models.CancelDeploymentKey2`
+### `models.AddRouteKey2`
 
 ```typescript
-const value: models.CancelDeploymentKey2 = {};
+const value: models.AddRouteKey2 = {};
 ```
 

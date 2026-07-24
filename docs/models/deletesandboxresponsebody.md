@@ -16,6 +16,8 @@ let value: DeleteSandboxResponseBody = {
     vcpus: 2,
     memory: 1024,
     runtime: "node22",
+    image:
+      "my-repo@sha256:2c4e8f9a1b3d5e7f091a2b3c4d5e6f708192a3b4c5d6e7f8091a2b3c4d5e6f708",
     timeout: 300000,
     snapshotExpiration: 604800000,
     keepLastSnapshots: {
@@ -34,6 +36,7 @@ let value: DeleteSandboxResponseBody = {
     },
     createdAt: 1750344501629,
     updatedAt: 1750344501629,
+    expiresAt: 1750344801629,
   },
 };
 ```

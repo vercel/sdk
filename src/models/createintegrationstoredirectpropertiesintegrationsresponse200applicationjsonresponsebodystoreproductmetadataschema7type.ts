@@ -161,6 +161,7 @@ export const CreateIntegrationStoreDirectFramework = {
   Sveltekit: "sveltekit",
   Sveltekit1: "sveltekit-1",
   TanstackStart: "tanstack-start",
+  TanstackStartLovable: "tanstack-start-lovable",
   Umijs: "umijs",
   Vite: "vite",
   Vitepress: "vitepress",
@@ -205,28 +206,36 @@ export type CreateIntegrationStoreDirectProjectsMetadata = {
   makeEnvVarsSensitive?: boolean | undefined;
 };
 
-export const Providers2 = {
+export const CreateIntegrationStoreDirectProviders2 = {
   Wildcard: "*",
 } as const;
-export type Providers2 = ClosedEnum<typeof Providers2>;
+export type CreateIntegrationStoreDirectProviders2 = ClosedEnum<
+  typeof CreateIntegrationStoreDirectProviders2
+>;
 
-export const Providers1 = {
+export const CreateIntegrationStoreDirectProviders1 = {
   Bitbucket: "bitbucket",
   Github: "github",
   Gitlab: "gitlab",
 } as const;
-export type Providers1 = ClosedEnum<typeof Providers1>;
+export type CreateIntegrationStoreDirectProviders1 = ClosedEnum<
+  typeof CreateIntegrationStoreDirectProviders1
+>;
 
-export type Providers = Array<Providers1> | Providers2;
+export type CreateIntegrationStoreDirectProviders =
+  | Array<CreateIntegrationStoreDirectProviders1>
+  | CreateIntegrationStoreDirectProviders2;
 
-export type Git = {
-  providers: Array<Providers1> | Providers2;
+export type CreateIntegrationStoreDirectGit = {
+  providers:
+    | Array<CreateIntegrationStoreDirectProviders1>
+    | CreateIntegrationStoreDirectProviders2;
   owners?: Array<string> | undefined;
   repos?: Array<string> | undefined;
 };
 
-export type ProjectFilter = {
-  git?: Git | undefined;
+export type CreateIntegrationStoreDirectProjectFilter = {
+  git?: CreateIntegrationStoreDirectGit | undefined;
 };
 
 export const CreateIntegrationStoreDirectStatus = {
@@ -559,12 +568,12 @@ export type CreateIntegrationStoreDirectProperties11 = {
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema11Type;
   uiControl:
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema11UiControl;
+  default?: string | undefined;
   enum?: Array<string> | undefined;
   maxLength?: number | undefined;
   minLength?: number | undefined;
   pattern?: string | undefined;
   description?: string | undefined;
-  default?: string | undefined;
   uiLabel?: string | undefined;
   uiReadOnly?:
     | CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties111
@@ -810,12 +819,12 @@ export type CreateIntegrationStoreDirectProperties10 = {
     | CreateIntegrationStoreDirectUiOptionsIntegrationsResponse3
     | string
   >;
+  default?: string | undefined;
   enum?: Array<string> | undefined;
   maxLength?: number | undefined;
   minLength?: number | undefined;
   pattern?: string | undefined;
   description?: string | undefined;
-  default?: string | undefined;
   uiLabel?: string | undefined;
   uiReadOnly?:
     | CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties1
@@ -864,12 +873,12 @@ export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applica
 export type CreateIntegrationStoreDirectPropertiesIntegrationsResponseItems = {
   type:
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema9Type;
+  default?: string | undefined;
   enum?: Array<string> | undefined;
   maxLength?: number | undefined;
   minLength?: number | undefined;
   pattern?: string | undefined;
   description?: string | undefined;
-  default?: string | undefined;
 };
 
 export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiControl =
@@ -1082,10 +1091,10 @@ export type CreateIntegrationStoreDirectProperties9 = {
     | CreateIntegrationStoreDirectUiOptionsIntegrations3
     | string
   >;
+  default?: Array<string> | undefined;
   maxItems?: number | undefined;
   minItems?: number | undefined;
   description?: string | undefined;
-  default?: Array<string> | undefined;
   uiLabel?: string | undefined;
   uiReadOnly?:
     | CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema1
@@ -1326,12 +1335,12 @@ export type CreateIntegrationStoreDirectProperties8 = {
     | CreateIntegrationStoreDirectUiOptions3
     | string
   >;
+  default?: string | undefined;
   enum?: Array<string> | undefined;
   maxLength?: number | undefined;
   minLength?: number | undefined;
   pattern?: string | undefined;
   description?: string | undefined;
-  default?: string | undefined;
   uiLabel?: string | undefined;
   uiReadOnly?:
     | CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProduct1
@@ -1601,67 +1610,86 @@ export function createIntegrationStoreDirectProjectsMetadataFromJSON(
 }
 
 /** @internal */
-export const Providers2$inboundSchema: z.ZodNativeEnum<typeof Providers2> = z
-  .nativeEnum(Providers2);
+export const CreateIntegrationStoreDirectProviders2$inboundSchema:
+  z.ZodNativeEnum<typeof CreateIntegrationStoreDirectProviders2> = z.nativeEnum(
+    CreateIntegrationStoreDirectProviders2,
+  );
 
 /** @internal */
-export const Providers1$inboundSchema: z.ZodNativeEnum<typeof Providers1> = z
-  .nativeEnum(Providers1);
+export const CreateIntegrationStoreDirectProviders1$inboundSchema:
+  z.ZodNativeEnum<typeof CreateIntegrationStoreDirectProviders1> = z.nativeEnum(
+    CreateIntegrationStoreDirectProviders1,
+  );
 
 /** @internal */
-export const Providers$inboundSchema: z.ZodType<
-  Providers,
+export const CreateIntegrationStoreDirectProviders$inboundSchema: z.ZodType<
+  CreateIntegrationStoreDirectProviders,
   z.ZodTypeDef,
   unknown
-> = smartUnion([z.array(Providers1$inboundSchema), Providers2$inboundSchema]);
+> = smartUnion([
+  z.array(CreateIntegrationStoreDirectProviders1$inboundSchema),
+  CreateIntegrationStoreDirectProviders2$inboundSchema,
+]);
 
-export function providersFromJSON(
+export function createIntegrationStoreDirectProvidersFromJSON(
   jsonString: string,
-): SafeParseResult<Providers, SDKValidationError> {
+): SafeParseResult<CreateIntegrationStoreDirectProviders, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Providers$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Providers' from JSON`,
+    (x) =>
+      CreateIntegrationStoreDirectProviders$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateIntegrationStoreDirectProviders' from JSON`,
   );
 }
 
 /** @internal */
-export const Git$inboundSchema: z.ZodType<Git, z.ZodTypeDef, unknown> = z
-  .object({
-    providers: smartUnion([
-      z.array(Providers1$inboundSchema),
-      Providers2$inboundSchema,
-    ]),
-    owners: types.optional(z.array(types.string())),
-    repos: types.optional(z.array(types.string())),
-  });
-
-export function gitFromJSON(
-  jsonString: string,
-): SafeParseResult<Git, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Git$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Git' from JSON`,
-  );
-}
-
-/** @internal */
-export const ProjectFilter$inboundSchema: z.ZodType<
-  ProjectFilter,
+export const CreateIntegrationStoreDirectGit$inboundSchema: z.ZodType<
+  CreateIntegrationStoreDirectGit,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  git: types.optional(z.lazy(() => Git$inboundSchema)),
+  providers: smartUnion([
+    z.array(CreateIntegrationStoreDirectProviders1$inboundSchema),
+    CreateIntegrationStoreDirectProviders2$inboundSchema,
+  ]),
+  owners: types.optional(z.array(types.string())),
+  repos: types.optional(z.array(types.string())),
 });
 
-export function projectFilterFromJSON(
+export function createIntegrationStoreDirectGitFromJSON(
   jsonString: string,
-): SafeParseResult<ProjectFilter, SDKValidationError> {
+): SafeParseResult<CreateIntegrationStoreDirectGit, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ProjectFilter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ProjectFilter' from JSON`,
+    (x) => CreateIntegrationStoreDirectGit$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateIntegrationStoreDirectGit' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateIntegrationStoreDirectProjectFilter$inboundSchema: z.ZodType<
+  CreateIntegrationStoreDirectProjectFilter,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  git: types.optional(
+    z.lazy(() => CreateIntegrationStoreDirectGit$inboundSchema),
+  ),
+});
+
+export function createIntegrationStoreDirectProjectFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateIntegrationStoreDirectProjectFilter,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateIntegrationStoreDirectProjectFilter$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateIntegrationStoreDirectProjectFilter' from JSON`,
   );
 }
 
@@ -2543,12 +2571,12 @@ export const CreateIntegrationStoreDirectProperties11$inboundSchema: z.ZodType<
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema11Type$inboundSchema,
   "ui:control":
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema11UiControl$inboundSchema,
+  default: types.optional(types.string()),
   enum: types.optional(z.array(types.string())),
   maxLength: types.optional(types.number()),
   minLength: types.optional(types.number()),
   pattern: types.optional(types.string()),
   description: types.optional(types.string()),
-  default: types.optional(types.string()),
   "ui:label": types.optional(types.string()),
   "ui:read-only": types.optional(
     smartUnion([
@@ -3291,12 +3319,12 @@ export const CreateIntegrationStoreDirectProperties10$inboundSchema: z.ZodType<
       types.string(),
     ]),
   ),
+  default: types.optional(types.string()),
   enum: types.optional(z.array(types.string())),
   maxLength: types.optional(types.number()),
   minLength: types.optional(types.number()),
   pattern: types.optional(types.string()),
   description: types.optional(types.string()),
-  default: types.optional(types.string()),
   "ui:label": types.optional(types.string()),
   "ui:read-only": types.optional(
     smartUnion([
@@ -3396,12 +3424,12 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponseItems$inb
   > = z.object({
     type:
       CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema9Type$inboundSchema,
+    default: types.optional(types.string()),
     enum: types.optional(z.array(types.string())),
     maxLength: types.optional(types.number()),
     minLength: types.optional(types.number()),
     pattern: types.optional(types.string()),
     description: types.optional(types.string()),
-    default: types.optional(types.string()),
   });
 
 export function createIntegrationStoreDirectPropertiesIntegrationsResponseItemsFromJSON(
@@ -4085,10 +4113,10 @@ export const CreateIntegrationStoreDirectProperties9$inboundSchema: z.ZodType<
       types.string(),
     ]),
   ),
+  default: types.optional(z.array(types.string())),
   maxItems: types.optional(types.number()),
   minItems: types.optional(types.number()),
   description: types.optional(types.string()),
-  default: types.optional(z.array(types.string())),
   "ui:label": types.optional(types.string()),
   "ui:read-only": types.optional(
     smartUnion([
@@ -4815,12 +4843,12 @@ export const CreateIntegrationStoreDirectProperties8$inboundSchema: z.ZodType<
       types.string(),
     ]),
   ),
+  default: types.optional(types.string()),
   enum: types.optional(z.array(types.string())),
   maxLength: types.optional(types.number()),
   minLength: types.optional(types.number()),
   pattern: types.optional(types.string()),
   description: types.optional(types.string()),
-  default: types.optional(types.string()),
   "ui:label": types.optional(types.string()),
   "ui:read-only": types.optional(
     smartUnion([

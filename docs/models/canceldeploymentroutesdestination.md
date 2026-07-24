@@ -9,10 +9,10 @@
 const value: string = "<value>";
 ```
 
-### `models.CancelDeploymentDestinationDeploymentsResponse2`
+### `models.CancelDeploymentDestinationDeployments2`
 
 ```typescript
-const value: models.CancelDeploymentDestinationDeploymentsResponse2 = {
+const value: models.CancelDeploymentDestinationDeployments2 = {
   service: "<value>",
 };
 ```

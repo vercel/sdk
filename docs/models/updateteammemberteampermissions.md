@@ -11,5 +11,5 @@ let value: UpdateTeamMemberTeamPermissions = "AiGatewaySettings";
 ## Values
 
 ```typescript
-"IntegrationManager" | "CreateProject" | "FullProductionDeployment" | "UsageViewer" | "EnvVariableManager" | "EnvironmentManager" | "OrgAdmin" | "OrgViewer" | "AiGatewaySettings" | "AiGatewayCredits" | "AiGatewayApiKeyOwnedBySelf" | "V0Builder" | "V0Chatter" | "V0Viewer"
+"IntegrationManager" | "CreateProject" | "FullProductionDeployment" | "UsageViewer" | "EnvVariableManager" | "EnvironmentManager" | "OrgAdmin" | "OrgViewer" | "AiGatewaySettings" | "AiGatewayCredits" | "AiGatewayApiKeyOwnedBySelf" | "AiGatewayBudgetManager" | "V0Builder" | "V0Chatter" | "V0Viewer"
 ```

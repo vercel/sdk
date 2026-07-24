@@ -5,7 +5,7 @@ Allowlist entry for GitHub and Bitbucket, whose repos are identified by a flat `
 ## Example Usage
 
 ```typescript
-import { GetProjectSources1 } from "@vercel/sdk/models/getprojectresponsebody.js";
+import { GetProjectSources1 } from "@vercel/sdk/models/getprojectdestination.js";
 
 let value: GetProjectSources1 = {
   provider: "github",

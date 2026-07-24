@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentServicesType } from "@vercel/sdk/models/canceldeploymentgitrepodeploymentsresponseownertype.js";
+import { CancelDeploymentServicesType } from "@vercel/sdk/models/canceldeploymentgitrepoownertype.js";
 
-let value: CancelDeploymentServicesType = "job";
+let value: CancelDeploymentServicesType = "service-ref";
 ```
 
 ## Values
 
 ```typescript
-"cron" | "job" | "web" | "worker"
+"service-ref"
 ```

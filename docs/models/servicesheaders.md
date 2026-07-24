@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ServicesHeaders } from "@vercel/sdk/models/canceldeploymentgitrepodeploymentsresponseownertype.js";
+import { ServicesHeaders } from "@vercel/sdk/models/canceldeploymentgitrepoownertype.js";
 
 let value: ServicesHeaders = {
   source: "<value>",
@@ -22,5 +22,5 @@ let value: ServicesHeaders = {
 | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
 | `source`                                                                                 | *string*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |
 | `headers`                                                                                | [models.CancelDeploymentServicesHeaders](../models/canceldeploymentservicesheaders.md)[] | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `has`                                                                                    | *models.CancelDeploymentServicesHas*[]                                                   | :heavy_minus_sign:                                                                       | N/A                                                                                      |
-| `missing`                                                                                | *models.CancelDeploymentServicesMissing*[]                                               | :heavy_minus_sign:                                                                       | N/A                                                                                      |
+| `has`                                                                                    | *models.ServicesHas*[]                                                                   | :heavy_minus_sign:                                                                       | N/A                                                                                      |
+| `missing`                                                                                | *models.ServicesMissing*[]                                                               | :heavy_minus_sign:                                                                       | N/A                                                                                      |

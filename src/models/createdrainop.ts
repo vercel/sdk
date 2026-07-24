@@ -161,16 +161,16 @@ export type Delivery = Delivery3 | Delivery1 | Delivery2;
 /**
  * Environment to apply sampling to
  */
-export const Env = {
+export const CreateDrainEnv = {
   Production: "production",
   Preview: "preview",
 } as const;
 /**
  * Environment to apply sampling to
  */
-export type Env = ClosedEnum<typeof Env>;
+export type CreateDrainEnv = ClosedEnum<typeof CreateDrainEnv>;
 
-export type Sampling = {
+export type CreateDrainSampling = {
   type: string;
   /**
    * Sampling rate from 0 to 1 (e.g., 0.1 for 10%)
@@ -179,7 +179,7 @@ export type Sampling = {
   /**
    * Environment to apply sampling to
    */
-  env?: Env | undefined;
+  env?: CreateDrainEnv | undefined;
   /**
    * Request path prefix to apply the sampling rule to
    */
@@ -219,7 +219,7 @@ export type CreateDrainRequestBody = {
   filter?: Filter | undefined;
   schemas: { [k: string]: Schemas };
   delivery?: Delivery3 | Delivery1 | Delivery2 | undefined;
-  sampling?: Array<Sampling> | undefined;
+  sampling?: Array<CreateDrainSampling> | undefined;
   transforms?: Array<Transforms> | undefined;
   source?: CreateDrain11 | One2 | One3 | Source2 | undefined;
 };
@@ -267,6 +267,8 @@ export type ResponseBodyAiGateway = {};
 
 export type ResponseBodyAuditLog = {};
 
+export type ResponseBodyConnect = {};
+
 export type CreateDrainResponseBodySchemas = {
   log?: CreateDrainResponseBodyLog | undefined;
   trace?: ResponseBodyTrace | undefined;
@@ -274,6 +276,7 @@ export type CreateDrainResponseBodySchemas = {
   speedInsights?: CreateDrainResponseBodyDrainsSpeedInsights | undefined;
   aiGateway?: ResponseBodyAiGateway | undefined;
   auditLog?: ResponseBodyAuditLog | undefined;
+  connect?: ResponseBodyConnect | undefined;
 };
 
 export const CreateDrainDeliveryTarget = {
@@ -612,7 +615,7 @@ export type DisabledReason = ClosedEnum<typeof DisabledReason>;
 
 export type ResponseBodyLog = {};
 
-export type Trace = {};
+export type CreateDrainResponseBodyTrace = {};
 
 export type CreateDrainResponseBodyAnalytics = {};
 
@@ -622,13 +625,16 @@ export type AiGateway = {};
 
 export type AuditLog = {};
 
+export type CreateDrainResponseBodyConnect = {};
+
 export type ResponseBodySchemas = {
   log?: ResponseBodyLog | undefined;
-  trace?: Trace | undefined;
+  trace?: CreateDrainResponseBodyTrace | undefined;
   analytics?: CreateDrainResponseBodyAnalytics | undefined;
   speedInsights?: CreateDrainResponseBodySpeedInsights | undefined;
   aiGateway?: AiGateway | undefined;
   auditLog?: AuditLog | undefined;
+  connect?: CreateDrainResponseBodyConnect | undefined;
 };
 
 export const DeliveryTarget = {
@@ -1276,12 +1282,12 @@ export function deliveryToJSON(delivery: Delivery): string {
 }
 
 /** @internal */
-export const Env$outboundSchema: z.ZodNativeEnum<typeof Env> = z.nativeEnum(
-  Env,
-);
+export const CreateDrainEnv$outboundSchema: z.ZodNativeEnum<
+  typeof CreateDrainEnv
+> = z.nativeEnum(CreateDrainEnv);
 
 /** @internal */
-export type Sampling$Outbound = {
+export type CreateDrainSampling$Outbound = {
   type: string;
   rate: number;
   env?: string | undefined;
@@ -1289,19 +1295,23 @@ export type Sampling$Outbound = {
 };
 
 /** @internal */
-export const Sampling$outboundSchema: z.ZodType<
-  Sampling$Outbound,
+export const CreateDrainSampling$outboundSchema: z.ZodType<
+  CreateDrainSampling$Outbound,
   z.ZodTypeDef,
-  Sampling
+  CreateDrainSampling
 > = z.object({
   type: z.string(),
   rate: z.number(),
-  env: Env$outboundSchema.optional(),
+  env: CreateDrainEnv$outboundSchema.optional(),
   requestPath: z.string().optional(),
 });
 
-export function samplingToJSON(sampling: Sampling): string {
-  return JSON.stringify(Sampling$outboundSchema.parse(sampling));
+export function createDrainSamplingToJSON(
+  createDrainSampling: CreateDrainSampling,
+): string {
+  return JSON.stringify(
+    CreateDrainSampling$outboundSchema.parse(createDrainSampling),
+  );
 }
 
 /** @internal */
@@ -1454,7 +1464,7 @@ export type CreateDrainRequestBody$Outbound = {
     | Delivery1$Outbound
     | Delivery2$Outbound
     | undefined;
-  sampling?: Array<Sampling$Outbound> | undefined;
+  sampling?: Array<CreateDrainSampling$Outbound> | undefined;
   transforms?: Array<Transforms$Outbound> | undefined;
   source?:
     | CreateDrain11$Outbound
@@ -1480,7 +1490,8 @@ export const CreateDrainRequestBody$outboundSchema: z.ZodType<
     z.lazy(() => Delivery1$outboundSchema),
     z.lazy(() => Delivery2$outboundSchema),
   ]).optional(),
-  sampling: z.array(z.lazy(() => Sampling$outboundSchema)).optional(),
+  sampling: z.array(z.lazy(() => CreateDrainSampling$outboundSchema))
+    .optional(),
   transforms: z.array(z.lazy(() => Transforms$outboundSchema)).optional(),
   source: smartUnion([
     smartUnion([
@@ -1648,6 +1659,23 @@ export function responseBodyAuditLogFromJSON(
 }
 
 /** @internal */
+export const ResponseBodyConnect$inboundSchema: z.ZodType<
+  ResponseBodyConnect,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+export function responseBodyConnectFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyConnect, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyConnect$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyConnect' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateDrainResponseBodySchemas$inboundSchema: z.ZodType<
   CreateDrainResponseBodySchemas,
   z.ZodTypeDef,
@@ -1663,6 +1691,7 @@ export const CreateDrainResponseBodySchemas$inboundSchema: z.ZodType<
   ),
   ai_gateway: types.optional(z.lazy(() => ResponseBodyAiGateway$inboundSchema)),
   audit_log: types.optional(z.lazy(() => ResponseBodyAuditLog$inboundSchema)),
+  connect: types.optional(z.lazy(() => ResponseBodyConnect$inboundSchema)),
 }).transform((v) => {
   return remap$(v, {
     "speed_insights": "speedInsights",
@@ -2431,16 +2460,19 @@ export function responseBodyLogFromJSON(
 }
 
 /** @internal */
-export const Trace$inboundSchema: z.ZodType<Trace, z.ZodTypeDef, unknown> = z
-  .object({});
+export const CreateDrainResponseBodyTrace$inboundSchema: z.ZodType<
+  CreateDrainResponseBodyTrace,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
 
-export function traceFromJSON(
+export function createDrainResponseBodyTraceFromJSON(
   jsonString: string,
-): SafeParseResult<Trace, SDKValidationError> {
+): SafeParseResult<CreateDrainResponseBodyTrace, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Trace$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Trace' from JSON`,
+    (x) => CreateDrainResponseBodyTrace$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDrainResponseBodyTrace' from JSON`,
   );
 }
 
@@ -2514,13 +2546,32 @@ export function auditLogFromJSON(
 }
 
 /** @internal */
+export const CreateDrainResponseBodyConnect$inboundSchema: z.ZodType<
+  CreateDrainResponseBodyConnect,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+export function createDrainResponseBodyConnectFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateDrainResponseBodyConnect, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateDrainResponseBodyConnect$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDrainResponseBodyConnect' from JSON`,
+  );
+}
+
+/** @internal */
 export const ResponseBodySchemas$inboundSchema: z.ZodType<
   ResponseBodySchemas,
   z.ZodTypeDef,
   unknown
 > = z.object({
   log: types.optional(z.lazy(() => ResponseBodyLog$inboundSchema)),
-  trace: types.optional(z.lazy(() => Trace$inboundSchema)),
+  trace: types.optional(
+    z.lazy(() => CreateDrainResponseBodyTrace$inboundSchema),
+  ),
   analytics: types.optional(
     z.lazy(() => CreateDrainResponseBodyAnalytics$inboundSchema),
   ),
@@ -2529,6 +2580,9 @@ export const ResponseBodySchemas$inboundSchema: z.ZodType<
   ),
   ai_gateway: types.optional(z.lazy(() => AiGateway$inboundSchema)),
   audit_log: types.optional(z.lazy(() => AuditLog$inboundSchema)),
+  connect: types.optional(
+    z.lazy(() => CreateDrainResponseBodyConnect$inboundSchema),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "speed_insights": "speedInsights",

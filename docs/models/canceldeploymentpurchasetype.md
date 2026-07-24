@@ -7,11 +7,11 @@ Machine type that was used for the build.
 ```typescript
 import { CancelDeploymentPurchaseType } from "@vercel/sdk/models/canceldeploymentresponsebody.js";
 
-let value: CancelDeploymentPurchaseType = "standard";
+let value: CancelDeploymentPurchaseType = "enhanced";
 ```
 
 ## Values
 
 ```typescript
-"enhanced" | "standard" | "turbo"
+"basic" | "enhanced" | "standard" | "turbo"
 ```

@@ -45,7 +45,7 @@ export type ArtifactQueryResponseBody1 = {
   dirtyHash?: string | undefined;
 };
 
-export type ResponseBody =
+export type ArtifactQueryResponseBody =
   | ArtifactQueryResponseBody1
   | ArtifactQueryResponseBody2;
 
@@ -163,8 +163,8 @@ export function artifactQueryResponseBody1FromJSON(
 }
 
 /** @internal */
-export const ResponseBody$inboundSchema: z.ZodType<
-  ResponseBody,
+export const ArtifactQueryResponseBody$inboundSchema: z.ZodType<
+  ArtifactQueryResponseBody,
   z.ZodTypeDef,
   unknown
 > = smartUnion([
@@ -172,12 +172,12 @@ export const ResponseBody$inboundSchema: z.ZodType<
   z.lazy(() => ArtifactQueryResponseBody2$inboundSchema),
 ]);
 
-export function responseBodyFromJSON(
+export function artifactQueryResponseBodyFromJSON(
   jsonString: string,
-): SafeParseResult<ResponseBody, SDKValidationError> {
+): SafeParseResult<ArtifactQueryResponseBody, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ResponseBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBody' from JSON`,
+    (x) => ArtifactQueryResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ArtifactQueryResponseBody' from JSON`,
   );
 }

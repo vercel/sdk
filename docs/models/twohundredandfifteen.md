@@ -5,25 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFifteen } from "@vercel/sdk/models/onehundredandeightyfive.js";
+import { TwoHundredAndFifteen } from "@vercel/sdk/models/twohundredandeleven.js";
 
 let value: TwoHundredAndFifteen = {
   projectId: "<id>",
   projectName: "<value>",
-  previous: {
-    functionDefaultMemoryType: "<value>",
-  },
-  next: {
-    functionDefaultMemoryType: "<value>",
-  },
+  enableAffectedProjectsDeployments: false,
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload215Previous](../models/usereventpayload215previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `next`                                                                         | [models.UserEventPayload215Next](../models/usereventpayload215next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                               | Type                                | Required                            | Description                         |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| `projectId`                         | *string*                            | :heavy_check_mark:                  | N/A                                 |
+| `projectName`                       | *string*                            | :heavy_check_mark:                  | N/A                                 |
+| `enableAffectedProjectsDeployments` | *boolean*                           | :heavy_check_mark:                  | N/A                                 |

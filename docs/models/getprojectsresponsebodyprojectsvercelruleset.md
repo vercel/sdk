@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyProjectsVercelRuleset } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson2projectsaliastype.js";
+import { GetProjectsResponseBodyProjectsVercelRuleset } from "@vercel/sdk/models/responsebodydismissedtoasts.js";
 
 let value: GetProjectsResponseBodyProjectsVercelRuleset = {
   active: true,

@@ -5,12 +5,12 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSixtyEight } from "@vercel/sdk/models/usereventpayload146role.js";
+import { OneHundredAndSixtyEight } from "@vercel/sdk/models/payloaddismissals.js";
 
 let value: OneHundredAndSixtyEight = {
-  ownerId: "<id>",
-  source: "<value>",
-  cause: "<value>",
+  issuerId: "<id>",
+  issuerName: "<value>",
+  kind: "<value>",
 };
 ```
 
@@ -18,7 +18,9 @@ let value: OneHundredAndSixtyEight = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `ownerId`          | *string*           | :heavy_check_mark: | N/A                |
-| `source`           | *string*           | :heavy_check_mark: | N/A                |
-| `cause`            | *string*           | :heavy_check_mark: | N/A                |
-| `reason`           | *string*           | :heavy_minus_sign: | N/A                |
+| `issuerId`         | *string*           | :heavy_check_mark: | N/A                |
+| `issuerName`       | *string*           | :heavy_check_mark: | N/A                |
+| `kind`             | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_minus_sign: | N/A                |
+| `clientId`         | *string*           | :heavy_minus_sign: | N/A                |
+| `environments`     | *string*[]         | :heavy_minus_sign: | N/A                |

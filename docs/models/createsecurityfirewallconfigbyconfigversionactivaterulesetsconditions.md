@@ -1,0 +1,23 @@
+# CreateSecurityFirewallConfigByConfigVersionActivateRulesetsConditions
+
+## Example Usage
+
+```typescript
+import { CreateSecurityFirewallConfigByConfigVersionActivateRulesetsConditions } from "@vercel/sdk/models/createsecurityfirewallconfigbyconfigversionactivateop.js";
+
+let value:
+  CreateSecurityFirewallConfigByConfigVersionActivateRulesetsConditions = {
+    type: "ip_address",
+    op: "ninc",
+  };
+```
+
+## Fields
+
+| Field                                                                                                                                                  | Type                                                                                                                                                   | Required                                                                                                                                               | Description                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `type`                                                                                                                                                 | [models.CreateSecurityFirewallConfigByConfigVersionActivateRulesetsType](../models/createsecurityfirewallconfigbyconfigversionactivaterulesetstype.md) | :heavy_check_mark:                                                                                                                                     | N/A                                                                                                                                                    |
+| `op`                                                                                                                                                   | [models.CreateSecurityFirewallConfigByConfigVersionActivateRulesetsOp](../models/createsecurityfirewallconfigbyconfigversionactivaterulesetsop.md)     | :heavy_check_mark:                                                                                                                                     | N/A                                                                                                                                                    |
+| `neg`                                                                                                                                                  | *boolean*                                                                                                                                              | :heavy_minus_sign:                                                                                                                                     | N/A                                                                                                                                                    |
+| `key`                                                                                                                                                  | *string*                                                                                                                                               | :heavy_minus_sign:                                                                                                                                     | N/A                                                                                                                                                    |
+| `value`                                                                                                                                                | *models.CreateSecurityFirewallConfigByConfigVersionActivateRulesetsValue*                                                                              | :heavy_minus_sign:                                                                                                                                     | N/A                                                                                                                                                    |

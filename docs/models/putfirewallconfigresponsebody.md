@@ -27,9 +27,9 @@ let value: PutFirewallConfigResponseBody = {
     ips: [
       {
         id: "<id>",
-        hostname: "drab-vicinity.name",
-        ip: "aebe:8baf:ca48:9d5d:bad7:e4bf:7c8f:d40d",
-        action: "log",
+        hostname: "oily-knuckle.biz",
+        ip: "110.187.246.4",
+        action: "deny",
       },
     ],
     changes: [],
@@ -39,6 +39,6 @@ let value: PutFirewallConfigResponseBody = {
 
 ## Fields
 
-| Field                                | Type                                 | Required                             | Description                          |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `active`                             | [models.Active](../models/active.md) | :heavy_check_mark:                   | N/A                                  |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `active`                                                               | [models.PutFirewallConfigActive](../models/putfirewallconfigactive.md) | :heavy_check_mark:                                                     | N/A                                                                    |

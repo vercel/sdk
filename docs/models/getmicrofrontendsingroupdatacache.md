@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupDataCache } from "@vercel/sdk/models/getmicrofrontendsingrouplastrollbacktarget.js";
+import { GetMicrofrontendsInGroupDataCache } from "@vercel/sdk/models/getmicrofrontendsingroupaliasassigned.js";
 
 let value: GetMicrofrontendsInGroupDataCache = {
   userDisabled: false,

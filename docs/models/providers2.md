@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Providers2 } from "@vercel/sdk/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema7type.js";
+import { Providers2 } from "@vercel/sdk/models/getstoragestoresbyidop.js";
 
 let value: Providers2 = "*";
 ```

@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectProjectsResponseAction } from "@vercel/sdk/models/getprojectresponsebody.js";
+import { GetProjectProjectsResponseAction } from "@vercel/sdk/models/getprojectdestination.js";
 
-let value: GetProjectProjectsResponseAction = "blocked";
+let value: GetProjectProjectsResponseAction = "remove-deployment-interstitial";
 ```
 
 ## Values
 
 ```typescript
-"blocked"
+"add-deployment-interstitial" | "add-project-interstitial" | "remove-deployment-interstitial" | "remove-project-interstitial"
 ```

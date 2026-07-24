@@ -3,46 +3,46 @@
 
 ## Supported Types
 
-### `models.CreateDeploymentTransforms1`
+### `models.CreateDeploymentTransformsDeployments1`
 
 ```typescript
-const value: models.CreateDeploymentTransforms1 = {
+const value: models.CreateDeploymentTransformsDeployments1 = {
   type: "request.query",
-  op: "set",
+  op: "delete",
   target: {
     key: "<key>",
   },
 };
 ```
 
-### `models.CreateDeploymentTransforms1`
+### `models.CreateDeploymentTransformsDeployments1`
 
 ```typescript
-const value: models.CreateDeploymentTransforms1 = {
+const value: models.CreateDeploymentTransformsDeployments1 = {
   type: "request.query",
-  op: "set",
+  op: "delete",
   target: {
     key: "<key>",
   },
 };
 ```
 
-### `models.CreateDeploymentTransforms1`
+### `models.CreateDeploymentTransformsDeployments1`
 
 ```typescript
-const value: models.CreateDeploymentTransforms1 = {
+const value: models.CreateDeploymentTransformsDeployments1 = {
   type: "request.query",
-  op: "set",
+  op: "delete",
   target: {
     key: "<key>",
   },
 };
 ```
 
-### `models.CreateDeploymentTransforms2`
+### `models.CreateDeploymentTransformsDeployments2`
 
 ```typescript
-const value: models.CreateDeploymentTransforms2 = {
+const value: models.CreateDeploymentTransformsDeployments2 = {
   type: "request.path",
   op: "set",
   args: "<value>",

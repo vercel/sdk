@@ -3,14 +3,14 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyProjectsResponse200ApplicationJson2Action } from "@vercel/sdk/models/getprojectsresponsebodyprojectsoidctokenclaims.js";
+import { GetProjectsResponseBodyProjectsResponse200ApplicationJson2Action } from "@vercel/sdk/models/getprojectscontenthint3.js";
 
 let value: GetProjectsResponseBodyProjectsResponse200ApplicationJson2Action =
-  "blocked";
+  "bypass";
 ```
 
 ## Values
 
 ```typescript
-"blocked"
+"allow" | "bypass" | "challenge" | "deny" | "log" | "rate_limit" | "redirect"
 ```

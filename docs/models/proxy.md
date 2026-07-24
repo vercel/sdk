@@ -9,12 +9,6 @@ let value: Proxy = {
   timestamp: 5231.31,
   method: "<value>",
   host: "elliptical-integer.org",
-  path: "/var/mail",
-  userAgent: [
-    "<value 1>",
-  ],
-  referer: "multicolored-lawmaker.net",
-  region: "<value>",
 };
 ```
 
@@ -25,12 +19,12 @@ let value: Proxy = {
 | `timestamp`                                    | *number*                                       | :heavy_check_mark:                             | N/A                                            |
 | `method`                                       | *string*                                       | :heavy_check_mark:                             | N/A                                            |
 | `host`                                         | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `path`                                         | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `path`                                         | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
 | `statusCode`                                   | *number*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `userAgent`                                    | *string*[]                                     | :heavy_check_mark:                             | N/A                                            |
-| `referer`                                      | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `userAgent`                                    | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
+| `referer`                                      | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
 | `clientIp`                                     | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `region`                                       | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `region`                                       | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
 | `scheme`                                       | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
 | `responseByteSize`                             | *number*                                       | :heavy_minus_sign:                             | N/A                                            |
 | `cacheId`                                      | *string*                                       | :heavy_minus_sign:                             | N/A                                            |

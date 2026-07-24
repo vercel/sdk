@@ -5,7 +5,7 @@ Set to `1` to skip framework auto-detection and proceed without confirmation. By
 ## Example Usage
 
 ```typescript
-import { SkipAutoDetectionConfirmation } from "@vercel/sdk/models/createdeploymentvaluedeployments2.js";
+import { SkipAutoDetectionConfirmation } from "@vercel/sdk/models/createdeploymentvaluedeploymentsresponse2.js";
 
 let value: SkipAutoDetectionConfirmation = "1";
 ```

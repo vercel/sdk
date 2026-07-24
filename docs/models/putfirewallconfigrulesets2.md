@@ -1,0 +1,22 @@
+# PutFirewallConfigRulesets2
+
+## Example Usage
+
+```typescript
+import { PutFirewallConfigRulesets2 } from "@vercel/sdk/models/putfirewallconfigop.js";
+
+let value: PutFirewallConfigRulesets2 = {
+  action: "redirect",
+};
+```
+
+## Fields
+
+| Field                                                                                                                        | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `action`                                                                                                                     | [models.PutFirewallConfigRulesetsSecurityResponse200Action](../models/putfirewallconfigrulesetssecurityresponse200action.md) | :heavy_check_mark:                                                                                                           | N/A                                                                                                                          |
+| `rateLimit`                                                                                                                  | [models.PutFirewallConfigRulesetsRateLimit](../models/putfirewallconfigrulesetsratelimit.md)                                 | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |
+| `redirect`                                                                                                                   | [models.PutFirewallConfigRulesetsRedirect](../models/putfirewallconfigrulesetsredirect.md)                                   | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |
+| `actionDuration`                                                                                                             | *string*                                                                                                                     | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |
+| `bypassSystem`                                                                                                               | *boolean*                                                                                                                    | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |
+| `logHeaders`                                                                                                                 | *models.PutFirewallConfigRulesetsLogHeaders*                                                                                 | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |

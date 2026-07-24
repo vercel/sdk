@@ -15,7 +15,7 @@ let value: ImportConnectorTokensResponseBody = {
         type: "app",
       },
       environment: "production",
-      succeeded: false,
+      succeeded: true,
     },
   ],
 };

@@ -155,6 +155,7 @@ export type TeamLimitedTeamRoles = ClosedEnum<typeof TeamLimitedTeamRoles>;
 
 export const TeamLimitedTeamPermissions = {
   AiGatewayApiKeyOwnedBySelf: "AiGatewayApiKeyOwnedBySelf",
+  AiGatewayBudgetManager: "AiGatewayBudgetManager",
   AiGatewayCredits: "AiGatewayCredits",
   AiGatewaySettings: "AiGatewaySettings",
   CreateProject: "CreateProject",

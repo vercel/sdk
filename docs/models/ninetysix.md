@@ -5,24 +5,26 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { NinetySix } from "@vercel/sdk/models/usereventpayload70project.js";
+import { NinetySix } from "@vercel/sdk/models/jobprovider.js";
 
 let value: NinetySix = {
-  id: "<id>",
-  value: "<value>",
-  name: "<value>",
-  domain: "funny-outrun.org",
-  type: "<value>",
+  deployment: {
+    id: "<id>",
+    name: "<value>",
+    meta: {
+      "key": "<value>",
+    },
+    url: "https://uniform-hierarchy.name",
+  },
+  deploymentId: "<id>",
+  url: "https://flustered-plastic.name",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *string*           | :heavy_check_mark: | N/A                |
-| `value`            | *string*           | :heavy_check_mark: | N/A                |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
-| `domain`           | *string*           | :heavy_check_mark: | N/A                |
-| `type`             | *string*           | :heavy_check_mark: | N/A                |
-| `mxPriority`       | *number*           | :heavy_minus_sign: | N/A                |
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `deployment`                                                                     | [models.UserEventPayload96Deployment](../models/usereventpayload96deployment.md) | :heavy_check_mark:                                                               | N/A                                                                              |
+| `deploymentId`                                                                   | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
+| `url`                                                                            | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |

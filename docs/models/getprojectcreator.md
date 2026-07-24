@@ -1,23 +1,54 @@
 # GetProjectCreator
 
-## Example Usage
+
+## Supported Types
+
+### `models.GetProjectCreator1`
 
 ```typescript
-import { GetProjectCreator } from "@vercel/sdk/models/getprojecttargets.js";
-
-let value: GetProjectCreator = {
-  email: "Bennett_Heller@hotmail.com",
-  uid: "<id>",
-  username: "Dell94",
+const value: models.GetProjectCreator1 = {
+  type: "user",
+  via: {
+    type: "integration",
+    integration: {
+      integrationId: "<id>",
+      configurationId: "<id>",
+    },
+  },
+  user: {
+    id: "<id>",
+  },
 };
 ```
 
-## Fields
+### `models.GetProjectCreator2`
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `email`            | *string*           | :heavy_check_mark: | N/A                |
-| `githubLogin`      | *string*           | :heavy_minus_sign: | N/A                |
-| `gitlabLogin`      | *string*           | :heavy_minus_sign: | N/A                |
-| `uid`              | *string*           | :heavy_check_mark: | N/A                |
-| `username`         | *string*           | :heavy_check_mark: | N/A                |
+```typescript
+const value: models.GetProjectCreator2 = {
+  type: "app",
+  app: {
+    id: "<id>",
+  },
+};
+```
+
+### `models.GetProjectCreator3`
+
+```typescript
+const value: models.GetProjectCreator3 = {
+  type: "integration",
+  integration: {
+    integrationId: "<id>",
+    configurationId: "<id>",
+  },
+};
+```
+
+### `models.GetProjectCreator4`
+
+```typescript
+const value: models.GetProjectCreator4 = {
+  type: "system",
+};
+```
+

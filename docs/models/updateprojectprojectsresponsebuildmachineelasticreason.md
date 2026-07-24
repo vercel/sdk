@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateProjectProjectsResponseBuildMachineElasticReason } from "@vercel/sdk/models/updateprojectblock.js";
+import { UpdateProjectProjectsResponseBuildMachineElasticReason } from "@vercel/sdk/models/updateprojectprojectsissuermode.js";
 
 let value: UpdateProjectProjectsResponseBuildMachineElasticReason =
   "high-peak-disk";

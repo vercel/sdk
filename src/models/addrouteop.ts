@@ -343,13 +343,13 @@ export type AddRouteKey2 = {
   lte?: number | undefined;
 };
 
-export type AddRouteTransformsKey = string | AddRouteKey2;
+export type TransformsKey = string | AddRouteKey2;
 
 export type AddRouteTransformsTarget = {
   key: string | AddRouteKey2;
 };
 
-export type AddRouteTransformsArgs = string | Array<string>;
+export type TransformsArgs = string | Array<string>;
 
 export type AddRouteTransforms1 = {
   type: AddRouteTransformsType;
@@ -1374,19 +1374,19 @@ export function addRouteKey2FromJSON(
 }
 
 /** @internal */
-export const AddRouteTransformsKey$inboundSchema: z.ZodType<
-  AddRouteTransformsKey,
+export const TransformsKey$inboundSchema: z.ZodType<
+  TransformsKey,
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), z.lazy(() => AddRouteKey2$inboundSchema)]);
 
-export function addRouteTransformsKeyFromJSON(
+export function transformsKeyFromJSON(
   jsonString: string,
-): SafeParseResult<AddRouteTransformsKey, SDKValidationError> {
+): SafeParseResult<TransformsKey, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => AddRouteTransformsKey$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AddRouteTransformsKey' from JSON`,
+    (x) => TransformsKey$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TransformsKey' from JSON`,
   );
 }
 
@@ -1410,19 +1410,19 @@ export function addRouteTransformsTargetFromJSON(
 }
 
 /** @internal */
-export const AddRouteTransformsArgs$inboundSchema: z.ZodType<
-  AddRouteTransformsArgs,
+export const TransformsArgs$inboundSchema: z.ZodType<
+  TransformsArgs,
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), z.array(types.string())]);
 
-export function addRouteTransformsArgsFromJSON(
+export function transformsArgsFromJSON(
   jsonString: string,
-): SafeParseResult<AddRouteTransformsArgs, SDKValidationError> {
+): SafeParseResult<TransformsArgs, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => AddRouteTransformsArgs$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AddRouteTransformsArgs' from JSON`,
+    (x) => TransformsArgs$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TransformsArgs' from JSON`,
   );
 }
 

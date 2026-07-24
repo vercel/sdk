@@ -5,20 +5,13 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndNinetyTwo } from "@vercel/sdk/models/onehundredandeightyfive.js";
+import { OneHundredAndNinetyTwo } from "@vercel/sdk/models/payloaddismissals.js";
 
 let value: OneHundredAndNinetyTwo = {
   projectId: "<id>",
-  projectAnalytics: {
-    id: "<id>",
-    disabledAt: 9155.64,
-    enabledAt: 4908.44,
-  },
-  prevProjectAnalytics: {
-    id: "<id>",
-    disabledAt: 9765.45,
-    enabledAt: 5607.48,
-  },
+  url: "https://upbeat-jungle.net",
+  previousStatus: "<value>",
+  justification: "<value>",
 };
 ```
 
@@ -26,7 +19,8 @@ let value: OneHundredAndNinetyTwo = {
 
 | Field                                                            | Type                                                             | Required                                                         | Description                                                      |
 | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `projectName`                                                    | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
 | `projectId`                                                      | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `projectAnalytics`                                               | [models.ProjectAnalytics](../models/projectanalytics.md)         | :heavy_check_mark:                                               | N/A                                                              |
-| `prevProjectAnalytics`                                           | [models.PrevProjectAnalytics](../models/prevprojectanalytics.md) | :heavy_check_mark:                                               | N/A                                                              |
+| `url`                                                            | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `previousStatus`                                                 | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `justification`                                                  | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `kind`                                                           | [models.UserEventPayloadKind](../models/usereventpayloadkind.md) | :heavy_minus_sign:                                               | N/A                                                              |

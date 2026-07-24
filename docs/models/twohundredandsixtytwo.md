@@ -5,12 +5,12 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSixtyTwo } from "@vercel/sdk/models/twohundredandfiftyeight.js";
+import { TwoHundredAndSixtyTwo } from "@vercel/sdk/models/twohundredandeleven.js";
 
 let value: TwoHundredAndSixtyTwo = {
-  projectId: "<id>",
-  projectName: "<value>",
-  protectedSourcemaps: true,
+  previousProjectName: "<value>",
+  newProjectName: "<value>",
+  originAccountName: "<value>",
 };
 ```
 
@@ -18,6 +18,9 @@ let value: TwoHundredAndSixtyTwo = {
 
 | Field                 | Type                  | Required              | Description           |
 | --------------------- | --------------------- | --------------------- | --------------------- |
-| `projectId`           | *string*              | :heavy_check_mark:    | N/A                   |
-| `projectName`         | *string*              | :heavy_check_mark:    | N/A                   |
-| `protectedSourcemaps` | *boolean*             | :heavy_check_mark:    | N/A                   |
+| `previousProjectId`   | *string*              | :heavy_minus_sign:    | N/A                   |
+| `newProjectId`        | *string*              | :heavy_minus_sign:    | N/A                   |
+| `previousProjectName` | *string*              | :heavy_check_mark:    | N/A                   |
+| `newProjectName`      | *string*              | :heavy_check_mark:    | N/A                   |
+| `originAccountName`   | *string*              | :heavy_check_mark:    | N/A                   |
+| `transferId`          | *string*              | :heavy_minus_sign:    | N/A                   |

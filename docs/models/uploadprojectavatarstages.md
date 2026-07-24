@@ -5,7 +5,7 @@ An array of all the stages required during a deployment release. Each stage defi
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarStages } from "@vercel/sdk/models/uploadprojectavatarlastrollbacktarget.js";
+import { UploadProjectAvatarStages } from "@vercel/sdk/models/uploadprojectavatarprojectsaliasassigned.js";
 
 let value: UploadProjectAvatarStages = {
   targetPercentage: 25,

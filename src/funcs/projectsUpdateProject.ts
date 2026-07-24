@@ -23,7 +23,7 @@ import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import {
   UpdateProjectRequest,
   UpdateProjectRequest$outboundSchema,
-} from "../models/updateprojectprojectsbranchmatcher.js";
+} from "../models/updateprojectbranchmatcher.js";
 import {
   UpdateProjectResponseBody,
   UpdateProjectResponseBody$inboundSchema,
@@ -172,7 +172,7 @@ async function $do(
     | SDKValidationError
   >(
     M.json(200, UpdateProjectResponseBody$inboundSchema),
-    M.fail([400, 401, 402, 403, 404, 409, 428, "4XX"]),
+    M.fail([400, 401, 402, 403, 404, 409, 410, 428, "4XX"]),
     M.fail([500, "5XX"]),
   )(response, req);
   if (!result.ok) {

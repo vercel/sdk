@@ -1,18 +1,16 @@
 # UpdateProjectProjectsResponse200ApplicationJSONResponseBodyType
 
-The type of matching to perform
-
 ## Example Usage
 
 ```typescript
-import { UpdateProjectProjectsResponse200ApplicationJSONResponseBodyType } from "@vercel/sdk/models/updateprojectprojectsbranchmatcher.js";
+import { UpdateProjectProjectsResponse200ApplicationJSONResponseBodyType } from "@vercel/sdk/models/updateprojectprojectsissuermode.js";
 
 let value: UpdateProjectProjectsResponse200ApplicationJSONResponseBodyType =
-  "endsWith";
+  "promote";
 ```
 
 ## Values
 
 ```typescript
-"endsWith" | "equals" | "startsWith"
+"promote" | "rollback"
 ```

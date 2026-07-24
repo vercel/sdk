@@ -305,6 +305,8 @@ export type UpdateDrainResponseBodyDrainsAiGateway = {};
 
 export type UpdateDrainResponseBodyDrainsAuditLog = {};
 
+export type UpdateDrainResponseBodyDrainsConnect = {};
+
 export type UpdateDrainResponseBodyDrainsSchemas = {
   log?: UpdateDrainResponseBodyDrainsLog | undefined;
   trace?: UpdateDrainResponseBodyDrainsTrace | undefined;
@@ -312,6 +314,7 @@ export type UpdateDrainResponseBodyDrainsSchemas = {
   speedInsights?: UpdateDrainResponseBodyDrainsSpeedInsights | undefined;
   aiGateway?: UpdateDrainResponseBodyDrainsAiGateway | undefined;
   auditLog?: UpdateDrainResponseBodyDrainsAuditLog | undefined;
+  connect?: UpdateDrainResponseBodyDrainsConnect | undefined;
 };
 
 export const UpdateDrainDeliveryDrainsTarget = {
@@ -683,6 +686,8 @@ export type UpdateDrainResponseBodyAiGateway = {};
 
 export type UpdateDrainResponseBodyAuditLog = {};
 
+export type UpdateDrainResponseBodyConnect = {};
+
 export type UpdateDrainResponseBodySchemas = {
   log?: UpdateDrainResponseBodyLog | undefined;
   trace?: UpdateDrainResponseBodyTrace | undefined;
@@ -690,6 +695,7 @@ export type UpdateDrainResponseBodySchemas = {
   speedInsights?: UpdateDrainResponseBodySpeedInsights | undefined;
   aiGateway?: UpdateDrainResponseBodyAiGateway | undefined;
   auditLog?: UpdateDrainResponseBodyAuditLog | undefined;
+  connect?: UpdateDrainResponseBodyConnect | undefined;
 };
 
 export const UpdateDrainDeliveryTarget = {
@@ -1806,6 +1812,24 @@ export function updateDrainResponseBodyDrainsAuditLogFromJSON(
 }
 
 /** @internal */
+export const UpdateDrainResponseBodyDrainsConnect$inboundSchema: z.ZodType<
+  UpdateDrainResponseBodyDrainsConnect,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+export function updateDrainResponseBodyDrainsConnectFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateDrainResponseBodyDrainsConnect, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateDrainResponseBodyDrainsConnect$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateDrainResponseBodyDrainsConnect' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateDrainResponseBodyDrainsSchemas$inboundSchema: z.ZodType<
   UpdateDrainResponseBodyDrainsSchemas,
   z.ZodTypeDef,
@@ -1828,6 +1852,9 @@ export const UpdateDrainResponseBodyDrainsSchemas$inboundSchema: z.ZodType<
   ),
   audit_log: types.optional(
     z.lazy(() => UpdateDrainResponseBodyDrainsAuditLog$inboundSchema),
+  ),
+  connect: types.optional(
+    z.lazy(() => UpdateDrainResponseBodyDrainsConnect$inboundSchema),
   ),
 }).transform((v) => {
   return remap$(v, {
@@ -2705,6 +2732,23 @@ export function updateDrainResponseBodyAuditLogFromJSON(
 }
 
 /** @internal */
+export const UpdateDrainResponseBodyConnect$inboundSchema: z.ZodType<
+  UpdateDrainResponseBodyConnect,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+export function updateDrainResponseBodyConnectFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateDrainResponseBodyConnect, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateDrainResponseBodyConnect$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateDrainResponseBodyConnect' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateDrainResponseBodySchemas$inboundSchema: z.ZodType<
   UpdateDrainResponseBodySchemas,
   z.ZodTypeDef,
@@ -2725,6 +2769,9 @@ export const UpdateDrainResponseBodySchemas$inboundSchema: z.ZodType<
   ),
   audit_log: types.optional(
     z.lazy(() => UpdateDrainResponseBodyAuditLog$inboundSchema),
+  ),
+  connect: types.optional(
+    z.lazy(() => UpdateDrainResponseBodyConnect$inboundSchema),
   ),
 }).transform((v) => {
   return remap$(v, {

@@ -5,7 +5,7 @@ The result of the microfrontends config upload during deployment creation / buil
 ## Example Usage
 
 ```typescript
-import { MfeConfigUploadState } from "@vercel/sdk/models/createdeploymentresponsebody.js";
+import { MfeConfigUploadState } from "@vercel/sdk/models/canceldeploymentresponsebody.js";
 
 let value: MfeConfigUploadState = "no_config";
 ```

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupHistory } from "@vercel/sdk/models/getmicrofrontendsingroupresponsebody.js";
+import { GetMicrofrontendsInGroupHistory } from "@vercel/sdk/models/getmicrofrontendsingroupsamplingrules.js";
 
 let value: GetMicrofrontendsInGroupHistory = {
   scanner: "<value>",

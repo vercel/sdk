@@ -1,17 +1,15 @@
 # CancelDeploymentServicesDeploymentsResponseType
 
-Must be `"service"` for Service-to-Service HTTP bindings.
-
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentServicesDeploymentsResponseType } from "@vercel/sdk/models/canceldeploymentgitrepodeploymentsresponseownertype.js";
+import { CancelDeploymentServicesDeploymentsResponseType } from "@vercel/sdk/models/canceldeploymentgitrepoownertype.js";
 
-let value: CancelDeploymentServicesDeploymentsResponseType = "service";
+let value: CancelDeploymentServicesDeploymentsResponseType = "request.path";
 ```
 
 ## Values
 
 ```typescript
-"service"
+"request.path"
 ```

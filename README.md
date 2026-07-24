@@ -112,10 +112,8 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  const result = await vercel.accessGroups.readAccessGroup({
-    idOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
+  const result = await vercel.replaceDomainsByDomainRecords({
+    domain: "example.com",
   });
 
   console.log(result);
@@ -164,6 +162,20 @@ run();
 <details open>
 <summary>Available methods</summary>
 
+### [Vercel SDK](docs/sdks/vercel/README.md)
+
+* [replaceDomainsByDomainRecords](docs/sdks/vercel/README.md#replacedomainsbydomainrecords)
+* [getDomainsRecordsByRecordId](docs/sdks/vercel/README.md#getdomainsrecordsbyrecordid)
+* [createApiKeys](docs/sdks/vercel/README.md#createapikeys)
+* [createObservabilityQuery](docs/sdks/vercel/README.md#createobservabilityquery)
+* [getObservabilitySchema](docs/sdks/vercel/README.md#getobservabilityschema)
+* [getObservabilitySchemaByMetricId](docs/sdks/vercel/README.md#getobservabilityschemabymetricid)
+* [createSpeedInsightsToggle](docs/sdks/vercel/README.md#createspeedinsightstoggle)
+* [getStorageStoresById](docs/sdks/vercel/README.md#getstoragestoresbyid)
+* [createStorageStoresBlob](docs/sdks/vercel/README.md#createstoragestoresblob)
+* [deleteStorageStoresBlobById](docs/sdks/vercel/README.md#deletestoragestoresblobbyid)
+* [createWebInsightsToggle](docs/sdks/vercel/README.md#createwebinsightstoggle)
+
 ### [AccessGroups](docs/sdks/accessgroups/README.md)
 
 * [readAccessGroup](docs/sdks/accessgroups/README.md#readaccessgroup) - Reads an access group
@@ -187,10 +199,23 @@ run();
 * [deleteAlias](docs/sdks/aliases/README.md#deletealias) - Delete an Alias
 * [patchUrlProtectionBypass](docs/sdks/aliases/README.md#patchurlprotectionbypass) - Update the protection bypass for a URL
 
+### [ApiAiGateway](docs/sdks/apiaigateway/README.md)
+
+* [createAiGatewayRule](docs/sdks/apiaigateway/README.md#createaigatewayrule) - Create rule
+* [listAiGatewayRules](docs/sdks/apiaigateway/README.md#listaigatewayrules) - List rules
+* [updateAiGatewayRule](docs/sdks/apiaigateway/README.md#updateaigatewayrule) - Update rule
+* [deleteAiGatewayRule](docs/sdks/apiaigateway/README.md#deleteaigatewayrule) - Delete rule
+
 ### [ApiObservability](docs/sdks/apiobservability/README.md)
 
 * [getObservabilityConfigurationProjects](docs/sdks/apiobservability/README.md#getobservabilityconfigurationprojects) - Lists disabled Observability Plus projects
 * [updateObservabilityConfigurationProject](docs/sdks/apiobservability/README.md#updateobservabilityconfigurationproject) - Updates a disabled Observability Plus project setting
+
+### [ApiSecurity](docs/sdks/apisecurity/README.md)
+
+* [getSecurityFirewallConfig](docs/sdks/apisecurity/README.md#getsecurityfirewallconfig) - Returns activated WAF config
+* [deleteSecurityFirewallConfigByConfigVersion](docs/sdks/apisecurity/README.md#deletesecurityfirewallconfigbyconfigversion) - Returns activated WAF config
+* [createSecurityFirewallConfigByConfigVersionActivate](docs/sdks/apisecurity/README.md#createsecurityfirewallconfigbyconfigversionactivate) - Returns activated WAF config
 
 ### [Artifacts](docs/sdks/artifacts/README.md)
 
@@ -200,6 +225,7 @@ run();
 * [downloadArtifact](docs/sdks/artifacts/README.md#downloadartifact) - Download a cache artifact
 * [artifactExists](docs/sdks/artifacts/README.md#artifactexists) - Check if a cache artifact exists
 * [artifactQuery](docs/sdks/artifacts/README.md#artifactquery) - Query information about an artifact
+* [deleteAllArtifacts](docs/sdks/artifacts/README.md#deleteallartifacts) - Delete all cache artifacts
 
 ### [Authentication](docs/sdks/authentication/README.md)
 
@@ -227,6 +253,7 @@ run();
 
 * [getCertById](docs/sdks/certs/README.md#getcertbyid) - Get cert by id
 * [removeCert](docs/sdks/certs/README.md#removecert) - Remove cert
+* [getCerts](docs/sdks/certs/README.md#getcerts) - Get certs
 * [issueCert](docs/sdks/certs/README.md#issuecert) - Issue a new cert
 * [uploadCert](docs/sdks/certs/README.md#uploadcert) - Upload a cert
 
@@ -254,9 +281,8 @@ run();
 ### [Connect](docs/sdks/connect/README.md)
 
 * [createConnector](docs/sdks/connect/README.md#createconnector) - Create a connector
-* [getConnectorToken](docs/sdks/connect/README.md#getconnectortoken) - Get a Connect token
 * [importConnectorTokens](docs/sdks/connect/README.md#importconnectortokens) - Import Connect tokens
-* [createConnectorAuthorizationRequest](docs/sdks/connect/README.md#createconnectorauthorizationrequest) - Create a Connect authorization request
+* [createConnectorInstallationRequest](docs/sdks/connect/README.md#createconnectorinstallationrequest) - Create a Connect installation request
 
 ### [Deployments](docs/sdks/deployments/README.md)
 
@@ -385,6 +411,10 @@ run();
 * [createSDKKey](docs/sdks/featureflags/README.md#createsdkkey) - Create an SDK key
 * [deleteSDKKey](docs/sdks/featureflags/README.md#deletesdkkey) - Delete an SDK key
 
+### [Firewall](docs/sdks/firewall/README.md)
+
+* [generateFirewallRule](docs/sdks/firewall/README.md#generatefirewallrule) - Generate a firewall rule from natural language
+
 ### [Integrations](docs/sdks/integrations/README.md)
 
 * [updateIntegrationDeploymentAction](docs/sdks/integrations/README.md#updateintegrationdeploymentaction) - Update deployment integration action
@@ -476,7 +506,10 @@ run();
 ### [Projects](docs/sdks/projects/README.md)
 
 * [getProjects](docs/sdks/projects/README.md#getprojects) - Retrieve a list of projects
+* [getProjectTrace](docs/sdks/projects/README.md#getprojecttrace) - Get a project trace by request ID
 * [createProject](docs/sdks/projects/README.md#createproject) - Create a new project
+* [getProjectToken](docs/sdks/projects/README.md#getprojecttoken) - Generate a project OIDC token
+* [createTraceSession](docs/sdks/projects/README.md#createtracesession) - Create a trace session token for a deployment
 * [getProject](docs/sdks/projects/README.md#getproject) - Find a project by id or name
 * [updateProject](docs/sdks/projects/README.md#updateproject) - Update an existing project
 * [deleteProject](docs/sdks/projects/README.md#deleteproject) - Delete a Project
@@ -643,10 +676,18 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`aliasesListAliases`](docs/sdks/aliases/README.md#listaliases) - List aliases
 - [`aliasesListDeploymentAliases`](docs/sdks/aliases/README.md#listdeploymentaliases) - List Deployment Aliases
 - [`aliasesPatchUrlProtectionBypass`](docs/sdks/aliases/README.md#patchurlprotectionbypass) - Update the protection bypass for a URL
+- [`apiAiGatewayCreateAiGatewayRule`](docs/sdks/apiaigateway/README.md#createaigatewayrule) - Create rule
+- [`apiAiGatewayDeleteAiGatewayRule`](docs/sdks/apiaigateway/README.md#deleteaigatewayrule) - Delete rule
+- [`apiAiGatewayListAiGatewayRules`](docs/sdks/apiaigateway/README.md#listaigatewayrules) - List rules
+- [`apiAiGatewayUpdateAiGatewayRule`](docs/sdks/apiaigateway/README.md#updateaigatewayrule) - Update rule
 - [`apiObservabilityGetObservabilityConfigurationProjects`](docs/sdks/apiobservability/README.md#getobservabilityconfigurationprojects) - Lists disabled Observability Plus projects
 - [`apiObservabilityUpdateObservabilityConfigurationProject`](docs/sdks/apiobservability/README.md#updateobservabilityconfigurationproject) - Updates a disabled Observability Plus project setting
+- [`apiSecurityCreateSecurityFirewallConfigByConfigVersionActivate`](docs/sdks/apisecurity/README.md#createsecurityfirewallconfigbyconfigversionactivate) - Returns activated WAF config
+- [`apiSecurityDeleteSecurityFirewallConfigByConfigVersion`](docs/sdks/apisecurity/README.md#deletesecurityfirewallconfigbyconfigversion) - Returns activated WAF config
+- [`apiSecurityGetSecurityFirewallConfig`](docs/sdks/apisecurity/README.md#getsecurityfirewallconfig) - Returns activated WAF config
 - [`artifactsArtifactExists`](docs/sdks/artifacts/README.md#artifactexists) - Check if a cache artifact exists
 - [`artifactsArtifactQuery`](docs/sdks/artifacts/README.md#artifactquery) - Query information about an artifact
+- [`artifactsDeleteAllArtifacts`](docs/sdks/artifacts/README.md#deleteallartifacts) - Delete all cache artifacts
 - [`artifactsDownloadArtifact`](docs/sdks/artifacts/README.md#downloadartifact) - Download a cache artifact
 - [`artifactsRecordEvents`](docs/sdks/artifacts/README.md#recordevents) - Record an artifacts cache usage event
 - [`artifactsStatus`](docs/sdks/artifacts/README.md#status) - Get status of Remote Caching for this principal
@@ -664,6 +705,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`bulkRedirectsStageRedirects`](docs/sdks/bulkredirects/README.md#stageredirects) - Stages new redirects for a project.
 - [`bulkRedirectsUpdateVersion`](docs/sdks/bulkredirects/README.md#updateversion) - Promote a staging version to production or restore a previous production version.
 - [`certsGetCertById`](docs/sdks/certs/README.md#getcertbyid) - Get cert by id
+- [`certsGetCerts`](docs/sdks/certs/README.md#getcerts) - Get certs
 - [`certsIssueCert`](docs/sdks/certs/README.md#issuecert) - Issue a new cert
 - [`certsRemoveCert`](docs/sdks/certs/README.md#removecert) - Remove cert
 - [`certsUploadCert`](docs/sdks/certs/README.md#uploadcert) - Upload a cert
@@ -678,9 +720,14 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`checksV2UpdateDeploymentCheckRun`](docs/sdks/checksv2/README.md#updatedeploymentcheckrun) - Update a check run
 - [`checksV2UpdateProjectCheck`](docs/sdks/checksv2/README.md#updateprojectcheck) - Update a check
 - [`connectCreateConnector`](docs/sdks/connect/README.md#createconnector) - Create a connector
-- [`connectCreateConnectorAuthorizationRequest`](docs/sdks/connect/README.md#createconnectorauthorizationrequest) - Create a Connect authorization request
-- [`connectGetConnectorToken`](docs/sdks/connect/README.md#getconnectortoken) - Get a Connect token
+- [`connectCreateConnectorInstallationRequest`](docs/sdks/connect/README.md#createconnectorinstallationrequest) - Create a Connect installation request
 - [`connectImportConnectorTokens`](docs/sdks/connect/README.md#importconnectortokens) - Import Connect tokens
+- [`createApiKeys`](docs/sdks/vercel/README.md#createapikeys)
+- [`createObservabilityQuery`](docs/sdks/vercel/README.md#createobservabilityquery)
+- [`createSpeedInsightsToggle`](docs/sdks/vercel/README.md#createspeedinsightstoggle)
+- [`createStorageStoresBlob`](docs/sdks/vercel/README.md#createstoragestoresblob)
+- [`createWebInsightsToggle`](docs/sdks/vercel/README.md#createwebinsightstoggle)
+- [`deleteStorageStoresBlobById`](docs/sdks/vercel/README.md#deletestoragestoresblobbyid)
 - [`deploymentsCancelDeployment`](docs/sdks/deployments/README.md#canceldeployment) - Cancel a deployment
 - [`deploymentsCreateDeployment`](docs/sdks/deployments/README.md#createdeployment) - Create a new deployment
 - [`deploymentsDeleteDeployment`](docs/sdks/deployments/README.md#deletedeployment) - Delete a Deployment
@@ -782,6 +829,11 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`featureFlagsUpdateFlag`](docs/sdks/featureflags/README.md#updateflag) - Update a flag
 - [`featureFlagsUpdateFlagSegment`](docs/sdks/featureflags/README.md#updateflagsegment) - Update a segment
 - [`featureFlagsUpdateFlagSettings`](docs/sdks/featureflags/README.md#updateflagsettings) - Update project flag settings
+- [`firewallGenerateFirewallRule`](docs/sdks/firewall/README.md#generatefirewallrule) - Generate a firewall rule from natural language
+- [`getDomainsRecordsByRecordId`](docs/sdks/vercel/README.md#getdomainsrecordsbyrecordid)
+- [`getObservabilitySchema`](docs/sdks/vercel/README.md#getobservabilityschema)
+- [`getObservabilitySchemaByMetricId`](docs/sdks/vercel/README.md#getobservabilityschemabymetricid)
+- [`getStorageStoresById`](docs/sdks/vercel/README.md#getstoragestoresbyid)
 - [`integrationsConnectIntegrationResourceToProject`](docs/sdks/integrations/README.md#connectintegrationresourcetoproject) - Connect integration resource to project
 - [`integrationsCreateIntegrationStoreDirect`](docs/sdks/integrations/README.md#createintegrationstoredirect) - Create integration store (free and paid plans)
 - [`integrationsDeleteConfiguration`](docs/sdks/integrations/README.md#deleteconfiguration) - Delete an integration configuration
@@ -852,6 +904,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`projectsCreateProject`](docs/sdks/projects/README.md#createproject) - Create a new project
 - [`projectsCreateProjectEnv`](docs/sdks/projects/README.md#createprojectenv) - Create one or more environment variables
 - [`projectsCreateProjectTransferRequest`](docs/sdks/projects/README.md#createprojecttransferrequest) - Create project transfer request
+- [`projectsCreateTraceSession`](docs/sdks/projects/README.md#createtracesession) - Create a trace session token for a deployment
 - [`projectsDeleteProject`](docs/sdks/projects/README.md#deleteproject) - Delete a Project
 - [`projectsEditProjectEnv`](docs/sdks/projects/README.md#editprojectenv) - Edit an environment variable
 - [`projectsFilterProjectEnvs`](docs/sdks/projects/README.md#filterprojectenvs) - Retrieve the environment variables of a project by id or name
@@ -860,6 +913,8 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`projectsGetProjectDomains`](docs/sdks/projects/README.md#getprojectdomains) - Retrieve project domains by project by id or name
 - [`projectsGetProjectEnv`](docs/sdks/projects/README.md#getprojectenv) - Retrieve the decrypted value of an environment variable of a project by id
 - [`projectsGetProjects`](docs/sdks/projects/README.md#getprojects) - Retrieve a list of projects
+- [`projectsGetProjectToken`](docs/sdks/projects/README.md#getprojecttoken) - Generate a project OIDC token
+- [`projectsGetProjectTrace`](docs/sdks/projects/README.md#getprojecttrace) - Get a project trace by request ID
 - [`projectsListPromoteAliases`](docs/sdks/projects/README.md#listpromotealiases) - Gets a list of aliases with status for the current promote
 - [`projectsMoveProjectDomain`](docs/sdks/projects/README.md#moveprojectdomain) - Move a project domain
 - [`projectsPauseProject`](docs/sdks/projects/README.md#pauseproject) - Pause a project
@@ -875,6 +930,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`projectsUpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescription`](docs/sdks/projects/README.md#updateprojectsbyprojectidrollbackbydeploymentidupdatedescription) - Updates the description for a rollback
 - [`projectsUploadProjectAvatar`](docs/sdks/projects/README.md#uploadprojectavatar) - Upload a project avatar
 - [`projectsVerifyProjectDomain`](docs/sdks/projects/README.md#verifyprojectdomain) - Verify project domain
+- [`replaceDomainsByDomainRecords`](docs/sdks/vercel/README.md#replacedomainsbydomainrecords)
 - [`rollingReleaseApproveRollingReleaseStage`](docs/sdks/rollingrelease/README.md#approverollingreleasestage) - Update the active rolling release to the next stage for a project
 - [`rollingReleaseCompleteRollingRelease`](docs/sdks/rollingrelease/README.md#completerollingrelease) - Complete the rolling release for the project
 - [`rollingReleaseDeleteRollingReleaseConfig`](docs/sdks/rollingrelease/README.md#deleterollingreleaseconfig) - Delete rolling release configuration
@@ -1011,15 +1067,11 @@ To change the default retry strategy for a single API call, simply provide a ret
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
-const vercel = new Vercel({
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-});
+const vercel = new Vercel();
 
 async function run() {
-  const result = await vercel.accessGroups.readAccessGroup({
-    idOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
+  const result = await vercel.replaceDomainsByDomainRecords({
+    domain: "example.com",
   }, {
     retries: {
       strategy: "backoff",
@@ -1055,14 +1107,11 @@ const vercel = new Vercel({
     },
     retryConnectionErrors: false,
   },
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const result = await vercel.accessGroups.readAccessGroup({
-    idOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
+  const result = await vercel.replaceDomainsByDomainRecords({
+    domain: "example.com",
   });
 
   console.log(result);
@@ -1090,17 +1139,17 @@ run();
 ### Example
 ```typescript
 import { Vercel } from "@vercel/sdk";
-import { HttpApiDecodeError } from "@vercel/sdk/models/httpapidecodeerror.js";
+import { CreateApiKeysResponseResponseBody } from "@vercel/sdk/models/createapikeysop.js";
 import { VercelError } from "@vercel/sdk/models/vercelerror.js.js";
 
-const vercel = new Vercel({
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-});
+const vercel = new Vercel();
 
 async function run() {
   try {
-    const result = await vercel.domainsRegistrar.getSupportedTlds({
-      teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    const result = await vercel.createApiKeys({
+      purpose: "<value>",
+      projectId: "prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
+      name: "API Key for App 123",
     });
 
     console.log(result);
@@ -1113,9 +1162,8 @@ async function run() {
       console.log(error.headers);
 
       // Depending on the method different errors may be thrown
-      if (error instanceof HttpApiDecodeError) {
-        console.log(error.data$.issues); // Issue[]
-        console.log(error.data$.message); // string
+      if (error instanceof CreateApiKeysResponseResponseBody) {
+        console.log(error.data$.error); // models.CreateApiKeysError
       }
     }
   }
@@ -1129,7 +1177,7 @@ run();
 **Primary error:**
 * [`VercelError`](./src/models/vercelerror.ts): The base class for HTTP error responses.
 
-<details><summary>Less common errors (32)</summary>
+<details><summary>Less common errors (36)</summary>
 
 <br />
 
@@ -1142,32 +1190,36 @@ run();
 
 
 **Inherit from [`VercelError`](./src/models/vercelerror.ts)**:
-* [`HttpApiDecodeError`](./src/models/httpapidecodeerror.ts): The request did not match the expected schema. Status code `400`. Applicable to 17 of 330 methods.*
-* [`Unauthorized`](./src/models/unauthorized.ts): Unauthorized. Status code `401`. Applicable to 17 of 330 methods.*
-* [`NotAuthorizedForScope`](./src/models/notauthorizedforscope.ts): NotAuthorizedForScope. Status code `403`. Applicable to 17 of 330 methods.*
-* [`TooManyRequests`](./src/models/toomanyrequests.ts): TooManyRequests. Status code `429`. Applicable to 17 of 330 methods.*
-* [`InternalServerError`](./src/models/internalservererror.ts): InternalServerError. Status code `500`. Applicable to 17 of 330 methods.*
-* [`Forbidden`](./src/models/forbidden.ts): NotAuthorizedForScope. Status code `403`. Applicable to 10 of 330 methods.*
-* [`TldNotSupported`](./src/models/tldnotsupported.ts): The TLD is not currently supported. Status code `400`. Applicable to 7 of 330 methods.*
-* [`DomainTooShort`](./src/models/domaintooshort.ts): The domain name (excluding the TLD) is too short. Status code `400`. Applicable to 5 of 330 methods.*
-* [`DomainNotRegistered`](./src/models/domainnotregistered.ts): The domain is not registered with Vercel. Status code `400`. Applicable to 5 of 330 methods.*
-* [`DomainNotFound`](./src/models/domainnotfound.ts): The domain was not found in our system. Status code `404`. Applicable to 5 of 330 methods.*
-* [`BadRequest`](./src/models/badrequest.ts): There was something wrong with the request. Status code `400`. Applicable to 4 of 330 methods.*
-* [`ExpectedPriceMismatch`](./src/models/expectedpricemismatch.ts): The expected price passed does not match the actual price. Status code `400`. Applicable to 4 of 330 methods.*
-* [`DomainNotAvailable`](./src/models/domainnotavailable.ts): The domain is not available. Status code `400`. Applicable to 4 of 330 methods.*
-* [`NotFound`](./src/models/notfound.ts): NotFound. Status code `404`. Applicable to 3 of 330 methods.*
-* [`OrderTooExpensive`](./src/models/ordertooexpensive.ts): The total price of the order is too high. Status code `400`. Applicable to 2 of 330 methods.*
-* [`InvalidAdditionalContactInfo`](./src/models/invalidadditionalcontactinfo.ts): Additional contact information provided for the TLD is invalid. Status code `400`. Applicable to 2 of 330 methods.*
-* [`AdditionalContactInfoRequired`](./src/models/additionalcontactinforequired.ts): Additional contact information is required for the TLD. Status code `400`. Applicable to 2 of 330 methods.*
-* [`LanguageCodeRequired`](./src/models/languagecoderequired.ts): A language code is required for punycode domains. Status code `400`. Applicable to 2 of 330 methods.*
-* [`TooManyDomains`](./src/models/toomanydomains.ts): The number of domains in the order is too high. Status code `400`. Applicable to 1 of 330 methods.*
-* [`DuplicateDomains`](./src/models/duplicatedomains.ts): Duplicate domains were provided. Status code `400`. Applicable to 1 of 330 methods.*
-* [`DomainAlreadyOwned`](./src/models/domainalreadyowned.ts): The domain is already owned by another team or user. Status code `400`. Applicable to 1 of 330 methods.*
-* [`DNSSECEnabled`](./src/models/dnssecenabled.ts): The operation cannot be completed because DNSSEC is enabled for the domain. Status code `400`. Applicable to 1 of 330 methods.*
-* [`DomainAlreadyRenewing`](./src/models/domainalreadyrenewing.ts): The domain is already renewing. Status code `400`. Applicable to 1 of 330 methods.*
-* [`DomainNotRenewable`](./src/models/domainnotrenewable.ts): The domain is not renewable. Status code `400`. Applicable to 1 of 330 methods.*
-* [`BoughtTooRecently`](./src/models/boughttoorecently.ts): The domain was bought too recently to determine verification status. Status code `400`. Applicable to 1 of 330 methods.*
-* [`DomainCannotBeTransferedOutUntil`](./src/models/domaincannotbetransferedoutuntil.ts): The domain cannot be transfered out until the specified date. Status code `409`. Applicable to 1 of 330 methods.*
+* [`HttpApiDecodeError`](./src/models/httpapidecodeerror.ts): The request did not match the expected schema. Status code `400`. Applicable to 17 of 353 methods.*
+* [`Unauthorized`](./src/models/unauthorized.ts): Unauthorized. Status code `401`. Applicable to 17 of 353 methods.*
+* [`NotAuthorizedForScope`](./src/models/notauthorizedforscope.ts): NotAuthorizedForScope. Status code `403`. Applicable to 17 of 353 methods.*
+* [`TooManyRequests`](./src/models/toomanyrequests.ts): TooManyRequests. Status code `429`. Applicable to 17 of 353 methods.*
+* [`InternalServerError`](./src/models/internalservererror.ts): InternalServerError. Status code `500`. Applicable to 17 of 353 methods.*
+* [`Forbidden`](./src/models/forbidden.ts): NotAuthorizedForScope. Status code `403`. Applicable to 10 of 353 methods.*
+* [`TldNotSupported`](./src/models/tldnotsupported.ts): The TLD is not currently supported. Status code `400`. Applicable to 7 of 353 methods.*
+* [`DomainTooShort`](./src/models/domaintooshort.ts): The domain name (excluding the TLD) is too short. Status code `400`. Applicable to 5 of 353 methods.*
+* [`DomainNotRegistered`](./src/models/domainnotregistered.ts): The domain is not registered with Vercel. Status code `400`. Applicable to 5 of 353 methods.*
+* [`DomainNotFound`](./src/models/domainnotfound.ts): The domain was not found in our system. Status code `404`. Applicable to 5 of 353 methods.*
+* [`BadRequest`](./src/models/badrequest.ts): There was something wrong with the request. Status code `400`. Applicable to 4 of 353 methods.*
+* [`ExpectedPriceMismatch`](./src/models/expectedpricemismatch.ts): The expected price passed does not match the actual price. Status code `400`. Applicable to 4 of 353 methods.*
+* [`DomainNotAvailable`](./src/models/domainnotavailable.ts): The domain is not available. Status code `400`. Applicable to 4 of 353 methods.*
+* [`NotFound`](./src/models/notfound.ts): NotFound. Status code `404`. Applicable to 3 of 353 methods.*
+* [`OrderTooExpensive`](./src/models/ordertooexpensive.ts): The total price of the order is too high. Status code `400`. Applicable to 2 of 353 methods.*
+* [`InvalidAdditionalContactInfo`](./src/models/invalidadditionalcontactinfo.ts): Additional contact information provided for the TLD is invalid. Status code `400`. Applicable to 2 of 353 methods.*
+* [`AdditionalContactInfoRequired`](./src/models/additionalcontactinforequired.ts): Additional contact information is required for the TLD. Status code `400`. Applicable to 2 of 353 methods.*
+* [`LanguageCodeRequired`](./src/models/languagecoderequired.ts): A language code is required for punycode domains. Status code `400`. Applicable to 2 of 353 methods.*
+* [`TooManyDomains`](./src/models/toomanydomains.ts): The number of domains in the order is too high. Status code `400`. Applicable to 1 of 353 methods.*
+* [`DuplicateDomains`](./src/models/duplicatedomains.ts): Duplicate domains were provided. Status code `400`. Applicable to 1 of 353 methods.*
+* [`DomainAlreadyOwned`](./src/models/domainalreadyowned.ts): The domain is already owned by another team or user. Status code `400`. Applicable to 1 of 353 methods.*
+* [`DNSSECEnabled`](./src/models/dnssecenabled.ts): The operation cannot be completed because DNSSEC is enabled for the domain. Status code `400`. Applicable to 1 of 353 methods.*
+* [`DomainAlreadyRenewing`](./src/models/domainalreadyrenewing.ts): The domain is already renewing. Status code `400`. Applicable to 1 of 353 methods.*
+* [`DomainNotRenewable`](./src/models/domainnotrenewable.ts): The domain is not renewable. Status code `400`. Applicable to 1 of 353 methods.*
+* [`BoughtTooRecently`](./src/models/boughttoorecently.ts): The domain was bought too recently to determine verification status. Status code `400`. Applicable to 1 of 353 methods.*
+* [`CreateApiKeysResponseResponseBody`](./src/models/createapikeysresponseresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 353 methods.*
+* [`CreateApiKeysResponse403ResponseBody`](./src/models/createapikeysresponse403responsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 353 methods.*
+* [`DomainCannotBeTransferedOutUntil`](./src/models/domaincannotbetransferedoutuntil.ts): The domain cannot be transfered out until the specified date. Status code `409`. Applicable to 1 of 353 methods.*
+* [`CreateApiKeysResponse429ResponseBody`](./src/models/createapikeysresponse429responsebody.ts): . Status code `429`. Applicable to 1 of 353 methods.*
+* [`CreateApiKeysResponse500ResponseBody`](./src/models/createapikeysresponse500responsebody.ts): . Status code `500`. Applicable to 1 of 353 methods.*
 * [`ResponseValidationError`](./src/models/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>
@@ -1186,14 +1238,11 @@ import { Vercel } from "@vercel/sdk";
 
 const vercel = new Vercel({
   serverURL: "https://api.vercel.com",
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const result = await vercel.accessGroups.readAccessGroup({
-    idOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
+  const result = await vercel.replaceDomainsByDomainRecords({
+    domain: "example.com",
   });
 
   console.log(result);

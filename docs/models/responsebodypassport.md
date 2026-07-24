@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyPassport } from "@vercel/sdk/models/getprojectsresponsebodyprojectsoidctokenclaims.js";
+import { ResponseBodyPassport } from "@vercel/sdk/models/getprojectsblockhistoryprojectsroute.js";
 
 let value: ResponseBodyPassport = {
   deploymentType: "preview",

@@ -5,29 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndNinety } from "@vercel/sdk/models/twohundredandfiftyeight.js";
+import { TwoHundredAndNinety } from "@vercel/sdk/models/twohundredandeightyfour.js";
 
 let value: TwoHundredAndNinety = {
-  budget: {
-    budgetItem: {
-      type: "fixed",
-      fixedBudget: 5322.24,
-      previousSpend: [],
-      notifiedAt: [
-        7813.67,
-        6171.37,
-      ],
-      createdAt: 7480.89,
-      isActive: true,
-      teamId: "<id>",
-      id: "<id>",
-    },
-  },
+  projectId: "<id>",
+  projectName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
-| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `budget`                                                             | [models.UserEventPayloadBudget](../models/usereventpayloadbudget.md) | :heavy_check_mark:                                                   | N/A                                                                  |
+| Field                                              | Type                                               | Required                                           | Description                                        |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| `projectId`                                        | *string*                                           | :heavy_check_mark:                                 | N/A                                                |
+| `projectName`                                      | *string*                                           | :heavy_check_mark:                                 | N/A                                                |
+| `trustedIps`                                       | [models.TrustedIps](../models/trustedips.md)       | :heavy_minus_sign:                                 | N/A                                                |
+| `oldTrustedIps`                                    | [models.OldTrustedIps](../models/oldtrustedips.md) | :heavy_minus_sign:                                 | N/A                                                |
+| `addedAddresses`                                   | *string*[]                                         | :heavy_minus_sign:                                 | N/A                                                |
+| `removedAddresses`                                 | *string*[]                                         | :heavy_minus_sign:                                 | N/A                                                |

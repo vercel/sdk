@@ -5,7 +5,7 @@ When elastic concurrency is used for this deployment, a value is set. The value 
 ## Example Usage
 
 ```typescript
-import { ElasticConcurrency } from "@vercel/sdk/models/createdeploymentresponsebody.js";
+import { ElasticConcurrency } from "@vercel/sdk/models/canceldeploymentresponsebody.js";
 
 let value: ElasticConcurrency = "SKIP_QUEUE";
 ```

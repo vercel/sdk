@@ -1,0 +1,19 @@
+# GetSecurityFirewallConfigApiSecurityManagedRules
+
+## Example Usage
+
+```typescript
+import { GetSecurityFirewallConfigApiSecurityManagedRules } from "@vercel/sdk/models/getsecurityfirewallconfigresponsebody.js";
+
+let value: GetSecurityFirewallConfigApiSecurityManagedRules = {};
+```
+
+## Fields
+
+| Field                                                                                                                        | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `botProtection`                                                                                                              | [models.GetSecurityFirewallConfigBotProtection](../models/getsecurityfirewallconfigbotprotection.md)                         | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |
+| `aiBots`                                                                                                                     | [models.GetSecurityFirewallConfigApiSecurityAiBots](../models/getsecurityfirewallconfigapisecurityaibots.md)                 | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |
+| `owasp`                                                                                                                      | [models.GetSecurityFirewallConfigApiSecurityOwasp](../models/getsecurityfirewallconfigapisecurityowasp.md)                   | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |
+| `vercelRuleset`                                                                                                              | [models.GetSecurityFirewallConfigApiSecurityVercelRuleset](../models/getsecurityfirewallconfigapisecurityvercelruleset.md)   | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |
+| `trafficSources`                                                                                                             | [models.GetSecurityFirewallConfigApiSecurityTrafficSources](../models/getsecurityfirewallconfigapisecuritytrafficsources.md) | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |

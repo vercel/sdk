@@ -5,23 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSixtySeven } from "@vercel/sdk/models/twohundredandfiftyeight.js";
+import { TwoHundredAndSixtySeven } from "@vercel/sdk/models/twohundredandeleven.js";
 
 let value: TwoHundredAndSixtySeven = {
   projectId: "<id>",
   projectName: "<value>",
-  next: {
-    skewProtectionMaxAge: 8665.69,
-  },
-  previous: {},
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `next`                                                                         | [models.UserEventPayload267Next](../models/usereventpayload267next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload267Previous](../models/usereventpayload267previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `projectId`                                                    | *string*                                                       | :heavy_check_mark:                                             | N/A                                                            |
+| `projectName`                                                  | *string*                                                       | :heavy_check_mark:                                             | N/A                                                            |
+| `optionsAllowlist`                                             | [models.OptionsAllowlist](../models/optionsallowlist.md)       | :heavy_minus_sign:                                             | N/A                                                            |
+| `oldOptionsAllowlist`                                          | [models.OldOptionsAllowlist](../models/oldoptionsallowlist.md) | :heavy_minus_sign:                                             | N/A                                                            |

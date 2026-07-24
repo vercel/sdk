@@ -5,21 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFifteen } from "@vercel/sdk/models/twohundredandfiftyeight.js";
+import { ThreeHundredAndFifteen } from "@vercel/sdk/models/twohundredandeightyfour.js";
 
-let value: ThreeHundredAndFifteen = {};
+let value: ThreeHundredAndFifteen = {
+  transferRequestCode: "<value>",
+  store: {
+    id: "<id>",
+    type: "edge-config",
+  },
+  destinationTeamId: "<id>",
+  destinationTeamName: "<value>",
+};
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `directoryType`                                | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `ssoType`                                      | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `invitedUser`                                  | [models.InvitedUser](../models/inviteduser.md) | :heavy_minus_sign:                             | N/A                                            |
-| `invitedEmail`                                 | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `invitationRole`                               | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `entitlements`                                 | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
-| `invitedUid`                                   | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `origin`                                       | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `teamSlug`                                     | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| Field                                            | Type                                             | Required                                         | Description                                      |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| `transferRequestCode`                            | *string*                                         | :heavy_check_mark:                               | N/A                                              |
+| `store`                                          | [models.PayloadStore](../models/payloadstore.md) | :heavy_check_mark:                               | N/A                                              |
+| `destinationTeamId`                              | *string*                                         | :heavy_check_mark:                               | N/A                                              |
+| `destinationTeamName`                            | *string*                                         | :heavy_check_mark:                               | N/A                                              |

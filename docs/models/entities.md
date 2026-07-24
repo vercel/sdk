@@ -5,7 +5,7 @@ A list of "entities" within the event `text`. Useful for enhancing the displayed
 ## Example Usage
 
 ```typescript
-import { Entities } from "@vercel/sdk/models/threehundredandeighteen.js";
+import { Entities } from "@vercel/sdk/models/threehundredandfortyone.js";
 
 let value: Entities = {
   type: "author",
@@ -18,6 +18,6 @@ let value: Entities = {
 
 | Field                                                                 | Type                                                                  | Required                                                              | Description                                                           | Example                                                               |
 | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| `type`                                                                | [models.UserEventType](../models/usereventtype.md)                    | :heavy_check_mark:                                                    | The type of entity.                                                   | author                                                                |
+| `type`                                                                | [models.UserEventEntitiesType](../models/userevententitiestype.md)    | :heavy_check_mark:                                                    | The type of entity.                                                   | author                                                                |
 | `start`                                                               | *number*                                                              | :heavy_check_mark:                                                    | The index of where the entity begins within the `text` (inclusive).   | 0                                                                     |
 | `end`                                                                 | *number*                                                              | :heavy_check_mark:                                                    | The index of where the entity ends within the `text` (non-inclusive). | 3                                                                     |

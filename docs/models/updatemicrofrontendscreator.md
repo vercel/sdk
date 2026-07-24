@@ -1,23 +1,53 @@
 # UpdateMicrofrontendsCreator
 
-## Example Usage
+
+## Supported Types
+
+### `models.UpdateMicrofrontendsCreator1`
 
 ```typescript
-import { UpdateMicrofrontendsCreator } from "@vercel/sdk/models/updatemicrofrontendspermissions.js";
-
-let value: UpdateMicrofrontendsCreator = {
-  email: "Amalia_Schamberger56@gmail.com",
-  uid: "<id>",
-  username: "Clotilde_Bins33",
+const value: models.UpdateMicrofrontendsCreator1 = {
+  type: "user",
+  via: {
+    type: "app",
+    app: {
+      id: "<id>",
+    },
+  },
+  user: {
+    id: "<id>",
+  },
 };
 ```
 
-## Fields
+### `models.UpdateMicrofrontendsCreator2`
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `email`            | *string*           | :heavy_check_mark: | N/A                |
-| `githubLogin`      | *string*           | :heavy_minus_sign: | N/A                |
-| `gitlabLogin`      | *string*           | :heavy_minus_sign: | N/A                |
-| `uid`              | *string*           | :heavy_check_mark: | N/A                |
-| `username`         | *string*           | :heavy_check_mark: | N/A                |
+```typescript
+const value: models.UpdateMicrofrontendsCreator2 = {
+  type: "app",
+  app: {
+    id: "<id>",
+  },
+};
+```
+
+### `models.UpdateMicrofrontendsCreator3`
+
+```typescript
+const value: models.UpdateMicrofrontendsCreator3 = {
+  type: "integration",
+  integration: {
+    integrationId: "<id>",
+    configurationId: "<id>",
+  },
+};
+```
+
+### `models.UpdateMicrofrontendsCreator4`
+
+```typescript
+const value: models.UpdateMicrofrontendsCreator4 = {
+  type: "system",
+};
+```
+

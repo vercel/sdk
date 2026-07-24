@@ -1,6 +1,6 @@
 # UpdateFirewallConfigRequestBody10
 
-Remove an IP Blocking rule
+Reorder a custom rule
 
 ## Example Usage
 
@@ -10,6 +10,7 @@ import { UpdateFirewallConfigRequestBody10 } from "@vercel/sdk/models/updatefire
 let value: UpdateFirewallConfigRequestBody10 = {
   action: "ip.remove",
   id: "<id>",
+  value: "<value>",
 };
 ```
 
@@ -19,4 +20,4 @@ let value: UpdateFirewallConfigRequestBody10 = {
 | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
 | `action`                                                                                                                             | [models.UpdateFirewallConfigRequestBodySecurityRequest10Action](../models/updatefirewallconfigrequestbodysecurityrequest10action.md) | :heavy_check_mark:                                                                                                                   | N/A                                                                                                                                  |
 | `id`                                                                                                                                 | *string*                                                                                                                             | :heavy_check_mark:                                                                                                                   | N/A                                                                                                                                  |
-| `value`                                                                                                                              | *any*                                                                                                                                | :heavy_minus_sign:                                                                                                                   | N/A                                                                                                                                  |
+| `value`                                                                                                                              | *any*                                                                                                                                | :heavy_check_mark:                                                                                                                   | N/A                                                                                                                                  |

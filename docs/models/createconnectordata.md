@@ -64,7 +64,6 @@ const value: models.TypeSlack = {
 
 ```typescript
 const value: models.TypeSnowflake = {
-  clientName: "<value>",
   accountIdentifier: "<value>",
 };
 ```
@@ -72,9 +71,7 @@ const value: models.TypeSnowflake = {
 ### `models.TypeSnowflakeWif`
 
 ```typescript
-const value: models.TypeSnowflakeWif = {
-  clientName: "<value>",
-};
+const value: models.TypeSnowflakeWif = {};
 ```
 
 ### `{ [k: string]: any }`

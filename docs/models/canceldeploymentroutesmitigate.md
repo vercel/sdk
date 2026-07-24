@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentRoutesMitigate } from "@vercel/sdk/models/canceldeploymentgitrepodeploymentsresponseownertype.js";
+import { CancelDeploymentRoutesMitigate } from "@vercel/sdk/models/canceldeploymentgitrepoownertype.js";
 
 let value: CancelDeploymentRoutesMitigate = {
   action: "challenge",
@@ -12,6 +12,6 @@ let value: CancelDeploymentRoutesMitigate = {
 
 ## Fields
 
-| Field                                                                                                  | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
-| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| `action`                                                                                               | [models.CancelDeploymentRoutesDeploymentsAction](../models/canceldeploymentroutesdeploymentsaction.md) | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `action`                                                                         | [models.CancelDeploymentRoutesAction](../models/canceldeploymentroutesaction.md) | :heavy_check_mark:                                                               | N/A                                                                              |

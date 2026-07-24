@@ -5,7 +5,7 @@ Specify if the Trusted IPs will apply to every Deployment Target or just Preview
 ## Example Usage
 
 ```typescript
-import { UpdateProjectProjectsRequestRequestBodyDeploymentType } from "@vercel/sdk/models/updateprojectprojectsbranchmatcher.js";
+import { UpdateProjectProjectsRequestRequestBodyDeploymentType } from "@vercel/sdk/models/updateprojectbranchmatcher.js";
 
 let value: UpdateProjectProjectsRequestRequestBodyDeploymentType = "preview";
 ```

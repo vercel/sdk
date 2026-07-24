@@ -15,8 +15,8 @@ import { pathToFunc } from "../lib/url.js";
 import {
   ArtifactQueryRequest,
   ArtifactQueryRequest$outboundSchema,
-  ResponseBody,
-  ResponseBody$inboundSchema,
+  ArtifactQueryResponseBody,
+  ArtifactQueryResponseBody$inboundSchema,
 } from "../models/artifactqueryop.js";
 import {
   ConnectionError,
@@ -46,7 +46,7 @@ export function artifactsArtifactQuery(
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    { [k: string]: ResponseBody | null },
+    { [k: string]: ArtifactQueryResponseBody | null },
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -71,7 +71,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      { [k: string]: ResponseBody | null },
+      { [k: string]: ArtifactQueryResponseBody | null },
       | VercelError
       | ResponseValidationError
       | ConnectionError
@@ -155,7 +155,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    { [k: string]: ResponseBody | null },
+    { [k: string]: ArtifactQueryResponseBody | null },
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -165,8 +165,11 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, z.record(types$.nullable(ResponseBody$inboundSchema))),
-    M.fail([400, 401, 402, 403, "4XX"]),
+    M.json(
+      200,
+      z.record(types$.nullable(ArtifactQueryResponseBody$inboundSchema)),
+    ),
+    M.fail([400, 401, 402, 403, 410, "4XX"]),
     M.fail("5XX"),
   )(response, req);
   if (!result.ok) {

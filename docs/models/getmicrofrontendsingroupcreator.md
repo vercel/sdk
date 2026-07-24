@@ -1,23 +1,54 @@
 # GetMicrofrontendsInGroupCreator
 
-## Example Usage
+
+## Supported Types
+
+### `models.GetMicrofrontendsInGroupCreator1`
 
 ```typescript
-import { GetMicrofrontendsInGroupCreator } from "@vercel/sdk/models/getmicrofrontendsingrouplastrollbacktarget.js";
-
-let value: GetMicrofrontendsInGroupCreator = {
-  email: "Sandrine.Paucek@hotmail.com",
-  uid: "<id>",
-  username: "Liliana_Johnston",
+const value: models.GetMicrofrontendsInGroupCreator1 = {
+  type: "user",
+  via: {
+    type: "integration",
+    integration: {
+      integrationId: "<id>",
+      configurationId: "<id>",
+    },
+  },
+  user: {
+    id: "<id>",
+  },
 };
 ```
 
-## Fields
+### `models.GetMicrofrontendsInGroupCreator2`
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `email`            | *string*           | :heavy_check_mark: | N/A                |
-| `githubLogin`      | *string*           | :heavy_minus_sign: | N/A                |
-| `gitlabLogin`      | *string*           | :heavy_minus_sign: | N/A                |
-| `uid`              | *string*           | :heavy_check_mark: | N/A                |
-| `username`         | *string*           | :heavy_check_mark: | N/A                |
+```typescript
+const value: models.GetMicrofrontendsInGroupCreator2 = {
+  type: "app",
+  app: {
+    id: "<id>",
+  },
+};
+```
+
+### `models.GetMicrofrontendsInGroupCreator3`
+
+```typescript
+const value: models.GetMicrofrontendsInGroupCreator3 = {
+  type: "integration",
+  integration: {
+    integrationId: "<id>",
+    configurationId: "<id>",
+  },
+};
+```
+
+### `models.GetMicrofrontendsInGroupCreator4`
+
+```typescript
+const value: models.GetMicrofrontendsInGroupCreator4 = {
+  type: "system",
+};
+```
+

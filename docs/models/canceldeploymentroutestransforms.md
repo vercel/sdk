@@ -3,46 +3,46 @@
 
 ## Supported Types
 
-### `models.CancelDeploymentTransformsDeployments1`
+### `models.CancelDeploymentTransforms1`
 
 ```typescript
-const value: models.CancelDeploymentTransformsDeployments1 = {
+const value: models.CancelDeploymentTransforms1 = {
   type: "request.headers",
   op: "append",
   target: {
-    key: {},
+    key: "<key>",
   },
 };
 ```
 
-### `models.CancelDeploymentTransformsDeployments1`
+### `models.CancelDeploymentTransforms1`
 
 ```typescript
-const value: models.CancelDeploymentTransformsDeployments1 = {
+const value: models.CancelDeploymentTransforms1 = {
   type: "request.headers",
   op: "append",
   target: {
-    key: {},
+    key: "<key>",
   },
 };
 ```
 
-### `models.CancelDeploymentTransformsDeployments1`
+### `models.CancelDeploymentTransforms1`
 
 ```typescript
-const value: models.CancelDeploymentTransformsDeployments1 = {
+const value: models.CancelDeploymentTransforms1 = {
   type: "request.headers",
   op: "append",
   target: {
-    key: {},
+    key: "<key>",
   },
 };
 ```
 
-### `models.CancelDeploymentTransformsDeployments2`
+### `models.CancelDeploymentTransforms2`
 
 ```typescript
-const value: models.CancelDeploymentTransformsDeployments2 = {
+const value: models.CancelDeploymentTransforms2 = {
   type: "request.path",
   op: "set",
   args: "<value>",

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Missing2 } from "@vercel/sdk/models/createdeploymentvaluedeployments2.js";
+import { Missing2 } from "@vercel/sdk/models/canceldeploymentservicesdeploymentsfunctions.js";
 
 let value: Missing2 = {
   type: "cookie",
@@ -15,6 +15,6 @@ let value: Missing2 = {
 
 | Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
 | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `type`                                                                         | [models.CreateDeploymentMissingType](../models/createdeploymentmissingtype.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `type`                                                                         | [models.CancelDeploymentMissingType](../models/canceldeploymentmissingtype.md) | :heavy_check_mark:                                                             | N/A                                                                            |
 | `key`                                                                          | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `value`                                                                        | *models.CreateDeploymentMissingValue*                                          | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `value`                                                                        | *models.CancelDeploymentMissingValue*                                          | :heavy_minus_sign:                                                             | N/A                                                                            |

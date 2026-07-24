@@ -5,19 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndTwentySix } from "@vercel/sdk/models/onehundredandeightyfive.js";
+import { TwoHundredAndTwentySix } from "@vercel/sdk/models/twohundredandeleven.js";
 
 let value: TwoHundredAndTwentySix = {
-  projectId: "<id>",
-  projectName: "<value>",
-  requireVerifiedCommits: true,
+  name: "<value>",
+  ownerId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                    | Type                     | Required                 | Description              |
-| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
-| `projectId`              | *string*                 | :heavy_check_mark:       | N/A                      |
-| `projectName`            | *string*                 | :heavy_check_mark:       | N/A                      |
-| `requireVerifiedCommits` | *boolean*                | :heavy_check_mark:       | N/A                      |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `ownerId`          | *string*           | :heavy_check_mark: | N/A                |

@@ -386,6 +386,16 @@ export type PatchTeamStrictShareableLinks = {
 };
 
 /**
+ * When enabled, adding, changing, or removing project password protection requires Owner role.
+ */
+export type PatchTeamStrictPasswordProtectionSettings = {
+  /**
+   * Enable or disable requiring Owner role to change project password protection.
+   */
+  enabled: boolean;
+};
+
+/**
  * The NSNB preference for the team.
  */
 export const NsnbConfigPreference = {
@@ -547,6 +557,12 @@ export type PatchTeamRequestBody = {
    * When enabled, creating shareable links requires Owner role.
    */
   strictShareableLinks?: PatchTeamStrictShareableLinks | undefined;
+  /**
+   * When enabled, adding, changing, or removing project password protection requires Owner role.
+   */
+  strictPasswordProtectionSettings?:
+    | PatchTeamStrictPasswordProtectionSettings
+    | undefined;
   nsnbConfig?: NsnbConfig1 | string | undefined;
   defaultProjectJobs?: DefaultProjectJobs1 | string | undefined;
   /**
@@ -1325,6 +1341,32 @@ export function patchTeamStrictShareableLinksToJSON(
 }
 
 /** @internal */
+export type PatchTeamStrictPasswordProtectionSettings$Outbound = {
+  enabled: boolean;
+};
+
+/** @internal */
+export const PatchTeamStrictPasswordProtectionSettings$outboundSchema:
+  z.ZodType<
+    PatchTeamStrictPasswordProtectionSettings$Outbound,
+    z.ZodTypeDef,
+    PatchTeamStrictPasswordProtectionSettings
+  > = z.object({
+    enabled: z.boolean(),
+  });
+
+export function patchTeamStrictPasswordProtectionSettingsToJSON(
+  patchTeamStrictPasswordProtectionSettings:
+    PatchTeamStrictPasswordProtectionSettings,
+): string {
+  return JSON.stringify(
+    PatchTeamStrictPasswordProtectionSettings$outboundSchema.parse(
+      patchTeamStrictPasswordProtectionSettings,
+    ),
+  );
+}
+
+/** @internal */
 export const NsnbConfigPreference$outboundSchema: z.ZodNativeEnum<
   typeof NsnbConfigPreference
 > = z.nativeEnum(NsnbConfigPreference);
@@ -1538,6 +1580,9 @@ export type PatchTeamRequestBody$Outbound = {
     | PatchTeamStrictDeploymentProtectionSettings$Outbound
     | undefined;
   strictShareableLinks?: PatchTeamStrictShareableLinks$Outbound | undefined;
+  strictPasswordProtectionSettings?:
+    | PatchTeamStrictPasswordProtectionSettings$Outbound
+    | undefined;
   nsnbConfig?: NsnbConfig1$Outbound | string | undefined;
   defaultProjectJobs?: DefaultProjectJobs1$Outbound | string | undefined;
   resourceConfig?: PatchTeamResourceConfig$Outbound | undefined;
@@ -1584,6 +1629,9 @@ export const PatchTeamRequestBody$outboundSchema: z.ZodType<
   ).optional(),
   strictShareableLinks: z.lazy(() =>
     PatchTeamStrictShareableLinks$outboundSchema
+  ).optional(),
+  strictPasswordProtectionSettings: z.lazy(() =>
+    PatchTeamStrictPasswordProtectionSettings$outboundSchema
   ).optional(),
   nsnbConfig: smartUnion([z.lazy(() => NsnbConfig1$outboundSchema), z.string()])
     .optional(),

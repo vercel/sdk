@@ -3,29 +3,27 @@
 
 ## Supported Types
 
-### `models.GetDeploymentMicrofrontends1`
+### `models.CreateDeploymentMicrofrontends1`
 
 ```typescript
-const value: models.GetDeploymentMicrofrontends1 = {
+const value: models.CreateDeploymentMicrofrontends1 = {
   defaultAppProjectName: "<value>",
   groupIds: [
     "<value 1>",
     "<value 2>",
-    "<value 3>",
   ],
 };
 ```
 
-### `models.GetDeploymentMicrofrontends2`
+### `models.CreateDeploymentMicrofrontends2`
 
 ```typescript
-const value: models.GetDeploymentMicrofrontends2 = {
+const value: models.CreateDeploymentMicrofrontends2 = {
   isDefaultApp: true,
   defaultAppProjectName: "<value>",
   groupIds: [
     "<value 1>",
     "<value 2>",
-    "<value 3>",
   ],
 };
 ```

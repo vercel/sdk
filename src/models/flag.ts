@@ -392,6 +392,7 @@ export type Flag = {
   permanent?: boolean | undefined;
   tags?: Array<string> | undefined;
   experiment?: Experiment | undefined;
+  updatedBy?: string | undefined;
   variants: Array<Variants>;
   id: string;
   environments: { [k: string]: Environments };
@@ -1267,6 +1268,7 @@ export const Flag$inboundSchema: z.ZodType<Flag, z.ZodTypeDef, unknown> = z
     permanent: types.optional(types.boolean()),
     tags: types.optional(z.array(types.string())),
     experiment: types.optional(z.lazy(() => Experiment$inboundSchema)),
+    updatedBy: types.optional(types.string()),
     variants: z.array(z.lazy(() => Variants$inboundSchema)),
     id: types.string(),
     environments: z.record(z.lazy(() => Environments$inboundSchema)),

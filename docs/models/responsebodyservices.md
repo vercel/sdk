@@ -3,13 +3,13 @@
 
 ## Supported Types
 
-### `models.GetDeploymentServices1`
+### `models.CreateDeploymentServices1`
 
 ```typescript
-const value: models.GetDeploymentServices1 = {
+const value: models.CreateDeploymentServices1 = {
   schema: "experimentalServices",
   name: "<value>",
-  type: "worker",
+  type: "job",
   workspace: "<value>",
   builder: {
     use: "<value>",
@@ -17,10 +17,10 @@ const value: models.GetDeploymentServices1 = {
 };
 ```
 
-### `models.GetDeploymentServices2`
+### `models.CreateDeploymentServices2`
 
 ```typescript
-const value: models.GetDeploymentServices2 = {
+const value: models.CreateDeploymentServices2 = {
   schema: "experimentalServicesV2",
   name: "<value>",
   root: "<value>",

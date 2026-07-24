@@ -3,20 +3,20 @@
 
 ## Supported Types
 
-### `models.CreateDeploymentExperimentalTriggersDeploymentsResponse1`
+### `models.CreateDeploymentExperimentalTriggersDeployments1`
 
 ```typescript
-const value: models.CreateDeploymentExperimentalTriggersDeploymentsResponse1 = {
+const value: models.CreateDeploymentExperimentalTriggersDeployments1 = {
   type: "queue/v1beta",
   consumer: "<value>",
   topic: "<value>",
 };
 ```
 
-### `models.CreateDeploymentExperimentalTriggersDeploymentsResponse2`
+### `models.CreateDeploymentExperimentalTriggersDeployments2`
 
 ```typescript
-const value: models.CreateDeploymentExperimentalTriggersDeploymentsResponse2 = {
+const value: models.CreateDeploymentExperimentalTriggersDeployments2 = {
   type: "queue/v2beta",
   topic: "<value>",
 };

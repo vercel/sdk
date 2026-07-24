@@ -1,0 +1,22 @@
+# GetFirewallConfigRulesetsMitigate
+
+## Example Usage
+
+```typescript
+import { GetFirewallConfigRulesetsMitigate } from "@vercel/sdk/models/getfirewallconfigop.js";
+
+let value: GetFirewallConfigRulesetsMitigate = {
+  action: "bypass",
+};
+```
+
+## Fields
+
+| Field                                                                                                                        | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `action`                                                                                                                     | [models.GetFirewallConfigRulesetsSecurityResponse200Action](../models/getfirewallconfigrulesetssecurityresponse200action.md) | :heavy_check_mark:                                                                                                           | N/A                                                                                                                          |
+| `rateLimit`                                                                                                                  | [models.GetFirewallConfigRulesetsRateLimit](../models/getfirewallconfigrulesetsratelimit.md)                                 | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |
+| `redirect`                                                                                                                   | [models.GetFirewallConfigRulesetsRedirect](../models/getfirewallconfigrulesetsredirect.md)                                   | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |
+| `actionDuration`                                                                                                             | *string*                                                                                                                     | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |
+| `bypassSystem`                                                                                                               | *boolean*                                                                                                                    | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |
+| `logHeaders`                                                                                                                 | *models.GetFirewallConfigRulesetsLogHeaders*                                                                                 | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |

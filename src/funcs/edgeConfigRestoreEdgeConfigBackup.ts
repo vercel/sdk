@@ -176,7 +176,7 @@ async function $do(
     | SDKValidationError
   >(
     M.json(200, RestoreEdgeConfigBackupResponseBody$inboundSchema),
-    M.fail([400, 401, 402, 403, 404, 409, 412, "4XX"]),
+    M.fail([400, 401, 402, 403, 404, 409, 410, 412, "4XX"]),
     M.fail("5XX"),
   )(response, req);
   if (!result.ok) {

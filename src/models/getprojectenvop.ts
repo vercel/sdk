@@ -62,6 +62,20 @@ export type GetProjectEnvResponseBodyProjectsTarget =
   | Array<GetProjectEnvTargetProjects1>
   | GetProjectEnvTargetProjects2;
 
+/**
+ * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+ */
+export const GetProjectEnvResponseBodyProjectsVisibility = {
+  Config: "config",
+  Secret: "secret",
+} as const;
+/**
+ * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+ */
+export type GetProjectEnvResponseBodyProjectsVisibility = ClosedEnum<
+  typeof GetProjectEnvResponseBodyProjectsVisibility
+>;
+
 export type GetProjectEnvContentHintProjects17 = {
   type: "flags-connection-string";
   projectId: string;
@@ -213,6 +227,10 @@ export type GetProjectEnvResponseBody2 = {
   legacyValue?: string | undefined;
   decrypted?: boolean | undefined;
   configurationId?: string | null | undefined;
+  /**
+   * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+   */
+  visibility?: GetProjectEnvResponseBodyProjectsVisibility | undefined;
   contentHint?:
     | GetProjectEnvContentHintProjects1
     | GetProjectEnvContentHintProjects2
@@ -272,6 +290,20 @@ export type GetProjectEnvTarget1 = ClosedEnum<typeof GetProjectEnvTarget1>;
 export type GetProjectEnvResponseBodyTarget =
   | Array<GetProjectEnvTarget1>
   | GetProjectEnvTarget2;
+
+/**
+ * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+ */
+export const GetProjectEnvResponseBodyVisibility = {
+  Config: "config",
+  Secret: "secret",
+} as const;
+/**
+ * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+ */
+export type GetProjectEnvResponseBodyVisibility = ClosedEnum<
+  typeof GetProjectEnvResponseBodyVisibility
+>;
 
 export type GetProjectEnvContentHint17 = {
   type: "flags-connection-string";
@@ -420,6 +452,10 @@ export type GetProjectEnvResponseBody1 = {
    */
   legacyValue?: string | undefined;
   configurationId?: string | null | undefined;
+  /**
+   * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+   */
+  visibility?: GetProjectEnvResponseBodyVisibility | undefined;
   contentHint?:
     | GetProjectEnvContentHint1
     | GetProjectEnvContentHint2
@@ -524,6 +560,11 @@ export function getProjectEnvResponseBodyProjectsTargetFromJSON(
     `Failed to parse 'GetProjectEnvResponseBodyProjectsTarget' from JSON`,
   );
 }
+
+/** @internal */
+export const GetProjectEnvResponseBodyProjectsVisibility$inboundSchema:
+  z.ZodNativeEnum<typeof GetProjectEnvResponseBodyProjectsVisibility> = z
+    .nativeEnum(GetProjectEnvResponseBodyProjectsVisibility);
 
 /** @internal */
 export const GetProjectEnvContentHintProjects17$inboundSchema: z.ZodType<
@@ -977,6 +1018,9 @@ export const GetProjectEnvResponseBody2$inboundSchema: z.ZodType<
   legacyValue: types.optional(types.string()),
   decrypted: types.optional(types.boolean()),
   configurationId: z.nullable(types.string()).optional(),
+  visibility: types.optional(
+    GetProjectEnvResponseBodyProjectsVisibility$inboundSchema,
+  ),
   contentHint: z.nullable(
     z.union([
       z.lazy(() => GetProjectEnvContentHintProjects1$inboundSchema),
@@ -1051,6 +1095,11 @@ export function getProjectEnvResponseBodyTargetFromJSON(
     `Failed to parse 'GetProjectEnvResponseBodyTarget' from JSON`,
   );
 }
+
+/** @internal */
+export const GetProjectEnvResponseBodyVisibility$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectEnvResponseBodyVisibility
+> = z.nativeEnum(GetProjectEnvResponseBodyVisibility);
 
 /** @internal */
 export const GetProjectEnvContentHint17$inboundSchema: z.ZodType<
@@ -1489,6 +1538,7 @@ export const GetProjectEnvResponseBody1$inboundSchema: z.ZodType<
   sunsetSecretId: types.optional(types.string()),
   legacyValue: types.optional(types.string()),
   configurationId: z.nullable(types.string()).optional(),
+  visibility: types.optional(GetProjectEnvResponseBodyVisibility$inboundSchema),
   contentHint: z.nullable(
     z.union([
       z.lazy(() => GetProjectEnvContentHint1$inboundSchema),

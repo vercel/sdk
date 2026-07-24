@@ -13,13 +13,13 @@ let value: CreateConnectorProjects = {
       clientId: "<id>",
       projectId: "<id>",
       environments: [
-        "production",
+        "development",
       ],
-      createdAt: 57.24,
-      updatedAt: 5233.87,
+      createdAt: 5233.87,
+      updatedAt: 2954.52,
     },
   ],
-  hasMore: true,
+  hasMore: false,
 };
 ```
 

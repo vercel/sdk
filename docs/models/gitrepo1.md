@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GitRepo1 } from "@vercel/sdk/models/createdeploymentresponsebody.js";
+import { GitRepo1 } from "@vercel/sdk/models/canceldeploymentresponsebody.js";
 
 let value: GitRepo1 = {
   namespace: "<value>",

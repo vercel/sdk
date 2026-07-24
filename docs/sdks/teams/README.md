@@ -778,6 +778,9 @@ async function run() {
       strictShareableLinks: {
         enabled: true,
       },
+      strictPasswordProtectionSettings: {
+        enabled: true,
+      },
       resourceConfig: {
         buildMachine: {
           default: "standard",
@@ -841,6 +844,9 @@ async function run() {
         enabled: true,
       },
       strictShareableLinks: {
+        enabled: true,
+      },
+      strictPasswordProtectionSettings: {
         enabled: true,
       },
       resourceConfig: {

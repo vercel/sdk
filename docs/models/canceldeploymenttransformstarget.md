@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentTransformsTarget } from "@vercel/sdk/models/canceldeploymentservicesdeploymentsfunctions.js";
+import { CancelDeploymentTransformsTarget } from "@vercel/sdk/models/canceldeploymentgitrepoownertype.js";
 
 let value: CancelDeploymentTransformsTarget = {
   key: {},
@@ -12,6 +12,6 @@ let value: CancelDeploymentTransformsTarget = {
 
 ## Fields
 
-| Field                  | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `key`                  | *models.TransformsKey* | :heavy_check_mark:     | N/A                    |
+| Field                                             | Type                                              | Required                                          | Description                                       |
+| ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
+| `key`                                             | *models.CancelDeploymentTransformsDeploymentsKey* | :heavy_check_mark:                                | N/A                                               |

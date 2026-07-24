@@ -179,7 +179,7 @@ async function $do(
       200,
       ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigResponseBody$inboundSchema,
     ),
-    M.fail([400, 401, 403, 404, 409, 412, "4XX"]),
+    M.fail([400, 401, 403, 404, 409, 410, 412, "4XX"]),
     M.fail("5XX"),
   )(response, req);
   if (!result.ok) {

@@ -16,11 +16,13 @@ export type UnauthorizedData = {
   status: number;
   code: Code;
   message: string;
+  reason?: string | undefined;
 };
 
 export class Unauthorized extends VercelError {
   status: number;
   code: Code;
+  reason?: string | undefined;
 
   /** The original data that was passed to this error instance. */
   data$: UnauthorizedData;
@@ -34,6 +36,7 @@ export class Unauthorized extends VercelError {
     this.data$ = err;
     this.status = err.status;
     this.code = err.code;
+    if (err.reason != null) this.reason = err.reason;
 
     this.name = "Unauthorized";
   }
@@ -53,6 +56,7 @@ export const Unauthorized$inboundSchema: z.ZodType<
   status: types.number(),
   code: Code$inboundSchema,
   message: types.string(),
+  reason: types.optional(types.string()),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),

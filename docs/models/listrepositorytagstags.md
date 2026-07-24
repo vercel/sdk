@@ -9,7 +9,7 @@ let value: ListRepositoryTagsTags = {
   tag: "<value>",
   manifestDigest: "<value>",
   imageId: "<id>",
-  kind: "index",
+  kind: "attestation",
   status: "preparing",
   sizeInBytes: 4483.74,
   createdAt: "1724386967885",

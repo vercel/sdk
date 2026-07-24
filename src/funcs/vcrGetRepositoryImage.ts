@@ -34,7 +34,7 @@ import { Result } from "../types/fp.js";
  * Get a repository image
  *
  * @remarks
- * Fetch an individual image from a repository, including its tags and Dockerfile history entries with discriminated layer details for UI rendering.
+ * Fetch an individual image from a repository, including its tags and Dockerfile history entries with discriminated layer details for UI rendering. The image may be addressed by its internal id (`image_...`) or by its manifest digest (`sha256:...`).
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
  */
@@ -98,14 +98,14 @@ async function $do(
       explode: false,
       charEncoding: "percent",
     }),
-    imageId: encodeSimple("imageId", payload.imageId, {
+    imageIdOrDigest: encodeSimple("imageIdOrDigest", payload.imageIdOrDigest, {
       explode: false,
       charEncoding: "percent",
     }),
   };
-  const path = pathToFunc("/v1/vcr/repository/{idOrName}/images/{imageId}")(
-    pathParams,
-  );
+  const path = pathToFunc(
+    "/v1/vcr/repository/{idOrName}/images/{imageIdOrDigest}",
+  )(pathParams);
 
   const query = encodeFormQuery({
     "projectId": payload.projectId,
@@ -176,7 +176,7 @@ async function $do(
     | SDKValidationError
   >(
     M.json(200, GetRepositoryImageResponseBody$inboundSchema),
-    M.fail([400, 401, 403, 404, "4XX"]),
+    M.fail([400, 401, 403, 404, 410, "4XX"]),
     M.fail("5XX"),
   )(response, req);
   if (!result.ok) {

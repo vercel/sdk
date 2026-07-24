@@ -802,6 +802,7 @@ export type CreateFlagResponseBody = {
   permanent?: boolean | undefined;
   tags?: Array<string> | undefined;
   experiment?: CreateFlagExperiment | undefined;
+  updatedBy?: string | undefined;
   variants: Array<CreateFlagFeatureFlagsVariants>;
   id: string;
   environments: { [k: string]: CreateFlagFeatureFlagsEnvironments };
@@ -2676,6 +2677,7 @@ export const CreateFlagResponseBody$inboundSchema: z.ZodType<
   permanent: types.optional(types.boolean()),
   tags: types.optional(z.array(types.string())),
   experiment: types.optional(z.lazy(() => CreateFlagExperiment$inboundSchema)),
+  updatedBy: types.optional(types.string()),
   variants: z.array(z.lazy(() => CreateFlagFeatureFlagsVariants$inboundSchema)),
   id: types.string(),
   environments: z.record(

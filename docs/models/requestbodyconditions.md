@@ -6,7 +6,7 @@
 import { RequestBodyConditions } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
 let value: RequestBodyConditions = {
-  type: "scheme",
+  type: "environment",
   op: "neq",
 };
 ```
@@ -19,4 +19,4 @@ let value: RequestBodyConditions = {
 | `op`                                                                                           | [models.RequestBodyOp](../models/requestbodyop.md)                                             | :heavy_check_mark:                                                                             | N/A                                                                                            |
 | `neg`                                                                                          | *boolean*                                                                                      | :heavy_minus_sign:                                                                             | N/A                                                                                            |
 | `key`                                                                                          | *string*                                                                                       | :heavy_minus_sign:                                                                             | N/A                                                                                            |
-| `value`                                                                                        | *models.UpdateFirewallConfigRequestBodySecurityRequest2Value*                                  | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `value`                                                                                        | *models.UpdateFirewallConfigRequestBodySecurityRequest1Value*                                  | :heavy_minus_sign:                                                                             | N/A                                                                                            |

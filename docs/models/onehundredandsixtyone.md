@@ -5,24 +5,28 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSixtyOne } from "@vercel/sdk/models/usereventpayload146role.js";
+import { OneHundredAndSixtyOne } from "@vercel/sdk/models/payloaddismissals.js";
 
 let value: OneHundredAndSixtyOne = {
-  id: "<id>",
-  prev: {
-    name: "<value>",
-    slug: "<value>",
-    fallbackEnvironment: "<value>",
-  },
+  resourceId: "<id>",
+  integrationId: "<id>",
+  integrationSlug: "<value>",
+  integrationProductSlug: "<value>",
+  configurationId: "<id>",
+  requestKind: "list_keys",
 };
 ```
 
 ## Fields
 
-| Field                            | Type                             | Required                         | Description                      |
-| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
-| `id`                             | *string*                         | :heavy_check_mark:               | N/A                              |
-| `slug`                           | *string*                         | :heavy_minus_sign:               | N/A                              |
-| `name`                           | *string*                         | :heavy_minus_sign:               | N/A                              |
-| `fallbackEnvironment`            | *string*                         | :heavy_minus_sign:               | N/A                              |
-| `prev`                           | [models.Prev](../models/prev.md) | :heavy_check_mark:               | N/A                              |
+| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `resourceId`                                                 | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `integrationId`                                              | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `integrationSlug`                                            | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `integrationProductSlug`                                     | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `configurationId`                                            | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `error`                                                      | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
+| `requestKind`                                                | [models.PayloadRequestKind](../models/payloadrequestkind.md) | :heavy_check_mark:                                           | N/A                                                          |
+| `pattern`                                                    | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
+| `type`                                                       | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |

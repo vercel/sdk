@@ -15,14 +15,22 @@ import {
   GetDeploymentMissingDeploymentsResponse1$inboundSchema,
   GetDeploymentMissingDeploymentsResponse2,
   GetDeploymentMissingDeploymentsResponse2$inboundSchema,
+  GetDeploymentResponseBodyCrons,
+  GetDeploymentResponseBodyCrons$inboundSchema,
+  GetDeploymentResponseBodyFunctions,
+  GetDeploymentResponseBodyFunctions$inboundSchema,
+  GetDeploymentResponseBodyNodeVersion,
+  GetDeploymentResponseBodyNodeVersion$inboundSchema,
   GetDeploymentResponseBodyOidcTokenClaims,
   GetDeploymentResponseBodyOidcTokenClaims$inboundSchema,
-  GetDeploymentResponseBodyReadySubstate,
-  GetDeploymentResponseBodyReadySubstate$inboundSchema,
+  GetDeploymentResponseBodyPlan,
+  GetDeploymentResponseBodyPlan$inboundSchema,
+  GetDeploymentResponseBodyPlatform,
+  GetDeploymentResponseBodyPlatform$inboundSchema,
+  GetDeploymentResponseBodyRoutes,
+  GetDeploymentResponseBodyRoutes$inboundSchema,
   GetDeploymentResponseBodySource,
   GetDeploymentResponseBodySource$inboundSchema,
-  GetDeploymentResponseBodyTarget,
-  GetDeploymentResponseBodyTarget$inboundSchema,
   GetDeploymentServicesBindings,
   GetDeploymentServicesBindings$inboundSchema,
   GetDeploymentServicesDeploymentsBuilder,
@@ -39,65 +47,57 @@ import {
   GetDeploymentServicesRedirects$inboundSchema,
   GetDeploymentServicesTransforms,
   GetDeploymentServicesTransforms$inboundSchema,
-  ResponseBodyCrons,
-  ResponseBodyCrons$inboundSchema,
-  ResponseBodyFunctions,
-  ResponseBodyFunctions$inboundSchema,
-  ResponseBodyPlan,
-  ResponseBodyPlan$inboundSchema,
-  ResponseBodyPlatform,
-  ResponseBodyPlatform$inboundSchema,
-  ResponseBodyRoutes,
-  ResponseBodyRoutes$inboundSchema,
+  ResponseBodyProject,
+  ResponseBodyProject$inboundSchema,
 } from "./getdeploymentmissingdeploymentsresponse1.js";
 import {
-  GetDeploymentResponseBody2,
-  GetDeploymentResponseBody2$inboundSchema,
-  GetDeploymentResponseBodyAliasError,
-  GetDeploymentResponseBodyAliasError$inboundSchema,
-  GetDeploymentResponseBodyAliasWarning,
-  GetDeploymentResponseBodyAliasWarning$inboundSchema,
-  GetDeploymentResponseBodyChecksConclusion,
-  GetDeploymentResponseBodyChecksConclusion$inboundSchema,
-  GetDeploymentResponseBodyChecksState,
-  GetDeploymentResponseBodyChecksState$inboundSchema,
+  GetDeploymentResponseBody3,
+  GetDeploymentResponseBody3$inboundSchema,
+  GetDeploymentResponseBodyAliasAssignedAt,
+  GetDeploymentResponseBodyAliasAssignedAt$inboundSchema,
+  GetDeploymentResponseBodyBuild,
+  GetDeploymentResponseBodyBuild$inboundSchema,
+  GetDeploymentResponseBodyBuilds,
+  GetDeploymentResponseBodyBuilds$inboundSchema,
   GetDeploymentResponseBodyCreator,
   GetDeploymentResponseBodyCreator$inboundSchema,
   GetDeploymentResponseBodyCustomEnvironment,
   GetDeploymentResponseBodyCustomEnvironment$inboundSchema,
   GetDeploymentResponseBodyGitSource,
   GetDeploymentResponseBodyGitSource$inboundSchema,
+  GetDeploymentResponseBodyImages,
+  GetDeploymentResponseBodyImages$inboundSchema,
+  GetDeploymentResponseBodyIntegrations,
+  GetDeploymentResponseBodyIntegrations$inboundSchema,
   GetDeploymentResponseBodyLambdas,
   GetDeploymentResponseBodyLambdas$inboundSchema,
   GetDeploymentResponseBodyManualProvisioning,
   GetDeploymentResponseBodyManualProvisioning$inboundSchema,
-  GetDeploymentResponseBodyNodeVersion,
-  GetDeploymentResponseBodyNodeVersion$inboundSchema,
   GetDeploymentResponseBodyOomReport,
   GetDeploymentResponseBodyOomReport$inboundSchema,
-  GetDeploymentResponseBodyReadyState,
-  GetDeploymentResponseBodyReadyState$inboundSchema,
   GetDeploymentResponseBodyStatus,
   GetDeploymentResponseBodyStatus$inboundSchema,
   GetDeploymentResponseBodyTeam,
   GetDeploymentResponseBodyTeam$inboundSchema,
   GetDeploymentResponseBodyType,
   GetDeploymentResponseBodyType$inboundSchema,
-  ResponseBodyAliasAssignedAt,
-  ResponseBodyAliasAssignedAt$inboundSchema,
-  ResponseBodyBuild,
-  ResponseBodyBuild$inboundSchema,
-  ResponseBodyBuilds,
-  ResponseBodyBuilds$inboundSchema,
-  ResponseBodyImages,
-  ResponseBodyImages$inboundSchema,
-  ResponseBodyIntegrations,
-  ResponseBodyIntegrations$inboundSchema,
-  ResponseBodyProject,
-  ResponseBodyProject$inboundSchema,
+  ResponseBodyAliasError,
+  ResponseBodyAliasError$inboundSchema,
+  ResponseBodyAliasWarning,
+  ResponseBodyAliasWarning$inboundSchema,
+  ResponseBodyChecksConclusion,
+  ResponseBodyChecksConclusion$inboundSchema,
+  ResponseBodyChecksState,
+  ResponseBodyChecksState$inboundSchema,
   ResponseBodyProjectSettings,
   ResponseBodyProjectSettings$inboundSchema,
-} from "./responsebodyproject.js";
+  ResponseBodyReadyState,
+  ResponseBodyReadyState$inboundSchema,
+  ResponseBodyReadySubstate,
+  ResponseBodyReadySubstate$inboundSchema,
+  ResponseBodyTarget,
+  ResponseBodyTarget$inboundSchema,
+} from "./getdeploymentresponsebodymanualprovisioning.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetDeploymentServicesDeploymentsMissing =
@@ -143,22 +143,22 @@ export type GetDeploymentRoutesDeployments2 = {
   status?: number | undefined;
 };
 
-export const GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody1Services2Type =
+export const GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody2Services2Type =
   {
     Cookie: "cookie",
     Header: "header",
     Query: "query",
   } as const;
-export type GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody1Services2Type =
+export type GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody2Services2Type =
   ClosedEnum<
-    typeof GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody1Services2Type
+    typeof GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody2Services2Type
   >;
 
-export type GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Eq =
+export type GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1Eq =
   | string
   | number;
 
-export type GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes12 =
+export type GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes12 =
   {
     eq?: string | number | undefined;
     neq?: string | undefined;
@@ -173,25 +173,25 @@ export type GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1
     lte?: number | undefined;
   };
 
-export type GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody1Services2RoutesValue =
+export type GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody2Services2RoutesValue =
   | string
-  | GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes12;
+  | GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes12;
 
 export type GetDeploymentHasDeploymentsResponse200ApplicationJson2 = {
   type:
-    GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody1Services2Type;
+    GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody2Services2Type;
   key: string;
   value?:
     | string
-    | GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes12
+    | GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes12
     | undefined;
 };
 
-export type GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2RoutesEq =
+export type GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2RoutesEq =
   | string
   | number;
 
-export type GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes2 =
+export type GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes2 =
   {
     eq?: string | number | undefined;
     neq?: string | undefined;
@@ -206,15 +206,15 @@ export type GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1
     lte?: number | undefined;
   };
 
-export type GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody1Services2Value =
+export type GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody2Services2Value =
   | string
-  | GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes2;
+  | GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes2;
 
 export type GetDeploymentHasDeploymentsResponse200ApplicationJson1 = {
   type: "host";
   value:
     | string
-    | GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes2;
+    | GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes2;
 };
 
 export type GetDeploymentRoutesDeploymentsHas =
@@ -229,22 +229,22 @@ export type GetDeploymentRoutesDeploymentsHas =
     type: "query";
   });
 
-export const GetDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody1Services2Type =
+export const GetDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody2Services2Type =
   {
     Cookie: "cookie",
     Header: "header",
     Query: "query",
   } as const;
-export type GetDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody1Services2Type =
+export type GetDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody2Services2Type =
   ClosedEnum<
-    typeof GetDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody1Services2Type
+    typeof GetDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody2Services2Type
   >;
 
-export type GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Missing2Eq =
+export type GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1Missing2Eq =
   | string
   | number;
 
-export type GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Missing22 =
+export type GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1Missing22 =
   {
     eq?: string | number | undefined;
     neq?: string | undefined;
@@ -259,25 +259,25 @@ export type GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1
     lte?: number | undefined;
   };
 
-export type GetDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody1Services2Value =
+export type GetDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody2Services2Value =
   | string
-  | GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Missing22;
+  | GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1Missing22;
 
 export type GetDeploymentMissingDeploymentsResponse200ApplicationJson2 = {
   type:
-    GetDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody1Services2Type;
+    GetDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody2Services2Type;
   key: string;
   value?:
     | string
-    | GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Missing22
+    | GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1Missing22
     | undefined;
 };
 
-export type GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1MissingEq =
+export type GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1MissingEq =
   | string
   | number;
 
-export type GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Missing2 =
+export type GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1Missing2 =
   {
     eq?: string | number | undefined;
     neq?: string | undefined;
@@ -292,15 +292,15 @@ export type GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1
     lte?: number | undefined;
   };
 
-export type GetDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody1Services2RoutesValue =
+export type GetDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody2Services2RoutesValue =
   | string
-  | GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Missing2;
+  | GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1Missing2;
 
 export type GetDeploymentMissingDeploymentsResponse200ApplicationJson1 = {
   type: "host";
   value:
     | string
-    | GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Missing2;
+    | GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1Missing2;
 };
 
 export type GetDeploymentRoutesDeploymentsMissing =
@@ -798,7 +798,7 @@ export type GetDeploymentServices1 = {
   env?: { [k: string]: GetDeploymentServicesEnv } | undefined;
 };
 
-export type ResponseBodyServices =
+export type GetDeploymentResponseBodyServices =
   | GetDeploymentServices1
   | GetDeploymentServices2;
 
@@ -883,7 +883,7 @@ export type GetDeploymentGitRepo1 = {
   ownerType: GetDeploymentGitRepoDeploymentsResponseOwnerType;
 };
 
-export type ResponseBodyGitRepo =
+export type GetDeploymentResponseBodyGitRepo =
   | GetDeploymentGitRepo1
   | GetDeploymentGitRepo2
   | GetDeploymentGitRepo3
@@ -912,7 +912,7 @@ export type GetDeploymentFlags1 = {
   definitions: { [k: string]: GetDeploymentFlagsDefinitions };
 };
 
-export type ResponseBodyFlags =
+export type GetDeploymentResponseBodyFlags =
   | GetDeploymentFlags1
   | Array<GetDeploymentFlags2>;
 
@@ -969,26 +969,26 @@ export type GetDeploymentMicrofrontends1 = {
   groupIds: Array<string>;
 };
 
-export type ResponseBodyMicrofrontends =
+export type GetDeploymentResponseBodyMicrofrontends =
   | GetDeploymentMicrofrontends2
   | GetDeploymentMicrofrontends1;
 
-export const ResponseBodyFunctionType = {
+export const GetDeploymentResponseBodyFunctionType = {
   Fluid: "fluid",
   Standard: "standard",
 } as const;
-export type ResponseBodyFunctionType = ClosedEnum<
-  typeof ResponseBodyFunctionType
+export type GetDeploymentResponseBodyFunctionType = ClosedEnum<
+  typeof GetDeploymentResponseBodyFunctionType
 >;
 
-export const ResponseBodyFunctionMemoryType = {
+export const GetDeploymentResponseBodyFunctionMemoryType = {
   Performance: "performance",
   PerformanceXl: "performance_xl",
   Standard: "standard",
   StandardLegacy: "standard_legacy",
 } as const;
-export type ResponseBodyFunctionMemoryType = ClosedEnum<
-  typeof ResponseBodyFunctionMemoryType
+export type GetDeploymentResponseBodyFunctionMemoryType = ClosedEnum<
+  typeof GetDeploymentResponseBodyFunctionMemoryType
 >;
 
 /**
@@ -1018,7 +1018,7 @@ export type GetDeploymentResponseBodyBuildQueue = {
 /**
  * When elastic concurrency is used for this deployment, a value is set. The value tells the reason where the setting was coming from. - TEAM_SETTING: Inherited from team settings - PROJECT_SETTING: Inherited from project settings - SKIP_QUEUE: Manually triggered by user to skip the queues
  */
-export const ResponseBodyElasticConcurrency = {
+export const GetDeploymentResponseBodyElasticConcurrency = {
   ProjectSetting: "PROJECT_SETTING",
   SkipQueue: "SKIP_QUEUE",
   TeamSetting: "TEAM_SETTING",
@@ -1026,14 +1026,15 @@ export const ResponseBodyElasticConcurrency = {
 /**
  * When elastic concurrency is used for this deployment, a value is set. The value tells the reason where the setting was coming from. - TEAM_SETTING: Inherited from team settings - PROJECT_SETTING: Inherited from project settings - SKIP_QUEUE: Manually triggered by user to skip the queues
  */
-export type ResponseBodyElasticConcurrency = ClosedEnum<
-  typeof ResponseBodyElasticConcurrency
+export type GetDeploymentResponseBodyElasticConcurrency = ClosedEnum<
+  typeof GetDeploymentResponseBodyElasticConcurrency
 >;
 
 /**
  * Machine type that was used for the build.
  */
-export const ResponseBodyPurchaseType = {
+export const GetDeploymentResponseBodyPurchaseType = {
+  Basic: "basic",
   Enhanced: "enhanced",
   Standard: "standard",
   Turbo: "turbo",
@@ -1041,15 +1042,15 @@ export const ResponseBodyPurchaseType = {
 /**
  * Machine type that was used for the build.
  */
-export type ResponseBodyPurchaseType = ClosedEnum<
-  typeof ResponseBodyPurchaseType
+export type GetDeploymentResponseBodyPurchaseType = ClosedEnum<
+  typeof GetDeploymentResponseBodyPurchaseType
 >;
 
-export type ResponseBodyBuildMachine = {
+export type GetDeploymentResponseBodyBuildMachine = {
   /**
    * Machine type that was used for the build.
    */
-  purchaseType?: ResponseBodyPurchaseType | null | undefined;
+  purchaseType?: GetDeploymentResponseBodyPurchaseType | null | undefined;
 };
 
 /**
@@ -1063,17 +1064,17 @@ export type GetDeploymentResponseBodyResourceConfig = {
   /**
    * When elastic concurrency is used for this deployment, a value is set. The value tells the reason where the setting was coming from. - TEAM_SETTING: Inherited from team settings - PROJECT_SETTING: Inherited from project settings - SKIP_QUEUE: Manually triggered by user to skip the queues
    */
-  elasticConcurrency?: ResponseBodyElasticConcurrency | undefined;
-  buildMachine?: ResponseBodyBuildMachine | undefined;
+  elasticConcurrency?: GetDeploymentResponseBodyElasticConcurrency | undefined;
+  buildMachine?: GetDeploymentResponseBodyBuildMachine | undefined;
 };
 
 /**
  * Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured
  */
-export type ResponseBodyConfig = {
+export type GetDeploymentResponseBodyConfig = {
   version?: number | undefined;
-  functionType: ResponseBodyFunctionType;
-  functionMemoryType: ResponseBodyFunctionMemoryType;
+  functionType: GetDeploymentResponseBodyFunctionType;
+  functionMemoryType: GetDeploymentResponseBodyFunctionMemoryType;
   functionTimeout: number | null;
   secureComputePrimaryRegion: string | null;
   secureComputeFallbackRegion: string | null;
@@ -1096,7 +1097,7 @@ export type GetDeploymentResponseBodyDeploymentsResponseState = ClosedEnum<
 /**
  * Condensed check data. Retrieve individual check and check run data using api-checks v2 routes.
  */
-export type ResponseBodyDeploymentAlias = {
+export type GetDeploymentResponseBodyDeploymentAlias = {
   state: GetDeploymentResponseBodyDeploymentsResponseState;
   startedAt: number;
   completedAt?: number | undefined;
@@ -1106,27 +1107,29 @@ export type ResponseBodyChecks = {
   /**
    * Condensed check data. Retrieve individual check and check run data using api-checks v2 routes.
    */
-  deploymentAlias: ResponseBodyDeploymentAlias;
+  deploymentAlias: GetDeploymentResponseBodyDeploymentAlias;
 };
 
 /**
  * The NSNB decision code for the seat block. TODO: We should consolidate block types.
  */
-export const ResponseBodyBlockCode = {
+export const GetDeploymentResponseBodyBlockCode = {
   CommitAuthorRequired: "COMMIT_AUTHOR_REQUIRED",
   TeamAccessRequired: "TEAM_ACCESS_REQUIRED",
 } as const;
 /**
  * The NSNB decision code for the seat block. TODO: We should consolidate block types.
  */
-export type ResponseBodyBlockCode = ClosedEnum<typeof ResponseBodyBlockCode>;
+export type GetDeploymentResponseBodyBlockCode = ClosedEnum<
+  typeof GetDeploymentResponseBodyBlockCode
+>;
 
-export type ResponseBodyGitUserId = string | number;
+export type GetDeploymentResponseBodyGitUserId = string | number;
 
 /**
  * The git provider type associated with gitUserId.
  */
-export const ResponseBodyGitProvider = {
+export const GetDeploymentResponseBodyGitProvider = {
   Bitbucket: "bitbucket",
   Github: "github",
   Gitlab: "gitlab",
@@ -1134,18 +1137,18 @@ export const ResponseBodyGitProvider = {
 /**
  * The git provider type associated with gitUserId.
  */
-export type ResponseBodyGitProvider = ClosedEnum<
-  typeof ResponseBodyGitProvider
+export type GetDeploymentResponseBodyGitProvider = ClosedEnum<
+  typeof GetDeploymentResponseBodyGitProvider
 >;
 
 /**
  * NSNB Blocked metadata
  */
-export type ResponseBodySeatBlock = {
+export type GetDeploymentResponseBodySeatBlock = {
   /**
    * The NSNB decision code for the seat block. TODO: We should consolidate block types.
    */
-  blockCode: ResponseBodyBlockCode;
+  blockCode: GetDeploymentResponseBodyBlockCode;
   /**
    * The blocked vercel user ID.
    */
@@ -1158,13 +1161,13 @@ export type ResponseBodySeatBlock = {
   /**
    * The git provider type associated with gitUserId.
    */
-  gitProvider?: ResponseBodyGitProvider | undefined;
+  gitProvider?: GetDeploymentResponseBodyGitProvider | undefined;
 };
 
 /**
  * Commit metadata from the git commit author
  */
-export type ResponseBodyCommitMeta = {
+export type GetDeploymentResponseBodyCommitMeta = {
   /**
    * Email from git commit author
    */
@@ -1184,7 +1187,7 @@ export type GetDeploymentResponseBodyId = string | number;
 /**
  * Git provider user associated with the commit author email (only set if resolved)
  */
-export type ResponseBodyGitUser = {
+export type GetDeploymentResponseBodyGitUser = {
   id: string | number;
   /**
    * Git provider username/login
@@ -1203,7 +1206,7 @@ export type ResponseBodyGitUser = {
 /**
  * Vercel user linked to the git provider account (only set if resolved)
  */
-export type ResponseBodyVercelUser = {
+export type GetDeploymentResponseBodyVercelUser = {
   /**
    * Vercel user ID
    */
@@ -1221,37 +1224,37 @@ export type ResponseBodyVercelUser = {
 /**
  * Attribution metadata for the deployment, linking commit author to git and Vercel users. Only populated when the `enable-deployment-attribution` flag is enabled.
  */
-export type ResponseBodyAttribution = {
+export type GetDeploymentResponseBodyAttribution = {
   /**
    * Commit metadata from the git commit author
    */
-  commitMeta?: ResponseBodyCommitMeta | undefined;
+  commitMeta?: GetDeploymentResponseBodyCommitMeta | undefined;
   /**
    * Git provider user associated with the commit author email (only set if resolved)
    */
-  gitUser?: ResponseBodyGitUser | undefined;
+  gitUser?: GetDeploymentResponseBodyGitUser | undefined;
   /**
    * Vercel user linked to the git provider account (only set if resolved)
    */
-  vercelUser?: ResponseBodyVercelUser | undefined;
+  vercelUser?: GetDeploymentResponseBodyVercelUser | undefined;
 };
 
 /**
  * Returns the deployment object for the authenticated owner, including private fields such as environment variables, build log URLs, and internal metadata.
  */
-export type GetDeploymentResponseBody1 = {
-  aliasAssignedAt?: ResponseBodyAliasAssignedAt | null | undefined;
+export type GetDeploymentResponseBody2 = {
+  aliasAssignedAt?: GetDeploymentResponseBodyAliasAssignedAt | null | undefined;
   alwaysRefuseToBuild?: boolean | undefined;
-  build: ResponseBodyBuild;
+  build: GetDeploymentResponseBodyBuild;
   buildArtifactUrls?: Array<string> | undefined;
-  builds?: Array<ResponseBodyBuilds> | undefined;
+  builds?: Array<GetDeploymentResponseBodyBuilds> | undefined;
   env: Array<string>;
   inspectorUrl: string | null;
   isInConcurrentBuildsQueue: boolean;
   isInSystemBuildsQueue: boolean;
   projectSettings: ResponseBodyProjectSettings;
-  integrations?: ResponseBodyIntegrations | undefined;
-  images?: ResponseBodyImages | undefined;
+  integrations?: GetDeploymentResponseBodyIntegrations | undefined;
+  images?: GetDeploymentResponseBodyImages | undefined;
   /**
    * A list of all the aliases (default aliases, staging aliases and production aliases) that were assigned upon deployment creation
    */
@@ -1296,11 +1299,22 @@ export type GetDeploymentResponseBody1 = {
   customEnvironment?: GetDeploymentResponseBodyCustomEnvironment | undefined;
   oomReport?: GetDeploymentResponseBodyOomReport | undefined;
   readyStateReason?: string | undefined;
-  aliasWarning?: GetDeploymentResponseBodyAliasWarning | null | undefined;
   /**
    * A string holding the unique ID of the deployment
    */
   id: string;
+  /**
+   * The name of the project associated with the deployment at the time that the deployment was created
+   */
+  name: string;
+  /**
+   * A string with the unique URL of the deployment
+   */
+  url: string;
+  /**
+   * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+   */
+  target?: ResponseBodyTarget | null | undefined;
   /**
    * A number containing the date when the deployment was created in milliseconds
    */
@@ -1308,26 +1322,31 @@ export type GetDeploymentResponseBody1 = {
   /**
    * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
    */
-  readyState: GetDeploymentResponseBodyReadyState;
+  readyState: ResponseBodyReadyState;
   /**
-   * The name of the project associated with the deployment at the time that the deployment was created
+   * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
    */
-  name: string;
-  type: GetDeploymentResponseBodyType;
-  errorMessage?: string | null | undefined;
+  readySubstate?: ResponseBodyReadySubstate | undefined;
+  prebuilt?: boolean | undefined;
   /**
    * An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null`
    */
-  aliasError?: GetDeploymentResponseBodyAliasError | null | undefined;
+  aliasError?: ResponseBodyAliasError | null | undefined;
+  aliasWarning?: ResponseBodyAliasWarning | null | undefined;
   aliasFinal?: string | null | undefined;
+  checksState?: ResponseBodyChecksState | undefined;
+  checksConclusion?: ResponseBodyChecksConclusion | undefined;
+  errorCode?: string | undefined;
+  errorLink?: string | undefined;
+  errorMessage?: string | null | undefined;
+  errorStep?: string | undefined;
+  type: GetDeploymentResponseBodyType;
   /**
    * applies to custom domains only, defaults to `true`
    */
   autoAssignCustomDomains?: boolean | undefined;
   automaticAliases?: Array<string> | undefined;
   buildErrorAt?: number | undefined;
-  checksState?: GetDeploymentResponseBodyChecksState | undefined;
-  checksConclusion?: GetDeploymentResponseBodyChecksConclusion | undefined;
   /**
    * A number containing the date when the deployment was deleted at milliseconds
    */
@@ -1337,9 +1356,6 @@ export type GetDeploymentResponseBody1 = {
    */
   defaultRoute?: string | undefined;
   canceledAt?: number | undefined;
-  errorCode?: string | undefined;
-  errorLink?: string | undefined;
-  errorStep?: string | undefined;
   /**
    * Since November 2023 this field defines a set of regions that we will deploy the lambda to passively Lambdas will be deployed to these regions but only invoked if all of the primary `regions` are marked as out of service
    */
@@ -1359,11 +1375,6 @@ export type GetDeploymentResponseBody1 = {
    * The public project information associated with the deployment.
    */
   project?: ResponseBodyProject | undefined;
-  prebuilt?: boolean | undefined;
-  /**
-   * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
-   */
-  readySubstate?: GetDeploymentResponseBodyReadySubstate | undefined;
   /**
    * The regions the deployment exists in
    */
@@ -1377,17 +1388,9 @@ export type GetDeploymentResponseBody1 = {
    */
   source?: GetDeploymentResponseBodySource | undefined;
   /**
-   * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
-   */
-  target?: GetDeploymentResponseBodyTarget | null | undefined;
-  /**
    * A number containing the date when the deployment was undeleted at milliseconds
    */
   undeletedAt?: number | undefined;
-  /**
-   * A string with the unique URL of the deployment
-   */
-  url: string;
   /**
    * Since January 2025 User-configured deployment ID for skew protection with pre-built deployments. This is set when users configure a custom deploymentId in their next.config.js file. This allows Next.js to use skew protection even when deployments are pre-built outside of Vercel's build system.
    */
@@ -1398,23 +1401,26 @@ export type GetDeploymentResponseBody1 = {
   version: number;
   oidcTokenClaims?: GetDeploymentResponseBodyOidcTokenClaims | undefined;
   projectId: string;
-  plan: ResponseBodyPlan;
+  plan: GetDeploymentResponseBodyPlan;
   /**
    * Metadata about the source platform that triggered the deployment. Allows us to map a deployment back to a platform (e.g. the chat that created it)
    */
-  platform?: ResponseBodyPlatform | undefined;
+  platform?: GetDeploymentResponseBodyPlatform | undefined;
   connectBuildsEnabled?: boolean | undefined;
   connectConfigurationId?: string | undefined;
   createdIn: string;
-  crons?: Array<ResponseBodyCrons> | undefined;
-  functions?: { [k: string]: ResponseBodyFunctions } | null | undefined;
+  crons?: Array<GetDeploymentResponseBodyCrons> | undefined;
+  functions?:
+    | { [k: string]: GetDeploymentResponseBodyFunctions }
+    | null
+    | undefined;
   monorepoManager?: string | null | undefined;
   ownerId: string;
   /**
    * Since November 2023 this field defines a Secure Compute network that will only be used to deploy passive lambdas to (as in passiveRegions)
    */
   passiveConnectConfigurationId?: string | undefined;
-  routes: Array<ResponseBodyRoutes> | null;
+  routes: Array<GetDeploymentResponseBodyRoutes> | null;
   /**
    * Services detected during build from vercel.json experimentalServices or auto-detected from project structure. Used to inject service URLs as environment variables at runtime.
    */
@@ -1434,16 +1440,165 @@ export type GetDeploymentResponseBody1 = {
   /**
    * Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured
    */
-  config?: ResponseBodyConfig | undefined;
+  config?: GetDeploymentResponseBodyConfig | undefined;
   checks?: ResponseBodyChecks | undefined;
   /**
    * NSNB Blocked metadata
    */
-  seatBlock?: ResponseBodySeatBlock | undefined;
+  seatBlock?: GetDeploymentResponseBodySeatBlock | undefined;
   /**
    * Attribution metadata for the deployment, linking commit author to git and Vercel users. Only populated when the `enable-deployment-attribution` flag is enabled.
    */
-  attribution?: ResponseBodyAttribution | undefined;
+  attribution?: GetDeploymentResponseBodyAttribution | undefined;
+};
+
+export type Anonymous = {
+  /**
+   * When the anonymous project and its token expire, in milliseconds.
+   */
+  expiresAt: number;
+};
+
+/**
+ * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+ */
+export const GetDeploymentResponseBodyDeploymentsTarget = {
+  Production: "production",
+  Staging: "staging",
+} as const;
+/**
+ * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+ */
+export type GetDeploymentResponseBodyDeploymentsTarget = ClosedEnum<
+  typeof GetDeploymentResponseBodyDeploymentsTarget
+>;
+
+/**
+ * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+ */
+export const GetDeploymentResponseBodyDeploymentsReadyState = {
+  Blocked: "BLOCKED",
+  Building: "BUILDING",
+  Canceled: "CANCELED",
+  Error: "ERROR",
+  Initializing: "INITIALIZING",
+  Queued: "QUEUED",
+  Ready: "READY",
+} as const;
+/**
+ * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+ */
+export type GetDeploymentResponseBodyDeploymentsReadyState = ClosedEnum<
+  typeof GetDeploymentResponseBodyDeploymentsReadyState
+>;
+
+/**
+ * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
+ */
+export const GetDeploymentResponseBodyDeploymentsReadySubstate = {
+  Promoted: "PROMOTED",
+  Rolling: "ROLLING",
+  Staged: "STAGED",
+} as const;
+/**
+ * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
+ */
+export type GetDeploymentResponseBodyDeploymentsReadySubstate = ClosedEnum<
+  typeof GetDeploymentResponseBodyDeploymentsReadySubstate
+>;
+
+/**
+ * An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null`
+ */
+export type GetDeploymentResponseBodyDeploymentsAliasError = {
+  code: string;
+  message: string;
+};
+
+export type GetDeploymentResponseBodyDeploymentsAliasWarning = {
+  code: string;
+  message: string;
+  link?: string | undefined;
+  action?: string | undefined;
+};
+
+export const GetDeploymentResponseBodyDeploymentsChecksState = {
+  Completed: "completed",
+  Registered: "registered",
+  Running: "running",
+} as const;
+export type GetDeploymentResponseBodyDeploymentsChecksState = ClosedEnum<
+  typeof GetDeploymentResponseBodyDeploymentsChecksState
+>;
+
+export const GetDeploymentResponseBodyDeploymentsChecksConclusion = {
+  Canceled: "canceled",
+  Failed: "failed",
+  Skipped: "skipped",
+  Succeeded: "succeeded",
+} as const;
+export type GetDeploymentResponseBodyDeploymentsChecksConclusion = ClosedEnum<
+  typeof GetDeploymentResponseBodyDeploymentsChecksConclusion
+>;
+
+/**
+ * Returns the reduced deployment view for anonymous (`vcn_`) callers, with an `anonymous.expiresAt` marking when the project and its token expire. Pool-team details are withheld.
+ */
+export type GetDeploymentResponseBody1 = {
+  alias?: Array<string> | undefined;
+  aliasAssigned: boolean;
+  readyStateReason?: string | undefined;
+  anonymous: Anonymous;
+  /**
+   * A string holding the unique ID of the deployment
+   */
+  id: string;
+  /**
+   * The name of the project associated with the deployment at the time that the deployment was created
+   */
+  name: string;
+  /**
+   * A string with the unique URL of the deployment
+   */
+  url: string;
+  projectId: string;
+  /**
+   * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+   */
+  target?: GetDeploymentResponseBodyDeploymentsTarget | null | undefined;
+  /**
+   * A number containing the date when the deployment was created in milliseconds
+   */
+  createdAt: number;
+  /**
+   * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+   */
+  readyState: GetDeploymentResponseBodyDeploymentsReadyState;
+  /**
+   * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
+   */
+  readySubstate?: GetDeploymentResponseBodyDeploymentsReadySubstate | undefined;
+  prebuilt?: boolean | undefined;
+  /**
+   * An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null`
+   */
+  aliasError?:
+    | GetDeploymentResponseBodyDeploymentsAliasError
+    | null
+    | undefined;
+  aliasWarning?:
+    | GetDeploymentResponseBodyDeploymentsAliasWarning
+    | null
+    | undefined;
+  aliasFinal?: string | null | undefined;
+  checksState?: GetDeploymentResponseBodyDeploymentsChecksState | undefined;
+  checksConclusion?:
+    | GetDeploymentResponseBodyDeploymentsChecksConclusion
+    | undefined;
+  errorCode?: string | undefined;
+  errorLink?: string | undefined;
+  errorMessage?: string | null | undefined;
+  errorStep?: string | undefined;
 };
 
 /**
@@ -1451,10 +1606,12 @@ export type GetDeploymentResponseBody1 = {
  *
  * @remarks
  * Returns the deployment object for the authenticated owner, including private fields such as environment variables, build log URLs, and internal metadata.
+ * Returns the reduced deployment view for anonymous (`vcn_`) callers, with an `anonymous.expiresAt` marking when the project and its token expire. Pool-team details are withheld.
  */
 export type GetDeploymentResponseBody =
-  | GetDeploymentResponseBody1
-  | GetDeploymentResponseBody2;
+  | GetDeploymentResponseBody2
+  | GetDeploymentResponseBody3
+  | GetDeploymentResponseBody1;
 
 /** @internal */
 export const GetDeploymentServicesDeploymentsMissing$inboundSchema: z.ZodType<
@@ -1564,40 +1721,40 @@ export function getDeploymentRoutesDeployments2FromJSON(
 }
 
 /** @internal */
-export const GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody1Services2Type$inboundSchema:
+export const GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody2Services2Type$inboundSchema:
   z.ZodNativeEnum<
-    typeof GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody1Services2Type
+    typeof GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody2Services2Type
   > = z.nativeEnum(
-    GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody1Services2Type,
+    GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody2Services2Type,
   );
 
 /** @internal */
-export const GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Eq$inboundSchema:
+export const GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1Eq$inboundSchema:
   z.ZodType<
-    GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Eq,
+    GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1Eq,
     z.ZodTypeDef,
     unknown
   > = smartUnion([types.string(), types.number()]);
 
-export function getDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1EqFromJSON(
+export function getDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1EqFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Eq,
+  GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1Eq,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Eq$inboundSchema
+      GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1Eq$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Eq' from JSON`,
+    `Failed to parse 'GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1Eq' from JSON`,
   );
 }
 
 /** @internal */
-export const GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes12$inboundSchema:
+export const GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes12$inboundSchema:
   z.ZodType<
-    GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes12,
+    GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes12,
     z.ZodTypeDef,
     unknown
   > = z.object({
@@ -1614,46 +1771,46 @@ export const GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody
     lte: types.optional(types.number()),
   });
 
-export function getDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes12FromJSON(
+export function getDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes12FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes12,
+  GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes12,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes12$inboundSchema
+      GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes12$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes12' from JSON`,
+    `Failed to parse 'GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes12' from JSON`,
   );
 }
 
 /** @internal */
-export const GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody1Services2RoutesValue$inboundSchema:
+export const GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody2Services2RoutesValue$inboundSchema:
   z.ZodType<
-    GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody1Services2RoutesValue,
+    GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody2Services2RoutesValue,
     z.ZodTypeDef,
     unknown
   > = smartUnion([
     types.string(),
     z.lazy(() =>
-      GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes12$inboundSchema
+      GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes12$inboundSchema
     ),
   ]);
 
-export function getDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody1Services2RoutesValueFromJSON(
+export function getDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody2Services2RoutesValueFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody1Services2RoutesValue,
+  GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody2Services2RoutesValue,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody1Services2RoutesValue$inboundSchema
+      GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody2Services2RoutesValue$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody1Services2RoutesValue' from JSON`,
+    `Failed to parse 'GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody2Services2RoutesValue' from JSON`,
   );
 }
 
@@ -1665,13 +1822,13 @@ export const GetDeploymentHasDeploymentsResponse200ApplicationJson2$inboundSchem
     unknown
   > = z.object({
     type:
-      GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody1Services2Type$inboundSchema,
+      GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody2Services2Type$inboundSchema,
     key: types.string(),
     value: types.optional(
       smartUnion([
         types.string(),
         z.lazy(() =>
-          GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes12$inboundSchema
+          GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes12$inboundSchema
         ),
       ]),
     ),
@@ -1693,32 +1850,32 @@ export function getDeploymentHasDeploymentsResponse200ApplicationJSON2FromJSON(
 }
 
 /** @internal */
-export const GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2RoutesEq$inboundSchema:
+export const GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2RoutesEq$inboundSchema:
   z.ZodType<
-    GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2RoutesEq,
+    GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2RoutesEq,
     z.ZodTypeDef,
     unknown
   > = smartUnion([types.string(), types.number()]);
 
-export function getDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2RoutesEqFromJSON(
+export function getDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2RoutesEqFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2RoutesEq,
+  GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2RoutesEq,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2RoutesEq$inboundSchema
+      GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2RoutesEq$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2RoutesEq' from JSON`,
+    `Failed to parse 'GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2RoutesEq' from JSON`,
   );
 }
 
 /** @internal */
-export const GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes2$inboundSchema:
+export const GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes2$inboundSchema:
   z.ZodType<
-    GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes2,
+    GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes2,
     z.ZodTypeDef,
     unknown
   > = z.object({
@@ -1735,46 +1892,46 @@ export const GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody
     lte: types.optional(types.number()),
   });
 
-export function getDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes2FromJSON(
+export function getDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes2FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes2,
+  GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes2,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes2$inboundSchema
+      GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes2$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes2' from JSON`,
+    `Failed to parse 'GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes2' from JSON`,
   );
 }
 
 /** @internal */
-export const GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody1Services2Value$inboundSchema:
+export const GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody2Services2Value$inboundSchema:
   z.ZodType<
-    GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody1Services2Value,
+    GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody2Services2Value,
     z.ZodTypeDef,
     unknown
   > = smartUnion([
     types.string(),
     z.lazy(() =>
-      GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes2$inboundSchema
+      GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes2$inboundSchema
     ),
   ]);
 
-export function getDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody1Services2ValueFromJSON(
+export function getDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody2Services2ValueFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody1Services2Value,
+  GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody2Services2Value,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody1Services2Value$inboundSchema
+      GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody2Services2Value$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody1Services2Value' from JSON`,
+    `Failed to parse 'GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody2Services2Value' from JSON`,
   );
 }
 
@@ -1789,7 +1946,7 @@ export const GetDeploymentHasDeploymentsResponse200ApplicationJson1$inboundSchem
     value: smartUnion([
       types.string(),
       z.lazy(() =>
-        GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes2$inboundSchema
+        GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes2$inboundSchema
       ),
     ]),
   });
@@ -1840,40 +1997,40 @@ export function getDeploymentRoutesDeploymentsHasFromJSON(
 }
 
 /** @internal */
-export const GetDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody1Services2Type$inboundSchema:
+export const GetDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody2Services2Type$inboundSchema:
   z.ZodNativeEnum<
-    typeof GetDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody1Services2Type
+    typeof GetDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody2Services2Type
   > = z.nativeEnum(
-    GetDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody1Services2Type,
+    GetDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody2Services2Type,
   );
 
 /** @internal */
-export const GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Missing2Eq$inboundSchema:
+export const GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1Missing2Eq$inboundSchema:
   z.ZodType<
-    GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Missing2Eq,
+    GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1Missing2Eq,
     z.ZodTypeDef,
     unknown
   > = smartUnion([types.string(), types.number()]);
 
-export function getDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Missing2EqFromJSON(
+export function getDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1Missing2EqFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Missing2Eq,
+  GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1Missing2Eq,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Missing2Eq$inboundSchema
+      GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1Missing2Eq$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Missing2Eq' from JSON`,
+    `Failed to parse 'GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1Missing2Eq' from JSON`,
   );
 }
 
 /** @internal */
-export const GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Missing22$inboundSchema:
+export const GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1Missing22$inboundSchema:
   z.ZodType<
-    GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Missing22,
+    GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1Missing22,
     z.ZodTypeDef,
     unknown
   > = z.object({
@@ -1890,46 +2047,46 @@ export const GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody
     lte: types.optional(types.number()),
   });
 
-export function getDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Missing22FromJSON(
+export function getDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1Missing22FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Missing22,
+  GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1Missing22,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Missing22$inboundSchema
+      GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1Missing22$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Missing22' from JSON`,
+    `Failed to parse 'GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1Missing22' from JSON`,
   );
 }
 
 /** @internal */
-export const GetDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody1Services2Value$inboundSchema:
+export const GetDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody2Services2Value$inboundSchema:
   z.ZodType<
-    GetDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody1Services2Value,
+    GetDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody2Services2Value,
     z.ZodTypeDef,
     unknown
   > = smartUnion([
     types.string(),
     z.lazy(() =>
-      GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Missing22$inboundSchema
+      GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1Missing22$inboundSchema
     ),
   ]);
 
-export function getDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody1Services2ValueFromJSON(
+export function getDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody2Services2ValueFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody1Services2Value,
+  GetDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody2Services2Value,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody1Services2Value$inboundSchema
+      GetDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody2Services2Value$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody1Services2Value' from JSON`,
+    `Failed to parse 'GetDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody2Services2Value' from JSON`,
   );
 }
 
@@ -1941,13 +2098,13 @@ export const GetDeploymentMissingDeploymentsResponse200ApplicationJson2$inboundS
     unknown
   > = z.object({
     type:
-      GetDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody1Services2Type$inboundSchema,
+      GetDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody2Services2Type$inboundSchema,
     key: types.string(),
     value: types.optional(
       smartUnion([
         types.string(),
         z.lazy(() =>
-          GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Missing22$inboundSchema
+          GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1Missing22$inboundSchema
         ),
       ]),
     ),
@@ -1969,32 +2126,32 @@ export function getDeploymentMissingDeploymentsResponse200ApplicationJSON2FromJS
 }
 
 /** @internal */
-export const GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1MissingEq$inboundSchema:
+export const GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1MissingEq$inboundSchema:
   z.ZodType<
-    GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1MissingEq,
+    GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1MissingEq,
     z.ZodTypeDef,
     unknown
   > = smartUnion([types.string(), types.number()]);
 
-export function getDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1MissingEqFromJSON(
+export function getDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1MissingEqFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1MissingEq,
+  GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1MissingEq,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1MissingEq$inboundSchema
+      GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1MissingEq$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1MissingEq' from JSON`,
+    `Failed to parse 'GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1MissingEq' from JSON`,
   );
 }
 
 /** @internal */
-export const GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Missing2$inboundSchema:
+export const GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1Missing2$inboundSchema:
   z.ZodType<
-    GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Missing2,
+    GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1Missing2,
     z.ZodTypeDef,
     unknown
   > = z.object({
@@ -2011,46 +2168,46 @@ export const GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody
     lte: types.optional(types.number()),
   });
 
-export function getDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Missing2FromJSON(
+export function getDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1Missing2FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Missing2,
+  GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1Missing2,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Missing2$inboundSchema
+      GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1Missing2$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Missing2' from JSON`,
+    `Failed to parse 'GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1Missing2' from JSON`,
   );
 }
 
 /** @internal */
-export const GetDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody1Services2RoutesValue$inboundSchema:
+export const GetDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody2Services2RoutesValue$inboundSchema:
   z.ZodType<
-    GetDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody1Services2RoutesValue,
+    GetDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody2Services2RoutesValue,
     z.ZodTypeDef,
     unknown
   > = smartUnion([
     types.string(),
     z.lazy(() =>
-      GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Missing2$inboundSchema
+      GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1Missing2$inboundSchema
     ),
   ]);
 
-export function getDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody1Services2RoutesValueFromJSON(
+export function getDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody2Services2RoutesValueFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody1Services2RoutesValue,
+  GetDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody2Services2RoutesValue,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody1Services2RoutesValue$inboundSchema
+      GetDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody2Services2RoutesValue$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody1Services2RoutesValue' from JSON`,
+    `Failed to parse 'GetDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody2Services2RoutesValue' from JSON`,
   );
 }
 
@@ -2065,7 +2222,7 @@ export const GetDeploymentMissingDeploymentsResponse200ApplicationJson1$inboundS
     value: smartUnion([
       types.string(),
       z.lazy(() =>
-        GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody1Services2Routes1Missing2$inboundSchema
+        GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1Missing2$inboundSchema
       ),
     ]),
   });
@@ -3074,8 +3231,8 @@ export function getDeploymentServices1FromJSON(
 }
 
 /** @internal */
-export const ResponseBodyServices$inboundSchema: z.ZodType<
-  ResponseBodyServices,
+export const GetDeploymentResponseBodyServices$inboundSchema: z.ZodType<
+  GetDeploymentResponseBodyServices,
   z.ZodTypeDef,
   unknown
 > = z.union([
@@ -3083,13 +3240,13 @@ export const ResponseBodyServices$inboundSchema: z.ZodType<
   z.lazy(() => GetDeploymentServices2$inboundSchema),
 ]);
 
-export function responseBodyServicesFromJSON(
+export function getDeploymentResponseBodyServicesFromJSON(
   jsonString: string,
-): SafeParseResult<ResponseBodyServices, SDKValidationError> {
+): SafeParseResult<GetDeploymentResponseBodyServices, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ResponseBodyServices$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBodyServices' from JSON`,
+    (x) => GetDeploymentResponseBodyServices$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentResponseBodyServices' from JSON`,
   );
 }
 
@@ -3223,8 +3380,8 @@ export function getDeploymentGitRepo1FromJSON(
 }
 
 /** @internal */
-export const ResponseBodyGitRepo$inboundSchema: z.ZodType<
-  ResponseBodyGitRepo,
+export const GetDeploymentResponseBodyGitRepo$inboundSchema: z.ZodType<
+  GetDeploymentResponseBodyGitRepo,
   z.ZodTypeDef,
   unknown
 > = z.union([
@@ -3234,13 +3391,13 @@ export const ResponseBodyGitRepo$inboundSchema: z.ZodType<
   z.lazy(() => GetDeploymentGitRepo4$inboundSchema),
 ]);
 
-export function responseBodyGitRepoFromJSON(
+export function getDeploymentResponseBodyGitRepoFromJSON(
   jsonString: string,
-): SafeParseResult<ResponseBodyGitRepo, SDKValidationError> {
+): SafeParseResult<GetDeploymentResponseBodyGitRepo, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ResponseBodyGitRepo$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBodyGitRepo' from JSON`,
+    (x) => GetDeploymentResponseBodyGitRepo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentResponseBodyGitRepo' from JSON`,
   );
 }
 
@@ -3326,8 +3483,8 @@ export function getDeploymentFlags1FromJSON(
 }
 
 /** @internal */
-export const ResponseBodyFlags$inboundSchema: z.ZodType<
-  ResponseBodyFlags,
+export const GetDeploymentResponseBodyFlags$inboundSchema: z.ZodType<
+  GetDeploymentResponseBodyFlags,
   z.ZodTypeDef,
   unknown
 > = smartUnion([
@@ -3335,13 +3492,13 @@ export const ResponseBodyFlags$inboundSchema: z.ZodType<
   z.array(z.lazy(() => GetDeploymentFlags2$inboundSchema)),
 ]);
 
-export function responseBodyFlagsFromJSON(
+export function getDeploymentResponseBodyFlagsFromJSON(
   jsonString: string,
-): SafeParseResult<ResponseBodyFlags, SDKValidationError> {
+): SafeParseResult<GetDeploymentResponseBodyFlags, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ResponseBodyFlags$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBodyFlags' from JSON`,
+    (x) => GetDeploymentResponseBodyFlags$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentResponseBodyFlags' from JSON`,
   );
 }
 
@@ -3398,8 +3555,8 @@ export function getDeploymentMicrofrontends1FromJSON(
 }
 
 /** @internal */
-export const ResponseBodyMicrofrontends$inboundSchema: z.ZodType<
-  ResponseBodyMicrofrontends,
+export const GetDeploymentResponseBodyMicrofrontends$inboundSchema: z.ZodType<
+  GetDeploymentResponseBodyMicrofrontends,
   z.ZodTypeDef,
   unknown
 > = smartUnion([
@@ -3407,25 +3564,32 @@ export const ResponseBodyMicrofrontends$inboundSchema: z.ZodType<
   z.lazy(() => GetDeploymentMicrofrontends1$inboundSchema),
 ]);
 
-export function responseBodyMicrofrontendsFromJSON(
+export function getDeploymentResponseBodyMicrofrontendsFromJSON(
   jsonString: string,
-): SafeParseResult<ResponseBodyMicrofrontends, SDKValidationError> {
+): SafeParseResult<
+  GetDeploymentResponseBodyMicrofrontends,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => ResponseBodyMicrofrontends$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBodyMicrofrontends' from JSON`,
+    (x) =>
+      GetDeploymentResponseBodyMicrofrontends$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetDeploymentResponseBodyMicrofrontends' from JSON`,
   );
 }
 
 /** @internal */
-export const ResponseBodyFunctionType$inboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyFunctionType
-> = z.nativeEnum(ResponseBodyFunctionType);
+export const GetDeploymentResponseBodyFunctionType$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentResponseBodyFunctionType> = z.nativeEnum(
+    GetDeploymentResponseBodyFunctionType,
+  );
 
 /** @internal */
-export const ResponseBodyFunctionMemoryType$inboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyFunctionMemoryType
-> = z.nativeEnum(ResponseBodyFunctionMemoryType);
+export const GetDeploymentResponseBodyFunctionMemoryType$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentResponseBodyFunctionMemoryType> = z
+    .nativeEnum(GetDeploymentResponseBodyFunctionMemoryType);
 
 /** @internal */
 export const GetDeploymentResponseBodyConfiguration$inboundSchema:
@@ -3456,31 +3620,34 @@ export function getDeploymentResponseBodyBuildQueueFromJSON(
 }
 
 /** @internal */
-export const ResponseBodyElasticConcurrency$inboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyElasticConcurrency
-> = z.nativeEnum(ResponseBodyElasticConcurrency);
+export const GetDeploymentResponseBodyElasticConcurrency$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentResponseBodyElasticConcurrency> = z
+    .nativeEnum(GetDeploymentResponseBodyElasticConcurrency);
 
 /** @internal */
-export const ResponseBodyPurchaseType$inboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyPurchaseType
-> = z.nativeEnum(ResponseBodyPurchaseType);
+export const GetDeploymentResponseBodyPurchaseType$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentResponseBodyPurchaseType> = z.nativeEnum(
+    GetDeploymentResponseBodyPurchaseType,
+  );
 
 /** @internal */
-export const ResponseBodyBuildMachine$inboundSchema: z.ZodType<
-  ResponseBodyBuildMachine,
+export const GetDeploymentResponseBodyBuildMachine$inboundSchema: z.ZodType<
+  GetDeploymentResponseBodyBuildMachine,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  purchaseType: z.nullable(ResponseBodyPurchaseType$inboundSchema).optional(),
+  purchaseType: z.nullable(GetDeploymentResponseBodyPurchaseType$inboundSchema)
+    .optional(),
 });
 
-export function responseBodyBuildMachineFromJSON(
+export function getDeploymentResponseBodyBuildMachineFromJSON(
   jsonString: string,
-): SafeParseResult<ResponseBodyBuildMachine, SDKValidationError> {
+): SafeParseResult<GetDeploymentResponseBodyBuildMachine, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ResponseBodyBuildMachine$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBodyBuildMachine' from JSON`,
+    (x) =>
+      GetDeploymentResponseBodyBuildMachine$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentResponseBodyBuildMachine' from JSON`,
   );
 }
 
@@ -3494,10 +3661,10 @@ export const GetDeploymentResponseBodyResourceConfig$inboundSchema: z.ZodType<
     z.lazy(() => GetDeploymentResponseBodyBuildQueue$inboundSchema),
   ),
   elasticConcurrency: types.optional(
-    ResponseBodyElasticConcurrency$inboundSchema,
+    GetDeploymentResponseBodyElasticConcurrency$inboundSchema,
   ),
   buildMachine: types.optional(
-    z.lazy(() => ResponseBodyBuildMachine$inboundSchema),
+    z.lazy(() => GetDeploymentResponseBodyBuildMachine$inboundSchema),
   ),
 });
 
@@ -3518,14 +3685,14 @@ export function getDeploymentResponseBodyResourceConfigFromJSON(
 }
 
 /** @internal */
-export const ResponseBodyConfig$inboundSchema: z.ZodType<
-  ResponseBodyConfig,
+export const GetDeploymentResponseBodyConfig$inboundSchema: z.ZodType<
+  GetDeploymentResponseBodyConfig,
   z.ZodTypeDef,
   unknown
 > = z.object({
   version: types.optional(types.number()),
-  functionType: ResponseBodyFunctionType$inboundSchema,
-  functionMemoryType: ResponseBodyFunctionMemoryType$inboundSchema,
+  functionType: GetDeploymentResponseBodyFunctionType$inboundSchema,
+  functionMemoryType: GetDeploymentResponseBodyFunctionMemoryType$inboundSchema,
   functionTimeout: types.nullable(types.number()),
   secureComputePrimaryRegion: types.nullable(types.string()),
   secureComputeFallbackRegion: types.nullable(types.string()),
@@ -3535,13 +3702,13 @@ export const ResponseBodyConfig$inboundSchema: z.ZodType<
   ),
 });
 
-export function responseBodyConfigFromJSON(
+export function getDeploymentResponseBodyConfigFromJSON(
   jsonString: string,
-): SafeParseResult<ResponseBodyConfig, SDKValidationError> {
+): SafeParseResult<GetDeploymentResponseBodyConfig, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ResponseBodyConfig$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBodyConfig' from JSON`,
+    (x) => GetDeploymentResponseBodyConfig$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentResponseBodyConfig' from JSON`,
   );
 }
 
@@ -3551,8 +3718,8 @@ export const GetDeploymentResponseBodyDeploymentsResponseState$inboundSchema:
     .nativeEnum(GetDeploymentResponseBodyDeploymentsResponseState);
 
 /** @internal */
-export const ResponseBodyDeploymentAlias$inboundSchema: z.ZodType<
-  ResponseBodyDeploymentAlias,
+export const GetDeploymentResponseBodyDeploymentAlias$inboundSchema: z.ZodType<
+  GetDeploymentResponseBodyDeploymentAlias,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -3561,13 +3728,19 @@ export const ResponseBodyDeploymentAlias$inboundSchema: z.ZodType<
   completedAt: types.optional(types.number()),
 });
 
-export function responseBodyDeploymentAliasFromJSON(
+export function getDeploymentResponseBodyDeploymentAliasFromJSON(
   jsonString: string,
-): SafeParseResult<ResponseBodyDeploymentAlias, SDKValidationError> {
+): SafeParseResult<
+  GetDeploymentResponseBodyDeploymentAlias,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => ResponseBodyDeploymentAlias$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBodyDeploymentAlias' from JSON`,
+    (x) =>
+      GetDeploymentResponseBodyDeploymentAlias$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetDeploymentResponseBodyDeploymentAlias' from JSON`,
   );
 }
 
@@ -3577,7 +3750,9 @@ export const ResponseBodyChecks$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "deployment-alias": z.lazy(() => ResponseBodyDeploymentAlias$inboundSchema),
+  "deployment-alias": z.lazy(() =>
+    GetDeploymentResponseBodyDeploymentAlias$inboundSchema
+  ),
 }).transform((v) => {
   return remap$(v, {
     "deployment-alias": "deploymentAlias",
@@ -3595,58 +3770,63 @@ export function responseBodyChecksFromJSON(
 }
 
 /** @internal */
-export const ResponseBodyBlockCode$inboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyBlockCode
-> = z.nativeEnum(ResponseBodyBlockCode);
+export const GetDeploymentResponseBodyBlockCode$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentResponseBodyBlockCode
+> = z.nativeEnum(GetDeploymentResponseBodyBlockCode);
 
 /** @internal */
-export const ResponseBodyGitUserId$inboundSchema: z.ZodType<
-  ResponseBodyGitUserId,
+export const GetDeploymentResponseBodyGitUserId$inboundSchema: z.ZodType<
+  GetDeploymentResponseBodyGitUserId,
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), types.number()]);
 
-export function responseBodyGitUserIdFromJSON(
+export function getDeploymentResponseBodyGitUserIdFromJSON(
   jsonString: string,
-): SafeParseResult<ResponseBodyGitUserId, SDKValidationError> {
+): SafeParseResult<GetDeploymentResponseBodyGitUserId, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ResponseBodyGitUserId$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBodyGitUserId' from JSON`,
+    (x) =>
+      GetDeploymentResponseBodyGitUserId$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentResponseBodyGitUserId' from JSON`,
   );
 }
 
 /** @internal */
-export const ResponseBodyGitProvider$inboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyGitProvider
-> = z.nativeEnum(ResponseBodyGitProvider);
+export const GetDeploymentResponseBodyGitProvider$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentResponseBodyGitProvider> = z.nativeEnum(
+    GetDeploymentResponseBodyGitProvider,
+  );
 
 /** @internal */
-export const ResponseBodySeatBlock$inboundSchema: z.ZodType<
-  ResponseBodySeatBlock,
+export const GetDeploymentResponseBodySeatBlock$inboundSchema: z.ZodType<
+  GetDeploymentResponseBodySeatBlock,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  blockCode: ResponseBodyBlockCode$inboundSchema,
+  blockCode: GetDeploymentResponseBodyBlockCode$inboundSchema,
   userId: types.optional(types.string()),
   isVerified: types.optional(types.boolean()),
   gitUserId: types.optional(smartUnion([types.string(), types.number()])),
-  gitProvider: types.optional(ResponseBodyGitProvider$inboundSchema),
+  gitProvider: types.optional(
+    GetDeploymentResponseBodyGitProvider$inboundSchema,
+  ),
 });
 
-export function responseBodySeatBlockFromJSON(
+export function getDeploymentResponseBodySeatBlockFromJSON(
   jsonString: string,
-): SafeParseResult<ResponseBodySeatBlock, SDKValidationError> {
+): SafeParseResult<GetDeploymentResponseBodySeatBlock, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ResponseBodySeatBlock$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBodySeatBlock' from JSON`,
+    (x) =>
+      GetDeploymentResponseBodySeatBlock$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentResponseBodySeatBlock' from JSON`,
   );
 }
 
 /** @internal */
-export const ResponseBodyCommitMeta$inboundSchema: z.ZodType<
-  ResponseBodyCommitMeta,
+export const GetDeploymentResponseBodyCommitMeta$inboundSchema: z.ZodType<
+  GetDeploymentResponseBodyCommitMeta,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -3655,13 +3835,14 @@ export const ResponseBodyCommitMeta$inboundSchema: z.ZodType<
   isVerified: types.optional(types.boolean()),
 });
 
-export function responseBodyCommitMetaFromJSON(
+export function getDeploymentResponseBodyCommitMetaFromJSON(
   jsonString: string,
-): SafeParseResult<ResponseBodyCommitMeta, SDKValidationError> {
+): SafeParseResult<GetDeploymentResponseBodyCommitMeta, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ResponseBodyCommitMeta$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBodyCommitMeta' from JSON`,
+    (x) =>
+      GetDeploymentResponseBodyCommitMeta$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentResponseBodyCommitMeta' from JSON`,
   );
 }
 
@@ -3683,8 +3864,8 @@ export function getDeploymentResponseBodyIdFromJSON(
 }
 
 /** @internal */
-export const ResponseBodyGitUser$inboundSchema: z.ZodType<
-  ResponseBodyGitUser,
+export const GetDeploymentResponseBodyGitUser$inboundSchema: z.ZodType<
+  GetDeploymentResponseBodyGitUser,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -3694,19 +3875,19 @@ export const ResponseBodyGitUser$inboundSchema: z.ZodType<
   provider: types.optional(types.string()),
 });
 
-export function responseBodyGitUserFromJSON(
+export function getDeploymentResponseBodyGitUserFromJSON(
   jsonString: string,
-): SafeParseResult<ResponseBodyGitUser, SDKValidationError> {
+): SafeParseResult<GetDeploymentResponseBodyGitUser, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ResponseBodyGitUser$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBodyGitUser' from JSON`,
+    (x) => GetDeploymentResponseBodyGitUser$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentResponseBodyGitUser' from JSON`,
   );
 }
 
 /** @internal */
-export const ResponseBodyVercelUser$inboundSchema: z.ZodType<
-  ResponseBodyVercelUser,
+export const GetDeploymentResponseBodyVercelUser$inboundSchema: z.ZodType<
+  GetDeploymentResponseBodyVercelUser,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -3715,60 +3896,69 @@ export const ResponseBodyVercelUser$inboundSchema: z.ZodType<
   teamRoles: types.optional(z.array(types.string())),
 });
 
-export function responseBodyVercelUserFromJSON(
+export function getDeploymentResponseBodyVercelUserFromJSON(
   jsonString: string,
-): SafeParseResult<ResponseBodyVercelUser, SDKValidationError> {
+): SafeParseResult<GetDeploymentResponseBodyVercelUser, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ResponseBodyVercelUser$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBodyVercelUser' from JSON`,
+    (x) =>
+      GetDeploymentResponseBodyVercelUser$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentResponseBodyVercelUser' from JSON`,
   );
 }
 
 /** @internal */
-export const ResponseBodyAttribution$inboundSchema: z.ZodType<
-  ResponseBodyAttribution,
+export const GetDeploymentResponseBodyAttribution$inboundSchema: z.ZodType<
+  GetDeploymentResponseBodyAttribution,
   z.ZodTypeDef,
   unknown
 > = z.object({
   commitMeta: types.optional(
-    z.lazy(() => ResponseBodyCommitMeta$inboundSchema),
+    z.lazy(() => GetDeploymentResponseBodyCommitMeta$inboundSchema),
   ),
-  gitUser: types.optional(z.lazy(() => ResponseBodyGitUser$inboundSchema)),
+  gitUser: types.optional(
+    z.lazy(() => GetDeploymentResponseBodyGitUser$inboundSchema),
+  ),
   vercelUser: types.optional(
-    z.lazy(() => ResponseBodyVercelUser$inboundSchema),
+    z.lazy(() => GetDeploymentResponseBodyVercelUser$inboundSchema),
   ),
 });
 
-export function responseBodyAttributionFromJSON(
+export function getDeploymentResponseBodyAttributionFromJSON(
   jsonString: string,
-): SafeParseResult<ResponseBodyAttribution, SDKValidationError> {
+): SafeParseResult<GetDeploymentResponseBodyAttribution, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ResponseBodyAttribution$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBodyAttribution' from JSON`,
+    (x) =>
+      GetDeploymentResponseBodyAttribution$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentResponseBodyAttribution' from JSON`,
   );
 }
 
 /** @internal */
-export const GetDeploymentResponseBody1$inboundSchema: z.ZodType<
-  GetDeploymentResponseBody1,
+export const GetDeploymentResponseBody2$inboundSchema: z.ZodType<
+  GetDeploymentResponseBody2,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  aliasAssignedAt: z.nullable(ResponseBodyAliasAssignedAt$inboundSchema)
-    .optional(),
+  aliasAssignedAt: z.nullable(
+    GetDeploymentResponseBodyAliasAssignedAt$inboundSchema,
+  ).optional(),
   alwaysRefuseToBuild: types.optional(types.boolean()),
-  build: ResponseBodyBuild$inboundSchema,
+  build: GetDeploymentResponseBodyBuild$inboundSchema,
   buildArtifactUrls: types.optional(z.array(types.string())),
-  builds: types.optional(z.array(ResponseBodyBuilds$inboundSchema)),
+  builds: types.optional(
+    z.array(GetDeploymentResponseBodyBuilds$inboundSchema),
+  ),
   env: z.array(types.string()),
   inspectorUrl: types.nullable(types.string()),
   isInConcurrentBuildsQueue: types.boolean(),
   isInSystemBuildsQueue: types.boolean(),
   projectSettings: ResponseBodyProjectSettings$inboundSchema,
-  integrations: types.optional(ResponseBodyIntegrations$inboundSchema),
-  images: types.optional(ResponseBodyImages$inboundSchema),
+  integrations: types.optional(
+    GetDeploymentResponseBodyIntegrations$inboundSchema,
+  ),
+  images: types.optional(GetDeploymentResponseBodyImages$inboundSchema),
   alias: types.optional(z.array(types.string())),
   aliasAssigned: types.boolean(),
   bootedAt: types.number(),
@@ -3793,32 +3983,30 @@ export const GetDeploymentResponseBody1$inboundSchema: z.ZodType<
   ),
   oomReport: types.optional(GetDeploymentResponseBodyOomReport$inboundSchema),
   readyStateReason: types.optional(types.string()),
-  aliasWarning: z.nullable(GetDeploymentResponseBodyAliasWarning$inboundSchema)
-    .optional(),
   id: types.string(),
-  createdAt: types.number(),
-  readyState: GetDeploymentResponseBodyReadyState$inboundSchema,
   name: types.string(),
-  type: GetDeploymentResponseBodyType$inboundSchema,
-  errorMessage: z.nullable(types.string()).optional(),
-  aliasError: z.nullable(GetDeploymentResponseBodyAliasError$inboundSchema)
-    .optional(),
+  url: types.string(),
+  target: z.nullable(ResponseBodyTarget$inboundSchema).optional(),
+  createdAt: types.number(),
+  readyState: ResponseBodyReadyState$inboundSchema,
+  readySubstate: types.optional(ResponseBodyReadySubstate$inboundSchema),
+  prebuilt: types.optional(types.boolean()),
+  aliasError: z.nullable(ResponseBodyAliasError$inboundSchema).optional(),
+  aliasWarning: z.nullable(ResponseBodyAliasWarning$inboundSchema).optional(),
   aliasFinal: z.nullable(types.string()).optional(),
+  checksState: types.optional(ResponseBodyChecksState$inboundSchema),
+  checksConclusion: types.optional(ResponseBodyChecksConclusion$inboundSchema),
+  errorCode: types.optional(types.string()),
+  errorLink: types.optional(types.string()),
+  errorMessage: z.nullable(types.string()).optional(),
+  errorStep: types.optional(types.string()),
+  type: GetDeploymentResponseBodyType$inboundSchema,
   autoAssignCustomDomains: types.optional(types.boolean()),
   automaticAliases: types.optional(z.array(types.string())),
   buildErrorAt: types.optional(types.number()),
-  checksState: types.optional(
-    GetDeploymentResponseBodyChecksState$inboundSchema,
-  ),
-  checksConclusion: types.optional(
-    GetDeploymentResponseBodyChecksConclusion$inboundSchema,
-  ),
   deletedAt: z.nullable(types.number()).optional(),
   defaultRoute: types.optional(types.string()),
   canceledAt: types.optional(types.number()),
-  errorCode: types.optional(types.string()),
-  errorLink: types.optional(types.string()),
-  errorStep: types.optional(types.string()),
   passiveRegions: types.optional(z.array(types.string())),
   gitSource: types.optional(GetDeploymentResponseBodyGitSource$inboundSchema),
   manualProvisioning: types.optional(
@@ -3830,34 +4018,31 @@ export const GetDeploymentResponseBody1$inboundSchema: z.ZodType<
     GetDeploymentResponseBodyNodeVersion$inboundSchema,
   ),
   project: types.optional(ResponseBodyProject$inboundSchema),
-  prebuilt: types.optional(types.boolean()),
-  readySubstate: types.optional(
-    GetDeploymentResponseBodyReadySubstate$inboundSchema,
-  ),
   regions: z.array(types.string()),
   softDeletedByRetention: types.optional(types.boolean()),
   source: types.optional(GetDeploymentResponseBodySource$inboundSchema),
-  target: z.nullable(GetDeploymentResponseBodyTarget$inboundSchema).optional(),
   undeletedAt: types.optional(types.number()),
-  url: types.string(),
   userConfiguredDeploymentId: types.optional(types.string()),
   version: types.number(),
   oidcTokenClaims: types.optional(
     GetDeploymentResponseBodyOidcTokenClaims$inboundSchema,
   ),
   projectId: types.string(),
-  plan: ResponseBodyPlan$inboundSchema,
-  platform: types.optional(ResponseBodyPlatform$inboundSchema),
+  plan: GetDeploymentResponseBodyPlan$inboundSchema,
+  platform: types.optional(GetDeploymentResponseBodyPlatform$inboundSchema),
   connectBuildsEnabled: types.optional(types.boolean()),
   connectConfigurationId: types.optional(types.string()),
   createdIn: types.string(),
-  crons: types.optional(z.array(ResponseBodyCrons$inboundSchema)),
-  functions: z.nullable(z.record(ResponseBodyFunctions$inboundSchema))
-    .optional(),
+  crons: types.optional(z.array(GetDeploymentResponseBodyCrons$inboundSchema)),
+  functions: z.nullable(
+    z.record(GetDeploymentResponseBodyFunctions$inboundSchema),
+  ).optional(),
   monorepoManager: z.nullable(types.string()).optional(),
   ownerId: types.string(),
   passiveConnectConfigurationId: types.optional(types.string()),
-  routes: types.nullable(z.array(ResponseBodyRoutes$inboundSchema)),
+  routes: types.nullable(
+    z.array(GetDeploymentResponseBodyRoutes$inboundSchema),
+  ),
   services: types.optional(
     z.array(z.union([
       z.lazy(() => GetDeploymentServices1$inboundSchema),
@@ -3886,12 +4071,169 @@ export const GetDeploymentResponseBody1$inboundSchema: z.ZodType<
       z.lazy(() => GetDeploymentMicrofrontends1$inboundSchema),
     ]),
   ),
-  config: types.optional(z.lazy(() => ResponseBodyConfig$inboundSchema)),
-  checks: types.optional(z.lazy(() => ResponseBodyChecks$inboundSchema)),
-  seatBlock: types.optional(z.lazy(() => ResponseBodySeatBlock$inboundSchema)),
-  attribution: types.optional(
-    z.lazy(() => ResponseBodyAttribution$inboundSchema),
+  config: types.optional(
+    z.lazy(() => GetDeploymentResponseBodyConfig$inboundSchema),
   ),
+  checks: types.optional(z.lazy(() => ResponseBodyChecks$inboundSchema)),
+  seatBlock: types.optional(
+    z.lazy(() => GetDeploymentResponseBodySeatBlock$inboundSchema),
+  ),
+  attribution: types.optional(
+    z.lazy(() => GetDeploymentResponseBodyAttribution$inboundSchema),
+  ),
+});
+
+export function getDeploymentResponseBody2FromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentResponseBody2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentResponseBody2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentResponseBody2' from JSON`,
+  );
+}
+
+/** @internal */
+export const Anonymous$inboundSchema: z.ZodType<
+  Anonymous,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  expiresAt: types.number(),
+});
+
+export function anonymousFromJSON(
+  jsonString: string,
+): SafeParseResult<Anonymous, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Anonymous$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Anonymous' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentResponseBodyDeploymentsTarget$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentResponseBodyDeploymentsTarget> = z
+    .nativeEnum(GetDeploymentResponseBodyDeploymentsTarget);
+
+/** @internal */
+export const GetDeploymentResponseBodyDeploymentsReadyState$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentResponseBodyDeploymentsReadyState> = z
+    .nativeEnum(GetDeploymentResponseBodyDeploymentsReadyState);
+
+/** @internal */
+export const GetDeploymentResponseBodyDeploymentsReadySubstate$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentResponseBodyDeploymentsReadySubstate> = z
+    .nativeEnum(GetDeploymentResponseBodyDeploymentsReadySubstate);
+
+/** @internal */
+export const GetDeploymentResponseBodyDeploymentsAliasError$inboundSchema:
+  z.ZodType<
+    GetDeploymentResponseBodyDeploymentsAliasError,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    code: types.string(),
+    message: types.string(),
+  });
+
+export function getDeploymentResponseBodyDeploymentsAliasErrorFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetDeploymentResponseBodyDeploymentsAliasError,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentResponseBodyDeploymentsAliasError$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetDeploymentResponseBodyDeploymentsAliasError' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentResponseBodyDeploymentsAliasWarning$inboundSchema:
+  z.ZodType<
+    GetDeploymentResponseBodyDeploymentsAliasWarning,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    code: types.string(),
+    message: types.string(),
+    link: types.optional(types.string()),
+    action: types.optional(types.string()),
+  });
+
+export function getDeploymentResponseBodyDeploymentsAliasWarningFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetDeploymentResponseBodyDeploymentsAliasWarning,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentResponseBodyDeploymentsAliasWarning$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetDeploymentResponseBodyDeploymentsAliasWarning' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentResponseBodyDeploymentsChecksState$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentResponseBodyDeploymentsChecksState> = z
+    .nativeEnum(GetDeploymentResponseBodyDeploymentsChecksState);
+
+/** @internal */
+export const GetDeploymentResponseBodyDeploymentsChecksConclusion$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentResponseBodyDeploymentsChecksConclusion> =
+    z.nativeEnum(GetDeploymentResponseBodyDeploymentsChecksConclusion);
+
+/** @internal */
+export const GetDeploymentResponseBody1$inboundSchema: z.ZodType<
+  GetDeploymentResponseBody1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  alias: types.optional(z.array(types.string())),
+  aliasAssigned: types.boolean(),
+  readyStateReason: types.optional(types.string()),
+  anonymous: z.lazy(() => Anonymous$inboundSchema),
+  id: types.string(),
+  name: types.string(),
+  url: types.string(),
+  projectId: types.string(),
+  target: z.nullable(GetDeploymentResponseBodyDeploymentsTarget$inboundSchema)
+    .optional(),
+  createdAt: types.number(),
+  readyState: GetDeploymentResponseBodyDeploymentsReadyState$inboundSchema,
+  readySubstate: types.optional(
+    GetDeploymentResponseBodyDeploymentsReadySubstate$inboundSchema,
+  ),
+  prebuilt: types.optional(types.boolean()),
+  aliasError: z.nullable(
+    z.lazy(() => GetDeploymentResponseBodyDeploymentsAliasError$inboundSchema),
+  ).optional(),
+  aliasWarning: z.nullable(
+    z.lazy(() =>
+      GetDeploymentResponseBodyDeploymentsAliasWarning$inboundSchema
+    ),
+  ).optional(),
+  aliasFinal: z.nullable(types.string()).optional(),
+  checksState: types.optional(
+    GetDeploymentResponseBodyDeploymentsChecksState$inboundSchema,
+  ),
+  checksConclusion: types.optional(
+    GetDeploymentResponseBodyDeploymentsChecksConclusion$inboundSchema,
+  ),
+  errorCode: types.optional(types.string()),
+  errorLink: types.optional(types.string()),
+  errorMessage: z.nullable(types.string()).optional(),
+  errorStep: types.optional(types.string()),
 });
 
 export function getDeploymentResponseBody1FromJSON(
@@ -3910,8 +4252,9 @@ export const GetDeploymentResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([
+  z.lazy(() => GetDeploymentResponseBody2$inboundSchema),
+  GetDeploymentResponseBody3$inboundSchema,
   z.lazy(() => GetDeploymentResponseBody1$inboundSchema),
-  GetDeploymentResponseBody2$inboundSchema,
 ]);
 
 export function getDeploymentResponseBodyFromJSON(

@@ -1,6 +1,6 @@
 # UpdateFirewallConfigRequestBody1
 
-Enable Firewall
+Add a ruleset
 
 ## Example Usage
 
@@ -9,7 +9,11 @@ import { UpdateFirewallConfigRequestBody1 } from "@vercel/sdk/models/updatefirew
 
 let value: UpdateFirewallConfigRequestBody1 = {
   action: "firewallEnabled",
-  value: false,
+  value: {
+    name: "<value>",
+    active: false,
+    conditionGroup: [],
+  },
 };
 ```
 
@@ -19,4 +23,4 @@ let value: UpdateFirewallConfigRequestBody1 = {
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `action`                                                                                           | [models.UpdateFirewallConfigRequestBodyAction](../models/updatefirewallconfigrequestbodyaction.md) | :heavy_check_mark:                                                                                 | N/A                                                                                                |
 | `id`                                                                                               | *any*                                                                                              | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
-| `value`                                                                                            | *boolean*                                                                                          | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `value`                                                                                            | [models.RequestBodyValue](../models/requestbodyvalue.md)                                           | :heavy_check_mark:                                                                                 | N/A                                                                                                |

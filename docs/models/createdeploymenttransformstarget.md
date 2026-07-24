@@ -12,6 +12,6 @@ let value: CreateDeploymentTransformsTarget = {
 
 ## Fields
 
-| Field                                             | Type                                              | Required                                          | Description                                       |
-| ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
-| `key`                                             | *models.CreateDeploymentTransformsDeploymentsKey* | :heavy_check_mark:                                | N/A                                               |
+| Field                                  | Type                                   | Required                               | Description                            |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| `key`                                  | *models.CreateDeploymentTransformsKey* | :heavy_check_mark:                     | N/A                                    |

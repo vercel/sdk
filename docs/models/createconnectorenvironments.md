@@ -1,15 +1,17 @@
 # CreateConnectorEnvironments
 
-## Example Usage
+
+## Supported Types
+
+### `string`
 
 ```typescript
-import { CreateConnectorEnvironments } from "@vercel/sdk/models/createconnectorop.js";
-
-let value: CreateConnectorEnvironments = "development";
+const value: string = "<value>";
 ```
 
-## Values
+### `models.CreateConnectorEnvironments2`
 
 ```typescript
-"development" | "preview" | "production"
+const value: models.CreateConnectorEnvironments2 = "production";
 ```
+

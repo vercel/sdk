@@ -6,7 +6,7 @@
 import { GetFirewallConfigRulesMitigate } from "@vercel/sdk/models/getfirewallconfigop.js";
 
 let value: GetFirewallConfigRulesMitigate = {
-  action: "bypass",
+  action: "allow",
 };
 ```
 

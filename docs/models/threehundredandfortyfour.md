@@ -5,20 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFortyFour } from "@vercel/sdk/models/threehundredandeighteen.js";
+import { ThreeHundredAndFortyFour } from "@vercel/sdk/models/threehundredandfortyone.js";
 
 let value: ThreeHundredAndFortyFour = {
-  totp: true,
-  recoveryCodes: 164.91,
+  publicId: "<id>",
+  role: "<value>",
+  maxUses: 3131.37,
+  expiresAt: "1736209661819",
 };
 ```
 
 ## Fields
 
-| Field                                      | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `totp`                                     | *boolean*                                  | :heavy_check_mark:                         | N/A                                        |
-| `recoveryCodes`                            | *number*                                   | :heavy_check_mark:                         | N/A                                        |
-| `actorId`                                  | *string*                                   | :heavy_minus_sign:                         | N/A                                        |
-| `actorType`                                | [models.ActorType](../models/actortype.md) | :heavy_minus_sign:                         | N/A                                        |
-| `reason`                                   | *string*                                   | :heavy_minus_sign:                         | N/A                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `publicId`         | *string*           | :heavy_check_mark: | N/A                |
+| `role`             | *string*           | :heavy_check_mark: | N/A                |
+| `maxUses`          | *number*           | :heavy_check_mark: | N/A                |
+| `expiresAt`        | *string*           | :heavy_check_mark: | N/A                |
+| `name`             | *string*           | :heavy_minus_sign: | N/A                |

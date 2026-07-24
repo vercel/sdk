@@ -1,0 +1,22 @@
+# GetSecurityFirewallConfigRulesetsApiSecurityResponseConditions
+
+## Example Usage
+
+```typescript
+import { GetSecurityFirewallConfigRulesetsApiSecurityResponseConditions } from "@vercel/sdk/models/getsecurityfirewallconfigapisecurityaction.js";
+
+let value: GetSecurityFirewallConfigRulesetsApiSecurityResponseConditions = {
+  type: "bot_name",
+  op: "re",
+};
+```
+
+## Fields
+
+| Field                                                                                                                                    | Type                                                                                                                                     | Required                                                                                                                                 | Description                                                                                                                              |
+| ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `type`                                                                                                                                   | [models.GetSecurityFirewallConfigRulesetsApiSecurityResponseType](../models/getsecurityfirewallconfigrulesetsapisecurityresponsetype.md) | :heavy_check_mark:                                                                                                                       | N/A                                                                                                                                      |
+| `op`                                                                                                                                     | [models.GetSecurityFirewallConfigRulesetsApiSecurityResponseOp](../models/getsecurityfirewallconfigrulesetsapisecurityresponseop.md)     | :heavy_check_mark:                                                                                                                       | N/A                                                                                                                                      |
+| `neg`                                                                                                                                    | *boolean*                                                                                                                                | :heavy_minus_sign:                                                                                                                       | N/A                                                                                                                                      |
+| `key`                                                                                                                                    | *string*                                                                                                                                 | :heavy_minus_sign:                                                                                                                       | N/A                                                                                                                                      |
+| `value`                                                                                                                                  | *models.GetSecurityFirewallConfigRulesetsApiSecurityResponseValue*                                                                       | :heavy_minus_sign:                                                                                                                       | N/A                                                                                                                                      |

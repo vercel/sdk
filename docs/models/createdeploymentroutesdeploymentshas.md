@@ -3,39 +3,43 @@
 
 ## Supported Types
 
-### `models.CreateDeploymentHasDeploymentsResponse2001`
+### `models.CreateDeploymentHasDeploymentsResponse200ApplicationJson1`
 
 ```typescript
-const value: models.CreateDeploymentHasDeploymentsResponse2001 = {
-  type: "host",
-  value: "<value>",
-};
+const value: models.CreateDeploymentHasDeploymentsResponse200ApplicationJson1 =
+  {
+    type: "host",
+    value: {},
+  };
 ```
 
-### `models.CreateDeploymentHasDeploymentsResponse2002`
+### `models.CreateDeploymentHasDeploymentsResponse200ApplicationJson2`
 
 ```typescript
-const value: models.CreateDeploymentHasDeploymentsResponse2002 = {
-  type: "query",
-  key: "<key>",
-};
+const value: models.CreateDeploymentHasDeploymentsResponse200ApplicationJson2 =
+  {
+    type: "query",
+    key: "<key>",
+  };
 ```
 
-### `models.CreateDeploymentHasDeploymentsResponse2002`
+### `models.CreateDeploymentHasDeploymentsResponse200ApplicationJson2`
 
 ```typescript
-const value: models.CreateDeploymentHasDeploymentsResponse2002 = {
-  type: "query",
-  key: "<key>",
-};
+const value: models.CreateDeploymentHasDeploymentsResponse200ApplicationJson2 =
+  {
+    type: "query",
+    key: "<key>",
+  };
 ```
 
-### `models.CreateDeploymentHasDeploymentsResponse2002`
+### `models.CreateDeploymentHasDeploymentsResponse200ApplicationJson2`
 
 ```typescript
-const value: models.CreateDeploymentHasDeploymentsResponse2002 = {
-  type: "query",
-  key: "<key>",
-};
+const value: models.CreateDeploymentHasDeploymentsResponse200ApplicationJson2 =
+  {
+    type: "query",
+    key: "<key>",
+  };
 ```
 

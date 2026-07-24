@@ -3,29 +3,29 @@
 
 ## Supported Types
 
-### `models.GetDeploymentRoutes1`
+### `models.CreateDeploymentRoutes1`
 
 ```typescript
-const value: models.GetDeploymentRoutes1 = {
+const value: models.CreateDeploymentRoutes1 = {
   src: "<value>",
 };
 ```
 
-### `models.GetDeploymentRoutes2`
+### `models.CreateDeploymentRoutes2`
 
 ```typescript
-const value: models.GetDeploymentRoutes2 = {
-  handle: "rewrite",
+const value: models.CreateDeploymentRoutes2 = {
+  handle: "miss",
 };
 ```
 
-### `models.GetDeploymentRoutes3`
+### `models.CreateDeploymentRoutes3`
 
 ```typescript
-const value: models.GetDeploymentRoutes3 = {
+const value: models.CreateDeploymentRoutes3 = {
   src: "<value>",
   continue: true,
-  middleware: 4978.31,
+  middleware: 9033.5,
 };
 ```
 

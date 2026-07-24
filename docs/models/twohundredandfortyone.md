@@ -5,23 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFortyOne } from "@vercel/sdk/models/onehundredandeightyfive.js";
+import { TwoHundredAndFortyOne } from "@vercel/sdk/models/twohundredandeleven.js";
 
 let value: TwoHundredAndFortyOne = {
-  project: {
-    name: "<value>",
-  },
-  removedMembership: {
-    role: "PROJECT_GUEST",
-    uid: "<id>",
-    createdAt: 2303.21,
-  },
+  projectId: "<id>",
+  projectName: "<value>",
+  onPullRequest: false,
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `project`                                                                    | [models.UserEventPayload241Project](../models/usereventpayload241project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
-| `removedMembership`                                                          | [models.RemovedMembership](../models/removedmembership.md)                   | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `onPullRequest`    | *boolean*          | :heavy_check_mark: | N/A                |

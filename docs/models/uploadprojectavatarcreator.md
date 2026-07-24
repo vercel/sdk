@@ -1,23 +1,53 @@
 # UploadProjectAvatarCreator
 
-## Example Usage
+
+## Supported Types
+
+### `models.UploadProjectAvatarCreator1`
 
 ```typescript
-import { UploadProjectAvatarCreator } from "@vercel/sdk/models/uploadprojectavatarlastrollbacktarget.js";
-
-let value: UploadProjectAvatarCreator = {
-  email: "Malinda.Balistreri94@yahoo.com",
-  uid: "<id>",
-  username: "Ewell_Cartwright",
+const value: models.UploadProjectAvatarCreator1 = {
+  type: "user",
+  via: {
+    type: "app",
+    app: {
+      id: "<id>",
+    },
+  },
+  user: {
+    id: "<id>",
+  },
 };
 ```
 
-## Fields
+### `models.UploadProjectAvatarCreator2`
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `email`            | *string*           | :heavy_check_mark: | N/A                |
-| `githubLogin`      | *string*           | :heavy_minus_sign: | N/A                |
-| `gitlabLogin`      | *string*           | :heavy_minus_sign: | N/A                |
-| `uid`              | *string*           | :heavy_check_mark: | N/A                |
-| `username`         | *string*           | :heavy_check_mark: | N/A                |
+```typescript
+const value: models.UploadProjectAvatarCreator2 = {
+  type: "app",
+  app: {
+    id: "<id>",
+  },
+};
+```
+
+### `models.UploadProjectAvatarCreator3`
+
+```typescript
+const value: models.UploadProjectAvatarCreator3 = {
+  type: "integration",
+  integration: {
+    integrationId: "<id>",
+    configurationId: "<id>",
+  },
+};
+```
+
+### `models.UploadProjectAvatarCreator4`
+
+```typescript
+const value: models.UploadProjectAvatarCreator4 = {
+  type: "system",
+};
+```
+

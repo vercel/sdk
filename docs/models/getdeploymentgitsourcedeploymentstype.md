@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetDeploymentGitSourceDeploymentsType } from "@vercel/sdk/models/responsebodyproject.js";
+import { GetDeploymentGitSourceDeploymentsType } from "@vercel/sdk/models/getdeploymentresponsebodymanualprovisioning.js";
 
 let value: GetDeploymentGitSourceDeploymentsType = "github-custom-host";
 ```

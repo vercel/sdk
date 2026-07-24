@@ -35,3 +35,18 @@ const value: models.GetDeploymentEventsResponseBody2 = {
 };
 ```
 
+### `models.GetDeploymentEventsResponseBody3`
+
+```typescript
+const value: models.GetDeploymentEventsResponseBody3 = {
+  type: "stderr",
+  created: 5120.4,
+  payload: {
+    deploymentId: "<id>",
+    id: "<id>",
+    date: 5232.2,
+    serial: "<value>",
+  },
+};
+```
+

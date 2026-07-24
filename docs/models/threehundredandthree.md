@@ -5,21 +5,26 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndThree } from "@vercel/sdk/models/twohundredandfiftyeight.js";
+import { ThreeHundredAndThree } from "@vercel/sdk/models/twohundredandeightyfour.js";
 
 let value: ThreeHundredAndThree = {
-  trialCreditsIssuedAt: 6099.78,
-  expiresAt: "1742571732302",
-  amount: "897.21",
-  currency: "New Israeli Sheqel",
+  scalingRules: {
+    "key": {
+      min: 7732.79,
+      max: 2712.29,
+    },
+  },
+  min: 2182.31,
+  max: 8972.07,
+  url: "https://ecstatic-circumference.com/",
 };
 ```
 
 ## Fields
 
-| Field                  | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `trialCreditsIssuedAt` | *number*               | :heavy_check_mark:     | N/A                    |
-| `expiresAt`            | *string*               | :heavy_check_mark:     | N/A                    |
-| `amount`               | *string*               | :heavy_check_mark:     | N/A                    |
-| `currency`             | *string*               | :heavy_check_mark:     | N/A                    |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `scalingRules`                                                   | Record<string, [models.ScalingRules](../models/scalingrules.md)> | :heavy_check_mark:                                               | N/A                                                              |
+| `min`                                                            | *number*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `max`                                                            | *number*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `url`                                                            | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |

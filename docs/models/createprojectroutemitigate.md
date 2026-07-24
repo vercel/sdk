@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectRouteMitigate } from "@vercel/sdk/models/createprojectresponsebody.js";
+import { CreateProjectRouteMitigate } from "@vercel/sdk/models/createprojecthasprojectsvalue.js";
 
 let value: CreateProjectRouteMitigate = {
   action: "block_legal_cwc",

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GitRepo4 } from "@vercel/sdk/models/createdeploymentresponsebody.js";
+import { GitRepo4 } from "@vercel/sdk/models/canceldeploymentgitrepoownertype.js";
 
 let value: GitRepo4 = {
   org: "<value>",
@@ -28,4 +28,4 @@ let value: GitRepo4 = {
 | `defaultBranch`                                                                                                | *string*                                                                                                       | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
 | `name`                                                                                                         | *string*                                                                                                       | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
 | `private`                                                                                                      | *boolean*                                                                                                      | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
-| `ownerType`                                                                                                    | [models.CreateDeploymentGitRepoDeploymentsOwnerType](../models/createdeploymentgitrepodeploymentsownertype.md) | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
+| `ownerType`                                                                                                    | [models.CancelDeploymentGitRepoDeploymentsOwnerType](../models/canceldeploymentgitrepodeploymentsownertype.md) | :heavy_check_mark:                                                                                             | N/A                                                                                                            |

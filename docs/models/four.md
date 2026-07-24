@@ -1,23 +1,19 @@
 # Four
 
-The payload of the event, if requested.
+Metadata for {@link principalId}.
 
 ## Example Usage
 
 ```typescript
-import { Four } from "@vercel/sdk/models/action.js";
+import { Four } from "@vercel/sdk/models/threehundredandfortyone.js";
 
 let value: Four = {
-  action: "read",
-  environment: [],
+  type: "system",
 };
 ```
 
 ## Fields
 
-| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
-| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `action`                                                             | [models.UserEventPayloadAction](../models/usereventpayloadaction.md) | :heavy_check_mark:                                                   | N/A                                                                  |
-| `projectName`                                                        | *string*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |
-| `projectId`                                                          | *string*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |
-| `environment`                                                        | *string*[]                                                           | :heavy_check_mark:                                                   | N/A                                                                  |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `type`                                                                 | [models.UserEventPrincipal4Type](../models/usereventprincipal4type.md) | :heavy_check_mark:                                                     | N/A                                                                    |

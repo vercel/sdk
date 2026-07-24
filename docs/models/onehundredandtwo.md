@@ -5,17 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndTwo } from "@vercel/sdk/models/usereventpayload70project.js";
+import { OneHundredAndTwo } from "@vercel/sdk/models/jobprovider.js";
 
 let value: OneHundredAndTwo = {
+  id: "<id>",
+  value: "<value>",
   name: "<value>",
+  domain: "grouchy-fold.com",
+  type: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `name`                                                                       | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
-| `oldTeam`                                                                    | [models.UserEventPayload102OldTeam](../models/usereventpayload102oldteam.md) | :heavy_minus_sign:                                                           | N/A                                                                          |
-| `newTeam`                                                                    | [models.UserEventPayload102NewTeam](../models/usereventpayload102newteam.md) | :heavy_minus_sign:                                                           | N/A                                                                          |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `id`               | *string*           | :heavy_check_mark: | N/A                |
+| `value`            | *string*           | :heavy_check_mark: | N/A                |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `domain`           | *string*           | :heavy_check_mark: | N/A                |
+| `type`             | *string*           | :heavy_check_mark: | N/A                |

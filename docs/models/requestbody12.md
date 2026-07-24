@@ -1,6 +1,6 @@
 # RequestBody12
 
-Update a managed rule group
+Disable a managed rule
 
 ## Example Usage
 
@@ -9,15 +9,13 @@ import { RequestBody12 } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
 let value: RequestBody12 = {
   action: "<value>",
-  id: "vercel_ruleset",
-  value: {},
 };
 ```
 
 ## Fields
 
-| Field                                                                                                                                              | Type                                                                                                                                               | Required                                                                                                                                           | Description                                                                                                                                        |
-| -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `action`                                                                                                                                           | *string*                                                                                                                                           | :heavy_check_mark:                                                                                                                                 | N/A                                                                                                                                                |
-| `id`                                                                                                                                               | [models.UpdateFirewallConfigRequestBodyId](../models/updatefirewallconfigrequestbodyid.md)                                                         | :heavy_check_mark:                                                                                                                                 | N/A                                                                                                                                                |
-| `value`                                                                                                                                            | Record<string, [models.UpdateFirewallConfigRequestBodySecurityRequest12Value](../models/updatefirewallconfigrequestbodysecurityrequest12value.md)> | :heavy_check_mark:                                                                                                                                 | N/A                                                                                                                                                |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `action`           | *string*           | :heavy_check_mark: | N/A                |
+| `id`               | *string*           | :heavy_minus_sign: | N/A                |
+| `value`            | *string*           | :heavy_minus_sign: | N/A                |

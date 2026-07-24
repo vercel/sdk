@@ -5,19 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndTwentyFive } from "@vercel/sdk/models/onehundredandeightyfive.js";
+import { TwoHundredAndTwentyFive } from "@vercel/sdk/models/twohundredandeleven.js";
 
 let value: TwoHundredAndTwentyFive = {
   projectId: "<id>",
   projectName: "<value>",
-  createDeployments: "enabled",
+  action: "enabled",
 };
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `projectId`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
-| `projectName`                                              | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
-| `createDeployments`                                        | [models.CreateDeployments](../models/createdeployments.md) | :heavy_check_mark:                                         | N/A                                                        |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `projectId`                                                                | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `projectName`                                                              | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `action`                                                                   | [models.UserEventPayload225Action](../models/usereventpayload225action.md) | :heavy_check_mark:                                                         | N/A                                                                        |

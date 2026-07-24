@@ -38,6 +38,19 @@ export const QueryParamSortOrder = {
 export type QueryParamSortOrder = ClosedEnum<typeof QueryParamSortOrder>;
 
 /**
+ * Filter named sandboxes by status. Only valid when sortBy is createdAt.
+ */
+export const QueryParamStatus = {
+  Running: "running",
+  Stopping: "stopping",
+  Stopped: "stopped",
+} as const;
+/**
+ * Filter named sandboxes by status. Only valid when sortBy is createdAt.
+ */
+export type QueryParamStatus = ClosedEnum<typeof QueryParamStatus>;
+
+/**
  * Filter sandboxes by tag. Format: \"key:value\". Only one tag filter is supported at a time.
  */
 export type QueryParamTags = string | Array<string>;
@@ -67,6 +80,10 @@ export type ListSandboxesRequest = {
    * Sort direction. Defaults to desc.
    */
   sortOrder?: QueryParamSortOrder | undefined;
+  /**
+   * Filter named sandboxes by status. Only valid when sortBy is createdAt.
+   */
+  status?: QueryParamStatus | undefined;
   /**
    * Filter sandboxes by tag. Format: \"key:value\". Only one tag filter is supported at a time.
    */
@@ -102,6 +119,11 @@ export const QueryParamSortOrder$outboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(QueryParamSortOrder);
 
 /** @internal */
+export const QueryParamStatus$outboundSchema: z.ZodNativeEnum<
+  typeof QueryParamStatus
+> = z.nativeEnum(QueryParamStatus);
+
+/** @internal */
 export type QueryParamTags$Outbound = string | Array<string>;
 
 /** @internal */
@@ -123,6 +145,7 @@ export type ListSandboxesRequest$Outbound = {
   namePrefix?: string | undefined;
   cursor?: string | undefined;
   sortOrder: string;
+  status?: string | undefined;
   tags?: string | Array<string> | undefined;
   teamId?: string | undefined;
   slug?: string | undefined;
@@ -140,6 +163,7 @@ export const ListSandboxesRequest$outboundSchema: z.ZodType<
   namePrefix: z.string().optional(),
   cursor: z.string().optional(),
   sortOrder: QueryParamSortOrder$outboundSchema.default("desc"),
+  status: QueryParamStatus$outboundSchema.optional(),
   tags: smartUnion([z.string(), z.array(z.string())]).optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),

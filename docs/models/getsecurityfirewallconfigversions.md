@@ -1,0 +1,47 @@
+# GetSecurityFirewallConfigVersions
+
+## Example Usage
+
+```typescript
+import { GetSecurityFirewallConfigVersions } from "@vercel/sdk/models/getsecurityfirewallconfigresponsebody.js";
+
+let value: GetSecurityFirewallConfigVersions = {
+  ownerId: "<id>",
+  projectKey: "<value>",
+  id: "<id>",
+  version: 4818.9,
+  updatedAt: "1735626930206",
+  firewallEnabled: true,
+  rules: [],
+  ips: [
+    {
+      id: "<id>",
+      hostname: "elliptical-mixture.info",
+      ip: "134.136.178.55",
+      action: "deny",
+    },
+  ],
+  changes: [
+    {},
+  ],
+};
+```
+
+## Fields
+
+| Field                                                                                                                                    | Type                                                                                                                                     | Required                                                                                                                                 | Description                                                                                                                              |
+| ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `ownerId`                                                                                                                                | *string*                                                                                                                                 | :heavy_check_mark:                                                                                                                       | N/A                                                                                                                                      |
+| `projectKey`                                                                                                                             | *string*                                                                                                                                 | :heavy_check_mark:                                                                                                                       | N/A                                                                                                                                      |
+| `id`                                                                                                                                     | *string*                                                                                                                                 | :heavy_check_mark:                                                                                                                       | N/A                                                                                                                                      |
+| `version`                                                                                                                                | *number*                                                                                                                                 | :heavy_check_mark:                                                                                                                       | N/A                                                                                                                                      |
+| `updatedAt`                                                                                                                              | *string*                                                                                                                                 | :heavy_check_mark:                                                                                                                       | N/A                                                                                                                                      |
+| `firewallEnabled`                                                                                                                        | *boolean*                                                                                                                                | :heavy_check_mark:                                                                                                                       | N/A                                                                                                                                      |
+| `crs`                                                                                                                                    | [models.GetSecurityFirewallConfigApiSecurityCrs](../models/getsecurityfirewallconfigapisecuritycrs.md)                                   | :heavy_minus_sign:                                                                                                                       | N/A                                                                                                                                      |
+| `rules`                                                                                                                                  | *models.GetSecurityFirewallConfigApiSecurityResponseRules*[]                                                                             | :heavy_check_mark:                                                                                                                       | N/A                                                                                                                                      |
+| `ips`                                                                                                                                    | [models.GetSecurityFirewallConfigApiSecurityIps](../models/getsecurityfirewallconfigapisecurityips.md)[]                                 | :heavy_check_mark:                                                                                                                       | N/A                                                                                                                                      |
+| `rulesets`                                                                                                                               | *models.GetSecurityFirewallConfigApiSecurityResponseRulesets*                                                                            | :heavy_minus_sign:                                                                                                                       | N/A                                                                                                                                      |
+| `changes`                                                                                                                                | [models.GetSecurityFirewallConfigApiSecurityChanges](../models/getsecurityfirewallconfigapisecuritychanges.md)[]                         | :heavy_check_mark:                                                                                                                       | N/A                                                                                                                                      |
+| `managedRules`                                                                                                                           | [models.GetSecurityFirewallConfigApiSecurityResponseManagedRules](../models/getsecurityfirewallconfigapisecurityresponsemanagedrules.md) | :heavy_minus_sign:                                                                                                                       | N/A                                                                                                                                      |
+| `botIdEnabled`                                                                                                                           | *boolean*                                                                                                                                | :heavy_minus_sign:                                                                                                                       | N/A                                                                                                                                      |
+| `logHeaders`                                                                                                                             | *models.GetSecurityFirewallConfigApiSecurityResponseLogHeaders*                                                                          | :heavy_minus_sign:                                                                                                                       | N/A                                                                                                                                      |

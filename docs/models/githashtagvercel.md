@@ -5,7 +5,7 @@ Since February 2022 All the hashtag-vercel tags found in the commit message trig
 ## Example Usage
 
 ```typescript
-import { GitHashtagVercel } from "@vercel/sdk/models/usereventpayload70project.js";
+import { GitHashtagVercel } from "@vercel/sdk/models/jobprovider.js";
 
 let value: GitHashtagVercel = "#VERCEL_V0_MESSAGE";
 ```

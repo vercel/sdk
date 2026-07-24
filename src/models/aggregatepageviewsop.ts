@@ -200,6 +200,8 @@ export type Data2 = {
   cacheHitState: string;
   cacheHitLevel: string;
   cacheApi: string;
+  cacheReason: string;
+  pprState: string;
   clientIp: string;
   clientIpCountry: string;
   clientUserAgent: string;
@@ -211,7 +213,6 @@ export type Data2 = {
   botCategory: string;
   botCategoryLegacy: string;
   botVerified: string;
-  dheCipherSuite: string;
   botCheckResult: string;
   deepAnalysisCheck: string;
   wafAction: string;
@@ -264,8 +265,14 @@ export type Data2 = {
   aiGatewayModelId: string;
   aiProvider: string;
   aiModelType: string;
+  servedSpeed: string;
   virtualModelSlug: string;
   virtualModelKind: string;
+  inferenceEndpointSlug: string;
+  inferenceScope: string;
+  inferenceGeoRegion: string;
+  inferenceProviderRegion: string;
+  requestedInferenceRegion: string;
   costCurrency: string;
   marketCostCurrency: string;
   cachedInputTokensCurrency: string;
@@ -284,6 +291,8 @@ export type Data2 = {
   quotaEntityType: string;
   videoResolution: string;
   videoAspectRatio: string;
+  piiRedactionApplied: string;
+  moderationApplied: string;
   queueName: string;
   consumerGroup: string;
   messageId: string;
@@ -330,6 +339,9 @@ export type Data2 = {
   providerAttemptTotalInRequest: string;
   generationId: string;
   sessionId: string;
+  contentCaptureStatus: string;
+  contentCaptureInputs: string;
+  contentCaptureOutputs: string;
   providerAttemptError: string;
   providerAttemptSafetyIdentifier: string;
   providerAttemptDevSafetyIdentifier: string;
@@ -340,6 +352,15 @@ export type Data2 = {
   toolCallSuccess: string;
   toolCallErrorType: string;
   toolCallStatusCode: string;
+  environmentId: string;
+  billableRegion: string;
+  direction: string;
+  networkTenancy: string;
+  trafficSource: string;
+  networkId: string;
+  privatelinkEndpointId: string;
+  privatelinkDnsName: string;
+  privatelinkIpAddress: string;
   additionalProperties?: { [k: string]: number | null } | undefined;
 };
 
@@ -394,6 +415,8 @@ export type Data1 = {
   cacheHitState?: string | undefined;
   cacheHitLevel?: string | undefined;
   cacheApi?: string | undefined;
+  cacheReason?: string | undefined;
+  pprState?: string | undefined;
   clientIp?: string | undefined;
   clientIpCountry?: string | undefined;
   clientUserAgent?: string | undefined;
@@ -405,7 +428,6 @@ export type Data1 = {
   botCategory?: string | undefined;
   botCategoryLegacy?: string | undefined;
   botVerified?: string | undefined;
-  dheCipherSuite?: string | undefined;
   botCheckResult?: string | undefined;
   deepAnalysisCheck?: string | undefined;
   wafAction?: string | undefined;
@@ -458,8 +480,14 @@ export type Data1 = {
   aiGatewayModelId?: string | undefined;
   aiProvider?: string | undefined;
   aiModelType?: string | undefined;
+  servedSpeed?: string | undefined;
   virtualModelSlug?: string | undefined;
   virtualModelKind?: string | undefined;
+  inferenceEndpointSlug?: string | undefined;
+  inferenceScope?: string | undefined;
+  inferenceGeoRegion?: string | undefined;
+  inferenceProviderRegion?: string | undefined;
+  requestedInferenceRegion?: string | undefined;
   costCurrency?: string | undefined;
   marketCostCurrency?: string | undefined;
   cachedInputTokensCurrency?: string | undefined;
@@ -478,6 +506,8 @@ export type Data1 = {
   quotaEntityType?: string | undefined;
   videoResolution?: string | undefined;
   videoAspectRatio?: string | undefined;
+  piiRedactionApplied?: string | undefined;
+  moderationApplied?: string | undefined;
   queueName?: string | undefined;
   consumerGroup?: string | undefined;
   messageId?: string | undefined;
@@ -524,6 +554,9 @@ export type Data1 = {
   providerAttemptTotalInRequest?: string | undefined;
   generationId?: string | undefined;
   sessionId?: string | undefined;
+  contentCaptureStatus?: string | undefined;
+  contentCaptureInputs?: string | undefined;
+  contentCaptureOutputs?: string | undefined;
   providerAttemptError?: string | undefined;
   providerAttemptSafetyIdentifier?: string | undefined;
   providerAttemptDevSafetyIdentifier?: string | undefined;
@@ -534,6 +567,15 @@ export type Data1 = {
   toolCallSuccess?: string | undefined;
   toolCallErrorType?: string | undefined;
   toolCallStatusCode?: string | undefined;
+  environmentId?: string | undefined;
+  billableRegion?: string | undefined;
+  direction?: string | undefined;
+  networkTenancy?: string | undefined;
+  trafficSource?: string | undefined;
+  networkId?: string | undefined;
+  privatelinkEndpointId?: string | undefined;
+  privatelinkDnsName?: string | undefined;
+  privatelinkIpAddress?: string | undefined;
   timestamp: Date;
 };
 
@@ -718,6 +760,8 @@ export const Data2$inboundSchema: z.ZodType<Data2, z.ZodTypeDef, unknown> =
       cacheHitState: types.string(),
       cacheHitLevel: types.string(),
       cacheApi: types.string(),
+      cacheReason: types.string(),
+      pprState: types.string(),
       clientIp: types.string(),
       clientIpCountry: types.string(),
       clientUserAgent: types.string(),
@@ -729,7 +773,6 @@ export const Data2$inboundSchema: z.ZodType<Data2, z.ZodTypeDef, unknown> =
       botCategory: types.string(),
       botCategoryLegacy: types.string(),
       botVerified: types.string(),
-      dheCipherSuite: types.string(),
       botCheckResult: types.string(),
       deepAnalysisCheck: types.string(),
       wafAction: types.string(),
@@ -782,8 +825,14 @@ export const Data2$inboundSchema: z.ZodType<Data2, z.ZodTypeDef, unknown> =
       aiGatewayModelId: types.string(),
       aiProvider: types.string(),
       aiModelType: types.string(),
+      servedSpeed: types.string(),
       virtualModelSlug: types.string(),
       virtualModelKind: types.string(),
+      inferenceEndpointSlug: types.string(),
+      inferenceScope: types.string(),
+      inferenceGeoRegion: types.string(),
+      inferenceProviderRegion: types.string(),
+      requestedInferenceRegion: types.string(),
       costCurrency: types.string(),
       marketCostCurrency: types.string(),
       cachedInputTokensCurrency: types.string(),
@@ -802,6 +851,8 @@ export const Data2$inboundSchema: z.ZodType<Data2, z.ZodTypeDef, unknown> =
       quotaEntityType: types.string(),
       videoResolution: types.string(),
       videoAspectRatio: types.string(),
+      piiRedactionApplied: types.string(),
+      moderationApplied: types.string(),
       queueName: types.string(),
       consumerGroup: types.string(),
       messageId: types.string(),
@@ -848,6 +899,9 @@ export const Data2$inboundSchema: z.ZodType<Data2, z.ZodTypeDef, unknown> =
       providerAttemptTotalInRequest: types.string(),
       generationId: types.string(),
       sessionId: types.string(),
+      contentCaptureStatus: types.string(),
+      contentCaptureInputs: types.string(),
+      contentCaptureOutputs: types.string(),
       providerAttemptError: types.string(),
       providerAttemptSafetyIdentifier: types.string(),
       providerAttemptDevSafetyIdentifier: types.string(),
@@ -858,6 +912,15 @@ export const Data2$inboundSchema: z.ZodType<Data2, z.ZodTypeDef, unknown> =
       toolCallSuccess: types.string(),
       toolCallErrorType: types.string(),
       toolCallStatusCode: types.string(),
+      environmentId: types.string(),
+      billableRegion: types.string(),
+      direction: types.string(),
+      networkTenancy: types.string(),
+      trafficSource: types.string(),
+      networkId: types.string(),
+      privatelinkEndpointId: types.string(),
+      privatelinkDnsName: types.string(),
+      privatelinkIpAddress: types.string(),
     }).catchall(types.number()),
     "additionalProperties",
     true,
@@ -926,6 +989,8 @@ export const Data1$inboundSchema: z.ZodType<Data1, z.ZodTypeDef, unknown> = z
     cacheHitState: types.optional(types.string()),
     cacheHitLevel: types.optional(types.string()),
     cacheApi: types.optional(types.string()),
+    cacheReason: types.optional(types.string()),
+    pprState: types.optional(types.string()),
     clientIp: types.optional(types.string()),
     clientIpCountry: types.optional(types.string()),
     clientUserAgent: types.optional(types.string()),
@@ -937,7 +1002,6 @@ export const Data1$inboundSchema: z.ZodType<Data1, z.ZodTypeDef, unknown> = z
     botCategory: types.optional(types.string()),
     botCategoryLegacy: types.optional(types.string()),
     botVerified: types.optional(types.string()),
-    dheCipherSuite: types.optional(types.string()),
     botCheckResult: types.optional(types.string()),
     deepAnalysisCheck: types.optional(types.string()),
     wafAction: types.optional(types.string()),
@@ -990,8 +1054,14 @@ export const Data1$inboundSchema: z.ZodType<Data1, z.ZodTypeDef, unknown> = z
     aiGatewayModelId: types.optional(types.string()),
     aiProvider: types.optional(types.string()),
     aiModelType: types.optional(types.string()),
+    servedSpeed: types.optional(types.string()),
     virtualModelSlug: types.optional(types.string()),
     virtualModelKind: types.optional(types.string()),
+    inferenceEndpointSlug: types.optional(types.string()),
+    inferenceScope: types.optional(types.string()),
+    inferenceGeoRegion: types.optional(types.string()),
+    inferenceProviderRegion: types.optional(types.string()),
+    requestedInferenceRegion: types.optional(types.string()),
     costCurrency: types.optional(types.string()),
     marketCostCurrency: types.optional(types.string()),
     cachedInputTokensCurrency: types.optional(types.string()),
@@ -1010,6 +1080,8 @@ export const Data1$inboundSchema: z.ZodType<Data1, z.ZodTypeDef, unknown> = z
     quotaEntityType: types.optional(types.string()),
     videoResolution: types.optional(types.string()),
     videoAspectRatio: types.optional(types.string()),
+    piiRedactionApplied: types.optional(types.string()),
+    moderationApplied: types.optional(types.string()),
     queueName: types.optional(types.string()),
     consumerGroup: types.optional(types.string()),
     messageId: types.optional(types.string()),
@@ -1056,6 +1128,9 @@ export const Data1$inboundSchema: z.ZodType<Data1, z.ZodTypeDef, unknown> = z
     providerAttemptTotalInRequest: types.optional(types.string()),
     generationId: types.optional(types.string()),
     sessionId: types.optional(types.string()),
+    contentCaptureStatus: types.optional(types.string()),
+    contentCaptureInputs: types.optional(types.string()),
+    contentCaptureOutputs: types.optional(types.string()),
     providerAttemptError: types.optional(types.string()),
     providerAttemptSafetyIdentifier: types.optional(types.string()),
     providerAttemptDevSafetyIdentifier: types.optional(types.string()),
@@ -1066,6 +1141,15 @@ export const Data1$inboundSchema: z.ZodType<Data1, z.ZodTypeDef, unknown> = z
     toolCallSuccess: types.optional(types.string()),
     toolCallErrorType: types.optional(types.string()),
     toolCallStatusCode: types.optional(types.string()),
+    environmentId: types.optional(types.string()),
+    billableRegion: types.optional(types.string()),
+    direction: types.optional(types.string()),
+    networkTenancy: types.optional(types.string()),
+    trafficSource: types.optional(types.string()),
+    networkId: types.optional(types.string()),
+    privatelinkEndpointId: types.optional(types.string()),
+    privatelinkDnsName: types.optional(types.string()),
+    privatelinkIpAddress: types.optional(types.string()),
     timestamp: types.date(),
   });
 

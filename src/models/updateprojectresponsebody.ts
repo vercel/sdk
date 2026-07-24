@@ -10,20 +10,42 @@ import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
-  UpdateProjectBlock,
-  UpdateProjectBlock$inboundSchema,
+  UpdateProjectAlias,
+  UpdateProjectAlias$inboundSchema,
+  UpdateProjectAnalytics,
+  UpdateProjectAnalytics$inboundSchema,
+  UpdateProjectConnectConfigurations,
+  UpdateProjectConnectConfigurations$inboundSchema,
+  UpdateProjectCreator,
+  UpdateProjectCreator$inboundSchema,
+  UpdateProjectCrons,
+  UpdateProjectCrons$inboundSchema,
+  UpdateProjectDataCache,
+  UpdateProjectDataCache$inboundSchema,
+  UpdateProjectDeploymentExpiration,
+  UpdateProjectDeploymentExpiration$inboundSchema,
+  UpdateProjectExpiration,
+  UpdateProjectExpiration$inboundSchema,
+  UpdateProjectProjectsEnv,
+  UpdateProjectProjectsEnv$inboundSchema,
+  UpdateProjectSpeedInsights,
+  UpdateProjectSpeedInsights$inboundSchema,
+} from "./updateprojectbranchmatcher.js";
+import {
+  UpdateProjectBlobs,
+  UpdateProjectBlobs$inboundSchema,
+  UpdateProjectCustomEnvironments,
+  UpdateProjectCustomEnvironments$inboundSchema,
   UpdateProjectDefaultResourceConfig,
   UpdateProjectDefaultResourceConfig$inboundSchema,
-  UpdateProjectFeatures,
-  UpdateProjectFeatures$inboundSchema,
-  UpdateProjectFlatRateTier,
-  UpdateProjectFlatRateTier$inboundSchema,
   UpdateProjectGitComments,
   UpdateProjectGitComments$inboundSchema,
   UpdateProjectGitProviderOptions,
   UpdateProjectGitProviderOptions$inboundSchema,
-  UpdateProjectHistory,
-  UpdateProjectHistory$inboundSchema,
+  UpdateProjectIpBuckets,
+  UpdateProjectIpBuckets$inboundSchema,
+  UpdateProjectJobs,
+  UpdateProjectJobs$inboundSchema,
   UpdateProjectLastAliasRequest,
   UpdateProjectLastAliasRequest$inboundSchema,
   UpdateProjectLastRollbackTarget,
@@ -36,12 +58,12 @@ import {
   UpdateProjectMicrofrontends$inboundSchema,
   UpdateProjectPermissions,
   UpdateProjectPermissions$inboundSchema,
-  UpdateProjectProjectsDeploymentPolicy,
-  UpdateProjectProjectsDeploymentPolicy$inboundSchema,
+  UpdateProjectProjectsFramework,
+  UpdateProjectProjectsFramework$inboundSchema,
+  UpdateProjectProjectsIssuerMode,
+  UpdateProjectProjectsIssuerMode$inboundSchema,
   UpdateProjectProjectsNodeVersion,
   UpdateProjectProjectsNodeVersion$inboundSchema,
-  UpdateProjectProjectsOidcTokenConfig,
-  UpdateProjectProjectsOidcTokenConfig$inboundSchema,
   UpdateProjectProjectsOptionsAllowlist,
   UpdateProjectProjectsOptionsAllowlist$inboundSchema,
   UpdateProjectProjectsPassport,
@@ -66,45 +88,230 @@ import {
   UpdateProjectRollingRelease$inboundSchema,
   UpdateProjectSecurity,
   UpdateProjectSecurity$inboundSchema,
+  UpdateProjectServices,
+  UpdateProjectServices$inboundSchema,
   UpdateProjectTargets,
   UpdateProjectTargets$inboundSchema,
   UpdateProjectTrustedSources,
   UpdateProjectTrustedSources$inboundSchema,
-  UpdateProjectUsageStatus,
-  UpdateProjectUsageStatus$inboundSchema,
   UpdateProjectWebAnalytics,
   UpdateProjectWebAnalytics$inboundSchema,
-} from "./updateprojectblock.js";
-import {
-  UpdateProjectAlias,
-  UpdateProjectAlias$inboundSchema,
-  UpdateProjectAnalytics,
-  UpdateProjectAnalytics$inboundSchema,
-  UpdateProjectConnectConfigurations,
-  UpdateProjectConnectConfigurations$inboundSchema,
-  UpdateProjectCrons,
-  UpdateProjectCrons$inboundSchema,
-  UpdateProjectCustomEnvironments,
-  UpdateProjectCustomEnvironments$inboundSchema,
-  UpdateProjectDataCache,
-  UpdateProjectDataCache$inboundSchema,
-  UpdateProjectDeploymentExpiration,
-  UpdateProjectDeploymentExpiration$inboundSchema,
-  UpdateProjectExpiration,
-  UpdateProjectExpiration$inboundSchema,
-  UpdateProjectIpBuckets,
-  UpdateProjectIpBuckets$inboundSchema,
-  UpdateProjectJobs,
-  UpdateProjectJobs$inboundSchema,
-  UpdateProjectProjectsEnv,
-  UpdateProjectProjectsEnv$inboundSchema,
-  UpdateProjectProjectsFramework,
-  UpdateProjectProjectsFramework$inboundSchema,
-  UpdateProjectServices,
-  UpdateProjectServices$inboundSchema,
-  UpdateProjectSpeedInsights,
-  UpdateProjectSpeedInsights$inboundSchema,
-} from "./updateprojectprojectsbranchmatcher.js";
+} from "./updateprojectprojectsissuermode.js";
+
+export type UpdateProjectProjectsOidcTokenConfig = {
+  /**
+   * Whether or not to generate OpenID Connect JSON Web Tokens.
+   */
+  enabled?: boolean | undefined;
+  /**
+   * - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`
+   */
+  issuerMode?: UpdateProjectProjectsIssuerMode | undefined;
+};
+
+/**
+ * Allowlist entry for GitLab, which uses nested groups rather than a flat org/repo. `namespace` is the full group path (e.g. `group` or `group/subgroup`); `project` is the leaf project name. Omit `project` to match any project under the namespace. Namespace is matched case-insensitively.
+ */
+export type UpdateProjectSourcesProjects2 = {
+  provider: "gitlab";
+  namespace: string;
+  project?: string | undefined;
+};
+
+export const UpdateProjectSourcesProjectsResponse200Provider = {
+  Bitbucket: "bitbucket",
+  Github: "github",
+} as const;
+export type UpdateProjectSourcesProjectsResponse200Provider = ClosedEnum<
+  typeof UpdateProjectSourcesProjectsResponse200Provider
+>;
+
+/**
+ * Allowlist entry for GitHub and Bitbucket, whose repos are identified by a flat `org`/`repo` (Bitbucket's workspace/owner maps to `org`, its repo slug to `repo`). Omit `repo` to match any repo in the org. Org is matched case-insensitively.
+ */
+export type UpdateProjectSourcesProjects1 = {
+  provider: UpdateProjectSourcesProjectsResponse200Provider;
+  org: string;
+  repo?: string | undefined;
+};
+
+export type UpdateProjectSources =
+  | (UpdateProjectSourcesProjects1 & { provider: "bitbucket" })
+  | (UpdateProjectSourcesProjects1 & { provider: "github" })
+  | UpdateProjectSourcesProjects2;
+
+export type UpdateProjectEnvironmentsProjectsResponse2002 = {
+  type: "custom";
+  environmentId: string;
+};
+
+export const UpdateProjectEnvironmentsProjectsResponse200Target = {
+  Preview: "preview",
+  Production: "production",
+} as const;
+export type UpdateProjectEnvironmentsProjectsResponse200Target = ClosedEnum<
+  typeof UpdateProjectEnvironmentsProjectsResponse200Target
+>;
+
+export type UpdateProjectEnvironmentsProjectsResponse2001 = {
+  type: "system";
+  target: UpdateProjectEnvironmentsProjectsResponse200Target;
+};
+
+export type UpdateProjectEnvironments =
+  | UpdateProjectEnvironmentsProjectsResponse2001
+  | UpdateProjectEnvironmentsProjectsResponse2002;
+
+/**
+ * `enabled: true` with empty `sources` is deny-all.
+ */
+export type UpdateProjectGitSources = {
+  sources: Array<
+    | (UpdateProjectSourcesProjects1 & { provider: "bitbucket" })
+    | (UpdateProjectSourcesProjects1 & { provider: "github" })
+    | UpdateProjectSourcesProjects2
+  >;
+  enabled: boolean;
+  environments: Array<
+    | UpdateProjectEnvironmentsProjectsResponse2001
+    | UpdateProjectEnvironmentsProjectsResponse2002
+  >;
+};
+
+/**
+ * Customer-configurable deployment sources. Every deploy classifies to exactly one. JSON schema in `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'` — git provider webhook. - `'cli'` — Vercel CLI (legacy classic-token CLI and SIWV CLI both). - `'rest-api'` — direct user/team-token REST upload. Does NOT cover deploy hooks, Marketplace integrations, or first-party app tokens. - `'deploy-hook'` — project deploy-hook URL. The URL is the credential. - `'integration'` — third-party Marketplace actor: Marketplace integration token, user-delegated OAuth from a Marketplace app, or an unrecognized third-party Vercel App. First-party Vercel Apps are never `'integration'`. - `'v0'` — the v0 product surface (entitlement-gated). v0 deploys through the CLI under the hood, but classifies as its own source so a team can allow or deny v0 independently of `'cli'`. First-party Vercel apps (Toolbar, etc.) classify as `'first-party'` — see `ClassifiedSource` in `./checks`. They're not in this union because they aren't customer-configurable; they bypass `checkDeploymentSources` entirely. v0 is intentionally NOT among them: like the CLI, it's a real product surface and is policy-controllable.
+ */
+export const UpdateProjectProjectsSources = {
+  Cli: "cli",
+  DeployHook: "deploy-hook",
+  Git: "git",
+  Integration: "integration",
+  RestApi: "rest-api",
+  V0: "v0",
+} as const;
+/**
+ * Customer-configurable deployment sources. Every deploy classifies to exactly one. JSON schema in `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'` — git provider webhook. - `'cli'` — Vercel CLI (legacy classic-token CLI and SIWV CLI both). - `'rest-api'` — direct user/team-token REST upload. Does NOT cover deploy hooks, Marketplace integrations, or first-party app tokens. - `'deploy-hook'` — project deploy-hook URL. The URL is the credential. - `'integration'` — third-party Marketplace actor: Marketplace integration token, user-delegated OAuth from a Marketplace app, or an unrecognized third-party Vercel App. First-party Vercel Apps are never `'integration'`. - `'v0'` — the v0 product surface (entitlement-gated). v0 deploys through the CLI under the hood, but classifies as its own source so a team can allow or deny v0 independently of `'cli'`. First-party Vercel apps (Toolbar, etc.) classify as `'first-party'` — see `ClassifiedSource` in `./checks`. They're not in this union because they aren't customer-configurable; they bypass `checkDeploymentSources` entirely. v0 is intentionally NOT among them: like the CLI, it's a real product surface and is policy-controllable.
+ */
+export type UpdateProjectProjectsSources = ClosedEnum<
+  typeof UpdateProjectProjectsSources
+>;
+
+export type UpdateProjectEnvironmentsProjectsResponse2 = {
+  type: "custom";
+  environmentId: string;
+};
+
+export const UpdateProjectEnvironmentsProjectsResponseTarget = {
+  Preview: "preview",
+  Production: "production",
+} as const;
+export type UpdateProjectEnvironmentsProjectsResponseTarget = ClosedEnum<
+  typeof UpdateProjectEnvironmentsProjectsResponseTarget
+>;
+
+export type UpdateProjectEnvironmentsProjectsResponse1 = {
+  type: "system";
+  target: UpdateProjectEnvironmentsProjectsResponseTarget;
+};
+
+export type UpdateProjectProjectsEnvironments =
+  | UpdateProjectEnvironmentsProjectsResponse1
+  | UpdateProjectEnvironmentsProjectsResponse2;
+
+/**
+ * `enabled: true` with empty `sources` is deny-all.
+ */
+export type UpdateProjectDeploymentSources = {
+  sources: Array<UpdateProjectProjectsSources>;
+  enabled: boolean;
+  environments: Array<
+    | UpdateProjectEnvironmentsProjectsResponse1
+    | UpdateProjectEnvironmentsProjectsResponse2
+  >;
+};
+
+/**
+ * Project shape. `null` on a rule list clears the project's override for that rule type (fall back to team for every env); omitting is equivalent. Setting `deploymentPolicy` itself to `null` clears every override at once. Kept structurally distinct from {@link TeamDeploymentPolicy} so the two storage locations don't share a type by accident.
+ */
+export type UpdateProjectProjectsDeploymentPolicy = {
+  gitSources?: Array<UpdateProjectGitSources> | null | undefined;
+  deploymentSources?: Array<UpdateProjectDeploymentSources> | null | undefined;
+};
+
+export const UpdateProjectFlatRateTier = {
+  Advanced: "advanced",
+  Base: "base",
+  Critical: "critical",
+  Standard: "standard",
+} as const;
+export type UpdateProjectFlatRateTier = ClosedEnum<
+  typeof UpdateProjectFlatRateTier
+>;
+
+/**
+ * Billing mode. Always 'flat' for flat-rate projects.
+ */
+export const UpdateProjectKind = {
+  Flat: "flat",
+} as const;
+/**
+ * Billing mode. Always 'flat' for flat-rate projects.
+ */
+export type UpdateProjectKind = ClosedEnum<typeof UpdateProjectKind>;
+
+export type UpdateProjectUsageStatus = {
+  /**
+   * Billing mode. Always 'flat' for flat-rate projects.
+   */
+  kind: UpdateProjectKind;
+  /**
+   * Timestamp until which the project has exceeded its CDN allowance.
+   */
+  exceededAllowanceUntil?: number | undefined;
+  /**
+   * Timestamp until which throttling is bypassed (project pays list rates for overage).
+   */
+  bypassThrottleUntil?: number | undefined;
+  /**
+   * Per-project throttle, set explicitly for this project (e.g. via the per-project Flat Rate CDN endpoint).
+   */
+  throttled?: boolean | undefined;
+  /**
+   * Synced from `team.billing.usageStatus.throttled`. When `true`, the team has throttled all of its projects regardless of `throttled`. The effective throttle the CDN enforces is `throttled || teamThrottled`.
+   */
+  teamThrottled?: boolean | undefined;
+};
+
+export type UpdateProjectFeatures = {
+  webAnalytics?: boolean | undefined;
+};
+
+export type UpdateProjectHistory = {
+  scanner: string;
+  reason: string;
+  by: string;
+  byId: string;
+  at: number;
+};
+
+export const UpdateProjectProjectsResponseAction = {
+  Blocked: "blocked",
+} as const;
+export type UpdateProjectProjectsResponseAction = ClosedEnum<
+  typeof UpdateProjectProjectsResponseAction
+>;
+
+export type UpdateProjectBlock = {
+  action: UpdateProjectProjectsResponseAction;
+  reason: string;
+  statusCode: number;
+  createdAt: number;
+  caseId?: string | undefined;
+  actor?: string | undefined;
+  comment?: string | undefined;
+  ineligibleForAppeal?: boolean | undefined;
+  isCascading?: boolean | undefined;
+};
 
 export type UpdateProjectHasProjectsResponse200Value = {
   eq: string;
@@ -156,6 +363,7 @@ export type UpdateProjectRouteProjects2 = {
 export type UpdateProjectRouteProjects1 = {
   src: string;
   status: number;
+  expiry?: number | undefined;
 };
 
 export type UpdateProjectBlockHistoryProjectsRoute =
@@ -227,6 +435,7 @@ export type UpdateProjectRoute2 = {
 export type UpdateProjectRoute1 = {
   src: string;
   status: number;
+  expiry?: number | undefined;
 };
 
 export type UpdateProjectBlockHistoryRoute =
@@ -273,18 +482,18 @@ export type UpdateProjectBlockHistory =
   | UpdateProjectBlockHistory3
   | UpdateProjectBlockHistory4;
 
-export const UpdateProjectProjectsResponseAction = {
+export const UpdateProjectProjectsResponse200Action = {
   AddDeploymentInterstitial: "add-deployment-interstitial",
   AddProjectInterstitial: "add-project-interstitial",
   RemoveDeploymentInterstitial: "remove-deployment-interstitial",
   RemoveProjectInterstitial: "remove-project-interstitial",
 } as const;
-export type UpdateProjectProjectsResponseAction = ClosedEnum<
-  typeof UpdateProjectProjectsResponseAction
+export type UpdateProjectProjectsResponse200Action = ClosedEnum<
+  typeof UpdateProjectProjectsResponse200Action
 >;
 
 export type UpdateProjectInterstitialHistory = {
-  action: UpdateProjectProjectsResponseAction;
+  action: UpdateProjectProjectsResponse200Action;
   createdAt: number;
   caseId?: string | undefined;
   reason?: string | undefined;
@@ -357,6 +566,7 @@ export type UpdateProjectInternalRoutes2 = {
 export type UpdateProjectInternalRoutes1 = {
   src: string;
   status: number;
+  expiry?: number | undefined;
 };
 
 export type UpdateProjectInternalRoutes =
@@ -437,6 +647,7 @@ export type UpdateProjectTracing = {
  */
 export type UpdateProjectResponseBody = {
   accountId: string;
+  creator?: UpdateProjectCreator | undefined;
   alias: Array<UpdateProjectAlias>;
   analytics?: UpdateProjectAnalytics | undefined;
   appliedCve55182Migration?: boolean | undefined;
@@ -476,6 +687,7 @@ export type UpdateProjectResponseBody = {
   jobs?: UpdateProjectJobs | undefined;
   latestDeployments?: Array<UpdateProjectLatestDeployments> | undefined;
   link?: UpdateProjectLink | undefined;
+  blobs?: UpdateProjectBlobs | undefined;
   microfrontends?: UpdateProjectMicrofrontends | undefined;
   name: string;
   nodeVersion: UpdateProjectProjectsNodeVersion;
@@ -552,6 +764,450 @@ export type UpdateProjectResponseBody = {
   tracing?: UpdateProjectTracing | undefined;
   avatar?: string | null | undefined;
 };
+
+/** @internal */
+export const UpdateProjectProjectsOidcTokenConfig$inboundSchema: z.ZodType<
+  UpdateProjectProjectsOidcTokenConfig,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  enabled: types.optional(types.boolean()),
+  issuerMode: types.optional(UpdateProjectProjectsIssuerMode$inboundSchema),
+});
+
+export function updateProjectProjectsOidcTokenConfigFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectProjectsOidcTokenConfig, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateProjectProjectsOidcTokenConfig$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectProjectsOidcTokenConfig' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectSourcesProjects2$inboundSchema: z.ZodType<
+  UpdateProjectSourcesProjects2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  provider: types.literal("gitlab"),
+  namespace: types.string(),
+  project: types.optional(types.string()),
+});
+
+export function updateProjectSourcesProjects2FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectSourcesProjects2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectSourcesProjects2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectSourcesProjects2' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectSourcesProjectsResponse200Provider$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectSourcesProjectsResponse200Provider> = z
+    .nativeEnum(UpdateProjectSourcesProjectsResponse200Provider);
+
+/** @internal */
+export const UpdateProjectSourcesProjects1$inboundSchema: z.ZodType<
+  UpdateProjectSourcesProjects1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  provider: UpdateProjectSourcesProjectsResponse200Provider$inboundSchema,
+  org: types.string(),
+  repo: types.optional(types.string()),
+});
+
+export function updateProjectSourcesProjects1FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectSourcesProjects1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectSourcesProjects1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectSourcesProjects1' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectSources$inboundSchema: z.ZodType<
+  UpdateProjectSources,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => UpdateProjectSourcesProjects1$inboundSchema).and(
+    z.object({ provider: z.literal("bitbucket") }),
+  ),
+  z.lazy(() => UpdateProjectSourcesProjects1$inboundSchema).and(
+    z.object({ provider: z.literal("github") }),
+  ),
+  z.lazy(() => UpdateProjectSourcesProjects2$inboundSchema),
+]);
+
+export function updateProjectSourcesFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectSources, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectSources$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectSources' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectEnvironmentsProjectsResponse2002$inboundSchema:
+  z.ZodType<
+    UpdateProjectEnvironmentsProjectsResponse2002,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    type: types.literal("custom"),
+    environmentId: types.string(),
+  });
+
+export function updateProjectEnvironmentsProjectsResponse2002FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateProjectEnvironmentsProjectsResponse2002,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateProjectEnvironmentsProjectsResponse2002$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateProjectEnvironmentsProjectsResponse2002' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectEnvironmentsProjectsResponse200Target$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectEnvironmentsProjectsResponse200Target> = z
+    .nativeEnum(UpdateProjectEnvironmentsProjectsResponse200Target);
+
+/** @internal */
+export const UpdateProjectEnvironmentsProjectsResponse2001$inboundSchema:
+  z.ZodType<
+    UpdateProjectEnvironmentsProjectsResponse2001,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    type: types.literal("system"),
+    target: UpdateProjectEnvironmentsProjectsResponse200Target$inboundSchema,
+  });
+
+export function updateProjectEnvironmentsProjectsResponse2001FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateProjectEnvironmentsProjectsResponse2001,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateProjectEnvironmentsProjectsResponse2001$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateProjectEnvironmentsProjectsResponse2001' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectEnvironments$inboundSchema: z.ZodType<
+  UpdateProjectEnvironments,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => UpdateProjectEnvironmentsProjectsResponse2001$inboundSchema),
+  z.lazy(() => UpdateProjectEnvironmentsProjectsResponse2002$inboundSchema),
+]);
+
+export function updateProjectEnvironmentsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectEnvironments, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectEnvironments$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectEnvironments' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectGitSources$inboundSchema: z.ZodType<
+  UpdateProjectGitSources,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  sources: z.array(
+    z.union([
+      z.lazy(() => UpdateProjectSourcesProjects1$inboundSchema).and(
+        z.object({ provider: z.literal("bitbucket") }),
+      ),
+      z.lazy(() => UpdateProjectSourcesProjects1$inboundSchema).and(
+        z.object({ provider: z.literal("github") }),
+      ),
+      z.lazy(() => UpdateProjectSourcesProjects2$inboundSchema),
+    ]),
+  ),
+  enabled: types.boolean(),
+  environments: z.array(
+    z.union([
+      z.lazy(() => UpdateProjectEnvironmentsProjectsResponse2001$inboundSchema),
+      z.lazy(() => UpdateProjectEnvironmentsProjectsResponse2002$inboundSchema),
+    ]),
+  ),
+});
+
+export function updateProjectGitSourcesFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectGitSources, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectGitSources$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectGitSources' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectProjectsSources$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectProjectsSources
+> = z.nativeEnum(UpdateProjectProjectsSources);
+
+/** @internal */
+export const UpdateProjectEnvironmentsProjectsResponse2$inboundSchema:
+  z.ZodType<UpdateProjectEnvironmentsProjectsResponse2, z.ZodTypeDef, unknown> =
+    z.object({
+      type: types.literal("custom"),
+      environmentId: types.string(),
+    });
+
+export function updateProjectEnvironmentsProjectsResponse2FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateProjectEnvironmentsProjectsResponse2,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateProjectEnvironmentsProjectsResponse2$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateProjectEnvironmentsProjectsResponse2' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectEnvironmentsProjectsResponseTarget$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectEnvironmentsProjectsResponseTarget> = z
+    .nativeEnum(UpdateProjectEnvironmentsProjectsResponseTarget);
+
+/** @internal */
+export const UpdateProjectEnvironmentsProjectsResponse1$inboundSchema:
+  z.ZodType<UpdateProjectEnvironmentsProjectsResponse1, z.ZodTypeDef, unknown> =
+    z.object({
+      type: types.literal("system"),
+      target: UpdateProjectEnvironmentsProjectsResponseTarget$inboundSchema,
+    });
+
+export function updateProjectEnvironmentsProjectsResponse1FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateProjectEnvironmentsProjectsResponse1,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateProjectEnvironmentsProjectsResponse1$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateProjectEnvironmentsProjectsResponse1' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectProjectsEnvironments$inboundSchema: z.ZodType<
+  UpdateProjectProjectsEnvironments,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => UpdateProjectEnvironmentsProjectsResponse1$inboundSchema),
+  z.lazy(() => UpdateProjectEnvironmentsProjectsResponse2$inboundSchema),
+]);
+
+export function updateProjectProjectsEnvironmentsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectProjectsEnvironments, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectProjectsEnvironments$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectProjectsEnvironments' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectDeploymentSources$inboundSchema: z.ZodType<
+  UpdateProjectDeploymentSources,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  sources: z.array(UpdateProjectProjectsSources$inboundSchema),
+  enabled: types.boolean(),
+  environments: z.array(
+    z.union([
+      z.lazy(() => UpdateProjectEnvironmentsProjectsResponse1$inboundSchema),
+      z.lazy(() => UpdateProjectEnvironmentsProjectsResponse2$inboundSchema),
+    ]),
+  ),
+});
+
+export function updateProjectDeploymentSourcesFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectDeploymentSources, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectDeploymentSources$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectDeploymentSources' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectProjectsDeploymentPolicy$inboundSchema: z.ZodType<
+  UpdateProjectProjectsDeploymentPolicy,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  gitSources: z.nullable(
+    z.array(z.lazy(() => UpdateProjectGitSources$inboundSchema)),
+  ).optional(),
+  deploymentSources: z.nullable(
+    z.array(z.lazy(() => UpdateProjectDeploymentSources$inboundSchema)),
+  ).optional(),
+});
+
+export function updateProjectProjectsDeploymentPolicyFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectProjectsDeploymentPolicy, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateProjectProjectsDeploymentPolicy$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectProjectsDeploymentPolicy' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectFlatRateTier$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectFlatRateTier
+> = z.nativeEnum(UpdateProjectFlatRateTier);
+
+/** @internal */
+export const UpdateProjectKind$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectKind
+> = z.nativeEnum(UpdateProjectKind);
+
+/** @internal */
+export const UpdateProjectUsageStatus$inboundSchema: z.ZodType<
+  UpdateProjectUsageStatus,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  kind: UpdateProjectKind$inboundSchema,
+  exceededAllowanceUntil: types.optional(types.number()),
+  bypassThrottleUntil: types.optional(types.number()),
+  throttled: types.optional(types.boolean()),
+  teamThrottled: types.optional(types.boolean()),
+});
+
+export function updateProjectUsageStatusFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectUsageStatus, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectUsageStatus$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectUsageStatus' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectFeatures$inboundSchema: z.ZodType<
+  UpdateProjectFeatures,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  webAnalytics: types.optional(types.boolean()),
+});
+
+export function updateProjectFeaturesFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectFeatures, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectFeatures$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectFeatures' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectHistory$inboundSchema: z.ZodType<
+  UpdateProjectHistory,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  scanner: types.string(),
+  reason: types.string(),
+  by: types.string(),
+  byId: types.string(),
+  at: types.number(),
+});
+
+export function updateProjectHistoryFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectHistory, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectHistory$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectHistory' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectProjectsResponseAction$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectProjectsResponseAction
+> = z.nativeEnum(UpdateProjectProjectsResponseAction);
+
+/** @internal */
+export const UpdateProjectBlock$inboundSchema: z.ZodType<
+  UpdateProjectBlock,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  action: UpdateProjectProjectsResponseAction$inboundSchema,
+  reason: types.string(),
+  statusCode: types.number(),
+  createdAt: types.number(),
+  caseId: types.optional(types.string()),
+  actor: types.optional(types.string()),
+  comment: types.optional(types.string()),
+  ineligibleForAppeal: types.optional(types.boolean()),
+  isCascading: types.optional(types.boolean()),
+});
+
+export function updateProjectBlockFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectBlock, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectBlock$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectBlock' from JSON`,
+  );
+}
 
 /** @internal */
 export const UpdateProjectHasProjectsResponse200Value$inboundSchema: z.ZodType<
@@ -723,6 +1379,7 @@ export const UpdateProjectRouteProjects1$inboundSchema: z.ZodType<
 > = z.object({
   src: types.string(),
   status: types.number(),
+  expiry: types.optional(types.number()),
 });
 
 export function updateProjectRouteProjects1FromJSON(
@@ -964,6 +1621,7 @@ export const UpdateProjectRoute1$inboundSchema: z.ZodType<
 > = z.object({
   src: types.string(),
   status: types.number(),
+  expiry: types.optional(types.number()),
 });
 
 export function updateProjectRoute1FromJSON(
@@ -1101,9 +1759,10 @@ export function updateProjectBlockHistoryFromJSON(
 }
 
 /** @internal */
-export const UpdateProjectProjectsResponseAction$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateProjectProjectsResponseAction
-> = z.nativeEnum(UpdateProjectProjectsResponseAction);
+export const UpdateProjectProjectsResponse200Action$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectProjectsResponse200Action> = z.nativeEnum(
+    UpdateProjectProjectsResponse200Action,
+  );
 
 /** @internal */
 export const UpdateProjectInterstitialHistory$inboundSchema: z.ZodType<
@@ -1111,7 +1770,7 @@ export const UpdateProjectInterstitialHistory$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  action: UpdateProjectProjectsResponseAction$inboundSchema,
+  action: UpdateProjectProjectsResponse200Action$inboundSchema,
   createdAt: types.number(),
   caseId: types.optional(types.string()),
   reason: types.optional(types.string()),
@@ -1136,9 +1795,9 @@ export const UpdateProjectAbuse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   scanner: types.optional(types.string()),
-  history: z.array(UpdateProjectHistory$inboundSchema),
+  history: z.array(z.lazy(() => UpdateProjectHistory$inboundSchema)),
   updatedAt: types.number(),
-  block: types.optional(UpdateProjectBlock$inboundSchema),
+  block: types.optional(z.lazy(() => UpdateProjectBlock$inboundSchema)),
   blockHistory: types.optional(
     z.array(z.union([
       z.lazy(() => UpdateProjectBlockHistory1$inboundSchema),
@@ -1328,6 +1987,7 @@ export const UpdateProjectInternalRoutes1$inboundSchema: z.ZodType<
 > = z.object({
   src: types.string(),
   status: types.number(),
+  expiry: types.optional(types.number()),
 });
 
 export function updateProjectInternalRoutes1FromJSON(
@@ -1533,6 +2193,7 @@ export const UpdateProjectResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   accountId: types.string(),
+  creator: types.optional(UpdateProjectCreator$inboundSchema),
   alias: z.array(UpdateProjectAlias$inboundSchema),
   analytics: types.optional(UpdateProjectAnalytics$inboundSchema),
   appliedCve55182Migration: types.optional(types.boolean()),
@@ -1573,6 +2234,7 @@ export const UpdateProjectResponseBody$inboundSchema: z.ZodType<
     z.array(UpdateProjectLatestDeployments$inboundSchema),
   ),
   link: types.optional(UpdateProjectLink$inboundSchema),
+  blobs: types.optional(UpdateProjectBlobs$inboundSchema),
   microfrontends: types.optional(UpdateProjectMicrofrontends$inboundSchema),
   name: types.string(),
   nodeVersion: UpdateProjectProjectsNodeVersion$inboundSchema,
@@ -1638,15 +2300,17 @@ export const UpdateProjectResponseBody$inboundSchema: z.ZodType<
   webAnalytics: types.optional(UpdateProjectWebAnalytics$inboundSchema),
   security: types.optional(UpdateProjectSecurity$inboundSchema),
   oidcTokenConfig: types.optional(
-    UpdateProjectProjectsOidcTokenConfig$inboundSchema,
+    z.lazy(() => UpdateProjectProjectsOidcTokenConfig$inboundSchema),
   ),
   deploymentPolicy: z.nullable(
-    UpdateProjectProjectsDeploymentPolicy$inboundSchema,
+    z.lazy(() => UpdateProjectProjectsDeploymentPolicy$inboundSchema),
   ).optional(),
   tier: types.optional(types.string()),
   flatRateTier: types.optional(UpdateProjectFlatRateTier$inboundSchema),
-  usageStatus: types.optional(UpdateProjectUsageStatus$inboundSchema),
-  features: types.optional(UpdateProjectFeatures$inboundSchema),
+  usageStatus: types.optional(
+    z.lazy(() => UpdateProjectUsageStatus$inboundSchema),
+  ),
+  features: types.optional(z.lazy(() => UpdateProjectFeatures$inboundSchema)),
   v0: types.optional(types.boolean()),
   v0Created: types.optional(types.boolean()),
   abuse: types.optional(z.lazy(() => UpdateProjectAbuse$inboundSchema)),

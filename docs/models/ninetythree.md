@@ -5,23 +5,33 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { NinetyThree } from "@vercel/sdk/models/usereventpayload70project.js";
+import { NinetyThree } from "@vercel/sdk/models/twentythree.js";
 
 let value: NinetyThree = {
-  projectName: "<value>",
-  source: "<value>",
-  ruleName: "deploymentSources",
-  ruleProvenance: "team",
+  job: {
+    headInfo: {
+      owner: "<value>",
+      ref: "<value>",
+      repoUuid: "<id>",
+      sha: "<value>",
+      slug: "<value>",
+    },
+    name: "<value>",
+    owner: "<value>",
+    prId: 9297.42,
+    ref: "<value>",
+    repoUuid: "<id>",
+    sha: "<value>",
+    slug: "<value>",
+    type: "bitbucket-now-comment",
+    workspaceUuid: "<id>",
+    provider: "bitbucket",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                                                                                                                                                           | Type                                                                                                                                                                                            | Required                                                                                                                                                                                        | Description                                                                                                                                                                                     |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `projectId`                                                                                                                                                                                     | *string*                                                                                                                                                                                        | :heavy_minus_sign:                                                                                                                                                                              | N/A                                                                                                                                                                                             |
-| `projectName`                                                                                                                                                                                   | *string*                                                                                                                                                                                        | :heavy_check_mark:                                                                                                                                                                              | N/A                                                                                                                                                                                             |
-| `deploymentId`                                                                                                                                                                                  | *string*                                                                                                                                                                                        | :heavy_minus_sign:                                                                                                                                                                              | The blocked deployment's id (e.g. `dpl_…`). When present, the message links it to the deployment details (inspector) page. Optional so events emitted before this field was added still render. |
-| `source`                                                                                                                                                                                        | *string*                                                                                                                                                                                        | :heavy_check_mark:                                                                                                                                                                              | Classified deploy source, e.g. 'cli', 'git', 'integration'.                                                                                                                                     |
-| `ruleName`                                                                                                                                                                                      | [models.RuleName](../models/rulename.md)                                                                                                                                                        | :heavy_check_mark:                                                                                                                                                                              | Which rule blocked the deploy.                                                                                                                                                                  |
-| `ruleProvenance`                                                                                                                                                                                | [models.RuleProvenance](../models/ruleprovenance.md)                                                                                                                                            | :heavy_check_mark:                                                                                                                                                                              | Team-level or project-level rule.                                                                                                                                                               |
+| Field               | Type                | Required            | Description         |
+| ------------------- | ------------------- | ------------------- | ------------------- |
+| `job`               | *models.PayloadJob* | :heavy_check_mark:  | N/A                 |

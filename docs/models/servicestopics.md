@@ -12,10 +12,10 @@ const value: string[] = [
 ];
 ```
 
-### `models.CancelDeploymentTopics2[]`
+### `models.CreateDeploymentTopics2[]`
 
 ```typescript
-const value: models.CancelDeploymentTopics2[] = [
+const value: models.CreateDeploymentTopics2[] = [
   {
     topic: "<value>",
   },

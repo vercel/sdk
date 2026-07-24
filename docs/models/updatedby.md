@@ -18,7 +18,7 @@ const value: models.UpdatedBy1 = {
 const value: models.UpdatedBy2 = {
   type: "project",
   id: "<id>",
-  environment: "development",
+  environment: "<value>",
 };
 ```
 

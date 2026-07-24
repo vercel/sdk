@@ -9,9 +9,9 @@
 const value: models.UpdateFirewallConfigAction1 = "challenge";
 ```
 
-### `any`
+### `string`
 
 ```typescript
-const value: any = "<value>";
+const value: string = "<value>";
 ```
 

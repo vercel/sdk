@@ -11,5 +11,5 @@ let value: ListRepositoryTagsKind = "manifest";
 ## Values
 
 ```typescript
-"index" | "manifest"
+"attestation" | "index" | "manifest"
 ```

@@ -56,6 +56,8 @@ let value: CountEventsData = {
   cacheHitState: "<value>",
   cacheHitLevel: "<value>",
   cacheApi: "<value>",
+  cacheReason: "<value>",
+  pprState: "<value>",
   clientIp: "<value>",
   clientIpCountry: "<value>",
   clientUserAgent: "<value>",
@@ -67,7 +69,6 @@ let value: CountEventsData = {
   botCategory: "<value>",
   botCategoryLegacy: "<value>",
   botVerified: "<value>",
-  dheCipherSuite: "<value>",
   botCheckResult: "<value>",
   deepAnalysisCheck: "<value>",
   wafAction: "<value>",
@@ -120,8 +121,14 @@ let value: CountEventsData = {
   aiGatewayModelId: "<id>",
   aiProvider: "<value>",
   aiModelType: "<value>",
+  servedSpeed: "<value>",
   virtualModelSlug: "<value>",
   virtualModelKind: "<value>",
+  inferenceEndpointSlug: "<value>",
+  inferenceScope: "<value>",
+  inferenceGeoRegion: "<value>",
+  inferenceProviderRegion: "<value>",
+  requestedInferenceRegion: "<value>",
   costCurrency: "<value>",
   marketCostCurrency: "<value>",
   cachedInputTokensCurrency: "<value>",
@@ -140,6 +147,8 @@ let value: CountEventsData = {
   quotaEntityType: "<value>",
   videoResolution: "<value>",
   videoAspectRatio: "<value>",
+  piiRedactionApplied: "<value>",
+  moderationApplied: "<value>",
   queueName: "<value>",
   consumerGroup: "<value>",
   messageId: "<id>",
@@ -186,6 +195,9 @@ let value: CountEventsData = {
   providerAttemptTotalInRequest: "<value>",
   generationId: "<id>",
   sessionId: "<id>",
+  contentCaptureStatus: "<value>",
+  contentCaptureInputs: "<value>",
+  contentCaptureOutputs: "<value>",
   providerAttemptError: "<value>",
   providerAttemptSafetyIdentifier: "<value>",
   providerAttemptDevSafetyIdentifier: "<value>",
@@ -196,6 +208,15 @@ let value: CountEventsData = {
   toolCallSuccess: "<value>",
   toolCallErrorType: "<value>",
   toolCallStatusCode: "<value>",
+  environmentId: "<id>",
+  billableRegion: "<value>",
+  direction: "<value>",
+  networkTenancy: "<value>",
+  trafficSource: "<value>",
+  networkId: "<id>",
+  privatelinkEndpointId: "<id>",
+  privatelinkDnsName: "<value>",
+  privatelinkIpAddress: "<value>",
 };
 ```
 
@@ -253,6 +274,8 @@ let value: CountEventsData = {
 | `cacheHitState`                        | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `cacheHitLevel`                        | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `cacheApi`                             | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `cacheReason`                          | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `pprState`                             | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `clientIp`                             | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `clientIpCountry`                      | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `clientUserAgent`                      | *string*                               | :heavy_check_mark:                     | N/A                                    |
@@ -264,7 +287,6 @@ let value: CountEventsData = {
 | `botCategory`                          | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `botCategoryLegacy`                    | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `botVerified`                          | *string*                               | :heavy_check_mark:                     | N/A                                    |
-| `dheCipherSuite`                       | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `botCheckResult`                       | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `deepAnalysisCheck`                    | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `wafAction`                            | *string*                               | :heavy_check_mark:                     | N/A                                    |
@@ -317,8 +339,14 @@ let value: CountEventsData = {
 | `aiGatewayModelId`                     | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `aiProvider`                           | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `aiModelType`                          | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `servedSpeed`                          | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `virtualModelSlug`                     | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `virtualModelKind`                     | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `inferenceEndpointSlug`                | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `inferenceScope`                       | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `inferenceGeoRegion`                   | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `inferenceProviderRegion`              | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `requestedInferenceRegion`             | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `costCurrency`                         | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `marketCostCurrency`                   | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `cachedInputTokensCurrency`            | *string*                               | :heavy_check_mark:                     | N/A                                    |
@@ -337,6 +365,8 @@ let value: CountEventsData = {
 | `quotaEntityType`                      | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `videoResolution`                      | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `videoAspectRatio`                     | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `piiRedactionApplied`                  | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `moderationApplied`                    | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `queueName`                            | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `consumerGroup`                        | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `messageId`                            | *string*                               | :heavy_check_mark:                     | N/A                                    |
@@ -383,6 +413,9 @@ let value: CountEventsData = {
 | `providerAttemptTotalInRequest`        | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `generationId`                         | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `sessionId`                            | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `contentCaptureStatus`                 | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `contentCaptureInputs`                 | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `contentCaptureOutputs`                | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `providerAttemptError`                 | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `providerAttemptSafetyIdentifier`      | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `providerAttemptDevSafetyIdentifier`   | *string*                               | :heavy_check_mark:                     | N/A                                    |
@@ -393,4 +426,13 @@ let value: CountEventsData = {
 | `toolCallSuccess`                      | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `toolCallErrorType`                    | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `toolCallStatusCode`                   | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `environmentId`                        | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `billableRegion`                       | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `direction`                            | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `networkTenancy`                       | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `trafficSource`                        | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `networkId`                            | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `privatelinkEndpointId`                | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `privatelinkDnsName`                   | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `privatelinkIpAddress`                 | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `additionalProperties`                 | Record<string, *number*>               | :heavy_minus_sign:                     | N/A                                    |

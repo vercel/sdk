@@ -5,21 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { EightyFive } from "@vercel/sdk/models/usereventpayload70project.js";
+import { EightyFive } from "@vercel/sdk/models/twentythree.js";
 
 let value: EightyFive = {
-  projectId: "<id>",
-  projectName: "<value>",
-  hookName: "<value>",
-  ref: "<value>",
+  project: {
+    id: "<id>",
+    name: "<value>",
+  },
+  purchasedAmount: 5280.07,
+  prevPurchasedAmount: 2405.52,
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `hookName`         | *string*           | :heavy_check_mark: | N/A                |
-| `ref`              | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `project`                                                                  | [models.UserEventPayload85Project](../models/usereventpayload85project.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| `purchasedAmount`                                                          | *number*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `prevPurchasedAmount`                                                      | *number*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |

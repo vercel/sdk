@@ -12,13 +12,12 @@ let value: RequestBodyValue = {
     {
       conditions: [
         {
-          type: "route",
+          type: "raw_path",
           op: "re",
         },
       ],
     },
   ],
-  action: {},
 };
 ```
 
@@ -30,6 +29,6 @@ let value: RequestBodyValue = {
 | `description`                                                                                                                      | *string*                                                                                                                           | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |
 | `active`                                                                                                                           | *boolean*                                                                                                                          | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
 | `conditionGroup`                                                                                                                   | [models.RequestBodyConditionGroup](../models/requestbodyconditiongroup.md)[]                                                       | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
-| `action`                                                                                                                           | [models.UpdateFirewallConfigRequestBodySecurityRequest2Action](../models/updatefirewallconfigrequestbodysecurityrequest2action.md) | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
+| `action`                                                                                                                           | [models.UpdateFirewallConfigRequestBodySecurityRequest1Action](../models/updatefirewallconfigrequestbodysecurityrequest1action.md) | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |
 | `valid`                                                                                                                            | *boolean*                                                                                                                          | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |
 | `validationErrors`                                                                                                                 | *models.RequestBodyValidationErrors*                                                                                               | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |

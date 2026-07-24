@@ -806,6 +806,7 @@ export type UpdateFlagResponseBody1 = {
   permanent?: boolean | undefined;
   tags?: Array<string> | undefined;
   experiment?: ResponseBodyExperiment | undefined;
+  updatedBy?: string | undefined;
   variants: Array<ResponseBodyVariants>;
   id: string;
   environments: { [k: string]: ResponseBodyEnvironments };
@@ -2699,6 +2700,7 @@ export const UpdateFlagResponseBody1$inboundSchema: z.ZodType<
   experiment: types.optional(
     z.lazy(() => ResponseBodyExperiment$inboundSchema),
   ),
+  updatedBy: types.optional(types.string()),
   variants: z.array(z.lazy(() => ResponseBodyVariants$inboundSchema)),
   id: types.string(),
   environments: z.record(z.lazy(() => ResponseBodyEnvironments$inboundSchema)),

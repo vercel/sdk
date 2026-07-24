@@ -5,28 +5,32 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndNinetyOne } from "@vercel/sdk/models/twohundredandfiftyeight.js";
+import { TwoHundredAndNinetyOne } from "@vercel/sdk/models/twohundredandeightyfour.js";
 
 let value: TwoHundredAndNinetyOne = {
-  budget: {
-    type: "fixed",
-    fixedBudget: 8974.99,
-    previousSpend: [
-      1193.57,
-    ],
-    notifiedAt: [
-      4740.08,
-    ],
-    createdAt: 7590.21,
-    isActive: true,
-    teamId: "<id>",
-    id: "<id>",
-  },
+  projectId: "<id>",
+  projectName: "<value>",
+  addedProjects: [
+    {
+      id: "<id>",
+      name: "<value>",
+    },
+  ],
+  removedProjects: [],
+  addedProviders: [],
+  removedProviders: [
+    "<value 1>",
+  ],
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `budget`                                                                   | [models.UserEventPayload291Budget](../models/usereventpayload291budget.md) | :heavy_check_mark:                                                         | Represents a budget for tracking and notifying teams on their spending.    |
+| Field                                                    | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `projectId`                                              | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
+| `projectName`                                            | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
+| `addedProjects`                                          | [models.AddedProjects](../models/addedprojects.md)[]     | :heavy_check_mark:                                       | N/A                                                      |
+| `removedProjects`                                        | [models.RemovedProjects](../models/removedprojects.md)[] | :heavy_check_mark:                                       | N/A                                                      |
+| `addedProviders`                                         | *string*[]                                               | :heavy_check_mark:                                       | N/A                                                      |
+| `removedProviders`                                       | *string*[]                                               | :heavy_check_mark:                                       | N/A                                                      |

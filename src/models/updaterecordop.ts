@@ -94,7 +94,7 @@ export const UpdateRecordDnsType = {
 } as const;
 export type UpdateRecordDnsType = ClosedEnum<typeof UpdateRecordDnsType>;
 
-export const RecordType = {
+export const UpdateRecordRecordType = {
   A: "A",
   Aaaa: "AAAA",
   Alias: "ALIAS",
@@ -106,7 +106,7 @@ export const RecordType = {
   Srv: "SRV",
   Txt: "TXT",
 } as const;
-export type RecordType = ClosedEnum<typeof RecordType>;
+export type UpdateRecordRecordType = ClosedEnum<typeof UpdateRecordRecordType>;
 
 export type UpdateRecordResponseBody = {
   id: string;
@@ -117,7 +117,7 @@ export type UpdateRecordResponseBody = {
   domain: string;
   ttl?: number | undefined;
   comment?: string | undefined;
-  recordType: RecordType;
+  recordType: UpdateRecordRecordType;
   createdAt?: number | null | undefined;
 };
 
@@ -243,8 +243,9 @@ export const UpdateRecordDnsType$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(UpdateRecordDnsType);
 
 /** @internal */
-export const RecordType$inboundSchema: z.ZodNativeEnum<typeof RecordType> = z
-  .nativeEnum(RecordType);
+export const UpdateRecordRecordType$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateRecordRecordType
+> = z.nativeEnum(UpdateRecordRecordType);
 
 /** @internal */
 export const UpdateRecordResponseBody$inboundSchema: z.ZodType<
@@ -260,7 +261,7 @@ export const UpdateRecordResponseBody$inboundSchema: z.ZodType<
   domain: types.string(),
   ttl: types.optional(types.number()),
   comment: types.optional(types.string()),
-  recordType: RecordType$inboundSchema,
+  recordType: UpdateRecordRecordType$inboundSchema,
   createdAt: z.nullable(types.number()).optional(),
 });
 

@@ -36,6 +36,8 @@ export type GetIntegrationResourcesStatus = ClosedEnum<
 export type GetIntegrationResourcesExperimentation = {
   edgeConfigSyncingEnabled?: boolean | undefined;
   edgeConfigId?: string | undefined;
+  globalConfigId?: string | undefined;
+  globalConfigSyncingEnabled?: boolean | undefined;
   edgeConfigTokenId?: string | undefined;
 };
 
@@ -154,6 +156,8 @@ export const GetIntegrationResourcesExperimentation$inboundSchema: z.ZodType<
 > = z.object({
   edgeConfigSyncingEnabled: types.optional(types.boolean()),
   edgeConfigId: types.optional(types.string()),
+  globalConfigId: types.optional(types.string()),
+  globalConfigSyncingEnabled: types.optional(types.boolean()),
   edgeConfigTokenId: types.optional(types.string()),
 });
 

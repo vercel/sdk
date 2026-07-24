@@ -5,24 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFortyNine } from "@vercel/sdk/models/usereventpayload146role.js";
+import { OneHundredAndFortyNine } from "@vercel/sdk/models/onehundredandfortyfour.js";
 
 let value: OneHundredAndFortyNine = {
-  integration: {
-    id: "<id>",
-    slug: "<value>",
-    name: "<value>",
-    configurationId: "<id>",
-  },
-  originTeamId: "<id>",
-  originTeamName: "<value>",
+  projectId: "<id>",
+  previousOwnerId: "<id>",
+  newOwnerId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `integration`                                                | [models.PayloadIntegration](../models/payloadintegration.md) | :heavy_check_mark:                                           | N/A                                                          |
-| `originTeamId`                                               | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `originTeamName`                                             | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `previousOwnerId`  | *string*           | :heavy_check_mark: | N/A                |
+| `newOwnerId`       | *string*           | :heavy_check_mark: | N/A                |

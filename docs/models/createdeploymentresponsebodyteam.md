@@ -1,0 +1,24 @@
+# CreateDeploymentResponseBodyTeam
+
+The team that owns the deployment if any
+
+## Example Usage
+
+```typescript
+import { CreateDeploymentResponseBodyTeam } from "@vercel/sdk/models/createdeploymentvaluedeploymentsresponse2.js";
+
+let value: CreateDeploymentResponseBodyTeam = {
+  id: "<id>",
+  name: "<value>",
+  slug: "<value>",
+};
+```
+
+## Fields
+
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `id`               | *string*           | :heavy_check_mark: | N/A                |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `slug`             | *string*           | :heavy_check_mark: | N/A                |
+| `avatar`           | *string*           | :heavy_minus_sign: | N/A                |

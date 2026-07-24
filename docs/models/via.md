@@ -28,6 +28,16 @@ const value: models.Via2 = {
 
 ```typescript
 const value: models.Via3 = {
+  type: "external",
+  id: "<id>",
+  name: "<value>",
+};
+```
+
+### `models.Via4`
+
+```typescript
+const value: models.Via4 = {
   type: "system",
 };
 ```

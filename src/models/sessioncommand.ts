@@ -40,6 +40,10 @@ export type SessionCommand = {
    * When the command was started, in milliseconds since the epoch.
    */
   startedAt: number;
+  /**
+   * Duration of the command execution in milliseconds.
+   */
+  durationMs?: number | undefined;
 };
 
 /** @internal */
@@ -55,6 +59,7 @@ export const SessionCommand$inboundSchema: z.ZodType<
   sessionId: types.string(),
   exitCode: types.nullable(types.number()),
   startedAt: types.number(),
+  durationMs: types.optional(types.number()),
 });
 
 export function sessionCommandFromJSON(

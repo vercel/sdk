@@ -21,13 +21,13 @@ import {
 import { ResponseValidationError } from "../models/responsevalidationerror.js";
 import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import {
-  UpdateMicrofrontendsRequest,
-  UpdateMicrofrontendsRequest$outboundSchema,
-} from "../models/updatemicrofrontendspermissions.js";
-import {
   UpdateMicrofrontendsResponseBody,
   UpdateMicrofrontendsResponseBody$inboundSchema,
 } from "../models/updatemicrofrontendsresponsebody.js";
+import {
+  UpdateMicrofrontendsRequest,
+  UpdateMicrofrontendsRequest$outboundSchema,
+} from "../models/updatemicrofrontendsssoprotection.js";
 import { VercelError } from "../models/vercelerror.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
@@ -174,7 +174,7 @@ async function $do(
     | SDKValidationError
   >(
     M.json(200, UpdateMicrofrontendsResponseBody$inboundSchema),
-    M.fail([400, 401, 403, 409, "4XX"]),
+    M.fail([400, 401, 403, 409, 410, "4XX"]),
     M.fail([500, "5XX"]),
   )(response, req);
   if (!result.ok) {

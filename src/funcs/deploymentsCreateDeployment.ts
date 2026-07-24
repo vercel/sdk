@@ -18,7 +18,7 @@ import {
 import {
   CreateDeploymentRequest,
   CreateDeploymentRequest$outboundSchema,
-} from "../models/createdeploymentvaluedeployments2.js";
+} from "../models/createdeploymentvaluedeploymentsresponse2.js";
 import {
   ConnectionError,
   InvalidRequestError,
@@ -168,7 +168,7 @@ async function $do(
     | SDKValidationError
   >(
     M.json(200, CreateDeploymentResponseBody$inboundSchema),
-    M.fail([400, 401, 402, 403, 404, 409, 426, 429, "4XX"]),
+    M.fail([400, 401, 402, 403, 404, 409, 410, 426, 429, "4XX"]),
     M.fail([500, 503, "5XX"]),
   )(response, req);
   if (!result.ok) {

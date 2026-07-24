@@ -66,6 +66,20 @@ export type RemoveProjectEnvResponseBodyProjectsResponseTarget =
   | Array<RemoveProjectEnvTargetProjectsResponse1>
   | RemoveProjectEnvTargetProjectsResponse2;
 
+/**
+ * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+ */
+export const RemoveProjectEnvResponseBodyProjectsResponseVisibility = {
+  Config: "config",
+  Secret: "secret",
+} as const;
+/**
+ * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+ */
+export type RemoveProjectEnvResponseBodyProjectsResponseVisibility = ClosedEnum<
+  typeof RemoveProjectEnvResponseBodyProjectsResponseVisibility
+>;
+
 export type RemoveProjectEnvContentHintProjectsResponse17 = {
   type: "flags-connection-string";
   projectId: string;
@@ -219,6 +233,12 @@ export type RemoveProjectEnvResponseBody3 = {
   legacyValue?: string | undefined;
   decrypted?: boolean | undefined;
   configurationId?: string | null | undefined;
+  /**
+   * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+   */
+  visibility?:
+    | RemoveProjectEnvResponseBodyProjectsResponseVisibility
+    | undefined;
   contentHint?:
     | RemoveProjectEnvContentHintProjectsResponse1
     | RemoveProjectEnvContentHintProjectsResponse2
@@ -282,6 +302,20 @@ export type RemoveProjectEnvTargetProjects1 = ClosedEnum<
 export type RemoveProjectEnvResponseBodyProjectsTarget =
   | Array<RemoveProjectEnvTargetProjects1>
   | RemoveProjectEnvTargetProjects2;
+
+/**
+ * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+ */
+export const RemoveProjectEnvResponseBodyProjectsVisibility = {
+  Config: "config",
+  Secret: "secret",
+} as const;
+/**
+ * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+ */
+export type RemoveProjectEnvResponseBodyProjectsVisibility = ClosedEnum<
+  typeof RemoveProjectEnvResponseBodyProjectsVisibility
+>;
 
 export type RemoveProjectEnvContentHintProjects17 = {
   type: "flags-connection-string";
@@ -435,6 +469,10 @@ export type RemoveProjectEnvResponseBody2 = {
   legacyValue?: string | undefined;
   decrypted?: boolean | undefined;
   configurationId?: string | null | undefined;
+  /**
+   * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+   */
+  visibility?: RemoveProjectEnvResponseBodyProjectsVisibility | undefined;
   contentHint?:
     | RemoveProjectEnvContentHintProjects1
     | RemoveProjectEnvContentHintProjects2
@@ -498,6 +536,20 @@ export type RemoveProjectEnvTarget1 = ClosedEnum<
 export type RemoveProjectEnvResponseBodyTarget =
   | Array<RemoveProjectEnvTarget1>
   | RemoveProjectEnvTarget2;
+
+/**
+ * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+ */
+export const RemoveProjectEnvResponseBodyVisibility = {
+  Config: "config",
+  Secret: "secret",
+} as const;
+/**
+ * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+ */
+export type RemoveProjectEnvResponseBodyVisibility = ClosedEnum<
+  typeof RemoveProjectEnvResponseBodyVisibility
+>;
 
 export type RemoveProjectEnvContentHint17 = {
   type: "flags-connection-string";
@@ -649,6 +701,10 @@ export type RemoveProjectEnvResponseBody1 = {
   legacyValue?: string | undefined;
   decrypted?: boolean | undefined;
   configurationId?: string | null | undefined;
+  /**
+   * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+   */
+  visibility?: RemoveProjectEnvResponseBodyVisibility | undefined;
   contentHint?:
     | RemoveProjectEnvContentHint1
     | RemoveProjectEnvContentHint2
@@ -686,7 +742,7 @@ export type RemoveProjectEnvResponseBody1 = {
 export type RemoveProjectEnvResponseBody =
   | RemoveProjectEnvResponseBody2
   | RemoveProjectEnvResponseBody3
-  | Array<RemoveProjectEnvResponseBody1>;
+  | Array<RemoveProjectEnvResponseBody1 | null>;
 
 /** @internal */
 export type RemoveProjectEnvRequest$Outbound = {
@@ -759,6 +815,12 @@ export function removeProjectEnvResponseBodyProjectsResponseTargetFromJSON(
     `Failed to parse 'RemoveProjectEnvResponseBodyProjectsResponseTarget' from JSON`,
   );
 }
+
+/** @internal */
+export const RemoveProjectEnvResponseBodyProjectsResponseVisibility$inboundSchema:
+  z.ZodNativeEnum<
+    typeof RemoveProjectEnvResponseBodyProjectsResponseVisibility
+  > = z.nativeEnum(RemoveProjectEnvResponseBodyProjectsResponseVisibility);
 
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse17$inboundSchema:
@@ -1325,6 +1387,9 @@ export const RemoveProjectEnvResponseBody3$inboundSchema: z.ZodType<
   legacyValue: types.optional(types.string()),
   decrypted: types.optional(types.boolean()),
   configurationId: z.nullable(types.string()).optional(),
+  visibility: types.optional(
+    RemoveProjectEnvResponseBodyProjectsResponseVisibility$inboundSchema,
+  ),
   contentHint: z.nullable(
     z.union([
       z.lazy(() => RemoveProjectEnvContentHintProjectsResponse1$inboundSchema),
@@ -1403,6 +1468,11 @@ export function removeProjectEnvResponseBodyProjectsTargetFromJSON(
     `Failed to parse 'RemoveProjectEnvResponseBodyProjectsTarget' from JSON`,
   );
 }
+
+/** @internal */
+export const RemoveProjectEnvResponseBodyProjectsVisibility$inboundSchema:
+  z.ZodNativeEnum<typeof RemoveProjectEnvResponseBodyProjectsVisibility> = z
+    .nativeEnum(RemoveProjectEnvResponseBodyProjectsVisibility);
 
 /** @internal */
 export const RemoveProjectEnvContentHintProjects17$inboundSchema: z.ZodType<
@@ -1865,6 +1935,9 @@ export const RemoveProjectEnvResponseBody2$inboundSchema: z.ZodType<
   legacyValue: types.optional(types.string()),
   decrypted: types.optional(types.boolean()),
   configurationId: z.nullable(types.string()).optional(),
+  visibility: types.optional(
+    RemoveProjectEnvResponseBodyProjectsVisibility$inboundSchema,
+  ),
   contentHint: z.nullable(
     z.union([
       z.lazy(() => RemoveProjectEnvContentHintProjects1$inboundSchema),
@@ -1940,6 +2013,12 @@ export function removeProjectEnvResponseBodyTargetFromJSON(
     `Failed to parse 'RemoveProjectEnvResponseBodyTarget' from JSON`,
   );
 }
+
+/** @internal */
+export const RemoveProjectEnvResponseBodyVisibility$inboundSchema:
+  z.ZodNativeEnum<typeof RemoveProjectEnvResponseBodyVisibility> = z.nativeEnum(
+    RemoveProjectEnvResponseBodyVisibility,
+  );
 
 /** @internal */
 export const RemoveProjectEnvContentHint17$inboundSchema: z.ZodType<
@@ -2388,6 +2467,9 @@ export const RemoveProjectEnvResponseBody1$inboundSchema: z.ZodType<
   legacyValue: types.optional(types.string()),
   decrypted: types.optional(types.boolean()),
   configurationId: z.nullable(types.string()).optional(),
+  visibility: types.optional(
+    RemoveProjectEnvResponseBodyVisibility$inboundSchema,
+  ),
   contentHint: z.nullable(
     z.union([
       z.lazy(() => RemoveProjectEnvContentHint1$inboundSchema),
@@ -2434,7 +2516,9 @@ export const RemoveProjectEnvResponseBody$inboundSchema: z.ZodType<
 > = smartUnion([
   z.lazy(() => RemoveProjectEnvResponseBody2$inboundSchema),
   z.lazy(() => RemoveProjectEnvResponseBody3$inboundSchema),
-  z.array(z.lazy(() => RemoveProjectEnvResponseBody1$inboundSchema)),
+  z.array(
+    types.nullable(z.lazy(() => RemoveProjectEnvResponseBody1$inboundSchema)),
+  ),
 ]);
 
 export function removeProjectEnvResponseBodyFromJSON(

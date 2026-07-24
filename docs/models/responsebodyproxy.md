@@ -9,10 +9,6 @@ let value: ResponseBodyProxy = {
   timestamp: 426.4,
   method: "<value>",
   host: "boiling-switchboard.info",
-  path: "/var/spool",
-  userAgent: [],
-  referer: "sparkling-joy.name",
-  region: "<value>",
 };
 ```
 
@@ -23,12 +19,12 @@ let value: ResponseBodyProxy = {
 | `timestamp`                                                            | *number*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
 | `method`                                                               | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
 | `host`                                                                 | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
-| `path`                                                                 | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `path`                                                                 | *string*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
 | `statusCode`                                                           | *number*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
-| `userAgent`                                                            | *string*[]                                                             | :heavy_check_mark:                                                     | N/A                                                                    |
-| `referer`                                                              | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `userAgent`                                                            | *string*[]                                                             | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `referer`                                                              | *string*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
 | `clientIp`                                                             | *string*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
-| `region`                                                               | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `region`                                                               | *string*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
 | `scheme`                                                               | *string*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
 | `responseByteSize`                                                     | *number*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
 | `cacheId`                                                              | *string*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |

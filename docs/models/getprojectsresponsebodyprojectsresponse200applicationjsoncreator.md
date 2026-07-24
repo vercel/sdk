@@ -1,23 +1,48 @@
 # GetProjectsResponseBodyProjectsResponse200ApplicationJSONCreator
 
-## Example Usage
+
+## Supported Types
+
+### `models.GetProjectsCreatorProjectsResponse1`
 
 ```typescript
-import { GetProjectsResponseBodyProjectsResponse200ApplicationJSONCreator } from "@vercel/sdk/models/getprojectsresponsebodyissuermode.js";
-
-let value: GetProjectsResponseBodyProjectsResponse200ApplicationJSONCreator = {
-  email: "Jacklyn.Ferry@gmail.com",
-  uid: "<id>",
-  username: "Amely_Daugherty",
+const value: models.GetProjectsCreatorProjectsResponse1 = {
+  type: "user",
+  via: null,
+  user: {
+    id: "<id>",
+  },
 };
 ```
 
-## Fields
+### `models.GetProjectsCreatorProjectsResponse2`
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `email`            | *string*           | :heavy_check_mark: | N/A                |
-| `githubLogin`      | *string*           | :heavy_minus_sign: | N/A                |
-| `gitlabLogin`      | *string*           | :heavy_minus_sign: | N/A                |
-| `uid`              | *string*           | :heavy_check_mark: | N/A                |
-| `username`         | *string*           | :heavy_check_mark: | N/A                |
+```typescript
+const value: models.GetProjectsCreatorProjectsResponse2 = {
+  type: "app",
+  app: {
+    id: "<id>",
+  },
+};
+```
+
+### `models.GetProjectsCreatorProjectsResponse3`
+
+```typescript
+const value: models.GetProjectsCreatorProjectsResponse3 = {
+  type: "integration",
+  integration: {
+    integrationId: "<id>",
+    configurationId: "<id>",
+  },
+};
+```
+
+### `models.GetProjectsCreatorProjectsResponse4`
+
+```typescript
+const value: models.GetProjectsCreatorProjectsResponse4 = {
+  type: "system",
+};
+```
+

@@ -379,6 +379,7 @@ export const CreateConnectorType = {
   Linear: "linear",
   MicrosoftEntra: "microsoft-entra",
   Oauth: "oauth",
+  Photon: "photon",
   Salesforce: "salesforce",
   Slack: "slack",
   Snowflake: "snowflake",

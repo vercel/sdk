@@ -11,5 +11,5 @@ let value: CreateConnectorType = "microsoft-entra";
 ## Values
 
 ```typescript
-"api-key" | "custom" | "github" | "linear" | "microsoft-entra" | "oauth" | "salesforce" | "slack" | "snowflake" | "snowflake-wif"
+"api-key" | "custom" | "github" | "linear" | "microsoft-entra" | "oauth" | "photon" | "salesforce" | "slack" | "snowflake" | "snowflake-wif"
 ```

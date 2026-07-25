@@ -11731,6 +11731,7 @@
                         "linear",
                         "microsoft-entra",
                         "oauth",
+                        "photon",
                         "salesforce",
                         "slack",
                         "snowflake",
@@ -12106,6 +12107,9 @@
             "description": ""
           },
           "410": {
+            "description": ""
+          },
+          "502": {
             "description": ""
           }
         },

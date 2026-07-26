@@ -12,7 +12,7 @@ let value: Tokens = {
     type: "user",
     id: "<id>",
   },
-  environment: "<value>",
+  environment: "preview",
 };
 ```
 
@@ -25,7 +25,7 @@ let value: Tokens = {
 | `refreshToken`                                                              | *string*                                                                    | :heavy_minus_sign:                                                          | N/A                                                                         |
 | `refreshTokenExpiresAt`                                                     | *number*                                                                    | :heavy_minus_sign:                                                          | N/A                                                                         |
 | `subject`                                                                   | *models.Subject*                                                            | :heavy_check_mark:                                                          | N/A                                                                         |
-| `environment`                                                               | *string*                                                                    | :heavy_check_mark:                                                          | A built-in environment name or the stable env_* ID of a custom environment. |
+| `environment`                                                               | *models.ImportConnectorTokensEnvironmentTarget*                             | :heavy_check_mark:                                                          | A built-in environment name or the stable env_* ID of a custom environment. |
 | `installationId`                                                            | *string*                                                                    | :heavy_minus_sign:                                                          | N/A                                                                         |
 | `audience`                                                                  | *string*[]                                                                  | :heavy_minus_sign:                                                          | N/A                                                                         |
 | `scopes`                                                                    | *string*[]                                                                  | :heavy_minus_sign:                                                          | N/A                                                                         |

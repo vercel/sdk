@@ -11631,9 +11631,11 @@
                                     "development",
                                     "preview",
                                     "production"
-                                  ]
+                                  ],
+                                  "x-speakeasy-name-override": "created_by_environment"
                                 }
-                              ]
+                              ],
+                              "title": "CreatedByEnvironmentTarget"
                             }
                           },
                           "required": [
@@ -11689,9 +11691,11 @@
                                     "development",
                                     "preview",
                                     "production"
-                                  ]
+                                  ],
+                                  "x-speakeasy-name-override": "updated_by_environment"
                                 }
-                              ]
+                              ],
+                              "title": "UpdatedByEnvironmentTarget"
                             }
                           },
                           "required": [
@@ -12020,9 +12024,11 @@
                                             "development",
                                             "preview",
                                             "production"
-                                          ]
+                                          ],
+                                          "x-speakeasy-name-override": "create_connector_environments"
                                         }
-                                      ]
+                                      ],
+                                      "title": "CreateConnectorEnvironmentTarget"
                                     },
                                     "type": "array"
                                   },
@@ -13337,9 +13343,11 @@
                                   "development",
                                   "preview",
                                   "production"
-                                ]
+                                ],
+                                "x-speakeasy-name-override": "import_connector_tokens_connect_environment"
                               }
-                            ]
+                            ],
+                            "title": "ImportConnectorTokensConnectEnvironmentTarget"
                           },
                           "succeeded": {
                             "type": "boolean",
@@ -13481,14 +13489,21 @@
                         "environment": {
                           "anyOf": [
                             {
-                              "type": "string"
+                              "type": "string",
+                              "enum": [
+                                "development",
+                                "preview",
+                                "production"
+                              ],
+                              "x-speakeasy-name-override": "import_connector_tokens_environment"
                             },
                             {
                               "type": "string",
                               "pattern": "^env_"
                             }
                           ],
-                          "description": "A built-in environment name or the stable env_* ID of a custom environment."
+                          "description": "A built-in environment name or the stable env_* ID of a custom environment.",
+                          "title": "ImportConnectorTokensEnvironmentTarget"
                         },
                         "installationId": {
                           "type": "string"

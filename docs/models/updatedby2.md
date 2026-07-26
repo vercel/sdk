@@ -16,8 +16,8 @@ let value: UpdatedBy2 = {
 
 ## Fields
 
-| Field                         | Type                          | Required                      | Description                   |
-| ----------------------------- | ----------------------------- | ----------------------------- | ----------------------------- |
-| `type`                        | *"project"*                   | :heavy_check_mark:            | N/A                           |
-| `id`                          | *string*                      | :heavy_check_mark:            | N/A                           |
-| `environment`                 | *models.UpdatedByEnvironment* | :heavy_check_mark:            | N/A                           |
+| Field                               | Type                                | Required                            | Description                         |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| `type`                              | *"project"*                         | :heavy_check_mark:                  | N/A                                 |
+| `id`                                | *string*                            | :heavy_check_mark:                  | N/A                                 |
+| `environment`                       | *models.UpdatedByEnvironmentTarget* | :heavy_check_mark:                  | N/A                                 |

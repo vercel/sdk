@@ -1063,7 +1063,7 @@ export type GetMicrofrontendsInGroupSources =
   | (GetMicrofrontendsInGroupSources1 & { provider: "github" })
   | GetMicrofrontendsInGroupSources2;
 
-export type GetMicrofrontendsInGroupEnvironments2 = {
+export type GetMicrofrontendsInGroupEnvironmentsMicrofrontends2 = {
   type: "custom";
   environmentId: string;
 };
@@ -1082,7 +1082,7 @@ export type GetMicrofrontendsInGroupEnvironmentsMicrofrontends1 = {
 
 export type GetMicrofrontendsInGroupEnvironments =
   | GetMicrofrontendsInGroupEnvironmentsMicrofrontends1
-  | GetMicrofrontendsInGroupEnvironments2;
+  | GetMicrofrontendsInGroupEnvironmentsMicrofrontends2;
 
 /**
  * `enabled: true` with empty `sources` is deny-all.
@@ -1096,7 +1096,7 @@ export type GetMicrofrontendsInGroupGitSources = {
   enabled: boolean;
   environments: Array<
     | GetMicrofrontendsInGroupEnvironmentsMicrofrontends1
-    | GetMicrofrontendsInGroupEnvironments2
+    | GetMicrofrontendsInGroupEnvironmentsMicrofrontends2
   >;
 };
 
@@ -1118,7 +1118,7 @@ export type GetMicrofrontendsInGroupMicrofrontendsSources = ClosedEnum<
   typeof GetMicrofrontendsInGroupMicrofrontendsSources
 >;
 
-export type GetMicrofrontendsInGroupEnvironmentsMicrofrontends2 = {
+export type GetMicrofrontendsInGroupEnvironments2 = {
   type: "custom";
   environmentId: string;
 };
@@ -1138,7 +1138,7 @@ export type GetMicrofrontendsInGroupEnvironments1 = {
 
 export type GetMicrofrontendsInGroupMicrofrontendsEnvironments =
   | GetMicrofrontendsInGroupEnvironments1
-  | GetMicrofrontendsInGroupEnvironmentsMicrofrontends2;
+  | GetMicrofrontendsInGroupEnvironments2;
 
 /**
  * `enabled: true` with empty `sources` is deny-all.
@@ -1148,7 +1148,7 @@ export type GetMicrofrontendsInGroupDeploymentSources = {
   enabled: boolean;
   environments: Array<
     | GetMicrofrontendsInGroupEnvironments1
-    | GetMicrofrontendsInGroupEnvironmentsMicrofrontends2
+    | GetMicrofrontendsInGroupEnvironments2
   >;
 };
 
@@ -3430,23 +3430,29 @@ export function getMicrofrontendsInGroupSourcesFromJSON(
 }
 
 /** @internal */
-export const GetMicrofrontendsInGroupEnvironments2$inboundSchema: z.ZodType<
-  GetMicrofrontendsInGroupEnvironments2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: types.literal("custom"),
-  environmentId: types.string(),
-});
+export const GetMicrofrontendsInGroupEnvironmentsMicrofrontends2$inboundSchema:
+  z.ZodType<
+    GetMicrofrontendsInGroupEnvironmentsMicrofrontends2,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    type: types.literal("custom"),
+    environmentId: types.string(),
+  });
 
-export function getMicrofrontendsInGroupEnvironments2FromJSON(
+export function getMicrofrontendsInGroupEnvironmentsMicrofrontends2FromJSON(
   jsonString: string,
-): SafeParseResult<GetMicrofrontendsInGroupEnvironments2, SDKValidationError> {
+): SafeParseResult<
+  GetMicrofrontendsInGroupEnvironmentsMicrofrontends2,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
     (x) =>
-      GetMicrofrontendsInGroupEnvironments2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetMicrofrontendsInGroupEnvironments2' from JSON`,
+      GetMicrofrontendsInGroupEnvironmentsMicrofrontends2$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetMicrofrontendsInGroupEnvironmentsMicrofrontends2' from JSON`,
   );
 }
 
@@ -3493,7 +3499,9 @@ export const GetMicrofrontendsInGroupEnvironments$inboundSchema: z.ZodType<
   z.lazy(() =>
     GetMicrofrontendsInGroupEnvironmentsMicrofrontends1$inboundSchema
   ),
-  z.lazy(() => GetMicrofrontendsInGroupEnvironments2$inboundSchema),
+  z.lazy(() =>
+    GetMicrofrontendsInGroupEnvironmentsMicrofrontends2$inboundSchema
+  ),
 ]);
 
 export function getMicrofrontendsInGroupEnvironmentsFromJSON(
@@ -3530,7 +3538,9 @@ export const GetMicrofrontendsInGroupGitSources$inboundSchema: z.ZodType<
       z.lazy(() =>
         GetMicrofrontendsInGroupEnvironmentsMicrofrontends1$inboundSchema
       ),
-      z.lazy(() => GetMicrofrontendsInGroupEnvironments2$inboundSchema),
+      z.lazy(() =>
+        GetMicrofrontendsInGroupEnvironmentsMicrofrontends2$inboundSchema
+      ),
     ]),
   ),
 });
@@ -3552,29 +3562,23 @@ export const GetMicrofrontendsInGroupMicrofrontendsSources$inboundSchema:
     .nativeEnum(GetMicrofrontendsInGroupMicrofrontendsSources);
 
 /** @internal */
-export const GetMicrofrontendsInGroupEnvironmentsMicrofrontends2$inboundSchema:
-  z.ZodType<
-    GetMicrofrontendsInGroupEnvironmentsMicrofrontends2,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    type: types.literal("custom"),
-    environmentId: types.string(),
-  });
+export const GetMicrofrontendsInGroupEnvironments2$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupEnvironments2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("custom"),
+  environmentId: types.string(),
+});
 
-export function getMicrofrontendsInGroupEnvironmentsMicrofrontends2FromJSON(
+export function getMicrofrontendsInGroupEnvironments2FromJSON(
   jsonString: string,
-): SafeParseResult<
-  GetMicrofrontendsInGroupEnvironmentsMicrofrontends2,
-  SDKValidationError
-> {
+): SafeParseResult<GetMicrofrontendsInGroupEnvironments2, SDKValidationError> {
   return safeParse(
     jsonString,
     (x) =>
-      GetMicrofrontendsInGroupEnvironmentsMicrofrontends2$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetMicrofrontendsInGroupEnvironmentsMicrofrontends2' from JSON`,
+      GetMicrofrontendsInGroupEnvironments2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMicrofrontendsInGroupEnvironments2' from JSON`,
   );
 }
 
@@ -3612,9 +3616,7 @@ export const GetMicrofrontendsInGroupMicrofrontendsEnvironments$inboundSchema:
     unknown
   > = z.union([
     z.lazy(() => GetMicrofrontendsInGroupEnvironments1$inboundSchema),
-    z.lazy(() =>
-      GetMicrofrontendsInGroupEnvironmentsMicrofrontends2$inboundSchema
-    ),
+    z.lazy(() => GetMicrofrontendsInGroupEnvironments2$inboundSchema),
   ]);
 
 export function getMicrofrontendsInGroupMicrofrontendsEnvironmentsFromJSON(
@@ -3644,9 +3646,7 @@ export const GetMicrofrontendsInGroupDeploymentSources$inboundSchema: z.ZodType<
   environments: z.array(
     z.union([
       z.lazy(() => GetMicrofrontendsInGroupEnvironments1$inboundSchema),
-      z.lazy(() =>
-        GetMicrofrontendsInGroupEnvironmentsMicrofrontends2$inboundSchema
-      ),
+      z.lazy(() => GetMicrofrontendsInGroupEnvironments2$inboundSchema),
     ]),
   ),
 });

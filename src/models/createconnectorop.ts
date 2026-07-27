@@ -300,16 +300,14 @@ export type CreateConnectorRequestBody = {
   events?: Array<string> | undefined;
 };
 
-export const CreateConnectorEnvironmentConnect2 = {
+export const CreatedByEnvironment = {
   Development: "development",
   Preview: "preview",
   Production: "production",
 } as const;
-export type CreateConnectorEnvironmentConnect2 = ClosedEnum<
-  typeof CreateConnectorEnvironmentConnect2
->;
+export type CreatedByEnvironment = ClosedEnum<typeof CreatedByEnvironment>;
 
-export type CreatedByEnvironment = string | CreateConnectorEnvironmentConnect2;
+export type CreatedByEnvironmentTarget = string | CreatedByEnvironment;
 
 /**
  * Principal that originally created the connector — either a Vercel user (interactive dashboard / CLI flow) or a Vercel deployment (OIDC-authenticated project, used by runtime auto-provisioning). See {@link ConnexPrincipal}. Optional: pre-existing rows from before this shape was introduced may carry no attribution at all.
@@ -317,7 +315,7 @@ export type CreatedByEnvironment = string | CreateConnectorEnvironmentConnect2;
 export type CreatedBy2 = {
   type: "project";
   id: string;
-  environment: string | CreateConnectorEnvironmentConnect2;
+  environment: string | CreatedByEnvironment;
 };
 
 /**
@@ -330,16 +328,14 @@ export type CreatedBy1 = {
 
 export type CreatedBy = CreatedBy1 | CreatedBy2;
 
-export const CreateConnectorEnvironment2 = {
+export const UpdatedByEnvironment = {
   Development: "development",
   Preview: "preview",
   Production: "production",
 } as const;
-export type CreateConnectorEnvironment2 = ClosedEnum<
-  typeof CreateConnectorEnvironment2
->;
+export type UpdatedByEnvironment = ClosedEnum<typeof UpdatedByEnvironment>;
 
-export type UpdatedByEnvironment = string | CreateConnectorEnvironment2;
+export type UpdatedByEnvironmentTarget = string | UpdatedByEnvironment;
 
 /**
  * Principal that most recently mutated the connector. Same shape as {@link createdBy} but tracks the most recent updater, not the original creator. At create time the two fields point at the same principal; they diverge on the first subsequent update.
@@ -347,7 +343,7 @@ export type UpdatedByEnvironment = string | CreateConnectorEnvironment2;
 export type UpdatedBy2 = {
   type: "project";
   id: string;
-  environment: string | CreateConnectorEnvironment2;
+  environment: string | UpdatedByEnvironment;
 };
 
 /**
@@ -449,22 +445,24 @@ export type CreateConnectorProject = {
   customEnvironments?: Array<CreateConnectorCustomEnvironments> | undefined;
 };
 
-export const CreateConnectorEnvironments2 = {
+export const CreateConnectorEnvironments = {
   Development: "development",
   Preview: "preview",
   Production: "production",
 } as const;
-export type CreateConnectorEnvironments2 = ClosedEnum<
-  typeof CreateConnectorEnvironments2
+export type CreateConnectorEnvironments = ClosedEnum<
+  typeof CreateConnectorEnvironments
 >;
 
-export type CreateConnectorEnvironments = string | CreateConnectorEnvironments2;
+export type CreateConnectorEnvironmentTarget =
+  | string
+  | CreateConnectorEnvironments;
 
 export type CreateConnectorItems = {
   clientId: string;
   projectId: string;
   project?: CreateConnectorProject | undefined;
-  environments: Array<string | CreateConnectorEnvironments2>;
+  environments: Array<string | CreateConnectorEnvironments>;
   createdAt: number;
   updatedAt: number;
 };
@@ -1370,27 +1368,24 @@ export function createConnectorRequestBodyToJSON(
 }
 
 /** @internal */
-export const CreateConnectorEnvironmentConnect2$inboundSchema: z.ZodNativeEnum<
-  typeof CreateConnectorEnvironmentConnect2
-> = z.nativeEnum(CreateConnectorEnvironmentConnect2);
+export const CreatedByEnvironment$inboundSchema: z.ZodNativeEnum<
+  typeof CreatedByEnvironment
+> = z.nativeEnum(CreatedByEnvironment);
 
 /** @internal */
-export const CreatedByEnvironment$inboundSchema: z.ZodType<
-  CreatedByEnvironment,
+export const CreatedByEnvironmentTarget$inboundSchema: z.ZodType<
+  CreatedByEnvironmentTarget,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  types.string(),
-  CreateConnectorEnvironmentConnect2$inboundSchema,
-]);
+> = smartUnion([types.string(), CreatedByEnvironment$inboundSchema]);
 
-export function createdByEnvironmentFromJSON(
+export function createdByEnvironmentTargetFromJSON(
   jsonString: string,
-): SafeParseResult<CreatedByEnvironment, SDKValidationError> {
+): SafeParseResult<CreatedByEnvironmentTarget, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreatedByEnvironment$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreatedByEnvironment' from JSON`,
+    (x) => CreatedByEnvironmentTarget$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreatedByEnvironmentTarget' from JSON`,
   );
 }
 
@@ -1402,10 +1397,7 @@ export const CreatedBy2$inboundSchema: z.ZodType<
 > = z.object({
   type: types.literal("project"),
   id: types.string(),
-  environment: smartUnion([
-    types.string(),
-    CreateConnectorEnvironmentConnect2$inboundSchema,
-  ]),
+  environment: smartUnion([types.string(), CreatedByEnvironment$inboundSchema]),
 });
 
 export function createdBy2FromJSON(
@@ -1459,24 +1451,24 @@ export function createdByFromJSON(
 }
 
 /** @internal */
-export const CreateConnectorEnvironment2$inboundSchema: z.ZodNativeEnum<
-  typeof CreateConnectorEnvironment2
-> = z.nativeEnum(CreateConnectorEnvironment2);
+export const UpdatedByEnvironment$inboundSchema: z.ZodNativeEnum<
+  typeof UpdatedByEnvironment
+> = z.nativeEnum(UpdatedByEnvironment);
 
 /** @internal */
-export const UpdatedByEnvironment$inboundSchema: z.ZodType<
-  UpdatedByEnvironment,
+export const UpdatedByEnvironmentTarget$inboundSchema: z.ZodType<
+  UpdatedByEnvironmentTarget,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.string(), CreateConnectorEnvironment2$inboundSchema]);
+> = smartUnion([types.string(), UpdatedByEnvironment$inboundSchema]);
 
-export function updatedByEnvironmentFromJSON(
+export function updatedByEnvironmentTargetFromJSON(
   jsonString: string,
-): SafeParseResult<UpdatedByEnvironment, SDKValidationError> {
+): SafeParseResult<UpdatedByEnvironmentTarget, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UpdatedByEnvironment$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdatedByEnvironment' from JSON`,
+    (x) => UpdatedByEnvironmentTarget$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdatedByEnvironmentTarget' from JSON`,
   );
 }
 
@@ -1488,10 +1480,7 @@ export const UpdatedBy2$inboundSchema: z.ZodType<
 > = z.object({
   type: types.literal("project"),
   id: types.string(),
-  environment: smartUnion([
-    types.string(),
-    CreateConnectorEnvironment2$inboundSchema,
-  ]),
+  environment: smartUnion([types.string(), UpdatedByEnvironment$inboundSchema]),
 });
 
 export function updatedBy2FromJSON(
@@ -1687,24 +1676,24 @@ export function createConnectorProjectFromJSON(
 }
 
 /** @internal */
-export const CreateConnectorEnvironments2$inboundSchema: z.ZodNativeEnum<
-  typeof CreateConnectorEnvironments2
-> = z.nativeEnum(CreateConnectorEnvironments2);
+export const CreateConnectorEnvironments$inboundSchema: z.ZodNativeEnum<
+  typeof CreateConnectorEnvironments
+> = z.nativeEnum(CreateConnectorEnvironments);
 
 /** @internal */
-export const CreateConnectorEnvironments$inboundSchema: z.ZodType<
-  CreateConnectorEnvironments,
+export const CreateConnectorEnvironmentTarget$inboundSchema: z.ZodType<
+  CreateConnectorEnvironmentTarget,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.string(), CreateConnectorEnvironments2$inboundSchema]);
+> = smartUnion([types.string(), CreateConnectorEnvironments$inboundSchema]);
 
-export function createConnectorEnvironmentsFromJSON(
+export function createConnectorEnvironmentTargetFromJSON(
   jsonString: string,
-): SafeParseResult<CreateConnectorEnvironments, SDKValidationError> {
+): SafeParseResult<CreateConnectorEnvironmentTarget, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreateConnectorEnvironments$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateConnectorEnvironments' from JSON`,
+    (x) => CreateConnectorEnvironmentTarget$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateConnectorEnvironmentTarget' from JSON`,
   );
 }
 
@@ -1718,7 +1707,7 @@ export const CreateConnectorItems$inboundSchema: z.ZodType<
   projectId: types.string(),
   project: types.optional(z.lazy(() => CreateConnectorProject$inboundSchema)),
   environments: z.array(
-    smartUnion([types.string(), CreateConnectorEnvironments2$inboundSchema]),
+    smartUnion([types.string(), CreateConnectorEnvironments$inboundSchema]),
   ),
   createdAt: types.number(),
   updatedAt: types.number(),

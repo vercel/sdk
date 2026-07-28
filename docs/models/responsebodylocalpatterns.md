@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyLocalPatterns } from "@vercel/sdk/models/createdeploymentvaluedeploymentsresponse2.js";
+import { ResponseBodyLocalPatterns } from "@vercel/sdk/models/createdeploymentroutesmitigate.js";
 
 let value: ResponseBodyLocalPatterns = {};
 ```

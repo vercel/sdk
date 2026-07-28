@@ -5,7 +5,7 @@ optional; only present when a refresh token was issued (offline_access).
 ## Example Usage
 
 ```typescript
-import { RefreshTokenPrefix } from "@vercel/sdk/models/threehundredandfortyone.js";
+import { RefreshTokenPrefix } from "@vercel/sdk/models/threehundredandfortytwo.js";
 
 let value: RefreshTokenPrefix = "vcr_";
 ```

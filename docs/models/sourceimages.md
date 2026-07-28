@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { SourceImages } from "@vercel/sdk/models/onehundredandfortyfour.js";
+import { SourceImages } from "@vercel/sdk/models/usereventpayloadconfigversion.js";
 
 let value: SourceImages = {
   currentThreshold: 299.51,

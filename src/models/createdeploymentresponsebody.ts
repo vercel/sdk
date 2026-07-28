@@ -10,34 +10,10 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
-  CreateDeploymentRoutesDeployments2,
-  CreateDeploymentRoutesDeployments2$inboundSchema,
-  CreateDeploymentRoutesDeploymentsHas,
-  CreateDeploymentRoutesDeploymentsHas$inboundSchema,
-  CreateDeploymentRoutesDeploymentsMissing,
-  CreateDeploymentRoutesDeploymentsMissing$inboundSchema,
-  CreateDeploymentRoutesDeploymentsMitigate,
-  CreateDeploymentRoutesDeploymentsMitigate$inboundSchema,
-  CreateDeploymentRoutesDeploymentsTransforms,
-  CreateDeploymentRoutesDeploymentsTransforms$inboundSchema,
-  CreateDeploymentRoutesLocale,
-  CreateDeploymentRoutesLocale$inboundSchema,
-  CreateDeploymentServicesDeploymentsBuilder,
-  CreateDeploymentServicesDeploymentsBuilder$inboundSchema,
-  CreateDeploymentServicesFunctions,
-  CreateDeploymentServicesFunctions$inboundSchema,
-  CreateDeploymentServicesHeaders,
-  CreateDeploymentServicesHeaders$inboundSchema,
-  CreateDeploymentServicesRedirects,
-  CreateDeploymentServicesRedirects$inboundSchema,
-  ResponseBodyRoutes,
-  ResponseBodyRoutes$inboundSchema,
-  ServicesBindings,
-  ServicesBindings$inboundSchema,
-  ServicesRewrites,
-  ServicesRewrites$inboundSchema,
-} from "./createdeploymentrouteslocale.js";
-import {
+  CreateDeploymentResponseBodyChecksConclusion,
+  CreateDeploymentResponseBodyChecksConclusion$inboundSchema,
+  CreateDeploymentResponseBodyChecksState,
+  CreateDeploymentResponseBodyChecksState$inboundSchema,
   CreateDeploymentResponseBodyCreator,
   CreateDeploymentResponseBodyCreator$inboundSchema,
   CreateDeploymentResponseBodyCustomEnvironment,
@@ -46,14 +22,8 @@ import {
   CreateDeploymentResponseBodyDeploymentsAliasError$inboundSchema,
   CreateDeploymentResponseBodyDeploymentsAliasWarning,
   CreateDeploymentResponseBodyDeploymentsAliasWarning$inboundSchema,
-  CreateDeploymentResponseBodyDeploymentsChecksConclusion,
-  CreateDeploymentResponseBodyDeploymentsChecksConclusion$inboundSchema,
-  CreateDeploymentResponseBodyDeploymentsChecksState,
-  CreateDeploymentResponseBodyDeploymentsChecksState$inboundSchema,
   CreateDeploymentResponseBodyDeploymentsReadyState,
   CreateDeploymentResponseBodyDeploymentsReadyState$inboundSchema,
-  CreateDeploymentResponseBodyDeploymentsReadySubstate,
-  CreateDeploymentResponseBodyDeploymentsReadySubstate$inboundSchema,
   CreateDeploymentResponseBodyDeploymentsTarget,
   CreateDeploymentResponseBodyDeploymentsTarget$inboundSchema,
   CreateDeploymentResponseBodyGitSource,
@@ -72,6 +42,8 @@ import {
   CreateDeploymentResponseBodyProject$inboundSchema,
   CreateDeploymentResponseBodyProjectSettings,
   CreateDeploymentResponseBodyProjectSettings$inboundSchema,
+  CreateDeploymentResponseBodyReadySubstate,
+  CreateDeploymentResponseBodyReadySubstate$inboundSchema,
   CreateDeploymentResponseBodySource,
   CreateDeploymentResponseBodySource$inboundSchema,
   CreateDeploymentResponseBodyStatus,
@@ -96,85 +68,27 @@ import {
   ResponseBodyIntegrations$inboundSchema,
   ResponseBodyPlan,
   ResponseBodyPlan$inboundSchema,
-  ResponseBodyPlatform,
-  ResponseBodyPlatform$inboundSchema,
-} from "./createdeploymentvaluedeploymentsresponse2.js";
+} from "./createdeploymentroutesmitigate.js";
+import {
+  CreateDeploymentServicesDeploymentsBuilder,
+  CreateDeploymentServicesDeploymentsBuilder$inboundSchema,
+  CreateDeploymentServicesFunctions,
+  CreateDeploymentServicesFunctions$inboundSchema,
+  CreateDeploymentServicesHeaders,
+  CreateDeploymentServicesHeaders$inboundSchema,
+  CreateDeploymentServicesRedirects,
+  CreateDeploymentServicesRedirects$inboundSchema,
+  CreateDeploymentServicesRoutes,
+  CreateDeploymentServicesRoutes$inboundSchema,
+  ResponseBodyRoutes,
+  ResponseBodyRoutes$inboundSchema,
+  ServicesBindings,
+  ServicesBindings$inboundSchema,
+  ServicesRewrites,
+  ServicesRewrites$inboundSchema,
+} from "./createdeploymentservicesroutes.js";
 import { FlagJSONValue, FlagJSONValue$inboundSchema } from "./flagjsonvalue.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-
-/**
- * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
- */
-export const CreateDeploymentDestinationDeploymentsResponseType = {
-  Service: "service",
-} as const;
-/**
- * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
- */
-export type CreateDeploymentDestinationDeploymentsResponseType = ClosedEnum<
-  typeof CreateDeploymentDestinationDeploymentsResponseType
->;
-
-export type CreateDeploymentDestinationDeploymentsResponse2 = {
-  /**
-   * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
-   */
-  type?: CreateDeploymentDestinationDeploymentsResponseType | undefined;
-  service: string;
-  /**
-   * Routing-only path used to select a route inside the target service.
-   */
-  path?: string | undefined;
-};
-
-export type CreateDeploymentRoutesDeploymentsDestination =
-  | CreateDeploymentDestinationDeploymentsResponse2
-  | string;
-
-export type CreateDeploymentRoutesDeployments1 = {
-  src: string;
-  dest?: string | undefined;
-  headers?: { [k: string]: string } | undefined;
-  methods?: Array<string> | undefined;
-  continue?: boolean | undefined;
-  override?: boolean | undefined;
-  caseSensitive?: boolean | undefined;
-  check?: boolean | undefined;
-  important?: boolean | undefined;
-  status?: number | undefined;
-  has?: Array<CreateDeploymentRoutesDeploymentsHas> | undefined;
-  missing?: Array<CreateDeploymentRoutesDeploymentsMissing> | undefined;
-  mitigate?: CreateDeploymentRoutesDeploymentsMitigate | undefined;
-  transforms?: Array<CreateDeploymentRoutesDeploymentsTransforms> | undefined;
-  env?: Array<string> | undefined;
-  locale?: CreateDeploymentRoutesLocale | undefined;
-  /**
-   * Aliases for `src`, `dest`, and `status`. These provide consistency with the `rewrites`, `redirects`, and `headers` fields which use `source`, `destination`, and `statusCode`. During normalization, the string forms are converted to their canonical forms (`src`, `dest`, `status`) and stripped from the route object. `destination` may also be a service-targeted object, in which case routing is delegated into the named service's internal route table and the object is preserved as-is (not folded into `dest`).
-   */
-  source?: string | undefined;
-  destination?:
-    | CreateDeploymentDestinationDeploymentsResponse2
-    | string
-    | undefined;
-  statusCode?: number | undefined;
-  /**
-   * A middleware key within the `output` key under the build result. Overrides a `middleware` definition.
-   */
-  middlewarePath?: string | undefined;
-  /**
-   * The original middleware matchers.
-   */
-  middlewareRawSrc?: Array<string> | undefined;
-  /**
-   * A middleware index in the `middleware` key under the build result
-   */
-  middleware?: number | undefined;
-  respectOriginCacheControl?: boolean | undefined;
-};
-
-export type CreateDeploymentServicesRoutes =
-  | CreateDeploymentRoutesDeployments1
-  | CreateDeploymentRoutesDeployments2;
 
 /**
  * Services detected during build from vercel.json experimentalServices or auto-detected from project structure. Used to inject service URLs as environment variables at runtime.
@@ -216,11 +130,7 @@ export type CreateDeploymentServices2 = {
   headers?: Array<CreateDeploymentServicesHeaders> | undefined;
   redirects?: Array<CreateDeploymentServicesRedirects> | undefined;
   rewrites?: Array<ServicesRewrites> | undefined;
-  routes?:
-    | Array<
-      CreateDeploymentRoutesDeployments1 | CreateDeploymentRoutesDeployments2
-    >
-    | undefined;
+  routes?: Array<CreateDeploymentServicesRoutes> | undefined;
   cleanUrls?: boolean | undefined;
   trailingSlash?: boolean | undefined;
 };
@@ -636,6 +546,80 @@ export type ResponseBodyMicrofrontends =
   | CreateDeploymentMicrofrontends2
   | CreateDeploymentMicrofrontends1;
 
+/**
+ * The external platform that created the deployment (e.g. its display name).
+ */
+export type CreateDeploymentResponseBodyDeploymentsSource = {
+  /**
+   * Display name of the platform.
+   */
+  name: string;
+};
+
+/**
+ * Whether the value is an opaque identifier or a URL.
+ */
+export const CreateDeploymentResponseBodyDeploymentsType = {
+  Id: "id",
+  Url: "url",
+} as const;
+/**
+ * Whether the value is an opaque identifier or a URL.
+ */
+export type CreateDeploymentResponseBodyDeploymentsType = ClosedEnum<
+  typeof CreateDeploymentResponseBodyDeploymentsType
+>;
+
+/**
+ * Reference back to the entity on the platform that initiated the deployment.
+ */
+export type ResponseBodyOrigin = {
+  /**
+   * Whether the value is an opaque identifier or a URL.
+   */
+  type: CreateDeploymentResponseBodyDeploymentsType;
+  /**
+   * The identifier or URL pointing to the originating entity.
+   */
+  value: string;
+};
+
+/**
+ * The user on the external platform who triggered the deployment.
+ */
+export type CreateDeploymentResponseBodyDeploymentsCreator = {
+  /**
+   * Display name of the platform user.
+   */
+  name: string;
+  /**
+   * URL of the platform user's avatar image.
+   */
+  avatar?: string | undefined;
+};
+
+/**
+ * Metadata about the source platform that triggered the deployment. Allows us to map a deployment back to a platform (e.g. the chat that created it)
+ */
+export type ResponseBodyPlatform = {
+  /**
+   * The external platform that created the deployment (e.g. its display name).
+   */
+  source: CreateDeploymentResponseBodyDeploymentsSource;
+  /**
+   * Reference back to the entity on the platform that initiated the deployment.
+   */
+  origin: ResponseBodyOrigin;
+  /**
+   * The user on the external platform who triggered the deployment.
+   */
+  creator: CreateDeploymentResponseBodyDeploymentsCreator;
+  /**
+   * Arbitrary key-value metadata provided by the platform.
+   */
+  meta?: { [k: string]: string } | undefined;
+};
+
 export const ResponseBodyFunctionType = {
   Fluid: "fluid",
   Standard: "standard",
@@ -965,32 +949,13 @@ export type CreateDeploymentResponseBody2 = {
    */
   id: string;
   /**
-   * The name of the project associated with the deployment at the time that the deployment was created
-   */
-  name: string;
-  /**
-   * A string with the unique URL of the deployment
-   */
-  url: string;
-  /**
    * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
    */
   target?: CreateDeploymentResponseBodyDeploymentsTarget | null | undefined;
   /**
-   * A number containing the date when the deployment was created in milliseconds
-   */
-  createdAt: number;
-  /**
    * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
    */
   readyState: CreateDeploymentResponseBodyDeploymentsReadyState;
-  /**
-   * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
-   */
-  readySubstate?:
-    | CreateDeploymentResponseBodyDeploymentsReadySubstate
-    | undefined;
-  prebuilt?: boolean | undefined;
   /**
    * An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null`
    */
@@ -1002,22 +967,26 @@ export type CreateDeploymentResponseBody2 = {
     | CreateDeploymentResponseBodyDeploymentsAliasWarning
     | null
     | undefined;
-  aliasFinal?: string | null | undefined;
-  checksState?: CreateDeploymentResponseBodyDeploymentsChecksState | undefined;
-  checksConclusion?:
-    | CreateDeploymentResponseBodyDeploymentsChecksConclusion
-    | undefined;
   errorCode?: string | undefined;
-  errorLink?: string | undefined;
   errorMessage?: string | null | undefined;
-  errorStep?: string | undefined;
+  /**
+   * A number containing the date when the deployment was created in milliseconds
+   */
+  createdAt: number;
+  /**
+   * The name of the project associated with the deployment at the time that the deployment was created
+   */
+  name: string;
   type: CreateDeploymentResponseBodyType;
+  aliasFinal?: string | null | undefined;
   /**
    * applies to custom domains only, defaults to `true`
    */
   autoAssignCustomDomains?: boolean | undefined;
   automaticAliases?: Array<string> | undefined;
   buildErrorAt?: number | undefined;
+  checksState?: CreateDeploymentResponseBodyChecksState | undefined;
+  checksConclusion?: CreateDeploymentResponseBodyChecksConclusion | undefined;
   /**
    * A number containing the date when the deployment was deleted at milliseconds
    */
@@ -1027,6 +996,8 @@ export type CreateDeploymentResponseBody2 = {
    */
   defaultRoute?: string | undefined;
   canceledAt?: number | undefined;
+  errorLink?: string | undefined;
+  errorStep?: string | undefined;
   /**
    * Since November 2023 this field defines a set of regions that we will deploy the lambda to passively Lambdas will be deployed to these regions but only invoked if all of the primary `regions` are marked as out of service
    */
@@ -1048,6 +1019,11 @@ export type CreateDeploymentResponseBody2 = {
    * The public project information associated with the deployment.
    */
   project?: CreateDeploymentResponseBodyProject | undefined;
+  prebuilt?: boolean | undefined;
+  /**
+   * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
+   */
+  readySubstate?: CreateDeploymentResponseBodyReadySubstate | undefined;
   /**
    * The regions the deployment exists in
    */
@@ -1065,6 +1041,10 @@ export type CreateDeploymentResponseBody2 = {
    */
   undeletedAt?: number | undefined;
   /**
+   * A string with the unique URL of the deployment
+   */
+  url: string;
+  /**
    * Since January 2025 User-configured deployment ID for skew protection with pre-built deployments. This is set when users configure a custom deploymentId in their next.config.js file. This allows Next.js to use skew protection even when deployments are pre-built outside of Vercel's build system.
    */
   userConfiguredDeploymentId?: string | undefined;
@@ -1075,10 +1055,6 @@ export type CreateDeploymentResponseBody2 = {
   oidcTokenClaims?: CreateDeploymentResponseBodyOidcTokenClaims | undefined;
   projectId: string;
   plan: ResponseBodyPlan;
-  /**
-   * Metadata about the source platform that triggered the deployment. Allows us to map a deployment back to a platform (e.g. the chat that created it)
-   */
-  platform?: ResponseBodyPlatform | undefined;
   connectBuildsEnabled?: boolean | undefined;
   connectConfigurationId?: string | undefined;
   createdIn: string;
@@ -1110,6 +1086,10 @@ export type CreateDeploymentResponseBody2 = {
     | CreateDeploymentMicrofrontends1
     | undefined;
   /**
+   * Metadata about the source platform that triggered the deployment. Allows us to map a deployment back to a platform (e.g. the chat that created it)
+   */
+  platform?: ResponseBodyPlatform | undefined;
+  /**
    * Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured
    */
   config?: ResponseBodyConfig | undefined;
@@ -1122,13 +1102,6 @@ export type CreateDeploymentResponseBody2 = {
    * Attribution metadata for the deployment, linking commit author to git and Vercel users. Only populated when the `enable-deployment-attribution` flag is enabled.
    */
   attribution?: ResponseBodyAttribution | undefined;
-};
-
-export type ResponseBodyAnonymous = {
-  /**
-   * When the anonymous project and its token expire, in milliseconds.
-   */
-  expiresAt: number;
 };
 
 /**
@@ -1165,21 +1138,6 @@ export type CreateDeploymentResponseBodyReadyState = ClosedEnum<
 >;
 
 /**
- * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
- */
-export const CreateDeploymentResponseBodyReadySubstate = {
-  Promoted: "PROMOTED",
-  Rolling: "ROLLING",
-  Staged: "STAGED",
-} as const;
-/**
- * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
- */
-export type CreateDeploymentResponseBodyReadySubstate = ClosedEnum<
-  typeof CreateDeploymentResponseBodyReadySubstate
->;
-
-/**
  * An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null`
  */
 export type CreateDeploymentResponseBodyAliasError = {
@@ -1194,225 +1152,42 @@ export type CreateDeploymentResponseBodyAliasWarning = {
   action?: string | undefined;
 };
 
-export const CreateDeploymentResponseBodyChecksState = {
-  Completed: "completed",
-  Registered: "registered",
-  Running: "running",
-} as const;
-export type CreateDeploymentResponseBodyChecksState = ClosedEnum<
-  typeof CreateDeploymentResponseBodyChecksState
->;
-
-export const CreateDeploymentResponseBodyChecksConclusion = {
-  Canceled: "canceled",
-  Failed: "failed",
-  Skipped: "skipped",
-  Succeeded: "succeeded",
-} as const;
-export type CreateDeploymentResponseBodyChecksConclusion = ClosedEnum<
-  typeof CreateDeploymentResponseBodyChecksConclusion
->;
-
 /**
- * Returns the reduced deployment view for anonymous (`vcn_`) callers, with an `anonymous.expiresAt` marking when the project and its token expire. Pool-team details are withheld.
+ * Returns the reduced deployment view for anonymous (`vcn_`) callers. Pool-team details are withheld.
  */
 export type CreateDeploymentResponseBody1 = {
   alias?: Array<string> | undefined;
   aliasAssigned: boolean;
-  readyStateReason?: string | undefined;
-  anonymous: ResponseBodyAnonymous;
   /**
    * A string holding the unique ID of the deployment
    */
   id: string;
   /**
-   * The name of the project associated with the deployment at the time that the deployment was created
-   */
-  name: string;
-  /**
-   * A string with the unique URL of the deployment
-   */
-  url: string;
-  projectId: string;
-  /**
    * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
    */
   target?: CreateDeploymentResponseBodyTarget | null | undefined;
-  /**
-   * A number containing the date when the deployment was created in milliseconds
-   */
-  createdAt: number;
   /**
    * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
    */
   readyState: CreateDeploymentResponseBodyReadyState;
   /**
-   * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
-   */
-  readySubstate?: CreateDeploymentResponseBodyReadySubstate | undefined;
-  prebuilt?: boolean | undefined;
-  /**
    * An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null`
    */
   aliasError?: CreateDeploymentResponseBodyAliasError | null | undefined;
   aliasWarning?: CreateDeploymentResponseBodyAliasWarning | null | undefined;
-  aliasFinal?: string | null | undefined;
-  checksState?: CreateDeploymentResponseBodyChecksState | undefined;
-  checksConclusion?: CreateDeploymentResponseBodyChecksConclusion | undefined;
   errorCode?: string | undefined;
-  errorLink?: string | undefined;
   errorMessage?: string | null | undefined;
-  errorStep?: string | undefined;
 };
 
 /**
  * Returns the newly created deployment object. Poll `readyState` to track build progress. See https://vercel.com/docs/deployments/deployment-states for possible states.
  *
  * @remarks
- * Returns the reduced deployment view for anonymous (`vcn_`) callers, with an `anonymous.expiresAt` marking when the project and its token expire. Pool-team details are withheld.
+ * Returns the reduced deployment view for anonymous (`vcn_`) callers. Pool-team details are withheld.
  */
 export type CreateDeploymentResponseBody =
   | CreateDeploymentResponseBody2
   | CreateDeploymentResponseBody1;
-
-/** @internal */
-export const CreateDeploymentDestinationDeploymentsResponseType$inboundSchema:
-  z.ZodNativeEnum<typeof CreateDeploymentDestinationDeploymentsResponseType> = z
-    .nativeEnum(CreateDeploymentDestinationDeploymentsResponseType);
-
-/** @internal */
-export const CreateDeploymentDestinationDeploymentsResponse2$inboundSchema:
-  z.ZodType<
-    CreateDeploymentDestinationDeploymentsResponse2,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    type: types.optional(
-      CreateDeploymentDestinationDeploymentsResponseType$inboundSchema,
-    ),
-    service: types.string(),
-    path: types.optional(types.string()),
-  });
-
-export function createDeploymentDestinationDeploymentsResponse2FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  CreateDeploymentDestinationDeploymentsResponse2,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateDeploymentDestinationDeploymentsResponse2$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'CreateDeploymentDestinationDeploymentsResponse2' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateDeploymentRoutesDeploymentsDestination$inboundSchema:
-  z.ZodType<
-    CreateDeploymentRoutesDeploymentsDestination,
-    z.ZodTypeDef,
-    unknown
-  > = smartUnion([
-    z.lazy(() => CreateDeploymentDestinationDeploymentsResponse2$inboundSchema),
-    types.string(),
-  ]);
-
-export function createDeploymentRoutesDeploymentsDestinationFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  CreateDeploymentRoutesDeploymentsDestination,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateDeploymentRoutesDeploymentsDestination$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'CreateDeploymentRoutesDeploymentsDestination' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateDeploymentRoutesDeployments1$inboundSchema: z.ZodType<
-  CreateDeploymentRoutesDeployments1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  src: types.string(),
-  dest: types.optional(types.string()),
-  headers: types.optional(z.record(types.string())),
-  methods: types.optional(z.array(types.string())),
-  continue: types.optional(types.boolean()),
-  override: types.optional(types.boolean()),
-  caseSensitive: types.optional(types.boolean()),
-  check: types.optional(types.boolean()),
-  important: types.optional(types.boolean()),
-  status: types.optional(types.number()),
-  has: types.optional(
-    z.array(CreateDeploymentRoutesDeploymentsHas$inboundSchema),
-  ),
-  missing: types.optional(
-    z.array(CreateDeploymentRoutesDeploymentsMissing$inboundSchema),
-  ),
-  mitigate: types.optional(
-    CreateDeploymentRoutesDeploymentsMitigate$inboundSchema,
-  ),
-  transforms: types.optional(
-    z.array(CreateDeploymentRoutesDeploymentsTransforms$inboundSchema),
-  ),
-  env: types.optional(z.array(types.string())),
-  locale: types.optional(CreateDeploymentRoutesLocale$inboundSchema),
-  source: types.optional(types.string()),
-  destination: types.optional(
-    smartUnion([
-      z.lazy(() =>
-        CreateDeploymentDestinationDeploymentsResponse2$inboundSchema
-      ),
-      types.string(),
-    ]),
-  ),
-  statusCode: types.optional(types.number()),
-  middlewarePath: types.optional(types.string()),
-  middlewareRawSrc: types.optional(z.array(types.string())),
-  middleware: types.optional(types.number()),
-  respectOriginCacheControl: types.optional(types.boolean()),
-});
-
-export function createDeploymentRoutesDeployments1FromJSON(
-  jsonString: string,
-): SafeParseResult<CreateDeploymentRoutesDeployments1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateDeploymentRoutesDeployments1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateDeploymentRoutesDeployments1' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateDeploymentServicesRoutes$inboundSchema: z.ZodType<
-  CreateDeploymentServicesRoutes,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.lazy(() => CreateDeploymentRoutesDeployments1$inboundSchema),
-  CreateDeploymentRoutesDeployments2$inboundSchema,
-]);
-
-export function createDeploymentServicesRoutesFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateDeploymentServicesRoutes, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateDeploymentServicesRoutes$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateDeploymentServicesRoutes' from JSON`,
-  );
-}
 
 /** @internal */
 export const CreateDeploymentServices2$inboundSchema: z.ZodType<
@@ -1444,12 +1219,7 @@ export const CreateDeploymentServices2$inboundSchema: z.ZodType<
     z.array(CreateDeploymentServicesRedirects$inboundSchema),
   ),
   rewrites: types.optional(z.array(ServicesRewrites$inboundSchema)),
-  routes: types.optional(
-    z.array(smartUnion([
-      z.lazy(() => CreateDeploymentRoutesDeployments1$inboundSchema),
-      CreateDeploymentRoutesDeployments2$inboundSchema,
-    ])),
-  ),
+  routes: types.optional(z.array(CreateDeploymentServicesRoutes$inboundSchema)),
   cleanUrls: types.optional(types.boolean()),
   trailingSlash: types.optional(types.boolean()),
 });
@@ -2281,6 +2051,110 @@ export function responseBodyMicrofrontendsFromJSON(
 }
 
 /** @internal */
+export const CreateDeploymentResponseBodyDeploymentsSource$inboundSchema:
+  z.ZodType<
+    CreateDeploymentResponseBodyDeploymentsSource,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    name: types.string(),
+  });
+
+export function createDeploymentResponseBodyDeploymentsSourceFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateDeploymentResponseBodyDeploymentsSource,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateDeploymentResponseBodyDeploymentsSource$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateDeploymentResponseBodyDeploymentsSource' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateDeploymentResponseBodyDeploymentsType$inboundSchema:
+  z.ZodNativeEnum<typeof CreateDeploymentResponseBodyDeploymentsType> = z
+    .nativeEnum(CreateDeploymentResponseBodyDeploymentsType);
+
+/** @internal */
+export const ResponseBodyOrigin$inboundSchema: z.ZodType<
+  ResponseBodyOrigin,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: CreateDeploymentResponseBodyDeploymentsType$inboundSchema,
+  value: types.string(),
+});
+
+export function responseBodyOriginFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyOrigin, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyOrigin$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyOrigin' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateDeploymentResponseBodyDeploymentsCreator$inboundSchema:
+  z.ZodType<
+    CreateDeploymentResponseBodyDeploymentsCreator,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    name: types.string(),
+    avatar: types.optional(types.string()),
+  });
+
+export function createDeploymentResponseBodyDeploymentsCreatorFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateDeploymentResponseBodyDeploymentsCreator,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateDeploymentResponseBodyDeploymentsCreator$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateDeploymentResponseBodyDeploymentsCreator' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyPlatform$inboundSchema: z.ZodType<
+  ResponseBodyPlatform,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  source: z.lazy(() =>
+    CreateDeploymentResponseBodyDeploymentsSource$inboundSchema
+  ),
+  origin: z.lazy(() => ResponseBodyOrigin$inboundSchema),
+  creator: z.lazy(() =>
+    CreateDeploymentResponseBodyDeploymentsCreator$inboundSchema
+  ),
+  meta: types.optional(z.record(types.string())),
+});
+
+export function responseBodyPlatformFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyPlatform, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyPlatform$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyPlatform' from JSON`,
+  );
+}
+
+/** @internal */
 export const ResponseBodyFunctionType$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyFunctionType
 > = z.nativeEnum(ResponseBodyFunctionType);
@@ -2657,41 +2531,36 @@ export const CreateDeploymentResponseBody2$inboundSchema: z.ZodType<
   ),
   readyStateReason: types.optional(types.string()),
   id: types.string(),
-  name: types.string(),
-  url: types.string(),
   target: z.nullable(
     CreateDeploymentResponseBodyDeploymentsTarget$inboundSchema,
   ).optional(),
-  createdAt: types.number(),
   readyState: CreateDeploymentResponseBodyDeploymentsReadyState$inboundSchema,
-  readySubstate: types.optional(
-    CreateDeploymentResponseBodyDeploymentsReadySubstate$inboundSchema,
-  ),
-  prebuilt: types.optional(types.boolean()),
   aliasError: z.nullable(
     CreateDeploymentResponseBodyDeploymentsAliasError$inboundSchema,
   ).optional(),
   aliasWarning: z.nullable(
     CreateDeploymentResponseBodyDeploymentsAliasWarning$inboundSchema,
   ).optional(),
-  aliasFinal: z.nullable(types.string()).optional(),
-  checksState: types.optional(
-    CreateDeploymentResponseBodyDeploymentsChecksState$inboundSchema,
-  ),
-  checksConclusion: types.optional(
-    CreateDeploymentResponseBodyDeploymentsChecksConclusion$inboundSchema,
-  ),
   errorCode: types.optional(types.string()),
-  errorLink: types.optional(types.string()),
   errorMessage: z.nullable(types.string()).optional(),
-  errorStep: types.optional(types.string()),
+  createdAt: types.number(),
+  name: types.string(),
   type: CreateDeploymentResponseBodyType$inboundSchema,
+  aliasFinal: z.nullable(types.string()).optional(),
   autoAssignCustomDomains: types.optional(types.boolean()),
   automaticAliases: types.optional(z.array(types.string())),
   buildErrorAt: types.optional(types.number()),
+  checksState: types.optional(
+    CreateDeploymentResponseBodyChecksState$inboundSchema,
+  ),
+  checksConclusion: types.optional(
+    CreateDeploymentResponseBodyChecksConclusion$inboundSchema,
+  ),
   deletedAt: z.nullable(types.number()).optional(),
   defaultRoute: types.optional(types.string()),
   canceledAt: types.optional(types.number()),
+  errorLink: types.optional(types.string()),
+  errorStep: types.optional(types.string()),
   passiveRegions: types.optional(z.array(types.string())),
   gitSource: types.optional(
     CreateDeploymentResponseBodyGitSource$inboundSchema,
@@ -2705,10 +2574,15 @@ export const CreateDeploymentResponseBody2$inboundSchema: z.ZodType<
     CreateDeploymentResponseBodyNodeVersion$inboundSchema,
   ),
   project: types.optional(CreateDeploymentResponseBodyProject$inboundSchema),
+  prebuilt: types.optional(types.boolean()),
+  readySubstate: types.optional(
+    CreateDeploymentResponseBodyReadySubstate$inboundSchema,
+  ),
   regions: z.array(types.string()),
   softDeletedByRetention: types.optional(types.boolean()),
   source: types.optional(CreateDeploymentResponseBodySource$inboundSchema),
   undeletedAt: types.optional(types.number()),
+  url: types.string(),
   userConfiguredDeploymentId: types.optional(types.string()),
   version: types.number(),
   oidcTokenClaims: types.optional(
@@ -2716,7 +2590,6 @@ export const CreateDeploymentResponseBody2$inboundSchema: z.ZodType<
   ),
   projectId: types.string(),
   plan: ResponseBodyPlan$inboundSchema,
-  platform: types.optional(ResponseBodyPlatform$inboundSchema),
   connectBuildsEnabled: types.optional(types.boolean()),
   connectConfigurationId: types.optional(types.string()),
   createdIn: types.string(),
@@ -2755,6 +2628,7 @@ export const CreateDeploymentResponseBody2$inboundSchema: z.ZodType<
       z.lazy(() => CreateDeploymentMicrofrontends1$inboundSchema),
     ]),
   ),
+  platform: types.optional(z.lazy(() => ResponseBodyPlatform$inboundSchema)),
   config: types.optional(z.lazy(() => ResponseBodyConfig$inboundSchema)),
   checks: types.optional(
     z.lazy(() => CreateDeploymentResponseBodyChecks$inboundSchema),
@@ -2776,25 +2650,6 @@ export function createDeploymentResponseBody2FromJSON(
 }
 
 /** @internal */
-export const ResponseBodyAnonymous$inboundSchema: z.ZodType<
-  ResponseBodyAnonymous,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  expiresAt: types.number(),
-});
-
-export function responseBodyAnonymousFromJSON(
-  jsonString: string,
-): SafeParseResult<ResponseBodyAnonymous, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ResponseBodyAnonymous$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBodyAnonymous' from JSON`,
-  );
-}
-
-/** @internal */
 export const CreateDeploymentResponseBodyTarget$inboundSchema: z.ZodNativeEnum<
   typeof CreateDeploymentResponseBodyTarget
 > = z.nativeEnum(CreateDeploymentResponseBodyTarget);
@@ -2804,11 +2659,6 @@ export const CreateDeploymentResponseBodyReadyState$inboundSchema:
   z.ZodNativeEnum<typeof CreateDeploymentResponseBodyReadyState> = z.nativeEnum(
     CreateDeploymentResponseBodyReadyState,
   );
-
-/** @internal */
-export const CreateDeploymentResponseBodyReadySubstate$inboundSchema:
-  z.ZodNativeEnum<typeof CreateDeploymentResponseBodyReadySubstate> = z
-    .nativeEnum(CreateDeploymentResponseBodyReadySubstate);
 
 /** @internal */
 export const CreateDeploymentResponseBodyAliasError$inboundSchema: z.ZodType<
@@ -2860,16 +2710,6 @@ export function createDeploymentResponseBodyAliasWarningFromJSON(
 }
 
 /** @internal */
-export const CreateDeploymentResponseBodyChecksState$inboundSchema:
-  z.ZodNativeEnum<typeof CreateDeploymentResponseBodyChecksState> = z
-    .nativeEnum(CreateDeploymentResponseBodyChecksState);
-
-/** @internal */
-export const CreateDeploymentResponseBodyChecksConclusion$inboundSchema:
-  z.ZodNativeEnum<typeof CreateDeploymentResponseBodyChecksConclusion> = z
-    .nativeEnum(CreateDeploymentResponseBodyChecksConclusion);
-
-/** @internal */
 export const CreateDeploymentResponseBody1$inboundSchema: z.ZodType<
   CreateDeploymentResponseBody1,
   z.ZodTypeDef,
@@ -2877,37 +2717,18 @@ export const CreateDeploymentResponseBody1$inboundSchema: z.ZodType<
 > = z.object({
   alias: types.optional(z.array(types.string())),
   aliasAssigned: types.boolean(),
-  readyStateReason: types.optional(types.string()),
-  anonymous: z.lazy(() => ResponseBodyAnonymous$inboundSchema),
   id: types.string(),
-  name: types.string(),
-  url: types.string(),
-  projectId: types.string(),
   target: z.nullable(CreateDeploymentResponseBodyTarget$inboundSchema)
     .optional(),
-  createdAt: types.number(),
   readyState: CreateDeploymentResponseBodyReadyState$inboundSchema,
-  readySubstate: types.optional(
-    CreateDeploymentResponseBodyReadySubstate$inboundSchema,
-  ),
-  prebuilt: types.optional(types.boolean()),
   aliasError: z.nullable(
     z.lazy(() => CreateDeploymentResponseBodyAliasError$inboundSchema),
   ).optional(),
   aliasWarning: z.nullable(
     z.lazy(() => CreateDeploymentResponseBodyAliasWarning$inboundSchema),
   ).optional(),
-  aliasFinal: z.nullable(types.string()).optional(),
-  checksState: types.optional(
-    CreateDeploymentResponseBodyChecksState$inboundSchema,
-  ),
-  checksConclusion: types.optional(
-    CreateDeploymentResponseBodyChecksConclusion$inboundSchema,
-  ),
   errorCode: types.optional(types.string()),
-  errorLink: types.optional(types.string()),
   errorMessage: z.nullable(types.string()).optional(),
-  errorStep: types.optional(types.string()),
 });
 
 export function createDeploymentResponseBody1FromJSON(

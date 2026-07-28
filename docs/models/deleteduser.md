@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DeletedUser } from "@vercel/sdk/models/jobprovider.js";
+import { DeletedUser } from "@vercel/sdk/models/jobaction.js";
 
 let value: DeletedUser = {
   username: "Joanne.Bergnaum",

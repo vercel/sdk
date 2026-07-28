@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { EdgeMiddlewareInvocations } from "@vercel/sdk/models/onehundredandfortyfour.js";
+import { EdgeMiddlewareInvocations } from "@vercel/sdk/models/usereventpayloadconfigversion.js";
 
 let value: EdgeMiddlewareInvocations = {
   currentThreshold: 2265.31,

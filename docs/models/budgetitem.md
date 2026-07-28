@@ -5,7 +5,7 @@ Represents a budget for tracking and notifying teams on their spending.
 ## Example Usage
 
 ```typescript
-import { BudgetItem } from "@vercel/sdk/models/twohundredandeightyfour.js";
+import { BudgetItem } from "@vercel/sdk/models/twohundredandeightyfive.js";
 
 let value: BudgetItem = {
   type: "fixed",

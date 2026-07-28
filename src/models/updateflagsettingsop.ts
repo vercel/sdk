@@ -60,11 +60,6 @@ export type UpdateFlagSettingsFeatureFlagsTypeName = ClosedEnum<
   typeof UpdateFlagSettingsFeatureFlagsTypeName
 >;
 
-export type UpdateFlagSettingsFeatureFlagsConnections = {
-  edgeConfigId: string;
-  edgeConfigItemKey: string;
-};
-
 export type UpdateFlagSettingsFeatureFlagsLabels = {
   label: string;
   value: string;
@@ -91,16 +86,12 @@ export type UpdateFlagSettingsFeatureFlagsMetadata = {
   configUpdatedAt?: number | undefined;
 };
 
-/**
- * Syncs direct the synchronization of Flags to Edge Configs
- */
 export type UpdateFlagSettingsFeatureFlagsResponseBody = {
   typeName: UpdateFlagSettingsFeatureFlagsTypeName;
   projectId: string;
   ownerId?: string | undefined;
   enabled: boolean;
   environments: Array<string>;
-  connections?: Array<UpdateFlagSettingsFeatureFlagsConnections> | undefined;
   entities: Array<UpdateFlagSettingsFeatureFlagsResponseEntities>;
   createdAt?: number | undefined;
   updatedAt?: number | undefined;
@@ -113,11 +104,6 @@ export const UpdateFlagSettingsTypeName = {
 export type UpdateFlagSettingsTypeName = ClosedEnum<
   typeof UpdateFlagSettingsTypeName
 >;
-
-export type UpdateFlagSettingsConnections = {
-  edgeConfigId: string;
-  edgeConfigItemKey: string;
-};
 
 export type UpdateFlagSettingsLabels = {
   label: string;
@@ -145,16 +131,12 @@ export type UpdateFlagSettingsMetadata = {
   configUpdatedAt?: number | undefined;
 };
 
-/**
- * Syncs direct the synchronization of Flags to Edge Configs
- */
 export type UpdateFlagSettingsResponseBody = {
   typeName: UpdateFlagSettingsTypeName;
   projectId: string;
   ownerId?: string | undefined;
   enabled: boolean;
   environments: Array<string>;
-  connections?: Array<UpdateFlagSettingsConnections> | undefined;
   entities: Array<UpdateFlagSettingsFeatureFlagsEntities>;
   createdAt?: number | undefined;
   updatedAt?: number | undefined;
@@ -302,32 +284,6 @@ export const UpdateFlagSettingsFeatureFlagsTypeName$inboundSchema:
   );
 
 /** @internal */
-export const UpdateFlagSettingsFeatureFlagsConnections$inboundSchema: z.ZodType<
-  UpdateFlagSettingsFeatureFlagsConnections,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  edgeConfigId: types.string(),
-  edgeConfigItemKey: types.string(),
-});
-
-export function updateFlagSettingsFeatureFlagsConnectionsFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  UpdateFlagSettingsFeatureFlagsConnections,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateFlagSettingsFeatureFlagsConnections$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'UpdateFlagSettingsFeatureFlagsConnections' from JSON`,
-  );
-}
-
-/** @internal */
 export const UpdateFlagSettingsFeatureFlagsLabels$inboundSchema: z.ZodType<
   UpdateFlagSettingsFeatureFlagsLabels,
   z.ZodTypeDef,
@@ -441,11 +397,6 @@ export const UpdateFlagSettingsFeatureFlagsResponseBody$inboundSchema:
       ownerId: types.optional(types.string()),
       enabled: types.boolean(),
       environments: z.array(types.string()),
-      connections: types.optional(
-        z.array(z.lazy(() =>
-          UpdateFlagSettingsFeatureFlagsConnections$inboundSchema
-        )),
-      ),
       entities: z.array(
         z.lazy(() =>
           UpdateFlagSettingsFeatureFlagsResponseEntities$inboundSchema
@@ -478,26 +429,6 @@ export function updateFlagSettingsFeatureFlagsResponseBodyFromJSON(
 export const UpdateFlagSettingsTypeName$inboundSchema: z.ZodNativeEnum<
   typeof UpdateFlagSettingsTypeName
 > = z.nativeEnum(UpdateFlagSettingsTypeName);
-
-/** @internal */
-export const UpdateFlagSettingsConnections$inboundSchema: z.ZodType<
-  UpdateFlagSettingsConnections,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  edgeConfigId: types.string(),
-  edgeConfigItemKey: types.string(),
-});
-
-export function updateFlagSettingsConnectionsFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFlagSettingsConnections, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFlagSettingsConnections$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFlagSettingsConnections' from JSON`,
-  );
-}
 
 /** @internal */
 export const UpdateFlagSettingsLabels$inboundSchema: z.ZodType<
@@ -599,9 +530,6 @@ export const UpdateFlagSettingsResponseBody$inboundSchema: z.ZodType<
   ownerId: types.optional(types.string()),
   enabled: types.boolean(),
   environments: z.array(types.string()),
-  connections: types.optional(
-    z.array(z.lazy(() => UpdateFlagSettingsConnections$inboundSchema)),
-  ),
   entities: z.array(
     z.lazy(() => UpdateFlagSettingsFeatureFlagsEntities$inboundSchema),
   ),

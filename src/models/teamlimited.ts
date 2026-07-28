@@ -34,10 +34,6 @@ export type TeamLimitedSyncState = ClosedEnum<typeof TeamLimitedSyncState>;
  */
 export type TeamLimitedConnection = {
   /**
-   * Current status of the connection.
-   */
-  status: string;
-  /**
    * The Identity Provider "type", for example Okta.
    */
   type: string;
@@ -61,6 +57,7 @@ export type TeamLimitedConnection = {
    * Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
    */
   syncState?: TeamLimitedSyncState | undefined;
+  status: string;
 };
 
 /**
@@ -268,9 +265,13 @@ export type TeamLimited = {
    */
   createdAt: number;
   /**
-   * The organizationId for child teams created under an organization.
+   * The organizationId for teams that belong to an organization (set on both the organization's root team and its child teams).
    */
   parentId?: string | undefined;
+  /**
+   * Best-effort ID of the organization’s root billing team. When present, compare `orgRootTeamId === id` to identify the root team. It may be omitted even when `parentId` is set if organization resolution fails or the referenced organization is missing. Always omitted for non-organization teams.
+   */
+  orgRootTeamId?: string | undefined;
 };
 
 /** @internal */
@@ -288,13 +289,13 @@ export const TeamLimitedConnection$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  status: types.string(),
   type: types.string(),
   state: types.string(),
   connectedAt: types.number(),
   lastReceivedWebhookEvent: types.optional(types.number()),
   lastSyncedAt: types.optional(types.number()),
   syncState: types.optional(TeamLimitedSyncState$inboundSchema),
+  status: types.string(),
 });
 
 export function teamLimitedConnectionFromJSON(
@@ -491,6 +492,7 @@ export const TeamLimited$inboundSchema: z.ZodType<
   membership: types.optional(z.lazy(() => TeamLimitedMembership$inboundSchema)),
   createdAt: types.number(),
   parentId: types.optional(types.string()),
+  orgRootTeamId: types.optional(types.string()),
 });
 
 export function teamLimitedFromJSON(

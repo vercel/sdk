@@ -1,7 +1,5 @@
 # UpdateFlagSettingsResponseBody
 
-Syncs direct the synchronization of Flags to Edge Configs
-
 ## Example Usage
 
 ```typescript
@@ -33,7 +31,6 @@ let value: UpdateFlagSettingsResponseBody = {
 | `ownerId`                                                                                              | *string*                                                                                               | :heavy_minus_sign:                                                                                     | N/A                                                                                                    |
 | `enabled`                                                                                              | *boolean*                                                                                              | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
 | `environments`                                                                                         | *string*[]                                                                                             | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
-| `connections`                                                                                          | [models.UpdateFlagSettingsConnections](../models/updateflagsettingsconnections.md)[]                   | :heavy_minus_sign:                                                                                     | N/A                                                                                                    |
 | `entities`                                                                                             | [models.UpdateFlagSettingsFeatureFlagsEntities](../models/updateflagsettingsfeatureflagsentities.md)[] | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
 | `createdAt`                                                                                            | *number*                                                                                               | :heavy_minus_sign:                                                                                     | N/A                                                                                                    |
 | `updatedAt`                                                                                            | *number*                                                                                               | :heavy_minus_sign:                                                                                     | N/A                                                                                                    |

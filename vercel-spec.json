@@ -15600,7 +15600,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Returns a reduced view of the deployment with public information only. Private fields are omitted when the requester is not the deployment owner.\nReturns the deployment object for the authenticated owner, including private fields such as environment variables, build log URLs, and internal metadata.\nReturns the reduced deployment view for anonymous (`vcn_`) callers, with an `anonymous.expiresAt` marking when the project and its token expire. Pool-team details are withheld.",
+            "description": "Returns a reduced view of the deployment with public information only. Private fields are omitted when the requester is not the deployment owner.\nReturns the deployment object for the authenticated owner, including private fields such as environment variables, build log URLs, and internal metadata.\nReturns the reduced deployment view for anonymous (`vcn_`) callers. Pool-team details are withheld.",
             "content": {
               "application/json": {
                 "schema": {
@@ -15620,39 +15620,10 @@
                             true
                           ]
                         },
-                        "readyStateReason": {
-                          "type": "string"
-                        },
-                        "anonymous": {
-                          "properties": {
-                            "expiresAt": {
-                              "type": "number",
-                              "description": "When the anonymous project and its token expire, in milliseconds.",
-                              "example": 1753120000000
-                            }
-                          },
-                          "required": [
-                            "expiresAt"
-                          ],
-                          "type": "object"
-                        },
                         "id": {
                           "type": "string",
                           "description": "A string holding the unique ID of the deployment",
                           "example": "dpl_89qyp1cskzkLrVicDaZoDbjyHuDJ"
-                        },
-                        "name": {
-                          "type": "string",
-                          "description": "The name of the project associated with the deployment at the time that the deployment was created",
-                          "example": "my-project"
-                        },
-                        "url": {
-                          "type": "string",
-                          "description": "A string with the unique URL of the deployment",
-                          "example": "my-instant-deployment-3ij3cxz9qr.now.sh"
-                        },
-                        "projectId": {
-                          "type": "string"
                         },
                         "target": {
                           "nullable": true,
@@ -15664,11 +15635,6 @@
                           ],
                           "description": "If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the \"preview\" deployment.",
                           "example": null
-                        },
-                        "createdAt": {
-                          "type": "number",
-                          "description": "A number containing the date when the deployment was created in milliseconds",
-                          "example": 1540257589405
                         },
                         "readyState": {
                           "type": "string",
@@ -15683,22 +15649,6 @@
                           ],
                           "description": "The state of the deployment depending on the process of deploying, or if it is ready or in an error state",
                           "example": "READY"
-                        },
-                        "readySubstate": {
-                          "type": "string",
-                          "enum": [
-                            "PROMOTED",
-                            "ROLLING",
-                            "STAGED"
-                          ],
-                          "description": "Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic"
-                        },
-                        "prebuilt": {
-                          "type": "boolean",
-                          "enum": [
-                            false,
-                            true
-                          ]
                         },
                         "aliasError": {
                           "nullable": true,
@@ -15740,53 +15690,21 @@
                           ],
                           "type": "object"
                         },
-                        "aliasFinal": {
-                          "nullable": true,
-                          "type": "string"
-                        },
-                        "checksState": {
-                          "type": "string",
-                          "enum": [
-                            "completed",
-                            "registered",
-                            "running"
-                          ]
-                        },
-                        "checksConclusion": {
-                          "type": "string",
-                          "enum": [
-                            "canceled",
-                            "failed",
-                            "skipped",
-                            "succeeded"
-                          ]
-                        },
                         "errorCode": {
-                          "type": "string"
-                        },
-                        "errorLink": {
                           "type": "string"
                         },
                         "errorMessage": {
                           "nullable": true,
                           "type": "string"
-                        },
-                        "errorStep": {
-                          "type": "string"
                         }
                       },
                       "required": [
                         "aliasAssigned",
-                        "anonymous",
-                        "createdAt",
                         "id",
-                        "name",
-                        "projectId",
-                        "readyState",
-                        "url"
+                        "readyState"
                       ],
                       "type": "object",
-                      "description": "Returns the reduced deployment view for anonymous (`vcn_`) callers, with an `anonymous.expiresAt` marking when the project and its token expire. Pool-team details are withheld."
+                      "description": "Returns the reduced deployment view for anonymous (`vcn_`) callers. Pool-team details are withheld."
                     },
                     {
                       "properties": {
@@ -16263,9 +16181,6 @@
                               "id": {
                                 "type": "string"
                               },
-                              "createdAt": {
-                                "type": "number"
-                              },
                               "readyState": {
                                 "type": "string",
                                 "enum": [
@@ -16274,6 +16189,9 @@
                                   "INITIALIZING",
                                   "READY"
                                 ]
+                              },
+                              "createdAt": {
+                                "type": "number"
                               },
                               "entrypoint": {
                                 "nullable": true,
@@ -16576,16 +16494,6 @@
                           "description": "A string holding the unique ID of the deployment",
                           "example": "dpl_89qyp1cskzkLrVicDaZoDbjyHuDJ"
                         },
-                        "name": {
-                          "type": "string",
-                          "description": "The name of the project associated with the deployment at the time that the deployment was created",
-                          "example": "my-project"
-                        },
-                        "url": {
-                          "type": "string",
-                          "description": "A string with the unique URL of the deployment",
-                          "example": "my-instant-deployment-3ij3cxz9qr.now.sh"
-                        },
                         "target": {
                           "nullable": true,
                           "type": "string",
@@ -16596,11 +16504,6 @@
                           ],
                           "description": "If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the \"preview\" deployment.",
                           "example": null
-                        },
-                        "createdAt": {
-                          "type": "number",
-                          "description": "A number containing the date when the deployment was created in milliseconds",
-                          "example": 1540257589405
                         },
                         "readyState": {
                           "type": "string",
@@ -16615,22 +16518,6 @@
                           ],
                           "description": "The state of the deployment depending on the process of deploying, or if it is ready or in an error state",
                           "example": "READY"
-                        },
-                        "readySubstate": {
-                          "type": "string",
-                          "enum": [
-                            "PROMOTED",
-                            "ROLLING",
-                            "STAGED"
-                          ],
-                          "description": "Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic"
-                        },
-                        "prebuilt": {
-                          "type": "boolean",
-                          "enum": [
-                            false,
-                            true
-                          ]
                         },
                         "aliasError": {
                           "nullable": true,
@@ -16672,45 +16559,32 @@
                           ],
                           "type": "object"
                         },
-                        "aliasFinal": {
-                          "nullable": true,
-                          "type": "string"
-                        },
-                        "checksState": {
-                          "type": "string",
-                          "enum": [
-                            "completed",
-                            "registered",
-                            "running"
-                          ]
-                        },
-                        "checksConclusion": {
-                          "type": "string",
-                          "enum": [
-                            "canceled",
-                            "failed",
-                            "skipped",
-                            "succeeded"
-                          ]
-                        },
                         "errorCode": {
-                          "type": "string"
-                        },
-                        "errorLink": {
                           "type": "string"
                         },
                         "errorMessage": {
                           "nullable": true,
                           "type": "string"
                         },
-                        "errorStep": {
-                          "type": "string"
+                        "createdAt": {
+                          "type": "number",
+                          "description": "A number containing the date when the deployment was created in milliseconds",
+                          "example": 1540257589405
+                        },
+                        "name": {
+                          "type": "string",
+                          "description": "The name of the project associated with the deployment at the time that the deployment was created",
+                          "example": "my-project"
                         },
                         "type": {
                           "type": "string",
                           "enum": [
                             "LAMBDAS"
                           ]
+                        },
+                        "aliasFinal": {
+                          "nullable": true,
+                          "type": "string"
                         },
                         "autoAssignCustomDomains": {
                           "type": "boolean",
@@ -16729,6 +16603,23 @@
                         "buildErrorAt": {
                           "type": "number"
                         },
+                        "checksState": {
+                          "type": "string",
+                          "enum": [
+                            "completed",
+                            "registered",
+                            "running"
+                          ]
+                        },
+                        "checksConclusion": {
+                          "type": "string",
+                          "enum": [
+                            "canceled",
+                            "failed",
+                            "skipped",
+                            "succeeded"
+                          ]
+                        },
                         "deletedAt": {
                           "nullable": true,
                           "type": "number",
@@ -16741,6 +16632,12 @@
                         },
                         "canceledAt": {
                           "type": "number"
+                        },
+                        "errorLink": {
+                          "type": "string"
+                        },
+                        "errorStep": {
+                          "type": "string"
                         },
                         "passiveRegions": {
                           "items": {
@@ -17392,6 +17289,22 @@
                           "type": "object",
                           "description": "The public project information associated with the deployment."
                         },
+                        "prebuilt": {
+                          "type": "boolean",
+                          "enum": [
+                            false,
+                            true
+                          ]
+                        },
+                        "readySubstate": {
+                          "type": "string",
+                          "enum": [
+                            "PROMOTED",
+                            "ROLLING",
+                            "STAGED"
+                          ],
+                          "description": "Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic"
+                        },
                         "regions": {
                           "items": {
                             "type": "string"
@@ -17431,6 +17344,11 @@
                           "type": "number",
                           "description": "A number containing the date when the deployment was undeleted at milliseconds",
                           "example": 1540257589405
+                        },
+                        "url": {
+                          "type": "string",
+                          "description": "A string with the unique URL of the deployment",
+                          "example": "my-instant-deployment-3ij3cxz9qr.now.sh"
                         },
                         "userConfiguredDeploymentId": {
                           "type": "string",
@@ -17510,76 +17428,6 @@
                             "hobby",
                             "pro"
                           ]
-                        },
-                        "platform": {
-                          "properties": {
-                            "source": {
-                              "properties": {
-                                "name": {
-                                  "type": "string",
-                                  "description": "Display name of the platform."
-                                }
-                              },
-                              "required": [
-                                "name"
-                              ],
-                              "type": "object",
-                              "description": "The external platform that created the deployment (e.g. its display name)."
-                            },
-                            "origin": {
-                              "properties": {
-                                "type": {
-                                  "type": "string",
-                                  "enum": [
-                                    "id",
-                                    "url"
-                                  ],
-                                  "description": "Whether the value is an opaque identifier or a URL."
-                                },
-                                "value": {
-                                  "type": "string",
-                                  "description": "The identifier or URL pointing to the originating entity."
-                                }
-                              },
-                              "required": [
-                                "type",
-                                "value"
-                              ],
-                              "type": "object",
-                              "description": "Reference back to the entity on the platform that initiated the deployment."
-                            },
-                            "creator": {
-                              "properties": {
-                                "name": {
-                                  "type": "string",
-                                  "description": "Display name of the platform user."
-                                },
-                                "avatar": {
-                                  "type": "string",
-                                  "description": "URL of the platform user's avatar image."
-                                }
-                              },
-                              "required": [
-                                "name"
-                              ],
-                              "type": "object",
-                              "description": "The user on the external platform who triggered the deployment."
-                            },
-                            "meta": {
-                              "additionalProperties": {
-                                "type": "string"
-                              },
-                              "type": "object",
-                              "description": "Arbitrary key-value metadata provided by the platform."
-                            }
-                          },
-                          "required": [
-                            "creator",
-                            "origin",
-                            "source"
-                          ],
-                          "type": "object",
-                          "description": "Metadata about the source platform that triggered the deployment. Allows us to map a deployment back to a platform (e.g. the chat that created it)"
                         },
                         "connectBuildsEnabled": {
                           "type": "boolean",
@@ -21647,6 +21495,76 @@
                               "type": "object"
                             }
                           ]
+                        },
+                        "platform": {
+                          "properties": {
+                            "source": {
+                              "properties": {
+                                "name": {
+                                  "type": "string",
+                                  "description": "Display name of the platform."
+                                }
+                              },
+                              "required": [
+                                "name"
+                              ],
+                              "type": "object",
+                              "description": "The external platform that created the deployment (e.g. its display name)."
+                            },
+                            "origin": {
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "id",
+                                    "url"
+                                  ],
+                                  "description": "Whether the value is an opaque identifier or a URL."
+                                },
+                                "value": {
+                                  "type": "string",
+                                  "description": "The identifier or URL pointing to the originating entity."
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "value"
+                              ],
+                              "type": "object",
+                              "description": "Reference back to the entity on the platform that initiated the deployment."
+                            },
+                            "creator": {
+                              "properties": {
+                                "name": {
+                                  "type": "string",
+                                  "description": "Display name of the platform user."
+                                },
+                                "avatar": {
+                                  "type": "string",
+                                  "description": "URL of the platform user's avatar image."
+                                }
+                              },
+                              "required": [
+                                "name"
+                              ],
+                              "type": "object",
+                              "description": "The user on the external platform who triggered the deployment."
+                            },
+                            "meta": {
+                              "additionalProperties": {
+                                "type": "string"
+                              },
+                              "type": "object",
+                              "description": "Arbitrary key-value metadata provided by the platform."
+                            }
+                          },
+                          "required": [
+                            "creator",
+                            "origin",
+                            "source"
+                          ],
+                          "type": "object",
+                          "description": "Metadata about the source platform that triggered the deployment. Allows us to map a deployment back to a platform (e.g. the chat that created it)"
                         },
                         "config": {
                           "properties": {
@@ -22018,9 +21936,6 @@
                               "id": {
                                 "type": "string"
                               },
-                              "createdAt": {
-                                "type": "number"
-                              },
                               "readyState": {
                                 "type": "string",
                                 "enum": [
@@ -22029,6 +21944,9 @@
                                   "INITIALIZING",
                                   "READY"
                                 ]
+                              },
+                              "createdAt": {
+                                "type": "number"
                               },
                               "entrypoint": {
                                 "nullable": true,
@@ -22331,16 +22249,6 @@
                           "description": "A string holding the unique ID of the deployment",
                           "example": "dpl_89qyp1cskzkLrVicDaZoDbjyHuDJ"
                         },
-                        "name": {
-                          "type": "string",
-                          "description": "The name of the project associated with the deployment at the time that the deployment was created",
-                          "example": "my-project"
-                        },
-                        "url": {
-                          "type": "string",
-                          "description": "A string with the unique URL of the deployment",
-                          "example": "my-instant-deployment-3ij3cxz9qr.now.sh"
-                        },
                         "target": {
                           "nullable": true,
                           "type": "string",
@@ -22351,11 +22259,6 @@
                           ],
                           "description": "If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the \"preview\" deployment.",
                           "example": null
-                        },
-                        "createdAt": {
-                          "type": "number",
-                          "description": "A number containing the date when the deployment was created in milliseconds",
-                          "example": 1540257589405
                         },
                         "readyState": {
                           "type": "string",
@@ -22370,22 +22273,6 @@
                           ],
                           "description": "The state of the deployment depending on the process of deploying, or if it is ready or in an error state",
                           "example": "READY"
-                        },
-                        "readySubstate": {
-                          "type": "string",
-                          "enum": [
-                            "PROMOTED",
-                            "ROLLING",
-                            "STAGED"
-                          ],
-                          "description": "Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic"
-                        },
-                        "prebuilt": {
-                          "type": "boolean",
-                          "enum": [
-                            false,
-                            true
-                          ]
                         },
                         "aliasError": {
                           "nullable": true,
@@ -22427,45 +22314,32 @@
                           ],
                           "type": "object"
                         },
-                        "aliasFinal": {
-                          "nullable": true,
-                          "type": "string"
-                        },
-                        "checksState": {
-                          "type": "string",
-                          "enum": [
-                            "completed",
-                            "registered",
-                            "running"
-                          ]
-                        },
-                        "checksConclusion": {
-                          "type": "string",
-                          "enum": [
-                            "canceled",
-                            "failed",
-                            "skipped",
-                            "succeeded"
-                          ]
-                        },
                         "errorCode": {
-                          "type": "string"
-                        },
-                        "errorLink": {
                           "type": "string"
                         },
                         "errorMessage": {
                           "nullable": true,
                           "type": "string"
                         },
-                        "errorStep": {
-                          "type": "string"
+                        "createdAt": {
+                          "type": "number",
+                          "description": "A number containing the date when the deployment was created in milliseconds",
+                          "example": 1540257589405
+                        },
+                        "name": {
+                          "type": "string",
+                          "description": "The name of the project associated with the deployment at the time that the deployment was created",
+                          "example": "my-project"
                         },
                         "type": {
                           "type": "string",
                           "enum": [
                             "LAMBDAS"
                           ]
+                        },
+                        "aliasFinal": {
+                          "nullable": true,
+                          "type": "string"
                         },
                         "autoAssignCustomDomains": {
                           "type": "boolean",
@@ -22484,6 +22358,23 @@
                         "buildErrorAt": {
                           "type": "number"
                         },
+                        "checksState": {
+                          "type": "string",
+                          "enum": [
+                            "completed",
+                            "registered",
+                            "running"
+                          ]
+                        },
+                        "checksConclusion": {
+                          "type": "string",
+                          "enum": [
+                            "canceled",
+                            "failed",
+                            "skipped",
+                            "succeeded"
+                          ]
+                        },
                         "deletedAt": {
                           "nullable": true,
                           "type": "number",
@@ -22496,6 +22387,12 @@
                         },
                         "canceledAt": {
                           "type": "number"
+                        },
+                        "errorLink": {
+                          "type": "string"
+                        },
+                        "errorStep": {
+                          "type": "string"
                         },
                         "passiveRegions": {
                           "items": {
@@ -23147,6 +23044,22 @@
                           "type": "object",
                           "description": "The public project information associated with the deployment."
                         },
+                        "prebuilt": {
+                          "type": "boolean",
+                          "enum": [
+                            false,
+                            true
+                          ]
+                        },
+                        "readySubstate": {
+                          "type": "string",
+                          "enum": [
+                            "PROMOTED",
+                            "ROLLING",
+                            "STAGED"
+                          ],
+                          "description": "Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic"
+                        },
                         "regions": {
                           "items": {
                             "type": "string"
@@ -23186,6 +23099,11 @@
                           "type": "number",
                           "description": "A number containing the date when the deployment was undeleted at milliseconds",
                           "example": 1540257589405
+                        },
+                        "url": {
+                          "type": "string",
+                          "description": "A string with the unique URL of the deployment",
+                          "example": "my-instant-deployment-3ij3cxz9qr.now.sh"
                         },
                         "userConfiguredDeploymentId": {
                           "type": "string",
@@ -23365,7 +23283,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Returns the newly created deployment object. Poll `readyState` to track build progress. See https://vercel.com/docs/deployments/deployment-states for possible states.\nReturns the reduced deployment view for anonymous (`vcn_`) callers, with an `anonymous.expiresAt` marking when the project and its token expire. Pool-team details are withheld.",
+            "description": "Returns the newly created deployment object. Poll `readyState` to track build progress. See https://vercel.com/docs/deployments/deployment-states for possible states.\nReturns the reduced deployment view for anonymous (`vcn_`) callers. Pool-team details are withheld.",
             "content": {
               "application/json": {
                 "schema": {
@@ -23385,39 +23303,10 @@
                             true
                           ]
                         },
-                        "readyStateReason": {
-                          "type": "string"
-                        },
-                        "anonymous": {
-                          "properties": {
-                            "expiresAt": {
-                              "type": "number",
-                              "description": "When the anonymous project and its token expire, in milliseconds.",
-                              "example": 1753120000000
-                            }
-                          },
-                          "required": [
-                            "expiresAt"
-                          ],
-                          "type": "object"
-                        },
                         "id": {
                           "type": "string",
                           "description": "A string holding the unique ID of the deployment",
                           "example": "dpl_89qyp1cskzkLrVicDaZoDbjyHuDJ"
-                        },
-                        "name": {
-                          "type": "string",
-                          "description": "The name of the project associated with the deployment at the time that the deployment was created",
-                          "example": "my-project"
-                        },
-                        "url": {
-                          "type": "string",
-                          "description": "A string with the unique URL of the deployment",
-                          "example": "my-instant-deployment-3ij3cxz9qr.now.sh"
-                        },
-                        "projectId": {
-                          "type": "string"
                         },
                         "target": {
                           "nullable": true,
@@ -23429,11 +23318,6 @@
                           ],
                           "description": "If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the \"preview\" deployment.",
                           "example": null
-                        },
-                        "createdAt": {
-                          "type": "number",
-                          "description": "A number containing the date when the deployment was created in milliseconds",
-                          "example": 1540257589405
                         },
                         "readyState": {
                           "type": "string",
@@ -23448,22 +23332,6 @@
                           ],
                           "description": "The state of the deployment depending on the process of deploying, or if it is ready or in an error state",
                           "example": "READY"
-                        },
-                        "readySubstate": {
-                          "type": "string",
-                          "enum": [
-                            "PROMOTED",
-                            "ROLLING",
-                            "STAGED"
-                          ],
-                          "description": "Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic"
-                        },
-                        "prebuilt": {
-                          "type": "boolean",
-                          "enum": [
-                            false,
-                            true
-                          ]
                         },
                         "aliasError": {
                           "nullable": true,
@@ -23505,53 +23373,21 @@
                           ],
                           "type": "object"
                         },
-                        "aliasFinal": {
-                          "nullable": true,
-                          "type": "string"
-                        },
-                        "checksState": {
-                          "type": "string",
-                          "enum": [
-                            "completed",
-                            "registered",
-                            "running"
-                          ]
-                        },
-                        "checksConclusion": {
-                          "type": "string",
-                          "enum": [
-                            "canceled",
-                            "failed",
-                            "skipped",
-                            "succeeded"
-                          ]
-                        },
                         "errorCode": {
-                          "type": "string"
-                        },
-                        "errorLink": {
                           "type": "string"
                         },
                         "errorMessage": {
                           "nullable": true,
                           "type": "string"
-                        },
-                        "errorStep": {
-                          "type": "string"
                         }
                       },
                       "required": [
                         "aliasAssigned",
-                        "anonymous",
-                        "createdAt",
                         "id",
-                        "name",
-                        "projectId",
-                        "readyState",
-                        "url"
+                        "readyState"
                       ],
                       "type": "object",
-                      "description": "Returns the reduced deployment view for anonymous (`vcn_`) callers, with an `anonymous.expiresAt` marking when the project and its token expire. Pool-team details are withheld."
+                      "description": "Returns the reduced deployment view for anonymous (`vcn_`) callers. Pool-team details are withheld."
                     },
                     {
                       "properties": {
@@ -24028,9 +23864,6 @@
                               "id": {
                                 "type": "string"
                               },
-                              "createdAt": {
-                                "type": "number"
-                              },
                               "readyState": {
                                 "type": "string",
                                 "enum": [
@@ -24039,6 +23872,9 @@
                                   "INITIALIZING",
                                   "READY"
                                 ]
+                              },
+                              "createdAt": {
+                                "type": "number"
                               },
                               "entrypoint": {
                                 "nullable": true,
@@ -24341,16 +24177,6 @@
                           "description": "A string holding the unique ID of the deployment",
                           "example": "dpl_89qyp1cskzkLrVicDaZoDbjyHuDJ"
                         },
-                        "name": {
-                          "type": "string",
-                          "description": "The name of the project associated with the deployment at the time that the deployment was created",
-                          "example": "my-project"
-                        },
-                        "url": {
-                          "type": "string",
-                          "description": "A string with the unique URL of the deployment",
-                          "example": "my-instant-deployment-3ij3cxz9qr.now.sh"
-                        },
                         "target": {
                           "nullable": true,
                           "type": "string",
@@ -24361,11 +24187,6 @@
                           ],
                           "description": "If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the \"preview\" deployment.",
                           "example": null
-                        },
-                        "createdAt": {
-                          "type": "number",
-                          "description": "A number containing the date when the deployment was created in milliseconds",
-                          "example": 1540257589405
                         },
                         "readyState": {
                           "type": "string",
@@ -24380,22 +24201,6 @@
                           ],
                           "description": "The state of the deployment depending on the process of deploying, or if it is ready or in an error state",
                           "example": "READY"
-                        },
-                        "readySubstate": {
-                          "type": "string",
-                          "enum": [
-                            "PROMOTED",
-                            "ROLLING",
-                            "STAGED"
-                          ],
-                          "description": "Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic"
-                        },
-                        "prebuilt": {
-                          "type": "boolean",
-                          "enum": [
-                            false,
-                            true
-                          ]
                         },
                         "aliasError": {
                           "nullable": true,
@@ -24437,45 +24242,32 @@
                           ],
                           "type": "object"
                         },
-                        "aliasFinal": {
-                          "nullable": true,
-                          "type": "string"
-                        },
-                        "checksState": {
-                          "type": "string",
-                          "enum": [
-                            "completed",
-                            "registered",
-                            "running"
-                          ]
-                        },
-                        "checksConclusion": {
-                          "type": "string",
-                          "enum": [
-                            "canceled",
-                            "failed",
-                            "skipped",
-                            "succeeded"
-                          ]
-                        },
                         "errorCode": {
-                          "type": "string"
-                        },
-                        "errorLink": {
                           "type": "string"
                         },
                         "errorMessage": {
                           "nullable": true,
                           "type": "string"
                         },
-                        "errorStep": {
-                          "type": "string"
+                        "createdAt": {
+                          "type": "number",
+                          "description": "A number containing the date when the deployment was created in milliseconds",
+                          "example": 1540257589405
+                        },
+                        "name": {
+                          "type": "string",
+                          "description": "The name of the project associated with the deployment at the time that the deployment was created",
+                          "example": "my-project"
                         },
                         "type": {
                           "type": "string",
                           "enum": [
                             "LAMBDAS"
                           ]
+                        },
+                        "aliasFinal": {
+                          "nullable": true,
+                          "type": "string"
                         },
                         "autoAssignCustomDomains": {
                           "type": "boolean",
@@ -24494,6 +24286,23 @@
                         "buildErrorAt": {
                           "type": "number"
                         },
+                        "checksState": {
+                          "type": "string",
+                          "enum": [
+                            "completed",
+                            "registered",
+                            "running"
+                          ]
+                        },
+                        "checksConclusion": {
+                          "type": "string",
+                          "enum": [
+                            "canceled",
+                            "failed",
+                            "skipped",
+                            "succeeded"
+                          ]
+                        },
                         "deletedAt": {
                           "nullable": true,
                           "type": "number",
@@ -24506,6 +24315,12 @@
                         },
                         "canceledAt": {
                           "type": "number"
+                        },
+                        "errorLink": {
+                          "type": "string"
+                        },
+                        "errorStep": {
+                          "type": "string"
                         },
                         "passiveRegions": {
                           "items": {
@@ -25157,6 +24972,22 @@
                           "type": "object",
                           "description": "The public project information associated with the deployment."
                         },
+                        "prebuilt": {
+                          "type": "boolean",
+                          "enum": [
+                            false,
+                            true
+                          ]
+                        },
+                        "readySubstate": {
+                          "type": "string",
+                          "enum": [
+                            "PROMOTED",
+                            "ROLLING",
+                            "STAGED"
+                          ],
+                          "description": "Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic"
+                        },
                         "regions": {
                           "items": {
                             "type": "string"
@@ -25196,6 +25027,11 @@
                           "type": "number",
                           "description": "A number containing the date when the deployment was undeleted at milliseconds",
                           "example": 1540257589405
+                        },
+                        "url": {
+                          "type": "string",
+                          "description": "A string with the unique URL of the deployment",
+                          "example": "my-instant-deployment-3ij3cxz9qr.now.sh"
                         },
                         "userConfiguredDeploymentId": {
                           "type": "string",
@@ -25275,76 +25111,6 @@
                             "hobby",
                             "pro"
                           ]
-                        },
-                        "platform": {
-                          "properties": {
-                            "source": {
-                              "properties": {
-                                "name": {
-                                  "type": "string",
-                                  "description": "Display name of the platform."
-                                }
-                              },
-                              "required": [
-                                "name"
-                              ],
-                              "type": "object",
-                              "description": "The external platform that created the deployment (e.g. its display name)."
-                            },
-                            "origin": {
-                              "properties": {
-                                "type": {
-                                  "type": "string",
-                                  "enum": [
-                                    "id",
-                                    "url"
-                                  ],
-                                  "description": "Whether the value is an opaque identifier or a URL."
-                                },
-                                "value": {
-                                  "type": "string",
-                                  "description": "The identifier or URL pointing to the originating entity."
-                                }
-                              },
-                              "required": [
-                                "type",
-                                "value"
-                              ],
-                              "type": "object",
-                              "description": "Reference back to the entity on the platform that initiated the deployment."
-                            },
-                            "creator": {
-                              "properties": {
-                                "name": {
-                                  "type": "string",
-                                  "description": "Display name of the platform user."
-                                },
-                                "avatar": {
-                                  "type": "string",
-                                  "description": "URL of the platform user's avatar image."
-                                }
-                              },
-                              "required": [
-                                "name"
-                              ],
-                              "type": "object",
-                              "description": "The user on the external platform who triggered the deployment."
-                            },
-                            "meta": {
-                              "additionalProperties": {
-                                "type": "string"
-                              },
-                              "type": "object",
-                              "description": "Arbitrary key-value metadata provided by the platform."
-                            }
-                          },
-                          "required": [
-                            "creator",
-                            "origin",
-                            "source"
-                          ],
-                          "type": "object",
-                          "description": "Metadata about the source platform that triggered the deployment. Allows us to map a deployment back to a platform (e.g. the chat that created it)"
                         },
                         "connectBuildsEnabled": {
                           "type": "boolean",
@@ -29412,6 +29178,76 @@
                               "type": "object"
                             }
                           ]
+                        },
+                        "platform": {
+                          "properties": {
+                            "source": {
+                              "properties": {
+                                "name": {
+                                  "type": "string",
+                                  "description": "Display name of the platform."
+                                }
+                              },
+                              "required": [
+                                "name"
+                              ],
+                              "type": "object",
+                              "description": "The external platform that created the deployment (e.g. its display name)."
+                            },
+                            "origin": {
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "id",
+                                    "url"
+                                  ],
+                                  "description": "Whether the value is an opaque identifier or a URL."
+                                },
+                                "value": {
+                                  "type": "string",
+                                  "description": "The identifier or URL pointing to the originating entity."
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "value"
+                              ],
+                              "type": "object",
+                              "description": "Reference back to the entity on the platform that initiated the deployment."
+                            },
+                            "creator": {
+                              "properties": {
+                                "name": {
+                                  "type": "string",
+                                  "description": "Display name of the platform user."
+                                },
+                                "avatar": {
+                                  "type": "string",
+                                  "description": "URL of the platform user's avatar image."
+                                }
+                              },
+                              "required": [
+                                "name"
+                              ],
+                              "type": "object",
+                              "description": "The user on the external platform who triggered the deployment."
+                            },
+                            "meta": {
+                              "additionalProperties": {
+                                "type": "string"
+                              },
+                              "type": "object",
+                              "description": "Arbitrary key-value metadata provided by the platform."
+                            }
+                          },
+                          "required": [
+                            "creator",
+                            "origin",
+                            "source"
+                          ],
+                          "type": "object",
+                          "description": "Metadata about the source platform that triggered the deployment. Allows us to map a deployment back to a platform (e.g. the chat that created it)"
                         },
                         "config": {
                           "properties": {
@@ -30891,9 +30727,6 @@
                           "id": {
                             "type": "string"
                           },
-                          "createdAt": {
-                            "type": "number"
-                          },
                           "readyState": {
                             "type": "string",
                             "enum": [
@@ -30902,6 +30735,9 @@
                               "INITIALIZING",
                               "READY"
                             ]
+                          },
+                          "createdAt": {
+                            "type": "number"
                           },
                           "entrypoint": {
                             "nullable": true,
@@ -31204,16 +31040,6 @@
                       "description": "A string holding the unique ID of the deployment",
                       "example": "dpl_89qyp1cskzkLrVicDaZoDbjyHuDJ"
                     },
-                    "name": {
-                      "type": "string",
-                      "description": "The name of the project associated with the deployment at the time that the deployment was created",
-                      "example": "my-project"
-                    },
-                    "url": {
-                      "type": "string",
-                      "description": "A string with the unique URL of the deployment",
-                      "example": "my-instant-deployment-3ij3cxz9qr.now.sh"
-                    },
                     "target": {
                       "nullable": true,
                       "type": "string",
@@ -31224,11 +31050,6 @@
                       ],
                       "description": "If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the \"preview\" deployment.",
                       "example": null
-                    },
-                    "createdAt": {
-                      "type": "number",
-                      "description": "A number containing the date when the deployment was created in milliseconds",
-                      "example": 1540257589405
                     },
                     "readyState": {
                       "type": "string",
@@ -31243,22 +31064,6 @@
                       ],
                       "description": "The state of the deployment depending on the process of deploying, or if it is ready or in an error state",
                       "example": "READY"
-                    },
-                    "readySubstate": {
-                      "type": "string",
-                      "enum": [
-                        "PROMOTED",
-                        "ROLLING",
-                        "STAGED"
-                      ],
-                      "description": "Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic"
-                    },
-                    "prebuilt": {
-                      "type": "boolean",
-                      "enum": [
-                        false,
-                        true
-                      ]
                     },
                     "aliasError": {
                       "nullable": true,
@@ -31300,45 +31105,32 @@
                       ],
                       "type": "object"
                     },
-                    "aliasFinal": {
-                      "nullable": true,
-                      "type": "string"
-                    },
-                    "checksState": {
-                      "type": "string",
-                      "enum": [
-                        "completed",
-                        "registered",
-                        "running"
-                      ]
-                    },
-                    "checksConclusion": {
-                      "type": "string",
-                      "enum": [
-                        "canceled",
-                        "failed",
-                        "skipped",
-                        "succeeded"
-                      ]
-                    },
                     "errorCode": {
-                      "type": "string"
-                    },
-                    "errorLink": {
                       "type": "string"
                     },
                     "errorMessage": {
                       "nullable": true,
                       "type": "string"
                     },
-                    "errorStep": {
-                      "type": "string"
+                    "createdAt": {
+                      "type": "number",
+                      "description": "A number containing the date when the deployment was created in milliseconds",
+                      "example": 1540257589405
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "The name of the project associated with the deployment at the time that the deployment was created",
+                      "example": "my-project"
                     },
                     "type": {
                       "type": "string",
                       "enum": [
                         "LAMBDAS"
                       ]
+                    },
+                    "aliasFinal": {
+                      "nullable": true,
+                      "type": "string"
                     },
                     "autoAssignCustomDomains": {
                       "type": "boolean",
@@ -31357,6 +31149,23 @@
                     "buildErrorAt": {
                       "type": "number"
                     },
+                    "checksState": {
+                      "type": "string",
+                      "enum": [
+                        "completed",
+                        "registered",
+                        "running"
+                      ]
+                    },
+                    "checksConclusion": {
+                      "type": "string",
+                      "enum": [
+                        "canceled",
+                        "failed",
+                        "skipped",
+                        "succeeded"
+                      ]
+                    },
                     "deletedAt": {
                       "nullable": true,
                       "type": "number",
@@ -31369,6 +31178,12 @@
                     },
                     "canceledAt": {
                       "type": "number"
+                    },
+                    "errorLink": {
+                      "type": "string"
+                    },
+                    "errorStep": {
+                      "type": "string"
                     },
                     "passiveRegions": {
                       "items": {
@@ -32020,6 +31835,22 @@
                       "type": "object",
                       "description": "The public project information associated with the deployment."
                     },
+                    "prebuilt": {
+                      "type": "boolean",
+                      "enum": [
+                        false,
+                        true
+                      ]
+                    },
+                    "readySubstate": {
+                      "type": "string",
+                      "enum": [
+                        "PROMOTED",
+                        "ROLLING",
+                        "STAGED"
+                      ],
+                      "description": "Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic"
+                    },
                     "regions": {
                       "items": {
                         "type": "string"
@@ -32059,6 +31890,11 @@
                       "type": "number",
                       "description": "A number containing the date when the deployment was undeleted at milliseconds",
                       "example": 1540257589405
+                    },
+                    "url": {
+                      "type": "string",
+                      "description": "A string with the unique URL of the deployment",
+                      "example": "my-instant-deployment-3ij3cxz9qr.now.sh"
                     },
                     "userConfiguredDeploymentId": {
                       "type": "string",
@@ -32138,76 +31974,6 @@
                         "hobby",
                         "pro"
                       ]
-                    },
-                    "platform": {
-                      "properties": {
-                        "source": {
-                          "properties": {
-                            "name": {
-                              "type": "string",
-                              "description": "Display name of the platform."
-                            }
-                          },
-                          "required": [
-                            "name"
-                          ],
-                          "type": "object",
-                          "description": "The external platform that created the deployment (e.g. its display name)."
-                        },
-                        "origin": {
-                          "properties": {
-                            "type": {
-                              "type": "string",
-                              "enum": [
-                                "id",
-                                "url"
-                              ],
-                              "description": "Whether the value is an opaque identifier or a URL."
-                            },
-                            "value": {
-                              "type": "string",
-                              "description": "The identifier or URL pointing to the originating entity."
-                            }
-                          },
-                          "required": [
-                            "type",
-                            "value"
-                          ],
-                          "type": "object",
-                          "description": "Reference back to the entity on the platform that initiated the deployment."
-                        },
-                        "creator": {
-                          "properties": {
-                            "name": {
-                              "type": "string",
-                              "description": "Display name of the platform user."
-                            },
-                            "avatar": {
-                              "type": "string",
-                              "description": "URL of the platform user's avatar image."
-                            }
-                          },
-                          "required": [
-                            "name"
-                          ],
-                          "type": "object",
-                          "description": "The user on the external platform who triggered the deployment."
-                        },
-                        "meta": {
-                          "additionalProperties": {
-                            "type": "string"
-                          },
-                          "type": "object",
-                          "description": "Arbitrary key-value metadata provided by the platform."
-                        }
-                      },
-                      "required": [
-                        "creator",
-                        "origin",
-                        "source"
-                      ],
-                      "type": "object",
-                      "description": "Metadata about the source platform that triggered the deployment. Allows us to map a deployment back to a platform (e.g. the chat that created it)"
                     },
                     "connectBuildsEnabled": {
                       "type": "boolean",
@@ -36275,6 +36041,76 @@
                           "type": "object"
                         }
                       ]
+                    },
+                    "platform": {
+                      "properties": {
+                        "source": {
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "description": "Display name of the platform."
+                            }
+                          },
+                          "required": [
+                            "name"
+                          ],
+                          "type": "object",
+                          "description": "The external platform that created the deployment (e.g. its display name)."
+                        },
+                        "origin": {
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "id",
+                                "url"
+                              ],
+                              "description": "Whether the value is an opaque identifier or a URL."
+                            },
+                            "value": {
+                              "type": "string",
+                              "description": "The identifier or URL pointing to the originating entity."
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "value"
+                          ],
+                          "type": "object",
+                          "description": "Reference back to the entity on the platform that initiated the deployment."
+                        },
+                        "creator": {
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "description": "Display name of the platform user."
+                            },
+                            "avatar": {
+                              "type": "string",
+                              "description": "URL of the platform user's avatar image."
+                            }
+                          },
+                          "required": [
+                            "name"
+                          ],
+                          "type": "object",
+                          "description": "The user on the external platform who triggered the deployment."
+                        },
+                        "meta": {
+                          "additionalProperties": {
+                            "type": "string"
+                          },
+                          "type": "object",
+                          "description": "Arbitrary key-value metadata provided by the platform."
+                        }
+                      },
+                      "required": [
+                        "creator",
+                        "origin",
+                        "source"
+                      ],
+                      "type": "object",
+                      "description": "Metadata about the source platform that triggered the deployment. Allows us to map a deployment back to a platform (e.g. the chat that created it)"
                     },
                     "config": {
                       "properties": {
@@ -56949,9 +56785,6 @@
           },
           "410": {
             "description": ""
-          },
-          "412": {
-            "description": ""
           }
         },
         "parameters": [
@@ -58670,9 +58503,6 @@
           },
           "410": {
             "description": ""
-          },
-          "412": {
-            "description": ""
           }
         },
         "parameters": [
@@ -59433,9 +59263,6 @@
             "description": ""
           },
           "410": {
-            "description": ""
-          },
-          "412": {
             "description": ""
           }
         },
@@ -60546,24 +60373,6 @@
                       },
                       "type": "array"
                     },
-                    "connections": {
-                      "items": {
-                        "properties": {
-                          "edgeConfigId": {
-                            "type": "string"
-                          },
-                          "edgeConfigItemKey": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "edgeConfigId",
-                          "edgeConfigItemKey"
-                        ],
-                        "type": "object"
-                      },
-                      "type": "array"
-                    },
                     "entities": {
                       "items": {
                         "properties": {
@@ -60663,8 +60472,7 @@
                     "projectId",
                     "typeName"
                   ],
-                  "type": "object",
-                  "description": "Syncs direct the synchronization of Flags to Edge Configs"
+                  "type": "object"
                 }
               }
             }
@@ -60763,24 +60571,6 @@
                       },
                       "type": "array"
                     },
-                    "connections": {
-                      "items": {
-                        "properties": {
-                          "edgeConfigId": {
-                            "type": "string"
-                          },
-                          "edgeConfigItemKey": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "edgeConfigId",
-                          "edgeConfigItemKey"
-                        ],
-                        "type": "object"
-                      },
-                      "type": "array"
-                    },
                     "entities": {
                       "items": {
                         "properties": {
@@ -60880,8 +60670,7 @@
                     "projectId",
                     "typeName"
                   ],
-                  "type": "object",
-                  "description": "Syncs direct the synchronization of Flags to Edge Configs"
+                  "type": "object"
                 }
               }
             }
@@ -60917,24 +60706,6 @@
                       },
                       "type": "array"
                     },
-                    "connections": {
-                      "items": {
-                        "properties": {
-                          "edgeConfigId": {
-                            "type": "string"
-                          },
-                          "edgeConfigItemKey": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "edgeConfigId",
-                          "edgeConfigItemKey"
-                        ],
-                        "type": "object"
-                      },
-                      "type": "array"
-                    },
                     "entities": {
                       "items": {
                         "properties": {
@@ -61034,8 +60805,7 @@
                     "projectId",
                     "typeName"
                   ],
-                  "type": "object",
-                  "description": "Syncs direct the synchronization of Flags to Edge Configs"
+                  "type": "object"
                 }
               }
             }
@@ -61059,9 +60829,6 @@
             "description": ""
           },
           "410": {
-            "description": ""
-          },
-          "412": {
             "description": ""
           }
         },
@@ -61239,24 +61006,6 @@
                                 },
                                 "type": "array"
                               },
-                              "connections": {
-                                "items": {
-                                  "properties": {
-                                    "edgeConfigId": {
-                                      "type": "string"
-                                    },
-                                    "edgeConfigItemKey": {
-                                      "type": "string"
-                                    }
-                                  },
-                                  "required": [
-                                    "edgeConfigId",
-                                    "edgeConfigItemKey"
-                                  ],
-                                  "type": "object"
-                                },
-                                "type": "array"
-                              },
                               "entities": {
                                 "items": {
                                   "properties": {
@@ -61356,8 +61105,7 @@
                               "projectId",
                               "typeName"
                             ],
-                            "type": "object",
-                            "description": "Syncs direct the synchronization of Flags to Edge Configs"
+                            "type": "object"
                           },
                           "type": "array"
                         },
@@ -62236,9 +61984,6 @@
           },
           "410": {
             "description": ""
-          },
-          "412": {
-            "description": ""
           }
         },
         "parameters": [
@@ -62832,9 +62577,6 @@
           },
           "410": {
             "description": ""
-          },
-          "412": {
-            "description": ""
           }
         },
         "parameters": [
@@ -62931,9 +62673,6 @@
             "description": ""
           },
           "410": {
-            "description": ""
-          },
-          "412": {
             "description": ""
           }
         },
@@ -197301,6 +197040,8 @@
               "invoice-refunded",
               "kms-issuer-created",
               "kms-issuer-deleted",
+              "kms-issuer-key-activated",
+              "kms-issuer-key-created",
               "kms-issuer-key-rotated",
               "kms-issuer-policy-created",
               "kms-issuer-policy-deleted",
@@ -197542,6 +197283,7 @@
               "subscription-updated",
               "team",
               "team-avatar-update",
+              "team-collaboration-settings-updated",
               "team-default-build-machine-updated",
               "team-default-passport-updated",
               "team-delete",
@@ -209720,6 +209462,18 @@
                           false,
                           true
                         ]
+                      },
+                      "computedScriptSrc": {
+                        "type": "string"
+                      },
+                      "computedScriptSrcPreview": {
+                        "type": "string"
+                      },
+                      "computedConnectSrc": {
+                        "type": "string"
+                      },
+                      "computedConnectSrcPreview": {
+                        "type": "string"
                       }
                     },
                     "required": [
@@ -209773,6 +209527,18 @@
                           false,
                           true
                         ]
+                      },
+                      "computedScriptSrc": {
+                        "type": "string"
+                      },
+                      "computedScriptSrcPreview": {
+                        "type": "string"
+                      },
+                      "computedConnectSrc": {
+                        "type": "string"
+                      },
+                      "computedConnectSrcPreview": {
+                        "type": "string"
                       }
                     },
                     "required": [
@@ -209901,6 +209667,13 @@
                   },
                   "justification": {
                     "type": "string"
+                  },
+                  "approvalScope": {
+                    "type": "string",
+                    "enum": [
+                      "all",
+                      "preview"
+                    ]
                   },
                   "kind": {
                     "type": "string",
@@ -215223,6 +214996,39 @@
               {
                 "properties": {
                   "previous": {
+                    "nullable": true,
+                    "type": "string",
+                    "enum": [
+                      "auto-approval",
+                      "block",
+                      "manual-approval",
+                      null
+                    ]
+                  },
+                  "next": {
+                    "nullable": true,
+                    "type": "string",
+                    "enum": [
+                      "auto-approval",
+                      "block",
+                      "manual-approval",
+                      null
+                    ]
+                  },
+                  "teamSlug": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "next",
+                  "previous"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "previous": {
                     "type": "string",
                     "enum": [
                       "elastic",
@@ -218039,6 +217845,8 @@
               "invoice-refunded",
               "kms-issuer-created",
               "kms-issuer-deleted",
+              "kms-issuer-key-activated",
+              "kms-issuer-key-created",
               "kms-issuer-key-rotated",
               "kms-issuer-policy-created",
               "kms-issuer-policy-deleted",
@@ -218280,6 +218088,7 @@
               "subscription-updated",
               "team",
               "team-avatar-update",
+              "team-collaboration-settings-updated",
               "team-default-build-machine-updated",
               "team-default-passport-updated",
               "team-delete",
@@ -218666,6 +218475,8 @@
                 "invoice-refunded",
                 "kms-issuer-created",
                 "kms-issuer-deleted",
+                "kms-issuer-key-activated",
+                "kms-issuer-key-created",
                 "kms-issuer-key-rotated",
                 "kms-issuer-policy-created",
                 "kms-issuer-policy-deleted",
@@ -218907,6 +218718,7 @@
                 "subscription-updated",
                 "team",
                 "team-avatar-update",
+                "team-collaboration-settings-updated",
                 "team-default-build-machine-updated",
                 "team-default-passport-updated",
                 "team-delete",
@@ -221477,11 +221289,6 @@
             "properties": {
               "connection": {
                 "properties": {
-                  "status": {
-                    "type": "string",
-                    "description": "Current status of the connection.",
-                    "example": "linked"
-                  },
                   "type": {
                     "type": "string",
                     "description": "The Identity Provider \"type\", for example Okta.",
@@ -221514,6 +221321,9 @@
                       "SETUP"
                     ],
                     "description": "Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility."
+                  },
+                  "status": {
+                    "type": "string"
                   }
                 },
                 "required": [
@@ -222543,8 +222353,13 @@
           },
           "parentId": {
             "type": "string",
-            "description": "The organizationId for child teams created under an organization.",
+            "description": "The organizationId for teams that belong to an organization (set on both the organization's root team and its child teams).",
             "example": "org_nllPyCtREAqxxdyFKbbMDlxd"
+          },
+          "orgRootTeamId": {
+            "type": "string",
+            "description": "Best-effort ID of the organization’s root billing team. When present, compare `orgRootTeamId === id` to identify the root team. It may be omitted even when `parentId` is set if organization resolution fails or the referenced organization is missing. Always omitted for non-organization teams.",
+            "example": "team_nllPyCtREAqxxdyFKbbMDlxd"
           }
         },
         "required": [
@@ -222586,11 +222401,6 @@
             "properties": {
               "connection": {
                 "properties": {
-                  "status": {
-                    "type": "string",
-                    "description": "Current status of the connection.",
-                    "example": "linked"
-                  },
                   "type": {
                     "type": "string",
                     "description": "The Identity Provider \"type\", for example Okta.",
@@ -222623,6 +222433,9 @@
                       "SETUP"
                     ],
                     "description": "Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility."
+                  },
+                  "status": {
+                    "type": "string"
                   }
                 },
                 "required": [
@@ -222890,8 +222703,13 @@
           },
           "parentId": {
             "type": "string",
-            "description": "The organizationId for child teams created under an organization.",
+            "description": "The organizationId for teams that belong to an organization (set on both the organization's root team and its child teams).",
             "example": "org_nllPyCtREAqxxdyFKbbMDlxd"
+          },
+          "orgRootTeamId": {
+            "type": "string",
+            "description": "Best-effort ID of the organization’s root billing team. When present, compare `orgRootTeamId === id` to identify the root team. It may be omitted even when `parentId` is set if organization resolution fails or the referenced organization is missing. Always omitted for non-organization teams.",
+            "example": "team_nllPyCtREAqxxdyFKbbMDlxd"
           }
         },
         "required": [

@@ -2,7 +2,7 @@
 
 Returns a reduced view of the deployment with public information only. Private fields are omitted when the requester is not the deployment owner.
 Returns the deployment object for the authenticated owner, including private fields such as environment variables, build log URLs, and internal metadata.
-Returns the reduced deployment view for anonymous (`vcn_`) callers, with an `anonymous.expiresAt` marking when the project and its token expire. Pool-team details are withheld.
+Returns the reduced deployment view for anonymous (`vcn_`) callers. Pool-team details are withheld.
 
 
 ## Supported Types
@@ -12,15 +12,8 @@ Returns the reduced deployment view for anonymous (`vcn_`) callers, with an `ano
 ```typescript
 const value: models.GetDeploymentResponseBody1 = {
   aliasAssigned: true,
-  anonymous: {
-    expiresAt: 1753120000000,
-  },
   id: "dpl_89qyp1cskzkLrVicDaZoDbjyHuDJ",
-  name: "my-project",
-  url: "my-instant-deployment-3ij3cxz9qr.now.sh",
-  projectId: "<id>",
   target: null,
-  createdAt: 1540257589405,
   readyState: "READY",
   aliasError: null,
 };
@@ -57,12 +50,11 @@ const value: models.GetDeploymentResponseBody2 = {
   ],
   previewCommentsEnabled: false,
   id: "dpl_89qyp1cskzkLrVicDaZoDbjyHuDJ",
-  name: "my-project",
-  url: "my-instant-deployment-3ij3cxz9qr.now.sh",
   target: null,
-  createdAt: 1540257589405,
   readyState: "READY",
   aliasError: null,
+  createdAt: 1540257589405,
+  name: "my-project",
   type: "LAMBDAS",
   deletedAt: 1540257589405,
   meta: {
@@ -74,6 +66,7 @@ const value: models.GetDeploymentResponseBody2 = {
   softDeletedByRetention: true,
   source: "cli",
   undeletedAt: 1540257589405,
+  url: "my-instant-deployment-3ij3cxz9qr.now.sh",
   userConfiguredDeploymentId: "abc123",
   version: 2,
   projectId: "<id>",
@@ -105,12 +98,11 @@ const value: models.GetDeploymentResponseBody3 = {
   ],
   previewCommentsEnabled: false,
   id: "dpl_89qyp1cskzkLrVicDaZoDbjyHuDJ",
-  name: "my-project",
-  url: "my-instant-deployment-3ij3cxz9qr.now.sh",
   target: null,
-  createdAt: 1540257589405,
   readyState: "READY",
   aliasError: null,
+  createdAt: 1540257589405,
+  name: "my-project",
   type: "LAMBDAS",
   deletedAt: 1540257589405,
   meta: {
@@ -124,6 +116,7 @@ const value: models.GetDeploymentResponseBody3 = {
   softDeletedByRetention: true,
   source: "cli",
   undeletedAt: 1540257589405,
+  url: "my-instant-deployment-3ij3cxz9qr.now.sh",
   userConfiguredDeploymentId: "abc123",
   version: 2,
 };

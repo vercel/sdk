@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ServicesEnv } from "@vercel/sdk/models/canceldeploymentgitrepoownertype.js";
+import { ServicesEnv } from "@vercel/sdk/models/gitrepo1.js";
 
 let value: ServicesEnv = {
   type: "service-ref",

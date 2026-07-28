@@ -5,7 +5,7 @@ Must be `http` or `https`.
 ## Example Usage
 
 ```typescript
-import { Protocol } from "@vercel/sdk/models/canceldeploymentservicesdeploymentsfunctions.js";
+import { Protocol } from "@vercel/sdk/models/format.js";
 
 let value: Protocol = "http";
 ```

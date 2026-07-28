@@ -18,7 +18,7 @@ import {
 import {
   GetDeploymentRequest,
   GetDeploymentRequest$outboundSchema,
-} from "../models/getdeploymentresponsebodymanualprovisioning.js";
+} from "../models/getdeploymentresponsebodynodeversion.js";
 import {
   ConnectionError,
   InvalidRequestError,

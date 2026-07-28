@@ -18,7 +18,7 @@ import {
 import {
   CancelDeploymentRequest,
   CancelDeploymentRequest$outboundSchema,
-} from "../models/canceldeploymentservicesdeploymentsfunctions.js";
+} from "../models/format.js";
 import {
   ConnectionError,
   InvalidRequestError,

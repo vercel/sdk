@@ -12,12 +12,12 @@ const value: models.Team = {
   emailDomain: "example.com",
   saml: {
     connection: {
-      status: "linked",
       type: "OktaSAML",
       state: "active",
       connectedAt: 1611796915677,
       lastReceivedWebhookEvent: 1611796915677,
       lastSyncedAt: 1611796915677,
+      status: "<value>",
     },
     directory: {
       type: "OktaSAML",
@@ -39,6 +39,7 @@ const value: models.Team = {
   avatar: "6eb07268bcfadd309905ffb1579354084c24655c",
   createdAt: 1630748523395,
   parentId: "org_nllPyCtREAqxxdyFKbbMDlxd",
+  orgRootTeamId: "team_nllPyCtREAqxxdyFKbbMDlxd",
 };
 ```
 
@@ -50,12 +51,12 @@ const value: models.TeamLimited = {
   limitedBy: [],
   saml: {
     connection: {
-      status: "linked",
       type: "OktaSAML",
       state: "active",
       connectedAt: 1611796915677,
       lastReceivedWebhookEvent: 1611796915677,
       lastSyncedAt: 1611796915677,
+      status: "<value>",
     },
     directory: {
       type: "OktaSAML",
@@ -72,6 +73,7 @@ const value: models.TeamLimited = {
   avatar: "6eb07268bcfadd309905ffb1579354084c24655c",
   createdAt: 1630748523395,
   parentId: "org_nllPyCtREAqxxdyFKbbMDlxd",
+  orgRootTeamId: "team_nllPyCtREAqxxdyFKbbMDlxd",
 };
 ```
 

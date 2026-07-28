@@ -1,7 +1,7 @@
 # CreateDeploymentResponseBody
 
 Returns the newly created deployment object. Poll `readyState` to track build progress. See https://vercel.com/docs/deployments/deployment-states for possible states.
-Returns the reduced deployment view for anonymous (`vcn_`) callers, with an `anonymous.expiresAt` marking when the project and its token expire. Pool-team details are withheld.
+Returns the reduced deployment view for anonymous (`vcn_`) callers. Pool-team details are withheld.
 
 
 ## Supported Types
@@ -11,15 +11,8 @@ Returns the reduced deployment view for anonymous (`vcn_`) callers, with an `ano
 ```typescript
 const value: models.CreateDeploymentResponseBody1 = {
   aliasAssigned: true,
-  anonymous: {
-    expiresAt: 1753120000000,
-  },
   id: "dpl_89qyp1cskzkLrVicDaZoDbjyHuDJ",
-  name: "my-project",
-  url: "my-instant-deployment-3ij3cxz9qr.now.sh",
-  projectId: "<id>",
   target: null,
-  createdAt: 1540257589405,
   readyState: "READY",
   aliasError: null,
 };
@@ -57,12 +50,11 @@ const value: models.CreateDeploymentResponseBody2 = {
   ],
   previewCommentsEnabled: false,
   id: "dpl_89qyp1cskzkLrVicDaZoDbjyHuDJ",
-  name: "my-project",
-  url: "my-instant-deployment-3ij3cxz9qr.now.sh",
   target: null,
-  createdAt: 1540257589405,
   readyState: "READY",
   aliasError: null,
+  createdAt: 1540257589405,
+  name: "my-project",
   type: "LAMBDAS",
   deletedAt: 1540257589405,
   meta: {},
@@ -72,6 +64,7 @@ const value: models.CreateDeploymentResponseBody2 = {
   softDeletedByRetention: true,
   source: "cli",
   undeletedAt: 1540257589405,
+  url: "my-instant-deployment-3ij3cxz9qr.now.sh",
   userConfiguredDeploymentId: "abc123",
   version: 2,
   projectId: "<id>",

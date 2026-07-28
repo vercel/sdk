@@ -36,11 +36,6 @@ export type ListTeamFlagSettingsResponseBodyTypeName = ClosedEnum<
   typeof ListTeamFlagSettingsResponseBodyTypeName
 >;
 
-export type ResponseBodyConnections = {
-  edgeConfigId: string;
-  edgeConfigItemKey: string;
-};
-
 export type ResponseBodyLabels = {
   label: string;
   value: string;
@@ -67,16 +62,12 @@ export type ListTeamFlagSettingsResponseBodyMetadata = {
   configUpdatedAt?: number | undefined;
 };
 
-/**
- * Syncs direct the synchronization of Flags to Edge Configs
- */
 export type ResponseBodyData = {
   typeName: ListTeamFlagSettingsResponseBodyTypeName;
   projectId: string;
   ownerId?: string | undefined;
   enabled: boolean;
   environments: Array<string>;
-  connections?: Array<ResponseBodyConnections> | undefined;
   entities: Array<ResponseBodyEntities>;
   createdAt?: number | undefined;
   updatedAt?: number | undefined;
@@ -132,26 +123,6 @@ export function listTeamFlagSettingsRequestToJSON(
 export const ListTeamFlagSettingsResponseBodyTypeName$inboundSchema:
   z.ZodNativeEnum<typeof ListTeamFlagSettingsResponseBodyTypeName> = z
     .nativeEnum(ListTeamFlagSettingsResponseBodyTypeName);
-
-/** @internal */
-export const ResponseBodyConnections$inboundSchema: z.ZodType<
-  ResponseBodyConnections,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  edgeConfigId: types.string(),
-  edgeConfigItemKey: types.string(),
-});
-
-export function responseBodyConnectionsFromJSON(
-  jsonString: string,
-): SafeParseResult<ResponseBodyConnections, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ResponseBodyConnections$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBodyConnections' from JSON`,
-  );
-}
 
 /** @internal */
 export const ResponseBodyLabels$inboundSchema: z.ZodType<
@@ -258,9 +229,6 @@ export const ResponseBodyData$inboundSchema: z.ZodType<
   ownerId: types.optional(types.string()),
   enabled: types.boolean(),
   environments: z.array(types.string()),
-  connections: types.optional(
-    z.array(z.lazy(() => ResponseBodyConnections$inboundSchema)),
-  ),
   entities: z.array(z.lazy(() => ResponseBodyEntities$inboundSchema)),
   createdAt: types.optional(types.number()),
   updatedAt: types.optional(types.number()),

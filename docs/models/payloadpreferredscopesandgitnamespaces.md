@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadPreferredScopesAndGitNamespaces } from "@vercel/sdk/models/onehundredandfortyfour.js";
+import { PayloadPreferredScopesAndGitNamespaces } from "@vercel/sdk/models/usereventpayloadconfigversion.js";
 
 let value: PayloadPreferredScopesAndGitNamespaces = {
   scopeId: "<id>",

@@ -5,7 +5,7 @@
 ## Example Usage
 
 ```typescript
-import { History } from "@vercel/sdk/models/payloaddismissals.js";
+import { History } from "@vercel/sdk/models/credentialstype.js";
 
 let value: History = {
   scanner: "<value>",

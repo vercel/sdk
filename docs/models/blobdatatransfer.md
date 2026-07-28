@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { BlobDataTransfer } from "@vercel/sdk/models/onehundredandfortyfour.js";
+import { BlobDataTransfer } from "@vercel/sdk/models/usereventpayloadconfigversion.js";
 
 let value: BlobDataTransfer = {
   currentThreshold: 7290.07,

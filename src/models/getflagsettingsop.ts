@@ -31,11 +31,6 @@ export type GetFlagSettingsTypeName = ClosedEnum<
   typeof GetFlagSettingsTypeName
 >;
 
-export type Connections = {
-  edgeConfigId: string;
-  edgeConfigItemKey: string;
-};
-
 export type GetFlagSettingsLabels = {
   label: string;
   value: string;
@@ -62,16 +57,12 @@ export type GetFlagSettingsMetadata = {
   configUpdatedAt?: number | undefined;
 };
 
-/**
- * Syncs direct the synchronization of Flags to Edge Configs
- */
 export type GetFlagSettingsResponseBody = {
   typeName: GetFlagSettingsTypeName;
   projectId: string;
   ownerId?: string | undefined;
   enabled: boolean;
   environments: Array<string>;
-  connections?: Array<Connections> | undefined;
   entities: Array<GetFlagSettingsEntities>;
   createdAt?: number | undefined;
   updatedAt?: number | undefined;
@@ -108,26 +99,6 @@ export function getFlagSettingsRequestToJSON(
 export const GetFlagSettingsTypeName$inboundSchema: z.ZodNativeEnum<
   typeof GetFlagSettingsTypeName
 > = z.nativeEnum(GetFlagSettingsTypeName);
-
-/** @internal */
-export const Connections$inboundSchema: z.ZodType<
-  Connections,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  edgeConfigId: types.string(),
-  edgeConfigItemKey: types.string(),
-});
-
-export function connectionsFromJSON(
-  jsonString: string,
-): SafeParseResult<Connections, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Connections$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Connections' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetFlagSettingsLabels$inboundSchema: z.ZodType<
@@ -228,7 +199,6 @@ export const GetFlagSettingsResponseBody$inboundSchema: z.ZodType<
   ownerId: types.optional(types.string()),
   enabled: types.boolean(),
   environments: z.array(types.string()),
-  connections: types.optional(z.array(z.lazy(() => Connections$inboundSchema))),
   entities: z.array(z.lazy(() => GetFlagSettingsEntities$inboundSchema)),
   createdAt: types.optional(types.number()),
   updatedAt: types.optional(types.number()),

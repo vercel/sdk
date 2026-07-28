@@ -5,7 +5,7 @@ Metadata for {@link principalId}.
 ## Example Usage
 
 ```typescript
-import { Two } from "@vercel/sdk/models/threehundredandfortyone.js";
+import { Two } from "@vercel/sdk/models/threehundredandfortytwo.js";
 
 let value: Two = {
   type: "app",

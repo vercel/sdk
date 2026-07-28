@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { RoutePrefixSource } from "@vercel/sdk/models/canceldeploymentgitrepoownertype.js";
+import { RoutePrefixSource } from "@vercel/sdk/models/gitrepo1.js";
 
 let value: RoutePrefixSource = "generated";
 ```

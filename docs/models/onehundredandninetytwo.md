@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndNinetyTwo } from "@vercel/sdk/models/payloaddismissals.js";
+import { OneHundredAndNinetyTwo } from "@vercel/sdk/models/credentialstype.js";
 
 let value: OneHundredAndNinetyTwo = {
   projectId: "<id>",
@@ -23,4 +23,5 @@ let value: OneHundredAndNinetyTwo = {
 | `url`                                                            | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
 | `previousStatus`                                                 | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
 | `justification`                                                  | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `approvalScope`                                                  | [models.ApprovalScope](../models/approvalscope.md)               | :heavy_minus_sign:                                               | N/A                                                              |
 | `kind`                                                           | [models.UserEventPayloadKind](../models/usereventpayloadkind.md) | :heavy_minus_sign:                                               | N/A                                                              |

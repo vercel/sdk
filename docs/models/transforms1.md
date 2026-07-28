@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Transforms1 } from "@vercel/sdk/models/canceldeploymentservicesdeploymentsfunctions.js";
+import { Transforms1 } from "@vercel/sdk/models/format.js";
 
 let value: Transforms1 = {
   type: "response.headers",

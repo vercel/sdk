@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyBuildMachineElasticReason } from "@vercel/sdk/models/getprojectsblockhistoryprojectsroute.js";
+import { ResponseBodyBuildMachineElasticReason } from "@vercel/sdk/models/getprojectsrouteprojectsmitigate.js";
 
 let value: ResponseBodyBuildMachineElasticReason = "build-timeout-failure";
 ```

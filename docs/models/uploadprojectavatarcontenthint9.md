@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarContentHint9 } from "@vercel/sdk/models/uploadprojectavatarprojectsaliasassigned.js";
+import { UploadProjectAvatarContentHint9 } from "@vercel/sdk/models/uploadprojectavatarcve55182migrationappliedfrom.js";
 
 let value: UploadProjectAvatarContentHint9 = {
   type: "postgres-url-non-pooling",

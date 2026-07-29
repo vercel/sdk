@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyPassport } from "@vercel/sdk/models/getprojectsresponsebodyconsolidatedgitcommitstatus.js";
+import { GetProjectsResponseBodyPassport } from "@vercel/sdk/models/getprojectsresponsebodytrustedsources.js";
 
 let value: GetProjectsResponseBodyPassport = {
   deploymentType: "all",

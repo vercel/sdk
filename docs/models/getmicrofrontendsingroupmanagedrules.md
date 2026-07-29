@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupManagedRules } from "@vercel/sdk/models/getmicrofrontendsingroupsamplingrules.js";
+import { GetMicrofrontendsInGroupManagedRules } from "@vercel/sdk/models/getmicrofrontendsingroupdismissedtoasts.js";
 
 let value: GetMicrofrontendsInGroupManagedRules = {
   vercelRuleset: {

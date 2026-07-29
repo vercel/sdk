@@ -5,7 +5,7 @@ An array of all the stages required during a deployment release. Each stage defi
 ## Example Usage
 
 ```typescript
-import { GetProjectStages } from "@vercel/sdk/models/getprojectapril2026securityincidentmigrationappliedfrom.js";
+import { GetProjectStages } from "@vercel/sdk/models/getprojectstaticips.js";
 
 let value: GetProjectStages = {
   targetPercentage: 25,

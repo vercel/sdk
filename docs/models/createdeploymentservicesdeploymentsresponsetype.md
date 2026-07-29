@@ -1,11 +1,11 @@
 # CreateDeploymentServicesDeploymentsResponseType
 
-Must be `"service"` for Service-to-Service HTTP bindings.
+If present, must be `"service"` for Service-to-Service HTTP bindings.
 
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentServicesDeploymentsResponseType } from "@vercel/sdk/models/createdeploymentservicesroutes.js";
+import { CreateDeploymentServicesDeploymentsResponseType } from "@vercel/sdk/models/createdeploymentroutesdeploymentsdestination.js";
 
 let value: CreateDeploymentServicesDeploymentsResponseType = "service";
 ```

@@ -5,7 +5,7 @@ The target envs on the current project that may be accessed.
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupToMicrofrontends1 } from "@vercel/sdk/models/getmicrofrontendsingroupsamplingrules.js";
+import { GetMicrofrontendsInGroupToMicrofrontends1 } from "@vercel/sdk/models/getmicrofrontendsingroupdismissedtoasts.js";
 
 let value: GetMicrofrontendsInGroupToMicrofrontends1 = {
   slugs: [],

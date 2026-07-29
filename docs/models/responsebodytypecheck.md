@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyTypecheck } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjsondeploymenttype.js";
+import { ResponseBodyTypecheck } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponsebuildqueue.js";
 
 let value: ResponseBodyTypecheck = {
   targets: [

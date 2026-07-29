@@ -5,17 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFortyThree } from "@vercel/sdk/models/threehundredandfortytwo.js";
+import { ThreeHundredAndFortyThree } from "@vercel/sdk/models/threehundredandfortythree.js";
 
 let value: ThreeHundredAndFortyThree = {
-  authorized: false,
+  previousRole: "<value>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `email`            | *string*           | :heavy_minus_sign: | N/A                |
-| `authorized`       | *boolean*          | :heavy_check_mark: | N/A                |
-| `reason`           | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `directoryType`                                              | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
+| `ssoType`                                                    | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
+| `updatedUser`                                                | [models.PayloadUpdatedUser](../models/payloadupdateduser.md) | :heavy_minus_sign:                                           | N/A                                                          |
+| `role`                                                       | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
+| `previousRole`                                               | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `updatedUid`                                                 | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
+| `origin`                                                     | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
+| `teamSlug`                                                   | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |

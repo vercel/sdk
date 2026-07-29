@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupIpBuckets } from "@vercel/sdk/models/getmicrofrontendsingroupaliasassigned.js";
+import { GetMicrofrontendsInGroupIpBuckets } from "@vercel/sdk/models/getmicrofrontendsingroupcve55182migrationappliedfrom.js";
 
 let value: GetMicrofrontendsInGroupIpBuckets = {
   bucket: "<value>",

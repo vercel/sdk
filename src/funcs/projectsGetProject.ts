@@ -12,13 +12,13 @@ import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import {
-  GetProjectRequest,
-  GetProjectRequest$outboundSchema,
-} from "../models/getprojectapril2026securityincidentmigrationappliedfrom.js";
-import {
   GetProjectResponseBody,
   GetProjectResponseBody$inboundSchema,
 } from "../models/getprojectresponsebody.js";
+import {
+  GetProjectRequest,
+  GetProjectRequest$outboundSchema,
+} from "../models/getprojectstaticips.js";
 import {
   ConnectionError,
   InvalidRequestError,

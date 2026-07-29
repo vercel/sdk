@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectRateLimit } from "@vercel/sdk/models/getprojectdestination.js";
+import { GetProjectRateLimit } from "@vercel/sdk/models/getprojectvalue.js";
 
 let value: GetProjectRateLimit = {
   algo: "token_bucket",

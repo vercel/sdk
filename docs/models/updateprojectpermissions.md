@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateProjectPermissions } from "@vercel/sdk/models/updateprojectprojectsissuermode.js";
+import { UpdateProjectPermissions } from "@vercel/sdk/models/updateprojectlogheaders.js";
 
 let value: UpdateProjectPermissions = {};
 ```
@@ -63,6 +63,7 @@ let value: UpdateProjectPermissions = {};
 | `concurrentBuilds`                           | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `connect`                                    | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `connectConfiguration`                       | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
+| `connectLogs`                                | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `connexClient`                               | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `connexClientProject`                        | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `connexInstallation`                         | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |

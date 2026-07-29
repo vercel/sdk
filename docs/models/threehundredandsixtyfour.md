@@ -5,17 +5,18 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSixtyFour } from "@vercel/sdk/models/threehundredandfortytwo.js";
+import { ThreeHundredAndSixtyFour } from "@vercel/sdk/models/threehundredandfortythree.js";
 
 let value: ThreeHundredAndSixtyFour = {
-  provider: "github-custom-host",
-  login: "Susana81",
+  projectId: "<id>",
+  projectName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `provider`                                                                     | [models.UserEventPayload364Provider](../models/usereventpayload364provider.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `login`                                                                        | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                                      | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `projectId`                                | *string*                                   | :heavy_check_mark:                         | N/A                                        |
+| `projectName`                              | *string*                                   | :heavy_check_mark:                         | N/A                                        |
+| `sampling`                                 | [models.Sampling](../models/sampling.md)[] | :heavy_minus_sign:                         | N/A                                        |

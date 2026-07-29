@@ -5,7 +5,7 @@ Billing mode. Always 'flat' for flat-rate projects.
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupKind } from "@vercel/sdk/models/getmicrofrontendsingroupsamplingrules.js";
+import { GetMicrofrontendsInGroupKind } from "@vercel/sdk/models/getmicrofrontendsingroupdismissedtoasts.js";
 
 let value: GetMicrofrontendsInGroupKind = "flat";
 ```

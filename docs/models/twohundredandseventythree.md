@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSeventyThree } from "@vercel/sdk/models/twohundredandtwelve.js";
+import { TwoHundredAndSeventyThree } from "@vercel/sdk/models/twohundredandthirteen.js";
 
 let value: TwoHundredAndSeventyThree = {
   projectId: "<id>",

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ServicesConfig } from "@vercel/sdk/models/gitrepo1.js";
+import { ServicesConfig } from "@vercel/sdk/models/gitrepo3.js";
 
 let value: ServicesConfig = {};
 ```
@@ -32,4 +32,6 @@ let value: ServicesConfig = {};
 | `framework`                                                                                                | *string*                                                                                                   | :heavy_minus_sign:                                                                                         | N/A                                                                                                        |
 | `nodeVersion`                                                                                              | *string*                                                                                                   | :heavy_minus_sign:                                                                                         | N/A                                                                                                        |
 | `middleware`                                                                                               | *boolean*                                                                                                  | :heavy_minus_sign:                                                                                         | N/A                                                                                                        |
+| `middlewareRuntime`                                                                                        | [models.MiddlewareRuntime](../models/middlewareruntime.md)                                                 | :heavy_minus_sign:                                                                                         | Enforced runtime for explicitly configured Routing Middleware.                                             |
+| `middlewareMatcher`                                                                                        | *models.MiddlewareMatcher*                                                                                 | :heavy_minus_sign:                                                                                         | N/A                                                                                                        |
 | `serviceName`                                                                                              | *string*                                                                                                   | :heavy_minus_sign:                                                                                         | Owning service name; scopes per-function config such as the v2beta consumer.                               |

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { EnvironmentVariables } from "@vercel/sdk/models/createprojectbuildmachineselection.js";
+import { EnvironmentVariables } from "@vercel/sdk/models/sandbox.js";
 
 let value: EnvironmentVariables = {
   key: "<key>",

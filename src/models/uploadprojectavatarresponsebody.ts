@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
+import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -60,15 +61,15 @@ import {
   UploadProjectAvatarRollbackDescription$inboundSchema,
   UploadProjectAvatarRollingRelease,
   UploadProjectAvatarRollingRelease$inboundSchema,
+  UploadProjectAvatarSandbox,
+  UploadProjectAvatarSandbox$inboundSchema,
   UploadProjectAvatarServices,
   UploadProjectAvatarServices$inboundSchema,
   UploadProjectAvatarSpeedInsights,
   UploadProjectAvatarSpeedInsights$inboundSchema,
-  UploadProjectAvatarSsoProtection,
-  UploadProjectAvatarSsoProtection$inboundSchema,
   UploadProjectAvatarStaticIps,
   UploadProjectAvatarStaticIps$inboundSchema,
-} from "./uploadprojectavatarprojectsaliasassigned.js";
+} from "./uploadprojectavatarcve55182migrationappliedfrom.js";
 import {
   UploadProjectAvatarAbuse,
   UploadProjectAvatarAbuse$inboundSchema,
@@ -94,14 +95,16 @@ import {
   UploadProjectAvatarOidcTokenConfig$inboundSchema,
   UploadProjectAvatarPermissions,
   UploadProjectAvatarPermissions$inboundSchema,
+  UploadProjectAvatarProjectsEnv,
+  UploadProjectAvatarProjectsEnv$inboundSchema,
   UploadProjectAvatarProtectionBypass,
   UploadProjectAvatarProtectionBypass$inboundSchema,
   UploadProjectAvatarSecurity,
   UploadProjectAvatarSecurity$inboundSchema,
+  UploadProjectAvatarSsoProtection,
+  UploadProjectAvatarSsoProtection$inboundSchema,
   UploadProjectAvatarTargets,
   UploadProjectAvatarTargets$inboundSchema,
-  UploadProjectAvatarTracing,
-  UploadProjectAvatarTracing$inboundSchema,
   UploadProjectAvatarTrustedIps,
   UploadProjectAvatarTrustedIps$inboundSchema,
   UploadProjectAvatarTrustedSources,
@@ -110,7 +113,37 @@ import {
   UploadProjectAvatarUsageStatus$inboundSchema,
   UploadProjectAvatarWebAnalytics,
   UploadProjectAvatarWebAnalytics$inboundSchema,
-} from "./uploadprojectavatartracing.js";
+} from "./uploadprojectavatarprojectsenv.js";
+
+/**
+ * Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery type when project tracing is computed; absent on configs persisted before this field existed.
+ */
+export const UploadProjectAvatarDestination = {
+  External: "external",
+  Internal: "internal",
+} as const;
+/**
+ * Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery type when project tracing is computed; absent on configs persisted before this field existed.
+ */
+export type UploadProjectAvatarDestination = ClosedEnum<
+  typeof UploadProjectAvatarDestination
+>;
+
+export type UploadProjectAvatarSamplingRules = {
+  rate: number;
+  env?: UploadProjectAvatarProjectsEnv | undefined;
+  requestPath?: string | undefined;
+  /**
+   * Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery type when project tracing is computed; absent on configs persisted before this field existed.
+   */
+  destination?: UploadProjectAvatarDestination | undefined;
+};
+
+export type UploadProjectAvatarTracing = {
+  domains?: string | undefined;
+  ignorePaths?: Array<string> | undefined;
+  samplingRules?: Array<UploadProjectAvatarSamplingRules> | undefined;
+};
 
 export type UploadProjectAvatarResponseBody = {
   accountId: string;
@@ -163,6 +196,7 @@ export type UploadProjectAvatarResponseBody = {
   passwordProtection?: UploadProjectAvatarPasswordProtection | null | undefined;
   passport?: UploadProjectAvatarPassport | null | undefined;
   protectionConfig?: UploadProjectAvatarProtectionConfig | undefined;
+  sandbox?: UploadProjectAvatarSandbox | undefined;
   productionDeploymentsFastLane?: boolean | undefined;
   resourceConfig: UploadProjectAvatarResourceConfig;
   /**
@@ -230,6 +264,56 @@ export type UploadProjectAvatarResponseBody = {
 };
 
 /** @internal */
+export const UploadProjectAvatarDestination$inboundSchema: z.ZodNativeEnum<
+  typeof UploadProjectAvatarDestination
+> = z.nativeEnum(UploadProjectAvatarDestination);
+
+/** @internal */
+export const UploadProjectAvatarSamplingRules$inboundSchema: z.ZodType<
+  UploadProjectAvatarSamplingRules,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  rate: types.number(),
+  env: types.optional(UploadProjectAvatarProjectsEnv$inboundSchema),
+  requestPath: types.optional(types.string()),
+  destination: types.optional(UploadProjectAvatarDestination$inboundSchema),
+});
+
+export function uploadProjectAvatarSamplingRulesFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadProjectAvatarSamplingRules, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadProjectAvatarSamplingRules$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadProjectAvatarSamplingRules' from JSON`,
+  );
+}
+
+/** @internal */
+export const UploadProjectAvatarTracing$inboundSchema: z.ZodType<
+  UploadProjectAvatarTracing,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  domains: types.optional(types.string()),
+  ignorePaths: types.optional(z.array(types.string())),
+  samplingRules: types.optional(
+    z.array(z.lazy(() => UploadProjectAvatarSamplingRules$inboundSchema)),
+  ),
+});
+
+export function uploadProjectAvatarTracingFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadProjectAvatarTracing, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadProjectAvatarTracing$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadProjectAvatarTracing' from JSON`,
+  );
+}
+
+/** @internal */
 export const UploadProjectAvatarResponseBody$inboundSchema: z.ZodType<
   UploadProjectAvatarResponseBody,
   z.ZodTypeDef,
@@ -295,6 +379,7 @@ export const UploadProjectAvatarResponseBody$inboundSchema: z.ZodType<
   protectionConfig: types.optional(
     UploadProjectAvatarProtectionConfig$inboundSchema,
   ),
+  sandbox: types.optional(UploadProjectAvatarSandbox$inboundSchema),
   productionDeploymentsFastLane: types.optional(types.boolean()),
   resourceConfig: UploadProjectAvatarResourceConfig$inboundSchema,
   rollbackDescription: types.optional(
@@ -370,7 +455,9 @@ export const UploadProjectAvatarResponseBody$inboundSchema: z.ZodType<
     z.array(UploadProjectAvatarDismissedToasts$inboundSchema),
   ),
   protectedSourcemaps: types.optional(types.boolean()),
-  tracing: types.optional(UploadProjectAvatarTracing$inboundSchema),
+  tracing: types.optional(
+    z.lazy(() => UploadProjectAvatarTracing$inboundSchema),
+  ),
   avatar: z.nullable(types.string()).optional(),
 });
 

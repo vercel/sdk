@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
+import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import {
@@ -59,15 +60,15 @@ import {
   GetMicrofrontendsInGroupRollbackDescription$inboundSchema,
   GetMicrofrontendsInGroupRollingRelease,
   GetMicrofrontendsInGroupRollingRelease$inboundSchema,
+  GetMicrofrontendsInGroupSandbox,
+  GetMicrofrontendsInGroupSandbox$inboundSchema,
   GetMicrofrontendsInGroupServices,
   GetMicrofrontendsInGroupServices$inboundSchema,
   GetMicrofrontendsInGroupSpeedInsights,
   GetMicrofrontendsInGroupSpeedInsights$inboundSchema,
-  GetMicrofrontendsInGroupSsoProtection,
-  GetMicrofrontendsInGroupSsoProtection$inboundSchema,
   GetMicrofrontendsInGroupStaticIps,
   GetMicrofrontendsInGroupStaticIps$inboundSchema,
-} from "./getmicrofrontendsingroupaliasassigned.js";
+} from "./getmicrofrontendsingroupcve55182migrationappliedfrom.js";
 import {
   GetMicrofrontendsInGroupAbuse,
   GetMicrofrontendsInGroupAbuse$inboundSchema,
@@ -95,10 +96,10 @@ import {
   GetMicrofrontendsInGroupPermissions$inboundSchema,
   GetMicrofrontendsInGroupProtectionBypass,
   GetMicrofrontendsInGroupProtectionBypass$inboundSchema,
-  GetMicrofrontendsInGroupSamplingRules,
-  GetMicrofrontendsInGroupSamplingRules$inboundSchema,
   GetMicrofrontendsInGroupSecurity,
   GetMicrofrontendsInGroupSecurity$inboundSchema,
+  GetMicrofrontendsInGroupSsoProtection,
+  GetMicrofrontendsInGroupSsoProtection$inboundSchema,
   GetMicrofrontendsInGroupTargets,
   GetMicrofrontendsInGroupTargets$inboundSchema,
   GetMicrofrontendsInGroupTrustedIps,
@@ -109,8 +110,40 @@ import {
   GetMicrofrontendsInGroupUsageStatus$inboundSchema,
   GetMicrofrontendsInGroupWebAnalytics,
   GetMicrofrontendsInGroupWebAnalytics$inboundSchema,
-} from "./getmicrofrontendsingroupsamplingrules.js";
+} from "./getmicrofrontendsingroupdismissedtoasts.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const GetMicrofrontendsInGroupMicrofrontendsEnv = {
+  Preview: "preview",
+  Production: "production",
+} as const;
+export type GetMicrofrontendsInGroupMicrofrontendsEnv = ClosedEnum<
+  typeof GetMicrofrontendsInGroupMicrofrontendsEnv
+>;
+
+/**
+ * Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery type when project tracing is computed; absent on configs persisted before this field existed.
+ */
+export const GetMicrofrontendsInGroupDestination = {
+  External: "external",
+  Internal: "internal",
+} as const;
+/**
+ * Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery type when project tracing is computed; absent on configs persisted before this field existed.
+ */
+export type GetMicrofrontendsInGroupDestination = ClosedEnum<
+  typeof GetMicrofrontendsInGroupDestination
+>;
+
+export type GetMicrofrontendsInGroupSamplingRules = {
+  rate: number;
+  env?: GetMicrofrontendsInGroupMicrofrontendsEnv | undefined;
+  requestPath?: string | undefined;
+  /**
+   * Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery type when project tracing is computed; absent on configs persisted before this field existed.
+   */
+  destination?: GetMicrofrontendsInGroupDestination | undefined;
+};
 
 export type GetMicrofrontendsInGroupTracing = {
   domains?: string | undefined;
@@ -179,6 +212,7 @@ export type GetMicrofrontendsInGroupProjects = {
     | undefined;
   passport?: GetMicrofrontendsInGroupPassport | null | undefined;
   protectionConfig?: GetMicrofrontendsInGroupProtectionConfig | undefined;
+  sandbox?: GetMicrofrontendsInGroupSandbox | undefined;
   productionDeploymentsFastLane?: boolean | undefined;
   resourceConfig: GetMicrofrontendsInGroupResourceConfig;
   /**
@@ -259,6 +293,41 @@ export type GetMicrofrontendsInGroupResponseBody = {
 };
 
 /** @internal */
+export const GetMicrofrontendsInGroupMicrofrontendsEnv$inboundSchema:
+  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupMicrofrontendsEnv> = z
+    .nativeEnum(GetMicrofrontendsInGroupMicrofrontendsEnv);
+
+/** @internal */
+export const GetMicrofrontendsInGroupDestination$inboundSchema: z.ZodNativeEnum<
+  typeof GetMicrofrontendsInGroupDestination
+> = z.nativeEnum(GetMicrofrontendsInGroupDestination);
+
+/** @internal */
+export const GetMicrofrontendsInGroupSamplingRules$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupSamplingRules,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  rate: types.number(),
+  env: types.optional(GetMicrofrontendsInGroupMicrofrontendsEnv$inboundSchema),
+  requestPath: types.optional(types.string()),
+  destination: types.optional(
+    GetMicrofrontendsInGroupDestination$inboundSchema,
+  ),
+});
+
+export function getMicrofrontendsInGroupSamplingRulesFromJSON(
+  jsonString: string,
+): SafeParseResult<GetMicrofrontendsInGroupSamplingRules, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMicrofrontendsInGroupSamplingRules$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMicrofrontendsInGroupSamplingRules' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetMicrofrontendsInGroupTracing$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupTracing,
   z.ZodTypeDef,
@@ -267,7 +336,7 @@ export const GetMicrofrontendsInGroupTracing$inboundSchema: z.ZodType<
   domains: types.optional(types.string()),
   ignorePaths: types.optional(z.array(types.string())),
   samplingRules: types.optional(
-    z.array(GetMicrofrontendsInGroupSamplingRules$inboundSchema),
+    z.array(z.lazy(() => GetMicrofrontendsInGroupSamplingRules$inboundSchema)),
   ),
 });
 
@@ -354,6 +423,7 @@ export const GetMicrofrontendsInGroupProjects$inboundSchema: z.ZodType<
   protectionConfig: types.optional(
     GetMicrofrontendsInGroupProtectionConfig$inboundSchema,
   ),
+  sandbox: types.optional(GetMicrofrontendsInGroupSandbox$inboundSchema),
   productionDeploymentsFastLane: types.optional(types.boolean()),
   resourceConfig: GetMicrofrontendsInGroupResourceConfig$inboundSchema,
   rollbackDescription: types.optional(

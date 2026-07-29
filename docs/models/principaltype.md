@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PrincipalType } from "@vercel/sdk/models/threehundredandfortytwo.js";
+import { PrincipalType } from "@vercel/sdk/models/threehundredandfortythree.js";
 
 let value: PrincipalType = "user";
 ```

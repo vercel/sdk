@@ -11,6 +11,15 @@ import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { FlagJSONValue, FlagJSONValue$inboundSchema } from "./flagjsonvalue.js";
 import {
+  GitRepo3,
+  GitRepo3$inboundSchema,
+  GitRepo4,
+  GitRepo4$inboundSchema,
+  Services,
+  Services$inboundSchema,
+} from "./gitrepo3.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
+import {
   AliasAssignedAt,
   AliasAssignedAt$inboundSchema,
   AliasError,
@@ -71,20 +80,44 @@ import {
   ReadyState$inboundSchema,
   ReadySubstate,
   ReadySubstate$inboundSchema,
-} from "./format.js";
-import {
-  GitRepo1,
-  GitRepo1$inboundSchema,
-  GitRepo2,
-  GitRepo2$inboundSchema,
-  GitRepo3,
-  GitRepo3$inboundSchema,
-  GitRepo4,
-  GitRepo4$inboundSchema,
-  Services,
-  Services$inboundSchema,
-} from "./gitrepo1.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
+} from "./servicesbuilder.js";
+
+export const GitRepoOwnerType = {
+  Team: "team",
+  User: "user",
+} as const;
+export type GitRepoOwnerType = ClosedEnum<typeof GitRepoOwnerType>;
+
+export type GitRepo2 = {
+  org: string;
+  repo: string;
+  repoId: number;
+  type: "github";
+  repoOwnerId: number;
+  path: string;
+  defaultBranch: string;
+  name: string;
+  private: boolean;
+  ownerType: GitRepoOwnerType;
+};
+
+export const OwnerType = {
+  Team: "team",
+  User: "user",
+} as const;
+export type OwnerType = ClosedEnum<typeof OwnerType>;
+
+export type GitRepo1 = {
+  namespace: string;
+  projectId: number;
+  type: "gitlab";
+  url: string;
+  path: string;
+  defaultBranch: string;
+  name: string;
+  private: boolean;
+  ownerType: OwnerType;
+};
 
 export type GitRepo = GitRepo1 | GitRepo2 | GitRepo3 | GitRepo4;
 
@@ -703,10 +736,74 @@ export type CancelDeploymentResponseBody = {
 };
 
 /** @internal */
+export const GitRepoOwnerType$inboundSchema: z.ZodNativeEnum<
+  typeof GitRepoOwnerType
+> = z.nativeEnum(GitRepoOwnerType);
+
+/** @internal */
+export const GitRepo2$inboundSchema: z.ZodType<
+  GitRepo2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  org: types.string(),
+  repo: types.string(),
+  repoId: types.number(),
+  type: types.literal("github"),
+  repoOwnerId: types.number(),
+  path: types.string(),
+  defaultBranch: types.string(),
+  name: types.string(),
+  private: types.boolean(),
+  ownerType: GitRepoOwnerType$inboundSchema,
+});
+
+export function gitRepo2FromJSON(
+  jsonString: string,
+): SafeParseResult<GitRepo2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GitRepo2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GitRepo2' from JSON`,
+  );
+}
+
+/** @internal */
+export const OwnerType$inboundSchema: z.ZodNativeEnum<typeof OwnerType> = z
+  .nativeEnum(OwnerType);
+
+/** @internal */
+export const GitRepo1$inboundSchema: z.ZodType<
+  GitRepo1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  namespace: types.string(),
+  projectId: types.number(),
+  type: types.literal("gitlab"),
+  url: types.string(),
+  path: types.string(),
+  defaultBranch: types.string(),
+  name: types.string(),
+  private: types.boolean(),
+  ownerType: OwnerType$inboundSchema,
+});
+
+export function gitRepo1FromJSON(
+  jsonString: string,
+): SafeParseResult<GitRepo1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GitRepo1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GitRepo1' from JSON`,
+  );
+}
+
+/** @internal */
 export const GitRepo$inboundSchema: z.ZodType<GitRepo, z.ZodTypeDef, unknown> =
   z.union([
-    GitRepo1$inboundSchema,
-    GitRepo2$inboundSchema,
+    z.lazy(() => GitRepo1$inboundSchema),
+    z.lazy(() => GitRepo2$inboundSchema),
     GitRepo3$inboundSchema,
     GitRepo4$inboundSchema,
   ]);
@@ -1369,8 +1466,8 @@ export const CancelDeploymentResponseBody$inboundSchema: z.ZodType<
   services: types.optional(z.array(Services$inboundSchema)),
   gitRepo: z.nullable(
     z.union([
-      GitRepo1$inboundSchema,
-      GitRepo2$inboundSchema,
+      z.lazy(() => GitRepo1$inboundSchema),
+      z.lazy(() => GitRepo2$inboundSchema),
       GitRepo3$inboundSchema,
       GitRepo4$inboundSchema,
     ]),

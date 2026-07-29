@@ -5,7 +5,7 @@ Configuration for matching git branches to this environment
 ## Example Usage
 
 ```typescript
-import { CustomEnvironmentBranchMatcher } from "@vercel/sdk/models/format.js";
+import { CustomEnvironmentBranchMatcher } from "@vercel/sdk/models/servicesbuilder.js";
 
 let value: CustomEnvironmentBranchMatcher = {
   type: "startsWith",

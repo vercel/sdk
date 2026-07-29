@@ -11731,6 +11731,7 @@
                       "enum": [
                         "api-key",
                         "custom",
+                        "discord",
                         "github",
                         "linear",
                         "microsoft-entra",
@@ -12113,6 +12114,9 @@
             "description": ""
           },
           "410": {
+            "description": ""
+          },
+          "422": {
             "description": ""
           },
           "502": {
@@ -13252,6 +13256,9 @@
                             "type": "array"
                           },
                           "expiresAt": {
+                            "type": "number"
+                          },
+                          "expiresIn": {
                             "type": "number"
                           },
                           "refreshTokenExpiresAt": {
@@ -18665,6 +18672,27 @@
                                               true
                                             ]
                                           },
+                                          "middlewareRuntime": {
+                                            "type": "string",
+                                            "enum": [
+                                              "nodejs"
+                                            ],
+                                            "description": "Enforced runtime for explicitly configured Routing Middleware."
+                                          },
+                                          "middlewareMatcher": {
+                                            "oneOf": [
+                                              {
+                                                "type": "string"
+                                              },
+                                              {
+                                                "items": {
+                                                  "type": "string"
+                                                },
+                                                "type": "array",
+                                                "description": "Matcher supplied outside of the middleware source module."
+                                              }
+                                            ]
+                                          },
                                           "serviceName": {
                                             "type": "string",
                                             "description": "Owning service name; scopes per-function config such as the v2beta consumer."
@@ -19137,6 +19165,27 @@
                                               true
                                             ]
                                           },
+                                          "middlewareRuntime": {
+                                            "type": "string",
+                                            "enum": [
+                                              "nodejs"
+                                            ],
+                                            "description": "Enforced runtime for explicitly configured Routing Middleware."
+                                          },
+                                          "middlewareMatcher": {
+                                            "oneOf": [
+                                              {
+                                                "type": "string"
+                                              },
+                                              {
+                                                "items": {
+                                                  "type": "string"
+                                                },
+                                                "type": "array",
+                                                "description": "Matcher supplied outside of the middleware source module."
+                                              }
+                                            ]
+                                          },
                                           "serviceName": {
                                             "type": "string",
                                             "description": "Owning service name; scopes per-function config such as the v2beta consumer."
@@ -19174,7 +19223,7 @@
                                           "enum": [
                                             "service"
                                           ],
-                                          "description": "Must be `\"service\"` for Service-to-Service HTTP bindings."
+                                          "description": "If present, must be `\"service\"` for Service-to-Service HTTP bindings."
                                         },
                                         "service": {
                                           "type": "string",
@@ -19195,8 +19244,7 @@
                                       "required": [
                                         "env",
                                         "format",
-                                        "service",
-                                        "type"
+                                        "service"
                                       ],
                                       "type": "object",
                                       "description": "Caller-side bindings to other services."
@@ -26348,6 +26396,27 @@
                                               true
                                             ]
                                           },
+                                          "middlewareRuntime": {
+                                            "type": "string",
+                                            "enum": [
+                                              "nodejs"
+                                            ],
+                                            "description": "Enforced runtime for explicitly configured Routing Middleware."
+                                          },
+                                          "middlewareMatcher": {
+                                            "oneOf": [
+                                              {
+                                                "type": "string"
+                                              },
+                                              {
+                                                "items": {
+                                                  "type": "string"
+                                                },
+                                                "type": "array",
+                                                "description": "Matcher supplied outside of the middleware source module."
+                                              }
+                                            ]
+                                          },
                                           "serviceName": {
                                             "type": "string",
                                             "description": "Owning service name; scopes per-function config such as the v2beta consumer."
@@ -26820,6 +26889,27 @@
                                               true
                                             ]
                                           },
+                                          "middlewareRuntime": {
+                                            "type": "string",
+                                            "enum": [
+                                              "nodejs"
+                                            ],
+                                            "description": "Enforced runtime for explicitly configured Routing Middleware."
+                                          },
+                                          "middlewareMatcher": {
+                                            "oneOf": [
+                                              {
+                                                "type": "string"
+                                              },
+                                              {
+                                                "items": {
+                                                  "type": "string"
+                                                },
+                                                "type": "array",
+                                                "description": "Matcher supplied outside of the middleware source module."
+                                              }
+                                            ]
+                                          },
                                           "serviceName": {
                                             "type": "string",
                                             "description": "Owning service name; scopes per-function config such as the v2beta consumer."
@@ -26857,7 +26947,7 @@
                                           "enum": [
                                             "service"
                                           ],
-                                          "description": "Must be `\"service\"` for Service-to-Service HTTP bindings."
+                                          "description": "If present, must be `\"service\"` for Service-to-Service HTTP bindings."
                                         },
                                         "service": {
                                           "type": "string",
@@ -26878,8 +26968,7 @@
                                       "required": [
                                         "env",
                                         "format",
-                                        "service",
-                                        "type"
+                                        "service"
                                       ],
                                       "type": "object",
                                       "description": "Caller-side bindings to other services."
@@ -33211,6 +33300,27 @@
                                           true
                                         ]
                                       },
+                                      "middlewareRuntime": {
+                                        "type": "string",
+                                        "enum": [
+                                          "nodejs"
+                                        ],
+                                        "description": "Enforced runtime for explicitly configured Routing Middleware."
+                                      },
+                                      "middlewareMatcher": {
+                                        "oneOf": [
+                                          {
+                                            "type": "string"
+                                          },
+                                          {
+                                            "items": {
+                                              "type": "string"
+                                            },
+                                            "type": "array",
+                                            "description": "Matcher supplied outside of the middleware source module."
+                                          }
+                                        ]
+                                      },
                                       "serviceName": {
                                         "type": "string",
                                         "description": "Owning service name; scopes per-function config such as the v2beta consumer."
@@ -33683,6 +33793,27 @@
                                           true
                                         ]
                                       },
+                                      "middlewareRuntime": {
+                                        "type": "string",
+                                        "enum": [
+                                          "nodejs"
+                                        ],
+                                        "description": "Enforced runtime for explicitly configured Routing Middleware."
+                                      },
+                                      "middlewareMatcher": {
+                                        "oneOf": [
+                                          {
+                                            "type": "string"
+                                          },
+                                          {
+                                            "items": {
+                                              "type": "string"
+                                            },
+                                            "type": "array",
+                                            "description": "Matcher supplied outside of the middleware source module."
+                                          }
+                                        ]
+                                      },
                                       "serviceName": {
                                         "type": "string",
                                         "description": "Owning service name; scopes per-function config such as the v2beta consumer."
@@ -33720,7 +33851,7 @@
                                       "enum": [
                                         "service"
                                       ],
-                                      "description": "Must be `\"service\"` for Service-to-Service HTTP bindings."
+                                      "description": "If present, must be `\"service\"` for Service-to-Service HTTP bindings."
                                     },
                                     "service": {
                                       "type": "string",
@@ -33741,8 +33872,7 @@
                                   "required": [
                                     "env",
                                     "format",
-                                    "service",
-                                    "type"
+                                    "service"
                                   ],
                                   "type": "object",
                                   "description": "Caller-side bindings to other services."
@@ -76455,6 +76585,30 @@
                             },
                             "type": "object"
                           },
+                          "sandbox": {
+                            "properties": {
+                              "region": {
+                                "type": "string",
+                                "enum": [
+                                  "cle1",
+                                  "iad1",
+                                  "sfo1"
+                                ]
+                              },
+                              "failoverRegions": {
+                                "items": {
+                                  "type": "string",
+                                  "enum": [
+                                    "cle1",
+                                    "iad1",
+                                    "sfo1"
+                                  ]
+                                },
+                                "type": "array"
+                              }
+                            },
+                            "type": "object"
+                          },
                           "productionDeploymentsFastLane": {
                             "type": "boolean",
                             "enum": [
@@ -77565,6 +77719,12 @@
                                 "type": "array"
                               },
                               "connectConfiguration": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "connectLogs": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
                                 },
@@ -99915,6 +100075,30 @@
                                 },
                                 "type": "object"
                               },
+                              "sandbox": {
+                                "properties": {
+                                  "region": {
+                                    "type": "string",
+                                    "enum": [
+                                      "cle1",
+                                      "iad1",
+                                      "sfo1"
+                                    ]
+                                  },
+                                  "failoverRegions": {
+                                    "items": {
+                                      "type": "string",
+                                      "enum": [
+                                        "cle1",
+                                        "iad1",
+                                        "sfo1"
+                                      ]
+                                    },
+                                    "type": "array"
+                                  }
+                                },
+                                "type": "object"
+                              },
                               "productionDeploymentsFastLane": {
                                 "type": "boolean",
                                 "enum": [
@@ -101025,6 +101209,12 @@
                                     "type": "array"
                                   },
                                   "connectConfiguration": {
+                                    "items": {
+                                      "$ref": "#/components/schemas/ACLAction"
+                                    },
+                                    "type": "array"
+                                  },
+                                  "connectLogs": {
                                     "items": {
                                       "$ref": "#/components/schemas/ACLAction"
                                     },
@@ -107786,6 +107976,30 @@
                       },
                       "type": "object"
                     },
+                    "sandbox": {
+                      "properties": {
+                        "region": {
+                          "type": "string",
+                          "enum": [
+                            "cle1",
+                            "iad1",
+                            "sfo1"
+                          ]
+                        },
+                        "failoverRegions": {
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "cle1",
+                              "iad1",
+                              "sfo1"
+                            ]
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "type": "object"
+                    },
                     "productionDeploymentsFastLane": {
                       "type": "boolean",
                       "enum": [
@@ -108896,6 +109110,12 @@
                           "type": "array"
                         },
                         "connectConfiguration": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "connectLogs": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -115823,6 +116043,30 @@
                       },
                       "type": "object"
                     },
+                    "sandbox": {
+                      "properties": {
+                        "region": {
+                          "type": "string",
+                          "enum": [
+                            "cle1",
+                            "iad1",
+                            "sfo1"
+                          ]
+                        },
+                        "failoverRegions": {
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "cle1",
+                              "iad1",
+                              "sfo1"
+                            ]
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "type": "object"
+                    },
                     "productionDeploymentsFastLane": {
                       "type": "boolean",
                       "enum": [
@@ -116933,6 +117177,12 @@
                           "type": "array"
                         },
                         "connectConfiguration": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "connectLogs": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -123221,6 +123471,30 @@
                       },
                       "type": "object"
                     },
+                    "sandbox": {
+                      "properties": {
+                        "region": {
+                          "type": "string",
+                          "enum": [
+                            "cle1",
+                            "iad1",
+                            "sfo1"
+                          ]
+                        },
+                        "failoverRegions": {
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "cle1",
+                              "iad1",
+                              "sfo1"
+                            ]
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "type": "object"
+                    },
                     "productionDeploymentsFastLane": {
                       "type": "boolean",
                       "enum": [
@@ -124331,6 +124605,12 @@
                           "type": "array"
                         },
                         "connectConfiguration": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "connectLogs": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -131883,6 +132163,30 @@
                       },
                       "type": "object"
                     },
+                    "sandbox": {
+                      "properties": {
+                        "region": {
+                          "type": "string",
+                          "enum": [
+                            "cle1",
+                            "iad1",
+                            "sfo1"
+                          ]
+                        },
+                        "failoverRegions": {
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "cle1",
+                              "iad1",
+                              "sfo1"
+                            ]
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "type": "object"
+                    },
                     "productionDeploymentsFastLane": {
                       "type": "boolean",
                       "enum": [
@@ -132993,6 +133297,12 @@
                           "type": "array"
                         },
                         "connectConfiguration": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "connectLogs": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -151950,6 +152260,30 @@
                       },
                       "type": "object"
                     },
+                    "sandbox": {
+                      "properties": {
+                        "region": {
+                          "type": "string",
+                          "enum": [
+                            "cle1",
+                            "iad1",
+                            "sfo1"
+                          ]
+                        },
+                        "failoverRegions": {
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "cle1",
+                              "iad1",
+                              "sfo1"
+                            ]
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "type": "object"
+                    },
                     "productionDeploymentsFastLane": {
                       "type": "boolean",
                       "enum": [
@@ -153060,6 +153394,12 @@
                           "type": "array"
                         },
                         "connectConfiguration": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "connectLogs": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -195359,6 +195699,10 @@
             },
             "type": "array"
           },
+          "egressCidrBlock": {
+            "type": "string",
+            "description": "The single contiguous CIDR block from which all egress (NAT gateway) IP addresses are allocated. Present only for networks created with the egress CIDR block feature enabled. Customers can allowlist this range instead of individual egress IPs so it keeps working when AZs are added."
+          },
           "hostedZones": {
             "properties": {
               "count": {
@@ -197207,6 +197551,7 @@
               "project-root-directory-updated",
               "project-routes-version-promoted",
               "project-routes-version-restored",
+              "project-sandbox-config-updated",
               "project-sandbox-url-protection-updated",
               "project-skew-protection-allowed-domains-updated",
               "project-skew-protection-max-age-updated",
@@ -212829,6 +213174,31 @@
                   "projectName": {
                     "type": "string"
                   },
+                  "region": {
+                    "type": "string"
+                  },
+                  "failoverRegions": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                },
+                "required": [
+                  "projectId",
+                  "projectName"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "projectId": {
+                    "type": "string"
+                  },
+                  "projectName": {
+                    "type": "string"
+                  },
                   "previous": {
                     "properties": {
                       "issuerMode": {
@@ -218012,6 +218382,7 @@
               "project-root-directory-updated",
               "project-routes-version-promoted",
               "project-routes-version-restored",
+              "project-sandbox-config-updated",
               "project-sandbox-url-protection-updated",
               "project-skew-protection-allowed-domains-updated",
               "project-skew-protection-max-age-updated",
@@ -218642,6 +219013,7 @@
                 "project-root-directory-updated",
                 "project-routes-version-promoted",
                 "project-routes-version-restored",
+                "project-sandbox-config-updated",
                 "project-sandbox-url-protection-updated",
                 "project-skew-protection-allowed-domains-updated",
                 "project-skew-protection-max-age-updated",

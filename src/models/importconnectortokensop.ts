@@ -137,6 +137,7 @@ export type ImportConnectorTokensTokens = {
     | Array<ImportConnectorTokensAuthorizationDetails>
     | undefined;
   expiresAt: number;
+  expiresIn?: number | undefined;
   refreshTokenExpiresAt?: number | undefined;
   externalSubject?: string | undefined;
   /**
@@ -618,6 +619,7 @@ export const ImportConnectorTokensTokens$inboundSchema: z.ZodType<
     ),
   ),
   expiresAt: types.number(),
+  expiresIn: types.optional(types.number()),
   refreshTokenExpiresAt: types.optional(types.number()),
   externalSubject: types.optional(types.string()),
   claims: types.optional(z.record(z.any())),

@@ -12,10 +12,6 @@ import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import {
-  CreateProjectRequest,
-  CreateProjectRequest$outboundSchema,
-} from "../models/createprojectbuildmachineselection.js";
-import {
   CreateProjectResponseBody,
   CreateProjectResponseBody$inboundSchema,
 } from "../models/createprojectresponsebody.js";
@@ -27,6 +23,10 @@ import {
   UnexpectedClientError,
 } from "../models/httpclienterrors.js";
 import { ResponseValidationError } from "../models/responsevalidationerror.js";
+import {
+  CreateProjectRequest,
+  CreateProjectRequest$outboundSchema,
+} from "../models/sandbox.js";
 import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import { VercelError } from "../models/vercelerror.js";
 import { APICall, APIPromise } from "../types/async.js";

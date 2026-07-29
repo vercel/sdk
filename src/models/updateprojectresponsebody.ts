@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
@@ -54,14 +55,16 @@ import {
   UpdateProjectLatestDeployments$inboundSchema,
   UpdateProjectLink,
   UpdateProjectLink$inboundSchema,
+  UpdateProjectLogHeaders,
+  UpdateProjectLogHeaders$inboundSchema,
+  UpdateProjectManagedRules,
+  UpdateProjectManagedRules$inboundSchema,
   UpdateProjectMicrofrontends,
   UpdateProjectMicrofrontends$inboundSchema,
   UpdateProjectPermissions,
   UpdateProjectPermissions$inboundSchema,
   UpdateProjectProjectsFramework,
   UpdateProjectProjectsFramework$inboundSchema,
-  UpdateProjectProjectsIssuerMode,
-  UpdateProjectProjectsIssuerMode$inboundSchema,
   UpdateProjectProjectsNodeVersion,
   UpdateProjectProjectsNodeVersion$inboundSchema,
   UpdateProjectProjectsOptionsAllowlist,
@@ -86,8 +89,10 @@ import {
   UpdateProjectRollbackDescription$inboundSchema,
   UpdateProjectRollingRelease,
   UpdateProjectRollingRelease$inboundSchema,
-  UpdateProjectSecurity,
-  UpdateProjectSecurity$inboundSchema,
+  UpdateProjectRulesets,
+  UpdateProjectRulesets$inboundSchema,
+  UpdateProjectSandbox,
+  UpdateProjectSandbox$inboundSchema,
   UpdateProjectServices,
   UpdateProjectServices$inboundSchema,
   UpdateProjectTargets,
@@ -96,7 +101,52 @@ import {
   UpdateProjectTrustedSources$inboundSchema,
   UpdateProjectWebAnalytics,
   UpdateProjectWebAnalytics$inboundSchema,
-} from "./updateprojectprojectsissuermode.js";
+} from "./updateprojectlogheaders.js";
+
+export type UpdateProjectSecurityPlusMetadata = {
+  updatedAt: number;
+  /**
+   * Timestamp when the feature was first enabled. Never changes after initial enablement.
+   */
+  firstEnabledAt?: number | undefined;
+};
+
+export type UpdateProjectSecurity = {
+  attackModeEnabled?: boolean | undefined;
+  attackModeUpdatedAt?: number | undefined;
+  firewallEnabled?: boolean | undefined;
+  firewallUpdatedAt?: number | undefined;
+  attackModeActiveUntil?: number | null | undefined;
+  firewallConfigVersion?: number | undefined;
+  rulesets?: { [k: string]: UpdateProjectRulesets } | undefined;
+  firewallSeawallEnabled?: boolean | undefined;
+  ja3Enabled?: boolean | undefined;
+  ja4Enabled?: boolean | undefined;
+  firewallBypassIps?: Array<string> | undefined;
+  managedRules?: UpdateProjectManagedRules | null | undefined;
+  botIdEnabled?: boolean | undefined;
+  logHeaders?: UpdateProjectLogHeaders | undefined;
+  securityPlus?: boolean | undefined;
+  securityPlusMetadata?: UpdateProjectSecurityPlusMetadata | undefined;
+  /**
+   * Whether Page Integrity is enabled for this project. Used by the metadata service to gate DynamoDB lookups against the page-integrity-inventory table.
+   */
+  pageIntegrityEnabled?: boolean | undefined;
+};
+
+/**
+ * - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`
+ */
+export const UpdateProjectProjectsIssuerMode = {
+  Global: "global",
+  Team: "team",
+} as const;
+/**
+ * - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`
+ */
+export type UpdateProjectProjectsIssuerMode = ClosedEnum<
+  typeof UpdateProjectProjectsIssuerMode
+>;
 
 export type UpdateProjectProjectsOidcTokenConfig = {
   /**
@@ -699,6 +749,7 @@ export type UpdateProjectResponseBody = {
     | undefined;
   passport?: UpdateProjectProjectsPassport | null | undefined;
   protectionConfig?: UpdateProjectProtectionConfig | undefined;
+  sandbox?: UpdateProjectSandbox | undefined;
   productionDeploymentsFastLane?: boolean | undefined;
   resourceConfig: UpdateProjectProjectsResourceConfig;
   /**
@@ -764,6 +815,72 @@ export type UpdateProjectResponseBody = {
   tracing?: UpdateProjectTracing | undefined;
   avatar?: string | null | undefined;
 };
+
+/** @internal */
+export const UpdateProjectSecurityPlusMetadata$inboundSchema: z.ZodType<
+  UpdateProjectSecurityPlusMetadata,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  updatedAt: types.number(),
+  firstEnabledAt: types.optional(types.number()),
+});
+
+export function updateProjectSecurityPlusMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectSecurityPlusMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectSecurityPlusMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectSecurityPlusMetadata' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectSecurity$inboundSchema: z.ZodType<
+  UpdateProjectSecurity,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  attackModeEnabled: types.optional(types.boolean()),
+  attackModeUpdatedAt: types.optional(types.number()),
+  firewallEnabled: types.optional(types.boolean()),
+  firewallUpdatedAt: types.optional(types.number()),
+  attackModeActiveUntil: z.nullable(types.number()).optional(),
+  firewallConfigVersion: types.optional(types.number()),
+  rulesets: types.optional(z.record(UpdateProjectRulesets$inboundSchema)),
+  firewallSeawallEnabled: types.optional(types.boolean()),
+  ja3Enabled: types.optional(types.boolean()),
+  ja4Enabled: types.optional(types.boolean()),
+  firewallBypassIps: types.optional(z.array(types.string())),
+  managedRules: z.nullable(UpdateProjectManagedRules$inboundSchema).optional(),
+  botIdEnabled: types.optional(types.boolean()),
+  log_headers: types.optional(UpdateProjectLogHeaders$inboundSchema),
+  securityPlus: types.optional(types.boolean()),
+  securityPlusMetadata: types.optional(
+    z.lazy(() => UpdateProjectSecurityPlusMetadata$inboundSchema),
+  ),
+  pageIntegrityEnabled: types.optional(types.boolean()),
+}).transform((v) => {
+  return remap$(v, {
+    "log_headers": "logHeaders",
+  });
+});
+
+export function updateProjectSecurityFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectSecurity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectSecurity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectSecurity' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectProjectsIssuerMode$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectProjectsIssuerMode
+> = z.nativeEnum(UpdateProjectProjectsIssuerMode);
 
 /** @internal */
 export const UpdateProjectProjectsOidcTokenConfig$inboundSchema: z.ZodType<
@@ -2247,6 +2364,7 @@ export const UpdateProjectResponseBody$inboundSchema: z.ZodType<
   ).optional(),
   passport: z.nullable(UpdateProjectProjectsPassport$inboundSchema).optional(),
   protectionConfig: types.optional(UpdateProjectProtectionConfig$inboundSchema),
+  sandbox: types.optional(UpdateProjectSandbox$inboundSchema),
   productionDeploymentsFastLane: types.optional(types.boolean()),
   resourceConfig: UpdateProjectProjectsResourceConfig$inboundSchema,
   rollbackDescription: types.optional(
@@ -2298,7 +2416,7 @@ export const UpdateProjectResponseBody$inboundSchema: z.ZodType<
   paused: types.optional(types.boolean()),
   concurrencyBucketName: types.optional(types.string()),
   webAnalytics: types.optional(UpdateProjectWebAnalytics$inboundSchema),
-  security: types.optional(UpdateProjectSecurity$inboundSchema),
+  security: types.optional(z.lazy(() => UpdateProjectSecurity$inboundSchema)),
   oidcTokenConfig: types.optional(
     z.lazy(() => UpdateProjectProjectsOidcTokenConfig$inboundSchema),
   ),

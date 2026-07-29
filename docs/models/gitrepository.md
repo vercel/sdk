@@ -5,7 +5,7 @@ The Git Repository that will be connected to the project. When this is defined, 
 ## Example Usage
 
 ```typescript
-import { GitRepository } from "@vercel/sdk/models/createprojectbuildmachineselection.js";
+import { GitRepository } from "@vercel/sdk/models/sandbox.js";
 
 let value: GitRepository = {
   repo: "<value>",

@@ -10,6 +10,36 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
+  CreateDeploymentRoutesDeployments2,
+  CreateDeploymentRoutesDeployments2$inboundSchema,
+  CreateDeploymentRoutesDeploymentsDestination,
+  CreateDeploymentRoutesDeploymentsDestination$inboundSchema,
+  CreateDeploymentRoutesDeploymentsHas,
+  CreateDeploymentRoutesDeploymentsHas$inboundSchema,
+  CreateDeploymentRoutesDeploymentsMissing,
+  CreateDeploymentRoutesDeploymentsMissing$inboundSchema,
+  CreateDeploymentRoutesDeploymentsMitigate,
+  CreateDeploymentRoutesDeploymentsMitigate$inboundSchema,
+  CreateDeploymentRoutesDeploymentsTransforms,
+  CreateDeploymentRoutesDeploymentsTransforms$inboundSchema,
+  CreateDeploymentRoutesLocale,
+  CreateDeploymentRoutesLocale$inboundSchema,
+  CreateDeploymentServicesDeploymentsBuilder,
+  CreateDeploymentServicesDeploymentsBuilder$inboundSchema,
+  CreateDeploymentServicesFunctions,
+  CreateDeploymentServicesFunctions$inboundSchema,
+  CreateDeploymentServicesHeaders,
+  CreateDeploymentServicesHeaders$inboundSchema,
+  CreateDeploymentServicesRedirects,
+  CreateDeploymentServicesRedirects$inboundSchema,
+  ResponseBodyRoutes,
+  ResponseBodyRoutes$inboundSchema,
+  ServicesBindings,
+  ServicesBindings$inboundSchema,
+  ServicesRewrites,
+  ServicesRewrites$inboundSchema,
+} from "./createdeploymentroutesdeploymentsdestination.js";
+import {
   CreateDeploymentResponseBodyChecksConclusion,
   CreateDeploymentResponseBodyChecksConclusion$inboundSchema,
   CreateDeploymentResponseBodyChecksState,
@@ -69,26 +99,50 @@ import {
   ResponseBodyPlan,
   ResponseBodyPlan$inboundSchema,
 } from "./createdeploymentroutesmitigate.js";
-import {
-  CreateDeploymentServicesDeploymentsBuilder,
-  CreateDeploymentServicesDeploymentsBuilder$inboundSchema,
-  CreateDeploymentServicesFunctions,
-  CreateDeploymentServicesFunctions$inboundSchema,
-  CreateDeploymentServicesHeaders,
-  CreateDeploymentServicesHeaders$inboundSchema,
-  CreateDeploymentServicesRedirects,
-  CreateDeploymentServicesRedirects$inboundSchema,
-  CreateDeploymentServicesRoutes,
-  CreateDeploymentServicesRoutes$inboundSchema,
-  ResponseBodyRoutes,
-  ResponseBodyRoutes$inboundSchema,
-  ServicesBindings,
-  ServicesBindings$inboundSchema,
-  ServicesRewrites,
-  ServicesRewrites$inboundSchema,
-} from "./createdeploymentservicesroutes.js";
 import { FlagJSONValue, FlagJSONValue$inboundSchema } from "./flagjsonvalue.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type CreateDeploymentRoutesDeployments1 = {
+  src: string;
+  dest?: string | undefined;
+  headers?: { [k: string]: string } | undefined;
+  methods?: Array<string> | undefined;
+  continue?: boolean | undefined;
+  override?: boolean | undefined;
+  caseSensitive?: boolean | undefined;
+  check?: boolean | undefined;
+  important?: boolean | undefined;
+  status?: number | undefined;
+  has?: Array<CreateDeploymentRoutesDeploymentsHas> | undefined;
+  missing?: Array<CreateDeploymentRoutesDeploymentsMissing> | undefined;
+  mitigate?: CreateDeploymentRoutesDeploymentsMitigate | undefined;
+  transforms?: Array<CreateDeploymentRoutesDeploymentsTransforms> | undefined;
+  env?: Array<string> | undefined;
+  locale?: CreateDeploymentRoutesLocale | undefined;
+  /**
+   * Aliases for `src`, `dest`, and `status`. These provide consistency with the `rewrites`, `redirects`, and `headers` fields which use `source`, `destination`, and `statusCode`. During normalization, the string forms are converted to their canonical forms (`src`, `dest`, `status`) and stripped from the route object. `destination` may also be a service-targeted object, in which case routing is delegated into the named service's internal route table and the object is preserved as-is (not folded into `dest`).
+   */
+  source?: string | undefined;
+  destination?: CreateDeploymentRoutesDeploymentsDestination | undefined;
+  statusCode?: number | undefined;
+  /**
+   * A middleware key within the `output` key under the build result. Overrides a `middleware` definition.
+   */
+  middlewarePath?: string | undefined;
+  /**
+   * The original middleware matchers.
+   */
+  middlewareRawSrc?: Array<string> | undefined;
+  /**
+   * A middleware index in the `middleware` key under the build result
+   */
+  middleware?: number | undefined;
+  respectOriginCacheControl?: boolean | undefined;
+};
+
+export type CreateDeploymentServicesRoutes =
+  | CreateDeploymentRoutesDeployments1
+  | CreateDeploymentRoutesDeployments2;
 
 /**
  * Services detected during build from vercel.json experimentalServices or auto-detected from project structure. Used to inject service URLs as environment variables at runtime.
@@ -130,7 +184,11 @@ export type CreateDeploymentServices2 = {
   headers?: Array<CreateDeploymentServicesHeaders> | undefined;
   redirects?: Array<CreateDeploymentServicesRedirects> | undefined;
   rewrites?: Array<ServicesRewrites> | undefined;
-  routes?: Array<CreateDeploymentServicesRoutes> | undefined;
+  routes?:
+    | Array<
+      CreateDeploymentRoutesDeployments1 | CreateDeploymentRoutesDeployments2
+    >
+    | undefined;
   cleanUrls?: boolean | undefined;
   trailingSlash?: boolean | undefined;
 };
@@ -282,6 +340,21 @@ export type CreateDeploymentServicesProjectSettings = {
   commandForIgnoringBuildStep?: string | null | undefined;
 };
 
+/**
+ * Enforced runtime for explicitly configured Routing Middleware.
+ */
+export const CreateDeploymentServicesMiddlewareRuntime = {
+  Nodejs: "nodejs",
+} as const;
+/**
+ * Enforced runtime for explicitly configured Routing Middleware.
+ */
+export type CreateDeploymentServicesMiddlewareRuntime = ClosedEnum<
+  typeof CreateDeploymentServicesMiddlewareRuntime
+>;
+
+export type CreateDeploymentServicesMiddlewareMatcher = string | Array<string>;
+
 export type CreateDeploymentServicesConfig = {
   bunVersion?: string | undefined;
   maxLambdaSize?: string | undefined;
@@ -305,6 +378,11 @@ export type CreateDeploymentServicesConfig = {
   framework?: string | null | undefined;
   nodeVersion?: string | undefined;
   middleware?: boolean | undefined;
+  /**
+   * Enforced runtime for explicitly configured Routing Middleware.
+   */
+  middlewareRuntime?: CreateDeploymentServicesMiddlewareRuntime | undefined;
+  middlewareMatcher?: string | Array<string> | undefined;
   /**
    * Owning service name; scopes per-function config such as the v2beta consumer.
    */
@@ -1190,6 +1268,78 @@ export type CreateDeploymentResponseBody =
   | CreateDeploymentResponseBody1;
 
 /** @internal */
+export const CreateDeploymentRoutesDeployments1$inboundSchema: z.ZodType<
+  CreateDeploymentRoutesDeployments1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  src: types.string(),
+  dest: types.optional(types.string()),
+  headers: types.optional(z.record(types.string())),
+  methods: types.optional(z.array(types.string())),
+  continue: types.optional(types.boolean()),
+  override: types.optional(types.boolean()),
+  caseSensitive: types.optional(types.boolean()),
+  check: types.optional(types.boolean()),
+  important: types.optional(types.boolean()),
+  status: types.optional(types.number()),
+  has: types.optional(
+    z.array(CreateDeploymentRoutesDeploymentsHas$inboundSchema),
+  ),
+  missing: types.optional(
+    z.array(CreateDeploymentRoutesDeploymentsMissing$inboundSchema),
+  ),
+  mitigate: types.optional(
+    CreateDeploymentRoutesDeploymentsMitigate$inboundSchema,
+  ),
+  transforms: types.optional(
+    z.array(CreateDeploymentRoutesDeploymentsTransforms$inboundSchema),
+  ),
+  env: types.optional(z.array(types.string())),
+  locale: types.optional(CreateDeploymentRoutesLocale$inboundSchema),
+  source: types.optional(types.string()),
+  destination: types.optional(
+    CreateDeploymentRoutesDeploymentsDestination$inboundSchema,
+  ),
+  statusCode: types.optional(types.number()),
+  middlewarePath: types.optional(types.string()),
+  middlewareRawSrc: types.optional(z.array(types.string())),
+  middleware: types.optional(types.number()),
+  respectOriginCacheControl: types.optional(types.boolean()),
+});
+
+export function createDeploymentRoutesDeployments1FromJSON(
+  jsonString: string,
+): SafeParseResult<CreateDeploymentRoutesDeployments1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateDeploymentRoutesDeployments1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentRoutesDeployments1' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateDeploymentServicesRoutes$inboundSchema: z.ZodType<
+  CreateDeploymentServicesRoutes,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => CreateDeploymentRoutesDeployments1$inboundSchema),
+  CreateDeploymentRoutesDeployments2$inboundSchema,
+]);
+
+export function createDeploymentServicesRoutesFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateDeploymentServicesRoutes, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateDeploymentServicesRoutes$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentServicesRoutes' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateDeploymentServices2$inboundSchema: z.ZodType<
   CreateDeploymentServices2,
   z.ZodTypeDef,
@@ -1219,7 +1369,12 @@ export const CreateDeploymentServices2$inboundSchema: z.ZodType<
     z.array(CreateDeploymentServicesRedirects$inboundSchema),
   ),
   rewrites: types.optional(z.array(ServicesRewrites$inboundSchema)),
-  routes: types.optional(z.array(CreateDeploymentServicesRoutes$inboundSchema)),
+  routes: types.optional(
+    z.array(smartUnion([
+      z.lazy(() => CreateDeploymentRoutesDeployments1$inboundSchema),
+      CreateDeploymentRoutesDeployments2$inboundSchema,
+    ])),
+  ),
   cleanUrls: types.optional(types.boolean()),
   trailingSlash: types.optional(types.boolean()),
 });
@@ -1498,6 +1653,34 @@ export function createDeploymentServicesProjectSettingsFromJSON(
 }
 
 /** @internal */
+export const CreateDeploymentServicesMiddlewareRuntime$inboundSchema:
+  z.ZodNativeEnum<typeof CreateDeploymentServicesMiddlewareRuntime> = z
+    .nativeEnum(CreateDeploymentServicesMiddlewareRuntime);
+
+/** @internal */
+export const CreateDeploymentServicesMiddlewareMatcher$inboundSchema: z.ZodType<
+  CreateDeploymentServicesMiddlewareMatcher,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), z.array(types.string())]);
+
+export function createDeploymentServicesMiddlewareMatcherFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateDeploymentServicesMiddlewareMatcher,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateDeploymentServicesMiddlewareMatcher$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateDeploymentServicesMiddlewareMatcher' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateDeploymentServicesConfig$inboundSchema: z.ZodType<
   CreateDeploymentServicesConfig,
   z.ZodTypeDef,
@@ -1533,6 +1716,12 @@ export const CreateDeploymentServicesConfig$inboundSchema: z.ZodType<
   framework: z.nullable(types.string()).optional(),
   nodeVersion: types.optional(types.string()),
   middleware: types.optional(types.boolean()),
+  middlewareRuntime: types.optional(
+    CreateDeploymentServicesMiddlewareRuntime$inboundSchema,
+  ),
+  middlewareMatcher: types.optional(
+    smartUnion([types.string(), z.array(types.string())]),
+  ),
   serviceName: types.optional(types.string()),
 });
 

@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
+import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -34,10 +35,10 @@ import {
   UpdateMicrofrontendsPermissions$inboundSchema,
   UpdateMicrofrontendsProtectionBypass,
   UpdateMicrofrontendsProtectionBypass$inboundSchema,
-  UpdateMicrofrontendsSamplingRules,
-  UpdateMicrofrontendsSamplingRules$inboundSchema,
   UpdateMicrofrontendsSecurity,
   UpdateMicrofrontendsSecurity$inboundSchema,
+  UpdateMicrofrontendsSsoProtection,
+  UpdateMicrofrontendsSsoProtection$inboundSchema,
   UpdateMicrofrontendsTargets,
   UpdateMicrofrontendsTargets$inboundSchema,
   UpdateMicrofrontendsTrustedIps,
@@ -48,7 +49,7 @@ import {
   UpdateMicrofrontendsUsageStatus$inboundSchema,
   UpdateMicrofrontendsWebAnalytics,
   UpdateMicrofrontendsWebAnalytics$inboundSchema,
-} from "./updatemicrofrontendssamplingrules.js";
+} from "./updatemicrofrontendsdismissedtoasts.js";
 import {
   UpdateMicrofrontendsAlias,
   UpdateMicrofrontendsAlias$inboundSchema,
@@ -102,15 +103,47 @@ import {
   UpdateMicrofrontendsRollbackDescription$inboundSchema,
   UpdateMicrofrontendsRollingRelease,
   UpdateMicrofrontendsRollingRelease$inboundSchema,
+  UpdateMicrofrontendsSandbox,
+  UpdateMicrofrontendsSandbox$inboundSchema,
   UpdateMicrofrontendsServices,
   UpdateMicrofrontendsServices$inboundSchema,
   UpdateMicrofrontendsSpeedInsights,
   UpdateMicrofrontendsSpeedInsights$inboundSchema,
-  UpdateMicrofrontendsSsoProtection,
-  UpdateMicrofrontendsSsoProtection$inboundSchema,
   UpdateMicrofrontendsStaticIps,
   UpdateMicrofrontendsStaticIps$inboundSchema,
-} from "./updatemicrofrontendsssoprotection.js";
+} from "./updatemicrofrontendsprojectsdeploymenttype.js";
+
+export const UpdateMicrofrontendsProjectsEnv = {
+  Preview: "preview",
+  Production: "production",
+} as const;
+export type UpdateMicrofrontendsProjectsEnv = ClosedEnum<
+  typeof UpdateMicrofrontendsProjectsEnv
+>;
+
+/**
+ * Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery type when project tracing is computed; absent on configs persisted before this field existed.
+ */
+export const UpdateMicrofrontendsDestination = {
+  External: "external",
+  Internal: "internal",
+} as const;
+/**
+ * Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery type when project tracing is computed; absent on configs persisted before this field existed.
+ */
+export type UpdateMicrofrontendsDestination = ClosedEnum<
+  typeof UpdateMicrofrontendsDestination
+>;
+
+export type UpdateMicrofrontendsSamplingRules = {
+  rate: number;
+  env?: UpdateMicrofrontendsProjectsEnv | undefined;
+  requestPath?: string | undefined;
+  /**
+   * Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery type when project tracing is computed; absent on configs persisted before this field existed.
+   */
+  destination?: UpdateMicrofrontendsDestination | undefined;
+};
 
 export type UpdateMicrofrontendsTracing = {
   domains?: string | undefined;
@@ -174,6 +207,7 @@ export type UpdateMicrofrontendsResponseBody = {
     | undefined;
   passport?: UpdateMicrofrontendsPassport | null | undefined;
   protectionConfig?: UpdateMicrofrontendsProtectionConfig | undefined;
+  sandbox?: UpdateMicrofrontendsSandbox | undefined;
   productionDeploymentsFastLane?: boolean | undefined;
   resourceConfig: UpdateMicrofrontendsResourceConfig;
   /**
@@ -244,6 +278,38 @@ export type UpdateMicrofrontendsResponseBody = {
 };
 
 /** @internal */
+export const UpdateMicrofrontendsProjectsEnv$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateMicrofrontendsProjectsEnv
+> = z.nativeEnum(UpdateMicrofrontendsProjectsEnv);
+
+/** @internal */
+export const UpdateMicrofrontendsDestination$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateMicrofrontendsDestination
+> = z.nativeEnum(UpdateMicrofrontendsDestination);
+
+/** @internal */
+export const UpdateMicrofrontendsSamplingRules$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsSamplingRules,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  rate: types.number(),
+  env: types.optional(UpdateMicrofrontendsProjectsEnv$inboundSchema),
+  requestPath: types.optional(types.string()),
+  destination: types.optional(UpdateMicrofrontendsDestination$inboundSchema),
+});
+
+export function updateMicrofrontendsSamplingRulesFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsSamplingRules, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsSamplingRules$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsSamplingRules' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateMicrofrontendsTracing$inboundSchema: z.ZodType<
   UpdateMicrofrontendsTracing,
   z.ZodTypeDef,
@@ -252,7 +318,7 @@ export const UpdateMicrofrontendsTracing$inboundSchema: z.ZodType<
   domains: types.optional(types.string()),
   ignorePaths: types.optional(z.array(types.string())),
   samplingRules: types.optional(
-    z.array(UpdateMicrofrontendsSamplingRules$inboundSchema),
+    z.array(z.lazy(() => UpdateMicrofrontendsSamplingRules$inboundSchema)),
   ),
 });
 
@@ -334,6 +400,7 @@ export const UpdateMicrofrontendsResponseBody$inboundSchema: z.ZodType<
   protectionConfig: types.optional(
     UpdateMicrofrontendsProtectionConfig$inboundSchema,
   ),
+  sandbox: types.optional(UpdateMicrofrontendsSandbox$inboundSchema),
   productionDeploymentsFastLane: types.optional(types.boolean()),
   resourceConfig: UpdateMicrofrontendsResourceConfig$inboundSchema,
   rollbackDescription: types.optional(

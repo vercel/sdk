@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsTrustedIps1 } from "@vercel/sdk/models/responsebodydismissedtoasts.js";
+import { GetProjectsTrustedIps1 } from "@vercel/sdk/models/getprojectsvaluecurrentvalue.js";
 
 let value: GetProjectsTrustedIps1 = {
   deploymentType: "all",

@@ -5,7 +5,7 @@ Billing mode. Always 'flat' for flat-rate projects.
 ## Example Usage
 
 ```typescript
-import { CreateProjectKind } from "@vercel/sdk/models/createprojecthasprojectsvalue.js";
+import { CreateProjectKind } from "@vercel/sdk/models/createprojectprojectsresponseaction.js";
 
 let value: CreateProjectKind = "flat";
 ```

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectContentHint5 } from "@vercel/sdk/models/createprojectbuildmachineselection.js";
+import { CreateProjectContentHint5 } from "@vercel/sdk/models/sandbox.js";
 
 let value: CreateProjectContentHint5 = {
   type: "blob-read-write-token",

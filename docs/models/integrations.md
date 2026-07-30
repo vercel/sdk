@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Integrations } from "@vercel/sdk/models/format.js";
+import { Integrations } from "@vercel/sdk/models/servicesbuilder.js";
 
 let value: Integrations = {
   status: "timeout",

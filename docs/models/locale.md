@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Locale } from "@vercel/sdk/models/format.js";
+import { Locale } from "@vercel/sdk/models/servicesbuilder.js";
 
 let value: Locale = {};
 ```

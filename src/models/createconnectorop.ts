@@ -371,6 +371,7 @@ export type CreationMode = ClosedEnum<typeof CreationMode>;
 export const CreateConnectorType = {
   ApiKey: "api-key",
   Custom: "custom",
+  Discord: "discord",
   Github: "github",
   Linear: "linear",
   MicrosoftEntra: "microsoft-entra",

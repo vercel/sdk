@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { BlockType } from "@vercel/sdk/models/usereventpayloadconfigversion.js";
+import { BlockType } from "@vercel/sdk/models/onehundredandfortysix.js";
 
 let value: BlockType = "soft";
 ```

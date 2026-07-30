@@ -448,6 +448,7 @@ export const Name = {
   ProjectRootDirectoryUpdated: "project-root-directory-updated",
   ProjectRoutesVersionPromoted: "project-routes-version-promoted",
   ProjectRoutesVersionRestored: "project-routes-version-restored",
+  ProjectSandboxConfigUpdated: "project-sandbox-config-updated",
   ProjectSandboxUrlProtectionUpdated: "project-sandbox-url-protection-updated",
   ProjectSkewProtectionAllowedDomainsUpdated:
     "project-skew-protection-allowed-domains-updated",
@@ -1106,6 +1107,7 @@ export const ReplacedBy = {
   ProjectRootDirectoryUpdated: "project-root-directory-updated",
   ProjectRoutesVersionPromoted: "project-routes-version-promoted",
   ProjectRoutesVersionRestored: "project-routes-version-restored",
+  ProjectSandboxConfigUpdated: "project-sandbox-config-updated",
   ProjectSandboxUrlProtectionUpdated: "project-sandbox-url-protection-updated",
   ProjectSkewProtectionAllowedDomainsUpdated:
     "project-skew-protection-allowed-domains-updated",

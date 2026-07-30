@@ -24,7 +24,6 @@ import {
   DeleteDeploymentResponseBody,
 } from "../models/deletedeploymentop.js";
 import { FileTree } from "../models/filetree.js";
-import { CancelDeploymentRequest } from "../models/format.js";
 import {
   GetDeploymentEventsRequest,
   GetDeploymentEventsResponse,
@@ -37,6 +36,7 @@ import {
   GetDeploymentsResponseBody,
 } from "../models/getdeploymentsop.js";
 import { ListDeploymentFilesRequest } from "../models/listdeploymentfilesop.js";
+import { CancelDeploymentRequest } from "../models/servicesbuilder.js";
 import { UpdateIntegrationDeploymentActionRequest } from "../models/updateintegrationdeploymentactionop.js";
 import {
   UploadFileRequest,

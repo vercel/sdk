@@ -9,10 +9,30 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
-  GetProjectsBlockHistoryProjectsRoute,
-  GetProjectsBlockHistoryProjectsRoute$inboundSchema,
+  GetProjectsResponseBody2,
+  GetProjectsResponseBody2$inboundSchema,
+  GetProjectsResponseBodyCreator,
+  GetProjectsResponseBodyCreator$inboundSchema,
+  ResponseBodyAlias,
+  ResponseBodyAlias$inboundSchema,
+  ResponseBodyAnalytics,
+  ResponseBodyAnalytics$inboundSchema,
+  ResponseBodyDeploymentExpiration,
+  ResponseBodyDeploymentExpiration$inboundSchema,
+  ResponseBodyIpBuckets,
+  ResponseBodyIpBuckets$inboundSchema,
+} from "./getprojectscontenthint6.js";
+import {
+  GetProjectsResponseBody3,
+  GetProjectsResponseBody3$inboundSchema,
+} from "./getprojectsresponsebodytrustedsources.js";
+import {
   GetProjectsResponseBodyNodeVersion,
   GetProjectsResponseBodyNodeVersion$inboundSchema,
+  GetProjectsRouteProjectsHas,
+  GetProjectsRouteProjectsHas$inboundSchema,
+  GetProjectsRouteProjectsMitigate,
+  GetProjectsRouteProjectsMitigate$inboundSchema,
   ResponseBodyBlock,
   ResponseBodyBlock$inboundSchema,
   ResponseBodyEnv,
@@ -51,30 +71,28 @@ import {
   ResponseBodyTrustedSources$inboundSchema,
   ResponseBodyWebAnalytics,
   ResponseBodyWebAnalytics$inboundSchema,
-} from "./getprojectsblockhistoryprojectsroute.js";
-import {
-  GetProjectsResponseBody2,
-  GetProjectsResponseBody2$inboundSchema,
-  GetProjectsResponseBodyCreator,
-  GetProjectsResponseBodyCreator$inboundSchema,
-  ResponseBodyAlias,
-  ResponseBodyAlias$inboundSchema,
-  ResponseBodyAnalytics,
-  ResponseBodyAnalytics$inboundSchema,
-  ResponseBodyDeploymentExpiration,
-  ResponseBodyDeploymentExpiration$inboundSchema,
-  ResponseBodyIpBuckets,
-  ResponseBodyIpBuckets$inboundSchema,
-} from "./getprojectscontenthint3.js";
-import {
-  GetProjectsResponseBody3,
-  GetProjectsResponseBody3$inboundSchema,
-} from "./getprojectsresponsebodyconsolidatedgitcommitstatus.js";
+} from "./getprojectsrouteprojectsmitigate.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type GetProjectsRouteProjects2 = {
+  has: Array<GetProjectsRouteProjectsHas>;
+  mitigate: GetProjectsRouteProjectsMitigate;
+  src?: string | undefined;
+};
+
+export type GetProjectsRouteProjects1 = {
+  src: string;
+  status: number;
+  expiry?: number | undefined;
+};
+
+export type GetProjectsBlockHistoryProjectsRoute =
+  | GetProjectsRouteProjects1
+  | GetProjectsRouteProjects2;
 
 export type GetProjectsBlockHistory4 = {
   action: "route-unblocked";
-  route: GetProjectsBlockHistoryProjectsRoute;
+  route: GetProjectsRouteProjects1 | GetProjectsRouteProjects2;
   statusCode?: number | undefined;
   createdAt: number;
   caseId?: string | undefined;
@@ -347,13 +365,79 @@ export type GetProjectsResponseBody =
   | Array<GetProjectsResponseBody1>;
 
 /** @internal */
+export const GetProjectsRouteProjects2$inboundSchema: z.ZodType<
+  GetProjectsRouteProjects2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  has: z.array(GetProjectsRouteProjectsHas$inboundSchema),
+  mitigate: GetProjectsRouteProjectsMitigate$inboundSchema,
+  src: types.optional(types.string()),
+});
+
+export function getProjectsRouteProjects2FromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsRouteProjects2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectsRouteProjects2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsRouteProjects2' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectsRouteProjects1$inboundSchema: z.ZodType<
+  GetProjectsRouteProjects1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  src: types.string(),
+  status: types.number(),
+  expiry: types.optional(types.number()),
+});
+
+export function getProjectsRouteProjects1FromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsRouteProjects1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectsRouteProjects1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsRouteProjects1' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectsBlockHistoryProjectsRoute$inboundSchema: z.ZodType<
+  GetProjectsBlockHistoryProjectsRoute,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => GetProjectsRouteProjects1$inboundSchema),
+  z.lazy(() => GetProjectsRouteProjects2$inboundSchema),
+]);
+
+export function getProjectsBlockHistoryProjectsRouteFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsBlockHistoryProjectsRoute, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetProjectsBlockHistoryProjectsRoute$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsBlockHistoryProjectsRoute' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetProjectsBlockHistory4$inboundSchema: z.ZodType<
   GetProjectsBlockHistory4,
   z.ZodTypeDef,
   unknown
 > = z.object({
   action: types.literal("route-unblocked"),
-  route: GetProjectsBlockHistoryProjectsRoute$inboundSchema,
+  route: smartUnion([
+    z.lazy(() => GetProjectsRouteProjects1$inboundSchema),
+    z.lazy(() => GetProjectsRouteProjects2$inboundSchema),
+  ]),
   statusCode: types.optional(types.number()),
   createdAt: types.number(),
   caseId: types.optional(types.string()),

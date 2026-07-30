@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodySecurityPlusMetadata } from "@vercel/sdk/models/getprojectsblockhistoryprojectsroute.js";
+import { ResponseBodySecurityPlusMetadata } from "@vercel/sdk/models/getprojectsrouteprojectsmitigate.js";
 
 let value: ResponseBodySecurityPlusMetadata = {
   updatedAt: 8782.92,

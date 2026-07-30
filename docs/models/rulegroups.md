@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { RuleGroups } from "@vercel/sdk/models/usereventpayloadconfigversion.js";
+import { RuleGroups } from "@vercel/sdk/models/onehundredandfortysix.js";
 
 let value: RuleGroups = {
   active: false,

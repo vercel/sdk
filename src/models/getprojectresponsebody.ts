@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
+import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import {
@@ -61,22 +62,22 @@ import {
   GetProjectRollbackDescription$inboundSchema,
   GetProjectRollingRelease,
   GetProjectRollingRelease$inboundSchema,
+  GetProjectSandbox,
+  GetProjectSandbox$inboundSchema,
   GetProjectServices,
   GetProjectServices$inboundSchema,
   GetProjectSpeedInsights,
   GetProjectSpeedInsights$inboundSchema,
   GetProjectStaticIps,
   GetProjectStaticIps$inboundSchema,
-} from "./getprojectapril2026securityincidentmigrationappliedfrom.js";
+} from "./getprojectstaticips.js";
 import {
   GetProjectAbuse,
   GetProjectAbuse$inboundSchema,
+  GetProjectAction,
+  GetProjectAction$inboundSchema,
   GetProjectDeploymentPolicy,
   GetProjectDeploymentPolicy$inboundSchema,
-  GetProjectDestination,
-  GetProjectDestination$inboundSchema,
-  GetProjectDismissedToasts,
-  GetProjectDismissedToasts$inboundSchema,
   GetProjectFeatures,
   GetProjectFeatures$inboundSchema,
   GetProjectFlatRateTier,
@@ -95,8 +96,6 @@ import {
   GetProjectOidcTokenConfig$inboundSchema,
   GetProjectPermissions,
   GetProjectPermissions$inboundSchema,
-  GetProjectProjectsEnv,
-  GetProjectProjectsEnv$inboundSchema,
   GetProjectProtectionBypass,
   GetProjectProtectionBypass$inboundSchema,
   GetProjectSecurity,
@@ -111,10 +110,37 @@ import {
   GetProjectTrustedSources$inboundSchema,
   GetProjectUsageStatus,
   GetProjectUsageStatus$inboundSchema,
+  GetProjectValue,
+  GetProjectValue$inboundSchema,
   GetProjectWebAnalytics,
   GetProjectWebAnalytics$inboundSchema,
-} from "./getprojectdestination.js";
+} from "./getprojectvalue.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type GetProjectDismissedToasts = {
+  key: string;
+  dismissedAt: number;
+  action: GetProjectAction;
+  value: GetProjectValue | null;
+};
+
+export const GetProjectProjectsEnv = {
+  Preview: "preview",
+  Production: "production",
+} as const;
+export type GetProjectProjectsEnv = ClosedEnum<typeof GetProjectProjectsEnv>;
+
+/**
+ * Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery type when project tracing is computed; absent on configs persisted before this field existed.
+ */
+export const GetProjectDestination = {
+  External: "external",
+  Internal: "internal",
+} as const;
+/**
+ * Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery type when project tracing is computed; absent on configs persisted before this field existed.
+ */
+export type GetProjectDestination = ClosedEnum<typeof GetProjectDestination>;
 
 export type GetProjectSamplingRules = {
   rate: number;
@@ -187,6 +213,7 @@ export type GetProjectResponseBody = {
   passwordProtection?: GetProjectPasswordProtection | null | undefined;
   passport?: GetProjectPassport | null | undefined;
   protectionConfig?: GetProjectProtectionConfig | undefined;
+  sandbox?: GetProjectSandbox | undefined;
   productionDeploymentsFastLane?: boolean | undefined;
   resourceConfig: GetProjectResourceConfig;
   /**
@@ -250,6 +277,38 @@ export type GetProjectResponseBody = {
   tracing?: GetProjectTracing | undefined;
   avatar?: string | null | undefined;
 };
+
+/** @internal */
+export const GetProjectDismissedToasts$inboundSchema: z.ZodType<
+  GetProjectDismissedToasts,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  key: types.string(),
+  dismissedAt: types.number(),
+  action: GetProjectAction$inboundSchema,
+  value: types.nullable(GetProjectValue$inboundSchema),
+});
+
+export function getProjectDismissedToastsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectDismissedToasts, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectDismissedToasts$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectDismissedToasts' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectProjectsEnv$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectProjectsEnv
+> = z.nativeEnum(GetProjectProjectsEnv);
+
+/** @internal */
+export const GetProjectDestination$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectDestination
+> = z.nativeEnum(GetProjectDestination);
 
 /** @internal */
 export const GetProjectSamplingRules$inboundSchema: z.ZodType<
@@ -355,6 +414,7 @@ export const GetProjectResponseBody$inboundSchema: z.ZodType<
     .optional(),
   passport: z.nullable(GetProjectPassport$inboundSchema).optional(),
   protectionConfig: types.optional(GetProjectProtectionConfig$inboundSchema),
+  sandbox: types.optional(GetProjectSandbox$inboundSchema),
   productionDeploymentsFastLane: types.optional(types.boolean()),
   resourceConfig: GetProjectResourceConfig$inboundSchema,
   rollbackDescription: types.optional(
@@ -418,7 +478,7 @@ export const GetProjectResponseBody$inboundSchema: z.ZodType<
   ),
   hasDeployments: types.optional(types.boolean()),
   dismissedToasts: types.optional(
-    z.array(GetProjectDismissedToasts$inboundSchema),
+    z.array(z.lazy(() => GetProjectDismissedToasts$inboundSchema)),
   ),
   protectedSourcemaps: types.optional(types.boolean()),
   tracing: types.optional(z.lazy(() => GetProjectTracing$inboundSchema)),

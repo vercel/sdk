@@ -9,6 +9,60 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
+  Block,
+  Block$inboundSchema,
+  CreateProjectBlockHistory,
+  CreateProjectBlockHistory$inboundSchema,
+  CreateProjectDeploymentPolicy,
+  CreateProjectDeploymentPolicy$inboundSchema,
+  CreateProjectGitComments,
+  CreateProjectGitComments$inboundSchema,
+  CreateProjectHistory,
+  CreateProjectHistory$inboundSchema,
+  CreateProjectOidcTokenConfig,
+  CreateProjectOidcTokenConfig$inboundSchema,
+  CreateProjectPermissions,
+  CreateProjectPermissions$inboundSchema,
+  CreateProjectProjectsResourceConfig,
+  CreateProjectProjectsResourceConfig$inboundSchema,
+  CreateProjectProjectsResponseAction,
+  CreateProjectProjectsResponseAction$inboundSchema,
+  CreateProjectProjectsSsoProtection,
+  CreateProjectProjectsSsoProtection$inboundSchema,
+  CreateProjectRollbackDescription,
+  CreateProjectRollbackDescription$inboundSchema,
+  CreateProjectSecurity,
+  CreateProjectSecurity$inboundSchema,
+  CreateProjectStaticIps,
+  CreateProjectStaticIps$inboundSchema,
+  CreateProjectTargets,
+  CreateProjectTargets$inboundSchema,
+  CreateProjectTrustedIps,
+  CreateProjectTrustedIps$inboundSchema,
+  CreateProjectTrustedSources,
+  CreateProjectTrustedSources$inboundSchema,
+  CreateProjectWebAnalytics,
+  CreateProjectWebAnalytics$inboundSchema,
+  DefaultResourceConfig,
+  DefaultResourceConfig$inboundSchema,
+  Features,
+  Features$inboundSchema,
+  FlatRateTier,
+  FlatRateTier$inboundSchema,
+  GitProviderOptions,
+  GitProviderOptions$inboundSchema,
+  LastAliasRequest,
+  LastAliasRequest$inboundSchema,
+  LastRollbackTarget,
+  LastRollbackTarget$inboundSchema,
+  ProtectionBypass,
+  ProtectionBypass$inboundSchema,
+  RollingRelease,
+  RollingRelease$inboundSchema,
+  UsageStatus,
+  UsageStatus$inboundSchema,
+} from "./createprojectprojectsresponseaction.js";
+import {
   Alias,
   Alias$inboundSchema,
   Analytics,
@@ -55,60 +109,35 @@ import {
   Link$inboundSchema,
   ProtectionConfig,
   ProtectionConfig$inboundSchema,
+  Sandbox,
+  Sandbox$inboundSchema,
   SpeedInsights,
   SpeedInsights$inboundSchema,
-} from "./createprojectbuildmachineselection.js";
-import {
-  CreateProjectAbuse,
-  CreateProjectAbuse$inboundSchema,
-  CreateProjectDeploymentPolicy,
-  CreateProjectDeploymentPolicy$inboundSchema,
-  CreateProjectGitComments,
-  CreateProjectGitComments$inboundSchema,
-  CreateProjectHasProjectsValue,
-  CreateProjectHasProjectsValue$inboundSchema,
-  CreateProjectOidcTokenConfig,
-  CreateProjectOidcTokenConfig$inboundSchema,
-  CreateProjectPermissions,
-  CreateProjectPermissions$inboundSchema,
-  CreateProjectProjectsResourceConfig,
-  CreateProjectProjectsResourceConfig$inboundSchema,
-  CreateProjectProjectsSsoProtection,
-  CreateProjectProjectsSsoProtection$inboundSchema,
-  CreateProjectRollbackDescription,
-  CreateProjectRollbackDescription$inboundSchema,
-  CreateProjectSecurity,
-  CreateProjectSecurity$inboundSchema,
-  CreateProjectStaticIps,
-  CreateProjectStaticIps$inboundSchema,
-  CreateProjectTargets,
-  CreateProjectTargets$inboundSchema,
-  CreateProjectTrustedIps,
-  CreateProjectTrustedIps$inboundSchema,
-  CreateProjectTrustedSources,
-  CreateProjectTrustedSources$inboundSchema,
-  CreateProjectWebAnalytics,
-  CreateProjectWebAnalytics$inboundSchema,
-  DefaultResourceConfig,
-  DefaultResourceConfig$inboundSchema,
-  Features,
-  Features$inboundSchema,
-  FlatRateTier,
-  FlatRateTier$inboundSchema,
-  GitProviderOptions,
-  GitProviderOptions$inboundSchema,
-  LastAliasRequest,
-  LastAliasRequest$inboundSchema,
-  LastRollbackTarget,
-  LastRollbackTarget$inboundSchema,
-  ProtectionBypass,
-  ProtectionBypass$inboundSchema,
-  RollingRelease,
-  RollingRelease$inboundSchema,
-  UsageStatus,
-  UsageStatus$inboundSchema,
-} from "./createprojecthasprojectsvalue.js";
+} from "./sandbox.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type InterstitialHistory = {
+  action: CreateProjectProjectsResponseAction;
+  createdAt: number;
+  caseId?: string | undefined;
+  reason?: string | undefined;
+  actor?: string | undefined;
+  comment?: string | undefined;
+};
+
+export type CreateProjectAbuse = {
+  scanner?: string | undefined;
+  history: Array<CreateProjectHistory>;
+  updatedAt: number;
+  block?: Block | undefined;
+  blockHistory?: Array<CreateProjectBlockHistory> | undefined;
+  interstitial?: boolean | undefined;
+  interstitialHistory?: Array<InterstitialHistory> | undefined;
+};
+
+export type CreateProjectHasProjectsValue = {
+  eq: string;
+};
 
 export type CreateProjectHas2 = {
   type: "host";
@@ -272,6 +301,7 @@ export type CreateProjectResponseBody = {
   passwordProtection?: CreateProjectPasswordProtection | null | undefined;
   passport?: CreateProjectPassport | null | undefined;
   protectionConfig?: ProtectionConfig | undefined;
+  sandbox?: Sandbox | undefined;
   productionDeploymentsFastLane?: boolean | undefined;
   resourceConfig: CreateProjectProjectsResourceConfig;
   /**
@@ -337,13 +367,85 @@ export type CreateProjectResponseBody = {
 };
 
 /** @internal */
+export const InterstitialHistory$inboundSchema: z.ZodType<
+  InterstitialHistory,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  action: CreateProjectProjectsResponseAction$inboundSchema,
+  createdAt: types.number(),
+  caseId: types.optional(types.string()),
+  reason: types.optional(types.string()),
+  actor: types.optional(types.string()),
+  comment: types.optional(types.string()),
+});
+
+export function interstitialHistoryFromJSON(
+  jsonString: string,
+): SafeParseResult<InterstitialHistory, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => InterstitialHistory$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'InterstitialHistory' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectAbuse$inboundSchema: z.ZodType<
+  CreateProjectAbuse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  scanner: types.optional(types.string()),
+  history: z.array(CreateProjectHistory$inboundSchema),
+  updatedAt: types.number(),
+  block: types.optional(Block$inboundSchema),
+  blockHistory: types.optional(
+    z.array(CreateProjectBlockHistory$inboundSchema),
+  ),
+  interstitial: types.optional(types.boolean()),
+  interstitialHistory: types.optional(
+    z.array(z.lazy(() => InterstitialHistory$inboundSchema)),
+  ),
+});
+
+export function createProjectAbuseFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectAbuse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectAbuse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectAbuse' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectHasProjectsValue$inboundSchema: z.ZodType<
+  CreateProjectHasProjectsValue,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  eq: types.string(),
+});
+
+export function createProjectHasProjectsValueFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectHasProjectsValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectHasProjectsValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectHasProjectsValue' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateProjectHas2$inboundSchema: z.ZodType<
   CreateProjectHas2,
   z.ZodTypeDef,
   unknown
 > = z.object({
   type: types.literal("host"),
-  value: CreateProjectHasProjectsValue$inboundSchema,
+  value: z.lazy(() => CreateProjectHasProjectsValue$inboundSchema),
 });
 
 export function createProjectHas2FromJSON(
@@ -733,6 +835,7 @@ export const CreateProjectResponseBody$inboundSchema: z.ZodType<
     .optional(),
   passport: z.nullable(CreateProjectPassport$inboundSchema).optional(),
   protectionConfig: types.optional(ProtectionConfig$inboundSchema),
+  sandbox: types.optional(Sandbox$inboundSchema),
   productionDeploymentsFastLane: types.optional(types.boolean()),
   resourceConfig: CreateProjectProjectsResourceConfig$inboundSchema,
   rollbackDescription: types.optional(
@@ -786,7 +889,7 @@ export const CreateProjectResponseBody$inboundSchema: z.ZodType<
   features: types.optional(Features$inboundSchema),
   v0: types.optional(types.boolean()),
   v0Created: types.optional(types.boolean()),
-  abuse: types.optional(CreateProjectAbuse$inboundSchema),
+  abuse: types.optional(z.lazy(() => CreateProjectAbuse$inboundSchema)),
   internalRoutes: types.optional(
     z.array(smartUnion([
       z.lazy(() => InternalRoutes1$inboundSchema),

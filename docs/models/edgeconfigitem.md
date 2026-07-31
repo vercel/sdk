@@ -1,6 +1,6 @@
 # EdgeConfigItem
 
-The EdgeConfig.
+The Global Config.
 
 ## Example Usage
 

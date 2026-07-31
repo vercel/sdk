@@ -3,28 +3,17 @@
 
 ## Supported Types
 
-### `models.GetSecurityFirewallConfigRulesetsApiSecurityResponse1[]`
+### `models.GetSecurityFirewallConfigRulesetsSecurityResponse1[]`
 
 ```typescript
-const value: models.GetSecurityFirewallConfigRulesetsApiSecurityResponse1[] = [
-  {
-    id: "<id>",
-    name: "<value>",
-    active: false,
-    conditionGroup: [],
-  },
-];
+const value: models.GetSecurityFirewallConfigRulesetsSecurityResponse1[] = [];
 ```
 
-### `{ [k: string]: models.GetSecurityFirewallConfigRulesetsApiSecurityResponse2 }`
+### `{ [k: string]: models.GetSecurityFirewallConfigRulesetsSecurityResponse2 }`
 
 ```typescript
 const value: {
-  [k: string]: models.GetSecurityFirewallConfigRulesetsApiSecurityResponse2;
-} = {
-  "key": {
-    action: "redirect",
-  },
-};
+  [k: string]: models.GetSecurityFirewallConfigRulesetsSecurityResponse2;
+} = {};
 ```
 

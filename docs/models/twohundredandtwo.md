@@ -5,26 +5,34 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndTwo } from "@vercel/sdk/models/credentials2.js";
+import { TwoHundredAndTwo } from "@vercel/sdk/models/querytype.js";
 
 let value: TwoHundredAndTwo = {
-  plan: "<value>",
+  projectId: "<id>",
+  environment: "<value>",
+  host: "incomparable-lay.info",
+  connectorId: "<id>",
+  connectorType: "<value>",
+  connectorService: "<value>",
+  externalIssuer: "<value>",
+  externalSubject: "<value>",
+  sessionId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                                                                                                      | Type                                                                                                                                       | Required                                                                                                                                   | Description                                                                                                                                |
-| ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| `plan`                                                                                                                                     | *string*                                                                                                                                   | :heavy_check_mark:                                                                                                                         | N/A                                                                                                                                        |
-| `removedUsers`                                                                                                                             | Record<string, [models.RemovedUsers](../models/removedusers.md)>                                                                           | :heavy_minus_sign:                                                                                                                         | N/A                                                                                                                                        |
-| `prevPlan`                                                                                                                                 | *string*                                                                                                                                   | :heavy_minus_sign:                                                                                                                         | N/A                                                                                                                                        |
-| `priorPlan`                                                                                                                                | *string*                                                                                                                                   | :heavy_minus_sign:                                                                                                                         | N/A                                                                                                                                        |
-| `isDowngrade`                                                                                                                              | *boolean*                                                                                                                                  | :heavy_minus_sign:                                                                                                                         | N/A                                                                                                                                        |
-| `userAgent`                                                                                                                                | *string*                                                                                                                                   | :heavy_minus_sign:                                                                                                                         | N/A                                                                                                                                        |
-| `isReactivate`                                                                                                                             | *boolean*                                                                                                                                  | :heavy_minus_sign:                                                                                                                         | N/A                                                                                                                                        |
-| `isTrialUpgrade`                                                                                                                           | *boolean*                                                                                                                                  | :heavy_minus_sign:                                                                                                                         | N/A                                                                                                                                        |
-| `automated`                                                                                                                                | *boolean*                                                                                                                                  | :heavy_minus_sign:                                                                                                                         | Whether the plan change was system-initiated rather than human-initiated.                                                                  |
-| `reason`                                                                                                                                   | *string*                                                                                                                                   | :heavy_minus_sign:                                                                                                                         | Why the plan changed. For downgrades, this is a {@link DowngradeReason} from `@api/pubsub-types` (e.g. `user_downgrade`, `trial_expired`). |
-| `timestamp`                                                                                                                                | *number*                                                                                                                                   | :heavy_minus_sign:                                                                                                                         | N/A                                                                                                                                        |
-| `removedMemberCount`                                                                                                                       | *number*                                                                                                                                   | :heavy_minus_sign:                                                                                                                         | N/A                                                                                                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `environment`      | *string*           | :heavy_check_mark: | N/A                |
+| `host`             | *string*           | :heavy_check_mark: | N/A                |
+| `connectorId`      | *string*           | :heavy_check_mark: | N/A                |
+| `connectorType`    | *string*           | :heavy_check_mark: | N/A                |
+| `connectorService` | *string*           | :heavy_check_mark: | N/A                |
+| `externalIssuer`   | *string*           | :heavy_check_mark: | N/A                |
+| `externalSubject`  | *string*           | :heavy_check_mark: | N/A                |
+| `sessionId`        | *string*           | :heavy_check_mark: | N/A                |
+| `emailVerified`    | *boolean*          | :heavy_minus_sign: | N/A                |
+| `tenantId`         | *string*           | :heavy_minus_sign: | N/A                |
+| `installationId`   | *string*           | :heavy_minus_sign: | N/A                |

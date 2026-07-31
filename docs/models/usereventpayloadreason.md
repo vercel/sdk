@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayloadReason } from "@vercel/sdk/models/onehundredandfortysix.js";
+import { UserEventPayloadReason } from "@vercel/sdk/models/usereventpayload155newownerfeatureblocksworkfloweventsblockreason.js";
 
 let value: UserEventPayloadReason = "ENTERPRISE_TRIAL_ENDED";
 ```
@@ -11,5 +11,5 @@ let value: UserEventPayloadReason = "ENTERPRISE_TRIAL_ENDED";
 ## Values
 
 ```typescript
-"BLOCKED_FOR_PLATFORM_ABUSE" | "DOMAIN_OWNER_DELETION_REQUEST" | "ENTERPRISE_TRIAL_ENDED" | "ENTERPRISE_UNPAID_INVOICE" | "EXPOSURE_CAP_EXCEEDED" | "FAIR_USE_LIMITS_EXCEEDED" | "SUBSCRIPTION_CANCELED" | "SUBSCRIPTION_EXPIRED" | "UNPAID_INVOICE"
+"BLOCKED_FOR_PLATFORM_ABUSE" | "DOMAIN_OWNER_DELETION_REQUEST" | "ENTERPRISE_TRIAL_ENDED" | "ENTERPRISE_UNPAID_INVOICE" | "EXPOSURE_CAP_EXCEEDED" | "FAIR_USE_LIMITS_EXCEEDED" | "HOBBY_ALLOCATION_PAUSED" | "SUBSCRIPTION_CANCELED" | "SUBSCRIPTION_EXPIRED" | "UNPAID_INVOICE"
 ```

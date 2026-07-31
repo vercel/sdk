@@ -113,7 +113,7 @@ export type TypeGithub = {
   extras?: { [k: string]: any } | undefined;
 };
 
-export type Values = {
+export type DataValues = {
   value: string;
   scope?: string | undefined;
   /**
@@ -123,7 +123,7 @@ export type Values = {
 };
 
 export type TypeApiKey = {
-  values: Array<Values>;
+  values: Array<DataValues>;
 };
 
 export const Use = {
@@ -230,6 +230,7 @@ export type TypeOauth = {
   serverUrl?: string | undefined;
   serverConfig?: ServerConfig | undefined;
   clientId: string;
+  clientName?: string | undefined;
   clientSecret?: string | undefined;
   tokenEndpointAuthMethod?: string | undefined;
   responseType?: string | undefined;
@@ -243,6 +244,10 @@ export type TypeOauth = {
    */
   forwardedClaims?: ForwardedClaims | undefined;
   defaultAudience?: string | undefined;
+  /**
+   * Default token lifetime in seconds to use when the token response omits expires_in.
+   */
+  defaultTokenExpiresIn?: number | undefined;
   authorizationUrlParams?: { [k: string]: string } | undefined;
   jwtBearer?: JwtBearer | undefined;
 };
@@ -418,7 +423,7 @@ export type SupportsIcon = ClosedEnum<typeof SupportsIcon>;
 /**
  * Incoming trigger configuration. Only present when enabled.
  */
-export type Triggers = {
+export type CreateConnectorTriggers = {
   enabled: boolean;
 };
 
@@ -549,7 +554,7 @@ export type CreateConnectorResponseBody = {
   /**
    * Incoming trigger configuration. Only present when enabled.
    */
-  triggers?: Triggers | undefined;
+  triggers?: CreateConnectorTriggers | undefined;
   /**
    * Known events this client subscribes to (e.g. Slack bot events, GitHub webhook events). Names are type-specific and validated by the managed-create flow when forwarded to the third-party service.
    */
@@ -869,30 +874,30 @@ export function typeGithubToJSON(typeGithub: TypeGithub): string {
 }
 
 /** @internal */
-export type Values$Outbound = {
+export type DataValues$Outbound = {
   value: string;
   scope?: string | undefined;
   expiresAt?: number | undefined;
 };
 
 /** @internal */
-export const Values$outboundSchema: z.ZodType<
-  Values$Outbound,
+export const DataValues$outboundSchema: z.ZodType<
+  DataValues$Outbound,
   z.ZodTypeDef,
-  Values
+  DataValues
 > = z.object({
   value: z.string(),
   scope: z.string().optional(),
   expiresAt: z.number().int().optional(),
 });
 
-export function valuesToJSON(values: Values): string {
-  return JSON.stringify(Values$outboundSchema.parse(values));
+export function dataValuesToJSON(dataValues: DataValues): string {
+  return JSON.stringify(DataValues$outboundSchema.parse(dataValues));
 }
 
 /** @internal */
 export type TypeApiKey$Outbound = {
-  values: Array<Values$Outbound>;
+  values: Array<DataValues$Outbound>;
 };
 
 /** @internal */
@@ -901,7 +906,7 @@ export const TypeApiKey$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TypeApiKey
 > = z.object({
-  values: z.array(z.lazy(() => Values$outboundSchema)),
+  values: z.array(z.lazy(() => DataValues$outboundSchema)),
 });
 
 export function typeApiKeyToJSON(typeApiKey: TypeApiKey): string {
@@ -1227,6 +1232,7 @@ export type TypeOauth$Outbound = {
   serverUrl?: string | undefined;
   serverConfig?: ServerConfig$Outbound | undefined;
   clientId: string;
+  clientName?: string | undefined;
   clientSecret?: string | undefined;
   tokenEndpointAuthMethod?: string | undefined;
   responseType?: string | undefined;
@@ -1237,6 +1243,7 @@ export type TypeOauth$Outbound = {
   clientCredentials?: ClientCredentials$Outbound | undefined;
   forwardedClaims?: ForwardedClaims$Outbound | undefined;
   defaultAudience?: string | undefined;
+  defaultTokenExpiresIn?: number | undefined;
   authorizationUrlParams?: { [k: string]: string } | undefined;
   jwtBearer?: JwtBearer$Outbound | undefined;
 };
@@ -1250,6 +1257,7 @@ export const TypeOauth$outboundSchema: z.ZodType<
   serverUrl: z.string().optional(),
   serverConfig: z.lazy(() => ServerConfig$outboundSchema).optional(),
   clientId: z.string(),
+  clientName: z.string().optional(),
   clientSecret: z.string().optional(),
   tokenEndpointAuthMethod: z.string().optional(),
   responseType: z.string().optional(),
@@ -1260,6 +1268,7 @@ export const TypeOauth$outboundSchema: z.ZodType<
   clientCredentials: z.lazy(() => ClientCredentials$outboundSchema).optional(),
   forwardedClaims: z.lazy(() => ForwardedClaims$outboundSchema).optional(),
   defaultAudience: z.string().optional(),
+  defaultTokenExpiresIn: z.number().optional(),
   authorizationUrlParams: z.record(z.string()).optional(),
   jwtBearer: z.lazy(() => JwtBearer$outboundSchema).optional(),
 });
@@ -1593,21 +1602,21 @@ export const SupportsIcon$inboundSchema: z.ZodNativeEnum<typeof SupportsIcon> =
   z.nativeEnum(SupportsIcon);
 
 /** @internal */
-export const Triggers$inboundSchema: z.ZodType<
-  Triggers,
+export const CreateConnectorTriggers$inboundSchema: z.ZodType<
+  CreateConnectorTriggers,
   z.ZodTypeDef,
   unknown
 > = z.object({
   enabled: types.boolean(),
 });
 
-export function triggersFromJSON(
+export function createConnectorTriggersFromJSON(
   jsonString: string,
-): SafeParseResult<Triggers, SDKValidationError> {
+): SafeParseResult<CreateConnectorTriggers, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Triggers$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Triggers' from JSON`,
+    (x) => CreateConnectorTriggers$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateConnectorTriggers' from JSON`,
   );
 }
 
@@ -1814,7 +1823,7 @@ export const CreateConnectorResponseBody$inboundSchema: z.ZodType<
   ownerTenantId: types.optional(types.string()),
   supportsTriggers: types.boolean(),
   supportsIcon: SupportsIcon$inboundSchema,
-  triggers: types.optional(z.lazy(() => Triggers$inboundSchema)),
+  triggers: types.optional(z.lazy(() => CreateConnectorTriggers$inboundSchema)),
   events: types.optional(z.array(types.string())),
   triggerDestinations: types.optional(
     z.array(z.lazy(() => TriggerDestinations$inboundSchema)),

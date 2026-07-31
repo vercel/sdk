@@ -3,42 +3,44 @@
 
 ## Supported Types
 
-### `models.GetSecurityFirewallConfigRulesApiSecurityResponse1`
+### `models.GetSecurityFirewallConfigRulesSecurityResponse1`
 
 ```typescript
-const value: models.GetSecurityFirewallConfigRulesApiSecurityResponse1 = {
+const value: models.GetSecurityFirewallConfigRulesSecurityResponse1 = {
   id: "<id>",
   name: "<value>",
   active: true,
-  conditionGroup: [],
+  conditionGroup: [
+    {
+      conditions: [],
+    },
+  ],
   action: {},
   valid: true,
   validationErrors: "<value>",
 };
 ```
 
-### `models.GetSecurityFirewallConfigRulesApiSecurityResponse2`
+### `models.GetSecurityFirewallConfigRulesSecurityResponse2`
 
 ```typescript
-const value: models.GetSecurityFirewallConfigRulesApiSecurityResponse2 = {
+const value: models.GetSecurityFirewallConfigRulesSecurityResponse2 = {
   id: "<id>",
   name: "<value>",
-  active: false,
+  active: true,
   conditionGroup: [
     {
       conditions: [
         {
-          type: "ja4_digest",
-          op: "pre",
+          type: "ruleset",
+          op: "nex",
         },
       ],
     },
   ],
   action: {},
   valid: false,
-  validationErrors: [
-    "<value 1>",
-  ],
+  validationErrors: [],
 };
 ```
 

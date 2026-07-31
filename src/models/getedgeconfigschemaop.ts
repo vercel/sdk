@@ -20,7 +20,7 @@ export type GetEdgeConfigSchemaRequest = {
 };
 
 /**
- * The EdgeConfig.
+ * The Global Config.
  */
 export type GetEdgeConfigSchemaResponseBody = {};
 

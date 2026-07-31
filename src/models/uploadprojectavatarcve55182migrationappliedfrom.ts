@@ -1531,6 +1531,7 @@ export type UploadProjectAvatarFunctionDefaultMemoryType = ClosedEnum<
 >;
 
 export const UploadProjectAvatarBuildMachineType = {
+  Basic: "basic",
   Enhanced: "enhanced",
   Standard: "standard",
   Turbo: "turbo",
@@ -1667,6 +1668,7 @@ export type UploadProjectAvatarProjectsFunctionDefaultMemoryType = ClosedEnum<
 >;
 
 export const UploadProjectAvatarProjectsBuildMachineType = {
+  Basic: "basic",
   Enhanced: "enhanced",
   Standard: "standard",
   Turbo: "turbo",

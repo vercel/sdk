@@ -17,6 +17,7 @@ export const Reason = {
   EnterpriseUnpaidInvoice: "ENTERPRISE_UNPAID_INVOICE",
   ExposureCapExceeded: "EXPOSURE_CAP_EXCEEDED",
   FairUseLimitsExceeded: "FAIR_USE_LIMITS_EXCEEDED",
+  HobbyAllocationPaused: "HOBBY_ALLOCATION_PAUSED",
   SubscriptionCanceled: "SUBSCRIPTION_CANCELED",
   SubscriptionExpired: "SUBSCRIPTION_EXPIRED",
   UnpaidInvoice: "UNPAID_INVOICE",
@@ -70,12 +71,102 @@ export type BlockedDueToOverageType = ClosedEnum<
 >;
 
 /**
+ * Metered allocation whose included amount was fully consumed.
+ */
+export const Allocation = {
+  AnalyticsUsage: "analyticsUsage",
+  Artifacts: "artifacts",
+  Bandwidth: "bandwidth",
+  BlobDataTransfer: "blobDataTransfer",
+  BlobTotalAdvancedRequests: "blobTotalAdvancedRequests",
+  BlobTotalAvgSizeInBytes: "blobTotalAvgSizeInBytes",
+  BlobTotalGetResponseObjectSizeInBytes:
+    "blobTotalGetResponseObjectSizeInBytes",
+  BlobTotalSimpleRequests: "blobTotalSimpleRequests",
+  ConnectDataTransfer: "connectDataTransfer",
+  DataCacheRead: "dataCacheRead",
+  DataCacheWrite: "dataCacheWrite",
+  EdgeConfigRead: "edgeConfigRead",
+  EdgeConfigWrite: "edgeConfigWrite",
+  EdgeFunctionExecutionUnits: "edgeFunctionExecutionUnits",
+  EdgeMiddlewareInvocations: "edgeMiddlewareInvocations",
+  EdgeRequest: "edgeRequest",
+  EdgeRequestAdditionalCpuDuration: "edgeRequestAdditionalCpuDuration",
+  ElasticConcurrencyBuildSlots: "elasticConcurrencyBuildSlots",
+  FastDataTransfer: "fastDataTransfer",
+  FastOriginTransfer: "fastOriginTransfer",
+  FluidCpuDuration: "fluidCpuDuration",
+  FluidDuration: "fluidDuration",
+  FunctionDuration: "functionDuration",
+  FunctionInvocation: "functionInvocation",
+  ImageOptimizationCacheRead: "imageOptimizationCacheRead",
+  ImageOptimizationCacheWrite: "imageOptimizationCacheWrite",
+  ImageOptimizationTransformation: "imageOptimizationTransformation",
+  LogDrainsVolume: "logDrainsVolume",
+  MonitoringMetric: "monitoringMetric",
+  ObservabilityEvent: "observabilityEvent",
+  OnDemandConcurrencyMinutes: "onDemandConcurrencyMinutes",
+  RuntimeCacheRead: "runtimeCacheRead",
+  RuntimeCacheWrite: "runtimeCacheWrite",
+  ServerlessFunctionExecution: "serverlessFunctionExecution",
+  SourceImages: "sourceImages",
+  WafOwaspExcessBytes: "wafOwaspExcessBytes",
+  WafOwaspRequests: "wafOwaspRequests",
+  WafRateLimitRequest: "wafRateLimitRequest",
+  WebAnalyticsEvent: "webAnalyticsEvent",
+} as const;
+/**
+ * Metered allocation whose included amount was fully consumed.
+ */
+export type Allocation = ClosedEnum<typeof Allocation>;
+
+/**
+ * Allocations that were at or over 100% when the pause was applied.
+ */
+export type Triggers = {
+  /**
+   * Metered allocation whose included amount was fully consumed.
+   */
+  allocation: Allocation;
+  /**
+   * Usage recorded for that allocation when the pause was applied.
+   */
+  usage: number;
+};
+
+/**
+ * Present only when `reason` is `HOBBY_ALLOCATION_PAUSED`. Makes the pause self-describing for support without a separate lookup.
+ */
+export type HobbyAllocationPause = {
+  /**
+   * Unix ms timestamp at which the pause is eligible to end. This is the single source of truth for when the pause ends. Never re-derive it by re-checking usage — usage keeps moving while a team is paused, and the pause duration is a fixed experiment parameter.
+   */
+  pausedUntil: number;
+  /**
+   * Unix ms timestamp of when the pause was applied.
+   */
+  pausedAt: number;
+  /**
+   * Allocations that were at or over 100% when the pause was applied.
+   */
+  triggers: Array<Triggers>;
+  /**
+   * Experiment cohort the owner was assigned to when the pause fired. Free-form so cohort naming stays owned by the assignment path.
+   */
+  cohort: string;
+};
+
+/**
  * When the User account has been "soft blocked", this property will contain the date when the restriction was enacted, and the identifier for why.
  */
 export type SoftBlock = {
   blockedAt: number;
   reason: Reason;
   blockedDueToOverageType?: BlockedDueToOverageType | undefined;
+  /**
+   * Present only when `reason` is `HOBBY_ALLOCATION_PAUSED`. Makes the pause self-describing for support without a separate lookup.
+   */
+  hobbyAllocationPause?: HobbyAllocationPause | undefined;
 };
 
 /**
@@ -477,6 +568,52 @@ export const BlockedDueToOverageType$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(BlockedDueToOverageType);
 
 /** @internal */
+export const Allocation$inboundSchema: z.ZodNativeEnum<typeof Allocation> = z
+  .nativeEnum(Allocation);
+
+/** @internal */
+export const Triggers$inboundSchema: z.ZodType<
+  Triggers,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  allocation: Allocation$inboundSchema,
+  usage: types.number(),
+});
+
+export function triggersFromJSON(
+  jsonString: string,
+): SafeParseResult<Triggers, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Triggers$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Triggers' from JSON`,
+  );
+}
+
+/** @internal */
+export const HobbyAllocationPause$inboundSchema: z.ZodType<
+  HobbyAllocationPause,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  pausedUntil: types.number(),
+  pausedAt: types.number(),
+  triggers: z.array(z.lazy(() => Triggers$inboundSchema)),
+  cohort: types.string(),
+});
+
+export function hobbyAllocationPauseFromJSON(
+  jsonString: string,
+): SafeParseResult<HobbyAllocationPause, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HobbyAllocationPause$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HobbyAllocationPause' from JSON`,
+  );
+}
+
+/** @internal */
 export const SoftBlock$inboundSchema: z.ZodType<
   SoftBlock,
   z.ZodTypeDef,
@@ -486,6 +623,9 @@ export const SoftBlock$inboundSchema: z.ZodType<
   reason: Reason$inboundSchema,
   blockedDueToOverageType: types.optional(
     BlockedDueToOverageType$inboundSchema,
+  ),
+  hobbyAllocationPause: types.optional(
+    z.lazy(() => HobbyAllocationPause$inboundSchema),
   ),
 });
 

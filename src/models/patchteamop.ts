@@ -442,6 +442,7 @@ export type PatchTeamDefaultProjectJobs = DefaultProjectJobs1 | string;
  * Default build machine type for new builds: standard, enhanced, turbo, or elastic.
  */
 export const PatchTeamDefault = {
+  Basic: "basic",
   Enhanced: "enhanced",
   Turbo: "turbo",
   Standard: "standard",

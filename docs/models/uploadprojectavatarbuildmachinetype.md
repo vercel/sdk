@@ -11,5 +11,5 @@ let value: UploadProjectAvatarBuildMachineType = "enhanced";
 ## Values
 
 ```typescript
-"enhanced" | "standard" | "turbo"
+"basic" | "enhanced" | "standard" | "turbo"
 ```

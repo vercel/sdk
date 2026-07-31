@@ -5,29 +5,31 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndNinetyOne } from "@vercel/sdk/models/credentials2.js";
+import { OneHundredAndNinetyOne } from "@vercel/sdk/models/querytype.js";
 
 let value: OneHundredAndNinetyOne = {
   projectId: "<id>",
-  projectName: "<value>",
-  deletedCount: 5450.17,
-  scriptCount: 4782.19,
-  connectSrcCount: 498.78,
-  connectSrcOriginCount: 3830.5,
-  headerCount: 3642.72,
+  previous: {
+    enabled: true,
+    mode: "<value>",
+    enforcePercentage: 498.78,
+    newResourceBlockingPolicy: "allow",
+    allowUnsafeScriptSrcKeywords: true,
+  },
+  next: {
+    enabled: false,
+    mode: "<value>",
+    enforcePercentage: 3245.9,
+    newResourceBlockingPolicy: "block",
+    allowUnsafeScriptSrcKeywords: false,
+  },
 };
 ```
 
 ## Fields
 
-| Field                                  | Type                                   | Required                               | Description                            |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| `projectId`                            | *string*                               | :heavy_check_mark:                     | N/A                                    |
-| `projectName`                          | *string*                               | :heavy_check_mark:                     | N/A                                    |
-| `deletedCount`                         | *number*                               | :heavy_check_mark:                     | N/A                                    |
-| `scriptCount`                          | *number*                               | :heavy_check_mark:                     | N/A                                    |
-| `connectSrcCount`                      | *number*                               | :heavy_check_mark:                     | N/A                                    |
-| `connectSrcOriginCount`                | *number*                               | :heavy_check_mark:                     | N/A                                    |
-| `headerCount`                          | *number*                               | :heavy_check_mark:                     | N/A                                    |
-| `connectSrcUserNormalizationRuleCount` | *number*                               | :heavy_minus_sign:                     | N/A                                    |
-| `connectSrcNormalizationRulesCleared`  | *boolean*                              | :heavy_minus_sign:                     | N/A                                    |
+| Field                                                  | Type                                                   | Required                                               | Description                                            |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| `projectId`                                            | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
+| `previous`                                             | [models.PayloadPrevious](../models/payloadprevious.md) | :heavy_check_mark:                                     | N/A                                                    |
+| `next`                                                 | [models.PayloadNext](../models/payloadnext.md)         | :heavy_check_mark:                                     | N/A                                                    |

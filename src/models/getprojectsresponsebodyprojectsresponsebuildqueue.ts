@@ -1712,6 +1712,7 @@ export type GetProjectsResponseBodyProjectsFunctionDefaultMemoryType =
   ClosedEnum<typeof GetProjectsResponseBodyProjectsFunctionDefaultMemoryType>;
 
 export const GetProjectsResponseBodyProjectsBuildMachineType = {
+  Basic: "basic",
   Enhanced: "enhanced",
   Standard: "standard",
   Turbo: "turbo",
@@ -1855,6 +1856,7 @@ export type GetProjectsResponseBodyProjectsResponseFunctionDefaultMemoryType =
   >;
 
 export const GetProjectsResponseBodyProjectsResponseBuildMachineType = {
+  Basic: "basic",
   Enhanced: "enhanced",
   Standard: "standard",
   Turbo: "turbo",

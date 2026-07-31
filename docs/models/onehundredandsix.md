@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSix } from "@vercel/sdk/models/commitverification.js";
+import { OneHundredAndSix } from "@vercel/sdk/models/usereventjobpayload965provider.js";
 
 let value: OneHundredAndSix = {
   name: "<value>",
@@ -14,8 +14,7 @@ let value: OneHundredAndSix = {
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `name`                                                                       | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
-| `oldTeam`                                                                    | [models.UserEventPayload106OldTeam](../models/usereventpayload106oldteam.md) | :heavy_minus_sign:                                                           | N/A                                                                          |
-| `newTeam`                                                                    | [models.UserEventPayload106NewTeam](../models/usereventpayload106newteam.md) | :heavy_minus_sign:                                                           | N/A                                                                          |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `zone`             | *boolean*          | :heavy_minus_sign: | N/A                |

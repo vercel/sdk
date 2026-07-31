@@ -606,6 +606,7 @@ export type ResponseBodyFunctionDefaultMemoryType = ClosedEnum<
 >;
 
 export const ResponseBodyBuildMachineType = {
+  Basic: "basic",
   Enhanced: "enhanced",
   Standard: "standard",
   Turbo: "turbo",

@@ -4,7 +4,6 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
-import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -20,6 +19,18 @@ export type GetEdgeConfigsRequest = {
   slug?: string | undefined;
 };
 
+export type Purpose2 = {
+  type: "experimentation";
+  resourceId: string;
+};
+
+export type Purpose1 = {
+  type: "flags";
+  projectId: string;
+};
+
+export type Purpose = Purpose1 | Purpose2;
+
 /**
  * Keeps track of the current state of the Edge Config while it gets transferred.
  */
@@ -31,32 +42,34 @@ export type Transfer = {
 
 export type Schema = {};
 
-export const GetEdgeConfigsType = {
-  Flags: "flags",
-} as const;
-export type GetEdgeConfigsType = ClosedEnum<typeof GetEdgeConfigsType>;
-
-export type Purpose = {
-  type: GetEdgeConfigsType;
-  projectId: string;
-};
-
+/**
+ * List of all global configs.
+ */
 export type GetEdgeConfigsResponseBody = {
-  id?: string | undefined;
-  createdAt?: number | undefined;
-  ownerId?: string | undefined;
+  id: string;
+  createdAt: number;
+  /**
+   * The ID of the user who created the Edge Config, optional because it is not always set.
+   */
+  createdBy?: string | undefined;
+  ownerId: string;
   /**
    * Name for the Edge Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores).
    */
-  slug?: string | undefined;
-  updatedAt?: number | undefined;
-  digest?: string | undefined;
+  slug: string;
+  updatedAt: number;
+  digest: string;
+  purpose?: Purpose1 | Purpose2 | undefined;
+  deletedAt?: number | null | undefined;
   /**
    * Keeps track of the current state of the Edge Config while it gets transferred.
    */
   transfer?: Transfer | undefined;
   schema?: Schema | undefined;
-  purpose?: Purpose | undefined;
+  /**
+   * Timestamp of when the Edge Config was synced to DynamoDB initially. It is only set when syncing the entire Edge Config, not when updating.
+   */
+  syncedToDynamoAt?: number | undefined;
   sizeInBytes: number;
   itemCount: number;
 };
@@ -82,6 +95,63 @@ export function getEdgeConfigsRequestToJSON(
 ): string {
   return JSON.stringify(
     GetEdgeConfigsRequest$outboundSchema.parse(getEdgeConfigsRequest),
+  );
+}
+
+/** @internal */
+export const Purpose2$inboundSchema: z.ZodType<
+  Purpose2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("experimentation"),
+  resourceId: types.string(),
+});
+
+export function purpose2FromJSON(
+  jsonString: string,
+): SafeParseResult<Purpose2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Purpose2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Purpose2' from JSON`,
+  );
+}
+
+/** @internal */
+export const Purpose1$inboundSchema: z.ZodType<
+  Purpose1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("flags"),
+  projectId: types.string(),
+});
+
+export function purpose1FromJSON(
+  jsonString: string,
+): SafeParseResult<Purpose1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Purpose1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Purpose1' from JSON`,
+  );
+}
+
+/** @internal */
+export const Purpose$inboundSchema: z.ZodType<Purpose, z.ZodTypeDef, unknown> =
+  z.union([
+    z.lazy(() => Purpose1$inboundSchema),
+    z.lazy(() => Purpose2$inboundSchema),
+  ]);
+
+export function purposeFromJSON(
+  jsonString: string,
+): SafeParseResult<Purpose, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Purpose$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Purpose' from JSON`,
   );
 }
 
@@ -121,42 +191,28 @@ export function schemaFromJSON(
 }
 
 /** @internal */
-export const GetEdgeConfigsType$inboundSchema: z.ZodNativeEnum<
-  typeof GetEdgeConfigsType
-> = z.nativeEnum(GetEdgeConfigsType);
-
-/** @internal */
-export const Purpose$inboundSchema: z.ZodType<Purpose, z.ZodTypeDef, unknown> =
-  z.object({
-    type: GetEdgeConfigsType$inboundSchema,
-    projectId: types.string(),
-  });
-
-export function purposeFromJSON(
-  jsonString: string,
-): SafeParseResult<Purpose, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Purpose$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Purpose' from JSON`,
-  );
-}
-
-/** @internal */
 export const GetEdgeConfigsResponseBody$inboundSchema: z.ZodType<
   GetEdgeConfigsResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: types.optional(types.string()),
-  createdAt: types.optional(types.number()),
-  ownerId: types.optional(types.string()),
-  slug: types.optional(types.string()),
-  updatedAt: types.optional(types.number()),
-  digest: types.optional(types.string()),
+  id: types.string(),
+  createdAt: types.number(),
+  createdBy: types.optional(types.string()),
+  ownerId: types.string(),
+  slug: types.string(),
+  updatedAt: types.number(),
+  digest: types.string(),
+  purpose: types.optional(
+    z.union([
+      z.lazy(() => Purpose1$inboundSchema),
+      z.lazy(() => Purpose2$inboundSchema),
+    ]),
+  ),
+  deletedAt: z.nullable(types.number()).optional(),
   transfer: types.optional(z.lazy(() => Transfer$inboundSchema)),
   schema: types.optional(z.lazy(() => Schema$inboundSchema)),
-  purpose: types.optional(z.lazy(() => Purpose$inboundSchema)),
+  syncedToDynamoAt: types.optional(types.number()),
   sizeInBytes: types.number(),
   itemCount: types.number(),
 });

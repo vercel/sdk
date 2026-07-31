@@ -5,11 +5,11 @@
 ```typescript
 import { UploadProjectAvatarProjectsBuildMachineType } from "@vercel/sdk/models/uploadprojectavatarcve55182migrationappliedfrom.js";
 
-let value: UploadProjectAvatarProjectsBuildMachineType = "enhanced";
+let value: UploadProjectAvatarProjectsBuildMachineType = "basic";
 ```
 
 ## Values
 
 ```typescript
-"enhanced" | "standard" | "turbo"
+"basic" | "enhanced" | "standard" | "turbo"
 ```

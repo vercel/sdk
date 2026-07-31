@@ -18,179 +18,179 @@ export type CreateSecurityFirewallConfigByConfigVersionActivateRequest = {
   configVersion: string;
 };
 
-export const CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsSdAction =
+export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsSdAction =
   {
     Deny: "deny",
     Log: "log",
   } as const;
-export type CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsSdAction =
+export type CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsSdAction =
   ClosedEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsSdAction
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsSdAction
   >;
 
 export type CreateSecurityFirewallConfigByConfigVersionActivateSd = {
   active: boolean;
   action:
-    CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsSdAction;
+    CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsSdAction;
 };
 
-export const CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityAction =
+export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityAction =
   {
     Deny: "deny",
     Log: "log",
   } as const;
-export type CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityAction =
+export type CreateSecurityFirewallConfigByConfigVersionActivateSecurityAction =
   ClosedEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityAction
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityAction
   >;
 
 export type CreateSecurityFirewallConfigByConfigVersionActivateMa = {
   active: boolean;
-  action: CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityAction;
+  action: CreateSecurityFirewallConfigByConfigVersionActivateSecurityAction;
 };
 
-export const CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponseAction =
+export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponseAction =
   {
     Deny: "deny",
     Log: "log",
   } as const;
-export type CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponseAction =
+export type CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponseAction =
   ClosedEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponseAction
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponseAction
   >;
 
 export type CreateSecurityFirewallConfigByConfigVersionActivateLfi = {
   active: boolean;
   action:
-    CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponseAction;
+    CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponseAction;
 };
 
-export const CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200Action =
+export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200Action =
   {
     Deny: "deny",
     Log: "log",
   } as const;
-export type CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200Action =
+export type CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200Action =
   ClosedEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200Action
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200Action
   >;
 
 export type CreateSecurityFirewallConfigByConfigVersionActivateRfi = {
   active: boolean;
   action:
-    CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200Action;
+    CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200Action;
 };
 
-export const CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONAction =
+export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONAction =
   {
     Deny: "deny",
     Log: "log",
   } as const;
-export type CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONAction =
+export type CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONAction =
   ClosedEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONAction
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONAction
   >;
 
 export type CreateSecurityFirewallConfigByConfigVersionActivateRce = {
   active: boolean;
   action:
-    CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONAction;
+    CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONAction;
 };
 
-export const CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyAction =
+export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyAction =
   {
     Deny: "deny",
     Log: "log",
   } as const;
-export type CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyAction =
+export type CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyAction =
   ClosedEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyAction
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyAction
   >;
 
 export type CreateSecurityFirewallConfigByConfigVersionActivatePhp = {
   active: boolean;
   action:
-    CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyAction;
+    CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyAction;
 };
 
-export const CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsAction =
+export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsAction =
   {
     Deny: "deny",
     Log: "log",
   } as const;
-export type CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsAction =
+export type CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsAction =
   ClosedEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsAction
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsAction
   >;
 
 export type CreateSecurityFirewallConfigByConfigVersionActivateGen = {
   active: boolean;
   action:
-    CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsAction;
+    CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsAction;
 };
 
-export const CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsXssAction =
+export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsXssAction =
   {
     Deny: "deny",
     Log: "log",
   } as const;
-export type CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsXssAction =
+export type CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsXssAction =
   ClosedEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsXssAction
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsXssAction
   >;
 
 export type CreateSecurityFirewallConfigByConfigVersionActivateXss = {
   active: boolean;
   action:
-    CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsXssAction;
+    CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsXssAction;
 };
 
-export const CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsSqliAction =
+export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsSqliAction =
   {
     Deny: "deny",
     Log: "log",
   } as const;
-export type CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsSqliAction =
+export type CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsSqliAction =
   ClosedEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsSqliAction
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsSqliAction
   >;
 
 export type CreateSecurityFirewallConfigByConfigVersionActivateSqli = {
   active: boolean;
   action:
-    CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsSqliAction;
+    CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsSqliAction;
 };
 
-export const CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsSfAction =
+export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsSfAction =
   {
     Deny: "deny",
     Log: "log",
   } as const;
-export type CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsSfAction =
+export type CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsSfAction =
   ClosedEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsSfAction
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsSfAction
   >;
 
 export type CreateSecurityFirewallConfigByConfigVersionActivateSf = {
   active: boolean;
   action:
-    CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsSfAction;
+    CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsSfAction;
 };
 
-export const CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsJavaAction =
+export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsJavaAction =
   {
     Deny: "deny",
     Log: "log",
   } as const;
-export type CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsJavaAction =
+export type CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsJavaAction =
   ClosedEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsJavaAction
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsJavaAction
   >;
 
 export type CreateSecurityFirewallConfigByConfigVersionActivateJava = {
   active: boolean;
   action:
-    CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsJavaAction;
+    CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsJavaAction;
 };
 
 export type CreateSecurityFirewallConfigByConfigVersionActivateCrs = {
@@ -207,7 +207,7 @@ export type CreateSecurityFirewallConfigByConfigVersionActivateCrs = {
   java: CreateSecurityFirewallConfigByConfigVersionActivateJava;
 };
 
-export const CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityType =
+export const CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityType =
   {
     BotCategory: "bot_category",
     BotName: "bot_name",
@@ -241,12 +241,12 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurity
     TrustedSource: "trusted_source",
     UserAgent: "user_agent",
   } as const;
-export type CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityType =
+export type CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityType =
   ClosedEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityType
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityType
   >;
 
-export const CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityOp =
+export const CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityOp =
   {
     Eq: "eq",
     Ex: "ex",
@@ -264,34 +264,33 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurity
     Sub: "sub",
     Suf: "suf",
   } as const;
-export type CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityOp =
+export type CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityOp =
   ClosedEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityOp
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityOp
   >;
 
-export type CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityValue =
+export type CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityValue =
   | string
   | number
   | Array<string>;
 
-export type CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityConditions =
+export type CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityConditions =
   {
-    type:
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityType;
-    op: CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityOp;
+    type: CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityType;
+    op: CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityOp;
     neg?: boolean | undefined;
     key?: string | undefined;
     value?: string | number | Array<string> | undefined;
   };
 
-export type CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityConditionGroup =
+export type CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityConditionGroup =
   {
     conditions: Array<
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityConditions
+      CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityConditions
     >;
   };
 
-export const CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityResponseAction =
+export const CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponseAction =
   {
     Allow: "allow",
     Bypass: "bypass",
@@ -301,89 +300,88 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurity
     RateLimit: "rate_limit",
     Redirect: "redirect",
   } as const;
-export type CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityResponseAction =
+export type CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponseAction =
   ClosedEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityResponseAction
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponseAction
   >;
 
-export const CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityAlgo =
+export const CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityAlgo =
   {
     FixedWindow: "fixed_window",
     TokenBucket: "token_bucket",
   } as const;
-export type CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityAlgo =
+export type CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityAlgo =
   ClosedEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityAlgo
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityAlgo
   >;
 
-export const CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityResponse200ApplicationJSONAction =
+export const CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponse200ApplicationJSONAction =
   {
     Challenge: "challenge",
     Deny: "deny",
     Log: "log",
     RateLimit: "rate_limit",
   } as const;
-export type CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityResponse200ApplicationJSONAction =
+export type CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponse200ApplicationJSONAction =
   ClosedEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityResponse200ApplicationJSONAction
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponse200ApplicationJSONAction
   >;
 
-export type CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityRateLimit =
+export type CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityRateLimit =
   {
-    algo:
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityAlgo;
+    algo: CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityAlgo;
     window: number;
     limit: number;
     keys: Array<string>;
     action?:
-      | CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityResponse200ApplicationJSONAction
+      | CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponse200ApplicationJSONAction
       | null
       | undefined;
   };
 
-export type CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityRedirect =
+export type CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityRedirect =
   {
     location: string;
     permanent: boolean;
   };
 
-export const CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersApiSecurityResponse200ApplicationJson2 =
+export const CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse200ApplicationJson2 =
   {
     Wildcard: "*",
   } as const;
-export type CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersApiSecurityResponse200ApplicationJson2 =
+export type CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse200ApplicationJson2 =
   ClosedEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersApiSecurityResponse200ApplicationJson2
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse200ApplicationJson2
   >;
 
-export type CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityLogHeaders =
+export type CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityLogHeaders =
   | Array<string>
-  | CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersApiSecurityResponse200ApplicationJson2;
+  | CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse200ApplicationJson2;
 
-export type CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityMitigate =
+export type CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityMitigate =
   {
     action:
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityResponseAction;
+      CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponseAction;
     rateLimit?:
-      | CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityRateLimit
+      | CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityRateLimit
       | null
       | undefined;
     redirect?:
-      | CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityRedirect
+      | CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityRedirect
       | null
       | undefined;
     actionDuration?: string | null | undefined;
     bypassSystem?: boolean | null | undefined;
     logHeaders?:
       | Array<string>
-      | CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersApiSecurityResponse200ApplicationJson2
+      | CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse200ApplicationJson2
       | undefined;
   };
 
-export type CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityAction =
+export type CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityAction =
   {
     mitigate?:
-      | CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityMitigate
+      | CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityMitigate
       | undefined;
   };
 
@@ -393,10 +391,10 @@ export type CreateSecurityFirewallConfigByConfigVersionActivateRules2 = {
   description?: string | undefined;
   active: boolean;
   conditionGroup: Array<
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityConditionGroup
+    CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityConditionGroup
   >;
   action:
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityAction;
+    CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityAction;
   valid: false;
   validationErrors: Array<string>;
 };
@@ -480,7 +478,7 @@ export type CreateSecurityFirewallConfigByConfigVersionActivateRulesConditionGro
     >;
   };
 
-export const CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityResponse200Action =
+export const CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponse200Action =
   {
     Allow: "allow",
     Bypass: "bypass",
@@ -490,9 +488,9 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurity
     RateLimit: "rate_limit",
     Redirect: "redirect",
   } as const;
-export type CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityResponse200Action =
+export type CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponse200Action =
   ClosedEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityResponse200Action
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponse200Action
   >;
 
 export const CreateSecurityFirewallConfigByConfigVersionActivateRulesAlgo = {
@@ -504,16 +502,16 @@ export type CreateSecurityFirewallConfigByConfigVersionActivateRulesAlgo =
     typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesAlgo
   >;
 
-export const CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityResponse200ApplicationJSONResponseBodyAction =
+export const CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponse200ApplicationJSONResponseBodyAction =
   {
     Challenge: "challenge",
     Deny: "deny",
     Log: "log",
     RateLimit: "rate_limit",
   } as const;
-export type CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityResponse200ApplicationJSONResponseBodyAction =
+export type CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponse200ApplicationJSONResponseBodyAction =
   ClosedEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityResponse200ApplicationJSONResponseBodyAction
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponse200ApplicationJSONResponseBodyAction
   >;
 
 export type CreateSecurityFirewallConfigByConfigVersionActivateRulesRateLimit =
@@ -523,7 +521,7 @@ export type CreateSecurityFirewallConfigByConfigVersionActivateRulesRateLimit =
     limit: number;
     keys: Array<string>;
     action?:
-      | CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityResponse200ApplicationJSONResponseBodyAction
+      | CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponse200ApplicationJSONResponseBodyAction
       | null
       | undefined;
   };
@@ -533,22 +531,22 @@ export type CreateSecurityFirewallConfigByConfigVersionActivateRulesRedirect = {
   permanent: boolean;
 };
 
-export const CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersApiSecurityResponse2002 =
+export const CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse2002 =
   {
     Wildcard: "*",
   } as const;
-export type CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersApiSecurityResponse2002 =
+export type CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse2002 =
   ClosedEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersApiSecurityResponse2002
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse2002
   >;
 
 export type CreateSecurityFirewallConfigByConfigVersionActivateRulesLogHeaders =
   | Array<string>
-  | CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersApiSecurityResponse2002;
+  | CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse2002;
 
 export type CreateSecurityFirewallConfigByConfigVersionActivateRulesMitigate = {
   action:
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityResponse200Action;
+    CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponse200Action;
   rateLimit?:
     | CreateSecurityFirewallConfigByConfigVersionActivateRulesRateLimit
     | null
@@ -561,7 +559,7 @@ export type CreateSecurityFirewallConfigByConfigVersionActivateRulesMitigate = {
   bypassSystem?: boolean | null | undefined;
   logHeaders?:
     | Array<string>
-    | CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersApiSecurityResponse2002
+    | CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse2002
     | undefined;
 };
 
@@ -605,7 +603,7 @@ export type CreateSecurityFirewallConfigByConfigVersionActivateIps = {
   action: CreateSecurityFirewallConfigByConfigVersionActivateAction;
 };
 
-export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityAction =
+export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityAction =
   {
     Allow: "allow",
     Bypass: "bypass",
@@ -615,9 +613,9 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecur
     RateLimit: "rate_limit",
     Redirect: "redirect",
   } as const;
-export type CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityAction =
+export type CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityAction =
   ClosedEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityAction
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityAction
   >;
 
 export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsAlgo = {
@@ -629,16 +627,16 @@ export type CreateSecurityFirewallConfigByConfigVersionActivateRulesetsAlgo =
     typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesetsAlgo
   >;
 
-export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityResponseAction =
+export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityResponseAction =
   {
     Challenge: "challenge",
     Deny: "deny",
     Log: "log",
     RateLimit: "rate_limit",
   } as const;
-export type CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityResponseAction =
+export type CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityResponseAction =
   ClosedEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityResponseAction
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityResponseAction
   >;
 
 export type CreateSecurityFirewallConfigByConfigVersionActivateRulesetsRateLimit =
@@ -648,7 +646,7 @@ export type CreateSecurityFirewallConfigByConfigVersionActivateRulesetsRateLimit
     limit: number;
     keys: Array<string>;
     action?:
-      | CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityResponseAction
+      | CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityResponseAction
       | null
       | undefined;
   };
@@ -659,22 +657,22 @@ export type CreateSecurityFirewallConfigByConfigVersionActivateRulesetsRedirect 
     permanent: boolean;
   };
 
-export const CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersApiSecurity2 =
+export const CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurity2 =
   {
     Wildcard: "*",
   } as const;
-export type CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersApiSecurity2 =
+export type CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurity2 =
   ClosedEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersApiSecurity2
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurity2
   >;
 
 export type CreateSecurityFirewallConfigByConfigVersionActivateRulesetsLogHeaders =
   | Array<string>
-  | CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersApiSecurity2;
+  | CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurity2;
 
 export type CreateSecurityFirewallConfigByConfigVersionActivateRulesets2 = {
   action:
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityAction;
+    CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityAction;
   rateLimit?:
     | CreateSecurityFirewallConfigByConfigVersionActivateRulesetsRateLimit
     | null
@@ -687,7 +685,7 @@ export type CreateSecurityFirewallConfigByConfigVersionActivateRulesets2 = {
   bypassSystem?: boolean | null | undefined;
   logHeaders?:
     | Array<string>
-    | CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersApiSecurity2
+    | CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurity2
     | undefined;
 };
 
@@ -772,7 +770,7 @@ export type CreateSecurityFirewallConfigByConfigVersionActivateRulesetsCondition
     >;
   };
 
-export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityResponse200Action =
+export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityResponse200Action =
   {
     Allow: "allow",
     Bypass: "bypass",
@@ -782,82 +780,82 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecur
     RateLimit: "rate_limit",
     Redirect: "redirect",
   } as const;
-export type CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityResponse200Action =
+export type CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityResponse200Action =
   ClosedEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityResponse200Action
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityResponse200Action
   >;
 
-export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityAlgo =
+export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityAlgo =
   {
     FixedWindow: "fixed_window",
     TokenBucket: "token_bucket",
   } as const;
-export type CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityAlgo =
+export type CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityAlgo =
   ClosedEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityAlgo
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityAlgo
   >;
 
-export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityResponse200ApplicationJSONAction =
+export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityResponse200ApplicationJSONAction =
   {
     Challenge: "challenge",
     Deny: "deny",
     Log: "log",
     RateLimit: "rate_limit",
   } as const;
-export type CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityResponse200ApplicationJSONAction =
+export type CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityResponse200ApplicationJSONAction =
   ClosedEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityResponse200ApplicationJSONAction
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityResponse200ApplicationJSONAction
   >;
 
-export type CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityRateLimit =
+export type CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityRateLimit =
   {
     algo:
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityAlgo;
+      CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityAlgo;
     window: number;
     limit: number;
     keys: Array<string>;
     action?:
-      | CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityResponse200ApplicationJSONAction
+      | CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityResponse200ApplicationJSONAction
       | null
       | undefined;
   };
 
-export type CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityRedirect =
+export type CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityRedirect =
   {
     location: string;
     permanent: boolean;
   };
 
-export const CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersApiSecurityResponse2 =
+export const CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse2 =
   {
     Wildcard: "*",
   } as const;
-export type CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersApiSecurityResponse2 =
+export type CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse2 =
   ClosedEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersApiSecurityResponse2
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse2
   >;
 
-export type CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityLogHeaders =
+export type CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityLogHeaders =
   | Array<string>
-  | CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersApiSecurityResponse2;
+  | CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse2;
 
 export type CreateSecurityFirewallConfigByConfigVersionActivateRulesetsMitigate =
   {
     action:
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityResponse200Action;
+      CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityResponse200Action;
     rateLimit?:
-      | CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityRateLimit
+      | CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityRateLimit
       | null
       | undefined;
     redirect?:
-      | CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityRedirect
+      | CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityRedirect
       | null
       | undefined;
     actionDuration?: string | null | undefined;
     bypassSystem?: boolean | null | undefined;
     logHeaders?:
       | Array<string>
-      | CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersApiSecurityResponse2
+      | CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse2
       | undefined;
   };
 
@@ -889,106 +887,106 @@ export type CreateSecurityFirewallConfigByConfigVersionActivateRulesets =
 
 export type CreateSecurityFirewallConfigByConfigVersionActivateChanges = {};
 
-export const CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction =
+export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction =
   {
     Challenge: "challenge",
     Deny: "deny",
     Log: "log",
   } as const;
-export type CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction =
+export type CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction =
   ClosedEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction
   >;
 
 export type CreateSecurityFirewallConfigByConfigVersionActivateBotProtection = {
   active: boolean;
   action?:
-    | CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction
+    | CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction
     | undefined;
   updatedAt?: string | undefined;
   userId?: string | undefined;
   username?: string | undefined;
 };
 
-export const CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyManagedRulesAiBotsAction =
+export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesAiBotsAction =
   {
     Challenge: "challenge",
     Deny: "deny",
     Log: "log",
   } as const;
-export type CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyManagedRulesAiBotsAction =
+export type CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesAiBotsAction =
   ClosedEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyManagedRulesAiBotsAction
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesAiBotsAction
   >;
 
 export type CreateSecurityFirewallConfigByConfigVersionActivateAiBots = {
   active: boolean;
   action?:
-    | CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyManagedRulesAiBotsAction
+    | CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesAiBotsAction
     | undefined;
   updatedAt?: string | undefined;
   userId?: string | undefined;
   username?: string | undefined;
 };
 
-export const CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction =
+export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction =
   {
     Challenge: "challenge",
     Deny: "deny",
     Log: "log",
   } as const;
-export type CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction =
+export type CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction =
   ClosedEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction
   >;
 
 export type CreateSecurityFirewallConfigByConfigVersionActivateOwasp = {
   active: boolean;
   action?:
-    | CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction
+    | CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction
     | undefined;
   updatedAt?: string | undefined;
   userId?: string | undefined;
   username?: string | undefined;
 };
 
-export const CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyManagedRulesVercelRulesetAction =
+export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesVercelRulesetAction =
   {
     Challenge: "challenge",
     Deny: "deny",
     Log: "log",
   } as const;
-export type CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyManagedRulesVercelRulesetAction =
+export type CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesVercelRulesetAction =
   ClosedEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyManagedRulesVercelRulesetAction
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesVercelRulesetAction
   >;
 
 export type CreateSecurityFirewallConfigByConfigVersionActivateVercelRuleset = {
   active: boolean;
   action?:
-    | CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyManagedRulesVercelRulesetAction
+    | CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesVercelRulesetAction
     | undefined;
   updatedAt?: string | undefined;
   userId?: string | undefined;
   username?: string | undefined;
 };
 
-export const CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyManagedRulesTrafficSourcesAction =
+export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesTrafficSourcesAction =
   {
     Challenge: "challenge",
     Deny: "deny",
     Log: "log",
   } as const;
-export type CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyManagedRulesTrafficSourcesAction =
+export type CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesTrafficSourcesAction =
   ClosedEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyManagedRulesTrafficSourcesAction
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesTrafficSourcesAction
   >;
 
 export type CreateSecurityFirewallConfigByConfigVersionActivateTrafficSources =
   {
     active: boolean;
     action?:
-      | CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyManagedRulesTrafficSourcesAction
+      | CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesTrafficSourcesAction
       | undefined;
     updatedAt?: string | undefined;
     userId?: string | undefined;
@@ -1080,11 +1078,11 @@ export function createSecurityFirewallConfigByConfigVersionActivateRequestToJSON
 }
 
 /** @internal */
-export const CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsSdAction$inboundSchema:
+export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsSdAction$inboundSchema:
   z.ZodNativeEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsSdAction
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsSdAction
   > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsSdAction,
+    CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsSdAction,
   );
 
 /** @internal */
@@ -1096,7 +1094,7 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateSd$inboundSchema
   > = z.object({
     active: types.boolean(),
     action:
-      CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsSdAction$inboundSchema,
+      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsSdAction$inboundSchema,
   });
 
 export function createSecurityFirewallConfigByConfigVersionActivateSdFromJSON(
@@ -1116,11 +1114,11 @@ export function createSecurityFirewallConfigByConfigVersionActivateSdFromJSON(
 }
 
 /** @internal */
-export const CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityAction$inboundSchema:
+export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityAction$inboundSchema:
   z.ZodNativeEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityAction
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityAction
   > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityAction,
+    CreateSecurityFirewallConfigByConfigVersionActivateSecurityAction,
   );
 
 /** @internal */
@@ -1132,7 +1130,7 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateMa$inboundSchema
   > = z.object({
     active: types.boolean(),
     action:
-      CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityAction$inboundSchema,
+      CreateSecurityFirewallConfigByConfigVersionActivateSecurityAction$inboundSchema,
   });
 
 export function createSecurityFirewallConfigByConfigVersionActivateMaFromJSON(
@@ -1152,11 +1150,11 @@ export function createSecurityFirewallConfigByConfigVersionActivateMaFromJSON(
 }
 
 /** @internal */
-export const CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponseAction$inboundSchema:
+export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponseAction$inboundSchema:
   z.ZodNativeEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponseAction
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponseAction
   > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponseAction,
+    CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponseAction,
   );
 
 /** @internal */
@@ -1168,7 +1166,7 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateLfi$inboundSchem
   > = z.object({
     active: types.boolean(),
     action:
-      CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponseAction$inboundSchema,
+      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponseAction$inboundSchema,
   });
 
 export function createSecurityFirewallConfigByConfigVersionActivateLfiFromJSON(
@@ -1187,11 +1185,11 @@ export function createSecurityFirewallConfigByConfigVersionActivateLfiFromJSON(
 }
 
 /** @internal */
-export const CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200Action$inboundSchema:
+export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200Action$inboundSchema:
   z.ZodNativeEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200Action
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200Action
   > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200Action,
+    CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200Action,
   );
 
 /** @internal */
@@ -1203,7 +1201,7 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRfi$inboundSchem
   > = z.object({
     active: types.boolean(),
     action:
-      CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200Action$inboundSchema,
+      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200Action$inboundSchema,
   });
 
 export function createSecurityFirewallConfigByConfigVersionActivateRfiFromJSON(
@@ -1222,11 +1220,11 @@ export function createSecurityFirewallConfigByConfigVersionActivateRfiFromJSON(
 }
 
 /** @internal */
-export const CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONAction$inboundSchema:
+export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONAction$inboundSchema:
   z.ZodNativeEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONAction
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONAction
   > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONAction,
+    CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONAction,
   );
 
 /** @internal */
@@ -1238,7 +1236,7 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRce$inboundSchem
   > = z.object({
     active: types.boolean(),
     action:
-      CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONAction$inboundSchema,
+      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONAction$inboundSchema,
   });
 
 export function createSecurityFirewallConfigByConfigVersionActivateRceFromJSON(
@@ -1257,11 +1255,11 @@ export function createSecurityFirewallConfigByConfigVersionActivateRceFromJSON(
 }
 
 /** @internal */
-export const CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyAction$inboundSchema:
+export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyAction$inboundSchema:
   z.ZodNativeEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyAction
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyAction
   > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyAction,
+    CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyAction,
   );
 
 /** @internal */
@@ -1273,7 +1271,7 @@ export const CreateSecurityFirewallConfigByConfigVersionActivatePhp$inboundSchem
   > = z.object({
     active: types.boolean(),
     action:
-      CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyAction$inboundSchema,
+      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyAction$inboundSchema,
   });
 
 export function createSecurityFirewallConfigByConfigVersionActivatePhpFromJSON(
@@ -1292,11 +1290,11 @@ export function createSecurityFirewallConfigByConfigVersionActivatePhpFromJSON(
 }
 
 /** @internal */
-export const CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsAction$inboundSchema:
+export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsAction$inboundSchema:
   z.ZodNativeEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsAction
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsAction
   > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsAction,
+    CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsAction,
   );
 
 /** @internal */
@@ -1308,7 +1306,7 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateGen$inboundSchem
   > = z.object({
     active: types.boolean(),
     action:
-      CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsAction$inboundSchema,
+      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsAction$inboundSchema,
   });
 
 export function createSecurityFirewallConfigByConfigVersionActivateGenFromJSON(
@@ -1327,11 +1325,11 @@ export function createSecurityFirewallConfigByConfigVersionActivateGenFromJSON(
 }
 
 /** @internal */
-export const CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsXssAction$inboundSchema:
+export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsXssAction$inboundSchema:
   z.ZodNativeEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsXssAction
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsXssAction
   > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsXssAction,
+    CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsXssAction,
   );
 
 /** @internal */
@@ -1343,7 +1341,7 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateXss$inboundSchem
   > = z.object({
     active: types.boolean(),
     action:
-      CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsXssAction$inboundSchema,
+      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsXssAction$inboundSchema,
   });
 
 export function createSecurityFirewallConfigByConfigVersionActivateXssFromJSON(
@@ -1362,11 +1360,11 @@ export function createSecurityFirewallConfigByConfigVersionActivateXssFromJSON(
 }
 
 /** @internal */
-export const CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsSqliAction$inboundSchema:
+export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsSqliAction$inboundSchema:
   z.ZodNativeEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsSqliAction
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsSqliAction
   > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsSqliAction,
+    CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsSqliAction,
   );
 
 /** @internal */
@@ -1378,7 +1376,7 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateSqli$inboundSche
   > = z.object({
     active: types.boolean(),
     action:
-      CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsSqliAction$inboundSchema,
+      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsSqliAction$inboundSchema,
   });
 
 export function createSecurityFirewallConfigByConfigVersionActivateSqliFromJSON(
@@ -1397,11 +1395,11 @@ export function createSecurityFirewallConfigByConfigVersionActivateSqliFromJSON(
 }
 
 /** @internal */
-export const CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsSfAction$inboundSchema:
+export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsSfAction$inboundSchema:
   z.ZodNativeEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsSfAction
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsSfAction
   > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsSfAction,
+    CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsSfAction,
   );
 
 /** @internal */
@@ -1413,7 +1411,7 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateSf$inboundSchema
   > = z.object({
     active: types.boolean(),
     action:
-      CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsSfAction$inboundSchema,
+      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsSfAction$inboundSchema,
   });
 
 export function createSecurityFirewallConfigByConfigVersionActivateSfFromJSON(
@@ -1433,11 +1431,11 @@ export function createSecurityFirewallConfigByConfigVersionActivateSfFromJSON(
 }
 
 /** @internal */
-export const CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsJavaAction$inboundSchema:
+export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsJavaAction$inboundSchema:
   z.ZodNativeEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsJavaAction
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsJavaAction
   > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsJavaAction,
+    CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsJavaAction,
   );
 
 /** @internal */
@@ -1449,7 +1447,7 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateJava$inboundSche
   > = z.object({
     active: types.boolean(),
     action:
-      CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyCrsJavaAction$inboundSchema,
+      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsJavaAction$inboundSchema,
   });
 
 export function createSecurityFirewallConfigByConfigVersionActivateJavaFromJSON(
@@ -1525,55 +1523,55 @@ export function createSecurityFirewallConfigByConfigVersionActivateCrsFromJSON(
 }
 
 /** @internal */
-export const CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityType$inboundSchema:
+export const CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityType$inboundSchema:
   z.ZodNativeEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityType
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityType
   > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityType,
+    CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityType,
   );
 
 /** @internal */
-export const CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityOp$inboundSchema:
+export const CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityOp$inboundSchema:
   z.ZodNativeEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityOp
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityOp
   > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityOp,
+    CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityOp,
   );
 
 /** @internal */
-export const CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityValue$inboundSchema:
+export const CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityValue$inboundSchema:
   z.ZodType<
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityValue,
+    CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityValue,
     z.ZodTypeDef,
     unknown
   > = smartUnion([types.string(), types.number(), z.array(types.string())]);
 
-export function createSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityValueFromJSON(
+export function createSecurityFirewallConfigByConfigVersionActivateRulesSecurityValueFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityValue,
+  CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityValue,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityValue$inboundSchema
+      CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityValue$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityValue' from JSON`,
+    `Failed to parse 'CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityValue' from JSON`,
   );
 }
 
 /** @internal */
-export const CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityConditions$inboundSchema:
+export const CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityConditions$inboundSchema:
   z.ZodType<
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityConditions,
+    CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityConditions,
     z.ZodTypeDef,
     unknown
   > = z.object({
     type:
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityType$inboundSchema,
+      CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityType$inboundSchema,
     op:
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityOp$inboundSchema,
+      CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityOp$inboundSchema,
     neg: types.optional(types.boolean()),
     key: types.optional(types.string()),
     value: types.optional(
@@ -1581,110 +1579,110 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurity
     ),
   });
 
-export function createSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityConditionsFromJSON(
+export function createSecurityFirewallConfigByConfigVersionActivateRulesSecurityConditionsFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityConditions,
+  CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityConditions,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityConditions$inboundSchema
+      CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityConditions$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityConditions' from JSON`,
+    `Failed to parse 'CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityConditions' from JSON`,
   );
 }
 
 /** @internal */
-export const CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityConditionGroup$inboundSchema:
+export const CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityConditionGroup$inboundSchema:
   z.ZodType<
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityConditionGroup,
+    CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityConditionGroup,
     z.ZodTypeDef,
     unknown
   > = z.object({
     conditions: z.array(
       z.lazy(() =>
-        CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityConditions$inboundSchema
+        CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityConditions$inboundSchema
       ),
     ),
   });
 
-export function createSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityConditionGroupFromJSON(
+export function createSecurityFirewallConfigByConfigVersionActivateRulesSecurityConditionGroupFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityConditionGroup,
+  CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityConditionGroup,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityConditionGroup$inboundSchema
+      CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityConditionGroup$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityConditionGroup' from JSON`,
+    `Failed to parse 'CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityConditionGroup' from JSON`,
   );
 }
 
 /** @internal */
-export const CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityResponseAction$inboundSchema:
+export const CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponseAction$inboundSchema:
   z.ZodNativeEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityResponseAction
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponseAction
   > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityResponseAction,
+    CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponseAction,
   );
 
 /** @internal */
-export const CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityAlgo$inboundSchema:
+export const CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityAlgo$inboundSchema:
   z.ZodNativeEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityAlgo
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityAlgo
   > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityAlgo,
+    CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityAlgo,
   );
 
 /** @internal */
-export const CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityResponse200ApplicationJSONAction$inboundSchema:
+export const CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponse200ApplicationJSONAction$inboundSchema:
   z.ZodNativeEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityResponse200ApplicationJSONAction
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponse200ApplicationJSONAction
   > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityResponse200ApplicationJSONAction,
+    CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponse200ApplicationJSONAction,
   );
 
 /** @internal */
-export const CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityRateLimit$inboundSchema:
+export const CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityRateLimit$inboundSchema:
   z.ZodType<
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityRateLimit,
+    CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityRateLimit,
     z.ZodTypeDef,
     unknown
   > = z.object({
     algo:
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityAlgo$inboundSchema,
+      CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityAlgo$inboundSchema,
     window: types.number(),
     limit: types.number(),
     keys: z.array(types.string()),
     action: z.nullable(
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityResponse200ApplicationJSONAction$inboundSchema,
+      CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponse200ApplicationJSONAction$inboundSchema,
     ).optional(),
   });
 
-export function createSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityRateLimitFromJSON(
+export function createSecurityFirewallConfigByConfigVersionActivateRulesSecurityRateLimitFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityRateLimit,
+  CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityRateLimit,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityRateLimit$inboundSchema
+      CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityRateLimit$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityRateLimit' from JSON`,
+    `Failed to parse 'CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityRateLimit' from JSON`,
   );
 }
 
 /** @internal */
-export const CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityRedirect$inboundSchema:
+export const CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityRedirect$inboundSchema:
   z.ZodType<
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityRedirect,
+    CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityRedirect,
     z.ZodTypeDef,
     unknown
   > = z.object({
@@ -1692,72 +1690,72 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurity
     permanent: types.boolean(),
   });
 
-export function createSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityRedirectFromJSON(
+export function createSecurityFirewallConfigByConfigVersionActivateRulesSecurityRedirectFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityRedirect,
+  CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityRedirect,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityRedirect$inboundSchema
+      CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityRedirect$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityRedirect' from JSON`,
+    `Failed to parse 'CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityRedirect' from JSON`,
   );
 }
 
 /** @internal */
-export const CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersApiSecurityResponse200ApplicationJson2$inboundSchema:
+export const CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse200ApplicationJson2$inboundSchema:
   z.ZodNativeEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersApiSecurityResponse200ApplicationJson2
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse200ApplicationJson2
   > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersApiSecurityResponse200ApplicationJson2,
+    CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse200ApplicationJson2,
   );
 
 /** @internal */
-export const CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityLogHeaders$inboundSchema:
+export const CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityLogHeaders$inboundSchema:
   z.ZodType<
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityLogHeaders,
+    CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityLogHeaders,
     z.ZodTypeDef,
     unknown
   > = smartUnion([
     z.array(types.string()),
-    CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersApiSecurityResponse200ApplicationJson2$inboundSchema,
+    CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse200ApplicationJson2$inboundSchema,
   ]);
 
-export function createSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityLogHeadersFromJSON(
+export function createSecurityFirewallConfigByConfigVersionActivateRulesSecurityLogHeadersFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityLogHeaders,
+  CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityLogHeaders,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityLogHeaders$inboundSchema
+      CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityLogHeaders$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityLogHeaders' from JSON`,
+    `Failed to parse 'CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityLogHeaders' from JSON`,
   );
 }
 
 /** @internal */
-export const CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityMitigate$inboundSchema:
+export const CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityMitigate$inboundSchema:
   z.ZodType<
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityMitigate,
+    CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityMitigate,
     z.ZodTypeDef,
     unknown
   > = z.object({
     action:
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityResponseAction$inboundSchema,
+      CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponseAction$inboundSchema,
     rateLimit: z.nullable(
       z.lazy(() =>
-        CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityRateLimit$inboundSchema
+        CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityRateLimit$inboundSchema
       ),
     ).optional(),
     redirect: z.nullable(
       z.lazy(() =>
-        CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityRedirect$inboundSchema
+        CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityRedirect$inboundSchema
       ),
     ).optional(),
     actionDuration: z.nullable(types.string()).optional(),
@@ -1765,52 +1763,52 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurity
     logHeaders: types.optional(
       smartUnion([
         z.array(types.string()),
-        CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersApiSecurityResponse200ApplicationJson2$inboundSchema,
+        CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse200ApplicationJson2$inboundSchema,
       ]),
     ),
   });
 
-export function createSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityMitigateFromJSON(
+export function createSecurityFirewallConfigByConfigVersionActivateRulesSecurityMitigateFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityMitigate,
+  CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityMitigate,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityMitigate$inboundSchema
+      CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityMitigate$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityMitigate' from JSON`,
+    `Failed to parse 'CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityMitigate' from JSON`,
   );
 }
 
 /** @internal */
-export const CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityAction$inboundSchema:
+export const CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityAction$inboundSchema:
   z.ZodType<
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityAction,
+    CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityAction,
     z.ZodTypeDef,
     unknown
   > = z.object({
     mitigate: types.optional(
       z.lazy(() =>
-        CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityMitigate$inboundSchema
+        CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityMitigate$inboundSchema
       ),
     ),
   });
 
-export function createSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityActionFromJSON(
+export function createSecurityFirewallConfigByConfigVersionActivateRulesSecurityActionFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityAction,
+  CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityAction,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityAction$inboundSchema
+      CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityAction$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityAction' from JSON`,
+    `Failed to parse 'CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityAction' from JSON`,
   );
 }
 
@@ -1827,11 +1825,11 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRules2$inboundSc
     active: types.boolean(),
     conditionGroup: z.array(
       z.lazy(() =>
-        CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityConditionGroup$inboundSchema
+        CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityConditionGroup$inboundSchema
       ),
     ),
     action: z.lazy(() =>
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityAction$inboundSchema
+      CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityAction$inboundSchema
     ),
     valid: types.literal(false),
     validationErrors: z.array(types.string()),
@@ -1952,11 +1950,11 @@ export function createSecurityFirewallConfigByConfigVersionActivateRulesConditio
 }
 
 /** @internal */
-export const CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityResponse200Action$inboundSchema:
+export const CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponse200Action$inboundSchema:
   z.ZodNativeEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityResponse200Action
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponse200Action
   > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityResponse200Action,
+    CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponse200Action,
   );
 
 /** @internal */
@@ -1968,11 +1966,11 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesAlgo$inboun
   );
 
 /** @internal */
-export const CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityResponse200ApplicationJSONResponseBodyAction$inboundSchema:
+export const CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponse200ApplicationJSONResponseBodyAction$inboundSchema:
   z.ZodNativeEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityResponse200ApplicationJSONResponseBodyAction
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponse200ApplicationJSONResponseBodyAction
   > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityResponse200ApplicationJSONResponseBodyAction,
+    CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponse200ApplicationJSONResponseBodyAction,
   );
 
 /** @internal */
@@ -1988,7 +1986,7 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesRateLimit$i
     limit: types.number(),
     keys: z.array(types.string()),
     action: z.nullable(
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityResponse200ApplicationJSONResponseBodyAction$inboundSchema,
+      CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponse200ApplicationJSONResponseBodyAction$inboundSchema,
     ).optional(),
   });
 
@@ -2034,11 +2032,11 @@ export function createSecurityFirewallConfigByConfigVersionActivateRulesRedirect
 }
 
 /** @internal */
-export const CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersApiSecurityResponse2002$inboundSchema:
+export const CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse2002$inboundSchema:
   z.ZodNativeEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersApiSecurityResponse2002
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse2002
   > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersApiSecurityResponse2002,
+    CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse2002,
   );
 
 /** @internal */
@@ -2049,7 +2047,7 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesLogHeaders$
     unknown
   > = smartUnion([
     z.array(types.string()),
-    CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersApiSecurityResponse2002$inboundSchema,
+    CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse2002$inboundSchema,
   ]);
 
 export function createSecurityFirewallConfigByConfigVersionActivateRulesLogHeadersFromJSON(
@@ -2075,7 +2073,7 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesMitigate$in
     unknown
   > = z.object({
     action:
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesApiSecurityResponse200Action$inboundSchema,
+      CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponse200Action$inboundSchema,
     rateLimit: z.nullable(
       z.lazy(() =>
         CreateSecurityFirewallConfigByConfigVersionActivateRulesRateLimit$inboundSchema
@@ -2091,7 +2089,7 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesMitigate$in
     logHeaders: types.optional(
       smartUnion([
         z.array(types.string()),
-        CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersApiSecurityResponse2002$inboundSchema,
+        CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse2002$inboundSchema,
       ]),
     ),
   });
@@ -2245,11 +2243,11 @@ export function createSecurityFirewallConfigByConfigVersionActivateIpsFromJSON(
 }
 
 /** @internal */
-export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityAction$inboundSchema:
+export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityAction$inboundSchema:
   z.ZodNativeEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityAction
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityAction
   > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityAction,
+    CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityAction,
   );
 
 /** @internal */
@@ -2261,11 +2259,11 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsAlgo$inb
   );
 
 /** @internal */
-export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityResponseAction$inboundSchema:
+export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityResponseAction$inboundSchema:
   z.ZodNativeEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityResponseAction
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityResponseAction
   > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityResponseAction,
+    CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityResponseAction,
   );
 
 /** @internal */
@@ -2281,7 +2279,7 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsRateLimi
     limit: types.number(),
     keys: z.array(types.string()),
     action: z.nullable(
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityResponseAction$inboundSchema,
+      CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityResponseAction$inboundSchema,
     ).optional(),
   });
 
@@ -2327,11 +2325,11 @@ export function createSecurityFirewallConfigByConfigVersionActivateRulesetsRedir
 }
 
 /** @internal */
-export const CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersApiSecurity2$inboundSchema:
+export const CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurity2$inboundSchema:
   z.ZodNativeEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersApiSecurity2
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurity2
   > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersApiSecurity2,
+    CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurity2,
   );
 
 /** @internal */
@@ -2342,7 +2340,7 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsLogHeade
     unknown
   > = smartUnion([
     z.array(types.string()),
-    CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersApiSecurity2$inboundSchema,
+    CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurity2$inboundSchema,
   ]);
 
 export function createSecurityFirewallConfigByConfigVersionActivateRulesetsLogHeadersFromJSON(
@@ -2368,7 +2366,7 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesets2$inboun
     unknown
   > = z.object({
     action:
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityAction$inboundSchema,
+      CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityAction$inboundSchema,
     rateLimit: z.nullable(
       z.lazy(() =>
         CreateSecurityFirewallConfigByConfigVersionActivateRulesetsRateLimit$inboundSchema
@@ -2384,7 +2382,7 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesets2$inboun
     logHeaders: types.optional(
       smartUnion([
         z.array(types.string()),
-        CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersApiSecurity2$inboundSchema,
+        CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurity2$inboundSchema,
       ]),
     ),
   });
@@ -2506,65 +2504,65 @@ export function createSecurityFirewallConfigByConfigVersionActivateRulesetsCondi
 }
 
 /** @internal */
-export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityResponse200Action$inboundSchema:
+export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityResponse200Action$inboundSchema:
   z.ZodNativeEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityResponse200Action
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityResponse200Action
   > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityResponse200Action,
+    CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityResponse200Action,
   );
 
 /** @internal */
-export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityAlgo$inboundSchema:
+export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityAlgo$inboundSchema:
   z.ZodNativeEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityAlgo
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityAlgo
   > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityAlgo,
+    CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityAlgo,
   );
 
 /** @internal */
-export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityResponse200ApplicationJSONAction$inboundSchema:
+export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityResponse200ApplicationJSONAction$inboundSchema:
   z.ZodNativeEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityResponse200ApplicationJSONAction
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityResponse200ApplicationJSONAction
   > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityResponse200ApplicationJSONAction,
+    CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityResponse200ApplicationJSONAction,
   );
 
 /** @internal */
-export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityRateLimit$inboundSchema:
+export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityRateLimit$inboundSchema:
   z.ZodType<
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityRateLimit,
+    CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityRateLimit,
     z.ZodTypeDef,
     unknown
   > = z.object({
     algo:
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityAlgo$inboundSchema,
+      CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityAlgo$inboundSchema,
     window: types.number(),
     limit: types.number(),
     keys: z.array(types.string()),
     action: z.nullable(
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityResponse200ApplicationJSONAction$inboundSchema,
+      CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityResponse200ApplicationJSONAction$inboundSchema,
     ).optional(),
   });
 
-export function createSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityRateLimitFromJSON(
+export function createSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityRateLimitFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityRateLimit,
+  CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityRateLimit,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityRateLimit$inboundSchema
+      CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityRateLimit$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityRateLimit' from JSON`,
+    `Failed to parse 'CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityRateLimit' from JSON`,
   );
 }
 
 /** @internal */
-export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityRedirect$inboundSchema:
+export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityRedirect$inboundSchema:
   z.ZodType<
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityRedirect,
+    CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityRedirect,
     z.ZodTypeDef,
     unknown
   > = z.object({
@@ -2572,52 +2570,52 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecur
     permanent: types.boolean(),
   });
 
-export function createSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityRedirectFromJSON(
+export function createSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityRedirectFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityRedirect,
+  CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityRedirect,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityRedirect$inboundSchema
+      CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityRedirect$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityRedirect' from JSON`,
+    `Failed to parse 'CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityRedirect' from JSON`,
   );
 }
 
 /** @internal */
-export const CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersApiSecurityResponse2$inboundSchema:
+export const CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse2$inboundSchema:
   z.ZodNativeEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersApiSecurityResponse2
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse2
   > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersApiSecurityResponse2,
+    CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse2,
   );
 
 /** @internal */
-export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityLogHeaders$inboundSchema:
+export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityLogHeaders$inboundSchema:
   z.ZodType<
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityLogHeaders,
+    CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityLogHeaders,
     z.ZodTypeDef,
     unknown
   > = smartUnion([
     z.array(types.string()),
-    CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersApiSecurityResponse2$inboundSchema,
+    CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse2$inboundSchema,
   ]);
 
-export function createSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityLogHeadersFromJSON(
+export function createSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityLogHeadersFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityLogHeaders,
+  CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityLogHeaders,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityLogHeaders$inboundSchema
+      CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityLogHeaders$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityLogHeaders' from JSON`,
+    `Failed to parse 'CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityLogHeaders' from JSON`,
   );
 }
 
@@ -2629,15 +2627,15 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsMitigate
     unknown
   > = z.object({
     action:
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityResponse200Action$inboundSchema,
+      CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityResponse200Action$inboundSchema,
     rateLimit: z.nullable(
       z.lazy(() =>
-        CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityRateLimit$inboundSchema
+        CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityRateLimit$inboundSchema
       ),
     ).optional(),
     redirect: z.nullable(
       z.lazy(() =>
-        CreateSecurityFirewallConfigByConfigVersionActivateRulesetsApiSecurityRedirect$inboundSchema
+        CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityRedirect$inboundSchema
       ),
     ).optional(),
     actionDuration: z.nullable(types.string()).optional(),
@@ -2645,7 +2643,7 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsMitigate
     logHeaders: types.optional(
       smartUnion([
         z.array(types.string()),
-        CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersApiSecurityResponse2$inboundSchema,
+        CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse2$inboundSchema,
       ]),
     ),
   });
@@ -2786,11 +2784,11 @@ export function createSecurityFirewallConfigByConfigVersionActivateChangesFromJS
 }
 
 /** @internal */
-export const CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction$inboundSchema:
+export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction$inboundSchema:
   z.ZodNativeEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction
   > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction,
+    CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction,
   );
 
 /** @internal */
@@ -2802,7 +2800,7 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateBotProtection$in
   > = z.object({
     active: types.boolean(),
     action: types.optional(
-      CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction$inboundSchema,
+      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction$inboundSchema,
     ),
     updatedAt: types.optional(types.string()),
     userId: types.optional(types.string()),
@@ -2825,11 +2823,11 @@ export function createSecurityFirewallConfigByConfigVersionActivateBotProtection
 }
 
 /** @internal */
-export const CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyManagedRulesAiBotsAction$inboundSchema:
+export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesAiBotsAction$inboundSchema:
   z.ZodNativeEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyManagedRulesAiBotsAction
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesAiBotsAction
   > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyManagedRulesAiBotsAction,
+    CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesAiBotsAction,
   );
 
 /** @internal */
@@ -2841,7 +2839,7 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateAiBots$inboundSc
   > = z.object({
     active: types.boolean(),
     action: types.optional(
-      CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyManagedRulesAiBotsAction$inboundSchema,
+      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesAiBotsAction$inboundSchema,
     ),
     updatedAt: types.optional(types.string()),
     userId: types.optional(types.string()),
@@ -2864,11 +2862,11 @@ export function createSecurityFirewallConfigByConfigVersionActivateAiBotsFromJSO
 }
 
 /** @internal */
-export const CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction$inboundSchema:
+export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction$inboundSchema:
   z.ZodNativeEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction
   > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction,
+    CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction,
   );
 
 /** @internal */
@@ -2880,7 +2878,7 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateOwasp$inboundSch
   > = z.object({
     active: types.boolean(),
     action: types.optional(
-      CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction$inboundSchema,
+      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction$inboundSchema,
     ),
     updatedAt: types.optional(types.string()),
     userId: types.optional(types.string()),
@@ -2903,11 +2901,11 @@ export function createSecurityFirewallConfigByConfigVersionActivateOwaspFromJSON
 }
 
 /** @internal */
-export const CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyManagedRulesVercelRulesetAction$inboundSchema:
+export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesVercelRulesetAction$inboundSchema:
   z.ZodNativeEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyManagedRulesVercelRulesetAction
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesVercelRulesetAction
   > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyManagedRulesVercelRulesetAction,
+    CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesVercelRulesetAction,
   );
 
 /** @internal */
@@ -2919,7 +2917,7 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateVercelRuleset$in
   > = z.object({
     active: types.boolean(),
     action: types.optional(
-      CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyManagedRulesVercelRulesetAction$inboundSchema,
+      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesVercelRulesetAction$inboundSchema,
     ),
     updatedAt: types.optional(types.string()),
     userId: types.optional(types.string()),
@@ -2942,11 +2940,11 @@ export function createSecurityFirewallConfigByConfigVersionActivateVercelRuleset
 }
 
 /** @internal */
-export const CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyManagedRulesTrafficSourcesAction$inboundSchema:
+export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesTrafficSourcesAction$inboundSchema:
   z.ZodNativeEnum<
-    typeof CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyManagedRulesTrafficSourcesAction
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesTrafficSourcesAction
   > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyManagedRulesTrafficSourcesAction,
+    CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesTrafficSourcesAction,
   );
 
 /** @internal */
@@ -2958,7 +2956,7 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateTrafficSources$i
   > = z.object({
     active: types.boolean(),
     action: types.optional(
-      CreateSecurityFirewallConfigByConfigVersionActivateApiSecurityResponse200ApplicationJSONResponseBodyManagedRulesTrafficSourcesAction$inboundSchema,
+      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesTrafficSourcesAction$inboundSchema,
     ),
     updatedAt: types.optional(types.string()),
     userId: types.optional(types.string()),

@@ -218,6 +218,8 @@ export type CountPageviewsData = {
   gatewayCostCurrency: string;
   keyId: string;
   keyName: string;
+  authMethod: string;
+  appName: string;
   isByok: string;
   isPrivateModel: string;
   isRequestZdr: string;
@@ -278,6 +280,9 @@ export type CountPageviewsData = {
   contentCaptureStatus: string;
   contentCaptureInputs: string;
   contentCaptureOutputs: string;
+  transcriptStatus: string;
+  transcriptInputs: string;
+  transcriptOutputs: string;
   providerAttemptError: string;
   providerAttemptSafetyIdentifier: string;
   providerAttemptDevSafetyIdentifier: string;
@@ -538,6 +543,8 @@ export const CountPageviewsData$inboundSchema: z.ZodType<
     gatewayCostCurrency: types.string(),
     keyId: types.string(),
     keyName: types.string(),
+    authMethod: types.string(),
+    appName: types.string(),
     isByok: types.string(),
     isPrivateModel: types.string(),
     isRequestZdr: types.string(),
@@ -598,6 +605,9 @@ export const CountPageviewsData$inboundSchema: z.ZodType<
     contentCaptureStatus: types.string(),
     contentCaptureInputs: types.string(),
     contentCaptureOutputs: types.string(),
+    transcriptStatus: types.string(),
+    transcriptInputs: types.string(),
+    transcriptOutputs: types.string(),
     providerAttemptError: types.string(),
     providerAttemptSafetyIdentifier: types.string(),
     providerAttemptDevSafetyIdentifier: types.string(),

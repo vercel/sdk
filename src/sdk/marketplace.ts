@@ -4,26 +4,30 @@
 
 import { marketplaceCreateEvent } from "../funcs/marketplaceCreateEvent.js";
 import { marketplaceCreateInstallationIntegrationConfiguration } from "../funcs/marketplaceCreateInstallationIntegrationConfiguration.js";
-import { marketplaceCreateInstallationIntegrationEdgeConfig } from "../funcs/marketplaceCreateInstallationIntegrationEdgeConfig.js";
 import { marketplaceDeleteInstallationIntegrationConfiguration } from "../funcs/marketplaceDeleteInstallationIntegrationConfiguration.js";
 import { marketplaceDeleteIntegrationResource } from "../funcs/marketplaceDeleteIntegrationResource.js";
 import { marketplaceExchangeSsoToken } from "../funcs/marketplaceExchangeSsoToken.js";
 import { marketplaceFinalizeInstallation } from "../funcs/marketplaceFinalizeInstallation.js";
 import { marketplaceGetAccountInfo } from "../funcs/marketplaceGetAccountInfo.js";
 import {
-  marketplaceGetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfig,
-} from "../funcs/marketplaceGetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfig.js";
+  marketplaceGetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig,
+} from "../funcs/marketplaceGetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig.js";
 import { marketplaceGetIntegrationResource } from "../funcs/marketplaceGetIntegrationResource.js";
 import { marketplaceGetIntegrationResources } from "../funcs/marketplaceGetIntegrationResources.js";
 import { marketplaceGetInvoice } from "../funcs/marketplaceGetInvoice.js";
 import { marketplaceGetMember } from "../funcs/marketplaceGetMember.js";
+import {
+  marketplaceHeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig,
+} from "../funcs/marketplaceHeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig.js";
 import { marketplaceImportResource } from "../funcs/marketplaceImportResource.js";
+import {
+  marketplaceReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig,
+} from "../funcs/marketplaceReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig.js";
 import { marketplaceSubmitBillingData } from "../funcs/marketplaceSubmitBillingData.js";
 import { marketplaceSubmitInvoice } from "../funcs/marketplaceSubmitInvoice.js";
 import { marketplaceSubmitPrepaymentBalances } from "../funcs/marketplaceSubmitPrepaymentBalances.js";
 import { marketplaceUpdateInstallation } from "../funcs/marketplaceUpdateInstallation.js";
 import { marketplaceUpdateInstallationIntegrationConfiguration } from "../funcs/marketplaceUpdateInstallationIntegrationConfiguration.js";
-import { marketplaceUpdateInstallationIntegrationEdgeConfig } from "../funcs/marketplaceUpdateInstallationIntegrationEdgeConfig.js";
 import { marketplaceUpdateInvoice } from "../funcs/marketplaceUpdateInvoice.js";
 import { marketplaceUpdateResource } from "../funcs/marketplaceUpdateResource.js";
 import { marketplaceUpdateResourceSecrets } from "../funcs/marketplaceUpdateResourceSecrets.js";
@@ -47,9 +51,9 @@ import {
   GetAccountInfoResponseBody,
 } from "../models/getaccountinfoop.js";
 import {
-  GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigRequest,
-  GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigResponseBody,
-} from "../models/getinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationedgeconfigop.js";
+  GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequest,
+  GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponseBody,
+} from "../models/getinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationglobalconfigop.js";
 import {
   GetIntegrationResourceRequest,
   GetIntegrationResourceResponseBody,
@@ -67,17 +71,17 @@ import {
   GetMemberResponseBody,
 } from "../models/getmemberop.js";
 import {
-  HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigRequest,
-  HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigResponseBody,
-} from "../models/headinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationedgeconfigop.js";
+  HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequest,
+  HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponseBody,
+} from "../models/headinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationglobalconfigop.js";
 import {
   ImportResourceRequest,
   ImportResourceResponseBody,
 } from "../models/importresourceop.js";
 import {
-  ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigRequest,
-  ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigResponseBody,
-} from "../models/replaceinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationedgeconfigop.js";
+  ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequest,
+  ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponseBody,
+} from "../models/replaceinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationglobalconfigop.js";
 import { SubmitBillingDataRequest } from "../models/submitbillingdataop.js";
 import {
   SubmitInvoiceRequest,
@@ -461,42 +465,21 @@ export class Marketplace extends ClientSDK {
   }
 
   /**
-   * Get the data of a user-provided Edge Config
+   * Get the data of a user-provided Global Config
    *
    * @remarks
-   * When the user enabled Edge Config syncing, then this endpoint can be used by the partner to fetch the contents of the Edge Config.
+   * When the user enabled Global Config syncing, then this endpoint can be used by the partner to fetch the contents of the Global Config.
    */
-  async createInstallationIntegrationEdgeConfig(
+  async headInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig(
     request:
-      HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigRequest,
+      HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequest,
     options?: RequestOptions,
   ): Promise<
-    | HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigResponseBody
-    | undefined
-  > {
-    return unwrapAsync(marketplaceCreateInstallationIntegrationEdgeConfig(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Get the data of a user-provided Edge Config
-   *
-   * @remarks
-   * When the user enabled Edge Config syncing, then this endpoint can be used by the partner to fetch the contents of the Edge Config.
-   */
-  async getInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfig(
-    request:
-      GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigRequest,
-    options?: RequestOptions,
-  ): Promise<
-    | GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigResponseBody
+    | HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponseBody
     | undefined
   > {
     return unwrapAsync(
-      marketplaceGetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfig(
+      marketplaceHeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig(
         this,
         request,
         options,
@@ -505,22 +488,47 @@ export class Marketplace extends ClientSDK {
   }
 
   /**
-   * Push data into a user-provided Edge Config
+   * Get the data of a user-provided Global Config
    *
    * @remarks
-   * When the user enabled Edge Config syncing, then this endpoint can be used by the partner to push their configuration data into the relevant Edge Config.
+   * When the user enabled Global Config syncing, then this endpoint can be used by the partner to fetch the contents of the Global Config.
    */
-  async updateInstallationIntegrationEdgeConfig(
+  async getInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig(
     request:
-      ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigRequest,
+      GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequest,
     options?: RequestOptions,
   ): Promise<
-    ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigResponseBody
+    | GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponseBody
+    | undefined
   > {
-    return unwrapAsync(marketplaceUpdateInstallationIntegrationEdgeConfig(
-      this,
-      request,
-      options,
-    ));
+    return unwrapAsync(
+      marketplaceGetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig(
+        this,
+        request,
+        options,
+      ),
+    );
+  }
+
+  /**
+   * Push data into a user-provided Global Config
+   *
+   * @remarks
+   * When the user enabled Global Config syncing, then this endpoint can be used by the partner to push their configuration data into the relevant Global Config.
+   */
+  async replaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig(
+    request:
+      ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequest,
+    options?: RequestOptions,
+  ): Promise<
+    ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponseBody
+  > {
+    return unwrapAsync(
+      marketplaceReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig(
+        this,
+        request,
+        options,
+      ),
+    );
   }
 }

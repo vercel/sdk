@@ -5,11 +5,11 @@
 ```typescript
 import { BuildMachineType } from "@vercel/sdk/models/sandbox.js";
 
-let value: BuildMachineType = "turbo";
+let value: BuildMachineType = "enhanced";
 ```
 
 ## Values
 
 ```typescript
-"enhanced" | "turbo" | "standard" | "elastic"
+"basic" | "enhanced" | "turbo" | "standard" | "elastic"
 ```

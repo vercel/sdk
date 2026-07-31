@@ -12,11 +12,11 @@ const value: string[] = [
 ];
 ```
 
-### `models.CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersApiSecurity2`
+### `models.CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurity2`
 
 ```typescript
 const value:
-  models.CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersApiSecurity2 =
+  models.CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurity2 =
     "*";
 ```
 

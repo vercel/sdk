@@ -229,6 +229,7 @@ export type OidcTokenConfig = {
 };
 
 export const BuildMachineType = {
+  Basic: "basic",
   Enhanced: "enhanced",
   Turbo: "turbo",
   Standard: "standard",

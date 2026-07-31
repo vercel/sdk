@@ -46,7 +46,7 @@ export type GetEdgeConfigTransfer = {
 export type GetEdgeConfigSchema = {};
 
 /**
- * The EdgeConfig.
+ * The Global Config.
  */
 export type GetEdgeConfigResponseBody = {
   id: string;

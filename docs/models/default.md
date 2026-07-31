@@ -13,5 +13,5 @@ let value: Default = "standard";
 ## Values
 
 ```typescript
-"elastic" | "enhanced" | "standard" | "turbo"
+"basic" | "elastic" | "enhanced" | "standard" | "turbo"
 ```

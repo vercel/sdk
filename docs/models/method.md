@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { Method } from "@vercel/sdk/models/threehundredandfortythree.js";
+import { Method } from "@vercel/sdk/models/threehundredandsixty.js";
 
-let value: Method = "client_secret_jwt";
+let value: Method = "recovery-code";
 ```
 
 ## Values
 
 ```typescript
-"client_secret_basic" | "client_secret_jwt" | "client_secret_post" | "none" | "oidc_token" | "private_key_jwt"
+"email-otp" | "recovery-code" | "totp" | "webauthn"
 ```

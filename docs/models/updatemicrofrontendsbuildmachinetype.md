@@ -11,5 +11,5 @@ let value: UpdateMicrofrontendsBuildMachineType = "turbo";
 ## Values
 
 ```typescript
-"enhanced" | "standard" | "turbo"
+"basic" | "enhanced" | "standard" | "turbo"
 ```

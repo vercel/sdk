@@ -23,20 +23,22 @@ export type CreateEdgeConfigRequest = {
    * The Team slug to perform the request on behalf of.
    */
   slug?: string | undefined;
-  requestBody: CreateEdgeConfigRequestBody;
+  requestBody?: CreateEdgeConfigRequestBody | undefined;
 };
 
-export type Purpose2 = {
+export type CreateEdgeConfigPurpose2 = {
   type: "experimentation";
   resourceId: string;
 };
 
-export type Purpose1 = {
+export type CreateEdgeConfigPurpose1 = {
   type: "flags";
   projectId: string;
 };
 
-export type CreateEdgeConfigPurpose = Purpose1 | Purpose2;
+export type CreateEdgeConfigPurpose =
+  | CreateEdgeConfigPurpose1
+  | CreateEdgeConfigPurpose2;
 
 /**
  * Keeps track of the current state of the Edge Config while it gets transferred.
@@ -66,7 +68,7 @@ export type CreateEdgeConfigResponseBody = {
   slug: string;
   updatedAt: number;
   digest: string;
-  purpose?: Purpose1 | Purpose2 | undefined;
+  purpose?: CreateEdgeConfigPurpose1 | CreateEdgeConfigPurpose2 | undefined;
   deletedAt?: number | null | undefined;
   /**
    * Keeps track of the current state of the Edge Config while it gets transferred.
@@ -111,7 +113,7 @@ export function createEdgeConfigRequestBodyToJSON(
 export type CreateEdgeConfigRequest$Outbound = {
   teamId?: string | undefined;
   slug?: string | undefined;
-  RequestBody: CreateEdgeConfigRequestBody$Outbound;
+  RequestBody?: CreateEdgeConfigRequestBody$Outbound | undefined;
 };
 
 /** @internal */
@@ -122,7 +124,8 @@ export const CreateEdgeConfigRequest$outboundSchema: z.ZodType<
 > = z.object({
   teamId: z.string().optional(),
   slug: z.string().optional(),
-  requestBody: z.lazy(() => CreateEdgeConfigRequestBody$outboundSchema),
+  requestBody: z.lazy(() => CreateEdgeConfigRequestBody$outboundSchema)
+    .optional(),
 }).transform((v) => {
   return remap$(v, {
     requestBody: "RequestBody",
@@ -138,8 +141,8 @@ export function createEdgeConfigRequestToJSON(
 }
 
 /** @internal */
-export const Purpose2$inboundSchema: z.ZodType<
-  Purpose2,
+export const CreateEdgeConfigPurpose2$inboundSchema: z.ZodType<
+  CreateEdgeConfigPurpose2,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -147,19 +150,19 @@ export const Purpose2$inboundSchema: z.ZodType<
   resourceId: types.string(),
 });
 
-export function purpose2FromJSON(
+export function createEdgeConfigPurpose2FromJSON(
   jsonString: string,
-): SafeParseResult<Purpose2, SDKValidationError> {
+): SafeParseResult<CreateEdgeConfigPurpose2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Purpose2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Purpose2' from JSON`,
+    (x) => CreateEdgeConfigPurpose2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateEdgeConfigPurpose2' from JSON`,
   );
 }
 
 /** @internal */
-export const Purpose1$inboundSchema: z.ZodType<
-  Purpose1,
+export const CreateEdgeConfigPurpose1$inboundSchema: z.ZodType<
+  CreateEdgeConfigPurpose1,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -167,13 +170,13 @@ export const Purpose1$inboundSchema: z.ZodType<
   projectId: types.string(),
 });
 
-export function purpose1FromJSON(
+export function createEdgeConfigPurpose1FromJSON(
   jsonString: string,
-): SafeParseResult<Purpose1, SDKValidationError> {
+): SafeParseResult<CreateEdgeConfigPurpose1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Purpose1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Purpose1' from JSON`,
+    (x) => CreateEdgeConfigPurpose1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateEdgeConfigPurpose1' from JSON`,
   );
 }
 
@@ -183,8 +186,8 @@ export const CreateEdgeConfigPurpose$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => Purpose1$inboundSchema),
-  z.lazy(() => Purpose2$inboundSchema),
+  z.lazy(() => CreateEdgeConfigPurpose1$inboundSchema),
+  z.lazy(() => CreateEdgeConfigPurpose2$inboundSchema),
 ]);
 
 export function createEdgeConfigPurposeFromJSON(
@@ -250,8 +253,8 @@ export const CreateEdgeConfigResponseBody$inboundSchema: z.ZodType<
   digest: types.string(),
   purpose: types.optional(
     z.union([
-      z.lazy(() => Purpose1$inboundSchema),
-      z.lazy(() => Purpose2$inboundSchema),
+      z.lazy(() => CreateEdgeConfigPurpose1$inboundSchema),
+      z.lazy(() => CreateEdgeConfigPurpose2$inboundSchema),
     ]),
   ),
   deletedAt: z.nullable(types.number()).optional(),

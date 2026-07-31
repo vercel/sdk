@@ -210,6 +210,7 @@ export type BuildEntitlements = {
  * Default build machine type for new builds
  */
 export const Default = {
+  Basic: "basic",
   Elastic: "elastic",
   Enhanced: "enhanced",
   Standard: "standard",

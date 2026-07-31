@@ -23,7 +23,7 @@ export type UpdateEdgeConfigRequest = {
    * The Team slug to perform the request on behalf of.
    */
   slug?: string | undefined;
-  requestBody: UpdateEdgeConfigRequestBody;
+  requestBody?: UpdateEdgeConfigRequestBody | undefined;
 };
 
 export type UpdateEdgeConfigPurpose2 = {
@@ -112,7 +112,7 @@ export type UpdateEdgeConfigRequest$Outbound = {
   edgeConfigId: string;
   teamId?: string | undefined;
   slug?: string | undefined;
-  RequestBody: UpdateEdgeConfigRequestBody$Outbound;
+  RequestBody?: UpdateEdgeConfigRequestBody$Outbound | undefined;
 };
 
 /** @internal */
@@ -124,7 +124,8 @@ export const UpdateEdgeConfigRequest$outboundSchema: z.ZodType<
   edgeConfigId: z.string(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
-  requestBody: z.lazy(() => UpdateEdgeConfigRequestBody$outboundSchema),
+  requestBody: z.lazy(() => UpdateEdgeConfigRequestBody$outboundSchema)
+    .optional(),
 }).transform((v) => {
   return remap$(v, {
     requestBody: "RequestBody",

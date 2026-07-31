@@ -443,6 +443,7 @@ export type UpdateMicrofrontendsPermissions = {
   projectDomain?: Array<ACLAction> | undefined;
   projectDomainCheckConfig?: Array<ACLAction> | undefined;
   projectDomainMove?: Array<ACLAction> | undefined;
+  projectDomainVerify?: Array<ACLAction> | undefined;
   projectEvent?: Array<ACLAction> | undefined;
   projectEnvVars?: Array<ACLAction> | undefined;
   projectEnvVarsProduction?: Array<ACLAction> | undefined;
@@ -2131,6 +2132,7 @@ export const UpdateMicrofrontendsPermissions$inboundSchema: z.ZodType<
   projectDomain: types.optional(z.array(ACLAction$inboundSchema)),
   projectDomainCheckConfig: types.optional(z.array(ACLAction$inboundSchema)),
   projectDomainMove: types.optional(z.array(ACLAction$inboundSchema)),
+  projectDomainVerify: types.optional(z.array(ACLAction$inboundSchema)),
   projectEvent: types.optional(z.array(ACLAction$inboundSchema)),
   projectEnvVars: types.optional(z.array(ACLAction$inboundSchema)),
   projectEnvVarsProduction: types.optional(z.array(ACLAction$inboundSchema)),

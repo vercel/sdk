@@ -17,7 +17,59 @@ permissions:
   schedule:
     - cron: 0 0 * * *
 jobs:
+  # The generation action reuses the branch of any open regen PR, then aborts with
+  # "external changes detected" because signed_commits makes it create commits through
+  # the GitHub API as github-actions[bot] — a name missing from its own automation
+  # allow-list, so it misreads its own commit as a human push. Signed commits are
+  # required on every ref by org ruleset, so closing the stale PR first is the fix:
+  # with no open regen PR the action starts a fresh speakeasy-sdk-regen-<ts> branch.
+  # Nothing is lost by closing one — every run resets to main and regenerates against
+  # the live OpenAPI document, so the next PR supersedes the old one completely.
+  sweep-superseded-regen-pr:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Close superseded regen PRs
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+
+          # Only bot-authored PRs on speakeasy-sdk-regen-* branches are eligible.
+          # Approved PRs are left alone (they merge within minutes of approval), as is
+          # anything labelled sweep-hold.
+          stale=$(gh pr list --state open --limit 100 \
+            --json number,headRefName,reviewDecision,labels,author \
+            --jq '[.[]
+                   | select(.headRefName | startswith("speakeasy-sdk-regen-"))
+                   | select(.author.is_bot)
+                   | select(.reviewDecision != "APPROVED")
+                   | select([.labels[].name] | index("sweep-hold") | not)]')
+
+          if [ "$(jq 'length' <<<"$stale")" -eq 0 ]; then
+            echo "No superseded regen PR to close." | tee -a "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+
+          jq -r '.[] | "\(.number)\t\(.headRefName)"' <<<"$stale" |
+            while IFS="$(printf '\t')" read -r num branch; do
+              echo "Closing #${num} (${branch})"
+              # The branch is deliberately kept. The action only reuses branches that
+              # have an open PR, so a dangling branch is invisible to it — and keeping it
+              # means this PR stays reopenable if the run now fails for an unrelated
+              # reason instead of producing the replacement.
+              gh pr close "$num" --comment \
+                "Closed by the \`Generate\` workflow so this run can start from a fresh branch. A replacement PR generated against the current OpenAPI document will open shortly, containing everything this one had. If that run fails instead, reopen this PR — its branch is left in place for exactly that case. To keep a regen PR open across runs, add the \`sweep-hold\` label."
+              echo "- Closed #${num} (\`${branch}\`, branch kept so it can be reopened)" >> "$GITHUB_STEP_SUMMARY"
+            done
+
   generate:
+    needs: sweep-superseded-regen-pr
+    # Never let a sweep failure make things worse than the current behaviour.
+    if: ${{ !cancelled() }}
     uses: speakeasy-api/sdk-generation-action/.github/workflows/workflow-executor.yaml@v15
     with:
       force: ${{ github.event.inputs.force }}

@@ -57,13 +57,13 @@ jobs:
           jq -r '.[] | "\(.number)\t\(.headRefName)"' <<<"$stale" |
             while IFS="$(printf '\t')" read -r num branch; do
               echo "Closing #${num} (${branch})"
+              # The branch is deliberately kept. The action only reuses branches that
+              # have an open PR, so a dangling branch is invisible to it — and keeping it
+              # means this PR stays reopenable if the run now fails for an unrelated
+              # reason instead of producing the replacement.
               gh pr close "$num" --comment \
-                "Closed by the \`Generate\` workflow so this run can start from a fresh branch. A replacement PR generated against the current OpenAPI document will open shortly, containing everything this one had. To keep a regen PR open across runs, add the \`sweep-hold\` label."
-              # Best-effort: the action ignores branches with no open PR, so a failed
-              # delete only leaves clutter behind.
-              gh api -X DELETE "repos/${GH_REPO}/git/refs/heads/${branch}" >/dev/null 2>&1 ||
-                echo "  branch ${branch} not deleted (harmless)"
-              echo "- Closed #${num} (\`${branch}\`)" >> "$GITHUB_STEP_SUMMARY"
+                "Closed by the \`Generate\` workflow so this run can start from a fresh branch. A replacement PR generated against the current OpenAPI document will open shortly, containing everything this one had. If that run fails instead, reopen this PR — its branch is left in place for exactly that case. To keep a regen PR open across runs, add the \`sweep-hold\` label."
+              echo "- Closed #${num} (\`${branch}\`, branch kept so it can be reopened)" >> "$GITHUB_STEP_SUMMARY"
             done
 
   generate:

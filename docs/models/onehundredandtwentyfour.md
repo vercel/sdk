@@ -5,12 +5,10 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndTwentyFour } from "@vercel/sdk/models/commitverification.js";
+import { OneHundredAndTwentyFour } from "@vercel/sdk/models/usereventjobpayload965provider.js";
 
 let value: OneHundredAndTwentyFour = {
-  projectId: "<id>",
-  projectName: "<value>",
-  path: "/usr/X11R6",
+  drainUrl: "https://scaly-safe.info/",
 };
 ```
 
@@ -18,6 +16,5 @@ let value: OneHundredAndTwentyFour = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `path`             | *string*           | :heavy_check_mark: | N/A                |
+| `drainUrl`         | *string*           | :heavy_check_mark: | N/A                |
+| `integrationName`  | *string*           | :heavy_minus_sign: | N/A                |

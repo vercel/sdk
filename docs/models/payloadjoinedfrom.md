@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadJoinedFrom } from "@vercel/sdk/models/credentials2.js";
+import { PayloadJoinedFrom } from "@vercel/sdk/models/querytype.js";
 
 let value: PayloadJoinedFrom = {
   origin: "saml",

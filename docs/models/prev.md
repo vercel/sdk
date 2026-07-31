@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Prev } from "@vercel/sdk/models/credentials2.js";
+import { Prev } from "@vercel/sdk/models/querytype.js";
 
 let value: Prev = {
   name: "<value>",

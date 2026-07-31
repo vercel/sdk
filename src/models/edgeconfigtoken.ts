@@ -9,7 +9,7 @@ import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
- * The EdgeConfig.
+ * The Global Config.
  */
 export type EdgeConfigToken = {
   /**

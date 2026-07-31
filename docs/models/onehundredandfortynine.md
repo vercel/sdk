@@ -5,19 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFortyNine } from "@vercel/sdk/models/onehundredandfortysix.js";
+import { OneHundredAndFortyNine } from "@vercel/sdk/models/usereventjobpayload965provider.js";
 
 let value: OneHundredAndFortyNine = {
   projectId: "<id>",
-  previousOwnerId: "<id>",
-  newOwnerId: "<id>",
+  restore: true,
+  configVersion: 6605.72,
+  configChangeCount: 1059.95,
+  configChanges: [],
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `previousOwnerId`  | *string*           | :heavy_check_mark: | N/A                |
-| `newOwnerId`       | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                              | Type                                                               | Required                                                           | Description                                                        |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `projectId`                                                        | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
+| `projectName`                                                      | *string*                                                           | :heavy_minus_sign:                                                 | N/A                                                                |
+| `restore`                                                          | *boolean*                                                          | :heavy_check_mark:                                                 | N/A                                                                |
+| `configVersion`                                                    | *number*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
+| `configChangeCount`                                                | *number*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
+| `configChanges`                                                    | [models.PayloadConfigChanges](../models/payloadconfigchanges.md)[] | :heavy_check_mark:                                                 | N/A                                                                |

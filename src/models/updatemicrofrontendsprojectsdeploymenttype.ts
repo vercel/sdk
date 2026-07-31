@@ -1558,6 +1558,7 @@ export type UpdateMicrofrontendsFunctionDefaultMemoryType = ClosedEnum<
 >;
 
 export const UpdateMicrofrontendsBuildMachineType = {
+  Basic: "basic",
   Enhanced: "enhanced",
   Standard: "standard",
   Turbo: "turbo",
@@ -1694,6 +1695,7 @@ export type UpdateMicrofrontendsProjectsFunctionDefaultMemoryType = ClosedEnum<
 >;
 
 export const UpdateMicrofrontendsProjectsBuildMachineType = {
+  Basic: "basic",
   Enhanced: "enhanced",
   Standard: "standard",
   Turbo: "turbo",

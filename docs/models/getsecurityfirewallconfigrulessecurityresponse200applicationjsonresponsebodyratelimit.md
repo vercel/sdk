@@ -1,0 +1,32 @@
+# GetSecurityFirewallConfigRulesSecurityResponse200ApplicationJSONResponseBodyRateLimit
+
+## Example Usage
+
+```typescript
+import {
+  GetSecurityFirewallConfigRulesSecurityResponse200ApplicationJSONResponseBodyRateLimit,
+} from "@vercel/sdk/models/getsecurityfirewallconfigsecurityaction.js";
+
+let value:
+  GetSecurityFirewallConfigRulesSecurityResponse200ApplicationJSONResponseBodyRateLimit =
+    {
+      algo: "token_bucket",
+      window: 258.95,
+      limit: 8199.97,
+      keys: [
+        "<value 1>",
+        "<value 2>",
+        "<value 3>",
+      ],
+    };
+```
+
+## Fields
+
+| Field                                                                                                                                                                                                      | Type                                                                                                                                                                                                       | Required                                                                                                                                                                                                   | Description                                                                                                                                                                                                |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `algo`                                                                                                                                                                                                     | [models.GetSecurityFirewallConfigRulesSecurityResponse200ApplicationJSONResponseBodyAlgo](../models/getsecurityfirewallconfigrulessecurityresponse200applicationjsonresponsebodyalgo.md)                   | :heavy_check_mark:                                                                                                                                                                                         | N/A                                                                                                                                                                                                        |
+| `window`                                                                                                                                                                                                   | *number*                                                                                                                                                                                                   | :heavy_check_mark:                                                                                                                                                                                         | N/A                                                                                                                                                                                                        |
+| `limit`                                                                                                                                                                                                    | *number*                                                                                                                                                                                                   | :heavy_check_mark:                                                                                                                                                                                         | N/A                                                                                                                                                                                                        |
+| `keys`                                                                                                                                                                                                     | *string*[]                                                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                                                         | N/A                                                                                                                                                                                                        |
+| `action`                                                                                                                                                                                                   | [models.GetSecurityFirewallConfigRulesSecurityResponse200ApplicationJSONResponseBodyActive1Action](../models/getsecurityfirewallconfigrulessecurityresponse200applicationjsonresponsebodyactive1action.md) | :heavy_minus_sign:                                                                                                                                                                                         | N/A                                                                                                                                                                                                        |

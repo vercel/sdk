@@ -13,5 +13,5 @@ let value: PatchTeamDefault = "standard";
 ## Values
 
 ```typescript
-"enhanced" | "turbo" | "standard" | "elastic"
+"basic" | "enhanced" | "turbo" | "standard" | "elastic"
 ```

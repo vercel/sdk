@@ -57,10 +57,8 @@ import {
 } from "../models/replacedomainsbydomainrecordsop.js";
 import { unwrapAsync } from "../types/fp.js";
 import { AccessGroups } from "./accessgroups.js";
+import { AiGateway } from "./aigateway.js";
 import { Aliases } from "./aliases.js";
-import { ApiAiGateway } from "./apiaigateway.js";
-import { ApiObservability } from "./apiobservability.js";
-import { ApiSecurity } from "./apisecurity.js";
 import { Artifacts } from "./artifacts.js";
 import { Authentication } from "./authentication.js";
 import { Billing } from "./billing.js";
@@ -75,16 +73,16 @@ import { Domains } from "./domains.js";
 import { DomainsRegistrar } from "./domainsregistrar.js";
 import { Drains } from "./drains.js";
 import { EdgeCache } from "./edgecache.js";
-import { EdgeConfig } from "./edgeconfig.js";
 import { Environment } from "./environment.js";
 import { FeatureFlags } from "./featureflags.js";
-import { Firewall } from "./firewall.js";
+import { GlobalConfig } from "./globalconfig.js";
 import { Integrations } from "./integrations.js";
 import { LogDrains } from "./logdrains.js";
 import { Logs } from "./logs.js";
 import { Marketplace } from "./marketplace.js";
 import { Microfrontends } from "./microfrontends.js";
 import { Networking } from "./networking.js";
+import { Observability } from "./observability.js";
 import { ProjectMembers } from "./projectmembers.js";
 import { ProjectRoutes } from "./projectroutes.js";
 import { Projects } from "./projects.js";
@@ -104,9 +102,9 @@ export class Vercel extends ClientSDK {
     return (this._accessGroups ??= new AccessGroups(this._options));
   }
 
-  private _apiAiGateway?: ApiAiGateway;
-  get apiAiGateway(): ApiAiGateway {
-    return (this._apiAiGateway ??= new ApiAiGateway(this._options));
+  private _aiGateway?: AiGateway;
+  get aiGateway(): AiGateway {
+    return (this._aiGateway ??= new AiGateway(this._options));
   }
 
   private _artifacts?: Artifacts;
@@ -184,9 +182,9 @@ export class Vercel extends ClientSDK {
     return (this._edgeCache ??= new EdgeCache(this._options));
   }
 
-  private _edgeConfig?: EdgeConfig;
-  get edgeConfig(): EdgeConfig {
-    return (this._edgeConfig ??= new EdgeConfig(this._options));
+  private _globalConfig?: GlobalConfig;
+  get globalConfig(): GlobalConfig {
+    return (this._globalConfig ??= new GlobalConfig(this._options));
   }
 
   private _environment?: Environment;
@@ -224,9 +222,9 @@ export class Vercel extends ClientSDK {
     return (this._microfrontends ??= new Microfrontends(this._options));
   }
 
-  private _apiObservability?: ApiObservability;
-  get apiObservability(): ApiObservability {
-    return (this._apiObservability ??= new ApiObservability(this._options));
+  private _observability?: Observability;
+  get observability(): Observability {
+    return (this._observability ??= new Observability(this._options));
   }
 
   private _projectMembers?: ProjectMembers;
@@ -262,16 +260,6 @@ export class Vercel extends ClientSDK {
   private _security?: Security;
   get security(): Security {
     return (this._security ??= new Security(this._options));
-  }
-
-  private _apiSecurity?: ApiSecurity;
-  get apiSecurity(): ApiSecurity {
-    return (this._apiSecurity ??= new ApiSecurity(this._options));
-  }
-
-  private _firewall?: Firewall;
-  get firewall(): Firewall {
-    return (this._firewall ??= new Firewall(this._options));
   }
 
   private _teams?: Teams;

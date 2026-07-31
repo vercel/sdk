@@ -1,0 +1,18 @@
+# UserEventPayload79Configuration
+
+## Example Usage
+
+```typescript
+import { UserEventPayload79Configuration } from "@vercel/sdk/models/usereventpayload41action.js";
+
+let value: UserEventPayload79Configuration = {
+  id: "<id>",
+};
+```
+
+## Fields
+
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `id`               | *string*           | :heavy_check_mark: | N/A                |
+| `name`             | *string*           | :heavy_minus_sign: | N/A                |

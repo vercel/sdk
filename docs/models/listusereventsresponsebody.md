@@ -27,7 +27,8 @@ let value: ListUserEventsResponseBody = {
       userId: "zTuNVUXEAvvnNN3IaqinkyMw",
       principalId: "<id>",
       payload: {
-        productAliases: [],
+        action: "mutate",
+        data: {},
       },
     },
   ],

@@ -5,9 +5,11 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { SixtyFive } from "@vercel/sdk/models/accessgroup.js";
+import { SixtyFive } from "@vercel/sdk/models/usereventpayload41action.js";
 
-let value: SixtyFive = {};
+let value: SixtyFive = {
+  custom: false,
+};
 ```
 
 ## Fields
@@ -16,4 +18,5 @@ let value: SixtyFive = {};
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `cn`               | *string*           | :heavy_minus_sign: | N/A                |
 | `cns`              | *string*[]         | :heavy_minus_sign: | N/A                |
+| `custom`           | *boolean*          | :heavy_check_mark: | N/A                |
 | `id`               | *string*           | :heavy_minus_sign: | N/A                |

@@ -30,9 +30,10 @@ export type DeleteEdgeConfigTokensRequest = {
    * The Team slug to perform the request on behalf of.
    */
   slug?: string | undefined;
-  requestBody:
+  requestBody?:
     | DeleteEdgeConfigTokensRequestBody1
-    | DeleteEdgeConfigTokensRequestBody2;
+    | DeleteEdgeConfigTokensRequestBody2
+    | undefined;
 };
 
 /** @internal */
@@ -117,9 +118,10 @@ export type DeleteEdgeConfigTokensRequest$Outbound = {
   edgeConfigId: string;
   teamId?: string | undefined;
   slug?: string | undefined;
-  RequestBody:
+  RequestBody?:
     | DeleteEdgeConfigTokensRequestBody1$Outbound
-    | DeleteEdgeConfigTokensRequestBody2$Outbound;
+    | DeleteEdgeConfigTokensRequestBody2$Outbound
+    | undefined;
 };
 
 /** @internal */
@@ -134,7 +136,7 @@ export const DeleteEdgeConfigTokensRequest$outboundSchema: z.ZodType<
   requestBody: smartUnion([
     z.lazy(() => DeleteEdgeConfigTokensRequestBody1$outboundSchema),
     z.lazy(() => DeleteEdgeConfigTokensRequestBody2$outboundSchema),
-  ]),
+  ]).optional(),
 }).transform((v) => {
   return remap$(v, {
     requestBody: "RequestBody",

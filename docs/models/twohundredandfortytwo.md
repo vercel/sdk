@@ -5,12 +5,12 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFortyTwo } from "@vercel/sdk/models/twohundredandthirteen.js";
+import { TwoHundredAndFortyTwo } from "@vercel/sdk/models/aws.js";
 
 let value: TwoHundredAndFortyTwo = {
   projectId: "<id>",
   projectName: "<value>",
-  onCommit: true,
+  newProjectName: "<value>",
 };
 ```
 
@@ -20,4 +20,4 @@ let value: TwoHundredAndFortyTwo = {
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `projectId`        | *string*           | :heavy_check_mark: | N/A                |
 | `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `onCommit`         | *boolean*          | :heavy_check_mark: | N/A                |
+| `newProjectName`   | *string*           | :heavy_check_mark: | N/A                |

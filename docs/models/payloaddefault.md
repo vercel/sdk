@@ -5,13 +5,13 @@ Default build machine type for new deployments. This must be used in combination
 ## Example Usage
 
 ```typescript
-import { PayloadDefault } from "@vercel/sdk/models/onehundredandfortysix.js";
+import { PayloadDefault } from "@vercel/sdk/models/usereventpayload155newownerfeatureblocksworkfloweventsblockreason.js";
 
-let value: PayloadDefault = "standard";
+let value: PayloadDefault = "enhanced";
 ```
 
 ## Values
 
 ```typescript
-"elastic" | "enhanced" | "standard" | "turbo"
+"basic" | "elastic" | "enhanced" | "standard" | "turbo"
 ```

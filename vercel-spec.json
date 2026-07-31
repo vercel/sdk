@@ -1745,7 +1745,7 @@
         ],
         "summary": "Create rule",
         "tags": [
-          "api-ai-gateway"
+          "ai-gateway"
         ],
         "responses": {
           "201": {
@@ -1808,7 +1808,7 @@
         ],
         "summary": "List rules",
         "tags": [
-          "api-ai-gateway"
+          "ai-gateway"
         ],
         "responses": {
           "200": {
@@ -1879,7 +1879,7 @@
         ],
         "summary": "Update rule",
         "tags": [
-          "api-ai-gateway"
+          "ai-gateway"
         ],
         "responses": {
           "200": {
@@ -1942,7 +1942,7 @@
         ],
         "summary": "Delete rule",
         "tags": [
-          "api-ai-gateway"
+          "ai-gateway"
         ],
         "responses": {
           "204": {
@@ -12342,6 +12342,9 @@
                           "clientId": {
                             "type": "string"
                           },
+                          "clientName": {
+                            "type": "string"
+                          },
                           "clientSecret": {
                             "type": "string"
                           },
@@ -12422,6 +12425,11 @@
                           },
                           "defaultAudience": {
                             "type": "string"
+                          },
+                          "defaultTokenExpiresIn": {
+                            "type": "number",
+                            "minimum": 60,
+                            "description": "Default token lifetime in seconds to use when the token response omits expires_in."
                           },
                           "authorizationUrlParams": {
                             "type": "object",
@@ -51556,102 +51564,140 @@
         }
       }
     },
-    "/v1/edge-config": {
+    "/v1/global-config": {
       "get": {
-        "description": "Returns all Edge Configs.",
+        "description": "Returns all Global Configs.",
         "operationId": "getEdgeConfigs",
         "security": [
           {
             "bearerToken": []
           }
         ],
-        "summary": "Get Edge Configs",
+        "summary": "Get Global Configs",
         "tags": [
-          "edge-config"
+          "global-config"
         ],
         "responses": {
           "200": {
-            "description": "List of all edge configs.",
+            "description": "List of all global configs.",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "description": "List of all edge configs.",
-                  "items": {
-                    "properties": {
-                      "id": {
-                        "type": "string"
-                      },
-                      "createdAt": {
-                        "type": "number"
-                      },
-                      "ownerId": {
-                        "type": "string"
-                      },
-                      "slug": {
-                        "type": "string",
-                        "description": "Name for the Edge Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores)."
-                      },
-                      "updatedAt": {
-                        "type": "number"
-                      },
-                      "digest": {
-                        "type": "string"
-                      },
-                      "transfer": {
-                        "properties": {
-                          "fromAccountId": {
-                            "type": "string"
-                          },
-                          "startedAt": {
-                            "type": "number"
-                          },
-                          "doneAt": {
-                            "nullable": true,
-                            "type": "number"
-                          }
-                        },
-                        "required": [
-                          "fromAccountId",
-                          "startedAt",
-                          "doneAt"
-                        ],
-                        "type": "object",
-                        "description": "Keeps track of the current state of the Edge Config while it gets transferred."
-                      },
-                      "schema": {
-                        "type": "object"
-                      },
-                      "purpose": {
-                        "properties": {
-                          "type": {
-                            "type": "string",
-                            "enum": [
-                              "flags"
-                            ]
-                          },
-                          "projectId": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "type",
-                          "projectId"
-                        ],
-                        "type": "object"
-                      },
-                      "sizeInBytes": {
-                        "type": "number"
-                      },
-                      "itemCount": {
-                        "type": "number"
-                      }
+                  "properties": {
+                    "id": {
+                      "type": "string"
                     },
-                    "required": [
-                      "sizeInBytes",
-                      "itemCount"
-                    ]
-                  }
+                    "createdAt": {
+                      "type": "number"
+                    },
+                    "createdBy": {
+                      "type": "string",
+                      "description": "The ID of the user who created the Edge Config, optional because it is not always set."
+                    },
+                    "ownerId": {
+                      "type": "string"
+                    },
+                    "slug": {
+                      "type": "string",
+                      "description": "Name for the Edge Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores)."
+                    },
+                    "updatedAt": {
+                      "type": "number"
+                    },
+                    "digest": {
+                      "type": "string"
+                    },
+                    "purpose": {
+                      "oneOf": [
+                        {
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "flags"
+                              ]
+                            },
+                            "projectId": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "projectId",
+                            "type"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "experimentation"
+                              ]
+                            },
+                            "resourceId": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "resourceId",
+                            "type"
+                          ],
+                          "type": "object"
+                        }
+                      ]
+                    },
+                    "deletedAt": {
+                      "nullable": true,
+                      "type": "number"
+                    },
+                    "transfer": {
+                      "properties": {
+                        "fromAccountId": {
+                          "type": "string"
+                        },
+                        "startedAt": {
+                          "type": "number"
+                        },
+                        "doneAt": {
+                          "nullable": true,
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "doneAt",
+                        "fromAccountId",
+                        "startedAt"
+                      ],
+                      "type": "object",
+                      "description": "Keeps track of the current state of the Edge Config while it gets transferred."
+                    },
+                    "schema": {
+                      "type": "object"
+                    },
+                    "syncedToDynamoAt": {
+                      "type": "number",
+                      "description": "Timestamp of when the Edge Config was synced to DynamoDB initially. It is only set when syncing the entire Edge Config, not when updating."
+                    },
+                    "sizeInBytes": {
+                      "type": "number"
+                    },
+                    "itemCount": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "createdAt",
+                    "digest",
+                    "id",
+                    "itemCount",
+                    "ownerId",
+                    "sizeInBytes",
+                    "slug",
+                    "updatedAt"
+                  ],
+                  "type": "object",
+                  "description": "List of all global configs."
                 }
               }
             }
@@ -51691,16 +51737,16 @@
         ]
       },
       "post": {
-        "description": "Creates an Edge Config.",
+        "description": "Creates a Global Config.",
         "operationId": "createEdgeConfig",
         "security": [
           {
             "bearerToken": []
           }
         ],
-        "summary": "Create an Edge Config",
+        "summary": "Create a Global Config",
         "tags": [
-          "edge-config"
+          "global-config"
         ],
         "responses": {
           "201": {
@@ -51884,27 +51930,26 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         }
       }
     },
-    "/v1/edge-config/{edgeConfigId}": {
+    "/v1/global-config/{edgeConfigId}": {
       "get": {
-        "description": "Returns an Edge Config.",
+        "description": "Returns a Global Config.",
         "operationId": "getEdgeConfig",
         "security": [
           {
             "bearerToken": []
           }
         ],
-        "summary": "Get an Edge Config",
+        "summary": "Get a Global Config",
         "tags": [
-          "edge-config"
+          "global-config"
         ],
         "responses": {
           "200": {
-            "description": "The EdgeConfig.",
+            "description": "The Global Config.",
             "content": {
               "application/json": {
                 "schema": {
@@ -52022,7 +52067,7 @@
                     "updatedAt"
                   ],
                   "type": "object",
-                  "description": "The EdgeConfig."
+                  "description": "The Global Config."
                 }
               }
             }
@@ -52073,16 +52118,16 @@
         ]
       },
       "put": {
-        "description": "Updates an Edge Config.",
+        "description": "Updates a Global Config.",
         "operationId": "updateEdgeConfig",
         "security": [
           {
             "bearerToken": []
           }
         ],
-        "summary": "Update an Edge Config",
+        "summary": "Update a Global Config",
         "tags": [
-          "edge-config"
+          "global-config"
         ],
         "responses": {
           "200": {
@@ -52276,21 +52321,20 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         }
       },
       "delete": {
-        "description": "Delete an Edge Config by id.",
+        "description": "Delete a Global Config by id.",
         "operationId": "deleteEdgeConfig",
         "security": [
           {
             "bearerToken": []
           }
         ],
-        "summary": "Delete an Edge Config",
+        "summary": "Delete a Global Config",
         "tags": [
-          "edge-config"
+          "global-config"
         ],
         "responses": {
           "204": {
@@ -52345,22 +52389,22 @@
         ]
       }
     },
-    "/v1/edge-config/{edgeConfigId}/items": {
+    "/v1/global-config/{edgeConfigId}/items": {
       "get": {
-        "description": "Returns all items of an Edge Config.",
+        "description": "Returns all items of a Global Config.",
         "operationId": "getEdgeConfigItems",
         "security": [
           {
             "bearerToken": []
           }
         ],
-        "summary": "Get Edge Config items",
+        "summary": "Get Global Config items",
         "tags": [
-          "edge-config"
+          "global-config"
         ],
         "responses": {
           "200": {
-            "description": "List of all Edge Config items.",
+            "description": "List of all Global Config items.",
             "content": {
               "application/json": {
                 "schema": {
@@ -52419,16 +52463,16 @@
         ]
       },
       "patch": {
-        "description": "Update multiple Edge Config Items in batch.",
+        "description": "Update multiple Global Config Items in batch.",
         "operationId": "patchEdgeConfigItems",
         "security": [
           {
             "bearerToken": []
           }
         ],
-        "summary": "Update Edge Config items in batch",
+        "summary": "Update Global Config items in batch",
         "tags": [
-          "edge-config"
+          "global-config"
         ],
         "responses": {
           "200": {
@@ -52533,29 +52577,23 @@
                               "pattern": "^[\\w-]+$",
                               "type": "string"
                             },
-                            "value": {
-                              "nullable": true
-                            },
+                            "value": {},
                             "description": {
                               "oneOf": [
                                 {
                                   "type": "string",
                                   "maxLength": 512
                                 },
-                                {}
-                              ],
-                              "nullable": true
+                                {
+                                  "type": "string"
+                                }
+                              ]
                             }
                           },
                           "anyOf": [
                             {
                               "properties": {
-                                "operation": {
-                                  "type": "string",
-                                  "enum": [
-                                    "create"
-                                  ]
-                                }
+                                "operation": {}
                               },
                               "required": [
                                 "operation",
@@ -52592,6 +52630,21 @@
                                 "key",
                                 "description"
                               ]
+                            },
+                            {
+                              "properties": {
+                                "operation": {}
+                              },
+                              "required": [
+                                "operation",
+                                "key"
+                              ],
+                              "not": {
+                                "required": [
+                                  "value",
+                                  "description"
+                                ]
+                              }
                             }
                           ]
                         }
@@ -52605,28 +52658,28 @@
         }
       }
     },
-    "/v1/edge-config/{edgeConfigId}/schema": {
+    "/v1/global-config/{edgeConfigId}/schema": {
       "get": {
-        "description": "Returns the schema of an Edge Config.",
+        "description": "Returns the schema of a Global Config.",
         "operationId": "getEdgeConfigSchema",
         "security": [
           {
             "bearerToken": []
           }
         ],
-        "summary": "Get Edge Config schema",
+        "summary": "Get Global Config schema",
         "tags": [
-          "edge-config"
+          "global-config"
         ],
         "responses": {
           "200": {
-            "description": "The EdgeConfig.",
+            "description": "The Global Config.",
             "content": {
               "application/json": {
                 "schema": {
                   "nullable": true,
                   "type": "object",
-                  "description": "The EdgeConfig."
+                  "description": "The Global Config."
                 }
               }
             }
@@ -52677,16 +52730,16 @@
         ]
       },
       "post": {
-        "description": "Update an Edge Config's schema.",
+        "description": "Update a Global Config's schema.",
         "operationId": "patchEdgeConfigSchema",
         "security": [
           {
             "bearerToken": []
           }
         ],
-        "summary": "Update Edge Config schema",
+        "summary": "Update Global Config schema",
         "tags": [
-          "edge-config"
+          "global-config"
         ],
         "responses": {
           "200": {
@@ -52773,21 +52826,20 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         }
       },
       "delete": {
-        "description": "Deletes the schema of existing Edge Config.",
+        "description": "Deletes the schema of existing Global Config.",
         "operationId": "deleteEdgeConfigSchema",
         "security": [
           {
             "bearerToken": []
           }
         ],
-        "summary": "Delete an Edge Config's schema",
+        "summary": "Delete a Global Config's schema",
         "tags": [
-          "edge-config"
+          "global-config"
         ],
         "responses": {
           "204": {
@@ -52845,22 +52897,22 @@
         ]
       }
     },
-    "/v1/edge-config/{edgeConfigId}/item/{edgeConfigItemKey}": {
+    "/v1/global-config/{edgeConfigId}/item/{edgeConfigItemKey}": {
       "get": {
-        "description": "Returns a specific Edge Config Item.",
+        "description": "Returns a specific Global Config Item.",
         "operationId": "getEdgeConfigItem",
         "security": [
           {
             "bearerToken": []
           }
         ],
-        "summary": "Get an Edge Config item",
+        "summary": "Get a Global Config item",
         "tags": [
-          "edge-config"
+          "global-config"
         ],
         "responses": {
           "200": {
-            "description": "The EdgeConfig.",
+            "description": "The Global Config.",
             "content": {
               "application/json": {
                 "schema": {
@@ -52924,22 +52976,22 @@
         ]
       }
     },
-    "/v1/edge-config/{edgeConfigId}/tokens": {
+    "/v1/global-config/{edgeConfigId}/tokens": {
       "get": {
-        "description": "Returns all tokens of an Edge Config.",
+        "description": "Returns all tokens of a Global Config.",
         "operationId": "getEdgeConfigTokens",
         "security": [
           {
             "bearerToken": []
           }
         ],
-        "summary": "Get all tokens of an Edge Config",
+        "summary": "Get all tokens of a Global Config",
         "tags": [
-          "edge-config"
+          "global-config"
         ],
         "responses": {
           "200": {
-            "description": "The EdgeConfig.",
+            "description": "The Global Config.",
             "content": {
               "application/json": {
                 "schema": {
@@ -52994,16 +53046,16 @@
         ]
       },
       "delete": {
-        "description": "Deletes one or more tokens of an existing Edge Config.",
+        "description": "Deletes one or more tokens of an existing Global Config.",
         "operationId": "deleteEdgeConfigTokens",
         "security": [
           {
             "bearerToken": []
           }
         ],
-        "summary": "Delete one or more Edge Config tokens",
+        "summary": "Delete one or more Global Config tokens",
         "tags": [
-          "edge-config"
+          "global-config"
         ],
         "responses": {
           "204": {
@@ -53096,27 +53148,26 @@
                 ]
               }
             }
-          },
-          "required": true
+          }
         }
       }
     },
-    "/v1/edge-config/{edgeConfigId}/token/{token}": {
+    "/v1/global-config/{edgeConfigId}/token/{token}": {
       "get": {
-        "description": "Return meta data about an Edge Config token.",
+        "description": "Return meta data about a Global Config token.",
         "operationId": "getEdgeConfigToken",
         "security": [
           {
             "bearerToken": []
           }
         ],
-        "summary": "Get Edge Config token meta data",
+        "summary": "Get Global Config token meta data",
         "tags": [
-          "edge-config"
+          "global-config"
         ],
         "responses": {
           "200": {
-            "description": "The EdgeConfig.",
+            "description": "The Global Config.",
             "content": {
               "application/json": {
                 "schema": {
@@ -53179,18 +53230,18 @@
         ]
       }
     },
-    "/v1/edge-config/{edgeConfigId}/token": {
+    "/v1/global-config/{edgeConfigId}/token": {
       "post": {
-        "description": "Adds a token to an existing Edge Config.",
+        "description": "Adds a token to an existing Global Config.",
         "operationId": "createEdgeConfigToken",
         "security": [
           {
             "bearerToken": []
           }
         ],
-        "summary": "Create an Edge Config token",
+        "summary": "Create a Global Config token",
         "tags": [
-          "edge-config"
+          "global-config"
         ],
         "responses": {
           "201": {
@@ -53283,23 +53334,22 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         }
       }
     },
-    "/v1/edge-config/{edgeConfigId}/backups/{edgeConfigBackupVersionId}": {
+    "/v1/global-config/{edgeConfigId}/backups/{edgeConfigBackupVersionId}": {
       "get": {
-        "description": "Retrieves a specific version of an Edge Config from backup storage.",
+        "description": "Retrieves a specific version of a Global Config from backup storage.",
         "operationId": "getEdgeConfigBackup",
         "security": [
           {
             "bearerToken": []
           }
         ],
-        "summary": "Get Edge Config backup",
+        "summary": "Get Global Config backup",
         "tags": [
-          "edge-config"
+          "global-config"
         ],
         "responses": {
           "200": {
@@ -53576,22 +53626,21 @@
               "example": "my-team-url-slug"
             }
           }
-        ],
-        "x-speakeasy-test": false
+        ]
       }
     },
-    "/v1/edge-config/{edgeConfigId}/backups/{edgeConfigBackupVersionId}/restore": {
+    "/v1/global-config/{edgeConfigId}/backups/{edgeConfigBackupVersionId}/restore": {
       "post": {
-        "description": "Restores an Edge Config backup.",
+        "description": "Restores a Global Config backup.",
         "operationId": "restoreEdgeConfigBackup",
         "security": [
           {
             "bearerToken": []
           }
         ],
-        "summary": "Restore Edge Config backup",
+        "summary": "Restore Global Config backup",
         "tags": [
-          "edge-config"
+          "global-config"
         ],
         "responses": {
           "200": {
@@ -53688,22 +53737,21 @@
               "example": "my-team-url-slug"
             }
           }
-        ],
-        "x-speakeasy-test": false
+        ]
       }
     },
-    "/v1/edge-config/{edgeConfigId}/backups": {
+    "/v1/global-config/{edgeConfigId}/backups": {
       "get": {
-        "description": "Returns backups of an Edge Config.",
+        "description": "Returns backups of a Global Config.",
         "operationId": "getEdgeConfigBackups",
         "security": [
           {
             "bearerToken": []
           }
         ],
-        "summary": "Get Edge Config backups",
+        "summary": "Get Global Config backups",
         "tags": [
-          "edge-config"
+          "global-config"
         ],
         "responses": {
           "200": {
@@ -73291,22 +73339,22 @@
         "x-speakeasy-name-override": "deleteInstallationIntegrationConfiguration"
       }
     },
-    "/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config": {
+    "/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/global-config": {
       "head": {
-        "description": "When the user enabled Edge Config syncing, then this endpoint can be used by the partner to fetch the contents of the Edge Config.",
-        "operationId": "headInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfig",
+        "description": "When the user enabled Global Config syncing, then this endpoint can be used by the partner to fetch the contents of the Global Config.",
+        "operationId": "headInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig",
         "security": [
           {
             "bearerToken": []
           }
         ],
-        "summary": "Get the data of a user-provided Edge Config",
+        "summary": "Get the data of a user-provided Global Config",
         "tags": [
           "marketplace"
         ],
         "responses": {
           "200": {
-            "description": "The Edge Config data",
+            "description": "The Global Config data",
             "content": {
               "application/json": {
                 "schema": {
@@ -73377,25 +73425,23 @@
               "type": "string"
             }
           }
-        ],
-        "x-speakeasy-name-override": "createInstallationIntegrationEdgeConfig",
-        "x-speakeasy-test": false
+        ]
       },
       "get": {
-        "description": "When the user enabled Edge Config syncing, then this endpoint can be used by the partner to fetch the contents of the Edge Config.",
-        "operationId": "getInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfig",
+        "description": "When the user enabled Global Config syncing, then this endpoint can be used by the partner to fetch the contents of the Global Config.",
+        "operationId": "getInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig",
         "security": [
           {
             "bearerToken": []
           }
         ],
-        "summary": "Get the data of a user-provided Edge Config",
+        "summary": "Get the data of a user-provided Global Config",
         "tags": [
           "marketplace"
         ],
         "responses": {
           "200": {
-            "description": "The Edge Config data",
+            "description": "The Global Config data",
             "content": {
               "application/json": {
                 "schema": {
@@ -73469,20 +73515,20 @@
         ]
       },
       "put": {
-        "description": "When the user enabled Edge Config syncing, then this endpoint can be used by the partner to push their configuration data into the relevant Edge Config.",
-        "operationId": "replaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfig",
+        "description": "When the user enabled Global Config syncing, then this endpoint can be used by the partner to push their configuration data into the relevant Global Config.",
+        "operationId": "replaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig",
         "security": [
           {
             "bearerToken": []
           }
         ],
-        "summary": "Push data into a user-provided Edge Config",
+        "summary": "Push data into a user-provided Global Config",
         "tags": [
           "marketplace"
         ],
         "responses": {
           "200": {
-            "description": "The Edge Config was updated",
+            "description": "The Global Config was updated",
             "content": {
               "application/json": {
                 "schema": {
@@ -73575,8 +73621,7 @@
               }
             }
           }
-        },
-        "x-speakeasy-name-override": "updateInstallationIntegrationEdgeConfig"
+        }
       }
     },
     "/v1/microfrontends/groups": {
@@ -76660,6 +76705,7 @@
                               "buildMachineType": {
                                 "type": "string",
                                 "enum": [
+                                  "basic",
                                   "enhanced",
                                   "standard",
                                   "turbo"
@@ -76859,6 +76905,7 @@
                               "buildMachineType": {
                                 "type": "string",
                                 "enum": [
+                                  "basic",
                                   "enhanced",
                                   "standard",
                                   "turbo"
@@ -78781,6 +78828,12 @@
                                 "type": "array"
                               },
                               "projectDomainMove": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "projectDomainVerify": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
                                 },
@@ -81737,7 +81790,7 @@
         ],
         "summary": "Lists disabled Observability Plus projects",
         "tags": [
-          "api-observability"
+          "observability"
         ],
         "responses": {
           "200": {
@@ -81825,7 +81878,7 @@
         ],
         "summary": "Updates a disabled Observability Plus project setting",
         "tags": [
-          "api-observability"
+          "observability"
         ],
         "responses": {
           "200": {
@@ -90251,6 +90304,7 @@
                               "buildMachineType": {
                                 "type": "string",
                                 "enum": [
+                                  "basic",
                                   "enhanced",
                                   "standard",
                                   "turbo"
@@ -94777,6 +94831,7 @@
                                   "buildMachineType": {
                                     "type": "string",
                                     "enum": [
+                                      "basic",
                                       "enhanced",
                                       "standard",
                                       "turbo"
@@ -100150,6 +100205,7 @@
                                   "buildMachineType": {
                                     "type": "string",
                                     "enum": [
+                                      "basic",
                                       "enhanced",
                                       "standard",
                                       "turbo"
@@ -100349,6 +100405,7 @@
                                   "buildMachineType": {
                                     "type": "string",
                                     "enum": [
+                                      "basic",
                                       "enhanced",
                                       "standard",
                                       "turbo"
@@ -102271,6 +102328,12 @@
                                     "type": "array"
                                   },
                                   "projectDomainMove": {
+                                    "items": {
+                                      "$ref": "#/components/schemas/ACLAction"
+                                    },
+                                    "type": "array"
+                                  },
+                                  "projectDomainVerify": {
                                     "items": {
                                       "$ref": "#/components/schemas/ACLAction"
                                     },
@@ -108051,6 +108114,7 @@
                         "buildMachineType": {
                           "type": "string",
                           "enum": [
+                            "basic",
                             "enhanced",
                             "standard",
                             "turbo"
@@ -108250,6 +108314,7 @@
                         "buildMachineType": {
                           "type": "string",
                           "enum": [
+                            "basic",
                             "enhanced",
                             "standard",
                             "turbo"
@@ -110172,6 +110237,12 @@
                           "type": "array"
                         },
                         "projectDomainMove": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectDomainVerify": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -112779,6 +112850,7 @@
                     "properties": {
                       "buildMachineType": {
                         "enum": [
+                          "basic",
                           "enhanced",
                           "turbo",
                           "standard",
@@ -116118,6 +116190,7 @@
                         "buildMachineType": {
                           "type": "string",
                           "enum": [
+                            "basic",
                             "enhanced",
                             "standard",
                             "turbo"
@@ -116317,6 +116390,7 @@
                         "buildMachineType": {
                           "type": "string",
                           "enum": [
+                            "basic",
                             "enhanced",
                             "standard",
                             "turbo"
@@ -118239,6 +118313,12 @@
                           "type": "array"
                         },
                         "projectDomainMove": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectDomainVerify": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -123546,6 +123626,7 @@
                         "buildMachineType": {
                           "type": "string",
                           "enum": [
+                            "basic",
                             "enhanced",
                             "standard",
                             "turbo"
@@ -123745,6 +123826,7 @@
                         "buildMachineType": {
                           "type": "string",
                           "enum": [
+                            "basic",
                             "enhanced",
                             "standard",
                             "turbo"
@@ -125667,6 +125749,12 @@
                           "type": "array"
                         },
                         "projectDomainMove": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectDomainVerify": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -128163,6 +128251,7 @@
                       "buildMachineType": {
                         "enum": [
                           null,
+                          "basic",
                           "enhanced",
                           "turbo",
                           "standard",
@@ -132238,6 +132327,7 @@
                         "buildMachineType": {
                           "type": "string",
                           "enum": [
+                            "basic",
                             "enhanced",
                             "standard",
                             "turbo"
@@ -132437,6 +132527,7 @@
                         "buildMachineType": {
                           "type": "string",
                           "enum": [
+                            "basic",
                             "enhanced",
                             "standard",
                             "turbo"
@@ -134359,6 +134450,12 @@
                           "type": "array"
                         },
                         "projectDomainMove": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectDomainVerify": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -152335,6 +152432,7 @@
                         "buildMachineType": {
                           "type": "string",
                           "enum": [
+                            "basic",
                             "enhanced",
                             "standard",
                             "turbo"
@@ -152534,6 +152632,7 @@
                         "buildMachineType": {
                           "type": "string",
                           "enum": [
+                            "basic",
                             "enhanced",
                             "standard",
                             "turbo"
@@ -154456,6 +154555,12 @@
                           "type": "array"
                         },
                         "projectDomainMove": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectDomainVerify": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -162637,7 +162742,7 @@
         "security": [],
         "summary": "Returns activated WAF config",
         "tags": [
-          "api-security"
+          "security"
         ],
         "responses": {
           "200": {
@@ -172358,7 +172463,7 @@
         "security": [],
         "summary": "Returns activated WAF config",
         "tags": [
-          "api-security"
+          "security"
         ],
         "responses": {
           "204": {
@@ -172413,7 +172518,7 @@
         "security": [],
         "summary": "Returns activated WAF config",
         "tags": [
-          "api-security"
+          "security"
         ],
         "responses": {
           "200": {
@@ -174814,7 +174919,7 @@
         ],
         "summary": "Generate a firewall rule from natural language",
         "tags": [
-          "firewall"
+          "security"
         ],
         "responses": {
           "200": {
@@ -175008,7 +175113,6 @@
           {
             "name": "projectId",
             "in": "query",
-            "required": true,
             "schema": {
               "type": "string"
             }
@@ -182543,6 +182647,7 @@
                           "default": {
                             "type": "string",
                             "enum": [
+                              "basic",
                               "enhanced",
                               "turbo",
                               "standard",
@@ -183657,6 +183762,10 @@
                   },
                   "expiresAt": {
                     "type": "number"
+                  },
+                  "projectId": {
+                    "type": "string",
+                    "description": "The ID of the project to scope this token to"
                   }
                 }
               }
@@ -185464,6 +185573,12 @@
                               "keyName": {
                                 "type": "string"
                               },
+                              "authMethod": {
+                                "type": "string"
+                              },
+                              "appName": {
+                                "type": "string"
+                              },
                               "isByok": {
                                 "type": "string"
                               },
@@ -185642,6 +185757,15 @@
                                 "type": "string"
                               },
                               "contentCaptureOutputs": {
+                                "type": "string"
+                              },
+                              "transcriptStatus": {
+                                "type": "string"
+                              },
+                              "transcriptInputs": {
+                                "type": "string"
+                              },
+                              "transcriptOutputs": {
                                 "type": "string"
                               },
                               "providerAttemptError": {
@@ -186112,6 +186236,12 @@
                               "keyName": {
                                 "type": "string"
                               },
+                              "authMethod": {
+                                "type": "string"
+                              },
+                              "appName": {
+                                "type": "string"
+                              },
                               "isByok": {
                                 "type": "string"
                               },
@@ -186292,6 +186422,15 @@
                               "contentCaptureOutputs": {
                                 "type": "string"
                               },
+                              "transcriptStatus": {
+                                "type": "string"
+                              },
+                              "transcriptInputs": {
+                                "type": "string"
+                              },
+                              "transcriptOutputs": {
+                                "type": "string"
+                              },
                               "providerAttemptError": {
                                 "type": "string"
                               },
@@ -186355,11 +186494,13 @@
                               "aiModel",
                               "aiModelType",
                               "aiProvider",
+                              "appName",
                               "asnId",
                               "asnName",
                               "attributes",
                               "attributionEventName",
                               "attributionTarget",
+                              "authMethod",
                               "billableRegion",
                               "blobOperationLevel",
                               "blobOperationType",
@@ -186543,6 +186684,9 @@
                               "toolCallSuccess",
                               "toolCallType",
                               "trafficSource",
+                              "transcriptInputs",
+                              "transcriptOutputs",
+                              "transcriptStatus",
                               "triggeringTag",
                               "utmCampaign",
                               "utmContent",
@@ -187220,6 +187364,12 @@
                               "keyName": {
                                 "type": "string"
                               },
+                              "authMethod": {
+                                "type": "string"
+                              },
+                              "appName": {
+                                "type": "string"
+                              },
                               "isByok": {
                                 "type": "string"
                               },
@@ -187398,6 +187548,15 @@
                                 "type": "string"
                               },
                               "contentCaptureOutputs": {
+                                "type": "string"
+                              },
+                              "transcriptStatus": {
+                                "type": "string"
+                              },
+                              "transcriptInputs": {
+                                "type": "string"
+                              },
+                              "transcriptOutputs": {
                                 "type": "string"
                               },
                               "providerAttemptError": {
@@ -187868,6 +188027,12 @@
                               "keyName": {
                                 "type": "string"
                               },
+                              "authMethod": {
+                                "type": "string"
+                              },
+                              "appName": {
+                                "type": "string"
+                              },
                               "isByok": {
                                 "type": "string"
                               },
@@ -188048,6 +188213,15 @@
                               "contentCaptureOutputs": {
                                 "type": "string"
                               },
+                              "transcriptStatus": {
+                                "type": "string"
+                              },
+                              "transcriptInputs": {
+                                "type": "string"
+                              },
+                              "transcriptOutputs": {
+                                "type": "string"
+                              },
                               "providerAttemptError": {
                                 "type": "string"
                               },
@@ -188111,11 +188285,13 @@
                               "aiModel",
                               "aiModelType",
                               "aiProvider",
+                              "appName",
                               "asnId",
                               "asnName",
                               "attributes",
                               "attributionEventName",
                               "attributionTarget",
+                              "authMethod",
                               "billableRegion",
                               "blobOperationLevel",
                               "blobOperationType",
@@ -188299,6 +188475,9 @@
                               "toolCallSuccess",
                               "toolCallType",
                               "trafficSource",
+                              "transcriptInputs",
+                              "transcriptOutputs",
+                              "transcriptStatus",
                               "triggeringTag",
                               "utmCampaign",
                               "utmContent",
@@ -188940,6 +189119,12 @@
                         "keyName": {
                           "type": "string"
                         },
+                        "authMethod": {
+                          "type": "string"
+                        },
+                        "appName": {
+                          "type": "string"
+                        },
                         "isByok": {
                           "type": "string"
                         },
@@ -189120,6 +189305,15 @@
                         "contentCaptureOutputs": {
                           "type": "string"
                         },
+                        "transcriptStatus": {
+                          "type": "string"
+                        },
+                        "transcriptInputs": {
+                          "type": "string"
+                        },
+                        "transcriptOutputs": {
+                          "type": "string"
+                        },
                         "providerAttemptError": {
                           "type": "string"
                         },
@@ -189183,11 +189377,13 @@
                         "aiModel",
                         "aiModelType",
                         "aiProvider",
+                        "appName",
                         "asnId",
                         "asnName",
                         "attributes",
                         "attributionEventName",
                         "attributionTarget",
+                        "authMethod",
                         "billableRegion",
                         "blobOperationLevel",
                         "blobOperationType",
@@ -189371,6 +189567,9 @@
                         "toolCallSuccess",
                         "toolCallType",
                         "trafficSource",
+                        "transcriptInputs",
+                        "transcriptOutputs",
+                        "transcriptStatus",
                         "triggeringTag",
                         "utmCampaign",
                         "utmContent",
@@ -189943,6 +190142,12 @@
                         "keyName": {
                           "type": "string"
                         },
+                        "authMethod": {
+                          "type": "string"
+                        },
+                        "appName": {
+                          "type": "string"
+                        },
                         "isByok": {
                           "type": "string"
                         },
@@ -190123,6 +190328,15 @@
                         "contentCaptureOutputs": {
                           "type": "string"
                         },
+                        "transcriptStatus": {
+                          "type": "string"
+                        },
+                        "transcriptInputs": {
+                          "type": "string"
+                        },
+                        "transcriptOutputs": {
+                          "type": "string"
+                        },
                         "providerAttemptError": {
                           "type": "string"
                         },
@@ -190186,11 +190400,13 @@
                         "aiModel",
                         "aiModelType",
                         "aiProvider",
+                        "appName",
                         "asnId",
                         "asnName",
                         "attributes",
                         "attributionEventName",
                         "attributionTarget",
+                        "authMethod",
                         "billableRegion",
                         "blobOperationLevel",
                         "blobOperationType",
@@ -190374,6 +190590,9 @@
                         "toolCallSuccess",
                         "toolCallType",
                         "trafficSource",
+                        "transcriptInputs",
+                        "transcriptOutputs",
+                        "transcriptStatus",
                         "triggeringTag",
                         "utmCampaign",
                         "utmContent",
@@ -197043,7 +197262,7 @@
           "value"
         ],
         "type": "object",
-        "description": "The EdgeConfig."
+        "description": "The Global Config."
       },
       "EdgeConfigToken": {
         "properties": {
@@ -197077,7 +197296,7 @@
           "partialToken"
         ],
         "type": "object",
-        "description": "The EdgeConfig."
+        "description": "The Global Config."
       },
       "UserEvent": {
         "properties": {
@@ -197167,6 +197386,7 @@
               "ai-gateway-api-key-created",
               "ai-gateway-api-key-deleted",
               "ai-gateway-api-key-quota-updated",
+              "ai-gateway-budget-default-updated",
               "ai-gateway-byok-credential-created",
               "ai-gateway-byok-credential-deleted",
               "ai-gateway-byok-credential-updated",
@@ -197184,6 +197404,7 @@
               "ai-gateway-rule-created",
               "ai-gateway-rule-deleted",
               "ai-gateway-rule-updated",
+              "ai-gateway-scope-budget-updated",
               "ai-gateway-virtual-model-config-archived",
               "ai-gateway-virtual-model-config-created",
               "ai-gateway-virtual-model-config-restored",
@@ -197229,6 +197450,7 @@
               "cert-system-create",
               "code-owners-config-updated",
               "compliance-document-downloaded",
+              "compliance-documents-bulk-downloaded",
               "concurrent-builds-update",
               "connect-attach-project",
               "connect-bitbucket",
@@ -197420,6 +197642,10 @@
               "observability-enabled",
               "observability-plus-project-disabled",
               "observability-plus-project-enabled",
+              "oidc-policy-created",
+              "oidc-policy-deleted",
+              "oidc-policy-updated",
+              "oidc-policy-used-to-obtain-app-token",
               "organization-create",
               "organization-delete",
               "organization-slug-update",
@@ -197468,6 +197694,7 @@
               "project-build-command-updated",
               "project-build-logs-and-source-protection-updated",
               "project-build-machine-updated",
+              "project-card-widget-preference-updated",
               "project-client-cert-delete",
               "project-client-cert-upload",
               "project-connect-configurations",
@@ -197627,6 +197854,7 @@
               "subscription-product-removed",
               "subscription-updated",
               "team",
+              "team-agent-billing-migration-decision-changed",
               "team-avatar-update",
               "team-collaboration-settings-updated",
               "team-default-build-machine-updated",
@@ -197679,7 +197907,9 @@
               "user-emu-account-archived",
               "user-emu-account-deleted",
               "user-emu-account-recovered",
+              "user-mfa-challenge-failed",
               "user-mfa-challenge-verified",
+              "user-mfa-change-failed",
               "user-mfa-configuration-updated",
               "user-mfa-recovery-codes-regenerated",
               "user-mfa-removed",
@@ -198466,6 +198696,114 @@
                 "required": [
                   "apiKey",
                   "change"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "scopeType": {
+                    "type": "string",
+                    "enum": [
+                      "api-key",
+                      "project",
+                      "team"
+                    ]
+                  },
+                  "budget": {
+                    "nullable": true,
+                    "properties": {
+                      "limitAmount": {
+                        "type": "number",
+                        "description": "Spend cap, in dollars."
+                      },
+                      "refreshPeriod": {
+                        "type": "string",
+                        "enum": [
+                          "daily",
+                          "monthly",
+                          "none",
+                          "weekly"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "limitAmount",
+                      "refreshPeriod"
+                    ],
+                    "type": "object",
+                    "description": "Spend budget on an AI Gateway API key, as surfaced in activity messages. Defined locally (rather than imported from `@api/pubsub-types`) because `@api/pubsub-types` already depends on `@api/events`; importing it here would create a circular dependency. Must stay structurally aligned with `APIKeyBudget` in `@api/pubsub-types/event-payloads/api-keys`."
+                  },
+                  "change": {
+                    "type": "string",
+                    "enum": [
+                      "disable",
+                      "enable",
+                      "remove",
+                      "set"
+                    ]
+                  }
+                },
+                "required": [
+                  "change",
+                  "scopeType"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "scopeType": {
+                    "type": "string",
+                    "enum": [
+                      "project",
+                      "team"
+                    ]
+                  },
+                  "projectId": {
+                    "type": "string",
+                    "description": "Associates the event with a project for filtering; not rendered."
+                  },
+                  "projectName": {
+                    "type": "string"
+                  },
+                  "budget": {
+                    "nullable": true,
+                    "properties": {
+                      "limitAmount": {
+                        "type": "number",
+                        "description": "Spend cap, in dollars."
+                      },
+                      "refreshPeriod": {
+                        "type": "string",
+                        "enum": [
+                          "daily",
+                          "monthly",
+                          "none",
+                          "weekly"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "limitAmount",
+                      "refreshPeriod"
+                    ],
+                    "type": "object",
+                    "description": "Spend budget on an AI Gateway API key, as surfaced in activity messages. Defined locally (rather than imported from `@api/pubsub-types`) because `@api/pubsub-types` already depends on `@api/events`; importing it here would create a circular dependency. Must stay structurally aligned with `APIKeyBudget` in `@api/pubsub-types/event-payloads/api-keys`."
+                  },
+                  "change": {
+                    "type": "string",
+                    "enum": [
+                      "disable",
+                      "enable",
+                      "remove",
+                      "set"
+                    ]
+                  }
+                },
+                "required": [
+                  "change",
+                  "scopeType"
                 ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
@@ -200546,6 +200884,46 @@
                   "fingerprint",
                   "slug",
                   "title"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "count": {
+                    "type": "number"
+                  },
+                  "documents": {
+                    "items": {
+                      "properties": {
+                        "slug": {
+                          "type": "string"
+                        },
+                        "documentId": {
+                          "type": "string"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "fingerprint": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "documentId",
+                        "fingerprint",
+                        "slug",
+                        "title"
+                      ],
+                      "type": "object",
+                      "description": "A single document included in a bulk compliance download."
+                    },
+                    "type": "array"
+                  }
+                },
+                "required": [
+                  "count",
+                  "documents"
                 ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
@@ -205843,6 +206221,31 @@
                         "type": "number",
                         "description": "Overrides our DEFAULT project domains limit per account or per project."
                       },
+                      "projectCardWidgetPreferences": {
+                        "items": {
+                          "properties": {
+                            "projectId": {
+                              "type": "string"
+                            },
+                            "widget": {
+                              "type": "string",
+                              "enum": [
+                                "alert",
+                                "firewall-allowed",
+                                "firewall-denied",
+                                "online",
+                                "res"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "projectId",
+                            "widget"
+                          ],
+                          "type": "object"
+                        },
+                        "type": "array"
+                      },
                       "remoteCaching": {
                         "properties": {
                           "enabled": {
@@ -206014,6 +206417,7 @@
                               "default": {
                                 "type": "string",
                                 "enum": [
+                                  "basic",
                                   "elastic",
                                   "enhanced",
                                   "standard",
@@ -206223,6 +206627,7 @@
                               "ENTERPRISE_UNPAID_INVOICE",
                               "EXPOSURE_CAP_EXCEEDED",
                               "FAIR_USE_LIMITS_EXCEEDED",
+                              "HOBBY_ALLOCATION_PAUSED",
                               "SUBSCRIPTION_CANCELED",
                               "SUBSCRIPTION_EXPIRED",
                               "UNPAID_INVOICE"
@@ -206271,6 +206676,93 @@
                               "wafRateLimitRequest",
                               "webAnalyticsEvent"
                             ]
+                          },
+                          "hobbyAllocationPause": {
+                            "properties": {
+                              "pausedUntil": {
+                                "type": "number",
+                                "description": "Unix ms timestamp at which the pause is eligible to end. This is the single source of truth for when the pause ends. Never re-derive it by re-checking usage — usage keeps moving while a team is paused, and the pause duration is a fixed experiment parameter."
+                              },
+                              "pausedAt": {
+                                "type": "number",
+                                "description": "Unix ms timestamp of when the pause was applied."
+                              },
+                              "triggers": {
+                                "items": {
+                                  "properties": {
+                                    "allocation": {
+                                      "type": "string",
+                                      "enum": [
+                                        "analyticsUsage",
+                                        "artifacts",
+                                        "bandwidth",
+                                        "blobDataTransfer",
+                                        "blobTotalAdvancedRequests",
+                                        "blobTotalAvgSizeInBytes",
+                                        "blobTotalGetResponseObjectSizeInBytes",
+                                        "blobTotalSimpleRequests",
+                                        "connectDataTransfer",
+                                        "dataCacheRead",
+                                        "dataCacheWrite",
+                                        "edgeConfigRead",
+                                        "edgeConfigWrite",
+                                        "edgeFunctionExecutionUnits",
+                                        "edgeMiddlewareInvocations",
+                                        "edgeRequest",
+                                        "edgeRequestAdditionalCpuDuration",
+                                        "elasticConcurrencyBuildSlots",
+                                        "fastDataTransfer",
+                                        "fastOriginTransfer",
+                                        "fluidCpuDuration",
+                                        "fluidDuration",
+                                        "functionDuration",
+                                        "functionInvocation",
+                                        "imageOptimizationCacheRead",
+                                        "imageOptimizationCacheWrite",
+                                        "imageOptimizationTransformation",
+                                        "logDrainsVolume",
+                                        "monitoringMetric",
+                                        "observabilityEvent",
+                                        "onDemandConcurrencyMinutes",
+                                        "runtimeCacheRead",
+                                        "runtimeCacheWrite",
+                                        "serverlessFunctionExecution",
+                                        "sourceImages",
+                                        "wafOwaspExcessBytes",
+                                        "wafOwaspRequests",
+                                        "wafRateLimitRequest",
+                                        "webAnalyticsEvent"
+                                      ],
+                                      "description": "Metered allocation whose included amount was fully consumed."
+                                    },
+                                    "usage": {
+                                      "type": "number",
+                                      "description": "Usage recorded for that allocation when the pause was applied."
+                                    }
+                                  },
+                                  "required": [
+                                    "allocation",
+                                    "usage"
+                                  ],
+                                  "type": "object",
+                                  "description": "Allocations that were at or over 100% when the pause was applied."
+                                },
+                                "type": "array",
+                                "description": "Allocations that were at or over 100% when the pause was applied."
+                              },
+                              "cohort": {
+                                "type": "string",
+                                "description": "Experiment cohort the owner was assigned to when the pause fired. Free-form so cohort naming stays owned by the assignment path."
+                              }
+                            },
+                            "required": [
+                              "cohort",
+                              "pausedAt",
+                              "pausedUntil",
+                              "triggers"
+                            ],
+                            "type": "object",
+                            "description": "Present only when `reason` is `HOBBY_ALLOCATION_PAUSED`. Makes the pause self-describing for support without a separate lookup."
                           }
                         },
                         "required": [
@@ -211160,6 +211652,35 @@
                   "projectName": {
                     "type": "string"
                   },
+                  "widget": {
+                    "nullable": true,
+                    "type": "string",
+                    "enum": [
+                      "alert",
+                      "firewall-allowed",
+                      "firewall-denied",
+                      "online",
+                      "res",
+                      null
+                    ]
+                  }
+                },
+                "required": [
+                  "projectId",
+                  "projectName",
+                  "widget"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "projectId": {
+                    "type": "string"
+                  },
+                  "projectName": {
+                    "type": "string"
+                  },
                   "certId": {
                     "type": "string"
                   },
@@ -215401,6 +215922,7 @@
                   "previous": {
                     "type": "string",
                     "enum": [
+                      "basic",
                       "elastic",
                       "enhanced",
                       "standard",
@@ -215410,6 +215932,7 @@
                   "next": {
                     "type": "string",
                     "enum": [
+                      "basic",
                       "elastic",
                       "enhanced",
                       "standard",
@@ -216232,6 +216755,26 @@
               },
               {
                 "properties": {
+                  "decision": {
+                    "type": "string",
+                    "enum": [
+                      "keep_on",
+                      "turn_off"
+                    ]
+                  },
+                  "version": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "decision",
+                  "version"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
                   "consent": {
                     "type": "string",
                     "enum": [
@@ -216595,6 +217138,53 @@
                 },
                 "required": [
                   "username"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "method": {
+                    "type": "string",
+                    "enum": [
+                      "email-otp",
+                      "recovery-code",
+                      "totp",
+                      "webauthn"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "method",
+                  "reason"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "add-passkey",
+                      "add-totp",
+                      "admin-remove",
+                      "disable",
+                      "enable",
+                      "regenerate-recovery-codes",
+                      "remove-passkey"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "action",
+                  "reason"
                 ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
@@ -217535,6 +218125,346 @@
               },
               {
                 "properties": {
+                  "policy": {
+                    "properties": {
+                      "policyId": {
+                        "type": "string"
+                      },
+                      "clientId": {
+                        "type": "string"
+                      },
+                      "issuerUrl": {
+                        "type": "string"
+                      },
+                      "teamId": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "nullable": true,
+                        "type": "string",
+                        "description": "Human-readable policy name, or `null` when unnamed."
+                      },
+                      "claims": {
+                        "items": {
+                          "properties": {
+                            "name": {
+                              "type": "string"
+                            },
+                            "values": {
+                              "items": {
+                                "properties": {
+                                  "value": {
+                                    "type": "string"
+                                  },
+                                  "wildcards": {
+                                    "type": "boolean",
+                                    "enum": [
+                                      false,
+                                      true
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "value",
+                                  "wildcards"
+                                ],
+                                "type": "object"
+                              },
+                              "type": "array"
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "values"
+                          ],
+                          "type": "object",
+                          "description": "Claim matchers an OIDC token must satisfy to use the policy."
+                        },
+                        "type": "array",
+                        "description": "Claim matchers an OIDC token must satisfy to use the policy."
+                      },
+                      "permissions": {
+                        "items": {
+                          "type": "string"
+                        },
+                        "type": "array",
+                        "description": "Permission boundary (`['*']` = the app's full declared permissions)."
+                      },
+                      "resources": {
+                        "nullable": true,
+                        "properties": {
+                          "projectIds": {
+                            "items": {
+                              "type": "string"
+                            },
+                            "type": "array"
+                          }
+                        },
+                        "required": [
+                          "projectIds"
+                        ],
+                        "type": "object",
+                        "description": "Resource boundary, or `null` when the policy has none."
+                      },
+                      "createdAt": {
+                        "type": "number",
+                        "description": "Creation time (epoch ms)."
+                      },
+                      "updatedAt": {
+                        "type": "number",
+                        "description": "Last-update time (epoch ms)."
+                      }
+                    },
+                    "required": [
+                      "claims",
+                      "clientId",
+                      "createdAt",
+                      "issuerUrl",
+                      "name",
+                      "permissions",
+                      "policyId",
+                      "resources",
+                      "teamId",
+                      "updatedAt"
+                    ],
+                    "type": "object",
+                    "description": "A full point-in-time snapshot of an OIDC exchange policy, captured on every lifecycle event so the audit trail records exactly what the policy looked like. Mirrors the management endpoints' public response shape."
+                  },
+                  "appName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "policy"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "before": {
+                    "properties": {
+                      "policyId": {
+                        "type": "string"
+                      },
+                      "clientId": {
+                        "type": "string"
+                      },
+                      "issuerUrl": {
+                        "type": "string"
+                      },
+                      "teamId": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "nullable": true,
+                        "type": "string",
+                        "description": "Human-readable policy name, or `null` when unnamed."
+                      },
+                      "claims": {
+                        "items": {
+                          "properties": {
+                            "name": {
+                              "type": "string"
+                            },
+                            "values": {
+                              "items": {
+                                "properties": {
+                                  "value": {
+                                    "type": "string"
+                                  },
+                                  "wildcards": {
+                                    "type": "boolean",
+                                    "enum": [
+                                      false,
+                                      true
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "value",
+                                  "wildcards"
+                                ],
+                                "type": "object"
+                              },
+                              "type": "array"
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "values"
+                          ],
+                          "type": "object",
+                          "description": "Claim matchers an OIDC token must satisfy to use the policy."
+                        },
+                        "type": "array",
+                        "description": "Claim matchers an OIDC token must satisfy to use the policy."
+                      },
+                      "permissions": {
+                        "items": {
+                          "type": "string"
+                        },
+                        "type": "array",
+                        "description": "Permission boundary (`['*']` = the app's full declared permissions)."
+                      },
+                      "resources": {
+                        "nullable": true,
+                        "properties": {
+                          "projectIds": {
+                            "items": {
+                              "type": "string"
+                            },
+                            "type": "array"
+                          }
+                        },
+                        "required": [
+                          "projectIds"
+                        ],
+                        "type": "object",
+                        "description": "Resource boundary, or `null` when the policy has none."
+                      },
+                      "createdAt": {
+                        "type": "number",
+                        "description": "Creation time (epoch ms)."
+                      },
+                      "updatedAt": {
+                        "type": "number",
+                        "description": "Last-update time (epoch ms)."
+                      }
+                    },
+                    "required": [
+                      "claims",
+                      "clientId",
+                      "createdAt",
+                      "issuerUrl",
+                      "name",
+                      "permissions",
+                      "policyId",
+                      "resources",
+                      "teamId",
+                      "updatedAt"
+                    ],
+                    "type": "object",
+                    "description": "A full point-in-time snapshot of an OIDC exchange policy, captured on every lifecycle event so the audit trail records exactly what the policy looked like. Mirrors the management endpoints' public response shape."
+                  },
+                  "after": {
+                    "properties": {
+                      "policyId": {
+                        "type": "string"
+                      },
+                      "clientId": {
+                        "type": "string"
+                      },
+                      "issuerUrl": {
+                        "type": "string"
+                      },
+                      "teamId": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "nullable": true,
+                        "type": "string",
+                        "description": "Human-readable policy name, or `null` when unnamed."
+                      },
+                      "claims": {
+                        "items": {
+                          "properties": {
+                            "name": {
+                              "type": "string"
+                            },
+                            "values": {
+                              "items": {
+                                "properties": {
+                                  "value": {
+                                    "type": "string"
+                                  },
+                                  "wildcards": {
+                                    "type": "boolean",
+                                    "enum": [
+                                      false,
+                                      true
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "value",
+                                  "wildcards"
+                                ],
+                                "type": "object"
+                              },
+                              "type": "array"
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "values"
+                          ],
+                          "type": "object",
+                          "description": "Claim matchers an OIDC token must satisfy to use the policy."
+                        },
+                        "type": "array",
+                        "description": "Claim matchers an OIDC token must satisfy to use the policy."
+                      },
+                      "permissions": {
+                        "items": {
+                          "type": "string"
+                        },
+                        "type": "array",
+                        "description": "Permission boundary (`['*']` = the app's full declared permissions)."
+                      },
+                      "resources": {
+                        "nullable": true,
+                        "properties": {
+                          "projectIds": {
+                            "items": {
+                              "type": "string"
+                            },
+                            "type": "array"
+                          }
+                        },
+                        "required": [
+                          "projectIds"
+                        ],
+                        "type": "object",
+                        "description": "Resource boundary, or `null` when the policy has none."
+                      },
+                      "createdAt": {
+                        "type": "number",
+                        "description": "Creation time (epoch ms)."
+                      },
+                      "updatedAt": {
+                        "type": "number",
+                        "description": "Last-update time (epoch ms)."
+                      }
+                    },
+                    "required": [
+                      "claims",
+                      "clientId",
+                      "createdAt",
+                      "issuerUrl",
+                      "name",
+                      "permissions",
+                      "policyId",
+                      "resources",
+                      "teamId",
+                      "updatedAt"
+                    ],
+                    "type": "object",
+                    "description": "A full point-in-time snapshot of an OIDC exchange policy, captured on every lifecycle event so the audit trail records exactly what the policy looked like. Mirrors the management endpoints' public response shape."
+                  },
+                  "appName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "after",
+                  "before"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
                   "tokenId": {
                     "type": "string",
                     "description": "The token's public ID."
@@ -217998,6 +218928,7 @@
               "ai-gateway-api-key-created",
               "ai-gateway-api-key-deleted",
               "ai-gateway-api-key-quota-updated",
+              "ai-gateway-budget-default-updated",
               "ai-gateway-byok-credential-created",
               "ai-gateway-byok-credential-deleted",
               "ai-gateway-byok-credential-updated",
@@ -218015,6 +218946,7 @@
               "ai-gateway-rule-created",
               "ai-gateway-rule-deleted",
               "ai-gateway-rule-updated",
+              "ai-gateway-scope-budget-updated",
               "ai-gateway-virtual-model-config-archived",
               "ai-gateway-virtual-model-config-created",
               "ai-gateway-virtual-model-config-restored",
@@ -218060,6 +218992,7 @@
               "cert-system-create",
               "code-owners-config-updated",
               "compliance-document-downloaded",
+              "compliance-documents-bulk-downloaded",
               "concurrent-builds-update",
               "connect-attach-project",
               "connect-bitbucket",
@@ -218251,6 +219184,10 @@
               "observability-enabled",
               "observability-plus-project-disabled",
               "observability-plus-project-enabled",
+              "oidc-policy-created",
+              "oidc-policy-deleted",
+              "oidc-policy-updated",
+              "oidc-policy-used-to-obtain-app-token",
               "organization-create",
               "organization-delete",
               "organization-slug-update",
@@ -218299,6 +219236,7 @@
               "project-build-command-updated",
               "project-build-logs-and-source-protection-updated",
               "project-build-machine-updated",
+              "project-card-widget-preference-updated",
               "project-client-cert-delete",
               "project-client-cert-upload",
               "project-connect-configurations",
@@ -218458,6 +219396,7 @@
               "subscription-product-removed",
               "subscription-updated",
               "team",
+              "team-agent-billing-migration-decision-changed",
               "team-avatar-update",
               "team-collaboration-settings-updated",
               "team-default-build-machine-updated",
@@ -218510,7 +219449,9 @@
               "user-emu-account-archived",
               "user-emu-account-deleted",
               "user-emu-account-recovered",
+              "user-mfa-challenge-failed",
               "user-mfa-challenge-verified",
+              "user-mfa-change-failed",
               "user-mfa-configuration-updated",
               "user-mfa-recovery-codes-regenerated",
               "user-mfa-removed",
@@ -218629,6 +219570,7 @@
                 "ai-gateway-api-key-created",
                 "ai-gateway-api-key-deleted",
                 "ai-gateway-api-key-quota-updated",
+                "ai-gateway-budget-default-updated",
                 "ai-gateway-byok-credential-created",
                 "ai-gateway-byok-credential-deleted",
                 "ai-gateway-byok-credential-updated",
@@ -218646,6 +219588,7 @@
                 "ai-gateway-rule-created",
                 "ai-gateway-rule-deleted",
                 "ai-gateway-rule-updated",
+                "ai-gateway-scope-budget-updated",
                 "ai-gateway-virtual-model-config-archived",
                 "ai-gateway-virtual-model-config-created",
                 "ai-gateway-virtual-model-config-restored",
@@ -218691,6 +219634,7 @@
                 "cert-system-create",
                 "code-owners-config-updated",
                 "compliance-document-downloaded",
+                "compliance-documents-bulk-downloaded",
                 "concurrent-builds-update",
                 "connect-attach-project",
                 "connect-bitbucket",
@@ -218882,6 +219826,10 @@
                 "observability-enabled",
                 "observability-plus-project-disabled",
                 "observability-plus-project-enabled",
+                "oidc-policy-created",
+                "oidc-policy-deleted",
+                "oidc-policy-updated",
+                "oidc-policy-used-to-obtain-app-token",
                 "organization-create",
                 "organization-delete",
                 "organization-slug-update",
@@ -218930,6 +219878,7 @@
                 "project-build-command-updated",
                 "project-build-logs-and-source-protection-updated",
                 "project-build-machine-updated",
+                "project-card-widget-preference-updated",
                 "project-client-cert-delete",
                 "project-client-cert-upload",
                 "project-connect-configurations",
@@ -219089,6 +220038,7 @@
                 "subscription-product-removed",
                 "subscription-updated",
                 "team",
+                "team-agent-billing-migration-decision-changed",
                 "team-avatar-update",
                 "team-collaboration-settings-updated",
                 "team-default-build-machine-updated",
@@ -219141,7 +220091,9 @@
                 "user-emu-account-archived",
                 "user-emu-account-deleted",
                 "user-emu-account-recovered",
+                "user-mfa-challenge-failed",
                 "user-mfa-challenge-verified",
+                "user-mfa-change-failed",
                 "user-mfa-configuration-updated",
                 "user-mfa-recovery-codes-regenerated",
                 "user-mfa-removed",
@@ -221927,6 +222879,7 @@
                   "default": {
                     "type": "string",
                     "enum": [
+                      "basic",
                       "elastic",
                       "enhanced",
                       "standard",
@@ -223315,6 +224268,7 @@
                   "ENTERPRISE_UNPAID_INVOICE",
                   "EXPOSURE_CAP_EXCEEDED",
                   "FAIR_USE_LIMITS_EXCEEDED",
+                  "HOBBY_ALLOCATION_PAUSED",
                   "SUBSCRIPTION_CANCELED",
                   "SUBSCRIPTION_EXPIRED",
                   "UNPAID_INVOICE"
@@ -223363,6 +224317,93 @@
                   "wafRateLimitRequest",
                   "webAnalyticsEvent"
                 ]
+              },
+              "hobbyAllocationPause": {
+                "properties": {
+                  "pausedUntil": {
+                    "type": "number",
+                    "description": "Unix ms timestamp at which the pause is eligible to end. This is the single source of truth for when the pause ends. Never re-derive it by re-checking usage — usage keeps moving while a team is paused, and the pause duration is a fixed experiment parameter."
+                  },
+                  "pausedAt": {
+                    "type": "number",
+                    "description": "Unix ms timestamp of when the pause was applied."
+                  },
+                  "triggers": {
+                    "items": {
+                      "properties": {
+                        "allocation": {
+                          "type": "string",
+                          "enum": [
+                            "analyticsUsage",
+                            "artifacts",
+                            "bandwidth",
+                            "blobDataTransfer",
+                            "blobTotalAdvancedRequests",
+                            "blobTotalAvgSizeInBytes",
+                            "blobTotalGetResponseObjectSizeInBytes",
+                            "blobTotalSimpleRequests",
+                            "connectDataTransfer",
+                            "dataCacheRead",
+                            "dataCacheWrite",
+                            "edgeConfigRead",
+                            "edgeConfigWrite",
+                            "edgeFunctionExecutionUnits",
+                            "edgeMiddlewareInvocations",
+                            "edgeRequest",
+                            "edgeRequestAdditionalCpuDuration",
+                            "elasticConcurrencyBuildSlots",
+                            "fastDataTransfer",
+                            "fastOriginTransfer",
+                            "fluidCpuDuration",
+                            "fluidDuration",
+                            "functionDuration",
+                            "functionInvocation",
+                            "imageOptimizationCacheRead",
+                            "imageOptimizationCacheWrite",
+                            "imageOptimizationTransformation",
+                            "logDrainsVolume",
+                            "monitoringMetric",
+                            "observabilityEvent",
+                            "onDemandConcurrencyMinutes",
+                            "runtimeCacheRead",
+                            "runtimeCacheWrite",
+                            "serverlessFunctionExecution",
+                            "sourceImages",
+                            "wafOwaspExcessBytes",
+                            "wafOwaspRequests",
+                            "wafRateLimitRequest",
+                            "webAnalyticsEvent"
+                          ],
+                          "description": "Metered allocation whose included amount was fully consumed."
+                        },
+                        "usage": {
+                          "type": "number",
+                          "description": "Usage recorded for that allocation when the pause was applied."
+                        }
+                      },
+                      "required": [
+                        "allocation",
+                        "usage"
+                      ],
+                      "type": "object",
+                      "description": "Allocations that were at or over 100% when the pause was applied."
+                    },
+                    "type": "array",
+                    "description": "Allocations that were at or over 100% when the pause was applied."
+                  },
+                  "cohort": {
+                    "type": "string",
+                    "description": "Experiment cohort the owner was assigned to when the pause fired. Free-form so cohort naming stays owned by the assignment path."
+                  }
+                },
+                "required": [
+                  "cohort",
+                  "pausedAt",
+                  "pausedUntil",
+                  "triggers"
+                ],
+                "type": "object",
+                "description": "Present only when `reason` is `HOBBY_ALLOCATION_PAUSED`. Makes the pause self-describing for support without a separate lookup."
               }
             },
             "required": [

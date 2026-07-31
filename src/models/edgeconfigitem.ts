@@ -13,7 +13,7 @@ import {
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
- * The EdgeConfig.
+ * The Global Config.
  */
 export type EdgeConfigItem = {
   key: string;

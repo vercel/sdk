@@ -3,9 +3,13 @@
  */
 
 import { securityAddBypassIp } from "../funcs/securityAddBypassIp.js";
+import { securityCreateSecurityFirewallConfigByConfigVersionActivate } from "../funcs/securityCreateSecurityFirewallConfigByConfigVersionActivate.js";
+import { securityDeleteSecurityFirewallConfigByConfigVersion } from "../funcs/securityDeleteSecurityFirewallConfigByConfigVersion.js";
+import { securityGenerateFirewallRule } from "../funcs/securityGenerateFirewallRule.js";
 import { securityGetActiveAttackStatus } from "../funcs/securityGetActiveAttackStatus.js";
 import { securityGetBypassIp } from "../funcs/securityGetBypassIp.js";
 import { securityGetFirewallConfig } from "../funcs/securityGetFirewallConfig.js";
+import { securityGetSecurityFirewallConfig } from "../funcs/securityGetSecurityFirewallConfig.js";
 import { securityGetSecurityFirewallEvents } from "../funcs/securityGetSecurityFirewallEvents.js";
 import { securityPutFirewallConfig } from "../funcs/securityPutFirewallConfig.js";
 import { securityRemoveBypassIp } from "../funcs/securityRemoveBypassIp.js";
@@ -16,6 +20,18 @@ import {
   AddBypassIpRequest,
   AddBypassIpResponseBody,
 } from "../models/addbypassipop.js";
+import {
+  CreateSecurityFirewallConfigByConfigVersionActivateRequest,
+  CreateSecurityFirewallConfigByConfigVersionActivateResponseBody,
+} from "../models/createsecurityfirewallconfigbyconfigversionactivateop.js";
+import {
+  DeleteSecurityFirewallConfigByConfigVersionRequest,
+  DeleteSecurityFirewallConfigByConfigVersionResponseBody,
+} from "../models/deletesecurityfirewallconfigbyconfigversionop.js";
+import {
+  GenerateFirewallRuleRequest,
+  GenerateFirewallRuleResponseBody,
+} from "../models/generatefirewallruleop.js";
 import {
   GetActiveAttackStatusRequest,
   GetActiveAttackStatusResponseBody,
@@ -28,6 +44,7 @@ import {
   GetFirewallConfigRequest,
   GetFirewallConfigResponseBody,
 } from "../models/getfirewallconfigop.js";
+import { GetSecurityFirewallConfigResponseBody } from "../models/getsecurityfirewallconfigresponsebody.js";
 import {
   GetSecurityFirewallEventsRequest,
   GetSecurityFirewallEventsResponseBody,
@@ -64,6 +81,21 @@ export class Security extends ClientSDK {
     return unwrapAsync(securityUpdateAttackChallengeMode(
       this,
       request,
+      options,
+    ));
+  }
+
+  /**
+   * Returns activated WAF config
+   *
+   * @remarks
+   * Lists WAF configs for a project
+   */
+  async getSecurityFirewallConfig(
+    options?: RequestOptions,
+  ): Promise<GetSecurityFirewallConfigResponseBody> {
+    return unwrapAsync(securityGetSecurityFirewallConfig(
+      this,
       options,
     ));
   }
@@ -117,6 +149,42 @@ export class Security extends ClientSDK {
       request,
       options,
     ));
+  }
+
+  /**
+   * Returns activated WAF config
+   *
+   * @remarks
+   * Promotes a draft WAF config to an active config
+   */
+  async deleteSecurityFirewallConfigByConfigVersion(
+    request: DeleteSecurityFirewallConfigByConfigVersionRequest,
+    options?: RequestOptions,
+  ): Promise<DeleteSecurityFirewallConfigByConfigVersionResponseBody> {
+    return unwrapAsync(securityDeleteSecurityFirewallConfigByConfigVersion(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Returns activated WAF config
+   *
+   * @remarks
+   * Promotes a draft WAF config to an active config
+   */
+  async createSecurityFirewallConfigByConfigVersionActivate(
+    request: CreateSecurityFirewallConfigByConfigVersionActivateRequest,
+    options?: RequestOptions,
+  ): Promise<CreateSecurityFirewallConfigByConfigVersionActivateResponseBody> {
+    return unwrapAsync(
+      securityCreateSecurityFirewallConfigByConfigVersionActivate(
+        this,
+        request,
+        options,
+      ),
+    );
   }
 
   /**
@@ -198,6 +266,23 @@ export class Security extends ClientSDK {
     options?: RequestOptions,
   ): Promise<GetSecurityFirewallEventsResponseBody> {
     return unwrapAsync(securityGetSecurityFirewallEvents(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Generate a firewall rule from natural language
+   *
+   * @remarks
+   * Generate a firewall rule from a natural language description.
+   */
+  async generateFirewallRule(
+    request: GenerateFirewallRuleRequest,
+    options?: RequestOptions,
+  ): Promise<GenerateFirewallRuleResponseBody> {
+    return unwrapAsync(securityGenerateFirewallRule(
       this,
       request,
       options,

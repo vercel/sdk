@@ -5,11 +5,11 @@
 ```typescript
 import { GetProjectProjectsBuildMachineType } from "@vercel/sdk/models/getprojectstaticips.js";
 
-let value: GetProjectProjectsBuildMachineType = "enhanced";
+let value: GetProjectProjectsBuildMachineType = "basic";
 ```
 
 ## Values
 
 ```typescript
-"enhanced" | "standard" | "turbo"
+"basic" | "enhanced" | "standard" | "turbo"
 ```

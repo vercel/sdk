@@ -10,7 +10,7 @@ import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GenerateFirewallRuleRequest = {
-  projectId: string;
+  projectId?: string | undefined;
   /**
    * The Team identifier to perform the request on behalf of.
    */
@@ -74,7 +74,7 @@ export type GenerateFirewallRuleResponseBody = {
 
 /** @internal */
 export type GenerateFirewallRuleRequest$Outbound = {
-  projectId: string;
+  projectId?: string | undefined;
   teamId?: string | undefined;
   slug?: string | undefined;
 };
@@ -85,7 +85,7 @@ export const GenerateFirewallRuleRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GenerateFirewallRuleRequest
 > = z.object({
-  projectId: z.string(),
+  projectId: z.string().optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });

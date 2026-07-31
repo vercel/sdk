@@ -23,7 +23,7 @@ export type PatchEdgeConfigSchemaRequest = {
    * The Team slug to perform the request on behalf of.
    */
   slug?: string | undefined;
-  requestBody: PatchEdgeConfigSchemaRequestBody;
+  requestBody?: PatchEdgeConfigSchemaRequestBody | undefined;
 };
 
 /**
@@ -61,7 +61,7 @@ export type PatchEdgeConfigSchemaRequest$Outbound = {
   dryRun?: string | undefined;
   teamId?: string | undefined;
   slug?: string | undefined;
-  RequestBody: PatchEdgeConfigSchemaRequestBody$Outbound;
+  RequestBody?: PatchEdgeConfigSchemaRequestBody$Outbound | undefined;
 };
 
 /** @internal */
@@ -74,7 +74,8 @@ export const PatchEdgeConfigSchemaRequest$outboundSchema: z.ZodType<
   dryRun: z.string().optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
-  requestBody: z.lazy(() => PatchEdgeConfigSchemaRequestBody$outboundSchema),
+  requestBody: z.lazy(() => PatchEdgeConfigSchemaRequestBody$outboundSchema)
+    .optional(),
 }).transform((v) => {
   return remap$(v, {
     requestBody: "RequestBody",

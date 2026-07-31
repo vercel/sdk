@@ -11,5 +11,5 @@ let value: GetProjectBuildMachineType = "standard";
 ## Values
 
 ```typescript
-"enhanced" | "standard" | "turbo"
+"basic" | "enhanced" | "standard" | "turbo"
 ```

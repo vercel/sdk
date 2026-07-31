@@ -12,7 +12,7 @@ let value: GetAuthUserResponseBody = {
     createdAt: 1630748523395,
     softBlock: {
       blockedAt: 3863.42,
-      reason: "EXPOSURE_CAP_EXCEEDED",
+      reason: "FAIR_USE_LIMITS_EXCEEDED",
     },
     billing: {},
     resourceConfig: {},

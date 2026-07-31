@@ -288,6 +288,8 @@ export type AggregateEventsData2 = {
   gatewayCostCurrency: string;
   keyId: string;
   keyName: string;
+  authMethod: string;
+  appName: string;
   isByok: string;
   isPrivateModel: string;
   isRequestZdr: string;
@@ -348,6 +350,9 @@ export type AggregateEventsData2 = {
   contentCaptureStatus: string;
   contentCaptureInputs: string;
   contentCaptureOutputs: string;
+  transcriptStatus: string;
+  transcriptInputs: string;
+  transcriptOutputs: string;
   providerAttemptError: string;
   providerAttemptSafetyIdentifier: string;
   providerAttemptDevSafetyIdentifier: string;
@@ -503,6 +508,8 @@ export type AggregateEventsData1 = {
   gatewayCostCurrency?: string | undefined;
   keyId?: string | undefined;
   keyName?: string | undefined;
+  authMethod?: string | undefined;
+  appName?: string | undefined;
   isByok?: string | undefined;
   isPrivateModel?: string | undefined;
   isRequestZdr?: string | undefined;
@@ -563,6 +570,9 @@ export type AggregateEventsData1 = {
   contentCaptureStatus?: string | undefined;
   contentCaptureInputs?: string | undefined;
   contentCaptureOutputs?: string | undefined;
+  transcriptStatus?: string | undefined;
+  transcriptInputs?: string | undefined;
+  transcriptOutputs?: string | undefined;
   providerAttemptError?: string | undefined;
   providerAttemptSafetyIdentifier?: string | undefined;
   providerAttemptDevSafetyIdentifier?: string | undefined;
@@ -870,6 +880,8 @@ export const AggregateEventsData2$inboundSchema: z.ZodType<
     gatewayCostCurrency: types.string(),
     keyId: types.string(),
     keyName: types.string(),
+    authMethod: types.string(),
+    appName: types.string(),
     isByok: types.string(),
     isPrivateModel: types.string(),
     isRequestZdr: types.string(),
@@ -930,6 +942,9 @@ export const AggregateEventsData2$inboundSchema: z.ZodType<
     contentCaptureStatus: types.string(),
     contentCaptureInputs: types.string(),
     contentCaptureOutputs: types.string(),
+    transcriptStatus: types.string(),
+    transcriptInputs: types.string(),
+    transcriptOutputs: types.string(),
     providerAttemptError: types.string(),
     providerAttemptSafetyIdentifier: types.string(),
     providerAttemptDevSafetyIdentifier: types.string(),
@@ -1102,6 +1117,8 @@ export const AggregateEventsData1$inboundSchema: z.ZodType<
   gatewayCostCurrency: types.optional(types.string()),
   keyId: types.optional(types.string()),
   keyName: types.optional(types.string()),
+  authMethod: types.optional(types.string()),
+  appName: types.optional(types.string()),
   isByok: types.optional(types.string()),
   isPrivateModel: types.optional(types.string()),
   isRequestZdr: types.optional(types.string()),
@@ -1162,6 +1179,9 @@ export const AggregateEventsData1$inboundSchema: z.ZodType<
   contentCaptureStatus: types.optional(types.string()),
   contentCaptureInputs: types.optional(types.string()),
   contentCaptureOutputs: types.optional(types.string()),
+  transcriptStatus: types.optional(types.string()),
+  transcriptInputs: types.optional(types.string()),
+  transcriptOutputs: types.optional(types.string()),
   providerAttemptError: types.optional(types.string()),
   providerAttemptSafetyIdentifier: types.optional(types.string()),
   providerAttemptDevSafetyIdentifier: types.optional(types.string()),

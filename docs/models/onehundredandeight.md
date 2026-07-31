@@ -5,11 +5,11 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndEight } from "@vercel/sdk/models/commitverification.js";
+import { OneHundredAndEight } from "@vercel/sdk/models/usereventjobpayload965provider.js";
 
 let value: OneHundredAndEight = {
-  domainId: "<id>",
   name: "<value>",
+  cdnEnabled: true,
 };
 ```
 
@@ -17,5 +17,5 @@ let value: OneHundredAndEight = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `domainId`         | *string*           | :heavy_check_mark: | N/A                |
 | `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `cdnEnabled`       | *boolean*          | :heavy_check_mark: | N/A                |

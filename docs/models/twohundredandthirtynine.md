@@ -5,15 +5,16 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndThirtyNine } from "@vercel/sdk/models/twohundredandthirteen.js";
+import { TwoHundredAndThirtyNine } from "@vercel/sdk/models/aws.js";
 
 let value: TwoHundredAndThirtyNine = {
   projectId: "<id>",
   projectName: "<value>",
+  previous: {
+    functionDefaultRegions: [],
+  },
   next: {
-    gitProvider: "bitbucket",
-    gitRepoId: "<id>",
-    gitRepositoryName: "<value>",
+    functionDefaultRegions: [],
   },
 };
 ```
@@ -24,5 +25,5 @@ let value: TwoHundredAndThirtyNine = {
 | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
 | `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
 | `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload239Previous](../models/usereventpayload239previous.md) | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload239Previous](../models/usereventpayload239previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
 | `next`                                                                         | [models.UserEventPayload239Next](../models/usereventpayload239next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |

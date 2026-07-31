@@ -5,10 +5,13 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FiftyFive } from "@vercel/sdk/models/accessgroup.js";
+import { FiftyFive } from "@vercel/sdk/models/usereventpayload41action.js";
 
 let value: FiftyFive = {
-  paymentMethodId: "<id>",
+  invoiceId: "<id>",
+  amount: 2677.96,
+  refundReason: "<value>",
+  lineItemCount: 136.83,
 };
 ```
 
@@ -16,6 +19,7 @@ let value: FiftyFive = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `paymentMethodId`  | *string*           | :heavy_check_mark: | N/A                |
-| `brand`            | *string*           | :heavy_minus_sign: | N/A                |
-| `last4`            | *string*           | :heavy_minus_sign: | N/A                |
+| `invoiceId`        | *string*           | :heavy_check_mark: | N/A                |
+| `amount`           | *number*           | :heavy_check_mark: | N/A                |
+| `refundReason`     | *string*           | :heavy_check_mark: | N/A                |
+| `lineItemCount`    | *number*           | :heavy_check_mark: | N/A                |

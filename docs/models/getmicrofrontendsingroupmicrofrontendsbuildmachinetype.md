@@ -5,11 +5,11 @@
 ```typescript
 import { GetMicrofrontendsInGroupMicrofrontendsBuildMachineType } from "@vercel/sdk/models/getmicrofrontendsingroupcve55182migrationappliedfrom.js";
 
-let value: GetMicrofrontendsInGroupMicrofrontendsBuildMachineType = "turbo";
+let value: GetMicrofrontendsInGroupMicrofrontendsBuildMachineType = "standard";
 ```
 
 ## Values
 
 ```typescript
-"enhanced" | "standard" | "turbo"
+"basic" | "enhanced" | "standard" | "turbo"
 ```

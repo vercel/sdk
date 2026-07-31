@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetSecurityFirewallConfigLogHeaders2 } from "@vercel/sdk/models/getsecurityfirewallconfigapisecurityaction.js";
+import { GetSecurityFirewallConfigLogHeaders2 } from "@vercel/sdk/models/getsecurityfirewallconfigsecurityaction.js";
 
 let value: GetSecurityFirewallConfigLogHeaders2 = "*";
 ```

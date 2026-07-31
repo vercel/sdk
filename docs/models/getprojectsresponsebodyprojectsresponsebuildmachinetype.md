@@ -5,11 +5,11 @@
 ```typescript
 import { GetProjectsResponseBodyProjectsResponseBuildMachineType } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponsebuildqueue.js";
 
-let value: GetProjectsResponseBodyProjectsResponseBuildMachineType = "enhanced";
+let value: GetProjectsResponseBodyProjectsResponseBuildMachineType = "basic";
 ```
 
 ## Values
 
 ```typescript
-"enhanced" | "standard" | "turbo"
+"basic" | "enhanced" | "standard" | "turbo"
 ```

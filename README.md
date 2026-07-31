@@ -190,6 +190,13 @@ run();
 * [updateAccessGroupProject](docs/sdks/accessgroups/README.md#updateaccessgroupproject) - Update an access group project
 * [deleteAccessGroupProject](docs/sdks/accessgroups/README.md#deleteaccessgroupproject) - Delete an access group project
 
+### [AiGateway](docs/sdks/aigateway/README.md)
+
+* [createAiGatewayRule](docs/sdks/aigateway/README.md#createaigatewayrule) - Create rule
+* [listAiGatewayRules](docs/sdks/aigateway/README.md#listaigatewayrules) - List rules
+* [updateAiGatewayRule](docs/sdks/aigateway/README.md#updateaigatewayrule) - Update rule
+* [deleteAiGatewayRule](docs/sdks/aigateway/README.md#deleteaigatewayrule) - Delete rule
+
 ### [Aliases](docs/sdks/aliases/README.md)
 
 * [listDeploymentAliases](docs/sdks/aliases/README.md#listdeploymentaliases) - List Deployment Aliases
@@ -198,24 +205,6 @@ run();
 * [getAlias](docs/sdks/aliases/README.md#getalias) - Get an Alias
 * [deleteAlias](docs/sdks/aliases/README.md#deletealias) - Delete an Alias
 * [patchUrlProtectionBypass](docs/sdks/aliases/README.md#patchurlprotectionbypass) - Update the protection bypass for a URL
-
-### [ApiAiGateway](docs/sdks/apiaigateway/README.md)
-
-* [createAiGatewayRule](docs/sdks/apiaigateway/README.md#createaigatewayrule) - Create rule
-* [listAiGatewayRules](docs/sdks/apiaigateway/README.md#listaigatewayrules) - List rules
-* [updateAiGatewayRule](docs/sdks/apiaigateway/README.md#updateaigatewayrule) - Update rule
-* [deleteAiGatewayRule](docs/sdks/apiaigateway/README.md#deleteaigatewayrule) - Delete rule
-
-### [ApiObservability](docs/sdks/apiobservability/README.md)
-
-* [getObservabilityConfigurationProjects](docs/sdks/apiobservability/README.md#getobservabilityconfigurationprojects) - Lists disabled Observability Plus projects
-* [updateObservabilityConfigurationProject](docs/sdks/apiobservability/README.md#updateobservabilityconfigurationproject) - Updates a disabled Observability Plus project setting
-
-### [ApiSecurity](docs/sdks/apisecurity/README.md)
-
-* [getSecurityFirewallConfig](docs/sdks/apisecurity/README.md#getsecurityfirewallconfig) - Returns activated WAF config
-* [deleteSecurityFirewallConfigByConfigVersion](docs/sdks/apisecurity/README.md#deletesecurityfirewallconfigbyconfigversion) - Returns activated WAF config
-* [createSecurityFirewallConfigByConfigVersionActivate](docs/sdks/apisecurity/README.md#createsecurityfirewallconfigbyconfigversionactivate) - Returns activated WAF config
 
 ### [Artifacts](docs/sdks/artifacts/README.md)
 
@@ -352,27 +341,6 @@ run();
 * [invalidateBySrcImages](docs/sdks/edgecache/README.md#invalidatebysrcimages) - Invalidate by source image
 * [dangerouslyDeleteBySrcImages](docs/sdks/edgecache/README.md#dangerouslydeletebysrcimages) - Dangerously delete by source image
 
-### [EdgeConfig](docs/sdks/edgeconfig/README.md)
-
-* [getEdgeConfigs](docs/sdks/edgeconfig/README.md#getedgeconfigs) - Get Edge Configs
-* [createEdgeConfig](docs/sdks/edgeconfig/README.md#createedgeconfig) - Create an Edge Config
-* [getEdgeConfig](docs/sdks/edgeconfig/README.md#getedgeconfig) - Get an Edge Config
-* [updateEdgeConfig](docs/sdks/edgeconfig/README.md#updateedgeconfig) - Update an Edge Config
-* [deleteEdgeConfig](docs/sdks/edgeconfig/README.md#deleteedgeconfig) - Delete an Edge Config
-* [getEdgeConfigItems](docs/sdks/edgeconfig/README.md#getedgeconfigitems) - Get Edge Config items
-* [patchEdgeConfigItems](docs/sdks/edgeconfig/README.md#patchedgeconfigitems) - Update Edge Config items in batch
-* [getEdgeConfigSchema](docs/sdks/edgeconfig/README.md#getedgeconfigschema) - Get Edge Config schema
-* [patchEdgeConfigSchema](docs/sdks/edgeconfig/README.md#patchedgeconfigschema) - Update Edge Config schema
-* [deleteEdgeConfigSchema](docs/sdks/edgeconfig/README.md#deleteedgeconfigschema) - Delete an Edge Config's schema
-* [getEdgeConfigItem](docs/sdks/edgeconfig/README.md#getedgeconfigitem) - Get an Edge Config item
-* [getEdgeConfigTokens](docs/sdks/edgeconfig/README.md#getedgeconfigtokens) - Get all tokens of an Edge Config
-* [deleteEdgeConfigTokens](docs/sdks/edgeconfig/README.md#deleteedgeconfigtokens) - Delete one or more Edge Config tokens
-* [getEdgeConfigToken](docs/sdks/edgeconfig/README.md#getedgeconfigtoken) - Get Edge Config token meta data
-* [createEdgeConfigToken](docs/sdks/edgeconfig/README.md#createedgeconfigtoken) - Create an Edge Config token
-* [getEdgeConfigBackup](docs/sdks/edgeconfig/README.md#getedgeconfigbackup) - Get Edge Config backup
-* [restoreEdgeConfigBackup](docs/sdks/edgeconfig/README.md#restoreedgeconfigbackup) - Restore Edge Config backup
-* [getEdgeConfigBackups](docs/sdks/edgeconfig/README.md#getedgeconfigbackups) - Get Edge Config backups
-
 ### [Environment](docs/sdks/environment/README.md)
 
 * [createSharedEnvVariable](docs/sdks/environment/README.md#createsharedenvvariable) - Create one or more shared environment variables
@@ -411,9 +379,25 @@ run();
 * [createSDKKey](docs/sdks/featureflags/README.md#createsdkkey) - Create an SDK key
 * [deleteSDKKey](docs/sdks/featureflags/README.md#deletesdkkey) - Delete an SDK key
 
-### [Firewall](docs/sdks/firewall/README.md)
+### [GlobalConfig](docs/sdks/globalconfig/README.md)
 
-* [generateFirewallRule](docs/sdks/firewall/README.md#generatefirewallrule) - Generate a firewall rule from natural language
+* [getEdgeConfigs](docs/sdks/globalconfig/README.md#getedgeconfigs) - Get Global Configs
+* [createEdgeConfig](docs/sdks/globalconfig/README.md#createedgeconfig) - Create a Global Config
+* [getEdgeConfig](docs/sdks/globalconfig/README.md#getedgeconfig) - Get a Global Config
+* [updateEdgeConfig](docs/sdks/globalconfig/README.md#updateedgeconfig) - Update a Global Config
+* [deleteEdgeConfig](docs/sdks/globalconfig/README.md#deleteedgeconfig) - Delete a Global Config
+* [getEdgeConfigItems](docs/sdks/globalconfig/README.md#getedgeconfigitems) - Get Global Config items
+* [getEdgeConfigSchema](docs/sdks/globalconfig/README.md#getedgeconfigschema) - Get Global Config schema
+* [patchEdgeConfigSchema](docs/sdks/globalconfig/README.md#patchedgeconfigschema) - Update Global Config schema
+* [deleteEdgeConfigSchema](docs/sdks/globalconfig/README.md#deleteedgeconfigschema) - Delete a Global Config's schema
+* [getEdgeConfigItem](docs/sdks/globalconfig/README.md#getedgeconfigitem) - Get a Global Config item
+* [getEdgeConfigTokens](docs/sdks/globalconfig/README.md#getedgeconfigtokens) - Get all tokens of a Global Config
+* [deleteEdgeConfigTokens](docs/sdks/globalconfig/README.md#deleteedgeconfigtokens) - Delete one or more Global Config tokens
+* [getEdgeConfigToken](docs/sdks/globalconfig/README.md#getedgeconfigtoken) - Get Global Config token meta data
+* [createEdgeConfigToken](docs/sdks/globalconfig/README.md#createedgeconfigtoken) - Create a Global Config token
+* [getEdgeConfigBackup](docs/sdks/globalconfig/README.md#getedgeconfigbackup) - Get Global Config backup
+* [restoreEdgeConfigBackup](docs/sdks/globalconfig/README.md#restoreedgeconfigbackup) - Restore Global Config backup
+* [getEdgeConfigBackups](docs/sdks/globalconfig/README.md#getedgeconfigbackups) - Get Global Config backups
 
 ### [Integrations](docs/sdks/integrations/README.md)
 
@@ -465,9 +449,9 @@ run();
 * [createInstallationIntegrationConfiguration](docs/sdks/marketplace/README.md#createinstallationintegrationconfiguration) - Create one or multiple experimentation items
 * [updateInstallationIntegrationConfiguration](docs/sdks/marketplace/README.md#updateinstallationintegrationconfiguration) - Patch an existing experimentation item
 * [deleteInstallationIntegrationConfiguration](docs/sdks/marketplace/README.md#deleteinstallationintegrationconfiguration) - Delete an existing experimentation item
-* [createInstallationIntegrationEdgeConfig](docs/sdks/marketplace/README.md#createinstallationintegrationedgeconfig) - Get the data of a user-provided Edge Config
-* [getInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfig](docs/sdks/marketplace/README.md#getinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationedgeconfig) - Get the data of a user-provided Edge Config
-* [updateInstallationIntegrationEdgeConfig](docs/sdks/marketplace/README.md#updateinstallationintegrationedgeconfig) - Push data into a user-provided Edge Config
+* [headInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig](docs/sdks/marketplace/README.md#headinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationglobalconfig) - Get the data of a user-provided Global Config
+* [getInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig](docs/sdks/marketplace/README.md#getinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationglobalconfig) - Get the data of a user-provided Global Config
+* [replaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig](docs/sdks/marketplace/README.md#replaceinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationglobalconfig) - Push data into a user-provided Global Config
 
 ### [Microfrontends](docs/sdks/microfrontends/README.md)
 
@@ -485,6 +469,11 @@ run();
 * [updateNetwork](docs/sdks/networking/README.md#updatenetwork) - Update a Secure Compute network
 * [readNetwork](docs/sdks/networking/README.md#readnetwork) - Read a Secure Compute network
 * [updateStaticIps](docs/sdks/networking/README.md#updatestaticips) - Configures Static IPs for a project
+
+### [Observability](docs/sdks/observability/README.md)
+
+* [getObservabilityConfigurationProjects](docs/sdks/observability/README.md#getobservabilityconfigurationprojects) - Lists disabled Observability Plus projects
+* [updateObservabilityConfigurationProject](docs/sdks/observability/README.md#updateobservabilityconfigurationproject) - Updates a disabled Observability Plus project setting
 
 ### [ProjectRoutes](docs/sdks/projectroutes/README.md)
 
@@ -576,14 +565,18 @@ run();
 ### [Security](docs/sdks/security/README.md)
 
 * [updateAttackChallengeMode](docs/sdks/security/README.md#updateattackchallengemode) - Update Attack Challenge mode
+* [getSecurityFirewallConfig](docs/sdks/security/README.md#getsecurityfirewallconfig) - Returns activated WAF config
 * [putFirewallConfig](docs/sdks/security/README.md#putfirewallconfig) - Put Firewall Configuration
 * [updateFirewallConfig](docs/sdks/security/README.md#updatefirewallconfig) - Update Firewall Configuration
 * [getFirewallConfig](docs/sdks/security/README.md#getfirewallconfig) - Read Firewall Configuration
+* [deleteSecurityFirewallConfigByConfigVersion](docs/sdks/security/README.md#deletesecurityfirewallconfigbyconfigversion) - Returns activated WAF config
+* [createSecurityFirewallConfigByConfigVersionActivate](docs/sdks/security/README.md#createsecurityfirewallconfigbyconfigversionactivate) - Returns activated WAF config
 * [getActiveAttackStatus](docs/sdks/security/README.md#getactiveattackstatus) - Read active attack data
 * [getBypassIp](docs/sdks/security/README.md#getbypassip) - Read System Bypass
 * [addBypassIp](docs/sdks/security/README.md#addbypassip) - Create System Bypass Rule
 * [removeBypassIp](docs/sdks/security/README.md#removebypassip) - Remove System Bypass Rule
 * [getSecurityFirewallEvents](docs/sdks/security/README.md#getsecurityfirewallevents) - Read Firewall Actions by Project
+* [generateFirewallRule](docs/sdks/security/README.md#generatefirewallrule) - Generate a firewall rule from natural language
 
 ### [StaticIps](docs/sdks/staticips/README.md)
 
@@ -670,21 +663,16 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`accessGroupsReadAccessGroupProject`](docs/sdks/accessgroups/README.md#readaccessgroupproject) - Reads an access group project
 - [`accessGroupsUpdateAccessGroup`](docs/sdks/accessgroups/README.md#updateaccessgroup) - Update an access group
 - [`accessGroupsUpdateAccessGroupProject`](docs/sdks/accessgroups/README.md#updateaccessgroupproject) - Update an access group project
+- [`aiGatewayCreateAiGatewayRule`](docs/sdks/aigateway/README.md#createaigatewayrule) - Create rule
+- [`aiGatewayDeleteAiGatewayRule`](docs/sdks/aigateway/README.md#deleteaigatewayrule) - Delete rule
+- [`aiGatewayListAiGatewayRules`](docs/sdks/aigateway/README.md#listaigatewayrules) - List rules
+- [`aiGatewayUpdateAiGatewayRule`](docs/sdks/aigateway/README.md#updateaigatewayrule) - Update rule
 - [`aliasesAssignAlias`](docs/sdks/aliases/README.md#assignalias) - Assign an Alias
 - [`aliasesDeleteAlias`](docs/sdks/aliases/README.md#deletealias) - Delete an Alias
 - [`aliasesGetAlias`](docs/sdks/aliases/README.md#getalias) - Get an Alias
 - [`aliasesListAliases`](docs/sdks/aliases/README.md#listaliases) - List aliases
 - [`aliasesListDeploymentAliases`](docs/sdks/aliases/README.md#listdeploymentaliases) - List Deployment Aliases
 - [`aliasesPatchUrlProtectionBypass`](docs/sdks/aliases/README.md#patchurlprotectionbypass) - Update the protection bypass for a URL
-- [`apiAiGatewayCreateAiGatewayRule`](docs/sdks/apiaigateway/README.md#createaigatewayrule) - Create rule
-- [`apiAiGatewayDeleteAiGatewayRule`](docs/sdks/apiaigateway/README.md#deleteaigatewayrule) - Delete rule
-- [`apiAiGatewayListAiGatewayRules`](docs/sdks/apiaigateway/README.md#listaigatewayrules) - List rules
-- [`apiAiGatewayUpdateAiGatewayRule`](docs/sdks/apiaigateway/README.md#updateaigatewayrule) - Update rule
-- [`apiObservabilityGetObservabilityConfigurationProjects`](docs/sdks/apiobservability/README.md#getobservabilityconfigurationprojects) - Lists disabled Observability Plus projects
-- [`apiObservabilityUpdateObservabilityConfigurationProject`](docs/sdks/apiobservability/README.md#updateobservabilityconfigurationproject) - Updates a disabled Observability Plus project setting
-- [`apiSecurityCreateSecurityFirewallConfigByConfigVersionActivate`](docs/sdks/apisecurity/README.md#createsecurityfirewallconfigbyconfigversionactivate) - Returns activated WAF config
-- [`apiSecurityDeleteSecurityFirewallConfigByConfigVersion`](docs/sdks/apisecurity/README.md#deletesecurityfirewallconfigbyconfigversion) - Returns activated WAF config
-- [`apiSecurityGetSecurityFirewallConfig`](docs/sdks/apisecurity/README.md#getsecurityfirewallconfig) - Returns activated WAF config
 - [`artifactsArtifactExists`](docs/sdks/artifacts/README.md#artifactexists) - Check if a cache artifact exists
 - [`artifactsArtifactQuery`](docs/sdks/artifacts/README.md#artifactquery) - Query information about an artifact
 - [`artifactsDeleteAllArtifacts`](docs/sdks/artifacts/README.md#deleteallartifacts) - Delete all cache artifacts
@@ -779,24 +767,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`edgeCacheDangerouslyDeleteByTags`](docs/sdks/edgecache/README.md#dangerouslydeletebytags) - Dangerously delete by tag
 - [`edgeCacheInvalidateBySrcImages`](docs/sdks/edgecache/README.md#invalidatebysrcimages) - Invalidate by source image
 - [`edgeCacheInvalidateByTags`](docs/sdks/edgecache/README.md#invalidatebytags) - Invalidate by tag
-- [`edgeConfigCreateEdgeConfig`](docs/sdks/edgeconfig/README.md#createedgeconfig) - Create an Edge Config
-- [`edgeConfigCreateEdgeConfigToken`](docs/sdks/edgeconfig/README.md#createedgeconfigtoken) - Create an Edge Config token
-- [`edgeConfigDeleteEdgeConfig`](docs/sdks/edgeconfig/README.md#deleteedgeconfig) - Delete an Edge Config
-- [`edgeConfigDeleteEdgeConfigSchema`](docs/sdks/edgeconfig/README.md#deleteedgeconfigschema) - Delete an Edge Config's schema
-- [`edgeConfigDeleteEdgeConfigTokens`](docs/sdks/edgeconfig/README.md#deleteedgeconfigtokens) - Delete one or more Edge Config tokens
-- [`edgeConfigGetEdgeConfig`](docs/sdks/edgeconfig/README.md#getedgeconfig) - Get an Edge Config
-- [`edgeConfigGetEdgeConfigBackup`](docs/sdks/edgeconfig/README.md#getedgeconfigbackup) - Get Edge Config backup
-- [`edgeConfigGetEdgeConfigBackups`](docs/sdks/edgeconfig/README.md#getedgeconfigbackups) - Get Edge Config backups
-- [`edgeConfigGetEdgeConfigItem`](docs/sdks/edgeconfig/README.md#getedgeconfigitem) - Get an Edge Config item
-- [`edgeConfigGetEdgeConfigItems`](docs/sdks/edgeconfig/README.md#getedgeconfigitems) - Get Edge Config items
-- [`edgeConfigGetEdgeConfigs`](docs/sdks/edgeconfig/README.md#getedgeconfigs) - Get Edge Configs
-- [`edgeConfigGetEdgeConfigSchema`](docs/sdks/edgeconfig/README.md#getedgeconfigschema) - Get Edge Config schema
-- [`edgeConfigGetEdgeConfigToken`](docs/sdks/edgeconfig/README.md#getedgeconfigtoken) - Get Edge Config token meta data
-- [`edgeConfigGetEdgeConfigTokens`](docs/sdks/edgeconfig/README.md#getedgeconfigtokens) - Get all tokens of an Edge Config
-- [`edgeConfigPatchEdgeConfigItems`](docs/sdks/edgeconfig/README.md#patchedgeconfigitems) - Update Edge Config items in batch
-- [`edgeConfigPatchEdgeConfigSchema`](docs/sdks/edgeconfig/README.md#patchedgeconfigschema) - Update Edge Config schema
-- [`edgeConfigRestoreEdgeConfigBackup`](docs/sdks/edgeconfig/README.md#restoreedgeconfigbackup) - Restore Edge Config backup
-- [`edgeConfigUpdateEdgeConfig`](docs/sdks/edgeconfig/README.md#updateedgeconfig) - Update an Edge Config
 - [`environmentCreateCustomEnvironment`](docs/sdks/environment/README.md#createcustomenvironment) - Create a custom environment for the current project.
 - [`environmentCreateSharedEnvVariable`](docs/sdks/environment/README.md#createsharedenvvariable) - Create one or more shared environment variables
 - [`environmentDeleteSharedEnvVariable`](docs/sdks/environment/README.md#deletesharedenvvariable) - Delete one or more Env Var
@@ -829,11 +799,27 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`featureFlagsUpdateFlag`](docs/sdks/featureflags/README.md#updateflag) - Update a flag
 - [`featureFlagsUpdateFlagSegment`](docs/sdks/featureflags/README.md#updateflagsegment) - Update a segment
 - [`featureFlagsUpdateFlagSettings`](docs/sdks/featureflags/README.md#updateflagsettings) - Update project flag settings
-- [`firewallGenerateFirewallRule`](docs/sdks/firewall/README.md#generatefirewallrule) - Generate a firewall rule from natural language
 - [`getDomainsRecordsByRecordId`](docs/sdks/vercel/README.md#getdomainsrecordsbyrecordid)
 - [`getObservabilitySchema`](docs/sdks/vercel/README.md#getobservabilityschema)
 - [`getObservabilitySchemaByMetricId`](docs/sdks/vercel/README.md#getobservabilityschemabymetricid)
 - [`getStorageStoresById`](docs/sdks/vercel/README.md#getstoragestoresbyid)
+- [`globalConfigCreateEdgeConfig`](docs/sdks/globalconfig/README.md#createedgeconfig) - Create a Global Config
+- [`globalConfigCreateEdgeConfigToken`](docs/sdks/globalconfig/README.md#createedgeconfigtoken) - Create a Global Config token
+- [`globalConfigDeleteEdgeConfig`](docs/sdks/globalconfig/README.md#deleteedgeconfig) - Delete a Global Config
+- [`globalConfigDeleteEdgeConfigSchema`](docs/sdks/globalconfig/README.md#deleteedgeconfigschema) - Delete a Global Config's schema
+- [`globalConfigDeleteEdgeConfigTokens`](docs/sdks/globalconfig/README.md#deleteedgeconfigtokens) - Delete one or more Global Config tokens
+- [`globalConfigGetEdgeConfig`](docs/sdks/globalconfig/README.md#getedgeconfig) - Get a Global Config
+- [`globalConfigGetEdgeConfigBackup`](docs/sdks/globalconfig/README.md#getedgeconfigbackup) - Get Global Config backup
+- [`globalConfigGetEdgeConfigBackups`](docs/sdks/globalconfig/README.md#getedgeconfigbackups) - Get Global Config backups
+- [`globalConfigGetEdgeConfigItem`](docs/sdks/globalconfig/README.md#getedgeconfigitem) - Get a Global Config item
+- [`globalConfigGetEdgeConfigItems`](docs/sdks/globalconfig/README.md#getedgeconfigitems) - Get Global Config items
+- [`globalConfigGetEdgeConfigs`](docs/sdks/globalconfig/README.md#getedgeconfigs) - Get Global Configs
+- [`globalConfigGetEdgeConfigSchema`](docs/sdks/globalconfig/README.md#getedgeconfigschema) - Get Global Config schema
+- [`globalConfigGetEdgeConfigToken`](docs/sdks/globalconfig/README.md#getedgeconfigtoken) - Get Global Config token meta data
+- [`globalConfigGetEdgeConfigTokens`](docs/sdks/globalconfig/README.md#getedgeconfigtokens) - Get all tokens of a Global Config
+- [`globalConfigPatchEdgeConfigSchema`](docs/sdks/globalconfig/README.md#patchedgeconfigschema) - Update Global Config schema
+- [`globalConfigRestoreEdgeConfigBackup`](docs/sdks/globalconfig/README.md#restoreedgeconfigbackup) - Restore Global Config backup
+- [`globalConfigUpdateEdgeConfig`](docs/sdks/globalconfig/README.md#updateedgeconfig) - Update a Global Config
 - [`integrationsConnectIntegrationResourceToProject`](docs/sdks/integrations/README.md#connectintegrationresourcetoproject) - Connect integration resource to project
 - [`integrationsCreateIntegrationStoreDirect`](docs/sdks/integrations/README.md#createintegrationstoredirect) - Create integration store (free and paid plans)
 - [`integrationsDeleteConfiguration`](docs/sdks/integrations/README.md#deleteconfiguration) - Delete an integration configuration
@@ -853,25 +839,25 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`logsGetRuntimeLogs`](docs/sdks/logs/README.md#getruntimelogs) - Get logs for a deployment
 - [`marketplaceCreateEvent`](docs/sdks/marketplace/README.md#createevent) - Create Event
 - [`marketplaceCreateInstallationIntegrationConfiguration`](docs/sdks/marketplace/README.md#createinstallationintegrationconfiguration) - Create one or multiple experimentation items
-- [`marketplaceCreateInstallationIntegrationEdgeConfig`](docs/sdks/marketplace/README.md#createinstallationintegrationedgeconfig) - Get the data of a user-provided Edge Config
 - [`marketplaceDeleteInstallationIntegrationConfiguration`](docs/sdks/marketplace/README.md#deleteinstallationintegrationconfiguration) - Delete an existing experimentation item
 - [`marketplaceDeleteIntegrationResource`](docs/sdks/marketplace/README.md#deleteintegrationresource) - Delete Integration Resource
 - [`marketplaceExchangeSsoToken`](docs/sdks/authentication/README.md#exchangessotoken) - SSO Token Exchange
 - [`marketplaceExchangeSsoToken`](docs/sdks/marketplace/README.md#exchangessotoken) - SSO Token Exchange
 - [`marketplaceFinalizeInstallation`](docs/sdks/marketplace/README.md#finalizeinstallation) - Finalize Installation
 - [`marketplaceGetAccountInfo`](docs/sdks/marketplace/README.md#getaccountinfo) - Get Account Information
-- [`marketplaceGetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfig`](docs/sdks/marketplace/README.md#getinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationedgeconfig) - Get the data of a user-provided Edge Config
+- [`marketplaceGetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig`](docs/sdks/marketplace/README.md#getinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationglobalconfig) - Get the data of a user-provided Global Config
 - [`marketplaceGetIntegrationResource`](docs/sdks/marketplace/README.md#getintegrationresource) - Get Integration Resource
 - [`marketplaceGetIntegrationResources`](docs/sdks/marketplace/README.md#getintegrationresources) - Get Integration Resources
 - [`marketplaceGetInvoice`](docs/sdks/marketplace/README.md#getinvoice) - Get Invoice
 - [`marketplaceGetMember`](docs/sdks/marketplace/README.md#getmember) - Get Member Information
+- [`marketplaceHeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig`](docs/sdks/marketplace/README.md#headinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationglobalconfig) - Get the data of a user-provided Global Config
 - [`marketplaceImportResource`](docs/sdks/marketplace/README.md#importresource) - Import Resource
+- [`marketplaceReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig`](docs/sdks/marketplace/README.md#replaceinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationglobalconfig) - Push data into a user-provided Global Config
 - [`marketplaceSubmitBillingData`](docs/sdks/marketplace/README.md#submitbillingdata) - Submit Billing Data
 - [`marketplaceSubmitInvoice`](docs/sdks/marketplace/README.md#submitinvoice) - Submit Invoice
 - [`marketplaceSubmitPrepaymentBalances`](docs/sdks/marketplace/README.md#submitprepaymentbalances) - Submit Prepayment Balances
 - [`marketplaceUpdateInstallation`](docs/sdks/marketplace/README.md#updateinstallation) - Update Installation
 - [`marketplaceUpdateInstallationIntegrationConfiguration`](docs/sdks/marketplace/README.md#updateinstallationintegrationconfiguration) - Patch an existing experimentation item
-- [`marketplaceUpdateInstallationIntegrationEdgeConfig`](docs/sdks/marketplace/README.md#updateinstallationintegrationedgeconfig) - Push data into a user-provided Edge Config
 - [`marketplaceUpdateInvoice`](docs/sdks/marketplace/README.md#updateinvoice) - Invoice Actions
 - [`marketplaceUpdateResource`](docs/sdks/marketplace/README.md#updateresource) - Update Resource
 - [`marketplaceUpdateResourceSecretsById`](docs/sdks/marketplace/README.md#updateresourcesecretsbyid) - Update Resource Secrets
@@ -887,6 +873,8 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`networkingUpdateNetwork`](docs/sdks/networking/README.md#updatenetwork) - Update a Secure Compute network
 - [`networkingUpdateStaticIps`](docs/sdks/networking/README.md#updatestaticips) - Configures Static IPs for a project
 - [`networkingUpdateStaticIps`](docs/sdks/staticips/README.md#updatestaticips) - Configures Static IPs for a project
+- [`observabilityGetObservabilityConfigurationProjects`](docs/sdks/observability/README.md#getobservabilityconfigurationprojects) - Lists disabled Observability Plus projects
+- [`observabilityUpdateObservabilityConfigurationProject`](docs/sdks/observability/README.md#updateobservabilityconfigurationproject) - Updates a disabled Observability Plus project setting
 - [`projectMembersAddProjectMember`](docs/sdks/projectmembers/README.md#addprojectmember) - Adds a new member to a project.
 - [`projectMembersGetProjectMembers`](docs/sdks/projectmembers/README.md#getprojectmembers) - List project members
 - [`projectMembersRemoveProjectMember`](docs/sdks/projectmembers/README.md#removeprojectmember) - Remove a Project Member
@@ -961,9 +949,13 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`sandboxesUpdateSessionNetworkPolicy`](docs/sdks/sandboxes/README.md#updatesessionnetworkpolicy) - Update network policy
 - [`sandboxesWriteSessionFiles`](docs/sdks/sandboxes/README.md#writesessionfiles) - Write files
 - [`securityAddBypassIp`](docs/sdks/security/README.md#addbypassip) - Create System Bypass Rule
+- [`securityCreateSecurityFirewallConfigByConfigVersionActivate`](docs/sdks/security/README.md#createsecurityfirewallconfigbyconfigversionactivate) - Returns activated WAF config
+- [`securityDeleteSecurityFirewallConfigByConfigVersion`](docs/sdks/security/README.md#deletesecurityfirewallconfigbyconfigversion) - Returns activated WAF config
+- [`securityGenerateFirewallRule`](docs/sdks/security/README.md#generatefirewallrule) - Generate a firewall rule from natural language
 - [`securityGetActiveAttackStatus`](docs/sdks/security/README.md#getactiveattackstatus) - Read active attack data
 - [`securityGetBypassIp`](docs/sdks/security/README.md#getbypassip) - Read System Bypass
 - [`securityGetFirewallConfig`](docs/sdks/security/README.md#getfirewallconfig) - Read Firewall Configuration
+- [`securityGetSecurityFirewallConfig`](docs/sdks/security/README.md#getsecurityfirewallconfig) - Returns activated WAF config
 - [`securityGetSecurityFirewallEvents`](docs/sdks/security/README.md#getsecurityfirewallevents) - Read Firewall Actions by Project
 - [`securityPutFirewallConfig`](docs/sdks/security/README.md#putfirewallconfig) - Put Firewall Configuration
 - [`securityRemoveBypassIp`](docs/sdks/security/README.md#removebypassip) - Remove System Bypass Rule
@@ -1190,36 +1182,36 @@ run();
 
 
 **Inherit from [`VercelError`](./src/models/vercelerror.ts)**:
-* [`HttpApiDecodeError`](./src/models/httpapidecodeerror.ts): The request did not match the expected schema. Status code `400`. Applicable to 17 of 353 methods.*
-* [`Unauthorized`](./src/models/unauthorized.ts): Unauthorized. Status code `401`. Applicable to 17 of 353 methods.*
-* [`NotAuthorizedForScope`](./src/models/notauthorizedforscope.ts): NotAuthorizedForScope. Status code `403`. Applicable to 17 of 353 methods.*
-* [`TooManyRequests`](./src/models/toomanyrequests.ts): TooManyRequests. Status code `429`. Applicable to 17 of 353 methods.*
-* [`InternalServerError`](./src/models/internalservererror.ts): InternalServerError. Status code `500`. Applicable to 17 of 353 methods.*
-* [`Forbidden`](./src/models/forbidden.ts): NotAuthorizedForScope. Status code `403`. Applicable to 10 of 353 methods.*
-* [`TldNotSupported`](./src/models/tldnotsupported.ts): The TLD is not currently supported. Status code `400`. Applicable to 7 of 353 methods.*
-* [`DomainTooShort`](./src/models/domaintooshort.ts): The domain name (excluding the TLD) is too short. Status code `400`. Applicable to 5 of 353 methods.*
-* [`DomainNotRegistered`](./src/models/domainnotregistered.ts): The domain is not registered with Vercel. Status code `400`. Applicable to 5 of 353 methods.*
-* [`DomainNotFound`](./src/models/domainnotfound.ts): The domain was not found in our system. Status code `404`. Applicable to 5 of 353 methods.*
-* [`BadRequest`](./src/models/badrequest.ts): There was something wrong with the request. Status code `400`. Applicable to 4 of 353 methods.*
-* [`ExpectedPriceMismatch`](./src/models/expectedpricemismatch.ts): The expected price passed does not match the actual price. Status code `400`. Applicable to 4 of 353 methods.*
-* [`DomainNotAvailable`](./src/models/domainnotavailable.ts): The domain is not available. Status code `400`. Applicable to 4 of 353 methods.*
-* [`NotFound`](./src/models/notfound.ts): NotFound. Status code `404`. Applicable to 3 of 353 methods.*
-* [`OrderTooExpensive`](./src/models/ordertooexpensive.ts): The total price of the order is too high. Status code `400`. Applicable to 2 of 353 methods.*
-* [`InvalidAdditionalContactInfo`](./src/models/invalidadditionalcontactinfo.ts): Additional contact information provided for the TLD is invalid. Status code `400`. Applicable to 2 of 353 methods.*
-* [`AdditionalContactInfoRequired`](./src/models/additionalcontactinforequired.ts): Additional contact information is required for the TLD. Status code `400`. Applicable to 2 of 353 methods.*
-* [`LanguageCodeRequired`](./src/models/languagecoderequired.ts): A language code is required for punycode domains. Status code `400`. Applicable to 2 of 353 methods.*
-* [`TooManyDomains`](./src/models/toomanydomains.ts): The number of domains in the order is too high. Status code `400`. Applicable to 1 of 353 methods.*
-* [`DuplicateDomains`](./src/models/duplicatedomains.ts): Duplicate domains were provided. Status code `400`. Applicable to 1 of 353 methods.*
-* [`DomainAlreadyOwned`](./src/models/domainalreadyowned.ts): The domain is already owned by another team or user. Status code `400`. Applicable to 1 of 353 methods.*
-* [`DNSSECEnabled`](./src/models/dnssecenabled.ts): The operation cannot be completed because DNSSEC is enabled for the domain. Status code `400`. Applicable to 1 of 353 methods.*
-* [`DomainAlreadyRenewing`](./src/models/domainalreadyrenewing.ts): The domain is already renewing. Status code `400`. Applicable to 1 of 353 methods.*
-* [`DomainNotRenewable`](./src/models/domainnotrenewable.ts): The domain is not renewable. Status code `400`. Applicable to 1 of 353 methods.*
-* [`BoughtTooRecently`](./src/models/boughttoorecently.ts): The domain was bought too recently to determine verification status. Status code `400`. Applicable to 1 of 353 methods.*
-* [`CreateApiKeysResponseResponseBody`](./src/models/createapikeysresponseresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 353 methods.*
-* [`CreateApiKeysResponse403ResponseBody`](./src/models/createapikeysresponse403responsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 353 methods.*
-* [`DomainCannotBeTransferedOutUntil`](./src/models/domaincannotbetransferedoutuntil.ts): The domain cannot be transfered out until the specified date. Status code `409`. Applicable to 1 of 353 methods.*
-* [`CreateApiKeysResponse429ResponseBody`](./src/models/createapikeysresponse429responsebody.ts): . Status code `429`. Applicable to 1 of 353 methods.*
-* [`CreateApiKeysResponse500ResponseBody`](./src/models/createapikeysresponse500responsebody.ts): . Status code `500`. Applicable to 1 of 353 methods.*
+* [`HttpApiDecodeError`](./src/models/httpapidecodeerror.ts): The request did not match the expected schema. Status code `400`. Applicable to 17 of 352 methods.*
+* [`Unauthorized`](./src/models/unauthorized.ts): Unauthorized. Status code `401`. Applicable to 17 of 352 methods.*
+* [`NotAuthorizedForScope`](./src/models/notauthorizedforscope.ts): NotAuthorizedForScope. Status code `403`. Applicable to 17 of 352 methods.*
+* [`TooManyRequests`](./src/models/toomanyrequests.ts): TooManyRequests. Status code `429`. Applicable to 17 of 352 methods.*
+* [`InternalServerError`](./src/models/internalservererror.ts): InternalServerError. Status code `500`. Applicable to 17 of 352 methods.*
+* [`Forbidden`](./src/models/forbidden.ts): NotAuthorizedForScope. Status code `403`. Applicable to 10 of 352 methods.*
+* [`TldNotSupported`](./src/models/tldnotsupported.ts): The TLD is not currently supported. Status code `400`. Applicable to 7 of 352 methods.*
+* [`DomainTooShort`](./src/models/domaintooshort.ts): The domain name (excluding the TLD) is too short. Status code `400`. Applicable to 5 of 352 methods.*
+* [`DomainNotRegistered`](./src/models/domainnotregistered.ts): The domain is not registered with Vercel. Status code `400`. Applicable to 5 of 352 methods.*
+* [`DomainNotFound`](./src/models/domainnotfound.ts): The domain was not found in our system. Status code `404`. Applicable to 5 of 352 methods.*
+* [`BadRequest`](./src/models/badrequest.ts): There was something wrong with the request. Status code `400`. Applicable to 4 of 352 methods.*
+* [`ExpectedPriceMismatch`](./src/models/expectedpricemismatch.ts): The expected price passed does not match the actual price. Status code `400`. Applicable to 4 of 352 methods.*
+* [`DomainNotAvailable`](./src/models/domainnotavailable.ts): The domain is not available. Status code `400`. Applicable to 4 of 352 methods.*
+* [`NotFound`](./src/models/notfound.ts): NotFound. Status code `404`. Applicable to 3 of 352 methods.*
+* [`OrderTooExpensive`](./src/models/ordertooexpensive.ts): The total price of the order is too high. Status code `400`. Applicable to 2 of 352 methods.*
+* [`InvalidAdditionalContactInfo`](./src/models/invalidadditionalcontactinfo.ts): Additional contact information provided for the TLD is invalid. Status code `400`. Applicable to 2 of 352 methods.*
+* [`AdditionalContactInfoRequired`](./src/models/additionalcontactinforequired.ts): Additional contact information is required for the TLD. Status code `400`. Applicable to 2 of 352 methods.*
+* [`LanguageCodeRequired`](./src/models/languagecoderequired.ts): A language code is required for punycode domains. Status code `400`. Applicable to 2 of 352 methods.*
+* [`TooManyDomains`](./src/models/toomanydomains.ts): The number of domains in the order is too high. Status code `400`. Applicable to 1 of 352 methods.*
+* [`DuplicateDomains`](./src/models/duplicatedomains.ts): Duplicate domains were provided. Status code `400`. Applicable to 1 of 352 methods.*
+* [`DomainAlreadyOwned`](./src/models/domainalreadyowned.ts): The domain is already owned by another team or user. Status code `400`. Applicable to 1 of 352 methods.*
+* [`DNSSECEnabled`](./src/models/dnssecenabled.ts): The operation cannot be completed because DNSSEC is enabled for the domain. Status code `400`. Applicable to 1 of 352 methods.*
+* [`DomainAlreadyRenewing`](./src/models/domainalreadyrenewing.ts): The domain is already renewing. Status code `400`. Applicable to 1 of 352 methods.*
+* [`DomainNotRenewable`](./src/models/domainnotrenewable.ts): The domain is not renewable. Status code `400`. Applicable to 1 of 352 methods.*
+* [`BoughtTooRecently`](./src/models/boughttoorecently.ts): The domain was bought too recently to determine verification status. Status code `400`. Applicable to 1 of 352 methods.*
+* [`CreateApiKeysResponseResponseBody`](./src/models/createapikeysresponseresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 352 methods.*
+* [`CreateApiKeysResponse403ResponseBody`](./src/models/createapikeysresponse403responsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 352 methods.*
+* [`DomainCannotBeTransferedOutUntil`](./src/models/domaincannotbetransferedoutuntil.ts): The domain cannot be transfered out until the specified date. Status code `409`. Applicable to 1 of 352 methods.*
+* [`CreateApiKeysResponse429ResponseBody`](./src/models/createapikeysresponse429responsebody.ts): . Status code `429`. Applicable to 1 of 352 methods.*
+* [`CreateApiKeysResponse500ResponseBody`](./src/models/createapikeysresponse500responsebody.ts): . Status code `500`. Applicable to 1 of 352 methods.*
 * [`ResponseValidationError`](./src/models/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>

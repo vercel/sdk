@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetSecurityFirewallConfigRulesConditionGroup } from "@vercel/sdk/models/getsecurityfirewallconfigapisecurityaction.js";
+import { GetSecurityFirewallConfigRulesConditionGroup } from "@vercel/sdk/models/getsecurityfirewallconfigsecurityaction.js";
 
 let value: GetSecurityFirewallConfigRulesConditionGroup = {
   conditions: [],
@@ -12,6 +12,6 @@ let value: GetSecurityFirewallConfigRulesConditionGroup = {
 
 ## Fields
 
-| Field                                                                                                                            | Type                                                                                                                             | Required                                                                                                                         | Description                                                                                                                      |
-| -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| `conditions`                                                                                                                     | [models.GetSecurityFirewallConfigRulesApiSecurityConditions](../models/getsecurityfirewallconfigrulesapisecurityconditions.md)[] | :heavy_check_mark:                                                                                                               | N/A                                                                                                                              |
+| Field                                                                                                                      | Type                                                                                                                       | Required                                                                                                                   | Description                                                                                                                |
+| -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `conditions`                                                                                                               | [models.GetSecurityFirewallConfigRulesSecurityConditions](../models/getsecurityfirewallconfigrulessecurityconditions.md)[] | :heavy_check_mark:                                                                                                         | N/A                                                                                                                        |

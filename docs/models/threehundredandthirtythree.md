@@ -5,13 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndThirtyThree } from "@vercel/sdk/models/twohundredandeightysix.js";
+import { ThreeHundredAndThirtyThree } from "@vercel/sdk/models/ssoprotectiondeploymenttype.js";
 
-let value: ThreeHundredAndThirtyThree = {};
+let value: ThreeHundredAndThirtyThree = {
+  previous: {},
+  next: {},
+};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `emailDomain`      | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `previous`                                                                     | [models.UserEventPayload333Previous](../models/usereventpayload333previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `next`                                                                         | [models.UserEventPayload333Next](../models/usereventpayload333next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |

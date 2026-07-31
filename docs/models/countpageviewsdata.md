@@ -138,6 +138,8 @@ let value: CountPageviewsData = {
   gatewayCostCurrency: "<value>",
   keyId: "<id>",
   keyName: "<value>",
+  authMethod: "<value>",
+  appName: "<value>",
   isByok: "<value>",
   isPrivateModel: "<value>",
   isRequestZdr: "<value>",
@@ -198,6 +200,9 @@ let value: CountPageviewsData = {
   contentCaptureStatus: "<value>",
   contentCaptureInputs: "<value>",
   contentCaptureOutputs: "<value>",
+  transcriptStatus: "<value>",
+  transcriptInputs: "<value>",
+  transcriptOutputs: "<value>",
   providerAttemptError: "<value>",
   providerAttemptSafetyIdentifier: "<value>",
   providerAttemptDevSafetyIdentifier: "<value>",
@@ -356,6 +361,8 @@ let value: CountPageviewsData = {
 | `gatewayCostCurrency`                  | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `keyId`                                | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `keyName`                              | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `authMethod`                           | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `appName`                              | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `isByok`                               | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `isPrivateModel`                       | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `isRequestZdr`                         | *string*                               | :heavy_check_mark:                     | N/A                                    |
@@ -416,6 +423,9 @@ let value: CountPageviewsData = {
 | `contentCaptureStatus`                 | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `contentCaptureInputs`                 | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `contentCaptureOutputs`                | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `transcriptStatus`                     | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `transcriptInputs`                     | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `transcriptOutputs`                    | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `providerAttemptError`                 | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `providerAttemptSafetyIdentifier`      | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `providerAttemptDevSafetyIdentifier`   | *string*                               | :heavy_check_mark:                     | N/A                                    |

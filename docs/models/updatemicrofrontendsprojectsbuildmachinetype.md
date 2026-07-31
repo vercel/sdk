@@ -5,11 +5,11 @@
 ```typescript
 import { UpdateMicrofrontendsProjectsBuildMachineType } from "@vercel/sdk/models/updatemicrofrontendsprojectsdeploymenttype.js";
 
-let value: UpdateMicrofrontendsProjectsBuildMachineType = "standard";
+let value: UpdateMicrofrontendsProjectsBuildMachineType = "enhanced";
 ```
 
 ## Values
 
 ```typescript
-"enhanced" | "standard" | "turbo"
+"basic" | "enhanced" | "standard" | "turbo"
 ```

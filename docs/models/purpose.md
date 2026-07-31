@@ -1,19 +1,23 @@
 # Purpose
 
-## Example Usage
+
+## Supported Types
+
+### `models.Purpose1`
 
 ```typescript
-import { Purpose } from "@vercel/sdk/models/getedgeconfigsop.js";
-
-let value: Purpose = {
+const value: models.Purpose1 = {
   type: "flags",
   projectId: "<id>",
 };
 ```
 
-## Fields
+### `models.Purpose2`
 
-| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `type`                                                       | [models.GetEdgeConfigsType](../models/getedgeconfigstype.md) | :heavy_check_mark:                                           | N/A                                                          |
-| `projectId`                                                  | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+```typescript
+const value: models.Purpose2 = {
+  type: "experimentation",
+  resourceId: "<id>",
+};
+```
+

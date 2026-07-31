@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Purpose2 } from "@vercel/sdk/models/createedgeconfigop.js";
+import { Purpose2 } from "@vercel/sdk/models/getedgeconfigsop.js";
 
 let value: Purpose2 = {
   type: "experimentation",

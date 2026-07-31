@@ -25,9 +25,9 @@
 * [createInstallationIntegrationConfiguration](#createinstallationintegrationconfiguration) - Create one or multiple experimentation items
 * [updateInstallationIntegrationConfiguration](#updateinstallationintegrationconfiguration) - Patch an existing experimentation item
 * [deleteInstallationIntegrationConfiguration](#deleteinstallationintegrationconfiguration) - Delete an existing experimentation item
-* [createInstallationIntegrationEdgeConfig](#createinstallationintegrationedgeconfig) - Get the data of a user-provided Edge Config
-* [getInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfig](#getinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationedgeconfig) - Get the data of a user-provided Edge Config
-* [updateInstallationIntegrationEdgeConfig](#updateinstallationintegrationedgeconfig) - Push data into a user-provided Edge Config
+* [headInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig](#headinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationglobalconfig) - Get the data of a user-provided Global Config
+* [getInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig](#getinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationglobalconfig) - Get the data of a user-provided Global Config
+* [replaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig](#replaceinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationglobalconfig) - Push data into a user-provided Global Config
 
 ## updateInstallation
 
@@ -1770,13 +1770,13 @@ run();
 | --------------- | --------------- | --------------- |
 | models.SDKError | 4XX, 5XX        | \*/\*           |
 
-## createInstallationIntegrationEdgeConfig
+## headInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig
 
-When the user enabled Edge Config syncing, then this endpoint can be used by the partner to fetch the contents of the Edge Config.
+When the user enabled Global Config syncing, then this endpoint can be used by the partner to fetch the contents of the Global Config.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="headInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfig" method="head" path="/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config" -->
+<!-- UsageSnippet language="typescript" operationID="headInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig" method="head" path="/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/global-config" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -1785,82 +1785,7 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  const result = await vercel.marketplace.createInstallationIntegrationEdgeConfig({
-    integrationConfigurationId: "<id>",
-    resourceId: "<id>",
-  });
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { VercelCore } from "@vercel/sdk/core.js";
-import { marketplaceCreateInstallationIntegrationEdgeConfig } from "@vercel/sdk/funcs/marketplaceCreateInstallationIntegrationEdgeConfig.js";
-
-// Use `VercelCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const vercel = new VercelCore({
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-});
-
-async function run() {
-  const res = await marketplaceCreateInstallationIntegrationEdgeConfig(vercel, {
-    integrationConfigurationId: "<id>",
-    resourceId: "<id>",
-  });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("marketplaceCreateInstallationIntegrationEdgeConfig failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                                                                       | Type                                                                                                                                                                                                                            | Required                                                                                                                                                                                                                        | Description                                                                                                                                                                                                                     |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                                                                                                                       | [models.HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigRequest](../../models/headinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationedgeconfigrequest.md) | :heavy_check_mark:                                                                                                                                                                                                              | The request object to use for the request.                                                                                                                                                                                      |
-| `options`                                                                                                                                                                                                                       | RequestOptions                                                                                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                                                                              | Used to set various options for making HTTP requests.                                                                                                                                                                           |
-| `options.fetchOptions`                                                                                                                                                                                                          | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                                                                         | :heavy_minus_sign:                                                                                                                                                                                                              | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed.                                                  |
-| `options.retries`                                                                                                                                                                                                               | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                                                                   | :heavy_minus_sign:                                                                                                                                                                                                              | Enables retrying HTTP requests under certain failure conditions.                                                                                                                                                                |
-
-### Response
-
-**Promise\<[models.HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigResponseBody](../../models/headinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationedgeconfigresponsebody.md)\>**
-
-### Errors
-
-| Error Type      | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| models.SDKError | 4XX, 5XX        | \*/\*           |
-
-## getInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfig
-
-When the user enabled Edge Config syncing, then this endpoint can be used by the partner to fetch the contents of the Edge Config.
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="getInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfig" method="get" path="/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config" -->
-```typescript
-import { Vercel } from "@vercel/sdk";
-
-const vercel = new Vercel({
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-});
-
-async function run() {
-  const result = await vercel.marketplace.getInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfig({
+  const result = await vercel.marketplace.headInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig({
     integrationConfigurationId: "<id>",
     resourceId: "<id>",
   });
@@ -1878,8 +1803,8 @@ The standalone function version of this method:
 ```typescript
 import { VercelCore } from "@vercel/sdk/core.js";
 import {
-  marketplaceGetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfig,
-} from "@vercel/sdk/funcs/marketplaceGetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfig.js";
+  marketplaceHeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig,
+} from "@vercel/sdk/funcs/marketplaceHeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig.js";
 
 // Use `VercelCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -1888,7 +1813,7 @@ const vercel = new VercelCore({
 });
 
 async function run() {
-  const res = await marketplaceGetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfig(vercel, {
+  const res = await marketplaceHeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig(vercel, {
     integrationConfigurationId: "<id>",
     resourceId: "<id>",
   });
@@ -1896,7 +1821,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("marketplaceGetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfig failed:", res.error);
+    console.log("marketplaceHeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig failed:", res.error);
   }
 }
 
@@ -1905,16 +1830,16 @@ run();
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                                                     | Type                                                                                                                                                                                                                          | Required                                                                                                                                                                                                                      | Description                                                                                                                                                                                                                   |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                                                                                                                     | [models.GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigRequest](../../models/getinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationedgeconfigrequest.md) | :heavy_check_mark:                                                                                                                                                                                                            | The request object to use for the request.                                                                                                                                                                                    |
-| `options`                                                                                                                                                                                                                     | RequestOptions                                                                                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                                                                            | Used to set various options for making HTTP requests.                                                                                                                                                                         |
-| `options.fetchOptions`                                                                                                                                                                                                        | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                                                                            | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed.                                                |
-| `options.retries`                                                                                                                                                                                                             | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                                                                            | Enables retrying HTTP requests under certain failure conditions.                                                                                                                                                              |
+| Parameter                                                                                                                                                                                                                           | Type                                                                                                                                                                                                                                | Required                                                                                                                                                                                                                            | Description                                                                                                                                                                                                                         |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                                                                                                                           | [models.HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequest](../../models/headinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationglobalconfigrequest.md) | :heavy_check_mark:                                                                                                                                                                                                                  | The request object to use for the request.                                                                                                                                                                                          |
+| `options`                                                                                                                                                                                                                           | RequestOptions                                                                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                                                                  | Used to set various options for making HTTP requests.                                                                                                                                                                               |
+| `options.fetchOptions`                                                                                                                                                                                                              | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                                                  | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed.                                                      |
+| `options.retries`                                                                                                                                                                                                                   | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                                                                                  | Enables retrying HTTP requests under certain failure conditions.                                                                                                                                                                    |
 
 ### Response
 
-**Promise\<[models.GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigResponseBody](../../models/getinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationedgeconfigresponsebody.md)\>**
+**Promise\<[models.HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponseBody](../../models/headinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationglobalconfigresponsebody.md)\>**
 
 ### Errors
 
@@ -1922,13 +1847,13 @@ run();
 | --------------- | --------------- | --------------- |
 | models.SDKError | 4XX, 5XX        | \*/\*           |
 
-## updateInstallationIntegrationEdgeConfig
+## getInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig
 
-When the user enabled Edge Config syncing, then this endpoint can be used by the partner to push their configuration data into the relevant Edge Config.
+When the user enabled Global Config syncing, then this endpoint can be used by the partner to fetch the contents of the Global Config.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="replaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfig" method="put" path="/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config" -->
+<!-- UsageSnippet language="typescript" operationID="getInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig" method="get" path="/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/global-config" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -1937,7 +1862,7 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  const result = await vercel.marketplace.updateInstallationIntegrationEdgeConfig({
+  const result = await vercel.marketplace.getInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig({
     integrationConfigurationId: "<id>",
     resourceId: "<id>",
   });
@@ -1954,7 +1879,9 @@ The standalone function version of this method:
 
 ```typescript
 import { VercelCore } from "@vercel/sdk/core.js";
-import { marketplaceUpdateInstallationIntegrationEdgeConfig } from "@vercel/sdk/funcs/marketplaceUpdateInstallationIntegrationEdgeConfig.js";
+import {
+  marketplaceGetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig,
+} from "@vercel/sdk/funcs/marketplaceGetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig.js";
 
 // Use `VercelCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -1963,7 +1890,7 @@ const vercel = new VercelCore({
 });
 
 async function run() {
-  const res = await marketplaceUpdateInstallationIntegrationEdgeConfig(vercel, {
+  const res = await marketplaceGetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig(vercel, {
     integrationConfigurationId: "<id>",
     resourceId: "<id>",
   });
@@ -1971,7 +1898,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("marketplaceUpdateInstallationIntegrationEdgeConfig failed:", res.error);
+    console.log("marketplaceGetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig failed:", res.error);
   }
 }
 
@@ -1980,16 +1907,93 @@ run();
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                                                             | Type                                                                                                                                                                                                                                  | Required                                                                                                                                                                                                                              | Description                                                                                                                                                                                                                           |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                                                                                                                             | [models.ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigRequest](../../models/replaceinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationedgeconfigrequest.md) | :heavy_check_mark:                                                                                                                                                                                                                    | The request object to use for the request.                                                                                                                                                                                            |
-| `options`                                                                                                                                                                                                                             | RequestOptions                                                                                                                                                                                                                        | :heavy_minus_sign:                                                                                                                                                                                                                    | Used to set various options for making HTTP requests.                                                                                                                                                                                 |
-| `options.fetchOptions`                                                                                                                                                                                                                | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                                                                               | :heavy_minus_sign:                                                                                                                                                                                                                    | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed.                                                        |
-| `options.retries`                                                                                                                                                                                                                     | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                                                                         | :heavy_minus_sign:                                                                                                                                                                                                                    | Enables retrying HTTP requests under certain failure conditions.                                                                                                                                                                      |
+| Parameter                                                                                                                                                                                                                         | Type                                                                                                                                                                                                                              | Required                                                                                                                                                                                                                          | Description                                                                                                                                                                                                                       |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                                                                                                                         | [models.GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequest](../../models/getinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationglobalconfigrequest.md) | :heavy_check_mark:                                                                                                                                                                                                                | The request object to use for the request.                                                                                                                                                                                        |
+| `options`                                                                                                                                                                                                                         | RequestOptions                                                                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                                | Used to set various options for making HTTP requests.                                                                                                                                                                             |
+| `options.fetchOptions`                                                                                                                                                                                                            | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                                                                           | :heavy_minus_sign:                                                                                                                                                                                                                | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed.                                                    |
+| `options.retries`                                                                                                                                                                                                                 | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                                | Enables retrying HTTP requests under certain failure conditions.                                                                                                                                                                  |
 
 ### Response
 
-**Promise\<[models.ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigResponseBody](../../models/replaceinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationedgeconfigresponsebody.md)\>**
+**Promise\<[models.GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponseBody](../../models/getinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationglobalconfigresponsebody.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
+
+## replaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig
+
+When the user enabled Global Config syncing, then this endpoint can be used by the partner to push their configuration data into the relevant Global Config.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="replaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig" method="put" path="/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/global-config" -->
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await vercel.marketplace.replaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig({
+    integrationConfigurationId: "<id>",
+    resourceId: "<id>",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import {
+  marketplaceReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig,
+} from "@vercel/sdk/funcs/marketplaceReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await marketplaceReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig(vercel, {
+    integrationConfigurationId: "<id>",
+    resourceId: "<id>",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("marketplaceReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                                                                 | Type                                                                                                                                                                                                                                      | Required                                                                                                                                                                                                                                  | Description                                                                                                                                                                                                                               |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                                                                                                                                 | [models.ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequest](../../models/replaceinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationglobalconfigrequest.md) | :heavy_check_mark:                                                                                                                                                                                                                        | The request object to use for the request.                                                                                                                                                                                                |
+| `options`                                                                                                                                                                                                                                 | RequestOptions                                                                                                                                                                                                                            | :heavy_minus_sign:                                                                                                                                                                                                                        | Used to set various options for making HTTP requests.                                                                                                                                                                                     |
+| `options.fetchOptions`                                                                                                                                                                                                                    | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                                                                                   | :heavy_minus_sign:                                                                                                                                                                                                                        | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed.                                                            |
+| `options.retries`                                                                                                                                                                                                                         | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                                                        | Enables retrying HTTP requests under certain failure conditions.                                                                                                                                                                          |
+
+### Response
+
+**Promise\<[models.ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponseBody](../../models/replaceinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationglobalconfigresponsebody.md)\>**
 
 ### Errors
 

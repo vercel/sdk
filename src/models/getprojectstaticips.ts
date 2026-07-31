@@ -1493,6 +1493,7 @@ export type GetProjectFunctionDefaultMemoryType = ClosedEnum<
 >;
 
 export const GetProjectBuildMachineType = {
+  Basic: "basic",
   Enhanced: "enhanced",
   Standard: "standard",
   Turbo: "turbo",
@@ -1625,6 +1626,7 @@ export type GetProjectProjectsFunctionDefaultMemoryType = ClosedEnum<
 >;
 
 export const GetProjectProjectsBuildMachineType = {
+  Basic: "basic",
   Enhanced: "enhanced",
   Standard: "standard",
   Turbo: "turbo",

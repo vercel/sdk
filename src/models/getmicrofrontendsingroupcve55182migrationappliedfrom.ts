@@ -1545,6 +1545,7 @@ export type GetMicrofrontendsInGroupMicrofrontendsFunctionDefaultMemoryType =
   >;
 
 export const GetMicrofrontendsInGroupMicrofrontendsBuildMachineType = {
+  Basic: "basic",
   Enhanced: "enhanced",
   Standard: "standard",
   Turbo: "turbo",
@@ -1687,6 +1688,7 @@ export type GetMicrofrontendsInGroupFunctionDefaultMemoryType = ClosedEnum<
 >;
 
 export const GetMicrofrontendsInGroupBuildMachineType = {
+  Basic: "basic",
   Enhanced: "enhanced",
   Standard: "standard",
   Turbo: "turbo",

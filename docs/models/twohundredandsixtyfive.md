@@ -5,14 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSixtyFive } from "@vercel/sdk/models/aws.js";
+import { TwoHundredAndSixtyFive } from "@vercel/sdk/models/envid.js";
 
 let value: TwoHundredAndSixtyFive = {
   project: {
-    id: "<id>",
     name: "<value>",
   },
-  projectMembership: {},
+  removedMembership: {
+    role: "PROJECT_DEVELOPER",
+    uid: "<id>",
+    createdAt: 9957.5,
+  },
 };
 ```
 
@@ -21,4 +24,4 @@ let value: TwoHundredAndSixtyFive = {
 | Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
 | `project`                                                                    | [models.UserEventPayload265Project](../models/usereventpayload265project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
-| `projectMembership`                                                          | [models.PayloadProjectMembership](../models/payloadprojectmembership.md)     | :heavy_check_mark:                                                           | N/A                                                                          |
+| `removedMembership`                                                          | [models.RemovedMembership](../models/removedmembership.md)                   | :heavy_check_mark:                                                           | N/A                                                                          |

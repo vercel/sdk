@@ -5,20 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndNine } from "@vercel/sdk/models/querytype.js";
+import { TwoHundredAndNine } from "@vercel/sdk/models/onehundredandsixtyfour.js";
 
 let value: TwoHundredAndNine = {
-  privateLinkEndpoint: {
+  endpoint: {
     id: "<id>",
     name: "<value>",
+    projectId: "<id>",
+    vercelRegion: "<value>",
+    awsServiceName: "<value>",
   },
-  projectId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| `privateLinkEndpoint`                                          | [models.PrivateLinkEndpoint](../models/privatelinkendpoint.md) | :heavy_check_mark:                                             | N/A                                                            |
-| `projectId`                                                    | *string*                                                       | :heavy_check_mark:                                             | N/A                                                            |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `endpoint`                               | [models.Endpoint](../models/endpoint.md) | :heavy_check_mark:                       | N/A                                      |

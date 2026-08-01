@@ -5,20 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndTwentySix } from "@vercel/sdk/models/ssoprotectiondeploymenttype.js";
+import { ThreeHundredAndTwentySix } from "@vercel/sdk/models/ssoprotection2.js";
 
 let value: ThreeHundredAndTwentySix = {
-  next: {
-    enabled: true,
-    scope: "private",
-    includeDrafts: false,
-  },
+  slug: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `previous`                                                                     | [models.UserEventPayload326Previous](../models/usereventpayload326previous.md) | :heavy_minus_sign:                                                             | Automatic code review settings                                                 |
-| `next`                                                                         | [models.UserEventPayload326Next](../models/usereventpayload326next.md)         | :heavy_check_mark:                                                             | Automatic code review settings                                                 |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `slug`             | *string*           | :heavy_check_mark: | N/A                |

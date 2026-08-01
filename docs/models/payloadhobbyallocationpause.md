@@ -5,7 +5,7 @@ Present only when `reason` is `HOBBY_ALLOCATION_PAUSED`. Makes the pause self-de
 ## Example Usage
 
 ```typescript
-import { PayloadHobbyAllocationPause } from "@vercel/sdk/models/usereventpayload155newownerfeatureblocksworkfloweventsblockreason.js";
+import { PayloadHobbyAllocationPause } from "@vercel/sdk/models/microfrontendsrequest.js";
 
 let value: PayloadHobbyAllocationPause = {
   pausedUntil: 7931.58,

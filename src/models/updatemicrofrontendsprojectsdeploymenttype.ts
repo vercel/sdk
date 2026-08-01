@@ -1576,6 +1576,7 @@ export type UpdateMicrofrontendsBuildMachineSelection = ClosedEnum<
 >;
 
 export const UpdateMicrofrontendsBuildMachineElasticReason = {
+  BasicFloor: "basic-floor",
   BuildTimeoutFailure: "build-timeout-failure",
   EnospcFailure: "enospc-failure",
   EnterpriseFloor: "enterprise-floor",
@@ -1713,6 +1714,7 @@ export type UpdateMicrofrontendsProjectsBuildMachineSelection = ClosedEnum<
 >;
 
 export const UpdateMicrofrontendsProjectsBuildMachineElasticReason = {
+  BasicFloor: "basic-floor",
   BuildTimeoutFailure: "build-timeout-failure",
   EnospcFailure: "enospc-failure",
   EnterpriseFloor: "enterprise-floor",

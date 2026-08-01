@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Enabled } from "@vercel/sdk/models/ssoprotectiondeploymenttype.js";
+import { Enabled } from "@vercel/sdk/models/ssoprotection2.js";
 
 let value: Enabled = "default-force";
 ```

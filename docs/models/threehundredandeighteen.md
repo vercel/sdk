@@ -5,15 +5,13 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndEighteen } from "@vercel/sdk/models/ssoprotectiondeploymenttype.js";
+import { ThreeHundredAndEighteen } from "@vercel/sdk/models/ssoprotection2.js";
 
-let value: ThreeHundredAndEighteen = {
-  storeType: "postgres",
-};
+let value: ThreeHundredAndEighteen = {};
 ```
 
 ## Fields
 
-| Field                                      | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `storeType`                                | [models.StoreType](../models/storetype.md) | :heavy_check_mark:                         | N/A                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `webhookUrl`       | *string*           | :heavy_minus_sign: | N/A                |

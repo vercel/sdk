@@ -5,7 +5,7 @@ Default build machine type for new deployments. This must be used in combination
 ## Example Usage
 
 ```typescript
-import { PayloadDefault } from "@vercel/sdk/models/usereventpayload155newownerfeatureblocksworkfloweventsblockreason.js";
+import { PayloadDefault } from "@vercel/sdk/models/microfrontendsrequest.js";
 
 let value: PayloadDefault = "enhanced";
 ```

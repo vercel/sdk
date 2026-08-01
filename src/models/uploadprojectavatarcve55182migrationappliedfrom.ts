@@ -1549,6 +1549,7 @@ export type UploadProjectAvatarBuildMachineSelection = ClosedEnum<
 >;
 
 export const UploadProjectAvatarBuildMachineElasticReason = {
+  BasicFloor: "basic-floor",
   BuildTimeoutFailure: "build-timeout-failure",
   EnospcFailure: "enospc-failure",
   EnterpriseFloor: "enterprise-floor",
@@ -1686,6 +1687,7 @@ export type UploadProjectAvatarProjectsBuildMachineSelection = ClosedEnum<
 >;
 
 export const UploadProjectAvatarProjectsBuildMachineElasticReason = {
+  BasicFloor: "basic-floor",
   BuildTimeoutFailure: "build-timeout-failure",
   EnospcFailure: "enospc-failure",
   EnterpriseFloor: "enterprise-floor",

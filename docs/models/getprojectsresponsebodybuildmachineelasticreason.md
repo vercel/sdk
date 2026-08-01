@@ -5,12 +5,11 @@
 ```typescript
 import { GetProjectsResponseBodyBuildMachineElasticReason } from "@vercel/sdk/models/getprojectsresponsebodytrustedsources.js";
 
-let value: GetProjectsResponseBodyBuildMachineElasticReason =
-  "build-timeout-failure";
+let value: GetProjectsResponseBodyBuildMachineElasticReason = "basic-floor";
 ```
 
 ## Values
 
 ```typescript
-"build-timeout-failure" | "enospc-failure" | "enterprise-floor" | "high-peak-disk" | "high-peak-memory" | "long-build-duration" | "oom-failure" | "short-build-duration" | "sustained-high-cpu"
+"basic-floor" | "build-timeout-failure" | "enospc-failure" | "enterprise-floor" | "high-peak-disk" | "high-peak-memory" | "long-build-duration" | "oom-failure" | "short-build-duration" | "sustained-high-cpu"
 ```

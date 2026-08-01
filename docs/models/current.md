@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Current } from "@vercel/sdk/models/querytype.js";
+import { Current } from "@vercel/sdk/models/onehundredandsixtyfour.js";
 
 let value: Current = {
   id: "<id>",

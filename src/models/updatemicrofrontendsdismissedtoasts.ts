@@ -321,6 +321,7 @@ export type UpdateMicrofrontendsPermissions = {
   marketplaceBillingData?: Array<ACLAction> | undefined;
   marketplaceExperimentationEdgeConfigData?: Array<ACLAction> | undefined;
   marketplaceExperimentationItem?: Array<ACLAction> | undefined;
+  marketplaceFlexCommit?: Array<ACLAction> | undefined;
   marketplaceInstallationMember?: Array<ACLAction> | undefined;
   marketplaceInvoice?: Array<ACLAction> | undefined;
   marketplaceSettings?: Array<ACLAction> | undefined;
@@ -1988,6 +1989,7 @@ export const UpdateMicrofrontendsPermissions$inboundSchema: z.ZodType<
   marketplaceExperimentationItem: types.optional(
     z.array(ACLAction$inboundSchema),
   ),
+  marketplaceFlexCommit: types.optional(z.array(ACLAction$inboundSchema)),
   marketplaceInstallationMember: types.optional(
     z.array(ACLAction$inboundSchema),
   ),

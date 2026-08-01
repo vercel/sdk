@@ -5,7 +5,7 @@ Overrides for a ramp (slew-rate) admission limit, which bounds how quickly the a
 ## Example Usage
 
 ```typescript
-import { ResourceLimits2 } from "@vercel/sdk/models/usereventpayload155newownerfeatureblocksworkfloweventsblockreason.js";
+import { ResourceLimits2 } from "@vercel/sdk/models/microfrontendsrequest.js";
 
 let value: ResourceLimits2 = {};
 ```

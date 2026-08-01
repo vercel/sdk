@@ -287,6 +287,10 @@ export type AuthUserResourceConfig = {
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
+  serverlessFunctionMaxDuration?: number | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
   serverlessFunctionMaxMemorySize?: number | undefined;
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
@@ -739,6 +743,7 @@ export const AuthUserResourceConfig$inboundSchema: z.ZodType<
   edgeConfigSize: types.optional(types.number()),
   edgeFunctionMaxSizeBytes: types.optional(types.number()),
   edgeFunctionExecutionTimeoutMs: types.optional(types.number()),
+  serverlessFunctionMaxDuration: types.optional(types.number()),
   serverlessFunctionMaxMemorySize: types.optional(types.number()),
   kvDatabases: types.optional(types.number()),
   postgresDatabases: types.optional(types.number()),

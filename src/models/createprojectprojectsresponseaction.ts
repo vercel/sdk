@@ -41,6 +41,7 @@ export type CreateProjectBuildMachineSelection = ClosedEnum<
 >;
 
 export const CreateProjectBuildMachineElasticReason = {
+  BasicFloor: "basic-floor",
   BuildTimeoutFailure: "build-timeout-failure",
   EnospcFailure: "enospc-failure",
   EnterpriseFloor: "enterprise-floor",
@@ -178,6 +179,7 @@ export type CreateProjectProjectsBuildMachineSelection = ClosedEnum<
 >;
 
 export const CreateProjectProjectsBuildMachineElasticReason = {
+  BasicFloor: "basic-floor",
   BuildTimeoutFailure: "build-timeout-failure",
   EnospcFailure: "enospc-failure",
   EnterpriseFloor: "enterprise-floor",
@@ -544,6 +546,7 @@ export type CreateProjectPermissions = {
   marketplaceBillingData?: Array<ACLAction> | undefined;
   marketplaceExperimentationEdgeConfigData?: Array<ACLAction> | undefined;
   marketplaceExperimentationItem?: Array<ACLAction> | undefined;
+  marketplaceFlexCommit?: Array<ACLAction> | undefined;
   marketplaceInstallationMember?: Array<ACLAction> | undefined;
   marketplaceInvoice?: Array<ACLAction> | undefined;
   marketplaceSettings?: Array<ACLAction> | undefined;
@@ -2303,6 +2306,7 @@ export const CreateProjectPermissions$inboundSchema: z.ZodType<
   marketplaceExperimentationItem: types.optional(
     z.array(ACLAction$inboundSchema),
   ),
+  marketplaceFlexCommit: types.optional(z.array(ACLAction$inboundSchema)),
   marketplaceInstallationMember: types.optional(
     z.array(ACLAction$inboundSchema),
   ),

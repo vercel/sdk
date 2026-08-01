@@ -74,6 +74,15 @@ const value: models.TypeSnowflake = {
 const value: models.TypeSnowflakeWif = {};
 ```
 
+### `models.TypePhoton`
+
+```typescript
+const value: models.TypePhoton = {
+  projectId: "<id>",
+  projectSecret: "<value>",
+};
+```
+
 ### `{ [k: string]: any }`
 
 ```typescript

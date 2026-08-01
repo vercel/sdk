@@ -5,11 +5,11 @@
 ```typescript
 import { CreateProjectProjectsBuildMachineElasticReason } from "@vercel/sdk/models/createprojectprojectsresponseaction.js";
 
-let value: CreateProjectProjectsBuildMachineElasticReason = "enterprise-floor";
+let value: CreateProjectProjectsBuildMachineElasticReason = "enospc-failure";
 ```
 
 ## Values
 
 ```typescript
-"build-timeout-failure" | "enospc-failure" | "enterprise-floor" | "high-peak-disk" | "high-peak-memory" | "long-build-duration" | "oom-failure" | "short-build-duration" | "sustained-high-cpu"
+"basic-floor" | "build-timeout-failure" | "enospc-failure" | "enterprise-floor" | "high-peak-disk" | "high-peak-memory" | "long-build-duration" | "oom-failure" | "short-build-duration" | "sustained-high-cpu"
 ```

@@ -5,17 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndThirtySix } from "@vercel/sdk/models/ssoprotectiondeploymenttype.js";
+import { ThreeHundredAndThirtySix } from "@vercel/sdk/models/ssoprotection2.js";
 
 let value: ThreeHundredAndThirtySix = {
-  environment: "preview",
-  enabled: "on",
+  projectId: "<id>",
+  projectName: "<value>",
+  enabled: false,
+  environment: "production",
 };
 ```
 
 ## Fields
 
-| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `environment`                                                | [models.PayloadEnvironment](../models/payloadenvironment.md) | :heavy_check_mark:                                           | N/A                                                          |
-| `enabled`                                                    | [models.Enabled](../models/enabled.md)                       | :heavy_check_mark:                                           | N/A                                                          |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `projectId`                                    | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `projectName`                                  | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `enabled`                                      | *boolean*                                      | :heavy_check_mark:                             | N/A                                            |
+| `environment`                                  | [models.Environment](../models/environment.md) | :heavy_check_mark:                             | N/A                                            |

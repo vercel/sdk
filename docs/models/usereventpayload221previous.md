@@ -3,19 +3,12 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload221Previous } from "@vercel/sdk/models/onehundredandninetytwo.js";
+import { UserEventPayload221Previous } from "@vercel/sdk/models/onehundredandsixtyfour.js";
 
-let value: UserEventPayload221Previous = {
-  project: {
-    staticIps: {
-      enabled: true,
-    },
-  },
-};
+let value: UserEventPayload221Previous = {};
 ```
 
 ## Fields
 
-| Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  |
-| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `project`                                                                                    | [models.UserEventPayload221PreviousProject](../models/usereventpayload221previousproject.md) | :heavy_check_mark:                                                                           | N/A                                                                                          |
+| Field       | Type        | Required    | Description |
+| ----------- | ----------- | ----------- | ----------- |

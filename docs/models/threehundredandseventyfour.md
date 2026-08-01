@@ -5,17 +5,16 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSeventyFour } from "@vercel/sdk/models/threehundredandsixty.js";
+import { ThreeHundredAndSeventyFour } from "@vercel/sdk/models/threehundredandsixtytwo.js";
 
 let value: ThreeHundredAndSeventyFour = {
-  method: "webauthn",
-  reason: "<value>",
+  username: "Zackery35",
 };
 ```
 
 ## Fields
 
-| Field                                | Type                                 | Required                             | Description                          |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `method`                             | [models.Method](../models/method.md) | :heavy_check_mark:                   | N/A                                  |
-| `reason`                             | *string*                             | :heavy_check_mark:                   | N/A                                  |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `deletedAt`        | *number*           | :heavy_minus_sign: | N/A                |
+| `username`         | *string*           | :heavy_check_mark: | N/A                |

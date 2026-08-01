@@ -1511,6 +1511,7 @@ export type GetProjectBuildMachineSelection = ClosedEnum<
 >;
 
 export const GetProjectBuildMachineElasticReason = {
+  BasicFloor: "basic-floor",
   BuildTimeoutFailure: "build-timeout-failure",
   EnospcFailure: "enospc-failure",
   EnterpriseFloor: "enterprise-floor",
@@ -1644,6 +1645,7 @@ export type GetProjectProjectsBuildMachineSelection = ClosedEnum<
 >;
 
 export const GetProjectProjectsBuildMachineElasticReason = {
+  BasicFloor: "basic-floor",
   BuildTimeoutFailure: "build-timeout-failure",
   EnospcFailure: "enospc-failure",
   EnterpriseFloor: "enterprise-floor",

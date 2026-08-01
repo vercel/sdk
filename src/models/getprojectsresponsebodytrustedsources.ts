@@ -1415,6 +1415,7 @@ export type GetProjectsResponseBodyBuildMachineSelection = ClosedEnum<
 >;
 
 export const GetProjectsResponseBodyBuildMachineElasticReason = {
+  BasicFloor: "basic-floor",
   BuildTimeoutFailure: "build-timeout-failure",
   EnospcFailure: "enospc-failure",
   EnterpriseFloor: "enterprise-floor",

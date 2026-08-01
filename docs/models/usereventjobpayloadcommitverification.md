@@ -5,7 +5,7 @@ Since 6 Nov 2025 The verification status of the commit. - 'verified' if the comm
 ## Example Usage
 
 ```typescript
-import { UserEventJobPayloadCommitVerification } from "@vercel/sdk/models/usereventjobpayload965provider.js";
+import { UserEventJobPayloadCommitVerification } from "@vercel/sdk/models/job6.js";
 
 let value: UserEventJobPayloadCommitVerification = "unknown";
 ```

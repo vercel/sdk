@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventRedisBlockReason } from "@vercel/sdk/models/usereventpayload155newownerfeatureblocksworkfloweventsblockreason.js";
+import { UserEventRedisBlockReason } from "@vercel/sdk/models/microfrontendsrequest.js";
 
 let value: UserEventRedisBlockReason = "hard_blocked";
 ```

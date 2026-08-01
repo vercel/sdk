@@ -5,21 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndEightySeven } from "@vercel/sdk/models/querytype.js";
+import { OneHundredAndEightySeven } from "@vercel/sdk/models/onehundredandsixtyfour.js";
 
 let value: OneHundredAndEightySeven = {
-  ownerId: "<id>",
-  source: "<value>",
-  cause: "<value>",
+  organizationId: "<id>",
+  teamId: "<id>",
+  billingPlan: "enterprise",
 };
 ```
 
 ## Fields
 
-| Field                                      | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `ownerId`                                  | *string*                                   | :heavy_check_mark:                         | N/A                                        |
-| `source`                                   | *string*                                   | :heavy_check_mark:                         | N/A                                        |
-| `cause`                                    | *string*                                   | :heavy_check_mark:                         | N/A                                        |
-| `blockReason`                              | *string*                                   | :heavy_minus_sign:                         | N/A                                        |
-| `siftRoute`                                | [models.SiftRoute](../models/siftroute.md) | :heavy_minus_sign:                         | N/A                                        |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `organizationId`                               | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `teamId`                                       | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `billingPlan`                                  | [models.BillingPlan](../models/billingplan.md) | :heavy_check_mark:                             | N/A                                            |

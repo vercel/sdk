@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSixteen } from "@vercel/sdk/models/ssoprotectiondeploymenttype.js";
+import { ThreeHundredAndSixteen } from "@vercel/sdk/models/ssoprotection2.js";
 
 let value: ThreeHundredAndSixteen = {
   budget: {
@@ -33,4 +33,3 @@ let value: ThreeHundredAndSixteen = {
 | Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
 | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
 | `budget`                                                                   | [models.UserEventPayload316Budget](../models/usereventpayload316budget.md) | :heavy_check_mark:                                                         | Represents a budget for tracking and notifying teams on their spending.    |
-| `webhookUrl`                                                               | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |

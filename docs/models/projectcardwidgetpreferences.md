@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ProjectCardWidgetPreferences } from "@vercel/sdk/models/usereventpayload155newownerfeatureblocksworkfloweventsblockreason.js";
+import { ProjectCardWidgetPreferences } from "@vercel/sdk/models/microfrontendsrequest.js";
 
 let value: ProjectCardWidgetPreferences = {
   projectId: "<id>",

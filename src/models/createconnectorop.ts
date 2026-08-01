@@ -11,6 +11,12 @@ import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
+export type TypePhoton = {
+  projectId: string;
+  projectSecret: string;
+  webhookSecret?: string | undefined;
+};
+
 export type TypeSnowflakeWif = {
   clientName?: string | undefined;
   accountIdentifier?: string | undefined;
@@ -226,6 +232,12 @@ export type JwtBearer = {
   useClientCredentials?: boolean | undefined;
 };
 
+export type ClientAssertion = {
+  type?: string | undefined;
+  ttl?: number | undefined;
+  claims?: { [k: string]: any } | undefined;
+};
+
 export type TypeOauth = {
   serverUrl?: string | undefined;
   serverConfig?: ServerConfig | undefined;
@@ -250,6 +262,7 @@ export type TypeOauth = {
   defaultTokenExpiresIn?: number | undefined;
   authorizationUrlParams?: { [k: string]: string } | undefined;
   jwtBearer?: JwtBearer | undefined;
+  clientAssertion?: ClientAssertion | undefined;
 };
 
 export type CreateConnectorData =
@@ -257,6 +270,7 @@ export type CreateConnectorData =
   | TypeSlack
   | TypeSalesforce
   | TypeLinear
+  | TypePhoton
   | TypeOauth
   | TypeApiKey
   | TypeSnowflake
@@ -269,6 +283,7 @@ export type CreateConnectorRequestBody = {
     | TypeSlack
     | TypeSalesforce
     | TypeLinear
+    | TypePhoton
     | TypeOauth
     | TypeApiKey
     | TypeSnowflake
@@ -278,13 +293,25 @@ export type CreateConnectorRequestBody = {
   backgroundColor?: string | undefined;
   accentColor?: string | undefined;
   /**
-   * Known types: api-key, github, linear, oauth, salesforce, slack, snowflake.
+   * Known types: api-key, github, linear, oauth, photon, salesforce, slack, snowflake. Optional when \"connectionMethod\" is set.
    */
-  type: string;
+  type?: string | undefined;
   /**
    * Service slug or URL for which the connector is used.
    */
   service?: string | undefined;
+  /**
+   * Connection method slug of the service.
+   */
+  connectionMethod?: string | undefined;
+  /**
+   * Values for the connection method's templateFields.
+   */
+  params?: { [k: string]: string } | undefined;
+  /**
+   * Which of the service's targets this connector is for. Requires \"connectionMethod\" and must be one that method serves. Optional.
+   */
+  target?: string | undefined;
   uid?: string | undefined;
   name?: string | undefined;
   /**
@@ -515,6 +542,14 @@ export type CreateConnectorResponseBody = {
    * Best-effort identifier of the third-party service this client represents, independent of `type`. Examples: `'slack'`, `'mcp.linear.app'`, `'auth.example.com'`. Always non-empty on the API response — falls back through `storedClient.service ?? typeDef.service ?? typeDef.type`.
    */
   service: string;
+  /**
+   * The connection method this connector was created from, when the create request named one.
+   */
+  connectionMethod?: string | undefined;
+  /**
+   * Which of the service's products/surfaces this connector points at.
+   */
+  target?: string | undefined;
   name: string;
   clientUrl?: string | null | undefined;
   /**
@@ -572,6 +607,28 @@ export type CreateConnectorResponseBody = {
    */
   includes?: Includes | undefined;
 };
+
+/** @internal */
+export type TypePhoton$Outbound = {
+  projectId: string;
+  projectSecret: string;
+  webhookSecret?: string | undefined;
+};
+
+/** @internal */
+export const TypePhoton$outboundSchema: z.ZodType<
+  TypePhoton$Outbound,
+  z.ZodTypeDef,
+  TypePhoton
+> = z.object({
+  projectId: z.string(),
+  projectSecret: z.string(),
+  webhookSecret: z.string().optional(),
+});
+
+export function typePhotonToJSON(typePhoton: TypePhoton): string {
+  return JSON.stringify(TypePhoton$outboundSchema.parse(typePhoton));
+}
 
 /** @internal */
 export type TypeSnowflakeWif$Outbound = {
@@ -1228,6 +1285,30 @@ export function jwtBearerToJSON(jwtBearer: JwtBearer): string {
 }
 
 /** @internal */
+export type ClientAssertion$Outbound = {
+  type?: string | undefined;
+  ttl?: number | undefined;
+  claims?: { [k: string]: any } | undefined;
+};
+
+/** @internal */
+export const ClientAssertion$outboundSchema: z.ZodType<
+  ClientAssertion$Outbound,
+  z.ZodTypeDef,
+  ClientAssertion
+> = z.object({
+  type: z.string().optional(),
+  ttl: z.number().optional(),
+  claims: z.record(z.any()).optional(),
+});
+
+export function clientAssertionToJSON(
+  clientAssertion: ClientAssertion,
+): string {
+  return JSON.stringify(ClientAssertion$outboundSchema.parse(clientAssertion));
+}
+
+/** @internal */
 export type TypeOauth$Outbound = {
   serverUrl?: string | undefined;
   serverConfig?: ServerConfig$Outbound | undefined;
@@ -1246,6 +1327,7 @@ export type TypeOauth$Outbound = {
   defaultTokenExpiresIn?: number | undefined;
   authorizationUrlParams?: { [k: string]: string } | undefined;
   jwtBearer?: JwtBearer$Outbound | undefined;
+  clientAssertion?: ClientAssertion$Outbound | undefined;
 };
 
 /** @internal */
@@ -1271,6 +1353,7 @@ export const TypeOauth$outboundSchema: z.ZodType<
   defaultTokenExpiresIn: z.number().optional(),
   authorizationUrlParams: z.record(z.string()).optional(),
   jwtBearer: z.lazy(() => JwtBearer$outboundSchema).optional(),
+  clientAssertion: z.lazy(() => ClientAssertion$outboundSchema).optional(),
 });
 
 export function typeOauthToJSON(typeOauth: TypeOauth): string {
@@ -1283,6 +1366,7 @@ export type CreateConnectorData$Outbound =
   | TypeSlack$Outbound
   | TypeSalesforce$Outbound
   | TypeLinear$Outbound
+  | TypePhoton$Outbound
   | TypeOauth$Outbound
   | TypeApiKey$Outbound
   | TypeSnowflake$Outbound
@@ -1299,6 +1383,7 @@ export const CreateConnectorData$outboundSchema: z.ZodType<
   z.lazy(() => TypeSlack$outboundSchema),
   z.lazy(() => TypeSalesforce$outboundSchema),
   z.lazy(() => TypeLinear$outboundSchema),
+  z.lazy(() => TypePhoton$outboundSchema),
   z.lazy(() => TypeOauth$outboundSchema),
   z.lazy(() => TypeApiKey$outboundSchema),
   z.lazy(() => TypeSnowflake$outboundSchema),
@@ -1321,6 +1406,7 @@ export type CreateConnectorRequestBody$Outbound = {
     | TypeSlack$Outbound
     | TypeSalesforce$Outbound
     | TypeLinear$Outbound
+    | TypePhoton$Outbound
     | TypeOauth$Outbound
     | TypeApiKey$Outbound
     | TypeSnowflake$Outbound
@@ -1329,8 +1415,11 @@ export type CreateConnectorRequestBody$Outbound = {
   icon?: string | undefined;
   backgroundColor?: string | undefined;
   accentColor?: string | undefined;
-  type: string;
+  type?: string | undefined;
   service?: string | undefined;
+  connectionMethod?: string | undefined;
+  params?: { [k: string]: string } | undefined;
+  target?: string | undefined;
   uid?: string | undefined;
   name?: string | undefined;
   projectId?: string | undefined;
@@ -1350,6 +1439,7 @@ export const CreateConnectorRequestBody$outboundSchema: z.ZodType<
     z.lazy(() => TypeSlack$outboundSchema),
     z.lazy(() => TypeSalesforce$outboundSchema),
     z.lazy(() => TypeLinear$outboundSchema),
+    z.lazy(() => TypePhoton$outboundSchema),
     z.lazy(() => TypeOauth$outboundSchema),
     z.lazy(() => TypeApiKey$outboundSchema),
     z.lazy(() => TypeSnowflake$outboundSchema),
@@ -1359,8 +1449,11 @@ export const CreateConnectorRequestBody$outboundSchema: z.ZodType<
   icon: z.string().optional(),
   backgroundColor: z.string().optional(),
   accentColor: z.string().optional(),
-  type: z.string(),
+  type: z.string().optional(),
   service: z.string().optional(),
+  connectionMethod: z.string().optional(),
+  params: z.record(z.string()).optional(),
+  target: z.string().optional(),
   uid: z.string().optional(),
   name: z.string().optional(),
   projectId: z.string().optional(),
@@ -1802,6 +1895,8 @@ export const CreateConnectorResponseBody$inboundSchema: z.ZodType<
   uid: types.string(),
   type: CreateConnectorType$inboundSchema,
   service: types.string(),
+  connectionMethod: types.optional(types.string()),
+  target: types.optional(types.string()),
   name: types.string(),
   clientUrl: z.nullable(types.string()).optional(),
   redirectUri: types.optional(types.string()),

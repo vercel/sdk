@@ -3,19 +3,12 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload221Next } from "@vercel/sdk/models/onehundredandninetytwo.js";
+import { UserEventPayload221Next } from "@vercel/sdk/models/onehundredandsixtyfour.js";
 
-let value: UserEventPayload221Next = {
-  project: {
-    staticIps: {
-      enabled: false,
-    },
-  },
-};
+let value: UserEventPayload221Next = {};
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `project`                                                                    | [models.UserEventPayload221Project](../models/usereventpayload221project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field       | Type        | Required    | Description |
+| ----------- | ----------- | ----------- | ----------- |

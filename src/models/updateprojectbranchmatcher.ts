@@ -153,6 +153,7 @@ export const UpdateProjectBuildMachineElasticReason = {
   OomFailure: "oom-failure",
   EnospcFailure: "enospc-failure",
   BuildTimeoutFailure: "build-timeout-failure",
+  BasicFloor: "basic-floor",
   HighPeakMemory: "high-peak-memory",
   SustainedHighCpu: "sustained-high-cpu",
   HighPeakDisk: "high-peak-disk",

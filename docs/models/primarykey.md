@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PrimaryKey } from "@vercel/sdk/models/usereventpayload155newownerfeatureblocksworkfloweventsblockreason.js";
+import { PrimaryKey } from "@vercel/sdk/models/microfrontendsrequest.js";
 
 let value: PrimaryKey = {
   column: "<value>",

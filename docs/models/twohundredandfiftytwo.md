@@ -5,19 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFiftyTwo } from "@vercel/sdk/models/aws.js";
+import { TwoHundredAndFiftyTwo } from "@vercel/sdk/models/envid.js";
 
 let value: TwoHundredAndFiftyTwo = {
-  projectId: "<id>",
-  projectName: "<value>",
-  gitCommitStatus: false,
+  disableRepositoryDispatchEvents: false,
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `gitCommitStatus`  | *boolean*          | :heavy_check_mark: | N/A                |
+| Field                             | Type                              | Required                          | Description                       |
+| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| `disableRepositoryDispatchEvents` | *boolean*                         | :heavy_check_mark:                | N/A                               |

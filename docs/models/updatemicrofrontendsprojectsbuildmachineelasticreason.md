@@ -6,11 +6,11 @@
 import { UpdateMicrofrontendsProjectsBuildMachineElasticReason } from "@vercel/sdk/models/updatemicrofrontendsprojectsdeploymenttype.js";
 
 let value: UpdateMicrofrontendsProjectsBuildMachineElasticReason =
-  "short-build-duration";
+  "oom-failure";
 ```
 
 ## Values
 
 ```typescript
-"build-timeout-failure" | "enospc-failure" | "enterprise-floor" | "high-peak-disk" | "high-peak-memory" | "long-build-duration" | "oom-failure" | "short-build-duration" | "sustained-high-cpu"
+"basic-floor" | "build-timeout-failure" | "enospc-failure" | "enterprise-floor" | "high-peak-disk" | "high-peak-memory" | "long-build-duration" | "oom-failure" | "short-build-duration" | "sustained-high-cpu"
 ```

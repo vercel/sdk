@@ -624,6 +624,7 @@ export type ResponseBodyBuildMachineSelection = ClosedEnum<
 >;
 
 export const ResponseBodyBuildMachineElasticReason = {
+  BasicFloor: "basic-floor",
   BuildTimeoutFailure: "build-timeout-failure",
   EnospcFailure: "enospc-failure",
   EnterpriseFloor: "enterprise-floor",

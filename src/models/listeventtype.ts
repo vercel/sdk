@@ -282,6 +282,7 @@ export const Name = {
   LogDrainEnabled: "log-drain-enabled",
   Login: "login",
   ManualDeploymentPromotionCreated: "manual-deployment-promotion-created",
+  MarketplaceFlexCommitOptIn: "marketplace-flex-commit-opt-in",
   MarketplaceIntegrationAllowlistUpdated:
     "marketplace-integration-allowlist-updated",
   MicrofrontendGroupAdded: "microfrontend-group-added",
@@ -588,6 +589,7 @@ export const Name = {
   TracingConfigured: "tracing-configured",
   TracingDisabled: "tracing-disabled",
   UnlinkLoginConnection: "unlink-login-connection",
+  UpdateAccountFlowTriggered: "update-account-flow-triggered",
   UserDelete: "user-delete",
   UserEmuAccountArchived: "user-emu-account-archived",
   UserEmuAccountDeleted: "user-emu-account-deleted",
@@ -953,6 +955,7 @@ export const ReplacedBy = {
   LogDrainEnabled: "log-drain-enabled",
   Login: "login",
   ManualDeploymentPromotionCreated: "manual-deployment-promotion-created",
+  MarketplaceFlexCommitOptIn: "marketplace-flex-commit-opt-in",
   MarketplaceIntegrationAllowlistUpdated:
     "marketplace-integration-allowlist-updated",
   MicrofrontendGroupAdded: "microfrontend-group-added",
@@ -1259,6 +1262,7 @@ export const ReplacedBy = {
   TracingConfigured: "tracing-configured",
   TracingDisabled: "tracing-disabled",
   UnlinkLoginConnection: "unlink-login-connection",
+  UpdateAccountFlowTriggered: "update-account-flow-triggered",
   UserDelete: "user-delete",
   UserEmuAccountArchived: "user-emu-account-archived",
   UserEmuAccountDeleted: "user-emu-account-deleted",

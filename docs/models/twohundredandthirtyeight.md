@@ -5,16 +5,16 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndThirtyEight } from "@vercel/sdk/models/aws.js";
+import { TwoHundredAndThirtyEight } from "@vercel/sdk/models/envid.js";
 
 let value: TwoHundredAndThirtyEight = {
   projectId: "<id>",
   projectName: "<value>",
   previous: {
-    functionDefaultMemoryType: "<value>",
+    functionDefaultTimeout: 5212.63,
   },
   next: {
-    functionDefaultMemoryType: "<value>",
+    functionDefaultTimeout: 5092.01,
   },
 };
 ```

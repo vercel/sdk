@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFiftySeven } from "@vercel/sdk/models/usereventpayload155newownerfeatureblocksworkfloweventsblockreason.js";
+import { OneHundredAndFiftySeven } from "@vercel/sdk/models/microfrontendsrequest.js";
 
 let value: OneHundredAndFiftySeven = {
   integration: {

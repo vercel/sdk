@@ -439,7 +439,7 @@ export type DefaultProjectJobs1 = {
 export type PatchTeamDefaultProjectJobs = DefaultProjectJobs1 | string;
 
 /**
- * Default build machine type for new builds: standard, enhanced, turbo, or elastic.
+ * Default build machine type for new builds: basic, standard, enhanced, turbo, or elastic.
  */
 export const PatchTeamDefault = {
   Basic: "basic",
@@ -449,7 +449,7 @@ export const PatchTeamDefault = {
   Elastic: "elastic",
 } as const;
 /**
- * Default build machine type for new builds: standard, enhanced, turbo, or elastic.
+ * Default build machine type for new builds: basic, standard, enhanced, turbo, or elastic.
  */
 export type PatchTeamDefault = ClosedEnum<typeof PatchTeamDefault>;
 
@@ -458,7 +458,7 @@ export type PatchTeamDefault = ClosedEnum<typeof PatchTeamDefault>;
  */
 export type PatchTeamBuildMachine = {
   /**
-   * Default build machine type for new builds: standard, enhanced, turbo, or elastic.
+   * Default build machine type for new builds: basic, standard, enhanced, turbo, or elastic.
    */
   default?: PatchTeamDefault | undefined;
 };

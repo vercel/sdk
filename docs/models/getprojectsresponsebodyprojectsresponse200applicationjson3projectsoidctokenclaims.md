@@ -5,7 +5,7 @@
 ```typescript
 import {
   GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsOidcTokenClaims,
-} from "@vercel/sdk/models/getprojectsvaluecurrentvalue.js";
+} from "@vercel/sdk/models/getprojectsvalue3.js";
 
 let value:
   GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsOidcTokenClaims =

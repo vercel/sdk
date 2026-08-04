@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentResponseBodyFramework } from "@vercel/sdk/models/createdeploymentroutesmitigate.js";
+import { CreateDeploymentResponseBodyFramework } from "@vercel/sdk/models/createdeploymentvaluedeploymentsresponse2.js";
 
 let value: CreateDeploymentResponseBodyFramework = "elysia";
 ```

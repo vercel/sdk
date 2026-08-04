@@ -25,8 +25,6 @@ import {
   CreateProjectPermissions$inboundSchema,
   CreateProjectProjectsResourceConfig,
   CreateProjectProjectsResourceConfig$inboundSchema,
-  CreateProjectProjectsResponseAction,
-  CreateProjectProjectsResponseAction$inboundSchema,
   CreateProjectProjectsSsoProtection,
   CreateProjectProjectsSsoProtection$inboundSchema,
   CreateProjectRollbackDescription,
@@ -47,10 +45,10 @@ import {
   DefaultResourceConfig$inboundSchema,
   Features,
   Features$inboundSchema,
-  FlatRateTier,
-  FlatRateTier$inboundSchema,
   GitProviderOptions,
   GitProviderOptions$inboundSchema,
+  InterstitialHistory,
+  InterstitialHistory$inboundSchema,
   LastAliasRequest,
   LastAliasRequest$inboundSchema,
   LastRollbackTarget,
@@ -61,7 +59,7 @@ import {
   RollingRelease$inboundSchema,
   UsageStatus,
   UsageStatus$inboundSchema,
-} from "./createprojectprojectsresponseaction.js";
+} from "./interstitialhistory.js";
 import {
   Alias,
   Alias$inboundSchema,
@@ -115,15 +113,6 @@ import {
   SpeedInsights$inboundSchema,
 } from "./sandbox.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-
-export type InterstitialHistory = {
-  action: CreateProjectProjectsResponseAction;
-  createdAt: number;
-  caseId?: string | undefined;
-  reason?: string | undefined;
-  actor?: string | undefined;
-  comment?: string | undefined;
-};
 
 export type CreateProjectAbuse = {
   scanner?: string | undefined;
@@ -352,7 +341,6 @@ export type CreateProjectResponseBody = {
    */
   deploymentPolicy?: CreateProjectDeploymentPolicy | null | undefined;
   tier?: string | undefined;
-  flatRateTier?: FlatRateTier | undefined;
   usageStatus?: UsageStatus | undefined;
   features?: Features | undefined;
   v0?: boolean | undefined;
@@ -365,30 +353,6 @@ export type CreateProjectResponseBody = {
   tracing?: CreateProjectTracing | undefined;
   avatar?: string | null | undefined;
 };
-
-/** @internal */
-export const InterstitialHistory$inboundSchema: z.ZodType<
-  InterstitialHistory,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  action: CreateProjectProjectsResponseAction$inboundSchema,
-  createdAt: types.number(),
-  caseId: types.optional(types.string()),
-  reason: types.optional(types.string()),
-  actor: types.optional(types.string()),
-  comment: types.optional(types.string()),
-});
-
-export function interstitialHistoryFromJSON(
-  jsonString: string,
-): SafeParseResult<InterstitialHistory, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => InterstitialHistory$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'InterstitialHistory' from JSON`,
-  );
-}
 
 /** @internal */
 export const CreateProjectAbuse$inboundSchema: z.ZodType<
@@ -405,7 +369,7 @@ export const CreateProjectAbuse$inboundSchema: z.ZodType<
   ),
   interstitial: types.optional(types.boolean()),
   interstitialHistory: types.optional(
-    z.array(z.lazy(() => InterstitialHistory$inboundSchema)),
+    z.array(InterstitialHistory$inboundSchema),
   ),
 });
 
@@ -884,7 +848,6 @@ export const CreateProjectResponseBody$inboundSchema: z.ZodType<
   deploymentPolicy: z.nullable(CreateProjectDeploymentPolicy$inboundSchema)
     .optional(),
   tier: types.optional(types.string()),
-  flatRateTier: types.optional(FlatRateTier$inboundSchema),
   usageStatus: types.optional(UsageStatus$inboundSchema),
   features: types.optional(Features$inboundSchema),
   v0: types.optional(types.boolean()),

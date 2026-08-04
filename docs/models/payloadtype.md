@@ -5,7 +5,7 @@ The type of this cosmos doc instance, if blank, assume secret.
 ## Example Usage
 
 ```typescript
-import { PayloadType } from "@vercel/sdk/models/job6.js";
+import { PayloadType } from "@vercel/sdk/models/usereventjobpayload966gitcomments.js";
 
 let value: PayloadType = "encrypted";
 ```

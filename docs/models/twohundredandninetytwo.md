@@ -5,23 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndNinetyTwo } from "@vercel/sdk/models/envid.js";
+import { TwoHundredAndNinetyTwo } from "@vercel/sdk/models/envid2.js";
 
 let value: TwoHundredAndNinetyTwo = {
   projectId: "<id>",
   projectName: "<value>",
-  next: {
-    skewProtectionMaxAge: 3709.71,
-  },
-  previous: {},
+  inheritDeploymentProtection: true,
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `next`                                                                         | [models.UserEventPayload292Next](../models/usereventpayload292next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload292Previous](../models/usereventpayload292previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                         | Type                          | Required                      | Description                   |
+| ----------------------------- | ----------------------------- | ----------------------------- | ----------------------------- |
+| `projectId`                   | *string*                      | :heavy_check_mark:            | N/A                           |
+| `projectName`                 | *string*                      | :heavy_check_mark:            | N/A                           |
+| `inheritDeploymentProtection` | *boolean*                     | :heavy_check_mark:            | N/A                           |

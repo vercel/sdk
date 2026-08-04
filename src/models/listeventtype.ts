@@ -281,6 +281,8 @@ export const Name = {
   LogDrainDisabled: "log-drain-disabled",
   LogDrainEnabled: "log-drain-enabled",
   Login: "login",
+  LoginConnectionLinked: "login-connection-linked",
+  LoginConnectionUnlinked: "login-connection-unlinked",
   ManualDeploymentPromotionCreated: "manual-deployment-promotion-created",
   MarketplaceFlexCommitOptIn: "marketplace-flex-commit-opt-in",
   MarketplaceIntegrationAllowlistUpdated:
@@ -314,6 +316,8 @@ export const Name = {
   OidcPolicyUsedToObtainAppToken: "oidc-policy-used-to-obtain-app-token",
   OrganizationCreate: "organization-create",
   OrganizationDelete: "organization-delete",
+  OrganizationDsyncGroupDelete: "organization-dsync-group-delete",
+  OrganizationDsyncGroupUpsert: "organization-dsync-group-upsert",
   OrganizationSlugUpdate: "organization-slug-update",
   OrganizationTeamAdd: "organization-team-add",
   OrganizationTeamCreate: "organization-team-create",
@@ -480,6 +484,7 @@ export const Name = {
   RuntimeCachePurgeAll: "runtime-cache-purge-all",
   SandboxAliasAssigned: "sandbox-alias-assigned",
   SandboxAliasDelete: "sandbox-alias-delete",
+  SandboxSnapshotRegionsUpdated: "sandbox-snapshot-regions-updated",
   Scale: "scale",
   ScaleAuto: "scale-auto",
   SecondaryEmailAdded: "secondary-email-added",
@@ -598,6 +603,7 @@ export const Name = {
   UserMfaChallengeVerified: "user-mfa-challenge-verified",
   UserMfaChangeFailed: "user-mfa-change-failed",
   UserMfaConfigurationUpdated: "user-mfa-configuration-updated",
+  UserMfaRecoveryCodeUsed: "user-mfa-recovery-code-used",
   UserMfaRecoveryCodesRegenerated: "user-mfa-recovery-codes-regenerated",
   UserMfaRemoved: "user-mfa-removed",
   UserMfaSetupSkipped: "user-mfa-setup-skipped",
@@ -618,6 +624,7 @@ export const Name = {
   VcrRepositoryPermissionAdded: "vcr-repository-permission-added",
   VcrRepositoryPermissionRemoved: "vcr-repository-permission-removed",
   VcrRepositoryPermissionsCleared: "vcr-repository-permissions-cleared",
+  VcrRepositoryVisibilityChanged: "vcr-repository-visibility-changed",
   VercelAgentElevatedPermissionsApproved:
     "vercel-agent-elevated-permissions-approved",
   VercelAgentElevatedPermissionsRequested:
@@ -954,6 +961,8 @@ export const ReplacedBy = {
   LogDrainDisabled: "log-drain-disabled",
   LogDrainEnabled: "log-drain-enabled",
   Login: "login",
+  LoginConnectionLinked: "login-connection-linked",
+  LoginConnectionUnlinked: "login-connection-unlinked",
   ManualDeploymentPromotionCreated: "manual-deployment-promotion-created",
   MarketplaceFlexCommitOptIn: "marketplace-flex-commit-opt-in",
   MarketplaceIntegrationAllowlistUpdated:
@@ -987,6 +996,8 @@ export const ReplacedBy = {
   OidcPolicyUsedToObtainAppToken: "oidc-policy-used-to-obtain-app-token",
   OrganizationCreate: "organization-create",
   OrganizationDelete: "organization-delete",
+  OrganizationDsyncGroupDelete: "organization-dsync-group-delete",
+  OrganizationDsyncGroupUpsert: "organization-dsync-group-upsert",
   OrganizationSlugUpdate: "organization-slug-update",
   OrganizationTeamAdd: "organization-team-add",
   OrganizationTeamCreate: "organization-team-create",
@@ -1153,6 +1164,7 @@ export const ReplacedBy = {
   RuntimeCachePurgeAll: "runtime-cache-purge-all",
   SandboxAliasAssigned: "sandbox-alias-assigned",
   SandboxAliasDelete: "sandbox-alias-delete",
+  SandboxSnapshotRegionsUpdated: "sandbox-snapshot-regions-updated",
   Scale: "scale",
   ScaleAuto: "scale-auto",
   SecondaryEmailAdded: "secondary-email-added",
@@ -1271,6 +1283,7 @@ export const ReplacedBy = {
   UserMfaChallengeVerified: "user-mfa-challenge-verified",
   UserMfaChangeFailed: "user-mfa-change-failed",
   UserMfaConfigurationUpdated: "user-mfa-configuration-updated",
+  UserMfaRecoveryCodeUsed: "user-mfa-recovery-code-used",
   UserMfaRecoveryCodesRegenerated: "user-mfa-recovery-codes-regenerated",
   UserMfaRemoved: "user-mfa-removed",
   UserMfaSetupSkipped: "user-mfa-setup-skipped",
@@ -1291,6 +1304,7 @@ export const ReplacedBy = {
   VcrRepositoryPermissionAdded: "vcr-repository-permission-added",
   VcrRepositoryPermissionRemoved: "vcr-repository-permission-removed",
   VcrRepositoryPermissionsCleared: "vcr-repository-permissions-cleared",
+  VcrRepositoryVisibilityChanged: "vcr-repository-visibility-changed",
   VercelAgentElevatedPermissionsApproved:
     "vercel-agent-elevated-permissions-approved",
   VercelAgentElevatedPermissionsRequested:

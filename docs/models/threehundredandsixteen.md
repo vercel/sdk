@@ -5,31 +5,25 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSixteen } from "@vercel/sdk/models/ssoprotection2.js";
+import { ThreeHundredAndSixteen } from "@vercel/sdk/models/twohundredandninetynine.js";
 
 let value: ThreeHundredAndSixteen = {
-  budget: {
-    type: "fixed",
-    fixedBudget: 9734.41,
-    previousSpend: [
-      3589.85,
-      1456.2,
-    ],
-    notifiedAt: [
-      5887.25,
-      1508.48,
-      987.93,
-    ],
-    createdAt: 8363.55,
-    isActive: false,
-    teamId: "<id>",
-    id: "<id>",
-  },
+  email: "Marge_Considine58@hotmail.com",
+  bitbucketLogin: "<value>",
+  bitbucketEmail: "<value>",
+  bitbucketName: "<value>",
+  zeitAccount: "<value>",
+  zeitAccountType: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `budget`                                                                   | [models.UserEventPayload316Budget](../models/usereventpayload316budget.md) | :heavy_check_mark:                                                         | Represents a budget for tracking and notifying teams on their spending.    |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `email`            | *string*           | :heavy_check_mark: | N/A                |
+| `bitbucketLogin`   | *string*           | :heavy_check_mark: | N/A                |
+| `bitbucketEmail`   | *string*           | :heavy_check_mark: | N/A                |
+| `bitbucketName`    | *string*           | :heavy_check_mark: | N/A                |
+| `zeitAccount`      | *string*           | :heavy_check_mark: | N/A                |
+| `zeitAccountType`  | *string*           | :heavy_check_mark: | N/A                |

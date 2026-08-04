@@ -5,7 +5,7 @@ The team that owns the deployment if any
 ## Example Usage
 
 ```typescript
-import { GetDeploymentResponseBodyTeam } from "@vercel/sdk/models/getdeploymentresponsebodynodeversion.js";
+import { GetDeploymentResponseBodyTeam } from "@vercel/sdk/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonrepoid.js";
 
 let value: GetDeploymentResponseBodyTeam = {
   id: "<id>",

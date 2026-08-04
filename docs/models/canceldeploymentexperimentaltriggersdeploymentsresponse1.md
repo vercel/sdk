@@ -5,7 +5,7 @@ Queue trigger input event for v1beta (from vercel.json config). Requires explici
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentExperimentalTriggersDeploymentsResponse1 } from "@vercel/sdk/models/gitrepo3.js";
+import { CancelDeploymentExperimentalTriggersDeploymentsResponse1 } from "@vercel/sdk/models/services1.js";
 
 let value: CancelDeploymentExperimentalTriggersDeploymentsResponse1 = {
   type: "queue/v1beta",

@@ -12,13 +12,13 @@ import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import {
+  GetDeploymentRequest,
+  GetDeploymentRequest$outboundSchema,
+} from "../models/getdeploymentgitsourcedeploymentsresponse200applicationjsonrepoid.js";
+import {
   GetDeploymentResponseBody,
   GetDeploymentResponseBody$inboundSchema,
 } from "../models/getdeploymentresponsebody.js";
-import {
-  GetDeploymentRequest,
-  GetDeploymentRequest$outboundSchema,
-} from "../models/getdeploymentresponsebodynodeversion.js";
 import {
   ConnectionError,
   InvalidRequestError,

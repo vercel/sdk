@@ -5,7 +5,7 @@ Where was the deployment created from. Best-effort guess for metrics only — no
 ## Example Usage
 
 ```typescript
-import { GetDeploymentResponseBodyDeploymentsSource } from "@vercel/sdk/models/getdeploymentresponsebodynodeversion.js";
+import { GetDeploymentResponseBodyDeploymentsSource } from "@vercel/sdk/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonrepoid.js";
 
 let value: GetDeploymentResponseBodyDeploymentsSource = "cli";
 ```
@@ -13,5 +13,5 @@ let value: GetDeploymentResponseBodyDeploymentsSource = "cli";
 ## Values
 
 ```typescript
-"api-trigger-git-deploy" | "cli" | "clone/repo" | "drop" | "git" | "import" | "import/repo" | "redeploy" | "v0-web"
+"api-trigger-git-deploy" | "cli" | "clone/repo" | "drop" | "git" | "git-deploy-hook" | "import" | "import/repo" | "redeploy" | "v0-web"
 ```

@@ -119,6 +119,14 @@ export type UpdateProjectBuildMachineType = ClosedEnum<
   typeof UpdateProjectBuildMachineType
 >;
 
+export const UpdateProjectBuildMachineSelection = {
+  Elastic: "elastic",
+  Fixed: "fixed",
+} as const;
+export type UpdateProjectBuildMachineSelection = ClosedEnum<
+  typeof UpdateProjectBuildMachineSelection
+>;
+
 export const UpdateProjectConfiguration = {
   SkipNamespaceQueue: "SKIP_NAMESPACE_QUEUE",
   WaitForNamespaceQueue: "WAIT_FOR_NAMESPACE_QUEUE",
@@ -139,14 +147,6 @@ export const UpdateProjectFunctionDefaultMemoryType = {
 } as const;
 export type UpdateProjectFunctionDefaultMemoryType = ClosedEnum<
   typeof UpdateProjectFunctionDefaultMemoryType
->;
-
-export const UpdateProjectBuildMachineSelection = {
-  Elastic: "elastic",
-  Fixed: "fixed",
-} as const;
-export type UpdateProjectBuildMachineSelection = ClosedEnum<
-  typeof UpdateProjectBuildMachineSelection
 >;
 
 export const UpdateProjectBuildMachineElasticReason = {
@@ -170,6 +170,7 @@ export type UpdateProjectBuildMachineElasticReason = ClosedEnum<
  */
 export type UpdateProjectResourceConfig = {
   buildMachineType?: UpdateProjectBuildMachineType | undefined;
+  buildMachineSelection?: UpdateProjectBuildMachineSelection | undefined;
   buildQueue?: UpdateProjectBuildQueue | undefined;
   fluid?: boolean | undefined;
   /**
@@ -185,7 +186,6 @@ export type UpdateProjectResourceConfig = {
    */
   functionZeroConfigFailover?: boolean | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
-  buildMachineSelection?: UpdateProjectBuildMachineSelection | undefined;
   buildMachineElasticLastUpdated?: number | undefined;
   buildMachineElasticReason?:
     | UpdateProjectBuildMachineElasticReason
@@ -1625,6 +1625,11 @@ export const UpdateProjectBuildMachineType$outboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(UpdateProjectBuildMachineType);
 
 /** @internal */
+export const UpdateProjectBuildMachineSelection$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectBuildMachineSelection
+> = z.nativeEnum(UpdateProjectBuildMachineSelection);
+
+/** @internal */
 export const UpdateProjectConfiguration$outboundSchema: z.ZodNativeEnum<
   typeof UpdateProjectConfiguration
 > = z.nativeEnum(UpdateProjectConfiguration);
@@ -1658,11 +1663,6 @@ export const UpdateProjectFunctionDefaultMemoryType$outboundSchema:
   );
 
 /** @internal */
-export const UpdateProjectBuildMachineSelection$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateProjectBuildMachineSelection
-> = z.nativeEnum(UpdateProjectBuildMachineSelection);
-
-/** @internal */
 export const UpdateProjectBuildMachineElasticReason$outboundSchema:
   z.ZodNativeEnum<typeof UpdateProjectBuildMachineElasticReason> = z.nativeEnum(
     UpdateProjectBuildMachineElasticReason,
@@ -1671,6 +1671,7 @@ export const UpdateProjectBuildMachineElasticReason$outboundSchema:
 /** @internal */
 export type UpdateProjectResourceConfig$Outbound = {
   buildMachineType?: string | undefined;
+  buildMachineSelection?: string | undefined;
   buildQueue?: UpdateProjectBuildQueue$Outbound | undefined;
   fluid?: boolean | undefined;
   functionDefaultRegions?: Array<string> | undefined;
@@ -1678,7 +1679,6 @@ export type UpdateProjectResourceConfig$Outbound = {
   functionDefaultMemoryType?: string | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
-  buildMachineSelection?: string | undefined;
   buildMachineElasticLastUpdated?: number | undefined;
   buildMachineElasticReason?: string | undefined;
   isNSNBDisabled?: boolean | undefined;
@@ -1692,6 +1692,8 @@ export const UpdateProjectResourceConfig$outboundSchema: z.ZodType<
   UpdateProjectResourceConfig
 > = z.object({
   buildMachineType: UpdateProjectBuildMachineType$outboundSchema.optional(),
+  buildMachineSelection: UpdateProjectBuildMachineSelection$outboundSchema
+    .optional(),
   buildQueue: z.lazy(() => UpdateProjectBuildQueue$outboundSchema).optional(),
   fluid: z.boolean().optional(),
   functionDefaultRegions: z.array(z.string()).optional(),
@@ -1700,8 +1702,6 @@ export const UpdateProjectResourceConfig$outboundSchema: z.ZodType<
     UpdateProjectFunctionDefaultMemoryType$outboundSchema.optional(),
   functionZeroConfigFailover: z.boolean().optional(),
   elasticConcurrencyEnabled: z.boolean().optional(),
-  buildMachineSelection: UpdateProjectBuildMachineSelection$outboundSchema
-    .optional(),
   buildMachineElasticLastUpdated: z.number().optional(),
   buildMachineElasticReason:
     UpdateProjectBuildMachineElasticReason$outboundSchema.optional(),

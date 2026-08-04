@@ -21,18 +21,18 @@ import {
   ResponseBodyDeploymentExpiration$inboundSchema,
   ResponseBodyIpBuckets,
   ResponseBodyIpBuckets$inboundSchema,
-} from "./getprojectscontenthint6.js";
+} from "./getprojectscontenthint5.js";
 import {
   GetProjectsResponseBody3,
   GetProjectsResponseBody3$inboundSchema,
-} from "./getprojectsresponsebodytrustedsources.js";
+} from "./getprojectsresponsebodygitcomments.js";
 import {
   GetProjectsResponseBodyNodeVersion,
   GetProjectsResponseBodyNodeVersion$inboundSchema,
-  GetProjectsRouteProjectsHas,
-  GetProjectsRouteProjectsHas$inboundSchema,
-  GetProjectsRouteProjectsMitigate,
-  GetProjectsRouteProjectsMitigate$inboundSchema,
+  GetProjectsResponseBodyResourceConfig,
+  GetProjectsResponseBodyResourceConfig$inboundSchema,
+  GetProjectsRouteProjects2,
+  GetProjectsRouteProjects2$inboundSchema,
   ResponseBodyBlock,
   ResponseBodyBlock$inboundSchema,
   ResponseBodyEnv,
@@ -55,8 +55,6 @@ import {
   ResponseBodyPassport$inboundSchema,
   ResponseBodyPasswordProtection,
   ResponseBodyPasswordProtection$inboundSchema,
-  ResponseBodyResourceConfig,
-  ResponseBodyResourceConfig$inboundSchema,
   ResponseBodyRollingRelease,
   ResponseBodyRollingRelease$inboundSchema,
   ResponseBodySecurity,
@@ -71,14 +69,8 @@ import {
   ResponseBodyTrustedSources$inboundSchema,
   ResponseBodyWebAnalytics,
   ResponseBodyWebAnalytics$inboundSchema,
-} from "./getprojectsrouteprojectsmitigate.js";
+} from "./getprojectsrouteprojects2.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-
-export type GetProjectsRouteProjects2 = {
-  has: Array<GetProjectsRouteProjectsHas>;
-  mitigate: GetProjectsRouteProjectsMitigate;
-  src?: string | undefined;
-};
 
 export type GetProjectsRouteProjects1 = {
   src: string;
@@ -325,7 +317,7 @@ export type GetProjectsResponseBody1 = {
   outputDirectory?: string | null | undefined;
   passwordProtection?: ResponseBodyPasswordProtection | null | undefined;
   passport?: ResponseBodyPassport | null | undefined;
-  resourceConfig: ResponseBodyResourceConfig;
+  resourceConfig: GetProjectsResponseBodyResourceConfig;
   /**
    * Project-level rolling release configuration that defines how deployments should be gradually rolled out
    */
@@ -365,27 +357,6 @@ export type GetProjectsResponseBody =
   | Array<GetProjectsResponseBody1>;
 
 /** @internal */
-export const GetProjectsRouteProjects2$inboundSchema: z.ZodType<
-  GetProjectsRouteProjects2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  has: z.array(GetProjectsRouteProjectsHas$inboundSchema),
-  mitigate: GetProjectsRouteProjectsMitigate$inboundSchema,
-  src: types.optional(types.string()),
-});
-
-export function getProjectsRouteProjects2FromJSON(
-  jsonString: string,
-): SafeParseResult<GetProjectsRouteProjects2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetProjectsRouteProjects2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProjectsRouteProjects2' from JSON`,
-  );
-}
-
-/** @internal */
 export const GetProjectsRouteProjects1$inboundSchema: z.ZodType<
   GetProjectsRouteProjects1,
   z.ZodTypeDef,
@@ -413,7 +384,7 @@ export const GetProjectsBlockHistoryProjectsRoute$inboundSchema: z.ZodType<
   unknown
 > = smartUnion([
   z.lazy(() => GetProjectsRouteProjects1$inboundSchema),
-  z.lazy(() => GetProjectsRouteProjects2$inboundSchema),
+  GetProjectsRouteProjects2$inboundSchema,
 ]);
 
 export function getProjectsBlockHistoryProjectsRouteFromJSON(
@@ -436,7 +407,7 @@ export const GetProjectsBlockHistory4$inboundSchema: z.ZodType<
   action: types.literal("route-unblocked"),
   route: smartUnion([
     z.lazy(() => GetProjectsRouteProjects1$inboundSchema),
-    z.lazy(() => GetProjectsRouteProjects2$inboundSchema),
+    GetProjectsRouteProjects2$inboundSchema,
   ]),
   statusCode: types.optional(types.number()),
   createdAt: types.number(),
@@ -1088,7 +1059,7 @@ export const GetProjectsResponseBody1$inboundSchema: z.ZodType<
   passwordProtection: z.nullable(ResponseBodyPasswordProtection$inboundSchema)
     .optional(),
   passport: z.nullable(ResponseBodyPassport$inboundSchema).optional(),
-  resourceConfig: ResponseBodyResourceConfig$inboundSchema,
+  resourceConfig: GetProjectsResponseBodyResourceConfig$inboundSchema,
   rollingRelease: z.nullable(ResponseBodyRollingRelease$inboundSchema)
     .optional(),
   rootDirectory: z.nullable(types.string()).optional(),

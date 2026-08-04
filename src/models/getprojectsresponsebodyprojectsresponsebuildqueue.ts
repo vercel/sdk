@@ -1758,7 +1758,7 @@ export type GetProjectsResponseBodyProjectsBuildQueue = {
     | undefined;
 };
 
-export type GetProjectsResponseBodyProjectsResourceConfig = {
+export type GetProjectsResponseBodyProjectsResponseResourceConfig = {
   elasticConcurrencyEnabled?: boolean | undefined;
   fluid?: boolean | undefined;
   functionDefaultRegions: Array<string>;
@@ -4924,9 +4924,9 @@ export function getProjectsResponseBodyProjectsBuildQueueFromJSON(
 }
 
 /** @internal */
-export const GetProjectsResponseBodyProjectsResourceConfig$inboundSchema:
+export const GetProjectsResponseBodyProjectsResponseResourceConfig$inboundSchema:
   z.ZodType<
-    GetProjectsResponseBodyProjectsResourceConfig,
+    GetProjectsResponseBodyProjectsResponseResourceConfig,
     z.ZodTypeDef,
     unknown
   > = z.object({
@@ -4955,19 +4955,19 @@ export const GetProjectsResponseBodyProjectsResourceConfig$inboundSchema:
     enableFunctionsBeta: types.optional(types.boolean()),
   });
 
-export function getProjectsResponseBodyProjectsResourceConfigFromJSON(
+export function getProjectsResponseBodyProjectsResponseResourceConfigFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetProjectsResponseBodyProjectsResourceConfig,
+  GetProjectsResponseBodyProjectsResponseResourceConfig,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetProjectsResponseBodyProjectsResourceConfig$inboundSchema.parse(
+      GetProjectsResponseBodyProjectsResponseResourceConfig$inboundSchema.parse(
         JSON.parse(x),
       ),
-    `Failed to parse 'GetProjectsResponseBodyProjectsResourceConfig' from JSON`,
+    `Failed to parse 'GetProjectsResponseBodyProjectsResponseResourceConfig' from JSON`,
   );
 }
 

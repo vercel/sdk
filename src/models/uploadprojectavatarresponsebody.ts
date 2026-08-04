@@ -4,7 +4,6 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
-import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -75,12 +74,12 @@ import {
   UploadProjectAvatarAbuse$inboundSchema,
   UploadProjectAvatarDeploymentPolicy,
   UploadProjectAvatarDeploymentPolicy$inboundSchema,
+  UploadProjectAvatarDestination,
+  UploadProjectAvatarDestination$inboundSchema,
   UploadProjectAvatarDismissedToasts,
   UploadProjectAvatarDismissedToasts$inboundSchema,
   UploadProjectAvatarFeatures,
   UploadProjectAvatarFeatures$inboundSchema,
-  UploadProjectAvatarFlatRateTier,
-  UploadProjectAvatarFlatRateTier$inboundSchema,
   UploadProjectAvatarGitComments,
   UploadProjectAvatarGitComments$inboundSchema,
   UploadProjectAvatarGitProviderOptions,
@@ -113,21 +112,7 @@ import {
   UploadProjectAvatarUsageStatus$inboundSchema,
   UploadProjectAvatarWebAnalytics,
   UploadProjectAvatarWebAnalytics$inboundSchema,
-} from "./uploadprojectavatarprojectsenv.js";
-
-/**
- * Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery type when project tracing is computed; absent on configs persisted before this field existed.
- */
-export const UploadProjectAvatarDestination = {
-  External: "external",
-  Internal: "internal",
-} as const;
-/**
- * Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery type when project tracing is computed; absent on configs persisted before this field existed.
- */
-export type UploadProjectAvatarDestination = ClosedEnum<
-  typeof UploadProjectAvatarDestination
->;
+} from "./uploadprojectavatardestination.js";
 
 export type UploadProjectAvatarSamplingRules = {
   rate: number;
@@ -249,7 +234,6 @@ export type UploadProjectAvatarResponseBody = {
    */
   deploymentPolicy?: UploadProjectAvatarDeploymentPolicy | null | undefined;
   tier?: string | undefined;
-  flatRateTier?: UploadProjectAvatarFlatRateTier | undefined;
   usageStatus?: UploadProjectAvatarUsageStatus | undefined;
   features?: UploadProjectAvatarFeatures | undefined;
   v0?: boolean | undefined;
@@ -262,11 +246,6 @@ export type UploadProjectAvatarResponseBody = {
   tracing?: UploadProjectAvatarTracing | undefined;
   avatar?: string | null | undefined;
 };
-
-/** @internal */
-export const UploadProjectAvatarDestination$inboundSchema: z.ZodNativeEnum<
-  typeof UploadProjectAvatarDestination
-> = z.nativeEnum(UploadProjectAvatarDestination);
 
 /** @internal */
 export const UploadProjectAvatarSamplingRules$inboundSchema: z.ZodType<
@@ -441,7 +420,6 @@ export const UploadProjectAvatarResponseBody$inboundSchema: z.ZodType<
     UploadProjectAvatarDeploymentPolicy$inboundSchema,
   ).optional(),
   tier: types.optional(types.string()),
-  flatRateTier: types.optional(UploadProjectAvatarFlatRateTier$inboundSchema),
   usageStatus: types.optional(UploadProjectAvatarUsageStatus$inboundSchema),
   features: types.optional(UploadProjectAvatarFeatures$inboundSchema),
   v0: types.optional(types.boolean()),

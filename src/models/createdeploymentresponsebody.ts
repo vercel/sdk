@@ -12,18 +12,12 @@ import { smartUnion } from "../types/smartUnion.js";
 import {
   CreateDeploymentRoutesDeployments2,
   CreateDeploymentRoutesDeployments2$inboundSchema,
-  CreateDeploymentRoutesDeploymentsDestination,
-  CreateDeploymentRoutesDeploymentsDestination$inboundSchema,
   CreateDeploymentRoutesDeploymentsHas,
   CreateDeploymentRoutesDeploymentsHas$inboundSchema,
   CreateDeploymentRoutesDeploymentsMissing,
   CreateDeploymentRoutesDeploymentsMissing$inboundSchema,
   CreateDeploymentRoutesDeploymentsMitigate,
   CreateDeploymentRoutesDeploymentsMitigate$inboundSchema,
-  CreateDeploymentRoutesDeploymentsTransforms,
-  CreateDeploymentRoutesDeploymentsTransforms$inboundSchema,
-  CreateDeploymentRoutesLocale,
-  CreateDeploymentRoutesLocale$inboundSchema,
   CreateDeploymentServicesDeploymentsBuilder,
   CreateDeploymentServicesDeploymentsBuilder$inboundSchema,
   CreateDeploymentServicesFunctions,
@@ -32,13 +26,17 @@ import {
   CreateDeploymentServicesHeaders$inboundSchema,
   CreateDeploymentServicesRedirects,
   CreateDeploymentServicesRedirects$inboundSchema,
+  CreateDeploymentTransformsDeployments1,
+  CreateDeploymentTransformsDeployments1$inboundSchema,
+  CreateDeploymentTransformsDeployments2,
+  CreateDeploymentTransformsDeployments2$inboundSchema,
   ResponseBodyRoutes,
   ResponseBodyRoutes$inboundSchema,
   ServicesBindings,
   ServicesBindings$inboundSchema,
   ServicesRewrites,
   ServicesRewrites$inboundSchema,
-} from "./createdeploymentroutesdeploymentsdestination.js";
+} from "./createdeploymenttransformsdeployments1.js";
 import {
   CreateDeploymentResponseBodyChecksConclusion,
   CreateDeploymentResponseBodyChecksConclusion$inboundSchema,
@@ -98,9 +96,51 @@ import {
   ResponseBodyIntegrations$inboundSchema,
   ResponseBodyPlan,
   ResponseBodyPlan$inboundSchema,
-} from "./createdeploymentroutesmitigate.js";
+  ResponseBodyResourceConfig,
+  ResponseBodyResourceConfig$inboundSchema,
+} from "./createdeploymentvaluedeploymentsresponse2.js";
 import { FlagJSONValue, FlagJSONValue$inboundSchema } from "./flagjsonvalue.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type CreateDeploymentRoutesDeploymentsTransforms =
+  | (CreateDeploymentTransformsDeployments1 & { type: "request.headers" })
+  | (CreateDeploymentTransformsDeployments1 & { type: "request.query" })
+  | (CreateDeploymentTransformsDeployments1 & { type: "response.headers" })
+  | CreateDeploymentTransformsDeployments2;
+
+export type CreateDeploymentRoutesLocale = {
+  redirect?: { [k: string]: string } | undefined;
+  cookie?: string | undefined;
+};
+
+/**
+ * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+ */
+export const CreateDeploymentDestinationDeploymentsResponseType = {
+  Service: "service",
+} as const;
+/**
+ * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+ */
+export type CreateDeploymentDestinationDeploymentsResponseType = ClosedEnum<
+  typeof CreateDeploymentDestinationDeploymentsResponseType
+>;
+
+export type CreateDeploymentDestinationDeploymentsResponse2 = {
+  /**
+   * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+   */
+  type?: CreateDeploymentDestinationDeploymentsResponseType | undefined;
+  service: string;
+  /**
+   * Routing-only path used to select a route inside the target service.
+   */
+  path?: string | undefined;
+};
+
+export type CreateDeploymentRoutesDeploymentsDestination =
+  | CreateDeploymentDestinationDeploymentsResponse2
+  | string;
 
 export type CreateDeploymentRoutesDeployments1 = {
   src: string;
@@ -116,14 +156,24 @@ export type CreateDeploymentRoutesDeployments1 = {
   has?: Array<CreateDeploymentRoutesDeploymentsHas> | undefined;
   missing?: Array<CreateDeploymentRoutesDeploymentsMissing> | undefined;
   mitigate?: CreateDeploymentRoutesDeploymentsMitigate | undefined;
-  transforms?: Array<CreateDeploymentRoutesDeploymentsTransforms> | undefined;
+  transforms?:
+    | Array<
+      | (CreateDeploymentTransformsDeployments1 & { type: "request.headers" })
+      | (CreateDeploymentTransformsDeployments1 & { type: "request.query" })
+      | (CreateDeploymentTransformsDeployments1 & { type: "response.headers" })
+      | CreateDeploymentTransformsDeployments2
+    >
+    | undefined;
   env?: Array<string> | undefined;
   locale?: CreateDeploymentRoutesLocale | undefined;
   /**
    * Aliases for `src`, `dest`, and `status`. These provide consistency with the `rewrites`, `redirects`, and `headers` fields which use `source`, `destination`, and `statusCode`. During normalization, the string forms are converted to their canonical forms (`src`, `dest`, `status`) and stripped from the route object. `destination` may also be a service-targeted object, in which case routing is delegated into the named service's internal route table and the object is preserved as-is (not folded into `dest`).
    */
   source?: string | undefined;
-  destination?: CreateDeploymentRoutesDeploymentsDestination | undefined;
+  destination?:
+    | CreateDeploymentDestinationDeploymentsResponse2
+    | string
+    | undefined;
   statusCode?: number | undefined;
   /**
    * A middleware key within the `output` key under the build result. Overrides a `middleware` definition.
@@ -758,7 +808,7 @@ export type ResponseBodyElasticConcurrency = ClosedEnum<
 /**
  * Machine type that was used for the build.
  */
-export const ResponseBodyPurchaseType = {
+export const CreateDeploymentResponseBodyPurchaseType = {
   Basic: "basic",
   Enhanced: "enhanced",
   Standard: "standard",
@@ -767,15 +817,15 @@ export const ResponseBodyPurchaseType = {
 /**
  * Machine type that was used for the build.
  */
-export type ResponseBodyPurchaseType = ClosedEnum<
-  typeof ResponseBodyPurchaseType
+export type CreateDeploymentResponseBodyPurchaseType = ClosedEnum<
+  typeof CreateDeploymentResponseBodyPurchaseType
 >;
 
-export type ResponseBodyBuildMachine = {
+export type CreateDeploymentResponseBodyBuildMachine = {
   /**
    * Machine type that was used for the build.
    */
-  purchaseType?: ResponseBodyPurchaseType | null | undefined;
+  purchaseType?: CreateDeploymentResponseBodyPurchaseType | null | undefined;
 };
 
 /**
@@ -790,7 +840,7 @@ export type CreateDeploymentResponseBodyResourceConfig = {
    * When elastic concurrency is used for this deployment, a value is set. The value tells the reason where the setting was coming from. - TEAM_SETTING: Inherited from team settings - PROJECT_SETTING: Inherited from project settings - SKIP_QUEUE: Manually triggered by user to skip the queues
    */
   elasticConcurrency?: ResponseBodyElasticConcurrency | undefined;
-  buildMachine?: ResponseBodyBuildMachine | undefined;
+  buildMachine?: CreateDeploymentResponseBodyBuildMachine | undefined;
 };
 
 /**
@@ -972,6 +1022,7 @@ export type CreateDeploymentResponseBody2 = {
   buildArtifactUrls?: Array<string> | undefined;
   builds?: Array<ResponseBodyBuilds> | undefined;
   env: Array<string>;
+  resourceConfig?: ResponseBodyResourceConfig | undefined;
   inspectorUrl: string | null;
   isInConcurrentBuildsQueue: boolean;
   isInSystemBuildsQueue: boolean;
@@ -1268,6 +1319,123 @@ export type CreateDeploymentResponseBody =
   | CreateDeploymentResponseBody1;
 
 /** @internal */
+export const CreateDeploymentRoutesDeploymentsTransforms$inboundSchema:
+  z.ZodType<
+    CreateDeploymentRoutesDeploymentsTransforms,
+    z.ZodTypeDef,
+    unknown
+  > = z.union([
+    CreateDeploymentTransformsDeployments1$inboundSchema.and(
+      z.object({ type: z.literal("request.headers") }),
+    ),
+    CreateDeploymentTransformsDeployments1$inboundSchema.and(
+      z.object({ type: z.literal("request.query") }),
+    ),
+    CreateDeploymentTransformsDeployments1$inboundSchema.and(
+      z.object({ type: z.literal("response.headers") }),
+    ),
+    CreateDeploymentTransformsDeployments2$inboundSchema,
+  ]);
+
+export function createDeploymentRoutesDeploymentsTransformsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateDeploymentRoutesDeploymentsTransforms,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateDeploymentRoutesDeploymentsTransforms$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateDeploymentRoutesDeploymentsTransforms' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateDeploymentRoutesLocale$inboundSchema: z.ZodType<
+  CreateDeploymentRoutesLocale,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  redirect: types.optional(z.record(types.string())),
+  cookie: types.optional(types.string()),
+});
+
+export function createDeploymentRoutesLocaleFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateDeploymentRoutesLocale, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateDeploymentRoutesLocale$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentRoutesLocale' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateDeploymentDestinationDeploymentsResponseType$inboundSchema:
+  z.ZodNativeEnum<typeof CreateDeploymentDestinationDeploymentsResponseType> = z
+    .nativeEnum(CreateDeploymentDestinationDeploymentsResponseType);
+
+/** @internal */
+export const CreateDeploymentDestinationDeploymentsResponse2$inboundSchema:
+  z.ZodType<
+    CreateDeploymentDestinationDeploymentsResponse2,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    type: types.optional(
+      CreateDeploymentDestinationDeploymentsResponseType$inboundSchema,
+    ),
+    service: types.string(),
+    path: types.optional(types.string()),
+  });
+
+export function createDeploymentDestinationDeploymentsResponse2FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateDeploymentDestinationDeploymentsResponse2,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateDeploymentDestinationDeploymentsResponse2$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateDeploymentDestinationDeploymentsResponse2' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateDeploymentRoutesDeploymentsDestination$inboundSchema:
+  z.ZodType<
+    CreateDeploymentRoutesDeploymentsDestination,
+    z.ZodTypeDef,
+    unknown
+  > = smartUnion([
+    z.lazy(() => CreateDeploymentDestinationDeploymentsResponse2$inboundSchema),
+    types.string(),
+  ]);
+
+export function createDeploymentRoutesDeploymentsDestinationFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateDeploymentRoutesDeploymentsDestination,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateDeploymentRoutesDeploymentsDestination$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateDeploymentRoutesDeploymentsDestination' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateDeploymentRoutesDeployments1$inboundSchema: z.ZodType<
   CreateDeploymentRoutesDeployments1,
   z.ZodTypeDef,
@@ -1293,13 +1461,33 @@ export const CreateDeploymentRoutesDeployments1$inboundSchema: z.ZodType<
     CreateDeploymentRoutesDeploymentsMitigate$inboundSchema,
   ),
   transforms: types.optional(
-    z.array(CreateDeploymentRoutesDeploymentsTransforms$inboundSchema),
+    z.array(
+      z.union([
+        CreateDeploymentTransformsDeployments1$inboundSchema.and(
+          z.object({ type: z.literal("request.headers") }),
+        ),
+        CreateDeploymentTransformsDeployments1$inboundSchema.and(
+          z.object({ type: z.literal("request.query") }),
+        ),
+        CreateDeploymentTransformsDeployments1$inboundSchema.and(
+          z.object({ type: z.literal("response.headers") }),
+        ),
+        CreateDeploymentTransformsDeployments2$inboundSchema,
+      ]),
+    ),
   ),
   env: types.optional(z.array(types.string())),
-  locale: types.optional(CreateDeploymentRoutesLocale$inboundSchema),
+  locale: types.optional(
+    z.lazy(() => CreateDeploymentRoutesLocale$inboundSchema),
+  ),
   source: types.optional(types.string()),
   destination: types.optional(
-    CreateDeploymentRoutesDeploymentsDestination$inboundSchema,
+    smartUnion([
+      z.lazy(() =>
+        CreateDeploymentDestinationDeploymentsResponse2$inboundSchema
+      ),
+      types.string(),
+    ]),
   ),
   statusCode: types.optional(types.number()),
   middlewarePath: types.optional(types.string()),
@@ -2386,26 +2574,34 @@ export const ResponseBodyElasticConcurrency$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(ResponseBodyElasticConcurrency);
 
 /** @internal */
-export const ResponseBodyPurchaseType$inboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyPurchaseType
-> = z.nativeEnum(ResponseBodyPurchaseType);
+export const CreateDeploymentResponseBodyPurchaseType$inboundSchema:
+  z.ZodNativeEnum<typeof CreateDeploymentResponseBodyPurchaseType> = z
+    .nativeEnum(CreateDeploymentResponseBodyPurchaseType);
 
 /** @internal */
-export const ResponseBodyBuildMachine$inboundSchema: z.ZodType<
-  ResponseBodyBuildMachine,
+export const CreateDeploymentResponseBodyBuildMachine$inboundSchema: z.ZodType<
+  CreateDeploymentResponseBodyBuildMachine,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  purchaseType: z.nullable(ResponseBodyPurchaseType$inboundSchema).optional(),
+  purchaseType: z.nullable(
+    CreateDeploymentResponseBodyPurchaseType$inboundSchema,
+  ).optional(),
 });
 
-export function responseBodyBuildMachineFromJSON(
+export function createDeploymentResponseBodyBuildMachineFromJSON(
   jsonString: string,
-): SafeParseResult<ResponseBodyBuildMachine, SDKValidationError> {
+): SafeParseResult<
+  CreateDeploymentResponseBodyBuildMachine,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => ResponseBodyBuildMachine$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBodyBuildMachine' from JSON`,
+    (x) =>
+      CreateDeploymentResponseBodyBuildMachine$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateDeploymentResponseBodyBuildMachine' from JSON`,
   );
 }
 
@@ -2420,7 +2616,7 @@ export const CreateDeploymentResponseBodyResourceConfig$inboundSchema:
         ResponseBodyElasticConcurrency$inboundSchema,
       ),
       buildMachine: types.optional(
-        z.lazy(() => ResponseBodyBuildMachine$inboundSchema),
+        z.lazy(() => CreateDeploymentResponseBodyBuildMachine$inboundSchema),
       ),
     });
 
@@ -2687,6 +2883,7 @@ export const CreateDeploymentResponseBody2$inboundSchema: z.ZodType<
   buildArtifactUrls: types.optional(z.array(types.string())),
   builds: types.optional(z.array(ResponseBodyBuilds$inboundSchema)),
   env: z.array(types.string()),
+  resourceConfig: types.optional(ResponseBodyResourceConfig$inboundSchema),
   inspectorUrl: types.nullable(types.string()),
   isInConcurrentBuildsQueue: types.boolean(),
   isInSystemBuildsQueue: types.boolean(),

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { InterstitialHistory } from "@vercel/sdk/models/createprojectresponsebody.js";
+import { InterstitialHistory } from "@vercel/sdk/models/interstitialhistory.js";
 
 let value: InterstitialHistory = {
   action: "add-project-interstitial",

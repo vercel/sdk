@@ -5,16 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFiftyTwo } from "@vercel/sdk/models/ssoprotection2.js";
+import { ThreeHundredAndFiftyTwo } from "@vercel/sdk/models/twohundredandninetynine.js";
 
 let value: ThreeHundredAndFiftyTwo = {
-  publicId: "<id>",
+  requestedTeamName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `publicId`         | *string*           | :heavy_check_mark: | N/A                |
-| `name`             | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                | Type                                 | Required                             | Description                          |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| `requestedTeamName`                  | *string*                             | :heavy_check_mark:                   | N/A                                  |
+| `requestedTeamSlug`                  | *string*                             | :heavy_minus_sign:                   | N/A                                  |
+| `requestedUserName`                  | *string*                             | :heavy_minus_sign:                   | N/A                                  |
+| `gitUsername`                        | *string*                             | :heavy_minus_sign:                   | N/A                                  |
+| `githubUsername`                     | *string*                             | :heavy_minus_sign:                   | N/A                                  |
+| `gitlabUsername`                     | *string*                             | :heavy_minus_sign:                   | N/A                                  |
+| `bitbucketUsername`                  | *string*                             | :heavy_minus_sign:                   | N/A                                  |
+| `source`                             | [models.Source](../models/source.md) | :heavy_minus_sign:                   | N/A                                  |

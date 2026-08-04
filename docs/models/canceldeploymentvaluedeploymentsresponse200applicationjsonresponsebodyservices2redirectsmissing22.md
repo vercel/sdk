@@ -5,7 +5,7 @@
 ```typescript
 import {
   CancelDeploymentValueDeploymentsResponse200ApplicationJSONResponseBodyServices2RedirectsMissing22,
-} from "@vercel/sdk/models/gitrepo3.js";
+} from "@vercel/sdk/models/services1.js";
 
 let value:
   CancelDeploymentValueDeploymentsResponse200ApplicationJSONResponseBodyServices2RedirectsMissing22 =

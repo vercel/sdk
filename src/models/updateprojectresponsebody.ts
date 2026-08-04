@@ -288,16 +288,6 @@ export type UpdateProjectProjectsDeploymentPolicy = {
   deploymentSources?: Array<UpdateProjectDeploymentSources> | null | undefined;
 };
 
-export const UpdateProjectFlatRateTier = {
-  Advanced: "advanced",
-  Base: "base",
-  Critical: "critical",
-  Standard: "standard",
-} as const;
-export type UpdateProjectFlatRateTier = ClosedEnum<
-  typeof UpdateProjectFlatRateTier
->;
-
 /**
  * Billing mode. Always 'flat' for flat-rate projects.
  */
@@ -800,7 +790,6 @@ export type UpdateProjectResponseBody = {
    */
   deploymentPolicy?: UpdateProjectProjectsDeploymentPolicy | null | undefined;
   tier?: string | undefined;
-  flatRateTier?: UpdateProjectFlatRateTier | undefined;
   usageStatus?: UpdateProjectUsageStatus | undefined;
   features?: UpdateProjectFeatures | undefined;
   v0?: boolean | undefined;
@@ -1218,11 +1207,6 @@ export function updateProjectProjectsDeploymentPolicyFromJSON(
     `Failed to parse 'UpdateProjectProjectsDeploymentPolicy' from JSON`,
   );
 }
-
-/** @internal */
-export const UpdateProjectFlatRateTier$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateProjectFlatRateTier
-> = z.nativeEnum(UpdateProjectFlatRateTier);
 
 /** @internal */
 export const UpdateProjectKind$inboundSchema: z.ZodNativeEnum<
@@ -2424,7 +2408,6 @@ export const UpdateProjectResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => UpdateProjectProjectsDeploymentPolicy$inboundSchema),
   ).optional(),
   tier: types.optional(types.string()),
-  flatRateTier: types.optional(UpdateProjectFlatRateTier$inboundSchema),
   usageStatus: types.optional(
     z.lazy(() => UpdateProjectUsageStatus$inboundSchema),
   ),

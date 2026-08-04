@@ -5,17 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFive } from "@vercel/sdk/models/onehundredandsixtyfour.js";
+import { TwoHundredAndFive } from "@vercel/sdk/models/onehundredandseventyone.js";
 
 let value: TwoHundredAndFive = {
-  previous: {},
-  next: {},
+  projectId: "<id>",
+  projectName: "<value>",
+  pattern: "<value>",
+  justification: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `previous`                                                                     | [models.UserEventPayload205Previous](../models/usereventpayload205previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `next`                                                                         | [models.UserEventPayload205Next](../models/usereventpayload205next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                  | Type                   | Required               | Description            |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `projectId`            | *string*               | :heavy_check_mark:     | N/A                    |
+| `projectName`          | *string*               | :heavy_check_mark:     | N/A                    |
+| `pattern`              | *string*               | :heavy_check_mark:     | N/A                    |
+| `justification`        | *string*               | :heavy_check_mark:     | N/A                    |
+| `additionalProperties` | Record<string, *any*>  | :heavy_minus_sign:     | N/A                    |

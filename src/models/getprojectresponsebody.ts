@@ -8,6 +8,46 @@ import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import {
+  GetProjectAbuse,
+  GetProjectAbuse$inboundSchema,
+  GetProjectDeploymentPolicy,
+  GetProjectDeploymentPolicy$inboundSchema,
+  GetProjectDismissedToasts,
+  GetProjectDismissedToasts$inboundSchema,
+  GetProjectFeatures,
+  GetProjectFeatures$inboundSchema,
+  GetProjectGitComments,
+  GetProjectGitComments$inboundSchema,
+  GetProjectGitProviderOptions,
+  GetProjectGitProviderOptions$inboundSchema,
+  GetProjectInternalRoutes,
+  GetProjectInternalRoutes$inboundSchema,
+  GetProjectLastAliasRequest,
+  GetProjectLastAliasRequest$inboundSchema,
+  GetProjectLastRollbackTarget,
+  GetProjectLastRollbackTarget$inboundSchema,
+  GetProjectOidcTokenConfig,
+  GetProjectOidcTokenConfig$inboundSchema,
+  GetProjectPermissions,
+  GetProjectPermissions$inboundSchema,
+  GetProjectProtectionBypass,
+  GetProjectProtectionBypass$inboundSchema,
+  GetProjectSecurity,
+  GetProjectSecurity$inboundSchema,
+  GetProjectSsoProtection,
+  GetProjectSsoProtection$inboundSchema,
+  GetProjectTargets,
+  GetProjectTargets$inboundSchema,
+  GetProjectTrustedIps,
+  GetProjectTrustedIps$inboundSchema,
+  GetProjectTrustedSources,
+  GetProjectTrustedSources$inboundSchema,
+  GetProjectUsageStatus,
+  GetProjectUsageStatus$inboundSchema,
+  GetProjectWebAnalytics,
+  GetProjectWebAnalytics$inboundSchema,
+} from "./getprojectdismissedtoasts.js";
+import {
   GetProjectAlias,
   GetProjectAlias$inboundSchema,
   GetProjectAnalytics,
@@ -71,58 +111,7 @@ import {
   GetProjectStaticIps,
   GetProjectStaticIps$inboundSchema,
 } from "./getprojectstaticips.js";
-import {
-  GetProjectAbuse,
-  GetProjectAbuse$inboundSchema,
-  GetProjectAction,
-  GetProjectAction$inboundSchema,
-  GetProjectDeploymentPolicy,
-  GetProjectDeploymentPolicy$inboundSchema,
-  GetProjectFeatures,
-  GetProjectFeatures$inboundSchema,
-  GetProjectFlatRateTier,
-  GetProjectFlatRateTier$inboundSchema,
-  GetProjectGitComments,
-  GetProjectGitComments$inboundSchema,
-  GetProjectGitProviderOptions,
-  GetProjectGitProviderOptions$inboundSchema,
-  GetProjectInternalRoutes,
-  GetProjectInternalRoutes$inboundSchema,
-  GetProjectLastAliasRequest,
-  GetProjectLastAliasRequest$inboundSchema,
-  GetProjectLastRollbackTarget,
-  GetProjectLastRollbackTarget$inboundSchema,
-  GetProjectOidcTokenConfig,
-  GetProjectOidcTokenConfig$inboundSchema,
-  GetProjectPermissions,
-  GetProjectPermissions$inboundSchema,
-  GetProjectProtectionBypass,
-  GetProjectProtectionBypass$inboundSchema,
-  GetProjectSecurity,
-  GetProjectSecurity$inboundSchema,
-  GetProjectSsoProtection,
-  GetProjectSsoProtection$inboundSchema,
-  GetProjectTargets,
-  GetProjectTargets$inboundSchema,
-  GetProjectTrustedIps,
-  GetProjectTrustedIps$inboundSchema,
-  GetProjectTrustedSources,
-  GetProjectTrustedSources$inboundSchema,
-  GetProjectUsageStatus,
-  GetProjectUsageStatus$inboundSchema,
-  GetProjectValue,
-  GetProjectValue$inboundSchema,
-  GetProjectWebAnalytics,
-  GetProjectWebAnalytics$inboundSchema,
-} from "./getprojectvalue.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-
-export type GetProjectDismissedToasts = {
-  key: string;
-  dismissedAt: number;
-  action: GetProjectAction;
-  value: GetProjectValue | null;
-};
 
 export const GetProjectProjectsEnv = {
   Preview: "preview",
@@ -264,7 +253,6 @@ export type GetProjectResponseBody = {
    */
   deploymentPolicy?: GetProjectDeploymentPolicy | null | undefined;
   tier?: string | undefined;
-  flatRateTier?: GetProjectFlatRateTier | undefined;
   usageStatus?: GetProjectUsageStatus | undefined;
   features?: GetProjectFeatures | undefined;
   v0?: boolean | undefined;
@@ -277,28 +265,6 @@ export type GetProjectResponseBody = {
   tracing?: GetProjectTracing | undefined;
   avatar?: string | null | undefined;
 };
-
-/** @internal */
-export const GetProjectDismissedToasts$inboundSchema: z.ZodType<
-  GetProjectDismissedToasts,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  key: types.string(),
-  dismissedAt: types.number(),
-  action: GetProjectAction$inboundSchema,
-  value: types.nullable(GetProjectValue$inboundSchema),
-});
-
-export function getProjectDismissedToastsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetProjectDismissedToasts, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetProjectDismissedToasts$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProjectDismissedToasts' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetProjectProjectsEnv$inboundSchema: z.ZodNativeEnum<
@@ -467,7 +433,6 @@ export const GetProjectResponseBody$inboundSchema: z.ZodType<
   deploymentPolicy: z.nullable(GetProjectDeploymentPolicy$inboundSchema)
     .optional(),
   tier: types.optional(types.string()),
-  flatRateTier: types.optional(GetProjectFlatRateTier$inboundSchema),
   usageStatus: types.optional(GetProjectUsageStatus$inboundSchema),
   features: types.optional(GetProjectFeatures$inboundSchema),
   v0: types.optional(types.boolean()),
@@ -478,7 +443,7 @@ export const GetProjectResponseBody$inboundSchema: z.ZodType<
   ),
   hasDeployments: types.optional(types.boolean()),
   dismissedToasts: types.optional(
-    z.array(z.lazy(() => GetProjectDismissedToasts$inboundSchema)),
+    z.array(GetProjectDismissedToasts$inboundSchema),
   ),
   protectedSourcemaps: types.optional(types.boolean()),
   tracing: types.optional(z.lazy(() => GetProjectTracing$inboundSchema)),

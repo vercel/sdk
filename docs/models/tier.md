@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Tier } from "@vercel/sdk/models/threehundredandsixtytwo.js";
+import { Tier } from "@vercel/sdk/models/threehundredandsixtyseven.js";
 
 let value: Tier = "plus";
 ```

@@ -9,48 +9,6 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
-  UpdateMicrofrontendsAbuse,
-  UpdateMicrofrontendsAbuse$inboundSchema,
-  UpdateMicrofrontendsDeploymentPolicy,
-  UpdateMicrofrontendsDeploymentPolicy$inboundSchema,
-  UpdateMicrofrontendsDismissedToasts,
-  UpdateMicrofrontendsDismissedToasts$inboundSchema,
-  UpdateMicrofrontendsFeatures,
-  UpdateMicrofrontendsFeatures$inboundSchema,
-  UpdateMicrofrontendsFlatRateTier,
-  UpdateMicrofrontendsFlatRateTier$inboundSchema,
-  UpdateMicrofrontendsGitComments,
-  UpdateMicrofrontendsGitComments$inboundSchema,
-  UpdateMicrofrontendsGitProviderOptions,
-  UpdateMicrofrontendsGitProviderOptions$inboundSchema,
-  UpdateMicrofrontendsInternalRoutes,
-  UpdateMicrofrontendsInternalRoutes$inboundSchema,
-  UpdateMicrofrontendsLastAliasRequest,
-  UpdateMicrofrontendsLastAliasRequest$inboundSchema,
-  UpdateMicrofrontendsLastRollbackTarget,
-  UpdateMicrofrontendsLastRollbackTarget$inboundSchema,
-  UpdateMicrofrontendsOidcTokenConfig,
-  UpdateMicrofrontendsOidcTokenConfig$inboundSchema,
-  UpdateMicrofrontendsPermissions,
-  UpdateMicrofrontendsPermissions$inboundSchema,
-  UpdateMicrofrontendsProtectionBypass,
-  UpdateMicrofrontendsProtectionBypass$inboundSchema,
-  UpdateMicrofrontendsSecurity,
-  UpdateMicrofrontendsSecurity$inboundSchema,
-  UpdateMicrofrontendsSsoProtection,
-  UpdateMicrofrontendsSsoProtection$inboundSchema,
-  UpdateMicrofrontendsTargets,
-  UpdateMicrofrontendsTargets$inboundSchema,
-  UpdateMicrofrontendsTrustedIps,
-  UpdateMicrofrontendsTrustedIps$inboundSchema,
-  UpdateMicrofrontendsTrustedSources,
-  UpdateMicrofrontendsTrustedSources$inboundSchema,
-  UpdateMicrofrontendsUsageStatus,
-  UpdateMicrofrontendsUsageStatus$inboundSchema,
-  UpdateMicrofrontendsWebAnalytics,
-  UpdateMicrofrontendsWebAnalytics$inboundSchema,
-} from "./updatemicrofrontendsdismissedtoasts.js";
-import {
   UpdateMicrofrontendsAlias,
   UpdateMicrofrontendsAlias$inboundSchema,
   UpdateMicrofrontendsAnalytics,
@@ -112,14 +70,48 @@ import {
   UpdateMicrofrontendsStaticIps,
   UpdateMicrofrontendsStaticIps$inboundSchema,
 } from "./updatemicrofrontendsprojectsdeploymenttype.js";
-
-export const UpdateMicrofrontendsProjectsEnv = {
-  Preview: "preview",
-  Production: "production",
-} as const;
-export type UpdateMicrofrontendsProjectsEnv = ClosedEnum<
-  typeof UpdateMicrofrontendsProjectsEnv
->;
+import {
+  UpdateMicrofrontendsAbuse,
+  UpdateMicrofrontendsAbuse$inboundSchema,
+  UpdateMicrofrontendsDeploymentPolicy,
+  UpdateMicrofrontendsDeploymentPolicy$inboundSchema,
+  UpdateMicrofrontendsDismissedToasts,
+  UpdateMicrofrontendsDismissedToasts$inboundSchema,
+  UpdateMicrofrontendsFeatures,
+  UpdateMicrofrontendsFeatures$inboundSchema,
+  UpdateMicrofrontendsGitComments,
+  UpdateMicrofrontendsGitComments$inboundSchema,
+  UpdateMicrofrontendsGitProviderOptions,
+  UpdateMicrofrontendsGitProviderOptions$inboundSchema,
+  UpdateMicrofrontendsInternalRoutes,
+  UpdateMicrofrontendsInternalRoutes$inboundSchema,
+  UpdateMicrofrontendsLastAliasRequest,
+  UpdateMicrofrontendsLastAliasRequest$inboundSchema,
+  UpdateMicrofrontendsLastRollbackTarget,
+  UpdateMicrofrontendsLastRollbackTarget$inboundSchema,
+  UpdateMicrofrontendsOidcTokenConfig,
+  UpdateMicrofrontendsOidcTokenConfig$inboundSchema,
+  UpdateMicrofrontendsPermissions,
+  UpdateMicrofrontendsPermissions$inboundSchema,
+  UpdateMicrofrontendsProjectsEnv,
+  UpdateMicrofrontendsProjectsEnv$inboundSchema,
+  UpdateMicrofrontendsProtectionBypass,
+  UpdateMicrofrontendsProtectionBypass$inboundSchema,
+  UpdateMicrofrontendsSecurity,
+  UpdateMicrofrontendsSecurity$inboundSchema,
+  UpdateMicrofrontendsSsoProtection,
+  UpdateMicrofrontendsSsoProtection$inboundSchema,
+  UpdateMicrofrontendsTargets,
+  UpdateMicrofrontendsTargets$inboundSchema,
+  UpdateMicrofrontendsTrustedIps,
+  UpdateMicrofrontendsTrustedIps$inboundSchema,
+  UpdateMicrofrontendsTrustedSources,
+  UpdateMicrofrontendsTrustedSources$inboundSchema,
+  UpdateMicrofrontendsUsageStatus,
+  UpdateMicrofrontendsUsageStatus$inboundSchema,
+  UpdateMicrofrontendsWebAnalytics,
+  UpdateMicrofrontendsWebAnalytics$inboundSchema,
+} from "./updatemicrofrontendsprojectsenv.js";
 
 /**
  * Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery type when project tracing is computed; absent on configs persisted before this field existed.
@@ -263,7 +255,6 @@ export type UpdateMicrofrontendsResponseBody = {
    */
   deploymentPolicy?: UpdateMicrofrontendsDeploymentPolicy | null | undefined;
   tier?: string | undefined;
-  flatRateTier?: UpdateMicrofrontendsFlatRateTier | undefined;
   usageStatus?: UpdateMicrofrontendsUsageStatus | undefined;
   features?: UpdateMicrofrontendsFeatures | undefined;
   v0?: boolean | undefined;
@@ -276,11 +267,6 @@ export type UpdateMicrofrontendsResponseBody = {
   tracing?: UpdateMicrofrontendsTracing | undefined;
   avatar?: string | null | undefined;
 };
-
-/** @internal */
-export const UpdateMicrofrontendsProjectsEnv$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateMicrofrontendsProjectsEnv
-> = z.nativeEnum(UpdateMicrofrontendsProjectsEnv);
 
 /** @internal */
 export const UpdateMicrofrontendsDestination$inboundSchema: z.ZodNativeEnum<
@@ -463,7 +449,6 @@ export const UpdateMicrofrontendsResponseBody$inboundSchema: z.ZodType<
     UpdateMicrofrontendsDeploymentPolicy$inboundSchema,
   ).optional(),
   tier: types.optional(types.string()),
-  flatRateTier: types.optional(UpdateMicrofrontendsFlatRateTier$inboundSchema),
   usageStatus: types.optional(UpdateMicrofrontendsUsageStatus$inboundSchema),
   features: types.optional(UpdateMicrofrontendsFeatures$inboundSchema),
   v0: types.optional(types.boolean()),

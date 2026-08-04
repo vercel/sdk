@@ -5,7 +5,7 @@ Returns a reduced view of the deployment with public information only. Private f
 ## Example Usage
 
 ```typescript
-import { GetDeploymentResponseBody3 } from "@vercel/sdk/models/getdeploymentresponsebodynodeversion.js";
+import { GetDeploymentResponseBody3 } from "@vercel/sdk/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonrepoid.js";
 
 let value: GetDeploymentResponseBody3 = {
   alias: [],

@@ -5,19 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndNinetySeven } from "@vercel/sdk/models/onehundredandsixtyfour.js";
+import { OneHundredAndNinetySeven } from "@vercel/sdk/models/onehundredandseventyone.js";
 
 let value: OneHundredAndNinetySeven = {
   projectId: "<id>",
-  type: "script",
-  resourceUrl: "https://impressionable-bend.biz/",
+  headerName: "<value>",
+  previousStatus: "<value>",
+  justification: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `projectId`                                                      | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `type`                                                           | [models.UserEventPayloadType](../models/usereventpayloadtype.md) | :heavy_check_mark:                                               | N/A                                                              |
-| `resourceUrl`                                                    | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `headerName`       | *string*           | :heavy_check_mark: | N/A                |
+| `previousStatus`   | *string*           | :heavy_check_mark: | N/A                |
+| `justification`    | *string*           | :heavy_check_mark: | N/A                |

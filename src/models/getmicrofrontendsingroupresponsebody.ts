@@ -78,8 +78,6 @@ import {
   GetMicrofrontendsInGroupDismissedToasts$inboundSchema,
   GetMicrofrontendsInGroupFeatures,
   GetMicrofrontendsInGroupFeatures$inboundSchema,
-  GetMicrofrontendsInGroupFlatRateTier,
-  GetMicrofrontendsInGroupFlatRateTier$inboundSchema,
   GetMicrofrontendsInGroupGitComments,
   GetMicrofrontendsInGroupGitComments$inboundSchema,
   GetMicrofrontendsInGroupGitProviderOptions,
@@ -90,6 +88,8 @@ import {
   GetMicrofrontendsInGroupLastAliasRequest$inboundSchema,
   GetMicrofrontendsInGroupLastRollbackTarget,
   GetMicrofrontendsInGroupLastRollbackTarget$inboundSchema,
+  GetMicrofrontendsInGroupMicrofrontendsEnv,
+  GetMicrofrontendsInGroupMicrofrontendsEnv$inboundSchema,
   GetMicrofrontendsInGroupOidcTokenConfig,
   GetMicrofrontendsInGroupOidcTokenConfig$inboundSchema,
   GetMicrofrontendsInGroupPermissions,
@@ -110,16 +110,8 @@ import {
   GetMicrofrontendsInGroupUsageStatus$inboundSchema,
   GetMicrofrontendsInGroupWebAnalytics,
   GetMicrofrontendsInGroupWebAnalytics$inboundSchema,
-} from "./getmicrofrontendsingroupdismissedtoasts.js";
+} from "./getmicrofrontendsingroupmicrofrontendsenv.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-
-export const GetMicrofrontendsInGroupMicrofrontendsEnv = {
-  Preview: "preview",
-  Production: "production",
-} as const;
-export type GetMicrofrontendsInGroupMicrofrontendsEnv = ClosedEnum<
-  typeof GetMicrofrontendsInGroupMicrofrontendsEnv
->;
 
 /**
  * Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery type when project tracing is computed; absent on configs persisted before this field existed.
@@ -274,7 +266,6 @@ export type GetMicrofrontendsInGroupProjects = {
     | null
     | undefined;
   tier?: string | undefined;
-  flatRateTier?: GetMicrofrontendsInGroupFlatRateTier | undefined;
   usageStatus?: GetMicrofrontendsInGroupUsageStatus | undefined;
   features?: GetMicrofrontendsInGroupFeatures | undefined;
   v0?: boolean | undefined;
@@ -291,11 +282,6 @@ export type GetMicrofrontendsInGroupProjects = {
 export type GetMicrofrontendsInGroupResponseBody = {
   projects: Array<GetMicrofrontendsInGroupProjects>;
 };
-
-/** @internal */
-export const GetMicrofrontendsInGroupMicrofrontendsEnv$inboundSchema:
-  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupMicrofrontendsEnv> = z
-    .nativeEnum(GetMicrofrontendsInGroupMicrofrontendsEnv);
 
 /** @internal */
 export const GetMicrofrontendsInGroupDestination$inboundSchema: z.ZodNativeEnum<
@@ -494,9 +480,6 @@ export const GetMicrofrontendsInGroupProjects$inboundSchema: z.ZodType<
     GetMicrofrontendsInGroupDeploymentPolicy$inboundSchema,
   ).optional(),
   tier: types.optional(types.string()),
-  flatRateTier: types.optional(
-    GetMicrofrontendsInGroupFlatRateTier$inboundSchema,
-  ),
   usageStatus: types.optional(
     GetMicrofrontendsInGroupUsageStatus$inboundSchema,
   ),

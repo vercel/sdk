@@ -25,6 +25,10 @@ export type VcrRepository = {
    */
   name: string;
   /**
+   * Whether the repository is public. Images in public repositories can be pulled by anyone. Defaults to `false` (private).
+   */
+  public: boolean;
+  /**
    * ISO 8601 timestamp of when the repository was created.
    */
   createdAt: string;
@@ -43,6 +47,7 @@ export const VcrRepository$inboundSchema: z.ZodType<
   id: types.string(),
   projectId: types.string(),
   name: types.string(),
+  public: types.boolean(),
   createdAt: types.string(),
   updatedAt: types.string(),
 });

@@ -5,31 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndNinetyTwo } from "@vercel/sdk/models/onehundredandsixtyfour.js";
+import { OneHundredAndNinetyTwo } from "@vercel/sdk/models/onehundredandseventyone.js";
 
 let value: OneHundredAndNinetyTwo = {
-  projectId: "<id>",
-  previous: {
-    enabled: false,
-    mode: "<value>",
-    enforcePercentage: 4908.44,
-    newResourceBlockingPolicy: "block",
-    allowUnsafeScriptSrcKeywords: false,
-  },
-  next: {
-    enabled: false,
-    mode: "<value>",
-    enforcePercentage: 692.3,
-    newResourceBlockingPolicy: "allow",
-    allowUnsafeScriptSrcKeywords: true,
-  },
+  ownerId: "<id>",
+  source: "<value>",
+  cause: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                  | Type                                                   | Required                                               | Description                                            |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `projectId`                                            | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
-| `previous`                                             | [models.PayloadPrevious](../models/payloadprevious.md) | :heavy_check_mark:                                     | N/A                                                    |
-| `next`                                                 | [models.PayloadNext](../models/payloadnext.md)         | :heavy_check_mark:                                     | N/A                                                    |
+| Field                                      | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `ownerId`                                  | *string*                                   | :heavy_check_mark:                         | N/A                                        |
+| `source`                                   | *string*                                   | :heavy_check_mark:                         | N/A                                        |
+| `cause`                                    | *string*                                   | :heavy_check_mark:                         | N/A                                        |
+| `blockReason`                              | *string*                                   | :heavy_minus_sign:                         | N/A                                        |
+| `siftRoute`                                | [models.SiftRoute](../models/siftroute.md) | :heavy_minus_sign:                         | N/A                                        |

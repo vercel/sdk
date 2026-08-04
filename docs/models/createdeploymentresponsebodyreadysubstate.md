@@ -5,7 +5,7 @@ Substate of deployment when readyState is 'READY' Tracks whether or not deployme
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentResponseBodyReadySubstate } from "@vercel/sdk/models/createdeploymentroutesmitigate.js";
+import { CreateDeploymentResponseBodyReadySubstate } from "@vercel/sdk/models/createdeploymentvaluedeploymentsresponse2.js";
 
 let value: CreateDeploymentResponseBodyReadySubstate = "ROLLING";
 ```

@@ -5,7 +5,7 @@ The target envs on the current project that may be accessed.
 ## Example Usage
 
 ```typescript
-import { GetProjectTo2 } from "@vercel/sdk/models/getprojectvalue.js";
+import { GetProjectTo2 } from "@vercel/sdk/models/getprojectdismissedtoasts.js";
 
 let value: GetProjectTo2 = {
   preset: "all-custom",

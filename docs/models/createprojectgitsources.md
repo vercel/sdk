@@ -5,7 +5,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectGitSources } from "@vercel/sdk/models/createprojectprojectsresponseaction.js";
+import { CreateProjectGitSources } from "@vercel/sdk/models/interstitialhistory.js";
 
 let value: CreateProjectGitSources = {
   sources: [],

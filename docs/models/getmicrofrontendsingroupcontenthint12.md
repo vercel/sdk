@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupContentHint12 } from "@vercel/sdk/models/getmicrofrontendsingroupcve55182migrationappliedfrom.js";
+import { GetMicrofrontendsInGroupContentHint12 } from "@vercel/sdk/models/getmicrofrontendsingroupstaticips.js";
 
 let value: GetMicrofrontendsInGroupContentHint12 = {
   type: "postgres-host",

@@ -9,6 +9,46 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
+  UploadProjectAvatarAbuse,
+  UploadProjectAvatarAbuse$inboundSchema,
+  UploadProjectAvatarDeploymentPolicy,
+  UploadProjectAvatarDeploymentPolicy$inboundSchema,
+  UploadProjectAvatarDismissedToasts,
+  UploadProjectAvatarDismissedToasts$inboundSchema,
+  UploadProjectAvatarFeatures,
+  UploadProjectAvatarFeatures$inboundSchema,
+  UploadProjectAvatarGitComments,
+  UploadProjectAvatarGitComments$inboundSchema,
+  UploadProjectAvatarGitProviderOptions,
+  UploadProjectAvatarGitProviderOptions$inboundSchema,
+  UploadProjectAvatarInternalRoutes,
+  UploadProjectAvatarInternalRoutes$inboundSchema,
+  UploadProjectAvatarLastAliasRequest,
+  UploadProjectAvatarLastAliasRequest$inboundSchema,
+  UploadProjectAvatarLastRollbackTarget,
+  UploadProjectAvatarLastRollbackTarget$inboundSchema,
+  UploadProjectAvatarOidcTokenConfig,
+  UploadProjectAvatarOidcTokenConfig$inboundSchema,
+  UploadProjectAvatarPermissions,
+  UploadProjectAvatarPermissions$inboundSchema,
+  UploadProjectAvatarProtectionBypass,
+  UploadProjectAvatarProtectionBypass$inboundSchema,
+  UploadProjectAvatarSecurity,
+  UploadProjectAvatarSecurity$inboundSchema,
+  UploadProjectAvatarSsoProtection,
+  UploadProjectAvatarSsoProtection$inboundSchema,
+  UploadProjectAvatarTargets,
+  UploadProjectAvatarTargets$inboundSchema,
+  UploadProjectAvatarTrustedIps,
+  UploadProjectAvatarTrustedIps$inboundSchema,
+  UploadProjectAvatarTrustedSources,
+  UploadProjectAvatarTrustedSources$inboundSchema,
+  UploadProjectAvatarUsageStatus,
+  UploadProjectAvatarUsageStatus$inboundSchema,
+  UploadProjectAvatarWebAnalytics,
+  UploadProjectAvatarWebAnalytics$inboundSchema,
+} from "./uploadprojectavatardismissedtoasts.js";
+import {
   UploadProjectAvatarAlias,
   UploadProjectAvatarAlias$inboundSchema,
   UploadProjectAvatarAnalytics,
@@ -69,51 +109,15 @@ import {
   UploadProjectAvatarSpeedInsights$inboundSchema,
   UploadProjectAvatarStaticIps,
   UploadProjectAvatarStaticIps$inboundSchema,
-} from "./uploadprojectavatarcve55182migrationappliedfrom.js";
-import {
-  UploadProjectAvatarAbuse,
-  UploadProjectAvatarAbuse$inboundSchema,
-  UploadProjectAvatarDeploymentPolicy,
-  UploadProjectAvatarDeploymentPolicy$inboundSchema,
-  UploadProjectAvatarDismissedToasts,
-  UploadProjectAvatarDismissedToasts$inboundSchema,
-  UploadProjectAvatarFeatures,
-  UploadProjectAvatarFeatures$inboundSchema,
-  UploadProjectAvatarFlatRateTier,
-  UploadProjectAvatarFlatRateTier$inboundSchema,
-  UploadProjectAvatarGitComments,
-  UploadProjectAvatarGitComments$inboundSchema,
-  UploadProjectAvatarGitProviderOptions,
-  UploadProjectAvatarGitProviderOptions$inboundSchema,
-  UploadProjectAvatarInternalRoutes,
-  UploadProjectAvatarInternalRoutes$inboundSchema,
-  UploadProjectAvatarLastAliasRequest,
-  UploadProjectAvatarLastAliasRequest$inboundSchema,
-  UploadProjectAvatarLastRollbackTarget,
-  UploadProjectAvatarLastRollbackTarget$inboundSchema,
-  UploadProjectAvatarOidcTokenConfig,
-  UploadProjectAvatarOidcTokenConfig$inboundSchema,
-  UploadProjectAvatarPermissions,
-  UploadProjectAvatarPermissions$inboundSchema,
-  UploadProjectAvatarProjectsEnv,
-  UploadProjectAvatarProjectsEnv$inboundSchema,
-  UploadProjectAvatarProtectionBypass,
-  UploadProjectAvatarProtectionBypass$inboundSchema,
-  UploadProjectAvatarSecurity,
-  UploadProjectAvatarSecurity$inboundSchema,
-  UploadProjectAvatarSsoProtection,
-  UploadProjectAvatarSsoProtection$inboundSchema,
-  UploadProjectAvatarTargets,
-  UploadProjectAvatarTargets$inboundSchema,
-  UploadProjectAvatarTrustedIps,
-  UploadProjectAvatarTrustedIps$inboundSchema,
-  UploadProjectAvatarTrustedSources,
-  UploadProjectAvatarTrustedSources$inboundSchema,
-  UploadProjectAvatarUsageStatus,
-  UploadProjectAvatarUsageStatus$inboundSchema,
-  UploadProjectAvatarWebAnalytics,
-  UploadProjectAvatarWebAnalytics$inboundSchema,
-} from "./uploadprojectavatarprojectsenv.js";
+} from "./uploadprojectavatarstaticips.js";
+
+export const UploadProjectAvatarProjectsEnv = {
+  Preview: "preview",
+  Production: "production",
+} as const;
+export type UploadProjectAvatarProjectsEnv = ClosedEnum<
+  typeof UploadProjectAvatarProjectsEnv
+>;
 
 /**
  * Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery type when project tracing is computed; absent on configs persisted before this field existed.
@@ -249,7 +253,6 @@ export type UploadProjectAvatarResponseBody = {
    */
   deploymentPolicy?: UploadProjectAvatarDeploymentPolicy | null | undefined;
   tier?: string | undefined;
-  flatRateTier?: UploadProjectAvatarFlatRateTier | undefined;
   usageStatus?: UploadProjectAvatarUsageStatus | undefined;
   features?: UploadProjectAvatarFeatures | undefined;
   v0?: boolean | undefined;
@@ -262,6 +265,11 @@ export type UploadProjectAvatarResponseBody = {
   tracing?: UploadProjectAvatarTracing | undefined;
   avatar?: string | null | undefined;
 };
+
+/** @internal */
+export const UploadProjectAvatarProjectsEnv$inboundSchema: z.ZodNativeEnum<
+  typeof UploadProjectAvatarProjectsEnv
+> = z.nativeEnum(UploadProjectAvatarProjectsEnv);
 
 /** @internal */
 export const UploadProjectAvatarDestination$inboundSchema: z.ZodNativeEnum<
@@ -441,7 +449,6 @@ export const UploadProjectAvatarResponseBody$inboundSchema: z.ZodType<
     UploadProjectAvatarDeploymentPolicy$inboundSchema,
   ).optional(),
   tier: types.optional(types.string()),
-  flatRateTier: types.optional(UploadProjectAvatarFlatRateTier$inboundSchema),
   usageStatus: types.optional(UploadProjectAvatarUsageStatus$inboundSchema),
   features: types.optional(UploadProjectAvatarFeatures$inboundSchema),
   v0: types.optional(types.boolean()),

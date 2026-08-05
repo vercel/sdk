@@ -10,20 +10,16 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
+  CreateDeploymentKeyDeployments2,
+  CreateDeploymentKeyDeployments2$inboundSchema,
   CreateDeploymentRoutesDeployments2,
   CreateDeploymentRoutesDeployments2$inboundSchema,
-  CreateDeploymentRoutesDeploymentsDestination,
-  CreateDeploymentRoutesDeploymentsDestination$inboundSchema,
   CreateDeploymentRoutesDeploymentsHas,
   CreateDeploymentRoutesDeploymentsHas$inboundSchema,
   CreateDeploymentRoutesDeploymentsMissing,
   CreateDeploymentRoutesDeploymentsMissing$inboundSchema,
   CreateDeploymentRoutesDeploymentsMitigate,
   CreateDeploymentRoutesDeploymentsMitigate$inboundSchema,
-  CreateDeploymentRoutesDeploymentsTransforms,
-  CreateDeploymentRoutesDeploymentsTransforms$inboundSchema,
-  CreateDeploymentRoutesLocale,
-  CreateDeploymentRoutesLocale$inboundSchema,
   CreateDeploymentServicesDeploymentsBuilder,
   CreateDeploymentServicesDeploymentsBuilder$inboundSchema,
   CreateDeploymentServicesFunctions,
@@ -32,13 +28,19 @@ import {
   CreateDeploymentServicesHeaders$inboundSchema,
   CreateDeploymentServicesRedirects,
   CreateDeploymentServicesRedirects$inboundSchema,
+  CreateDeploymentTransformsDeployments2,
+  CreateDeploymentTransformsDeployments2$inboundSchema,
+  CreateDeploymentTransformsDeploymentsResponseOp,
+  CreateDeploymentTransformsDeploymentsResponseOp$inboundSchema,
+  CreateDeploymentTransformsDeploymentsResponseType,
+  CreateDeploymentTransformsDeploymentsResponseType$inboundSchema,
   ResponseBodyRoutes,
   ResponseBodyRoutes$inboundSchema,
   ServicesBindings,
   ServicesBindings$inboundSchema,
   ServicesRewrites,
   ServicesRewrites$inboundSchema,
-} from "./createdeploymentroutesdeploymentsdestination.js";
+} from "./createdeploymentkeydeployments2.js";
 import {
   CreateDeploymentResponseBodyChecksConclusion,
   CreateDeploymentResponseBodyChecksConclusion$inboundSchema,
@@ -98,9 +100,69 @@ import {
   ResponseBodyIntegrations$inboundSchema,
   ResponseBodyPlan,
   ResponseBodyPlan$inboundSchema,
-} from "./createdeploymentroutesmitigate.js";
+  ResponseBodyResourceConfig,
+  ResponseBodyResourceConfig$inboundSchema,
+} from "./createdeploymentvaluedeploymentsresponse2002.js";
 import { FlagJSONValue, FlagJSONValue$inboundSchema } from "./flagjsonvalue.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type CreateDeploymentTransformsDeploymentsKey =
+  | string
+  | CreateDeploymentKeyDeployments2;
+
+export type CreateDeploymentTransformsDeploymentsTarget = {
+  key: string | CreateDeploymentKeyDeployments2;
+};
+
+export type CreateDeploymentTransformsDeploymentsArgs = string | Array<string>;
+
+export type CreateDeploymentTransformsDeployments1 = {
+  type: CreateDeploymentTransformsDeploymentsResponseType;
+  op: CreateDeploymentTransformsDeploymentsResponseOp;
+  target: CreateDeploymentTransformsDeploymentsTarget;
+  args?: string | Array<string> | undefined;
+  env?: Array<string> | undefined;
+};
+
+export type CreateDeploymentRoutesDeploymentsTransforms =
+  | (CreateDeploymentTransformsDeployments1 & { type: "request.headers" })
+  | (CreateDeploymentTransformsDeployments1 & { type: "request.query" })
+  | (CreateDeploymentTransformsDeployments1 & { type: "response.headers" })
+  | CreateDeploymentTransformsDeployments2;
+
+export type CreateDeploymentRoutesLocale = {
+  redirect?: { [k: string]: string } | undefined;
+  cookie?: string | undefined;
+};
+
+/**
+ * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+ */
+export const CreateDeploymentDestinationDeploymentsResponseType = {
+  Service: "service",
+} as const;
+/**
+ * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+ */
+export type CreateDeploymentDestinationDeploymentsResponseType = ClosedEnum<
+  typeof CreateDeploymentDestinationDeploymentsResponseType
+>;
+
+export type CreateDeploymentDestinationDeploymentsResponse2 = {
+  /**
+   * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+   */
+  type?: CreateDeploymentDestinationDeploymentsResponseType | undefined;
+  service: string;
+  /**
+   * Routing-only path used to select a route inside the target service.
+   */
+  path?: string | undefined;
+};
+
+export type CreateDeploymentRoutesDeploymentsDestination =
+  | CreateDeploymentDestinationDeploymentsResponse2
+  | string;
 
 export type CreateDeploymentRoutesDeployments1 = {
   src: string;
@@ -116,14 +178,24 @@ export type CreateDeploymentRoutesDeployments1 = {
   has?: Array<CreateDeploymentRoutesDeploymentsHas> | undefined;
   missing?: Array<CreateDeploymentRoutesDeploymentsMissing> | undefined;
   mitigate?: CreateDeploymentRoutesDeploymentsMitigate | undefined;
-  transforms?: Array<CreateDeploymentRoutesDeploymentsTransforms> | undefined;
+  transforms?:
+    | Array<
+      | (CreateDeploymentTransformsDeployments1 & { type: "request.headers" })
+      | (CreateDeploymentTransformsDeployments1 & { type: "request.query" })
+      | (CreateDeploymentTransformsDeployments1 & { type: "response.headers" })
+      | CreateDeploymentTransformsDeployments2
+    >
+    | undefined;
   env?: Array<string> | undefined;
   locale?: CreateDeploymentRoutesLocale | undefined;
   /**
    * Aliases for `src`, `dest`, and `status`. These provide consistency with the `rewrites`, `redirects`, and `headers` fields which use `source`, `destination`, and `statusCode`. During normalization, the string forms are converted to their canonical forms (`src`, `dest`, `status`) and stripped from the route object. `destination` may also be a service-targeted object, in which case routing is delegated into the named service's internal route table and the object is preserved as-is (not folded into `dest`).
    */
   source?: string | undefined;
-  destination?: CreateDeploymentRoutesDeploymentsDestination | undefined;
+  destination?:
+    | CreateDeploymentDestinationDeploymentsResponse2
+    | string
+    | undefined;
   statusCode?: number | undefined;
   /**
    * A middleware key within the `output` key under the build result. Overrides a `middleware` definition.
@@ -455,6 +527,35 @@ export type ResponseBodyServices =
   | CreateDeploymentServices1
   | CreateDeploymentServices2;
 
+export const CreateDeploymentGitRepoDeploymentsResponse200ApplicationJSONOwnerType =
+  {
+    Team: "team",
+    User: "user",
+  } as const;
+export type CreateDeploymentGitRepoDeploymentsResponse200ApplicationJSONOwnerType =
+  ClosedEnum<
+    typeof CreateDeploymentGitRepoDeploymentsResponse200ApplicationJSONOwnerType
+  >;
+
+export type CreateDeploymentGitRepo5 = {
+  /**
+   * Owner (namespace) slug.
+   */
+  owner: string;
+  repo: string;
+  /**
+   * Origin repository id.
+   */
+  repoId: string;
+  type: "cursor-origin";
+  path: string;
+  defaultBranch: string;
+  name: string;
+  private: boolean;
+  ownerType:
+    CreateDeploymentGitRepoDeploymentsResponse200ApplicationJSONOwnerType;
+};
+
 export const CreateDeploymentGitRepoDeploymentsResponse200OwnerType = {
   Team: "team",
   User: "user",
@@ -540,7 +641,8 @@ export type ResponseBodyGitRepo =
   | CreateDeploymentGitRepo1
   | CreateDeploymentGitRepo2
   | CreateDeploymentGitRepo3
-  | CreateDeploymentGitRepo4;
+  | CreateDeploymentGitRepo4
+  | CreateDeploymentGitRepo5;
 
 /**
  * Flags defined in the Build Output API, used by this deployment. Primarily used by the Toolbar to know about the used flags.
@@ -758,7 +860,7 @@ export type ResponseBodyElasticConcurrency = ClosedEnum<
 /**
  * Machine type that was used for the build.
  */
-export const ResponseBodyPurchaseType = {
+export const CreateDeploymentResponseBodyPurchaseType = {
   Basic: "basic",
   Enhanced: "enhanced",
   Standard: "standard",
@@ -767,15 +869,15 @@ export const ResponseBodyPurchaseType = {
 /**
  * Machine type that was used for the build.
  */
-export type ResponseBodyPurchaseType = ClosedEnum<
-  typeof ResponseBodyPurchaseType
+export type CreateDeploymentResponseBodyPurchaseType = ClosedEnum<
+  typeof CreateDeploymentResponseBodyPurchaseType
 >;
 
-export type ResponseBodyBuildMachine = {
+export type CreateDeploymentResponseBodyBuildMachine = {
   /**
    * Machine type that was used for the build.
    */
-  purchaseType?: ResponseBodyPurchaseType | null | undefined;
+  purchaseType?: CreateDeploymentResponseBodyPurchaseType | null | undefined;
 };
 
 /**
@@ -790,7 +892,7 @@ export type CreateDeploymentResponseBodyResourceConfig = {
    * When elastic concurrency is used for this deployment, a value is set. The value tells the reason where the setting was coming from. - TEAM_SETTING: Inherited from team settings - PROJECT_SETTING: Inherited from project settings - SKIP_QUEUE: Manually triggered by user to skip the queues
    */
   elasticConcurrency?: ResponseBodyElasticConcurrency | undefined;
-  buildMachine?: ResponseBodyBuildMachine | undefined;
+  buildMachine?: CreateDeploymentResponseBodyBuildMachine | undefined;
 };
 
 /**
@@ -972,6 +1074,7 @@ export type CreateDeploymentResponseBody2 = {
   buildArtifactUrls?: Array<string> | undefined;
   builds?: Array<ResponseBodyBuilds> | undefined;
   env: Array<string>;
+  resourceConfig?: ResponseBodyResourceConfig | undefined;
   inspectorUrl: string | null;
   isInConcurrentBuildsQueue: boolean;
   isInSystemBuildsQueue: boolean;
@@ -1156,6 +1259,7 @@ export type CreateDeploymentResponseBody2 = {
     | CreateDeploymentGitRepo2
     | CreateDeploymentGitRepo3
     | CreateDeploymentGitRepo4
+    | CreateDeploymentGitRepo5
     | null
     | undefined;
   flags?: CreateDeploymentFlags1 | Array<CreateDeploymentFlags2> | undefined;
@@ -1268,6 +1372,224 @@ export type CreateDeploymentResponseBody =
   | CreateDeploymentResponseBody1;
 
 /** @internal */
+export const CreateDeploymentTransformsDeploymentsKey$inboundSchema: z.ZodType<
+  CreateDeploymentTransformsDeploymentsKey,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), CreateDeploymentKeyDeployments2$inboundSchema]);
+
+export function createDeploymentTransformsDeploymentsKeyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateDeploymentTransformsDeploymentsKey,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateDeploymentTransformsDeploymentsKey$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateDeploymentTransformsDeploymentsKey' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateDeploymentTransformsDeploymentsTarget$inboundSchema:
+  z.ZodType<
+    CreateDeploymentTransformsDeploymentsTarget,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    key: smartUnion([
+      types.string(),
+      CreateDeploymentKeyDeployments2$inboundSchema,
+    ]),
+  });
+
+export function createDeploymentTransformsDeploymentsTargetFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateDeploymentTransformsDeploymentsTarget,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateDeploymentTransformsDeploymentsTarget$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateDeploymentTransformsDeploymentsTarget' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateDeploymentTransformsDeploymentsArgs$inboundSchema: z.ZodType<
+  CreateDeploymentTransformsDeploymentsArgs,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), z.array(types.string())]);
+
+export function createDeploymentTransformsDeploymentsArgsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateDeploymentTransformsDeploymentsArgs,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateDeploymentTransformsDeploymentsArgs$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateDeploymentTransformsDeploymentsArgs' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateDeploymentTransformsDeployments1$inboundSchema: z.ZodType<
+  CreateDeploymentTransformsDeployments1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: CreateDeploymentTransformsDeploymentsResponseType$inboundSchema,
+  op: CreateDeploymentTransformsDeploymentsResponseOp$inboundSchema,
+  target: z.lazy(() =>
+    CreateDeploymentTransformsDeploymentsTarget$inboundSchema
+  ),
+  args: types.optional(smartUnion([types.string(), z.array(types.string())])),
+  env: types.optional(z.array(types.string())),
+});
+
+export function createDeploymentTransformsDeployments1FromJSON(
+  jsonString: string,
+): SafeParseResult<CreateDeploymentTransformsDeployments1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateDeploymentTransformsDeployments1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentTransformsDeployments1' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateDeploymentRoutesDeploymentsTransforms$inboundSchema:
+  z.ZodType<
+    CreateDeploymentRoutesDeploymentsTransforms,
+    z.ZodTypeDef,
+    unknown
+  > = z.union([
+    z.lazy(() => CreateDeploymentTransformsDeployments1$inboundSchema).and(
+      z.object({ type: z.literal("request.headers") }),
+    ),
+    z.lazy(() => CreateDeploymentTransformsDeployments1$inboundSchema).and(
+      z.object({ type: z.literal("request.query") }),
+    ),
+    z.lazy(() => CreateDeploymentTransformsDeployments1$inboundSchema).and(
+      z.object({ type: z.literal("response.headers") }),
+    ),
+    CreateDeploymentTransformsDeployments2$inboundSchema,
+  ]);
+
+export function createDeploymentRoutesDeploymentsTransformsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateDeploymentRoutesDeploymentsTransforms,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateDeploymentRoutesDeploymentsTransforms$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateDeploymentRoutesDeploymentsTransforms' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateDeploymentRoutesLocale$inboundSchema: z.ZodType<
+  CreateDeploymentRoutesLocale,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  redirect: types.optional(z.record(types.string())),
+  cookie: types.optional(types.string()),
+});
+
+export function createDeploymentRoutesLocaleFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateDeploymentRoutesLocale, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateDeploymentRoutesLocale$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentRoutesLocale' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateDeploymentDestinationDeploymentsResponseType$inboundSchema:
+  z.ZodNativeEnum<typeof CreateDeploymentDestinationDeploymentsResponseType> = z
+    .nativeEnum(CreateDeploymentDestinationDeploymentsResponseType);
+
+/** @internal */
+export const CreateDeploymentDestinationDeploymentsResponse2$inboundSchema:
+  z.ZodType<
+    CreateDeploymentDestinationDeploymentsResponse2,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    type: types.optional(
+      CreateDeploymentDestinationDeploymentsResponseType$inboundSchema,
+    ),
+    service: types.string(),
+    path: types.optional(types.string()),
+  });
+
+export function createDeploymentDestinationDeploymentsResponse2FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateDeploymentDestinationDeploymentsResponse2,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateDeploymentDestinationDeploymentsResponse2$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateDeploymentDestinationDeploymentsResponse2' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateDeploymentRoutesDeploymentsDestination$inboundSchema:
+  z.ZodType<
+    CreateDeploymentRoutesDeploymentsDestination,
+    z.ZodTypeDef,
+    unknown
+  > = smartUnion([
+    z.lazy(() => CreateDeploymentDestinationDeploymentsResponse2$inboundSchema),
+    types.string(),
+  ]);
+
+export function createDeploymentRoutesDeploymentsDestinationFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateDeploymentRoutesDeploymentsDestination,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateDeploymentRoutesDeploymentsDestination$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateDeploymentRoutesDeploymentsDestination' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateDeploymentRoutesDeployments1$inboundSchema: z.ZodType<
   CreateDeploymentRoutesDeployments1,
   z.ZodTypeDef,
@@ -1293,13 +1615,31 @@ export const CreateDeploymentRoutesDeployments1$inboundSchema: z.ZodType<
     CreateDeploymentRoutesDeploymentsMitigate$inboundSchema,
   ),
   transforms: types.optional(
-    z.array(CreateDeploymentRoutesDeploymentsTransforms$inboundSchema),
+    z.array(z.union([
+      z.lazy(() => CreateDeploymentTransformsDeployments1$inboundSchema).and(
+        z.object({ type: z.literal("request.headers") }),
+      ),
+      z.lazy(() => CreateDeploymentTransformsDeployments1$inboundSchema).and(
+        z.object({ type: z.literal("request.query") }),
+      ),
+      z.lazy(() => CreateDeploymentTransformsDeployments1$inboundSchema).and(
+        z.object({ type: z.literal("response.headers") }),
+      ),
+      CreateDeploymentTransformsDeployments2$inboundSchema,
+    ])),
   ),
   env: types.optional(z.array(types.string())),
-  locale: types.optional(CreateDeploymentRoutesLocale$inboundSchema),
+  locale: types.optional(
+    z.lazy(() => CreateDeploymentRoutesLocale$inboundSchema),
+  ),
   source: types.optional(types.string()),
   destination: types.optional(
-    CreateDeploymentRoutesDeploymentsDestination$inboundSchema,
+    smartUnion([
+      z.lazy(() =>
+        CreateDeploymentDestinationDeploymentsResponse2$inboundSchema
+      ),
+      types.string(),
+    ]),
   ),
   statusCode: types.optional(types.number()),
   middlewarePath: types.optional(types.string()),
@@ -1914,6 +2254,42 @@ export function responseBodyServicesFromJSON(
 }
 
 /** @internal */
+export const CreateDeploymentGitRepoDeploymentsResponse200ApplicationJSONOwnerType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateDeploymentGitRepoDeploymentsResponse200ApplicationJSONOwnerType
+  > = z.nativeEnum(
+    CreateDeploymentGitRepoDeploymentsResponse200ApplicationJSONOwnerType,
+  );
+
+/** @internal */
+export const CreateDeploymentGitRepo5$inboundSchema: z.ZodType<
+  CreateDeploymentGitRepo5,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  owner: types.string(),
+  repo: types.string(),
+  repoId: types.string(),
+  type: types.literal("cursor-origin"),
+  path: types.string(),
+  defaultBranch: types.string(),
+  name: types.string(),
+  private: types.boolean(),
+  ownerType:
+    CreateDeploymentGitRepoDeploymentsResponse200ApplicationJSONOwnerType$inboundSchema,
+});
+
+export function createDeploymentGitRepo5FromJSON(
+  jsonString: string,
+): SafeParseResult<CreateDeploymentGitRepo5, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateDeploymentGitRepo5$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentGitRepo5' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateDeploymentGitRepoDeploymentsResponse200OwnerType$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateDeploymentGitRepoDeploymentsResponse200OwnerType
@@ -2054,6 +2430,7 @@ export const ResponseBodyGitRepo$inboundSchema: z.ZodType<
   z.lazy(() => CreateDeploymentGitRepo2$inboundSchema),
   z.lazy(() => CreateDeploymentGitRepo3$inboundSchema),
   z.lazy(() => CreateDeploymentGitRepo4$inboundSchema),
+  z.lazy(() => CreateDeploymentGitRepo5$inboundSchema),
 ]);
 
 export function responseBodyGitRepoFromJSON(
@@ -2386,26 +2763,34 @@ export const ResponseBodyElasticConcurrency$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(ResponseBodyElasticConcurrency);
 
 /** @internal */
-export const ResponseBodyPurchaseType$inboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyPurchaseType
-> = z.nativeEnum(ResponseBodyPurchaseType);
+export const CreateDeploymentResponseBodyPurchaseType$inboundSchema:
+  z.ZodNativeEnum<typeof CreateDeploymentResponseBodyPurchaseType> = z
+    .nativeEnum(CreateDeploymentResponseBodyPurchaseType);
 
 /** @internal */
-export const ResponseBodyBuildMachine$inboundSchema: z.ZodType<
-  ResponseBodyBuildMachine,
+export const CreateDeploymentResponseBodyBuildMachine$inboundSchema: z.ZodType<
+  CreateDeploymentResponseBodyBuildMachine,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  purchaseType: z.nullable(ResponseBodyPurchaseType$inboundSchema).optional(),
+  purchaseType: z.nullable(
+    CreateDeploymentResponseBodyPurchaseType$inboundSchema,
+  ).optional(),
 });
 
-export function responseBodyBuildMachineFromJSON(
+export function createDeploymentResponseBodyBuildMachineFromJSON(
   jsonString: string,
-): SafeParseResult<ResponseBodyBuildMachine, SDKValidationError> {
+): SafeParseResult<
+  CreateDeploymentResponseBodyBuildMachine,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => ResponseBodyBuildMachine$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBodyBuildMachine' from JSON`,
+    (x) =>
+      CreateDeploymentResponseBodyBuildMachine$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateDeploymentResponseBodyBuildMachine' from JSON`,
   );
 }
 
@@ -2420,7 +2805,7 @@ export const CreateDeploymentResponseBodyResourceConfig$inboundSchema:
         ResponseBodyElasticConcurrency$inboundSchema,
       ),
       buildMachine: types.optional(
-        z.lazy(() => ResponseBodyBuildMachine$inboundSchema),
+        z.lazy(() => CreateDeploymentResponseBodyBuildMachine$inboundSchema),
       ),
     });
 
@@ -2687,6 +3072,7 @@ export const CreateDeploymentResponseBody2$inboundSchema: z.ZodType<
   buildArtifactUrls: types.optional(z.array(types.string())),
   builds: types.optional(z.array(ResponseBodyBuilds$inboundSchema)),
   env: z.array(types.string()),
+  resourceConfig: types.optional(ResponseBodyResourceConfig$inboundSchema),
   inspectorUrl: types.nullable(types.string()),
   isInConcurrentBuildsQueue: types.boolean(),
   isInSystemBuildsQueue: types.boolean(),
@@ -2803,6 +3189,7 @@ export const CreateDeploymentResponseBody2$inboundSchema: z.ZodType<
       z.lazy(() => CreateDeploymentGitRepo2$inboundSchema),
       z.lazy(() => CreateDeploymentGitRepo3$inboundSchema),
       z.lazy(() => CreateDeploymentGitRepo4$inboundSchema),
+      z.lazy(() => CreateDeploymentGitRepo5$inboundSchema),
     ]),
   ).optional(),
   flags: types.optional(

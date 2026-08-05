@@ -65,7 +65,6 @@ let value: AggregateEventsResponseBody = {
       cacheHitLevel: "<value>",
       cacheApi: "<value>",
       cacheReason: "<value>",
-      pprState: "<value>",
       clientIp: "<value>",
       clientIpCountry: "<value>",
       clientUserAgent: "<value>",

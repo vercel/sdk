@@ -15,3 +15,4 @@ let value: GetProjectTraceStatus = {
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `code`             | *number*           | :heavy_check_mark: | N/A                |
+| `message`          | *string*           | :heavy_minus_sign: | N/A                |

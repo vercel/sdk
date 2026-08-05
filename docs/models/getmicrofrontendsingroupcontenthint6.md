@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupContentHint6 } from "@vercel/sdk/models/getmicrofrontendsingroupcve55182migrationappliedfrom.js";
+import { GetMicrofrontendsInGroupContentHint6 } from "@vercel/sdk/models/getmicrofrontendsingroupstaticips.js";
 
 let value: GetMicrofrontendsInGroupContentHint6 = {
   type: "blob-store-id",

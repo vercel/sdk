@@ -5,7 +5,7 @@
 ```typescript
 import {
   CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2RewritesHas2,
-} from "@vercel/sdk/models/createdeploymentroutesdeploymentsdestination.js";
+} from "@vercel/sdk/models/createdeploymentkeydeployments2.js";
 
 let value:
   CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2RewritesHas2 =

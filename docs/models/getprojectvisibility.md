@@ -5,7 +5,7 @@ User-facing config/secret model. When set, authoritative for new code paths when
 ## Example Usage
 
 ```typescript
-import { GetProjectVisibility } from "@vercel/sdk/models/getprojectstaticips.js";
+import { GetProjectVisibility } from "@vercel/sdk/models/getprojectprojectsbuildqueue.js";
 
 let value: GetProjectVisibility = "secret";
 ```

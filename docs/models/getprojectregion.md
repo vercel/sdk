@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectRegion } from "@vercel/sdk/models/getprojectstaticips.js";
+import { GetProjectRegion } from "@vercel/sdk/models/getprojectprojectsbuildqueue.js";
 
 let value: GetProjectRegion = "sfo1";
 ```

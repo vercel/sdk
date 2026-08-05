@@ -5,13 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFiftySix } from "@vercel/sdk/models/ssoprotection2.js";
+import { ThreeHundredAndFiftySix } from "@vercel/sdk/models/twohundredandninetynine.js";
 
-let value: ThreeHundredAndFiftySix = {};
+let value: ThreeHundredAndFiftySix = {
+  publicId: "<id>",
+  role: "<value>",
+  maxUses: 3993.73,
+  expiresAt: "1764452302152",
+};
 ```
 
 ## Fields
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `inviteCode`       | *string*           | :heavy_minus_sign: | N/A                |
+| `publicId`         | *string*           | :heavy_check_mark: | N/A                |
+| `role`             | *string*           | :heavy_check_mark: | N/A                |
+| `maxUses`          | *number*           | :heavy_check_mark: | N/A                |
+| `expiresAt`        | *string*           | :heavy_check_mark: | N/A                |
+| `name`             | *string*           | :heavy_minus_sign: | N/A                |

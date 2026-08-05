@@ -103,10 +103,8 @@ const value: models.GetDeploymentGitSourceDeployments10 = {
 
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments11 = {
-  type: "custom",
-  ref: "<value>",
-  sha: "<value>",
-  gitUrl: "https://unpleasant-kit.org/",
+  type: "cursor-origin",
+  repoId: "<id>",
 };
 ```
 
@@ -114,10 +112,10 @@ const value: models.GetDeploymentGitSourceDeployments11 = {
 
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments12 = {
-  type: "github",
+  type: "custom",
   ref: "<value>",
   sha: "<value>",
-  repoId: 5999.61,
+  gitUrl: "https://bright-heartbeat.biz",
 };
 ```
 
@@ -125,11 +123,10 @@ const value: models.GetDeploymentGitSourceDeployments12 = {
 
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments13 = {
-  type: "github-custom-host",
-  host: "juvenile-formation.biz",
+  type: "github",
   ref: "<value>",
   sha: "<value>",
-  repoId: 1147.08,
+  repoId: 4465.75,
 };
 ```
 
@@ -137,10 +134,11 @@ const value: models.GetDeploymentGitSourceDeployments13 = {
 
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments14 = {
-  type: "github-limited",
+  type: "github-custom-host",
+  host: "discrete-cope.com",
   ref: "<value>",
   sha: "<value>",
-  repoId: 1976.41,
+  repoId: 996.12,
 };
 ```
 
@@ -148,10 +146,10 @@ const value: models.GetDeploymentGitSourceDeployments14 = {
 
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments15 = {
-  type: "gitlab",
+  type: "github-limited",
   ref: "<value>",
   sha: "<value>",
-  projectId: 139.24,
+  repoId: 139.24,
 };
 ```
 
@@ -159,6 +157,17 @@ const value: models.GetDeploymentGitSourceDeployments15 = {
 
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments16 = {
+  type: "gitlab",
+  ref: "<value>",
+  sha: "<value>",
+  projectId: 3708.56,
+};
+```
+
+### `models.GetDeploymentGitSourceDeployments17`
+
+```typescript
+const value: models.GetDeploymentGitSourceDeployments17 = {
   type: "bitbucket",
   ref: "<value>",
   sha: "<value>",
@@ -167,14 +176,27 @@ const value: models.GetDeploymentGitSourceDeployments16 = {
 };
 ```
 
-### `models.GetDeploymentGitSourceDeployments17`
+### `models.GetDeploymentGitSourceDeployments18`
 
 ```typescript
-const value: models.GetDeploymentGitSourceDeployments17 = {
+const value: models.GetDeploymentGitSourceDeployments18 = {
   type: "vercel",
   ref: "<value>",
   sha: "<value>",
   org: "<value>",
+  repo: "<value>",
+};
+```
+
+### `models.GetDeploymentGitSourceDeployments19`
+
+```typescript
+const value: models.GetDeploymentGitSourceDeployments19 = {
+  type: "cursor-origin",
+  ref: "<value>",
+  sha: "<value>",
+  repoId: "<id>",
+  owner: "<value>",
   repo: "<value>",
 };
 ```

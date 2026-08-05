@@ -400,6 +400,13 @@ export const CreationMode = {
  */
 export type CreationMode = ClosedEnum<typeof CreationMode>;
 
+/**
+ * Managed-client metadata exposed without leaking the manager client or installation identifiers.
+ */
+export type Managed = {
+  sync?: boolean | undefined;
+};
+
 export const CreateConnectorType = {
   ApiKey: "api-key",
   Custom: "custom",
@@ -535,6 +542,10 @@ export type CreateConnectorResponseBody = {
    * How the connector row was originally created. New create paths stamp this explicitly; older rows may omit it.
    */
   creationMode?: CreationMode | undefined;
+  /**
+   * Managed-client metadata exposed without leaking the manager client or installation identifiers.
+   */
+  managed?: Managed | undefined;
   public: boolean;
   uid: string;
   type: CreateConnectorType;
@@ -1641,6 +1652,22 @@ export const CreationMode$inboundSchema: z.ZodNativeEnum<typeof CreationMode> =
   z.nativeEnum(CreationMode);
 
 /** @internal */
+export const Managed$inboundSchema: z.ZodType<Managed, z.ZodTypeDef, unknown> =
+  z.object({
+    sync: types.optional(types.boolean()),
+  });
+
+export function managedFromJSON(
+  jsonString: string,
+): SafeParseResult<Managed, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Managed$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Managed' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateConnectorType$inboundSchema: z.ZodNativeEnum<
   typeof CreateConnectorType
 > = z.nativeEnum(CreateConnectorType);
@@ -1891,6 +1918,7 @@ export const CreateConnectorResponseBody$inboundSchema: z.ZodType<
     ]),
   ),
   creationMode: types.optional(CreationMode$inboundSchema),
+  managed: types.optional(z.lazy(() => Managed$inboundSchema)),
   public: types.boolean(),
   uid: types.string(),
   type: CreateConnectorType$inboundSchema,

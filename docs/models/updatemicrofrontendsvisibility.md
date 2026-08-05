@@ -5,7 +5,7 @@ User-facing config/secret model. When set, authoritative for new code paths when
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsVisibility } from "@vercel/sdk/models/updatemicrofrontendsprojectsdeploymenttype.js";
+import { UpdateMicrofrontendsVisibility } from "@vercel/sdk/models/updatemicrofrontendsdefaultresourceconfig.js";
 
 let value: UpdateMicrofrontendsVisibility = "secret";
 ```

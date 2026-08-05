@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UsageStatus } from "@vercel/sdk/models/createprojectprojectsresponseaction.js";
+import { UsageStatus } from "@vercel/sdk/models/createprojectblockhistory.js";
 
 let value: UsageStatus = {
   kind: "flat",

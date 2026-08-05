@@ -51,6 +51,7 @@ import {
   CreateProjectEnvRequest,
   CreateProjectEnvResponseBody,
 } from "../models/createprojectenvop.js";
+import { CreateProjectRequest } from "../models/createprojectregion.js";
 import { CreateProjectResponseBody } from "../models/createprojectresponsebody.js";
 import {
   CreateProjectTransferRequestRequest,
@@ -81,10 +82,10 @@ import {
   GetProjectEnvRequest,
   GetProjectEnvResponseBody,
 } from "../models/getprojectenvop.js";
+import { GetProjectRequest } from "../models/getprojectprojectsbuildqueue.js";
 import { GetProjectResponseBody } from "../models/getprojectresponsebody.js";
 import { GetProjectsResponseBody } from "../models/getprojectsresponsebody.js";
-import { GetProjectsRequest } from "../models/getprojectsresponsebodyprojectsresponsebuildqueue.js";
-import { GetProjectRequest } from "../models/getprojectstaticips.js";
+import { GetProjectsRequest } from "../models/getprojectsresponsebodyprojectsresponsebuildmachineelasticreason.js";
 import {
   GetProjectTokenRequest,
   GetProjectTokenResponseBody,
@@ -112,9 +113,8 @@ import {
 } from "../models/removeprojectenvop.js";
 import { RequestPromoteRequest } from "../models/requestpromoteop.js";
 import { RequestRollbackRequest } from "../models/requestrollbackop.js";
-import { CreateProjectRequest } from "../models/sandbox.js";
 import { UnpauseProjectRequest } from "../models/unpauseprojectop.js";
-import { UpdateMicrofrontendsRequest } from "../models/updatemicrofrontendsprojectsdeploymenttype.js";
+import { UpdateMicrofrontendsRequest } from "../models/updatemicrofrontendsdefaultresourceconfig.js";
 import { UpdateMicrofrontendsResponseBody } from "../models/updatemicrofrontendsresponsebody.js";
 import { UpdateProjectRequest } from "../models/updateprojectbranchmatcher.js";
 import {
@@ -127,8 +127,8 @@ import {
 } from "../models/updateprojectprotectionbypassop.js";
 import { UpdateProjectResponseBody } from "../models/updateprojectresponsebody.js";
 import { UpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequest } from "../models/updateprojectsbyprojectidrollbackbydeploymentidupdatedescriptionop.js";
-import { UploadProjectAvatarRequest } from "../models/uploadprojectavatarcve55182migrationappliedfrom.js";
 import { UploadProjectAvatarResponseBody } from "../models/uploadprojectavatarresponsebody.js";
+import { UploadProjectAvatarRequest } from "../models/uploadprojectavatarstaticips.js";
 import {
   VerifyProjectDomainRequest,
   VerifyProjectDomainResponseBody,

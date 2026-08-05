@@ -14,6 +14,7 @@ let value: AccountUpdateContext = {
       slug: "<value>",
       name: "<value>",
       avatar: "https://picsum.photos/seed/LVlcN5/730/649",
+      workEmail: "<value>",
     },
   ],
 };

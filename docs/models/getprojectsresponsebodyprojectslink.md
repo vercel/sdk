@@ -106,3 +106,18 @@ const value: models.GetProjectsLinkProjectsResponse6 = {
 };
 ```
 
+### `models.GetProjectsLinkProjectsResponse7`
+
+```typescript
+const value: models.GetProjectsLinkProjectsResponse7 = {
+  owner: "<value>",
+  repo: "<value>",
+  repoId: "<id>",
+  ownerId: "<id>",
+  type: "cursor-origin",
+  deployHooks: [],
+  gitCredentialId: "<id>",
+  productionBranch: "<value>",
+};
+```
+

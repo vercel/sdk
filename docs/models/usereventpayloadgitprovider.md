@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayloadGitProvider } from "@vercel/sdk/models/envid.js";
+import { UserEventPayloadGitProvider } from "@vercel/sdk/models/envid2.js";
 
-let value: UserEventPayloadGitProvider = "bitbucket";
+let value: UserEventPayloadGitProvider = "cursor-origin";
 ```
 
 ## Values
 
 ```typescript
-"bitbucket" | "github" | "github-custom-host" | "github-limited" | "gitlab" | "vercel"
+"bitbucket" | "cursor-origin" | "github" | "github-custom-host" | "github-limited" | "gitlab" | "vercel"
 ```

@@ -5,7 +5,7 @@ List of domains associated with this environment
 ## Example Usage
 
 ```typescript
-import { GetDeploymentCustomEnvironmentDomains } from "@vercel/sdk/models/getdeploymentresponsebodynodeversion.js";
+import { GetDeploymentCustomEnvironmentDomains } from "@vercel/sdk/models/getdeploymentgitsourcedeploymentsresponsetype.js";
 
 let value: GetDeploymentCustomEnvironmentDomains = {
   name: "<value>",

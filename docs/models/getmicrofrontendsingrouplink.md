@@ -99,3 +99,25 @@ const value: models.GetMicrofrontendsInGroupLink6 = {
 };
 ```
 
+### `models.GetMicrofrontendsInGroupLink7`
+
+```typescript
+const value: models.GetMicrofrontendsInGroupLink7 = {
+  owner: "<value>",
+  repo: "<value>",
+  repoId: "<id>",
+  ownerId: "<id>",
+  type: "cursor-origin",
+  deployHooks: [
+    {
+      id: "<id>",
+      name: "<value>",
+      ref: "<value>",
+      url: "https://tame-cheese.biz/",
+    },
+  ],
+  gitCredentialId: "<id>",
+  productionBranch: "<value>",
+};
+```
+

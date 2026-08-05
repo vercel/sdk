@@ -5,7 +5,7 @@ If set it overrides the `projectSettings.nodeVersion` for this deployment.
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentNodeVersion } from "@vercel/sdk/models/servicesbuilder.js";
+import { CancelDeploymentNodeVersion } from "@vercel/sdk/models/canceldeploymentservicesdeploymentsmaxduration.js";
 
 let value: CancelDeploymentNodeVersion = "14.x";
 ```

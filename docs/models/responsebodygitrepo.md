@@ -68,3 +68,19 @@ const value: models.CreateDeploymentGitRepo4 = {
 };
 ```
 
+### `models.CreateDeploymentGitRepo5`
+
+```typescript
+const value: models.CreateDeploymentGitRepo5 = {
+  owner: "<value>",
+  repo: "<value>",
+  repoId: "<id>",
+  type: "cursor-origin",
+  path: "/home/user",
+  defaultBranch: "<value>",
+  name: "<value>",
+  private: false,
+  ownerType: "user",
+};
+```
+

@@ -18,7 +18,7 @@ import {
 import {
   GetProjectsRequest,
   GetProjectsRequest$outboundSchema,
-} from "../models/getprojectsresponsebodyprojectsresponsebuildqueue.js";
+} from "../models/getprojectsresponsebodyprojectsresponsebuildmachineelasticreason.js";
 import {
   ConnectionError,
   InvalidRequestError,

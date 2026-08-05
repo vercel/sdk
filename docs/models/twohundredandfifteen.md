@@ -5,19 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFifteen } from "@vercel/sdk/models/onehundredandsixtyfour.js";
+import { TwoHundredAndFifteen } from "@vercel/sdk/models/onehundredandseventyone.js";
 
 let value: TwoHundredAndFifteen = {
-  projectId: "<id>",
-  projectAnalytics: {
+  prev: {
     id: "<id>",
-    disabledAt: 6011.84,
-    enabledAt: 7588.07,
+    name: "<value>",
+    projectId: "<id>",
+    vercelRegion: "<value>",
+    awsServiceName: "<value>",
   },
-  prevProjectAnalytics: {
+  current: {
     id: "<id>",
-    disabledAt: 462.51,
-    enabledAt: 3239.55,
+    name: "<value>",
+    projectId: "<id>",
+    vercelRegion: "<value>",
+    awsServiceName: "<value>",
   },
 };
 ```
@@ -26,7 +29,5 @@ let value: TwoHundredAndFifteen = {
 
 | Field                                                            | Type                                                             | Required                                                         | Description                                                      |
 | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `projectName`                                                    | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
-| `projectId`                                                      | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `projectAnalytics`                                               | [models.ProjectAnalytics](../models/projectanalytics.md)         | :heavy_check_mark:                                               | N/A                                                              |
-| `prevProjectAnalytics`                                           | [models.PrevProjectAnalytics](../models/prevprojectanalytics.md) | :heavy_check_mark:                                               | N/A                                                              |
+| `prev`                                                           | [models.UserEventPayloadPrev](../models/usereventpayloadprev.md) | :heavy_check_mark:                                               | N/A                                                              |
+| `current`                                                        | [models.Current](../models/current.md)                           | :heavy_check_mark:                                               | N/A                                                              |

@@ -63,7 +63,6 @@ let value: CountEventsResponseBody = {
     cacheHitLevel: "<value>",
     cacheApi: "<value>",
     cacheReason: "<value>",
-    pprState: "<value>",
     clientIp: "<value>",
     clientIpCountry: "<value>",
     clientUserAgent: "<value>",

@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { Widget } from "@vercel/sdk/models/onehundredandsixtyfour.js";
+import { Widget } from "@vercel/sdk/models/onehundredandseventyone.js";
 
-let value: Widget = "res";
+let value: Widget = "speed-insights-cls";
 ```
 
 ## Values
 
 ```typescript
-"alert" | "firewall-allowed" | "firewall-denied" | "online" | "res"
+"alert" | "analytics-online" | "analytics-page-views" | "analytics-visitors" | "firewall-allowed" | "firewall-denied" | "observability-alert" | "observability-edge-requests" | "observability-error-rate" | "observability-function-invocations" | "online" | "res" | "speed-insights-cls" | "speed-insights-lcp" | "speed-insights-res"
 ```

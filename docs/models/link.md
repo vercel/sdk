@@ -106,3 +106,25 @@ const value: models.Link6 = {
 };
 ```
 
+### `models.Link7`
+
+```typescript
+const value: models.Link7 = {
+  owner: "<value>",
+  repo: "<value>",
+  repoId: "<id>",
+  ownerId: "<id>",
+  type: "cursor-origin",
+  deployHooks: [
+    {
+      id: "<id>",
+      name: "<value>",
+      ref: "<value>",
+      url: "https://confused-dish.info",
+    },
+  ],
+  gitCredentialId: "<id>",
+  productionBranch: "<value>",
+};
+```
+

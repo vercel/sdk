@@ -18,6 +18,7 @@ export const QueryParamSource = {
   Cli: "cli",
   Oauth: "oauth",
   Backoffice: "backoffice",
+  ImportRecommendedIntegrations: "import-recommended-integrations",
 } as const;
 export type QueryParamSource = ClosedEnum<typeof QueryParamSource>;
 

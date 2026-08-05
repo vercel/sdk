@@ -180,3 +180,26 @@ const value: models.Job8 = {
 };
 ```
 
+### `models.Job9`
+
+```typescript
+const value: models.Job9 = {
+  type: "cursor-origin-push",
+  ref: "<value>",
+  sha: "<value>",
+  headInfo: {
+    owner: "<value>",
+    ownerId: "<id>",
+    ref: "<value>",
+    repo: "<value>",
+    repoId: "<id>",
+    sha: "<value>",
+  },
+  installationId: "<id>",
+  owner: "<value>",
+  repo: "<value>",
+  repoId: "<id>",
+  provider: "cursor-origin",
+};
+```
+

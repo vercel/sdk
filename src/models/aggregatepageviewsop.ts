@@ -201,7 +201,6 @@ export type Data2 = {
   cacheHitLevel: string;
   cacheApi: string;
   cacheReason: string;
-  pprState: string;
   clientIp: string;
   clientIpCountry: string;
   clientUserAgent: string;
@@ -421,7 +420,6 @@ export type Data1 = {
   cacheHitLevel?: string | undefined;
   cacheApi?: string | undefined;
   cacheReason?: string | undefined;
-  pprState?: string | undefined;
   clientIp?: string | undefined;
   clientIpCountry?: string | undefined;
   clientUserAgent?: string | undefined;
@@ -771,7 +769,6 @@ export const Data2$inboundSchema: z.ZodType<Data2, z.ZodTypeDef, unknown> =
       cacheHitLevel: types.string(),
       cacheApi: types.string(),
       cacheReason: types.string(),
-      pprState: types.string(),
       clientIp: types.string(),
       clientIpCountry: types.string(),
       clientUserAgent: types.string(),
@@ -1005,7 +1002,6 @@ export const Data1$inboundSchema: z.ZodType<Data1, z.ZodTypeDef, unknown> = z
     cacheHitLevel: types.optional(types.string()),
     cacheApi: types.optional(types.string()),
     cacheReason: types.optional(types.string()),
-    pprState: types.optional(types.string()),
     clientIp: types.optional(types.string()),
     clientIpCountry: types.optional(types.string()),
     clientUserAgent: types.optional(types.string()),

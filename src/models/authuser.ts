@@ -172,7 +172,7 @@ export type SoftBlock = {
 /**
  * An object containing billing infomation associated with the User account.
  */
-export type Billing = {};
+export type AuthUserBilling = {};
 
 /**
  * An object containing infomation related to the amount of platform resources may be allocated to the User account.
@@ -378,6 +378,7 @@ export type ImportFlowGitNamespaceId = string | number;
 
 export const ImportFlowGitProvider = {
   Bitbucket: "bitbucket",
+  CursorOrigin: "cursor-origin",
   Github: "github",
   GithubCustomHost: "github-custom-host",
   GithubLimited: "github-limited",
@@ -452,6 +453,7 @@ export type ManagedTeams = {
   slug: string;
   name: string;
   avatar: string | null;
+  workEmail: string;
 };
 
 /**
@@ -477,7 +479,7 @@ export type AuthUser = {
   /**
    * An object containing billing infomation associated with the User account.
    */
-  billing: Billing | null;
+  billing: AuthUserBilling | null;
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
@@ -644,16 +646,19 @@ export function softBlockFromJSON(
 }
 
 /** @internal */
-export const Billing$inboundSchema: z.ZodType<Billing, z.ZodTypeDef, unknown> =
-  z.object({});
+export const AuthUserBilling$inboundSchema: z.ZodType<
+  AuthUserBilling,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
 
-export function billingFromJSON(
+export function authUserBillingFromJSON(
   jsonString: string,
-): SafeParseResult<Billing, SDKValidationError> {
+): SafeParseResult<AuthUserBilling, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Billing$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Billing' from JSON`,
+    (x) => AuthUserBilling$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AuthUserBilling' from JSON`,
   );
 }
 
@@ -1053,6 +1058,7 @@ export const ManagedTeams$inboundSchema: z.ZodType<
   slug: types.string(),
   name: types.string(),
   avatar: types.nullable(types.string()),
+  workEmail: types.string(),
 });
 
 export function managedTeamsFromJSON(
@@ -1093,7 +1099,7 @@ export const AuthUser$inboundSchema: z.ZodType<
 > = z.object({
   createdAt: types.number(),
   softBlock: types.nullable(z.lazy(() => SoftBlock$inboundSchema)),
-  billing: types.nullable(z.lazy(() => Billing$inboundSchema)),
+  billing: types.nullable(z.lazy(() => AuthUserBilling$inboundSchema)),
   resourceConfig: z.lazy(() => AuthUserResourceConfig$inboundSchema),
   stagingPrefix: types.string(),
   activeDashboardViews: types.optional(

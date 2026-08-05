@@ -18,7 +18,7 @@ import {
 import {
   CreateDeploymentRequest,
   CreateDeploymentRequest$outboundSchema,
-} from "../models/createdeploymentroutesmitigate.js";
+} from "../models/createdeploymentvaluedeploymentsresponse2002.js";
 import {
   ConnectionError,
   InvalidRequestError,

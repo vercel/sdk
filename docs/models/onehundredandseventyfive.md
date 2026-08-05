@@ -5,27 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSeventyFive } from "@vercel/sdk/models/onehundredandsixtyfour.js";
+import { OneHundredAndSeventyFive } from "@vercel/sdk/models/onehundredandseventyone.js";
 
-let value: OneHundredAndSeventyFive = {};
+let value: OneHundredAndSeventyFive = {
+  provider: "saml",
+  login: "Mozell_Blick",
+};
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `userAgent`                                    | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `geolocation`                                  | [models.Geolocation](../models/geolocation.md) | :heavy_minus_sign:                             | N/A                                            |
-| `env`                                          | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `os`                                           | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `username`                                     | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `ssoType`                                      | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `factors`                                      | *models.Factors*                               | :heavy_minus_sign:                             | N/A                                            |
-| `viaOTP`                                       | *boolean*                                      | :heavy_minus_sign:                             | N/A                                            |
-| `viaGithub`                                    | *boolean*                                      | :heavy_minus_sign:                             | N/A                                            |
-| `viaGitlab`                                    | *boolean*                                      | :heavy_minus_sign:                             | N/A                                            |
-| `viaBitbucket`                                 | *boolean*                                      | :heavy_minus_sign:                             | N/A                                            |
-| `viaGoogle`                                    | *boolean*                                      | :heavy_minus_sign:                             | N/A                                            |
-| `viaApple`                                     | *boolean*                                      | :heavy_minus_sign:                             | N/A                                            |
-| `viaSamlSso`                                   | *boolean*                                      | :heavy_minus_sign:                             | N/A                                            |
-| `viaPasskey`                                   | *boolean*                                      | :heavy_minus_sign:                             | N/A                                            |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `provider`                                                                     | [models.UserEventPayload175Provider](../models/usereventpayload175provider.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `login`                                                                        | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |

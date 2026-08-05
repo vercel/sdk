@@ -68,18 +68,16 @@ import {
   GetMicrofrontendsInGroupSpeedInsights$inboundSchema,
   GetMicrofrontendsInGroupStaticIps,
   GetMicrofrontendsInGroupStaticIps$inboundSchema,
-} from "./getmicrofrontendsingroupcve55182migrationappliedfrom.js";
+} from "./getmicrofrontendsingroupstaticips.js";
 import {
   GetMicrofrontendsInGroupAbuse,
   GetMicrofrontendsInGroupAbuse$inboundSchema,
+  GetMicrofrontendsInGroupAction,
+  GetMicrofrontendsInGroupAction$inboundSchema,
   GetMicrofrontendsInGroupDeploymentPolicy,
   GetMicrofrontendsInGroupDeploymentPolicy$inboundSchema,
-  GetMicrofrontendsInGroupDismissedToasts,
-  GetMicrofrontendsInGroupDismissedToasts$inboundSchema,
   GetMicrofrontendsInGroupFeatures,
   GetMicrofrontendsInGroupFeatures$inboundSchema,
-  GetMicrofrontendsInGroupFlatRateTier,
-  GetMicrofrontendsInGroupFlatRateTier$inboundSchema,
   GetMicrofrontendsInGroupGitComments,
   GetMicrofrontendsInGroupGitComments$inboundSchema,
   GetMicrofrontendsInGroupGitProviderOptions,
@@ -108,10 +106,19 @@ import {
   GetMicrofrontendsInGroupTrustedSources$inboundSchema,
   GetMicrofrontendsInGroupUsageStatus,
   GetMicrofrontendsInGroupUsageStatus$inboundSchema,
+  GetMicrofrontendsInGroupValue,
+  GetMicrofrontendsInGroupValue$inboundSchema,
   GetMicrofrontendsInGroupWebAnalytics,
   GetMicrofrontendsInGroupWebAnalytics$inboundSchema,
-} from "./getmicrofrontendsingroupdismissedtoasts.js";
+} from "./getmicrofrontendsingroupvalue.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type GetMicrofrontendsInGroupDismissedToasts = {
+  key: string;
+  dismissedAt: number;
+  action: GetMicrofrontendsInGroupAction;
+  value: GetMicrofrontendsInGroupValue | null;
+};
 
 export const GetMicrofrontendsInGroupMicrofrontendsEnv = {
   Preview: "preview",
@@ -274,7 +281,6 @@ export type GetMicrofrontendsInGroupProjects = {
     | null
     | undefined;
   tier?: string | undefined;
-  flatRateTier?: GetMicrofrontendsInGroupFlatRateTier | undefined;
   usageStatus?: GetMicrofrontendsInGroupUsageStatus | undefined;
   features?: GetMicrofrontendsInGroupFeatures | undefined;
   v0?: boolean | undefined;
@@ -291,6 +297,34 @@ export type GetMicrofrontendsInGroupProjects = {
 export type GetMicrofrontendsInGroupResponseBody = {
   projects: Array<GetMicrofrontendsInGroupProjects>;
 };
+
+/** @internal */
+export const GetMicrofrontendsInGroupDismissedToasts$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupDismissedToasts,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  key: types.string(),
+  dismissedAt: types.number(),
+  action: GetMicrofrontendsInGroupAction$inboundSchema,
+  value: types.nullable(GetMicrofrontendsInGroupValue$inboundSchema),
+});
+
+export function getMicrofrontendsInGroupDismissedToastsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetMicrofrontendsInGroupDismissedToasts,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMicrofrontendsInGroupDismissedToasts$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetMicrofrontendsInGroupDismissedToasts' from JSON`,
+  );
+}
 
 /** @internal */
 export const GetMicrofrontendsInGroupMicrofrontendsEnv$inboundSchema:
@@ -494,9 +528,6 @@ export const GetMicrofrontendsInGroupProjects$inboundSchema: z.ZodType<
     GetMicrofrontendsInGroupDeploymentPolicy$inboundSchema,
   ).optional(),
   tier: types.optional(types.string()),
-  flatRateTier: types.optional(
-    GetMicrofrontendsInGroupFlatRateTier$inboundSchema,
-  ),
   usageStatus: types.optional(
     GetMicrofrontendsInGroupUsageStatus$inboundSchema,
   ),
@@ -509,7 +540,9 @@ export const GetMicrofrontendsInGroupProjects$inboundSchema: z.ZodType<
   ),
   hasDeployments: types.optional(types.boolean()),
   dismissedToasts: types.optional(
-    z.array(GetMicrofrontendsInGroupDismissedToasts$inboundSchema),
+    z.array(
+      z.lazy(() => GetMicrofrontendsInGroupDismissedToasts$inboundSchema),
+    ),
   ),
   protectedSourcemaps: types.optional(types.boolean()),
   tracing: types.optional(

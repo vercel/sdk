@@ -103,10 +103,8 @@ const value: models.CreateDeploymentGitSource10 = {
 
 ```typescript
 const value: models.CreateDeploymentGitSource11 = {
-  type: "custom",
-  ref: "<value>",
-  sha: "<value>",
-  gitUrl: "https://velvety-straw.net/",
+  type: "cursor-origin",
+  repoId: "<id>",
 };
 ```
 
@@ -114,10 +112,10 @@ const value: models.CreateDeploymentGitSource11 = {
 
 ```typescript
 const value: models.CreateDeploymentGitSource12 = {
-  type: "github",
+  type: "custom",
   ref: "<value>",
   sha: "<value>",
-  repoId: 8770.72,
+  gitUrl: "https://intent-hygienic.biz",
 };
 ```
 
@@ -125,11 +123,10 @@ const value: models.CreateDeploymentGitSource12 = {
 
 ```typescript
 const value: models.CreateDeploymentGitSource13 = {
-  type: "github-custom-host",
-  host: "lasting-cinder.com",
+  type: "github",
   ref: "<value>",
   sha: "<value>",
-  repoId: 7576.66,
+  repoId: 4560.03,
 };
 ```
 
@@ -137,10 +134,11 @@ const value: models.CreateDeploymentGitSource13 = {
 
 ```typescript
 const value: models.CreateDeploymentGitSource14 = {
-  type: "github-limited",
+  type: "github-custom-host",
+  host: "amused-asset.info",
   ref: "<value>",
   sha: "<value>",
-  repoId: 309.84,
+  repoId: 8345.44,
 };
 ```
 
@@ -148,10 +146,10 @@ const value: models.CreateDeploymentGitSource14 = {
 
 ```typescript
 const value: models.CreateDeploymentGitSource15 = {
-  type: "gitlab",
+  type: "github-limited",
   ref: "<value>",
   sha: "<value>",
-  projectId: 7335.33,
+  repoId: 7335.33,
 };
 ```
 
@@ -159,6 +157,17 @@ const value: models.CreateDeploymentGitSource15 = {
 
 ```typescript
 const value: models.CreateDeploymentGitSource16 = {
+  type: "gitlab",
+  ref: "<value>",
+  sha: "<value>",
+  projectId: 8555.82,
+};
+```
+
+### `models.CreateDeploymentGitSource17`
+
+```typescript
+const value: models.CreateDeploymentGitSource17 = {
   type: "bitbucket",
   ref: "<value>",
   sha: "<value>",
@@ -167,14 +176,27 @@ const value: models.CreateDeploymentGitSource16 = {
 };
 ```
 
-### `models.CreateDeploymentGitSource17`
+### `models.CreateDeploymentGitSource18`
 
 ```typescript
-const value: models.CreateDeploymentGitSource17 = {
+const value: models.CreateDeploymentGitSource18 = {
   type: "vercel",
   ref: "<value>",
   sha: "<value>",
   org: "<value>",
+  repo: "<value>",
+};
+```
+
+### `models.CreateDeploymentGitSource19`
+
+```typescript
+const value: models.CreateDeploymentGitSource19 = {
+  type: "cursor-origin",
+  ref: "<value>",
+  sha: "<value>",
+  repoId: "<id>",
+  owner: "<value>",
   repo: "<value>",
 };
 ```

@@ -102,6 +102,7 @@ export const GetDeploymentsSource = {
   CloneRepo: "clone/repo",
   Drop: "drop",
   Git: "git",
+  GitDeployHook: "git-deploy-hook",
   Import: "import",
   ImportRepo: "import/repo",
   Redeploy: "redeploy",

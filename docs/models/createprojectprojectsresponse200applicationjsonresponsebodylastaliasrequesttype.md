@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectProjectsResponse200ApplicationJSONResponseBodyLastAliasRequestType } from "@vercel/sdk/models/createprojectprojectsresponseaction.js";
+import { CreateProjectProjectsResponse200ApplicationJSONResponseBodyLastAliasRequestType } from "@vercel/sdk/models/createprojectblockhistory.js";
 
 let value:
   CreateProjectProjectsResponse200ApplicationJSONResponseBodyLastAliasRequestType =

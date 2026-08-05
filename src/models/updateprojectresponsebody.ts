@@ -55,8 +55,6 @@ import {
   UpdateProjectLatestDeployments$inboundSchema,
   UpdateProjectLink,
   UpdateProjectLink$inboundSchema,
-  UpdateProjectLogHeaders,
-  UpdateProjectLogHeaders$inboundSchema,
   UpdateProjectManagedRules,
   UpdateProjectManagedRules$inboundSchema,
   UpdateProjectMicrofrontends,
@@ -101,7 +99,16 @@ import {
   UpdateProjectTrustedSources$inboundSchema,
   UpdateProjectWebAnalytics,
   UpdateProjectWebAnalytics$inboundSchema,
-} from "./updateprojectlogheaders.js";
+} from "./updateprojectmanagedrules.js";
+
+export const UpdateProjectLogHeaders2 = {
+  Wildcard: "*",
+} as const;
+export type UpdateProjectLogHeaders2 = ClosedEnum<
+  typeof UpdateProjectLogHeaders2
+>;
+
+export type UpdateProjectLogHeaders = Array<string> | UpdateProjectLogHeaders2;
 
 export type UpdateProjectSecurityPlusMetadata = {
   updatedAt: number;
@@ -125,7 +132,7 @@ export type UpdateProjectSecurity = {
   firewallBypassIps?: Array<string> | undefined;
   managedRules?: UpdateProjectManagedRules | null | undefined;
   botIdEnabled?: boolean | undefined;
-  logHeaders?: UpdateProjectLogHeaders | undefined;
+  logHeaders?: Array<string> | UpdateProjectLogHeaders2 | undefined;
   securityPlus?: boolean | undefined;
   securityPlusMetadata?: UpdateProjectSecurityPlusMetadata | undefined;
   /**
@@ -287,16 +294,6 @@ export type UpdateProjectProjectsDeploymentPolicy = {
   gitSources?: Array<UpdateProjectGitSources> | null | undefined;
   deploymentSources?: Array<UpdateProjectDeploymentSources> | null | undefined;
 };
-
-export const UpdateProjectFlatRateTier = {
-  Advanced: "advanced",
-  Base: "base",
-  Critical: "critical",
-  Standard: "standard",
-} as const;
-export type UpdateProjectFlatRateTier = ClosedEnum<
-  typeof UpdateProjectFlatRateTier
->;
 
 /**
  * Billing mode. Always 'flat' for flat-rate projects.
@@ -800,7 +797,6 @@ export type UpdateProjectResponseBody = {
    */
   deploymentPolicy?: UpdateProjectProjectsDeploymentPolicy | null | undefined;
   tier?: string | undefined;
-  flatRateTier?: UpdateProjectFlatRateTier | undefined;
   usageStatus?: UpdateProjectUsageStatus | undefined;
   features?: UpdateProjectFeatures | undefined;
   v0?: boolean | undefined;
@@ -815,6 +811,31 @@ export type UpdateProjectResponseBody = {
   tracing?: UpdateProjectTracing | undefined;
   avatar?: string | null | undefined;
 };
+
+/** @internal */
+export const UpdateProjectLogHeaders2$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectLogHeaders2
+> = z.nativeEnum(UpdateProjectLogHeaders2);
+
+/** @internal */
+export const UpdateProjectLogHeaders$inboundSchema: z.ZodType<
+  UpdateProjectLogHeaders,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.array(types.string()),
+  UpdateProjectLogHeaders2$inboundSchema,
+]);
+
+export function updateProjectLogHeadersFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectLogHeaders, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectLogHeaders$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectLogHeaders' from JSON`,
+  );
+}
 
 /** @internal */
 export const UpdateProjectSecurityPlusMetadata$inboundSchema: z.ZodType<
@@ -855,7 +876,12 @@ export const UpdateProjectSecurity$inboundSchema: z.ZodType<
   firewallBypassIps: types.optional(z.array(types.string())),
   managedRules: z.nullable(UpdateProjectManagedRules$inboundSchema).optional(),
   botIdEnabled: types.optional(types.boolean()),
-  log_headers: types.optional(UpdateProjectLogHeaders$inboundSchema),
+  log_headers: types.optional(
+    smartUnion([
+      z.array(types.string()),
+      UpdateProjectLogHeaders2$inboundSchema,
+    ]),
+  ),
   securityPlus: types.optional(types.boolean()),
   securityPlusMetadata: types.optional(
     z.lazy(() => UpdateProjectSecurityPlusMetadata$inboundSchema),
@@ -1218,11 +1244,6 @@ export function updateProjectProjectsDeploymentPolicyFromJSON(
     `Failed to parse 'UpdateProjectProjectsDeploymentPolicy' from JSON`,
   );
 }
-
-/** @internal */
-export const UpdateProjectFlatRateTier$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateProjectFlatRateTier
-> = z.nativeEnum(UpdateProjectFlatRateTier);
 
 /** @internal */
 export const UpdateProjectKind$inboundSchema: z.ZodNativeEnum<
@@ -2424,7 +2445,6 @@ export const UpdateProjectResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => UpdateProjectProjectsDeploymentPolicy$inboundSchema),
   ).optional(),
   tier: types.optional(types.string()),
-  flatRateTier: types.optional(UpdateProjectFlatRateTier$inboundSchema),
   usageStatus: types.optional(
     z.lazy(() => UpdateProjectUsageStatus$inboundSchema),
   ),

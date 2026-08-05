@@ -103,10 +103,8 @@ const value: models.GetDeploymentGitSource10 = {
 
 ```typescript
 const value: models.GetDeploymentGitSource11 = {
-  type: "custom",
-  ref: "<value>",
-  sha: "<value>",
-  gitUrl: "https://honorable-shadowbox.com",
+  type: "cursor-origin",
+  repoId: "<id>",
 };
 ```
 
@@ -114,10 +112,10 @@ const value: models.GetDeploymentGitSource11 = {
 
 ```typescript
 const value: models.GetDeploymentGitSource12 = {
-  type: "github",
+  type: "custom",
   ref: "<value>",
   sha: "<value>",
-  repoId: 6291.31,
+  gitUrl: "https://steep-recovery.com",
 };
 ```
 
@@ -125,11 +123,10 @@ const value: models.GetDeploymentGitSource12 = {
 
 ```typescript
 const value: models.GetDeploymentGitSource13 = {
-  type: "github-custom-host",
-  host: "next-feather.net",
+  type: "github",
   ref: "<value>",
   sha: "<value>",
-  repoId: 639.6,
+  repoId: 5526.81,
 };
 ```
 
@@ -137,10 +134,11 @@ const value: models.GetDeploymentGitSource13 = {
 
 ```typescript
 const value: models.GetDeploymentGitSource14 = {
-  type: "github-limited",
+  type: "github-custom-host",
+  host: "delicious-independence.biz",
   ref: "<value>",
   sha: "<value>",
-  repoId: 1800.62,
+  repoId: 9497.32,
 };
 ```
 
@@ -148,10 +146,10 @@ const value: models.GetDeploymentGitSource14 = {
 
 ```typescript
 const value: models.GetDeploymentGitSource15 = {
-  type: "gitlab",
+  type: "github-limited",
   ref: "<value>",
   sha: "<value>",
-  projectId: 4849.33,
+  repoId: 4849.33,
 };
 ```
 
@@ -159,6 +157,17 @@ const value: models.GetDeploymentGitSource15 = {
 
 ```typescript
 const value: models.GetDeploymentGitSource16 = {
+  type: "gitlab",
+  ref: "<value>",
+  sha: "<value>",
+  projectId: 6321.06,
+};
+```
+
+### `models.GetDeploymentGitSource17`
+
+```typescript
+const value: models.GetDeploymentGitSource17 = {
   type: "bitbucket",
   ref: "<value>",
   sha: "<value>",
@@ -167,14 +176,27 @@ const value: models.GetDeploymentGitSource16 = {
 };
 ```
 
-### `models.GetDeploymentGitSource17`
+### `models.GetDeploymentGitSource18`
 
 ```typescript
-const value: models.GetDeploymentGitSource17 = {
+const value: models.GetDeploymentGitSource18 = {
   type: "vercel",
   ref: "<value>",
   sha: "<value>",
   org: "<value>",
+  repo: "<value>",
+};
+```
+
+### `models.GetDeploymentGitSource19`
+
+```typescript
+const value: models.GetDeploymentGitSource19 = {
+  type: "cursor-origin",
+  ref: "<value>",
+  sha: "<value>",
+  repoId: "<id>",
+  owner: "<value>",
   repo: "<value>",
 };
 ```

@@ -3,15 +3,15 @@
 ## Example Usage
 
 ```typescript
-import { GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody211Type } from "@vercel/sdk/models/getdeploymentresponsebodynodeversion.js";
+import { GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody211Type } from "@vercel/sdk/models/getdeploymentgitsourcedeploymentsresponsetype.js";
 
 let value:
   GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody211Type =
-    "custom";
+    "cursor-origin";
 ```
 
 ## Values
 
 ```typescript
-"custom"
+"cursor-origin"
 ```

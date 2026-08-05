@@ -5,15 +5,15 @@
 ```typescript
 import {
   CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody213Type,
-} from "@vercel/sdk/models/createdeploymentroutesmitigate.js";
+} from "@vercel/sdk/models/createdeploymentvaluedeploymentsresponse2002.js";
 
 let value:
   CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody213Type =
-    "github-custom-host";
+    "github";
 ```
 
 ## Values
 
 ```typescript
-"github-custom-host"
+"github"
 ```

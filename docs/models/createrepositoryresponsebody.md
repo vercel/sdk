@@ -10,6 +10,7 @@ let value: CreateRepositoryResponseBody = {
     id: "repo_a1b2c3d4e5f6",
     projectId: "prj_a1b2c3d4e5f6",
     name: "my-app",
+    public: false,
     createdAt: "2026-06-30T10:00:00.000Z",
     updatedAt: "2026-06-30T10:00:00.000Z",
   },

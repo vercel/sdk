@@ -38,6 +38,10 @@ export type ListUserEventsRequest = {
    */
   projectIds?: string | undefined;
   /**
+   * Filters events to those associated with a specific entity (matched against `payload.id`). For example, a connector ID.
+   */
+  entityId?: string | undefined;
+  /**
    * When set to `true`, the response will include the `payload` field for each event.
    */
   withPayload?: string | undefined;
@@ -70,6 +74,7 @@ export type ListUserEventsRequest$Outbound = {
   userId?: string | undefined;
   principalId?: string | undefined;
   projectIds?: string | undefined;
+  entityId?: string | undefined;
   withPayload?: string | undefined;
   teamId?: string | undefined;
   slug?: string | undefined;
@@ -88,6 +93,7 @@ export const ListUserEventsRequest$outboundSchema: z.ZodType<
   userId: z.string().optional(),
   principalId: z.string().optional(),
   projectIds: z.string().optional(),
+  entityId: z.string().optional(),
   withPayload: z.string().optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),

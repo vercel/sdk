@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Sandbox } from "@vercel/sdk/models/sandbox.js";
+import { Sandbox } from "@vercel/sdk/models/createprojectblockhistory.js";
 
 let value: Sandbox = {};
 ```

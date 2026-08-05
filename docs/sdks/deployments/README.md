@@ -308,6 +308,7 @@ async function run() {
         ciType: "github-actions",
         ciGitProviderUsername: "rauchg",
         ciGitRepoVisibility: "private",
+        rootDirectory: "apps/web",
       },
       gitSource: {
         org: "vercel",
@@ -375,6 +376,7 @@ async function run() {
         ciType: "github-actions",
         ciGitProviderUsername: "rauchg",
         ciGitRepoVisibility: "private",
+        rootDirectory: "apps/web",
       },
       gitSource: {
         org: "vercel",

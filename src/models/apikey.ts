@@ -10,6 +10,15 @@ import { APIKeyQuota, APIKeyQuota$inboundSchema } from "./apikeyquota.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
+ * Generic metadata attached to the API key.
+ *
+ * @remarks
+ *
+ * The accepted shape depends on the key's `purpose` and is validated when the key is created. For `ai-gateway` keys this carries `environment`.
+ */
+export type APIKeyMetadata = {};
+
+/**
  * Information about the newly created API key.
  */
 export type APIKey = {
@@ -73,7 +82,32 @@ export type APIKey = {
    * AI Gateway quota associated with an API key.
    */
   quota?: APIKeyQuota | undefined;
+  /**
+   * Generic metadata attached to the API key.
+   *
+   * @remarks
+   *
+   * The accepted shape depends on the key's `purpose` and is validated when the key is created. For `ai-gateway` keys this carries `environment`.
+   */
+  metadata?: APIKeyMetadata | undefined;
 };
+
+/** @internal */
+export const APIKeyMetadata$inboundSchema: z.ZodType<
+  APIKeyMetadata,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+export function apiKeyMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<APIKeyMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => APIKeyMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'APIKeyMetadata' from JSON`,
+  );
+}
 
 /** @internal */
 export const APIKey$inboundSchema: z.ZodType<APIKey, z.ZodTypeDef, unknown> = z
@@ -92,6 +126,7 @@ export const APIKey$inboundSchema: z.ZodType<APIKey, z.ZodTypeDef, unknown> = z
     leakedUrl: types.nullable(types.string()),
     createdByAppId: types.nullable(types.string()),
     quota: types.optional(APIKeyQuota$inboundSchema),
+    metadata: types.optional(z.lazy(() => APIKeyMetadata$inboundSchema)),
   });
 
 export function apiKeyFromJSON(

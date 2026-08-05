@@ -11,6 +11,7 @@ import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export const UpdateTeamMemberTeamPermissions = {
+  ConnectorManager: "ConnectorManager",
   IntegrationManager: "IntegrationManager",
   CreateProject: "CreateProject",
   FullProductionDeployment: "FullProductionDeployment",

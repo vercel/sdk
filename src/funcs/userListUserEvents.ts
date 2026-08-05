@@ -96,6 +96,7 @@ async function $do(
   const path = pathToFunc("/v3/events")();
 
   const query = encodeFormQuery({
+    "entityId": payload.entityId,
     "limit": payload.limit,
     "principalId": payload.principalId,
     "projectIds": payload.projectIds,

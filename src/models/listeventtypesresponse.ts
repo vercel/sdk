@@ -15,6 +15,7 @@ export const ListEventTypesResponseName = {
   Ai: "ai",
   AiGateway: "ai-gateway",
   Billing: "billing",
+  Connect: "connect",
   Deployment: "deployment",
   Domain: "domain",
   Edge: "edge",

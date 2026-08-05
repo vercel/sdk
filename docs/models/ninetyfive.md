@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { NinetyFive } from "@vercel/sdk/models/fortyfour.js";
+import { NinetyFive } from "@vercel/sdk/models/usereventpayloaditems.js";
 
 let value: NinetyFive = {
   url: "https://memorable-translation.biz",
@@ -22,6 +22,7 @@ let value: NinetyFive = {
 | `deployment`                                                                 | [models.UserEventPayloadDeployment](../models/usereventpayloaddeployment.md) | :heavy_minus_sign:                                                           | N/A                                                                          |
 | `url`                                                                        | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
 | `forced`                                                                     | *boolean*                                                                    | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `gitCredentialSource`                                                        | [models.GitCredentialSource](../models/gitcredentialsource.md)               | :heavy_minus_sign:                                                           | N/A                                                                          |
 | `deploymentId`                                                               | *string*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
 | `plan`                                                                       | *string*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
 | `project`                                                                    | *string*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |

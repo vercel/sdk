@@ -69,7 +69,6 @@ const value: models.AggregateEventsData2[] = [
     cacheHitLevel: "<value>",
     cacheApi: "<value>",
     cacheReason: "<value>",
-    pprState: "<value>",
     clientIp: "<value>",
     clientIpCountry: "<value>",
     clientUserAgent: "<value>",

@@ -29,6 +29,9 @@ const value: models.Team = {
     enforced: false,
   },
   inviteCode: "hasihf9e89",
+  billing: {
+    plan: "enterprise",
+  },
   description: "Our mission is to make cloud computing accessible to everyone.",
   stagingPrefix: "<value>",
   previewDeploymentSuffix: "example.dev",

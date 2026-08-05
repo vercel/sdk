@@ -21,18 +21,16 @@ import {
   ResponseBodyDeploymentExpiration$inboundSchema,
   ResponseBodyIpBuckets,
   ResponseBodyIpBuckets$inboundSchema,
-} from "./getprojectscontenthint6.js";
+} from "./getprojectscontenthint9.js";
 import {
-  GetProjectsResponseBody3,
-  GetProjectsResponseBody3$inboundSchema,
-} from "./getprojectsresponsebodytrustedsources.js";
-import {
+  GetProjectsHasProjectsResponse2002,
+  GetProjectsHasProjectsResponse2002$inboundSchema,
+  GetProjectsHasProjectsResponse200Key,
+  GetProjectsHasProjectsResponse200Key$inboundSchema,
   GetProjectsResponseBodyNodeVersion,
   GetProjectsResponseBodyNodeVersion$inboundSchema,
-  GetProjectsRouteProjectsHas,
-  GetProjectsRouteProjectsHas$inboundSchema,
-  GetProjectsRouteProjectsMitigate,
-  GetProjectsRouteProjectsMitigate$inboundSchema,
+  GetProjectsResponseBodyResourceConfig,
+  GetProjectsResponseBodyResourceConfig$inboundSchema,
   ResponseBodyBlock,
   ResponseBodyBlock$inboundSchema,
   ResponseBodyEnv,
@@ -55,8 +53,6 @@ import {
   ResponseBodyPassport$inboundSchema,
   ResponseBodyPasswordProtection,
   ResponseBodyPasswordProtection$inboundSchema,
-  ResponseBodyResourceConfig,
-  ResponseBodyResourceConfig$inboundSchema,
   ResponseBodyRollingRelease,
   ResponseBodyRollingRelease$inboundSchema,
   ResponseBodySecurity,
@@ -71,11 +67,43 @@ import {
   ResponseBodyTrustedSources$inboundSchema,
   ResponseBodyWebAnalytics,
   ResponseBodyWebAnalytics$inboundSchema,
-} from "./getprojectsrouteprojectsmitigate.js";
+} from "./getprojectshasprojectsresponse200key.js";
+import {
+  GetProjectsResponseBody3,
+  GetProjectsResponseBody3$inboundSchema,
+} from "./getprojectstoprojectsresponse1.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
+export type GetProjectsHasProjectsResponse200ApplicationJSONResponseBody1Value =
+  {
+    eq: string;
+  };
+
+export type GetProjectsHasProjectsResponse2001 = {
+  type: "header";
+  key: GetProjectsHasProjectsResponse200Key;
+  value: GetProjectsHasProjectsResponse200ApplicationJSONResponseBody1Value;
+};
+
+export type GetProjectsRouteProjectsHas =
+  | GetProjectsHasProjectsResponse2001
+  | GetProjectsHasProjectsResponse2002;
+
+export const GetProjectsRouteProjectsAction = {
+  BlockLegalCwc: "block_legal_cwc",
+} as const;
+export type GetProjectsRouteProjectsAction = ClosedEnum<
+  typeof GetProjectsRouteProjectsAction
+>;
+
+export type GetProjectsRouteProjectsMitigate = {
+  action: GetProjectsRouteProjectsAction;
+};
+
 export type GetProjectsRouteProjects2 = {
-  has: Array<GetProjectsRouteProjectsHas>;
+  has: Array<
+    GetProjectsHasProjectsResponse2001 | GetProjectsHasProjectsResponse2002
+  >;
   mitigate: GetProjectsRouteProjectsMitigate;
   src?: string | undefined;
 };
@@ -325,7 +353,7 @@ export type GetProjectsResponseBody1 = {
   outputDirectory?: string | null | undefined;
   passwordProtection?: ResponseBodyPasswordProtection | null | undefined;
   passport?: ResponseBodyPassport | null | undefined;
-  resourceConfig: ResponseBodyResourceConfig;
+  resourceConfig: GetProjectsResponseBodyResourceConfig;
   /**
    * Project-level rolling release configuration that defines how deployments should be gradually rolled out
    */
@@ -365,13 +393,111 @@ export type GetProjectsResponseBody =
   | Array<GetProjectsResponseBody1>;
 
 /** @internal */
+export const GetProjectsHasProjectsResponse200ApplicationJSONResponseBody1Value$inboundSchema:
+  z.ZodType<
+    GetProjectsHasProjectsResponse200ApplicationJSONResponseBody1Value,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    eq: types.string(),
+  });
+
+export function getProjectsHasProjectsResponse200ApplicationJSONResponseBody1ValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetProjectsHasProjectsResponse200ApplicationJSONResponseBody1Value,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetProjectsHasProjectsResponse200ApplicationJSONResponseBody1Value$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsHasProjectsResponse200ApplicationJSONResponseBody1Value' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectsHasProjectsResponse2001$inboundSchema: z.ZodType<
+  GetProjectsHasProjectsResponse2001,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("header"),
+  key: GetProjectsHasProjectsResponse200Key$inboundSchema,
+  value: z.lazy(() =>
+    GetProjectsHasProjectsResponse200ApplicationJSONResponseBody1Value$inboundSchema
+  ),
+});
+
+export function getProjectsHasProjectsResponse2001FromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsHasProjectsResponse2001, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetProjectsHasProjectsResponse2001$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsHasProjectsResponse2001' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectsRouteProjectsHas$inboundSchema: z.ZodType<
+  GetProjectsRouteProjectsHas,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => GetProjectsHasProjectsResponse2001$inboundSchema),
+  GetProjectsHasProjectsResponse2002$inboundSchema,
+]);
+
+export function getProjectsRouteProjectsHasFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsRouteProjectsHas, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectsRouteProjectsHas$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsRouteProjectsHas' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectsRouteProjectsAction$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsRouteProjectsAction
+> = z.nativeEnum(GetProjectsRouteProjectsAction);
+
+/** @internal */
+export const GetProjectsRouteProjectsMitigate$inboundSchema: z.ZodType<
+  GetProjectsRouteProjectsMitigate,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  action: GetProjectsRouteProjectsAction$inboundSchema,
+});
+
+export function getProjectsRouteProjectsMitigateFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsRouteProjectsMitigate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectsRouteProjectsMitigate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsRouteProjectsMitigate' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetProjectsRouteProjects2$inboundSchema: z.ZodType<
   GetProjectsRouteProjects2,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  has: z.array(GetProjectsRouteProjectsHas$inboundSchema),
-  mitigate: GetProjectsRouteProjectsMitigate$inboundSchema,
+  has: z.array(
+    z.union([
+      z.lazy(() => GetProjectsHasProjectsResponse2001$inboundSchema),
+      GetProjectsHasProjectsResponse2002$inboundSchema,
+    ]),
+  ),
+  mitigate: z.lazy(() => GetProjectsRouteProjectsMitigate$inboundSchema),
   src: types.optional(types.string()),
 });
 
@@ -1088,7 +1214,7 @@ export const GetProjectsResponseBody1$inboundSchema: z.ZodType<
   passwordProtection: z.nullable(ResponseBodyPasswordProtection$inboundSchema)
     .optional(),
   passport: z.nullable(ResponseBodyPassport$inboundSchema).optional(),
-  resourceConfig: ResponseBodyResourceConfig$inboundSchema,
+  resourceConfig: GetProjectsResponseBodyResourceConfig$inboundSchema,
   rollingRelease: z.nullable(ResponseBodyRollingRelease$inboundSchema)
     .optional(),
   rootDirectory: z.nullable(types.string()).optional(),

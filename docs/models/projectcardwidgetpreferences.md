@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { ProjectCardWidgetPreferences } from "@vercel/sdk/models/microfrontendsrequest.js";
+import { ProjectCardWidgetPreferences } from "@vercel/sdk/models/postgres2.js";
 
 let value: ProjectCardWidgetPreferences = {
   projectId: "<id>",
-  widget: "alert",
+  widget: "analytics-online",
 };
 ```
 

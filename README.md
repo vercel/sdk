@@ -174,6 +174,20 @@ run();
 * [getStorageStoresById](docs/sdks/vercel/README.md#getstoragestoresbyid)
 * [createStorageStoresBlob](docs/sdks/vercel/README.md#createstoragestoresblob)
 * [deleteStorageStoresBlobById](docs/sdks/vercel/README.md#deletestoragestoresblobbyid)
+* [getRoot](docs/sdks/vercel/README.md#getroot) - GET /v2/ Docker Registry v2 version check. Returns a 401 challenge when no credentials are provided, prompting the Docker client to send auth. With valid credentials, returns 200 so the client can proceed.
+* [headByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest](docs/sdks/vercel/README.md#headbyteamslugbyprojectslugbyrepositorynameblobsbydigest) - HEAD /v2/:teamSlug/:projectSlug/:repositoryName/blobs/:digest Check whether a blob exists. Used by the Docker client before pushing a layer to avoid re-uploading content that already exists.
+* [getByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest](docs/sdks/vercel/README.md#getbyteamslugbyprojectslugbyrepositorynameblobsbydigest) - GET /v2/:teamSlug/:projectSlug/:repositoryName/blobs/:digest Fetch a blob by digest.
+* [deleteByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest](docs/sdks/vercel/README.md#deletebyteamslugbyprojectslugbyrepositorynameblobsbydigest) - DELETE /v2/:teamSlug/:projectSlug/:repositoryName/blobs/:digest Blob deletion is intentionally not supported. Matches the behaviour of most public registries.
+* [getByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid](docs/sdks/vercel/README.md#getbyteamslugbyprojectslugbyrepositorynameblobsuploadsbyuuid) - GET /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid Query the status of an in-progress blob upload. Used by clients to resume a partial upload after an interruption.
+* [deleteByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid](docs/sdks/vercel/README.md#deletebyteamslugbyprojectslugbyrepositorynameblobsuploadsbyuuid) - DELETE /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid Cancel an in-flight blob upload. Aborts the underlying S3 multipart upload (if one was started) and discards the session.
+* [updateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid](docs/sdks/vercel/README.md#updatebyteamslugbyprojectslugbyrepositorynameblobsuploadsbyuuid) - PATCH /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid Upload a chunk of blob data. The request body is streamed directly to S3 as a multipart upload part while hashing incrementally. The client may call this multiple times for chunked uploads.
+* [replaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid](docs/sdks/vercel/README.md#replacebyteamslugbyprojectslugbyrepositorynameblobsuploadsbyuuid) - PUT /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid?digest=<digest> Complete the blob upload. This may include a final chunk of data in the request body (monolithic upload) or just finalize a previous chunked upload.
+* [createByTeamSlugByProjectSlugByRepositoryNameBlobsUploads](docs/sdks/vercel/README.md#createbyteamslugbyprojectslugbyrepositorynameblobsuploads) - POST /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/[?mount=<digest>&from=<repo>] Initiate a blob upload. Returns a UUID in the Location header that the client uses for subsequent PATCH (chunk) and PUT (complete) requests.
+* [replaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReference](docs/sdks/vercel/README.md#replacebyteamslugbyprojectslugbyrepositorynamemanifestsbyreference) - PUT /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Upload an image manifest. The digest is computed from the body and returned in the Docker-Content-Digest header.
+* [headByTeamSlugByProjectSlugByRepositoryNameManifestsByReference](docs/sdks/vercel/README.md#headbyteamslugbyprojectslugbyrepositorynamemanifestsbyreference) - HEAD /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Check whether a manifest exists. Used by Docker client during push to determine if a manifest (or config blob referenced by digest) is already present.
+* [getByTeamSlugByProjectSlugByRepositoryNameManifestsByReference](docs/sdks/vercel/README.md#getbyteamslugbyprojectslugbyrepositorynamemanifestsbyreference) - GET /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Fetch a manifest by tag or digest.
+* [deleteByTeamSlugByProjectSlugByRepositoryNameManifestsByReference](docs/sdks/vercel/README.md#deletebyteamslugbyprojectslugbyrepositorynamemanifestsbyreference) - DELETE /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Reference must be a digest.
+* [getByTeamSlugByProjectSlugByRepositoryNameTagsList](docs/sdks/vercel/README.md#getbyteamslugbyprojectslugbyrepositorynametagslist) - GET /v2/:teamSlug/:projectSlug/:repositoryName/tags/list List the tags in a repository.
 * [createWebInsightsToggle](docs/sdks/vercel/README.md#createwebinsightstoggle)
 
 ### [AccessGroups](docs/sdks/accessgroups/README.md)
@@ -615,6 +629,10 @@ run();
 * [getRepository](docs/sdks/vcr/README.md#getrepository) - Get a repository
 * [deleteRepository](docs/sdks/vcr/README.md#deleterepository) - Delete a repository
 * [listRepositoryImages](docs/sdks/vcr/README.md#listrepositoryimages) - List repository images
+* [addRepositoryPermission](docs/sdks/vcr/README.md#addrepositorypermission) - Add a repository permission
+* [removeRepositoryPermission](docs/sdks/vcr/README.md#removerepositorypermission) - Remove a repository permission
+* [listRepositoryPermissions](docs/sdks/vcr/README.md#listrepositorypermissions) - List repository permissions
+* [clearRepositoryPermissions](docs/sdks/vcr/README.md#clearrepositorypermissions) - Clear all repository permissions
 * [listRepositoryTags](docs/sdks/vcr/README.md#listrepositorytags) - List repository tags
 * [getRepositoryTag](docs/sdks/vcr/README.md#getrepositorytag) - Get a repository tag
 * [getRepositoryImage](docs/sdks/vcr/README.md#getrepositoryimage) - Get a repository image
@@ -711,10 +729,14 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`connectCreateConnectorInstallationRequest`](docs/sdks/connect/README.md#createconnectorinstallationrequest) - Create a Connect installation request
 - [`connectImportConnectorTokens`](docs/sdks/connect/README.md#importconnectortokens) - Import Connect tokens
 - [`createApiKeys`](docs/sdks/vercel/README.md#createapikeys)
+- [`createByTeamSlugByProjectSlugByRepositoryNameBlobsUploads`](docs/sdks/vercel/README.md#createbyteamslugbyprojectslugbyrepositorynameblobsuploads) - POST /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/[?mount=<digest>&from=<repo>] Initiate a blob upload. Returns a UUID in the Location header that the client uses for subsequent PATCH (chunk) and PUT (complete) requests.
 - [`createObservabilityQuery`](docs/sdks/vercel/README.md#createobservabilityquery)
 - [`createSpeedInsightsToggle`](docs/sdks/vercel/README.md#createspeedinsightstoggle)
 - [`createStorageStoresBlob`](docs/sdks/vercel/README.md#createstoragestoresblob)
 - [`createWebInsightsToggle`](docs/sdks/vercel/README.md#createwebinsightstoggle)
+- [`deleteByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest`](docs/sdks/vercel/README.md#deletebyteamslugbyprojectslugbyrepositorynameblobsbydigest) - DELETE /v2/:teamSlug/:projectSlug/:repositoryName/blobs/:digest Blob deletion is intentionally not supported. Matches the behaviour of most public registries.
+- [`deleteByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid`](docs/sdks/vercel/README.md#deletebyteamslugbyprojectslugbyrepositorynameblobsuploadsbyuuid) - DELETE /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid Cancel an in-flight blob upload. Aborts the underlying S3 multipart upload (if one was started) and discards the session.
+- [`deleteByTeamSlugByProjectSlugByRepositoryNameManifestsByReference`](docs/sdks/vercel/README.md#deletebyteamslugbyprojectslugbyrepositorynamemanifestsbyreference) - DELETE /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Reference must be a digest.
 - [`deleteStorageStoresBlobById`](docs/sdks/vercel/README.md#deletestoragestoresblobbyid)
 - [`deploymentsCancelDeployment`](docs/sdks/deployments/README.md#canceldeployment) - Cancel a deployment
 - [`deploymentsCreateDeployment`](docs/sdks/deployments/README.md#createdeployment) - Create a new deployment
@@ -799,9 +821,14 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`featureFlagsUpdateFlag`](docs/sdks/featureflags/README.md#updateflag) - Update a flag
 - [`featureFlagsUpdateFlagSegment`](docs/sdks/featureflags/README.md#updateflagsegment) - Update a segment
 - [`featureFlagsUpdateFlagSettings`](docs/sdks/featureflags/README.md#updateflagsettings) - Update project flag settings
+- [`getByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest`](docs/sdks/vercel/README.md#getbyteamslugbyprojectslugbyrepositorynameblobsbydigest) - GET /v2/:teamSlug/:projectSlug/:repositoryName/blobs/:digest Fetch a blob by digest.
+- [`getByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid`](docs/sdks/vercel/README.md#getbyteamslugbyprojectslugbyrepositorynameblobsuploadsbyuuid) - GET /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid Query the status of an in-progress blob upload. Used by clients to resume a partial upload after an interruption.
+- [`getByTeamSlugByProjectSlugByRepositoryNameManifestsByReference`](docs/sdks/vercel/README.md#getbyteamslugbyprojectslugbyrepositorynamemanifestsbyreference) - GET /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Fetch a manifest by tag or digest.
+- [`getByTeamSlugByProjectSlugByRepositoryNameTagsList`](docs/sdks/vercel/README.md#getbyteamslugbyprojectslugbyrepositorynametagslist) - GET /v2/:teamSlug/:projectSlug/:repositoryName/tags/list List the tags in a repository.
 - [`getDomainsRecordsByRecordId`](docs/sdks/vercel/README.md#getdomainsrecordsbyrecordid)
 - [`getObservabilitySchema`](docs/sdks/vercel/README.md#getobservabilityschema)
 - [`getObservabilitySchemaByMetricId`](docs/sdks/vercel/README.md#getobservabilityschemabymetricid)
+- [`getRoot`](docs/sdks/vercel/README.md#getroot) - GET /v2/ Docker Registry v2 version check. Returns a 401 challenge when no credentials are provided, prompting the Docker client to send auth. With valid credentials, returns 200 so the client can proceed.
 - [`getStorageStoresById`](docs/sdks/vercel/README.md#getstoragestoresbyid)
 - [`globalConfigCreateEdgeConfig`](docs/sdks/globalconfig/README.md#createedgeconfig) - Create a Global Config
 - [`globalConfigCreateEdgeConfigToken`](docs/sdks/globalconfig/README.md#createedgeconfigtoken) - Create a Global Config token
@@ -820,6 +847,8 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`globalConfigPatchEdgeConfigSchema`](docs/sdks/globalconfig/README.md#patchedgeconfigschema) - Update Global Config schema
 - [`globalConfigRestoreEdgeConfigBackup`](docs/sdks/globalconfig/README.md#restoreedgeconfigbackup) - Restore Global Config backup
 - [`globalConfigUpdateEdgeConfig`](docs/sdks/globalconfig/README.md#updateedgeconfig) - Update a Global Config
+- [`headByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest`](docs/sdks/vercel/README.md#headbyteamslugbyprojectslugbyrepositorynameblobsbydigest) - HEAD /v2/:teamSlug/:projectSlug/:repositoryName/blobs/:digest Check whether a blob exists. Used by the Docker client before pushing a layer to avoid re-uploading content that already exists.
+- [`headByTeamSlugByProjectSlugByRepositoryNameManifestsByReference`](docs/sdks/vercel/README.md#headbyteamslugbyprojectslugbyrepositorynamemanifestsbyreference) - HEAD /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Check whether a manifest exists. Used by Docker client during push to determine if a manifest (or config blob referenced by digest) is already present.
 - [`integrationsConnectIntegrationResourceToProject`](docs/sdks/integrations/README.md#connectintegrationresourcetoproject) - Connect integration resource to project
 - [`integrationsCreateIntegrationStoreDirect`](docs/sdks/integrations/README.md#createintegrationstoredirect) - Create integration store (free and paid plans)
 - [`integrationsDeleteConfiguration`](docs/sdks/integrations/README.md#deleteconfiguration) - Delete an integration configuration
@@ -918,6 +947,8 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`projectsUpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescription`](docs/sdks/projects/README.md#updateprojectsbyprojectidrollbackbydeploymentidupdatedescription) - Updates the description for a rollback
 - [`projectsUploadProjectAvatar`](docs/sdks/projects/README.md#uploadprojectavatar) - Upload a project avatar
 - [`projectsVerifyProjectDomain`](docs/sdks/projects/README.md#verifyprojectdomain) - Verify project domain
+- [`replaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid`](docs/sdks/vercel/README.md#replacebyteamslugbyprojectslugbyrepositorynameblobsuploadsbyuuid) - PUT /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid?digest=<digest> Complete the blob upload. This may include a final chunk of data in the request body (monolithic upload) or just finalize a previous chunked upload.
+- [`replaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReference`](docs/sdks/vercel/README.md#replacebyteamslugbyprojectslugbyrepositorynamemanifestsbyreference) - PUT /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Upload an image manifest. The digest is computed from the body and returned in the Docker-Content-Digest header.
 - [`replaceDomainsByDomainRecords`](docs/sdks/vercel/README.md#replacedomainsbydomainrecords)
 - [`rollingReleaseApproveRollingReleaseStage`](docs/sdks/rollingrelease/README.md#approverollingreleasestage) - Update the active rolling release to the next stage for a project
 - [`rollingReleaseCompleteRollingRelease`](docs/sdks/rollingrelease/README.md#completerollingrelease) - Complete the rolling release for the project
@@ -977,10 +1008,13 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`teamsRequestAccessToTeam`](docs/sdks/teams/README.md#requestaccesstoteam) - Request access to a team
 - [`teamsUpdateMicrofrontendsGroup`](docs/sdks/teams/README.md#updatemicrofrontendsgroup) - Update a microfrontends group
 - [`teamsUpdateTeamMember`](docs/sdks/teams/README.md#updateteammember) - Update a Team Member
+- [`updateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid`](docs/sdks/vercel/README.md#updatebyteamslugbyprojectslugbyrepositorynameblobsuploadsbyuuid) - PATCH /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid Upload a chunk of blob data. The request body is streamed directly to S3 as a multipart upload part while hashing incrementally. The client may call this multiple times for chunked uploads.
 - [`userGetAuthUser`](docs/sdks/user/README.md#getauthuser) - Get the User
 - [`userListEventTypes`](docs/sdks/user/README.md#listeventtypes) - List Event Types
 - [`userListUserEvents`](docs/sdks/user/README.md#listuserevents) - List User Events
 - [`userRequestDelete`](docs/sdks/user/README.md#requestdelete) - Delete User Account
+- [`vcrAddRepositoryPermission`](docs/sdks/vcr/README.md#addrepositorypermission) - Add a repository permission
+- [`vcrClearRepositoryPermissions`](docs/sdks/vcr/README.md#clearrepositorypermissions) - Clear all repository permissions
 - [`vcrCreateRepository`](docs/sdks/vcr/README.md#createrepository) - Create a repository
 - [`vcrDeleteRepository`](docs/sdks/vcr/README.md#deleterepository) - Delete a repository
 - [`vcrDeleteRepositoryImage`](docs/sdks/vcr/README.md#deleterepositoryimage) - Delete a repository image
@@ -989,7 +1023,9 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`vcrGetRepositoryTag`](docs/sdks/vcr/README.md#getrepositorytag) - Get a repository tag
 - [`vcrListRepositories`](docs/sdks/vcr/README.md#listrepositories) - List repositories
 - [`vcrListRepositoryImages`](docs/sdks/vcr/README.md#listrepositoryimages) - List repository images
+- [`vcrListRepositoryPermissions`](docs/sdks/vcr/README.md#listrepositorypermissions) - List repository permissions
 - [`vcrListRepositoryTags`](docs/sdks/vcr/README.md#listrepositorytags) - List repository tags
+- [`vcrRemoveRepositoryPermission`](docs/sdks/vcr/README.md#removerepositorypermission) - Remove a repository permission
 - [`webAnalyticsAggregateEvents`](docs/sdks/webanalytics/README.md#aggregateevents) - Aggregates custom events
 - [`webAnalyticsAggregatePageviews`](docs/sdks/webanalytics/README.md#aggregatepageviews) - Aggregates page views
 - [`webAnalyticsCountEvents`](docs/sdks/webanalytics/README.md#countevents) - Counts custom events
@@ -1182,36 +1218,36 @@ run();
 
 
 **Inherit from [`VercelError`](./src/models/vercelerror.ts)**:
-* [`HttpApiDecodeError`](./src/models/httpapidecodeerror.ts): The request did not match the expected schema. Status code `400`. Applicable to 17 of 352 methods.*
-* [`Unauthorized`](./src/models/unauthorized.ts): Unauthorized. Status code `401`. Applicable to 17 of 352 methods.*
-* [`NotAuthorizedForScope`](./src/models/notauthorizedforscope.ts): NotAuthorizedForScope. Status code `403`. Applicable to 17 of 352 methods.*
-* [`TooManyRequests`](./src/models/toomanyrequests.ts): TooManyRequests. Status code `429`. Applicable to 17 of 352 methods.*
-* [`InternalServerError`](./src/models/internalservererror.ts): InternalServerError. Status code `500`. Applicable to 17 of 352 methods.*
-* [`Forbidden`](./src/models/forbidden.ts): NotAuthorizedForScope. Status code `403`. Applicable to 10 of 352 methods.*
-* [`TldNotSupported`](./src/models/tldnotsupported.ts): The TLD is not currently supported. Status code `400`. Applicable to 7 of 352 methods.*
-* [`DomainTooShort`](./src/models/domaintooshort.ts): The domain name (excluding the TLD) is too short. Status code `400`. Applicable to 5 of 352 methods.*
-* [`DomainNotRegistered`](./src/models/domainnotregistered.ts): The domain is not registered with Vercel. Status code `400`. Applicable to 5 of 352 methods.*
-* [`DomainNotFound`](./src/models/domainnotfound.ts): The domain was not found in our system. Status code `404`. Applicable to 5 of 352 methods.*
-* [`BadRequest`](./src/models/badrequest.ts): There was something wrong with the request. Status code `400`. Applicable to 4 of 352 methods.*
-* [`ExpectedPriceMismatch`](./src/models/expectedpricemismatch.ts): The expected price passed does not match the actual price. Status code `400`. Applicable to 4 of 352 methods.*
-* [`DomainNotAvailable`](./src/models/domainnotavailable.ts): The domain is not available. Status code `400`. Applicable to 4 of 352 methods.*
-* [`NotFound`](./src/models/notfound.ts): NotFound. Status code `404`. Applicable to 3 of 352 methods.*
-* [`OrderTooExpensive`](./src/models/ordertooexpensive.ts): The total price of the order is too high. Status code `400`. Applicable to 2 of 352 methods.*
-* [`InvalidAdditionalContactInfo`](./src/models/invalidadditionalcontactinfo.ts): Additional contact information provided for the TLD is invalid. Status code `400`. Applicable to 2 of 352 methods.*
-* [`AdditionalContactInfoRequired`](./src/models/additionalcontactinforequired.ts): Additional contact information is required for the TLD. Status code `400`. Applicable to 2 of 352 methods.*
-* [`LanguageCodeRequired`](./src/models/languagecoderequired.ts): A language code is required for punycode domains. Status code `400`. Applicable to 2 of 352 methods.*
-* [`TooManyDomains`](./src/models/toomanydomains.ts): The number of domains in the order is too high. Status code `400`. Applicable to 1 of 352 methods.*
-* [`DuplicateDomains`](./src/models/duplicatedomains.ts): Duplicate domains were provided. Status code `400`. Applicable to 1 of 352 methods.*
-* [`DomainAlreadyOwned`](./src/models/domainalreadyowned.ts): The domain is already owned by another team or user. Status code `400`. Applicable to 1 of 352 methods.*
-* [`DNSSECEnabled`](./src/models/dnssecenabled.ts): The operation cannot be completed because DNSSEC is enabled for the domain. Status code `400`. Applicable to 1 of 352 methods.*
-* [`DomainAlreadyRenewing`](./src/models/domainalreadyrenewing.ts): The domain is already renewing. Status code `400`. Applicable to 1 of 352 methods.*
-* [`DomainNotRenewable`](./src/models/domainnotrenewable.ts): The domain is not renewable. Status code `400`. Applicable to 1 of 352 methods.*
-* [`BoughtTooRecently`](./src/models/boughttoorecently.ts): The domain was bought too recently to determine verification status. Status code `400`. Applicable to 1 of 352 methods.*
-* [`CreateApiKeysResponseResponseBody`](./src/models/createapikeysresponseresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 352 methods.*
-* [`CreateApiKeysResponse403ResponseBody`](./src/models/createapikeysresponse403responsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 352 methods.*
-* [`DomainCannotBeTransferedOutUntil`](./src/models/domaincannotbetransferedoutuntil.ts): The domain cannot be transfered out until the specified date. Status code `409`. Applicable to 1 of 352 methods.*
-* [`CreateApiKeysResponse429ResponseBody`](./src/models/createapikeysresponse429responsebody.ts): . Status code `429`. Applicable to 1 of 352 methods.*
-* [`CreateApiKeysResponse500ResponseBody`](./src/models/createapikeysresponse500responsebody.ts): . Status code `500`. Applicable to 1 of 352 methods.*
+* [`HttpApiDecodeError`](./src/models/httpapidecodeerror.ts): The request did not match the expected schema. Status code `400`. Applicable to 17 of 370 methods.*
+* [`Unauthorized`](./src/models/unauthorized.ts): Unauthorized. Status code `401`. Applicable to 17 of 370 methods.*
+* [`NotAuthorizedForScope`](./src/models/notauthorizedforscope.ts): NotAuthorizedForScope. Status code `403`. Applicable to 17 of 370 methods.*
+* [`TooManyRequests`](./src/models/toomanyrequests.ts): TooManyRequests. Status code `429`. Applicable to 17 of 370 methods.*
+* [`InternalServerError`](./src/models/internalservererror.ts): InternalServerError. Status code `500`. Applicable to 17 of 370 methods.*
+* [`Forbidden`](./src/models/forbidden.ts): NotAuthorizedForScope. Status code `403`. Applicable to 10 of 370 methods.*
+* [`TldNotSupported`](./src/models/tldnotsupported.ts): The TLD is not currently supported. Status code `400`. Applicable to 7 of 370 methods.*
+* [`DomainTooShort`](./src/models/domaintooshort.ts): The domain name (excluding the TLD) is too short. Status code `400`. Applicable to 5 of 370 methods.*
+* [`DomainNotRegistered`](./src/models/domainnotregistered.ts): The domain is not registered with Vercel. Status code `400`. Applicable to 5 of 370 methods.*
+* [`DomainNotFound`](./src/models/domainnotfound.ts): The domain was not found in our system. Status code `404`. Applicable to 5 of 370 methods.*
+* [`BadRequest`](./src/models/badrequest.ts): There was something wrong with the request. Status code `400`. Applicable to 4 of 370 methods.*
+* [`ExpectedPriceMismatch`](./src/models/expectedpricemismatch.ts): The expected price passed does not match the actual price. Status code `400`. Applicable to 4 of 370 methods.*
+* [`DomainNotAvailable`](./src/models/domainnotavailable.ts): The domain is not available. Status code `400`. Applicable to 4 of 370 methods.*
+* [`NotFound`](./src/models/notfound.ts): NotFound. Status code `404`. Applicable to 3 of 370 methods.*
+* [`OrderTooExpensive`](./src/models/ordertooexpensive.ts): The total price of the order is too high. Status code `400`. Applicable to 2 of 370 methods.*
+* [`InvalidAdditionalContactInfo`](./src/models/invalidadditionalcontactinfo.ts): Additional contact information provided for the TLD is invalid. Status code `400`. Applicable to 2 of 370 methods.*
+* [`AdditionalContactInfoRequired`](./src/models/additionalcontactinforequired.ts): Additional contact information is required for the TLD. Status code `400`. Applicable to 2 of 370 methods.*
+* [`LanguageCodeRequired`](./src/models/languagecoderequired.ts): A language code is required for punycode domains. Status code `400`. Applicable to 2 of 370 methods.*
+* [`TooManyDomains`](./src/models/toomanydomains.ts): The number of domains in the order is too high. Status code `400`. Applicable to 1 of 370 methods.*
+* [`DuplicateDomains`](./src/models/duplicatedomains.ts): Duplicate domains were provided. Status code `400`. Applicable to 1 of 370 methods.*
+* [`DomainAlreadyOwned`](./src/models/domainalreadyowned.ts): The domain is already owned by another team or user. Status code `400`. Applicable to 1 of 370 methods.*
+* [`DNSSECEnabled`](./src/models/dnssecenabled.ts): The operation cannot be completed because DNSSEC is enabled for the domain. Status code `400`. Applicable to 1 of 370 methods.*
+* [`DomainAlreadyRenewing`](./src/models/domainalreadyrenewing.ts): The domain is already renewing. Status code `400`. Applicable to 1 of 370 methods.*
+* [`DomainNotRenewable`](./src/models/domainnotrenewable.ts): The domain is not renewable. Status code `400`. Applicable to 1 of 370 methods.*
+* [`BoughtTooRecently`](./src/models/boughttoorecently.ts): The domain was bought too recently to determine verification status. Status code `400`. Applicable to 1 of 370 methods.*
+* [`CreateApiKeysResponseResponseBody`](./src/models/createapikeysresponseresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 370 methods.*
+* [`CreateApiKeysResponse403ResponseBody`](./src/models/createapikeysresponse403responsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 370 methods.*
+* [`DomainCannotBeTransferedOutUntil`](./src/models/domaincannotbetransferedoutuntil.ts): The domain cannot be transfered out until the specified date. Status code `409`. Applicable to 1 of 370 methods.*
+* [`CreateApiKeysResponse429ResponseBody`](./src/models/createapikeysresponse429responsebody.ts): . Status code `429`. Applicable to 1 of 370 methods.*
+* [`CreateApiKeysResponse500ResponseBody`](./src/models/createapikeysresponse500responsebody.ts): . Status code `500`. Applicable to 1 of 370 methods.*
 * [`ResponseValidationError`](./src/models/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>

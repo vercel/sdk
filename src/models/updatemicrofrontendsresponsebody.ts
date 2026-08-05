@@ -9,48 +9,6 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
-  UpdateMicrofrontendsAbuse,
-  UpdateMicrofrontendsAbuse$inboundSchema,
-  UpdateMicrofrontendsDeploymentPolicy,
-  UpdateMicrofrontendsDeploymentPolicy$inboundSchema,
-  UpdateMicrofrontendsDismissedToasts,
-  UpdateMicrofrontendsDismissedToasts$inboundSchema,
-  UpdateMicrofrontendsFeatures,
-  UpdateMicrofrontendsFeatures$inboundSchema,
-  UpdateMicrofrontendsFlatRateTier,
-  UpdateMicrofrontendsFlatRateTier$inboundSchema,
-  UpdateMicrofrontendsGitComments,
-  UpdateMicrofrontendsGitComments$inboundSchema,
-  UpdateMicrofrontendsGitProviderOptions,
-  UpdateMicrofrontendsGitProviderOptions$inboundSchema,
-  UpdateMicrofrontendsInternalRoutes,
-  UpdateMicrofrontendsInternalRoutes$inboundSchema,
-  UpdateMicrofrontendsLastAliasRequest,
-  UpdateMicrofrontendsLastAliasRequest$inboundSchema,
-  UpdateMicrofrontendsLastRollbackTarget,
-  UpdateMicrofrontendsLastRollbackTarget$inboundSchema,
-  UpdateMicrofrontendsOidcTokenConfig,
-  UpdateMicrofrontendsOidcTokenConfig$inboundSchema,
-  UpdateMicrofrontendsPermissions,
-  UpdateMicrofrontendsPermissions$inboundSchema,
-  UpdateMicrofrontendsProtectionBypass,
-  UpdateMicrofrontendsProtectionBypass$inboundSchema,
-  UpdateMicrofrontendsSecurity,
-  UpdateMicrofrontendsSecurity$inboundSchema,
-  UpdateMicrofrontendsSsoProtection,
-  UpdateMicrofrontendsSsoProtection$inboundSchema,
-  UpdateMicrofrontendsTargets,
-  UpdateMicrofrontendsTargets$inboundSchema,
-  UpdateMicrofrontendsTrustedIps,
-  UpdateMicrofrontendsTrustedIps$inboundSchema,
-  UpdateMicrofrontendsTrustedSources,
-  UpdateMicrofrontendsTrustedSources$inboundSchema,
-  UpdateMicrofrontendsUsageStatus,
-  UpdateMicrofrontendsUsageStatus$inboundSchema,
-  UpdateMicrofrontendsWebAnalytics,
-  UpdateMicrofrontendsWebAnalytics$inboundSchema,
-} from "./updatemicrofrontendsdismissedtoasts.js";
-import {
   UpdateMicrofrontendsAlias,
   UpdateMicrofrontendsAlias$inboundSchema,
   UpdateMicrofrontendsAnalytics,
@@ -109,9 +67,58 @@ import {
   UpdateMicrofrontendsServices$inboundSchema,
   UpdateMicrofrontendsSpeedInsights,
   UpdateMicrofrontendsSpeedInsights$inboundSchema,
+} from "./updatemicrofrontendsdefaultresourceconfig.js";
+import {
+  UpdateMicrofrontendsAbuse,
+  UpdateMicrofrontendsAbuse$inboundSchema,
+  UpdateMicrofrontendsAction,
+  UpdateMicrofrontendsAction$inboundSchema,
+  UpdateMicrofrontendsDeploymentPolicy,
+  UpdateMicrofrontendsDeploymentPolicy$inboundSchema,
+  UpdateMicrofrontendsFeatures,
+  UpdateMicrofrontendsFeatures$inboundSchema,
+  UpdateMicrofrontendsGitComments,
+  UpdateMicrofrontendsGitComments$inboundSchema,
+  UpdateMicrofrontendsGitProviderOptions,
+  UpdateMicrofrontendsGitProviderOptions$inboundSchema,
+  UpdateMicrofrontendsInternalRoutes,
+  UpdateMicrofrontendsInternalRoutes$inboundSchema,
+  UpdateMicrofrontendsLastAliasRequest,
+  UpdateMicrofrontendsLastAliasRequest$inboundSchema,
+  UpdateMicrofrontendsLastRollbackTarget,
+  UpdateMicrofrontendsLastRollbackTarget$inboundSchema,
+  UpdateMicrofrontendsOidcTokenConfig,
+  UpdateMicrofrontendsOidcTokenConfig$inboundSchema,
+  UpdateMicrofrontendsPermissions,
+  UpdateMicrofrontendsPermissions$inboundSchema,
+  UpdateMicrofrontendsProtectionBypass,
+  UpdateMicrofrontendsProtectionBypass$inboundSchema,
+  UpdateMicrofrontendsSecurity,
+  UpdateMicrofrontendsSecurity$inboundSchema,
+  UpdateMicrofrontendsSsoProtection,
+  UpdateMicrofrontendsSsoProtection$inboundSchema,
   UpdateMicrofrontendsStaticIps,
   UpdateMicrofrontendsStaticIps$inboundSchema,
-} from "./updatemicrofrontendsprojectsdeploymenttype.js";
+  UpdateMicrofrontendsTargets,
+  UpdateMicrofrontendsTargets$inboundSchema,
+  UpdateMicrofrontendsTrustedIps,
+  UpdateMicrofrontendsTrustedIps$inboundSchema,
+  UpdateMicrofrontendsTrustedSources,
+  UpdateMicrofrontendsTrustedSources$inboundSchema,
+  UpdateMicrofrontendsUsageStatus,
+  UpdateMicrofrontendsUsageStatus$inboundSchema,
+  UpdateMicrofrontendsValue,
+  UpdateMicrofrontendsValue$inboundSchema,
+  UpdateMicrofrontendsWebAnalytics,
+  UpdateMicrofrontendsWebAnalytics$inboundSchema,
+} from "./updatemicrofrontendsvalue.js";
+
+export type UpdateMicrofrontendsDismissedToasts = {
+  key: string;
+  dismissedAt: number;
+  action: UpdateMicrofrontendsAction;
+  value: UpdateMicrofrontendsValue | null;
+};
 
 export const UpdateMicrofrontendsProjectsEnv = {
   Preview: "preview",
@@ -263,7 +270,6 @@ export type UpdateMicrofrontendsResponseBody = {
    */
   deploymentPolicy?: UpdateMicrofrontendsDeploymentPolicy | null | undefined;
   tier?: string | undefined;
-  flatRateTier?: UpdateMicrofrontendsFlatRateTier | undefined;
   usageStatus?: UpdateMicrofrontendsUsageStatus | undefined;
   features?: UpdateMicrofrontendsFeatures | undefined;
   v0?: boolean | undefined;
@@ -276,6 +282,29 @@ export type UpdateMicrofrontendsResponseBody = {
   tracing?: UpdateMicrofrontendsTracing | undefined;
   avatar?: string | null | undefined;
 };
+
+/** @internal */
+export const UpdateMicrofrontendsDismissedToasts$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsDismissedToasts,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  key: types.string(),
+  dismissedAt: types.number(),
+  action: UpdateMicrofrontendsAction$inboundSchema,
+  value: types.nullable(UpdateMicrofrontendsValue$inboundSchema),
+});
+
+export function updateMicrofrontendsDismissedToastsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsDismissedToasts, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsDismissedToasts$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsDismissedToasts' from JSON`,
+  );
+}
 
 /** @internal */
 export const UpdateMicrofrontendsProjectsEnv$inboundSchema: z.ZodNativeEnum<
@@ -463,7 +492,6 @@ export const UpdateMicrofrontendsResponseBody$inboundSchema: z.ZodType<
     UpdateMicrofrontendsDeploymentPolicy$inboundSchema,
   ).optional(),
   tier: types.optional(types.string()),
-  flatRateTier: types.optional(UpdateMicrofrontendsFlatRateTier$inboundSchema),
   usageStatus: types.optional(UpdateMicrofrontendsUsageStatus$inboundSchema),
   features: types.optional(UpdateMicrofrontendsFeatures$inboundSchema),
   v0: types.optional(types.boolean()),
@@ -474,7 +502,7 @@ export const UpdateMicrofrontendsResponseBody$inboundSchema: z.ZodType<
   ),
   hasDeployments: types.optional(types.boolean()),
   dismissedToasts: types.optional(
-    z.array(UpdateMicrofrontendsDismissedToasts$inboundSchema),
+    z.array(z.lazy(() => UpdateMicrofrontendsDismissedToasts$inboundSchema)),
   ),
   protectedSourcemaps: types.optional(types.boolean()),
   tracing: types.optional(

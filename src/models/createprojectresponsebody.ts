@@ -25,8 +25,6 @@ import {
   CreateProjectPermissions$inboundSchema,
   CreateProjectProjectsResourceConfig,
   CreateProjectProjectsResourceConfig$inboundSchema,
-  CreateProjectProjectsResponseAction,
-  CreateProjectProjectsResponseAction$inboundSchema,
   CreateProjectProjectsSsoProtection,
   CreateProjectProjectsSsoProtection$inboundSchema,
   CreateProjectRollbackDescription,
@@ -47,8 +45,6 @@ import {
   DefaultResourceConfig$inboundSchema,
   Features,
   Features$inboundSchema,
-  FlatRateTier,
-  FlatRateTier$inboundSchema,
   GitProviderOptions,
   GitProviderOptions$inboundSchema,
   LastAliasRequest,
@@ -59,9 +55,11 @@ import {
   ProtectionBypass$inboundSchema,
   RollingRelease,
   RollingRelease$inboundSchema,
+  Sandbox,
+  Sandbox$inboundSchema,
   UsageStatus,
   UsageStatus$inboundSchema,
-} from "./createprojectprojectsresponseaction.js";
+} from "./createprojectblockhistory.js";
 import {
   Alias,
   Alias$inboundSchema,
@@ -109,12 +107,20 @@ import {
   Link$inboundSchema,
   ProtectionConfig,
   ProtectionConfig$inboundSchema,
-  Sandbox,
-  Sandbox$inboundSchema,
   SpeedInsights,
   SpeedInsights$inboundSchema,
-} from "./sandbox.js";
+} from "./createprojectregion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const CreateProjectProjectsResponseAction = {
+  AddDeploymentInterstitial: "add-deployment-interstitial",
+  AddProjectInterstitial: "add-project-interstitial",
+  RemoveDeploymentInterstitial: "remove-deployment-interstitial",
+  RemoveProjectInterstitial: "remove-project-interstitial",
+} as const;
+export type CreateProjectProjectsResponseAction = ClosedEnum<
+  typeof CreateProjectProjectsResponseAction
+>;
 
 export type InterstitialHistory = {
   action: CreateProjectProjectsResponseAction;
@@ -352,7 +358,6 @@ export type CreateProjectResponseBody = {
    */
   deploymentPolicy?: CreateProjectDeploymentPolicy | null | undefined;
   tier?: string | undefined;
-  flatRateTier?: FlatRateTier | undefined;
   usageStatus?: UsageStatus | undefined;
   features?: Features | undefined;
   v0?: boolean | undefined;
@@ -365,6 +370,11 @@ export type CreateProjectResponseBody = {
   tracing?: CreateProjectTracing | undefined;
   avatar?: string | null | undefined;
 };
+
+/** @internal */
+export const CreateProjectProjectsResponseAction$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectProjectsResponseAction
+> = z.nativeEnum(CreateProjectProjectsResponseAction);
 
 /** @internal */
 export const InterstitialHistory$inboundSchema: z.ZodType<
@@ -884,7 +894,6 @@ export const CreateProjectResponseBody$inboundSchema: z.ZodType<
   deploymentPolicy: z.nullable(CreateProjectDeploymentPolicy$inboundSchema)
     .optional(),
   tier: types.optional(types.string()),
-  flatRateTier: types.optional(FlatRateTier$inboundSchema),
   usageStatus: types.optional(UsageStatus$inboundSchema),
   features: types.optional(Features$inboundSchema),
   v0: types.optional(types.boolean()),

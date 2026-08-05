@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentRequest } from "@vercel/sdk/models/createdeploymentroutesmitigate.js";
+import { CreateDeploymentRequest } from "@vercel/sdk/models/createdeploymentvaluedeploymentsresponse2002.js";
 
 let value: CreateDeploymentRequest = {
   forceNew: "1",
@@ -31,6 +31,7 @@ let value: CreateDeploymentRequest = {
       ciType: "github-actions",
       ciGitProviderUsername: "rauchg",
       ciGitRepoVisibility: "private",
+      rootDirectory: "apps/web",
     },
     gitSource: {
       ref: "main",

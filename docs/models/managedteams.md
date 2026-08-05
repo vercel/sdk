@@ -10,6 +10,7 @@ let value: ManagedTeams = {
   slug: "<value>",
   name: "<value>",
   avatar: "https://picsum.photos/seed/LVlcN5/730/649",
+  workEmail: "<value>",
 };
 ```
 
@@ -21,3 +22,4 @@ let value: ManagedTeams = {
 | `slug`             | *string*           | :heavy_check_mark: | N/A                |
 | `name`             | *string*           | :heavy_check_mark: | N/A                |
 | `avatar`           | *string*           | :heavy_check_mark: | N/A                |
+| `workEmail`        | *string*           | :heavy_check_mark: | N/A                |

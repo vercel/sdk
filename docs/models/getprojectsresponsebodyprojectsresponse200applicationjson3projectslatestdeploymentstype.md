@@ -5,7 +5,7 @@
 ```typescript
 import {
   GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsLatestDeploymentsType,
-} from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponsebuildqueue.js";
+} from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponsebuildmachineelasticreason.js";
 
 let value:
   GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsLatestDeploymentsType =

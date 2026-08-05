@@ -1,16 +1,19 @@
 # Billing
 
-An object containing billing infomation associated with the User account.
+The team's billing plan.
 
 ## Example Usage
 
 ```typescript
-import { Billing } from "@vercel/sdk/models/authuser.js";
+import { Billing } from "@vercel/sdk/models/team.js";
 
-let value: Billing = {};
+let value: Billing = {
+  plan: "hobby",
+};
 ```
 
 ## Fields
 
-| Field       | Type        | Required    | Description |
-| ----------- | ----------- | ----------- | ----------- |
+| Field                            | Type                             | Required                         | Description                      |
+| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
+| `plan`                           | [models.Plan](../models/plan.md) | :heavy_check_mark:               | N/A                              |

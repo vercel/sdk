@@ -57,7 +57,6 @@ let value: CountPageviewsData = {
   cacheHitLevel: "<value>",
   cacheApi: "<value>",
   cacheReason: "<value>",
-  pprState: "<value>",
   clientIp: "<value>",
   clientIpCountry: "<value>",
   clientUserAgent: "<value>",
@@ -280,7 +279,6 @@ let value: CountPageviewsData = {
 | `cacheHitLevel`                        | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `cacheApi`                             | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `cacheReason`                          | *string*                               | :heavy_check_mark:                     | N/A                                    |
-| `pprState`                             | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `clientIp`                             | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `clientIpCountry`                      | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `clientUserAgent`                      | *string*                               | :heavy_check_mark:                     | N/A                                    |

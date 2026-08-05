@@ -39,6 +39,7 @@ export type Library = {
 
 export type GetProjectTraceStatus = {
   code: number;
+  message?: string | undefined;
 };
 
 export type GetProjectTraceEvents = {
@@ -55,6 +56,7 @@ export type Spans = {
   spanId: string;
   parentSpanId?: string | undefined;
   status: GetProjectTraceStatus;
+  traceState?: string | undefined;
   traceFlags: number;
   attributes: { [k: string]: any };
   links: Array<{ [k: string]: any }>;
@@ -147,6 +149,7 @@ export const GetProjectTraceStatus$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   code: types.number(),
+  message: types.optional(types.string()),
 });
 
 export function getProjectTraceStatusFromJSON(
@@ -190,6 +193,7 @@ export const Spans$inboundSchema: z.ZodType<Spans, z.ZodTypeDef, unknown> = z
     spanId: types.string(),
     parentSpanId: types.optional(types.string()),
     status: z.lazy(() => GetProjectTraceStatus$inboundSchema),
+    traceState: types.optional(types.string()),
     traceFlags: types.number(),
     attributes: z.record(z.any()),
     links: z.array(z.record(z.any())),

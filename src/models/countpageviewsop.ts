@@ -137,7 +137,6 @@ export type CountPageviewsData = {
   cacheHitLevel: string;
   cacheApi: string;
   cacheReason: string;
-  pprState: string;
   clientIp: string;
   clientIpCountry: string;
   clientUserAgent: string;
@@ -462,7 +461,6 @@ export const CountPageviewsData$inboundSchema: z.ZodType<
     cacheHitLevel: types.string(),
     cacheApi: types.string(),
     cacheReason: types.string(),
-    pprState: types.string(),
     clientIp: types.string(),
     clientIpCountry: types.string(),
     clientUserAgent: types.string(),

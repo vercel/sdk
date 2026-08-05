@@ -163,6 +163,20 @@ export type Saml = {
   roles?: { [k: string]: Roles1 | Roles2 } | undefined;
 };
 
+export const Plan = {
+  Enterprise: "enterprise",
+  Hobby: "hobby",
+  Pro: "pro",
+} as const;
+export type Plan = ClosedEnum<typeof Plan>;
+
+/**
+ * The team's billing plan.
+ */
+export type Billing = {
+  plan: Plan;
+};
+
 export const TeamTeamRoles = {
   Billing: "BILLING",
   Contributor: "CONTRIBUTOR",
@@ -180,6 +194,7 @@ export const TeamTeamPermissions = {
   AiGatewayBudgetManager: "AiGatewayBudgetManager",
   AiGatewayCredits: "AiGatewayCredits",
   AiGatewaySettings: "AiGatewaySettings",
+  ConnectorManager: "ConnectorManager",
   CreateProject: "CreateProject",
   EnvVariableManager: "EnvVariableManager",
   EnvironmentManager: "EnvironmentManager",
@@ -656,6 +671,7 @@ export const TeamMembershipTeamPermissions = {
   AiGatewayBudgetManager: "AiGatewayBudgetManager",
   AiGatewayCredits: "AiGatewayCredits",
   AiGatewaySettings: "AiGatewaySettings",
+  ConnectorManager: "ConnectorManager",
   CreateProject: "CreateProject",
   EnvVariableManager: "EnvVariableManager",
   EnvironmentManager: "EnvironmentManager",
@@ -753,6 +769,10 @@ export type Team = {
    * Code that can be used to join this Team. Only visible to Team owners.
    */
   inviteCode?: string | undefined;
+  /**
+   * The team's billing plan.
+   */
+  billing: Billing | null;
   /**
    * A short description of the Team.
    */
@@ -1041,6 +1061,27 @@ export function samlFromJSON(
     jsonString,
     (x) => Saml$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'Saml' from JSON`,
+  );
+}
+
+/** @internal */
+export const Plan$inboundSchema: z.ZodNativeEnum<typeof Plan> = z.nativeEnum(
+  Plan,
+);
+
+/** @internal */
+export const Billing$inboundSchema: z.ZodType<Billing, z.ZodTypeDef, unknown> =
+  z.object({
+    plan: Plan$inboundSchema,
+  });
+
+export function billingFromJSON(
+  jsonString: string,
+): SafeParseResult<Billing, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Billing$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Billing' from JSON`,
   );
 }
 
@@ -1910,6 +1951,7 @@ export const Team$inboundSchema: z.ZodType<Team, z.ZodTypeDef, unknown> =
       emailDomain: z.nullable(types.string()).optional(),
       saml: types.optional(z.lazy(() => Saml$inboundSchema)),
       inviteCode: types.optional(types.string()),
+      billing: types.nullable(z.lazy(() => Billing$inboundSchema)),
       description: types.nullable(types.string()),
       defaultRoles: types.optional(z.lazy(() => DefaultRoles$inboundSchema)),
       stagingPrefix: types.string(),

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Bandwidth } from "@vercel/sdk/models/microfrontendsrequest.js";
+import { Bandwidth } from "@vercel/sdk/models/postgres2.js";
 
 let value: Bandwidth = {
   currentThreshold: 444.65,

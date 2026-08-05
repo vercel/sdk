@@ -5,7 +5,7 @@ A full point-in-time snapshot of an OIDC exchange policy, captured on every life
 ## Example Usage
 
 ```typescript
-import { PayloadBefore } from "@vercel/sdk/models/threehundredandsixtytwo.js";
+import { PayloadBefore } from "@vercel/sdk/models/threehundredandsixtyseven.js";
 
 let value: PayloadBefore = {
   policyId: "<id>",
@@ -51,6 +51,6 @@ let value: PayloadBefore = {
 | `name`                                                                           | *string*                                                                         | :heavy_check_mark:                                                               | Human-readable policy name, or `null` when unnamed.                              |
 | `claims`                                                                         | [models.PayloadClaims](../models/payloadclaims.md)[]                             | :heavy_check_mark:                                                               | Claim matchers an OIDC token must satisfy to use the policy.                     |
 | `permissions`                                                                    | *string*[]                                                                       | :heavy_check_mark:                                                               | Permission boundary (`['*']` = the app's full declared permissions).             |
-| `resources`                                                                      | [models.UserEventPayload404Resources](../models/usereventpayload404resources.md) | :heavy_check_mark:                                                               | Resource boundary, or `null` when the policy has none.                           |
+| `resources`                                                                      | [models.UserEventPayload410Resources](../models/usereventpayload410resources.md) | :heavy_check_mark:                                                               | Resource boundary, or `null` when the policy has none.                           |
 | `createdAt`                                                                      | *number*                                                                         | :heavy_check_mark:                                                               | Creation time (epoch ms).                                                        |
 | `updatedAt`                                                                      | *number*                                                                         | :heavy_check_mark:                                                               | Last-update time (epoch ms).                                                     |

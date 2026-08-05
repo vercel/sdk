@@ -113,3 +113,18 @@ const value: models.UploadProjectAvatarLink6 = {
 };
 ```
 
+### `models.UploadProjectAvatarLink7`
+
+```typescript
+const value: models.UploadProjectAvatarLink7 = {
+  owner: "<value>",
+  repo: "<value>",
+  repoId: "<id>",
+  ownerId: "<id>",
+  type: "cursor-origin",
+  deployHooks: [],
+  gitCredentialId: "<id>",
+  productionBranch: "<value>",
+};
+```
+

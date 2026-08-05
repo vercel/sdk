@@ -9,16 +9,6 @@ import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
-import { FlagJSONValue, FlagJSONValue$inboundSchema } from "./flagjsonvalue.js";
-import {
-  GitRepo3,
-  GitRepo3$inboundSchema,
-  GitRepo4,
-  GitRepo4$inboundSchema,
-  Services,
-  Services$inboundSchema,
-} from "./gitrepo3.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
   AliasAssignedAt,
   AliasAssignedAt$inboundSchema,
@@ -42,6 +32,8 @@ import {
   CancelDeploymentProject$inboundSchema,
   CancelDeploymentProjectSettings,
   CancelDeploymentProjectSettings$inboundSchema,
+  CancelDeploymentResourceConfig,
+  CancelDeploymentResourceConfig$inboundSchema,
   CancelDeploymentRoutes,
   CancelDeploymentRoutes$inboundSchema,
   CancelDeploymentSource,
@@ -80,7 +72,133 @@ import {
   ReadyState$inboundSchema,
   ReadySubstate,
   ReadySubstate$inboundSchema,
-} from "./servicesbuilder.js";
+} from "./canceldeploymentservicesdeploymentsmaxduration.js";
+import { FlagJSONValue, FlagJSONValue$inboundSchema } from "./flagjsonvalue.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
+import {
+  Builder,
+  Builder$inboundSchema,
+  RoutePrefixSource,
+  RoutePrefixSource$inboundSchema,
+  Schedule,
+  Schedule$inboundSchema,
+  Services2,
+  Services2$inboundSchema,
+  ServicesType,
+  ServicesType$inboundSchema,
+  Topics2,
+  Topics2$inboundSchema,
+  Trigger,
+  Trigger$inboundSchema,
+} from "./topics2.js";
+
+export type Topics = Array<string> | Array<Topics2>;
+
+export const CancelDeploymentServicesType = {
+  ServiceRef: "service-ref",
+} as const;
+export type CancelDeploymentServicesType = ClosedEnum<
+  typeof CancelDeploymentServicesType
+>;
+
+export type ServicesEnv = {
+  type: CancelDeploymentServicesType;
+  service: string;
+};
+
+/**
+ * Services detected during build from vercel.json experimentalServices or auto-detected from project structure. Used to inject service URLs as environment variables at runtime.
+ */
+export type Services1 = {
+  schema: "experimentalServices";
+  name: string;
+  type: ServicesType;
+  trigger?: Trigger | undefined;
+  group?: string | undefined;
+  workspace: string;
+  entrypoint?: string | undefined;
+  framework?: string | undefined;
+  builder: Builder;
+  runtime?: string | undefined;
+  buildCommand?: string | undefined;
+  installCommand?: string | undefined;
+  preDeployCommand?: string | undefined;
+  routePrefix?: string | undefined;
+  routePrefixSource?: RoutePrefixSource | undefined;
+  subdomain?: string | undefined;
+  schedule?: Schedule | undefined;
+  handlerFunction?: string | undefined;
+  topics?: Array<string> | Array<Topics2> | undefined;
+  env?: { [k: string]: ServicesEnv } | undefined;
+};
+
+export type Services = Services1 | Services2;
+
+export const CancelDeploymentGitRepoDeploymentsResponseOwnerType = {
+  Team: "team",
+  User: "user",
+} as const;
+export type CancelDeploymentGitRepoDeploymentsResponseOwnerType = ClosedEnum<
+  typeof CancelDeploymentGitRepoDeploymentsResponseOwnerType
+>;
+
+export type GitRepo5 = {
+  /**
+   * Owner (namespace) slug.
+   */
+  owner: string;
+  repo: string;
+  /**
+   * Origin repository id.
+   */
+  repoId: string;
+  type: "cursor-origin";
+  path: string;
+  defaultBranch: string;
+  name: string;
+  private: boolean;
+  ownerType: CancelDeploymentGitRepoDeploymentsResponseOwnerType;
+};
+
+export const CancelDeploymentGitRepoDeploymentsOwnerType = {
+  Team: "team",
+  User: "user",
+} as const;
+export type CancelDeploymentGitRepoDeploymentsOwnerType = ClosedEnum<
+  typeof CancelDeploymentGitRepoDeploymentsOwnerType
+>;
+
+export type GitRepo4 = {
+  org: string;
+  repo: string;
+  type: "vercel";
+  path: string;
+  defaultBranch: string;
+  name: string;
+  private: boolean;
+  ownerType: CancelDeploymentGitRepoDeploymentsOwnerType;
+};
+
+export const CancelDeploymentGitRepoOwnerType = {
+  Team: "team",
+  User: "user",
+} as const;
+export type CancelDeploymentGitRepoOwnerType = ClosedEnum<
+  typeof CancelDeploymentGitRepoOwnerType
+>;
+
+export type GitRepo3 = {
+  owner: string;
+  repoUuid: string;
+  slug: string;
+  type: "bitbucket";
+  workspaceUuid: string;
+  path: string;
+  defaultBranch: string;
+  name: string;
+  private: boolean;
+  ownerType: CancelDeploymentGitRepoOwnerType;
+};
 
 export const GitRepoOwnerType = {
   Team: "team",
@@ -119,7 +237,7 @@ export type GitRepo1 = {
   ownerType: OwnerType;
 };
 
-export type GitRepo = GitRepo1 | GitRepo2 | GitRepo3 | GitRepo4;
+export type GitRepo = GitRepo1 | GitRepo2 | GitRepo3 | GitRepo4 | GitRepo5;
 
 /**
  * Flags defined in the Build Output API, used by this deployment. Primarily used by the Toolbar to know about the used flags.
@@ -340,7 +458,7 @@ export type CancelDeploymentPurchaseType = ClosedEnum<
   typeof CancelDeploymentPurchaseType
 >;
 
-export type CancelDeploymentBuildMachine = {
+export type CancelDeploymentDeploymentsBuildMachine = {
   /**
    * Machine type that was used for the build.
    */
@@ -350,7 +468,7 @@ export type CancelDeploymentBuildMachine = {
 /**
  * Build resource configuration snapshot for this deployment.
  */
-export type CancelDeploymentResourceConfig = {
+export type CancelDeploymentDeploymentsResourceConfig = {
   /**
    * Build resource configuration snapshot for this deployment.
    */
@@ -359,7 +477,7 @@ export type CancelDeploymentResourceConfig = {
    * When elastic concurrency is used for this deployment, a value is set. The value tells the reason where the setting was coming from. - TEAM_SETTING: Inherited from team settings - PROJECT_SETTING: Inherited from project settings - SKIP_QUEUE: Manually triggered by user to skip the queues
    */
   elasticConcurrency?: ElasticConcurrency | undefined;
-  buildMachine?: CancelDeploymentBuildMachine | undefined;
+  buildMachine?: CancelDeploymentDeploymentsBuildMachine | undefined;
 };
 
 /**
@@ -376,7 +494,7 @@ export type CancelDeploymentConfig = {
   /**
    * Build resource configuration snapshot for this deployment.
    */
-  resourceConfig?: CancelDeploymentResourceConfig | undefined;
+  resourceConfig?: CancelDeploymentDeploymentsResourceConfig | undefined;
 };
 
 export const CancelDeploymentDeploymentsState = {
@@ -541,6 +659,7 @@ export type CancelDeploymentResponseBody = {
   buildArtifactUrls?: Array<string> | undefined;
   builds?: Array<Builds> | undefined;
   env: Array<string>;
+  resourceConfig?: CancelDeploymentResourceConfig | undefined;
   inspectorUrl: string | null;
   isInConcurrentBuildsQueue: boolean;
   isInSystemBuildsQueue: boolean;
@@ -709,8 +828,15 @@ export type CancelDeploymentResponseBody = {
   /**
    * Services detected during build from vercel.json experimentalServices or auto-detected from project structure. Used to inject service URLs as environment variables at runtime.
    */
-  services?: Array<Services> | undefined;
-  gitRepo?: GitRepo1 | GitRepo2 | GitRepo3 | GitRepo4 | null | undefined;
+  services?: Array<Services1 | Services2> | undefined;
+  gitRepo?:
+    | GitRepo1
+    | GitRepo2
+    | GitRepo3
+    | GitRepo4
+    | GitRepo5
+    | null
+    | undefined;
   flags?: Flags1 | Array<Flags2> | undefined;
   microfrontends?:
     | CancelDeploymentMicrofrontends2
@@ -734,6 +860,198 @@ export type CancelDeploymentResponseBody = {
    */
   attribution?: CancelDeploymentAttribution | undefined;
 };
+
+/** @internal */
+export const Topics$inboundSchema: z.ZodType<Topics, z.ZodTypeDef, unknown> =
+  smartUnion([z.array(types.string()), z.array(Topics2$inboundSchema)]);
+
+export function topicsFromJSON(
+  jsonString: string,
+): SafeParseResult<Topics, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Topics$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Topics' from JSON`,
+  );
+}
+
+/** @internal */
+export const CancelDeploymentServicesType$inboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentServicesType
+> = z.nativeEnum(CancelDeploymentServicesType);
+
+/** @internal */
+export const ServicesEnv$inboundSchema: z.ZodType<
+  ServicesEnv,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: CancelDeploymentServicesType$inboundSchema,
+  service: types.string(),
+});
+
+export function servicesEnvFromJSON(
+  jsonString: string,
+): SafeParseResult<ServicesEnv, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ServicesEnv$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ServicesEnv' from JSON`,
+  );
+}
+
+/** @internal */
+export const Services1$inboundSchema: z.ZodType<
+  Services1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  schema: types.literal("experimentalServices"),
+  name: types.string(),
+  type: ServicesType$inboundSchema,
+  trigger: types.optional(Trigger$inboundSchema),
+  group: types.optional(types.string()),
+  workspace: types.string(),
+  entrypoint: types.optional(types.string()),
+  framework: types.optional(types.string()),
+  builder: Builder$inboundSchema,
+  runtime: types.optional(types.string()),
+  buildCommand: types.optional(types.string()),
+  installCommand: types.optional(types.string()),
+  preDeployCommand: types.optional(types.string()),
+  routePrefix: types.optional(types.string()),
+  routePrefixSource: types.optional(RoutePrefixSource$inboundSchema),
+  subdomain: types.optional(types.string()),
+  schedule: types.optional(Schedule$inboundSchema),
+  handlerFunction: types.optional(types.string()),
+  topics: types.optional(
+    smartUnion([z.array(types.string()), z.array(Topics2$inboundSchema)]),
+  ),
+  env: types.optional(z.record(z.lazy(() => ServicesEnv$inboundSchema))),
+});
+
+export function services1FromJSON(
+  jsonString: string,
+): SafeParseResult<Services1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Services1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Services1' from JSON`,
+  );
+}
+
+/** @internal */
+export const Services$inboundSchema: z.ZodType<
+  Services,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.lazy(() => Services1$inboundSchema), Services2$inboundSchema]);
+
+export function servicesFromJSON(
+  jsonString: string,
+): SafeParseResult<Services, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Services$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Services' from JSON`,
+  );
+}
+
+/** @internal */
+export const CancelDeploymentGitRepoDeploymentsResponseOwnerType$inboundSchema:
+  z.ZodNativeEnum<typeof CancelDeploymentGitRepoDeploymentsResponseOwnerType> =
+    z.nativeEnum(CancelDeploymentGitRepoDeploymentsResponseOwnerType);
+
+/** @internal */
+export const GitRepo5$inboundSchema: z.ZodType<
+  GitRepo5,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  owner: types.string(),
+  repo: types.string(),
+  repoId: types.string(),
+  type: types.literal("cursor-origin"),
+  path: types.string(),
+  defaultBranch: types.string(),
+  name: types.string(),
+  private: types.boolean(),
+  ownerType: CancelDeploymentGitRepoDeploymentsResponseOwnerType$inboundSchema,
+});
+
+export function gitRepo5FromJSON(
+  jsonString: string,
+): SafeParseResult<GitRepo5, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GitRepo5$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GitRepo5' from JSON`,
+  );
+}
+
+/** @internal */
+export const CancelDeploymentGitRepoDeploymentsOwnerType$inboundSchema:
+  z.ZodNativeEnum<typeof CancelDeploymentGitRepoDeploymentsOwnerType> = z
+    .nativeEnum(CancelDeploymentGitRepoDeploymentsOwnerType);
+
+/** @internal */
+export const GitRepo4$inboundSchema: z.ZodType<
+  GitRepo4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  org: types.string(),
+  repo: types.string(),
+  type: types.literal("vercel"),
+  path: types.string(),
+  defaultBranch: types.string(),
+  name: types.string(),
+  private: types.boolean(),
+  ownerType: CancelDeploymentGitRepoDeploymentsOwnerType$inboundSchema,
+});
+
+export function gitRepo4FromJSON(
+  jsonString: string,
+): SafeParseResult<GitRepo4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GitRepo4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GitRepo4' from JSON`,
+  );
+}
+
+/** @internal */
+export const CancelDeploymentGitRepoOwnerType$inboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentGitRepoOwnerType
+> = z.nativeEnum(CancelDeploymentGitRepoOwnerType);
+
+/** @internal */
+export const GitRepo3$inboundSchema: z.ZodType<
+  GitRepo3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  owner: types.string(),
+  repoUuid: types.string(),
+  slug: types.string(),
+  type: types.literal("bitbucket"),
+  workspaceUuid: types.string(),
+  path: types.string(),
+  defaultBranch: types.string(),
+  name: types.string(),
+  private: types.boolean(),
+  ownerType: CancelDeploymentGitRepoOwnerType$inboundSchema,
+});
+
+export function gitRepo3FromJSON(
+  jsonString: string,
+): SafeParseResult<GitRepo3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GitRepo3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GitRepo3' from JSON`,
+  );
+}
 
 /** @internal */
 export const GitRepoOwnerType$inboundSchema: z.ZodNativeEnum<
@@ -804,8 +1122,9 @@ export const GitRepo$inboundSchema: z.ZodType<GitRepo, z.ZodTypeDef, unknown> =
   z.union([
     z.lazy(() => GitRepo1$inboundSchema),
     z.lazy(() => GitRepo2$inboundSchema),
-    GitRepo3$inboundSchema,
-    GitRepo4$inboundSchema,
+    z.lazy(() => GitRepo3$inboundSchema),
+    z.lazy(() => GitRepo4$inboundSchema),
+    z.lazy(() => GitRepo5$inboundSchema),
   ]);
 
 export function gitRepoFromJSON(
@@ -1107,8 +1426,8 @@ export const CancelDeploymentPurchaseType$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(CancelDeploymentPurchaseType);
 
 /** @internal */
-export const CancelDeploymentBuildMachine$inboundSchema: z.ZodType<
-  CancelDeploymentBuildMachine,
+export const CancelDeploymentDeploymentsBuildMachine$inboundSchema: z.ZodType<
+  CancelDeploymentDeploymentsBuildMachine,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1116,19 +1435,25 @@ export const CancelDeploymentBuildMachine$inboundSchema: z.ZodType<
     .optional(),
 });
 
-export function cancelDeploymentBuildMachineFromJSON(
+export function cancelDeploymentDeploymentsBuildMachineFromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentBuildMachine, SDKValidationError> {
+): SafeParseResult<
+  CancelDeploymentDeploymentsBuildMachine,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => CancelDeploymentBuildMachine$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentBuildMachine' from JSON`,
+    (x) =>
+      CancelDeploymentDeploymentsBuildMachine$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CancelDeploymentDeploymentsBuildMachine' from JSON`,
   );
 }
 
 /** @internal */
-export const CancelDeploymentResourceConfig$inboundSchema: z.ZodType<
-  CancelDeploymentResourceConfig,
+export const CancelDeploymentDeploymentsResourceConfig$inboundSchema: z.ZodType<
+  CancelDeploymentDeploymentsResourceConfig,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1137,17 +1462,23 @@ export const CancelDeploymentResourceConfig$inboundSchema: z.ZodType<
   ),
   elasticConcurrency: types.optional(ElasticConcurrency$inboundSchema),
   buildMachine: types.optional(
-    z.lazy(() => CancelDeploymentBuildMachine$inboundSchema),
+    z.lazy(() => CancelDeploymentDeploymentsBuildMachine$inboundSchema),
   ),
 });
 
-export function cancelDeploymentResourceConfigFromJSON(
+export function cancelDeploymentDeploymentsResourceConfigFromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentResourceConfig, SDKValidationError> {
+): SafeParseResult<
+  CancelDeploymentDeploymentsResourceConfig,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => CancelDeploymentResourceConfig$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentResourceConfig' from JSON`,
+    (x) =>
+      CancelDeploymentDeploymentsResourceConfig$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CancelDeploymentDeploymentsResourceConfig' from JSON`,
   );
 }
 
@@ -1165,7 +1496,7 @@ export const CancelDeploymentConfig$inboundSchema: z.ZodType<
   secureComputeFallbackRegion: types.nullable(types.string()),
   isUsingActiveCPU: types.optional(types.boolean()),
   resourceConfig: types.optional(
-    z.lazy(() => CancelDeploymentResourceConfig$inboundSchema),
+    z.lazy(() => CancelDeploymentDeploymentsResourceConfig$inboundSchema),
   ),
 });
 
@@ -1388,6 +1719,7 @@ export const CancelDeploymentResponseBody$inboundSchema: z.ZodType<
   buildArtifactUrls: types.optional(z.array(types.string())),
   builds: types.optional(z.array(Builds$inboundSchema)),
   env: z.array(types.string()),
+  resourceConfig: types.optional(CancelDeploymentResourceConfig$inboundSchema),
   inspectorUrl: types.nullable(types.string()),
   isInConcurrentBuildsQueue: types.boolean(),
   isInSystemBuildsQueue: types.boolean(),
@@ -1463,13 +1795,19 @@ export const CancelDeploymentResponseBody$inboundSchema: z.ZodType<
   ownerId: types.string(),
   passiveConnectConfigurationId: types.optional(types.string()),
   routes: types.nullable(z.array(CancelDeploymentRoutes$inboundSchema)),
-  services: types.optional(z.array(Services$inboundSchema)),
+  services: types.optional(
+    z.array(z.union([
+      z.lazy(() => Services1$inboundSchema),
+      Services2$inboundSchema,
+    ])),
+  ),
   gitRepo: z.nullable(
     z.union([
       z.lazy(() => GitRepo1$inboundSchema),
       z.lazy(() => GitRepo2$inboundSchema),
-      GitRepo3$inboundSchema,
-      GitRepo4$inboundSchema,
+      z.lazy(() => GitRepo3$inboundSchema),
+      z.lazy(() => GitRepo4$inboundSchema),
+      z.lazy(() => GitRepo5$inboundSchema),
     ]),
   ).optional(),
   flags: types.optional(

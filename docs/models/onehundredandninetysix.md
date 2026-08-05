@@ -5,13 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndNinetySix } from "@vercel/sdk/models/onehundredandsixtyfour.js";
+import { OneHundredAndNinetySix } from "@vercel/sdk/models/onehundredandseventyone.js";
 
 let value: OneHundredAndNinetySix = {
   projectId: "<id>",
-  url: "https://astonishing-descendant.biz",
-  previousStatus: "<value>",
-  justification: "<value>",
+  previous: {
+    enabled: true,
+    mode: "<value>",
+    enforcePercentage: 2377.39,
+    newResourceBlockingPolicy: "allow",
+    allowUnsafeScriptSrcKeywords: false,
+  },
+  next: {
+    enabled: false,
+    mode: "<value>",
+    enforcePercentage: 4670.89,
+    newResourceBlockingPolicy: "allow",
+    allowUnsafeScriptSrcKeywords: true,
+  },
 };
 ```
 
@@ -20,8 +31,5 @@ let value: OneHundredAndNinetySix = {
 | Field                                                            | Type                                                             | Required                                                         | Description                                                      |
 | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
 | `projectId`                                                      | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `url`                                                            | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `previousStatus`                                                 | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `justification`                                                  | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `approvalScope`                                                  | [models.ApprovalScope](../models/approvalscope.md)               | :heavy_minus_sign:                                               | N/A                                                              |
-| `kind`                                                           | [models.UserEventPayloadKind](../models/usereventpayloadkind.md) | :heavy_minus_sign:                                               | N/A                                                              |
+| `previous`                                                       | [models.PayloadPrevious](../models/payloadprevious.md)           | :heavy_check_mark:                                               | N/A                                                              |
+| `next`                                                           | [models.UserEventPayloadNext](../models/usereventpayloadnext.md) | :heavy_check_mark:                                               | N/A                                                              |

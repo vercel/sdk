@@ -70,6 +70,10 @@ export type CreateApiKeysRequestBody = {
    * Optional AI Gateway quota configuration for the API key.
    */
   aiGatewayQuota?: AiGatewayQuota | undefined;
+  /**
+   * Optional generic metadata for the API key. The accepted shape depends on the key's `purpose` and is validated on creation; for `ai-gateway` keys this accepts `environment`.
+   */
+  metadata?: { [k: string]: any } | undefined;
 };
 
 export type CreateApiKeysResponse500Error = {
@@ -252,6 +256,7 @@ export type CreateApiKeysRequestBody$Outbound = {
   name?: string | undefined;
   expiresAt?: number | undefined;
   aiGatewayQuota?: AiGatewayQuota$Outbound | undefined;
+  metadata?: { [k: string]: any } | undefined;
 };
 
 /** @internal */
@@ -265,6 +270,7 @@ export const CreateApiKeysRequestBody$outboundSchema: z.ZodType<
   name: z.string().optional(),
   expiresAt: z.number().optional(),
   aiGatewayQuota: z.lazy(() => AiGatewayQuota$outboundSchema).optional(),
+  metadata: z.record(z.any()).optional(),
 });
 
 export function createApiKeysRequestBodyToJSON(

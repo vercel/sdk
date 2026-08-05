@@ -7,6 +7,7 @@ import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import {
   GetProjectAlias,
   GetProjectAlias$inboundSchema,
@@ -24,8 +25,6 @@ import {
   GetProjectCustomEnvironments$inboundSchema,
   GetProjectDataCache,
   GetProjectDataCache$inboundSchema,
-  GetProjectDefaultResourceConfig,
-  GetProjectDefaultResourceConfig$inboundSchema,
   GetProjectDeploymentExpiration,
   GetProjectDeploymentExpiration$inboundSchema,
   GetProjectEnv,
@@ -68,20 +67,18 @@ import {
   GetProjectServices$inboundSchema,
   GetProjectSpeedInsights,
   GetProjectSpeedInsights$inboundSchema,
-  GetProjectStaticIps,
-  GetProjectStaticIps$inboundSchema,
-} from "./getprojectstaticips.js";
+} from "./getprojectprojectsbuildqueue.js";
 import {
   GetProjectAbuse,
   GetProjectAbuse$inboundSchema,
   GetProjectAction,
   GetProjectAction$inboundSchema,
+  GetProjectDefaultResourceConfig,
+  GetProjectDefaultResourceConfig$inboundSchema,
   GetProjectDeploymentPolicy,
   GetProjectDeploymentPolicy$inboundSchema,
   GetProjectFeatures,
   GetProjectFeatures$inboundSchema,
-  GetProjectFlatRateTier,
-  GetProjectFlatRateTier$inboundSchema,
   GetProjectGitComments,
   GetProjectGitComments$inboundSchema,
   GetProjectGitProviderOptions,
@@ -102,6 +99,8 @@ import {
   GetProjectSecurity$inboundSchema,
   GetProjectSsoProtection,
   GetProjectSsoProtection$inboundSchema,
+  GetProjectStaticIps,
+  GetProjectStaticIps$inboundSchema,
   GetProjectTargets,
   GetProjectTargets$inboundSchema,
   GetProjectTrustedIps,
@@ -110,18 +109,20 @@ import {
   GetProjectTrustedSources$inboundSchema,
   GetProjectUsageStatus,
   GetProjectUsageStatus$inboundSchema,
-  GetProjectValue,
-  GetProjectValue$inboundSchema,
+  GetProjectValue3,
+  GetProjectValue3$inboundSchema,
   GetProjectWebAnalytics,
   GetProjectWebAnalytics$inboundSchema,
-} from "./getprojectvalue.js";
+} from "./getprojectvalue3.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type GetProjectValue = GetProjectValue3 | string | number | boolean;
 
 export type GetProjectDismissedToasts = {
   key: string;
   dismissedAt: number;
   action: GetProjectAction;
-  value: GetProjectValue | null;
+  value: GetProjectValue3 | string | number | boolean | null;
 };
 
 export const GetProjectProjectsEnv = {
@@ -264,7 +265,6 @@ export type GetProjectResponseBody = {
    */
   deploymentPolicy?: GetProjectDeploymentPolicy | null | undefined;
   tier?: string | undefined;
-  flatRateTier?: GetProjectFlatRateTier | undefined;
   usageStatus?: GetProjectUsageStatus | undefined;
   features?: GetProjectFeatures | undefined;
   v0?: boolean | undefined;
@@ -279,6 +279,28 @@ export type GetProjectResponseBody = {
 };
 
 /** @internal */
+export const GetProjectValue$inboundSchema: z.ZodType<
+  GetProjectValue,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  GetProjectValue3$inboundSchema,
+  types.string(),
+  types.number(),
+  types.boolean(),
+]);
+
+export function getProjectValueFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectValue' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetProjectDismissedToasts$inboundSchema: z.ZodType<
   GetProjectDismissedToasts,
   z.ZodTypeDef,
@@ -287,7 +309,14 @@ export const GetProjectDismissedToasts$inboundSchema: z.ZodType<
   key: types.string(),
   dismissedAt: types.number(),
   action: GetProjectAction$inboundSchema,
-  value: types.nullable(GetProjectValue$inboundSchema),
+  value: types.nullable(
+    smartUnion([
+      GetProjectValue3$inboundSchema,
+      types.string(),
+      types.number(),
+      types.boolean(),
+    ]),
+  ),
 });
 
 export function getProjectDismissedToastsFromJSON(
@@ -467,7 +496,6 @@ export const GetProjectResponseBody$inboundSchema: z.ZodType<
   deploymentPolicy: z.nullable(GetProjectDeploymentPolicy$inboundSchema)
     .optional(),
   tier: types.optional(types.string()),
-  flatRateTier: types.optional(GetProjectFlatRateTier$inboundSchema),
   usageStatus: types.optional(GetProjectUsageStatus$inboundSchema),
   features: types.optional(GetProjectFeatures$inboundSchema),
   v0: types.optional(types.boolean()),

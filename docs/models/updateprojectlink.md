@@ -92,3 +92,18 @@ const value: models.UpdateProjectLink6 = {
 };
 ```
 
+### `models.UpdateProjectLink7`
+
+```typescript
+const value: models.UpdateProjectLink7 = {
+  owner: "<value>",
+  repo: "<value>",
+  repoId: "<id>",
+  ownerId: "<id>",
+  type: "cursor-origin",
+  deployHooks: [],
+  gitCredentialId: "<id>",
+  productionBranch: "<value>",
+};
+```
+

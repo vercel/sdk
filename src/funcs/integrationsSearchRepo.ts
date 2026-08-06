@@ -169,7 +169,7 @@ async function $do(
   >(
     M.json(200, SearchRepoResponseBody$inboundSchema),
     M.fail([400, 401, 403, 404, 410, 429, "4XX"]),
-    M.fail([500, "5XX"]),
+    M.fail([500, 502, "5XX"]),
   )(response, req);
   if (!result.ok) {
     return [result, { status: "complete", request: req, response }];

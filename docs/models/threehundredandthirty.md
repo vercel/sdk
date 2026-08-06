@@ -5,12 +5,11 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndThirty } from "@vercel/sdk/models/twohundredandninetynine.js";
+import { ThreeHundredAndThirty } from "@vercel/sdk/models/removedprojects.js";
 
 let value: ThreeHundredAndThirty = {
   id: "<id>",
   type: "edge-config",
-  locked: true,
 };
 ```
 
@@ -24,5 +23,4 @@ let value: ThreeHundredAndThirty = {
 | `computeUnitsMin`                                                      | *number*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
 | `suspendTimeoutSeconds`                                                | *number*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
 | `type`                                                                 | [models.UserEventPayload330Type](../models/usereventpayload330type.md) | :heavy_check_mark:                                                     | N/A                                                                    |
-| `access`                                                               | [models.PayloadAccess](../models/payloadaccess.md)                     | :heavy_minus_sign:                                                     | N/A                                                                    |
-| `locked`                                                               | *boolean*                                                              | :heavy_check_mark:                                                     | N/A                                                                    |
+| `access`                                                               | [models.Access](../models/access.md)                                   | :heavy_minus_sign:                                                     | N/A                                                                    |

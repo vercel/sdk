@@ -1,6 +1,6 @@
 {
   "name": "@vercel/sdk",
-  "version": "1.28.16",
+  "version": "1.28.17",
   "author": "Speakeasy",
   "license": "Apache-2.0",
   "type": "module",
@@ -29,7 +29,7 @@
     "url": "https://github.com/vercel/sdk.git"
   },
   "scripts": {
-    "lint": "oxlint --max-warnings=0 --deny-warnings src/**/*.ts src/**/*.tsx",
+    "lint": "oxlint --max-warnings=0 --deny-warnings --no-error-on-unmatched-pattern src",
     "build": "tsgo",
     "prepublishOnly": "npm run build"
   },

@@ -35,7 +35,7 @@ export const DangerouslyDeleteBySrcImagesRequestBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DangerouslyDeleteBySrcImagesRequestBody
 > = z.object({
-  revalidationDeadlineSeconds: z.number().optional(),
+  revalidationDeadlineSeconds: z.number().int().optional(),
   srcImages: z.array(z.string()),
 });
 

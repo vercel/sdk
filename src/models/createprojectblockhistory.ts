@@ -467,6 +467,7 @@ export type CreateProjectPermissions = {
   agent?: Array<ACLAction> | undefined;
   aiGatewayApiKey?: Array<ACLAction> | undefined;
   aiGatewayApiKeyOwnedBySelf?: Array<ACLAction> | undefined;
+  aiGatewayApiKeySpendAttribution?: Array<ACLAction> | undefined;
   aiGatewayApiKeyZdrExemption?: Array<ACLAction> | undefined;
   aiGatewayBudget?: Array<ACLAction> | undefined;
   aiGatewayCredits?: Array<ACLAction> | undefined;
@@ -2214,6 +2215,9 @@ export const CreateProjectPermissions$inboundSchema: z.ZodType<
   agent: types.optional(z.array(ACLAction$inboundSchema)),
   aiGatewayApiKey: types.optional(z.array(ACLAction$inboundSchema)),
   aiGatewayApiKeyOwnedBySelf: types.optional(z.array(ACLAction$inboundSchema)),
+  aiGatewayApiKeySpendAttribution: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
   aiGatewayApiKeyZdrExemption: types.optional(z.array(ACLAction$inboundSchema)),
   aiGatewayBudget: types.optional(z.array(ACLAction$inboundSchema)),
   aiGatewayCredits: types.optional(z.array(ACLAction$inboundSchema)),

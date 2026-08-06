@@ -5,15 +5,13 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSeventyNine } from "@vercel/sdk/models/threehundredandsixtyseven.js";
+import { ThreeHundredAndSeventyNine } from "@vercel/sdk/models/usereventpayload372previous.js";
 
-let value: ThreeHundredAndSeventyNine = {
-  username: "Lolita_Haley",
-};
+let value: ThreeHundredAndSeventyNine = {};
 ```
 
 ## Fields
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `username`         | *string*           | :heavy_check_mark: | N/A                |
+| `teamName`         | *string*           | :heavy_minus_sign: | N/A                |

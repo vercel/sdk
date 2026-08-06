@@ -435,6 +435,10 @@ export type AppTokens = {
    */
   scopes?: Array<string> | undefined;
   supportedAuthorizationDetails?: Array<string> | undefined;
+  /**
+   * Link to the page on the service where this client's app-level permissions are declared and granted, when the service has one and it differs from `clientUrl`.
+   */
+  permissionsUrl?: string | undefined;
 };
 
 export type UserTokens = {
@@ -1683,6 +1687,7 @@ export const AppTokens$inboundSchema: z.ZodType<
   requiresReinstallation: types.optional(types.boolean()),
   scopes: types.optional(z.array(types.string())),
   supportedAuthorizationDetails: types.optional(z.array(types.string())),
+  permissionsUrl: types.optional(types.string()),
 });
 
 export function appTokensFromJSON(

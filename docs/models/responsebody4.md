@@ -3,27 +3,20 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBody4 } from "@vercel/sdk/models/getroutesop.js";
+import { ResponseBody4 } from "@vercel/sdk/models/searchrepoop.js";
 
 let value: ResponseBody4 = {
-  routes: [],
-  version: {
-    id: "<id>",
-    s3Key: "<value>",
-    lastModified: 8925.49,
-    createdBy: "<value>",
+  gitAccount: {
+    provider: "github",
+    namespaceId: 3848.91,
   },
-  limit: {
-    maxRoutes: 9173.09,
-    currentRoutes: 3848.91,
-  },
+  repos: [],
 };
 ```
 
 ## Fields
 
-| Field                                                                                                                      | Type                                                                                                                       | Required                                                                                                                   | Description                                                                                                                |
-| -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `routes`                                                                                                                   | [models.GetRoutesResponseBodyProjectRoutesResponseRoutes](../models/getroutesresponsebodyprojectroutesresponseroutes.md)[] | :heavy_check_mark:                                                                                                         | N/A                                                                                                                        |
-| `version`                                                                                                                  | [models.GetRoutesResponseBodyProjectRoutesResponseVersion](../models/getroutesresponsebodyprojectroutesresponseversion.md) | :heavy_check_mark:                                                                                                         | A version of routing rules stored in S3.                                                                                   |
-| `limit`                                                                                                                    | [models.ResponseBodyLimit](../models/responsebodylimit.md)                                                                 | :heavy_check_mark:                                                                                                         | N/A                                                                                                                        |
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `gitAccount`                                                         | [models.ResponseBodyGitAccount](../models/responsebodygitaccount.md) | :heavy_check_mark:                                                   | N/A                                                                  |
+| `repos`                                                              | [models.ResponseBodyRepos](../models/responsebodyrepos.md)[]         | :heavy_check_mark:                                                   | N/A                                                                  |

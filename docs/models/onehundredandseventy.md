@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSeventy } from "@vercel/sdk/models/postgres2.js";
+import { OneHundredAndSeventy } from "@vercel/sdk/models/usereventpayloaddatacache.js";
 
 let value: OneHundredAndSeventy = {
   issuerId: "<id>",
@@ -19,4 +19,4 @@ let value: OneHundredAndSeventy = {
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `issuerId`         | *string*           | :heavy_check_mark: | N/A                |
 | `issuerName`       | *string*           | :heavy_check_mark: | N/A                |
-| `keyId`            | *string*           | :heavy_minus_sign: | N/A                |
+| `managedBy`        | *string*           | :heavy_minus_sign: | N/A                |

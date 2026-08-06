@@ -17,6 +17,7 @@ let value: AccountUpdateContext = {
       workEmail: "<value>",
     },
   ],
+  verifiedEmuDomains: [],
 };
 ```
 
@@ -26,3 +27,4 @@ let value: AccountUpdateContext = {
 | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
 | `organization`                                     | [models.Organization](../models/organization.md)   | :heavy_minus_sign:                                 | N/A                                                |
 | `managedTeams`                                     | [models.ManagedTeams](../models/managedteams.md)[] | :heavy_check_mark:                                 | N/A                                                |
+| `verifiedEmuDomains`                               | *string*[]                                         | :heavy_check_mark:                                 | N/A                                                |

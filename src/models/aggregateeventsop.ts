@@ -289,6 +289,7 @@ export type AggregateEventsData2 = {
   keyName: string;
   authMethod: string;
   appName: string;
+  codingAgent: string;
   isByok: string;
   isPrivateModel: string;
   isRequestZdr: string;
@@ -508,6 +509,7 @@ export type AggregateEventsData1 = {
   keyName?: string | undefined;
   authMethod?: string | undefined;
   appName?: string | undefined;
+  codingAgent?: string | undefined;
   isByok?: string | undefined;
   isPrivateModel?: string | undefined;
   isRequestZdr?: string | undefined;
@@ -879,6 +881,7 @@ export const AggregateEventsData2$inboundSchema: z.ZodType<
     keyName: types.string(),
     authMethod: types.string(),
     appName: types.string(),
+    codingAgent: types.string(),
     isByok: types.string(),
     isPrivateModel: types.string(),
     isRequestZdr: types.string(),
@@ -1115,6 +1118,7 @@ export const AggregateEventsData1$inboundSchema: z.ZodType<
   keyName: types.optional(types.string()),
   authMethod: types.optional(types.string()),
   appName: types.optional(types.string()),
+  codingAgent: types.optional(types.string()),
   isByok: types.optional(types.string()),
   isPrivateModel: types.optional(types.string()),
   isRequestZdr: types.optional(types.string()),

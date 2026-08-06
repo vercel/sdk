@@ -171,23 +171,6 @@ run();
 * [getObservabilitySchema](docs/sdks/vercel/README.md#getobservabilityschema)
 * [getObservabilitySchemaByMetricId](docs/sdks/vercel/README.md#getobservabilityschemabymetricid)
 * [createSpeedInsightsToggle](docs/sdks/vercel/README.md#createspeedinsightstoggle)
-* [getStorageStoresById](docs/sdks/vercel/README.md#getstoragestoresbyid)
-* [createStorageStoresBlob](docs/sdks/vercel/README.md#createstoragestoresblob)
-* [deleteStorageStoresBlobById](docs/sdks/vercel/README.md#deletestoragestoresblobbyid)
-* [getRoot](docs/sdks/vercel/README.md#getroot) - GET /v2/ Docker Registry v2 version check. Returns a 401 challenge when no credentials are provided, prompting the Docker client to send auth. With valid credentials, returns 200 so the client can proceed.
-* [headByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest](docs/sdks/vercel/README.md#headbyteamslugbyprojectslugbyrepositorynameblobsbydigest) - HEAD /v2/:teamSlug/:projectSlug/:repositoryName/blobs/:digest Check whether a blob exists. Used by the Docker client before pushing a layer to avoid re-uploading content that already exists.
-* [getByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest](docs/sdks/vercel/README.md#getbyteamslugbyprojectslugbyrepositorynameblobsbydigest) - GET /v2/:teamSlug/:projectSlug/:repositoryName/blobs/:digest Fetch a blob by digest.
-* [deleteByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest](docs/sdks/vercel/README.md#deletebyteamslugbyprojectslugbyrepositorynameblobsbydigest) - DELETE /v2/:teamSlug/:projectSlug/:repositoryName/blobs/:digest Blob deletion is intentionally not supported. Matches the behaviour of most public registries.
-* [getByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid](docs/sdks/vercel/README.md#getbyteamslugbyprojectslugbyrepositorynameblobsuploadsbyuuid) - GET /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid Query the status of an in-progress blob upload. Used by clients to resume a partial upload after an interruption.
-* [deleteByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid](docs/sdks/vercel/README.md#deletebyteamslugbyprojectslugbyrepositorynameblobsuploadsbyuuid) - DELETE /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid Cancel an in-flight blob upload. Aborts the underlying S3 multipart upload (if one was started) and discards the session.
-* [updateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid](docs/sdks/vercel/README.md#updatebyteamslugbyprojectslugbyrepositorynameblobsuploadsbyuuid) - PATCH /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid Upload a chunk of blob data. The request body is streamed directly to S3 as a multipart upload part while hashing incrementally. The client may call this multiple times for chunked uploads.
-* [replaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid](docs/sdks/vercel/README.md#replacebyteamslugbyprojectslugbyrepositorynameblobsuploadsbyuuid) - PUT /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid?digest=<digest> Complete the blob upload. This may include a final chunk of data in the request body (monolithic upload) or just finalize a previous chunked upload.
-* [createByTeamSlugByProjectSlugByRepositoryNameBlobsUploads](docs/sdks/vercel/README.md#createbyteamslugbyprojectslugbyrepositorynameblobsuploads) - POST /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/[?mount=<digest>&from=<repo>] Initiate a blob upload. Returns a UUID in the Location header that the client uses for subsequent PATCH (chunk) and PUT (complete) requests.
-* [replaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReference](docs/sdks/vercel/README.md#replacebyteamslugbyprojectslugbyrepositorynamemanifestsbyreference) - PUT /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Upload an image manifest. The digest is computed from the body and returned in the Docker-Content-Digest header.
-* [headByTeamSlugByProjectSlugByRepositoryNameManifestsByReference](docs/sdks/vercel/README.md#headbyteamslugbyprojectslugbyrepositorynamemanifestsbyreference) - HEAD /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Check whether a manifest exists. Used by Docker client during push to determine if a manifest (or config blob referenced by digest) is already present.
-* [getByTeamSlugByProjectSlugByRepositoryNameManifestsByReference](docs/sdks/vercel/README.md#getbyteamslugbyprojectslugbyrepositorynamemanifestsbyreference) - GET /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Fetch a manifest by tag or digest.
-* [deleteByTeamSlugByProjectSlugByRepositoryNameManifestsByReference](docs/sdks/vercel/README.md#deletebyteamslugbyprojectslugbyrepositorynamemanifestsbyreference) - DELETE /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Reference must be a digest.
-* [getByTeamSlugByProjectSlugByRepositoryNameTagsList](docs/sdks/vercel/README.md#getbyteamslugbyprojectslugbyrepositorynametagslist) - GET /v2/:teamSlug/:projectSlug/:repositoryName/tags/list List the tags in a repository.
 * [createWebInsightsToggle](docs/sdks/vercel/README.md#createwebinsightstoggle)
 
 ### [AccessGroups](docs/sdks/accessgroups/README.md)
@@ -596,6 +579,12 @@ run();
 
 * [updateStaticIps](docs/sdks/staticips/README.md#updatestaticips) - Configures Static IPs for a project
 
+### [Storage](docs/sdks/storage/README.md)
+
+* [getStorageStoresById](docs/sdks/storage/README.md#getstoragestoresbyid)
+* [createStorageStoresBlob](docs/sdks/storage/README.md#createstoragestoresblob)
+* [deleteStorageStoresBlobById](docs/sdks/storage/README.md#deletestoragestoresblobbyid)
+
 ### [Teams](docs/sdks/teams/README.md)
 
 * [getTeamMembers](docs/sdks/teams/README.md#getteammembers) - List team members
@@ -637,6 +626,20 @@ run();
 * [getRepositoryTag](docs/sdks/vcr/README.md#getrepositorytag) - Get a repository tag
 * [getRepositoryImage](docs/sdks/vcr/README.md#getrepositoryimage) - Get a repository image
 * [deleteRepositoryImage](docs/sdks/vcr/README.md#deleterepositoryimage) - Delete a repository image
+* [getRoot](docs/sdks/vcr/README.md#getroot) - GET /v2/ Docker Registry v2 version check. Returns a 401 challenge when no credentials are provided, prompting the Docker client to send auth. With valid credentials, returns 200 so the client can proceed.
+* [headByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest](docs/sdks/vcr/README.md#headbyteamslugbyprojectslugbyrepositorynameblobsbydigest) - HEAD /v2/:teamSlug/:projectSlug/:repositoryName/blobs/:digest Check whether a blob exists. Used by the Docker client before pushing a layer to avoid re-uploading content that already exists.
+* [getByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest](docs/sdks/vcr/README.md#getbyteamslugbyprojectslugbyrepositorynameblobsbydigest) - GET /v2/:teamSlug/:projectSlug/:repositoryName/blobs/:digest Fetch a blob by digest.
+* [deleteByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest](docs/sdks/vcr/README.md#deletebyteamslugbyprojectslugbyrepositorynameblobsbydigest) - DELETE /v2/:teamSlug/:projectSlug/:repositoryName/blobs/:digest Blob deletion is intentionally not supported. Matches the behaviour of most public registries.
+* [getByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid](docs/sdks/vcr/README.md#getbyteamslugbyprojectslugbyrepositorynameblobsuploadsbyuuid) - GET /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid Query the status of an in-progress blob upload. Used by clients to resume a partial upload after an interruption.
+* [deleteByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid](docs/sdks/vcr/README.md#deletebyteamslugbyprojectslugbyrepositorynameblobsuploadsbyuuid) - DELETE /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid Cancel an in-flight blob upload. Aborts the underlying S3 multipart upload (if one was started) and discards the session.
+* [updateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid](docs/sdks/vcr/README.md#updatebyteamslugbyprojectslugbyrepositorynameblobsuploadsbyuuid) - PATCH /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid Upload a chunk of blob data. The request body is streamed directly to S3 as a multipart upload part while hashing incrementally. The client may call this multiple times for chunked uploads.
+* [replaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid](docs/sdks/vcr/README.md#replacebyteamslugbyprojectslugbyrepositorynameblobsuploadsbyuuid) - PUT /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid?digest=<digest> Complete the blob upload. This may include a final chunk of data in the request body (monolithic upload) or just finalize a previous chunked upload.
+* [createByTeamSlugByProjectSlugByRepositoryNameBlobsUploads](docs/sdks/vcr/README.md#createbyteamslugbyprojectslugbyrepositorynameblobsuploads) - POST /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/[?mount=<digest>&from=<repo>] Initiate a blob upload. Returns a UUID in the Location header that the client uses for subsequent PATCH (chunk) and PUT (complete) requests.
+* [replaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReference](docs/sdks/vcr/README.md#replacebyteamslugbyprojectslugbyrepositorynamemanifestsbyreference) - PUT /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Upload an image manifest. The digest is computed from the body and returned in the Docker-Content-Digest header.
+* [headByTeamSlugByProjectSlugByRepositoryNameManifestsByReference](docs/sdks/vcr/README.md#headbyteamslugbyprojectslugbyrepositorynamemanifestsbyreference) - HEAD /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Check whether a manifest exists. Used by Docker client during push to determine if a manifest (or config blob referenced by digest) is already present.
+* [getByTeamSlugByProjectSlugByRepositoryNameManifestsByReference](docs/sdks/vcr/README.md#getbyteamslugbyprojectslugbyrepositorynamemanifestsbyreference) - GET /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Fetch a manifest by tag or digest.
+* [deleteByTeamSlugByProjectSlugByRepositoryNameManifestsByReference](docs/sdks/vcr/README.md#deletebyteamslugbyprojectslugbyrepositorynamemanifestsbyreference) - DELETE /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Reference must be a digest.
+* [getByTeamSlugByProjectSlugByRepositoryNameTagsList](docs/sdks/vcr/README.md#getbyteamslugbyprojectslugbyrepositorynametagslist) - GET /v2/:teamSlug/:projectSlug/:repositoryName/tags/list List the tags in a repository.
 
 ### [WebAnalytics](docs/sdks/webanalytics/README.md)
 
@@ -729,15 +732,9 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`connectCreateConnectorInstallationRequest`](docs/sdks/connect/README.md#createconnectorinstallationrequest) - Create a Connect installation request
 - [`connectImportConnectorTokens`](docs/sdks/connect/README.md#importconnectortokens) - Import Connect tokens
 - [`createApiKeys`](docs/sdks/vercel/README.md#createapikeys)
-- [`createByTeamSlugByProjectSlugByRepositoryNameBlobsUploads`](docs/sdks/vercel/README.md#createbyteamslugbyprojectslugbyrepositorynameblobsuploads) - POST /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/[?mount=<digest>&from=<repo>] Initiate a blob upload. Returns a UUID in the Location header that the client uses for subsequent PATCH (chunk) and PUT (complete) requests.
 - [`createObservabilityQuery`](docs/sdks/vercel/README.md#createobservabilityquery)
 - [`createSpeedInsightsToggle`](docs/sdks/vercel/README.md#createspeedinsightstoggle)
-- [`createStorageStoresBlob`](docs/sdks/vercel/README.md#createstoragestoresblob)
 - [`createWebInsightsToggle`](docs/sdks/vercel/README.md#createwebinsightstoggle)
-- [`deleteByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest`](docs/sdks/vercel/README.md#deletebyteamslugbyprojectslugbyrepositorynameblobsbydigest) - DELETE /v2/:teamSlug/:projectSlug/:repositoryName/blobs/:digest Blob deletion is intentionally not supported. Matches the behaviour of most public registries.
-- [`deleteByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid`](docs/sdks/vercel/README.md#deletebyteamslugbyprojectslugbyrepositorynameblobsuploadsbyuuid) - DELETE /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid Cancel an in-flight blob upload. Aborts the underlying S3 multipart upload (if one was started) and discards the session.
-- [`deleteByTeamSlugByProjectSlugByRepositoryNameManifestsByReference`](docs/sdks/vercel/README.md#deletebyteamslugbyprojectslugbyrepositorynamemanifestsbyreference) - DELETE /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Reference must be a digest.
-- [`deleteStorageStoresBlobById`](docs/sdks/vercel/README.md#deletestoragestoresblobbyid)
 - [`deploymentsCancelDeployment`](docs/sdks/deployments/README.md#canceldeployment) - Cancel a deployment
 - [`deploymentsCreateDeployment`](docs/sdks/deployments/README.md#createdeployment) - Create a new deployment
 - [`deploymentsDeleteDeployment`](docs/sdks/deployments/README.md#deletedeployment) - Delete a Deployment
@@ -821,15 +818,9 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`featureFlagsUpdateFlag`](docs/sdks/featureflags/README.md#updateflag) - Update a flag
 - [`featureFlagsUpdateFlagSegment`](docs/sdks/featureflags/README.md#updateflagsegment) - Update a segment
 - [`featureFlagsUpdateFlagSettings`](docs/sdks/featureflags/README.md#updateflagsettings) - Update project flag settings
-- [`getByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest`](docs/sdks/vercel/README.md#getbyteamslugbyprojectslugbyrepositorynameblobsbydigest) - GET /v2/:teamSlug/:projectSlug/:repositoryName/blobs/:digest Fetch a blob by digest.
-- [`getByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid`](docs/sdks/vercel/README.md#getbyteamslugbyprojectslugbyrepositorynameblobsuploadsbyuuid) - GET /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid Query the status of an in-progress blob upload. Used by clients to resume a partial upload after an interruption.
-- [`getByTeamSlugByProjectSlugByRepositoryNameManifestsByReference`](docs/sdks/vercel/README.md#getbyteamslugbyprojectslugbyrepositorynamemanifestsbyreference) - GET /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Fetch a manifest by tag or digest.
-- [`getByTeamSlugByProjectSlugByRepositoryNameTagsList`](docs/sdks/vercel/README.md#getbyteamslugbyprojectslugbyrepositorynametagslist) - GET /v2/:teamSlug/:projectSlug/:repositoryName/tags/list List the tags in a repository.
 - [`getDomainsRecordsByRecordId`](docs/sdks/vercel/README.md#getdomainsrecordsbyrecordid)
 - [`getObservabilitySchema`](docs/sdks/vercel/README.md#getobservabilityschema)
 - [`getObservabilitySchemaByMetricId`](docs/sdks/vercel/README.md#getobservabilityschemabymetricid)
-- [`getRoot`](docs/sdks/vercel/README.md#getroot) - GET /v2/ Docker Registry v2 version check. Returns a 401 challenge when no credentials are provided, prompting the Docker client to send auth. With valid credentials, returns 200 so the client can proceed.
-- [`getStorageStoresById`](docs/sdks/vercel/README.md#getstoragestoresbyid)
 - [`globalConfigCreateEdgeConfig`](docs/sdks/globalconfig/README.md#createedgeconfig) - Create a Global Config
 - [`globalConfigCreateEdgeConfigToken`](docs/sdks/globalconfig/README.md#createedgeconfigtoken) - Create a Global Config token
 - [`globalConfigDeleteEdgeConfig`](docs/sdks/globalconfig/README.md#deleteedgeconfig) - Delete a Global Config
@@ -847,8 +838,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`globalConfigPatchEdgeConfigSchema`](docs/sdks/globalconfig/README.md#patchedgeconfigschema) - Update Global Config schema
 - [`globalConfigRestoreEdgeConfigBackup`](docs/sdks/globalconfig/README.md#restoreedgeconfigbackup) - Restore Global Config backup
 - [`globalConfigUpdateEdgeConfig`](docs/sdks/globalconfig/README.md#updateedgeconfig) - Update a Global Config
-- [`headByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest`](docs/sdks/vercel/README.md#headbyteamslugbyprojectslugbyrepositorynameblobsbydigest) - HEAD /v2/:teamSlug/:projectSlug/:repositoryName/blobs/:digest Check whether a blob exists. Used by the Docker client before pushing a layer to avoid re-uploading content that already exists.
-- [`headByTeamSlugByProjectSlugByRepositoryNameManifestsByReference`](docs/sdks/vercel/README.md#headbyteamslugbyprojectslugbyrepositorynamemanifestsbyreference) - HEAD /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Check whether a manifest exists. Used by Docker client during push to determine if a manifest (or config blob referenced by digest) is already present.
 - [`integrationsConnectIntegrationResourceToProject`](docs/sdks/integrations/README.md#connectintegrationresourcetoproject) - Connect integration resource to project
 - [`integrationsCreateIntegrationStoreDirect`](docs/sdks/integrations/README.md#createintegrationstoredirect) - Create integration store (free and paid plans)
 - [`integrationsDeleteConfiguration`](docs/sdks/integrations/README.md#deleteconfiguration) - Delete an integration configuration
@@ -947,8 +936,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`projectsUpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescription`](docs/sdks/projects/README.md#updateprojectsbyprojectidrollbackbydeploymentidupdatedescription) - Updates the description for a rollback
 - [`projectsUploadProjectAvatar`](docs/sdks/projects/README.md#uploadprojectavatar) - Upload a project avatar
 - [`projectsVerifyProjectDomain`](docs/sdks/projects/README.md#verifyprojectdomain) - Verify project domain
-- [`replaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid`](docs/sdks/vercel/README.md#replacebyteamslugbyprojectslugbyrepositorynameblobsuploadsbyuuid) - PUT /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid?digest=<digest> Complete the blob upload. This may include a final chunk of data in the request body (monolithic upload) or just finalize a previous chunked upload.
-- [`replaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReference`](docs/sdks/vercel/README.md#replacebyteamslugbyprojectslugbyrepositorynamemanifestsbyreference) - PUT /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Upload an image manifest. The digest is computed from the body and returned in the Docker-Content-Digest header.
 - [`replaceDomainsByDomainRecords`](docs/sdks/vercel/README.md#replacedomainsbydomainrecords)
 - [`rollingReleaseApproveRollingReleaseStage`](docs/sdks/rollingrelease/README.md#approverollingreleasestage) - Update the active rolling release to the next stage for a project
 - [`rollingReleaseCompleteRollingRelease`](docs/sdks/rollingrelease/README.md#completerollingrelease) - Complete the rolling release for the project
@@ -992,6 +979,9 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`securityRemoveBypassIp`](docs/sdks/security/README.md#removebypassip) - Remove System Bypass Rule
 - [`securityUpdateAttackChallengeMode`](docs/sdks/security/README.md#updateattackchallengemode) - Update Attack Challenge mode
 - [`securityUpdateFirewallConfig`](docs/sdks/security/README.md#updatefirewallconfig) - Update Firewall Configuration
+- [`storageCreateStorageStoresBlob`](docs/sdks/storage/README.md#createstoragestoresblob)
+- [`storageDeleteStorageStoresBlobById`](docs/sdks/storage/README.md#deletestoragestoresblobbyid)
+- [`storageGetStorageStoresById`](docs/sdks/storage/README.md#getstoragestoresbyid)
 - [`teamsCreateTeam`](docs/sdks/teams/README.md#createteam) - Create a Team
 - [`teamsDeleteMicrofrontendsGroup`](docs/sdks/teams/README.md#deletemicrofrontendsgroup) - Delete a microfrontends group
 - [`teamsDeleteTeam`](docs/sdks/teams/README.md#deleteteam) - Delete a Team
@@ -1008,24 +998,37 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`teamsRequestAccessToTeam`](docs/sdks/teams/README.md#requestaccesstoteam) - Request access to a team
 - [`teamsUpdateMicrofrontendsGroup`](docs/sdks/teams/README.md#updatemicrofrontendsgroup) - Update a microfrontends group
 - [`teamsUpdateTeamMember`](docs/sdks/teams/README.md#updateteammember) - Update a Team Member
-- [`updateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid`](docs/sdks/vercel/README.md#updatebyteamslugbyprojectslugbyrepositorynameblobsuploadsbyuuid) - PATCH /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid Upload a chunk of blob data. The request body is streamed directly to S3 as a multipart upload part while hashing incrementally. The client may call this multiple times for chunked uploads.
 - [`userGetAuthUser`](docs/sdks/user/README.md#getauthuser) - Get the User
 - [`userListEventTypes`](docs/sdks/user/README.md#listeventtypes) - List Event Types
 - [`userListUserEvents`](docs/sdks/user/README.md#listuserevents) - List User Events
 - [`userRequestDelete`](docs/sdks/user/README.md#requestdelete) - Delete User Account
 - [`vcrAddRepositoryPermission`](docs/sdks/vcr/README.md#addrepositorypermission) - Add a repository permission
 - [`vcrClearRepositoryPermissions`](docs/sdks/vcr/README.md#clearrepositorypermissions) - Clear all repository permissions
+- [`vcrCreateByTeamSlugByProjectSlugByRepositoryNameBlobsUploads`](docs/sdks/vcr/README.md#createbyteamslugbyprojectslugbyrepositorynameblobsuploads) - POST /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/[?mount=<digest>&from=<repo>] Initiate a blob upload. Returns a UUID in the Location header that the client uses for subsequent PATCH (chunk) and PUT (complete) requests.
 - [`vcrCreateRepository`](docs/sdks/vcr/README.md#createrepository) - Create a repository
+- [`vcrDeleteByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest`](docs/sdks/vcr/README.md#deletebyteamslugbyprojectslugbyrepositorynameblobsbydigest) - DELETE /v2/:teamSlug/:projectSlug/:repositoryName/blobs/:digest Blob deletion is intentionally not supported. Matches the behaviour of most public registries.
+- [`vcrDeleteByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid`](docs/sdks/vcr/README.md#deletebyteamslugbyprojectslugbyrepositorynameblobsuploadsbyuuid) - DELETE /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid Cancel an in-flight blob upload. Aborts the underlying S3 multipart upload (if one was started) and discards the session.
+- [`vcrDeleteByTeamSlugByProjectSlugByRepositoryNameManifestsByReference`](docs/sdks/vcr/README.md#deletebyteamslugbyprojectslugbyrepositorynamemanifestsbyreference) - DELETE /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Reference must be a digest.
 - [`vcrDeleteRepository`](docs/sdks/vcr/README.md#deleterepository) - Delete a repository
 - [`vcrDeleteRepositoryImage`](docs/sdks/vcr/README.md#deleterepositoryimage) - Delete a repository image
+- [`vcrGetByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest`](docs/sdks/vcr/README.md#getbyteamslugbyprojectslugbyrepositorynameblobsbydigest) - GET /v2/:teamSlug/:projectSlug/:repositoryName/blobs/:digest Fetch a blob by digest.
+- [`vcrGetByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid`](docs/sdks/vcr/README.md#getbyteamslugbyprojectslugbyrepositorynameblobsuploadsbyuuid) - GET /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid Query the status of an in-progress blob upload. Used by clients to resume a partial upload after an interruption.
+- [`vcrGetByTeamSlugByProjectSlugByRepositoryNameManifestsByReference`](docs/sdks/vcr/README.md#getbyteamslugbyprojectslugbyrepositorynamemanifestsbyreference) - GET /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Fetch a manifest by tag or digest.
+- [`vcrGetByTeamSlugByProjectSlugByRepositoryNameTagsList`](docs/sdks/vcr/README.md#getbyteamslugbyprojectslugbyrepositorynametagslist) - GET /v2/:teamSlug/:projectSlug/:repositoryName/tags/list List the tags in a repository.
 - [`vcrGetRepository`](docs/sdks/vcr/README.md#getrepository) - Get a repository
 - [`vcrGetRepositoryImage`](docs/sdks/vcr/README.md#getrepositoryimage) - Get a repository image
 - [`vcrGetRepositoryTag`](docs/sdks/vcr/README.md#getrepositorytag) - Get a repository tag
+- [`vcrGetRoot`](docs/sdks/vcr/README.md#getroot) - GET /v2/ Docker Registry v2 version check. Returns a 401 challenge when no credentials are provided, prompting the Docker client to send auth. With valid credentials, returns 200 so the client can proceed.
+- [`vcrHeadByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest`](docs/sdks/vcr/README.md#headbyteamslugbyprojectslugbyrepositorynameblobsbydigest) - HEAD /v2/:teamSlug/:projectSlug/:repositoryName/blobs/:digest Check whether a blob exists. Used by the Docker client before pushing a layer to avoid re-uploading content that already exists.
+- [`vcrHeadByTeamSlugByProjectSlugByRepositoryNameManifestsByReference`](docs/sdks/vcr/README.md#headbyteamslugbyprojectslugbyrepositorynamemanifestsbyreference) - HEAD /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Check whether a manifest exists. Used by Docker client during push to determine if a manifest (or config blob referenced by digest) is already present.
 - [`vcrListRepositories`](docs/sdks/vcr/README.md#listrepositories) - List repositories
 - [`vcrListRepositoryImages`](docs/sdks/vcr/README.md#listrepositoryimages) - List repository images
 - [`vcrListRepositoryPermissions`](docs/sdks/vcr/README.md#listrepositorypermissions) - List repository permissions
 - [`vcrListRepositoryTags`](docs/sdks/vcr/README.md#listrepositorytags) - List repository tags
 - [`vcrRemoveRepositoryPermission`](docs/sdks/vcr/README.md#removerepositorypermission) - Remove a repository permission
+- [`vcrReplaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid`](docs/sdks/vcr/README.md#replacebyteamslugbyprojectslugbyrepositorynameblobsuploadsbyuuid) - PUT /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid?digest=<digest> Complete the blob upload. This may include a final chunk of data in the request body (monolithic upload) or just finalize a previous chunked upload.
+- [`vcrReplaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReference`](docs/sdks/vcr/README.md#replacebyteamslugbyprojectslugbyrepositorynamemanifestsbyreference) - PUT /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Upload an image manifest. The digest is computed from the body and returned in the Docker-Content-Digest header.
+- [`vcrUpdateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid`](docs/sdks/vcr/README.md#updatebyteamslugbyprojectslugbyrepositorynameblobsuploadsbyuuid) - PATCH /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid Upload a chunk of blob data. The request body is streamed directly to S3 as a multipart upload part while hashing incrementally. The client may call this multiple times for chunked uploads.
 - [`webAnalyticsAggregateEvents`](docs/sdks/webanalytics/README.md#aggregateevents) - Aggregates custom events
 - [`webAnalyticsAggregatePageviews`](docs/sdks/webanalytics/README.md#aggregatepageviews) - Aggregates page views
 - [`webAnalyticsCountEvents`](docs/sdks/webanalytics/README.md#countevents) - Counts custom events

@@ -11856,6 +11856,10 @@
                             "type": "string"
                           },
                           "type": "array"
+                        },
+                        "permissionsUrl": {
+                          "type": "string",
+                          "description": "Link to the page on the service where this client's app-level permissions are declared and granted, when the service has one and it differs from `clientUrl`."
                         }
                       },
                       "required": [
@@ -30302,12 +30306,6 @@
                       ]
                     },
                     "type": "array"
-                  },
-                  "gitAccessToken": {
-                    "description": "A read-only GitHub access token scoped to the requested repository. Use a token with a lifetime of 24 hours or less that remains valid until source retrieval completes.",
-                    "maxLength": 1024,
-                    "type": "string",
-                    "writeOnly": true
                   },
                   "gitMetadata": {
                     "description": "Populates initial git metadata for different git providers.",
@@ -52028,7 +52026,8 @@
                 "properties": {
                   "revalidationDeadlineSeconds": {
                     "minimum": 0,
-                    "type": "number"
+                    "maximum": 31536000,
+                    "type": "integer"
                   },
                   "tags": {
                     "oneOf": [
@@ -52227,7 +52226,8 @@
                 "properties": {
                   "revalidationDeadlineSeconds": {
                     "minimum": 0,
-                    "type": "number"
+                    "maximum": 31536000,
+                    "type": "integer"
                   },
                   "srcImages": {
                     "items": {
@@ -64579,6 +64579,133 @@
                     },
                     {
                       "properties": {
+                        "error": {
+                          "properties": {
+                            "code": {
+                              "type": "string",
+                              "enum": [
+                                "installation_not_found"
+                              ]
+                            },
+                            "message": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "code",
+                            "message"
+                          ],
+                          "type": "object"
+                        }
+                      },
+                      "required": [
+                        "error"
+                      ],
+                      "type": "object"
+                    },
+                    {
+                      "properties": {
+                        "gitAccount": {
+                          "properties": {
+                            "provider": {
+                              "type": "string"
+                            },
+                            "namespaceId": {
+                              "nullable": true,
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "namespaceId",
+                            "provider"
+                          ],
+                          "type": "object"
+                        },
+                        "repos": {
+                          "items": {
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "provider": {
+                                "type": "string",
+                                "enum": [
+                                  "cursor-origin"
+                                ]
+                              },
+                              "url": {
+                                "type": "string"
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "slug": {
+                                "type": "string"
+                              },
+                              "namespace": {
+                                "type": "string"
+                              },
+                              "ownerType": {
+                                "type": "string",
+                                "enum": [
+                                  "team"
+                                ]
+                              },
+                              "owner": {
+                                "properties": {
+                                  "id": {
+                                    "type": "string"
+                                  },
+                                  "name": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "name"
+                                ],
+                                "type": "object"
+                              },
+                              "private": {
+                                "type": "boolean",
+                                "enum": [
+                                  false,
+                                  true
+                                ]
+                              },
+                              "defaultBranch": {
+                                "type": "string"
+                              },
+                              "updatedAt": {
+                                "type": "number"
+                              }
+                            },
+                            "required": [
+                              "defaultBranch",
+                              "id",
+                              "name",
+                              "namespace",
+                              "owner",
+                              "ownerType",
+                              "private",
+                              "provider",
+                              "slug",
+                              "updatedAt",
+                              "url"
+                            ],
+                            "type": "object"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "required": [
+                        "gitAccount",
+                        "repos"
+                      ],
+                      "type": "object"
+                    },
+                    {
+                      "properties": {
                         "gitAccount": {
                           "properties": {
                             "provider": {
@@ -64738,6 +64865,9 @@
           },
           "500": {
             "description": ""
+          },
+          "502": {
+            "description": ""
           }
         },
         "parameters": [
@@ -64772,7 +64902,8 @@
                 "github-limited",
                 "github-custom-host",
                 "gitlab",
-                "bitbucket"
+                "bitbucket",
+                "cursor-origin"
               ]
             }
           },
@@ -78319,6 +78450,12 @@
                                 },
                                 "type": "array"
                               },
+                              "aiGatewayApiKeySpendAttribution": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
                               "aiGatewayApiKeyZdrExemption": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
@@ -87248,7 +87385,13 @@
           "404": {
             "description": ""
           },
+          "409": {
+            "description": ""
+          },
           "410": {
+            "description": ""
+          },
+          "500": {
             "description": ""
           }
         },
@@ -102078,6 +102221,12 @@
                                     },
                                     "type": "array"
                                   },
+                                  "aiGatewayApiKeySpendAttribution": {
+                                    "items": {
+                                      "$ref": "#/components/schemas/ACLAction"
+                                    },
+                                    "type": "array"
+                                  },
                                   "aiGatewayApiKeyZdrExemption": {
                                     "items": {
                                       "$ref": "#/components/schemas/ACLAction"
@@ -110077,6 +110226,12 @@
                           "type": "array"
                         },
                         "aiGatewayApiKeyOwnedBySelf": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "aiGatewayApiKeySpendAttribution": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -118248,6 +118403,12 @@
                           },
                           "type": "array"
                         },
+                        "aiGatewayApiKeySpendAttribution": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "aiGatewayApiKeyZdrExemption": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -125768,6 +125929,12 @@
                           "type": "array"
                         },
                         "aiGatewayApiKeyOwnedBySelf": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "aiGatewayApiKeySpendAttribution": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -134557,6 +134724,12 @@
                           "type": "array"
                         },
                         "aiGatewayApiKeyOwnedBySelf": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "aiGatewayApiKeySpendAttribution": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -154759,6 +154932,12 @@
                           "type": "array"
                         },
                         "aiGatewayApiKeyOwnedBySelf": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "aiGatewayApiKeySpendAttribution": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -176723,7 +176902,9 @@
         "description": "",
         "operationId": "getStorageStoresById",
         "security": [],
-        "tags": [],
+        "tags": [
+          "storage"
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -177043,7 +177224,9 @@
         "description": "",
         "operationId": "createStorageStoresBlob",
         "security": [],
-        "tags": [],
+        "tags": [
+          "storage"
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -177464,7 +177647,9 @@
         "description": "",
         "operationId": "deleteStorageStoresBlobById",
         "security": [],
-        "tags": [],
+        "tags": [
+          "storage"
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -186934,7 +187119,9 @@
         "description": "GET /v2/ Docker Registry v2 version check. Returns a 401 challenge when no credentials are provided, prompting the Docker client to send auth. With valid credentials, returns 200 so the client can proceed.",
         "operationId": "getRoot",
         "security": [],
-        "tags": [],
+        "tags": [
+          "vcr"
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -186973,7 +187160,9 @@
         "description": "HEAD /v2/:teamSlug/:projectSlug/:repositoryName/blobs/:digest Check whether a blob exists. Used by the Docker client before pushing a layer to avoid re-uploading content that already exists.",
         "operationId": "headByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest",
         "security": [],
-        "tags": [],
+        "tags": [
+          "vcr"
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -187063,7 +187252,9 @@
         "description": "GET /v2/:teamSlug/:projectSlug/:repositoryName/blobs/:digest Fetch a blob by digest.",
         "operationId": "getByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest",
         "security": [],
-        "tags": [],
+        "tags": [
+          "vcr"
+        ],
         "responses": {
           "400": {
             "description": "One of the provided values in the request query is invalid."
@@ -187146,7 +187337,9 @@
         "description": "DELETE /v2/:teamSlug/:projectSlug/:repositoryName/blobs/:digest Blob deletion is intentionally not supported. Matches the behaviour of most public registries.",
         "operationId": "deleteByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest",
         "security": [],
-        "tags": [],
+        "tags": [
+          "vcr"
+        ],
         "responses": {
           "400": {
             "description": "One of the provided values in the request query is invalid."
@@ -187231,7 +187424,9 @@
         "description": "GET /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid Query the status of an in-progress blob upload. Used by clients to resume a partial upload after an interruption.",
         "operationId": "getByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid",
         "security": [],
-        "tags": [],
+        "tags": [
+          "vcr"
+        ],
         "responses": {
           "204": {
             "description": "",
@@ -187321,7 +187516,9 @@
         "description": "DELETE /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid Cancel an in-flight blob upload. Aborts the underlying S3 multipart upload (if one was started) and discards the session.",
         "operationId": "deleteByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid",
         "security": [],
-        "tags": [],
+        "tags": [
+          "vcr"
+        ],
         "responses": {
           "204": {
             "description": "",
@@ -187411,7 +187608,9 @@
         "description": "PATCH /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid Upload a chunk of blob data. The request body is streamed directly to S3 as a multipart upload part while hashing incrementally. The client may call this multiple times for chunked uploads.",
         "operationId": "updateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid",
         "security": [],
-        "tags": [],
+        "tags": [
+          "vcr"
+        ],
         "responses": {
           "202": {
             "description": "",
@@ -187504,7 +187703,9 @@
         "description": "PUT /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid?digest=<digest> Complete the blob upload. This may include a final chunk of data in the request body (monolithic upload) or just finalize a previous chunked upload.",
         "operationId": "replaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid",
         "security": [],
-        "tags": [],
+        "tags": [
+          "vcr"
+        ],
         "responses": {
           "201": {
             "description": "",
@@ -187612,7 +187813,9 @@
         "description": "POST /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/[?mount=<digest>&from=<repo>] Initiate a blob upload. Returns a UUID in the Location header that the client uses for subsequent PATCH (chunk) and PUT (complete) requests.",
         "operationId": "createByTeamSlugByProjectSlugByRepositoryNameBlobsUploads",
         "security": [],
-        "tags": [],
+        "tags": [
+          "vcr"
+        ],
         "responses": {
           "202": {
             "description": "",
@@ -187715,7 +187918,9 @@
         "description": "PUT /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Upload an image manifest. The digest is computed from the body and returned in the Docker-Content-Digest header.",
         "operationId": "replaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReference",
         "security": [],
-        "tags": [],
+        "tags": [
+          "vcr"
+        ],
         "responses": {
           "201": {
             "description": "",
@@ -187808,7 +188013,9 @@
         "description": "HEAD /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Check whether a manifest exists. Used by Docker client during push to determine if a manifest (or config blob referenced by digest) is already present.",
         "operationId": "headByTeamSlugByProjectSlugByRepositoryNameManifestsByReference",
         "security": [],
-        "tags": [],
+        "tags": [
+          "vcr"
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -187898,7 +188105,9 @@
         "description": "GET /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Fetch a manifest by tag or digest.",
         "operationId": "getByTeamSlugByProjectSlugByRepositoryNameManifestsByReference",
         "security": [],
-        "tags": [],
+        "tags": [
+          "vcr"
+        ],
         "responses": {
           "400": {
             "description": "One of the provided values in the request query is invalid."
@@ -187978,7 +188187,9 @@
         "description": "DELETE /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Reference must be a digest.",
         "operationId": "deleteByTeamSlugByProjectSlugByRepositoryNameManifestsByReference",
         "security": [],
-        "tags": [],
+        "tags": [
+          "vcr"
+        ],
         "responses": {
           "202": {
             "description": "",
@@ -188070,7 +188281,9 @@
         "description": "GET /v2/:teamSlug/:projectSlug/:repositoryName/tags/list List the tags in a repository.",
         "operationId": "getByTeamSlugByProjectSlugByRepositoryNameTagsList",
         "security": [],
-        "tags": [],
+        "tags": [
+          "vcr"
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -188727,6 +188940,9 @@
                                 "type": "string"
                               },
                               "appName": {
+                                "type": "string"
+                              },
+                              "codingAgent": {
                                 "type": "string"
                               },
                               "isByok": {
@@ -189389,6 +189605,9 @@
                               "appName": {
                                 "type": "string"
                               },
+                              "codingAgent": {
+                                "type": "string"
+                              },
                               "isByok": {
                                 "type": "string"
                               },
@@ -189674,6 +189893,7 @@
                               "clientIpCountry",
                               "clientJa4Digest",
                               "clientUserAgent",
+                              "codingAgent",
                               "commitSha",
                               "consumerGroup",
                               "contentCaptureInputs",
@@ -190513,6 +190733,9 @@
                               "appName": {
                                 "type": "string"
                               },
+                              "codingAgent": {
+                                "type": "string"
+                              },
                               "isByok": {
                                 "type": "string"
                               },
@@ -191173,6 +191396,9 @@
                               "appName": {
                                 "type": "string"
                               },
+                              "codingAgent": {
+                                "type": "string"
+                              },
                               "isByok": {
                                 "type": "string"
                               },
@@ -191458,6 +191684,7 @@
                               "clientIpCountry",
                               "clientJa4Digest",
                               "clientUserAgent",
+                              "codingAgent",
                               "commitSha",
                               "consumerGroup",
                               "contentCaptureInputs",
@@ -192261,6 +192488,9 @@
                         "appName": {
                           "type": "string"
                         },
+                        "codingAgent": {
+                          "type": "string"
+                        },
                         "isByok": {
                           "type": "string"
                         },
@@ -192546,6 +192776,7 @@
                         "clientIpCountry",
                         "clientJa4Digest",
                         "clientUserAgent",
+                        "codingAgent",
                         "commitSha",
                         "consumerGroup",
                         "contentCaptureInputs",
@@ -193280,6 +193511,9 @@
                         "appName": {
                           "type": "string"
                         },
+                        "codingAgent": {
+                          "type": "string"
+                        },
                         "isByok": {
                           "type": "string"
                         },
@@ -193565,6 +193799,7 @@
                         "clientIpCountry",
                         "clientJa4Digest",
                         "clientUserAgent",
+                        "codingAgent",
                         "commitSha",
                         "consumerGroup",
                         "contentCaptureInputs",
@@ -200537,6 +200772,11 @@
               "ai-gateway-rule-deleted",
               "ai-gateway-rule-updated",
               "ai-gateway-scope-budget-updated",
+              "ai-gateway-transcripts-default-disabled",
+              "ai-gateway-transcripts-default-enabled",
+              "ai-gateway-transcripts-disabled",
+              "ai-gateway-transcripts-enabled",
+              "ai-gateway-transcripts-retention-updated",
               "ai-gateway-virtual-model-config-archived",
               "ai-gateway-virtual-model-config-created",
               "ai-gateway-virtual-model-config-restored",
@@ -200933,6 +201173,8 @@
               "protected-git-scope-added",
               "protected-git-scope-removed",
               "runtime-cache-purge-all",
+              "saml-connection-created",
+              "saml-connection-deleted",
               "sandbox-alias-assigned",
               "sandbox-alias-delete",
               "sandbox-snapshot-regions-updated",
@@ -200965,6 +201207,7 @@
               "spend-created",
               "spend-deleted",
               "spend-updated",
+              "sso-login",
               "storage-accept-tos",
               "storage-access-token-set",
               "storage-accessed-data-browser",
@@ -200991,6 +201234,7 @@
               "subscription-product-added",
               "subscription-product-removed",
               "subscription-updated",
+              "support-session-created",
               "team",
               "team-agent-billing-migration-decision-changed",
               "team-avatar-update",
@@ -201041,11 +201285,17 @@
               "tracing-configured",
               "tracing-disabled",
               "unlink-login-connection",
+              "update-account-flow-dismissed",
               "update-account-flow-triggered",
+              "user-auto-block-configured",
+              "user-blocked",
               "user-delete",
               "user-emu-account-archived",
               "user-emu-account-deleted",
               "user-emu-account-recovered",
+              "user-emu-recovery-email-sent",
+              "user-emu-recovery-initiated",
+              "user-emu-toggled",
               "user-mfa-challenge-failed",
               "user-mfa-challenge-verified",
               "user-mfa-change-failed",
@@ -201056,10 +201306,14 @@
               "user-mfa-setup-skipped",
               "user-mfa-totp-verification-started",
               "user-mfa-totp-verified",
+              "user-phone-removed",
+              "user-phone-updated",
               "user-primary-email-updated",
+              "user-sudo-mode-removed",
               "user-token-created",
               "user-token-deleted",
               "user-tokens-deleted",
+              "user-unblocked",
               "username",
               "v0-chat-ai-usage",
               "v0-chat-created",
@@ -202147,6 +202401,44 @@
               },
               {
                 "properties": {
+                  "retention": {
+                    "properties": {
+                      "defaultMode": {
+                        "type": "string",
+                        "enum": [
+                          "days",
+                          "until-requested"
+                        ]
+                      },
+                      "defaultDays": {
+                        "type": "number"
+                      },
+                      "ceilingMode": {
+                        "type": "string",
+                        "enum": [
+                          "days",
+                          "until-requested"
+                        ]
+                      },
+                      "ceilingDays": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "ceilingMode",
+                      "defaultMode"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "retention"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
                   "rule": {
                     "properties": {
                       "id": {
@@ -202251,8 +202543,7 @@
                       }
                     },
                     "required": [
-                      "id",
-                      "modelSlug"
+                      "id"
                     ],
                     "type": "object"
                   }
@@ -218206,6 +218497,22 @@
               },
               {
                 "properties": {
+                  "connectionId": {
+                    "type": "string"
+                  },
+                  "connectionType": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "connectionId",
+                  "connectionType"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
                   "alias": {
                     "type": "string"
                   },
@@ -219351,6 +219658,31 @@
                   "locked",
                   "type"
                 ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "actorId": {
+                    "type": "string"
+                  },
+                  "actorType": {
+                    "type": "string",
+                    "enum": [
+                      "admin",
+                      "user"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "caseNumber": {
+                    "type": "string"
+                  },
+                  "client": {
+                    "type": "string"
+                  }
+                },
                 "type": "object",
                 "description": "The payload of the event, if requested."
               },
@@ -220838,6 +221170,107 @@
                 },
                 "required": [
                   "username"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "actorId": {
+                    "type": "string"
+                  },
+                  "actorType": {
+                    "type": "string",
+                    "enum": [
+                      "admin"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "actorId",
+                  "actorType"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "actorId": {
+                    "type": "string"
+                  },
+                  "actorType": {
+                    "type": "string",
+                    "enum": [
+                      "admin"
+                    ]
+                  }
+                },
+                "required": [
+                  "actorId",
+                  "actorType"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "enum": [
+                      false,
+                      true
+                    ]
+                  },
+                  "actorId": {
+                    "type": "string"
+                  },
+                  "actorType": {
+                    "type": "string",
+                    "enum": [
+                      "admin"
+                    ]
+                  }
+                },
+                "required": [
+                  "actorId",
+                  "actorType",
+                  "enabled"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "autoBlockPrevented": {
+                    "type": "boolean",
+                    "enum": [
+                      false,
+                      true
+                    ]
+                  },
+                  "preventUntil": {
+                    "type": "number"
+                  },
+                  "actorId": {
+                    "type": "string"
+                  },
+                  "actorType": {
+                    "type": "string",
+                    "enum": [
+                      "admin"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "actorId",
+                  "actorType",
+                  "autoBlockPrevented"
                 ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
@@ -222687,6 +223120,11 @@
               "ai-gateway-rule-deleted",
               "ai-gateway-rule-updated",
               "ai-gateway-scope-budget-updated",
+              "ai-gateway-transcripts-default-disabled",
+              "ai-gateway-transcripts-default-enabled",
+              "ai-gateway-transcripts-disabled",
+              "ai-gateway-transcripts-enabled",
+              "ai-gateway-transcripts-retention-updated",
               "ai-gateway-virtual-model-config-archived",
               "ai-gateway-virtual-model-config-created",
               "ai-gateway-virtual-model-config-restored",
@@ -223083,6 +223521,8 @@
               "protected-git-scope-added",
               "protected-git-scope-removed",
               "runtime-cache-purge-all",
+              "saml-connection-created",
+              "saml-connection-deleted",
               "sandbox-alias-assigned",
               "sandbox-alias-delete",
               "sandbox-snapshot-regions-updated",
@@ -223115,6 +223555,7 @@
               "spend-created",
               "spend-deleted",
               "spend-updated",
+              "sso-login",
               "storage-accept-tos",
               "storage-access-token-set",
               "storage-accessed-data-browser",
@@ -223141,6 +223582,7 @@
               "subscription-product-added",
               "subscription-product-removed",
               "subscription-updated",
+              "support-session-created",
               "team",
               "team-agent-billing-migration-decision-changed",
               "team-avatar-update",
@@ -223191,11 +223633,17 @@
               "tracing-configured",
               "tracing-disabled",
               "unlink-login-connection",
+              "update-account-flow-dismissed",
               "update-account-flow-triggered",
+              "user-auto-block-configured",
+              "user-blocked",
               "user-delete",
               "user-emu-account-archived",
               "user-emu-account-deleted",
               "user-emu-account-recovered",
+              "user-emu-recovery-email-sent",
+              "user-emu-recovery-initiated",
+              "user-emu-toggled",
               "user-mfa-challenge-failed",
               "user-mfa-challenge-verified",
               "user-mfa-change-failed",
@@ -223206,10 +223654,14 @@
               "user-mfa-setup-skipped",
               "user-mfa-totp-verification-started",
               "user-mfa-totp-verified",
+              "user-phone-removed",
+              "user-phone-updated",
               "user-primary-email-updated",
+              "user-sudo-mode-removed",
               "user-token-created",
               "user-token-deleted",
               "user-tokens-deleted",
+              "user-unblocked",
               "username",
               "v0-chat-ai-usage",
               "v0-chat-created",
@@ -223339,6 +223791,11 @@
                 "ai-gateway-rule-deleted",
                 "ai-gateway-rule-updated",
                 "ai-gateway-scope-budget-updated",
+                "ai-gateway-transcripts-default-disabled",
+                "ai-gateway-transcripts-default-enabled",
+                "ai-gateway-transcripts-disabled",
+                "ai-gateway-transcripts-enabled",
+                "ai-gateway-transcripts-retention-updated",
                 "ai-gateway-virtual-model-config-archived",
                 "ai-gateway-virtual-model-config-created",
                 "ai-gateway-virtual-model-config-restored",
@@ -223735,6 +224192,8 @@
                 "protected-git-scope-added",
                 "protected-git-scope-removed",
                 "runtime-cache-purge-all",
+                "saml-connection-created",
+                "saml-connection-deleted",
                 "sandbox-alias-assigned",
                 "sandbox-alias-delete",
                 "sandbox-snapshot-regions-updated",
@@ -223767,6 +224226,7 @@
                 "spend-created",
                 "spend-deleted",
                 "spend-updated",
+                "sso-login",
                 "storage-accept-tos",
                 "storage-access-token-set",
                 "storage-accessed-data-browser",
@@ -223793,6 +224253,7 @@
                 "subscription-product-added",
                 "subscription-product-removed",
                 "subscription-updated",
+                "support-session-created",
                 "team",
                 "team-agent-billing-migration-decision-changed",
                 "team-avatar-update",
@@ -223843,11 +224304,17 @@
                 "tracing-configured",
                 "tracing-disabled",
                 "unlink-login-connection",
+                "update-account-flow-dismissed",
                 "update-account-flow-triggered",
+                "user-auto-block-configured",
+                "user-blocked",
                 "user-delete",
                 "user-emu-account-archived",
                 "user-emu-account-deleted",
                 "user-emu-account-recovered",
+                "user-emu-recovery-email-sent",
+                "user-emu-recovery-initiated",
+                "user-emu-toggled",
                 "user-mfa-challenge-failed",
                 "user-mfa-challenge-verified",
                 "user-mfa-change-failed",
@@ -223858,10 +224325,14 @@
                 "user-mfa-setup-skipped",
                 "user-mfa-totp-verification-started",
                 "user-mfa-totp-verified",
+                "user-phone-removed",
+                "user-phone-updated",
                 "user-primary-email-updated",
+                "user-sudo-mode-removed",
                 "user-token-created",
                 "user-token-deleted",
                 "user-tokens-deleted",
+                "user-unblocked",
                 "username",
                 "v0-chat-ai-usage",
                 "v0-chat-created",
@@ -225451,7 +225922,7 @@
             "$ref": "#/components/schemas/APIKeyQuota"
           },
           "metadata": {
-            "description": "Generic metadata attached to the API key.\n\nThe accepted shape depends on the key's `purpose` and is validated when the key is created. For `ai-gateway` keys this carries `environment`.",
+            "description": "Generic metadata attached to the API key.\n\nThe accepted shape depends on the key's `purpose` and is validated when the key is created. For `ai-gateway` keys this carries `environment` and `spendAttribution`.",
             "type": "object",
             "patternProperties": {
               "^(.*)$": {}
@@ -228655,10 +229126,17 @@
                   "type": "object"
                 },
                 "type": "array"
+              },
+              "verifiedEmuDomains": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
               }
             },
             "required": [
-              "managedTeams"
+              "managedTeams",
+              "verifiedEmuDomains"
             ],
             "type": "object",
             "description": "Context for the Update Account screen. Present only when `isAccountUpdateRequired` is true. `managedTeams` is empty for orphan mode (user matches an EMU domain but is not on the team)."

@@ -90,6 +90,14 @@ let value: UpdateMicrofrontendsResponseBody = {
       },
     ],
     canaryResponseHeader: false,
+    gate: {
+      enabled: true,
+      checks: [],
+      failureThreshold: 3,
+      windowSize: 5,
+      action: "pause",
+      dryRun: false,
+    },
   },
   defaultResourceConfig: {
     functionDefaultRegions: [

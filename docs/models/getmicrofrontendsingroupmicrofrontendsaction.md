@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupMicrofrontendsAction } from "@vercel/sdk/models/getmicrofrontendsingroupvalue.js";
+import { GetMicrofrontendsInGroupMicrofrontendsAction } from "@vercel/sdk/models/getmicrofrontendsingroupaction.js";
 
-let value: GetMicrofrontendsInGroupMicrofrontendsAction = "blocked";
+let value: GetMicrofrontendsInGroupMicrofrontendsAction = "rate_limit";
 ```
 
 ## Values
 
 ```typescript
-"blocked"
+"allow" | "bypass" | "challenge" | "deny" | "log" | "rate_limit" | "redirect"
 ```

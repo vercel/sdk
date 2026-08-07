@@ -18,8 +18,8 @@ import { deploymentsUploadFile } from "../funcs/deploymentsUploadFile.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import { CancelDeploymentResponseBody } from "../models/canceldeploymentresponsebody.js";
 import { CancelDeploymentRequest } from "../models/canceldeploymentservicesdeploymentsmaxduration.js";
+import { CreateDeploymentRequest } from "../models/createdeploymentmissingdeploymentstype.js";
 import { CreateDeploymentResponseBody } from "../models/createdeploymentresponsebody.js";
-import { CreateDeploymentRequest } from "../models/createdeploymentvaluedeploymentsresponse2002.js";
 import {
   DeleteDeploymentRequest,
   DeleteDeploymentResponseBody,

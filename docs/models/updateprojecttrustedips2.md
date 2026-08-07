@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateProjectTrustedIps2 } from "@vercel/sdk/models/updateprojectmanagedrules.js";
+import { UpdateProjectTrustedIps2 } from "@vercel/sdk/models/updateprojectprojectsresponse200applicationjsonresponsebodysecurityaction.js";
 
 let value: UpdateProjectTrustedIps2 = {
   deploymentType: "all_except_custom_domains",

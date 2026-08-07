@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarDefaultResourceConfig } from "@vercel/sdk/models/uploadprojectavatarstaticips.js";
+import { UploadProjectAvatarDefaultResourceConfig } from "@vercel/sdk/models/uploadprojectavatarvaluepreviousvalue.js";
 
 let value: UploadProjectAvatarDefaultResourceConfig = {
   functionDefaultRegions: [

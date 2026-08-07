@@ -5,20 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndThirtyTwo } from "@vercel/sdk/models/twohundredandninetynine.js";
+import { ThreeHundredAndThirtyTwo } from "@vercel/sdk/models/removedprojects.js";
 
 let value: ThreeHundredAndThirtyTwo = {
-  next: {
-    enabled: true,
-    scope: "private",
-    includeDrafts: false,
+  store: {
+    name: "<value>",
+    id: "<id>",
   },
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `previous`                                                                     | [models.UserEventPayload332Previous](../models/usereventpayload332previous.md) | :heavy_minus_sign:                                                             | Automatic code review settings                                                 |
-| `next`                                                                         | [models.UserEventPayload332Next](../models/usereventpayload332next.md)         | :heavy_check_mark:                                                             | Automatic code review settings                                                 |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `store`                                                                  | [models.UserEventPayload332Store](../models/usereventpayload332store.md) | :heavy_check_mark:                                                       | N/A                                                                      |
+| `ownerId`                                                                | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |

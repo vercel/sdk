@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupConfiguration } from "@vercel/sdk/models/getmicrofrontendsingroupstaticips.js";
+import { GetMicrofrontendsInGroupConfiguration } from "@vercel/sdk/models/getmicrofrontendsingroupbuildmachineelasticreason.js";
 
 let value: GetMicrofrontendsInGroupConfiguration = "SKIP_NAMESPACE_QUEUE";
 ```

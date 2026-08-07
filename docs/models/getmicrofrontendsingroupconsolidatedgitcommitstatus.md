@@ -5,7 +5,7 @@ Configuration for consolidated git commit status reporting. When enabled, Vercel
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupConsolidatedGitCommitStatus } from "@vercel/sdk/models/getmicrofrontendsingroupvalue.js";
+import { GetMicrofrontendsInGroupConsolidatedGitCommitStatus } from "@vercel/sdk/models/getmicrofrontendsingroupaction.js";
 
 let value: GetMicrofrontendsInGroupConsolidatedGitCommitStatus = {
   enabled: false,

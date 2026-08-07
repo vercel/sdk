@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarProjectsResponse200BranchMatcher } from "@vercel/sdk/models/uploadprojectavatarstaticips.js";
+import { UploadProjectAvatarProjectsResponse200BranchMatcher } from "@vercel/sdk/models/uploadprojectavatarprojectsbuildmachineelasticreason.js";
 
 let value: UploadProjectAvatarProjectsResponse200BranchMatcher = {
   type: "equals",

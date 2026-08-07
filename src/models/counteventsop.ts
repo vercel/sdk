@@ -219,6 +219,7 @@ export type CountEventsData = {
   keyName: string;
   authMethod: string;
   appName: string;
+  codingAgent: string;
   isByok: string;
   isPrivateModel: string;
   isRequestZdr: string;
@@ -539,6 +540,7 @@ export const CountEventsData$inboundSchema: z.ZodType<
     keyName: types.string(),
     authMethod: types.string(),
     appName: types.string(),
+    codingAgent: types.string(),
     isByok: types.string(),
     isPrivateModel: types.string(),
     isRequestZdr: types.string(),

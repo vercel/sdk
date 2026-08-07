@@ -5,7 +5,7 @@ Similar to `contentHints`, but should not be exposed to the user.
 ## Example Usage
 
 ```typescript
-import { GetProjectInternalContentHint } from "@vercel/sdk/models/getprojectprojectsbuildqueue.js";
+import { GetProjectInternalContentHint } from "@vercel/sdk/models/getprojectprojectsbuildmachinetype.js";
 
 let value: GetProjectInternalContentHint = {
   type: "flags-secret",

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Teams } from "@vercel/sdk/models/postgres2.js";
+import { Teams } from "@vercel/sdk/models/usereventpayloaddatacache.js";
 
 let value: Teams = {
   teamId: "<id>",
@@ -21,7 +21,7 @@ let value: Teams = {
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
 | `teamId`                                                                     | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
 | `createdAt`                                                                  | *number*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
-| `role`                                                                       | [models.UserEventPayload155Role](../models/usereventpayload155role.md)       | :heavy_check_mark:                                                           | N/A                                                                          |
+| `role`                                                                       | [models.UserEventPayload157Role](../models/usereventpayload157role.md)       | :heavy_check_mark:                                                           | N/A                                                                          |
 | `confirmed`                                                                  | *true*                                                                       | :heavy_check_mark:                                                           | N/A                                                                          |
 | `confirmedAt`                                                                | *number*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
 | `accessRequestedAt`                                                          | *number*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |

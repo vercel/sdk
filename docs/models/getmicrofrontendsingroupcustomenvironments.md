@@ -5,7 +5,7 @@ Internal representation of a custom environment with all required properties
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupCustomEnvironments } from "@vercel/sdk/models/getmicrofrontendsingroupstaticips.js";
+import { GetMicrofrontendsInGroupCustomEnvironments } from "@vercel/sdk/models/getmicrofrontendsingroupbuildmachineelasticreason.js";
 
 let value: GetMicrofrontendsInGroupCustomEnvironments = {
   id: "<id>",

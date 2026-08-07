@@ -5,17 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSeventyNine } from "@vercel/sdk/models/envid2.js";
+import { TwoHundredAndSeventyNine } from "@vercel/sdk/models/twohundredandfortyone.js";
 
 let value: TwoHundredAndSeventyNine = {
-  projectId: "<id>",
-  expiresAt: 9257.12,
+  passwordProtection: {
+    deploymentType: "all_except_custom_domains",
+  },
+  oldPasswordProtection: "all_except_custom_domains",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `expiresAt`        | *number*           | :heavy_check_mark: | N/A                |
+| Field                              | Type                               | Required                           | Description                        |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| `projectId`                        | *string*                           | :heavy_minus_sign:                 | N/A                                |
+| `projectName`                      | *string*                           | :heavy_minus_sign:                 | N/A                                |
+| `passwordProtection`               | *models.PayloadPasswordProtection* | :heavy_check_mark:                 | N/A                                |
+| `oldPasswordProtection`            | *models.OldPasswordProtection*     | :heavy_check_mark:                 | N/A                                |

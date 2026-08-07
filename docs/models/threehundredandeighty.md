@@ -5,17 +5,13 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndEighty } from "@vercel/sdk/models/threehundredandsixtyseven.js";
+import { ThreeHundredAndEighty } from "@vercel/sdk/models/usereventpayload373previous.js";
 
-let value: ThreeHundredAndEighty = {
-  method: "recovery-code",
-  reason: "<value>",
-};
+let value: ThreeHundredAndEighty = {};
 ```
 
 ## Fields
 
-| Field                                | Type                                 | Required                             | Description                          |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `method`                             | [models.Method](../models/method.md) | :heavy_check_mark:                   | N/A                                  |
-| `reason`                             | *string*                             | :heavy_check_mark:                   | N/A                                  |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `teamName`         | *string*           | :heavy_minus_sign: | N/A                |

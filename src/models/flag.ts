@@ -250,7 +250,7 @@ export type Outcome1 = {
   variantId: string;
 };
 
-export type Outcome = Outcome1 | Outcome2 | Outcome3;
+export type FlagOutcome = Outcome1 | Outcome2 | Outcome3;
 
 export const FlagRhsType = {
   Regex: "regex",
@@ -912,20 +912,23 @@ export function outcome1FromJSON(
 }
 
 /** @internal */
-export const Outcome$inboundSchema: z.ZodType<Outcome, z.ZodTypeDef, unknown> =
-  z.union([
-    z.lazy(() => Outcome1$inboundSchema),
-    z.lazy(() => Outcome2$inboundSchema),
-    z.lazy(() => Outcome3$inboundSchema),
-  ]);
+export const FlagOutcome$inboundSchema: z.ZodType<
+  FlagOutcome,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => Outcome1$inboundSchema),
+  z.lazy(() => Outcome2$inboundSchema),
+  z.lazy(() => Outcome3$inboundSchema),
+]);
 
-export function outcomeFromJSON(
+export function flagOutcomeFromJSON(
   jsonString: string,
-): SafeParseResult<Outcome, SDKValidationError> {
+): SafeParseResult<FlagOutcome, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Outcome$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Outcome' from JSON`,
+    (x) => FlagOutcome$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FlagOutcome' from JSON`,
   );
 }
 

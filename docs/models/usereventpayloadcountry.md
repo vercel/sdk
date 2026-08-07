@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayloadCountry } from "@vercel/sdk/models/threehundredandsixtyseven.js";
+import { UserEventPayloadCountry } from "@vercel/sdk/models/usereventpayload373previous.js";
 
 let value: UserEventPayloadCountry = {
   names: {
@@ -16,4 +16,4 @@ let value: UserEventPayloadCountry = {
 
 | Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
 | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `names`                                                                                        | [models.UserEventPayload408GeolocationNames](../models/usereventpayload408geolocationnames.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| `names`                                                                                        | [models.UserEventPayload416GeolocationNames](../models/usereventpayload416geolocationnames.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |

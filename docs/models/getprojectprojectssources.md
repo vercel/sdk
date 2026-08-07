@@ -5,7 +5,7 @@ Customer-configurable deployment sources. Every deploy classifies to exactly one
 ## Example Usage
 
 ```typescript
-import { GetProjectProjectsSources } from "@vercel/sdk/models/getprojectvalue3.js";
+import { GetProjectProjectsSources } from "@vercel/sdk/models/getprojectinternalroutes.js";
 
 let value: GetProjectProjectsSources = "v0";
 ```

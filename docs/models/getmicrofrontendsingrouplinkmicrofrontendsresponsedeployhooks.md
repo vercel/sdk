@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupLinkMicrofrontendsResponseDeployHooks } from "@vercel/sdk/models/getmicrofrontendsingroupstaticips.js";
+import { GetMicrofrontendsInGroupLinkMicrofrontendsResponseDeployHooks } from "@vercel/sdk/models/getmicrofrontendsingroupbuildmachineelasticreason.js";
 
 let value: GetMicrofrontendsInGroupLinkMicrofrontendsResponseDeployHooks = {
   id: "<id>",

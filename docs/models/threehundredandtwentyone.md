@@ -5,27 +5,25 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndTwentyOne } from "@vercel/sdk/models/twohundredandninetynine.js";
+import { ThreeHundredAndTwentyOne } from "@vercel/sdk/models/removedprojects.js";
 
 let value: ThreeHundredAndTwentyOne = {
-  budget: {
-    type: "fixed",
-    fixedBudget: 8543.29,
-    previousSpend: [
-      4417.04,
-      532.98,
-    ],
-    notifiedAt: [],
-    createdAt: 7876.22,
-    isActive: true,
-    teamId: "<id>",
-    id: "<id>",
-  },
+  email: "Karlee.Becker@hotmail.com",
+  gitlabLogin: "<value>",
+  gitlabEmail: "<value>",
+  gitlabName: "<value>",
+  zeitAccount: "<value>",
+  zeitAccountType: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `budget`                                                                   | [models.UserEventPayload321Budget](../models/usereventpayload321budget.md) | :heavy_check_mark:                                                         | Represents a budget for tracking and notifying teams on their spending.    |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `email`            | *string*           | :heavy_check_mark: | N/A                |
+| `gitlabLogin`      | *string*           | :heavy_check_mark: | N/A                |
+| `gitlabEmail`      | *string*           | :heavy_check_mark: | N/A                |
+| `gitlabName`       | *string*           | :heavy_check_mark: | N/A                |
+| `zeitAccount`      | *string*           | :heavy_check_mark: | N/A                |
+| `zeitAccountType`  | *string*           | :heavy_check_mark: | N/A                |

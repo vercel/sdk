@@ -3,14 +3,14 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupMicrofrontendsResponse200Action } from "@vercel/sdk/models/getmicrofrontendsingroupvalue.js";
+import { GetMicrofrontendsInGroupMicrofrontendsResponse200Action } from "@vercel/sdk/models/getmicrofrontendsingroupaction.js";
 
 let value: GetMicrofrontendsInGroupMicrofrontendsResponse200Action =
-  "challenge";
+  "add-project-interstitial";
 ```
 
 ## Values
 
 ```typescript
-"allow" | "bypass" | "challenge" | "deny" | "log" | "rate_limit" | "redirect"
+"add-deployment-interstitial" | "add-project-interstitial" | "remove-deployment-interstitial" | "remove-project-interstitial"
 ```

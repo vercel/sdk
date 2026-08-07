@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectSsoProtection } from "@vercel/sdk/models/getprojectvalue3.js";
+import { GetProjectSsoProtection } from "@vercel/sdk/models/getprojectinternalroutes.js";
 
 let value: GetProjectSsoProtection = {
   deploymentType: "preview",

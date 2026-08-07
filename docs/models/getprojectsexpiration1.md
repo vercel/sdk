@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsExpiration1 } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponsebuildmachineelasticreason.js";
+import { GetProjectsExpiration1 } from "@vercel/sdk/models/getprojectsresponsebodyprojectsrollingrelease.js";
 
 let value: GetProjectsExpiration1 = {
   expiresAt: 5309.34,

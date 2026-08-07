@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectPermissions } from "@vercel/sdk/models/getprojectvalue3.js";
+import { GetProjectPermissions } from "@vercel/sdk/models/getprojectinternalroutes.js";
 
 let value: GetProjectPermissions = {};
 ```
@@ -23,6 +23,7 @@ let value: GetProjectPermissions = {};
 | `agent`                                      | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `aiGatewayApiKey`                            | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `aiGatewayApiKeyOwnedBySelf`                 | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
+| `aiGatewayApiKeySpendAttribution`            | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `aiGatewayApiKeyZdrExemption`                | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `aiGatewayBudget`                            | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `aiGatewayCredits`                           | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |

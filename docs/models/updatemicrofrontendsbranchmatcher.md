@@ -5,7 +5,7 @@ Configuration for matching git branches to this environment
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsBranchMatcher } from "@vercel/sdk/models/updatemicrofrontendsdefaultresourceconfig.js";
+import { UpdateMicrofrontendsBranchMatcher } from "@vercel/sdk/models/updatemicrofrontendsprojectsbuildmachineselection.js";
 
 let value: UpdateMicrofrontendsBranchMatcher = {
   type: "equals",

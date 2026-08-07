@@ -4,29 +4,54 @@
 
 import { vcrAddRepositoryPermission } from "../funcs/vcrAddRepositoryPermission.js";
 import { vcrClearRepositoryPermissions } from "../funcs/vcrClearRepositoryPermissions.js";
+import { vcrCreateByTeamSlugByProjectSlugByRepositoryNameBlobsUploads } from "../funcs/vcrCreateByTeamSlugByProjectSlugByRepositoryNameBlobsUploads.js";
 import { vcrCreateRepository } from "../funcs/vcrCreateRepository.js";
+import { vcrDeleteByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest } from "../funcs/vcrDeleteByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest.js";
+import { vcrDeleteByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid } from "../funcs/vcrDeleteByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid.js";
+import { vcrDeleteByTeamSlugByProjectSlugByRepositoryNameManifestsByReference } from "../funcs/vcrDeleteByTeamSlugByProjectSlugByRepositoryNameManifestsByReference.js";
 import { vcrDeleteRepository } from "../funcs/vcrDeleteRepository.js";
 import { vcrDeleteRepositoryImage } from "../funcs/vcrDeleteRepositoryImage.js";
+import { vcrGetByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest } from "../funcs/vcrGetByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest.js";
+import { vcrGetByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid } from "../funcs/vcrGetByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid.js";
+import { vcrGetByTeamSlugByProjectSlugByRepositoryNameManifestsByReference } from "../funcs/vcrGetByTeamSlugByProjectSlugByRepositoryNameManifestsByReference.js";
+import { vcrGetByTeamSlugByProjectSlugByRepositoryNameTagsList } from "../funcs/vcrGetByTeamSlugByProjectSlugByRepositoryNameTagsList.js";
 import { vcrGetRepository } from "../funcs/vcrGetRepository.js";
 import { vcrGetRepositoryImage } from "../funcs/vcrGetRepositoryImage.js";
 import { vcrGetRepositoryTag } from "../funcs/vcrGetRepositoryTag.js";
+import { vcrGetRoot } from "../funcs/vcrGetRoot.js";
+import { vcrHeadByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest } from "../funcs/vcrHeadByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest.js";
+import { vcrHeadByTeamSlugByProjectSlugByRepositoryNameManifestsByReference } from "../funcs/vcrHeadByTeamSlugByProjectSlugByRepositoryNameManifestsByReference.js";
 import { vcrListRepositories } from "../funcs/vcrListRepositories.js";
 import { vcrListRepositoryImages } from "../funcs/vcrListRepositoryImages.js";
 import { vcrListRepositoryPermissions } from "../funcs/vcrListRepositoryPermissions.js";
 import { vcrListRepositoryTags } from "../funcs/vcrListRepositoryTags.js";
 import { vcrRemoveRepositoryPermission } from "../funcs/vcrRemoveRepositoryPermission.js";
+import { vcrReplaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid } from "../funcs/vcrReplaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid.js";
+import { vcrReplaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReference } from "../funcs/vcrReplaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReference.js";
+import { vcrUpdateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid } from "../funcs/vcrUpdateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import {
   AddRepositoryPermissionRequest,
   AddRepositoryPermissionResponseBody,
 } from "../models/addrepositorypermissionop.js";
 import { ClearRepositoryPermissionsRequest } from "../models/clearrepositorypermissionsop.js";
+import { CreateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsRequest } from "../models/createbyteamslugbyprojectslugbyrepositorynameblobsuploadsop.js";
 import {
   CreateRepositoryRequest,
   CreateRepositoryResponseBody,
 } from "../models/createrepositoryop.js";
+import { DeleteByTeamSlugByProjectSlugByRepositoryNameBlobsByDigestRequest } from "../models/deletebyteamslugbyprojectslugbyrepositorynameblobsbydigestop.js";
+import { DeleteByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidRequest } from "../models/deletebyteamslugbyprojectslugbyrepositorynameblobsuploadsbyuuidop.js";
+import { DeleteByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenceRequest } from "../models/deletebyteamslugbyprojectslugbyrepositorynamemanifestsbyreferenceop.js";
 import { DeleteRepositoryImageRequest } from "../models/deleterepositoryimageop.js";
 import { DeleteRepositoryRequest } from "../models/deleterepositoryop.js";
+import { GetByTeamSlugByProjectSlugByRepositoryNameBlobsByDigestRequest } from "../models/getbyteamslugbyprojectslugbyrepositorynameblobsbydigestop.js";
+import { GetByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidRequest } from "../models/getbyteamslugbyprojectslugbyrepositorynameblobsuploadsbyuuidop.js";
+import { GetByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenceRequest } from "../models/getbyteamslugbyprojectslugbyrepositorynamemanifestsbyreferenceop.js";
+import {
+  GetByTeamSlugByProjectSlugByRepositoryNameTagsListRequest,
+  GetByTeamSlugByProjectSlugByRepositoryNameTagsListResponseBody,
+} from "../models/getbyteamslugbyprojectslugbyrepositorynametagslistop.js";
 import {
   GetRepositoryImageRequest,
   GetRepositoryImageResponseBody,
@@ -39,6 +64,9 @@ import {
   GetRepositoryTagRequest,
   GetRepositoryTagResponseBody,
 } from "../models/getrepositorytagop.js";
+import { GetRootResponseBody } from "../models/getrootop.js";
+import { HeadByTeamSlugByProjectSlugByRepositoryNameBlobsByDigestRequest } from "../models/headbyteamslugbyprojectslugbyrepositorynameblobsbydigestop.js";
+import { HeadByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenceRequest } from "../models/headbyteamslugbyprojectslugbyrepositorynamemanifestsbyreferenceop.js";
 import { ListRepositoriesRequest } from "../models/listrepositoriesop.js";
 import { ListRepositoryImagesRequest } from "../models/listrepositoryimagesop.js";
 import { ListRepositoryPermissionsRequest } from "../models/listrepositorypermissionsop.js";
@@ -47,6 +75,9 @@ import {
   ListRepositoryTagsResponseBody,
 } from "../models/listrepositorytagsop.js";
 import { RemoveRepositoryPermissionRequest } from "../models/removerepositorypermissionop.js";
+import { ReplaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidRequest } from "../models/replacebyteamslugbyprojectslugbyrepositorynameblobsuploadsbyuuidop.js";
+import { ReplaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenceRequest } from "../models/replacebyteamslugbyprojectslugbyrepositorynamemanifestsbyreferenceop.js";
+import { UpdateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidRequest } from "../models/updatebyteamslugbyprojectslugbyrepositorynameblobsuploadsbyuuidop.js";
 import { VcrImageList } from "../models/vcrimagelist.js";
 import { VcrRepositoryList } from "../models/vcrrepositorylist.js";
 import { VcrRepositoryPermissionList } from "../models/vcrrepositorypermissionlist.js";
@@ -268,6 +299,274 @@ export class Vcr extends ClientSDK {
     options?: RequestOptions,
   ): Promise<any> {
     return unwrapAsync(vcrDeleteRepositoryImage(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Check registry API version support
+   *
+   * @remarks
+   * GET /v2/ Docker Registry v2 version check. Returns a 401 challenge when no credentials are provided, prompting the Docker client to send auth. With valid credentials, returns 200 so the client can proceed.
+   */
+  async getRoot(
+    options?: RequestOptions,
+  ): Promise<GetRootResponseBody> {
+    return unwrapAsync(vcrGetRoot(
+      this,
+      options,
+    ));
+  }
+
+  /**
+   * Check if a blob exists
+   *
+   * @remarks
+   * HEAD /v2/:teamSlug/:projectSlug/:repositoryName/blobs/:digest Check whether a blob exists. Used by the Docker client before pushing a layer to avoid re-uploading content that already exists.
+   */
+  async headByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest(
+    request: HeadByTeamSlugByProjectSlugByRepositoryNameBlobsByDigestRequest,
+    options?: RequestOptions,
+  ): Promise<any> {
+    return unwrapAsync(
+      vcrHeadByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest(
+        this,
+        request,
+        options,
+      ),
+    );
+  }
+
+  /**
+   * Download a blob
+   *
+   * @remarks
+   * GET /v2/:teamSlug/:projectSlug/:repositoryName/blobs/:digest Fetch a blob by digest.
+   */
+  async getByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest(
+    request: GetByTeamSlugByProjectSlugByRepositoryNameBlobsByDigestRequest,
+    options?: RequestOptions,
+  ): Promise<void> {
+    return unwrapAsync(
+      vcrGetByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest(
+        this,
+        request,
+        options,
+      ),
+    );
+  }
+
+  /**
+   * Delete a blob
+   *
+   * @remarks
+   * DELETE /v2/:teamSlug/:projectSlug/:repositoryName/blobs/:digest Blob deletion is intentionally not supported. Matches the behaviour of most public registries.
+   */
+  async deleteByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest(
+    request: DeleteByTeamSlugByProjectSlugByRepositoryNameBlobsByDigestRequest,
+    options?: RequestOptions,
+  ): Promise<void> {
+    return unwrapAsync(
+      vcrDeleteByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest(
+        this,
+        request,
+        options,
+      ),
+    );
+  }
+
+  /**
+   * Get blob upload status
+   *
+   * @remarks
+   * GET /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid Query the status of an in-progress blob upload. Used by clients to resume a partial upload after an interruption.
+   */
+  async getByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid(
+    request:
+      GetByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidRequest,
+    options?: RequestOptions,
+  ): Promise<any> {
+    return unwrapAsync(
+      vcrGetByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid(
+        this,
+        request,
+        options,
+      ),
+    );
+  }
+
+  /**
+   * Cancel a blob upload
+   *
+   * @remarks
+   * DELETE /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid Cancel an in-flight blob upload. Aborts the underlying S3 multipart upload (if one was started) and discards the session.
+   */
+  async deleteByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid(
+    request:
+      DeleteByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidRequest,
+    options?: RequestOptions,
+  ): Promise<any> {
+    return unwrapAsync(
+      vcrDeleteByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid(
+        this,
+        request,
+        options,
+      ),
+    );
+  }
+
+  /**
+   * Upload a blob chunk
+   *
+   * @remarks
+   * PATCH /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid Upload a chunk of blob data. The request body is streamed directly to S3 as a multipart upload part while hashing incrementally. The client may call this multiple times for chunked uploads.
+   */
+  async updateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid(
+    request:
+      UpdateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidRequest,
+    options?: RequestOptions,
+  ): Promise<any> {
+    return unwrapAsync(
+      vcrUpdateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid(
+        this,
+        request,
+        options,
+      ),
+    );
+  }
+
+  /**
+   * Complete a blob upload
+   *
+   * @remarks
+   * PUT /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid?digest=<digest> Complete the blob upload. This may include a final chunk of data in the request body (monolithic upload) or just finalize a previous chunked upload.
+   */
+  async replaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid(
+    request:
+      ReplaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidRequest,
+    options?: RequestOptions,
+  ): Promise<any> {
+    return unwrapAsync(
+      vcrReplaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid(
+        this,
+        request,
+        options,
+      ),
+    );
+  }
+
+  /**
+   * Start a blob upload
+   *
+   * @remarks
+   * POST /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/[?mount=<digest>&from=<repo>] Initiate a blob upload. Returns a UUID in the Location header that the client uses for subsequent PATCH (chunk) and PUT (complete) requests.
+   */
+  async createByTeamSlugByProjectSlugByRepositoryNameBlobsUploads(
+    request: CreateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsRequest,
+    options?: RequestOptions,
+  ): Promise<any> {
+    return unwrapAsync(
+      vcrCreateByTeamSlugByProjectSlugByRepositoryNameBlobsUploads(
+        this,
+        request,
+        options,
+      ),
+    );
+  }
+
+  /**
+   * Push an image manifest
+   *
+   * @remarks
+   * PUT /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Upload an image manifest. The digest is computed from the body and returned in the Docker-Content-Digest header.
+   */
+  async replaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReference(
+    request:
+      ReplaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenceRequest,
+    options?: RequestOptions,
+  ): Promise<any> {
+    return unwrapAsync(
+      vcrReplaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReference(
+        this,
+        request,
+        options,
+      ),
+    );
+  }
+
+  /**
+   * Check if a manifest exists
+   *
+   * @remarks
+   * HEAD /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Check whether a manifest exists. Used by Docker client during push to determine if a manifest (or config blob referenced by digest) is already present.
+   */
+  async headByTeamSlugByProjectSlugByRepositoryNameManifestsByReference(
+    request:
+      HeadByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenceRequest,
+    options?: RequestOptions,
+  ): Promise<any> {
+    return unwrapAsync(
+      vcrHeadByTeamSlugByProjectSlugByRepositoryNameManifestsByReference(
+        this,
+        request,
+        options,
+      ),
+    );
+  }
+
+  /**
+   * Pull an image manifest
+   *
+   * @remarks
+   * GET /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Fetch a manifest by tag or digest.
+   */
+  async getByTeamSlugByProjectSlugByRepositoryNameManifestsByReference(
+    request:
+      GetByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenceRequest,
+    options?: RequestOptions,
+  ): Promise<void> {
+    return unwrapAsync(
+      vcrGetByTeamSlugByProjectSlugByRepositoryNameManifestsByReference(
+        this,
+        request,
+        options,
+      ),
+    );
+  }
+
+  /**
+   * Delete an image manifest
+   *
+   * @remarks
+   * DELETE /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Reference must be a digest.
+   */
+  async deleteByTeamSlugByProjectSlugByRepositoryNameManifestsByReference(
+    request:
+      DeleteByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenceRequest,
+    options?: RequestOptions,
+  ): Promise<any> {
+    return unwrapAsync(
+      vcrDeleteByTeamSlugByProjectSlugByRepositoryNameManifestsByReference(
+        this,
+        request,
+        options,
+      ),
+    );
+  }
+
+  /**
+   * List image tags
+   *
+   * @remarks
+   * GET /v2/:teamSlug/:projectSlug/:repositoryName/tags/list List the tags in a repository.
+   */
+  async getByTeamSlugByProjectSlugByRepositoryNameTagsList(
+    request: GetByTeamSlugByProjectSlugByRepositoryNameTagsListRequest,
+    options?: RequestOptions,
+  ): Promise<GetByTeamSlugByProjectSlugByRepositoryNameTagsListResponseBody> {
+    return unwrapAsync(vcrGetByTeamSlugByProjectSlugByRepositoryNameTagsList(
       this,
       request,
       options,

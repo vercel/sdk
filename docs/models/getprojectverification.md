@@ -5,7 +5,7 @@ A list of verification challenges, one of which must be completed to verify the 
 ## Example Usage
 
 ```typescript
-import { GetProjectVerification } from "@vercel/sdk/models/getprojectprojectsbuildqueue.js";
+import { GetProjectVerification } from "@vercel/sdk/models/getprojectprojectsbuildmachinetype.js";
 
 let value: GetProjectVerification = {
   type: "<value>",

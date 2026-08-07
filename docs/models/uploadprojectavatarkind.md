@@ -5,7 +5,7 @@ Billing mode. Always 'flat' for flat-rate projects.
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarKind } from "@vercel/sdk/models/uploadprojectavatardismissedtoasts.js";
+import { UploadProjectAvatarKind } from "@vercel/sdk/models/uploadprojectavatarvaluepreviousvalue.js";
 
 let value: UploadProjectAvatarKind = "flat";
 ```

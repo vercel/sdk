@@ -5,22 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFive } from "@vercel/sdk/models/onehundredandseventyone.js";
+import { TwoHundredAndFive } from "@vercel/sdk/models/one1.js";
 
 let value: TwoHundredAndFive = {
   projectId: "<id>",
-  projectName: "<value>",
-  pattern: "<value>",
-  justification: "<value>",
+  type: "connectSrc",
+  resourceUrl: "https://fine-populist.biz/",
 };
 ```
 
 ## Fields
 
-| Field                  | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `projectId`            | *string*               | :heavy_check_mark:     | N/A                    |
-| `projectName`          | *string*               | :heavy_check_mark:     | N/A                    |
-| `pattern`              | *string*               | :heavy_check_mark:     | N/A                    |
-| `justification`        | *string*               | :heavy_check_mark:     | N/A                    |
-| `additionalProperties` | Record<string, *any*>  | :heavy_minus_sign:     | N/A                    |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `projectId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `type`                                                                 | [models.UserEventPayload205Type](../models/usereventpayload205type.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| `resourceUrl`                                                          | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |

@@ -10,38 +10,6 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
-  CreateDeploymentKeyDeployments2,
-  CreateDeploymentKeyDeployments2$inboundSchema,
-  CreateDeploymentRoutesDeployments2,
-  CreateDeploymentRoutesDeployments2$inboundSchema,
-  CreateDeploymentRoutesDeploymentsHas,
-  CreateDeploymentRoutesDeploymentsHas$inboundSchema,
-  CreateDeploymentRoutesDeploymentsMissing,
-  CreateDeploymentRoutesDeploymentsMissing$inboundSchema,
-  CreateDeploymentRoutesDeploymentsMitigate,
-  CreateDeploymentRoutesDeploymentsMitigate$inboundSchema,
-  CreateDeploymentServicesDeploymentsBuilder,
-  CreateDeploymentServicesDeploymentsBuilder$inboundSchema,
-  CreateDeploymentServicesFunctions,
-  CreateDeploymentServicesFunctions$inboundSchema,
-  CreateDeploymentServicesHeaders,
-  CreateDeploymentServicesHeaders$inboundSchema,
-  CreateDeploymentServicesRedirects,
-  CreateDeploymentServicesRedirects$inboundSchema,
-  CreateDeploymentTransformsDeployments2,
-  CreateDeploymentTransformsDeployments2$inboundSchema,
-  CreateDeploymentTransformsDeploymentsResponseOp,
-  CreateDeploymentTransformsDeploymentsResponseOp$inboundSchema,
-  CreateDeploymentTransformsDeploymentsResponseType,
-  CreateDeploymentTransformsDeploymentsResponseType$inboundSchema,
-  ResponseBodyRoutes,
-  ResponseBodyRoutes$inboundSchema,
-  ServicesBindings,
-  ServicesBindings$inboundSchema,
-  ServicesRewrites,
-  ServicesRewrites$inboundSchema,
-} from "./createdeploymentkeydeployments2.js";
-import {
   CreateDeploymentResponseBodyChecksConclusion,
   CreateDeploymentResponseBodyChecksConclusion$inboundSchema,
   CreateDeploymentResponseBodyChecksState,
@@ -102,9 +70,54 @@ import {
   ResponseBodyPlan$inboundSchema,
   ResponseBodyResourceConfig,
   ResponseBodyResourceConfig$inboundSchema,
-} from "./createdeploymentvaluedeploymentsresponse2002.js";
+} from "./createdeploymentmissingdeploymentstype.js";
+import {
+  CreateDeploymentRoutesDeployments2,
+  CreateDeploymentRoutesDeployments2$inboundSchema,
+  CreateDeploymentRoutesDeploymentsHas,
+  CreateDeploymentRoutesDeploymentsHas$inboundSchema,
+  CreateDeploymentRoutesDeploymentsMissing,
+  CreateDeploymentRoutesDeploymentsMissing$inboundSchema,
+  CreateDeploymentRoutesDeploymentsMitigate,
+  CreateDeploymentRoutesDeploymentsMitigate$inboundSchema,
+  CreateDeploymentServicesDeploymentsBuilder,
+  CreateDeploymentServicesDeploymentsBuilder$inboundSchema,
+  CreateDeploymentServicesFunctions,
+  CreateDeploymentServicesFunctions$inboundSchema,
+  CreateDeploymentServicesHeaders,
+  CreateDeploymentServicesHeaders$inboundSchema,
+  CreateDeploymentServicesRedirects,
+  CreateDeploymentServicesRedirects$inboundSchema,
+  CreateDeploymentTransformsDeployments2,
+  CreateDeploymentTransformsDeployments2$inboundSchema,
+  CreateDeploymentTransformsDeploymentsResponseOp,
+  CreateDeploymentTransformsDeploymentsResponseOp$inboundSchema,
+  CreateDeploymentTransformsDeploymentsResponseType,
+  CreateDeploymentTransformsDeploymentsResponseType$inboundSchema,
+  ResponseBodyRoutes,
+  ResponseBodyRoutes$inboundSchema,
+  ServicesBindings,
+  ServicesBindings$inboundSchema,
+  ServicesRewrites,
+  ServicesRewrites$inboundSchema,
+} from "./createdeploymenttransformsdeploymentsresponseop.js";
 import { FlagJSONValue, FlagJSONValue$inboundSchema } from "./flagjsonvalue.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type CreateDeploymentKeyDeploymentsEq = string | number;
+
+export type CreateDeploymentKeyDeployments2 = {
+  eq?: string | number | undefined;
+  neq?: string | undefined;
+  inc?: Array<string> | undefined;
+  ninc?: Array<string> | undefined;
+  pre?: string | undefined;
+  suf?: string | undefined;
+  gt?: number | undefined;
+  gte?: number | undefined;
+  lt?: number | undefined;
+  lte?: number | undefined;
+};
 
 export type CreateDeploymentTransformsDeploymentsKey =
   | string
@@ -1372,11 +1385,59 @@ export type CreateDeploymentResponseBody =
   | CreateDeploymentResponseBody1;
 
 /** @internal */
+export const CreateDeploymentKeyDeploymentsEq$inboundSchema: z.ZodType<
+  CreateDeploymentKeyDeploymentsEq,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), types.number()]);
+
+export function createDeploymentKeyDeploymentsEqFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateDeploymentKeyDeploymentsEq, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateDeploymentKeyDeploymentsEq$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentKeyDeploymentsEq' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateDeploymentKeyDeployments2$inboundSchema: z.ZodType<
+  CreateDeploymentKeyDeployments2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  eq: types.optional(smartUnion([types.string(), types.number()])),
+  neq: types.optional(types.string()),
+  inc: types.optional(z.array(types.string())),
+  ninc: types.optional(z.array(types.string())),
+  pre: types.optional(types.string()),
+  suf: types.optional(types.string()),
+  gt: types.optional(types.number()),
+  gte: types.optional(types.number()),
+  lt: types.optional(types.number()),
+  lte: types.optional(types.number()),
+});
+
+export function createDeploymentKeyDeployments2FromJSON(
+  jsonString: string,
+): SafeParseResult<CreateDeploymentKeyDeployments2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateDeploymentKeyDeployments2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentKeyDeployments2' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateDeploymentTransformsDeploymentsKey$inboundSchema: z.ZodType<
   CreateDeploymentTransformsDeploymentsKey,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.string(), CreateDeploymentKeyDeployments2$inboundSchema]);
+> = smartUnion([
+  types.string(),
+  z.lazy(() => CreateDeploymentKeyDeployments2$inboundSchema),
+]);
 
 export function createDeploymentTransformsDeploymentsKeyFromJSON(
   jsonString: string,
@@ -1403,7 +1464,7 @@ export const CreateDeploymentTransformsDeploymentsTarget$inboundSchema:
   > = z.object({
     key: smartUnion([
       types.string(),
-      CreateDeploymentKeyDeployments2$inboundSchema,
+      z.lazy(() => CreateDeploymentKeyDeployments2$inboundSchema),
     ]),
   });
 

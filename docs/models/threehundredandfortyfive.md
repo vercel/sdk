@@ -5,21 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFortyFive } from "@vercel/sdk/models/twohundredandninetynine.js";
+import { ThreeHundredAndFortyFive } from "@vercel/sdk/models/removedprojects.js";
 
-let value: ThreeHundredAndFortyFive = {};
+let value: ThreeHundredAndFortyFive = {
+  projectId: "<id>",
+  projectName: "<value>",
+  enabled: false,
+  environment: "production",
+};
 ```
 
 ## Fields
 
 | Field                                          | Type                                           | Required                                       | Description                                    |
 | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `directoryType`                                | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `ssoType`                                      | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `invitedUser`                                  | [models.InvitedUser](../models/inviteduser.md) | :heavy_minus_sign:                             | N/A                                            |
-| `invitedEmail`                                 | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `invitationRole`                               | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `entitlements`                                 | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
-| `invitedUid`                                   | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `origin`                                       | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `teamSlug`                                     | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `projectId`                                    | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `projectName`                                  | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `enabled`                                      | *boolean*                                      | :heavy_check_mark:                             | N/A                                            |
+| `environment`                                  | [models.Environment](../models/environment.md) | :heavy_check_mark:                             | N/A                                            |

@@ -159,6 +159,7 @@ export const CreateProjectProjectsType = {
   Gitlab: "gitlab",
   Bitbucket: "bitbucket",
   Vercel: "vercel",
+  CursorOrigin: "cursor-origin",
 } as const;
 /**
  * The Git Provider of the repository

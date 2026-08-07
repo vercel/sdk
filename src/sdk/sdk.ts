@@ -3,36 +3,18 @@
  */
 
 import { createApiKeys } from "../funcs/createApiKeys.js";
-import { createByTeamSlugByProjectSlugByRepositoryNameBlobsUploads } from "../funcs/createByTeamSlugByProjectSlugByRepositoryNameBlobsUploads.js";
 import { createObservabilityQuery } from "../funcs/createObservabilityQuery.js";
 import { createSpeedInsightsToggle } from "../funcs/createSpeedInsightsToggle.js";
-import { createStorageStoresBlob } from "../funcs/createStorageStoresBlob.js";
 import { createWebInsightsToggle } from "../funcs/createWebInsightsToggle.js";
-import { deleteByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest } from "../funcs/deleteByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest.js";
-import { deleteByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid } from "../funcs/deleteByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid.js";
-import { deleteByTeamSlugByProjectSlugByRepositoryNameManifestsByReference } from "../funcs/deleteByTeamSlugByProjectSlugByRepositoryNameManifestsByReference.js";
-import { deleteStorageStoresBlobById } from "../funcs/deleteStorageStoresBlobById.js";
-import { getByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest } from "../funcs/getByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest.js";
-import { getByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid } from "../funcs/getByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid.js";
-import { getByTeamSlugByProjectSlugByRepositoryNameManifestsByReference } from "../funcs/getByTeamSlugByProjectSlugByRepositoryNameManifestsByReference.js";
-import { getByTeamSlugByProjectSlugByRepositoryNameTagsList } from "../funcs/getByTeamSlugByProjectSlugByRepositoryNameTagsList.js";
 import { getDomainsRecordsByRecordId } from "../funcs/getDomainsRecordsByRecordId.js";
 import { getObservabilitySchema } from "../funcs/getObservabilitySchema.js";
 import { getObservabilitySchemaByMetricId } from "../funcs/getObservabilitySchemaByMetricId.js";
-import { getRoot } from "../funcs/getRoot.js";
-import { getStorageStoresById } from "../funcs/getStorageStoresById.js";
-import { headByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest } from "../funcs/headByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest.js";
-import { headByTeamSlugByProjectSlugByRepositoryNameManifestsByReference } from "../funcs/headByTeamSlugByProjectSlugByRepositoryNameManifestsByReference.js";
-import { replaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid } from "../funcs/replaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid.js";
-import { replaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReference } from "../funcs/replaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReference.js";
 import { replaceDomainsByDomainRecords } from "../funcs/replaceDomainsByDomainRecords.js";
-import { updateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid } from "../funcs/updateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import {
   CreateApiKeysRequestBody,
   CreateApiKeysResponseBody,
 } from "../models/createapikeysop.js";
-import { CreateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsRequest } from "../models/createbyteamslugbyprojectslugbyrepositorynameblobsuploadsop.js";
 import {
   CreateObservabilityQueryRequestBody,
   CreateObservabilityQueryResponseBody,
@@ -42,27 +24,9 @@ import {
   CreateSpeedInsightsToggleResponseBody,
 } from "../models/createspeedinsightstoggleop.js";
 import {
-  CreateStorageStoresBlobRequestBody,
-  CreateStorageStoresBlobResponseBody,
-} from "../models/createstoragestoresblobop.js";
-import {
   CreateWebInsightsToggleRequest,
   CreateWebInsightsToggleResponseBody,
 } from "../models/createwebinsightstoggleop.js";
-import { DeleteByTeamSlugByProjectSlugByRepositoryNameBlobsByDigestRequest } from "../models/deletebyteamslugbyprojectslugbyrepositorynameblobsbydigestop.js";
-import { DeleteByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidRequest } from "../models/deletebyteamslugbyprojectslugbyrepositorynameblobsuploadsbyuuidop.js";
-import { DeleteByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenceRequest } from "../models/deletebyteamslugbyprojectslugbyrepositorynamemanifestsbyreferenceop.js";
-import {
-  DeleteStorageStoresBlobByIdRequest,
-  DeleteStorageStoresBlobByIdResponseBody,
-} from "../models/deletestoragestoresblobbyidop.js";
-import { GetByTeamSlugByProjectSlugByRepositoryNameBlobsByDigestRequest } from "../models/getbyteamslugbyprojectslugbyrepositorynameblobsbydigestop.js";
-import { GetByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidRequest } from "../models/getbyteamslugbyprojectslugbyrepositorynameblobsuploadsbyuuidop.js";
-import { GetByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenceRequest } from "../models/getbyteamslugbyprojectslugbyrepositorynamemanifestsbyreferenceop.js";
-import {
-  GetByTeamSlugByProjectSlugByRepositoryNameTagsListRequest,
-  GetByTeamSlugByProjectSlugByRepositoryNameTagsListResponseBody,
-} from "../models/getbyteamslugbyprojectslugbyrepositorynametagslistop.js";
 import {
   GetDomainsRecordsByRecordIdRequest,
   GetDomainsRecordsByRecordIdResponseBody,
@@ -72,20 +36,10 @@ import {
   ResponseBody,
 } from "../models/getobservabilityschemabymetricidop.js";
 import { GetObservabilitySchemaResponseBody } from "../models/getobservabilityschemaop.js";
-import { GetRootResponseBody } from "../models/getrootop.js";
-import {
-  GetStorageStoresByIdRequest,
-  GetStorageStoresByIdResponseBody,
-} from "../models/getstoragestoresbyidop.js";
-import { HeadByTeamSlugByProjectSlugByRepositoryNameBlobsByDigestRequest } from "../models/headbyteamslugbyprojectslugbyrepositorynameblobsbydigestop.js";
-import { HeadByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenceRequest } from "../models/headbyteamslugbyprojectslugbyrepositorynamemanifestsbyreferenceop.js";
-import { ReplaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidRequest } from "../models/replacebyteamslugbyprojectslugbyrepositorynameblobsuploadsbyuuidop.js";
-import { ReplaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenceRequest } from "../models/replacebyteamslugbyprojectslugbyrepositorynamemanifestsbyreferenceop.js";
 import {
   ReplaceDomainsByDomainRecordsRequest,
   ReplaceDomainsByDomainRecordsResponseBody,
 } from "../models/replacedomainsbydomainrecordsop.js";
-import { UpdateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidRequest } from "../models/updatebyteamslugbyprojectslugbyrepositorynameblobsuploadsbyuuidop.js";
 import { unwrapAsync } from "../types/fp.js";
 import { AccessGroups } from "./accessgroups.js";
 import { AiGateway } from "./aigateway.js";
@@ -121,6 +75,7 @@ import { RollingRelease } from "./rollingrelease.js";
 import { Sandboxes } from "./sandboxes.js";
 import { Security } from "./security.js";
 import { StaticIps } from "./staticips.js";
+import { Storage } from "./storage.js";
 import { Teams } from "./teams.js";
 import { User } from "./user.js";
 import { Vcr } from "./vcr.js";
@@ -293,6 +248,11 @@ export class Vercel extends ClientSDK {
     return (this._security ??= new Security(this._options));
   }
 
+  private _storage?: Storage;
+  get storage(): Storage {
+    return (this._storage ??= new Storage(this._options));
+  }
+
   private _teams?: Teams;
   get teams(): Teams {
     return (this._teams ??= new Teams(this._options));
@@ -392,261 +352,6 @@ export class Vercel extends ClientSDK {
     options?: RequestOptions,
   ): Promise<CreateSpeedInsightsToggleResponseBody> {
     return unwrapAsync(createSpeedInsightsToggle(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  async getStorageStoresById(
-    request: GetStorageStoresByIdRequest,
-    options?: RequestOptions,
-  ): Promise<GetStorageStoresByIdResponseBody> {
-    return unwrapAsync(getStorageStoresById(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  async createStorageStoresBlob(
-    request?: CreateStorageStoresBlobRequestBody | undefined,
-    options?: RequestOptions,
-  ): Promise<CreateStorageStoresBlobResponseBody> {
-    return unwrapAsync(createStorageStoresBlob(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  async deleteStorageStoresBlobById(
-    request: DeleteStorageStoresBlobByIdRequest,
-    options?: RequestOptions,
-  ): Promise<DeleteStorageStoresBlobByIdResponseBody> {
-    return unwrapAsync(deleteStorageStoresBlobById(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * GET /v2/ Docker Registry v2 version check. Returns a 401 challenge when no credentials are provided, prompting the Docker client to send auth. With valid credentials, returns 200 so the client can proceed.
-   */
-  async getRoot(
-    options?: RequestOptions,
-  ): Promise<GetRootResponseBody> {
-    return unwrapAsync(getRoot(
-      this,
-      options,
-    ));
-  }
-
-  /**
-   * HEAD /v2/:teamSlug/:projectSlug/:repositoryName/blobs/:digest Check whether a blob exists. Used by the Docker client before pushing a layer to avoid re-uploading content that already exists.
-   */
-  async headByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest(
-    request: HeadByTeamSlugByProjectSlugByRepositoryNameBlobsByDigestRequest,
-    options?: RequestOptions,
-  ): Promise<any> {
-    return unwrapAsync(headByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * GET /v2/:teamSlug/:projectSlug/:repositoryName/blobs/:digest Fetch a blob by digest.
-   */
-  async getByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest(
-    request: GetByTeamSlugByProjectSlugByRepositoryNameBlobsByDigestRequest,
-    options?: RequestOptions,
-  ): Promise<void> {
-    return unwrapAsync(getByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * DELETE /v2/:teamSlug/:projectSlug/:repositoryName/blobs/:digest Blob deletion is intentionally not supported. Matches the behaviour of most public registries.
-   */
-  async deleteByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest(
-    request: DeleteByTeamSlugByProjectSlugByRepositoryNameBlobsByDigestRequest,
-    options?: RequestOptions,
-  ): Promise<void> {
-    return unwrapAsync(
-      deleteByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest(
-        this,
-        request,
-        options,
-      ),
-    );
-  }
-
-  /**
-   * GET /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid Query the status of an in-progress blob upload. Used by clients to resume a partial upload after an interruption.
-   */
-  async getByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid(
-    request:
-      GetByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidRequest,
-    options?: RequestOptions,
-  ): Promise<any> {
-    return unwrapAsync(
-      getByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid(
-        this,
-        request,
-        options,
-      ),
-    );
-  }
-
-  /**
-   * DELETE /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid Cancel an in-flight blob upload. Aborts the underlying S3 multipart upload (if one was started) and discards the session.
-   */
-  async deleteByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid(
-    request:
-      DeleteByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidRequest,
-    options?: RequestOptions,
-  ): Promise<any> {
-    return unwrapAsync(
-      deleteByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid(
-        this,
-        request,
-        options,
-      ),
-    );
-  }
-
-  /**
-   * PATCH /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid Upload a chunk of blob data. The request body is streamed directly to S3 as a multipart upload part while hashing incrementally. The client may call this multiple times for chunked uploads.
-   */
-  async updateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid(
-    request:
-      UpdateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidRequest,
-    options?: RequestOptions,
-  ): Promise<any> {
-    return unwrapAsync(
-      updateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid(
-        this,
-        request,
-        options,
-      ),
-    );
-  }
-
-  /**
-   * PUT /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid?digest=<digest> Complete the blob upload. This may include a final chunk of data in the request body (monolithic upload) or just finalize a previous chunked upload.
-   */
-  async replaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid(
-    request:
-      ReplaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidRequest,
-    options?: RequestOptions,
-  ): Promise<any> {
-    return unwrapAsync(
-      replaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid(
-        this,
-        request,
-        options,
-      ),
-    );
-  }
-
-  /**
-   * POST /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/[?mount=<digest>&from=<repo>] Initiate a blob upload. Returns a UUID in the Location header that the client uses for subsequent PATCH (chunk) and PUT (complete) requests.
-   */
-  async createByTeamSlugByProjectSlugByRepositoryNameBlobsUploads(
-    request: CreateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsRequest,
-    options?: RequestOptions,
-  ): Promise<any> {
-    return unwrapAsync(
-      createByTeamSlugByProjectSlugByRepositoryNameBlobsUploads(
-        this,
-        request,
-        options,
-      ),
-    );
-  }
-
-  /**
-   * PUT /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Upload an image manifest. The digest is computed from the body and returned in the Docker-Content-Digest header.
-   */
-  async replaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReference(
-    request:
-      ReplaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenceRequest,
-    options?: RequestOptions,
-  ): Promise<any> {
-    return unwrapAsync(
-      replaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReference(
-        this,
-        request,
-        options,
-      ),
-    );
-  }
-
-  /**
-   * HEAD /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Check whether a manifest exists. Used by Docker client during push to determine if a manifest (or config blob referenced by digest) is already present.
-   */
-  async headByTeamSlugByProjectSlugByRepositoryNameManifestsByReference(
-    request:
-      HeadByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenceRequest,
-    options?: RequestOptions,
-  ): Promise<any> {
-    return unwrapAsync(
-      headByTeamSlugByProjectSlugByRepositoryNameManifestsByReference(
-        this,
-        request,
-        options,
-      ),
-    );
-  }
-
-  /**
-   * GET /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Fetch a manifest by tag or digest.
-   */
-  async getByTeamSlugByProjectSlugByRepositoryNameManifestsByReference(
-    request:
-      GetByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenceRequest,
-    options?: RequestOptions,
-  ): Promise<void> {
-    return unwrapAsync(
-      getByTeamSlugByProjectSlugByRepositoryNameManifestsByReference(
-        this,
-        request,
-        options,
-      ),
-    );
-  }
-
-  /**
-   * DELETE /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Reference must be a digest.
-   */
-  async deleteByTeamSlugByProjectSlugByRepositoryNameManifestsByReference(
-    request:
-      DeleteByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenceRequest,
-    options?: RequestOptions,
-  ): Promise<any> {
-    return unwrapAsync(
-      deleteByTeamSlugByProjectSlugByRepositoryNameManifestsByReference(
-        this,
-        request,
-        options,
-      ),
-    );
-  }
-
-  /**
-   * GET /v2/:teamSlug/:projectSlug/:repositoryName/tags/list List the tags in a repository.
-   */
-  async getByTeamSlugByProjectSlugByRepositoryNameTagsList(
-    request: GetByTeamSlugByProjectSlugByRepositoryNameTagsListRequest,
-    options?: RequestOptions,
-  ): Promise<GetByTeamSlugByProjectSlugByRepositoryNameTagsListResponseBody> {
-    return unwrapAsync(getByTeamSlugByProjectSlugByRepositoryNameTagsList(
       this,
       request,
       options,

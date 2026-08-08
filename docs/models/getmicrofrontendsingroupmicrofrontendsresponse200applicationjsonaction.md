@@ -1,17 +1,19 @@
 # GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONAction
 
+What to do when the gate trips: pause the rollout, or roll it back.
+
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONAction } from "@vercel/sdk/models/getmicrofrontendsingroupvalue.js";
+import { GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONAction } from "@vercel/sdk/models/getmicrofrontendsingroupbuildmachineelasticreason.js";
 
 let value:
   GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONAction =
-    "deny";
+    "rollback";
 ```
 
 ## Values
 
 ```typescript
-"challenge" | "deny" | "log"
+"pause" | "rollback"
 ```

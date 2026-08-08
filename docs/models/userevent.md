@@ -19,10 +19,7 @@ let value: UserEvent = {
   userId: "zTuNVUXEAvvnNN3IaqinkyMw",
   principalId: "<id>",
   payload: {
-    publicId: "<id>",
-    role: "<value>",
-    maxUses: 3458,
-    expiresAt: "1754918880254",
+    plan: "hobby",
   },
 };
 ```

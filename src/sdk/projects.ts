@@ -82,10 +82,10 @@ import {
   GetProjectEnvRequest,
   GetProjectEnvResponseBody,
 } from "../models/getprojectenvop.js";
-import { GetProjectRequest } from "../models/getprojectprojectsbuildqueue.js";
+import { GetProjectRequest } from "../models/getprojectprojectsbuildmachinetype.js";
 import { GetProjectResponseBody } from "../models/getprojectresponsebody.js";
 import { GetProjectsResponseBody } from "../models/getprojectsresponsebody.js";
-import { GetProjectsRequest } from "../models/getprojectsresponsebodyprojectsresponsebuildmachineelasticreason.js";
+import { GetProjectsRequest } from "../models/getprojectsresponsebodyprojectsrollingrelease.js";
 import {
   GetProjectTokenRequest,
   GetProjectTokenResponseBody,
@@ -114,7 +114,7 @@ import {
 import { RequestPromoteRequest } from "../models/requestpromoteop.js";
 import { RequestRollbackRequest } from "../models/requestrollbackop.js";
 import { UnpauseProjectRequest } from "../models/unpauseprojectop.js";
-import { UpdateMicrofrontendsRequest } from "../models/updatemicrofrontendsdefaultresourceconfig.js";
+import { UpdateMicrofrontendsRequest } from "../models/updatemicrofrontendsprojectsbuildmachineselection.js";
 import { UpdateMicrofrontendsResponseBody } from "../models/updatemicrofrontendsresponsebody.js";
 import { UpdateProjectRequest } from "../models/updateprojectbranchmatcher.js";
 import {
@@ -127,8 +127,8 @@ import {
 } from "../models/updateprojectprotectionbypassop.js";
 import { UpdateProjectResponseBody } from "../models/updateprojectresponsebody.js";
 import { UpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequest } from "../models/updateprojectsbyprojectidrollbackbydeploymentidupdatedescriptionop.js";
+import { UploadProjectAvatarRequest } from "../models/uploadprojectavatarprojectsbuildmachineelasticreason.js";
 import { UploadProjectAvatarResponseBody } from "../models/uploadprojectavatarresponsebody.js";
-import { UploadProjectAvatarRequest } from "../models/uploadprojectavatarstaticips.js";
 import {
   VerifyProjectDomainRequest,
   VerifyProjectDomainResponseBody,

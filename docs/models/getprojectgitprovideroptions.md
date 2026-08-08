@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectGitProviderOptions } from "@vercel/sdk/models/getprojectvalue3.js";
+import { GetProjectGitProviderOptions } from "@vercel/sdk/models/getprojectinternalroutes.js";
 
 let value: GetProjectGitProviderOptions = {
   createDeployments: "enabled",

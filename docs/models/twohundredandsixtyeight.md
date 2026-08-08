@@ -5,19 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSixtyEight } from "@vercel/sdk/models/envid2.js";
+import { TwoHundredAndSixtyEight } from "@vercel/sdk/models/twohundredandfortyone.js";
 
 let value: TwoHundredAndSixtyEight = {
-  project: {
-    name: "<value>",
-    role: "PROJECT_VIEWER",
-    invitedUserName: "<value>",
-  },
+  projectId: "<id>",
+  projectName: "<value>",
+  target: "<value>",
+  domain: "that-councilman.name",
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `project`                                                                    | [models.UserEventPayload268Project](../models/usereventpayload268project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `target`           | *string*           | :heavy_check_mark: | N/A                |
+| `domain`           | *string*           | :heavy_check_mark: | N/A                |
+| `configuredBy`     | *string*           | :heavy_minus_sign: | N/A                |
+| `prevConfiguredBy` | *string*           | :heavy_minus_sign: | N/A                |

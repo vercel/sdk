@@ -5,7 +5,7 @@ List of domains associated with this environment
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarDomains } from "@vercel/sdk/models/uploadprojectavatarstaticips.js";
+import { UploadProjectAvatarDomains } from "@vercel/sdk/models/uploadprojectavatarprojectsbuildmachineelasticreason.js";
 
 let value: UploadProjectAvatarDomains = {
   name: "<value>",

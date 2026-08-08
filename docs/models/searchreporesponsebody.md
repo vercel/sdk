@@ -13,28 +13,34 @@ const value: models.SearchRepoResponseBody1 = {};
 
 ```typescript
 const value: models.SearchRepoResponseBody2 = {
-  gitAccount: {
-    provider: "github-limited",
-    namespaceId: 245.69,
+  error: {
+    code: "installation_not_found",
+    message: "<value>",
   },
-  repos: [
-    {
-      id: "<id>",
-      provider: "bitbucket",
-      url: "https://delectable-taxicab.com",
-      name: "<value>",
-      slug: "<value>",
-      namespace: "<value>",
-      owner: {
-        id: "<id>",
-        name: "<value>",
-      },
-      ownerType: "user",
-      private: true,
-      defaultBranch: "<value>",
-      updatedAt: 3664.49,
-    },
-  ],
+};
+```
+
+### `models.SearchRepoResponseBody3`
+
+```typescript
+const value: models.SearchRepoResponseBody3 = {
+  gitAccount: {
+    provider: "<value>",
+    namespaceId: "<id>",
+  },
+  repos: [],
+};
+```
+
+### `models.ResponseBody4`
+
+```typescript
+const value: models.ResponseBody4 = {
+  gitAccount: {
+    provider: "github",
+    namespaceId: 3848.91,
+  },
+  repos: [],
 };
 ```
 

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectProjectsBuildQueue } from "@vercel/sdk/models/getprojectprojectsbuildqueue.js";
+import { GetProjectProjectsBuildQueue } from "@vercel/sdk/models/getprojectinternalroutes.js";
 
 let value: GetProjectProjectsBuildQueue = {};
 ```

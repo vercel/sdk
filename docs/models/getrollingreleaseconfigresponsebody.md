@@ -17,6 +17,14 @@ let value: GetRollingReleaseConfigResponseBody = {
       },
     ],
     canaryResponseHeader: false,
+    gate: {
+      enabled: true,
+      checks: [],
+      failureThreshold: 3,
+      windowSize: 5,
+      action: "rollback",
+      dryRun: false,
+    },
   },
 };
 ```

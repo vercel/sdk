@@ -151,6 +151,7 @@ const value: models.AggregateEventsData2[] = [
     keyName: "<value>",
     authMethod: "<value>",
     appName: "<value>",
+    codingAgent: "<value>",
     isByok: "<value>",
     isPrivateModel: "<value>",
     isRequestZdr: "<value>",

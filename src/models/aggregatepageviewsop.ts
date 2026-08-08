@@ -283,6 +283,7 @@ export type Data2 = {
   keyName: string;
   authMethod: string;
   appName: string;
+  codingAgent: string;
   isByok: string;
   isPrivateModel: string;
   isRequestZdr: string;
@@ -502,6 +503,7 @@ export type Data1 = {
   keyName?: string | undefined;
   authMethod?: string | undefined;
   appName?: string | undefined;
+  codingAgent?: string | undefined;
   isByok?: string | undefined;
   isPrivateModel?: string | undefined;
   isRequestZdr?: string | undefined;
@@ -851,6 +853,7 @@ export const Data2$inboundSchema: z.ZodType<Data2, z.ZodTypeDef, unknown> =
       keyName: types.string(),
       authMethod: types.string(),
       appName: types.string(),
+      codingAgent: types.string(),
       isByok: types.string(),
       isPrivateModel: types.string(),
       isRequestZdr: types.string(),
@@ -1084,6 +1087,7 @@ export const Data1$inboundSchema: z.ZodType<Data1, z.ZodTypeDef, unknown> = z
     keyName: types.optional(types.string()),
     authMethod: types.optional(types.string()),
     appName: types.optional(types.string()),
+    codingAgent: types.optional(types.string()),
     isByok: types.optional(types.string()),
     isPrivateModel: types.optional(types.string()),
     isRequestZdr: types.optional(types.string()),

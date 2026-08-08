@@ -7,7 +7,7 @@ The type of matching to perform
 ```typescript
 import {
   GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsAliasDeploymentType,
-} from "@vercel/sdk/models/getmicrofrontendsingroupstaticips.js";
+} from "@vercel/sdk/models/getmicrofrontendsingroupbuildmachineelasticreason.js";
 
 let value:
   GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsAliasDeploymentType =

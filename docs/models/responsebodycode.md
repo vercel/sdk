@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyCode } from "@vercel/sdk/models/getcommandlogsop.js";
+import { ResponseBodyCode } from "@vercel/sdk/models/searchrepoop.js";
 
-let value: ResponseBodyCode = "sandbox_stream_closed";
+let value: ResponseBodyCode = "installation_not_found";
 ```
 
 ## Values
 
 ```typescript
-"sandbox_stream_closed"
+"installation_not_found"
 ```

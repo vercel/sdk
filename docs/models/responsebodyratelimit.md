@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyRateLimit } from "@vercel/sdk/models/getprojectshasprojectsresponse200key.js";
+import { ResponseBodyRateLimit } from "@vercel/sdk/models/responsebodymanagedrules.js";
 
 let value: ResponseBodyRateLimit = {
   algo: "token_bucket",

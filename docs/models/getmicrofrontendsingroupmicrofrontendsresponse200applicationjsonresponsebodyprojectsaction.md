@@ -5,7 +5,7 @@
 ```typescript
 import {
   GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsAction,
-} from "@vercel/sdk/models/getmicrofrontendsingroupvalue.js";
+} from "@vercel/sdk/models/getmicrofrontendsingroupaction.js";
 
 let value:
   GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsAction =

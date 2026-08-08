@@ -5,7 +5,7 @@ Default build machine type for new deployments. This must be used in combination
 ## Example Usage
 
 ```typescript
-import { UserEventPayloadDefault } from "@vercel/sdk/models/postgres2.js";
+import { UserEventPayloadDefault } from "@vercel/sdk/models/usereventpayloaddatacache.js";
 
 let value: UserEventPayloadDefault = "elastic";
 ```

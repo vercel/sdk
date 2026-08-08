@@ -5,22 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFiftyFour } from "@vercel/sdk/models/usereventjobpayload968provider.js";
+import { OneHundredAndFiftyFour } from "@vercel/sdk/models/usereventjobpayload979githashtagvercel.js";
 
 let value: OneHundredAndFiftyFour = {
-  projectId: "<id>",
-  fromDeploymentId: "<id>",
-  toDeploymentId: "<id>",
-  projectName: "<value>",
+  action: "enable",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `fromDeploymentId` | *string*           | :heavy_check_mark: | N/A                |
-| `toDeploymentId`   | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `reason`           | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `action`                                                                   | [models.UserEventPayload154Action](../models/usereventpayload154action.md) | :heavy_check_mark:                                                         | N/A                                                                        |

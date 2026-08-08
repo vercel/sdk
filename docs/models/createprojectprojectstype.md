@@ -7,11 +7,11 @@ The Git Provider of the repository
 ```typescript
 import { CreateProjectProjectsType } from "@vercel/sdk/models/createprojectregion.js";
 
-let value: CreateProjectProjectsType = "gitlab";
+let value: CreateProjectProjectsType = "bitbucket";
 ```
 
 ## Values
 
 ```typescript
-"github" | "github-limited" | "gitlab" | "bitbucket" | "vercel"
+"github" | "github-limited" | "gitlab" | "bitbucket" | "vercel" | "cursor-origin"
 ```

@@ -18,6 +18,7 @@ export const SearchRepoQueryParamProvider = {
   GithubCustomHost: "github-custom-host",
   Gitlab: "gitlab",
   Bitbucket: "bitbucket",
+  CursorOrigin: "cursor-origin",
 } as const;
 export type SearchRepoQueryParamProvider = ClosedEnum<
   typeof SearchRepoQueryParamProvider
@@ -42,27 +43,6 @@ export type SearchRepoRequest = {
   slug?: string | undefined;
 };
 
-export const SearchRepoResponseBodyProvider = {
-  Bitbucket: "bitbucket",
-  Github: "github",
-  GithubCustomHost: "github-custom-host",
-  GithubLimited: "github-limited",
-  Gitlab: "gitlab",
-  Vercel: "vercel",
-} as const;
-export type SearchRepoResponseBodyProvider = ClosedEnum<
-  typeof SearchRepoResponseBodyProvider
->;
-
-export type ResponseBodyNamespaceId = string | number;
-
-export type GitAccount = {
-  provider: SearchRepoResponseBodyProvider;
-  namespaceId: string | number | null;
-};
-
-export type ResponseBodyId = string | number;
-
 export const SearchRepoResponseBodyIntegrationsProvider = {
   Bitbucket: "bitbucket",
   Github: "github",
@@ -75,41 +55,121 @@ export type SearchRepoResponseBodyIntegrationsProvider = ClosedEnum<
   typeof SearchRepoResponseBodyIntegrationsProvider
 >;
 
+export type ResponseBodyNamespaceId = string | number;
+
+export type ResponseBodyGitAccount = {
+  provider: SearchRepoResponseBodyIntegrationsProvider;
+  namespaceId: string | number | null;
+};
+
+export type ResponseBodyId = string | number;
+
+export const SearchRepoResponseBodyIntegrationsResponseProvider = {
+  Bitbucket: "bitbucket",
+  Github: "github",
+  GithubCustomHost: "github-custom-host",
+  GithubLimited: "github-limited",
+  Gitlab: "gitlab",
+  Vercel: "vercel",
+} as const;
+export type SearchRepoResponseBodyIntegrationsResponseProvider = ClosedEnum<
+  typeof SearchRepoResponseBodyIntegrationsResponseProvider
+>;
+
 export type SearchRepoResponseBodyId = string | number;
 
-export type ResponseBodyOwner = {
+export type SearchRepoResponseBodyOwner = {
   id: string | number;
   name: string;
 };
 
-export const ResponseBodyOwnerType = {
+export const SearchRepoResponseBodyOwnerType = {
   Team: "team",
   User: "user",
 } as const;
-export type ResponseBodyOwnerType = ClosedEnum<typeof ResponseBodyOwnerType>;
+export type SearchRepoResponseBodyOwnerType = ClosedEnum<
+  typeof SearchRepoResponseBodyOwnerType
+>;
 
-export type Repos = {
+export type ResponseBodyRepos = {
   id: string | number;
-  provider: SearchRepoResponseBodyIntegrationsProvider;
+  provider: SearchRepoResponseBodyIntegrationsResponseProvider;
   url: string;
   name: string;
   slug: string;
   namespace: string;
-  owner: ResponseBodyOwner;
-  ownerType: ResponseBodyOwnerType;
+  owner: SearchRepoResponseBodyOwner;
+  ownerType: SearchRepoResponseBodyOwnerType;
   private: boolean;
   defaultBranch: string;
   updatedAt: number;
 };
 
-export type SearchRepoResponseBody2 = {
+export type ResponseBody4 = {
+  gitAccount: ResponseBodyGitAccount;
+  repos: Array<ResponseBodyRepos>;
+};
+
+export type GitAccount = {
+  provider: string;
+  namespaceId: string | null;
+};
+
+export const SearchRepoResponseBodyProvider = {
+  CursorOrigin: "cursor-origin",
+} as const;
+export type SearchRepoResponseBodyProvider = ClosedEnum<
+  typeof SearchRepoResponseBodyProvider
+>;
+
+export const ResponseBodyOwnerType = {
+  Team: "team",
+} as const;
+export type ResponseBodyOwnerType = ClosedEnum<typeof ResponseBodyOwnerType>;
+
+export type ResponseBodyOwner = {
+  id: string;
+  name: string;
+};
+
+export type Repos = {
+  id: string;
+  provider: SearchRepoResponseBodyProvider;
+  url: string;
+  name: string;
+  slug: string;
+  namespace: string;
+  ownerType: ResponseBodyOwnerType;
+  owner: ResponseBodyOwner;
+  private: boolean;
+  defaultBranch: string;
+  updatedAt: number;
+};
+
+export type SearchRepoResponseBody3 = {
   gitAccount: GitAccount;
   repos: Array<Repos>;
+};
+
+export const ResponseBodyCode = {
+  InstallationNotFound: "installation_not_found",
+} as const;
+export type ResponseBodyCode = ClosedEnum<typeof ResponseBodyCode>;
+
+export type SearchRepoResponseBodyError = {
+  code: ResponseBodyCode;
+  message: string;
+};
+
+export type SearchRepoResponseBody2 = {
+  error: SearchRepoResponseBodyError;
 };
 
 export type SearchRepoResponseBody1 = {};
 
 export type SearchRepoResponseBody =
+  | SearchRepoResponseBody3
+  | ResponseBody4
   | SearchRepoResponseBody2
   | SearchRepoResponseBody1;
 
@@ -167,9 +227,9 @@ export function searchRepoRequestToJSON(
 }
 
 /** @internal */
-export const SearchRepoResponseBodyProvider$inboundSchema: z.ZodNativeEnum<
-  typeof SearchRepoResponseBodyProvider
-> = z.nativeEnum(SearchRepoResponseBodyProvider);
+export const SearchRepoResponseBodyIntegrationsProvider$inboundSchema:
+  z.ZodNativeEnum<typeof SearchRepoResponseBodyIntegrationsProvider> = z
+    .nativeEnum(SearchRepoResponseBodyIntegrationsProvider);
 
 /** @internal */
 export const ResponseBodyNamespaceId$inboundSchema: z.ZodType<
@@ -189,22 +249,22 @@ export function responseBodyNamespaceIdFromJSON(
 }
 
 /** @internal */
-export const GitAccount$inboundSchema: z.ZodType<
-  GitAccount,
+export const ResponseBodyGitAccount$inboundSchema: z.ZodType<
+  ResponseBodyGitAccount,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  provider: SearchRepoResponseBodyProvider$inboundSchema,
+  provider: SearchRepoResponseBodyIntegrationsProvider$inboundSchema,
   namespaceId: types.nullable(smartUnion([types.string(), types.number()])),
 });
 
-export function gitAccountFromJSON(
+export function responseBodyGitAccountFromJSON(
   jsonString: string,
-): SafeParseResult<GitAccount, SDKValidationError> {
+): SafeParseResult<ResponseBodyGitAccount, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GitAccount$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GitAccount' from JSON`,
+    (x) => ResponseBodyGitAccount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyGitAccount' from JSON`,
   );
 }
 
@@ -226,9 +286,9 @@ export function responseBodyIdFromJSON(
 }
 
 /** @internal */
-export const SearchRepoResponseBodyIntegrationsProvider$inboundSchema:
-  z.ZodNativeEnum<typeof SearchRepoResponseBodyIntegrationsProvider> = z
-    .nativeEnum(SearchRepoResponseBodyIntegrationsProvider);
+export const SearchRepoResponseBodyIntegrationsResponseProvider$inboundSchema:
+  z.ZodNativeEnum<typeof SearchRepoResponseBodyIntegrationsResponseProvider> = z
+    .nativeEnum(SearchRepoResponseBodyIntegrationsResponseProvider);
 
 /** @internal */
 export const SearchRepoResponseBodyId$inboundSchema: z.ZodType<
@@ -248,12 +308,116 @@ export function searchRepoResponseBodyIdFromJSON(
 }
 
 /** @internal */
+export const SearchRepoResponseBodyOwner$inboundSchema: z.ZodType<
+  SearchRepoResponseBodyOwner,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: smartUnion([types.string(), types.number()]),
+  name: types.string(),
+});
+
+export function searchRepoResponseBodyOwnerFromJSON(
+  jsonString: string,
+): SafeParseResult<SearchRepoResponseBodyOwner, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SearchRepoResponseBodyOwner$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SearchRepoResponseBodyOwner' from JSON`,
+  );
+}
+
+/** @internal */
+export const SearchRepoResponseBodyOwnerType$inboundSchema: z.ZodNativeEnum<
+  typeof SearchRepoResponseBodyOwnerType
+> = z.nativeEnum(SearchRepoResponseBodyOwnerType);
+
+/** @internal */
+export const ResponseBodyRepos$inboundSchema: z.ZodType<
+  ResponseBodyRepos,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: smartUnion([types.string(), types.number()]),
+  provider: SearchRepoResponseBodyIntegrationsResponseProvider$inboundSchema,
+  url: types.string(),
+  name: types.string(),
+  slug: types.string(),
+  namespace: types.string(),
+  owner: z.lazy(() => SearchRepoResponseBodyOwner$inboundSchema),
+  ownerType: SearchRepoResponseBodyOwnerType$inboundSchema,
+  private: types.boolean(),
+  defaultBranch: types.string(),
+  updatedAt: types.number(),
+});
+
+export function responseBodyReposFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyRepos, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyRepos$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyRepos' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBody4$inboundSchema: z.ZodType<
+  ResponseBody4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  gitAccount: z.lazy(() => ResponseBodyGitAccount$inboundSchema),
+  repos: z.array(z.lazy(() => ResponseBodyRepos$inboundSchema)),
+});
+
+export function responseBody4FromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBody4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBody4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBody4' from JSON`,
+  );
+}
+
+/** @internal */
+export const GitAccount$inboundSchema: z.ZodType<
+  GitAccount,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  provider: types.string(),
+  namespaceId: types.nullable(types.string()),
+});
+
+export function gitAccountFromJSON(
+  jsonString: string,
+): SafeParseResult<GitAccount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GitAccount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GitAccount' from JSON`,
+  );
+}
+
+/** @internal */
+export const SearchRepoResponseBodyProvider$inboundSchema: z.ZodNativeEnum<
+  typeof SearchRepoResponseBodyProvider
+> = z.nativeEnum(SearchRepoResponseBodyProvider);
+
+/** @internal */
+export const ResponseBodyOwnerType$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyOwnerType
+> = z.nativeEnum(ResponseBodyOwnerType);
+
+/** @internal */
 export const ResponseBodyOwner$inboundSchema: z.ZodType<
   ResponseBodyOwner,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: smartUnion([types.string(), types.number()]),
+  id: types.string(),
   name: types.string(),
 });
 
@@ -268,21 +432,16 @@ export function responseBodyOwnerFromJSON(
 }
 
 /** @internal */
-export const ResponseBodyOwnerType$inboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyOwnerType
-> = z.nativeEnum(ResponseBodyOwnerType);
-
-/** @internal */
 export const Repos$inboundSchema: z.ZodType<Repos, z.ZodTypeDef, unknown> = z
   .object({
-    id: smartUnion([types.string(), types.number()]),
-    provider: SearchRepoResponseBodyIntegrationsProvider$inboundSchema,
+    id: types.string(),
+    provider: SearchRepoResponseBodyProvider$inboundSchema,
     url: types.string(),
     name: types.string(),
     slug: types.string(),
     namespace: types.string(),
-    owner: z.lazy(() => ResponseBodyOwner$inboundSchema),
     ownerType: ResponseBodyOwnerType$inboundSchema,
+    owner: z.lazy(() => ResponseBodyOwner$inboundSchema),
     private: types.boolean(),
     defaultBranch: types.string(),
     updatedAt: types.number(),
@@ -299,13 +458,57 @@ export function reposFromJSON(
 }
 
 /** @internal */
-export const SearchRepoResponseBody2$inboundSchema: z.ZodType<
-  SearchRepoResponseBody2,
+export const SearchRepoResponseBody3$inboundSchema: z.ZodType<
+  SearchRepoResponseBody3,
   z.ZodTypeDef,
   unknown
 > = z.object({
   gitAccount: z.lazy(() => GitAccount$inboundSchema),
   repos: z.array(z.lazy(() => Repos$inboundSchema)),
+});
+
+export function searchRepoResponseBody3FromJSON(
+  jsonString: string,
+): SafeParseResult<SearchRepoResponseBody3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SearchRepoResponseBody3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SearchRepoResponseBody3' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyCode$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyCode
+> = z.nativeEnum(ResponseBodyCode);
+
+/** @internal */
+export const SearchRepoResponseBodyError$inboundSchema: z.ZodType<
+  SearchRepoResponseBodyError,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  code: ResponseBodyCode$inboundSchema,
+  message: types.string(),
+});
+
+export function searchRepoResponseBodyErrorFromJSON(
+  jsonString: string,
+): SafeParseResult<SearchRepoResponseBodyError, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SearchRepoResponseBodyError$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SearchRepoResponseBodyError' from JSON`,
+  );
+}
+
+/** @internal */
+export const SearchRepoResponseBody2$inboundSchema: z.ZodType<
+  SearchRepoResponseBody2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  error: z.lazy(() => SearchRepoResponseBodyError$inboundSchema),
 });
 
 export function searchRepoResponseBody2FromJSON(
@@ -341,6 +544,8 @@ export const SearchRepoResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([
+  z.lazy(() => SearchRepoResponseBody3$inboundSchema),
+  z.lazy(() => ResponseBody4$inboundSchema),
   z.lazy(() => SearchRepoResponseBody2$inboundSchema),
   z.lazy(() => SearchRepoResponseBody1$inboundSchema),
 ]);

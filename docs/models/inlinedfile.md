@@ -5,7 +5,7 @@ Used in the case you want to inline a file inside the request
 ## Example Usage
 
 ```typescript
-import { InlinedFile } from "@vercel/sdk/models/createdeploymentvaluedeploymentsresponse2002.js";
+import { InlinedFile } from "@vercel/sdk/models/createdeploymentmissingdeploymentstype.js";
 
 let value: InlinedFile = {
   data: "<value>",

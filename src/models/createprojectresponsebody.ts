@@ -11,8 +11,10 @@ import { smartUnion } from "../types/smartUnion.js";
 import {
   Block,
   Block$inboundSchema,
-  CreateProjectBlockHistory,
-  CreateProjectBlockHistory$inboundSchema,
+  BlockHistory4,
+  BlockHistory4$inboundSchema,
+  BlockHistoryRoute,
+  BlockHistoryRoute$inboundSchema,
   CreateProjectDeploymentPolicy,
   CreateProjectDeploymentPolicy$inboundSchema,
   CreateProjectGitComments,
@@ -59,7 +61,7 @@ import {
   Sandbox$inboundSchema,
   UsageStatus,
   UsageStatus$inboundSchema,
-} from "./createprojectblockhistory.js";
+} from "./blockhistoryroute.js";
 import {
   Alias,
   Alias$inboundSchema,
@@ -112,18 +114,58 @@ import {
 } from "./createprojectregion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
-export const CreateProjectProjectsResponseAction = {
+export type BlockHistory3 = {
+  action: "route-blocked";
+  route: BlockHistoryRoute;
+  reason: string;
+  createdAt: number;
+  caseId?: string | undefined;
+  actor?: string | undefined;
+  comment?: string | undefined;
+  ineligibleForAppeal?: boolean | undefined;
+  isCascading?: boolean | undefined;
+};
+
+export type BlockHistory2 = {
+  action: "unblocked";
+  createdAt: number;
+  caseId?: string | undefined;
+  actor?: string | undefined;
+  comment?: string | undefined;
+  ineligibleForAppeal?: boolean | undefined;
+  isCascading?: boolean | undefined;
+};
+
+export type BlockHistory1 = {
+  action: "blocked";
+  reason: string;
+  statusCode: number;
+  createdAt: number;
+  caseId?: string | undefined;
+  actor?: string | undefined;
+  comment?: string | undefined;
+  ineligibleForAppeal?: boolean | undefined;
+  isCascading?: boolean | undefined;
+};
+
+export type CreateProjectBlockHistory =
+  | BlockHistory1
+  | BlockHistory2
+  | BlockHistory3
+  | BlockHistory4;
+
+export const CreateProjectProjectsResponse200Action = {
   AddDeploymentInterstitial: "add-deployment-interstitial",
   AddProjectInterstitial: "add-project-interstitial",
   RemoveDeploymentInterstitial: "remove-deployment-interstitial",
   RemoveProjectInterstitial: "remove-project-interstitial",
 } as const;
-export type CreateProjectProjectsResponseAction = ClosedEnum<
-  typeof CreateProjectProjectsResponseAction
+export type CreateProjectProjectsResponse200Action = ClosedEnum<
+  typeof CreateProjectProjectsResponse200Action
 >;
 
 export type InterstitialHistory = {
-  action: CreateProjectProjectsResponseAction;
+  action: CreateProjectProjectsResponse200Action;
   createdAt: number;
   caseId?: string | undefined;
   reason?: string | undefined;
@@ -136,7 +178,9 @@ export type CreateProjectAbuse = {
   history: Array<CreateProjectHistory>;
   updatedAt: number;
   block?: Block | undefined;
-  blockHistory?: Array<CreateProjectBlockHistory> | undefined;
+  blockHistory?:
+    | Array<BlockHistory1 | BlockHistory2 | BlockHistory3 | BlockHistory4>
+    | undefined;
   interstitial?: boolean | undefined;
   interstitialHistory?: Array<InterstitialHistory> | undefined;
 };
@@ -372,9 +416,111 @@ export type CreateProjectResponseBody = {
 };
 
 /** @internal */
-export const CreateProjectProjectsResponseAction$inboundSchema: z.ZodNativeEnum<
-  typeof CreateProjectProjectsResponseAction
-> = z.nativeEnum(CreateProjectProjectsResponseAction);
+export const BlockHistory3$inboundSchema: z.ZodType<
+  BlockHistory3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  action: types.literal("route-blocked"),
+  route: BlockHistoryRoute$inboundSchema,
+  reason: types.string(),
+  createdAt: types.number(),
+  caseId: types.optional(types.string()),
+  actor: types.optional(types.string()),
+  comment: types.optional(types.string()),
+  ineligibleForAppeal: types.optional(types.boolean()),
+  isCascading: types.optional(types.boolean()),
+});
+
+export function blockHistory3FromJSON(
+  jsonString: string,
+): SafeParseResult<BlockHistory3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BlockHistory3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BlockHistory3' from JSON`,
+  );
+}
+
+/** @internal */
+export const BlockHistory2$inboundSchema: z.ZodType<
+  BlockHistory2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  action: types.literal("unblocked"),
+  createdAt: types.number(),
+  caseId: types.optional(types.string()),
+  actor: types.optional(types.string()),
+  comment: types.optional(types.string()),
+  ineligibleForAppeal: types.optional(types.boolean()),
+  isCascading: types.optional(types.boolean()),
+});
+
+export function blockHistory2FromJSON(
+  jsonString: string,
+): SafeParseResult<BlockHistory2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BlockHistory2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BlockHistory2' from JSON`,
+  );
+}
+
+/** @internal */
+export const BlockHistory1$inboundSchema: z.ZodType<
+  BlockHistory1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  action: types.literal("blocked"),
+  reason: types.string(),
+  statusCode: types.number(),
+  createdAt: types.number(),
+  caseId: types.optional(types.string()),
+  actor: types.optional(types.string()),
+  comment: types.optional(types.string()),
+  ineligibleForAppeal: types.optional(types.boolean()),
+  isCascading: types.optional(types.boolean()),
+});
+
+export function blockHistory1FromJSON(
+  jsonString: string,
+): SafeParseResult<BlockHistory1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BlockHistory1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BlockHistory1' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectBlockHistory$inboundSchema: z.ZodType<
+  CreateProjectBlockHistory,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => BlockHistory1$inboundSchema),
+  z.lazy(() => BlockHistory2$inboundSchema),
+  z.lazy(() => BlockHistory3$inboundSchema),
+  BlockHistory4$inboundSchema,
+]);
+
+export function createProjectBlockHistoryFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectBlockHistory, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectBlockHistory$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectBlockHistory' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectProjectsResponse200Action$inboundSchema:
+  z.ZodNativeEnum<typeof CreateProjectProjectsResponse200Action> = z.nativeEnum(
+    CreateProjectProjectsResponse200Action,
+  );
 
 /** @internal */
 export const InterstitialHistory$inboundSchema: z.ZodType<
@@ -382,7 +528,7 @@ export const InterstitialHistory$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  action: CreateProjectProjectsResponseAction$inboundSchema,
+  action: CreateProjectProjectsResponse200Action$inboundSchema,
   createdAt: types.number(),
   caseId: types.optional(types.string()),
   reason: types.optional(types.string()),
@@ -411,7 +557,14 @@ export const CreateProjectAbuse$inboundSchema: z.ZodType<
   updatedAt: types.number(),
   block: types.optional(Block$inboundSchema),
   blockHistory: types.optional(
-    z.array(CreateProjectBlockHistory$inboundSchema),
+    z.array(z.union([
+      z.lazy(() => BlockHistory1$inboundSchema),
+      z.lazy(() =>
+        BlockHistory2$inboundSchema
+      ),
+      z.lazy(() => BlockHistory3$inboundSchema),
+      BlockHistory4$inboundSchema,
+    ])),
   ),
   interstitial: types.optional(types.boolean()),
   interstitialHistory: types.optional(

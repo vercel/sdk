@@ -92,6 +92,7 @@ export type CancelDeploymentServicesDeploymentsFunctions = {
   architecture?: CancelDeploymentServicesDeploymentsArchitecture | undefined;
   memory?: number | undefined;
   maxDuration?: CancelDeploymentServicesDeploymentsMaxDuration | undefined;
+  maxConcurrency?: number | undefined;
   regions?: Array<string> | undefined;
   functionFailoverRegions?: Array<string> | undefined;
   runtime?: string | undefined;
@@ -317,6 +318,7 @@ export type ServicesFunctions = {
   architecture?: ServicesArchitecture | undefined;
   memory?: number | undefined;
   maxDuration?: number | CancelDeploymentMaxDuration2 | undefined;
+  maxConcurrency?: number | undefined;
   regions?: Array<string> | undefined;
   functionFailoverRegions?: Array<string> | undefined;
   runtime?: string | undefined;
@@ -1433,6 +1435,7 @@ export type CancelDeploymentServicesFunctions = {
     | number
     | CancelDeploymentMaxDurationDeploymentsResponse2
     | undefined;
+  maxConcurrency?: number | undefined;
   regions?: Array<string> | undefined;
   functionFailoverRegions?: Array<string> | undefined;
   runtime?: string | undefined;
@@ -1636,6 +1639,7 @@ export const CancelDeploymentServicesDeploymentsFunctions$inboundSchema:
     maxDuration: types.optional(
       CancelDeploymentServicesDeploymentsMaxDuration$inboundSchema,
     ),
+    maxConcurrency: types.optional(types.number()),
     regions: types.optional(z.array(types.string())),
     functionFailoverRegions: types.optional(z.array(types.string())),
     runtime: types.optional(types.string()),
@@ -1942,6 +1946,7 @@ export const ServicesFunctions$inboundSchema: z.ZodType<
   maxDuration: types.optional(
     smartUnion([types.number(), CancelDeploymentMaxDuration2$inboundSchema]),
   ),
+  maxConcurrency: types.optional(types.number()),
   regions: types.optional(z.array(types.string())),
   functionFailoverRegions: types.optional(z.array(types.string())),
   runtime: types.optional(types.string()),
@@ -5015,6 +5020,7 @@ export const CancelDeploymentServicesFunctions$inboundSchema: z.ZodType<
       CancelDeploymentMaxDurationDeploymentsResponse2$inboundSchema,
     ]),
   ),
+  maxConcurrency: types.optional(types.number()),
   regions: types.optional(z.array(types.string())),
   functionFailoverRegions: types.optional(z.array(types.string())),
   runtime: types.optional(types.string()),

@@ -3,13 +3,14 @@
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarProjectsResponse200Action } from "@vercel/sdk/models/uploadprojectavatardismissedtoasts.js";
+import { UploadProjectAvatarProjectsResponse200Action } from "@vercel/sdk/models/uploadprojectavatarvaluepreviousvalue.js";
 
-let value: UploadProjectAvatarProjectsResponse200Action = "log";
+let value: UploadProjectAvatarProjectsResponse200Action =
+  "remove-deployment-interstitial";
 ```
 
 ## Values
 
 ```typescript
-"allow" | "bypass" | "challenge" | "deny" | "log" | "rate_limit" | "redirect"
+"add-deployment-interstitial" | "add-project-interstitial" | "remove-deployment-interstitial" | "remove-project-interstitial"
 ```

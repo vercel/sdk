@@ -95,3 +95,16 @@ const value: models.GitSource8 = {
 };
 ```
 
+### `models.GitSource9`
+
+```typescript
+const value: models.GitSource9 = {
+  owner: "bitbucket_user",
+  ref: "main",
+  repo: "next.js",
+  repoId: "123456789",
+  sha: "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0",
+  type: "cursor-origin",
+};
+```
+

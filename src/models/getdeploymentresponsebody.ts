@@ -759,6 +759,7 @@ export type GetDeploymentServicesDeploymentsFunctions = {
     | number
     | GetDeploymentMaxDurationDeploymentsResponse2
     | undefined;
+  maxConcurrency?: number | undefined;
   regions?: Array<string> | undefined;
   functionFailoverRegions?: Array<string> | undefined;
   runtime?: string | undefined;
@@ -1624,6 +1625,10 @@ export type GetDeploymentResponseBody2 = {
     | { [k: string]: GetDeploymentResponseBodyFunctions }
     | null
     | undefined;
+  /**
+   * Whether this deployment completed through the instant static fast path.
+   */
+  isInstantStatic?: boolean | undefined;
   monorepoManager?: string | null | undefined;
   ownerId: string;
   /**
@@ -3380,6 +3385,7 @@ export const GetDeploymentServicesDeploymentsFunctions$inboundSchema: z.ZodType<
       GetDeploymentMaxDurationDeploymentsResponse2$inboundSchema,
     ]),
   ),
+  maxConcurrency: types.optional(types.number()),
   regions: types.optional(z.array(types.string())),
   functionFailoverRegions: types.optional(z.array(types.string())),
   runtime: types.optional(types.string()),
@@ -4660,6 +4666,7 @@ export const GetDeploymentResponseBody2$inboundSchema: z.ZodType<
   functions: z.nullable(
     z.record(GetDeploymentResponseBodyFunctions$inboundSchema),
   ).optional(),
+  isInstantStatic: types.optional(types.boolean()),
   monorepoManager: z.nullable(types.string()).optional(),
   ownerId: types.string(),
   passiveConnectConfigurationId: types.optional(types.string()),

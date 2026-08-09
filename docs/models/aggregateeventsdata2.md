@@ -139,6 +139,7 @@ let value: AggregateEventsData2 = {
   keyName: "<value>",
   authMethod: "<value>",
   appName: "<value>",
+  codingAgent: "<value>",
   isByok: "<value>",
   isPrivateModel: "<value>",
   isRequestZdr: "<value>",
@@ -361,6 +362,7 @@ let value: AggregateEventsData2 = {
 | `keyName`                              | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `authMethod`                           | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `appName`                              | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `codingAgent`                          | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `isByok`                               | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `isPrivateModel`                       | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `isRequestZdr`                         | *string*                               | :heavy_check_mark:                     | N/A                                    |

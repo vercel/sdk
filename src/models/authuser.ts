@@ -462,6 +462,7 @@ export type ManagedTeams = {
 export type AccountUpdateContext = {
   organization?: Organization | undefined;
   managedTeams: Array<ManagedTeams>;
+  verifiedEmuDomains: Array<string>;
 };
 
 /**
@@ -1079,6 +1080,7 @@ export const AccountUpdateContext$inboundSchema: z.ZodType<
 > = z.object({
   organization: types.optional(z.lazy(() => Organization$inboundSchema)),
   managedTeams: z.array(z.lazy(() => ManagedTeams$inboundSchema)),
+  verifiedEmuDomains: z.array(types.string()),
 });
 
 export function accountUpdateContextFromJSON(

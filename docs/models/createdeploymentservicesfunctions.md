@@ -5,7 +5,7 @@ Function configuration scoped to this service.
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentServicesFunctions } from "@vercel/sdk/models/createdeploymentkeydeployments2.js";
+import { CreateDeploymentServicesFunctions } from "@vercel/sdk/models/createdeploymenttransformsdeploymentsresponseop.js";
 
 let value: CreateDeploymentServicesFunctions = {};
 ```
@@ -17,6 +17,7 @@ let value: CreateDeploymentServicesFunctions = {};
 | `architecture`                                                                                   | [models.CreateDeploymentServicesArchitecture](../models/createdeploymentservicesarchitecture.md) | :heavy_minus_sign:                                                                               | N/A                                                                                              |
 | `memory`                                                                                         | *number*                                                                                         | :heavy_minus_sign:                                                                               | N/A                                                                                              |
 | `maxDuration`                                                                                    | *models.CreateDeploymentServicesMaxDuration*                                                     | :heavy_minus_sign:                                                                               | N/A                                                                                              |
+| `maxConcurrency`                                                                                 | *number*                                                                                         | :heavy_minus_sign:                                                                               | N/A                                                                                              |
 | `regions`                                                                                        | *string*[]                                                                                       | :heavy_minus_sign:                                                                               | N/A                                                                                              |
 | `functionFailoverRegions`                                                                        | *string*[]                                                                                       | :heavy_minus_sign:                                                                               | N/A                                                                                              |
 | `runtime`                                                                                        | *string*                                                                                         | :heavy_minus_sign:                                                                               | N/A                                                                                              |

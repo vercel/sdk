@@ -206,12 +206,12 @@ export type CreateStorageStoresBlobStatus = ClosedEnum<
   typeof CreateStorageStoresBlobStatus
 >;
 
-export const CreateStorageStoresBlobResponseAccess = {
+export const CreateStorageStoresBlobStorageAccess = {
   Private: "private",
   Public: "public",
 } as const;
-export type CreateStorageStoresBlobResponseAccess = ClosedEnum<
-  typeof CreateStorageStoresBlobResponseAccess
+export type CreateStorageStoresBlobStorageAccess = ClosedEnum<
+  typeof CreateStorageStoresBlobStorageAccess
 >;
 
 /**
@@ -260,7 +260,7 @@ export type CreateStorageStoresBlobStore = {
   totalConnectedProjects?: number | undefined;
   usageQuotaExceeded: boolean;
   status: CreateStorageStoresBlobStatus | null;
-  access?: CreateStorageStoresBlobResponseAccess | undefined;
+  access?: CreateStorageStoresBlobStorageAccess | undefined;
   /**
    * A project-default store is a private blob store that is lazily created per-project, uses OIDC auth instead of read-write tokens, and cannot be modified through standard store mutation APIs. Undefined for legacy stores.
    */
@@ -486,9 +486,9 @@ export const CreateStorageStoresBlobStatus$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(CreateStorageStoresBlobStatus);
 
 /** @internal */
-export const CreateStorageStoresBlobResponseAccess$inboundSchema:
-  z.ZodNativeEnum<typeof CreateStorageStoresBlobResponseAccess> = z.nativeEnum(
-    CreateStorageStoresBlobResponseAccess,
+export const CreateStorageStoresBlobStorageAccess$inboundSchema:
+  z.ZodNativeEnum<typeof CreateStorageStoresBlobStorageAccess> = z.nativeEnum(
+    CreateStorageStoresBlobStorageAccess,
   );
 
 /** @internal */
@@ -516,7 +516,7 @@ export const CreateStorageStoresBlobStore$inboundSchema: z.ZodType<
   totalConnectedProjects: types.optional(types.number()),
   usageQuotaExceeded: types.boolean(),
   status: types.nullable(CreateStorageStoresBlobStatus$inboundSchema),
-  access: types.optional(CreateStorageStoresBlobResponseAccess$inboundSchema),
+  access: types.optional(CreateStorageStoresBlobStorageAccess$inboundSchema),
   kind: types.optional(CreateStorageStoresBlobKind$inboundSchema),
   projectId: types.optional(types.string()),
   size: types.number(),

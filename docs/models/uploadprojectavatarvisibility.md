@@ -5,7 +5,7 @@ User-facing config/secret model. When set, authoritative for new code paths when
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarVisibility } from "@vercel/sdk/models/uploadprojectavatarstaticips.js";
+import { UploadProjectAvatarVisibility } from "@vercel/sdk/models/uploadprojectavatarprojectsbuildmachineelasticreason.js";
 
 let value: UploadProjectAvatarVisibility = "secret";
 ```

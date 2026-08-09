@@ -1028,6 +1028,7 @@ export type GetDeploymentResponseBodyPurchaseType = ClosedEnum<
  * The default plan type for the build machine — what the customer is *paying* for on their plan. For most customers, this is standard, but some customers have an entitlement for enhanced builds.
  */
 export const GetDeploymentResponseBodyDefaultPurchaseType = {
+  Basic: "basic",
   Enhanced: "enhanced",
   Standard: "standard",
 } as const;

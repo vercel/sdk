@@ -7,7 +7,52 @@ import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+import {
+  UpdateMicrofrontendsAbuse,
+  UpdateMicrofrontendsAbuse$inboundSchema,
+  UpdateMicrofrontendsAction,
+  UpdateMicrofrontendsAction$inboundSchema,
+  UpdateMicrofrontendsDefaultResourceConfig,
+  UpdateMicrofrontendsDefaultResourceConfig$inboundSchema,
+  UpdateMicrofrontendsDeploymentPolicy,
+  UpdateMicrofrontendsDeploymentPolicy$inboundSchema,
+  UpdateMicrofrontendsFeatures,
+  UpdateMicrofrontendsFeatures$inboundSchema,
+  UpdateMicrofrontendsGitComments,
+  UpdateMicrofrontendsGitComments$inboundSchema,
+  UpdateMicrofrontendsGitProviderOptions,
+  UpdateMicrofrontendsGitProviderOptions$inboundSchema,
+  UpdateMicrofrontendsInternalRoutes,
+  UpdateMicrofrontendsInternalRoutes$inboundSchema,
+  UpdateMicrofrontendsLastAliasRequest,
+  UpdateMicrofrontendsLastAliasRequest$inboundSchema,
+  UpdateMicrofrontendsLastRollbackTarget,
+  UpdateMicrofrontendsLastRollbackTarget$inboundSchema,
+  UpdateMicrofrontendsOidcTokenConfig,
+  UpdateMicrofrontendsOidcTokenConfig$inboundSchema,
+  UpdateMicrofrontendsPermissions,
+  UpdateMicrofrontendsPermissions$inboundSchema,
+  UpdateMicrofrontendsProtectionBypass,
+  UpdateMicrofrontendsProtectionBypass$inboundSchema,
+  UpdateMicrofrontendsSecurity,
+  UpdateMicrofrontendsSecurity$inboundSchema,
+  UpdateMicrofrontendsSsoProtection,
+  UpdateMicrofrontendsSsoProtection$inboundSchema,
+  UpdateMicrofrontendsStaticIps,
+  UpdateMicrofrontendsStaticIps$inboundSchema,
+  UpdateMicrofrontendsTargets,
+  UpdateMicrofrontendsTargets$inboundSchema,
+  UpdateMicrofrontendsTrustedIps,
+  UpdateMicrofrontendsTrustedIps$inboundSchema,
+  UpdateMicrofrontendsTrustedSources,
+  UpdateMicrofrontendsTrustedSources$inboundSchema,
+  UpdateMicrofrontendsUsageStatus,
+  UpdateMicrofrontendsUsageStatus$inboundSchema,
+  UpdateMicrofrontendsWebAnalytics,
+  UpdateMicrofrontendsWebAnalytics$inboundSchema,
+} from "./updatemicrofrontendsaction.js";
 import {
   UpdateMicrofrontendsAlias,
   UpdateMicrofrontendsAlias$inboundSchema,
@@ -25,8 +70,6 @@ import {
   UpdateMicrofrontendsCustomEnvironments$inboundSchema,
   UpdateMicrofrontendsDataCache,
   UpdateMicrofrontendsDataCache$inboundSchema,
-  UpdateMicrofrontendsDefaultResourceConfig,
-  UpdateMicrofrontendsDefaultResourceConfig$inboundSchema,
   UpdateMicrofrontendsDeploymentExpiration,
   UpdateMicrofrontendsDeploymentExpiration$inboundSchema,
   UpdateMicrofrontendsEnv,
@@ -67,57 +110,28 @@ import {
   UpdateMicrofrontendsServices$inboundSchema,
   UpdateMicrofrontendsSpeedInsights,
   UpdateMicrofrontendsSpeedInsights$inboundSchema,
-} from "./updatemicrofrontendsdefaultresourceconfig.js";
-import {
-  UpdateMicrofrontendsAbuse,
-  UpdateMicrofrontendsAbuse$inboundSchema,
-  UpdateMicrofrontendsAction,
-  UpdateMicrofrontendsAction$inboundSchema,
-  UpdateMicrofrontendsDeploymentPolicy,
-  UpdateMicrofrontendsDeploymentPolicy$inboundSchema,
-  UpdateMicrofrontendsFeatures,
-  UpdateMicrofrontendsFeatures$inboundSchema,
-  UpdateMicrofrontendsGitComments,
-  UpdateMicrofrontendsGitComments$inboundSchema,
-  UpdateMicrofrontendsGitProviderOptions,
-  UpdateMicrofrontendsGitProviderOptions$inboundSchema,
-  UpdateMicrofrontendsInternalRoutes,
-  UpdateMicrofrontendsInternalRoutes$inboundSchema,
-  UpdateMicrofrontendsLastAliasRequest,
-  UpdateMicrofrontendsLastAliasRequest$inboundSchema,
-  UpdateMicrofrontendsLastRollbackTarget,
-  UpdateMicrofrontendsLastRollbackTarget$inboundSchema,
-  UpdateMicrofrontendsOidcTokenConfig,
-  UpdateMicrofrontendsOidcTokenConfig$inboundSchema,
-  UpdateMicrofrontendsPermissions,
-  UpdateMicrofrontendsPermissions$inboundSchema,
-  UpdateMicrofrontendsProtectionBypass,
-  UpdateMicrofrontendsProtectionBypass$inboundSchema,
-  UpdateMicrofrontendsSecurity,
-  UpdateMicrofrontendsSecurity$inboundSchema,
-  UpdateMicrofrontendsSsoProtection,
-  UpdateMicrofrontendsSsoProtection$inboundSchema,
-  UpdateMicrofrontendsStaticIps,
-  UpdateMicrofrontendsStaticIps$inboundSchema,
-  UpdateMicrofrontendsTargets,
-  UpdateMicrofrontendsTargets$inboundSchema,
-  UpdateMicrofrontendsTrustedIps,
-  UpdateMicrofrontendsTrustedIps$inboundSchema,
-  UpdateMicrofrontendsTrustedSources,
-  UpdateMicrofrontendsTrustedSources$inboundSchema,
-  UpdateMicrofrontendsUsageStatus,
-  UpdateMicrofrontendsUsageStatus$inboundSchema,
-  UpdateMicrofrontendsValue,
-  UpdateMicrofrontendsValue$inboundSchema,
-  UpdateMicrofrontendsWebAnalytics,
-  UpdateMicrofrontendsWebAnalytics$inboundSchema,
-} from "./updatemicrofrontendsvalue.js";
+} from "./updatemicrofrontendsprojectsbuildmachineselection.js";
+
+export type UpdateMicrofrontendsValuePreviousValue = string | number | boolean;
+
+export type UpdateMicrofrontendsValueCurrentValue = string | number | boolean;
+
+export type UpdateMicrofrontendsValue3 = {
+  previousValue: string | number | boolean;
+  currentValue: string | number | boolean;
+};
+
+export type UpdateMicrofrontendsValue =
+  | UpdateMicrofrontendsValue3
+  | string
+  | number
+  | boolean;
 
 export type UpdateMicrofrontendsDismissedToasts = {
   key: string;
   dismissedAt: number;
   action: UpdateMicrofrontendsAction;
-  value: UpdateMicrofrontendsValue | null;
+  value: UpdateMicrofrontendsValue3 | string | number | boolean | null;
 };
 
 export const UpdateMicrofrontendsProjectsEnv = {
@@ -284,6 +298,84 @@ export type UpdateMicrofrontendsResponseBody = {
 };
 
 /** @internal */
+export const UpdateMicrofrontendsValuePreviousValue$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsValuePreviousValue,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), types.number(), types.boolean()]);
+
+export function updateMicrofrontendsValuePreviousValueFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsValuePreviousValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsValuePreviousValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsValuePreviousValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsValueCurrentValue$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsValueCurrentValue,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), types.number(), types.boolean()]);
+
+export function updateMicrofrontendsValueCurrentValueFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsValueCurrentValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsValueCurrentValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsValueCurrentValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsValue3$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsValue3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  previousValue: smartUnion([types.string(), types.number(), types.boolean()]),
+  currentValue: smartUnion([types.string(), types.number(), types.boolean()]),
+});
+
+export function updateMicrofrontendsValue3FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsValue3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsValue3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsValue3' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsValue$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsValue,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => UpdateMicrofrontendsValue3$inboundSchema),
+  types.string(),
+  types.number(),
+  types.boolean(),
+]);
+
+export function updateMicrofrontendsValueFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsValue' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateMicrofrontendsDismissedToasts$inboundSchema: z.ZodType<
   UpdateMicrofrontendsDismissedToasts,
   z.ZodTypeDef,
@@ -292,7 +384,14 @@ export const UpdateMicrofrontendsDismissedToasts$inboundSchema: z.ZodType<
   key: types.string(),
   dismissedAt: types.number(),
   action: UpdateMicrofrontendsAction$inboundSchema,
-  value: types.nullable(UpdateMicrofrontendsValue$inboundSchema),
+  value: types.nullable(
+    smartUnion([
+      z.lazy(() => UpdateMicrofrontendsValue3$inboundSchema),
+      types.string(),
+      types.number(),
+      types.boolean(),
+    ]),
+  ),
 });
 
 export function updateMicrofrontendsDismissedToastsFromJSON(

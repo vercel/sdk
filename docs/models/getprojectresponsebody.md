@@ -93,6 +93,14 @@ let value: GetProjectResponseBody = {
       },
     ],
     canaryResponseHeader: false,
+    gate: {
+      enabled: true,
+      checks: [],
+      failureThreshold: 3,
+      windowSize: 5,
+      action: "pause",
+      dryRun: true,
+    },
   },
   defaultResourceConfig: {
     functionDefaultRegions: [

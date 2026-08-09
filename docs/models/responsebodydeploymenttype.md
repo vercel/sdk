@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyDeploymentType } from "@vercel/sdk/models/getprojectshasprojectsresponse200key.js";
+import { ResponseBodyDeploymentType } from "@vercel/sdk/models/responsebodymanagedrules.js";
 
 let value: ResponseBodyDeploymentType = "prod_deployment_urls_and_all_previews";
 ```

@@ -7,11 +7,11 @@ The default plan type for the build machine — what the customer is *paying* fo
 ```typescript
 import { DefaultPurchaseType } from "@vercel/sdk/models/canceldeploymentservicesdeploymentsmaxduration.js";
 
-let value: DefaultPurchaseType = "enhanced";
+let value: DefaultPurchaseType = "basic";
 ```
 
 ## Values
 
 ```typescript
-"enhanced" | "standard"
+"basic" | "enhanced" | "standard"
 ```

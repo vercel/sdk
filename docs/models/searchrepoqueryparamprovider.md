@@ -5,11 +5,11 @@
 ```typescript
 import { SearchRepoQueryParamProvider } from "@vercel/sdk/models/searchrepoop.js";
 
-let value: SearchRepoQueryParamProvider = "gitlab";
+let value: SearchRepoQueryParamProvider = "bitbucket";
 ```
 
 ## Values
 
 ```typescript
-"github" | "github-limited" | "github-custom-host" | "gitlab" | "bitbucket"
+"github" | "github-limited" | "github-custom-host" | "gitlab" | "bitbucket" | "cursor-origin"
 ```

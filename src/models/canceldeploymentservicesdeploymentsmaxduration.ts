@@ -56,6 +56,7 @@ export type PurchaseType = ClosedEnum<typeof PurchaseType>;
  * The default plan type for the build machine — what the customer is *paying* for on their plan. For most customers, this is standard, but some customers have an entitlement for enhanced builds.
  */
 export const DefaultPurchaseType = {
+  Basic: "basic",
   Enhanced: "enhanced",
   Standard: "standard",
 } as const;
@@ -792,7 +793,7 @@ export type CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONRespon
     typeof CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody9Type
   >;
 
-export type GitSource9 = {
+export type CancelDeploymentGitSource9 = {
   type:
     CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody9Type;
   owner: string;
@@ -962,7 +963,7 @@ export type CancelDeploymentGitSource =
   | CancelDeploymentGitSource2
   | CancelDeploymentGitSource3
   | CancelDeploymentGitSource6
-  | GitSource9
+  | CancelDeploymentGitSource9
   | CancelDeploymentGitSource1
   | CancelDeploymentGitSource5
   | CancelDeploymentGitSource7
@@ -1172,6 +1173,7 @@ export type Functions = {
   architecture?: Architecture | undefined;
   memory?: number | undefined;
   maxDuration?: number | MaxDuration2 | undefined;
+  maxConcurrency?: number | undefined;
   regions?: Array<string> | undefined;
   functionFailoverRegions?: Array<string> | undefined;
   runtime?: string | undefined;
@@ -2521,8 +2523,8 @@ export const CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONRespo
   );
 
 /** @internal */
-export const GitSource9$inboundSchema: z.ZodType<
-  GitSource9,
+export const CancelDeploymentGitSource9$inboundSchema: z.ZodType<
+  CancelDeploymentGitSource9,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -2535,13 +2537,13 @@ export const GitSource9$inboundSchema: z.ZodType<
   prId: z.nullable(types.number()).optional(),
 });
 
-export function gitSource9FromJSON(
+export function cancelDeploymentGitSource9FromJSON(
   jsonString: string,
-): SafeParseResult<GitSource9, SDKValidationError> {
+): SafeParseResult<CancelDeploymentGitSource9, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GitSource9$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GitSource9' from JSON`,
+    (x) => CancelDeploymentGitSource9$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentGitSource9' from JSON`,
   );
 }
 
@@ -2888,7 +2890,7 @@ export const CancelDeploymentGitSource$inboundSchema: z.ZodType<
   z.lazy(() => CancelDeploymentGitSource2$inboundSchema),
   z.lazy(() => CancelDeploymentGitSource3$inboundSchema),
   z.lazy(() => CancelDeploymentGitSource6$inboundSchema),
-  z.lazy(() => GitSource9$inboundSchema),
+  z.lazy(() => CancelDeploymentGitSource9$inboundSchema),
   z.lazy(() => CancelDeploymentGitSource1$inboundSchema),
   z.lazy(() => CancelDeploymentGitSource5$inboundSchema),
   z.lazy(() => CancelDeploymentGitSource7$inboundSchema),
@@ -3132,6 +3134,7 @@ export const Functions$inboundSchema: z.ZodType<
   maxDuration: types.optional(
     smartUnion([types.number(), MaxDuration2$inboundSchema]),
   ),
+  maxConcurrency: types.optional(types.number()),
   regions: types.optional(z.array(types.string())),
   functionFailoverRegions: types.optional(z.array(types.string())),
   runtime: types.optional(types.string()),

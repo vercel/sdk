@@ -9,6 +9,48 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
+  GetProjectAbuse,
+  GetProjectAbuse$inboundSchema,
+  GetProjectDefaultResourceConfig,
+  GetProjectDefaultResourceConfig$inboundSchema,
+  GetProjectDeploymentPolicy,
+  GetProjectDeploymentPolicy$inboundSchema,
+  GetProjectFeatures,
+  GetProjectFeatures$inboundSchema,
+  GetProjectGitComments,
+  GetProjectGitComments$inboundSchema,
+  GetProjectGitProviderOptions,
+  GetProjectGitProviderOptions$inboundSchema,
+  GetProjectInternalRoutes,
+  GetProjectInternalRoutes$inboundSchema,
+  GetProjectLastAliasRequest,
+  GetProjectLastAliasRequest$inboundSchema,
+  GetProjectLastRollbackTarget,
+  GetProjectLastRollbackTarget$inboundSchema,
+  GetProjectOidcTokenConfig,
+  GetProjectOidcTokenConfig$inboundSchema,
+  GetProjectPermissions,
+  GetProjectPermissions$inboundSchema,
+  GetProjectProtectionBypass,
+  GetProjectProtectionBypass$inboundSchema,
+  GetProjectSecurity,
+  GetProjectSecurity$inboundSchema,
+  GetProjectSsoProtection,
+  GetProjectSsoProtection$inboundSchema,
+  GetProjectStaticIps,
+  GetProjectStaticIps$inboundSchema,
+  GetProjectTargets,
+  GetProjectTargets$inboundSchema,
+  GetProjectTrustedIps,
+  GetProjectTrustedIps$inboundSchema,
+  GetProjectTrustedSources,
+  GetProjectTrustedSources$inboundSchema,
+  GetProjectUsageStatus,
+  GetProjectUsageStatus$inboundSchema,
+  GetProjectWebAnalytics,
+  GetProjectWebAnalytics$inboundSchema,
+} from "./getprojectinternalroutes.js";
+import {
   GetProjectAlias,
   GetProjectAlias$inboundSchema,
   GetProjectAnalytics,
@@ -67,54 +109,24 @@ import {
   GetProjectServices$inboundSchema,
   GetProjectSpeedInsights,
   GetProjectSpeedInsights$inboundSchema,
-} from "./getprojectprojectsbuildqueue.js";
-import {
-  GetProjectAbuse,
-  GetProjectAbuse$inboundSchema,
-  GetProjectAction,
-  GetProjectAction$inboundSchema,
-  GetProjectDefaultResourceConfig,
-  GetProjectDefaultResourceConfig$inboundSchema,
-  GetProjectDeploymentPolicy,
-  GetProjectDeploymentPolicy$inboundSchema,
-  GetProjectFeatures,
-  GetProjectFeatures$inboundSchema,
-  GetProjectGitComments,
-  GetProjectGitComments$inboundSchema,
-  GetProjectGitProviderOptions,
-  GetProjectGitProviderOptions$inboundSchema,
-  GetProjectInternalRoutes,
-  GetProjectInternalRoutes$inboundSchema,
-  GetProjectLastAliasRequest,
-  GetProjectLastAliasRequest$inboundSchema,
-  GetProjectLastRollbackTarget,
-  GetProjectLastRollbackTarget$inboundSchema,
-  GetProjectOidcTokenConfig,
-  GetProjectOidcTokenConfig$inboundSchema,
-  GetProjectPermissions,
-  GetProjectPermissions$inboundSchema,
-  GetProjectProtectionBypass,
-  GetProjectProtectionBypass$inboundSchema,
-  GetProjectSecurity,
-  GetProjectSecurity$inboundSchema,
-  GetProjectSsoProtection,
-  GetProjectSsoProtection$inboundSchema,
-  GetProjectStaticIps,
-  GetProjectStaticIps$inboundSchema,
-  GetProjectTargets,
-  GetProjectTargets$inboundSchema,
-  GetProjectTrustedIps,
-  GetProjectTrustedIps$inboundSchema,
-  GetProjectTrustedSources,
-  GetProjectTrustedSources$inboundSchema,
-  GetProjectUsageStatus,
-  GetProjectUsageStatus$inboundSchema,
-  GetProjectValue3,
-  GetProjectValue3$inboundSchema,
-  GetProjectWebAnalytics,
-  GetProjectWebAnalytics$inboundSchema,
-} from "./getprojectvalue3.js";
+} from "./getprojectprojectsbuildmachinetype.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const GetProjectAction = {
+  Accept: "accept",
+  Cancel: "cancel",
+  Delete: "delete",
+} as const;
+export type GetProjectAction = ClosedEnum<typeof GetProjectAction>;
+
+export type ValuePreviousValue = string | number | boolean;
+
+export type ValueCurrentValue = string | number | boolean;
+
+export type GetProjectValue3 = {
+  previousValue: string | number | boolean;
+  currentValue: string | number | boolean;
+};
 
 export type GetProjectValue = GetProjectValue3 | string | number | boolean;
 
@@ -279,12 +291,71 @@ export type GetProjectResponseBody = {
 };
 
 /** @internal */
+export const GetProjectAction$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectAction
+> = z.nativeEnum(GetProjectAction);
+
+/** @internal */
+export const ValuePreviousValue$inboundSchema: z.ZodType<
+  ValuePreviousValue,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), types.number(), types.boolean()]);
+
+export function valuePreviousValueFromJSON(
+  jsonString: string,
+): SafeParseResult<ValuePreviousValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ValuePreviousValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ValuePreviousValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const ValueCurrentValue$inboundSchema: z.ZodType<
+  ValueCurrentValue,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), types.number(), types.boolean()]);
+
+export function valueCurrentValueFromJSON(
+  jsonString: string,
+): SafeParseResult<ValueCurrentValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ValueCurrentValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ValueCurrentValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectValue3$inboundSchema: z.ZodType<
+  GetProjectValue3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  previousValue: smartUnion([types.string(), types.number(), types.boolean()]),
+  currentValue: smartUnion([types.string(), types.number(), types.boolean()]),
+});
+
+export function getProjectValue3FromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectValue3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectValue3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectValue3' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetProjectValue$inboundSchema: z.ZodType<
   GetProjectValue,
   z.ZodTypeDef,
   unknown
 > = smartUnion([
-  GetProjectValue3$inboundSchema,
+  z.lazy(() => GetProjectValue3$inboundSchema),
   types.string(),
   types.number(),
   types.boolean(),
@@ -311,7 +382,7 @@ export const GetProjectDismissedToasts$inboundSchema: z.ZodType<
   action: GetProjectAction$inboundSchema,
   value: types.nullable(
     smartUnion([
-      GetProjectValue3$inboundSchema,
+      z.lazy(() => GetProjectValue3$inboundSchema),
       types.string(),
       types.number(),
       types.boolean(),

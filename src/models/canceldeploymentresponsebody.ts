@@ -818,6 +818,10 @@ export type CancelDeploymentResponseBody = {
   createdIn: string;
   crons?: Array<Crons> | undefined;
   functions?: { [k: string]: Functions } | null | undefined;
+  /**
+   * Whether this deployment completed through the instant static fast path.
+   */
+  isInstantStatic?: boolean | undefined;
   monorepoManager?: string | null | undefined;
   ownerId: string;
   /**
@@ -1791,6 +1795,7 @@ export const CancelDeploymentResponseBody$inboundSchema: z.ZodType<
   createdIn: types.string(),
   crons: types.optional(z.array(Crons$inboundSchema)),
   functions: z.nullable(z.record(Functions$inboundSchema)).optional(),
+  isInstantStatic: types.optional(types.boolean()),
   monorepoManager: z.nullable(types.string()).optional(),
   ownerId: types.string(),
   passiveConnectConfigurationId: types.optional(types.string()),

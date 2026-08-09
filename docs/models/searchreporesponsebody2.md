@@ -6,34 +6,15 @@
 import { SearchRepoResponseBody2 } from "@vercel/sdk/models/searchrepoop.js";
 
 let value: SearchRepoResponseBody2 = {
-  gitAccount: {
-    provider: "github-limited",
-    namespaceId: 245.69,
+  error: {
+    code: "installation_not_found",
+    message: "<value>",
   },
-  repos: [
-    {
-      id: "<id>",
-      provider: "bitbucket",
-      url: "https://delectable-taxicab.com",
-      name: "<value>",
-      slug: "<value>",
-      namespace: "<value>",
-      owner: {
-        id: "<id>",
-        name: "<value>",
-      },
-      ownerType: "user",
-      private: true,
-      defaultBranch: "<value>",
-      updatedAt: 3664.49,
-    },
-  ],
 };
 ```
 
 ## Fields
 
-| Field                                        | Type                                         | Required                                     | Description                                  |
-| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| `gitAccount`                                 | [models.GitAccount](../models/gitaccount.md) | :heavy_check_mark:                           | N/A                                          |
-| `repos`                                      | [models.Repos](../models/repos.md)[]         | :heavy_check_mark:                           | N/A                                          |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `error`                                                                        | [models.SearchRepoResponseBodyError](../models/searchreporesponsebodyerror.md) | :heavy_check_mark:                                                             | N/A                                                                            |

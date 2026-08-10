@@ -11856,6 +11856,10 @@
                             "type": "string"
                           },
                           "type": "array"
+                        },
+                        "permissionsUrl": {
+                          "type": "string",
+                          "description": "Link to the page on the service where this client's app-level permissions are declared and granted, when the service has one and it differs from `clientUrl`."
                         }
                       },
                       "required": [
@@ -11892,6 +11896,14 @@
                             "type": "string"
                           },
                           "type": "array"
+                        },
+                        "manualCredentialInput": {
+                          "type": "boolean",
+                          "enum": [
+                            false,
+                            true
+                          ],
+                          "description": "User authorization is completed by the Connect consent screen submitting a credential instead of an OAuth redirect."
                         }
                       },
                       "required": [
@@ -12522,6 +12534,13 @@
                       {
                         "type": "object",
                         "properties": {
+                          "subjectType": {
+                            "type": "string",
+                            "enum": [
+                              "app",
+                              "user"
+                            ]
+                          },
                           "values": {
                             "type": "array",
                             "items": {
@@ -12542,13 +12561,9 @@
                                 "value"
                               ],
                               "additionalProperties": false
-                            },
-                            "minItems": 1
+                            }
                           }
                         },
-                        "required": [
-                          "values"
-                        ],
                         "additionalProperties": false,
                         "title": "type:api-key"
                       },
@@ -12968,6 +12983,37 @@
                   "triggers": {
                     "description": "Whether the triggers are enabled for this connector.",
                     "type": "boolean"
+                  },
+                  "triggerDestination": {
+                    "type": "object",
+                    "minProperties": 1,
+                    "additionalProperties": false,
+                    "not": {
+                      "required": [
+                        "branch",
+                        "customEnvironmentId"
+                      ]
+                    },
+                    "properties": {
+                      "projectId": {
+                        "type": "string"
+                      },
+                      "path": {
+                        "type": "string",
+                        "maxLength": 2048,
+                        "description": "Route path on the linked project that receives forwarded trigger requests."
+                      },
+                      "branch": {
+                        "type": "string",
+                        "maxLength": 250
+                      },
+                      "customEnvironmentId": {
+                        "type": "string",
+                        "pattern": "^env_",
+                        "description": "The stable env_* ID of a custom environment."
+                      }
+                    },
+                    "description": "Initial trigger destination routing for the linked project."
                   },
                   "events": {
                     "type": "array",
@@ -15888,6 +15934,7 @@
                                 "defaultPurchaseType": {
                                   "type": "string",
                                   "enum": [
+                                    "basic",
                                     "enhanced",
                                     "standard"
                                   ],
@@ -17698,6 +17745,9 @@
                                   }
                                 ]
                               },
+                              "maxConcurrency": {
+                                "type": "number"
+                              },
                               "regions": {
                                 "items": {
                                   "type": "string"
@@ -17816,6 +17866,14 @@
                             "type": "object"
                           },
                           "type": "object"
+                        },
+                        "isInstantStatic": {
+                          "type": "boolean",
+                          "enum": [
+                            false,
+                            true
+                          ],
+                          "description": "Whether this deployment completed through the instant static fast path."
                         },
                         "monorepoManager": {
                           "nullable": true,
@@ -18660,6 +18718,9 @@
                                                     }
                                                   ]
                                                 },
+                                                "maxConcurrency": {
+                                                  "type": "number"
+                                                },
                                                 "regions": {
                                                   "items": {
                                                     "type": "string"
@@ -19153,6 +19214,9 @@
                                                     }
                                                   ]
                                                 },
+                                                "maxConcurrency": {
+                                                  "type": "number"
+                                                },
                                                 "regions": {
                                                   "items": {
                                                     "type": "string"
@@ -19481,6 +19545,9 @@
                                               ]
                                             }
                                           ]
+                                        },
+                                        "maxConcurrency": {
+                                          "type": "number"
                                         },
                                         "regions": {
                                           "items": {
@@ -23857,6 +23924,7 @@
                                 "defaultPurchaseType": {
                                   "type": "string",
                                   "enum": [
+                                    "basic",
                                     "enhanced",
                                     "standard"
                                   ],
@@ -25667,6 +25735,9 @@
                                   }
                                 ]
                               },
+                              "maxConcurrency": {
+                                "type": "number"
+                              },
                               "regions": {
                                 "items": {
                                   "type": "string"
@@ -25785,6 +25856,14 @@
                             "type": "object"
                           },
                           "type": "object"
+                        },
+                        "isInstantStatic": {
+                          "type": "boolean",
+                          "enum": [
+                            false,
+                            true
+                          ],
+                          "description": "Whether this deployment completed through the instant static fast path."
                         },
                         "monorepoManager": {
                           "nullable": true,
@@ -26629,6 +26708,9 @@
                                                     }
                                                   ]
                                                 },
+                                                "maxConcurrency": {
+                                                  "type": "number"
+                                                },
                                                 "regions": {
                                                   "items": {
                                                     "type": "string"
@@ -27122,6 +27204,9 @@
                                                     }
                                                   ]
                                                 },
+                                                "maxConcurrency": {
+                                                  "type": "number"
+                                                },
                                                 "regions": {
                                                   "items": {
                                                     "type": "string"
@@ -27450,6 +27535,9 @@
                                               ]
                                             }
                                           ]
+                                        },
+                                        "maxConcurrency": {
+                                          "type": "number"
                                         },
                                         "regions": {
                                           "items": {
@@ -30303,12 +30391,6 @@
                     },
                     "type": "array"
                   },
-                  "gitAccessToken": {
-                    "description": "A read-only GitHub access token scoped to the requested repository. Use a token with a lifetime of 24 hours or less that remains valid until source retrieval completes.",
-                    "maxLength": 1024,
-                    "type": "string",
-                    "writeOnly": true
-                  },
                   "gitMetadata": {
                     "description": "Populates initial git metadata for different git providers.",
                     "additionalProperties": false,
@@ -30633,6 +30715,42 @@
                           "slug"
                         ],
                         "type": "object"
+                      },
+                      {
+                        "properties": {
+                          "owner": {
+                            "type": "string",
+                            "example": "bitbucket_user"
+                          },
+                          "ref": {
+                            "type": "string",
+                            "example": "main"
+                          },
+                          "repo": {
+                            "type": "string",
+                            "example": "next.js"
+                          },
+                          "repoId": {
+                            "type": "string",
+                            "example": 123456789
+                          },
+                          "sha": {
+                            "type": "string",
+                            "example": "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0"
+                          },
+                          "type": {
+                            "enum": [
+                              "cursor-origin"
+                            ],
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "ref",
+                          "repoId"
+                        ],
+                        "type": "object"
                       }
                     ]
                   },
@@ -30945,6 +31063,7 @@
                             "defaultPurchaseType": {
                               "type": "string",
                               "enum": [
+                                "basic",
                                 "enhanced",
                                 "standard"
                               ],
@@ -32755,6 +32874,9 @@
                               }
                             ]
                           },
+                          "maxConcurrency": {
+                            "type": "number"
+                          },
                           "regions": {
                             "items": {
                               "type": "string"
@@ -32873,6 +32995,14 @@
                         "type": "object"
                       },
                       "type": "object"
+                    },
+                    "isInstantStatic": {
+                      "type": "boolean",
+                      "enum": [
+                        false,
+                        true
+                      ],
+                      "description": "Whether this deployment completed through the instant static fast path."
                     },
                     "monorepoManager": {
                       "nullable": true,
@@ -33717,6 +33847,9 @@
                                                 }
                                               ]
                                             },
+                                            "maxConcurrency": {
+                                              "type": "number"
+                                            },
                                             "regions": {
                                               "items": {
                                                 "type": "string"
@@ -34210,6 +34343,9 @@
                                                 }
                                               ]
                                             },
+                                            "maxConcurrency": {
+                                              "type": "number"
+                                            },
                                             "regions": {
                                               "items": {
                                                 "type": "string"
@@ -34538,6 +34674,9 @@
                                           ]
                                         }
                                       ]
+                                    },
+                                    "maxConcurrency": {
+                                      "type": "number"
                                     },
                                     "regions": {
                                       "items": {
@@ -52028,7 +52167,8 @@
                 "properties": {
                   "revalidationDeadlineSeconds": {
                     "minimum": 0,
-                    "type": "number"
+                    "maximum": 31536000,
+                    "type": "integer"
                   },
                   "tags": {
                     "oneOf": [
@@ -52227,7 +52367,8 @@
                 "properties": {
                   "revalidationDeadlineSeconds": {
                     "minimum": 0,
-                    "type": "number"
+                    "maximum": 31536000,
+                    "type": "integer"
                   },
                   "srcImages": {
                     "items": {
@@ -64579,6 +64720,133 @@
                     },
                     {
                       "properties": {
+                        "error": {
+                          "properties": {
+                            "code": {
+                              "type": "string",
+                              "enum": [
+                                "installation_not_found"
+                              ]
+                            },
+                            "message": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "code",
+                            "message"
+                          ],
+                          "type": "object"
+                        }
+                      },
+                      "required": [
+                        "error"
+                      ],
+                      "type": "object"
+                    },
+                    {
+                      "properties": {
+                        "gitAccount": {
+                          "properties": {
+                            "provider": {
+                              "type": "string"
+                            },
+                            "namespaceId": {
+                              "nullable": true,
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "namespaceId",
+                            "provider"
+                          ],
+                          "type": "object"
+                        },
+                        "repos": {
+                          "items": {
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "provider": {
+                                "type": "string",
+                                "enum": [
+                                  "cursor-origin"
+                                ]
+                              },
+                              "url": {
+                                "type": "string"
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "slug": {
+                                "type": "string"
+                              },
+                              "namespace": {
+                                "type": "string"
+                              },
+                              "ownerType": {
+                                "type": "string",
+                                "enum": [
+                                  "team"
+                                ]
+                              },
+                              "owner": {
+                                "properties": {
+                                  "id": {
+                                    "type": "string"
+                                  },
+                                  "name": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "name"
+                                ],
+                                "type": "object"
+                              },
+                              "private": {
+                                "type": "boolean",
+                                "enum": [
+                                  false,
+                                  true
+                                ]
+                              },
+                              "defaultBranch": {
+                                "type": "string"
+                              },
+                              "updatedAt": {
+                                "type": "number"
+                              }
+                            },
+                            "required": [
+                              "defaultBranch",
+                              "id",
+                              "name",
+                              "namespace",
+                              "owner",
+                              "ownerType",
+                              "private",
+                              "provider",
+                              "slug",
+                              "updatedAt",
+                              "url"
+                            ],
+                            "type": "object"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "required": [
+                        "gitAccount",
+                        "repos"
+                      ],
+                      "type": "object"
+                    },
+                    {
+                      "properties": {
                         "gitAccount": {
                           "properties": {
                             "provider": {
@@ -64738,6 +65006,9 @@
           },
           "500": {
             "description": ""
+          },
+          "502": {
+            "description": ""
           }
         },
         "parameters": [
@@ -64772,7 +65043,8 @@
                 "github-limited",
                 "github-custom-host",
                 "gitlab",
-                "bitbucket"
+                "bitbucket",
+                "cursor-origin"
               ]
             }
           },
@@ -77640,6 +77912,102 @@
                                 ],
                                 "description": "Whether the request served by a canary deployment should return a header indicating a canary was served. Defaults to `false` when omitted.",
                                 "example": false
+                              },
+                              "gate": {
+                                "properties": {
+                                  "enabled": {
+                                    "type": "boolean",
+                                    "enum": [
+                                      false,
+                                      true
+                                    ],
+                                    "description": "Whether automated gating is enabled for this project's rollouts."
+                                  },
+                                  "checks": {
+                                    "items": {
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "error-rate-5xx"
+                                          ],
+                                          "description": "The metric this check evaluates."
+                                        },
+                                        "minSampleSize": {
+                                          "type": "number",
+                                          "description": "Minimum number of requests required in the window before the check can fail. Below this, the check is inconclusive rather than failing, so low-traffic stages don't gate on noise. Defaults to `100` when omitted.",
+                                          "example": 100
+                                        },
+                                        "excludeStatusCodes": {
+                                          "items": {
+                                            "type": "number"
+                                          },
+                                          "type": "array",
+                                          "description": "Response status codes to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted.",
+                                          "example": [
+                                            503
+                                          ]
+                                        },
+                                        "excludePaths": {
+                                          "items": {
+                                            "type": "string"
+                                          },
+                                          "type": "array",
+                                          "description": "Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted.",
+                                          "example": [
+                                            "/api/health"
+                                          ]
+                                        },
+                                        "ingestWatermarkSeconds": {
+                                          "type": "number",
+                                          "description": "Seconds of ingest lag to allow for: the query's upper bound is `now() - this value`, so the check never reads a window that is still filling. Defaults to `30` when omitted.",
+                                          "example": 30
+                                        }
+                                      },
+                                      "required": [
+                                        "type"
+                                      ],
+                                      "type": "object",
+                                      "description": "The checks to evaluate. An empty array means nothing is evaluated."
+                                    },
+                                    "type": "array",
+                                    "description": "The checks to evaluate. An empty array means nothing is evaluated."
+                                  },
+                                  "failureThreshold": {
+                                    "type": "number",
+                                    "description": "How many failing evaluations within {@link windowSize} trip the gate. Defaults to `3` when omitted.",
+                                    "example": 3
+                                  },
+                                  "windowSize": {
+                                    "type": "number",
+                                    "description": "How many of the most recent evaluations {@link failureThreshold} is counted against. Defaults to `5` when omitted.",
+                                    "example": 5
+                                  },
+                                  "action": {
+                                    "type": "string",
+                                    "enum": [
+                                      "pause",
+                                      "rollback"
+                                    ],
+                                    "description": "What to do when the gate trips: pause the rollout, or roll it back."
+                                  },
+                                  "dryRun": {
+                                    "type": "boolean",
+                                    "enum": [
+                                      false,
+                                      true
+                                    ],
+                                    "description": "When true, a tripped gate is only reported — {@link action} is not taken."
+                                  }
+                                },
+                                "required": [
+                                  "action",
+                                  "checks",
+                                  "dryRun",
+                                  "enabled"
+                                ],
+                                "type": "object",
+                                "description": "Automated gating configuration. Omitted (the default) means no gating is configured, which is equivalent to `enabled: false`."
                               }
                             },
                             "required": [
@@ -78319,6 +78687,12 @@
                                 },
                                 "type": "array"
                               },
+                              "aiGatewayApiKeySpendAttribution": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
                               "aiGatewayApiKeyZdrExemption": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
@@ -78362,6 +78736,12 @@
                                 "type": "array"
                               },
                               "aiGatewayUsage": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "aiGatewayVirtualModelConfigs": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
                                 },
@@ -78596,6 +78976,12 @@
                                 "type": "array"
                               },
                               "buildMachineDefault": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "cursorOriginInstallation": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
                                 },
@@ -87248,7 +87634,13 @@
           "404": {
             "description": ""
           },
+          "409": {
+            "description": ""
+          },
           "410": {
+            "description": ""
+          },
+          "500": {
             "description": ""
           }
         },
@@ -91300,6 +91692,102 @@
                                 ],
                                 "description": "Whether the request served by a canary deployment should return a header indicating a canary was served. Defaults to `false` when omitted.",
                                 "example": false
+                              },
+                              "gate": {
+                                "properties": {
+                                  "enabled": {
+                                    "type": "boolean",
+                                    "enum": [
+                                      false,
+                                      true
+                                    ],
+                                    "description": "Whether automated gating is enabled for this project's rollouts."
+                                  },
+                                  "checks": {
+                                    "items": {
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "error-rate-5xx"
+                                          ],
+                                          "description": "The metric this check evaluates."
+                                        },
+                                        "minSampleSize": {
+                                          "type": "number",
+                                          "description": "Minimum number of requests required in the window before the check can fail. Below this, the check is inconclusive rather than failing, so low-traffic stages don't gate on noise. Defaults to `100` when omitted.",
+                                          "example": 100
+                                        },
+                                        "excludeStatusCodes": {
+                                          "items": {
+                                            "type": "number"
+                                          },
+                                          "type": "array",
+                                          "description": "Response status codes to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted.",
+                                          "example": [
+                                            503
+                                          ]
+                                        },
+                                        "excludePaths": {
+                                          "items": {
+                                            "type": "string"
+                                          },
+                                          "type": "array",
+                                          "description": "Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted.",
+                                          "example": [
+                                            "/api/health"
+                                          ]
+                                        },
+                                        "ingestWatermarkSeconds": {
+                                          "type": "number",
+                                          "description": "Seconds of ingest lag to allow for: the query's upper bound is `now() - this value`, so the check never reads a window that is still filling. Defaults to `30` when omitted.",
+                                          "example": 30
+                                        }
+                                      },
+                                      "required": [
+                                        "type"
+                                      ],
+                                      "type": "object",
+                                      "description": "The checks to evaluate. An empty array means nothing is evaluated."
+                                    },
+                                    "type": "array",
+                                    "description": "The checks to evaluate. An empty array means nothing is evaluated."
+                                  },
+                                  "failureThreshold": {
+                                    "type": "number",
+                                    "description": "How many failing evaluations within {@link windowSize} trip the gate. Defaults to `3` when omitted.",
+                                    "example": 3
+                                  },
+                                  "windowSize": {
+                                    "type": "number",
+                                    "description": "How many of the most recent evaluations {@link failureThreshold} is counted against. Defaults to `5` when omitted.",
+                                    "example": 5
+                                  },
+                                  "action": {
+                                    "type": "string",
+                                    "enum": [
+                                      "pause",
+                                      "rollback"
+                                    ],
+                                    "description": "What to do when the gate trips: pause the rollout, or roll it back."
+                                  },
+                                  "dryRun": {
+                                    "type": "boolean",
+                                    "enum": [
+                                      false,
+                                      true
+                                    ],
+                                    "description": "When true, a tripped gate is only reported — {@link action} is not taken."
+                                  }
+                                },
+                                "required": [
+                                  "action",
+                                  "checks",
+                                  "dryRun",
+                                  "enabled"
+                                ],
+                                "type": "object",
+                                "description": "Automated gating configuration. Omitted (the default) means no gating is configured, which is equivalent to `enabled: false`."
                               }
                             },
                             "required": [
@@ -95912,6 +96400,102 @@
                                     ],
                                     "description": "Whether the request served by a canary deployment should return a header indicating a canary was served. Defaults to `false` when omitted.",
                                     "example": false
+                                  },
+                                  "gate": {
+                                    "properties": {
+                                      "enabled": {
+                                        "type": "boolean",
+                                        "enum": [
+                                          false,
+                                          true
+                                        ],
+                                        "description": "Whether automated gating is enabled for this project's rollouts."
+                                      },
+                                      "checks": {
+                                        "items": {
+                                          "properties": {
+                                            "type": {
+                                              "type": "string",
+                                              "enum": [
+                                                "error-rate-5xx"
+                                              ],
+                                              "description": "The metric this check evaluates."
+                                            },
+                                            "minSampleSize": {
+                                              "type": "number",
+                                              "description": "Minimum number of requests required in the window before the check can fail. Below this, the check is inconclusive rather than failing, so low-traffic stages don't gate on noise. Defaults to `100` when omitted.",
+                                              "example": 100
+                                            },
+                                            "excludeStatusCodes": {
+                                              "items": {
+                                                "type": "number"
+                                              },
+                                              "type": "array",
+                                              "description": "Response status codes to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted.",
+                                              "example": [
+                                                503
+                                              ]
+                                            },
+                                            "excludePaths": {
+                                              "items": {
+                                                "type": "string"
+                                              },
+                                              "type": "array",
+                                              "description": "Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted.",
+                                              "example": [
+                                                "/api/health"
+                                              ]
+                                            },
+                                            "ingestWatermarkSeconds": {
+                                              "type": "number",
+                                              "description": "Seconds of ingest lag to allow for: the query's upper bound is `now() - this value`, so the check never reads a window that is still filling. Defaults to `30` when omitted.",
+                                              "example": 30
+                                            }
+                                          },
+                                          "required": [
+                                            "type"
+                                          ],
+                                          "type": "object",
+                                          "description": "The checks to evaluate. An empty array means nothing is evaluated."
+                                        },
+                                        "type": "array",
+                                        "description": "The checks to evaluate. An empty array means nothing is evaluated."
+                                      },
+                                      "failureThreshold": {
+                                        "type": "number",
+                                        "description": "How many failing evaluations within {@link windowSize} trip the gate. Defaults to `3` when omitted.",
+                                        "example": 3
+                                      },
+                                      "windowSize": {
+                                        "type": "number",
+                                        "description": "How many of the most recent evaluations {@link failureThreshold} is counted against. Defaults to `5` when omitted.",
+                                        "example": 5
+                                      },
+                                      "action": {
+                                        "type": "string",
+                                        "enum": [
+                                          "pause",
+                                          "rollback"
+                                        ],
+                                        "description": "What to do when the gate trips: pause the rollout, or roll it back."
+                                      },
+                                      "dryRun": {
+                                        "type": "boolean",
+                                        "enum": [
+                                          false,
+                                          true
+                                        ],
+                                        "description": "When true, a tripped gate is only reported — {@link action} is not taken."
+                                      }
+                                    },
+                                    "required": [
+                                      "action",
+                                      "checks",
+                                      "dryRun",
+                                      "enabled"
+                                    ],
+                                    "type": "object",
+                                    "description": "Automated gating configuration. Omitted (the default) means no gating is configured, which is equivalent to `enabled: false`."
                                   }
                                 },
                                 "required": [
@@ -101399,6 +101983,102 @@
                                     ],
                                     "description": "Whether the request served by a canary deployment should return a header indicating a canary was served. Defaults to `false` when omitted.",
                                     "example": false
+                                  },
+                                  "gate": {
+                                    "properties": {
+                                      "enabled": {
+                                        "type": "boolean",
+                                        "enum": [
+                                          false,
+                                          true
+                                        ],
+                                        "description": "Whether automated gating is enabled for this project's rollouts."
+                                      },
+                                      "checks": {
+                                        "items": {
+                                          "properties": {
+                                            "type": {
+                                              "type": "string",
+                                              "enum": [
+                                                "error-rate-5xx"
+                                              ],
+                                              "description": "The metric this check evaluates."
+                                            },
+                                            "minSampleSize": {
+                                              "type": "number",
+                                              "description": "Minimum number of requests required in the window before the check can fail. Below this, the check is inconclusive rather than failing, so low-traffic stages don't gate on noise. Defaults to `100` when omitted.",
+                                              "example": 100
+                                            },
+                                            "excludeStatusCodes": {
+                                              "items": {
+                                                "type": "number"
+                                              },
+                                              "type": "array",
+                                              "description": "Response status codes to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted.",
+                                              "example": [
+                                                503
+                                              ]
+                                            },
+                                            "excludePaths": {
+                                              "items": {
+                                                "type": "string"
+                                              },
+                                              "type": "array",
+                                              "description": "Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted.",
+                                              "example": [
+                                                "/api/health"
+                                              ]
+                                            },
+                                            "ingestWatermarkSeconds": {
+                                              "type": "number",
+                                              "description": "Seconds of ingest lag to allow for: the query's upper bound is `now() - this value`, so the check never reads a window that is still filling. Defaults to `30` when omitted.",
+                                              "example": 30
+                                            }
+                                          },
+                                          "required": [
+                                            "type"
+                                          ],
+                                          "type": "object",
+                                          "description": "The checks to evaluate. An empty array means nothing is evaluated."
+                                        },
+                                        "type": "array",
+                                        "description": "The checks to evaluate. An empty array means nothing is evaluated."
+                                      },
+                                      "failureThreshold": {
+                                        "type": "number",
+                                        "description": "How many failing evaluations within {@link windowSize} trip the gate. Defaults to `3` when omitted.",
+                                        "example": 3
+                                      },
+                                      "windowSize": {
+                                        "type": "number",
+                                        "description": "How many of the most recent evaluations {@link failureThreshold} is counted against. Defaults to `5` when omitted.",
+                                        "example": 5
+                                      },
+                                      "action": {
+                                        "type": "string",
+                                        "enum": [
+                                          "pause",
+                                          "rollback"
+                                        ],
+                                        "description": "What to do when the gate trips: pause the rollout, or roll it back."
+                                      },
+                                      "dryRun": {
+                                        "type": "boolean",
+                                        "enum": [
+                                          false,
+                                          true
+                                        ],
+                                        "description": "When true, a tripped gate is only reported — {@link action} is not taken."
+                                      }
+                                    },
+                                    "required": [
+                                      "action",
+                                      "checks",
+                                      "dryRun",
+                                      "enabled"
+                                    ],
+                                    "type": "object",
+                                    "description": "Automated gating configuration. Omitted (the default) means no gating is configured, which is equivalent to `enabled: false`."
                                   }
                                 },
                                 "required": [
@@ -102078,6 +102758,12 @@
                                     },
                                     "type": "array"
                                   },
+                                  "aiGatewayApiKeySpendAttribution": {
+                                    "items": {
+                                      "$ref": "#/components/schemas/ACLAction"
+                                    },
+                                    "type": "array"
+                                  },
                                   "aiGatewayApiKeyZdrExemption": {
                                     "items": {
                                       "$ref": "#/components/schemas/ACLAction"
@@ -102121,6 +102807,12 @@
                                     "type": "array"
                                   },
                                   "aiGatewayUsage": {
+                                    "items": {
+                                      "$ref": "#/components/schemas/ACLAction"
+                                    },
+                                    "type": "array"
+                                  },
+                                  "aiGatewayVirtualModelConfigs": {
                                     "items": {
                                       "$ref": "#/components/schemas/ACLAction"
                                     },
@@ -102355,6 +103047,12 @@
                                     "type": "array"
                                   },
                                   "buildMachineDefault": {
+                                    "items": {
+                                      "$ref": "#/components/schemas/ACLAction"
+                                    },
+                                    "type": "array"
+                                  },
+                                  "cursorOriginInstallation": {
                                     "items": {
                                       "$ref": "#/components/schemas/ACLAction"
                                     },
@@ -105824,10 +106522,10 @@
           },
           {
             "name": "buildMachineTypes",
-            "description": "Filter results by build machine types. Accepts comma-separated values. Use \"default\" for projects without a build machine type set.",
+            "description": "Filter results by effective build machine types. Accepts comma-separated values. Use \"elastic\" for projects with elastic selection and \"default\" for projects without a build machine type set.",
             "in": "query",
             "schema": {
-              "description": "Filter results by build machine types. Accepts comma-separated values. Use \"default\" for projects without a build machine type set.",
+              "description": "Filter results by effective build machine types. Accepts comma-separated values. Use \"elastic\" for projects with elastic selection and \"default\" for projects without a build machine type set.",
               "type": "string",
               "example": "default,enhanced"
             }
@@ -109403,6 +110101,102 @@
                           ],
                           "description": "Whether the request served by a canary deployment should return a header indicating a canary was served. Defaults to `false` when omitted.",
                           "example": false
+                        },
+                        "gate": {
+                          "properties": {
+                            "enabled": {
+                              "type": "boolean",
+                              "enum": [
+                                false,
+                                true
+                              ],
+                              "description": "Whether automated gating is enabled for this project's rollouts."
+                            },
+                            "checks": {
+                              "items": {
+                                "properties": {
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "error-rate-5xx"
+                                    ],
+                                    "description": "The metric this check evaluates."
+                                  },
+                                  "minSampleSize": {
+                                    "type": "number",
+                                    "description": "Minimum number of requests required in the window before the check can fail. Below this, the check is inconclusive rather than failing, so low-traffic stages don't gate on noise. Defaults to `100` when omitted.",
+                                    "example": 100
+                                  },
+                                  "excludeStatusCodes": {
+                                    "items": {
+                                      "type": "number"
+                                    },
+                                    "type": "array",
+                                    "description": "Response status codes to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted.",
+                                    "example": [
+                                      503
+                                    ]
+                                  },
+                                  "excludePaths": {
+                                    "items": {
+                                      "type": "string"
+                                    },
+                                    "type": "array",
+                                    "description": "Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted.",
+                                    "example": [
+                                      "/api/health"
+                                    ]
+                                  },
+                                  "ingestWatermarkSeconds": {
+                                    "type": "number",
+                                    "description": "Seconds of ingest lag to allow for: the query's upper bound is `now() - this value`, so the check never reads a window that is still filling. Defaults to `30` when omitted.",
+                                    "example": 30
+                                  }
+                                },
+                                "required": [
+                                  "type"
+                                ],
+                                "type": "object",
+                                "description": "The checks to evaluate. An empty array means nothing is evaluated."
+                              },
+                              "type": "array",
+                              "description": "The checks to evaluate. An empty array means nothing is evaluated."
+                            },
+                            "failureThreshold": {
+                              "type": "number",
+                              "description": "How many failing evaluations within {@link windowSize} trip the gate. Defaults to `3` when omitted.",
+                              "example": 3
+                            },
+                            "windowSize": {
+                              "type": "number",
+                              "description": "How many of the most recent evaluations {@link failureThreshold} is counted against. Defaults to `5` when omitted.",
+                              "example": 5
+                            },
+                            "action": {
+                              "type": "string",
+                              "enum": [
+                                "pause",
+                                "rollback"
+                              ],
+                              "description": "What to do when the gate trips: pause the rollout, or roll it back."
+                            },
+                            "dryRun": {
+                              "type": "boolean",
+                              "enum": [
+                                false,
+                                true
+                              ],
+                              "description": "When true, a tripped gate is only reported — {@link action} is not taken."
+                            }
+                          },
+                          "required": [
+                            "action",
+                            "checks",
+                            "dryRun",
+                            "enabled"
+                          ],
+                          "type": "object",
+                          "description": "Automated gating configuration. Omitted (the default) means no gating is configured, which is equivalent to `enabled: false`."
                         }
                       },
                       "required": [
@@ -110082,6 +110876,12 @@
                           },
                           "type": "array"
                         },
+                        "aiGatewayApiKeySpendAttribution": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "aiGatewayApiKeyZdrExemption": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -110125,6 +110925,12 @@
                           "type": "array"
                         },
                         "aiGatewayUsage": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "aiGatewayVirtualModelConfigs": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -110359,6 +111165,12 @@
                           "type": "array"
                         },
                         "buildMachineDefault": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "cursorOriginInstallation": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -113887,7 +114699,8 @@
                           "github-limited",
                           "gitlab",
                           "bitbucket",
-                          "vercel"
+                          "vercel",
+                          "cursor-origin"
                         ]
                       }
                     },
@@ -117569,6 +118382,102 @@
                           ],
                           "description": "Whether the request served by a canary deployment should return a header indicating a canary was served. Defaults to `false` when omitted.",
                           "example": false
+                        },
+                        "gate": {
+                          "properties": {
+                            "enabled": {
+                              "type": "boolean",
+                              "enum": [
+                                false,
+                                true
+                              ],
+                              "description": "Whether automated gating is enabled for this project's rollouts."
+                            },
+                            "checks": {
+                              "items": {
+                                "properties": {
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "error-rate-5xx"
+                                    ],
+                                    "description": "The metric this check evaluates."
+                                  },
+                                  "minSampleSize": {
+                                    "type": "number",
+                                    "description": "Minimum number of requests required in the window before the check can fail. Below this, the check is inconclusive rather than failing, so low-traffic stages don't gate on noise. Defaults to `100` when omitted.",
+                                    "example": 100
+                                  },
+                                  "excludeStatusCodes": {
+                                    "items": {
+                                      "type": "number"
+                                    },
+                                    "type": "array",
+                                    "description": "Response status codes to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted.",
+                                    "example": [
+                                      503
+                                    ]
+                                  },
+                                  "excludePaths": {
+                                    "items": {
+                                      "type": "string"
+                                    },
+                                    "type": "array",
+                                    "description": "Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted.",
+                                    "example": [
+                                      "/api/health"
+                                    ]
+                                  },
+                                  "ingestWatermarkSeconds": {
+                                    "type": "number",
+                                    "description": "Seconds of ingest lag to allow for: the query's upper bound is `now() - this value`, so the check never reads a window that is still filling. Defaults to `30` when omitted.",
+                                    "example": 30
+                                  }
+                                },
+                                "required": [
+                                  "type"
+                                ],
+                                "type": "object",
+                                "description": "The checks to evaluate. An empty array means nothing is evaluated."
+                              },
+                              "type": "array",
+                              "description": "The checks to evaluate. An empty array means nothing is evaluated."
+                            },
+                            "failureThreshold": {
+                              "type": "number",
+                              "description": "How many failing evaluations within {@link windowSize} trip the gate. Defaults to `3` when omitted.",
+                              "example": 3
+                            },
+                            "windowSize": {
+                              "type": "number",
+                              "description": "How many of the most recent evaluations {@link failureThreshold} is counted against. Defaults to `5` when omitted.",
+                              "example": 5
+                            },
+                            "action": {
+                              "type": "string",
+                              "enum": [
+                                "pause",
+                                "rollback"
+                              ],
+                              "description": "What to do when the gate trips: pause the rollout, or roll it back."
+                            },
+                            "dryRun": {
+                              "type": "boolean",
+                              "enum": [
+                                false,
+                                true
+                              ],
+                              "description": "When true, a tripped gate is only reported — {@link action} is not taken."
+                            }
+                          },
+                          "required": [
+                            "action",
+                            "checks",
+                            "dryRun",
+                            "enabled"
+                          ],
+                          "type": "object",
+                          "description": "Automated gating configuration. Omitted (the default) means no gating is configured, which is equivalent to `enabled: false`."
                         }
                       },
                       "required": [
@@ -118248,6 +119157,12 @@
                           },
                           "type": "array"
                         },
+                        "aiGatewayApiKeySpendAttribution": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "aiGatewayApiKeyZdrExemption": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -118291,6 +119206,12 @@
                           "type": "array"
                         },
                         "aiGatewayUsage": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "aiGatewayVirtualModelConfigs": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -118525,6 +119446,12 @@
                           "type": "array"
                         },
                         "buildMachineDefault": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "cursorOriginInstallation": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -125094,6 +126021,102 @@
                           ],
                           "description": "Whether the request served by a canary deployment should return a header indicating a canary was served. Defaults to `false` when omitted.",
                           "example": false
+                        },
+                        "gate": {
+                          "properties": {
+                            "enabled": {
+                              "type": "boolean",
+                              "enum": [
+                                false,
+                                true
+                              ],
+                              "description": "Whether automated gating is enabled for this project's rollouts."
+                            },
+                            "checks": {
+                              "items": {
+                                "properties": {
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "error-rate-5xx"
+                                    ],
+                                    "description": "The metric this check evaluates."
+                                  },
+                                  "minSampleSize": {
+                                    "type": "number",
+                                    "description": "Minimum number of requests required in the window before the check can fail. Below this, the check is inconclusive rather than failing, so low-traffic stages don't gate on noise. Defaults to `100` when omitted.",
+                                    "example": 100
+                                  },
+                                  "excludeStatusCodes": {
+                                    "items": {
+                                      "type": "number"
+                                    },
+                                    "type": "array",
+                                    "description": "Response status codes to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted.",
+                                    "example": [
+                                      503
+                                    ]
+                                  },
+                                  "excludePaths": {
+                                    "items": {
+                                      "type": "string"
+                                    },
+                                    "type": "array",
+                                    "description": "Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted.",
+                                    "example": [
+                                      "/api/health"
+                                    ]
+                                  },
+                                  "ingestWatermarkSeconds": {
+                                    "type": "number",
+                                    "description": "Seconds of ingest lag to allow for: the query's upper bound is `now() - this value`, so the check never reads a window that is still filling. Defaults to `30` when omitted.",
+                                    "example": 30
+                                  }
+                                },
+                                "required": [
+                                  "type"
+                                ],
+                                "type": "object",
+                                "description": "The checks to evaluate. An empty array means nothing is evaluated."
+                              },
+                              "type": "array",
+                              "description": "The checks to evaluate. An empty array means nothing is evaluated."
+                            },
+                            "failureThreshold": {
+                              "type": "number",
+                              "description": "How many failing evaluations within {@link windowSize} trip the gate. Defaults to `3` when omitted.",
+                              "example": 3
+                            },
+                            "windowSize": {
+                              "type": "number",
+                              "description": "How many of the most recent evaluations {@link failureThreshold} is counted against. Defaults to `5` when omitted.",
+                              "example": 5
+                            },
+                            "action": {
+                              "type": "string",
+                              "enum": [
+                                "pause",
+                                "rollback"
+                              ],
+                              "description": "What to do when the gate trips: pause the rollout, or roll it back."
+                            },
+                            "dryRun": {
+                              "type": "boolean",
+                              "enum": [
+                                false,
+                                true
+                              ],
+                              "description": "When true, a tripped gate is only reported — {@link action} is not taken."
+                            }
+                          },
+                          "required": [
+                            "action",
+                            "checks",
+                            "dryRun",
+                            "enabled"
+                          ],
+                          "type": "object",
+                          "description": "Automated gating configuration. Omitted (the default) means no gating is configured, which is equivalent to `enabled: false`."
                         }
                       },
                       "required": [
@@ -125773,6 +126796,12 @@
                           },
                           "type": "array"
                         },
+                        "aiGatewayApiKeySpendAttribution": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "aiGatewayApiKeyZdrExemption": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -125816,6 +126845,12 @@
                           "type": "array"
                         },
                         "aiGatewayUsage": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "aiGatewayVirtualModelConfigs": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -126050,6 +127085,12 @@
                           "type": "array"
                         },
                         "buildMachineDefault": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "cursorOriginInstallation": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -133883,6 +134924,102 @@
                           ],
                           "description": "Whether the request served by a canary deployment should return a header indicating a canary was served. Defaults to `false` when omitted.",
                           "example": false
+                        },
+                        "gate": {
+                          "properties": {
+                            "enabled": {
+                              "type": "boolean",
+                              "enum": [
+                                false,
+                                true
+                              ],
+                              "description": "Whether automated gating is enabled for this project's rollouts."
+                            },
+                            "checks": {
+                              "items": {
+                                "properties": {
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "error-rate-5xx"
+                                    ],
+                                    "description": "The metric this check evaluates."
+                                  },
+                                  "minSampleSize": {
+                                    "type": "number",
+                                    "description": "Minimum number of requests required in the window before the check can fail. Below this, the check is inconclusive rather than failing, so low-traffic stages don't gate on noise. Defaults to `100` when omitted.",
+                                    "example": 100
+                                  },
+                                  "excludeStatusCodes": {
+                                    "items": {
+                                      "type": "number"
+                                    },
+                                    "type": "array",
+                                    "description": "Response status codes to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted.",
+                                    "example": [
+                                      503
+                                    ]
+                                  },
+                                  "excludePaths": {
+                                    "items": {
+                                      "type": "string"
+                                    },
+                                    "type": "array",
+                                    "description": "Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted.",
+                                    "example": [
+                                      "/api/health"
+                                    ]
+                                  },
+                                  "ingestWatermarkSeconds": {
+                                    "type": "number",
+                                    "description": "Seconds of ingest lag to allow for: the query's upper bound is `now() - this value`, so the check never reads a window that is still filling. Defaults to `30` when omitted.",
+                                    "example": 30
+                                  }
+                                },
+                                "required": [
+                                  "type"
+                                ],
+                                "type": "object",
+                                "description": "The checks to evaluate. An empty array means nothing is evaluated."
+                              },
+                              "type": "array",
+                              "description": "The checks to evaluate. An empty array means nothing is evaluated."
+                            },
+                            "failureThreshold": {
+                              "type": "number",
+                              "description": "How many failing evaluations within {@link windowSize} trip the gate. Defaults to `3` when omitted.",
+                              "example": 3
+                            },
+                            "windowSize": {
+                              "type": "number",
+                              "description": "How many of the most recent evaluations {@link failureThreshold} is counted against. Defaults to `5` when omitted.",
+                              "example": 5
+                            },
+                            "action": {
+                              "type": "string",
+                              "enum": [
+                                "pause",
+                                "rollback"
+                              ],
+                              "description": "What to do when the gate trips: pause the rollout, or roll it back."
+                            },
+                            "dryRun": {
+                              "type": "boolean",
+                              "enum": [
+                                false,
+                                true
+                              ],
+                              "description": "When true, a tripped gate is only reported — {@link action} is not taken."
+                            }
+                          },
+                          "required": [
+                            "action",
+                            "checks",
+                            "dryRun",
+                            "enabled"
+                          ],
+                          "type": "object",
+                          "description": "Automated gating configuration. Omitted (the default) means no gating is configured, which is equivalent to `enabled: false`."
                         }
                       },
                       "required": [
@@ -134562,6 +135699,12 @@
                           },
                           "type": "array"
                         },
+                        "aiGatewayApiKeySpendAttribution": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "aiGatewayApiKeyZdrExemption": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -134605,6 +135748,12 @@
                           "type": "array"
                         },
                         "aiGatewayUsage": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "aiGatewayVirtualModelConfigs": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -134839,6 +135988,12 @@
                           "type": "array"
                         },
                         "buildMachineDefault": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "cursorOriginInstallation": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -147522,6 +148677,102 @@
                           ],
                           "description": "Whether the request served by a canary deployment should return a header indicating a canary was served. Defaults to `false` when omitted.",
                           "example": false
+                        },
+                        "gate": {
+                          "properties": {
+                            "enabled": {
+                              "type": "boolean",
+                              "enum": [
+                                false,
+                                true
+                              ],
+                              "description": "Whether automated gating is enabled for this project's rollouts."
+                            },
+                            "checks": {
+                              "items": {
+                                "properties": {
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "error-rate-5xx"
+                                    ],
+                                    "description": "The metric this check evaluates."
+                                  },
+                                  "minSampleSize": {
+                                    "type": "number",
+                                    "description": "Minimum number of requests required in the window before the check can fail. Below this, the check is inconclusive rather than failing, so low-traffic stages don't gate on noise. Defaults to `100` when omitted.",
+                                    "example": 100
+                                  },
+                                  "excludeStatusCodes": {
+                                    "items": {
+                                      "type": "number"
+                                    },
+                                    "type": "array",
+                                    "description": "Response status codes to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted.",
+                                    "example": [
+                                      503
+                                    ]
+                                  },
+                                  "excludePaths": {
+                                    "items": {
+                                      "type": "string"
+                                    },
+                                    "type": "array",
+                                    "description": "Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted.",
+                                    "example": [
+                                      "/api/health"
+                                    ]
+                                  },
+                                  "ingestWatermarkSeconds": {
+                                    "type": "number",
+                                    "description": "Seconds of ingest lag to allow for: the query's upper bound is `now() - this value`, so the check never reads a window that is still filling. Defaults to `30` when omitted.",
+                                    "example": 30
+                                  }
+                                },
+                                "required": [
+                                  "type"
+                                ],
+                                "type": "object",
+                                "description": "The checks to evaluate. An empty array means nothing is evaluated."
+                              },
+                              "type": "array",
+                              "description": "The checks to evaluate. An empty array means nothing is evaluated."
+                            },
+                            "failureThreshold": {
+                              "type": "number",
+                              "description": "How many failing evaluations within {@link windowSize} trip the gate. Defaults to `3` when omitted.",
+                              "example": 3
+                            },
+                            "windowSize": {
+                              "type": "number",
+                              "description": "How many of the most recent evaluations {@link failureThreshold} is counted against. Defaults to `5` when omitted.",
+                              "example": 5
+                            },
+                            "action": {
+                              "type": "string",
+                              "enum": [
+                                "pause",
+                                "rollback"
+                              ],
+                              "description": "What to do when the gate trips: pause the rollout, or roll it back."
+                            },
+                            "dryRun": {
+                              "type": "boolean",
+                              "enum": [
+                                false,
+                                true
+                              ],
+                              "description": "When true, a tripped gate is only reported — {@link action} is not taken."
+                            }
+                          },
+                          "required": [
+                            "action",
+                            "checks",
+                            "dryRun",
+                            "enabled"
+                          ],
+                          "type": "object",
+                          "description": "Automated gating configuration. Omitted (the default) means no gating is configured, which is equivalent to `enabled: false`."
                         }
                       },
                       "required": [
@@ -154085,6 +155336,102 @@
                           ],
                           "description": "Whether the request served by a canary deployment should return a header indicating a canary was served. Defaults to `false` when omitted.",
                           "example": false
+                        },
+                        "gate": {
+                          "properties": {
+                            "enabled": {
+                              "type": "boolean",
+                              "enum": [
+                                false,
+                                true
+                              ],
+                              "description": "Whether automated gating is enabled for this project's rollouts."
+                            },
+                            "checks": {
+                              "items": {
+                                "properties": {
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "error-rate-5xx"
+                                    ],
+                                    "description": "The metric this check evaluates."
+                                  },
+                                  "minSampleSize": {
+                                    "type": "number",
+                                    "description": "Minimum number of requests required in the window before the check can fail. Below this, the check is inconclusive rather than failing, so low-traffic stages don't gate on noise. Defaults to `100` when omitted.",
+                                    "example": 100
+                                  },
+                                  "excludeStatusCodes": {
+                                    "items": {
+                                      "type": "number"
+                                    },
+                                    "type": "array",
+                                    "description": "Response status codes to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted.",
+                                    "example": [
+                                      503
+                                    ]
+                                  },
+                                  "excludePaths": {
+                                    "items": {
+                                      "type": "string"
+                                    },
+                                    "type": "array",
+                                    "description": "Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted.",
+                                    "example": [
+                                      "/api/health"
+                                    ]
+                                  },
+                                  "ingestWatermarkSeconds": {
+                                    "type": "number",
+                                    "description": "Seconds of ingest lag to allow for: the query's upper bound is `now() - this value`, so the check never reads a window that is still filling. Defaults to `30` when omitted.",
+                                    "example": 30
+                                  }
+                                },
+                                "required": [
+                                  "type"
+                                ],
+                                "type": "object",
+                                "description": "The checks to evaluate. An empty array means nothing is evaluated."
+                              },
+                              "type": "array",
+                              "description": "The checks to evaluate. An empty array means nothing is evaluated."
+                            },
+                            "failureThreshold": {
+                              "type": "number",
+                              "description": "How many failing evaluations within {@link windowSize} trip the gate. Defaults to `3` when omitted.",
+                              "example": 3
+                            },
+                            "windowSize": {
+                              "type": "number",
+                              "description": "How many of the most recent evaluations {@link failureThreshold} is counted against. Defaults to `5` when omitted.",
+                              "example": 5
+                            },
+                            "action": {
+                              "type": "string",
+                              "enum": [
+                                "pause",
+                                "rollback"
+                              ],
+                              "description": "What to do when the gate trips: pause the rollout, or roll it back."
+                            },
+                            "dryRun": {
+                              "type": "boolean",
+                              "enum": [
+                                false,
+                                true
+                              ],
+                              "description": "When true, a tripped gate is only reported — {@link action} is not taken."
+                            }
+                          },
+                          "required": [
+                            "action",
+                            "checks",
+                            "dryRun",
+                            "enabled"
+                          ],
+                          "type": "object",
+                          "description": "Automated gating configuration. Omitted (the default) means no gating is configured, which is equivalent to `enabled: false`."
                         }
                       },
                       "required": [
@@ -154764,6 +156111,12 @@
                           },
                           "type": "array"
                         },
+                        "aiGatewayApiKeySpendAttribution": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "aiGatewayApiKeyZdrExemption": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -154807,6 +156160,12 @@
                           "type": "array"
                         },
                         "aiGatewayUsage": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "aiGatewayVirtualModelConfigs": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -155041,6 +156400,12 @@
                           "type": "array"
                         },
                         "buildMachineDefault": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "cursorOriginInstallation": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -158968,7 +160333,7 @@
       },
       "post": {
         "description": "Creates a named sandbox environment. Named sandboxes have a unique name within a project and support automatic snapshotting on shutdown.",
-        "operationId": "createSandboxes",
+        "operationId": "createSandboxesV2",
         "security": [
           {
             "bearerToken": []
@@ -159436,10 +160801,17 @@
                       }
                     ]
                   },
-                  "image": {
+                  "runtime": {
+                    "description": "The runtime environment for the sandbox. Determines the pre-installed language runtimes and tools available.",
                     "type": "string",
-                    "maxLength": 255,
-                    "description": "Image to use for the sandbox."
+                    "enum": [
+                      "node22",
+                      "node24",
+                      "node26",
+                      "python3.13"
+                    ],
+                    "default": "node24",
+                    "example": "node24"
                   },
                   "resources": {
                     "description": "Resources to define the VM",
@@ -159460,18 +160832,6 @@
                         "example": 4096
                       }
                     }
-                  },
-                  "runtime": {
-                    "description": "The runtime environment for the sandbox. Determines the pre-installed language runtimes and tools available.",
-                    "type": "string",
-                    "enum": [
-                      "node22",
-                      "node24",
-                      "node26",
-                      "python3.13"
-                    ],
-                    "default": "node24",
-                    "example": "node24"
                   },
                   "source": {
                     "description": "The source from which to initialize the sandbox filesystem. Can be a Git repository, a tarball URL, or an existing snapshot.",
@@ -159581,6 +160941,11 @@
                       "maximum": 65535,
                       "minimum": 1024
                     }
+                  },
+                  "image": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "Image to use for the sandbox."
                   },
                   "timeout": {
                     "type": "integer",
@@ -163955,11 +165320,6 @@
                       }
                     ]
                   },
-                  "image": {
-                    "type": "string",
-                    "maxLength": 255,
-                    "description": "Image to use for the sandbox."
-                  },
                   "resources": {
                     "description": "Resources to define the VM",
                     "additionalProperties": false,
@@ -164000,6 +165360,11 @@
                       "maximum": 65535,
                       "minimum": 1024
                     }
+                  },
+                  "image": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "Image to use for the sandbox."
                   },
                   "timeout": {
                     "type": "integer",
@@ -164058,6 +165423,729 @@
                   "persistent": {
                     "description": "Whether the sandbox persists its state across restarts via automatic snapshots. Defaults to the source sandbox setting.",
                     "type": "boolean"
+                  },
+                  "snapshotExpiration": {
+                    "description": "Default snapshot expiration time in milliseconds. Set to 0 to disable expiration. When set, this value is used as the default expiration for all snapshots created for this sandbox.",
+                    "oneOf": [
+                      {},
+                      {
+                        "type": "integer"
+                      }
+                    ],
+                    "example": 604800000
+                  },
+                  "keepLastSnapshots": {
+                    "description": "Protect the N most recent snapshots with different expiration/deletion behavior.",
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10,
+                        "description": "Number of most recent snapshots to keep."
+                      },
+                      "expiration": {
+                        "description": "Expiration time in milliseconds for kept snapshots. Falls back to snapshotExpiration.",
+                        "oneOf": [
+                          {},
+                          {
+                            "type": "integer"
+                          }
+                        ]
+                      },
+                      "deleteEvicted": {
+                        "type": "boolean",
+                        "description": "Whether to immediately delete evicted snapshots. Defaults to true."
+                      }
+                    }
+                  },
+                  "tags": {
+                    "description": "Key-value tags to associate with the sandbox. Maximum 5 tags.",
+                    "type": "object",
+                    "maxProperties": 5,
+                    "additionalProperties": {
+                      "type": "string",
+                      "maxLength": 256
+                    },
+                    "example": {
+                      "env": "staging",
+                      "team": "platform"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v3/sandboxes": {
+      "post": {
+        "description": "Creates a named sandbox environment. Named sandboxes have a unique name within a project and support automatic snapshotting on shutdown. Unlike v2, this version has no `runtime` parameter: when no `image` is provided (and the sandbox is not restored from a snapshot), the sandbox is created from the default universal image.",
+        "operationId": "createSandboxesV3",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Create a named sandbox",
+        "tags": [
+          "sandboxes"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "sandbox": {
+                      "$ref": "#/components/schemas/NamedSandbox"
+                    },
+                    "session": {
+                      "$ref": "#/components/schemas/Session"
+                    },
+                    "routes": {
+                      "items": {
+                        "$ref": "#/components/schemas/SandboxPublicRoute"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "routes",
+                    "sandbox",
+                    "session"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "402": {
+            "description": "The account is missing a payment so payment method must be updated"
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          },
+          "409": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          },
+          "422": {
+            "description": ""
+          },
+          "429": {
+            "description": "The concurrency limit has been exceeded."
+          },
+          "500": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "networkPolicy": {
+                    "oneOf": [
+                      {
+                        "description": "Network access policy for the sandbox.\\n    Controls which external hosts the sandbox can communicate with.\\n    Use \\\"allow-all\\\" mode to allow all traffic, \\\"deny-all\\\" to block all traffic or \\\"custom\\\" to provide specific rules.",
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "mode"
+                        ],
+                        "properties": {
+                          "mode": {
+                            "description": "The network access policy mode. Use \\\"allow-all\\\" to permit all outbound traffic. Use \\\"deny-all\\\" to block all outbound traffic. Use \\\"custom\\\" to specify explicit allow/deny rules.",
+                            "type": "string",
+                            "enum": [
+                              "allow-all",
+                              "deny-all",
+                              "custom",
+                              "default-allow",
+                              "default-deny"
+                            ],
+                            "example": "custom"
+                          },
+                          "allowedDomains": {
+                            "description": "List of domain names the sandbox is allowed to connect to. Only applies when mode is \\\"custom\\\". Supports wildcard patterns (e.g., \\\"*.example.com\\\" matches all subdomains).",
+                            "type": "array",
+                            "example": [
+                              "api.github.com",
+                              "*.npmjs.org"
+                            ],
+                            "items": {
+                              "type": "string",
+                              "description": "A domain name pattern. Use \\\"*\\\" for wildcard matching of subdomains (e.g., \\\"*.example.com\\\")."
+                            }
+                          },
+                          "allowedCIDRs": {
+                            "description": "List of IP address ranges (in CIDR notation) the sandbox is allowed to connect to. Traffic to these addresses bypasses domain-based restrictions.",
+                            "type": "array",
+                            "example": [
+                              "35.192.0.0/12",
+                              "104.16.0.0/12"
+                            ],
+                            "items": {
+                              "type": "string",
+                              "description": "An IPv4 address range in CIDR notation (e.g., \\\"35.192.0.0/12\\\")."
+                            }
+                          },
+                          "deniedCIDRs": {
+                            "description": "List of IP address ranges (in CIDR notation) the sandbox is blocked from connecting to. These rules take precedence over all allowed rules.",
+                            "type": "array",
+                            "example": [
+                              "35.192.0.0/12"
+                            ],
+                            "items": {
+                              "type": "string",
+                              "description": "An IP address range in CIDR notation to block."
+                            }
+                          },
+                          "injectionRules": {
+                            "description": "HTTP header injection rules for outgoing requests matching specific domains. Traffic to matching domains will be intercepted instead of proxied through encrypted connections.",
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": false,
+                              "required": [
+                                "domain",
+                                "headers"
+                              ],
+                              "properties": {
+                                "domain": {
+                                  "description": "The domain (or pattern) of requests to add headers for. Supports wildcards like *.example.com.",
+                                  "type": "string"
+                                },
+                                "headers": {
+                                  "description": "HTTP headers to inject into requests for this domain. Existing headers with the same name will be overridden.",
+                                  "type": "object",
+                                  "additionalProperties": {
+                                    "type": "string"
+                                  }
+                                },
+                                "match": {
+                                  "description": "Optional L7 match. When provided, the injection rule only applies to requests that satisfy every specified dimension. When multiple injection rules target the same domain they are evaluated in order and the first match wins; a rule without `match` matches any request and shadows later rules for the same domain.",
+                                  "type": "object",
+                                  "additionalProperties": false,
+                                  "properties": {
+                                    "path": {
+                                      "description": "Match on the request path. Comparison is case-sensitive.",
+                                      "type": "object",
+                                      "additionalProperties": false,
+                                      "properties": {
+                                        "exact": {
+                                          "type": "string",
+                                          "description": "Match the value exactly. Case-sensitive for paths, header values, and methods; case-insensitive for domains and header keys."
+                                        },
+                                        "startsWith": {
+                                          "type": "string",
+                                          "description": "Match values that start with the given prefix."
+                                        }
+                                      }
+                                    },
+                                    "method": {
+                                      "type": "array",
+                                      "description": "HTTP methods to match. Any single match succeeds (OR semantics).",
+                                      "items": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "queryString": {
+                                      "type": "array",
+                                      "description": "Query-string entry matchers. Multiple entries are ANDed. Query parameter names and values are both compared case-sensitively (RFC 3986). When a request has multiple values for the same key, any matching value satisfies the matcher.",
+                                      "items": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                          "key": {
+                                            "description": "Matcher for the entry key (header name or query key).",
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                              "exact": {
+                                                "type": "string",
+                                                "description": "Match the value exactly. Case-sensitive for paths, header values, and methods; case-insensitive for domains and header keys."
+                                              },
+                                              "startsWith": {
+                                                "type": "string",
+                                                "description": "Match values that start with the given prefix."
+                                              }
+                                            }
+                                          },
+                                          "value": {
+                                            "description": "Matcher for the entry value.",
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                              "exact": {
+                                                "type": "string",
+                                                "description": "Match the value exactly. Case-sensitive for paths, header values, and methods; case-insensitive for domains and header keys."
+                                              },
+                                              "startsWith": {
+                                                "type": "string",
+                                                "description": "Match values that start with the given prefix."
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "headers": {
+                                      "type": "array",
+                                      "description": "Header matchers. Multiple entries are ANDed. Header names are compared case-insensitively (RFC 9110); header values are compared case-sensitively. When a request has multiple values for the same header, any matching value satisfies the matcher.",
+                                      "items": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                          "key": {
+                                            "description": "Matcher for the entry key (header name or query key).",
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                              "exact": {
+                                                "type": "string",
+                                                "description": "Match the value exactly. Case-sensitive for paths, header values, and methods; case-insensitive for domains and header keys."
+                                              },
+                                              "startsWith": {
+                                                "type": "string",
+                                                "description": "Match values that start with the given prefix."
+                                              }
+                                            }
+                                          },
+                                          "value": {
+                                            "description": "Matcher for the entry value.",
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                              "exact": {
+                                                "type": "string",
+                                                "description": "Match the value exactly. Case-sensitive for paths, header values, and methods; case-insensitive for domains and header keys."
+                                              },
+                                              "startsWith": {
+                                                "type": "string",
+                                                "description": "Match values that start with the given prefix."
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "allow": {
+                            "oneOf": [
+                              {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              {
+                                "description": "A rule applied to requests matching a domain in the network policy. Only one of `transform` or `forwardURL` can be specified per rule.",
+                                "type": "object",
+                                "additionalProperties": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "additionalProperties": false,
+                                    "properties": {
+                                      "match": {
+                                        "description": "Optional L7 match. When provided, the injection rule only applies to requests that satisfy every specified dimension. When multiple injection rules target the same domain they are evaluated in order and the first match wins; a rule without `match` matches any request and shadows later rules for the same domain.",
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                          "path": {
+                                            "description": "Match on the request path. Comparison is case-sensitive.",
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                              "exact": {
+                                                "type": "string",
+                                                "description": "Match the value exactly. Case-sensitive for paths, header values, and methods; case-insensitive for domains and header keys."
+                                              },
+                                              "startsWith": {
+                                                "type": "string",
+                                                "description": "Match values that start with the given prefix."
+                                              }
+                                            }
+                                          },
+                                          "method": {
+                                            "type": "array",
+                                            "description": "HTTP methods to match. Any single match succeeds (OR semantics).",
+                                            "items": {
+                                              "type": "string"
+                                            }
+                                          },
+                                          "queryString": {
+                                            "type": "array",
+                                            "description": "Query-string entry matchers. Multiple entries are ANDed. Query parameter names and values are both compared case-sensitively (RFC 3986). When a request has multiple values for the same key, any matching value satisfies the matcher.",
+                                            "items": {
+                                              "type": "object",
+                                              "additionalProperties": false,
+                                              "properties": {
+                                                "key": {
+                                                  "description": "Matcher for the entry key (header name or query key).",
+                                                  "type": "object",
+                                                  "additionalProperties": false,
+                                                  "properties": {
+                                                    "exact": {
+                                                      "type": "string",
+                                                      "description": "Match the value exactly. Case-sensitive for paths, header values, and methods; case-insensitive for domains and header keys."
+                                                    },
+                                                    "startsWith": {
+                                                      "type": "string",
+                                                      "description": "Match values that start with the given prefix."
+                                                    }
+                                                  }
+                                                },
+                                                "value": {
+                                                  "description": "Matcher for the entry value.",
+                                                  "type": "object",
+                                                  "additionalProperties": false,
+                                                  "properties": {
+                                                    "exact": {
+                                                      "type": "string",
+                                                      "description": "Match the value exactly. Case-sensitive for paths, header values, and methods; case-insensitive for domains and header keys."
+                                                    },
+                                                    "startsWith": {
+                                                      "type": "string",
+                                                      "description": "Match values that start with the given prefix."
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "headers": {
+                                            "type": "array",
+                                            "description": "Header matchers. Multiple entries are ANDed. Header names are compared case-insensitively (RFC 9110); header values are compared case-sensitively. When a request has multiple values for the same header, any matching value satisfies the matcher.",
+                                            "items": {
+                                              "type": "object",
+                                              "additionalProperties": false,
+                                              "properties": {
+                                                "key": {
+                                                  "description": "Matcher for the entry key (header name or query key).",
+                                                  "type": "object",
+                                                  "additionalProperties": false,
+                                                  "properties": {
+                                                    "exact": {
+                                                      "type": "string",
+                                                      "description": "Match the value exactly. Case-sensitive for paths, header values, and methods; case-insensitive for domains and header keys."
+                                                    },
+                                                    "startsWith": {
+                                                      "type": "string",
+                                                      "description": "Match values that start with the given prefix."
+                                                    }
+                                                  }
+                                                },
+                                                "value": {
+                                                  "description": "Matcher for the entry value.",
+                                                  "type": "object",
+                                                  "additionalProperties": false,
+                                                  "properties": {
+                                                    "exact": {
+                                                      "type": "string",
+                                                      "description": "Match the value exactly. Case-sensitive for paths, header values, and methods; case-insensitive for domains and header keys."
+                                                    },
+                                                    "startsWith": {
+                                                      "type": "string",
+                                                      "description": "Match values that start with the given prefix."
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "transform": {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "object",
+                                          "additionalProperties": false,
+                                          "properties": {
+                                            "headers": {
+                                              "type": "object",
+                                              "additionalProperties": {
+                                                "type": "string"
+                                              }
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "forwardURL": {
+                                        "type": "string",
+                                        "description": "HTTP/1.1 proxy URL to forward traffic to. Must not include query string or fragment."
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            ]
+                          },
+                          "subnets": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                              "allow": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "deny": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "resources": {
+                    "description": "Resources to define the VM",
+                    "additionalProperties": false,
+                    "type": "object",
+                    "properties": {
+                      "vcpus": {
+                        "description": "The number of virtual CPUs to allocate to the sandbox. Must be 1, or an even number.",
+                        "type": "integer",
+                        "minimum": 1,
+                        "default": 2,
+                        "example": 2
+                      },
+                      "memory": {
+                        "description": "The amount of memory in megabytes to allocate to the sandbox. Must equal vcpus * 2048.",
+                        "type": "integer",
+                        "minimum": 2048,
+                        "example": 4096
+                      }
+                    }
+                  },
+                  "source": {
+                    "description": "The source from which to initialize the sandbox filesystem. Can be a Git repository, a tarball URL, or an existing snapshot.",
+                    "oneOf": [
+                      {
+                        "type": "object",
+                        "description": "Clone a Git repository into the sandbox.",
+                        "properties": {
+                          "type": {
+                            "description": "Indicates the source is a Git repository."
+                          },
+                          "url": {
+                            "type": "string",
+                            "format": "uri",
+                            "description": "The URL of the Git repository to clone.",
+                            "example": "https://github.com/vercel/next.js.git"
+                          },
+                          "username": {
+                            "type": "string",
+                            "description": "Username for Git authentication. Required together with password for private repositories."
+                          },
+                          "password": {
+                            "type": "string",
+                            "description": "Password or personal access token for Git authentication. Required together with username for private repositories."
+                          },
+                          "depth": {
+                            "type": "integer",
+                            "minimum": 1,
+                            "description": "Create a shallow clone with history truncated to the specified number of commits. Useful for faster cloning of large repositories.",
+                            "example": 1
+                          },
+                          "revision": {
+                            "type": "string",
+                            "description": "The specific commit SHA, branch name, or tag to checkout after cloning.",
+                            "example": "main"
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "url"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "description": "Download and extract a gzipped tarball into the sandbox.",
+                        "properties": {
+                          "type": {
+                            "description": "Indicates the source is a tarball."
+                          },
+                          "url": {
+                            "type": "string",
+                            "format": "uri",
+                            "description": "URL of a gzipped tarball (.tar.gz) to download and extract.",
+                            "example": "https://example.com/project.tar.gz"
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "url"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "description": "Restore the sandbox filesystem from an existing snapshot.",
+                        "properties": {
+                          "type": {
+                            "description": "Indicates the source is a snapshot."
+                          },
+                          "snapshotId": {
+                            "type": "string",
+                            "description": "The unique identifier of the snapshot to restore.",
+                            "example": "snap_abc123"
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "snapshotId"
+                        ],
+                        "additionalProperties": false
+                      }
+                    ]
+                  },
+                  "projectId": {
+                    "description": "The target project slug or ID in which the sandbox will be assigned to.",
+                    "example": "prj_abc123",
+                    "type": "string"
+                  },
+                  "ports": {
+                    "description": "List of ports to expose from the sandbox. Each port will be accessible via a unique URL. Maximum of 15 ports can be exposed.",
+                    "type": "array",
+                    "maxItems": 15,
+                    "uniqueItems": true,
+                    "example": [
+                      3000,
+                      4000
+                    ],
+                    "items": {
+                      "type": "integer",
+                      "description": "A port number to expose from the sandbox. Must be between 1024 and 65535.",
+                      "not": {
+                        "enum": [
+                          23456
+                        ]
+                      },
+                      "maximum": 65535,
+                      "minimum": 1024
+                    }
+                  },
+                  "image": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "Image to use for the sandbox."
+                  },
+                  "timeout": {
+                    "type": "integer",
+                    "description": "Maximum duration in milliseconds that the sandbox can run before being automatically stopped.",
+                    "minimum": 1000,
+                    "example": 300000
+                  },
+                  "env": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "string"
+                    },
+                    "description": "Default environment variables for the sandbox. These are inherited by all commands unless overridden.",
+                    "default": {},
+                    "example": {
+                      "NODE_ENV": "production",
+                      "HELLO": "world"
+                    }
+                  },
+                  "mounts": {
+                    "type": "object",
+                    "description": "List of drives to mount to the sandbox at the provided path.",
+                    "maxProperties": 4,
+                    "additionalProperties": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "drive"
+                      ],
+                      "properties": {
+                        "drive": {
+                          "type": "string",
+                          "description": "Name of the drive to mount. The drive must already exist.",
+                          "maxLength": 64,
+                          "pattern": "^[a-zA-Z0-9_-]+$"
+                        },
+                        "mode": {
+                          "type": "string",
+                          "enum": [
+                            "read-only",
+                            "read-write"
+                          ],
+                          "description": "Mount the drive read-only or read-write.",
+                          "default": "read-write"
+                        }
+                      }
+                    }
+                  },
+                  "name": {
+                    "example": "my-sandbox",
+                    "type": "string",
+                    "pattern": "^[a-zA-Z0-9_-]+$",
+                    "maxLength": 128,
+                    "description": "Name for the sandbox. Must be unique per project and URL-safe (alphanumeric, hyphens, underscores)."
+                  },
+                  "persistent": {
+                    "description": "Whether the sandbox persists its state across restarts via automatic snapshots. Defaults to true.",
+                    "type": "boolean",
+                    "default": true
                   },
                   "snapshotExpiration": {
                     "description": "Default snapshot expiration time in milliseconds. Set to 0 to disable expiration. When set, this value is used as the default expiration for all snapshots created for this sandbox.",
@@ -176723,7 +178811,10 @@
         "description": "",
         "operationId": "getStorageStoresById",
         "security": [],
-        "tags": [],
+        "summary": "Get a store",
+        "tags": [
+          "storage"
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -177043,7 +179134,10 @@
         "description": "",
         "operationId": "createStorageStoresBlob",
         "security": [],
-        "tags": [],
+        "summary": "Create a Blob store",
+        "tags": [
+          "storage"
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -177464,7 +179558,10 @@
         "description": "",
         "operationId": "deleteStorageStoresBlobById",
         "security": [],
-        "tags": [],
+        "summary": "Delete a Blob store",
+        "tags": [
+          "storage"
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -186934,7 +189031,10 @@
         "description": "GET /v2/ Docker Registry v2 version check. Returns a 401 challenge when no credentials are provided, prompting the Docker client to send auth. With valid credentials, returns 200 so the client can proceed.",
         "operationId": "getRoot",
         "security": [],
-        "tags": [],
+        "summary": "Check registry API version support",
+        "tags": [
+          "vcr"
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -186973,7 +189073,10 @@
         "description": "HEAD /v2/:teamSlug/:projectSlug/:repositoryName/blobs/:digest Check whether a blob exists. Used by the Docker client before pushing a layer to avoid re-uploading content that already exists.",
         "operationId": "headByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest",
         "security": [],
-        "tags": [],
+        "summary": "Check if a blob exists",
+        "tags": [
+          "vcr"
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -187063,7 +189166,10 @@
         "description": "GET /v2/:teamSlug/:projectSlug/:repositoryName/blobs/:digest Fetch a blob by digest.",
         "operationId": "getByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest",
         "security": [],
-        "tags": [],
+        "summary": "Download a blob",
+        "tags": [
+          "vcr"
+        ],
         "responses": {
           "400": {
             "description": "One of the provided values in the request query is invalid."
@@ -187146,7 +189252,10 @@
         "description": "DELETE /v2/:teamSlug/:projectSlug/:repositoryName/blobs/:digest Blob deletion is intentionally not supported. Matches the behaviour of most public registries.",
         "operationId": "deleteByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest",
         "security": [],
-        "tags": [],
+        "summary": "Delete a blob",
+        "tags": [
+          "vcr"
+        ],
         "responses": {
           "400": {
             "description": "One of the provided values in the request query is invalid."
@@ -187231,7 +189340,10 @@
         "description": "GET /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid Query the status of an in-progress blob upload. Used by clients to resume a partial upload after an interruption.",
         "operationId": "getByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid",
         "security": [],
-        "tags": [],
+        "summary": "Get blob upload status",
+        "tags": [
+          "vcr"
+        ],
         "responses": {
           "204": {
             "description": "",
@@ -187321,7 +189433,10 @@
         "description": "DELETE /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid Cancel an in-flight blob upload. Aborts the underlying S3 multipart upload (if one was started) and discards the session.",
         "operationId": "deleteByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid",
         "security": [],
-        "tags": [],
+        "summary": "Cancel a blob upload",
+        "tags": [
+          "vcr"
+        ],
         "responses": {
           "204": {
             "description": "",
@@ -187411,7 +189526,10 @@
         "description": "PATCH /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid Upload a chunk of blob data. The request body is streamed directly to S3 as a multipart upload part while hashing incrementally. The client may call this multiple times for chunked uploads.",
         "operationId": "updateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid",
         "security": [],
-        "tags": [],
+        "summary": "Upload a blob chunk",
+        "tags": [
+          "vcr"
+        ],
         "responses": {
           "202": {
             "description": "",
@@ -187504,7 +189622,10 @@
         "description": "PUT /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid?digest=<digest> Complete the blob upload. This may include a final chunk of data in the request body (monolithic upload) or just finalize a previous chunked upload.",
         "operationId": "replaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid",
         "security": [],
-        "tags": [],
+        "summary": "Complete a blob upload",
+        "tags": [
+          "vcr"
+        ],
         "responses": {
           "201": {
             "description": "",
@@ -187612,7 +189733,10 @@
         "description": "POST /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/[?mount=<digest>&from=<repo>] Initiate a blob upload. Returns a UUID in the Location header that the client uses for subsequent PATCH (chunk) and PUT (complete) requests.",
         "operationId": "createByTeamSlugByProjectSlugByRepositoryNameBlobsUploads",
         "security": [],
-        "tags": [],
+        "summary": "Start a blob upload",
+        "tags": [
+          "vcr"
+        ],
         "responses": {
           "202": {
             "description": "",
@@ -187715,7 +189839,10 @@
         "description": "PUT /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Upload an image manifest. The digest is computed from the body and returned in the Docker-Content-Digest header.",
         "operationId": "replaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReference",
         "security": [],
-        "tags": [],
+        "summary": "Push an image manifest",
+        "tags": [
+          "vcr"
+        ],
         "responses": {
           "201": {
             "description": "",
@@ -187808,7 +189935,10 @@
         "description": "HEAD /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Check whether a manifest exists. Used by Docker client during push to determine if a manifest (or config blob referenced by digest) is already present.",
         "operationId": "headByTeamSlugByProjectSlugByRepositoryNameManifestsByReference",
         "security": [],
-        "tags": [],
+        "summary": "Check if a manifest exists",
+        "tags": [
+          "vcr"
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -187898,7 +190028,10 @@
         "description": "GET /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Fetch a manifest by tag or digest.",
         "operationId": "getByTeamSlugByProjectSlugByRepositoryNameManifestsByReference",
         "security": [],
-        "tags": [],
+        "summary": "Pull an image manifest",
+        "tags": [
+          "vcr"
+        ],
         "responses": {
           "400": {
             "description": "One of the provided values in the request query is invalid."
@@ -187978,7 +190111,10 @@
         "description": "DELETE /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Reference must be a digest.",
         "operationId": "deleteByTeamSlugByProjectSlugByRepositoryNameManifestsByReference",
         "security": [],
-        "tags": [],
+        "summary": "Delete an image manifest",
+        "tags": [
+          "vcr"
+        ],
         "responses": {
           "202": {
             "description": "",
@@ -188070,7 +190206,10 @@
         "description": "GET /v2/:teamSlug/:projectSlug/:repositoryName/tags/list List the tags in a repository.",
         "operationId": "getByTeamSlugByProjectSlugByRepositoryNameTagsList",
         "security": [],
-        "tags": [],
+        "summary": "List image tags",
+        "tags": [
+          "vcr"
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -188727,6 +190866,9 @@
                                 "type": "string"
                               },
                               "appName": {
+                                "type": "string"
+                              },
+                              "codingAgent": {
                                 "type": "string"
                               },
                               "isByok": {
@@ -189389,6 +191531,9 @@
                               "appName": {
                                 "type": "string"
                               },
+                              "codingAgent": {
+                                "type": "string"
+                              },
                               "isByok": {
                                 "type": "string"
                               },
@@ -189674,6 +191819,7 @@
                               "clientIpCountry",
                               "clientJa4Digest",
                               "clientUserAgent",
+                              "codingAgent",
                               "commitSha",
                               "consumerGroup",
                               "contentCaptureInputs",
@@ -190513,6 +192659,9 @@
                               "appName": {
                                 "type": "string"
                               },
+                              "codingAgent": {
+                                "type": "string"
+                              },
                               "isByok": {
                                 "type": "string"
                               },
@@ -191173,6 +193322,9 @@
                               "appName": {
                                 "type": "string"
                               },
+                              "codingAgent": {
+                                "type": "string"
+                              },
                               "isByok": {
                                 "type": "string"
                               },
@@ -191458,6 +193610,7 @@
                               "clientIpCountry",
                               "clientJa4Digest",
                               "clientUserAgent",
+                              "codingAgent",
                               "commitSha",
                               "consumerGroup",
                               "contentCaptureInputs",
@@ -192261,6 +194414,9 @@
                         "appName": {
                           "type": "string"
                         },
+                        "codingAgent": {
+                          "type": "string"
+                        },
                         "isByok": {
                           "type": "string"
                         },
@@ -192546,6 +194702,7 @@
                         "clientIpCountry",
                         "clientJa4Digest",
                         "clientUserAgent",
+                        "codingAgent",
                         "commitSha",
                         "consumerGroup",
                         "contentCaptureInputs",
@@ -193280,6 +195437,9 @@
                         "appName": {
                           "type": "string"
                         },
+                        "codingAgent": {
+                          "type": "string"
+                        },
                         "isByok": {
                           "type": "string"
                         },
@@ -193565,6 +195725,7 @@
                         "clientIpCountry",
                         "clientJa4Digest",
                         "clientUserAgent",
+                        "codingAgent",
                         "commitSha",
                         "consumerGroup",
                         "contentCaptureInputs",
@@ -200537,6 +202698,11 @@
               "ai-gateway-rule-deleted",
               "ai-gateway-rule-updated",
               "ai-gateway-scope-budget-updated",
+              "ai-gateway-transcripts-default-disabled",
+              "ai-gateway-transcripts-default-enabled",
+              "ai-gateway-transcripts-disabled",
+              "ai-gateway-transcripts-enabled",
+              "ai-gateway-transcripts-retention-updated",
               "ai-gateway-virtual-model-config-archived",
               "ai-gateway-virtual-model-config-created",
               "ai-gateway-virtual-model-config-restored",
@@ -200582,6 +202748,7 @@
               "cert-system-create",
               "code-owners-config-updated",
               "compliance-document-downloaded",
+              "compliance-document-previewed",
               "compliance-documents-bulk-downloaded",
               "concurrent-builds-update",
               "connect-attach-project",
@@ -200720,6 +202887,7 @@
               "flags-segment",
               "flags-settings",
               "flags-transferred",
+              "git-integration-repo-push",
               "git_account_integration_link_added",
               "instant-rollback-created",
               "integration-configuration-owner-changed",
@@ -200740,6 +202908,7 @@
               "kms-issuer-deleted",
               "kms-issuer-key-activated",
               "kms-issuer-key-created",
+              "kms-issuer-key-revoked",
               "kms-issuer-key-rotated",
               "kms-issuer-policy-created",
               "kms-issuer-policy-deleted",
@@ -200933,6 +203102,8 @@
               "protected-git-scope-added",
               "protected-git-scope-removed",
               "runtime-cache-purge-all",
+              "saml-connection-created",
+              "saml-connection-deleted",
               "sandbox-alias-assigned",
               "sandbox-alias-delete",
               "sandbox-snapshot-regions-updated",
@@ -200965,6 +203136,7 @@
               "spend-created",
               "spend-deleted",
               "spend-updated",
+              "sso-login",
               "storage-accept-tos",
               "storage-access-token-set",
               "storage-accessed-data-browser",
@@ -200991,6 +203163,7 @@
               "subscription-product-added",
               "subscription-product-removed",
               "subscription-updated",
+              "support-session-created",
               "team",
               "team-agent-billing-migration-decision-changed",
               "team-avatar-update",
@@ -201041,11 +203214,18 @@
               "tracing-configured",
               "tracing-disabled",
               "unlink-login-connection",
+              "update-account-flow-dismissed",
               "update-account-flow-triggered",
+              "user-auto-block-configured",
+              "user-blocked",
               "user-delete",
+              "user-delete-requested",
               "user-emu-account-archived",
               "user-emu-account-deleted",
               "user-emu-account-recovered",
+              "user-emu-recovery-email-sent",
+              "user-emu-recovery-initiated",
+              "user-emu-toggled",
               "user-mfa-challenge-failed",
               "user-mfa-challenge-verified",
               "user-mfa-change-failed",
@@ -201056,10 +203236,14 @@
               "user-mfa-setup-skipped",
               "user-mfa-totp-verification-started",
               "user-mfa-totp-verified",
+              "user-phone-removed",
+              "user-phone-updated",
               "user-primary-email-updated",
+              "user-sudo-mode-removed",
               "user-token-created",
               "user-token-deleted",
               "user-tokens-deleted",
+              "user-unblocked",
               "username",
               "v0-chat-ai-usage",
               "v0-chat-created",
@@ -202147,6 +204331,44 @@
               },
               {
                 "properties": {
+                  "retention": {
+                    "properties": {
+                      "defaultMode": {
+                        "type": "string",
+                        "enum": [
+                          "days",
+                          "until-requested"
+                        ]
+                      },
+                      "defaultDays": {
+                        "type": "number"
+                      },
+                      "ceilingMode": {
+                        "type": "string",
+                        "enum": [
+                          "days",
+                          "until-requested"
+                        ]
+                      },
+                      "ceilingDays": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "ceilingMode",
+                      "defaultMode"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "retention"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
                   "rule": {
                     "properties": {
                       "id": {
@@ -202251,8 +204473,7 @@
                       }
                     },
                     "required": [
-                      "id",
-                      "modelSlug"
+                      "id"
                     ],
                     "type": "object"
                   }
@@ -202878,6 +205099,7 @@
                         "read-write:ai-gateway-guardrails",
                         "read-write:ai-gateway-private-models",
                         "read-write:ai-gateway-rules",
+                        "read-write:ai-gateway-virtual-model-configs",
                         "read-write:alerts",
                         "read-write:billing",
                         "read-write:blob",
@@ -202906,6 +205128,7 @@
                         "read:ai-gateway-guardrails",
                         "read:ai-gateway-private-models",
                         "read:ai-gateway-rules",
+                        "read:ai-gateway-virtual-model-configs",
                         "read:alerts",
                         "read:billing",
                         "read:deployment",
@@ -202986,6 +205209,7 @@
                         "read-write:ai-gateway-guardrails",
                         "read-write:ai-gateway-private-models",
                         "read-write:ai-gateway-rules",
+                        "read-write:ai-gateway-virtual-model-configs",
                         "read-write:alerts",
                         "read-write:billing",
                         "read-write:blob",
@@ -203014,6 +205238,7 @@
                         "read:ai-gateway-guardrails",
                         "read:ai-gateway-private-models",
                         "read:ai-gateway-rules",
+                        "read:ai-gateway-virtual-model-configs",
                         "read:alerts",
                         "read:billing",
                         "read:deployment",
@@ -203116,6 +205341,7 @@
                             "read-write:ai-gateway-guardrails",
                             "read-write:ai-gateway-private-models",
                             "read-write:ai-gateway-rules",
+                            "read-write:ai-gateway-virtual-model-configs",
                             "read-write:alerts",
                             "read-write:billing",
                             "read-write:blob",
@@ -203144,6 +205370,7 @@
                             "read:ai-gateway-guardrails",
                             "read:ai-gateway-private-models",
                             "read:ai-gateway-rules",
+                            "read:ai-gateway-virtual-model-configs",
                             "read:alerts",
                             "read:billing",
                             "read:deployment",
@@ -203229,6 +205456,7 @@
                             "read-write:ai-gateway-guardrails",
                             "read-write:ai-gateway-private-models",
                             "read-write:ai-gateway-rules",
+                            "read-write:ai-gateway-virtual-model-configs",
                             "read-write:alerts",
                             "read-write:billing",
                             "read-write:blob",
@@ -203257,6 +205485,7 @@
                             "read:ai-gateway-guardrails",
                             "read:ai-gateway-private-models",
                             "read:ai-gateway-rules",
+                            "read:ai-gateway-virtual-model-configs",
                             "read:alerts",
                             "read:billing",
                             "read:deployment",
@@ -203355,6 +205584,7 @@
                         "read-write:ai-gateway-guardrails",
                         "read-write:ai-gateway-private-models",
                         "read-write:ai-gateway-rules",
+                        "read-write:ai-gateway-virtual-model-configs",
                         "read-write:alerts",
                         "read-write:billing",
                         "read-write:blob",
@@ -203383,6 +205613,7 @@
                         "read:ai-gateway-guardrails",
                         "read:ai-gateway-private-models",
                         "read:ai-gateway-rules",
+                        "read:ai-gateway-virtual-model-configs",
                         "read:alerts",
                         "read:billing",
                         "read:deployment",
@@ -209202,6 +211433,97 @@
                 },
                 "required": [
                   "action"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "provider": {
+                    "type": "string",
+                    "enum": [
+                      "bitbucket",
+                      "github",
+                      "gitlab"
+                    ]
+                  },
+                  "actorLogin": {
+                    "nullable": true,
+                    "type": "string",
+                    "description": "Display name only. Logins are mutable; join on `actorAccountId`."
+                  },
+                  "actorAccountId": {
+                    "nullable": true,
+                    "type": "string",
+                    "description": "Stable account id on `provider`."
+                  },
+                  "installationId": {
+                    "nullable": true,
+                    "type": "string",
+                    "description": "Set only when an App installation token was minted (GitHub only)."
+                  },
+                  "usedAppToken": {
+                    "type": "boolean",
+                    "enum": [
+                      false,
+                      true
+                    ]
+                  },
+                  "sourceRepo": {
+                    "type": "string",
+                    "description": "Source repository, \"owner/name\"."
+                  },
+                  "sourceCommitSha": {
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "destinationRepo": {
+                    "type": "string",
+                    "description": "\"owner/name\", or the raw request value if blocked before it resolved."
+                  },
+                  "destinationBranch": {
+                    "nullable": true,
+                    "type": "string",
+                    "description": "Branch actually pushed to, or the requested one if blocked."
+                  },
+                  "resultCommitSha": {
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "outcome": {
+                    "type": "string",
+                    "enum": [
+                      "failure",
+                      "success"
+                    ]
+                  },
+                  "failureStage": {
+                    "type": "string",
+                    "enum": [
+                      "authorization",
+                      "push",
+                      "unexpected",
+                      "unknown"
+                    ],
+                    "description": "Mirrors `PushFailureStage` in `@api/git-push-repo`."
+                  },
+                  "failureCode": {
+                    "type": "string",
+                    "description": "Sanitized code, never a raw error message."
+                  }
+                },
+                "required": [
+                  "actorAccountId",
+                  "actorLogin",
+                  "destinationBranch",
+                  "destinationRepo",
+                  "installationId",
+                  "outcome",
+                  "provider",
+                  "resultCommitSha",
+                  "sourceCommitSha",
+                  "sourceRepo",
+                  "usedAppToken"
                 ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
@@ -218206,6 +220528,22 @@
               },
               {
                 "properties": {
+                  "connectionId": {
+                    "type": "string"
+                  },
+                  "connectionType": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "connectionId",
+                  "connectionType"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
                   "alias": {
                     "type": "string"
                   },
@@ -219351,6 +221689,31 @@
                   "locked",
                   "type"
                 ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "actorId": {
+                    "type": "string"
+                  },
+                  "actorType": {
+                    "type": "string",
+                    "enum": [
+                      "admin",
+                      "user"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "caseNumber": {
+                    "type": "string"
+                  },
+                  "client": {
+                    "type": "string"
+                  }
+                },
                 "type": "object",
                 "description": "The payload of the event, if requested."
               },
@@ -220838,6 +223201,107 @@
                 },
                 "required": [
                   "username"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "actorId": {
+                    "type": "string"
+                  },
+                  "actorType": {
+                    "type": "string",
+                    "enum": [
+                      "admin"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "actorId",
+                  "actorType"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "actorId": {
+                    "type": "string"
+                  },
+                  "actorType": {
+                    "type": "string",
+                    "enum": [
+                      "admin"
+                    ]
+                  }
+                },
+                "required": [
+                  "actorId",
+                  "actorType"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "enum": [
+                      false,
+                      true
+                    ]
+                  },
+                  "actorId": {
+                    "type": "string"
+                  },
+                  "actorType": {
+                    "type": "string",
+                    "enum": [
+                      "admin"
+                    ]
+                  }
+                },
+                "required": [
+                  "actorId",
+                  "actorType",
+                  "enabled"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "autoBlockPrevented": {
+                    "type": "boolean",
+                    "enum": [
+                      false,
+                      true
+                    ]
+                  },
+                  "preventUntil": {
+                    "type": "number"
+                  },
+                  "actorId": {
+                    "type": "string"
+                  },
+                  "actorType": {
+                    "type": "string",
+                    "enum": [
+                      "admin"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "actorId",
+                  "actorType",
+                  "autoBlockPrevented"
                 ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
@@ -222687,6 +225151,11 @@
               "ai-gateway-rule-deleted",
               "ai-gateway-rule-updated",
               "ai-gateway-scope-budget-updated",
+              "ai-gateway-transcripts-default-disabled",
+              "ai-gateway-transcripts-default-enabled",
+              "ai-gateway-transcripts-disabled",
+              "ai-gateway-transcripts-enabled",
+              "ai-gateway-transcripts-retention-updated",
               "ai-gateway-virtual-model-config-archived",
               "ai-gateway-virtual-model-config-created",
               "ai-gateway-virtual-model-config-restored",
@@ -222732,6 +225201,7 @@
               "cert-system-create",
               "code-owners-config-updated",
               "compliance-document-downloaded",
+              "compliance-document-previewed",
               "compliance-documents-bulk-downloaded",
               "concurrent-builds-update",
               "connect-attach-project",
@@ -222870,6 +225340,7 @@
               "flags-segment",
               "flags-settings",
               "flags-transferred",
+              "git-integration-repo-push",
               "git_account_integration_link_added",
               "instant-rollback-created",
               "integration-configuration-owner-changed",
@@ -222890,6 +225361,7 @@
               "kms-issuer-deleted",
               "kms-issuer-key-activated",
               "kms-issuer-key-created",
+              "kms-issuer-key-revoked",
               "kms-issuer-key-rotated",
               "kms-issuer-policy-created",
               "kms-issuer-policy-deleted",
@@ -223083,6 +225555,8 @@
               "protected-git-scope-added",
               "protected-git-scope-removed",
               "runtime-cache-purge-all",
+              "saml-connection-created",
+              "saml-connection-deleted",
               "sandbox-alias-assigned",
               "sandbox-alias-delete",
               "sandbox-snapshot-regions-updated",
@@ -223115,6 +225589,7 @@
               "spend-created",
               "spend-deleted",
               "spend-updated",
+              "sso-login",
               "storage-accept-tos",
               "storage-access-token-set",
               "storage-accessed-data-browser",
@@ -223141,6 +225616,7 @@
               "subscription-product-added",
               "subscription-product-removed",
               "subscription-updated",
+              "support-session-created",
               "team",
               "team-agent-billing-migration-decision-changed",
               "team-avatar-update",
@@ -223191,11 +225667,18 @@
               "tracing-configured",
               "tracing-disabled",
               "unlink-login-connection",
+              "update-account-flow-dismissed",
               "update-account-flow-triggered",
+              "user-auto-block-configured",
+              "user-blocked",
               "user-delete",
+              "user-delete-requested",
               "user-emu-account-archived",
               "user-emu-account-deleted",
               "user-emu-account-recovered",
+              "user-emu-recovery-email-sent",
+              "user-emu-recovery-initiated",
+              "user-emu-toggled",
               "user-mfa-challenge-failed",
               "user-mfa-challenge-verified",
               "user-mfa-change-failed",
@@ -223206,10 +225689,14 @@
               "user-mfa-setup-skipped",
               "user-mfa-totp-verification-started",
               "user-mfa-totp-verified",
+              "user-phone-removed",
+              "user-phone-updated",
               "user-primary-email-updated",
+              "user-sudo-mode-removed",
               "user-token-created",
               "user-token-deleted",
               "user-tokens-deleted",
+              "user-unblocked",
               "username",
               "v0-chat-ai-usage",
               "v0-chat-created",
@@ -223339,6 +225826,11 @@
                 "ai-gateway-rule-deleted",
                 "ai-gateway-rule-updated",
                 "ai-gateway-scope-budget-updated",
+                "ai-gateway-transcripts-default-disabled",
+                "ai-gateway-transcripts-default-enabled",
+                "ai-gateway-transcripts-disabled",
+                "ai-gateway-transcripts-enabled",
+                "ai-gateway-transcripts-retention-updated",
                 "ai-gateway-virtual-model-config-archived",
                 "ai-gateway-virtual-model-config-created",
                 "ai-gateway-virtual-model-config-restored",
@@ -223384,6 +225876,7 @@
                 "cert-system-create",
                 "code-owners-config-updated",
                 "compliance-document-downloaded",
+                "compliance-document-previewed",
                 "compliance-documents-bulk-downloaded",
                 "concurrent-builds-update",
                 "connect-attach-project",
@@ -223522,6 +226015,7 @@
                 "flags-segment",
                 "flags-settings",
                 "flags-transferred",
+                "git-integration-repo-push",
                 "git_account_integration_link_added",
                 "instant-rollback-created",
                 "integration-configuration-owner-changed",
@@ -223542,6 +226036,7 @@
                 "kms-issuer-deleted",
                 "kms-issuer-key-activated",
                 "kms-issuer-key-created",
+                "kms-issuer-key-revoked",
                 "kms-issuer-key-rotated",
                 "kms-issuer-policy-created",
                 "kms-issuer-policy-deleted",
@@ -223735,6 +226230,8 @@
                 "protected-git-scope-added",
                 "protected-git-scope-removed",
                 "runtime-cache-purge-all",
+                "saml-connection-created",
+                "saml-connection-deleted",
                 "sandbox-alias-assigned",
                 "sandbox-alias-delete",
                 "sandbox-snapshot-regions-updated",
@@ -223767,6 +226264,7 @@
                 "spend-created",
                 "spend-deleted",
                 "spend-updated",
+                "sso-login",
                 "storage-accept-tos",
                 "storage-access-token-set",
                 "storage-accessed-data-browser",
@@ -223793,6 +226291,7 @@
                 "subscription-product-added",
                 "subscription-product-removed",
                 "subscription-updated",
+                "support-session-created",
                 "team",
                 "team-agent-billing-migration-decision-changed",
                 "team-avatar-update",
@@ -223843,11 +226342,18 @@
                 "tracing-configured",
                 "tracing-disabled",
                 "unlink-login-connection",
+                "update-account-flow-dismissed",
                 "update-account-flow-triggered",
+                "user-auto-block-configured",
+                "user-blocked",
                 "user-delete",
+                "user-delete-requested",
                 "user-emu-account-archived",
                 "user-emu-account-deleted",
                 "user-emu-account-recovered",
+                "user-emu-recovery-email-sent",
+                "user-emu-recovery-initiated",
+                "user-emu-toggled",
                 "user-mfa-challenge-failed",
                 "user-mfa-challenge-verified",
                 "user-mfa-change-failed",
@@ -223858,10 +226364,14 @@
                 "user-mfa-setup-skipped",
                 "user-mfa-totp-verification-started",
                 "user-mfa-totp-verified",
+                "user-phone-removed",
+                "user-phone-updated",
                 "user-primary-email-updated",
+                "user-sudo-mode-removed",
                 "user-token-created",
                 "user-token-deleted",
                 "user-tokens-deleted",
+                "user-unblocked",
                 "username",
                 "v0-chat-ai-usage",
                 "v0-chat-created",
@@ -225451,7 +227961,7 @@
             "$ref": "#/components/schemas/APIKeyQuota"
           },
           "metadata": {
-            "description": "Generic metadata attached to the API key.\n\nThe accepted shape depends on the key's `purpose` and is validated when the key is created. For `ai-gateway` keys this carries `environment`.",
+            "description": "Generic metadata attached to the API key.\n\nThe accepted shape depends on the key's `purpose` and is validated when the key is created. For `ai-gateway` keys this carries `environment` and `spendAttribution`.",
             "type": "object",
             "patternProperties": {
               "^(.*)$": {}
@@ -228655,10 +231165,17 @@
                   "type": "object"
                 },
                 "type": "array"
+              },
+              "verifiedEmuDomains": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
               }
             },
             "required": [
-              "managedTeams"
+              "managedTeams",
+              "verifiedEmuDomains"
             ],
             "type": "object",
             "description": "Context for the Update Account screen. Present only when `isAccountUpdateRequired` is true. `managedTeams` is empty for orphan mode (user matches an EMU domain but is not on the team)."

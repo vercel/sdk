@@ -7,7 +7,6 @@ import { VirtualModelConfig } from "@vercel/sdk/models/userevent.js";
 
 let value: VirtualModelConfig = {
   id: "<id>",
-  modelSlug: "<value>",
 };
 ```
 
@@ -17,4 +16,4 @@ let value: VirtualModelConfig = {
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `id`               | *string*           | :heavy_check_mark: | N/A                |
 | `displayName`      | *string*           | :heavy_minus_sign: | N/A                |
-| `modelSlug`        | *string*           | :heavy_check_mark: | N/A                |
+| `modelSlug`        | *string*           | :heavy_minus_sign: | N/A                |

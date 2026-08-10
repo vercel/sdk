@@ -5,7 +5,7 @@ Project-level rolling release configuration that defines how deployments should 
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupRollingRelease } from "@vercel/sdk/models/getmicrofrontendsingroupstaticips.js";
+import { GetMicrofrontendsInGroupRollingRelease } from "@vercel/sdk/models/getmicrofrontendsingroupbuildmachineelasticreason.js";
 
 let value: GetMicrofrontendsInGroupRollingRelease = {
   target: "production",
@@ -18,6 +18,26 @@ let value: GetMicrofrontendsInGroupRollingRelease = {
     },
   ],
   canaryResponseHeader: false,
+  gate: {
+    enabled: false,
+    checks: [
+      {
+        type: "error-rate-5xx",
+        minSampleSize: 100,
+        excludeStatusCodes: [
+          503,
+        ],
+        excludePaths: [
+          "/api/health",
+        ],
+        ingestWatermarkSeconds: 30,
+      },
+    ],
+    failureThreshold: 3,
+    windowSize: 5,
+    action: "pause",
+    dryRun: true,
+  },
 };
 ```
 
@@ -28,3 +48,4 @@ let value: GetMicrofrontendsInGroupRollingRelease = {
 | `target`                                                                                                                                                                               | *string*                                                                                                                                                                               | :heavy_check_mark:                                                                                                                                                                     | The environment that the release targets, currently only supports production. Adding in case we want to configure with alias groups or custom environments.                            | production                                                                                                                                                                             |
 | `stages`                                                                                                                                                                               | [models.GetMicrofrontendsInGroupStages](../models/getmicrofrontendsingroupstages.md)[]                                                                                                 | :heavy_minus_sign:                                                                                                                                                                     | An array of all the stages required during a deployment release. Each stage defines a target percentage and advancement rules. The final stage must always have targetPercentage: 100. |                                                                                                                                                                                        |
 | `canaryResponseHeader`                                                                                                                                                                 | *boolean*                                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                                     | Whether the request served by a canary deployment should return a header indicating a canary was served. Defaults to `false` when omitted.                                             | false                                                                                                                                                                                  |
+| `gate`                                                                                                                                                                                 | [models.GetMicrofrontendsInGroupGate](../models/getmicrofrontendsingroupgate.md)                                                                                                       | :heavy_minus_sign:                                                                                                                                                                     | Automated gating configuration. Omitted (the default) means no gating is configured, which is equivalent to `enabled: false`.                                                          |                                                                                                                                                                                        |

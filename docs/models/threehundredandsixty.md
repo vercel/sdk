@@ -5,19 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSixty } from "@vercel/sdk/models/twohundredandninetynine.js";
+import { ThreeHundredAndSixty } from "@vercel/sdk/models/removedprojects.js";
 
 let value: ThreeHundredAndSixty = {
-  invoiceId: "<id>",
-  convertedFromTrial: false,
-  plan: "pro",
+  publicId: "<id>",
+  role: "<value>",
+  maxUses: 7472.76,
+  expiresAt: "1764689619670",
 };
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `invoiceId`                                    | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `convertedFromTrial`                           | *boolean*                                      | :heavy_check_mark:                             | N/A                                            |
-| `plan`                                         | [models.PayloadPlan](../models/payloadplan.md) | :heavy_check_mark:                             | N/A                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `publicId`         | *string*           | :heavy_check_mark: | N/A                |
+| `role`             | *string*           | :heavy_check_mark: | N/A                |
+| `maxUses`          | *number*           | :heavy_check_mark: | N/A                |
+| `expiresAt`        | *string*           | :heavy_check_mark: | N/A                |
+| `name`             | *string*           | :heavy_minus_sign: | N/A                |

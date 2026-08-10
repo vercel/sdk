@@ -57,6 +57,26 @@ let value: UpdateProjectResponseBody = {
       },
     ],
     canaryResponseHeader: false,
+    gate: {
+      enabled: true,
+      checks: [
+        {
+          type: "error-rate-5xx",
+          minSampleSize: 100,
+          excludeStatusCodes: [
+            503,
+          ],
+          excludePaths: [
+            "/api/health",
+          ],
+          ingestWatermarkSeconds: 30,
+        },
+      ],
+      failureThreshold: 3,
+      windowSize: 5,
+      action: "rollback",
+      dryRun: false,
+    },
   },
   defaultResourceConfig: {
     functionDefaultRegions: [],

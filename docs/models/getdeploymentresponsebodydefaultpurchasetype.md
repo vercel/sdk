@@ -13,5 +13,5 @@ let value: GetDeploymentResponseBodyDefaultPurchaseType = "standard";
 ## Values
 
 ```typescript
-"enhanced" | "standard"
+"basic" | "enhanced" | "standard"
 ```

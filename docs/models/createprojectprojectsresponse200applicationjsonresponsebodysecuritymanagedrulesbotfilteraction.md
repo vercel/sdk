@@ -5,7 +5,7 @@
 ```typescript
 import {
   CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesBotFilterAction,
-} from "@vercel/sdk/models/createprojectblockhistory.js";
+} from "@vercel/sdk/models/blockhistoryroute.js";
 
 let value:
   CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesBotFilterAction =

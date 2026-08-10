@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyBranchMatcher } from "@vercel/sdk/models/getprojectshasprojectsresponse200key.js";
+import { ResponseBodyBranchMatcher } from "@vercel/sdk/models/responsebodymanagedrules.js";
 
 let value: ResponseBodyBranchMatcher = {
   type: "startsWith",

@@ -80,10 +80,10 @@ const value: models.CancelDeploymentGitSource8 = {
 };
 ```
 
-### `models.GitSource9`
+### `models.CancelDeploymentGitSource9`
 
 ```typescript
-const value: models.GitSource9 = {
+const value: models.CancelDeploymentGitSource9 = {
   type: "bitbucket",
   owner: "<value>",
   slug: "<value>",

@@ -29,5 +29,5 @@ let value: Rules = {
 | Field                                          | Type                                           | Required                                       | Description                                    |
 | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
 | `id`                                           | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `outcome`                                      | *models.Outcome*                               | :heavy_check_mark:                             | N/A                                            |
+| `outcome`                                      | *models.FlagOutcome*                           | :heavy_check_mark:                             | N/A                                            |
 | `conditions`                                   | [models.Conditions](../models/conditions.md)[] | :heavy_check_mark:                             | N/A                                            |

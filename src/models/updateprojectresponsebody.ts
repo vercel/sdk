@@ -35,6 +35,8 @@ import {
 import {
   UpdateProjectBlobs,
   UpdateProjectBlobs$inboundSchema,
+  UpdateProjectBotFilter,
+  UpdateProjectBotFilter$inboundSchema,
   UpdateProjectCustomEnvironments,
   UpdateProjectCustomEnvironments$inboundSchema,
   UpdateProjectDefaultResourceConfig,
@@ -55,8 +57,6 @@ import {
   UpdateProjectLatestDeployments$inboundSchema,
   UpdateProjectLink,
   UpdateProjectLink$inboundSchema,
-  UpdateProjectManagedRules,
-  UpdateProjectManagedRules$inboundSchema,
   UpdateProjectMicrofrontends,
   UpdateProjectMicrofrontends$inboundSchema,
   UpdateProjectPermissions,
@@ -73,6 +73,8 @@ import {
   UpdateProjectProjectsPasswordProtection$inboundSchema,
   UpdateProjectProjectsResourceConfig,
   UpdateProjectProjectsResourceConfig$inboundSchema,
+  UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction,
+  UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction$inboundSchema,
   UpdateProjectProjectsSsoProtection,
   UpdateProjectProjectsSsoProtection$inboundSchema,
   UpdateProjectProjectsStaticIps,
@@ -95,11 +97,48 @@ import {
   UpdateProjectServices$inboundSchema,
   UpdateProjectTargets,
   UpdateProjectTargets$inboundSchema,
+  UpdateProjectTrafficSources,
+  UpdateProjectTrafficSources$inboundSchema,
   UpdateProjectTrustedSources,
   UpdateProjectTrustedSources$inboundSchema,
+  UpdateProjectVercelRuleset,
+  UpdateProjectVercelRuleset$inboundSchema,
   UpdateProjectWebAnalytics,
   UpdateProjectWebAnalytics$inboundSchema,
-} from "./updateprojectmanagedrules.js";
+} from "./updateprojectprojectsresponse200applicationjsonresponsebodysecurityaction.js";
+
+export type UpdateProjectAiBots = {
+  active: boolean;
+  action?:
+    | UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction
+    | undefined;
+};
+
+export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction =
+  {
+    Challenge: "challenge",
+    Deny: "deny",
+    Log: "log",
+  } as const;
+export type UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction =
+  ClosedEnum<
+    typeof UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction
+  >;
+
+export type UpdateProjectOwasp = {
+  active: boolean;
+  action?:
+    | UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction
+    | undefined;
+};
+
+export type UpdateProjectManagedRules = {
+  vercelRuleset: UpdateProjectVercelRuleset;
+  trafficSources: UpdateProjectTrafficSources;
+  botFilter: UpdateProjectBotFilter;
+  aiBots: UpdateProjectAiBots;
+  owasp: UpdateProjectOwasp;
+};
 
 export const UpdateProjectLogHeaders2 = {
   Wildcard: "*",
@@ -341,15 +380,15 @@ export type UpdateProjectHistory = {
   at: number;
 };
 
-export const UpdateProjectProjectsResponseAction = {
+export const UpdateProjectProjectsResponse200Action = {
   Blocked: "blocked",
 } as const;
-export type UpdateProjectProjectsResponseAction = ClosedEnum<
-  typeof UpdateProjectProjectsResponseAction
+export type UpdateProjectProjectsResponse200Action = ClosedEnum<
+  typeof UpdateProjectProjectsResponse200Action
 >;
 
 export type UpdateProjectBlock = {
-  action: UpdateProjectProjectsResponseAction;
+  action: UpdateProjectProjectsResponse200Action;
   reason: string;
   statusCode: number;
   createdAt: number;
@@ -529,18 +568,18 @@ export type UpdateProjectBlockHistory =
   | UpdateProjectBlockHistory3
   | UpdateProjectBlockHistory4;
 
-export const UpdateProjectProjectsResponse200Action = {
+export const UpdateProjectProjectsResponse200ApplicationJSONAction = {
   AddDeploymentInterstitial: "add-deployment-interstitial",
   AddProjectInterstitial: "add-project-interstitial",
   RemoveDeploymentInterstitial: "remove-deployment-interstitial",
   RemoveProjectInterstitial: "remove-project-interstitial",
 } as const;
-export type UpdateProjectProjectsResponse200Action = ClosedEnum<
-  typeof UpdateProjectProjectsResponse200Action
+export type UpdateProjectProjectsResponse200ApplicationJSONAction = ClosedEnum<
+  typeof UpdateProjectProjectsResponse200ApplicationJSONAction
 >;
 
 export type UpdateProjectInterstitialHistory = {
-  action: UpdateProjectProjectsResponse200Action;
+  action: UpdateProjectProjectsResponse200ApplicationJSONAction;
   createdAt: number;
   caseId?: string | undefined;
   reason?: string | undefined;
@@ -813,6 +852,88 @@ export type UpdateProjectResponseBody = {
 };
 
 /** @internal */
+export const UpdateProjectAiBots$inboundSchema: z.ZodType<
+  UpdateProjectAiBots,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  active: types.boolean(),
+  action: types.optional(
+    UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction$inboundSchema,
+  ),
+});
+
+export function updateProjectAiBotsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectAiBots, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectAiBots$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectAiBots' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction$inboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction
+  > = z.nativeEnum(
+    UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction,
+  );
+
+/** @internal */
+export const UpdateProjectOwasp$inboundSchema: z.ZodType<
+  UpdateProjectOwasp,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  active: types.boolean(),
+  action: types.optional(
+    UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction$inboundSchema,
+  ),
+});
+
+export function updateProjectOwaspFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectOwasp, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectOwasp$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectOwasp' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectManagedRules$inboundSchema: z.ZodType<
+  UpdateProjectManagedRules,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  vercel_ruleset: UpdateProjectVercelRuleset$inboundSchema,
+  traffic_sources: UpdateProjectTrafficSources$inboundSchema,
+  bot_filter: UpdateProjectBotFilter$inboundSchema,
+  ai_bots: z.lazy(() => UpdateProjectAiBots$inboundSchema),
+  owasp: z.lazy(() => UpdateProjectOwasp$inboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    "vercel_ruleset": "vercelRuleset",
+    "traffic_sources": "trafficSources",
+    "bot_filter": "botFilter",
+    "ai_bots": "aiBots",
+  });
+});
+
+export function updateProjectManagedRulesFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectManagedRules, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectManagedRules$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectManagedRules' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateProjectLogHeaders2$inboundSchema: z.ZodNativeEnum<
   typeof UpdateProjectLogHeaders2
 > = z.nativeEnum(UpdateProjectLogHeaders2);
@@ -874,7 +995,9 @@ export const UpdateProjectSecurity$inboundSchema: z.ZodType<
   ja3Enabled: types.optional(types.boolean()),
   ja4Enabled: types.optional(types.boolean()),
   firewallBypassIps: types.optional(z.array(types.string())),
-  managedRules: z.nullable(UpdateProjectManagedRules$inboundSchema).optional(),
+  managedRules: z.nullable(
+    z.lazy(() => UpdateProjectManagedRules$inboundSchema),
+  ).optional(),
   botIdEnabled: types.optional(types.boolean()),
   log_headers: types.optional(
     smartUnion([
@@ -1316,9 +1439,10 @@ export function updateProjectHistoryFromJSON(
 }
 
 /** @internal */
-export const UpdateProjectProjectsResponseAction$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateProjectProjectsResponseAction
-> = z.nativeEnum(UpdateProjectProjectsResponseAction);
+export const UpdateProjectProjectsResponse200Action$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectProjectsResponse200Action> = z.nativeEnum(
+    UpdateProjectProjectsResponse200Action,
+  );
 
 /** @internal */
 export const UpdateProjectBlock$inboundSchema: z.ZodType<
@@ -1326,7 +1450,7 @@ export const UpdateProjectBlock$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  action: UpdateProjectProjectsResponseAction$inboundSchema,
+  action: UpdateProjectProjectsResponse200Action$inboundSchema,
   reason: types.string(),
   statusCode: types.number(),
   createdAt: types.number(),
@@ -1897,10 +2021,10 @@ export function updateProjectBlockHistoryFromJSON(
 }
 
 /** @internal */
-export const UpdateProjectProjectsResponse200Action$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateProjectProjectsResponse200Action> = z.nativeEnum(
-    UpdateProjectProjectsResponse200Action,
-  );
+export const UpdateProjectProjectsResponse200ApplicationJSONAction$inboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateProjectProjectsResponse200ApplicationJSONAction
+  > = z.nativeEnum(UpdateProjectProjectsResponse200ApplicationJSONAction);
 
 /** @internal */
 export const UpdateProjectInterstitialHistory$inboundSchema: z.ZodType<
@@ -1908,7 +2032,7 @@ export const UpdateProjectInterstitialHistory$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  action: UpdateProjectProjectsResponse200Action$inboundSchema,
+  action: UpdateProjectProjectsResponse200ApplicationJSONAction$inboundSchema,
   createdAt: types.number(),
   caseId: types.optional(types.string()),
   reason: types.optional(types.string()),

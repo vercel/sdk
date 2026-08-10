@@ -1,15 +1,24 @@
 # UserEventPayload336Next
 
+Automatic code review settings
+
 ## Example Usage
 
 ```typescript
-import { UserEventPayload336Next } from "@vercel/sdk/models/twohundredandninetynine.js";
+import { UserEventPayload336Next } from "@vercel/sdk/models/removedprojects.js";
 
-let value: UserEventPayload336Next = "manual-approval";
+let value: UserEventPayload336Next = {
+  enabled: false,
+  scope: "private",
+  includeDrafts: false,
+};
 ```
 
-## Values
+## Fields
 
-```typescript
-"auto-approval" | "block" | "manual-approval"
-```
+| Field                                                                                                                | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `enabled`                                                                                                            | *boolean*                                                                                                            | :heavy_check_mark:                                                                                                   | Whether automatic code reviews are enabled                                                                           |
+| `scope`                                                                                                              | [models.UserEventPayload336Scope](../models/usereventpayload336scope.md)                                             | :heavy_check_mark:                                                                                                   | Which repository visibilities get automatic reviews                                                                  |
+| `includeDrafts`                                                                                                      | *boolean*                                                                                                            | :heavy_check_mark:                                                                                                   | Whether to include draft pull requests in automatic reviews                                                          |
+| `selectedRepos`                                                                                                      | *string*[]                                                                                                           | :heavy_minus_sign:                                                                                                   | GitHub repos to scope automatic reviews to. Format: "owner/repo" (lowercase). Only used when scope='selected_repos'. |

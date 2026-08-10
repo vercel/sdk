@@ -1,16 +1,18 @@
 # UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction
 
+What to do when the gate trips: pause the rollout, or roll it back.
+
 ## Example Usage
 
 ```typescript
-import { UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction } from "@vercel/sdk/models/updateprojectmanagedrules.js";
+import { UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction } from "@vercel/sdk/models/updateprojectprojectsresponse200applicationjsonresponsebodysecurityaction.js";
 
 let value: UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction =
-  "log";
+  "rollback";
 ```
 
 ## Values
 
 ```typescript
-"challenge" | "deny" | "log"
+"pause" | "rollback"
 ```

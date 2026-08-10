@@ -54,20 +54,28 @@ const value: models.GetRoutesResponseBody3 = {
 };
 ```
 
-### `models.ResponseBody4`
+### `models.GetRoutesResponseBody4`
 
 ```typescript
-const value: models.ResponseBody4 = {
-  routes: [],
+const value: models.GetRoutesResponseBody4 = {
+  routes: [
+    {
+      id: "<id>",
+      name: "<value>",
+      route: {
+        src: "<value>",
+      },
+    },
+  ],
   version: {
     id: "<id>",
     s3Key: "<value>",
-    lastModified: 8925.49,
+    lastModified: 5613.61,
     createdBy: "<value>",
   },
   limit: {
-    maxRoutes: 9173.09,
-    currentRoutes: 3848.91,
+    maxRoutes: 6227.91,
+    currentRoutes: 4493.36,
   },
 };
 ```

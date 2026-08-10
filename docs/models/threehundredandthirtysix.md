@@ -5,11 +5,14 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndThirtySix } from "@vercel/sdk/models/twohundredandninetynine.js";
+import { ThreeHundredAndThirtySix } from "@vercel/sdk/models/removedprojects.js";
 
 let value: ThreeHundredAndThirtySix = {
-  previous: "manual-approval",
-  next: "manual-approval",
+  next: {
+    enabled: true,
+    scope: "public",
+    includeDrafts: false,
+  },
 };
 ```
 
@@ -17,6 +20,5 @@ let value: ThreeHundredAndThirtySix = {
 
 | Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
 | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `previous`                                                                     | [models.UserEventPayload336Previous](../models/usereventpayload336previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `next`                                                                         | [models.UserEventPayload336Next](../models/usereventpayload336next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `teamSlug`                                                                     | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload336Previous](../models/usereventpayload336previous.md) | :heavy_minus_sign:                                                             | Automatic code review settings                                                 |
+| `next`                                                                         | [models.UserEventPayload336Next](../models/usereventpayload336next.md)         | :heavy_check_mark:                                                             | Automatic code review settings                                                 |

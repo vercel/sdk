@@ -5,20 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { SixtyFour } from "@vercel/sdk/models/usereventpayloaditems.js";
+import { SixtyFour } from "@vercel/sdk/models/fiftyfive.js";
 
 let value: SixtyFour = {
   project: {
     id: "<id>",
     name: "<value>",
   },
-  versionId: "<id>",
+  bulkRedirectsLimit: 8811.16,
+  prevBulkRedirectsLimit: 2580.69,
 };
 ```
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `project`                                                              | [models.UserEventPayloadProject](../models/usereventpayloadproject.md) | :heavy_check_mark:                                                     | N/A                                                                    |
-| `versionId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| Field                                                | Type                                                 | Required                                             | Description                                          |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| `project`                                            | [models.PayloadProject](../models/payloadproject.md) | :heavy_check_mark:                                   | N/A                                                  |
+| `bulkRedirectsLimit`                                 | *number*                                             | :heavy_check_mark:                                   | N/A                                                  |
+| `prevBulkRedirectsLimit`                             | *number*                                             | :heavy_check_mark:                                   | N/A                                                  |

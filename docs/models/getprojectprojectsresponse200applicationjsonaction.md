@@ -1,15 +1,17 @@
 # GetProjectProjectsResponse200ApplicationJSONAction
 
+What to do when the gate trips: pause the rollout, or roll it back.
+
 ## Example Usage
 
 ```typescript
-import { GetProjectProjectsResponse200ApplicationJSONAction } from "@vercel/sdk/models/getprojectvalue3.js";
+import { GetProjectProjectsResponse200ApplicationJSONAction } from "@vercel/sdk/models/getprojectprojectsbuildmachinetype.js";
 
-let value: GetProjectProjectsResponse200ApplicationJSONAction = "log";
+let value: GetProjectProjectsResponse200ApplicationJSONAction = "rollback";
 ```
 
 ## Values
 
 ```typescript
-"challenge" | "deny" | "log"
+"pause" | "rollback"
 ```

@@ -5,7 +5,7 @@
 ```typescript
 import {
   UploadProjectAvatarLinkProjectsResponse200ApplicationJSONResponseBody7DeployHooks,
-} from "@vercel/sdk/models/uploadprojectavatarstaticips.js";
+} from "@vercel/sdk/models/uploadprojectavatarprojectsbuildmachineelasticreason.js";
 
 let value:
   UploadProjectAvatarLinkProjectsResponse200ApplicationJSONResponseBody7DeployHooks =

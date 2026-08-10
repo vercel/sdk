@@ -5,7 +5,7 @@ Populates initial git metadata for different git providers.
 ## Example Usage
 
 ```typescript
-import { GitMetadata } from "@vercel/sdk/models/createdeploymentvaluedeploymentsresponse2002.js";
+import { GitMetadata } from "@vercel/sdk/models/createdeploymentmissingdeploymentstype.js";
 
 let value: GitMetadata = {
   remoteUrl: "https://github.com/vercel/next.js",

@@ -508,7 +508,7 @@ export type ResponseBodyLimit = {
   currentRoutes: number;
 };
 
-export type ResponseBody4 = {
+export type GetRoutesResponseBody4 = {
   routes: Array<GetRoutesResponseBodyProjectRoutesResponseRoutes>;
   /**
    * A version of routing rules stored in S3.
@@ -1397,7 +1397,7 @@ export type GetRoutesResponseBody1 = {};
 
 export type GetRoutesResponseBody =
   | GetRoutesResponseBody2
-  | ResponseBody4
+  | GetRoutesResponseBody4
   | GetRoutesResponseBody3
   | GetRoutesResponseBody1;
 
@@ -2543,8 +2543,8 @@ export function responseBodyLimitFromJSON(
 }
 
 /** @internal */
-export const ResponseBody4$inboundSchema: z.ZodType<
-  ResponseBody4,
+export const GetRoutesResponseBody4$inboundSchema: z.ZodType<
+  GetRoutesResponseBody4,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -2559,13 +2559,13 @@ export const ResponseBody4$inboundSchema: z.ZodType<
   limit: z.lazy(() => ResponseBodyLimit$inboundSchema),
 });
 
-export function responseBody4FromJSON(
+export function getRoutesResponseBody4FromJSON(
   jsonString: string,
-): SafeParseResult<ResponseBody4, SDKValidationError> {
+): SafeParseResult<GetRoutesResponseBody4, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ResponseBody4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBody4' from JSON`,
+    (x) => GetRoutesResponseBody4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetRoutesResponseBody4' from JSON`,
   );
 }
 
@@ -4475,7 +4475,7 @@ export const GetRoutesResponseBody$inboundSchema: z.ZodType<
   unknown
 > = smartUnion([
   z.lazy(() => GetRoutesResponseBody2$inboundSchema),
-  z.lazy(() => ResponseBody4$inboundSchema),
+  z.lazy(() => GetRoutesResponseBody4$inboundSchema),
   z.lazy(() => GetRoutesResponseBody3$inboundSchema),
   z.lazy(() => GetRoutesResponseBody1$inboundSchema),
 ]);

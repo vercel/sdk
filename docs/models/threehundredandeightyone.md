@@ -5,17 +5,20 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndEightyOne } from "@vercel/sdk/models/threehundredandsixtyseven.js";
+import { ThreeHundredAndEightyOne } from "@vercel/sdk/models/usereventpayload373previous.js";
 
 let value: ThreeHundredAndEightyOne = {
-  action: "remove-passkey",
-  reason: "<value>",
+  totp: false,
+  recoveryCodes: 5937.48,
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `action`                                                                   | [models.UserEventPayload381Action](../models/usereventpayload381action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
-| `reason`                                                                   | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field                                                    | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `totp`                                                   | *boolean*                                                | :heavy_check_mark:                                       | N/A                                                      |
+| `recoveryCodes`                                          | *number*                                                 | :heavy_check_mark:                                       | N/A                                                      |
+| `actorId`                                                | *string*                                                 | :heavy_minus_sign:                                       | N/A                                                      |
+| `actorType`                                              | [models.PayloadActorType](../models/payloadactortype.md) | :heavy_minus_sign:                                       | N/A                                                      |
+| `reason`                                                 | *string*                                                 | :heavy_minus_sign:                                       | N/A                                                      |

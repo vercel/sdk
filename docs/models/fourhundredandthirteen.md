@@ -5,22 +5,29 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndThirteen } from "@vercel/sdk/models/threehundredandsixtyseven.js";
+import { FourHundredAndThirteen } from "@vercel/sdk/models/usereventpayload373previous.js";
 
 let value: FourHundredAndThirteen = {
-  deletedCount: 9402.7,
-  actorTokenId: "<id>",
+  model: "Volt",
+  useCase: "<value>",
+  chatId: "<id>",
+  messageId: "<id>",
+  inputTokens: 3762.08,
+  outputTokens: 7403.84,
+  timestamp: 4524,
+  events: [],
 };
 ```
 
 ## Fields
 
-| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `deletedCount`                                                                       | *number*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
-| `actorTokenId`                                                                       | *string*                                                                             | :heavy_check_mark:                                                                   | The token's public ID.                                                               |
-| `ip`                                                                                 | *string*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `geolocation`                                                                        | [models.UserEventPayload413Geolocation](../models/usereventpayload413geolocation.md) | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `userAgent`                                                                          | *string*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `reqId`                                                                              | *string*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `reqUrl`                                                                             | *string*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
+| Field                                  | Type                                   | Required                               | Description                            |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| `model`                                | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `useCase`                              | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `chatId`                               | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `messageId`                            | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `inputTokens`                          | *number*                               | :heavy_check_mark:                     | N/A                                    |
+| `outputTokens`                         | *number*                               | :heavy_check_mark:                     | N/A                                    |
+| `timestamp`                            | *number*                               | :heavy_check_mark:                     | N/A                                    |
+| `events`                               | [models.Events](../models/events.md)[] | :heavy_check_mark:                     | N/A                                    |

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBody3 } from "@vercel/sdk/models/getprojectstoprojectsresponse1.js";
+import { GetProjectsResponseBody3 } from "@vercel/sdk/models/getprojectstoprojectsresponse200applicationjsonresponsebody2preset.js";
 
 let value: GetProjectsResponseBody3 = {
   projects: [
@@ -60,6 +60,14 @@ let value: GetProjectsResponseBody3 = {
           },
         ],
         canaryResponseHeader: false,
+        gate: {
+          enabled: true,
+          checks: [],
+          failureThreshold: 3,
+          windowSize: 5,
+          action: "rollback",
+          dryRun: false,
+        },
       },
       defaultResourceConfig: {
         functionDefaultRegions: [],

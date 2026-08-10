@@ -7,6 +7,51 @@ import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
+import {
+  GetMicrofrontendsInGroupAbuse,
+  GetMicrofrontendsInGroupAbuse$inboundSchema,
+  GetMicrofrontendsInGroupAction,
+  GetMicrofrontendsInGroupAction$inboundSchema,
+  GetMicrofrontendsInGroupDefaultResourceConfig,
+  GetMicrofrontendsInGroupDefaultResourceConfig$inboundSchema,
+  GetMicrofrontendsInGroupDeploymentPolicy,
+  GetMicrofrontendsInGroupDeploymentPolicy$inboundSchema,
+  GetMicrofrontendsInGroupFeatures,
+  GetMicrofrontendsInGroupFeatures$inboundSchema,
+  GetMicrofrontendsInGroupGitComments,
+  GetMicrofrontendsInGroupGitComments$inboundSchema,
+  GetMicrofrontendsInGroupGitProviderOptions,
+  GetMicrofrontendsInGroupGitProviderOptions$inboundSchema,
+  GetMicrofrontendsInGroupInternalRoutes,
+  GetMicrofrontendsInGroupInternalRoutes$inboundSchema,
+  GetMicrofrontendsInGroupLastAliasRequest,
+  GetMicrofrontendsInGroupLastAliasRequest$inboundSchema,
+  GetMicrofrontendsInGroupLastRollbackTarget,
+  GetMicrofrontendsInGroupLastRollbackTarget$inboundSchema,
+  GetMicrofrontendsInGroupOidcTokenConfig,
+  GetMicrofrontendsInGroupOidcTokenConfig$inboundSchema,
+  GetMicrofrontendsInGroupPermissions,
+  GetMicrofrontendsInGroupPermissions$inboundSchema,
+  GetMicrofrontendsInGroupProtectionBypass,
+  GetMicrofrontendsInGroupProtectionBypass$inboundSchema,
+  GetMicrofrontendsInGroupSecurity,
+  GetMicrofrontendsInGroupSecurity$inboundSchema,
+  GetMicrofrontendsInGroupSsoProtection,
+  GetMicrofrontendsInGroupSsoProtection$inboundSchema,
+  GetMicrofrontendsInGroupStaticIps,
+  GetMicrofrontendsInGroupStaticIps$inboundSchema,
+  GetMicrofrontendsInGroupTargets,
+  GetMicrofrontendsInGroupTargets$inboundSchema,
+  GetMicrofrontendsInGroupTrustedIps,
+  GetMicrofrontendsInGroupTrustedIps$inboundSchema,
+  GetMicrofrontendsInGroupTrustedSources,
+  GetMicrofrontendsInGroupTrustedSources$inboundSchema,
+  GetMicrofrontendsInGroupUsageStatus,
+  GetMicrofrontendsInGroupUsageStatus$inboundSchema,
+  GetMicrofrontendsInGroupWebAnalytics,
+  GetMicrofrontendsInGroupWebAnalytics$inboundSchema,
+} from "./getmicrofrontendsingroupaction.js";
 import {
   GetMicrofrontendsInGroupAlias,
   GetMicrofrontendsInGroupAlias$inboundSchema,
@@ -24,8 +69,6 @@ import {
   GetMicrofrontendsInGroupCustomEnvironments$inboundSchema,
   GetMicrofrontendsInGroupDataCache,
   GetMicrofrontendsInGroupDataCache$inboundSchema,
-  GetMicrofrontendsInGroupDefaultResourceConfig,
-  GetMicrofrontendsInGroupDefaultResourceConfig$inboundSchema,
   GetMicrofrontendsInGroupDeploymentExpiration,
   GetMicrofrontendsInGroupDeploymentExpiration$inboundSchema,
   GetMicrofrontendsInGroupEnv,
@@ -66,58 +109,35 @@ import {
   GetMicrofrontendsInGroupServices$inboundSchema,
   GetMicrofrontendsInGroupSpeedInsights,
   GetMicrofrontendsInGroupSpeedInsights$inboundSchema,
-  GetMicrofrontendsInGroupStaticIps,
-  GetMicrofrontendsInGroupStaticIps$inboundSchema,
-} from "./getmicrofrontendsingroupstaticips.js";
-import {
-  GetMicrofrontendsInGroupAbuse,
-  GetMicrofrontendsInGroupAbuse$inboundSchema,
-  GetMicrofrontendsInGroupAction,
-  GetMicrofrontendsInGroupAction$inboundSchema,
-  GetMicrofrontendsInGroupDeploymentPolicy,
-  GetMicrofrontendsInGroupDeploymentPolicy$inboundSchema,
-  GetMicrofrontendsInGroupFeatures,
-  GetMicrofrontendsInGroupFeatures$inboundSchema,
-  GetMicrofrontendsInGroupGitComments,
-  GetMicrofrontendsInGroupGitComments$inboundSchema,
-  GetMicrofrontendsInGroupGitProviderOptions,
-  GetMicrofrontendsInGroupGitProviderOptions$inboundSchema,
-  GetMicrofrontendsInGroupInternalRoutes,
-  GetMicrofrontendsInGroupInternalRoutes$inboundSchema,
-  GetMicrofrontendsInGroupLastAliasRequest,
-  GetMicrofrontendsInGroupLastAliasRequest$inboundSchema,
-  GetMicrofrontendsInGroupLastRollbackTarget,
-  GetMicrofrontendsInGroupLastRollbackTarget$inboundSchema,
-  GetMicrofrontendsInGroupOidcTokenConfig,
-  GetMicrofrontendsInGroupOidcTokenConfig$inboundSchema,
-  GetMicrofrontendsInGroupPermissions,
-  GetMicrofrontendsInGroupPermissions$inboundSchema,
-  GetMicrofrontendsInGroupProtectionBypass,
-  GetMicrofrontendsInGroupProtectionBypass$inboundSchema,
-  GetMicrofrontendsInGroupSecurity,
-  GetMicrofrontendsInGroupSecurity$inboundSchema,
-  GetMicrofrontendsInGroupSsoProtection,
-  GetMicrofrontendsInGroupSsoProtection$inboundSchema,
-  GetMicrofrontendsInGroupTargets,
-  GetMicrofrontendsInGroupTargets$inboundSchema,
-  GetMicrofrontendsInGroupTrustedIps,
-  GetMicrofrontendsInGroupTrustedIps$inboundSchema,
-  GetMicrofrontendsInGroupTrustedSources,
-  GetMicrofrontendsInGroupTrustedSources$inboundSchema,
-  GetMicrofrontendsInGroupUsageStatus,
-  GetMicrofrontendsInGroupUsageStatus$inboundSchema,
-  GetMicrofrontendsInGroupValue,
-  GetMicrofrontendsInGroupValue$inboundSchema,
-  GetMicrofrontendsInGroupWebAnalytics,
-  GetMicrofrontendsInGroupWebAnalytics$inboundSchema,
-} from "./getmicrofrontendsingroupvalue.js";
+} from "./getmicrofrontendsingroupbuildmachineelasticreason.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type GetMicrofrontendsInGroupValuePreviousValue =
+  | string
+  | number
+  | boolean;
+
+export type GetMicrofrontendsInGroupValueCurrentValue =
+  | string
+  | number
+  | boolean;
+
+export type GetMicrofrontendsInGroupValue3 = {
+  previousValue: string | number | boolean;
+  currentValue: string | number | boolean;
+};
+
+export type GetMicrofrontendsInGroupValue =
+  | GetMicrofrontendsInGroupValue3
+  | string
+  | number
+  | boolean;
 
 export type GetMicrofrontendsInGroupDismissedToasts = {
   key: string;
   dismissedAt: number;
   action: GetMicrofrontendsInGroupAction;
-  value: GetMicrofrontendsInGroupValue | null;
+  value: GetMicrofrontendsInGroupValue3 | string | number | boolean | null;
 };
 
 export const GetMicrofrontendsInGroupMicrofrontendsEnv = {
@@ -299,6 +319,92 @@ export type GetMicrofrontendsInGroupResponseBody = {
 };
 
 /** @internal */
+export const GetMicrofrontendsInGroupValuePreviousValue$inboundSchema:
+  z.ZodType<GetMicrofrontendsInGroupValuePreviousValue, z.ZodTypeDef, unknown> =
+    smartUnion([types.string(), types.number(), types.boolean()]);
+
+export function getMicrofrontendsInGroupValuePreviousValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetMicrofrontendsInGroupValuePreviousValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMicrofrontendsInGroupValuePreviousValue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetMicrofrontendsInGroupValuePreviousValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetMicrofrontendsInGroupValueCurrentValue$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupValueCurrentValue,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), types.number(), types.boolean()]);
+
+export function getMicrofrontendsInGroupValueCurrentValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetMicrofrontendsInGroupValueCurrentValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMicrofrontendsInGroupValueCurrentValue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetMicrofrontendsInGroupValueCurrentValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetMicrofrontendsInGroupValue3$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupValue3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  previousValue: smartUnion([types.string(), types.number(), types.boolean()]),
+  currentValue: smartUnion([types.string(), types.number(), types.boolean()]),
+});
+
+export function getMicrofrontendsInGroupValue3FromJSON(
+  jsonString: string,
+): SafeParseResult<GetMicrofrontendsInGroupValue3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetMicrofrontendsInGroupValue3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMicrofrontendsInGroupValue3' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetMicrofrontendsInGroupValue$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupValue,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => GetMicrofrontendsInGroupValue3$inboundSchema),
+  types.string(),
+  types.number(),
+  types.boolean(),
+]);
+
+export function getMicrofrontendsInGroupValueFromJSON(
+  jsonString: string,
+): SafeParseResult<GetMicrofrontendsInGroupValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetMicrofrontendsInGroupValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMicrofrontendsInGroupValue' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetMicrofrontendsInGroupDismissedToasts$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupDismissedToasts,
   z.ZodTypeDef,
@@ -307,7 +413,14 @@ export const GetMicrofrontendsInGroupDismissedToasts$inboundSchema: z.ZodType<
   key: types.string(),
   dismissedAt: types.number(),
   action: GetMicrofrontendsInGroupAction$inboundSchema,
-  value: types.nullable(GetMicrofrontendsInGroupValue$inboundSchema),
+  value: types.nullable(
+    smartUnion([
+      z.lazy(() => GetMicrofrontendsInGroupValue3$inboundSchema),
+      types.string(),
+      types.number(),
+      types.boolean(),
+    ]),
+  ),
 });
 
 export function getMicrofrontendsInGroupDismissedToastsFromJSON(

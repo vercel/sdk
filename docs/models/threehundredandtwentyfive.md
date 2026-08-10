@@ -5,20 +5,29 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndTwentyFive } from "@vercel/sdk/models/twohundredandninetynine.js";
+import { ThreeHundredAndTwentyFive } from "@vercel/sdk/models/removedprojects.js";
 
 let value: ThreeHundredAndTwentyFive = {
-  transferRequestCode: "<value>",
-  store: {
+  budget: {
+    type: "fixed",
+    fixedBudget: 5953.03,
+    previousSpend: [
+      2014.56,
+    ],
+    notifiedAt: [
+      7770.87,
+    ],
+    createdAt: 7476.94,
+    isActive: true,
+    teamId: "<id>",
     id: "<id>",
-    type: "integration",
   },
 };
 ```
 
 ## Fields
 
-| Field                              | Type                               | Required                           | Description                        |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| `transferRequestCode`              | *string*                           | :heavy_check_mark:                 | N/A                                |
-| `store`                            | [models.Store](../models/store.md) | :heavy_check_mark:                 | N/A                                |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `budget`                                                                   | [models.UserEventPayload325Budget](../models/usereventpayload325budget.md) | :heavy_check_mark:                                                         | Represents a budget for tracking and notifying teams on their spending.    |
+| `webhookUrl`                                                               | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |

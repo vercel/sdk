@@ -5,15 +5,15 @@
 ```typescript
 import {
   GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsSecurityAction,
-} from "@vercel/sdk/models/getmicrofrontendsingroupvalue.js";
+} from "@vercel/sdk/models/getmicrofrontendsingroupaction.js";
 
 let value:
   GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsSecurityAction =
-    "rate_limit";
+    "log";
 ```
 
 ## Values
 
 ```typescript
-"challenge" | "deny" | "log" | "rate_limit"
+"challenge" | "deny" | "log"
 ```

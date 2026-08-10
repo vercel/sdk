@@ -5,14 +5,13 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSixtyNine } from "@vercel/sdk/models/threehundredandsixtyseven.js";
+import { ThreeHundredAndSixtyNine } from "@vercel/sdk/models/removedprojects.js";
 
 let value: ThreeHundredAndSixtyNine = {};
 ```
 
 ## Fields
 
-| Field                                                | Type                                                 | Required                                             | Description                                          |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `previous`                                           | Record<string, *models.UserEventPayload369Previous*> | :heavy_minus_sign:                                   | N/A                                                  |
-| `next`                                               | Record<string, *models.UserEventPayload369Next*>     | :heavy_minus_sign:                                   | N/A                                                  |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `remoteCaching`                                                  | [models.PayloadRemoteCaching](../models/payloadremotecaching.md) | :heavy_minus_sign:                                               | Represents configuration for remote caching                      |

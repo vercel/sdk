@@ -21,13 +21,13 @@ import {
 import { ResponseValidationError } from "../models/responsevalidationerror.js";
 import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import {
+  UploadProjectAvatarRequest,
+  UploadProjectAvatarRequest$outboundSchema,
+} from "../models/uploadprojectavatarprojectsbuildmachineelasticreason.js";
+import {
   UploadProjectAvatarResponseBody,
   UploadProjectAvatarResponseBody$inboundSchema,
 } from "../models/uploadprojectavatarresponsebody.js";
-import {
-  UploadProjectAvatarRequest,
-  UploadProjectAvatarRequest$outboundSchema,
-} from "../models/uploadprojectavatarstaticips.js";
 import { VercelError } from "../models/vercelerror.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";

@@ -1,15 +1,18 @@
 # UploadProjectAvatarProjectsResponse200ApplicationJSONAction
 
+What to do when the gate trips: pause the rollout, or roll it back.
+
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarProjectsResponse200ApplicationJSONAction } from "@vercel/sdk/models/uploadprojectavatardismissedtoasts.js";
+import { UploadProjectAvatarProjectsResponse200ApplicationJSONAction } from "@vercel/sdk/models/uploadprojectavatarprojectsbuildmachineelasticreason.js";
 
-let value: UploadProjectAvatarProjectsResponse200ApplicationJSONAction = "deny";
+let value: UploadProjectAvatarProjectsResponse200ApplicationJSONAction =
+  "rollback";
 ```
 
 ## Values
 
 ```typescript
-"challenge" | "deny" | "log"
+"pause" | "rollback"
 ```

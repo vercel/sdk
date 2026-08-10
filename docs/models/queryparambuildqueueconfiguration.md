@@ -5,7 +5,7 @@ Filter results by build queue configuration. SKIP_NAMESPACE_QUEUE includes proje
 ## Example Usage
 
 ```typescript
-import { QueryParamBuildQueueConfiguration } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponsebuildmachineelasticreason.js";
+import { QueryParamBuildQueueConfiguration } from "@vercel/sdk/models/getprojectsresponsebodyprojectsrollingrelease.js";
 
 let value: QueryParamBuildQueueConfiguration = "SKIP_NAMESPACE_QUEUE";
 ```

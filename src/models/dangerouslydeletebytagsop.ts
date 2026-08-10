@@ -74,7 +74,7 @@ export const DangerouslyDeleteByTagsRequestBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DangerouslyDeleteByTagsRequestBody
 > = z.object({
-  revalidationDeadlineSeconds: z.number().optional(),
+  revalidationDeadlineSeconds: z.number().int().optional(),
   tags: smartUnion([z.array(z.string()), z.string()]),
   target: DangerouslyDeleteByTagsTarget$outboundSchema.optional(),
 });

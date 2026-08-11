@@ -106802,6 +106802,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           }
@@ -161357,6 +161360,17 @@
                   "maxSizeBytes": {
                     "type": "integer",
                     "description": "Maximum drive size in bytes. Defaults to 100 GiB when omitted."
+                  },
+                  "region": {
+                    "type": "string",
+                    "description": "Region where the drive is stored. Defaults to iad1.",
+                    "enum": [
+                      "iad1",
+                      "sfo1",
+                      "cle1"
+                    ],
+                    "default": "iad1",
+                    "example": "iad1"
                   }
                 }
               }
@@ -185703,6 +185717,11 @@
                     "example": "on",
                     "description": "Sensitive environment variable policy: one of on, off or default."
                   },
+                  "disjunctiveProductionSecretPolicy": {
+                    "type": "string",
+                    "example": "on",
+                    "description": "Require production secrets to be in their own environment group: one of on, off or default."
+                  },
                   "remoteCaching": {
                     "type": "object",
                     "description": "Whether or not remote caching is enabled for the team",
@@ -202778,6 +202797,8 @@
               "custom-alert-deleted",
               "custom-alert-updated",
               "custom-environments-settings-updated",
+              "custom-metric-metadata-deleted",
+              "custom-metric-metadata-updated",
               "custom-suffix-clear",
               "custom-suffix-disable",
               "custom-suffix-enable",
@@ -202851,6 +202872,7 @@
               "email-notification-rule-removed",
               "email-notification-rule-updated",
               "emu-member-removed-unverified-domain",
+              "enforce-disjunctive-production-secrets",
               "enforce-sensitive-environment-variables",
               "env-variable-add",
               "env-variable-delete",
@@ -203106,6 +203128,8 @@
               "saml-connection-deleted",
               "sandbox-alias-assigned",
               "sandbox-alias-delete",
+              "sandbox-drive-created",
+              "sandbox-drive-deleted",
               "sandbox-snapshot-regions-updated",
               "scale",
               "scale-auto",
@@ -206774,6 +206798,19 @@
                 ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
+              },
+              {
+                "additionalProperties": true,
+                "type": "object",
+                "description": "The payload of the event, if requested.",
+                "properties": {
+                  "metricName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "metricName"
+                ]
               },
               {
                 "properties": {
@@ -220566,6 +220603,30 @@
               },
               {
                 "properties": {
+                  "driveName": {
+                    "type": "string"
+                  },
+                  "projectId": {
+                    "type": "string"
+                  },
+                  "projectName": {
+                    "type": "string"
+                  },
+                  "region": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "driveName",
+                  "projectId",
+                  "projectName",
+                  "region"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
                   "projectId": {
                     "type": "string"
                   },
@@ -225231,6 +225292,8 @@
               "custom-alert-deleted",
               "custom-alert-updated",
               "custom-environments-settings-updated",
+              "custom-metric-metadata-deleted",
+              "custom-metric-metadata-updated",
               "custom-suffix-clear",
               "custom-suffix-disable",
               "custom-suffix-enable",
@@ -225304,6 +225367,7 @@
               "email-notification-rule-removed",
               "email-notification-rule-updated",
               "emu-member-removed-unverified-domain",
+              "enforce-disjunctive-production-secrets",
               "enforce-sensitive-environment-variables",
               "env-variable-add",
               "env-variable-delete",
@@ -225559,6 +225623,8 @@
               "saml-connection-deleted",
               "sandbox-alias-assigned",
               "sandbox-alias-delete",
+              "sandbox-drive-created",
+              "sandbox-drive-deleted",
               "sandbox-snapshot-regions-updated",
               "scale",
               "scale-auto",
@@ -225906,6 +225972,8 @@
                 "custom-alert-deleted",
                 "custom-alert-updated",
                 "custom-environments-settings-updated",
+                "custom-metric-metadata-deleted",
+                "custom-metric-metadata-updated",
                 "custom-suffix-clear",
                 "custom-suffix-disable",
                 "custom-suffix-enable",
@@ -225979,6 +226047,7 @@
                 "email-notification-rule-removed",
                 "email-notification-rule-updated",
                 "emu-member-removed-unverified-domain",
+                "enforce-disjunctive-production-secrets",
                 "enforce-sensitive-environment-variables",
                 "env-variable-add",
                 "env-variable-delete",
@@ -226234,6 +226303,8 @@
                 "saml-connection-deleted",
                 "sandbox-alias-assigned",
                 "sandbox-alias-delete",
+                "sandbox-drive-created",
+                "sandbox-drive-deleted",
                 "sandbox-snapshot-regions-updated",
                 "scale",
                 "scale-auto",
@@ -228587,6 +228658,11 @@
             "description": "The maximum drive size in bytes.",
             "example": 107374182400
           },
+          "region": {
+            "type": "string",
+            "description": "The region where the drive is stored.",
+            "example": "iad1"
+          },
           "currentSessionId": {
             "type": "string",
             "description": "Current session ID the drive is attached to, if any.",
@@ -228613,6 +228689,7 @@
           "maxSizeBytes",
           "name",
           "projectId",
+          "region",
           "updatedAt"
         ],
         "type": "object",
@@ -229406,6 +229483,17 @@
               null
             ],
             "description": "Sensitive environment variable policy for this team"
+          },
+          "disjunctiveProductionSecretPolicy": {
+            "nullable": true,
+            "type": "string",
+            "enum": [
+              "default",
+              "off",
+              "on",
+              null
+            ],
+            "description": "Require production secrets to use a different value than preview or development."
           },
           "hideIpAddresses": {
             "nullable": true,

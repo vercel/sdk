@@ -5,10 +5,14 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSeven } from "@vercel/sdk/models/usereventjobpayload979githashtagvercel.js";
+import { OneHundredAndSeven } from "@vercel/sdk/models/usereventjobpayload989deployhook.js";
 
 let value: OneHundredAndSeven = {
+  id: "<id>",
+  value: "<value>",
   name: "<value>",
+  domain: "breakable-substitution.name",
+  type: "<value>",
 };
 ```
 
@@ -16,5 +20,8 @@ let value: OneHundredAndSeven = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
+| `id`               | *string*           | :heavy_check_mark: | N/A                |
+| `value`            | *string*           | :heavy_check_mark: | N/A                |
 | `name`             | *string*           | :heavy_check_mark: | N/A                |
-| `zone`             | *boolean*          | :heavy_minus_sign: | N/A                |
+| `domain`           | *string*           | :heavy_check_mark: | N/A                |
+| `type`             | *string*           | :heavy_check_mark: | N/A                |

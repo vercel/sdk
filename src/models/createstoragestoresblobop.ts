@@ -10,7 +10,7 @@ import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
-export const Region = {
+export const CreateStorageStoresBlobRegion = {
   Arn1: "arn1",
   Bom1: "bom1",
   Cdg1: "cdg1",
@@ -32,7 +32,9 @@ export const Region = {
   Syd1: "syd1",
   Yul1: "yul1",
 } as const;
-export type Region = ClosedEnum<typeof Region>;
+export type CreateStorageStoresBlobRegion = ClosedEnum<
+  typeof CreateStorageStoresBlobRegion
+>;
 
 export const CreateStorageStoresBlobAccess = {
   Public: "public",
@@ -44,7 +46,7 @@ export type CreateStorageStoresBlobAccess = ClosedEnum<
 
 export type CreateStorageStoresBlobRequestBody = {
   name: string;
-  region?: Region | undefined;
+  region?: CreateStorageStoresBlobRegion | undefined;
   access?: CreateStorageStoresBlobAccess | undefined;
   projectId?: string | undefined;
 };
@@ -228,7 +230,7 @@ export type CreateStorageStoresBlobKind = ClosedEnum<
   typeof CreateStorageStoresBlobKind
 >;
 
-export const CreateStorageStoresBlobRegion = {
+export const CreateStorageStoresBlobStorageRegion = {
   Arn1: "arn1",
   Bom1: "bom1",
   Cdg1: "cdg1",
@@ -250,8 +252,8 @@ export const CreateStorageStoresBlobRegion = {
   Syd1: "syd1",
   Yul1: "yul1",
 } as const;
-export type CreateStorageStoresBlobRegion = ClosedEnum<
-  typeof CreateStorageStoresBlobRegion
+export type CreateStorageStoresBlobStorageRegion = ClosedEnum<
+  typeof CreateStorageStoresBlobStorageRegion
 >;
 
 export type CreateStorageStoresBlobStore = {
@@ -271,7 +273,7 @@ export type CreateStorageStoresBlobStore = {
   projectId?: string | undefined;
   size: number;
   count: number;
-  region: CreateStorageStoresBlobRegion;
+  region: CreateStorageStoresBlobStorageRegion;
   isTokenExpired: boolean;
 };
 
@@ -280,8 +282,9 @@ export type CreateStorageStoresBlobResponseBody = {
 };
 
 /** @internal */
-export const Region$outboundSchema: z.ZodNativeEnum<typeof Region> = z
-  .nativeEnum(Region);
+export const CreateStorageStoresBlobRegion$outboundSchema: z.ZodNativeEnum<
+  typeof CreateStorageStoresBlobRegion
+> = z.nativeEnum(CreateStorageStoresBlobRegion);
 
 /** @internal */
 export const CreateStorageStoresBlobAccess$outboundSchema: z.ZodNativeEnum<
@@ -303,7 +306,7 @@ export const CreateStorageStoresBlobRequestBody$outboundSchema: z.ZodType<
   CreateStorageStoresBlobRequestBody
 > = z.object({
   name: z.string(),
-  region: Region$outboundSchema.optional(),
+  region: CreateStorageStoresBlobRegion$outboundSchema.optional(),
   access: CreateStorageStoresBlobAccess$outboundSchema.default("public"),
   projectId: z.string().optional(),
 });
@@ -497,9 +500,10 @@ export const CreateStorageStoresBlobKind$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(CreateStorageStoresBlobKind);
 
 /** @internal */
-export const CreateStorageStoresBlobRegion$inboundSchema: z.ZodNativeEnum<
-  typeof CreateStorageStoresBlobRegion
-> = z.nativeEnum(CreateStorageStoresBlobRegion);
+export const CreateStorageStoresBlobStorageRegion$inboundSchema:
+  z.ZodNativeEnum<typeof CreateStorageStoresBlobStorageRegion> = z.nativeEnum(
+    CreateStorageStoresBlobStorageRegion,
+  );
 
 /** @internal */
 export const CreateStorageStoresBlobStore$inboundSchema: z.ZodType<
@@ -521,7 +525,7 @@ export const CreateStorageStoresBlobStore$inboundSchema: z.ZodType<
   projectId: types.optional(types.string()),
   size: types.number(),
   count: types.number(),
-  region: CreateStorageStoresBlobRegion$inboundSchema,
+  region: CreateStorageStoresBlobStorageRegion$inboundSchema,
   isTokenExpired: types.boolean(),
 });
 

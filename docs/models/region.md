@@ -1,15 +1,17 @@
 # Region
 
+Region where the drive is stored. Defaults to iad1.
+
 ## Example Usage
 
 ```typescript
-import { Region } from "@vercel/sdk/models/createstoragestoresblobop.js";
+import { Region } from "@vercel/sdk/models/getorcreatedriveop.js";
 
-let value: Region = "arn1";
+let value: Region = "iad1";
 ```
 
 ## Values
 
 ```typescript
-"arn1" | "bom1" | "cdg1" | "cle1" | "cpt1" | "dub1" | "dxb1" | "fra1" | "gru1" | "hkg1" | "hnd1" | "iad1" | "icn1" | "kix1" | "lhr1" | "pdx1" | "sfo1" | "sin1" | "syd1" | "yul1"
+"iad1" | "sfo1" | "cle1"
 ```

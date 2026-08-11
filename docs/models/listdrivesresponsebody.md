@@ -11,6 +11,7 @@ let value: ListDrivesResponseBody = {
       name: "workspace",
       projectId: "prj_abc123",
       maxSizeBytes: 107374182400,
+      region: "iad1",
       currentSessionId: "sbx_123",
       currentSandboxName: "my-sandbox",
       createdAt: 1750344501629,

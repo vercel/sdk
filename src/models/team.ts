@@ -467,6 +467,21 @@ export type SensitiveEnvironmentVariablePolicy = ClosedEnum<
 >;
 
 /**
+ * Require production secrets to use a different value than preview or development.
+ */
+export const DisjunctiveProductionSecretPolicy = {
+  Default: "default",
+  Off: "off",
+  On: "on",
+} as const;
+/**
+ * Require production secrets to use a different value than preview or development.
+ */
+export type DisjunctiveProductionSecretPolicy = ClosedEnum<
+  typeof DisjunctiveProductionSecretPolicy
+>;
+
+/**
  * Controls who can request access to protected deployments.
  */
 export const DpAccessRequestsMode = {
@@ -828,6 +843,13 @@ export type Team = {
    */
   sensitiveEnvironmentVariablePolicy?:
     | SensitiveEnvironmentVariablePolicy
+    | null
+    | undefined;
+  /**
+   * Require production secrets to use a different value than preview or development.
+   */
+  disjunctiveProductionSecretPolicy?:
+    | DisjunctiveProductionSecretPolicy
     | null
     | undefined;
   /**
@@ -1429,6 +1451,11 @@ export const SensitiveEnvironmentVariablePolicy$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(SensitiveEnvironmentVariablePolicy);
 
 /** @internal */
+export const DisjunctiveProductionSecretPolicy$inboundSchema: z.ZodNativeEnum<
+  typeof DisjunctiveProductionSecretPolicy
+> = z.nativeEnum(DisjunctiveProductionSecretPolicy);
+
+/** @internal */
 export const DpAccessRequestsMode$inboundSchema: z.ZodNativeEnum<
   typeof DpAccessRequestsMode
 > = z.nativeEnum(DpAccessRequestsMode);
@@ -1982,6 +2009,9 @@ export const Team$inboundSchema: z.ZodType<Team, z.ZodTypeDef, unknown> =
       ).optional(),
       sensitiveEnvironmentVariablePolicy: z.nullable(
         SensitiveEnvironmentVariablePolicy$inboundSchema,
+      ).optional(),
+      disjunctiveProductionSecretPolicy: z.nullable(
+        DisjunctiveProductionSecretPolicy$inboundSchema,
       ).optional(),
       hideIpAddresses: z.nullable(types.boolean()).optional(),
       hideIpAddressesInLogDrains: z.nullable(types.boolean()).optional(),

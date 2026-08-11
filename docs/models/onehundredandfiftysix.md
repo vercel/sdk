@@ -5,22 +5,37 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFiftySix } from "@vercel/sdk/models/usereventjobpayload979githashtagvercel.js";
+import { OneHundredAndFiftySix } from "@vercel/sdk/models/usereventjobpayload989deployhook.js";
 
 let value: OneHundredAndFiftySix = {
-  projectId: "<id>",
-  fromDeploymentId: "<id>",
-  toDeploymentId: "<id>",
-  projectName: "<value>",
+  provider: "gitlab",
+  actorLogin: "<value>",
+  actorAccountId: "<id>",
+  installationId: "<id>",
+  usedAppToken: false,
+  sourceRepo: "<value>",
+  sourceCommitSha: null,
+  destinationRepo: "<value>",
+  destinationBranch: "<value>",
+  resultCommitSha: "<value>",
+  outcome: "success",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `fromDeploymentId` | *string*           | :heavy_check_mark: | N/A                |
-| `toDeploymentId`   | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `reason`           | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `provider`                                                                     | [models.UserEventPayload156Provider](../models/usereventpayload156provider.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `actorLogin`                                                                   | *string*                                                                       | :heavy_check_mark:                                                             | Display name only. Logins are mutable; join on `actorAccountId`.               |
+| `actorAccountId`                                                               | *string*                                                                       | :heavy_check_mark:                                                             | Stable account id on `provider`.                                               |
+| `installationId`                                                               | *string*                                                                       | :heavy_check_mark:                                                             | Set only when an App installation token was minted (GitHub only).              |
+| `usedAppToken`                                                                 | *boolean*                                                                      | :heavy_check_mark:                                                             | N/A                                                                            |
+| `sourceRepo`                                                                   | *string*                                                                       | :heavy_check_mark:                                                             | Source repository, "owner/name".                                               |
+| `sourceCommitSha`                                                              | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `destinationRepo`                                                              | *string*                                                                       | :heavy_check_mark:                                                             | "owner/name", or the raw request value if blocked before it resolved.          |
+| `destinationBranch`                                                            | *string*                                                                       | :heavy_check_mark:                                                             | Branch actually pushed to, or the requested one if blocked.                    |
+| `resultCommitSha`                                                              | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `outcome`                                                                      | [models.Outcome](../models/outcome.md)                                         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `failureStage`                                                                 | [models.FailureStage](../models/failurestage.md)                               | :heavy_minus_sign:                                                             | Mirrors `PushFailureStage` in `@api/git-push-repo`.                            |
+| `failureCode`                                                                  | *string*                                                                       | :heavy_minus_sign:                                                             | Sanitized code, never a raw error message.                                     |

@@ -758,6 +758,7 @@ async function run() {
       enablePreviewFeedback: "on",
       enableProductionFeedback: "on",
       sensitiveEnvironmentVariablePolicy: "on",
+      disjunctiveProductionSecretPolicy: "on",
       remoteCaching: {
         enabled: true,
       },
@@ -826,6 +827,7 @@ async function run() {
       enablePreviewFeedback: "on",
       enableProductionFeedback: "on",
       sensitiveEnvironmentVariablePolicy: "on",
+      disjunctiveProductionSecretPolicy: "on",
       remoteCaching: {
         enabled: true,
       },

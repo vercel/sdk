@@ -31,8 +31,6 @@ import {
 import { DeleteEdgeConfigRequest } from "../models/deleteedgeconfigop.js";
 import { DeleteEdgeConfigSchemaRequest } from "../models/deleteedgeconfigschemaop.js";
 import { DeleteEdgeConfigTokensRequest } from "../models/deleteedgeconfigtokensop.js";
-import { EdgeConfigItem } from "../models/edgeconfigitem.js";
-import { EdgeConfigToken } from "../models/edgeconfigtoken.js";
 import {
   GetEdgeConfigBackupRequest,
   GetEdgeConfigBackupResponseBody,
@@ -57,6 +55,8 @@ import {
 } from "../models/getedgeconfigsop.js";
 import { GetEdgeConfigTokenRequest } from "../models/getedgeconfigtokenop.js";
 import { GetEdgeConfigTokensRequest } from "../models/getedgeconfigtokensop.js";
+import { GlobalConfigItem } from "../models/globalconfigitem.js";
+import { GlobalConfigToken } from "../models/globalconfigtoken.js";
 import {
   PatchEdgeConfigSchemaRequest,
   PatchEdgeConfigSchemaResponseBody,
@@ -166,7 +166,7 @@ export class GlobalConfig extends ClientSDK {
   async getEdgeConfigItems(
     request: GetEdgeConfigItemsRequest,
     options?: RequestOptions,
-  ): Promise<Array<EdgeConfigItem>> {
+  ): Promise<Array<GlobalConfigItem>> {
     return unwrapAsync(globalConfigGetEdgeConfigItems(
       this,
       request,
@@ -234,7 +234,7 @@ export class GlobalConfig extends ClientSDK {
   async getEdgeConfigItem(
     request: GetEdgeConfigItemRequest,
     options?: RequestOptions,
-  ): Promise<EdgeConfigItem> {
+  ): Promise<GlobalConfigItem> {
     return unwrapAsync(globalConfigGetEdgeConfigItem(
       this,
       request,
@@ -251,7 +251,7 @@ export class GlobalConfig extends ClientSDK {
   async getEdgeConfigTokens(
     request: GetEdgeConfigTokensRequest,
     options?: RequestOptions,
-  ): Promise<EdgeConfigToken> {
+  ): Promise<GlobalConfigToken> {
     return unwrapAsync(globalConfigGetEdgeConfigTokens(
       this,
       request,
@@ -285,7 +285,7 @@ export class GlobalConfig extends ClientSDK {
   async getEdgeConfigToken(
     request: GetEdgeConfigTokenRequest,
     options?: RequestOptions,
-  ): Promise<EdgeConfigToken> {
+  ): Promise<GlobalConfigToken> {
     return unwrapAsync(globalConfigGetEdgeConfigToken(
       this,
       request,

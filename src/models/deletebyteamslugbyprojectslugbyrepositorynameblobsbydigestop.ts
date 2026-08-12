@@ -7,7 +7,7 @@ import * as z from "zod/v3";
 export type DeleteByTeamSlugByProjectSlugByRepositoryNameBlobsByDigestRequest =
   {
     /**
-     * Single Docker repository team slug component.
+     * Single Docker repository team slug or team ID component.
      */
     teamSlug: string;
     /**

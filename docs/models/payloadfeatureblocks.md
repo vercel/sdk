@@ -5,7 +5,7 @@ Information about which features are blocked for a user. Blocks can be either so
 ## Example Usage
 
 ```typescript
-import { PayloadFeatureBlocks } from "@vercel/sdk/models/usereventjobpayload979githashtagvercel.js";
+import { PayloadFeatureBlocks } from "@vercel/sdk/models/usereventjobpayload9810headinfo.js";
 
 let value: PayloadFeatureBlocks = {};
 ```

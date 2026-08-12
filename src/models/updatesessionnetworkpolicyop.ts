@@ -136,7 +136,7 @@ export type UpdateSessionNetworkPolicyAllow2 = {
   match?: UpdateSessionNetworkPolicyAllowMatch | undefined;
   transform?: Array<UpdateSessionNetworkPolicyAllowTransform> | undefined;
   /**
-   * HTTP/1.1 proxy URL to forward traffic to. Must not include query string or fragment.
+   * HTTP/1.1 proxy URL to forward traffic to. Must not include username, password, query string, or fragment.
    */
   forwardURL?: string | undefined;
 };

@@ -11772,6 +11772,9 @@
                     "name": {
                       "type": "string"
                     },
+                    "displayName": {
+                      "type": "string"
+                    },
                     "clientUrl": {
                       "nullable": true,
                       "type": "string"
@@ -12112,6 +12115,7 @@
                   "required": [
                     "createdAt",
                     "data",
+                    "displayName",
                     "id",
                     "name",
                     "ownerId",
@@ -13785,12 +13789,17 @@
                           "type": "string",
                           "description": "Curated display name of the resolved service (e.g. \"Salesforce\"), present when the service is a known service. Suited for end-user surfaces like \"Sign in with {serviceName}\"."
                         },
+                        "displayName": {
+                          "type": "string",
+                          "description": "Provider-facing display name when the connector type exposes one, falling back to the stored connector name."
+                        },
                         "name": {
                           "type": "string",
                           "description": "The connector's own name: the operator-given client name, falling back to the client type's name for legacy rows without one."
                         }
                       },
                       "required": [
+                        "displayName",
                         "id",
                         "name",
                         "type",
@@ -14081,12 +14090,17 @@
                           "type": "string",
                           "description": "Curated display name of the resolved service (e.g. \"Salesforce\"), present when the service is a known service. Suited for end-user surfaces like \"Sign in with {serviceName}\"."
                         },
+                        "displayName": {
+                          "type": "string",
+                          "description": "Provider-facing display name when the connector type exposes one, falling back to the stored connector name."
+                        },
                         "name": {
                           "type": "string",
                           "description": "The connector's own name: the operator-given client name, falling back to the client type's name for legacy rows without one."
                         }
                       },
                       "required": [
+                        "displayName",
                         "id",
                         "name",
                         "type",
@@ -53231,7 +53245,7 @@
               "application/json": {
                 "schema": {
                   "items": {
-                    "$ref": "#/components/schemas/EdgeConfigItem"
+                    "$ref": "#/components/schemas/GlobalConfigItem"
                   },
                   "type": "array"
                 }
@@ -53738,7 +53752,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EdgeConfigItem"
+                  "$ref": "#/components/schemas/GlobalConfigItem"
                 }
               }
             }
@@ -53817,7 +53831,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EdgeConfigToken"
+                  "$ref": "#/components/schemas/GlobalConfigToken"
                 }
               }
             }
@@ -53993,7 +54007,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EdgeConfigToken"
+                  "$ref": "#/components/schemas/GlobalConfigToken"
                 }
               }
             }
@@ -54207,7 +54221,7 @@
                                     "type": "number"
                                   },
                                   "value": {
-                                    "$ref": "#/components/schemas/EdgeConfigItemValue"
+                                    "$ref": "#/components/schemas/GlobalConfigItemValue"
                                   },
                                   "description": {
                                     "type": "string"
@@ -54338,7 +54352,7 @@
                                     "type": "number"
                                   },
                                   "value": {
-                                    "$ref": "#/components/schemas/EdgeConfigItemValue"
+                                    "$ref": "#/components/schemas/GlobalConfigItemValue"
                                   },
                                   "description": {
                                     "type": "string"
@@ -74335,7 +74349,7 @@
                   "properties": {
                     "items": {
                       "additionalProperties": {
-                        "$ref": "#/components/schemas/EdgeConfigItemValue"
+                        "$ref": "#/components/schemas/GlobalConfigItemValue"
                       },
                       "type": "object"
                     },
@@ -74422,7 +74436,7 @@
                   "properties": {
                     "items": {
                       "additionalProperties": {
-                        "$ref": "#/components/schemas/EdgeConfigItemValue"
+                        "$ref": "#/components/schemas/GlobalConfigItemValue"
                       },
                       "type": "object"
                     },
@@ -74509,7 +74523,7 @@
                   "properties": {
                     "items": {
                       "additionalProperties": {
-                        "$ref": "#/components/schemas/EdgeConfigItemValue"
+                        "$ref": "#/components/schemas/GlobalConfigItemValue"
                       },
                       "type": "object"
                     },
@@ -106801,6 +106815,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "410": {
             "description": ""
@@ -160771,7 +160788,7 @@
                                       },
                                       "forwardURL": {
                                         "type": "string",
-                                        "description": "HTTP/1.1 proxy URL to forward traffic to. Must not include query string or fragment."
+                                        "description": "HTTP/1.1 proxy URL to forward traffic to. Must not include username, password, query string, or fragment."
                                       }
                                     }
                                   }
@@ -161357,6 +161374,17 @@
                   "maxSizeBytes": {
                     "type": "integer",
                     "description": "Maximum drive size in bytes. Defaults to 100 GiB when omitted."
+                  },
+                  "region": {
+                    "type": "string",
+                    "description": "Region where the drive is stored. Defaults to iad1.",
+                    "enum": [
+                      "iad1",
+                      "sfo1",
+                      "cle1"
+                    ],
+                    "default": "iad1",
+                    "example": "iad1"
                   }
                 }
               }
@@ -161686,7 +161714,9 @@
             "schema": {
               "type": "string",
               "description": "The unique identifier of the snapshot to retrieve.",
-              "example": "snap_abc123"
+              "pattern": "^(?:snap_[A-Za-z0-9]{28}|vhs_[a-z0-9]{28})$",
+              "maxLength": 33,
+              "example": "snap_1234567890123456789012345678"
             }
           },
           {
@@ -161768,7 +161798,9 @@
             "schema": {
               "type": "string",
               "description": "The unique identifier of the snapshot to delete.",
-              "example": "snap_abc123"
+              "pattern": "^(?:snap_[A-Za-z0-9]{28}|vhs_[a-z0-9]{28})$",
+              "maxLength": 33,
+              "example": "snap_1234567890123456789012345678"
             }
           },
           {
@@ -162778,7 +162810,7 @@
                                       },
                                       "forwardURL": {
                                         "type": "string",
-                                        "description": "HTTP/1.1 proxy URL to forward traffic to. Must not include query string or fragment."
+                                        "description": "HTTP/1.1 proxy URL to forward traffic to. Must not include username, password, query string, or fragment."
                                       }
                                     }
                                   }
@@ -164359,7 +164391,7 @@
                                   },
                                   "forwardURL": {
                                     "type": "string",
-                                    "description": "HTTP/1.1 proxy URL to forward traffic to. Must not include query string or fragment."
+                                    "description": "HTTP/1.1 proxy URL to forward traffic to. Must not include username, password, query string, or fragment."
                                   }
                                 }
                               }
@@ -165290,7 +165322,7 @@
                                       },
                                       "forwardURL": {
                                         "type": "string",
-                                        "description": "HTTP/1.1 proxy URL to forward traffic to. Must not include query string or fragment."
+                                        "description": "HTTP/1.1 proxy URL to forward traffic to. Must not include username, password, query string, or fragment."
                                       }
                                     }
                                   }
@@ -165924,7 +165956,7 @@
                                       },
                                       "forwardURL": {
                                         "type": "string",
-                                        "description": "HTTP/1.1 proxy URL to forward traffic to. Must not include query string or fragment."
+                                        "description": "HTTP/1.1 proxy URL to forward traffic to. Must not include username, password, query string, or fragment."
                                       }
                                     }
                                   }
@@ -185703,6 +185735,11 @@
                     "example": "on",
                     "description": "Sensitive environment variable policy: one of on, off or default."
                   },
+                  "disjunctiveProductionSecretPolicy": {
+                    "type": "string",
+                    "example": "on",
+                    "description": "Require production secrets to be in their own environment group: one of on, off or default."
+                  },
                   "remoteCaching": {
                     "type": "object",
                     "description": "Whether or not remote caching is enabled for the team",
@@ -189110,14 +189147,14 @@
         "parameters": [
           {
             "name": "teamSlug",
-            "description": "Single Docker repository team slug component.",
+            "description": "Single Docker repository team slug or team ID component.",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string",
-              "pattern": "^[a-z0-9](?:[a-z0-9-]{0,46}[a-z0-9])?$",
+              "pattern": "^(?:[a-z0-9](?:[a-z0-9-]{0,46}[a-z0-9])?|team_[a-zA-Z0-9]+)$",
               "maxLength": 255,
-              "description": "Single Docker repository team slug component.",
+              "description": "Single Docker repository team slug or team ID component.",
               "example": "team-slug"
             }
           },
@@ -189196,14 +189233,14 @@
         "parameters": [
           {
             "name": "teamSlug",
-            "description": "Single Docker repository team slug component.",
+            "description": "Single Docker repository team slug or team ID component.",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string",
-              "pattern": "^[a-z0-9](?:[a-z0-9-]{0,46}[a-z0-9])?$",
+              "pattern": "^(?:[a-z0-9](?:[a-z0-9-]{0,46}[a-z0-9])?|team_[a-zA-Z0-9]+)$",
               "maxLength": 255,
-              "description": "Single Docker repository team slug component.",
+              "description": "Single Docker repository team slug or team ID component.",
               "example": "team-slug"
             }
           },
@@ -189282,14 +189319,14 @@
         "parameters": [
           {
             "name": "teamSlug",
-            "description": "Single Docker repository team slug component.",
+            "description": "Single Docker repository team slug or team ID component.",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string",
-              "pattern": "^[a-z0-9](?:[a-z0-9-]{0,46}[a-z0-9])?$",
+              "pattern": "^(?:[a-z0-9](?:[a-z0-9-]{0,46}[a-z0-9])?|team_[a-zA-Z0-9]+)$",
               "maxLength": 255,
-              "description": "Single Docker repository team slug component.",
+              "description": "Single Docker repository team slug or team ID component.",
               "example": "team-slug"
             }
           },
@@ -189377,14 +189414,14 @@
         "parameters": [
           {
             "name": "teamSlug",
-            "description": "Single Docker repository team slug component.",
+            "description": "Single Docker repository team slug or team ID component.",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string",
-              "pattern": "^[a-z0-9](?:[a-z0-9-]{0,46}[a-z0-9])?$",
+              "pattern": "^(?:[a-z0-9](?:[a-z0-9-]{0,46}[a-z0-9])?|team_[a-zA-Z0-9]+)$",
               "maxLength": 255,
-              "description": "Single Docker repository team slug component.",
+              "description": "Single Docker repository team slug or team ID component.",
               "example": "team-slug"
             }
           },
@@ -189470,14 +189507,14 @@
         "parameters": [
           {
             "name": "teamSlug",
-            "description": "Single Docker repository team slug component.",
+            "description": "Single Docker repository team slug or team ID component.",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string",
-              "pattern": "^[a-z0-9](?:[a-z0-9-]{0,46}[a-z0-9])?$",
+              "pattern": "^(?:[a-z0-9](?:[a-z0-9-]{0,46}[a-z0-9])?|team_[a-zA-Z0-9]+)$",
               "maxLength": 255,
-              "description": "Single Docker repository team slug component.",
+              "description": "Single Docker repository team slug or team ID component.",
               "example": "team-slug"
             }
           },
@@ -189566,14 +189603,14 @@
         "parameters": [
           {
             "name": "teamSlug",
-            "description": "Single Docker repository team slug component.",
+            "description": "Single Docker repository team slug or team ID component.",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string",
-              "pattern": "^[a-z0-9](?:[a-z0-9-]{0,46}[a-z0-9])?$",
+              "pattern": "^(?:[a-z0-9](?:[a-z0-9-]{0,46}[a-z0-9])?|team_[a-zA-Z0-9]+)$",
               "maxLength": 255,
-              "description": "Single Docker repository team slug component.",
+              "description": "Single Docker repository team slug or team ID component.",
               "example": "team-slug"
             }
           },
@@ -189662,14 +189699,14 @@
         "parameters": [
           {
             "name": "teamSlug",
-            "description": "Single Docker repository team slug component.",
+            "description": "Single Docker repository team slug or team ID component.",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string",
-              "pattern": "^[a-z0-9](?:[a-z0-9-]{0,46}[a-z0-9])?$",
+              "pattern": "^(?:[a-z0-9](?:[a-z0-9-]{0,46}[a-z0-9])?|team_[a-zA-Z0-9]+)$",
               "maxLength": 255,
-              "description": "Single Docker repository team slug component.",
+              "description": "Single Docker repository team slug or team ID component.",
               "example": "team-slug"
             }
           },
@@ -189770,14 +189807,14 @@
         "parameters": [
           {
             "name": "teamSlug",
-            "description": "Single Docker repository team slug component.",
+            "description": "Single Docker repository team slug or team ID component.",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string",
-              "pattern": "^[a-z0-9](?:[a-z0-9-]{0,46}[a-z0-9])?$",
+              "pattern": "^(?:[a-z0-9](?:[a-z0-9-]{0,46}[a-z0-9])?|team_[a-zA-Z0-9]+)$",
               "maxLength": 255,
-              "description": "Single Docker repository team slug component.",
+              "description": "Single Docker repository team slug or team ID component.",
               "example": "team-slug"
             }
           },
@@ -189826,7 +189863,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "pattern": "^[a-z0-9](?:[a-z0-9-]{0,46}[a-z0-9])?\\\\/[a-z0-9](?:[a-z0-9-]{0,46}[a-z0-9])?\\\\/[a-z0-9]+(?:(?:\\\\.|_|__|-+)[a-z0-9]+)*$",
+              "pattern": "^(?:[a-z0-9](?:[a-z0-9-]{0,46}[a-z0-9])?|team_[a-zA-Z0-9]+)\\\\/[a-z0-9](?:[a-z0-9-]{0,46}[a-z0-9])?\\\\/[a-z0-9]+(?:(?:\\\\.|_|__|-+)[a-z0-9]+)*$",
               "maxLength": 255,
               "description": "Source repository to mount the blob from."
             }
@@ -189879,14 +189916,14 @@
         "parameters": [
           {
             "name": "teamSlug",
-            "description": "Single Docker repository team slug component.",
+            "description": "Single Docker repository team slug or team ID component.",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string",
-              "pattern": "^[a-z0-9](?:[a-z0-9-]{0,46}[a-z0-9])?$",
+              "pattern": "^(?:[a-z0-9](?:[a-z0-9-]{0,46}[a-z0-9])?|team_[a-zA-Z0-9]+)$",
               "maxLength": 255,
-              "description": "Single Docker repository team slug component.",
+              "description": "Single Docker repository team slug or team ID component.",
               "example": "team-slug"
             }
           },
@@ -189972,14 +190009,14 @@
         "parameters": [
           {
             "name": "teamSlug",
-            "description": "Single Docker repository team slug component.",
+            "description": "Single Docker repository team slug or team ID component.",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string",
-              "pattern": "^[a-z0-9](?:[a-z0-9-]{0,46}[a-z0-9])?$",
+              "pattern": "^(?:[a-z0-9](?:[a-z0-9-]{0,46}[a-z0-9])?|team_[a-zA-Z0-9]+)$",
               "maxLength": 255,
-              "description": "Single Docker repository team slug component.",
+              "description": "Single Docker repository team slug or team ID component.",
               "example": "team-slug"
             }
           },
@@ -190055,14 +190092,14 @@
         "parameters": [
           {
             "name": "teamSlug",
-            "description": "Single Docker repository team slug component.",
+            "description": "Single Docker repository team slug or team ID component.",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string",
-              "pattern": "^[a-z0-9](?:[a-z0-9-]{0,46}[a-z0-9])?$",
+              "pattern": "^(?:[a-z0-9](?:[a-z0-9-]{0,46}[a-z0-9])?|team_[a-zA-Z0-9]+)$",
               "maxLength": 255,
-              "description": "Single Docker repository team slug component.",
+              "description": "Single Docker repository team slug or team ID component.",
               "example": "team-slug"
             }
           },
@@ -190148,14 +190185,14 @@
         "parameters": [
           {
             "name": "teamSlug",
-            "description": "Single Docker repository team slug component.",
+            "description": "Single Docker repository team slug or team ID component.",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string",
-              "pattern": "^[a-z0-9](?:[a-z0-9-]{0,46}[a-z0-9])?$",
+              "pattern": "^(?:[a-z0-9](?:[a-z0-9-]{0,46}[a-z0-9])?|team_[a-zA-Z0-9]+)$",
               "maxLength": 255,
-              "description": "Single Docker repository team slug component.",
+              "description": "Single Docker repository team slug or team ID component.",
               "example": "team-slug"
             }
           },
@@ -190258,14 +190295,14 @@
         "parameters": [
           {
             "name": "teamSlug",
-            "description": "Single Docker repository team slug component.",
+            "description": "Single Docker repository team slug or team ID component.",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string",
-              "pattern": "^[a-z0-9](?:[a-z0-9-]{0,46}[a-z0-9])?$",
+              "pattern": "^(?:[a-z0-9](?:[a-z0-9-]{0,46}[a-z0-9])?|team_[a-zA-Z0-9]+)$",
               "maxLength": 255,
-              "description": "Single Docker repository team slug component.",
+              "description": "Single Docker repository team slug or team ID component.",
               "example": "team-slug"
             }
           },
@@ -202496,7 +202533,7 @@
         ],
         "description": "Schema definition for registrant fields."
       },
-      "EdgeConfigItemValue": {
+      "GlobalConfigItemValue": {
         "nullable": true,
         "oneOf": [
           {
@@ -202507,13 +202544,13 @@
           },
           {
             "additionalProperties": {
-              "$ref": "#/components/schemas/EdgeConfigItemValue"
+              "$ref": "#/components/schemas/GlobalConfigItemValue"
             },
             "type": "object"
           },
           {
             "items": {
-              "$ref": "#/components/schemas/EdgeConfigItemValue"
+              "$ref": "#/components/schemas/GlobalConfigItemValue"
             },
             "type": "array"
           },
@@ -202526,13 +202563,13 @@
           }
         ]
       },
-      "EdgeConfigItem": {
+      "GlobalConfigItem": {
         "properties": {
           "key": {
             "type": "string"
           },
           "value": {
-            "$ref": "#/components/schemas/EdgeConfigItemValue"
+            "$ref": "#/components/schemas/GlobalConfigItemValue"
           },
           "description": {
             "type": "string"
@@ -202557,7 +202594,7 @@
         "type": "object",
         "description": "The Global Config."
       },
-      "EdgeConfigToken": {
+      "GlobalConfigToken": {
         "properties": {
           "partialToken": {
             "type": "string",
@@ -202778,6 +202815,8 @@
               "custom-alert-deleted",
               "custom-alert-updated",
               "custom-environments-settings-updated",
+              "custom-metric-metadata-deleted",
+              "custom-metric-metadata-updated",
               "custom-suffix-clear",
               "custom-suffix-disable",
               "custom-suffix-enable",
@@ -202851,6 +202890,7 @@
               "email-notification-rule-removed",
               "email-notification-rule-updated",
               "emu-member-removed-unverified-domain",
+              "enforce-disjunctive-production-secrets",
               "enforce-sensitive-environment-variables",
               "env-variable-add",
               "env-variable-delete",
@@ -203106,6 +203146,8 @@
               "saml-connection-deleted",
               "sandbox-alias-assigned",
               "sandbox-alias-delete",
+              "sandbox-drive-created",
+              "sandbox-drive-deleted",
               "sandbox-snapshot-regions-updated",
               "scale",
               "scale-auto",
@@ -206776,6 +206818,19 @@
                 "description": "The payload of the event, if requested."
               },
               {
+                "additionalProperties": true,
+                "type": "object",
+                "description": "The payload of the event, if requested.",
+                "properties": {
+                  "metricName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "metricName"
+                ]
+              },
+              {
                 "properties": {
                   "reason": {
                     "type": "string"
@@ -209378,6 +209433,128 @@
                           "type"
                         ],
                         "type": "object"
+                      },
+                      {
+                        "properties": {
+                          "createdAt": {
+                            "type": "number"
+                          },
+                          "eventful": {
+                            "type": "boolean",
+                            "enum": [
+                              false,
+                              true
+                            ]
+                          },
+                          "headInfo": {
+                            "properties": {
+                              "owner": {
+                                "type": "string",
+                                "description": "Owner (namespace) slug, e.g. `acme`."
+                              },
+                              "ownerId": {
+                                "type": "string",
+                                "description": "Origin namespace id (`ns_…`)."
+                              },
+                              "ref": {
+                                "type": "string"
+                              },
+                              "repo": {
+                                "type": "string",
+                                "description": "Repository name, e.g. `api`."
+                              },
+                              "repoId": {
+                                "type": "string",
+                                "description": "Origin repository id."
+                              },
+                              "sha": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "owner",
+                              "ownerId",
+                              "ref",
+                              "repo",
+                              "repoId",
+                              "sha"
+                            ],
+                            "type": "object",
+                            "description": "Cursor Origin"
+                          },
+                          "installationId": {
+                            "type": "string",
+                            "description": "Origin installation id (`i_…`) used to resolve the credential."
+                          },
+                          "linkedProjectId": {
+                            "type": "string"
+                          },
+                          "owner": {
+                            "type": "string"
+                          },
+                          "prId": {
+                            "type": "number"
+                          },
+                          "projectId": {
+                            "nullable": true
+                          },
+                          "customEnvId": {
+                            "nullable": true
+                          },
+                          "repo": {
+                            "type": "string"
+                          },
+                          "repoId": {
+                            "type": "string"
+                          },
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "cursor-origin-now-comment"
+                            ]
+                          },
+                          "gitComments": {
+                            "properties": {
+                              "onPullRequest": {
+                                "type": "boolean",
+                                "enum": [
+                                  false,
+                                  true
+                                ]
+                              },
+                              "onCommit": {
+                                "type": "boolean",
+                                "enum": [
+                                  false,
+                                  true
+                                ]
+                              }
+                            },
+                            "required": [
+                              "onCommit",
+                              "onPullRequest"
+                            ],
+                            "type": "object"
+                          },
+                          "provider": {
+                            "type": "string",
+                            "enum": [
+                              "cursor-origin"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "headInfo",
+                          "installationId",
+                          "owner",
+                          "prId",
+                          "projectId",
+                          "provider",
+                          "repo",
+                          "repoId",
+                          "type"
+                        ],
+                        "type": "object"
                       }
                     ]
                   }
@@ -211470,8 +211647,9 @@
                     ]
                   },
                   "sourceRepo": {
+                    "nullable": true,
                     "type": "string",
-                    "description": "Source repository, \"owner/name\"."
+                    "description": "Source repository, \"owner/name\". Null when the pushed content was generated in-request (push-files-to-repo) rather than copied from a repository."
                   },
                   "sourceCommitSha": {
                     "nullable": true,
@@ -211503,7 +211681,8 @@
                       "authorization",
                       "push",
                       "unexpected",
-                      "unknown"
+                      "unknown",
+                      "validation"
                     ],
                     "description": "Mirrors `PushFailureStage` in `@api/git-push-repo`."
                   },
@@ -220566,6 +220745,30 @@
               },
               {
                 "properties": {
+                  "driveName": {
+                    "type": "string"
+                  },
+                  "projectId": {
+                    "type": "string"
+                  },
+                  "projectName": {
+                    "type": "string"
+                  },
+                  "region": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "driveName",
+                  "projectId",
+                  "projectName",
+                  "region"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
                   "projectId": {
                     "type": "string"
                   },
@@ -225231,6 +225434,8 @@
               "custom-alert-deleted",
               "custom-alert-updated",
               "custom-environments-settings-updated",
+              "custom-metric-metadata-deleted",
+              "custom-metric-metadata-updated",
               "custom-suffix-clear",
               "custom-suffix-disable",
               "custom-suffix-enable",
@@ -225304,6 +225509,7 @@
               "email-notification-rule-removed",
               "email-notification-rule-updated",
               "emu-member-removed-unverified-domain",
+              "enforce-disjunctive-production-secrets",
               "enforce-sensitive-environment-variables",
               "env-variable-add",
               "env-variable-delete",
@@ -225559,6 +225765,8 @@
               "saml-connection-deleted",
               "sandbox-alias-assigned",
               "sandbox-alias-delete",
+              "sandbox-drive-created",
+              "sandbox-drive-deleted",
               "sandbox-snapshot-regions-updated",
               "scale",
               "scale-auto",
@@ -225906,6 +226114,8 @@
                 "custom-alert-deleted",
                 "custom-alert-updated",
                 "custom-environments-settings-updated",
+                "custom-metric-metadata-deleted",
+                "custom-metric-metadata-updated",
                 "custom-suffix-clear",
                 "custom-suffix-disable",
                 "custom-suffix-enable",
@@ -225979,6 +226189,7 @@
                 "email-notification-rule-removed",
                 "email-notification-rule-updated",
                 "emu-member-removed-unverified-domain",
+                "enforce-disjunctive-production-secrets",
                 "enforce-sensitive-environment-variables",
                 "env-variable-add",
                 "env-variable-delete",
@@ -226234,6 +226445,8 @@
                 "saml-connection-deleted",
                 "sandbox-alias-assigned",
                 "sandbox-alias-delete",
+                "sandbox-drive-created",
+                "sandbox-drive-deleted",
                 "sandbox-snapshot-regions-updated",
                 "scale",
                 "scale-auto",
@@ -228587,6 +228800,11 @@
             "description": "The maximum drive size in bytes.",
             "example": 107374182400
           },
+          "region": {
+            "type": "string",
+            "description": "The region where the drive is stored.",
+            "example": "iad1"
+          },
           "currentSessionId": {
             "type": "string",
             "description": "Current session ID the drive is attached to, if any.",
@@ -228613,6 +228831,7 @@
           "maxSizeBytes",
           "name",
           "projectId",
+          "region",
           "updatedAt"
         ],
         "type": "object",
@@ -229406,6 +229625,17 @@
               null
             ],
             "description": "Sensitive environment variable policy for this team"
+          },
+          "disjunctiveProductionSecretPolicy": {
+            "nullable": true,
+            "type": "string",
+            "enum": [
+              "default",
+              "off",
+              "on",
+              null
+            ],
+            "description": "Require production secrets to use a different value than preview or development."
           },
           "hideIpAddresses": {
             "nullable": true,

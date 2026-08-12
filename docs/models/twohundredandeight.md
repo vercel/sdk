@@ -5,17 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndEight } from "@vercel/sdk/models/one1.js";
+import { TwoHundredAndEight } from "@vercel/sdk/models/oneorigin.js";
 
 let value: TwoHundredAndEight = {
-  oldName: "<value>",
-  newName: "<value>",
+  projectId: "<id>",
+  projectName: "<value>",
+  pattern: "<value>",
+  justification: "<value>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `oldName`          | *string*           | :heavy_check_mark: | N/A                |
-| `newName`          | *string*           | :heavy_check_mark: | N/A                |
+| Field                  | Type                   | Required               | Description            |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `projectId`            | *string*               | :heavy_check_mark:     | N/A                    |
+| `projectName`          | *string*               | :heavy_check_mark:     | N/A                    |
+| `pattern`              | *string*               | :heavy_check_mark:     | N/A                    |
+| `justification`        | *string*               | :heavy_check_mark:     | N/A                    |
+| `additionalProperties` | Record<string, *any*>  | :heavy_minus_sign:     | N/A                    |

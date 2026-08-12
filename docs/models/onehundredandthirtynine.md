@@ -5,11 +5,14 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndThirtyNine } from "@vercel/sdk/models/usereventjobpayload979githashtagvercel.js";
+import { OneHundredAndThirtyNine } from "@vercel/sdk/models/usereventjobpayload9810headinfo.js";
 
 let value: OneHundredAndThirtyNine = {
   team: {
     id: "<id>",
+  },
+  previousRule: {
+    email: "Eloisa_VonRueden73@hotmail.com",
   },
 };
 ```
@@ -19,5 +22,4 @@ let value: OneHundredAndThirtyNine = {
 | Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | `team`                                                                 | [models.UserEventPayload139Team](../models/usereventpayload139team.md) | :heavy_check_mark:                                                     | N/A                                                                    |
-| `previousRule`                                                         | [models.PayloadPreviousRule](../models/payloadpreviousrule.md)         | :heavy_minus_sign:                                                     | N/A                                                                    |
-| `nextRule`                                                             | [models.NextRule](../models/nextrule.md)                               | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `previousRule`                                                         | [models.PreviousRule](../models/previousrule.md)                       | :heavy_check_mark:                                                     | N/A                                                                    |

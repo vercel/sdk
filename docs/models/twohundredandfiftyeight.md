@@ -5,15 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFiftyEight } from "@vercel/sdk/models/twohundredandfortyone.js";
+import { TwoHundredAndFiftyEight } from "@vercel/sdk/models/usereventpayload242next.js";
 
 let value: TwoHundredAndFiftyEight = {
-  disableRepositoryDispatchEvents: true,
+  requireVerifiedCommits: true,
 };
 ```
 
 ## Fields
 
-| Field                             | Type                              | Required                          | Description                       |
-| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
-| `disableRepositoryDispatchEvents` | *boolean*                         | :heavy_check_mark:                | N/A                               |
+| Field                    | Type                     | Required                 | Description              |
+| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
+| `requireVerifiedCommits` | *boolean*                | :heavy_check_mark:       | N/A                      |

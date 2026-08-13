@@ -5,19 +5,37 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSix } from "@vercel/sdk/models/removedprojects.js";
+import { ThreeHundredAndSix } from "@vercel/sdk/models/usereventpayload253previous.js";
 
 let value: ThreeHundredAndSix = {
-  gitProvider: "<value>",
-  gitProviderGroupDescriptor: "<value>",
-  gitScope: "<value>",
+  projectId: "<id>",
+  projectName: "<value>",
+  addedProjects: [],
+  removedProjects: [
+    {
+      id: "<id>",
+      name: "<value>",
+    },
+  ],
+  addedProviders: [
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
+  ],
+  removedProviders: [
+    "<value 1>",
+    "<value 2>",
+  ],
 };
 ```
 
 ## Fields
 
-| Field                        | Type                         | Required                     | Description                  |
-| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-| `gitProvider`                | *string*                     | :heavy_check_mark:           | N/A                          |
-| `gitProviderGroupDescriptor` | *string*                     | :heavy_check_mark:           | N/A                          |
-| `gitScope`                   | *string*                     | :heavy_check_mark:           | N/A                          |
+| Field                                                    | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `projectId`                                              | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
+| `projectName`                                            | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
+| `addedProjects`                                          | [models.AddedProjects](../models/addedprojects.md)[]     | :heavy_check_mark:                                       | N/A                                                      |
+| `removedProjects`                                        | [models.RemovedProjects](../models/removedprojects.md)[] | :heavy_check_mark:                                       | N/A                                                      |
+| `addedProviders`                                         | *string*[]                                               | :heavy_check_mark:                                       | N/A                                                      |
+| `removedProviders`                                       | *string*[]                                               | :heavy_check_mark:                                       | N/A                                                      |

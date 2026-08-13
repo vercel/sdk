@@ -5,23 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSixtyOne } from "@vercel/sdk/models/usereventpayloaddatacache.js";
+import { OneHundredAndSixtyOne } from "@vercel/sdk/models/fastorigintransfer.js";
 
 let value: OneHundredAndSixtyOne = {
-  configurations: [
-    {
-      integrationId: "<id>",
-      configurationId: "<id>",
-      integrationSlug: "<value>",
-    },
-  ],
-  ownerId: "<id>",
+  integration: {
+    id: "<id>",
+    slug: "<value>",
+    name: "<value>",
+    configurationId: "<id>",
+  },
+  destinationTeamId: "<id>",
+  destinationTeamName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                  | Type                                                   | Required                                               | Description                                            |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `configurations`                                       | [models.Configurations](../models/configurations.md)[] | :heavy_check_mark:                                     | N/A                                                    |
-| `ownerId`                                              | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `integration`                                  | [models.Integration](../models/integration.md) | :heavy_check_mark:                             | N/A                                            |
+| `destinationTeamId`                            | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `destinationTeamName`                          | *string*                                       | :heavy_check_mark:                             | N/A                                            |

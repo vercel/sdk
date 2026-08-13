@@ -5,24 +5,20 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndThirtyThree } from "@vercel/sdk/models/removedprojects.js";
+import { ThreeHundredAndThirtyThree } from "@vercel/sdk/models/payloadfactors.js";
 
 let value: ThreeHundredAndThirtyThree = {
-  id: "<id>",
-  type: "blob",
-  locked: true,
+  transferRequestCode: "<value>",
+  store: {
+    id: "<id>",
+    type: "blob",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `id`                                                                   | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
-| `name`                                                                 | *string*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
-| `computeUnitsMax`                                                      | *number*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
-| `computeUnitsMin`                                                      | *number*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
-| `suspendTimeoutSeconds`                                                | *number*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
-| `type`                                                                 | [models.UserEventPayload333Type](../models/usereventpayload333type.md) | :heavy_check_mark:                                                     | N/A                                                                    |
-| `access`                                                               | [models.PayloadAccess](../models/payloadaccess.md)                     | :heavy_minus_sign:                                                     | N/A                                                                    |
-| `locked`                                                               | *boolean*                                                              | :heavy_check_mark:                                                     | N/A                                                                    |
+| Field                              | Type                               | Required                           | Description                        |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| `transferRequestCode`              | *string*                           | :heavy_check_mark:                 | N/A                                |
+| `store`                            | [models.Store](../models/store.md) | :heavy_check_mark:                 | N/A                                |

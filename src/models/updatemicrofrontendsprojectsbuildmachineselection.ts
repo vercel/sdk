@@ -1735,7 +1735,7 @@ export type UpdateMicrofrontendsChecks = {
    */
   excludeStatusCodes?: Array<number> | undefined;
   /**
-   * Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted.
+   * Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted.
    */
   excludePaths?: Array<string> | undefined;
   /**

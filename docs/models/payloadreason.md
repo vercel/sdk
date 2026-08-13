@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { PayloadReason } from "@vercel/sdk/models/fiftyfive.js";
+import { PayloadReason } from "@vercel/sdk/models/payloadconfiguration.js";
 
-let value: PayloadReason = "non-payment";
+let value: PayloadReason = "ip_allow_list";
 ```
 
 ## Values
 
 ```typescript
-"non-payment"
+"ip_allow_list"
 ```

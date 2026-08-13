@@ -475,6 +475,7 @@ export type GetProjectPermissions = {
   webAnalyticsPlan?: Array<ACLAction> | undefined;
   webhook?: Array<ACLAction> | undefined;
   webhookEvent?: Array<ACLAction> | undefined;
+  workflowRunData?: Array<ACLAction> | undefined;
   aliasProject?: Array<ACLAction> | undefined;
   aliasProtectionBypass?: Array<ACLAction> | undefined;
   bulkRedirects?: Array<ACLAction> | undefined;
@@ -2145,6 +2146,7 @@ export const GetProjectPermissions$inboundSchema: z.ZodType<
   webAnalyticsPlan: types.optional(z.array(ACLAction$inboundSchema)),
   webhook: types.optional(z.array(ACLAction$inboundSchema)),
   "webhook-event": types.optional(z.array(ACLAction$inboundSchema)),
+  workflowRunData: types.optional(z.array(ACLAction$inboundSchema)),
   aliasProject: types.optional(z.array(ACLAction$inboundSchema)),
   aliasProtectionBypass: types.optional(z.array(ACLAction$inboundSchema)),
   bulkRedirects: types.optional(z.array(ACLAction$inboundSchema)),

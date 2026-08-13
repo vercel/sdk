@@ -484,7 +484,7 @@ run();
 
 ### Response
 
-**Promise\<[models.EdgeConfigItem[]](../../models/.md)\>**
+**Promise\<[models.GlobalConfigItem[]](../../models/.md)\>**
 
 ### Errors
 
@@ -800,7 +800,7 @@ run();
 
 ### Response
 
-**Promise\<[models.EdgeConfigItem](../../models/edgeconfigitem.md)\>**
+**Promise\<[models.GlobalConfigItem](../../models/globalconfigitem.md)\>**
 
 ### Errors
 
@@ -877,7 +877,7 @@ run();
 
 ### Response
 
-**Promise\<[models.EdgeConfigToken](../../models/edgeconfigtoken.md)\>**
+**Promise\<[models.GlobalConfigToken](../../models/globalconfigtoken.md)\>**
 
 ### Errors
 
@@ -1047,7 +1047,7 @@ run();
 
 ### Response
 
-**Promise\<[models.EdgeConfigToken](../../models/edgeconfigtoken.md)\>**
+**Promise\<[models.GlobalConfigToken](../../models/globalconfigtoken.md)\>**
 
 ### Errors
 

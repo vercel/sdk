@@ -153,6 +153,7 @@ const value: models.AggregateEventsData2[] = [
     appName: "<value>",
     codingAgent: "<value>",
     isByok: "<value>",
+    spendAttribution: "<value>",
     isPrivateModel: "<value>",
     isRequestZdr: "<value>",
     hipaaRequested: "<value>",

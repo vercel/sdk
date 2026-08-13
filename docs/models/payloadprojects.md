@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadProjects } from "@vercel/sdk/models/twohundredandfortyone.js";
+import { PayloadProjects } from "@vercel/sdk/models/usereventpayload253previous.js";
 
 let value: PayloadProjects = {
   projectId: "<id>",
@@ -14,8 +14,8 @@ let value: PayloadProjects = {
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `projectId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
-| `role`                                                                 | [models.UserEventPayload267Role](../models/usereventpayload267role.md) | :heavy_check_mark:                                                     | N/A                                                                    |
-| `membershipCreatedAt`                                                  | *number*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `projectId`                                                      | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `role`                                                           | [models.UserEventPayloadRole](../models/usereventpayloadrole.md) | :heavy_check_mark:                                               | N/A                                                              |
+| `membershipCreatedAt`                                            | *number*                                                         | :heavy_check_mark:                                               | N/A                                                              |

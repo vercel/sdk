@@ -5,7 +5,7 @@
 ```typescript
 import {
   CancelDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBodyServices2RoutesType,
-} from "@vercel/sdk/models/topics2.js";
+} from "@vercel/sdk/models/schedule.js";
 
 let value:
   CancelDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBodyServices2RoutesType =

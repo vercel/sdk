@@ -971,7 +971,7 @@ export type UpdateProjectChecks = {
    */
   excludeStatusCodes?: Array<number> | undefined;
   /**
-   * Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted.
+   * Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted.
    */
   excludePaths?: Array<string> | undefined;
   /**
@@ -1529,6 +1529,7 @@ export type UpdateProjectPermissions = {
   webAnalyticsPlan?: Array<ACLAction> | undefined;
   webhook?: Array<ACLAction> | undefined;
   webhookEvent?: Array<ACLAction> | undefined;
+  workflowRunData?: Array<ACLAction> | undefined;
   aliasProject?: Array<ACLAction> | undefined;
   aliasProtectionBypass?: Array<ACLAction> | undefined;
   bulkRedirects?: Array<ACLAction> | undefined;
@@ -4113,6 +4114,7 @@ export const UpdateProjectPermissions$inboundSchema: z.ZodType<
   webAnalyticsPlan: types.optional(z.array(ACLAction$inboundSchema)),
   webhook: types.optional(z.array(ACLAction$inboundSchema)),
   "webhook-event": types.optional(z.array(ACLAction$inboundSchema)),
+  workflowRunData: types.optional(z.array(ACLAction$inboundSchema)),
   aliasProject: types.optional(z.array(ACLAction$inboundSchema)),
   aliasProtectionBypass: types.optional(z.array(ACLAction$inboundSchema)),
   bulkRedirects: types.optional(z.array(ACLAction$inboundSchema)),

@@ -38,6 +38,7 @@ export const ReadAccessGroupTeamPermissions = {
   V0Builder: "V0Builder",
   V0Chatter: "V0Chatter",
   V0Viewer: "V0Viewer",
+  WorkflowDecryptor: "WorkflowDecryptor",
 } as const;
 export type ReadAccessGroupTeamPermissions = ClosedEnum<
   typeof ReadAccessGroupTeamPermissions

@@ -13,7 +13,7 @@ let value: CountPageviewsResponseBody = {
   },
   data: {
     projectId: "<id>",
-    country: "France",
+    country: "Dominica",
     deviceType: "<value>",
     environment: "<value>",
     requestPath: "<value>",
@@ -39,9 +39,9 @@ let value: CountPageviewsResponseBody = {
     requestExtension: "<value>",
     requestId: "<id>",
     requestApi: "<value>",
-    referrerUrl: "https://dreary-hammock.com/",
+    referrerUrl: "https://inborn-acquaintance.name/",
     serverActionName: "<value>",
-    httpStatus: "401",
+    httpStatus: "103",
     errorCode: "<value>",
     source: "<value>",
     edgeType: "<value>",
@@ -147,6 +147,7 @@ let value: CountPageviewsResponseBody = {
     appName: "<value>",
     codingAgent: "<value>",
     isByok: "<value>",
+    spendAttribution: "<value>",
     isPrivateModel: "<value>",
     isRequestZdr: "<value>",
     hipaaRequested: "<value>",
@@ -161,7 +162,7 @@ let value: CountPageviewsResponseBody = {
     consumerGroup: "<value>",
     messageId: "<id>",
     eventType: "<value>",
-    notificationUrl: "https://firsthand-elevator.name",
+    notificationUrl: "https://fortunate-lox.info/",
     sandboxSessionId: "<id>",
     sandboxName: "<value>",
     workflowRunId: "<id>",
@@ -238,4 +239,4 @@ let value: CountPageviewsResponseBody = {
 | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
 | `version`                                                      | *number*                                                       | :heavy_check_mark:                                             | N/A                                                            |
 | `query`                                                        | [models.CountPageviewsQuery](../models/countpageviewsquery.md) | :heavy_check_mark:                                             | N/A                                                            |
-| `data`                                                         | [models.CountPageviewsData](../models/countpageviewsdata.md)   | :heavy_check_mark:                                             | N/A                                                            |
+| `data`                                                         | *models.CountPageviewsData*                                    | :heavy_check_mark:                                             | N/A                                                            |

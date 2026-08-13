@@ -37,7 +37,7 @@ const value: models.SearchRepoResponseBody3 = {
 ```typescript
 const value: models.ResponseBody4 = {
   gitAccount: {
-    provider: "github",
+    provider: "cursor-origin",
     namespaceId: 3848.91,
   },
   repos: [],

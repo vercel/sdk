@@ -85,7 +85,12 @@ export type CountPageviewsQuery = {
   filter?: string | undefined;
 };
 
-export type CountPageviewsData = {
+export type CountPageviewsData2 = {
+  visitors: number;
+  pageviews: number;
+};
+
+export type CountPageviewsData1 = {
   projectId: string;
   country: string;
   deviceType: string;
@@ -221,6 +226,7 @@ export type CountPageviewsData = {
   appName: string;
   codingAgent: string;
   isByok: string;
+  spendAttribution: string;
   isPrivateModel: string;
   isRequestZdr: string;
   hipaaRequested: string;
@@ -305,10 +311,12 @@ export type CountPageviewsData = {
   additionalProperties?: { [k: string]: number | null } | undefined;
 };
 
+export type CountPageviewsData = CountPageviewsData1 | CountPageviewsData2;
+
 export type CountPageviewsResponseBody = {
   version: number;
   query: CountPageviewsQuery;
-  data: CountPageviewsData;
+  data: CountPageviewsData1 | CountPageviewsData2;
 };
 
 /** @internal */
@@ -405,8 +413,28 @@ export function countPageviewsQueryFromJSON(
 }
 
 /** @internal */
-export const CountPageviewsData$inboundSchema: z.ZodType<
-  CountPageviewsData,
+export const CountPageviewsData2$inboundSchema: z.ZodType<
+  CountPageviewsData2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  visitors: types.number(),
+  pageviews: types.number(),
+});
+
+export function countPageviewsData2FromJSON(
+  jsonString: string,
+): SafeParseResult<CountPageviewsData2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CountPageviewsData2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CountPageviewsData2' from JSON`,
+  );
+}
+
+/** @internal */
+export const CountPageviewsData1$inboundSchema: z.ZodType<
+  CountPageviewsData1,
   z.ZodTypeDef,
   unknown
 > = collectExtraKeys$(
@@ -546,6 +574,7 @@ export const CountPageviewsData$inboundSchema: z.ZodType<
     appName: types.string(),
     codingAgent: types.string(),
     isByok: types.string(),
+    spendAttribution: types.string(),
     isPrivateModel: types.string(),
     isRequestZdr: types.string(),
     hipaaRequested: types.string(),
@@ -632,6 +661,26 @@ export const CountPageviewsData$inboundSchema: z.ZodType<
   true,
 );
 
+export function countPageviewsData1FromJSON(
+  jsonString: string,
+): SafeParseResult<CountPageviewsData1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CountPageviewsData1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CountPageviewsData1' from JSON`,
+  );
+}
+
+/** @internal */
+export const CountPageviewsData$inboundSchema: z.ZodType<
+  CountPageviewsData,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => CountPageviewsData1$inboundSchema),
+  z.lazy(() => CountPageviewsData2$inboundSchema),
+]);
+
 export function countPageviewsDataFromJSON(
   jsonString: string,
 ): SafeParseResult<CountPageviewsData, SDKValidationError> {
@@ -650,7 +699,10 @@ export const CountPageviewsResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   version: types.number(),
   query: z.lazy(() => CountPageviewsQuery$inboundSchema),
-  data: z.lazy(() => CountPageviewsData$inboundSchema),
+  data: smartUnion([
+    z.lazy(() => CountPageviewsData1$inboundSchema),
+    z.lazy(() => CountPageviewsData2$inboundSchema),
+  ]),
 });
 
 export function countPageviewsResponseBodyFromJSON(

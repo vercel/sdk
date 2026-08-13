@@ -5,29 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndTwentyFive } from "@vercel/sdk/models/removedprojects.js";
+import { ThreeHundredAndTwentyFive } from "@vercel/sdk/models/payloadfactors.js";
 
 let value: ThreeHundredAndTwentyFive = {
-  budget: {
-    type: "fixed",
-    fixedBudget: 5953.03,
-    previousSpend: [
-      2014.56,
-    ],
-    notifiedAt: [
-      7770.87,
-    ],
-    createdAt: 7476.94,
-    isActive: true,
-    teamId: "<id>",
-    id: "<id>",
-  },
+  email: "Ines_Kessler74@yahoo.com",
+  githubLogin: "<value>",
+  zeitAccount: "<value>",
+  zeitAccountType: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `budget`                                                                   | [models.UserEventPayload325Budget](../models/usereventpayload325budget.md) | :heavy_check_mark:                                                         | Represents a budget for tracking and notifying teams on their spending.    |
-| `webhookUrl`                                                               | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `email`            | *string*           | :heavy_check_mark: | N/A                |
+| `githubLogin`      | *string*           | :heavy_check_mark: | N/A                |
+| `zeitAccount`      | *string*           | :heavy_check_mark: | N/A                |
+| `zeitAccountType`  | *string*           | :heavy_check_mark: | N/A                |

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Integrations } from "@vercel/sdk/models/canceldeploymentservicesdeploymentsmaxduration.js";
+import { Integrations } from "@vercel/sdk/models/canceldeploymentmaxdurationdeployments2.js";
 
 let value: Integrations = {
   status: "timeout",

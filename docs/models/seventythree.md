@@ -5,27 +5,14 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { SeventyThree } from "@vercel/sdk/models/fiftyfive.js";
+import { SeventyThree } from "@vercel/sdk/models/payloadbudget.js";
 
-let value: SeventyThree = {
-  gitOwnerName: "<value>",
-  gitRepositoryName: "<value>",
-  previous: {
-    enabled: false,
-    autoAddReviewers: true,
-  },
-  next: {
-    enabled: false,
-    autoAddReviewers: true,
-  },
-};
+let value: SeventyThree = {};
 ```
 
 ## Fields
 
-| Field                                    | Type                                     | Required                                 | Description                              |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| `gitOwnerName`                           | *string*                                 | :heavy_check_mark:                       | N/A                                      |
-| `gitRepositoryName`                      | *string*                                 | :heavy_check_mark:                       | N/A                                      |
-| `previous`                               | [models.Previous](../models/previous.md) | :heavy_check_mark:                       | N/A                                      |
-| `next`                                   | [models.Next](../models/next.md)         | :heavy_check_mark:                       | N/A                                      |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `cn`               | *string*           | :heavy_minus_sign: | N/A                |
+| `cns`              | *string*[]         | :heavy_minus_sign: | N/A                |

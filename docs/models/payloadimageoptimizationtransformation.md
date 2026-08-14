@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadImageOptimizationTransformation } from "@vercel/sdk/models/usereventjobpayload979githashtagvercel.js";
+import { PayloadImageOptimizationTransformation } from "@vercel/sdk/models/onehundredandtwentyseven.js";
 
 let value: PayloadImageOptimizationTransformation = {
   updatedAt: 344.86,
@@ -18,4 +18,4 @@ let value: PayloadImageOptimizationTransformation = {
 | `updatedAt`                                                                                          | *number*                                                                                             | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
 | `blockedFrom`                                                                                        | *number*                                                                                             | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
 | `blockedUntil`                                                                                       | *number*                                                                                             | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
-| `blockReason`                                                                                        | [models.UserEventPayload157NewOwnerBlockReason](../models/usereventpayload157newownerblockreason.md) | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
+| `blockReason`                                                                                        | [models.UserEventPayload159NewOwnerBlockReason](../models/usereventpayload159newownerblockreason.md) | :heavy_check_mark:                                                                                   | N/A                                                                                                  |

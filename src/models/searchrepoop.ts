@@ -45,6 +45,7 @@ export type SearchRepoRequest = {
 
 export const SearchRepoResponseBodyIntegrationsProvider = {
   Bitbucket: "bitbucket",
+  CursorOrigin: "cursor-origin",
   Github: "github",
   GithubCustomHost: "github-custom-host",
   GithubLimited: "github-limited",
@@ -66,6 +67,7 @@ export type ResponseBodyId = string | number;
 
 export const SearchRepoResponseBodyIntegrationsResponseProvider = {
   Bitbucket: "bitbucket",
+  CursorOrigin: "cursor-origin",
   Github: "github",
   GithubCustomHost: "github-custom-host",
   GithubLimited: "github-limited",

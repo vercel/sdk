@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayloadReason } from "@vercel/sdk/models/usereventpayloaddatacache.js";
+import { UserEventPayloadReason } from "@vercel/sdk/models/usereventpayloadconfiguration.js";
 
-let value: UserEventPayloadReason = "ENTERPRISE_TRIAL_ENDED";
+let value: UserEventPayloadReason = "ip_allow_list";
 ```
 
 ## Values
 
 ```typescript
-"BLOCKED_FOR_PLATFORM_ABUSE" | "DOMAIN_OWNER_DELETION_REQUEST" | "ENTERPRISE_TRIAL_ENDED" | "ENTERPRISE_UNPAID_INVOICE" | "EXPOSURE_CAP_EXCEEDED" | "FAIR_USE_LIMITS_EXCEEDED" | "HOBBY_ALLOCATION_PAUSED" | "SUBSCRIPTION_CANCELED" | "SUBSCRIPTION_EXPIRED" | "UNPAID_INVOICE"
+"ip_allow_list"
 ```

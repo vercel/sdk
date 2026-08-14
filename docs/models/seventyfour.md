@@ -5,21 +5,27 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { SeventyFour } from "@vercel/sdk/models/fiftyfive.js";
+import { SeventyFour } from "@vercel/sdk/models/payloadbudget.js";
 
 let value: SeventyFour = {
-  slug: "<value>",
-  documentId: "<id>",
-  title: "<value>",
-  fingerprint: "<value>",
+  gitOwnerName: "<value>",
+  gitRepositoryName: "<value>",
+  previous: {
+    enabled: false,
+    autoAddReviewers: false,
+  },
+  next: {
+    enabled: true,
+    autoAddReviewers: false,
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `slug`             | *string*           | :heavy_check_mark: | N/A                |
-| `documentId`       | *string*           | :heavy_check_mark: | N/A                |
-| `title`            | *string*           | :heavy_check_mark: | N/A                |
-| `fingerprint`      | *string*           | :heavy_check_mark: | N/A                |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `gitOwnerName`                           | *string*                                 | :heavy_check_mark:                       | N/A                                      |
+| `gitRepositoryName`                      | *string*                                 | :heavy_check_mark:                       | N/A                                      |
+| `previous`                               | [models.Previous](../models/previous.md) | :heavy_check_mark:                       | N/A                                      |
+| `next`                                   | [models.Next](../models/next.md)         | :heavy_check_mark:                       | N/A                                      |

@@ -65,6 +65,7 @@ export const TeamPermissions = {
   V0Builder: "V0Builder",
   V0Chatter: "V0Chatter",
   V0Viewer: "V0Viewer",
+  WorkflowDecryptor: "WorkflowDecryptor",
 } as const;
 /**
  * The team permissions of the user

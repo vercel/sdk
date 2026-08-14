@@ -5,24 +5,40 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFiftyNine } from "@vercel/sdk/models/usereventpayloaddatacache.js";
+import { OneHundredAndFiftyNine } from "@vercel/sdk/models/onehundredandtwentyseven.js";
 
 let value: OneHundredAndFiftyNine = {
-  integration: {
+  userId: "<id>",
+  integrationId: "<id>",
+  configurationId: "<id>",
+  integrationSlug: "<value>",
+  newOwner: {
+    billing: {
+      plan: "hobby",
+    },
+    blocked: 2222.38,
+    createdAt: 2753.5,
+    deploymentSecret: "<value>",
+    email: "Dave36@yahoo.com",
     id: "<id>",
-    slug: "<value>",
-    name: "<value>",
-    configurationId: "<id>",
+    platformVersion: 5519.63,
+    stagingPrefix: "<value>",
+    sysToken: "<value>",
+    type: "user",
+    username: "Roberto92",
+    updatedAt: 3497.89,
+    version: "northstar",
   },
-  destinationTeamId: "<id>",
-  destinationTeamName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `integration`                                  | [models.Integration](../models/integration.md) | :heavy_check_mark:                             | N/A                                            |
-| `destinationTeamId`                            | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `destinationTeamName`                          | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `userId`                                 | *string*                                 | :heavy_check_mark:                       | N/A                                      |
+| `integrationId`                          | *string*                                 | :heavy_check_mark:                       | N/A                                      |
+| `configurationId`                        | *string*                                 | :heavy_check_mark:                       | N/A                                      |
+| `integrationSlug`                        | *string*                                 | :heavy_check_mark:                       | N/A                                      |
+| `integrationName`                        | *string*                                 | :heavy_minus_sign:                       | N/A                                      |
+| `newOwner`                               | [models.NewOwner](../models/newowner.md) | :heavy_check_mark:                       | N/A                                      |

@@ -5,17 +5,18 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndTen } from "@vercel/sdk/models/usereventjobpayload979githashtagvercel.js";
+import { OneHundredAndTen } from "@vercel/sdk/models/usereventpayloadconfiguration.js";
 
 let value: OneHundredAndTen = {
   name: "<value>",
+  price: 1249.58,
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `name`                                                                       | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
-| `oldTeam`                                                                    | [models.UserEventPayload110OldTeam](../models/usereventpayload110oldteam.md) | :heavy_minus_sign:                                                           | N/A                                                                          |
-| `newTeam`                                                                    | [models.UserEventPayload110NewTeam](../models/usereventpayload110newteam.md) | :heavy_minus_sign:                                                           | N/A                                                                          |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `price`            | *number*           | :heavy_check_mark: | N/A                |
+| `currency`         | *string*           | :heavy_minus_sign: | N/A                |

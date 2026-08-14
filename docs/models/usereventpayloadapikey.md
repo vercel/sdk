@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayloadApiKey } from "@vercel/sdk/models/userevent.js";
+import { UserEventPayloadApiKey } from "@vercel/sdk/models/payloadbudget.js";
 
 let value: UserEventPayloadApiKey = {
   id: "<id>",

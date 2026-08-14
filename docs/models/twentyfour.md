@@ -5,18 +5,18 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwentyFour } from "@vercel/sdk/models/userevent.js";
+import { TwentyFour } from "@vercel/sdk/models/payloadbudget.js";
 
 let value: TwentyFour = {
-  rule: {
-    id: "<id>",
-    type: "<value>",
+  retention: {
+    defaultMode: "until-requested",
+    ceilingMode: "days",
   },
 };
 ```
 
 ## Fields
 
-| Field                            | Type                             | Required                         | Description                      |
-| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
-| `rule`                           | [models.Rule](../models/rule.md) | :heavy_check_mark:               | N/A                              |
+| Field                                      | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `retention`                                | [models.Retention](../models/retention.md) | :heavy_check_mark:                         | N/A                                        |

@@ -29,9 +29,14 @@ let value: OrbSubscriptionIntent = {
   },
   createdAt: "1728673646563",
   orbSubscriptionId: "<id>",
+  orbUpdate: {
+    appliedAt: "<value>",
+    mode: "async",
+    status: "succeeded",
+  },
   ownerId: "<id>",
-  status: "succeeded",
-  updatedAt: "1735603530539",
+  status: "failed",
+  updatedAt: "1735651012998",
 };
 ```
 
@@ -43,6 +48,7 @@ let value: OrbSubscriptionIntent = {
 | `configuration`                                                                  | *models.ResponseBodyConfiguration*                                               | :heavy_check_mark:                                                               | N/A                                                                              |
 | `createdAt`                                                                      | *string*                                                                         | :heavy_check_mark:                                                               | The ISO 8601 date-time that the intent was created.                              |
 | `orbSubscriptionId`                                                              | *string*                                                                         | :heavy_check_mark:                                                               | The Orb subscription ID this intent is associated with.                          |
+| `orbUpdate`                                                                      | *models.OrbUpdate*                                                               | :heavy_check_mark:                                                               | N/A                                                                              |
 | `ownerId`                                                                        | *string*                                                                         | :heavy_check_mark:                                                               | The owner ID for this intent (e.g., team or user ID).                            |
 | `status`                                                                         | [models.BuyCreditsResponseBodyStatus](../models/buycreditsresponsebodystatus.md) | :heavy_check_mark:                                                               | The status of the Orb subscription intent.                                       |
 | `updatedAt`                                                                      | *string*                                                                         | :heavy_check_mark:                                                               | The ISO 8601 date-time that the intent was last updated.                         |

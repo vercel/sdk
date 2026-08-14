@@ -89,3 +89,15 @@ const value: models.Configuration6 = {
 };
 ```
 
+### `models.Configuration7`
+
+```typescript
+const value: models.Configuration7 = {
+  options: {
+    planId: "<id>",
+  },
+  output: {},
+  type: "subscription",
+};
+```
+

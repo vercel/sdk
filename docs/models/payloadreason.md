@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { PayloadReason } from "@vercel/sdk/models/fiftyfive.js";
+import { PayloadReason } from "@vercel/sdk/models/usereventfactors1.js";
 
-let value: PayloadReason = "non-payment";
+let value: PayloadReason = "oom-failure";
 ```
 
 ## Values
 
 ```typescript
-"non-payment"
+"basic-floor" | "build-timeout-failure" | "enospc-failure" | "enterprise-floor" | "high-peak-disk" | "high-peak-memory" | "long-build-duration" | "oom-failure" | "plan-change" | "short-build-duration" | "sustained-high-cpu"
 ```

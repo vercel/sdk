@@ -1,17 +1,15 @@
 # UserEventPayloadMethod
 
-Method used for the state change - 'totp': User set up TOTP authenticator - 'passkey': User registered a passkey - 'user_disabled': User disabled their own MFA - 'admin_removal': Admin removed MFA via backoffice - 'self_serve_recovery': User disabled their own MFA through the self-serve MFA disable recovery flow (a "Locked Out User" with only a passkey) - 'unknown': Method unknown (for pre-tracking events)
-
 ## Example Usage
 
 ```typescript
-import { UserEventPayloadMethod } from "@vercel/sdk/models/usereventjobpayload979githashtagvercel.js";
+import { UserEventPayloadMethod } from "@vercel/sdk/models/threehundredandninetytwo.js";
 
-let value: UserEventPayloadMethod = "self_serve_recovery";
+let value: UserEventPayloadMethod = "client_secret_post";
 ```
 
 ## Values
 
 ```typescript
-"admin_removal" | "passkey" | "self_serve_recovery" | "totp" | "unknown" | "user_disabled"
+"client_secret_basic" | "client_secret_jwt" | "client_secret_post" | "none" | "oidc_token" | "private_key_jwt"
 ```

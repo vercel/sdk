@@ -23,7 +23,6 @@ let value: UpdateProjectAlias = {
     readyState: "BUILDING",
     type: "LAMBDAS",
     url: "https://knotty-sock.info/",
-    userId: "<id>",
   },
   domain: "yellow-dead.com",
   environment: "preview",

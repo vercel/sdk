@@ -18,6 +18,7 @@ export const UpdateTeamMemberTeamPermissions = {
   UsageViewer: "UsageViewer",
   EnvVariableManager: "EnvVariableManager",
   EnvironmentManager: "EnvironmentManager",
+  WorkflowDecryptor: "WorkflowDecryptor",
   OrgAdmin: "OrgAdmin",
   OrgViewer: "OrgViewer",
   AiGatewaySettings: "AiGatewaySettings",

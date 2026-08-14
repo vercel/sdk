@@ -5,7 +5,7 @@ Metered allocation whose included amount was fully consumed.
 ## Example Usage
 
 ```typescript
-import { PayloadAllocation } from "@vercel/sdk/models/usereventpayloaddatacache.js";
+import { PayloadAllocation } from "@vercel/sdk/models/fastdatatransfer.js";
 
 let value: PayloadAllocation = "fluidCpuDuration";
 ```

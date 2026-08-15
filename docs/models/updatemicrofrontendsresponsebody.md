@@ -26,7 +26,6 @@ let value: UpdateMicrofrontendsResponseBody = {
         readyState: "CANCELED",
         type: "LAMBDAS",
         url: "https://another-recovery.com/",
-        userId: "<id>",
       },
       domain: "doting-archaeology.info",
       environment: "production",
@@ -67,7 +66,6 @@ let value: UpdateMicrofrontendsResponseBody = {
       readyState: "BLOCKED",
       type: "LAMBDAS",
       url: "https://nautical-dwell.com",
-      userId: "<id>",
     },
   ],
   name: "<value>",
@@ -122,7 +120,6 @@ let value: UpdateMicrofrontendsResponseBody = {
       readyState: "ERROR",
       type: "LAMBDAS",
       url: "https://linear-thyme.com",
-      userId: "<id>",
     },
   },
 };

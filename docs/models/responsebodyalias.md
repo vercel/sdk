@@ -23,7 +23,6 @@ let value: ResponseBodyAlias = {
     readyState: "BUILDING",
     type: "LAMBDAS",
     url: "https://outstanding-festival.biz",
-    userId: "<id>",
   },
   domain: "odd-foodstuffs.name",
   environment: "preview",

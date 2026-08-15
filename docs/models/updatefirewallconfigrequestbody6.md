@@ -1,6 +1,6 @@
 # UpdateFirewallConfigRequestBody6
 
-Enable Firewall
+Remove a named condition
 
 ## Example Usage
 
@@ -9,7 +9,7 @@ import { UpdateFirewallConfigRequestBody6 } from "@vercel/sdk/models/updatefirew
 
 let value: UpdateFirewallConfigRequestBody6 = {
   action: "crs.update",
-  value: true,
+  id: "<id>",
 };
 ```
 
@@ -18,5 +18,5 @@ let value: UpdateFirewallConfigRequestBody6 = {
 | Field                                                                                                                              | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
 | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | `action`                                                                                                                           | [models.UpdateFirewallConfigRequestBodySecurityRequest6Action](../models/updatefirewallconfigrequestbodysecurityrequest6action.md) | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
-| `id`                                                                                                                               | *string*                                                                                                                           | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |
-| `value`                                                                                                                            | *boolean*                                                                                                                          | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
+| `id`                                                                                                                               | *string*                                                                                                                           | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
+| `value`                                                                                                                            | *string*                                                                                                                           | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |

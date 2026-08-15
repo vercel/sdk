@@ -501,7 +501,7 @@ export type CreateRecordResponseBody2 = {
 };
 
 export type CreateRecordResponseBody1 = {
-  uid: string;
+  uid?: string | undefined;
   updated: number;
 };
 
@@ -991,7 +991,7 @@ export const CreateRecordResponseBody1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  uid: types.string(),
+  uid: types.optional(types.string()),
   updated: types.number(),
 });
 

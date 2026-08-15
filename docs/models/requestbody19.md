@@ -1,6 +1,6 @@
 # RequestBody19
 
-Update log headers configuration
+Update a managed ruleset
 
 ## Example Usage
 
@@ -9,14 +9,17 @@ import { RequestBody19 } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
 let value: RequestBody19 = {
   action: "<value>",
-  value: "<value>",
+  id: "owasp",
+  value: {
+    active: true,
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `action`           | *string*           | :heavy_check_mark: | N/A                |
-| `id`               | *string*           | :heavy_minus_sign: | N/A                |
-| `value`            | *any*              | :heavy_check_mark: | N/A                |
+| Field                                                                                                                              | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
+| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `action`                                                                                                                           | *string*                                                                                                                           | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
+| `id`                                                                                                                               | [models.RequestBodyId](../models/requestbodyid.md)                                                                                 | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
+| `value`                                                                                                                            | [models.UpdateFirewallConfigRequestBodySecurityRequest19Value](../models/updatefirewallconfigrequestbodysecurityrequest19value.md) | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |

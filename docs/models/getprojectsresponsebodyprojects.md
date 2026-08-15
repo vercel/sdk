@@ -26,7 +26,6 @@ let value: GetProjectsResponseBodyProjects = {
         readyState: "READY",
         type: "LAMBDAS",
         url: "https://impossible-dandelion.name",
-        userId: "<id>",
       },
       domain: "husky-ownership.org",
       environment: "preview",
@@ -61,7 +60,6 @@ let value: GetProjectsResponseBodyProjects = {
       readyState: "ERROR",
       type: "LAMBDAS",
       url: "https://normal-statue.info",
-      userId: "<id>",
     },
   ],
   name: "<value>",
@@ -113,7 +111,6 @@ let value: GetProjectsResponseBodyProjects = {
       readyState: "QUEUED",
       type: "LAMBDAS",
       url: "https://frank-gloom.name/",
-      userId: "<id>",
     },
   },
 };

@@ -5,17 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndFour } from "@vercel/sdk/models/usereventpayload373previous.js";
+import { FourHundredAndFour } from "@vercel/sdk/models/threehundredandninetytwo.js";
 
 let value: FourHundredAndFour = {
-  previousProjectCount: 3682.95,
-  nextProjectCount: 7518.2,
+  previous: {
+    enabled: true,
+    totpVerified: true,
+  },
+  next: {
+    enabled: true,
+    totpVerified: false,
+  },
 };
 ```
 
 ## Fields
 
-| Field                  | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `previousProjectCount` | *number*               | :heavy_check_mark:     | N/A                    |
-| `nextProjectCount`     | *number*               | :heavy_check_mark:     | N/A                    |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `previous`                                                                     | [models.UserEventPayload404Previous](../models/usereventpayload404previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `next`                                                                         | [models.UserEventPayload404Next](../models/usereventpayload404next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |

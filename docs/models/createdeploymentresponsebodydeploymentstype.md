@@ -1,17 +1,17 @@
 # CreateDeploymentResponseBodyDeploymentsType
 
-Whether the value is an opaque identifier or a URL.
+Principal type of the deployment creator.
 
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentResponseBodyDeploymentsType } from "@vercel/sdk/models/createdeploymentresponsebody.js";
+import { CreateDeploymentResponseBodyDeploymentsType } from "@vercel/sdk/models/createdeploymentrouteshas.js";
 
-let value: CreateDeploymentResponseBodyDeploymentsType = "url";
+let value: CreateDeploymentResponseBodyDeploymentsType = "system";
 ```
 
 ## Values
 
 ```typescript
-"id" | "url"
+"app" | "integration" | "system" | "user"
 ```

@@ -149,6 +149,7 @@ let value: AggregateEventsResponseBody = {
       appName: "<value>",
       codingAgent: "<value>",
       isByok: "<value>",
+      spendAttribution: "<value>",
       isPrivateModel: "<value>",
       isRequestZdr: "<value>",
       hipaaRequested: "<value>",

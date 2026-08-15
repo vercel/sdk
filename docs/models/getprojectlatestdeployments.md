@@ -22,7 +22,6 @@ let value: GetProjectLatestDeployments = {
   readyState: "CANCELED",
   type: "LAMBDAS",
   url: "https://lawful-promise.name/",
-  userId: "<id>",
 };
 ```
 
@@ -64,5 +63,5 @@ let value: GetProjectLatestDeployments = {
 | `teamId`                                                                               | *string*                                                                               | :heavy_minus_sign:                                                                     | N/A                                                                                    |                                                                                        |
 | `type`                                                                                 | [models.GetProjectProjectsResponseType](../models/getprojectprojectsresponsetype.md)   | :heavy_check_mark:                                                                     | N/A                                                                                    |                                                                                        |
 | `url`                                                                                  | *string*                                                                               | :heavy_check_mark:                                                                     | N/A                                                                                    |                                                                                        |
-| `userId`                                                                               | *string*                                                                               | :heavy_check_mark:                                                                     | N/A                                                                                    |                                                                                        |
+| `userId`                                                                               | *string*                                                                               | :heavy_minus_sign:                                                                     | Present for user creators; omitted for app/integration/system creators.                |                                                                                        |
 | `withCache`                                                                            | *boolean*                                                                              | :heavy_minus_sign:                                                                     | N/A                                                                                    |                                                                                        |

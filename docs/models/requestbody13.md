@@ -1,6 +1,6 @@
 # RequestBody13
 
-Add an IP Blocking rule
+Reorder a custom rule
 
 ## Example Usage
 
@@ -9,18 +9,15 @@ import { RequestBody13 } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
 let value: RequestBody13 = {
   action: "<value>",
-  value: {
-    hostname: "noted-obligation.org",
-    ip: "cbea:c3b9:7d99:1ef2:9455:961e:ecaf:bfdc",
-    action: "bypass",
-  },
+  id: "<id>",
+  value: 5596.65,
 };
 ```
 
 ## Fields
 
-| Field                                                                                                                              | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
-| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `action`                                                                                                                           | *string*                                                                                                                           | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
-| `id`                                                                                                                               | *string*                                                                                                                           | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |
-| `value`                                                                                                                            | [models.UpdateFirewallConfigRequestBodySecurityRequest13Value](../models/updatefirewallconfigrequestbodysecurityrequest13value.md) | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `action`           | *string*           | :heavy_check_mark: | N/A                |
+| `id`               | *string*           | :heavy_check_mark: | N/A                |
+| `value`            | *number*           | :heavy_check_mark: | N/A                |

@@ -1,6 +1,6 @@
 # UpdateFirewallConfigRequestBody8
 
-Update a custom rule
+Remove the action for a consumed ruleset (project scope)
 
 ## Example Usage
 
@@ -10,16 +10,6 @@ import { UpdateFirewallConfigRequestBody8 } from "@vercel/sdk/models/updatefirew
 let value: UpdateFirewallConfigRequestBody8 = {
   action: "ip.insert",
   id: "<id>",
-  value: {
-    name: "<value>",
-    active: false,
-    conditionGroup: [
-      {
-        conditions: [],
-      },
-    ],
-    action: {},
-  },
 };
 ```
 
@@ -29,4 +19,4 @@ let value: UpdateFirewallConfigRequestBody8 = {
 | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | `action`                                                                                                                           | [models.UpdateFirewallConfigRequestBodySecurityRequest8Action](../models/updatefirewallconfigrequestbodysecurityrequest8action.md) | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
 | `id`                                                                                                                               | *any*                                                                                                                              | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
-| `value`                                                                                                                            | [models.UpdateFirewallConfigRequestBodySecurityRequest8Value](../models/updatefirewallconfigrequestbodysecurityrequest8value.md)   | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
+| `value`                                                                                                                            | *string*                                                                                                                           | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |

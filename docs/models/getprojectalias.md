@@ -23,7 +23,6 @@ let value: GetProjectAlias = {
     readyState: "CANCELED",
     type: "LAMBDAS",
     url: "https://well-lit-grandson.info",
-    userId: "<id>",
   },
   domain: "babyish-blowgun.net",
   environment: "production",

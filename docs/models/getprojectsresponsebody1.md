@@ -26,7 +26,6 @@ let value: GetProjectsResponseBody1 = {
         readyState: "BUILDING",
         type: "LAMBDAS",
         url: "https://outstanding-festival.biz",
-        userId: "<id>",
       },
       domain: "supportive-tomb.name",
       environment: "production",
@@ -54,7 +53,6 @@ let value: GetProjectsResponseBody1 = {
       readyState: "BLOCKED",
       type: "LAMBDAS",
       url: "https://tattered-dandelion.com/",
-      userId: "<id>",
     },
   ],
   name: "<value>",
@@ -113,7 +111,6 @@ let value: GetProjectsResponseBody1 = {
       readyState: "INITIALIZING",
       type: "LAMBDAS",
       url: "https://understated-retention.name",
-      userId: "<id>",
     },
   },
 };

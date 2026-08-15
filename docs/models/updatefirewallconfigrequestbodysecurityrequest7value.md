@@ -1,26 +1,17 @@
 # UpdateFirewallConfigRequestBodySecurityRequest7Value
 
-
-## Supported Types
-
-### `string`
+## Example Usage
 
 ```typescript
-const value: string = "<value>";
+import { UpdateFirewallConfigRequestBodySecurityRequest7Value } from "@vercel/sdk/models/updatefirewallconfigop.js";
+
+let value: UpdateFirewallConfigRequestBodySecurityRequest7Value = {
+  action: "challenge",
+};
 ```
 
-### `string[]`
+## Fields
 
-```typescript
-const value: string[] = [
-  "<value 1>",
-  "<value 2>",
-];
-```
-
-### `number`
-
-```typescript
-const value: number = 1284.03;
-```
-
+| Field                                                                                                                                        | Type                                                                                                                                         | Required                                                                                                                                     | Description                                                                                                                                  |
+| -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `action`                                                                                                                                     | [models.UpdateFirewallConfigRequestBodySecurityRequest7ValueAction](../models/updatefirewallconfigrequestbodysecurityrequest7valueaction.md) | :heavy_check_mark:                                                                                                                           | N/A                                                                                                                                          |

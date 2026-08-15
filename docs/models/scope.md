@@ -1,15 +1,17 @@
 # Scope
 
+Pin scope: `specific` (one provider region), `zone` (geo zone), or `global`.
+
 ## Example Usage
 
 ```typescript
-import { Scope } from "@vercel/sdk/models/removedprojects.js";
+import { Scope } from "@vercel/sdk/models/aigatewayvirtualmodelconfig.js";
 
-let value: Scope = "dashboard";
+let value: Scope = "global";
 ```
 
 ## Values
 
 ```typescript
-"dashboard" | "log-drains"
+"global" | "specific" | "zone"
 ```

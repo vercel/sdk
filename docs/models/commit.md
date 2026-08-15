@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Commit } from "@vercel/sdk/models/fiftyfive.js";
+import { Commit } from "@vercel/sdk/models/usereventpayload80configuration.js";
 
 let value: Commit = {
   id: "<id>",

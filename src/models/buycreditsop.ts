@@ -73,7 +73,7 @@ export type BuyCreditsRequest = {
 /**
  * Configuration input options for adjusting plan item quantity.
  */
-export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOptions =
+export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent4Options =
   {
     /**
      * The resource IDs to incrementally add. The quantity of the plan item will be increased by the number of resource IDs.
@@ -140,7 +140,7 @@ export type BuyCreditsConfigurationBillingChangedResources = {
 /**
  * Output returned after configuring an OrbSubscriptionIntent.
  */
-export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutput =
+export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Output =
   {
     /**
      * When the subscription change should take effect.
@@ -178,19 +178,19 @@ export type Configuration4 = {
    * Configuration input options for adjusting plan item quantity.
    */
   options:
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOptions;
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent4Options;
   /**
    * Output returned after configuring an OrbSubscriptionIntent.
    */
   output:
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutput;
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Output;
   type: "adjust_plan_item_quantity";
 };
 
 /**
  * Configuration input options for decreasing plan item quantity.
  */
-export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Options =
+export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOptions =
   {
     /**
      * The alias of the product to decrease quantity for.
@@ -253,32 +253,35 @@ export type BuyCreditsConfigurationChangedResources = {
 /**
  * Output returned after configuring an OrbSubscriptionIntent.
  */
-export type BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput = {
-  /**
-   * When the subscription change should take effect.
-   */
-  effectiveBehavior: BuyCreditsConfigurationEffectiveBehavior;
-  /**
-   * The Orb price ID for the subscription item being modified.
-   */
-  orbPriceId: string;
-  /**
-   * The product ID associated with this intent.
-   */
-  productId: string;
-  /**
-   * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
-   */
-  changedResources?: Array<BuyCreditsConfigurationChangedResources> | undefined;
-  /**
-   * Optional metadata associated with the intent to update the Orb subscription with.
-   */
-  metadata?: { [k: string]: string } | undefined;
-  /**
-   * The ID of the pending subscription change if there is one.
-   */
-  pendingSubscriptionChangeId?: string | undefined;
-};
+export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutput =
+  {
+    /**
+     * When the subscription change should take effect.
+     */
+    effectiveBehavior: BuyCreditsConfigurationEffectiveBehavior;
+    /**
+     * The Orb price ID for the subscription item being modified.
+     */
+    orbPriceId: string;
+    /**
+     * The product ID associated with this intent.
+     */
+    productId: string;
+    /**
+     * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+     */
+    changedResources?:
+      | Array<BuyCreditsConfigurationChangedResources>
+      | undefined;
+    /**
+     * Optional metadata associated with the intent to update the Orb subscription with.
+     */
+    metadata?: { [k: string]: string } | undefined;
+    /**
+     * The ID of the pending subscription change if there is one.
+     */
+    pendingSubscriptionChangeId?: string | undefined;
+  };
 
 /**
  * Configuration for the Orb subscription intent.
@@ -288,18 +291,19 @@ export type Configuration3 = {
    * Configuration input options for decreasing plan item quantity.
    */
   options:
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Options;
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOptions;
   /**
    * Output returned after configuring an OrbSubscriptionIntent.
    */
-  output: BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput;
+  output:
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutput;
   type: "decrease_plan_item_quantity";
 };
 
 /**
  * Configuration input options for increasing plan item quantity.
  */
-export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOptions =
+export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Options =
   {
     /**
      * The alias of the product to increase quantity for.
@@ -362,7 +366,7 @@ export type ConfigurationChangedResources = {
 /**
  * Output returned after configuring an OrbSubscriptionIntent.
  */
-export type BuyCreditsConfigurationBillingResponse200Output = {
+export type BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput = {
   /**
    * When the subscription change should take effect.
    */
@@ -397,31 +401,32 @@ export type BuyCreditsConfiguration2 = {
    * Configuration input options for increasing plan item quantity.
    */
   options:
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOptions;
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Options;
   /**
    * Output returned after configuring an OrbSubscriptionIntent.
    */
-  output: BuyCreditsConfigurationBillingResponse200Output;
+  output: BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput;
   type: "increase_plan_item_quantity";
 };
 
 /**
  * Configuration input options for setting plan item quantity.
  */
-export type BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions = {
-  /**
-   * The alias of the product to set quantity for.
-   */
-  productAlias: string;
-  /**
-   * The quantity to set for the plan item.
-   */
-  quantity: number;
-  /**
-   * The resource IDs for the plan item. Only set if SKU requires resource entitlements.
-   */
-  resourceIds?: Array<string> | undefined;
-};
+export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOptions =
+  {
+    /**
+     * The alias of the product to set quantity for.
+     */
+    productAlias: string;
+    /**
+     * The quantity to set for the plan item.
+     */
+    quantity: number;
+    /**
+     * The resource IDs for the plan item. Only set if SKU requires resource entitlements.
+     */
+    resourceIds?: Array<string> | undefined;
+  };
 
 /**
  * When the subscription change should take effect.
@@ -472,7 +477,7 @@ export type ChangedResources = {
 /**
  * Output returned after configuring an OrbSubscriptionIntent.
  */
-export type BuyCreditsConfigurationBillingResponseOutput = {
+export type BuyCreditsConfigurationBillingResponse200Output = {
   /**
    * When the subscription change should take effect.
    */
@@ -506,11 +511,12 @@ export type BuyCreditsConfiguration1 = {
   /**
    * Configuration input options for setting plan item quantity.
    */
-  options: BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions;
+  options:
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOptions;
   /**
    * Output returned after configuring an OrbSubscriptionIntent.
    */
-  output: BuyCreditsConfigurationBillingResponseOutput;
+  output: BuyCreditsConfigurationBillingResponse200Output;
   type: "set_plan_item_quantity";
 };
 
@@ -519,6 +525,69 @@ export type ResponseBodyConfiguration =
   | BuyCreditsConfiguration2
   | Configuration3
   | Configuration4;
+
+export const BuyCreditsOrbUpdateMode = {
+  Async: "async",
+} as const;
+export type BuyCreditsOrbUpdateMode = ClosedEnum<
+  typeof BuyCreditsOrbUpdateMode
+>;
+
+export const BuyCreditsOrbUpdateStatus = {
+  Succeeded: "succeeded",
+} as const;
+export type BuyCreditsOrbUpdateStatus = ClosedEnum<
+  typeof BuyCreditsOrbUpdateStatus
+>;
+
+/**
+ * How the subscription change is applied to Orb.
+ */
+export type OrbUpdate3 = {
+  /**
+   * The ISO 8601 date-time that the subscription change was applied to Orb.
+   */
+  appliedAt: string;
+  mode: BuyCreditsOrbUpdateMode;
+  status: BuyCreditsOrbUpdateStatus;
+};
+
+export const OrbUpdateMode = {
+  Async: "async",
+} as const;
+export type OrbUpdateMode = ClosedEnum<typeof OrbUpdateMode>;
+
+export const OrbUpdateStatus = {
+  Canceled: "canceled",
+  Failed: "failed",
+  Pending: "pending",
+  Running: "running",
+} as const;
+export type OrbUpdateStatus = ClosedEnum<typeof OrbUpdateStatus>;
+
+/**
+ * How the subscription change is applied to Orb.
+ */
+export type OrbUpdate2 = {
+  mode: OrbUpdateMode;
+  status: OrbUpdateStatus;
+};
+
+export const BuyCreditsOrbUpdateBillingMode = {
+  Sync: "sync",
+} as const;
+export type BuyCreditsOrbUpdateBillingMode = ClosedEnum<
+  typeof BuyCreditsOrbUpdateBillingMode
+>;
+
+/**
+ * How the subscription change is applied to Orb.
+ */
+export type OrbUpdate1 = {
+  mode: BuyCreditsOrbUpdateBillingMode;
+};
+
+export type OrbUpdate = OrbUpdate3 | OrbUpdate2 | OrbUpdate1;
 
 /**
  * The status of the Orb subscription intent.
@@ -553,6 +622,7 @@ export type OrbSubscriptionIntent = {
    * The Orb subscription ID this intent is associated with.
    */
   orbSubscriptionId: string;
+  orbUpdate: OrbUpdate3 | OrbUpdate2 | OrbUpdate1;
   /**
    * The owner ID for this intent (e.g., team or user ID).
    */
@@ -573,6 +643,61 @@ export type OrbSubscriptionIntent = {
 
 export type BuyCreditsResponseBody3 = {
   orbSubscriptionIntent: OrbSubscriptionIntent;
+};
+
+/**
+ * The plan item quantities to set for the subscription
+ */
+export type PlanItemQuantities = {
+  /**
+   * The ID of the plan item to set the quantity for
+   */
+  planItemId: string;
+  /**
+   * The nonnegative integer quantity for the plan item
+   */
+  quantity: number;
+  /**
+   * The resource IDs to associate with the plan item quantity
+   */
+  resourceIds?: Array<string> | undefined;
+};
+
+/**
+ * Purchase configuration specific options
+ */
+export type BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions = {
+  /**
+   * The ID of the plan to subscribe to
+   */
+  planId: string;
+  /**
+   * The plan item quantities to set for the subscription
+   */
+  planItemQuantities?: Array<PlanItemQuantities> | undefined;
+  /**
+   * The rate variant key to apply to the subscription
+   */
+  rateVariantKey?: string | undefined;
+};
+
+export type BuyCreditsConfigurationBillingResponseOutput = {
+  /**
+   * The committed Plan revision used to calculate the purchase price
+   */
+  planChangeId?: string | undefined;
+};
+
+/**
+ * The configuration for a credit purchase
+ */
+export type Configuration7 = {
+  /**
+   * Purchase configuration specific options
+   */
+  options: BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions;
+  output: BuyCreditsConfigurationBillingResponseOutput;
+  type: "subscription";
 };
 
 /**
@@ -942,7 +1067,8 @@ export type BuyCreditsResponseBodyConfiguration =
   | BuyCreditsConfiguration3
   | BuyCreditsConfiguration4
   | Configuration5
-  | Configuration6;
+  | Configuration6
+  | Configuration7;
 
 /**
  * The currency for the purchase intent
@@ -1104,7 +1230,8 @@ export type PurchaseIntent = {
     | BuyCreditsConfiguration3
     | BuyCreditsConfiguration4
     | Configuration5
-    | Configuration6;
+    | Configuration6
+    | Configuration7;
   /**
    * The datetime when the Purchase Intent was created.
    */
@@ -1260,9 +1387,9 @@ export function buyCreditsRequestToJSON(
 }
 
 /** @internal */
-export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOptions$inboundSchema:
+export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent4Options$inboundSchema:
   z.ZodType<
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOptions,
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent4Options,
     z.ZodTypeDef,
     unknown
   > = z.object({
@@ -1271,18 +1398,18 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBod
     removedResourceIds: z.array(types.string()),
   });
 
-export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOptionsFromJSON(
+export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent4OptionsFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOptions,
+  BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent4Options,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOptions$inboundSchema
+      BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent4Options$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOptions' from JSON`,
+    `Failed to parse 'BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent4Options' from JSON`,
   );
 }
 
@@ -1324,9 +1451,9 @@ export function buyCreditsConfigurationBillingChangedResourcesFromJSON(
 }
 
 /** @internal */
-export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutput$inboundSchema:
+export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Output$inboundSchema:
   z.ZodType<
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutput,
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Output,
     z.ZodTypeDef,
     unknown
   > = z.object({
@@ -1343,18 +1470,18 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBod
     pendingSubscriptionChangeId: types.optional(types.string()),
   });
 
-export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutputFromJSON(
+export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OutputFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutput,
+  BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Output,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutput$inboundSchema
+      BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Output$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutput' from JSON`,
+    `Failed to parse 'BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Output' from JSON`,
   );
 }
 
@@ -1365,10 +1492,10 @@ export const Configuration4$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   options: z.lazy(() =>
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOptions$inboundSchema
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent4Options$inboundSchema
   ),
   output: z.lazy(() =>
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutput$inboundSchema
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Output$inboundSchema
   ),
   type: types.literal("adjust_plan_item_quantity"),
 });
@@ -1384,9 +1511,9 @@ export function configuration4FromJSON(
 }
 
 /** @internal */
-export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Options$inboundSchema:
+export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOptions$inboundSchema:
   z.ZodType<
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Options,
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOptions,
     z.ZodTypeDef,
     unknown
   > = z.object({
@@ -1394,18 +1521,18 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBod
     resourceIds: z.array(types.string()),
   });
 
-export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OptionsFromJSON(
+export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOptionsFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Options,
+  BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOptions,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Options$inboundSchema
+      BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOptions$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Options' from JSON`,
+    `Failed to parse 'BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOptions' from JSON`,
   );
 }
 
@@ -1446,9 +1573,9 @@ export function buyCreditsConfigurationChangedResourcesFromJSON(
 }
 
 /** @internal */
-export const BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput$inboundSchema:
+export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutput$inboundSchema:
   z.ZodType<
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput,
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutput,
     z.ZodTypeDef,
     unknown
   > = z.object({
@@ -1464,18 +1591,18 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput$inbo
     pendingSubscriptionChangeId: types.optional(types.string()),
   });
 
-export function buyCreditsConfigurationBillingResponse200ApplicationJSONOutputFromJSON(
+export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutputFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput,
+  BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutput,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput$inboundSchema
+      BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutput$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput' from JSON`,
+    `Failed to parse 'BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutput' from JSON`,
   );
 }
 
@@ -1486,10 +1613,10 @@ export const Configuration3$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   options: z.lazy(() =>
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Options$inboundSchema
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOptions$inboundSchema
   ),
   output: z.lazy(() =>
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput$inboundSchema
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutput$inboundSchema
   ),
   type: types.literal("decrease_plan_item_quantity"),
 });
@@ -1505,9 +1632,9 @@ export function configuration3FromJSON(
 }
 
 /** @internal */
-export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOptions$inboundSchema:
+export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Options$inboundSchema:
   z.ZodType<
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOptions,
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Options,
     z.ZodTypeDef,
     unknown
   > = z.object({
@@ -1515,18 +1642,18 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBod
     resourceIds: z.array(types.string()),
   });
 
-export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOptionsFromJSON(
+export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OptionsFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOptions,
+  BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Options,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOptions$inboundSchema
+      BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Options$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOptions' from JSON`,
+    `Failed to parse 'BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Options' from JSON`,
   );
 }
 
@@ -1561,9 +1688,9 @@ export function configurationChangedResourcesFromJSON(
 }
 
 /** @internal */
-export const BuyCreditsConfigurationBillingResponse200Output$inboundSchema:
+export const BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput$inboundSchema:
   z.ZodType<
-    BuyCreditsConfigurationBillingResponse200Output,
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput,
     z.ZodTypeDef,
     unknown
   > = z.object({
@@ -1577,19 +1704,18 @@ export const BuyCreditsConfigurationBillingResponse200Output$inboundSchema:
     pendingSubscriptionChangeId: types.optional(types.string()),
   });
 
-export function buyCreditsConfigurationBillingResponse200OutputFromJSON(
+export function buyCreditsConfigurationBillingResponse200ApplicationJSONOutputFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  BuyCreditsConfigurationBillingResponse200Output,
+  BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      BuyCreditsConfigurationBillingResponse200Output$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'BuyCreditsConfigurationBillingResponse200Output' from JSON`,
+      BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput' from JSON`,
   );
 }
 
@@ -1600,10 +1726,10 @@ export const BuyCreditsConfiguration2$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   options: z.lazy(() =>
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOptions$inboundSchema
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Options$inboundSchema
   ),
   output: z.lazy(() =>
-    BuyCreditsConfigurationBillingResponse200Output$inboundSchema
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput$inboundSchema
   ),
   type: types.literal("increase_plan_item_quantity"),
 });
@@ -1619,9 +1745,9 @@ export function buyCreditsConfiguration2FromJSON(
 }
 
 /** @internal */
-export const BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions$inboundSchema:
+export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOptions$inboundSchema:
   z.ZodType<
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions,
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOptions,
     z.ZodTypeDef,
     unknown
   > = z.object({
@@ -1630,18 +1756,18 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions$inb
     resourceIds: types.optional(z.array(types.string())),
   });
 
-export function buyCreditsConfigurationBillingResponse200ApplicationJSONOptionsFromJSON(
+export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOptionsFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions,
+  BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOptions,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions$inboundSchema
+      BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOptions$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions' from JSON`,
+    `Failed to parse 'BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOptions' from JSON`,
   );
 }
 
@@ -1676,9 +1802,9 @@ export function changedResourcesFromJSON(
 }
 
 /** @internal */
-export const BuyCreditsConfigurationBillingResponseOutput$inboundSchema:
+export const BuyCreditsConfigurationBillingResponse200Output$inboundSchema:
   z.ZodType<
-    BuyCreditsConfigurationBillingResponseOutput,
+    BuyCreditsConfigurationBillingResponse200Output,
     z.ZodTypeDef,
     unknown
   > = z.object({
@@ -1692,19 +1818,19 @@ export const BuyCreditsConfigurationBillingResponseOutput$inboundSchema:
     pendingSubscriptionChangeId: types.optional(types.string()),
   });
 
-export function buyCreditsConfigurationBillingResponseOutputFromJSON(
+export function buyCreditsConfigurationBillingResponse200OutputFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  BuyCreditsConfigurationBillingResponseOutput,
+  BuyCreditsConfigurationBillingResponse200Output,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      BuyCreditsConfigurationBillingResponseOutput$inboundSchema.parse(
+      BuyCreditsConfigurationBillingResponse200Output$inboundSchema.parse(
         JSON.parse(x),
       ),
-    `Failed to parse 'BuyCreditsConfigurationBillingResponseOutput' from JSON`,
+    `Failed to parse 'BuyCreditsConfigurationBillingResponse200Output' from JSON`,
   );
 }
 
@@ -1715,10 +1841,10 @@ export const BuyCreditsConfiguration1$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   options: z.lazy(() =>
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions$inboundSchema
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOptions$inboundSchema
   ),
   output: z.lazy(() =>
-    BuyCreditsConfigurationBillingResponseOutput$inboundSchema
+    BuyCreditsConfigurationBillingResponse200Output$inboundSchema
   ),
   type: types.literal("set_plan_item_quantity"),
 });
@@ -1756,6 +1882,112 @@ export function responseBodyConfigurationFromJSON(
 }
 
 /** @internal */
+export const BuyCreditsOrbUpdateMode$inboundSchema: z.ZodNativeEnum<
+  typeof BuyCreditsOrbUpdateMode
+> = z.nativeEnum(BuyCreditsOrbUpdateMode);
+
+/** @internal */
+export const BuyCreditsOrbUpdateStatus$inboundSchema: z.ZodNativeEnum<
+  typeof BuyCreditsOrbUpdateStatus
+> = z.nativeEnum(BuyCreditsOrbUpdateStatus);
+
+/** @internal */
+export const OrbUpdate3$inboundSchema: z.ZodType<
+  OrbUpdate3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  appliedAt: types.string(),
+  mode: BuyCreditsOrbUpdateMode$inboundSchema,
+  status: BuyCreditsOrbUpdateStatus$inboundSchema,
+});
+
+export function orbUpdate3FromJSON(
+  jsonString: string,
+): SafeParseResult<OrbUpdate3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OrbUpdate3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OrbUpdate3' from JSON`,
+  );
+}
+
+/** @internal */
+export const OrbUpdateMode$inboundSchema: z.ZodNativeEnum<
+  typeof OrbUpdateMode
+> = z.nativeEnum(OrbUpdateMode);
+
+/** @internal */
+export const OrbUpdateStatus$inboundSchema: z.ZodNativeEnum<
+  typeof OrbUpdateStatus
+> = z.nativeEnum(OrbUpdateStatus);
+
+/** @internal */
+export const OrbUpdate2$inboundSchema: z.ZodType<
+  OrbUpdate2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  mode: OrbUpdateMode$inboundSchema,
+  status: OrbUpdateStatus$inboundSchema,
+});
+
+export function orbUpdate2FromJSON(
+  jsonString: string,
+): SafeParseResult<OrbUpdate2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OrbUpdate2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OrbUpdate2' from JSON`,
+  );
+}
+
+/** @internal */
+export const BuyCreditsOrbUpdateBillingMode$inboundSchema: z.ZodNativeEnum<
+  typeof BuyCreditsOrbUpdateBillingMode
+> = z.nativeEnum(BuyCreditsOrbUpdateBillingMode);
+
+/** @internal */
+export const OrbUpdate1$inboundSchema: z.ZodType<
+  OrbUpdate1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  mode: BuyCreditsOrbUpdateBillingMode$inboundSchema,
+});
+
+export function orbUpdate1FromJSON(
+  jsonString: string,
+): SafeParseResult<OrbUpdate1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OrbUpdate1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OrbUpdate1' from JSON`,
+  );
+}
+
+/** @internal */
+export const OrbUpdate$inboundSchema: z.ZodType<
+  OrbUpdate,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => OrbUpdate3$inboundSchema),
+  z.lazy(() => OrbUpdate2$inboundSchema),
+  z.lazy(() => OrbUpdate1$inboundSchema),
+]);
+
+export function orbUpdateFromJSON(
+  jsonString: string,
+): SafeParseResult<OrbUpdate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OrbUpdate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OrbUpdate' from JSON`,
+  );
+}
+
+/** @internal */
 export const BuyCreditsResponseBodyStatus$inboundSchema: z.ZodNativeEnum<
   typeof BuyCreditsResponseBodyStatus
 > = z.nativeEnum(BuyCreditsResponseBodyStatus);
@@ -1775,6 +2007,11 @@ export const OrbSubscriptionIntent$inboundSchema: z.ZodType<
   ]),
   createdAt: types.string(),
   orbSubscriptionId: types.string(),
+  orbUpdate: smartUnion([
+    z.lazy(() => OrbUpdate3$inboundSchema),
+    z.lazy(() => OrbUpdate2$inboundSchema),
+    z.lazy(() => OrbUpdate1$inboundSchema),
+  ]),
   ownerId: types.string(),
   status: BuyCreditsResponseBodyStatus$inboundSchema,
   updatedAt: types.string(),
@@ -1807,6 +2044,107 @@ export function buyCreditsResponseBody3FromJSON(
     jsonString,
     (x) => BuyCreditsResponseBody3$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'BuyCreditsResponseBody3' from JSON`,
+  );
+}
+
+/** @internal */
+export const PlanItemQuantities$inboundSchema: z.ZodType<
+  PlanItemQuantities,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  planItemId: types.string(),
+  quantity: types.number(),
+  resourceIds: types.optional(z.array(types.string())),
+});
+
+export function planItemQuantitiesFromJSON(
+  jsonString: string,
+): SafeParseResult<PlanItemQuantities, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PlanItemQuantities$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PlanItemQuantities' from JSON`,
+  );
+}
+
+/** @internal */
+export const BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions$inboundSchema:
+  z.ZodType<
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    planId: types.string(),
+    planItemQuantities: types.optional(
+      z.array(z.lazy(() => PlanItemQuantities$inboundSchema)),
+    ),
+    rateVariantKey: types.optional(types.string()),
+  });
+
+export function buyCreditsConfigurationBillingResponse200ApplicationJSONOptionsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions' from JSON`,
+  );
+}
+
+/** @internal */
+export const BuyCreditsConfigurationBillingResponseOutput$inboundSchema:
+  z.ZodType<
+    BuyCreditsConfigurationBillingResponseOutput,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    planChangeId: types.optional(types.string()),
+  });
+
+export function buyCreditsConfigurationBillingResponseOutputFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  BuyCreditsConfigurationBillingResponseOutput,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      BuyCreditsConfigurationBillingResponseOutput$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'BuyCreditsConfigurationBillingResponseOutput' from JSON`,
+  );
+}
+
+/** @internal */
+export const Configuration7$inboundSchema: z.ZodType<
+  Configuration7,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  options: z.lazy(() =>
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions$inboundSchema
+  ),
+  output: z.lazy(() =>
+    BuyCreditsConfigurationBillingResponseOutput$inboundSchema
+  ),
+  type: types.literal("subscription"),
+});
+
+export function configuration7FromJSON(
+  jsonString: string,
+): SafeParseResult<Configuration7, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Configuration7$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Configuration7' from JSON`,
   );
 }
 
@@ -2432,6 +2770,7 @@ export const BuyCreditsResponseBodyConfiguration$inboundSchema: z.ZodType<
   z.lazy(() => BuyCreditsConfiguration4$inboundSchema),
   z.lazy(() => Configuration5$inboundSchema),
   z.lazy(() => Configuration6$inboundSchema),
+  z.lazy(() => Configuration7$inboundSchema),
 ]);
 
 export function buyCreditsResponseBodyConfigurationFromJSON(
@@ -2545,6 +2884,7 @@ export const PurchaseIntent$inboundSchema: z.ZodType<
     z.lazy(() => BuyCreditsConfiguration4$inboundSchema),
     z.lazy(() => Configuration5$inboundSchema),
     z.lazy(() => Configuration6$inboundSchema),
+    z.lazy(() => Configuration7$inboundSchema),
   ]),
   createdAt: types.string(),
   currency: Currency$inboundSchema,

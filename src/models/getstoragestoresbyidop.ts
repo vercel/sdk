@@ -140,7 +140,7 @@ export const Providers1 = {
 } as const;
 export type Providers1 = ClosedEnum<typeof Providers1>;
 
-export type Providers = Array<Providers1> | Providers2;
+export type GetStorageStoresByIdProviders = Array<Providers1> | Providers2;
 
 export type Git = {
   providers: Array<Providers1> | Providers2;
@@ -301,19 +301,19 @@ export const Providers1$inboundSchema: z.ZodNativeEnum<typeof Providers1> = z
   .nativeEnum(Providers1);
 
 /** @internal */
-export const Providers$inboundSchema: z.ZodType<
-  Providers,
+export const GetStorageStoresByIdProviders$inboundSchema: z.ZodType<
+  GetStorageStoresByIdProviders,
   z.ZodTypeDef,
   unknown
 > = smartUnion([z.array(Providers1$inboundSchema), Providers2$inboundSchema]);
 
-export function providersFromJSON(
+export function getStorageStoresByIdProvidersFromJSON(
   jsonString: string,
-): SafeParseResult<Providers, SDKValidationError> {
+): SafeParseResult<GetStorageStoresByIdProviders, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Providers$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Providers' from JSON`,
+    (x) => GetStorageStoresByIdProviders$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetStorageStoresByIdProviders' from JSON`,
   );
 }
 

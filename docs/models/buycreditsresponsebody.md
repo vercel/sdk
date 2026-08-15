@@ -20,17 +20,10 @@ const value: models.BuyCreditsResponseBody2 = {
     id: "<id>",
     configuration: {
       options: {
-        orbCustomerId: "<id>",
-        orbExternalCustomerId: "<id>",
-        orbExternalPlanId: "<id>",
-        orbPendingSubscriptionChangeId: "<id>",
-        orbPlanId: "<id>",
-        orbSubscriptionId: "<id>",
+        planId: "<id>",
       },
-      output: {
-        pendingSubscriptionChangeId: "<id>",
-      },
-      type: "orb_subscription_intent",
+      output: {},
+      type: "subscription",
     },
     createdAt: "1723484693361",
     currency: "miu",
@@ -70,9 +63,12 @@ const value: models.BuyCreditsResponseBody3 = {
     },
     createdAt: "1729837603767",
     orbSubscriptionId: "<id>",
+    orbUpdate: {
+      mode: "sync",
+    },
     ownerId: "<id>",
-    status: "failed",
-    updatedAt: "1735639786259",
+    status: "pending",
+    updatedAt: "1735643411946",
   },
 };
 ```

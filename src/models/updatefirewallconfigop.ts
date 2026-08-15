@@ -13,7 +13,7 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 /**
  * Update log headers configuration
  */
-export type RequestBody19 = {
+export type RequestBody22 = {
   action: string;
   id?: string | undefined;
   value?: any | undefined;
@@ -22,7 +22,7 @@ export type RequestBody19 = {
 /**
  * Toggle bot ID
  */
-export type RequestBody18 = {
+export type RequestBody21 = {
   action: string;
   id?: string | undefined;
   value: boolean;
@@ -40,27 +40,27 @@ export type UpdateFirewallConfigRequestBodyId = ClosedEnum<
   typeof UpdateFirewallConfigRequestBodyId
 >;
 
-export const UpdateFirewallConfigRequestBodySecurityRequest17Action = {
+export const UpdateFirewallConfigRequestBodySecurityRequest20Action = {
   Log: "log",
   Challenge: "challenge",
   Deny: "deny",
 } as const;
-export type UpdateFirewallConfigRequestBodySecurityRequest17Action = ClosedEnum<
-  typeof UpdateFirewallConfigRequestBodySecurityRequest17Action
+export type UpdateFirewallConfigRequestBodySecurityRequest20Action = ClosedEnum<
+  typeof UpdateFirewallConfigRequestBodySecurityRequest20Action
 >;
 
-export type UpdateFirewallConfigRequestBodySecurityRequest17Value = {
+export type UpdateFirewallConfigRequestBodySecurityRequest20Value = {
   active: boolean;
-  action?: UpdateFirewallConfigRequestBodySecurityRequest17Action | undefined;
+  action?: UpdateFirewallConfigRequestBodySecurityRequest20Action | undefined;
 };
 
 /**
  * Update a managed rule group
  */
-export type RequestBody17 = {
+export type RequestBody20 = {
   action: string;
   id: UpdateFirewallConfigRequestBodyId;
-  value: { [k: string]: UpdateFirewallConfigRequestBodySecurityRequest17Value };
+  value: { [k: string]: UpdateFirewallConfigRequestBodySecurityRequest20Value };
 };
 
 export const RequestBodyId = {
@@ -73,105 +73,98 @@ export const RequestBodyId = {
 } as const;
 export type RequestBodyId = ClosedEnum<typeof RequestBodyId>;
 
-export const UpdateFirewallConfigRequestBodySecurityRequest16Action = {
+export const UpdateFirewallConfigRequestBodySecurityRequest19Action = {
   Log: "log",
   Challenge: "challenge",
   Deny: "deny",
 } as const;
-export type UpdateFirewallConfigRequestBodySecurityRequest16Action = ClosedEnum<
-  typeof UpdateFirewallConfigRequestBodySecurityRequest16Action
+export type UpdateFirewallConfigRequestBodySecurityRequest19Action = ClosedEnum<
+  typeof UpdateFirewallConfigRequestBodySecurityRequest19Action
 >;
 
-export type UpdateFirewallConfigRequestBodySecurityRequest16Value = {
-  action?: UpdateFirewallConfigRequestBodySecurityRequest16Action | undefined;
+export type UpdateFirewallConfigRequestBodySecurityRequest19Value = {
+  action?: UpdateFirewallConfigRequestBodySecurityRequest19Action | undefined;
   active: boolean;
 };
 
 /**
  * Update a managed ruleset
  */
-export type RequestBody16 = {
+export type RequestBody19 = {
   action: string;
   id: RequestBodyId;
-  value: UpdateFirewallConfigRequestBodySecurityRequest16Value;
+  value: UpdateFirewallConfigRequestBodySecurityRequest19Value;
 };
 
 /**
  * Remove an IP Blocking rule
  */
-export type RequestBody15 = {
+export type RequestBody18 = {
   action: string;
   id: string;
   value?: string | undefined;
 };
 
-export const UpdateFirewallConfigRequestBodySecurityRequest14Action = {
+export const UpdateFirewallConfigRequestBodySecurityRequest17Action = {
   Deny: "deny",
   Challenge: "challenge",
   Log: "log",
   Bypass: "bypass",
 } as const;
-export type UpdateFirewallConfigRequestBodySecurityRequest14Action = ClosedEnum<
-  typeof UpdateFirewallConfigRequestBodySecurityRequest14Action
+export type UpdateFirewallConfigRequestBodySecurityRequest17Action = ClosedEnum<
+  typeof UpdateFirewallConfigRequestBodySecurityRequest17Action
 >;
 
-export type UpdateFirewallConfigRequestBodySecurityRequest14Value = {
+export type UpdateFirewallConfigRequestBodySecurityRequest17Value = {
   hostname: string;
   ip: string;
   notes?: string | undefined;
-  action: UpdateFirewallConfigRequestBodySecurityRequest14Action;
+  action: UpdateFirewallConfigRequestBodySecurityRequest17Action;
 };
 
 /**
  * Update an IP Blocking rule
  */
-export type RequestBody14 = {
+export type RequestBody17 = {
   action: string;
   id: string;
-  value: UpdateFirewallConfigRequestBodySecurityRequest14Value;
+  value: UpdateFirewallConfigRequestBodySecurityRequest17Value;
 };
 
-export const UpdateFirewallConfigRequestBodySecurityRequest13Action = {
+export const UpdateFirewallConfigRequestBodySecurityRequest16Action = {
   Deny: "deny",
   Challenge: "challenge",
   Log: "log",
   Bypass: "bypass",
 } as const;
-export type UpdateFirewallConfigRequestBodySecurityRequest13Action = ClosedEnum<
-  typeof UpdateFirewallConfigRequestBodySecurityRequest13Action
+export type UpdateFirewallConfigRequestBodySecurityRequest16Action = ClosedEnum<
+  typeof UpdateFirewallConfigRequestBodySecurityRequest16Action
 >;
 
-export type UpdateFirewallConfigRequestBodySecurityRequest13Value = {
+export type UpdateFirewallConfigRequestBodySecurityRequest16Value = {
   hostname: string;
   ip: string;
   notes?: string | undefined;
-  action: UpdateFirewallConfigRequestBodySecurityRequest13Action;
+  action: UpdateFirewallConfigRequestBodySecurityRequest16Action;
 };
 
 /**
  * Add an IP Blocking rule
  */
-export type RequestBody13 = {
+export type RequestBody16 = {
   action: string;
   id?: string | undefined;
-  value: UpdateFirewallConfigRequestBodySecurityRequest13Value;
+  value: UpdateFirewallConfigRequestBodySecurityRequest16Value;
 };
 
 /**
  * Disable a managed rule
  */
-export type RequestBody12 = {
+export type RequestBody15 = {
   action: string;
   id?: string | undefined;
   value?: string | undefined;
 };
-
-export const UpdateFirewallConfigRequestBodySecurityRequest11Action = {
-  ManagedRulesUpdate: "managedRules.update",
-} as const;
-export type UpdateFirewallConfigRequestBodySecurityRequest11Action = ClosedEnum<
-  typeof UpdateFirewallConfigRequestBodySecurityRequest11Action
->;
 
 export const Id = {
   Sd: "sd",
@@ -188,69 +181,54 @@ export const Id = {
 } as const;
 export type Id = ClosedEnum<typeof Id>;
 
-export const UpdateFirewallConfigRequestBodySecurityRequest11ValueAction = {
+export const UpdateFirewallConfigRequestBodySecurityRequest14Action = {
   Deny: "deny",
   Log: "log",
 } as const;
-export type UpdateFirewallConfigRequestBodySecurityRequest11ValueAction =
-  ClosedEnum<
-    typeof UpdateFirewallConfigRequestBodySecurityRequest11ValueAction
-  >;
+export type UpdateFirewallConfigRequestBodySecurityRequest14Action = ClosedEnum<
+  typeof UpdateFirewallConfigRequestBodySecurityRequest14Action
+>;
 
-export type UpdateFirewallConfigRequestBodySecurityRequest11Value = {
+export type UpdateFirewallConfigRequestBodySecurityRequest14Value = {
   active: boolean;
-  action: UpdateFirewallConfigRequestBodySecurityRequest11ValueAction;
+  action: UpdateFirewallConfigRequestBodySecurityRequest14Action;
 };
 
 /**
  * Enable a managed rule
  */
-export type RequestBody11 = {
-  action: UpdateFirewallConfigRequestBodySecurityRequest11Action;
+export type RequestBody14 = {
+  action: string;
   id: Id;
-  value: UpdateFirewallConfigRequestBodySecurityRequest11Value;
+  value: UpdateFirewallConfigRequestBodySecurityRequest14Value;
 };
-
-export const UpdateFirewallConfigRequestBodySecurityRequest10Action = {
-  IpRemove: "ip.remove",
-} as const;
-export type UpdateFirewallConfigRequestBodySecurityRequest10Action = ClosedEnum<
-  typeof UpdateFirewallConfigRequestBodySecurityRequest10Action
->;
 
 /**
  * Reorder a custom rule
  */
-export type UpdateFirewallConfigRequestBody10 = {
-  action: UpdateFirewallConfigRequestBodySecurityRequest10Action;
+export type RequestBody13 = {
+  action: string;
   id: string;
-  value?: any | null | undefined;
+  value: number;
 };
-
-export const UpdateFirewallConfigRequestBodySecurityRequest9Action = {
-  IpUpdate: "ip.update",
-} as const;
-export type UpdateFirewallConfigRequestBodySecurityRequest9Action = ClosedEnum<
-  typeof UpdateFirewallConfigRequestBodySecurityRequest9Action
->;
 
 /**
  * Remove a custom rule
  */
-export type UpdateFirewallConfigRequestBody9 = {
-  action: UpdateFirewallConfigRequestBodySecurityRequest9Action;
+export type RequestBody12 = {
+  action: string;
   id: string;
   value?: string | undefined;
 };
 
-export const UpdateFirewallConfigRequestBodySecurityRequest8Action = {
-  IpInsert: "ip.insert",
+export const UpdateFirewallConfigRequestBodySecurityRequest11Action = {
+  ManagedRulesUpdate: "managedRules.update",
 } as const;
-export type UpdateFirewallConfigRequestBodySecurityRequest8Action = ClosedEnum<
-  typeof UpdateFirewallConfigRequestBodySecurityRequest8Action
+export type UpdateFirewallConfigRequestBodySecurityRequest11Action = ClosedEnum<
+  typeof UpdateFirewallConfigRequestBodySecurityRequest11Action
 >;
 
-export const UpdateFirewallConfigRequestBodySecurityRequest8Type = {
+export const UpdateFirewallConfigRequestBodySecurityRequest11Type = {
   Host: "host",
   Path: "path",
   Method: "method",
@@ -280,13 +258,14 @@ export const UpdateFirewallConfigRequestBodySecurityRequest8Type = {
   BotCategory: "bot_category",
   BotStatus: "bot_status",
   BotProtection: "bot_protection",
+  SharedCondition: "shared_condition",
   Ruleset: "ruleset",
 } as const;
-export type UpdateFirewallConfigRequestBodySecurityRequest8Type = ClosedEnum<
-  typeof UpdateFirewallConfigRequestBodySecurityRequest8Type
+export type UpdateFirewallConfigRequestBodySecurityRequest11Type = ClosedEnum<
+  typeof UpdateFirewallConfigRequestBodySecurityRequest11Type
 >;
 
-export const UpdateFirewallConfigRequestBodySecurityRequestOp = {
+export const UpdateFirewallConfigRequestBodySecurityRequest11Op = {
   Re: "re",
   Eq: "eq",
   Neq: "neq",
@@ -303,28 +282,28 @@ export const UpdateFirewallConfigRequestBodySecurityRequestOp = {
   Lte: "lte",
   List: "list",
 } as const;
-export type UpdateFirewallConfigRequestBodySecurityRequestOp = ClosedEnum<
-  typeof UpdateFirewallConfigRequestBodySecurityRequestOp
+export type UpdateFirewallConfigRequestBodySecurityRequest11Op = ClosedEnum<
+  typeof UpdateFirewallConfigRequestBodySecurityRequest11Op
 >;
 
-export type UpdateFirewallConfigRequestBodySecurityRequest8ValueValue =
+export type UpdateFirewallConfigRequestBodySecurityRequest11ValueValue =
   | string
   | Array<string>
   | number;
 
-export type UpdateFirewallConfigRequestBodySecurityRequestConditions = {
-  type: UpdateFirewallConfigRequestBodySecurityRequest8Type;
-  op: UpdateFirewallConfigRequestBodySecurityRequestOp;
+export type UpdateFirewallConfigRequestBodySecurityRequest11Conditions = {
+  type: UpdateFirewallConfigRequestBodySecurityRequest11Type;
+  op: UpdateFirewallConfigRequestBodySecurityRequest11Op;
   neg?: boolean | undefined;
   key?: string | undefined;
   value?: string | Array<string> | number | undefined;
 };
 
-export type UpdateFirewallConfigRequestBodySecurityRequestConditionGroup = {
-  conditions: Array<UpdateFirewallConfigRequestBodySecurityRequestConditions>;
+export type UpdateFirewallConfigRequestBodySecurityRequest11ConditionGroup = {
+  conditions: Array<UpdateFirewallConfigRequestBodySecurityRequest11Conditions>;
 };
 
-export const UpdateFirewallConfigRequestBodySecurityRequest8ValueActionAction =
+export const UpdateFirewallConfigRequestBodySecurityRequest11ValueActionAction =
   {
     Log: "log",
     Challenge: "challenge",
@@ -333,9 +312,9 @@ export const UpdateFirewallConfigRequestBodySecurityRequest8ValueActionAction =
     RateLimit: "rate_limit",
     Redirect: "redirect",
   } as const;
-export type UpdateFirewallConfigRequestBodySecurityRequest8ValueActionAction =
+export type UpdateFirewallConfigRequestBodySecurityRequest11ValueActionAction =
   ClosedEnum<
-    typeof UpdateFirewallConfigRequestBodySecurityRequest8ValueActionAction
+    typeof UpdateFirewallConfigRequestBodySecurityRequest11ValueActionAction
   >;
 
 export const UpdateFirewallConfigRateLimitAlgo = {
@@ -384,7 +363,7 @@ export type UpdateFirewallConfigRequestBodyRedirect =
 export type UpdateFirewallConfigRequestBodyLogHeaders = string | Array<string>;
 
 export type UpdateFirewallConfigRequestBodySecurityRequestMitigate = {
-  action: UpdateFirewallConfigRequestBodySecurityRequest8ValueActionAction;
+  action: UpdateFirewallConfigRequestBodySecurityRequest11ValueActionAction;
   rateLimit?: UpdateFirewallConfigRateLimitSecurity1 | string | undefined;
   redirect?: UpdateFirewallConfigRedirectSecurity1 | string | undefined;
   actionDuration?: string | null | undefined;
@@ -392,22 +371,22 @@ export type UpdateFirewallConfigRequestBodySecurityRequestMitigate = {
   logHeaders?: string | Array<string> | undefined;
 };
 
-export type UpdateFirewallConfigRequestBodySecurityRequest8ValueAction = {
+export type UpdateFirewallConfigRequestBodySecurityRequest11ValueAction = {
   mitigate?: UpdateFirewallConfigRequestBodySecurityRequestMitigate | undefined;
 };
 
-export type UpdateFirewallConfigRequestBodySecurityRequestValidationErrors =
+export type UpdateFirewallConfigRequestBodySecurityRequest11ValidationErrors =
   | Array<string>
   | string;
 
-export type UpdateFirewallConfigRequestBodySecurityRequest8Value = {
+export type UpdateFirewallConfigRequestBodySecurityRequest11Value = {
   name: string;
   description?: string | undefined;
   active: boolean;
   conditionGroup: Array<
-    UpdateFirewallConfigRequestBodySecurityRequestConditionGroup
+    UpdateFirewallConfigRequestBodySecurityRequest11ConditionGroup
   >;
-  action: UpdateFirewallConfigRequestBodySecurityRequest8ValueAction;
+  action: UpdateFirewallConfigRequestBodySecurityRequest11ValueAction;
   valid?: boolean | undefined;
   validationErrors?: Array<string> | string | undefined;
 };
@@ -415,20 +394,20 @@ export type UpdateFirewallConfigRequestBodySecurityRequest8Value = {
 /**
  * Update a custom rule
  */
-export type UpdateFirewallConfigRequestBody8 = {
-  action: UpdateFirewallConfigRequestBodySecurityRequest8Action;
-  id?: any | null | undefined;
-  value: UpdateFirewallConfigRequestBodySecurityRequest8Value;
+export type RequestBody11 = {
+  action: UpdateFirewallConfigRequestBodySecurityRequest11Action;
+  id: string;
+  value: UpdateFirewallConfigRequestBodySecurityRequest11Value;
 };
 
-export const UpdateFirewallConfigRequestBodySecurityRequest7Action = {
-  CrsDisable: "crs.disable",
+export const UpdateFirewallConfigRequestBodySecurityRequest10Action = {
+  IpRemove: "ip.remove",
 } as const;
-export type UpdateFirewallConfigRequestBodySecurityRequest7Action = ClosedEnum<
-  typeof UpdateFirewallConfigRequestBodySecurityRequest7Action
+export type UpdateFirewallConfigRequestBodySecurityRequest10Action = ClosedEnum<
+  typeof UpdateFirewallConfigRequestBodySecurityRequest10Action
 >;
 
-export const UpdateFirewallConfigRequestBodySecurityRequestType = {
+export const UpdateFirewallConfigRequestBodySecurityRequest10Type = {
   Host: "host",
   Path: "path",
   Method: "method",
@@ -458,13 +437,14 @@ export const UpdateFirewallConfigRequestBodySecurityRequestType = {
   BotCategory: "bot_category",
   BotStatus: "bot_status",
   BotProtection: "bot_protection",
+  SharedCondition: "shared_condition",
   Ruleset: "ruleset",
 } as const;
-export type UpdateFirewallConfigRequestBodySecurityRequestType = ClosedEnum<
-  typeof UpdateFirewallConfigRequestBodySecurityRequestType
+export type UpdateFirewallConfigRequestBodySecurityRequest10Type = ClosedEnum<
+  typeof UpdateFirewallConfigRequestBodySecurityRequest10Type
 >;
 
-export const UpdateFirewallConfigRequestBodySecurityOp = {
+export const UpdateFirewallConfigRequestBodySecurityRequest10Op = {
   Re: "re",
   Eq: "eq",
   Neq: "neq",
@@ -481,28 +461,28 @@ export const UpdateFirewallConfigRequestBodySecurityOp = {
   Lte: "lte",
   List: "list",
 } as const;
-export type UpdateFirewallConfigRequestBodySecurityOp = ClosedEnum<
-  typeof UpdateFirewallConfigRequestBodySecurityOp
+export type UpdateFirewallConfigRequestBodySecurityRequest10Op = ClosedEnum<
+  typeof UpdateFirewallConfigRequestBodySecurityRequest10Op
 >;
 
-export type UpdateFirewallConfigRequestBodySecurityRequest7Value =
+export type UpdateFirewallConfigRequestBodySecurityRequest10ValueValue =
   | string
   | Array<string>
   | number;
 
-export type UpdateFirewallConfigRequestBodySecurityConditions = {
-  type: UpdateFirewallConfigRequestBodySecurityRequestType;
-  op: UpdateFirewallConfigRequestBodySecurityOp;
+export type UpdateFirewallConfigRequestBodySecurityRequest10Conditions = {
+  type: UpdateFirewallConfigRequestBodySecurityRequest10Type;
+  op: UpdateFirewallConfigRequestBodySecurityRequest10Op;
   neg?: boolean | undefined;
   key?: string | undefined;
   value?: string | Array<string> | number | undefined;
 };
 
-export type UpdateFirewallConfigRequestBodySecurityConditionGroup = {
-  conditions: Array<UpdateFirewallConfigRequestBodySecurityConditions>;
+export type UpdateFirewallConfigRequestBodySecurityRequest10ConditionGroup = {
+  conditions: Array<UpdateFirewallConfigRequestBodySecurityRequest10Conditions>;
 };
 
-export const UpdateFirewallConfigRequestBodySecurityRequest7ValueActionAction =
+export const UpdateFirewallConfigRequestBodySecurityRequest10ValueActionAction =
   {
     Log: "log",
     Challenge: "challenge",
@@ -511,9 +491,9 @@ export const UpdateFirewallConfigRequestBodySecurityRequest7ValueActionAction =
     RateLimit: "rate_limit",
     Redirect: "redirect",
   } as const;
-export type UpdateFirewallConfigRequestBodySecurityRequest7ValueActionAction =
+export type UpdateFirewallConfigRequestBodySecurityRequest10ValueActionAction =
   ClosedEnum<
-    typeof UpdateFirewallConfigRequestBodySecurityRequest7ValueActionAction
+    typeof UpdateFirewallConfigRequestBodySecurityRequest10ValueActionAction
   >;
 
 export const RateLimitAlgo = {
@@ -556,7 +536,7 @@ export type RequestBodyRedirect = UpdateFirewallConfigRedirect1 | string;
 export type RequestBodyLogHeaders = string | Array<string>;
 
 export type UpdateFirewallConfigRequestBodySecurityMitigate = {
-  action: UpdateFirewallConfigRequestBodySecurityRequest7ValueActionAction;
+  action: UpdateFirewallConfigRequestBodySecurityRequest10ValueActionAction;
   rateLimit?: UpdateFirewallConfigRateLimit1 | string | undefined;
   redirect?: UpdateFirewallConfigRedirect1 | string | undefined;
   actionDuration?: string | null | undefined;
@@ -564,20 +544,22 @@ export type UpdateFirewallConfigRequestBodySecurityMitigate = {
   logHeaders?: string | Array<string> | undefined;
 };
 
-export type UpdateFirewallConfigRequestBodySecurityRequest7ValueAction = {
+export type UpdateFirewallConfigRequestBodySecurityRequest10ValueAction = {
   mitigate?: UpdateFirewallConfigRequestBodySecurityMitigate | undefined;
 };
 
-export type UpdateFirewallConfigRequestBodySecurityValidationErrors =
+export type UpdateFirewallConfigRequestBodySecurityRequest10ValidationErrors =
   | Array<string>
   | string;
 
-export type UpdateFirewallConfigRequestBodySecurityRequestValue = {
+export type UpdateFirewallConfigRequestBodySecurityRequest10Value = {
   name: string;
   description?: string | undefined;
   active: boolean;
-  conditionGroup: Array<UpdateFirewallConfigRequestBodySecurityConditionGroup>;
-  action: UpdateFirewallConfigRequestBodySecurityRequest7ValueAction;
+  conditionGroup: Array<
+    UpdateFirewallConfigRequestBodySecurityRequest10ConditionGroup
+  >;
+  action: UpdateFirewallConfigRequestBodySecurityRequest10ValueAction;
   valid?: boolean | undefined;
   validationErrors?: Array<string> | string | undefined;
 };
@@ -585,10 +567,71 @@ export type UpdateFirewallConfigRequestBodySecurityRequestValue = {
 /**
  * Add a custom rule
  */
+export type UpdateFirewallConfigRequestBody10 = {
+  action: UpdateFirewallConfigRequestBodySecurityRequest10Action;
+  id?: string | undefined;
+  value: UpdateFirewallConfigRequestBodySecurityRequest10Value | null;
+};
+
+export const UpdateFirewallConfigRequestBodySecurityRequest9Action = {
+  IpUpdate: "ip.update",
+} as const;
+export type UpdateFirewallConfigRequestBodySecurityRequest9Action = ClosedEnum<
+  typeof UpdateFirewallConfigRequestBodySecurityRequest9Action
+>;
+
+/**
+ * Enable Firewall
+ */
+export type UpdateFirewallConfigRequestBody9 = {
+  action: UpdateFirewallConfigRequestBodySecurityRequest9Action;
+  id?: string | undefined;
+  value: boolean;
+};
+
+export const UpdateFirewallConfigRequestBodySecurityRequest8Action = {
+  IpInsert: "ip.insert",
+} as const;
+export type UpdateFirewallConfigRequestBodySecurityRequest8Action = ClosedEnum<
+  typeof UpdateFirewallConfigRequestBodySecurityRequest8Action
+>;
+
+/**
+ * Remove the action for a consumed ruleset (project scope)
+ */
+export type UpdateFirewallConfigRequestBody8 = {
+  action: UpdateFirewallConfigRequestBodySecurityRequest8Action;
+  id?: any | null | undefined;
+  value?: string | undefined;
+};
+
+export const UpdateFirewallConfigRequestBodySecurityRequest7Action = {
+  CrsDisable: "crs.disable",
+} as const;
+export type UpdateFirewallConfigRequestBodySecurityRequest7Action = ClosedEnum<
+  typeof UpdateFirewallConfigRequestBodySecurityRequest7Action
+>;
+
+export const UpdateFirewallConfigRequestBodySecurityRequest7ValueAction = {
+  Deny: "deny",
+  Challenge: "challenge",
+  Log: "log",
+  Allow: "allow",
+} as const;
+export type UpdateFirewallConfigRequestBodySecurityRequest7ValueAction =
+  ClosedEnum<typeof UpdateFirewallConfigRequestBodySecurityRequest7ValueAction>;
+
+export type UpdateFirewallConfigRequestBodySecurityRequest7Value = {
+  action: UpdateFirewallConfigRequestBodySecurityRequest7ValueAction;
+};
+
+/**
+ * Set the action for a consumed ruleset (project scope)
+ */
 export type UpdateFirewallConfigRequestBody7 = {
   action: UpdateFirewallConfigRequestBodySecurityRequest7Action;
   id?: any | null | undefined;
-  value: UpdateFirewallConfigRequestBodySecurityRequestValue | null;
+  value: UpdateFirewallConfigRequestBodySecurityRequest7Value | null;
 };
 
 export const UpdateFirewallConfigRequestBodySecurityRequest6Action = {
@@ -599,12 +642,12 @@ export type UpdateFirewallConfigRequestBodySecurityRequest6Action = ClosedEnum<
 >;
 
 /**
- * Enable Firewall
+ * Remove a named condition
  */
 export type UpdateFirewallConfigRequestBody6 = {
   action: UpdateFirewallConfigRequestBodySecurityRequest6Action;
-  id?: string | undefined;
-  value: boolean;
+  id: string;
+  value?: string | undefined;
 };
 
 export const UpdateFirewallConfigRequestBodySecurityRequest5Action = {
@@ -614,13 +657,103 @@ export type UpdateFirewallConfigRequestBodySecurityRequest5Action = ClosedEnum<
   typeof UpdateFirewallConfigRequestBodySecurityRequest5Action
 >;
 
+export const UpdateFirewallConfigRequestBodySecurityRequest5Type = {
+  Host: "host",
+  Path: "path",
+  Method: "method",
+  Header: "header",
+  Query: "query",
+  Cookie: "cookie",
+  TargetPath: "target_path",
+  Route: "route",
+  RawPath: "raw_path",
+  IpAddress: "ip_address",
+  Region: "region",
+  Protocol: "protocol",
+  Scheme: "scheme",
+  Environment: "environment",
+  DomainEnvironment: "domain_environment",
+  UserAgent: "user_agent",
+  GeoContinent: "geo_continent",
+  GeoCountry: "geo_country",
+  GeoCountryRegion: "geo_country_region",
+  GeoCity: "geo_city",
+  GeoAsNumber: "geo_as_number",
+  Ja4Digest: "ja4_digest",
+  Ja3Digest: "ja3_digest",
+  RateLimitApiId: "rate_limit_api_id",
+  ServerAction: "server_action",
+  BotName: "bot_name",
+  BotCategory: "bot_category",
+  BotStatus: "bot_status",
+  BotProtection: "bot_protection",
+  SharedCondition: "shared_condition",
+  Ruleset: "ruleset",
+} as const;
+export type UpdateFirewallConfigRequestBodySecurityRequest5Type = ClosedEnum<
+  typeof UpdateFirewallConfigRequestBodySecurityRequest5Type
+>;
+
+export const UpdateFirewallConfigRequestBodySecurityRequestOp = {
+  Re: "re",
+  Eq: "eq",
+  Neq: "neq",
+  Ex: "ex",
+  Nex: "nex",
+  Inc: "inc",
+  Ninc: "ninc",
+  Pre: "pre",
+  Suf: "suf",
+  Sub: "sub",
+  Gt: "gt",
+  Gte: "gte",
+  Lt: "lt",
+  Lte: "lte",
+  List: "list",
+} as const;
+export type UpdateFirewallConfigRequestBodySecurityRequestOp = ClosedEnum<
+  typeof UpdateFirewallConfigRequestBodySecurityRequestOp
+>;
+
+export type UpdateFirewallConfigRequestBodySecurityRequest5Value =
+  | string
+  | Array<string>
+  | number;
+
+export type UpdateFirewallConfigRequestBodySecurityRequestConditions = {
+  type: UpdateFirewallConfigRequestBodySecurityRequest5Type;
+  op: UpdateFirewallConfigRequestBodySecurityRequestOp;
+  neg?: boolean | undefined;
+  key?: string | undefined;
+  value?: string | Array<string> | number | undefined;
+};
+
+export type UpdateFirewallConfigRequestBodySecurityRequestConditionGroup = {
+  conditions: Array<UpdateFirewallConfigRequestBodySecurityRequestConditions>;
+};
+
+export type UpdateFirewallConfigRequestBodySecurityRequestValidationErrors =
+  | Array<string>
+  | string;
+
+export type UpdateFirewallConfigRequestBodySecurityRequestValue = {
+  name: string;
+  description?: string | undefined;
+  active: boolean;
+  conditionGroup: Array<
+    UpdateFirewallConfigRequestBodySecurityRequestConditionGroup
+  >;
+  valid?: boolean | undefined;
+  validationErrors?: Array<string> | string | undefined;
+};
+
 /**
- * Remove the action for a consumed ruleset (project scope)
+ * Update a named condition
  */
 export type UpdateFirewallConfigRequestBody5 = {
   action: UpdateFirewallConfigRequestBodySecurityRequest5Action;
   id: string;
-  value?: string | undefined;
+  value: UpdateFirewallConfigRequestBodySecurityRequestValue;
 };
 
 export const UpdateFirewallConfigRequestBodySecurityRequest4Action = {
@@ -630,25 +763,100 @@ export type UpdateFirewallConfigRequestBodySecurityRequest4Action = ClosedEnum<
   typeof UpdateFirewallConfigRequestBodySecurityRequest4Action
 >;
 
-export const UpdateFirewallConfigRequestBodySecurityRequest4ValueAction = {
-  Deny: "deny",
-  Challenge: "challenge",
-  Log: "log",
-  Allow: "allow",
+export const UpdateFirewallConfigRequestBodySecurityRequestType = {
+  Host: "host",
+  Path: "path",
+  Method: "method",
+  Header: "header",
+  Query: "query",
+  Cookie: "cookie",
+  TargetPath: "target_path",
+  Route: "route",
+  RawPath: "raw_path",
+  IpAddress: "ip_address",
+  Region: "region",
+  Protocol: "protocol",
+  Scheme: "scheme",
+  Environment: "environment",
+  DomainEnvironment: "domain_environment",
+  UserAgent: "user_agent",
+  GeoContinent: "geo_continent",
+  GeoCountry: "geo_country",
+  GeoCountryRegion: "geo_country_region",
+  GeoCity: "geo_city",
+  GeoAsNumber: "geo_as_number",
+  Ja4Digest: "ja4_digest",
+  Ja3Digest: "ja3_digest",
+  RateLimitApiId: "rate_limit_api_id",
+  ServerAction: "server_action",
+  BotName: "bot_name",
+  BotCategory: "bot_category",
+  BotStatus: "bot_status",
+  BotProtection: "bot_protection",
+  SharedCondition: "shared_condition",
+  Ruleset: "ruleset",
 } as const;
-export type UpdateFirewallConfigRequestBodySecurityRequest4ValueAction =
-  ClosedEnum<typeof UpdateFirewallConfigRequestBodySecurityRequest4ValueAction>;
+export type UpdateFirewallConfigRequestBodySecurityRequestType = ClosedEnum<
+  typeof UpdateFirewallConfigRequestBodySecurityRequestType
+>;
+
+export const UpdateFirewallConfigRequestBodySecurityOp = {
+  Re: "re",
+  Eq: "eq",
+  Neq: "neq",
+  Ex: "ex",
+  Nex: "nex",
+  Inc: "inc",
+  Ninc: "ninc",
+  Pre: "pre",
+  Suf: "suf",
+  Sub: "sub",
+  Gt: "gt",
+  Gte: "gte",
+  Lt: "lt",
+  Lte: "lte",
+  List: "list",
+} as const;
+export type UpdateFirewallConfigRequestBodySecurityOp = ClosedEnum<
+  typeof UpdateFirewallConfigRequestBodySecurityOp
+>;
+
+export type UpdateFirewallConfigRequestBodySecurityRequest4Value =
+  | string
+  | Array<string>
+  | number;
+
+export type UpdateFirewallConfigRequestBodySecurityConditions = {
+  type: UpdateFirewallConfigRequestBodySecurityRequestType;
+  op: UpdateFirewallConfigRequestBodySecurityOp;
+  neg?: boolean | undefined;
+  key?: string | undefined;
+  value?: string | Array<string> | number | undefined;
+};
+
+export type UpdateFirewallConfigRequestBodySecurityConditionGroup = {
+  conditions: Array<UpdateFirewallConfigRequestBodySecurityConditions>;
+};
+
+export type UpdateFirewallConfigRequestBodySecurityValidationErrors =
+  | Array<string>
+  | string;
 
 export type UpdateFirewallConfigRequestBodySecurityValue = {
-  action: UpdateFirewallConfigRequestBodySecurityRequest4ValueAction;
+  name: string;
+  description?: string | undefined;
+  active: boolean;
+  conditionGroup: Array<UpdateFirewallConfigRequestBodySecurityConditionGroup>;
+  valid?: boolean | undefined;
+  validationErrors?: Array<string> | string | undefined;
 };
 
 /**
- * Set the action for a consumed ruleset (project scope)
+ * Add a named condition
  */
 export type UpdateFirewallConfigRequestBody4 = {
   action: UpdateFirewallConfigRequestBodySecurityRequest4Action;
-  id: string;
+  id?: string | undefined;
   value: UpdateFirewallConfigRequestBodySecurityValue | null;
 };
 
@@ -705,6 +913,7 @@ export const UpdateFirewallConfigRequestBodySecurityType = {
   BotCategory: "bot_category",
   BotStatus: "bot_status",
   BotProtection: "bot_protection",
+  SharedCondition: "shared_condition",
   Ruleset: "ruleset",
 } as const;
 export type UpdateFirewallConfigRequestBodySecurityType = ClosedEnum<
@@ -825,6 +1034,7 @@ export const UpdateFirewallConfigRequestBodyType = {
   BotCategory: "bot_category",
   BotStatus: "bot_status",
   BotProtection: "bot_protection",
+  SharedCondition: "shared_condition",
   Ruleset: "ruleset",
 } as const;
 export type UpdateFirewallConfigRequestBodyType = ClosedEnum<
@@ -906,24 +1116,27 @@ export type UpdateFirewallConfigRequestBody1 = {
 
 export type UpdateFirewallConfigRequestBody =
   | UpdateFirewallConfigRequestBody2
-  | UpdateFirewallConfigRequestBody4
-  | UpdateFirewallConfigRequestBody8
-  | UpdateFirewallConfigRequestBody10
+  | UpdateFirewallConfigRequestBody5
+  | UpdateFirewallConfigRequestBody7
   | RequestBody11
+  | RequestBody13
   | RequestBody14
-  | RequestBody16
   | RequestBody17
+  | RequestBody19
+  | RequestBody20
   | UpdateFirewallConfigRequestBody1
   | UpdateFirewallConfigRequestBody3
-  | UpdateFirewallConfigRequestBody5
+  | UpdateFirewallConfigRequestBody4
   | UpdateFirewallConfigRequestBody6
-  | UpdateFirewallConfigRequestBody7
+  | UpdateFirewallConfigRequestBody8
   | UpdateFirewallConfigRequestBody9
-  | RequestBody13
-  | RequestBody15
+  | UpdateFirewallConfigRequestBody10
+  | RequestBody12
+  | RequestBody16
   | RequestBody18
-  | RequestBody19
-  | RequestBody12;
+  | RequestBody21
+  | RequestBody22
+  | RequestBody15;
 
 export type UpdateFirewallConfigRequest = {
   projectId: string;
@@ -937,33 +1150,190 @@ export type UpdateFirewallConfigRequest = {
   slug?: string | undefined;
   requestBody:
     | UpdateFirewallConfigRequestBody2
-    | UpdateFirewallConfigRequestBody4
-    | UpdateFirewallConfigRequestBody8
-    | UpdateFirewallConfigRequestBody10
+    | UpdateFirewallConfigRequestBody5
+    | UpdateFirewallConfigRequestBody7
     | RequestBody11
+    | RequestBody13
     | RequestBody14
-    | RequestBody16
     | RequestBody17
+    | RequestBody19
+    | RequestBody20
     | UpdateFirewallConfigRequestBody1
     | UpdateFirewallConfigRequestBody3
-    | UpdateFirewallConfigRequestBody5
+    | UpdateFirewallConfigRequestBody4
     | UpdateFirewallConfigRequestBody6
-    | UpdateFirewallConfigRequestBody7
+    | UpdateFirewallConfigRequestBody8
     | UpdateFirewallConfigRequestBody9
-    | RequestBody13
-    | RequestBody15
+    | UpdateFirewallConfigRequestBody10
+    | RequestBody12
+    | RequestBody16
     | RequestBody18
-    | RequestBody19
-    | RequestBody12;
+    | RequestBody21
+    | RequestBody22
+    | RequestBody15;
 };
 
 export type UpdateFirewallConfigResponseBody = {};
 
 /** @internal */
-export type RequestBody19$Outbound = {
+export type RequestBody22$Outbound = {
   action: string;
   id?: string | undefined;
   value?: any | undefined;
+};
+
+/** @internal */
+export const RequestBody22$outboundSchema: z.ZodType<
+  RequestBody22$Outbound,
+  z.ZodTypeDef,
+  RequestBody22
+> = z.object({
+  action: z.string(),
+  id: z.string().optional(),
+  value: z.any().optional(),
+});
+
+export function requestBody22ToJSON(requestBody22: RequestBody22): string {
+  return JSON.stringify(RequestBody22$outboundSchema.parse(requestBody22));
+}
+
+/** @internal */
+export type RequestBody21$Outbound = {
+  action: string;
+  id?: string | undefined;
+  value: boolean;
+};
+
+/** @internal */
+export const RequestBody21$outboundSchema: z.ZodType<
+  RequestBody21$Outbound,
+  z.ZodTypeDef,
+  RequestBody21
+> = z.object({
+  action: z.string(),
+  id: z.string().optional(),
+  value: z.boolean(),
+});
+
+export function requestBody21ToJSON(requestBody21: RequestBody21): string {
+  return JSON.stringify(RequestBody21$outboundSchema.parse(requestBody21));
+}
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodyId$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateFirewallConfigRequestBodyId
+> = z.nativeEnum(UpdateFirewallConfigRequestBodyId);
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodySecurityRequest20Action$outboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateFirewallConfigRequestBodySecurityRequest20Action
+  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest20Action);
+
+/** @internal */
+export type UpdateFirewallConfigRequestBodySecurityRequest20Value$Outbound = {
+  active: boolean;
+  action?: string | undefined;
+};
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodySecurityRequest20Value$outboundSchema:
+  z.ZodType<
+    UpdateFirewallConfigRequestBodySecurityRequest20Value$Outbound,
+    z.ZodTypeDef,
+    UpdateFirewallConfigRequestBodySecurityRequest20Value
+  > = z.object({
+    active: z.boolean(),
+    action:
+      UpdateFirewallConfigRequestBodySecurityRequest20Action$outboundSchema
+        .optional(),
+  });
+
+export function updateFirewallConfigRequestBodySecurityRequest20ValueToJSON(
+  updateFirewallConfigRequestBodySecurityRequest20Value:
+    UpdateFirewallConfigRequestBodySecurityRequest20Value,
+): string {
+  return JSON.stringify(
+    UpdateFirewallConfigRequestBodySecurityRequest20Value$outboundSchema.parse(
+      updateFirewallConfigRequestBodySecurityRequest20Value,
+    ),
+  );
+}
+
+/** @internal */
+export type RequestBody20$Outbound = {
+  action: string;
+  id: string;
+  value: {
+    [k: string]: UpdateFirewallConfigRequestBodySecurityRequest20Value$Outbound;
+  };
+};
+
+/** @internal */
+export const RequestBody20$outboundSchema: z.ZodType<
+  RequestBody20$Outbound,
+  z.ZodTypeDef,
+  RequestBody20
+> = z.object({
+  action: z.string(),
+  id: UpdateFirewallConfigRequestBodyId$outboundSchema,
+  value: z.record(
+    z.lazy(() =>
+      UpdateFirewallConfigRequestBodySecurityRequest20Value$outboundSchema
+    ),
+  ),
+});
+
+export function requestBody20ToJSON(requestBody20: RequestBody20): string {
+  return JSON.stringify(RequestBody20$outboundSchema.parse(requestBody20));
+}
+
+/** @internal */
+export const RequestBodyId$outboundSchema: z.ZodNativeEnum<
+  typeof RequestBodyId
+> = z.nativeEnum(RequestBodyId);
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodySecurityRequest19Action$outboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateFirewallConfigRequestBodySecurityRequest19Action
+  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest19Action);
+
+/** @internal */
+export type UpdateFirewallConfigRequestBodySecurityRequest19Value$Outbound = {
+  action?: string | undefined;
+  active: boolean;
+};
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodySecurityRequest19Value$outboundSchema:
+  z.ZodType<
+    UpdateFirewallConfigRequestBodySecurityRequest19Value$Outbound,
+    z.ZodTypeDef,
+    UpdateFirewallConfigRequestBodySecurityRequest19Value
+  > = z.object({
+    action:
+      UpdateFirewallConfigRequestBodySecurityRequest19Action$outboundSchema
+        .optional(),
+    active: z.boolean(),
+  });
+
+export function updateFirewallConfigRequestBodySecurityRequest19ValueToJSON(
+  updateFirewallConfigRequestBodySecurityRequest19Value:
+    UpdateFirewallConfigRequestBodySecurityRequest19Value,
+): string {
+  return JSON.stringify(
+    UpdateFirewallConfigRequestBodySecurityRequest19Value$outboundSchema.parse(
+      updateFirewallConfigRequestBodySecurityRequest19Value,
+    ),
+  );
+}
+
+/** @internal */
+export type RequestBody19$Outbound = {
+  action: string;
+  id: string;
+  value: UpdateFirewallConfigRequestBodySecurityRequest19Value$Outbound;
 };
 
 /** @internal */
@@ -973,8 +1343,10 @@ export const RequestBody19$outboundSchema: z.ZodType<
   RequestBody19
 > = z.object({
   action: z.string(),
-  id: z.string().optional(),
-  value: z.any().optional(),
+  id: RequestBodyId$outboundSchema,
+  value: z.lazy(() =>
+    UpdateFirewallConfigRequestBodySecurityRequest19Value$outboundSchema
+  ),
 });
 
 export function requestBody19ToJSON(requestBody19: RequestBody19): string {
@@ -984,8 +1356,8 @@ export function requestBody19ToJSON(requestBody19: RequestBody19): string {
 /** @internal */
 export type RequestBody18$Outbound = {
   action: string;
-  id?: string | undefined;
-  value: boolean;
+  id: string;
+  value?: string | undefined;
 };
 
 /** @internal */
@@ -995,18 +1367,13 @@ export const RequestBody18$outboundSchema: z.ZodType<
   RequestBody18
 > = z.object({
   action: z.string(),
-  id: z.string().optional(),
-  value: z.boolean(),
+  id: z.string(),
+  value: z.string().optional(),
 });
 
 export function requestBody18ToJSON(requestBody18: RequestBody18): string {
   return JSON.stringify(RequestBody18$outboundSchema.parse(requestBody18));
 }
-
-/** @internal */
-export const UpdateFirewallConfigRequestBodyId$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateFirewallConfigRequestBodyId
-> = z.nativeEnum(UpdateFirewallConfigRequestBodyId);
 
 /** @internal */
 export const UpdateFirewallConfigRequestBodySecurityRequest17Action$outboundSchema:
@@ -1016,8 +1383,10 @@ export const UpdateFirewallConfigRequestBodySecurityRequest17Action$outboundSche
 
 /** @internal */
 export type UpdateFirewallConfigRequestBodySecurityRequest17Value$Outbound = {
-  active: boolean;
-  action?: string | undefined;
+  hostname: string;
+  ip: string;
+  notes?: string | undefined;
+  action: string;
 };
 
 /** @internal */
@@ -1027,10 +1396,11 @@ export const UpdateFirewallConfigRequestBodySecurityRequest17Value$outboundSchem
     z.ZodTypeDef,
     UpdateFirewallConfigRequestBodySecurityRequest17Value
   > = z.object({
-    active: z.boolean(),
+    hostname: z.string(),
+    ip: z.string(),
+    notes: z.string().optional(),
     action:
-      UpdateFirewallConfigRequestBodySecurityRequest17Action$outboundSchema
-        .optional(),
+      UpdateFirewallConfigRequestBodySecurityRequest17Action$outboundSchema,
   });
 
 export function updateFirewallConfigRequestBodySecurityRequest17ValueToJSON(
@@ -1048,9 +1418,7 @@ export function updateFirewallConfigRequestBodySecurityRequest17ValueToJSON(
 export type RequestBody17$Outbound = {
   action: string;
   id: string;
-  value: {
-    [k: string]: UpdateFirewallConfigRequestBodySecurityRequest17Value$Outbound;
-  };
+  value: UpdateFirewallConfigRequestBodySecurityRequest17Value$Outbound;
 };
 
 /** @internal */
@@ -1060,22 +1428,15 @@ export const RequestBody17$outboundSchema: z.ZodType<
   RequestBody17
 > = z.object({
   action: z.string(),
-  id: UpdateFirewallConfigRequestBodyId$outboundSchema,
-  value: z.record(
-    z.lazy(() =>
-      UpdateFirewallConfigRequestBodySecurityRequest17Value$outboundSchema
-    ),
+  id: z.string(),
+  value: z.lazy(() =>
+    UpdateFirewallConfigRequestBodySecurityRequest17Value$outboundSchema
   ),
 });
 
 export function requestBody17ToJSON(requestBody17: RequestBody17): string {
   return JSON.stringify(RequestBody17$outboundSchema.parse(requestBody17));
 }
-
-/** @internal */
-export const RequestBodyId$outboundSchema: z.ZodNativeEnum<
-  typeof RequestBodyId
-> = z.nativeEnum(RequestBodyId);
 
 /** @internal */
 export const UpdateFirewallConfigRequestBodySecurityRequest16Action$outboundSchema:
@@ -1085,8 +1446,10 @@ export const UpdateFirewallConfigRequestBodySecurityRequest16Action$outboundSche
 
 /** @internal */
 export type UpdateFirewallConfigRequestBodySecurityRequest16Value$Outbound = {
-  action?: string | undefined;
-  active: boolean;
+  hostname: string;
+  ip: string;
+  notes?: string | undefined;
+  action: string;
 };
 
 /** @internal */
@@ -1096,10 +1459,11 @@ export const UpdateFirewallConfigRequestBodySecurityRequest16Value$outboundSchem
     z.ZodTypeDef,
     UpdateFirewallConfigRequestBodySecurityRequest16Value
   > = z.object({
+    hostname: z.string(),
+    ip: z.string(),
+    notes: z.string().optional(),
     action:
-      UpdateFirewallConfigRequestBodySecurityRequest16Action$outboundSchema
-        .optional(),
-    active: z.boolean(),
+      UpdateFirewallConfigRequestBodySecurityRequest16Action$outboundSchema,
   });
 
 export function updateFirewallConfigRequestBodySecurityRequest16ValueToJSON(
@@ -1116,7 +1480,7 @@ export function updateFirewallConfigRequestBodySecurityRequest16ValueToJSON(
 /** @internal */
 export type RequestBody16$Outbound = {
   action: string;
-  id: string;
+  id?: string | undefined;
   value: UpdateFirewallConfigRequestBodySecurityRequest16Value$Outbound;
 };
 
@@ -1127,7 +1491,7 @@ export const RequestBody16$outboundSchema: z.ZodType<
   RequestBody16
 > = z.object({
   action: z.string(),
-  id: RequestBodyId$outboundSchema,
+  id: z.string().optional(),
   value: z.lazy(() =>
     UpdateFirewallConfigRequestBodySecurityRequest16Value$outboundSchema
   ),
@@ -1140,7 +1504,7 @@ export function requestBody16ToJSON(requestBody16: RequestBody16): string {
 /** @internal */
 export type RequestBody15$Outbound = {
   action: string;
-  id: string;
+  id?: string | undefined;
   value?: string | undefined;
 };
 
@@ -1151,13 +1515,16 @@ export const RequestBody15$outboundSchema: z.ZodType<
   RequestBody15
 > = z.object({
   action: z.string(),
-  id: z.string(),
+  id: z.string().optional(),
   value: z.string().optional(),
 });
 
 export function requestBody15ToJSON(requestBody15: RequestBody15): string {
   return JSON.stringify(RequestBody15$outboundSchema.parse(requestBody15));
 }
+
+/** @internal */
+export const Id$outboundSchema: z.ZodNativeEnum<typeof Id> = z.nativeEnum(Id);
 
 /** @internal */
 export const UpdateFirewallConfigRequestBodySecurityRequest14Action$outboundSchema:
@@ -1167,9 +1534,7 @@ export const UpdateFirewallConfigRequestBodySecurityRequest14Action$outboundSche
 
 /** @internal */
 export type UpdateFirewallConfigRequestBodySecurityRequest14Value$Outbound = {
-  hostname: string;
-  ip: string;
-  notes?: string | undefined;
+  active: boolean;
   action: string;
 };
 
@@ -1180,9 +1545,7 @@ export const UpdateFirewallConfigRequestBodySecurityRequest14Value$outboundSchem
     z.ZodTypeDef,
     UpdateFirewallConfigRequestBodySecurityRequest14Value
   > = z.object({
-    hostname: z.string(),
-    ip: z.string(),
-    notes: z.string().optional(),
+    active: z.boolean(),
     action:
       UpdateFirewallConfigRequestBodySecurityRequest14Action$outboundSchema,
   });
@@ -1212,7 +1575,7 @@ export const RequestBody14$outboundSchema: z.ZodType<
   RequestBody14
 > = z.object({
   action: z.string(),
-  id: z.string(),
+  id: Id$outboundSchema,
   value: z.lazy(() =>
     UpdateFirewallConfigRequestBodySecurityRequest14Value$outboundSchema
   ),
@@ -1223,49 +1586,10 @@ export function requestBody14ToJSON(requestBody14: RequestBody14): string {
 }
 
 /** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest13Action$outboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateFirewallConfigRequestBodySecurityRequest13Action
-  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest13Action);
-
-/** @internal */
-export type UpdateFirewallConfigRequestBodySecurityRequest13Value$Outbound = {
-  hostname: string;
-  ip: string;
-  notes?: string | undefined;
-  action: string;
-};
-
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest13Value$outboundSchema:
-  z.ZodType<
-    UpdateFirewallConfigRequestBodySecurityRequest13Value$Outbound,
-    z.ZodTypeDef,
-    UpdateFirewallConfigRequestBodySecurityRequest13Value
-  > = z.object({
-    hostname: z.string(),
-    ip: z.string(),
-    notes: z.string().optional(),
-    action:
-      UpdateFirewallConfigRequestBodySecurityRequest13Action$outboundSchema,
-  });
-
-export function updateFirewallConfigRequestBodySecurityRequest13ValueToJSON(
-  updateFirewallConfigRequestBodySecurityRequest13Value:
-    UpdateFirewallConfigRequestBodySecurityRequest13Value,
-): string {
-  return JSON.stringify(
-    UpdateFirewallConfigRequestBodySecurityRequest13Value$outboundSchema.parse(
-      updateFirewallConfigRequestBodySecurityRequest13Value,
-    ),
-  );
-}
-
-/** @internal */
 export type RequestBody13$Outbound = {
   action: string;
-  id?: string | undefined;
-  value: UpdateFirewallConfigRequestBodySecurityRequest13Value$Outbound;
+  id: string;
+  value: number;
 };
 
 /** @internal */
@@ -1275,10 +1599,8 @@ export const RequestBody13$outboundSchema: z.ZodType<
   RequestBody13
 > = z.object({
   action: z.string(),
-  id: z.string().optional(),
-  value: z.lazy(() =>
-    UpdateFirewallConfigRequestBodySecurityRequest13Value$outboundSchema
-  ),
+  id: z.string(),
+  value: z.number(),
 });
 
 export function requestBody13ToJSON(requestBody13: RequestBody13): string {
@@ -1288,7 +1610,7 @@ export function requestBody13ToJSON(requestBody13: RequestBody13): string {
 /** @internal */
 export type RequestBody12$Outbound = {
   action: string;
-  id?: string | undefined;
+  id: string;
   value?: string | undefined;
 };
 
@@ -1299,7 +1621,7 @@ export const RequestBody12$outboundSchema: z.ZodType<
   RequestBody12
 > = z.object({
   action: z.string(),
-  id: z.string().optional(),
+  id: z.string(),
   value: z.string().optional(),
 });
 
@@ -1314,177 +1636,41 @@ export const UpdateFirewallConfigRequestBodySecurityRequest11Action$outboundSche
   > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest11Action);
 
 /** @internal */
-export const Id$outboundSchema: z.ZodNativeEnum<typeof Id> = z.nativeEnum(Id);
+export const UpdateFirewallConfigRequestBodySecurityRequest11Type$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateFirewallConfigRequestBodySecurityRequest11Type> =
+    z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest11Type);
 
 /** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest11ValueAction$outboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateFirewallConfigRequestBodySecurityRequest11ValueAction
-  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest11ValueAction);
+export const UpdateFirewallConfigRequestBodySecurityRequest11Op$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateFirewallConfigRequestBodySecurityRequest11Op> = z
+    .nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest11Op);
 
 /** @internal */
-export type UpdateFirewallConfigRequestBodySecurityRequest11Value$Outbound = {
-  active: boolean;
-  action: string;
-};
-
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest11Value$outboundSchema:
-  z.ZodType<
-    UpdateFirewallConfigRequestBodySecurityRequest11Value$Outbound,
-    z.ZodTypeDef,
-    UpdateFirewallConfigRequestBodySecurityRequest11Value
-  > = z.object({
-    active: z.boolean(),
-    action:
-      UpdateFirewallConfigRequestBodySecurityRequest11ValueAction$outboundSchema,
-  });
-
-export function updateFirewallConfigRequestBodySecurityRequest11ValueToJSON(
-  updateFirewallConfigRequestBodySecurityRequest11Value:
-    UpdateFirewallConfigRequestBodySecurityRequest11Value,
-): string {
-  return JSON.stringify(
-    UpdateFirewallConfigRequestBodySecurityRequest11Value$outboundSchema.parse(
-      updateFirewallConfigRequestBodySecurityRequest11Value,
-    ),
-  );
-}
-
-/** @internal */
-export type RequestBody11$Outbound = {
-  action: string;
-  id: string;
-  value: UpdateFirewallConfigRequestBodySecurityRequest11Value$Outbound;
-};
-
-/** @internal */
-export const RequestBody11$outboundSchema: z.ZodType<
-  RequestBody11$Outbound,
-  z.ZodTypeDef,
-  RequestBody11
-> = z.object({
-  action: UpdateFirewallConfigRequestBodySecurityRequest11Action$outboundSchema,
-  id: Id$outboundSchema,
-  value: z.lazy(() =>
-    UpdateFirewallConfigRequestBodySecurityRequest11Value$outboundSchema
-  ),
-});
-
-export function requestBody11ToJSON(requestBody11: RequestBody11): string {
-  return JSON.stringify(RequestBody11$outboundSchema.parse(requestBody11));
-}
-
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest10Action$outboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateFirewallConfigRequestBodySecurityRequest10Action
-  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest10Action);
-
-/** @internal */
-export type UpdateFirewallConfigRequestBody10$Outbound = {
-  action: string;
-  id: string;
-  value?: any | null | undefined;
-};
-
-/** @internal */
-export const UpdateFirewallConfigRequestBody10$outboundSchema: z.ZodType<
-  UpdateFirewallConfigRequestBody10$Outbound,
-  z.ZodTypeDef,
-  UpdateFirewallConfigRequestBody10
-> = z.object({
-  action: UpdateFirewallConfigRequestBodySecurityRequest10Action$outboundSchema,
-  id: z.string(),
-  value: z.nullable(z.any()).optional(),
-});
-
-export function updateFirewallConfigRequestBody10ToJSON(
-  updateFirewallConfigRequestBody10: UpdateFirewallConfigRequestBody10,
-): string {
-  return JSON.stringify(
-    UpdateFirewallConfigRequestBody10$outboundSchema.parse(
-      updateFirewallConfigRequestBody10,
-    ),
-  );
-}
-
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest9Action$outboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateFirewallConfigRequestBodySecurityRequest9Action
-  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest9Action);
-
-/** @internal */
-export type UpdateFirewallConfigRequestBody9$Outbound = {
-  action: string;
-  id: string;
-  value?: string | undefined;
-};
-
-/** @internal */
-export const UpdateFirewallConfigRequestBody9$outboundSchema: z.ZodType<
-  UpdateFirewallConfigRequestBody9$Outbound,
-  z.ZodTypeDef,
-  UpdateFirewallConfigRequestBody9
-> = z.object({
-  action: UpdateFirewallConfigRequestBodySecurityRequest9Action$outboundSchema,
-  id: z.string(),
-  value: z.string().optional(),
-});
-
-export function updateFirewallConfigRequestBody9ToJSON(
-  updateFirewallConfigRequestBody9: UpdateFirewallConfigRequestBody9,
-): string {
-  return JSON.stringify(
-    UpdateFirewallConfigRequestBody9$outboundSchema.parse(
-      updateFirewallConfigRequestBody9,
-    ),
-  );
-}
-
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest8Action$outboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateFirewallConfigRequestBodySecurityRequest8Action
-  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest8Action);
-
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest8Type$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateFirewallConfigRequestBodySecurityRequest8Type> =
-    z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest8Type);
-
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequestOp$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateFirewallConfigRequestBodySecurityRequestOp> = z
-    .nativeEnum(UpdateFirewallConfigRequestBodySecurityRequestOp);
-
-/** @internal */
-export type UpdateFirewallConfigRequestBodySecurityRequest8ValueValue$Outbound =
+export type UpdateFirewallConfigRequestBodySecurityRequest11ValueValue$Outbound =
   | string
   | Array<string>
   | number;
 
 /** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest8ValueValue$outboundSchema:
+export const UpdateFirewallConfigRequestBodySecurityRequest11ValueValue$outboundSchema:
   z.ZodType<
-    UpdateFirewallConfigRequestBodySecurityRequest8ValueValue$Outbound,
+    UpdateFirewallConfigRequestBodySecurityRequest11ValueValue$Outbound,
     z.ZodTypeDef,
-    UpdateFirewallConfigRequestBodySecurityRequest8ValueValue
+    UpdateFirewallConfigRequestBodySecurityRequest11ValueValue
   > = smartUnion([z.string(), z.array(z.string()), z.number()]);
 
-export function updateFirewallConfigRequestBodySecurityRequest8ValueValueToJSON(
-  updateFirewallConfigRequestBodySecurityRequest8ValueValue:
-    UpdateFirewallConfigRequestBodySecurityRequest8ValueValue,
+export function updateFirewallConfigRequestBodySecurityRequest11ValueValueToJSON(
+  updateFirewallConfigRequestBodySecurityRequest11ValueValue:
+    UpdateFirewallConfigRequestBodySecurityRequest11ValueValue,
 ): string {
   return JSON.stringify(
-    UpdateFirewallConfigRequestBodySecurityRequest8ValueValue$outboundSchema
-      .parse(updateFirewallConfigRequestBodySecurityRequest8ValueValue),
+    UpdateFirewallConfigRequestBodySecurityRequest11ValueValue$outboundSchema
+      .parse(updateFirewallConfigRequestBodySecurityRequest11ValueValue),
   );
 }
 
 /** @internal */
-export type UpdateFirewallConfigRequestBodySecurityRequestConditions$Outbound =
+export type UpdateFirewallConfigRequestBodySecurityRequest11Conditions$Outbound =
   {
     type: string;
     op: string;
@@ -1494,67 +1680,67 @@ export type UpdateFirewallConfigRequestBodySecurityRequestConditions$Outbound =
   };
 
 /** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequestConditions$outboundSchema:
+export const UpdateFirewallConfigRequestBodySecurityRequest11Conditions$outboundSchema:
   z.ZodType<
-    UpdateFirewallConfigRequestBodySecurityRequestConditions$Outbound,
+    UpdateFirewallConfigRequestBodySecurityRequest11Conditions$Outbound,
     z.ZodTypeDef,
-    UpdateFirewallConfigRequestBodySecurityRequestConditions
+    UpdateFirewallConfigRequestBodySecurityRequest11Conditions
   > = z.object({
-    type: UpdateFirewallConfigRequestBodySecurityRequest8Type$outboundSchema,
-    op: UpdateFirewallConfigRequestBodySecurityRequestOp$outboundSchema,
+    type: UpdateFirewallConfigRequestBodySecurityRequest11Type$outboundSchema,
+    op: UpdateFirewallConfigRequestBodySecurityRequest11Op$outboundSchema,
     neg: z.boolean().optional(),
     key: z.string().optional(),
     value: smartUnion([z.string(), z.array(z.string()), z.number()]).optional(),
   });
 
-export function updateFirewallConfigRequestBodySecurityRequestConditionsToJSON(
-  updateFirewallConfigRequestBodySecurityRequestConditions:
-    UpdateFirewallConfigRequestBodySecurityRequestConditions,
+export function updateFirewallConfigRequestBodySecurityRequest11ConditionsToJSON(
+  updateFirewallConfigRequestBodySecurityRequest11Conditions:
+    UpdateFirewallConfigRequestBodySecurityRequest11Conditions,
 ): string {
   return JSON.stringify(
-    UpdateFirewallConfigRequestBodySecurityRequestConditions$outboundSchema
-      .parse(updateFirewallConfigRequestBodySecurityRequestConditions),
+    UpdateFirewallConfigRequestBodySecurityRequest11Conditions$outboundSchema
+      .parse(updateFirewallConfigRequestBodySecurityRequest11Conditions),
   );
 }
 
 /** @internal */
-export type UpdateFirewallConfigRequestBodySecurityRequestConditionGroup$Outbound =
+export type UpdateFirewallConfigRequestBodySecurityRequest11ConditionGroup$Outbound =
   {
     conditions: Array<
-      UpdateFirewallConfigRequestBodySecurityRequestConditions$Outbound
+      UpdateFirewallConfigRequestBodySecurityRequest11Conditions$Outbound
     >;
   };
 
 /** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequestConditionGroup$outboundSchema:
+export const UpdateFirewallConfigRequestBodySecurityRequest11ConditionGroup$outboundSchema:
   z.ZodType<
-    UpdateFirewallConfigRequestBodySecurityRequestConditionGroup$Outbound,
+    UpdateFirewallConfigRequestBodySecurityRequest11ConditionGroup$Outbound,
     z.ZodTypeDef,
-    UpdateFirewallConfigRequestBodySecurityRequestConditionGroup
+    UpdateFirewallConfigRequestBodySecurityRequest11ConditionGroup
   > = z.object({
     conditions: z.array(
       z.lazy(() =>
-        UpdateFirewallConfigRequestBodySecurityRequestConditions$outboundSchema
+        UpdateFirewallConfigRequestBodySecurityRequest11Conditions$outboundSchema
       ),
     ),
   });
 
-export function updateFirewallConfigRequestBodySecurityRequestConditionGroupToJSON(
-  updateFirewallConfigRequestBodySecurityRequestConditionGroup:
-    UpdateFirewallConfigRequestBodySecurityRequestConditionGroup,
+export function updateFirewallConfigRequestBodySecurityRequest11ConditionGroupToJSON(
+  updateFirewallConfigRequestBodySecurityRequest11ConditionGroup:
+    UpdateFirewallConfigRequestBodySecurityRequest11ConditionGroup,
 ): string {
   return JSON.stringify(
-    UpdateFirewallConfigRequestBodySecurityRequestConditionGroup$outboundSchema
-      .parse(updateFirewallConfigRequestBodySecurityRequestConditionGroup),
+    UpdateFirewallConfigRequestBodySecurityRequest11ConditionGroup$outboundSchema
+      .parse(updateFirewallConfigRequestBodySecurityRequest11ConditionGroup),
   );
 }
 
 /** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest8ValueActionAction$outboundSchema:
+export const UpdateFirewallConfigRequestBodySecurityRequest11ValueActionAction$outboundSchema:
   z.ZodNativeEnum<
-    typeof UpdateFirewallConfigRequestBodySecurityRequest8ValueActionAction
+    typeof UpdateFirewallConfigRequestBodySecurityRequest11ValueActionAction
   > = z.nativeEnum(
-    UpdateFirewallConfigRequestBodySecurityRequest8ValueActionAction,
+    UpdateFirewallConfigRequestBodySecurityRequest11ValueActionAction,
   );
 
 /** @internal */
@@ -1757,7 +1943,7 @@ export const UpdateFirewallConfigRequestBodySecurityRequestMitigate$outboundSche
     UpdateFirewallConfigRequestBodySecurityRequestMitigate
   > = z.object({
     action:
-      UpdateFirewallConfigRequestBodySecurityRequest8ValueActionAction$outboundSchema,
+      UpdateFirewallConfigRequestBodySecurityRequest11ValueActionAction$outboundSchema,
     rateLimit: smartUnion([
       z.lazy(() => UpdateFirewallConfigRateLimitSecurity1$outboundSchema),
       z.string(),
@@ -1783,7 +1969,7 @@ export function updateFirewallConfigRequestBodySecurityRequestMitigateToJSON(
 }
 
 /** @internal */
-export type UpdateFirewallConfigRequestBodySecurityRequest8ValueAction$Outbound =
+export type UpdateFirewallConfigRequestBodySecurityRequest11ValueAction$Outbound =
   {
     mitigate?:
       | UpdateFirewallConfigRequestBodySecurityRequestMitigate$Outbound
@@ -1791,237 +1977,232 @@ export type UpdateFirewallConfigRequestBodySecurityRequest8ValueAction$Outbound 
   };
 
 /** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest8ValueAction$outboundSchema:
+export const UpdateFirewallConfigRequestBodySecurityRequest11ValueAction$outboundSchema:
   z.ZodType<
-    UpdateFirewallConfigRequestBodySecurityRequest8ValueAction$Outbound,
+    UpdateFirewallConfigRequestBodySecurityRequest11ValueAction$Outbound,
     z.ZodTypeDef,
-    UpdateFirewallConfigRequestBodySecurityRequest8ValueAction
+    UpdateFirewallConfigRequestBodySecurityRequest11ValueAction
   > = z.object({
     mitigate: z.lazy(() =>
       UpdateFirewallConfigRequestBodySecurityRequestMitigate$outboundSchema
     ).optional(),
   });
 
-export function updateFirewallConfigRequestBodySecurityRequest8ValueActionToJSON(
-  updateFirewallConfigRequestBodySecurityRequest8ValueAction:
-    UpdateFirewallConfigRequestBodySecurityRequest8ValueAction,
+export function updateFirewallConfigRequestBodySecurityRequest11ValueActionToJSON(
+  updateFirewallConfigRequestBodySecurityRequest11ValueAction:
+    UpdateFirewallConfigRequestBodySecurityRequest11ValueAction,
 ): string {
   return JSON.stringify(
-    UpdateFirewallConfigRequestBodySecurityRequest8ValueAction$outboundSchema
-      .parse(updateFirewallConfigRequestBodySecurityRequest8ValueAction),
+    UpdateFirewallConfigRequestBodySecurityRequest11ValueAction$outboundSchema
+      .parse(updateFirewallConfigRequestBodySecurityRequest11ValueAction),
   );
 }
 
 /** @internal */
-export type UpdateFirewallConfigRequestBodySecurityRequestValidationErrors$Outbound =
+export type UpdateFirewallConfigRequestBodySecurityRequest11ValidationErrors$Outbound =
   | Array<string>
   | string;
 
 /** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequestValidationErrors$outboundSchema:
+export const UpdateFirewallConfigRequestBodySecurityRequest11ValidationErrors$outboundSchema:
   z.ZodType<
-    UpdateFirewallConfigRequestBodySecurityRequestValidationErrors$Outbound,
+    UpdateFirewallConfigRequestBodySecurityRequest11ValidationErrors$Outbound,
     z.ZodTypeDef,
-    UpdateFirewallConfigRequestBodySecurityRequestValidationErrors
+    UpdateFirewallConfigRequestBodySecurityRequest11ValidationErrors
   > = smartUnion([z.array(z.string()), z.string()]);
 
-export function updateFirewallConfigRequestBodySecurityRequestValidationErrorsToJSON(
-  updateFirewallConfigRequestBodySecurityRequestValidationErrors:
-    UpdateFirewallConfigRequestBodySecurityRequestValidationErrors,
+export function updateFirewallConfigRequestBodySecurityRequest11ValidationErrorsToJSON(
+  updateFirewallConfigRequestBodySecurityRequest11ValidationErrors:
+    UpdateFirewallConfigRequestBodySecurityRequest11ValidationErrors,
 ): string {
   return JSON.stringify(
-    UpdateFirewallConfigRequestBodySecurityRequestValidationErrors$outboundSchema
-      .parse(updateFirewallConfigRequestBodySecurityRequestValidationErrors),
+    UpdateFirewallConfigRequestBodySecurityRequest11ValidationErrors$outboundSchema
+      .parse(updateFirewallConfigRequestBodySecurityRequest11ValidationErrors),
   );
 }
 
 /** @internal */
-export type UpdateFirewallConfigRequestBodySecurityRequest8Value$Outbound = {
+export type UpdateFirewallConfigRequestBodySecurityRequest11Value$Outbound = {
   name: string;
   description?: string | undefined;
   active: boolean;
   conditionGroup: Array<
-    UpdateFirewallConfigRequestBodySecurityRequestConditionGroup$Outbound
+    UpdateFirewallConfigRequestBodySecurityRequest11ConditionGroup$Outbound
   >;
-  action: UpdateFirewallConfigRequestBodySecurityRequest8ValueAction$Outbound;
+  action: UpdateFirewallConfigRequestBodySecurityRequest11ValueAction$Outbound;
   valid?: boolean | undefined;
   validationErrors?: Array<string> | string | undefined;
 };
 
 /** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest8Value$outboundSchema:
+export const UpdateFirewallConfigRequestBodySecurityRequest11Value$outboundSchema:
   z.ZodType<
-    UpdateFirewallConfigRequestBodySecurityRequest8Value$Outbound,
+    UpdateFirewallConfigRequestBodySecurityRequest11Value$Outbound,
     z.ZodTypeDef,
-    UpdateFirewallConfigRequestBodySecurityRequest8Value
+    UpdateFirewallConfigRequestBodySecurityRequest11Value
   > = z.object({
     name: z.string(),
     description: z.string().optional(),
     active: z.boolean(),
     conditionGroup: z.array(
       z.lazy(() =>
-        UpdateFirewallConfigRequestBodySecurityRequestConditionGroup$outboundSchema
+        UpdateFirewallConfigRequestBodySecurityRequest11ConditionGroup$outboundSchema
       ),
     ),
     action: z.lazy(() =>
-      UpdateFirewallConfigRequestBodySecurityRequest8ValueAction$outboundSchema
+      UpdateFirewallConfigRequestBodySecurityRequest11ValueAction$outboundSchema
     ),
     valid: z.boolean().optional(),
     validationErrors: smartUnion([z.array(z.string()), z.string()]).optional(),
   });
 
-export function updateFirewallConfigRequestBodySecurityRequest8ValueToJSON(
-  updateFirewallConfigRequestBodySecurityRequest8Value:
-    UpdateFirewallConfigRequestBodySecurityRequest8Value,
+export function updateFirewallConfigRequestBodySecurityRequest11ValueToJSON(
+  updateFirewallConfigRequestBodySecurityRequest11Value:
+    UpdateFirewallConfigRequestBodySecurityRequest11Value,
 ): string {
   return JSON.stringify(
-    UpdateFirewallConfigRequestBodySecurityRequest8Value$outboundSchema.parse(
-      updateFirewallConfigRequestBodySecurityRequest8Value,
+    UpdateFirewallConfigRequestBodySecurityRequest11Value$outboundSchema.parse(
+      updateFirewallConfigRequestBodySecurityRequest11Value,
     ),
   );
 }
 
 /** @internal */
-export type UpdateFirewallConfigRequestBody8$Outbound = {
+export type RequestBody11$Outbound = {
   action: string;
-  id?: any | null | undefined;
-  value: UpdateFirewallConfigRequestBodySecurityRequest8Value$Outbound;
+  id: string;
+  value: UpdateFirewallConfigRequestBodySecurityRequest11Value$Outbound;
 };
 
 /** @internal */
-export const UpdateFirewallConfigRequestBody8$outboundSchema: z.ZodType<
-  UpdateFirewallConfigRequestBody8$Outbound,
+export const RequestBody11$outboundSchema: z.ZodType<
+  RequestBody11$Outbound,
   z.ZodTypeDef,
-  UpdateFirewallConfigRequestBody8
+  RequestBody11
 > = z.object({
-  action: UpdateFirewallConfigRequestBodySecurityRequest8Action$outboundSchema,
-  id: z.nullable(z.any()).optional(),
+  action: UpdateFirewallConfigRequestBodySecurityRequest11Action$outboundSchema,
+  id: z.string(),
   value: z.lazy(() =>
-    UpdateFirewallConfigRequestBodySecurityRequest8Value$outboundSchema
+    UpdateFirewallConfigRequestBodySecurityRequest11Value$outboundSchema
   ),
 });
 
-export function updateFirewallConfigRequestBody8ToJSON(
-  updateFirewallConfigRequestBody8: UpdateFirewallConfigRequestBody8,
-): string {
-  return JSON.stringify(
-    UpdateFirewallConfigRequestBody8$outboundSchema.parse(
-      updateFirewallConfigRequestBody8,
-    ),
-  );
+export function requestBody11ToJSON(requestBody11: RequestBody11): string {
+  return JSON.stringify(RequestBody11$outboundSchema.parse(requestBody11));
 }
 
 /** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest7Action$outboundSchema:
+export const UpdateFirewallConfigRequestBodySecurityRequest10Action$outboundSchema:
   z.ZodNativeEnum<
-    typeof UpdateFirewallConfigRequestBodySecurityRequest7Action
-  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest7Action);
+    typeof UpdateFirewallConfigRequestBodySecurityRequest10Action
+  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest10Action);
 
 /** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequestType$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateFirewallConfigRequestBodySecurityRequestType> = z
-    .nativeEnum(UpdateFirewallConfigRequestBodySecurityRequestType);
+export const UpdateFirewallConfigRequestBodySecurityRequest10Type$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateFirewallConfigRequestBodySecurityRequest10Type> =
+    z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest10Type);
 
 /** @internal */
-export const UpdateFirewallConfigRequestBodySecurityOp$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateFirewallConfigRequestBodySecurityOp> = z
-    .nativeEnum(UpdateFirewallConfigRequestBodySecurityOp);
+export const UpdateFirewallConfigRequestBodySecurityRequest10Op$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateFirewallConfigRequestBodySecurityRequest10Op> = z
+    .nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest10Op);
 
 /** @internal */
-export type UpdateFirewallConfigRequestBodySecurityRequest7Value$Outbound =
+export type UpdateFirewallConfigRequestBodySecurityRequest10ValueValue$Outbound =
   | string
   | Array<string>
   | number;
 
 /** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest7Value$outboundSchema:
+export const UpdateFirewallConfigRequestBodySecurityRequest10ValueValue$outboundSchema:
   z.ZodType<
-    UpdateFirewallConfigRequestBodySecurityRequest7Value$Outbound,
+    UpdateFirewallConfigRequestBodySecurityRequest10ValueValue$Outbound,
     z.ZodTypeDef,
-    UpdateFirewallConfigRequestBodySecurityRequest7Value
+    UpdateFirewallConfigRequestBodySecurityRequest10ValueValue
   > = smartUnion([z.string(), z.array(z.string()), z.number()]);
 
-export function updateFirewallConfigRequestBodySecurityRequest7ValueToJSON(
-  updateFirewallConfigRequestBodySecurityRequest7Value:
-    UpdateFirewallConfigRequestBodySecurityRequest7Value,
+export function updateFirewallConfigRequestBodySecurityRequest10ValueValueToJSON(
+  updateFirewallConfigRequestBodySecurityRequest10ValueValue:
+    UpdateFirewallConfigRequestBodySecurityRequest10ValueValue,
 ): string {
   return JSON.stringify(
-    UpdateFirewallConfigRequestBodySecurityRequest7Value$outboundSchema.parse(
-      updateFirewallConfigRequestBodySecurityRequest7Value,
-    ),
+    UpdateFirewallConfigRequestBodySecurityRequest10ValueValue$outboundSchema
+      .parse(updateFirewallConfigRequestBodySecurityRequest10ValueValue),
   );
 }
 
 /** @internal */
-export type UpdateFirewallConfigRequestBodySecurityConditions$Outbound = {
-  type: string;
-  op: string;
-  neg?: boolean | undefined;
-  key?: string | undefined;
-  value?: string | Array<string> | number | undefined;
-};
+export type UpdateFirewallConfigRequestBodySecurityRequest10Conditions$Outbound =
+  {
+    type: string;
+    op: string;
+    neg?: boolean | undefined;
+    key?: string | undefined;
+    value?: string | Array<string> | number | undefined;
+  };
 
 /** @internal */
-export const UpdateFirewallConfigRequestBodySecurityConditions$outboundSchema:
+export const UpdateFirewallConfigRequestBodySecurityRequest10Conditions$outboundSchema:
   z.ZodType<
-    UpdateFirewallConfigRequestBodySecurityConditions$Outbound,
+    UpdateFirewallConfigRequestBodySecurityRequest10Conditions$Outbound,
     z.ZodTypeDef,
-    UpdateFirewallConfigRequestBodySecurityConditions
+    UpdateFirewallConfigRequestBodySecurityRequest10Conditions
   > = z.object({
-    type: UpdateFirewallConfigRequestBodySecurityRequestType$outboundSchema,
-    op: UpdateFirewallConfigRequestBodySecurityOp$outboundSchema,
+    type: UpdateFirewallConfigRequestBodySecurityRequest10Type$outboundSchema,
+    op: UpdateFirewallConfigRequestBodySecurityRequest10Op$outboundSchema,
     neg: z.boolean().optional(),
     key: z.string().optional(),
     value: smartUnion([z.string(), z.array(z.string()), z.number()]).optional(),
   });
 
-export function updateFirewallConfigRequestBodySecurityConditionsToJSON(
-  updateFirewallConfigRequestBodySecurityConditions:
-    UpdateFirewallConfigRequestBodySecurityConditions,
+export function updateFirewallConfigRequestBodySecurityRequest10ConditionsToJSON(
+  updateFirewallConfigRequestBodySecurityRequest10Conditions:
+    UpdateFirewallConfigRequestBodySecurityRequest10Conditions,
 ): string {
   return JSON.stringify(
-    UpdateFirewallConfigRequestBodySecurityConditions$outboundSchema.parse(
-      updateFirewallConfigRequestBodySecurityConditions,
-    ),
+    UpdateFirewallConfigRequestBodySecurityRequest10Conditions$outboundSchema
+      .parse(updateFirewallConfigRequestBodySecurityRequest10Conditions),
   );
 }
 
 /** @internal */
-export type UpdateFirewallConfigRequestBodySecurityConditionGroup$Outbound = {
-  conditions: Array<UpdateFirewallConfigRequestBodySecurityConditions$Outbound>;
-};
+export type UpdateFirewallConfigRequestBodySecurityRequest10ConditionGroup$Outbound =
+  {
+    conditions: Array<
+      UpdateFirewallConfigRequestBodySecurityRequest10Conditions$Outbound
+    >;
+  };
 
 /** @internal */
-export const UpdateFirewallConfigRequestBodySecurityConditionGroup$outboundSchema:
+export const UpdateFirewallConfigRequestBodySecurityRequest10ConditionGroup$outboundSchema:
   z.ZodType<
-    UpdateFirewallConfigRequestBodySecurityConditionGroup$Outbound,
+    UpdateFirewallConfigRequestBodySecurityRequest10ConditionGroup$Outbound,
     z.ZodTypeDef,
-    UpdateFirewallConfigRequestBodySecurityConditionGroup
+    UpdateFirewallConfigRequestBodySecurityRequest10ConditionGroup
   > = z.object({
     conditions: z.array(
       z.lazy(() =>
-        UpdateFirewallConfigRequestBodySecurityConditions$outboundSchema
+        UpdateFirewallConfigRequestBodySecurityRequest10Conditions$outboundSchema
       ),
     ),
   });
 
-export function updateFirewallConfigRequestBodySecurityConditionGroupToJSON(
-  updateFirewallConfigRequestBodySecurityConditionGroup:
-    UpdateFirewallConfigRequestBodySecurityConditionGroup,
+export function updateFirewallConfigRequestBodySecurityRequest10ConditionGroupToJSON(
+  updateFirewallConfigRequestBodySecurityRequest10ConditionGroup:
+    UpdateFirewallConfigRequestBodySecurityRequest10ConditionGroup,
 ): string {
   return JSON.stringify(
-    UpdateFirewallConfigRequestBodySecurityConditionGroup$outboundSchema.parse(
-      updateFirewallConfigRequestBodySecurityConditionGroup,
-    ),
+    UpdateFirewallConfigRequestBodySecurityRequest10ConditionGroup$outboundSchema
+      .parse(updateFirewallConfigRequestBodySecurityRequest10ConditionGroup),
   );
 }
 
 /** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest7ValueActionAction$outboundSchema:
+export const UpdateFirewallConfigRequestBodySecurityRequest10ValueActionAction$outboundSchema:
   z.ZodNativeEnum<
-    typeof UpdateFirewallConfigRequestBodySecurityRequest7ValueActionAction
+    typeof UpdateFirewallConfigRequestBodySecurityRequest10ValueActionAction
   > = z.nativeEnum(
-    UpdateFirewallConfigRequestBodySecurityRequest7ValueActionAction,
+    UpdateFirewallConfigRequestBodySecurityRequest10ValueActionAction,
   );
 
 /** @internal */
@@ -2195,7 +2376,7 @@ export const UpdateFirewallConfigRequestBodySecurityMitigate$outboundSchema:
     UpdateFirewallConfigRequestBodySecurityMitigate
   > = z.object({
     action:
-      UpdateFirewallConfigRequestBodySecurityRequest7ValueActionAction$outboundSchema,
+      UpdateFirewallConfigRequestBodySecurityRequest10ValueActionAction$outboundSchema,
     rateLimit: smartUnion([
       z.lazy(() => UpdateFirewallConfigRateLimit1$outboundSchema),
       z.string(),
@@ -2221,7 +2402,7 @@ export function updateFirewallConfigRequestBodySecurityMitigateToJSON(
 }
 
 /** @internal */
-export type UpdateFirewallConfigRequestBodySecurityRequest7ValueAction$Outbound =
+export type UpdateFirewallConfigRequestBodySecurityRequest10ValueAction$Outbound =
   {
     mitigate?:
       | UpdateFirewallConfigRequestBodySecurityMitigate$Outbound
@@ -2229,24 +2410,605 @@ export type UpdateFirewallConfigRequestBodySecurityRequest7ValueAction$Outbound 
   };
 
 /** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest7ValueAction$outboundSchema:
+export const UpdateFirewallConfigRequestBodySecurityRequest10ValueAction$outboundSchema:
   z.ZodType<
-    UpdateFirewallConfigRequestBodySecurityRequest7ValueAction$Outbound,
+    UpdateFirewallConfigRequestBodySecurityRequest10ValueAction$Outbound,
     z.ZodTypeDef,
-    UpdateFirewallConfigRequestBodySecurityRequest7ValueAction
+    UpdateFirewallConfigRequestBodySecurityRequest10ValueAction
   > = z.object({
     mitigate: z.lazy(() =>
       UpdateFirewallConfigRequestBodySecurityMitigate$outboundSchema
     ).optional(),
   });
 
-export function updateFirewallConfigRequestBodySecurityRequest7ValueActionToJSON(
-  updateFirewallConfigRequestBodySecurityRequest7ValueAction:
-    UpdateFirewallConfigRequestBodySecurityRequest7ValueAction,
+export function updateFirewallConfigRequestBodySecurityRequest10ValueActionToJSON(
+  updateFirewallConfigRequestBodySecurityRequest10ValueAction:
+    UpdateFirewallConfigRequestBodySecurityRequest10ValueAction,
 ): string {
   return JSON.stringify(
-    UpdateFirewallConfigRequestBodySecurityRequest7ValueAction$outboundSchema
-      .parse(updateFirewallConfigRequestBodySecurityRequest7ValueAction),
+    UpdateFirewallConfigRequestBodySecurityRequest10ValueAction$outboundSchema
+      .parse(updateFirewallConfigRequestBodySecurityRequest10ValueAction),
+  );
+}
+
+/** @internal */
+export type UpdateFirewallConfigRequestBodySecurityRequest10ValidationErrors$Outbound =
+  | Array<string>
+  | string;
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodySecurityRequest10ValidationErrors$outboundSchema:
+  z.ZodType<
+    UpdateFirewallConfigRequestBodySecurityRequest10ValidationErrors$Outbound,
+    z.ZodTypeDef,
+    UpdateFirewallConfigRequestBodySecurityRequest10ValidationErrors
+  > = smartUnion([z.array(z.string()), z.string()]);
+
+export function updateFirewallConfigRequestBodySecurityRequest10ValidationErrorsToJSON(
+  updateFirewallConfigRequestBodySecurityRequest10ValidationErrors:
+    UpdateFirewallConfigRequestBodySecurityRequest10ValidationErrors,
+): string {
+  return JSON.stringify(
+    UpdateFirewallConfigRequestBodySecurityRequest10ValidationErrors$outboundSchema
+      .parse(updateFirewallConfigRequestBodySecurityRequest10ValidationErrors),
+  );
+}
+
+/** @internal */
+export type UpdateFirewallConfigRequestBodySecurityRequest10Value$Outbound = {
+  name: string;
+  description?: string | undefined;
+  active: boolean;
+  conditionGroup: Array<
+    UpdateFirewallConfigRequestBodySecurityRequest10ConditionGroup$Outbound
+  >;
+  action: UpdateFirewallConfigRequestBodySecurityRequest10ValueAction$Outbound;
+  valid?: boolean | undefined;
+  validationErrors?: Array<string> | string | undefined;
+};
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodySecurityRequest10Value$outboundSchema:
+  z.ZodType<
+    UpdateFirewallConfigRequestBodySecurityRequest10Value$Outbound,
+    z.ZodTypeDef,
+    UpdateFirewallConfigRequestBodySecurityRequest10Value
+  > = z.object({
+    name: z.string(),
+    description: z.string().optional(),
+    active: z.boolean(),
+    conditionGroup: z.array(
+      z.lazy(() =>
+        UpdateFirewallConfigRequestBodySecurityRequest10ConditionGroup$outboundSchema
+      ),
+    ),
+    action: z.lazy(() =>
+      UpdateFirewallConfigRequestBodySecurityRequest10ValueAction$outboundSchema
+    ),
+    valid: z.boolean().optional(),
+    validationErrors: smartUnion([z.array(z.string()), z.string()]).optional(),
+  });
+
+export function updateFirewallConfigRequestBodySecurityRequest10ValueToJSON(
+  updateFirewallConfigRequestBodySecurityRequest10Value:
+    UpdateFirewallConfigRequestBodySecurityRequest10Value,
+): string {
+  return JSON.stringify(
+    UpdateFirewallConfigRequestBodySecurityRequest10Value$outboundSchema.parse(
+      updateFirewallConfigRequestBodySecurityRequest10Value,
+    ),
+  );
+}
+
+/** @internal */
+export type UpdateFirewallConfigRequestBody10$Outbound = {
+  action: string;
+  id?: string | undefined;
+  value: UpdateFirewallConfigRequestBodySecurityRequest10Value$Outbound | null;
+};
+
+/** @internal */
+export const UpdateFirewallConfigRequestBody10$outboundSchema: z.ZodType<
+  UpdateFirewallConfigRequestBody10$Outbound,
+  z.ZodTypeDef,
+  UpdateFirewallConfigRequestBody10
+> = z.object({
+  action: UpdateFirewallConfigRequestBodySecurityRequest10Action$outboundSchema,
+  id: z.string().optional(),
+  value: z.nullable(
+    z.lazy(() =>
+      UpdateFirewallConfigRequestBodySecurityRequest10Value$outboundSchema
+    ),
+  ),
+});
+
+export function updateFirewallConfigRequestBody10ToJSON(
+  updateFirewallConfigRequestBody10: UpdateFirewallConfigRequestBody10,
+): string {
+  return JSON.stringify(
+    UpdateFirewallConfigRequestBody10$outboundSchema.parse(
+      updateFirewallConfigRequestBody10,
+    ),
+  );
+}
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodySecurityRequest9Action$outboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateFirewallConfigRequestBodySecurityRequest9Action
+  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest9Action);
+
+/** @internal */
+export type UpdateFirewallConfigRequestBody9$Outbound = {
+  action: string;
+  id?: string | undefined;
+  value: boolean;
+};
+
+/** @internal */
+export const UpdateFirewallConfigRequestBody9$outboundSchema: z.ZodType<
+  UpdateFirewallConfigRequestBody9$Outbound,
+  z.ZodTypeDef,
+  UpdateFirewallConfigRequestBody9
+> = z.object({
+  action: UpdateFirewallConfigRequestBodySecurityRequest9Action$outboundSchema,
+  id: z.string().optional(),
+  value: z.boolean(),
+});
+
+export function updateFirewallConfigRequestBody9ToJSON(
+  updateFirewallConfigRequestBody9: UpdateFirewallConfigRequestBody9,
+): string {
+  return JSON.stringify(
+    UpdateFirewallConfigRequestBody9$outboundSchema.parse(
+      updateFirewallConfigRequestBody9,
+    ),
+  );
+}
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodySecurityRequest8Action$outboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateFirewallConfigRequestBodySecurityRequest8Action
+  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest8Action);
+
+/** @internal */
+export type UpdateFirewallConfigRequestBody8$Outbound = {
+  action: string;
+  id?: any | null | undefined;
+  value?: string | undefined;
+};
+
+/** @internal */
+export const UpdateFirewallConfigRequestBody8$outboundSchema: z.ZodType<
+  UpdateFirewallConfigRequestBody8$Outbound,
+  z.ZodTypeDef,
+  UpdateFirewallConfigRequestBody8
+> = z.object({
+  action: UpdateFirewallConfigRequestBodySecurityRequest8Action$outboundSchema,
+  id: z.nullable(z.any()).optional(),
+  value: z.string().optional(),
+});
+
+export function updateFirewallConfigRequestBody8ToJSON(
+  updateFirewallConfigRequestBody8: UpdateFirewallConfigRequestBody8,
+): string {
+  return JSON.stringify(
+    UpdateFirewallConfigRequestBody8$outboundSchema.parse(
+      updateFirewallConfigRequestBody8,
+    ),
+  );
+}
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodySecurityRequest7Action$outboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateFirewallConfigRequestBodySecurityRequest7Action
+  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest7Action);
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodySecurityRequest7ValueAction$outboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateFirewallConfigRequestBodySecurityRequest7ValueAction
+  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest7ValueAction);
+
+/** @internal */
+export type UpdateFirewallConfigRequestBodySecurityRequest7Value$Outbound = {
+  action: string;
+};
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodySecurityRequest7Value$outboundSchema:
+  z.ZodType<
+    UpdateFirewallConfigRequestBodySecurityRequest7Value$Outbound,
+    z.ZodTypeDef,
+    UpdateFirewallConfigRequestBodySecurityRequest7Value
+  > = z.object({
+    action:
+      UpdateFirewallConfigRequestBodySecurityRequest7ValueAction$outboundSchema,
+  });
+
+export function updateFirewallConfigRequestBodySecurityRequest7ValueToJSON(
+  updateFirewallConfigRequestBodySecurityRequest7Value:
+    UpdateFirewallConfigRequestBodySecurityRequest7Value,
+): string {
+  return JSON.stringify(
+    UpdateFirewallConfigRequestBodySecurityRequest7Value$outboundSchema.parse(
+      updateFirewallConfigRequestBodySecurityRequest7Value,
+    ),
+  );
+}
+
+/** @internal */
+export type UpdateFirewallConfigRequestBody7$Outbound = {
+  action: string;
+  id?: any | null | undefined;
+  value: UpdateFirewallConfigRequestBodySecurityRequest7Value$Outbound | null;
+};
+
+/** @internal */
+export const UpdateFirewallConfigRequestBody7$outboundSchema: z.ZodType<
+  UpdateFirewallConfigRequestBody7$Outbound,
+  z.ZodTypeDef,
+  UpdateFirewallConfigRequestBody7
+> = z.object({
+  action: UpdateFirewallConfigRequestBodySecurityRequest7Action$outboundSchema,
+  id: z.nullable(z.any()).optional(),
+  value: z.nullable(
+    z.lazy(() =>
+      UpdateFirewallConfigRequestBodySecurityRequest7Value$outboundSchema
+    ),
+  ),
+});
+
+export function updateFirewallConfigRequestBody7ToJSON(
+  updateFirewallConfigRequestBody7: UpdateFirewallConfigRequestBody7,
+): string {
+  return JSON.stringify(
+    UpdateFirewallConfigRequestBody7$outboundSchema.parse(
+      updateFirewallConfigRequestBody7,
+    ),
+  );
+}
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodySecurityRequest6Action$outboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateFirewallConfigRequestBodySecurityRequest6Action
+  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest6Action);
+
+/** @internal */
+export type UpdateFirewallConfigRequestBody6$Outbound = {
+  action: string;
+  id: string;
+  value?: string | undefined;
+};
+
+/** @internal */
+export const UpdateFirewallConfigRequestBody6$outboundSchema: z.ZodType<
+  UpdateFirewallConfigRequestBody6$Outbound,
+  z.ZodTypeDef,
+  UpdateFirewallConfigRequestBody6
+> = z.object({
+  action: UpdateFirewallConfigRequestBodySecurityRequest6Action$outboundSchema,
+  id: z.string(),
+  value: z.string().optional(),
+});
+
+export function updateFirewallConfigRequestBody6ToJSON(
+  updateFirewallConfigRequestBody6: UpdateFirewallConfigRequestBody6,
+): string {
+  return JSON.stringify(
+    UpdateFirewallConfigRequestBody6$outboundSchema.parse(
+      updateFirewallConfigRequestBody6,
+    ),
+  );
+}
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodySecurityRequest5Action$outboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateFirewallConfigRequestBodySecurityRequest5Action
+  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest5Action);
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodySecurityRequest5Type$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateFirewallConfigRequestBodySecurityRequest5Type> =
+    z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest5Type);
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodySecurityRequestOp$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateFirewallConfigRequestBodySecurityRequestOp> = z
+    .nativeEnum(UpdateFirewallConfigRequestBodySecurityRequestOp);
+
+/** @internal */
+export type UpdateFirewallConfigRequestBodySecurityRequest5Value$Outbound =
+  | string
+  | Array<string>
+  | number;
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodySecurityRequest5Value$outboundSchema:
+  z.ZodType<
+    UpdateFirewallConfigRequestBodySecurityRequest5Value$Outbound,
+    z.ZodTypeDef,
+    UpdateFirewallConfigRequestBodySecurityRequest5Value
+  > = smartUnion([z.string(), z.array(z.string()), z.number()]);
+
+export function updateFirewallConfigRequestBodySecurityRequest5ValueToJSON(
+  updateFirewallConfigRequestBodySecurityRequest5Value:
+    UpdateFirewallConfigRequestBodySecurityRequest5Value,
+): string {
+  return JSON.stringify(
+    UpdateFirewallConfigRequestBodySecurityRequest5Value$outboundSchema.parse(
+      updateFirewallConfigRequestBodySecurityRequest5Value,
+    ),
+  );
+}
+
+/** @internal */
+export type UpdateFirewallConfigRequestBodySecurityRequestConditions$Outbound =
+  {
+    type: string;
+    op: string;
+    neg?: boolean | undefined;
+    key?: string | undefined;
+    value?: string | Array<string> | number | undefined;
+  };
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodySecurityRequestConditions$outboundSchema:
+  z.ZodType<
+    UpdateFirewallConfigRequestBodySecurityRequestConditions$Outbound,
+    z.ZodTypeDef,
+    UpdateFirewallConfigRequestBodySecurityRequestConditions
+  > = z.object({
+    type: UpdateFirewallConfigRequestBodySecurityRequest5Type$outboundSchema,
+    op: UpdateFirewallConfigRequestBodySecurityRequestOp$outboundSchema,
+    neg: z.boolean().optional(),
+    key: z.string().optional(),
+    value: smartUnion([z.string(), z.array(z.string()), z.number()]).optional(),
+  });
+
+export function updateFirewallConfigRequestBodySecurityRequestConditionsToJSON(
+  updateFirewallConfigRequestBodySecurityRequestConditions:
+    UpdateFirewallConfigRequestBodySecurityRequestConditions,
+): string {
+  return JSON.stringify(
+    UpdateFirewallConfigRequestBodySecurityRequestConditions$outboundSchema
+      .parse(updateFirewallConfigRequestBodySecurityRequestConditions),
+  );
+}
+
+/** @internal */
+export type UpdateFirewallConfigRequestBodySecurityRequestConditionGroup$Outbound =
+  {
+    conditions: Array<
+      UpdateFirewallConfigRequestBodySecurityRequestConditions$Outbound
+    >;
+  };
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodySecurityRequestConditionGroup$outboundSchema:
+  z.ZodType<
+    UpdateFirewallConfigRequestBodySecurityRequestConditionGroup$Outbound,
+    z.ZodTypeDef,
+    UpdateFirewallConfigRequestBodySecurityRequestConditionGroup
+  > = z.object({
+    conditions: z.array(
+      z.lazy(() =>
+        UpdateFirewallConfigRequestBodySecurityRequestConditions$outboundSchema
+      ),
+    ),
+  });
+
+export function updateFirewallConfigRequestBodySecurityRequestConditionGroupToJSON(
+  updateFirewallConfigRequestBodySecurityRequestConditionGroup:
+    UpdateFirewallConfigRequestBodySecurityRequestConditionGroup,
+): string {
+  return JSON.stringify(
+    UpdateFirewallConfigRequestBodySecurityRequestConditionGroup$outboundSchema
+      .parse(updateFirewallConfigRequestBodySecurityRequestConditionGroup),
+  );
+}
+
+/** @internal */
+export type UpdateFirewallConfigRequestBodySecurityRequestValidationErrors$Outbound =
+  | Array<string>
+  | string;
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodySecurityRequestValidationErrors$outboundSchema:
+  z.ZodType<
+    UpdateFirewallConfigRequestBodySecurityRequestValidationErrors$Outbound,
+    z.ZodTypeDef,
+    UpdateFirewallConfigRequestBodySecurityRequestValidationErrors
+  > = smartUnion([z.array(z.string()), z.string()]);
+
+export function updateFirewallConfigRequestBodySecurityRequestValidationErrorsToJSON(
+  updateFirewallConfigRequestBodySecurityRequestValidationErrors:
+    UpdateFirewallConfigRequestBodySecurityRequestValidationErrors,
+): string {
+  return JSON.stringify(
+    UpdateFirewallConfigRequestBodySecurityRequestValidationErrors$outboundSchema
+      .parse(updateFirewallConfigRequestBodySecurityRequestValidationErrors),
+  );
+}
+
+/** @internal */
+export type UpdateFirewallConfigRequestBodySecurityRequestValue$Outbound = {
+  name: string;
+  description?: string | undefined;
+  active: boolean;
+  conditionGroup: Array<
+    UpdateFirewallConfigRequestBodySecurityRequestConditionGroup$Outbound
+  >;
+  valid?: boolean | undefined;
+  validationErrors?: Array<string> | string | undefined;
+};
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodySecurityRequestValue$outboundSchema:
+  z.ZodType<
+    UpdateFirewallConfigRequestBodySecurityRequestValue$Outbound,
+    z.ZodTypeDef,
+    UpdateFirewallConfigRequestBodySecurityRequestValue
+  > = z.object({
+    name: z.string(),
+    description: z.string().optional(),
+    active: z.boolean(),
+    conditionGroup: z.array(
+      z.lazy(() =>
+        UpdateFirewallConfigRequestBodySecurityRequestConditionGroup$outboundSchema
+      ),
+    ),
+    valid: z.boolean().optional(),
+    validationErrors: smartUnion([z.array(z.string()), z.string()]).optional(),
+  });
+
+export function updateFirewallConfigRequestBodySecurityRequestValueToJSON(
+  updateFirewallConfigRequestBodySecurityRequestValue:
+    UpdateFirewallConfigRequestBodySecurityRequestValue,
+): string {
+  return JSON.stringify(
+    UpdateFirewallConfigRequestBodySecurityRequestValue$outboundSchema.parse(
+      updateFirewallConfigRequestBodySecurityRequestValue,
+    ),
+  );
+}
+
+/** @internal */
+export type UpdateFirewallConfigRequestBody5$Outbound = {
+  action: string;
+  id: string;
+  value: UpdateFirewallConfigRequestBodySecurityRequestValue$Outbound;
+};
+
+/** @internal */
+export const UpdateFirewallConfigRequestBody5$outboundSchema: z.ZodType<
+  UpdateFirewallConfigRequestBody5$Outbound,
+  z.ZodTypeDef,
+  UpdateFirewallConfigRequestBody5
+> = z.object({
+  action: UpdateFirewallConfigRequestBodySecurityRequest5Action$outboundSchema,
+  id: z.string(),
+  value: z.lazy(() =>
+    UpdateFirewallConfigRequestBodySecurityRequestValue$outboundSchema
+  ),
+});
+
+export function updateFirewallConfigRequestBody5ToJSON(
+  updateFirewallConfigRequestBody5: UpdateFirewallConfigRequestBody5,
+): string {
+  return JSON.stringify(
+    UpdateFirewallConfigRequestBody5$outboundSchema.parse(
+      updateFirewallConfigRequestBody5,
+    ),
+  );
+}
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodySecurityRequest4Action$outboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateFirewallConfigRequestBodySecurityRequest4Action
+  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest4Action);
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodySecurityRequestType$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateFirewallConfigRequestBodySecurityRequestType> = z
+    .nativeEnum(UpdateFirewallConfigRequestBodySecurityRequestType);
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodySecurityOp$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateFirewallConfigRequestBodySecurityOp> = z
+    .nativeEnum(UpdateFirewallConfigRequestBodySecurityOp);
+
+/** @internal */
+export type UpdateFirewallConfigRequestBodySecurityRequest4Value$Outbound =
+  | string
+  | Array<string>
+  | number;
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodySecurityRequest4Value$outboundSchema:
+  z.ZodType<
+    UpdateFirewallConfigRequestBodySecurityRequest4Value$Outbound,
+    z.ZodTypeDef,
+    UpdateFirewallConfigRequestBodySecurityRequest4Value
+  > = smartUnion([z.string(), z.array(z.string()), z.number()]);
+
+export function updateFirewallConfigRequestBodySecurityRequest4ValueToJSON(
+  updateFirewallConfigRequestBodySecurityRequest4Value:
+    UpdateFirewallConfigRequestBodySecurityRequest4Value,
+): string {
+  return JSON.stringify(
+    UpdateFirewallConfigRequestBodySecurityRequest4Value$outboundSchema.parse(
+      updateFirewallConfigRequestBodySecurityRequest4Value,
+    ),
+  );
+}
+
+/** @internal */
+export type UpdateFirewallConfigRequestBodySecurityConditions$Outbound = {
+  type: string;
+  op: string;
+  neg?: boolean | undefined;
+  key?: string | undefined;
+  value?: string | Array<string> | number | undefined;
+};
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodySecurityConditions$outboundSchema:
+  z.ZodType<
+    UpdateFirewallConfigRequestBodySecurityConditions$Outbound,
+    z.ZodTypeDef,
+    UpdateFirewallConfigRequestBodySecurityConditions
+  > = z.object({
+    type: UpdateFirewallConfigRequestBodySecurityRequestType$outboundSchema,
+    op: UpdateFirewallConfigRequestBodySecurityOp$outboundSchema,
+    neg: z.boolean().optional(),
+    key: z.string().optional(),
+    value: smartUnion([z.string(), z.array(z.string()), z.number()]).optional(),
+  });
+
+export function updateFirewallConfigRequestBodySecurityConditionsToJSON(
+  updateFirewallConfigRequestBodySecurityConditions:
+    UpdateFirewallConfigRequestBodySecurityConditions,
+): string {
+  return JSON.stringify(
+    UpdateFirewallConfigRequestBodySecurityConditions$outboundSchema.parse(
+      updateFirewallConfigRequestBodySecurityConditions,
+    ),
+  );
+}
+
+/** @internal */
+export type UpdateFirewallConfigRequestBodySecurityConditionGroup$Outbound = {
+  conditions: Array<UpdateFirewallConfigRequestBodySecurityConditions$Outbound>;
+};
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodySecurityConditionGroup$outboundSchema:
+  z.ZodType<
+    UpdateFirewallConfigRequestBodySecurityConditionGroup$Outbound,
+    z.ZodTypeDef,
+    UpdateFirewallConfigRequestBodySecurityConditionGroup
+  > = z.object({
+    conditions: z.array(
+      z.lazy(() =>
+        UpdateFirewallConfigRequestBodySecurityConditions$outboundSchema
+      ),
+    ),
+  });
+
+export function updateFirewallConfigRequestBodySecurityConditionGroupToJSON(
+  updateFirewallConfigRequestBodySecurityConditionGroup:
+    UpdateFirewallConfigRequestBodySecurityConditionGroup,
+): string {
+  return JSON.stringify(
+    UpdateFirewallConfigRequestBodySecurityConditionGroup$outboundSchema.parse(
+      updateFirewallConfigRequestBodySecurityConditionGroup,
+    ),
   );
 }
 
@@ -2274,166 +3036,15 @@ export function updateFirewallConfigRequestBodySecurityValidationErrorsToJSON(
 }
 
 /** @internal */
-export type UpdateFirewallConfigRequestBodySecurityRequestValue$Outbound = {
+export type UpdateFirewallConfigRequestBodySecurityValue$Outbound = {
   name: string;
   description?: string | undefined;
   active: boolean;
   conditionGroup: Array<
     UpdateFirewallConfigRequestBodySecurityConditionGroup$Outbound
   >;
-  action: UpdateFirewallConfigRequestBodySecurityRequest7ValueAction$Outbound;
   valid?: boolean | undefined;
   validationErrors?: Array<string> | string | undefined;
-};
-
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequestValue$outboundSchema:
-  z.ZodType<
-    UpdateFirewallConfigRequestBodySecurityRequestValue$Outbound,
-    z.ZodTypeDef,
-    UpdateFirewallConfigRequestBodySecurityRequestValue
-  > = z.object({
-    name: z.string(),
-    description: z.string().optional(),
-    active: z.boolean(),
-    conditionGroup: z.array(
-      z.lazy(() =>
-        UpdateFirewallConfigRequestBodySecurityConditionGroup$outboundSchema
-      ),
-    ),
-    action: z.lazy(() =>
-      UpdateFirewallConfigRequestBodySecurityRequest7ValueAction$outboundSchema
-    ),
-    valid: z.boolean().optional(),
-    validationErrors: smartUnion([z.array(z.string()), z.string()]).optional(),
-  });
-
-export function updateFirewallConfigRequestBodySecurityRequestValueToJSON(
-  updateFirewallConfigRequestBodySecurityRequestValue:
-    UpdateFirewallConfigRequestBodySecurityRequestValue,
-): string {
-  return JSON.stringify(
-    UpdateFirewallConfigRequestBodySecurityRequestValue$outboundSchema.parse(
-      updateFirewallConfigRequestBodySecurityRequestValue,
-    ),
-  );
-}
-
-/** @internal */
-export type UpdateFirewallConfigRequestBody7$Outbound = {
-  action: string;
-  id?: any | null | undefined;
-  value: UpdateFirewallConfigRequestBodySecurityRequestValue$Outbound | null;
-};
-
-/** @internal */
-export const UpdateFirewallConfigRequestBody7$outboundSchema: z.ZodType<
-  UpdateFirewallConfigRequestBody7$Outbound,
-  z.ZodTypeDef,
-  UpdateFirewallConfigRequestBody7
-> = z.object({
-  action: UpdateFirewallConfigRequestBodySecurityRequest7Action$outboundSchema,
-  id: z.nullable(z.any()).optional(),
-  value: z.nullable(
-    z.lazy(() =>
-      UpdateFirewallConfigRequestBodySecurityRequestValue$outboundSchema
-    ),
-  ),
-});
-
-export function updateFirewallConfigRequestBody7ToJSON(
-  updateFirewallConfigRequestBody7: UpdateFirewallConfigRequestBody7,
-): string {
-  return JSON.stringify(
-    UpdateFirewallConfigRequestBody7$outboundSchema.parse(
-      updateFirewallConfigRequestBody7,
-    ),
-  );
-}
-
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest6Action$outboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateFirewallConfigRequestBodySecurityRequest6Action
-  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest6Action);
-
-/** @internal */
-export type UpdateFirewallConfigRequestBody6$Outbound = {
-  action: string;
-  id?: string | undefined;
-  value: boolean;
-};
-
-/** @internal */
-export const UpdateFirewallConfigRequestBody6$outboundSchema: z.ZodType<
-  UpdateFirewallConfigRequestBody6$Outbound,
-  z.ZodTypeDef,
-  UpdateFirewallConfigRequestBody6
-> = z.object({
-  action: UpdateFirewallConfigRequestBodySecurityRequest6Action$outboundSchema,
-  id: z.string().optional(),
-  value: z.boolean(),
-});
-
-export function updateFirewallConfigRequestBody6ToJSON(
-  updateFirewallConfigRequestBody6: UpdateFirewallConfigRequestBody6,
-): string {
-  return JSON.stringify(
-    UpdateFirewallConfigRequestBody6$outboundSchema.parse(
-      updateFirewallConfigRequestBody6,
-    ),
-  );
-}
-
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest5Action$outboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateFirewallConfigRequestBodySecurityRequest5Action
-  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest5Action);
-
-/** @internal */
-export type UpdateFirewallConfigRequestBody5$Outbound = {
-  action: string;
-  id: string;
-  value?: string | undefined;
-};
-
-/** @internal */
-export const UpdateFirewallConfigRequestBody5$outboundSchema: z.ZodType<
-  UpdateFirewallConfigRequestBody5$Outbound,
-  z.ZodTypeDef,
-  UpdateFirewallConfigRequestBody5
-> = z.object({
-  action: UpdateFirewallConfigRequestBodySecurityRequest5Action$outboundSchema,
-  id: z.string(),
-  value: z.string().optional(),
-});
-
-export function updateFirewallConfigRequestBody5ToJSON(
-  updateFirewallConfigRequestBody5: UpdateFirewallConfigRequestBody5,
-): string {
-  return JSON.stringify(
-    UpdateFirewallConfigRequestBody5$outboundSchema.parse(
-      updateFirewallConfigRequestBody5,
-    ),
-  );
-}
-
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest4Action$outboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateFirewallConfigRequestBodySecurityRequest4Action
-  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest4Action);
-
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest4ValueAction$outboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateFirewallConfigRequestBodySecurityRequest4ValueAction
-  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest4ValueAction);
-
-/** @internal */
-export type UpdateFirewallConfigRequestBodySecurityValue$Outbound = {
-  action: string;
 };
 
 /** @internal */
@@ -2443,8 +3054,16 @@ export const UpdateFirewallConfigRequestBodySecurityValue$outboundSchema:
     z.ZodTypeDef,
     UpdateFirewallConfigRequestBodySecurityValue
   > = z.object({
-    action:
-      UpdateFirewallConfigRequestBodySecurityRequest4ValueAction$outboundSchema,
+    name: z.string(),
+    description: z.string().optional(),
+    active: z.boolean(),
+    conditionGroup: z.array(
+      z.lazy(() =>
+        UpdateFirewallConfigRequestBodySecurityConditionGroup$outboundSchema
+      ),
+    ),
+    valid: z.boolean().optional(),
+    validationErrors: smartUnion([z.array(z.string()), z.string()]).optional(),
   });
 
 export function updateFirewallConfigRequestBodySecurityValueToJSON(
@@ -2461,7 +3080,7 @@ export function updateFirewallConfigRequestBodySecurityValueToJSON(
 /** @internal */
 export type UpdateFirewallConfigRequestBody4$Outbound = {
   action: string;
-  id: string;
+  id?: string | undefined;
   value: UpdateFirewallConfigRequestBodySecurityValue$Outbound | null;
 };
 
@@ -2472,7 +3091,7 @@ export const UpdateFirewallConfigRequestBody4$outboundSchema: z.ZodType<
   UpdateFirewallConfigRequestBody4
 > = z.object({
   action: UpdateFirewallConfigRequestBodySecurityRequest4Action$outboundSchema,
-  id: z.string(),
+  id: z.string().optional(),
   value: z.nullable(
     z.lazy(() => UpdateFirewallConfigRequestBodySecurityValue$outboundSchema),
   ),
@@ -3017,24 +3636,27 @@ export function updateFirewallConfigRequestBody1ToJSON(
 /** @internal */
 export type UpdateFirewallConfigRequestBody$Outbound =
   | UpdateFirewallConfigRequestBody2$Outbound
-  | UpdateFirewallConfigRequestBody4$Outbound
-  | UpdateFirewallConfigRequestBody8$Outbound
-  | UpdateFirewallConfigRequestBody10$Outbound
+  | UpdateFirewallConfigRequestBody5$Outbound
+  | UpdateFirewallConfigRequestBody7$Outbound
   | RequestBody11$Outbound
+  | RequestBody13$Outbound
   | RequestBody14$Outbound
-  | RequestBody16$Outbound
   | RequestBody17$Outbound
+  | RequestBody19$Outbound
+  | RequestBody20$Outbound
   | UpdateFirewallConfigRequestBody1$Outbound
   | UpdateFirewallConfigRequestBody3$Outbound
-  | UpdateFirewallConfigRequestBody5$Outbound
+  | UpdateFirewallConfigRequestBody4$Outbound
   | UpdateFirewallConfigRequestBody6$Outbound
-  | UpdateFirewallConfigRequestBody7$Outbound
+  | UpdateFirewallConfigRequestBody8$Outbound
   | UpdateFirewallConfigRequestBody9$Outbound
-  | RequestBody13$Outbound
-  | RequestBody15$Outbound
+  | UpdateFirewallConfigRequestBody10$Outbound
+  | RequestBody12$Outbound
+  | RequestBody16$Outbound
   | RequestBody18$Outbound
-  | RequestBody19$Outbound
-  | RequestBody12$Outbound;
+  | RequestBody21$Outbound
+  | RequestBody22$Outbound
+  | RequestBody15$Outbound;
 
 /** @internal */
 export const UpdateFirewallConfigRequestBody$outboundSchema: z.ZodType<
@@ -3043,24 +3665,27 @@ export const UpdateFirewallConfigRequestBody$outboundSchema: z.ZodType<
   UpdateFirewallConfigRequestBody
 > = smartUnion([
   z.lazy(() => UpdateFirewallConfigRequestBody2$outboundSchema),
-  z.lazy(() => UpdateFirewallConfigRequestBody4$outboundSchema),
-  z.lazy(() => UpdateFirewallConfigRequestBody8$outboundSchema),
-  z.lazy(() => UpdateFirewallConfigRequestBody10$outboundSchema),
+  z.lazy(() => UpdateFirewallConfigRequestBody5$outboundSchema),
+  z.lazy(() => UpdateFirewallConfigRequestBody7$outboundSchema),
   z.lazy(() => RequestBody11$outboundSchema),
+  z.lazy(() => RequestBody13$outboundSchema),
   z.lazy(() => RequestBody14$outboundSchema),
-  z.lazy(() => RequestBody16$outboundSchema),
   z.lazy(() => RequestBody17$outboundSchema),
+  z.lazy(() => RequestBody19$outboundSchema),
+  z.lazy(() => RequestBody20$outboundSchema),
   z.lazy(() => UpdateFirewallConfigRequestBody1$outboundSchema),
   z.lazy(() => UpdateFirewallConfigRequestBody3$outboundSchema),
-  z.lazy(() => UpdateFirewallConfigRequestBody5$outboundSchema),
+  z.lazy(() => UpdateFirewallConfigRequestBody4$outboundSchema),
   z.lazy(() => UpdateFirewallConfigRequestBody6$outboundSchema),
-  z.lazy(() => UpdateFirewallConfigRequestBody7$outboundSchema),
+  z.lazy(() => UpdateFirewallConfigRequestBody8$outboundSchema),
   z.lazy(() => UpdateFirewallConfigRequestBody9$outboundSchema),
-  z.lazy(() => RequestBody13$outboundSchema),
-  z.lazy(() => RequestBody15$outboundSchema),
-  z.lazy(() => RequestBody18$outboundSchema),
-  z.lazy(() => RequestBody19$outboundSchema),
+  z.lazy(() => UpdateFirewallConfigRequestBody10$outboundSchema),
   z.lazy(() => RequestBody12$outboundSchema),
+  z.lazy(() => RequestBody16$outboundSchema),
+  z.lazy(() => RequestBody18$outboundSchema),
+  z.lazy(() => RequestBody21$outboundSchema),
+  z.lazy(() => RequestBody22$outboundSchema),
+  z.lazy(() => RequestBody15$outboundSchema),
 ]);
 
 export function updateFirewallConfigRequestBodyToJSON(
@@ -3080,24 +3705,27 @@ export type UpdateFirewallConfigRequest$Outbound = {
   slug?: string | undefined;
   RequestBody:
     | UpdateFirewallConfigRequestBody2$Outbound
-    | UpdateFirewallConfigRequestBody4$Outbound
-    | UpdateFirewallConfigRequestBody8$Outbound
-    | UpdateFirewallConfigRequestBody10$Outbound
+    | UpdateFirewallConfigRequestBody5$Outbound
+    | UpdateFirewallConfigRequestBody7$Outbound
     | RequestBody11$Outbound
+    | RequestBody13$Outbound
     | RequestBody14$Outbound
-    | RequestBody16$Outbound
     | RequestBody17$Outbound
+    | RequestBody19$Outbound
+    | RequestBody20$Outbound
     | UpdateFirewallConfigRequestBody1$Outbound
     | UpdateFirewallConfigRequestBody3$Outbound
-    | UpdateFirewallConfigRequestBody5$Outbound
+    | UpdateFirewallConfigRequestBody4$Outbound
     | UpdateFirewallConfigRequestBody6$Outbound
-    | UpdateFirewallConfigRequestBody7$Outbound
+    | UpdateFirewallConfigRequestBody8$Outbound
     | UpdateFirewallConfigRequestBody9$Outbound
-    | RequestBody13$Outbound
-    | RequestBody15$Outbound
+    | UpdateFirewallConfigRequestBody10$Outbound
+    | RequestBody12$Outbound
+    | RequestBody16$Outbound
     | RequestBody18$Outbound
-    | RequestBody19$Outbound
-    | RequestBody12$Outbound;
+    | RequestBody21$Outbound
+    | RequestBody22$Outbound
+    | RequestBody15$Outbound;
 };
 
 /** @internal */
@@ -3111,24 +3739,27 @@ export const UpdateFirewallConfigRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
   requestBody: smartUnion([
     z.lazy(() => UpdateFirewallConfigRequestBody2$outboundSchema),
-    z.lazy(() => UpdateFirewallConfigRequestBody4$outboundSchema),
-    z.lazy(() => UpdateFirewallConfigRequestBody8$outboundSchema),
-    z.lazy(() => UpdateFirewallConfigRequestBody10$outboundSchema),
+    z.lazy(() => UpdateFirewallConfigRequestBody5$outboundSchema),
+    z.lazy(() => UpdateFirewallConfigRequestBody7$outboundSchema),
     z.lazy(() => RequestBody11$outboundSchema),
+    z.lazy(() => RequestBody13$outboundSchema),
     z.lazy(() => RequestBody14$outboundSchema),
-    z.lazy(() => RequestBody16$outboundSchema),
     z.lazy(() => RequestBody17$outboundSchema),
+    z.lazy(() => RequestBody19$outboundSchema),
+    z.lazy(() => RequestBody20$outboundSchema),
     z.lazy(() => UpdateFirewallConfigRequestBody1$outboundSchema),
     z.lazy(() => UpdateFirewallConfigRequestBody3$outboundSchema),
-    z.lazy(() => UpdateFirewallConfigRequestBody5$outboundSchema),
+    z.lazy(() => UpdateFirewallConfigRequestBody4$outboundSchema),
     z.lazy(() => UpdateFirewallConfigRequestBody6$outboundSchema),
-    z.lazy(() => UpdateFirewallConfigRequestBody7$outboundSchema),
+    z.lazy(() => UpdateFirewallConfigRequestBody8$outboundSchema),
     z.lazy(() => UpdateFirewallConfigRequestBody9$outboundSchema),
-    z.lazy(() => RequestBody13$outboundSchema),
-    z.lazy(() => RequestBody15$outboundSchema),
-    z.lazy(() => RequestBody18$outboundSchema),
-    z.lazy(() => RequestBody19$outboundSchema),
+    z.lazy(() => UpdateFirewallConfigRequestBody10$outboundSchema),
     z.lazy(() => RequestBody12$outboundSchema),
+    z.lazy(() => RequestBody16$outboundSchema),
+    z.lazy(() => RequestBody18$outboundSchema),
+    z.lazy(() => RequestBody21$outboundSchema),
+    z.lazy(() => RequestBody22$outboundSchema),
+    z.lazy(() => RequestBody15$outboundSchema),
   ]),
 }).transform((v) => {
   return remap$(v, {

@@ -23,7 +23,6 @@ let value: GetMicrofrontendsInGroupAlias = {
     readyState: "INITIALIZING",
     type: "LAMBDAS",
     url: "https://quarrelsome-formamide.org/",
-    userId: "<id>",
   },
   domain: "jittery-mythology.biz",
   environment: "preview",

@@ -513,6 +513,10 @@ export type PatchTeamRequestBody = {
    */
   sensitiveEnvironmentVariablePolicy?: string | undefined;
   /**
+   * Require production secrets to be in their own environment group: one of on, off or default.
+   */
+  disjunctiveProductionSecretPolicy?: string | undefined;
+  /**
    * Whether or not remote caching is enabled for the team
    */
   remoteCaching?: PatchTeamRemoteCaching | undefined;
@@ -1563,6 +1567,7 @@ export type PatchTeamRequestBody$Outbound = {
   enablePreviewFeedback?: string | undefined;
   enableProductionFeedback?: string | undefined;
   sensitiveEnvironmentVariablePolicy?: string | undefined;
+  disjunctiveProductionSecretPolicy?: string | undefined;
   remoteCaching?: PatchTeamRemoteCaching$Outbound | undefined;
   hideIpAddresses?: boolean | undefined;
   hideIpAddressesInLogDrains?: boolean | undefined;
@@ -1606,6 +1611,7 @@ export const PatchTeamRequestBody$outboundSchema: z.ZodType<
   enablePreviewFeedback: z.string().optional(),
   enableProductionFeedback: z.string().optional(),
   sensitiveEnvironmentVariablePolicy: z.string().optional(),
+  disjunctiveProductionSecretPolicy: z.string().optional(),
   remoteCaching: z.lazy(() => PatchTeamRemoteCaching$outboundSchema).optional(),
   hideIpAddresses: z.boolean().optional(),
   hideIpAddressesInLogDrains: z.boolean().optional(),

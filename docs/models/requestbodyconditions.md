@@ -6,7 +6,7 @@
 import { RequestBodyConditions } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
 let value: RequestBodyConditions = {
-  type: "environment",
+  type: "domain_environment",
   op: "neq",
 };
 ```

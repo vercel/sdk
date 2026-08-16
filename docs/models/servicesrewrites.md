@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ServicesRewrites } from "@vercel/sdk/models/createdeploymenttransformsdeploymentsresponseop.js";
+import { ServicesRewrites } from "@vercel/sdk/models/createdeploymenttransformsdeploymentsresponsetype.js";
 
 let value: ServicesRewrites = {
   source: "<value>",

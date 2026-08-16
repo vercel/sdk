@@ -3,12 +3,12 @@
 ## Example Usage
 
 ```typescript
-import { GetSecurityFirewallConfigRulesSecurityResponseConditionGroup } from "@vercel/sdk/models/getsecurityfirewallconfigresponsebody.js";
+import { GetSecurityFirewallConfigRulesSecurityResponseConditionGroup } from "@vercel/sdk/models/getsecurityfirewallconfiglogheaderssecurityresponse200applicationjsonresponsebodydraftrules2.js";
 
 let value: GetSecurityFirewallConfigRulesSecurityResponseConditionGroup = {
   conditions: [
     {
-      type: "query",
+      type: "rate_limit_api_id",
       op: "ninc",
     },
   ],
@@ -17,6 +17,6 @@ let value: GetSecurityFirewallConfigRulesSecurityResponseConditionGroup = {
 
 ## Fields
 
-| Field                                                                                                                                            | Type                                                                                                                                             | Required                                                                                                                                         | Description                                                                                                                                      |
-| ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `conditions`                                                                                                                                     | [models.GetSecurityFirewallConfigRulesSecurityResponse200Conditions](../models/getsecurityfirewallconfigrulessecurityresponse200conditions.md)[] | :heavy_check_mark:                                                                                                                               | N/A                                                                                                                                              |
+| Field                                                                                                                                      | Type                                                                                                                                       | Required                                                                                                                                   | Description                                                                                                                                |
+| ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| `conditions`                                                                                                                               | [models.GetSecurityFirewallConfigRulesSecurityResponseConditions](../models/getsecurityfirewallconfigrulessecurityresponseconditions.md)[] | :heavy_check_mark:                                                                                                                         | N/A                                                                                                                                        |

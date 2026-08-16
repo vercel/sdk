@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { OneOrigin } from "@vercel/sdk/models/one1.js";
+import { OneOrigin } from "@vercel/sdk/models/edgemiddlewareinvocations.js";
 
 let value: OneOrigin = "chatgpt";
 ```
@@ -11,5 +11,5 @@ let value: OneOrigin = "chatgpt";
 ## Values
 
 ```typescript
-"apple" | "bitbucket" | "chatgpt" | "email" | "github" | "gitlab" | "google" | "invite" | "magic-link" | "otp" | "otp-link" | "saml" | "webauthn"
+"apple" | "bitbucket" | "chatgpt" | "email" | "emu-recovery" | "github" | "gitlab" | "google" | "invite" | "magic-link" | "otp" | "otp-link" | "saml" | "webauthn"
 ```

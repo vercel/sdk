@@ -283,7 +283,10 @@ export type GetProjectDeployment = {
   teamId?: string | null | undefined;
   type: GetProjectProjectsResponse200ApplicationJSONResponseBodyAliasType;
   url: string;
-  userId: string;
+  /**
+   * Present for user creators; omitted for app/integration/system creators.
+   */
+  userId?: string | undefined;
   withCache?: boolean | undefined;
 };
 
@@ -1177,7 +1180,10 @@ export type GetProjectLatestDeployments = {
   teamId?: string | null | undefined;
   type: GetProjectProjectsResponseType;
   url: string;
-  userId: string;
+  /**
+   * Present for user creators; omitted for app/integration/system creators.
+   */
+  userId?: string | undefined;
   withCache?: boolean | undefined;
 };
 
@@ -1666,7 +1672,7 @@ export type GetProjectChecks = {
    */
   excludeStatusCodes?: Array<number> | undefined;
   /**
-   * Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted.
+   * Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted.
    */
   excludePaths?: Array<string> | undefined;
   /**
@@ -2355,7 +2361,7 @@ export const GetProjectDeployment$inboundSchema: z.ZodType<
   type:
     GetProjectProjectsResponse200ApplicationJSONResponseBodyAliasType$inboundSchema,
   url: types.string(),
-  userId: types.string(),
+  userId: types.optional(types.string()),
   withCache: types.optional(types.boolean()),
 });
 
@@ -3678,7 +3684,7 @@ export const GetProjectLatestDeployments$inboundSchema: z.ZodType<
   teamId: z.nullable(types.string()).optional(),
   type: GetProjectProjectsResponseType$inboundSchema,
   url: types.string(),
-  userId: types.string(),
+  userId: types.optional(types.string()),
   withCache: types.optional(types.boolean()),
 });
 

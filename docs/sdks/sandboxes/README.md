@@ -24,7 +24,8 @@
 * [readSessionFile](#readsessionfile) - Read a file
 * [createSessionDirectory](#createsessiondirectory) - Create a directory
 * [writeSessionFiles](#writesessionfiles) - Write files
-* [createSessionSnapshot](#createsessionsnapshot) - Create a snapshot
+* [createSandboxesSessionsBySessionIdSnapshotV2](#createsandboxessessionsbysessionidsnapshotv2) - Create a snapshot
+* [createSandboxesSessionsBySessionIdSnapshotV3](#createsandboxessessionsbysessionidsnapshotv3) - Create a snapshot
 
 ## listSandboxes
 
@@ -1642,13 +1643,13 @@ run();
 | --------------- | --------------- | --------------- |
 | models.SDKError | 4XX, 5XX        | \*/\*           |
 
-## createSessionSnapshot
+## createSandboxesSessionsBySessionIdSnapshotV2
 
 Creates a point-in-time snapshot of a running session's filesystem. Snapshots can be used to quickly restore a session to a previous state or to create new sessions with pre-configured environments. The session must be running and able to accept commands for a snapshot to be created. The session will be terminated after the snapshot is created.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="createSessionSnapshot" method="post" path="/v2/sandboxes/sessions/{sessionId}/snapshot" -->
+<!-- UsageSnippet language="typescript" operationID="createSandboxesSessionsBySessionIdSnapshotV2" method="post" path="/v2/sandboxes/sessions/{sessionId}/snapshot" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -1657,7 +1658,7 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  const result = await vercel.sandboxes.createSessionSnapshot({
+  const result = await vercel.sandboxes.createSandboxesSessionsBySessionIdSnapshotV2({
     sessionId: "sbx_abc123",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
@@ -1675,7 +1676,7 @@ The standalone function version of this method:
 
 ```typescript
 import { VercelCore } from "@vercel/sdk/core.js";
-import { sandboxesCreateSessionSnapshot } from "@vercel/sdk/funcs/sandboxesCreateSessionSnapshot.js";
+import { sandboxesCreateSandboxesSessionsBySessionIdSnapshotV2 } from "@vercel/sdk/funcs/sandboxesCreateSandboxesSessionsBySessionIdSnapshotV2.js";
 
 // Use `VercelCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -1684,7 +1685,7 @@ const vercel = new VercelCore({
 });
 
 async function run() {
-  const res = await sandboxesCreateSessionSnapshot(vercel, {
+  const res = await sandboxesCreateSandboxesSessionsBySessionIdSnapshotV2(vercel, {
     sessionId: "sbx_abc123",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
@@ -1693,7 +1694,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("sandboxesCreateSessionSnapshot failed:", res.error);
+    console.log("sandboxesCreateSandboxesSessionsBySessionIdSnapshotV2 failed:", res.error);
   }
 }
 
@@ -1704,14 +1705,91 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.CreateSessionSnapshotRequest](../../models/createsessionsnapshotrequest.md)                                                                                            | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [models.CreateSandboxesSessionsBySessionIdSnapshotV2Request](../../models/createsandboxessessionsbysessionidsnapshotv2request.md)                                              | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.CreateSessionSnapshotResponseBody](../../models/createsessionsnapshotresponsebody.md)\>**
+**Promise\<[models.CreateSandboxesSessionsBySessionIdSnapshotV2ResponseBody](../../models/createsandboxessessionsbysessionidsnapshotv2responsebody.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
+
+## createSandboxesSessionsBySessionIdSnapshotV3
+
+Creates a point-in-time snapshot of a running session's filesystem. Snapshots can be used to quickly restore a session to a previous state or to create new sessions with pre-configured environments. The session must be running and able to accept commands for a snapshot to be created. The session will be terminated after the snapshot is created. Unlike v2, snapshots expire after 7 days when neither the request nor the sandbox configuration specifies an expiration.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="createSandboxesSessionsBySessionIdSnapshotV3" method="post" path="/v3/sandboxes/sessions/{sessionId}/snapshot" -->
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await vercel.sandboxes.createSandboxesSessionsBySessionIdSnapshotV3({
+    sessionId: "sbx_abc123",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import { sandboxesCreateSandboxesSessionsBySessionIdSnapshotV3 } from "@vercel/sdk/funcs/sandboxesCreateSandboxesSessionsBySessionIdSnapshotV3.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await sandboxesCreateSandboxesSessionsBySessionIdSnapshotV3(vercel, {
+    sessionId: "sbx_abc123",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("sandboxesCreateSandboxesSessionsBySessionIdSnapshotV3 failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.CreateSandboxesSessionsBySessionIdSnapshotV3Request](../../models/createsandboxessessionsbysessionidsnapshotv3request.md)                                              | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.CreateSandboxesSessionsBySessionIdSnapshotV3ResponseBody](../../models/createsandboxessessionsbysessionidsnapshotv3responsebody.md)\>**
 
 ### Errors
 

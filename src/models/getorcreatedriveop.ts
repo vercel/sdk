@@ -5,10 +5,24 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
+import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { Drive, Drive$inboundSchema } from "./drive.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+/**
+ * Region where the drive is stored. Defaults to iad1.
+ */
+export const Region = {
+  Iad1: "iad1",
+  Sfo1: "sfo1",
+  Cle1: "cle1",
+} as const;
+/**
+ * Region where the drive is stored. Defaults to iad1.
+ */
+export type Region = ClosedEnum<typeof Region>;
 
 export type GetOrCreateDriveRequestBody = {
   /**
@@ -19,6 +33,10 @@ export type GetOrCreateDriveRequestBody = {
    * Maximum drive size in bytes. Defaults to 100 GiB when omitted.
    */
   maxSizeBytes?: number | undefined;
+  /**
+   * Region where the drive is stored. Defaults to iad1.
+   */
+  region?: Region | undefined;
 };
 
 export type GetOrCreateDriveRequest = {
@@ -56,9 +74,14 @@ export type GetOrCreateDriveResponse =
   | GetOrCreateDriveSandboxesResponseBody;
 
 /** @internal */
+export const Region$outboundSchema: z.ZodNativeEnum<typeof Region> = z
+  .nativeEnum(Region);
+
+/** @internal */
 export type GetOrCreateDriveRequestBody$Outbound = {
   projectId?: string | undefined;
   maxSizeBytes?: number | undefined;
+  region: string;
 };
 
 /** @internal */
@@ -69,6 +92,7 @@ export const GetOrCreateDriveRequestBody$outboundSchema: z.ZodType<
 > = z.object({
   projectId: z.string().optional(),
   maxSizeBytes: z.number().int().optional(),
+  region: Region$outboundSchema.default("iad1"),
 });
 
 export function getOrCreateDriveRequestBodyToJSON(

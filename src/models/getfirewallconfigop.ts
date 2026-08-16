@@ -301,6 +301,7 @@ export const GetFirewallConfigRulesType = {
   Ruleset: "ruleset",
   Scheme: "scheme",
   ServerAction: "server_action",
+  SharedCondition: "shared_condition",
   TargetPath: "target_path",
   TrustedSource: "trusted_source",
   UserAgent: "user_agent",
@@ -452,6 +453,7 @@ export const RulesType = {
   Ruleset: "ruleset",
   Scheme: "scheme",
   ServerAction: "server_action",
+  SharedCondition: "shared_condition",
   TargetPath: "target_path",
   TrustedSource: "trusted_source",
   UserAgent: "user_agent",
@@ -684,6 +686,7 @@ export const GetFirewallConfigRulesetsType = {
   Ruleset: "ruleset",
   Scheme: "scheme",
   ServerAction: "server_action",
+  SharedCondition: "shared_condition",
   TargetPath: "target_path",
   TrustedSource: "trusted_source",
   UserAgent: "user_agent",
@@ -814,6 +817,83 @@ export type GetFirewallConfigRulesets1 = {
 
 export type GetFirewallConfigRulesets = Array<GetFirewallConfigRulesets1> | {
   [k: string]: GetFirewallConfigRulesets2;
+};
+
+export const GetFirewallConfigType = {
+  BotCategory: "bot_category",
+  BotName: "bot_name",
+  BotProtection: "bot_protection",
+  BotStatus: "bot_status",
+  Cookie: "cookie",
+  DomainEnvironment: "domain_environment",
+  Environment: "environment",
+  GeoAsNumber: "geo_as_number",
+  GeoCity: "geo_city",
+  GeoContinent: "geo_continent",
+  GeoCountry: "geo_country",
+  GeoCountryRegion: "geo_country_region",
+  Header: "header",
+  Host: "host",
+  IpAddress: "ip_address",
+  Ja3Digest: "ja3_digest",
+  Ja4Digest: "ja4_digest",
+  Method: "method",
+  Path: "path",
+  Protocol: "protocol",
+  Query: "query",
+  RateLimitApiId: "rate_limit_api_id",
+  RawPath: "raw_path",
+  Region: "region",
+  Route: "route",
+  Ruleset: "ruleset",
+  Scheme: "scheme",
+  ServerAction: "server_action",
+  SharedCondition: "shared_condition",
+  TargetPath: "target_path",
+  TrustedSource: "trusted_source",
+  UserAgent: "user_agent",
+} as const;
+export type GetFirewallConfigType = ClosedEnum<typeof GetFirewallConfigType>;
+
+export const GetFirewallConfigOp = {
+  Eq: "eq",
+  Ex: "ex",
+  Gt: "gt",
+  Gte: "gte",
+  Inc: "inc",
+  List: "list",
+  Lt: "lt",
+  Lte: "lte",
+  Neq: "neq",
+  Nex: "nex",
+  Ninc: "ninc",
+  Pre: "pre",
+  Re: "re",
+  Sub: "sub",
+  Suf: "suf",
+} as const;
+export type GetFirewallConfigOp = ClosedEnum<typeof GetFirewallConfigOp>;
+
+export type GetFirewallConfigValue = string | number | Array<string>;
+
+export type GetFirewallConfigSecurityConditions = {
+  type: GetFirewallConfigType;
+  op: GetFirewallConfigOp;
+  neg?: boolean | undefined;
+  key?: string | undefined;
+  value?: string | number | Array<string> | undefined;
+};
+
+export type GetFirewallConfigConditionGroup = {
+  conditions: Array<GetFirewallConfigSecurityConditions>;
+};
+
+export type GetFirewallConfigConditions = {
+  description?: string | undefined;
+  id: string;
+  name: string;
+  active: boolean;
+  conditionGroup: Array<GetFirewallConfigConditionGroup>;
 };
 
 export type Changes = {};
@@ -957,6 +1037,7 @@ export type GetFirewallConfigResponseBody = {
   rulesets?: Array<GetFirewallConfigRulesets1> | {
     [k: string]: GetFirewallConfigRulesets2;
   } | undefined;
+  conditions?: Array<GetFirewallConfigConditions> | undefined;
   changes: Array<Changes>;
   managedRules?: GetFirewallConfigManagedRules | undefined;
   botIdEnabled?: boolean | undefined;
@@ -2227,6 +2308,105 @@ export function getFirewallConfigRulesetsFromJSON(
 }
 
 /** @internal */
+export const GetFirewallConfigType$inboundSchema: z.ZodNativeEnum<
+  typeof GetFirewallConfigType
+> = z.nativeEnum(GetFirewallConfigType);
+
+/** @internal */
+export const GetFirewallConfigOp$inboundSchema: z.ZodNativeEnum<
+  typeof GetFirewallConfigOp
+> = z.nativeEnum(GetFirewallConfigOp);
+
+/** @internal */
+export const GetFirewallConfigValue$inboundSchema: z.ZodType<
+  GetFirewallConfigValue,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), types.number(), z.array(types.string())]);
+
+export function getFirewallConfigValueFromJSON(
+  jsonString: string,
+): SafeParseResult<GetFirewallConfigValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetFirewallConfigValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetFirewallConfigValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetFirewallConfigSecurityConditions$inboundSchema: z.ZodType<
+  GetFirewallConfigSecurityConditions,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: GetFirewallConfigType$inboundSchema,
+  op: GetFirewallConfigOp$inboundSchema,
+  neg: types.optional(types.boolean()),
+  key: types.optional(types.string()),
+  value: types.optional(
+    smartUnion([types.string(), types.number(), z.array(types.string())]),
+  ),
+});
+
+export function getFirewallConfigSecurityConditionsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetFirewallConfigSecurityConditions, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetFirewallConfigSecurityConditions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetFirewallConfigSecurityConditions' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetFirewallConfigConditionGroup$inboundSchema: z.ZodType<
+  GetFirewallConfigConditionGroup,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  conditions: z.array(
+    z.lazy(() => GetFirewallConfigSecurityConditions$inboundSchema),
+  ),
+});
+
+export function getFirewallConfigConditionGroupFromJSON(
+  jsonString: string,
+): SafeParseResult<GetFirewallConfigConditionGroup, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetFirewallConfigConditionGroup$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetFirewallConfigConditionGroup' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetFirewallConfigConditions$inboundSchema: z.ZodType<
+  GetFirewallConfigConditions,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  description: types.optional(types.string()),
+  id: types.string(),
+  name: types.string(),
+  active: types.boolean(),
+  conditionGroup: z.array(
+    z.lazy(() => GetFirewallConfigConditionGroup$inboundSchema),
+  ),
+});
+
+export function getFirewallConfigConditionsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetFirewallConfigConditions, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetFirewallConfigConditions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetFirewallConfigConditions' from JSON`,
+  );
+}
+
+/** @internal */
 export const Changes$inboundSchema: z.ZodType<Changes, z.ZodTypeDef, unknown> =
   z.object({});
 
@@ -2475,6 +2655,9 @@ export const GetFirewallConfigResponseBody$inboundSchema: z.ZodType<
       z.array(z.lazy(() => GetFirewallConfigRulesets1$inboundSchema)),
       z.record(z.lazy(() => GetFirewallConfigRulesets2$inboundSchema)),
     ]),
+  ),
+  conditions: types.optional(
+    z.array(z.lazy(() => GetFirewallConfigConditions$inboundSchema)),
   ),
   changes: z.array(z.lazy(() => Changes$inboundSchema)),
   managedRules: types.optional(

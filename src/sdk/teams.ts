@@ -179,7 +179,7 @@ export class Teams extends ClientSDK {
    * Remove a Team Member
    *
    * @remarks
-   * Remove a Team Member from the Team, or dismiss a user that requested access, or leave a team.
+   * Remove a Team Member from the Team, or dismiss a user that requested access, or leave a team. Directory Sync members can be removed when their directory email is absent or does not match the user's primary or verified secondary emails.
    */
   async removeTeamMember(
     request: RemoveTeamMemberRequest,

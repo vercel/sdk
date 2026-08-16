@@ -85,7 +85,12 @@ export type CountEventsQuery = {
   filter?: string | undefined;
 };
 
-export type CountEventsData = {
+export type CountEventsData2 = {
+  visitors: number;
+  count: number;
+};
+
+export type CountEventsData1 = {
   projectId: string;
   country: string;
   deviceType: string;
@@ -221,6 +226,7 @@ export type CountEventsData = {
   appName: string;
   codingAgent: string;
   isByok: string;
+  spendAttribution: string;
   isPrivateModel: string;
   isRequestZdr: string;
   hipaaRequested: string;
@@ -305,10 +311,12 @@ export type CountEventsData = {
   additionalProperties?: { [k: string]: number | null } | undefined;
 };
 
+export type CountEventsData = CountEventsData1 | CountEventsData2;
+
 export type CountEventsResponseBody = {
   version: number;
   query: CountEventsQuery;
-  data: CountEventsData;
+  data: CountEventsData1 | CountEventsData2;
 };
 
 /** @internal */
@@ -401,8 +409,28 @@ export function countEventsQueryFromJSON(
 }
 
 /** @internal */
-export const CountEventsData$inboundSchema: z.ZodType<
-  CountEventsData,
+export const CountEventsData2$inboundSchema: z.ZodType<
+  CountEventsData2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  visitors: types.number(),
+  count: types.number(),
+});
+
+export function countEventsData2FromJSON(
+  jsonString: string,
+): SafeParseResult<CountEventsData2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CountEventsData2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CountEventsData2' from JSON`,
+  );
+}
+
+/** @internal */
+export const CountEventsData1$inboundSchema: z.ZodType<
+  CountEventsData1,
   z.ZodTypeDef,
   unknown
 > = collectExtraKeys$(
@@ -542,6 +570,7 @@ export const CountEventsData$inboundSchema: z.ZodType<
     appName: types.string(),
     codingAgent: types.string(),
     isByok: types.string(),
+    spendAttribution: types.string(),
     isPrivateModel: types.string(),
     isRequestZdr: types.string(),
     hipaaRequested: types.string(),
@@ -628,6 +657,26 @@ export const CountEventsData$inboundSchema: z.ZodType<
   true,
 );
 
+export function countEventsData1FromJSON(
+  jsonString: string,
+): SafeParseResult<CountEventsData1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CountEventsData1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CountEventsData1' from JSON`,
+  );
+}
+
+/** @internal */
+export const CountEventsData$inboundSchema: z.ZodType<
+  CountEventsData,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => CountEventsData1$inboundSchema),
+  z.lazy(() => CountEventsData2$inboundSchema),
+]);
+
 export function countEventsDataFromJSON(
   jsonString: string,
 ): SafeParseResult<CountEventsData, SDKValidationError> {
@@ -646,7 +695,10 @@ export const CountEventsResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   version: types.number(),
   query: z.lazy(() => CountEventsQuery$inboundSchema),
-  data: z.lazy(() => CountEventsData$inboundSchema),
+  data: smartUnion([
+    z.lazy(() => CountEventsData1$inboundSchema),
+    z.lazy(() => CountEventsData2$inboundSchema),
+  ]),
 });
 
 export function countEventsResponseBodyFromJSON(

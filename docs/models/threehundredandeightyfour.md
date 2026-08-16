@@ -5,18 +5,13 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndEightyFour } from "@vercel/sdk/models/usereventpayload373previous.js";
+import { ThreeHundredAndEightyFour } from "@vercel/sdk/models/usereventpayload323geolocationmostspecificsubdivisionnames.js";
 
-let value: ThreeHundredAndEightyFour = {
-  actorId: "<id>",
-  actorType: "admin",
-};
+let value: ThreeHundredAndEightyFour = {};
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `actorId`                                                                  | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `actorType`                                                                | [models.UserEventPayloadActorType](../models/usereventpayloadactortype.md) | :heavy_check_mark:                                                         | N/A                                                                        |
-| `reason`                                                                   | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `slug`             | *string*           | :heavy_minus_sign: | N/A                |

@@ -8,9 +8,9 @@ import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import {
-  EdgeConfigItemValue,
-  EdgeConfigItemValue$inboundSchema,
-} from "./edgeconfigitemvalue.js";
+  GlobalConfigItemValue,
+  GlobalConfigItemValue$inboundSchema,
+} from "./globalconfigitemvalue.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequest =
@@ -34,7 +34,7 @@ export type GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExp
  */
 export type GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponseBody =
   {
-    items: { [k: string]: EdgeConfigItemValue | null };
+    items: { [k: string]: GlobalConfigItemValue | null };
     updatedAt: number;
     digest: string;
     purpose?:
@@ -87,7 +87,7 @@ export const GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdEx
     z.ZodTypeDef,
     unknown
   > = z.object({
-    items: z.record(types.nullable(EdgeConfigItemValue$inboundSchema)),
+    items: z.record(types.nullable(GlobalConfigItemValue$inboundSchema)),
     updatedAt: types.number(),
     digest: types.string(),
     purpose: types.optional(

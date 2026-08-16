@@ -14,7 +14,7 @@ import { pathToFunc } from "../lib/url.js";
 import {
   GetDeploymentRequest,
   GetDeploymentRequest$outboundSchema,
-} from "../models/getdeploymentgitsourcedeploymentsresponsetype.js";
+} from "../models/getdeploymentgitsourcerepoid.js";
 import {
   GetDeploymentResponseBody,
   GetDeploymentResponseBody$inboundSchema,

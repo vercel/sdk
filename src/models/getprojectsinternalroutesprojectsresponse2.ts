@@ -351,7 +351,10 @@ export type GetProjectsResponseBodyProjectsTargets = {
   type:
     GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsTargetsType;
   url: string;
-  userId: string;
+  /**
+   * Present for user creators; omitted for app/integration/system creators.
+   */
+  userId?: string | undefined;
   withCache?: boolean | undefined;
 };
 
@@ -548,6 +551,7 @@ export type ResponseBodyPermissions = {
   webAnalyticsPlan?: Array<ACLAction> | undefined;
   webhook?: Array<ACLAction> | undefined;
   webhookEvent?: Array<ACLAction> | undefined;
+  workflowRunData?: Array<ACLAction> | undefined;
   aliasProject?: Array<ACLAction> | undefined;
   aliasProtectionBypass?: Array<ACLAction> | undefined;
   bulkRedirects?: Array<ACLAction> | undefined;
@@ -2173,7 +2177,7 @@ export const GetProjectsResponseBodyProjectsTargets$inboundSchema: z.ZodType<
   type:
     GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsTargetsType$inboundSchema,
   url: types.string(),
-  userId: types.string(),
+  userId: types.optional(types.string()),
   withCache: types.optional(types.boolean()),
 });
 
@@ -2424,6 +2428,7 @@ export const ResponseBodyPermissions$inboundSchema: z.ZodType<
   webAnalyticsPlan: types.optional(z.array(ACLAction$inboundSchema)),
   webhook: types.optional(z.array(ACLAction$inboundSchema)),
   "webhook-event": types.optional(z.array(ACLAction$inboundSchema)),
+  workflowRunData: types.optional(z.array(ACLAction$inboundSchema)),
   aliasProject: types.optional(z.array(ACLAction$inboundSchema)),
   aliasProtectionBypass: types.optional(z.array(ACLAction$inboundSchema)),
   bulkRedirects: types.optional(z.array(ACLAction$inboundSchema)),

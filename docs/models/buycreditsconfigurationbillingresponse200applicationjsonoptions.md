@@ -1,6 +1,6 @@
 # BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions
 
-Configuration input options for setting plan item quantity.
+Purchase configuration specific options
 
 ## Example Usage
 
@@ -8,15 +8,14 @@ Configuration input options for setting plan item quantity.
 import { BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions } from "@vercel/sdk/models/buycreditsop.js";
 
 let value: BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions = {
-  productAlias: "<value>",
-  quantity: 7159.29,
+  planId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                                               | Type                                                                                | Required                                                                            | Description                                                                         |
-| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `productAlias`                                                                      | *string*                                                                            | :heavy_check_mark:                                                                  | The alias of the product to set quantity for.                                       |
-| `quantity`                                                                          | *number*                                                                            | :heavy_check_mark:                                                                  | The quantity to set for the plan item.                                              |
-| `resourceIds`                                                                       | *string*[]                                                                          | :heavy_minus_sign:                                                                  | The resource IDs for the plan item. Only set if SKU requires resource entitlements. |
+| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `planId`                                                       | *string*                                                       | :heavy_check_mark:                                             | The ID of the plan to subscribe to                             |
+| `planItemQuantities`                                           | [models.PlanItemQuantities](../models/planitemquantities.md)[] | :heavy_minus_sign:                                             | The plan item quantities to set for the subscription           |
+| `rateVariantKey`                                               | *string*                                                       | :heavy_minus_sign:                                             | The rate variant key to apply to the subscription              |

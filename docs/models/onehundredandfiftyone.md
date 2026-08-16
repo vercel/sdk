@@ -5,23 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFiftyOne } from "@vercel/sdk/models/usereventjobpayload979githashtagvercel.js";
+import { OneHundredAndFiftyOne } from "@vercel/sdk/models/onehundredandthirtyone.js";
 
 let value: OneHundredAndFiftyOne = {
-  projectId: "<id>",
-  rulesetName: "<value>",
-  ruleGroups: {
-    "key": {
-      active: false,
-    },
-  },
+  configVersion: 8632.88,
 };
 ```
 
 ## Fields
 
-| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `projectId`                                                  | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `rulesetName`                                                | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `ruleGroups`                                                 | Record<string, [models.RuleGroups](../models/rulegroups.md)> | :heavy_check_mark:                                           | N/A                                                          |
+| Field                                                | Type                                                 | Required                                             | Description                                          |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| `configVersion`                                      | *models.UserEventPayloadConfigVersion*               | :heavy_check_mark:                                   | N/A                                                  |
+| `configChangeCount`                                  | *number*                                             | :heavy_minus_sign:                                   | N/A                                                  |
+| `configChanges`                                      | [models.ConfigChanges](../models/configchanges.md)[] | :heavy_minus_sign:                                   | N/A                                                  |

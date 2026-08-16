@@ -5,13 +5,18 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FiftyFive } from "@vercel/sdk/models/fiftyfive.js";
+import { FiftyFive } from "@vercel/sdk/models/payloadchange.js";
 
-let value: FiftyFive = {};
+let value: FiftyFive = {
+  projectName: "<value>",
+  autoExposeSystemEnvs: true,
+};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `avatar`           | *string*           | :heavy_minus_sign: | N/A                |
+| Field                  | Type                   | Required               | Description            |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `projectId`            | *string*               | :heavy_minus_sign:     | N/A                    |
+| `projectName`          | *string*               | :heavy_check_mark:     | N/A                    |
+| `autoExposeSystemEnvs` | *boolean*              | :heavy_check_mark:     | N/A                    |

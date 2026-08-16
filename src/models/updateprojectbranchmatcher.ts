@@ -1161,7 +1161,10 @@ export type UpdateProjectDeployment = {
   teamId?: string | null | undefined;
   type: UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAliasType;
   url: string;
-  userId: string;
+  /**
+   * Present for user creators; omitted for app/integration/system creators.
+   */
+  userId?: string | undefined;
   withCache?: boolean | undefined;
 };
 
@@ -3602,7 +3605,7 @@ export const UpdateProjectDeployment$inboundSchema: z.ZodType<
   type:
     UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAliasType$inboundSchema,
   url: types.string(),
-  userId: types.string(),
+  userId: types.optional(types.string()),
   withCache: types.optional(types.boolean()),
 });
 

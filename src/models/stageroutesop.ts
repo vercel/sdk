@@ -20,7 +20,7 @@ export const StageRoutesType = {
 } as const;
 export type StageRoutesType = ClosedEnum<typeof StageRoutesType>;
 
-export type Has = {
+export type StageRoutesHas = {
   type?: StageRoutesType | undefined;
   key?: string | undefined;
   value?: string | undefined;
@@ -74,7 +74,7 @@ export type Route = {
   headers?: Headers | undefined;
   caseSensitive?: boolean | undefined;
   status?: number | undefined;
-  has?: Array<Has> | undefined;
+  has?: Array<StageRoutesHas> | undefined;
   missing?: Array<Missing> | undefined;
   transforms?: Array<StageRoutesTransforms> | undefined;
   respectOriginCacheControl?: boolean | undefined;
@@ -171,22 +171,25 @@ export const StageRoutesType$outboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(StageRoutesType);
 
 /** @internal */
-export type Has$Outbound = {
+export type StageRoutesHas$Outbound = {
   type?: string | undefined;
   key?: string | undefined;
   value?: string | undefined;
 };
 
 /** @internal */
-export const Has$outboundSchema: z.ZodType<Has$Outbound, z.ZodTypeDef, Has> = z
-  .object({
-    type: StageRoutesType$outboundSchema.optional(),
-    key: z.string().optional(),
-    value: z.string().optional(),
-  });
+export const StageRoutesHas$outboundSchema: z.ZodType<
+  StageRoutesHas$Outbound,
+  z.ZodTypeDef,
+  StageRoutesHas
+> = z.object({
+  type: StageRoutesType$outboundSchema.optional(),
+  key: z.string().optional(),
+  value: z.string().optional(),
+});
 
-export function hasToJSON(has: Has): string {
-  return JSON.stringify(Has$outboundSchema.parse(has));
+export function stageRoutesHasToJSON(stageRoutesHas: StageRoutesHas): string {
+  return JSON.stringify(StageRoutesHas$outboundSchema.parse(stageRoutesHas));
 }
 
 /** @internal */
@@ -280,7 +283,7 @@ export type Route$Outbound = {
   headers?: Headers$Outbound | undefined;
   caseSensitive?: boolean | undefined;
   status?: number | undefined;
-  has?: Array<Has$Outbound> | undefined;
+  has?: Array<StageRoutesHas$Outbound> | undefined;
   missing?: Array<Missing$Outbound> | undefined;
   transforms?: Array<StageRoutesTransforms$Outbound> | undefined;
   respectOriginCacheControl?: boolean | undefined;
@@ -297,7 +300,7 @@ export const Route$outboundSchema: z.ZodType<
   headers: z.lazy(() => Headers$outboundSchema).optional(),
   caseSensitive: z.boolean().optional(),
   status: z.number().int().optional(),
-  has: z.array(z.lazy(() => Has$outboundSchema)).optional(),
+  has: z.array(z.lazy(() => StageRoutesHas$outboundSchema)).optional(),
   missing: z.array(z.lazy(() => Missing$outboundSchema)).optional(),
   transforms: z.array(z.lazy(() => StageRoutesTransforms$outboundSchema))
     .optional(),

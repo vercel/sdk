@@ -1,17 +1,17 @@
 # Has
 
+Limit providers to those with these features.
+
 ## Example Usage
 
 ```typescript
-import { Has } from "@vercel/sdk/models/stageroutesop.js";
+import { Has } from "@vercel/sdk/models/aigatewayvirtualmodelconfig.js";
 
-let value: Has = {};
+let value: Has = "implicit-caching";
 ```
 
-## Fields
+## Values
 
-| Field                                                  | Type                                                   | Required                                               | Description                                            |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `type`                                                 | [models.StageRoutesType](../models/stageroutestype.md) | :heavy_minus_sign:                                     | N/A                                                    |
-| `key`                                                  | *string*                                               | :heavy_minus_sign:                                     | N/A                                                    |
-| `value`                                                | *string*                                               | :heavy_minus_sign:                                     | N/A                                                    |
+```typescript
+"implicit-caching" | "vision"
+```

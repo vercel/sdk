@@ -275,6 +275,7 @@ export const GetTeamMembersTeamPermissions = {
   V0Builder: "V0Builder",
   V0Chatter: "V0Chatter",
   V0Viewer: "V0Viewer",
+  WorkflowDecryptor: "WorkflowDecryptor",
 } as const;
 export type GetTeamMembersTeamPermissions = ClosedEnum<
   typeof GetTeamMembersTeamPermissions

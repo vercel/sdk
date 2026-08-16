@@ -23,7 +23,6 @@ let value: GetProjectsResponseBodyAlias = {
     readyState: "QUEUED",
     type: "LAMBDAS",
     url: "https://stingy-outlaw.biz",
-    userId: "<id>",
   },
   domain: "black-and-white-crest.biz",
   environment: "preview",

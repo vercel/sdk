@@ -765,7 +765,7 @@ export type CreateProjectEnvFailed = {
  * The environment variable was created successfully
  */
 export type CreateProjectEnvResponseBody = {
-  created: Created1 | Array<Created2>;
+  created?: Created1 | Array<Created2> | undefined;
   failed: Array<CreateProjectEnvFailed>;
 };
 
@@ -2244,10 +2244,12 @@ export const CreateProjectEnvResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  created: smartUnion([
-    z.lazy(() => Created1$inboundSchema),
-    z.array(z.lazy(() => Created2$inboundSchema)),
-  ]),
+  created: types.optional(
+    smartUnion([
+      z.lazy(() => Created1$inboundSchema),
+      z.array(z.lazy(() => Created2$inboundSchema)),
+    ]),
+  ),
   failed: z.array(z.lazy(() => CreateProjectEnvFailed$inboundSchema)),
 });
 

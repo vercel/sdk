@@ -23,7 +23,6 @@ let value: UploadProjectAvatarAlias = {
     readyState: "QUEUED",
     type: "LAMBDAS",
     url: "https://menacing-orchid.biz/",
-    userId: "<id>",
   },
   domain: "aching-brook.com",
   environment: "production",

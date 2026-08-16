@@ -22,6 +22,7 @@ let value: PatchTeamRequest = {
     enablePreviewFeedback: "on",
     enableProductionFeedback: "on",
     sensitiveEnvironmentVariablePolicy: "on",
+    disjunctiveProductionSecretPolicy: "on",
     remoteCaching: {
       enabled: true,
     },

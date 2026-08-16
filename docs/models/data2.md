@@ -141,6 +141,7 @@ let value: Data2 = {
   appName: "<value>",
   codingAgent: "<value>",
   isByok: "<value>",
+  spendAttribution: "<value>",
   isPrivateModel: "<value>",
   isRequestZdr: "<value>",
   hipaaRequested: "<value>",
@@ -364,6 +365,7 @@ let value: Data2 = {
 | `appName`                              | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `codingAgent`                          | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `isByok`                               | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `spendAttribution`                     | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `isPrivateModel`                       | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `isRequestZdr`                         | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `hipaaRequested`                       | *string*                               | :heavy_check_mark:                     | N/A                                    |

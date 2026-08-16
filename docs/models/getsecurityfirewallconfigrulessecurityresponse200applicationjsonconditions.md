@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { GetSecurityFirewallConfigRulesSecurityResponse200ApplicationJSONConditions } from "@vercel/sdk/models/getsecurityfirewallconfigresponsebody.js";
+import { GetSecurityFirewallConfigRulesSecurityResponse200ApplicationJSONConditions } from "@vercel/sdk/models/getsecurityfirewallconfigsecurityresponsemanagedrules.js";
 
 let value:
   GetSecurityFirewallConfigRulesSecurityResponse200ApplicationJSONConditions = {
-    type: "geo_continent",
+    type: "geo_country",
     op: "lt",
   };
 ```

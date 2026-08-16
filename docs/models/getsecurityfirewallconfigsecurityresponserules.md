@@ -14,15 +14,15 @@ const value: models.GetSecurityFirewallConfigRulesSecurity1 = {
     {
       conditions: [
         {
-          type: "query",
-          op: "ninc",
+          type: "bot_name",
+          op: "lte",
         },
       ],
     },
   ],
   action: {},
   valid: true,
-  validationErrors: null,
+  validationErrors: "<value>",
 };
 ```
 

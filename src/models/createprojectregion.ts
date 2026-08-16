@@ -645,7 +645,10 @@ export type CreateProjectDeployment = {
   teamId?: string | null | undefined;
   type: CreateProjectProjectsResponse200ApplicationJSONResponseBodyAliasType;
   url: string;
-  userId: string;
+  /**
+   * Present for user creators; omitted for app/integration/system creators.
+   */
+  userId?: string | undefined;
   withCache?: boolean | undefined;
 };
 
@@ -1558,7 +1561,10 @@ export type LatestDeployments = {
   teamId?: string | null | undefined;
   type: CreateProjectProjectsResponse200ApplicationJSONType;
   url: string;
-  userId: string;
+  /**
+   * Present for user creators; omitted for app/integration/system creators.
+   */
+  userId?: string | undefined;
   withCache?: boolean | undefined;
 };
 
@@ -2746,7 +2752,7 @@ export const CreateProjectDeployment$inboundSchema: z.ZodType<
   type:
     CreateProjectProjectsResponse200ApplicationJSONResponseBodyAliasType$inboundSchema,
   url: types.string(),
-  userId: types.string(),
+  userId: types.optional(types.string()),
   withCache: types.optional(types.boolean()),
 });
 
@@ -4077,7 +4083,7 @@ export const LatestDeployments$inboundSchema: z.ZodType<
   teamId: z.nullable(types.string()).optional(),
   type: CreateProjectProjectsResponse200ApplicationJSONType$inboundSchema,
   url: types.string(),
-  userId: types.string(),
+  userId: types.optional(types.string()),
   withCache: types.optional(types.boolean()),
 });
 

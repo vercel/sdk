@@ -5,7 +5,7 @@ Machine type which was purchased/selected for this build. `basic` is the 2vCPU t
 ## Example Usage
 
 ```typescript
-import { GetDeploymentResponseBodyPurchaseType } from "@vercel/sdk/models/getdeploymentgitsourcedeploymentsresponsetype.js";
+import { GetDeploymentResponseBodyPurchaseType } from "@vercel/sdk/models/getdeploymentgitsourcerepoid.js";
 
 let value: GetDeploymentResponseBodyPurchaseType = "basic";
 ```

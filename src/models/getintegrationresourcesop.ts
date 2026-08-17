@@ -41,11 +41,30 @@ export type GetIntegrationResourcesExperimentation = {
   edgeConfigTokenId?: string | undefined;
 };
 
+export const GetIntegrationResourcesTarget = {
+  Development: "development",
+  Preview: "preview",
+  Production: "production",
+} as const;
+export type GetIntegrationResourcesTarget = ClosedEnum<
+  typeof GetIntegrationResourcesTarget
+>;
+
+export type GetIntegrationResourcesAppUrls = {
+  url: string;
+  target: GetIntegrationResourcesTarget;
+};
+
+export type GetIntegrationResourcesAuthentication = {
+  appUrls?: Array<GetIntegrationResourcesAppUrls> | undefined;
+};
+
 /**
  * Any settings provided for the resource to support its product's protocols
  */
 export type GetIntegrationResourcesProtocolSettings = {
   experimentation?: GetIntegrationResourcesExperimentation | undefined;
+  authentication?: GetIntegrationResourcesAuthentication | undefined;
 };
 
 export const GetIntegrationResourcesLevel = {
@@ -173,6 +192,53 @@ export function getIntegrationResourcesExperimentationFromJSON(
 }
 
 /** @internal */
+export const GetIntegrationResourcesTarget$inboundSchema: z.ZodNativeEnum<
+  typeof GetIntegrationResourcesTarget
+> = z.nativeEnum(GetIntegrationResourcesTarget);
+
+/** @internal */
+export const GetIntegrationResourcesAppUrls$inboundSchema: z.ZodType<
+  GetIntegrationResourcesAppUrls,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  url: types.string(),
+  target: GetIntegrationResourcesTarget$inboundSchema,
+});
+
+export function getIntegrationResourcesAppUrlsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetIntegrationResourcesAppUrls, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetIntegrationResourcesAppUrls$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetIntegrationResourcesAppUrls' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetIntegrationResourcesAuthentication$inboundSchema: z.ZodType<
+  GetIntegrationResourcesAuthentication,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  appUrls: types.optional(
+    z.array(z.lazy(() => GetIntegrationResourcesAppUrls$inboundSchema)),
+  ),
+});
+
+export function getIntegrationResourcesAuthenticationFromJSON(
+  jsonString: string,
+): SafeParseResult<GetIntegrationResourcesAuthentication, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetIntegrationResourcesAuthentication$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetIntegrationResourcesAuthentication' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetIntegrationResourcesProtocolSettings$inboundSchema: z.ZodType<
   GetIntegrationResourcesProtocolSettings,
   z.ZodTypeDef,
@@ -180,6 +246,9 @@ export const GetIntegrationResourcesProtocolSettings$inboundSchema: z.ZodType<
 > = z.object({
   experimentation: types.optional(
     z.lazy(() => GetIntegrationResourcesExperimentation$inboundSchema),
+  ),
+  authentication: types.optional(
+    z.lazy(() => GetIntegrationResourcesAuthentication$inboundSchema),
   ),
 });
 

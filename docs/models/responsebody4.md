@@ -7,7 +7,7 @@ import { ResponseBody4 } from "@vercel/sdk/models/searchrepoop.js";
 
 let value: ResponseBody4 = {
   gitAccount: {
-    provider: "github",
+    provider: "cursor-origin",
     namespaceId: 3848.91,
   },
   repos: [],

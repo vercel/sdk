@@ -203,3 +203,26 @@ const value: models.Job9 = {
 };
 ```
 
+### `models.Job10`
+
+```typescript
+const value: models.Job10 = {
+  headInfo: {
+    owner: "<value>",
+    ownerId: "<id>",
+    ref: "<value>",
+    repo: "<value>",
+    repoId: "<id>",
+    sha: "<value>",
+  },
+  installationId: "<id>",
+  owner: "<value>",
+  prId: 6654.62,
+  projectId: "<id>",
+  repo: "<value>",
+  repoId: "<id>",
+  type: "cursor-origin-now-comment",
+  provider: "cursor-origin",
+};
+```
+

@@ -1,17 +1,19 @@
 # Providers
 
+Per-provider region overrides keyed by provider slug.
 
-## Supported Types
-
-### `models.Providers1[]`
-
-```typescript
-const value: models.Providers1[] = [];
-```
-
-### `models.Providers2`
+## Example Usage
 
 ```typescript
-const value: models.Providers2 = "*";
+import { Providers } from "@vercel/sdk/models/aigatewayvirtualmodelconfig.js";
+
+let value: Providers = {};
 ```
 
+## Fields
+
+| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `scope`                                                                                  | [models.AiGatewayVirtualModelConfigScope](../models/aigatewayvirtualmodelconfigscope.md) | :heavy_minus_sign:                                                                       | Pin scope: `specific` (one provider region), `zone` (geo zone), or `global`.             |
+| `geoRegion`                                                                              | *string*                                                                                 | :heavy_minus_sign:                                                                       | Geo zone (e.g. "us", "eu").                                                              |
+| `providerRegion`                                                                         | *string*                                                                                 | :heavy_minus_sign:                                                                       | Provider-specific region identifier.                                                     |

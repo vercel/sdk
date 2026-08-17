@@ -1,0 +1,19 @@
+# UserEventPayload420Team
+
+## Example Usage
+
+```typescript
+import { UserEventPayload420Team } from "@vercel/sdk/models/threehundredandninetytwo.js";
+
+let value: UserEventPayload420Team = {
+  id: "<id>",
+  name: "<value>",
+};
+```
+
+## Fields
+
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `id`               | *string*           | :heavy_check_mark: | N/A                |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |

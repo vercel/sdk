@@ -23,7 +23,6 @@ let value: Alias = {
     readyState: "BLOCKED",
     type: "LAMBDAS",
     url: "https://insecure-cantaloupe.name",
-    userId: "<id>",
   },
   domain: "frugal-ribbon.org",
   environment: "preview",

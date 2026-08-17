@@ -29,7 +29,6 @@ let value: ResponseBodyProjects = {
       readyState: "INITIALIZING",
       type: "LAMBDAS",
       url: "https://free-synergy.com/",
-      userId: "<id>",
     },
   ],
   name: "<value>",
@@ -91,7 +90,6 @@ let value: ResponseBodyProjects = {
       readyState: "QUEUED",
       type: "LAMBDAS",
       url: "https://minor-expense.name/",
-      userId: "<id>",
     },
   },
 };

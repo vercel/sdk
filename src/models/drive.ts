@@ -25,6 +25,10 @@ export type Drive = {
    */
   maxSizeBytes: number;
   /**
+   * The region where the drive is stored.
+   */
+  region: string;
+  /**
    * Current session ID the drive is attached to, if any.
    */
   currentSessionId?: string | undefined;
@@ -48,6 +52,7 @@ export const Drive$inboundSchema: z.ZodType<Drive, z.ZodTypeDef, unknown> = z
     name: types.string(),
     projectId: types.string(),
     maxSizeBytes: types.number(),
+    region: types.string(),
     currentSessionId: types.optional(types.string()),
     currentSandboxName: types.optional(types.string()),
     createdAt: types.number(),

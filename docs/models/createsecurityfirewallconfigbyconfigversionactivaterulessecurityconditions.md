@@ -7,7 +7,7 @@ import { CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityConditi
 
 let value:
   CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityConditions = {
-    type: "route",
+    type: "ruleset",
     op: "eq",
   };
 ```

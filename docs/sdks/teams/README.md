@@ -577,7 +577,7 @@ run();
 
 ## removeTeamMember
 
-Remove a Team Member from the Team, or dismiss a user that requested access, or leave a team.
+Remove a Team Member from the Team, or dismiss a user that requested access, or leave a team. Directory Sync members can be removed when their directory email is absent or does not match the user's primary or verified secondary emails.
 
 ### Example Usage
 
@@ -758,6 +758,7 @@ async function run() {
       enablePreviewFeedback: "on",
       enableProductionFeedback: "on",
       sensitiveEnvironmentVariablePolicy: "on",
+      disjunctiveProductionSecretPolicy: "on",
       remoteCaching: {
         enabled: true,
       },
@@ -826,6 +827,7 @@ async function run() {
       enablePreviewFeedback: "on",
       enableProductionFeedback: "on",
       sensitiveEnvironmentVariablePolicy: "on",
+      disjunctiveProductionSecretPolicy: "on",
       remoteCaching: {
         enabled: true,
       },

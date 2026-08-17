@@ -33,7 +33,6 @@ let value: GetProjectResponseBody = {
         readyState: "CANCELED",
         type: "LAMBDAS",
         url: "https://well-lit-grandson.info",
-        userId: "<id>",
       },
       domain: "vague-diver.name",
       environment: "preview",
@@ -74,7 +73,6 @@ let value: GetProjectResponseBody = {
       readyState: "CANCELED",
       type: "LAMBDAS",
       url: "https://clueless-wallaby.info/",
-      userId: "<id>",
     },
   ],
   name: "<value>",
@@ -125,7 +123,6 @@ let value: GetProjectResponseBody = {
       readyState: "BLOCKED",
       type: "LAMBDAS",
       url: "https://frilly-replacement.biz",
-      userId: "<id>",
     },
   },
 };

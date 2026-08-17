@@ -1,6 +1,6 @@
 # RequestBody11
 
-Enable a managed rule
+Update a custom rule
 
 ## Example Usage
 
@@ -9,10 +9,12 @@ import { RequestBody11 } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
 let value: RequestBody11 = {
   action: "managedRules.update",
-  id: "sf",
+  id: "<id>",
   value: {
-    active: true,
-    action: "deny",
+    name: "<value>",
+    active: false,
+    conditionGroup: [],
+    action: {},
   },
 };
 ```
@@ -22,5 +24,5 @@ let value: RequestBody11 = {
 | Field                                                                                                                                | Type                                                                                                                                 | Required                                                                                                                             | Description                                                                                                                          |
 | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
 | `action`                                                                                                                             | [models.UpdateFirewallConfigRequestBodySecurityRequest11Action](../models/updatefirewallconfigrequestbodysecurityrequest11action.md) | :heavy_check_mark:                                                                                                                   | N/A                                                                                                                                  |
-| `id`                                                                                                                                 | [models.Id](../models/id.md)                                                                                                         | :heavy_check_mark:                                                                                                                   | N/A                                                                                                                                  |
+| `id`                                                                                                                                 | *string*                                                                                                                             | :heavy_check_mark:                                                                                                                   | N/A                                                                                                                                  |
 | `value`                                                                                                                              | [models.UpdateFirewallConfigRequestBodySecurityRequest11Value](../models/updatefirewallconfigrequestbodysecurityrequest11value.md)   | :heavy_check_mark:                                                                                                                   | N/A                                                                                                                                  |

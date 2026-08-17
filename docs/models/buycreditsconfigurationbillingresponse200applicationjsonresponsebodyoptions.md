@@ -1,6 +1,6 @@
 # BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOptions
 
-Configuration input options for increasing plan item quantity.
+Configuration input options for setting plan item quantity.
 
 ## Example Usage
 
@@ -11,16 +11,14 @@ let value:
   BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOptions =
     {
       productAlias: "<value>",
-      resourceIds: [
-        "<value 1>",
-        "<value 2>",
-      ],
+      quantity: 5601.95,
     };
 ```
 
 ## Fields
 
-| Field                                                                                                                 | Type                                                                                                                  | Required                                                                                                              | Description                                                                                                           |
-| --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `productAlias`                                                                                                        | *string*                                                                                                              | :heavy_check_mark:                                                                                                    | The alias of the product to increase quantity for.                                                                    |
-| `resourceIds`                                                                                                         | *string*[]                                                                                                            | :heavy_check_mark:                                                                                                    | The resource IDs to incrementally add. The quantity of the plan item will be increased by the number of resource IDs. |
+| Field                                                                               | Type                                                                                | Required                                                                            | Description                                                                         |
+| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `productAlias`                                                                      | *string*                                                                            | :heavy_check_mark:                                                                  | The alias of the product to set quantity for.                                       |
+| `quantity`                                                                          | *number*                                                                            | :heavy_check_mark:                                                                  | The quantity to set for the plan item.                                              |
+| `resourceIds`                                                                       | *string*[]                                                                          | :heavy_minus_sign:                                                                  | The resource IDs for the plan item. Only set if SKU requires resource entitlements. |

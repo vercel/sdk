@@ -11,6 +11,7 @@ let value: Drive = {
   name: "workspace",
   projectId: "prj_abc123",
   maxSizeBytes: 107374182400,
+  region: "iad1",
   currentSessionId: "sbx_123",
   currentSandboxName: "my-sandbox",
   createdAt: 1750344501629,
@@ -25,6 +26,7 @@ let value: Drive = {
 | `name`                                                                | *string*                                                              | :heavy_check_mark:                                                    | The unique drive name within the project.                             | workspace                                                             |
 | `projectId`                                                           | *string*                                                              | :heavy_check_mark:                                                    | The project that owns the drive.                                      | prj_abc123                                                            |
 | `maxSizeBytes`                                                        | *number*                                                              | :heavy_check_mark:                                                    | The maximum drive size in bytes.                                      | 107374182400                                                          |
+| `region`                                                              | *string*                                                              | :heavy_check_mark:                                                    | The region where the drive is stored.                                 | iad1                                                                  |
 | `currentSessionId`                                                    | *string*                                                              | :heavy_minus_sign:                                                    | Current session ID the drive is attached to, if any.                  | sbx_123                                                               |
 | `currentSandboxName`                                                  | *string*                                                              | :heavy_minus_sign:                                                    | Current sandbox name the drive is attached to, if any.                | my-sandbox                                                            |
 | `createdAt`                                                           | *number*                                                              | :heavy_check_mark:                                                    | The time when the drive was created, in milliseconds since the epoch. | 1750344501629                                                         |

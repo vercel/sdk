@@ -13,13 +13,13 @@ import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import {
-  EdgeConfigItem,
-  EdgeConfigItem$inboundSchema,
-} from "../models/edgeconfigitem.js";
-import {
   GetEdgeConfigItemsRequest,
   GetEdgeConfigItemsRequest$outboundSchema,
 } from "../models/getedgeconfigitemsop.js";
+import {
+  GlobalConfigItem,
+  GlobalConfigItem$inboundSchema,
+} from "../models/globalconfigitem.js";
 import {
   ConnectionError,
   InvalidRequestError,
@@ -47,7 +47,7 @@ export function globalConfigGetEdgeConfigItems(
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    Array<EdgeConfigItem>,
+    Array<GlobalConfigItem>,
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -72,7 +72,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      Array<EdgeConfigItem>,
+      Array<GlobalConfigItem>,
       | VercelError
       | ResponseValidationError
       | ConnectionError
@@ -161,7 +161,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    Array<EdgeConfigItem>,
+    Array<GlobalConfigItem>,
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -171,7 +171,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, z.array(EdgeConfigItem$inboundSchema)),
+    M.json(200, z.array(GlobalConfigItem$inboundSchema)),
     M.fail([400, 401, 403, 404, 410, "4XX"]),
     M.fail("5XX"),
   )(response, req);

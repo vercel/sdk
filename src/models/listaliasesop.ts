@@ -66,11 +66,11 @@ export type ListAliasesCreator = {
   /**
    * Email of the user who created the alias
    */
-  email: string;
+  email?: string | undefined;
   /**
    * Username of the user who created the alias
    */
-  username: string;
+  username?: string | undefined;
 };
 
 /**
@@ -84,7 +84,7 @@ export type ListAliasesDeployment = {
   /**
    * The deployment unique URL
    */
-  url: string;
+  url?: string | undefined;
   /**
    * The deployment metadata
    */
@@ -359,8 +359,8 @@ export const ListAliasesCreator$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   uid: types.string(),
-  email: types.string(),
-  username: types.string(),
+  email: types.optional(types.string()),
+  username: types.optional(types.string()),
 });
 
 export function listAliasesCreatorFromJSON(
@@ -380,7 +380,7 @@ export const ListAliasesDeployment$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: types.string(),
-  url: types.string(),
+  url: types.optional(types.string()),
   meta: types.optional(types.string()),
 });
 

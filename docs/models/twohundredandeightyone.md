@@ -5,17 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndEightyOne } from "@vercel/sdk/models/twohundredandfortyone.js";
+import { TwoHundredAndEightyOne } from "@vercel/sdk/models/twohundredandfiftysix.js";
 
 let value: TwoHundredAndEightyOne = {
   projectId: "<id>",
-  expiresAt: 4667.2,
+  projectName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `expiresAt`        | *number*           | :heavy_check_mark: | N/A                |
+| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `projectId`                                                    | *string*                                                       | :heavy_check_mark:                                             | N/A                                                            |
+| `projectName`                                                  | *string*                                                       | :heavy_check_mark:                                             | N/A                                                            |
+| `optionsAllowlist`                                             | [models.OptionsAllowlist](../models/optionsallowlist.md)       | :heavy_minus_sign:                                             | N/A                                                            |
+| `oldOptionsAllowlist`                                          | [models.OldOptionsAllowlist](../models/oldoptionsallowlist.md) | :heavy_minus_sign:                                             | N/A                                                            |

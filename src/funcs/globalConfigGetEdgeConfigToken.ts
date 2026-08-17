@@ -12,13 +12,13 @@ import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import {
-  EdgeConfigToken,
-  EdgeConfigToken$inboundSchema,
-} from "../models/edgeconfigtoken.js";
-import {
   GetEdgeConfigTokenRequest,
   GetEdgeConfigTokenRequest$outboundSchema,
 } from "../models/getedgeconfigtokenop.js";
+import {
+  GlobalConfigToken,
+  GlobalConfigToken$inboundSchema,
+} from "../models/globalconfigtoken.js";
 import {
   ConnectionError,
   InvalidRequestError,
@@ -46,7 +46,7 @@ export function globalConfigGetEdgeConfigToken(
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    EdgeConfigToken,
+    GlobalConfigToken,
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -71,7 +71,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      EdgeConfigToken,
+      GlobalConfigToken,
       | VercelError
       | ResponseValidationError
       | ConnectionError
@@ -166,7 +166,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    EdgeConfigToken,
+    GlobalConfigToken,
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -176,7 +176,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, EdgeConfigToken$inboundSchema),
+    M.json(200, GlobalConfigToken$inboundSchema),
     M.fail([400, 401, 403, 404, 410, "4XX"]),
     M.fail("5XX"),
   )(response, req);

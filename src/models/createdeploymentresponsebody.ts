@@ -70,7 +70,7 @@ import {
   ResponseBodyPlan$inboundSchema,
   ResponseBodyResourceConfig,
   ResponseBodyResourceConfig$inboundSchema,
-} from "./createdeploymentmissingdeploymentstype.js";
+} from "./createdeploymentrouteshas.js";
 import {
   CreateDeploymentRoutesDeployments2,
   CreateDeploymentRoutesDeployments2$inboundSchema,
@@ -90,8 +90,6 @@ import {
   CreateDeploymentServicesRedirects$inboundSchema,
   CreateDeploymentTransformsDeployments2,
   CreateDeploymentTransformsDeployments2$inboundSchema,
-  CreateDeploymentTransformsDeploymentsResponseOp,
-  CreateDeploymentTransformsDeploymentsResponseOp$inboundSchema,
   CreateDeploymentTransformsDeploymentsResponseType,
   CreateDeploymentTransformsDeploymentsResponseType$inboundSchema,
   ResponseBodyRoutes,
@@ -100,9 +98,18 @@ import {
   ServicesBindings$inboundSchema,
   ServicesRewrites,
   ServicesRewrites$inboundSchema,
-} from "./createdeploymenttransformsdeploymentsresponseop.js";
+} from "./createdeploymenttransformsdeploymentsresponsetype.js";
 import { FlagJSONValue, FlagJSONValue$inboundSchema } from "./flagjsonvalue.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const CreateDeploymentTransformsDeploymentsResponseOp = {
+  Append: "append",
+  Delete: "delete",
+  Set: "set",
+} as const;
+export type CreateDeploymentTransformsDeploymentsResponseOp = ClosedEnum<
+  typeof CreateDeploymentTransformsDeploymentsResponseOp
+>;
 
 export type CreateDeploymentKeyDeploymentsEq = string | number;
 
@@ -753,15 +760,15 @@ export type CreateDeploymentResponseBodyDeploymentsSource = {
 /**
  * Whether the value is an opaque identifier or a URL.
  */
-export const CreateDeploymentResponseBodyDeploymentsType = {
+export const CreateDeploymentResponseBodyDeploymentsResponseType = {
   Id: "id",
   Url: "url",
 } as const;
 /**
  * Whether the value is an opaque identifier or a URL.
  */
-export type CreateDeploymentResponseBodyDeploymentsType = ClosedEnum<
-  typeof CreateDeploymentResponseBodyDeploymentsType
+export type CreateDeploymentResponseBodyDeploymentsResponseType = ClosedEnum<
+  typeof CreateDeploymentResponseBodyDeploymentsResponseType
 >;
 
 /**
@@ -771,7 +778,7 @@ export type ResponseBodyOrigin = {
   /**
    * Whether the value is an opaque identifier or a URL.
    */
-  type: CreateDeploymentResponseBodyDeploymentsType;
+  type: CreateDeploymentResponseBodyDeploymentsResponseType;
   /**
    * The identifier or URL pointing to the originating entity.
    */
@@ -1388,6 +1395,11 @@ export type CreateDeploymentResponseBody1 = {
 export type CreateDeploymentResponseBody =
   | CreateDeploymentResponseBody2
   | CreateDeploymentResponseBody1;
+
+/** @internal */
+export const CreateDeploymentTransformsDeploymentsResponseOp$inboundSchema:
+  z.ZodNativeEnum<typeof CreateDeploymentTransformsDeploymentsResponseOp> = z
+    .nativeEnum(CreateDeploymentTransformsDeploymentsResponseOp);
 
 /** @internal */
 export const CreateDeploymentKeyDeploymentsEq$inboundSchema: z.ZodType<
@@ -2710,9 +2722,9 @@ export function createDeploymentResponseBodyDeploymentsSourceFromJSON(
 }
 
 /** @internal */
-export const CreateDeploymentResponseBodyDeploymentsType$inboundSchema:
-  z.ZodNativeEnum<typeof CreateDeploymentResponseBodyDeploymentsType> = z
-    .nativeEnum(CreateDeploymentResponseBodyDeploymentsType);
+export const CreateDeploymentResponseBodyDeploymentsResponseType$inboundSchema:
+  z.ZodNativeEnum<typeof CreateDeploymentResponseBodyDeploymentsResponseType> =
+    z.nativeEnum(CreateDeploymentResponseBodyDeploymentsResponseType);
 
 /** @internal */
 export const ResponseBodyOrigin$inboundSchema: z.ZodType<
@@ -2720,7 +2732,7 @@ export const ResponseBodyOrigin$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: CreateDeploymentResponseBodyDeploymentsType$inboundSchema,
+  type: CreateDeploymentResponseBodyDeploymentsResponseType$inboundSchema,
   value: types.string(),
 });
 

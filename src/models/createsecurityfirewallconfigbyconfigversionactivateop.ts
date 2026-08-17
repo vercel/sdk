@@ -237,6 +237,7 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityTyp
     Ruleset: "ruleset",
     Scheme: "scheme",
     ServerAction: "server_action",
+    SharedCondition: "shared_condition",
     TargetPath: "target_path",
     TrustedSource: "trusted_source",
     UserAgent: "user_agent",
@@ -428,6 +429,7 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesType = {
   Ruleset: "ruleset",
   Scheme: "scheme",
   ServerAction: "server_action",
+  SharedCondition: "shared_condition",
   TargetPath: "target_path",
   TrustedSource: "trusted_source",
   UserAgent: "user_agent",
@@ -718,6 +720,7 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsType = {
   Ruleset: "ruleset",
   Scheme: "scheme",
   ServerAction: "server_action",
+  SharedCondition: "shared_condition",
   TargetPath: "target_path",
   TrustedSource: "trusted_source",
   UserAgent: "user_agent",
@@ -885,6 +888,95 @@ export type CreateSecurityFirewallConfigByConfigVersionActivateRulesets =
     [k: string]: CreateSecurityFirewallConfigByConfigVersionActivateRulesets2;
   };
 
+export const CreateSecurityFirewallConfigByConfigVersionActivateType = {
+  BotCategory: "bot_category",
+  BotName: "bot_name",
+  BotProtection: "bot_protection",
+  BotStatus: "bot_status",
+  Cookie: "cookie",
+  DomainEnvironment: "domain_environment",
+  Environment: "environment",
+  GeoAsNumber: "geo_as_number",
+  GeoCity: "geo_city",
+  GeoContinent: "geo_continent",
+  GeoCountry: "geo_country",
+  GeoCountryRegion: "geo_country_region",
+  Header: "header",
+  Host: "host",
+  IpAddress: "ip_address",
+  Ja3Digest: "ja3_digest",
+  Ja4Digest: "ja4_digest",
+  Method: "method",
+  Path: "path",
+  Protocol: "protocol",
+  Query: "query",
+  RateLimitApiId: "rate_limit_api_id",
+  RawPath: "raw_path",
+  Region: "region",
+  Route: "route",
+  Ruleset: "ruleset",
+  Scheme: "scheme",
+  ServerAction: "server_action",
+  SharedCondition: "shared_condition",
+  TargetPath: "target_path",
+  TrustedSource: "trusted_source",
+  UserAgent: "user_agent",
+} as const;
+export type CreateSecurityFirewallConfigByConfigVersionActivateType =
+  ClosedEnum<typeof CreateSecurityFirewallConfigByConfigVersionActivateType>;
+
+export const CreateSecurityFirewallConfigByConfigVersionActivateOp = {
+  Eq: "eq",
+  Ex: "ex",
+  Gt: "gt",
+  Gte: "gte",
+  Inc: "inc",
+  List: "list",
+  Lt: "lt",
+  Lte: "lte",
+  Neq: "neq",
+  Nex: "nex",
+  Ninc: "ninc",
+  Pre: "pre",
+  Re: "re",
+  Sub: "sub",
+  Suf: "suf",
+} as const;
+export type CreateSecurityFirewallConfigByConfigVersionActivateOp = ClosedEnum<
+  typeof CreateSecurityFirewallConfigByConfigVersionActivateOp
+>;
+
+export type CreateSecurityFirewallConfigByConfigVersionActivateValue =
+  | string
+  | number
+  | Array<string>;
+
+export type CreateSecurityFirewallConfigByConfigVersionActivateSecurityConditions =
+  {
+    type: CreateSecurityFirewallConfigByConfigVersionActivateType;
+    op: CreateSecurityFirewallConfigByConfigVersionActivateOp;
+    neg?: boolean | undefined;
+    key?: string | undefined;
+    value?: string | number | Array<string> | undefined;
+  };
+
+export type CreateSecurityFirewallConfigByConfigVersionActivateConditionGroup =
+  {
+    conditions: Array<
+      CreateSecurityFirewallConfigByConfigVersionActivateSecurityConditions
+    >;
+  };
+
+export type CreateSecurityFirewallConfigByConfigVersionActivateConditions = {
+  description?: string | undefined;
+  id: string;
+  name: string;
+  active: boolean;
+  conditionGroup: Array<
+    CreateSecurityFirewallConfigByConfigVersionActivateConditionGroup
+  >;
+};
+
 export type CreateSecurityFirewallConfigByConfigVersionActivateChanges = {};
 
 export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction =
@@ -1039,6 +1131,9 @@ export type CreateSecurityFirewallConfigByConfigVersionActivateResponseBody = {
     | {
       [k: string]: CreateSecurityFirewallConfigByConfigVersionActivateRulesets2;
     }
+    | undefined;
+  conditions?:
+    | Array<CreateSecurityFirewallConfigByConfigVersionActivateConditions>
     | undefined;
   changes: Array<CreateSecurityFirewallConfigByConfigVersionActivateChanges>;
   managedRules?:
@@ -2761,6 +2856,134 @@ export function createSecurityFirewallConfigByConfigVersionActivateRulesetsFromJ
 }
 
 /** @internal */
+export const CreateSecurityFirewallConfigByConfigVersionActivateType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateType
+  > = z.nativeEnum(CreateSecurityFirewallConfigByConfigVersionActivateType);
+
+/** @internal */
+export const CreateSecurityFirewallConfigByConfigVersionActivateOp$inboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateSecurityFirewallConfigByConfigVersionActivateOp
+  > = z.nativeEnum(CreateSecurityFirewallConfigByConfigVersionActivateOp);
+
+/** @internal */
+export const CreateSecurityFirewallConfigByConfigVersionActivateValue$inboundSchema:
+  z.ZodType<
+    CreateSecurityFirewallConfigByConfigVersionActivateValue,
+    z.ZodTypeDef,
+    unknown
+  > = smartUnion([types.string(), types.number(), z.array(types.string())]);
+
+export function createSecurityFirewallConfigByConfigVersionActivateValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateSecurityFirewallConfigByConfigVersionActivateValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateSecurityFirewallConfigByConfigVersionActivateValue$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateSecurityFirewallConfigByConfigVersionActivateValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityConditions$inboundSchema:
+  z.ZodType<
+    CreateSecurityFirewallConfigByConfigVersionActivateSecurityConditions,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    type: CreateSecurityFirewallConfigByConfigVersionActivateType$inboundSchema,
+    op: CreateSecurityFirewallConfigByConfigVersionActivateOp$inboundSchema,
+    neg: types.optional(types.boolean()),
+    key: types.optional(types.string()),
+    value: types.optional(
+      smartUnion([types.string(), types.number(), z.array(types.string())]),
+    ),
+  });
+
+export function createSecurityFirewallConfigByConfigVersionActivateSecurityConditionsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateSecurityFirewallConfigByConfigVersionActivateSecurityConditions,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateSecurityFirewallConfigByConfigVersionActivateSecurityConditions$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateSecurityFirewallConfigByConfigVersionActivateSecurityConditions' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateSecurityFirewallConfigByConfigVersionActivateConditionGroup$inboundSchema:
+  z.ZodType<
+    CreateSecurityFirewallConfigByConfigVersionActivateConditionGroup,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    conditions: z.array(
+      z.lazy(() =>
+        CreateSecurityFirewallConfigByConfigVersionActivateSecurityConditions$inboundSchema
+      ),
+    ),
+  });
+
+export function createSecurityFirewallConfigByConfigVersionActivateConditionGroupFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateSecurityFirewallConfigByConfigVersionActivateConditionGroup,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateSecurityFirewallConfigByConfigVersionActivateConditionGroup$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateSecurityFirewallConfigByConfigVersionActivateConditionGroup' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateSecurityFirewallConfigByConfigVersionActivateConditions$inboundSchema:
+  z.ZodType<
+    CreateSecurityFirewallConfigByConfigVersionActivateConditions,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    description: types.optional(types.string()),
+    id: types.string(),
+    name: types.string(),
+    active: types.boolean(),
+    conditionGroup: z.array(
+      z.lazy(() =>
+        CreateSecurityFirewallConfigByConfigVersionActivateConditionGroup$inboundSchema
+      ),
+    ),
+  });
+
+export function createSecurityFirewallConfigByConfigVersionActivateConditionsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateSecurityFirewallConfigByConfigVersionActivateConditions,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateSecurityFirewallConfigByConfigVersionActivateConditions$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateSecurityFirewallConfigByConfigVersionActivateConditions' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateSecurityFirewallConfigByConfigVersionActivateChanges$inboundSchema:
   z.ZodType<
     CreateSecurityFirewallConfigByConfigVersionActivateChanges,
@@ -3114,6 +3337,11 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateResponseBody$inb
           ),
         ),
       ]),
+    ),
+    conditions: types.optional(
+      z.array(z.lazy(() =>
+        CreateSecurityFirewallConfigByConfigVersionActivateConditions$inboundSchema
+      )),
     ),
     changes: z.array(
       z.lazy(() =>

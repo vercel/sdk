@@ -8,9 +8,9 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
-  EdgeConfigItemValue,
-  EdgeConfigItemValue$inboundSchema,
-} from "./edgeconfigitemvalue.js";
+  GlobalConfigItemValue,
+  GlobalConfigItemValue$inboundSchema,
+} from "./globalconfigitemvalue.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetEdgeConfigBackupRequest = {
@@ -37,7 +37,7 @@ export type ResponseBodyUser = {
 export type ResponseBodyItems = {
   createdAt: number;
   updatedAt: number;
-  value: EdgeConfigItemValue | null;
+  value: GlobalConfigItemValue | null;
   description?: string | undefined;
 };
 
@@ -69,7 +69,7 @@ export type GetEdgeConfigBackupResponseBody2 = {
 export type GetEdgeConfigBackupResponseBodyItems = {
   createdAt: number;
   updatedAt: number;
-  value: EdgeConfigItemValue | null;
+  value: GlobalConfigItemValue | null;
   description?: string | undefined;
 };
 
@@ -172,7 +172,7 @@ export const ResponseBodyItems$inboundSchema: z.ZodType<
 > = z.object({
   createdAt: types.number(),
   updatedAt: types.number(),
-  value: types.nullable(EdgeConfigItemValue$inboundSchema),
+  value: types.nullable(GlobalConfigItemValue$inboundSchema),
   description: types.optional(types.string()),
 });
 
@@ -261,7 +261,7 @@ export const GetEdgeConfigBackupResponseBodyItems$inboundSchema: z.ZodType<
 > = z.object({
   createdAt: types.number(),
   updatedAt: types.number(),
-  value: types.nullable(EdgeConfigItemValue$inboundSchema),
+  value: types.nullable(GlobalConfigItemValue$inboundSchema),
   description: types.optional(types.string()),
 });
 

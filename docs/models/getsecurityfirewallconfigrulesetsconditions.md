@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetSecurityFirewallConfigRulesetsConditions } from "@vercel/sdk/models/getsecurityfirewallconfigresponsebody.js";
+import { GetSecurityFirewallConfigRulesetsConditions } from "@vercel/sdk/models/getsecurityfirewallconfigsecurityresponsemanagedrules.js";
 
 let value: GetSecurityFirewallConfigRulesetsConditions = {
   type: "bot_name",

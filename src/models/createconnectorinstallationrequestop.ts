@@ -57,6 +57,10 @@ export type Connector = {
    */
   serviceName?: string | undefined;
   /**
+   * Provider-facing display name when the connector type exposes one, falling back to the stored connector name.
+   */
+  displayName: string;
+  /**
    * The connector's own name: the operator-given client name, falling back to the client type's name for legacy rows without one.
    */
   name: string;
@@ -205,6 +209,7 @@ export const Connector$inboundSchema: z.ZodType<
   type: types.string(),
   service: types.optional(types.string()),
   serviceName: types.optional(types.string()),
+  displayName: types.string(),
   name: types.string(),
 });
 

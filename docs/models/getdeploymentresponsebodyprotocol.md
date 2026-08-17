@@ -5,7 +5,7 @@ Must be `http` or `https`.
 ## Example Usage
 
 ```typescript
-import { GetDeploymentResponseBodyProtocol } from "@vercel/sdk/models/getdeploymentgitsourcedeploymentsresponsetype.js";
+import { GetDeploymentResponseBodyProtocol } from "@vercel/sdk/models/getdeploymentgitsourcerepoid.js";
 
 let value: GetDeploymentResponseBodyProtocol = "http";
 ```

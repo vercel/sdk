@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateIntegrationStoreDirectMetadataSchema } from "@vercel/sdk/models/createintegrationstoredirectnotification.js";
+import { CreateIntegrationStoreDirectMetadataSchema } from "@vercel/sdk/models/createintegrationstoredirectauthentication.js";
 
 let value: CreateIntegrationStoreDirectMetadataSchema = {
   type: "object",

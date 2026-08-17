@@ -45,11 +45,30 @@ export type Experimentation = {
   globalConfigId?: string | undefined;
 };
 
+export const GetIntegrationResourceTarget = {
+  Development: "development",
+  Preview: "preview",
+  Production: "production",
+} as const;
+export type GetIntegrationResourceTarget = ClosedEnum<
+  typeof GetIntegrationResourceTarget
+>;
+
+export type AppUrls = {
+  url: string;
+  target: GetIntegrationResourceTarget;
+};
+
+export type Authentication = {
+  appUrls?: Array<AppUrls> | undefined;
+};
+
 /**
  * Any settings provided for the resource to support its product's protocols
  */
 export type ProtocolSettings = {
   experimentation?: Experimentation | undefined;
+  authentication?: Authentication | undefined;
 };
 
 export const GetIntegrationResourceLevel = {
@@ -171,12 +190,54 @@ export function experimentationFromJSON(
 }
 
 /** @internal */
+export const GetIntegrationResourceTarget$inboundSchema: z.ZodNativeEnum<
+  typeof GetIntegrationResourceTarget
+> = z.nativeEnum(GetIntegrationResourceTarget);
+
+/** @internal */
+export const AppUrls$inboundSchema: z.ZodType<AppUrls, z.ZodTypeDef, unknown> =
+  z.object({
+    url: types.string(),
+    target: GetIntegrationResourceTarget$inboundSchema,
+  });
+
+export function appUrlsFromJSON(
+  jsonString: string,
+): SafeParseResult<AppUrls, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AppUrls$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AppUrls' from JSON`,
+  );
+}
+
+/** @internal */
+export const Authentication$inboundSchema: z.ZodType<
+  Authentication,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  appUrls: types.optional(z.array(z.lazy(() => AppUrls$inboundSchema))),
+});
+
+export function authenticationFromJSON(
+  jsonString: string,
+): SafeParseResult<Authentication, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Authentication$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Authentication' from JSON`,
+  );
+}
+
+/** @internal */
 export const ProtocolSettings$inboundSchema: z.ZodType<
   ProtocolSettings,
   z.ZodTypeDef,
   unknown
 > = z.object({
   experimentation: types.optional(z.lazy(() => Experimentation$inboundSchema)),
+  authentication: types.optional(z.lazy(() => Authentication$inboundSchema)),
 });
 
 export function protocolSettingsFromJSON(

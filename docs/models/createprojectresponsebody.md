@@ -44,7 +44,6 @@ let value: CreateProjectResponseBody = {
       readyState: "INITIALIZING",
       type: "LAMBDAS",
       url: "https://clumsy-tackle.info",
-      userId: "<id>",
     },
   ],
   name: "<value>",
@@ -113,7 +112,6 @@ let value: CreateProjectResponseBody = {
       readyState: "CANCELED",
       type: "LAMBDAS",
       url: "https://sinful-hubris.org",
-      userId: "<id>",
     },
   },
 };

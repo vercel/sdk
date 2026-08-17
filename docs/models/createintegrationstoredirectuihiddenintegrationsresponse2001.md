@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateIntegrationStoreDirectUiHiddenIntegrationsResponse2001 } from "@vercel/sdk/models/createintegrationstoredirectnotification.js";
+import { CreateIntegrationStoreDirectUiHiddenIntegrationsResponse2001 } from "@vercel/sdk/models/createintegrationstoredirectauthentication.js";
 
 let value: CreateIntegrationStoreDirectUiHiddenIntegrationsResponse2001 = {
   expr: "<value>",

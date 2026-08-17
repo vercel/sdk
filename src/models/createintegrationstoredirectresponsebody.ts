@@ -8,13 +8,13 @@ import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import {
-  CreateIntegrationStoreDirectNotification,
-  CreateIntegrationStoreDirectNotification$inboundSchema,
-  CreateIntegrationStoreDirectProtocolSettings,
-  CreateIntegrationStoreDirectProtocolSettings$inboundSchema,
+  CreateIntegrationStoreDirectAuthentication,
+  CreateIntegrationStoreDirectAuthentication$inboundSchema,
+  CreateIntegrationStoreDirectExperimentation,
+  CreateIntegrationStoreDirectExperimentation$inboundSchema,
   Product,
   Product$inboundSchema,
-} from "./createintegrationstoredirectnotification.js";
+} from "./createintegrationstoredirectauthentication.js";
 import {
   Capabilities,
   Capabilities$inboundSchema,
@@ -32,6 +32,27 @@ import {
   ExternalResourceStatus$inboundSchema,
 } from "./createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema7type.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type CreateIntegrationStoreDirectProtocolSettings = {
+  experimentation?: CreateIntegrationStoreDirectExperimentation | undefined;
+  authentication?: CreateIntegrationStoreDirectAuthentication | undefined;
+};
+
+export const CreateIntegrationStoreDirectLevel = {
+  Error: "error",
+  Info: "info",
+  Warn: "warn",
+} as const;
+export type CreateIntegrationStoreDirectLevel = ClosedEnum<
+  typeof CreateIntegrationStoreDirectLevel
+>;
+
+export type CreateIntegrationStoreDirectNotification = {
+  title: string;
+  level: CreateIntegrationStoreDirectLevel;
+  message?: string | undefined;
+  href?: string | undefined;
+};
 
 export type CreateIntegrationStoreDirectSecrets = {
   name: string;
@@ -155,6 +176,70 @@ export type CreateIntegrationStoreDirectStore = {
 export type CreateIntegrationStoreDirectResponseBody = {
   store: CreateIntegrationStoreDirectStore | null;
 };
+
+/** @internal */
+export const CreateIntegrationStoreDirectProtocolSettings$inboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectProtocolSettings,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    experimentation: types.optional(
+      CreateIntegrationStoreDirectExperimentation$inboundSchema,
+    ),
+    authentication: types.optional(
+      CreateIntegrationStoreDirectAuthentication$inboundSchema,
+    ),
+  });
+
+export function createIntegrationStoreDirectProtocolSettingsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateIntegrationStoreDirectProtocolSettings,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateIntegrationStoreDirectProtocolSettings$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateIntegrationStoreDirectProtocolSettings' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateIntegrationStoreDirectLevel$inboundSchema: z.ZodNativeEnum<
+  typeof CreateIntegrationStoreDirectLevel
+> = z.nativeEnum(CreateIntegrationStoreDirectLevel);
+
+/** @internal */
+export const CreateIntegrationStoreDirectNotification$inboundSchema: z.ZodType<
+  CreateIntegrationStoreDirectNotification,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  title: types.string(),
+  level: CreateIntegrationStoreDirectLevel$inboundSchema,
+  message: types.optional(types.string()),
+  href: types.optional(types.string()),
+});
+
+export function createIntegrationStoreDirectNotificationFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateIntegrationStoreDirectNotification,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateIntegrationStoreDirectNotification$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateIntegrationStoreDirectNotification' from JSON`,
+  );
+}
 
 /** @internal */
 export const CreateIntegrationStoreDirectSecrets$inboundSchema: z.ZodType<
@@ -338,10 +423,10 @@ export const CreateIntegrationStoreDirectStore$inboundSchema: z.ZodType<
   directPartnerConsoleUrl: types.optional(types.string()),
   product: Product$inboundSchema,
   protocolSettings: types.optional(
-    CreateIntegrationStoreDirectProtocolSettings$inboundSchema,
+    z.lazy(() => CreateIntegrationStoreDirectProtocolSettings$inboundSchema),
   ),
   notification: types.optional(
-    CreateIntegrationStoreDirectNotification$inboundSchema,
+    z.lazy(() => CreateIntegrationStoreDirectNotification$inboundSchema),
   ),
   secrets: z.array(
     z.lazy(() => CreateIntegrationStoreDirectSecrets$inboundSchema),

@@ -5,24 +5,32 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { NinetyNine } from "@vercel/sdk/models/usereventjobpayload979githashtagvercel.js";
+import { NinetyNine } from "@vercel/sdk/models/usereventpayload80configuration.js";
 
 let value: NinetyNine = {
-  sha: "<value>",
-  gitUserPlatform: "<value>",
-  projectName: "<value>",
-  gitCommitterName: "<value>",
-  source: "<value>",
+  job: {
+    headInfo: {
+      org: "<value>",
+      ref: "<value>",
+      repo: "<value>",
+      repoId: 1102.65,
+      sha: "<value>",
+    },
+    installationId: 5082.46,
+    isPrivate: true,
+    org: "<value>",
+    prId: 2521.87,
+    projectId: "<id>",
+    repo: "<value>",
+    repoId: 332.38,
+    type: "now-comment",
+    provider: "github-limited",
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `sha`              | *string*           | :heavy_check_mark: | N/A                |
-| `gitUserPlatform`  | *string*           | :heavy_check_mark: | N/A                |
-| `projectId`        | *string*           | :heavy_minus_sign: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `gitCommitterName` | *string*           | :heavy_check_mark: | N/A                |
-| `source`           | *string*           | :heavy_check_mark: | N/A                |
+| Field               | Type                | Required            | Description         |
+| ------------------- | ------------------- | ------------------- | ------------------- |
+| `job`               | *models.PayloadJob* | :heavy_check_mark:  | N/A                 |

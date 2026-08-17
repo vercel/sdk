@@ -143,13 +143,33 @@ export const GetDeploymentsType = {
 export type GetDeploymentsType = ClosedEnum<typeof GetDeploymentsType>;
 
 /**
- * Metadata information of the user who created the deployment.
+ * Principal type of the deployment creator. Defaults to `"user"` if absent (legacy deployments created before principal attribution was recorded).
+ */
+export const GetDeploymentsDeploymentsType = {
+  App: "app",
+  Integration: "integration",
+  System: "system",
+  User: "user",
+} as const;
+/**
+ * Principal type of the deployment creator. Defaults to `"user"` if absent (legacy deployments created before principal attribution was recorded).
+ */
+export type GetDeploymentsDeploymentsType = ClosedEnum<
+  typeof GetDeploymentsDeploymentsType
+>;
+
+/**
+ * Metadata information of the deployment creator.
  */
 export type GetDeploymentsCreator = {
   /**
-   * The unique identifier of the user.
+   * Stable creator id across principal types. This may be a user ID, an app ID, an integration configuration ID, or `system`.
    */
   uid: string;
+  /**
+   * Principal type of the deployment creator. Defaults to `"user"` if absent (legacy deployments created before principal attribution was recorded).
+   */
+  type?: GetDeploymentsDeploymentsType | undefined;
   /**
    * The email address of the user.
    */
@@ -467,15 +487,15 @@ export type GetDeploymentsDeploymentsSource = {
 /**
  * Whether the value is an opaque identifier or a URL.
  */
-export const GetDeploymentsDeploymentsType = {
+export const GetDeploymentsDeploymentsResponseType = {
   Id: "id",
   Url: "url",
 } as const;
 /**
  * Whether the value is an opaque identifier or a URL.
  */
-export type GetDeploymentsDeploymentsType = ClosedEnum<
-  typeof GetDeploymentsDeploymentsType
+export type GetDeploymentsDeploymentsResponseType = ClosedEnum<
+  typeof GetDeploymentsDeploymentsResponseType
 >;
 
 /**
@@ -485,7 +505,7 @@ export type GetDeploymentsOrigin = {
   /**
    * Whether the value is an opaque identifier or a URL.
    */
-  type: GetDeploymentsDeploymentsType;
+  type: GetDeploymentsDeploymentsResponseType;
   /**
    * The identifier or URL pointing to the originating entity.
    */
@@ -717,7 +737,7 @@ export type Deployments = {
    */
   type: GetDeploymentsType;
   /**
-   * Metadata information of the user who created the deployment.
+   * Metadata information of the deployment creator.
    */
   creator: GetDeploymentsCreator;
   /**
@@ -902,12 +922,18 @@ export const GetDeploymentsType$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(GetDeploymentsType);
 
 /** @internal */
+export const GetDeploymentsDeploymentsType$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentsDeploymentsType
+> = z.nativeEnum(GetDeploymentsDeploymentsType);
+
+/** @internal */
 export const GetDeploymentsCreator$inboundSchema: z.ZodType<
   GetDeploymentsCreator,
   z.ZodTypeDef,
   unknown
 > = z.object({
   uid: types.string(),
+  type: types.optional(GetDeploymentsDeploymentsType$inboundSchema),
   email: types.optional(types.string()),
   username: types.optional(types.string()),
   githubLogin: types.optional(types.string()),
@@ -1199,9 +1225,10 @@ export function getDeploymentsDeploymentsSourceFromJSON(
 }
 
 /** @internal */
-export const GetDeploymentsDeploymentsType$inboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentsDeploymentsType
-> = z.nativeEnum(GetDeploymentsDeploymentsType);
+export const GetDeploymentsDeploymentsResponseType$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentsDeploymentsResponseType> = z.nativeEnum(
+    GetDeploymentsDeploymentsResponseType,
+  );
 
 /** @internal */
 export const GetDeploymentsOrigin$inboundSchema: z.ZodType<
@@ -1209,7 +1236,7 @@ export const GetDeploymentsOrigin$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: GetDeploymentsDeploymentsType$inboundSchema,
+  type: GetDeploymentsDeploymentsResponseType$inboundSchema,
   value: types.string(),
 });
 

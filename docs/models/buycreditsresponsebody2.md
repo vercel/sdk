@@ -10,17 +10,10 @@ let value: BuyCreditsResponseBody2 = {
     id: "<id>",
     configuration: {
       options: {
-        orbCustomerId: "<id>",
-        orbExternalCustomerId: "<id>",
-        orbExternalPlanId: "<id>",
-        orbPendingSubscriptionChangeId: "<id>",
-        orbPlanId: "<id>",
-        orbSubscriptionId: "<id>",
+        planId: "<id>",
       },
-      output: {
-        pendingSubscriptionChangeId: "<id>",
-      },
-      type: "orb_subscription_intent",
+      output: {},
+      type: "subscription",
     },
     createdAt: "1723484693361",
     currency: "miu",

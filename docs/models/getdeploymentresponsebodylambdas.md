@@ -5,7 +5,7 @@ A partial representation of a Build used by the deployment endpoint.
 ## Example Usage
 
 ```typescript
-import { GetDeploymentResponseBodyLambdas } from "@vercel/sdk/models/getdeploymentgitsourcedeploymentsresponsetype.js";
+import { GetDeploymentResponseBodyLambdas } from "@vercel/sdk/models/getdeploymentgitsourcerepoid.js";
 
 let value: GetDeploymentResponseBodyLambdas = {
   id: "<id>",

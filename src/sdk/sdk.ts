@@ -44,6 +44,7 @@ import { unwrapAsync } from "../types/fp.js";
 import { AccessGroups } from "./accessgroups.js";
 import { AiGateway } from "./aigateway.js";
 import { Aliases } from "./aliases.js";
+import { ApiAiGateway } from "./apiaigateway.js";
 import { Artifacts } from "./artifacts.js";
 import { Authentication } from "./authentication.js";
 import { Billing } from "./billing.js";
@@ -86,6 +87,11 @@ export class Vercel extends ClientSDK {
   private _accessGroups?: AccessGroups;
   get accessGroups(): AccessGroups {
     return (this._accessGroups ??= new AccessGroups(this._options));
+  }
+
+  private _apiAiGateway?: ApiAiGateway;
+  get apiAiGateway(): ApiAiGateway {
+    return (this._apiAiGateway ??= new ApiAiGateway(this._options));
   }
 
   private _aiGateway?: AiGateway;

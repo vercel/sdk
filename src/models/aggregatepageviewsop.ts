@@ -285,6 +285,7 @@ export type Data2 = {
   appName: string;
   codingAgent: string;
   isByok: string;
+  spendAttribution: string;
   isPrivateModel: string;
   isRequestZdr: string;
   hipaaRequested: string;
@@ -505,6 +506,7 @@ export type Data1 = {
   appName?: string | undefined;
   codingAgent?: string | undefined;
   isByok?: string | undefined;
+  spendAttribution?: string | undefined;
   isPrivateModel?: string | undefined;
   isRequestZdr?: string | undefined;
   hipaaRequested?: string | undefined;
@@ -855,6 +857,7 @@ export const Data2$inboundSchema: z.ZodType<Data2, z.ZodTypeDef, unknown> =
       appName: types.string(),
       codingAgent: types.string(),
       isByok: types.string(),
+      spendAttribution: types.string(),
       isPrivateModel: types.string(),
       isRequestZdr: types.string(),
       hipaaRequested: types.string(),
@@ -1089,6 +1092,7 @@ export const Data1$inboundSchema: z.ZodType<Data1, z.ZodTypeDef, unknown> = z
     appName: types.optional(types.string()),
     codingAgent: types.optional(types.string()),
     isByok: types.optional(types.string()),
+    spendAttribution: types.optional(types.string()),
     isPrivateModel: types.optional(types.string()),
     isRequestZdr: types.optional(types.string()),
     hipaaRequested: types.optional(types.string()),

@@ -11,5 +11,5 @@ let value: UpdateFirewallConfigRequestBodySecurityRequest17Action = "challenge";
 ## Values
 
 ```typescript
-"log" | "challenge" | "deny"
+"deny" | "challenge" | "log" | "bypass"
 ```

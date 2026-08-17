@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetSecurityFirewallConfigRfi } from "@vercel/sdk/models/getsecurityfirewallconfigsecurityaction.js";
+import { GetSecurityFirewallConfigRfi } from "@vercel/sdk/models/getsecurityfirewallconfiglogheaderssecurityresponse200applicationjsonresponsebodydraftrules2.js";
 
 let value: GetSecurityFirewallConfigRfi = {
   active: true,

@@ -281,7 +281,10 @@ export type GetMicrofrontendsInGroupDeployment = {
   type:
     GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsAliasType;
   url: string;
-  userId: string;
+  /**
+   * Present for user creators; omitted for app/integration/system creators.
+   */
+  userId?: string | undefined;
   withCache?: boolean | undefined;
 };
 
@@ -1219,7 +1222,10 @@ export type GetMicrofrontendsInGroupLatestDeployments = {
   teamId?: string | null | undefined;
   type: GetMicrofrontendsInGroupMicrofrontendsResponseType;
   url: string;
-  userId: string;
+  /**
+   * Present for user creators; omitted for app/integration/system creators.
+   */
+  userId?: string | undefined;
   withCache?: boolean | undefined;
 };
 
@@ -1728,7 +1734,7 @@ export type GetMicrofrontendsInGroupChecks = {
    */
   excludeStatusCodes?: Array<number> | undefined;
   /**
-   * Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted.
+   * Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted.
    */
   excludePaths?: Array<string> | undefined;
   /**
@@ -2452,7 +2458,7 @@ export const GetMicrofrontendsInGroupDeployment$inboundSchema: z.ZodType<
   type:
     GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsAliasType$inboundSchema,
   url: types.string(),
-  userId: types.string(),
+  userId: types.optional(types.string()),
   withCache: types.optional(types.boolean()),
 });
 
@@ -3897,7 +3903,7 @@ export const GetMicrofrontendsInGroupLatestDeployments$inboundSchema: z.ZodType<
   teamId: z.nullable(types.string()).optional(),
   type: GetMicrofrontendsInGroupMicrofrontendsResponseType$inboundSchema,
   url: types.string(),
-  userId: types.string(),
+  userId: types.optional(types.string()),
   withCache: types.optional(types.boolean()),
 });
 

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentResponseBodyOutput } from "@vercel/sdk/models/createdeploymentmissingdeploymentstype.js";
+import { CreateDeploymentResponseBodyOutput } from "@vercel/sdk/models/createdeploymentrouteshas.js";
 
 let value: CreateDeploymentResponseBodyOutput = {
   path: "/root",

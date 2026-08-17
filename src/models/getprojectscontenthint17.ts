@@ -1320,7 +1320,10 @@ export type ResponseBodyDeployment = {
   teamId?: string | null | undefined;
   type: GetProjectsResponseBodyProjectsResponse200ApplicationJSONType;
   url: string;
-  userId: string;
+  /**
+   * Present for user creators; omitted for app/integration/system creators.
+   */
+  userId?: string | undefined;
   withCache?: boolean | undefined;
 };
 
@@ -4417,7 +4420,7 @@ export const ResponseBodyDeployment$inboundSchema: z.ZodType<
   type:
     GetProjectsResponseBodyProjectsResponse200ApplicationJSONType$inboundSchema,
   url: types.string(),
-  userId: types.string(),
+  userId: types.optional(types.string()),
   withCache: types.optional(types.boolean()),
 });
 

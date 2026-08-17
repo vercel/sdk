@@ -5,23 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndNinetyNine } from "@vercel/sdk/models/usereventpayload373previous.js";
+import { ThreeHundredAndNinetyNine } from "@vercel/sdk/models/threehundredandninetytwo.js";
 
 let value: ThreeHundredAndNinetyNine = {
-  projectId: "<id>",
-  projectName: "<value>",
-  repositoryName: "<value>",
-  sharedWithTeamId: "<id>",
-  sharedWithTeamSlug: "<value>",
+  previous: {
+    enabled: true,
+    totpVerified: false,
+  },
+  next: {
+    enabled: true,
+    totpVerified: false,
+  },
 };
 ```
 
 ## Fields
 
-| Field                | Type                 | Required             | Description          |
-| -------------------- | -------------------- | -------------------- | -------------------- |
-| `projectId`          | *string*             | :heavy_check_mark:   | N/A                  |
-| `projectName`        | *string*             | :heavy_check_mark:   | N/A                  |
-| `repositoryName`     | *string*             | :heavy_check_mark:   | N/A                  |
-| `sharedWithTeamId`   | *string*             | :heavy_check_mark:   | N/A                  |
-| `sharedWithTeamSlug` | *string*             | :heavy_check_mark:   | N/A                  |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `previous`                                                                     | [models.UserEventPayload399Previous](../models/usereventpayload399previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `next`                                                                         | [models.UserEventPayload399Next](../models/usereventpayload399next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `method`                                                                       | [models.PayloadMethod](../models/payloadmethod.md)                             | :heavy_minus_sign:                                                             | N/A                                                                            |

@@ -23,7 +23,6 @@ let value: UpdateMicrofrontendsAlias = {
     readyState: "CANCELED",
     type: "LAMBDAS",
     url: "https://another-recovery.com/",
-    userId: "<id>",
   },
   domain: "webbed-unblinking.biz",
   environment: "preview",

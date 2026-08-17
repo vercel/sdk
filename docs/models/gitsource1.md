@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GitSource1 } from "@vercel/sdk/models/createdeploymentmissingdeploymentstype.js";
+import { GitSource1 } from "@vercel/sdk/models/createdeploymentrouteshas.js";
 
 let value: GitSource1 = {
   type: "vercel",

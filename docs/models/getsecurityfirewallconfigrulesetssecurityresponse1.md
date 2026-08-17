@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetSecurityFirewallConfigRulesetsSecurityResponse1 } from "@vercel/sdk/models/getsecurityfirewallconfigsecurityaction.js";
+import { GetSecurityFirewallConfigRulesetsSecurityResponse1 } from "@vercel/sdk/models/getsecurityfirewallconfiglogheaderssecurityresponse200applicationjsonresponsebodydraftrules2.js";
 
 let value: GetSecurityFirewallConfigRulesetsSecurityResponse1 = {
   id: "<id>",

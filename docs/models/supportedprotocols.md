@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { SupportedProtocols } from "@vercel/sdk/models/createintegrationstoredirectnotification.js";
+import { SupportedProtocols } from "@vercel/sdk/models/createintegrationstoredirectauthentication.js";
 
 let value: SupportedProtocols = "other";
 ```

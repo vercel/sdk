@@ -78,8 +78,12 @@ export type GetConfigurationProductsIntegrationsResponse200Status = ClosedEnum<
   typeof GetConfigurationProductsIntegrationsResponse200Status
 >;
 
-export type Authentication = {
+export type GetConfigurationProductsAuthentication = {
   status: GetConfigurationProductsIntegrationsResponse200Status;
+  /**
+   * The partner accepts Vercel-managed app URLs via `protocolSettings.authentication.appUrls` on provision-resource and update-resource, and reconciles them into its trusted-origin / redirect-URL allowlist. When absent, consumers surface the URL for a one-time manual registration instead.
+   */
+  appUrlRegistrationSupport?: boolean | undefined;
 };
 
 export const GetConfigurationProductsIntegrationsResponse200ApplicationJSONStatus =
@@ -227,7 +231,7 @@ export type Protocols = {
   storage?: Storage | undefined;
   experimentation?: GetConfigurationProductsExperimentation | undefined;
   ai?: Ai | undefined;
-  authentication?: Authentication | undefined;
+  authentication?: GetConfigurationProductsAuthentication | undefined;
   observability?: Observability | undefined;
   video?: Video | undefined;
   workflow?: Workflow | undefined;
@@ -1358,21 +1362,23 @@ export const GetConfigurationProductsIntegrationsResponse200Status$inboundSchema
   > = z.nativeEnum(GetConfigurationProductsIntegrationsResponse200Status);
 
 /** @internal */
-export const Authentication$inboundSchema: z.ZodType<
-  Authentication,
+export const GetConfigurationProductsAuthentication$inboundSchema: z.ZodType<
+  GetConfigurationProductsAuthentication,
   z.ZodTypeDef,
   unknown
 > = z.object({
   status: GetConfigurationProductsIntegrationsResponse200Status$inboundSchema,
+  appUrlRegistrationSupport: types.optional(types.boolean()),
 });
 
-export function authenticationFromJSON(
+export function getConfigurationProductsAuthenticationFromJSON(
   jsonString: string,
-): SafeParseResult<Authentication, SDKValidationError> {
+): SafeParseResult<GetConfigurationProductsAuthentication, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Authentication$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Authentication' from JSON`,
+    (x) =>
+      GetConfigurationProductsAuthentication$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetConfigurationProductsAuthentication' from JSON`,
   );
 }
 
@@ -1621,7 +1627,9 @@ export const Protocols$inboundSchema: z.ZodType<
     z.lazy(() => GetConfigurationProductsExperimentation$inboundSchema),
   ),
   ai: types.optional(z.lazy(() => Ai$inboundSchema)),
-  authentication: types.optional(z.lazy(() => Authentication$inboundSchema)),
+  authentication: types.optional(
+    z.lazy(() => GetConfigurationProductsAuthentication$inboundSchema),
+  ),
   observability: types.optional(z.lazy(() => Observability$inboundSchema)),
   video: types.optional(z.lazy(() => Video$inboundSchema)),
   workflow: types.optional(z.lazy(() => Workflow$inboundSchema)),

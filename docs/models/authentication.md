@@ -3,15 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { Authentication } from "@vercel/sdk/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyuidisabled.js";
+import { Authentication } from "@vercel/sdk/models/getintegrationresourceop.js";
 
-let value: Authentication = {
-  status: "disabled",
-};
+let value: Authentication = {};
 ```
 
 ## Fields
 
-| Field                                                                                                                              | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
-| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `status`                                                                                                                           | [models.GetConfigurationProductsIntegrationsResponse200Status](../models/getconfigurationproductsintegrationsresponse200status.md) | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `appUrls`                                | [models.AppUrls](../models/appurls.md)[] | :heavy_minus_sign:                       | N/A                                      |

@@ -53,10 +53,8 @@ import {
   ResponseBodyReadyState$inboundSchema,
   ResponseBodyTarget,
   ResponseBodyTarget$inboundSchema,
-} from "./getdeploymentgitsourcedeploymentsresponsetype.js";
+} from "./getdeploymentgitsourcerepoid.js";
 import {
-  GetDeploymentHasDeploymentsResponse1,
-  GetDeploymentHasDeploymentsResponse1$inboundSchema,
   GetDeploymentHasDeploymentsResponse2,
   GetDeploymentHasDeploymentsResponse2$inboundSchema,
   GetDeploymentResponseBodyCrons,
@@ -93,10 +91,23 @@ import {
   GetDeploymentServicesRedirects$inboundSchema,
   GetDeploymentServicesTransforms,
   GetDeploymentServicesTransforms$inboundSchema,
+  GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Rewrites2,
+  GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Rewrites2$inboundSchema,
   ResponseBodyProject,
   ResponseBodyProject$inboundSchema,
-} from "./getdeploymenthasdeploymentsresponse1.js";
+} from "./getdeploymentvaluedeploymentsresponse200applicationjsonresponsebody2services2rewrites2.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type GetDeploymentHasDeploymentsResponse200ApplicationJSONValue =
+  | string
+  | GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Rewrites2;
+
+export type GetDeploymentHasDeploymentsResponse1 = {
+  type: "host";
+  value:
+    | string
+    | GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Rewrites2;
+};
 
 export type GetDeploymentServicesDeploymentsHas =
   | GetDeploymentHasDeploymentsResponse1
@@ -1121,16 +1132,18 @@ export type GetDeploymentResponseBodyDeploymentsResponseSource = {
 /**
  * Whether the value is an opaque identifier or a URL.
  */
-export const GetDeploymentResponseBodyDeploymentsResponseType = {
-  Id: "id",
-  Url: "url",
-} as const;
+export const GetDeploymentResponseBodyDeploymentsResponse200ApplicationJSONType =
+  {
+    Id: "id",
+    Url: "url",
+  } as const;
 /**
  * Whether the value is an opaque identifier or a URL.
  */
-export type GetDeploymentResponseBodyDeploymentsResponseType = ClosedEnum<
-  typeof GetDeploymentResponseBodyDeploymentsResponseType
->;
+export type GetDeploymentResponseBodyDeploymentsResponse200ApplicationJSONType =
+  ClosedEnum<
+    typeof GetDeploymentResponseBodyDeploymentsResponse200ApplicationJSONType
+  >;
 
 /**
  * Reference back to the entity on the platform that initiated the deployment.
@@ -1139,7 +1152,7 @@ export type GetDeploymentResponseBodyOrigin = {
   /**
    * Whether the value is an opaque identifier or a URL.
    */
-  type: GetDeploymentResponseBodyDeploymentsResponseType;
+  type: GetDeploymentResponseBodyDeploymentsResponse200ApplicationJSONType;
   /**
    * The identifier or URL pointing to the originating entity.
    */
@@ -1766,12 +1779,62 @@ export type GetDeploymentResponseBody =
   | GetDeploymentResponseBody1;
 
 /** @internal */
+export const GetDeploymentHasDeploymentsResponse200ApplicationJSONValue$inboundSchema:
+  z.ZodType<
+    GetDeploymentHasDeploymentsResponse200ApplicationJSONValue,
+    z.ZodTypeDef,
+    unknown
+  > = smartUnion([
+    types.string(),
+    GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Rewrites2$inboundSchema,
+  ]);
+
+export function getDeploymentHasDeploymentsResponse200ApplicationJSONValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetDeploymentHasDeploymentsResponse200ApplicationJSONValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentHasDeploymentsResponse200ApplicationJSONValue$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentHasDeploymentsResponse200ApplicationJSONValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentHasDeploymentsResponse1$inboundSchema: z.ZodType<
+  GetDeploymentHasDeploymentsResponse1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("host"),
+  value: smartUnion([
+    types.string(),
+    GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Rewrites2$inboundSchema,
+  ]),
+});
+
+export function getDeploymentHasDeploymentsResponse1FromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentHasDeploymentsResponse1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentHasDeploymentsResponse1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentHasDeploymentsResponse1' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetDeploymentServicesDeploymentsHas$inboundSchema: z.ZodType<
   GetDeploymentServicesDeploymentsHas,
   z.ZodTypeDef,
   unknown
 > = z.union([
-  GetDeploymentHasDeploymentsResponse1$inboundSchema,
+  z.lazy(() => GetDeploymentHasDeploymentsResponse1$inboundSchema),
   GetDeploymentHasDeploymentsResponse2$inboundSchema.and(
     z.object({ type: z.literal("cookie") }),
   ),
@@ -2086,20 +2149,18 @@ export const GetDeploymentServicesRewrites$inboundSchema: z.ZodType<
     z.array(GetDeploymentServicesTransforms$inboundSchema),
   ),
   has: types.optional(
-    z.array(
-      z.union([
-        GetDeploymentHasDeploymentsResponse1$inboundSchema,
-        GetDeploymentHasDeploymentsResponse2$inboundSchema.and(
-          z.object({ type: z.literal("cookie") }),
-        ),
-        GetDeploymentHasDeploymentsResponse2$inboundSchema.and(
-          z.object({ type: z.literal("header") }),
-        ),
-        GetDeploymentHasDeploymentsResponse2$inboundSchema.and(
-          z.object({ type: z.literal("query") }),
-        ),
-      ]),
-    ),
+    z.array(z.union([
+      z.lazy(() => GetDeploymentHasDeploymentsResponse1$inboundSchema),
+      GetDeploymentHasDeploymentsResponse2$inboundSchema.and(
+        z.object({ type: z.literal("cookie") }),
+      ),
+      GetDeploymentHasDeploymentsResponse2$inboundSchema.and(
+        z.object({ type: z.literal("header") }),
+      ),
+      GetDeploymentHasDeploymentsResponse2$inboundSchema.and(
+        z.object({ type: z.literal("query") }),
+      ),
+    ])),
   ),
   missing: types.optional(
     z.array(z.union([
@@ -4113,9 +4174,12 @@ export function getDeploymentResponseBodyDeploymentsResponseSourceFromJSON(
 }
 
 /** @internal */
-export const GetDeploymentResponseBodyDeploymentsResponseType$inboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentResponseBodyDeploymentsResponseType> = z
-    .nativeEnum(GetDeploymentResponseBodyDeploymentsResponseType);
+export const GetDeploymentResponseBodyDeploymentsResponse200ApplicationJSONType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetDeploymentResponseBodyDeploymentsResponse200ApplicationJSONType
+  > = z.nativeEnum(
+    GetDeploymentResponseBodyDeploymentsResponse200ApplicationJSONType,
+  );
 
 /** @internal */
 export const GetDeploymentResponseBodyOrigin$inboundSchema: z.ZodType<
@@ -4123,7 +4187,8 @@ export const GetDeploymentResponseBodyOrigin$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: GetDeploymentResponseBodyDeploymentsResponseType$inboundSchema,
+  type:
+    GetDeploymentResponseBodyDeploymentsResponse200ApplicationJSONType$inboundSchema,
   value: types.string(),
 });
 

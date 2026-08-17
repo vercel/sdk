@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentResponseBodyDeploymentsStatus } from "@vercel/sdk/models/createdeploymentmissingdeploymentstype.js";
+import { CreateDeploymentResponseBodyDeploymentsStatus } from "@vercel/sdk/models/createdeploymentrouteshas.js";
 
 let value: CreateDeploymentResponseBodyDeploymentsStatus = "pending";
 ```

@@ -5,21 +5,18 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndTwo } from "@vercel/sdk/models/usereventpayload373previous.js";
+import { FourHundredAndTwo } from "@vercel/sdk/models/threehundredandninetytwo.js";
 
 let value: FourHundredAndTwo = {
-  projectId: "<id>",
-  projectName: "<value>",
-  repositoryName: "<value>",
-  removedTeamIds: [],
+  mfa: {
+    enabled: true,
+    totpVerified: true,
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `repositoryName`   | *string*           | :heavy_check_mark: | N/A                |
-| `removedTeamIds`   | *string*[]         | :heavy_check_mark: | N/A                |
+| Field                          | Type                           | Required                       | Description                    |
+| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
+| `mfa`                          | [models.Mfa](../models/mfa.md) | :heavy_check_mark:             | N/A                            |

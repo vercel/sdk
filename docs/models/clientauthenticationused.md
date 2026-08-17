@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ClientAuthenticationUsed } from "@vercel/sdk/models/usereventpayload373previous.js";
+import { ClientAuthenticationUsed } from "@vercel/sdk/models/threehundredandninetytwo.js";
 
 let value: ClientAuthenticationUsed = {
   method: "none",
@@ -12,7 +12,7 @@ let value: ClientAuthenticationUsed = {
 
 ## Fields
 
-| Field                                              | Type                                               | Required                                           | Description                                        |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `method`                                           | [models.PayloadMethod](../models/payloadmethod.md) | :heavy_check_mark:                                 | N/A                                                |
-| `secretId`                                         | *string*                                           | :heavy_minus_sign:                                 | N/A                                                |
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `method`                                                             | [models.UserEventPayloadMethod](../models/usereventpayloadmethod.md) | :heavy_check_mark:                                                   | N/A                                                                  |
+| `secretId`                                                           | *string*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |

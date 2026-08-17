@@ -23,7 +23,6 @@ let value: GetProjectsResponseBodyProjectsAlias = {
     readyState: "READY",
     type: "LAMBDAS",
     url: "https://impossible-dandelion.name",
-    userId: "<id>",
   },
   domain: "far-off-forager.org",
   environment: "production",

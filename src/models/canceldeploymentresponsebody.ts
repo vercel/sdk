@@ -72,9 +72,8 @@ import {
   ReadyState$inboundSchema,
   ReadySubstate,
   ReadySubstate$inboundSchema,
-} from "./canceldeploymentservicesdeploymentsmaxduration.js";
+} from "./canceldeploymentmaxdurationdeployments2.js";
 import { FlagJSONValue, FlagJSONValue$inboundSchema } from "./flagjsonvalue.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
   Builder,
   Builder$inboundSchema,
@@ -86,11 +85,16 @@ import {
   Services2$inboundSchema,
   ServicesType,
   ServicesType$inboundSchema,
-  Topics2,
-  Topics2$inboundSchema,
   Trigger,
   Trigger$inboundSchema,
-} from "./topics2.js";
+} from "./schedule.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type Topics2 = {
+  topic: string;
+  retryAfterSeconds?: number | undefined;
+  initialDelaySeconds?: number | undefined;
+};
 
 export type Topics = Array<string> | Array<Topics2>;
 
@@ -330,15 +334,15 @@ export type CancelDeploymentDeploymentsSource = {
 /**
  * Whether the value is an opaque identifier or a URL.
  */
-export const CancelDeploymentDeploymentsType = {
+export const CancelDeploymentDeploymentsResponseType = {
   Id: "id",
   Url: "url",
 } as const;
 /**
  * Whether the value is an opaque identifier or a URL.
  */
-export type CancelDeploymentDeploymentsType = ClosedEnum<
-  typeof CancelDeploymentDeploymentsType
+export type CancelDeploymentDeploymentsResponseType = ClosedEnum<
+  typeof CancelDeploymentDeploymentsResponseType
 >;
 
 /**
@@ -348,7 +352,7 @@ export type CancelDeploymentOrigin = {
   /**
    * Whether the value is an opaque identifier or a URL.
    */
-  type: CancelDeploymentDeploymentsType;
+  type: CancelDeploymentDeploymentsResponseType;
   /**
    * The identifier or URL pointing to the originating entity.
    */
@@ -866,8 +870,29 @@ export type CancelDeploymentResponseBody = {
 };
 
 /** @internal */
+export const Topics2$inboundSchema: z.ZodType<Topics2, z.ZodTypeDef, unknown> =
+  z.object({
+    topic: types.string(),
+    retryAfterSeconds: types.optional(types.number()),
+    initialDelaySeconds: types.optional(types.number()),
+  });
+
+export function topics2FromJSON(
+  jsonString: string,
+): SafeParseResult<Topics2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Topics2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Topics2' from JSON`,
+  );
+}
+
+/** @internal */
 export const Topics$inboundSchema: z.ZodType<Topics, z.ZodTypeDef, unknown> =
-  smartUnion([z.array(types.string()), z.array(Topics2$inboundSchema)]);
+  smartUnion([
+    z.array(types.string()),
+    z.array(z.lazy(() => Topics2$inboundSchema)),
+  ]);
 
 export function topicsFromJSON(
   jsonString: string,
@@ -929,7 +954,10 @@ export const Services1$inboundSchema: z.ZodType<
   schedule: types.optional(Schedule$inboundSchema),
   handlerFunction: types.optional(types.string()),
   topics: types.optional(
-    smartUnion([z.array(types.string()), z.array(Topics2$inboundSchema)]),
+    smartUnion([
+      z.array(types.string()),
+      z.array(z.lazy(() => Topics2$inboundSchema)),
+    ]),
   ),
   env: types.optional(z.record(z.lazy(() => ServicesEnv$inboundSchema))),
 });
@@ -1319,9 +1347,9 @@ export function cancelDeploymentDeploymentsSourceFromJSON(
 }
 
 /** @internal */
-export const CancelDeploymentDeploymentsType$inboundSchema: z.ZodNativeEnum<
-  typeof CancelDeploymentDeploymentsType
-> = z.nativeEnum(CancelDeploymentDeploymentsType);
+export const CancelDeploymentDeploymentsResponseType$inboundSchema:
+  z.ZodNativeEnum<typeof CancelDeploymentDeploymentsResponseType> = z
+    .nativeEnum(CancelDeploymentDeploymentsResponseType);
 
 /** @internal */
 export const CancelDeploymentOrigin$inboundSchema: z.ZodType<
@@ -1329,7 +1357,7 @@ export const CancelDeploymentOrigin$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: CancelDeploymentDeploymentsType$inboundSchema,
+  type: CancelDeploymentDeploymentsResponseType$inboundSchema,
   value: types.string(),
 });
 

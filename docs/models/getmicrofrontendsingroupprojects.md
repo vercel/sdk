@@ -42,7 +42,6 @@ let value: GetMicrofrontendsInGroupProjects = {
       readyState: "INITIALIZING",
       type: "LAMBDAS",
       url: "https://squeaky-wombat.name",
-      userId: "<id>",
     },
   ],
   name: "<value>",
@@ -101,7 +100,6 @@ let value: GetMicrofrontendsInGroupProjects = {
       readyState: "BLOCKED",
       type: "LAMBDAS",
       url: "https://extroverted-mythology.net/",
-      userId: "<id>",
     },
   },
 };

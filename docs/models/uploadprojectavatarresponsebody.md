@@ -26,7 +26,6 @@ let value: UploadProjectAvatarResponseBody = {
         readyState: "QUEUED",
         type: "LAMBDAS",
         url: "https://menacing-orchid.biz/",
-        userId: "<id>",
       },
       domain: "self-assured-executor.info",
       environment: "production",
@@ -67,7 +66,6 @@ let value: UploadProjectAvatarResponseBody = {
       readyState: "BLOCKED",
       type: "LAMBDAS",
       url: "https://qualified-venom.biz/",
-      userId: "<id>",
     },
   ],
   name: "<value>",
@@ -134,7 +132,6 @@ let value: UploadProjectAvatarResponseBody = {
       readyState: "QUEUED",
       type: "LAMBDAS",
       url: "https://handsome-tentacle.net/",
-      userId: "<id>",
     },
   },
 };

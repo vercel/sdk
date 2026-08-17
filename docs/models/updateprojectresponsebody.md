@@ -38,7 +38,6 @@ let value: UpdateProjectResponseBody = {
       readyState: "QUEUED",
       type: "LAMBDAS",
       url: "https://lustrous-publication.net",
-      userId: "<id>",
     },
   ],
   name: "<value>",
@@ -99,7 +98,6 @@ let value: UpdateProjectResponseBody = {
       readyState: "BUILDING",
       type: "LAMBDAS",
       url: "https://far-flung-accompanist.info",
-      userId: "<id>",
     },
   },
 };

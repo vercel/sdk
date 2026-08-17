@@ -14,6 +14,7 @@ let value: CreateConnectorInstallationRequestResponseBody = {
     id: "<id>",
     uid: "<id>",
     type: "<value>",
+    displayName: "Darwin_Wintheiser68",
     name: "<value>",
   },
 };

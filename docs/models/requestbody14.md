@@ -1,6 +1,6 @@
 # RequestBody14
 
-Update an IP Blocking rule
+Enable a managed rule
 
 ## Example Usage
 
@@ -9,10 +9,9 @@ import { RequestBody14 } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
 let value: RequestBody14 = {
   action: "<value>",
-  id: "<id>",
+  id: "rce",
   value: {
-    hostname: "hospitable-scorpion.net",
-    ip: "7ff6:9f2f:212d:87ac:4edf:dd9a:ed78:89df",
+    active: false,
     action: "log",
   },
 };
@@ -23,5 +22,5 @@ let value: RequestBody14 = {
 | Field                                                                                                                              | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
 | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | `action`                                                                                                                           | *string*                                                                                                                           | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
-| `id`                                                                                                                               | *string*                                                                                                                           | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
+| `id`                                                                                                                               | [models.Id](../models/id.md)                                                                                                       | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
 | `value`                                                                                                                            | [models.UpdateFirewallConfigRequestBodySecurityRequest14Value](../models/updatefirewallconfigrequestbodysecurityrequest14value.md) | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |

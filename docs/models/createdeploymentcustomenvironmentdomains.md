@@ -5,7 +5,7 @@ List of domains associated with this environment
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentCustomEnvironmentDomains } from "@vercel/sdk/models/createdeploymentmissingdeploymentstype.js";
+import { CreateDeploymentCustomEnvironmentDomains } from "@vercel/sdk/models/createdeploymentrouteshas.js";
 
 let value: CreateDeploymentCustomEnvironmentDomains = {
   name: "<value>",

@@ -1,6 +1,6 @@
 # RequestBody18
 
-Toggle bot ID
+Remove an IP Blocking rule
 
 ## Example Usage
 
@@ -9,7 +9,7 @@ import { RequestBody18 } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
 let value: RequestBody18 = {
   action: "<value>",
-  value: true,
+  id: "<id>",
 };
 ```
 
@@ -18,5 +18,5 @@ let value: RequestBody18 = {
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `action`           | *string*           | :heavy_check_mark: | N/A                |
-| `id`               | *string*           | :heavy_minus_sign: | N/A                |
-| `value`            | *boolean*          | :heavy_check_mark: | N/A                |
+| `id`               | *string*           | :heavy_check_mark: | N/A                |
+| `value`            | *string*           | :heavy_minus_sign: | N/A                |

@@ -1,6 +1,6 @@
 # RequestBody16
 
-Update a managed ruleset
+Add an IP Blocking rule
 
 ## Example Usage
 
@@ -9,9 +9,10 @@ import { RequestBody16 } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
 let value: RequestBody16 = {
   action: "<value>",
-  id: "owasp",
   value: {
-    active: false,
+    hostname: "wrong-switchboard.name",
+    ip: "172.225.205.145",
+    action: "bypass",
   },
 };
 ```
@@ -21,5 +22,5 @@ let value: RequestBody16 = {
 | Field                                                                                                                              | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
 | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | `action`                                                                                                                           | *string*                                                                                                                           | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
-| `id`                                                                                                                               | [models.RequestBodyId](../models/requestbodyid.md)                                                                                 | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
+| `id`                                                                                                                               | *string*                                                                                                                           | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |
 | `value`                                                                                                                            | [models.UpdateFirewallConfigRequestBodySecurityRequest16Value](../models/updatefirewallconfigrequestbodysecurityrequest16value.md) | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |

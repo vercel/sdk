@@ -1,17 +1,17 @@
 # CancelDeploymentDeploymentsType
 
-Whether the value is an opaque identifier or a URL.
+Principal type of the deployment creator.
 
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentDeploymentsType } from "@vercel/sdk/models/canceldeploymentresponsebody.js";
+import { CancelDeploymentDeploymentsType } from "@vercel/sdk/models/canceldeploymentmaxdurationdeployments2.js";
 
-let value: CancelDeploymentDeploymentsType = "url";
+let value: CancelDeploymentDeploymentsType = "system";
 ```
 
 ## Values
 
 ```typescript
-"id" | "url"
+"app" | "integration" | "system" | "user"
 ```

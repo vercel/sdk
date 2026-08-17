@@ -5,11 +5,11 @@
 ```typescript
 import { UpdateFirewallConfigRequestBodySecurityRequest7ValueAction } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
-let value: UpdateFirewallConfigRequestBodySecurityRequest7ValueAction = {};
+let value: UpdateFirewallConfigRequestBodySecurityRequest7ValueAction = "deny";
 ```
 
-## Fields
+## Values
 
-| Field                                                                                                                  | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
-| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `mitigate`                                                                                                             | [models.UpdateFirewallConfigRequestBodySecurityMitigate](../models/updatefirewallconfigrequestbodysecuritymitigate.md) | :heavy_minus_sign:                                                                                                     | N/A                                                                                                                    |
+```typescript
+"deny" | "challenge" | "log" | "allow"
+```

@@ -543,21 +543,33 @@ export type GetConfigurationResponseBody1 = {
    */
   userId: string;
   /**
-   * The user or team ID that owns the configuration
-   */
-  ownerId: string;
-  /**
    * A timestamp that tells you when the configuration was created
    */
   createdAt: number;
+  /**
+   * A timestamp that tells you when the configuration was deleted.
+   */
+  deletedAt?: number | null | undefined;
+  /**
+   * The slug of the integration the configuration is created for.
+   */
+  slug: string;
+  /**
+   * When the configuration was created for a team, this will show the ID of the team.
+   */
+  teamId?: string | null | undefined;
   /**
    * A timestamp that tells you when the configuration was updated.
    */
   updatedAt: number;
   /**
-   * A timestamp that tells you when the configuration was deleted.
+   * The resources that are allowed to be accessed by the configuration.
    */
-  deletedAt?: number | null | undefined;
+  scopes: Array<string>;
+  /**
+   * The user or team ID that owns the configuration
+   */
+  ownerId: string;
   canConfigureOpenTelemetry?: boolean | undefined;
   /**
    * A timestamp that tells you when the configuration was installed successfully
@@ -571,18 +583,6 @@ export type GetConfigurationResponseBody1 = {
    * Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
    */
   source?: GetConfigurationResponseBodySource | undefined;
-  /**
-   * The slug of the integration the configuration is created for.
-   */
-  slug: string;
-  /**
-   * When the configuration was created for a team, this will show the ID of the team.
-   */
-  teamId?: string | null | undefined;
-  /**
-   * The resources that are allowed to be accessed by the configuration.
-   */
-  scopes: Array<string>;
   /**
    * A timestamp that tells you when the configuration was disabled. Note: Configurations can be disabled when the associated user loses access to a team. They do not function during this time until the configuration is 'transferred', meaning the associated user is changed to one with access to the team.
    */
@@ -1024,17 +1024,17 @@ export const GetConfigurationResponseBody1$inboundSchema: z.ZodType<
   id: types.string(),
   integrationId: types.string(),
   userId: types.string(),
-  ownerId: types.string(),
   createdAt: types.number(),
-  updatedAt: types.number(),
   deletedAt: z.nullable(types.number()).optional(),
+  slug: types.string(),
+  teamId: z.nullable(types.string()).optional(),
+  updatedAt: types.number(),
+  scopes: z.array(types.string()),
+  ownerId: types.string(),
   canConfigureOpenTelemetry: types.optional(types.boolean()),
   completedAt: types.optional(types.number()),
   externalId: types.optional(types.string()),
   source: types.optional(GetConfigurationResponseBodySource$inboundSchema),
-  slug: types.string(),
-  teamId: z.nullable(types.string()).optional(),
-  scopes: z.array(types.string()),
   disabledAt: types.optional(types.number()),
   deleteRequestedAt: z.nullable(types.number()).optional(),
   customerDeleteRequestedAt: z.nullable(types.number()).optional(),

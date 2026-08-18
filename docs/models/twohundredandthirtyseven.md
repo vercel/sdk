@@ -5,42 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndThirtySeven } from "@vercel/sdk/models/onehundredandninety.js";
+import { TwoHundredAndThirtySeven } from "@vercel/sdk/models/onehundredandninetythree.js";
 
 let value: TwoHundredAndThirtySeven = {
-  team: {
-    id: "<id>",
-    name: "<value>",
-  },
-  project: {
-    id: "<id>",
-    oldConnectConfigurations: [
-      {
-        envId: "<id>",
-        connectConfigurationId: "<id>",
-        passive: false,
-        buildsEnabled: true,
-        createdAt: 9005.75,
-        updatedAt: 8968.35,
-      },
-    ],
-    newConnectConfigurations: [
-      {
-        envId: "<id>",
-        connectConfigurationId: "<id>",
-        passive: true,
-        buildsEnabled: false,
-        createdAt: 5463.76,
-        updatedAt: 2696.76,
-      },
-    ],
-  },
+  projectId: "<id>",
+  projectName: "<value>",
+  widget: "speed-insights-res",
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `team`                                                                       | [models.UserEventPayload237Team](../models/usereventpayload237team.md)       | :heavy_check_mark:                                                           | N/A                                                                          |
-| `project`                                                                    | [models.UserEventPayload237Project](../models/usereventpayload237project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field                                | Type                                 | Required                             | Description                          |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| `projectId`                          | *string*                             | :heavy_check_mark:                   | N/A                                  |
+| `projectName`                        | *string*                             | :heavy_check_mark:                   | N/A                                  |
+| `widget`                             | [models.Widget](../models/widget.md) | :heavy_check_mark:                   | N/A                                  |

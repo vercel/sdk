@@ -3,17 +3,19 @@
 ## Example Usage
 
 ```typescript
-import { Previous } from "@vercel/sdk/models/payloadchange.js";
+import { Previous } from "@vercel/sdk/models/userevent.js";
 
 let value: Previous = {
-  enabled: false,
-  autoAddReviewers: true,
+  minimumBalance: "<value>",
+  targetBalance: "<value>",
+  maximumMonthlySpend: "<value>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
-| `autoAddReviewers` | *boolean*          | :heavy_check_mark: | N/A                |
+| Field                 | Type                  | Required              | Description           |
+| --------------------- | --------------------- | --------------------- | --------------------- |
+| `minimumBalance`      | *string*              | :heavy_check_mark:    | N/A                   |
+| `targetBalance`       | *string*              | :heavy_check_mark:    | N/A                   |
+| `maximumMonthlySpend` | *string*              | :heavy_check_mark:    | N/A                   |

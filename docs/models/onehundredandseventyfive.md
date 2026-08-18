@@ -10,7 +10,8 @@ import { OneHundredAndSeventyFive } from "@vercel/sdk/models/edgemiddlewareinvoc
 let value: OneHundredAndSeventyFive = {
   issuerId: "<id>",
   issuerName: "<value>",
-  kind: "<value>",
+  algorithm: "<value>",
+  origin: "<value>",
 };
 ```
 
@@ -20,7 +21,6 @@ let value: OneHundredAndSeventyFive = {
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `issuerId`         | *string*           | :heavy_check_mark: | N/A                |
 | `issuerName`       | *string*           | :heavy_check_mark: | N/A                |
-| `kind`             | *string*           | :heavy_check_mark: | N/A                |
-| `projectId`        | *string*           | :heavy_minus_sign: | N/A                |
-| `clientId`         | *string*           | :heavy_minus_sign: | N/A                |
-| `environments`     | *string*[]         | :heavy_minus_sign: | N/A                |
+| `algorithm`        | *string*           | :heavy_check_mark: | N/A                |
+| `origin`           | *string*           | :heavy_check_mark: | N/A                |
+| `managedBy`        | *string*           | :heavy_minus_sign: | N/A                |

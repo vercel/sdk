@@ -1,6 +1,6 @@
 # PatchTeamDefault
 
-Default build machine type for new builds: basic, standard, enhanced, turbo, or elastic.
+Default build machine type for new builds: standard, enhanced, turbo, or elastic.
 
 ## Example Usage
 

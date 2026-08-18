@@ -5,20 +5,18 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThirtyEight } from "@vercel/sdk/models/payloadchange.js";
+import { ThirtyEight } from "@vercel/sdk/models/usereventpayloadrefreshperiod.js";
 
 let value: ThirtyEight = {
-  alias: "<value>",
-  aliasId: "<id>",
-  deploymentId: "<id>",
+  projectId: "<id>",
+  aliasCount: 4139.22,
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `name`             | *string*           | :heavy_minus_sign: | N/A                |
-| `alias`            | *string*           | :heavy_check_mark: | N/A                |
-| `aliasId`          | *string*           | :heavy_check_mark: | N/A                |
-| `deploymentId`     | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                      | Type                                                       | Required                                                   | Description                                                |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `projectId`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| `aliasCount`                                               | *number*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| `deployment`                                               | [models.PayloadDeployment](../models/payloaddeployment.md) | :heavy_minus_sign:                                         | N/A                                                        |

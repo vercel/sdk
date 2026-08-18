@@ -5,19 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFortyTwo } from "@vercel/sdk/models/onehundredandninety.js";
+import { TwoHundredAndFortyTwo } from "@vercel/sdk/models/onehundredandninetythree.js";
 
 let value: TwoHundredAndFortyTwo = {
   projectId: "<id>",
   projectName: "<value>",
-  autoAssignCustomDomains: true,
+  action: "disabled",
 };
 ```
 
 ## Fields
 
-| Field                     | Type                      | Required                  | Description               |
-| ------------------------- | ------------------------- | ------------------------- | ------------------------- |
-| `projectId`               | *string*                  | :heavy_check_mark:        | N/A                       |
-| `projectName`             | *string*                  | :heavy_check_mark:        | N/A                       |
-| `autoAssignCustomDomains` | *boolean*                 | :heavy_check_mark:        | N/A                       |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `projectId`                                                                | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `projectName`                                                              | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `action`                                                                   | [models.UserEventPayload242Action](../models/usereventpayload242action.md) | :heavy_check_mark:                                                         | N/A                                                                        |

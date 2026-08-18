@@ -42,10 +42,12 @@ export const Name = {
   AiGatewayApiKeyCreated: "ai-gateway-api-key-created",
   AiGatewayApiKeyDeleted: "ai-gateway-api-key-deleted",
   AiGatewayApiKeyQuotaUpdated: "ai-gateway-api-key-quota-updated",
+  AiGatewayAutoReloadUpdated: "ai-gateway-auto-reload-updated",
   AiGatewayBudgetDefaultUpdated: "ai-gateway-budget-default-updated",
   AiGatewayByokCredentialCreated: "ai-gateway-byok-credential-created",
   AiGatewayByokCredentialDeleted: "ai-gateway-byok-credential-deleted",
   AiGatewayByokCredentialUpdated: "ai-gateway-byok-credential-updated",
+  AiGatewayCreditsPurchased: "ai-gateway-credits-purchased",
   AiGatewayGuardrailsUpdated: "ai-gateway-guardrails-updated",
   AiGatewayModelAllowlistModelsUpdated:
     "ai-gateway-model-allowlist-models-updated",
@@ -267,6 +269,8 @@ export const Name = {
   GitIntegrationRepoPush: "git-integration-repo-push",
   GitAccountIntegrationLinkAdded: "git_account_integration_link_added",
   InstantRollbackCreated: "instant-rollback-created",
+  IntegrationConfigurationCredentialRotated:
+    "integration-configuration-credential-rotated",
   IntegrationConfigurationOwnerChanged:
     "integration-configuration-owner-changed",
   IntegrationConfigurationScopeChangeConfirmed:
@@ -765,10 +769,12 @@ export const ReplacedBy = {
   AiGatewayApiKeyCreated: "ai-gateway-api-key-created",
   AiGatewayApiKeyDeleted: "ai-gateway-api-key-deleted",
   AiGatewayApiKeyQuotaUpdated: "ai-gateway-api-key-quota-updated",
+  AiGatewayAutoReloadUpdated: "ai-gateway-auto-reload-updated",
   AiGatewayBudgetDefaultUpdated: "ai-gateway-budget-default-updated",
   AiGatewayByokCredentialCreated: "ai-gateway-byok-credential-created",
   AiGatewayByokCredentialDeleted: "ai-gateway-byok-credential-deleted",
   AiGatewayByokCredentialUpdated: "ai-gateway-byok-credential-updated",
+  AiGatewayCreditsPurchased: "ai-gateway-credits-purchased",
   AiGatewayGuardrailsUpdated: "ai-gateway-guardrails-updated",
   AiGatewayModelAllowlistModelsUpdated:
     "ai-gateway-model-allowlist-models-updated",
@@ -990,6 +996,8 @@ export const ReplacedBy = {
   GitIntegrationRepoPush: "git-integration-repo-push",
   GitAccountIntegrationLinkAdded: "git_account_integration_link_added",
   InstantRollbackCreated: "instant-rollback-created",
+  IntegrationConfigurationCredentialRotated:
+    "integration-configuration-credential-rotated",
   IntegrationConfigurationOwnerChanged:
     "integration-configuration-owner-changed",
   IntegrationConfigurationScopeChangeConfirmed:

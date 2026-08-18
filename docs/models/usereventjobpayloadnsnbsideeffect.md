@@ -5,7 +5,7 @@ Since March 2026 Records a successful NSNB auto-add result so later GitHub PR co
 ## Example Usage
 
 ```typescript
-import { UserEventJobPayloadNsnbSideEffect } from "@vercel/sdk/models/usereventpayload80configuration.js";
+import { UserEventJobPayloadNsnbSideEffect } from "@vercel/sdk/models/usereventpayloadteam.js";
 
 let value: UserEventJobPayloadNsnbSideEffect = {
   action: "auto-approved-pending-invite",
@@ -15,7 +15,7 @@ let value: UserEventJobPayloadNsnbSideEffect = {
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `action`                                                                       | [models.UserEventJobPayload99Action](../models/usereventjobpayload99action.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `gitUserLogin`                                                                 | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `action`                                                                         | [models.UserEventJobPayload101Action](../models/usereventjobpayload101action.md) | :heavy_check_mark:                                                               | N/A                                                                              |
+| `gitUserLogin`                                                                   | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |

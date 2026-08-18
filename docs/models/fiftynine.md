@@ -5,10 +5,13 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FiftyNine } from "@vercel/sdk/models/payloadchange.js";
+import { FiftyNine } from "@vercel/sdk/models/usereventpayloadrefreshperiod.js";
 
 let value: FiftyNine = {
-  paymentMethodId: "<id>",
+  invoiceId: "<id>",
+  amount: 6462.86,
+  refundReason: "<value>",
+  lineItemCount: 6058.28,
 };
 ```
 
@@ -16,6 +19,7 @@ let value: FiftyNine = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `paymentMethodId`  | *string*           | :heavy_check_mark: | N/A                |
-| `brand`            | *string*           | :heavy_minus_sign: | N/A                |
-| `last4`            | *string*           | :heavy_minus_sign: | N/A                |
+| `invoiceId`        | *string*           | :heavy_check_mark: | N/A                |
+| `amount`           | *number*           | :heavy_check_mark: | N/A                |
+| `refundReason`     | *string*           | :heavy_check_mark: | N/A                |
+| `lineItemCount`    | *number*           | :heavy_check_mark: | N/A                |

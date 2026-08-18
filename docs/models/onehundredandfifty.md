@@ -5,15 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFifty } from "@vercel/sdk/models/onehundredandthirtyone.js";
+import { OneHundredAndFifty } from "@vercel/sdk/models/onehundredandthirtyfour.js";
 
 let value: OneHundredAndFifty = {
-  configVersion: "<value>",
+  projectId: "<id>",
+  scope: "<value>",
+  source: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                         | Type                          | Required                      | Description                   |
-| ----------------------------- | ----------------------------- | ----------------------------- | ----------------------------- |
-| `configVersion`               | *models.PayloadConfigVersion* | :heavy_check_mark:            | N/A                           |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `scope`            | *string*           | :heavy_check_mark: | N/A                |
+| `source`           | *string*           | :heavy_check_mark: | N/A                |

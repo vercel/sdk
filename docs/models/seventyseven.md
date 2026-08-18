@@ -5,18 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { SeventySeven } from "@vercel/sdk/models/payloadchange.js";
+import { SeventySeven } from "@vercel/sdk/models/usereventpayloadrefreshperiod.js";
 
 let value: SeventySeven = {
-  configuration: {
-    id: "<id>",
-    name: "<value>",
-  },
+  slug: "<value>",
+  documentId: "<id>",
+  title: "<value>",
+  fingerprint: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                              | Type                                               | Required                                           | Description                                        |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `configuration`                                    | [models.Configuration](../models/configuration.md) | :heavy_check_mark:                                 | N/A                                                |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `slug`             | *string*           | :heavy_check_mark: | N/A                |
+| `documentId`       | *string*           | :heavy_check_mark: | N/A                |
+| `title`            | *string*           | :heavy_check_mark: | N/A                |
+| `fingerprint`      | *string*           | :heavy_check_mark: | N/A                |

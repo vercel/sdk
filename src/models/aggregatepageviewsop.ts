@@ -216,6 +216,7 @@ export type Data2 = {
   deepAnalysisCheck: string;
   wafAction: string;
   wafRuleId: string;
+  ruleCategory: string;
   skewProtection: string;
   functionStartType: string;
   functionDispatcher: string;
@@ -437,6 +438,7 @@ export type Data1 = {
   deepAnalysisCheck?: string | undefined;
   wafAction?: string | undefined;
   wafRuleId?: string | undefined;
+  ruleCategory?: string | undefined;
   skewProtection?: string | undefined;
   functionStartType?: string | undefined;
   functionDispatcher?: string | undefined;
@@ -788,6 +790,7 @@ export const Data2$inboundSchema: z.ZodType<Data2, z.ZodTypeDef, unknown> =
       deepAnalysisCheck: types.string(),
       wafAction: types.string(),
       wafRuleId: types.string(),
+      ruleCategory: types.string(),
       skewProtection: types.string(),
       functionStartType: types.string(),
       functionDispatcher: types.string(),
@@ -1023,6 +1026,7 @@ export const Data1$inboundSchema: z.ZodType<Data1, z.ZodTypeDef, unknown> = z
     deepAnalysisCheck: types.optional(types.string()),
     wafAction: types.optional(types.string()),
     wafRuleId: types.optional(types.string()),
+    ruleCategory: types.optional(types.string()),
     skewProtection: types.optional(types.string()),
     functionStartType: types.optional(types.string()),
     functionDispatcher: types.optional(types.string()),

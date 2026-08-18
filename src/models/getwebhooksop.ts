@@ -152,6 +152,7 @@ export type GetWebhooksResponseBodyEvents = ClosedEnum<
 >;
 
 export type GetWebhooksResponseBody2 = {
+  alertRuleIds?: Array<string> | undefined;
   /**
    * The webhooks events
    */
@@ -397,6 +398,7 @@ export type ResponseBodyEvents = ClosedEnum<typeof ResponseBodyEvents>;
 
 export type GetWebhooksResponseBody1 = {
   projectsMetadata: Array<GetWebhooksResponseBodyProjectsMetadata> | null;
+  alertRuleIds?: Array<string> | undefined;
   /**
    * The webhooks events
    */
@@ -468,6 +470,7 @@ export const GetWebhooksResponseBody2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  alertRuleIds: types.optional(z.array(types.string())),
   events: z.array(GetWebhooksResponseBodyEvents$inboundSchema),
   id: types.string(),
   url: types.string(),
@@ -537,6 +540,7 @@ export const GetWebhooksResponseBody1$inboundSchema: z.ZodType<
       z.lazy(() => GetWebhooksResponseBodyProjectsMetadata$inboundSchema),
     ),
   ),
+  alertRuleIds: types.optional(z.array(types.string())),
   events: z.array(ResponseBodyEvents$inboundSchema),
   id: types.string(),
   url: types.string(),

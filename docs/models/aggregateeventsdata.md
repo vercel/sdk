@@ -84,6 +84,7 @@ const value: models.AggregateEventsData2[] = [
     deepAnalysisCheck: "<value>",
     wafAction: "<value>",
     wafRuleId: "<id>",
+    ruleCategory: "<value>",
     skewProtection: "<value>",
     functionStartType: "<value>",
     functionDispatcher: "<value>",

@@ -5,12 +5,12 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndThirty } from "@vercel/sdk/models/usereventpayload80configuration.js";
+import { OneHundredAndThirty } from "@vercel/sdk/models/usereventpayloadteam.js";
 
 let value: OneHundredAndThirty = {
   projectId: "<id>",
   projectName: "<value>",
-  path: "/etc/ppp",
+  srcImages: [],
 };
 ```
 
@@ -20,4 +20,4 @@ let value: OneHundredAndThirty = {
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `projectId`        | *string*           | :heavy_check_mark: | N/A                |
 | `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `path`             | *string*           | :heavy_check_mark: | N/A                |
+| `srcImages`        | *string*[]         | :heavy_check_mark: | N/A                |

@@ -8,21 +8,19 @@ The payload of the event, if requested.
 import { OneHundredAndEightySix } from "@vercel/sdk/models/edgemiddlewareinvocations.js";
 
 let value: OneHundredAndEightySix = {
-  id: "<id>",
-  prev: {
-    name: "<value>",
-    slug: "<value>",
-    fallbackEnvironment: "<value>",
-  },
+  periods: [
+    {
+      periodNumber: 4098.45,
+      percent: "<value>",
+      startDate: "<value>",
+      endDate: "<value>",
+    },
+  ],
 };
 ```
 
 ## Fields
 
-| Field                            | Type                             | Required                         | Description                      |
-| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
-| `id`                             | *string*                         | :heavy_check_mark:               | N/A                              |
-| `slug`                           | *string*                         | :heavy_minus_sign:               | N/A                              |
-| `name`                           | *string*                         | :heavy_minus_sign:               | N/A                              |
-| `fallbackEnvironment`            | *string*                         | :heavy_minus_sign:               | N/A                              |
-| `prev`                           | [models.Prev](../models/prev.md) | :heavy_check_mark:               | N/A                              |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `periods`                                | [models.Periods](../models/periods.md)[] | :heavy_check_mark:                       | N/A                                      |

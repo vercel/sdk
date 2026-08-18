@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadJoinedFrom } from "@vercel/sdk/models/onehundredandninety.js";
+import { PayloadJoinedFrom } from "@vercel/sdk/models/onehundredandninetythree.js";
 
 let value: PayloadJoinedFrom = {
   origin: "saml",
@@ -14,7 +14,7 @@ let value: PayloadJoinedFrom = {
 
 | Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
 | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `origin`                                                                   | [models.UserEventPayload215Origin](../models/usereventpayload215origin.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| `origin`                                                                   | [models.UserEventPayload218Origin](../models/usereventpayload218origin.md) | :heavy_check_mark:                                                         | N/A                                                                        |
 | `commitId`                                                                 | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
 | `repoId`                                                                   | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
 | `repoPath`                                                                 | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |

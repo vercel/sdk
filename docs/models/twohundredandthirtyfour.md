@@ -5,19 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndThirtyFour } from "@vercel/sdk/models/onehundredandninety.js";
+import { TwoHundredAndThirtyFour } from "@vercel/sdk/models/onehundredandninetythree.js";
 
 let value: TwoHundredAndThirtyFour = {
   projectId: "<id>",
   projectName: "<value>",
-  widget: "observability-function-invocations",
+  productionDeploymentsFastLane: true,
 };
 ```
 
 ## Fields
 
-| Field                                | Type                                 | Required                             | Description                          |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `projectId`                          | *string*                             | :heavy_check_mark:                   | N/A                                  |
-| `projectName`                        | *string*                             | :heavy_check_mark:                   | N/A                                  |
-| `widget`                             | [models.Widget](../models/widget.md) | :heavy_check_mark:                   | N/A                                  |
+| Field                           | Type                            | Required                        | Description                     |
+| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
+| `projectId`                     | *string*                        | :heavy_check_mark:              | N/A                             |
+| `projectName`                   | *string*                        | :heavy_check_mark:              | N/A                             |
+| `productionDeploymentsFastLane` | *boolean*                       | :heavy_check_mark:              | N/A                             |

@@ -5,21 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndEightyTwo } from "@vercel/sdk/models/twohundredandfiftysix.js";
+import { TwoHundredAndEightyTwo } from "@vercel/sdk/models/twohundredandfiftynine.js";
 
 let value: TwoHundredAndEightyTwo = {
-  passwordProtection: {
-    deploymentType: "all_except_custom_domains",
-  },
-  oldPasswordProtection: null,
+  previousProjectName: "<value>",
+  newProjectName: "<value>",
+  destinationAccountName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                              | Type                               | Required                           | Description                        |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| `projectId`                        | *string*                           | :heavy_minus_sign:                 | N/A                                |
-| `projectName`                      | *string*                           | :heavy_minus_sign:                 | N/A                                |
-| `passwordProtection`               | *models.PayloadPasswordProtection* | :heavy_check_mark:                 | N/A                                |
-| `oldPasswordProtection`            | *models.OldPasswordProtection*     | :heavy_check_mark:                 | N/A                                |
+| Field                    | Type                     | Required                 | Description              |
+| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
+| `previousProjectId`      | *string*                 | :heavy_minus_sign:       | N/A                      |
+| `newProjectId`           | *string*                 | :heavy_minus_sign:       | N/A                      |
+| `previousProjectName`    | *string*                 | :heavy_check_mark:       | N/A                      |
+| `newProjectName`         | *string*                 | :heavy_check_mark:       | N/A                      |
+| `destinationAccountName` | *string*                 | :heavy_check_mark:       | N/A                      |
+| `transferId`             | *string*                 | :heavy_minus_sign:       | N/A                      |

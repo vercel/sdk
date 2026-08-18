@@ -72,6 +72,7 @@ let value: Data2 = {
   deepAnalysisCheck: "<value>",
   wafAction: "<value>",
   wafRuleId: "<id>",
+  ruleCategory: "<value>",
   skewProtection: "<value>",
   functionStartType: "<value>",
   functionDispatcher: "<value>",
@@ -296,6 +297,7 @@ let value: Data2 = {
 | `deepAnalysisCheck`                    | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `wafAction`                            | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `wafRuleId`                            | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `ruleCategory`                         | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `skewProtection`                       | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `functionStartType`                    | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `functionDispatcher`                   | *string*                               | :heavy_check_mark:                     | N/A                                    |

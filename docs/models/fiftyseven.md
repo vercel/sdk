@@ -5,21 +5,18 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FiftySeven } from "@vercel/sdk/models/payloadchange.js";
+import { FiftySeven } from "@vercel/sdk/models/usereventpayloadrefreshperiod.js";
 
 let value: FiftySeven = {
-  invoiceId: "<id>",
-  amount: 4103.29,
-  refundReason: "<value>",
-  lineItemCount: 3819.19,
+  projectName: "<value>",
+  autoExposeSystemEnvs: true,
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `invoiceId`        | *string*           | :heavy_check_mark: | N/A                |
-| `amount`           | *number*           | :heavy_check_mark: | N/A                |
-| `refundReason`     | *string*           | :heavy_check_mark: | N/A                |
-| `lineItemCount`    | *number*           | :heavy_check_mark: | N/A                |
+| Field                  | Type                   | Required               | Description            |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `projectId`            | *string*               | :heavy_minus_sign:     | N/A                    |
+| `projectName`          | *string*               | :heavy_check_mark:     | N/A                    |
+| `autoExposeSystemEnvs` | *boolean*              | :heavy_check_mark:     | N/A                    |

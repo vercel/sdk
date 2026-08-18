@@ -5,22 +5,26 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSixtyFive } from "@vercel/sdk/models/usereventpayload323geolocationmostspecificsubdivisionnames.js";
+import { ThreeHundredAndSixtyFive } from "@vercel/sdk/models/usereventpayload326geolocationmostspecificsubdivisionnames.js";
 
 let value: ThreeHundredAndSixtyFive = {
-  publicId: "<id>",
-  role: "<value>",
-  maxUses: 2111.32,
-  expiresAt: "1759483351836",
+  previousRole: "<value>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `publicId`         | *string*           | :heavy_check_mark: | N/A                |
-| `role`             | *string*           | :heavy_check_mark: | N/A                |
-| `maxUses`          | *number*           | :heavy_check_mark: | N/A                |
-| `expiresAt`        | *string*           | :heavy_check_mark: | N/A                |
-| `name`             | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `directoryType`                                                          | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `ssoType`                                                                | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `updatedUser`                                                            | [models.PayloadUpdatedUser](../models/payloadupdateduser.md)             | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `role`                                                                   | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `previousRole`                                                           | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
+| `previousTeamRoles`                                                      | [models.PreviousTeamRoles](../models/previousteamroles.md)[]             | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `teamRoles`                                                              | [models.PayloadTeamRoles](../models/payloadteamroles.md)[]               | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `previousTeamPermissions`                                                | [models.PreviousTeamPermissions](../models/previousteampermissions.md)[] | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `teamPermissions`                                                        | [models.PayloadTeamPermissions](../models/payloadteampermissions.md)[]   | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `updatedUid`                                                             | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `origin`                                                                 | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `teamSlug`                                                               | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |

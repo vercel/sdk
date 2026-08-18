@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventBlobBlockReason } from "@vercel/sdk/models/onehundredandthirtyone.js";
+import { UserEventBlobBlockReason } from "@vercel/sdk/models/onehundredandthirtyfour.js";
 
 let value: UserEventBlobBlockReason = "hard_blocked";
 ```

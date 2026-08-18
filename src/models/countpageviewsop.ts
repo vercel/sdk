@@ -157,6 +157,7 @@ export type CountPageviewsData1 = {
   deepAnalysisCheck: string;
   wafAction: string;
   wafRuleId: string;
+  ruleCategory: string;
   skewProtection: string;
   functionStartType: string;
   functionDispatcher: string;
@@ -505,6 +506,7 @@ export const CountPageviewsData1$inboundSchema: z.ZodType<
     deepAnalysisCheck: types.string(),
     wafAction: types.string(),
     wafRuleId: types.string(),
+    ruleCategory: types.string(),
     skewProtection: types.string(),
     functionStartType: types.string(),
     functionDispatcher: types.string(),

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PiiRedaction } from "@vercel/sdk/models/payloadchange.js";
+import { PiiRedaction } from "@vercel/sdk/models/usereventpayloadrefreshperiod.js";
 
 let value: PiiRedaction = {
   from: false,

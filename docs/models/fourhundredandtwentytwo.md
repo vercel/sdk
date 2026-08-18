@@ -5,27 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndTwentyTwo } from "@vercel/sdk/models/threehundredandninetytwo.js";
+import { FourHundredAndTwentyTwo } from "@vercel/sdk/models/threehundredandninetyfive.js";
 
 let value: FourHundredAndTwentyTwo = {
-  team: {
-    id: "<id>",
-    name: "<value>",
-  },
-  configuration: {
-    id: "<id>",
-  },
-  peering: {
-    id: "<id>",
-  },
+  vulnerabilities: [
+    "<value 1>",
+  ],
+  protectionEnabled: true,
+  protectedProjectCount: 8096.38,
 };
 ```
 
 ## Fields
 
-| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `team`                                                                                   | [models.UserEventPayload422Team](../models/usereventpayload422team.md)                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `configuration`                                                                          | [models.UserEventPayload422Configuration](../models/usereventpayload422configuration.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `peering`                                                                                | [models.UserEventPayloadPeering](../models/usereventpayloadpeering.md)                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `newName`                                                                                | *string*                                                                                 | :heavy_minus_sign:                                                                       | N/A                                                                                      |
+| Field                   | Type                    | Required                | Description             |
+| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
+| `vulnerabilities`       | *string*[]              | :heavy_check_mark:      | N/A                     |
+| `protectionEnabled`     | *boolean*               | :heavy_check_mark:      | N/A                     |
+| `protectedProjectCount` | *number*                | :heavy_check_mark:      | N/A                     |

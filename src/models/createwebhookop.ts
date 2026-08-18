@@ -283,6 +283,7 @@ export type CreateWebhookResponseBody = {
    * The webhook secret used to sign the payload
    */
   secret: string;
+  alertRuleIds?: Array<string> | undefined;
   /**
    * The webhooks events
    */
@@ -386,6 +387,7 @@ export const CreateWebhookResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   secret: types.string(),
+  alertRuleIds: types.optional(z.array(types.string())),
   events: z.array(CreateWebhookWebhooksEvents$inboundSchema),
   id: types.string(),
   url: types.string(),

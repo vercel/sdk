@@ -5,22 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSixteen } from "@vercel/sdk/models/usereventpayload80configuration.js";
+import { OneHundredAndSixteen } from "@vercel/sdk/models/usereventpayloadteam.js";
 
 let value: OneHundredAndSixteen = {
-  domain: "impartial-sediment.name",
-  customNameservers: [],
-  prevCustomNameservers: [
-    "<value 1>",
-    "<value 2>",
-  ],
+  domainId: "<id>",
+  name: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                   | Type                    | Required                | Description             |
-| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
-| `domain`                | *string*                | :heavy_check_mark:      | N/A                     |
-| `customNameservers`     | *string*[]              | :heavy_check_mark:      | N/A                     |
-| `prevCustomNameservers` | *string*[]              | :heavy_check_mark:      | N/A                     |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `domainId`         | *string*           | :heavy_check_mark: | N/A                |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |

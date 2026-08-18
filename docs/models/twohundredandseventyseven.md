@@ -5,19 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSeventySeven } from "@vercel/sdk/models/twohundredandfiftysix.js";
+import { TwoHundredAndSeventySeven } from "@vercel/sdk/models/twohundredandfiftynine.js";
 
 let value: TwoHundredAndSeventySeven = {
-  projectName: "<value>",
-  destinationAccountName: "<value>",
+  project: {
+    name: "<value>",
+  },
+  removedMembership: {
+    role: "ADMIN",
+    uid: "<id>",
+    createdAt: 9191.02,
+  },
 };
 ```
 
 ## Fields
 
-| Field                    | Type                     | Required                 | Description              |
-| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
-| `previousProjectId`      | *string*                 | :heavy_minus_sign:       | N/A                      |
-| `projectName`            | *string*                 | :heavy_check_mark:       | N/A                      |
-| `destinationAccountName` | *string*                 | :heavy_check_mark:       | N/A                      |
-| `transferId`             | *string*                 | :heavy_minus_sign:       | N/A                      |
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `project`                                                                    | [models.UserEventPayload277Project](../models/usereventpayload277project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
+| `removedMembership`                                                          | [models.RemovedMembership](../models/removedmembership.md)                   | :heavy_check_mark:                                                           | N/A                                                                          |

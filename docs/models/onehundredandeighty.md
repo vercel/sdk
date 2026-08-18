@@ -8,12 +8,13 @@ The payload of the event, if requested.
 import { OneHundredAndEighty } from "@vercel/sdk/models/edgemiddlewareinvocations.js";
 
 let value: OneHundredAndEighty = {
-  provider: "google",
+  logDrainUrl: "https://dutiful-utilization.name",
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `provider`                                                                     | [models.UserEventPayload180Provider](../models/usereventpayload180provider.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `logDrainUrl`      | *string*           | :heavy_check_mark: | N/A                |
+| `integrationName`  | *string*           | :heavy_minus_sign: | N/A                |

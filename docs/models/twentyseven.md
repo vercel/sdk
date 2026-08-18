@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwentySeven } from "@vercel/sdk/models/payloadchange.js";
+import { TwentySeven } from "@vercel/sdk/models/usereventpayloadrefreshperiod.js";
 
 let value: TwentySeven = {
   rule: {
@@ -17,7 +17,6 @@ let value: TwentySeven = {
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `rule`                                                           | [models.UserEventPayloadRule](../models/usereventpayloadrule.md) | :heavy_check_mark:                                               | N/A                                                              |
-| `enabled`                                                        | *boolean*                                                        | :heavy_minus_sign:                                               | N/A                                                              |
+| Field                            | Type                             | Required                         | Description                      |
+| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
+| `rule`                           | [models.Rule](../models/rule.md) | :heavy_check_mark:               | N/A                              |

@@ -5,9 +5,11 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { SixtyNine } from "@vercel/sdk/models/payloadchange.js";
+import { SixtyNine } from "@vercel/sdk/models/usereventpayloadrefreshperiod.js";
 
-let value: SixtyNine = {};
+let value: SixtyNine = {
+  custom: true,
+};
 ```
 
 ## Fields
@@ -16,4 +18,5 @@ let value: SixtyNine = {};
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `cn`               | *string*           | :heavy_minus_sign: | N/A                |
 | `cns`              | *string*[]         | :heavy_minus_sign: | N/A                |
+| `custom`           | *boolean*          | :heavy_check_mark: | N/A                |
 | `id`               | *string*           | :heavy_minus_sign: | N/A                |

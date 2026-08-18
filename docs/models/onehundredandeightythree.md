@@ -8,12 +8,12 @@ The payload of the event, if requested.
 import { OneHundredAndEightyThree } from "@vercel/sdk/models/edgemiddlewareinvocations.js";
 
 let value: OneHundredAndEightyThree = {
-  periods: [],
+  provider: "github-custom-host",
 };
 ```
 
 ## Fields
 
-| Field                                    | Type                                     | Required                                 | Description                              |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| `periods`                                | [models.Periods](../models/periods.md)[] | :heavy_check_mark:                       | N/A                                      |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `provider`                                                                     | [models.UserEventPayload183Provider](../models/usereventpayload183provider.md) | :heavy_check_mark:                                                             | N/A                                                                            |

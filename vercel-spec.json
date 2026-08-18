@@ -66408,6 +66408,106 @@
         ]
       }
     },
+    "/v1/installations/{integrationConfigurationId}/credentials/rotate": {
+      "post": {
+        "description": "Issues a replacement access token for an installation, so a partner can rotate a credential it believes is compromised without the customer having to reinstall. Authenticated by the credential being replaced plus the integration's client secret: a leaked access token on its own cannot rotate itself, which would otherwise let an attacker take over the installation and lock the partner out. The previous credential intentionally stays valid so in-flight requests keep working. Retiring it is a separate, explicit operation — a partner is never left mid-rotation without a working credential.",
+        "operationId": "rotate-installation-credential",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Rotate Installation Credential",
+        "tags": [
+          "marketplace"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "scope": {
+                      "type": "string"
+                    },
+                    "expires_in": {
+                      "type": "number"
+                    },
+                    "access_token": {
+                      "type": "string"
+                    },
+                    "token_type": {
+                      "type": "string",
+                      "enum": [
+                        "oauth2-token"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "access_token",
+                    "expires_in",
+                    "scope",
+                    "token_type"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          },
+          "409": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "integrationConfigurationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "client_secret"
+                ],
+                "properties": {
+                  "client_secret": {
+                    "type": "string",
+                    "maxLength": 512
+                  },
+                  "client_id": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/installations/{integrationConfigurationId}/events": {
       "post": {
         "description": "Partner notifies Vercel of any changes made to an Installation or a Resource. Vercel is expected to use `list-resources` and other read APIs to get the new state.<br/> <br/> `resource.updated` event should be dispatched when any state of a resource linked to Vercel is modified by the partner.<br/> `installation.updated` event should be dispatched when an installation's billing plan is changed via the provider instead of Vercel.<br/> <br/> Resource update use cases: <br/> <br/> - The user renames a database in the partner’s application. The partner should dispatch a `resource.updated` event to notify Vercel to update the resource in Vercel’s datastores.<br/> - A resource has been suspended due to a lack of use. The partner should dispatch a `resource.updated` event to notify Vercel to update the resource's status in Vercel's datastores.<br/>",
@@ -69663,19 +69763,9 @@
                           "description": "The ID of the user that created the configuration.",
                           "example": "kr1PsOIzqEL5Xg6M4VZcZosf"
                         },
-                        "ownerId": {
-                          "type": "string",
-                          "description": "The user or team ID that owns the configuration",
-                          "example": "kr1PsOIzqEL5Xg6M4VZcZosf"
-                        },
                         "createdAt": {
                           "type": "number",
                           "description": "A timestamp that tells you when the configuration was created",
-                          "example": 1558531915505
-                        },
-                        "updatedAt": {
-                          "type": "number",
-                          "description": "A timestamp that tells you when the configuration was updated.",
                           "example": 1558531915505
                         },
                         "deletedAt": {
@@ -69683,6 +69773,38 @@
                           "type": "number",
                           "description": "A timestamp that tells you when the configuration was deleted.",
                           "example": 1558531915505
+                        },
+                        "slug": {
+                          "type": "string",
+                          "description": "The slug of the integration the configuration is created for.",
+                          "example": "slack"
+                        },
+                        "teamId": {
+                          "nullable": true,
+                          "type": "string",
+                          "description": "When the configuration was created for a team, this will show the ID of the team.",
+                          "example": "team_nLlpyC6RE1qxydlFKbrxDlud"
+                        },
+                        "updatedAt": {
+                          "type": "number",
+                          "description": "A timestamp that tells you when the configuration was updated.",
+                          "example": 1558531915505
+                        },
+                        "scopes": {
+                          "items": {
+                            "type": "string"
+                          },
+                          "type": "array",
+                          "description": "The resources that are allowed to be accessed by the configuration.",
+                          "example": [
+                            "read:project",
+                            "read-write:log-drain"
+                          ]
+                        },
+                        "ownerId": {
+                          "type": "string",
+                          "description": "The user or team ID that owns the configuration",
+                          "example": "kr1PsOIzqEL5Xg6M4VZcZosf"
                         },
                         "canConfigureOpenTelemetry": {
                           "type": "boolean",
@@ -69715,28 +69837,6 @@
                           ],
                           "description": "Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.",
                           "example": "marketplace"
-                        },
-                        "slug": {
-                          "type": "string",
-                          "description": "The slug of the integration the configuration is created for.",
-                          "example": "slack"
-                        },
-                        "teamId": {
-                          "nullable": true,
-                          "type": "string",
-                          "description": "When the configuration was created for a team, this will show the ID of the team.",
-                          "example": "team_nLlpyC6RE1qxydlFKbrxDlud"
-                        },
-                        "scopes": {
-                          "items": {
-                            "type": "string"
-                          },
-                          "type": "array",
-                          "description": "The resources that are allowed to be accessed by the configuration.",
-                          "example": [
-                            "read:project",
-                            "read-write:log-drain"
-                          ]
                         },
                         "disabledAt": {
                           "type": "number",
@@ -164069,8 +164169,9 @@
                   },
                   "timeout": {
                     "type": "integer",
-                    "description": "Maximum duration in milliseconds the command may run before it is killed with SIGKILL. Enforced at exec time, independently of `wait`.",
+                    "description": "Maximum duration in milliseconds the command may run before it is killed with SIGKILL, up to 5 hours. Enforced at exec time, independently of `wait`.",
                     "minimum": 100,
+                    "maximum": 18000000,
                     "example": 30000
                   }
                 }
@@ -189744,7 +189845,7 @@
                               "elastic"
                             ],
                             "example": "standard",
-                            "description": "Default build machine type for new builds: basic, standard, enhanced, turbo, or elastic."
+                            "description": "Default build machine type for new builds: standard, enhanced, turbo, or elastic."
                           }
                         }
                       }
@@ -194151,6 +194252,9 @@
                               "wafRuleId": {
                                 "type": "string"
                               },
+                              "ruleCategory": {
+                                "type": "string"
+                              },
                               "skewProtection": {
                                 "type": "string"
                               },
@@ -194817,6 +194921,9 @@
                               "wafRuleId": {
                                 "type": "string"
                               },
+                              "ruleCategory": {
+                                "type": "string"
+                              },
                               "skewProtection": {
                                 "type": "string"
                               },
@@ -195437,6 +195544,7 @@
                               "reviewStatus",
                               "rewriteDestinationHostname",
                               "route",
+                              "ruleCategory",
                               "runtime",
                               "sandboxName",
                               "sandboxSessionId",
@@ -195949,6 +196057,9 @@
                               "wafRuleId": {
                                 "type": "string"
                               },
+                              "ruleCategory": {
+                                "type": "string"
+                              },
                               "skewProtection": {
                                 "type": "string"
                               },
@@ -196615,6 +196726,9 @@
                               "wafRuleId": {
                                 "type": "string"
                               },
+                              "ruleCategory": {
+                                "type": "string"
+                              },
                               "skewProtection": {
                                 "type": "string"
                               },
@@ -197235,6 +197349,7 @@
                               "reviewStatus",
                               "rewriteDestinationHostname",
                               "route",
+                              "ruleCategory",
                               "runtime",
                               "sandboxName",
                               "sandboxSessionId",
@@ -197713,6 +197828,9 @@
                             "wafRuleId": {
                               "type": "string"
                             },
+                            "ruleCategory": {
+                              "type": "string"
+                            },
                             "skewProtection": {
                               "type": "string"
                             },
@@ -198333,6 +198451,7 @@
                             "reviewStatus",
                             "rewriteDestinationHostname",
                             "route",
+                            "ruleCategory",
                             "runtime",
                             "sandboxName",
                             "sandboxSessionId",
@@ -198759,6 +198878,9 @@
                             "wafRuleId": {
                               "type": "string"
                             },
+                            "ruleCategory": {
+                              "type": "string"
+                            },
                             "skewProtection": {
                               "type": "string"
                             },
@@ -199379,6 +199501,7 @@
                             "reviewStatus",
                             "rewriteDestinationHostname",
                             "route",
+                            "ruleCategory",
                             "runtime",
                             "sandboxName",
                             "sandboxSessionId",
@@ -199585,6 +199708,12 @@
                     "secret": {
                       "type": "string",
                       "description": "The webhook secret used to sign the payload"
+                    },
+                    "alertRuleIds": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
                     },
                     "events": {
                       "items": {
@@ -200214,6 +200343,12 @@
                             },
                             "type": "array"
                           },
+                          "alertRuleIds": {
+                            "items": {
+                              "type": "string"
+                            },
+                            "type": "array"
+                          },
                           "events": {
                             "items": {
                               "type": "string",
@@ -200462,6 +200597,12 @@
                     {
                       "items": {
                         "properties": {
+                          "alertRuleIds": {
+                            "items": {
+                              "type": "string"
+                            },
+                            "type": "array"
+                          },
                           "events": {
                             "items": {
                               "type": "string",
@@ -200774,6 +200915,12 @@
               "application/json": {
                 "schema": {
                   "properties": {
+                    "alertRuleIds": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
                     "events": {
                       "items": {
                         "type": "string",
@@ -206538,10 +206685,12 @@
               "ai-gateway-api-key-created",
               "ai-gateway-api-key-deleted",
               "ai-gateway-api-key-quota-updated",
+              "ai-gateway-auto-reload-updated",
               "ai-gateway-budget-default-updated",
               "ai-gateway-byok-credential-created",
               "ai-gateway-byok-credential-deleted",
               "ai-gateway-byok-credential-updated",
+              "ai-gateway-credits-purchased",
               "ai-gateway-guardrails-updated",
               "ai-gateway-model-allowlist-models-updated",
               "ai-gateway-model-allowlist-toggled",
@@ -206752,6 +206901,7 @@
               "git-integration-repo-push",
               "git_account_integration_link_added",
               "instant-rollback-created",
+              "integration-configuration-credential-rotated",
               "integration-configuration-owner-changed",
               "integration-configuration-scope-change-confirmed",
               "integration-configuration-transfer-in-success",
@@ -207949,6 +208099,81 @@
               },
               {
                 "properties": {
+                  "change": {
+                    "type": "string",
+                    "enum": [
+                      "disable",
+                      "disable-commitment",
+                      "enable",
+                      "enable-commitment",
+                      "update"
+                    ]
+                  },
+                  "settings": {
+                    "properties": {
+                      "minimumBalance": {
+                        "type": "string"
+                      },
+                      "targetBalance": {
+                        "type": "string"
+                      },
+                      "maximumMonthlySpend": {
+                        "nullable": true,
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "maximumMonthlySpend",
+                      "minimumBalance",
+                      "targetBalance"
+                    ],
+                    "type": "object"
+                  },
+                  "previous": {
+                    "properties": {
+                      "minimumBalance": {
+                        "type": "string"
+                      },
+                      "targetBalance": {
+                        "type": "string"
+                      },
+                      "maximumMonthlySpend": {
+                        "nullable": true,
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "maximumMonthlySpend",
+                      "minimumBalance",
+                      "targetBalance"
+                    ],
+                    "type": "object"
+                  },
+                  "commitment": {
+                    "properties": {
+                      "maximumMonthlySpend": {
+                        "nullable": true,
+                        "type": "string"
+                      },
+                      "deferredInvoiceTargetBalance": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "deferredInvoiceTargetBalance",
+                      "maximumMonthlySpend"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "change"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
                   "scopeType": {
                     "type": "string",
                     "enum": [
@@ -208079,6 +208304,22 @@
                 },
                 "required": [
                   "credential"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "amount": {
+                    "type": "string"
+                  },
+                  "purchaseIntentId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "amount",
+                  "purchaseIntentId"
                 ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
@@ -215607,6 +215848,30 @@
                   "projectId",
                   "projectName",
                   "toDeploymentId"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "integrationId": {
+                    "type": "string"
+                  },
+                  "configurationId": {
+                    "type": "string"
+                  },
+                  "integrationSlug": {
+                    "type": "string"
+                  },
+                  "integrationName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "configurationId",
+                  "integrationId",
+                  "integrationName",
+                  "integrationSlug"
                 ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
@@ -229955,10 +230220,12 @@
               "ai-gateway-api-key-created",
               "ai-gateway-api-key-deleted",
               "ai-gateway-api-key-quota-updated",
+              "ai-gateway-auto-reload-updated",
               "ai-gateway-budget-default-updated",
               "ai-gateway-byok-credential-created",
               "ai-gateway-byok-credential-deleted",
               "ai-gateway-byok-credential-updated",
+              "ai-gateway-credits-purchased",
               "ai-gateway-guardrails-updated",
               "ai-gateway-model-allowlist-models-updated",
               "ai-gateway-model-allowlist-toggled",
@@ -230169,6 +230436,7 @@
               "git-integration-repo-push",
               "git_account_integration_link_added",
               "instant-rollback-created",
+              "integration-configuration-credential-rotated",
               "integration-configuration-owner-changed",
               "integration-configuration-scope-change-confirmed",
               "integration-configuration-transfer-in-success",
@@ -230646,10 +230914,12 @@
                 "ai-gateway-api-key-created",
                 "ai-gateway-api-key-deleted",
                 "ai-gateway-api-key-quota-updated",
+                "ai-gateway-auto-reload-updated",
                 "ai-gateway-budget-default-updated",
                 "ai-gateway-byok-credential-created",
                 "ai-gateway-byok-credential-deleted",
                 "ai-gateway-byok-credential-updated",
+                "ai-gateway-credits-purchased",
                 "ai-gateway-guardrails-updated",
                 "ai-gateway-model-allowlist-models-updated",
                 "ai-gateway-model-allowlist-toggled",
@@ -230860,6 +231130,7 @@
                 "git-integration-repo-push",
                 "git_account_integration_link_added",
                 "instant-rollback-created",
+                "integration-configuration-credential-rotated",
                 "integration-configuration-owner-changed",
                 "integration-configuration-scope-change-confirmed",
                 "integration-configuration-transfer-in-success",

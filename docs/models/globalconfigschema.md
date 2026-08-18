@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GlobalConfigSchema } from "@vercel/sdk/models/onehundredandthirtyone.js";
+import { GlobalConfigSchema } from "@vercel/sdk/models/onehundredandthirtyfour.js";
 
 let value: GlobalConfigSchema = {};
 ```

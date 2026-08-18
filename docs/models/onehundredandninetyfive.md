@@ -5,12 +5,18 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndNinetyFive } from "@vercel/sdk/models/onehundredandninety.js";
+import { OneHundredAndNinetyFive } from "@vercel/sdk/models/onehundredandninetythree.js";
 
 let value: OneHundredAndNinetyFive = {
+  directoryGroupId: "<id>",
+  directoryId: "<id>",
+  groupName: "<value>",
+  next: {
+    roles: {
+      "key": "SECURITY",
+    },
+  },
   organizationId: "<id>",
-  teamId: "<id>",
-  billingPlan: "platform",
 };
 ```
 
@@ -18,6 +24,8 @@ let value: OneHundredAndNinetyFive = {
 
 | Field                                          | Type                                           | Required                                       | Description                                    |
 | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `directoryGroupId`                             | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `directoryId`                                  | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `groupName`                                    | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `next`                                         | [models.PayloadNext](../models/payloadnext.md) | :heavy_check_mark:                             | N/A                                            |
 | `organizationId`                               | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `teamId`                                       | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `billingPlan`                                  | [models.BillingPlan](../models/billingplan.md) | :heavy_check_mark:                             | N/A                                            |

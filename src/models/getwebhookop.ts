@@ -149,6 +149,7 @@ export const GetWebhookEvents = {
 export type GetWebhookEvents = ClosedEnum<typeof GetWebhookEvents>;
 
 export type GetWebhookResponseBody = {
+  alertRuleIds?: Array<string> | undefined;
   /**
    * The webhooks events
    */
@@ -216,6 +217,7 @@ export const GetWebhookResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  alertRuleIds: types.optional(z.array(types.string())),
   events: z.array(GetWebhookEvents$inboundSchema),
   id: types.string(),
   url: types.string(),

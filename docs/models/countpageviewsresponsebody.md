@@ -78,6 +78,7 @@ let value: CountPageviewsResponseBody = {
     deepAnalysisCheck: "<value>",
     wafAction: "<value>",
     wafRuleId: "<id>",
+    ruleCategory: "<value>",
     skewProtection: "<value>",
     functionStartType: "<value>",
     functionDispatcher: "<value>",

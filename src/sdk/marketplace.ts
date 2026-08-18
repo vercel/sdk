@@ -23,6 +23,7 @@ import { marketplaceImportResource } from "../funcs/marketplaceImportResource.js
 import {
   marketplaceReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig,
 } from "../funcs/marketplaceReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig.js";
+import { marketplaceRotateInstallationCredential } from "../funcs/marketplaceRotateInstallationCredential.js";
 import { marketplaceSubmitBillingData } from "../funcs/marketplaceSubmitBillingData.js";
 import { marketplaceSubmitInvoice } from "../funcs/marketplaceSubmitInvoice.js";
 import { marketplaceSubmitPrepaymentBalances } from "../funcs/marketplaceSubmitPrepaymentBalances.js";
@@ -82,6 +83,10 @@ import {
   ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequest,
   ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponseBody,
 } from "../models/replaceinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationglobalconfigop.js";
+import {
+  RotateInstallationCredentialRequest,
+  RotateInstallationCredentialResponseBody,
+} from "../models/rotateinstallationcredentialop.js";
 import { SubmitBillingDataRequest } from "../models/submitbillingdataop.js";
 import {
   SubmitInvoiceRequest,
@@ -147,6 +152,23 @@ export class Marketplace extends ClientSDK {
     options?: RequestOptions,
   ): Promise<GetMemberResponseBody> {
     return unwrapAsync(marketplaceGetMember(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Rotate Installation Credential
+   *
+   * @remarks
+   * Issues a replacement access token for an installation, so a partner can rotate a credential it believes is compromised without the customer having to reinstall. Authenticated by the credential being replaced plus the integration's client secret: a leaked access token on its own cannot rotate itself, which would otherwise let an attacker take over the installation and lock the partner out. The previous credential intentionally stays valid so in-flight requests keep working. Retiring it is a separate, explicit operation — a partner is never left mid-rotation without a working credential.
+   */
+  async rotateInstallationCredential(
+    request: RotateInstallationCredentialRequest,
+    options?: RequestOptions,
+  ): Promise<RotateInstallationCredentialResponseBody> {
+    return unwrapAsync(marketplaceRotateInstallationCredential(
       this,
       request,
       options,

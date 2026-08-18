@@ -5,20 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FiftyFour } from "@vercel/sdk/models/payloadchange.js";
+import { FiftyFour } from "@vercel/sdk/models/usereventpayloadrefreshperiod.js";
 
 let value: FiftyFour = {
-  projectId: "<id>",
-  attackModeEnabled: true,
+  appName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                       | Type                        | Required                    | Description                 |
-| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
-| `projectId`                 | *string*                    | :heavy_check_mark:          | N/A                         |
-| `prevAttackModeEnabled`     | *boolean*                   | :heavy_minus_sign:          | N/A                         |
-| `prevAttackModeActiveUntil` | *number*                    | :heavy_minus_sign:          | N/A                         |
-| `attackModeEnabled`         | *boolean*                   | :heavy_check_mark:          | N/A                         |
-| `attackModeActiveUntil`     | *number*                    | :heavy_minus_sign:          | N/A                         |
+| Field                 | Type                  | Required              | Description           |
+| --------------------- | --------------------- | --------------------- | --------------------- |
+| `appName`             | *string*              | :heavy_check_mark:    | N/A                   |
+| `appId`               | *string*              | :heavy_minus_sign:    | N/A                   |
+| `secretLastFourChars` | *string*              | :heavy_minus_sign:    | N/A                   |

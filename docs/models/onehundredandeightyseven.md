@@ -8,21 +8,14 @@ The payload of the event, if requested.
 import { OneHundredAndEightySeven } from "@vercel/sdk/models/edgemiddlewareinvocations.js";
 
 let value: OneHundredAndEightySeven = {
-  project: {
-    id: "<id>",
-    name: "<value>",
-  },
-  group: {
-    id: "<id>",
-    slug: "<value>",
-    name: "<value>",
-  },
+  enabled: true,
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `project`                                                                    | [models.UserEventPayload187Project](../models/usereventpayload187project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
-| `group`                                                                      | [models.Group](../models/group.md)                                           | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field                     | Type                      | Required                  | Description               |
+| ------------------------- | ------------------------- | ------------------------- | ------------------------- |
+| `enabled`                 | *boolean*                 | :heavy_check_mark:        | N/A                       |
+| `allowedIntegrationCount` | *number*                  | :heavy_minus_sign:        | N/A                       |
+| `allowedIntegrationIds`   | *string*[]                | :heavy_minus_sign:        | N/A                       |

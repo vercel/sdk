@@ -5,21 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFortyFive } from "@vercel/sdk/models/onehundredandninety.js";
+import { TwoHundredAndFortyFive } from "@vercel/sdk/models/onehundredandninetythree.js";
 
 let value: TwoHundredAndFortyFive = {
   projectId: "<id>",
   projectName: "<value>",
-  customEnvironmentId: "<id>",
-  customEnvironmentSlug: "<value>",
+  autoAssignCustomDomains: false,
 };
 ```
 
 ## Fields
 
-| Field                   | Type                    | Required                | Description             |
-| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
-| `projectId`             | *string*                | :heavy_check_mark:      | N/A                     |
-| `projectName`           | *string*                | :heavy_check_mark:      | N/A                     |
-| `customEnvironmentId`   | *string*                | :heavy_check_mark:      | N/A                     |
-| `customEnvironmentSlug` | *string*                | :heavy_check_mark:      | N/A                     |
+| Field                     | Type                      | Required                  | Description               |
+| ------------------------- | ------------------------- | ------------------------- | ------------------------- |
+| `projectId`               | *string*                  | :heavy_check_mark:        | N/A                       |
+| `projectName`             | *string*                  | :heavy_check_mark:        | N/A                       |
+| `autoAssignCustomDomains` | *boolean*                 | :heavy_check_mark:        | N/A                       |

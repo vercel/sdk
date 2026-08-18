@@ -5,20 +5,16 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { SixtyTwo } from "@vercel/sdk/models/payloadchange.js";
+import { SixtyTwo } from "@vercel/sdk/models/usereventpayloadrefreshperiod.js";
 
 let value: SixtyTwo = {
-  action: "resume_plan",
-  data: {
-    planSlug: "v0_teams",
-  },
+  planSlug: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `subscriptionId`                                                         | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
-| `action`                                                                 | [models.UserEventPayload62Action](../models/usereventpayload62action.md) | :heavy_check_mark:                                                       | N/A                                                                      |
-| `data`                                                                   | [models.PayloadData](../models/payloaddata.md)                           | :heavy_check_mark:                                                       | N/A                                                                      |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `subscriptionId`   | *string*           | :heavy_minus_sign: | N/A                |
+| `planSlug`         | *string*           | :heavy_check_mark: | N/A                |

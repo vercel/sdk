@@ -5,22 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndSeven } from "@vercel/sdk/models/threehundredandninetytwo.js";
+import { FourHundredAndSeven } from "@vercel/sdk/models/threehundredandninetyfive.js";
 
 let value: FourHundredAndSeven = {
-  email: "Earnestine.Batz12@gmail.com",
-  prevEmail: "<value>",
-  actorId: "<id>",
-  actorType: "admin",
+  previous: {
+    enabled: true,
+    totpVerified: true,
+  },
+  next: {
+    enabled: true,
+    totpVerified: true,
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `email`                                                                          | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
-| `prevEmail`                                                                      | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
-| `actorId`                                                                        | *string*                                                                         | :heavy_check_mark:                                                               | Okta user id.                                                                    |
-| `actorType`                                                                      | [models.UserEventPayload407ActorType](../models/usereventpayload407actortype.md) | :heavy_check_mark:                                                               | N/A                                                                              |
-| `actorName`                                                                      | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `previous`                                                                     | [models.UserEventPayload407Previous](../models/usereventpayload407previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `next`                                                                         | [models.UserEventPayload407Next](../models/usereventpayload407next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |

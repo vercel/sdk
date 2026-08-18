@@ -5,27 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { SeventyEight } from "@vercel/sdk/models/payloadchange.js";
+import { SeventyEight } from "@vercel/sdk/models/usereventpayloadrefreshperiod.js";
 
 let value: SeventyEight = {
-  team: {
-    id: "<id>",
-    name: "<value>",
-  },
-  configuration: {
-    id: "<id>",
-  },
-  project: {
-    id: "<id>",
-  },
+  count: 9969.53,
+  documents: [
+    {
+      slug: "<value>",
+      documentId: "<id>",
+      title: "<value>",
+      fingerprint: "<value>",
+    },
+  ],
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `team`                                                                     | [models.UserEventPayload78Team](../models/usereventpayload78team.md)       | :heavy_check_mark:                                                         | N/A                                                                        |
-| `configuration`                                                            | [models.PayloadConfiguration](../models/payloadconfiguration.md)           | :heavy_check_mark:                                                         | N/A                                                                        |
-| `project`                                                                  | [models.UserEventPayload78Project](../models/usereventpayload78project.md) | :heavy_check_mark:                                                         | N/A                                                                        |
-| `buildsEnabled`                                                            | *boolean*                                                                  | :heavy_minus_sign:                                                         | N/A                                                                        |
+| Field                                        | Type                                         | Required                                     | Description                                  |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| `count`                                      | *number*                                     | :heavy_check_mark:                           | N/A                                          |
+| `documents`                                  | [models.Documents](../models/documents.md)[] | :heavy_check_mark:                           | N/A                                          |

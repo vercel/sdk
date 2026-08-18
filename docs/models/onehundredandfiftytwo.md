@@ -5,24 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFiftyTwo } from "@vercel/sdk/models/onehundredandthirtyone.js";
+import { OneHundredAndFiftyTwo } from "@vercel/sdk/models/onehundredandthirtyfour.js";
 
 let value: OneHundredAndFiftyTwo = {
-  projectId: "<id>",
-  restore: false,
   configVersion: 8810.82,
-  configChangeCount: 6331.4,
-  configChanges: [],
 };
 ```
 
 ## Fields
 
-| Field                                                              | Type                                                               | Required                                                           | Description                                                        |
-| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| `projectId`                                                        | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
-| `projectName`                                                      | *string*                                                           | :heavy_minus_sign:                                                 | N/A                                                                |
-| `restore`                                                          | *boolean*                                                          | :heavy_check_mark:                                                 | N/A                                                                |
-| `configVersion`                                                    | *number*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
-| `configChangeCount`                                                | *number*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
-| `configChanges`                                                    | [models.PayloadConfigChanges](../models/payloadconfigchanges.md)[] | :heavy_check_mark:                                                 | N/A                                                                |
+| Field                         | Type                          | Required                      | Description                   |
+| ----------------------------- | ----------------------------- | ----------------------------- | ----------------------------- |
+| `configVersion`               | *models.PayloadConfigVersion* | :heavy_check_mark:            | N/A                           |

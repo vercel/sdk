@@ -5,18 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { Twenty } from "@vercel/sdk/models/payloadchange.js";
+import { Twenty } from "@vercel/sdk/models/usereventpayloadrefreshperiod.js";
 
 let value: Twenty = {
-  privateModel: {
-    slug: "<value>",
-    providerSlug: "<value>",
-  },
+  enabled: false,
 };
 ```
 
 ## Fields
 
-| Field                                            | Type                                             | Required                                         | Description                                      |
-| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| `privateModel`                                   | [models.PrivateModel](../models/privatemodel.md) | :heavy_check_mark:                               | N/A                                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |

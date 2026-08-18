@@ -5,18 +5,11 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { Nineteen } from "@vercel/sdk/models/payloadchange.js";
+import { Nineteen } from "@vercel/sdk/models/usereventpayloadrefreshperiod.js";
 
 let value: Nineteen = {
-  added: [
-    "<value 1>",
-    "<value 2>",
-    "<value 3>",
-  ],
-  removed: [
-    "<value 1>",
-    "<value 2>",
-  ],
+  amount: "860.76",
+  purchaseIntentId: "<id>",
 };
 ```
 
@@ -24,5 +17,5 @@ let value: Nineteen = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `added`            | *string*[]         | :heavy_check_mark: | N/A                |
-| `removed`          | *string*[]         | :heavy_check_mark: | N/A                |
+| `amount`           | *string*           | :heavy_check_mark: | N/A                |
+| `purchaseIntentId` | *string*           | :heavy_check_mark: | N/A                |

@@ -1,15 +1,17 @@
 # UserEventPayload148Type
 
+The type of this cosmos doc instance, if blank, assume secret.
+
 ## Example Usage
 
 ```typescript
-import { UserEventPayload148Type } from "@vercel/sdk/models/fastorigintransfer.js";
+import { UserEventPayload148Type } from "@vercel/sdk/models/onehundredandthirtyfour.js";
 
-let value: UserEventPayload148Type = "header";
+let value: UserEventPayload148Type = "encrypted";
 ```
 
 ## Values
 
 ```typescript
-"header"
+"encrypted" | "plain" | "sensitive" | "system"
 ```

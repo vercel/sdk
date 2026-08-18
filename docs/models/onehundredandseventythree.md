@@ -8,15 +8,25 @@ The payload of the event, if requested.
 import { OneHundredAndSeventyThree } from "@vercel/sdk/models/edgemiddlewareinvocations.js";
 
 let value: OneHundredAndSeventyThree = {
-  issuerId: "<id>",
-  issuerName: "<value>",
+  resourceId: "<id>",
+  integrationId: "<id>",
+  integrationSlug: "<value>",
+  integrationProductSlug: "<value>",
+  configurationId: "<id>",
+  requestKind: "get_key_data",
+  key: "<key>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `issuerId`         | *string*           | :heavy_check_mark: | N/A                |
-| `issuerName`       | *string*           | :heavy_check_mark: | N/A                |
-| `managedBy`        | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `resourceId`                                                                         | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `integrationId`                                                                      | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `integrationSlug`                                                                    | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `integrationProductSlug`                                                             | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `configurationId`                                                                    | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `error`                                                                              | *string*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
+| `requestKind`                                                                        | [models.UserEventPayload173RequestKind](../models/usereventpayload173requestkind.md) | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `key`                                                                                | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |

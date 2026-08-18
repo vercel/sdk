@@ -8,14 +8,18 @@ The payload of the event, if requested.
 import { OneHundredAndSeventyNine } from "@vercel/sdk/models/edgemiddlewareinvocations.js";
 
 let value: OneHundredAndSeventyNine = {
-  provider: "google",
-  login: "Sterling.Langworth",
+  issuerId: "<id>",
+  issuerName: "<value>",
+  kind: "<value>",
+  policyKey: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `provider`                                                                     | [models.UserEventPayload179Provider](../models/usereventpayload179provider.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `login`                                                                        | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `issuerId`         | *string*           | :heavy_check_mark: | N/A                |
+| `issuerName`       | *string*           | :heavy_check_mark: | N/A                |
+| `kind`             | *string*           | :heavy_check_mark: | N/A                |
+| `policyKey`        | *string*           | :heavy_check_mark: | N/A                |

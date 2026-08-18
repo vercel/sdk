@@ -5,40 +5,37 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFiftyNine } from "@vercel/sdk/models/onehundredandthirtyone.js";
+import { OneHundredAndFiftyNine } from "@vercel/sdk/models/onehundredandthirtyfour.js";
 
 let value: OneHundredAndFiftyNine = {
-  userId: "<id>",
-  integrationId: "<id>",
-  configurationId: "<id>",
-  integrationSlug: "<value>",
-  newOwner: {
-    billing: {
-      plan: "hobby",
-    },
-    blocked: 2222.38,
-    createdAt: 2753.5,
-    deploymentSecret: "<value>",
-    email: "Dave36@yahoo.com",
-    id: "<id>",
-    platformVersion: 5519.63,
-    stagingPrefix: "<value>",
-    sysToken: "<value>",
-    type: "user",
-    username: "Roberto92",
-    updatedAt: 3497.89,
-    version: "northstar",
-  },
+  provider: "bitbucket",
+  actorLogin: "<value>",
+  actorAccountId: "<id>",
+  installationId: "<id>",
+  usedAppToken: true,
+  sourceRepo: "<value>",
+  sourceCommitSha: null,
+  destinationRepo: "<value>",
+  destinationBranch: "<value>",
+  resultCommitSha: "<value>",
+  outcome: "failure",
 };
 ```
 
 ## Fields
 
-| Field                                    | Type                                     | Required                                 | Description                              |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| `userId`                                 | *string*                                 | :heavy_check_mark:                       | N/A                                      |
-| `integrationId`                          | *string*                                 | :heavy_check_mark:                       | N/A                                      |
-| `configurationId`                        | *string*                                 | :heavy_check_mark:                       | N/A                                      |
-| `integrationSlug`                        | *string*                                 | :heavy_check_mark:                       | N/A                                      |
-| `integrationName`                        | *string*                                 | :heavy_minus_sign:                       | N/A                                      |
-| `newOwner`                               | [models.NewOwner](../models/newowner.md) | :heavy_check_mark:                       | N/A                                      |
+| Field                                                                                                                                             | Type                                                                                                                                              | Required                                                                                                                                          | Description                                                                                                                                       |
+| ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `provider`                                                                                                                                        | [models.UserEventPayload159Provider](../models/usereventpayload159provider.md)                                                                    | :heavy_check_mark:                                                                                                                                | N/A                                                                                                                                               |
+| `actorLogin`                                                                                                                                      | *string*                                                                                                                                          | :heavy_check_mark:                                                                                                                                | Display name only. Logins are mutable; join on `actorAccountId`.                                                                                  |
+| `actorAccountId`                                                                                                                                  | *string*                                                                                                                                          | :heavy_check_mark:                                                                                                                                | Stable account id on `provider`.                                                                                                                  |
+| `installationId`                                                                                                                                  | *string*                                                                                                                                          | :heavy_check_mark:                                                                                                                                | Set only when an App installation token was minted (GitHub only).                                                                                 |
+| `usedAppToken`                                                                                                                                    | *boolean*                                                                                                                                         | :heavy_check_mark:                                                                                                                                | N/A                                                                                                                                               |
+| `sourceRepo`                                                                                                                                      | *string*                                                                                                                                          | :heavy_check_mark:                                                                                                                                | Source repository, "owner/name". Null when the pushed content was generated in-request (push-files-to-repo) rather than copied from a repository. |
+| `sourceCommitSha`                                                                                                                                 | *string*                                                                                                                                          | :heavy_check_mark:                                                                                                                                | N/A                                                                                                                                               |
+| `destinationRepo`                                                                                                                                 | *string*                                                                                                                                          | :heavy_check_mark:                                                                                                                                | "owner/name", or the raw request value if blocked before it resolved.                                                                             |
+| `destinationBranch`                                                                                                                               | *string*                                                                                                                                          | :heavy_check_mark:                                                                                                                                | Branch actually pushed to, or the requested one if blocked.                                                                                       |
+| `resultCommitSha`                                                                                                                                 | *string*                                                                                                                                          | :heavy_check_mark:                                                                                                                                | N/A                                                                                                                                               |
+| `outcome`                                                                                                                                         | [models.Outcome](../models/outcome.md)                                                                                                            | :heavy_check_mark:                                                                                                                                | N/A                                                                                                                                               |
+| `failureStage`                                                                                                                                    | [models.FailureStage](../models/failurestage.md)                                                                                                  | :heavy_minus_sign:                                                                                                                                | Mirrors `PushFailureStage` in `@api/git-push-repo`.                                                                                               |
+| `failureCode`                                                                                                                                     | *string*                                                                                                                                          | :heavy_minus_sign:                                                                                                                                | Sanitized code, never a raw error message.                                                                                                        |

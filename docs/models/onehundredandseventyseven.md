@@ -8,7 +8,8 @@ The payload of the event, if requested.
 import { OneHundredAndSeventySeven } from "@vercel/sdk/models/edgemiddlewareinvocations.js";
 
 let value: OneHundredAndSeventySeven = {
-  logDrainUrl: "https://neighboring-affiliate.name",
+  issuerId: "<id>",
+  issuerName: "<value>",
 };
 ```
 
@@ -16,5 +17,6 @@ let value: OneHundredAndSeventySeven = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `logDrainUrl`      | *string*           | :heavy_check_mark: | N/A                |
-| `integrationName`  | *string*           | :heavy_minus_sign: | N/A                |
+| `issuerId`         | *string*           | :heavy_check_mark: | N/A                |
+| `issuerName`       | *string*           | :heavy_check_mark: | N/A                |
+| `keyId`            | *string*           | :heavy_minus_sign: | N/A                |

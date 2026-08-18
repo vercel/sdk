@@ -5,24 +5,13 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndThirtyFour } from "@vercel/sdk/models/usereventpayload323geolocationmostspecificsubdivisionnames.js";
+import { ThreeHundredAndThirtyFour } from "@vercel/sdk/models/usereventpayload326geolocationmostspecificsubdivisionnames.js";
 
-let value: ThreeHundredAndThirtyFour = {
-  transferRequestCode: "<value>",
-  store: {
-    id: "<id>",
-    type: "blob",
-  },
-  destinationTeamId: "<id>",
-  destinationTeamName: "<value>",
-};
+let value: ThreeHundredAndThirtyFour = {};
 ```
 
 ## Fields
 
-| Field                                            | Type                                             | Required                                         | Description                                      |
-| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| `transferRequestCode`                            | *string*                                         | :heavy_check_mark:                               | N/A                                              |
-| `store`                                          | [models.PayloadStore](../models/payloadstore.md) | :heavy_check_mark:                               | N/A                                              |
-| `destinationTeamId`                              | *string*                                         | :heavy_check_mark:                               | N/A                                              |
-| `destinationTeamName`                            | *string*                                         | :heavy_check_mark:                               | N/A                                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `webhookUrl`       | *string*           | :heavy_minus_sign: | N/A                |

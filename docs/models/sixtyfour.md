@@ -5,20 +5,20 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { SixtyFour } from "@vercel/sdk/models/payloadchange.js";
+import { SixtyFour } from "@vercel/sdk/models/usereventpayloadrefreshperiod.js";
 
 let value: SixtyFour = {
-  productAliases: [
-    "<value 1>",
-    "<value 2>",
-    "<value 3>",
-  ],
+  action: "resume_plan",
+  data: {
+    planSlug: "v0_teams",
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `subscriptionId`   | *string*           | :heavy_minus_sign: | N/A                |
-| `productAliases`   | *string*[]         | :heavy_check_mark: | N/A                |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `subscriptionId`                                                         | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `action`                                                                 | [models.UserEventPayload64Action](../models/usereventpayload64action.md) | :heavy_check_mark:                                                       | N/A                                                                      |
+| `data`                                                                   | [models.PayloadData](../models/payloaddata.md)                           | :heavy_check_mark:                                                       | N/A                                                                      |

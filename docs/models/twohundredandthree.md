@@ -5,31 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndThree } from "@vercel/sdk/models/onehundredandninetythree.js";
+import { TwoHundredAndThree } from "@vercel/sdk/models/onehundredandninetyfour.js";
 
 let value: TwoHundredAndThree = {
-  projectId: "<id>",
-  previous: {
-    enabled: false,
-    mode: "<value>",
-    enforcePercentage: 7678.15,
-    newResourceBlockingPolicy: "block",
-    allowUnsafeScriptSrcKeywords: true,
-  },
-  next: {
-    enabled: true,
-    mode: "<value>",
-    enforcePercentage: 1139.18,
-    newResourceBlockingPolicy: "allow",
-    allowUnsafeScriptSrcKeywords: false,
-  },
+  ownerId: "<id>",
+  source: "<value>",
+  cause: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `projectId`                                                              | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
-| `previous`                                                               | [models.UserEventPayloadPrevious](../models/usereventpayloadprevious.md) | :heavy_check_mark:                                                       | N/A                                                                      |
-| `next`                                                                   | [models.UserEventPayloadNext](../models/usereventpayloadnext.md)         | :heavy_check_mark:                                                       | N/A                                                                      |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `ownerId`          | *string*           | :heavy_check_mark: | N/A                |
+| `source`           | *string*           | :heavy_check_mark: | N/A                |
+| `cause`            | *string*           | :heavy_check_mark: | N/A                |

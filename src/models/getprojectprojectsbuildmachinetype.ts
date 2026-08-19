@@ -1503,6 +1503,7 @@ export type GetProjectProtectionConfig = {
 };
 
 export const GetProjectRegion = {
+  Cdg1: "cdg1",
   Cle1: "cle1",
   Iad1: "iad1",
   Sfo1: "sfo1",
@@ -1510,6 +1511,7 @@ export const GetProjectRegion = {
 export type GetProjectRegion = ClosedEnum<typeof GetProjectRegion>;
 
 export const GetProjectFailoverRegions = {
+  Cdg1: "cdg1",
   Cle1: "cle1",
   Iad1: "iad1",
   Sfo1: "sfo1",

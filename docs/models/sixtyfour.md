@@ -5,10 +5,10 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { SixtyFour } from "@vercel/sdk/models/usereventpayloadrefreshperiod.js";
+import { SixtyFour } from "@vercel/sdk/models/eighteen.js";
 
 let value: SixtyFour = {
-  action: "resume_plan",
+  action: "cancel_plan",
   data: {
     planSlug: "v0_teams",
   },
@@ -21,4 +21,4 @@ let value: SixtyFour = {
 | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
 | `subscriptionId`                                                         | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
 | `action`                                                                 | [models.UserEventPayload64Action](../models/usereventpayload64action.md) | :heavy_check_mark:                                                       | N/A                                                                      |
-| `data`                                                                   | [models.PayloadData](../models/payloaddata.md)                           | :heavy_check_mark:                                                       | N/A                                                                      |
+| `data`                                                                   | [models.UserEventPayloadData](../models/usereventpayloaddata.md)         | :heavy_check_mark:                                                       | N/A                                                                      |

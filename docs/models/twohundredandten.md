@@ -5,12 +5,12 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndTen } from "@vercel/sdk/models/onehundredandninetythree.js";
+import { TwoHundredAndTen } from "@vercel/sdk/models/onehundredandninetyfour.js";
 
 let value: TwoHundredAndTen = {
   projectId: "<id>",
-  type: "connectSrc",
-  resourceUrl: "https://potable-pressure.net",
+  type: "header",
+  headerName: "<value>",
 };
 ```
 
@@ -20,4 +20,4 @@ let value: TwoHundredAndTen = {
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | `projectId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
 | `type`                                                                 | [models.UserEventPayload210Type](../models/usereventpayload210type.md) | :heavy_check_mark:                                                     | N/A                                                                    |
-| `resourceUrl`                                                          | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `headerName`                                                           | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |

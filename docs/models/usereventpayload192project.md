@@ -3,16 +3,18 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload192Project } from "@vercel/sdk/models/usereventpayload172next.js";
+import { UserEventPayload192Project } from "@vercel/sdk/models/edgemiddlewareinvocations.js";
 
 let value: UserEventPayload192Project = {
+  id: "<id>",
   name: "<value>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
-| `id`               | *string*           | :heavy_minus_sign: | N/A                |
+| Field                   | Type                    | Required                | Description             |
+| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
+| `id`                    | *string*                | :heavy_check_mark:      | N/A                     |
+| `name`                  | *string*                | :heavy_check_mark:      | N/A                     |
+| `microfrontends`        | *models.Microfrontends* | :heavy_minus_sign:      | N/A                     |

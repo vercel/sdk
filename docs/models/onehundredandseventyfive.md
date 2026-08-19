@@ -8,10 +8,9 @@ The payload of the event, if requested.
 import { OneHundredAndSeventyFive } from "@vercel/sdk/models/edgemiddlewareinvocations.js";
 
 let value: OneHundredAndSeventyFive = {
-  issuerId: "<id>",
-  issuerName: "<value>",
-  algorithm: "<value>",
-  origin: "<value>",
+  integrationId: "<id>",
+  integrationSlug: "<value>",
+  integrationName: "<value>",
 };
 ```
 
@@ -19,8 +18,6 @@ let value: OneHundredAndSeventyFive = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `issuerId`         | *string*           | :heavy_check_mark: | N/A                |
-| `issuerName`       | *string*           | :heavy_check_mark: | N/A                |
-| `algorithm`        | *string*           | :heavy_check_mark: | N/A                |
-| `origin`           | *string*           | :heavy_check_mark: | N/A                |
-| `managedBy`        | *string*           | :heavy_minus_sign: | N/A                |
+| `integrationId`    | *string*           | :heavy_check_mark: | N/A                |
+| `integrationSlug`  | *string*           | :heavy_check_mark: | N/A                |
+| `integrationName`  | *string*           | :heavy_check_mark: | N/A                |

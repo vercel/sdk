@@ -5,14 +5,12 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThirtyFive } from "@vercel/sdk/models/usereventpayloadrefreshperiod.js";
+import { ThirtyFive } from "@vercel/sdk/models/eighteen.js";
 
 let value: ThirtyFive = {
   accessGroup: {
     id: "<id>",
-  },
-  user: {
-    id: "<id>",
+    name: "<value>",
   },
 };
 ```
@@ -22,5 +20,11 @@ let value: ThirtyFive = {
 | Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
 | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
 | `accessGroup`                                                                      | [models.UserEventPayload35AccessGroup](../models/usereventpayload35accessgroup.md) | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `user`                                                                             | [models.PayloadUser](../models/payloaduser.md)                                     | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `directoryType`                                                                    | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `name`                                                                             | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `previousName`                                                                     | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `teamRoles`                                                                        | *string*[]                                                                         | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `previousTeamRoles`                                                                | *string*[]                                                                         | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `teamPermissions`                                                                  | *string*[]                                                                         | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `previousTeamPermissions`                                                          | *string*[]                                                                         | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `entitlementsAdded`                                                                | *string*[]                                                                         | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `entitlementsRemoved`                                                              | *string*[]                                                                         | :heavy_minus_sign:                                                                 | N/A                                                                                |

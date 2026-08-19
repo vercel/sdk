@@ -5,11 +5,11 @@
 ```typescript
 import { UserEventPayloadAction } from "@vercel/sdk/models/userevent.js";
 
-let value: UserEventPayloadAction = "deleted";
+let value: UserEventPayloadAction = "transitioned";
 ```
 
 ## Values
 
 ```typescript
-"added" | "deleted" | "rotated"
+"created" | "transitioned" | "updated"
 ```

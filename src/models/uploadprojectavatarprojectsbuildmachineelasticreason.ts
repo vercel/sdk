@@ -1539,6 +1539,7 @@ export type UploadProjectAvatarProtectionConfig = {
 };
 
 export const UploadProjectAvatarRegion = {
+  Cdg1: "cdg1",
   Cle1: "cle1",
   Iad1: "iad1",
   Sfo1: "sfo1",
@@ -1548,6 +1549,7 @@ export type UploadProjectAvatarRegion = ClosedEnum<
 >;
 
 export const UploadProjectAvatarFailoverRegions = {
+  Cdg1: "cdg1",
   Cle1: "cle1",
   Iad1: "iad1",
   Sfo1: "sfo1",

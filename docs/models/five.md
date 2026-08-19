@@ -8,8 +8,12 @@ The payload of the event, if requested.
 import { Five } from "@vercel/sdk/models/userevent.js";
 
 let value: Five = {
-  teamId: "<id>",
-  accountRequestId: "<id>",
+  action: "read",
+  environment: [
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
+  ],
 };
 ```
 
@@ -17,9 +21,7 @@ let value: Five = {
 
 | Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `provider`                                                             | [models.Provider](../models/provider.md)                               | :heavy_minus_sign:                                                     | Present on new events only. Equivalent to "stripe" when absent.        |
-| `providerAccount`                                                      | *string*                                                               | :heavy_minus_sign:                                                     | Present on new events only. Equivalent to `stripeAccount` when absent. |
-| `stripeAccount`                                                        | *string*                                                               | :heavy_minus_sign:                                                     | Present when `provider` is "stripe". Equivalent to `providerAccount`.  |
-| `stripeOrganisation`                                                   | *string*                                                               | :heavy_minus_sign:                                                     | Present when `provider` is "stripe".                                   |
-| `teamId`                                                               | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
-| `accountRequestId`                                                     | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `action`                                                               | [models.UserEventPayload5Action](../models/usereventpayload5action.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| `projectName`                                                          | *string*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `projectId`                                                            | *string*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `environment`                                                          | *string*[]                                                             | :heavy_check_mark:                                                     | N/A                                                                    |

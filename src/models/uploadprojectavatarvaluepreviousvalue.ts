@@ -331,6 +331,7 @@ export type UploadProjectAvatarPermissions = {
   connectLogs?: Array<ACLAction> | undefined;
   connexClient?: Array<ACLAction> | undefined;
   connexClientProject?: Array<ACLAction> | undefined;
+  connexContact?: Array<ACLAction> | undefined;
   connexInstallation?: Array<ACLAction> | undefined;
   connexToken?: Array<ACLAction> | undefined;
   buildMachineDefault?: Array<ACLAction> | undefined;
@@ -2055,6 +2056,7 @@ export const UploadProjectAvatarPermissions$inboundSchema: z.ZodType<
   connectLogs: types.optional(z.array(ACLAction$inboundSchema)),
   connexClient: types.optional(z.array(ACLAction$inboundSchema)),
   connexClientProject: types.optional(z.array(ACLAction$inboundSchema)),
+  connexContact: types.optional(z.array(ACLAction$inboundSchema)),
   connexInstallation: types.optional(z.array(ACLAction$inboundSchema)),
   connexToken: types.optional(z.array(ACLAction$inboundSchema)),
   buildMachineDefault: types.optional(z.array(ACLAction$inboundSchema)),

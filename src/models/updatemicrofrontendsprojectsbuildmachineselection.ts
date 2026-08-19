@@ -1566,6 +1566,7 @@ export type UpdateMicrofrontendsProtectionConfig = {
 };
 
 export const UpdateMicrofrontendsRegion = {
+  Cdg1: "cdg1",
   Cle1: "cle1",
   Iad1: "iad1",
   Sfo1: "sfo1",
@@ -1575,6 +1576,7 @@ export type UpdateMicrofrontendsRegion = ClosedEnum<
 >;
 
 export const UpdateMicrofrontendsFailoverRegions = {
+  Cdg1: "cdg1",
   Cle1: "cle1",
   Iad1: "iad1",
   Sfo1: "sfo1",

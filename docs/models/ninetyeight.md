@@ -5,27 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { NinetyEight } from "@vercel/sdk/models/usereventpayloadteam.js";
+import { NinetyEight } from "@vercel/sdk/models/usereventpayload84configuration.js";
 
 let value: NinetyEight = {
-  project: {
-    name: "<value>",
-  },
-  job: {
-    deployHook: {
-      createdAt: 3393.49,
-      id: "<id>",
-      name: "<value>",
-      ref: "<value>",
-    },
-    state: "Wisconsin",
-  },
+  projectId: "<id>",
+  projectName: "<value>",
+  hookName: "<value>",
+  ref: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `project`                                                                  | [models.UserEventPayload98Project](../models/usereventpayload98project.md) | :heavy_check_mark:                                                         | N/A                                                                        |
-| `job`                                                                      | [models.Job](../models/job.md)                                             | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `hookName`         | *string*           | :heavy_check_mark: | N/A                |
+| `ref`              | *string*           | :heavy_check_mark: | N/A                |

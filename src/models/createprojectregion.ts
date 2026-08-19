@@ -1873,6 +1873,7 @@ export type ProtectionConfig = {
 };
 
 export const CreateProjectRegion = {
+  Cdg1: "cdg1",
   Cle1: "cle1",
   Iad1: "iad1",
   Sfo1: "sfo1",

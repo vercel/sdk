@@ -5,11 +5,11 @@
 ```typescript
 import { UpdateProjectRegion } from "@vercel/sdk/models/updateprojectprojectsresponse200applicationjsonresponsebodysecurityaction.js";
 
-let value: UpdateProjectRegion = "iad1";
+let value: UpdateProjectRegion = "cle1";
 ```
 
 ## Values
 
 ```typescript
-"cle1" | "iad1" | "sfo1"
+"cdg1" | "cle1" | "iad1" | "sfo1"
 ```

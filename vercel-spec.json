@@ -12467,6 +12467,14 @@
                         true
                       ]
                     },
+                    "supportsContacts": {
+                      "type": "boolean",
+                      "enum": [
+                        false,
+                        true
+                      ],
+                      "description": "Whether this connector can verify and list messaging contacts. Derived from the type definition's `supportsContacts`; indicates that the `/connect/connectors/:connectorId/contacts` endpoints are meaningful for this connector."
+                    },
                     "triggers": {
                       "properties": {
                         "enabled": {
@@ -31010,6 +31018,12 @@
                       ]
                     },
                     "type": "array"
+                  },
+                  "gitAccessToken": {
+                    "description": "Available only to Vercel platform accounts. A read-only GitHub access token scoped to the requested repository. Use a token with a lifetime of 24 hours or less that remains valid until source retrieval completes.",
+                    "maxLength": 1024,
+                    "type": "string",
+                    "writeOnly": true
                   },
                   "gitMetadata": {
                     "description": "Populates initial git metadata for different git providers.",
@@ -57549,209 +57563,6 @@
                     "description": {
                       "type": "string"
                     },
-                    "maintainerIds": {
-                      "items": {
-                        "type": "string"
-                      },
-                      "type": "array"
-                    },
-                    "permanent": {
-                      "type": "boolean",
-                      "enum": [
-                        false,
-                        true
-                      ]
-                    },
-                    "tags": {
-                      "items": {
-                        "type": "string"
-                      },
-                      "type": "array"
-                    },
-                    "experiment": {
-                      "properties": {
-                        "id": {
-                          "type": "string"
-                        },
-                        "name": {
-                          "type": "string"
-                        },
-                        "numVariants": {
-                          "type": "number"
-                        },
-                        "surfaceArea": {
-                          "type": "string"
-                        },
-                        "stickyRequirement": {
-                          "type": "boolean",
-                          "enum": [
-                            false,
-                            true
-                          ]
-                        },
-                        "layer": {
-                          "type": "string"
-                        },
-                        "guardrailMetrics": {
-                          "items": {
-                            "properties": {
-                              "description": {
-                                "type": "string"
-                              },
-                              "metricFormula": {
-                                "type": "string"
-                              },
-                              "name": {
-                                "type": "string"
-                              },
-                              "metricType": {
-                                "type": "string",
-                                "enum": [
-                                  "count",
-                                  "currency",
-                                  "percentage"
-                                ]
-                              },
-                              "metricUnit": {
-                                "type": "string",
-                                "enum": [
-                                  "session",
-                                  "user",
-                                  "visitor"
-                                ]
-                              },
-                              "directionality": {
-                                "type": "string",
-                                "enum": [
-                                  "decreaseIsGood",
-                                  "increaseIsGood"
-                                ]
-                              }
-                            },
-                            "required": [
-                              "directionality",
-                              "metricType",
-                              "metricUnit",
-                              "name"
-                            ],
-                            "type": "object"
-                          },
-                          "type": "array"
-                        },
-                        "hypothesis": {
-                          "type": "string"
-                        },
-                        "device": {
-                          "type": "string",
-                          "enum": [
-                            "android",
-                            "desktop",
-                            "ios",
-                            "mweb"
-                          ]
-                        },
-                        "controlVariantId": {
-                          "type": "string"
-                        },
-                        "startedAt": {
-                          "type": "number"
-                        },
-                        "endedAt": {
-                          "type": "number"
-                        },
-                        "decision": {
-                          "type": "string"
-                        },
-                        "decisionReason": {
-                          "type": "string"
-                        },
-                        "duration": {
-                          "type": "number"
-                        },
-                        "durationUnit": {
-                          "type": "string",
-                          "enum": [
-                            "days",
-                            "exposures"
-                          ]
-                        },
-                        "allocationPercent": {
-                          "type": "number"
-                        },
-                        "allocationUnit": {
-                          "type": "string",
-                          "enum": [
-                            "cookieId",
-                            "userId",
-                            "visitorId"
-                          ]
-                        },
-                        "primaryMetrics": {
-                          "items": {
-                            "properties": {
-                              "description": {
-                                "type": "string"
-                              },
-                              "metricFormula": {
-                                "type": "string"
-                              },
-                              "name": {
-                                "type": "string"
-                              },
-                              "metricType": {
-                                "type": "string",
-                                "enum": [
-                                  "count",
-                                  "currency",
-                                  "percentage"
-                                ]
-                              },
-                              "metricUnit": {
-                                "type": "string",
-                                "enum": [
-                                  "session",
-                                  "user",
-                                  "visitor"
-                                ]
-                              },
-                              "directionality": {
-                                "type": "string",
-                                "enum": [
-                                  "decreaseIsGood",
-                                  "increaseIsGood"
-                                ]
-                              }
-                            },
-                            "required": [
-                              "directionality",
-                              "metricType",
-                              "metricUnit",
-                              "name"
-                            ],
-                            "type": "object"
-                          },
-                          "type": "array"
-                        },
-                        "status": {
-                          "type": "string",
-                          "enum": [
-                            "closed",
-                            "draft",
-                            "paused",
-                            "running"
-                          ]
-                        }
-                      },
-                      "required": [
-                        "allocationUnit",
-                        "primaryMetrics",
-                        "status"
-                      ],
-                      "type": "object"
-                    },
-                    "updatedBy": {
-                      "type": "string"
-                    },
                     "variants": {
                       "items": {
                         "type": "object"
@@ -57969,6 +57780,20 @@
                                   "type"
                                 ],
                                 "type": "object"
+                              },
+                              {
+                                "properties": {
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "experiment"
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "type"
+                                ],
+                                "type": "object"
                               }
                             ]
                           },
@@ -58121,6 +57946,20 @@
                                         "rollToVariantId",
                                         "slots",
                                         "startTimestamp",
+                                        "type"
+                                      ],
+                                      "type": "object"
+                                    },
+                                    {
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "experiment"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
                                         "type"
                                       ],
                                       "type": "object"
@@ -58358,6 +58197,25 @@
                         "archived"
                       ]
                     },
+                    "maintainerIds": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "permanent": {
+                      "type": "boolean",
+                      "enum": [
+                        false,
+                        true
+                      ]
+                    },
+                    "tags": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
                     "slug": {
                       "type": "string"
                     },
@@ -58366,6 +58224,9 @@
                     },
                     "updatedAt": {
                       "type": "number"
+                    },
+                    "updatedBy": {
+                      "type": "string"
                     },
                     "createdBy": {
                       "type": "string"
@@ -59259,209 +59120,6 @@
                         "description": {
                           "type": "string"
                         },
-                        "maintainerIds": {
-                          "items": {
-                            "type": "string"
-                          },
-                          "type": "array"
-                        },
-                        "permanent": {
-                          "type": "boolean",
-                          "enum": [
-                            false,
-                            true
-                          ]
-                        },
-                        "tags": {
-                          "items": {
-                            "type": "string"
-                          },
-                          "type": "array"
-                        },
-                        "experiment": {
-                          "properties": {
-                            "id": {
-                              "type": "string"
-                            },
-                            "name": {
-                              "type": "string"
-                            },
-                            "numVariants": {
-                              "type": "number"
-                            },
-                            "surfaceArea": {
-                              "type": "string"
-                            },
-                            "stickyRequirement": {
-                              "type": "boolean",
-                              "enum": [
-                                false,
-                                true
-                              ]
-                            },
-                            "layer": {
-                              "type": "string"
-                            },
-                            "guardrailMetrics": {
-                              "items": {
-                                "properties": {
-                                  "description": {
-                                    "type": "string"
-                                  },
-                                  "metricFormula": {
-                                    "type": "string"
-                                  },
-                                  "name": {
-                                    "type": "string"
-                                  },
-                                  "metricType": {
-                                    "type": "string",
-                                    "enum": [
-                                      "count",
-                                      "currency",
-                                      "percentage"
-                                    ]
-                                  },
-                                  "metricUnit": {
-                                    "type": "string",
-                                    "enum": [
-                                      "session",
-                                      "user",
-                                      "visitor"
-                                    ]
-                                  },
-                                  "directionality": {
-                                    "type": "string",
-                                    "enum": [
-                                      "decreaseIsGood",
-                                      "increaseIsGood"
-                                    ]
-                                  }
-                                },
-                                "required": [
-                                  "directionality",
-                                  "metricType",
-                                  "metricUnit",
-                                  "name"
-                                ],
-                                "type": "object"
-                              },
-                              "type": "array"
-                            },
-                            "hypothesis": {
-                              "type": "string"
-                            },
-                            "device": {
-                              "type": "string",
-                              "enum": [
-                                "android",
-                                "desktop",
-                                "ios",
-                                "mweb"
-                              ]
-                            },
-                            "controlVariantId": {
-                              "type": "string"
-                            },
-                            "startedAt": {
-                              "type": "number"
-                            },
-                            "endedAt": {
-                              "type": "number"
-                            },
-                            "decision": {
-                              "type": "string"
-                            },
-                            "decisionReason": {
-                              "type": "string"
-                            },
-                            "duration": {
-                              "type": "number"
-                            },
-                            "durationUnit": {
-                              "type": "string",
-                              "enum": [
-                                "days",
-                                "exposures"
-                              ]
-                            },
-                            "allocationPercent": {
-                              "type": "number"
-                            },
-                            "allocationUnit": {
-                              "type": "string",
-                              "enum": [
-                                "cookieId",
-                                "userId",
-                                "visitorId"
-                              ]
-                            },
-                            "primaryMetrics": {
-                              "items": {
-                                "properties": {
-                                  "description": {
-                                    "type": "string"
-                                  },
-                                  "metricFormula": {
-                                    "type": "string"
-                                  },
-                                  "name": {
-                                    "type": "string"
-                                  },
-                                  "metricType": {
-                                    "type": "string",
-                                    "enum": [
-                                      "count",
-                                      "currency",
-                                      "percentage"
-                                    ]
-                                  },
-                                  "metricUnit": {
-                                    "type": "string",
-                                    "enum": [
-                                      "session",
-                                      "user",
-                                      "visitor"
-                                    ]
-                                  },
-                                  "directionality": {
-                                    "type": "string",
-                                    "enum": [
-                                      "decreaseIsGood",
-                                      "increaseIsGood"
-                                    ]
-                                  }
-                                },
-                                "required": [
-                                  "directionality",
-                                  "metricType",
-                                  "metricUnit",
-                                  "name"
-                                ],
-                                "type": "object"
-                              },
-                              "type": "array"
-                            },
-                            "status": {
-                              "type": "string",
-                              "enum": [
-                                "closed",
-                                "draft",
-                                "paused",
-                                "running"
-                              ]
-                            }
-                          },
-                          "required": [
-                            "allocationUnit",
-                            "primaryMetrics",
-                            "status"
-                          ],
-                          "type": "object"
-                        },
-                        "updatedBy": {
-                          "type": "string"
-                        },
                         "variants": {
                           "items": {
                             "type": "object"
@@ -59679,6 +59337,20 @@
                                       "type"
                                     ],
                                     "type": "object"
+                                  },
+                                  {
+                                    "properties": {
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "experiment"
+                                        ]
+                                      }
+                                    },
+                                    "required": [
+                                      "type"
+                                    ],
+                                    "type": "object"
                                   }
                                 ]
                               },
@@ -59831,6 +59503,20 @@
                                             "rollToVariantId",
                                             "slots",
                                             "startTimestamp",
+                                            "type"
+                                          ],
+                                          "type": "object"
+                                        },
+                                        {
+                                          "properties": {
+                                            "type": {
+                                              "type": "string",
+                                              "enum": [
+                                                "experiment"
+                                              ]
+                                            }
+                                          },
+                                          "required": [
                                             "type"
                                           ],
                                           "type": "object"
@@ -60068,6 +59754,25 @@
                             "archived"
                           ]
                         },
+                        "maintainerIds": {
+                          "items": {
+                            "type": "string"
+                          },
+                          "type": "array"
+                        },
+                        "permanent": {
+                          "type": "boolean",
+                          "enum": [
+                            false,
+                            true
+                          ]
+                        },
+                        "tags": {
+                          "items": {
+                            "type": "string"
+                          },
+                          "type": "array"
+                        },
                         "slug": {
                           "type": "string"
                         },
@@ -60076,6 +59781,9 @@
                         },
                         "updatedAt": {
                           "type": "number"
+                        },
+                        "updatedBy": {
+                          "type": "string"
                         },
                         "createdBy": {
                           "type": "string"
@@ -60990,216 +60698,34 @@
                     "versions": {
                       "items": {
                         "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "revision": {
+                            "type": "number"
+                          },
+                          "createdAt": {
+                            "type": "number"
+                          },
                           "createdBy": {
                             "type": "string"
                           },
                           "message": {
                             "type": "string"
                           },
+                          "flagId": {
+                            "type": "string"
+                          },
+                          "changedEnvironments": {
+                            "items": {
+                              "type": "string"
+                            },
+                            "type": "array"
+                          },
                           "data": {
                             "properties": {
                               "description": {
                                 "type": "string"
-                              },
-                              "maintainerIds": {
-                                "items": {
-                                  "type": "string"
-                                },
-                                "type": "array"
-                              },
-                              "permanent": {
-                                "type": "boolean",
-                                "enum": [
-                                  false,
-                                  true
-                                ]
-                              },
-                              "tags": {
-                                "items": {
-                                  "type": "string"
-                                },
-                                "type": "array"
-                              },
-                              "experiment": {
-                                "properties": {
-                                  "id": {
-                                    "type": "string"
-                                  },
-                                  "name": {
-                                    "type": "string"
-                                  },
-                                  "numVariants": {
-                                    "type": "number"
-                                  },
-                                  "surfaceArea": {
-                                    "type": "string"
-                                  },
-                                  "stickyRequirement": {
-                                    "type": "boolean",
-                                    "enum": [
-                                      false,
-                                      true
-                                    ]
-                                  },
-                                  "layer": {
-                                    "type": "string"
-                                  },
-                                  "guardrailMetrics": {
-                                    "items": {
-                                      "properties": {
-                                        "description": {
-                                          "type": "string"
-                                        },
-                                        "metricFormula": {
-                                          "type": "string"
-                                        },
-                                        "name": {
-                                          "type": "string"
-                                        },
-                                        "metricType": {
-                                          "type": "string",
-                                          "enum": [
-                                            "count",
-                                            "currency",
-                                            "percentage"
-                                          ]
-                                        },
-                                        "metricUnit": {
-                                          "type": "string",
-                                          "enum": [
-                                            "session",
-                                            "user",
-                                            "visitor"
-                                          ]
-                                        },
-                                        "directionality": {
-                                          "type": "string",
-                                          "enum": [
-                                            "decreaseIsGood",
-                                            "increaseIsGood"
-                                          ]
-                                        }
-                                      },
-                                      "required": [
-                                        "directionality",
-                                        "metricType",
-                                        "metricUnit",
-                                        "name"
-                                      ],
-                                      "type": "object"
-                                    },
-                                    "type": "array"
-                                  },
-                                  "hypothesis": {
-                                    "type": "string"
-                                  },
-                                  "device": {
-                                    "type": "string",
-                                    "enum": [
-                                      "android",
-                                      "desktop",
-                                      "ios",
-                                      "mweb"
-                                    ]
-                                  },
-                                  "controlVariantId": {
-                                    "type": "string"
-                                  },
-                                  "startedAt": {
-                                    "type": "number"
-                                  },
-                                  "endedAt": {
-                                    "type": "number"
-                                  },
-                                  "decision": {
-                                    "type": "string"
-                                  },
-                                  "decisionReason": {
-                                    "type": "string"
-                                  },
-                                  "duration": {
-                                    "type": "number"
-                                  },
-                                  "durationUnit": {
-                                    "type": "string",
-                                    "enum": [
-                                      "days",
-                                      "exposures"
-                                    ]
-                                  },
-                                  "allocationPercent": {
-                                    "type": "number"
-                                  },
-                                  "allocationUnit": {
-                                    "type": "string",
-                                    "enum": [
-                                      "cookieId",
-                                      "userId",
-                                      "visitorId"
-                                    ]
-                                  },
-                                  "primaryMetrics": {
-                                    "items": {
-                                      "properties": {
-                                        "description": {
-                                          "type": "string"
-                                        },
-                                        "metricFormula": {
-                                          "type": "string"
-                                        },
-                                        "name": {
-                                          "type": "string"
-                                        },
-                                        "metricType": {
-                                          "type": "string",
-                                          "enum": [
-                                            "count",
-                                            "currency",
-                                            "percentage"
-                                          ]
-                                        },
-                                        "metricUnit": {
-                                          "type": "string",
-                                          "enum": [
-                                            "session",
-                                            "user",
-                                            "visitor"
-                                          ]
-                                        },
-                                        "directionality": {
-                                          "type": "string",
-                                          "enum": [
-                                            "decreaseIsGood",
-                                            "increaseIsGood"
-                                          ]
-                                        }
-                                      },
-                                      "required": [
-                                        "directionality",
-                                        "metricType",
-                                        "metricUnit",
-                                        "name"
-                                      ],
-                                      "type": "object"
-                                    },
-                                    "type": "array"
-                                  },
-                                  "status": {
-                                    "type": "string",
-                                    "enum": [
-                                      "closed",
-                                      "draft",
-                                      "paused",
-                                      "running"
-                                    ]
-                                  }
-                                },
-                                "required": [
-                                  "allocationUnit",
-                                  "primaryMetrics",
-                                  "status"
-                                ],
-                                "type": "object"
                               },
                               "variants": {
                                 "items": {
@@ -61415,6 +60941,20 @@
                                             "type"
                                           ],
                                           "type": "object"
+                                        },
+                                        {
+                                          "properties": {
+                                            "type": {
+                                              "type": "string",
+                                              "enum": [
+                                                "experiment"
+                                              ]
+                                            }
+                                          },
+                                          "required": [
+                                            "type"
+                                          ],
+                                          "type": "object"
                                         }
                                       ]
                                     },
@@ -61567,6 +61107,20 @@
                                                   "rollToVariantId",
                                                   "slots",
                                                   "startTimestamp",
+                                                  "type"
+                                                ],
+                                                "type": "object"
+                                              },
+                                              {
+                                                "properties": {
+                                                  "type": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                      "experiment"
+                                                    ]
+                                                  }
+                                                },
+                                                "required": [
                                                   "type"
                                                 ],
                                                 "type": "object"
@@ -61791,6 +61345,25 @@
                                   "active",
                                   "archived"
                                 ]
+                              },
+                              "maintainerIds": {
+                                "items": {
+                                  "type": "string"
+                                },
+                                "type": "array"
+                              },
+                              "permanent": {
+                                "type": "boolean",
+                                "enum": [
+                                  false,
+                                  true
+                                ]
+                              },
+                              "tags": {
+                                "items": {
+                                  "type": "string"
+                                },
+                                "type": "array"
                               }
                             },
                             "required": [
@@ -61800,24 +61373,6 @@
                               "variants"
                             ],
                             "type": "object"
-                          },
-                          "id": {
-                            "type": "string"
-                          },
-                          "revision": {
-                            "type": "number"
-                          },
-                          "createdAt": {
-                            "type": "number"
-                          },
-                          "flagId": {
-                            "type": "string"
-                          },
-                          "changedEnvironments": {
-                            "items": {
-                              "type": "string"
-                            },
-                            "type": "array"
                           },
                           "metadata": {
                             "properties": {
@@ -74680,6 +74235,2945 @@
         }
       }
     },
+    "/v1/kms/issuers": {
+      "get": {
+        "description": "Retrieve the list of KMS issuers that belong to the authenticated team. The results are paginated.",
+        "operationId": "listKmsIssuers",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "List issuers",
+        "tags": [
+          "kms"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "issuers": {
+                      "items": {
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "ownerId": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "algorithm": {
+                            "type": "string",
+                            "enum": [
+                              "ES256",
+                              "ES384",
+                              "ES512",
+                              "EdDSA",
+                              "PS256",
+                              "PS384",
+                              "PS512",
+                              "RS256",
+                              "RS384",
+                              "RS512"
+                            ]
+                          },
+                          "origin": {
+                            "type": "string",
+                            "enum": [
+                              "external",
+                              "vercel"
+                            ]
+                          },
+                          "managedBy": {
+                            "type": "string"
+                          },
+                          "claimsSchema": {
+                            "additionalProperties": true,
+                            "type": "object"
+                          },
+                          "createdAt": {
+                            "type": "string"
+                          },
+                          "updatedAt": {
+                            "type": "string"
+                          },
+                          "signingKeys": {
+                            "items": {
+                              "properties": {
+                                "keyId": {
+                                  "type": "string",
+                                  "description": "The server-minted, unique record identifier. Use this to address the key on the activate / certificate endpoints."
+                                },
+                                "importKeyId": {
+                                  "type": "string",
+                                  "description": "The caller-supplied key id (imported keys only), used as the JWT/JWKS `kid`. Not unique across an issuer's keys; omitted for generated keys."
+                                },
+                                "issuerId": {
+                                  "type": "string"
+                                },
+                                "algorithm": {
+                                  "type": "string"
+                                },
+                                "status": {
+                                  "type": "string",
+                                  "enum": [
+                                    "active",
+                                    "pending",
+                                    "revoking"
+                                  ]
+                                },
+                                "publicKey": {
+                                  "properties": {
+                                    "kty": {
+                                      "type": "string"
+                                    },
+                                    "kid": {
+                                      "type": "string"
+                                    },
+                                    "alg": {
+                                      "type": "string"
+                                    },
+                                    "use": {
+                                      "type": "string"
+                                    },
+                                    "key_ops": {
+                                      "items": {
+                                        "type": "string"
+                                      },
+                                      "type": "array"
+                                    },
+                                    "x5c": {
+                                      "items": {
+                                        "type": "string"
+                                      },
+                                      "type": "array",
+                                      "description": "The X.509 certificate chain (RFC 7517 §4.7). Each entry is the base64 DER (not base64url) of a certificate. For keys minted with a stored certificate this holds the single self-signed cert as `[x5c]`."
+                                    },
+                                    "x5t#S256": {
+                                      "type": "string",
+                                      "description": "The base64url SHA-256 thumbprint of the DER certificate in `x5c[0]` (RFC 7517 §4.9)."
+                                    }
+                                  },
+                                  "type": "object"
+                                },
+                                "publicKeyFingerprint": {
+                                  "type": "string"
+                                },
+                                "publicKeyPem": {
+                                  "type": "string",
+                                  "description": "The public key in SPKI PEM form, ready to render. Present whenever the key has public key material. Derived from `publicKey`; the embedded certificate members (`x5c`/`x5t#S256`) do not affect it."
+                                },
+                                "certificatePem": {
+                                  "type": "string",
+                                  "description": "The stored X.509 certificate (from `publicKey.x5c[0]`) in PEM form, ready to render. Present only for keys created with a stored certificate; omitted for keys created before certificates were stored."
+                                },
+                                "createdAt": {
+                                  "type": "string"
+                                },
+                                "updatedAt": {
+                                  "type": "string"
+                                },
+                                "revokeAt": {
+                                  "type": "string"
+                                },
+                                "activateAt": {
+                                  "type": "string"
+                                },
+                                "activatedAt": {
+                                  "type": "string",
+                                  "description": "When the key became the active signer. Present for active and revoking keys (and absent for pending keys and rows predating this field)."
+                                }
+                              },
+                              "required": [
+                                "algorithm",
+                                "createdAt",
+                                "issuerId",
+                                "keyId",
+                                "status",
+                                "updatedAt"
+                              ],
+                              "type": "object"
+                            },
+                            "type": "array"
+                          },
+                          "policies": {
+                            "items": {
+                              "oneOf": [
+                                {
+                                  "properties": {
+                                    "kind": {
+                                      "type": "string",
+                                      "enum": [
+                                        "project-grant"
+                                      ]
+                                    },
+                                    "teamId": {
+                                      "type": "string"
+                                    },
+                                    "projectId": {
+                                      "type": "string"
+                                    },
+                                    "environments": {
+                                      "items": {
+                                        "type": "string"
+                                      },
+                                      "type": "array",
+                                      "description": "Environments whose OIDC tokens this grant authorizes. Each entry is either a system environment slug (`production`, `preview`, `development`) or a custom environment ID (prefixed `env_`). Custom environments are matched against the token's `custom_environment_id` claim (the stable ID); system environments against its `environment` claim."
+                                    },
+                                    "tokenClaims": {
+                                      "additionalProperties": true,
+                                      "type": "object"
+                                    },
+                                    "createdAt": {
+                                      "type": "string"
+                                    },
+                                    "updatedAt": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "createdAt",
+                                    "environments",
+                                    "kind",
+                                    "projectId",
+                                    "teamId",
+                                    "updatedAt"
+                                  ],
+                                  "type": "object"
+                                },
+                                {
+                                  "properties": {
+                                    "kind": {
+                                      "type": "string",
+                                      "enum": [
+                                        "connex-grant"
+                                      ]
+                                    },
+                                    "clientId": {
+                                      "type": "string"
+                                    },
+                                    "tokenClaims": {
+                                      "additionalProperties": true,
+                                      "type": "object"
+                                    },
+                                    "createdAt": {
+                                      "type": "string"
+                                    },
+                                    "updatedAt": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "clientId",
+                                    "createdAt",
+                                    "kind",
+                                    "updatedAt"
+                                  ],
+                                  "type": "object"
+                                }
+                              ]
+                            },
+                            "type": "array"
+                          }
+                        },
+                        "required": [
+                          "algorithm",
+                          "createdAt",
+                          "id",
+                          "name",
+                          "origin",
+                          "ownerId",
+                          "policies",
+                          "signingKeys",
+                          "updatedAt"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "pagination": {
+                      "properties": {
+                        "count": {
+                          "type": "number"
+                        },
+                        "next": {
+                          "nullable": true,
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "count",
+                        "next"
+                      ],
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "issuers",
+                    "pagination"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "410": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "limit",
+            "description": "Maximum number of issuers to return.",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "description": "Maximum number of issuers to return."
+            }
+          },
+          {
+            "name": "next",
+            "description": "Continuation cursor to retrieve the next page of results.",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "maxLength": 1024,
+              "pattern": "^[A-Za-z0-9_-]+$",
+              "description": "Continuation cursor to retrieve the next page of results."
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ]
+      },
+      "post": {
+        "description": "Create a new KMS issuer for the authenticated team. An issuer owns the asymmetric signing keys that are used to sign tokens and messages.",
+        "operationId": "createKmsIssuer",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Create an issuer",
+        "tags": [
+          "kms"
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "ownerId": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "algorithm": {
+                      "type": "string",
+                      "enum": [
+                        "ES256",
+                        "ES384",
+                        "ES512",
+                        "EdDSA",
+                        "PS256",
+                        "PS384",
+                        "PS512",
+                        "RS256",
+                        "RS384",
+                        "RS512"
+                      ]
+                    },
+                    "origin": {
+                      "type": "string",
+                      "enum": [
+                        "external",
+                        "vercel"
+                      ]
+                    },
+                    "managedBy": {
+                      "type": "string"
+                    },
+                    "claimsSchema": {
+                      "additionalProperties": true,
+                      "type": "object"
+                    },
+                    "createdAt": {
+                      "type": "string"
+                    },
+                    "updatedAt": {
+                      "type": "string"
+                    },
+                    "signingKeys": {
+                      "items": {
+                        "properties": {
+                          "keyId": {
+                            "type": "string",
+                            "description": "The server-minted, unique record identifier. Use this to address the key on the activate / certificate endpoints."
+                          },
+                          "importKeyId": {
+                            "type": "string",
+                            "description": "The caller-supplied key id (imported keys only), used as the JWT/JWKS `kid`. Not unique across an issuer's keys; omitted for generated keys."
+                          },
+                          "issuerId": {
+                            "type": "string"
+                          },
+                          "algorithm": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "active",
+                              "pending",
+                              "revoking"
+                            ]
+                          },
+                          "publicKey": {
+                            "properties": {
+                              "kty": {
+                                "type": "string"
+                              },
+                              "kid": {
+                                "type": "string"
+                              },
+                              "alg": {
+                                "type": "string"
+                              },
+                              "use": {
+                                "type": "string"
+                              },
+                              "key_ops": {
+                                "items": {
+                                  "type": "string"
+                                },
+                                "type": "array"
+                              },
+                              "x5c": {
+                                "items": {
+                                  "type": "string"
+                                },
+                                "type": "array",
+                                "description": "The X.509 certificate chain (RFC 7517 §4.7). Each entry is the base64 DER (not base64url) of a certificate. For keys minted with a stored certificate this holds the single self-signed cert as `[x5c]`."
+                              },
+                              "x5t#S256": {
+                                "type": "string",
+                                "description": "The base64url SHA-256 thumbprint of the DER certificate in `x5c[0]` (RFC 7517 §4.9)."
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "publicKeyFingerprint": {
+                            "type": "string"
+                          },
+                          "publicKeyPem": {
+                            "type": "string",
+                            "description": "The public key in SPKI PEM form, ready to render. Present whenever the key has public key material. Derived from `publicKey`; the embedded certificate members (`x5c`/`x5t#S256`) do not affect it."
+                          },
+                          "certificatePem": {
+                            "type": "string",
+                            "description": "The stored X.509 certificate (from `publicKey.x5c[0]`) in PEM form, ready to render. Present only for keys created with a stored certificate; omitted for keys created before certificates were stored."
+                          },
+                          "createdAt": {
+                            "type": "string"
+                          },
+                          "updatedAt": {
+                            "type": "string"
+                          },
+                          "revokeAt": {
+                            "type": "string"
+                          },
+                          "activateAt": {
+                            "type": "string"
+                          },
+                          "activatedAt": {
+                            "type": "string",
+                            "description": "When the key became the active signer. Present for active and revoking keys (and absent for pending keys and rows predating this field)."
+                          }
+                        },
+                        "required": [
+                          "algorithm",
+                          "createdAt",
+                          "issuerId",
+                          "keyId",
+                          "status",
+                          "updatedAt"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "policies": {
+                      "items": {
+                        "oneOf": [
+                          {
+                            "properties": {
+                              "kind": {
+                                "type": "string",
+                                "enum": [
+                                  "project-grant"
+                                ]
+                              },
+                              "teamId": {
+                                "type": "string"
+                              },
+                              "projectId": {
+                                "type": "string"
+                              },
+                              "environments": {
+                                "items": {
+                                  "type": "string"
+                                },
+                                "type": "array",
+                                "description": "Environments whose OIDC tokens this grant authorizes. Each entry is either a system environment slug (`production`, `preview`, `development`) or a custom environment ID (prefixed `env_`). Custom environments are matched against the token's `custom_environment_id` claim (the stable ID); system environments against its `environment` claim."
+                              },
+                              "tokenClaims": {
+                                "additionalProperties": true,
+                                "type": "object"
+                              },
+                              "createdAt": {
+                                "type": "string"
+                              },
+                              "updatedAt": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "createdAt",
+                              "environments",
+                              "kind",
+                              "projectId",
+                              "teamId",
+                              "updatedAt"
+                            ],
+                            "type": "object"
+                          },
+                          {
+                            "properties": {
+                              "kind": {
+                                "type": "string",
+                                "enum": [
+                                  "connex-grant"
+                                ]
+                              },
+                              "clientId": {
+                                "type": "string"
+                              },
+                              "tokenClaims": {
+                                "additionalProperties": true,
+                                "type": "object"
+                              },
+                              "createdAt": {
+                                "type": "string"
+                              },
+                              "updatedAt": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "clientId",
+                              "createdAt",
+                              "kind",
+                              "updatedAt"
+                            ],
+                            "type": "object"
+                          }
+                        ]
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "algorithm",
+                    "createdAt",
+                    "id",
+                    "name",
+                    "origin",
+                    "ownerId",
+                    "policies",
+                    "signingKeys",
+                    "updatedAt"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "The name of the issuer."
+                  },
+                  "algorithm": {
+                    "type": "string",
+                    "description": "The signing algorithm to use for the issuer.",
+                    "enum": [
+                      "RS256",
+                      "RS384",
+                      "RS512",
+                      "PS256",
+                      "PS384",
+                      "PS512",
+                      "ES256",
+                      "ES384",
+                      "ES512",
+                      "EdDSA"
+                    ],
+                    "default": "RS512"
+                  },
+                  "claimsSchema": {
+                    "type": "object",
+                    "description": "A JSON Schema used to validate the resolved token claims when signing tokens for this issuer.",
+                    "additionalProperties": true
+                  },
+                  "policy": {
+                    "oneOf": [
+                      {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "kind",
+                          "teamId",
+                          "projectId",
+                          "environments"
+                        ],
+                        "properties": {
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "project-grant"
+                            ]
+                          },
+                          "teamId": {
+                            "type": "string",
+                            "description": "The team ID for the project grant policy."
+                          },
+                          "projectId": {
+                            "type": "string",
+                            "description": "The project ID for the project grant policy."
+                          },
+                          "environments": {
+                            "type": "array",
+                            "description": "The environments for the project grant policy. Each entry is a system environment (production, preview, development) or a custom environment ID (env_...).",
+                            "items": {
+                              "type": "string",
+                              "pattern": "^(?:production|preview|development|env_.+)$"
+                            },
+                            "minItems": 1,
+                            "uniqueItems": true
+                          },
+                          "tokenClaims": {
+                            "type": "object",
+                            "description": "The claims that KMS should include in signed JWTs for this policy.",
+                            "additionalProperties": true
+                          }
+                        }
+                      },
+                      {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "kind",
+                          "clientId"
+                        ],
+                        "properties": {
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "connex-grant"
+                            ]
+                          },
+                          "clientId": {
+                            "type": "string",
+                            "description": "The Connex client ID for the Connex grant policy."
+                          },
+                          "tokenClaims": {
+                            "type": "object",
+                            "description": "The claims that KMS should include in signed JWTs for this policy.",
+                            "additionalProperties": true
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "importKey": {
+                    "type": "string",
+                    "description": "The PEM-encoded private key to use for the issuer."
+                  },
+                  "importKeyId": {
+                    "type": "string",
+                    "description": "The key id to use as the imported key's JWT/JWKS `kid`. Only allowed when `importKey` is provided. Not required to be unique; the addressable key id is the server-minted `keyId` returned in the response.",
+                    "maxLength": 128,
+                    "pattern": "^[A-Za-z0-9._-]+$"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/kms/issuers/{issuerId}/sign/message": {
+      "post": {
+        "description": "Sign a raw message with a KMS issuer's active signing key. Authenticate the request with a Vercel OIDC token in the `Authorization: Bearer` header; the issuer's policies decide which workloads are allowed to sign.",
+        "operationId": "signKmsMessage",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Sign a message",
+        "tags": [
+          "kms"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "signature": {
+                      "properties": {
+                        "payload": {
+                          "type": "string"
+                        },
+                        "signature": {
+                          "type": "string"
+                        },
+                        "header": {
+                          "properties": {
+                            "alg": {
+                              "type": "string",
+                              "description": "JWS \"alg\" (Algorithm) Header Parameter"
+                            },
+                            "b64": {
+                              "type": "boolean",
+                              "enum": [
+                                false,
+                                true
+                              ],
+                              "description": "This JWS Extension Header Parameter modifies the JWS Payload representation and the JWS Signing Input computation as per {@link https://www.rfc-editor.org/rfc/rfc7797 RFC7797}."
+                            },
+                            "crit": {
+                              "items": {
+                                "type": "string"
+                              },
+                              "type": "array",
+                              "description": "JWS \"crit\" (Critical) Header Parameter"
+                            },
+                            "kid": {
+                              "type": "string",
+                              "description": "\"kid\" (Key ID) Header Parameter"
+                            },
+                            "x5t": {
+                              "type": "string",
+                              "description": "\"x5t\" (X.509 Certificate SHA-1 Thumbprint) Header Parameter"
+                            },
+                            "x5c": {
+                              "items": {
+                                "type": "string"
+                              },
+                              "type": "array",
+                              "description": "\"x5c\" (X.509 Certificate Chain) Header Parameter"
+                            },
+                            "x5u": {
+                              "type": "string",
+                              "description": "\"x5u\" (X.509 URL) Header Parameter"
+                            },
+                            "jku": {
+                              "type": "string",
+                              "description": "\"jku\" (JWK Set URL) Header Parameter"
+                            },
+                            "jwk": {
+                              "properties": {
+                                "kty": {
+                                  "type": "string",
+                                  "description": "JWK \"kty\" (Key Type) Parameter"
+                                },
+                                "crv": {
+                                  "type": "string",
+                                  "description": "- EC JWK \"crv\" (Curve) Parameter - OKP JWK \"crv\" (The Subtype of Key Pair) Parameter"
+                                },
+                                "x": {
+                                  "type": "string",
+                                  "description": "- EC JWK \"x\" (X Coordinate) Parameter - OKP JWK \"x\" (The public key) Parameter"
+                                },
+                                "y": {
+                                  "type": "string",
+                                  "description": "EC JWK \"y\" (Y Coordinate) Parameter"
+                                },
+                                "e": {
+                                  "type": "string",
+                                  "description": "RSA JWK \"e\" (Exponent) Parameter"
+                                },
+                                "n": {
+                                  "type": "string",
+                                  "description": "RSA JWK \"n\" (Modulus) Parameter"
+                                },
+                                "alg": {
+                                  "type": "string",
+                                  "description": "JWK \"alg\" (Algorithm) Parameter"
+                                },
+                                "pub": {
+                                  "type": "string",
+                                  "description": "AKP JWK \"pub\" (Public Key) Parameter"
+                                }
+                              },
+                              "type": "object",
+                              "description": "\"jwk\" (JSON Web Key) Header Parameter"
+                            },
+                            "typ": {
+                              "type": "string",
+                              "description": "\"typ\" (Type) Header Parameter"
+                            },
+                            "cty": {
+                              "type": "string",
+                              "description": "\"cty\" (Content Type) Header Parameter"
+                            }
+                          },
+                          "type": "object",
+                          "description": "The \"header\" member MUST be present and contain the value JWS Unprotected Header when the JWS Unprotected Header value is non- empty; otherwise, it MUST be absent. This value is represented as an unencoded JSON object, rather than as a string. These Header Parameter values are not integrity protected."
+                        },
+                        "protected": {
+                          "type": "string",
+                          "description": "The \"protected\" member MUST be present and contain the value BASE64URL(UTF8(JWS Protected Header)) when the JWS Protected Header value is non-empty; otherwise, it MUST be absent. These Header Parameter values are integrity protected."
+                        }
+                      },
+                      "required": [
+                        "payload",
+                        "signature"
+                      ],
+                      "type": "object",
+                      "description": "Flattened JWS JSON Serialization Syntax token. Payload is returned as an empty string when JWS Unencoded Payload ({@link https://www.rfc-editor.org/rfc/rfc7797 RFC7797}) is used."
+                    }
+                  },
+                  "required": [
+                    "signature"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": ""
+          },
+          "403": {
+            "description": ""
+          },
+          "404": {
+            "description": ""
+          },
+          "429": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "issuerId",
+            "description": "The ID of the issuer.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The ID of the issuer."
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "message"
+                ],
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "description": "Base64-encoded message to be signed.",
+                    "maxLength": 44000,
+                    "pattern": "^[A-Za-z0-9+/]*={0,2}$"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/kms/issuers/{issuerId}/sign/token": {
+      "post": {
+        "description": "Sign a JWT with a KMS issuer's active signing key. Authenticate the request with a Vercel OIDC token in the `Authorization: Bearer` header; the issuer's policies decide which workloads are allowed to sign.",
+        "operationId": "signKmsToken",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Sign a token",
+        "tags": [
+          "kms"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "token": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "token"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": ""
+          },
+          "403": {
+            "description": ""
+          },
+          "404": {
+            "description": ""
+          },
+          "429": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "issuerId",
+            "description": "The ID of the issuer.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The ID of the issuer."
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "claims": {
+                    "type": "object",
+                    "description": "The claims to include in the token.",
+                    "maxProperties": 128
+                  },
+                  "headers": {
+                    "type": "object",
+                    "description": "Additional headers to include in the token.",
+                    "maxProperties": 64
+                  },
+                  "ttl": {
+                    "type": "number",
+                    "description": "The time-to-live for the token, in seconds.",
+                    "default": 300,
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/kms/issuers/{issuerId}/keys": {
+      "post": {
+        "description": "Create a new signing key for a KMS issuer. Depending on the activation mode, the key is activated automatically once its public key has propagated, or manually via the activate endpoint.",
+        "operationId": "createKmsSigningKey",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Create a signing key",
+        "tags": [
+          "kms"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "keyId": {
+                      "type": "string",
+                      "description": "The server-minted, unique record identifier. Use this to address the key on the activate / certificate endpoints."
+                    },
+                    "importKeyId": {
+                      "type": "string",
+                      "description": "The caller-supplied key id (imported keys only), used as the JWT/JWKS `kid`. Not unique across an issuer's keys; omitted for generated keys."
+                    },
+                    "issuerId": {
+                      "type": "string"
+                    },
+                    "algorithm": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "active",
+                        "pending",
+                        "revoking"
+                      ]
+                    },
+                    "publicKey": {
+                      "properties": {
+                        "kty": {
+                          "type": "string"
+                        },
+                        "kid": {
+                          "type": "string"
+                        },
+                        "alg": {
+                          "type": "string"
+                        },
+                        "use": {
+                          "type": "string"
+                        },
+                        "key_ops": {
+                          "items": {
+                            "type": "string"
+                          },
+                          "type": "array"
+                        },
+                        "x5c": {
+                          "items": {
+                            "type": "string"
+                          },
+                          "type": "array",
+                          "description": "The X.509 certificate chain (RFC 7517 §4.7). Each entry is the base64 DER (not base64url) of a certificate. For keys minted with a stored certificate this holds the single self-signed cert as `[x5c]`."
+                        },
+                        "x5t#S256": {
+                          "type": "string",
+                          "description": "The base64url SHA-256 thumbprint of the DER certificate in `x5c[0]` (RFC 7517 §4.9)."
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "publicKeyFingerprint": {
+                      "type": "string"
+                    },
+                    "publicKeyPem": {
+                      "type": "string",
+                      "description": "The public key in SPKI PEM form, ready to render. Present whenever the key has public key material. Derived from `publicKey`; the embedded certificate members (`x5c`/`x5t#S256`) do not affect it."
+                    },
+                    "certificatePem": {
+                      "type": "string",
+                      "description": "The stored X.509 certificate (from `publicKey.x5c[0]`) in PEM form, ready to render. Present only for keys created with a stored certificate; omitted for keys created before certificates were stored."
+                    },
+                    "createdAt": {
+                      "type": "string"
+                    },
+                    "updatedAt": {
+                      "type": "string"
+                    },
+                    "revokeAt": {
+                      "type": "string"
+                    },
+                    "activateAt": {
+                      "type": "string"
+                    },
+                    "activatedAt": {
+                      "type": "string",
+                      "description": "When the key became the active signer. Present for active and revoking keys (and absent for pending keys and rows predating this field)."
+                    }
+                  },
+                  "required": [
+                    "algorithm",
+                    "createdAt",
+                    "issuerId",
+                    "keyId",
+                    "status",
+                    "updatedAt"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          },
+          "409": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "issuerId",
+            "description": "The ID of the issuer.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The ID of the issuer."
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "activation": {
+                    "type": "string",
+                    "enum": [
+                      "automatic",
+                      "manual"
+                    ],
+                    "description": "Whether the new key is activated automatically after its public key has propagated, or manually via the activate endpoint. Defaults to `automatic`."
+                  },
+                  "revokePreviousAfterHours": {
+                    "type": "number",
+                    "minimum": 0,
+                    "description": "For automatic activation, how many hours after activation the previous signing key should stop being used. Defaults to a 1 hour grace period so already-issued tokens keep verifying."
+                  },
+                  "revokePreviousAt": {
+                    "description": "Deprecated. The ISO date string or timestamp when the previous signing key should stop being used. Converted to a relative grace and applied at activation, not creation. Prefer revokePreviousAfterHours.",
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  "importKey": {
+                    "type": "string",
+                    "description": "The PEM-encoded private key to use for the issuer."
+                  },
+                  "importKeyId": {
+                    "type": "string",
+                    "description": "The key id to use as the imported key's JWT/JWKS `kid`. Only allowed when `importKey` is provided. Not required to be unique; the addressable key id is the server-minted `keyId` returned in the response.",
+                    "maxLength": 128,
+                    "pattern": "^[A-Za-z0-9._-]+$"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/kms/issuers/{issuerId}/keys/{keyId}/activate": {
+      "post": {
+        "description": "Activate a pending signing key so the issuer starts signing with it.",
+        "operationId": "activateKmsSigningKey",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Activate a signing key",
+        "tags": [
+          "kms"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "keyId": {
+                      "type": "string",
+                      "description": "The server-minted, unique record identifier. Use this to address the key on the activate / certificate endpoints."
+                    },
+                    "importKeyId": {
+                      "type": "string",
+                      "description": "The caller-supplied key id (imported keys only), used as the JWT/JWKS `kid`. Not unique across an issuer's keys; omitted for generated keys."
+                    },
+                    "issuerId": {
+                      "type": "string"
+                    },
+                    "algorithm": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "active",
+                        "pending",
+                        "revoking"
+                      ]
+                    },
+                    "publicKey": {
+                      "properties": {
+                        "kty": {
+                          "type": "string"
+                        },
+                        "kid": {
+                          "type": "string"
+                        },
+                        "alg": {
+                          "type": "string"
+                        },
+                        "use": {
+                          "type": "string"
+                        },
+                        "key_ops": {
+                          "items": {
+                            "type": "string"
+                          },
+                          "type": "array"
+                        },
+                        "x5c": {
+                          "items": {
+                            "type": "string"
+                          },
+                          "type": "array",
+                          "description": "The X.509 certificate chain (RFC 7517 §4.7). Each entry is the base64 DER (not base64url) of a certificate. For keys minted with a stored certificate this holds the single self-signed cert as `[x5c]`."
+                        },
+                        "x5t#S256": {
+                          "type": "string",
+                          "description": "The base64url SHA-256 thumbprint of the DER certificate in `x5c[0]` (RFC 7517 §4.9)."
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "publicKeyFingerprint": {
+                      "type": "string"
+                    },
+                    "publicKeyPem": {
+                      "type": "string",
+                      "description": "The public key in SPKI PEM form, ready to render. Present whenever the key has public key material. Derived from `publicKey`; the embedded certificate members (`x5c`/`x5t#S256`) do not affect it."
+                    },
+                    "certificatePem": {
+                      "type": "string",
+                      "description": "The stored X.509 certificate (from `publicKey.x5c[0]`) in PEM form, ready to render. Present only for keys created with a stored certificate; omitted for keys created before certificates were stored."
+                    },
+                    "createdAt": {
+                      "type": "string"
+                    },
+                    "updatedAt": {
+                      "type": "string"
+                    },
+                    "revokeAt": {
+                      "type": "string"
+                    },
+                    "activateAt": {
+                      "type": "string"
+                    },
+                    "activatedAt": {
+                      "type": "string",
+                      "description": "When the key became the active signer. Present for active and revoking keys (and absent for pending keys and rows predating this field)."
+                    }
+                  },
+                  "required": [
+                    "algorithm",
+                    "createdAt",
+                    "issuerId",
+                    "keyId",
+                    "status",
+                    "updatedAt"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          },
+          "409": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "issuerId",
+            "description": "The ID of the issuer.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The ID of the issuer."
+            }
+          },
+          {
+            "name": "keyId",
+            "description": "The ID of the pending signing key to activate.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The ID of the pending signing key to activate."
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "revokePreviousAfterHours": {
+                    "type": "number",
+                    "minimum": 0,
+                    "description": "How many hours after activation the previously-active key should stop being used. Defaults to a 1 hour grace period so already-issued tokens keep verifying."
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/kms/issuers/{issuerId}/keys/{keyId}/revoke": {
+      "post": {
+        "description": "Immediately revoke a signing key that is already scheduled for revocation.",
+        "operationId": "revokeKmsSigningKey",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Revoke a signing key",
+        "tags": [
+          "kms"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "ownerId": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "algorithm": {
+                      "type": "string",
+                      "enum": [
+                        "ES256",
+                        "ES384",
+                        "ES512",
+                        "EdDSA",
+                        "PS256",
+                        "PS384",
+                        "PS512",
+                        "RS256",
+                        "RS384",
+                        "RS512"
+                      ]
+                    },
+                    "origin": {
+                      "type": "string",
+                      "enum": [
+                        "external",
+                        "vercel"
+                      ]
+                    },
+                    "managedBy": {
+                      "type": "string"
+                    },
+                    "claimsSchema": {
+                      "additionalProperties": true,
+                      "type": "object"
+                    },
+                    "createdAt": {
+                      "type": "string"
+                    },
+                    "updatedAt": {
+                      "type": "string"
+                    },
+                    "signingKeys": {
+                      "items": {
+                        "properties": {
+                          "keyId": {
+                            "type": "string",
+                            "description": "The server-minted, unique record identifier. Use this to address the key on the activate / certificate endpoints."
+                          },
+                          "importKeyId": {
+                            "type": "string",
+                            "description": "The caller-supplied key id (imported keys only), used as the JWT/JWKS `kid`. Not unique across an issuer's keys; omitted for generated keys."
+                          },
+                          "issuerId": {
+                            "type": "string"
+                          },
+                          "algorithm": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "active",
+                              "pending",
+                              "revoking"
+                            ]
+                          },
+                          "publicKey": {
+                            "properties": {
+                              "kty": {
+                                "type": "string"
+                              },
+                              "kid": {
+                                "type": "string"
+                              },
+                              "alg": {
+                                "type": "string"
+                              },
+                              "use": {
+                                "type": "string"
+                              },
+                              "key_ops": {
+                                "items": {
+                                  "type": "string"
+                                },
+                                "type": "array"
+                              },
+                              "x5c": {
+                                "items": {
+                                  "type": "string"
+                                },
+                                "type": "array",
+                                "description": "The X.509 certificate chain (RFC 7517 §4.7). Each entry is the base64 DER (not base64url) of a certificate. For keys minted with a stored certificate this holds the single self-signed cert as `[x5c]`."
+                              },
+                              "x5t#S256": {
+                                "type": "string",
+                                "description": "The base64url SHA-256 thumbprint of the DER certificate in `x5c[0]` (RFC 7517 §4.9)."
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "publicKeyFingerprint": {
+                            "type": "string"
+                          },
+                          "publicKeyPem": {
+                            "type": "string",
+                            "description": "The public key in SPKI PEM form, ready to render. Present whenever the key has public key material. Derived from `publicKey`; the embedded certificate members (`x5c`/`x5t#S256`) do not affect it."
+                          },
+                          "certificatePem": {
+                            "type": "string",
+                            "description": "The stored X.509 certificate (from `publicKey.x5c[0]`) in PEM form, ready to render. Present only for keys created with a stored certificate; omitted for keys created before certificates were stored."
+                          },
+                          "createdAt": {
+                            "type": "string"
+                          },
+                          "updatedAt": {
+                            "type": "string"
+                          },
+                          "revokeAt": {
+                            "type": "string"
+                          },
+                          "activateAt": {
+                            "type": "string"
+                          },
+                          "activatedAt": {
+                            "type": "string",
+                            "description": "When the key became the active signer. Present for active and revoking keys (and absent for pending keys and rows predating this field)."
+                          }
+                        },
+                        "required": [
+                          "algorithm",
+                          "createdAt",
+                          "issuerId",
+                          "keyId",
+                          "status",
+                          "updatedAt"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "policies": {
+                      "items": {
+                        "oneOf": [
+                          {
+                            "properties": {
+                              "kind": {
+                                "type": "string",
+                                "enum": [
+                                  "project-grant"
+                                ]
+                              },
+                              "teamId": {
+                                "type": "string"
+                              },
+                              "projectId": {
+                                "type": "string"
+                              },
+                              "environments": {
+                                "items": {
+                                  "type": "string"
+                                },
+                                "type": "array",
+                                "description": "Environments whose OIDC tokens this grant authorizes. Each entry is either a system environment slug (`production`, `preview`, `development`) or a custom environment ID (prefixed `env_`). Custom environments are matched against the token's `custom_environment_id` claim (the stable ID); system environments against its `environment` claim."
+                              },
+                              "tokenClaims": {
+                                "additionalProperties": true,
+                                "type": "object"
+                              },
+                              "createdAt": {
+                                "type": "string"
+                              },
+                              "updatedAt": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "createdAt",
+                              "environments",
+                              "kind",
+                              "projectId",
+                              "teamId",
+                              "updatedAt"
+                            ],
+                            "type": "object"
+                          },
+                          {
+                            "properties": {
+                              "kind": {
+                                "type": "string",
+                                "enum": [
+                                  "connex-grant"
+                                ]
+                              },
+                              "clientId": {
+                                "type": "string"
+                              },
+                              "tokenClaims": {
+                                "additionalProperties": true,
+                                "type": "object"
+                              },
+                              "createdAt": {
+                                "type": "string"
+                              },
+                              "updatedAt": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "clientId",
+                              "createdAt",
+                              "kind",
+                              "updatedAt"
+                            ],
+                            "type": "object"
+                          }
+                        ]
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "algorithm",
+                    "createdAt",
+                    "id",
+                    "name",
+                    "origin",
+                    "ownerId",
+                    "policies",
+                    "signingKeys",
+                    "updatedAt"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          },
+          "409": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "issuerId",
+            "description": "The ID of the issuer.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The ID of the issuer."
+            }
+          },
+          {
+            "name": "keyId",
+            "description": "The ID of the signing key to revoke immediately. The key must already be scheduled for revocation.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The ID of the signing key to revoke immediately. The key must already be scheduled for revocation."
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ]
+      }
+    },
+    "/v1/kms/issuers/{issuerId}": {
+      "get": {
+        "description": "Retrieve a single KMS issuer by its ID.",
+        "operationId": "getKmsIssuer",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Get an issuer",
+        "tags": [
+          "kms"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "ownerId": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "algorithm": {
+                      "type": "string",
+                      "enum": [
+                        "ES256",
+                        "ES384",
+                        "ES512",
+                        "EdDSA",
+                        "PS256",
+                        "PS384",
+                        "PS512",
+                        "RS256",
+                        "RS384",
+                        "RS512"
+                      ]
+                    },
+                    "origin": {
+                      "type": "string",
+                      "enum": [
+                        "external",
+                        "vercel"
+                      ]
+                    },
+                    "managedBy": {
+                      "type": "string"
+                    },
+                    "claimsSchema": {
+                      "additionalProperties": true,
+                      "type": "object"
+                    },
+                    "createdAt": {
+                      "type": "string"
+                    },
+                    "updatedAt": {
+                      "type": "string"
+                    },
+                    "signingKeys": {
+                      "items": {
+                        "properties": {
+                          "keyId": {
+                            "type": "string",
+                            "description": "The server-minted, unique record identifier. Use this to address the key on the activate / certificate endpoints."
+                          },
+                          "importKeyId": {
+                            "type": "string",
+                            "description": "The caller-supplied key id (imported keys only), used as the JWT/JWKS `kid`. Not unique across an issuer's keys; omitted for generated keys."
+                          },
+                          "issuerId": {
+                            "type": "string"
+                          },
+                          "algorithm": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "active",
+                              "pending",
+                              "revoking"
+                            ]
+                          },
+                          "publicKey": {
+                            "properties": {
+                              "kty": {
+                                "type": "string"
+                              },
+                              "kid": {
+                                "type": "string"
+                              },
+                              "alg": {
+                                "type": "string"
+                              },
+                              "use": {
+                                "type": "string"
+                              },
+                              "key_ops": {
+                                "items": {
+                                  "type": "string"
+                                },
+                                "type": "array"
+                              },
+                              "x5c": {
+                                "items": {
+                                  "type": "string"
+                                },
+                                "type": "array",
+                                "description": "The X.509 certificate chain (RFC 7517 §4.7). Each entry is the base64 DER (not base64url) of a certificate. For keys minted with a stored certificate this holds the single self-signed cert as `[x5c]`."
+                              },
+                              "x5t#S256": {
+                                "type": "string",
+                                "description": "The base64url SHA-256 thumbprint of the DER certificate in `x5c[0]` (RFC 7517 §4.9)."
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "publicKeyFingerprint": {
+                            "type": "string"
+                          },
+                          "publicKeyPem": {
+                            "type": "string",
+                            "description": "The public key in SPKI PEM form, ready to render. Present whenever the key has public key material. Derived from `publicKey`; the embedded certificate members (`x5c`/`x5t#S256`) do not affect it."
+                          },
+                          "certificatePem": {
+                            "type": "string",
+                            "description": "The stored X.509 certificate (from `publicKey.x5c[0]`) in PEM form, ready to render. Present only for keys created with a stored certificate; omitted for keys created before certificates were stored."
+                          },
+                          "createdAt": {
+                            "type": "string"
+                          },
+                          "updatedAt": {
+                            "type": "string"
+                          },
+                          "revokeAt": {
+                            "type": "string"
+                          },
+                          "activateAt": {
+                            "type": "string"
+                          },
+                          "activatedAt": {
+                            "type": "string",
+                            "description": "When the key became the active signer. Present for active and revoking keys (and absent for pending keys and rows predating this field)."
+                          }
+                        },
+                        "required": [
+                          "algorithm",
+                          "createdAt",
+                          "issuerId",
+                          "keyId",
+                          "status",
+                          "updatedAt"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "policies": {
+                      "items": {
+                        "oneOf": [
+                          {
+                            "properties": {
+                              "kind": {
+                                "type": "string",
+                                "enum": [
+                                  "project-grant"
+                                ]
+                              },
+                              "teamId": {
+                                "type": "string"
+                              },
+                              "projectId": {
+                                "type": "string"
+                              },
+                              "environments": {
+                                "items": {
+                                  "type": "string"
+                                },
+                                "type": "array",
+                                "description": "Environments whose OIDC tokens this grant authorizes. Each entry is either a system environment slug (`production`, `preview`, `development`) or a custom environment ID (prefixed `env_`). Custom environments are matched against the token's `custom_environment_id` claim (the stable ID); system environments against its `environment` claim."
+                              },
+                              "tokenClaims": {
+                                "additionalProperties": true,
+                                "type": "object"
+                              },
+                              "createdAt": {
+                                "type": "string"
+                              },
+                              "updatedAt": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "createdAt",
+                              "environments",
+                              "kind",
+                              "projectId",
+                              "teamId",
+                              "updatedAt"
+                            ],
+                            "type": "object"
+                          },
+                          {
+                            "properties": {
+                              "kind": {
+                                "type": "string",
+                                "enum": [
+                                  "connex-grant"
+                                ]
+                              },
+                              "clientId": {
+                                "type": "string"
+                              },
+                              "tokenClaims": {
+                                "additionalProperties": true,
+                                "type": "object"
+                              },
+                              "createdAt": {
+                                "type": "string"
+                              },
+                              "updatedAt": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "clientId",
+                              "createdAt",
+                              "kind",
+                              "updatedAt"
+                            ],
+                            "type": "object"
+                          }
+                        ]
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "algorithm",
+                    "createdAt",
+                    "id",
+                    "name",
+                    "origin",
+                    "ownerId",
+                    "policies",
+                    "signingKeys",
+                    "updatedAt"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "issuerId",
+            "description": "The ID of the issuer.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The ID of the issuer."
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ]
+      },
+      "patch": {
+        "description": "Update a KMS issuer's name or claims schema.",
+        "operationId": "updateKmsIssuer",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Update an issuer",
+        "tags": [
+          "kms"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "ownerId": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "algorithm": {
+                      "type": "string",
+                      "enum": [
+                        "ES256",
+                        "ES384",
+                        "ES512",
+                        "EdDSA",
+                        "PS256",
+                        "PS384",
+                        "PS512",
+                        "RS256",
+                        "RS384",
+                        "RS512"
+                      ]
+                    },
+                    "origin": {
+                      "type": "string",
+                      "enum": [
+                        "external",
+                        "vercel"
+                      ]
+                    },
+                    "managedBy": {
+                      "type": "string"
+                    },
+                    "claimsSchema": {
+                      "additionalProperties": true,
+                      "type": "object"
+                    },
+                    "createdAt": {
+                      "type": "string"
+                    },
+                    "updatedAt": {
+                      "type": "string"
+                    },
+                    "signingKeys": {
+                      "items": {
+                        "properties": {
+                          "keyId": {
+                            "type": "string",
+                            "description": "The server-minted, unique record identifier. Use this to address the key on the activate / certificate endpoints."
+                          },
+                          "importKeyId": {
+                            "type": "string",
+                            "description": "The caller-supplied key id (imported keys only), used as the JWT/JWKS `kid`. Not unique across an issuer's keys; omitted for generated keys."
+                          },
+                          "issuerId": {
+                            "type": "string"
+                          },
+                          "algorithm": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "active",
+                              "pending",
+                              "revoking"
+                            ]
+                          },
+                          "publicKey": {
+                            "properties": {
+                              "kty": {
+                                "type": "string"
+                              },
+                              "kid": {
+                                "type": "string"
+                              },
+                              "alg": {
+                                "type": "string"
+                              },
+                              "use": {
+                                "type": "string"
+                              },
+                              "key_ops": {
+                                "items": {
+                                  "type": "string"
+                                },
+                                "type": "array"
+                              },
+                              "x5c": {
+                                "items": {
+                                  "type": "string"
+                                },
+                                "type": "array",
+                                "description": "The X.509 certificate chain (RFC 7517 §4.7). Each entry is the base64 DER (not base64url) of a certificate. For keys minted with a stored certificate this holds the single self-signed cert as `[x5c]`."
+                              },
+                              "x5t#S256": {
+                                "type": "string",
+                                "description": "The base64url SHA-256 thumbprint of the DER certificate in `x5c[0]` (RFC 7517 §4.9)."
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "publicKeyFingerprint": {
+                            "type": "string"
+                          },
+                          "publicKeyPem": {
+                            "type": "string",
+                            "description": "The public key in SPKI PEM form, ready to render. Present whenever the key has public key material. Derived from `publicKey`; the embedded certificate members (`x5c`/`x5t#S256`) do not affect it."
+                          },
+                          "certificatePem": {
+                            "type": "string",
+                            "description": "The stored X.509 certificate (from `publicKey.x5c[0]`) in PEM form, ready to render. Present only for keys created with a stored certificate; omitted for keys created before certificates were stored."
+                          },
+                          "createdAt": {
+                            "type": "string"
+                          },
+                          "updatedAt": {
+                            "type": "string"
+                          },
+                          "revokeAt": {
+                            "type": "string"
+                          },
+                          "activateAt": {
+                            "type": "string"
+                          },
+                          "activatedAt": {
+                            "type": "string",
+                            "description": "When the key became the active signer. Present for active and revoking keys (and absent for pending keys and rows predating this field)."
+                          }
+                        },
+                        "required": [
+                          "algorithm",
+                          "createdAt",
+                          "issuerId",
+                          "keyId",
+                          "status",
+                          "updatedAt"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "policies": {
+                      "items": {
+                        "oneOf": [
+                          {
+                            "properties": {
+                              "kind": {
+                                "type": "string",
+                                "enum": [
+                                  "project-grant"
+                                ]
+                              },
+                              "teamId": {
+                                "type": "string"
+                              },
+                              "projectId": {
+                                "type": "string"
+                              },
+                              "environments": {
+                                "items": {
+                                  "type": "string"
+                                },
+                                "type": "array",
+                                "description": "Environments whose OIDC tokens this grant authorizes. Each entry is either a system environment slug (`production`, `preview`, `development`) or a custom environment ID (prefixed `env_`). Custom environments are matched against the token's `custom_environment_id` claim (the stable ID); system environments against its `environment` claim."
+                              },
+                              "tokenClaims": {
+                                "additionalProperties": true,
+                                "type": "object"
+                              },
+                              "createdAt": {
+                                "type": "string"
+                              },
+                              "updatedAt": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "createdAt",
+                              "environments",
+                              "kind",
+                              "projectId",
+                              "teamId",
+                              "updatedAt"
+                            ],
+                            "type": "object"
+                          },
+                          {
+                            "properties": {
+                              "kind": {
+                                "type": "string",
+                                "enum": [
+                                  "connex-grant"
+                                ]
+                              },
+                              "clientId": {
+                                "type": "string"
+                              },
+                              "tokenClaims": {
+                                "additionalProperties": true,
+                                "type": "object"
+                              },
+                              "createdAt": {
+                                "type": "string"
+                              },
+                              "updatedAt": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "clientId",
+                              "createdAt",
+                              "kind",
+                              "updatedAt"
+                            ],
+                            "type": "object"
+                          }
+                        ]
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "algorithm",
+                    "createdAt",
+                    "id",
+                    "name",
+                    "origin",
+                    "ownerId",
+                    "policies",
+                    "signingKeys",
+                    "updatedAt"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "issuerId",
+            "description": "The ID of the issuer.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The ID of the issuer."
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "minProperties": 1,
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "The name of the issuer."
+                  },
+                  "claimsSchema": {
+                    "type": "object",
+                    "description": "A JSON Schema used to validate the resolved token claims when signing tokens for this issuer. Pass null to remove it.",
+                    "additionalProperties": true,
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete a KMS issuer and its signing keys.",
+        "operationId": "deleteKmsIssuer",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Delete an issuer",
+        "tags": [
+          "kms"
+        ],
+        "responses": {
+          "204": {
+            "description": ""
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "issuerId",
+            "description": "The ID of the issuer.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The ID of the issuer."
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ]
+      }
+    },
+    "/v1/kms/issuers/{issuerId}/policies": {
+      "post": {
+        "description": "Attach a policy to a KMS issuer that grants a project's deployments permission to sign with it.",
+        "operationId": "createKmsIssuerPolicy",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Create an issuer policy",
+        "tags": [
+          "kms"
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "properties": {
+                        "kind": {
+                          "type": "string",
+                          "enum": [
+                            "project-grant"
+                          ]
+                        },
+                        "teamId": {
+                          "type": "string"
+                        },
+                        "projectId": {
+                          "type": "string"
+                        },
+                        "environments": {
+                          "items": {
+                            "type": "string"
+                          },
+                          "type": "array",
+                          "description": "Environments whose OIDC tokens this grant authorizes. Each entry is either a system environment slug (`production`, `preview`, `development`) or a custom environment ID (prefixed `env_`). Custom environments are matched against the token's `custom_environment_id` claim (the stable ID); system environments against its `environment` claim."
+                        },
+                        "tokenClaims": {
+                          "additionalProperties": true,
+                          "type": "object"
+                        },
+                        "createdAt": {
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "createdAt",
+                        "environments",
+                        "kind",
+                        "projectId",
+                        "teamId",
+                        "updatedAt"
+                      ],
+                      "type": "object"
+                    },
+                    {
+                      "properties": {
+                        "kind": {
+                          "type": "string",
+                          "enum": [
+                            "connex-grant"
+                          ]
+                        },
+                        "clientId": {
+                          "type": "string"
+                        },
+                        "tokenClaims": {
+                          "additionalProperties": true,
+                          "type": "object"
+                        },
+                        "createdAt": {
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "clientId",
+                        "createdAt",
+                        "kind",
+                        "updatedAt"
+                      ],
+                      "type": "object"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "issuerId",
+            "description": "The ID of the issuer.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The ID of the issuer."
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "kind",
+                  "projectId",
+                  "environments"
+                ],
+                "properties": {
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "project-grant"
+                    ]
+                  },
+                  "projectId": {
+                    "type": "string",
+                    "description": "The project ID for the project grant policy."
+                  },
+                  "environments": {
+                    "type": "array",
+                    "description": "The environments for the project grant policy. Each entry is a system environment (production, preview, development) or a custom environment ID (env_...).",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^(?:production|preview|development|env_.+)$"
+                    },
+                    "minItems": 1,
+                    "uniqueItems": true
+                  },
+                  "tokenClaims": {
+                    "type": "object",
+                    "description": "The claims that KMS should include in signed JWTs for this policy.",
+                    "additionalProperties": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/kms/issuers/{issuerId}/policies/{kind}/{policyKey}": {
+      "patch": {
+        "description": "Update an existing KMS issuer policy's environments or token claims.",
+        "operationId": "updateKmsIssuerPolicy",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Update an issuer policy",
+        "tags": [
+          "kms"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "properties": {
+                        "kind": {
+                          "type": "string",
+                          "enum": [
+                            "project-grant"
+                          ]
+                        },
+                        "teamId": {
+                          "type": "string"
+                        },
+                        "projectId": {
+                          "type": "string"
+                        },
+                        "environments": {
+                          "items": {
+                            "type": "string"
+                          },
+                          "type": "array",
+                          "description": "Environments whose OIDC tokens this grant authorizes. Each entry is either a system environment slug (`production`, `preview`, `development`) or a custom environment ID (prefixed `env_`). Custom environments are matched against the token's `custom_environment_id` claim (the stable ID); system environments against its `environment` claim."
+                        },
+                        "tokenClaims": {
+                          "additionalProperties": true,
+                          "type": "object"
+                        },
+                        "createdAt": {
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "createdAt",
+                        "environments",
+                        "kind",
+                        "projectId",
+                        "teamId",
+                        "updatedAt"
+                      ],
+                      "type": "object"
+                    },
+                    {
+                      "properties": {
+                        "kind": {
+                          "type": "string",
+                          "enum": [
+                            "connex-grant"
+                          ]
+                        },
+                        "clientId": {
+                          "type": "string"
+                        },
+                        "tokenClaims": {
+                          "additionalProperties": true,
+                          "type": "object"
+                        },
+                        "createdAt": {
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "clientId",
+                        "createdAt",
+                        "kind",
+                        "updatedAt"
+                      ],
+                      "type": "object"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "issuerId",
+            "description": "The ID of the issuer.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The ID of the issuer."
+            }
+          },
+          {
+            "name": "kind",
+            "description": "The issuer policy kind.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "project-grant"
+              ],
+              "description": "The issuer policy kind."
+            }
+          },
+          {
+            "name": "policyKey",
+            "description": "The policy identifier.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The policy identifier."
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "environments": {
+                    "type": "array",
+                    "description": "The environments for the project grant policy. Each entry is a system environment (production, preview, development) or a custom environment ID (env_...).",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^(?:production|preview|development|env_.+)$"
+                    },
+                    "minItems": 1,
+                    "uniqueItems": true
+                  },
+                  "tokenClaims": {
+                    "type": "object",
+                    "description": "The claims that KMS should include in signed JWTs for this policy. Pass null to remove them.",
+                    "additionalProperties": true,
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Remove a policy from a KMS issuer.",
+        "operationId": "deleteKmsIssuerPolicy",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Delete an issuer policy",
+        "tags": [
+          "kms"
+        ],
+        "responses": {
+          "204": {
+            "description": ""
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "issuerId",
+            "description": "The ID of the issuer.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The ID of the issuer."
+            }
+          },
+          {
+            "name": "kind",
+            "description": "The issuer policy kind.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "project-grant",
+                "connex-grant"
+              ],
+              "description": "The issuer policy kind."
+            }
+          },
+          {
+            "name": "policyKey",
+            "description": "The policy identifier.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The policy identifier."
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ]
+      }
+    },
     "/v1/projects/{projectId}/deployments/{deploymentId}/runtime-logs": {
       "get": {
         "description": "Returns a stream of logs for a given deployment.",
@@ -78488,6 +80982,7 @@
                               "region": {
                                 "type": "string",
                                 "enum": [
+                                  "cdg1",
                                   "cle1",
                                   "iad1",
                                   "sfo1"
@@ -78497,6 +80992,7 @@
                                 "items": {
                                   "type": "string",
                                   "enum": [
+                                    "cdg1",
                                     "cle1",
                                     "iad1",
                                     "sfo1"
@@ -79753,6 +82249,12 @@
                                 "type": "array"
                               },
                               "connexClientProject": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "connexContact": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
                                 },
@@ -102565,6 +105067,7 @@
                                   "region": {
                                     "type": "string",
                                     "enum": [
+                                      "cdg1",
                                       "cle1",
                                       "iad1",
                                       "sfo1"
@@ -102574,6 +105077,7 @@
                                     "items": {
                                       "type": "string",
                                       "enum": [
+                                        "cdg1",
                                         "cle1",
                                         "iad1",
                                         "sfo1"
@@ -103830,6 +106334,12 @@
                                     "type": "array"
                                   },
                                   "connexClientProject": {
+                                    "items": {
+                                      "$ref": "#/components/schemas/ACLAction"
+                                    },
+                                    "type": "array"
+                                  },
+                                  "connexContact": {
                                     "items": {
                                       "$ref": "#/components/schemas/ACLAction"
                                     },
@@ -110692,6 +113202,7 @@
                         "region": {
                           "type": "string",
                           "enum": [
+                            "cdg1",
                             "cle1",
                             "iad1",
                             "sfo1"
@@ -110701,6 +113212,7 @@
                           "items": {
                             "type": "string",
                             "enum": [
+                              "cdg1",
                               "cle1",
                               "iad1",
                               "sfo1"
@@ -111957,6 +114469,12 @@
                           "type": "array"
                         },
                         "connexClientProject": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "connexContact": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -118979,6 +121497,7 @@
                         "region": {
                           "type": "string",
                           "enum": [
+                            "cdg1",
                             "cle1",
                             "iad1",
                             "sfo1"
@@ -118988,6 +121507,7 @@
                           "items": {
                             "type": "string",
                             "enum": [
+                              "cdg1",
                               "cle1",
                               "iad1",
                               "sfo1"
@@ -120244,6 +122764,12 @@
                           "type": "array"
                         },
                         "connexClientProject": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "connexContact": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -126624,6 +129150,7 @@
                         "region": {
                           "type": "string",
                           "enum": [
+                            "cdg1",
                             "cle1",
                             "iad1",
                             "sfo1"
@@ -126633,6 +129160,7 @@
                           "items": {
                             "type": "string",
                             "enum": [
+                              "cdg1",
                               "cle1",
                               "iad1",
                               "sfo1"
@@ -127889,6 +130417,12 @@
                           "type": "array"
                         },
                         "connexClientProject": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "connexContact": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -135533,6 +138067,7 @@
                         "region": {
                           "type": "string",
                           "enum": [
+                            "cdg1",
                             "cle1",
                             "iad1",
                             "sfo1"
@@ -135542,6 +138077,7 @@
                           "items": {
                             "type": "string",
                             "enum": [
+                              "cdg1",
                               "cle1",
                               "iad1",
                               "sfo1"
@@ -136798,6 +139334,12 @@
                           "type": "array"
                         },
                         "connexClientProject": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "connexContact": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -155950,6 +158492,7 @@
                         "region": {
                           "type": "string",
                           "enum": [
+                            "cdg1",
                             "cle1",
                             "iad1",
                             "sfo1"
@@ -155959,6 +158502,7 @@
                           "items": {
                             "type": "string",
                             "enum": [
+                              "cdg1",
                               "cle1",
                               "iad1",
                               "sfo1"
@@ -157215,6 +159759,12 @@
                           "type": "array"
                         },
                         "connexClientProject": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "connexContact": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -160644,6 +163194,9 @@
           },
           "410": {
             "description": ""
+          },
+          "422": {
+            "description": ""
           }
         },
         "parameters": [
@@ -162203,7 +164756,8 @@
                     "enum": [
                       "iad1",
                       "sfo1",
-                      "cle1"
+                      "cle1",
+                      "cdg1"
                     ],
                     "default": "iad1",
                     "example": "iad1"
@@ -206877,6 +209431,9 @@
               "env-variable-read:unknown-source",
               "env-variable-read:v0:env:pull",
               "env-variable-rotated",
+              "experiment-created",
+              "experiment-transitioned",
+              "experiment-updated",
               "firewall-bypass-created",
               "firewall-bypass-deleted",
               "firewall-config-modified",
@@ -207626,6 +210183,42 @@
                   "id",
                   "projectId",
                   "slug"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "created",
+                      "transitioned",
+                      "updated"
+                    ]
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "state": {
+                    "type": "string"
+                  },
+                  "projectId": {
+                    "type": "string"
+                  },
+                  "projectName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "action",
+                  "id",
+                  "name",
+                  "projectId",
+                  "state"
                 ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
@@ -218449,6 +221042,32 @@
                             "type": "object"
                           },
                           "workflowEvents": {
+                            "properties": {
+                              "updatedAt": {
+                                "type": "number"
+                              },
+                              "blockedFrom": {
+                                "type": "number"
+                              },
+                              "blockedUntil": {
+                                "type": "number"
+                              },
+                              "blockReason": {
+                                "type": "string",
+                                "enum": [
+                                  "admin_override",
+                                  "hard_blocked",
+                                  "limits_exceeded"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "blockReason",
+                              "updatedAt"
+                            ],
+                            "type": "object"
+                          },
+                          "connexForwardTriggers": {
                             "properties": {
                               "updatedAt": {
                                 "type": "number"
@@ -230412,6 +233031,9 @@
               "env-variable-read:unknown-source",
               "env-variable-read:v0:env:pull",
               "env-variable-rotated",
+              "experiment-created",
+              "experiment-transitioned",
+              "experiment-updated",
               "firewall-bypass-created",
               "firewall-bypass-deleted",
               "firewall-config-modified",
@@ -231106,6 +233728,9 @@
                 "env-variable-read:unknown-source",
                 "env-variable-read:v0:env:pull",
                 "env-variable-rotated",
+                "experiment-created",
+                "experiment-transitioned",
+                "experiment-updated",
                 "firewall-bypass-created",
                 "firewall-bypass-deleted",
                 "firewall-config-modified",
@@ -231601,209 +234226,6 @@
           "description": {
             "type": "string"
           },
-          "maintainerIds": {
-            "items": {
-              "type": "string"
-            },
-            "type": "array"
-          },
-          "permanent": {
-            "type": "boolean",
-            "enum": [
-              false,
-              true
-            ]
-          },
-          "tags": {
-            "items": {
-              "type": "string"
-            },
-            "type": "array"
-          },
-          "experiment": {
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "numVariants": {
-                "type": "number"
-              },
-              "surfaceArea": {
-                "type": "string"
-              },
-              "stickyRequirement": {
-                "type": "boolean",
-                "enum": [
-                  false,
-                  true
-                ]
-              },
-              "layer": {
-                "type": "string"
-              },
-              "guardrailMetrics": {
-                "items": {
-                  "properties": {
-                    "description": {
-                      "type": "string"
-                    },
-                    "metricFormula": {
-                      "type": "string"
-                    },
-                    "name": {
-                      "type": "string"
-                    },
-                    "metricType": {
-                      "type": "string",
-                      "enum": [
-                        "count",
-                        "currency",
-                        "percentage"
-                      ]
-                    },
-                    "metricUnit": {
-                      "type": "string",
-                      "enum": [
-                        "session",
-                        "user",
-                        "visitor"
-                      ]
-                    },
-                    "directionality": {
-                      "type": "string",
-                      "enum": [
-                        "decreaseIsGood",
-                        "increaseIsGood"
-                      ]
-                    }
-                  },
-                  "required": [
-                    "directionality",
-                    "metricType",
-                    "metricUnit",
-                    "name"
-                  ],
-                  "type": "object"
-                },
-                "type": "array"
-              },
-              "hypothesis": {
-                "type": "string"
-              },
-              "device": {
-                "type": "string",
-                "enum": [
-                  "android",
-                  "desktop",
-                  "ios",
-                  "mweb"
-                ]
-              },
-              "controlVariantId": {
-                "type": "string"
-              },
-              "startedAt": {
-                "type": "number"
-              },
-              "endedAt": {
-                "type": "number"
-              },
-              "decision": {
-                "type": "string"
-              },
-              "decisionReason": {
-                "type": "string"
-              },
-              "duration": {
-                "type": "number"
-              },
-              "durationUnit": {
-                "type": "string",
-                "enum": [
-                  "days",
-                  "exposures"
-                ]
-              },
-              "allocationPercent": {
-                "type": "number"
-              },
-              "allocationUnit": {
-                "type": "string",
-                "enum": [
-                  "cookieId",
-                  "userId",
-                  "visitorId"
-                ]
-              },
-              "primaryMetrics": {
-                "items": {
-                  "properties": {
-                    "description": {
-                      "type": "string"
-                    },
-                    "metricFormula": {
-                      "type": "string"
-                    },
-                    "name": {
-                      "type": "string"
-                    },
-                    "metricType": {
-                      "type": "string",
-                      "enum": [
-                        "count",
-                        "currency",
-                        "percentage"
-                      ]
-                    },
-                    "metricUnit": {
-                      "type": "string",
-                      "enum": [
-                        "session",
-                        "user",
-                        "visitor"
-                      ]
-                    },
-                    "directionality": {
-                      "type": "string",
-                      "enum": [
-                        "decreaseIsGood",
-                        "increaseIsGood"
-                      ]
-                    }
-                  },
-                  "required": [
-                    "directionality",
-                    "metricType",
-                    "metricUnit",
-                    "name"
-                  ],
-                  "type": "object"
-                },
-                "type": "array"
-              },
-              "status": {
-                "type": "string",
-                "enum": [
-                  "closed",
-                  "draft",
-                  "paused",
-                  "running"
-                ]
-              }
-            },
-            "required": [
-              "allocationUnit",
-              "primaryMetrics",
-              "status"
-            ],
-            "type": "object"
-          },
-          "updatedBy": {
-            "type": "string"
-          },
           "variants": {
             "items": {
               "type": "object"
@@ -232021,6 +234443,20 @@
                         "type"
                       ],
                       "type": "object"
+                    },
+                    {
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "experiment"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "type"
+                      ],
+                      "type": "object"
                     }
                   ]
                 },
@@ -232173,6 +234609,20 @@
                               "rollToVariantId",
                               "slots",
                               "startTimestamp",
+                              "type"
+                            ],
+                            "type": "object"
+                          },
+                          {
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "experiment"
+                                ]
+                              }
+                            },
+                            "required": [
                               "type"
                             ],
                             "type": "object"
@@ -232410,6 +234860,25 @@
               "archived"
             ]
           },
+          "maintainerIds": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "permanent": {
+            "type": "boolean",
+            "enum": [
+              false,
+              true
+            ]
+          },
+          "tags": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
           "slug": {
             "type": "string"
           },
@@ -232418,6 +234887,9 @@
           },
           "updatedAt": {
             "type": "number"
+          },
+          "updatedBy": {
+            "type": "string"
           },
           "createdBy": {
             "type": "string"

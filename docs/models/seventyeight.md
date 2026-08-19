@@ -5,24 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { SeventyEight } from "@vercel/sdk/models/usereventpayloadrefreshperiod.js";
+import { SeventyEight } from "@vercel/sdk/models/eighteen.js";
 
 let value: SeventyEight = {
-  count: 9969.53,
-  documents: [
-    {
-      slug: "<value>",
-      documentId: "<id>",
-      title: "<value>",
-      fingerprint: "<value>",
-    },
-  ],
+  slug: "<value>",
+  documentId: "<id>",
+  title: "<value>",
+  fingerprint: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                        | Type                                         | Required                                     | Description                                  |
-| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| `count`                                      | *number*                                     | :heavy_check_mark:                           | N/A                                          |
-| `documents`                                  | [models.Documents](../models/documents.md)[] | :heavy_check_mark:                           | N/A                                          |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `slug`             | *string*           | :heavy_check_mark: | N/A                |
+| `documentId`       | *string*           | :heavy_check_mark: | N/A                |
+| `title`            | *string*           | :heavy_check_mark: | N/A                |
+| `fingerprint`      | *string*           | :heavy_check_mark: | N/A                |

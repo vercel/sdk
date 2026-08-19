@@ -10,7 +10,7 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
-export type Headers = {};
+export type StageRoutesHeaders = {};
 
 export const StageRoutesType = {
   Host: "host",
@@ -71,7 +71,7 @@ export type StageRoutesTransforms = {
 export type Route = {
   src: string;
   dest?: string | undefined;
-  headers?: Headers | undefined;
+  headers?: StageRoutesHeaders | undefined;
   caseSensitive?: boolean | undefined;
   status?: number | undefined;
   has?: Array<StageRoutesHas> | undefined;
@@ -152,17 +152,21 @@ export type StageRoutesResponseBody = {
 };
 
 /** @internal */
-export type Headers$Outbound = {};
+export type StageRoutesHeaders$Outbound = {};
 
 /** @internal */
-export const Headers$outboundSchema: z.ZodType<
-  Headers$Outbound,
+export const StageRoutesHeaders$outboundSchema: z.ZodType<
+  StageRoutesHeaders$Outbound,
   z.ZodTypeDef,
-  Headers
+  StageRoutesHeaders
 > = z.object({});
 
-export function headersToJSON(headers: Headers): string {
-  return JSON.stringify(Headers$outboundSchema.parse(headers));
+export function stageRoutesHeadersToJSON(
+  stageRoutesHeaders: StageRoutesHeaders,
+): string {
+  return JSON.stringify(
+    StageRoutesHeaders$outboundSchema.parse(stageRoutesHeaders),
+  );
 }
 
 /** @internal */
@@ -280,7 +284,7 @@ export function stageRoutesTransformsToJSON(
 export type Route$Outbound = {
   src: string;
   dest?: string | undefined;
-  headers?: Headers$Outbound | undefined;
+  headers?: StageRoutesHeaders$Outbound | undefined;
   caseSensitive?: boolean | undefined;
   status?: number | undefined;
   has?: Array<StageRoutesHas$Outbound> | undefined;
@@ -297,7 +301,7 @@ export const Route$outboundSchema: z.ZodType<
 > = z.object({
   src: z.string(),
   dest: z.string().optional(),
-  headers: z.lazy(() => Headers$outboundSchema).optional(),
+  headers: z.lazy(() => StageRoutesHeaders$outboundSchema).optional(),
   caseSensitive: z.boolean().optional(),
   status: z.number().int().optional(),
   has: z.array(z.lazy(() => StageRoutesHas$outboundSchema)).optional(),

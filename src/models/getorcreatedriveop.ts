@@ -18,6 +18,7 @@ export const Region = {
   Iad1: "iad1",
   Sfo1: "sfo1",
   Cle1: "cle1",
+  Cdg1: "cdg1",
 } as const;
 /**
  * Region where the drive is stored. Defaults to iad1.

@@ -1552,6 +1552,7 @@ export type GetMicrofrontendsInGroupProtectionConfig = {
 };
 
 export const GetMicrofrontendsInGroupRegion = {
+  Cdg1: "cdg1",
   Cle1: "cle1",
   Iad1: "iad1",
   Sfo1: "sfo1",
@@ -1561,6 +1562,7 @@ export type GetMicrofrontendsInGroupRegion = ClosedEnum<
 >;
 
 export const GetMicrofrontendsInGroupFailoverRegions = {
+  Cdg1: "cdg1",
   Cle1: "cle1",
   Iad1: "iad1",
   Sfo1: "sfo1",

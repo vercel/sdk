@@ -384,126 +384,6 @@ export type CreateFlagRequest = {
   requestBody?: CreateFlagRequestBody | undefined;
 };
 
-export const CreateFlagMetricType = {
-  Count: "count",
-  Currency: "currency",
-  Percentage: "percentage",
-} as const;
-export type CreateFlagMetricType = ClosedEnum<typeof CreateFlagMetricType>;
-
-export const CreateFlagMetricUnit = {
-  Session: "session",
-  User: "user",
-  Visitor: "visitor",
-} as const;
-export type CreateFlagMetricUnit = ClosedEnum<typeof CreateFlagMetricUnit>;
-
-export const CreateFlagDirectionality = {
-  DecreaseIsGood: "decreaseIsGood",
-  IncreaseIsGood: "increaseIsGood",
-} as const;
-export type CreateFlagDirectionality = ClosedEnum<
-  typeof CreateFlagDirectionality
->;
-
-export type CreateFlagGuardrailMetrics = {
-  description?: string | undefined;
-  metricFormula?: string | undefined;
-  name: string;
-  metricType: CreateFlagMetricType;
-  metricUnit: CreateFlagMetricUnit;
-  directionality: CreateFlagDirectionality;
-};
-
-export const CreateFlagDevice = {
-  Android: "android",
-  Desktop: "desktop",
-  Ios: "ios",
-  Mweb: "mweb",
-} as const;
-export type CreateFlagDevice = ClosedEnum<typeof CreateFlagDevice>;
-
-export const CreateFlagDurationUnit = {
-  Days: "days",
-  Exposures: "exposures",
-} as const;
-export type CreateFlagDurationUnit = ClosedEnum<typeof CreateFlagDurationUnit>;
-
-export const CreateFlagAllocationUnit = {
-  CookieId: "cookieId",
-  UserId: "userId",
-  VisitorId: "visitorId",
-} as const;
-export type CreateFlagAllocationUnit = ClosedEnum<
-  typeof CreateFlagAllocationUnit
->;
-
-export const CreateFlagFeatureFlagsMetricType = {
-  Count: "count",
-  Currency: "currency",
-  Percentage: "percentage",
-} as const;
-export type CreateFlagFeatureFlagsMetricType = ClosedEnum<
-  typeof CreateFlagFeatureFlagsMetricType
->;
-
-export const CreateFlagFeatureFlagsMetricUnit = {
-  Session: "session",
-  User: "user",
-  Visitor: "visitor",
-} as const;
-export type CreateFlagFeatureFlagsMetricUnit = ClosedEnum<
-  typeof CreateFlagFeatureFlagsMetricUnit
->;
-
-export const CreateFlagFeatureFlagsDirectionality = {
-  DecreaseIsGood: "decreaseIsGood",
-  IncreaseIsGood: "increaseIsGood",
-} as const;
-export type CreateFlagFeatureFlagsDirectionality = ClosedEnum<
-  typeof CreateFlagFeatureFlagsDirectionality
->;
-
-export type CreateFlagPrimaryMetrics = {
-  description?: string | undefined;
-  metricFormula?: string | undefined;
-  name: string;
-  metricType: CreateFlagFeatureFlagsMetricType;
-  metricUnit: CreateFlagFeatureFlagsMetricUnit;
-  directionality: CreateFlagFeatureFlagsDirectionality;
-};
-
-export const CreateFlagStatus = {
-  Closed: "closed",
-  Draft: "draft",
-  Paused: "paused",
-  Running: "running",
-} as const;
-export type CreateFlagStatus = ClosedEnum<typeof CreateFlagStatus>;
-
-export type CreateFlagExperiment = {
-  id?: string | undefined;
-  name?: string | undefined;
-  numVariants?: number | undefined;
-  surfaceArea?: string | undefined;
-  stickyRequirement?: boolean | undefined;
-  layer?: string | undefined;
-  guardrailMetrics?: Array<CreateFlagGuardrailMetrics> | undefined;
-  hypothesis?: string | undefined;
-  device?: CreateFlagDevice | undefined;
-  controlVariantId?: string | undefined;
-  startedAt?: number | undefined;
-  endedAt?: number | undefined;
-  decision?: string | undefined;
-  decisionReason?: string | undefined;
-  duration?: number | undefined;
-  durationUnit?: CreateFlagDurationUnit | undefined;
-  allocationPercent?: number | undefined;
-  allocationUnit: CreateFlagAllocationUnit;
-  primaryMetrics: Array<CreateFlagPrimaryMetrics>;
-  status: CreateFlagStatus;
-};
-
 export type CreateFlagFeatureFlagsVariants = {};
 
 export type CreateFlagFeatureFlagsReuse = {
@@ -524,6 +404,10 @@ export type CreateFlagType = ClosedEnum<typeof CreateFlagType>;
 export type CreateFlagFeatureFlagsPausedOutcome = {
   type: CreateFlagType;
   variantId: string;
+};
+
+export type CreateFlagFallthrough4 = {
+  type: "experiment";
 };
 
 export const CreateFlagFallthroughFeatureFlagsResponse201ApplicationJSONType = {
@@ -555,15 +439,18 @@ export type CreateFlagFallthroughFeatureFlags3 = {
   slots: Array<CreateFlagFallthroughSlots>;
 };
 
-export const CreateFlagFallthroughFeatureFlagsResponse201Type = {
-  Entity: "entity",
-} as const;
-export type CreateFlagFallthroughFeatureFlagsResponse201Type = ClosedEnum<
-  typeof CreateFlagFallthroughFeatureFlagsResponse201Type
->;
+export const CreateFlagFallthroughFeatureFlagsResponse201ApplicationJSONResponseBodyType =
+  {
+    Entity: "entity",
+  } as const;
+export type CreateFlagFallthroughFeatureFlagsResponse201ApplicationJSONResponseBodyType =
+  ClosedEnum<
+    typeof CreateFlagFallthroughFeatureFlagsResponse201ApplicationJSONResponseBodyType
+  >;
 
 export type CreateFlagFallthroughFeatureFlagsResponseBase = {
-  type: CreateFlagFallthroughFeatureFlagsResponse201Type;
+  type:
+    CreateFlagFallthroughFeatureFlagsResponse201ApplicationJSONResponseBodyType;
   kind: string;
   attribute: string;
 };
@@ -583,7 +470,12 @@ export type CreateFlagFallthroughFeatureFlags1 = {
 export type CreateFlagFeatureFlagsFallthrough =
   | CreateFlagFallthroughFeatureFlags1
   | CreateFlagFallthroughFeatureFlags2
-  | CreateFlagFallthroughFeatureFlags3;
+  | CreateFlagFallthroughFeatureFlags3
+  | CreateFlagFallthrough4;
+
+export type CreateFlagOutcome4 = {
+  type: "experiment";
+};
 
 export const CreateFlagOutcomeFeatureFlagsResponse201ApplicationJSONType = {
   Entity: "entity",
@@ -614,15 +506,17 @@ export type CreateFlagOutcomeFeatureFlags3 = {
   slots: Array<CreateFlagOutcomeFeatureFlagsSlots>;
 };
 
-export const CreateFlagOutcomeFeatureFlagsResponse201Type = {
-  Entity: "entity",
-} as const;
-export type CreateFlagOutcomeFeatureFlagsResponse201Type = ClosedEnum<
-  typeof CreateFlagOutcomeFeatureFlagsResponse201Type
->;
+export const CreateFlagOutcomeFeatureFlagsResponse201ApplicationJSONResponseBodyType =
+  {
+    Entity: "entity",
+  } as const;
+export type CreateFlagOutcomeFeatureFlagsResponse201ApplicationJSONResponseBodyType =
+  ClosedEnum<
+    typeof CreateFlagOutcomeFeatureFlagsResponse201ApplicationJSONResponseBodyType
+  >;
 
 export type CreateFlagOutcomeFeatureFlagsResponseBase = {
-  type: CreateFlagOutcomeFeatureFlagsResponse201Type;
+  type: CreateFlagOutcomeFeatureFlagsResponse201ApplicationJSONResponseBodyType;
   kind: string;
   attribute: string;
 };
@@ -642,7 +536,8 @@ export type CreateFlagOutcomeFeatureFlags1 = {
 export type CreateFlagFeatureFlagsOutcome =
   | CreateFlagOutcomeFeatureFlags1
   | CreateFlagOutcomeFeatureFlags2
-  | CreateFlagOutcomeFeatureFlags3;
+  | CreateFlagOutcomeFeatureFlags3
+  | CreateFlagOutcome4;
 
 export const CreateFlagRhsFeatureFlagsResponseType = {
   Regex: "regex",
@@ -752,7 +647,8 @@ export type CreateFlagFeatureFlagsRules = {
   outcome:
     | CreateFlagOutcomeFeatureFlags1
     | CreateFlagOutcomeFeatureFlags2
-    | CreateFlagOutcomeFeatureFlags3;
+    | CreateFlagOutcomeFeatureFlags3
+    | CreateFlagOutcome4;
   conditions: Array<CreateFlagFeatureFlagsConditions>;
 };
 
@@ -768,7 +664,8 @@ export type CreateFlagFeatureFlagsEnvironments = {
   fallthrough:
     | CreateFlagFallthroughFeatureFlags1
     | CreateFlagFallthroughFeatureFlags2
-    | CreateFlagFallthroughFeatureFlags3;
+    | CreateFlagFallthroughFeatureFlags3
+    | CreateFlagFallthrough4;
   active: boolean;
   rules: Array<CreateFlagFeatureFlagsRules>;
 };
@@ -798,11 +695,6 @@ export type CreateFlagTypeName = ClosedEnum<typeof CreateFlagTypeName>;
 
 export type CreateFlagResponseBody = {
   description?: string | undefined;
-  maintainerIds?: Array<string> | undefined;
-  permanent?: boolean | undefined;
-  tags?: Array<string> | undefined;
-  experiment?: CreateFlagExperiment | undefined;
-  updatedBy?: string | undefined;
   variants: Array<CreateFlagFeatureFlagsVariants>;
   id: string;
   environments: { [k: string]: CreateFlagFeatureFlagsEnvironments };
@@ -810,9 +702,13 @@ export type CreateFlagResponseBody = {
   revision: number;
   seed: number;
   state: CreateFlagFeatureFlagsState;
+  maintainerIds?: Array<string> | undefined;
+  permanent?: boolean | undefined;
+  tags?: Array<string> | undefined;
   slug: string;
   createdAt: number;
   updatedAt: number;
+  updatedBy?: string | undefined;
   createdBy: string;
   ownerId: string;
   projectId: string;
@@ -1739,145 +1635,6 @@ export function createFlagRequestToJSON(
 }
 
 /** @internal */
-export const CreateFlagMetricType$inboundSchema: z.ZodNativeEnum<
-  typeof CreateFlagMetricType
-> = z.nativeEnum(CreateFlagMetricType);
-
-/** @internal */
-export const CreateFlagMetricUnit$inboundSchema: z.ZodNativeEnum<
-  typeof CreateFlagMetricUnit
-> = z.nativeEnum(CreateFlagMetricUnit);
-
-/** @internal */
-export const CreateFlagDirectionality$inboundSchema: z.ZodNativeEnum<
-  typeof CreateFlagDirectionality
-> = z.nativeEnum(CreateFlagDirectionality);
-
-/** @internal */
-export const CreateFlagGuardrailMetrics$inboundSchema: z.ZodType<
-  CreateFlagGuardrailMetrics,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  description: types.optional(types.string()),
-  metricFormula: types.optional(types.string()),
-  name: types.string(),
-  metricType: CreateFlagMetricType$inboundSchema,
-  metricUnit: CreateFlagMetricUnit$inboundSchema,
-  directionality: CreateFlagDirectionality$inboundSchema,
-});
-
-export function createFlagGuardrailMetricsFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateFlagGuardrailMetrics, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateFlagGuardrailMetrics$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateFlagGuardrailMetrics' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateFlagDevice$inboundSchema: z.ZodNativeEnum<
-  typeof CreateFlagDevice
-> = z.nativeEnum(CreateFlagDevice);
-
-/** @internal */
-export const CreateFlagDurationUnit$inboundSchema: z.ZodNativeEnum<
-  typeof CreateFlagDurationUnit
-> = z.nativeEnum(CreateFlagDurationUnit);
-
-/** @internal */
-export const CreateFlagAllocationUnit$inboundSchema: z.ZodNativeEnum<
-  typeof CreateFlagAllocationUnit
-> = z.nativeEnum(CreateFlagAllocationUnit);
-
-/** @internal */
-export const CreateFlagFeatureFlagsMetricType$inboundSchema: z.ZodNativeEnum<
-  typeof CreateFlagFeatureFlagsMetricType
-> = z.nativeEnum(CreateFlagFeatureFlagsMetricType);
-
-/** @internal */
-export const CreateFlagFeatureFlagsMetricUnit$inboundSchema: z.ZodNativeEnum<
-  typeof CreateFlagFeatureFlagsMetricUnit
-> = z.nativeEnum(CreateFlagFeatureFlagsMetricUnit);
-
-/** @internal */
-export const CreateFlagFeatureFlagsDirectionality$inboundSchema:
-  z.ZodNativeEnum<typeof CreateFlagFeatureFlagsDirectionality> = z.nativeEnum(
-    CreateFlagFeatureFlagsDirectionality,
-  );
-
-/** @internal */
-export const CreateFlagPrimaryMetrics$inboundSchema: z.ZodType<
-  CreateFlagPrimaryMetrics,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  description: types.optional(types.string()),
-  metricFormula: types.optional(types.string()),
-  name: types.string(),
-  metricType: CreateFlagFeatureFlagsMetricType$inboundSchema,
-  metricUnit: CreateFlagFeatureFlagsMetricUnit$inboundSchema,
-  directionality: CreateFlagFeatureFlagsDirectionality$inboundSchema,
-});
-
-export function createFlagPrimaryMetricsFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateFlagPrimaryMetrics, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateFlagPrimaryMetrics$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateFlagPrimaryMetrics' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateFlagStatus$inboundSchema: z.ZodNativeEnum<
-  typeof CreateFlagStatus
-> = z.nativeEnum(CreateFlagStatus);
-
-/** @internal */
-export const CreateFlagExperiment$inboundSchema: z.ZodType<
-  CreateFlagExperiment,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: types.optional(types.string()),
-  name: types.optional(types.string()),
-  numVariants: types.optional(types.number()),
-  surfaceArea: types.optional(types.string()),
-  stickyRequirement: types.optional(types.boolean()),
-  layer: types.optional(types.string()),
-  guardrailMetrics: types.optional(
-    z.array(z.lazy(() => CreateFlagGuardrailMetrics$inboundSchema)),
-  ),
-  hypothesis: types.optional(types.string()),
-  device: types.optional(CreateFlagDevice$inboundSchema),
-  controlVariantId: types.optional(types.string()),
-  startedAt: types.optional(types.number()),
-  endedAt: types.optional(types.number()),
-  decision: types.optional(types.string()),
-  decisionReason: types.optional(types.string()),
-  duration: types.optional(types.number()),
-  durationUnit: types.optional(CreateFlagDurationUnit$inboundSchema),
-  allocationPercent: types.optional(types.number()),
-  allocationUnit: CreateFlagAllocationUnit$inboundSchema,
-  primaryMetrics: z.array(z.lazy(() => CreateFlagPrimaryMetrics$inboundSchema)),
-  status: CreateFlagStatus$inboundSchema,
-});
-
-export function createFlagExperimentFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateFlagExperiment, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateFlagExperiment$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateFlagExperiment' from JSON`,
-  );
-}
-
-/** @internal */
 export const CreateFlagFeatureFlagsVariants$inboundSchema: z.ZodType<
   CreateFlagFeatureFlagsVariants,
   z.ZodTypeDef,
@@ -1957,6 +1714,25 @@ export function createFlagFeatureFlagsPausedOutcomeFromJSON(
     (x) =>
       CreateFlagFeatureFlagsPausedOutcome$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'CreateFlagFeatureFlagsPausedOutcome' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateFlagFallthrough4$inboundSchema: z.ZodType<
+  CreateFlagFallthrough4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("experiment"),
+});
+
+export function createFlagFallthrough4FromJSON(
+  jsonString: string,
+): SafeParseResult<CreateFlagFallthrough4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateFlagFallthrough4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateFlagFallthrough4' from JSON`,
   );
 }
 
@@ -2046,9 +1822,12 @@ export function createFlagFallthroughFeatureFlags3FromJSON(
 }
 
 /** @internal */
-export const CreateFlagFallthroughFeatureFlagsResponse201Type$inboundSchema:
-  z.ZodNativeEnum<typeof CreateFlagFallthroughFeatureFlagsResponse201Type> = z
-    .nativeEnum(CreateFlagFallthroughFeatureFlagsResponse201Type);
+export const CreateFlagFallthroughFeatureFlagsResponse201ApplicationJSONResponseBodyType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateFlagFallthroughFeatureFlagsResponse201ApplicationJSONResponseBodyType
+  > = z.nativeEnum(
+    CreateFlagFallthroughFeatureFlagsResponse201ApplicationJSONResponseBodyType,
+  );
 
 /** @internal */
 export const CreateFlagFallthroughFeatureFlagsResponseBase$inboundSchema:
@@ -2057,7 +1836,8 @@ export const CreateFlagFallthroughFeatureFlagsResponseBase$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    type: CreateFlagFallthroughFeatureFlagsResponse201Type$inboundSchema,
+    type:
+      CreateFlagFallthroughFeatureFlagsResponse201ApplicationJSONResponseBodyType$inboundSchema,
     kind: types.string(),
     attribute: types.string(),
   });
@@ -2133,6 +1913,7 @@ export const CreateFlagFeatureFlagsFallthrough$inboundSchema: z.ZodType<
   z.lazy(() => CreateFlagFallthroughFeatureFlags1$inboundSchema),
   z.lazy(() => CreateFlagFallthroughFeatureFlags2$inboundSchema),
   z.lazy(() => CreateFlagFallthroughFeatureFlags3$inboundSchema),
+  z.lazy(() => CreateFlagFallthrough4$inboundSchema),
 ]);
 
 export function createFlagFeatureFlagsFallthroughFromJSON(
@@ -2142,6 +1923,25 @@ export function createFlagFeatureFlagsFallthroughFromJSON(
     jsonString,
     (x) => CreateFlagFeatureFlagsFallthrough$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'CreateFlagFeatureFlagsFallthrough' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateFlagOutcome4$inboundSchema: z.ZodType<
+  CreateFlagOutcome4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("experiment"),
+});
+
+export function createFlagOutcome4FromJSON(
+  jsonString: string,
+): SafeParseResult<CreateFlagOutcome4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateFlagOutcome4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateFlagOutcome4' from JSON`,
   );
 }
 
@@ -2231,9 +2031,12 @@ export function createFlagOutcomeFeatureFlags3FromJSON(
 }
 
 /** @internal */
-export const CreateFlagOutcomeFeatureFlagsResponse201Type$inboundSchema:
-  z.ZodNativeEnum<typeof CreateFlagOutcomeFeatureFlagsResponse201Type> = z
-    .nativeEnum(CreateFlagOutcomeFeatureFlagsResponse201Type);
+export const CreateFlagOutcomeFeatureFlagsResponse201ApplicationJSONResponseBodyType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateFlagOutcomeFeatureFlagsResponse201ApplicationJSONResponseBodyType
+  > = z.nativeEnum(
+    CreateFlagOutcomeFeatureFlagsResponse201ApplicationJSONResponseBodyType,
+  );
 
 /** @internal */
 export const CreateFlagOutcomeFeatureFlagsResponseBase$inboundSchema: z.ZodType<
@@ -2241,7 +2044,8 @@ export const CreateFlagOutcomeFeatureFlagsResponseBase$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: CreateFlagOutcomeFeatureFlagsResponse201Type$inboundSchema,
+  type:
+    CreateFlagOutcomeFeatureFlagsResponse201ApplicationJSONResponseBodyType$inboundSchema,
   kind: types.string(),
   attribute: types.string(),
 });
@@ -2313,6 +2117,7 @@ export const CreateFlagFeatureFlagsOutcome$inboundSchema: z.ZodType<
   z.lazy(() => CreateFlagOutcomeFeatureFlags1$inboundSchema),
   z.lazy(() => CreateFlagOutcomeFeatureFlags2$inboundSchema),
   z.lazy(() => CreateFlagOutcomeFeatureFlags3$inboundSchema),
+  z.lazy(() => CreateFlagOutcome4$inboundSchema),
 ]);
 
 export function createFlagFeatureFlagsOutcomeFromJSON(
@@ -2597,6 +2402,7 @@ export const CreateFlagFeatureFlagsRules$inboundSchema: z.ZodType<
     z.lazy(() => CreateFlagOutcomeFeatureFlags1$inboundSchema),
     z.lazy(() => CreateFlagOutcomeFeatureFlags2$inboundSchema),
     z.lazy(() => CreateFlagOutcomeFeatureFlags3$inboundSchema),
+    z.lazy(() => CreateFlagOutcome4$inboundSchema),
   ]),
   conditions: z.array(
     z.lazy(() => CreateFlagFeatureFlagsConditions$inboundSchema),
@@ -2635,6 +2441,7 @@ export const CreateFlagFeatureFlagsEnvironments$inboundSchema: z.ZodType<
     z.lazy(() => CreateFlagFallthroughFeatureFlags1$inboundSchema),
     z.lazy(() => CreateFlagFallthroughFeatureFlags2$inboundSchema),
     z.lazy(() => CreateFlagFallthroughFeatureFlags3$inboundSchema),
+    z.lazy(() => CreateFlagFallthrough4$inboundSchema),
   ]),
   active: types.boolean(),
   rules: z.array(z.lazy(() => CreateFlagFeatureFlagsRules$inboundSchema)),
@@ -2673,11 +2480,6 @@ export const CreateFlagResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   description: types.optional(types.string()),
-  maintainerIds: types.optional(z.array(types.string())),
-  permanent: types.optional(types.boolean()),
-  tags: types.optional(z.array(types.string())),
-  experiment: types.optional(z.lazy(() => CreateFlagExperiment$inboundSchema)),
-  updatedBy: types.optional(types.string()),
   variants: z.array(z.lazy(() => CreateFlagFeatureFlagsVariants$inboundSchema)),
   id: types.string(),
   environments: z.record(
@@ -2687,9 +2489,13 @@ export const CreateFlagResponseBody$inboundSchema: z.ZodType<
   revision: types.number(),
   seed: types.number(),
   state: CreateFlagFeatureFlagsState$inboundSchema,
+  maintainerIds: types.optional(z.array(types.string())),
+  permanent: types.optional(types.boolean()),
+  tags: types.optional(z.array(types.string())),
   slug: types.string(),
   createdAt: types.number(),
   updatedAt: types.number(),
+  updatedBy: types.optional(types.string()),
   createdBy: types.string(),
   ownerId: types.string(),
   projectId: types.string(),

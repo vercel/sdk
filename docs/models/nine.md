@@ -8,8 +8,8 @@ The payload of the event, if requested.
 import { Nine } from "@vercel/sdk/models/userevent.js";
 
 let value: Nine = {
-  resourceId: "<id>",
-  projectName: "<value>",
+  reason: "<value>",
+  blockCode: "<value>",
 };
 ```
 
@@ -20,5 +20,6 @@ let value: Nine = {
 | `provider`                                                                 | [models.UserEventPayload9Provider](../models/usereventpayload9provider.md) | :heavy_minus_sign:                                                         | Present on new events only. Equivalent to "stripe" when absent.            |
 | `providerAccount`                                                          | *string*                                                                   | :heavy_minus_sign:                                                         | Present on new events only. Equivalent to `stripeAccount` when absent.     |
 | `stripeAccount`                                                            | *string*                                                                   | :heavy_minus_sign:                                                         | Present when `provider` is "stripe". Equivalent to `providerAccount`.      |
-| `resourceId`                                                               | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `projectName`                                                              | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `stripeOrganisation`                                                       | *string*                                                                   | :heavy_minus_sign:                                                         | Present when `provider` is "stripe".                                       |
+| `reason`                                                                   | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `blockCode`                                                                | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |

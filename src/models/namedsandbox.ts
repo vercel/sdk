@@ -59,6 +59,7 @@ export type NetworkPolicy = {
   allowedDomains?: Array<string> | undefined;
   allowedCIDRs?: Array<string> | undefined;
   deniedCIDRs?: Array<string> | undefined;
+  s3Key?: string | undefined;
 };
 
 export const NamedSandboxMode = {
@@ -222,6 +223,7 @@ export const NetworkPolicy$inboundSchema: z.ZodType<
   allowedDomains: types.optional(z.array(types.string())),
   allowedCIDRs: types.optional(z.array(types.string())),
   deniedCIDRs: types.optional(z.array(types.string())),
+  s3Key: types.optional(types.string()),
 });
 
 export function networkPolicyFromJSON(

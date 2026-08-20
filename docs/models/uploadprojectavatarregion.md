@@ -11,5 +11,5 @@ let value: UploadProjectAvatarRegion = "iad1";
 ## Values
 
 ```typescript
-"cle1" | "iad1" | "sfo1"
+"cdg1" | "cle1" | "iad1" | "sfo1"
 ```

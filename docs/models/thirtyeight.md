@@ -5,18 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThirtyEight } from "@vercel/sdk/models/usereventpayloadrefreshperiod.js";
+import { ThirtyEight } from "@vercel/sdk/models/eighteen.js";
 
-let value: ThirtyEight = {
-  projectId: "<id>",
-  aliasCount: 4139.22,
-};
+let value: ThirtyEight = {};
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `projectId`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
-| `aliasCount`                                               | *number*                                                   | :heavy_check_mark:                                         | N/A                                                        |
-| `deployment`                                               | [models.PayloadDeployment](../models/payloaddeployment.md) | :heavy_minus_sign:                                         | N/A                                                        |
+| Field                                        | Type                                         | Required                                     | Description                                  |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| `alias`                                      | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
+| `deployment`                                 | [models.Deployment](../models/deployment.md) | :heavy_minus_sign:                           | N/A                                          |
+| `ruleCount`                                  | *number*                                     | :heavy_minus_sign:                           | N/A                                          |
+| `deploymentUrl`                              | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
+| `aliasId`                                    | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
+| `deploymentId`                               | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
+| `oldDeploymentId`                            | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
+| `redirect`                                   | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
+| `redirectStatusCode`                         | *number*                                     | :heavy_minus_sign:                           | N/A                                          |
+| `target`                                     | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
+| `system`                                     | *boolean*                                    | :heavy_minus_sign:                           | N/A                                          |
+| `aliasUpdatedAt`                             | *number*                                     | :heavy_minus_sign:                           | N/A                                          |

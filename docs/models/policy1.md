@@ -1,0 +1,24 @@
+# Policy1
+
+## Example Usage
+
+```typescript
+import { Policy1 } from "@vercel/sdk/models/createkmsissuerop.js";
+
+let value: Policy1 = {
+  kind: "project-grant",
+  teamId: "<id>",
+  projectId: "<id>",
+  environments: [],
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                      | Type                                                                                                                                                       | Required                                                                                                                                                   | Description                                                                                                                                                |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `kind`                                                                                                                                                     | *"project-grant"*                                                                                                                                          | :heavy_check_mark:                                                                                                                                         | N/A                                                                                                                                                        |
+| `teamId`                                                                                                                                                   | *string*                                                                                                                                                   | :heavy_check_mark:                                                                                                                                         | The team ID for the project grant policy.                                                                                                                  |
+| `projectId`                                                                                                                                                | *string*                                                                                                                                                   | :heavy_check_mark:                                                                                                                                         | The project ID for the project grant policy.                                                                                                               |
+| `environments`                                                                                                                                             | *string*[]                                                                                                                                                 | :heavy_check_mark:                                                                                                                                         | The environments for the project grant policy. Each entry is a system environment (production, preview, development) or a custom environment ID (env_...). |
+| `tokenClaims`                                                                                                                                              | Record<string, *any*>                                                                                                                                      | :heavy_minus_sign:                                                                                                                                         | The claims that KMS should include in signed JWTs for this policy.                                                                                         |

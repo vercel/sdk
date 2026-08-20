@@ -1723,6 +1723,7 @@ export type ResponseBodyProtectionConfig = {
 };
 
 export const ResponseBodyRegion = {
+  Cdg1: "cdg1",
   Cle1: "cle1",
   Iad1: "iad1",
   Sfo1: "sfo1",
@@ -1730,6 +1731,7 @@ export const ResponseBodyRegion = {
 export type ResponseBodyRegion = ClosedEnum<typeof ResponseBodyRegion>;
 
 export const ResponseBodyFailoverRegions = {
+  Cdg1: "cdg1",
   Cle1: "cle1",
   Iad1: "iad1",
   Sfo1: "sfo1",

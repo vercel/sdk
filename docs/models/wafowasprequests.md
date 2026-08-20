@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { WafOwaspRequests } from "@vercel/sdk/models/onehundredandthirtyfour.js";
+import { WafOwaspRequests } from "@vercel/sdk/models/onehundredandthirtyseven.js";
 
 let value: WafOwaspRequests = {
   currentThreshold: 1882.02,

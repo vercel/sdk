@@ -36,132 +36,6 @@ export type ListFlagVersionsRequest = {
   slug?: string | undefined;
 };
 
-export const ListFlagVersionsMetricType = {
-  Count: "count",
-  Currency: "currency",
-  Percentage: "percentage",
-} as const;
-export type ListFlagVersionsMetricType = ClosedEnum<
-  typeof ListFlagVersionsMetricType
->;
-
-export const ListFlagVersionsMetricUnit = {
-  Session: "session",
-  User: "user",
-  Visitor: "visitor",
-} as const;
-export type ListFlagVersionsMetricUnit = ClosedEnum<
-  typeof ListFlagVersionsMetricUnit
->;
-
-export const ListFlagVersionsDirectionality = {
-  DecreaseIsGood: "decreaseIsGood",
-  IncreaseIsGood: "increaseIsGood",
-} as const;
-export type ListFlagVersionsDirectionality = ClosedEnum<
-  typeof ListFlagVersionsDirectionality
->;
-
-export type ListFlagVersionsGuardrailMetrics = {
-  description?: string | undefined;
-  metricFormula?: string | undefined;
-  name: string;
-  metricType: ListFlagVersionsMetricType;
-  metricUnit: ListFlagVersionsMetricUnit;
-  directionality: ListFlagVersionsDirectionality;
-};
-
-export const ListFlagVersionsDevice = {
-  Android: "android",
-  Desktop: "desktop",
-  Ios: "ios",
-  Mweb: "mweb",
-} as const;
-export type ListFlagVersionsDevice = ClosedEnum<typeof ListFlagVersionsDevice>;
-
-export const ListFlagVersionsDurationUnit = {
-  Days: "days",
-  Exposures: "exposures",
-} as const;
-export type ListFlagVersionsDurationUnit = ClosedEnum<
-  typeof ListFlagVersionsDurationUnit
->;
-
-export const ListFlagVersionsAllocationUnit = {
-  CookieId: "cookieId",
-  UserId: "userId",
-  VisitorId: "visitorId",
-} as const;
-export type ListFlagVersionsAllocationUnit = ClosedEnum<
-  typeof ListFlagVersionsAllocationUnit
->;
-
-export const ListFlagVersionsFeatureFlagsMetricType = {
-  Count: "count",
-  Currency: "currency",
-  Percentage: "percentage",
-} as const;
-export type ListFlagVersionsFeatureFlagsMetricType = ClosedEnum<
-  typeof ListFlagVersionsFeatureFlagsMetricType
->;
-
-export const ListFlagVersionsFeatureFlagsMetricUnit = {
-  Session: "session",
-  User: "user",
-  Visitor: "visitor",
-} as const;
-export type ListFlagVersionsFeatureFlagsMetricUnit = ClosedEnum<
-  typeof ListFlagVersionsFeatureFlagsMetricUnit
->;
-
-export const ListFlagVersionsFeatureFlagsDirectionality = {
-  DecreaseIsGood: "decreaseIsGood",
-  IncreaseIsGood: "increaseIsGood",
-} as const;
-export type ListFlagVersionsFeatureFlagsDirectionality = ClosedEnum<
-  typeof ListFlagVersionsFeatureFlagsDirectionality
->;
-
-export type ListFlagVersionsPrimaryMetrics = {
-  description?: string | undefined;
-  metricFormula?: string | undefined;
-  name: string;
-  metricType: ListFlagVersionsFeatureFlagsMetricType;
-  metricUnit: ListFlagVersionsFeatureFlagsMetricUnit;
-  directionality: ListFlagVersionsFeatureFlagsDirectionality;
-};
-
-export const ListFlagVersionsStatus = {
-  Closed: "closed",
-  Draft: "draft",
-  Paused: "paused",
-  Running: "running",
-} as const;
-export type ListFlagVersionsStatus = ClosedEnum<typeof ListFlagVersionsStatus>;
-
-export type ListFlagVersionsExperiment = {
-  id?: string | undefined;
-  name?: string | undefined;
-  numVariants?: number | undefined;
-  surfaceArea?: string | undefined;
-  stickyRequirement?: boolean | undefined;
-  layer?: string | undefined;
-  guardrailMetrics?: Array<ListFlagVersionsGuardrailMetrics> | undefined;
-  hypothesis?: string | undefined;
-  device?: ListFlagVersionsDevice | undefined;
-  controlVariantId?: string | undefined;
-  startedAt?: number | undefined;
-  endedAt?: number | undefined;
-  decision?: string | undefined;
-  decisionReason?: string | undefined;
-  duration?: number | undefined;
-  durationUnit?: ListFlagVersionsDurationUnit | undefined;
-  allocationPercent?: number | undefined;
-  allocationUnit: ListFlagVersionsAllocationUnit;
-  primaryMetrics: Array<ListFlagVersionsPrimaryMetrics>;
-  status: ListFlagVersionsStatus;
-};
-
 export type ListFlagVersionsVariants = {};
 
 export type ListFlagVersionsReuse = {
@@ -182,6 +56,10 @@ export type ListFlagVersionsType = ClosedEnum<typeof ListFlagVersionsType>;
 export type ListFlagVersionsPausedOutcome = {
   type: ListFlagVersionsType;
   variantId: string;
+};
+
+export type ListFlagVersionsFallthrough4 = {
+  type: "experiment";
 };
 
 export const ListFlagVersionsFallthroughFeatureFlagsResponse200ApplicationJSONType =
@@ -214,15 +92,18 @@ export type ListFlagVersionsFallthrough3 = {
   slots: Array<ListFlagVersionsFallthroughSlots>;
 };
 
-export const ListFlagVersionsFallthroughFeatureFlagsResponse200Type = {
-  Entity: "entity",
-} as const;
-export type ListFlagVersionsFallthroughFeatureFlagsResponse200Type = ClosedEnum<
-  typeof ListFlagVersionsFallthroughFeatureFlagsResponse200Type
->;
+export const ListFlagVersionsFallthroughFeatureFlagsResponse200ApplicationJSONResponseBodyType =
+  {
+    Entity: "entity",
+  } as const;
+export type ListFlagVersionsFallthroughFeatureFlagsResponse200ApplicationJSONResponseBodyType =
+  ClosedEnum<
+    typeof ListFlagVersionsFallthroughFeatureFlagsResponse200ApplicationJSONResponseBodyType
+  >;
 
 export type ListFlagVersionsFallthroughBase = {
-  type: ListFlagVersionsFallthroughFeatureFlagsResponse200Type;
+  type:
+    ListFlagVersionsFallthroughFeatureFlagsResponse200ApplicationJSONResponseBodyType;
   kind: string;
   attribute: string;
 };
@@ -242,7 +123,12 @@ export type ListFlagVersionsFallthrough1 = {
 export type ListFlagVersionsFallthrough =
   | ListFlagVersionsFallthrough1
   | ListFlagVersionsFallthrough2
-  | ListFlagVersionsFallthrough3;
+  | ListFlagVersionsFallthrough3
+  | ListFlagVersionsFallthrough4;
+
+export type ListFlagVersionsOutcome4 = {
+  type: "experiment";
+};
 
 export const ListFlagVersionsOutcomeFeatureFlagsResponse200ApplicationJSONType =
   {
@@ -274,15 +160,18 @@ export type ListFlagVersionsOutcome3 = {
   slots: Array<ListFlagVersionsOutcomeSlots>;
 };
 
-export const ListFlagVersionsOutcomeFeatureFlagsResponse200Type = {
-  Entity: "entity",
-} as const;
-export type ListFlagVersionsOutcomeFeatureFlagsResponse200Type = ClosedEnum<
-  typeof ListFlagVersionsOutcomeFeatureFlagsResponse200Type
->;
+export const ListFlagVersionsOutcomeFeatureFlagsResponse200ApplicationJSONResponseBodyType =
+  {
+    Entity: "entity",
+  } as const;
+export type ListFlagVersionsOutcomeFeatureFlagsResponse200ApplicationJSONResponseBodyType =
+  ClosedEnum<
+    typeof ListFlagVersionsOutcomeFeatureFlagsResponse200ApplicationJSONResponseBodyType
+  >;
 
 export type ListFlagVersionsOutcomeBase = {
-  type: ListFlagVersionsOutcomeFeatureFlagsResponse200Type;
+  type:
+    ListFlagVersionsOutcomeFeatureFlagsResponse200ApplicationJSONResponseBodyType;
   kind: string;
   attribute: string;
 };
@@ -302,7 +191,8 @@ export type ListFlagVersionsOutcome1 = {
 export type ListFlagVersionsOutcome =
   | ListFlagVersionsOutcome1
   | ListFlagVersionsOutcome2
-  | ListFlagVersionsOutcome3;
+  | ListFlagVersionsOutcome3
+  | ListFlagVersionsOutcome4;
 
 export const ListFlagVersionsRhsFeatureFlagsType = {
   Regex: "regex",
@@ -414,7 +304,8 @@ export type ListFlagVersionsRules = {
   outcome:
     | ListFlagVersionsOutcome1
     | ListFlagVersionsOutcome2
-    | ListFlagVersionsOutcome3;
+    | ListFlagVersionsOutcome3
+    | ListFlagVersionsOutcome4;
   conditions: Array<ListFlagVersionsConditions>;
 };
 
@@ -430,7 +321,8 @@ export type ListFlagVersionsEnvironments = {
   fallthrough:
     | ListFlagVersionsFallthrough1
     | ListFlagVersionsFallthrough2
-    | ListFlagVersionsFallthrough3;
+    | ListFlagVersionsFallthrough3
+    | ListFlagVersionsFallthrough4;
   active: boolean;
   rules: Array<ListFlagVersionsRules>;
 };
@@ -443,14 +335,13 @@ export type ListFlagVersionsState = ClosedEnum<typeof ListFlagVersionsState>;
 
 export type ListFlagVersionsData = {
   description?: string | undefined;
-  maintainerIds?: Array<string> | undefined;
-  permanent?: boolean | undefined;
-  tags?: Array<string> | undefined;
-  experiment?: ListFlagVersionsExperiment | undefined;
   variants: Array<ListFlagVersionsVariants>;
   environments: { [k: string]: ListFlagVersionsEnvironments };
   seed: number;
   state: ListFlagVersionsState;
+  maintainerIds?: Array<string> | undefined;
+  permanent?: boolean | undefined;
+  tags?: Array<string> | undefined;
 };
 
 export type ListFlagVersionsCreator = {
@@ -463,14 +354,14 @@ export type ListFlagVersionsMetadata = {
 };
 
 export type ListFlagVersionsVersions = {
-  createdBy?: string | undefined;
-  message?: string | undefined;
-  data: ListFlagVersionsData;
   id: string;
   revision: number;
   createdAt: number;
+  createdBy?: string | undefined;
+  message?: string | undefined;
   flagId: string;
   changedEnvironments: Array<string>;
+  data: ListFlagVersionsData;
   metadata?: ListFlagVersionsMetadata | undefined;
 };
 
@@ -514,148 +405,6 @@ export function listFlagVersionsRequestToJSON(
 ): string {
   return JSON.stringify(
     ListFlagVersionsRequest$outboundSchema.parse(listFlagVersionsRequest),
-  );
-}
-
-/** @internal */
-export const ListFlagVersionsMetricType$inboundSchema: z.ZodNativeEnum<
-  typeof ListFlagVersionsMetricType
-> = z.nativeEnum(ListFlagVersionsMetricType);
-
-/** @internal */
-export const ListFlagVersionsMetricUnit$inboundSchema: z.ZodNativeEnum<
-  typeof ListFlagVersionsMetricUnit
-> = z.nativeEnum(ListFlagVersionsMetricUnit);
-
-/** @internal */
-export const ListFlagVersionsDirectionality$inboundSchema: z.ZodNativeEnum<
-  typeof ListFlagVersionsDirectionality
-> = z.nativeEnum(ListFlagVersionsDirectionality);
-
-/** @internal */
-export const ListFlagVersionsGuardrailMetrics$inboundSchema: z.ZodType<
-  ListFlagVersionsGuardrailMetrics,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  description: types.optional(types.string()),
-  metricFormula: types.optional(types.string()),
-  name: types.string(),
-  metricType: ListFlagVersionsMetricType$inboundSchema,
-  metricUnit: ListFlagVersionsMetricUnit$inboundSchema,
-  directionality: ListFlagVersionsDirectionality$inboundSchema,
-});
-
-export function listFlagVersionsGuardrailMetricsFromJSON(
-  jsonString: string,
-): SafeParseResult<ListFlagVersionsGuardrailMetrics, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListFlagVersionsGuardrailMetrics$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListFlagVersionsGuardrailMetrics' from JSON`,
-  );
-}
-
-/** @internal */
-export const ListFlagVersionsDevice$inboundSchema: z.ZodNativeEnum<
-  typeof ListFlagVersionsDevice
-> = z.nativeEnum(ListFlagVersionsDevice);
-
-/** @internal */
-export const ListFlagVersionsDurationUnit$inboundSchema: z.ZodNativeEnum<
-  typeof ListFlagVersionsDurationUnit
-> = z.nativeEnum(ListFlagVersionsDurationUnit);
-
-/** @internal */
-export const ListFlagVersionsAllocationUnit$inboundSchema: z.ZodNativeEnum<
-  typeof ListFlagVersionsAllocationUnit
-> = z.nativeEnum(ListFlagVersionsAllocationUnit);
-
-/** @internal */
-export const ListFlagVersionsFeatureFlagsMetricType$inboundSchema:
-  z.ZodNativeEnum<typeof ListFlagVersionsFeatureFlagsMetricType> = z.nativeEnum(
-    ListFlagVersionsFeatureFlagsMetricType,
-  );
-
-/** @internal */
-export const ListFlagVersionsFeatureFlagsMetricUnit$inboundSchema:
-  z.ZodNativeEnum<typeof ListFlagVersionsFeatureFlagsMetricUnit> = z.nativeEnum(
-    ListFlagVersionsFeatureFlagsMetricUnit,
-  );
-
-/** @internal */
-export const ListFlagVersionsFeatureFlagsDirectionality$inboundSchema:
-  z.ZodNativeEnum<typeof ListFlagVersionsFeatureFlagsDirectionality> = z
-    .nativeEnum(ListFlagVersionsFeatureFlagsDirectionality);
-
-/** @internal */
-export const ListFlagVersionsPrimaryMetrics$inboundSchema: z.ZodType<
-  ListFlagVersionsPrimaryMetrics,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  description: types.optional(types.string()),
-  metricFormula: types.optional(types.string()),
-  name: types.string(),
-  metricType: ListFlagVersionsFeatureFlagsMetricType$inboundSchema,
-  metricUnit: ListFlagVersionsFeatureFlagsMetricUnit$inboundSchema,
-  directionality: ListFlagVersionsFeatureFlagsDirectionality$inboundSchema,
-});
-
-export function listFlagVersionsPrimaryMetricsFromJSON(
-  jsonString: string,
-): SafeParseResult<ListFlagVersionsPrimaryMetrics, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListFlagVersionsPrimaryMetrics$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListFlagVersionsPrimaryMetrics' from JSON`,
-  );
-}
-
-/** @internal */
-export const ListFlagVersionsStatus$inboundSchema: z.ZodNativeEnum<
-  typeof ListFlagVersionsStatus
-> = z.nativeEnum(ListFlagVersionsStatus);
-
-/** @internal */
-export const ListFlagVersionsExperiment$inboundSchema: z.ZodType<
-  ListFlagVersionsExperiment,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: types.optional(types.string()),
-  name: types.optional(types.string()),
-  numVariants: types.optional(types.number()),
-  surfaceArea: types.optional(types.string()),
-  stickyRequirement: types.optional(types.boolean()),
-  layer: types.optional(types.string()),
-  guardrailMetrics: types.optional(
-    z.array(z.lazy(() => ListFlagVersionsGuardrailMetrics$inboundSchema)),
-  ),
-  hypothesis: types.optional(types.string()),
-  device: types.optional(ListFlagVersionsDevice$inboundSchema),
-  controlVariantId: types.optional(types.string()),
-  startedAt: types.optional(types.number()),
-  endedAt: types.optional(types.number()),
-  decision: types.optional(types.string()),
-  decisionReason: types.optional(types.string()),
-  duration: types.optional(types.number()),
-  durationUnit: types.optional(ListFlagVersionsDurationUnit$inboundSchema),
-  allocationPercent: types.optional(types.number()),
-  allocationUnit: ListFlagVersionsAllocationUnit$inboundSchema,
-  primaryMetrics: z.array(
-    z.lazy(() => ListFlagVersionsPrimaryMetrics$inboundSchema),
-  ),
-  status: ListFlagVersionsStatus$inboundSchema,
-});
-
-export function listFlagVersionsExperimentFromJSON(
-  jsonString: string,
-): SafeParseResult<ListFlagVersionsExperiment, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListFlagVersionsExperiment$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListFlagVersionsExperiment' from JSON`,
   );
 }
 
@@ -742,6 +491,25 @@ export function listFlagVersionsPausedOutcomeFromJSON(
 }
 
 /** @internal */
+export const ListFlagVersionsFallthrough4$inboundSchema: z.ZodType<
+  ListFlagVersionsFallthrough4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("experiment"),
+});
+
+export function listFlagVersionsFallthrough4FromJSON(
+  jsonString: string,
+): SafeParseResult<ListFlagVersionsFallthrough4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListFlagVersionsFallthrough4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListFlagVersionsFallthrough4' from JSON`,
+  );
+}
+
+/** @internal */
 export const ListFlagVersionsFallthroughFeatureFlagsResponse200ApplicationJSONType$inboundSchema:
   z.ZodNativeEnum<
     typeof ListFlagVersionsFallthroughFeatureFlagsResponse200ApplicationJSONType
@@ -824,10 +592,12 @@ export function listFlagVersionsFallthrough3FromJSON(
 }
 
 /** @internal */
-export const ListFlagVersionsFallthroughFeatureFlagsResponse200Type$inboundSchema:
+export const ListFlagVersionsFallthroughFeatureFlagsResponse200ApplicationJSONResponseBodyType$inboundSchema:
   z.ZodNativeEnum<
-    typeof ListFlagVersionsFallthroughFeatureFlagsResponse200Type
-  > = z.nativeEnum(ListFlagVersionsFallthroughFeatureFlagsResponse200Type);
+    typeof ListFlagVersionsFallthroughFeatureFlagsResponse200ApplicationJSONResponseBodyType
+  > = z.nativeEnum(
+    ListFlagVersionsFallthroughFeatureFlagsResponse200ApplicationJSONResponseBodyType,
+  );
 
 /** @internal */
 export const ListFlagVersionsFallthroughBase$inboundSchema: z.ZodType<
@@ -835,7 +605,8 @@ export const ListFlagVersionsFallthroughBase$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: ListFlagVersionsFallthroughFeatureFlagsResponse200Type$inboundSchema,
+  type:
+    ListFlagVersionsFallthroughFeatureFlagsResponse200ApplicationJSONResponseBodyType$inboundSchema,
   kind: types.string(),
   attribute: types.string(),
 });
@@ -901,6 +672,7 @@ export const ListFlagVersionsFallthrough$inboundSchema: z.ZodType<
   z.lazy(() => ListFlagVersionsFallthrough1$inboundSchema),
   z.lazy(() => ListFlagVersionsFallthrough2$inboundSchema),
   z.lazy(() => ListFlagVersionsFallthrough3$inboundSchema),
+  z.lazy(() => ListFlagVersionsFallthrough4$inboundSchema),
 ]);
 
 export function listFlagVersionsFallthroughFromJSON(
@@ -910,6 +682,25 @@ export function listFlagVersionsFallthroughFromJSON(
     jsonString,
     (x) => ListFlagVersionsFallthrough$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'ListFlagVersionsFallthrough' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListFlagVersionsOutcome4$inboundSchema: z.ZodType<
+  ListFlagVersionsOutcome4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("experiment"),
+});
+
+export function listFlagVersionsOutcome4FromJSON(
+  jsonString: string,
+): SafeParseResult<ListFlagVersionsOutcome4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListFlagVersionsOutcome4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListFlagVersionsOutcome4' from JSON`,
   );
 }
 
@@ -995,9 +786,12 @@ export function listFlagVersionsOutcome3FromJSON(
 }
 
 /** @internal */
-export const ListFlagVersionsOutcomeFeatureFlagsResponse200Type$inboundSchema:
-  z.ZodNativeEnum<typeof ListFlagVersionsOutcomeFeatureFlagsResponse200Type> = z
-    .nativeEnum(ListFlagVersionsOutcomeFeatureFlagsResponse200Type);
+export const ListFlagVersionsOutcomeFeatureFlagsResponse200ApplicationJSONResponseBodyType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof ListFlagVersionsOutcomeFeatureFlagsResponse200ApplicationJSONResponseBodyType
+  > = z.nativeEnum(
+    ListFlagVersionsOutcomeFeatureFlagsResponse200ApplicationJSONResponseBodyType,
+  );
 
 /** @internal */
 export const ListFlagVersionsOutcomeBase$inboundSchema: z.ZodType<
@@ -1005,7 +799,8 @@ export const ListFlagVersionsOutcomeBase$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: ListFlagVersionsOutcomeFeatureFlagsResponse200Type$inboundSchema,
+  type:
+    ListFlagVersionsOutcomeFeatureFlagsResponse200ApplicationJSONResponseBodyType$inboundSchema,
   kind: types.string(),
   attribute: types.string(),
 });
@@ -1071,6 +866,7 @@ export const ListFlagVersionsOutcome$inboundSchema: z.ZodType<
   z.lazy(() => ListFlagVersionsOutcome1$inboundSchema),
   z.lazy(() => ListFlagVersionsOutcome2$inboundSchema),
   z.lazy(() => ListFlagVersionsOutcome3$inboundSchema),
+  z.lazy(() => ListFlagVersionsOutcome4$inboundSchema),
 ]);
 
 export function listFlagVersionsOutcomeFromJSON(
@@ -1354,6 +1150,7 @@ export const ListFlagVersionsRules$inboundSchema: z.ZodType<
     z.lazy(() => ListFlagVersionsOutcome1$inboundSchema),
     z.lazy(() => ListFlagVersionsOutcome2$inboundSchema),
     z.lazy(() => ListFlagVersionsOutcome3$inboundSchema),
+    z.lazy(() => ListFlagVersionsOutcome4$inboundSchema),
   ]),
   conditions: z.array(z.lazy(() => ListFlagVersionsConditions$inboundSchema)),
 });
@@ -1386,6 +1183,7 @@ export const ListFlagVersionsEnvironments$inboundSchema: z.ZodType<
     z.lazy(() => ListFlagVersionsFallthrough1$inboundSchema),
     z.lazy(() => ListFlagVersionsFallthrough2$inboundSchema),
     z.lazy(() => ListFlagVersionsFallthrough3$inboundSchema),
+    z.lazy(() => ListFlagVersionsFallthrough4$inboundSchema),
   ]),
   active: types.boolean(),
   rules: z.array(z.lazy(() => ListFlagVersionsRules$inboundSchema)),
@@ -1413,18 +1211,15 @@ export const ListFlagVersionsData$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   description: types.optional(types.string()),
-  maintainerIds: types.optional(z.array(types.string())),
-  permanent: types.optional(types.boolean()),
-  tags: types.optional(z.array(types.string())),
-  experiment: types.optional(
-    z.lazy(() => ListFlagVersionsExperiment$inboundSchema),
-  ),
   variants: z.array(z.lazy(() => ListFlagVersionsVariants$inboundSchema)),
   environments: z.record(
     z.lazy(() => ListFlagVersionsEnvironments$inboundSchema),
   ),
   seed: types.number(),
   state: ListFlagVersionsState$inboundSchema,
+  maintainerIds: types.optional(z.array(types.string())),
+  permanent: types.optional(types.boolean()),
+  tags: types.optional(z.array(types.string())),
 });
 
 export function listFlagVersionsDataFromJSON(
@@ -1482,14 +1277,14 @@ export const ListFlagVersionsVersions$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  createdBy: types.optional(types.string()),
-  message: types.optional(types.string()),
-  data: z.lazy(() => ListFlagVersionsData$inboundSchema),
   id: types.string(),
   revision: types.number(),
   createdAt: types.number(),
+  createdBy: types.optional(types.string()),
+  message: types.optional(types.string()),
   flagId: types.string(),
   changedEnvironments: z.array(types.string()),
+  data: z.lazy(() => ListFlagVersionsData$inboundSchema),
   metadata: types.optional(
     z.lazy(() => ListFlagVersionsMetadata$inboundSchema),
   ),

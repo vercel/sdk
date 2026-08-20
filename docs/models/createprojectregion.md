@@ -5,11 +5,11 @@
 ```typescript
 import { CreateProjectRegion } from "@vercel/sdk/models/createprojectregion.js";
 
-let value: CreateProjectRegion = "iad1";
+let value: CreateProjectRegion = "cle1";
 ```
 
 ## Values
 
 ```typescript
-"cle1" | "iad1" | "sfo1"
+"cdg1" | "cle1" | "iad1" | "sfo1"
 ```

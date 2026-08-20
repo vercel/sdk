@@ -13,5 +13,5 @@ let value: Region = "iad1";
 ## Values
 
 ```typescript
-"iad1" | "sfo1" | "cle1"
+"iad1" | "sfo1" | "cle1" | "cdg1"
 ```

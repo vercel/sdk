@@ -5,25 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { NinetyOne } from "@vercel/sdk/models/usereventpayloadteam.js";
+import { NinetyOne } from "@vercel/sdk/models/usereventpayload84configuration.js";
 
-let value: NinetyOne = {};
+let value: NinetyOne = {
+  bitbucketLogin: "<value>",
+  bitbucketAccountId: "<id>",
+};
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `clientId`                                     | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `clientUid`                                    | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `clientName`                                   | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `projectId`                                    | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `installationId`                               | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `subjectType`                                  | [models.SubjectType](../models/subjecttype.md) | :heavy_minus_sign:                             | N/A                                            |
-| `fields`                                       | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
-| `environments`                                 | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
-| `triggerDestinationCount`                      | *number*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `tokenCount`                                   | *number*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `acceptedTokenCount`                           | *number*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `importedTokenCount`                           | *number*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `tokensDeleted`                                | *number*                                       | :heavy_minus_sign:                             | N/A                                            |
+| Field                | Type                 | Required             | Description          |
+| -------------------- | -------------------- | -------------------- | -------------------- |
+| `bitbucketLogin`     | *string*             | :heavy_check_mark:   | N/A                  |
+| `bitbucketAccountId` | *string*             | :heavy_check_mark:   | N/A                  |

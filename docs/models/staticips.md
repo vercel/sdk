@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { StaticIps } from "@vercel/sdk/models/twohundredandfiftynine.js";
+import { StaticIps } from "@vercel/sdk/models/twohundredandsixty.js";
 
 let value: StaticIps = {
   enabled: false,

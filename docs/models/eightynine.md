@@ -5,11 +5,11 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { EightyNine } from "@vercel/sdk/models/usereventpayloadteam.js";
+import { EightyNine } from "@vercel/sdk/models/usereventpayload84configuration.js";
 
 let value: EightyNine = {
-  bitbucketEmail: "<value>",
-  bitbucketLogin: "<value>",
+  gitlabLogin: "<value>",
+  gitlabUserId: 3127.76,
 };
 ```
 
@@ -17,6 +17,5 @@ let value: EightyNine = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `bitbucketEmail`   | *string*           | :heavy_check_mark: | N/A                |
-| `bitbucketLogin`   | *string*           | :heavy_check_mark: | N/A                |
-| `bitbucketName`    | *string*           | :heavy_minus_sign: | N/A                |
+| `gitlabLogin`      | *string*           | :heavy_check_mark: | N/A                |
+| `gitlabUserId`     | *number*           | :heavy_check_mark: | N/A                |

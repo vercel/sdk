@@ -3,17 +3,15 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload252Next } from "@vercel/sdk/models/onehundredandninetythree.js";
+import { UserEventPayload252Next } from "@vercel/sdk/models/onehundredandninetyfour.js";
 
 let value: UserEventPayload252Next = {
-  functionDefaultRegions: [
-    "<value 1>",
-  ],
+  functionDefaultMemoryType: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                    | Type                     | Required                 | Description              |
-| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
-| `functionDefaultRegions` | *string*[]               | :heavy_check_mark:       | N/A                      |
+| Field                       | Type                        | Required                    | Description                 |
+| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
+| `functionDefaultMemoryType` | *string*                    | :heavy_check_mark:          | N/A                         |

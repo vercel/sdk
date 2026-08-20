@@ -5,17 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndEightyOne } from "@vercel/sdk/models/usereventpayload326geolocationmostspecificsubdivisionnames.js";
+import { ThreeHundredAndEightyOne } from "@vercel/sdk/models/usereventpayload327geolocationmostspecificsubdivisionnames.js";
 
 let value: ThreeHundredAndEightyOne = {
-  enabled: false,
-  scope: "log-drains",
+  enabled: "on",
 };
 ```
 
 ## Fields
 
-| Field                                            | Type                                             | Required                                         | Description                                      |
-| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| `enabled`                                        | *boolean*                                        | :heavy_check_mark:                               | N/A                                              |
-| `scope`                                          | [models.PayloadScope](../models/payloadscope.md) | :heavy_check_mark:                               | N/A                                              |
+| Field                                                | Type                                                 | Required                                             | Description                                          |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| `enabled`                                            | [models.PayloadEnabled](../models/payloadenabled.md) | :heavy_check_mark:                                   | N/A                                                  |

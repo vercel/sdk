@@ -63,6 +63,7 @@ import { Environment } from "./environment.js";
 import { FeatureFlags } from "./featureflags.js";
 import { GlobalConfig } from "./globalconfig.js";
 import { Integrations } from "./integrations.js";
+import { Kms } from "./kms.js";
 import { LogDrains } from "./logdrains.js";
 import { Logs } from "./logs.js";
 import { Marketplace } from "./marketplace.js";
@@ -202,6 +203,11 @@ export class Vercel extends ClientSDK {
   private _authentication?: Authentication;
   get authentication(): Authentication {
     return (this._authentication ??= new Authentication(this._options));
+  }
+
+  private _kms?: Kms;
+  get kms(): Kms {
+    return (this._kms ??= new Kms(this._options));
   }
 
   private _logs?: Logs;

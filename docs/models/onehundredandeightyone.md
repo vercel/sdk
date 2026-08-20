@@ -8,7 +8,7 @@ The payload of the event, if requested.
 import { OneHundredAndEightyOne } from "@vercel/sdk/models/edgemiddlewareinvocations.js";
 
 let value: OneHundredAndEightyOne = {
-  logDrainUrl: "https://compassionate-cd.net",
+  logDrainUrl: "https://abandoned-reboot.name/",
 };
 ```
 

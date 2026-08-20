@@ -9,6 +9,7 @@ import { OneHundredAndEightyThree } from "@vercel/sdk/models/edgemiddlewareinvoc
 
 let value: OneHundredAndEightyThree = {
   provider: "github-custom-host",
+  login: "Pinkie71",
 };
 ```
 
@@ -17,3 +18,4 @@ let value: OneHundredAndEightyThree = {
 | Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
 | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
 | `provider`                                                                     | [models.UserEventPayload183Provider](../models/usereventpayload183provider.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `login`                                                                        | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |

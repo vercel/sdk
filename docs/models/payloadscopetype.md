@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadScopeType } from "@vercel/sdk/models/usereventpayloadrefreshperiod.js";
+import { PayloadScopeType } from "@vercel/sdk/models/eighteen.js";
 
 let value: PayloadScopeType = "project";
 ```
@@ -11,5 +11,5 @@ let value: PayloadScopeType = "project";
 ## Values
 
 ```typescript
-"project" | "team"
+"project" | "team" | "user"
 ```

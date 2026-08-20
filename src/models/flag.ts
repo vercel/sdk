@@ -10,116 +10,6 @@ import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
-export const MetricType = {
-  Count: "count",
-  Currency: "currency",
-  Percentage: "percentage",
-} as const;
-export type MetricType = ClosedEnum<typeof MetricType>;
-
-export const MetricUnit = {
-  Session: "session",
-  User: "user",
-  Visitor: "visitor",
-} as const;
-export type MetricUnit = ClosedEnum<typeof MetricUnit>;
-
-export const Directionality = {
-  DecreaseIsGood: "decreaseIsGood",
-  IncreaseIsGood: "increaseIsGood",
-} as const;
-export type Directionality = ClosedEnum<typeof Directionality>;
-
-export type GuardrailMetrics = {
-  description?: string | undefined;
-  metricFormula?: string | undefined;
-  name: string;
-  metricType: MetricType;
-  metricUnit: MetricUnit;
-  directionality: Directionality;
-};
-
-export const Device = {
-  Android: "android",
-  Desktop: "desktop",
-  Ios: "ios",
-  Mweb: "mweb",
-} as const;
-export type Device = ClosedEnum<typeof Device>;
-
-export const DurationUnit = {
-  Days: "days",
-  Exposures: "exposures",
-} as const;
-export type DurationUnit = ClosedEnum<typeof DurationUnit>;
-
-export const AllocationUnit = {
-  CookieId: "cookieId",
-  UserId: "userId",
-  VisitorId: "visitorId",
-} as const;
-export type AllocationUnit = ClosedEnum<typeof AllocationUnit>;
-
-export const FlagMetricType = {
-  Count: "count",
-  Currency: "currency",
-  Percentage: "percentage",
-} as const;
-export type FlagMetricType = ClosedEnum<typeof FlagMetricType>;
-
-export const FlagMetricUnit = {
-  Session: "session",
-  User: "user",
-  Visitor: "visitor",
-} as const;
-export type FlagMetricUnit = ClosedEnum<typeof FlagMetricUnit>;
-
-export const FlagDirectionality = {
-  DecreaseIsGood: "decreaseIsGood",
-  IncreaseIsGood: "increaseIsGood",
-} as const;
-export type FlagDirectionality = ClosedEnum<typeof FlagDirectionality>;
-
-export type PrimaryMetrics = {
-  description?: string | undefined;
-  metricFormula?: string | undefined;
-  name: string;
-  metricType: FlagMetricType;
-  metricUnit: FlagMetricUnit;
-  directionality: FlagDirectionality;
-};
-
-export const FlagStatus = {
-  Closed: "closed",
-  Draft: "draft",
-  Paused: "paused",
-  Running: "running",
-} as const;
-export type FlagStatus = ClosedEnum<typeof FlagStatus>;
-
-export type Experiment = {
-  id?: string | undefined;
-  name?: string | undefined;
-  numVariants?: number | undefined;
-  surfaceArea?: string | undefined;
-  stickyRequirement?: boolean | undefined;
-  layer?: string | undefined;
-  guardrailMetrics?: Array<GuardrailMetrics> | undefined;
-  hypothesis?: string | undefined;
-  device?: Device | undefined;
-  controlVariantId?: string | undefined;
-  startedAt?: number | undefined;
-  endedAt?: number | undefined;
-  decision?: string | undefined;
-  decisionReason?: string | undefined;
-  duration?: number | undefined;
-  durationUnit?: DurationUnit | undefined;
-  allocationPercent?: number | undefined;
-  allocationUnit: AllocationUnit;
-  primaryMetrics: Array<PrimaryMetrics>;
-  status: FlagStatus;
-};
-
 export type Variants = {};
 
 export type Reuse = {
@@ -140,6 +30,10 @@ export type FlagType = ClosedEnum<typeof FlagType>;
 export type PausedOutcome = {
   type: FlagType;
   variantId: string;
+};
+
+export type Fallthrough4 = {
+  type: "experiment";
 };
 
 export const FlagFallthroughEnvironments3Type = {
@@ -195,7 +89,15 @@ export type Fallthrough1 = {
   variantId: string;
 };
 
-export type Fallthrough = Fallthrough1 | Fallthrough2 | Fallthrough3;
+export type Fallthrough =
+  | Fallthrough1
+  | Fallthrough2
+  | Fallthrough3
+  | Fallthrough4;
+
+export type Outcome4 = {
+  type: "experiment";
+};
 
 export const FlagOutcomeEnvironmentsRules3Type = {
   Entity: "entity",
@@ -225,15 +127,15 @@ export type Outcome3 = {
   slots: Array<OutcomeSlots>;
 };
 
-export const FlagOutcomeEnvironmentsRulesType = {
+export const FlagOutcomeEnvironmentsRules2Type = {
   Entity: "entity",
 } as const;
-export type FlagOutcomeEnvironmentsRulesType = ClosedEnum<
-  typeof FlagOutcomeEnvironmentsRulesType
+export type FlagOutcomeEnvironmentsRules2Type = ClosedEnum<
+  typeof FlagOutcomeEnvironmentsRules2Type
 >;
 
 export type OutcomeBase = {
-  type: FlagOutcomeEnvironmentsRulesType;
+  type: FlagOutcomeEnvironmentsRules2Type;
   kind: string;
   attribute: string;
 };
@@ -250,7 +152,7 @@ export type Outcome1 = {
   variantId: string;
 };
 
-export type FlagOutcome = Outcome1 | Outcome2 | Outcome3;
+export type FlagOutcome = Outcome1 | Outcome2 | Outcome3 | Outcome4;
 
 export const FlagRhsType = {
   Regex: "regex",
@@ -342,7 +244,7 @@ export type Conditions = {
 
 export type Rules = {
   id: string;
-  outcome: Outcome1 | Outcome2 | Outcome3;
+  outcome: Outcome1 | Outcome2 | Outcome3 | Outcome4;
   conditions: Array<Conditions>;
 };
 
@@ -353,7 +255,7 @@ export type Environments = {
     | undefined;
   revision?: number | undefined;
   pausedOutcome: PausedOutcome;
-  fallthrough: Fallthrough1 | Fallthrough2 | Fallthrough3;
+  fallthrough: Fallthrough1 | Fallthrough2 | Fallthrough3 | Fallthrough4;
   active: boolean;
   rules: Array<Rules>;
 };
@@ -388,11 +290,6 @@ export type Metadata = {
 
 export type Flag = {
   description?: string | undefined;
-  maintainerIds?: Array<string> | undefined;
-  permanent?: boolean | undefined;
-  tags?: Array<string> | undefined;
-  experiment?: Experiment | undefined;
-  updatedBy?: string | undefined;
   variants: Array<Variants>;
   id: string;
   environments: { [k: string]: Environments };
@@ -400,148 +297,19 @@ export type Flag = {
   revision: number;
   seed: number;
   state: State;
+  maintainerIds?: Array<string> | undefined;
+  permanent?: boolean | undefined;
+  tags?: Array<string> | undefined;
   slug: string;
   createdAt: number;
   updatedAt: number;
+  updatedBy?: string | undefined;
   createdBy: string;
   ownerId: string;
   projectId: string;
   typeName: TypeName;
   metadata?: Metadata | undefined;
 };
-
-/** @internal */
-export const MetricType$inboundSchema: z.ZodNativeEnum<typeof MetricType> = z
-  .nativeEnum(MetricType);
-
-/** @internal */
-export const MetricUnit$inboundSchema: z.ZodNativeEnum<typeof MetricUnit> = z
-  .nativeEnum(MetricUnit);
-
-/** @internal */
-export const Directionality$inboundSchema: z.ZodNativeEnum<
-  typeof Directionality
-> = z.nativeEnum(Directionality);
-
-/** @internal */
-export const GuardrailMetrics$inboundSchema: z.ZodType<
-  GuardrailMetrics,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  description: types.optional(types.string()),
-  metricFormula: types.optional(types.string()),
-  name: types.string(),
-  metricType: MetricType$inboundSchema,
-  metricUnit: MetricUnit$inboundSchema,
-  directionality: Directionality$inboundSchema,
-});
-
-export function guardrailMetricsFromJSON(
-  jsonString: string,
-): SafeParseResult<GuardrailMetrics, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GuardrailMetrics$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GuardrailMetrics' from JSON`,
-  );
-}
-
-/** @internal */
-export const Device$inboundSchema: z.ZodNativeEnum<typeof Device> = z
-  .nativeEnum(Device);
-
-/** @internal */
-export const DurationUnit$inboundSchema: z.ZodNativeEnum<typeof DurationUnit> =
-  z.nativeEnum(DurationUnit);
-
-/** @internal */
-export const AllocationUnit$inboundSchema: z.ZodNativeEnum<
-  typeof AllocationUnit
-> = z.nativeEnum(AllocationUnit);
-
-/** @internal */
-export const FlagMetricType$inboundSchema: z.ZodNativeEnum<
-  typeof FlagMetricType
-> = z.nativeEnum(FlagMetricType);
-
-/** @internal */
-export const FlagMetricUnit$inboundSchema: z.ZodNativeEnum<
-  typeof FlagMetricUnit
-> = z.nativeEnum(FlagMetricUnit);
-
-/** @internal */
-export const FlagDirectionality$inboundSchema: z.ZodNativeEnum<
-  typeof FlagDirectionality
-> = z.nativeEnum(FlagDirectionality);
-
-/** @internal */
-export const PrimaryMetrics$inboundSchema: z.ZodType<
-  PrimaryMetrics,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  description: types.optional(types.string()),
-  metricFormula: types.optional(types.string()),
-  name: types.string(),
-  metricType: FlagMetricType$inboundSchema,
-  metricUnit: FlagMetricUnit$inboundSchema,
-  directionality: FlagDirectionality$inboundSchema,
-});
-
-export function primaryMetricsFromJSON(
-  jsonString: string,
-): SafeParseResult<PrimaryMetrics, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PrimaryMetrics$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PrimaryMetrics' from JSON`,
-  );
-}
-
-/** @internal */
-export const FlagStatus$inboundSchema: z.ZodNativeEnum<typeof FlagStatus> = z
-  .nativeEnum(FlagStatus);
-
-/** @internal */
-export const Experiment$inboundSchema: z.ZodType<
-  Experiment,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: types.optional(types.string()),
-  name: types.optional(types.string()),
-  numVariants: types.optional(types.number()),
-  surfaceArea: types.optional(types.string()),
-  stickyRequirement: types.optional(types.boolean()),
-  layer: types.optional(types.string()),
-  guardrailMetrics: types.optional(
-    z.array(z.lazy(() => GuardrailMetrics$inboundSchema)),
-  ),
-  hypothesis: types.optional(types.string()),
-  device: types.optional(Device$inboundSchema),
-  controlVariantId: types.optional(types.string()),
-  startedAt: types.optional(types.number()),
-  endedAt: types.optional(types.number()),
-  decision: types.optional(types.string()),
-  decisionReason: types.optional(types.string()),
-  duration: types.optional(types.number()),
-  durationUnit: types.optional(DurationUnit$inboundSchema),
-  allocationPercent: types.optional(types.number()),
-  allocationUnit: AllocationUnit$inboundSchema,
-  primaryMetrics: z.array(z.lazy(() => PrimaryMetrics$inboundSchema)),
-  status: FlagStatus$inboundSchema,
-});
-
-export function experimentFromJSON(
-  jsonString: string,
-): SafeParseResult<Experiment, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Experiment$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Experiment' from JSON`,
-  );
-}
 
 /** @internal */
 export const Variants$inboundSchema: z.ZodType<
@@ -615,6 +383,25 @@ export function pausedOutcomeFromJSON(
     jsonString,
     (x) => PausedOutcome$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'PausedOutcome' from JSON`,
+  );
+}
+
+/** @internal */
+export const Fallthrough4$inboundSchema: z.ZodType<
+  Fallthrough4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("experiment"),
+});
+
+export function fallthrough4FromJSON(
+  jsonString: string,
+): SafeParseResult<Fallthrough4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Fallthrough4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Fallthrough4' from JSON`,
   );
 }
 
@@ -760,6 +547,7 @@ export const Fallthrough$inboundSchema: z.ZodType<
   z.lazy(() => Fallthrough1$inboundSchema),
   z.lazy(() => Fallthrough2$inboundSchema),
   z.lazy(() => Fallthrough3$inboundSchema),
+  z.lazy(() => Fallthrough4$inboundSchema),
 ]);
 
 export function fallthroughFromJSON(
@@ -769,6 +557,25 @@ export function fallthroughFromJSON(
     jsonString,
     (x) => Fallthrough$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'Fallthrough' from JSON`,
+  );
+}
+
+/** @internal */
+export const Outcome4$inboundSchema: z.ZodType<
+  Outcome4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("experiment"),
+});
+
+export function outcome4FromJSON(
+  jsonString: string,
+): SafeParseResult<Outcome4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Outcome4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Outcome4' from JSON`,
   );
 }
 
@@ -844,9 +651,9 @@ export function outcome3FromJSON(
 }
 
 /** @internal */
-export const FlagOutcomeEnvironmentsRulesType$inboundSchema: z.ZodNativeEnum<
-  typeof FlagOutcomeEnvironmentsRulesType
-> = z.nativeEnum(FlagOutcomeEnvironmentsRulesType);
+export const FlagOutcomeEnvironmentsRules2Type$inboundSchema: z.ZodNativeEnum<
+  typeof FlagOutcomeEnvironmentsRules2Type
+> = z.nativeEnum(FlagOutcomeEnvironmentsRules2Type);
 
 /** @internal */
 export const OutcomeBase$inboundSchema: z.ZodType<
@@ -854,7 +661,7 @@ export const OutcomeBase$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: FlagOutcomeEnvironmentsRulesType$inboundSchema,
+  type: FlagOutcomeEnvironmentsRules2Type$inboundSchema,
   kind: types.string(),
   attribute: types.string(),
 });
@@ -920,6 +727,7 @@ export const FlagOutcome$inboundSchema: z.ZodType<
   z.lazy(() => Outcome1$inboundSchema),
   z.lazy(() => Outcome2$inboundSchema),
   z.lazy(() => Outcome3$inboundSchema),
+  z.lazy(() => Outcome4$inboundSchema),
 ]);
 
 export function flagOutcomeFromJSON(
@@ -1168,6 +976,7 @@ export const Rules$inboundSchema: z.ZodType<Rules, z.ZodTypeDef, unknown> = z
       z.lazy(() => Outcome1$inboundSchema),
       z.lazy(() => Outcome2$inboundSchema),
       z.lazy(() => Outcome3$inboundSchema),
+      z.lazy(() => Outcome4$inboundSchema),
     ]),
     conditions: z.array(z.lazy(() => Conditions$inboundSchema)),
   });
@@ -1198,6 +1007,7 @@ export const Environments$inboundSchema: z.ZodType<
     z.lazy(() => Fallthrough1$inboundSchema),
     z.lazy(() => Fallthrough2$inboundSchema),
     z.lazy(() => Fallthrough3$inboundSchema),
+    z.lazy(() => Fallthrough4$inboundSchema),
   ]),
   active: types.boolean(),
   rules: z.array(z.lazy(() => Rules$inboundSchema)),
@@ -1267,11 +1077,6 @@ export function metadataFromJSON(
 export const Flag$inboundSchema: z.ZodType<Flag, z.ZodTypeDef, unknown> = z
   .object({
     description: types.optional(types.string()),
-    maintainerIds: types.optional(z.array(types.string())),
-    permanent: types.optional(types.boolean()),
-    tags: types.optional(z.array(types.string())),
-    experiment: types.optional(z.lazy(() => Experiment$inboundSchema)),
-    updatedBy: types.optional(types.string()),
     variants: z.array(z.lazy(() => Variants$inboundSchema)),
     id: types.string(),
     environments: z.record(z.lazy(() => Environments$inboundSchema)),
@@ -1279,9 +1084,13 @@ export const Flag$inboundSchema: z.ZodType<Flag, z.ZodTypeDef, unknown> = z
     revision: types.number(),
     seed: types.number(),
     state: State$inboundSchema,
+    maintainerIds: types.optional(z.array(types.string())),
+    permanent: types.optional(types.boolean()),
+    tags: types.optional(z.array(types.string())),
     slug: types.string(),
     createdAt: types.number(),
     updatedAt: types.number(),
+    updatedBy: types.optional(types.string()),
     createdBy: types.string(),
     ownerId: types.string(),
     projectId: types.string(),

@@ -5,21 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { Sixty } from "@vercel/sdk/models/usereventpayloadrefreshperiod.js";
+import { Sixty } from "@vercel/sdk/models/eighteen.js";
 
 let value: Sixty = {
   invoiceId: "<id>",
-  newInvoiceId: "<id>",
-  settlementMethod: "credited-payment-pending",
-  amount: 5742.5,
+  amount: 3104.01,
+  refundReason: "<value>",
+  lineItemCount: 5742.5,
 };
 ```
 
 ## Fields
 
-| Field                                                    | Type                                                     | Required                                                 | Description                                              |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `invoiceId`                                              | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
-| `newInvoiceId`                                           | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
-| `settlementMethod`                                       | [models.SettlementMethod](../models/settlementmethod.md) | :heavy_check_mark:                                       | N/A                                                      |
-| `amount`                                                 | *number*                                                 | :heavy_check_mark:                                       | N/A                                                      |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `invoiceId`        | *string*           | :heavy_check_mark: | N/A                |
+| `amount`           | *number*           | :heavy_check_mark: | N/A                |
+| `refundReason`     | *string*           | :heavy_check_mark: | N/A                |
+| `lineItemCount`    | *number*           | :heavy_check_mark: | N/A                |

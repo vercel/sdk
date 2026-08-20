@@ -457,6 +457,10 @@ export type CreateDeploymentRequestBody = {
    */
   files?: Array<InlinedFile | UploadedFile> | undefined;
   /**
+   * Available only to Vercel platform accounts. A read-only GitHub access token scoped to the requested repository. Use a token with a lifetime of 24 hours or less that remains valid until source retrieval completes.
+   */
+  gitAccessToken?: string | undefined;
+  /**
    * Populates initial git metadata for different git providers.
    */
   gitMetadata?: GitMetadata | undefined;
@@ -2361,6 +2365,7 @@ export type CreateDeploymentRequestBody$Outbound = {
   customEnvironmentSlugOrId?: string | undefined;
   deploymentId?: string | undefined;
   files?: Array<InlinedFile$Outbound | UploadedFile$Outbound> | undefined;
+  gitAccessToken?: string | undefined;
   gitMetadata?: GitMetadata$Outbound | undefined;
   gitSource?:
     | GitSource3$Outbound
@@ -2396,6 +2401,7 @@ export const CreateDeploymentRequestBody$outboundSchema: z.ZodType<
       z.lazy(() => UploadedFile$outboundSchema),
     ]),
   ).optional(),
+  gitAccessToken: z.string().optional(),
   gitMetadata: z.lazy(() => GitMetadata$outboundSchema).optional(),
   gitSource: smartUnion([
     z.lazy(() => GitSource3$outboundSchema),

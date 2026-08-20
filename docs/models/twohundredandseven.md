@@ -5,23 +5,29 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSeven } from "@vercel/sdk/models/onehundredandninetythree.js";
+import { TwoHundredAndSeven } from "@vercel/sdk/models/onehundredandninetyfour.js";
 
 let value: TwoHundredAndSeven = {
   projectId: "<id>",
-  url: "https://bustling-junior.com/",
-  previousStatus: "<value>",
-  justification: "<value>",
+  projectName: "<value>",
+  deletedCount: 3959.58,
+  scriptCount: 961.94,
+  connectSrcCount: 4911.9,
+  connectSrcOriginCount: 490.67,
+  headerCount: 5278.89,
 };
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `projectId`                                                      | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `url`                                                            | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `previousStatus`                                                 | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `justification`                                                  | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `approvalScope`                                                  | [models.ApprovalScope](../models/approvalscope.md)               | :heavy_minus_sign:                                               | N/A                                                              |
-| `kind`                                                           | [models.UserEventPayloadKind](../models/usereventpayloadkind.md) | :heavy_minus_sign:                                               | N/A                                                              |
+| Field                                  | Type                                   | Required                               | Description                            |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| `projectId`                            | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `projectName`                          | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `deletedCount`                         | *number*                               | :heavy_check_mark:                     | N/A                                    |
+| `scriptCount`                          | *number*                               | :heavy_check_mark:                     | N/A                                    |
+| `connectSrcCount`                      | *number*                               | :heavy_check_mark:                     | N/A                                    |
+| `connectSrcOriginCount`                | *number*                               | :heavy_check_mark:                     | N/A                                    |
+| `headerCount`                          | *number*                               | :heavy_check_mark:                     | N/A                                    |
+| `connectSrcUserNormalizationRuleCount` | *number*                               | :heavy_minus_sign:                     | N/A                                    |
+| `connectSrcNormalizationRulesCleared`  | *boolean*                              | :heavy_minus_sign:                     | N/A                                    |

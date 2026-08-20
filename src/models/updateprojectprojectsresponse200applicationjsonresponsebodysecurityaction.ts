@@ -799,6 +799,7 @@ export type UpdateProjectProtectionConfig = {
 };
 
 export const UpdateProjectRegion = {
+  Cdg1: "cdg1",
   Cle1: "cle1",
   Iad1: "iad1",
   Sfo1: "sfo1",
@@ -806,6 +807,7 @@ export const UpdateProjectRegion = {
 export type UpdateProjectRegion = ClosedEnum<typeof UpdateProjectRegion>;
 
 export const UpdateProjectFailoverRegions = {
+  Cdg1: "cdg1",
   Cle1: "cle1",
   Iad1: "iad1",
   Sfo1: "sfo1",
@@ -1400,6 +1402,7 @@ export type UpdateProjectPermissions = {
   connectLogs?: Array<ACLAction> | undefined;
   connexClient?: Array<ACLAction> | undefined;
   connexClientProject?: Array<ACLAction> | undefined;
+  connexContact?: Array<ACLAction> | undefined;
   connexInstallation?: Array<ACLAction> | undefined;
   connexToken?: Array<ACLAction> | undefined;
   buildMachineDefault?: Array<ACLAction> | undefined;
@@ -1565,6 +1568,7 @@ export type UpdateProjectPermissions = {
   passwordProtection?: Array<ACLAction> | undefined;
   privateLinkEndpoint?: Array<ACLAction> | undefined;
   productionAliasProtectionBypass?: Array<ACLAction> | undefined;
+  productionShareableLink?: Array<ACLAction> | undefined;
   project?: Array<ACLAction> | undefined;
   projectAccessGroup?: Array<ACLAction> | undefined;
   projectAnalyticsSampling?: Array<ACLAction> | undefined;
@@ -1606,6 +1610,7 @@ export type UpdateProjectPermissions = {
   pageIntegrity?: Array<ACLAction> | undefined;
   seawallConfig?: Array<ACLAction> | undefined;
   securityPlusConfiguration?: Array<ACLAction> | undefined;
+  shareableLink?: Array<ACLAction> | undefined;
   shareableLinkStrict?: Array<ACLAction> | undefined;
   sharedEnvVarConnection?: Array<ACLAction> | undefined;
   skewProtection?: Array<ACLAction> | undefined;
@@ -1613,6 +1618,7 @@ export type UpdateProjectPermissions = {
   trustedIps?: Array<ACLAction> | undefined;
   trustedSources?: Array<ACLAction> | undefined;
   v0Chat?: Array<ACLAction> | undefined;
+  vercelAuth?: Array<ACLAction> | undefined;
   vercelRun?: Array<ACLAction> | undefined;
   webAnalytics?: Array<ACLAction> | undefined;
 };
@@ -3955,6 +3961,7 @@ export const UpdateProjectPermissions$inboundSchema: z.ZodType<
   connectLogs: types.optional(z.array(ACLAction$inboundSchema)),
   connexClient: types.optional(z.array(ACLAction$inboundSchema)),
   connexClientProject: types.optional(z.array(ACLAction$inboundSchema)),
+  connexContact: types.optional(z.array(ACLAction$inboundSchema)),
   connexInstallation: types.optional(z.array(ACLAction$inboundSchema)),
   connexToken: types.optional(z.array(ACLAction$inboundSchema)),
   buildMachineDefault: types.optional(z.array(ACLAction$inboundSchema)),
@@ -4154,6 +4161,7 @@ export const UpdateProjectPermissions$inboundSchema: z.ZodType<
   productionAliasProtectionBypass: types.optional(
     z.array(ACLAction$inboundSchema),
   ),
+  productionShareableLink: types.optional(z.array(ACLAction$inboundSchema)),
   project: types.optional(z.array(ACLAction$inboundSchema)),
   projectAccessGroup: types.optional(z.array(ACLAction$inboundSchema)),
   projectAnalyticsSampling: types.optional(z.array(ACLAction$inboundSchema)),
@@ -4201,6 +4209,7 @@ export const UpdateProjectPermissions$inboundSchema: z.ZodType<
   pageIntegrity: types.optional(z.array(ACLAction$inboundSchema)),
   seawallConfig: types.optional(z.array(ACLAction$inboundSchema)),
   securityPlusConfiguration: types.optional(z.array(ACLAction$inboundSchema)),
+  shareableLink: types.optional(z.array(ACLAction$inboundSchema)),
   shareableLinkStrict: types.optional(z.array(ACLAction$inboundSchema)),
   sharedEnvVarConnection: types.optional(z.array(ACLAction$inboundSchema)),
   skewProtection: types.optional(z.array(ACLAction$inboundSchema)),
@@ -4208,6 +4217,7 @@ export const UpdateProjectPermissions$inboundSchema: z.ZodType<
   trustedIps: types.optional(z.array(ACLAction$inboundSchema)),
   trustedSources: types.optional(z.array(ACLAction$inboundSchema)),
   v0Chat: types.optional(z.array(ACLAction$inboundSchema)),
+  vercelAuth: types.optional(z.array(ACLAction$inboundSchema)),
   vercelRun: types.optional(z.array(ACLAction$inboundSchema)),
   webAnalytics: types.optional(z.array(ACLAction$inboundSchema)),
 }).transform((v) => {

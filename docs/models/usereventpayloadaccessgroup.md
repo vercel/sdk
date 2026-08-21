@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayloadAccessGroup } from "@vercel/sdk/models/eighteen.js";
+import { UserEventPayloadAccessGroup } from "@vercel/sdk/models/payloadscopetype.js";
 
 let value: UserEventPayloadAccessGroup = {
   id: "<id>",

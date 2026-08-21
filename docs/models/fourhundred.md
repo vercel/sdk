@@ -5,19 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundred } from "@vercel/sdk/models/threehundredandninetysix.js";
+import { FourHundred } from "@vercel/sdk/models/threehundredandninetyseven.js";
 
 let value: FourHundred = {
-  method: "webauthn",
-  reason: "<value>",
+  autoBlockPrevented: false,
+  actorId: "<id>",
+  actorType: "admin",
 };
 ```
 
 ## Fields
 
-| Field                                | Type                                 | Required                             | Description                          |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `method`                             | [models.Method](../models/method.md) | :heavy_check_mark:                   | N/A                                  |
-| `reason`                             | *string*                             | :heavy_check_mark:                   | N/A                                  |
-| `flowId`                             | *string*                             | :heavy_minus_sign:                   | N/A                                  |
-| `loginSessionId`                     | *string*                             | :heavy_minus_sign:                   | N/A                                  |
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `autoBlockPrevented`                                                             | *boolean*                                                                        | :heavy_check_mark:                                                               | N/A                                                                              |
+| `preventUntil`                                                                   | *number*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `actorId`                                                                        | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
+| `actorType`                                                                      | [models.UserEventPayload400ActorType](../models/usereventpayload400actortype.md) | :heavy_check_mark:                                                               | N/A                                                                              |
+| `reason`                                                                         | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |

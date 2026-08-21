@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateProjectProjectsOptionsAllowlist } from "@vercel/sdk/models/updateprojectprojectsresponse200applicationjsonresponsebodysecurityaction.js";
+import { UpdateProjectProjectsOptionsAllowlist } from "@vercel/sdk/models/updateprojectprojectsresponse200applicationjsonresponsebodysecuritymanagedrulesaction.js";
 
 let value: UpdateProjectProjectsOptionsAllowlist = {
   paths: [

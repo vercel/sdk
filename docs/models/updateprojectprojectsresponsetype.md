@@ -1,17 +1,15 @@
 # UpdateProjectProjectsResponseType
 
-The type of environment (production, preview, or development)
-
 ## Example Usage
 
 ```typescript
-import { UpdateProjectProjectsResponseType } from "@vercel/sdk/models/updateprojectbranchmatcher.js";
+import { UpdateProjectProjectsResponseType } from "@vercel/sdk/models/updateprojectprojectsresponse200applicationjsonresponsebodysecuritymanagedrulesaction.js";
 
-let value: UpdateProjectProjectsResponseType = "production";
+let value: UpdateProjectProjectsResponseType = "LAMBDAS";
 ```
 
 ## Values
 
 ```typescript
-"development" | "preview" | "production"
+"LAMBDAS"
 ```

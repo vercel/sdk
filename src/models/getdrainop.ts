@@ -37,6 +37,7 @@ export const GetDrainResponseBodyDrainsDisabledReason = {
   DisabledByAdmin: "disabled-by-admin",
   DisabledByOwner: "disabled-by-owner",
   FeatureNotAvailable: "feature-not-available",
+  LimitsExceeded: "limits-exceeded",
 } as const;
 export type GetDrainResponseBodyDrainsDisabledReason = ClosedEnum<
   typeof GetDrainResponseBodyDrainsDisabledReason
@@ -398,6 +399,7 @@ export const GetDrainResponseBodyDisabledReason = {
   DisabledByAdmin: "disabled-by-admin",
   DisabledByOwner: "disabled-by-owner",
   FeatureNotAvailable: "feature-not-available",
+  LimitsExceeded: "limits-exceeded",
 } as const;
 export type GetDrainResponseBodyDisabledReason = ClosedEnum<
   typeof GetDrainResponseBodyDisabledReason

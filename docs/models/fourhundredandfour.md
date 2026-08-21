@@ -5,16 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndFour } from "@vercel/sdk/models/threehundredandninetysix.js";
+import { FourHundredAndFour } from "@vercel/sdk/models/threehundredandninetyseven.js";
 
 let value: FourHundredAndFour = {
-  remaining: 4578.24,
+  previous: {
+    enabled: true,
+    totpVerified: true,
+  },
+  next: {
+    enabled: true,
+    totpVerified: false,
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `remaining`                                                  | *number*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `context`                                                    | [models.Context](../models/context.md)                       | :heavy_minus_sign:                                           | Absent on events predating the field; those were all logins. |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `previous`                                                                     | [models.UserEventPayload404Previous](../models/usereventpayload404previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `next`                                                                         | [models.UserEventPayload404Next](../models/usereventpayload404next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `method`                                                                       | [models.PayloadMethod](../models/payloadmethod.md)                             | :heavy_minus_sign:                                                             | N/A                                                                            |

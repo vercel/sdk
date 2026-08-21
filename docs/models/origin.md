@@ -5,7 +5,7 @@ How the token was issued. Always `'manual'` for explicit PAT creation.
 ## Example Usage
 
 ```typescript
-import { Origin } from "@vercel/sdk/models/threehundredandninetysix.js";
+import { Origin } from "@vercel/sdk/models/threehundredandninetyseven.js";
 
 let value: Origin = "app";
 ```

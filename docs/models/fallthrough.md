@@ -48,11 +48,3 @@ const value: models.Fallthrough3 = {
 };
 ```
 
-### `models.Fallthrough4`
-
-```typescript
-const value: models.Fallthrough4 = {
-  type: "experiment",
-};
-```
-

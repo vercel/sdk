@@ -5,7 +5,7 @@ Since June 2026. A hard block that is scheduled (the delay varies by source; see
 ## Example Usage
 
 ```typescript
-import { ScheduledBlock } from "@vercel/sdk/models/edgemiddlewareinvocations.js";
+import { ScheduledBlock } from "@vercel/sdk/models/edgeconfigwrite.js";
 
 let value: ScheduledBlock = {
   executeAt: 9648.38,

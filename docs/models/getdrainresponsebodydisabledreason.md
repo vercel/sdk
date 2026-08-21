@@ -5,11 +5,11 @@
 ```typescript
 import { GetDrainResponseBodyDisabledReason } from "@vercel/sdk/models/getdrainop.js";
 
-let value: GetDrainResponseBodyDisabledReason = "feature-not-available";
+let value: GetDrainResponseBodyDisabledReason = "limits-exceeded";
 ```
 
 ## Values
 
 ```typescript
-"account-plan-downgrade" | "disabled-by-admin" | "disabled-by-owner" | "feature-not-available"
+"account-plan-downgrade" | "disabled-by-admin" | "disabled-by-owner" | "feature-not-available" | "limits-exceeded"
 ```

@@ -5,7 +5,7 @@
 ```typescript
 import {
   CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServices2RoutesType,
-} from "@vercel/sdk/models/schedule.js";
+} from "@vercel/sdk/models/middlewarematcher.js";
 
 let value:
   CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServices2RoutesType =

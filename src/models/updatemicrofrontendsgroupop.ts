@@ -18,6 +18,10 @@ export type UpdateMicrofrontendsGroupRequestBody = {
    * The new fallback environment for the microfrontends group. Must be "SAME_ENV", "PRODUCTION", or a valid custom environment slug from the default app.
    */
   fallbackEnvironment?: string | undefined;
+  /**
+   * Whether Preview Deployments can link to branches with the same name in other Git repositories.
+   */
+  enablePolyrepoBranchRouting?: boolean | undefined;
 };
 
 export type UpdateMicrofrontendsGroupRequest = {
@@ -38,6 +42,7 @@ export type UpdatedMicrofrontendsGroup = {
   slug?: string | undefined;
   id: string;
   fallbackEnvironment?: string | undefined;
+  enablePolyrepoBranchRouting?: boolean | undefined;
 };
 
 export type UpdateMicrofrontendsGroupResponseBody = {
@@ -48,6 +53,7 @@ export type UpdateMicrofrontendsGroupResponseBody = {
 export type UpdateMicrofrontendsGroupRequestBody$Outbound = {
   name?: string | undefined;
   fallbackEnvironment?: string | undefined;
+  enablePolyrepoBranchRouting?: boolean | undefined;
 };
 
 /** @internal */
@@ -58,6 +64,7 @@ export const UpdateMicrofrontendsGroupRequestBody$outboundSchema: z.ZodType<
 > = z.object({
   name: z.string().optional(),
   fallbackEnvironment: z.string().optional(),
+  enablePolyrepoBranchRouting: z.boolean().optional(),
 });
 
 export function updateMicrofrontendsGroupRequestBodyToJSON(
@@ -115,6 +122,7 @@ export const UpdatedMicrofrontendsGroup$inboundSchema: z.ZodType<
   slug: types.optional(types.string()),
   id: types.string(),
   fallbackEnvironment: types.optional(types.string()),
+  enablePolyrepoBranchRouting: types.optional(types.boolean()),
 });
 
 export function updatedMicrofrontendsGroupFromJSON(

@@ -5,7 +5,7 @@ Builder selected by the resolver.
 ## Example Usage
 
 ```typescript
-import { ServicesBuilder } from "@vercel/sdk/models/schedule.js";
+import { ServicesBuilder } from "@vercel/sdk/models/middlewarematcher.js";
 
 let value: ServicesBuilder = {
   use: "<value>",

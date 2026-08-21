@@ -1,19 +1,21 @@
 # Tracing
 
-Tracing configuration for this project
-
 ## Example Usage
 
 ```typescript
-import { Tracing } from "@vercel/sdk/models/updateprojectbranchmatcher.js";
+import { Tracing } from "@vercel/sdk/models/toaccount.js";
 
-let value: Tracing = {};
+let value: Tracing = {
+  updatedAt: 3761.97,
+  blockReason: "hard_blocked",
+};
 ```
 
 ## Fields
 
-| Field                                                | Type                                                 | Required                                             | Description                                          |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `domains`                                            | *string*                                             | :heavy_minus_sign:                                   | Comma-separated list of drain endpoint domains       |
-| `ignorePaths`                                        | *string*[]                                           | :heavy_minus_sign:                                   | Paths to ignore for tracing                          |
-| `samplingRules`                                      | [models.SamplingRules](../models/samplingrules.md)[] | :heavy_minus_sign:                                   | Sampling rules for trace collection                  |
+| Field                                                                                                                                        | Type                                                                                                                                         | Required                                                                                                                                     | Description                                                                                                                                  |
+| -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `updatedAt`                                                                                                                                  | *number*                                                                                                                                     | :heavy_check_mark:                                                                                                                           | N/A                                                                                                                                          |
+| `blockedFrom`                                                                                                                                | *number*                                                                                                                                     | :heavy_minus_sign:                                                                                                                           | N/A                                                                                                                                          |
+| `blockedUntil`                                                                                                                               | *number*                                                                                                                                     | :heavy_minus_sign:                                                                                                                           | N/A                                                                                                                                          |
+| `blockReason`                                                                                                                                | [models.UserEventPayload163NewOwnerFeatureBlocksTracingBlockReason](../models/usereventpayload163newownerfeatureblockstracingblockreason.md) | :heavy_check_mark:                                                                                                                           | N/A                                                                                                                                          |

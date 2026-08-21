@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ObservabilityEvent } from "@vercel/sdk/models/onehundredandthirtyseven.js";
+import { ObservabilityEvent } from "@vercel/sdk/models/toaccount.js";
 
 let value: ObservabilityEvent = {
   currentThreshold: 337.46,

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateProjectContentHint7 } from "@vercel/sdk/models/updateprojectbranchmatcher.js";
+import { UpdateProjectContentHint7 } from "@vercel/sdk/models/updateprojectdomains.js";
 
 let value: UpdateProjectContentHint7 = {
   type: "blob-webhook-public-key",

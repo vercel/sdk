@@ -116,11 +116,11 @@ import { RequestRollbackRequest } from "../models/requestrollbackop.js";
 import { UnpauseProjectRequest } from "../models/unpauseprojectop.js";
 import { UpdateMicrofrontendsRequest } from "../models/updatemicrofrontendsprojectsbuildmachineselection.js";
 import { UpdateMicrofrontendsResponseBody } from "../models/updatemicrofrontendsresponsebody.js";
-import { UpdateProjectRequest } from "../models/updateprojectbranchmatcher.js";
 import {
   UpdateProjectDomainRequest,
   UpdateProjectDomainResponseBody,
 } from "../models/updateprojectdomainop.js";
+import { UpdateProjectRequest } from "../models/updateprojectdomains.js";
 import {
   UpdateProjectProtectionBypassRequest,
   UpdateProjectProtectionBypassResponseBody,

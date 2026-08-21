@@ -5,7 +5,7 @@ Override for a token-bucket rate limit: a fixed quantity per duration.
 ## Example Usage
 
 ```typescript
-import { ResourceLimits1 } from "@vercel/sdk/models/edgemiddlewareinvocations.js";
+import { ResourceLimits1 } from "@vercel/sdk/models/edgeconfigwrite.js";
 
 let value: ResourceLimits1 = {
   max: 3751.02,

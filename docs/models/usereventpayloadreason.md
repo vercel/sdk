@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayloadReason } from "@vercel/sdk/models/usereventpayload84configuration.js";
+import { UserEventPayloadReason } from "@vercel/sdk/models/usereventpayload327geolocationnames.js";
 
-let value: UserEventPayloadReason = "ip_allow_list";
+let value: UserEventPayloadReason = "limits-exceeded";
 ```
 
 ## Values
 
 ```typescript
-"ip_allow_list"
+"limits-exceeded"
 ```

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayloadTeamPermissions } from "@vercel/sdk/models/edgemiddlewareinvocations.js";
+import { UserEventPayloadTeamPermissions } from "@vercel/sdk/models/edgeconfigwrite.js";
 
 let value: UserEventPayloadTeamPermissions = "EnvVariableManager";
 ```

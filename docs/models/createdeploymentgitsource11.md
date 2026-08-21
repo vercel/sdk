@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentGitSource11 } from "@vercel/sdk/models/createdeploymentrouteshas.js";
+import { CreateDeploymentGitSource11 } from "@vercel/sdk/models/createdeploymenthas1.js";
 
 let value: CreateDeploymentGitSource11 = {
   type: "cursor-origin",

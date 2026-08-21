@@ -39,6 +39,7 @@ export const GetAllLogDrainsDrainsLogDrainsDisabledReason = {
   DisabledByAdmin: "disabled-by-admin",
   DisabledByOwner: "disabled-by-owner",
   FeatureNotAvailable: "feature-not-available",
+  LimitsExceeded: "limits-exceeded",
 } as const;
 export type GetAllLogDrainsDrainsLogDrainsDisabledReason = ClosedEnum<
   typeof GetAllLogDrainsDrainsLogDrainsDisabledReason
@@ -405,6 +406,7 @@ export const GetAllLogDrainsDrainsDisabledReason = {
   DisabledByAdmin: "disabled-by-admin",
   DisabledByOwner: "disabled-by-owner",
   FeatureNotAvailable: "feature-not-available",
+  LimitsExceeded: "limits-exceeded",
 } as const;
 export type GetAllLogDrainsDrainsDisabledReason = ClosedEnum<
   typeof GetAllLogDrainsDrainsDisabledReason

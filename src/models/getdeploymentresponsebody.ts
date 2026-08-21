@@ -55,8 +55,10 @@ import {
   ResponseBodyTarget$inboundSchema,
 } from "./getdeploymentgitsourcerepoid.js";
 import {
-  GetDeploymentHasDeploymentsResponse2,
-  GetDeploymentHasDeploymentsResponse2$inboundSchema,
+  GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody2Type,
+  GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody2Type$inboundSchema,
+  GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyValue,
+  GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyValue$inboundSchema,
   GetDeploymentResponseBodyCrons,
   GetDeploymentResponseBodyCrons$inboundSchema,
   GetDeploymentResponseBodyFunctions,
@@ -91,12 +93,37 @@ import {
   GetDeploymentServicesRedirects$inboundSchema,
   GetDeploymentServicesTransforms,
   GetDeploymentServicesTransforms$inboundSchema,
-  GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Rewrites2,
-  GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Rewrites2$inboundSchema,
   ResponseBodyProject,
   ResponseBodyProject$inboundSchema,
-} from "./getdeploymentvaluedeploymentsresponse200applicationjsonresponsebody2services2rewrites2.js";
+} from "./getdeploymenthasdeploymentsresponse200applicationjsonresponsebodyvalue.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type GetDeploymentHasDeploymentsResponse2 = {
+  type: GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody2Type;
+  key: string;
+  value?:
+    | GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyValue
+    | undefined;
+};
+
+export type GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2RewritesEq =
+  | string
+  | number;
+
+export type GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Rewrites2 =
+  {
+    eq?: string | number | undefined;
+    neq?: string | undefined;
+    inc?: Array<string> | undefined;
+    ninc?: Array<string> | undefined;
+    pre?: string | undefined;
+    suf?: string | undefined;
+    re?: string | undefined;
+    gt?: number | undefined;
+    gte?: number | undefined;
+    lt?: number | undefined;
+    lte?: number | undefined;
+  };
 
 export type GetDeploymentHasDeploymentsResponse200ApplicationJSONValue =
   | string
@@ -695,6 +722,13 @@ export type GetDeploymentServicesDeploymentsMaxDuration =
   | number
   | GetDeploymentMaxDurationDeploymentsResponse2;
 
+export type GetDeploymentExperimentalTriggersDeploymentsResponse3 = {
+  /**
+   * Event type - must be "schedule/v1beta" (REQUIRED)
+   */
+  type: "schedule/v1beta";
+};
+
 /**
  * Queue trigger input event for v2beta (from vercel.json config). Consumer name is implicitly derived from the function path. Only one trigger per function is allowed.
  */
@@ -761,7 +795,8 @@ export type GetDeploymentExperimentalTriggersDeploymentsResponse1 = {
 
 export type GetDeploymentServicesDeploymentsExperimentalTriggers =
   | GetDeploymentExperimentalTriggersDeploymentsResponse1
-  | GetDeploymentExperimentalTriggersDeploymentsResponse2;
+  | GetDeploymentExperimentalTriggersDeploymentsResponse2
+  | GetDeploymentExperimentalTriggersDeploymentsResponse3;
 
 export type GetDeploymentServicesDeploymentsFunctions = {
   architecture?: GetDeploymentServicesDeploymentsArchitecture | undefined;
@@ -780,6 +815,7 @@ export type GetDeploymentServicesDeploymentsFunctions = {
     | Array<
       | GetDeploymentExperimentalTriggersDeploymentsResponse1
       | GetDeploymentExperimentalTriggersDeploymentsResponse2
+      | GetDeploymentExperimentalTriggersDeploymentsResponse3
     >
     | undefined;
   supportsCancellation?: boolean | undefined;
@@ -1779,6 +1815,89 @@ export type GetDeploymentResponseBody =
   | GetDeploymentResponseBody1;
 
 /** @internal */
+export const GetDeploymentHasDeploymentsResponse2$inboundSchema: z.ZodType<
+  GetDeploymentHasDeploymentsResponse2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type:
+    GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody2Type$inboundSchema,
+  key: types.string(),
+  value: types.optional(
+    GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyValue$inboundSchema,
+  ),
+});
+
+export function getDeploymentHasDeploymentsResponse2FromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentHasDeploymentsResponse2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentHasDeploymentsResponse2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentHasDeploymentsResponse2' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2RewritesEq$inboundSchema:
+  z.ZodType<
+    GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2RewritesEq,
+    z.ZodTypeDef,
+    unknown
+  > = smartUnion([types.string(), types.number()]);
+
+export function getDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2RewritesEqFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2RewritesEq,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2RewritesEq$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2RewritesEq' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Rewrites2$inboundSchema:
+  z.ZodType<
+    GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Rewrites2,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    eq: types.optional(smartUnion([types.string(), types.number()])),
+    neq: types.optional(types.string()),
+    inc: types.optional(z.array(types.string())),
+    ninc: types.optional(z.array(types.string())),
+    pre: types.optional(types.string()),
+    suf: types.optional(types.string()),
+    re: types.optional(types.string()),
+    gt: types.optional(types.number()),
+    gte: types.optional(types.number()),
+    lt: types.optional(types.number()),
+    lte: types.optional(types.number()),
+  });
+
+export function getDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Rewrites2FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Rewrites2,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Rewrites2$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Rewrites2' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetDeploymentHasDeploymentsResponse200ApplicationJSONValue$inboundSchema:
   z.ZodType<
     GetDeploymentHasDeploymentsResponse200ApplicationJSONValue,
@@ -1786,7 +1905,9 @@ export const GetDeploymentHasDeploymentsResponse200ApplicationJSONValue$inboundS
     unknown
   > = smartUnion([
     types.string(),
-    GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Rewrites2$inboundSchema,
+    z.lazy(() =>
+      GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Rewrites2$inboundSchema
+    ),
   ]);
 
 export function getDeploymentHasDeploymentsResponse200ApplicationJSONValueFromJSON(
@@ -1813,7 +1934,9 @@ export const GetDeploymentHasDeploymentsResponse1$inboundSchema: z.ZodType<
   type: types.literal("host"),
   value: smartUnion([
     types.string(),
-    GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Rewrites2$inboundSchema,
+    z.lazy(() =>
+      GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Rewrites2$inboundSchema
+    ),
   ]),
 });
 
@@ -1835,13 +1958,13 @@ export const GetDeploymentServicesDeploymentsHas$inboundSchema: z.ZodType<
   unknown
 > = z.union([
   z.lazy(() => GetDeploymentHasDeploymentsResponse1$inboundSchema),
-  GetDeploymentHasDeploymentsResponse2$inboundSchema.and(
+  z.lazy(() => GetDeploymentHasDeploymentsResponse2$inboundSchema).and(
     z.object({ type: z.literal("cookie") }),
   ),
-  GetDeploymentHasDeploymentsResponse2$inboundSchema.and(
+  z.lazy(() => GetDeploymentHasDeploymentsResponse2$inboundSchema).and(
     z.object({ type: z.literal("header") }),
   ),
-  GetDeploymentHasDeploymentsResponse2$inboundSchema.and(
+  z.lazy(() => GetDeploymentHasDeploymentsResponse2$inboundSchema).and(
     z.object({ type: z.literal("query") }),
   ),
 ]);
@@ -2151,13 +2274,13 @@ export const GetDeploymentServicesRewrites$inboundSchema: z.ZodType<
   has: types.optional(
     z.array(z.union([
       z.lazy(() => GetDeploymentHasDeploymentsResponse1$inboundSchema),
-      GetDeploymentHasDeploymentsResponse2$inboundSchema.and(
-        z.object({ type: z.literal("cookie") }),
-      ),
-      GetDeploymentHasDeploymentsResponse2$inboundSchema.and(
+      z.lazy(() =>
+        GetDeploymentHasDeploymentsResponse2$inboundSchema
+      ).and(z.object({ type: z.literal("cookie") })),
+      z.lazy(() => GetDeploymentHasDeploymentsResponse2$inboundSchema).and(
         z.object({ type: z.literal("header") }),
       ),
-      GetDeploymentHasDeploymentsResponse2$inboundSchema.and(
+      z.lazy(() => GetDeploymentHasDeploymentsResponse2$inboundSchema).and(
         z.object({ type: z.literal("query") }),
       ),
     ])),
@@ -3337,6 +3460,32 @@ export function getDeploymentServicesDeploymentsMaxDurationFromJSON(
 }
 
 /** @internal */
+export const GetDeploymentExperimentalTriggersDeploymentsResponse3$inboundSchema:
+  z.ZodType<
+    GetDeploymentExperimentalTriggersDeploymentsResponse3,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    type: types.literal("schedule/v1beta"),
+  });
+
+export function getDeploymentExperimentalTriggersDeploymentsResponse3FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetDeploymentExperimentalTriggersDeploymentsResponse3,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentExperimentalTriggersDeploymentsResponse3$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetDeploymentExperimentalTriggersDeploymentsResponse3' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetDeploymentExperimentalTriggersDeploymentsResponse2$inboundSchema:
   z.ZodType<
     GetDeploymentExperimentalTriggersDeploymentsResponse2,
@@ -3412,6 +3561,9 @@ export const GetDeploymentServicesDeploymentsExperimentalTriggers$inboundSchema:
     z.lazy(() =>
       GetDeploymentExperimentalTriggersDeploymentsResponse2$inboundSchema
     ),
+    z.lazy(() =>
+      GetDeploymentExperimentalTriggersDeploymentsResponse3$inboundSchema
+    ),
   ]);
 
 export function getDeploymentServicesDeploymentsExperimentalTriggersFromJSON(
@@ -3459,6 +3611,9 @@ export const GetDeploymentServicesDeploymentsFunctions$inboundSchema: z.ZodType<
       ),
       z.lazy(() =>
         GetDeploymentExperimentalTriggersDeploymentsResponse2$inboundSchema
+      ),
+      z.lazy(() =>
+        GetDeploymentExperimentalTriggersDeploymentsResponse3$inboundSchema
       ),
     ])),
   ),

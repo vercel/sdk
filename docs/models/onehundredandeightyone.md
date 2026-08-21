@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndEightyOne } from "@vercel/sdk/models/edgemiddlewareinvocations.js";
+import { OneHundredAndEightyOne } from "@vercel/sdk/models/edgeconfigwrite.js";
 
 let value: OneHundredAndEightyOne = {
   logDrainUrl: "https://abandoned-reboot.name/",

@@ -27,16 +27,19 @@ let value: Environments = {
     {
       id: "<id>",
       outcome: {
-        type: "experiment",
-      },
-      conditions: [
-        {
-          lhs: {
-            type: "segment",
-          },
-          cmp: "containsAnyOf",
+        type: "rollout",
+        base: {
+          type: "entity",
+          kind: "<value>",
+          attribute: "<value>",
         },
-      ],
+        defaultVariantId: "<id>",
+        startTimestamp: 5347.28,
+        rollFromVariantId: "<id>",
+        rollToVariantId: "<id>",
+        slots: [],
+      },
+      conditions: [],
     },
   ],
 };

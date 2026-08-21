@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateProjectContentHint8 } from "@vercel/sdk/models/updateprojectbranchmatcher.js";
+import { UpdateProjectContentHint8 } from "@vercel/sdk/models/updateprojectdomains.js";
 
 let value: UpdateProjectContentHint8 = {
   type: "postgres-url",

@@ -10,19 +10,6 @@ import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
- * VHS-readiness status, or `null` for a multi-platform index.
- */
-export const VcrImageListItemStatus = {
-  Preparing: "preparing",
-  Ready: "ready",
-  Unoptimized: "unoptimized",
-} as const;
-/**
- * VHS-readiness status, or `null` for a multi-platform index.
- */
-export type VcrImageListItemStatus = ClosedEnum<typeof VcrImageListItemStatus>;
-
-/**
  * Whether the manifest is a multi-platform image index, a single-platform image manifest or an attestation.
  */
 export const VcrImageListItemKind = {
@@ -36,34 +23,22 @@ export const VcrImageListItemKind = {
 export type VcrImageListItemKind = ClosedEnum<typeof VcrImageListItemKind>;
 
 /**
- * Optional VHS drive configuration captured for an optimized image.
+ * VHS-readiness status, or `null` for a multi-platform index.
  */
-export type Config = {
-  command?: Array<string> | undefined;
-  entrypoint?: Array<string> | undefined;
-  workingDir?: string | undefined;
-};
-
+export const VcrImageListItemStatus = {
+  Preparing: "preparing",
+  Ready: "ready",
+  Unoptimized: "unoptimized",
+} as const;
 /**
- * Converted VHS drive data, present once an image has been optimized for sandbox launch.
+ * VHS-readiness status, or `null` for a multi-platform index.
  */
-export type Vhs = {
-  path: string;
-  digest: string;
-  /**
-   * Optional VHS drive configuration captured for an optimized image.
-   */
-  config?: Config | undefined;
-};
+export type VcrImageListItemStatus = ClosedEnum<typeof VcrImageListItemStatus>;
 
 /**
  * An image enriched with its tags and VHS-readiness status, as returned when listing a repository's images.
  */
 export type VcrImageListItem = {
-  /**
-   * VHS-readiness status, or `null` for a multi-platform index.
-   */
-  status: VcrImageListItemStatus | null;
   /**
    * Tags pointing at this image's manifest.
    */
@@ -101,9 +76,9 @@ export type VcrImageListItem = {
    */
   sizeInBytes: number;
   /**
-   * Converted VHS drive data, present once an image has been optimized for sandbox launch.
+   * VHS-readiness status, or `null` for a multi-platform index.
    */
-  vhs?: Vhs | undefined;
+  status: VcrImageListItemStatus | null;
   /**
    * ISO 8601 timestamp of when the image was created.
    */
@@ -111,50 +86,14 @@ export type VcrImageListItem = {
 };
 
 /** @internal */
-export const VcrImageListItemStatus$inboundSchema: z.ZodNativeEnum<
-  typeof VcrImageListItemStatus
-> = z.nativeEnum(VcrImageListItemStatus);
-
-/** @internal */
 export const VcrImageListItemKind$inboundSchema: z.ZodNativeEnum<
   typeof VcrImageListItemKind
 > = z.nativeEnum(VcrImageListItemKind);
 
 /** @internal */
-export const Config$inboundSchema: z.ZodType<Config, z.ZodTypeDef, unknown> = z
-  .object({
-    command: types.optional(z.array(types.string())),
-    entrypoint: types.optional(z.array(types.string())),
-    workingDir: types.optional(types.string()),
-  });
-
-export function configFromJSON(
-  jsonString: string,
-): SafeParseResult<Config, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Config$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Config' from JSON`,
-  );
-}
-
-/** @internal */
-export const Vhs$inboundSchema: z.ZodType<Vhs, z.ZodTypeDef, unknown> = z
-  .object({
-    path: types.string(),
-    digest: types.string(),
-    config: types.optional(z.lazy(() => Config$inboundSchema)),
-  });
-
-export function vhsFromJSON(
-  jsonString: string,
-): SafeParseResult<Vhs, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Vhs$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Vhs' from JSON`,
-  );
-}
+export const VcrImageListItemStatus$inboundSchema: z.ZodNativeEnum<
+  typeof VcrImageListItemStatus
+> = z.nativeEnum(VcrImageListItemStatus);
 
 /** @internal */
 export const VcrImageListItem$inboundSchema: z.ZodType<
@@ -162,7 +101,6 @@ export const VcrImageListItem$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  status: types.nullable(VcrImageListItemStatus$inboundSchema),
   tags: z.array(types.string()),
   id: types.string(),
   repositoryId: types.string(),
@@ -172,7 +110,7 @@ export const VcrImageListItem$inboundSchema: z.ZodType<
   arch: types.optional(types.string()),
   pushedBy: types.optional(types.string()),
   sizeInBytes: types.number(),
-  vhs: types.optional(z.lazy(() => Vhs$inboundSchema)),
+  status: types.nullable(VcrImageListItemStatus$inboundSchema),
   createdAt: types.string(),
 });
 

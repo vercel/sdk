@@ -11,19 +11,6 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 import { VcrImageLayer, VcrImageLayer$inboundSchema } from "./vcrimagelayer.js";
 
 /**
- * VHS-readiness status, or `null` for a multi-platform index.
- */
-export const VcrImageDetailStatus = {
-  Preparing: "preparing",
-  Ready: "ready",
-  Unoptimized: "unoptimized",
-} as const;
-/**
- * VHS-readiness status, or `null` for a multi-platform index.
- */
-export type VcrImageDetailStatus = ClosedEnum<typeof VcrImageDetailStatus>;
-
-/**
  * Whether the manifest is a multi-platform image index, a single-platform image manifest or an attestation.
  */
 export const VcrImageDetailKind = {
@@ -37,35 +24,23 @@ export const VcrImageDetailKind = {
 export type VcrImageDetailKind = ClosedEnum<typeof VcrImageDetailKind>;
 
 /**
- * Optional VHS drive configuration captured for an optimized image.
+ * VHS-readiness status, or `null` for a multi-platform index.
  */
-export type VcrImageDetailConfig = {
-  command?: Array<string> | undefined;
-  entrypoint?: Array<string> | undefined;
-  workingDir?: string | undefined;
-};
-
+export const VcrImageDetailStatus = {
+  Preparing: "preparing",
+  Ready: "ready",
+  Unoptimized: "unoptimized",
+} as const;
 /**
- * Converted VHS drive data, present once an image has been optimized for sandbox launch.
+ * VHS-readiness status, or `null` for a multi-platform index.
  */
-export type VcrImageDetailVhs = {
-  path: string;
-  digest: string;
-  /**
-   * Optional VHS drive configuration captured for an optimized image.
-   */
-  config?: VcrImageDetailConfig | undefined;
-};
+export type VcrImageDetailStatus = ClosedEnum<typeof VcrImageDetailStatus>;
 
 /**
  * A single image with its tags, status and resolved Dockerfile layer history.
  */
 export type VcrImageDetail = {
   layers: Array<VcrImageLayer>;
-  /**
-   * VHS-readiness status, or `null` for a multi-platform index.
-   */
-  status: VcrImageDetailStatus | null;
   /**
    * Tags pointing at this image's manifest.
    */
@@ -103,9 +78,9 @@ export type VcrImageDetail = {
    */
   sizeInBytes: number;
   /**
-   * Converted VHS drive data, present once an image has been optimized for sandbox launch.
+   * VHS-readiness status, or `null` for a multi-platform index.
    */
-  vhs?: VcrImageDetailVhs | undefined;
+  status: VcrImageDetailStatus | null;
   /**
    * ISO 8601 timestamp of when the image was created.
    */
@@ -113,56 +88,14 @@ export type VcrImageDetail = {
 };
 
 /** @internal */
-export const VcrImageDetailStatus$inboundSchema: z.ZodNativeEnum<
-  typeof VcrImageDetailStatus
-> = z.nativeEnum(VcrImageDetailStatus);
-
-/** @internal */
 export const VcrImageDetailKind$inboundSchema: z.ZodNativeEnum<
   typeof VcrImageDetailKind
 > = z.nativeEnum(VcrImageDetailKind);
 
 /** @internal */
-export const VcrImageDetailConfig$inboundSchema: z.ZodType<
-  VcrImageDetailConfig,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  command: types.optional(z.array(types.string())),
-  entrypoint: types.optional(z.array(types.string())),
-  workingDir: types.optional(types.string()),
-});
-
-export function vcrImageDetailConfigFromJSON(
-  jsonString: string,
-): SafeParseResult<VcrImageDetailConfig, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => VcrImageDetailConfig$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'VcrImageDetailConfig' from JSON`,
-  );
-}
-
-/** @internal */
-export const VcrImageDetailVhs$inboundSchema: z.ZodType<
-  VcrImageDetailVhs,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  path: types.string(),
-  digest: types.string(),
-  config: types.optional(z.lazy(() => VcrImageDetailConfig$inboundSchema)),
-});
-
-export function vcrImageDetailVhsFromJSON(
-  jsonString: string,
-): SafeParseResult<VcrImageDetailVhs, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => VcrImageDetailVhs$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'VcrImageDetailVhs' from JSON`,
-  );
-}
+export const VcrImageDetailStatus$inboundSchema: z.ZodNativeEnum<
+  typeof VcrImageDetailStatus
+> = z.nativeEnum(VcrImageDetailStatus);
 
 /** @internal */
 export const VcrImageDetail$inboundSchema: z.ZodType<
@@ -171,7 +104,6 @@ export const VcrImageDetail$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   layers: z.array(VcrImageLayer$inboundSchema),
-  status: types.nullable(VcrImageDetailStatus$inboundSchema),
   tags: z.array(types.string()),
   id: types.string(),
   repositoryId: types.string(),
@@ -181,7 +113,7 @@ export const VcrImageDetail$inboundSchema: z.ZodType<
   arch: types.optional(types.string()),
   pushedBy: types.optional(types.string()),
   sizeInBytes: types.number(),
-  vhs: types.optional(z.lazy(() => VcrImageDetailVhs$inboundSchema)),
+  status: types.nullable(VcrImageDetailStatus$inboundSchema),
   createdAt: types.string(),
 });
 

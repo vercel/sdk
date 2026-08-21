@@ -31,6 +31,10 @@ import {
   OneHundredAndEightyTwo$inboundSchema,
   OneHundredAndNinety,
   OneHundredAndNinety$inboundSchema,
+  OneHundredAndNinetyFive,
+  OneHundredAndNinetyFive$inboundSchema,
+  OneHundredAndNinetyFour,
+  OneHundredAndNinetyFour$inboundSchema,
   OneHundredAndNinetyOne,
   OneHundredAndNinetyOne$inboundSchema,
   OneHundredAndNinetyThree,
@@ -69,16 +73,260 @@ import {
   OneHundredAndSixtySeven$inboundSchema,
   OneHundredAndSixtySix,
   OneHundredAndSixtySix$inboundSchema,
-} from "./edgemiddlewareinvocations.js";
+} from "./edgeconfigwrite.js";
 import {
-  Eighteen,
-  Eighteen$inboundSchema,
+  EightyEight,
+  EightyEight$inboundSchema,
+  EightyNine,
+  EightyNine$inboundSchema,
+  EightySeven,
+  EightySeven$inboundSchema,
+  Ninety,
+  Ninety$inboundSchema,
+  NinetyEight,
+  NinetyEight$inboundSchema,
+  NinetyFive,
+  NinetyFive$inboundSchema,
+  NinetyFour,
+  NinetyFour$inboundSchema,
+  NinetyNine,
+  NinetyNine$inboundSchema,
+  NinetyOne,
+  NinetyOne$inboundSchema,
+  NinetySeven,
+  NinetySeven$inboundSchema,
+  NinetySix,
+  NinetySix$inboundSchema,
+  NinetyThree,
+  NinetyThree$inboundSchema,
+  NinetyTwo,
+  NinetyTwo$inboundSchema,
+  OneHundred,
+  OneHundred$inboundSchema,
+  OneHundredAndEight,
+  OneHundredAndEight$inboundSchema,
+  OneHundredAndEighteen,
+  OneHundredAndEighteen$inboundSchema,
+  OneHundredAndEleven,
+  OneHundredAndEleven$inboundSchema,
+  OneHundredAndFifteen,
+  OneHundredAndFifteen$inboundSchema,
+  OneHundredAndFive,
+  OneHundredAndFive$inboundSchema,
+  OneHundredAndFour,
+  OneHundredAndFour$inboundSchema,
+  OneHundredAndFourteen,
+  OneHundredAndFourteen$inboundSchema,
+  OneHundredAndNine,
+  OneHundredAndNine$inboundSchema,
+  OneHundredAndNineteen,
+  OneHundredAndNineteen$inboundSchema,
+  OneHundredAndOne,
+  OneHundredAndOne$inboundSchema,
+  OneHundredAndSeven,
+  OneHundredAndSeven$inboundSchema,
+  OneHundredAndSeventeen,
+  OneHundredAndSeventeen$inboundSchema,
+  OneHundredAndSix,
+  OneHundredAndSix$inboundSchema,
+  OneHundredAndSixteen,
+  OneHundredAndSixteen$inboundSchema,
+  OneHundredAndTen,
+  OneHundredAndTen$inboundSchema,
+  OneHundredAndThirteen,
+  OneHundredAndThirteen$inboundSchema,
+  OneHundredAndThirty,
+  OneHundredAndThirty$inboundSchema,
+  OneHundredAndThirtyEight,
+  OneHundredAndThirtyEight$inboundSchema,
+  OneHundredAndThirtyFive,
+  OneHundredAndThirtyFive$inboundSchema,
+  OneHundredAndThirtyFour,
+  OneHundredAndThirtyFour$inboundSchema,
+  OneHundredAndThirtyNine,
+  OneHundredAndThirtyNine$inboundSchema,
+  OneHundredAndThirtyOne,
+  OneHundredAndThirtyOne$inboundSchema,
+  OneHundredAndThirtySeven,
+  OneHundredAndThirtySeven$inboundSchema,
+  OneHundredAndThirtySix,
+  OneHundredAndThirtySix$inboundSchema,
+  OneHundredAndThirtyThree,
+  OneHundredAndThirtyThree$inboundSchema,
+  OneHundredAndThirtyTwo,
+  OneHundredAndThirtyTwo$inboundSchema,
+  OneHundredAndThree,
+  OneHundredAndThree$inboundSchema,
+  OneHundredAndTwelve,
+  OneHundredAndTwelve$inboundSchema,
+  OneHundredAndTwenty,
+  OneHundredAndTwenty$inboundSchema,
+  OneHundredAndTwentyEight,
+  OneHundredAndTwentyEight$inboundSchema,
+  OneHundredAndTwentyFive,
+  OneHundredAndTwentyFive$inboundSchema,
+  OneHundredAndTwentyFour,
+  OneHundredAndTwentyFour$inboundSchema,
+  OneHundredAndTwentyNine,
+  OneHundredAndTwentyNine$inboundSchema,
+  OneHundredAndTwentyOne,
+  OneHundredAndTwentyOne$inboundSchema,
+  OneHundredAndTwentySeven,
+  OneHundredAndTwentySeven$inboundSchema,
+  OneHundredAndTwentySix,
+  OneHundredAndTwentySix$inboundSchema,
+  OneHundredAndTwentyThree,
+  OneHundredAndTwentyThree$inboundSchema,
+  OneHundredAndTwentyTwo,
+  OneHundredAndTwentyTwo$inboundSchema,
+  OneHundredAndTwo,
+  OneHundredAndTwo$inboundSchema,
+} from "./eightyseven.js";
+import {
+  OneHundredAndNinetyEight,
+  OneHundredAndNinetyEight$inboundSchema,
+  OneHundredAndNinetyNine,
+  OneHundredAndNinetyNine$inboundSchema,
+  OneHundredAndNinetySeven,
+  OneHundredAndNinetySeven$inboundSchema,
+  OneHundredAndNinetySix,
+  OneHundredAndNinetySix$inboundSchema,
+  TwoHundred,
+  TwoHundred$inboundSchema,
+  TwoHundredAndEight,
+  TwoHundredAndEight$inboundSchema,
+  TwoHundredAndEighteen,
+  TwoHundredAndEighteen$inboundSchema,
+  TwoHundredAndEleven,
+  TwoHundredAndEleven$inboundSchema,
+  TwoHundredAndFifteen,
+  TwoHundredAndFifteen$inboundSchema,
+  TwoHundredAndFifty,
+  TwoHundredAndFifty$inboundSchema,
+  TwoHundredAndFiftyEight,
+  TwoHundredAndFiftyEight$inboundSchema,
+  TwoHundredAndFiftyFive,
+  TwoHundredAndFiftyFive$inboundSchema,
+  TwoHundredAndFiftyFour,
+  TwoHundredAndFiftyFour$inboundSchema,
+  TwoHundredAndFiftyNine,
+  TwoHundredAndFiftyNine$inboundSchema,
+  TwoHundredAndFiftyOne,
+  TwoHundredAndFiftyOne$inboundSchema,
+  TwoHundredAndFiftySeven,
+  TwoHundredAndFiftySeven$inboundSchema,
+  TwoHundredAndFiftySix,
+  TwoHundredAndFiftySix$inboundSchema,
+  TwoHundredAndFiftyThree,
+  TwoHundredAndFiftyThree$inboundSchema,
+  TwoHundredAndFiftyTwo,
+  TwoHundredAndFiftyTwo$inboundSchema,
+  TwoHundredAndFive,
+  TwoHundredAndFive$inboundSchema,
+  TwoHundredAndForty,
+  TwoHundredAndForty$inboundSchema,
+  TwoHundredAndFortyEight,
+  TwoHundredAndFortyEight$inboundSchema,
+  TwoHundredAndFortyFive,
+  TwoHundredAndFortyFive$inboundSchema,
+  TwoHundredAndFortyFour,
+  TwoHundredAndFortyFour$inboundSchema,
+  TwoHundredAndFortyNine,
+  TwoHundredAndFortyNine$inboundSchema,
+  TwoHundredAndFortyOne,
+  TwoHundredAndFortyOne$inboundSchema,
+  TwoHundredAndFortySeven,
+  TwoHundredAndFortySeven$inboundSchema,
+  TwoHundredAndFortySix,
+  TwoHundredAndFortySix$inboundSchema,
+  TwoHundredAndFortyThree,
+  TwoHundredAndFortyThree$inboundSchema,
+  TwoHundredAndFortyTwo,
+  TwoHundredAndFortyTwo$inboundSchema,
+  TwoHundredAndFour,
+  TwoHundredAndFour$inboundSchema,
+  TwoHundredAndFourteen,
+  TwoHundredAndFourteen$inboundSchema,
+  TwoHundredAndNine,
+  TwoHundredAndNine$inboundSchema,
+  TwoHundredAndNineteen,
+  TwoHundredAndNineteen$inboundSchema,
+  TwoHundredAndOne,
+  TwoHundredAndOne$inboundSchema,
+  TwoHundredAndSeven,
+  TwoHundredAndSeven$inboundSchema,
+  TwoHundredAndSeventeen,
+  TwoHundredAndSeventeen$inboundSchema,
+  TwoHundredAndSix,
+  TwoHundredAndSix$inboundSchema,
+  TwoHundredAndSixteen,
+  TwoHundredAndSixteen$inboundSchema,
+  TwoHundredAndSixty,
+  TwoHundredAndSixty$inboundSchema,
+  TwoHundredAndSixtyOne,
+  TwoHundredAndSixtyOne$inboundSchema,
+  TwoHundredAndTen,
+  TwoHundredAndTen$inboundSchema,
+  TwoHundredAndThirteen,
+  TwoHundredAndThirteen$inboundSchema,
+  TwoHundredAndThirty,
+  TwoHundredAndThirty$inboundSchema,
+  TwoHundredAndThirtyEight,
+  TwoHundredAndThirtyEight$inboundSchema,
+  TwoHundredAndThirtyFive,
+  TwoHundredAndThirtyFive$inboundSchema,
+  TwoHundredAndThirtyFour,
+  TwoHundredAndThirtyFour$inboundSchema,
+  TwoHundredAndThirtyNine,
+  TwoHundredAndThirtyNine$inboundSchema,
+  TwoHundredAndThirtyOne,
+  TwoHundredAndThirtyOne$inboundSchema,
+  TwoHundredAndThirtySeven,
+  TwoHundredAndThirtySeven$inboundSchema,
+  TwoHundredAndThirtySix,
+  TwoHundredAndThirtySix$inboundSchema,
+  TwoHundredAndThirtyThree,
+  TwoHundredAndThirtyThree$inboundSchema,
+  TwoHundredAndThirtyTwo,
+  TwoHundredAndThirtyTwo$inboundSchema,
+  TwoHundredAndThree,
+  TwoHundredAndThree$inboundSchema,
+  TwoHundredAndTwelve,
+  TwoHundredAndTwelve$inboundSchema,
+  TwoHundredAndTwenty,
+  TwoHundredAndTwenty$inboundSchema,
+  TwoHundredAndTwentyEight,
+  TwoHundredAndTwentyEight$inboundSchema,
+  TwoHundredAndTwentyFive,
+  TwoHundredAndTwentyFive$inboundSchema,
+  TwoHundredAndTwentyFour,
+  TwoHundredAndTwentyFour$inboundSchema,
+  TwoHundredAndTwentyNine,
+  TwoHundredAndTwentyNine$inboundSchema,
+  TwoHundredAndTwentyOne,
+  TwoHundredAndTwentyOne$inboundSchema,
+  TwoHundredAndTwentySeven,
+  TwoHundredAndTwentySeven$inboundSchema,
+  TwoHundredAndTwentySix,
+  TwoHundredAndTwentySix$inboundSchema,
+  TwoHundredAndTwentyThree,
+  TwoHundredAndTwentyThree$inboundSchema,
+  TwoHundredAndTwentyTwo,
+  TwoHundredAndTwentyTwo$inboundSchema,
+  TwoHundredAndTwo,
+  TwoHundredAndTwo$inboundSchema,
+} from "./onehundredandninetysix.js";
+import {
   Eighty,
   Eighty$inboundSchema,
+  EightyFive,
+  EightyFive$inboundSchema,
   EightyFour,
   EightyFour$inboundSchema,
   EightyOne,
   EightyOne$inboundSchema,
+  EightySix,
+  EightySix$inboundSchema,
   EightyThree,
   EightyThree$inboundSchema,
   EightyTwo,
@@ -125,6 +373,8 @@ import {
   FortyTwo$inboundSchema,
   Nineteen,
   Nineteen$inboundSchema,
+  PayloadScopeType,
+  PayloadScopeType$inboundSchema,
   Seventy,
   Seventy$inboundSchema,
   SeventyEight,
@@ -205,141 +455,108 @@ import {
   TwentyThree$inboundSchema,
   TwentyTwo,
   TwentyTwo$inboundSchema,
-} from "./eighteen.js";
+} from "./payloadscopetype.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
-  OneHundredAndNinetyEight,
-  OneHundredAndNinetyEight$inboundSchema,
-  OneHundredAndNinetyFive,
-  OneHundredAndNinetyFive$inboundSchema,
-  OneHundredAndNinetyFour,
-  OneHundredAndNinetyFour$inboundSchema,
-  OneHundredAndNinetyNine,
-  OneHundredAndNinetyNine$inboundSchema,
-  OneHundredAndNinetySeven,
-  OneHundredAndNinetySeven$inboundSchema,
-  OneHundredAndNinetySix,
-  OneHundredAndNinetySix$inboundSchema,
-  TwoHundred,
-  TwoHundred$inboundSchema,
-  TwoHundredAndEight,
-  TwoHundredAndEight$inboundSchema,
-  TwoHundredAndEighteen,
-  TwoHundredAndEighteen$inboundSchema,
-  TwoHundredAndEleven,
-  TwoHundredAndEleven$inboundSchema,
-  TwoHundredAndFifteen,
-  TwoHundredAndFifteen$inboundSchema,
-  TwoHundredAndFifty,
-  TwoHundredAndFifty$inboundSchema,
-  TwoHundredAndFiftyEight,
-  TwoHundredAndFiftyEight$inboundSchema,
-  TwoHundredAndFiftyFive,
-  TwoHundredAndFiftyFive$inboundSchema,
-  TwoHundredAndFiftyFour,
-  TwoHundredAndFiftyFour$inboundSchema,
-  TwoHundredAndFiftyNine,
-  TwoHundredAndFiftyNine$inboundSchema,
-  TwoHundredAndFiftyOne,
-  TwoHundredAndFiftyOne$inboundSchema,
-  TwoHundredAndFiftySeven,
-  TwoHundredAndFiftySeven$inboundSchema,
-  TwoHundredAndFiftySix,
-  TwoHundredAndFiftySix$inboundSchema,
-  TwoHundredAndFiftyThree,
-  TwoHundredAndFiftyThree$inboundSchema,
-  TwoHundredAndFiftyTwo,
-  TwoHundredAndFiftyTwo$inboundSchema,
-  TwoHundredAndFive,
-  TwoHundredAndFive$inboundSchema,
-  TwoHundredAndForty,
-  TwoHundredAndForty$inboundSchema,
-  TwoHundredAndFortyEight,
-  TwoHundredAndFortyEight$inboundSchema,
-  TwoHundredAndFortyFive,
-  TwoHundredAndFortyFive$inboundSchema,
-  TwoHundredAndFortyFour,
-  TwoHundredAndFortyFour$inboundSchema,
-  TwoHundredAndFortyNine,
-  TwoHundredAndFortyNine$inboundSchema,
-  TwoHundredAndFortyOne,
-  TwoHundredAndFortyOne$inboundSchema,
-  TwoHundredAndFortySeven,
-  TwoHundredAndFortySeven$inboundSchema,
-  TwoHundredAndFortySix,
-  TwoHundredAndFortySix$inboundSchema,
-  TwoHundredAndFortyThree,
-  TwoHundredAndFortyThree$inboundSchema,
-  TwoHundredAndFortyTwo,
-  TwoHundredAndFortyTwo$inboundSchema,
-  TwoHundredAndFour,
-  TwoHundredAndFour$inboundSchema,
-  TwoHundredAndFourteen,
-  TwoHundredAndFourteen$inboundSchema,
-  TwoHundredAndNine,
-  TwoHundredAndNine$inboundSchema,
-  TwoHundredAndNineteen,
-  TwoHundredAndNineteen$inboundSchema,
-  TwoHundredAndOne,
-  TwoHundredAndOne$inboundSchema,
-  TwoHundredAndSeven,
-  TwoHundredAndSeven$inboundSchema,
-  TwoHundredAndSeventeen,
-  TwoHundredAndSeventeen$inboundSchema,
-  TwoHundredAndSix,
-  TwoHundredAndSix$inboundSchema,
-  TwoHundredAndSixteen,
-  TwoHundredAndSixteen$inboundSchema,
-  TwoHundredAndTen,
-  TwoHundredAndTen$inboundSchema,
-  TwoHundredAndThirteen,
-  TwoHundredAndThirteen$inboundSchema,
-  TwoHundredAndThirty,
-  TwoHundredAndThirty$inboundSchema,
-  TwoHundredAndThirtyEight,
-  TwoHundredAndThirtyEight$inboundSchema,
-  TwoHundredAndThirtyFive,
-  TwoHundredAndThirtyFive$inboundSchema,
-  TwoHundredAndThirtyFour,
-  TwoHundredAndThirtyFour$inboundSchema,
-  TwoHundredAndThirtyNine,
-  TwoHundredAndThirtyNine$inboundSchema,
-  TwoHundredAndThirtyOne,
-  TwoHundredAndThirtyOne$inboundSchema,
-  TwoHundredAndThirtySeven,
-  TwoHundredAndThirtySeven$inboundSchema,
-  TwoHundredAndThirtySix,
-  TwoHundredAndThirtySix$inboundSchema,
-  TwoHundredAndThirtyThree,
-  TwoHundredAndThirtyThree$inboundSchema,
-  TwoHundredAndThirtyTwo,
-  TwoHundredAndThirtyTwo$inboundSchema,
-  TwoHundredAndThree,
-  TwoHundredAndThree$inboundSchema,
-  TwoHundredAndTwelve,
-  TwoHundredAndTwelve$inboundSchema,
-  TwoHundredAndTwenty,
-  TwoHundredAndTwenty$inboundSchema,
-  TwoHundredAndTwentyEight,
-  TwoHundredAndTwentyEight$inboundSchema,
-  TwoHundredAndTwentyFive,
-  TwoHundredAndTwentyFive$inboundSchema,
-  TwoHundredAndTwentyFour,
-  TwoHundredAndTwentyFour$inboundSchema,
-  TwoHundredAndTwentyNine,
-  TwoHundredAndTwentyNine$inboundSchema,
-  TwoHundredAndTwentyOne,
-  TwoHundredAndTwentyOne$inboundSchema,
-  TwoHundredAndTwentySeven,
-  TwoHundredAndTwentySeven$inboundSchema,
-  TwoHundredAndTwentySix,
-  TwoHundredAndTwentySix$inboundSchema,
-  TwoHundredAndTwentyThree,
-  TwoHundredAndTwentyThree$inboundSchema,
-  TwoHundredAndTwentyTwo,
-  TwoHundredAndTwentyTwo$inboundSchema,
-  TwoHundredAndTwo,
-  TwoHundredAndTwo$inboundSchema,
-} from "./onehundredandninetyfour.js";
+  Categories,
+  Categories$inboundSchema,
+  Entities,
+  Entities$inboundSchema,
+  FourHundred,
+  FourHundred$inboundSchema,
+  FourHundredAndEight,
+  FourHundredAndEight$inboundSchema,
+  FourHundredAndEighteen,
+  FourHundredAndEighteen$inboundSchema,
+  FourHundredAndEleven,
+  FourHundredAndEleven$inboundSchema,
+  FourHundredAndFifteen,
+  FourHundredAndFifteen$inboundSchema,
+  FourHundredAndFive,
+  FourHundredAndFive$inboundSchema,
+  FourHundredAndFour,
+  FourHundredAndFour$inboundSchema,
+  FourHundredAndFourteen,
+  FourHundredAndFourteen$inboundSchema,
+  FourHundredAndNine,
+  FourHundredAndNine$inboundSchema,
+  FourHundredAndNineteen,
+  FourHundredAndNineteen$inboundSchema,
+  FourHundredAndOne,
+  FourHundredAndOne$inboundSchema,
+  FourHundredAndSeven,
+  FourHundredAndSeven$inboundSchema,
+  FourHundredAndSeventeen,
+  FourHundredAndSeventeen$inboundSchema,
+  FourHundredAndSix,
+  FourHundredAndSix$inboundSchema,
+  FourHundredAndSixteen,
+  FourHundredAndSixteen$inboundSchema,
+  FourHundredAndTen,
+  FourHundredAndTen$inboundSchema,
+  FourHundredAndThirteen,
+  FourHundredAndThirteen$inboundSchema,
+  FourHundredAndThirty,
+  FourHundredAndThirty$inboundSchema,
+  FourHundredAndThirtyEight,
+  FourHundredAndThirtyEight$inboundSchema,
+  FourHundredAndThirtyFive,
+  FourHundredAndThirtyFive$inboundSchema,
+  FourHundredAndThirtyFour,
+  FourHundredAndThirtyFour$inboundSchema,
+  FourHundredAndThirtyNine,
+  FourHundredAndThirtyNine$inboundSchema,
+  FourHundredAndThirtyOne,
+  FourHundredAndThirtyOne$inboundSchema,
+  FourHundredAndThirtySeven,
+  FourHundredAndThirtySeven$inboundSchema,
+  FourHundredAndThirtySix,
+  FourHundredAndThirtySix$inboundSchema,
+  FourHundredAndThirtyThree,
+  FourHundredAndThirtyThree$inboundSchema,
+  FourHundredAndThirtyTwo,
+  FourHundredAndThirtyTwo$inboundSchema,
+  FourHundredAndThree,
+  FourHundredAndThree$inboundSchema,
+  FourHundredAndTwelve,
+  FourHundredAndTwelve$inboundSchema,
+  FourHundredAndTwenty,
+  FourHundredAndTwenty$inboundSchema,
+  FourHundredAndTwentyEight,
+  FourHundredAndTwentyEight$inboundSchema,
+  FourHundredAndTwentyFive,
+  FourHundredAndTwentyFive$inboundSchema,
+  FourHundredAndTwentyFour,
+  FourHundredAndTwentyFour$inboundSchema,
+  FourHundredAndTwentyNine,
+  FourHundredAndTwentyNine$inboundSchema,
+  FourHundredAndTwentyOne,
+  FourHundredAndTwentyOne$inboundSchema,
+  FourHundredAndTwentySeven,
+  FourHundredAndTwentySeven$inboundSchema,
+  FourHundredAndTwentySix,
+  FourHundredAndTwentySix$inboundSchema,
+  FourHundredAndTwentyThree,
+  FourHundredAndTwentyThree$inboundSchema,
+  FourHundredAndTwentyTwo,
+  FourHundredAndTwentyTwo$inboundSchema,
+  FourHundredAndTwo,
+  FourHundredAndTwo$inboundSchema,
+  Principal,
+  Principal$inboundSchema,
+  ThreeHundredAndNinetyEight,
+  ThreeHundredAndNinetyEight$inboundSchema,
+  ThreeHundredAndNinetyNine,
+  ThreeHundredAndNinetyNine$inboundSchema,
+  ThreeHundredAndNinetySeven,
+  ThreeHundredAndNinetySeven$inboundSchema,
+  User,
+  User$inboundSchema,
+  UserEventType,
+  UserEventType$inboundSchema,
+  Via,
+  Via$inboundSchema,
+} from "./threehundredandninetyseven.js";
 import {
   OneHundredAndFifty,
   OneHundredAndFifty$inboundSchema,
@@ -389,114 +606,7 @@ import {
   OneHundredAndSixtyThree$inboundSchema,
   OneHundredAndSixtyTwo,
   OneHundredAndSixtyTwo$inboundSchema,
-  OneHundredAndThirtyEight,
-  OneHundredAndThirtyEight$inboundSchema,
-  OneHundredAndThirtyNine,
-  OneHundredAndThirtyNine$inboundSchema,
-  OneHundredAndThirtySeven,
-  OneHundredAndThirtySeven$inboundSchema,
-} from "./onehundredandthirtyseven.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
-import {
-  Categories,
-  Categories$inboundSchema,
-  Entities,
-  Entities$inboundSchema,
-  FourHundred,
-  FourHundred$inboundSchema,
-  FourHundredAndEight,
-  FourHundredAndEight$inboundSchema,
-  FourHundredAndEighteen,
-  FourHundredAndEighteen$inboundSchema,
-  FourHundredAndEleven,
-  FourHundredAndEleven$inboundSchema,
-  FourHundredAndFifteen,
-  FourHundredAndFifteen$inboundSchema,
-  FourHundredAndFive,
-  FourHundredAndFive$inboundSchema,
-  FourHundredAndFour,
-  FourHundredAndFour$inboundSchema,
-  FourHundredAndFourteen,
-  FourHundredAndFourteen$inboundSchema,
-  FourHundredAndNine,
-  FourHundredAndNine$inboundSchema,
-  FourHundredAndNineteen,
-  FourHundredAndNineteen$inboundSchema,
-  FourHundredAndOne,
-  FourHundredAndOne$inboundSchema,
-  FourHundredAndSeven,
-  FourHundredAndSeven$inboundSchema,
-  FourHundredAndSeventeen,
-  FourHundredAndSeventeen$inboundSchema,
-  FourHundredAndSix,
-  FourHundredAndSix$inboundSchema,
-  FourHundredAndSixteen,
-  FourHundredAndSixteen$inboundSchema,
-  FourHundredAndTen,
-  FourHundredAndTen$inboundSchema,
-  FourHundredAndThirteen,
-  FourHundredAndThirteen$inboundSchema,
-  FourHundredAndThirty,
-  FourHundredAndThirty$inboundSchema,
-  FourHundredAndThirtyEight,
-  FourHundredAndThirtyEight$inboundSchema,
-  FourHundredAndThirtyFive,
-  FourHundredAndThirtyFive$inboundSchema,
-  FourHundredAndThirtyFour,
-  FourHundredAndThirtyFour$inboundSchema,
-  FourHundredAndThirtyOne,
-  FourHundredAndThirtyOne$inboundSchema,
-  FourHundredAndThirtySeven,
-  FourHundredAndThirtySeven$inboundSchema,
-  FourHundredAndThirtySix,
-  FourHundredAndThirtySix$inboundSchema,
-  FourHundredAndThirtyThree,
-  FourHundredAndThirtyThree$inboundSchema,
-  FourHundredAndThirtyTwo,
-  FourHundredAndThirtyTwo$inboundSchema,
-  FourHundredAndThree,
-  FourHundredAndThree$inboundSchema,
-  FourHundredAndTwelve,
-  FourHundredAndTwelve$inboundSchema,
-  FourHundredAndTwenty,
-  FourHundredAndTwenty$inboundSchema,
-  FourHundredAndTwentyEight,
-  FourHundredAndTwentyEight$inboundSchema,
-  FourHundredAndTwentyFive,
-  FourHundredAndTwentyFive$inboundSchema,
-  FourHundredAndTwentyFour,
-  FourHundredAndTwentyFour$inboundSchema,
-  FourHundredAndTwentyNine,
-  FourHundredAndTwentyNine$inboundSchema,
-  FourHundredAndTwentyOne,
-  FourHundredAndTwentyOne$inboundSchema,
-  FourHundredAndTwentySeven,
-  FourHundredAndTwentySeven$inboundSchema,
-  FourHundredAndTwentySix,
-  FourHundredAndTwentySix$inboundSchema,
-  FourHundredAndTwentyThree,
-  FourHundredAndTwentyThree$inboundSchema,
-  FourHundredAndTwentyTwo,
-  FourHundredAndTwentyTwo$inboundSchema,
-  FourHundredAndTwo,
-  FourHundredAndTwo$inboundSchema,
-  Principal,
-  Principal$inboundSchema,
-  ThreeHundredAndNinetyEight,
-  ThreeHundredAndNinetyEight$inboundSchema,
-  ThreeHundredAndNinetyNine,
-  ThreeHundredAndNinetyNine$inboundSchema,
-  ThreeHundredAndNinetySeven,
-  ThreeHundredAndNinetySeven$inboundSchema,
-  ThreeHundredAndNinetySix,
-  ThreeHundredAndNinetySix$inboundSchema,
-  User,
-  User$inboundSchema,
-  UserEventType,
-  UserEventType$inboundSchema,
-  Via,
-  Via$inboundSchema,
-} from "./threehundredandninetysix.js";
+} from "./toaccount.js";
 import {
   ThreeHundred,
   ThreeHundred$inboundSchema,
@@ -614,8 +724,6 @@ import {
   TwoHundredAndSeventyThree$inboundSchema,
   TwoHundredAndSeventyTwo,
   TwoHundredAndSeventyTwo$inboundSchema,
-  TwoHundredAndSixty,
-  TwoHundredAndSixty$inboundSchema,
   TwoHundredAndSixtyEight,
   TwoHundredAndSixtyEight$inboundSchema,
   TwoHundredAndSixtyFive,
@@ -624,8 +732,6 @@ import {
   TwoHundredAndSixtyFour$inboundSchema,
   TwoHundredAndSixtyNine,
   TwoHundredAndSixtyNine$inboundSchema,
-  TwoHundredAndSixtyOne,
-  TwoHundredAndSixtyOne$inboundSchema,
   TwoHundredAndSixtySeven,
   TwoHundredAndSixtySeven$inboundSchema,
   TwoHundredAndSixtySix,
@@ -634,7 +740,7 @@ import {
   TwoHundredAndSixtyThree$inboundSchema,
   TwoHundredAndSixtyTwo,
   TwoHundredAndSixtyTwo$inboundSchema,
-} from "./twohundredandsixty.js";
+} from "./twohundredandsixtytwo.js";
 import {
   ThreeHundredAndEighty,
   ThreeHundredAndEighty$inboundSchema,
@@ -704,6 +810,8 @@ import {
   ThreeHundredAndNinetyFour$inboundSchema,
   ThreeHundredAndNinetyOne,
   ThreeHundredAndNinetyOne$inboundSchema,
+  ThreeHundredAndNinetySix,
+  ThreeHundredAndNinetySix$inboundSchema,
   ThreeHundredAndNinetyThree,
   ThreeHundredAndNinetyThree$inboundSchema,
   ThreeHundredAndNinetyTwo,
@@ -772,113 +880,60 @@ import {
   ThreeHundredAndTwentyEight$inboundSchema,
   ThreeHundredAndTwentyNine,
   ThreeHundredAndTwentyNine$inboundSchema,
-} from "./usereventpayload327geolocationmostspecificsubdivisionnames.js";
-import {
-  EightyEight,
-  EightyEight$inboundSchema,
-  EightyFive,
-  EightyFive$inboundSchema,
-  EightyNine,
-  EightyNine$inboundSchema,
-  EightySeven,
-  EightySeven$inboundSchema,
-  EightySix,
-  EightySix$inboundSchema,
-  Ninety,
-  Ninety$inboundSchema,
-  NinetyEight,
-  NinetyEight$inboundSchema,
-  NinetyFive,
-  NinetyFive$inboundSchema,
-  NinetyFour,
-  NinetyFour$inboundSchema,
-  NinetyNine,
-  NinetyNine$inboundSchema,
-  NinetyOne,
-  NinetyOne$inboundSchema,
-  NinetySeven,
-  NinetySeven$inboundSchema,
-  NinetySix,
-  NinetySix$inboundSchema,
-  NinetyThree,
-  NinetyThree$inboundSchema,
-  NinetyTwo,
-  NinetyTwo$inboundSchema,
-  OneHundred,
-  OneHundred$inboundSchema,
-  OneHundredAndEight,
-  OneHundredAndEight$inboundSchema,
-  OneHundredAndEighteen,
-  OneHundredAndEighteen$inboundSchema,
-  OneHundredAndEleven,
-  OneHundredAndEleven$inboundSchema,
-  OneHundredAndFifteen,
-  OneHundredAndFifteen$inboundSchema,
-  OneHundredAndFive,
-  OneHundredAndFive$inboundSchema,
-  OneHundredAndFour,
-  OneHundredAndFour$inboundSchema,
-  OneHundredAndFourteen,
-  OneHundredAndFourteen$inboundSchema,
-  OneHundredAndNine,
-  OneHundredAndNine$inboundSchema,
-  OneHundredAndNineteen,
-  OneHundredAndNineteen$inboundSchema,
-  OneHundredAndOne,
-  OneHundredAndOne$inboundSchema,
-  OneHundredAndSeven,
-  OneHundredAndSeven$inboundSchema,
-  OneHundredAndSeventeen,
-  OneHundredAndSeventeen$inboundSchema,
-  OneHundredAndSix,
-  OneHundredAndSix$inboundSchema,
-  OneHundredAndSixteen,
-  OneHundredAndSixteen$inboundSchema,
-  OneHundredAndTen,
-  OneHundredAndTen$inboundSchema,
-  OneHundredAndThirteen,
-  OneHundredAndThirteen$inboundSchema,
-  OneHundredAndThirty,
-  OneHundredAndThirty$inboundSchema,
-  OneHundredAndThirtyFive,
-  OneHundredAndThirtyFive$inboundSchema,
-  OneHundredAndThirtyFour,
-  OneHundredAndThirtyFour$inboundSchema,
-  OneHundredAndThirtyOne,
-  OneHundredAndThirtyOne$inboundSchema,
-  OneHundredAndThirtySix,
-  OneHundredAndThirtySix$inboundSchema,
-  OneHundredAndThirtyThree,
-  OneHundredAndThirtyThree$inboundSchema,
-  OneHundredAndThirtyTwo,
-  OneHundredAndThirtyTwo$inboundSchema,
-  OneHundredAndThree,
-  OneHundredAndThree$inboundSchema,
-  OneHundredAndTwelve,
-  OneHundredAndTwelve$inboundSchema,
-  OneHundredAndTwenty,
-  OneHundredAndTwenty$inboundSchema,
-  OneHundredAndTwentyEight,
-  OneHundredAndTwentyEight$inboundSchema,
-  OneHundredAndTwentyFive,
-  OneHundredAndTwentyFive$inboundSchema,
-  OneHundredAndTwentyFour,
-  OneHundredAndTwentyFour$inboundSchema,
-  OneHundredAndTwentyNine,
-  OneHundredAndTwentyNine$inboundSchema,
-  OneHundredAndTwentyOne,
-  OneHundredAndTwentyOne$inboundSchema,
-  OneHundredAndTwentySeven,
-  OneHundredAndTwentySeven$inboundSchema,
-  OneHundredAndTwentySix,
-  OneHundredAndTwentySix$inboundSchema,
-  OneHundredAndTwentyThree,
-  OneHundredAndTwentyThree$inboundSchema,
-  OneHundredAndTwentyTwo,
-  OneHundredAndTwentyTwo$inboundSchema,
-  OneHundredAndTwo,
-  OneHundredAndTwo$inboundSchema,
-} from "./usereventpayload84configuration.js";
+} from "./usereventpayload327geolocationnames.js";
+
+export const UserEventPayload18RefreshPeriod = {
+  Daily: "daily",
+  Monthly: "monthly",
+  None: "none",
+  Weekly: "weekly",
+} as const;
+export type UserEventPayload18RefreshPeriod = ClosedEnum<
+  typeof UserEventPayload18RefreshPeriod
+>;
+
+/**
+ * Spend budget on an AI Gateway API key, as surfaced in activity messages. Defined locally (rather than imported from `@api/pubsub-types`) because `@api/pubsub-types` already depends on `@api/events`; importing it here would create a circular dependency. Must stay structurally aligned with `APIKeyBudget` in `@api/pubsub-types/event-payloads/api-keys`.
+ */
+export type UserEventPayload18Budget = {
+  /**
+   * Spend cap, in dollars.
+   */
+  limitAmount: number;
+  refreshPeriod: UserEventPayload18RefreshPeriod;
+};
+
+export const UserEventPayload18Change = {
+  Disable: "disable",
+  Enable: "enable",
+  Remove: "remove",
+  Set: "set",
+} as const;
+export type UserEventPayload18Change = ClosedEnum<
+  typeof UserEventPayload18Change
+>;
+
+/**
+ * The payload of the event, if requested.
+ */
+export type Eighteen = {
+  scopeType: PayloadScopeType;
+  /**
+   * Associates the event with a project for filtering; not rendered.
+   */
+  projectId?: string | undefined;
+  projectName?: string | undefined;
+  /**
+   * Associates the event with a member for filtering; not rendered.
+   */
+  userId?: string | undefined;
+  userName?: string | undefined;
+  /**
+   * Spend budget on an AI Gateway API key, as surfaced in activity messages. Defined locally (rather than imported from `@api/pubsub-types`) because `@api/pubsub-types` already depends on `@api/events`; importing it here would create a circular dependency. Must stay structurally aligned with `APIKeyBudget` in `@api/pubsub-types/event-payloads/api-keys`.
+   */
+  budget?: UserEventPayload18Budget | null | undefined;
+  change: UserEventPayload18Change;
+};
 
 export const ScopeType = {
   ApiKey: "api-key",
@@ -1058,6 +1113,10 @@ export type Thirteen = {
    * True when the key was created with a ZDR exemption.
    */
   zdrExemption?: boolean | undefined;
+  /**
+   * True when the key was created to bypass all of the team's restrictions (the ZDR-only model restriction and the provider/model allowlist).
+   */
+  bypassAll?: boolean | undefined;
 };
 
 /**
@@ -1380,6 +1439,7 @@ export type Payload4 = {
 
 export const UserEventPayloadAction = {
   Created: "created",
+  Deleted: "deleted",
   Transitioned: "transitioned",
   Updated: "updated",
 } as const;
@@ -1428,7 +1488,7 @@ export type Payload =
   | OneHundredAndSixty
   | TwoHundredAndFifteen
   | OneHundredAndSeventyOne
-  | FourHundredAndThirty
+  | FourHundredAndThirtyOne
   | OneHundredAndTen
   | OneHundredAndSeventyThree
   | OneHundredAndSeventyFour
@@ -1457,9 +1517,9 @@ export type Payload =
   | TwoHundredAndSeventyTwo
   | TwoHundredAndEightyTwo
   | ThreeHundredAndFortySeven
-  | FourHundredAndFourteen
-  | FourHundredAndSixteen
-  | FourHundredAndThirtyThree
+  | FourHundredAndFifteen
+  | FourHundredAndSeventeen
+  | FourHundredAndThirtyFour
   | Payload2
   | Twelve
   | Sixty
@@ -1511,14 +1571,14 @@ export type Payload =
   | ThreeHundredAndFiftyFour
   | ThreeHundredAndSixtyNine
   | ThreeHundredAndEightySix
-  | FourHundredAndNine
-  | FourHundredAndEleven
-  | FourHundredAndFifteen
-  | FourHundredAndSeventeen
+  | FourHundredAndTen
+  | FourHundredAndTwelve
+  | FourHundredAndSixteen
   | FourHundredAndEighteen
   | FourHundredAndNineteen
-  | FourHundredAndThirtySix
+  | FourHundredAndTwenty
   | FourHundredAndThirtySeven
+  | FourHundredAndThirtyEight
   | Eleven
   | FortyOne
   | FortySix
@@ -1603,17 +1663,17 @@ export type Payload =
   | ThreeHundredAndFortyTwo
   | ThreeHundredAndFiftyOne
   | ThreeHundredAndSeventyThree
-  | ThreeHundredAndNinetyFour
-  | ThreeHundredAndNinetyEight
+  | ThreeHundredAndNinetyFive
   | ThreeHundredAndNinetyNine
-  | FourHundredAndOne
-  | FourHundredAndTwelve
+  | FourHundred
+  | FourHundredAndTwo
   | FourHundredAndThirteen
-  | FourHundredAndTwentyThree
+  | FourHundredAndFourteen
   | FourHundredAndTwentyFour
   | FourHundredAndTwentyFive
   | FourHundredAndTwentySix
-  | FourHundredAndThirtyTwo
+  | FourHundredAndTwentySeven
+  | FourHundredAndThirtyThree
   | Payload4
   | Five
   | Six
@@ -1713,20 +1773,20 @@ export type Payload =
   | ThreeHundredAndEightyFour
   | ThreeHundredAndEightyNine
   | ThreeHundredAndNinety
-  | ThreeHundredAndNinetyTwo
-  | ThreeHundredAndNinetySix
+  | ThreeHundredAndNinetyThree
   | ThreeHundredAndNinetySeven
-  | FourHundred
-  | FourHundredAndTwo
+  | ThreeHundredAndNinetyEight
+  | FourHundredAndOne
   | FourHundredAndThree
-  | FourHundredAndSeven
+  | FourHundredAndFour
   | FourHundredAndEight
-  | FourHundredAndTen
-  | FourHundredAndTwentyOne
-  | FourHundredAndTwentyEight
-  | FourHundredAndThirtyOne
-  | FourHundredAndThirtyFive
-  | FourHundredAndThirtyEight
+  | FourHundredAndNine
+  | FourHundredAndEleven
+  | FourHundredAndTwentyTwo
+  | FourHundredAndTwentyNine
+  | FourHundredAndThirtyTwo
+  | FourHundredAndThirtySix
+  | FourHundredAndThirtyNine
   | Seven
   | Thirteen
   | Fourteen
@@ -1815,16 +1875,17 @@ export type Payload =
   | ThreeHundredAndEightyOne
   | ThreeHundredAndEightyFive
   | ThreeHundredAndEightySeven
-  | ThreeHundredAndNinetyThree
-  | ThreeHundredAndNinetyFive
-  | FourHundredAndFour
+  | ThreeHundredAndNinetyOne
+  | ThreeHundredAndNinetyFour
+  | ThreeHundredAndNinetySix
   | FourHundredAndFive
   | FourHundredAndSix
-  | FourHundredAndTwenty
-  | FourHundredAndTwentyTwo
-  | FourHundredAndTwentySeven
-  | FourHundredAndTwentyNine
-  | FourHundredAndThirtyFour
+  | FourHundredAndSeven
+  | FourHundredAndTwentyOne
+  | FourHundredAndTwentyThree
+  | FourHundredAndTwentyEight
+  | FourHundredAndThirty
+  | FourHundredAndThirtyFive
   | Payload1
   | ThirtySeven
   | ThirtyEight
@@ -1860,7 +1921,7 @@ export type Payload =
   | ThreeHundredAndSeventyNine
   | ThreeHundredAndEightyThree
   | ThreeHundredAndEightyEight
-  | ThreeHundredAndNinetyOne;
+  | ThreeHundredAndNinetyTwo;
 
 /**
  * Array of events generated by the User.
@@ -1917,7 +1978,7 @@ export type UserEvent = {
     | OneHundredAndSixty
     | TwoHundredAndFifteen
     | OneHundredAndSeventyOne
-    | FourHundredAndThirty
+    | FourHundredAndThirtyOne
     | OneHundredAndTen
     | OneHundredAndSeventyThree
     | OneHundredAndSeventyFour
@@ -1946,9 +2007,9 @@ export type UserEvent = {
     | TwoHundredAndSeventyTwo
     | TwoHundredAndEightyTwo
     | ThreeHundredAndFortySeven
-    | FourHundredAndFourteen
-    | FourHundredAndSixteen
-    | FourHundredAndThirtyThree
+    | FourHundredAndFifteen
+    | FourHundredAndSeventeen
+    | FourHundredAndThirtyFour
     | Payload2
     | Twelve
     | Sixty
@@ -2000,14 +2061,14 @@ export type UserEvent = {
     | ThreeHundredAndFiftyFour
     | ThreeHundredAndSixtyNine
     | ThreeHundredAndEightySix
-    | FourHundredAndNine
-    | FourHundredAndEleven
-    | FourHundredAndFifteen
-    | FourHundredAndSeventeen
+    | FourHundredAndTen
+    | FourHundredAndTwelve
+    | FourHundredAndSixteen
     | FourHundredAndEighteen
     | FourHundredAndNineteen
-    | FourHundredAndThirtySix
+    | FourHundredAndTwenty
     | FourHundredAndThirtySeven
+    | FourHundredAndThirtyEight
     | Eleven
     | FortyOne
     | FortySix
@@ -2092,17 +2153,17 @@ export type UserEvent = {
     | ThreeHundredAndFortyTwo
     | ThreeHundredAndFiftyOne
     | ThreeHundredAndSeventyThree
-    | ThreeHundredAndNinetyFour
-    | ThreeHundredAndNinetyEight
+    | ThreeHundredAndNinetyFive
     | ThreeHundredAndNinetyNine
-    | FourHundredAndOne
-    | FourHundredAndTwelve
+    | FourHundred
+    | FourHundredAndTwo
     | FourHundredAndThirteen
-    | FourHundredAndTwentyThree
+    | FourHundredAndFourteen
     | FourHundredAndTwentyFour
     | FourHundredAndTwentyFive
     | FourHundredAndTwentySix
-    | FourHundredAndThirtyTwo
+    | FourHundredAndTwentySeven
+    | FourHundredAndThirtyThree
     | Payload4
     | Five
     | Six
@@ -2202,20 +2263,20 @@ export type UserEvent = {
     | ThreeHundredAndEightyFour
     | ThreeHundredAndEightyNine
     | ThreeHundredAndNinety
-    | ThreeHundredAndNinetyTwo
-    | ThreeHundredAndNinetySix
+    | ThreeHundredAndNinetyThree
     | ThreeHundredAndNinetySeven
-    | FourHundred
-    | FourHundredAndTwo
+    | ThreeHundredAndNinetyEight
+    | FourHundredAndOne
     | FourHundredAndThree
-    | FourHundredAndSeven
+    | FourHundredAndFour
     | FourHundredAndEight
-    | FourHundredAndTen
-    | FourHundredAndTwentyOne
-    | FourHundredAndTwentyEight
-    | FourHundredAndThirtyOne
-    | FourHundredAndThirtyFive
-    | FourHundredAndThirtyEight
+    | FourHundredAndNine
+    | FourHundredAndEleven
+    | FourHundredAndTwentyTwo
+    | FourHundredAndTwentyNine
+    | FourHundredAndThirtyTwo
+    | FourHundredAndThirtySix
+    | FourHundredAndThirtyNine
     | Seven
     | Thirteen
     | Fourteen
@@ -2304,16 +2365,17 @@ export type UserEvent = {
     | ThreeHundredAndEightyOne
     | ThreeHundredAndEightyFive
     | ThreeHundredAndEightySeven
-    | ThreeHundredAndNinetyThree
-    | ThreeHundredAndNinetyFive
-    | FourHundredAndFour
+    | ThreeHundredAndNinetyOne
+    | ThreeHundredAndNinetyFour
+    | ThreeHundredAndNinetySix
     | FourHundredAndFive
     | FourHundredAndSix
-    | FourHundredAndTwenty
-    | FourHundredAndTwentyTwo
-    | FourHundredAndTwentySeven
-    | FourHundredAndTwentyNine
-    | FourHundredAndThirtyFour
+    | FourHundredAndSeven
+    | FourHundredAndTwentyOne
+    | FourHundredAndTwentyThree
+    | FourHundredAndTwentyEight
+    | FourHundredAndThirty
+    | FourHundredAndThirtyFive
     | Payload1
     | ThirtySeven
     | ThirtyEight
@@ -2349,9 +2411,65 @@ export type UserEvent = {
     | ThreeHundredAndSeventyNine
     | ThreeHundredAndEightyThree
     | ThreeHundredAndEightyEight
-    | ThreeHundredAndNinetyOne
+    | ThreeHundredAndNinetyTwo
     | undefined;
 };
+
+/** @internal */
+export const UserEventPayload18RefreshPeriod$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload18RefreshPeriod
+> = z.nativeEnum(UserEventPayload18RefreshPeriod);
+
+/** @internal */
+export const UserEventPayload18Budget$inboundSchema: z.ZodType<
+  UserEventPayload18Budget,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  limitAmount: types.number(),
+  refreshPeriod: UserEventPayload18RefreshPeriod$inboundSchema,
+});
+
+export function userEventPayload18BudgetFromJSON(
+  jsonString: string,
+): SafeParseResult<UserEventPayload18Budget, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UserEventPayload18Budget$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventPayload18Budget' from JSON`,
+  );
+}
+
+/** @internal */
+export const UserEventPayload18Change$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload18Change
+> = z.nativeEnum(UserEventPayload18Change);
+
+/** @internal */
+export const Eighteen$inboundSchema: z.ZodType<
+  Eighteen,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  scopeType: PayloadScopeType$inboundSchema,
+  projectId: types.optional(types.string()),
+  projectName: types.optional(types.string()),
+  userId: types.optional(types.string()),
+  userName: types.optional(types.string()),
+  budget: z.nullable(z.lazy(() => UserEventPayload18Budget$inboundSchema))
+    .optional(),
+  change: UserEventPayload18Change$inboundSchema,
+});
+
+export function eighteenFromJSON(
+  jsonString: string,
+): SafeParseResult<Eighteen, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Eighteen$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Eighteen' from JSON`,
+  );
+}
 
 /** @internal */
 export const ScopeType$inboundSchema: z.ZodNativeEnum<typeof ScopeType> = z
@@ -2652,6 +2770,7 @@ export const Thirteen$inboundSchema: z.ZodType<
   apiKey: z.lazy(() => UserEventPayload13ApiKey$inboundSchema),
   budget: z.nullable(z.lazy(() => Budget$inboundSchema)).optional(),
   zdrExemption: types.optional(types.boolean()),
+  bypassAll: types.optional(types.boolean()),
 });
 
 export function thirteenFromJSON(
@@ -2993,7 +3112,7 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     OneHundredAndSixty$inboundSchema,
     TwoHundredAndFifteen$inboundSchema,
     OneHundredAndSeventyOne$inboundSchema,
-    FourHundredAndThirty$inboundSchema,
+    FourHundredAndThirtyOne$inboundSchema,
     OneHundredAndTen$inboundSchema,
     OneHundredAndSeventyThree$inboundSchema,
     OneHundredAndSeventyFour$inboundSchema,
@@ -3022,9 +3141,9 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     TwoHundredAndSeventyTwo$inboundSchema,
     TwoHundredAndEightyTwo$inboundSchema,
     ThreeHundredAndFortySeven$inboundSchema,
-    FourHundredAndFourteen$inboundSchema,
-    FourHundredAndSixteen$inboundSchema,
-    FourHundredAndThirtyThree$inboundSchema,
+    FourHundredAndFifteen$inboundSchema,
+    FourHundredAndSeventeen$inboundSchema,
+    FourHundredAndThirtyFour$inboundSchema,
     z.lazy(() => Payload2$inboundSchema),
     z.lazy(() => Twelve$inboundSchema),
     Sixty$inboundSchema,
@@ -3076,14 +3195,14 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     ThreeHundredAndFiftyFour$inboundSchema,
     ThreeHundredAndSixtyNine$inboundSchema,
     ThreeHundredAndEightySix$inboundSchema,
-    FourHundredAndNine$inboundSchema,
-    FourHundredAndEleven$inboundSchema,
-    FourHundredAndFifteen$inboundSchema,
-    FourHundredAndSeventeen$inboundSchema,
+    FourHundredAndTen$inboundSchema,
+    FourHundredAndTwelve$inboundSchema,
+    FourHundredAndSixteen$inboundSchema,
     FourHundredAndEighteen$inboundSchema,
     FourHundredAndNineteen$inboundSchema,
-    FourHundredAndThirtySix$inboundSchema,
+    FourHundredAndTwenty$inboundSchema,
     FourHundredAndThirtySeven$inboundSchema,
+    FourHundredAndThirtyEight$inboundSchema,
     z.lazy(() => Eleven$inboundSchema),
     FortyOne$inboundSchema,
     FortySix$inboundSchema,
@@ -3168,17 +3287,17 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     ThreeHundredAndFortyTwo$inboundSchema,
     ThreeHundredAndFiftyOne$inboundSchema,
     ThreeHundredAndSeventyThree$inboundSchema,
-    ThreeHundredAndNinetyFour$inboundSchema,
-    ThreeHundredAndNinetyEight$inboundSchema,
+    ThreeHundredAndNinetyFive$inboundSchema,
     ThreeHundredAndNinetyNine$inboundSchema,
-    FourHundredAndOne$inboundSchema,
-    FourHundredAndTwelve$inboundSchema,
+    FourHundred$inboundSchema,
+    FourHundredAndTwo$inboundSchema,
     FourHundredAndThirteen$inboundSchema,
-    FourHundredAndTwentyThree$inboundSchema,
+    FourHundredAndFourteen$inboundSchema,
     FourHundredAndTwentyFour$inboundSchema,
     FourHundredAndTwentyFive$inboundSchema,
     FourHundredAndTwentySix$inboundSchema,
-    FourHundredAndThirtyTwo$inboundSchema,
+    FourHundredAndTwentySeven$inboundSchema,
+    FourHundredAndThirtyThree$inboundSchema,
     z.lazy(() => Payload4$inboundSchema),
     z.lazy(() => Five$inboundSchema),
     z.lazy(() => Six$inboundSchema),
@@ -3187,7 +3306,7 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     z.lazy(() => Ten$inboundSchema),
     z.lazy(() => Fifteen$inboundSchema),
     z.lazy(() => Seventeen$inboundSchema),
-    Eighteen$inboundSchema,
+    z.lazy(() => Eighteen$inboundSchema),
     Twenty$inboundSchema,
     TwentyTwo$inboundSchema,
     ThirtyThree$inboundSchema,
@@ -3278,20 +3397,20 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     ThreeHundredAndEightyFour$inboundSchema,
     ThreeHundredAndEightyNine$inboundSchema,
     ThreeHundredAndNinety$inboundSchema,
-    ThreeHundredAndNinetyTwo$inboundSchema,
-    ThreeHundredAndNinetySix$inboundSchema,
+    ThreeHundredAndNinetyThree$inboundSchema,
     ThreeHundredAndNinetySeven$inboundSchema,
-    FourHundred$inboundSchema,
-    FourHundredAndTwo$inboundSchema,
+    ThreeHundredAndNinetyEight$inboundSchema,
+    FourHundredAndOne$inboundSchema,
     FourHundredAndThree$inboundSchema,
-    FourHundredAndSeven$inboundSchema,
+    FourHundredAndFour$inboundSchema,
     FourHundredAndEight$inboundSchema,
-    FourHundredAndTen$inboundSchema,
-    FourHundredAndTwentyOne$inboundSchema,
-    FourHundredAndTwentyEight$inboundSchema,
-    FourHundredAndThirtyOne$inboundSchema,
-    FourHundredAndThirtyFive$inboundSchema,
-    FourHundredAndThirtyEight$inboundSchema,
+    FourHundredAndNine$inboundSchema,
+    FourHundredAndEleven$inboundSchema,
+    FourHundredAndTwentyTwo$inboundSchema,
+    FourHundredAndTwentyNine$inboundSchema,
+    FourHundredAndThirtyTwo$inboundSchema,
+    FourHundredAndThirtySix$inboundSchema,
+    FourHundredAndThirtyNine$inboundSchema,
     z.lazy(() => Seven$inboundSchema),
     z.lazy(() => Thirteen$inboundSchema),
     z.lazy(() => Fourteen$inboundSchema),
@@ -3380,16 +3499,17 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     ThreeHundredAndEightyOne$inboundSchema,
     ThreeHundredAndEightyFive$inboundSchema,
     ThreeHundredAndEightySeven$inboundSchema,
-    ThreeHundredAndNinetyThree$inboundSchema,
-    ThreeHundredAndNinetyFive$inboundSchema,
-    FourHundredAndFour$inboundSchema,
+    ThreeHundredAndNinetyOne$inboundSchema,
+    ThreeHundredAndNinetyFour$inboundSchema,
+    ThreeHundredAndNinetySix$inboundSchema,
     FourHundredAndFive$inboundSchema,
     FourHundredAndSix$inboundSchema,
-    FourHundredAndTwenty$inboundSchema,
-    FourHundredAndTwentyTwo$inboundSchema,
-    FourHundredAndTwentySeven$inboundSchema,
-    FourHundredAndTwentyNine$inboundSchema,
-    FourHundredAndThirtyFour$inboundSchema,
+    FourHundredAndSeven$inboundSchema,
+    FourHundredAndTwentyOne$inboundSchema,
+    FourHundredAndTwentyThree$inboundSchema,
+    FourHundredAndTwentyEight$inboundSchema,
+    FourHundredAndThirty$inboundSchema,
+    FourHundredAndThirtyFive$inboundSchema,
     z.lazy(() => Payload1$inboundSchema),
     ThirtySeven$inboundSchema,
     ThirtyEight$inboundSchema,
@@ -3425,7 +3545,7 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     ThreeHundredAndSeventyNine$inboundSchema,
     ThreeHundredAndEightyThree$inboundSchema,
     ThreeHundredAndEightyEight$inboundSchema,
-    ThreeHundredAndNinetyOne$inboundSchema,
+    ThreeHundredAndNinetyTwo$inboundSchema,
   ]);
 
 export function payloadFromJSON(
@@ -3463,7 +3583,7 @@ export const UserEvent$inboundSchema: z.ZodType<
       OneHundredAndSixty$inboundSchema,
       TwoHundredAndFifteen$inboundSchema,
       OneHundredAndSeventyOne$inboundSchema,
-      FourHundredAndThirty$inboundSchema,
+      FourHundredAndThirtyOne$inboundSchema,
       OneHundredAndTen$inboundSchema,
       OneHundredAndSeventyThree$inboundSchema,
       OneHundredAndSeventyFour$inboundSchema,
@@ -3492,9 +3612,9 @@ export const UserEvent$inboundSchema: z.ZodType<
       TwoHundredAndSeventyTwo$inboundSchema,
       TwoHundredAndEightyTwo$inboundSchema,
       ThreeHundredAndFortySeven$inboundSchema,
-      FourHundredAndFourteen$inboundSchema,
-      FourHundredAndSixteen$inboundSchema,
-      FourHundredAndThirtyThree$inboundSchema,
+      FourHundredAndFifteen$inboundSchema,
+      FourHundredAndSeventeen$inboundSchema,
+      FourHundredAndThirtyFour$inboundSchema,
       z.lazy(() => Payload2$inboundSchema),
       z.lazy(() => Twelve$inboundSchema),
       Sixty$inboundSchema,
@@ -3546,14 +3666,14 @@ export const UserEvent$inboundSchema: z.ZodType<
       ThreeHundredAndFiftyFour$inboundSchema,
       ThreeHundredAndSixtyNine$inboundSchema,
       ThreeHundredAndEightySix$inboundSchema,
-      FourHundredAndNine$inboundSchema,
-      FourHundredAndEleven$inboundSchema,
-      FourHundredAndFifteen$inboundSchema,
-      FourHundredAndSeventeen$inboundSchema,
+      FourHundredAndTen$inboundSchema,
+      FourHundredAndTwelve$inboundSchema,
+      FourHundredAndSixteen$inboundSchema,
       FourHundredAndEighteen$inboundSchema,
       FourHundredAndNineteen$inboundSchema,
-      FourHundredAndThirtySix$inboundSchema,
+      FourHundredAndTwenty$inboundSchema,
       FourHundredAndThirtySeven$inboundSchema,
+      FourHundredAndThirtyEight$inboundSchema,
       z.lazy(() => Eleven$inboundSchema),
       FortyOne$inboundSchema,
       FortySix$inboundSchema,
@@ -3638,17 +3758,17 @@ export const UserEvent$inboundSchema: z.ZodType<
       ThreeHundredAndFortyTwo$inboundSchema,
       ThreeHundredAndFiftyOne$inboundSchema,
       ThreeHundredAndSeventyThree$inboundSchema,
-      ThreeHundredAndNinetyFour$inboundSchema,
-      ThreeHundredAndNinetyEight$inboundSchema,
+      ThreeHundredAndNinetyFive$inboundSchema,
       ThreeHundredAndNinetyNine$inboundSchema,
-      FourHundredAndOne$inboundSchema,
-      FourHundredAndTwelve$inboundSchema,
+      FourHundred$inboundSchema,
+      FourHundredAndTwo$inboundSchema,
       FourHundredAndThirteen$inboundSchema,
-      FourHundredAndTwentyThree$inboundSchema,
+      FourHundredAndFourteen$inboundSchema,
       FourHundredAndTwentyFour$inboundSchema,
       FourHundredAndTwentyFive$inboundSchema,
       FourHundredAndTwentySix$inboundSchema,
-      FourHundredAndThirtyTwo$inboundSchema,
+      FourHundredAndTwentySeven$inboundSchema,
+      FourHundredAndThirtyThree$inboundSchema,
       z.lazy(() => Payload4$inboundSchema),
       z.lazy(() => Five$inboundSchema),
       z.lazy(() => Six$inboundSchema),
@@ -3657,7 +3777,7 @@ export const UserEvent$inboundSchema: z.ZodType<
       z.lazy(() => Ten$inboundSchema),
       z.lazy(() => Fifteen$inboundSchema),
       z.lazy(() => Seventeen$inboundSchema),
-      Eighteen$inboundSchema,
+      z.lazy(() => Eighteen$inboundSchema),
       Twenty$inboundSchema,
       TwentyTwo$inboundSchema,
       ThirtyThree$inboundSchema,
@@ -3748,20 +3868,20 @@ export const UserEvent$inboundSchema: z.ZodType<
       ThreeHundredAndEightyFour$inboundSchema,
       ThreeHundredAndEightyNine$inboundSchema,
       ThreeHundredAndNinety$inboundSchema,
-      ThreeHundredAndNinetyTwo$inboundSchema,
-      ThreeHundredAndNinetySix$inboundSchema,
+      ThreeHundredAndNinetyThree$inboundSchema,
       ThreeHundredAndNinetySeven$inboundSchema,
-      FourHundred$inboundSchema,
-      FourHundredAndTwo$inboundSchema,
+      ThreeHundredAndNinetyEight$inboundSchema,
+      FourHundredAndOne$inboundSchema,
       FourHundredAndThree$inboundSchema,
-      FourHundredAndSeven$inboundSchema,
+      FourHundredAndFour$inboundSchema,
       FourHundredAndEight$inboundSchema,
-      FourHundredAndTen$inboundSchema,
-      FourHundredAndTwentyOne$inboundSchema,
-      FourHundredAndTwentyEight$inboundSchema,
-      FourHundredAndThirtyOne$inboundSchema,
-      FourHundredAndThirtyFive$inboundSchema,
-      FourHundredAndThirtyEight$inboundSchema,
+      FourHundredAndNine$inboundSchema,
+      FourHundredAndEleven$inboundSchema,
+      FourHundredAndTwentyTwo$inboundSchema,
+      FourHundredAndTwentyNine$inboundSchema,
+      FourHundredAndThirtyTwo$inboundSchema,
+      FourHundredAndThirtySix$inboundSchema,
+      FourHundredAndThirtyNine$inboundSchema,
       z.lazy(() => Seven$inboundSchema),
       z.lazy(() => Thirteen$inboundSchema),
       z.lazy(() => Fourteen$inboundSchema),
@@ -3850,16 +3970,17 @@ export const UserEvent$inboundSchema: z.ZodType<
       ThreeHundredAndEightyOne$inboundSchema,
       ThreeHundredAndEightyFive$inboundSchema,
       ThreeHundredAndEightySeven$inboundSchema,
-      ThreeHundredAndNinetyThree$inboundSchema,
-      ThreeHundredAndNinetyFive$inboundSchema,
-      FourHundredAndFour$inboundSchema,
+      ThreeHundredAndNinetyOne$inboundSchema,
+      ThreeHundredAndNinetyFour$inboundSchema,
+      ThreeHundredAndNinetySix$inboundSchema,
       FourHundredAndFive$inboundSchema,
       FourHundredAndSix$inboundSchema,
-      FourHundredAndTwenty$inboundSchema,
-      FourHundredAndTwentyTwo$inboundSchema,
-      FourHundredAndTwentySeven$inboundSchema,
-      FourHundredAndTwentyNine$inboundSchema,
-      FourHundredAndThirtyFour$inboundSchema,
+      FourHundredAndSeven$inboundSchema,
+      FourHundredAndTwentyOne$inboundSchema,
+      FourHundredAndTwentyThree$inboundSchema,
+      FourHundredAndTwentyEight$inboundSchema,
+      FourHundredAndThirty$inboundSchema,
+      FourHundredAndThirtyFive$inboundSchema,
       z.lazy(() => Payload1$inboundSchema),
       ThirtySeven$inboundSchema,
       ThirtyEight$inboundSchema,
@@ -3895,7 +4016,7 @@ export const UserEvent$inboundSchema: z.ZodType<
       ThreeHundredAndSeventyNine$inboundSchema,
       ThreeHundredAndEightyThree$inboundSchema,
       ThreeHundredAndEightyEight$inboundSchema,
-      ThreeHundredAndNinetyOne$inboundSchema,
+      ThreeHundredAndNinetyTwo$inboundSchema,
     ]),
   ),
 });

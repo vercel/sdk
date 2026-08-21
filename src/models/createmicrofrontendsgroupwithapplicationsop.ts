@@ -68,6 +68,7 @@ export type NewMicrofrontendsGroup = {
   slug: string;
   name: string;
   fallbackEnvironment: string;
+  enablePolyrepoBranchRouting: boolean;
   createdAt: number;
   updatedAt: number;
 };
@@ -198,6 +199,7 @@ export const NewMicrofrontendsGroup$inboundSchema: z.ZodType<
   slug: types.string(),
   name: types.string(),
   fallbackEnvironment: types.string(),
+  enablePolyrepoBranchRouting: types.boolean(),
   createdAt: types.number(),
   updatedAt: types.number(),
 });

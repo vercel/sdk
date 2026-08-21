@@ -250,6 +250,7 @@ export const ResponseBodyDisabledReason = {
   DisabledByAdmin: "disabled-by-admin",
   DisabledByOwner: "disabled-by-owner",
   FeatureNotAvailable: "feature-not-available",
+  LimitsExceeded: "limits-exceeded",
 } as const;
 export type ResponseBodyDisabledReason = ClosedEnum<
   typeof ResponseBodyDisabledReason
@@ -610,6 +611,7 @@ export const DisabledReason = {
   DisabledByAdmin: "disabled-by-admin",
   DisabledByOwner: "disabled-by-owner",
   FeatureNotAvailable: "feature-not-available",
+  LimitsExceeded: "limits-exceeded",
 } as const;
 export type DisabledReason = ClosedEnum<typeof DisabledReason>;
 

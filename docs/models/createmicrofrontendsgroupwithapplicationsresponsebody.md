@@ -11,8 +11,9 @@ let value: CreateMicrofrontendsGroupWithApplicationsResponseBody = {
     slug: "<value>",
     name: "<value>",
     fallbackEnvironment: "<value>",
-    createdAt: 4186.85,
-    updatedAt: 5764.78,
+    enablePolyrepoBranchRouting: true,
+    createdAt: 5764.78,
+    updatedAt: 4592.44,
   },
 };
 ```

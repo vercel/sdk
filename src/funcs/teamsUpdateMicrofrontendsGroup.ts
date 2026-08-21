@@ -34,7 +34,7 @@ import { Result } from "../types/fp.js";
  * Update a microfrontends group
  *
  * @remarks
- * Updates the name (and slug) of a microfrontends group.
+ * Updates a microfrontends group's settings.
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
  */

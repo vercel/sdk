@@ -315,7 +315,7 @@ export class Teams extends ClientSDK {
    * Update a microfrontends group
    *
    * @remarks
-   * Updates the name (and slug) of a microfrontends group.
+   * Updates a microfrontends group's settings.
    */
   async updateMicrofrontendsGroup(
     request: UpdateMicrofrontendsGroupRequest,

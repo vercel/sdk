@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Prev } from "@vercel/sdk/models/edgemiddlewareinvocations.js";
+import { Prev } from "@vercel/sdk/models/edgeconfigwrite.js";
 
 let value: Prev = {
   name: "<value>",
@@ -14,8 +14,9 @@ let value: Prev = {
 
 ## Fields
 
-| Field                 | Type                  | Required              | Description           |
-| --------------------- | --------------------- | --------------------- | --------------------- |
-| `name`                | *string*              | :heavy_check_mark:    | N/A                   |
-| `slug`                | *string*              | :heavy_check_mark:    | N/A                   |
-| `fallbackEnvironment` | *string*              | :heavy_check_mark:    | N/A                   |
+| Field                         | Type                          | Required                      | Description                   |
+| ----------------------------- | ----------------------------- | ----------------------------- | ----------------------------- |
+| `name`                        | *string*                      | :heavy_check_mark:            | N/A                           |
+| `slug`                        | *string*                      | :heavy_check_mark:            | N/A                           |
+| `fallbackEnvironment`         | *string*                      | :heavy_check_mark:            | N/A                           |
+| `enablePolyrepoBranchRouting` | *boolean*                     | :heavy_minus_sign:            | N/A                           |

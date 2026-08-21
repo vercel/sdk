@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadSoftBlock } from "@vercel/sdk/models/edgemiddlewareinvocations.js";
+import { PayloadSoftBlock } from "@vercel/sdk/models/edgeconfigwrite.js";
 
 let value: PayloadSoftBlock = {
   blockedAt: 5219.47,

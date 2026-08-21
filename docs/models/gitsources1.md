@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GitSources1 } from "@vercel/sdk/models/updateprojectbranchmatcher.js";
+import { GitSources1 } from "@vercel/sdk/models/updateprojectdomains.js";
 
 let value: GitSources1 = {
   enabled: false,

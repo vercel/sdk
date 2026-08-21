@@ -11,5 +11,5 @@ let value: UserEventPayloadAction = "transitioned";
 ## Values
 
 ```typescript
-"created" | "transitioned" | "updated"
+"created" | "deleted" | "transitioned" | "updated"
 ```

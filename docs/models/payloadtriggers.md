@@ -5,7 +5,7 @@ Allocations that were at or over 100% when the pause was applied.
 ## Example Usage
 
 ```typescript
-import { PayloadTriggers } from "@vercel/sdk/models/edgemiddlewareinvocations.js";
+import { PayloadTriggers } from "@vercel/sdk/models/edgeconfigwrite.js";
 
 let value: PayloadTriggers = {
   allocation: "wafOwaspExcessBytes",

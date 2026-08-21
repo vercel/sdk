@@ -435,11 +435,32 @@ export type WebAnalytics = {
   isCurrentlyBlocked: boolean;
 };
 
+export const BlockReason = {
+  AdminOverride: "admin_override",
+  HardBlocked: "hard_blocked",
+  LimitsExceeded: "limits_exceeded",
+} as const;
+export type BlockReason = ClosedEnum<typeof BlockReason>;
+
+/**
+ * Client-facing view of the `speedInsightsFree` ingestion block. The dashboard needs `blockReason` to tell usage pauses apart from admin blocks.
+ */
+export type SpeedInsightsFree = {
+  blockedFrom?: number | undefined;
+  blockedUntil?: number | undefined;
+  blockReason: BlockReason;
+  isCurrentlyBlocked: boolean;
+};
+
 /**
  * Feature blocks for the user
  */
 export type FeatureBlocks = {
   webAnalytics?: WebAnalytics | undefined;
+  /**
+   * Client-facing view of the `speedInsightsFree` ingestion block. The dashboard needs `blockReason` to tell usage pauses apart from admin blocks.
+   */
+  speedInsightsFree?: SpeedInsightsFree | undefined;
 };
 
 export type Organization = {
@@ -1010,12 +1031,41 @@ export function webAnalyticsFromJSON(
 }
 
 /** @internal */
+export const BlockReason$inboundSchema: z.ZodNativeEnum<typeof BlockReason> = z
+  .nativeEnum(BlockReason);
+
+/** @internal */
+export const SpeedInsightsFree$inboundSchema: z.ZodType<
+  SpeedInsightsFree,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  blockedFrom: types.optional(types.number()),
+  blockedUntil: types.optional(types.number()),
+  blockReason: BlockReason$inboundSchema,
+  isCurrentlyBlocked: types.boolean(),
+});
+
+export function speedInsightsFreeFromJSON(
+  jsonString: string,
+): SafeParseResult<SpeedInsightsFree, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SpeedInsightsFree$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SpeedInsightsFree' from JSON`,
+  );
+}
+
+/** @internal */
 export const FeatureBlocks$inboundSchema: z.ZodType<
   FeatureBlocks,
   z.ZodTypeDef,
   unknown
 > = z.object({
   webAnalytics: types.optional(z.lazy(() => WebAnalytics$inboundSchema)),
+  speedInsightsFree: types.optional(
+    z.lazy(() => SpeedInsightsFree$inboundSchema),
+  ),
 });
 
 export function featureBlocksFromJSON(

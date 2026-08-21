@@ -70,7 +70,7 @@ import {
   ResponseBodyPlan$inboundSchema,
   ResponseBodyResourceConfig,
   ResponseBodyResourceConfig$inboundSchema,
-} from "./createdeploymentrouteshas.js";
+} from "./createdeploymenthas1.js";
 import {
   CreateDeploymentRoutesDeployments2,
   CreateDeploymentRoutesDeployments2$inboundSchema,
@@ -88,19 +88,38 @@ import {
   CreateDeploymentServicesHeaders$inboundSchema,
   CreateDeploymentServicesRedirects,
   CreateDeploymentServicesRedirects$inboundSchema,
-  CreateDeploymentTransformsDeployments2,
-  CreateDeploymentTransformsDeployments2$inboundSchema,
-  CreateDeploymentTransformsDeploymentsResponseType,
-  CreateDeploymentTransformsDeploymentsResponseType$inboundSchema,
   ResponseBodyRoutes,
   ResponseBodyRoutes$inboundSchema,
   ServicesBindings,
   ServicesBindings$inboundSchema,
   ServicesRewrites,
   ServicesRewrites$inboundSchema,
-} from "./createdeploymenttransformsdeploymentsresponsetype.js";
+} from "./createdeploymentroutesdeploymentsmitigate.js";
 import { FlagJSONValue, FlagJSONValue$inboundSchema } from "./flagjsonvalue.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const CreateDeploymentTransformsDeploymentsResponse200Op = {
+  Set: "set",
+} as const;
+export type CreateDeploymentTransformsDeploymentsResponse200Op = ClosedEnum<
+  typeof CreateDeploymentTransformsDeploymentsResponse200Op
+>;
+
+export type CreateDeploymentTransformsDeployments2 = {
+  type: "request.path";
+  op: CreateDeploymentTransformsDeploymentsResponse200Op;
+  args: string;
+  env?: Array<string> | undefined;
+};
+
+export const CreateDeploymentTransformsDeploymentsResponseType = {
+  RequestHeaders: "request.headers",
+  RequestQuery: "request.query",
+  ResponseHeaders: "response.headers",
+} as const;
+export type CreateDeploymentTransformsDeploymentsResponseType = ClosedEnum<
+  typeof CreateDeploymentTransformsDeploymentsResponseType
+>;
 
 export const CreateDeploymentTransformsDeploymentsResponseOp = {
   Append: "append",
@@ -324,6 +343,13 @@ export type CreateDeploymentServicesDeploymentsResponseMaxDuration =
   | number
   | CreateDeploymentMaxDurationDeploymentsResponse2002;
 
+export type CreateDeploymentExperimentalTriggersDeploymentsResponse2003 = {
+  /**
+   * Event type - must be "schedule/v1beta" (REQUIRED)
+   */
+  type: "schedule/v1beta";
+};
+
 /**
  * Queue trigger input event for v2beta (from vercel.json config). Consumer name is implicitly derived from the function path. Only one trigger per function is allowed.
  */
@@ -390,7 +416,8 @@ export type CreateDeploymentExperimentalTriggersDeploymentsResponse2001 = {
 
 export type CreateDeploymentServicesDeploymentsResponseExperimentalTriggers =
   | CreateDeploymentExperimentalTriggersDeploymentsResponse2001
-  | CreateDeploymentExperimentalTriggersDeploymentsResponse2002;
+  | CreateDeploymentExperimentalTriggersDeploymentsResponse2002
+  | CreateDeploymentExperimentalTriggersDeploymentsResponse2003;
 
 export type CreateDeploymentServicesDeploymentsResponseFunctions = {
   architecture?:
@@ -411,6 +438,7 @@ export type CreateDeploymentServicesDeploymentsResponseFunctions = {
     | Array<
       | CreateDeploymentExperimentalTriggersDeploymentsResponse2001
       | CreateDeploymentExperimentalTriggersDeploymentsResponse2002
+      | CreateDeploymentExperimentalTriggersDeploymentsResponse2003
     >
     | undefined;
   supportsCancellation?: boolean | undefined;
@@ -1397,6 +1425,39 @@ export type CreateDeploymentResponseBody =
   | CreateDeploymentResponseBody1;
 
 /** @internal */
+export const CreateDeploymentTransformsDeploymentsResponse200Op$inboundSchema:
+  z.ZodNativeEnum<typeof CreateDeploymentTransformsDeploymentsResponse200Op> = z
+    .nativeEnum(CreateDeploymentTransformsDeploymentsResponse200Op);
+
+/** @internal */
+export const CreateDeploymentTransformsDeployments2$inboundSchema: z.ZodType<
+  CreateDeploymentTransformsDeployments2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("request.path"),
+  op: CreateDeploymentTransformsDeploymentsResponse200Op$inboundSchema,
+  args: types.string(),
+  env: types.optional(z.array(types.string())),
+});
+
+export function createDeploymentTransformsDeployments2FromJSON(
+  jsonString: string,
+): SafeParseResult<CreateDeploymentTransformsDeployments2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateDeploymentTransformsDeployments2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentTransformsDeployments2' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateDeploymentTransformsDeploymentsResponseType$inboundSchema:
+  z.ZodNativeEnum<typeof CreateDeploymentTransformsDeploymentsResponseType> = z
+    .nativeEnum(CreateDeploymentTransformsDeploymentsResponseType);
+
+/** @internal */
 export const CreateDeploymentTransformsDeploymentsResponseOp$inboundSchema:
   z.ZodNativeEnum<typeof CreateDeploymentTransformsDeploymentsResponseOp> = z
     .nativeEnum(CreateDeploymentTransformsDeploymentsResponseOp);
@@ -1566,7 +1627,7 @@ export const CreateDeploymentRoutesDeploymentsTransforms$inboundSchema:
     z.lazy(() => CreateDeploymentTransformsDeployments1$inboundSchema).and(
       z.object({ type: z.literal("response.headers") }),
     ),
-    CreateDeploymentTransformsDeployments2$inboundSchema,
+    z.lazy(() => CreateDeploymentTransformsDeployments2$inboundSchema),
   ]);
 
 export function createDeploymentRoutesDeploymentsTransformsFromJSON(
@@ -1703,7 +1764,7 @@ export const CreateDeploymentRoutesDeployments1$inboundSchema: z.ZodType<
       z.lazy(() => CreateDeploymentTransformsDeployments1$inboundSchema).and(
         z.object({ type: z.literal("response.headers") }),
       ),
-      CreateDeploymentTransformsDeployments2$inboundSchema,
+      z.lazy(() => CreateDeploymentTransformsDeployments2$inboundSchema),
     ])),
   ),
   env: types.optional(z.array(types.string())),
@@ -1891,6 +1952,31 @@ export function createDeploymentServicesDeploymentsResponseMaxDurationFromJSON(
 }
 
 /** @internal */
+export const CreateDeploymentExperimentalTriggersDeploymentsResponse2003$inboundSchema:
+  z.ZodType<
+    CreateDeploymentExperimentalTriggersDeploymentsResponse2003,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    type: types.literal("schedule/v1beta"),
+  });
+
+export function createDeploymentExperimentalTriggersDeploymentsResponse2003FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateDeploymentExperimentalTriggersDeploymentsResponse2003,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateDeploymentExperimentalTriggersDeploymentsResponse2003$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentExperimentalTriggersDeploymentsResponse2003' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateDeploymentExperimentalTriggersDeploymentsResponse2002$inboundSchema:
   z.ZodType<
     CreateDeploymentExperimentalTriggersDeploymentsResponse2002,
@@ -1964,6 +2050,9 @@ export const CreateDeploymentServicesDeploymentsResponseExperimentalTriggers$inb
     z.lazy(() =>
       CreateDeploymentExperimentalTriggersDeploymentsResponse2002$inboundSchema
     ),
+    z.lazy(() =>
+      CreateDeploymentExperimentalTriggersDeploymentsResponse2003$inboundSchema
+    ),
   ]);
 
 export function createDeploymentServicesDeploymentsResponseExperimentalTriggersFromJSON(
@@ -2011,6 +2100,9 @@ export const CreateDeploymentServicesDeploymentsResponseFunctions$inboundSchema:
         ),
         z.lazy(() =>
           CreateDeploymentExperimentalTriggersDeploymentsResponse2002$inboundSchema
+        ),
+        z.lazy(() =>
+          CreateDeploymentExperimentalTriggersDeploymentsResponse2003$inboundSchema
         ),
       ])),
     ),

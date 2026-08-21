@@ -1,23 +1,23 @@
 # SpeedInsightsFree
 
-Pauses Speed Insights free data-point ingestion when the team-wide free allocation is exhausted. The block lasts at least 14 days and is extended while rolling usage stays above half of the allocation.
+Client-facing view of the `speedInsightsFree` ingestion block. The dashboard needs `blockReason` to tell usage pauses apart from admin blocks.
 
 ## Example Usage
 
 ```typescript
-import { SpeedInsightsFree } from "@vercel/sdk/models/onehundredandthirtyseven.js";
+import { SpeedInsightsFree } from "@vercel/sdk/models/authuser.js";
 
 let value: SpeedInsightsFree = {
-  updatedAt: 1033.47,
-  blockReason: "limits_exceeded",
+  blockReason: "admin_override",
+  isCurrentlyBlocked: false,
 };
 ```
 
 ## Fields
 
-| Field                                                                                                                                                            | Type                                                                                                                                                             | Required                                                                                                                                                         | Description                                                                                                                                                      |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `updatedAt`                                                                                                                                                      | *number*                                                                                                                                                         | :heavy_check_mark:                                                                                                                                               | N/A                                                                                                                                                              |
-| `blockedFrom`                                                                                                                                                    | *number*                                                                                                                                                         | :heavy_minus_sign:                                                                                                                                               | N/A                                                                                                                                                              |
-| `blockedUntil`                                                                                                                                                   | *number*                                                                                                                                                         | :heavy_minus_sign:                                                                                                                                               | N/A                                                                                                                                                              |
-| `blockReason`                                                                                                                                                    | [models.UserEventPayload163NewOwnerFeatureBlocksSpeedInsightsFreeBlockReason](../models/usereventpayload163newownerfeatureblocksspeedinsightsfreeblockreason.md) | :heavy_check_mark:                                                                                                                                               | N/A                                                                                                                                                              |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `blockedFrom`                                  | *number*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `blockedUntil`                                 | *number*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `blockReason`                                  | [models.BlockReason](../models/blockreason.md) | :heavy_check_mark:                             | N/A                                            |
+| `isCurrentlyBlocked`                           | *boolean*                                      | :heavy_check_mark:                             | N/A                                            |

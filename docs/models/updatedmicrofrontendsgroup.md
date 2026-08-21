@@ -12,9 +12,10 @@ let value: UpdatedMicrofrontendsGroup = {
 
 ## Fields
 
-| Field                 | Type                  | Required              | Description           |
-| --------------------- | --------------------- | --------------------- | --------------------- |
-| `name`                | *string*              | :heavy_minus_sign:    | N/A                   |
-| `slug`                | *string*              | :heavy_minus_sign:    | N/A                   |
-| `id`                  | *string*              | :heavy_check_mark:    | N/A                   |
-| `fallbackEnvironment` | *string*              | :heavy_minus_sign:    | N/A                   |
+| Field                         | Type                          | Required                      | Description                   |
+| ----------------------------- | ----------------------------- | ----------------------------- | ----------------------------- |
+| `name`                        | *string*                      | :heavy_minus_sign:            | N/A                           |
+| `slug`                        | *string*                      | :heavy_minus_sign:            | N/A                           |
+| `id`                          | *string*                      | :heavy_check_mark:            | N/A                           |
+| `fallbackEnvironment`         | *string*                      | :heavy_minus_sign:            | N/A                           |
+| `enablePolyrepoBranchRouting` | *boolean*                     | :heavy_minus_sign:            | N/A                           |

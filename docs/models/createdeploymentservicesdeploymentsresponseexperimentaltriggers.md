@@ -24,3 +24,12 @@ const value:
   };
 ```
 
+### `models.CreateDeploymentExperimentalTriggersDeploymentsResponse2003`
+
+```typescript
+const value:
+  models.CreateDeploymentExperimentalTriggersDeploymentsResponse2003 = {
+    type: "schedule/v1beta",
+  };
+```
+

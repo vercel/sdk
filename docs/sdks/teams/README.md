@@ -1271,7 +1271,7 @@ run();
 
 ## updateMicrofrontendsGroup
 
-Updates the name (and slug) of a microfrontends group.
+Updates a microfrontends group's settings.
 
 ### Example Usage
 

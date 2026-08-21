@@ -22,3 +22,11 @@ const value: models.CreateDeploymentExperimentalTriggers2 = {
 };
 ```
 
+### `models.CreateDeploymentExperimentalTriggers3`
+
+```typescript
+const value: models.CreateDeploymentExperimentalTriggers3 = {
+  type: "schedule/v1beta",
+};
+```
+

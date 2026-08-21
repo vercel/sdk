@@ -11,5 +11,5 @@ let value: GetDrainsDrainsDisabledReason = "account-plan-downgrade";
 ## Values
 
 ```typescript
-"account-plan-downgrade" | "disabled-by-admin" | "disabled-by-owner" | "feature-not-available"
+"account-plan-downgrade" | "disabled-by-admin" | "disabled-by-owner" | "feature-not-available" | "limits-exceeded"
 ```

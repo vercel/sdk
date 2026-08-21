@@ -8,17 +8,16 @@ import { ResponseBodyRules } from "@vercel/sdk/models/updateflagop.js";
 let value: ResponseBodyRules = {
   id: "<id>",
   outcome: {
-    type: "rollout",
+    type: "split",
     base: {
       type: "entity",
       kind: "<value>",
       attribute: "<value>",
     },
+    weights: {
+      "key": 2452.87,
+    },
     defaultVariantId: "<id>",
-    startTimestamp: 3197.49,
-    rollFromVariantId: "<id>",
-    rollToVariantId: "<id>",
-    slots: [],
   },
   conditions: [
     {

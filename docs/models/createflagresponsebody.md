@@ -23,9 +23,26 @@ let value: CreateFlagResponseBody = {
         {
           id: "<id>",
           outcome: {
-            type: "experiment",
+            type: "rollout",
+            base: {
+              type: "entity",
+              kind: "<value>",
+              attribute: "<value>",
+            },
+            defaultVariantId: "<id>",
+            startTimestamp: 493.57,
+            rollFromVariantId: "<id>",
+            rollToVariantId: "<id>",
+            slots: [],
           },
-          conditions: [],
+          conditions: [
+            {
+              lhs: {
+                type: "segment",
+              },
+              cmp: "!startsWith",
+            },
+          ],
         },
       ],
     },

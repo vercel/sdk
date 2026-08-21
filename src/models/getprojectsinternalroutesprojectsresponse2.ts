@@ -369,6 +369,7 @@ export type ResponseBodyPermissions = {
   accessGroup?: Array<ACLAction> | undefined;
   agent?: Array<ACLAction> | undefined;
   aiGatewayApiKey?: Array<ACLAction> | undefined;
+  aiGatewayApiKeyBypassAll?: Array<ACLAction> | undefined;
   aiGatewayApiKeyOwnedBySelf?: Array<ACLAction> | undefined;
   aiGatewayApiKeySpendAttribution?: Array<ACLAction> | undefined;
   aiGatewayApiKeyZdrExemption?: Array<ACLAction> | undefined;
@@ -2212,6 +2213,7 @@ export const ResponseBodyPermissions$inboundSchema: z.ZodType<
   accessGroup: types.optional(z.array(ACLAction$inboundSchema)),
   agent: types.optional(z.array(ACLAction$inboundSchema)),
   aiGatewayApiKey: types.optional(z.array(ACLAction$inboundSchema)),
+  aiGatewayApiKeyBypassAll: types.optional(z.array(ACLAction$inboundSchema)),
   aiGatewayApiKeyOwnedBySelf: types.optional(z.array(ACLAction$inboundSchema)),
   aiGatewayApiKeySpendAttribution: types.optional(
     z.array(ACLAction$inboundSchema),

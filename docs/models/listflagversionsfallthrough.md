@@ -53,11 +53,3 @@ const value: models.ListFlagVersionsFallthrough3 = {
 };
 ```
 
-### `models.ListFlagVersionsFallthrough4`
-
-```typescript
-const value: models.ListFlagVersionsFallthrough4 = {
-  type: "experiment",
-};
-```
-

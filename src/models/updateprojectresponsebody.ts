@@ -31,8 +31,10 @@ import {
   UpdateProjectProjectsEnv$inboundSchema,
   UpdateProjectSpeedInsights,
   UpdateProjectSpeedInsights$inboundSchema,
-} from "./updateprojectbranchmatcher.js";
+} from "./updateprojectdomains.js";
 import {
+  UpdateProjectAiBots,
+  UpdateProjectAiBots$inboundSchema,
   UpdateProjectBlobs,
   UpdateProjectBlobs$inboundSchema,
   UpdateProjectBotFilter,
@@ -73,8 +75,8 @@ import {
   UpdateProjectProjectsPasswordProtection$inboundSchema,
   UpdateProjectProjectsResourceConfig,
   UpdateProjectProjectsResourceConfig$inboundSchema,
-  UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction,
-  UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction$inboundSchema,
+  UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction,
+  UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction$inboundSchema,
   UpdateProjectProjectsSsoProtection,
   UpdateProjectProjectsSsoProtection$inboundSchema,
   UpdateProjectProjectsStaticIps,
@@ -105,25 +107,7 @@ import {
   UpdateProjectVercelRuleset$inboundSchema,
   UpdateProjectWebAnalytics,
   UpdateProjectWebAnalytics$inboundSchema,
-} from "./updateprojectprojectsresponse200applicationjsonresponsebodysecurityaction.js";
-
-export type UpdateProjectAiBots = {
-  active: boolean;
-  action?:
-    | UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction
-    | undefined;
-};
-
-export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction =
-  {
-    Challenge: "challenge",
-    Deny: "deny",
-    Log: "log",
-  } as const;
-export type UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction =
-  ClosedEnum<
-    typeof UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction
-  >;
+} from "./updateprojectprojectsresponse200applicationjsonresponsebodysecuritymanagedrulesaction.js";
 
 export type UpdateProjectOwasp = {
   active: boolean;
@@ -722,7 +706,7 @@ export type UpdateProjectSamplingRules = {
   destination?: UpdateProjectDestination | undefined;
 };
 
-export type UpdateProjectTracing = {
+export type UpdateProjectProjectsTracing = {
   domains?: string | undefined;
   ignorePaths?: Array<string> | undefined;
   samplingRules?: Array<UpdateProjectSamplingRules> | undefined;
@@ -847,39 +831,9 @@ export type UpdateProjectResponseBody = {
   hasDeployments?: boolean | undefined;
   dismissedToasts?: Array<UpdateProjectProjectsDismissedToasts> | undefined;
   protectedSourcemaps?: boolean | undefined;
-  tracing?: UpdateProjectTracing | undefined;
+  tracing?: UpdateProjectProjectsTracing | undefined;
   avatar?: string | null | undefined;
 };
-
-/** @internal */
-export const UpdateProjectAiBots$inboundSchema: z.ZodType<
-  UpdateProjectAiBots,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  active: types.boolean(),
-  action: types.optional(
-    UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction$inboundSchema,
-  ),
-});
-
-export function updateProjectAiBotsFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateProjectAiBots, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateProjectAiBots$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateProjectAiBots' from JSON`,
-  );
-}
-
-/** @internal */
-export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction
-  > = z.nativeEnum(
-    UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction,
-  );
 
 /** @internal */
 export const UpdateProjectOwasp$inboundSchema: z.ZodType<
@@ -912,7 +866,7 @@ export const UpdateProjectManagedRules$inboundSchema: z.ZodType<
   vercel_ruleset: UpdateProjectVercelRuleset$inboundSchema,
   traffic_sources: UpdateProjectTrafficSources$inboundSchema,
   bot_filter: UpdateProjectBotFilter$inboundSchema,
-  ai_bots: z.lazy(() => UpdateProjectAiBots$inboundSchema),
+  ai_bots: UpdateProjectAiBots$inboundSchema,
   owasp: z.lazy(() => UpdateProjectOwasp$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
@@ -2426,8 +2380,8 @@ export function updateProjectSamplingRulesFromJSON(
 }
 
 /** @internal */
-export const UpdateProjectTracing$inboundSchema: z.ZodType<
-  UpdateProjectTracing,
+export const UpdateProjectProjectsTracing$inboundSchema: z.ZodType<
+  UpdateProjectProjectsTracing,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -2438,13 +2392,13 @@ export const UpdateProjectTracing$inboundSchema: z.ZodType<
   ),
 });
 
-export function updateProjectTracingFromJSON(
+export function updateProjectProjectsTracingFromJSON(
   jsonString: string,
-): SafeParseResult<UpdateProjectTracing, SDKValidationError> {
+): SafeParseResult<UpdateProjectProjectsTracing, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UpdateProjectTracing$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateProjectTracing' from JSON`,
+    (x) => UpdateProjectProjectsTracing$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectProjectsTracing' from JSON`,
   );
 }
 
@@ -2589,7 +2543,9 @@ export const UpdateProjectResponseBody$inboundSchema: z.ZodType<
     z.array(z.lazy(() => UpdateProjectProjectsDismissedToasts$inboundSchema)),
   ),
   protectedSourcemaps: types.optional(types.boolean()),
-  tracing: types.optional(z.lazy(() => UpdateProjectTracing$inboundSchema)),
+  tracing: types.optional(
+    z.lazy(() => UpdateProjectProjectsTracing$inboundSchema),
+  ),
   avatar: z.nullable(types.string()).optional(),
 });
 

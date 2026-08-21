@@ -5,7 +5,7 @@ Build machine configuration recorded on a team or user `resourceConfig`. This is
 ## Example Usage
 
 ```typescript
-import { PayloadBuildMachine } from "@vercel/sdk/models/edgemiddlewareinvocations.js";
+import { PayloadBuildMachine } from "@vercel/sdk/models/edgeconfigwrite.js";
 
 let value: PayloadBuildMachine = {};
 ```

@@ -1,16 +1,18 @@
 # UpdateProjectProjectsResponse200ApplicationJSONResponseBodyType
 
+The type of matching to perform
+
 ## Example Usage
 
 ```typescript
-import { UpdateProjectProjectsResponse200ApplicationJSONResponseBodyType } from "@vercel/sdk/models/updateprojectprojectsresponse200applicationjsonresponsebodysecurityaction.js";
+import { UpdateProjectProjectsResponse200ApplicationJSONResponseBodyType } from "@vercel/sdk/models/updateprojectprojectsresponse200applicationjsonresponsebodysecuritymanagedrulesaction.js";
 
 let value: UpdateProjectProjectsResponse200ApplicationJSONResponseBodyType =
-  "promote";
+  "endsWith";
 ```
 
 ## Values
 
 ```typescript
-"promote" | "rollback"
+"endsWith" | "equals" | "startsWith"
 ```

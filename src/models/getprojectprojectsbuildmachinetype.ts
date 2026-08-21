@@ -332,6 +332,10 @@ export type GetProjectSpeedInsights = {
   disabledAt?: number | undefined;
   canceledAt?: number | undefined;
   hasData?: boolean | undefined;
+  /**
+   * When the first free (not Speed Insights Plus) production data point was observed, in ms. Set once by subscriber-analytics-events; projects that already had data before this field shipped get it backfilled on their next batch, so it reads "first free data point observed", not necessarily "first ever".
+   */
+  dataReceivedAt?: number | undefined;
   paidAt?: number | undefined;
 };
 
@@ -2451,6 +2455,7 @@ export const GetProjectSpeedInsights$inboundSchema: z.ZodType<
   disabledAt: types.optional(types.number()),
   canceledAt: types.optional(types.number()),
   hasData: types.optional(types.boolean()),
+  dataReceivedAt: types.optional(types.number()),
   paidAt: types.optional(types.number()),
 });
 

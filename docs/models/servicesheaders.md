@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ServicesHeaders } from "@vercel/sdk/models/schedule.js";
+import { ServicesHeaders } from "@vercel/sdk/models/middlewarematcher.js";
 
 let value: ServicesHeaders = {
   source: "<value>",

@@ -12372,7 +12372,7 @@
                             "type": "string"
                           },
                           "type": "array",
-                          "description": "Known allowed app-level scopes. For Slack this is the bot scope set configured on the app; for OAuth it is `scopes_supported` from the server's discovery document."
+                          "description": "Known allowed app-level scopes. For Slack this is the bot scope set configured on the app; for OAuth it is the connector's enabled `clientCredentials.scopes` configuration."
                         },
                         "supportedAuthorizationDetails": {
                           "items": {
@@ -12412,7 +12412,7 @@
                             "type": "string"
                           },
                           "type": "array",
-                          "description": "Known allowed user-level scopes. For Slack this is the user scope set configured on the app; for OAuth it is `scopes_supported` from the server's discovery document."
+                          "description": "Known allowed user-level scopes. For Slack this is the user scope set configured on the app; for OAuth it is the connector's enabled `userAuthorization.scopes` configuration."
                         },
                         "supportedAuthorizationDetails": {
                           "items": {
@@ -13103,6 +13103,16 @@
                               ],
                               "additionalProperties": false
                             }
+                          },
+                          "serviceUrls": {
+                            "type": "array",
+                            "minItems": 1,
+                            "maxItems": 8,
+                            "items": {
+                              "type": "string",
+                              "format": "uri"
+                            },
+                            "description": "The HTTPS resources the API key authenticates against."
                           }
                         },
                         "additionalProperties": false,
@@ -16716,6 +16726,10 @@
                                     true
                                   ]
                                 },
+                                "dataReceivedAt": {
+                                  "type": "number",
+                                  "description": "When the first free (not Speed Insights Plus) production data point was observed, in ms. Set once by subscriber-analytics-events; projects that already had data before this field shipped get it backfilled on their next batch, so it reads \"first free data point observed\", not necessarily \"first ever\"."
+                                },
                                 "paidAt": {
                                   "type": "number"
                                 }
@@ -18458,6 +18472,21 @@
                                       ],
                                       "type": "object",
                                       "description": "Queue trigger input event for v2beta (from vercel.json config). Consumer name is implicitly derived from the function path. Only one trigger per function is allowed."
+                                    },
+                                    {
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "schedule/v1beta"
+                                          ],
+                                          "description": "Event type - must be \"schedule/v1beta\" (REQUIRED)"
+                                        }
+                                      },
+                                      "required": [
+                                        "type"
+                                      ],
+                                      "type": "object"
                                     }
                                   ]
                                 },
@@ -19431,6 +19460,21 @@
                                                         ],
                                                         "type": "object",
                                                         "description": "Queue trigger input event for v2beta (from vercel.json config). Consumer name is implicitly derived from the function path. Only one trigger per function is allowed."
+                                                      },
+                                                      {
+                                                        "properties": {
+                                                          "type": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                              "schedule/v1beta"
+                                                            ],
+                                                            "description": "Event type - must be \"schedule/v1beta\" (REQUIRED)"
+                                                          }
+                                                        },
+                                                        "required": [
+                                                          "type"
+                                                        ],
+                                                        "type": "object"
                                                       }
                                                     ]
                                                   },
@@ -19927,6 +19971,21 @@
                                                         ],
                                                         "type": "object",
                                                         "description": "Queue trigger input event for v2beta (from vercel.json config). Consumer name is implicitly derived from the function path. Only one trigger per function is allowed."
+                                                      },
+                                                      {
+                                                        "properties": {
+                                                          "type": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                              "schedule/v1beta"
+                                                            ],
+                                                            "description": "Event type - must be \"schedule/v1beta\" (REQUIRED)"
+                                                          }
+                                                        },
+                                                        "required": [
+                                                          "type"
+                                                        ],
+                                                        "type": "object"
                                                       }
                                                     ]
                                                   },
@@ -20259,6 +20318,21 @@
                                                 ],
                                                 "type": "object",
                                                 "description": "Queue trigger input event for v2beta (from vercel.json config). Consumer name is implicitly derived from the function path. Only one trigger per function is allowed."
+                                              },
+                                              {
+                                                "properties": {
+                                                  "type": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                      "schedule/v1beta"
+                                                    ],
+                                                    "description": "Event type - must be \"schedule/v1beta\" (REQUIRED)"
+                                                  }
+                                                },
+                                                "required": [
+                                                  "type"
+                                                ],
+                                                "type": "object"
                                               }
                                             ]
                                           },
@@ -24726,6 +24800,10 @@
                                     true
                                   ]
                                 },
+                                "dataReceivedAt": {
+                                  "type": "number",
+                                  "description": "When the first free (not Speed Insights Plus) production data point was observed, in ms. Set once by subscriber-analytics-events; projects that already had data before this field shipped get it backfilled on their next batch, so it reads \"first free data point observed\", not necessarily \"first ever\"."
+                                },
                                 "paidAt": {
                                   "type": "number"
                                 }
@@ -26468,6 +26546,21 @@
                                       ],
                                       "type": "object",
                                       "description": "Queue trigger input event for v2beta (from vercel.json config). Consumer name is implicitly derived from the function path. Only one trigger per function is allowed."
+                                    },
+                                    {
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "schedule/v1beta"
+                                          ],
+                                          "description": "Event type - must be \"schedule/v1beta\" (REQUIRED)"
+                                        }
+                                      },
+                                      "required": [
+                                        "type"
+                                      ],
+                                      "type": "object"
                                     }
                                   ]
                                 },
@@ -27441,6 +27534,21 @@
                                                         ],
                                                         "type": "object",
                                                         "description": "Queue trigger input event for v2beta (from vercel.json config). Consumer name is implicitly derived from the function path. Only one trigger per function is allowed."
+                                                      },
+                                                      {
+                                                        "properties": {
+                                                          "type": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                              "schedule/v1beta"
+                                                            ],
+                                                            "description": "Event type - must be \"schedule/v1beta\" (REQUIRED)"
+                                                          }
+                                                        },
+                                                        "required": [
+                                                          "type"
+                                                        ],
+                                                        "type": "object"
                                                       }
                                                     ]
                                                   },
@@ -27937,6 +28045,21 @@
                                                         ],
                                                         "type": "object",
                                                         "description": "Queue trigger input event for v2beta (from vercel.json config). Consumer name is implicitly derived from the function path. Only one trigger per function is allowed."
+                                                      },
+                                                      {
+                                                        "properties": {
+                                                          "type": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                              "schedule/v1beta"
+                                                            ],
+                                                            "description": "Event type - must be \"schedule/v1beta\" (REQUIRED)"
+                                                          }
+                                                        },
+                                                        "required": [
+                                                          "type"
+                                                        ],
+                                                        "type": "object"
                                                       }
                                                     ]
                                                   },
@@ -28269,6 +28392,21 @@
                                                 ],
                                                 "type": "object",
                                                 "description": "Queue trigger input event for v2beta (from vercel.json config). Consumer name is implicitly derived from the function path. Only one trigger per function is allowed."
+                                              },
+                                              {
+                                                "properties": {
+                                                  "type": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                      "schedule/v1beta"
+                                                    ],
+                                                    "description": "Event type - must be \"schedule/v1beta\" (REQUIRED)"
+                                                  }
+                                                },
+                                                "required": [
+                                                  "type"
+                                                ],
+                                                "type": "object"
                                               }
                                             ]
                                           },
@@ -31881,6 +32019,10 @@
                                 true
                               ]
                             },
+                            "dataReceivedAt": {
+                              "type": "number",
+                              "description": "When the first free (not Speed Insights Plus) production data point was observed, in ms. Set once by subscriber-analytics-events; projects that already had data before this field shipped get it backfilled on their next batch, so it reads \"first free data point observed\", not necessarily \"first ever\"."
+                            },
                             "paidAt": {
                               "type": "number"
                             }
@@ -33623,6 +33765,21 @@
                                   ],
                                   "type": "object",
                                   "description": "Queue trigger input event for v2beta (from vercel.json config). Consumer name is implicitly derived from the function path. Only one trigger per function is allowed."
+                                },
+                                {
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "schedule/v1beta"
+                                      ],
+                                      "description": "Event type - must be \"schedule/v1beta\" (REQUIRED)"
+                                    }
+                                  },
+                                  "required": [
+                                    "type"
+                                  ],
+                                  "type": "object"
                                 }
                               ]
                             },
@@ -34596,6 +34753,21 @@
                                                     ],
                                                     "type": "object",
                                                     "description": "Queue trigger input event for v2beta (from vercel.json config). Consumer name is implicitly derived from the function path. Only one trigger per function is allowed."
+                                                  },
+                                                  {
+                                                    "properties": {
+                                                      "type": {
+                                                        "type": "string",
+                                                        "enum": [
+                                                          "schedule/v1beta"
+                                                        ],
+                                                        "description": "Event type - must be \"schedule/v1beta\" (REQUIRED)"
+                                                      }
+                                                    },
+                                                    "required": [
+                                                      "type"
+                                                    ],
+                                                    "type": "object"
                                                   }
                                                 ]
                                               },
@@ -35092,6 +35264,21 @@
                                                     ],
                                                     "type": "object",
                                                     "description": "Queue trigger input event for v2beta (from vercel.json config). Consumer name is implicitly derived from the function path. Only one trigger per function is allowed."
+                                                  },
+                                                  {
+                                                    "properties": {
+                                                      "type": {
+                                                        "type": "string",
+                                                        "enum": [
+                                                          "schedule/v1beta"
+                                                        ],
+                                                        "description": "Event type - must be \"schedule/v1beta\" (REQUIRED)"
+                                                      }
+                                                    },
+                                                    "required": [
+                                                      "type"
+                                                    ],
+                                                    "type": "object"
                                                   }
                                                 ]
                                               },
@@ -35424,6 +35611,21 @@
                                             ],
                                             "type": "object",
                                             "description": "Queue trigger input event for v2beta (from vercel.json config). Consumer name is implicitly derived from the function path. Only one trigger per function is allowed."
+                                          },
+                                          {
+                                            "properties": {
+                                              "type": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "schedule/v1beta"
+                                                ],
+                                                "description": "Event type - must be \"schedule/v1beta\" (REQUIRED)"
+                                              }
+                                            },
+                                            "required": [
+                                              "type"
+                                            ],
+                                            "type": "object"
                                           }
                                         ]
                                       },
@@ -45570,7 +45772,8 @@
                                       "account-plan-downgrade",
                                       "disabled-by-admin",
                                       "disabled-by-owner",
-                                      "feature-not-available"
+                                      "feature-not-available",
+                                      "limits-exceeded"
                                     ]
                                   },
                                   "schemas": {
@@ -46084,7 +46287,8 @@
                                       "account-plan-downgrade",
                                       "disabled-by-admin",
                                       "disabled-by-owner",
-                                      "feature-not-available"
+                                      "feature-not-available",
+                                      "limits-exceeded"
                                     ]
                                   },
                                   "schemas": {
@@ -46903,7 +47107,8 @@
                             "account-plan-downgrade",
                             "disabled-by-admin",
                             "disabled-by-owner",
-                            "feature-not-available"
+                            "feature-not-available",
+                            "limits-exceeded"
                           ]
                         },
                         "schemas": {
@@ -47414,7 +47619,8 @@
                             "account-plan-downgrade",
                             "disabled-by-admin",
                             "disabled-by-owner",
-                            "feature-not-available"
+                            "feature-not-available",
+                            "limits-exceeded"
                           ]
                         },
                         "schemas": {
@@ -48462,7 +48668,8 @@
                                   "account-plan-downgrade",
                                   "disabled-by-admin",
                                   "disabled-by-owner",
-                                  "feature-not-available"
+                                  "feature-not-available",
+                                  "limits-exceeded"
                                 ]
                               },
                               "schemas": {
@@ -48976,7 +49183,8 @@
                                   "account-plan-downgrade",
                                   "disabled-by-admin",
                                   "disabled-by-owner",
-                                  "feature-not-available"
+                                  "feature-not-available",
+                                  "limits-exceeded"
                                 ]
                               },
                               "schemas": {
@@ -49698,7 +49906,8 @@
                             "account-plan-downgrade",
                             "disabled-by-admin",
                             "disabled-by-owner",
-                            "feature-not-available"
+                            "feature-not-available",
+                            "limits-exceeded"
                           ]
                         },
                         "schemas": {
@@ -50209,7 +50418,8 @@
                             "account-plan-downgrade",
                             "disabled-by-admin",
                             "disabled-by-owner",
-                            "feature-not-available"
+                            "feature-not-available",
+                            "limits-exceeded"
                           ]
                         },
                         "schemas": {
@@ -50853,7 +51063,8 @@
                             "account-plan-downgrade",
                             "disabled-by-admin",
                             "disabled-by-owner",
-                            "feature-not-available"
+                            "feature-not-available",
+                            "limits-exceeded"
                           ]
                         },
                         "schemas": {
@@ -51364,7 +51575,8 @@
                             "account-plan-downgrade",
                             "disabled-by-admin",
                             "disabled-by-owner",
-                            "feature-not-available"
+                            "feature-not-available",
+                            "limits-exceeded"
                           ]
                         },
                         "schemas": {
@@ -57780,20 +57992,6 @@
                                   "type"
                                 ],
                                 "type": "object"
-                              },
-                              {
-                                "properties": {
-                                  "type": {
-                                    "type": "string",
-                                    "enum": [
-                                      "experiment"
-                                    ]
-                                  }
-                                },
-                                "required": [
-                                  "type"
-                                ],
-                                "type": "object"
                               }
                             ]
                           },
@@ -57946,20 +58144,6 @@
                                         "rollToVariantId",
                                         "slots",
                                         "startTimestamp",
-                                        "type"
-                                      ],
-                                      "type": "object"
-                                    },
-                                    {
-                                      "properties": {
-                                        "type": {
-                                          "type": "string",
-                                          "enum": [
-                                            "experiment"
-                                          ]
-                                        }
-                                      },
-                                      "required": [
                                         "type"
                                       ],
                                       "type": "object"
@@ -59337,20 +59521,6 @@
                                       "type"
                                     ],
                                     "type": "object"
-                                  },
-                                  {
-                                    "properties": {
-                                      "type": {
-                                        "type": "string",
-                                        "enum": [
-                                          "experiment"
-                                        ]
-                                      }
-                                    },
-                                    "required": [
-                                      "type"
-                                    ],
-                                    "type": "object"
                                   }
                                 ]
                               },
@@ -59503,20 +59673,6 @@
                                             "rollToVariantId",
                                             "slots",
                                             "startTimestamp",
-                                            "type"
-                                          ],
-                                          "type": "object"
-                                        },
-                                        {
-                                          "properties": {
-                                            "type": {
-                                              "type": "string",
-                                              "enum": [
-                                                "experiment"
-                                              ]
-                                            }
-                                          },
-                                          "required": [
                                             "type"
                                           ],
                                           "type": "object"
@@ -60941,20 +61097,6 @@
                                             "type"
                                           ],
                                           "type": "object"
-                                        },
-                                        {
-                                          "properties": {
-                                            "type": {
-                                              "type": "string",
-                                              "enum": [
-                                                "experiment"
-                                              ]
-                                            }
-                                          },
-                                          "required": [
-                                            "type"
-                                          ],
-                                          "type": "object"
                                         }
                                       ]
                                     },
@@ -61107,20 +61249,6 @@
                                                   "rollToVariantId",
                                                   "slots",
                                                   "startTimestamp",
-                                                  "type"
-                                                ],
-                                                "type": "object"
-                                              },
-                                              {
-                                                "properties": {
-                                                  "type": {
-                                                    "type": "string",
-                                                    "enum": [
-                                                      "experiment"
-                                                    ]
-                                                  }
-                                                },
-                                                "required": [
                                                   "type"
                                                 ],
                                                 "type": "object"
@@ -78603,6 +78731,10 @@
                                   true
                                 ]
                               },
+                              "dataReceivedAt": {
+                                "type": "number",
+                                "description": "When the first free (not Speed Insights Plus) production data point was observed, in ms. Set once by subscriber-analytics-events; projects that already had data before this field shipped get it backfilled on their next batch, so it reads \"first free data point observed\", not necessarily \"first ever\"."
+                              },
                               "paidAt": {
                                 "type": "number"
                               }
@@ -81967,6 +82099,12 @@
                                 "type": "array"
                               },
                               "aiGatewayApiKey": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "aiGatewayApiKeyBypassAll": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
                                 },
@@ -86155,6 +86293,13 @@
                         "fallbackEnvironment": {
                           "type": "string"
                         },
+                        "enablePolyrepoBranchRouting": {
+                          "type": "boolean",
+                          "enum": [
+                            false,
+                            true
+                          ]
+                        },
                         "createdAt": {
                           "type": "number"
                         },
@@ -86164,6 +86309,7 @@
                       },
                       "required": [
                         "createdAt",
+                        "enablePolyrepoBranchRouting",
                         "fallbackEnvironment",
                         "id",
                         "name",
@@ -95152,6 +95298,10 @@
                                   true
                                 ]
                               },
+                              "dataReceivedAt": {
+                                "type": "number",
+                                "description": "When the first free (not Speed Insights Plus) production data point was observed, in ms. Set once by subscriber-analytics-events; projects that already had data before this field shipped get it backfilled on their next batch, so it reads \"first free data point observed\", not necessarily \"first ever\"."
+                              },
                               "paidAt": {
                                 "type": "number"
                               }
@@ -99860,6 +100010,10 @@
                                       true
                                     ]
                                   },
+                                  "dataReceivedAt": {
+                                    "type": "number",
+                                    "description": "When the first free (not Speed Insights Plus) production data point was observed, in ms. Set once by subscriber-analytics-events; projects that already had data before this field shipped get it backfilled on their next batch, so it reads \"first free data point observed\", not necessarily \"first ever\"."
+                                  },
                                   "paidAt": {
                                     "type": "number"
                                   }
@@ -102705,6 +102859,10 @@
                                       false,
                                       true
                                     ]
+                                  },
+                                  "dataReceivedAt": {
+                                    "type": "number",
+                                    "description": "When the first free (not Speed Insights Plus) production data point was observed, in ms. Set once by subscriber-analytics-events; projects that already had data before this field shipped get it backfilled on their next batch, so it reads \"first free data point observed\", not necessarily \"first ever\"."
                                   },
                                   "paidAt": {
                                     "type": "number"
@@ -106070,6 +106228,12 @@
                                     "type": "array"
                                   },
                                   "aiGatewayApiKey": {
+                                    "items": {
+                                      "$ref": "#/components/schemas/ACLAction"
+                                    },
+                                    "type": "array"
+                                  },
+                                  "aiGatewayApiKeyBypassAll": {
                                     "items": {
                                       "$ref": "#/components/schemas/ACLAction"
                                     },
@@ -110859,6 +111023,10 @@
                             true
                           ]
                         },
+                        "dataReceivedAt": {
+                          "type": "number",
+                          "description": "When the first free (not Speed Insights Plus) production data point was observed, in ms. Set once by subscriber-analytics-events; projects that already had data before this field shipped get it backfilled on their next batch, so it reads \"first free data point observed\", not necessarily \"first ever\"."
+                        },
                         "paidAt": {
                           "type": "number"
                         }
@@ -114223,6 +114391,12 @@
                           "type": "array"
                         },
                         "aiGatewayApiKey": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "aiGatewayApiKeyBypassAll": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -119174,6 +119348,10 @@
                             true
                           ]
                         },
+                        "dataReceivedAt": {
+                          "type": "number",
+                          "description": "When the first free (not Speed Insights Plus) production data point was observed, in ms. Set once by subscriber-analytics-events; projects that already had data before this field shipped get it backfilled on their next batch, so it reads \"first free data point observed\", not necessarily \"first ever\"."
+                        },
                         "paidAt": {
                           "type": "number"
                         }
@@ -122536,6 +122714,12 @@
                           "type": "array"
                         },
                         "aiGatewayApiKey": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "aiGatewayApiKeyBypassAll": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -126852,6 +127036,10 @@
                             true
                           ]
                         },
+                        "dataReceivedAt": {
+                          "type": "number",
+                          "description": "When the first free (not Speed Insights Plus) production data point was observed, in ms. Set once by subscriber-analytics-events; projects that already had data before this field shipped get it backfilled on their next batch, so it reads \"first free data point observed\", not necessarily \"first ever\"."
+                        },
                         "paidAt": {
                           "type": "number"
                         }
@@ -130207,6 +130395,12 @@
                           "type": "array"
                         },
                         "aiGatewayApiKey": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "aiGatewayApiKeyBypassAll": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -134352,34 +134546,9 @@
                   },
                   "passport": {
                     "description": "Passport configuration for the project.",
+                    "type": "object",
+                    "additionalProperties": false,
                     "properties": {
-                      "publicPathRules": {
-                        "type": "array",
-                        "maxItems": 100,
-                        "uniqueItems": true,
-                        "items": {
-                          "type": "object",
-                          "additionalProperties": false,
-                          "required": [
-                            "type",
-                            "value"
-                          ],
-                          "properties": {
-                            "type": {
-                              "type": "string",
-                              "enum": [
-                                "equals",
-                                "startsWith"
-                              ]
-                            },
-                            "value": {
-                              "type": "string",
-                              "maxLength": 2048,
-                              "pattern": "^/[^?#\\\\s]*$"
-                            }
-                          }
-                        }
-                      },
                       "connectorId": {
                         "type": "string"
                       },
@@ -134394,8 +134563,6 @@
                         ]
                       }
                     },
-                    "type": "object",
-                    "additionalProperties": false,
                     "required": [
                       "connectorId"
                     ],
@@ -135777,6 +135944,10 @@
                             false,
                             true
                           ]
+                        },
+                        "dataReceivedAt": {
+                          "type": "number",
+                          "description": "When the first free (not Speed Insights Plus) production data point was observed, in ms. Set once by subscriber-analytics-events; projects that already had data before this field shipped get it backfilled on their next batch, so it reads \"first free data point observed\", not necessarily \"first ever\"."
                         },
                         "paidAt": {
                           "type": "number"
@@ -139142,6 +139313,12 @@
                           "type": "array"
                         },
                         "aiGatewayApiKey": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "aiGatewayApiKeyBypassAll": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -156221,6 +156398,10 @@
                             true
                           ]
                         },
+                        "dataReceivedAt": {
+                          "type": "number",
+                          "description": "When the first free (not Speed Insights Plus) production data point was observed, in ms. Set once by subscriber-analytics-events; projects that already had data before this field shipped get it backfilled on their next batch, so it reads \"first free data point observed\", not necessarily \"first ever\"."
+                        },
                         "paidAt": {
                           "type": "number"
                         }
@@ -159585,6 +159766,12 @@
                           "type": "array"
                         },
                         "aiGatewayApiKey": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "aiGatewayApiKeyBypassAll": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -193118,7 +193305,7 @@
     },
     "/v1/teams/{teamId}/microfrontends/{groupId}": {
       "patch": {
-        "description": "Updates the name (and slug) of a microfrontends group.",
+        "description": "Updates a microfrontends group's settings.",
         "operationId": "updateMicrofrontendsGroup",
         "security": [
           {
@@ -193149,6 +193336,13 @@
                         },
                         "fallbackEnvironment": {
                           "type": "string"
+                        },
+                        "enablePolyrepoBranchRouting": {
+                          "type": "boolean",
+                          "enum": [
+                            false,
+                            true
+                          ]
                         }
                       },
                       "required": [
@@ -193224,6 +193418,10 @@
                   "fallbackEnvironment": {
                     "type": "string",
                     "description": "The new fallback environment for the microfrontends group. Must be \"SAME_ENV\", \"PRODUCTION\", or a valid custom environment slug from the default app."
+                  },
+                  "enablePolyrepoBranchRouting": {
+                    "type": "boolean",
+                    "description": "Whether Preview Deployments can link to branches with the same name in other Git repositories."
                   }
                 }
               }
@@ -206824,6 +207022,10 @@
                                       true
                                     ]
                                   },
+                                  "dataReceivedAt": {
+                                    "type": "number",
+                                    "description": "When the first free (not Speed Insights Plus) production data point was observed, in ms. Set once by subscriber-analytics-events; projects that already had data before this field shipped get it backfilled on their next batch, so it reads \"first free data point observed\", not necessarily \"first ever\"."
+                                  },
                                   "paidAt": {
                                     "type": "number"
                                   }
@@ -209558,6 +209760,7 @@
               "env-variable-read:v0:env:pull",
               "env-variable-rotated",
               "experiment-created",
+              "experiment-deleted",
               "experiment-transitioned",
               "experiment-updated",
               "firewall-bypass-created",
@@ -209583,6 +209786,17 @@
               "flags-transferred",
               "git-integration-repo-push",
               "git_account_integration_link_added",
+              "global-config-backup-restored",
+              "global-config-created",
+              "global-config-deleted",
+              "global-config-items-updated",
+              "global-config-schema-deleted",
+              "global-config-schema-updated",
+              "global-config-token-created",
+              "global-config-token-deleted",
+              "global-config-transfer-in",
+              "global-config-transfer-out",
+              "global-config-updated",
               "instant-rollback-created",
               "integration-configuration-credential-rotated",
               "integration-configuration-owner-changed",
@@ -209787,6 +210001,7 @@
               "project-source-files-outside-root-directory-updated",
               "project-speed-insights-disabled",
               "project-speed-insights-enabled",
+              "project-speed-insights-free-data-started",
               "project-sso-protection",
               "project-static-ips-updated",
               "project-trusted-ips",
@@ -209910,6 +210125,8 @@
               "team-tokens-invalidated",
               "tracing-configured",
               "tracing-disabled",
+              "tracing-paused",
+              "tracing-resumed",
               "unlink-login-connection",
               "update-account-flow-dismissed",
               "update-account-flow-triggered",
@@ -210094,8 +210311,13 @@
                       "app"
                     ]
                   },
+                  "id": {
+                    "type": "string",
+                    "description": "The backing Vercel App ID. When absent, defaults to `clientId`."
+                  },
                   "clientId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The OAuth 2.0 client ID, which may be a CIMD URL."
                   },
                   "name": {
                     "type": "string"
@@ -210196,8 +210418,13 @@
                         "app"
                       ]
                     },
+                    "id": {
+                      "type": "string",
+                      "description": "The backing Vercel App ID. When absent, defaults to `clientId`."
+                    },
                     "clientId": {
-                      "type": "string"
+                      "type": "string",
+                      "description": "The OAuth 2.0 client ID, which may be a CIMD URL."
                     },
                     "name": {
                       "type": "string"
@@ -210319,6 +210546,7 @@
                     "type": "string",
                     "enum": [
                       "created",
+                      "deleted",
                       "transitioned",
                       "updated"
                     ]
@@ -210726,6 +210954,14 @@
                       true
                     ],
                     "description": "True when the key was created with a ZDR exemption."
+                  },
+                  "bypassAll": {
+                    "type": "boolean",
+                    "enum": [
+                      false,
+                      true
+                    ],
+                    "description": "True when the key was created to bypass all of the team's restrictions (the ZDR-only model restriction and the provider/model allowlist)."
                   }
                 },
                 "required": [
@@ -211985,6 +212221,7 @@
                         "read-write:alerts",
                         "read-write:billing",
                         "read-write:blob",
+                        "read-write:connect",
                         "read-write:deployment",
                         "read-write:domain",
                         "read-write:domain-registrar",
@@ -212095,6 +212332,7 @@
                         "read-write:alerts",
                         "read-write:billing",
                         "read-write:blob",
+                        "read-write:connect",
                         "read-write:deployment",
                         "read-write:domain",
                         "read-write:domain-registrar",
@@ -212227,6 +212465,7 @@
                             "read-write:alerts",
                             "read-write:billing",
                             "read-write:blob",
+                            "read-write:connect",
                             "read-write:deployment",
                             "read-write:domain",
                             "read-write:domain-registrar",
@@ -212342,6 +212581,7 @@
                             "read-write:alerts",
                             "read-write:billing",
                             "read-write:blob",
+                            "read-write:connect",
                             "read-write:deployment",
                             "read-write:domain",
                             "read-write:domain-registrar",
@@ -212470,6 +212710,7 @@
                         "read-write:alerts",
                         "read-write:billing",
                         "read-write:blob",
+                        "read-write:connect",
                         "read-write:deployment",
                         "read-write:domain",
                         "read-write:domain-registrar",
@@ -217287,7 +217528,7 @@
                   "edgeConfigSlug": {
                     "type": "string"
                   },
-                  "globalConfigSchema": {
+                  "edgeConfigSchema": {
                     "type": "object"
                   }
                 },
@@ -221280,6 +221521,32 @@
                             ],
                             "type": "object"
                           },
+                          "tracing": {
+                            "properties": {
+                              "updatedAt": {
+                                "type": "number"
+                              },
+                              "blockedFrom": {
+                                "type": "number"
+                              },
+                              "blockedUntil": {
+                                "type": "number"
+                              },
+                              "blockReason": {
+                                "type": "string",
+                                "enum": [
+                                  "admin_override",
+                                  "hard_blocked",
+                                  "limits_exceeded"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "blockReason",
+                              "updatedAt"
+                            ],
+                            "type": "object"
+                          },
                           "vcr": {
                             "properties": {
                               "updatedAt": {
@@ -222688,6 +222955,13 @@
                   "fallbackEnvironment": {
                     "type": "string"
                   },
+                  "enablePolyrepoBranchRouting": {
+                    "type": "boolean",
+                    "enum": [
+                      false,
+                      true
+                    ]
+                  },
                   "prev": {
                     "properties": {
                       "name": {
@@ -222698,6 +222972,13 @@
                       },
                       "fallbackEnvironment": {
                         "type": "string"
+                      },
+                      "enablePolyrepoBranchRouting": {
+                        "type": "boolean",
+                        "enum": [
+                          false,
+                          true
+                        ]
                       }
                     },
                     "required": [
@@ -224941,6 +225222,10 @@
                   },
                   "projectName": {
                     "type": "string"
+                  },
+                  "deploymentId": {
+                    "type": "string",
+                    "description": "Deployment whose outcome caused a system-initiated elastic resize."
                   },
                   "previousBuildMachineType": {
                     "type": "string"
@@ -228556,6 +228841,7 @@
                           "pricingPlan": {
                             "type": "string",
                             "enum": [
+                              "flex",
                               "legacy",
                               "platform",
                               "plus",
@@ -228666,6 +228952,7 @@
                       "pricingPlan": {
                         "type": "string",
                         "enum": [
+                          "flex",
                           "legacy",
                           "platform",
                           "plus",
@@ -228770,6 +229057,7 @@
                       "pricingPlan": {
                         "type": "string",
                         "enum": [
+                          "flex",
                           "legacy",
                           "platform",
                           "plus",
@@ -230679,6 +230967,21 @@
                 "required": [
                   "projectId",
                   "projectName"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "reason": {
+                    "type": "string",
+                    "enum": [
+                      "limits-exceeded"
+                    ]
+                  }
+                },
+                "required": [
+                  "reason"
                 ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
@@ -233167,6 +233470,7 @@
               "env-variable-read:v0:env:pull",
               "env-variable-rotated",
               "experiment-created",
+              "experiment-deleted",
               "experiment-transitioned",
               "experiment-updated",
               "firewall-bypass-created",
@@ -233192,6 +233496,17 @@
               "flags-transferred",
               "git-integration-repo-push",
               "git_account_integration_link_added",
+              "global-config-backup-restored",
+              "global-config-created",
+              "global-config-deleted",
+              "global-config-items-updated",
+              "global-config-schema-deleted",
+              "global-config-schema-updated",
+              "global-config-token-created",
+              "global-config-token-deleted",
+              "global-config-transfer-in",
+              "global-config-transfer-out",
+              "global-config-updated",
               "instant-rollback-created",
               "integration-configuration-credential-rotated",
               "integration-configuration-owner-changed",
@@ -233396,6 +233711,7 @@
               "project-source-files-outside-root-directory-updated",
               "project-speed-insights-disabled",
               "project-speed-insights-enabled",
+              "project-speed-insights-free-data-started",
               "project-sso-protection",
               "project-static-ips-updated",
               "project-trusted-ips",
@@ -233519,6 +233835,8 @@
               "team-tokens-invalidated",
               "tracing-configured",
               "tracing-disabled",
+              "tracing-paused",
+              "tracing-resumed",
               "unlink-login-connection",
               "update-account-flow-dismissed",
               "update-account-flow-triggered",
@@ -233864,6 +234182,7 @@
                 "env-variable-read:v0:env:pull",
                 "env-variable-rotated",
                 "experiment-created",
+                "experiment-deleted",
                 "experiment-transitioned",
                 "experiment-updated",
                 "firewall-bypass-created",
@@ -233889,6 +234208,17 @@
                 "flags-transferred",
                 "git-integration-repo-push",
                 "git_account_integration_link_added",
+                "global-config-backup-restored",
+                "global-config-created",
+                "global-config-deleted",
+                "global-config-items-updated",
+                "global-config-schema-deleted",
+                "global-config-schema-updated",
+                "global-config-token-created",
+                "global-config-token-deleted",
+                "global-config-transfer-in",
+                "global-config-transfer-out",
+                "global-config-updated",
                 "instant-rollback-created",
                 "integration-configuration-credential-rotated",
                 "integration-configuration-owner-changed",
@@ -234093,6 +234423,7 @@
                 "project-source-files-outside-root-directory-updated",
                 "project-speed-insights-disabled",
                 "project-speed-insights-enabled",
+                "project-speed-insights-free-data-started",
                 "project-sso-protection",
                 "project-static-ips-updated",
                 "project-trusted-ips",
@@ -234216,6 +234547,8 @@
                 "team-tokens-invalidated",
                 "tracing-configured",
                 "tracing-disabled",
+                "tracing-paused",
+                "tracing-resumed",
                 "unlink-login-connection",
                 "update-account-flow-dismissed",
                 "update-account-flow-triggered",
@@ -234578,20 +234911,6 @@
                         "type"
                       ],
                       "type": "object"
-                    },
-                    {
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "enum": [
-                            "experiment"
-                          ]
-                        }
-                      },
-                      "required": [
-                        "type"
-                      ],
-                      "type": "object"
                     }
                   ]
                 },
@@ -234744,20 +235063,6 @@
                               "rollToVariantId",
                               "slots",
                               "startTimestamp",
-                              "type"
-                            ],
-                            "type": "object"
-                          },
-                          {
-                            "properties": {
-                              "type": {
-                                "type": "string",
-                                "enum": [
-                                  "experiment"
-                                ]
-                              }
-                            },
-                            "required": [
                               "type"
                             ],
                             "type": "object"
@@ -238849,6 +239154,37 @@
                   "isCurrentlyBlocked"
                 ],
                 "type": "object"
+              },
+              "speedInsightsFree": {
+                "properties": {
+                  "blockedFrom": {
+                    "type": "number"
+                  },
+                  "blockedUntil": {
+                    "type": "number"
+                  },
+                  "blockReason": {
+                    "type": "string",
+                    "enum": [
+                      "admin_override",
+                      "hard_blocked",
+                      "limits_exceeded"
+                    ]
+                  },
+                  "isCurrentlyBlocked": {
+                    "type": "boolean",
+                    "enum": [
+                      false,
+                      true
+                    ]
+                  }
+                },
+                "required": [
+                  "blockReason",
+                  "isCurrentlyBlocked"
+                ],
+                "type": "object",
+                "description": "Client-facing view of the `speedInsightsFree` ingestion block. The dashboard needs `blockReason` to tell usage pauses apart from admin blocks."
               }
             },
             "type": "object",
@@ -239133,17 +239469,6 @@
       },
       "VcrImageListItem": {
         "properties": {
-          "status": {
-            "nullable": true,
-            "type": "string",
-            "enum": [
-              "preparing",
-              "ready",
-              "unoptimized",
-              null
-            ],
-            "description": "VHS-readiness status, or `null` for a multi-platform index."
-          },
           "tags": {
             "items": {
               "type": "string"
@@ -239193,42 +239518,16 @@
             "type": "number",
             "description": "Total size in bytes of the image's resources (manifest, config and layer blobs) stored by the registry."
           },
-          "vhs": {
-            "properties": {
-              "path": {
-                "type": "string"
-              },
-              "digest": {
-                "type": "string"
-              },
-              "config": {
-                "properties": {
-                  "command": {
-                    "items": {
-                      "type": "string"
-                    },
-                    "type": "array"
-                  },
-                  "entrypoint": {
-                    "items": {
-                      "type": "string"
-                    },
-                    "type": "array"
-                  },
-                  "workingDir": {
-                    "type": "string"
-                  }
-                },
-                "type": "object",
-                "description": "Optional VHS drive configuration captured for an optimized image."
-              }
-            },
-            "required": [
-              "digest",
-              "path"
+          "status": {
+            "nullable": true,
+            "type": "string",
+            "enum": [
+              "preparing",
+              "ready",
+              "unoptimized",
+              null
             ],
-            "type": "object",
-            "description": "Converted VHS drive data, present once an image has been optimized for sandbox launch."
+            "description": "VHS-readiness status, or `null` for a multi-platform index."
           },
           "createdAt": {
             "type": "string",
@@ -239652,17 +239951,6 @@
             },
             "type": "array"
           },
-          "status": {
-            "nullable": true,
-            "type": "string",
-            "enum": [
-              "preparing",
-              "ready",
-              "unoptimized",
-              null
-            ],
-            "description": "VHS-readiness status, or `null` for a multi-platform index."
-          },
           "tags": {
             "items": {
               "type": "string"
@@ -239712,42 +240000,16 @@
             "type": "number",
             "description": "Total size in bytes of the image's resources (manifest, config and layer blobs) stored by the registry."
           },
-          "vhs": {
-            "properties": {
-              "path": {
-                "type": "string"
-              },
-              "digest": {
-                "type": "string"
-              },
-              "config": {
-                "properties": {
-                  "command": {
-                    "items": {
-                      "type": "string"
-                    },
-                    "type": "array"
-                  },
-                  "entrypoint": {
-                    "items": {
-                      "type": "string"
-                    },
-                    "type": "array"
-                  },
-                  "workingDir": {
-                    "type": "string"
-                  }
-                },
-                "type": "object",
-                "description": "Optional VHS drive configuration captured for an optimized image."
-              }
-            },
-            "required": [
-              "digest",
-              "path"
+          "status": {
+            "nullable": true,
+            "type": "string",
+            "enum": [
+              "preparing",
+              "ready",
+              "unoptimized",
+              null
             ],
-            "type": "object",
-            "description": "Converted VHS drive data, present once an image has been optimized for sandbox launch."
+            "description": "VHS-readiness status, or `null` for a multi-platform index."
           },
           "createdAt": {
             "type": "string",

@@ -8,8 +8,11 @@ An image enriched with its tags and VHS-readiness status, as returned when listi
 import { VcrImageListItem } from "@vercel/sdk/models/vcrimagelistitem.js";
 
 let value: VcrImageListItem = {
-  status: "preparing",
-  tags: [],
+  tags: [
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
+  ],
   id: "img_a1b2c3d4e5f6",
   repositoryId: "repo_a1b2c3d4e5f6",
   manifestDigest:
@@ -17,7 +20,8 @@ let value: VcrImageListItem = {
   kind: "attestation",
   platform: "linux",
   arch: "amd64",
-  sizeInBytes: 4141.01,
+  sizeInBytes: 2410.39,
+  status: "ready",
   createdAt: "2026-06-30T10:00:00.000Z",
 };
 ```
@@ -26,7 +30,6 @@ let value: VcrImageListItem = {
 
 | Field                                                                                                     | Type                                                                                                      | Required                                                                                                  | Description                                                                                               | Example                                                                                                   |
 | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| `status`                                                                                                  | [models.VcrImageListItemStatus](../models/vcrimagelistitemstatus.md)                                      | :heavy_check_mark:                                                                                        | VHS-readiness status, or `null` for a multi-platform index.                                               |                                                                                                           |
 | `tags`                                                                                                    | *string*[]                                                                                                | :heavy_check_mark:                                                                                        | Tags pointing at this image's manifest.                                                                   |                                                                                                           |
 | `id`                                                                                                      | *string*                                                                                                  | :heavy_check_mark:                                                                                        | Internal identifier of the image.                                                                         | img_a1b2c3d4e5f6                                                                                          |
 | `repositoryId`                                                                                            | *string*                                                                                                  | :heavy_check_mark:                                                                                        | Identifier of the repository the image belongs to.                                                        | repo_a1b2c3d4e5f6                                                                                         |
@@ -36,5 +39,5 @@ let value: VcrImageListItem = {
 | `arch`                                                                                                    | *string*                                                                                                  | :heavy_minus_sign:                                                                                        | CPU architecture the manifest targets. Only present for single-platform manifests.                        | amd64                                                                                                     |
 | `pushedBy`                                                                                                | *string*                                                                                                  | :heavy_minus_sign:                                                                                        | Identifier of the actor that pushed the image.                                                            |                                                                                                           |
 | `sizeInBytes`                                                                                             | *number*                                                                                                  | :heavy_check_mark:                                                                                        | Total size in bytes of the image's resources (manifest, config and layer blobs) stored by the registry.   |                                                                                                           |
-| `vhs`                                                                                                     | [models.Vhs](../models/vhs.md)                                                                            | :heavy_minus_sign:                                                                                        | Converted VHS drive data, present once an image has been optimized for sandbox launch.                    |                                                                                                           |
+| `status`                                                                                                  | [models.VcrImageListItemStatus](../models/vcrimagelistitemstatus.md)                                      | :heavy_check_mark:                                                                                        | VHS-readiness status, or `null` for a multi-platform index.                                               |                                                                                                           |
 | `createdAt`                                                                                               | *string*                                                                                                  | :heavy_check_mark:                                                                                        | ISO 8601 timestamp of when the image was created.                                                         | 2026-06-30T10:00:00.000Z                                                                                  |

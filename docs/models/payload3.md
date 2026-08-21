@@ -8,7 +8,7 @@ The payload of the event, if requested.
 import { Payload3 } from "@vercel/sdk/models/userevent.js";
 
 let value: Payload3 = {
-  action: "updated",
+  action: "transitioned",
   id: "<id>",
   name: "<value>",
   state: "Hawaii",

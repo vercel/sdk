@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FortySeven } from "@vercel/sdk/models/eighteen.js";
+import { FortySeven } from "@vercel/sdk/models/payloadscopetype.js";
 
 let value: FortySeven = {
   alias: "<value>",

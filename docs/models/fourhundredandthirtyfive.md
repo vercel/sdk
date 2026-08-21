@@ -5,10 +5,10 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndThirtyFive } from "@vercel/sdk/models/threehundredandninetysix.js";
+import { FourHundredAndThirtyFive } from "@vercel/sdk/models/threehundredandninetyseven.js";
 
 let value: FourHundredAndThirtyFive = {
-  before: {
+  policy: {
     policyId: "<id>",
     clientId: "<id>",
     issuerUrl: "https://sure-footed-essence.com/",
@@ -17,49 +17,15 @@ let value: FourHundredAndThirtyFive = {
     claims: [
       {
         name: "<value>",
-        values: [
-          {
-            value: "<value>",
-            wildcards: true,
-          },
-        ],
+        values: [],
       },
     ],
     permissions: [],
     resources: {
-      projectIds: [
-        "<value 1>",
-        "<value 2>",
-      ],
+      projectIds: [],
     },
     createdAt: 6455.11,
     updatedAt: 9913.85,
-  },
-  after: {
-    policyId: "<id>",
-    clientId: "<id>",
-    issuerUrl: "https://plain-puritan.org/",
-    teamId: "<id>",
-    name: "<value>",
-    claims: [
-      {
-        name: "<value>",
-        values: [
-          {
-            value: "<value>",
-            wildcards: false,
-          },
-        ],
-      },
-    ],
-    permissions: [
-      "<value 1>",
-    ],
-    resources: {
-      projectIds: [],
-    },
-    createdAt: 8020.64,
-    updatedAt: 8978.73,
   },
 };
 ```
@@ -68,6 +34,5 @@ let value: FourHundredAndThirtyFive = {
 
 | Field                                                                                                                                                                                                                | Type                                                                                                                                                                                                                 | Required                                                                                                                                                                                                             | Description                                                                                                                                                                                                          |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `before`                                                                                                                                                                                                             | [models.PayloadBefore](../models/payloadbefore.md)                                                                                                                                                                   | :heavy_check_mark:                                                                                                                                                                                                   | A full point-in-time snapshot of an OIDC exchange policy, captured on every lifecycle event so the audit trail records exactly what the policy looked like. Mirrors the management endpoints' public response shape. |
-| `after`                                                                                                                                                                                                              | [models.PayloadAfter](../models/payloadafter.md)                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                   | A full point-in-time snapshot of an OIDC exchange policy, captured on every lifecycle event so the audit trail records exactly what the policy looked like. Mirrors the management endpoints' public response shape. |
+| `policy`                                                                                                                                                                                                             | [models.Policy](../models/policy.md)                                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                                                                   | A full point-in-time snapshot of an OIDC exchange policy, captured on every lifecycle event so the audit trail records exactly what the policy looked like. Mirrors the management endpoints' public response shape. |
 | `appName`                                                                                                                                                                                                            | *string*                                                                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                                   | N/A                                                                                                                                                                                                                  |

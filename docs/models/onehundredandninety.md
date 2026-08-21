@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndNinety } from "@vercel/sdk/models/edgemiddlewareinvocations.js";
+import { OneHundredAndNinety } from "@vercel/sdk/models/edgeconfigwrite.js";
 
 let value: OneHundredAndNinety = {
   id: "<id>",
@@ -25,4 +25,5 @@ let value: OneHundredAndNinety = {
 | `slug`                           | *string*                         | :heavy_minus_sign:               | N/A                              |
 | `name`                           | *string*                         | :heavy_minus_sign:               | N/A                              |
 | `fallbackEnvironment`            | *string*                         | :heavy_minus_sign:               | N/A                              |
+| `enablePolyrepoBranchRouting`    | *boolean*                        | :heavy_minus_sign:               | N/A                              |
 | `prev`                           | [models.Prev](../models/prev.md) | :heavy_check_mark:               | N/A                              |

@@ -72,23 +72,75 @@ import {
   ReadyState$inboundSchema,
   ReadySubstate,
   ReadySubstate$inboundSchema,
-} from "./canceldeploymentmaxdurationdeployments2.js";
+} from "./canceldeploymentservicesdeploymentsarchitecture.js";
 import { FlagJSONValue, FlagJSONValue$inboundSchema } from "./flagjsonvalue.js";
 import {
-  Builder,
-  Builder$inboundSchema,
-  RoutePrefixSource,
-  RoutePrefixSource$inboundSchema,
-  Schedule,
-  Schedule$inboundSchema,
+  CancelDeploymentServicesFunctions,
+  CancelDeploymentServicesFunctions$inboundSchema,
+  ExcludeFiles,
+  ExcludeFiles$inboundSchema,
+  IncludeFiles,
+  IncludeFiles$inboundSchema,
+  MiddlewareMatcher,
+  MiddlewareMatcher$inboundSchema,
+  MiddlewareRuntime,
+  MiddlewareRuntime$inboundSchema,
   Services2,
   Services2$inboundSchema,
+  ServicesProjectSettings,
+  ServicesProjectSettings$inboundSchema,
   ServicesType,
   ServicesType$inboundSchema,
   Trigger,
   Trigger$inboundSchema,
-} from "./schedule.js";
+} from "./middlewarematcher.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type ServicesConfig = {
+  bunVersion?: string | undefined;
+  maxLambdaSize?: string | undefined;
+  includeFiles?: IncludeFiles | undefined;
+  excludeFiles?: ExcludeFiles | undefined;
+  bundle?: boolean | undefined;
+  ldsflags?: string | undefined;
+  helpers?: boolean | undefined;
+  rust?: string | undefined;
+  debug?: boolean | undefined;
+  zeroConfig?: boolean | undefined;
+  import?: { [k: string]: string } | undefined;
+  functions?: { [k: string]: CancelDeploymentServicesFunctions } | undefined;
+  projectSettings?: ServicesProjectSettings | undefined;
+  outputDirectory?: string | undefined;
+  installCommand?: string | undefined;
+  buildCommand?: string | undefined;
+  devCommand?: string | undefined;
+  framework?: string | null | undefined;
+  nodeVersion?: string | undefined;
+  middleware?: boolean | undefined;
+  /**
+   * Enforced runtime for explicitly configured Routing Middleware.
+   */
+  middlewareRuntime?: MiddlewareRuntime | undefined;
+  middlewareMatcher?: MiddlewareMatcher | undefined;
+  /**
+   * Owning service name; scopes per-function config such as the v2beta consumer.
+   */
+  serviceName?: string | undefined;
+};
+
+export type Builder = {
+  use: string;
+  src?: string | undefined;
+  config?: ServicesConfig | undefined;
+};
+
+export const RoutePrefixSource = {
+  Configured: "configured",
+  Generated: "generated",
+} as const;
+export type RoutePrefixSource = ClosedEnum<typeof RoutePrefixSource>;
+
+export type Schedule = string | Array<string>;
 
 export type Topics2 = {
   topic: string;
@@ -130,7 +182,7 @@ export type Services1 = {
   routePrefix?: string | undefined;
   routePrefixSource?: RoutePrefixSource | undefined;
   subdomain?: string | undefined;
-  schedule?: Schedule | undefined;
+  schedule?: string | Array<string> | undefined;
   handlerFunction?: string | undefined;
   topics?: Array<string> | Array<Topics2> | undefined;
   env?: { [k: string]: ServicesEnv } | undefined;
@@ -487,7 +539,7 @@ export type CancelDeploymentDeploymentsResourceConfig = {
 /**
  * Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured
  */
-export type CancelDeploymentConfig = {
+export type Config = {
   version?: number | undefined;
   functionType: FunctionType;
   functionMemoryType: FunctionMemoryType;
@@ -857,7 +909,7 @@ export type CancelDeploymentResponseBody = {
   /**
    * Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured
    */
-  config?: CancelDeploymentConfig | undefined;
+  config?: Config | undefined;
   checks?: CancelDeploymentChecks | undefined;
   /**
    * NSNB Blocked metadata
@@ -868,6 +920,89 @@ export type CancelDeploymentResponseBody = {
    */
   attribution?: CancelDeploymentAttribution | undefined;
 };
+
+/** @internal */
+export const ServicesConfig$inboundSchema: z.ZodType<
+  ServicesConfig,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  bunVersion: types.optional(types.string()),
+  maxLambdaSize: types.optional(types.string()),
+  includeFiles: types.optional(IncludeFiles$inboundSchema),
+  excludeFiles: types.optional(ExcludeFiles$inboundSchema),
+  bundle: types.optional(types.boolean()),
+  ldsflags: types.optional(types.string()),
+  helpers: types.optional(types.boolean()),
+  rust: types.optional(types.string()),
+  debug: types.optional(types.boolean()),
+  zeroConfig: types.optional(types.boolean()),
+  import: types.optional(z.record(types.string())),
+  functions: types.optional(
+    z.record(CancelDeploymentServicesFunctions$inboundSchema),
+  ),
+  projectSettings: types.optional(ServicesProjectSettings$inboundSchema),
+  outputDirectory: types.optional(types.string()),
+  installCommand: types.optional(types.string()),
+  buildCommand: types.optional(types.string()),
+  devCommand: types.optional(types.string()),
+  framework: z.nullable(types.string()).optional(),
+  nodeVersion: types.optional(types.string()),
+  middleware: types.optional(types.boolean()),
+  middlewareRuntime: types.optional(MiddlewareRuntime$inboundSchema),
+  middlewareMatcher: types.optional(MiddlewareMatcher$inboundSchema),
+  serviceName: types.optional(types.string()),
+});
+
+export function servicesConfigFromJSON(
+  jsonString: string,
+): SafeParseResult<ServicesConfig, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ServicesConfig$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ServicesConfig' from JSON`,
+  );
+}
+
+/** @internal */
+export const Builder$inboundSchema: z.ZodType<Builder, z.ZodTypeDef, unknown> =
+  z.object({
+    use: types.string(),
+    src: types.optional(types.string()),
+    config: types.optional(z.lazy(() => ServicesConfig$inboundSchema)),
+  });
+
+export function builderFromJSON(
+  jsonString: string,
+): SafeParseResult<Builder, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Builder$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Builder' from JSON`,
+  );
+}
+
+/** @internal */
+export const RoutePrefixSource$inboundSchema: z.ZodNativeEnum<
+  typeof RoutePrefixSource
+> = z.nativeEnum(RoutePrefixSource);
+
+/** @internal */
+export const Schedule$inboundSchema: z.ZodType<
+  Schedule,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), z.array(types.string())]);
+
+export function scheduleFromJSON(
+  jsonString: string,
+): SafeParseResult<Schedule, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Schedule$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Schedule' from JSON`,
+  );
+}
 
 /** @internal */
 export const Topics2$inboundSchema: z.ZodType<Topics2, z.ZodTypeDef, unknown> =
@@ -943,7 +1078,7 @@ export const Services1$inboundSchema: z.ZodType<
   workspace: types.string(),
   entrypoint: types.optional(types.string()),
   framework: types.optional(types.string()),
-  builder: Builder$inboundSchema,
+  builder: z.lazy(() => Builder$inboundSchema),
   runtime: types.optional(types.string()),
   buildCommand: types.optional(types.string()),
   installCommand: types.optional(types.string()),
@@ -951,7 +1086,9 @@ export const Services1$inboundSchema: z.ZodType<
   routePrefix: types.optional(types.string()),
   routePrefixSource: types.optional(RoutePrefixSource$inboundSchema),
   subdomain: types.optional(types.string()),
-  schedule: types.optional(Schedule$inboundSchema),
+  schedule: types.optional(
+    smartUnion([types.string(), z.array(types.string())]),
+  ),
   handlerFunction: types.optional(types.string()),
   topics: types.optional(
     smartUnion([
@@ -1515,30 +1652,27 @@ export function cancelDeploymentDeploymentsResourceConfigFromJSON(
 }
 
 /** @internal */
-export const CancelDeploymentConfig$inboundSchema: z.ZodType<
-  CancelDeploymentConfig,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  version: types.optional(types.number()),
-  functionType: FunctionType$inboundSchema,
-  functionMemoryType: FunctionMemoryType$inboundSchema,
-  functionTimeout: types.nullable(types.number()),
-  secureComputePrimaryRegion: types.nullable(types.string()),
-  secureComputeFallbackRegion: types.nullable(types.string()),
-  isUsingActiveCPU: types.optional(types.boolean()),
-  resourceConfig: types.optional(
-    z.lazy(() => CancelDeploymentDeploymentsResourceConfig$inboundSchema),
-  ),
-});
+export const Config$inboundSchema: z.ZodType<Config, z.ZodTypeDef, unknown> = z
+  .object({
+    version: types.optional(types.number()),
+    functionType: FunctionType$inboundSchema,
+    functionMemoryType: FunctionMemoryType$inboundSchema,
+    functionTimeout: types.nullable(types.number()),
+    secureComputePrimaryRegion: types.nullable(types.string()),
+    secureComputeFallbackRegion: types.nullable(types.string()),
+    isUsingActiveCPU: types.optional(types.boolean()),
+    resourceConfig: types.optional(
+      z.lazy(() => CancelDeploymentDeploymentsResourceConfig$inboundSchema),
+    ),
+  });
 
-export function cancelDeploymentConfigFromJSON(
+export function configFromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentConfig, SDKValidationError> {
+): SafeParseResult<Config, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CancelDeploymentConfig$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentConfig' from JSON`,
+    (x) => Config$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Config' from JSON`,
   );
 }
 
@@ -1856,7 +1990,7 @@ export const CancelDeploymentResponseBody$inboundSchema: z.ZodType<
     ]),
   ),
   platform: types.optional(z.lazy(() => Platform$inboundSchema)),
-  config: types.optional(z.lazy(() => CancelDeploymentConfig$inboundSchema)),
+  config: types.optional(z.lazy(() => Config$inboundSchema)),
   checks: types.optional(z.lazy(() => CancelDeploymentChecks$inboundSchema)),
   seatBlock: types.optional(z.lazy(() => SeatBlock$inboundSchema)),
   attribution: types.optional(

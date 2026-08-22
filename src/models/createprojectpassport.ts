@@ -200,6 +200,44 @@ export type CreateProjectSsoProtection = {
 };
 
 /**
+ * The Vercel region sandboxes in this project are created in by default.
+ */
+export const Region = {
+  Iad1: "iad1",
+  Sfo1: "sfo1",
+  Cle1: "cle1",
+  Cdg1: "cdg1",
+} as const;
+/**
+ * The Vercel region sandboxes in this project are created in by default.
+ */
+export type Region = ClosedEnum<typeof Region>;
+
+export const CreateProjectFailoverRegions = {
+  Iad1: "iad1",
+  Sfo1: "sfo1",
+  Cle1: "cle1",
+  Cdg1: "cdg1",
+} as const;
+export type CreateProjectFailoverRegions = ClosedEnum<
+  typeof CreateProjectFailoverRegions
+>;
+
+/**
+ * Specifies the default region and failover regions for sandboxes created in the project
+ */
+export type Sandbox = {
+  /**
+   * The Vercel region sandboxes in this project are created in by default.
+   */
+  region?: Region | undefined;
+  /**
+   * The regions sandboxes in this project fall back to when they cannot be created in `region`.
+   */
+  failoverRegions?: Array<CreateProjectFailoverRegions> | undefined;
+};
+
+/**
  * team: `https://oidc.vercel.com/[team_slug]` global: `https://oidc.vercel.com`
  */
 export const CreateProjectIssuerMode = {
@@ -363,6 +401,10 @@ export type CreateProjectRequestBody = {
    * The Vercel Auth setting for the project (historically named \"SSO Protection\")
    */
   ssoProtection?: CreateProjectSsoProtection | null | undefined;
+  /**
+   * Specifies the default region and failover regions for sandboxes created in the project
+   */
+  sandbox?: Sandbox | undefined;
   /**
    * The output directory of the project. When `null` is used this value will be automatically detected
    */
@@ -1868,22 +1910,6 @@ export type CreateProjectPassport = {
   connectorId: string;
 };
 
-export type SandboxUrls = {
-  inheritDeploymentProtection?: boolean | undefined;
-};
-
-export type ProtectionConfig = {
-  sandboxUrls?: SandboxUrls | undefined;
-};
-
-export const CreateProjectRegion = {
-  Cdg1: "cdg1",
-  Cle1: "cle1",
-  Iad1: "iad1",
-  Sfo1: "sfo1",
-} as const;
-export type CreateProjectRegion = ClosedEnum<typeof CreateProjectRegion>;
-
 /** @internal */
 export const Target2$outboundSchema: z.ZodNativeEnum<typeof Target2> = z
   .nativeEnum(Target2);
@@ -2000,6 +2026,36 @@ export function createProjectSsoProtectionToJSON(
   return JSON.stringify(
     CreateProjectSsoProtection$outboundSchema.parse(createProjectSsoProtection),
   );
+}
+
+/** @internal */
+export const Region$outboundSchema: z.ZodNativeEnum<typeof Region> = z
+  .nativeEnum(Region);
+
+/** @internal */
+export const CreateProjectFailoverRegions$outboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectFailoverRegions
+> = z.nativeEnum(CreateProjectFailoverRegions);
+
+/** @internal */
+export type Sandbox$Outbound = {
+  region?: string | undefined;
+  failoverRegions?: Array<string> | undefined;
+};
+
+/** @internal */
+export const Sandbox$outboundSchema: z.ZodType<
+  Sandbox$Outbound,
+  z.ZodTypeDef,
+  Sandbox
+> = z.object({
+  region: Region$outboundSchema.optional(),
+  failoverRegions: z.array(CreateProjectFailoverRegions$outboundSchema)
+    .optional(),
+});
+
+export function sandboxToJSON(sandbox: Sandbox): string {
+  return JSON.stringify(Sandbox$outboundSchema.parse(sandbox));
 }
 
 /** @internal */
@@ -2142,6 +2198,7 @@ export type CreateProjectRequestBody$Outbound = {
   name: string;
   skipGitConnectDuringLink?: boolean | undefined;
   ssoProtection?: CreateProjectSsoProtection$Outbound | null | undefined;
+  sandbox?: Sandbox$Outbound | undefined;
   outputDirectory?: string | null | undefined;
   publicSource?: boolean | null | undefined;
   rootDirectory?: string | null | undefined;
@@ -2176,6 +2233,7 @@ export const CreateProjectRequestBody$outboundSchema: z.ZodType<
   ssoProtection: z.nullable(
     z.lazy(() => CreateProjectSsoProtection$outboundSchema),
   ).optional(),
+  sandbox: z.lazy(() => Sandbox$outboundSchema).optional(),
   outputDirectory: z.nullable(z.string()).optional(),
   publicSource: z.nullable(z.boolean()).optional(),
   rootDirectory: z.nullable(z.string()).optional(),
@@ -4698,46 +4756,3 @@ export function createProjectPassportFromJSON(
     `Failed to parse 'CreateProjectPassport' from JSON`,
   );
 }
-
-/** @internal */
-export const SandboxUrls$inboundSchema: z.ZodType<
-  SandboxUrls,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  inheritDeploymentProtection: types.optional(types.boolean()),
-});
-
-export function sandboxUrlsFromJSON(
-  jsonString: string,
-): SafeParseResult<SandboxUrls, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => SandboxUrls$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SandboxUrls' from JSON`,
-  );
-}
-
-/** @internal */
-export const ProtectionConfig$inboundSchema: z.ZodType<
-  ProtectionConfig,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  sandboxUrls: types.optional(z.lazy(() => SandboxUrls$inboundSchema)),
-});
-
-export function protectionConfigFromJSON(
-  jsonString: string,
-): SafeParseResult<ProtectionConfig, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ProtectionConfig$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ProtectionConfig' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateProjectRegion$inboundSchema: z.ZodNativeEnum<
-  typeof CreateProjectRegion
-> = z.nativeEnum(CreateProjectRegion);

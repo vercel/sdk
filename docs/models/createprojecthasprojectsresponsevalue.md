@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectHasProjectsResponseValue } from "@vercel/sdk/models/blockhistoryroute.js";
+import { CreateProjectHasProjectsResponseValue } from "@vercel/sdk/models/routemitigate.js";
 
 let value: CreateProjectHasProjectsResponseValue = {
   eq: "<value>",

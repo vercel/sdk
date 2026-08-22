@@ -5,7 +5,7 @@ Automated gating configuration. Omitted (the default) means no gating is configu
 ## Example Usage
 
 ```typescript
-import { UpdateProjectGate } from "@vercel/sdk/models/updateprojectprojectsresponse200applicationjsonresponsebodysecuritymanagedrulesaction.js";
+import { UpdateProjectGate } from "@vercel/sdk/models/updateprojectbotfilter.js";
 
 let value: UpdateProjectGate = {
   enabled: false,

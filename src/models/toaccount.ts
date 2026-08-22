@@ -320,6 +320,18 @@ export type OverageMetadata = {
    * Tracks the last time we attempted to send an increased on-demand email. This check is to limit the number of attempts per day.
    */
   increasedOnDemandEmailAttemptedAt?: number | undefined;
+  /**
+   * Tracks when the new-Hobby-policy notice was reported for this owner. Reported at most once per owner, ever.
+   */
+  hobbyPolicyNoticeSlackSentAt?: number | undefined;
+  /**
+   * Tracks the last time a `warningThresholdsV2` crossing was reported for this owner. Hobby has no billing period, so this re-arms on the same rolling window the service already uses for Hobby alerts.
+   */
+  hobbyWarningV2SlackSentAt?: number | undefined;
+  /**
+   * Tracks the last time a `blockThresholdV2` breach was reported for this owner. Re-arms on the same rolling window as `hobbyWarningV2SlackSentAt`.
+   */
+  hobbyPauseNoticeSlackSentAt?: number | undefined;
 };
 
 /**
@@ -2630,6 +2642,9 @@ export const OverageMetadata$inboundSchema: z.ZodType<
   overageSummaryExpiresAt: types.optional(types.number()),
   increasedOnDemandEmailSentAt: types.optional(types.number()),
   increasedOnDemandEmailAttemptedAt: types.optional(types.number()),
+  hobbyPolicyNoticeSlackSentAt: types.optional(types.number()),
+  hobbyWarningV2SlackSentAt: types.optional(types.number()),
+  hobbyPauseNoticeSlackSentAt: types.optional(types.number()),
 });
 
 export function overageMetadataFromJSON(

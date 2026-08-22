@@ -52,3 +52,11 @@ const value: models.ListFlagVersionsOutcome3 = {
 };
 ```
 
+### `models.ListFlagVersionsOutcome4`
+
+```typescript
+const value: models.ListFlagVersionsOutcome4 = {
+  type: "experiment",
+};
+```
+

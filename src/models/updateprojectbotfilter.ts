@@ -12,13 +12,59 @@ import { smartUnion } from "../types/smartUnion.js";
 import { ACLAction, ACLAction$inboundSchema } from "./aclaction.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
-  UpdateProjectBranchMatcher,
-  UpdateProjectBranchMatcher$inboundSchema,
-  UpdateProjectDomains,
-  UpdateProjectDomains$inboundSchema,
+  UpdateProjectProjectsResponse200ApplicationJSONResponseBodyCustomEnvironmentsType,
+  UpdateProjectProjectsResponse200ApplicationJSONResponseBodyCustomEnvironmentsType$inboundSchema,
   UpdateProjectProjectsType,
   UpdateProjectProjectsType$inboundSchema,
-} from "./updateprojectdomains.js";
+} from "./updateprojectprojectsresponse200applicationjsonresponsebodycustomenvironmentstype.js";
+
+/**
+ * Configuration for matching git branches to this environment
+ */
+export type UpdateProjectBranchMatcher = {
+  /**
+   * The type of matching to perform
+   */
+  type:
+    UpdateProjectProjectsResponse200ApplicationJSONResponseBodyCustomEnvironmentsType;
+  /**
+   * The pattern to match against branch names
+   */
+  pattern: string;
+};
+
+/**
+ * A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
+ */
+export type UpdateProjectVerification = {
+  type: string;
+  domain: string;
+  value: string;
+  reason: string;
+};
+
+/**
+ * List of domains associated with this environment
+ */
+export type UpdateProjectDomains = {
+  name: string;
+  apexName: string;
+  projectId: string;
+  redirect?: string | null | undefined;
+  redirectStatusCode?: number | null | undefined;
+  gitBranch?: string | null | undefined;
+  customEnvironmentId?: string | null | undefined;
+  updatedAt?: number | undefined;
+  createdAt?: number | undefined;
+  /**
+   * `true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed.
+   */
+  verified: boolean;
+  /**
+   * A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
+   */
+  verification?: Array<UpdateProjectVerification> | undefined;
+};
 
 /**
  * Internal representation of a custom environment with all required properties
@@ -765,27 +811,29 @@ export type UpdateProjectProtectionConfig = {
   sandboxUrls?: UpdateProjectSandboxUrls | undefined;
 };
 
-export const UpdateProjectRegion = {
+export const UpdateProjectProjectsRegion = {
   Cdg1: "cdg1",
   Cle1: "cle1",
   Iad1: "iad1",
   Sfo1: "sfo1",
 } as const;
-export type UpdateProjectRegion = ClosedEnum<typeof UpdateProjectRegion>;
-
-export const UpdateProjectFailoverRegions = {
-  Cdg1: "cdg1",
-  Cle1: "cle1",
-  Iad1: "iad1",
-  Sfo1: "sfo1",
-} as const;
-export type UpdateProjectFailoverRegions = ClosedEnum<
-  typeof UpdateProjectFailoverRegions
+export type UpdateProjectProjectsRegion = ClosedEnum<
+  typeof UpdateProjectProjectsRegion
 >;
 
-export type UpdateProjectSandbox = {
-  region?: UpdateProjectRegion | undefined;
-  failoverRegions?: Array<UpdateProjectFailoverRegions> | undefined;
+export const UpdateProjectProjectsFailoverRegions = {
+  Cdg1: "cdg1",
+  Cle1: "cle1",
+  Iad1: "iad1",
+  Sfo1: "sfo1",
+} as const;
+export type UpdateProjectProjectsFailoverRegions = ClosedEnum<
+  typeof UpdateProjectProjectsFailoverRegions
+>;
+
+export type UpdateProjectProjectsSandbox = {
+  region?: UpdateProjectProjectsRegion | undefined;
+  failoverRegions?: Array<UpdateProjectProjectsFailoverRegions> | undefined;
 };
 
 export const UpdateProjectProjectsFunctionDefaultMemoryType = {
@@ -2022,34 +2070,79 @@ export type UpdateProjectBotFilter = {
     | undefined;
 };
 
-export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction =
-  {
-    Challenge: "challenge",
-    Deny: "deny",
-    Log: "log",
-  } as const;
-export type UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction =
-  ClosedEnum<
-    typeof UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction
-  >;
+/** @internal */
+export const UpdateProjectBranchMatcher$inboundSchema: z.ZodType<
+  UpdateProjectBranchMatcher,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type:
+    UpdateProjectProjectsResponse200ApplicationJSONResponseBodyCustomEnvironmentsType$inboundSchema,
+  pattern: types.string(),
+});
 
-export type UpdateProjectAiBots = {
-  active: boolean;
-  action?:
-    | UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction
-    | undefined;
-};
+export function updateProjectBranchMatcherFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectBranchMatcher, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectBranchMatcher$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectBranchMatcher' from JSON`,
+  );
+}
 
-export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction =
-  {
-    Challenge: "challenge",
-    Deny: "deny",
-    Log: "log",
-  } as const;
-export type UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction =
-  ClosedEnum<
-    typeof UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction
-  >;
+/** @internal */
+export const UpdateProjectVerification$inboundSchema: z.ZodType<
+  UpdateProjectVerification,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.string(),
+  domain: types.string(),
+  value: types.string(),
+  reason: types.string(),
+});
+
+export function updateProjectVerificationFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectVerification, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectVerification$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectVerification' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectDomains$inboundSchema: z.ZodType<
+  UpdateProjectDomains,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  name: types.string(),
+  apexName: types.string(),
+  projectId: types.string(),
+  redirect: z.nullable(types.string()).optional(),
+  redirectStatusCode: z.nullable(types.number()).optional(),
+  gitBranch: z.nullable(types.string()).optional(),
+  customEnvironmentId: z.nullable(types.string()).optional(),
+  updatedAt: types.optional(types.number()),
+  createdAt: types.optional(types.number()),
+  verified: types.boolean(),
+  verification: types.optional(
+    z.array(z.lazy(() => UpdateProjectVerification$inboundSchema)),
+  ),
+});
+
+export function updateProjectDomainsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectDomains, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectDomains$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectDomains' from JSON`,
+  );
+}
 
 /** @internal */
 export const UpdateProjectCustomEnvironments$inboundSchema: z.ZodType<
@@ -2061,8 +2154,12 @@ export const UpdateProjectCustomEnvironments$inboundSchema: z.ZodType<
   slug: types.string(),
   type: UpdateProjectProjectsType$inboundSchema,
   description: types.optional(types.string()),
-  branchMatcher: types.optional(UpdateProjectBranchMatcher$inboundSchema),
-  domains: types.optional(z.array(UpdateProjectDomains$inboundSchema)),
+  branchMatcher: types.optional(
+    z.lazy(() => UpdateProjectBranchMatcher$inboundSchema),
+  ),
+  domains: types.optional(
+    z.array(z.lazy(() => UpdateProjectDomains$inboundSchema)),
+  ),
   currentDeploymentAliases: types.optional(z.array(types.string())),
   createdAt: types.number(),
   updatedAt: types.number(),
@@ -3154,34 +3251,35 @@ export function updateProjectProtectionConfigFromJSON(
 }
 
 /** @internal */
-export const UpdateProjectRegion$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateProjectRegion
-> = z.nativeEnum(UpdateProjectRegion);
+export const UpdateProjectProjectsRegion$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectProjectsRegion
+> = z.nativeEnum(UpdateProjectProjectsRegion);
 
 /** @internal */
-export const UpdateProjectFailoverRegions$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateProjectFailoverRegions
-> = z.nativeEnum(UpdateProjectFailoverRegions);
+export const UpdateProjectProjectsFailoverRegions$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectProjectsFailoverRegions> = z.nativeEnum(
+    UpdateProjectProjectsFailoverRegions,
+  );
 
 /** @internal */
-export const UpdateProjectSandbox$inboundSchema: z.ZodType<
-  UpdateProjectSandbox,
+export const UpdateProjectProjectsSandbox$inboundSchema: z.ZodType<
+  UpdateProjectProjectsSandbox,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  region: types.optional(UpdateProjectRegion$inboundSchema),
+  region: types.optional(UpdateProjectProjectsRegion$inboundSchema),
   failoverRegions: types.optional(
-    z.array(UpdateProjectFailoverRegions$inboundSchema),
+    z.array(UpdateProjectProjectsFailoverRegions$inboundSchema),
   ),
 });
 
-export function updateProjectSandboxFromJSON(
+export function updateProjectProjectsSandboxFromJSON(
   jsonString: string,
-): SafeParseResult<UpdateProjectSandbox, SDKValidationError> {
+): SafeParseResult<UpdateProjectProjectsSandbox, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UpdateProjectSandbox$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateProjectSandbox' from JSON`,
+    (x) => UpdateProjectProjectsSandbox$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectProjectsSandbox' from JSON`,
   );
 }
 
@@ -4996,41 +5094,3 @@ export function updateProjectBotFilterFromJSON(
     `Failed to parse 'UpdateProjectBotFilter' from JSON`,
   );
 }
-
-/** @internal */
-export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction
-  > = z.nativeEnum(
-    UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction,
-  );
-
-/** @internal */
-export const UpdateProjectAiBots$inboundSchema: z.ZodType<
-  UpdateProjectAiBots,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  active: types.boolean(),
-  action: types.optional(
-    UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction$inboundSchema,
-  ),
-});
-
-export function updateProjectAiBotsFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateProjectAiBots, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateProjectAiBots$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateProjectAiBots' from JSON`,
-  );
-}
-
-/** @internal */
-export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction
-  > = z.nativeEnum(
-    UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction,
-  );

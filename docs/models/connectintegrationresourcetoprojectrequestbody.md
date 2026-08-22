@@ -7,13 +7,17 @@ import { ConnectIntegrationResourceToProjectRequestBody } from "@vercel/sdk/mode
 
 let value: ConnectIntegrationResourceToProjectRequestBody = {
   projectId: "<id>",
+  envVarEnvironments: [
+    "production",
+    "env_abc123",
+  ],
 };
 ```
 
 ## Fields
 
-| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| `projectId`                                                    | *string*                                                       | :heavy_check_mark:                                             | N/A                                                            |
-| `envVarEnvironments`                                           | [models.EnvVarEnvironments](../models/envvarenvironments.md)[] | :heavy_minus_sign:                                             | N/A                                                            |
-| `makeEnvVarsSensitive`                                         | *boolean*                                                      | :heavy_minus_sign:                                             | N/A                                                            |
+| Field                      | Type       | Required           | Description                                                                      |
+| -------------------------- | ---------- | ------------------ | -------------------------------------------------------------------------------- |
+| `projectId`                | *string*   | :heavy_check_mark: | N/A                                                                              |
+| `envVarEnvironments`       | *string*[] | :heavy_minus_sign: | Built-in environment targets or project custom environment slugs or IDs.         |
+| `makeEnvVarsSensitive`     | *boolean*  | :heavy_minus_sign: | N/A                                                                              |

@@ -14,7 +14,7 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 /**
  * Region where the drive is stored. Defaults to iad1.
  */
-export const Region = {
+export const GetOrCreateDriveRegion = {
   Iad1: "iad1",
   Sfo1: "sfo1",
   Cle1: "cle1",
@@ -23,7 +23,7 @@ export const Region = {
 /**
  * Region where the drive is stored. Defaults to iad1.
  */
-export type Region = ClosedEnum<typeof Region>;
+export type GetOrCreateDriveRegion = ClosedEnum<typeof GetOrCreateDriveRegion>;
 
 export type GetOrCreateDriveRequestBody = {
   /**
@@ -37,7 +37,7 @@ export type GetOrCreateDriveRequestBody = {
   /**
    * Region where the drive is stored. Defaults to iad1.
    */
-  region?: Region | undefined;
+  region?: GetOrCreateDriveRegion | undefined;
 };
 
 export type GetOrCreateDriveRequest = {
@@ -75,8 +75,9 @@ export type GetOrCreateDriveResponse =
   | GetOrCreateDriveSandboxesResponseBody;
 
 /** @internal */
-export const Region$outboundSchema: z.ZodNativeEnum<typeof Region> = z
-  .nativeEnum(Region);
+export const GetOrCreateDriveRegion$outboundSchema: z.ZodNativeEnum<
+  typeof GetOrCreateDriveRegion
+> = z.nativeEnum(GetOrCreateDriveRegion);
 
 /** @internal */
 export type GetOrCreateDriveRequestBody$Outbound = {
@@ -93,7 +94,7 @@ export const GetOrCreateDriveRequestBody$outboundSchema: z.ZodType<
 > = z.object({
   projectId: z.string().optional(),
   maxSizeBytes: z.number().int().optional(),
-  region: Region$outboundSchema.default("iad1"),
+  region: GetOrCreateDriveRegion$outboundSchema.default("iad1"),
 });
 
 export function getOrCreateDriveRequestBodyToJSON(

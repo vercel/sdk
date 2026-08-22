@@ -11,5 +11,5 @@ let value: ResponseBodyOwnerType = "team";
 ## Values
 
 ```typescript
-"team"
+"team" | "user"
 ```

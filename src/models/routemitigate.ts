@@ -10,23 +10,37 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { ACLAction, ACLAction$inboundSchema } from "./aclaction.js";
-import {
-  CreateProjectRegion,
-  CreateProjectRegion$inboundSchema,
-} from "./createprojectregion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
-export const FailoverRegions = {
+export type SandboxUrls = {
+  inheritDeploymentProtection?: boolean | undefined;
+};
+
+export type ProtectionConfig = {
+  sandboxUrls?: SandboxUrls | undefined;
+};
+
+export const CreateProjectRegion = {
   Cdg1: "cdg1",
   Cle1: "cle1",
   Iad1: "iad1",
   Sfo1: "sfo1",
 } as const;
-export type FailoverRegions = ClosedEnum<typeof FailoverRegions>;
+export type CreateProjectRegion = ClosedEnum<typeof CreateProjectRegion>;
 
-export type Sandbox = {
+export const CreateProjectProjectsFailoverRegions = {
+  Cdg1: "cdg1",
+  Cle1: "cle1",
+  Iad1: "iad1",
+  Sfo1: "sfo1",
+} as const;
+export type CreateProjectProjectsFailoverRegions = ClosedEnum<
+  typeof CreateProjectProjectsFailoverRegions
+>;
+
+export type CreateProjectSandbox = {
   region?: CreateProjectRegion | undefined;
-  failoverRegions?: Array<FailoverRegions> | undefined;
+  failoverRegions?: Array<CreateProjectProjectsFailoverRegions> | undefined;
 };
 
 export const CreateProjectFunctionDefaultMemoryType = {
@@ -1662,41 +1676,74 @@ export type RouteMitigate = {
   action: RouteAction;
 };
 
-export type Route2 = {
-  has: Array<
-    CreateProjectHasProjectsResponse1 | CreateProjectHasProjectsResponse2
-  >;
-  mitigate: RouteMitigate;
-  src?: string | undefined;
-};
-
-export type Route1 = {
-  src: string;
-  status: number;
-  expiry?: number | undefined;
-};
-
-export type BlockHistoryRoute = Route1 | Route2;
-
 /** @internal */
-export const FailoverRegions$inboundSchema: z.ZodNativeEnum<
-  typeof FailoverRegions
-> = z.nativeEnum(FailoverRegions);
+export const SandboxUrls$inboundSchema: z.ZodType<
+  SandboxUrls,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  inheritDeploymentProtection: types.optional(types.boolean()),
+});
 
-/** @internal */
-export const Sandbox$inboundSchema: z.ZodType<Sandbox, z.ZodTypeDef, unknown> =
-  z.object({
-    region: types.optional(CreateProjectRegion$inboundSchema),
-    failoverRegions: types.optional(z.array(FailoverRegions$inboundSchema)),
-  });
-
-export function sandboxFromJSON(
+export function sandboxUrlsFromJSON(
   jsonString: string,
-): SafeParseResult<Sandbox, SDKValidationError> {
+): SafeParseResult<SandboxUrls, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Sandbox$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Sandbox' from JSON`,
+    (x) => SandboxUrls$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SandboxUrls' from JSON`,
+  );
+}
+
+/** @internal */
+export const ProtectionConfig$inboundSchema: z.ZodType<
+  ProtectionConfig,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  sandboxUrls: types.optional(z.lazy(() => SandboxUrls$inboundSchema)),
+});
+
+export function protectionConfigFromJSON(
+  jsonString: string,
+): SafeParseResult<ProtectionConfig, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ProtectionConfig$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ProtectionConfig' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectRegion$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectRegion
+> = z.nativeEnum(CreateProjectRegion);
+
+/** @internal */
+export const CreateProjectProjectsFailoverRegions$inboundSchema:
+  z.ZodNativeEnum<typeof CreateProjectProjectsFailoverRegions> = z.nativeEnum(
+    CreateProjectProjectsFailoverRegions,
+  );
+
+/** @internal */
+export const CreateProjectSandbox$inboundSchema: z.ZodType<
+  CreateProjectSandbox,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  region: types.optional(CreateProjectRegion$inboundSchema),
+  failoverRegions: types.optional(
+    z.array(CreateProjectProjectsFailoverRegions$inboundSchema),
+  ),
+});
+
+export function createProjectSandboxFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectSandbox, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectSandbox$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectSandbox' from JSON`,
   );
 }
 
@@ -4474,66 +4521,5 @@ export function routeMitigateFromJSON(
     jsonString,
     (x) => RouteMitigate$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'RouteMitigate' from JSON`,
-  );
-}
-
-/** @internal */
-export const Route2$inboundSchema: z.ZodType<Route2, z.ZodTypeDef, unknown> = z
-  .object({
-    has: z.array(
-      z.union([
-        z.lazy(() => CreateProjectHasProjectsResponse1$inboundSchema),
-        z.lazy(() => CreateProjectHasProjectsResponse2$inboundSchema),
-      ]),
-    ),
-    mitigate: z.lazy(() => RouteMitigate$inboundSchema),
-    src: types.optional(types.string()),
-  });
-
-export function route2FromJSON(
-  jsonString: string,
-): SafeParseResult<Route2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Route2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Route2' from JSON`,
-  );
-}
-
-/** @internal */
-export const Route1$inboundSchema: z.ZodType<Route1, z.ZodTypeDef, unknown> = z
-  .object({
-    src: types.string(),
-    status: types.number(),
-    expiry: types.optional(types.number()),
-  });
-
-export function route1FromJSON(
-  jsonString: string,
-): SafeParseResult<Route1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Route1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Route1' from JSON`,
-  );
-}
-
-/** @internal */
-export const BlockHistoryRoute$inboundSchema: z.ZodType<
-  BlockHistoryRoute,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.lazy(() => Route1$inboundSchema),
-  z.lazy(() => Route2$inboundSchema),
-]);
-
-export function blockHistoryRouteFromJSON(
-  jsonString: string,
-): SafeParseResult<BlockHistoryRoute, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => BlockHistoryRoute$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BlockHistoryRoute' from JSON`,
   );
 }

@@ -1,11 +1,11 @@
 # Region
 
-Region where the drive is stored. Defaults to iad1.
+The Vercel region sandboxes in this project are created in by default.
 
 ## Example Usage
 
 ```typescript
-import { Region } from "@vercel/sdk/models/getorcreatedriveop.js";
+import { Region } from "@vercel/sdk/models/createprojectpassport.js";
 
 let value: Region = "iad1";
 ```

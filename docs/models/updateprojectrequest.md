@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateProjectRequest } from "@vercel/sdk/models/updateprojectdomains.js";
+import { UpdateProjectRequest } from "@vercel/sdk/models/updateprojectprojectsresponse200applicationjsonresponsebodycustomenvironmentstype.js";
 
 let value: UpdateProjectRequest = {
   idOrName: "prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
@@ -11,6 +11,13 @@ let value: UpdateProjectRequest = {
   slug: "my-team-url-slug",
   requestBody: {
     name: "a-project-name",
+    sandbox: {
+      region: "iad1",
+      failoverRegions: [
+        "sfo1",
+        "cle1",
+      ],
+    },
   },
 };
 ```

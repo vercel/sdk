@@ -13,6 +13,10 @@ let value: DeleteSandboxResponseBody = {
     statusUpdatedAt: 1750344501629,
     persistent: true,
     region: "iad1",
+    failoverRegions: [
+      "sfo1",
+      "cle1",
+    ],
     vcpus: 2,
     memory: 1024,
     runtime: "node22",

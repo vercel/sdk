@@ -4,18 +4,13 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { ClosedEnum } from "../types/enums.js";
-
-export const EnvVarEnvironments = {
-  Production: "production",
-  Preview: "preview",
-  Development: "development",
-} as const;
-export type EnvVarEnvironments = ClosedEnum<typeof EnvVarEnvironments>;
 
 export type ConnectIntegrationResourceToProjectRequestBody = {
   projectId: string;
-  envVarEnvironments?: Array<EnvVarEnvironments> | undefined;
+  /**
+   * Built-in environment targets or project custom environment slugs or IDs.
+   */
+  envVarEnvironments?: Array<string> | undefined;
   makeEnvVarsSensitive?: boolean | undefined;
 };
 
@@ -34,11 +29,6 @@ export type ConnectIntegrationResourceToProjectRequest = {
 };
 
 /** @internal */
-export const EnvVarEnvironments$outboundSchema: z.ZodNativeEnum<
-  typeof EnvVarEnvironments
-> = z.nativeEnum(EnvVarEnvironments);
-
-/** @internal */
 export type ConnectIntegrationResourceToProjectRequestBody$Outbound = {
   projectId: string;
   envVarEnvironments?: Array<string> | undefined;
@@ -53,7 +43,7 @@ export const ConnectIntegrationResourceToProjectRequestBody$outboundSchema:
     ConnectIntegrationResourceToProjectRequestBody
   > = z.object({
     projectId: z.string(),
-    envVarEnvironments: z.array(EnvVarEnvironments$outboundSchema).optional(),
+    envVarEnvironments: z.array(z.string()).optional(),
     makeEnvVarsSensitive: z.boolean().optional(),
   });
 

@@ -5,7 +5,7 @@ The target envs on the current project that may be accessed.
 ## Example Usage
 
 ```typescript
-import { UpdateProjectToProjects2 } from "@vercel/sdk/models/updateprojectprojectsresponse200applicationjsonresponsebodysecuritymanagedrulesaction.js";
+import { UpdateProjectToProjects2 } from "@vercel/sdk/models/updateprojectbotfilter.js";
 
 let value: UpdateProjectToProjects2 = {
   preset: "all-custom",

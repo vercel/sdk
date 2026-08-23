@@ -35,6 +35,13 @@ async function run() {
     slug: "my-team-url-slug",
     requestBody: {
       name: "a-project-name",
+      sandbox: {
+        region: "iad1",
+        failoverRegions: [
+          "sfo1",
+          "cle1",
+        ],
+      },
     },
   });
   if (res.ok) {

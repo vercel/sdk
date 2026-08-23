@@ -5,7 +5,7 @@ Configuration for consolidated git commit status reporting. When enabled, Vercel
 ## Example Usage
 
 ```typescript
-import { CreateProjectConsolidatedGitCommitStatus } from "@vercel/sdk/models/blockhistoryroute.js";
+import { CreateProjectConsolidatedGitCommitStatus } from "@vercel/sdk/models/routemitigate.js";
 
 let value: CreateProjectConsolidatedGitCommitStatus = {
   enabled: true,

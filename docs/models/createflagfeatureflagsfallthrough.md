@@ -45,3 +45,11 @@ const value: models.CreateFlagFallthroughFeatureFlags3 = {
 };
 ```
 
+### `models.CreateFlagFallthrough4`
+
+```typescript
+const value: models.CreateFlagFallthrough4 = {
+  type: "experiment",
+};
+```
+

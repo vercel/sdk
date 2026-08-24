@@ -126,6 +126,7 @@ export type SearchRepoResponseBodyProvider = ClosedEnum<
 
 export const ResponseBodyOwnerType = {
   Team: "team",
+  User: "user",
 } as const;
 export type ResponseBodyOwnerType = ClosedEnum<typeof ResponseBodyOwnerType>;
 

@@ -5,7 +5,7 @@ User-facing config/secret model. When set, authoritative for new code paths when
 ## Example Usage
 
 ```typescript
-import { UpdateProjectVisibility } from "@vercel/sdk/models/updateprojectdomains.js";
+import { UpdateProjectVisibility } from "@vercel/sdk/models/updateprojectprojectsresponse200applicationjsonresponsebodycustomenvironmentstype.js";
 
 let value: UpdateProjectVisibility = "secret";
 ```

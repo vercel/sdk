@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { UpdateProjectFailoverRegions } from "@vercel/sdk/models/updateprojectprojectsresponse200applicationjsonresponsebodysecuritymanagedrulesaction.js";
+import { UpdateProjectFailoverRegions } from "@vercel/sdk/models/updateprojectprojectsresponse200applicationjsonresponsebodycustomenvironmentstype.js";
 
-let value: UpdateProjectFailoverRegions = "sfo1";
+let value: UpdateProjectFailoverRegions = "cdg1";
 ```
 
 ## Values
 
 ```typescript
-"cdg1" | "cle1" | "iad1" | "sfo1"
+"iad1" | "sfo1" | "cle1" | "cdg1"
 ```

@@ -51,6 +51,10 @@ export type Snapshot = {
    */
   region?: string | undefined;
   /**
+   * The regions where the snapshot is available.
+   */
+  regions?: Array<string> | undefined;
+  /**
    * The status of the snapshot.
    */
   status: SnapshotStatus;
@@ -103,6 +107,7 @@ export const Snapshot$inboundSchema: z.ZodType<
   id: types.string(),
   sourceSessionId: types.string(),
   region: types.optional(types.string()),
+  regions: types.optional(z.array(types.string())),
   status: SnapshotStatus$inboundSchema,
   sizeBytes: types.number(),
   expiresAt: types.optional(types.number()),

@@ -23,6 +23,20 @@ export const NamedSandboxStatus = {
 export type NamedSandboxStatus = ClosedEnum<typeof NamedSandboxStatus>;
 
 /**
+ * The regions the sandbox fails over to. Empty when it does not fail over.
+ */
+export const FailoverRegions = {
+  Cdg1: "cdg1",
+  Cle1: "cle1",
+  Iad1: "iad1",
+  Sfo1: "sfo1",
+} as const;
+/**
+ * The regions the sandbox fails over to. Empty when it does not fail over.
+ */
+export type FailoverRegions = ClosedEnum<typeof FailoverRegions>;
+
+/**
  * Keep-last snapshot configuration.
  */
 export type KeepLastSnapshots = {
@@ -109,6 +123,10 @@ export type NamedSandbox = {
    */
   region?: string | undefined;
   /**
+   * The regions the sandbox fails over to. Empty when it does not fail over.
+   */
+  failoverRegions?: Array<FailoverRegions> | undefined;
+  /**
    * Number of virtual CPUs allocated.
    */
   vcpus?: number | undefined;
@@ -186,6 +204,11 @@ export type NamedSandbox = {
 export const NamedSandboxStatus$inboundSchema: z.ZodNativeEnum<
   typeof NamedSandboxStatus
 > = z.nativeEnum(NamedSandboxStatus);
+
+/** @internal */
+export const FailoverRegions$inboundSchema: z.ZodNativeEnum<
+  typeof FailoverRegions
+> = z.nativeEnum(FailoverRegions);
 
 /** @internal */
 export const KeepLastSnapshots$inboundSchema: z.ZodType<
@@ -271,6 +294,7 @@ export const NamedSandbox$inboundSchema: z.ZodType<
   statusUpdatedAt: types.number(),
   persistent: types.boolean(),
   region: types.optional(types.string()),
+  failoverRegions: types.optional(z.array(FailoverRegions$inboundSchema)),
   vcpus: types.optional(types.number()),
   memory: types.optional(types.number()),
   runtime: types.optional(types.string()),

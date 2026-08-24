@@ -12,14 +12,14 @@ let value: Repos = {
   name: "<value>",
   slug: "<value>",
   namespace: "<value>",
-  ownerType: "team",
+  ownerType: "user",
   owner: {
     id: "<id>",
     name: "<value>",
   },
-  private: false,
+  private: true,
   defaultBranch: "<value>",
-  updatedAt: 1402.12,
+  updatedAt: 623.18,
 };
 ```
 

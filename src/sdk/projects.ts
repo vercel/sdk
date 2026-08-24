@@ -51,7 +51,7 @@ import {
   CreateProjectEnvRequest,
   CreateProjectEnvResponseBody,
 } from "../models/createprojectenvop.js";
-import { CreateProjectRequest } from "../models/createprojectregion.js";
+import { CreateProjectRequest } from "../models/createprojectpassport.js";
 import { CreateProjectResponseBody } from "../models/createprojectresponsebody.js";
 import {
   CreateProjectTransferRequestRequest,
@@ -120,7 +120,7 @@ import {
   UpdateProjectDomainRequest,
   UpdateProjectDomainResponseBody,
 } from "../models/updateprojectdomainop.js";
-import { UpdateProjectRequest } from "../models/updateprojectdomains.js";
+import { UpdateProjectRequest } from "../models/updateprojectprojectsresponse200applicationjsonresponsebodycustomenvironmentstype.js";
 import {
   UpdateProjectProtectionBypassRequest,
   UpdateProjectProtectionBypassResponseBody,

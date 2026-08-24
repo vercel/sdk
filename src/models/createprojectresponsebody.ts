@@ -9,60 +9,6 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
-  Block,
-  Block$inboundSchema,
-  BlockHistory4,
-  BlockHistory4$inboundSchema,
-  BlockHistoryRoute,
-  BlockHistoryRoute$inboundSchema,
-  CreateProjectDeploymentPolicy,
-  CreateProjectDeploymentPolicy$inboundSchema,
-  CreateProjectGitComments,
-  CreateProjectGitComments$inboundSchema,
-  CreateProjectHistory,
-  CreateProjectHistory$inboundSchema,
-  CreateProjectOidcTokenConfig,
-  CreateProjectOidcTokenConfig$inboundSchema,
-  CreateProjectPermissions,
-  CreateProjectPermissions$inboundSchema,
-  CreateProjectProjectsResourceConfig,
-  CreateProjectProjectsResourceConfig$inboundSchema,
-  CreateProjectProjectsSsoProtection,
-  CreateProjectProjectsSsoProtection$inboundSchema,
-  CreateProjectRollbackDescription,
-  CreateProjectRollbackDescription$inboundSchema,
-  CreateProjectSecurity,
-  CreateProjectSecurity$inboundSchema,
-  CreateProjectStaticIps,
-  CreateProjectStaticIps$inboundSchema,
-  CreateProjectTargets,
-  CreateProjectTargets$inboundSchema,
-  CreateProjectTrustedIps,
-  CreateProjectTrustedIps$inboundSchema,
-  CreateProjectTrustedSources,
-  CreateProjectTrustedSources$inboundSchema,
-  CreateProjectWebAnalytics,
-  CreateProjectWebAnalytics$inboundSchema,
-  DefaultResourceConfig,
-  DefaultResourceConfig$inboundSchema,
-  Features,
-  Features$inboundSchema,
-  GitProviderOptions,
-  GitProviderOptions$inboundSchema,
-  LastAliasRequest,
-  LastAliasRequest$inboundSchema,
-  LastRollbackTarget,
-  LastRollbackTarget$inboundSchema,
-  ProtectionBypass,
-  ProtectionBypass$inboundSchema,
-  RollingRelease,
-  RollingRelease$inboundSchema,
-  Sandbox,
-  Sandbox$inboundSchema,
-  UsageStatus,
-  UsageStatus$inboundSchema,
-} from "./blockhistoryroute.js";
-import {
   Alias,
   Alias$inboundSchema,
   Analytics,
@@ -107,16 +53,86 @@ import {
   LatestDeployments$inboundSchema,
   Link,
   Link$inboundSchema,
-  ProtectionConfig,
-  ProtectionConfig$inboundSchema,
   SpeedInsights,
   SpeedInsights$inboundSchema,
-} from "./createprojectregion.js";
+} from "./createprojectpassport.js";
+import {
+  Block,
+  Block$inboundSchema,
+  BlockHistory4,
+  BlockHistory4$inboundSchema,
+  CreateProjectDeploymentPolicy,
+  CreateProjectDeploymentPolicy$inboundSchema,
+  CreateProjectGitComments,
+  CreateProjectGitComments$inboundSchema,
+  CreateProjectHistory,
+  CreateProjectHistory$inboundSchema,
+  CreateProjectOidcTokenConfig,
+  CreateProjectOidcTokenConfig$inboundSchema,
+  CreateProjectPermissions,
+  CreateProjectPermissions$inboundSchema,
+  CreateProjectProjectsResourceConfig,
+  CreateProjectProjectsResourceConfig$inboundSchema,
+  CreateProjectProjectsSsoProtection,
+  CreateProjectProjectsSsoProtection$inboundSchema,
+  CreateProjectRollbackDescription,
+  CreateProjectRollbackDescription$inboundSchema,
+  CreateProjectSandbox,
+  CreateProjectSandbox$inboundSchema,
+  CreateProjectSecurity,
+  CreateProjectSecurity$inboundSchema,
+  CreateProjectStaticIps,
+  CreateProjectStaticIps$inboundSchema,
+  CreateProjectTargets,
+  CreateProjectTargets$inboundSchema,
+  CreateProjectTrustedIps,
+  CreateProjectTrustedIps$inboundSchema,
+  CreateProjectTrustedSources,
+  CreateProjectTrustedSources$inboundSchema,
+  CreateProjectWebAnalytics,
+  CreateProjectWebAnalytics$inboundSchema,
+  DefaultResourceConfig,
+  DefaultResourceConfig$inboundSchema,
+  Features,
+  Features$inboundSchema,
+  GitProviderOptions,
+  GitProviderOptions$inboundSchema,
+  LastAliasRequest,
+  LastAliasRequest$inboundSchema,
+  LastRollbackTarget,
+  LastRollbackTarget$inboundSchema,
+  ProtectionBypass,
+  ProtectionBypass$inboundSchema,
+  ProtectionConfig,
+  ProtectionConfig$inboundSchema,
+  RollingRelease,
+  RollingRelease$inboundSchema,
+  RouteHas,
+  RouteHas$inboundSchema,
+  RouteMitigate,
+  RouteMitigate$inboundSchema,
+  UsageStatus,
+  UsageStatus$inboundSchema,
+} from "./routemitigate.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type Route2 = {
+  has: Array<RouteHas>;
+  mitigate: RouteMitigate;
+  src?: string | undefined;
+};
+
+export type Route1 = {
+  src: string;
+  status: number;
+  expiry?: number | undefined;
+};
+
+export type BlockHistoryRoute = Route1 | Route2;
 
 export type BlockHistory3 = {
   action: "route-blocked";
-  route: BlockHistoryRoute;
+  route: Route1 | Route2;
   reason: string;
   createdAt: number;
   caseId?: string | undefined;
@@ -351,7 +367,7 @@ export type CreateProjectResponseBody = {
   passwordProtection?: CreateProjectPasswordProtection | null | undefined;
   passport?: CreateProjectPassport | null | undefined;
   protectionConfig?: ProtectionConfig | undefined;
-  sandbox?: Sandbox | undefined;
+  sandbox?: CreateProjectSandbox | undefined;
   productionDeploymentsFastLane?: boolean | undefined;
   resourceConfig: CreateProjectProjectsResourceConfig;
   /**
@@ -416,13 +432,72 @@ export type CreateProjectResponseBody = {
 };
 
 /** @internal */
+export const Route2$inboundSchema: z.ZodType<Route2, z.ZodTypeDef, unknown> = z
+  .object({
+    has: z.array(RouteHas$inboundSchema),
+    mitigate: RouteMitigate$inboundSchema,
+    src: types.optional(types.string()),
+  });
+
+export function route2FromJSON(
+  jsonString: string,
+): SafeParseResult<Route2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Route2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Route2' from JSON`,
+  );
+}
+
+/** @internal */
+export const Route1$inboundSchema: z.ZodType<Route1, z.ZodTypeDef, unknown> = z
+  .object({
+    src: types.string(),
+    status: types.number(),
+    expiry: types.optional(types.number()),
+  });
+
+export function route1FromJSON(
+  jsonString: string,
+): SafeParseResult<Route1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Route1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Route1' from JSON`,
+  );
+}
+
+/** @internal */
+export const BlockHistoryRoute$inboundSchema: z.ZodType<
+  BlockHistoryRoute,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => Route1$inboundSchema),
+  z.lazy(() => Route2$inboundSchema),
+]);
+
+export function blockHistoryRouteFromJSON(
+  jsonString: string,
+): SafeParseResult<BlockHistoryRoute, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BlockHistoryRoute$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BlockHistoryRoute' from JSON`,
+  );
+}
+
+/** @internal */
 export const BlockHistory3$inboundSchema: z.ZodType<
   BlockHistory3,
   z.ZodTypeDef,
   unknown
 > = z.object({
   action: types.literal("route-blocked"),
-  route: BlockHistoryRoute$inboundSchema,
+  route: smartUnion([
+    z.lazy(() => Route1$inboundSchema),
+    z.lazy(() => Route2$inboundSchema),
+  ]),
   reason: types.string(),
   createdAt: types.number(),
   caseId: types.optional(types.string()),
@@ -998,7 +1073,7 @@ export const CreateProjectResponseBody$inboundSchema: z.ZodType<
     .optional(),
   passport: z.nullable(CreateProjectPassport$inboundSchema).optional(),
   protectionConfig: types.optional(ProtectionConfig$inboundSchema),
-  sandbox: types.optional(Sandbox$inboundSchema),
+  sandbox: types.optional(CreateProjectSandbox$inboundSchema),
   productionDeploymentsFastLane: types.optional(types.boolean()),
   resourceConfig: CreateProjectProjectsResourceConfig$inboundSchema,
   rollbackDescription: types.optional(

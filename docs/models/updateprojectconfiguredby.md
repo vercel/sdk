@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateProjectConfiguredBy } from "@vercel/sdk/models/updateprojectdomains.js";
+import { UpdateProjectConfiguredBy } from "@vercel/sdk/models/updateprojectprojectsresponse200applicationjsonresponsebodycustomenvironmentstype.js";
 
 let value: UpdateProjectConfiguredBy = "dns-01";
 ```

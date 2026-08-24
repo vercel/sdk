@@ -57992,6 +57992,20 @@
                                   "type"
                                 ],
                                 "type": "object"
+                              },
+                              {
+                                "properties": {
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "experiment"
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "type"
+                                ],
+                                "type": "object"
                               }
                             ]
                           },
@@ -58144,6 +58158,20 @@
                                         "rollToVariantId",
                                         "slots",
                                         "startTimestamp",
+                                        "type"
+                                      ],
+                                      "type": "object"
+                                    },
+                                    {
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "experiment"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
                                         "type"
                                       ],
                                       "type": "object"
@@ -59521,6 +59549,20 @@
                                       "type"
                                     ],
                                     "type": "object"
+                                  },
+                                  {
+                                    "properties": {
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "experiment"
+                                        ]
+                                      }
+                                    },
+                                    "required": [
+                                      "type"
+                                    ],
+                                    "type": "object"
                                   }
                                 ]
                               },
@@ -59673,6 +59715,20 @@
                                             "rollToVariantId",
                                             "slots",
                                             "startTimestamp",
+                                            "type"
+                                          ],
+                                          "type": "object"
+                                        },
+                                        {
+                                          "properties": {
+                                            "type": {
+                                              "type": "string",
+                                              "enum": [
+                                                "experiment"
+                                              ]
+                                            }
+                                          },
+                                          "required": [
                                             "type"
                                           ],
                                           "type": "object"
@@ -61097,6 +61153,20 @@
                                             "type"
                                           ],
                                           "type": "object"
+                                        },
+                                        {
+                                          "properties": {
+                                            "type": {
+                                              "type": "string",
+                                              "enum": [
+                                                "experiment"
+                                              ]
+                                            }
+                                          },
+                                          "required": [
+                                            "type"
+                                          ],
+                                          "type": "object"
                                         }
                                       ]
                                     },
@@ -61249,6 +61319,20 @@
                                                   "rollToVariantId",
                                                   "slots",
                                                   "startTimestamp",
+                                                  "type"
+                                                ],
+                                                "type": "object"
+                                              },
+                                              {
+                                                "properties": {
+                                                  "type": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                      "experiment"
+                                                    ]
+                                                  }
+                                                },
+                                                "required": [
                                                   "type"
                                                 ],
                                                 "type": "object"
@@ -65101,7 +65185,8 @@
                               "ownerType": {
                                 "type": "string",
                                 "enum": [
-                                  "team"
+                                  "team",
+                                  "user"
                                 ]
                               },
                               "owner": {
@@ -118308,6 +118393,41 @@
                     ],
                     "nullable": true
                   },
+                  "sandbox": {
+                    "type": "object",
+                    "description": "Specifies the default region and failover regions for sandboxes created in the project",
+                    "properties": {
+                      "region": {
+                        "description": "The Vercel region sandboxes in this project are created in by default.",
+                        "enum": [
+                          "iad1",
+                          "sfo1",
+                          "cle1",
+                          "cdg1"
+                        ],
+                        "example": "iad1"
+                      },
+                      "failoverRegions": {
+                        "description": "The regions sandboxes in this project fall back to when they cannot be created in `region`.",
+                        "type": "array",
+                        "uniqueItems": true,
+                        "maxItems": 4,
+                        "items": {
+                          "enum": [
+                            "iad1",
+                            "sfo1",
+                            "cle1",
+                            "cdg1"
+                          ]
+                        },
+                        "example": [
+                          "sfo1",
+                          "cle1"
+                        ]
+                      }
+                    },
+                    "additionalProperties": false
+                  },
                   "outputDirectory": {
                     "description": "The output directory of the project. When `null` is used this value will be automatically detected",
                     "maxLength": 256,
@@ -134567,6 +134687,41 @@
                       "connectorId"
                     ],
                     "nullable": true
+                  },
+                  "sandbox": {
+                    "type": "object",
+                    "description": "Specifies the default region and failover regions for sandboxes created in the project",
+                    "properties": {
+                      "region": {
+                        "description": "The Vercel region sandboxes in this project are created in by default.",
+                        "enum": [
+                          "iad1",
+                          "sfo1",
+                          "cle1",
+                          "cdg1"
+                        ],
+                        "example": "iad1"
+                      },
+                      "failoverRegions": {
+                        "description": "The regions sandboxes in this project fall back to when they cannot be created in `region`.",
+                        "type": "array",
+                        "uniqueItems": true,
+                        "maxItems": 4,
+                        "items": {
+                          "enum": [
+                            "iad1",
+                            "sfo1",
+                            "cle1",
+                            "cdg1"
+                          ]
+                        },
+                        "example": [
+                          "sfo1",
+                          "cle1"
+                        ]
+                      }
+                    },
+                    "additionalProperties": false
                   },
                   "ssoProtection": {
                     "additionalProperties": false,
@@ -164699,6 +164854,42 @@
                       }
                     }
                   },
+                  "region": {
+                    "type": "string",
+                    "enum": [
+                      "iad1",
+                      "sfo1",
+                      "cle1",
+                      "cdg1"
+                    ],
+                    "default": [
+                      "iad1",
+                      "sfo1",
+                      "cle1",
+                      "cdg1"
+                    ],
+                    "description": "The Vercel region in which to create the sandbox.",
+                    "example": "iad1"
+                  },
+                  "failoverRegions": {
+                    "type": "array",
+                    "maxItems": 4,
+                    "uniqueItems": true,
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "iad1",
+                        "sfo1",
+                        "cle1",
+                        "cdg1"
+                      ]
+                    },
+                    "description": "The regions the sandbox falls back to when it cannot be created in `region`.",
+                    "example": [
+                      "sfo1",
+                      "cle1"
+                    ]
+                  },
                   "name": {
                     "example": "my-sandbox",
                     "type": "string",
@@ -166527,6 +166718,36 @@
                           }
                         }
                       }
+                    ]
+                  },
+                  "region": {
+                    "type": "string",
+                    "enum": [
+                      "iad1",
+                      "sfo1",
+                      "cle1",
+                      "cdg1"
+                    ],
+                    "description": "The Vercel region in which to create the sandbox.",
+                    "example": "iad1"
+                  },
+                  "failoverRegions": {
+                    "type": "array",
+                    "maxItems": 4,
+                    "uniqueItems": true,
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "iad1",
+                        "sfo1",
+                        "cle1",
+                        "cdg1"
+                      ]
+                    },
+                    "description": "The regions the sandbox falls back to when it cannot be created in `region`.",
+                    "example": [
+                      "sfo1",
+                      "cle1"
                     ]
                   },
                   "env": {
@@ -169135,6 +169356,42 @@
                       }
                     }
                   },
+                  "region": {
+                    "type": "string",
+                    "enum": [
+                      "iad1",
+                      "sfo1",
+                      "cle1",
+                      "cdg1"
+                    ],
+                    "default": [
+                      "iad1",
+                      "sfo1",
+                      "cle1",
+                      "cdg1"
+                    ],
+                    "description": "The Vercel region in which to create the sandbox.",
+                    "example": "iad1"
+                  },
+                  "failoverRegions": {
+                    "type": "array",
+                    "maxItems": 4,
+                    "uniqueItems": true,
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "iad1",
+                        "sfo1",
+                        "cle1",
+                        "cdg1"
+                      ]
+                    },
+                    "description": "The regions the sandbox falls back to when it cannot be created in `region`.",
+                    "example": [
+                      "sfo1",
+                      "cle1"
+                    ]
+                  },
                   "name": {
                     "example": "my-sandbox-fork",
                     "type": "string",
@@ -169856,6 +170113,42 @@
                         }
                       }
                     }
+                  },
+                  "region": {
+                    "type": "string",
+                    "enum": [
+                      "iad1",
+                      "sfo1",
+                      "cle1",
+                      "cdg1"
+                    ],
+                    "default": [
+                      "iad1",
+                      "sfo1",
+                      "cle1",
+                      "cdg1"
+                    ],
+                    "description": "The Vercel region in which to create the sandbox.",
+                    "example": "iad1"
+                  },
+                  "failoverRegions": {
+                    "type": "array",
+                    "maxItems": 4,
+                    "uniqueItems": true,
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "iad1",
+                        "sfo1",
+                        "cle1",
+                        "cdg1"
+                      ]
+                    },
+                    "description": "The regions the sandbox falls back to when it cannot be created in `region`.",
+                    "example": [
+                      "sfo1",
+                      "cle1"
+                    ]
                   },
                   "name": {
                     "example": "my-sandbox",
@@ -170633,6 +170926,42 @@
                       }
                     }
                   },
+                  "region": {
+                    "type": "string",
+                    "enum": [
+                      "iad1",
+                      "sfo1",
+                      "cle1",
+                      "cdg1"
+                    ],
+                    "default": [
+                      "iad1",
+                      "sfo1",
+                      "cle1",
+                      "cdg1"
+                    ],
+                    "description": "The Vercel region in which to create the sandbox.",
+                    "example": "iad1"
+                  },
+                  "failoverRegions": {
+                    "type": "array",
+                    "maxItems": 4,
+                    "uniqueItems": true,
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "iad1",
+                        "sfo1",
+                        "cle1",
+                        "cdg1"
+                      ]
+                    },
+                    "description": "The regions the sandbox falls back to when it cannot be created in `region`.",
+                    "example": [
+                      "sfo1",
+                      "cle1"
+                    ]
+                  },
                   "name": {
                     "example": "my-sandbox-fork",
                     "type": "string",
@@ -171361,6 +171690,42 @@
                         }
                       }
                     }
+                  },
+                  "region": {
+                    "type": "string",
+                    "enum": [
+                      "iad1",
+                      "sfo1",
+                      "cle1",
+                      "cdg1"
+                    ],
+                    "default": [
+                      "iad1",
+                      "sfo1",
+                      "cle1",
+                      "cdg1"
+                    ],
+                    "description": "The Vercel region in which to create the sandbox.",
+                    "example": "iad1"
+                  },
+                  "failoverRegions": {
+                    "type": "array",
+                    "maxItems": 4,
+                    "uniqueItems": true,
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "iad1",
+                        "sfo1",
+                        "cle1",
+                        "cdg1"
+                      ]
+                    },
+                    "description": "The regions the sandbox falls back to when it cannot be created in `region`.",
+                    "example": [
+                      "sfo1",
+                      "cle1"
+                    ]
                   },
                   "name": {
                     "example": "my-sandbox",
@@ -220852,6 +221217,22 @@
                           "increasedOnDemandEmailAttemptedAt": {
                             "type": "number",
                             "description": "Tracks the last time we attempted to send an increased on-demand email. This check is to limit the number of attempts per day."
+                          },
+                          "hobbyPolicyNoticeSlackSentAt": {
+                            "type": "number",
+                            "description": "Tracks when the new-Hobby-policy notice was reported for this owner. Reported at most once per owner, ever."
+                          },
+                          "hobbyWarningV2SlackSentAt": {
+                            "type": "number",
+                            "description": "Tracks the last time a `warningThresholdsV2` crossing was reported for this owner. Hobby has no billing period, so this re-arms on the same rolling window the service already uses for Hobby alerts."
+                          },
+                          "hobbyPauseNoticeSlackSentAt": {
+                            "type": "number",
+                            "description": "Tracks the last time a `blockThresholdV2` breach was reported for this owner. Re-arms on the same rolling window as `hobbyWarningV2SlackSentAt`."
+                          },
+                          "hobbyPolicySlackThreadTs": {
+                            "type": "string",
+                            "description": "Slack `ts` of the thread root holding this owner's new-Hobby-policy alerts. Every later alert for the owner is posted as a reply to it, so the channel carries one entry per owner rather than one per alert. Replaced if Slack reports the root as gone."
                           }
                         },
                         "type": "object",
@@ -234911,6 +235292,20 @@
                         "type"
                       ],
                       "type": "object"
+                    },
+                    {
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "experiment"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "type"
+                      ],
+                      "type": "object"
                     }
                   ]
                 },
@@ -235063,6 +235458,20 @@
                               "rollToVariantId",
                               "slots",
                               "startTimestamp",
+                              "type"
+                            ],
+                            "type": "object"
+                          },
+                          {
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "experiment"
+                                ]
+                              }
+                            },
+                            "required": [
                               "type"
                             ],
                             "type": "object"
@@ -236146,6 +236555,28 @@
             "description": "The region the sandbox is pinned to: the region stored on the sandbox, otherwise the platform default. Where a running session actually landed is reported by `session.region`.",
             "example": "iad1"
           },
+          "failoverRegions": {
+            "items": {
+              "type": "string",
+              "enum": [
+                "cdg1",
+                "cle1",
+                "iad1",
+                "sfo1"
+              ],
+              "description": "The regions the sandbox fails over to. Empty when it does not fail over.",
+              "example": [
+                "sfo1",
+                "cle1"
+              ]
+            },
+            "type": "array",
+            "description": "The regions the sandbox fails over to. Empty when it does not fail over.",
+            "example": [
+              "sfo1",
+              "cle1"
+            ]
+          },
           "vcpus": {
             "type": "number",
             "description": "Number of virtual CPUs allocated.",
@@ -236672,6 +237103,17 @@
             "type": "string",
             "description": "The region where the snapshot is stored.",
             "example": "iad1"
+          },
+          "regions": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "description": "The regions where the snapshot is available.",
+            "example": [
+              "iad1",
+              "sfo1"
+            ]
           },
           "status": {
             "type": "string",

@@ -69,6 +69,10 @@ const value: models.StopSessionResponseBody2 = {
     id: "snap_123a6c5209bc3778245d011443644c8d27dc2c50",
     sourceSessionId: "sbx_123a6c5209bc3778245d011443644c8d27dc2c50",
     region: "iad1",
+    regions: [
+      "iad1",
+      "sfo1",
+    ],
     status: "created",
     sizeBytes: 104857600,
     expiresAt: 1750344501629,
@@ -85,6 +89,10 @@ const value: models.StopSessionResponseBody2 = {
     statusUpdatedAt: 1750344501629,
     persistent: true,
     region: "iad1",
+    failoverRegions: [
+      "sfo1",
+      "cle1",
+    ],
     vcpus: 2,
     memory: 1024,
     runtime: "node22",

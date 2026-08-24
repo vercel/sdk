@@ -48,3 +48,11 @@ const value: models.Outcome3 = {
 };
 ```
 
+### `models.Outcome4`
+
+```typescript
+const value: models.Outcome4 = {
+  type: "experiment",
+};
+```
+

@@ -6,7 +6,7 @@
 import { CreateProjectCheckSource2 } from "@vercel/sdk/models/createprojectcheckop.js";
 
 let value: CreateProjectCheckSource2 = {
-  kind: "<value>",
+  kind: "webhook",
 };
 ```
 
@@ -14,5 +14,5 @@ let value: CreateProjectCheckSource2 = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `kind`             | *string*           | :heavy_check_mark: | N/A                |
+| `kind`             | *"webhook"*        | :heavy_check_mark: | N/A                |
 | `webhookId`        | *string*           | :heavy_minus_sign: | N/A                |

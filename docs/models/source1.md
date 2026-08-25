@@ -1,27 +1,16 @@
 # Source1
 
-
-## Supported Types
-
-### `models.CreateDrain11`
+## Example Usage
 
 ```typescript
-const value: models.CreateDrain11 = {
-  externalResourceId: "<id>",
-};
+import { Source1 } from "@vercel/sdk/models/createprojectcheckop.js";
+
+let value: Source1 = {};
 ```
 
-### `models.One2`
+## Fields
 
-```typescript
-const value: models.One2 = {
-  resourceId: "<id>",
-};
-```
-
-### `models.One3`
-
-```typescript
-const value: models.One3 = {};
-```
-
+| Field                | Type                 | Required             | Description          |
+| -------------------- | -------------------- | -------------------- | -------------------- |
+| `kind`               | *string*             | :heavy_minus_sign:   | N/A                  |
+| `externalResourceId` | *string*             | :heavy_minus_sign:   | N/A                  |

@@ -9,50 +9,6 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
-  GetMicrofrontendsInGroupAbuse,
-  GetMicrofrontendsInGroupAbuse$inboundSchema,
-  GetMicrofrontendsInGroupAction,
-  GetMicrofrontendsInGroupAction$inboundSchema,
-  GetMicrofrontendsInGroupDefaultResourceConfig,
-  GetMicrofrontendsInGroupDefaultResourceConfig$inboundSchema,
-  GetMicrofrontendsInGroupDeploymentPolicy,
-  GetMicrofrontendsInGroupDeploymentPolicy$inboundSchema,
-  GetMicrofrontendsInGroupFeatures,
-  GetMicrofrontendsInGroupFeatures$inboundSchema,
-  GetMicrofrontendsInGroupGitComments,
-  GetMicrofrontendsInGroupGitComments$inboundSchema,
-  GetMicrofrontendsInGroupGitProviderOptions,
-  GetMicrofrontendsInGroupGitProviderOptions$inboundSchema,
-  GetMicrofrontendsInGroupInternalRoutes,
-  GetMicrofrontendsInGroupInternalRoutes$inboundSchema,
-  GetMicrofrontendsInGroupLastAliasRequest,
-  GetMicrofrontendsInGroupLastAliasRequest$inboundSchema,
-  GetMicrofrontendsInGroupLastRollbackTarget,
-  GetMicrofrontendsInGroupLastRollbackTarget$inboundSchema,
-  GetMicrofrontendsInGroupOidcTokenConfig,
-  GetMicrofrontendsInGroupOidcTokenConfig$inboundSchema,
-  GetMicrofrontendsInGroupPermissions,
-  GetMicrofrontendsInGroupPermissions$inboundSchema,
-  GetMicrofrontendsInGroupProtectionBypass,
-  GetMicrofrontendsInGroupProtectionBypass$inboundSchema,
-  GetMicrofrontendsInGroupSecurity,
-  GetMicrofrontendsInGroupSecurity$inboundSchema,
-  GetMicrofrontendsInGroupSsoProtection,
-  GetMicrofrontendsInGroupSsoProtection$inboundSchema,
-  GetMicrofrontendsInGroupStaticIps,
-  GetMicrofrontendsInGroupStaticIps$inboundSchema,
-  GetMicrofrontendsInGroupTargets,
-  GetMicrofrontendsInGroupTargets$inboundSchema,
-  GetMicrofrontendsInGroupTrustedIps,
-  GetMicrofrontendsInGroupTrustedIps$inboundSchema,
-  GetMicrofrontendsInGroupTrustedSources,
-  GetMicrofrontendsInGroupTrustedSources$inboundSchema,
-  GetMicrofrontendsInGroupUsageStatus,
-  GetMicrofrontendsInGroupUsageStatus$inboundSchema,
-  GetMicrofrontendsInGroupWebAnalytics,
-  GetMicrofrontendsInGroupWebAnalytics$inboundSchema,
-} from "./getmicrofrontendsingroupaction.js";
-import {
   GetMicrofrontendsInGroupAlias,
   GetMicrofrontendsInGroupAlias$inboundSchema,
   GetMicrofrontendsInGroupAnalytics,
@@ -110,7 +66,60 @@ import {
   GetMicrofrontendsInGroupSpeedInsights,
   GetMicrofrontendsInGroupSpeedInsights$inboundSchema,
 } from "./getmicrofrontendsingroupbuildmachineelasticreason.js";
+import {
+  GetMicrofrontendsInGroupAbuse,
+  GetMicrofrontendsInGroupAbuse$inboundSchema,
+  GetMicrofrontendsInGroupDefaultResourceConfig,
+  GetMicrofrontendsInGroupDefaultResourceConfig$inboundSchema,
+  GetMicrofrontendsInGroupDeploymentPolicy,
+  GetMicrofrontendsInGroupDeploymentPolicy$inboundSchema,
+  GetMicrofrontendsInGroupFeatures,
+  GetMicrofrontendsInGroupFeatures$inboundSchema,
+  GetMicrofrontendsInGroupGitComments,
+  GetMicrofrontendsInGroupGitComments$inboundSchema,
+  GetMicrofrontendsInGroupGitProviderOptions,
+  GetMicrofrontendsInGroupGitProviderOptions$inboundSchema,
+  GetMicrofrontendsInGroupInternalRoutes,
+  GetMicrofrontendsInGroupInternalRoutes$inboundSchema,
+  GetMicrofrontendsInGroupLastAliasRequest,
+  GetMicrofrontendsInGroupLastAliasRequest$inboundSchema,
+  GetMicrofrontendsInGroupLastRollbackTarget,
+  GetMicrofrontendsInGroupLastRollbackTarget$inboundSchema,
+  GetMicrofrontendsInGroupOidcTokenConfig,
+  GetMicrofrontendsInGroupOidcTokenConfig$inboundSchema,
+  GetMicrofrontendsInGroupPermissions,
+  GetMicrofrontendsInGroupPermissions$inboundSchema,
+  GetMicrofrontendsInGroupProtectionBypass,
+  GetMicrofrontendsInGroupProtectionBypass$inboundSchema,
+  GetMicrofrontendsInGroupSecurity,
+  GetMicrofrontendsInGroupSecurity$inboundSchema,
+  GetMicrofrontendsInGroupSsoProtection,
+  GetMicrofrontendsInGroupSsoProtection$inboundSchema,
+  GetMicrofrontendsInGroupStaticIps,
+  GetMicrofrontendsInGroupStaticIps$inboundSchema,
+  GetMicrofrontendsInGroupTargets,
+  GetMicrofrontendsInGroupTargets$inboundSchema,
+  GetMicrofrontendsInGroupTier,
+  GetMicrofrontendsInGroupTier$inboundSchema,
+  GetMicrofrontendsInGroupTrustedIps,
+  GetMicrofrontendsInGroupTrustedIps$inboundSchema,
+  GetMicrofrontendsInGroupTrustedSources,
+  GetMicrofrontendsInGroupTrustedSources$inboundSchema,
+  GetMicrofrontendsInGroupUsageStatus,
+  GetMicrofrontendsInGroupUsageStatus$inboundSchema,
+  GetMicrofrontendsInGroupWebAnalytics,
+  GetMicrofrontendsInGroupWebAnalytics$inboundSchema,
+} from "./getmicrofrontendsingroupinternalroutes.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const GetMicrofrontendsInGroupAction = {
+  Accept: "accept",
+  Cancel: "cancel",
+  Delete: "delete",
+} as const;
+export type GetMicrofrontendsInGroupAction = ClosedEnum<
+  typeof GetMicrofrontendsInGroupAction
+>;
 
 export type GetMicrofrontendsInGroupValuePreviousValue =
   | string
@@ -300,7 +309,7 @@ export type GetMicrofrontendsInGroupProjects = {
     | GetMicrofrontendsInGroupDeploymentPolicy
     | null
     | undefined;
-  tier?: string | undefined;
+  tier?: GetMicrofrontendsInGroupTier | undefined;
   usageStatus?: GetMicrofrontendsInGroupUsageStatus | undefined;
   features?: GetMicrofrontendsInGroupFeatures | undefined;
   v0?: boolean | undefined;
@@ -317,6 +326,11 @@ export type GetMicrofrontendsInGroupProjects = {
 export type GetMicrofrontendsInGroupResponseBody = {
   projects: Array<GetMicrofrontendsInGroupProjects>;
 };
+
+/** @internal */
+export const GetMicrofrontendsInGroupAction$inboundSchema: z.ZodNativeEnum<
+  typeof GetMicrofrontendsInGroupAction
+> = z.nativeEnum(GetMicrofrontendsInGroupAction);
 
 /** @internal */
 export const GetMicrofrontendsInGroupValuePreviousValue$inboundSchema:
@@ -640,7 +654,7 @@ export const GetMicrofrontendsInGroupProjects$inboundSchema: z.ZodType<
   deploymentPolicy: z.nullable(
     GetMicrofrontendsInGroupDeploymentPolicy$inboundSchema,
   ).optional(),
-  tier: types.optional(types.string()),
+  tier: types.optional(GetMicrofrontendsInGroupTier$inboundSchema),
   usageStatus: types.optional(
     GetMicrofrontendsInGroupUsageStatus$inboundSchema,
   ),

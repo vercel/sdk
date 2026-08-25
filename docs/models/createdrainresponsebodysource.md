@@ -3,18 +3,18 @@
 
 ## Supported Types
 
-### `models.CreateDrainSource1`
+### `models.CreateDrainSourceDrains1`
 
 ```typescript
-const value: models.CreateDrainSource1 = {
+const value: models.CreateDrainSourceDrains1 = {
   kind: "self-served",
 };
 ```
 
-### `models.CreateDrainSource2`
+### `models.CreateDrainSourceDrains2`
 
 ```typescript
-const value: models.CreateDrainSource2 = {
+const value: models.CreateDrainSourceDrains2 = {
   kind: "integration",
   integrationId: "<id>",
   integrationConfigurationId: "<id>",

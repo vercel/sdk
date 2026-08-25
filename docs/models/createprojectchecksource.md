@@ -3,16 +3,16 @@
 
 ## Supported Types
 
-### `models.CreateProjectCheckSource1`
+### `models.Source1`
 
 ```typescript
-const value: models.CreateProjectCheckSource1 = {};
+const value: models.Source1 = {};
 ```
 
-### `models.CreateProjectCheckSource2`
+### `models.Source2`
 
 ```typescript
-const value: models.CreateProjectCheckSource2 = {
+const value: models.Source2 = {
   kind: "<value>",
 };
 ```

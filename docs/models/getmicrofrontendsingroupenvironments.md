@@ -3,19 +3,19 @@
 
 ## Supported Types
 
-### `models.GetMicrofrontendsInGroupEnvironmentsMicrofrontends1`
+### `models.GetMicrofrontendsInGroupEnvironments1`
 
 ```typescript
-const value: models.GetMicrofrontendsInGroupEnvironmentsMicrofrontends1 = {
+const value: models.GetMicrofrontendsInGroupEnvironments1 = {
   type: "system",
   target: "production",
 };
 ```
 
-### `models.GetMicrofrontendsInGroupEnvironmentsMicrofrontends2`
+### `models.GetMicrofrontendsInGroupEnvironments2`
 
 ```typescript
-const value: models.GetMicrofrontendsInGroupEnvironmentsMicrofrontends2 = {
+const value: models.GetMicrofrontendsInGroupEnvironments2 = {
   type: "custom",
   environmentId: "<id>",
 };

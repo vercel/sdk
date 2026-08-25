@@ -14,13 +14,24 @@ export type GetSecurityFirewallEventsRequest = {
   startTimestamp?: number | undefined;
   endTimestamp?: number | undefined;
   hosts?: string | undefined;
+  /**
+   * The Team identifier to perform the request on behalf of.
+   */
+  teamId?: string | undefined;
+  /**
+   * The Team slug to perform the request on behalf of.
+   */
+  slug?: string | undefined;
 };
 
 export type GetSecurityFirewallEventsActions = {
+  ruleName: string | null;
   startTime: string;
   endTime: string;
   isActive: boolean;
   actionType: string;
+  action: string;
+  ruleId: string | null;
   host: string;
   publicIp: string;
   count: number;
@@ -36,6 +47,8 @@ export type GetSecurityFirewallEventsRequest$Outbound = {
   startTimestamp?: number | undefined;
   endTimestamp?: number | undefined;
   hosts?: string | undefined;
+  teamId?: string | undefined;
+  slug?: string | undefined;
 };
 
 /** @internal */
@@ -48,6 +61,8 @@ export const GetSecurityFirewallEventsRequest$outboundSchema: z.ZodType<
   startTimestamp: z.number().optional(),
   endTimestamp: z.number().optional(),
   hosts: z.string().optional(),
+  teamId: z.string().optional(),
+  slug: z.string().optional(),
 });
 
 export function getSecurityFirewallEventsRequestToJSON(
@@ -66,10 +81,13 @@ export const GetSecurityFirewallEventsActions$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  ruleName: types.nullable(types.string()),
   startTime: types.string(),
   endTime: types.string(),
   isActive: types.boolean(),
   action_type: types.string(),
+  action: types.string(),
+  ruleId: types.nullable(types.string()),
   host: types.string(),
   public_ip: types.string(),
   count: types.number(),

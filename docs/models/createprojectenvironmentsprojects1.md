@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectEnvironmentsProjects1 } from "@vercel/sdk/models/routemitigate.js";
+import { CreateProjectEnvironmentsProjects1 } from "@vercel/sdk/models/routeaction.js";
 
 let value: CreateProjectEnvironmentsProjects1 = {
   type: "system",
@@ -13,7 +13,7 @@ let value: CreateProjectEnvironmentsProjects1 = {
 
 ## Fields
 
-| Field                                                                                                  | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
-| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| `type`                                                                                                 | *"system"*                                                                                             | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
-| `target`                                                                                               | [models.CreateProjectEnvironmentsProjectsTarget](../models/createprojectenvironmentsprojectstarget.md) | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
+| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `type`                                                                                 | *"system"*                                                                             | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `target`                                                                               | [models.CreateProjectEnvironmentsTarget](../models/createprojectenvironmentstarget.md) | :heavy_check_mark:                                                                     | N/A                                                                                    |

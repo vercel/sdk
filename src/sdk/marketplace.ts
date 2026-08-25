@@ -23,6 +23,7 @@ import { marketplaceImportResource } from "../funcs/marketplaceImportResource.js
 import {
   marketplaceReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig,
 } from "../funcs/marketplaceReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig.js";
+import { marketplaceRevokeInstallationCredential } from "../funcs/marketplaceRevokeInstallationCredential.js";
 import { marketplaceRotateInstallationCredential } from "../funcs/marketplaceRotateInstallationCredential.js";
 import { marketplaceSubmitBillingData } from "../funcs/marketplaceSubmitBillingData.js";
 import { marketplaceSubmitInvoice } from "../funcs/marketplaceSubmitInvoice.js";
@@ -83,6 +84,10 @@ import {
   ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequest,
   ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponseBody,
 } from "../models/replaceinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationglobalconfigop.js";
+import {
+  RevokeInstallationCredentialRequest,
+  RevokeInstallationCredentialResponseBody,
+} from "../models/revokeinstallationcredentialop.js";
 import {
   RotateInstallationCredentialRequest,
   RotateInstallationCredentialResponseBody,
@@ -169,6 +174,23 @@ export class Marketplace extends ClientSDK {
     options?: RequestOptions,
   ): Promise<RotateInstallationCredentialResponseBody> {
     return unwrapAsync(marketplaceRotateInstallationCredential(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Revoke Installation Credential
+   *
+   * @remarks
+   * Retires a superseded installation credential, so a partner can complete a rotation it started with `POST /credentials/rotate` — the leaked credential stops working without the customer having to reinstall. Authenticated by a live installation credential plus the integration's client secret. The credential to retire is named in the body rather than being the one that authenticates, so the ordinary flow is: rotate, store the replacement, then authenticate with the replacement and revoke the old one. Refuses to retire an installation's last live credential. Rotation exists so remediation is not customer-visible; revoking the only credential would undo that and leave the install needing a reinstall.
+   */
+  async revokeInstallationCredential(
+    request: RevokeInstallationCredentialRequest,
+    options?: RequestOptions,
+  ): Promise<RevokeInstallationCredentialResponseBody> {
+    return unwrapAsync(marketplaceRevokeInstallationCredential(
       this,
       request,
       options,

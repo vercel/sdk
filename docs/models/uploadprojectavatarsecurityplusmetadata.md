@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarSecurityPlusMetadata } from "@vercel/sdk/models/uploadprojectavatarvaluepreviousvalue.js";
+import { UploadProjectAvatarSecurityPlusMetadata } from "@vercel/sdk/models/uploadprojectavataraction.js";
 
 let value: UploadProjectAvatarSecurityPlusMetadata = {
   updatedAt: 5530.61,

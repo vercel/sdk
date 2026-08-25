@@ -15,7 +15,7 @@ let value: Claims = {
 
 ## Fields
 
-| Field                                  | Type                                   | Required                               | Description                            |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| `name`                                 | *string*                               | :heavy_check_mark:                     | N/A                                    |
-| `values`                               | [models.Values](../models/values.md)[] | :heavy_check_mark:                     | N/A                                    |
+| Field                                                | Type                                                 | Required                                             | Description                                          |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| `name`                                               | *string*                                             | :heavy_check_mark:                                   | N/A                                                  |
+| `values`                                             | [models.PayloadValues](../models/payloadvalues.md)[] | :heavy_check_mark:                                   | N/A                                                  |

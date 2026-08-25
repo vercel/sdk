@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectProjectsBuildMachineElasticReason } from "@vercel/sdk/models/routemitigate.js";
+import { CreateProjectProjectsBuildMachineElasticReason } from "@vercel/sdk/models/routeaction.js";
 
 let value: CreateProjectProjectsBuildMachineElasticReason = "enospc-failure";
 ```

@@ -3,22 +3,22 @@
 
 ## Supported Types
 
-### `models.GetDeploymentCustomEnvironmentDeployments1`
+### `models.GetDeploymentCustomEnvironment1`
 
 ```typescript
-const value: models.GetDeploymentCustomEnvironmentDeployments1 = {
+const value: models.GetDeploymentCustomEnvironment1 = {
   id: "<id>",
   slug: "<value>",
-  type: "development",
-  createdAt: 7799.26,
-  updatedAt: 1685.64,
+  type: "production",
+  createdAt: 7461.08,
+  updatedAt: 9318.74,
 };
 ```
 
-### `models.GetDeploymentCustomEnvironmentDeployments2`
+### `models.GetDeploymentCustomEnvironment2`
 
 ```typescript
-const value: models.GetDeploymentCustomEnvironmentDeployments2 = {
+const value: models.GetDeploymentCustomEnvironment2 = {
   id: "<id>",
 };
 ```

@@ -12,8 +12,6 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
   UpdateMicrofrontendsAbuse,
   UpdateMicrofrontendsAbuse$inboundSchema,
-  UpdateMicrofrontendsAction,
-  UpdateMicrofrontendsAction$inboundSchema,
   UpdateMicrofrontendsDefaultResourceConfig,
   UpdateMicrofrontendsDefaultResourceConfig$inboundSchema,
   UpdateMicrofrontendsDeploymentPolicy,
@@ -44,6 +42,8 @@ import {
   UpdateMicrofrontendsStaticIps$inboundSchema,
   UpdateMicrofrontendsTargets,
   UpdateMicrofrontendsTargets$inboundSchema,
+  UpdateMicrofrontendsTier,
+  UpdateMicrofrontendsTier$inboundSchema,
   UpdateMicrofrontendsTrustedIps,
   UpdateMicrofrontendsTrustedIps$inboundSchema,
   UpdateMicrofrontendsTrustedSources,
@@ -52,7 +52,7 @@ import {
   UpdateMicrofrontendsUsageStatus$inboundSchema,
   UpdateMicrofrontendsWebAnalytics,
   UpdateMicrofrontendsWebAnalytics$inboundSchema,
-} from "./updatemicrofrontendsaction.js";
+} from "./updatemicrofrontendsinternalroutes.js";
 import {
   UpdateMicrofrontendsAlias,
   UpdateMicrofrontendsAlias$inboundSchema,
@@ -111,6 +111,15 @@ import {
   UpdateMicrofrontendsSpeedInsights,
   UpdateMicrofrontendsSpeedInsights$inboundSchema,
 } from "./updatemicrofrontendsprojectsbuildmachineselection.js";
+
+export const UpdateMicrofrontendsAction = {
+  Accept: "accept",
+  Cancel: "cancel",
+  Delete: "delete",
+} as const;
+export type UpdateMicrofrontendsAction = ClosedEnum<
+  typeof UpdateMicrofrontendsAction
+>;
 
 export type UpdateMicrofrontendsValuePreviousValue = string | number | boolean;
 
@@ -283,7 +292,7 @@ export type UpdateMicrofrontendsResponseBody = {
    * Project shape. `null` on a rule list clears the project's override for that rule type (fall back to team for every env); omitting is equivalent. Setting `deploymentPolicy` itself to `null` clears every override at once. Kept structurally distinct from {@link TeamDeploymentPolicy} so the two storage locations don't share a type by accident.
    */
   deploymentPolicy?: UpdateMicrofrontendsDeploymentPolicy | null | undefined;
-  tier?: string | undefined;
+  tier?: UpdateMicrofrontendsTier | undefined;
   usageStatus?: UpdateMicrofrontendsUsageStatus | undefined;
   features?: UpdateMicrofrontendsFeatures | undefined;
   v0?: boolean | undefined;
@@ -296,6 +305,11 @@ export type UpdateMicrofrontendsResponseBody = {
   tracing?: UpdateMicrofrontendsTracing | undefined;
   avatar?: string | null | undefined;
 };
+
+/** @internal */
+export const UpdateMicrofrontendsAction$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateMicrofrontendsAction
+> = z.nativeEnum(UpdateMicrofrontendsAction);
 
 /** @internal */
 export const UpdateMicrofrontendsValuePreviousValue$inboundSchema: z.ZodType<
@@ -590,7 +604,7 @@ export const UpdateMicrofrontendsResponseBody$inboundSchema: z.ZodType<
   deploymentPolicy: z.nullable(
     UpdateMicrofrontendsDeploymentPolicy$inboundSchema,
   ).optional(),
-  tier: types.optional(types.string()),
+  tier: types.optional(UpdateMicrofrontendsTier$inboundSchema),
   usageStatus: types.optional(UpdateMicrofrontendsUsageStatus$inboundSchema),
   features: types.optional(UpdateMicrofrontendsFeatures$inboundSchema),
   v0: types.optional(types.boolean()),

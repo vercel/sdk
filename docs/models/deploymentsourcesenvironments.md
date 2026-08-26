@@ -3,10 +3,10 @@
 
 ## Supported Types
 
-### `models.UpdateProjectEnvironments1`
+### `models.UpdateProjectEnvironmentsProjects1`
 
 ```typescript
-const value: models.UpdateProjectEnvironments1 = {
+const value: models.UpdateProjectEnvironmentsProjects1 = {
   type: "system",
   target: "production",
 };

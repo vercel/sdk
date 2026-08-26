@@ -5,7 +5,7 @@
 ```typescript
 import {
   GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsLastAliasRequestType,
-} from "@vercel/sdk/models/getprojectsinternalroutesprojectsresponse2.js";
+} from "@vercel/sdk/models/getprojectsinternalroutesprojectsresponsemitigate.js";
 
 let value:
   GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsLastAliasRequestType =

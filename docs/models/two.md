@@ -1,24 +1,23 @@
 # Two
 
-Metadata for {@link principalId}.
+Principal that originally created the connector — either a Vercel user (interactive dashboard / CLI flow) or a Vercel deployment (OIDC-authenticated project, used by runtime auto-provisioning). See {@link ConnexPrincipal}. Optional: pre-existing rows from before this shape was introduced may carry no attribution at all.
 
 ## Example Usage
 
 ```typescript
-import { Two } from "@vercel/sdk/models/threehundredandninetyseven.js";
+import { Two } from "@vercel/sdk/models/connectconnectorcreateresult.js";
 
 let value: Two = {
-  type: "app",
-  clientId: "<id>",
-  name: "<value>",
+  type: "project",
+  id: "<id>",
+  environment: "development",
 };
 ```
 
 ## Fields
 
-| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
-| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `type`                                                               | [models.UserEventPrincipalType](../models/usereventprincipaltype.md) | :heavy_check_mark:                                                   | N/A                                                                  |
-| `id`                                                                 | *string*                                                             | :heavy_minus_sign:                                                   | The backing Vercel App ID. When absent, defaults to `clientId`.      |
-| `clientId`                                                           | *string*                                                             | :heavy_check_mark:                                                   | The OAuth 2.0 client ID, which may be a CIMD URL.                    |
-| `name`                                                               | *string*                                                             | :heavy_check_mark:                                                   | N/A                                                                  |
+| Field                                            | Type                                             | Required                                         | Description                                      |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| `type`                                           | *"project"*                                      | :heavy_check_mark:                               | Principal kind.                                  |
+| `id`                                             | *string*                                         | :heavy_check_mark:                               | Vercel project ID.                               |
+| `environment`                                    | *models.CreatedByEnvironmentTarget*              | :heavy_check_mark:                               | Deployment environment of the project principal. |

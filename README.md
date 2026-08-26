@@ -281,8 +281,7 @@ run();
 
 ### [Connect](docs/sdks/connect/README.md)
 
-* [importConnectorTokens](docs/sdks/connect/README.md#importconnectortokens) - Import Connect tokens
-* [createConnectorInstallationRequest](docs/sdks/connect/README.md#createconnectorinstallationrequest) - Create a Connect installation request
+* [createConnector](docs/sdks/connect/README.md#createconnector) - Create a connector
 
 ### [Deployments](docs/sdks/deployments/README.md)
 
@@ -459,6 +458,7 @@ run();
 * [getAccountInfo](docs/sdks/marketplace/README.md#getaccountinfo) - Get Account Information
 * [getMember](docs/sdks/marketplace/README.md#getmember) - Get Member Information
 * [rotateInstallationCredential](docs/sdks/marketplace/README.md#rotateinstallationcredential) - Rotate Installation Credential
+* [revokeInstallationCredential](docs/sdks/marketplace/README.md#revokeinstallationcredential) - Revoke Installation Credential
 * [createEvent](docs/sdks/marketplace/README.md#createevent) - Create Event
 * [getIntegrationResources](docs/sdks/marketplace/README.md#getintegrationresources) - Get Integration Resources
 * [getIntegrationResource](docs/sdks/marketplace/README.md#getintegrationresource) - Get Integration Resource
@@ -765,8 +765,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`checksV2ListProjectChecks`](docs/sdks/checksv2/README.md#listprojectchecks) - List all checks for a project
 - [`checksV2UpdateDeploymentCheckRun`](docs/sdks/checksv2/README.md#updatedeploymentcheckrun) - Update a check run
 - [`checksV2UpdateProjectCheck`](docs/sdks/checksv2/README.md#updateprojectcheck) - Update a check
-- [`connectCreateConnectorInstallationRequest`](docs/sdks/connect/README.md#createconnectorinstallationrequest) - Create a Connect installation request
-- [`connectImportConnectorTokens`](docs/sdks/connect/README.md#importconnectortokens) - Import Connect tokens
+- [`connectCreateConnector`](docs/sdks/connect/README.md#createconnector) - Create a connector
 - [`createApiKeys`](docs/sdks/vercel/README.md#createapikeys)
 - [`createObservabilityQuery`](docs/sdks/vercel/README.md#createobservabilityquery)
 - [`createSpeedInsightsToggle`](docs/sdks/vercel/README.md#createspeedinsightstoggle)
@@ -920,6 +919,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`marketplaceHeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig`](docs/sdks/marketplace/README.md#headinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationglobalconfig) - Get the data of a user-provided Global Config
 - [`marketplaceImportResource`](docs/sdks/marketplace/README.md#importresource) - Import Resource
 - [`marketplaceReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig`](docs/sdks/marketplace/README.md#replaceinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationglobalconfig) - Push data into a user-provided Global Config
+- [`marketplaceRevokeInstallationCredential`](docs/sdks/marketplace/README.md#revokeinstallationcredential) - Revoke Installation Credential
 - [`marketplaceRotateInstallationCredential`](docs/sdks/marketplace/README.md#rotateinstallationcredential) - Rotate Installation Credential
 - [`marketplaceSubmitBillingData`](docs/sdks/marketplace/README.md#submitbillingdata) - Submit Billing Data
 - [`marketplaceSubmitInvoice`](docs/sdks/marketplace/README.md#submitinvoice) - Submit Invoice
@@ -1259,7 +1259,7 @@ run();
 **Primary error:**
 * [`VercelError`](./src/models/vercelerror.ts): The base class for HTTP error responses.
 
-<details><summary>Less common errors (36)</summary>
+<details><summary>Less common errors (37)</summary>
 
 <br />
 
@@ -1297,6 +1297,7 @@ run();
 * [`DomainAlreadyRenewing`](./src/models/domainalreadyrenewing.ts): The domain is already renewing. Status code `400`. Applicable to 1 of 389 methods.*
 * [`DomainNotRenewable`](./src/models/domainnotrenewable.ts): The domain is not renewable. Status code `400`. Applicable to 1 of 389 methods.*
 * [`BoughtTooRecently`](./src/models/boughttoorecently.ts): The domain was bought too recently to determine verification status. Status code `400`. Applicable to 1 of 389 methods.*
+* [`ConnectError`](./src/models/connecterror.ts): Error response returned by a Connect API operation. Applicable to 1 of 389 methods.*
 * [`CreateApiKeysResponseResponseBody`](./src/models/createapikeysresponseresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 389 methods.*
 * [`CreateApiKeysResponse403ResponseBody`](./src/models/createapikeysresponse403responsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 389 methods.*
 * [`DomainCannotBeTransferedOutUntil`](./src/models/domaincannotbetransferedoutuntil.ts): The domain cannot be transfered out until the specified date. Status code `409`. Applicable to 1 of 389 methods.*

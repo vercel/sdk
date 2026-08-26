@@ -538,7 +538,9 @@ export type CustomEnvironment1 = {
   updatedAt: number;
 };
 
-export type CustomEnvironment = CustomEnvironment1 | CustomEnvironment2;
+export type CancelDeploymentCustomEnvironment =
+  | CustomEnvironment1
+  | CustomEnvironment2;
 
 export const OomReport = {
   OutOfMemory: "out-of-memory",
@@ -2126,8 +2128,8 @@ export function customEnvironment1FromJSON(
 }
 
 /** @internal */
-export const CustomEnvironment$inboundSchema: z.ZodType<
-  CustomEnvironment,
+export const CancelDeploymentCustomEnvironment$inboundSchema: z.ZodType<
+  CancelDeploymentCustomEnvironment,
   z.ZodTypeDef,
   unknown
 > = smartUnion([
@@ -2135,13 +2137,13 @@ export const CustomEnvironment$inboundSchema: z.ZodType<
   z.lazy(() => CustomEnvironment2$inboundSchema),
 ]);
 
-export function customEnvironmentFromJSON(
+export function cancelDeploymentCustomEnvironmentFromJSON(
   jsonString: string,
-): SafeParseResult<CustomEnvironment, SDKValidationError> {
+): SafeParseResult<CancelDeploymentCustomEnvironment, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CustomEnvironment$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CustomEnvironment' from JSON`,
+    (x) => CancelDeploymentCustomEnvironment$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentCustomEnvironment' from JSON`,
   );
 }
 

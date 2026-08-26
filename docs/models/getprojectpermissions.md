@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectPermissions } from "@vercel/sdk/models/getprojectinternalroutes.js";
+import { GetProjectPermissions } from "@vercel/sdk/models/getprojectinternalroutes1.js";
 
 let value: GetProjectPermissions = {};
 ```
@@ -206,7 +206,6 @@ let value: GetProjectPermissions = {};
 | `webAnalyticsPlan`                           | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `webhook`                                    | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `webhookEvent`                               | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
-| `workflowRunData`                            | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `aliasProject`                               | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `aliasProtectionBypass`                      | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `bulkRedirects`                              | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
@@ -289,3 +288,4 @@ let value: GetProjectPermissions = {};
 | `vercelAuth`                                 | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `vercelRun`                                  | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `webAnalytics`                               | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
+| `workflowRunData`                            | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |

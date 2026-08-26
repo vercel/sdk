@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsToProjectsResponse200ApplicationJSONResponseBodyPreset } from "@vercel/sdk/models/getprojectscontenthint17.js";
+import { GetProjectsToProjectsResponse200ApplicationJSONResponseBodyPreset } from "@vercel/sdk/models/getprojectsresponsebodyprojectstarget.js";
 
 let value: GetProjectsToProjectsResponse200ApplicationJSONResponseBodyPreset =
   "all-custom";

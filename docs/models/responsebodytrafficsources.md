@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyTrafficSources } from "@vercel/sdk/models/responsebodymanagedrules.js";
+import { ResponseBodyTrafficSources } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson1action.js";
 
 let value: ResponseBodyTrafficSources = {
   active: true,

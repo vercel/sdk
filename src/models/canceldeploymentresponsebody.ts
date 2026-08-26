@@ -22,6 +22,8 @@ import {
   Builds$inboundSchema,
   CancelDeploymentCreator,
   CancelDeploymentCreator$inboundSchema,
+  CancelDeploymentCustomEnvironment,
+  CancelDeploymentCustomEnvironment$inboundSchema,
   CancelDeploymentGitSource,
   CancelDeploymentGitSource$inboundSchema,
   CancelDeploymentNodeVersion,
@@ -52,8 +54,6 @@ import {
   ChecksState$inboundSchema,
   Crons,
   Crons$inboundSchema,
-  CustomEnvironment,
-  CustomEnvironment$inboundSchema,
   Functions,
   Functions$inboundSchema,
   Images,
@@ -763,7 +763,7 @@ export type CancelDeploymentResponseBody = {
    */
   previewCommentsEnabled?: boolean | undefined;
   ttyBuildLogs?: boolean | undefined;
-  customEnvironment?: CustomEnvironment | undefined;
+  customEnvironment?: CancelDeploymentCustomEnvironment | undefined;
   oomReport?: OomReport | undefined;
   readyStateReason?: string | undefined;
   /**
@@ -1909,7 +1909,9 @@ export const CancelDeploymentResponseBody$inboundSchema: z.ZodType<
   userAliases: types.optional(z.array(types.string())),
   previewCommentsEnabled: types.optional(types.boolean()),
   ttyBuildLogs: types.optional(types.boolean()),
-  customEnvironment: types.optional(CustomEnvironment$inboundSchema),
+  customEnvironment: types.optional(
+    CancelDeploymentCustomEnvironment$inboundSchema,
+  ),
   oomReport: types.optional(OomReport$inboundSchema),
   readyStateReason: types.optional(types.string()),
   id: types.string(),

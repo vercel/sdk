@@ -58,6 +58,7 @@ const value: models.CountPageviewsData1 = {
   cacheHitLevel: "<value>",
   cacheApi: "<value>",
   cacheReason: "<value>",
+  pprState: "<value>",
   clientIp: "<value>",
   clientIpCountry: "<value>",
   clientUserAgent: "<value>",

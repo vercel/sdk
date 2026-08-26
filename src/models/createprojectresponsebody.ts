@@ -85,6 +85,8 @@ import {
   CreateProjectStaticIps$inboundSchema,
   CreateProjectTargets,
   CreateProjectTargets$inboundSchema,
+  CreateProjectTier,
+  CreateProjectTier$inboundSchema,
   CreateProjectTrustedIps,
   CreateProjectTrustedIps$inboundSchema,
   CreateProjectTrustedSources,
@@ -107,14 +109,18 @@ import {
   ProtectionConfig$inboundSchema,
   RollingRelease,
   RollingRelease$inboundSchema,
+  RouteAction,
+  RouteAction$inboundSchema,
   RouteHas,
   RouteHas$inboundSchema,
-  RouteMitigate,
-  RouteMitigate$inboundSchema,
   UsageStatus,
   UsageStatus$inboundSchema,
-} from "./routemitigate.js";
+} from "./routeaction.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type RouteMitigate = {
+  action: RouteAction;
+};
 
 export type Route2 = {
   has: Array<RouteHas>;
@@ -417,7 +423,7 @@ export type CreateProjectResponseBody = {
    * Project shape. `null` on a rule list clears the project's override for that rule type (fall back to team for every env); omitting is equivalent. Setting `deploymentPolicy` itself to `null` clears every override at once. Kept structurally distinct from {@link TeamDeploymentPolicy} so the two storage locations don't share a type by accident.
    */
   deploymentPolicy?: CreateProjectDeploymentPolicy | null | undefined;
-  tier?: string | undefined;
+  tier?: CreateProjectTier | undefined;
   usageStatus?: UsageStatus | undefined;
   features?: Features | undefined;
   v0?: boolean | undefined;
@@ -432,10 +438,29 @@ export type CreateProjectResponseBody = {
 };
 
 /** @internal */
+export const RouteMitigate$inboundSchema: z.ZodType<
+  RouteMitigate,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  action: RouteAction$inboundSchema,
+});
+
+export function routeMitigateFromJSON(
+  jsonString: string,
+): SafeParseResult<RouteMitigate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RouteMitigate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RouteMitigate' from JSON`,
+  );
+}
+
+/** @internal */
 export const Route2$inboundSchema: z.ZodType<Route2, z.ZodTypeDef, unknown> = z
   .object({
     has: z.array(RouteHas$inboundSchema),
-    mitigate: RouteMitigate$inboundSchema,
+    mitigate: z.lazy(() => RouteMitigate$inboundSchema),
     src: types.optional(types.string()),
   });
 
@@ -1121,7 +1146,7 @@ export const CreateProjectResponseBody$inboundSchema: z.ZodType<
   oidcTokenConfig: types.optional(CreateProjectOidcTokenConfig$inboundSchema),
   deploymentPolicy: z.nullable(CreateProjectDeploymentPolicy$inboundSchema)
     .optional(),
-  tier: types.optional(types.string()),
+  tier: types.optional(CreateProjectTier$inboundSchema),
   usageStatus: types.optional(UsageStatus$inboundSchema),
   features: types.optional(Features$inboundSchema),
   v0: types.optional(types.boolean()),

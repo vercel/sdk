@@ -5,7 +5,7 @@
 ```typescript
 import {
   CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesTrafficSourcesAction,
-} from "@vercel/sdk/models/routemitigate.js";
+} from "@vercel/sdk/models/routeaction.js";
 
 let value:
   CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesTrafficSourcesAction =

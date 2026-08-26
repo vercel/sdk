@@ -57,6 +57,7 @@ let value: AggregateEventsData2 = {
   cacheHitLevel: "<value>",
   cacheApi: "<value>",
   cacheReason: "<value>",
+  pprState: "<value>",
   clientIp: "<value>",
   clientIpCountry: "<value>",
   clientUserAgent: "<value>",
@@ -282,6 +283,7 @@ let value: AggregateEventsData2 = {
 | `cacheHitLevel`                        | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `cacheApi`                             | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `cacheReason`                          | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `pprState`                             | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `clientIp`                             | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `clientIpCountry`                      | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `clientUserAgent`                      | *string*                               | :heavy_check_mark:                     | N/A                                    |

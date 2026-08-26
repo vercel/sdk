@@ -38,20 +38,17 @@ export type Source3 = {
   provider: SourceProvider;
 };
 
-export type CreateProjectCheckSource2 = {
+export type Source2 = {
   kind: string;
   webhookId?: string | undefined;
 };
 
-export type CreateProjectCheckSource1 = {
+export type Source1 = {
   kind?: string | undefined;
   externalResourceId?: string | undefined;
 };
 
-export type CreateProjectCheckSource =
-  | Source3
-  | CreateProjectCheckSource2
-  | CreateProjectCheckSource1;
+export type CreateProjectCheckSource = Source3 | Source2 | Source1;
 
 export type CreateProjectCheckRequestBody = {
   name: string;
@@ -59,11 +56,7 @@ export type CreateProjectCheckRequestBody = {
   requires?: Requires | undefined;
   targets?: Array<string> | undefined;
   blocks?: Blocks | undefined;
-  source?:
-    | Source3
-    | CreateProjectCheckSource2
-    | CreateProjectCheckSource1
-    | undefined;
+  source?: Source3 | Source2 | Source1 | undefined;
   timeout?: number | undefined;
 };
 
@@ -104,12 +97,12 @@ export type CreateProjectCheckSource3 = {
   externalCheckName: string;
 };
 
-export type CreateProjectCheckSourceChecksV22 = {
+export type CreateProjectCheckSource2 = {
   kind: "webhook";
   webhookId?: string | undefined;
 };
 
-export type CreateProjectCheckSourceChecksV21 = {
+export type CreateProjectCheckSource1 = {
   kind: "integration";
   integrationId: string;
   integrationConfigurationId: string;
@@ -118,8 +111,8 @@ export type CreateProjectCheckSourceChecksV21 = {
 };
 
 export type CreateProjectCheckChecksV2Source =
-  | CreateProjectCheckSourceChecksV21
-  | CreateProjectCheckSourceChecksV22
+  | CreateProjectCheckSource1
+  | CreateProjectCheckSource2
   | CreateProjectCheckSource3;
 
 export const CreateProjectCheckBlocks = {
@@ -149,8 +142,8 @@ export type CreateProjectCheckResponseBody = {
   isRerequestable: boolean;
   requires: CreateProjectCheckRequires;
   source:
-    | CreateProjectCheckSourceChecksV21
-    | CreateProjectCheckSourceChecksV22
+    | CreateProjectCheckSource1
+    | CreateProjectCheckSource2
     | CreateProjectCheckSource3;
   blocks: CreateProjectCheckBlocks;
   targets: Array<string>;
@@ -198,58 +191,50 @@ export function source3ToJSON(source3: Source3): string {
 }
 
 /** @internal */
-export type CreateProjectCheckSource2$Outbound = {
+export type Source2$Outbound = {
   kind: string;
   webhookId?: string | undefined;
 };
 
 /** @internal */
-export const CreateProjectCheckSource2$outboundSchema: z.ZodType<
-  CreateProjectCheckSource2$Outbound,
+export const Source2$outboundSchema: z.ZodType<
+  Source2$Outbound,
   z.ZodTypeDef,
-  CreateProjectCheckSource2
+  Source2
 > = z.object({
   kind: z.string(),
   webhookId: z.string().optional(),
 });
 
-export function createProjectCheckSource2ToJSON(
-  createProjectCheckSource2: CreateProjectCheckSource2,
-): string {
-  return JSON.stringify(
-    CreateProjectCheckSource2$outboundSchema.parse(createProjectCheckSource2),
-  );
+export function source2ToJSON(source2: Source2): string {
+  return JSON.stringify(Source2$outboundSchema.parse(source2));
 }
 
 /** @internal */
-export type CreateProjectCheckSource1$Outbound = {
+export type Source1$Outbound = {
   kind: string;
   externalResourceId?: string | undefined;
 };
 
 /** @internal */
-export const CreateProjectCheckSource1$outboundSchema: z.ZodType<
-  CreateProjectCheckSource1$Outbound,
+export const Source1$outboundSchema: z.ZodType<
+  Source1$Outbound,
   z.ZodTypeDef,
-  CreateProjectCheckSource1
+  Source1
 > = z.object({
   kind: z.string().default("integration"),
   externalResourceId: z.string().optional(),
 });
 
-export function createProjectCheckSource1ToJSON(
-  createProjectCheckSource1: CreateProjectCheckSource1,
-): string {
-  return JSON.stringify(
-    CreateProjectCheckSource1$outboundSchema.parse(createProjectCheckSource1),
-  );
+export function source1ToJSON(source1: Source1): string {
+  return JSON.stringify(Source1$outboundSchema.parse(source1));
 }
 
 /** @internal */
 export type CreateProjectCheckSource$Outbound =
   | Source3$Outbound
-  | CreateProjectCheckSource2$Outbound
-  | CreateProjectCheckSource1$Outbound;
+  | Source2$Outbound
+  | Source1$Outbound;
 
 /** @internal */
 export const CreateProjectCheckSource$outboundSchema: z.ZodType<
@@ -258,8 +243,8 @@ export const CreateProjectCheckSource$outboundSchema: z.ZodType<
   CreateProjectCheckSource
 > = smartUnion([
   z.lazy(() => Source3$outboundSchema),
-  z.lazy(() => CreateProjectCheckSource2$outboundSchema),
-  z.lazy(() => CreateProjectCheckSource1$outboundSchema),
+  z.lazy(() => Source2$outboundSchema),
+  z.lazy(() => Source1$outboundSchema),
 ]);
 
 export function createProjectCheckSourceToJSON(
@@ -277,11 +262,7 @@ export type CreateProjectCheckRequestBody$Outbound = {
   requires: string;
   targets?: Array<string> | undefined;
   blocks: string;
-  source?:
-    | Source3$Outbound
-    | CreateProjectCheckSource2$Outbound
-    | CreateProjectCheckSource1$Outbound
-    | undefined;
+  source?: Source3$Outbound | Source2$Outbound | Source1$Outbound | undefined;
   timeout: number;
 };
 
@@ -298,8 +279,8 @@ export const CreateProjectCheckRequestBody$outboundSchema: z.ZodType<
   blocks: Blocks$outboundSchema.default("deployment-alias"),
   source: smartUnion([
     z.lazy(() => Source3$outboundSchema),
-    z.lazy(() => CreateProjectCheckSource2$outboundSchema),
-    z.lazy(() => CreateProjectCheckSource1$outboundSchema),
+    z.lazy(() => Source2$outboundSchema),
+    z.lazy(() => Source1$outboundSchema),
   ]).optional(),
   timeout: z.number().default(300),
 });
@@ -379,8 +360,8 @@ export function createProjectCheckSource3FromJSON(
 }
 
 /** @internal */
-export const CreateProjectCheckSourceChecksV22$inboundSchema: z.ZodType<
-  CreateProjectCheckSourceChecksV22,
+export const CreateProjectCheckSource2$inboundSchema: z.ZodType<
+  CreateProjectCheckSource2,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -388,19 +369,19 @@ export const CreateProjectCheckSourceChecksV22$inboundSchema: z.ZodType<
   webhookId: types.optional(types.string()),
 });
 
-export function createProjectCheckSourceChecksV22FromJSON(
+export function createProjectCheckSource2FromJSON(
   jsonString: string,
-): SafeParseResult<CreateProjectCheckSourceChecksV22, SDKValidationError> {
+): SafeParseResult<CreateProjectCheckSource2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreateProjectCheckSourceChecksV22$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateProjectCheckSourceChecksV22' from JSON`,
+    (x) => CreateProjectCheckSource2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectCheckSource2' from JSON`,
   );
 }
 
 /** @internal */
-export const CreateProjectCheckSourceChecksV21$inboundSchema: z.ZodType<
-  CreateProjectCheckSourceChecksV21,
+export const CreateProjectCheckSource1$inboundSchema: z.ZodType<
+  CreateProjectCheckSource1,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -411,13 +392,13 @@ export const CreateProjectCheckSourceChecksV21$inboundSchema: z.ZodType<
   externalResourceId: types.optional(types.string()),
 });
 
-export function createProjectCheckSourceChecksV21FromJSON(
+export function createProjectCheckSource1FromJSON(
   jsonString: string,
-): SafeParseResult<CreateProjectCheckSourceChecksV21, SDKValidationError> {
+): SafeParseResult<CreateProjectCheckSource1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreateProjectCheckSourceChecksV21$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateProjectCheckSourceChecksV21' from JSON`,
+    (x) => CreateProjectCheckSource1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectCheckSource1' from JSON`,
   );
 }
 
@@ -427,8 +408,8 @@ export const CreateProjectCheckChecksV2Source$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => CreateProjectCheckSourceChecksV21$inboundSchema),
-  z.lazy(() => CreateProjectCheckSourceChecksV22$inboundSchema),
+  z.lazy(() => CreateProjectCheckSource1$inboundSchema),
+  z.lazy(() => CreateProjectCheckSource2$inboundSchema),
   z.lazy(() => CreateProjectCheckSource3$inboundSchema),
 ]);
 
@@ -464,8 +445,8 @@ export const CreateProjectCheckResponseBody$inboundSchema: z.ZodType<
   isRerequestable: types.boolean(),
   requires: CreateProjectCheckRequires$inboundSchema,
   source: z.union([
-    z.lazy(() => CreateProjectCheckSourceChecksV21$inboundSchema),
-    z.lazy(() => CreateProjectCheckSourceChecksV22$inboundSchema),
+    z.lazy(() => CreateProjectCheckSource1$inboundSchema),
+    z.lazy(() => CreateProjectCheckSource2$inboundSchema),
     z.lazy(() => CreateProjectCheckSource3$inboundSchema),
   ]),
   blocks: CreateProjectCheckBlocks$inboundSchema,

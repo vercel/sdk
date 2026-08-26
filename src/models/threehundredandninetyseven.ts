@@ -337,6 +337,8 @@ export const UserEventType = {
   GlobalConfigTransferOut: "global-config-transfer-out",
   GlobalConfigUpdated: "global-config-updated",
   InstantRollbackCreated: "instant-rollback-created",
+  IntegrationConfigurationCredentialRevoked:
+    "integration-configuration-credential-revoked",
   IntegrationConfigurationCredentialRotated:
     "integration-configuration-credential-rotated",
   IntegrationConfigurationOwnerChanged:
@@ -856,7 +858,7 @@ export type UserEventPrincipalType = ClosedEnum<typeof UserEventPrincipalType>;
 /**
  * Metadata for {@link principalId}.
  */
-export type Two = {
+export type Principal2 = {
   type: UserEventPrincipalType;
   /**
    * The backing Vercel App ID. When absent, defaults to `clientId`.
@@ -877,7 +879,7 @@ export type PrincipalType = ClosedEnum<typeof PrincipalType>;
 /**
  * Metadata for {@link principalId}.
  */
-export type One = {
+export type Principal1 = {
   type?: PrincipalType | undefined;
   avatar: string;
   email: string;
@@ -886,7 +888,7 @@ export type One = {
   username: string;
 };
 
-export type Principal = One | Two | Three | Four;
+export type Principal = Principal1 | Principal2 | Three | Four;
 
 export const UserEventVia4Type = {
   System: "system",
@@ -1236,7 +1238,7 @@ export type FourHundredAndThirtySeven = {
   reqUrl?: string | undefined;
 };
 
-export type PayloadValues = {
+export type UserEventPayloadValues = {
   value: string;
   wildcards: boolean;
 };
@@ -1246,7 +1248,7 @@ export type PayloadValues = {
  */
 export type PayloadClaims = {
   name: string;
-  values: Array<PayloadValues>;
+  values: Array<UserEventPayloadValues>;
 };
 
 /**
@@ -1290,7 +1292,7 @@ export type PayloadBefore = {
   updatedAt: number;
 };
 
-export type UserEventPayloadValues = {
+export type UserEventPayload436Values = {
   value: string;
   wildcards: boolean;
 };
@@ -1300,7 +1302,7 @@ export type UserEventPayloadValues = {
  */
 export type UserEventPayloadClaims = {
   name: string;
-  values: Array<UserEventPayloadValues>;
+  values: Array<UserEventPayload436Values>;
 };
 
 /**
@@ -1359,7 +1361,7 @@ export type FourHundredAndThirtySix = {
   appName?: string | undefined;
 };
 
-export type Values = {
+export type PayloadValues = {
   value: string;
   wildcards: boolean;
 };
@@ -1369,7 +1371,7 @@ export type Values = {
  */
 export type Claims = {
   name: string;
-  values: Array<Values>;
+  values: Array<PayloadValues>;
 };
 
 /**
@@ -2285,21 +2287,24 @@ export const UserEventPrincipalType$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(UserEventPrincipalType);
 
 /** @internal */
-export const Two$inboundSchema: z.ZodType<Two, z.ZodTypeDef, unknown> = z
-  .object({
-    type: UserEventPrincipalType$inboundSchema,
-    id: types.optional(types.string()),
-    clientId: types.string(),
-    name: types.string(),
-  });
+export const Principal2$inboundSchema: z.ZodType<
+  Principal2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: UserEventPrincipalType$inboundSchema,
+  id: types.optional(types.string()),
+  clientId: types.string(),
+  name: types.string(),
+});
 
-export function twoFromJSON(
+export function principal2FromJSON(
   jsonString: string,
-): SafeParseResult<Two, SDKValidationError> {
+): SafeParseResult<Principal2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Two$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Two' from JSON`,
+    (x) => Principal2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Principal2' from JSON`,
   );
 }
 
@@ -2309,23 +2314,26 @@ export const PrincipalType$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(PrincipalType);
 
 /** @internal */
-export const One$inboundSchema: z.ZodType<One, z.ZodTypeDef, unknown> = z
-  .object({
-    type: types.optional(PrincipalType$inboundSchema),
-    avatar: types.string(),
-    email: types.string(),
-    slug: types.optional(types.string()),
-    uid: types.string(),
-    username: types.string(),
-  });
+export const Principal1$inboundSchema: z.ZodType<
+  Principal1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.optional(PrincipalType$inboundSchema),
+  avatar: types.string(),
+  email: types.string(),
+  slug: types.optional(types.string()),
+  uid: types.string(),
+  username: types.string(),
+});
 
-export function oneFromJSON(
+export function principal1FromJSON(
   jsonString: string,
-): SafeParseResult<One, SDKValidationError> {
+): SafeParseResult<Principal1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => One$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'One' from JSON`,
+    (x) => Principal1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Principal1' from JSON`,
   );
 }
 
@@ -2335,8 +2343,8 @@ export const Principal$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([
-  z.lazy(() => One$inboundSchema),
-  z.lazy(() => Two$inboundSchema),
+  z.lazy(() => Principal1$inboundSchema),
+  z.lazy(() => Principal2$inboundSchema),
   z.lazy(() => Three$inboundSchema),
   z.lazy(() => Four$inboundSchema),
 ]);
@@ -3051,8 +3059,8 @@ export function fourHundredAndThirtySevenFromJSON(
 }
 
 /** @internal */
-export const PayloadValues$inboundSchema: z.ZodType<
-  PayloadValues,
+export const UserEventPayloadValues$inboundSchema: z.ZodType<
+  UserEventPayloadValues,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -3060,13 +3068,13 @@ export const PayloadValues$inboundSchema: z.ZodType<
   wildcards: types.boolean(),
 });
 
-export function payloadValuesFromJSON(
+export function userEventPayloadValuesFromJSON(
   jsonString: string,
-): SafeParseResult<PayloadValues, SDKValidationError> {
+): SafeParseResult<UserEventPayloadValues, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PayloadValues$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PayloadValues' from JSON`,
+    (x) => UserEventPayloadValues$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventPayloadValues' from JSON`,
   );
 }
 
@@ -3077,7 +3085,7 @@ export const PayloadClaims$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   name: types.string(),
-  values: z.array(z.lazy(() => PayloadValues$inboundSchema)),
+  values: z.array(z.lazy(() => UserEventPayloadValues$inboundSchema)),
 });
 
 export function payloadClaimsFromJSON(
@@ -3140,8 +3148,8 @@ export function payloadBeforeFromJSON(
 }
 
 /** @internal */
-export const UserEventPayloadValues$inboundSchema: z.ZodType<
-  UserEventPayloadValues,
+export const UserEventPayload436Values$inboundSchema: z.ZodType<
+  UserEventPayload436Values,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -3149,13 +3157,13 @@ export const UserEventPayloadValues$inboundSchema: z.ZodType<
   wildcards: types.boolean(),
 });
 
-export function userEventPayloadValuesFromJSON(
+export function userEventPayload436ValuesFromJSON(
   jsonString: string,
-): SafeParseResult<UserEventPayloadValues, SDKValidationError> {
+): SafeParseResult<UserEventPayload436Values, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UserEventPayloadValues$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserEventPayloadValues' from JSON`,
+    (x) => UserEventPayload436Values$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventPayload436Values' from JSON`,
   );
 }
 
@@ -3166,7 +3174,7 @@ export const UserEventPayloadClaims$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   name: types.string(),
-  values: z.array(z.lazy(() => UserEventPayloadValues$inboundSchema)),
+  values: z.array(z.lazy(() => UserEventPayload436Values$inboundSchema)),
 });
 
 export function userEventPayloadClaimsFromJSON(
@@ -3250,19 +3258,22 @@ export function fourHundredAndThirtySixFromJSON(
 }
 
 /** @internal */
-export const Values$inboundSchema: z.ZodType<Values, z.ZodTypeDef, unknown> = z
-  .object({
-    value: types.string(),
-    wildcards: types.boolean(),
-  });
+export const PayloadValues$inboundSchema: z.ZodType<
+  PayloadValues,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  value: types.string(),
+  wildcards: types.boolean(),
+});
 
-export function valuesFromJSON(
+export function payloadValuesFromJSON(
   jsonString: string,
-): SafeParseResult<Values, SDKValidationError> {
+): SafeParseResult<PayloadValues, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Values$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Values' from JSON`,
+    (x) => PayloadValues$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PayloadValues' from JSON`,
   );
 }
 
@@ -3270,7 +3281,7 @@ export function valuesFromJSON(
 export const Claims$inboundSchema: z.ZodType<Claims, z.ZodTypeDef, unknown> = z
   .object({
     name: types.string(),
-    values: z.array(z.lazy(() => Values$inboundSchema)),
+    values: z.array(z.lazy(() => PayloadValues$inboundSchema)),
   });
 
 export function claimsFromJSON(

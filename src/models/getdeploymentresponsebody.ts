@@ -25,8 +25,6 @@ import {
   GetDeploymentResponseBodyChecksState$inboundSchema,
   GetDeploymentResponseBodyCreator,
   GetDeploymentResponseBodyCreator$inboundSchema,
-  GetDeploymentResponseBodyCustomEnvironment,
-  GetDeploymentResponseBodyCustomEnvironment$inboundSchema,
   GetDeploymentResponseBodyImages,
   GetDeploymentResponseBodyImages$inboundSchema,
   GetDeploymentResponseBodyIntegrations,
@@ -47,6 +45,8 @@ import {
   ResponseBodyAliasError$inboundSchema,
   ResponseBodyAliasWarning,
   ResponseBodyAliasWarning$inboundSchema,
+  ResponseBodyCustomEnvironment,
+  ResponseBodyCustomEnvironment$inboundSchema,
   ResponseBodyProjectSettings,
   ResponseBodyProjectSettings$inboundSchema,
   ResponseBodyReadyState,
@@ -1560,7 +1560,7 @@ export type GetDeploymentResponseBody2 = {
    */
   previewCommentsEnabled?: boolean | undefined;
   ttyBuildLogs?: boolean | undefined;
-  customEnvironment?: GetDeploymentResponseBodyCustomEnvironment | undefined;
+  customEnvironment?: ResponseBodyCustomEnvironment | undefined;
   oomReport?: GetDeploymentResponseBodyOomReport | undefined;
   readyStateReason?: string | undefined;
   /**
@@ -4823,7 +4823,7 @@ export const GetDeploymentResponseBody2$inboundSchema: z.ZodType<
   previewCommentsEnabled: types.optional(types.boolean()),
   ttyBuildLogs: types.optional(types.boolean()),
   customEnvironment: types.optional(
-    GetDeploymentResponseBodyCustomEnvironment$inboundSchema,
+    ResponseBodyCustomEnvironment$inboundSchema,
   ),
   oomReport: types.optional(GetDeploymentResponseBodyOomReport$inboundSchema),
   readyStateReason: types.optional(types.string()),

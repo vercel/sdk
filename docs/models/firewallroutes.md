@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { FirewallRoutes } from "@vercel/sdk/models/responsebodymanagedrules.js";
+import { FirewallRoutes } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson1action.js";
 
 let value: FirewallRoutes = {};
 ```
@@ -13,6 +13,7 @@ let value: FirewallRoutes = {};
 | Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  |
 | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
 | `src`                                                                                        | *models.Src*                                                                                 | :heavy_minus_sign:                                                                           | N/A                                                                                          |
+| `tierRequirement`                                                                            | [models.TierRequirement](../models/tierrequirement.md)                                       | :heavy_minus_sign:                                                                           | N/A                                                                                          |
 | `has`                                                                                        | [models.GetProjectsResponseBodyHas](../models/getprojectsresponsebodyhas.md)[]               | :heavy_minus_sign:                                                                           | N/A                                                                                          |
 | `missing`                                                                                    | [models.GetProjectsResponseBodyMissing](../models/getprojectsresponsebodymissing.md)[]       | :heavy_minus_sign:                                                                           | N/A                                                                                          |
 | `dest`                                                                                       | *string*                                                                                     | :heavy_minus_sign:                                                                           | N/A                                                                                          |

@@ -8,6 +8,7 @@
 * [getAccountInfo](#getaccountinfo) - Get Account Information
 * [getMember](#getmember) - Get Member Information
 * [rotateInstallationCredential](#rotateinstallationcredential) - Rotate Installation Credential
+* [revokeInstallationCredential](#revokeinstallationcredential) - Revoke Installation Credential
 * [createEvent](#createevent) - Create Event
 * [getIntegrationResources](#getintegrationresources) - Get Integration Resources
 * [getIntegrationResource](#getintegrationresource) - Get Integration Resource
@@ -317,6 +318,79 @@ run();
 ### Response
 
 **Promise\<[models.RotateInstallationCredentialResponseBody](../../models/rotateinstallationcredentialresponsebody.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
+
+## revokeInstallationCredential
+
+Retires a superseded installation credential, so a partner can complete a rotation it started with `POST /credentials/rotate` — the leaked credential stops working without the customer having to reinstall. Authenticated by a live installation credential plus the integration's client secret. The credential to retire is named in the body rather than being the one that authenticates, so the ordinary flow is: rotate, store the replacement, then authenticate with the replacement and revoke the old one. Refuses to retire an installation's last live credential. Rotation exists so remediation is not customer-visible; revoking the only credential would undo that and leave the install needing a reinstall.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="revoke-installation-credential" method="post" path="/v1/installations/{integrationConfigurationId}/credentials/revoke" -->
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await vercel.marketplace.revokeInstallationCredential({
+    integrationConfigurationId: "<id>",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import { marketplaceRevokeInstallationCredential } from "@vercel/sdk/funcs/marketplaceRevokeInstallationCredential.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await marketplaceRevokeInstallationCredential(vercel, {
+    integrationConfigurationId: "<id>",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("marketplaceRevokeInstallationCredential failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.RevokeInstallationCredentialRequest](../../models/revokeinstallationcredentialrequest.md)                                                                              | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.RevokeInstallationCredentialResponseBody](../../models/revokeinstallationcredentialresponsebody.md)\>**
 
 ### Errors
 

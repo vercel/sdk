@@ -475,9 +475,9 @@ export type PatchTeamResourceConfig = {
 
 export type PatchTeamRequestBody = {
   /**
-   * The hash value of an uploaded image.
+   * The hash value of an uploaded image, or `null` to clear the avatar.
    */
-  avatar?: string | undefined;
+  avatar?: string | null | undefined;
   /**
    * A short text that describes the team.
    */
@@ -1556,7 +1556,7 @@ export function patchTeamResourceConfigToJSON(
 
 /** @internal */
 export type PatchTeamRequestBody$Outbound = {
-  avatar?: string | undefined;
+  avatar?: string | null | undefined;
   description?: string | undefined;
   emailDomain?: string | null | undefined;
   name?: string | undefined;
@@ -1600,7 +1600,7 @@ export const PatchTeamRequestBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PatchTeamRequestBody
 > = z.object({
-  avatar: z.string().optional(),
+  avatar: z.nullable(z.string()).optional(),
   description: z.string().optional(),
   emailDomain: z.nullable(z.string()).optional(),
   name: z.string().optional(),

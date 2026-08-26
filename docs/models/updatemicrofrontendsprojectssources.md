@@ -5,7 +5,7 @@ Customer-configurable deployment sources. Every deploy classifies to exactly one
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsProjectsSources } from "@vercel/sdk/models/updatemicrofrontendsaction.js";
+import { UpdateMicrofrontendsProjectsSources } from "@vercel/sdk/models/updatemicrofrontendsinternalroutes.js";
 
 let value: UpdateMicrofrontendsProjectsSources = "cli";
 ```

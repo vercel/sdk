@@ -5,7 +5,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectDeploymentSources } from "@vercel/sdk/models/routemitigate.js";
+import { CreateProjectDeploymentSources } from "@vercel/sdk/models/routeaction.js";
 
 let value: CreateProjectDeploymentSources = {
   sources: [

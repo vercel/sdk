@@ -38,7 +38,14 @@ export type GetMicrofrontendsInGroupCreator3 = {
 };
 
 export type GetMicrofrontendsInGroupCreatorApp = {
+  /**
+   * The internal ID of the Vercel App backing this principal.
+   */
   id: string;
+  /**
+   * The protocol-facing OAuth client ID. This may differ from {@link id} when Client ID Metadata Documents (CIMD) are used.
+   */
+  clientId?: string | undefined;
 };
 
 export type GetMicrofrontendsInGroupCreator2 = {
@@ -60,7 +67,14 @@ export type GetMicrofrontendsInGroupVia2 = {
 };
 
 export type GetMicrofrontendsInGroupViaApp = {
+  /**
+   * The internal ID of the Vercel App backing this principal.
+   */
   id: string;
+  /**
+   * The protocol-facing OAuth client ID. This may differ from {@link id} when Client ID Metadata Documents (CIMD) are used.
+   */
+  clientId?: string | undefined;
 };
 
 /**
@@ -1962,6 +1976,7 @@ export const GetMicrofrontendsInGroupCreatorApp$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: types.string(),
+  clientId: types.optional(types.string()),
 });
 
 export function getMicrofrontendsInGroupCreatorAppFromJSON(
@@ -2045,6 +2060,7 @@ export const GetMicrofrontendsInGroupViaApp$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: types.string(),
+  clientId: types.optional(types.string()),
 });
 
 export function getMicrofrontendsInGroupViaAppFromJSON(

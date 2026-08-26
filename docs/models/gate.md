@@ -5,7 +5,7 @@ Automated gating configuration. Omitted (the default) means no gating is configu
 ## Example Usage
 
 ```typescript
-import { Gate } from "@vercel/sdk/models/routemitigate.js";
+import { Gate } from "@vercel/sdk/models/routeaction.js";
 
 let value: Gate = {
   enabled: false,

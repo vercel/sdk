@@ -3,10 +3,10 @@
 
 ## Supported Types
 
-### `models.GetMicrofrontendsInGroupEnvironments1`
+### `models.GetMicrofrontendsInGroupEnvironmentsMicrofrontends1`
 
 ```typescript
-const value: models.GetMicrofrontendsInGroupEnvironments1 = {
+const value: models.GetMicrofrontendsInGroupEnvironmentsMicrofrontends1 = {
   type: "system",
   target: "production",
 };

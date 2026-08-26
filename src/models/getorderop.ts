@@ -538,7 +538,7 @@ export type GetOrder11 = {
 
 export type Error1 = GetOrder11 | GetOrder12 | GetOrder13 | One4 | One5 | One6;
 
-export type ErrorT =
+export type GetOrderError =
   | Error2
   | GetOrder11
   | GetOrder12
@@ -2156,26 +2156,29 @@ export function error1FromJSON(
 }
 
 /** @internal */
-export const ErrorT$inboundSchema: z.ZodType<ErrorT, z.ZodTypeDef, unknown> =
-  smartUnion([
-    z.lazy(() => Error2$inboundSchema),
-    z.union([
-      z.lazy(() => GetOrder11$inboundSchema),
-      z.lazy(() => GetOrder12$inboundSchema),
-      z.lazy(() => GetOrder13$inboundSchema),
-      z.lazy(() => One4$inboundSchema),
-      z.lazy(() => One5$inboundSchema),
-      z.lazy(() => One6$inboundSchema),
-    ]),
-  ]);
+export const GetOrderError$inboundSchema: z.ZodType<
+  GetOrderError,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => Error2$inboundSchema),
+  z.union([
+    z.lazy(() => GetOrder11$inboundSchema),
+    z.lazy(() => GetOrder12$inboundSchema),
+    z.lazy(() => GetOrder13$inboundSchema),
+    z.lazy(() => One4$inboundSchema),
+    z.lazy(() => One5$inboundSchema),
+    z.lazy(() => One6$inboundSchema),
+  ]),
+]);
 
-export function errorFromJSON(
+export function getOrderErrorFromJSON(
   jsonString: string,
-): SafeParseResult<ErrorT, SDKValidationError> {
+): SafeParseResult<GetOrderError, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ErrorT$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ErrorT' from JSON`,
+    (x) => GetOrderError$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetOrderError' from JSON`,
   );
 }
 

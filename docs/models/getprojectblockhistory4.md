@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectBlockHistory4 } from "@vercel/sdk/models/getprojectinternalroutes.js";
+import { GetProjectBlockHistory4 } from "@vercel/sdk/models/getprojectinternalroutes1.js";
 
 let value: GetProjectBlockHistory4 = {
   action: "route-unblocked",

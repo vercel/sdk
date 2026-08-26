@@ -1,17 +1,27 @@
 # CreateDrainSource1
 
-## Example Usage
+
+## Supported Types
+
+### `models.CreateDrain11`
 
 ```typescript
-import { CreateDrainSource1 } from "@vercel/sdk/models/createdrainop.js";
-
-let value: CreateDrainSource1 = {
-  kind: "self-served",
+const value: models.CreateDrain11 = {
+  externalResourceId: "<id>",
 };
 ```
 
-## Fields
+### `models.One2`
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `kind`             | *"self-served"*    | :heavy_check_mark: | N/A                |
+```typescript
+const value: models.One2 = {
+  resourceId: "<id>",
+};
+```
+
+### `models.One3`
+
+```typescript
+const value: models.One3 = {};
+```
+

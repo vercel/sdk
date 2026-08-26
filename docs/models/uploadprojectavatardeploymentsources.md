@@ -5,7 +5,7 @@
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarDeploymentSources } from "@vercel/sdk/models/uploadprojectavatarvaluepreviousvalue.js";
+import { UploadProjectAvatarDeploymentSources } from "@vercel/sdk/models/uploadprojectavataraction.js";
 
 let value: UploadProjectAvatarDeploymentSources = {
   sources: [],

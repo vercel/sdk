@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyMissing } from "@vercel/sdk/models/responsebodymanagedrules.js";
+import { GetProjectsResponseBodyMissing } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson1action.js";
 
 let value: GetProjectsResponseBodyMissing = {
   type: "cookie",

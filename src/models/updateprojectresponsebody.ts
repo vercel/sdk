@@ -258,13 +258,13 @@ export type UpdateProjectEnvironmentsProjectsResponse200Target = ClosedEnum<
   typeof UpdateProjectEnvironmentsProjectsResponse200Target
 >;
 
-export type UpdateProjectEnvironmentsProjectsResponse2001 = {
+export type UpdateProjectEnvironmentsProjectsResponse1 = {
   type: "system";
   target: UpdateProjectEnvironmentsProjectsResponse200Target;
 };
 
 export type UpdateProjectEnvironments =
-  | UpdateProjectEnvironmentsProjectsResponse2001
+  | UpdateProjectEnvironmentsProjectsResponse1
   | UpdateProjectEnvironmentsProjectsResponse2002;
 
 /**
@@ -278,7 +278,7 @@ export type UpdateProjectGitSources = {
   >;
   enabled: boolean;
   environments: Array<
-    | UpdateProjectEnvironmentsProjectsResponse2001
+    | UpdateProjectEnvironmentsProjectsResponse1
     | UpdateProjectEnvironmentsProjectsResponse2002
   >;
 };
@@ -314,13 +314,13 @@ export type UpdateProjectEnvironmentsProjectsResponseTarget = ClosedEnum<
   typeof UpdateProjectEnvironmentsProjectsResponseTarget
 >;
 
-export type UpdateProjectEnvironmentsProjectsResponse1 = {
+export type UpdateProjectEnvironmentsProjectsResponse2001 = {
   type: "system";
   target: UpdateProjectEnvironmentsProjectsResponseTarget;
 };
 
 export type UpdateProjectProjectsEnvironments =
-  | UpdateProjectEnvironmentsProjectsResponse1
+  | UpdateProjectEnvironmentsProjectsResponse2001
   | UpdateProjectEnvironmentsProjectsResponse2;
 
 /**
@@ -330,7 +330,7 @@ export type UpdateProjectDeploymentSources = {
   sources: Array<UpdateProjectProjectsSources>;
   enabled: boolean;
   environments: Array<
-    | UpdateProjectEnvironmentsProjectsResponse1
+    | UpdateProjectEnvironmentsProjectsResponse2001
     | UpdateProjectEnvironmentsProjectsResponse2
   >;
 };
@@ -342,6 +342,12 @@ export type UpdateProjectProjectsDeploymentPolicy = {
   gitSources?: Array<UpdateProjectGitSources> | null | undefined;
   deploymentSources?: Array<UpdateProjectDeploymentSources> | null | undefined;
 };
+
+export const UpdateProjectTier = {
+  Advanced: "advanced",
+  Critical: "critical",
+} as const;
+export type UpdateProjectTier = ClosedEnum<typeof UpdateProjectTier>;
 
 /**
  * Billing mode. Always 'flat' for flat-rate projects.
@@ -844,7 +850,7 @@ export type UpdateProjectResponseBody = {
    * Project shape. `null` on a rule list clears the project's override for that rule type (fall back to team for every env); omitting is equivalent. Setting `deploymentPolicy` itself to `null` clears every override at once. Kept structurally distinct from {@link TeamDeploymentPolicy} so the two storage locations don't share a type by accident.
    */
   deploymentPolicy?: UpdateProjectProjectsDeploymentPolicy | null | undefined;
-  tier?: string | undefined;
+  tier?: UpdateProjectTier | undefined;
   usageStatus?: UpdateProjectUsageStatus | undefined;
   features?: UpdateProjectFeatures | undefined;
   v0?: boolean | undefined;
@@ -1174,29 +1180,26 @@ export const UpdateProjectEnvironmentsProjectsResponse200Target$inboundSchema:
     .nativeEnum(UpdateProjectEnvironmentsProjectsResponse200Target);
 
 /** @internal */
-export const UpdateProjectEnvironmentsProjectsResponse2001$inboundSchema:
-  z.ZodType<
-    UpdateProjectEnvironmentsProjectsResponse2001,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    type: types.literal("system"),
-    target: UpdateProjectEnvironmentsProjectsResponse200Target$inboundSchema,
-  });
+export const UpdateProjectEnvironmentsProjectsResponse1$inboundSchema:
+  z.ZodType<UpdateProjectEnvironmentsProjectsResponse1, z.ZodTypeDef, unknown> =
+    z.object({
+      type: types.literal("system"),
+      target: UpdateProjectEnvironmentsProjectsResponse200Target$inboundSchema,
+    });
 
-export function updateProjectEnvironmentsProjectsResponse2001FromJSON(
+export function updateProjectEnvironmentsProjectsResponse1FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  UpdateProjectEnvironmentsProjectsResponse2001,
+  UpdateProjectEnvironmentsProjectsResponse1,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      UpdateProjectEnvironmentsProjectsResponse2001$inboundSchema.parse(
+      UpdateProjectEnvironmentsProjectsResponse1$inboundSchema.parse(
         JSON.parse(x),
       ),
-    `Failed to parse 'UpdateProjectEnvironmentsProjectsResponse2001' from JSON`,
+    `Failed to parse 'UpdateProjectEnvironmentsProjectsResponse1' from JSON`,
   );
 }
 
@@ -1206,7 +1209,7 @@ export const UpdateProjectEnvironments$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => UpdateProjectEnvironmentsProjectsResponse2001$inboundSchema),
+  z.lazy(() => UpdateProjectEnvironmentsProjectsResponse1$inboundSchema),
   z.lazy(() => UpdateProjectEnvironmentsProjectsResponse2002$inboundSchema),
 ]);
 
@@ -1240,7 +1243,7 @@ export const UpdateProjectGitSources$inboundSchema: z.ZodType<
   enabled: types.boolean(),
   environments: z.array(
     z.union([
-      z.lazy(() => UpdateProjectEnvironmentsProjectsResponse2001$inboundSchema),
+      z.lazy(() => UpdateProjectEnvironmentsProjectsResponse1$inboundSchema),
       z.lazy(() => UpdateProjectEnvironmentsProjectsResponse2002$inboundSchema),
     ]),
   ),
@@ -1291,26 +1294,29 @@ export const UpdateProjectEnvironmentsProjectsResponseTarget$inboundSchema:
     .nativeEnum(UpdateProjectEnvironmentsProjectsResponseTarget);
 
 /** @internal */
-export const UpdateProjectEnvironmentsProjectsResponse1$inboundSchema:
-  z.ZodType<UpdateProjectEnvironmentsProjectsResponse1, z.ZodTypeDef, unknown> =
-    z.object({
-      type: types.literal("system"),
-      target: UpdateProjectEnvironmentsProjectsResponseTarget$inboundSchema,
-    });
+export const UpdateProjectEnvironmentsProjectsResponse2001$inboundSchema:
+  z.ZodType<
+    UpdateProjectEnvironmentsProjectsResponse2001,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    type: types.literal("system"),
+    target: UpdateProjectEnvironmentsProjectsResponseTarget$inboundSchema,
+  });
 
-export function updateProjectEnvironmentsProjectsResponse1FromJSON(
+export function updateProjectEnvironmentsProjectsResponse2001FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  UpdateProjectEnvironmentsProjectsResponse1,
+  UpdateProjectEnvironmentsProjectsResponse2001,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      UpdateProjectEnvironmentsProjectsResponse1$inboundSchema.parse(
+      UpdateProjectEnvironmentsProjectsResponse2001$inboundSchema.parse(
         JSON.parse(x),
       ),
-    `Failed to parse 'UpdateProjectEnvironmentsProjectsResponse1' from JSON`,
+    `Failed to parse 'UpdateProjectEnvironmentsProjectsResponse2001' from JSON`,
   );
 }
 
@@ -1320,7 +1326,7 @@ export const UpdateProjectProjectsEnvironments$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => UpdateProjectEnvironmentsProjectsResponse1$inboundSchema),
+  z.lazy(() => UpdateProjectEnvironmentsProjectsResponse2001$inboundSchema),
   z.lazy(() => UpdateProjectEnvironmentsProjectsResponse2$inboundSchema),
 ]);
 
@@ -1344,7 +1350,7 @@ export const UpdateProjectDeploymentSources$inboundSchema: z.ZodType<
   enabled: types.boolean(),
   environments: z.array(
     z.union([
-      z.lazy(() => UpdateProjectEnvironmentsProjectsResponse1$inboundSchema),
+      z.lazy(() => UpdateProjectEnvironmentsProjectsResponse2001$inboundSchema),
       z.lazy(() => UpdateProjectEnvironmentsProjectsResponse2$inboundSchema),
     ]),
   ),
@@ -1384,6 +1390,11 @@ export function updateProjectProjectsDeploymentPolicyFromJSON(
     `Failed to parse 'UpdateProjectProjectsDeploymentPolicy' from JSON`,
   );
 }
+
+/** @internal */
+export const UpdateProjectTier$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectTier
+> = z.nativeEnum(UpdateProjectTier);
 
 /** @internal */
 export const UpdateProjectKind$inboundSchema: z.ZodNativeEnum<
@@ -2585,7 +2596,7 @@ export const UpdateProjectResponseBody$inboundSchema: z.ZodType<
   deploymentPolicy: z.nullable(
     z.lazy(() => UpdateProjectProjectsDeploymentPolicy$inboundSchema),
   ).optional(),
-  tier: types.optional(types.string()),
+  tier: types.optional(UpdateProjectTier$inboundSchema),
   usageStatus: types.optional(
     z.lazy(() => UpdateProjectUsageStatus$inboundSchema),
   ),

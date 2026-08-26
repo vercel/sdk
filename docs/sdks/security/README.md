@@ -862,7 +862,7 @@ run();
 
 ## getSecurityFirewallEvents
 
-Retrieve firewall actions for a project
+Retrieve firewall actions for a project Rule names are resolved against the project's *current* active firewall configuration and the team's active rulesets, so a rule that has since been renamed reports its new name and one that has been deleted reports `null`. System rules such as `sys_dos_mitigation` and `ip_blocking` have no configured name and always report `null`.
 
 ### Example Usage
 
@@ -870,11 +870,15 @@ Retrieve firewall actions for a project
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
-const vercel = new Vercel();
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
 async function run() {
   const result = await vercel.security.getSecurityFirewallEvents({
     projectId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   console.log(result);
@@ -893,11 +897,15 @@ import { securityGetSecurityFirewallEvents } from "@vercel/sdk/funcs/securityGet
 
 // Use `VercelCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const vercel = new VercelCore();
+const vercel = new VercelCore({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
 async function run() {
   const res = await securityGetSecurityFirewallEvents(vercel, {
     projectId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
   if (res.ok) {
     const { value: result } = res;

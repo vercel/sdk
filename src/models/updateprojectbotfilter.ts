@@ -1554,7 +1554,6 @@ export type UpdateProjectPermissions = {
   webAnalyticsPlan?: Array<ACLAction> | undefined;
   webhook?: Array<ACLAction> | undefined;
   webhookEvent?: Array<ACLAction> | undefined;
-  workflowRunData?: Array<ACLAction> | undefined;
   aliasProject?: Array<ACLAction> | undefined;
   aliasProtectionBypass?: Array<ACLAction> | undefined;
   bulkRedirects?: Array<ACLAction> | undefined;
@@ -1637,6 +1636,7 @@ export type UpdateProjectPermissions = {
   vercelAuth?: Array<ACLAction> | undefined;
   vercelRun?: Array<ACLAction> | undefined;
   webAnalytics?: Array<ACLAction> | undefined;
+  workflowRunData?: Array<ACLAction> | undefined;
 };
 
 export type UpdateProjectLastRollbackTarget = {};
@@ -4156,7 +4156,6 @@ export const UpdateProjectPermissions$inboundSchema: z.ZodType<
   webAnalyticsPlan: types.optional(z.array(ACLAction$inboundSchema)),
   webhook: types.optional(z.array(ACLAction$inboundSchema)),
   "webhook-event": types.optional(z.array(ACLAction$inboundSchema)),
-  workflowRunData: types.optional(z.array(ACLAction$inboundSchema)),
   aliasProject: types.optional(z.array(ACLAction$inboundSchema)),
   aliasProtectionBypass: types.optional(z.array(ACLAction$inboundSchema)),
   bulkRedirects: types.optional(z.array(ACLAction$inboundSchema)),
@@ -4249,6 +4248,7 @@ export const UpdateProjectPermissions$inboundSchema: z.ZodType<
   vercelAuth: types.optional(z.array(ACLAction$inboundSchema)),
   vercelRun: types.optional(z.array(ACLAction$inboundSchema)),
   webAnalytics: types.optional(z.array(ACLAction$inboundSchema)),
+  workflowRunData: types.optional(z.array(ACLAction$inboundSchema)),
 }).transform((v) => {
   return remap$(v, {
     "Monitoring": "monitoring",

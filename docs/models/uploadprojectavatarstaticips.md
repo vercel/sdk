@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarStaticIps } from "@vercel/sdk/models/uploadprojectavatarvaluepreviousvalue.js";
+import { UploadProjectAvatarStaticIps } from "@vercel/sdk/models/uploadprojectavataraction.js";
 
 let value: UploadProjectAvatarStaticIps = {
   builds: true,

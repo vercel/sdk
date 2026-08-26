@@ -1,27 +1,21 @@
 # One
 
-Metadata for {@link principalId}.
+Principal that originally created the connector — either a Vercel user (interactive dashboard / CLI flow) or a Vercel deployment (OIDC-authenticated project, used by runtime auto-provisioning). See {@link ConnexPrincipal}. Optional: pre-existing rows from before this shape was introduced may carry no attribution at all.
 
 ## Example Usage
 
 ```typescript
-import { One } from "@vercel/sdk/models/threehundredandninetyseven.js";
+import { One } from "@vercel/sdk/models/connectconnectorcreateresult.js";
 
 let value: One = {
-  avatar: "https://loremflickr.com/1984/95?lock=4930089081020699",
-  email: "Cierra14@hotmail.com",
-  uid: "<id>",
-  username: "Keara_Lynch9",
+  type: "user",
+  id: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                              | Type                                               | Required                                           | Description                                        |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `type`                                             | [models.PrincipalType](../models/principaltype.md) | :heavy_minus_sign:                                 | N/A                                                |
-| `avatar`                                           | *string*                                           | :heavy_check_mark:                                 | N/A                                                |
-| `email`                                            | *string*                                           | :heavy_check_mark:                                 | N/A                                                |
-| `slug`                                             | *string*                                           | :heavy_minus_sign:                                 | N/A                                                |
-| `uid`                                              | *string*                                           | :heavy_check_mark:                                 | N/A                                                |
-| `username`                                         | *string*                                           | :heavy_check_mark:                                 | N/A                                                |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `type`             | *"user"*           | :heavy_check_mark: | Principal kind.    |
+| `id`               | *string*           | :heavy_check_mark: | Vercel user ID.    |

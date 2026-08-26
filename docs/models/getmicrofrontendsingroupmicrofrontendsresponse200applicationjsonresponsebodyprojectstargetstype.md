@@ -7,7 +7,7 @@ The type of matching to perform
 ```typescript
 import {
   GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsTargetsType,
-} from "@vercel/sdk/models/getmicrofrontendsingroupaction.js";
+} from "@vercel/sdk/models/getmicrofrontendsingroupinternalroutes.js";
 
 let value:
   GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsTargetsType =

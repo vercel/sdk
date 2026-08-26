@@ -3,18 +3,18 @@
 
 ## Supported Types
 
-### `models.Source1`
+### `models.CreateDrainSource1`
 
 ```typescript
-const value: models.Source1 = {
+const value: models.CreateDrainSource1 = {
   kind: "integration",
   externalResourceId: "<id>",
 };
 ```
 
-### `models.Source2`
+### `models.CreateDrainSource2`
 
 ```typescript
-const value: models.Source2 = {};
+const value: models.CreateDrainSource2 = {};
 ```
 

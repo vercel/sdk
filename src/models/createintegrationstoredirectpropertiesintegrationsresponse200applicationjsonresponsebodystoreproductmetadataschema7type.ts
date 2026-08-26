@@ -264,6 +264,7 @@ export type CreateIntegrationStoreDirectOwnership = ClosedEnum<
 
 export type SecretRotation1 = {
   maxDelayHours: number;
+  customRotationWarning?: string | undefined;
 };
 
 export type SecretRotation = SecretRotation1 | boolean;
@@ -302,6 +303,7 @@ export type ExternalResourceStatus = ClosedEnum<typeof ExternalResourceStatus>;
 
 export type CreateIntegrationStoreDirectSecretRotation1 = {
   maxDelayHours: number;
+  customRotationWarning?: string | undefined;
 };
 
 export type CreateIntegrationStoreDirectSecretRotation =
@@ -1712,6 +1714,7 @@ export const SecretRotation1$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   maxDelayHours: types.number(),
+  customRotationWarning: types.optional(types.string()),
 });
 
 export function secretRotation1FromJSON(
@@ -1815,6 +1818,7 @@ export const CreateIntegrationStoreDirectSecretRotation1$inboundSchema:
     unknown
   > = z.object({
     maxDelayHours: types.number(),
+    customRotationWarning: types.optional(types.string()),
   });
 
 export function createIntegrationStoreDirectSecretRotation1FromJSON(

@@ -15,7 +15,7 @@ let value: PayloadClaims = {
 
 ## Fields
 
-| Field                                                | Type                                                 | Required                                             | Description                                          |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `name`                                               | *string*                                             | :heavy_check_mark:                                   | N/A                                                  |
-| `values`                                             | [models.PayloadValues](../models/payloadvalues.md)[] | :heavy_check_mark:                                   | N/A                                                  |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `name`                                                                 | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `values`                                                               | [models.UserEventPayloadValues](../models/usereventpayloadvalues.md)[] | :heavy_check_mark:                                                     | N/A                                                                    |

@@ -1452,6 +1452,7 @@ export type Payload3 = {
   action: UserEventPayloadAction;
   id: string;
   name: string;
+  slug: string;
   state: string;
   projectId: string;
   projectName?: string | undefined;
@@ -1494,6 +1495,7 @@ export type Payload =
   | OneHundredAndSeventyFour
   | TwoHundredAndSeven
   | TwoHundredAndSeventy
+  | Payload3
   | OneHundredAndSixtyFour
   | OneHundredAndSixtyEight
   | OneHundredAndSeventyTwo
@@ -1501,7 +1503,6 @@ export type Payload =
   | ThreeHundredAndTen
   | ThreeHundredAndTwentyEight
   | ThreeHundredAndThirty
-  | Payload3
   | TwentySix
   | OneHundredAndFour
   | OneHundredAndSeven
@@ -1984,6 +1985,7 @@ export type UserEvent = {
     | OneHundredAndSeventyFour
     | TwoHundredAndSeven
     | TwoHundredAndSeventy
+    | Payload3
     | OneHundredAndSixtyFour
     | OneHundredAndSixtyEight
     | OneHundredAndSeventyTwo
@@ -1991,7 +1993,6 @@ export type UserEvent = {
     | ThreeHundredAndTen
     | ThreeHundredAndTwentyEight
     | ThreeHundredAndThirty
-    | Payload3
     | TwentySix
     | OneHundredAndFour
     | OneHundredAndSeven
@@ -3044,6 +3045,7 @@ export const Payload3$inboundSchema: z.ZodType<
   action: UserEventPayloadAction$inboundSchema,
   id: types.string(),
   name: types.string(),
+  slug: types.string(),
   state: types.string(),
   projectId: types.string(),
   projectName: types.optional(types.string()),
@@ -3118,6 +3120,7 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     OneHundredAndSeventyFour$inboundSchema,
     TwoHundredAndSeven$inboundSchema,
     TwoHundredAndSeventy$inboundSchema,
+    z.lazy(() => Payload3$inboundSchema),
     OneHundredAndSixtyFour$inboundSchema,
     OneHundredAndSixtyEight$inboundSchema,
     OneHundredAndSeventyTwo$inboundSchema,
@@ -3125,7 +3128,6 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     ThreeHundredAndTen$inboundSchema,
     ThreeHundredAndTwentyEight$inboundSchema,
     ThreeHundredAndThirty$inboundSchema,
-    z.lazy(() => Payload3$inboundSchema),
     TwentySix$inboundSchema,
     OneHundredAndFour$inboundSchema,
     OneHundredAndSeven$inboundSchema,
@@ -3589,6 +3591,7 @@ export const UserEvent$inboundSchema: z.ZodType<
       OneHundredAndSeventyFour$inboundSchema,
       TwoHundredAndSeven$inboundSchema,
       TwoHundredAndSeventy$inboundSchema,
+      z.lazy(() => Payload3$inboundSchema),
       OneHundredAndSixtyFour$inboundSchema,
       OneHundredAndSixtyEight$inboundSchema,
       OneHundredAndSeventyTwo$inboundSchema,
@@ -3596,7 +3599,6 @@ export const UserEvent$inboundSchema: z.ZodType<
       ThreeHundredAndTen$inboundSchema,
       ThreeHundredAndTwentyEight$inboundSchema,
       ThreeHundredAndThirty$inboundSchema,
-      z.lazy(() => Payload3$inboundSchema),
       TwentySix$inboundSchema,
       OneHundredAndFour$inboundSchema,
       OneHundredAndSeven$inboundSchema,

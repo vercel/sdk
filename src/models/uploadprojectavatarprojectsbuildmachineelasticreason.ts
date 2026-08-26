@@ -47,7 +47,14 @@ export type UploadProjectAvatarCreator3 = {
 };
 
 export type UploadProjectAvatarCreatorApp = {
+  /**
+   * The internal ID of the Vercel App backing this principal.
+   */
   id: string;
+  /**
+   * The protocol-facing OAuth client ID. This may differ from {@link id} when Client ID Metadata Documents (CIMD) are used.
+   */
+  clientId?: string | undefined;
 };
 
 export type UploadProjectAvatarCreator2 = {
@@ -69,7 +76,14 @@ export type UploadProjectAvatarVia2 = {
 };
 
 export type UploadProjectAvatarViaApp = {
+  /**
+   * The internal ID of the Vercel App backing this principal.
+   */
   id: string;
+  /**
+   * The protocol-facing OAuth client ID. This may differ from {@link id} when Client ID Metadata Documents (CIMD) are used.
+   */
+  clientId?: string | undefined;
 };
 
 /**
@@ -1951,6 +1965,7 @@ export const UploadProjectAvatarCreatorApp$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: types.string(),
+  clientId: types.optional(types.string()),
 });
 
 export function uploadProjectAvatarCreatorAppFromJSON(
@@ -2030,6 +2045,7 @@ export const UploadProjectAvatarViaApp$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: types.string(),
+  clientId: types.optional(types.string()),
 });
 
 export function uploadProjectAvatarViaAppFromJSON(

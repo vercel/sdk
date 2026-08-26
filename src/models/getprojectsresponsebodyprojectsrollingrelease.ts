@@ -146,7 +146,14 @@ export type GetProjectsCreatorProjectsResponse3 = {
 };
 
 export type GetProjectsCreatorProjectsResponseApp = {
+  /**
+   * The internal ID of the Vercel App backing this principal.
+   */
   id: string;
+  /**
+   * The protocol-facing OAuth client ID. This may differ from {@link id} when Client ID Metadata Documents (CIMD) are used.
+   */
+  clientId?: string | undefined;
 };
 
 export type GetProjectsCreatorProjectsResponse2 = {
@@ -168,7 +175,14 @@ export type GetProjectsViaProjectsResponse2 = {
 };
 
 export type GetProjectsViaProjectsResponseApp = {
+  /**
+   * The internal ID of the Vercel App backing this principal.
+   */
   id: string;
+  /**
+   * The protocol-facing OAuth client ID. This may differ from {@link id} when Client ID Metadata Documents (CIMD) are used.
+   */
+  clientId?: string | undefined;
 };
 
 /**
@@ -2136,6 +2150,7 @@ export const GetProjectsCreatorProjectsResponseApp$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: types.string(),
+  clientId: types.optional(types.string()),
 });
 
 export function getProjectsCreatorProjectsResponseAppFromJSON(
@@ -2225,6 +2240,7 @@ export const GetProjectsViaProjectsResponseApp$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: types.string(),
+  clientId: types.optional(types.string()),
 });
 
 export function getProjectsViaProjectsResponseAppFromJSON(

@@ -1216,6 +1216,7 @@ export type Guides = {
 
 export type CreateIntegrationStoreDirectSecretRotationIntegrations1 = {
   maxDelayHours: number;
+  customRotationWarning?: string | undefined;
 };
 
 export type CreateIntegrationStoreDirectIntegrationsSecretRotation =
@@ -4645,6 +4646,7 @@ export const CreateIntegrationStoreDirectSecretRotationIntegrations1$inboundSche
     unknown
   > = z.object({
     maxDelayHours: types.number(),
+    customRotationWarning: types.optional(types.string()),
   });
 
 export function createIntegrationStoreDirectSecretRotationIntegrations1FromJSON(

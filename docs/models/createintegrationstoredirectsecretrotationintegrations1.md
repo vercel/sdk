@@ -12,6 +12,7 @@ let value: CreateIntegrationStoreDirectSecretRotationIntegrations1 = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `maxDelayHours`    | *number*           | :heavy_check_mark: | N/A                |
+| Field                   | Type                    | Required                | Description             |
+| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
+| `maxDelayHours`         | *number*                | :heavy_check_mark:      | N/A                     |
+| `customRotationWarning` | *string*                | :heavy_minus_sign:      | N/A                     |

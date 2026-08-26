@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectStaticIps } from "@vercel/sdk/models/getprojectinternalroutes.js";
+import { GetProjectStaticIps } from "@vercel/sdk/models/getprojectinternalroutes1.js";
 
 let value: GetProjectStaticIps = {
   builds: true,

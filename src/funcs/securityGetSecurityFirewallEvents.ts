@@ -9,6 +9,7 @@ import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
+import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import {
   GetSecurityFirewallEventsRequest,
@@ -33,7 +34,9 @@ import { Result } from "../types/fp.js";
  * Read Firewall Actions by Project
  *
  * @remarks
- * Retrieve firewall actions for a project
+ * Retrieve firewall actions for a project Rule names are resolved against the project's *current* active firewall configuration and the team's active rulesets, so a rule that has since been renamed reports its new name and one that has been deleted reports `null`. System rules such as `sys_dos_mitigation` and `ip_blocking` have no configured name and always report `null`.
+ *
+ * If set, this operation will use {@link Security.bearerToken} from the global security.
  */
 export function securityGetSecurityFirewallEvents(
   client: VercelCore,
@@ -96,12 +99,18 @@ async function $do(
     "endTimestamp": payload.endTimestamp,
     "hosts": payload.hosts,
     "projectId": payload.projectId,
+    "slug": payload.slug,
     "startTimestamp": payload.startTimestamp,
+    "teamId": payload.teamId,
   });
 
   const headers = new Headers(compactMap({
     Accept: "application/json",
   }));
+
+  const secConfig = await extractSecurity(client._options.bearerToken);
+  const securityInput = secConfig == null ? {} : { bearerToken: secConfig };
+  const requestSecurity = resolveGlobalSecurity(securityInput, [0]);
 
   const context = {
     options: client._options,
@@ -109,9 +118,9 @@ async function $do(
     operationID: "getSecurityFirewallEvents",
     oAuth2Scopes: null,
 
-    resolvedSecurity: null,
+    resolvedSecurity: requestSecurity,
 
-    securitySource: null,
+    securitySource: client._options.bearerToken,
     retryConfig: options?.retries
       || client._options.retryConfig
       || { strategy: "none" },
@@ -119,6 +128,7 @@ async function $do(
   };
 
   const requestRes = client._createRequest(context, {
+    security: requestSecurity,
     method: "GET",
     baseURL: options?.serverURL,
     path: path,

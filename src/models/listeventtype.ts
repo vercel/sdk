@@ -284,6 +284,8 @@ export const Name = {
   GlobalConfigTransferOut: "global-config-transfer-out",
   GlobalConfigUpdated: "global-config-updated",
   InstantRollbackCreated: "instant-rollback-created",
+  IntegrationConfigurationCredentialRevoked:
+    "integration-configuration-credential-revoked",
   IntegrationConfigurationCredentialRotated:
     "integration-configuration-credential-rotated",
   IntegrationConfigurationOwnerChanged:
@@ -1030,6 +1032,8 @@ export const ReplacedBy = {
   GlobalConfigTransferOut: "global-config-transfer-out",
   GlobalConfigUpdated: "global-config-updated",
   InstantRollbackCreated: "instant-rollback-created",
+  IntegrationConfigurationCredentialRevoked:
+    "integration-configuration-credential-revoked",
   IntegrationConfigurationCredentialRotated:
     "integration-configuration-credential-rotated",
   IntegrationConfigurationOwnerChanged:

@@ -27,6 +27,7 @@ const value: models.Payload3 = {
   action: "transitioned",
   id: "<id>",
   name: "<value>",
+  slug: "<value>",
   state: "Hawaii",
   projectId: "<id>",
 };

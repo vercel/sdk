@@ -5,7 +5,7 @@ Configuration for consolidated git commit status reporting. When enabled, Vercel
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarConsolidatedGitCommitStatus } from "@vercel/sdk/models/uploadprojectavatarvaluepreviousvalue.js";
+import { UploadProjectAvatarConsolidatedGitCommitStatus } from "@vercel/sdk/models/uploadprojectavataraction.js";
 
 let value: UploadProjectAvatarConsolidatedGitCommitStatus = {
   enabled: false,

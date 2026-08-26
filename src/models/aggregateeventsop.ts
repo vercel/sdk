@@ -207,6 +207,7 @@ export type AggregateEventsData2 = {
   cacheHitLevel: string;
   cacheApi: string;
   cacheReason: string;
+  pprState: string;
   clientIp: string;
   clientIpCountry: string;
   clientUserAgent: string;
@@ -429,6 +430,7 @@ export type AggregateEventsData1 = {
   cacheHitLevel?: string | undefined;
   cacheApi?: string | undefined;
   cacheReason?: string | undefined;
+  pprState?: string | undefined;
   clientIp?: string | undefined;
   clientIpCountry?: string | undefined;
   clientUserAgent?: string | undefined;
@@ -803,6 +805,7 @@ export const AggregateEventsData2$inboundSchema: z.ZodType<
     cacheHitLevel: types.string(),
     cacheApi: types.string(),
     cacheReason: types.string(),
+    pprState: types.string(),
     clientIp: types.string(),
     clientIpCountry: types.string(),
     clientUserAgent: types.string(),
@@ -1042,6 +1045,7 @@ export const AggregateEventsData1$inboundSchema: z.ZodType<
   cacheHitLevel: types.optional(types.string()),
   cacheApi: types.optional(types.string()),
   cacheReason: types.optional(types.string()),
+  pprState: types.optional(types.string()),
   clientIp: types.optional(types.string()),
   clientIpCountry: types.optional(types.string()),
   clientUserAgent: types.optional(types.string()),

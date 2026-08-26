@@ -10,6 +10,52 @@ import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
+  UploadProjectAvatarAbuse,
+  UploadProjectAvatarAbuse$inboundSchema,
+  UploadProjectAvatarAction,
+  UploadProjectAvatarAction$inboundSchema,
+  UploadProjectAvatarDefaultResourceConfig,
+  UploadProjectAvatarDefaultResourceConfig$inboundSchema,
+  UploadProjectAvatarDeploymentPolicy,
+  UploadProjectAvatarDeploymentPolicy$inboundSchema,
+  UploadProjectAvatarFeatures,
+  UploadProjectAvatarFeatures$inboundSchema,
+  UploadProjectAvatarGitComments,
+  UploadProjectAvatarGitComments$inboundSchema,
+  UploadProjectAvatarGitProviderOptions,
+  UploadProjectAvatarGitProviderOptions$inboundSchema,
+  UploadProjectAvatarInternalRoutes,
+  UploadProjectAvatarInternalRoutes$inboundSchema,
+  UploadProjectAvatarLastAliasRequest,
+  UploadProjectAvatarLastAliasRequest$inboundSchema,
+  UploadProjectAvatarLastRollbackTarget,
+  UploadProjectAvatarLastRollbackTarget$inboundSchema,
+  UploadProjectAvatarOidcTokenConfig,
+  UploadProjectAvatarOidcTokenConfig$inboundSchema,
+  UploadProjectAvatarPermissions,
+  UploadProjectAvatarPermissions$inboundSchema,
+  UploadProjectAvatarProtectionBypass,
+  UploadProjectAvatarProtectionBypass$inboundSchema,
+  UploadProjectAvatarSecurity,
+  UploadProjectAvatarSecurity$inboundSchema,
+  UploadProjectAvatarSsoProtection,
+  UploadProjectAvatarSsoProtection$inboundSchema,
+  UploadProjectAvatarStaticIps,
+  UploadProjectAvatarStaticIps$inboundSchema,
+  UploadProjectAvatarTargets,
+  UploadProjectAvatarTargets$inboundSchema,
+  UploadProjectAvatarTier,
+  UploadProjectAvatarTier$inboundSchema,
+  UploadProjectAvatarTrustedIps,
+  UploadProjectAvatarTrustedIps$inboundSchema,
+  UploadProjectAvatarTrustedSources,
+  UploadProjectAvatarTrustedSources$inboundSchema,
+  UploadProjectAvatarUsageStatus,
+  UploadProjectAvatarUsageStatus$inboundSchema,
+  UploadProjectAvatarWebAnalytics,
+  UploadProjectAvatarWebAnalytics$inboundSchema,
+} from "./uploadprojectavataraction.js";
+import {
   UploadProjectAvatarAlias,
   UploadProjectAvatarAlias$inboundSchema,
   UploadProjectAvatarAnalytics,
@@ -67,57 +113,13 @@ import {
   UploadProjectAvatarSpeedInsights,
   UploadProjectAvatarSpeedInsights$inboundSchema,
 } from "./uploadprojectavatarprojectsbuildmachineelasticreason.js";
-import {
-  UploadProjectAvatarAbuse,
-  UploadProjectAvatarAbuse$inboundSchema,
-  UploadProjectAvatarAction,
-  UploadProjectAvatarAction$inboundSchema,
-  UploadProjectAvatarDefaultResourceConfig,
-  UploadProjectAvatarDefaultResourceConfig$inboundSchema,
-  UploadProjectAvatarDeploymentPolicy,
-  UploadProjectAvatarDeploymentPolicy$inboundSchema,
-  UploadProjectAvatarFeatures,
-  UploadProjectAvatarFeatures$inboundSchema,
-  UploadProjectAvatarGitComments,
-  UploadProjectAvatarGitComments$inboundSchema,
-  UploadProjectAvatarGitProviderOptions,
-  UploadProjectAvatarGitProviderOptions$inboundSchema,
-  UploadProjectAvatarInternalRoutes,
-  UploadProjectAvatarInternalRoutes$inboundSchema,
-  UploadProjectAvatarLastAliasRequest,
-  UploadProjectAvatarLastAliasRequest$inboundSchema,
-  UploadProjectAvatarLastRollbackTarget,
-  UploadProjectAvatarLastRollbackTarget$inboundSchema,
-  UploadProjectAvatarOidcTokenConfig,
-  UploadProjectAvatarOidcTokenConfig$inboundSchema,
-  UploadProjectAvatarPermissions,
-  UploadProjectAvatarPermissions$inboundSchema,
-  UploadProjectAvatarProtectionBypass,
-  UploadProjectAvatarProtectionBypass$inboundSchema,
-  UploadProjectAvatarSecurity,
-  UploadProjectAvatarSecurity$inboundSchema,
-  UploadProjectAvatarSsoProtection,
-  UploadProjectAvatarSsoProtection$inboundSchema,
-  UploadProjectAvatarStaticIps,
-  UploadProjectAvatarStaticIps$inboundSchema,
-  UploadProjectAvatarTargets,
-  UploadProjectAvatarTargets$inboundSchema,
-  UploadProjectAvatarTrustedIps,
-  UploadProjectAvatarTrustedIps$inboundSchema,
-  UploadProjectAvatarTrustedSources,
-  UploadProjectAvatarTrustedSources$inboundSchema,
-  UploadProjectAvatarUsageStatus,
-  UploadProjectAvatarUsageStatus$inboundSchema,
-  UploadProjectAvatarValuePreviousValue,
-  UploadProjectAvatarValuePreviousValue$inboundSchema,
-  UploadProjectAvatarWebAnalytics,
-  UploadProjectAvatarWebAnalytics$inboundSchema,
-} from "./uploadprojectavatarvaluepreviousvalue.js";
+
+export type UploadProjectAvatarValuePreviousValue = string | number | boolean;
 
 export type UploadProjectAvatarValueCurrentValue = string | number | boolean;
 
 export type UploadProjectAvatarValue3 = {
-  previousValue: UploadProjectAvatarValuePreviousValue;
+  previousValue: string | number | boolean;
   currentValue: string | number | boolean;
 };
 
@@ -275,7 +277,7 @@ export type UploadProjectAvatarResponseBody = {
    * Project shape. `null` on a rule list clears the project's override for that rule type (fall back to team for every env); omitting is equivalent. Setting `deploymentPolicy` itself to `null` clears every override at once. Kept structurally distinct from {@link TeamDeploymentPolicy} so the two storage locations don't share a type by accident.
    */
   deploymentPolicy?: UploadProjectAvatarDeploymentPolicy | null | undefined;
-  tier?: string | undefined;
+  tier?: UploadProjectAvatarTier | undefined;
   usageStatus?: UploadProjectAvatarUsageStatus | undefined;
   features?: UploadProjectAvatarFeatures | undefined;
   v0?: boolean | undefined;
@@ -288,6 +290,24 @@ export type UploadProjectAvatarResponseBody = {
   tracing?: UploadProjectAvatarTracing | undefined;
   avatar?: string | null | undefined;
 };
+
+/** @internal */
+export const UploadProjectAvatarValuePreviousValue$inboundSchema: z.ZodType<
+  UploadProjectAvatarValuePreviousValue,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), types.number(), types.boolean()]);
+
+export function uploadProjectAvatarValuePreviousValueFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadProjectAvatarValuePreviousValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UploadProjectAvatarValuePreviousValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadProjectAvatarValuePreviousValue' from JSON`,
+  );
+}
 
 /** @internal */
 export const UploadProjectAvatarValueCurrentValue$inboundSchema: z.ZodType<
@@ -313,7 +333,7 @@ export const UploadProjectAvatarValue3$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  previousValue: UploadProjectAvatarValuePreviousValue$inboundSchema,
+  previousValue: smartUnion([types.string(), types.number(), types.boolean()]),
   currentValue: smartUnion([types.string(), types.number(), types.boolean()]),
 });
 
@@ -561,7 +581,7 @@ export const UploadProjectAvatarResponseBody$inboundSchema: z.ZodType<
   deploymentPolicy: z.nullable(
     UploadProjectAvatarDeploymentPolicy$inboundSchema,
   ).optional(),
-  tier: types.optional(types.string()),
+  tier: types.optional(UploadProjectAvatarTier$inboundSchema),
   usageStatus: types.optional(UploadProjectAvatarUsageStatus$inboundSchema),
   features: types.optional(UploadProjectAvatarFeatures$inboundSchema),
   v0: types.optional(types.boolean()),

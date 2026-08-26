@@ -3,20 +3,20 @@
 
 ## Supported Types
 
-### `models.CreateProjectCheckSourceChecksV21`
+### `models.CreateProjectCheckSource1`
 
 ```typescript
-const value: models.CreateProjectCheckSourceChecksV21 = {
+const value: models.CreateProjectCheckSource1 = {
   kind: "integration",
   integrationId: "<id>",
   integrationConfigurationId: "<id>",
 };
 ```
 
-### `models.CreateProjectCheckSourceChecksV22`
+### `models.CreateProjectCheckSource2`
 
 ```typescript
-const value: models.CreateProjectCheckSourceChecksV22 = {
+const value: models.CreateProjectCheckSource2 = {
   kind: "webhook",
 };
 ```

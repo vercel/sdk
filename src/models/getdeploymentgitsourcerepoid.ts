@@ -249,7 +249,7 @@ export type GetDeploymentCustomEnvironment1 = {
   updatedAt: number;
 };
 
-export type ResponseBodyCustomEnvironment =
+export type GetDeploymentResponseBodyCustomEnvironment =
   | GetDeploymentCustomEnvironment1
   | GetDeploymentCustomEnvironment2;
 
@@ -1551,7 +1551,7 @@ export type GetDeploymentCustomEnvironmentDeployments1 = {
   updatedAt: number;
 };
 
-export type GetDeploymentResponseBodyCustomEnvironment =
+export type ResponseBodyCustomEnvironment =
   | GetDeploymentCustomEnvironmentDeployments1
   | GetDeploymentCustomEnvironmentDeployments2;
 
@@ -2212,22 +2212,26 @@ export function getDeploymentCustomEnvironment1FromJSON(
 }
 
 /** @internal */
-export const ResponseBodyCustomEnvironment$inboundSchema: z.ZodType<
-  ResponseBodyCustomEnvironment,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.lazy(() => GetDeploymentCustomEnvironment1$inboundSchema),
-  z.lazy(() => GetDeploymentCustomEnvironment2$inboundSchema),
-]);
+export const GetDeploymentResponseBodyCustomEnvironment$inboundSchema:
+  z.ZodType<GetDeploymentResponseBodyCustomEnvironment, z.ZodTypeDef, unknown> =
+    smartUnion([
+      z.lazy(() => GetDeploymentCustomEnvironment1$inboundSchema),
+      z.lazy(() => GetDeploymentCustomEnvironment2$inboundSchema),
+    ]);
 
-export function responseBodyCustomEnvironmentFromJSON(
+export function getDeploymentResponseBodyCustomEnvironmentFromJSON(
   jsonString: string,
-): SafeParseResult<ResponseBodyCustomEnvironment, SDKValidationError> {
+): SafeParseResult<
+  GetDeploymentResponseBodyCustomEnvironment,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => ResponseBodyCustomEnvironment$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBodyCustomEnvironment' from JSON`,
+    (x) =>
+      GetDeploymentResponseBodyCustomEnvironment$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetDeploymentResponseBodyCustomEnvironment' from JSON`,
   );
 }
 
@@ -3920,26 +3924,22 @@ export function getDeploymentCustomEnvironmentDeployments1FromJSON(
 }
 
 /** @internal */
-export const GetDeploymentResponseBodyCustomEnvironment$inboundSchema:
-  z.ZodType<GetDeploymentResponseBodyCustomEnvironment, z.ZodTypeDef, unknown> =
-    smartUnion([
-      z.lazy(() => GetDeploymentCustomEnvironmentDeployments1$inboundSchema),
-      z.lazy(() => GetDeploymentCustomEnvironmentDeployments2$inboundSchema),
-    ]);
+export const ResponseBodyCustomEnvironment$inboundSchema: z.ZodType<
+  ResponseBodyCustomEnvironment,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => GetDeploymentCustomEnvironmentDeployments1$inboundSchema),
+  z.lazy(() => GetDeploymentCustomEnvironmentDeployments2$inboundSchema),
+]);
 
-export function getDeploymentResponseBodyCustomEnvironmentFromJSON(
+export function responseBodyCustomEnvironmentFromJSON(
   jsonString: string,
-): SafeParseResult<
-  GetDeploymentResponseBodyCustomEnvironment,
-  SDKValidationError
-> {
+): SafeParseResult<ResponseBodyCustomEnvironment, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      GetDeploymentResponseBodyCustomEnvironment$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetDeploymentResponseBodyCustomEnvironment' from JSON`,
+    (x) => ResponseBodyCustomEnvironment$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyCustomEnvironment' from JSON`,
   );
 }
 

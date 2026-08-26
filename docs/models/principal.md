@@ -3,21 +3,21 @@
 
 ## Supported Types
 
-### `models.One`
+### `models.Principal1`
 
 ```typescript
-const value: models.One = {
-  avatar: "https://loremflickr.com/1984/95?lock=4930089081020699",
-  email: "Cierra14@hotmail.com",
+const value: models.Principal1 = {
+  avatar: "https://picsum.photos/seed/9iIpFqNqQ/1823/2388",
+  email: "Thaddeus_Dooley@hotmail.com",
   uid: "<id>",
-  username: "Keara_Lynch9",
+  username: "Chelsie.Bosco31",
 };
 ```
 
-### `models.Two`
+### `models.Principal2`
 
 ```typescript
-const value: models.Two = {
+const value: models.Principal2 = {
   type: "app",
   clientId: "<id>",
   name: "<value>",

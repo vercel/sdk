@@ -21,8 +21,10 @@ import {
   GetProjectGitComments$inboundSchema,
   GetProjectGitProviderOptions,
   GetProjectGitProviderOptions$inboundSchema,
-  GetProjectInternalRoutes,
-  GetProjectInternalRoutes$inboundSchema,
+  GetProjectInternalRoutes1,
+  GetProjectInternalRoutes1$inboundSchema,
+  GetProjectInternalRoutes2,
+  GetProjectInternalRoutes2$inboundSchema,
   GetProjectLastAliasRequest,
   GetProjectLastAliasRequest$inboundSchema,
   GetProjectLastRollbackTarget,
@@ -41,6 +43,8 @@ import {
   GetProjectStaticIps$inboundSchema,
   GetProjectTargets,
   GetProjectTargets$inboundSchema,
+  GetProjectTier,
+  GetProjectTier$inboundSchema,
   GetProjectTrustedIps,
   GetProjectTrustedIps$inboundSchema,
   GetProjectTrustedSources,
@@ -49,7 +53,7 @@ import {
   GetProjectUsageStatus$inboundSchema,
   GetProjectWebAnalytics,
   GetProjectWebAnalytics$inboundSchema,
-} from "./getprojectinternalroutes.js";
+} from "./getprojectinternalroutes1.js";
 import {
   GetProjectAlias,
   GetProjectAlias$inboundSchema,
@@ -111,6 +115,10 @@ import {
   GetProjectSpeedInsights$inboundSchema,
 } from "./getprojectprojectsbuildmachinetype.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type GetProjectInternalRoutes =
+  | GetProjectInternalRoutes1
+  | GetProjectInternalRoutes2;
 
 export const GetProjectAction = {
   Accept: "accept",
@@ -276,19 +284,41 @@ export type GetProjectResponseBody = {
    * Project shape. `null` on a rule list clears the project's override for that rule type (fall back to team for every env); omitting is equivalent. Setting `deploymentPolicy` itself to `null` clears every override at once. Kept structurally distinct from {@link TeamDeploymentPolicy} so the two storage locations don't share a type by accident.
    */
   deploymentPolicy?: GetProjectDeploymentPolicy | null | undefined;
-  tier?: string | undefined;
+  tier?: GetProjectTier | undefined;
   usageStatus?: GetProjectUsageStatus | undefined;
   features?: GetProjectFeatures | undefined;
   v0?: boolean | undefined;
   v0Created?: boolean | undefined;
   abuse?: GetProjectAbuse | undefined;
-  internalRoutes?: Array<GetProjectInternalRoutes> | undefined;
+  internalRoutes?:
+    | Array<GetProjectInternalRoutes1 | GetProjectInternalRoutes2>
+    | undefined;
   hasDeployments?: boolean | undefined;
   dismissedToasts?: Array<GetProjectDismissedToasts> | undefined;
   protectedSourcemaps?: boolean | undefined;
   tracing?: GetProjectTracing | undefined;
   avatar?: string | null | undefined;
 };
+
+/** @internal */
+export const GetProjectInternalRoutes$inboundSchema: z.ZodType<
+  GetProjectInternalRoutes,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  GetProjectInternalRoutes1$inboundSchema,
+  GetProjectInternalRoutes2$inboundSchema,
+]);
+
+export function getProjectInternalRoutesFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectInternalRoutes, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectInternalRoutes$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectInternalRoutes' from JSON`,
+  );
+}
 
 /** @internal */
 export const GetProjectAction$inboundSchema: z.ZodNativeEnum<
@@ -566,14 +596,19 @@ export const GetProjectResponseBody$inboundSchema: z.ZodType<
   oidcTokenConfig: types.optional(GetProjectOidcTokenConfig$inboundSchema),
   deploymentPolicy: z.nullable(GetProjectDeploymentPolicy$inboundSchema)
     .optional(),
-  tier: types.optional(types.string()),
+  tier: types.optional(GetProjectTier$inboundSchema),
   usageStatus: types.optional(GetProjectUsageStatus$inboundSchema),
   features: types.optional(GetProjectFeatures$inboundSchema),
   v0: types.optional(types.boolean()),
   v0Created: types.optional(types.boolean()),
   abuse: types.optional(GetProjectAbuse$inboundSchema),
   internalRoutes: types.optional(
-    z.array(GetProjectInternalRoutes$inboundSchema),
+    z.array(
+      smartUnion([
+        GetProjectInternalRoutes1$inboundSchema,
+        GetProjectInternalRoutes2$inboundSchema,
+      ]),
+    ),
   ),
   hasDeployments: types.optional(types.boolean()),
   dismissedToasts: types.optional(

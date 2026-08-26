@@ -596,13 +596,13 @@ export type UpdateProjectEnvironmentsProjectsTarget = ClosedEnum<
   typeof UpdateProjectEnvironmentsProjectsTarget
 >;
 
-export type UpdateProjectEnvironmentsProjects1 = {
+export type UpdateProjectEnvironments1 = {
   type: "system";
   target: UpdateProjectEnvironmentsProjectsTarget;
 };
 
 export type GitSourcesEnvironments =
-  | UpdateProjectEnvironmentsProjects1
+  | UpdateProjectEnvironments1
   | UpdateProjectEnvironmentsProjects2;
 
 export type UpdateProjectSources2 = {
@@ -633,7 +633,7 @@ export type GitSourcesSources =
 export type GitSources1 = {
   enabled: boolean;
   environments: Array<
-    UpdateProjectEnvironmentsProjects1 | UpdateProjectEnvironmentsProjects2
+    UpdateProjectEnvironments1 | UpdateProjectEnvironmentsProjects2
   >;
   sources: Array<
     | (UpdateProjectSources1 & { provider: "github" })
@@ -657,13 +657,13 @@ export type UpdateProjectEnvironmentsTarget = ClosedEnum<
   typeof UpdateProjectEnvironmentsTarget
 >;
 
-export type UpdateProjectEnvironments1 = {
+export type UpdateProjectEnvironmentsProjects1 = {
   type: "system";
   target: UpdateProjectEnvironmentsTarget;
 };
 
 export type DeploymentSourcesEnvironments =
-  | UpdateProjectEnvironments1
+  | UpdateProjectEnvironmentsProjects1
   | UpdateProjectEnvironments2;
 
 export const DeploymentSourcesSources = {
@@ -680,7 +680,9 @@ export type DeploymentSourcesSources = ClosedEnum<
 
 export type DeploymentSources1 = {
   enabled: boolean;
-  environments: Array<UpdateProjectEnvironments1 | UpdateProjectEnvironments2>;
+  environments: Array<
+    UpdateProjectEnvironmentsProjects1 | UpdateProjectEnvironments2
+  >;
   sources: Array<DeploymentSourcesSources>;
 };
 
@@ -968,7 +970,14 @@ export type UpdateProjectCreator3 = {
 };
 
 export type UpdateProjectCreatorApp = {
+  /**
+   * The internal ID of the Vercel App backing this principal.
+   */
   id: string;
+  /**
+   * The protocol-facing OAuth client ID. This may differ from {@link id} when Client ID Metadata Documents (CIMD) are used.
+   */
+  clientId?: string | undefined;
 };
 
 export type UpdateProjectCreator2 = {
@@ -990,7 +999,14 @@ export type UpdateProjectVia2 = {
 };
 
 export type UpdateProjectViaApp = {
+  /**
+   * The internal ID of the Vercel App backing this principal.
+   */
   id: string;
+  /**
+   * The protocol-facing OAuth client ID. This may differ from {@link id} when Client ID Metadata Documents (CIMD) are used.
+   */
+  clientId?: string | undefined;
 };
 
 /**
@@ -2362,34 +2378,32 @@ export const UpdateProjectEnvironmentsProjectsTarget$outboundSchema:
     .nativeEnum(UpdateProjectEnvironmentsProjectsTarget);
 
 /** @internal */
-export type UpdateProjectEnvironmentsProjects1$Outbound = {
+export type UpdateProjectEnvironments1$Outbound = {
   type: "system";
   target: string;
 };
 
 /** @internal */
-export const UpdateProjectEnvironmentsProjects1$outboundSchema: z.ZodType<
-  UpdateProjectEnvironmentsProjects1$Outbound,
+export const UpdateProjectEnvironments1$outboundSchema: z.ZodType<
+  UpdateProjectEnvironments1$Outbound,
   z.ZodTypeDef,
-  UpdateProjectEnvironmentsProjects1
+  UpdateProjectEnvironments1
 > = z.object({
   type: z.literal("system"),
   target: UpdateProjectEnvironmentsProjectsTarget$outboundSchema,
 });
 
-export function updateProjectEnvironmentsProjects1ToJSON(
-  updateProjectEnvironmentsProjects1: UpdateProjectEnvironmentsProjects1,
+export function updateProjectEnvironments1ToJSON(
+  updateProjectEnvironments1: UpdateProjectEnvironments1,
 ): string {
   return JSON.stringify(
-    UpdateProjectEnvironmentsProjects1$outboundSchema.parse(
-      updateProjectEnvironmentsProjects1,
-    ),
+    UpdateProjectEnvironments1$outboundSchema.parse(updateProjectEnvironments1),
   );
 }
 
 /** @internal */
 export type GitSourcesEnvironments$Outbound =
-  | UpdateProjectEnvironmentsProjects1$Outbound
+  | UpdateProjectEnvironments1$Outbound
   | UpdateProjectEnvironmentsProjects2$Outbound;
 
 /** @internal */
@@ -2398,7 +2412,7 @@ export const GitSourcesEnvironments$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GitSourcesEnvironments
 > = z.union([
-  z.lazy(() => UpdateProjectEnvironmentsProjects1$outboundSchema),
+  z.lazy(() => UpdateProjectEnvironments1$outboundSchema),
   z.lazy(() => UpdateProjectEnvironmentsProjects2$outboundSchema),
 ]);
 
@@ -2501,7 +2515,7 @@ export function gitSourcesSourcesToJSON(
 export type GitSources1$Outbound = {
   enabled: boolean;
   environments: Array<
-    | UpdateProjectEnvironmentsProjects1$Outbound
+    | UpdateProjectEnvironments1$Outbound
     | UpdateProjectEnvironmentsProjects2$Outbound
   >;
   sources: Array<
@@ -2520,7 +2534,7 @@ export const GitSources1$outboundSchema: z.ZodType<
   enabled: z.boolean(),
   environments: z.array(
     z.union([
-      z.lazy(() => UpdateProjectEnvironmentsProjects1$outboundSchema),
+      z.lazy(() => UpdateProjectEnvironments1$outboundSchema),
       z.lazy(() => UpdateProjectEnvironmentsProjects2$outboundSchema),
     ]),
   ),
@@ -2591,32 +2605,34 @@ export const UpdateProjectEnvironmentsTarget$outboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(UpdateProjectEnvironmentsTarget);
 
 /** @internal */
-export type UpdateProjectEnvironments1$Outbound = {
+export type UpdateProjectEnvironmentsProjects1$Outbound = {
   type: "system";
   target: string;
 };
 
 /** @internal */
-export const UpdateProjectEnvironments1$outboundSchema: z.ZodType<
-  UpdateProjectEnvironments1$Outbound,
+export const UpdateProjectEnvironmentsProjects1$outboundSchema: z.ZodType<
+  UpdateProjectEnvironmentsProjects1$Outbound,
   z.ZodTypeDef,
-  UpdateProjectEnvironments1
+  UpdateProjectEnvironmentsProjects1
 > = z.object({
   type: z.literal("system"),
   target: UpdateProjectEnvironmentsTarget$outboundSchema,
 });
 
-export function updateProjectEnvironments1ToJSON(
-  updateProjectEnvironments1: UpdateProjectEnvironments1,
+export function updateProjectEnvironmentsProjects1ToJSON(
+  updateProjectEnvironmentsProjects1: UpdateProjectEnvironmentsProjects1,
 ): string {
   return JSON.stringify(
-    UpdateProjectEnvironments1$outboundSchema.parse(updateProjectEnvironments1),
+    UpdateProjectEnvironmentsProjects1$outboundSchema.parse(
+      updateProjectEnvironmentsProjects1,
+    ),
   );
 }
 
 /** @internal */
 export type DeploymentSourcesEnvironments$Outbound =
-  | UpdateProjectEnvironments1$Outbound
+  | UpdateProjectEnvironmentsProjects1$Outbound
   | UpdateProjectEnvironments2$Outbound;
 
 /** @internal */
@@ -2625,7 +2641,7 @@ export const DeploymentSourcesEnvironments$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DeploymentSourcesEnvironments
 > = z.union([
-  z.lazy(() => UpdateProjectEnvironments1$outboundSchema),
+  z.lazy(() => UpdateProjectEnvironmentsProjects1$outboundSchema),
   z.lazy(() => UpdateProjectEnvironments2$outboundSchema),
 ]);
 
@@ -2648,7 +2664,8 @@ export const DeploymentSourcesSources$outboundSchema: z.ZodNativeEnum<
 export type DeploymentSources1$Outbound = {
   enabled: boolean;
   environments: Array<
-    UpdateProjectEnvironments1$Outbound | UpdateProjectEnvironments2$Outbound
+    | UpdateProjectEnvironmentsProjects1$Outbound
+    | UpdateProjectEnvironments2$Outbound
   >;
   sources: Array<string>;
 };
@@ -2662,7 +2679,7 @@ export const DeploymentSources1$outboundSchema: z.ZodType<
   enabled: z.boolean(),
   environments: z.array(
     z.union([
-      z.lazy(() => UpdateProjectEnvironments1$outboundSchema),
+      z.lazy(() => UpdateProjectEnvironmentsProjects1$outboundSchema),
       z.lazy(() => UpdateProjectEnvironments2$outboundSchema),
     ]),
   ),
@@ -3162,6 +3179,7 @@ export const UpdateProjectCreatorApp$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: types.string(),
+  clientId: types.optional(types.string()),
 });
 
 export function updateProjectCreatorAppFromJSON(
@@ -3241,6 +3259,7 @@ export const UpdateProjectViaApp$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: types.string(),
+  clientId: types.optional(types.string()),
 });
 
 export function updateProjectViaAppFromJSON(

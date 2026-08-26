@@ -259,7 +259,7 @@ export class Security extends ClientSDK {
    * Read Firewall Actions by Project
    *
    * @remarks
-   * Retrieve firewall actions for a project
+   * Retrieve firewall actions for a project Rule names are resolved against the project's *current* active firewall configuration and the team's active rulesets, so a rule that has since been renamed reports its new name and one that has been deleted reports `null`. System rules such as `sys_dos_mitigation` and `ip_blocking` have no configured name and always report `null`.
    */
   async getSecurityFirewallEvents(
     request: GetSecurityFirewallEventsRequest,

@@ -1,25 +1,19 @@
 # CustomEnvironment
 
-
-## Supported Types
-
-### `models.CustomEnvironment1`
+## Example Usage
 
 ```typescript
-const value: models.CustomEnvironment1 = {
-  id: "<id>",
-  slug: "<value>",
-  type: "development",
-  createdAt: 7312.59,
-  updatedAt: 6889.56,
+import { CustomEnvironment } from "@vercel/sdk/models/connectcreateconnectorrequest.js";
+
+let value: CustomEnvironment = {
+  customEnvironmentId: "<id>",
 };
 ```
 
-### `models.CustomEnvironment2`
+## Fields
 
-```typescript
-const value: models.CustomEnvironment2 = {
-  id: "<id>",
-};
-```
-
+| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `projectId`                                                                                        | *string*                                                                                           | :heavy_minus_sign:                                                                                 | Project that receives triggers. During connector creation, omit it to use the top-level projectId. |
+| `customEnvironmentId`                                                                              | *string*                                                                                           | :heavy_check_mark:                                                                                 | Stable custom environment ID that belongs to the destination project.                              |
+| `path`                                                                                             | *string*                                                                                           | :heavy_minus_sign:                                                                                 | Route path on the linked project that receives forwarded trigger requests.                         |

@@ -40,7 +40,7 @@ export type FlagsSDKKeyWithSecrets = {
    */
   keyValue: string;
   /**
-   * Cleartext value of the Edge Config token, when the project has an Edge Config connection.
+   * Cleartext value of the Global Config token, when the project has a Global Config connection.
    */
   tokenValue?: string | undefined;
 };

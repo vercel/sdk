@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
+import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
@@ -20,6 +21,19 @@ export type PatchDomainRequestBody2 = {
    */
   destination?: string | undefined;
 };
+
+/**
+ * Encrypted Client Hello enrollment. 'auto' leaves it to Vercel, 'enabled' always enrolls, 'disabled' never enrolls and opts out of automatic enrollment.
+ */
+export const RequestBodyEchMode = {
+  Auto: "auto",
+  Enabled: "enabled",
+  Disabled: "disabled",
+} as const;
+/**
+ * Encrypted Client Hello enrollment. 'auto' leaves it to Vercel, 'enabled' always enrolls, 'disabled' never enrolls and opts out of automatic enrollment.
+ */
+export type RequestBodyEchMode = ClosedEnum<typeof RequestBodyEchMode>;
 
 /**
  * update
@@ -42,6 +56,10 @@ export type PatchDomainRequestBody1 = {
    * Specifies whether this is a DNS zone that intends to use Vercel's nameservers.
    */
   zone?: boolean | undefined;
+  /**
+   * Encrypted Client Hello enrollment. 'auto' leaves it to Vercel, 'enabled' always enrolls, 'disabled' never enrolls and opts out of automatic enrollment.
+   */
+  echMode?: RequestBodyEchMode | undefined;
 };
 
 export type PatchDomainRequestBody =
@@ -61,10 +79,18 @@ export type PatchDomainRequest = {
   requestBody: PatchDomainRequestBody1 | PatchDomainRequestBody2;
 };
 
+export const ResponseBodyEchMode = {
+  Auto: "auto",
+  Disabled: "disabled",
+  Enabled: "enabled",
+} as const;
+export type ResponseBodyEchMode = ClosedEnum<typeof ResponseBodyEchMode>;
+
 export type PatchDomainResponseBody3 = {
   renew?: boolean | undefined;
   customNameservers?: Array<string> | undefined;
   zone?: boolean | undefined;
+  echMode: ResponseBodyEchMode;
 };
 
 export type PatchDomainResponseBody2 = {
@@ -106,11 +132,17 @@ export function patchDomainRequestBody2ToJSON(
 }
 
 /** @internal */
+export const RequestBodyEchMode$outboundSchema: z.ZodNativeEnum<
+  typeof RequestBodyEchMode
+> = z.nativeEnum(RequestBodyEchMode);
+
+/** @internal */
 export type PatchDomainRequestBody1$Outbound = {
   op?: string | undefined;
   renew?: boolean | undefined;
   customNameservers?: Array<string> | undefined;
   zone?: boolean | undefined;
+  echMode?: string | undefined;
 };
 
 /** @internal */
@@ -123,6 +155,7 @@ export const PatchDomainRequestBody1$outboundSchema: z.ZodType<
   renew: z.boolean().optional(),
   customNameservers: z.array(z.string()).optional(),
   zone: z.boolean().optional(),
+  echMode: RequestBodyEchMode$outboundSchema.optional(),
 });
 
 export function patchDomainRequestBody1ToJSON(
@@ -194,6 +227,11 @@ export function patchDomainRequestToJSON(
 }
 
 /** @internal */
+export const ResponseBodyEchMode$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyEchMode
+> = z.nativeEnum(ResponseBodyEchMode);
+
+/** @internal */
 export const PatchDomainResponseBody3$inboundSchema: z.ZodType<
   PatchDomainResponseBody3,
   z.ZodTypeDef,
@@ -202,6 +240,7 @@ export const PatchDomainResponseBody3$inboundSchema: z.ZodType<
   renew: types.optional(types.boolean()),
   customNameservers: types.optional(z.array(types.string())),
   zone: types.optional(types.boolean()),
+  echMode: ResponseBodyEchMode$inboundSchema,
 });
 
 export function patchDomainResponseBody3FromJSON(

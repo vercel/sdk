@@ -97,11 +97,11 @@ export type GetProjectsRequest = {
    */
   excludeRepos?: string | undefined;
   /**
-   * Filter results by connected Edge Config ID
+   * Filter results by connected Global Config ID
    */
   edgeConfigId?: string | undefined;
   /**
-   * Filter results by connected Edge Config Token ID
+   * Filter results by connected Global Config Token ID
    */
   edgeConfigTokenId?: string | undefined;
   deprecated?: boolean | undefined;

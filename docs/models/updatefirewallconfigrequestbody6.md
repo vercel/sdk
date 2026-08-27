@@ -1,6 +1,6 @@
 # UpdateFirewallConfigRequestBody6
 
-Remove a named condition
+Update a named condition
 
 ## Example Usage
 
@@ -10,6 +10,11 @@ import { UpdateFirewallConfigRequestBody6 } from "@vercel/sdk/models/updatefirew
 let value: UpdateFirewallConfigRequestBody6 = {
   action: "crs.update",
   id: "<id>",
+  value: {
+    name: "<value>",
+    active: true,
+    conditionGroup: [],
+  },
 };
 ```
 
@@ -19,4 +24,4 @@ let value: UpdateFirewallConfigRequestBody6 = {
 | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | `action`                                                                                                                           | [models.UpdateFirewallConfigRequestBodySecurityRequest6Action](../models/updatefirewallconfigrequestbodysecurityrequest6action.md) | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
 | `id`                                                                                                                               | *string*                                                                                                                           | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
-| `value`                                                                                                                            | *string*                                                                                                                           | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |
+| `value`                                                                                                                            | [models.UpdateFirewallConfigRequestBodySecurityRequestValue](../models/updatefirewallconfigrequestbodysecurityrequestvalue.md)     | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |

@@ -1,6 +1,6 @@
 # UpdateFirewallConfigRequestBody4
 
-Add a named condition
+Reorder a ruleset
 
 ## Example Usage
 
@@ -9,11 +9,8 @@ import { UpdateFirewallConfigRequestBody4 } from "@vercel/sdk/models/updatefirew
 
 let value: UpdateFirewallConfigRequestBody4 = {
   action: "rules.remove",
-  value: {
-    name: "<value>",
-    active: false,
-    conditionGroup: [],
-  },
+  id: "<id>",
+  value: "<value>",
 };
 ```
 
@@ -22,5 +19,5 @@ let value: UpdateFirewallConfigRequestBody4 = {
 | Field                                                                                                                              | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
 | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | `action`                                                                                                                           | [models.UpdateFirewallConfigRequestBodySecurityRequest4Action](../models/updatefirewallconfigrequestbodysecurityrequest4action.md) | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
-| `id`                                                                                                                               | *string*                                                                                                                           | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |
-| `value`                                                                                                                            | [models.UpdateFirewallConfigRequestBodySecurityValue](../models/updatefirewallconfigrequestbodysecurityvalue.md)                   | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
+| `id`                                                                                                                               | *string*                                                                                                                           | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
+| `value`                                                                                                                            | *any*                                                                                                                              | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |

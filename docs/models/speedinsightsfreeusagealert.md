@@ -5,7 +5,7 @@ Tracks notifications sent for the team-wide Speed Insights free allocation. The 
 ## Example Usage
 
 ```typescript
-import { SpeedInsightsFreeUsageAlert } from "@vercel/sdk/models/toaccount.js";
+import { SpeedInsightsFreeUsageAlert } from "@vercel/sdk/models/fromaccount.js";
 
 let value: SpeedInsightsFreeUsageAlert = {
   currentThreshold: 423.2,

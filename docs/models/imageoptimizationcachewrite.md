@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ImageOptimizationCacheWrite } from "@vercel/sdk/models/toaccount.js";
+import { ImageOptimizationCacheWrite } from "@vercel/sdk/models/fromaccount.js";
 
 let value: ImageOptimizationCacheWrite = {
   currentThreshold: 1794.32,

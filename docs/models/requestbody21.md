@@ -1,6 +1,6 @@
 # RequestBody21
 
-Toggle bot ID
+Update a managed rule group
 
 ## Example Usage
 
@@ -9,14 +9,15 @@ import { RequestBody21 } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
 let value: RequestBody21 = {
   action: "<value>",
-  value: true,
+  id: "bot_protection",
+  value: {},
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `action`           | *string*           | :heavy_check_mark: | N/A                |
-| `id`               | *string*           | :heavy_minus_sign: | N/A                |
-| `value`            | *boolean*          | :heavy_check_mark: | N/A                |
+| Field                                                                                                                                              | Type                                                                                                                                               | Required                                                                                                                                           | Description                                                                                                                                        |
+| -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `action`                                                                                                                                           | *string*                                                                                                                                           | :heavy_check_mark:                                                                                                                                 | N/A                                                                                                                                                |
+| `id`                                                                                                                                               | [models.UpdateFirewallConfigRequestBodyId](../models/updatefirewallconfigrequestbodyid.md)                                                         | :heavy_check_mark:                                                                                                                                 | N/A                                                                                                                                                |
+| `value`                                                                                                                                            | Record<string, [models.UpdateFirewallConfigRequestBodySecurityRequest21Value](../models/updatefirewallconfigrequestbodysecurityrequest21value.md)> | :heavy_check_mark:                                                                                                                                 | N/A                                                                                                                                                |

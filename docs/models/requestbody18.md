@@ -1,6 +1,6 @@
 # RequestBody18
 
-Remove an IP Blocking rule
+Update an IP Blocking rule
 
 ## Example Usage
 
@@ -10,13 +10,18 @@ import { RequestBody18 } from "@vercel/sdk/models/updatefirewallconfigop.js";
 let value: RequestBody18 = {
   action: "<value>",
   id: "<id>",
+  value: {
+    hostname: "gentle-monasticism.org",
+    ip: "128.99.14.212",
+    action: "bypass",
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `action`           | *string*           | :heavy_check_mark: | N/A                |
-| `id`               | *string*           | :heavy_check_mark: | N/A                |
-| `value`            | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                                                                                                              | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
+| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `action`                                                                                                                           | *string*                                                                                                                           | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
+| `id`                                                                                                                               | *string*                                                                                                                           | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
+| `value`                                                                                                                            | [models.UpdateFirewallConfigRequestBodySecurityRequest18Value](../models/updatefirewallconfigrequestbodysecurityrequest18value.md) | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |

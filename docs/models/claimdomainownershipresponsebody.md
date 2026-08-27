@@ -28,6 +28,7 @@ let value: ClaimDomainOwnershipResponseBody = {
       email: "demo@example.com",
       id: "ZspSRT4ljIEEmMHgoDwKWDei",
     },
+    echMode: "auto",
     name: "example.com",
     teamId: "<id>",
     boughtAt: 1613602938882,

@@ -1,6 +1,6 @@
 # RequestBody14
 
-Enable a managed rule
+Reorder a custom rule
 
 ## Example Usage
 
@@ -9,18 +9,15 @@ import { RequestBody14 } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
 let value: RequestBody14 = {
   action: "<value>",
-  id: "rce",
-  value: {
-    active: false,
-    action: "log",
-  },
+  id: "<id>",
+  value: 3740.8,
 };
 ```
 
 ## Fields
 
-| Field                                                                                                                              | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
-| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `action`                                                                                                                           | *string*                                                                                                                           | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
-| `id`                                                                                                                               | [models.Id](../models/id.md)                                                                                                       | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
-| `value`                                                                                                                            | [models.UpdateFirewallConfigRequestBodySecurityRequest14Value](../models/updatefirewallconfigrequestbodysecurityrequest14value.md) | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `action`           | *string*           | :heavy_check_mark: | N/A                |
+| `id`               | *string*           | :heavy_check_mark: | N/A                |
+| `value`            | *number*           | :heavy_check_mark: | N/A                |

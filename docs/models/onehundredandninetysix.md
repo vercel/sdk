@@ -5,27 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndNinetySix } from "@vercel/sdk/models/onehundredandninetysix.js";
+import { OneHundredAndNinetySix } from "@vercel/sdk/models/datacachewrite.js";
 
 let value: OneHundredAndNinetySix = {
-  directoryGroupId: "<id>",
-  directoryId: "<id>",
-  groupName: "<value>",
-  next: {
-    roles: {
-      "key": "BILLING",
-    },
-  },
   organizationId: "<id>",
+  rootTeamId: "<id>",
+  slug: "<value>",
+  name: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `directoryGroupId`                             | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `directoryId`                                  | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `groupName`                                    | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `next`                                         | [models.PayloadNext](../models/payloadnext.md) | :heavy_check_mark:                             | N/A                                            |
-| `organizationId`                               | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `organizationId`   | *string*           | :heavy_check_mark: | N/A                |
+| `rootTeamId`       | *string*           | :heavy_check_mark: | N/A                |
+| `slug`             | *string*           | :heavy_check_mark: | N/A                |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |

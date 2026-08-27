@@ -5,7 +5,7 @@ Specific project IDs or all projects on the team (`['*']`).
 ## Example Usage
 
 ```typescript
-import { UserEventPayloadProjectIds } from "@vercel/sdk/models/payloadscopetype.js";
+import { UserEventPayloadProjectIds } from "@vercel/sdk/models/twentytwo.js";
 
 let value: UserEventPayloadProjectIds = {
   type: "list",

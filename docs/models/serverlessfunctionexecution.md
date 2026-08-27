@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ServerlessFunctionExecution } from "@vercel/sdk/models/toaccount.js";
+import { ServerlessFunctionExecution } from "@vercel/sdk/models/fromaccount.js";
 
 let value: ServerlessFunctionExecution = {
   currentThreshold: 3387.82,

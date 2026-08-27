@@ -1,6 +1,6 @@
 # CreateEdgeConfigTransfer
 
-Keeps track of the current state of the Edge Config while it gets transferred.
+Keeps track of the current state of the Global Config while it gets transferred.
 
 ## Example Usage
 

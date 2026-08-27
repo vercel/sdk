@@ -18,6 +18,10 @@ export type DeleteSandboxRequest = {
    */
   projectId?: string | undefined;
   /**
+   * When true, snapshots of the deleted sandbox that are not referenced by any other sandbox are also deleted asynchronously. Defaults to false.
+   */
+  deleteOrphanSnapshots?: boolean | undefined;
+  /**
    * The Team identifier to perform the request on behalf of.
    */
   teamId?: string | undefined;
@@ -38,6 +42,7 @@ export type DeleteSandboxResponseBody = {
 export type DeleteSandboxRequest$Outbound = {
   name: string;
   projectId?: string | undefined;
+  deleteOrphanSnapshots: boolean;
   teamId?: string | undefined;
   slug?: string | undefined;
 };
@@ -50,6 +55,7 @@ export const DeleteSandboxRequest$outboundSchema: z.ZodType<
 > = z.object({
   name: z.string(),
   projectId: z.string().optional(),
+  deleteOrphanSnapshots: z.boolean().default(false),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });

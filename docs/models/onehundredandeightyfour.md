@@ -5,10 +5,11 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndEightyFour } from "@vercel/sdk/models/edgeconfigwrite.js";
+import { OneHundredAndEightyFour } from "@vercel/sdk/models/datacachewrite.js";
 
 let value: OneHundredAndEightyFour = {
   provider: "apple",
+  login: "Faustino.Schmidt56",
 };
 ```
 
@@ -17,3 +18,4 @@ let value: OneHundredAndEightyFour = {
 | Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
 | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
 | `provider`                                                                     | [models.UserEventPayload184Provider](../models/usereventpayload184provider.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `login`                                                                        | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |

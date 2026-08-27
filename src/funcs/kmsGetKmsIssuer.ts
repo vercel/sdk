@@ -34,7 +34,7 @@ import { Result } from "../types/fp.js";
  * Get an issuer
  *
  * @remarks
- * Retrieve a single KMS issuer by its ID.
+ * Retrieve a single KMS issuer by its ID. Accepts either a team bearer token (existing path) or an OIDC token authorized by one of the issuer's policies (e.g. a connex-grant token). The OIDC path returns the issuer without policies, since a policy token only proves signing access, not management access.
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
  */

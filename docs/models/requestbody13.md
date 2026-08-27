@@ -1,6 +1,6 @@
 # RequestBody13
 
-Reorder a custom rule
+Remove a custom rule
 
 ## Example Usage
 
@@ -10,7 +10,6 @@ import { RequestBody13 } from "@vercel/sdk/models/updatefirewallconfigop.js";
 let value: RequestBody13 = {
   action: "<value>",
   id: "<id>",
-  value: 5596.65,
 };
 ```
 
@@ -20,4 +19,4 @@ let value: RequestBody13 = {
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `action`           | *string*           | :heavy_check_mark: | N/A                |
 | `id`               | *string*           | :heavy_check_mark: | N/A                |
-| `value`            | *number*           | :heavy_check_mark: | N/A                |
+| `value`            | *string*           | :heavy_minus_sign: | N/A                |

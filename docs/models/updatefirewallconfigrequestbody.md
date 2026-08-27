@@ -44,11 +44,8 @@ const value: models.UpdateFirewallConfigRequestBody3 = {
 ```typescript
 const value: models.UpdateFirewallConfigRequestBody4 = {
   action: "rules.remove",
-  value: {
-    name: "<value>",
-    active: false,
-    conditionGroup: [],
-  },
+  id: "<id>",
+  value: "<value>",
 };
 ```
 
@@ -57,7 +54,6 @@ const value: models.UpdateFirewallConfigRequestBody4 = {
 ```typescript
 const value: models.UpdateFirewallConfigRequestBody5 = {
   action: "rules.priority",
-  id: "<id>",
   value: {
     name: "<value>",
     active: false,
@@ -72,6 +68,11 @@ const value: models.UpdateFirewallConfigRequestBody5 = {
 const value: models.UpdateFirewallConfigRequestBody6 = {
   action: "crs.update",
   id: "<id>",
+  value: {
+    name: "<value>",
+    active: true,
+    conditionGroup: [],
+  },
 };
 ```
 
@@ -81,9 +82,6 @@ const value: models.UpdateFirewallConfigRequestBody6 = {
 const value: models.UpdateFirewallConfigRequestBody7 = {
   action: "crs.disable",
   id: null,
-  value: {
-    action: "deny",
-  },
 };
 ```
 
@@ -93,6 +91,9 @@ const value: models.UpdateFirewallConfigRequestBody7 = {
 const value: models.UpdateFirewallConfigRequestBody8 = {
   action: "ip.insert",
   id: "<id>",
+  value: {
+    action: "log",
+  },
 };
 ```
 
@@ -101,7 +102,7 @@ const value: models.UpdateFirewallConfigRequestBody8 = {
 ```typescript
 const value: models.UpdateFirewallConfigRequestBody9 = {
   action: "ip.update",
-  value: false,
+  id: "<id>",
 };
 ```
 
@@ -110,12 +111,7 @@ const value: models.UpdateFirewallConfigRequestBody9 = {
 ```typescript
 const value: models.UpdateFirewallConfigRequestBody10 = {
   action: "ip.remove",
-  value: {
-    name: "<value>",
-    active: true,
-    conditionGroup: [],
-    action: {},
-  },
+  value: "<value>",
 };
 ```
 
@@ -124,7 +120,6 @@ const value: models.UpdateFirewallConfigRequestBody10 = {
 ```typescript
 const value: models.RequestBody11 = {
   action: "managedRules.update",
-  id: "<id>",
   value: {
     name: "<value>",
     active: false,
@@ -140,6 +135,12 @@ const value: models.RequestBody11 = {
 const value: models.RequestBody12 = {
   action: "<value>",
   id: "<id>",
+  value: {
+    name: "<value>",
+    active: false,
+    conditionGroup: [],
+    action: {},
+  },
 };
 ```
 
@@ -149,7 +150,6 @@ const value: models.RequestBody12 = {
 const value: models.RequestBody13 = {
   action: "<value>",
   id: "<id>",
-  value: 5596.65,
 };
 ```
 
@@ -158,11 +158,8 @@ const value: models.RequestBody13 = {
 ```typescript
 const value: models.RequestBody14 = {
   action: "<value>",
-  id: "rce",
-  value: {
-    active: false,
-    action: "log",
-  },
+  id: "<id>",
+  value: 3740.8,
 };
 ```
 
@@ -171,6 +168,11 @@ const value: models.RequestBody14 = {
 ```typescript
 const value: models.RequestBody15 = {
   action: "<value>",
+  id: "ma",
+  value: {
+    active: false,
+    action: "log",
+  },
 };
 ```
 
@@ -179,11 +181,6 @@ const value: models.RequestBody15 = {
 ```typescript
 const value: models.RequestBody16 = {
   action: "<value>",
-  value: {
-    hostname: "wrong-switchboard.name",
-    ip: "172.225.205.145",
-    action: "bypass",
-  },
 };
 ```
 
@@ -192,7 +189,6 @@ const value: models.RequestBody16 = {
 ```typescript
 const value: models.RequestBody17 = {
   action: "<value>",
-  id: "<id>",
   value: {
     hostname: "wavy-bob.org",
     ip: "b1f6:cbcb:1f8a:c3d0:9461:4e6f:e6dd:d8e4",
@@ -207,6 +203,11 @@ const value: models.RequestBody17 = {
 const value: models.RequestBody18 = {
   action: "<value>",
   id: "<id>",
+  value: {
+    hostname: "gentle-monasticism.org",
+    ip: "128.99.14.212",
+    action: "bypass",
+  },
 };
 ```
 
@@ -215,10 +216,7 @@ const value: models.RequestBody18 = {
 ```typescript
 const value: models.RequestBody19 = {
   action: "<value>",
-  id: "owasp",
-  value: {
-    active: true,
-  },
+  id: "<id>",
 };
 ```
 
@@ -228,7 +226,9 @@ const value: models.RequestBody19 = {
 const value: models.RequestBody20 = {
   action: "<value>",
   id: "ai_bots",
-  value: {},
+  value: {
+    active: true,
+  },
 };
 ```
 
@@ -237,7 +237,8 @@ const value: models.RequestBody20 = {
 ```typescript
 const value: models.RequestBody21 = {
   action: "<value>",
-  value: true,
+  id: "bot_protection",
+  value: {},
 };
 ```
 
@@ -245,6 +246,15 @@ const value: models.RequestBody21 = {
 
 ```typescript
 const value: models.RequestBody22 = {
+  action: "<value>",
+  value: false,
+};
+```
+
+### `models.RequestBody23`
+
+```typescript
+const value: models.RequestBody23 = {
   action: "<value>",
   value: "<value>",
 };

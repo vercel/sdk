@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSeventyOne } from "@vercel/sdk/models/edgeconfigwrite.js";
+import { OneHundredAndSeventyOne } from "@vercel/sdk/models/datacachewrite.js";
 
 let value: OneHundredAndSeventyOne = {
   resourceId: "<id>",
@@ -13,26 +13,35 @@ let value: OneHundredAndSeventyOne = {
   integrationSlug: "<value>",
   integrationProductSlug: "<value>",
   configurationId: "<id>",
-  requestKind: "raw_commands",
-  readonly: true,
-  commands: [
-    "<value 1>",
-    "<value 2>",
+  databaseName: "<value>",
+  queryType: "data-edit",
+  readonly: false,
+  rolledBack: false,
+  failedQueryIndex: 3204.8,
+  errorCode: "<value>",
+  queryCount: 3893.93,
+  queries: [
+    {
+      command: "<value>",
+    },
   ],
 };
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `resourceId`                                   | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `integrationId`                                | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `integrationSlug`                              | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `integrationProductSlug`                       | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `configurationId`                              | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `error`                                        | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `requestKind`                                  | [models.RequestKind](../models/requestkind.md) | :heavy_check_mark:                             | N/A                                            |
-| `readonly`                                     | *boolean*                                      | :heavy_check_mark:                             | N/A                                            |
-| `commands`                                     | *string*[]                                     | :heavy_check_mark:                             | N/A                                            |
-| `failedIndex`                                  | *number*                                       | :heavy_minus_sign:                             | N/A                                            |
+| Field                                      | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `resourceId`                               | *string*                                   | :heavy_check_mark:                         | N/A                                        |
+| `integrationId`                            | *string*                                   | :heavy_check_mark:                         | N/A                                        |
+| `integrationSlug`                          | *string*                                   | :heavy_check_mark:                         | N/A                                        |
+| `integrationProductSlug`                   | *string*                                   | :heavy_check_mark:                         | N/A                                        |
+| `configurationId`                          | *string*                                   | :heavy_check_mark:                         | N/A                                        |
+| `databaseName`                             | *string*                                   | :heavy_check_mark:                         | N/A                                        |
+| `queryType`                                | [models.QueryType](../models/querytype.md) | :heavy_check_mark:                         | N/A                                        |
+| `readonly`                                 | *boolean*                                  | :heavy_check_mark:                         | N/A                                        |
+| `rolledBack`                               | *boolean*                                  | :heavy_check_mark:                         | N/A                                        |
+| `failedQueryIndex`                         | *number*                                   | :heavy_check_mark:                         | N/A                                        |
+| `errorCode`                                | *string*                                   | :heavy_check_mark:                         | N/A                                        |
+| `queryCount`                               | *number*                                   | :heavy_check_mark:                         | N/A                                        |
+| `queries`                                  | [models.Queries](../models/queries.md)[]   | :heavy_check_mark:                         | N/A                                        |

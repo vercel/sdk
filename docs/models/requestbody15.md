@@ -1,6 +1,6 @@
 # RequestBody15
 
-Disable a managed rule
+Enable a managed rule
 
 ## Example Usage
 
@@ -9,13 +9,18 @@ import { RequestBody15 } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
 let value: RequestBody15 = {
   action: "<value>",
+  id: "ma",
+  value: {
+    active: false,
+    action: "log",
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `action`           | *string*           | :heavy_check_mark: | N/A                |
-| `id`               | *string*           | :heavy_minus_sign: | N/A                |
-| `value`            | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                                                                                                              | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
+| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `action`                                                                                                                           | *string*                                                                                                                           | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
+| `id`                                                                                                                               | [models.Id](../models/id.md)                                                                                                       | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
+| `value`                                                                                                                            | [models.UpdateFirewallConfigRequestBodySecurityRequest15Value](../models/updatefirewallconfigrequestbodysecurityrequest15value.md) | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |

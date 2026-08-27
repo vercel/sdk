@@ -1,6 +1,6 @@
 # RequestBody22
 
-Update log headers configuration
+Toggle bot ID
 
 ## Example Usage
 
@@ -9,7 +9,7 @@ import { RequestBody22 } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
 let value: RequestBody22 = {
   action: "<value>",
-  value: "<value>",
+  value: false,
 };
 ```
 
@@ -19,4 +19,4 @@ let value: RequestBody22 = {
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `action`           | *string*           | :heavy_check_mark: | N/A                |
 | `id`               | *string*           | :heavy_minus_sign: | N/A                |
-| `value`            | *any*              | :heavy_check_mark: | N/A                |
+| `value`            | *boolean*          | :heavy_check_mark: | N/A                |

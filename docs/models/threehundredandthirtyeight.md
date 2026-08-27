@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndThirtyEight } from "@vercel/sdk/models/usereventpayload327geolocationnames.js";
+import { ThreeHundredAndThirtyEight } from "@vercel/sdk/models/usereventpayload328names.js";
 
 let value: ThreeHundredAndThirtyEight = {
   transferRequestCode: "<value>",
@@ -13,16 +13,12 @@ let value: ThreeHundredAndThirtyEight = {
     id: "<id>",
     type: "blob",
   },
-  destinationTeamId: "<id>",
-  destinationTeamName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                            | Type                                             | Required                                         | Description                                      |
-| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| `transferRequestCode`                            | *string*                                         | :heavy_check_mark:                               | N/A                                              |
-| `store`                                          | [models.PayloadStore](../models/payloadstore.md) | :heavy_check_mark:                               | N/A                                              |
-| `destinationTeamId`                              | *string*                                         | :heavy_check_mark:                               | N/A                                              |
-| `destinationTeamName`                            | *string*                                         | :heavy_check_mark:                               | N/A                                              |
+| Field                              | Type                               | Required                           | Description                        |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| `transferRequestCode`              | *string*                           | :heavy_check_mark:                 | N/A                                |
+| `store`                            | [models.Store](../models/store.md) | :heavy_check_mark:                 | N/A                                |

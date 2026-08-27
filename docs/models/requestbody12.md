@@ -1,6 +1,6 @@
 # RequestBody12
 
-Remove a custom rule
+Update a custom rule
 
 ## Example Usage
 
@@ -10,13 +10,19 @@ import { RequestBody12 } from "@vercel/sdk/models/updatefirewallconfigop.js";
 let value: RequestBody12 = {
   action: "<value>",
   id: "<id>",
+  value: {
+    name: "<value>",
+    active: false,
+    conditionGroup: [],
+    action: {},
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `action`           | *string*           | :heavy_check_mark: | N/A                |
-| `id`               | *string*           | :heavy_check_mark: | N/A                |
-| `value`            | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                                                                                                              | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
+| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `action`                                                                                                                           | *string*                                                                                                                           | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
+| `id`                                                                                                                               | *string*                                                                                                                           | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
+| `value`                                                                                                                            | [models.UpdateFirewallConfigRequestBodySecurityRequest12Value](../models/updatefirewallconfigrequestbodysecurityrequest12value.md) | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |

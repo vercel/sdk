@@ -43,7 +43,7 @@ export type ResponseBodyItems = {
 
 export type ResponseBodyBackup = {
   /**
-   * Name for the Edge Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores).
+   * Name for the Global Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores).
    */
   slug: string;
   updatedAt: number;
@@ -75,7 +75,7 @@ export type GetEdgeConfigBackupResponseBodyItems = {
 
 export type Backup = {
   /**
-   * Name for the Edge Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores).
+   * Name for the Global Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores).
    */
   slug: string;
   updatedAt: number;
@@ -99,7 +99,7 @@ export type GetEdgeConfigBackupResponseBodyUser = {
 };
 
 /**
- * The object the API responds with when requesting an Edge Config backup
+ * The object the API responds with when requesting a Global Config backup
  */
 export type GetEdgeConfigBackupResponseBody1 = {
   id: string;

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Periods } from "@vercel/sdk/models/edgeconfigwrite.js";
+import { Periods } from "@vercel/sdk/models/datacachewrite.js";
 
 let value: Periods = {
   periodNumber: 4098.45,

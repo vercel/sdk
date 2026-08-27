@@ -45,6 +45,19 @@ export type GetDomainsCreator = {
 };
 
 /**
+ * Whether the domain is enrolled in Encrypted Client Hello. `auto` leaves the decision to Vercel, `enabled` always enrolls, and `disabled` never enrolls and opts out of automatic enrollment.
+ */
+export const GetDomainsEchMode = {
+  Auto: "auto",
+  Disabled: "disabled",
+  Enabled: "enabled",
+} as const;
+/**
+ * Whether the domain is enrolled in Encrypted Client Hello. `auto` leaves the decision to Vercel, `enabled` always enrolls, and `disabled` never enrolls and opts out of automatic enrollment.
+ */
+export type GetDomainsEchMode = ClosedEnum<typeof GetDomainsEchMode>;
+
+/**
  * The type of service the domain is handled by. `external` if the DNS is externally handled, `zeit.world` if handled with Vercel, or `na` if the service is not available.
  */
 export const GetDomainsServiceType = {
@@ -82,6 +95,10 @@ export type GetDomainsDomains = {
    * An object containing information of the domain creator, including the user's id, username, and email.
    */
   creator: GetDomainsCreator;
+  /**
+   * Whether the domain is enrolled in Encrypted Client Hello. `auto` leaves the decision to Vercel, `enabled` always enrolls, and `disabled` never enrolls and opts out of automatic enrollment.
+   */
+  echMode: GetDomainsEchMode;
   /**
    * The domain name.
    */
@@ -183,6 +200,11 @@ export function getDomainsCreatorFromJSON(
 }
 
 /** @internal */
+export const GetDomainsEchMode$inboundSchema: z.ZodNativeEnum<
+  typeof GetDomainsEchMode
+> = z.nativeEnum(GetDomainsEchMode);
+
+/** @internal */
 export const GetDomainsServiceType$inboundSchema: z.ZodNativeEnum<
   typeof GetDomainsServiceType
 > = z.nativeEnum(GetDomainsServiceType);
@@ -199,6 +221,7 @@ export const GetDomainsDomains$inboundSchema: z.ZodType<
   intendedNameservers: z.array(types.string()),
   customNameservers: types.optional(z.array(types.string())),
   creator: z.lazy(() => GetDomainsCreator$inboundSchema),
+  echMode: GetDomainsEchMode$inboundSchema,
   name: types.string(),
   teamId: types.nullable(types.string()),
   boughtAt: types.nullable(types.number()),

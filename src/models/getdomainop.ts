@@ -36,6 +36,19 @@ export type GetDomainCreator = {
 };
 
 /**
+ * Whether the domain is enrolled in Encrypted Client Hello. `auto` leaves the decision to Vercel, `enabled` always enrolls, and `disabled` never enrolls and opts out of automatic enrollment.
+ */
+export const GetDomainEchMode = {
+  Auto: "auto",
+  Disabled: "disabled",
+  Enabled: "enabled",
+} as const;
+/**
+ * Whether the domain is enrolled in Encrypted Client Hello. `auto` leaves the decision to Vercel, `enabled` always enrolls, and `disabled` never enrolls and opts out of automatic enrollment.
+ */
+export type GetDomainEchMode = ClosedEnum<typeof GetDomainEchMode>;
+
+/**
  * The type of service the domain is handled by. `external` if the DNS is externally handled, `zeit.world` if handled with Vercel, or `na` if the service is not available.
  */
 export const GetDomainServiceType = {
@@ -74,6 +87,10 @@ export type GetDomainDomain = {
    * An object containing information of the domain creator, including the user's id, username, and email.
    */
   creator: GetDomainCreator;
+  /**
+   * Whether the domain is enrolled in Encrypted Client Hello. `auto` leaves the decision to Vercel, `enabled` always enrolls, and `disabled` never enrolls and opts out of automatic enrollment.
+   */
+  echMode: GetDomainEchMode;
   /**
    * The domain name.
    */
@@ -167,6 +184,11 @@ export function getDomainCreatorFromJSON(
 }
 
 /** @internal */
+export const GetDomainEchMode$inboundSchema: z.ZodNativeEnum<
+  typeof GetDomainEchMode
+> = z.nativeEnum(GetDomainEchMode);
+
+/** @internal */
 export const GetDomainServiceType$inboundSchema: z.ZodNativeEnum<
   typeof GetDomainServiceType
 > = z.nativeEnum(GetDomainServiceType);
@@ -184,6 +206,7 @@ export const GetDomainDomain$inboundSchema: z.ZodType<
   intendedNameservers: z.array(types.string()),
   customNameservers: types.optional(z.array(types.string())),
   creator: z.lazy(() => GetDomainCreator$inboundSchema),
+  echMode: GetDomainEchMode$inboundSchema,
   name: types.string(),
   teamId: types.nullable(types.string()),
   boughtAt: types.nullable(types.number()),

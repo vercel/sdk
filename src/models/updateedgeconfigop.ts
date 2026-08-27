@@ -41,7 +41,7 @@ export type UpdateEdgeConfigPurpose =
   | UpdateEdgeConfigPurpose2;
 
 /**
- * Keeps track of the current state of the Edge Config while it gets transferred.
+ * Keeps track of the current state of the Global Config while it gets transferred.
  */
 export type UpdateEdgeConfigTransfer = {
   fromAccountId: string;
@@ -52,18 +52,18 @@ export type UpdateEdgeConfigTransfer = {
 export type UpdateEdgeConfigSchema = {};
 
 /**
- * An Edge Config
+ * A Global Config
  */
 export type UpdateEdgeConfigResponseBody = {
   id: string;
   createdAt: number;
   /**
-   * The ID of the user who created the Edge Config, optional because it is not always set.
+   * The ID of the user who created the Global Config, optional because it is not always set.
    */
   createdBy?: string | undefined;
   ownerId: string;
   /**
-   * Name for the Edge Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores).
+   * Name for the Global Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores).
    */
   slug: string;
   updatedAt: number;
@@ -71,12 +71,12 @@ export type UpdateEdgeConfigResponseBody = {
   purpose?: UpdateEdgeConfigPurpose1 | UpdateEdgeConfigPurpose2 | undefined;
   deletedAt?: number | null | undefined;
   /**
-   * Keeps track of the current state of the Edge Config while it gets transferred.
+   * Keeps track of the current state of the Global Config while it gets transferred.
    */
   transfer?: UpdateEdgeConfigTransfer | undefined;
   schema?: UpdateEdgeConfigSchema | undefined;
   /**
-   * Timestamp of when the Edge Config was synced to DynamoDB initially. It is only set when syncing the entire Edge Config, not when updating.
+   * Timestamp of when the Global Config was synced to DynamoDB initially. It is only set when syncing the entire Global Config, not when updating.
    */
   syncedToDynamoAt?: number | undefined;
   sizeInBytes: number;

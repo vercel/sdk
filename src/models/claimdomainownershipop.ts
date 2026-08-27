@@ -36,6 +36,21 @@ export type ClaimDomainOwnershipCreator = {
 };
 
 /**
+ * Whether the domain is enrolled in Encrypted Client Hello. `auto` leaves the decision to Vercel, `enabled` always enrolls, and `disabled` never enrolls and opts out of automatic enrollment.
+ */
+export const ClaimDomainOwnershipEchMode = {
+  Auto: "auto",
+  Disabled: "disabled",
+  Enabled: "enabled",
+} as const;
+/**
+ * Whether the domain is enrolled in Encrypted Client Hello. `auto` leaves the decision to Vercel, `enabled` always enrolls, and `disabled` never enrolls and opts out of automatic enrollment.
+ */
+export type ClaimDomainOwnershipEchMode = ClosedEnum<
+  typeof ClaimDomainOwnershipEchMode
+>;
+
+/**
  * The type of service the domain is handled by. `external` if the DNS is externally handled, `zeit.world` if handled with Vercel, or `na` if the service is not available.
  */
 export const ServiceType = {
@@ -73,6 +88,10 @@ export type ClaimDomainOwnershipDomain = {
    * An object containing information of the domain creator, including the user's id, username, and email.
    */
   creator: ClaimDomainOwnershipCreator;
+  /**
+   * Whether the domain is enrolled in Encrypted Client Hello. `auto` leaves the decision to Vercel, `enabled` always enrolls, and `disabled` never enrolls and opts out of automatic enrollment.
+   */
+  echMode: ClaimDomainOwnershipEchMode;
   /**
    * The domain name.
    */
@@ -168,6 +187,11 @@ export function claimDomainOwnershipCreatorFromJSON(
 }
 
 /** @internal */
+export const ClaimDomainOwnershipEchMode$inboundSchema: z.ZodNativeEnum<
+  typeof ClaimDomainOwnershipEchMode
+> = z.nativeEnum(ClaimDomainOwnershipEchMode);
+
+/** @internal */
 export const ServiceType$inboundSchema: z.ZodNativeEnum<typeof ServiceType> = z
   .nativeEnum(ServiceType);
 
@@ -183,6 +207,7 @@ export const ClaimDomainOwnershipDomain$inboundSchema: z.ZodType<
   intendedNameservers: z.array(types.string()),
   customNameservers: types.optional(z.array(types.string())),
   creator: z.lazy(() => ClaimDomainOwnershipCreator$inboundSchema),
+  echMode: ClaimDomainOwnershipEchMode$inboundSchema,
   name: types.string(),
   teamId: types.nullable(types.string()),
   boughtAt: types.nullable(types.number()),

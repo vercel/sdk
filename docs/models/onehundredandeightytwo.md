@@ -5,10 +5,10 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndEightyTwo } from "@vercel/sdk/models/edgeconfigwrite.js";
+import { OneHundredAndEightyTwo } from "@vercel/sdk/models/datacachewrite.js";
 
 let value: OneHundredAndEightyTwo = {
-  logDrainUrl: "https://moist-knuckle.com/",
+  logDrainUrl: "https://mealy-ad.net",
 };
 ```
 

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadBilling } from "@vercel/sdk/models/edgeconfigwrite.js";
+import { PayloadBilling } from "@vercel/sdk/models/datacachewrite.js";
 
 let value: PayloadBilling = {
   plan: "pro",
@@ -14,4 +14,4 @@ let value: PayloadBilling = {
 
 | Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `plan`                                                                 | [models.UserEventPayload163Plan](../models/usereventpayload163plan.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| `plan`                                                                 | [models.UserEventPayload164Plan](../models/usereventpayload164plan.md) | :heavy_check_mark:                                                     | N/A                                                                    |

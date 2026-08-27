@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload217Next } from "@vercel/sdk/models/onehundredandninetysix.js";
+import { UserEventPayload217Next } from "@vercel/sdk/models/payloadroles.js";
 
 let value: UserEventPayload217Next = {};
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `passport`                                                                     | [models.UserEventPayload217Passport](../models/usereventpayload217passport.md) | :heavy_minus_sign:                                                             | N/A                                                                            |
+| Field                                                  | Type                                                   | Required                                               | Description                                            |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| `passport`                                             | [models.PayloadPassport](../models/payloadpassport.md) | :heavy_minus_sign:                                     | N/A                                                    |

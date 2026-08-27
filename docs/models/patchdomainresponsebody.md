@@ -23,6 +23,8 @@ const value: models.PatchDomainResponseBody2 = {
 ### `models.PatchDomainResponseBody3`
 
 ```typescript
-const value: models.PatchDomainResponseBody3 = {};
+const value: models.PatchDomainResponseBody3 = {
+  echMode: "auto",
+};
 ```
 

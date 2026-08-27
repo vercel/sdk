@@ -1,6 +1,6 @@
 # GetEdgeConfigBackupResponseBody1
 
-The object the API responds with when requesting an Edge Config backup
+The object the API responds with when requesting a Global Config backup
 
 ## Example Usage
 

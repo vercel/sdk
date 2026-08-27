@@ -1,6 +1,6 @@
 # UpdateFirewallConfigRequestBody10
 
-Add a custom rule
+Enable Firewall
 
 ## Example Usage
 
@@ -9,12 +9,7 @@ import { UpdateFirewallConfigRequestBody10 } from "@vercel/sdk/models/updatefire
 
 let value: UpdateFirewallConfigRequestBody10 = {
   action: "ip.remove",
-  value: {
-    name: "<value>",
-    active: true,
-    conditionGroup: [],
-    action: {},
-  },
+  value: "<value>",
 };
 ```
 
@@ -24,4 +19,4 @@ let value: UpdateFirewallConfigRequestBody10 = {
 | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
 | `action`                                                                                                                             | [models.UpdateFirewallConfigRequestBodySecurityRequest10Action](../models/updatefirewallconfigrequestbodysecurityrequest10action.md) | :heavy_check_mark:                                                                                                                   | N/A                                                                                                                                  |
 | `id`                                                                                                                                 | *string*                                                                                                                             | :heavy_minus_sign:                                                                                                                   | N/A                                                                                                                                  |
-| `value`                                                                                                                              | [models.UpdateFirewallConfigRequestBodySecurityRequest10Value](../models/updatefirewallconfigrequestbodysecurityrequest10value.md)   | :heavy_check_mark:                                                                                                                   | N/A                                                                                                                                  |
+| `value`                                                                                                                              | *any*                                                                                                                                | :heavy_check_mark:                                                                                                                   | N/A                                                                                                                                  |

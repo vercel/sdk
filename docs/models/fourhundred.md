@@ -5,10 +5,9 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundred } from "@vercel/sdk/models/threehundredandninetyseven.js";
+import { FourHundred } from "@vercel/sdk/models/fourhundred.js";
 
 let value: FourHundred = {
-  autoBlockPrevented: false,
   actorId: "<id>",
   actorType: "admin",
 };
@@ -18,8 +17,6 @@ let value: FourHundred = {
 
 | Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
 | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `autoBlockPrevented`                                                             | *boolean*                                                                        | :heavy_check_mark:                                                               | N/A                                                                              |
-| `preventUntil`                                                                   | *number*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
 | `actorId`                                                                        | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
 | `actorType`                                                                      | [models.UserEventPayload400ActorType](../models/usereventpayload400actortype.md) | :heavy_check_mark:                                                               | N/A                                                                              |
 | `reason`                                                                         | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |

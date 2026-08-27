@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSeventyTwo } from "@vercel/sdk/models/edgeconfigwrite.js";
+import { OneHundredAndSeventyTwo } from "@vercel/sdk/models/datacachewrite.js";
 
 let value: OneHundredAndSeventyTwo = {
   resourceId: "<id>",
@@ -13,20 +13,27 @@ let value: OneHundredAndSeventyTwo = {
   integrationSlug: "<value>",
   integrationProductSlug: "<value>",
   configurationId: "<id>",
-  requestKind: "list_keys",
+  requestKind: "raw_commands",
+  readonly: true,
+  commands: [
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
+  ],
 };
 ```
 
 ## Fields
 
-| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `resourceId`                                                 | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `integrationId`                                              | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `integrationSlug`                                            | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `integrationProductSlug`                                     | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `configurationId`                                            | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `error`                                                      | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
-| `requestKind`                                                | [models.PayloadRequestKind](../models/payloadrequestkind.md) | :heavy_check_mark:                                           | N/A                                                          |
-| `pattern`                                                    | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
-| `type`                                                       | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `resourceId`                                   | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `integrationId`                                | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `integrationSlug`                              | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `integrationProductSlug`                       | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `configurationId`                              | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `error`                                        | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `requestKind`                                  | [models.RequestKind](../models/requestkind.md) | :heavy_check_mark:                             | N/A                                            |
+| `readonly`                                     | *boolean*                                      | :heavy_check_mark:                             | N/A                                            |
+| `commands`                                     | *string*[]                                     | :heavy_check_mark:                             | N/A                                            |
+| `failedIndex`                                  | *number*                                       | :heavy_minus_sign:                             | N/A                                            |

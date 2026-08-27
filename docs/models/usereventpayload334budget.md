@@ -5,7 +5,7 @@ Represents a budget for tracking and notifying teams on their spending.
 ## Example Usage
 
 ```typescript
-import { UserEventPayload334Budget } from "@vercel/sdk/models/usereventpayload327geolocationnames.js";
+import { UserEventPayload334Budget } from "@vercel/sdk/models/usereventpayload328names.js";
 
 let value: UserEventPayload334Budget = {
   type: "fixed",
@@ -39,6 +39,6 @@ let value: UserEventPayload334Budget = {
 | `updatedAt`                                                            | *number*                                                               | :heavy_minus_sign:                                                     | Date time when budget is updated last                                  |
 | `isActive`                                                             | *boolean*                                                              | :heavy_check_mark:                                                     | Is the budget currently active for a customer                          |
 | `pauseProjects`                                                        | *boolean*                                                              | :heavy_minus_sign:                                                     | Should all projects be paused if budget is exceeded                    |
-| `pricingPlan`                                                          | [models.PayloadPricingPlan](../models/payloadpricingplan.md)           | :heavy_minus_sign:                                                     | The acive pricing plan the team is billed with                         |
+| `pricingPlan`                                                          | [models.PricingPlan](../models/pricingplan.md)                         | :heavy_minus_sign:                                                     | The acive pricing plan the team is billed with                         |
 | `teamId`                                                               | *string*                                                               | :heavy_check_mark:                                                     | Partition key                                                          |
 | `id`                                                                   | *string*                                                               | :heavy_check_mark:                                                     | Sort key that needs to be unique per teamId                            |

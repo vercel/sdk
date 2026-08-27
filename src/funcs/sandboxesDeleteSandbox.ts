@@ -102,6 +102,7 @@ async function $do(
   const path = pathToFunc("/v2/sandboxes/{name}")(pathParams);
 
   const query = encodeFormQuery({
+    "deleteOrphanSnapshots": payload.deleteOrphanSnapshots,
     "projectId": payload.projectId,
     "slug": payload.slug,
     "teamId": payload.teamId,

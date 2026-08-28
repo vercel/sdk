@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ConnexForwardTriggers } from "@vercel/sdk/models/fromaccount.js";
+import { ConnexForwardTriggers } from "@vercel/sdk/models/previousrule.js";
 
 let value: ConnexForwardTriggers = {
   updatedAt: 7485.41,

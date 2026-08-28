@@ -14,7 +14,7 @@ import { pathToFunc } from "../lib/url.js";
 import {
   CreateDeploymentRequest,
   CreateDeploymentRequest$outboundSchema,
-} from "../models/createdeploymenthas1.js";
+} from "../models/createdeploymenthasdeploymentsvalue.js";
 import {
   CreateDeploymentResponseBody,
   CreateDeploymentResponseBody$inboundSchema,

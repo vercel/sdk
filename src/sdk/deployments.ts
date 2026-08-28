@@ -17,8 +17,7 @@ import { deploymentsUpdateIntegrationDeploymentAction } from "../funcs/deploymen
 import { deploymentsUploadFile } from "../funcs/deploymentsUploadFile.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import { CancelDeploymentResponseBody } from "../models/canceldeploymentresponsebody.js";
-import { CancelDeploymentRequest } from "../models/canceldeploymentservicesdeploymentsarchitecture.js";
-import { CreateDeploymentRequest } from "../models/createdeploymenthas1.js";
+import { CreateDeploymentRequest } from "../models/createdeploymenthasdeploymentsvalue.js";
 import { CreateDeploymentResponseBody } from "../models/createdeploymentresponsebody.js";
 import {
   DeleteDeploymentRequest,
@@ -37,6 +36,7 @@ import {
   GetDeploymentsResponseBody,
 } from "../models/getdeploymentsop.js";
 import { ListDeploymentFilesRequest } from "../models/listdeploymentfilesop.js";
+import { CancelDeploymentRequest } from "../models/routesdestination.js";
 import { UpdateIntegrationDeploymentActionRequest } from "../models/updateintegrationdeploymentactionop.js";
 import {
   UploadFileRequest,

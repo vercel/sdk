@@ -235,11 +235,11 @@ export type AuthUserResourceConfig = {
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
-  nodeType?: string | undefined;
+  concurrentBuilds?: number | undefined;
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
-  concurrentBuilds?: number | undefined;
+  nodeType?: string | undefined;
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
@@ -755,8 +755,8 @@ export const AuthUserResourceConfig$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  nodeType: types.optional(types.string()),
   concurrentBuilds: types.optional(types.number()),
+  nodeType: types.optional(types.string()),
   elasticConcurrencyEnabled: types.optional(types.boolean()),
   buildEntitlements: types.optional(
     z.lazy(() => AuthUserBuildEntitlements$inboundSchema),

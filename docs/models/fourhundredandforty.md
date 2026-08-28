@@ -5,34 +5,69 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndForty } from "@vercel/sdk/models/fourhundred.js";
+import { FourHundredAndForty } from "@vercel/sdk/models/fourhundredandone.js";
 
 let value: FourHundredAndForty = {
-  tokenId: "<id>",
-  tokenName: "<value>",
-  origin: "sms",
-  scope: "user",
+  before: {
+    policyId: "<id>",
+    clientId: "<id>",
+    issuerUrl: "https://unpleasant-pneumonia.biz",
+    teamId: "<id>",
+    name: "<value>",
+    claims: [
+      {
+        name: "<value>",
+        values: [
+          {
+            value: "<value>",
+            wildcards: true,
+          },
+        ],
+      },
+    ],
+    permissions: [
+      "<value 1>",
+    ],
+    resources: {
+      projectIds: [
+        "<value 1>",
+        "<value 2>",
+      ],
+    },
+    createdAt: 1095.6,
+    updatedAt: 403.29,
+  },
+  after: {
+    policyId: "<id>",
+    clientId: "<id>",
+    issuerUrl: "https://kaleidoscopic-dandelion.org/",
+    teamId: "<id>",
+    name: "<value>",
+    claims: [
+      {
+        name: "<value>",
+        values: [
+          {
+            value: "<value>",
+            wildcards: false,
+          },
+        ],
+      },
+    ],
+    permissions: [
+      "<value 1>",
+    ],
+    resources: null,
+    createdAt: 4336.39,
+    updatedAt: 3580.61,
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                                                                                                                                    | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `tokenId`                                                                                                                                                                | *string*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The token's public ID.                                                                                                                                                   |
-| `tokenPrefix`                                                                                                                                                            | [models.PayloadTokenPrefix](../models/payloadtokenprefix.md)                                                                                                             | :heavy_minus_sign:                                                                                                                                                       | The token prefix used when showing a safe checksum-style fingerprint.                                                                                                    |
-| `tokenSuffix`                                                                                                                                                            | *string*                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                       | The token checksum suffix.                                                                                                                                               |
-| `tokenName`                                                                                                                                                              | *string*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | User-supplied name of the token.                                                                                                                                         |
-| `origin`                                                                                                                                                                 | [models.Origin](../models/origin.md)                                                                                                                                     | :heavy_check_mark:                                                                                                                                                       | How the token was issued. Always `'manual'` for explicit PAT creation.                                                                                                   |
-| `scope`                                                                                                                                                                  | [models.UserEventPayloadScope](../models/usereventpayloadscope.md)                                                                                                       | :heavy_check_mark:                                                                                                                                                       | Scope of the token: - `'user'`: full-account token (not tied to any team). - `'team'`: scoped to a single team. - `'project'`: scoped to a single project within a team. |
-| `teamId`                                                                                                                                                                 | *string*                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                       | Present when `scope` is `'team'` or `'project'`.                                                                                                                         |
-| `teamSlug`                                                                                                                                                               | *string*                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                       | Present when `scope` is `'team'` or `'project'`.                                                                                                                         |
-| `projectId`                                                                                                                                                              | *string*                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                       | Present when `scope` is `'project'`.                                                                                                                                     |
-| `projectScope`                                                                                                                                                           | [models.ProjectScope](../models/projectscope.md)                                                                                                                         | :heavy_minus_sign:                                                                                                                                                       | Present when `scope` is `'project'`.                                                                                                                                     |
-| `expiresAt`                                                                                                                                                              | *number*                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                       | Unix epoch milliseconds. Absent when the token never expires.                                                                                                            |
-| `hasAuthorizationDetails`                                                                                                                                                | *boolean*                                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                       | Whether the token was issued with RFC 9396 authorization details.                                                                                                        |
-| `ip`                                                                                                                                                                     | *string*                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                       | N/A                                                                                                                                                                      |
-| `geolocation`                                                                                                                                                            | [models.UserEventPayload440Geolocation](../models/usereventpayload440geolocation.md)                                                                                     | :heavy_minus_sign:                                                                                                                                                       | N/A                                                                                                                                                                      |
-| `userAgent`                                                                                                                                                              | *string*                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                       | N/A                                                                                                                                                                      |
-| `reqId`                                                                                                                                                                  | *string*                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                       | N/A                                                                                                                                                                      |
-| `reqUrl`                                                                                                                                                                 | *string*                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                       | N/A                                                                                                                                                                      |
+| Field                                                                                                                                                                                                                | Type                                                                                                                                                                                                                 | Required                                                                                                                                                                                                             | Description                                                                                                                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `before`                                                                                                                                                                                                             | [models.PayloadBefore](../models/payloadbefore.md)                                                                                                                                                                   | :heavy_check_mark:                                                                                                                                                                                                   | A full point-in-time snapshot of an OIDC exchange policy, captured on every lifecycle event so the audit trail records exactly what the policy looked like. Mirrors the management endpoints' public response shape. |
+| `after`                                                                                                                                                                                                              | [models.PayloadAfter](../models/payloadafter.md)                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                   | A full point-in-time snapshot of an OIDC exchange policy, captured on every lifecycle event so the audit trail records exactly what the policy looked like. Mirrors the management endpoints' public response shape. |
+| `appName`                                                                                                                                                                                                            | *string*                                                                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                                   | N/A                                                                                                                                                                                                                  |

@@ -160,6 +160,7 @@ const value: models.CountPageviewsData1 = {
   messageId: "<id>",
   eventType: "<value>",
   notificationUrl: "https://bare-extension.org",
+  queueRegion: "<value>",
   sandboxSessionId: "<id>",
   sandboxName: "<value>",
   workflowRunId: "<id>",

@@ -12,7 +12,7 @@ let value: ConnectConnectorCreateResult = {
   uid: "<id>",
   createdAt: 2231.15,
   updatedAt: 8091.26,
-  type: "linear",
+  type: "linq",
   service: "<value>",
   name: "<value>",
   displayName: "Andres66",

@@ -54,6 +54,8 @@ import {
   CreateDeploymentResponseBodyType$inboundSchema,
   ResponseBodyAliasAssignedAt,
   ResponseBodyAliasAssignedAt$inboundSchema,
+  ResponseBodyAtproto,
+  ResponseBodyAtproto$inboundSchema,
   ResponseBodyBuild,
   ResponseBodyBuild$inboundSchema,
   ResponseBodyBuilds,
@@ -70,16 +72,14 @@ import {
   ResponseBodyPlan$inboundSchema,
   ResponseBodyResourceConfig,
   ResponseBodyResourceConfig$inboundSchema,
-} from "./createdeploymenthas1.js";
+} from "./createdeploymenthasdeploymentsvalue.js";
 import {
+  CreateDeploymentMissingDeploymentsResponse200ApplicationJson2,
+  CreateDeploymentMissingDeploymentsResponse200ApplicationJson2$inboundSchema,
   CreateDeploymentRoutesDeployments2,
   CreateDeploymentRoutesDeployments2$inboundSchema,
   CreateDeploymentRoutesDeploymentsHas,
   CreateDeploymentRoutesDeploymentsHas$inboundSchema,
-  CreateDeploymentRoutesDeploymentsMissing,
-  CreateDeploymentRoutesDeploymentsMissing$inboundSchema,
-  CreateDeploymentRoutesDeploymentsMitigate,
-  CreateDeploymentRoutesDeploymentsMitigate$inboundSchema,
   CreateDeploymentServicesDeploymentsBuilder,
   CreateDeploymentServicesDeploymentsBuilder$inboundSchema,
   CreateDeploymentServicesFunctions,
@@ -88,15 +88,52 @@ import {
   CreateDeploymentServicesHeaders$inboundSchema,
   CreateDeploymentServicesRedirects,
   CreateDeploymentServicesRedirects$inboundSchema,
+  CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1Missing2,
+  CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1Missing2$inboundSchema,
   ResponseBodyRoutes,
   ResponseBodyRoutes$inboundSchema,
   ServicesBindings,
   ServicesBindings$inboundSchema,
   ServicesRewrites,
   ServicesRewrites$inboundSchema,
-} from "./createdeploymentroutesdeploymentsmitigate.js";
+} from "./createdeploymentvaluedeploymentsresponse200applicationjsonresponsebody2services2routes1missing2.js";
 import { FlagJSONValue, FlagJSONValue$inboundSchema } from "./flagjsonvalue.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type CreateDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody2Services2Value =
+  | string
+  | CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1Missing2;
+
+export type CreateDeploymentMissingDeploymentsResponse200ApplicationJson1 = {
+  type: "host";
+  value:
+    | string
+    | CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1Missing2;
+};
+
+export type CreateDeploymentRoutesDeploymentsMissing =
+  | CreateDeploymentMissingDeploymentsResponse200ApplicationJson1
+  | (CreateDeploymentMissingDeploymentsResponse200ApplicationJson2 & {
+    type: "cookie";
+  })
+  | (CreateDeploymentMissingDeploymentsResponse200ApplicationJson2 & {
+    type: "header";
+  })
+  | (CreateDeploymentMissingDeploymentsResponse200ApplicationJson2 & {
+    type: "query";
+  });
+
+export const CreateDeploymentRoutesDeploymentsAction = {
+  Challenge: "challenge",
+  Deny: "deny",
+} as const;
+export type CreateDeploymentRoutesDeploymentsAction = ClosedEnum<
+  typeof CreateDeploymentRoutesDeploymentsAction
+>;
+
+export type CreateDeploymentRoutesDeploymentsMitigate = {
+  action: CreateDeploymentRoutesDeploymentsAction;
+};
 
 export const CreateDeploymentTransformsDeploymentsResponse200Op = {
   Set: "set",
@@ -215,7 +252,20 @@ export type CreateDeploymentRoutesDeployments1 = {
   important?: boolean | undefined;
   status?: number | undefined;
   has?: Array<CreateDeploymentRoutesDeploymentsHas> | undefined;
-  missing?: Array<CreateDeploymentRoutesDeploymentsMissing> | undefined;
+  missing?:
+    | Array<
+      | CreateDeploymentMissingDeploymentsResponse200ApplicationJson1
+      | (CreateDeploymentMissingDeploymentsResponse200ApplicationJson2 & {
+        type: "cookie";
+      })
+      | (CreateDeploymentMissingDeploymentsResponse200ApplicationJson2 & {
+        type: "header";
+      })
+      | (CreateDeploymentMissingDeploymentsResponse200ApplicationJson2 & {
+        type: "query";
+      })
+    >
+    | undefined;
   mitigate?: CreateDeploymentRoutesDeploymentsMitigate | undefined;
   transforms?:
     | Array<
@@ -1289,6 +1339,7 @@ export type CreateDeploymentResponseBody2 = {
   connectConfigurationId?: string | undefined;
   createdIn: string;
   crons?: Array<ResponseBodyCrons> | undefined;
+  atproto?: ResponseBodyAtproto | undefined;
   functions?: { [k: string]: ResponseBodyFunctions } | null | undefined;
   /**
    * Whether this deployment completed through the instant static fast path.
@@ -1423,6 +1474,124 @@ export type CreateDeploymentResponseBody1 = {
 export type CreateDeploymentResponseBody =
   | CreateDeploymentResponseBody2
   | CreateDeploymentResponseBody1;
+
+/** @internal */
+export const CreateDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody2Services2Value$inboundSchema:
+  z.ZodType<
+    CreateDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody2Services2Value,
+    z.ZodTypeDef,
+    unknown
+  > = smartUnion([
+    types.string(),
+    CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1Missing2$inboundSchema,
+  ]);
+
+export function createDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody2Services2ValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody2Services2Value,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody2Services2Value$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody2Services2Value' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateDeploymentMissingDeploymentsResponse200ApplicationJson1$inboundSchema:
+  z.ZodType<
+    CreateDeploymentMissingDeploymentsResponse200ApplicationJson1,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    type: types.literal("host"),
+    value: smartUnion([
+      types.string(),
+      CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1Missing2$inboundSchema,
+    ]),
+  });
+
+export function createDeploymentMissingDeploymentsResponse200ApplicationJSON1FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateDeploymentMissingDeploymentsResponse200ApplicationJson1,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateDeploymentMissingDeploymentsResponse200ApplicationJson1$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentMissingDeploymentsResponse200ApplicationJson1' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateDeploymentRoutesDeploymentsMissing$inboundSchema: z.ZodType<
+  CreateDeploymentRoutesDeploymentsMissing,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() =>
+    CreateDeploymentMissingDeploymentsResponse200ApplicationJson1$inboundSchema
+  ),
+  CreateDeploymentMissingDeploymentsResponse200ApplicationJson2$inboundSchema
+    .and(z.object({ type: z.literal("cookie") })),
+  CreateDeploymentMissingDeploymentsResponse200ApplicationJson2$inboundSchema
+    .and(z.object({ type: z.literal("header") })),
+  CreateDeploymentMissingDeploymentsResponse200ApplicationJson2$inboundSchema
+    .and(z.object({ type: z.literal("query") })),
+]);
+
+export function createDeploymentRoutesDeploymentsMissingFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateDeploymentRoutesDeploymentsMissing,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateDeploymentRoutesDeploymentsMissing$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateDeploymentRoutesDeploymentsMissing' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateDeploymentRoutesDeploymentsAction$inboundSchema:
+  z.ZodNativeEnum<typeof CreateDeploymentRoutesDeploymentsAction> = z
+    .nativeEnum(CreateDeploymentRoutesDeploymentsAction);
+
+/** @internal */
+export const CreateDeploymentRoutesDeploymentsMitigate$inboundSchema: z.ZodType<
+  CreateDeploymentRoutesDeploymentsMitigate,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  action: CreateDeploymentRoutesDeploymentsAction$inboundSchema,
+});
+
+export function createDeploymentRoutesDeploymentsMitigateFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateDeploymentRoutesDeploymentsMitigate,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateDeploymentRoutesDeploymentsMitigate$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateDeploymentRoutesDeploymentsMitigate' from JSON`,
+  );
+}
 
 /** @internal */
 export const CreateDeploymentTransformsDeploymentsResponse200Op$inboundSchema:
@@ -1748,10 +1917,20 @@ export const CreateDeploymentRoutesDeployments1$inboundSchema: z.ZodType<
     z.array(CreateDeploymentRoutesDeploymentsHas$inboundSchema),
   ),
   missing: types.optional(
-    z.array(CreateDeploymentRoutesDeploymentsMissing$inboundSchema),
+    z.array(z.union([
+      z.lazy(() =>
+        CreateDeploymentMissingDeploymentsResponse200ApplicationJson1$inboundSchema
+      ),
+      CreateDeploymentMissingDeploymentsResponse200ApplicationJson2$inboundSchema
+        .and(z.object({ type: z.literal("cookie") })),
+      CreateDeploymentMissingDeploymentsResponse200ApplicationJson2$inboundSchema
+        .and(z.object({ type: z.literal("header") })),
+      CreateDeploymentMissingDeploymentsResponse200ApplicationJson2$inboundSchema
+        .and(z.object({ type: z.literal("query") })),
+    ])),
   ),
   mitigate: types.optional(
-    CreateDeploymentRoutesDeploymentsMitigate$inboundSchema,
+    z.lazy(() => CreateDeploymentRoutesDeploymentsMitigate$inboundSchema),
   ),
   transforms: types.optional(
     z.array(z.union([
@@ -3340,6 +3519,7 @@ export const CreateDeploymentResponseBody2$inboundSchema: z.ZodType<
   connectConfigurationId: types.optional(types.string()),
   createdIn: types.string(),
   crons: types.optional(z.array(ResponseBodyCrons$inboundSchema)),
+  atproto: types.optional(ResponseBodyAtproto$inboundSchema),
   functions: z.nullable(z.record(ResponseBodyFunctions$inboundSchema))
     .optional(),
   isInstantStatic: types.optional(types.boolean()),

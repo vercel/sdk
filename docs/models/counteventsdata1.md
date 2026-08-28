@@ -159,6 +159,7 @@ let value: CountEventsData1 = {
   messageId: "<id>",
   eventType: "<value>",
   notificationUrl: "https://nautical-dredger.net/",
+  queueRegion: "<value>",
   sandboxSessionId: "<id>",
   sandboxName: "<value>",
   workflowRunId: "<id>",
@@ -385,6 +386,7 @@ let value: CountEventsData1 = {
 | `messageId`                            | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `eventType`                            | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `notificationUrl`                      | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `queueRegion`                          | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `sandboxSessionId`                     | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `sandboxName`                          | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `workflowRunId`                        | *string*                               | :heavy_check_mark:                     | N/A                                    |

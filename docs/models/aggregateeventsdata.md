@@ -171,6 +171,7 @@ const value: models.AggregateEventsData2[] = [
     messageId: "<id>",
     eventType: "<value>",
     notificationUrl: "https://distinct-scorpion.biz/",
+    queueRegion: "<value>",
     sandboxSessionId: "<id>",
     sandboxName: "<value>",
     workflowRunId: "<id>",

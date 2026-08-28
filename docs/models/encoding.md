@@ -5,7 +5,7 @@ The file content encoding, it could be either a base64 (useful for images, etc.)
 ## Example Usage
 
 ```typescript
-import { Encoding } from "@vercel/sdk/models/createdeploymenthas1.js";
+import { Encoding } from "@vercel/sdk/models/createdeploymenthasdeploymentsvalue.js";
 
 let value: Encoding = "base64";
 ```

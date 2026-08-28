@@ -5,7 +5,7 @@ Enforced runtime for explicitly configured Routing Middleware.
 ## Example Usage
 
 ```typescript
-import { ServicesMiddlewareRuntime } from "@vercel/sdk/models/middlewarematcher.js";
+import { ServicesMiddlewareRuntime } from "@vercel/sdk/models/canceldeploymentexperimentaltriggersdeploymentsresponse1.js";
 
 let value: ServicesMiddlewareRuntime = "nodejs";
 ```

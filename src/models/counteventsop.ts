@@ -244,6 +244,7 @@ export type CountEventsData1 = {
   messageId: string;
   eventType: string;
   notificationUrl: string;
+  queueRegion: string;
   sandboxSessionId: string;
   sandboxName: string;
   workflowRunId: string;
@@ -590,6 +591,7 @@ export const CountEventsData1$inboundSchema: z.ZodType<
     messageId: types.string(),
     eventType: types.string(),
     notificationUrl: types.string(),
+    queueRegion: types.string(),
     sandboxSessionId: types.string(),
     sandboxName: types.string(),
     workflowRunId: types.string(),

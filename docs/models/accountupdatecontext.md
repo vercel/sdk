@@ -8,23 +8,20 @@ Context for the Update Account screen. Present only when `isAccountUpdateRequire
 import { AccountUpdateContext } from "@vercel/sdk/models/authuser.js";
 
 let value: AccountUpdateContext = {
-  managedTeams: [
-    {
-      teamId: "<id>",
-      slug: "<value>",
-      name: "<value>",
-      avatar: "https://picsum.photos/seed/LVlcN5/730/649",
-      workEmail: "<value>",
-    },
+  canOptOut: false,
+  managedTeams: [],
+  verifiedEmuDomains: [
+    "<value 1>",
+    "<value 2>",
   ],
-  verifiedEmuDomains: [],
 };
 ```
 
 ## Fields
 
-| Field                                              | Type                                               | Required                                           | Description                                        |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `organization`                                     | [models.Organization](../models/organization.md)   | :heavy_minus_sign:                                 | N/A                                                |
-| `managedTeams`                                     | [models.ManagedTeams](../models/managedteams.md)[] | :heavy_check_mark:                                 | N/A                                                |
-| `verifiedEmuDomains`                               | *string*[]                                         | :heavy_check_mark:                                 | N/A                                                |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `canOptOut`                                                      | *boolean*                                                        | :heavy_check_mark:                                               | Whether this user can cancel their optional Account Update flow. |
+| `organization`                                                   | [models.Organization](../models/organization.md)                 | :heavy_minus_sign:                                               | N/A                                                              |
+| `managedTeams`                                                   | [models.ManagedTeams](../models/managedteams.md)[]               | :heavy_check_mark:                                               | N/A                                                              |
+| `verifiedEmuDomains`                                             | *string*[]                                                       | :heavy_check_mark:                                               | N/A                                                              |

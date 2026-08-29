@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentGitSourceDeploymentsRequestRequestBodyType } from "@vercel/sdk/models/createdeploymenthas1.js";
+import { CreateDeploymentGitSourceDeploymentsRequestRequestBodyType } from "@vercel/sdk/models/createdeploymenthasdeploymentsvalue.js";
 
 let value: CreateDeploymentGitSourceDeploymentsRequestRequestBodyType =
   "github-limited";

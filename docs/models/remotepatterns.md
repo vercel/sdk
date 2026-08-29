@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { RemotePatterns } from "@vercel/sdk/models/canceldeploymentservicesdeploymentsarchitecture.js";
+import { RemotePatterns } from "@vercel/sdk/models/routesdestination.js";
 
 let value: RemotePatterns = {
   hostname: "indolent-ectoderm.biz",

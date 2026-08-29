@@ -5,7 +5,7 @@ The team that owns the deployment if any
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentTeam } from "@vercel/sdk/models/canceldeploymentservicesdeploymentsarchitecture.js";
+import { CancelDeploymentTeam } from "@vercel/sdk/models/routesdestination.js";
 
 let value: CancelDeploymentTeam = {
   id: "<id>",

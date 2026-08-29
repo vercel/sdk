@@ -5,7 +5,7 @@ Present when deployment was created with manual provisioning enabled, either exp
 ## Example Usage
 
 ```typescript
-import { ManualProvisioning } from "@vercel/sdk/models/canceldeploymentservicesdeploymentsarchitecture.js";
+import { ManualProvisioning } from "@vercel/sdk/models/routesdestination.js";
 
 let value: ManualProvisioning = {
   state: "TIMEOUT",

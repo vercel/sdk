@@ -15,6 +15,7 @@ let value: BuyCreditsConfiguration1 = {
   output: {
     effectiveBehavior: "end_of_term",
     orbPriceId: "<id>",
+    pricingSource: "copper",
     productId: "<id>",
   },
   type: "set_plan_item_quantity",

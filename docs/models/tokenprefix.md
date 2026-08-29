@@ -5,7 +5,7 @@ optional since entries prior to 2026-04-23 do not contain this field
 ## Example Usage
 
 ```typescript
-import { TokenPrefix } from "@vercel/sdk/models/fourhundred.js";
+import { TokenPrefix } from "@vercel/sdk/models/fourhundredandone.js";
 
 let value: TokenPrefix = "vca_";
 ```

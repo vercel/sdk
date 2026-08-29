@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateDiff } from "@vercel/sdk/models/fromaccount.js";
+import { UpdateDiff } from "@vercel/sdk/models/previousrule.js";
 
 let value: UpdateDiff = {
   id: "<id>",

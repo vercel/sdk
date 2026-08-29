@@ -13,5 +13,5 @@ let value: ConnectConnectorCreateResultType = "sendblue";
 ## Values
 
 ```typescript
-"api-key" | "custom" | "discord" | "github" | "linear" | "linq" | "microsoft-entra" | "oauth" | "photon" | "salesforce" | "sendblue" | "slack" | "snowflake" | "snowflake-wif"
+"api-key" | "custom" | "discord" | "github" | "linear" | "linq" | "microsoft-entra" | "microsoft-teams" | "oauth" | "photon" | "salesforce" | "sendblue" | "slack" | "snowflake" | "snowflake-wif"
 ```

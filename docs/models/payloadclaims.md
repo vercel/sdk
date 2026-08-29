@@ -5,7 +5,7 @@ Claim matchers an OIDC token must satisfy to use the policy.
 ## Example Usage
 
 ```typescript
-import { PayloadClaims } from "@vercel/sdk/models/fourhundred.js";
+import { PayloadClaims } from "@vercel/sdk/models/fourhundredandone.js";
 
 let value: PayloadClaims = {
   name: "<value>",

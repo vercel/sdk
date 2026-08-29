@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyFormats } from "@vercel/sdk/models/createdeploymenthas1.js";
+import { ResponseBodyFormats } from "@vercel/sdk/models/createdeploymenthasdeploymentsvalue.js";
 
 let value: ResponseBodyFormats = "image/avif";
 ```

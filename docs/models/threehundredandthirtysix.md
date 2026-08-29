@@ -5,13 +5,34 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndThirtySix } from "@vercel/sdk/models/usereventpayload328names.js";
+import { ThreeHundredAndThirtySix } from "@vercel/sdk/models/usereventpayload333budget.js";
 
-let value: ThreeHundredAndThirtySix = {};
+let value: ThreeHundredAndThirtySix = {
+  budget: {
+    type: "fixed",
+    fixedBudget: 1629.77,
+    previousSpend: [
+      9819.57,
+      7061.63,
+    ],
+    notifiedAt: [
+      4312.77,
+      7366.36,
+      8531.13,
+    ],
+    createdAt: 707.81,
+    isActive: true,
+    teamId: "<id>",
+    id: "<id>",
+  },
+};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `webhookUrl`       | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `budget`                                                                   | [models.UserEventPayload336Budget](../models/usereventpayload336budget.md) | :heavy_check_mark:                                                         | Represents a budget for tracking and notifying teams on their spending.    |
+| `prevBudget`                                                               | [models.PrevBudget](../models/prevbudget.md)                               | :heavy_minus_sign:                                                         | Represents a budget for tracking and notifying teams on their spending.    |
+| `webhookUrl`                                                               | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `prevWebhookUrl`                                                           | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |

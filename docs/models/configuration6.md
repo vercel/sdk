@@ -12,13 +12,10 @@ let value: Configuration6 = {
     orbCustomerId: "<id>",
     orbExternalCustomerId: "<id>",
     orbExternalPlanId: "<id>",
-    orbPendingSubscriptionChangeId: "<id>",
     orbPlanId: "<id>",
     orbSubscriptionId: "<id>",
   },
-  output: {
-    pendingSubscriptionChangeId: "<id>",
-  },
+  output: {},
   type: "orb_subscription_intent",
 };
 ```

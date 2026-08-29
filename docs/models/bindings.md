@@ -5,7 +5,7 @@ Caller-side bindings to other services.
 ## Example Usage
 
 ```typescript
-import { Bindings } from "@vercel/sdk/models/middlewarematcher.js";
+import { Bindings } from "@vercel/sdk/models/canceldeploymentexperimentaltriggersdeploymentsresponse1.js";
 
 let value: Bindings = {
   service: "<value>",

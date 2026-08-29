@@ -235,11 +235,11 @@ export type AuthUserResourceConfig = {
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
-  nodeType?: string | undefined;
+  concurrentBuilds?: number | undefined;
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
-  concurrentBuilds?: number | undefined;
+  nodeType?: string | undefined;
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
@@ -481,6 +481,10 @@ export type ManagedTeams = {
  * Context for the Update Account screen. Present only when `isAccountUpdateRequired` is true. `managedTeams` is empty for orphan mode (user matches an EMU domain but is not on the team).
  */
 export type AccountUpdateContext = {
+  /**
+   * Whether this user can cancel their optional Account Update flow.
+   */
+  canOptOut: boolean;
   organization?: Organization | undefined;
   managedTeams: Array<ManagedTeams>;
   verifiedEmuDomains: Array<string>;
@@ -755,8 +759,8 @@ export const AuthUserResourceConfig$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  nodeType: types.optional(types.string()),
   concurrentBuilds: types.optional(types.number()),
+  nodeType: types.optional(types.string()),
   elasticConcurrencyEnabled: types.optional(types.boolean()),
   buildEntitlements: types.optional(
     z.lazy(() => AuthUserBuildEntitlements$inboundSchema),
@@ -1128,6 +1132,7 @@ export const AccountUpdateContext$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  canOptOut: types.boolean(),
   organization: types.optional(z.lazy(() => Organization$inboundSchema)),
   managedTeams: z.array(z.lazy(() => ManagedTeams$inboundSchema)),
   verifiedEmuDomains: z.array(types.string()),

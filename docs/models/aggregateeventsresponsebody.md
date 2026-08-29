@@ -167,6 +167,7 @@ let value: AggregateEventsResponseBody = {
       messageId: "<id>",
       eventType: "<value>",
       notificationUrl: "https://cheap-shore.biz/",
+      queueRegion: "<value>",
       sandboxSessionId: "<id>",
       sandboxName: "<value>",
       workflowRunId: "<id>",

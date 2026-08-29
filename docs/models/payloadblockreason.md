@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadBlockReason } from "@vercel/sdk/models/fromaccount.js";
+import { PayloadBlockReason } from "@vercel/sdk/models/previousrule.js";
 
 let value: PayloadBlockReason = "hard_blocked";
 ```

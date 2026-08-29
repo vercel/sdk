@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { OomReport } from "@vercel/sdk/models/canceldeploymentservicesdeploymentsarchitecture.js";
+import { OomReport } from "@vercel/sdk/models/routesdestination.js";
 
 let value: OomReport = "out-of-memory";
 ```

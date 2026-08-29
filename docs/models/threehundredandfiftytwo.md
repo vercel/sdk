@@ -5,24 +5,16 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFiftyTwo } from "@vercel/sdk/models/usereventpayload328names.js";
+import { ThreeHundredAndFiftyTwo } from "@vercel/sdk/models/usereventpayload333budget.js";
 
-let value: ThreeHundredAndFiftyTwo = {
-  slug: "<value>",
-  teamId: "<id>",
-  by: "<value>",
-};
+let value: ThreeHundredAndFiftyTwo = {};
 ```
 
 ## Fields
 
-| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `slug`                                                                                           | *string*                                                                                         | :heavy_check_mark:                                                                               | N/A                                                                                              |
-| `teamId`                                                                                         | *string*                                                                                         | :heavy_check_mark:                                                                               | N/A                                                                                              |
-| `by`                                                                                             | *string*                                                                                         | :heavy_check_mark:                                                                               | N/A                                                                                              |
-| `byUid`                                                                                          | *string*                                                                                         | :heavy_minus_sign:                                                                               | N/A                                                                                              |
-| `reasons`                                                                                        | [models.Reasons](../models/reasons.md)[]                                                         | :heavy_minus_sign:                                                                               | N/A                                                                                              |
-| `removedUsers`                                                                                   | Record<string, [models.UserEventPayloadRemovedUsers](../models/usereventpayloadremovedusers.md)> | :heavy_minus_sign:                                                                               | N/A                                                                                              |
-| `removedMemberCount`                                                                             | *number*                                                                                         | :heavy_minus_sign:                                                                               | N/A                                                                                              |
-| `timestamp`                                                                                      | *number*                                                                                         | :heavy_minus_sign:                                                                               | N/A                                                                                              |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `previous`                                                                     | [models.UserEventPayload352Previous](../models/usereventpayload352previous.md) | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `next`                                                                         | [models.UserEventPayload352Next](../models/usereventpayload352next.md)         | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `isSystemInitiated`                                                            | *boolean*                                                                      | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `reason`                                                                       | [models.PayloadReason](../models/payloadreason.md)                             | :heavy_minus_sign:                                                             | N/A                                                                            |

@@ -303,6 +303,7 @@ export type Data2 = {
   messageId: string;
   eventType: string;
   notificationUrl: string;
+  queueRegion: string;
   sandboxSessionId: string;
   sandboxName: string;
   workflowRunId: string;
@@ -526,6 +527,7 @@ export type Data1 = {
   messageId?: string | undefined;
   eventType?: string | undefined;
   notificationUrl?: string | undefined;
+  queueRegion?: string | undefined;
   sandboxSessionId?: string | undefined;
   sandboxName?: string | undefined;
   workflowRunId?: string | undefined;
@@ -879,6 +881,7 @@ export const Data2$inboundSchema: z.ZodType<Data2, z.ZodTypeDef, unknown> =
       messageId: types.string(),
       eventType: types.string(),
       notificationUrl: types.string(),
+      queueRegion: types.string(),
       sandboxSessionId: types.string(),
       sandboxName: types.string(),
       workflowRunId: types.string(),
@@ -1116,6 +1119,7 @@ export const Data1$inboundSchema: z.ZodType<Data1, z.ZodTypeDef, unknown> = z
     messageId: types.optional(types.string()),
     eventType: types.optional(types.string()),
     notificationUrl: types.optional(types.string()),
+    queueRegion: types.optional(types.string()),
     sandboxSessionId: types.optional(types.string()),
     sandboxName: types.optional(types.string()),
     workflowRunId: types.optional(types.string()),

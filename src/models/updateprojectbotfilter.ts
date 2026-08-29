@@ -812,20 +812,50 @@ export type UpdateProjectProtectionConfig = {
 };
 
 export const UpdateProjectProjectsRegion = {
+  Arn1: "arn1",
+  Bom1: "bom1",
   Cdg1: "cdg1",
   Cle1: "cle1",
+  Cpt1: "cpt1",
+  Dub1: "dub1",
+  Fra1: "fra1",
+  Gru1: "gru1",
+  Hkg1: "hkg1",
+  Hnd1: "hnd1",
   Iad1: "iad1",
+  Icn1: "icn1",
+  Kix1: "kix1",
+  Lhr1: "lhr1",
+  Pdx1: "pdx1",
   Sfo1: "sfo1",
+  Sin1: "sin1",
+  Syd1: "syd1",
+  Yul1: "yul1",
 } as const;
 export type UpdateProjectProjectsRegion = ClosedEnum<
   typeof UpdateProjectProjectsRegion
 >;
 
 export const UpdateProjectProjectsFailoverRegions = {
+  Arn1: "arn1",
+  Bom1: "bom1",
   Cdg1: "cdg1",
   Cle1: "cle1",
+  Cpt1: "cpt1",
+  Dub1: "dub1",
+  Fra1: "fra1",
+  Gru1: "gru1",
+  Hkg1: "hkg1",
+  Hnd1: "hnd1",
   Iad1: "iad1",
+  Icn1: "icn1",
+  Kix1: "kix1",
+  Lhr1: "lhr1",
+  Pdx1: "pdx1",
   Sfo1: "sfo1",
+  Sin1: "sin1",
+  Syd1: "syd1",
+  Yul1: "yul1",
 } as const;
 export type UpdateProjectProjectsFailoverRegions = ClosedEnum<
   typeof UpdateProjectProjectsFailoverRegions

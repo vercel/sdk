@@ -5,7 +5,7 @@ Allows custom git sources (local folder mounted to the container) in test mode
 ## Example Usage
 
 ```typescript
-import { GitSource12 } from "@vercel/sdk/models/canceldeploymentservicesdeploymentsarchitecture.js";
+import { GitSource12 } from "@vercel/sdk/models/routesdestination.js";
 
 let value: GitSource12 = {
   type: "custom",

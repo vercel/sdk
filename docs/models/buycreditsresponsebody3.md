@@ -18,6 +18,7 @@ let value: BuyCreditsResponseBody3 = {
       output: {
         effectiveBehavior: "immediate",
         orbPriceId: "<id>",
+        pricingSource: "orb",
         productId: "<id>",
       },
       type: "increase_plan_item_quantity",

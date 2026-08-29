@@ -29,6 +29,14 @@ export type SignKmsMessageRequest = {
  */
 export type Jwk = {
   /**
+   * RSA JWK "n" (Modulus) Parameter
+   */
+  n?: string | undefined;
+  /**
+   * RSA JWK "e" (Exponent) Parameter
+   */
+  e?: string | undefined;
+  /**
    * JWK "kty" (Key Type) Parameter
    */
   kty?: string | undefined;
@@ -44,14 +52,6 @@ export type Jwk = {
    * EC JWK "y" (Y Coordinate) Parameter
    */
   y?: string | undefined;
-  /**
-   * RSA JWK "e" (Exponent) Parameter
-   */
-  e?: string | undefined;
-  /**
-   * RSA JWK "n" (Modulus) Parameter
-   */
-  n?: string | undefined;
   /**
    * JWK "alg" (Algorithm) Parameter
    */
@@ -189,12 +189,12 @@ export function signKmsMessageRequestToJSON(
 /** @internal */
 export const Jwk$inboundSchema: z.ZodType<Jwk, z.ZodTypeDef, unknown> = z
   .object({
+    n: types.optional(types.string()),
+    e: types.optional(types.string()),
     kty: types.optional(types.string()),
     crv: types.optional(types.string()),
     x: types.optional(types.string()),
     y: types.optional(types.string()),
-    e: types.optional(types.string()),
-    n: types.optional(types.string()),
     alg: types.optional(types.string()),
     pub: types.optional(types.string()),
   });

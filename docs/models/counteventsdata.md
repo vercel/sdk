@@ -160,6 +160,7 @@ const value: models.CountEventsData1 = {
   messageId: "<id>",
   eventType: "<value>",
   notificationUrl: "https://nautical-dredger.net/",
+  queueRegion: "<value>",
   sandboxSessionId: "<id>",
   sandboxName: "<value>",
   workflowRunId: "<id>",

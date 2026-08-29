@@ -5,7 +5,7 @@ Function configuration scoped to this service.
 ## Example Usage
 
 ```typescript
-import { GetDeploymentServicesFunctions } from "@vercel/sdk/models/getdeploymenthasdeploymentsresponse200applicationjsonresponsebodyvalue.js";
+import { GetDeploymentServicesFunctions } from "@vercel/sdk/models/getdeploymentservicesop.js";
 
 let value: GetDeploymentServicesFunctions = {};
 ```

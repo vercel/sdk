@@ -5,7 +5,7 @@ Build machine configuration recorded for this deployment's build. See {@link Dep
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentBuildMachine } from "@vercel/sdk/models/canceldeploymentservicesdeploymentsarchitecture.js";
+import { CancelDeploymentBuildMachine } from "@vercel/sdk/models/routesdestination.js";
 
 let value: CancelDeploymentBuildMachine = {};
 ```

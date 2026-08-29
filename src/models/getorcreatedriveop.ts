@@ -19,6 +19,21 @@ export const GetOrCreateDriveRegion = {
   Sfo1: "sfo1",
   Cle1: "cle1",
   Cdg1: "cdg1",
+  Fra1: "fra1",
+  Arn1: "arn1",
+  Sin1: "sin1",
+  Pdx1: "pdx1",
+  Lhr1: "lhr1",
+  Icn1: "icn1",
+  Bom1: "bom1",
+  Cpt1: "cpt1",
+  Dub1: "dub1",
+  Gru1: "gru1",
+  Hkg1: "hkg1",
+  Syd1: "syd1",
+  Yul1: "yul1",
+  Hnd1: "hnd1",
+  Kix1: "kix1",
 } as const;
 /**
  * Region where the drive is stored. Defaults to iad1.

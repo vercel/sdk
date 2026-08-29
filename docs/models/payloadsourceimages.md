@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadSourceImages } from "@vercel/sdk/models/fromaccount.js";
+import { PayloadSourceImages } from "@vercel/sdk/models/previousrule.js";
 
 let value: PayloadSourceImages = {
   updatedAt: 4102.9,

@@ -1393,6 +1393,7 @@ export type GetMicrofrontendsInGroupLinkMicrofrontendsResponse200ApplicationJSON
 export type GetMicrofrontendsInGroupLink2 = {
   type: "github-limited";
   createdAt?: number | undefined;
+  updatedAt?: number | undefined;
   org: string;
   /**
    * A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes.
@@ -1404,7 +1405,6 @@ export type GetMicrofrontendsInGroupLink2 = {
     GetMicrofrontendsInGroupLinkMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsDeployHooks
   >;
   gitCredentialId: string;
-  updatedAt?: number | undefined;
   sourceless?: boolean | undefined;
   productionBranch: string;
 };
@@ -1570,20 +1570,50 @@ export type GetMicrofrontendsInGroupProtectionConfig = {
 };
 
 export const GetMicrofrontendsInGroupRegion = {
+  Arn1: "arn1",
+  Bom1: "bom1",
   Cdg1: "cdg1",
   Cle1: "cle1",
+  Cpt1: "cpt1",
+  Dub1: "dub1",
+  Fra1: "fra1",
+  Gru1: "gru1",
+  Hkg1: "hkg1",
+  Hnd1: "hnd1",
   Iad1: "iad1",
+  Icn1: "icn1",
+  Kix1: "kix1",
+  Lhr1: "lhr1",
+  Pdx1: "pdx1",
   Sfo1: "sfo1",
+  Sin1: "sin1",
+  Syd1: "syd1",
+  Yul1: "yul1",
 } as const;
 export type GetMicrofrontendsInGroupRegion = ClosedEnum<
   typeof GetMicrofrontendsInGroupRegion
 >;
 
 export const GetMicrofrontendsInGroupFailoverRegions = {
+  Arn1: "arn1",
+  Bom1: "bom1",
   Cdg1: "cdg1",
   Cle1: "cle1",
+  Cpt1: "cpt1",
+  Dub1: "dub1",
+  Fra1: "fra1",
+  Gru1: "gru1",
+  Hkg1: "hkg1",
+  Hnd1: "hnd1",
   Iad1: "iad1",
+  Icn1: "icn1",
+  Kix1: "kix1",
+  Lhr1: "lhr1",
+  Pdx1: "pdx1",
   Sfo1: "sfo1",
+  Sin1: "sin1",
+  Syd1: "syd1",
+  Yul1: "yul1",
 } as const;
 export type GetMicrofrontendsInGroupFailoverRegions = ClosedEnum<
   typeof GetMicrofrontendsInGroupFailoverRegions
@@ -4294,6 +4324,7 @@ export const GetMicrofrontendsInGroupLink2$inboundSchema: z.ZodType<
 > = z.object({
   type: types.literal("github-limited"),
   createdAt: types.optional(types.number()),
+  updatedAt: types.optional(types.number()),
   org: types.string(),
   repoOwnerId: types.optional(types.number()),
   repo: types.optional(types.string()),
@@ -4304,7 +4335,6 @@ export const GetMicrofrontendsInGroupLink2$inboundSchema: z.ZodType<
     ),
   ),
   gitCredentialId: types.string(),
-  updatedAt: types.optional(types.number()),
   sourceless: types.optional(types.boolean()),
   productionBranch: types.string(),
 });

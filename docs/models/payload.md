@@ -788,8 +788,8 @@ const value: models.Eighty = {
 ```typescript
 const value: models.EightyOne = {
   team: {
-    id: "<id>",
     name: "<value>",
+    id: "<id>",
   },
   configuration: {
     id: "<id>",
@@ -805,8 +805,8 @@ const value: models.EightyOne = {
 ```typescript
 const value: models.EightyTwo = {
   team: {
-    id: "<id>",
     name: "<value>",
+    id: "<id>",
   },
   configuration: {
     id: "<id>",
@@ -822,8 +822,8 @@ const value: models.EightyTwo = {
 ```typescript
 const value: models.EightyThree = {
   team: {
-    id: "<id>",
     name: "<value>",
+    id: "<id>",
   },
   configuration: {
     id: "<id>",
@@ -839,8 +839,8 @@ const value: models.EightyThree = {
 ```typescript
 const value: models.EightyFour = {
   team: {
-    id: "<id>",
     name: "<value>",
+    id: "<id>",
   },
   configuration: {
     id: "<id>",
@@ -1061,8 +1061,8 @@ const value: models.OneHundredAndFour = {
 ```typescript
 const value: models.OneHundredAndFive = {
   deployment: {
-    id: "<id>",
     name: "<value>",
+    id: "<id>",
     meta: {},
     url: "https://tricky-jet.org",
   },
@@ -2624,8 +2624,8 @@ const value: models.TwoHundredAndFortyOne = {};
 ```typescript
 const value: models.TwoHundredAndFortyTwo = {
   team: {
-    id: "<id>",
     name: "<value>",
+    id: "<id>",
   },
   project: {
     id: "<id>",
@@ -3694,26 +3694,38 @@ const value: models.ThreeHundredAndThirtyFive = {
 ### `models.ThreeHundredAndThirtySix`
 
 ```typescript
-const value: models.ThreeHundredAndThirtySix = {};
+const value: models.ThreeHundredAndThirtySix = {
+  budget: {
+    type: "fixed",
+    fixedBudget: 1629.77,
+    previousSpend: [
+      9819.57,
+      7061.63,
+    ],
+    notifiedAt: [
+      4312.77,
+      7366.36,
+      8531.13,
+    ],
+    createdAt: 707.81,
+    isActive: true,
+    teamId: "<id>",
+    id: "<id>",
+  },
+};
 ```
 
 ### `models.ThreeHundredAndThirtySeven`
 
 ```typescript
-const value: models.ThreeHundredAndThirtySeven = {
-  storeType: "redis",
-};
+const value: models.ThreeHundredAndThirtySeven = {};
 ```
 
 ### `models.ThreeHundredAndThirtyEight`
 
 ```typescript
 const value: models.ThreeHundredAndThirtyEight = {
-  transferRequestCode: "<value>",
-  store: {
-    id: "<id>",
-    type: "blob",
-  },
+  storeType: "postgres",
 };
 ```
 
@@ -3726,8 +3738,6 @@ const value: models.ThreeHundredAndThirtyNine = {
     id: "<id>",
     type: "integration",
   },
-  destinationTeamId: "<id>",
-  destinationTeamName: "<value>",
 };
 ```
 
@@ -3740,8 +3750,8 @@ const value: models.ThreeHundredAndForty = {
     id: "<id>",
     type: "integration",
   },
-  originTeamId: "<id>",
-  originTeamName: "<value>",
+  destinationTeamId: "<id>",
+  destinationTeamName: "<value>",
 };
 ```
 
@@ -3749,8 +3759,13 @@ const value: models.ThreeHundredAndForty = {
 
 ```typescript
 const value: models.ThreeHundredAndFortyOne = {
-  id: "<id>",
-  type: "edge-config",
+  transferRequestCode: "<value>",
+  store: {
+    id: "<id>",
+    type: "edge-config",
+  },
+  originTeamId: "<id>",
+  originTeamName: "<value>",
 };
 ```
 
@@ -3758,10 +3773,8 @@ const value: models.ThreeHundredAndFortyOne = {
 
 ```typescript
 const value: models.ThreeHundredAndFortyTwo = {
-  store: {
-    name: "<value>",
-    id: "<id>",
-  },
+  id: "<id>",
+  type: "postgres",
 };
 ```
 
@@ -3769,35 +3782,34 @@ const value: models.ThreeHundredAndFortyTwo = {
 
 ```typescript
 const value: models.ThreeHundredAndFortyThree = {
-  id: "<id>",
-  type: "redis",
-  locked: true,
+  store: {
+    name: "<value>",
+    id: "<id>",
+  },
 };
 ```
 
 ### `models.ThreeHundredAndFortyFour`
 
 ```typescript
-const value: models.ThreeHundredAndFortyFour = {};
+const value: models.ThreeHundredAndFortyFour = {
+  id: "<id>",
+  type: "edge-config",
+  locked: true,
+};
 ```
 
 ### `models.ThreeHundredAndFortyFive`
 
 ```typescript
-const value: models.ThreeHundredAndFortyFive = {
-  slug: "<value>",
-};
+const value: models.ThreeHundredAndFortyFive = {};
 ```
 
 ### `models.ThreeHundredAndFortySix`
 
 ```typescript
 const value: models.ThreeHundredAndFortySix = {
-  next: {
-    enabled: false,
-    scope: "public",
-    includeDrafts: true,
-  },
+  slug: "<value>",
 };
 ```
 
@@ -3805,10 +3817,11 @@ const value: models.ThreeHundredAndFortySix = {
 
 ```typescript
 const value: models.ThreeHundredAndFortySeven = {
-  trialCreditsIssuedAt: 8836.74,
-  expiresAt: "1763259073395",
-  amount: "675.16",
-  currency: "Russian Ruble",
+  next: {
+    enabled: false,
+    scope: "selected_repos",
+    includeDrafts: false,
+  },
 };
 ```
 
@@ -3816,11 +3829,10 @@ const value: models.ThreeHundredAndFortySeven = {
 
 ```typescript
 const value: models.ThreeHundredAndFortyEight = {
-  eventId: "<id>",
-  sessionId: "<id>",
-  sessionKind: "<value>",
-  surface: "<value>",
-  occurredAt: 9528.58,
+  trialCreditsIssuedAt: 9528.58,
+  expiresAt: "1746913395901",
+  amount: "494.16",
+  currency: "Lempira",
 };
 ```
 
@@ -3833,24 +3845,6 @@ const value: models.ThreeHundredAndFortyNine = {
   sessionKind: "<value>",
   surface: "<value>",
   occurredAt: 9263.75,
-  planId: "<id>",
-  requestedScopes: [],
-  elevatedScopes: [
-    "<value 1>",
-    "<value 2>",
-  ],
-  mergedScopes: [
-    "<value 1>",
-    "<value 2>",
-  ],
-  githubScopes: [
-    "<value 1>",
-    "<value 2>",
-  ],
-  requestedScopeCount: 6332.24,
-  elevatedScopeCount: 3196.15,
-  mergedScopeCount: 4416.92,
-  githubScopeCount: 9088.15,
 };
 ```
 
@@ -3858,33 +3852,54 @@ const value: models.ThreeHundredAndFortyNine = {
 
 ```typescript
 const value: models.ThreeHundredAndFifty = {
-  previous: "auto-approval",
-  next: "block",
+  eventId: "<id>",
+  sessionId: "<id>",
+  sessionKind: "<value>",
+  surface: "<value>",
+  occurredAt: 4293.35,
+  planId: "<id>",
+  requestedScopes: [
+    "<value 1>",
+  ],
+  elevatedScopes: [
+    "<value 1>",
+    "<value 2>",
+  ],
+  mergedScopes: [
+    "<value 1>",
+  ],
+  githubScopes: [
+    "<value 1>",
+  ],
+  requestedScopeCount: 2029.79,
+  elevatedScopeCount: 2799.59,
+  mergedScopeCount: 2901.1,
+  githubScopeCount: 5173.53,
 };
 ```
 
 ### `models.ThreeHundredAndFiftyOne`
 
 ```typescript
-const value: models.ThreeHundredAndFiftyOne = {};
+const value: models.ThreeHundredAndFiftyOne = {
+  previous: "manual-approval",
+  next: "manual-approval",
+};
 ```
 
 ### `models.ThreeHundredAndFiftyTwo`
 
 ```typescript
-const value: models.ThreeHundredAndFiftyTwo = {
-  slug: "<value>",
-  teamId: "<id>",
-  by: "<value>",
-};
+const value: models.ThreeHundredAndFiftyTwo = {};
 ```
 
 ### `models.ThreeHundredAndFiftyThree`
 
 ```typescript
 const value: models.ThreeHundredAndFiftyThree = {
-  previous: {},
-  next: {},
+  slug: "<value>",
+  teamId: "<id>",
+  by: "<value>",
 };
 ```
 
@@ -3892,7 +3907,8 @@ const value: models.ThreeHundredAndFiftyThree = {
 
 ```typescript
 const value: models.ThreeHundredAndFiftyFour = {
-  enabled: true,
+  previous: {},
+  next: {},
 };
 ```
 
@@ -3900,10 +3916,7 @@ const value: models.ThreeHundredAndFiftyFour = {
 
 ```typescript
 const value: models.ThreeHundredAndFiftyFive = {
-  projectId: "<id>",
-  projectName: "<value>",
   enabled: false,
-  environment: "production",
 };
 ```
 
@@ -3911,42 +3924,43 @@ const value: models.ThreeHundredAndFiftyFive = {
 
 ```typescript
 const value: models.ThreeHundredAndFiftySix = {
-  environment: "preview",
-  enabled: "on-force",
+  projectId: "<id>",
+  projectName: "<value>",
+  enabled: false,
+  environment: "production",
 };
 ```
 
 ### `models.ThreeHundredAndFiftySeven`
 
 ```typescript
-const value: models.ThreeHundredAndFiftySeven = {};
+const value: models.ThreeHundredAndFiftySeven = {
+  environment: "production",
+  enabled: "on-force",
+};
 ```
 
 ### `models.ThreeHundredAndFiftyEight`
 
 ```typescript
-const value: models.ThreeHundredAndFiftyEight = {
-  deletedCount: 3445.45,
-  inviteIds: [
-    "<value 1>",
-    "<value 2>",
-    "<value 3>",
-  ],
-};
+const value: models.ThreeHundredAndFiftyEight = {};
 ```
 
 ### `models.ThreeHundredAndFiftyNine`
 
 ```typescript
-const value: models.ThreeHundredAndFiftyNine = {};
+const value: models.ThreeHundredAndFiftyNine = {
+  deletedCount: 3037.87,
+  inviteIds: [
+    "<value 1>",
+  ],
+};
 ```
 
 ### `models.ThreeHundredAndSixty`
 
 ```typescript
-const value: models.ThreeHundredAndSixty = {
-  teamName: "<value>",
-};
+const value: models.ThreeHundredAndSixty = {};
 ```
 
 ### `models.ThreeHundredAndSixtyOne`
@@ -3960,19 +3974,15 @@ const value: models.ThreeHundredAndSixtyOne = {
 ### `models.ThreeHundredAndSixtyTwo`
 
 ```typescript
-const value: models.ThreeHundredAndSixtyTwo = {};
+const value: models.ThreeHundredAndSixtyTwo = {
+  teamName: "<value>",
+};
 ```
 
 ### `models.ThreeHundredAndSixtyThree`
 
 ```typescript
-const value: models.ThreeHundredAndSixtyThree = {
-  entitlement: "<value>",
-  user: {
-    id: "<id>",
-    username: "Gillian_Toy87",
-  },
-};
+const value: models.ThreeHundredAndSixtyThree = {};
 ```
 
 ### `models.ThreeHundredAndSixtyFour`
@@ -3990,22 +4000,26 @@ const value: models.ThreeHundredAndSixtyFour = {
 ### `models.ThreeHundredAndSixtyFive`
 
 ```typescript
-const value: models.ThreeHundredAndSixtyFive = {};
+const value: models.ThreeHundredAndSixtyFive = {
+  entitlement: "<value>",
+  user: {
+    id: "<id>",
+    username: "Cortney_Marks",
+  },
+};
 ```
 
 ### `models.ThreeHundredAndSixtySix`
 
 ```typescript
-const value: models.ThreeHundredAndSixtySix = {
-  requestedTeamName: "<value>",
-};
+const value: models.ThreeHundredAndSixtySix = {};
 ```
 
 ### `models.ThreeHundredAndSixtySeven`
 
 ```typescript
 const value: models.ThreeHundredAndSixtySeven = {
-  previousRole: "<value>",
+  requestedTeamName: "<value>",
 };
 ```
 
@@ -4013,7 +4027,7 @@ const value: models.ThreeHundredAndSixtySeven = {
 
 ```typescript
 const value: models.ThreeHundredAndSixtyEight = {
-  authorized: false,
+  previousRole: "<value>",
 };
 ```
 
@@ -4021,7 +4035,7 @@ const value: models.ThreeHundredAndSixtyEight = {
 
 ```typescript
 const value: models.ThreeHundredAndSixtyNine = {
-  enforced: false,
+  authorized: false,
 };
 ```
 
@@ -4029,10 +4043,7 @@ const value: models.ThreeHundredAndSixtyNine = {
 
 ```typescript
 const value: models.ThreeHundredAndSeventy = {
-  publicId: "<id>",
-  role: "<value>",
-  maxUses: 5059.93,
-  expiresAt: "1749977094056",
+  enforced: false,
 };
 ```
 
@@ -4041,6 +4052,9 @@ const value: models.ThreeHundredAndSeventy = {
 ```typescript
 const value: models.ThreeHundredAndSeventyOne = {
   publicId: "<id>",
+  role: "<value>",
+  maxUses: 30.02,
+  expiresAt: "1764192106448",
 };
 ```
 
@@ -4048,8 +4062,7 @@ const value: models.ThreeHundredAndSeventyOne = {
 
 ```typescript
 const value: models.ThreeHundredAndSeventyTwo = {
-  previousConcurrentBuilds: 8744.33,
-  nextConcurrentBuilds: 1045.13,
+  publicId: "<id>",
 };
 ```
 
@@ -4057,7 +4070,8 @@ const value: models.ThreeHundredAndSeventyTwo = {
 
 ```typescript
 const value: models.ThreeHundredAndSeventyThree = {
-  plan: "hobby",
+  previousConcurrentBuilds: 3886.81,
+  nextConcurrentBuilds: 7963.8,
 };
 ```
 
@@ -4065,16 +4079,18 @@ const value: models.ThreeHundredAndSeventyThree = {
 
 ```typescript
 const value: models.ThreeHundredAndSeventyFour = {
-  invoiceId: "<id>",
-  convertedFromTrial: false,
-  plan: "hobby",
+  plan: "pro",
 };
 ```
 
 ### `models.ThreeHundredAndSeventyFive`
 
 ```typescript
-const value: models.ThreeHundredAndSeventyFive = {};
+const value: models.ThreeHundredAndSeventyFive = {
+  invoiceId: "<id>",
+  convertedFromTrial: false,
+  plan: "hobby",
+};
 ```
 
 ### `models.ThreeHundredAndSeventySix`
@@ -4086,18 +4102,15 @@ const value: models.ThreeHundredAndSeventySix = {};
 ### `models.ThreeHundredAndSeventySeven`
 
 ```typescript
-const value: models.ThreeHundredAndSeventySeven = {
-  actorId: "<id>",
-  actorType: "admin",
-};
+const value: models.ThreeHundredAndSeventySeven = {};
 ```
 
 ### `models.ThreeHundredAndSeventyEight`
 
 ```typescript
 const value: models.ThreeHundredAndSeventyEight = {
-  decision: "turn_off",
-  version: "<value>",
+  actorId: "<id>",
+  actorType: "admin",
 };
 ```
 
@@ -4105,29 +4118,30 @@ const value: models.ThreeHundredAndSeventyEight = {
 
 ```typescript
 const value: models.ThreeHundredAndSeventyNine = {
-  consent: "refused",
+  decision: "turn_off",
+  version: "<value>",
 };
 ```
 
 ### `models.ThreeHundredAndEighty`
 
 ```typescript
-const value: models.ThreeHundredAndEighty = {};
+const value: models.ThreeHundredAndEighty = {
+  consent: "granted",
+};
 ```
 
 ### `models.ThreeHundredAndEightyOne`
 
 ```typescript
-const value: models.ThreeHundredAndEightyOne = {
-  deletedCount: 8905.55,
-};
+const value: models.ThreeHundredAndEightyOne = {};
 ```
 
 ### `models.ThreeHundredAndEightyTwo`
 
 ```typescript
 const value: models.ThreeHundredAndEightyTwo = {
-  enabled: "default",
+  deletedCount: 1264.98,
 };
 ```
 
@@ -4135,35 +4149,31 @@ const value: models.ThreeHundredAndEightyTwo = {
 
 ```typescript
 const value: models.ThreeHundredAndEightyThree = {
-  enabled: false,
-  scope: "log-drains",
+  enabled: "on",
 };
 ```
 
 ### `models.ThreeHundredAndEightyFour`
 
 ```typescript
-const value: models.ThreeHundredAndEightyFour = {};
+const value: models.ThreeHundredAndEightyFour = {
+  enabled: true,
+  scope: "dashboard",
+};
 ```
 
 ### `models.ThreeHundredAndEightyFive`
 
 ```typescript
-const value: models.ThreeHundredAndEightyFive = {
-  domain: "yearly-settler.info",
-  ips: [
-    "<value 1>",
-    "<value 2>",
-    "<value 3>",
-  ],
-};
+const value: models.ThreeHundredAndEightyFive = {};
 ```
 
 ### `models.ThreeHundredAndEightySix`
 
 ```typescript
 const value: models.ThreeHundredAndEightySix = {
-  tokenTypes: [],
+  domain: "boiling-transom.biz",
+  ips: [],
 };
 ```
 
@@ -4171,10 +4181,7 @@ const value: models.ThreeHundredAndEightySix = {
 
 ```typescript
 const value: models.ThreeHundredAndEightySeven = {
-  exportId: "<id>",
-  from: 1452.37,
-  to: 9224.93,
-  format: "<value>",
+  tokenTypes: [],
 };
 ```
 
@@ -4182,31 +4189,33 @@ const value: models.ThreeHundredAndEightySeven = {
 
 ```typescript
 const value: models.ThreeHundredAndEightyEight = {
-  fileId: "<id>",
+  exportId: "<id>",
+  from: 3515.72,
+  to: 7365.73,
+  format: "<value>",
 };
 ```
 
 ### `models.ThreeHundredAndEightyNine`
 
 ```typescript
-const value: models.ThreeHundredAndEightyNine = {};
+const value: models.ThreeHundredAndEightyNine = {
+  fileId: "<id>",
+};
 ```
 
 ### `models.ThreeHundredAndNinety`
 
 ```typescript
-const value: models.ThreeHundredAndNinety = {
-  actorId: "<id>",
-  actorType: "admin",
-};
+const value: models.ThreeHundredAndNinety = {};
 ```
 
 ### `models.ThreeHundredAndNinetyOne`
 
 ```typescript
 const value: models.ThreeHundredAndNinetyOne = {
-  projectId: "<id>",
-  projectName: "<value>",
+  actorId: "<id>",
+  actorType: "admin",
 };
 ```
 
@@ -4214,30 +4223,31 @@ const value: models.ThreeHundredAndNinetyOne = {
 
 ```typescript
 const value: models.ThreeHundredAndNinetyTwo = {
-  reason: "limits-exceeded",
+  projectId: "<id>",
+  projectName: "<value>",
 };
 ```
 
 ### `models.ThreeHundredAndNinetyThree`
 
 ```typescript
-const value: models.ThreeHundredAndNinetyThree = {};
+const value: models.ThreeHundredAndNinetyThree = {
+  reason: "limits-exceeded",
+};
 ```
 
 ### `models.ThreeHundredAndNinetyFour`
 
 ```typescript
-const value: models.ThreeHundredAndNinetyFour = {
-  totp: true,
-  recoveryCodes: 6103.99,
-};
+const value: models.ThreeHundredAndNinetyFour = {};
 ```
 
 ### `models.ThreeHundredAndNinetyFive`
 
 ```typescript
 const value: models.ThreeHundredAndNinetyFive = {
-  username: "Santina_Mayert",
+  totp: false,
+  recoveryCodes: 2879.81,
 };
 ```
 
@@ -4246,8 +4256,6 @@ const value: models.ThreeHundredAndNinetyFive = {
 ```typescript
 const value: models.ThreeHundredAndNinetySix = {
   username: "Camryn81",
-  actorId: "<id>",
-  actorType: "admin",
 };
 ```
 
@@ -4256,6 +4264,8 @@ const value: models.ThreeHundredAndNinetySix = {
 ```typescript
 const value: models.ThreeHundredAndNinetySeven = {
   username: "Christopher.Cummings69",
+  actorId: "<id>",
+  actorType: "admin",
 };
 ```
 
@@ -4263,7 +4273,7 @@ const value: models.ThreeHundredAndNinetySeven = {
 
 ```typescript
 const value: models.ThreeHundredAndNinetyEight = {
-  teamName: "<value>",
+  username: "Brock_Schaden",
 };
 ```
 
@@ -4271,7 +4281,6 @@ const value: models.ThreeHundredAndNinetyEight = {
 
 ```typescript
 const value: models.ThreeHundredAndNinetyNine = {
-  teamId: "<id>",
   teamName: "<value>",
 };
 ```
@@ -4280,8 +4289,8 @@ const value: models.ThreeHundredAndNinetyNine = {
 
 ```typescript
 const value: models.FourHundred = {
-  actorId: "<id>",
-  actorType: "admin",
+  teamId: "<id>",
+  teamName: "<value>",
 };
 ```
 
@@ -4298,7 +4307,6 @@ const value: models.FourHundredAndOne = {
 
 ```typescript
 const value: models.FourHundredAndTwo = {
-  enabled: true,
   actorId: "<id>",
   actorType: "admin",
 };
@@ -4308,7 +4316,7 @@ const value: models.FourHundredAndTwo = {
 
 ```typescript
 const value: models.FourHundredAndThree = {
-  autoBlockPrevented: true,
+  enabled: true,
   actorId: "<id>",
   actorType: "admin",
 };
@@ -4318,8 +4326,9 @@ const value: models.FourHundredAndThree = {
 
 ```typescript
 const value: models.FourHundredAndFour = {
-  method: "recovery-code",
-  reason: "<value>",
+  autoBlockPrevented: true,
+  actorId: "<id>",
+  actorType: "admin",
 };
 ```
 
@@ -4327,11 +4336,8 @@ const value: models.FourHundredAndFour = {
 
 ```typescript
 const value: models.FourHundredAndFive = {
-  allowedMethods: [
-    "webauthn",
-  ],
-  firstFactor: "<value>",
-  flowId: "<id>",
+  method: "webauthn",
+  reason: "<value>",
 };
 ```
 
@@ -4339,8 +4345,9 @@ const value: models.FourHundredAndFive = {
 
 ```typescript
 const value: models.FourHundredAndSix = {
-  action: "admin-remove",
-  reason: "<value>",
+  allowedMethods: [],
+  firstFactor: "<value>",
+  flowId: "<id>",
 };
 ```
 
@@ -4348,14 +4355,8 @@ const value: models.FourHundredAndSix = {
 
 ```typescript
 const value: models.FourHundredAndSeven = {
-  previous: {
-    enabled: true,
-    totpVerified: true,
-  },
-  next: {
-    enabled: true,
-    totpVerified: true,
-  },
+  action: "add-totp",
+  reason: "<value>",
 };
 ```
 
@@ -4363,7 +4364,14 @@ const value: models.FourHundredAndSeven = {
 
 ```typescript
 const value: models.FourHundredAndEight = {
-  remaining: 7370.95,
+  previous: {
+    enabled: false,
+    totpVerified: true,
+  },
+  next: {
+    enabled: true,
+    totpVerified: false,
+  },
 };
 ```
 
@@ -4371,7 +4379,7 @@ const value: models.FourHundredAndEight = {
 
 ```typescript
 const value: models.FourHundredAndNine = {
-  mfaEnabled: true,
+  remaining: 1078.57,
 };
 ```
 
@@ -4379,10 +4387,7 @@ const value: models.FourHundredAndNine = {
 
 ```typescript
 const value: models.FourHundredAndTen = {
-  mfa: {
-    enabled: false,
-    totpVerified: true,
-  },
+  mfaEnabled: false,
 };
 ```
 
@@ -4390,8 +4395,10 @@ const value: models.FourHundredAndTen = {
 
 ```typescript
 const value: models.FourHundredAndEleven = {
-  enabled: false,
-  totpVerified: false,
+  mfa: {
+    enabled: false,
+    totpVerified: false,
+  },
 };
 ```
 
@@ -4399,14 +4406,8 @@ const value: models.FourHundredAndEleven = {
 
 ```typescript
 const value: models.FourHundredAndTwelve = {
-  previous: {
-    enabled: false,
-    totpVerified: true,
-  },
-  next: {
-    enabled: true,
-    totpVerified: true,
-  },
+  enabled: false,
+  totpVerified: true,
 };
 ```
 
@@ -4414,16 +4415,13 @@ const value: models.FourHundredAndTwelve = {
 
 ```typescript
 const value: models.FourHundredAndThirteen = {
-  provider: "google",
-  providerSubjectId: "<id>",
-  outcome: "linking-required",
-  decision: {
-    authoritative: true,
-    basis: "workspace-mx",
-    emailDomain: "<value>",
-    emailVerified: true,
-    hostedDomainMatch: true,
-    mxOutcome: "not-checked",
+  previous: {
+    enabled: false,
+    totpVerified: true,
+  },
+  next: {
+    enabled: false,
+    totpVerified: true,
   },
 };
 ```
@@ -4432,8 +4430,17 @@ const value: models.FourHundredAndThirteen = {
 
 ```typescript
 const value: models.FourHundredAndFourteen = {
-  email: "Myriam.OHara-Terry@yahoo.com",
-  prevEmail: "<value>",
+  provider: "google",
+  providerSubjectId: "<id>",
+  outcome: "linking-required",
+  decision: {
+    authoritative: false,
+    basis: "workspace-mx",
+    emailDomain: "<value>",
+    emailVerified: false,
+    hostedDomainMatch: false,
+    mxOutcome: "google",
+  },
 };
 ```
 
@@ -4443,8 +4450,6 @@ const value: models.FourHundredAndFourteen = {
 const value: models.FourHundredAndFifteen = {
   email: "Dorian.Durgan@gmail.com",
   prevEmail: "<value>",
-  actorId: "<id>",
-  actorType: "admin",
 };
 ```
 
@@ -4452,7 +4457,8 @@ const value: models.FourHundredAndFifteen = {
 
 ```typescript
 const value: models.FourHundredAndSixteen = {
-  username: "Phoebe_Bergnaum",
+  email: "Clovis38@hotmail.com",
+  prevEmail: "<value>",
   actorId: "<id>",
   actorType: "admin",
 };
@@ -4462,9 +4468,9 @@ const value: models.FourHundredAndSixteen = {
 
 ```typescript
 const value: models.FourHundredAndSeventeen = {
-  projectId: "<id>",
-  projectName: "<value>",
-  repositoryName: "<value>",
+  username: "Charlene.Dickens-Jones",
+  actorId: "<id>",
+  actorType: "admin",
 };
 ```
 
@@ -4475,8 +4481,6 @@ const value: models.FourHundredAndEighteen = {
   projectId: "<id>",
   projectName: "<value>",
   repositoryName: "<value>",
-  reference: "<value>",
-  digest: "<value>",
 };
 ```
 
@@ -4488,6 +4492,7 @@ const value: models.FourHundredAndNineteen = {
   projectName: "<value>",
   repositoryName: "<value>",
   reference: "<value>",
+  digest: "<value>",
 };
 ```
 
@@ -4498,8 +4503,7 @@ const value: models.FourHundredAndTwenty = {
   projectId: "<id>",
   projectName: "<value>",
   repositoryName: "<value>",
-  sharedWithTeamId: "<id>",
-  sharedWithTeamSlug: "<value>",
+  reference: "<value>",
 };
 ```
 
@@ -4511,6 +4515,7 @@ const value: models.FourHundredAndTwentyOne = {
   projectName: "<value>",
   repositoryName: "<value>",
   sharedWithTeamId: "<id>",
+  sharedWithTeamSlug: "<value>",
 };
 ```
 
@@ -4521,7 +4526,7 @@ const value: models.FourHundredAndTwentyTwo = {
   projectId: "<id>",
   projectName: "<value>",
   repositoryName: "<value>",
-  public: true,
+  sharedWithTeamId: "<id>",
 };
 ```
 
@@ -4532,9 +4537,7 @@ const value: models.FourHundredAndTwentyThree = {
   projectId: "<id>",
   projectName: "<value>",
   repositoryName: "<value>",
-  removedTeamIds: [
-    "<value 1>",
-  ],
+  public: true,
 };
 ```
 
@@ -4542,7 +4545,10 @@ const value: models.FourHundredAndTwentyThree = {
 
 ```typescript
 const value: models.FourHundredAndTwentyFour = {
-  ruleName: "<value>",
+  projectId: "<id>",
+  projectName: "<value>",
+  repositoryName: "<value>",
+  removedTeamIds: [],
 };
 ```
 
@@ -4550,8 +4556,7 @@ const value: models.FourHundredAndTwentyFour = {
 
 ```typescript
 const value: models.FourHundredAndTwentyFive = {
-  previousProjectCount: 8697.25,
-  nextProjectCount: 6612.18,
+  ruleName: "<value>",
 };
 ```
 
@@ -4559,7 +4564,8 @@ const value: models.FourHundredAndTwentyFive = {
 
 ```typescript
 const value: models.FourHundredAndTwentySix = {
-  customAlertTitle: "<value>",
+  previousProjectCount: 7984.58,
+  nextProjectCount: 7463.19,
 };
 ```
 
@@ -4567,12 +4573,7 @@ const value: models.FourHundredAndTwentySix = {
 
 ```typescript
 const value: models.FourHundredAndTwentySeven = {
-  vulnerabilities: [
-    "<value 1>",
-    "<value 2>",
-  ],
-  protectionEnabled: true,
-  protectedProjectCount: 9681.28,
+  customAlertTitle: "<value>",
 };
 ```
 
@@ -4580,9 +4581,23 @@ const value: models.FourHundredAndTwentySeven = {
 
 ```typescript
 const value: models.FourHundredAndTwentyEight = {
+  vulnerabilities: [
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
+  ],
+  protectionEnabled: true,
+  protectedProjectCount: 378.73,
+};
+```
+
+### `models.FourHundredAndTwentyNine`
+
+```typescript
+const value: models.FourHundredAndTwentyNine = {
   team: {
-    id: "<id>",
     name: "<value>",
+    id: "<id>",
   },
   configuration: {
     id: "<id>",
@@ -4596,30 +4611,13 @@ const value: models.FourHundredAndTwentyEight = {
 };
 ```
 
-### `models.FourHundredAndTwentyNine`
-
-```typescript
-const value: models.FourHundredAndTwentyNine = {
-  team: {
-    id: "<id>",
-    name: "<value>",
-  },
-  configuration: {
-    id: "<id>",
-  },
-  peering: {
-    id: "<id>",
-  },
-};
-```
-
 ### `models.FourHundredAndThirty`
 
 ```typescript
 const value: models.FourHundredAndThirty = {
   team: {
-    id: "<id>",
     name: "<value>",
+    id: "<id>",
   },
   configuration: {
     id: "<id>",
@@ -4634,7 +4632,16 @@ const value: models.FourHundredAndThirty = {
 
 ```typescript
 const value: models.FourHundredAndThirtyOne = {
-  tier: "plus",
+  team: {
+    name: "<value>",
+    id: "<id>",
+  },
+  configuration: {
+    id: "<id>",
+  },
+  peering: {
+    id: "<id>",
+  },
 };
 ```
 
@@ -4642,8 +4649,7 @@ const value: models.FourHundredAndThirtyOne = {
 
 ```typescript
 const value: models.FourHundredAndThirtyTwo = {
-  id: "<id>",
-  url: "https://our-hope.biz",
+  tier: "pro",
 };
 ```
 
@@ -4651,7 +4657,8 @@ const value: models.FourHundredAndThirtyTwo = {
 
 ```typescript
 const value: models.FourHundredAndThirtyThree = {
-  chatId: "<id>",
+  id: "<id>",
+  url: "https://heartfelt-bar.biz/",
 };
 ```
 
@@ -4659,25 +4666,7 @@ const value: models.FourHundredAndThirtyThree = {
 
 ```typescript
 const value: models.FourHundredAndThirtyFour = {
-  model: "Taurus",
-  useCase: "<value>",
   chatId: "<id>",
-  messageId: "<id>",
-  inputTokens: 681.4,
-  outputTokens: 889.74,
-  timestamp: 3818.97,
-  events: [
-    {
-      eventId: "<id>",
-      modelId: "<id>",
-      inputTokens: 8264.37,
-      outputTokens: 921.19,
-      totalTokens: 4741.19,
-      cacheCreationInputTokens: 6106.82,
-      cacheReadInputTokens: 9845.35,
-      timestamp: "<value>",
-    },
-  ],
 };
 ```
 
@@ -4685,8 +4674,14 @@ const value: models.FourHundredAndThirtyFour = {
 
 ```typescript
 const value: models.FourHundredAndThirtyFive = {
+  model: "CTS",
+  useCase: "<value>",
   chatId: "<id>",
   messageId: "<id>",
+  inputTokens: 8279.31,
+  outputTokens: 2997.25,
+  timestamp: 632.05,
+  events: [],
 };
 ```
 
@@ -4694,9 +4689,8 @@ const value: models.FourHundredAndThirtyFive = {
 
 ```typescript
 const value: models.FourHundredAndThirtySix = {
-  deploymentId: "<id>",
-  projectId: "<id>",
-  runId: "<id>",
+  chatId: "<id>",
+  messageId: "<id>",
 };
 ```
 
@@ -4704,11 +4698,9 @@ const value: models.FourHundredAndThirtySix = {
 
 ```typescript
 const value: models.FourHundredAndThirtySeven = {
-  grantType: "urn:ietf:params:oauth:grant-type:device_code",
-  appName: "<value>",
-  atTTL: 561.23,
-  scope: "<value>",
-  authMethod: "github",
+  deploymentId: "<id>",
+  projectId: "<id>",
+  runId: "<id>",
 };
 ```
 
@@ -4716,20 +4708,11 @@ const value: models.FourHundredAndThirtySeven = {
 
 ```typescript
 const value: models.FourHundredAndThirtyEight = {
-  policy: {
-    policyId: "<id>",
-    clientId: "<id>",
-    issuerUrl: "https://square-travel.net/",
-    teamId: "<id>",
-    name: "<value>",
-    claims: [],
-    permissions: [],
-    resources: {
-      projectIds: [],
-    },
-    createdAt: 5710.31,
-    updatedAt: 4611.34,
-  },
+  grantType: "urn:ietf:params:oauth:grant-type:device_code",
+  appName: "<value>",
+  atTTL: 7890.44,
+  scope: "<value>",
+  authMethod: "sms",
 };
 ```
 
@@ -4737,7 +4720,7 @@ const value: models.FourHundredAndThirtyEight = {
 
 ```typescript
 const value: models.FourHundredAndThirtyNine = {
-  before: {
+  policy: {
     policyId: "<id>",
     clientId: "<id>",
     issuerUrl: "https://oblong-lender.org",
@@ -4748,31 +4731,10 @@ const value: models.FourHundredAndThirtyNine = {
       "<value 1>",
     ],
     resources: {
-      projectIds: [
-        "<value 1>",
-        "<value 2>",
-      ],
+      projectIds: [],
     },
     createdAt: 7205.54,
     updatedAt: 4098.19,
-  },
-  after: {
-    policyId: "<id>",
-    clientId: "<id>",
-    issuerUrl: "https://juicy-newsstand.info",
-    teamId: "<id>",
-    name: "<value>",
-    claims: [],
-    permissions: [
-      "<value 1>",
-      "<value 2>",
-      "<value 3>",
-    ],
-    resources: {
-      projectIds: [],
-    },
-    createdAt: 1653.99,
-    updatedAt: 3553.83,
   },
 };
 ```
@@ -4781,10 +4743,59 @@ const value: models.FourHundredAndThirtyNine = {
 
 ```typescript
 const value: models.FourHundredAndForty = {
-  tokenId: "<id>",
-  tokenName: "<value>",
-  origin: "sms",
-  scope: "user",
+  before: {
+    policyId: "<id>",
+    clientId: "<id>",
+    issuerUrl: "https://unpleasant-pneumonia.biz",
+    teamId: "<id>",
+    name: "<value>",
+    claims: [
+      {
+        name: "<value>",
+        values: [
+          {
+            value: "<value>",
+            wildcards: true,
+          },
+        ],
+      },
+    ],
+    permissions: [
+      "<value 1>",
+    ],
+    resources: {
+      projectIds: [
+        "<value 1>",
+        "<value 2>",
+      ],
+    },
+    createdAt: 1095.6,
+    updatedAt: 403.29,
+  },
+  after: {
+    policyId: "<id>",
+    clientId: "<id>",
+    issuerUrl: "https://kaleidoscopic-dandelion.org/",
+    teamId: "<id>",
+    name: "<value>",
+    claims: [
+      {
+        name: "<value>",
+        values: [
+          {
+            value: "<value>",
+            wildcards: false,
+          },
+        ],
+      },
+    ],
+    permissions: [
+      "<value 1>",
+    ],
+    resources: null,
+    createdAt: 4336.39,
+    updatedAt: 3580.61,
+  },
 };
 ```
 
@@ -4793,9 +4804,9 @@ const value: models.FourHundredAndForty = {
 ```typescript
 const value: models.FourHundredAndFortyOne = {
   tokenId: "<id>",
-  tokenType: "<value>",
   tokenName: "<value>",
-  actorTokenId: "<id>",
+  origin: "manual",
+  scope: "user",
 };
 ```
 
@@ -4803,7 +4814,18 @@ const value: models.FourHundredAndFortyOne = {
 
 ```typescript
 const value: models.FourHundredAndFortyTwo = {
-  deletedCount: 9932.86,
+  tokenId: "<id>",
+  tokenType: "<value>",
+  tokenName: "<value>",
+  actorTokenId: "<id>",
+};
+```
+
+### `models.FourHundredAndFortyThree`
+
+```typescript
+const value: models.FourHundredAndFortyThree = {
+  deletedCount: 553.75,
   actorTokenId: "<id>",
 };
 ```

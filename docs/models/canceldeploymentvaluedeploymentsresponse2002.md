@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentValueDeploymentsResponse2002 } from "@vercel/sdk/models/canceldeploymentservicesdeploymentsarchitecture.js";
+import { CancelDeploymentValueDeploymentsResponse2002 } from "@vercel/sdk/models/routesdestination.js";
 
 let value: CancelDeploymentValueDeploymentsResponse2002 = {};
 ```

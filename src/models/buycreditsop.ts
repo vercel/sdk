@@ -104,6 +104,20 @@ export type BuyCreditsConfigurationBillingEffectiveBehavior = ClosedEnum<
 >;
 
 /**
+ * The source used as the authoritative price for this intent.
+ */
+export const BuyCreditsConfigurationBillingPricingSource = {
+  Copper: "copper",
+  Orb: "orb",
+} as const;
+/**
+ * The source used as the authoritative price for this intent.
+ */
+export type BuyCreditsConfigurationBillingPricingSource = ClosedEnum<
+  typeof BuyCreditsConfigurationBillingPricingSource
+>;
+
+/**
  * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
  */
 export type BuyCreditsConfigurationBillingChangedResources = {
@@ -150,6 +164,10 @@ export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody
      * The Orb price ID for the subscription item being modified.
      */
     orbPriceId: string;
+    /**
+     * The source used as the authoritative price for this intent.
+     */
+    pricingSource: BuyCreditsConfigurationBillingPricingSource;
     /**
      * The product ID associated with this intent.
      */
@@ -217,6 +235,20 @@ export type BuyCreditsConfigurationEffectiveBehavior = ClosedEnum<
 >;
 
 /**
+ * The source used as the authoritative price for this intent.
+ */
+export const BuyCreditsConfigurationPricingSource = {
+  Copper: "copper",
+  Orb: "orb",
+} as const;
+/**
+ * The source used as the authoritative price for this intent.
+ */
+export type BuyCreditsConfigurationPricingSource = ClosedEnum<
+  typeof BuyCreditsConfigurationPricingSource
+>;
+
+/**
  * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
  */
 export type BuyCreditsConfigurationChangedResources = {
@@ -263,6 +295,10 @@ export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody
      * The Orb price ID for the subscription item being modified.
      */
     orbPriceId: string;
+    /**
+     * The source used as the authoritative price for this intent.
+     */
+    pricingSource: BuyCreditsConfigurationPricingSource;
     /**
      * The product ID associated with this intent.
      */
@@ -330,6 +366,20 @@ export type ConfigurationEffectiveBehavior = ClosedEnum<
 >;
 
 /**
+ * The source used as the authoritative price for this intent.
+ */
+export const ConfigurationPricingSource = {
+  Copper: "copper",
+  Orb: "orb",
+} as const;
+/**
+ * The source used as the authoritative price for this intent.
+ */
+export type ConfigurationPricingSource = ClosedEnum<
+  typeof ConfigurationPricingSource
+>;
+
+/**
  * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
  */
 export type ConfigurationChangedResources = {
@@ -375,6 +425,10 @@ export type BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput = {
    * The Orb price ID for the subscription item being modified.
    */
   orbPriceId: string;
+  /**
+   * The source used as the authoritative price for this intent.
+   */
+  pricingSource: ConfigurationPricingSource;
   /**
    * The product ID associated with this intent.
    */
@@ -441,6 +495,18 @@ export const EffectiveBehavior = {
 export type EffectiveBehavior = ClosedEnum<typeof EffectiveBehavior>;
 
 /**
+ * The source used as the authoritative price for this intent.
+ */
+export const PricingSource = {
+  Copper: "copper",
+  Orb: "orb",
+} as const;
+/**
+ * The source used as the authoritative price for this intent.
+ */
+export type PricingSource = ClosedEnum<typeof PricingSource>;
+
+/**
  * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
  */
 export type ChangedResources = {
@@ -486,6 +552,10 @@ export type BuyCreditsConfigurationBillingResponse200Output = {
    * The Orb price ID for the subscription item being modified.
    */
   orbPriceId: string;
+  /**
+   * The source used as the authoritative price for this intent.
+   */
+  pricingSource: PricingSource;
   /**
    * The product ID associated with this intent.
    */
@@ -756,10 +826,6 @@ export type BuyCreditsConfigurationBillingResponse200Options = {
    */
   orbExternalPlanId: string;
   /**
-   * The ID of the pending subscription change
-   */
-  orbPendingSubscriptionChangeId: string;
-  /**
    * The ID of the Orb plan to create
    */
   orbPlanId: string;
@@ -771,13 +837,17 @@ export type BuyCreditsConfigurationBillingResponse200Options = {
    * The line items that make up the Purchase Intent.
    */
   lineItems?: Array<ConfigurationLineItems> | undefined;
+  /**
+   * The ID of the pending subscription change
+   */
+  orbPendingSubscriptionChangeId?: string | undefined;
 };
 
 export type BuyCreditsConfigurationBillingOutput = {
   /**
    * The ID of the pending subscription change
    */
-  pendingSubscriptionChangeId: string;
+  pendingSubscriptionChangeId?: string | undefined;
 };
 
 /**
@@ -1419,6 +1489,11 @@ export const BuyCreditsConfigurationBillingEffectiveBehavior$inboundSchema:
     .nativeEnum(BuyCreditsConfigurationBillingEffectiveBehavior);
 
 /** @internal */
+export const BuyCreditsConfigurationBillingPricingSource$inboundSchema:
+  z.ZodNativeEnum<typeof BuyCreditsConfigurationBillingPricingSource> = z
+    .nativeEnum(BuyCreditsConfigurationBillingPricingSource);
+
+/** @internal */
 export const BuyCreditsConfigurationBillingChangedResources$inboundSchema:
   z.ZodType<
     BuyCreditsConfigurationBillingChangedResources,
@@ -1460,6 +1535,7 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBod
     effectiveBehavior:
       BuyCreditsConfigurationBillingEffectiveBehavior$inboundSchema,
     orbPriceId: types.string(),
+    pricingSource: BuyCreditsConfigurationBillingPricingSource$inboundSchema,
     productId: types.string(),
     changedResources: types.optional(
       z.array(z.lazy(() =>
@@ -1542,6 +1618,12 @@ export const BuyCreditsConfigurationEffectiveBehavior$inboundSchema:
     .nativeEnum(BuyCreditsConfigurationEffectiveBehavior);
 
 /** @internal */
+export const BuyCreditsConfigurationPricingSource$inboundSchema:
+  z.ZodNativeEnum<typeof BuyCreditsConfigurationPricingSource> = z.nativeEnum(
+    BuyCreditsConfigurationPricingSource,
+  );
+
+/** @internal */
 export const BuyCreditsConfigurationChangedResources$inboundSchema: z.ZodType<
   BuyCreditsConfigurationChangedResources,
   z.ZodTypeDef,
@@ -1581,6 +1663,7 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBod
   > = z.object({
     effectiveBehavior: BuyCreditsConfigurationEffectiveBehavior$inboundSchema,
     orbPriceId: types.string(),
+    pricingSource: BuyCreditsConfigurationPricingSource$inboundSchema,
     productId: types.string(),
     changedResources: types.optional(
       z.array(
@@ -1663,6 +1746,11 @@ export const ConfigurationEffectiveBehavior$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(ConfigurationEffectiveBehavior);
 
 /** @internal */
+export const ConfigurationPricingSource$inboundSchema: z.ZodNativeEnum<
+  typeof ConfigurationPricingSource
+> = z.nativeEnum(ConfigurationPricingSource);
+
+/** @internal */
 export const ConfigurationChangedResources$inboundSchema: z.ZodType<
   ConfigurationChangedResources,
   z.ZodTypeDef,
@@ -1696,6 +1784,7 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput$inbo
   > = z.object({
     effectiveBehavior: ConfigurationEffectiveBehavior$inboundSchema,
     orbPriceId: types.string(),
+    pricingSource: ConfigurationPricingSource$inboundSchema,
     productId: types.string(),
     changedResources: types.optional(
       z.array(z.lazy(() => ConfigurationChangedResources$inboundSchema)),
@@ -1777,6 +1866,11 @@ export const EffectiveBehavior$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(EffectiveBehavior);
 
 /** @internal */
+export const PricingSource$inboundSchema: z.ZodNativeEnum<
+  typeof PricingSource
+> = z.nativeEnum(PricingSource);
+
+/** @internal */
 export const ChangedResources$inboundSchema: z.ZodType<
   ChangedResources,
   z.ZodTypeDef,
@@ -1810,6 +1904,7 @@ export const BuyCreditsConfigurationBillingResponse200Output$inboundSchema:
   > = z.object({
     effectiveBehavior: EffectiveBehavior$inboundSchema,
     orbPriceId: types.string(),
+    pricingSource: PricingSource$inboundSchema,
     productId: types.string(),
     changedResources: types.optional(
       z.array(z.lazy(() => ChangedResources$inboundSchema)),
@@ -2185,12 +2280,12 @@ export const BuyCreditsConfigurationBillingResponse200Options$inboundSchema:
     orbCustomerId: types.string(),
     orbExternalCustomerId: types.string(),
     orbExternalPlanId: types.string(),
-    orbPendingSubscriptionChangeId: types.string(),
     orbPlanId: types.string(),
     orbSubscriptionId: types.string(),
     lineItems: types.optional(
       z.array(z.lazy(() => ConfigurationLineItems$inboundSchema)),
     ),
+    orbPendingSubscriptionChangeId: types.optional(types.string()),
   });
 
 export function buyCreditsConfigurationBillingResponse200OptionsFromJSON(
@@ -2215,7 +2310,7 @@ export const BuyCreditsConfigurationBillingOutput$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  pendingSubscriptionChangeId: types.string(),
+  pendingSubscriptionChangeId: types.optional(types.string()),
 });
 
 export function buyCreditsConfigurationBillingOutputFromJSON(

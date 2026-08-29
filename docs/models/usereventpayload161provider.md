@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload161Provider } from "@vercel/sdk/models/fromaccount.js";
+import { UserEventPayload161Provider } from "@vercel/sdk/models/previousrule.js";
 
 let value: UserEventPayload161Provider = "github";
 ```
@@ -11,5 +11,5 @@ let value: UserEventPayload161Provider = "github";
 ## Values
 
 ```typescript
-"bitbucket" | "github" | "gitlab"
+"bitbucket" | "cursor-origin" | "github" | "gitlab"
 ```

@@ -165,6 +165,7 @@ let value: CountPageviewsResponseBody = {
     messageId: "<id>",
     eventType: "<value>",
     notificationUrl: "https://fortunate-lox.info/",
+    queueRegion: "<value>",
     sandboxSessionId: "<id>",
     sandboxName: "<value>",
     workflowRunId: "<id>",

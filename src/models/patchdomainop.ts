@@ -23,15 +23,14 @@ export type PatchDomainRequestBody2 = {
 };
 
 /**
- * Encrypted Client Hello enrollment. 'auto' leaves it to Vercel, 'enabled' always enrolls, 'disabled' never enrolls and opts out of automatic enrollment.
+ * Encrypted Client Hello enrollment. 'auto' leaves it to Vercel, 'disabled' never enrolls and opts out of automatic enrollment.
  */
 export const RequestBodyEchMode = {
   Auto: "auto",
-  Enabled: "enabled",
   Disabled: "disabled",
 } as const;
 /**
- * Encrypted Client Hello enrollment. 'auto' leaves it to Vercel, 'enabled' always enrolls, 'disabled' never enrolls and opts out of automatic enrollment.
+ * Encrypted Client Hello enrollment. 'auto' leaves it to Vercel, 'disabled' never enrolls and opts out of automatic enrollment.
  */
 export type RequestBodyEchMode = ClosedEnum<typeof RequestBodyEchMode>;
 
@@ -57,7 +56,7 @@ export type PatchDomainRequestBody1 = {
    */
   zone?: boolean | undefined;
   /**
-   * Encrypted Client Hello enrollment. 'auto' leaves it to Vercel, 'enabled' always enrolls, 'disabled' never enrolls and opts out of automatic enrollment.
+   * Encrypted Client Hello enrollment. 'auto' leaves it to Vercel, 'disabled' never enrolls and opts out of automatic enrollment.
    */
   echMode?: RequestBodyEchMode | undefined;
 };

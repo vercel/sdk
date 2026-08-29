@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayloadType } from "@vercel/sdk/models/payloadroles.js";
+import { UserEventPayloadType } from "@vercel/sdk/models/siftroute.js";
 
 let value: UserEventPayloadType = "script";
 ```

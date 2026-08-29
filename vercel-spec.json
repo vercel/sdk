@@ -3947,10 +3947,6 @@
                                           "type": "string",
                                           "description": "The external ID of the Orb plan to create"
                                         },
-                                        "orbPendingSubscriptionChangeId": {
-                                          "type": "string",
-                                          "description": "The ID of the pending subscription change"
-                                        },
                                         "orbPlanId": {
                                           "type": "string",
                                           "description": "The ID of the Orb plan to create"
@@ -4015,13 +4011,16 @@
                                           },
                                           "type": "array",
                                           "description": "The line items that make up the Purchase Intent."
+                                        },
+                                        "orbPendingSubscriptionChangeId": {
+                                          "type": "string",
+                                          "description": "The ID of the pending subscription change"
                                         }
                                       },
                                       "required": [
                                         "orbCustomerId",
                                         "orbExternalCustomerId",
                                         "orbExternalPlanId",
-                                        "orbPendingSubscriptionChangeId",
                                         "orbPlanId",
                                         "orbSubscriptionId"
                                       ],
@@ -4034,9 +4033,6 @@
                                           "description": "The ID of the pending subscription change"
                                         }
                                       },
-                                      "required": [
-                                        "pendingSubscriptionChangeId"
-                                      ],
                                       "type": "object"
                                     },
                                     "type": {
@@ -4403,6 +4399,14 @@
                                           "type": "string",
                                           "description": "The Orb price ID for the subscription item being modified."
                                         },
+                                        "pricingSource": {
+                                          "type": "string",
+                                          "enum": [
+                                            "copper",
+                                            "orb"
+                                          ],
+                                          "description": "The source used as the authoritative price for this intent."
+                                        },
                                         "productId": {
                                           "type": "string",
                                           "description": "The product ID associated with this intent."
@@ -4474,6 +4478,7 @@
                                       "required": [
                                         "effectiveBehavior",
                                         "orbPriceId",
+                                        "pricingSource",
                                         "productId"
                                       ],
                                       "type": "object",
@@ -4531,6 +4536,14 @@
                                           "type": "string",
                                           "description": "The Orb price ID for the subscription item being modified."
                                         },
+                                        "pricingSource": {
+                                          "type": "string",
+                                          "enum": [
+                                            "copper",
+                                            "orb"
+                                          ],
+                                          "description": "The source used as the authoritative price for this intent."
+                                        },
                                         "productId": {
                                           "type": "string",
                                           "description": "The product ID associated with this intent."
@@ -4602,6 +4615,7 @@
                                       "required": [
                                         "effectiveBehavior",
                                         "orbPriceId",
+                                        "pricingSource",
                                         "productId"
                                       ],
                                       "type": "object",
@@ -4659,6 +4673,14 @@
                                           "type": "string",
                                           "description": "The Orb price ID for the subscription item being modified."
                                         },
+                                        "pricingSource": {
+                                          "type": "string",
+                                          "enum": [
+                                            "copper",
+                                            "orb"
+                                          ],
+                                          "description": "The source used as the authoritative price for this intent."
+                                        },
                                         "productId": {
                                           "type": "string",
                                           "description": "The product ID associated with this intent."
@@ -4730,6 +4752,7 @@
                                       "required": [
                                         "effectiveBehavior",
                                         "orbPriceId",
+                                        "pricingSource",
                                         "productId"
                                       ],
                                       "type": "object",
@@ -4795,6 +4818,14 @@
                                           "type": "string",
                                           "description": "The Orb price ID for the subscription item being modified."
                                         },
+                                        "pricingSource": {
+                                          "type": "string",
+                                          "enum": [
+                                            "copper",
+                                            "orb"
+                                          ],
+                                          "description": "The source used as the authoritative price for this intent."
+                                        },
                                         "productId": {
                                           "type": "string",
                                           "description": "The product ID associated with this intent."
@@ -4866,6 +4897,7 @@
                                       "required": [
                                         "effectiveBehavior",
                                         "orbPriceId",
+                                        "pricingSource",
                                         "productId"
                                       ],
                                       "type": "object",
@@ -5025,6 +5057,9 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": ""
+          },
+          "409": {
             "description": ""
           },
           "410": {
@@ -16334,6 +16369,75 @@
                           },
                           "type": "array"
                         },
+                        "atproto": {
+                          "oneOf": [
+                            {
+                              "properties": {
+                                "enabled": {
+                                  "type": "boolean",
+                                  "enum": [
+                                    false
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "enabled"
+                              ],
+                              "type": "object"
+                            },
+                            {
+                              "properties": {
+                                "enabled": {
+                                  "type": "boolean",
+                                  "enum": [
+                                    true
+                                  ]
+                                },
+                                "subscription": {
+                                  "properties": {
+                                    "collections": {
+                                      "items": {
+                                        "type": "string"
+                                      },
+                                      "type": "array"
+                                    },
+                                    "dids": {
+                                      "items": {
+                                        "type": "string"
+                                      },
+                                      "type": "array"
+                                    },
+                                    "kinds": {
+                                      "items": {
+                                        "type": "string",
+                                        "enum": [
+                                          "account",
+                                          "commit",
+                                          "identity",
+                                          "sync"
+                                        ]
+                                      },
+                                      "type": "array"
+                                    },
+                                    "path": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "collections",
+                                    "path"
+                                  ],
+                                  "type": "object"
+                                }
+                              },
+                              "required": [
+                                "enabled",
+                                "subscription"
+                              ],
+                              "type": "object"
+                            }
+                          ]
+                        },
                         "functions": {
                           "nullable": true,
                           "additionalProperties": {
@@ -24408,6 +24512,75 @@
                           },
                           "type": "array"
                         },
+                        "atproto": {
+                          "oneOf": [
+                            {
+                              "properties": {
+                                "enabled": {
+                                  "type": "boolean",
+                                  "enum": [
+                                    false
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "enabled"
+                              ],
+                              "type": "object"
+                            },
+                            {
+                              "properties": {
+                                "enabled": {
+                                  "type": "boolean",
+                                  "enum": [
+                                    true
+                                  ]
+                                },
+                                "subscription": {
+                                  "properties": {
+                                    "collections": {
+                                      "items": {
+                                        "type": "string"
+                                      },
+                                      "type": "array"
+                                    },
+                                    "dids": {
+                                      "items": {
+                                        "type": "string"
+                                      },
+                                      "type": "array"
+                                    },
+                                    "kinds": {
+                                      "items": {
+                                        "type": "string",
+                                        "enum": [
+                                          "account",
+                                          "commit",
+                                          "identity",
+                                          "sync"
+                                        ]
+                                      },
+                                      "type": "array"
+                                    },
+                                    "path": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "collections",
+                                    "path"
+                                  ],
+                                  "type": "object"
+                                }
+                              },
+                              "required": [
+                                "enabled",
+                                "subscription"
+                              ],
+                              "type": "object"
+                            }
+                          ]
+                        },
                         "functions": {
                           "nullable": true,
                           "additionalProperties": {
@@ -31626,6 +31799,75 @@
                         "type": "object"
                       },
                       "type": "array"
+                    },
+                    "atproto": {
+                      "oneOf": [
+                        {
+                          "properties": {
+                            "enabled": {
+                              "type": "boolean",
+                              "enum": [
+                                false
+                              ]
+                            }
+                          },
+                          "required": [
+                            "enabled"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "properties": {
+                            "enabled": {
+                              "type": "boolean",
+                              "enum": [
+                                true
+                              ]
+                            },
+                            "subscription": {
+                              "properties": {
+                                "collections": {
+                                  "items": {
+                                    "type": "string"
+                                  },
+                                  "type": "array"
+                                },
+                                "dids": {
+                                  "items": {
+                                    "type": "string"
+                                  },
+                                  "type": "array"
+                                },
+                                "kinds": {
+                                  "items": {
+                                    "type": "string",
+                                    "enum": [
+                                      "account",
+                                      "commit",
+                                      "identity",
+                                      "sync"
+                                    ]
+                                  },
+                                  "type": "array"
+                                },
+                                "path": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "collections",
+                                "path"
+                              ],
+                              "type": "object"
+                            }
+                          },
+                          "required": [
+                            "enabled",
+                            "subscription"
+                          ],
+                          "type": "object"
+                        }
+                      ]
                     },
                     "functions": {
                       "nullable": true,
@@ -43164,9 +43406,6 @@
           "401": {
             "description": "The request is not authorized."
           },
-          "402": {
-            "description": ""
-          },
           "403": {
             "description": "You do not have permission to access this resource."
           },
@@ -43246,11 +43485,10 @@
                         "type": "boolean"
                       },
                       "echMode": {
-                        "description": "Encrypted Client Hello enrollment. 'auto' leaves it to Vercel, 'enabled' always enrolls, 'disabled' never enrolls and opts out of automatic enrollment.",
+                        "description": "Encrypted Client Hello enrollment. 'auto' leaves it to Vercel, 'disabled' never enrolls and opts out of automatic enrollment.",
                         "type": "string",
                         "enum": [
                           "auto",
-                          "enabled",
                           "disabled"
                         ]
                       }
@@ -51193,7 +51431,6 @@
                 "properties": {
                   "srcImages": {
                     "items": {
-                      "maxLength": 8192,
                       "type": "string"
                     },
                     "maxItems": 8,
@@ -51288,7 +51525,6 @@
                   },
                   "srcImages": {
                     "items": {
-                      "maxLength": 8192,
                       "type": "string"
                     },
                     "maxItems": 8,
@@ -73445,6 +73681,14 @@
                             },
                             "jwk": {
                               "properties": {
+                                "n": {
+                                  "type": "string",
+                                  "description": "RSA JWK \"n\" (Modulus) Parameter"
+                                },
+                                "e": {
+                                  "type": "string",
+                                  "description": "RSA JWK \"e\" (Exponent) Parameter"
+                                },
                                 "kty": {
                                   "type": "string",
                                   "description": "JWK \"kty\" (Key Type) Parameter"
@@ -73460,14 +73704,6 @@
                                 "y": {
                                   "type": "string",
                                   "description": "EC JWK \"y\" (Y Coordinate) Parameter"
-                                },
-                                "e": {
-                                  "type": "string",
-                                  "description": "RSA JWK \"e\" (Exponent) Parameter"
-                                },
-                                "n": {
-                                  "type": "string",
-                                  "description": "RSA JWK \"n\" (Modulus) Parameter"
                                 },
                                 "alg": {
                                   "type": "string",
@@ -78636,6 +78872,9 @@
                                   "createdAt": {
                                     "type": "number"
                                   },
+                                  "updatedAt": {
+                                    "type": "number"
+                                  },
                                   "org": {
                                     "type": "string"
                                   },
@@ -78680,9 +78919,6 @@
                                   },
                                   "gitCredentialId": {
                                     "type": "string"
-                                  },
-                                  "updatedAt": {
-                                    "type": "number"
                                   },
                                   "sourceless": {
                                     "type": "boolean",
@@ -79372,20 +79608,50 @@
                               "region": {
                                 "type": "string",
                                 "enum": [
+                                  "arn1",
+                                  "bom1",
                                   "cdg1",
                                   "cle1",
+                                  "cpt1",
+                                  "dub1",
+                                  "fra1",
+                                  "gru1",
+                                  "hkg1",
+                                  "hnd1",
                                   "iad1",
-                                  "sfo1"
+                                  "icn1",
+                                  "kix1",
+                                  "lhr1",
+                                  "pdx1",
+                                  "sfo1",
+                                  "sin1",
+                                  "syd1",
+                                  "yul1"
                                 ]
                               },
                               "failoverRegions": {
                                 "items": {
                                   "type": "string",
                                   "enum": [
+                                    "arn1",
+                                    "bom1",
                                     "cdg1",
                                     "cle1",
+                                    "cpt1",
+                                    "dub1",
+                                    "fra1",
+                                    "gru1",
+                                    "hkg1",
+                                    "hnd1",
                                     "iad1",
-                                    "sfo1"
+                                    "icn1",
+                                    "kix1",
+                                    "lhr1",
+                                    "pdx1",
+                                    "sfo1",
+                                    "sin1",
+                                    "syd1",
+                                    "yul1"
                                   ]
                                 },
                                 "type": "array"
@@ -103557,20 +103823,50 @@
                                   "region": {
                                     "type": "string",
                                     "enum": [
+                                      "arn1",
+                                      "bom1",
                                       "cdg1",
                                       "cle1",
+                                      "cpt1",
+                                      "dub1",
+                                      "fra1",
+                                      "gru1",
+                                      "hkg1",
+                                      "hnd1",
                                       "iad1",
-                                      "sfo1"
+                                      "icn1",
+                                      "kix1",
+                                      "lhr1",
+                                      "pdx1",
+                                      "sfo1",
+                                      "sin1",
+                                      "syd1",
+                                      "yul1"
                                     ]
                                   },
                                   "failoverRegions": {
                                     "items": {
                                       "type": "string",
                                       "enum": [
+                                        "arn1",
+                                        "bom1",
                                         "cdg1",
                                         "cle1",
+                                        "cpt1",
+                                        "dub1",
+                                        "fra1",
+                                        "gru1",
+                                        "hkg1",
+                                        "hnd1",
                                         "iad1",
-                                        "sfo1"
+                                        "icn1",
+                                        "kix1",
+                                        "lhr1",
+                                        "pdx1",
+                                        "sfo1",
+                                        "sin1",
+                                        "syd1",
+                                        "yul1"
                                       ]
                                     },
                                     "type": "array"
@@ -111734,20 +112030,50 @@
                         "region": {
                           "type": "string",
                           "enum": [
+                            "arn1",
+                            "bom1",
                             "cdg1",
                             "cle1",
+                            "cpt1",
+                            "dub1",
+                            "fra1",
+                            "gru1",
+                            "hkg1",
+                            "hnd1",
                             "iad1",
-                            "sfo1"
+                            "icn1",
+                            "kix1",
+                            "lhr1",
+                            "pdx1",
+                            "sfo1",
+                            "sin1",
+                            "syd1",
+                            "yul1"
                           ]
                         },
                         "failoverRegions": {
                           "items": {
                             "type": "string",
                             "enum": [
+                              "arn1",
+                              "bom1",
                               "cdg1",
                               "cle1",
+                              "cpt1",
+                              "dub1",
+                              "fra1",
+                              "gru1",
+                              "hkg1",
+                              "hnd1",
                               "iad1",
-                              "sfo1"
+                              "icn1",
+                              "kix1",
+                              "lhr1",
+                              "pdx1",
+                              "sfo1",
+                              "sin1",
+                              "syd1",
+                              "yul1"
                             ]
                           },
                           "type": "array"
@@ -116650,7 +116976,22 @@
                           "iad1",
                           "sfo1",
                           "cle1",
-                          "cdg1"
+                          "cdg1",
+                          "fra1",
+                          "arn1",
+                          "sin1",
+                          "pdx1",
+                          "lhr1",
+                          "icn1",
+                          "bom1",
+                          "cpt1",
+                          "dub1",
+                          "gru1",
+                          "hkg1",
+                          "syd1",
+                          "yul1",
+                          "hnd1",
+                          "kix1"
                         ],
                         "example": "iad1"
                       },
@@ -116658,13 +116999,28 @@
                         "description": "The regions sandboxes in this project fall back to when they cannot be created in `region`.",
                         "type": "array",
                         "uniqueItems": true,
-                        "maxItems": 4,
+                        "maxItems": 19,
                         "items": {
                           "enum": [
                             "iad1",
                             "sfo1",
                             "cle1",
-                            "cdg1"
+                            "cdg1",
+                            "fra1",
+                            "arn1",
+                            "sin1",
+                            "pdx1",
+                            "lhr1",
+                            "icn1",
+                            "bom1",
+                            "cpt1",
+                            "dub1",
+                            "gru1",
+                            "hkg1",
+                            "syd1",
+                            "yul1",
+                            "hnd1",
+                            "kix1"
                           ]
                         },
                         "example": [
@@ -120106,20 +120462,50 @@
                         "region": {
                           "type": "string",
                           "enum": [
+                            "arn1",
+                            "bom1",
                             "cdg1",
                             "cle1",
+                            "cpt1",
+                            "dub1",
+                            "fra1",
+                            "gru1",
+                            "hkg1",
+                            "hnd1",
                             "iad1",
-                            "sfo1"
+                            "icn1",
+                            "kix1",
+                            "lhr1",
+                            "pdx1",
+                            "sfo1",
+                            "sin1",
+                            "syd1",
+                            "yul1"
                           ]
                         },
                         "failoverRegions": {
                           "items": {
                             "type": "string",
                             "enum": [
+                              "arn1",
+                              "bom1",
                               "cdg1",
                               "cle1",
+                              "cpt1",
+                              "dub1",
+                              "fra1",
+                              "gru1",
+                              "hkg1",
+                              "hnd1",
                               "iad1",
-                              "sfo1"
+                              "icn1",
+                              "kix1",
+                              "lhr1",
+                              "pdx1",
+                              "sfo1",
+                              "sin1",
+                              "syd1",
+                              "yul1"
                             ]
                           },
                           "type": "array"
@@ -127801,20 +128187,50 @@
                         "region": {
                           "type": "string",
                           "enum": [
+                            "arn1",
+                            "bom1",
                             "cdg1",
                             "cle1",
+                            "cpt1",
+                            "dub1",
+                            "fra1",
+                            "gru1",
+                            "hkg1",
+                            "hnd1",
                             "iad1",
-                            "sfo1"
+                            "icn1",
+                            "kix1",
+                            "lhr1",
+                            "pdx1",
+                            "sfo1",
+                            "sin1",
+                            "syd1",
+                            "yul1"
                           ]
                         },
                         "failoverRegions": {
                           "items": {
                             "type": "string",
                             "enum": [
+                              "arn1",
+                              "bom1",
                               "cdg1",
                               "cle1",
+                              "cpt1",
+                              "dub1",
+                              "fra1",
+                              "gru1",
+                              "hkg1",
+                              "hnd1",
                               "iad1",
-                              "sfo1"
+                              "icn1",
+                              "kix1",
+                              "lhr1",
+                              "pdx1",
+                              "sfo1",
+                              "sin1",
+                              "syd1",
+                              "yul1"
                             ]
                           },
                           "type": "array"
@@ -132973,7 +133389,22 @@
                           "iad1",
                           "sfo1",
                           "cle1",
-                          "cdg1"
+                          "cdg1",
+                          "fra1",
+                          "arn1",
+                          "sin1",
+                          "pdx1",
+                          "lhr1",
+                          "icn1",
+                          "bom1",
+                          "cpt1",
+                          "dub1",
+                          "gru1",
+                          "hkg1",
+                          "syd1",
+                          "yul1",
+                          "hnd1",
+                          "kix1"
                         ],
                         "example": "iad1"
                       },
@@ -132981,13 +133412,28 @@
                         "description": "The regions sandboxes in this project fall back to when they cannot be created in `region`.",
                         "type": "array",
                         "uniqueItems": true,
-                        "maxItems": 4,
+                        "maxItems": 19,
                         "items": {
                           "enum": [
                             "iad1",
                             "sfo1",
                             "cle1",
-                            "cdg1"
+                            "cdg1",
+                            "fra1",
+                            "arn1",
+                            "sin1",
+                            "pdx1",
+                            "lhr1",
+                            "icn1",
+                            "bom1",
+                            "cpt1",
+                            "dub1",
+                            "gru1",
+                            "hkg1",
+                            "syd1",
+                            "yul1",
+                            "hnd1",
+                            "kix1"
                           ]
                         },
                         "example": [
@@ -136768,20 +137214,50 @@
                         "region": {
                           "type": "string",
                           "enum": [
+                            "arn1",
+                            "bom1",
                             "cdg1",
                             "cle1",
+                            "cpt1",
+                            "dub1",
+                            "fra1",
+                            "gru1",
+                            "hkg1",
+                            "hnd1",
                             "iad1",
-                            "sfo1"
+                            "icn1",
+                            "kix1",
+                            "lhr1",
+                            "pdx1",
+                            "sfo1",
+                            "sin1",
+                            "syd1",
+                            "yul1"
                           ]
                         },
                         "failoverRegions": {
                           "items": {
                             "type": "string",
                             "enum": [
+                              "arn1",
+                              "bom1",
                               "cdg1",
                               "cle1",
+                              "cpt1",
+                              "dub1",
+                              "fra1",
+                              "gru1",
+                              "hkg1",
+                              "hnd1",
                               "iad1",
-                              "sfo1"
+                              "icn1",
+                              "kix1",
+                              "lhr1",
+                              "pdx1",
+                              "sfo1",
+                              "sin1",
+                              "syd1",
+                              "yul1"
                             ]
                           },
                           "type": "array"
@@ -157235,20 +157711,50 @@
                         "region": {
                           "type": "string",
                           "enum": [
+                            "arn1",
+                            "bom1",
                             "cdg1",
                             "cle1",
+                            "cpt1",
+                            "dub1",
+                            "fra1",
+                            "gru1",
+                            "hkg1",
+                            "hnd1",
                             "iad1",
-                            "sfo1"
+                            "icn1",
+                            "kix1",
+                            "lhr1",
+                            "pdx1",
+                            "sfo1",
+                            "sin1",
+                            "syd1",
+                            "yul1"
                           ]
                         },
                         "failoverRegions": {
                           "items": {
                             "type": "string",
                             "enum": [
+                              "arn1",
+                              "bom1",
                               "cdg1",
                               "cle1",
+                              "cpt1",
+                              "dub1",
+                              "fra1",
+                              "gru1",
+                              "hkg1",
+                              "hnd1",
                               "iad1",
-                              "sfo1"
+                              "icn1",
+                              "kix1",
+                              "lhr1",
+                              "pdx1",
+                              "sfo1",
+                              "sin1",
+                              "syd1",
+                              "yul1"
                             ]
                           },
                           "type": "array"
@@ -163163,20 +163669,50 @@
                       "iad1",
                       "sfo1",
                       "cle1",
-                      "cdg1"
+                      "cdg1",
+                      "fra1",
+                      "arn1",
+                      "sin1",
+                      "pdx1",
+                      "lhr1",
+                      "icn1",
+                      "bom1",
+                      "cpt1",
+                      "dub1",
+                      "gru1",
+                      "hkg1",
+                      "syd1",
+                      "yul1",
+                      "hnd1",
+                      "kix1"
                     ],
                     "default": [
                       "iad1",
                       "sfo1",
                       "cle1",
-                      "cdg1"
+                      "cdg1",
+                      "fra1",
+                      "arn1",
+                      "sin1",
+                      "pdx1",
+                      "lhr1",
+                      "icn1",
+                      "bom1",
+                      "cpt1",
+                      "dub1",
+                      "gru1",
+                      "hkg1",
+                      "syd1",
+                      "yul1",
+                      "hnd1",
+                      "kix1"
                     ],
                     "description": "The Vercel region in which to create the sandbox.",
                     "example": "iad1"
                   },
                   "failoverRegions": {
                     "type": "array",
-                    "maxItems": 4,
+                    "maxItems": 19,
                     "uniqueItems": true,
                     "items": {
                       "type": "string",
@@ -163184,7 +163720,22 @@
                         "iad1",
                         "sfo1",
                         "cle1",
-                        "cdg1"
+                        "cdg1",
+                        "fra1",
+                        "arn1",
+                        "sin1",
+                        "pdx1",
+                        "lhr1",
+                        "icn1",
+                        "bom1",
+                        "cpt1",
+                        "dub1",
+                        "gru1",
+                        "hkg1",
+                        "syd1",
+                        "yul1",
+                        "hnd1",
+                        "kix1"
                       ]
                     },
                     "description": "The regions the sandbox falls back to when it cannot be created in `region`.",
@@ -163564,7 +164115,22 @@
                       "iad1",
                       "sfo1",
                       "cle1",
-                      "cdg1"
+                      "cdg1",
+                      "fra1",
+                      "arn1",
+                      "sin1",
+                      "pdx1",
+                      "lhr1",
+                      "icn1",
+                      "bom1",
+                      "cpt1",
+                      "dub1",
+                      "gru1",
+                      "hkg1",
+                      "syd1",
+                      "yul1",
+                      "hnd1",
+                      "kix1"
                     ],
                     "default": "iad1",
                     "example": "iad1"
@@ -165029,14 +165595,29 @@
                       "iad1",
                       "sfo1",
                       "cle1",
-                      "cdg1"
+                      "cdg1",
+                      "fra1",
+                      "arn1",
+                      "sin1",
+                      "pdx1",
+                      "lhr1",
+                      "icn1",
+                      "bom1",
+                      "cpt1",
+                      "dub1",
+                      "gru1",
+                      "hkg1",
+                      "syd1",
+                      "yul1",
+                      "hnd1",
+                      "kix1"
                     ],
                     "description": "The Vercel region in which to create the sandbox.",
                     "example": "iad1"
                   },
                   "failoverRegions": {
                     "type": "array",
-                    "maxItems": 4,
+                    "maxItems": 19,
                     "uniqueItems": true,
                     "items": {
                       "type": "string",
@@ -165044,7 +165625,22 @@
                         "iad1",
                         "sfo1",
                         "cle1",
-                        "cdg1"
+                        "cdg1",
+                        "fra1",
+                        "arn1",
+                        "sin1",
+                        "pdx1",
+                        "lhr1",
+                        "icn1",
+                        "bom1",
+                        "cpt1",
+                        "dub1",
+                        "gru1",
+                        "hkg1",
+                        "syd1",
+                        "yul1",
+                        "hnd1",
+                        "kix1"
                       ]
                     },
                     "description": "The regions the sandbox falls back to when it cannot be created in `region`.",
@@ -167676,20 +168272,50 @@
                       "iad1",
                       "sfo1",
                       "cle1",
-                      "cdg1"
+                      "cdg1",
+                      "fra1",
+                      "arn1",
+                      "sin1",
+                      "pdx1",
+                      "lhr1",
+                      "icn1",
+                      "bom1",
+                      "cpt1",
+                      "dub1",
+                      "gru1",
+                      "hkg1",
+                      "syd1",
+                      "yul1",
+                      "hnd1",
+                      "kix1"
                     ],
                     "default": [
                       "iad1",
                       "sfo1",
                       "cle1",
-                      "cdg1"
+                      "cdg1",
+                      "fra1",
+                      "arn1",
+                      "sin1",
+                      "pdx1",
+                      "lhr1",
+                      "icn1",
+                      "bom1",
+                      "cpt1",
+                      "dub1",
+                      "gru1",
+                      "hkg1",
+                      "syd1",
+                      "yul1",
+                      "hnd1",
+                      "kix1"
                     ],
                     "description": "The Vercel region in which to create the sandbox.",
                     "example": "iad1"
                   },
                   "failoverRegions": {
                     "type": "array",
-                    "maxItems": 4,
+                    "maxItems": 19,
                     "uniqueItems": true,
                     "items": {
                       "type": "string",
@@ -167697,7 +168323,22 @@
                         "iad1",
                         "sfo1",
                         "cle1",
-                        "cdg1"
+                        "cdg1",
+                        "fra1",
+                        "arn1",
+                        "sin1",
+                        "pdx1",
+                        "lhr1",
+                        "icn1",
+                        "bom1",
+                        "cpt1",
+                        "dub1",
+                        "gru1",
+                        "hkg1",
+                        "syd1",
+                        "yul1",
+                        "hnd1",
+                        "kix1"
                       ]
                     },
                     "description": "The regions the sandbox falls back to when it cannot be created in `region`.",
@@ -168434,20 +169075,50 @@
                       "iad1",
                       "sfo1",
                       "cle1",
-                      "cdg1"
+                      "cdg1",
+                      "fra1",
+                      "arn1",
+                      "sin1",
+                      "pdx1",
+                      "lhr1",
+                      "icn1",
+                      "bom1",
+                      "cpt1",
+                      "dub1",
+                      "gru1",
+                      "hkg1",
+                      "syd1",
+                      "yul1",
+                      "hnd1",
+                      "kix1"
                     ],
                     "default": [
                       "iad1",
                       "sfo1",
                       "cle1",
-                      "cdg1"
+                      "cdg1",
+                      "fra1",
+                      "arn1",
+                      "sin1",
+                      "pdx1",
+                      "lhr1",
+                      "icn1",
+                      "bom1",
+                      "cpt1",
+                      "dub1",
+                      "gru1",
+                      "hkg1",
+                      "syd1",
+                      "yul1",
+                      "hnd1",
+                      "kix1"
                     ],
                     "description": "The Vercel region in which to create the sandbox.",
                     "example": "iad1"
                   },
                   "failoverRegions": {
                     "type": "array",
-                    "maxItems": 4,
+                    "maxItems": 19,
                     "uniqueItems": true,
                     "items": {
                       "type": "string",
@@ -168455,7 +169126,22 @@
                         "iad1",
                         "sfo1",
                         "cle1",
-                        "cdg1"
+                        "cdg1",
+                        "fra1",
+                        "arn1",
+                        "sin1",
+                        "pdx1",
+                        "lhr1",
+                        "icn1",
+                        "bom1",
+                        "cpt1",
+                        "dub1",
+                        "gru1",
+                        "hkg1",
+                        "syd1",
+                        "yul1",
+                        "hnd1",
+                        "kix1"
                       ]
                     },
                     "description": "The regions the sandbox falls back to when it cannot be created in `region`.",
@@ -169246,20 +169932,50 @@
                       "iad1",
                       "sfo1",
                       "cle1",
-                      "cdg1"
+                      "cdg1",
+                      "fra1",
+                      "arn1",
+                      "sin1",
+                      "pdx1",
+                      "lhr1",
+                      "icn1",
+                      "bom1",
+                      "cpt1",
+                      "dub1",
+                      "gru1",
+                      "hkg1",
+                      "syd1",
+                      "yul1",
+                      "hnd1",
+                      "kix1"
                     ],
                     "default": [
                       "iad1",
                       "sfo1",
                       "cle1",
-                      "cdg1"
+                      "cdg1",
+                      "fra1",
+                      "arn1",
+                      "sin1",
+                      "pdx1",
+                      "lhr1",
+                      "icn1",
+                      "bom1",
+                      "cpt1",
+                      "dub1",
+                      "gru1",
+                      "hkg1",
+                      "syd1",
+                      "yul1",
+                      "hnd1",
+                      "kix1"
                     ],
                     "description": "The Vercel region in which to create the sandbox.",
                     "example": "iad1"
                   },
                   "failoverRegions": {
                     "type": "array",
-                    "maxItems": 4,
+                    "maxItems": 19,
                     "uniqueItems": true,
                     "items": {
                       "type": "string",
@@ -169267,7 +169983,22 @@
                         "iad1",
                         "sfo1",
                         "cle1",
-                        "cdg1"
+                        "cdg1",
+                        "fra1",
+                        "arn1",
+                        "sin1",
+                        "pdx1",
+                        "lhr1",
+                        "icn1",
+                        "bom1",
+                        "cpt1",
+                        "dub1",
+                        "gru1",
+                        "hkg1",
+                        "syd1",
+                        "yul1",
+                        "hnd1",
+                        "kix1"
                       ]
                     },
                     "description": "The regions the sandbox falls back to when it cannot be created in `region`.",
@@ -170011,20 +170742,50 @@
                       "iad1",
                       "sfo1",
                       "cle1",
-                      "cdg1"
+                      "cdg1",
+                      "fra1",
+                      "arn1",
+                      "sin1",
+                      "pdx1",
+                      "lhr1",
+                      "icn1",
+                      "bom1",
+                      "cpt1",
+                      "dub1",
+                      "gru1",
+                      "hkg1",
+                      "syd1",
+                      "yul1",
+                      "hnd1",
+                      "kix1"
                     ],
                     "default": [
                       "iad1",
                       "sfo1",
                       "cle1",
-                      "cdg1"
+                      "cdg1",
+                      "fra1",
+                      "arn1",
+                      "sin1",
+                      "pdx1",
+                      "lhr1",
+                      "icn1",
+                      "bom1",
+                      "cpt1",
+                      "dub1",
+                      "gru1",
+                      "hkg1",
+                      "syd1",
+                      "yul1",
+                      "hnd1",
+                      "kix1"
                     ],
                     "description": "The Vercel region in which to create the sandbox.",
                     "example": "iad1"
                   },
                   "failoverRegions": {
                     "type": "array",
-                    "maxItems": 4,
+                    "maxItems": 19,
                     "uniqueItems": true,
                     "items": {
                       "type": "string",
@@ -170032,7 +170793,22 @@
                         "iad1",
                         "sfo1",
                         "cle1",
-                        "cdg1"
+                        "cdg1",
+                        "fra1",
+                        "arn1",
+                        "sin1",
+                        "pdx1",
+                        "lhr1",
+                        "icn1",
+                        "bom1",
+                        "cpt1",
+                        "dub1",
+                        "gru1",
+                        "hkg1",
+                        "syd1",
+                        "yul1",
+                        "hnd1",
+                        "kix1"
                       ]
                     },
                     "description": "The regions the sandbox falls back to when it cannot be created in `region`.",
@@ -196138,6 +196914,9 @@
                               "notificationUrl": {
                                 "type": "string"
                               },
+                              "queueRegion": {
+                                "type": "string"
+                              },
                               "sandboxSessionId": {
                                 "type": "string"
                               },
@@ -196810,6 +197589,9 @@
                               "notificationUrl": {
                                 "type": "string"
                               },
+                              "queueRegion": {
+                                "type": "string"
+                              },
                               "sandboxSessionId": {
                                 "type": "string"
                               },
@@ -197152,6 +197934,7 @@
                               "pullRequestNumber",
                               "pullRequestState",
                               "queueName",
+                              "queueRegion",
                               "quotaEntityId",
                               "quotaEntityType",
                               "quotaRequested",
@@ -197950,6 +198733,9 @@
                               "notificationUrl": {
                                 "type": "string"
                               },
+                              "queueRegion": {
+                                "type": "string"
+                              },
                               "sandboxSessionId": {
                                 "type": "string"
                               },
@@ -198622,6 +199408,9 @@
                               "notificationUrl": {
                                 "type": "string"
                               },
+                              "queueRegion": {
+                                "type": "string"
+                              },
                               "sandboxSessionId": {
                                 "type": "string"
                               },
@@ -198964,6 +199753,7 @@
                               "pullRequestNumber",
                               "pullRequestState",
                               "queueName",
+                              "queueRegion",
                               "quotaEntityId",
                               "quotaEntityType",
                               "quotaRequested",
@@ -199728,6 +200518,9 @@
                             "notificationUrl": {
                               "type": "string"
                             },
+                            "queueRegion": {
+                              "type": "string"
+                            },
                             "sandboxSessionId": {
                               "type": "string"
                             },
@@ -200070,6 +200863,7 @@
                             "pullRequestNumber",
                             "pullRequestState",
                             "queueName",
+                            "queueRegion",
                             "quotaEntityId",
                             "quotaEntityType",
                             "quotaRequested",
@@ -200782,6 +201576,9 @@
                             "notificationUrl": {
                               "type": "string"
                             },
+                            "queueRegion": {
+                              "type": "string"
+                            },
                             "sandboxSessionId": {
                               "type": "string"
                             },
@@ -201124,6 +201921,7 @@
                             "pullRequestNumber",
                             "pullRequestState",
                             "queueName",
+                            "queueRegion",
                             "quotaEntityId",
                             "quotaEntityType",
                             "quotaRequested",
@@ -207190,6 +207988,7 @@
               "linear",
               "linq",
               "microsoft-entra",
+              "microsoft-teams",
               "oauth",
               "photon",
               "salesforce",
@@ -210719,13 +211518,13 @@
               "avatar": {
                 "type": "string"
               },
-              "uid": {
-                "type": "string"
-              },
               "email": {
                 "type": "string"
               },
               "username": {
+                "type": "string"
+              },
+              "uid": {
                 "type": "string"
               }
             },
@@ -213944,10 +214743,10 @@
                 "properties": {
                   "team": {
                     "properties": {
-                      "id": {
+                      "name": {
                         "type": "string"
                       },
-                      "name": {
+                      "id": {
                         "type": "string"
                       }
                     },
@@ -214005,10 +214804,10 @@
                 "properties": {
                   "team": {
                     "properties": {
-                      "id": {
+                      "name": {
                         "type": "string"
                       },
-                      "name": {
+                      "id": {
                         "type": "string"
                       }
                     },
@@ -214073,10 +214872,10 @@
                 "properties": {
                   "team": {
                     "properties": {
-                      "id": {
+                      "name": {
                         "type": "string"
                       },
-                      "name": {
+                      "id": {
                         "type": "string"
                       }
                     },
@@ -214127,10 +214926,10 @@
                 "properties": {
                   "team": {
                     "properties": {
-                      "id": {
+                      "name": {
                         "type": "string"
                       },
-                      "name": {
+                      "id": {
                         "type": "string"
                       }
                     },
@@ -217195,10 +217994,10 @@
                 "properties": {
                   "deployment": {
                     "properties": {
-                      "id": {
+                      "name": {
                         "type": "string"
                       },
-                      "name": {
+                      "id": {
                         "type": "string"
                       },
                       "meta": {
@@ -219211,6 +220010,7 @@
                     "type": "string",
                     "enum": [
                       "bitbucket",
+                      "cursor-origin",
                       "github",
                       "gitlab"
                     ]
@@ -219899,11 +220699,11 @@
                       },
                       "resourceConfig": {
                         "properties": {
-                          "nodeType": {
-                            "type": "string"
-                          },
                           "concurrentBuilds": {
                             "type": "number"
+                          },
+                          "nodeType": {
+                            "type": "string"
                           },
                           "elasticConcurrencyEnabled": {
                             "type": "boolean",
@@ -221364,6 +222164,10 @@
                           "hobbyWarningV2SlackSentAt": {
                             "type": "number",
                             "description": "Tracks the last time a `warningThresholdsV2` crossing was reported for this owner. Hobby has no billing period, so this re-arms on the same rolling window the service already uses for Hobby alerts."
+                          },
+                          "hobbyWarningV2At100SlackSentAt": {
+                            "type": "number",
+                            "description": "Tracks the last time the 100% `warningThresholdsV2` crossing was reported for this owner. This is separate so a recent lower warning does not suppress the full-allocation warning. It also starts the team-wide 24-hour grace period before a soft pause."
                           },
                           "hobbyPauseNoticeSlackSentAt": {
                             "type": "number",
@@ -225866,10 +226670,10 @@
                 "properties": {
                   "team": {
                     "properties": {
-                      "id": {
+                      "name": {
                         "type": "string"
                       },
-                      "name": {
+                      "id": {
                         "type": "string"
                       }
                     },
@@ -227657,6 +228461,10 @@
                   "projectId": {
                     "type": "string"
                   },
+                  "projectName": {
+                    "type": "string",
+                    "description": "Display name for Activity links. Optional for events stored before it was published."
+                  },
                   "reasonCode": {
                     "type": "string",
                     "enum": [
@@ -228559,6 +229367,10 @@
                 "properties": {
                   "projectId": {
                     "type": "string"
+                  },
+                  "projectName": {
+                    "type": "string",
+                    "description": "Display name for Activity links. Optional for events stored before it was published."
                   },
                   "reasonCode": {
                     "type": "string",
@@ -229608,6 +230420,213 @@
                     "description": "Represents a budget for tracking and notifying teams on their spending."
                   },
                   "webhookUrl": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "budget"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "budget": {
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "fixed"
+                        ],
+                        "description": "The budget type"
+                      },
+                      "fixedBudget": {
+                        "type": "number",
+                        "description": "Budget amount (USD / dollars)"
+                      },
+                      "previousSpend": {
+                        "items": {
+                          "type": "number"
+                        },
+                        "type": "array",
+                        "description": "Array of the last 3 months of spend data"
+                      },
+                      "notifiedAt": {
+                        "items": {
+                          "type": "number"
+                        },
+                        "type": "array",
+                        "description": "Array of 50, 75, 100 to keep track of notifications sent out"
+                      },
+                      "webhookId": {
+                        "type": "string",
+                        "description": "Webhook id that corresponds to a webhook in Cosmos webhook collection"
+                      },
+                      "webhookNotified": {
+                        "type": "boolean",
+                        "enum": [
+                          false,
+                          true
+                        ],
+                        "description": "Keep track if the webhook has been called for the month"
+                      },
+                      "createdAt": {
+                        "type": "number",
+                        "description": "Date time when budget is created"
+                      },
+                      "updatedAt": {
+                        "type": "number",
+                        "description": "Date time when budget is updated last"
+                      },
+                      "isActive": {
+                        "type": "boolean",
+                        "enum": [
+                          false,
+                          true
+                        ],
+                        "description": "Is the budget currently active for a customer"
+                      },
+                      "pauseProjects": {
+                        "type": "boolean",
+                        "enum": [
+                          false,
+                          true
+                        ],
+                        "description": "Should all projects be paused if budget is exceeded"
+                      },
+                      "pricingPlan": {
+                        "type": "string",
+                        "enum": [
+                          "flex",
+                          "legacy",
+                          "platform",
+                          "plus",
+                          "unbundled"
+                        ],
+                        "description": "The acive pricing plan the team is billed with"
+                      },
+                      "teamId": {
+                        "type": "string",
+                        "description": "Partition key"
+                      },
+                      "id": {
+                        "type": "string",
+                        "description": "Sort key that needs to be unique per teamId"
+                      }
+                    },
+                    "required": [
+                      "createdAt",
+                      "fixedBudget",
+                      "id",
+                      "isActive",
+                      "notifiedAt",
+                      "previousSpend",
+                      "teamId",
+                      "type"
+                    ],
+                    "type": "object",
+                    "description": "Represents a budget for tracking and notifying teams on their spending."
+                  },
+                  "prevBudget": {
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "fixed"
+                        ],
+                        "description": "The budget type"
+                      },
+                      "fixedBudget": {
+                        "type": "number",
+                        "description": "Budget amount (USD / dollars)"
+                      },
+                      "previousSpend": {
+                        "items": {
+                          "type": "number"
+                        },
+                        "type": "array",
+                        "description": "Array of the last 3 months of spend data"
+                      },
+                      "notifiedAt": {
+                        "items": {
+                          "type": "number"
+                        },
+                        "type": "array",
+                        "description": "Array of 50, 75, 100 to keep track of notifications sent out"
+                      },
+                      "webhookId": {
+                        "type": "string",
+                        "description": "Webhook id that corresponds to a webhook in Cosmos webhook collection"
+                      },
+                      "webhookNotified": {
+                        "type": "boolean",
+                        "enum": [
+                          false,
+                          true
+                        ],
+                        "description": "Keep track if the webhook has been called for the month"
+                      },
+                      "createdAt": {
+                        "type": "number",
+                        "description": "Date time when budget is created"
+                      },
+                      "updatedAt": {
+                        "type": "number",
+                        "description": "Date time when budget is updated last"
+                      },
+                      "isActive": {
+                        "type": "boolean",
+                        "enum": [
+                          false,
+                          true
+                        ],
+                        "description": "Is the budget currently active for a customer"
+                      },
+                      "pauseProjects": {
+                        "type": "boolean",
+                        "enum": [
+                          false,
+                          true
+                        ],
+                        "description": "Should all projects be paused if budget is exceeded"
+                      },
+                      "pricingPlan": {
+                        "type": "string",
+                        "enum": [
+                          "flex",
+                          "legacy",
+                          "platform",
+                          "plus",
+                          "unbundled"
+                        ],
+                        "description": "The acive pricing plan the team is billed with"
+                      },
+                      "teamId": {
+                        "type": "string",
+                        "description": "Partition key"
+                      },
+                      "id": {
+                        "type": "string",
+                        "description": "Sort key that needs to be unique per teamId"
+                      }
+                    },
+                    "required": [
+                      "createdAt",
+                      "fixedBudget",
+                      "id",
+                      "isActive",
+                      "notifiedAt",
+                      "previousSpend",
+                      "teamId",
+                      "type"
+                    ],
+                    "type": "object",
+                    "description": "Represents a budget for tracking and notifying teams on their spending."
+                  },
+                  "webhookUrl": {
+                    "type": "string"
+                  },
+                  "prevWebhookUrl": {
                     "type": "string"
                   }
                 },
@@ -232445,10 +233464,10 @@
                 "properties": {
                   "team": {
                     "properties": {
-                      "id": {
+                      "name": {
                         "type": "string"
                       },
-                      "name": {
+                      "id": {
                         "type": "string"
                       }
                     },
@@ -232508,10 +233527,10 @@
                 "properties": {
                   "team": {
                     "properties": {
-                      "id": {
+                      "name": {
                         "type": "string"
                       },
-                      "name": {
+                      "id": {
                         "type": "string"
                       }
                     },
@@ -232562,10 +233581,10 @@
                 "properties": {
                   "team": {
                     "properties": {
-                      "id": {
+                      "name": {
                         "type": "string"
                       },
-                      "name": {
+                      "id": {
                         "type": "string"
                       }
                     },
@@ -236734,10 +237753,25 @@
             "items": {
               "type": "string",
               "enum": [
+                "arn1",
+                "bom1",
                 "cdg1",
                 "cle1",
+                "cpt1",
+                "dub1",
+                "fra1",
+                "gru1",
+                "hkg1",
+                "hnd1",
                 "iad1",
-                "sfo1"
+                "icn1",
+                "kix1",
+                "lhr1",
+                "pdx1",
+                "sfo1",
+                "sin1",
+                "syd1",
+                "yul1"
               ],
               "description": "The regions the sandbox fails over to. Empty when it does not fail over.",
               "example": [
@@ -239390,12 +240424,12 @@
           },
           "resourceConfig": {
             "properties": {
-              "nodeType": {
-                "type": "string",
-                "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
-              },
               "concurrentBuilds": {
                 "type": "number",
+                "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
+              },
+              "nodeType": {
+                "type": "string",
                 "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
               },
               "elasticConcurrencyEnabled": {
@@ -239817,6 +240851,14 @@
           },
           "accountUpdateContext": {
             "properties": {
+              "canOptOut": {
+                "type": "boolean",
+                "enum": [
+                  false,
+                  true
+                ],
+                "description": "Whether this user can cancel their optional Account Update flow."
+              },
               "organization": {
                 "properties": {
                   "id": {
@@ -239875,6 +240917,7 @@
               }
             },
             "required": [
+              "canOptOut",
               "managedTeams",
               "verifiedEmuDomains"
             ],

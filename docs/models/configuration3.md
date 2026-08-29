@@ -18,6 +18,7 @@ let value: Configuration3 = {
   output: {
     effectiveBehavior: "end_of_term",
     orbPriceId: "<id>",
+    pricingSource: "orb",
     productId: "<id>",
   },
   type: "decrease_plan_item_quantity",

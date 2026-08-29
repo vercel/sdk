@@ -10,12 +10,39 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
+  CancelDeploymentExperimentalTriggersDeploymentsResponse1,
+  CancelDeploymentExperimentalTriggersDeploymentsResponse1$inboundSchema,
+  CancelDeploymentExperimentalTriggersDeploymentsResponse2,
+  CancelDeploymentExperimentalTriggersDeploymentsResponse2$inboundSchema,
+  CancelDeploymentExperimentalTriggersDeploymentsResponse3,
+  CancelDeploymentExperimentalTriggersDeploymentsResponse3$inboundSchema,
+  CancelDeploymentRoutes,
+  CancelDeploymentRoutes$inboundSchema,
+  CancelDeploymentServicesArchitecture,
+  CancelDeploymentServicesArchitecture$inboundSchema,
+  CancelDeploymentServicesMaxDuration,
+  CancelDeploymentServicesMaxDuration$inboundSchema,
+  ExcludeFiles,
+  ExcludeFiles$inboundSchema,
+  IncludeFiles,
+  IncludeFiles$inboundSchema,
+  Services2,
+  Services2$inboundSchema,
+  ServicesType,
+  ServicesType$inboundSchema,
+  Trigger,
+  Trigger$inboundSchema,
+} from "./canceldeploymentexperimentaltriggersdeploymentsresponse1.js";
+import { FlagJSONValue, FlagJSONValue$inboundSchema } from "./flagjsonvalue.js";
+import {
   AliasAssignedAt,
   AliasAssignedAt$inboundSchema,
   AliasError,
   AliasError$inboundSchema,
   AliasWarning,
   AliasWarning$inboundSchema,
+  Atproto,
+  Atproto$inboundSchema,
   Build,
   Build$inboundSchema,
   Builds,
@@ -36,8 +63,6 @@ import {
   CancelDeploymentProjectSettings$inboundSchema,
   CancelDeploymentResourceConfig,
   CancelDeploymentResourceConfig$inboundSchema,
-  CancelDeploymentRoutes,
-  CancelDeploymentRoutes$inboundSchema,
   CancelDeploymentSource,
   CancelDeploymentSource$inboundSchema,
   CancelDeploymentStatus,
@@ -72,29 +97,63 @@ import {
   ReadyState$inboundSchema,
   ReadySubstate,
   ReadySubstate$inboundSchema,
-} from "./canceldeploymentservicesdeploymentsarchitecture.js";
-import { FlagJSONValue, FlagJSONValue$inboundSchema } from "./flagjsonvalue.js";
-import {
-  CancelDeploymentServicesFunctions,
-  CancelDeploymentServicesFunctions$inboundSchema,
-  ExcludeFiles,
-  ExcludeFiles$inboundSchema,
-  IncludeFiles,
-  IncludeFiles$inboundSchema,
-  MiddlewareMatcher,
-  MiddlewareMatcher$inboundSchema,
-  MiddlewareRuntime,
-  MiddlewareRuntime$inboundSchema,
-  Services2,
-  Services2$inboundSchema,
-  ServicesProjectSettings,
-  ServicesProjectSettings$inboundSchema,
-  ServicesType,
-  ServicesType$inboundSchema,
-  Trigger,
-  Trigger$inboundSchema,
-} from "./middlewarematcher.js";
+} from "./routesdestination.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type CancelDeploymentServicesExperimentalTriggers =
+  | CancelDeploymentExperimentalTriggersDeploymentsResponse1
+  | CancelDeploymentExperimentalTriggersDeploymentsResponse2
+  | CancelDeploymentExperimentalTriggersDeploymentsResponse3;
+
+export type CancelDeploymentServicesFunctions = {
+  architecture?: CancelDeploymentServicesArchitecture | undefined;
+  memory?: number | undefined;
+  maxDuration?: CancelDeploymentServicesMaxDuration | undefined;
+  maxConcurrency?: number | undefined;
+  regions?: Array<string> | undefined;
+  functionFailoverRegions?: Array<string> | undefined;
+  runtime?: string | undefined;
+  includeFiles?: string | undefined;
+  excludeFiles?: string | undefined;
+  experimentalTriggers?:
+    | Array<
+      | CancelDeploymentExperimentalTriggersDeploymentsResponse1
+      | CancelDeploymentExperimentalTriggersDeploymentsResponse2
+      | CancelDeploymentExperimentalTriggersDeploymentsResponse3
+    >
+    | undefined;
+  supportsCancellation?: boolean | undefined;
+};
+
+export type ServicesProjectSettings = {
+  framework?: string | null | undefined;
+  devCommand?: string | null | undefined;
+  installCommand?: string | null | undefined;
+  buildCommand?: string | null | undefined;
+  outputDirectory?: string | null | undefined;
+  rootDirectory?: string | null | undefined;
+  nodeVersion?: string | undefined;
+  monorepoManager?: string | null | undefined;
+  createdAt?: number | undefined;
+  autoExposeSystemEnvs?: boolean | undefined;
+  sourceFilesOutsideRootDirectory?: boolean | undefined;
+  directoryListing?: boolean | undefined;
+  gitForkProtection?: boolean | undefined;
+  commandForIgnoringBuildStep?: string | null | undefined;
+};
+
+/**
+ * Enforced runtime for explicitly configured Routing Middleware.
+ */
+export const MiddlewareRuntime = {
+  Nodejs: "nodejs",
+} as const;
+/**
+ * Enforced runtime for explicitly configured Routing Middleware.
+ */
+export type MiddlewareRuntime = ClosedEnum<typeof MiddlewareRuntime>;
+
+export type MiddlewareMatcher = string | Array<string>;
 
 export type ServicesConfig = {
   bunVersion?: string | undefined;
@@ -121,7 +180,7 @@ export type ServicesConfig = {
    * Enforced runtime for explicitly configured Routing Middleware.
    */
   middlewareRuntime?: MiddlewareRuntime | undefined;
-  middlewareMatcher?: MiddlewareMatcher | undefined;
+  middlewareMatcher?: string | Array<string> | undefined;
   /**
    * Owning service name; scopes per-function config such as the v2beta consumer.
    */
@@ -873,6 +932,7 @@ export type CancelDeploymentResponseBody = {
   connectConfigurationId?: string | undefined;
   createdIn: string;
   crons?: Array<Crons> | undefined;
+  atproto?: Atproto | undefined;
   functions?: { [k: string]: Functions } | null | undefined;
   /**
    * Whether this deployment completed through the instant static fast path.
@@ -922,6 +982,129 @@ export type CancelDeploymentResponseBody = {
 };
 
 /** @internal */
+export const CancelDeploymentServicesExperimentalTriggers$inboundSchema:
+  z.ZodType<
+    CancelDeploymentServicesExperimentalTriggers,
+    z.ZodTypeDef,
+    unknown
+  > = z.union([
+    CancelDeploymentExperimentalTriggersDeploymentsResponse1$inboundSchema,
+    CancelDeploymentExperimentalTriggersDeploymentsResponse2$inboundSchema,
+    CancelDeploymentExperimentalTriggersDeploymentsResponse3$inboundSchema,
+  ]);
+
+export function cancelDeploymentServicesExperimentalTriggersFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CancelDeploymentServicesExperimentalTriggers,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CancelDeploymentServicesExperimentalTriggers$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CancelDeploymentServicesExperimentalTriggers' from JSON`,
+  );
+}
+
+/** @internal */
+export const CancelDeploymentServicesFunctions$inboundSchema: z.ZodType<
+  CancelDeploymentServicesFunctions,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  architecture: types.optional(
+    CancelDeploymentServicesArchitecture$inboundSchema,
+  ),
+  memory: types.optional(types.number()),
+  maxDuration: types.optional(
+    CancelDeploymentServicesMaxDuration$inboundSchema,
+  ),
+  maxConcurrency: types.optional(types.number()),
+  regions: types.optional(z.array(types.string())),
+  functionFailoverRegions: types.optional(z.array(types.string())),
+  runtime: types.optional(types.string()),
+  includeFiles: types.optional(types.string()),
+  excludeFiles: types.optional(types.string()),
+  experimentalTriggers: types.optional(
+    z.array(
+      z.union([
+        CancelDeploymentExperimentalTriggersDeploymentsResponse1$inboundSchema,
+        CancelDeploymentExperimentalTriggersDeploymentsResponse2$inboundSchema,
+        CancelDeploymentExperimentalTriggersDeploymentsResponse3$inboundSchema,
+      ]),
+    ),
+  ),
+  supportsCancellation: types.optional(types.boolean()),
+});
+
+export function cancelDeploymentServicesFunctionsFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelDeploymentServicesFunctions, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CancelDeploymentServicesFunctions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentServicesFunctions' from JSON`,
+  );
+}
+
+/** @internal */
+export const ServicesProjectSettings$inboundSchema: z.ZodType<
+  ServicesProjectSettings,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  framework: z.nullable(types.string()).optional(),
+  devCommand: z.nullable(types.string()).optional(),
+  installCommand: z.nullable(types.string()).optional(),
+  buildCommand: z.nullable(types.string()).optional(),
+  outputDirectory: z.nullable(types.string()).optional(),
+  rootDirectory: z.nullable(types.string()).optional(),
+  nodeVersion: types.optional(types.string()),
+  monorepoManager: z.nullable(types.string()).optional(),
+  createdAt: types.optional(types.number()),
+  autoExposeSystemEnvs: types.optional(types.boolean()),
+  sourceFilesOutsideRootDirectory: types.optional(types.boolean()),
+  directoryListing: types.optional(types.boolean()),
+  gitForkProtection: types.optional(types.boolean()),
+  commandForIgnoringBuildStep: z.nullable(types.string()).optional(),
+});
+
+export function servicesProjectSettingsFromJSON(
+  jsonString: string,
+): SafeParseResult<ServicesProjectSettings, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ServicesProjectSettings$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ServicesProjectSettings' from JSON`,
+  );
+}
+
+/** @internal */
+export const MiddlewareRuntime$inboundSchema: z.ZodNativeEnum<
+  typeof MiddlewareRuntime
+> = z.nativeEnum(MiddlewareRuntime);
+
+/** @internal */
+export const MiddlewareMatcher$inboundSchema: z.ZodType<
+  MiddlewareMatcher,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), z.array(types.string())]);
+
+export function middlewareMatcherFromJSON(
+  jsonString: string,
+): SafeParseResult<MiddlewareMatcher, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => MiddlewareMatcher$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MiddlewareMatcher' from JSON`,
+  );
+}
+
+/** @internal */
 export const ServicesConfig$inboundSchema: z.ZodType<
   ServicesConfig,
   z.ZodTypeDef,
@@ -939,9 +1122,11 @@ export const ServicesConfig$inboundSchema: z.ZodType<
   zeroConfig: types.optional(types.boolean()),
   import: types.optional(z.record(types.string())),
   functions: types.optional(
-    z.record(CancelDeploymentServicesFunctions$inboundSchema),
+    z.record(z.lazy(() => CancelDeploymentServicesFunctions$inboundSchema)),
   ),
-  projectSettings: types.optional(ServicesProjectSettings$inboundSchema),
+  projectSettings: types.optional(
+    z.lazy(() => ServicesProjectSettings$inboundSchema),
+  ),
   outputDirectory: types.optional(types.string()),
   installCommand: types.optional(types.string()),
   buildCommand: types.optional(types.string()),
@@ -950,7 +1135,9 @@ export const ServicesConfig$inboundSchema: z.ZodType<
   nodeVersion: types.optional(types.string()),
   middleware: types.optional(types.boolean()),
   middlewareRuntime: types.optional(MiddlewareRuntime$inboundSchema),
-  middlewareMatcher: types.optional(MiddlewareMatcher$inboundSchema),
+  middlewareMatcher: types.optional(
+    smartUnion([types.string(), z.array(types.string())]),
+  ),
   serviceName: types.optional(types.string()),
 });
 
@@ -1958,6 +2145,7 @@ export const CancelDeploymentResponseBody$inboundSchema: z.ZodType<
   connectConfigurationId: types.optional(types.string()),
   createdIn: types.string(),
   crons: types.optional(z.array(Crons$inboundSchema)),
+  atproto: types.optional(Atproto$inboundSchema),
   functions: z.nullable(z.record(Functions$inboundSchema)).optional(),
   isInstantStatic: types.optional(types.boolean()),
   monorepoManager: z.nullable(types.string()).optional(),

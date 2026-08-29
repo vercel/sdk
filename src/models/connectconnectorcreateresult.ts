@@ -149,6 +149,7 @@ export const ConnectConnectorCreateResultType = {
   Linear: "linear",
   Linq: "linq",
   MicrosoftEntra: "microsoft-entra",
+  MicrosoftTeams: "microsoft-teams",
   Oauth: "oauth",
   Photon: "photon",
   Salesforce: "salesforce",

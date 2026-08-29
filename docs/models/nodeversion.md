@@ -5,7 +5,7 @@ Override the Node.js version that should be used for this deployment
 ## Example Usage
 
 ```typescript
-import { NodeVersion } from "@vercel/sdk/models/createdeploymenthas1.js";
+import { NodeVersion } from "@vercel/sdk/models/createdeploymenthasdeploymentsvalue.js";
 
 let value: NodeVersion = "8.10.x";
 ```

@@ -14,6 +14,7 @@ const value: models.BuyCreditsConfiguration1 = {
   output: {
     effectiveBehavior: "end_of_term",
     orbPriceId: "<id>",
+    pricingSource: "copper",
     productId: "<id>",
   },
   type: "set_plan_item_quantity",
@@ -33,6 +34,7 @@ const value: models.BuyCreditsConfiguration2 = {
   output: {
     effectiveBehavior: "immediate",
     orbPriceId: "<id>",
+    pricingSource: "orb",
     productId: "<id>",
   },
   type: "increase_plan_item_quantity",
@@ -53,6 +55,7 @@ const value: models.Configuration3 = {
   output: {
     effectiveBehavior: "end_of_term",
     orbPriceId: "<id>",
+    pricingSource: "orb",
     productId: "<id>",
   },
   type: "decrease_plan_item_quantity",
@@ -78,6 +81,7 @@ const value: models.Configuration4 = {
   output: {
     effectiveBehavior: "end_of_term",
     orbPriceId: "<id>",
+    pricingSource: "copper",
     productId: "<id>",
   },
   type: "adjust_plan_item_quantity",

@@ -181,8 +181,8 @@ export type GetStorageStoresByIdResponseBody = {
 /** @internal */
 export type GetStorageStoresByIdRequest$Outbound = {
   id: string;
-  "'skip-metadata'"?: boolean | undefined;
-  "'include-guides'"?: boolean | undefined;
+  "skip-metadata"?: boolean | undefined;
+  "include-guides"?: boolean | undefined;
 };
 
 /** @internal */
@@ -196,8 +196,8 @@ export const GetStorageStoresByIdRequest$outboundSchema: z.ZodType<
   includeGuides: z.boolean().optional(),
 }).transform((v) => {
   return remap$(v, {
-    skipMetadata: "'skip-metadata'",
-    includeGuides: "'include-guides'",
+    skipMetadata: "skip-metadata",
+    includeGuides: "include-guides",
   });
 });
 

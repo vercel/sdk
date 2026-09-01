@@ -8,7 +8,7 @@ import { GetSecurityFirewallConfigRulesSecurityConditionGroup } from "@vercel/sd
 let value: GetSecurityFirewallConfigRulesSecurityConditionGroup = {
   conditions: [
     {
-      type: "shared_condition",
+      type: "target_path",
       op: "eq",
     },
   ],

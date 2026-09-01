@@ -8,14 +8,12 @@ The payload of the event, if requested.
 import { OneHundredAndEightyNine } from "@vercel/sdk/models/bandwidth.js";
 
 let value: OneHundredAndEightyNine = {
-  enabled: true,
+  periods: [],
 };
 ```
 
 ## Fields
 
-| Field                     | Type                      | Required                  | Description               |
-| ------------------------- | ------------------------- | ------------------------- | ------------------------- |
-| `enabled`                 | *boolean*                 | :heavy_check_mark:        | N/A                       |
-| `allowedIntegrationCount` | *number*                  | :heavy_minus_sign:        | N/A                       |
-| `allowedIntegrationIds`   | *string*[]                | :heavy_minus_sign:        | N/A                       |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `periods`                                | [models.Periods](../models/periods.md)[] | :heavy_check_mark:                       | N/A                                      |

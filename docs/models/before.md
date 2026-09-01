@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Before } from "@vercel/sdk/models/twentysix.js";
+import { Before } from "@vercel/sdk/models/piiredaction.js";
 
 let value: Before = {};
 ```
@@ -13,4 +13,4 @@ let value: Before = {};
 | Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
 | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
 | `resources`                                                                          | [models.UserEventPayloadResources](../models/usereventpayloadresources.md)           | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `permissions`                                                                        | [models.UserEventPayload53Permissions](../models/usereventpayload53permissions.md)[] | :heavy_minus_sign:                                                                   | N/A                                                                                  |
+| `permissions`                                                                        | [models.UserEventPayload54Permissions](../models/usereventpayload54permissions.md)[] | :heavy_minus_sign:                                                                   | N/A                                                                                  |

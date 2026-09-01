@@ -13,20 +13,20 @@ let value: OneHundredAndSeventyFour = {
   integrationSlug: "<value>",
   integrationProductSlug: "<value>",
   configurationId: "<id>",
-  requestKind: "get_keys_metadata",
-  keys: [],
+  requestKind: "list_keys",
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `resourceId`                                                                   | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `integrationId`                                                                | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `integrationSlug`                                                              | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `integrationProductSlug`                                                       | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `configurationId`                                                              | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `error`                                                                        | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
-| `requestKind`                                                                  | [models.UserEventPayloadRequestKind](../models/usereventpayloadrequestkind.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `keys`                                                                         | *string*[]                                                                     | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `resourceId`                                                 | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `integrationId`                                              | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `integrationSlug`                                            | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `integrationProductSlug`                                     | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `configurationId`                                            | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `error`                                                      | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
+| `requestKind`                                                | [models.PayloadRequestKind](../models/payloadrequestkind.md) | :heavy_check_mark:                                           | N/A                                                          |
+| `pattern`                                                    | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
+| `type`                                                       | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |

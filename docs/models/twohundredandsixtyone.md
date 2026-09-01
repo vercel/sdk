@@ -10,7 +10,7 @@ import { TwoHundredAndSixtyOne } from "@vercel/sdk/models/siftroute.js";
 let value: TwoHundredAndSixtyOne = {
   projectId: "<id>",
   projectName: "<value>",
-  onCommit: true,
+  onPullRequest: true,
 };
 ```
 
@@ -20,4 +20,4 @@ let value: TwoHundredAndSixtyOne = {
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `projectId`        | *string*           | :heavy_check_mark: | N/A                |
 | `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `onCommit`         | *boolean*          | :heavy_check_mark: | N/A                |
+| `onPullRequest`    | *boolean*          | :heavy_check_mark: | N/A                |

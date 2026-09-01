@@ -287,6 +287,89 @@ export type GetMicrofrontendsInGroupTargets = {
 };
 
 export type GetMicrofrontendsInGroupPermissions = {
+  aliasProject?: Array<ACLAction> | undefined;
+  aliasProtectionBypass?: Array<ACLAction> | undefined;
+  bulkRedirects?: Array<ACLAction> | undefined;
+  buildMachine?: Array<ACLAction> | undefined;
+  connectConfigurationLink?: Array<ACLAction> | undefined;
+  dataCacheNamespace?: Array<ACLAction> | undefined;
+  deployment?: Array<ACLAction> | undefined;
+  deploymentBuildLogs?: Array<ACLAction> | undefined;
+  deploymentCheck?: Array<ACLAction> | undefined;
+  deploymentCheckPreview?: Array<ACLAction> | undefined;
+  deploymentCheckReRunFromProductionBranch?: Array<ACLAction> | undefined;
+  deploymentProductionGit?: Array<ACLAction> | undefined;
+  deploymentV0?: Array<ACLAction> | undefined;
+  deploymentPreview?: Array<ACLAction> | undefined;
+  deploymentPrivate?: Array<ACLAction> | undefined;
+  deploymentPromote?: Array<ACLAction> | undefined;
+  deploymentRollback?: Array<ACLAction> | undefined;
+  edgeCacheNamespace?: Array<ACLAction> | undefined;
+  environments?: Array<ACLAction> | undefined;
+  job?: Array<ACLAction> | undefined;
+  logs?: Array<ACLAction> | undefined;
+  logsPreset?: Array<ACLAction> | undefined;
+  observabilityData?: Array<ACLAction> | undefined;
+  onDemandBuild?: Array<ACLAction> | undefined;
+  onDemandConcurrency?: Array<ACLAction> | undefined;
+  optionsAllowlist?: Array<ACLAction> | undefined;
+  passwordProtection?: Array<ACLAction> | undefined;
+  privateLinkEndpoint?: Array<ACLAction> | undefined;
+  productionAliasProtectionBypass?: Array<ACLAction> | undefined;
+  productionShareableLink?: Array<ACLAction> | undefined;
+  project?: Array<ACLAction> | undefined;
+  projectAccessGroup?: Array<ACLAction> | undefined;
+  projectAnalyticsSampling?: Array<ACLAction> | undefined;
+  projectAnalyticsUsage?: Array<ACLAction> | undefined;
+  projectCheck?: Array<ACLAction> | undefined;
+  projectCheckRun?: Array<ACLAction> | undefined;
+  projectDeploymentExpiration?: Array<ACLAction> | undefined;
+  projectDeploymentHook?: Array<ACLAction> | undefined;
+  projectDeploymentProtectionStrict?: Array<ACLAction> | undefined;
+  projectDomain?: Array<ACLAction> | undefined;
+  projectDomainCheckConfig?: Array<ACLAction> | undefined;
+  projectDomainMove?: Array<ACLAction> | undefined;
+  projectDomainVerify?: Array<ACLAction> | undefined;
+  projectEvent?: Array<ACLAction> | undefined;
+  projectEnvVars?: Array<ACLAction> | undefined;
+  projectEnvVarsProduction?: Array<ACLAction> | undefined;
+  projectEnvVarsUnownedByIntegration?: Array<ACLAction> | undefined;
+  projectFlags?: Array<ACLAction> | undefined;
+  projectFlagsProduction?: Array<ACLAction> | undefined;
+  projectFlagsSDKKey?: Array<ACLAction> | undefined;
+  projectFromV0?: Array<ACLAction> | undefined;
+  projectId?: Array<ACLAction> | undefined;
+  projectIntegrationConfiguration?: Array<ACLAction> | undefined;
+  projectLink?: Array<ACLAction> | undefined;
+  projectMember?: Array<ACLAction> | undefined;
+  projectMonitoring?: Array<ACLAction> | undefined;
+  projectOIDCToken?: Array<ACLAction> | undefined;
+  projectPermissions?: Array<ACLAction> | undefined;
+  projectProductionBranch?: Array<ACLAction> | undefined;
+  projectProtectionBypass?: Array<ACLAction> | undefined;
+  projectRollingRelease?: Array<ACLAction> | undefined;
+  projectRoutes?: Array<ACLAction> | undefined;
+  projectSupportCase?: Array<ACLAction> | undefined;
+  projectSupportCaseComment?: Array<ACLAction> | undefined;
+  projectTier?: Array<ACLAction> | undefined;
+  projectTransfer?: Array<ACLAction> | undefined;
+  projectTransferOut?: Array<ACLAction> | undefined;
+  projectUsage?: Array<ACLAction> | undefined;
+  pageIntegrity?: Array<ACLAction> | undefined;
+  seawallConfig?: Array<ACLAction> | undefined;
+  securityPlusConfiguration?: Array<ACLAction> | undefined;
+  shareableLink?: Array<ACLAction> | undefined;
+  shareableLinkStrict?: Array<ACLAction> | undefined;
+  sharedEnvVarConnection?: Array<ACLAction> | undefined;
+  skewProtection?: Array<ACLAction> | undefined;
+  analytics?: Array<ACLAction> | undefined;
+  trustedIps?: Array<ACLAction> | undefined;
+  trustedSources?: Array<ACLAction> | undefined;
+  v0Chat?: Array<ACLAction> | undefined;
+  vercelAuth?: Array<ACLAction> | undefined;
+  vercelRun?: Array<ACLAction> | undefined;
+  webAnalytics?: Array<ACLAction> | undefined;
+  workflowRunData?: Array<ACLAction> | undefined;
   oauth2Connection?: Array<ACLAction> | undefined;
   user?: Array<ACLAction> | undefined;
   userConnection?: Array<ACLAction> | undefined;
@@ -307,6 +390,8 @@ export type GetMicrofrontendsInGroupPermissions = {
   aiGatewayGuardrails?: Array<ACLAction> | undefined;
   aiGatewayRules?: Array<ACLAction> | undefined;
   aiGatewaySettings?: Array<ACLAction> | undefined;
+  aiGatewayTranscripts?: Array<ACLAction> | undefined;
+  aiGatewayTranscriptsSettings?: Array<ACLAction> | undefined;
   aiGatewayUsage?: Array<ACLAction> | undefined;
   aiGatewayVirtualModelConfigs?: Array<ACLAction> | undefined;
   alerts?: Array<ACLAction> | undefined;
@@ -481,89 +566,6 @@ export type GetMicrofrontendsInGroupPermissions = {
   webAnalyticsPlan?: Array<ACLAction> | undefined;
   webhook?: Array<ACLAction> | undefined;
   webhookEvent?: Array<ACLAction> | undefined;
-  aliasProject?: Array<ACLAction> | undefined;
-  aliasProtectionBypass?: Array<ACLAction> | undefined;
-  bulkRedirects?: Array<ACLAction> | undefined;
-  buildMachine?: Array<ACLAction> | undefined;
-  connectConfigurationLink?: Array<ACLAction> | undefined;
-  dataCacheNamespace?: Array<ACLAction> | undefined;
-  deployment?: Array<ACLAction> | undefined;
-  deploymentBuildLogs?: Array<ACLAction> | undefined;
-  deploymentCheck?: Array<ACLAction> | undefined;
-  deploymentCheckPreview?: Array<ACLAction> | undefined;
-  deploymentCheckReRunFromProductionBranch?: Array<ACLAction> | undefined;
-  deploymentProductionGit?: Array<ACLAction> | undefined;
-  deploymentV0?: Array<ACLAction> | undefined;
-  deploymentPreview?: Array<ACLAction> | undefined;
-  deploymentPrivate?: Array<ACLAction> | undefined;
-  deploymentPromote?: Array<ACLAction> | undefined;
-  deploymentRollback?: Array<ACLAction> | undefined;
-  edgeCacheNamespace?: Array<ACLAction> | undefined;
-  environments?: Array<ACLAction> | undefined;
-  job?: Array<ACLAction> | undefined;
-  logs?: Array<ACLAction> | undefined;
-  logsPreset?: Array<ACLAction> | undefined;
-  observabilityData?: Array<ACLAction> | undefined;
-  onDemandBuild?: Array<ACLAction> | undefined;
-  onDemandConcurrency?: Array<ACLAction> | undefined;
-  optionsAllowlist?: Array<ACLAction> | undefined;
-  passwordProtection?: Array<ACLAction> | undefined;
-  privateLinkEndpoint?: Array<ACLAction> | undefined;
-  productionAliasProtectionBypass?: Array<ACLAction> | undefined;
-  productionShareableLink?: Array<ACLAction> | undefined;
-  project?: Array<ACLAction> | undefined;
-  projectAccessGroup?: Array<ACLAction> | undefined;
-  projectAnalyticsSampling?: Array<ACLAction> | undefined;
-  projectAnalyticsUsage?: Array<ACLAction> | undefined;
-  projectCheck?: Array<ACLAction> | undefined;
-  projectCheckRun?: Array<ACLAction> | undefined;
-  projectDeploymentExpiration?: Array<ACLAction> | undefined;
-  projectDeploymentHook?: Array<ACLAction> | undefined;
-  projectDeploymentProtectionStrict?: Array<ACLAction> | undefined;
-  projectDomain?: Array<ACLAction> | undefined;
-  projectDomainCheckConfig?: Array<ACLAction> | undefined;
-  projectDomainMove?: Array<ACLAction> | undefined;
-  projectDomainVerify?: Array<ACLAction> | undefined;
-  projectEvent?: Array<ACLAction> | undefined;
-  projectEnvVars?: Array<ACLAction> | undefined;
-  projectEnvVarsProduction?: Array<ACLAction> | undefined;
-  projectEnvVarsUnownedByIntegration?: Array<ACLAction> | undefined;
-  projectFlags?: Array<ACLAction> | undefined;
-  projectFlagsProduction?: Array<ACLAction> | undefined;
-  projectFlagsSDKKey?: Array<ACLAction> | undefined;
-  projectFromV0?: Array<ACLAction> | undefined;
-  projectId?: Array<ACLAction> | undefined;
-  projectIntegrationConfiguration?: Array<ACLAction> | undefined;
-  projectLink?: Array<ACLAction> | undefined;
-  projectMember?: Array<ACLAction> | undefined;
-  projectMonitoring?: Array<ACLAction> | undefined;
-  projectOIDCToken?: Array<ACLAction> | undefined;
-  projectPermissions?: Array<ACLAction> | undefined;
-  projectProductionBranch?: Array<ACLAction> | undefined;
-  projectProtectionBypass?: Array<ACLAction> | undefined;
-  projectRollingRelease?: Array<ACLAction> | undefined;
-  projectRoutes?: Array<ACLAction> | undefined;
-  projectSupportCase?: Array<ACLAction> | undefined;
-  projectSupportCaseComment?: Array<ACLAction> | undefined;
-  projectTier?: Array<ACLAction> | undefined;
-  projectTransfer?: Array<ACLAction> | undefined;
-  projectTransferOut?: Array<ACLAction> | undefined;
-  projectUsage?: Array<ACLAction> | undefined;
-  pageIntegrity?: Array<ACLAction> | undefined;
-  seawallConfig?: Array<ACLAction> | undefined;
-  securityPlusConfiguration?: Array<ACLAction> | undefined;
-  shareableLink?: Array<ACLAction> | undefined;
-  shareableLinkStrict?: Array<ACLAction> | undefined;
-  sharedEnvVarConnection?: Array<ACLAction> | undefined;
-  skewProtection?: Array<ACLAction> | undefined;
-  analytics?: Array<ACLAction> | undefined;
-  trustedIps?: Array<ACLAction> | undefined;
-  trustedSources?: Array<ACLAction> | undefined;
-  v0Chat?: Array<ACLAction> | undefined;
-  vercelAuth?: Array<ACLAction> | undefined;
-  vercelRun?: Array<ACLAction> | undefined;
-  webAnalytics?: Array<ACLAction> | undefined;
-  workflowRunData?: Array<ACLAction> | undefined;
 };
 
 export type GetMicrofrontendsInGroupLastRollbackTarget = {};
@@ -2071,6 +2073,99 @@ export const GetMicrofrontendsInGroupPermissions$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  aliasProject: types.optional(z.array(ACLAction$inboundSchema)),
+  aliasProtectionBypass: types.optional(z.array(ACLAction$inboundSchema)),
+  bulkRedirects: types.optional(z.array(ACLAction$inboundSchema)),
+  buildMachine: types.optional(z.array(ACLAction$inboundSchema)),
+  connectConfigurationLink: types.optional(z.array(ACLAction$inboundSchema)),
+  dataCacheNamespace: types.optional(z.array(ACLAction$inboundSchema)),
+  deployment: types.optional(z.array(ACLAction$inboundSchema)),
+  deploymentBuildLogs: types.optional(z.array(ACLAction$inboundSchema)),
+  deploymentCheck: types.optional(z.array(ACLAction$inboundSchema)),
+  deploymentCheckPreview: types.optional(z.array(ACLAction$inboundSchema)),
+  deploymentCheckReRunFromProductionBranch: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  deploymentProductionGit: types.optional(z.array(ACLAction$inboundSchema)),
+  deploymentV0: types.optional(z.array(ACLAction$inboundSchema)),
+  deploymentPreview: types.optional(z.array(ACLAction$inboundSchema)),
+  deploymentPrivate: types.optional(z.array(ACLAction$inboundSchema)),
+  deploymentPromote: types.optional(z.array(ACLAction$inboundSchema)),
+  deploymentRollback: types.optional(z.array(ACLAction$inboundSchema)),
+  edgeCacheNamespace: types.optional(z.array(ACLAction$inboundSchema)),
+  environments: types.optional(z.array(ACLAction$inboundSchema)),
+  job: types.optional(z.array(ACLAction$inboundSchema)),
+  logs: types.optional(z.array(ACLAction$inboundSchema)),
+  logsPreset: types.optional(z.array(ACLAction$inboundSchema)),
+  observabilityData: types.optional(z.array(ACLAction$inboundSchema)),
+  onDemandBuild: types.optional(z.array(ACLAction$inboundSchema)),
+  onDemandConcurrency: types.optional(z.array(ACLAction$inboundSchema)),
+  optionsAllowlist: types.optional(z.array(ACLAction$inboundSchema)),
+  passwordProtection: types.optional(z.array(ACLAction$inboundSchema)),
+  privateLinkEndpoint: types.optional(z.array(ACLAction$inboundSchema)),
+  productionAliasProtectionBypass: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  productionShareableLink: types.optional(z.array(ACLAction$inboundSchema)),
+  project: types.optional(z.array(ACLAction$inboundSchema)),
+  projectAccessGroup: types.optional(z.array(ACLAction$inboundSchema)),
+  projectAnalyticsSampling: types.optional(z.array(ACLAction$inboundSchema)),
+  projectAnalyticsUsage: types.optional(z.array(ACLAction$inboundSchema)),
+  projectCheck: types.optional(z.array(ACLAction$inboundSchema)),
+  projectCheckRun: types.optional(z.array(ACLAction$inboundSchema)),
+  projectDeploymentExpiration: types.optional(z.array(ACLAction$inboundSchema)),
+  projectDeploymentHook: types.optional(z.array(ACLAction$inboundSchema)),
+  projectDeploymentProtectionStrict: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  projectDomain: types.optional(z.array(ACLAction$inboundSchema)),
+  projectDomainCheckConfig: types.optional(z.array(ACLAction$inboundSchema)),
+  projectDomainMove: types.optional(z.array(ACLAction$inboundSchema)),
+  projectDomainVerify: types.optional(z.array(ACLAction$inboundSchema)),
+  projectEvent: types.optional(z.array(ACLAction$inboundSchema)),
+  projectEnvVars: types.optional(z.array(ACLAction$inboundSchema)),
+  projectEnvVarsProduction: types.optional(z.array(ACLAction$inboundSchema)),
+  projectEnvVarsUnownedByIntegration: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  projectFlags: types.optional(z.array(ACLAction$inboundSchema)),
+  projectFlagsProduction: types.optional(z.array(ACLAction$inboundSchema)),
+  projectFlagsSdkKey: types.optional(z.array(ACLAction$inboundSchema)),
+  projectFromV0: types.optional(z.array(ACLAction$inboundSchema)),
+  projectId: types.optional(z.array(ACLAction$inboundSchema)),
+  projectIntegrationConfiguration: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  projectLink: types.optional(z.array(ACLAction$inboundSchema)),
+  projectMember: types.optional(z.array(ACLAction$inboundSchema)),
+  projectMonitoring: types.optional(z.array(ACLAction$inboundSchema)),
+  projectOIDCToken: types.optional(z.array(ACLAction$inboundSchema)),
+  projectPermissions: types.optional(z.array(ACLAction$inboundSchema)),
+  projectProductionBranch: types.optional(z.array(ACLAction$inboundSchema)),
+  projectProtectionBypass: types.optional(z.array(ACLAction$inboundSchema)),
+  projectRollingRelease: types.optional(z.array(ACLAction$inboundSchema)),
+  projectRoutes: types.optional(z.array(ACLAction$inboundSchema)),
+  projectSupportCase: types.optional(z.array(ACLAction$inboundSchema)),
+  projectSupportCaseComment: types.optional(z.array(ACLAction$inboundSchema)),
+  projectTier: types.optional(z.array(ACLAction$inboundSchema)),
+  projectTransfer: types.optional(z.array(ACLAction$inboundSchema)),
+  projectTransferOut: types.optional(z.array(ACLAction$inboundSchema)),
+  projectUsage: types.optional(z.array(ACLAction$inboundSchema)),
+  pageIntegrity: types.optional(z.array(ACLAction$inboundSchema)),
+  seawallConfig: types.optional(z.array(ACLAction$inboundSchema)),
+  securityPlusConfiguration: types.optional(z.array(ACLAction$inboundSchema)),
+  shareableLink: types.optional(z.array(ACLAction$inboundSchema)),
+  shareableLinkStrict: types.optional(z.array(ACLAction$inboundSchema)),
+  sharedEnvVarConnection: types.optional(z.array(ACLAction$inboundSchema)),
+  skewProtection: types.optional(z.array(ACLAction$inboundSchema)),
+  analytics: types.optional(z.array(ACLAction$inboundSchema)),
+  trustedIps: types.optional(z.array(ACLAction$inboundSchema)),
+  trustedSources: types.optional(z.array(ACLAction$inboundSchema)),
+  v0Chat: types.optional(z.array(ACLAction$inboundSchema)),
+  vercelAuth: types.optional(z.array(ACLAction$inboundSchema)),
+  vercelRun: types.optional(z.array(ACLAction$inboundSchema)),
+  webAnalytics: types.optional(z.array(ACLAction$inboundSchema)),
+  workflowRunData: types.optional(z.array(ACLAction$inboundSchema)),
   oauth2Connection: types.optional(z.array(ACLAction$inboundSchema)),
   user: types.optional(z.array(ACLAction$inboundSchema)),
   userConnection: types.optional(z.array(ACLAction$inboundSchema)),
@@ -2093,6 +2188,10 @@ export const GetMicrofrontendsInGroupPermissions$inboundSchema: z.ZodType<
   aiGatewayGuardrails: types.optional(z.array(ACLAction$inboundSchema)),
   aiGatewayRules: types.optional(z.array(ACLAction$inboundSchema)),
   aiGatewaySettings: types.optional(z.array(ACLAction$inboundSchema)),
+  aiGatewayTranscripts: types.optional(z.array(ACLAction$inboundSchema)),
+  aiGatewayTranscriptsSettings: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
   aiGatewayUsage: types.optional(z.array(ACLAction$inboundSchema)),
   aiGatewayVirtualModelConfigs: types.optional(
     z.array(ACLAction$inboundSchema),
@@ -2303,105 +2402,12 @@ export const GetMicrofrontendsInGroupPermissions$inboundSchema: z.ZodType<
   webAnalyticsPlan: types.optional(z.array(ACLAction$inboundSchema)),
   webhook: types.optional(z.array(ACLAction$inboundSchema)),
   "webhook-event": types.optional(z.array(ACLAction$inboundSchema)),
-  aliasProject: types.optional(z.array(ACLAction$inboundSchema)),
-  aliasProtectionBypass: types.optional(z.array(ACLAction$inboundSchema)),
-  bulkRedirects: types.optional(z.array(ACLAction$inboundSchema)),
-  buildMachine: types.optional(z.array(ACLAction$inboundSchema)),
-  connectConfigurationLink: types.optional(z.array(ACLAction$inboundSchema)),
-  dataCacheNamespace: types.optional(z.array(ACLAction$inboundSchema)),
-  deployment: types.optional(z.array(ACLAction$inboundSchema)),
-  deploymentBuildLogs: types.optional(z.array(ACLAction$inboundSchema)),
-  deploymentCheck: types.optional(z.array(ACLAction$inboundSchema)),
-  deploymentCheckPreview: types.optional(z.array(ACLAction$inboundSchema)),
-  deploymentCheckReRunFromProductionBranch: types.optional(
-    z.array(ACLAction$inboundSchema),
-  ),
-  deploymentProductionGit: types.optional(z.array(ACLAction$inboundSchema)),
-  deploymentV0: types.optional(z.array(ACLAction$inboundSchema)),
-  deploymentPreview: types.optional(z.array(ACLAction$inboundSchema)),
-  deploymentPrivate: types.optional(z.array(ACLAction$inboundSchema)),
-  deploymentPromote: types.optional(z.array(ACLAction$inboundSchema)),
-  deploymentRollback: types.optional(z.array(ACLAction$inboundSchema)),
-  edgeCacheNamespace: types.optional(z.array(ACLAction$inboundSchema)),
-  environments: types.optional(z.array(ACLAction$inboundSchema)),
-  job: types.optional(z.array(ACLAction$inboundSchema)),
-  logs: types.optional(z.array(ACLAction$inboundSchema)),
-  logsPreset: types.optional(z.array(ACLAction$inboundSchema)),
-  observabilityData: types.optional(z.array(ACLAction$inboundSchema)),
-  onDemandBuild: types.optional(z.array(ACLAction$inboundSchema)),
-  onDemandConcurrency: types.optional(z.array(ACLAction$inboundSchema)),
-  optionsAllowlist: types.optional(z.array(ACLAction$inboundSchema)),
-  passwordProtection: types.optional(z.array(ACLAction$inboundSchema)),
-  privateLinkEndpoint: types.optional(z.array(ACLAction$inboundSchema)),
-  productionAliasProtectionBypass: types.optional(
-    z.array(ACLAction$inboundSchema),
-  ),
-  productionShareableLink: types.optional(z.array(ACLAction$inboundSchema)),
-  project: types.optional(z.array(ACLAction$inboundSchema)),
-  projectAccessGroup: types.optional(z.array(ACLAction$inboundSchema)),
-  projectAnalyticsSampling: types.optional(z.array(ACLAction$inboundSchema)),
-  projectAnalyticsUsage: types.optional(z.array(ACLAction$inboundSchema)),
-  projectCheck: types.optional(z.array(ACLAction$inboundSchema)),
-  projectCheckRun: types.optional(z.array(ACLAction$inboundSchema)),
-  projectDeploymentExpiration: types.optional(z.array(ACLAction$inboundSchema)),
-  projectDeploymentHook: types.optional(z.array(ACLAction$inboundSchema)),
-  projectDeploymentProtectionStrict: types.optional(
-    z.array(ACLAction$inboundSchema),
-  ),
-  projectDomain: types.optional(z.array(ACLAction$inboundSchema)),
-  projectDomainCheckConfig: types.optional(z.array(ACLAction$inboundSchema)),
-  projectDomainMove: types.optional(z.array(ACLAction$inboundSchema)),
-  projectDomainVerify: types.optional(z.array(ACLAction$inboundSchema)),
-  projectEvent: types.optional(z.array(ACLAction$inboundSchema)),
-  projectEnvVars: types.optional(z.array(ACLAction$inboundSchema)),
-  projectEnvVarsProduction: types.optional(z.array(ACLAction$inboundSchema)),
-  projectEnvVarsUnownedByIntegration: types.optional(
-    z.array(ACLAction$inboundSchema),
-  ),
-  projectFlags: types.optional(z.array(ACLAction$inboundSchema)),
-  projectFlagsProduction: types.optional(z.array(ACLAction$inboundSchema)),
-  projectFlagsSdkKey: types.optional(z.array(ACLAction$inboundSchema)),
-  projectFromV0: types.optional(z.array(ACLAction$inboundSchema)),
-  projectId: types.optional(z.array(ACLAction$inboundSchema)),
-  projectIntegrationConfiguration: types.optional(
-    z.array(ACLAction$inboundSchema),
-  ),
-  projectLink: types.optional(z.array(ACLAction$inboundSchema)),
-  projectMember: types.optional(z.array(ACLAction$inboundSchema)),
-  projectMonitoring: types.optional(z.array(ACLAction$inboundSchema)),
-  projectOIDCToken: types.optional(z.array(ACLAction$inboundSchema)),
-  projectPermissions: types.optional(z.array(ACLAction$inboundSchema)),
-  projectProductionBranch: types.optional(z.array(ACLAction$inboundSchema)),
-  projectProtectionBypass: types.optional(z.array(ACLAction$inboundSchema)),
-  projectRollingRelease: types.optional(z.array(ACLAction$inboundSchema)),
-  projectRoutes: types.optional(z.array(ACLAction$inboundSchema)),
-  projectSupportCase: types.optional(z.array(ACLAction$inboundSchema)),
-  projectSupportCaseComment: types.optional(z.array(ACLAction$inboundSchema)),
-  projectTier: types.optional(z.array(ACLAction$inboundSchema)),
-  projectTransfer: types.optional(z.array(ACLAction$inboundSchema)),
-  projectTransferOut: types.optional(z.array(ACLAction$inboundSchema)),
-  projectUsage: types.optional(z.array(ACLAction$inboundSchema)),
-  pageIntegrity: types.optional(z.array(ACLAction$inboundSchema)),
-  seawallConfig: types.optional(z.array(ACLAction$inboundSchema)),
-  securityPlusConfiguration: types.optional(z.array(ACLAction$inboundSchema)),
-  shareableLink: types.optional(z.array(ACLAction$inboundSchema)),
-  shareableLinkStrict: types.optional(z.array(ACLAction$inboundSchema)),
-  sharedEnvVarConnection: types.optional(z.array(ACLAction$inboundSchema)),
-  skewProtection: types.optional(z.array(ACLAction$inboundSchema)),
-  analytics: types.optional(z.array(ACLAction$inboundSchema)),
-  trustedIps: types.optional(z.array(ACLAction$inboundSchema)),
-  trustedSources: types.optional(z.array(ACLAction$inboundSchema)),
-  v0Chat: types.optional(z.array(ACLAction$inboundSchema)),
-  vercelAuth: types.optional(z.array(ACLAction$inboundSchema)),
-  vercelRun: types.optional(z.array(ACLAction$inboundSchema)),
-  webAnalytics: types.optional(z.array(ACLAction$inboundSchema)),
-  workflowRunData: types.optional(z.array(ACLAction$inboundSchema)),
 }).transform((v) => {
   return remap$(v, {
+    "projectFlagsSdkKey": "projectFlagsSDKKey",
     "Monitoring": "monitoring",
     "NotificationMonitoringAlert": "notificationMonitoringAlert",
     "webhook-event": "webhookEvent",
-    "projectFlagsSdkKey": "projectFlagsSDKKey",
   });
 });
 

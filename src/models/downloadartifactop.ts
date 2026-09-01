@@ -30,8 +30,8 @@ export type DownloadArtifactRequest = {
 
 /** @internal */
 export type DownloadArtifactRequest$Outbound = {
-  "'x-Artifact-Client-Ci'"?: string | undefined;
-  "'x-Artifact-Client-Interactive'"?: number | undefined;
+  "x-artifact-client-ci"?: string | undefined;
+  "x-artifact-client-interactive"?: number | undefined;
   hash: string;
   teamId?: string | undefined;
   slug?: string | undefined;
@@ -50,8 +50,8 @@ export const DownloadArtifactRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
-    xArtifactClientCi: "'x-Artifact-Client-Ci'",
-    xArtifactClientInteractive: "'x-Artifact-Client-Interactive'",
+    xArtifactClientCi: "x-artifact-client-ci",
+    xArtifactClientInteractive: "x-artifact-client-interactive",
   });
 });
 

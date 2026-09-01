@@ -10,7 +10,7 @@ import {
 let value:
   GetSecurityFirewallConfigRulesSecurityResponse200ApplicationJSONResponseBodyConditions =
     {
-      type: "host",
+      type: "ip_address",
       op: "ex",
     };
 ```

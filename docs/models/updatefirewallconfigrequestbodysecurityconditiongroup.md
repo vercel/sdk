@@ -8,7 +8,7 @@ import { UpdateFirewallConfigRequestBodySecurityConditionGroup } from "@vercel/s
 let value: UpdateFirewallConfigRequestBodySecurityConditionGroup = {
   conditions: [
     {
-      type: "geo_country",
+      type: "geo_country_region",
       op: "lte",
     },
   ],

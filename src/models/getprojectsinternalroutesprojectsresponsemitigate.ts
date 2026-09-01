@@ -379,6 +379,8 @@ export type ResponseBodyPermissions = {
   aiGatewayGuardrails?: Array<ACLAction> | undefined;
   aiGatewayRules?: Array<ACLAction> | undefined;
   aiGatewaySettings?: Array<ACLAction> | undefined;
+  aiGatewayTranscripts?: Array<ACLAction> | undefined;
+  aiGatewayTranscriptsSettings?: Array<ACLAction> | undefined;
   aiGatewayUsage?: Array<ACLAction> | undefined;
   aiGatewayVirtualModelConfigs?: Array<ACLAction> | undefined;
   alerts?: Array<ACLAction> | undefined;
@@ -2227,6 +2229,10 @@ export const ResponseBodyPermissions$inboundSchema: z.ZodType<
   aiGatewayGuardrails: types.optional(z.array(ACLAction$inboundSchema)),
   aiGatewayRules: types.optional(z.array(ACLAction$inboundSchema)),
   aiGatewaySettings: types.optional(z.array(ACLAction$inboundSchema)),
+  aiGatewayTranscripts: types.optional(z.array(ACLAction$inboundSchema)),
+  aiGatewayTranscriptsSettings: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
   aiGatewayUsage: types.optional(z.array(ACLAction$inboundSchema)),
   aiGatewayVirtualModelConfigs: types.optional(
     z.array(ACLAction$inboundSchema),

@@ -6,7 +6,7 @@
 import { GetSecurityFirewallConfigRulesetsSecurityResponseConditions } from "@vercel/sdk/models/getsecurityfirewallconfiglogheaderssecurityresponse200applicationjsonresponsebodydraftrules2.js";
 
 let value: GetSecurityFirewallConfigRulesetsSecurityResponseConditions = {
-  type: "shared_condition",
+  type: "target_path",
   op: "ninc",
 };
 ```

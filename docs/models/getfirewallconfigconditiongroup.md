@@ -8,7 +8,7 @@ import { GetFirewallConfigConditionGroup } from "@vercel/sdk/models/getfirewallc
 let value: GetFirewallConfigConditionGroup = {
   conditions: [
     {
-      type: "ja3_digest",
+      type: "ja4_digest",
       op: "re",
     },
   ],

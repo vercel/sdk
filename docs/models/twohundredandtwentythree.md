@@ -7,19 +7,12 @@ The payload of the event, if requested.
 ```typescript
 import { TwoHundredAndTwentyThree } from "@vercel/sdk/models/siftroute.js";
 
-let value: TwoHundredAndTwentyThree = {
-  endpoint: {
-    id: "<id>",
-    name: "<value>",
-    projectId: "<id>",
-    vercelRegion: "<value>",
-    awsServiceName: "<value>",
-  },
-};
+let value: TwoHundredAndTwentyThree = {};
 ```
 
 ## Fields
 
-| Field                                    | Type                                     | Required                                 | Description                              |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| `endpoint`                               | [models.Endpoint](../models/endpoint.md) | :heavy_check_mark:                       | N/A                                      |
+| Field                             | Type                              | Required                          | Description                       |
+| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| `previewDeploymentSuffix`         | *string*                          | :heavy_minus_sign:                | N/A                               |
+| `previousPreviewDeploymentSuffix` | *string*                          | :heavy_minus_sign:                | N/A                               |

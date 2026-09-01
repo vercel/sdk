@@ -5,7 +5,7 @@ Present when deployment was created with manual provisioning enabled, either exp
 ## Example Usage
 
 ```typescript
-import { GetDeploymentResponseBodyManualProvisioning } from "@vercel/sdk/models/getdeploymentservicesop.js";
+import { GetDeploymentResponseBodyManualProvisioning } from "@vercel/sdk/models/getdeploymentservicesmissing.js";
 
 let value: GetDeploymentResponseBodyManualProvisioning = {
   state: "PENDING",

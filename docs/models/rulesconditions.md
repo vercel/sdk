@@ -6,7 +6,7 @@
 import { RulesConditions } from "@vercel/sdk/models/getfirewallconfigop.js";
 
 let value: RulesConditions = {
-  type: "geo_country",
+  type: "geo_country_region",
   op: "re",
 };
 ```

@@ -81,22 +81,71 @@ import {
   GetDeploymentServicesBindings$inboundSchema,
   GetDeploymentServicesDeploymentsBuilder,
   GetDeploymentServicesDeploymentsBuilder$inboundSchema,
-  GetDeploymentServicesDeploymentsResponse200Type,
-  GetDeploymentServicesDeploymentsResponse200Type$inboundSchema,
-  GetDeploymentServicesDestination,
-  GetDeploymentServicesDestination$inboundSchema,
   GetDeploymentServicesFunctions,
   GetDeploymentServicesFunctions$inboundSchema,
+  GetDeploymentServicesHas,
+  GetDeploymentServicesHas$inboundSchema,
   GetDeploymentServicesHeaders,
   GetDeploymentServicesHeaders$inboundSchema,
-  GetDeploymentServicesOp,
-  GetDeploymentServicesOp$inboundSchema,
-  GetDeploymentServicesRedirects,
-  GetDeploymentServicesRedirects$inboundSchema,
+  GetDeploymentServicesMissing,
+  GetDeploymentServicesMissing$inboundSchema,
   ResponseBodyProject,
   ResponseBodyProject$inboundSchema,
-} from "./getdeploymentservicesop.js";
+} from "./getdeploymentservicesmissing.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type GetDeploymentServicesRedirects = {
+  source: string;
+  destination: string;
+  permanent?: boolean | undefined;
+  statusCode?: number | undefined;
+  has?: Array<GetDeploymentServicesHas> | undefined;
+  missing?: Array<GetDeploymentServicesMissing> | undefined;
+  env?: Array<string> | undefined;
+};
+
+/**
+ * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+ */
+export const GetDeploymentDestinationDeploymentsType = {
+  Service: "service",
+} as const;
+/**
+ * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+ */
+export type GetDeploymentDestinationDeploymentsType = ClosedEnum<
+  typeof GetDeploymentDestinationDeploymentsType
+>;
+
+export type GetDeploymentDestinationDeployments2 = {
+  /**
+   * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+   */
+  type?: GetDeploymentDestinationDeploymentsType | undefined;
+  service: string;
+  /**
+   * Routing-only path used to select a route inside the target service.
+   */
+  path?: string | undefined;
+};
+
+export type GetDeploymentServicesDestination =
+  | GetDeploymentDestinationDeployments2
+  | string;
+
+export const GetDeploymentServicesDeploymentsResponse200Type = {
+  RequestPath: "request.path",
+} as const;
+export type GetDeploymentServicesDeploymentsResponse200Type = ClosedEnum<
+  typeof GetDeploymentServicesDeploymentsResponse200Type
+>;
+
+export const GetDeploymentServicesOp = {
+  Set: "set",
+} as const;
+export type GetDeploymentServicesOp = ClosedEnum<
+  typeof GetDeploymentServicesOp
+>;
 
 export type GetDeploymentServicesTransforms = {
   type: GetDeploymentServicesDeploymentsResponse200Type;
@@ -266,7 +315,7 @@ export type GetDeploymentServicesDeploymentsMissing =
 
 export type GetDeploymentServicesRewrites = {
   source: string;
-  destination: GetDeploymentServicesDestination;
+  destination: GetDeploymentDestinationDeployments2 | string;
   transforms?: Array<GetDeploymentServicesTransforms> | undefined;
   has?:
     | Array<
@@ -764,6 +813,17 @@ export type GetDeploymentServicesDeploymentsMaxDuration =
   | number
   | GetDeploymentMaxDurationDeploymentsResponse2;
 
+export const GetDeploymentServicesDeploymentsMode = {
+  Strict: "strict",
+} as const;
+export type GetDeploymentServicesDeploymentsMode = ClosedEnum<
+  typeof GetDeploymentServicesDeploymentsMode
+>;
+
+export type GetDeploymentServicesDeploymentsAffinity = {
+  mode: GetDeploymentServicesDeploymentsMode;
+};
+
 export type GetDeploymentExperimentalTriggersDeploymentsResponse3 = {
   /**
    * Event type - must be "schedule/v1beta" (REQUIRED)
@@ -847,6 +907,7 @@ export type GetDeploymentServicesDeploymentsFunctions = {
     | number
     | GetDeploymentMaxDurationDeploymentsResponse2
     | undefined;
+  affinity?: GetDeploymentServicesDeploymentsAffinity | undefined;
   maxConcurrency?: number | undefined;
   regions?: Array<string> | undefined;
   functionFailoverRegions?: Array<string> | undefined;
@@ -1858,6 +1919,88 @@ export type GetDeploymentResponseBody =
   | GetDeploymentResponseBody1;
 
 /** @internal */
+export const GetDeploymentServicesRedirects$inboundSchema: z.ZodType<
+  GetDeploymentServicesRedirects,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  source: types.string(),
+  destination: types.string(),
+  permanent: types.optional(types.boolean()),
+  statusCode: types.optional(types.number()),
+  has: types.optional(z.array(GetDeploymentServicesHas$inboundSchema)),
+  missing: types.optional(z.array(GetDeploymentServicesMissing$inboundSchema)),
+  env: types.optional(z.array(types.string())),
+});
+
+export function getDeploymentServicesRedirectsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentServicesRedirects, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentServicesRedirects$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentServicesRedirects' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentDestinationDeploymentsType$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentDestinationDeploymentsType> = z
+    .nativeEnum(GetDeploymentDestinationDeploymentsType);
+
+/** @internal */
+export const GetDeploymentDestinationDeployments2$inboundSchema: z.ZodType<
+  GetDeploymentDestinationDeployments2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.optional(GetDeploymentDestinationDeploymentsType$inboundSchema),
+  service: types.string(),
+  path: types.optional(types.string()),
+});
+
+export function getDeploymentDestinationDeployments2FromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentDestinationDeployments2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentDestinationDeployments2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentDestinationDeployments2' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentServicesDestination$inboundSchema: z.ZodType<
+  GetDeploymentServicesDestination,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => GetDeploymentDestinationDeployments2$inboundSchema),
+  types.string(),
+]);
+
+export function getDeploymentServicesDestinationFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentServicesDestination, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentServicesDestination$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentServicesDestination' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentServicesDeploymentsResponse200Type$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentServicesDeploymentsResponse200Type> = z
+    .nativeEnum(GetDeploymentServicesDeploymentsResponse200Type);
+
+/** @internal */
+export const GetDeploymentServicesOp$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentServicesOp
+> = z.nativeEnum(GetDeploymentServicesOp);
+
+/** @internal */
 export const GetDeploymentServicesTransforms$inboundSchema: z.ZodType<
   GetDeploymentServicesTransforms,
   z.ZodTypeDef,
@@ -2431,7 +2574,10 @@ export const GetDeploymentServicesRewrites$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   source: types.string(),
-  destination: GetDeploymentServicesDestination$inboundSchema,
+  destination: smartUnion([
+    z.lazy(() => GetDeploymentDestinationDeployments2$inboundSchema),
+    types.string(),
+  ]),
   transforms: types.optional(
     z.array(z.lazy(() => GetDeploymentServicesTransforms$inboundSchema)),
   ),
@@ -3515,7 +3661,7 @@ export const GetDeploymentServices2$inboundSchema: z.ZodType<
   ),
   headers: types.optional(z.array(GetDeploymentServicesHeaders$inboundSchema)),
   redirects: types.optional(
-    z.array(GetDeploymentServicesRedirects$inboundSchema),
+    z.array(z.lazy(() => GetDeploymentServicesRedirects$inboundSchema)),
   ),
   rewrites: types.optional(
     z.array(z.lazy(() => GetDeploymentServicesRewrites$inboundSchema)),
@@ -3620,6 +3766,37 @@ export function getDeploymentServicesDeploymentsMaxDurationFromJSON(
         JSON.parse(x),
       ),
     `Failed to parse 'GetDeploymentServicesDeploymentsMaxDuration' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentServicesDeploymentsMode$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentServicesDeploymentsMode> = z.nativeEnum(
+    GetDeploymentServicesDeploymentsMode,
+  );
+
+/** @internal */
+export const GetDeploymentServicesDeploymentsAffinity$inboundSchema: z.ZodType<
+  GetDeploymentServicesDeploymentsAffinity,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  mode: GetDeploymentServicesDeploymentsMode$inboundSchema,
+});
+
+export function getDeploymentServicesDeploymentsAffinityFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetDeploymentServicesDeploymentsAffinity,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentServicesDeploymentsAffinity$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetDeploymentServicesDeploymentsAffinity' from JSON`,
   );
 }
 
@@ -3761,6 +3938,9 @@ export const GetDeploymentServicesDeploymentsFunctions$inboundSchema: z.ZodType<
       types.number(),
       GetDeploymentMaxDurationDeploymentsResponse2$inboundSchema,
     ]),
+  ),
+  affinity: types.optional(
+    z.lazy(() => GetDeploymentServicesDeploymentsAffinity$inboundSchema),
   ),
   maxConcurrency: types.optional(types.number()),
   regions: types.optional(z.array(types.string())),

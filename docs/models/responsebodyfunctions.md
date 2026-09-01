@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyFunctions } from "@vercel/sdk/models/createdeploymenthasdeploymentsvalue.js";
+import { ResponseBodyFunctions } from "@vercel/sdk/models/createdeploymentvaluedeploymentseq.js";
 
 let value: ResponseBodyFunctions = {};
 ```
@@ -15,6 +15,7 @@ let value: ResponseBodyFunctions = {};
 | `architecture`                                                           | [models.ResponseBodyArchitecture](../models/responsebodyarchitecture.md) | :heavy_minus_sign:                                                       | N/A                                                                      |
 | `memory`                                                                 | *number*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
 | `maxDuration`                                                            | *models.ResponseBodyMaxDuration*                                         | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `affinity`                                                               | [models.ResponseBodyAffinity](../models/responsebodyaffinity.md)         | :heavy_minus_sign:                                                       | N/A                                                                      |
 | `maxConcurrency`                                                         | *number*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
 | `regions`                                                                | *string*[]                                                               | :heavy_minus_sign:                                                       | N/A                                                                      |
 | `functionFailoverRegions`                                                | *string*[]                                                               | :heavy_minus_sign:                                                       | N/A                                                                      |

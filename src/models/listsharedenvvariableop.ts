@@ -171,9 +171,9 @@ export type ListSharedEnvVariableRequest$Outbound = {
   projectId?: string | undefined;
   ids?: string | undefined;
   exclude_idsQueryParameter?: string | undefined;
-  "'exclude-ids'QueryParameter1"?: string | undefined;
+  "exclude-idsQueryParameter1"?: string | undefined;
   exclude_projectIdQueryParameter?: string | undefined;
-  "'exclude-projectId'QueryParameter1"?: string | undefined;
+  "exclude-projectIdQueryParameter1"?: string | undefined;
   teamId?: string | undefined;
   slug?: string | undefined;
 };
@@ -196,9 +196,9 @@ export const ListSharedEnvVariableRequest$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     excludeIdsQueryParameter: "exclude_idsQueryParameter",
-    excludeIdsQueryParameter1: "'exclude-ids'QueryParameter1",
+    excludeIdsQueryParameter1: "exclude-idsQueryParameter1",
     excludeProjectIdQueryParameter: "exclude_projectIdQueryParameter",
-    excludeProjectIdQueryParameter1: "'exclude-projectId'QueryParameter1",
+    excludeProjectIdQueryParameter1: "exclude-projectIdQueryParameter1",
   });
 });
 

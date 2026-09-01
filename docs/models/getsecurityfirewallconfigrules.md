@@ -32,7 +32,7 @@ const value: models.GetSecurityFirewallConfigRulesSecurityResponse2 = {
     {
       conditions: [
         {
-          type: "ruleset",
+          type: "scheme",
           op: "nex",
         },
       ],

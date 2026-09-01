@@ -17,12 +17,13 @@ import { deploymentsUpdateIntegrationDeploymentAction } from "../funcs/deploymen
 import { deploymentsUploadFile } from "../funcs/deploymentsUploadFile.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import { CancelDeploymentResponseBody } from "../models/canceldeploymentresponsebody.js";
-import { CreateDeploymentRequest } from "../models/createdeploymenthasdeploymentsvalue.js";
 import { CreateDeploymentResponseBody } from "../models/createdeploymentresponsebody.js";
+import { CreateDeploymentRequest } from "../models/createdeploymentvaluedeploymentseq.js";
 import {
   DeleteDeploymentRequest,
   DeleteDeploymentResponseBody,
 } from "../models/deletedeploymentop.js";
+import { CancelDeploymentRequest } from "../models/destinationtype.js";
 import { FileTree } from "../models/filetree.js";
 import {
   GetDeploymentEventsRequest,
@@ -36,7 +37,6 @@ import {
   GetDeploymentsResponseBody,
 } from "../models/getdeploymentsop.js";
 import { ListDeploymentFilesRequest } from "../models/listdeploymentfilesop.js";
-import { CancelDeploymentRequest } from "../models/routesdestination.js";
 import { UpdateIntegrationDeploymentActionRequest } from "../models/updateintegrationdeploymentactionop.js";
 import {
   UploadFileRequest,

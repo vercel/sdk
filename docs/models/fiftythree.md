@@ -5,19 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FiftyThree } from "@vercel/sdk/models/twentysix.js";
+import { FiftyThree } from "@vercel/sdk/models/piiredaction.js";
 
 let value: FiftyThree = {
   appName: "<value>",
+  nextScopes: [
+    "offline_access",
+  ],
 };
 ```
 
 ## Fields
 
-| Field                                | Type                                 | Required                             | Description                          |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `appName`                            | *string*                             | :heavy_check_mark:                   | N/A                                  |
-| `appId`                              | *string*                             | :heavy_minus_sign:                   | N/A                                  |
-| `installationId`                     | *string*                             | :heavy_minus_sign:                   | N/A                                  |
-| `before`                             | [models.Before](../models/before.md) | :heavy_minus_sign:                   | N/A                                  |
-| `after`                              | [models.After](../models/after.md)   | :heavy_minus_sign:                   | N/A                                  |
+| Field                                                    | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `appName`                                                | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
+| `appId`                                                  | *string*                                                 | :heavy_minus_sign:                                       | N/A                                                      |
+| `nextScopes`                                             | [models.NextScopes](../models/nextscopes.md)[]           | :heavy_check_mark:                                       | N/A                                                      |
+| `nextPermissions`                                        | [models.NextPermissions](../models/nextpermissions.md)[] | :heavy_minus_sign:                                       | N/A                                                      |

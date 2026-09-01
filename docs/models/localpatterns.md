@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { LocalPatterns } from "@vercel/sdk/models/routesdestination.js";
+import { LocalPatterns } from "@vercel/sdk/models/destinationtype.js";
 
 let value: LocalPatterns = {};
 ```

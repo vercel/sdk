@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetDeploymentResponseBodyCrons } from "@vercel/sdk/models/getdeploymentservicesop.js";
+import { GetDeploymentResponseBodyCrons } from "@vercel/sdk/models/getdeploymentservicesmissing.js";
 
 let value: GetDeploymentResponseBodyCrons = {
   schedule: "<value>",

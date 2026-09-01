@@ -9,7 +9,7 @@ let value:
   CreateSecurityFirewallConfigByConfigVersionActivateRulesConditionGroup = {
     conditions: [
       {
-        type: "ja4_digest",
+        type: "method",
         op: "gt",
       },
     ],

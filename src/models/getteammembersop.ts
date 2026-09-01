@@ -263,6 +263,8 @@ export const GetTeamMembersTeamPermissions = {
   AiGatewayBudgetManager: "AiGatewayBudgetManager",
   AiGatewayCredits: "AiGatewayCredits",
   AiGatewaySettings: "AiGatewaySettings",
+  AiGatewayTranscriptsManager: "AiGatewayTranscriptsManager",
+  AiGatewayTranscriptsViewer: "AiGatewayTranscriptsViewer",
   ConnectorManager: "ConnectorManager",
   CreateProject: "CreateProject",
   EnvVariableManager: "EnvVariableManager",

@@ -6,7 +6,7 @@
 import { UpdateFirewallConfigRequestBodySecurityConditions } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
 let value: UpdateFirewallConfigRequestBodySecurityConditions = {
-  type: "environment",
+  type: "domain_environment",
   op: "re",
 };
 ```

@@ -13,7 +13,7 @@ let value: GetSecurityFirewallConfigRulesSecurity2 = {
     {
       conditions: [
         {
-          type: "ja3_digest",
+          type: "ja4_digest",
           op: "gt",
         },
       ],

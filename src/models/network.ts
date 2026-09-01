@@ -74,14 +74,6 @@ export type Network = {
   createdAt: number;
   egressIpAddresses?: Array<string> | undefined;
   /**
-   * The BYOIP egress (NAT gateway) IP addresses pre-allocated for this network from the region's egress IPAM pool. Present in regions that have an egress pool. Customers can allowlist these addresses before egress is switched over to them, since they are reserved ahead of the switch.
-   */
-  reservedEgressIpAddresses?: Array<string> | undefined;
-  /**
-   * The single contiguous CIDR block from which all egress (NAT gateway) IP addresses are allocated. Present only for networks created with the egress CIDR block feature enabled. Customers can allowlist this range instead of individual egress IPs so it keeps working when AZs are added.
-   */
-  egressCidrBlock?: string | undefined;
-  /**
    * Metadata about any AWS Route53 Hosted Zones associated with the Network.
    */
   hostedZones?: HostedZones | undefined;
@@ -190,8 +182,6 @@ export const Network$inboundSchema: z.ZodType<Network, z.ZodTypeDef, unknown> =
     cidr: types.string(),
     createdAt: types.number(),
     egressIpAddresses: types.optional(z.array(types.string())),
-    reservedEgressIpAddresses: types.optional(z.array(types.string())),
-    egressCidrBlock: types.optional(types.string()),
     hostedZones: types.optional(z.lazy(() => HostedZones$inboundSchema)),
     id: types.string(),
     name: types.string(),

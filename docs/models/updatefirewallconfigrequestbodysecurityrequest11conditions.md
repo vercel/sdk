@@ -6,7 +6,7 @@
 import { UpdateFirewallConfigRequestBodySecurityRequest11Conditions } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
 let value: UpdateFirewallConfigRequestBodySecurityRequest11Conditions = {
-  type: "geo_as_number",
+  type: "ja4_digest",
   op: "list",
 };
 ```

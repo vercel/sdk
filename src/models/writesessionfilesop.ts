@@ -34,7 +34,7 @@ export type WriteSessionFilesResponseBody = {};
 
 /** @internal */
 export type WriteSessionFilesRequest$Outbound = {
-  "'x-Cwd'"?: string | undefined;
+  "x-cwd"?: string | undefined;
   sessionId: string;
   teamId?: string | undefined;
   slug?: string | undefined;
@@ -52,7 +52,7 @@ export const WriteSessionFilesRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
-    xCwd: "'x-Cwd'",
+    xCwd: "x-cwd",
   });
 });
 

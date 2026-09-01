@@ -5,11 +5,14 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFortyFive } from "@vercel/sdk/models/previousrule.js";
+import { OneHundredAndFortyFive } from "@vercel/sdk/models/ninetyeight.js";
 
 let value: OneHundredAndFortyFive = {
   team: {
     id: "<id>",
+  },
+  previousRule: {
+    email: "Kariane.Harris@hotmail.com",
   },
 };
 ```
@@ -19,5 +22,4 @@ let value: OneHundredAndFortyFive = {
 | Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | `team`                                                                 | [models.UserEventPayload145Team](../models/usereventpayload145team.md) | :heavy_check_mark:                                                     | N/A                                                                    |
-| `previousRule`                                                         | [models.PayloadPreviousRule](../models/payloadpreviousrule.md)         | :heavy_minus_sign:                                                     | N/A                                                                    |
-| `nextRule`                                                             | [models.NextRule](../models/nextrule.md)                               | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `previousRule`                                                         | [models.PreviousRule](../models/previousrule.md)                       | :heavy_check_mark:                                                     | N/A                                                                    |

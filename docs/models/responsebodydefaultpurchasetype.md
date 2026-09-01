@@ -5,7 +5,7 @@ The default plan type for the build machine — what the customer is *paying* fo
 ## Example Usage
 
 ```typescript
-import { ResponseBodyDefaultPurchaseType } from "@vercel/sdk/models/createdeploymenthasdeploymentsvalue.js";
+import { ResponseBodyDefaultPurchaseType } from "@vercel/sdk/models/createdeploymentvaluedeploymentseq.js";
 
 let value: ResponseBodyDefaultPurchaseType = "basic";
 ```

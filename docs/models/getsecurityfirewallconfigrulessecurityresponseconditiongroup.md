@@ -8,7 +8,7 @@ import { GetSecurityFirewallConfigRulesSecurityResponseConditionGroup } from "@v
 let value: GetSecurityFirewallConfigRulesSecurityResponseConditionGroup = {
   conditions: [
     {
-      type: "rate_limit_api_id",
+      type: "raw_path",
       op: "ninc",
     },
   ],

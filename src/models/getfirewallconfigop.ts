@@ -303,6 +303,7 @@ export const GetFirewallConfigRulesType = {
   ServerAction: "server_action",
   SharedCondition: "shared_condition",
   TargetPath: "target_path",
+  TrafficSource: "traffic_source",
   TrustedSource: "trusted_source",
   UserAgent: "user_agent",
 } as const;
@@ -455,6 +456,7 @@ export const RulesType = {
   ServerAction: "server_action",
   SharedCondition: "shared_condition",
   TargetPath: "target_path",
+  TrafficSource: "traffic_source",
   TrustedSource: "trusted_source",
   UserAgent: "user_agent",
 } as const;
@@ -688,6 +690,7 @@ export const GetFirewallConfigRulesetsType = {
   ServerAction: "server_action",
   SharedCondition: "shared_condition",
   TargetPath: "target_path",
+  TrafficSource: "traffic_source",
   TrustedSource: "trusted_source",
   UserAgent: "user_agent",
 } as const;
@@ -850,6 +853,7 @@ export const GetFirewallConfigType = {
   ServerAction: "server_action",
   SharedCondition: "shared_condition",
   TargetPath: "target_path",
+  TrafficSource: "traffic_source",
   TrustedSource: "trusted_source",
   UserAgent: "user_agent",
 } as const;

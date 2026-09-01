@@ -6,7 +6,7 @@
 import { GetSecurityFirewallConfigSecurityResponse200Conditions } from "@vercel/sdk/models/getsecurityfirewallconfiglogheaderssecurityresponse200applicationjsonresponsebodydraftrules2.js";
 
 let value: GetSecurityFirewallConfigSecurityResponse200Conditions = {
-  type: "server_action",
+  type: "shared_condition",
   op: "eq",
 };
 ```

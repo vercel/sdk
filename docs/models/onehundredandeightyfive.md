@@ -9,6 +9,7 @@ import { OneHundredAndEightyFive } from "@vercel/sdk/models/bandwidth.js";
 
 let value: OneHundredAndEightyFive = {
   provider: "google",
+  login: "Ashly.Morar",
 };
 ```
 
@@ -17,3 +18,4 @@ let value: OneHundredAndEightyFive = {
 | Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
 | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
 | `provider`                                                                     | [models.UserEventPayload185Provider](../models/usereventpayload185provider.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `login`                                                                        | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |

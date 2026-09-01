@@ -6,7 +6,7 @@
 import { GetFirewallConfigRulesConditions } from "@vercel/sdk/models/getfirewallconfigop.js";
 
 let value: GetFirewallConfigRulesConditions = {
-  type: "target_path",
+  type: "traffic_source",
   op: "sub",
 };
 ```

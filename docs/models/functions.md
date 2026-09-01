@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Functions } from "@vercel/sdk/models/routesdestination.js";
+import { Functions } from "@vercel/sdk/models/destinationtype.js";
 
 let value: Functions = {};
 ```
@@ -15,6 +15,7 @@ let value: Functions = {};
 | `architecture`                                   | [models.Architecture](../models/architecture.md) | :heavy_minus_sign:                               | N/A                                              |
 | `memory`                                         | *number*                                         | :heavy_minus_sign:                               | N/A                                              |
 | `maxDuration`                                    | *models.MaxDuration*                             | :heavy_minus_sign:                               | N/A                                              |
+| `affinity`                                       | [models.Affinity](../models/affinity.md)         | :heavy_minus_sign:                               | N/A                                              |
 | `maxConcurrency`                                 | *number*                                         | :heavy_minus_sign:                               | N/A                                              |
 | `regions`                                        | *string*[]                                       | :heavy_minus_sign:                               | N/A                                              |
 | `functionFailoverRegions`                        | *string*[]                                       | :heavy_minus_sign:                               | N/A                                              |

@@ -5,17 +5,18 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { NinetyOne } from "@vercel/sdk/models/twentysix.js";
+import { NinetyOne } from "@vercel/sdk/models/piiredaction.js";
 
 let value: NinetyOne = {
+  bitbucketEmail: "<value>",
   bitbucketLogin: "<value>",
-  bitbucketAccountId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                | Type                 | Required             | Description          |
-| -------------------- | -------------------- | -------------------- | -------------------- |
-| `bitbucketLogin`     | *string*             | :heavy_check_mark:   | N/A                  |
-| `bitbucketAccountId` | *string*             | :heavy_check_mark:   | N/A                  |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `bitbucketEmail`   | *string*           | :heavy_check_mark: | N/A                |
+| `bitbucketLogin`   | *string*           | :heavy_check_mark: | N/A                |
+| `bitbucketName`    | *string*           | :heavy_minus_sign: | N/A                |

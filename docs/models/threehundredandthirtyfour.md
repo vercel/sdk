@@ -5,23 +5,26 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndThirtyFour } from "@vercel/sdk/models/usereventpayload333budget.js";
+import { ThreeHundredAndThirtyFour } from "@vercel/sdk/models/twohundredandseventyone.js";
 
 let value: ThreeHundredAndThirtyFour = {
   budget: {
-    type: "fixed",
-    fixedBudget: 1045.89,
-    previousSpend: [
-      750.87,
-    ],
-    notifiedAt: [
-      3068.44,
-      2256.86,
-    ],
-    createdAt: 867.48,
-    isActive: true,
-    teamId: "<id>",
-    id: "<id>",
+    budgetItem: {
+      type: "fixed",
+      fixedBudget: 9582.79,
+      previousSpend: [
+        3671.73,
+        7939.42,
+        1207.07,
+      ],
+      notifiedAt: [
+        7090.83,
+      ],
+      createdAt: 1626.44,
+      isActive: true,
+      teamId: "<id>",
+      id: "<id>",
+    },
   },
 };
 ```
@@ -30,4 +33,4 @@ let value: ThreeHundredAndThirtyFour = {
 
 | Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
 | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `budget`                                                                   | [models.UserEventPayload334Budget](../models/usereventpayload334budget.md) | :heavy_check_mark:                                                         | Represents a budget for tracking and notifying teams on their spending.    |
+| `budget`                                                                   | [models.UserEventPayload334Budget](../models/usereventpayload334budget.md) | :heavy_check_mark:                                                         | N/A                                                                        |

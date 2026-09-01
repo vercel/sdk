@@ -49,6 +49,7 @@ export const Name = {
   AiGatewayByokCredentialUpdated: "ai-gateway-byok-credential-updated",
   AiGatewayCreditsPurchased: "ai-gateway-credits-purchased",
   AiGatewayGuardrailsUpdated: "ai-gateway-guardrails-updated",
+  AiGatewayInferenceRegionsUpdated: "ai-gateway-inference-regions-updated",
   AiGatewayModelAllowlistModelsUpdated:
     "ai-gateway-model-allowlist-models-updated",
   AiGatewayModelAllowlistToggled: "ai-gateway-model-allowlist-toggled",
@@ -800,6 +801,7 @@ export const ReplacedBy = {
   AiGatewayByokCredentialUpdated: "ai-gateway-byok-credential-updated",
   AiGatewayCreditsPurchased: "ai-gateway-credits-purchased",
   AiGatewayGuardrailsUpdated: "ai-gateway-guardrails-updated",
+  AiGatewayInferenceRegionsUpdated: "ai-gateway-inference-regions-updated",
   AiGatewayModelAllowlistModelsUpdated:
     "ai-gateway-model-allowlist-models-updated",
   AiGatewayModelAllowlistToggled: "ai-gateway-model-allowlist-toggled",

@@ -239,6 +239,7 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityTyp
     ServerAction: "server_action",
     SharedCondition: "shared_condition",
     TargetPath: "target_path",
+    TrafficSource: "traffic_source",
     TrustedSource: "trusted_source",
     UserAgent: "user_agent",
   } as const;
@@ -431,6 +432,7 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesType = {
   ServerAction: "server_action",
   SharedCondition: "shared_condition",
   TargetPath: "target_path",
+  TrafficSource: "traffic_source",
   TrustedSource: "trusted_source",
   UserAgent: "user_agent",
 } as const;
@@ -722,6 +724,7 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsType = {
   ServerAction: "server_action",
   SharedCondition: "shared_condition",
   TargetPath: "target_path",
+  TrafficSource: "traffic_source",
   TrustedSource: "trusted_source",
   UserAgent: "user_agent",
 } as const;
@@ -919,6 +922,7 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateType = {
   ServerAction: "server_action",
   SharedCondition: "shared_condition",
   TargetPath: "target_path",
+  TrafficSource: "traffic_source",
   TrustedSource: "trusted_source",
   UserAgent: "user_agent",
 } as const;

@@ -5,7 +5,7 @@ Services detected during build from vercel.json experimentalServices or auto-det
 ## Example Usage
 
 ```typescript
-import { Services2 } from "@vercel/sdk/models/canceldeploymentexperimentaltriggersdeploymentsresponse1.js";
+import { Services2 } from "@vercel/sdk/models/excludefiles.js";
 
 let value: Services2 = {
   schema: "experimentalServicesV2",

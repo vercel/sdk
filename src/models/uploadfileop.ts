@@ -64,10 +64,10 @@ export type UploadFileResponseBody =
 
 /** @internal */
 export type UploadFileRequest$Outbound = {
-  "'content-Length'"?: number | undefined;
-  "'x-Vercel-Digest'"?: string | undefined;
-  "'x-Now-Digest'"?: string | undefined;
-  "'x-Now-Size'"?: number | undefined;
+  "Content-Length"?: number | undefined;
+  "x-vercel-digest"?: string | undefined;
+  "x-now-digest"?: string | undefined;
+  "x-now-size"?: number | undefined;
   teamId?: string | undefined;
   slug?: string | undefined;
   RequestBody?:
@@ -98,10 +98,10 @@ export const UploadFileRequest$outboundSchema: z.ZodType<
   ]).optional(),
 }).transform((v) => {
   return remap$(v, {
-    contentLength: "'content-Length'",
-    xVercelDigest: "'x-Vercel-Digest'",
-    xNowDigest: "'x-Now-Digest'",
-    xNowSize: "'x-Now-Size'",
+    contentLength: "Content-Length",
+    xVercelDigest: "x-vercel-digest",
+    xNowDigest: "x-now-digest",
+    xNowSize: "x-now-size",
     requestBody: "RequestBody",
   });
 });

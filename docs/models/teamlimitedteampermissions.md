@@ -5,11 +5,11 @@
 ```typescript
 import { TeamLimitedTeamPermissions } from "@vercel/sdk/models/teamlimited.js";
 
-let value: TeamLimitedTeamPermissions = "OrgViewer";
+let value: TeamLimitedTeamPermissions = "OrgAdmin";
 ```
 
 ## Values
 
 ```typescript
-"AiGatewayApiKeyOwnedBySelf" | "AiGatewayBudgetManager" | "AiGatewayCredits" | "AiGatewaySettings" | "ConnectorManager" | "CreateProject" | "EnvVariableManager" | "EnvironmentManager" | "FullProductionDeployment" | "IntegrationManager" | "OrgAdmin" | "OrgViewer" | "UsageViewer" | "V0Builder" | "V0Chatter" | "V0Viewer" | "WorkflowDecryptor"
+"AiGatewayApiKeyOwnedBySelf" | "AiGatewayBudgetManager" | "AiGatewayCredits" | "AiGatewaySettings" | "AiGatewayTranscriptsManager" | "AiGatewayTranscriptsViewer" | "ConnectorManager" | "CreateProject" | "EnvVariableManager" | "EnvironmentManager" | "FullProductionDeployment" | "IntegrationManager" | "OrgAdmin" | "OrgViewer" | "UsageViewer" | "V0Builder" | "V0Chatter" | "V0Viewer" | "WorkflowDecryptor"
 ```

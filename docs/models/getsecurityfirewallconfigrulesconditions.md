@@ -6,7 +6,7 @@
 import { GetSecurityFirewallConfigRulesConditions } from "@vercel/sdk/models/getsecurityfirewallconfiglogheaderssecurityresponse200applicationjsonresponsebodydraftrules2.js";
 
 let value: GetSecurityFirewallConfigRulesConditions = {
-  type: "rate_limit_api_id",
+  type: "raw_path",
   op: "lte",
 };
 ```

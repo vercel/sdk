@@ -13,7 +13,7 @@ export type UploadArtifactRequest = {
   /**
    * The artifact size in bytes
    */
-  contentLength?: number | undefined;
+  contentLength: number;
   /**
    * The time taken to generate the uploaded artifact in milliseconds.
    */
@@ -65,13 +65,13 @@ export type UploadArtifactResponseBody = {
 
 /** @internal */
 export type UploadArtifactRequest$Outbound = {
-  "'content-Length'"?: number | undefined;
-  "'x-Artifact-Duration'"?: number | undefined;
-  "'x-Artifact-Client-Ci'"?: string | undefined;
-  "'x-Artifact-Client-Interactive'"?: number | undefined;
-  "'x-Artifact-Tag'"?: string | undefined;
-  "'x-Artifact-Sha'"?: string | undefined;
-  "'x-Artifact-Dirty-Hash'"?: string | undefined;
+  "Content-Length": number;
+  "x-artifact-duration"?: number | undefined;
+  "x-artifact-client-ci"?: string | undefined;
+  "x-artifact-client-interactive"?: number | undefined;
+  "x-artifact-tag"?: string | undefined;
+  "x-artifact-sha"?: string | undefined;
+  "x-artifact-dirty-hash"?: string | undefined;
   hash: string;
   teamId?: string | undefined;
   slug?: string | undefined;
@@ -84,7 +84,7 @@ export const UploadArtifactRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UploadArtifactRequest
 > = z.object({
-  contentLength: z.number().optional(),
+  contentLength: z.number(),
   xArtifactDuration: z.number().optional(),
   xArtifactClientCi: z.string().optional(),
   xArtifactClientInteractive: z.number().int().optional(),
@@ -102,13 +102,13 @@ export const UploadArtifactRequest$outboundSchema: z.ZodType<
   ]),
 }).transform((v) => {
   return remap$(v, {
-    contentLength: "'content-Length'",
-    xArtifactDuration: "'x-Artifact-Duration'",
-    xArtifactClientCi: "'x-Artifact-Client-Ci'",
-    xArtifactClientInteractive: "'x-Artifact-Client-Interactive'",
-    xArtifactTag: "'x-Artifact-Tag'",
-    xArtifactSha: "'x-Artifact-Sha'",
-    xArtifactDirtyHash: "'x-Artifact-Dirty-Hash'",
+    contentLength: "Content-Length",
+    xArtifactDuration: "x-artifact-duration",
+    xArtifactClientCi: "x-artifact-client-ci",
+    xArtifactClientInteractive: "x-artifact-client-interactive",
+    xArtifactTag: "x-artifact-tag",
+    xArtifactSha: "x-artifact-sha",
+    xArtifactDirtyHash: "x-artifact-dirty-hash",
     requestBody: "RequestBody",
   });
 });

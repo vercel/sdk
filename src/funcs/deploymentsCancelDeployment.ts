@@ -16,6 +16,10 @@ import {
   CancelDeploymentResponseBody$inboundSchema,
 } from "../models/canceldeploymentresponsebody.js";
 import {
+  CancelDeploymentRequest,
+  CancelDeploymentRequest$outboundSchema,
+} from "../models/destinationtype.js";
+import {
   ConnectionError,
   InvalidRequestError,
   RequestAbortedError,
@@ -23,10 +27,6 @@ import {
   UnexpectedClientError,
 } from "../models/httpclienterrors.js";
 import { ResponseValidationError } from "../models/responsevalidationerror.js";
-import {
-  CancelDeploymentRequest,
-  CancelDeploymentRequest$outboundSchema,
-} from "../models/routesdestination.js";
 import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import { VercelError } from "../models/vercelerror.js";
 import { APICall, APIPromise } from "../types/async.js";

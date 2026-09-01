@@ -7,17 +7,26 @@ The payload of the event, if requested.
 ```typescript
 import { OneHundredAndEightySeven } from "@vercel/sdk/models/bandwidth.js";
 
-let value: OneHundredAndEightySeven = {
-  projectId: "<id>",
-  toDeploymentId: "<id>",
-  projectName: "<value>",
-};
+let value: OneHundredAndEightySeven = {};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `toDeploymentId`   | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                   | Type                                                                    | Required                                                                | Description                                                             |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `userAgent`                                                             | *string*                                                                | :heavy_minus_sign:                                                      | N/A                                                                     |
+| `geolocation`                                                           | [models.Geolocation](../models/geolocation.md)                          | :heavy_minus_sign:                                                      | N/A                                                                     |
+| `env`                                                                   | *string*                                                                | :heavy_minus_sign:                                                      | N/A                                                                     |
+| `os`                                                                    | *string*                                                                | :heavy_minus_sign:                                                      | N/A                                                                     |
+| `loginSessionId`                                                        | *string*                                                                | :heavy_minus_sign:                                                      | Browser login correlation ID. This is not an authentication credential. |
+| `username`                                                              | *string*                                                                | :heavy_minus_sign:                                                      | N/A                                                                     |
+| `ssoType`                                                               | *string*                                                                | :heavy_minus_sign:                                                      | N/A                                                                     |
+| `factors`                                                               | *models.Factors*                                                        | :heavy_minus_sign:                                                      | N/A                                                                     |
+| `viaOTP`                                                                | *boolean*                                                               | :heavy_minus_sign:                                                      | N/A                                                                     |
+| `viaGithub`                                                             | *boolean*                                                               | :heavy_minus_sign:                                                      | N/A                                                                     |
+| `viaGitlab`                                                             | *boolean*                                                               | :heavy_minus_sign:                                                      | N/A                                                                     |
+| `viaBitbucket`                                                          | *boolean*                                                               | :heavy_minus_sign:                                                      | N/A                                                                     |
+| `viaGoogle`                                                             | *boolean*                                                               | :heavy_minus_sign:                                                      | N/A                                                                     |
+| `viaApple`                                                              | *boolean*                                                               | :heavy_minus_sign:                                                      | N/A                                                                     |
+| `viaSamlSso`                                                            | *boolean*                                                               | :heavy_minus_sign:                                                      | N/A                                                                     |
+| `viaPasskey`                                                            | *boolean*                                                               | :heavy_minus_sign:                                                      | N/A                                                                     |

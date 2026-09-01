@@ -228,6 +228,7 @@ export const GetSecurityFirewallConfigRulesType = {
   ServerAction: "server_action",
   SharedCondition: "shared_condition",
   TargetPath: "target_path",
+  TrafficSource: "traffic_source",
   TrustedSource: "trusted_source",
   UserAgent: "user_agent",
 } as const;
@@ -400,6 +401,7 @@ export const GetSecurityFirewallConfigRulesSecurityResponse200ApplicationJSONRes
     ServerAction: "server_action",
     SharedCondition: "shared_condition",
     TargetPath: "target_path",
+    TrafficSource: "traffic_source",
     TrustedSource: "trusted_source",
     UserAgent: "user_agent",
   } as const;
@@ -691,6 +693,7 @@ export const GetSecurityFirewallConfigRulesetsSecurityResponseType = {
   ServerAction: "server_action",
   SharedCondition: "shared_condition",
   TargetPath: "target_path",
+  TrafficSource: "traffic_source",
   TrustedSource: "trusted_source",
   UserAgent: "user_agent",
 } as const;
@@ -881,6 +884,7 @@ export const GetSecurityFirewallConfigType = {
   ServerAction: "server_action",
   SharedCondition: "shared_condition",
   TargetPath: "target_path",
+  TrafficSource: "traffic_source",
   TrustedSource: "trusted_source",
   UserAgent: "user_agent",
 } as const;
@@ -1305,6 +1309,7 @@ export const GetSecurityFirewallConfigRulesSecurityResponseType = {
   ServerAction: "server_action",
   SharedCondition: "shared_condition",
   TargetPath: "target_path",
+  TrafficSource: "traffic_source",
   TrustedSource: "trusted_source",
   UserAgent: "user_agent",
 } as const;
@@ -1481,6 +1486,7 @@ export const GetSecurityFirewallConfigRulesSecurityType = {
   ServerAction: "server_action",
   SharedCondition: "shared_condition",
   TargetPath: "target_path",
+  TrafficSource: "traffic_source",
   TrustedSource: "trusted_source",
   UserAgent: "user_agent",
 } as const;

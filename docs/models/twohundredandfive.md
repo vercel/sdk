@@ -8,28 +8,16 @@ The payload of the event, if requested.
 import { TwoHundredAndFive } from "@vercel/sdk/models/siftroute.js";
 
 let value: TwoHundredAndFive = {
-  projectId: "<id>",
-  previous: {
-    enabled: true,
-    mode: "<value>",
-    enforcePercentage: 6948.54,
-    newResourceBlockingPolicy: "allow",
-    allowUnsafeScriptSrcKeywords: false,
-  },
-  next: {
-    enabled: false,
-    mode: "<value>",
-    enforcePercentage: 3970.86,
-    newResourceBlockingPolicy: "block",
-    allowUnsafeScriptSrcKeywords: true,
-  },
+  ownerId: "<id>",
+  source: "<value>",
+  cause: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `projectId`                                                              | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
-| `previous`                                                               | [models.UserEventPayloadPrevious](../models/usereventpayloadprevious.md) | :heavy_check_mark:                                                       | N/A                                                                      |
-| `next`                                                                   | [models.UserEventPayloadNext](../models/usereventpayloadnext.md)         | :heavy_check_mark:                                                       | N/A                                                                      |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `ownerId`          | *string*           | :heavy_check_mark: | N/A                |
+| `source`           | *string*           | :heavy_check_mark: | N/A                |
+| `cause`            | *string*           | :heavy_check_mark: | N/A                |

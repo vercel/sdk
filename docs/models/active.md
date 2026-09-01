@@ -21,7 +21,7 @@ let value: Active = {
         {
           conditions: [
             {
-              type: "ruleset",
+              type: "scheme",
               op: "nex",
             },
           ],

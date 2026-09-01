@@ -9,7 +9,7 @@ let value:
   CreateSecurityFirewallConfigByConfigVersionActivateRulesetsConditionGroup = {
     conditions: [
       {
-        type: "path",
+        type: "protocol",
         op: "list",
       },
     ],

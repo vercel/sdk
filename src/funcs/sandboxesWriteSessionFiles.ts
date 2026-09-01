@@ -110,7 +110,7 @@ async function $do(
 
   const headers = new Headers(compactMap({
     Accept: "application/json",
-    "'x-Cwd'": encodeSimple("'x-Cwd'", payload["'x-Cwd'"], {
+    "x-cwd": encodeSimple("x-cwd", payload["x-cwd"], {
       explode: false,
       charEncoding: "none",
     }),

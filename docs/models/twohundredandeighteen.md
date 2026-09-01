@@ -8,6 +8,8 @@ The payload of the event, if requested.
 import { TwoHundredAndEighteen } from "@vercel/sdk/models/siftroute.js";
 
 let value: TwoHundredAndEighteen = {
+  projectId: "<id>",
+  projectName: "<value>",
   previous: {},
   next: {},
 };
@@ -17,5 +19,7 @@ let value: TwoHundredAndEighteen = {
 
 | Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
 | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
 | `previous`                                                                     | [models.UserEventPayload218Previous](../models/usereventpayload218previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
 | `next`                                                                         | [models.UserEventPayload218Next](../models/usereventpayload218next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |

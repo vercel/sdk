@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Missing2 } from "@vercel/sdk/models/routesdestination.js";
+import { Missing2 } from "@vercel/sdk/models/destinationtype.js";
 
 let value: Missing2 = {
   type: "cookie",

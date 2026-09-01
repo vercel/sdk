@@ -268,6 +268,7 @@ export const PutFirewallConfigType = {
   BotStatus: "bot_status",
   BotProtection: "bot_protection",
   SharedCondition: "shared_condition",
+  TrafficSource: "traffic_source",
   Ruleset: "ruleset",
 } as const;
 /**
@@ -430,6 +431,7 @@ export const RulesetsType = {
   BotStatus: "bot_status",
   BotProtection: "bot_protection",
   SharedCondition: "shared_condition",
+  TrafficSource: "traffic_source",
   Ruleset: "ruleset",
 } as const;
 export type RulesetsType = ClosedEnum<typeof RulesetsType>;
@@ -828,6 +830,7 @@ export const PutFirewallConfigRulesSecurityType = {
   ServerAction: "server_action",
   SharedCondition: "shared_condition",
   TargetPath: "target_path",
+  TrafficSource: "traffic_source",
   TrustedSource: "trusted_source",
   UserAgent: "user_agent",
 } as const;
@@ -991,6 +994,7 @@ export const PutFirewallConfigRulesType = {
   ServerAction: "server_action",
   SharedCondition: "shared_condition",
   TargetPath: "target_path",
+  TrafficSource: "traffic_source",
   TrustedSource: "trusted_source",
   UserAgent: "user_agent",
 } as const;
@@ -1242,6 +1246,7 @@ export const PutFirewallConfigRulesetsType = {
   ServerAction: "server_action",
   SharedCondition: "shared_condition",
   TargetPath: "target_path",
+  TrafficSource: "traffic_source",
   TrustedSource: "trusted_source",
   UserAgent: "user_agent",
 } as const;
@@ -1407,6 +1412,7 @@ export const PutFirewallConfigSecurityType = {
   ServerAction: "server_action",
   SharedCondition: "shared_condition",
   TargetPath: "target_path",
+  TrafficSource: "traffic_source",
   TrustedSource: "trusted_source",
   UserAgent: "user_agent",
 } as const;

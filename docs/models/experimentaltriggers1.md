@@ -5,7 +5,7 @@ Queue trigger input event for v1beta (from vercel.json config). Requires explici
 ## Example Usage
 
 ```typescript
-import { ExperimentalTriggers1 } from "@vercel/sdk/models/routesdestination.js";
+import { ExperimentalTriggers1 } from "@vercel/sdk/models/destinationtype.js";
 
 let value: ExperimentalTriggers1 = {
   type: "queue/v1beta",

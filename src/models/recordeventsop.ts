@@ -111,8 +111,8 @@ export function requestBodyToJSON(requestBody: RequestBody): string {
 
 /** @internal */
 export type RecordEventsRequest$Outbound = {
-  "'x-Artifact-Client-Ci'"?: string | undefined;
-  "'x-Artifact-Client-Interactive'"?: number | undefined;
+  "x-artifact-client-ci"?: string | undefined;
+  "x-artifact-client-interactive"?: number | undefined;
   teamId?: string | undefined;
   slug?: string | undefined;
   RequestBody: Array<RequestBody$Outbound>;
@@ -131,8 +131,8 @@ export const RecordEventsRequest$outboundSchema: z.ZodType<
   requestBody: z.array(z.lazy(() => RequestBody$outboundSchema)),
 }).transform((v) => {
   return remap$(v, {
-    xArtifactClientCi: "'x-Artifact-Client-Ci'",
-    xArtifactClientInteractive: "'x-Artifact-Client-Interactive'",
+    xArtifactClientCi: "x-artifact-client-ci",
+    xArtifactClientInteractive: "x-artifact-client-interactive",
     requestBody: "RequestBody",
   });
 });

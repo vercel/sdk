@@ -6,7 +6,7 @@
 import { UpdateFirewallConfigRequestBodySecurityRequest12Conditions } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
 let value: UpdateFirewallConfigRequestBodySecurityRequest12Conditions = {
-  type: "geo_country",
+  type: "geo_country_region",
   op: "suf",
 };
 ```

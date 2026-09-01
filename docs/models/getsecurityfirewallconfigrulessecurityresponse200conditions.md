@@ -6,7 +6,7 @@
 import { GetSecurityFirewallConfigRulesSecurityResponse200Conditions } from "@vercel/sdk/models/getsecurityfirewallconfigsecurityresponsemanagedrules.js";
 
 let value: GetSecurityFirewallConfigRulesSecurityResponse200Conditions = {
-  type: "geo_country",
+  type: "geo_country_region",
   op: "neq",
 };
 ```

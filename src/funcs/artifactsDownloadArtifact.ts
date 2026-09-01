@@ -107,14 +107,14 @@ async function $do(
 
   const headers = new Headers(compactMap({
     Accept: "application/json",
-    "'x-Artifact-Client-Ci'": encodeSimple(
-      "'x-Artifact-Client-Ci'",
-      payload["'x-Artifact-Client-Ci'"],
+    "x-artifact-client-ci": encodeSimple(
+      "x-artifact-client-ci",
+      payload["x-artifact-client-ci"],
       { explode: false, charEncoding: "none" },
     ),
-    "'x-Artifact-Client-Interactive'": encodeSimple(
-      "'x-Artifact-Client-Interactive'",
-      payload["'x-Artifact-Client-Interactive'"],
+    "x-artifact-client-interactive": encodeSimple(
+      "x-artifact-client-interactive",
+      payload["x-artifact-client-interactive"],
       { explode: false, charEncoding: "none" },
     ),
   }));

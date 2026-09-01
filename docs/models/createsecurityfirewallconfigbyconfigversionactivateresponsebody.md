@@ -21,7 +21,7 @@ let value: CreateSecurityFirewallConfigByConfigVersionActivateResponseBody = {
         {
           conditions: [
             {
-              type: "ja4_digest",
+              type: "method",
               op: "gt",
             },
           ],

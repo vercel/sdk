@@ -96,8 +96,8 @@ async function $do(
   const path = pathToFunc("/storage/stores/{id}")(pathParams);
 
   const query = encodeFormQuery({
-    "'include-guides'": payload["'include-guides'"],
-    "'skip-metadata'": payload["'skip-metadata'"],
+    "include-guides": payload["include-guides"],
+    "skip-metadata": payload["skip-metadata"],
   });
 
   const headers = new Headers(compactMap({

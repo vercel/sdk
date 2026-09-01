@@ -8,7 +8,9 @@ The payload of the event, if requested.
 import { TwoHundredAndSixtyFive } from "@vercel/sdk/models/siftroute.js";
 
 let value: TwoHundredAndSixtyFive = {
-  requireVerifiedCommits: true,
+  projectId: "<id>",
+  projectName: "<value>",
+  requireVerifiedCommits: false,
 };
 ```
 
@@ -16,4 +18,6 @@ let value: TwoHundredAndSixtyFive = {
 
 | Field                    | Type                     | Required                 | Description              |
 | ------------------------ | ------------------------ | ------------------------ | ------------------------ |
+| `projectId`              | *string*                 | :heavy_check_mark:       | N/A                      |
+| `projectName`            | *string*                 | :heavy_check_mark:       | N/A                      |
 | `requireVerifiedCommits` | *boolean*                | :heavy_check_mark:       | N/A                      |

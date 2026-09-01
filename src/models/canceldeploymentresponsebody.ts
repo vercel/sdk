@@ -10,31 +10,6 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
-  CancelDeploymentExperimentalTriggersDeploymentsResponse1,
-  CancelDeploymentExperimentalTriggersDeploymentsResponse1$inboundSchema,
-  CancelDeploymentExperimentalTriggersDeploymentsResponse2,
-  CancelDeploymentExperimentalTriggersDeploymentsResponse2$inboundSchema,
-  CancelDeploymentExperimentalTriggersDeploymentsResponse3,
-  CancelDeploymentExperimentalTriggersDeploymentsResponse3$inboundSchema,
-  CancelDeploymentRoutes,
-  CancelDeploymentRoutes$inboundSchema,
-  CancelDeploymentServicesArchitecture,
-  CancelDeploymentServicesArchitecture$inboundSchema,
-  CancelDeploymentServicesMaxDuration,
-  CancelDeploymentServicesMaxDuration$inboundSchema,
-  ExcludeFiles,
-  ExcludeFiles$inboundSchema,
-  IncludeFiles,
-  IncludeFiles$inboundSchema,
-  Services2,
-  Services2$inboundSchema,
-  ServicesType,
-  ServicesType$inboundSchema,
-  Trigger,
-  Trigger$inboundSchema,
-} from "./canceldeploymentexperimentaltriggersdeploymentsresponse1.js";
-import { FlagJSONValue, FlagJSONValue$inboundSchema } from "./flagjsonvalue.js";
-import {
   AliasAssignedAt,
   AliasAssignedAt$inboundSchema,
   AliasError,
@@ -97,8 +72,124 @@ import {
   ReadyState$inboundSchema,
   ReadySubstate,
   ReadySubstate$inboundSchema,
-} from "./routesdestination.js";
+} from "./destinationtype.js";
+import {
+  CancelDeploymentRoutes,
+  CancelDeploymentRoutes$inboundSchema,
+  ExcludeFiles,
+  ExcludeFiles$inboundSchema,
+  IncludeFiles,
+  IncludeFiles$inboundSchema,
+  Services2,
+  Services2$inboundSchema,
+  ServicesType,
+  ServicesType$inboundSchema,
+  Trigger,
+  Trigger$inboundSchema,
+} from "./excludefiles.js";
+import { FlagJSONValue, FlagJSONValue$inboundSchema } from "./flagjsonvalue.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const CancelDeploymentServicesArchitecture = {
+  Arm64: "arm64",
+  X8664: "x86_64",
+} as const;
+export type CancelDeploymentServicesArchitecture = ClosedEnum<
+  typeof CancelDeploymentServicesArchitecture
+>;
+
+export const CancelDeploymentMaxDurationDeploymentsResponse2 = {
+  Max: "max",
+} as const;
+export type CancelDeploymentMaxDurationDeploymentsResponse2 = ClosedEnum<
+  typeof CancelDeploymentMaxDurationDeploymentsResponse2
+>;
+
+export type CancelDeploymentServicesMaxDuration =
+  | number
+  | CancelDeploymentMaxDurationDeploymentsResponse2;
+
+export const CancelDeploymentServicesMode = {
+  Strict: "strict",
+} as const;
+export type CancelDeploymentServicesMode = ClosedEnum<
+  typeof CancelDeploymentServicesMode
+>;
+
+export type CancelDeploymentServicesAffinity = {
+  mode: CancelDeploymentServicesMode;
+};
+
+export type CancelDeploymentExperimentalTriggersDeploymentsResponse3 = {
+  /**
+   * Event type - must be "schedule/v1beta" (REQUIRED)
+   */
+  type: "schedule/v1beta";
+};
+
+/**
+ * Queue trigger input event for v2beta (from vercel.json config). Consumer name is implicitly derived from the function path. Only one trigger per function is allowed.
+ */
+export type CancelDeploymentExperimentalTriggersDeploymentsResponse2 = {
+  /**
+   * Event type - must be "queue/v2beta" (REQUIRED)
+   */
+  type: "queue/v2beta";
+  /**
+   * Name of the queue topic to consume from (REQUIRED)
+   */
+  topic: string;
+  /**
+   * Maximum number of delivery attempts for message processing (OPTIONAL) This represents the total number of times a message can be delivered, not the number of retries. Must be at least 1 if specified. Behavior when not specified depends on the server's default configuration.
+   */
+  maxDeliveries?: number | undefined;
+  /**
+   * Delay in seconds before retrying failed executions (OPTIONAL) Behavior when not specified depends on the server's default configuration.
+   */
+  retryAfterSeconds?: number | undefined;
+  /**
+   * Initial delay in seconds before first execution attempt (OPTIONAL) Must be 0 or greater. Use 0 for no initial delay. Behavior when not specified depends on the server's default configuration.
+   */
+  initialDelaySeconds?: number | undefined;
+  /**
+   * Maximum number of concurrent executions for this consumer (OPTIONAL) Must be at least 1 if specified. Behavior when not specified depends on the server's default configuration.
+   */
+  maxConcurrency?: number | undefined;
+};
+
+/**
+ * Queue trigger input event for v1beta (from vercel.json config). Requires explicit consumer name.
+ */
+export type CancelDeploymentExperimentalTriggersDeploymentsResponse1 = {
+  /**
+   * Event type - must be "queue/v1beta" (REQUIRED)
+   */
+  type: "queue/v1beta";
+  /**
+   * Name of the consumer group for this trigger (REQUIRED)
+   */
+  consumer: string;
+  /**
+   * Name of the queue topic to consume from (REQUIRED)
+   */
+  topic: string;
+  /**
+   * Maximum number of delivery attempts for message processing (OPTIONAL) This represents the total number of times a message can be delivered, not the number of retries. Must be at least 1 if specified. Behavior when not specified depends on the server's default configuration.
+   */
+  maxDeliveries?: number | undefined;
+  /**
+   * Delay in seconds before retrying failed executions (OPTIONAL) Behavior when not specified depends on the server's default configuration.
+   */
+  retryAfterSeconds?: number | undefined;
+  /**
+   * Initial delay in seconds before first execution attempt (OPTIONAL) Must be 0 or greater. Use 0 for no initial delay. Behavior when not specified depends on the server's default configuration.
+   */
+  initialDelaySeconds?: number | undefined;
+  /**
+   * Maximum number of concurrent executions for this consumer (OPTIONAL) Must be at least 1 if specified. Behavior when not specified depends on the server's default configuration.
+   */
+  maxConcurrency?: number | undefined;
+};
 
 export type CancelDeploymentServicesExperimentalTriggers =
   | CancelDeploymentExperimentalTriggersDeploymentsResponse1
@@ -108,7 +199,11 @@ export type CancelDeploymentServicesExperimentalTriggers =
 export type CancelDeploymentServicesFunctions = {
   architecture?: CancelDeploymentServicesArchitecture | undefined;
   memory?: number | undefined;
-  maxDuration?: CancelDeploymentServicesMaxDuration | undefined;
+  maxDuration?:
+    | number
+    | CancelDeploymentMaxDurationDeploymentsResponse2
+    | undefined;
+  affinity?: CancelDeploymentServicesAffinity | undefined;
   maxConcurrency?: number | undefined;
   regions?: Array<string> | undefined;
   functionFailoverRegions?: Array<string> | undefined;
@@ -982,15 +1077,163 @@ export type CancelDeploymentResponseBody = {
 };
 
 /** @internal */
+export const CancelDeploymentServicesArchitecture$inboundSchema:
+  z.ZodNativeEnum<typeof CancelDeploymentServicesArchitecture> = z.nativeEnum(
+    CancelDeploymentServicesArchitecture,
+  );
+
+/** @internal */
+export const CancelDeploymentMaxDurationDeploymentsResponse2$inboundSchema:
+  z.ZodNativeEnum<typeof CancelDeploymentMaxDurationDeploymentsResponse2> = z
+    .nativeEnum(CancelDeploymentMaxDurationDeploymentsResponse2);
+
+/** @internal */
+export const CancelDeploymentServicesMaxDuration$inboundSchema: z.ZodType<
+  CancelDeploymentServicesMaxDuration,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  types.number(),
+  CancelDeploymentMaxDurationDeploymentsResponse2$inboundSchema,
+]);
+
+export function cancelDeploymentServicesMaxDurationFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelDeploymentServicesMaxDuration, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CancelDeploymentServicesMaxDuration$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentServicesMaxDuration' from JSON`,
+  );
+}
+
+/** @internal */
+export const CancelDeploymentServicesMode$inboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentServicesMode
+> = z.nativeEnum(CancelDeploymentServicesMode);
+
+/** @internal */
+export const CancelDeploymentServicesAffinity$inboundSchema: z.ZodType<
+  CancelDeploymentServicesAffinity,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  mode: CancelDeploymentServicesMode$inboundSchema,
+});
+
+export function cancelDeploymentServicesAffinityFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelDeploymentServicesAffinity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CancelDeploymentServicesAffinity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentServicesAffinity' from JSON`,
+  );
+}
+
+/** @internal */
+export const CancelDeploymentExperimentalTriggersDeploymentsResponse3$inboundSchema:
+  z.ZodType<
+    CancelDeploymentExperimentalTriggersDeploymentsResponse3,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    type: types.literal("schedule/v1beta"),
+  });
+
+export function cancelDeploymentExperimentalTriggersDeploymentsResponse3FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CancelDeploymentExperimentalTriggersDeploymentsResponse3,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CancelDeploymentExperimentalTriggersDeploymentsResponse3$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentExperimentalTriggersDeploymentsResponse3' from JSON`,
+  );
+}
+
+/** @internal */
+export const CancelDeploymentExperimentalTriggersDeploymentsResponse2$inboundSchema:
+  z.ZodType<
+    CancelDeploymentExperimentalTriggersDeploymentsResponse2,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    type: types.literal("queue/v2beta"),
+    topic: types.string(),
+    maxDeliveries: types.optional(types.number()),
+    retryAfterSeconds: types.optional(types.number()),
+    initialDelaySeconds: types.optional(types.number()),
+    maxConcurrency: types.optional(types.number()),
+  });
+
+export function cancelDeploymentExperimentalTriggersDeploymentsResponse2FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CancelDeploymentExperimentalTriggersDeploymentsResponse2,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CancelDeploymentExperimentalTriggersDeploymentsResponse2$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentExperimentalTriggersDeploymentsResponse2' from JSON`,
+  );
+}
+
+/** @internal */
+export const CancelDeploymentExperimentalTriggersDeploymentsResponse1$inboundSchema:
+  z.ZodType<
+    CancelDeploymentExperimentalTriggersDeploymentsResponse1,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    type: types.literal("queue/v1beta"),
+    consumer: types.string(),
+    topic: types.string(),
+    maxDeliveries: types.optional(types.number()),
+    retryAfterSeconds: types.optional(types.number()),
+    initialDelaySeconds: types.optional(types.number()),
+    maxConcurrency: types.optional(types.number()),
+  });
+
+export function cancelDeploymentExperimentalTriggersDeploymentsResponse1FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CancelDeploymentExperimentalTriggersDeploymentsResponse1,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CancelDeploymentExperimentalTriggersDeploymentsResponse1$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentExperimentalTriggersDeploymentsResponse1' from JSON`,
+  );
+}
+
+/** @internal */
 export const CancelDeploymentServicesExperimentalTriggers$inboundSchema:
   z.ZodType<
     CancelDeploymentServicesExperimentalTriggers,
     z.ZodTypeDef,
     unknown
   > = z.union([
-    CancelDeploymentExperimentalTriggersDeploymentsResponse1$inboundSchema,
-    CancelDeploymentExperimentalTriggersDeploymentsResponse2$inboundSchema,
-    CancelDeploymentExperimentalTriggersDeploymentsResponse3$inboundSchema,
+    z.lazy(() =>
+      CancelDeploymentExperimentalTriggersDeploymentsResponse1$inboundSchema
+    ),
+    z.lazy(() =>
+      CancelDeploymentExperimentalTriggersDeploymentsResponse2$inboundSchema
+    ),
+    z.lazy(() =>
+      CancelDeploymentExperimentalTriggersDeploymentsResponse3$inboundSchema
+    ),
   ]);
 
 export function cancelDeploymentServicesExperimentalTriggersFromJSON(
@@ -1020,7 +1263,13 @@ export const CancelDeploymentServicesFunctions$inboundSchema: z.ZodType<
   ),
   memory: types.optional(types.number()),
   maxDuration: types.optional(
-    CancelDeploymentServicesMaxDuration$inboundSchema,
+    smartUnion([
+      types.number(),
+      CancelDeploymentMaxDurationDeploymentsResponse2$inboundSchema,
+    ]),
+  ),
+  affinity: types.optional(
+    z.lazy(() => CancelDeploymentServicesAffinity$inboundSchema),
   ),
   maxConcurrency: types.optional(types.number()),
   regions: types.optional(z.array(types.string())),
@@ -1029,13 +1278,17 @@ export const CancelDeploymentServicesFunctions$inboundSchema: z.ZodType<
   includeFiles: types.optional(types.string()),
   excludeFiles: types.optional(types.string()),
   experimentalTriggers: types.optional(
-    z.array(
-      z.union([
-        CancelDeploymentExperimentalTriggersDeploymentsResponse1$inboundSchema,
-        CancelDeploymentExperimentalTriggersDeploymentsResponse2$inboundSchema,
-        CancelDeploymentExperimentalTriggersDeploymentsResponse3$inboundSchema,
-      ]),
-    ),
+    z.array(z.union([
+      z.lazy(() =>
+        CancelDeploymentExperimentalTriggersDeploymentsResponse1$inboundSchema
+      ),
+      z.lazy(() =>
+        CancelDeploymentExperimentalTriggersDeploymentsResponse2$inboundSchema
+      ),
+      z.lazy(() =>
+        CancelDeploymentExperimentalTriggersDeploymentsResponse3$inboundSchema
+      ),
+    ])),
   ),
   supportsCancellation: types.optional(types.boolean()),
 });

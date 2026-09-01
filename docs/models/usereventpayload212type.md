@@ -5,11 +5,11 @@
 ```typescript
 import { UserEventPayload212Type } from "@vercel/sdk/models/siftroute.js";
 
-let value: UserEventPayload212Type = "connectSrc";
+let value: UserEventPayload212Type = "header";
 ```
 
 ## Values
 
 ```typescript
-"connectSrc"
+"header"
 ```

@@ -6,7 +6,7 @@
 import { PutFirewallConfigRulesetsConditions } from "@vercel/sdk/models/putfirewallconfigop.js";
 
 let value: PutFirewallConfigRulesetsConditions = {
-  type: "geo_country_region",
+  type: "header",
   op: "neq",
 };
 ```

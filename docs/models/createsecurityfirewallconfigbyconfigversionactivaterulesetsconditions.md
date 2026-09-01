@@ -7,7 +7,7 @@ import { CreateSecurityFirewallConfigByConfigVersionActivateRulesetsConditions }
 
 let value:
   CreateSecurityFirewallConfigByConfigVersionActivateRulesetsConditions = {
-    type: "ip_address",
+    type: "ja3_digest",
     op: "ninc",
   };
 ```

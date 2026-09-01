@@ -10,6 +10,8 @@ import { OneHundredAndSeventyEight } from "@vercel/sdk/models/bandwidth.js";
 let value: OneHundredAndSeventyEight = {
   issuerId: "<id>",
   issuerName: "<value>",
+  algorithm: "<value>",
+  origin: "<value>",
 };
 ```
 
@@ -19,4 +21,6 @@ let value: OneHundredAndSeventyEight = {
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `issuerId`         | *string*           | :heavy_check_mark: | N/A                |
 | `issuerName`       | *string*           | :heavy_check_mark: | N/A                |
+| `algorithm`        | *string*           | :heavy_check_mark: | N/A                |
+| `origin`           | *string*           | :heavy_check_mark: | N/A                |
 | `managedBy`        | *string*           | :heavy_minus_sign: | N/A                |

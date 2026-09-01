@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetDeploymentHasType } from "@vercel/sdk/models/getdeploymentservicesop.js";
+import { GetDeploymentHasType } from "@vercel/sdk/models/getdeploymentservicesmissing.js";
 
 let value: GetDeploymentHasType = "header";
 ```

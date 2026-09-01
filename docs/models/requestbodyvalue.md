@@ -12,7 +12,7 @@ let value: RequestBodyValue = {
     {
       conditions: [
         {
-          type: "raw_path",
+          type: "ip_address",
           op: "re",
         },
       ],

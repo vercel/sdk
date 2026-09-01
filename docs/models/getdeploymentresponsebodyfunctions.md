@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetDeploymentResponseBodyFunctions } from "@vercel/sdk/models/getdeploymentservicesop.js";
+import { GetDeploymentResponseBodyFunctions } from "@vercel/sdk/models/getdeploymentservicesmissing.js";
 
 let value: GetDeploymentResponseBodyFunctions = {};
 ```
@@ -15,6 +15,7 @@ let value: GetDeploymentResponseBodyFunctions = {};
 | `architecture`                                                                                     | [models.GetDeploymentResponseBodyArchitecture](../models/getdeploymentresponsebodyarchitecture.md) | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 | `memory`                                                                                           | *number*                                                                                           | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 | `maxDuration`                                                                                      | *models.GetDeploymentResponseBodyMaxDuration*                                                      | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
+| `affinity`                                                                                         | [models.GetDeploymentResponseBodyAffinity](../models/getdeploymentresponsebodyaffinity.md)         | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 | `maxConcurrency`                                                                                   | *number*                                                                                           | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 | `regions`                                                                                          | *string*[]                                                                                         | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 | `functionFailoverRegions`                                                                          | *string*[]                                                                                         | :heavy_minus_sign:                                                                                 | N/A                                                                                                |

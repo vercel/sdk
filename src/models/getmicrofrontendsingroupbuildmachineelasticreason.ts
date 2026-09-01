@@ -1393,7 +1393,6 @@ export type GetMicrofrontendsInGroupLinkMicrofrontendsResponse200ApplicationJSON
 export type GetMicrofrontendsInGroupLink2 = {
   type: "github-limited";
   createdAt?: number | undefined;
-  updatedAt?: number | undefined;
   org: string;
   /**
    * A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes.
@@ -1405,6 +1404,7 @@ export type GetMicrofrontendsInGroupLink2 = {
     GetMicrofrontendsInGroupLinkMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsDeployHooks
   >;
   gitCredentialId: string;
+  updatedAt?: number | undefined;
   sourceless?: boolean | undefined;
   productionBranch: string;
 };
@@ -4324,7 +4324,6 @@ export const GetMicrofrontendsInGroupLink2$inboundSchema: z.ZodType<
 > = z.object({
   type: types.literal("github-limited"),
   createdAt: types.optional(types.number()),
-  updatedAt: types.optional(types.number()),
   org: types.string(),
   repoOwnerId: types.optional(types.number()),
   repo: types.optional(types.string()),
@@ -4335,6 +4334,7 @@ export const GetMicrofrontendsInGroupLink2$inboundSchema: z.ZodType<
     ),
   ),
   gitCredentialId: types.string(),
+  updatedAt: types.optional(types.number()),
   sourceless: types.optional(types.boolean()),
   productionBranch: types.string(),
 });

@@ -6,7 +6,7 @@
 import { GetSecurityFirewallConfigRulesetsSecurityConditions } from "@vercel/sdk/models/getsecurityfirewallconfigsecurityresponsemanagedrules.js";
 
 let value: GetSecurityFirewallConfigRulesetsSecurityConditions = {
-  type: "shared_condition",
+  type: "target_path",
   op: "lt",
 };
 ```

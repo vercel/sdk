@@ -105,23 +105,22 @@ async function $do(
   const headers = new Headers(compactMap({
     "Content-Type": "application/octet-stream",
     Accept: "application/json",
-    "'content-Length'": encodeSimple(
-      "'content-Length'",
-      payload["'content-Length'"],
+    "Content-Length": encodeSimple(
+      "Content-Length",
+      payload["Content-Length"],
       { explode: false, charEncoding: "none" },
     ),
-    "'x-Now-Digest'": encodeSimple(
-      "'x-Now-Digest'",
-      payload["'x-Now-Digest'"],
-      { explode: false, charEncoding: "none" },
-    ),
-    "'x-Now-Size'": encodeSimple("'x-Now-Size'", payload["'x-Now-Size'"], {
+    "x-now-digest": encodeSimple("x-now-digest", payload["x-now-digest"], {
       explode: false,
       charEncoding: "none",
     }),
-    "'x-Vercel-Digest'": encodeSimple(
-      "'x-Vercel-Digest'",
-      payload["'x-Vercel-Digest'"],
+    "x-now-size": encodeSimple("x-now-size", payload["x-now-size"], {
+      explode: false,
+      charEncoding: "none",
+    }),
+    "x-vercel-digest": encodeSimple(
+      "x-vercel-digest",
+      payload["x-vercel-digest"],
       { explode: false, charEncoding: "none" },
     ),
   }));

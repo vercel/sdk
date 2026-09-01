@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentGitSource8 } from "@vercel/sdk/models/routesdestination.js";
+import { CancelDeploymentGitSource8 } from "@vercel/sdk/models/destinationtype.js";
 
 let value: CancelDeploymentGitSource8 = {
   type: "bitbucket",

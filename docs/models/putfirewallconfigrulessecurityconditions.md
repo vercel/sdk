@@ -6,7 +6,7 @@
 import { PutFirewallConfigRulesSecurityConditions } from "@vercel/sdk/models/putfirewallconfigop.js";
 
 let value: PutFirewallConfigRulesSecurityConditions = {
-  type: "ja3_digest",
+  type: "ja4_digest",
   op: "ninc",
 };
 ```

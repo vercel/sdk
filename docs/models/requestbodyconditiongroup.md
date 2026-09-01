@@ -8,7 +8,7 @@ import { RequestBodyConditionGroup } from "@vercel/sdk/models/updatefirewallconf
 let value: RequestBodyConditionGroup = {
   conditions: [
     {
-      type: "raw_path",
+      type: "ip_address",
       op: "re",
     },
   ],

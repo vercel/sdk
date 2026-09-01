@@ -6,7 +6,7 @@
 import { GetSecurityFirewallConfigRulesSecurityResponseConditions } from "@vercel/sdk/models/getsecurityfirewallconfiglogheaderssecurityresponse200applicationjsonresponsebodydraftrules2.js";
 
 let value: GetSecurityFirewallConfigRulesSecurityResponseConditions = {
-  type: "target_path",
+  type: "traffic_source",
   op: "lte",
 };
 ```

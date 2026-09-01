@@ -252,6 +252,7 @@ export const UpdateFirewallConfigRequestBodySecurityRequest12Type = {
   BotStatus: "bot_status",
   BotProtection: "bot_protection",
   SharedCondition: "shared_condition",
+  TrafficSource: "traffic_source",
   Ruleset: "ruleset",
 } as const;
 export type UpdateFirewallConfigRequestBodySecurityRequest12Type = ClosedEnum<
@@ -430,6 +431,7 @@ export const UpdateFirewallConfigRequestBodySecurityRequest11Type = {
   BotStatus: "bot_status",
   BotProtection: "bot_protection",
   SharedCondition: "shared_condition",
+  TrafficSource: "traffic_source",
   Ruleset: "ruleset",
 } as const;
 export type UpdateFirewallConfigRequestBodySecurityRequest11Type = ClosedEnum<
@@ -680,6 +682,7 @@ export const UpdateFirewallConfigRequestBodySecurityRequest6Type = {
   BotStatus: "bot_status",
   BotProtection: "bot_protection",
   SharedCondition: "shared_condition",
+  TrafficSource: "traffic_source",
   Ruleset: "ruleset",
 } as const;
 export type UpdateFirewallConfigRequestBodySecurityRequest6Type = ClosedEnum<
@@ -786,6 +789,7 @@ export const UpdateFirewallConfigRequestBodySecurityRequestType = {
   BotStatus: "bot_status",
   BotProtection: "bot_protection",
   SharedCondition: "shared_condition",
+  TrafficSource: "traffic_source",
   Ruleset: "ruleset",
 } as const;
 export type UpdateFirewallConfigRequestBodySecurityRequestType = ClosedEnum<
@@ -922,6 +926,7 @@ export const UpdateFirewallConfigRequestBodySecurityType = {
   BotStatus: "bot_status",
   BotProtection: "bot_protection",
   SharedCondition: "shared_condition",
+  TrafficSource: "traffic_source",
   Ruleset: "ruleset",
 } as const;
 export type UpdateFirewallConfigRequestBodySecurityType = ClosedEnum<
@@ -1043,6 +1048,7 @@ export const UpdateFirewallConfigRequestBodyType = {
   BotStatus: "bot_status",
   BotProtection: "bot_protection",
   SharedCondition: "shared_condition",
+  TrafficSource: "traffic_source",
   Ruleset: "ruleset",
 } as const;
 export type UpdateFirewallConfigRequestBodyType = ClosedEnum<

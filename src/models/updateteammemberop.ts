@@ -25,6 +25,8 @@ export const UpdateTeamMemberTeamPermissions = {
   AiGatewayCredits: "AiGatewayCredits",
   AiGatewayApiKeyOwnedBySelf: "AiGatewayApiKeyOwnedBySelf",
   AiGatewayBudgetManager: "AiGatewayBudgetManager",
+  AiGatewayTranscriptsManager: "AiGatewayTranscriptsManager",
+  AiGatewayTranscriptsViewer: "AiGatewayTranscriptsViewer",
   V0Builder: "V0Builder",
   V0Chatter: "V0Chatter",
   V0Viewer: "V0Viewer",

@@ -8,7 +8,7 @@ import { GetSecurityFirewallConfigSecurityConditionGroup } from "@vercel/sdk/mod
 let value: GetSecurityFirewallConfigSecurityConditionGroup = {
   conditions: [
     {
-      type: "path",
+      type: "protocol",
       op: "gt",
     },
   ],

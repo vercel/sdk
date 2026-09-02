@@ -1,0 +1,21 @@
+# SandboxStorage
+
+## Example Usage
+
+```typescript
+import { SandboxStorage } from "@vercel/sdk/models/onehundredandfortyseven.js";
+
+let value: SandboxStorage = {
+  updatedAt: 4169.46,
+  blockReason: "admin_override",
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                      | Type                                                                                                                                                       | Required                                                                                                                                                   | Description                                                                                                                                                |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `updatedAt`                                                                                                                                                | *number*                                                                                                                                                   | :heavy_check_mark:                                                                                                                                         | N/A                                                                                                                                                        |
+| `blockedFrom`                                                                                                                                              | *number*                                                                                                                                                   | :heavy_minus_sign:                                                                                                                                         | N/A                                                                                                                                                        |
+| `blockedUntil`                                                                                                                                             | *number*                                                                                                                                                   | :heavy_minus_sign:                                                                                                                                         | N/A                                                                                                                                                        |
+| `blockReason`                                                                                                                                              | [models.UserEventPayload166NewOwnerFeatureBlocksSandboxStorageBlockReason](../models/usereventpayload166newownerfeatureblockssandboxstorageblockreason.md) | :heavy_check_mark:                                                                                                                                         | N/A                                                                                                                                                        |

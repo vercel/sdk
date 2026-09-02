@@ -8,13 +8,21 @@ The payload of the event, if requested.
 import { TwoHundredAndFortyFour } from "@vercel/sdk/models/siftroute.js";
 
 let value: TwoHundredAndFortyFour = {
-  projectId: "<id>",
+  team: {
+    name: "<value>",
+    id: "<id>",
+  },
+  project: {
+    id: "<id>",
+    oldConnectConfigurations: [],
+    newConnectConfigurations: [],
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectName`      | *string*           | :heavy_minus_sign: | N/A                |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `team`                                                                       | [models.UserEventPayload244Team](../models/usereventpayload244team.md)       | :heavy_check_mark:                                                           | N/A                                                                          |
+| `project`                                                                    | [models.UserEventPayload244Project](../models/usereventpayload244project.md) | :heavy_check_mark:                                                           | N/A                                                                          |

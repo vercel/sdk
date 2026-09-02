@@ -716,6 +716,50 @@ export type BuyCreditsResponseBody3 = {
 };
 
 /**
+ * The current plan item quantities
+ */
+export type ConfigurationPlanItemQuantities = {
+  /**
+   * The ID of the current plan item to set the quantity for
+   */
+  planItemId: string;
+  /**
+   * The nonnegative integer quantity for the current plan item
+   */
+  quantity: number;
+  /**
+   * The resource IDs associated with the current plan item quantity
+   */
+  resourceIds?: Array<string> | undefined;
+};
+
+/**
+ * The current plan being replaced by this purchase
+ */
+export type ConfigurationFromPlan = {
+  /**
+   * The end of the current plan billing cycle
+   */
+  currentCycleEndDate: string;
+  /**
+   * The Orb subscription ID currently active for the owner on the source plan
+   */
+  orbSubscriptionId: string;
+  /**
+   * The ID of the plan currently assigned
+   */
+  planId: string;
+  /**
+   * The current plan item quantities
+   */
+  planItemQuantities?: Array<ConfigurationPlanItemQuantities> | undefined;
+  /**
+   * The rate variant currently assigned
+   */
+  rateVariantKey?: string | undefined;
+};
+
+/**
  * The plan item quantities to set for the subscription
  */
 export type PlanItemQuantities = {
@@ -741,6 +785,10 @@ export type BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions = {
    * The ID of the plan to subscribe to
    */
   planId: string;
+  /**
+   * The current plan being replaced by this purchase
+   */
+  fromPlan?: ConfigurationFromPlan | undefined;
   /**
    * The plan item quantities to set for the subscription
    */
@@ -2143,6 +2191,52 @@ export function buyCreditsResponseBody3FromJSON(
 }
 
 /** @internal */
+export const ConfigurationPlanItemQuantities$inboundSchema: z.ZodType<
+  ConfigurationPlanItemQuantities,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  planItemId: types.string(),
+  quantity: types.number(),
+  resourceIds: types.optional(z.array(types.string())),
+});
+
+export function configurationPlanItemQuantitiesFromJSON(
+  jsonString: string,
+): SafeParseResult<ConfigurationPlanItemQuantities, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ConfigurationPlanItemQuantities$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ConfigurationPlanItemQuantities' from JSON`,
+  );
+}
+
+/** @internal */
+export const ConfigurationFromPlan$inboundSchema: z.ZodType<
+  ConfigurationFromPlan,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  currentCycleEndDate: types.string(),
+  orbSubscriptionId: types.string(),
+  planId: types.string(),
+  planItemQuantities: types.optional(
+    z.array(z.lazy(() => ConfigurationPlanItemQuantities$inboundSchema)),
+  ),
+  rateVariantKey: types.optional(types.string()),
+});
+
+export function configurationFromPlanFromJSON(
+  jsonString: string,
+): SafeParseResult<ConfigurationFromPlan, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ConfigurationFromPlan$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ConfigurationFromPlan' from JSON`,
+  );
+}
+
+/** @internal */
 export const PlanItemQuantities$inboundSchema: z.ZodType<
   PlanItemQuantities,
   z.ZodTypeDef,
@@ -2171,6 +2265,7 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions$inb
     unknown
   > = z.object({
     planId: types.string(),
+    fromPlan: types.optional(z.lazy(() => ConfigurationFromPlan$inboundSchema)),
     planItemQuantities: types.optional(
       z.array(z.lazy(() => PlanItemQuantities$inboundSchema)),
     ),

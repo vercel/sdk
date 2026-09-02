@@ -40,9 +40,6 @@ export type CreateProjectTransferRequestRequest = {
  * The project transfer request has been initiated successfully.
  */
 export type CreateProjectTransferRequestResponseBody = {
-  /**
-   * Code that can be used to accept the project transfer request.
-   */
   code: string;
 };
 

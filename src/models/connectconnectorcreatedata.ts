@@ -74,6 +74,58 @@ export type SlackTeam = {
   domain?: string | undefined;
 };
 
+export type SlashCommands = {
+  /**
+   * Slash command including its leading slash.
+   */
+  command: string;
+  /**
+   * Description shown for the slash command in Slack.
+   */
+  description: string;
+  /**
+   * Optional usage hint shown for the slash command.
+   */
+  usageHint?: string | undefined;
+  /**
+   * Whether Slack should escape command arguments.
+   */
+  shouldEscape?: boolean | undefined;
+};
+
+/**
+ * Where Slack exposes the shortcut.
+ */
+export const ConnectConnectorCreateData8Type = {
+  Global: "global",
+  Message: "message",
+} as const;
+/**
+ * Where Slack exposes the shortcut.
+ */
+export type ConnectConnectorCreateData8Type = ClosedEnum<
+  typeof ConnectConnectorCreateData8Type
+>;
+
+export type Shortcuts = {
+  /**
+   * Where Slack exposes the shortcut.
+   */
+  type: ConnectConnectorCreateData8Type;
+  /**
+   * Shortcut display name.
+   */
+  name: string;
+  /**
+   * Identifier included in the shortcut callback.
+   */
+  callbackId: string;
+  /**
+   * Description shown for the shortcut in Slack.
+   */
+  description: string;
+};
+
 export type TypeSlack = {
   /**
    * Slack app ID.
@@ -111,6 +163,14 @@ export type TypeSlack = {
    * OAuth scopes requested for Slack user tokens.
    */
   userScopes?: Array<string> | undefined;
+  /**
+   * Slash commands configured for the managed Slack app.
+   */
+  slashCommands?: Array<SlashCommands> | undefined;
+  /**
+   * Global and message shortcuts configured for the Slack app.
+   */
+  shortcuts?: Array<Shortcuts> | undefined;
   /**
    * Additional provider metadata stored with the connector.
    */
@@ -888,6 +948,59 @@ export function slackTeamToJSON(slackTeam: SlackTeam): string {
 }
 
 /** @internal */
+export type SlashCommands$Outbound = {
+  command: string;
+  description: string;
+  usageHint?: string | undefined;
+  shouldEscape?: boolean | undefined;
+};
+
+/** @internal */
+export const SlashCommands$outboundSchema: z.ZodType<
+  SlashCommands$Outbound,
+  z.ZodTypeDef,
+  SlashCommands
+> = z.object({
+  command: z.string(),
+  description: z.string(),
+  usageHint: z.string().optional(),
+  shouldEscape: z.boolean().optional(),
+});
+
+export function slashCommandsToJSON(slashCommands: SlashCommands): string {
+  return JSON.stringify(SlashCommands$outboundSchema.parse(slashCommands));
+}
+
+/** @internal */
+export const ConnectConnectorCreateData8Type$outboundSchema: z.ZodNativeEnum<
+  typeof ConnectConnectorCreateData8Type
+> = z.nativeEnum(ConnectConnectorCreateData8Type);
+
+/** @internal */
+export type Shortcuts$Outbound = {
+  type: string;
+  name: string;
+  callbackId: string;
+  description: string;
+};
+
+/** @internal */
+export const Shortcuts$outboundSchema: z.ZodType<
+  Shortcuts$Outbound,
+  z.ZodTypeDef,
+  Shortcuts
+> = z.object({
+  type: ConnectConnectorCreateData8Type$outboundSchema,
+  name: z.string(),
+  callbackId: z.string(),
+  description: z.string(),
+});
+
+export function shortcutsToJSON(shortcuts: Shortcuts): string {
+  return JSON.stringify(Shortcuts$outboundSchema.parse(shortcuts));
+}
+
+/** @internal */
 export type TypeSlack$Outbound = {
   appId: string;
   appName: string;
@@ -898,6 +1011,8 @@ export type TypeSlack$Outbound = {
   verificationToken?: string | undefined;
   botScopes?: Array<string> | undefined;
   userScopes?: Array<string> | undefined;
+  slashCommands?: Array<SlashCommands$Outbound> | undefined;
+  shortcuts?: Array<Shortcuts$Outbound> | undefined;
   extras?: { [k: string]: any } | undefined;
 };
 
@@ -916,6 +1031,8 @@ export const TypeSlack$outboundSchema: z.ZodType<
   verificationToken: z.string().optional(),
   botScopes: z.array(z.string()).optional(),
   userScopes: z.array(z.string()).optional(),
+  slashCommands: z.array(z.lazy(() => SlashCommands$outboundSchema)).optional(),
+  shortcuts: z.array(z.lazy(() => Shortcuts$outboundSchema)).optional(),
   extras: z.record(z.any()).optional(),
 });
 

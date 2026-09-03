@@ -6,12 +6,12 @@
 import { UserEventPayload256Previous } from "@vercel/sdk/models/siftroute.js";
 
 let value: UserEventPayload256Previous = {
-  functionZeroConfigFailover: null,
+  functionDefaultRegions: null,
 };
 ```
 
 ## Fields
 
-| Field                        | Type                         | Required                     | Description                  |
-| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-| `functionZeroConfigFailover` | *boolean*                    | :heavy_check_mark:           | N/A                          |
+| Field                    | Type                     | Required                 | Description              |
+| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
+| `functionDefaultRegions` | *string*[]               | :heavy_check_mark:       | N/A                      |

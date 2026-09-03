@@ -1,15 +1,19 @@
 # Environment
 
-## Example Usage
+Deployment environment of the project principal.
+
+
+## Supported Types
+
+### `string`
 
 ```typescript
-import { Environment } from "@vercel/sdk/models/usereventpayload334budget.js";
-
-let value: Environment = "production";
+const value: string = "<value>";
 ```
 
-## Values
+### `models.Environment2`
 
 ```typescript
-"preview" | "production"
+const value: models.Environment2 = "development";
 ```
+

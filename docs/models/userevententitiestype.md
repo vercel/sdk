@@ -5,7 +5,7 @@ The type of entity.
 ## Example Usage
 
 ```typescript
-import { UserEventEntitiesType } from "@vercel/sdk/models/fourhundredandtwo.js";
+import { UserEventEntitiesType } from "@vercel/sdk/models/fourhundredandthree.js";
 
 let value: UserEventEntitiesType = "author";
 ```

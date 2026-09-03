@@ -5,14 +5,14 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndNine } from "@vercel/sdk/models/ninetyeight.js";
+import { OneHundredAndNine } from "@vercel/sdk/models/onehundredandone.js";
 
 let value: OneHundredAndNine = {
-  integrationId: "<id>",
-  configurationId: "<id>",
-  integrationSlug: "<value>",
-  integrationName: "<value>",
-  ownerId: "<id>",
+  deploymentId: "<id>",
+  deploymentUrl: "https://incomparable-hose.name",
+  deploymentName: "<value>",
+  projectId: "<id>",
+  projectName: "<value>",
 };
 ```
 
@@ -20,9 +20,8 @@ let value: OneHundredAndNine = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `integrationId`    | *string*           | :heavy_check_mark: | N/A                |
-| `configurationId`  | *string*           | :heavy_check_mark: | N/A                |
-| `integrationSlug`  | *string*           | :heavy_check_mark: | N/A                |
-| `integrationName`  | *string*           | :heavy_check_mark: | N/A                |
-| `ownerId`          | *string*           | :heavy_check_mark: | N/A                |
-| `projectIds`       | *string*[]         | :heavy_minus_sign: | N/A                |
+| `deploymentId`     | *string*           | :heavy_check_mark: | N/A                |
+| `deploymentUrl`    | *string*           | :heavy_check_mark: | N/A                |
+| `deploymentName`   | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |

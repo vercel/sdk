@@ -11,20 +11,20 @@ import {
   ConnectConnectorCreateData$outboundSchema,
 } from "./connectconnectorcreatedata.js";
 
-export const ConnectCreateConnectorRequestEnvironments21 = {
+export const ConnectCreateConnectorRequestEnvironments1 = {
   Development: "development",
   Preview: "preview",
   Production: "production",
 } as const;
-export type ConnectCreateConnectorRequestEnvironments21 = ClosedEnum<
-  typeof ConnectCreateConnectorRequestEnvironments21
+export type ConnectCreateConnectorRequestEnvironments1 = ClosedEnum<
+  typeof ConnectCreateConnectorRequestEnvironments1
 >;
 
 /**
  * A built-in environment name or the stable env_* ID of a custom environment.
  */
 export type ConnectCreateConnectorRequestEnvironments =
-  | ConnectCreateConnectorRequestEnvironments21
+  | ConnectCreateConnectorRequestEnvironments1
   | string;
 
 export type TriggerDestinationCustomEnvironment = {
@@ -163,7 +163,7 @@ export type PresetConfiguration = {
    * Environments for the project connection. Requires projectId. Use one or more built-in environment names or stable custom environment IDs that belong to the project. Duplicate values are accepted and removed.
    */
   environments?:
-    | Array<ConnectCreateConnectorRequestEnvironments21 | string>
+    | Array<ConnectCreateConnectorRequestEnvironments1 | string>
     | undefined;
   /**
    * Whether the triggers are enabled for this connector.
@@ -183,23 +183,23 @@ export type PresetConfiguration = {
   events?: Array<string> | undefined;
 };
 
-export const ConnectCreateConnectorRequestEnvironments1 = {
+export const ConnectCreateConnectorRequestEnvironments11 = {
   Development: "development",
   Preview: "preview",
   Production: "production",
 } as const;
-export type ConnectCreateConnectorRequestEnvironments1 = ClosedEnum<
-  typeof ConnectCreateConnectorRequestEnvironments1
+export type ConnectCreateConnectorRequestEnvironments11 = ClosedEnum<
+  typeof ConnectCreateConnectorRequestEnvironments11
 >;
 
 /**
  * A built-in environment name or the stable env_* ID of a custom environment.
  */
 export type ConnectCreateConnectorRequest1Environments =
-  | ConnectCreateConnectorRequestEnvironments1
+  | ConnectCreateConnectorRequestEnvironments11
   | string;
 
-export type CustomEnvironment = {
+export type ConnectCreateConnectorRequestTriggerDestinationCustomEnvironment = {
   /**
    * Project that receives triggers. During connector creation, omit it to use the top-level projectId.
    */
@@ -214,7 +214,7 @@ export type CustomEnvironment = {
   path?: string | undefined;
 };
 
-export type Branch = {
+export type ConnectCreateConnectorRequestTriggerDestinationBranch = {
   /**
    * Project that receives triggers. During connector creation, omit it to use the top-level projectId.
    */
@@ -229,7 +229,7 @@ export type Branch = {
   path?: string | undefined;
 };
 
-export type DefaultDeployment = {
+export type ConnectCreateConnectorRequestTriggerDestinationDefaultDeployment = {
   /**
    * Project that receives triggers. During connector creation, omit it to use the top-level projectId.
    */
@@ -243,7 +243,10 @@ export type DefaultDeployment = {
 /**
  * Initial trigger destination. Requires triggers to be enabled and a projectId here or at the top level. Connector responses expose the resulting set as triggerDestinations. Replace the complete set with PATCH /v1/connect/connectors/{connector}/trigger-destinations.
  */
-export type TriggerDestination = Branch | CustomEnvironment | DefaultDeployment;
+export type TriggerDestination =
+  | ConnectCreateConnectorRequestTriggerDestinationBranch
+  | ConnectCreateConnectorRequestTriggerDestinationCustomEnvironment
+  | ConnectCreateConnectorRequestTriggerDestinationDefaultDeployment;
 
 export type FullConfiguration = {
   /**
@@ -332,7 +335,7 @@ export type FullConfiguration = {
    * Environments for the project connection. Requires projectId. Use one or more built-in environment names or stable custom environment IDs that belong to the project. Duplicate values are accepted and removed.
    */
   environments?:
-    | Array<ConnectCreateConnectorRequestEnvironments1 | string>
+    | Array<ConnectCreateConnectorRequestEnvironments11 | string>
     | undefined;
   /**
    * Whether the triggers are enabled for this connector.
@@ -342,9 +345,9 @@ export type FullConfiguration = {
    * Initial trigger destination. Requires triggers to be enabled and a projectId here or at the top level. Connector responses expose the resulting set as triggerDestinations. Replace the complete set with PATCH /v1/connect/connectors/{connector}/trigger-destinations.
    */
   triggerDestination?:
-    | Branch
-    | CustomEnvironment
-    | DefaultDeployment
+    | ConnectCreateConnectorRequestTriggerDestinationBranch
+    | ConnectCreateConnectorRequestTriggerDestinationCustomEnvironment
+    | ConnectCreateConnectorRequestTriggerDestinationDefaultDeployment
     | undefined;
   /**
    * Default trigger events for this connector.
@@ -360,9 +363,9 @@ export type ConnectCreateConnectorRequest =
   | FullConfiguration;
 
 /** @internal */
-export const ConnectCreateConnectorRequestEnvironments21$outboundSchema:
-  z.ZodNativeEnum<typeof ConnectCreateConnectorRequestEnvironments21> = z
-    .nativeEnum(ConnectCreateConnectorRequestEnvironments21);
+export const ConnectCreateConnectorRequestEnvironments1$outboundSchema:
+  z.ZodNativeEnum<typeof ConnectCreateConnectorRequestEnvironments1> = z
+    .nativeEnum(ConnectCreateConnectorRequestEnvironments1);
 
 /** @internal */
 export type ConnectCreateConnectorRequestEnvironments$Outbound =
@@ -376,7 +379,7 @@ export const ConnectCreateConnectorRequestEnvironments$outboundSchema:
     z.ZodTypeDef,
     ConnectCreateConnectorRequestEnvironments
   > = smartUnion([
-    ConnectCreateConnectorRequestEnvironments21$outboundSchema,
+    ConnectCreateConnectorRequestEnvironments1$outboundSchema,
     z.string(),
   ]);
 
@@ -544,7 +547,7 @@ export const PresetConfiguration$outboundSchema: z.ZodType<
   projectId: z.string().optional(),
   environments: z.array(
     smartUnion([
-      ConnectCreateConnectorRequestEnvironments21$outboundSchema,
+      ConnectCreateConnectorRequestEnvironments1$outboundSchema,
       z.string(),
     ]),
   ).optional(),
@@ -566,9 +569,9 @@ export function presetConfigurationToJSON(
 }
 
 /** @internal */
-export const ConnectCreateConnectorRequestEnvironments1$outboundSchema:
-  z.ZodNativeEnum<typeof ConnectCreateConnectorRequestEnvironments1> = z
-    .nativeEnum(ConnectCreateConnectorRequestEnvironments1);
+export const ConnectCreateConnectorRequestEnvironments11$outboundSchema:
+  z.ZodNativeEnum<typeof ConnectCreateConnectorRequestEnvironments11> = z
+    .nativeEnum(ConnectCreateConnectorRequestEnvironments11);
 
 /** @internal */
 export type ConnectCreateConnectorRequest1Environments$Outbound =
@@ -582,7 +585,7 @@ export const ConnectCreateConnectorRequest1Environments$outboundSchema:
     z.ZodTypeDef,
     ConnectCreateConnectorRequest1Environments
   > = smartUnion([
-    ConnectCreateConnectorRequestEnvironments1$outboundSchema,
+    ConnectCreateConnectorRequestEnvironments11$outboundSchema,
     z.string(),
   ]);
 
@@ -598,82 +601,98 @@ export function connectCreateConnectorRequest1EnvironmentsToJSON(
 }
 
 /** @internal */
-export type CustomEnvironment$Outbound = {
-  projectId?: string | undefined;
-  customEnvironmentId: string;
-  path?: string | undefined;
-};
+export type ConnectCreateConnectorRequestTriggerDestinationCustomEnvironment$Outbound =
+  {
+    projectId?: string | undefined;
+    customEnvironmentId: string;
+    path?: string | undefined;
+  };
 
 /** @internal */
-export const CustomEnvironment$outboundSchema: z.ZodType<
-  CustomEnvironment$Outbound,
-  z.ZodTypeDef,
-  CustomEnvironment
-> = z.object({
-  projectId: z.string().optional(),
-  customEnvironmentId: z.string(),
-  path: z.string().optional(),
-});
+export const ConnectCreateConnectorRequestTriggerDestinationCustomEnvironment$outboundSchema:
+  z.ZodType<
+    ConnectCreateConnectorRequestTriggerDestinationCustomEnvironment$Outbound,
+    z.ZodTypeDef,
+    ConnectCreateConnectorRequestTriggerDestinationCustomEnvironment
+  > = z.object({
+    projectId: z.string().optional(),
+    customEnvironmentId: z.string(),
+    path: z.string().optional(),
+  });
 
-export function customEnvironmentToJSON(
-  customEnvironment: CustomEnvironment,
+export function connectCreateConnectorRequestTriggerDestinationCustomEnvironmentToJSON(
+  connectCreateConnectorRequestTriggerDestinationCustomEnvironment:
+    ConnectCreateConnectorRequestTriggerDestinationCustomEnvironment,
 ): string {
   return JSON.stringify(
-    CustomEnvironment$outboundSchema.parse(customEnvironment),
+    ConnectCreateConnectorRequestTriggerDestinationCustomEnvironment$outboundSchema
+      .parse(connectCreateConnectorRequestTriggerDestinationCustomEnvironment),
   );
 }
 
 /** @internal */
-export type Branch$Outbound = {
+export type ConnectCreateConnectorRequestTriggerDestinationBranch$Outbound = {
   projectId?: string | undefined;
   branch: string;
   path?: string | undefined;
 };
 
 /** @internal */
-export const Branch$outboundSchema: z.ZodType<
-  Branch$Outbound,
-  z.ZodTypeDef,
-  Branch
-> = z.object({
-  projectId: z.string().optional(),
-  branch: z.string(),
-  path: z.string().optional(),
-});
+export const ConnectCreateConnectorRequestTriggerDestinationBranch$outboundSchema:
+  z.ZodType<
+    ConnectCreateConnectorRequestTriggerDestinationBranch$Outbound,
+    z.ZodTypeDef,
+    ConnectCreateConnectorRequestTriggerDestinationBranch
+  > = z.object({
+    projectId: z.string().optional(),
+    branch: z.string(),
+    path: z.string().optional(),
+  });
 
-export function branchToJSON(branch: Branch): string {
-  return JSON.stringify(Branch$outboundSchema.parse(branch));
+export function connectCreateConnectorRequestTriggerDestinationBranchToJSON(
+  connectCreateConnectorRequestTriggerDestinationBranch:
+    ConnectCreateConnectorRequestTriggerDestinationBranch,
+): string {
+  return JSON.stringify(
+    ConnectCreateConnectorRequestTriggerDestinationBranch$outboundSchema.parse(
+      connectCreateConnectorRequestTriggerDestinationBranch,
+    ),
+  );
 }
 
 /** @internal */
-export type DefaultDeployment$Outbound = {
-  projectId?: string | undefined;
-  path?: string | undefined;
-};
+export type ConnectCreateConnectorRequestTriggerDestinationDefaultDeployment$Outbound =
+  {
+    projectId?: string | undefined;
+    path?: string | undefined;
+  };
 
 /** @internal */
-export const DefaultDeployment$outboundSchema: z.ZodType<
-  DefaultDeployment$Outbound,
-  z.ZodTypeDef,
-  DefaultDeployment
-> = z.object({
-  projectId: z.string().optional(),
-  path: z.string().optional(),
-});
+export const ConnectCreateConnectorRequestTriggerDestinationDefaultDeployment$outboundSchema:
+  z.ZodType<
+    ConnectCreateConnectorRequestTriggerDestinationDefaultDeployment$Outbound,
+    z.ZodTypeDef,
+    ConnectCreateConnectorRequestTriggerDestinationDefaultDeployment
+  > = z.object({
+    projectId: z.string().optional(),
+    path: z.string().optional(),
+  });
 
-export function defaultDeploymentToJSON(
-  defaultDeployment: DefaultDeployment,
+export function connectCreateConnectorRequestTriggerDestinationDefaultDeploymentToJSON(
+  connectCreateConnectorRequestTriggerDestinationDefaultDeployment:
+    ConnectCreateConnectorRequestTriggerDestinationDefaultDeployment,
 ): string {
   return JSON.stringify(
-    DefaultDeployment$outboundSchema.parse(defaultDeployment),
+    ConnectCreateConnectorRequestTriggerDestinationDefaultDeployment$outboundSchema
+      .parse(connectCreateConnectorRequestTriggerDestinationDefaultDeployment),
   );
 }
 
 /** @internal */
 export type TriggerDestination$Outbound =
-  | Branch$Outbound
-  | CustomEnvironment$Outbound
-  | DefaultDeployment$Outbound;
+  | ConnectCreateConnectorRequestTriggerDestinationBranch$Outbound
+  | ConnectCreateConnectorRequestTriggerDestinationCustomEnvironment$Outbound
+  | ConnectCreateConnectorRequestTriggerDestinationDefaultDeployment$Outbound;
 
 /** @internal */
 export const TriggerDestination$outboundSchema: z.ZodType<
@@ -681,9 +700,15 @@ export const TriggerDestination$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TriggerDestination
 > = smartUnion([
-  z.lazy(() => Branch$outboundSchema),
-  z.lazy(() => CustomEnvironment$outboundSchema),
-  z.lazy(() => DefaultDeployment$outboundSchema),
+  z.lazy(() =>
+    ConnectCreateConnectorRequestTriggerDestinationBranch$outboundSchema
+  ),
+  z.lazy(() =>
+    ConnectCreateConnectorRequestTriggerDestinationCustomEnvironment$outboundSchema
+  ),
+  z.lazy(() =>
+    ConnectCreateConnectorRequestTriggerDestinationDefaultDeployment$outboundSchema
+  ),
 ]);
 
 export function triggerDestinationToJSON(
@@ -711,9 +736,9 @@ export type FullConfiguration$Outbound = {
   environments?: Array<string | string> | undefined;
   triggers?: boolean | undefined;
   triggerDestination?:
-    | Branch$Outbound
-    | CustomEnvironment$Outbound
-    | DefaultDeployment$Outbound
+    | ConnectCreateConnectorRequestTriggerDestinationBranch$Outbound
+    | ConnectCreateConnectorRequestTriggerDestinationCustomEnvironment$Outbound
+    | ConnectCreateConnectorRequestTriggerDestinationDefaultDeployment$Outbound
     | undefined;
   events?: Array<string> | undefined;
 };
@@ -738,15 +763,21 @@ export const FullConfiguration$outboundSchema: z.ZodType<
   projectId: z.string().optional(),
   environments: z.array(
     smartUnion([
-      ConnectCreateConnectorRequestEnvironments1$outboundSchema,
+      ConnectCreateConnectorRequestEnvironments11$outboundSchema,
       z.string(),
     ]),
   ).optional(),
   triggers: z.boolean().optional(),
   triggerDestination: smartUnion([
-    z.lazy(() => Branch$outboundSchema),
-    z.lazy(() => CustomEnvironment$outboundSchema),
-    z.lazy(() => DefaultDeployment$outboundSchema),
+    z.lazy(() =>
+      ConnectCreateConnectorRequestTriggerDestinationBranch$outboundSchema
+    ),
+    z.lazy(() =>
+      ConnectCreateConnectorRequestTriggerDestinationCustomEnvironment$outboundSchema
+    ),
+    z.lazy(() =>
+      ConnectCreateConnectorRequestTriggerDestinationDefaultDeployment$outboundSchema
+    ),
   ]).optional(),
   events: z.array(z.string()).optional(),
 });

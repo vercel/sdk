@@ -5,15 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSixtyOne } from "@vercel/sdk/models/previousrule.js";
+import { OneHundredAndSixtyOne } from "@vercel/sdk/models/onehundredandfortyseven.js";
 
 let value: OneHundredAndSixtyOne = {
-  action: "enable",
+  projectId: "<id>",
+  previousOwnerId: "<id>",
+  newOwnerId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `action`                                                                   | [models.UserEventPayload161Action](../models/usereventpayload161action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `previousOwnerId`  | *string*           | :heavy_check_mark: | N/A                |
+| `newOwnerId`       | *string*           | :heavy_check_mark: | N/A                |

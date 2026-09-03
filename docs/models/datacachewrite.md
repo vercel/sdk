@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DataCacheWrite } from "@vercel/sdk/models/previousrule.js";
+import { DataCacheWrite } from "@vercel/sdk/models/onehundredandfortyseven.js";
 
 let value: DataCacheWrite = {
   currentThreshold: 5131.19,
@@ -12,8 +12,9 @@ let value: DataCacheWrite = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `currentThreshold` | *number*           | :heavy_check_mark: | N/A                |
-| `warningAt`        | *number*           | :heavy_minus_sign: | N/A                |
-| `blockedAt`        | *number*           | :heavy_minus_sign: | N/A                |
+| Field                       | Type                        | Required                    | Description                 |
+| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
+| `currentThreshold`          | *number*                    | :heavy_check_mark:          | N/A                         |
+| `warningAt`                 | *number*                    | :heavy_minus_sign:          | N/A                         |
+| `blockedAt`                 | *number*                    | :heavy_minus_sign:          | N/A                         |
+| `blockGracePeriodStartedAt` | *number*                    | :heavy_minus_sign:          | N/A                         |

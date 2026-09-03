@@ -1,17 +1,17 @@
 # Scope
 
-Pin scope: `specific` (one provider region), `zone` (geo zone), or `global`.
+The affected authorization scope. user means each affected user must authorize again.
 
 ## Example Usage
 
 ```typescript
-import { Scope } from "@vercel/sdk/models/aigatewayvirtualmodelconfig.js";
+import { Scope } from "@vercel/sdk/models/connectreconsent.js";
 
-let value: Scope = "global";
+let value: Scope = "user";
 ```
 
 ## Values
 
 ```typescript
-"global" | "specific" | "zone"
+"user"
 ```

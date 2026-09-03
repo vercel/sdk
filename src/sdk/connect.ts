@@ -3,12 +3,89 @@
  */
 
 import { connectCreateConnector } from "../funcs/connectCreateConnector.js";
+import { connectDeleteConnector } from "../funcs/connectDeleteConnector.js";
+import { connectDeleteConnectorProjectConnection } from "../funcs/connectDeleteConnectorProjectConnection.js";
+import { connectGetConnector } from "../funcs/connectGetConnector.js";
+import { connectGetConnectorProjectConnection } from "../funcs/connectGetConnectorProjectConnection.js";
+import { connectListConnectorProjectConnections } from "../funcs/connectListConnectorProjectConnections.js";
+import { connectListConnectors } from "../funcs/connectListConnectors.js";
+import { connectListProjectConnectorConnections } from "../funcs/connectListProjectConnectorConnections.js";
+import { connectReplaceConnectorTriggerDestinations } from "../funcs/connectReplaceConnectorTriggerDestinations.js";
+import { connectUpdateConnector } from "../funcs/connectUpdateConnector.js";
+import { connectUpsertConnectorProjectConnection } from "../funcs/connectUpsertConnectorProjectConnection.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
+import { ConnectConnector } from "../models/connectconnector.js";
 import { ConnectConnectorCreateResult } from "../models/connectconnectorcreateresult.js";
+import { ConnectConnectorList } from "../models/connectconnectorlist.js";
+import { ConnectConnectorProjectConnectionList } from "../models/connectconnectorprojectconnectionlist.js";
+import { ConnectConnectorUpdateResult } from "../models/connectconnectorupdateresult.js";
+import { ConnectProjectConnection } from "../models/connectprojectconnection.js";
+import { ConnectProjectConnectorConnectionList } from "../models/connectprojectconnectorconnectionlist.js";
 import { CreateConnectorRequest } from "../models/createconnectorop.js";
+import { DeleteConnectorRequest } from "../models/deleteconnectorop.js";
+import { DeleteConnectorProjectConnectionRequest } from "../models/deleteconnectorprojectconnectionop.js";
+import { GetConnectorRequest } from "../models/getconnectorop.js";
+import { GetConnectorProjectConnectionRequest } from "../models/getconnectorprojectconnectionop.js";
+import { ListConnectorProjectConnectionsRequest } from "../models/listconnectorprojectconnectionsop.js";
+import { ListConnectorsRequest } from "../models/listconnectorsop.js";
+import { ListProjectConnectorConnectionsRequest } from "../models/listprojectconnectorconnectionsop.js";
+import { ReplaceConnectorTriggerDestinationsRequest } from "../models/replaceconnectortriggerdestinationsop.js";
+import { UpdateConnectorRequest } from "../models/updateconnectorop.js";
+import { UpsertConnectorProjectConnectionRequest } from "../models/upsertconnectorprojectconnectionop.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Connect extends ClientSDK {
+  /**
+   * List connectors
+   *
+   * @remarks
+   * List connectors that belong to a team.
+   */
+  async listConnectors(
+    request: ListConnectorsRequest,
+    options?: RequestOptions,
+  ): Promise<ConnectConnectorList> {
+    return unwrapAsync(connectListConnectors(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get a connector
+   *
+   * @remarks
+   * Get the connector by ID. Accepts a dashboard/team requester or a deployment's project OIDC token; project requesters may only read connectors linked to their project and environment.
+   */
+  async getConnector(
+    request: GetConnectorRequest,
+    options?: RequestOptions,
+  ): Promise<ConnectConnector> {
+    return unwrapAsync(connectGetConnector(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Delete a connector
+   *
+   * @remarks
+   * Delete a connector, its project connections, and its installation records.
+   */
+  async deleteConnector(
+    request: DeleteConnectorRequest,
+    options?: RequestOptions,
+  ): Promise<void> {
+    return unwrapAsync(connectDeleteConnector(
+      this,
+      request,
+      options,
+    ));
+  }
+
   /**
    * Create a connector
    *
@@ -20,6 +97,125 @@ export class Connect extends ClientSDK {
     options?: RequestOptions,
   ): Promise<ConnectConnectorCreateResult> {
     return unwrapAsync(connectCreateConnector(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Update a connector
+   *
+   * @remarks
+   * Update a connector and return the connector with any service-side update signals that the caller must handle.
+   */
+  async updateConnector(
+    request: UpdateConnectorRequest,
+    options?: RequestOptions,
+  ): Promise<ConnectConnectorUpdateResult> {
+    return unwrapAsync(connectUpdateConnector(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Update connector trigger destinations
+   *
+   * @remarks
+   * Replace the full set of destinations that receive trigger requests for a connector.
+   */
+  async replaceConnectorTriggerDestinations(
+    request: ReplaceConnectorTriggerDestinationsRequest,
+    options?: RequestOptions,
+  ): Promise<ConnectConnector> {
+    return unwrapAsync(connectReplaceConnectorTriggerDestinations(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List projects for a connector
+   *
+   * @remarks
+   * List the projects connected to a connector and the environments where each connection is available.
+   */
+  async listConnectorProjectConnections(
+    request: ListConnectorProjectConnectionsRequest,
+    options?: RequestOptions,
+  ): Promise<ConnectConnectorProjectConnectionList> {
+    return unwrapAsync(connectListConnectorProjectConnections(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get a connector project connection
+   *
+   * @remarks
+   * Get the configuration that connects a connector to a project.
+   */
+  async getConnectorProjectConnection(
+    request: GetConnectorProjectConnectionRequest,
+    options?: RequestOptions,
+  ): Promise<ConnectProjectConnection> {
+    return unwrapAsync(connectGetConnectorProjectConnection(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Create or update a connector project connection
+   *
+   * @remarks
+   * Connect a connector to a project, or replace the environments on an existing project connection.
+   */
+  async upsertConnectorProjectConnection(
+    request: UpsertConnectorProjectConnectionRequest,
+    options?: RequestOptions,
+  ): Promise<ConnectProjectConnection> {
+    return unwrapAsync(connectUpsertConnectorProjectConnection(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Disconnect a connector from a project
+   *
+   * @remarks
+   * Disconnect a connector from a project.
+   */
+  async deleteConnectorProjectConnection(
+    request: DeleteConnectorProjectConnectionRequest,
+    options?: RequestOptions,
+  ): Promise<void> {
+    return unwrapAsync(connectDeleteConnectorProjectConnection(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List connectors for a project
+   *
+   * @remarks
+   * List the connectors connected to a project and the environments where each connection is available.
+   */
+  async listProjectConnectorConnections(
+    request: ListProjectConnectorConnectionsRequest,
+    options?: RequestOptions,
+  ): Promise<ConnectProjectConnectorConnectionList> {
+    return unwrapAsync(connectListProjectConnectorConnections(
       this,
       request,
       options,

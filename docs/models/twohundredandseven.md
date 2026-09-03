@@ -9,17 +9,27 @@ import { TwoHundredAndSeven } from "@vercel/sdk/models/siftroute.js";
 
 let value: TwoHundredAndSeven = {
   projectId: "<id>",
-  headerName: "<value>",
-  previousStatus: "<value>",
-  justification: "<value>",
+  previous: {
+    enabled: true,
+    mode: "<value>",
+    enforcePercentage: 4911.9,
+    newResourceBlockingPolicy: "allow",
+    allowUnsafeScriptSrcKeywords: false,
+  },
+  next: {
+    enabled: true,
+    mode: "<value>",
+    enforcePercentage: 2492.79,
+    newResourceBlockingPolicy: "allow",
+    allowUnsafeScriptSrcKeywords: true,
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `headerName`       | *string*           | :heavy_check_mark: | N/A                |
-| `previousStatus`   | *string*           | :heavy_check_mark: | N/A                |
-| `justification`    | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `projectId`                                                              | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
+| `previous`                                                               | [models.UserEventPayloadPrevious](../models/usereventpayloadprevious.md) | :heavy_check_mark:                                                       | N/A                                                                      |
+| `next`                                                                   | [models.UserEventPayloadNext](../models/usereventpayloadnext.md)         | :heavy_check_mark:                                                       | N/A                                                                      |

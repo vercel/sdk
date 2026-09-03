@@ -5,18 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndTwo } from "@vercel/sdk/models/fourhundredandtwo.js";
+import { FourHundredAndTwo } from "@vercel/sdk/models/usereventpayload335budget.js";
 
 let value: FourHundredAndTwo = {
-  actorId: "<id>",
-  actorType: "admin",
+  teamId: "<id>",
+  teamName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `actorId`                                                                        | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
-| `actorType`                                                                      | [models.UserEventPayload402ActorType](../models/usereventpayload402actortype.md) | :heavy_check_mark:                                                               | N/A                                                                              |
-| `reason`                                                                         | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `teamId`           | *string*           | :heavy_check_mark: | N/A                |
+| `teamName`         | *string*           | :heavy_check_mark: | N/A                |

@@ -19,16 +19,17 @@ let value: ListTeamFlagsResponseBody = {
             variantId: "<id>",
           },
           fallthrough: {
-            type: "split",
+            type: "rollout",
             base: {
               type: "entity",
               kind: "<value>",
               attribute: "<value>",
             },
-            weights: {
-              "key": 167.7,
-            },
             defaultVariantId: "<id>",
+            startTimestamp: 6873.48,
+            rollFromVariantId: "<id>",
+            rollToVariantId: "<id>",
+            slots: [],
           },
           active: true,
           rules: [

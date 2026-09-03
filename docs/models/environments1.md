@@ -3,17 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { Environments1 } from "@vercel/sdk/models/team.js";
+import { Environments1 } from "@vercel/sdk/models/connectupsertprojectconnectionrequest.js";
 
-let value: Environments1 = {
-  type: "system",
-  target: "preview",
-};
+let value: Environments1 = "preview";
 ```
 
-## Fields
+## Values
 
-| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `type`                                                       | *"system"*                                                   | :heavy_check_mark:                                           | N/A                                                          |
-| `target`                                                     | [models.EnvironmentsTarget](../models/environmentstarget.md) | :heavy_check_mark:                                           | N/A                                                          |
+```typescript
+"development" | "preview" | "production"
+```

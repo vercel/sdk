@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { EightyThree } from "@vercel/sdk/models/piiredaction.js";
+import { EightyThree } from "@vercel/sdk/models/ceilingmode.js";
 
 let value: EightyThree = {
   team: {
@@ -23,10 +23,9 @@ let value: EightyThree = {
 
 ## Fields
 
-| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `team`                                                                             | [models.PayloadTeam](../models/payloadteam.md)                                     | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `configuration`                                                                    | [models.UserEventPayloadConfiguration](../models/usereventpayloadconfiguration.md) | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `project`                                                                          | [models.UserEventPayload83Project](../models/usereventpayload83project.md)         | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `buildsEnabled`                                                                    | *boolean*                                                                          | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `passive`                                                                          | *boolean*                                                                          | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `team`                                                                     | [models.UserEventPayload83Team](../models/usereventpayload83team.md)       | :heavy_check_mark:                                                         | N/A                                                                        |
+| `configuration`                                                            | [models.PayloadConfiguration](../models/payloadconfiguration.md)           | :heavy_check_mark:                                                         | N/A                                                                        |
+| `project`                                                                  | [models.UserEventPayload83Project](../models/usereventpayload83project.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| `buildsEnabled`                                                            | *boolean*                                                                  | :heavy_minus_sign:                                                         | N/A                                                                        |

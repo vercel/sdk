@@ -109,6 +109,7 @@ export type GetDeploymentEvents3Info = {
   path?: string | undefined;
   step?: string | undefined;
   readyState?: string | undefined;
+  serviceName?: string | undefined;
 };
 
 export const GetDeploymentEvents3DeploymentsResponse200Type = {
@@ -174,6 +175,7 @@ export type GetDeploymentEvents3DeploymentsInfo = {
   path?: string | undefined;
   step?: string | undefined;
   readyState?: string | undefined;
+  serviceName?: string | undefined;
 };
 
 export const GetDeploymentEvents3VercelCache = {
@@ -252,6 +254,7 @@ export type ResponseBodyInfo = {
   path?: string | undefined;
   step?: string | undefined;
   readyState?: string | undefined;
+  serviceName?: string | undefined;
 };
 
 export const GetDeploymentEventsResponseBodyDeploymentsResponseType = {
@@ -315,6 +318,7 @@ export type GetDeploymentEventsResponseBodyInfo = {
   path?: string | undefined;
   step?: string | undefined;
   readyState?: string | undefined;
+  serviceName?: string | undefined;
 };
 
 export const ResponseBodyVercelCache = {
@@ -421,6 +425,7 @@ export type ThreeInfo = {
   path?: string | undefined;
   step?: string | undefined;
   readyState?: string | undefined;
+  serviceName?: string | undefined;
 };
 
 export const GetDeploymentEvents3Type = {
@@ -482,6 +487,7 @@ export type GetDeploymentEvents3DeploymentsResponseInfo = {
   path?: string | undefined;
   step?: string | undefined;
   readyState?: string | undefined;
+  serviceName?: string | undefined;
 };
 
 export const ThreeVercelCache = {
@@ -553,6 +559,7 @@ export type Info = {
   path?: string | undefined;
   step?: string | undefined;
   readyState?: string | undefined;
+  serviceName?: string | undefined;
 };
 
 export const GetDeploymentEventsResponseBodyType = {
@@ -616,6 +623,7 @@ export type GetDeploymentEventsResponseBodyDeploymentsInfo = {
   path?: string | undefined;
   step?: string | undefined;
   readyState?: string | undefined;
+  serviceName?: string | undefined;
 };
 
 export const VercelCache = {
@@ -853,6 +861,7 @@ export const GetDeploymentEvents3Info$inboundSchema: z.ZodType<
   path: types.optional(types.string()),
   step: types.optional(types.string()),
   readyState: types.optional(types.string()),
+  serviceName: types.optional(types.string()),
 });
 
 export function getDeploymentEvents3InfoFromJSON(
@@ -919,6 +928,7 @@ export const GetDeploymentEvents3DeploymentsInfo$inboundSchema: z.ZodType<
   path: types.optional(types.string()),
   step: types.optional(types.string()),
   readyState: types.optional(types.string()),
+  serviceName: types.optional(types.string()),
 });
 
 export function getDeploymentEvents3DeploymentsInfoFromJSON(
@@ -1070,6 +1080,7 @@ export const ResponseBodyInfo$inboundSchema: z.ZodType<
   path: types.optional(types.string()),
   step: types.optional(types.string()),
   readyState: types.optional(types.string()),
+  serviceName: types.optional(types.string()),
 });
 
 export function responseBodyInfoFromJSON(
@@ -1144,6 +1155,7 @@ export const GetDeploymentEventsResponseBodyInfo$inboundSchema: z.ZodType<
   path: types.optional(types.string()),
   step: types.optional(types.string()),
   readyState: types.optional(types.string()),
+  serviceName: types.optional(types.string()),
 });
 
 export function getDeploymentEventsResponseBodyInfoFromJSON(
@@ -1371,6 +1383,7 @@ export const ThreeInfo$inboundSchema: z.ZodType<
   path: types.optional(types.string()),
   step: types.optional(types.string()),
   readyState: types.optional(types.string()),
+  serviceName: types.optional(types.string()),
 });
 
 export function threeInfoFromJSON(
@@ -1433,6 +1446,7 @@ export const GetDeploymentEvents3DeploymentsResponseInfo$inboundSchema:
     path: types.optional(types.string()),
     step: types.optional(types.string()),
     readyState: types.optional(types.string()),
+    serviceName: types.optional(types.string()),
   });
 
 export function getDeploymentEvents3DeploymentsResponseInfoFromJSON(
@@ -1576,6 +1590,7 @@ export const Info$inboundSchema: z.ZodType<Info, z.ZodTypeDef, unknown> = z
     path: types.optional(types.string()),
     step: types.optional(types.string()),
     readyState: types.optional(types.string()),
+    serviceName: types.optional(types.string()),
   });
 
 export function infoFromJSON(
@@ -1644,6 +1659,7 @@ export const GetDeploymentEventsResponseBodyDeploymentsInfo$inboundSchema:
     path: types.optional(types.string()),
     step: types.optional(types.string()),
     readyState: types.optional(types.string()),
+    serviceName: types.optional(types.string()),
   });
 
 export function getDeploymentEventsResponseBodyDeploymentsInfoFromJSON(

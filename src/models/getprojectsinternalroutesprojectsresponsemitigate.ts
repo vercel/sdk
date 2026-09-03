@@ -513,6 +513,7 @@ export type ResponseBodyPermissions = {
   previewDeploymentSuffix?: Array<ACLAction> | undefined;
   privateCloudAccount?: Array<ACLAction> | undefined;
   projectTransferIn?: Array<ACLAction> | undefined;
+  projectTransferRequest?: Array<ACLAction> | undefined;
   proTrialOnboarding?: Array<ACLAction> | undefined;
   rateLimit?: Array<ACLAction> | undefined;
   redis?: Array<ACLAction> | undefined;
@@ -2397,6 +2398,7 @@ export const ResponseBodyPermissions$inboundSchema: z.ZodType<
   previewDeploymentSuffix: types.optional(z.array(ACLAction$inboundSchema)),
   privateCloudAccount: types.optional(z.array(ACLAction$inboundSchema)),
   projectTransferIn: types.optional(z.array(ACLAction$inboundSchema)),
+  projectTransferRequest: types.optional(z.array(ACLAction$inboundSchema)),
   proTrialOnboarding: types.optional(z.array(ACLAction$inboundSchema)),
   rateLimit: types.optional(z.array(ACLAction$inboundSchema)),
   redis: types.optional(z.array(ACLAction$inboundSchema)),

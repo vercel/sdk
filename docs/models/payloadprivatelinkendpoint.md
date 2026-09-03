@@ -17,5 +17,3 @@ let value: PayloadPrivateLinkEndpoint = {
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `id`               | *string*           | :heavy_check_mark: | N/A                |
 | `name`             | *string*           | :heavy_check_mark: | N/A                |
-| `environmentIds`   | *string*[]         | :heavy_minus_sign: | N/A                |
-| `privateDnsNames`  | *string*[]         | :heavy_minus_sign: | N/A                |

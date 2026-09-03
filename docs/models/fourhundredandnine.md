@@ -5,24 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndNine } from "@vercel/sdk/models/fourhundredandtwo.js";
+import { FourHundredAndNine } from "@vercel/sdk/models/fourhundredandthree.js";
 
 let value: FourHundredAndNine = {
-  previous: {
-    enabled: true,
-    totpVerified: false,
-  },
-  next: {
-    enabled: true,
-    totpVerified: true,
-  },
+  action: "add-passkey",
+  reason: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `previous`                                                                     | [models.UserEventPayload409Previous](../models/usereventpayload409previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `next`                                                                         | [models.UserEventPayload409Next](../models/usereventpayload409next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `method`                                                                       | [models.PayloadMethod](../models/payloadmethod.md)                             | :heavy_minus_sign:                                                             | N/A                                                                            |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `action`                                                                   | [models.UserEventPayload409Action](../models/usereventpayload409action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| `reason`                                                                   | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |

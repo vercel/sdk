@@ -5,15 +5,13 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndEightyThree } from "@vercel/sdk/models/usereventpayload334budget.js";
+import { ThreeHundredAndEightyThree } from "@vercel/sdk/models/usereventpayload335budget.js";
 
-let value: ThreeHundredAndEightyThree = {
-  deletedCount: 9719.78,
-};
+let value: ThreeHundredAndEightyThree = {};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `deletedCount`     | *number*           | :heavy_check_mark: | N/A                |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `remoteCaching`                                                  | [models.PayloadRemoteCaching](../models/payloadremotecaching.md) | :heavy_minus_sign:                                               | Represents configuration for remote caching                      |

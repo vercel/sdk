@@ -3,12 +3,12 @@
 
 ## Supported Types
 
-### `models.Environments1`
+### `models.TeamEnvironments1`
 
 ```typescript
-const value: models.Environments1 = {
+const value: models.TeamEnvironments1 = {
   type: "system",
-  target: "preview",
+  target: "production",
 };
 ```
 

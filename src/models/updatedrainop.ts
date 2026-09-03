@@ -22,7 +22,7 @@ export type UpdateDrainFilterDrains2 = {
   text: string;
 };
 
-export type FilterProject = {
+export type UpdateDrainFilterProject = {
   ids?: Array<string> | undefined;
 };
 
@@ -57,7 +57,7 @@ export type FilterDeployment = {
 
 export type UpdateDrainFilter1 = {
   type: string;
-  project?: FilterProject | undefined;
+  project?: UpdateDrainFilterProject | undefined;
   log?: FilterLog | undefined;
   deployment?: FilterDeployment | undefined;
 };
@@ -541,7 +541,7 @@ export type UpdateDrainFilterDrainsResponse2002 = {
   text: string;
 };
 
-export type UpdateDrainFilterDrainsProject = {
+export type UpdateDrainFilterDrainsResponseProject = {
   ids?: Array<string> | undefined;
 };
 
@@ -577,7 +577,7 @@ export type UpdateDrainFilterDrainsDeployment = {
 
 export type UpdateDrainFilterDrainsResponse1 = {
   type: "basic";
-  project?: UpdateDrainFilterDrainsProject | undefined;
+  project?: UpdateDrainFilterDrainsResponseProject | undefined;
   log?: UpdateDrainFilterDrainsLog | undefined;
   deployment?: UpdateDrainFilterDrainsDeployment | undefined;
 };
@@ -901,7 +901,7 @@ export type UpdateDrainFilterDrainsResponse2 = {
   text: string;
 };
 
-export type UpdateDrainFilterProject = {
+export type UpdateDrainFilterDrainsProject = {
   ids?: Array<string> | undefined;
 };
 
@@ -937,7 +937,7 @@ export type UpdateDrainFilterDeployment = {
 
 export type UpdateDrainFilterDrains1 = {
   type: "basic";
-  project?: UpdateDrainFilterProject | undefined;
+  project?: UpdateDrainFilterDrainsProject | undefined;
   log?: UpdateDrainFilterLog | undefined;
   deployment?: UpdateDrainFilterDeployment | undefined;
 };
@@ -1010,21 +1010,25 @@ export function updateDrainFilterDrains2ToJSON(
 }
 
 /** @internal */
-export type FilterProject$Outbound = {
+export type UpdateDrainFilterProject$Outbound = {
   ids?: Array<string> | undefined;
 };
 
 /** @internal */
-export const FilterProject$outboundSchema: z.ZodType<
-  FilterProject$Outbound,
+export const UpdateDrainFilterProject$outboundSchema: z.ZodType<
+  UpdateDrainFilterProject$Outbound,
   z.ZodTypeDef,
-  FilterProject
+  UpdateDrainFilterProject
 > = z.object({
   ids: z.array(z.string()).optional(),
 });
 
-export function filterProjectToJSON(filterProject: FilterProject): string {
-  return JSON.stringify(FilterProject$outboundSchema.parse(filterProject));
+export function updateDrainFilterProjectToJSON(
+  updateDrainFilterProject: UpdateDrainFilterProject,
+): string {
+  return JSON.stringify(
+    UpdateDrainFilterProject$outboundSchema.parse(updateDrainFilterProject),
+  );
 }
 
 /** @internal */
@@ -1081,7 +1085,7 @@ export function filterDeploymentToJSON(
 /** @internal */
 export type UpdateDrainFilter1$Outbound = {
   type: string;
-  project?: FilterProject$Outbound | undefined;
+  project?: UpdateDrainFilterProject$Outbound | undefined;
   log?: FilterLog$Outbound | undefined;
   deployment?: FilterDeployment$Outbound | undefined;
 };
@@ -1093,7 +1097,7 @@ export const UpdateDrainFilter1$outboundSchema: z.ZodType<
   UpdateDrainFilter1
 > = z.object({
   type: z.string(),
-  project: z.lazy(() => FilterProject$outboundSchema).optional(),
+  project: z.lazy(() => UpdateDrainFilterProject$outboundSchema).optional(),
   log: z.lazy(() => FilterLog$outboundSchema).optional(),
   deployment: z.lazy(() => FilterDeployment$outboundSchema).optional(),
 });
@@ -2341,21 +2345,22 @@ export function updateDrainFilterDrainsResponse2002FromJSON(
 }
 
 /** @internal */
-export const UpdateDrainFilterDrainsProject$inboundSchema: z.ZodType<
-  UpdateDrainFilterDrainsProject,
+export const UpdateDrainFilterDrainsResponseProject$inboundSchema: z.ZodType<
+  UpdateDrainFilterDrainsResponseProject,
   z.ZodTypeDef,
   unknown
 > = z.object({
   ids: types.optional(z.array(types.string())),
 });
 
-export function updateDrainFilterDrainsProjectFromJSON(
+export function updateDrainFilterDrainsResponseProjectFromJSON(
   jsonString: string,
-): SafeParseResult<UpdateDrainFilterDrainsProject, SDKValidationError> {
+): SafeParseResult<UpdateDrainFilterDrainsResponseProject, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UpdateDrainFilterDrainsProject$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateDrainFilterDrainsProject' from JSON`,
+    (x) =>
+      UpdateDrainFilterDrainsResponseProject$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateDrainFilterDrainsResponseProject' from JSON`,
   );
 }
 
@@ -2425,7 +2430,7 @@ export const UpdateDrainFilterDrainsResponse1$inboundSchema: z.ZodType<
 > = z.object({
   type: types.literal("basic"),
   project: types.optional(
-    z.lazy(() => UpdateDrainFilterDrainsProject$inboundSchema),
+    z.lazy(() => UpdateDrainFilterDrainsResponseProject$inboundSchema),
   ),
   log: types.optional(z.lazy(() => UpdateDrainFilterDrainsLog$inboundSchema)),
   deployment: types.optional(
@@ -3219,21 +3224,21 @@ export function updateDrainFilterDrainsResponse2FromJSON(
 }
 
 /** @internal */
-export const UpdateDrainFilterProject$inboundSchema: z.ZodType<
-  UpdateDrainFilterProject,
+export const UpdateDrainFilterDrainsProject$inboundSchema: z.ZodType<
+  UpdateDrainFilterDrainsProject,
   z.ZodTypeDef,
   unknown
 > = z.object({
   ids: types.optional(z.array(types.string())),
 });
 
-export function updateDrainFilterProjectFromJSON(
+export function updateDrainFilterDrainsProjectFromJSON(
   jsonString: string,
-): SafeParseResult<UpdateDrainFilterProject, SDKValidationError> {
+): SafeParseResult<UpdateDrainFilterDrainsProject, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UpdateDrainFilterProject$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateDrainFilterProject' from JSON`,
+    (x) => UpdateDrainFilterDrainsProject$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateDrainFilterDrainsProject' from JSON`,
   );
 }
 
@@ -3301,7 +3306,9 @@ export const UpdateDrainFilterDrains1$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   type: types.literal("basic"),
-  project: types.optional(z.lazy(() => UpdateDrainFilterProject$inboundSchema)),
+  project: types.optional(
+    z.lazy(() => UpdateDrainFilterDrainsProject$inboundSchema),
+  ),
   log: types.optional(z.lazy(() => UpdateDrainFilterLog$inboundSchema)),
   deployment: types.optional(
     z.lazy(() => UpdateDrainFilterDeployment$inboundSchema),

@@ -3,18 +3,29 @@
  */
 
 import { networkingCreateNetwork } from "../funcs/networkingCreateNetwork.js";
+import { networkingCreatePrivateLinkEndpoint } from "../funcs/networkingCreatePrivateLinkEndpoint.js";
 import { networkingDeleteNetwork } from "../funcs/networkingDeleteNetwork.js";
+import { networkingDeletePrivateLinkEndpoint } from "../funcs/networkingDeletePrivateLinkEndpoint.js";
 import { networkingListNetworks } from "../funcs/networkingListNetworks.js";
+import { networkingListPrivateLinkEndpoints } from "../funcs/networkingListPrivateLinkEndpoints.js";
 import { networkingReadNetwork } from "../funcs/networkingReadNetwork.js";
+import { networkingReadPrivateLinkEndpoint } from "../funcs/networkingReadPrivateLinkEndpoint.js";
 import { networkingUpdateNetwork } from "../funcs/networkingUpdateNetwork.js";
+import { networkingUpdatePrivateLinkEndpoint } from "../funcs/networkingUpdatePrivateLinkEndpoint.js";
 import { networkingUpdateStaticIps } from "../funcs/networkingUpdateStaticIps.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import { CreateNetworkRequest } from "../models/createnetworkop.js";
+import { CreatePrivateLinkEndpointRequest } from "../models/createprivatelinkendpointop.js";
 import { DeleteNetworkRequest } from "../models/deletenetworkop.js";
+import { DeletePrivateLinkEndpointRequest } from "../models/deleteprivatelinkendpointop.js";
 import { ListNetworksRequest } from "../models/listnetworksop.js";
+import { ListPrivateLinkEndpointsRequest } from "../models/listprivatelinkendpointsop.js";
 import { Network } from "../models/network.js";
+import { PrivateLinkEndpoint } from "../models/privatelinkendpoint.js";
 import { ReadNetworkRequest } from "../models/readnetworkop.js";
+import { ReadPrivateLinkEndpointRequest } from "../models/readprivatelinkendpointop.js";
 import { UpdateNetworkRequest } from "../models/updatenetworkop.js";
+import { UpdatePrivateLinkEndpointRequest } from "../models/updateprivatelinkendpointop.js";
 import {
   UpdateStaticIpsRequest,
   UpdateStaticIpsResponseBody,
@@ -101,6 +112,91 @@ export class Networking extends ClientSDK {
     options?: RequestOptions,
   ): Promise<Network> {
     return unwrapAsync(networkingReadNetwork(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Create a PrivateLink endpoint
+   *
+   * @remarks
+   * Creates a PrivateLink endpoint for a project.
+   */
+  async createPrivateLinkEndpoint(
+    request: CreatePrivateLinkEndpointRequest,
+    options?: RequestOptions,
+  ): Promise<PrivateLinkEndpoint> {
+    return unwrapAsync(networkingCreatePrivateLinkEndpoint(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List PrivateLink endpoints
+   *
+   * @remarks
+   * Lists all PrivateLink endpoints for a project.
+   */
+  async listPrivateLinkEndpoints(
+    request: ListPrivateLinkEndpointsRequest,
+    options?: RequestOptions,
+  ): Promise<Array<PrivateLinkEndpoint>> {
+    return unwrapAsync(networkingListPrivateLinkEndpoints(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Read a PrivateLink endpoint
+   *
+   * @remarks
+   * Reads a single PrivateLink endpoint.
+   */
+  async readPrivateLinkEndpoint(
+    request: ReadPrivateLinkEndpointRequest,
+    options?: RequestOptions,
+  ): Promise<PrivateLinkEndpoint> {
+    return unwrapAsync(networkingReadPrivateLinkEndpoint(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Delete a PrivateLink endpoint
+   *
+   * @remarks
+   * Deletes a PrivateLink endpoint.
+   */
+  async deletePrivateLinkEndpoint(
+    request: DeletePrivateLinkEndpointRequest,
+    options?: RequestOptions,
+  ): Promise<any> {
+    return unwrapAsync(networkingDeletePrivateLinkEndpoint(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Update a PrivateLink endpoint
+   *
+   * @remarks
+   * Updates a PrivateLink endpoint (name, privateDns).
+   */
+  async updatePrivateLinkEndpoint(
+    request: UpdatePrivateLinkEndpointRequest,
+    options?: RequestOptions,
+  ): Promise<PrivateLinkEndpoint> {
+    return unwrapAsync(networkingUpdatePrivateLinkEndpoint(
       this,
       request,
       options,

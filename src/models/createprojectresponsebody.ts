@@ -21,6 +21,8 @@ import {
   CreateProjectCreator$inboundSchema,
   CreateProjectCrons,
   CreateProjectCrons$inboundSchema,
+  CreateProjectCustomEnvironments,
+  CreateProjectCustomEnvironments$inboundSchema,
   CreateProjectDataCache,
   CreateProjectDataCache$inboundSchema,
   CreateProjectEnv,
@@ -43,8 +45,6 @@ import {
   CreateProjectProjectsFramework$inboundSchema,
   CreateProjectServices,
   CreateProjectServices$inboundSchema,
-  CustomEnvironments,
-  CustomEnvironments$inboundSchema,
   DeploymentExpiration,
   DeploymentExpiration$inboundSchema,
   Jobs,
@@ -354,7 +354,7 @@ export type CreateProjectResponseBody = {
   directoryListing: boolean;
   installCommand?: string | null | undefined;
   env?: Array<CreateProjectEnv> | undefined;
-  customEnvironments?: Array<CustomEnvironments> | undefined;
+  customEnvironments?: Array<CreateProjectCustomEnvironments> | undefined;
   framework?: CreateProjectProjectsFramework | null | undefined;
   services?: Array<CreateProjectServices> | undefined;
   gitForkProtection?: boolean | undefined;
@@ -1076,7 +1076,9 @@ export const CreateProjectResponseBody$inboundSchema: z.ZodType<
   directoryListing: types.boolean(),
   installCommand: z.nullable(types.string()).optional(),
   env: types.optional(z.array(CreateProjectEnv$inboundSchema)),
-  customEnvironments: types.optional(z.array(CustomEnvironments$inboundSchema)),
+  customEnvironments: types.optional(
+    z.array(CreateProjectCustomEnvironments$inboundSchema),
+  ),
   framework: z.nullable(CreateProjectProjectsFramework$inboundSchema)
     .optional(),
   services: types.optional(z.array(CreateProjectServices$inboundSchema)),

@@ -128,6 +128,7 @@ export const UpdateProjectProjectsFramework = {
   Ember: "ember",
   Eve: "eve",
   Express: "express",
+  FactoryEve: "factory-eve",
   Fastapi: "fastapi",
   Fasthtml: "fasthtml",
   Fastify: "fastify",
@@ -226,6 +227,7 @@ export const UpdateProjectProjectsResponseFramework = {
   Ember: "ember",
   Eve: "eve",
   Express: "express",
+  FactoryEve: "factory-eve",
   Fastapi: "fastapi",
   Fasthtml: "fasthtml",
   Fastify: "fastify",
@@ -1544,6 +1546,7 @@ export type UpdateProjectPermissions = {
   previewDeploymentSuffix?: Array<ACLAction> | undefined;
   privateCloudAccount?: Array<ACLAction> | undefined;
   projectTransferIn?: Array<ACLAction> | undefined;
+  projectTransferRequest?: Array<ACLAction> | undefined;
   proTrialOnboarding?: Array<ACLAction> | undefined;
   rateLimit?: Array<ACLAction> | undefined;
   redis?: Array<ACLAction> | undefined;
@@ -4146,6 +4149,7 @@ export const UpdateProjectPermissions$inboundSchema: z.ZodType<
   previewDeploymentSuffix: types.optional(z.array(ACLAction$inboundSchema)),
   privateCloudAccount: types.optional(z.array(ACLAction$inboundSchema)),
   projectTransferIn: types.optional(z.array(ACLAction$inboundSchema)),
+  projectTransferRequest: types.optional(z.array(ACLAction$inboundSchema)),
   proTrialOnboarding: types.optional(z.array(ACLAction$inboundSchema)),
   rateLimit: types.optional(z.array(ACLAction$inboundSchema)),
   redis: types.optional(z.array(ACLAction$inboundSchema)),

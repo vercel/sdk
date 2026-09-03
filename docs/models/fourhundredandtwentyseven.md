@@ -5,17 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndTwentySeven } from "@vercel/sdk/models/fourhundredandtwo.js";
+import { FourHundredAndTwentySeven } from "@vercel/sdk/models/fourhundredandthree.js";
 
 let value: FourHundredAndTwentySeven = {
-  previousProjectCount: 113.95,
-  nextProjectCount: 9051.16,
+  ruleName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                  | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `previousProjectCount` | *number*               | :heavy_check_mark:     | N/A                    |
-| `nextProjectCount`     | *number*               | :heavy_check_mark:     | N/A                    |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `ruleName`         | *string*           | :heavy_check_mark: | N/A                |

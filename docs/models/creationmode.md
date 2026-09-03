@@ -5,7 +5,7 @@ How the connector row was originally created. New create paths stamp this explic
 ## Example Usage
 
 ```typescript
-import { CreationMode } from "@vercel/sdk/models/connectconnectorcreateresult.js";
+import { CreationMode } from "@vercel/sdk/models/connectconnector.js";
 
 let value: CreationMode = "managed";
 ```

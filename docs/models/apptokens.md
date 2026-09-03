@@ -5,7 +5,7 @@ App-token capabilities and known grants for the connector.
 ## Example Usage
 
 ```typescript
-import { AppTokens } from "@vercel/sdk/models/connectconnectorcreateresult.js";
+import { AppTokens } from "@vercel/sdk/models/connectconnector.js";
 
 let value: AppTokens = {
   crossInstallation: false,

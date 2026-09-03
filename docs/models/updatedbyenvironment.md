@@ -1,15 +1,19 @@
 # UpdatedByEnvironment
 
-## Example Usage
+Deployment environment of the project principal.
+
+
+## Supported Types
+
+### `string`
 
 ```typescript
-import { UpdatedByEnvironment } from "@vercel/sdk/models/connectconnectorcreateresult.js";
-
-let value: UpdatedByEnvironment = "preview";
+const value: string = "<value>";
 ```
 
-## Values
+### `models.ConnectConnectorEnvironment2`
 
 ```typescript
-"development" | "preview" | "production"
+const value: models.ConnectConnectorEnvironment2 = "development";
 ```
+

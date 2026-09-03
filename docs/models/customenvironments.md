@@ -1,31 +1,21 @@
 # CustomEnvironments
 
-Internal representation of a custom environment with all required properties
+Custom environments available on the project. This list can include environments where the connector is not enabled.
 
 ## Example Usage
 
 ```typescript
-import { CustomEnvironments } from "@vercel/sdk/models/createprojectpassport.js";
+import { CustomEnvironments } from "@vercel/sdk/models/connectprojectconnection.js";
 
 let value: CustomEnvironments = {
   id: "<id>",
   slug: "<value>",
-  type: "preview",
-  createdAt: 520.72,
-  updatedAt: 5983.83,
 };
 ```
 
 ## Fields
 
-| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `id`                                                                                             | *string*                                                                                         | :heavy_check_mark:                                                                               | Unique identifier for the custom environment (format: env_*)                                     |
-| `slug`                                                                                           | *string*                                                                                         | :heavy_check_mark:                                                                               | URL-friendly name of the environment                                                             |
-| `type`                                                                                           | [models.CreateProjectProjectsResponse200Type](../models/createprojectprojectsresponse200type.md) | :heavy_check_mark:                                                                               | The type of environment (production, preview, or development)                                    |
-| `description`                                                                                    | *string*                                                                                         | :heavy_minus_sign:                                                                               | Optional description of the environment's purpose                                                |
-| `branchMatcher`                                                                                  | [models.CreateProjectBranchMatcher](../models/createprojectbranchmatcher.md)                     | :heavy_minus_sign:                                                                               | Configuration for matching git branches to this environment                                      |
-| `domains`                                                                                        | [models.CreateProjectDomains](../models/createprojectdomains.md)[]                               | :heavy_minus_sign:                                                                               | List of domains associated with this environment                                                 |
-| `currentDeploymentAliases`                                                                       | *string*[]                                                                                       | :heavy_minus_sign:                                                                               | List of aliases for the current deployment                                                       |
-| `createdAt`                                                                                      | *number*                                                                                         | :heavy_check_mark:                                                                               | Timestamp when the environment was created                                                       |
-| `updatedAt`                                                                                      | *number*                                                                                         | :heavy_check_mark:                                                                               | Timestamp when the environment was last updated                                                  |
+| Field                                           | Type                                            | Required                                        | Description                                     |
+| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
+| `id`                                            | *string*                                        | :heavy_check_mark:                              | Stable custom environment ID.                   |
+| `slug`                                          | *string*                                        | :heavy_check_mark:                              | Current human-readable custom environment slug. |

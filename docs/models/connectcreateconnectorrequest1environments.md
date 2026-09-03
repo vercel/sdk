@@ -5,10 +5,10 @@ A built-in environment name or the stable env_* ID of a custom environment.
 
 ## Supported Types
 
-### `models.ConnectCreateConnectorRequestEnvironments1`
+### `models.ConnectCreateConnectorRequestEnvironments11`
 
 ```typescript
-const value: models.ConnectCreateConnectorRequestEnvironments1 = "development";
+const value: models.ConnectCreateConnectorRequestEnvironments11 = "development";
 ```
 
 ### `string`

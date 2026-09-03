@@ -1,17 +1,15 @@
 # UserEventPayload166Type
 
-The type of matching to perform
-
 ## Example Usage
 
 ```typescript
-import { UserEventPayload166Type } from "@vercel/sdk/models/payloadimportflowgitnamespaceid.js";
+import { UserEventPayload166Type } from "@vercel/sdk/models/bandwidth.js";
 
-let value: UserEventPayload166Type = "endsWith";
+let value: UserEventPayload166Type = "user";
 ```
 
 ## Values
 
 ```typescript
-"endsWith" | "startsWith" | "equals"
+"user"
 ```

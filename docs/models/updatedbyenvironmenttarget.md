@@ -11,9 +11,10 @@ Deployment environment of the project principal.
 const value: string = "<value>";
 ```
 
-### `models.UpdatedByEnvironment`
+### `models.UpdatedByEnvironmentTargetUpdatedByEnvironment`
 
 ```typescript
-const value: models.UpdatedByEnvironment = "production";
+const value: models.UpdatedByEnvironmentTargetUpdatedByEnvironment =
+  "development";
 ```
 

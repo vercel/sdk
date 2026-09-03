@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { BlobDataTransfer } from "@vercel/sdk/models/previousrule.js";
+import { BlobDataTransfer } from "@vercel/sdk/models/onehundredandfortyseven.js";
 
 let value: BlobDataTransfer = {
   currentThreshold: 7290.07,
@@ -12,8 +12,9 @@ let value: BlobDataTransfer = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `currentThreshold` | *number*           | :heavy_check_mark: | N/A                |
-| `warningAt`        | *number*           | :heavy_minus_sign: | N/A                |
-| `blockedAt`        | *number*           | :heavy_minus_sign: | N/A                |
+| Field                       | Type                        | Required                    | Description                 |
+| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
+| `currentThreshold`          | *number*                    | :heavy_check_mark:          | N/A                         |
+| `warningAt`                 | *number*                    | :heavy_minus_sign:          | N/A                         |
+| `blockedAt`                 | *number*                    | :heavy_minus_sign:          | N/A                         |
+| `blockGracePeriodStartedAt` | *number*                    | :heavy_minus_sign:          | N/A                         |

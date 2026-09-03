@@ -581,12 +581,12 @@ export const EnvironmentsTarget = {
 } as const;
 export type EnvironmentsTarget = ClosedEnum<typeof EnvironmentsTarget>;
 
-export type Environments1 = {
+export type TeamEnvironments1 = {
   type: "system";
   target: EnvironmentsTarget;
 };
 
-export type TeamEnvironments = Environments1 | Environments2;
+export type TeamEnvironments = TeamEnvironments1 | Environments2;
 
 /**
  * `enabled: true` with empty `sources` is deny-all.
@@ -598,7 +598,7 @@ export type GitSources = {
     | Sources2
   >;
   enabled: boolean;
-  environments: Array<Environments1 | Environments2>;
+  environments: Array<TeamEnvironments1 | Environments2>;
 };
 
 /**
@@ -628,13 +628,13 @@ export const TeamEnvironmentsTarget = {
 } as const;
 export type TeamEnvironmentsTarget = ClosedEnum<typeof TeamEnvironmentsTarget>;
 
-export type TeamEnvironments1 = {
+export type TeamEnvironmentsDeploymentPolicy1 = {
   type: "system";
   target: TeamEnvironmentsTarget;
 };
 
 export type TeamDeploymentPolicyEnvironments =
-  | TeamEnvironments1
+  | TeamEnvironmentsDeploymentPolicy1
   | TeamEnvironments2;
 
 /**
@@ -643,7 +643,7 @@ export type TeamDeploymentPolicyEnvironments =
 export type DeploymentSources = {
   sources: Array<TeamSources>;
   enabled: boolean;
-  environments: Array<TeamEnvironments1 | TeamEnvironments2>;
+  environments: Array<TeamEnvironmentsDeploymentPolicy1 | TeamEnvironments2>;
 };
 
 /**
@@ -1666,8 +1666,8 @@ export const EnvironmentsTarget$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(EnvironmentsTarget);
 
 /** @internal */
-export const Environments1$inboundSchema: z.ZodType<
-  Environments1,
+export const TeamEnvironments1$inboundSchema: z.ZodType<
+  TeamEnvironments1,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1675,13 +1675,13 @@ export const Environments1$inboundSchema: z.ZodType<
   target: EnvironmentsTarget$inboundSchema,
 });
 
-export function environments1FromJSON(
+export function teamEnvironments1FromJSON(
   jsonString: string,
-): SafeParseResult<Environments1, SDKValidationError> {
+): SafeParseResult<TeamEnvironments1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Environments1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Environments1' from JSON`,
+    (x) => TeamEnvironments1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TeamEnvironments1' from JSON`,
   );
 }
 
@@ -1691,7 +1691,7 @@ export const TeamEnvironments$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => Environments1$inboundSchema),
+  z.lazy(() => TeamEnvironments1$inboundSchema),
   z.lazy(() => Environments2$inboundSchema),
 ]);
 
@@ -1725,7 +1725,7 @@ export const GitSources$inboundSchema: z.ZodType<
   enabled: types.boolean(),
   environments: z.array(
     z.union([
-      z.lazy(() => Environments1$inboundSchema),
+      z.lazy(() => TeamEnvironments1$inboundSchema),
       z.lazy(() => Environments2$inboundSchema),
     ]),
   ),
@@ -1771,8 +1771,8 @@ export const TeamEnvironmentsTarget$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(TeamEnvironmentsTarget);
 
 /** @internal */
-export const TeamEnvironments1$inboundSchema: z.ZodType<
-  TeamEnvironments1,
+export const TeamEnvironmentsDeploymentPolicy1$inboundSchema: z.ZodType<
+  TeamEnvironmentsDeploymentPolicy1,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1780,13 +1780,13 @@ export const TeamEnvironments1$inboundSchema: z.ZodType<
   target: TeamEnvironmentsTarget$inboundSchema,
 });
 
-export function teamEnvironments1FromJSON(
+export function teamEnvironmentsDeploymentPolicy1FromJSON(
   jsonString: string,
-): SafeParseResult<TeamEnvironments1, SDKValidationError> {
+): SafeParseResult<TeamEnvironmentsDeploymentPolicy1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => TeamEnvironments1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TeamEnvironments1' from JSON`,
+    (x) => TeamEnvironmentsDeploymentPolicy1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TeamEnvironmentsDeploymentPolicy1' from JSON`,
   );
 }
 
@@ -1796,7 +1796,7 @@ export const TeamDeploymentPolicyEnvironments$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => TeamEnvironments1$inboundSchema),
+  z.lazy(() => TeamEnvironmentsDeploymentPolicy1$inboundSchema),
   z.lazy(() => TeamEnvironments2$inboundSchema),
 ]);
 
@@ -1820,7 +1820,7 @@ export const DeploymentSources$inboundSchema: z.ZodType<
   enabled: types.boolean(),
   environments: z.array(
     z.union([
-      z.lazy(() => TeamEnvironments1$inboundSchema),
+      z.lazy(() => TeamEnvironmentsDeploymentPolicy1$inboundSchema),
       z.lazy(() => TeamEnvironments2$inboundSchema),
     ]),
   ),

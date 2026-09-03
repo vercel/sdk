@@ -13,7 +13,7 @@ let value: TeamEnvironments1 = {
 
 ## Fields
 
-| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
-| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `type`                                                               | *"system"*                                                           | :heavy_check_mark:                                                   | N/A                                                                  |
-| `target`                                                             | [models.TeamEnvironmentsTarget](../models/teamenvironmentstarget.md) | :heavy_check_mark:                                                   | N/A                                                                  |
+| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `type`                                                       | *"system"*                                                   | :heavy_check_mark:                                           | N/A                                                          |
+| `target`                                                     | [models.EnvironmentsTarget](../models/environmentstarget.md) | :heavy_check_mark:                                           | N/A                                                          |

@@ -281,7 +281,17 @@ run();
 
 ### [Connect](docs/sdks/connect/README.md)
 
+* [listConnectors](docs/sdks/connect/README.md#listconnectors) - List connectors
+* [getConnector](docs/sdks/connect/README.md#getconnector) - Get a connector
+* [deleteConnector](docs/sdks/connect/README.md#deleteconnector) - Delete a connector
 * [createConnector](docs/sdks/connect/README.md#createconnector) - Create a connector
+* [updateConnector](docs/sdks/connect/README.md#updateconnector) - Update a connector
+* [replaceConnectorTriggerDestinations](docs/sdks/connect/README.md#replaceconnectortriggerdestinations) - Update connector trigger destinations
+* [listConnectorProjectConnections](docs/sdks/connect/README.md#listconnectorprojectconnections) - List projects for a connector
+* [getConnectorProjectConnection](docs/sdks/connect/README.md#getconnectorprojectconnection) - Get a connector project connection
+* [upsertConnectorProjectConnection](docs/sdks/connect/README.md#upsertconnectorprojectconnection) - Create or update a connector project connection
+* [deleteConnectorProjectConnection](docs/sdks/connect/README.md#deleteconnectorprojectconnection) - Disconnect a connector from a project
+* [listProjectConnectorConnections](docs/sdks/connect/README.md#listprojectconnectorconnections) - List connectors for a project
 
 ### [Deployments](docs/sdks/deployments/README.md)
 
@@ -496,6 +506,11 @@ run();
 * [deleteNetwork](docs/sdks/networking/README.md#deletenetwork) - Delete a Secure Compute network
 * [updateNetwork](docs/sdks/networking/README.md#updatenetwork) - Update a Secure Compute network
 * [readNetwork](docs/sdks/networking/README.md#readnetwork) - Read a Secure Compute network
+* [createPrivateLinkEndpoint](docs/sdks/networking/README.md#createprivatelinkendpoint) - Create a PrivateLink endpoint
+* [listPrivateLinkEndpoints](docs/sdks/networking/README.md#listprivatelinkendpoints) - List PrivateLink endpoints
+* [readPrivateLinkEndpoint](docs/sdks/networking/README.md#readprivatelinkendpoint) - Read a PrivateLink endpoint
+* [deletePrivateLinkEndpoint](docs/sdks/networking/README.md#deleteprivatelinkendpoint) - Delete a PrivateLink endpoint
+* [updatePrivateLinkEndpoint](docs/sdks/networking/README.md#updateprivatelinkendpoint) - Update a PrivateLink endpoint
 * [updateStaticIps](docs/sdks/networking/README.md#updatestaticips) - Configures Static IPs for a project
 
 ### [Observability](docs/sdks/observability/README.md)
@@ -766,6 +781,16 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`checksV2UpdateDeploymentCheckRun`](docs/sdks/checksv2/README.md#updatedeploymentcheckrun) - Update a check run
 - [`checksV2UpdateProjectCheck`](docs/sdks/checksv2/README.md#updateprojectcheck) - Update a check
 - [`connectCreateConnector`](docs/sdks/connect/README.md#createconnector) - Create a connector
+- [`connectDeleteConnector`](docs/sdks/connect/README.md#deleteconnector) - Delete a connector
+- [`connectDeleteConnectorProjectConnection`](docs/sdks/connect/README.md#deleteconnectorprojectconnection) - Disconnect a connector from a project
+- [`connectGetConnector`](docs/sdks/connect/README.md#getconnector) - Get a connector
+- [`connectGetConnectorProjectConnection`](docs/sdks/connect/README.md#getconnectorprojectconnection) - Get a connector project connection
+- [`connectListConnectorProjectConnections`](docs/sdks/connect/README.md#listconnectorprojectconnections) - List projects for a connector
+- [`connectListConnectors`](docs/sdks/connect/README.md#listconnectors) - List connectors
+- [`connectListProjectConnectorConnections`](docs/sdks/connect/README.md#listprojectconnectorconnections) - List connectors for a project
+- [`connectReplaceConnectorTriggerDestinations`](docs/sdks/connect/README.md#replaceconnectortriggerdestinations) - Update connector trigger destinations
+- [`connectUpdateConnector`](docs/sdks/connect/README.md#updateconnector) - Update a connector
+- [`connectUpsertConnectorProjectConnection`](docs/sdks/connect/README.md#upsertconnectorprojectconnection) - Create or update a connector project connection
 - [`createApiKeys`](docs/sdks/vercel/README.md#createapikeys)
 - [`createObservabilityQuery`](docs/sdks/vercel/README.md#createobservabilityquery)
 - [`createSpeedInsightsToggle`](docs/sdks/vercel/README.md#createspeedinsightstoggle)
@@ -935,10 +960,15 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`microfrontendsGetMicrofrontendsGroups`](docs/sdks/microfrontends/README.md#getmicrofrontendsgroups) - List microfrontends groups
 - [`microfrontendsGetMicrofrontendsInGroup`](docs/sdks/microfrontends/README.md#getmicrofrontendsingroup) - List projects in a microfrontends group
 - [`networkingCreateNetwork`](docs/sdks/networking/README.md#createnetwork) - Create a Secure Compute network
+- [`networkingCreatePrivateLinkEndpoint`](docs/sdks/networking/README.md#createprivatelinkendpoint) - Create a PrivateLink endpoint
 - [`networkingDeleteNetwork`](docs/sdks/networking/README.md#deletenetwork) - Delete a Secure Compute network
+- [`networkingDeletePrivateLinkEndpoint`](docs/sdks/networking/README.md#deleteprivatelinkendpoint) - Delete a PrivateLink endpoint
 - [`networkingListNetworks`](docs/sdks/networking/README.md#listnetworks) - List Secure Compute networks
+- [`networkingListPrivateLinkEndpoints`](docs/sdks/networking/README.md#listprivatelinkendpoints) - List PrivateLink endpoints
 - [`networkingReadNetwork`](docs/sdks/networking/README.md#readnetwork) - Read a Secure Compute network
+- [`networkingReadPrivateLinkEndpoint`](docs/sdks/networking/README.md#readprivatelinkendpoint) - Read a PrivateLink endpoint
 - [`networkingUpdateNetwork`](docs/sdks/networking/README.md#updatenetwork) - Update a Secure Compute network
+- [`networkingUpdatePrivateLinkEndpoint`](docs/sdks/networking/README.md#updateprivatelinkendpoint) - Update a PrivateLink endpoint
 - [`networkingUpdateStaticIps`](docs/sdks/networking/README.md#updatestaticips) - Configures Static IPs for a project
 - [`networkingUpdateStaticIps`](docs/sdks/staticips/README.md#updatestaticips) - Configures Static IPs for a project
 - [`observabilityGetObservabilityConfigurationProjects`](docs/sdks/observability/README.md#getobservabilityconfigurationprojects) - Lists disabled Observability Plus projects
@@ -1273,37 +1303,37 @@ run();
 
 
 **Inherit from [`VercelError`](./src/models/vercelerror.ts)**:
-* [`HttpApiDecodeError`](./src/models/httpapidecodeerror.ts): The request did not match the expected schema. Status code `400`. Applicable to 17 of 389 methods.*
-* [`Unauthorized`](./src/models/unauthorized.ts): Unauthorized. Status code `401`. Applicable to 17 of 389 methods.*
-* [`NotAuthorizedForScope`](./src/models/notauthorizedforscope.ts): NotAuthorizedForScope. Status code `403`. Applicable to 17 of 389 methods.*
-* [`TooManyRequests`](./src/models/toomanyrequests.ts): TooManyRequests. Status code `429`. Applicable to 17 of 389 methods.*
-* [`InternalServerError`](./src/models/internalservererror.ts): InternalServerError. Status code `500`. Applicable to 17 of 389 methods.*
-* [`Forbidden`](./src/models/forbidden.ts): NotAuthorizedForScope. Status code `403`. Applicable to 10 of 389 methods.*
-* [`TldNotSupported`](./src/models/tldnotsupported.ts): The TLD is not currently supported. Status code `400`. Applicable to 7 of 389 methods.*
-* [`DomainTooShort`](./src/models/domaintooshort.ts): The domain name (excluding the TLD) is too short. Status code `400`. Applicable to 5 of 389 methods.*
-* [`DomainNotRegistered`](./src/models/domainnotregistered.ts): The domain is not registered with Vercel. Status code `400`. Applicable to 5 of 389 methods.*
-* [`DomainNotFound`](./src/models/domainnotfound.ts): The domain was not found in our system. Status code `404`. Applicable to 5 of 389 methods.*
-* [`BadRequest`](./src/models/badrequest.ts): There was something wrong with the request. Status code `400`. Applicable to 4 of 389 methods.*
-* [`ExpectedPriceMismatch`](./src/models/expectedpricemismatch.ts): The expected price passed does not match the actual price. Status code `400`. Applicable to 4 of 389 methods.*
-* [`DomainNotAvailable`](./src/models/domainnotavailable.ts): The domain is not available. Status code `400`. Applicable to 4 of 389 methods.*
-* [`NotFound`](./src/models/notfound.ts): NotFound. Status code `404`. Applicable to 3 of 389 methods.*
-* [`OrderTooExpensive`](./src/models/ordertooexpensive.ts): The total price of the order is too high. Status code `400`. Applicable to 2 of 389 methods.*
-* [`InvalidAdditionalContactInfo`](./src/models/invalidadditionalcontactinfo.ts): Additional contact information provided for the TLD is invalid. Status code `400`. Applicable to 2 of 389 methods.*
-* [`AdditionalContactInfoRequired`](./src/models/additionalcontactinforequired.ts): Additional contact information is required for the TLD. Status code `400`. Applicable to 2 of 389 methods.*
-* [`LanguageCodeRequired`](./src/models/languagecoderequired.ts): A language code is required for punycode domains. Status code `400`. Applicable to 2 of 389 methods.*
-* [`TooManyDomains`](./src/models/toomanydomains.ts): The number of domains in the order is too high. Status code `400`. Applicable to 1 of 389 methods.*
-* [`DuplicateDomains`](./src/models/duplicatedomains.ts): Duplicate domains were provided. Status code `400`. Applicable to 1 of 389 methods.*
-* [`DomainAlreadyOwned`](./src/models/domainalreadyowned.ts): The domain is already owned by another team or user. Status code `400`. Applicable to 1 of 389 methods.*
-* [`DNSSECEnabled`](./src/models/dnssecenabled.ts): The operation cannot be completed because DNSSEC is enabled for the domain. Status code `400`. Applicable to 1 of 389 methods.*
-* [`DomainAlreadyRenewing`](./src/models/domainalreadyrenewing.ts): The domain is already renewing. Status code `400`. Applicable to 1 of 389 methods.*
-* [`DomainNotRenewable`](./src/models/domainnotrenewable.ts): The domain is not renewable. Status code `400`. Applicable to 1 of 389 methods.*
-* [`BoughtTooRecently`](./src/models/boughttoorecently.ts): The domain was bought too recently to determine verification status. Status code `400`. Applicable to 1 of 389 methods.*
-* [`ConnectError`](./src/models/connecterror.ts): Error response returned by a Connect API operation. Applicable to 1 of 389 methods.*
-* [`CreateApiKeysResponseResponseBody`](./src/models/createapikeysresponseresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 389 methods.*
-* [`CreateApiKeysResponse403ResponseBody`](./src/models/createapikeysresponse403responsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 389 methods.*
-* [`DomainCannotBeTransferedOutUntil`](./src/models/domaincannotbetransferedoutuntil.ts): The domain cannot be transfered out until the specified date. Status code `409`. Applicable to 1 of 389 methods.*
-* [`CreateApiKeysResponse429ResponseBody`](./src/models/createapikeysresponse429responsebody.ts): . Status code `429`. Applicable to 1 of 389 methods.*
-* [`CreateApiKeysResponse500ResponseBody`](./src/models/createapikeysresponse500responsebody.ts): . Status code `500`. Applicable to 1 of 389 methods.*
+* [`HttpApiDecodeError`](./src/models/httpapidecodeerror.ts): The request did not match the expected schema. Status code `400`. Applicable to 17 of 404 methods.*
+* [`Unauthorized`](./src/models/unauthorized.ts): Unauthorized. Status code `401`. Applicable to 17 of 404 methods.*
+* [`NotAuthorizedForScope`](./src/models/notauthorizedforscope.ts): NotAuthorizedForScope. Status code `403`. Applicable to 17 of 404 methods.*
+* [`TooManyRequests`](./src/models/toomanyrequests.ts): TooManyRequests. Status code `429`. Applicable to 17 of 404 methods.*
+* [`InternalServerError`](./src/models/internalservererror.ts): InternalServerError. Status code `500`. Applicable to 17 of 404 methods.*
+* [`ConnectError`](./src/models/connecterror.ts): Error response returned by a Connect API operation. Applicable to 11 of 404 methods.*
+* [`Forbidden`](./src/models/forbidden.ts): NotAuthorizedForScope. Status code `403`. Applicable to 10 of 404 methods.*
+* [`TldNotSupported`](./src/models/tldnotsupported.ts): The TLD is not currently supported. Status code `400`. Applicable to 7 of 404 methods.*
+* [`DomainTooShort`](./src/models/domaintooshort.ts): The domain name (excluding the TLD) is too short. Status code `400`. Applicable to 5 of 404 methods.*
+* [`DomainNotRegistered`](./src/models/domainnotregistered.ts): The domain is not registered with Vercel. Status code `400`. Applicable to 5 of 404 methods.*
+* [`DomainNotFound`](./src/models/domainnotfound.ts): The domain was not found in our system. Status code `404`. Applicable to 5 of 404 methods.*
+* [`BadRequest`](./src/models/badrequest.ts): There was something wrong with the request. Status code `400`. Applicable to 4 of 404 methods.*
+* [`ExpectedPriceMismatch`](./src/models/expectedpricemismatch.ts): The expected price passed does not match the actual price. Status code `400`. Applicable to 4 of 404 methods.*
+* [`DomainNotAvailable`](./src/models/domainnotavailable.ts): The domain is not available. Status code `400`. Applicable to 4 of 404 methods.*
+* [`NotFound`](./src/models/notfound.ts): NotFound. Status code `404`. Applicable to 3 of 404 methods.*
+* [`OrderTooExpensive`](./src/models/ordertooexpensive.ts): The total price of the order is too high. Status code `400`. Applicable to 2 of 404 methods.*
+* [`InvalidAdditionalContactInfo`](./src/models/invalidadditionalcontactinfo.ts): Additional contact information provided for the TLD is invalid. Status code `400`. Applicable to 2 of 404 methods.*
+* [`AdditionalContactInfoRequired`](./src/models/additionalcontactinforequired.ts): Additional contact information is required for the TLD. Status code `400`. Applicable to 2 of 404 methods.*
+* [`LanguageCodeRequired`](./src/models/languagecoderequired.ts): A language code is required for punycode domains. Status code `400`. Applicable to 2 of 404 methods.*
+* [`TooManyDomains`](./src/models/toomanydomains.ts): The number of domains in the order is too high. Status code `400`. Applicable to 1 of 404 methods.*
+* [`DuplicateDomains`](./src/models/duplicatedomains.ts): Duplicate domains were provided. Status code `400`. Applicable to 1 of 404 methods.*
+* [`DomainAlreadyOwned`](./src/models/domainalreadyowned.ts): The domain is already owned by another team or user. Status code `400`. Applicable to 1 of 404 methods.*
+* [`DNSSECEnabled`](./src/models/dnssecenabled.ts): The operation cannot be completed because DNSSEC is enabled for the domain. Status code `400`. Applicable to 1 of 404 methods.*
+* [`DomainAlreadyRenewing`](./src/models/domainalreadyrenewing.ts): The domain is already renewing. Status code `400`. Applicable to 1 of 404 methods.*
+* [`DomainNotRenewable`](./src/models/domainnotrenewable.ts): The domain is not renewable. Status code `400`. Applicable to 1 of 404 methods.*
+* [`BoughtTooRecently`](./src/models/boughttoorecently.ts): The domain was bought too recently to determine verification status. Status code `400`. Applicable to 1 of 404 methods.*
+* [`CreateApiKeysResponseResponseBody`](./src/models/createapikeysresponseresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 404 methods.*
+* [`CreateApiKeysResponse403ResponseBody`](./src/models/createapikeysresponse403responsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 404 methods.*
+* [`DomainCannotBeTransferedOutUntil`](./src/models/domaincannotbetransferedoutuntil.ts): The domain cannot be transfered out until the specified date. Status code `409`. Applicable to 1 of 404 methods.*
+* [`CreateApiKeysResponse429ResponseBody`](./src/models/createapikeysresponse429responsebody.ts): . Status code `429`. Applicable to 1 of 404 methods.*
+* [`CreateApiKeysResponse500ResponseBody`](./src/models/createapikeysresponse500responsebody.ts): . Status code `500`. Applicable to 1 of 404 methods.*
 * [`ResponseValidationError`](./src/models/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>

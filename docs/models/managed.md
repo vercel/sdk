@@ -5,7 +5,7 @@ Managed connector metadata exposed without leaking the manager connector or inst
 ## Example Usage
 
 ```typescript
-import { Managed } from "@vercel/sdk/models/connectconnectorcreateresult.js";
+import { Managed } from "@vercel/sdk/models/connectconnector.js";
 
 let value: Managed = {};
 ```

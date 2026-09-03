@@ -5,7 +5,7 @@ User-token capabilities and known grants for the connector.
 ## Example Usage
 
 ```typescript
-import { UserTokens } from "@vercel/sdk/models/connectconnectorcreateresult.js";
+import { UserTokens } from "@vercel/sdk/models/connectconnector.js";
 
 let value: UserTokens = {
   crossInstallation: false,

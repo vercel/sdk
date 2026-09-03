@@ -3,12 +3,12 @@
 
 ## Supported Types
 
-### `models.TeamEnvironments1`
+### `models.TeamEnvironmentsDeploymentPolicy1`
 
 ```typescript
-const value: models.TeamEnvironments1 = {
+const value: models.TeamEnvironmentsDeploymentPolicy1 = {
   type: "system",
-  target: "production",
+  target: "preview",
 };
 ```
 

@@ -21,3 +21,4 @@ let value: GetDeploymentEvents3Info = {
 | `path`             | *string*           | :heavy_minus_sign: | N/A                |
 | `step`             | *string*           | :heavy_minus_sign: | N/A                |
 | `readyState`       | *string*           | :heavy_minus_sign: | N/A                |
+| `serviceName`      | *string*           | :heavy_minus_sign: | N/A                |

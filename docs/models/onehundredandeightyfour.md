@@ -8,7 +8,7 @@ The payload of the event, if requested.
 import { OneHundredAndEightyFour } from "@vercel/sdk/models/bandwidth.js";
 
 let value: OneHundredAndEightyFour = {
-  logDrainUrl: "https://guilty-teammate.net/",
+  logDrainUrl: null,
 };
 ```
 

@@ -5,25 +5,28 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndThirtyFive } from "@vercel/sdk/models/usereventpayload334budget.js";
+import { ThreeHundredAndThirtyFive } from "@vercel/sdk/models/twohundredandseventytwo.js";
 
 let value: ThreeHundredAndThirtyFive = {
   budget: {
-    type: "fixed",
-    fixedBudget: 1697.55,
-    previousSpend: [
-      1245.75,
-      8374.95,
-      5164.07,
-    ],
-    notifiedAt: [
-      7863.08,
-      6682.56,
-    ],
-    createdAt: 9716.78,
-    isActive: true,
-    teamId: "<id>",
-    id: "<id>",
+    budgetItem: {
+      type: "fixed",
+      fixedBudget: 8980.57,
+      previousSpend: [
+        1448.67,
+        885.26,
+        7607.12,
+      ],
+      notifiedAt: [
+        449.74,
+        9042.33,
+        4595.16,
+      ],
+      createdAt: 4704.67,
+      isActive: false,
+      teamId: "<id>",
+      id: "<id>",
+    },
   },
 };
 ```
@@ -32,4 +35,4 @@ let value: ThreeHundredAndThirtyFive = {
 
 | Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
 | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `budget`                                                                   | [models.UserEventPayload335Budget](../models/usereventpayload335budget.md) | :heavy_check_mark:                                                         | Represents a budget for tracking and notifying teams on their spending.    |
+| `budget`                                                                   | [models.UserEventPayload335Budget](../models/usereventpayload335budget.md) | :heavy_check_mark:                                                         | N/A                                                                        |

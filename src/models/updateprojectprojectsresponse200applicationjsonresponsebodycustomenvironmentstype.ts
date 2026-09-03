@@ -65,6 +65,7 @@ export const UpdateProjectFramework = {
   Fasthtml: "fasthtml",
   Django: "django",
   Ash: "ash",
+  FactoryEve: "factory-eve",
   Eve: "eve",
   Sanity: "sanity",
   SanityV2: "sanity-v2",

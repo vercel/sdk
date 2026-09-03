@@ -5,7 +5,7 @@ Principal that most recently mutated the connector. Same shape as {@link created
 ## Example Usage
 
 ```typescript
-import { UpdatedBy2 } from "@vercel/sdk/models/connectconnectorcreateresult.js";
+import { UpdatedBy2 } from "@vercel/sdk/models/connectconnector.js";
 
 let value: UpdatedBy2 = {
   type: "project",
@@ -20,4 +20,4 @@ let value: UpdatedBy2 = {
 | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
 | `type`                                           | *"project"*                                      | :heavy_check_mark:                               | Principal kind.                                  |
 | `id`                                             | *string*                                         | :heavy_check_mark:                               | Vercel project ID.                               |
-| `environment`                                    | *models.UpdatedByEnvironmentTarget*              | :heavy_check_mark:                               | Deployment environment of the project principal. |
+| `environment`                                    | *models.UpdatedByEnvironment*                    | :heavy_check_mark:                               | Deployment environment of the project principal. |

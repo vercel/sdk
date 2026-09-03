@@ -5,25 +5,27 @@ Initial trigger destination. Requires triggers to be enabled and a projectId her
 
 ## Supported Types
 
-### `models.DefaultDeployment`
+### `models.ConnectCreateConnectorRequestTriggerDestinationDefaultDeployment`
 
 ```typescript
-const value: models.DefaultDeployment = {};
+const value:
+  models.ConnectCreateConnectorRequestTriggerDestinationDefaultDeployment = {};
 ```
 
-### `models.Branch`
+### `models.ConnectCreateConnectorRequestTriggerDestinationBranch`
 
 ```typescript
-const value: models.Branch = {
+const value: models.ConnectCreateConnectorRequestTriggerDestinationBranch = {
   branch: "<value>",
 };
 ```
 
-### `models.CustomEnvironment`
+### `models.ConnectCreateConnectorRequestTriggerDestinationCustomEnvironment`
 
 ```typescript
-const value: models.CustomEnvironment = {
-  customEnvironmentId: "<id>",
-};
+const value:
+  models.ConnectCreateConnectorRequestTriggerDestinationCustomEnvironment = {
+    customEnvironmentId: "<id>",
+  };
 ```
 

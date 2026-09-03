@@ -8,7 +8,7 @@ A user-facing event type.
 import { ListEventType } from "@vercel/sdk/models/listeventtype.js";
 
 let value: ListEventType = {
-  name: "project-affected-projects-deployments-updated",
+  name: "project-add-redirect",
   description: "monocle jealous accurate vain obscure though",
   categories: [
     "deployment",

@@ -94,6 +94,7 @@ export type ListCheckRunsSourceChecksV21 = {
   subKind: "vercel-ci";
   origin: ListCheckRunsSourceChecksV2ResponseOrigin;
   invocationId: string;
+  invocationAttempt?: number | undefined;
   jobDefinitionId: string;
 };
 
@@ -362,6 +363,7 @@ export const ListCheckRunsSourceChecksV21$inboundSchema: z.ZodType<
   subKind: types.literal("vercel-ci"),
   origin: ListCheckRunsSourceChecksV2ResponseOrigin$inboundSchema,
   invocationId: types.string(),
+  invocationAttempt: types.optional(types.number()),
   jobDefinitionId: types.string(),
 });
 

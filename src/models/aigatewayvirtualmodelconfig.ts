@@ -12,7 +12,7 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 /**
  * Pin scope: `specific` (one provider region), `zone` (geo zone), or `global`.
  */
-export const AiGatewayVirtualModelConfigScope = {
+export const AiGatewayVirtualModelConfigInferenceRegionScope = {
   Global: "global",
   Specific: "specific",
   Zone: "zone",
@@ -20,8 +20,8 @@ export const AiGatewayVirtualModelConfigScope = {
 /**
  * Pin scope: `specific` (one provider region), `zone` (geo zone), or `global`.
  */
-export type AiGatewayVirtualModelConfigScope = ClosedEnum<
-  typeof AiGatewayVirtualModelConfigScope
+export type AiGatewayVirtualModelConfigInferenceRegionScope = ClosedEnum<
+  typeof AiGatewayVirtualModelConfigInferenceRegionScope
 >;
 
 /**
@@ -31,7 +31,7 @@ export type Providers = {
   /**
    * Pin scope: `specific` (one provider region), `zone` (geo zone), or `global`.
    */
-  scope?: AiGatewayVirtualModelConfigScope | undefined;
+  scope?: AiGatewayVirtualModelConfigInferenceRegionScope | undefined;
   /**
    * Geo zone (e.g. "us", "eu").
    */
@@ -45,7 +45,7 @@ export type Providers = {
 /**
  * Pin scope: `specific` (one provider region), `zone` (geo zone), or `global`.
  */
-export const Scope = {
+export const AiGatewayVirtualModelConfigScope = {
   Global: "global",
   Specific: "specific",
   Zone: "zone",
@@ -53,7 +53,9 @@ export const Scope = {
 /**
  * Pin scope: `specific` (one provider region), `zone` (geo zone), or `global`.
  */
-export type Scope = ClosedEnum<typeof Scope>;
+export type AiGatewayVirtualModelConfigScope = ClosedEnum<
+  typeof AiGatewayVirtualModelConfigScope
+>;
 
 /**
  * Region pinned on the VMC for system-credential routing (alias/router only).
@@ -66,7 +68,7 @@ export type InferenceRegion = {
   /**
    * Pin scope: `specific` (one provider region), `zone` (geo zone), or `global`.
    */
-  scope?: Scope | undefined;
+  scope?: AiGatewayVirtualModelConfigScope | undefined;
   /**
    * Geo zone (e.g. "us", "eu").
    */
@@ -300,9 +302,9 @@ export type AiGatewayVirtualModelConfig = {
 };
 
 /** @internal */
-export const AiGatewayVirtualModelConfigScope$inboundSchema: z.ZodNativeEnum<
-  typeof AiGatewayVirtualModelConfigScope
-> = z.nativeEnum(AiGatewayVirtualModelConfigScope);
+export const AiGatewayVirtualModelConfigInferenceRegionScope$inboundSchema:
+  z.ZodNativeEnum<typeof AiGatewayVirtualModelConfigInferenceRegionScope> = z
+    .nativeEnum(AiGatewayVirtualModelConfigInferenceRegionScope);
 
 /** @internal */
 export const Providers$inboundSchema: z.ZodType<
@@ -310,7 +312,9 @@ export const Providers$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  scope: types.optional(AiGatewayVirtualModelConfigScope$inboundSchema),
+  scope: types.optional(
+    AiGatewayVirtualModelConfigInferenceRegionScope$inboundSchema,
+  ),
   geoRegion: types.optional(types.string()),
   providerRegion: types.optional(types.string()),
 });
@@ -326,9 +330,9 @@ export function providersFromJSON(
 }
 
 /** @internal */
-export const Scope$inboundSchema: z.ZodNativeEnum<typeof Scope> = z.nativeEnum(
-  Scope,
-);
+export const AiGatewayVirtualModelConfigScope$inboundSchema: z.ZodNativeEnum<
+  typeof AiGatewayVirtualModelConfigScope
+> = z.nativeEnum(AiGatewayVirtualModelConfigScope);
 
 /** @internal */
 export const InferenceRegion$inboundSchema: z.ZodType<
@@ -339,7 +343,7 @@ export const InferenceRegion$inboundSchema: z.ZodType<
   providers: types.optional(
     z.record(types.nullable(z.lazy(() => Providers$inboundSchema))),
   ),
-  scope: types.optional(Scope$inboundSchema),
+  scope: types.optional(AiGatewayVirtualModelConfigScope$inboundSchema),
   geoRegion: types.optional(types.string()),
   providerRegion: types.optional(types.string()),
 });

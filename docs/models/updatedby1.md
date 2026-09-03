@@ -5,7 +5,7 @@ Principal that most recently mutated the connector. Same shape as {@link created
 ## Example Usage
 
 ```typescript
-import { UpdatedBy1 } from "@vercel/sdk/models/connectconnectorcreateresult.js";
+import { UpdatedBy1 } from "@vercel/sdk/models/connectconnector.js";
 
 let value: UpdatedBy1 = {
   type: "user",

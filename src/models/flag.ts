@@ -248,7 +248,7 @@ export type Rules = {
   conditions: Array<Conditions>;
 };
 
-export type Environments = {
+export type FlagEnvironments = {
   reuse?: Reuse | undefined;
   targets?:
     | { [k: string]: { [k: string]: { [k: string]: Array<Targets> } } }
@@ -292,7 +292,7 @@ export type Flag = {
   description?: string | undefined;
   variants: Array<Variants>;
   id: string;
-  environments: { [k: string]: Environments };
+  environments: { [k: string]: FlagEnvironments };
   kind: Kind;
   revision: number;
   seed: number;
@@ -992,8 +992,8 @@ export function rulesFromJSON(
 }
 
 /** @internal */
-export const Environments$inboundSchema: z.ZodType<
-  Environments,
+export const FlagEnvironments$inboundSchema: z.ZodType<
+  FlagEnvironments,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1013,13 +1013,13 @@ export const Environments$inboundSchema: z.ZodType<
   rules: z.array(z.lazy(() => Rules$inboundSchema)),
 });
 
-export function environmentsFromJSON(
+export function flagEnvironmentsFromJSON(
   jsonString: string,
-): SafeParseResult<Environments, SDKValidationError> {
+): SafeParseResult<FlagEnvironments, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Environments$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Environments' from JSON`,
+    (x) => FlagEnvironments$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FlagEnvironments' from JSON`,
   );
 }
 
@@ -1079,7 +1079,7 @@ export const Flag$inboundSchema: z.ZodType<Flag, z.ZodTypeDef, unknown> = z
     description: types.optional(types.string()),
     variants: z.array(z.lazy(() => Variants$inboundSchema)),
     id: types.string(),
-    environments: z.record(z.lazy(() => Environments$inboundSchema)),
+    environments: z.record(z.lazy(() => FlagEnvironments$inboundSchema)),
     kind: Kind$inboundSchema,
     revision: types.number(),
     seed: types.number(),

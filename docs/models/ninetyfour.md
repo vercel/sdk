@@ -5,22 +5,25 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { NinetyFour } from "@vercel/sdk/models/piiredaction.js";
+import { NinetyFour } from "@vercel/sdk/models/ceilingmode.js";
 
-let value: NinetyFour = {
-  project: {
-    id: "<id>",
-    name: "<value>",
-  },
-  purchasedAmount: 6227.54,
-  prevPurchasedAmount: 6134.2,
-};
+let value: NinetyFour = {};
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `project`                                                                  | [models.UserEventPayload94Project](../models/usereventpayload94project.md) | :heavy_check_mark:                                                         | N/A                                                                        |
-| `purchasedAmount`                                                          | *number*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `prevPurchasedAmount`                                                      | *number*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `clientId`                                     | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `clientUid`                                    | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `clientName`                                   | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `projectId`                                    | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `installationId`                               | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `subjectType`                                  | [models.SubjectType](../models/subjecttype.md) | :heavy_minus_sign:                             | N/A                                            |
+| `fields`                                       | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
+| `environments`                                 | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
+| `triggerDestinationCount`                      | *number*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `tokenCount`                                   | *number*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `acceptedTokenCount`                           | *number*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `importedTokenCount`                           | *number*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `tokensDeleted`                                | *number*                                       | :heavy_minus_sign:                             | N/A                                            |

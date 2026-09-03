@@ -121,6 +121,7 @@ export const CreateProjectFramework = {
   Fasthtml: "fasthtml",
   Django: "django",
   Ash: "ash",
+  FactoryEve: "factory-eve",
   Eve: "eve",
   Sanity: "sanity",
   SanityV2: "sanity-v2",
@@ -1231,7 +1232,7 @@ export type CreateProjectDomains = {
 /**
  * Internal representation of a custom environment with all required properties
  */
-export type CustomEnvironments = {
+export type CreateProjectCustomEnvironments = {
   /**
    * Unique identifier for the custom environment (format: env_*)
    */
@@ -1290,6 +1291,7 @@ export const CreateProjectProjectsFramework = {
   Ember: "ember",
   Eve: "eve",
   Express: "express",
+  FactoryEve: "factory-eve",
   Fastapi: "fastapi",
   Fasthtml: "fasthtml",
   Fastify: "fastify",
@@ -1388,6 +1390,7 @@ export const CreateProjectProjectsResponseFramework = {
   Ember: "ember",
   Eve: "eve",
   Express: "express",
+  FactoryEve: "factory-eve",
   Fastapi: "fastapi",
   Fasthtml: "fasthtml",
   Fastify: "fastify",
@@ -3791,8 +3794,8 @@ export function createProjectDomainsFromJSON(
 }
 
 /** @internal */
-export const CustomEnvironments$inboundSchema: z.ZodType<
-  CustomEnvironments,
+export const CreateProjectCustomEnvironments$inboundSchema: z.ZodType<
+  CreateProjectCustomEnvironments,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -3811,13 +3814,13 @@ export const CustomEnvironments$inboundSchema: z.ZodType<
   updatedAt: types.number(),
 });
 
-export function customEnvironmentsFromJSON(
+export function createProjectCustomEnvironmentsFromJSON(
   jsonString: string,
-): SafeParseResult<CustomEnvironments, SDKValidationError> {
+): SafeParseResult<CreateProjectCustomEnvironments, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CustomEnvironments$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CustomEnvironments' from JSON`,
+    (x) => CreateProjectCustomEnvironments$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectCustomEnvironments' from JSON`,
   );
 }
 

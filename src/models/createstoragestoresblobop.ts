@@ -71,6 +71,7 @@ export const CreateStorageStoresBlobFramework = {
   Ember: "ember",
   Eve: "eve",
   Express: "express",
+  FactoryEve: "factory-eve",
   Fastapi: "fastapi",
   Fasthtml: "fasthtml",
   Fastify: "fastify",

@@ -5,17 +5,32 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFour } from "@vercel/sdk/models/ninetyeight.js";
+import { OneHundredAndFour } from "@vercel/sdk/models/onehundredandone.js";
 
 let value: OneHundredAndFour = {
-  url: "https://surprised-eyebrow.info",
+  job: {
+    headInfo: {
+      owner: "<value>",
+      ownerId: "<id>",
+      ref: "<value>",
+      repo: "<value>",
+      repoId: "<id>",
+      sha: "<value>",
+    },
+    installationId: "<id>",
+    owner: "<value>",
+    prId: 8284.36,
+    projectId: "<id>",
+    repo: "<value>",
+    repoId: "<id>",
+    type: "cursor-origin-now-comment",
+    provider: "cursor-origin",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `url`                                                                  | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
-| `oldTeam`                                                              | [models.UserEventPayloadOldTeam](../models/usereventpayloadoldteam.md) | :heavy_minus_sign:                                                     | N/A                                                                    |
-| `newTeam`                                                              | [models.UserEventPayloadNewTeam](../models/usereventpayloadnewteam.md) | :heavy_minus_sign:                                                     | N/A                                                                    |
+| Field               | Type                | Required            | Description         |
+| ------------------- | ------------------- | ------------------- | ------------------- |
+| `job`               | *models.PayloadJob* | :heavy_check_mark:  | N/A                 |

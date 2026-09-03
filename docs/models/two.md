@@ -5,7 +5,7 @@ Principal that originally created the connector — either a Vercel user (intera
 ## Example Usage
 
 ```typescript
-import { Two } from "@vercel/sdk/models/connectconnectorcreateresult.js";
+import { Two } from "@vercel/sdk/models/connectconnector.js";
 
 let value: Two = {
   type: "project",
@@ -20,4 +20,4 @@ let value: Two = {
 | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
 | `type`                                           | *"project"*                                      | :heavy_check_mark:                               | Principal kind.                                  |
 | `id`                                             | *string*                                         | :heavy_check_mark:                               | Vercel project ID.                               |
-| `environment`                                    | *models.CreatedByEnvironmentTarget*              | :heavy_check_mark:                               | Deployment environment of the project principal. |
+| `environment`                                    | *models.Environment*                             | :heavy_check_mark:                               | Deployment environment of the project principal. |

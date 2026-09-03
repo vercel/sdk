@@ -41,6 +41,7 @@ export const GetConfigurableLogDrainFramework = {
   Ember: "ember",
   Eve: "eve",
   Express: "express",
+  FactoryEve: "factory-eve",
   Fastapi: "fastapi",
   Fasthtml: "fasthtml",
   Fastify: "fastify",

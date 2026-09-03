@@ -5,7 +5,7 @@ Resource boundary, or `null` when the policy has none.
 ## Example Usage
 
 ```typescript
-import { UserEventPayload441Resources } from "@vercel/sdk/models/fourhundredandtwo.js";
+import { UserEventPayload441Resources } from "@vercel/sdk/models/fourhundredandthree.js";
 
 let value: UserEventPayload441Resources = {
   projectIds: [

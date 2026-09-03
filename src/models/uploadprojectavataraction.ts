@@ -428,6 +428,7 @@ export type UploadProjectAvatarPermissions = {
   previewDeploymentSuffix?: Array<ACLAction> | undefined;
   privateCloudAccount?: Array<ACLAction> | undefined;
   projectTransferIn?: Array<ACLAction> | undefined;
+  projectTransferRequest?: Array<ACLAction> | undefined;
   proTrialOnboarding?: Array<ACLAction> | undefined;
   rateLimit?: Array<ACLAction> | undefined;
   redis?: Array<ACLAction> | undefined;
@@ -2193,6 +2194,7 @@ export const UploadProjectAvatarPermissions$inboundSchema: z.ZodType<
   previewDeploymentSuffix: types.optional(z.array(ACLAction$inboundSchema)),
   privateCloudAccount: types.optional(z.array(ACLAction$inboundSchema)),
   projectTransferIn: types.optional(z.array(ACLAction$inboundSchema)),
+  projectTransferRequest: types.optional(z.array(ACLAction$inboundSchema)),
   proTrialOnboarding: types.optional(z.array(ACLAction$inboundSchema)),
   rateLimit: types.optional(z.array(ACLAction$inboundSchema)),
   redis: types.optional(z.array(ACLAction$inboundSchema)),

@@ -33,7 +33,7 @@ export type CreatedByEnvironmentTarget = string | CreatedByEnvironment;
 /**
  * Principal that originally created the connector — either a Vercel user (interactive dashboard / CLI flow) or a Vercel deployment (OIDC-authenticated project, used by runtime auto-provisioning). See {@link ConnexPrincipal}. Optional: pre-existing rows from before this shape was introduced may carry no attribution at all.
  */
-export type Two = {
+export type CreatedBy2 = {
   /**
    * Principal kind.
    */
@@ -51,7 +51,7 @@ export type Two = {
 /**
  * Principal that originally created the connector — either a Vercel user (interactive dashboard / CLI flow) or a Vercel deployment (OIDC-authenticated project, used by runtime auto-provisioning). See {@link ConnexPrincipal}. Optional: pre-existing rows from before this shape was introduced may carry no attribution at all.
  */
-export type One = {
+export type CreatedBy1 = {
   /**
    * Principal kind.
    */
@@ -65,24 +65,28 @@ export type One = {
 /**
  * Principal that created the connector.
  */
-export type CreatedBy = One | Two;
+export type ConnectConnectorCreateResultCreatedBy = CreatedBy1 | CreatedBy2;
 
-export const UpdatedByEnvironment = {
+export const UpdatedByEnvironmentTargetUpdatedByEnvironment = {
   Development: "development",
   Preview: "preview",
   Production: "production",
 } as const;
-export type UpdatedByEnvironment = ClosedEnum<typeof UpdatedByEnvironment>;
+export type UpdatedByEnvironmentTargetUpdatedByEnvironment = ClosedEnum<
+  typeof UpdatedByEnvironmentTargetUpdatedByEnvironment
+>;
 
 /**
  * Deployment environment of the project principal.
  */
-export type UpdatedByEnvironmentTarget = string | UpdatedByEnvironment;
+export type UpdatedByEnvironmentTarget =
+  | string
+  | UpdatedByEnvironmentTargetUpdatedByEnvironment;
 
 /**
  * Principal that most recently mutated the connector. Same shape as {@link createdBy} but tracks the most recent updater, not the original creator. At create time the two fields point at the same principal; they diverge on the first subsequent update.
  */
-export type UpdatedBy2 = {
+export type ConnectConnectorCreateResultUpdatedBy2 = {
   /**
    * Principal kind.
    */
@@ -94,13 +98,13 @@ export type UpdatedBy2 = {
   /**
    * Deployment environment of the project principal.
    */
-  environment: string | UpdatedByEnvironment;
+  environment: string | UpdatedByEnvironmentTargetUpdatedByEnvironment;
 };
 
 /**
  * Principal that most recently mutated the connector. Same shape as {@link createdBy} but tracks the most recent updater, not the original creator. At create time the two fields point at the same principal; they diverge on the first subsequent update.
  */
-export type UpdatedBy1 = {
+export type ConnectConnectorCreateResultUpdatedBy1 = {
   /**
    * Principal kind.
    */
@@ -114,24 +118,28 @@ export type UpdatedBy1 = {
 /**
  * Principal that most recently updated the connector.
  */
-export type UpdatedBy = UpdatedBy1 | UpdatedBy2;
+export type ConnectConnectorCreateResultUpdatedBy =
+  | ConnectConnectorCreateResultUpdatedBy1
+  | ConnectConnectorCreateResultUpdatedBy2;
 
 /**
  * How the connector row was originally created. New create paths stamp this explicitly; older rows may omit it.
  */
-export const CreationMode = {
+export const ConnectConnectorCreateResultCreationMode = {
   Managed: "managed",
   Manual: "manual",
 } as const;
 /**
  * How the connector row was originally created. New create paths stamp this explicitly; older rows may omit it.
  */
-export type CreationMode = ClosedEnum<typeof CreationMode>;
+export type ConnectConnectorCreateResultCreationMode = ClosedEnum<
+  typeof ConnectConnectorCreateResultCreationMode
+>;
 
 /**
  * Managed connector metadata exposed without leaking the manager connector or installation identifiers.
  */
-export type Managed = {
+export type ConnectConnectorCreateResultManaged = {
   /**
    * Whether Vercel synchronizes provider-side configuration.
    */
@@ -168,7 +176,7 @@ export type ConnectConnectorCreateResultType = ClosedEnum<
 /**
  * App-token capabilities and known grants for the connector.
  */
-export type AppTokens = {
+export type ConnectConnectorCreateResultAppTokens = {
   /**
    * Whether one app token can be used across installations.
    */
@@ -198,7 +206,7 @@ export type AppTokens = {
 /**
  * User-token capabilities and known grants for the connector.
  */
-export type UserTokens = {
+export type ConnectConnectorCreateResultUserTokens = {
   /**
    * Whether one user token can be used across installations.
    */
@@ -224,7 +232,7 @@ export type UserTokens = {
 /**
  * Whether the connector icon can propagate to the provider.
  */
-export const SupportsIcon = {
+export const ConnectConnectorCreateResultSupportsIcon = {
   False: "false",
   Maybe: "maybe",
   True: "true",
@@ -232,7 +240,9 @@ export const SupportsIcon = {
 /**
  * Whether the connector icon can propagate to the provider.
  */
-export type SupportsIcon = ClosedEnum<typeof SupportsIcon>;
+export type ConnectConnectorCreateResultSupportsIcon = ClosedEnum<
+  typeof ConnectConnectorCreateResultSupportsIcon
+>;
 
 /**
  * Connector created by the request.
@@ -265,19 +275,22 @@ export type ConnectConnectorCreateResult = {
   /**
    * Principal that created the connector.
    */
-  createdBy?: One | Two | undefined;
+  createdBy?: CreatedBy1 | CreatedBy2 | undefined;
   /**
    * Principal that most recently updated the connector.
    */
-  updatedBy?: UpdatedBy1 | UpdatedBy2 | undefined;
+  updatedBy?:
+    | ConnectConnectorCreateResultUpdatedBy1
+    | ConnectConnectorCreateResultUpdatedBy2
+    | undefined;
   /**
    * How the connector row was originally created. New create paths stamp this explicitly; older rows may omit it.
    */
-  creationMode?: CreationMode | undefined;
+  creationMode?: ConnectConnectorCreateResultCreationMode | undefined;
   /**
    * Managed connector metadata exposed without leaking the manager connector or installation identifiers.
    */
-  managed?: Managed | undefined;
+  managed?: ConnectConnectorCreateResultManaged | undefined;
   /**
    * Connector implementation type.
    */
@@ -349,11 +362,11 @@ export type ConnectConnectorCreateResult = {
   /**
    * App-token capabilities and known grants for the connector.
    */
-  appTokens?: AppTokens | undefined;
+  appTokens?: ConnectConnectorCreateResultAppTokens | undefined;
   /**
    * User-token capabilities and known grants for the connector.
    */
-  userTokens?: UserTokens | undefined;
+  userTokens?: ConnectConnectorCreateResultUserTokens | undefined;
   /**
    * Whether the connector supports an installation flow.
    */
@@ -369,7 +382,7 @@ export type ConnectConnectorCreateResult = {
   /**
    * Whether the connector icon can propagate to the provider.
    */
-  supportsIcon: SupportsIcon;
+  supportsIcon: ConnectConnectorCreateResultSupportsIcon;
   /**
    * Incoming trigger configuration. Only present when enabled.
    */
@@ -407,71 +420,81 @@ export function createdByEnvironmentTargetFromJSON(
 }
 
 /** @internal */
-export const Two$inboundSchema: z.ZodType<Two, z.ZodTypeDef, unknown> = z
-  .object({
-    type: types.literal("project"),
-    id: types.string(),
-    environment: smartUnion([
-      types.string(),
-      CreatedByEnvironment$inboundSchema,
-    ]),
-  });
-
-export function twoFromJSON(
-  jsonString: string,
-): SafeParseResult<Two, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Two$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Two' from JSON`,
-  );
-}
-
-/** @internal */
-export const One$inboundSchema: z.ZodType<One, z.ZodTypeDef, unknown> = z
-  .object({
-    type: types.literal("user"),
-    id: types.string(),
-  });
-
-export function oneFromJSON(
-  jsonString: string,
-): SafeParseResult<One, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => One$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'One' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreatedBy$inboundSchema: z.ZodType<
-  CreatedBy,
+export const CreatedBy2$inboundSchema: z.ZodType<
+  CreatedBy2,
   z.ZodTypeDef,
   unknown
-> = z.union([z.lazy(() => One$inboundSchema), z.lazy(() => Two$inboundSchema)]);
+> = z.object({
+  type: types.literal("project"),
+  id: types.string(),
+  environment: smartUnion([types.string(), CreatedByEnvironment$inboundSchema]),
+});
 
-export function createdByFromJSON(
+export function createdBy2FromJSON(
   jsonString: string,
-): SafeParseResult<CreatedBy, SDKValidationError> {
+): SafeParseResult<CreatedBy2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreatedBy$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreatedBy' from JSON`,
+    (x) => CreatedBy2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreatedBy2' from JSON`,
   );
 }
 
 /** @internal */
-export const UpdatedByEnvironment$inboundSchema: z.ZodNativeEnum<
-  typeof UpdatedByEnvironment
-> = z.nativeEnum(UpdatedByEnvironment);
+export const CreatedBy1$inboundSchema: z.ZodType<
+  CreatedBy1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("user"),
+  id: types.string(),
+});
+
+export function createdBy1FromJSON(
+  jsonString: string,
+): SafeParseResult<CreatedBy1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreatedBy1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreatedBy1' from JSON`,
+  );
+}
+
+/** @internal */
+export const ConnectConnectorCreateResultCreatedBy$inboundSchema: z.ZodType<
+  ConnectConnectorCreateResultCreatedBy,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => CreatedBy1$inboundSchema),
+  z.lazy(() => CreatedBy2$inboundSchema),
+]);
+
+export function connectConnectorCreateResultCreatedByFromJSON(
+  jsonString: string,
+): SafeParseResult<ConnectConnectorCreateResultCreatedBy, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ConnectConnectorCreateResultCreatedBy$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ConnectConnectorCreateResultCreatedBy' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdatedByEnvironmentTargetUpdatedByEnvironment$inboundSchema:
+  z.ZodNativeEnum<typeof UpdatedByEnvironmentTargetUpdatedByEnvironment> = z
+    .nativeEnum(UpdatedByEnvironmentTargetUpdatedByEnvironment);
 
 /** @internal */
 export const UpdatedByEnvironmentTarget$inboundSchema: z.ZodType<
   UpdatedByEnvironmentTarget,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.string(), UpdatedByEnvironment$inboundSchema]);
+> = smartUnion([
+  types.string(),
+  UpdatedByEnvironmentTargetUpdatedByEnvironment$inboundSchema,
+]);
 
 export function updatedByEnvironmentTargetFromJSON(
   jsonString: string,
@@ -484,29 +507,33 @@ export function updatedByEnvironmentTargetFromJSON(
 }
 
 /** @internal */
-export const UpdatedBy2$inboundSchema: z.ZodType<
-  UpdatedBy2,
+export const ConnectConnectorCreateResultUpdatedBy2$inboundSchema: z.ZodType<
+  ConnectConnectorCreateResultUpdatedBy2,
   z.ZodTypeDef,
   unknown
 > = z.object({
   type: types.literal("project"),
   id: types.string(),
-  environment: smartUnion([types.string(), UpdatedByEnvironment$inboundSchema]),
+  environment: smartUnion([
+    types.string(),
+    UpdatedByEnvironmentTargetUpdatedByEnvironment$inboundSchema,
+  ]),
 });
 
-export function updatedBy2FromJSON(
+export function connectConnectorCreateResultUpdatedBy2FromJSON(
   jsonString: string,
-): SafeParseResult<UpdatedBy2, SDKValidationError> {
+): SafeParseResult<ConnectConnectorCreateResultUpdatedBy2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UpdatedBy2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdatedBy2' from JSON`,
+    (x) =>
+      ConnectConnectorCreateResultUpdatedBy2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ConnectConnectorCreateResultUpdatedBy2' from JSON`,
   );
 }
 
 /** @internal */
-export const UpdatedBy1$inboundSchema: z.ZodType<
-  UpdatedBy1,
+export const ConnectConnectorCreateResultUpdatedBy1$inboundSchema: z.ZodType<
+  ConnectConnectorCreateResultUpdatedBy1,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -514,53 +541,60 @@ export const UpdatedBy1$inboundSchema: z.ZodType<
   id: types.string(),
 });
 
-export function updatedBy1FromJSON(
+export function connectConnectorCreateResultUpdatedBy1FromJSON(
   jsonString: string,
-): SafeParseResult<UpdatedBy1, SDKValidationError> {
+): SafeParseResult<ConnectConnectorCreateResultUpdatedBy1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UpdatedBy1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdatedBy1' from JSON`,
+    (x) =>
+      ConnectConnectorCreateResultUpdatedBy1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ConnectConnectorCreateResultUpdatedBy1' from JSON`,
   );
 }
 
 /** @internal */
-export const UpdatedBy$inboundSchema: z.ZodType<
-  UpdatedBy,
+export const ConnectConnectorCreateResultUpdatedBy$inboundSchema: z.ZodType<
+  ConnectConnectorCreateResultUpdatedBy,
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => UpdatedBy1$inboundSchema),
-  z.lazy(() => UpdatedBy2$inboundSchema),
+  z.lazy(() => ConnectConnectorCreateResultUpdatedBy1$inboundSchema),
+  z.lazy(() => ConnectConnectorCreateResultUpdatedBy2$inboundSchema),
 ]);
 
-export function updatedByFromJSON(
+export function connectConnectorCreateResultUpdatedByFromJSON(
   jsonString: string,
-): SafeParseResult<UpdatedBy, SDKValidationError> {
+): SafeParseResult<ConnectConnectorCreateResultUpdatedBy, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UpdatedBy$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdatedBy' from JSON`,
+    (x) =>
+      ConnectConnectorCreateResultUpdatedBy$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ConnectConnectorCreateResultUpdatedBy' from JSON`,
   );
 }
 
 /** @internal */
-export const CreationMode$inboundSchema: z.ZodNativeEnum<typeof CreationMode> =
-  z.nativeEnum(CreationMode);
+export const ConnectConnectorCreateResultCreationMode$inboundSchema:
+  z.ZodNativeEnum<typeof ConnectConnectorCreateResultCreationMode> = z
+    .nativeEnum(ConnectConnectorCreateResultCreationMode);
 
 /** @internal */
-export const Managed$inboundSchema: z.ZodType<Managed, z.ZodTypeDef, unknown> =
-  z.object({
-    sync: types.optional(types.boolean()),
-  });
+export const ConnectConnectorCreateResultManaged$inboundSchema: z.ZodType<
+  ConnectConnectorCreateResultManaged,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  sync: types.optional(types.boolean()),
+});
 
-export function managedFromJSON(
+export function connectConnectorCreateResultManagedFromJSON(
   jsonString: string,
-): SafeParseResult<Managed, SDKValidationError> {
+): SafeParseResult<ConnectConnectorCreateResultManaged, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Managed$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Managed' from JSON`,
+    (x) =>
+      ConnectConnectorCreateResultManaged$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ConnectConnectorCreateResultManaged' from JSON`,
   );
 }
 
@@ -570,8 +604,8 @@ export const ConnectConnectorCreateResultType$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(ConnectConnectorCreateResultType);
 
 /** @internal */
-export const AppTokens$inboundSchema: z.ZodType<
-  AppTokens,
+export const ConnectConnectorCreateResultAppTokens$inboundSchema: z.ZodType<
+  ConnectConnectorCreateResultAppTokens,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -583,19 +617,20 @@ export const AppTokens$inboundSchema: z.ZodType<
   permissionsUrl: types.optional(types.string()),
 });
 
-export function appTokensFromJSON(
+export function connectConnectorCreateResultAppTokensFromJSON(
   jsonString: string,
-): SafeParseResult<AppTokens, SDKValidationError> {
+): SafeParseResult<ConnectConnectorCreateResultAppTokens, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => AppTokens$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AppTokens' from JSON`,
+    (x) =>
+      ConnectConnectorCreateResultAppTokens$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ConnectConnectorCreateResultAppTokens' from JSON`,
   );
 }
 
 /** @internal */
-export const UserTokens$inboundSchema: z.ZodType<
-  UserTokens,
+export const ConnectConnectorCreateResultUserTokens$inboundSchema: z.ZodType<
+  ConnectConnectorCreateResultUserTokens,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -606,19 +641,21 @@ export const UserTokens$inboundSchema: z.ZodType<
   manualCredentialInput: types.optional(types.boolean()),
 });
 
-export function userTokensFromJSON(
+export function connectConnectorCreateResultUserTokensFromJSON(
   jsonString: string,
-): SafeParseResult<UserTokens, SDKValidationError> {
+): SafeParseResult<ConnectConnectorCreateResultUserTokens, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UserTokens$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserTokens' from JSON`,
+    (x) =>
+      ConnectConnectorCreateResultUserTokens$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ConnectConnectorCreateResultUserTokens' from JSON`,
   );
 }
 
 /** @internal */
-export const SupportsIcon$inboundSchema: z.ZodNativeEnum<typeof SupportsIcon> =
-  z.nativeEnum(SupportsIcon);
+export const ConnectConnectorCreateResultSupportsIcon$inboundSchema:
+  z.ZodNativeEnum<typeof ConnectConnectorCreateResultSupportsIcon> = z
+    .nativeEnum(ConnectConnectorCreateResultSupportsIcon);
 
 /** @internal */
 export const ConnectConnectorCreateResult$inboundSchema: z.ZodType<
@@ -633,16 +670,23 @@ export const ConnectConnectorCreateResult$inboundSchema: z.ZodType<
   updatedAt: types.number(),
   reinstallAt: types.optional(types.number()),
   createdBy: types.optional(
-    z.union([z.lazy(() => One$inboundSchema), z.lazy(() => Two$inboundSchema)]),
+    z.union([
+      z.lazy(() => CreatedBy1$inboundSchema),
+      z.lazy(() => CreatedBy2$inboundSchema),
+    ]),
   ),
   updatedBy: types.optional(
     z.union([
-      z.lazy(() => UpdatedBy1$inboundSchema),
-      z.lazy(() => UpdatedBy2$inboundSchema),
+      z.lazy(() => ConnectConnectorCreateResultUpdatedBy1$inboundSchema),
+      z.lazy(() => ConnectConnectorCreateResultUpdatedBy2$inboundSchema),
     ]),
   ),
-  creationMode: types.optional(CreationMode$inboundSchema),
-  managed: types.optional(z.lazy(() => Managed$inboundSchema)),
+  creationMode: types.optional(
+    ConnectConnectorCreateResultCreationMode$inboundSchema,
+  ),
+  managed: types.optional(
+    z.lazy(() => ConnectConnectorCreateResultManaged$inboundSchema),
+  ),
   type: ConnectConnectorCreateResultType$inboundSchema,
   service: types.string(),
   connectionMethod: types.optional(types.string()),
@@ -660,12 +704,16 @@ export const ConnectConnectorCreateResult$inboundSchema: z.ZodType<
   backgroundColor: types.optional(types.string()),
   accentColor: types.optional(types.string()),
   supportedSubjectTypes: z.array(types.string()),
-  appTokens: types.optional(z.lazy(() => AppTokens$inboundSchema)),
-  userTokens: types.optional(z.lazy(() => UserTokens$inboundSchema)),
+  appTokens: types.optional(
+    z.lazy(() => ConnectConnectorCreateResultAppTokens$inboundSchema),
+  ),
+  userTokens: types.optional(
+    z.lazy(() => ConnectConnectorCreateResultUserTokens$inboundSchema),
+  ),
   supportsInstallation: types.boolean(),
   supportsRevocation: types.boolean(),
   supportsTriggers: types.boolean(),
-  supportsIcon: SupportsIcon$inboundSchema,
+  supportsIcon: ConnectConnectorCreateResultSupportsIcon$inboundSchema,
   triggers: types.optional(ConnectTriggerConfiguration$inboundSchema),
   events: types.optional(z.array(types.string())),
   triggerDestinations: types.optional(

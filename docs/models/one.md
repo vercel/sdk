@@ -5,7 +5,7 @@ Principal that originally created the connector — either a Vercel user (intera
 ## Example Usage
 
 ```typescript
-import { One } from "@vercel/sdk/models/connectconnectorcreateresult.js";
+import { One } from "@vercel/sdk/models/connectconnector.js";
 
 let value: One = {
   type: "user",

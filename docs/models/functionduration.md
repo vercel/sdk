@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { FunctionDuration } from "@vercel/sdk/models/onehundredandfortyseven.js";
+import { FunctionDuration } from "@vercel/sdk/models/payloadpreviousrule.js";
 
 let value: FunctionDuration = {
   currentThreshold: 2327.59,

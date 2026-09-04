@@ -13,6 +13,10 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
  */
 export type Drive = {
   /**
+   * The unique drive ID.
+   */
+  id: string;
+  /**
    * The unique drive name within the project.
    */
   name: string;
@@ -49,6 +53,7 @@ export type Drive = {
 /** @internal */
 export const Drive$inboundSchema: z.ZodType<Drive, z.ZodTypeDef, unknown> = z
   .object({
+    id: types.string(),
     name: types.string(),
     projectId: types.string(),
     maxSizeBytes: types.number(),

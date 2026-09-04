@@ -8,12 +8,12 @@ The payload of the event, if requested.
 import { TwoHundredAndSixtyEight } from "@vercel/sdk/models/siftroute.js";
 
 let value: TwoHundredAndSixtyEight = {
-  disableRepositoryDispatchEvents: false,
+  requireVerifiedCommits: false,
 };
 ```
 
 ## Fields
 
-| Field                             | Type                              | Required                          | Description                       |
-| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
-| `disableRepositoryDispatchEvents` | *boolean*                         | :heavy_check_mark:                | N/A                               |
+| Field                    | Type                     | Required                 | Description              |
+| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
+| `requireVerifiedCommits` | *boolean*                | :heavy_check_mark:       | N/A                      |

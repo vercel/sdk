@@ -5,19 +5,16 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndSixteen } from "@vercel/sdk/models/fourhundredandthree.js";
+import { FourHundredAndSixteen } from "@vercel/sdk/models/fourhundredandfour.js";
 
 let value: FourHundredAndSixteen = {
-  provider: "google",
-  providerSubjectId: "<id>",
-  outcome: "linking-required",
-  decision: {
-    authoritative: true,
-    basis: "gmail",
-    emailDomain: "<value>",
-    emailVerified: false,
-    hostedDomainMatch: false,
-    mxOutcome: "lookup-error",
+  previous: {
+    enabled: false,
+    totpVerified: true,
+  },
+  next: {
+    enabled: true,
+    totpVerified: false,
   },
 };
 ```
@@ -26,7 +23,5 @@ let value: FourHundredAndSixteen = {
 
 | Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
 | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `provider`                                                                     | [models.UserEventPayload416Provider](../models/usereventpayload416provider.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `providerSubjectId`                                                            | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `outcome`                                                                      | [models.PayloadOutcome](../models/payloadoutcome.md)                           | :heavy_check_mark:                                                             | N/A                                                                            |
-| `decision`                                                                     | [models.PayloadDecision](../models/payloaddecision.md)                         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload416Previous](../models/usereventpayload416previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `next`                                                                         | [models.UserEventPayload416Next](../models/usereventpayload416next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |

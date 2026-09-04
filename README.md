@@ -177,6 +177,7 @@ run();
 * [createObservabilityQuery](docs/sdks/vercel/README.md#createobservabilityquery)
 * [getObservabilitySchema](docs/sdks/vercel/README.md#getobservabilityschema)
 * [getObservabilitySchemaByMetricId](docs/sdks/vercel/README.md#getobservabilityschemabymetricid)
+* [getSandboxes](docs/sdks/vercel/README.md#getsandboxes)
 * [createSpeedInsightsToggle](docs/sdks/vercel/README.md#createspeedinsightstoggle)
 * [createWebInsightsToggle](docs/sdks/vercel/README.md#createwebinsightstoggle)
 
@@ -583,7 +584,6 @@ run();
 
 ### [Sandboxes](docs/sdks/sandboxes/README.md)
 
-* [listSandboxes](docs/sdks/sandboxes/README.md#listsandboxes) - List sandboxes
 * [listDrives](docs/sdks/sandboxes/README.md#listdrives) - List drives
 * [getOrCreateDrive](docs/sdks/sandboxes/README.md#getorcreatedrive) - Get or create a drive
 * [deleteDrive](docs/sdks/sandboxes/README.md#deletedrive) - Delete a drive
@@ -881,6 +881,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`getDomainsRecordsByRecordId`](docs/sdks/vercel/README.md#getdomainsrecordsbyrecordid)
 - [`getObservabilitySchema`](docs/sdks/vercel/README.md#getobservabilityschema)
 - [`getObservabilitySchemaByMetricId`](docs/sdks/vercel/README.md#getobservabilityschemabymetricid)
+- [`getSandboxes`](docs/sdks/vercel/README.md#getsandboxes)
 - [`globalConfigCreateEdgeConfig`](docs/sdks/globalconfig/README.md#createedgeconfig) - Create a Global Config
 - [`globalConfigCreateEdgeConfigToken`](docs/sdks/globalconfig/README.md#createedgeconfigtoken) - Create a Global Config token
 - [`globalConfigDeleteEdgeConfig`](docs/sdks/globalconfig/README.md#deleteedgeconfig) - Delete a Global Config
@@ -1039,7 +1040,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`sandboxesGetSessionSnapshot`](docs/sdks/sandboxes/README.md#getsessionsnapshot) - Get a snapshot
 - [`sandboxesKillSessionCommand`](docs/sdks/sandboxes/README.md#killsessioncommand) - Kill a command
 - [`sandboxesListDrives`](docs/sdks/sandboxes/README.md#listdrives) - List drives
-- [`sandboxesListSandboxes`](docs/sdks/sandboxes/README.md#listsandboxes) - List sandboxes
 - [`sandboxesListSessionCommands`](docs/sdks/sandboxes/README.md#listsessioncommands) - List commands
 - [`sandboxesListSessions`](docs/sdks/sandboxes/README.md#listsessions) - List sessions
 - [`sandboxesListSessionSnapshots`](docs/sdks/sandboxes/README.md#listsessionsnapshots) - List snapshots

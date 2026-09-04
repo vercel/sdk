@@ -5,7 +5,7 @@ Sort direction. Defaults to desc.
 ## Example Usage
 
 ```typescript
-import { QueryParamSortOrder } from "@vercel/sdk/models/listsandboxesop.js";
+import { QueryParamSortOrder } from "@vercel/sdk/models/getsandboxesop.js";
 
 let value: QueryParamSortOrder = "desc";
 ```

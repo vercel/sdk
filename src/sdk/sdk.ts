@@ -9,6 +9,7 @@ import { createWebInsightsToggle } from "../funcs/createWebInsightsToggle.js";
 import { getDomainsRecordsByRecordId } from "../funcs/getDomainsRecordsByRecordId.js";
 import { getObservabilitySchema } from "../funcs/getObservabilitySchema.js";
 import { getObservabilitySchemaByMetricId } from "../funcs/getObservabilitySchemaByMetricId.js";
+import { getSandboxes } from "../funcs/getSandboxes.js";
 import { replaceDomainsByDomainRecords } from "../funcs/replaceDomainsByDomainRecords.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import {
@@ -36,6 +37,10 @@ import {
   ResponseBody,
 } from "../models/getobservabilityschemabymetricidop.js";
 import { GetObservabilitySchemaResponseBody } from "../models/getobservabilityschemaop.js";
+import {
+  GetSandboxesRequest,
+  GetSandboxesResponseBody,
+} from "../models/getsandboxesop.js";
 import {
   ReplaceDomainsByDomainRecordsRequest,
   ReplaceDomainsByDomainRecordsResponseBody,
@@ -353,6 +358,17 @@ export class Vercel extends ClientSDK {
     options?: RequestOptions,
   ): Promise<Array<ResponseBody>> {
     return unwrapAsync(getObservabilitySchemaByMetricId(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  async getSandboxes(
+    request: GetSandboxesRequest,
+    options?: RequestOptions,
+  ): Promise<GetSandboxesResponseBody> {
+    return unwrapAsync(getSandboxes(
       this,
       request,
       options,

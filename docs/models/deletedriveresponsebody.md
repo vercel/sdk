@@ -7,6 +7,7 @@ import { DeleteDriveResponseBody } from "@vercel/sdk/models/deletedriveop.js";
 
 let value: DeleteDriveResponseBody = {
   drive: {
+    id: "drive_abc123",
     name: "workspace",
     projectId: "prj_abc123",
     maxSizeBytes: 107374182400,

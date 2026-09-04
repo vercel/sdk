@@ -8,6 +8,7 @@ This object contains information related to a Vercel Sandbox Drive.
 import { Drive } from "@vercel/sdk/models/drive.js";
 
 let value: Drive = {
+  id: "drive_abc123",
   name: "workspace",
   projectId: "prj_abc123",
   maxSizeBytes: 107374182400,
@@ -23,6 +24,7 @@ let value: Drive = {
 
 | Field                                                                 | Type                                                                  | Required                                                              | Description                                                           | Example                                                               |
 | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `id`                                                                  | *string*                                                              | :heavy_check_mark:                                                    | The unique drive ID.                                                  | drive_abc123                                                          |
 | `name`                                                                | *string*                                                              | :heavy_check_mark:                                                    | The unique drive name within the project.                             | workspace                                                             |
 | `projectId`                                                           | *string*                                                              | :heavy_check_mark:                                                    | The project that owns the drive.                                      | prj_abc123                                                            |
 | `maxSizeBytes`                                                        | *number*                                                              | :heavy_check_mark:                                                    | The maximum drive size in bytes.                                      | 107374182400                                                          |

@@ -1,0 +1,24 @@
+# GetSandboxesRequest
+
+## Example Usage
+
+```typescript
+import { GetSandboxesRequest } from "@vercel/sdk/models/getsandboxesop.js";
+
+let value: GetSandboxesRequest = {
+  project: "prj_abc123",
+};
+```
+
+## Fields
+
+| Field                                                                                       | Type                                                                                        | Required                                                                                    | Description                                                                                 | Example                                                                                     |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `project`                                                                                   | *string*                                                                                    | :heavy_minus_sign:                                                                          | The unique identifier or name of the project to list named sandboxes for.                   | prj_abc123                                                                                  |
+| `limit`                                                                                     | *number*                                                                                    | :heavy_minus_sign:                                                                          | Maximum number of named sandboxes to return in the response. Used for pagination.           | 20                                                                                          |
+| `sortBy`                                                                                    | [models.QueryParamSortBy](../models/queryparamsortby.md)                                    | :heavy_minus_sign:                                                                          | Field to sort by.                                                                           |                                                                                             |
+| `namePrefix`                                                                                | *string*                                                                                    | :heavy_minus_sign:                                                                          | Filter named sandboxes whose name starts with this prefix. Only valid when sortBy=name.     |                                                                                             |
+| `cursor`                                                                                    | *string*                                                                                    | :heavy_minus_sign:                                                                          | Opaque pagination cursor from a previous response.                                          |                                                                                             |
+| `sortOrder`                                                                                 | [models.QueryParamSortOrder](../models/queryparamsortorder.md)                              | :heavy_minus_sign:                                                                          | Sort direction. Defaults to desc.                                                           |                                                                                             |
+| `status`                                                                                    | [models.QueryParamStatus](../models/queryparamstatus.md)                                    | :heavy_minus_sign:                                                                          | Filter named sandboxes by status. Only valid when sortBy is createdAt.                      |                                                                                             |
+| `tags`                                                                                      | *models.QueryParamTags*                                                                     | :heavy_minus_sign:                                                                          | Filter sandboxes by tag. Format: \"key:value\". Only one tag filter is supported at a time. |                                                                                             |

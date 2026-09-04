@@ -213,6 +213,10 @@ export type AuthUserSecurity = {
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
+  rateLimit?: number | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
   customRules?: number | undefined;
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
@@ -222,10 +226,6 @@ export type AuthUserSecurity = {
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
   ipBypass?: number | undefined;
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
-  rateLimit?: number | undefined;
 };
 
 /**
@@ -737,10 +737,10 @@ export const AuthUserSecurity$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  rateLimit: types.optional(types.number()),
   customRules: types.optional(types.number()),
   ipBlocks: types.optional(types.number()),
   ipBypass: types.optional(types.number()),
-  rateLimit: types.optional(types.number()),
 });
 
 export function authUserSecurityFromJSON(

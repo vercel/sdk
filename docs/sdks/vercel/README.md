@@ -12,6 +12,7 @@ Vercel REST API & SDK: The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel
 * [createObservabilityQuery](#createobservabilityquery)
 * [getObservabilitySchema](#getobservabilityschema)
 * [getObservabilitySchemaByMetricId](#getobservabilityschemabymetricid)
+* [getSandboxes](#getsandboxes)
 * [createSpeedInsightsToggle](#createspeedinsightstoggle)
 * [createWebInsightsToggle](#createwebinsightstoggle)
 
@@ -409,6 +410,73 @@ run();
 ### Response
 
 **Promise\<[models.ResponseBody[]](../../models/.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
+
+## getSandboxes
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="getSandboxes" method="get" path="/sandboxes" -->
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel();
+
+async function run() {
+  const result = await vercel.getSandboxes({
+    project: "prj_abc123",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import { getSandboxes } from "@vercel/sdk/funcs/getSandboxes.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore();
+
+async function run() {
+  const res = await getSandboxes(vercel, {
+    project: "prj_abc123",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("getSandboxes failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.GetSandboxesRequest](../../models/getsandboxesrequest.md)                                                                                                              | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.GetSandboxesResponseBody](../../models/getsandboxesresponsebody.md)\>**
 
 ### Errors
 

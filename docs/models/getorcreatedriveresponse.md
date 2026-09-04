@@ -8,6 +8,7 @@
 ```typescript
 const value: models.GetOrCreateDriveResponseBody = {
   drive: {
+    id: "drive_abc123",
     name: "workspace",
     projectId: "prj_abc123",
     maxSizeBytes: 107374182400,
@@ -25,6 +26,7 @@ const value: models.GetOrCreateDriveResponseBody = {
 ```typescript
 const value: models.GetOrCreateDriveSandboxesResponseBody = {
   drive: {
+    id: "drive_abc123",
     name: "workspace",
     projectId: "prj_abc123",
     maxSizeBytes: 107374182400,

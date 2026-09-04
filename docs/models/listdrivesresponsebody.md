@@ -8,6 +8,7 @@ import { ListDrivesResponseBody } from "@vercel/sdk/models/listdrivesop.js";
 let value: ListDrivesResponseBody = {
   drives: [
     {
+      id: "drive_abc123",
       name: "workspace",
       projectId: "prj_abc123",
       maxSizeBytes: 107374182400,

@@ -10,28 +10,6 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
-  CreateDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody2Services2RoutesType,
-  CreateDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody2Services2RoutesType$inboundSchema,
-  CreateDeploymentRoutesDeployments2,
-  CreateDeploymentRoutesDeployments2$inboundSchema,
-  CreateDeploymentRoutesDeploymentsHas,
-  CreateDeploymentRoutesDeploymentsHas$inboundSchema,
-  CreateDeploymentServicesDeploymentsBuilder,
-  CreateDeploymentServicesDeploymentsBuilder$inboundSchema,
-  CreateDeploymentServicesFunctions,
-  CreateDeploymentServicesFunctions$inboundSchema,
-  CreateDeploymentServicesHeaders,
-  CreateDeploymentServicesHeaders$inboundSchema,
-  CreateDeploymentServicesRedirects,
-  CreateDeploymentServicesRedirects$inboundSchema,
-  ResponseBodyRoutes,
-  ResponseBodyRoutes$inboundSchema,
-  ServicesBindings,
-  ServicesBindings$inboundSchema,
-  ServicesRewrites,
-  ServicesRewrites$inboundSchema,
-} from "./createdeploymentmissingdeploymentsresponse200applicationjsonresponsebody2services2routestype.js";
-import {
   CreateDeploymentResponseBodyChecksConclusion,
   CreateDeploymentResponseBodyChecksConclusion$inboundSchema,
   CreateDeploymentResponseBodyChecksState,
@@ -94,9 +72,40 @@ import {
   ResponseBodyPlan$inboundSchema,
   ResponseBodyResourceConfig,
   ResponseBodyResourceConfig$inboundSchema,
-} from "./createdeploymentvaluedeploymentseq.js";
+} from "./createdeploymenthasdeploymentstype.js";
+import {
+  CreateDeploymentRoutesDeployments2,
+  CreateDeploymentRoutesDeployments2$inboundSchema,
+  CreateDeploymentRoutesDeploymentsHas,
+  CreateDeploymentRoutesDeploymentsHas$inboundSchema,
+  CreateDeploymentServicesDeploymentsBuilder,
+  CreateDeploymentServicesDeploymentsBuilder$inboundSchema,
+  CreateDeploymentServicesFunctions,
+  CreateDeploymentServicesFunctions$inboundSchema,
+  CreateDeploymentServicesHeaders,
+  CreateDeploymentServicesHeaders$inboundSchema,
+  CreateDeploymentServicesRedirects,
+  CreateDeploymentServicesRedirects$inboundSchema,
+  ResponseBodyRoutes,
+  ResponseBodyRoutes$inboundSchema,
+  ServicesBindings,
+  ServicesBindings$inboundSchema,
+  ServicesRewrites,
+  ServicesRewrites$inboundSchema,
+} from "./createdeploymentroutesdeploymentshas.js";
 import { FlagJSONValue, FlagJSONValue$inboundSchema } from "./flagjsonvalue.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const CreateDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody2Services2RoutesType =
+  {
+    Cookie: "cookie",
+    Header: "header",
+    Query: "query",
+  } as const;
+export type CreateDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody2Services2RoutesType =
+  ClosedEnum<
+    typeof CreateDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody2Services2RoutesType
+  >;
 
 export type CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1Missing2Eq =
   | string
@@ -1536,6 +1545,14 @@ export type CreateDeploymentResponseBody1 = {
 export type CreateDeploymentResponseBody =
   | CreateDeploymentResponseBody2
   | CreateDeploymentResponseBody1;
+
+/** @internal */
+export const CreateDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody2Services2RoutesType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody2Services2RoutesType
+  > = z.nativeEnum(
+    CreateDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody2Services2RoutesType,
+  );
 
 /** @internal */
 export const CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes1Missing2Eq$inboundSchema:

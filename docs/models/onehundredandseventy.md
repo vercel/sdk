@@ -8,14 +8,21 @@ The payload of the event, if requested.
 import { OneHundredAndSeventy } from "@vercel/sdk/models/bandwidth.js";
 
 let value: OneHundredAndSeventy = {
-  configurations: [],
-  ownerId: "<id>",
+  integration: {
+    id: "<id>",
+    slug: "<value>",
+    name: "<value>",
+    configurationId: "<id>",
+  },
+  originTeamId: "<id>",
+  originTeamName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                  | Type                                                   | Required                                               | Description                                            |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `configurations`                                       | [models.Configurations](../models/configurations.md)[] | :heavy_check_mark:                                     | N/A                                                    |
-| `ownerId`                                              | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
+| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `integration`                                                | [models.PayloadIntegration](../models/payloadintegration.md) | :heavy_check_mark:                                           | N/A                                                          |
+| `originTeamId`                                               | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `originTeamName`                                             | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |

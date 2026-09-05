@@ -557,6 +557,8 @@ export const Name = {
   SharedEnvVariableCreate: "shared-env-variable-create",
   SharedEnvVariableDelete: "shared-env-variable-delete",
   SharedEnvVariableRead: "shared-env-variable-read",
+  SharedEnvVariableRepoLink: "shared-env-variable-repo-link",
+  SharedEnvVariableRepoUnlink: "shared-env-variable-repo-unlink",
   SharedEnvVariableUpdate: "shared-env-variable-update",
   ShowIpAddresses: "show-ip-addresses",
   Signup: "signup",
@@ -588,6 +590,7 @@ export const Name = {
   StorageUpgradeProjectConnectionToOidc:
     "storage-upgrade-project-connection-to-oidc",
   StorageViewSecret: "storage-view-secret",
+  StrictConnectors: "strict-connectors",
   StrictDeploymentProtectionSettings: "strict-deployment-protection-settings",
   StrictPasswordProtectionSettings: "strict-password-protection-settings",
   StrictShareableLinks: "strict-shareable-links",
@@ -1310,6 +1313,8 @@ export const ReplacedBy = {
   SharedEnvVariableCreate: "shared-env-variable-create",
   SharedEnvVariableDelete: "shared-env-variable-delete",
   SharedEnvVariableRead: "shared-env-variable-read",
+  SharedEnvVariableRepoLink: "shared-env-variable-repo-link",
+  SharedEnvVariableRepoUnlink: "shared-env-variable-repo-unlink",
   SharedEnvVariableUpdate: "shared-env-variable-update",
   ShowIpAddresses: "show-ip-addresses",
   Signup: "signup",
@@ -1341,6 +1346,7 @@ export const ReplacedBy = {
   StorageUpgradeProjectConnectionToOidc:
     "storage-upgrade-project-connection-to-oidc",
   StorageViewSecret: "storage-view-secret",
+  StrictConnectors: "strict-connectors",
   StrictDeploymentProtectionSettings: "strict-deployment-protection-settings",
   StrictPasswordProtectionSettings: "strict-password-protection-settings",
   StrictShareableLinks: "strict-shareable-links",

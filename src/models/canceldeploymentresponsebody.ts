@@ -9,6 +9,19 @@ import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
+import { FlagJSONValue, FlagJSONValue$inboundSchema } from "./flagjsonvalue.js";
+import {
+  CancelDeploymentRoutes,
+  CancelDeploymentRoutes$inboundSchema,
+  IncludeFiles,
+  IncludeFiles$inboundSchema,
+  Services2,
+  Services2$inboundSchema,
+  ServicesType,
+  ServicesType$inboundSchema,
+  Trigger,
+  Trigger$inboundSchema,
+} from "./includefiles.js";
 import {
   AliasAssignedAt,
   AliasAssignedAt$inboundSchema,
@@ -72,23 +85,10 @@ import {
   ReadyState$inboundSchema,
   ReadySubstate,
   ReadySubstate$inboundSchema,
-} from "./destinationtype.js";
-import {
-  CancelDeploymentRoutes,
-  CancelDeploymentRoutes$inboundSchema,
-  ExcludeFiles,
-  ExcludeFiles$inboundSchema,
-  IncludeFiles,
-  IncludeFiles$inboundSchema,
-  Services2,
-  Services2$inboundSchema,
-  ServicesType,
-  ServicesType$inboundSchema,
-  Trigger,
-  Trigger$inboundSchema,
-} from "./excludefiles.js";
-import { FlagJSONValue, FlagJSONValue$inboundSchema } from "./flagjsonvalue.js";
+} from "./locale.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type ExcludeFiles = string | Array<string>;
 
 export const CancelDeploymentServicesArchitecture = {
   Arm64: "arm64",
@@ -254,7 +254,7 @@ export type ServicesConfig = {
   bunVersion?: string | undefined;
   maxLambdaSize?: string | undefined;
   includeFiles?: IncludeFiles | undefined;
-  excludeFiles?: ExcludeFiles | undefined;
+  excludeFiles?: string | Array<string> | undefined;
   bundle?: boolean | undefined;
   ldsflags?: string | undefined;
   helpers?: boolean | undefined;
@@ -1077,6 +1077,23 @@ export type CancelDeploymentResponseBody = {
 };
 
 /** @internal */
+export const ExcludeFiles$inboundSchema: z.ZodType<
+  ExcludeFiles,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), z.array(types.string())]);
+
+export function excludeFilesFromJSON(
+  jsonString: string,
+): SafeParseResult<ExcludeFiles, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ExcludeFiles$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ExcludeFiles' from JSON`,
+  );
+}
+
+/** @internal */
 export const CancelDeploymentServicesArchitecture$inboundSchema:
   z.ZodNativeEnum<typeof CancelDeploymentServicesArchitecture> = z.nativeEnum(
     CancelDeploymentServicesArchitecture,
@@ -1366,7 +1383,9 @@ export const ServicesConfig$inboundSchema: z.ZodType<
   bunVersion: types.optional(types.string()),
   maxLambdaSize: types.optional(types.string()),
   includeFiles: types.optional(IncludeFiles$inboundSchema),
-  excludeFiles: types.optional(ExcludeFiles$inboundSchema),
+  excludeFiles: types.optional(
+    smartUnion([types.string(), z.array(types.string())]),
+  ),
   bundle: types.optional(types.boolean()),
   ldsflags: types.optional(types.string()),
   helpers: types.optional(types.boolean()),

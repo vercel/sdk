@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventJobAction } from "@vercel/sdk/models/onehundredandone.js";
+import { UserEventJobAction } from "@vercel/sdk/models/deployhook.js";
 
 let value: UserEventJobAction = "auto-approved-pending-invite";
 ```

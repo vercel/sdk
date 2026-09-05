@@ -5,7 +5,7 @@ Optional explicit format marker. The destination is identified by the presence o
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentDestinationType } from "@vercel/sdk/models/excludefiles.js";
+import { CancelDeploymentDestinationType } from "@vercel/sdk/models/includefiles.js";
 
 let value: CancelDeploymentDestinationType = "service";
 ```

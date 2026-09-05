@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetDeploymentMaxDurationDeploymentsResponse2 } from "@vercel/sdk/models/getdeploymentresponsebody.js";
+import { GetDeploymentMaxDurationDeploymentsResponse2 } from "@vercel/sdk/models/getdeploymentresponsebody1.js";
 
 let value: GetDeploymentMaxDurationDeploymentsResponse2 = "max";
 ```

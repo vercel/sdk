@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Has2 } from "@vercel/sdk/models/destinationtype.js";
+import { Has2 } from "@vercel/sdk/models/locale.js";
 
 let value: Has2 = {
   type: "cookie",

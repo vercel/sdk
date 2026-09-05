@@ -5,7 +5,7 @@ The type of matching to perform
 ## Example Usage
 
 ```typescript
-import { GetDeploymentCustomEnvironmentDeploymentsResponseType } from "@vercel/sdk/models/getdeploymentgitsourcerepoid.js";
+import { GetDeploymentCustomEnvironmentDeploymentsResponseType } from "@vercel/sdk/models/getdeploymentgitsourcedeploymentsresponse200type.js";
 
 let value: GetDeploymentCustomEnvironmentDeploymentsResponseType = "endsWith";
 ```

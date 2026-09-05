@@ -19,4 +19,4 @@ let value: OneHundredAndEightyOne = {
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `issuerId`         | *string*           | :heavy_check_mark: | N/A                |
 | `issuerName`       | *string*           | :heavy_check_mark: | N/A                |
-| `keyId`            | *string*           | :heavy_minus_sign: | N/A                |
+| `managedBy`        | *string*           | :heavy_minus_sign: | N/A                |

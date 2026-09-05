@@ -782,6 +782,9 @@ async function run() {
       strictPasswordProtectionSettings: {
         enabled: true,
       },
+      strictConnectors: {
+        enabled: true,
+      },
       resourceConfig: {
         buildMachine: {
           default: "standard",
@@ -849,6 +852,9 @@ async function run() {
         enabled: true,
       },
       strictPasswordProtectionSettings: {
+        enabled: true,
+      },
+      strictConnectors: {
         enabled: true,
       },
       resourceConfig: {

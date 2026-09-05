@@ -5,14 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndEightySeven } from "@vercel/sdk/models/usereventpayload335budget.js";
+import { ThreeHundredAndEightySeven } from "@vercel/sdk/models/usereventpayload336budget.js";
 
-let value: ThreeHundredAndEightySeven = {};
+let value: ThreeHundredAndEightySeven = {
+  enabled: true,
+  scope: "log-drains",
+};
 ```
 
 ## Fields
 
-| Field                                                | Type                                                 | Required                                             | Description                                          |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `previous`                                           | Record<string, *models.UserEventPayload387Previous*> | :heavy_minus_sign:                                   | N/A                                                  |
-| `next`                                               | Record<string, *models.UserEventPayload387Next*>     | :heavy_minus_sign:                                   | N/A                                                  |
+| Field                                            | Type                                             | Required                                         | Description                                      |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| `enabled`                                        | *boolean*                                        | :heavy_check_mark:                               | N/A                                              |
+| `scope`                                          | [models.PayloadScope](../models/payloadscope.md) | :heavy_check_mark:                               | N/A                                              |

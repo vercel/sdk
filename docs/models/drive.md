@@ -8,9 +8,10 @@ This object contains information related to a Vercel Sandbox Drive.
 import { Drive } from "@vercel/sdk/models/drive.js";
 
 let value: Drive = {
+  id: "drive_abc123",
   name: "workspace",
   projectId: "prj_abc123",
-  maxSizeBytes: 107374182400,
+  maxSizeBytes: 1099511627776,
   region: "iad1",
   currentSessionId: "sbx_123",
   currentSandboxName: "my-sandbox",
@@ -23,9 +24,10 @@ let value: Drive = {
 
 | Field                                                                 | Type                                                                  | Required                                                              | Description                                                           | Example                                                               |
 | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `id`                                                                  | *string*                                                              | :heavy_check_mark:                                                    | The unique drive ID.                                                  | drive_abc123                                                          |
 | `name`                                                                | *string*                                                              | :heavy_check_mark:                                                    | The unique drive name within the project.                             | workspace                                                             |
 | `projectId`                                                           | *string*                                                              | :heavy_check_mark:                                                    | The project that owns the drive.                                      | prj_abc123                                                            |
-| `maxSizeBytes`                                                        | *number*                                                              | :heavy_check_mark:                                                    | The maximum drive size in bytes.                                      | 107374182400                                                          |
+| `maxSizeBytes`                                                        | *number*                                                              | :heavy_check_mark:                                                    | The maximum drive size in bytes.                                      | 1099511627776                                                         |
 | `region`                                                              | *string*                                                              | :heavy_check_mark:                                                    | The region where the drive is stored.                                 | iad1                                                                  |
 | `currentSessionId`                                                    | *string*                                                              | :heavy_minus_sign:                                                    | Current session ID the drive is attached to, if any.                  | sbx_123                                                               |
 | `currentSandboxName`                                                  | *string*                                                              | :heavy_minus_sign:                                                    | Current sandbox name the drive is attached to, if any.                | my-sandbox                                                            |

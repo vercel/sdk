@@ -7,9 +7,10 @@ import { GetOrCreateDriveResponseBody } from "@vercel/sdk/models/getorcreatedriv
 
 let value: GetOrCreateDriveResponseBody = {
   drive: {
+    id: "drive_abc123",
     name: "workspace",
     projectId: "prj_abc123",
-    maxSizeBytes: 107374182400,
+    maxSizeBytes: 1099511627776,
     region: "iad1",
     currentSessionId: "sbx_123",
     currentSandboxName: "my-sandbox",

@@ -5,7 +5,7 @@ Returns the deployment object for the authenticated owner, including private fie
 ## Example Usage
 
 ```typescript
-import { GetDeploymentResponseBody2 } from "@vercel/sdk/models/getdeploymentresponsebody.js";
+import { GetDeploymentResponseBody2 } from "@vercel/sdk/models/getdeploymentresponsebody1.js";
 
 let value: GetDeploymentResponseBody2 = {
   build: {

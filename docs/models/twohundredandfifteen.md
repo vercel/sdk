@@ -9,18 +9,15 @@ import { TwoHundredAndFifteen } from "@vercel/sdk/models/siftroute.js";
 
 let value: TwoHundredAndFifteen = {
   projectId: "<id>",
-  previousStatus: "<value>",
-  justification: "<value>",
+  type: "connectSrc",
+  resourceUrl: "https://perfumed-reward.name",
 };
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `projectId`                                    | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `url`                                          | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `headerName`                                   | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `previousStatus`                               | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `justification`                                | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `kind`                                         | [models.PayloadKind](../models/payloadkind.md) | :heavy_minus_sign:                             | N/A                                            |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `projectId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `type`                                                                 | [models.UserEventPayload215Type](../models/usereventpayload215type.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| `resourceUrl`                                                          | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |

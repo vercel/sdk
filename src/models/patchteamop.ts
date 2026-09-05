@@ -396,6 +396,16 @@ export type PatchTeamStrictPasswordProtectionSettings = {
 };
 
 /**
+ * When enabled, creating and managing connectors requires Owner role.
+ */
+export type PatchTeamStrictConnectors = {
+  /**
+   * Enable or disable requiring Owner role to manage connectors.
+   */
+  enabled: boolean;
+};
+
+/**
  * The NSNB preference for the team.
  */
 export const NsnbConfigPreference = {
@@ -568,6 +578,10 @@ export type PatchTeamRequestBody = {
   strictPasswordProtectionSettings?:
     | PatchTeamStrictPasswordProtectionSettings
     | undefined;
+  /**
+   * When enabled, creating and managing connectors requires Owner role.
+   */
+  strictConnectors?: PatchTeamStrictConnectors | undefined;
   nsnbConfig?: NsnbConfig1 | string | undefined;
   defaultProjectJobs?: DefaultProjectJobs1 | string | undefined;
   /**
@@ -1372,6 +1386,28 @@ export function patchTeamStrictPasswordProtectionSettingsToJSON(
 }
 
 /** @internal */
+export type PatchTeamStrictConnectors$Outbound = {
+  enabled: boolean;
+};
+
+/** @internal */
+export const PatchTeamStrictConnectors$outboundSchema: z.ZodType<
+  PatchTeamStrictConnectors$Outbound,
+  z.ZodTypeDef,
+  PatchTeamStrictConnectors
+> = z.object({
+  enabled: z.boolean(),
+});
+
+export function patchTeamStrictConnectorsToJSON(
+  patchTeamStrictConnectors: PatchTeamStrictConnectors,
+): string {
+  return JSON.stringify(
+    PatchTeamStrictConnectors$outboundSchema.parse(patchTeamStrictConnectors),
+  );
+}
+
+/** @internal */
 export const NsnbConfigPreference$outboundSchema: z.ZodNativeEnum<
   typeof NsnbConfigPreference
 > = z.nativeEnum(NsnbConfigPreference);
@@ -1589,6 +1625,7 @@ export type PatchTeamRequestBody$Outbound = {
   strictPasswordProtectionSettings?:
     | PatchTeamStrictPasswordProtectionSettings$Outbound
     | undefined;
+  strictConnectors?: PatchTeamStrictConnectors$Outbound | undefined;
   nsnbConfig?: NsnbConfig1$Outbound | string | undefined;
   defaultProjectJobs?: DefaultProjectJobs1$Outbound | string | undefined;
   resourceConfig?: PatchTeamResourceConfig$Outbound | undefined;
@@ -1640,6 +1677,8 @@ export const PatchTeamRequestBody$outboundSchema: z.ZodType<
   strictPasswordProtectionSettings: z.lazy(() =>
     PatchTeamStrictPasswordProtectionSettings$outboundSchema
   ).optional(),
+  strictConnectors: z.lazy(() => PatchTeamStrictConnectors$outboundSchema)
+    .optional(),
   nsnbConfig: smartUnion([z.lazy(() => NsnbConfig1$outboundSchema), z.string()])
     .optional(),
   defaultProjectJobs: smartUnion([

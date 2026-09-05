@@ -5,7 +5,7 @@ NSNB Blocked metadata
 ## Example Usage
 
 ```typescript
-import { GetDeploymentResponseBodySeatBlock } from "@vercel/sdk/models/getdeploymentresponsebody.js";
+import { GetDeploymentResponseBodySeatBlock } from "@vercel/sdk/models/getdeploymentresponsebody1.js";
 
 let value: GetDeploymentResponseBodySeatBlock = {
   blockCode: "TEAM_ACCESS_REQUIRED",

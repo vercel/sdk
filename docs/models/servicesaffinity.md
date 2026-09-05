@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ServicesAffinity } from "@vercel/sdk/models/excludefiles.js";
+import { ServicesAffinity } from "@vercel/sdk/models/includefiles.js";
 
 let value: ServicesAffinity = {
   mode: "strict",

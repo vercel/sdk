@@ -16447,6 +16447,16 @@
                                   ],
                                   "description": "Whether the build ran on a fixed or elastic machine. Used to drive billing for the build."
                                 },
+                                "selectionSource": {
+                                  "type": "string",
+                                  "enum": [
+                                    "elastic-algorithm",
+                                    "plan-default",
+                                    "project-setting",
+                                    "team-setting"
+                                  ],
+                                  "description": "The setting which selected the build machine when the deployment was created. Frozen here so later project or team changes do not rewrite its history."
+                                },
                                 "cores": {
                                   "type": "number",
                                   "description": "Number of cores the build machine ran with. Set at dispatch time once the build lands on a hive."
@@ -24647,6 +24657,16 @@
                                   ],
                                   "description": "Whether the build ran on a fixed or elastic machine. Used to drive billing for the build."
                                 },
+                                "selectionSource": {
+                                  "type": "string",
+                                  "enum": [
+                                    "elastic-algorithm",
+                                    "plan-default",
+                                    "project-setting",
+                                    "team-setting"
+                                  ],
+                                  "description": "The setting which selected the build machine when the deployment was created. Frozen here so later project or team changes do not rewrite its history."
+                                },
                                 "cores": {
                                   "type": "number",
                                   "description": "Number of cores the build machine ran with. Set at dispatch time once the build lands on a hive."
@@ -31992,6 +32012,16 @@
                                 "fixed"
                               ],
                               "description": "Whether the build ran on a fixed or elastic machine. Used to drive billing for the build."
+                            },
+                            "selectionSource": {
+                              "type": "string",
+                              "enum": [
+                                "elastic-algorithm",
+                                "plan-default",
+                                "project-setting",
+                                "team-setting"
+                              ],
+                              "description": "The setting which selected the build machine when the deployment was created. Frozen here so later project or team changes do not rewrite its history."
                             },
                             "cores": {
                               "type": "number",
@@ -66037,7 +66067,8 @@
                 "cli",
                 "oauth",
                 "backoffice",
-                "import-recommended-integrations"
+                "import-recommended-integrations",
+                "organization"
               ]
             }
           },
@@ -69290,6 +69321,7 @@
                               "import-recommended-integrations",
                               "marketplace",
                               "oauth",
+                              "organization",
                               "resource-claims",
                               "v0"
                             ],
@@ -69374,6 +69406,10 @@
                               "marketplace"
                             ],
                             "description": "Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'"
+                          },
+                          "acceptedPoliciesInheritedFromInstallationId": {
+                            "type": "string",
+                            "description": "Historical parent installation from which acceptedPolicies were inherited. This is immutable provenance, not current authorization or relationship truth."
                           }
                         },
                         "type": "object",
@@ -69515,6 +69551,7 @@
                               "import-recommended-integrations",
                               "marketplace",
                               "oauth",
+                              "organization",
                               "resource-claims",
                               "v0"
                             ],
@@ -69599,6 +69636,10 @@
                               "marketplace"
                             ],
                             "description": "Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'"
+                          },
+                          "acceptedPoliciesInheritedFromInstallationId": {
+                            "type": "string",
+                            "description": "Historical parent installation from which acceptedPolicies were inherited. This is immutable provenance, not current authorization or relationship truth."
                           }
                         },
                         "required": [
@@ -70035,6 +70076,7 @@
                             "import-recommended-integrations",
                             "marketplace",
                             "oauth",
+                            "organization",
                             "resource-claims",
                             "v0"
                           ],
@@ -70075,6 +70117,10 @@
                             "marketplace"
                           ],
                           "description": "Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'"
+                        },
+                        "acceptedPoliciesInheritedFromInstallationId": {
+                          "type": "string",
+                          "description": "Historical parent installation from which acceptedPolicies were inherited. This is immutable provenance, not current authorization or relationship truth."
                         }
                       },
                       "required": [
@@ -70157,6 +70203,7 @@
                             "import-recommended-integrations",
                             "marketplace",
                             "oauth",
+                            "organization",
                             "resource-claims",
                             "v0"
                           ],
@@ -70241,6 +70288,10 @@
                             "marketplace"
                           ],
                           "description": "Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'"
+                        },
+                        "acceptedPoliciesInheritedFromInstallationId": {
+                          "type": "string",
+                          "description": "Historical parent installation from which acceptedPolicies were inherited. This is immutable provenance, not current authorization or relationship truth."
                         }
                       },
                       "required": [
@@ -70321,6 +70372,7 @@
                             "import-recommended-integrations",
                             "marketplace",
                             "oauth",
+                            "organization",
                             "resource-claims",
                             "v0"
                           ],
@@ -70405,6 +70457,10 @@
                             "marketplace"
                           ],
                           "description": "Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'"
+                        },
+                        "acceptedPoliciesInheritedFromInstallationId": {
+                          "type": "string",
+                          "description": "Historical parent installation from which acceptedPolicies were inherited. This is immutable provenance, not current authorization or relationship truth."
                         }
                       },
                       "type": "object",
@@ -87233,6 +87289,18 @@
             "description": ""
           },
           "410": {
+            "description": ""
+          },
+          "413": {
+            "description": ""
+          },
+          "422": {
+            "description": ""
+          },
+          "500": {
+            "description": ""
+          },
+          "503": {
             "description": ""
           }
         },
@@ -164983,7 +165051,7 @@
     "/v2/sandboxes": {
       "get": {
         "description": "Retrieves a paginated list of named sandboxes belonging to a specific project. Results can be sorted by creation time or name, and optionally filtered by name prefix or status.",
-        "operationId": "listSandboxes",
+        "operationId": "listNamedSandboxes",
         "security": [
           {
             "bearerToken": []
@@ -165490,7 +165558,7 @@
                                 }
                               },
                               {
-                                "description": "A rule applied to requests matching a domain in the network policy. Only one of `transform` or `forwardURL` can be specified per rule.",
+                                "description": "A rule applied to requests matching a domain in the network policy. Only one of `transform`, `forwardURL`, or `response` can be specified per rule.",
                                 "type": "object",
                                 "additionalProperties": {
                                   "type": "array",
@@ -165625,6 +165693,37 @@
                                       "forwardURL": {
                                         "type": "string",
                                         "description": "HTTP/1.1 proxy URL to forward traffic to. Must not include username, password, query string, or fragment."
+                                      },
+                                      "response": {
+                                        "description": "Answer matching requests from the proxy with this response instead of forwarding them to the origin. Combine with a `match` on an earlier rule to allow one sub-path and reject the rest of a domain.",
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "required": [
+                                          "statusCode"
+                                        ],
+                                        "properties": {
+                                          "statusCode": {
+                                            "type": "integer",
+                                            "minimum": 200,
+                                            "maximum": 599,
+                                            "description": "HTTP status code returned to the sandbox."
+                                          },
+                                          "headers": {
+                                            "type": "object",
+                                            "additionalProperties": {
+                                              "type": "string"
+                                            },
+                                            "description": "HTTP response headers. Framing and hop-by-hop headers are managed by the proxy and cannot be set."
+                                          },
+                                          "body": {
+                                            "type": "string",
+                                            "description": "UTF-8 response body. Requires `contentType`."
+                                          },
+                                          "contentType": {
+                                            "type": "string",
+                                            "description": "Value of the `Content-Type` response header. Required when `body` is set."
+                                          }
+                                        }
                                       }
                                     }
                                   }
@@ -166290,7 +166389,7 @@
                   },
                   "maxSizeBytes": {
                     "type": "integer",
-                    "description": "Maximum drive size in bytes. Defaults to 100 GiB when omitted."
+                    "description": "Maximum drive size in bytes. Defaults to 1 TiB when omitted. The maximum quota is 16 TiB. Request a quota above 16 TiB at https://vercel.com/help."
                   },
                   "region": {
                     "type": "string",
@@ -167609,7 +167708,7 @@
                                 }
                               },
                               {
-                                "description": "A rule applied to requests matching a domain in the network policy. Only one of `transform` or `forwardURL` can be specified per rule.",
+                                "description": "A rule applied to requests matching a domain in the network policy. Only one of `transform`, `forwardURL`, or `response` can be specified per rule.",
                                 "type": "object",
                                 "additionalProperties": {
                                   "type": "array",
@@ -167744,6 +167843,37 @@
                                       "forwardURL": {
                                         "type": "string",
                                         "description": "HTTP/1.1 proxy URL to forward traffic to. Must not include username, password, query string, or fragment."
+                                      },
+                                      "response": {
+                                        "description": "Answer matching requests from the proxy with this response instead of forwarding them to the origin. Combine with a `match` on an earlier rule to allow one sub-path and reject the rest of a domain.",
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "required": [
+                                          "statusCode"
+                                        ],
+                                        "properties": {
+                                          "statusCode": {
+                                            "type": "integer",
+                                            "minimum": 200,
+                                            "maximum": 599,
+                                            "description": "HTTP status code returned to the sandbox."
+                                          },
+                                          "headers": {
+                                            "type": "object",
+                                            "additionalProperties": {
+                                              "type": "string"
+                                            },
+                                            "description": "HTTP response headers. Framing and hop-by-hop headers are managed by the proxy and cannot be set."
+                                          },
+                                          "body": {
+                                            "type": "string",
+                                            "description": "UTF-8 response body. Requires `contentType`."
+                                          },
+                                          "contentType": {
+                                            "type": "string",
+                                            "description": "Value of the `Content-Type` response header. Required when `body` is set."
+                                          }
+                                        }
                                       }
                                     }
                                   }
@@ -167832,6 +167962,35 @@
                       "sfo1",
                       "cle1"
                     ]
+                  },
+                  "mounts": {
+                    "description": "Drives to mount to the sandbox at the provided path. Replaces the current mounts; an empty object removes them all. Changes take effect when the next session starts.",
+                    "type": "object",
+                    "maxProperties": 4,
+                    "additionalProperties": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "drive"
+                      ],
+                      "properties": {
+                        "drive": {
+                          "type": "string",
+                          "description": "Name of the drive to mount. The drive must already exist.",
+                          "maxLength": 64,
+                          "pattern": "^[a-zA-Z0-9_-]+$"
+                        },
+                        "mode": {
+                          "type": "string",
+                          "enum": [
+                            "read-only",
+                            "read-write"
+                          ],
+                          "description": "Mount the drive read-only or read-write.",
+                          "default": "read-write"
+                        }
+                      }
+                    }
                   },
                   "env": {
                     "type": "object",
@@ -169262,7 +169421,7 @@
                             }
                           },
                           {
-                            "description": "A rule applied to requests matching a domain in the network policy. Only one of `transform` or `forwardURL` can be specified per rule.",
+                            "description": "A rule applied to requests matching a domain in the network policy. Only one of `transform`, `forwardURL`, or `response` can be specified per rule.",
                             "type": "object",
                             "additionalProperties": {
                               "type": "array",
@@ -169397,6 +169556,37 @@
                                   "forwardURL": {
                                     "type": "string",
                                     "description": "HTTP/1.1 proxy URL to forward traffic to. Must not include username, password, query string, or fragment."
+                                  },
+                                  "response": {
+                                    "description": "Answer matching requests from the proxy with this response instead of forwarding them to the origin. Combine with a `match` on an earlier rule to allow one sub-path and reject the rest of a domain.",
+                                    "type": "object",
+                                    "additionalProperties": false,
+                                    "required": [
+                                      "statusCode"
+                                    ],
+                                    "properties": {
+                                      "statusCode": {
+                                        "type": "integer",
+                                        "minimum": 200,
+                                        "maximum": 599,
+                                        "description": "HTTP status code returned to the sandbox."
+                                      },
+                                      "headers": {
+                                        "type": "object",
+                                        "additionalProperties": {
+                                          "type": "string"
+                                        },
+                                        "description": "HTTP response headers. Framing and hop-by-hop headers are managed by the proxy and cannot be set."
+                                      },
+                                      "body": {
+                                        "type": "string",
+                                        "description": "UTF-8 response body. Requires `contentType`."
+                                      },
+                                      "contentType": {
+                                        "type": "string",
+                                        "description": "Value of the `Content-Type` response header. Required when `body` is set."
+                                      }
+                                    }
                                   }
                                 }
                               }
@@ -170193,7 +170383,7 @@
                                 }
                               },
                               {
-                                "description": "A rule applied to requests matching a domain in the network policy. Only one of `transform` or `forwardURL` can be specified per rule.",
+                                "description": "A rule applied to requests matching a domain in the network policy. Only one of `transform`, `forwardURL`, or `response` can be specified per rule.",
                                 "type": "object",
                                 "additionalProperties": {
                                   "type": "array",
@@ -170328,6 +170518,37 @@
                                       "forwardURL": {
                                         "type": "string",
                                         "description": "HTTP/1.1 proxy URL to forward traffic to. Must not include username, password, query string, or fragment."
+                                      },
+                                      "response": {
+                                        "description": "Answer matching requests from the proxy with this response instead of forwarding them to the origin. Combine with a `match` on an earlier rule to allow one sub-path and reject the rest of a domain.",
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "required": [
+                                          "statusCode"
+                                        ],
+                                        "properties": {
+                                          "statusCode": {
+                                            "type": "integer",
+                                            "minimum": 200,
+                                            "maximum": 599,
+                                            "description": "HTTP status code returned to the sandbox."
+                                          },
+                                          "headers": {
+                                            "type": "object",
+                                            "additionalProperties": {
+                                              "type": "string"
+                                            },
+                                            "description": "HTTP response headers. Framing and hop-by-hop headers are managed by the proxy and cannot be set."
+                                          },
+                                          "body": {
+                                            "type": "string",
+                                            "description": "UTF-8 response body. Requires `contentType`."
+                                          },
+                                          "contentType": {
+                                            "type": "string",
+                                            "description": "Value of the `Content-Type` response header. Required when `body` is set."
+                                          }
+                                        }
                                       }
                                     }
                                   }
@@ -170908,7 +171129,7 @@
                                 }
                               },
                               {
-                                "description": "A rule applied to requests matching a domain in the network policy. Only one of `transform` or `forwardURL` can be specified per rule.",
+                                "description": "A rule applied to requests matching a domain in the network policy. Only one of `transform`, `forwardURL`, or `response` can be specified per rule.",
                                 "type": "object",
                                 "additionalProperties": {
                                   "type": "array",
@@ -171043,6 +171264,37 @@
                                       "forwardURL": {
                                         "type": "string",
                                         "description": "HTTP/1.1 proxy URL to forward traffic to. Must not include username, password, query string, or fragment."
+                                      },
+                                      "response": {
+                                        "description": "Answer matching requests from the proxy with this response instead of forwarding them to the origin. Combine with a `match` on an earlier rule to allow one sub-path and reject the rest of a domain.",
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "required": [
+                                          "statusCode"
+                                        ],
+                                        "properties": {
+                                          "statusCode": {
+                                            "type": "integer",
+                                            "minimum": 200,
+                                            "maximum": 599,
+                                            "description": "HTTP status code returned to the sandbox."
+                                          },
+                                          "headers": {
+                                            "type": "object",
+                                            "additionalProperties": {
+                                              "type": "string"
+                                            },
+                                            "description": "HTTP response headers. Framing and hop-by-hop headers are managed by the proxy and cannot be set."
+                                          },
+                                          "body": {
+                                            "type": "string",
+                                            "description": "UTF-8 response body. Requires `contentType`."
+                                          },
+                                          "contentType": {
+                                            "type": "string",
+                                            "description": "Value of the `Content-Type` response header. Required when `body` is set."
+                                          }
+                                        }
                                       }
                                     }
                                   }
@@ -171853,7 +172105,7 @@
                                 }
                               },
                               {
-                                "description": "A rule applied to requests matching a domain in the network policy. Only one of `transform` or `forwardURL` can be specified per rule.",
+                                "description": "A rule applied to requests matching a domain in the network policy. Only one of `transform`, `forwardURL`, or `response` can be specified per rule.",
                                 "type": "object",
                                 "additionalProperties": {
                                   "type": "array",
@@ -171988,6 +172240,37 @@
                                       "forwardURL": {
                                         "type": "string",
                                         "description": "HTTP/1.1 proxy URL to forward traffic to. Must not include username, password, query string, or fragment."
+                                      },
+                                      "response": {
+                                        "description": "Answer matching requests from the proxy with this response instead of forwarding them to the origin. Combine with a `match` on an earlier rule to allow one sub-path and reject the rest of a domain.",
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "required": [
+                                          "statusCode"
+                                        ],
+                                        "properties": {
+                                          "statusCode": {
+                                            "type": "integer",
+                                            "minimum": 200,
+                                            "maximum": 599,
+                                            "description": "HTTP status code returned to the sandbox."
+                                          },
+                                          "headers": {
+                                            "type": "object",
+                                            "additionalProperties": {
+                                              "type": "string"
+                                            },
+                                            "description": "HTTP response headers. Framing and hop-by-hop headers are managed by the proxy and cannot be set."
+                                          },
+                                          "body": {
+                                            "type": "string",
+                                            "description": "UTF-8 response body. Requires `contentType`."
+                                          },
+                                          "contentType": {
+                                            "type": "string",
+                                            "description": "Value of the `Content-Type` response header. Required when `body` is set."
+                                          }
+                                        }
                                       }
                                     }
                                   }
@@ -172575,7 +172858,7 @@
                                 }
                               },
                               {
-                                "description": "A rule applied to requests matching a domain in the network policy. Only one of `transform` or `forwardURL` can be specified per rule.",
+                                "description": "A rule applied to requests matching a domain in the network policy. Only one of `transform`, `forwardURL`, or `response` can be specified per rule.",
                                 "type": "object",
                                 "additionalProperties": {
                                   "type": "array",
@@ -172710,6 +172993,37 @@
                                       "forwardURL": {
                                         "type": "string",
                                         "description": "HTTP/1.1 proxy URL to forward traffic to. Must not include username, password, query string, or fragment."
+                                      },
+                                      "response": {
+                                        "description": "Answer matching requests from the proxy with this response instead of forwarding them to the origin. Combine with a `match` on an earlier rule to allow one sub-path and reject the rest of a domain.",
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "required": [
+                                          "statusCode"
+                                        ],
+                                        "properties": {
+                                          "statusCode": {
+                                            "type": "integer",
+                                            "minimum": 200,
+                                            "maximum": 599,
+                                            "description": "HTTP status code returned to the sandbox."
+                                          },
+                                          "headers": {
+                                            "type": "object",
+                                            "additionalProperties": {
+                                              "type": "string"
+                                            },
+                                            "description": "HTTP response headers. Framing and hop-by-hop headers are managed by the proxy and cannot be set."
+                                          },
+                                          "body": {
+                                            "type": "string",
+                                            "description": "UTF-8 response body. Requires `contentType`."
+                                          },
+                                          "contentType": {
+                                            "type": "string",
+                                            "description": "Value of the `Content-Type` response header. Required when `body` is set."
+                                          }
+                                        }
                                       }
                                     }
                                   }
@@ -186004,6 +186318,9 @@
           "401": {
             "description": "The request is not authorized."
           },
+          "402": {
+            "description": ""
+          },
           "403": {
             "description": "You do not have permission to access this resource."
           },
@@ -186274,6 +186591,9 @@
           "401": {
             "description": "The request is not authorized."
           },
+          "402": {
+            "description": ""
+          },
           "403": {
             "description": "You do not have permission to access this resource."
           },
@@ -186403,6 +186723,9 @@
           },
           "401": {
             "description": "The request is not authorized."
+          },
+          "402": {
+            "description": ""
           },
           "403": {
             "description": "You do not have permission to access this resource."
@@ -192119,7 +192442,8 @@
                       "cli",
                       "oauth",
                       "backoffice",
-                      "import-recommended-integrations"
+                      "import-recommended-integrations",
+                      "organization"
                     ],
                     "description": "Source of the store creation request",
                     "example": "marketplace",
@@ -194365,6 +194689,21 @@
                         "type": "boolean",
                         "example": true,
                         "description": "Enable or disable requiring Owner role to change project password protection."
+                      }
+                    },
+                    "required": [
+                      "enabled"
+                    ]
+                  },
+                  "strictConnectors": {
+                    "type": "object",
+                    "description": "When enabled, creating and managing connectors requires Owner role.",
+                    "additionalProperties": false,
+                    "properties": {
+                      "enabled": {
+                        "type": "boolean",
+                        "example": true,
+                        "description": "Enable or disable requiring Owner role to manage connectors."
                       }
                     },
                     "required": [
@@ -200275,6 +200614,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           }
@@ -202094,6 +202436,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           }
@@ -203217,6 +203562,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           }
@@ -204274,6 +204622,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "410": {
             "description": ""
@@ -215596,6 +215947,8 @@
               "shared-env-variable-create",
               "shared-env-variable-delete",
               "shared-env-variable-read",
+              "shared-env-variable-repo-link",
+              "shared-env-variable-repo-unlink",
               "shared-env-variable-update",
               "show-ip-addresses",
               "signup",
@@ -215626,6 +215979,7 @@
               "storage-update-project-connection",
               "storage-upgrade-project-connection-to-oidc",
               "storage-view-secret",
+              "strict-connectors",
               "strict-deployment-protection-settings",
               "strict-password-protection-settings",
               "strict-shareable-links",
@@ -219460,6 +219814,9 @@
                     "type": "string"
                   },
                   "projectId": {
+                    "type": "string"
+                  },
+                  "projectName": {
                     "type": "string"
                   },
                   "installationId": {
@@ -223734,6 +224091,46 @@
               },
               {
                 "properties": {
+                  "envId": {
+                    "type": "string"
+                  },
+                  "envKey": {
+                    "type": "string"
+                  },
+                  "provider": {
+                    "type": "string"
+                  },
+                  "organizationId": {
+                    "type": "string"
+                  },
+                  "repository": {
+                    "type": "string"
+                  },
+                  "target": {
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "development",
+                        "preview",
+                        "production"
+                      ]
+                    },
+                    "type": "array"
+                  }
+                },
+                "required": [
+                  "envId",
+                  "envKey",
+                  "organizationId",
+                  "provider",
+                  "repository",
+                  "target"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
                   "oldEnvVar": {
                     "properties": {
                       "created": {
@@ -224335,6 +224732,9 @@
               {
                 "properties": {
                   "projectId": {
+                    "type": "string"
+                  },
+                  "projectName": {
                     "type": "string"
                   },
                   "previousOwnerId": {
@@ -225169,6 +225569,9 @@
                           },
                           "security": {
                             "properties": {
+                              "rateLimit": {
+                                "type": "number"
+                              },
                               "customRules": {
                                 "type": "number"
                               },
@@ -225176,9 +225579,6 @@
                                 "type": "number"
                               },
                               "ipBypass": {
-                                "type": "number"
-                              },
-                              "rateLimit": {
                                 "type": "number"
                               }
                             },
@@ -230529,6 +230929,9 @@
               },
               {
                 "properties": {
+                  "projectName": {
+                    "type": "string"
+                  },
                   "endpoint": {
                     "properties": {
                       "id": {
@@ -230571,6 +230974,9 @@
               },
               {
                 "properties": {
+                  "projectName": {
+                    "type": "string"
+                  },
                   "privateLinkEndpoint": {
                     "properties": {
                       "id": {
@@ -230599,6 +231005,9 @@
               },
               {
                 "properties": {
+                  "projectName": {
+                    "type": "string"
+                  },
                   "prev": {
                     "properties": {
                       "id": {
@@ -230675,6 +231084,9 @@
               },
               {
                 "properties": {
+                  "projectName": {
+                    "type": "string"
+                  },
                   "privateLinkEndpoint": {
                     "properties": {
                       "id": {
@@ -238319,6 +238731,9 @@
                   "projectId": {
                     "type": "string"
                   },
+                  "projectName": {
+                    "type": "string"
+                  },
                   "runId": {
                     "type": "string"
                   }
@@ -238964,6 +239379,10 @@
                     "description": "Present when `scope` is `'team'` or `'project'`."
                   },
                   "projectId": {
+                    "type": "string",
+                    "description": "Present when `scope` is `'project'`."
+                  },
+                  "projectName": {
                     "type": "string",
                     "description": "Present when `scope` is `'project'`."
                   },
@@ -239851,6 +240270,8 @@
               "shared-env-variable-create",
               "shared-env-variable-delete",
               "shared-env-variable-read",
+              "shared-env-variable-repo-link",
+              "shared-env-variable-repo-unlink",
               "shared-env-variable-update",
               "show-ip-addresses",
               "signup",
@@ -239881,6 +240302,7 @@
               "storage-update-project-connection",
               "storage-upgrade-project-connection-to-oidc",
               "storage-view-secret",
+              "strict-connectors",
               "strict-deployment-protection-settings",
               "strict-password-protection-settings",
               "strict-shareable-links",
@@ -240569,6 +240991,8 @@
                 "shared-env-variable-create",
                 "shared-env-variable-delete",
                 "shared-env-variable-read",
+                "shared-env-variable-repo-link",
+                "shared-env-variable-repo-unlink",
                 "shared-env-variable-update",
                 "show-ip-addresses",
                 "signup",
@@ -240599,6 +241023,7 @@
                 "storage-update-project-connection",
                 "storage-upgrade-project-connection-to-oidc",
                 "storage-view-secret",
+                "strict-connectors",
                 "strict-deployment-protection-settings",
                 "strict-password-protection-settings",
                 "strict-shareable-links",
@@ -242780,6 +243205,11 @@
       },
       "Drive": {
         "properties": {
+          "id": {
+            "type": "string",
+            "description": "The unique drive ID.",
+            "example": "drive_abc123"
+          },
           "name": {
             "type": "string",
             "description": "The unique drive name within the project.",
@@ -242793,7 +243223,7 @@
           "maxSizeBytes": {
             "type": "number",
             "description": "The maximum drive size in bytes.",
-            "example": 107374182400
+            "example": 1099511627776
           },
           "region": {
             "type": "string",
@@ -242823,6 +243253,7 @@
         },
         "required": [
           "createdAt",
+          "id",
           "maxSizeBytes",
           "name",
           "projectId",
@@ -243777,6 +244208,26 @@
             ],
             "type": "object",
             "description": "When enabled, adding, changing, or removing project password protection requires Owner role."
+          },
+          "strictConnectors": {
+            "properties": {
+              "enabled": {
+                "type": "boolean",
+                "enum": [
+                  false,
+                  true
+                ]
+              },
+              "updatedAt": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "enabled",
+              "updatedAt"
+            ],
+            "type": "object",
+            "description": "When enabled, creating and managing connectors requires Owner role or the ConnectorManager permission."
           },
           "nsnbConfig": {
             "properties": {
@@ -245101,6 +245552,10 @@
               },
               "security": {
                 "properties": {
+                  "rateLimit": {
+                    "type": "number",
+                    "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
+                  },
                   "customRules": {
                     "type": "number",
                     "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
@@ -245110,10 +245565,6 @@
                     "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
                   },
                   "ipBypass": {
-                    "type": "number",
-                    "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
-                  },
-                  "rateLimit": {
                     "type": "number",
                     "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
                   }

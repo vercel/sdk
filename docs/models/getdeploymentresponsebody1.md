@@ -5,7 +5,7 @@ Returns the reduced deployment view for anonymous (`vcn_`) callers. Pool-team de
 ## Example Usage
 
 ```typescript
-import { GetDeploymentResponseBody1 } from "@vercel/sdk/models/getdeploymentresponsebody.js";
+import { GetDeploymentResponseBody1 } from "@vercel/sdk/models/getdeploymentresponsebody1.js";
 
 let value: GetDeploymentResponseBody1 = {
   aliasAssigned: true,

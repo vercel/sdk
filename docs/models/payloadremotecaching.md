@@ -5,7 +5,7 @@ Represents configuration for remote caching
 ## Example Usage
 
 ```typescript
-import { PayloadRemoteCaching } from "@vercel/sdk/models/usereventpayload335budget.js";
+import { PayloadRemoteCaching } from "@vercel/sdk/models/usereventpayload336budget.js";
 
 let value: PayloadRemoteCaching = {};
 ```

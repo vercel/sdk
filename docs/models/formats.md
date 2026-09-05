@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Formats } from "@vercel/sdk/models/destinationtype.js";
+import { Formats } from "@vercel/sdk/models/locale.js";
 
 let value: Formats = "image/avif";
 ```

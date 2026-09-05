@@ -31,6 +31,7 @@ export const CreateIntegrationStoreDirectSource = {
   Oauth: "oauth",
   Backoffice: "backoffice",
   ImportRecommendedIntegrations: "import-recommended-integrations",
+  Organization: "organization",
 } as const;
 /**
  * Source of the store creation request

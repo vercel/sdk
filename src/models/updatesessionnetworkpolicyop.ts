@@ -129,6 +129,28 @@ export type UpdateSessionNetworkPolicyAllowTransform = {
   headers?: { [k: string]: string } | undefined;
 };
 
+/**
+ * Answer matching requests from the proxy with this response instead of forwarding them to the origin. Combine with a `match` on an earlier rule to allow one sub-path and reject the rest of a domain.
+ */
+export type UpdateSessionNetworkPolicyAllowResponse = {
+  /**
+   * HTTP status code returned to the sandbox.
+   */
+  statusCode: number;
+  /**
+   * HTTP response headers. Framing and hop-by-hop headers are managed by the proxy and cannot be set.
+   */
+  headers?: { [k: string]: string } | undefined;
+  /**
+   * UTF-8 response body. Requires `contentType`.
+   */
+  body?: string | undefined;
+  /**
+   * Value of the `Content-Type` response header. Required when `body` is set.
+   */
+  contentType?: string | undefined;
+};
+
 export type UpdateSessionNetworkPolicyAllow2 = {
   /**
    * Optional L7 match. When provided, the injection rule only applies to requests that satisfy every specified dimension. When multiple injection rules target the same domain they are evaluated in order and the first match wins; a rule without `match` matches any request and shadows later rules for the same domain.
@@ -139,6 +161,10 @@ export type UpdateSessionNetworkPolicyAllow2 = {
    * HTTP/1.1 proxy URL to forward traffic to. Must not include username, password, query string, or fragment.
    */
   forwardURL?: string | undefined;
+  /**
+   * Answer matching requests from the proxy with this response instead of forwarding them to the origin. Combine with a `match` on an earlier rule to allow one sub-path and reject the rest of a domain.
+   */
+  response?: UpdateSessionNetworkPolicyAllowResponse | undefined;
 };
 
 export type RequestBodyAllow = Array<string> | {
@@ -617,12 +643,44 @@ export function updateSessionNetworkPolicyAllowTransformToJSON(
 }
 
 /** @internal */
+export type UpdateSessionNetworkPolicyAllowResponse$Outbound = {
+  statusCode: number;
+  headers?: { [k: string]: string } | undefined;
+  body?: string | undefined;
+  contentType?: string | undefined;
+};
+
+/** @internal */
+export const UpdateSessionNetworkPolicyAllowResponse$outboundSchema: z.ZodType<
+  UpdateSessionNetworkPolicyAllowResponse$Outbound,
+  z.ZodTypeDef,
+  UpdateSessionNetworkPolicyAllowResponse
+> = z.object({
+  statusCode: z.number().int(),
+  headers: z.record(z.string()).optional(),
+  body: z.string().optional(),
+  contentType: z.string().optional(),
+});
+
+export function updateSessionNetworkPolicyAllowResponseToJSON(
+  updateSessionNetworkPolicyAllowResponse:
+    UpdateSessionNetworkPolicyAllowResponse,
+): string {
+  return JSON.stringify(
+    UpdateSessionNetworkPolicyAllowResponse$outboundSchema.parse(
+      updateSessionNetworkPolicyAllowResponse,
+    ),
+  );
+}
+
+/** @internal */
 export type UpdateSessionNetworkPolicyAllow2$Outbound = {
   match?: UpdateSessionNetworkPolicyAllowMatch$Outbound | undefined;
   transform?:
     | Array<UpdateSessionNetworkPolicyAllowTransform$Outbound>
     | undefined;
   forwardURL?: string | undefined;
+  response?: UpdateSessionNetworkPolicyAllowResponse$Outbound | undefined;
 };
 
 /** @internal */
@@ -637,6 +695,8 @@ export const UpdateSessionNetworkPolicyAllow2$outboundSchema: z.ZodType<
     z.lazy(() => UpdateSessionNetworkPolicyAllowTransform$outboundSchema),
   ).optional(),
   forwardURL: z.string().optional(),
+  response: z.lazy(() => UpdateSessionNetworkPolicyAllowResponse$outboundSchema)
+    .optional(),
 });
 
 export function updateSessionNetworkPolicyAllow2ToJSON(

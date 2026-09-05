@@ -5,7 +5,7 @@ Metadata about the source platform that triggered the deployment. Allows us to m
 ## Example Usage
 
 ```typescript
-import { GetDeploymentResponseBodyPlatform } from "@vercel/sdk/models/getdeploymentresponsebody.js";
+import { GetDeploymentResponseBodyPlatform } from "@vercel/sdk/models/getdeploymentresponsebody1.js";
 
 let value: GetDeploymentResponseBodyPlatform = {
   source: {

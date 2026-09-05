@@ -111,6 +111,7 @@ export const GetConfigurationsResponseBodyIntegrationsSource = {
   ImportRecommendedIntegrations: "import-recommended-integrations",
   Marketplace: "marketplace",
   Oauth: "oauth",
+  Organization: "organization",
   ResourceClaims: "resource-claims",
   V0: "v0",
 } as const;
@@ -235,6 +236,10 @@ export type GetConfigurationsResponseBody2 = {
    * Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
    */
   installationType?: GetConfigurationsResponseBodyInstallationType | undefined;
+  /**
+   * Historical parent installation from which acceptedPolicies were inherited. This is immutable provenance, not current authorization or relationship truth.
+   */
+  acceptedPoliciesInheritedFromInstallationId?: string | undefined;
 };
 
 /**
@@ -267,6 +272,7 @@ export const GetConfigurationsResponseBodySource = {
   ImportRecommendedIntegrations: "import-recommended-integrations",
   Marketplace: "marketplace",
   Oauth: "oauth",
+  Organization: "organization",
   ResourceClaims: "resource-claims",
   V0: "v0",
 } as const;
@@ -392,6 +398,10 @@ export type GetConfigurationsResponseBody1 = {
    * Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
    */
   installationType?: ResponseBodyInstallationType | undefined;
+  /**
+   * Historical parent installation from which acceptedPolicies were inherited. This is immutable provenance, not current authorization or relationship truth.
+   */
+  acceptedPoliciesInheritedFromInstallationId?: string | undefined;
 };
 
 /**
@@ -531,6 +541,7 @@ export const GetConfigurationsResponseBody2$inboundSchema: z.ZodType<
   installationType: types.optional(
     GetConfigurationsResponseBodyInstallationType$inboundSchema,
   ),
+  acceptedPoliciesInheritedFromInstallationId: types.optional(types.string()),
 });
 
 export function getConfigurationsResponseBody2FromJSON(
@@ -597,6 +608,7 @@ export const GetConfigurationsResponseBody1$inboundSchema: z.ZodType<
     GetConfigurationsResponseBodyDisabledReason$inboundSchema,
   ),
   installationType: types.optional(ResponseBodyInstallationType$inboundSchema),
+  acceptedPoliciesInheritedFromInstallationId: types.optional(types.string()),
 });
 
 export function getConfigurationsResponseBody1FromJSON(

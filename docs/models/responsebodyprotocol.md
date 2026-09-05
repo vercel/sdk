@@ -5,7 +5,7 @@ Must be `http` or `https`.
 ## Example Usage
 
 ```typescript
-import { ResponseBodyProtocol } from "@vercel/sdk/models/createdeploymentvaluedeploymentseq.js";
+import { ResponseBodyProtocol } from "@vercel/sdk/models/createdeploymenthasdeploymentstype.js";
 
 let value: ResponseBodyProtocol = "https";
 ```

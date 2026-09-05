@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Crons } from "@vercel/sdk/models/destinationtype.js";
+import { Crons } from "@vercel/sdk/models/locale.js";
 
 let value: Crons = {
   schedule: "<value>",

@@ -583,7 +583,7 @@ run();
 
 ### [Sandboxes](docs/sdks/sandboxes/README.md)
 
-* [listSandboxes](docs/sdks/sandboxes/README.md#listsandboxes) - List sandboxes
+* [listNamedSandboxes](docs/sdks/sandboxes/README.md#listnamedsandboxes) - List sandboxes
 * [listDrives](docs/sdks/sandboxes/README.md#listdrives) - List drives
 * [getOrCreateDrive](docs/sdks/sandboxes/README.md#getorcreatedrive) - Get or create a drive
 * [deleteDrive](docs/sdks/sandboxes/README.md#deletedrive) - Delete a drive
@@ -1039,7 +1039,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`sandboxesGetSessionSnapshot`](docs/sdks/sandboxes/README.md#getsessionsnapshot) - Get a snapshot
 - [`sandboxesKillSessionCommand`](docs/sdks/sandboxes/README.md#killsessioncommand) - Kill a command
 - [`sandboxesListDrives`](docs/sdks/sandboxes/README.md#listdrives) - List drives
-- [`sandboxesListSandboxes`](docs/sdks/sandboxes/README.md#listsandboxes) - List sandboxes
+- [`sandboxesListNamedSandboxes`](docs/sdks/sandboxes/README.md#listnamedsandboxes) - List sandboxes
 - [`sandboxesListSessionCommands`](docs/sdks/sandboxes/README.md#listsessioncommands) - List commands
 - [`sandboxesListSessions`](docs/sdks/sandboxes/README.md#listsessions) - List sessions
 - [`sandboxesListSessionSnapshots`](docs/sdks/sandboxes/README.md#listsessionsnapshots) - List snapshots

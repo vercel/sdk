@@ -5,7 +5,7 @@ Substate of deployment when readyState is 'READY' Tracks whether or not deployme
 ## Example Usage
 
 ```typescript
-import { ResponseBodyReadySubstate } from "@vercel/sdk/models/getdeploymentgitsourcerepoid.js";
+import { ResponseBodyReadySubstate } from "@vercel/sdk/models/getdeploymentgitsourcedeploymentsresponse200type.js";
 
 let value: ResponseBodyReadySubstate = "PROMOTED";
 ```

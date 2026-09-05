@@ -5,7 +5,7 @@ Optional explicit format marker. The destination is identified by the presence o
 ## Example Usage
 
 ```typescript
-import { DestinationType } from "@vercel/sdk/models/destinationtype.js";
+import { DestinationType } from "@vercel/sdk/models/includefiles.js";
 
 let value: DestinationType = "service";
 ```

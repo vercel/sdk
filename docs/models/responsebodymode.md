@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyMode } from "@vercel/sdk/models/createdeploymentvaluedeploymentseq.js";
+import { ResponseBodyMode } from "@vercel/sdk/models/createdeploymenthasdeploymentstype.js";
 
 let value: ResponseBodyMode = "strict";
 ```

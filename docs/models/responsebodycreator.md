@@ -5,7 +5,7 @@ Information about the deployment creator
 ## Example Usage
 
 ```typescript
-import { ResponseBodyCreator } from "@vercel/sdk/models/getdeploymentgitsourcerepoid.js";
+import { ResponseBodyCreator } from "@vercel/sdk/models/getdeploymentgitsourcedeploymentsresponse200type.js";
 
 let value: ResponseBodyCreator = {
   uid: "96SnxkFiMyVKsK3pnoHfx3Hz",

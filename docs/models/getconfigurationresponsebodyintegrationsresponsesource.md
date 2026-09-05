@@ -14,5 +14,5 @@ let value: GetConfigurationResponseBodyIntegrationsResponseSource =
 ## Values
 
 ```typescript
-"backoffice" | "cli" | "deploy-button" | "external" | "import-recommended-integrations" | "marketplace" | "oauth" | "resource-claims" | "v0"
+"backoffice" | "cli" | "deploy-button" | "external" | "import-recommended-integrations" | "marketplace" | "oauth" | "organization" | "resource-claims" | "v0"
 ```

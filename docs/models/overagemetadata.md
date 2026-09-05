@@ -5,7 +5,7 @@ Contains the timestamps for usage summary emails.
 ## Example Usage
 
 ```typescript
-import { OverageMetadata } from "@vercel/sdk/models/onehundredandfortyseven.js";
+import { OverageMetadata } from "@vercel/sdk/models/payloadpreviousrule.js";
 
 let value: OverageMetadata = {};
 ```

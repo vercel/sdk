@@ -5,7 +5,7 @@ Attribution metadata for the deployment, linking commit author to git and Vercel
 ## Example Usage
 
 ```typescript
-import { GetDeploymentResponseBodyAttribution } from "@vercel/sdk/models/getdeploymentresponsebody.js";
+import { GetDeploymentResponseBodyAttribution } from "@vercel/sdk/models/getdeploymentresponsebody1.js";
 
 let value: GetDeploymentResponseBodyAttribution = {};
 ```

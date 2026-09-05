@@ -5,7 +5,7 @@ Since February 2025 the configuration must include snapshot data at the time of 
 ## Example Usage
 
 ```typescript
-import { GetDeploymentResponseBodyConfig } from "@vercel/sdk/models/getdeploymentresponsebody.js";
+import { GetDeploymentResponseBodyConfig } from "@vercel/sdk/models/getdeploymentresponsebody1.js";
 
 let value: GetDeploymentResponseBodyConfig = {
   functionType: "standard",

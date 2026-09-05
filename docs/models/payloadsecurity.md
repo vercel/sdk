@@ -12,7 +12,7 @@ let value: PayloadSecurity = {};
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
+| `rateLimit`        | *number*           | :heavy_minus_sign: | N/A                |
 | `customRules`      | *number*           | :heavy_minus_sign: | N/A                |
 | `ipBlocks`         | *number*           | :heavy_minus_sign: | N/A                |
 | `ipBypass`         | *number*           | :heavy_minus_sign: | N/A                |
-| `rateLimit`        | *number*           | :heavy_minus_sign: | N/A                |

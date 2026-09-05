@@ -5,7 +5,7 @@ The default plan type for the build machine — what the customer is *paying* fo
 ## Example Usage
 
 ```typescript
-import { DefaultPurchaseType } from "@vercel/sdk/models/destinationtype.js";
+import { DefaultPurchaseType } from "@vercel/sdk/models/locale.js";
 
 let value: DefaultPurchaseType = "basic";
 ```

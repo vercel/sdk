@@ -13,20 +13,26 @@ let value: OneHundredAndSeventyFive = {
   integrationSlug: "<value>",
   integrationProductSlug: "<value>",
   configurationId: "<id>",
-  requestKind: "list_keys",
+  requestKind: "raw_commands",
+  readonly: false,
+  commands: [
+    "<value 1>",
+    "<value 2>",
+  ],
 };
 ```
 
 ## Fields
 
-| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `resourceId`                                                 | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `integrationId`                                              | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `integrationSlug`                                            | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `integrationProductSlug`                                     | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `configurationId`                                            | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `error`                                                      | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
-| `requestKind`                                                | [models.PayloadRequestKind](../models/payloadrequestkind.md) | :heavy_check_mark:                                           | N/A                                                          |
-| `pattern`                                                    | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
-| `type`                                                       | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `resourceId`                                   | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `integrationId`                                | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `integrationSlug`                              | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `integrationProductSlug`                       | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `configurationId`                              | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `error`                                        | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `requestKind`                                  | [models.RequestKind](../models/requestkind.md) | :heavy_check_mark:                             | N/A                                            |
+| `readonly`                                     | *boolean*                                      | :heavy_check_mark:                             | N/A                                            |
+| `commands`                                     | *string*[]                                     | :heavy_check_mark:                             | N/A                                            |
+| `failedIndex`                                  | *number*                                       | :heavy_minus_sign:                             | N/A                                            |

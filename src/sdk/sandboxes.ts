@@ -16,7 +16,7 @@ import { sandboxesGetSessionCommand } from "../funcs/sandboxesGetSessionCommand.
 import { sandboxesGetSessionSnapshot } from "../funcs/sandboxesGetSessionSnapshot.js";
 import { sandboxesKillSessionCommand } from "../funcs/sandboxesKillSessionCommand.js";
 import { sandboxesListDrives } from "../funcs/sandboxesListDrives.js";
-import { sandboxesListSandboxes } from "../funcs/sandboxesListSandboxes.js";
+import { sandboxesListNamedSandboxes } from "../funcs/sandboxesListNamedSandboxes.js";
 import { sandboxesListSessionCommands } from "../funcs/sandboxesListSessionCommands.js";
 import { sandboxesListSessions } from "../funcs/sandboxesListSessions.js";
 import { sandboxesListSessionSnapshots } from "../funcs/sandboxesListSessionSnapshots.js";
@@ -82,9 +82,9 @@ import {
   ListDrivesResponseBody,
 } from "../models/listdrivesop.js";
 import {
-  ListSandboxesRequest,
-  ListSandboxesResponseBody,
-} from "../models/listsandboxesop.js";
+  ListNamedSandboxesRequest,
+  ListNamedSandboxesResponseBody,
+} from "../models/listnamedsandboxesop.js";
 import {
   ListSessionCommandsRequest,
   ListSessionCommandsResponseBody,
@@ -119,11 +119,11 @@ export class Sandboxes extends ClientSDK {
    * @remarks
    * Retrieves a paginated list of named sandboxes belonging to a specific project. Results can be sorted by creation time or name, and optionally filtered by name prefix or status.
    */
-  async listSandboxes(
-    request: ListSandboxesRequest,
+  async listNamedSandboxes(
+    request: ListNamedSandboxesRequest,
     options?: RequestOptions,
-  ): Promise<ListSandboxesResponseBody> {
-    return unwrapAsync(sandboxesListSandboxes(
+  ): Promise<ListNamedSandboxesResponseBody> {
+    return unwrapAsync(sandboxesListNamedSandboxes(
       this,
       request,
       options,

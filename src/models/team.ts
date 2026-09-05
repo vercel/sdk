@@ -527,6 +527,14 @@ export type StrictPasswordProtectionSettings = {
   updatedAt: number;
 };
 
+/**
+ * When enabled, creating and managing connectors requires Owner role or the ConnectorManager permission.
+ */
+export type StrictConnectors = {
+  enabled: boolean;
+  updatedAt: number;
+};
+
 export const Preference = {
   AutoApproval: "auto-approval",
   Block: "block",
@@ -895,6 +903,10 @@ export type Team = {
   strictPasswordProtectionSettings?:
     | StrictPasswordProtectionSettings
     | undefined;
+  /**
+   * When enabled, creating and managing connectors requires Owner role or the ConnectorManager permission.
+   */
+  strictConnectors?: StrictConnectors | undefined;
   /**
    * NSNB configuration for the team.
    */
@@ -1549,6 +1561,26 @@ export function strictPasswordProtectionSettingsFromJSON(
 }
 
 /** @internal */
+export const StrictConnectors$inboundSchema: z.ZodType<
+  StrictConnectors,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  enabled: types.boolean(),
+  updatedAt: types.number(),
+});
+
+export function strictConnectorsFromJSON(
+  jsonString: string,
+): SafeParseResult<StrictConnectors, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => StrictConnectors$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StrictConnectors' from JSON`,
+  );
+}
+
+/** @internal */
 export const Preference$inboundSchema: z.ZodNativeEnum<typeof Preference> = z
   .nativeEnum(Preference);
 
@@ -2033,6 +2065,9 @@ export const Team$inboundSchema: z.ZodType<Team, z.ZodTypeDef, unknown> =
       ),
       strictPasswordProtectionSettings: types.optional(
         z.lazy(() => StrictPasswordProtectionSettings$inboundSchema),
+      ),
+      strictConnectors: types.optional(
+        z.lazy(() => StrictConnectors$inboundSchema),
       ),
       nsnbConfig: types.optional(z.lazy(() => NsnbConfig$inboundSchema)),
       deploymentPolicy: types.optional(

@@ -5,7 +5,7 @@ If the deployment was created using a Custom Environment, then this property con
 ## Example Usage
 
 ```typescript
-import { CustomEnvironment2 } from "@vercel/sdk/models/destinationtype.js";
+import { CustomEnvironment2 } from "@vercel/sdk/models/locale.js";
 
 let value: CustomEnvironment2 = {
   id: "<id>",

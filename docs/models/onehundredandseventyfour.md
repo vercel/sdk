@@ -13,25 +13,31 @@ let value: OneHundredAndSeventyFour = {
   integrationSlug: "<value>",
   integrationProductSlug: "<value>",
   configurationId: "<id>",
-  requestKind: "raw_commands",
+  databaseName: "<value>",
+  queryType: "data-edit",
   readonly: true,
-  commands: [
-    "<value 1>",
-  ],
+  rolledBack: true,
+  failedQueryIndex: 3603.99,
+  errorCode: "<value>",
+  queryCount: 5391.97,
+  queries: [],
 };
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `resourceId`                                   | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `integrationId`                                | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `integrationSlug`                              | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `integrationProductSlug`                       | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `configurationId`                              | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `error`                                        | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `requestKind`                                  | [models.RequestKind](../models/requestkind.md) | :heavy_check_mark:                             | N/A                                            |
-| `readonly`                                     | *boolean*                                      | :heavy_check_mark:                             | N/A                                            |
-| `commands`                                     | *string*[]                                     | :heavy_check_mark:                             | N/A                                            |
-| `failedIndex`                                  | *number*                                       | :heavy_minus_sign:                             | N/A                                            |
+| Field                                      | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `resourceId`                               | *string*                                   | :heavy_check_mark:                         | N/A                                        |
+| `integrationId`                            | *string*                                   | :heavy_check_mark:                         | N/A                                        |
+| `integrationSlug`                          | *string*                                   | :heavy_check_mark:                         | N/A                                        |
+| `integrationProductSlug`                   | *string*                                   | :heavy_check_mark:                         | N/A                                        |
+| `configurationId`                          | *string*                                   | :heavy_check_mark:                         | N/A                                        |
+| `databaseName`                             | *string*                                   | :heavy_check_mark:                         | N/A                                        |
+| `queryType`                                | [models.QueryType](../models/querytype.md) | :heavy_check_mark:                         | N/A                                        |
+| `readonly`                                 | *boolean*                                  | :heavy_check_mark:                         | N/A                                        |
+| `rolledBack`                               | *boolean*                                  | :heavy_check_mark:                         | N/A                                        |
+| `failedQueryIndex`                         | *number*                                   | :heavy_check_mark:                         | N/A                                        |
+| `errorCode`                                | *string*                                   | :heavy_check_mark:                         | N/A                                        |
+| `queryCount`                               | *number*                                   | :heavy_check_mark:                         | N/A                                        |
+| `queries`                                  | [models.Queries](../models/queries.md)[]   | :heavy_check_mark:                         | N/A                                        |

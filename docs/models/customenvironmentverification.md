@@ -5,7 +5,7 @@ A list of verification challenges, one of which must be completed to verify the 
 ## Example Usage
 
 ```typescript
-import { CustomEnvironmentVerification } from "@vercel/sdk/models/destinationtype.js";
+import { CustomEnvironmentVerification } from "@vercel/sdk/models/locale.js";
 
 let value: CustomEnvironmentVerification = {
   type: "<value>",

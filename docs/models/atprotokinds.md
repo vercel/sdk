@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { AtprotoKinds } from "@vercel/sdk/models/createdeploymentvaluedeploymentseq.js";
+import { AtprotoKinds } from "@vercel/sdk/models/createdeploymenthasdeploymentstype.js";
 
 let value: AtprotoKinds = "commit";
 ```

@@ -16,16 +16,16 @@ import {
   CancelDeploymentResponseBody$inboundSchema,
 } from "../models/canceldeploymentresponsebody.js";
 import {
-  CancelDeploymentRequest,
-  CancelDeploymentRequest$outboundSchema,
-} from "../models/destinationtype.js";
-import {
   ConnectionError,
   InvalidRequestError,
   RequestAbortedError,
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/httpclienterrors.js";
+import {
+  CancelDeploymentRequest,
+  CancelDeploymentRequest$outboundSchema,
+} from "../models/locale.js";
 import { ResponseValidationError } from "../models/responsevalidationerror.js";
 import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import { VercelError } from "../models/vercelerror.js";

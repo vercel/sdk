@@ -5,7 +5,7 @@ Present when deployment was created with manual provisioning enabled, either exp
 ## Example Usage
 
 ```typescript
-import { ResponseBodyManualProvisioning } from "@vercel/sdk/models/getdeploymentgitsourcerepoid.js";
+import { ResponseBodyManualProvisioning } from "@vercel/sdk/models/getdeploymentgitsourcedeploymentsresponse200type.js";
 
 let value: ResponseBodyManualProvisioning = {
   state: "COMPLETE",

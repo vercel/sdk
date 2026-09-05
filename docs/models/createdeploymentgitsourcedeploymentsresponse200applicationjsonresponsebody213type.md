@@ -5,7 +5,7 @@
 ```typescript
 import {
   CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody213Type,
-} from "@vercel/sdk/models/createdeploymentvaluedeploymentseq.js";
+} from "@vercel/sdk/models/createdeploymenthasdeploymentstype.js";
 
 let value:
   CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody213Type =

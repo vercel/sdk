@@ -46,6 +46,9 @@ let value: PatchTeamRequest = {
     strictPasswordProtectionSettings: {
       enabled: true,
     },
+    strictConnectors: {
+      enabled: true,
+    },
     resourceConfig: {
       buildMachine: {
         default: "standard",

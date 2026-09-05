@@ -6,12 +6,12 @@
 import { UserEventPayload255Next } from "@vercel/sdk/models/siftroute.js";
 
 let value: UserEventPayload255Next = {
-  functionDefaultMemoryType: "<value>",
+  functionDefaultTimeout: 4303.75,
 };
 ```
 
 ## Fields
 
-| Field                       | Type                        | Required                    | Description                 |
-| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
-| `functionDefaultMemoryType` | *string*                    | :heavy_check_mark:          | N/A                         |
+| Field                    | Type                     | Required                 | Description              |
+| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
+| `functionDefaultTimeout` | *number*                 | :heavy_check_mark:       | N/A                      |

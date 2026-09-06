@@ -3,7 +3,7 @@
  */
 
 import { VercelCore } from "../core.js";
-import { encodeFormQuery } from "../lib/encodings.js";
+import { encodeFormQuery, encodeSimple } from "../lib/encodings.js";
 import { matchStatusCode } from "../lib/http.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
@@ -12,11 +12,13 @@ import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import {
-  GetAiGatewayVirtualModelConfigRequest,
-  GetAiGatewayVirtualModelConfigRequest$outboundSchema,
-  GetAiGatewayVirtualModelConfigResponseBody,
-  GetAiGatewayVirtualModelConfigResponseBody$inboundSchema,
-} from "../models/getaigatewayvirtualmodelconfigop.js";
+  AiGatewayVirtualModelConfig,
+  AiGatewayVirtualModelConfig$inboundSchema,
+} from "../models/aigatewayvirtualmodelconfig.js";
+import {
+  GetAiGatewayVirtualModelConfigBySlugRequest,
+  GetAiGatewayVirtualModelConfigBySlugRequest$outboundSchema,
+} from "../models/getaigatewayvirtualmodelconfigbyslugop.js";
 import {
   ConnectionError,
   InvalidRequestError,
@@ -34,17 +36,17 @@ import { Result } from "../types/fp.js";
  * Get virtual model config
  *
  * @remarks
- * Get a virtual model config
+ * Get a virtual model config by path slug
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
  */
-export function apiAiGatewayGetAiGatewayVirtualModelConfig(
+export function apiAiGatewayGetAiGatewayVirtualModelConfigBySlug(
   client: VercelCore,
-  request: GetAiGatewayVirtualModelConfigRequest,
+  request: GetAiGatewayVirtualModelConfigBySlugRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    GetAiGatewayVirtualModelConfigResponseBody,
+    AiGatewayVirtualModelConfig,
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -64,12 +66,12 @@ export function apiAiGatewayGetAiGatewayVirtualModelConfig(
 
 async function $do(
   client: VercelCore,
-  request: GetAiGatewayVirtualModelConfigRequest,
+  request: GetAiGatewayVirtualModelConfigBySlugRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      GetAiGatewayVirtualModelConfigResponseBody,
+      AiGatewayVirtualModelConfig,
       | VercelError
       | ResponseValidationError
       | ConnectionError
@@ -85,7 +87,7 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      GetAiGatewayVirtualModelConfigRequest$outboundSchema.parse(value),
+      GetAiGatewayVirtualModelConfigBySlugRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -94,15 +96,20 @@ async function $do(
   const payload = parsed.value;
   const body = null;
 
-  const path = pathToFunc("/v1/ai-gateway/virtual-model-configs")();
+  const pathParams = {
+    vmcSlug: encodeSimple("vmcSlug", payload.vmcSlug, {
+      explode: false,
+      charEncoding: "percent",
+    }),
+  };
+  const path = pathToFunc("/v1/ai-gateway/virtual-model-configs/{vmcSlug}")(
+    pathParams,
+  );
 
   const query = encodeFormQuery({
-    "cursor": payload.cursor,
-    "limit": payload.limit,
     "ownerId": payload.ownerId,
     "slug": payload.slug,
     "teamId": payload.teamId,
-    "virtualModelSlug": payload.virtualModelSlug,
   });
 
   const headers = new Headers(compactMap({
@@ -116,7 +123,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "getAiGatewayVirtualModelConfig",
+    operationID: "getAiGatewayVirtualModelConfigBySlug",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
@@ -157,7 +164,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    GetAiGatewayVirtualModelConfigResponseBody,
+    AiGatewayVirtualModelConfig,
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -167,7 +174,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, GetAiGatewayVirtualModelConfigResponseBody$inboundSchema),
+    M.json(200, AiGatewayVirtualModelConfig$inboundSchema),
     M.fail([400, 401, 403, 404, 410, "4XX"]),
     M.fail([500, "5XX"]),
   )(response, req);

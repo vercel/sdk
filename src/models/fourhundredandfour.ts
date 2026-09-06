@@ -102,6 +102,7 @@ export const UserEventType = {
   AiGatewayByokCredentialUpdated: "ai-gateway-byok-credential-updated",
   AiGatewayCreditsPurchased: "ai-gateway-credits-purchased",
   AiGatewayGuardrailsUpdated: "ai-gateway-guardrails-updated",
+  AiGatewayHipaaComplianceToggled: "ai-gateway-hipaa-compliance-toggled",
   AiGatewayInferenceRegionsUpdated: "ai-gateway-inference-regions-updated",
   AiGatewayModelAllowlistModelsUpdated:
     "ai-gateway-model-allowlist-models-updated",
@@ -112,6 +113,8 @@ export const UserEventType = {
   AiGatewayPrivateProviderCreated: "ai-gateway-private-provider-created",
   AiGatewayPrivateProviderDeleted: "ai-gateway-private-provider-deleted",
   AiGatewayPrivateProviderUpdated: "ai-gateway-private-provider-updated",
+  AiGatewayPromptTrainingOptOutToggled:
+    "ai-gateway-prompt-training-opt-out-toggled",
   AiGatewayProviderAllowlistProvidersUpdated:
     "ai-gateway-provider-allowlist-providers-updated",
   AiGatewayProviderAllowlistToggled: "ai-gateway-provider-allowlist-toggled",
@@ -132,6 +135,7 @@ export const UserEventType = {
   AiGatewayVirtualModelConfigRestored:
     "ai-gateway-virtual-model-config-restored",
   AiGatewayVirtualModelConfigUpdated: "ai-gateway-virtual-model-config-updated",
+  AiGatewayZeroDataRetentionToggled: "ai-gateway-zero-data-retention-toggled",
   AiOmniagent: "ai-omniagent",
   AlertInvestigationProjectAllowlistUpdated:
     "alert-investigation-project-allowlist-updated",

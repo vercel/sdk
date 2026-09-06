@@ -196,8 +196,7 @@ const value: models.Nineteen = {
 
 ```typescript
 const value: models.Twenty = {
-  amount: "530.30",
-  purchaseIntentId: "<id>",
+  enabled: false,
 };
 ```
 
@@ -205,7 +204,8 @@ const value: models.Twenty = {
 
 ```typescript
 const value: models.TwentyOne = {
-  enabled: false,
+  amount: "733.90",
+  purchaseIntentId: "<id>",
 };
 ```
 

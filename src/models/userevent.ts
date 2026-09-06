@@ -969,15 +969,15 @@ export type TwentyTwo = {
  * The payload of the event, if requested.
  */
 export type TwentyOne = {
-  enabled: boolean;
+  amount: string;
+  purchaseIntentId: string;
 };
 
 /**
  * The payload of the event, if requested.
  */
 export type Twenty = {
-  amount: string;
-  purchaseIntentId: string;
+  enabled: boolean;
 };
 
 export type Credential = {
@@ -1808,7 +1808,7 @@ export type Payload =
   | Fifteen
   | Seventeen
   | Eighteen
-  | Twenty
+  | TwentyOne
   | TwentyTwo
   | ThirtyFour
   | ThirtyFive
@@ -1918,7 +1918,7 @@ export type Payload =
   | Fourteen
   | Sixteen
   | Nineteen
-  | TwentyOne
+  | Twenty
   | TwentyThree
   | TwentyFour
   | TwentyFive
@@ -2314,7 +2314,7 @@ export type UserEvent = {
     | Fifteen
     | Seventeen
     | Eighteen
-    | Twenty
+    | TwentyOne
     | TwentyTwo
     | ThirtyFour
     | ThirtyFive
@@ -2424,7 +2424,7 @@ export type UserEvent = {
     | Fourteen
     | Sixteen
     | Nineteen
-    | TwentyOne
+    | Twenty
     | TwentyThree
     | TwentyFour
     | TwentyFive
@@ -2813,7 +2813,8 @@ export const TwentyOne$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  enabled: types.boolean(),
+  amount: types.string(),
+  purchaseIntentId: types.string(),
 });
 
 export function twentyOneFromJSON(
@@ -2829,8 +2830,7 @@ export function twentyOneFromJSON(
 /** @internal */
 export const Twenty$inboundSchema: z.ZodType<Twenty, z.ZodTypeDef, unknown> = z
   .object({
-    amount: types.string(),
-    purchaseIntentId: types.string(),
+    enabled: types.boolean(),
   });
 
 export function twentyFromJSON(
@@ -3787,7 +3787,7 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     z.lazy(() => Fifteen$inboundSchema),
     z.lazy(() => Seventeen$inboundSchema),
     z.lazy(() => Eighteen$inboundSchema),
-    z.lazy(() => Twenty$inboundSchema),
+    z.lazy(() => TwentyOne$inboundSchema),
     z.lazy(() => TwentyTwo$inboundSchema),
     ThirtyFour$inboundSchema,
     ThirtyFive$inboundSchema,
@@ -3897,7 +3897,7 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     z.lazy(() => Fourteen$inboundSchema),
     z.lazy(() => Sixteen$inboundSchema),
     z.lazy(() => Nineteen$inboundSchema),
-    z.lazy(() => TwentyOne$inboundSchema),
+    z.lazy(() => Twenty$inboundSchema),
     z.lazy(() => TwentyThree$inboundSchema),
     z.lazy(() => TwentyFour$inboundSchema),
     z.lazy(() => TwentyFive$inboundSchema),
@@ -4268,7 +4268,7 @@ export const UserEvent$inboundSchema: z.ZodType<
       z.lazy(() => Fifteen$inboundSchema),
       z.lazy(() => Seventeen$inboundSchema),
       z.lazy(() => Eighteen$inboundSchema),
-      z.lazy(() => Twenty$inboundSchema),
+      z.lazy(() => TwentyOne$inboundSchema),
       z.lazy(() => TwentyTwo$inboundSchema),
       ThirtyFour$inboundSchema,
       ThirtyFive$inboundSchema,
@@ -4378,7 +4378,7 @@ export const UserEvent$inboundSchema: z.ZodType<
       z.lazy(() => Fourteen$inboundSchema),
       z.lazy(() => Sixteen$inboundSchema),
       z.lazy(() => Nineteen$inboundSchema),
-      z.lazy(() => TwentyOne$inboundSchema),
+      z.lazy(() => Twenty$inboundSchema),
       z.lazy(() => TwentyThree$inboundSchema),
       z.lazy(() => TwentyFour$inboundSchema),
       z.lazy(() => TwentyFive$inboundSchema),

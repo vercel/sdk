@@ -8,7 +8,8 @@ The payload of the event, if requested.
 import { TwentyOne } from "@vercel/sdk/models/userevent.js";
 
 let value: TwentyOne = {
-  enabled: false,
+  amount: "733.90",
+  purchaseIntentId: "<id>",
 };
 ```
 
@@ -16,4 +17,5 @@ let value: TwentyOne = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
+| `amount`           | *string*           | :heavy_check_mark: | N/A                |
+| `purchaseIntentId` | *string*           | :heavy_check_mark: | N/A                |

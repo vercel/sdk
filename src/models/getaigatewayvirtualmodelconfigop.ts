@@ -3,10 +3,24 @@
  */
 
 import * as z from "zod/v3";
+import { safeParse } from "../lib/schemas.js";
+import { Result as SafeParseResult } from "../types/fp.js";
+import { smartUnion } from "../types/smartUnion.js";
+import {
+  AiGatewayVirtualModelConfig,
+  AiGatewayVirtualModelConfig$inboundSchema,
+} from "./aigatewayvirtualmodelconfig.js";
+import {
+  AiGatewayVirtualModelConfigList,
+  AiGatewayVirtualModelConfigList$inboundSchema,
+} from "./aigatewayvirtualmodelconfiglist.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetAiGatewayVirtualModelConfigRequest = {
   ownerId?: string | undefined;
-  virtualModelSlug: string;
+  virtualModelSlug?: string | undefined;
+  limit?: number | undefined;
+  cursor?: string | undefined;
   /**
    * The Team identifier to perform the request on behalf of.
    */
@@ -17,10 +31,16 @@ export type GetAiGatewayVirtualModelConfigRequest = {
   slug?: string | undefined;
 };
 
+export type GetAiGatewayVirtualModelConfigResponseBody =
+  | AiGatewayVirtualModelConfig
+  | AiGatewayVirtualModelConfigList;
+
 /** @internal */
 export type GetAiGatewayVirtualModelConfigRequest$Outbound = {
   ownerId?: string | undefined;
-  virtualModelSlug: string;
+  virtualModelSlug?: string | undefined;
+  limit?: number | undefined;
+  cursor?: string | undefined;
   teamId?: string | undefined;
   slug?: string | undefined;
 };
@@ -32,7 +52,9 @@ export const GetAiGatewayVirtualModelConfigRequest$outboundSchema: z.ZodType<
   GetAiGatewayVirtualModelConfigRequest
 > = z.object({
   ownerId: z.string().optional(),
-  virtualModelSlug: z.string(),
+  virtualModelSlug: z.string().optional(),
+  limit: z.number().int().optional(),
+  cursor: z.string().optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
@@ -44,5 +66,29 @@ export function getAiGatewayVirtualModelConfigRequestToJSON(
     GetAiGatewayVirtualModelConfigRequest$outboundSchema.parse(
       getAiGatewayVirtualModelConfigRequest,
     ),
+  );
+}
+
+/** @internal */
+export const GetAiGatewayVirtualModelConfigResponseBody$inboundSchema:
+  z.ZodType<GetAiGatewayVirtualModelConfigResponseBody, z.ZodTypeDef, unknown> =
+    smartUnion([
+      AiGatewayVirtualModelConfig$inboundSchema,
+      AiGatewayVirtualModelConfigList$inboundSchema,
+    ]);
+
+export function getAiGatewayVirtualModelConfigResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetAiGatewayVirtualModelConfigResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetAiGatewayVirtualModelConfigResponseBody$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetAiGatewayVirtualModelConfigResponseBody' from JSON`,
   );
 }

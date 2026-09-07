@@ -9,6 +9,9 @@
 * [updateAiGatewayVirtualModelConfig](#updateaigatewayvirtualmodelconfig) - Update virtual model config
 * [deleteAiGatewayVirtualModelConfig](#deleteaigatewayvirtualmodelconfig) - Delete virtual model config
 * [listAiGatewayVirtualModelConfigs](#listaigatewayvirtualmodelconfigs) - List virtual model configs
+* [getAiGatewayVirtualModelConfigBySlug](#getaigatewayvirtualmodelconfigbyslug) - Get virtual model config
+* [updateAiGatewayVirtualModelConfigBySlug](#updateaigatewayvirtualmodelconfigbyslug) - Update virtual model config
+* [deleteAiGatewayVirtualModelConfigBySlug](#deleteaigatewayvirtualmodelconfigbyslug) - Delete virtual model config
 
 ## createAiGatewayVirtualModelConfig
 
@@ -154,7 +157,7 @@ run();
 
 ### Response
 
-**Promise\<[models.AiGatewayVirtualModelConfig](../../models/aigatewayvirtualmodelconfig.md)\>**
+**Promise\<[models.GetAiGatewayVirtualModelConfigResponseBody](../../models/getaigatewayvirtualmodelconfigresponsebody.md)\>**
 
 ### Errors
 
@@ -382,6 +385,237 @@ run();
 ### Response
 
 **Promise\<[models.AiGatewayVirtualModelConfigList](../../models/aigatewayvirtualmodelconfiglist.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
+
+## getAiGatewayVirtualModelConfigBySlug
+
+Get a virtual model config by path slug
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="getAiGatewayVirtualModelConfigBySlug" method="get" path="/v1/ai-gateway/virtual-model-configs/{vmcSlug}" -->
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await vercel.apiAiGateway.getAiGatewayVirtualModelConfigBySlug({
+    vmcSlug: "<value>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import { apiAiGatewayGetAiGatewayVirtualModelConfigBySlug } from "@vercel/sdk/funcs/apiAiGatewayGetAiGatewayVirtualModelConfigBySlug.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await apiAiGatewayGetAiGatewayVirtualModelConfigBySlug(vercel, {
+    vmcSlug: "<value>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("apiAiGatewayGetAiGatewayVirtualModelConfigBySlug failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.GetAiGatewayVirtualModelConfigBySlugRequest](../../models/getaigatewayvirtualmodelconfigbyslugrequest.md)                                                              | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.AiGatewayVirtualModelConfig](../../models/aigatewayvirtualmodelconfig.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
+
+## updateAiGatewayVirtualModelConfigBySlug
+
+Update a virtual model config by path slug
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="updateAiGatewayVirtualModelConfigBySlug" method="patch" path="/v1/ai-gateway/virtual-model-configs/{vmcSlug}" -->
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await vercel.apiAiGateway.updateAiGatewayVirtualModelConfigBySlug({
+    vmcSlug: "<value>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import { apiAiGatewayUpdateAiGatewayVirtualModelConfigBySlug } from "@vercel/sdk/funcs/apiAiGatewayUpdateAiGatewayVirtualModelConfigBySlug.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await apiAiGatewayUpdateAiGatewayVirtualModelConfigBySlug(vercel, {
+    vmcSlug: "<value>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("apiAiGatewayUpdateAiGatewayVirtualModelConfigBySlug failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.UpdateAiGatewayVirtualModelConfigBySlugRequest](../../models/updateaigatewayvirtualmodelconfigbyslugrequest.md)                                                        | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.AiGatewayVirtualModelConfig](../../models/aigatewayvirtualmodelconfig.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
+
+## deleteAiGatewayVirtualModelConfigBySlug
+
+Delete a virtual model config by path slug (soft delete)
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="deleteAiGatewayVirtualModelConfigBySlug" method="delete" path="/v1/ai-gateway/virtual-model-configs/{vmcSlug}" -->
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await vercel.apiAiGateway.deleteAiGatewayVirtualModelConfigBySlug({
+    vmcSlug: "<value>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import { apiAiGatewayDeleteAiGatewayVirtualModelConfigBySlug } from "@vercel/sdk/funcs/apiAiGatewayDeleteAiGatewayVirtualModelConfigBySlug.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await apiAiGatewayDeleteAiGatewayVirtualModelConfigBySlug(vercel, {
+    vmcSlug: "<value>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("apiAiGatewayDeleteAiGatewayVirtualModelConfigBySlug failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.DeleteAiGatewayVirtualModelConfigBySlugRequest](../../models/deleteaigatewayvirtualmodelconfigbyslugrequest.md)                                                        | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[any](../../models/.md)\>**
 
 ### Errors
 

@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: 61ffe44351c443efc0126c93a8d4e8a6
+  docChecksum: fde20a046b9b853ce91f9ff554ec32c4
   docVersion: 0.0.1
   speakeasyVersion: 1.796.4
   generationVersion: 2.935.1
-  releaseVersion: 1.28.28
-  configChecksum: 0729c8a5bc54822fa3d7cdd1063bb1dc
+  releaseVersion: 1.28.29
+  configChecksum: 7e5a65acee84369dfab3b2d0dc96f5b8
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
 persistentEdits:
-  generation_id: 57cdad0f-98de-4585-8c2e-f083ef09a189
-  pristine_commit_hash: a57f1ecc8b7ab3ee9c9a3c81f48ec87a2a3caf6f
-  pristine_tree_hash: 268c58f2569a82ffb69d270818785f9ba13bed66
+  generation_id: cbb8dc73-ada4-4d3a-b716-7634f1a10b71
+  pristine_commit_hash: 747c845bd473d623a70a31a9cdac0f5745eb5d21
+  pristine_tree_hash: 617256731d2e226f50239f39ca1bd661978318a5
 features:
   typescript:
     acceptHeaders: 2.81.2
@@ -635,8 +635,8 @@ trackedFiles:
     pristine_git_object: e6e3fb63bc9dfb7e8412fd504d39b454fc796ef9
   docs/models/aigatewayvirtualmodelconfiglist.md:
     id: db32de215510
-    last_write_checksum: sha1:bdcdc51bd83a76fe0c97d06ceb250f157e993904
-    pristine_git_object: e0a95f57109256b955a12ffe4af5471a0da0204e
+    last_write_checksum: sha1:cf12f5e40e60013ae7cb62da8bfe04aa63859629
+    pristine_git_object: 085f8d527efe04b5703dc35686317752fd0ae25c
   docs/models/aigatewayvirtualmodelconfigscope.md:
     id: fb18e39c561f
     last_write_checksum: sha1:a1168481259adf2b8c24c0eff1844e4fe87653a0
@@ -9557,6 +9557,10 @@ trackedFiles:
     id: 3755bf5c38c1
     last_write_checksum: sha1:eb624ae7dbf3250c635a16f7f4c0c67e154f5384
     pristine_git_object: fb26dd82bbeaa8ce4ed00e9465f496592deba3a1
+  docs/models/deleteaigatewayvirtualmodelconfigbyslugrequest.md:
+    id: 5513e02c8b2b
+    last_write_checksum: sha1:ad22facff958d3dbfea9188fe093bbf99b0cf4f5
+    pristine_git_object: e02cd80adf64e16fd2ce67794ebc141b8aa4b893
   docs/models/deleteaigatewayvirtualmodelconfigrequest.md:
     id: 8cce275beef2
     last_write_checksum: sha1:13457054ac6dd7af09493897976414118e999d5c
@@ -12005,10 +12009,18 @@ trackedFiles:
     id: c79c1afe3324
     last_write_checksum: sha1:27fa29fb1f58088c4e4e6636c3922e1ff1f75655
     pristine_git_object: 2b8b8efefffd4487c43f607a6284220ed611dd61
+  docs/models/getaigatewayvirtualmodelconfigbyslugrequest.md:
+    id: a015b13f8dac
+    last_write_checksum: sha1:574eda1ce18b171ac2852447cb80aabe94aca24a
+    pristine_git_object: 310affb5006adcc50baf55439ba7fb5e49b64f8f
   docs/models/getaigatewayvirtualmodelconfigrequest.md:
     id: 955dca967f65
-    last_write_checksum: sha1:d2b3895b76d963833271dedd9d71df6b43aac605
-    pristine_git_object: 6d5fc59b5a10a6cb825749ebc35fcb62c5b907c3
+    last_write_checksum: sha1:78937de4617663b6026b0d842febbf72f4cbaf10
+    pristine_git_object: 01345fc29ba45f4dbe8dbad336f5959b129bde72
+  docs/models/getaigatewayvirtualmodelconfigresponsebody.md:
+    id: 1bfd4da0c561
+    last_write_checksum: sha1:9797fe1258c0ffc7ff2490942e78ee72630142b2
+    pristine_git_object: dc7bdc501a28d14c6a5c3268a8d66b7cdd8802b0
   docs/models/getaliasapplications.md:
     id: a9e0c8682afa
     last_write_checksum: sha1:d687ec6b7c31570274a1f5cd4c6558583f4c1377
@@ -27047,8 +27059,8 @@ trackedFiles:
     pristine_git_object: 54b2a65612f64d37db84dc9890c580e81c5a417e
   docs/models/listeventtype.md:
     id: b55acdb24162
-    last_write_checksum: sha1:0ad0c8da9b2177ed7efac34adf9de78d2c7f4350
-    pristine_git_object: e14020cdea110070ba8c598081522b8bc1c42128
+    last_write_checksum: sha1:2dd77ecb15b075765a1d8d5d67e1722cbc1b74df
+    pristine_git_object: 8795202d756d731533b204bc1bbb54089b1afa41
   docs/models/listeventtypecategories.md:
     id: c461fd3a39d7
     last_write_checksum: sha1:e3bc060adec5380608079b3aabea584723ffc8f1
@@ -27847,8 +27859,8 @@ trackedFiles:
     pristine_git_object: 9d26702f7f38b46084a7ee9309c019ec16a14b1a
   docs/models/name.md:
     id: 6ee802922293
-    last_write_checksum: sha1:7d50394724723124b9120b2b6af31c5f1171ffcd
-    pristine_git_object: c1b1346c7546f1361ef49f243c77877c62c146fd
+    last_write_checksum: sha1:83975592a7ebcd4f9c30e27596b490293169bbb6
+    pristine_git_object: 84517da64782c37984f0c31c936ae7f0de15da57
   docs/models/name2.md:
     id: 756aba6c2c68
     last_write_checksum: sha1:b9c7bae54edc2e059f6b2ec9a1518fa130e8039a
@@ -29103,8 +29115,8 @@ trackedFiles:
     pristine_git_object: 4391bc6735fde00d520adf41dfa160c0a5d85b05
   docs/models/payload.md:
     id: cd93a0338683
-    last_write_checksum: sha1:5c3a5bbcfa0eb1cdcab0f8f83f3b4940d8724875
-    pristine_git_object: b5416728b159ea2159bbc650596e2f690044d24d
+    last_write_checksum: sha1:f0dfa4812e4631e026005583a16f5744c90205ac
+    pristine_git_object: 673ce1b95af16e94cdc7c07abeee9bbcddf88376
   docs/models/payload1.md:
     id: 5657148cae7f
     last_write_checksum: sha1:7d5597224f1893548f041133767a3286969fa17b
@@ -31479,8 +31491,8 @@ trackedFiles:
     pristine_git_object: 9a3c9111f1c3deadd7eb724b8693e7af1401a157
   docs/models/replacedby.md:
     id: bb5f71b2b7ba
-    last_write_checksum: sha1:c5acab0f0f1a49250064d06d40f9a6aaa87def18
-    pristine_git_object: 30056fb4470046d6b2e0f748c5dbb6ed36ded684
+    last_write_checksum: sha1:eb7ad1d3a4c9b69065d9e58bdbe81f0fdae40f5c
+    pristine_git_object: 0e8a837948c85d92e0e6ae94fb0e012262dcdbd0
   docs/models/replacedomainsbydomainrecordsrequest.md:
     id: 2e0d293b7525
     last_write_checksum: sha1:903c5010488999ef36037256f11b90816395f87b
@@ -35447,8 +35459,8 @@ trackedFiles:
     pristine_git_object: ae6d82b8c75b749f387143f80f06c48b030643ce
   docs/models/twenty.md:
     id: b2412a4aec83
-    last_write_checksum: sha1:df608b47e7507699e41713702fa1ac70a4c06013
-    pristine_git_object: f5d4c6d26ec3a14ff12bdc994034f7743681e113
+    last_write_checksum: sha1:bad0b77ad0e037fa670355505950370f01515286
+    pristine_git_object: a8f416806ebef50cae53d17c25a5b13f5e6d0a1c
   docs/models/twentyeight.md:
     id: d4a3a689c8b4
     last_write_checksum: sha1:8aa087f24b9553729fcf929c983d80e501644657
@@ -35467,8 +35479,8 @@ trackedFiles:
     pristine_git_object: 38dca11ff9eebfdb0f91566582ef2971e970bcd7
   docs/models/twentyone.md:
     id: 370fe99e277a
-    last_write_checksum: sha1:9c8b55418a0bc33f9ed5b7f24e72d79b6a304493
-    pristine_git_object: d1f31f1413db8711c8649901e51e8a9e5ea44b75
+    last_write_checksum: sha1:4fdca689b088247fa2e78f150deb949372953dbc
+    pristine_git_object: 4e4967043042b18aeeb36fe8f9e97277402912f8
   docs/models/twentyseven.md:
     id: ff42b81d3939
     last_write_checksum: sha1:9aec67eb15052ac4655b0525dde26e59cdfea7ee
@@ -36109,6 +36121,10 @@ trackedFiles:
     id: 74a378285f8d
     last_write_checksum: sha1:36e41f04d382bfb44dd0d888d3c593d807438a9c
     pristine_git_object: 3be83d038b8308f97193cbe34efb5f4e773c4b69
+  docs/models/updateaigatewayvirtualmodelconfigbyslugrequest.md:
+    id: ca63ac21c7bc
+    last_write_checksum: sha1:913dc81aeaaa97d081c81ba218b2003a350fda73
+    pristine_git_object: 3b8af902c1afbc38add6e9ef64bfcb35e5013c11
   docs/models/updateaigatewayvirtualmodelconfigrequest.md:
     id: "910174933288"
     last_write_checksum: sha1:5da0c26161a73976ee9c8e3f695dde22378d612c
@@ -43891,8 +43907,8 @@ trackedFiles:
     pristine_git_object: 5142a971cc1478a6510522108c4a4c12d9d04510
   docs/models/usereventtype.md:
     id: a262b2f6caa4
-    last_write_checksum: sha1:b6abc3e451ad31adeb51abcad3c2413ad89661b8
-    pristine_git_object: 578878cfd66147dff7be52e0e6ba3845c5aeaa28
+    last_write_checksum: sha1:39ecfbf09462d653a76df0a147d03592ed42711f
+    pristine_git_object: fd716a4a5be8e4f8ff7f80b32549394622872fad
   docs/models/usereventvia3type.md:
     id: 5f09d9799101
     last_write_checksum: sha1:749ba867a65c23bc045c1585e71f761ddcaa6cb4
@@ -44219,8 +44235,8 @@ trackedFiles:
     pristine_git_object: 21a28830bbc7b9ee065829dd53b532c134bff206
   docs/sdks/apiaigateway/README.md:
     id: c2030d6c6a6b
-    last_write_checksum: sha1:11a4c05155034ca48c1450df74dd105eda7a4731
-    pristine_git_object: e1e317c6468e32d10c31dcafa7530e11c576b562
+    last_write_checksum: sha1:6f4e1c65ca5326c54549b7085730df14c030a958
+    pristine_git_object: eb6cf2096be4ad11b81174bcc8abb19c85379d7f
   docs/sdks/artifacts/README.md:
     id: 104ebfe5b00f
     last_write_checksum: sha1:1c364386ad9ca56aa6e8c8bcf405873b07213630
@@ -44395,12 +44411,12 @@ trackedFiles:
     pristine_git_object: d7a3f7e83d792b68763aa5902762bd7dd7b95bda
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:fde96f6675fa60482d636ecc7229ce627e589b3d
-    pristine_git_object: 11a67f8ffd1be2377293c595a4d4a086e174ce53
+    last_write_checksum: sha1:1ec6014821cbe1e490c609d1e4df9cb39da70d48
+    pristine_git_object: 17f0780a66d48eb10ed88dcd3d19678a7af50fe4
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:3d4f29df3e8b02d2dcbdb0ffdbdffd2c5f50971e
-    pristine_git_object: c9200d5e6bf6c35d640be7c54025b64d042f653f
+    last_write_checksum: sha1:00e215ce0a59620fac78a6f8c926a3550e8cc8fd
+    pristine_git_object: e389aba26471490b8124bcb967a10b21eebe3168
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:dc8229fbd0c675b1f78e40b358b0f836f90ca221
@@ -44497,10 +44513,18 @@ trackedFiles:
     id: 82808e018dd2
     last_write_checksum: sha1:ab7911f65597034f817261941b9d50b33118bee1
     pristine_git_object: 3e1a741aa5b4a60fa0ee983899d2bc8be009aa72
+  src/funcs/apiAiGatewayDeleteAiGatewayVirtualModelConfigBySlug.ts:
+    id: b00cee296bdb
+    last_write_checksum: sha1:7ebb1df55dc2fa989c4d05f7f41ac22a8b522382
+    pristine_git_object: e82ac6c55dcf40c58837b45f8324d68f5f80c480
   src/funcs/apiAiGatewayGetAiGatewayVirtualModelConfig.ts:
     id: 4712b1770ef0
-    last_write_checksum: sha1:5cc5453a061da4cbe029f16bbe99ff6906b040c8
-    pristine_git_object: 9d3e8265016d89817486cef29663ff5c3661c99a
+    last_write_checksum: sha1:774c02e43c43d88ed32003baefda6683a5cfa2ae
+    pristine_git_object: 9342e6bc7f346f68ba4a9d151e7e369c6644fd39
+  src/funcs/apiAiGatewayGetAiGatewayVirtualModelConfigBySlug.ts:
+    id: cfd106b27d0c
+    last_write_checksum: sha1:69d021ebb17a910d3a7b5c53ebb29d5de27ad8ec
+    pristine_git_object: 5390779102c8f0a164066fa67c81a85a126d0411
   src/funcs/apiAiGatewayListAiGatewayVirtualModelConfigs.ts:
     id: 1d8add342dcd
     last_write_checksum: sha1:47d852e1471c6e7c1570a5cdedb61328028d4e37
@@ -44509,6 +44533,10 @@ trackedFiles:
     id: d0ba2b194e4e
     last_write_checksum: sha1:cb300f7f6bb6c90f7688d54115e59f4b54e6a05d
     pristine_git_object: 6a614b93134307d3cec7d8541c46546df64e4521
+  src/funcs/apiAiGatewayUpdateAiGatewayVirtualModelConfigBySlug.ts:
+    id: 8f97718f10f7
+    last_write_checksum: sha1:8257f19b9eb04132b891cf6bd62dda9a561f1016
+    pristine_git_object: 0d252ed5f3de4d34d991abec411e0cab0d4f23a3
   src/funcs/artifactsArtifactExists.ts:
     id: af0444889680
     last_write_checksum: sha1:b75ef857dfc1192243edff2a8b4226ad9595a1b2
@@ -46027,8 +46055,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:89e8167db30a94885f02911f0fa21f562c714a40
-    pristine_git_object: 9808af482f364c69d66a4c0161e793a8cb16e3aa
+    last_write_checksum: sha1:5469951e4ed1b82e259b996c0a2aff65cfa8ad15
+    pristine_git_object: 9d7d0b4a61e2fbf7e33b7e432d7031c6956d5cc4
   src/lib/encodings.ts:
     id: 3bd8ead98afd
     last_write_checksum: sha1:a257d6f6108693db2197617c579400bc8f0da914
@@ -46549,6 +46577,10 @@ trackedFiles:
     id: 9897ffb278bb
     last_write_checksum: sha1:f75f57115013365047f3545c56ae8d03e1e2a39b
     pristine_git_object: 07c25415ecc91dda1f8873b427b4eed9240c0ae4
+  src/models/deleteaigatewayvirtualmodelconfigbyslugop.ts:
+    id: 83bfbca625b6
+    last_write_checksum: sha1:3bc48835e5186593f01be5ab0d45e25010fa9766
+    pristine_git_object: 82f422cc7902711d4070c7f32c04ca98326a03a4
   src/models/deleteaigatewayvirtualmodelconfigop.ts:
     id: ecc55fab047e
     last_write_checksum: sha1:c78b40b26c996dc4867c9da85282d1a8a8ee3bc4
@@ -46831,8 +46863,8 @@ trackedFiles:
     pristine_git_object: e5040c0596b8e9fa19e024a47468ab54a263a3e2
   src/models/fourhundredandfour.ts:
     id: 9af8c3ac4655
-    last_write_checksum: sha1:ca772ac4c92cc99cdc43e725b691afbd35d27581
-    pristine_git_object: 508aa8bed7c74da6ac7ce3f288fc97d41a67b837
+    last_write_checksum: sha1:8202d2f60c6e794e4c3862c732cbff9c7f164d85
+    pristine_git_object: 38cd1e7af0ce7d83a2ca42b60b125d1ee085455d
   src/models/generatefirewallruleop.ts:
     id: 039582f0f50f
     last_write_checksum: sha1:858ed93ed152b4a8bc869069f57f4061c1af9ffd
@@ -46849,10 +46881,14 @@ trackedFiles:
     id: 600bcee5cda9
     last_write_checksum: sha1:ff1fb271eadf76bb95bee557322935891181ef43
     pristine_git_object: eb76cc8b8b2138cae6656beaa8dcba538ac47ad2
+  src/models/getaigatewayvirtualmodelconfigbyslugop.ts:
+    id: bd4a4b41c78c
+    last_write_checksum: sha1:39796605390c350488e37635f1bbd22b0d02dfba
+    pristine_git_object: 4adb741d35ae7400f6af0dddee10df829eb30c9b
   src/models/getaigatewayvirtualmodelconfigop.ts:
     id: 1a7ba36b722e
-    last_write_checksum: sha1:c299a82a927ae93857a7c7c82a7f0fd768f96050
-    pristine_git_object: dcef38496cd55b660dc14d863c7af73ff2143630
+    last_write_checksum: sha1:292677e3d502ca0b1a795feec3fa2540b7807ec9
+    pristine_git_object: 01b0f2438a5752ae8b89828b620b0ea76b994bbc
   src/models/getaliasop.ts:
     id: a565ecdcf947
     last_write_checksum: sha1:c0ceaa106763a2537329d54f75cb11a2da99c86c
@@ -47507,8 +47543,8 @@ trackedFiles:
     pristine_git_object: 52cdf6bd69c60b071123ff0bb60e86f93d6f1c4c
   src/models/listeventtype.ts:
     id: fc505846d3b4
-    last_write_checksum: sha1:22305297ef0f8b7aed365cd7f6759dd6f3325bf1
-    pristine_git_object: 544ba4cf6bc5a2cb27d9aa1e4ab6f3ef86c38651
+    last_write_checksum: sha1:35e979e29f2a35d037d3151b8fd2cd428f69b5b7
+    pristine_git_object: 57e2e0ea81e5250670d9713beca25ef04227be9e
   src/models/listeventtypesop.ts:
     id: 2ae3207609b3
     last_write_checksum: sha1:76f54f4469a48abd1cbf1a70ce928f98cc105236
@@ -47965,6 +48001,10 @@ trackedFiles:
     id: ae6c4da1d786
     last_write_checksum: sha1:ff862133ec77351340249393a67a474ba896bd57
     pristine_git_object: 3d68f5a97927512452894c6b7546e09deab5ff5b
+  src/models/updateaigatewayvirtualmodelconfigbyslugop.ts:
+    id: 2a221d47ae97
+    last_write_checksum: sha1:a022778f420017ed318df46e7d798f016cf28259
+    pristine_git_object: e8aef79fe76ccd6224dd6c2eb600f6ac440a41a4
   src/models/updateaigatewayvirtualmodelconfigop.ts:
     id: 87eac1641d24
     last_write_checksum: sha1:407b2b08cd85b76e5f8561ce2bf91813cb8eec7e
@@ -48179,8 +48219,8 @@ trackedFiles:
     pristine_git_object: b4751fe0cf18eeeff18973c45a47490b7ad6ef4b
   src/models/userevent.ts:
     id: b4ca51647dbd
-    last_write_checksum: sha1:5814f822d24f0a8e78d30684ed59966d6d4ed0e0
-    pristine_git_object: 1cf8466b8b90db3e681de506a8e253b9418677ce
+    last_write_checksum: sha1:c68d67faebf4c9d9d55eca0f495919dda4f48620
+    pristine_git_object: 69e7a3641b13a34d0af9a02ac17ecb433defe3ef
   src/models/usereventpayload336budget.ts:
     id: 3660b3d3fdd7
     last_write_checksum: sha1:238e69170e9abbdf7c5418d2e36ba3a2303f1456
@@ -48247,8 +48287,8 @@ trackedFiles:
     pristine_git_object: c5a9eeaf716a11b2a3c7baddb4c34b53ae0b31bb
   src/sdk/apiaigateway.ts:
     id: 7b4c43bbe9e2
-    last_write_checksum: sha1:b5ef6eeba82a94458ddae01242c25c25e4d489a4
-    pristine_git_object: 40b839aee20a5d0bcc3e31172797afccbe1fedf7
+    last_write_checksum: sha1:b235f00d3c7091d553b2dfd5cf3f04ab0aecc21b
+    pristine_git_object: 4d1d40409b9ce470b32e846e22a75285d79a83d7
   src/sdk/artifacts.ts:
     id: ae0f448ff334
     last_write_checksum: sha1:24236eef8cfcd65452145a2f1bfdd0850e27bd70
@@ -54921,6 +54961,39 @@ examples:
       responses:
         "200":
           application/json: {"sandboxes": [{"name": "my-sandbox", "currentSessionId": "<id>", "status": "running", "statusUpdatedAt": 1750344501629, "persistent": true, "region": "iad1", "failoverRegions": ["sfo1", "cle1"], "vcpus": 2, "memory": 1024, "runtime": "node22", "image": "my-repo@sha256:2c4e8f9a1b3d5e7f091a2b3c4d5e6f708192a3b4c5d6e7f8091a2b3c4d5e6f708", "timeout": 300000, "snapshotExpiration": 604800000, "keepLastSnapshots": {"count": 5, "expiration": 604800000, "deleteEvicted": true}, "totalEgressBytes": 4096, "totalIngressBytes": 2048, "totalActiveCpuDurationMs": 5000, "totalDurationMs": 60000, "cwd": "/vercel/sandbox", "tags": {"team": "hive", "user": "bob"}, "createdAt": 1750344501629, "updatedAt": 1750344501629, "expiresAt": 1750344801629}], "pagination": {"count": 8466.31, "next": "<value>"}}
+  getAiGatewayVirtualModelConfigBySlug:
+    speakeasy-default-get-ai-gateway-virtual-model-config-by-slug:
+      parameters:
+        path:
+          vmcSlug: "<value>"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      responses:
+        "200":
+          application/json: {"ownerId": "<id>", "virtualModelSlug": "<value>", "deleted": true, "status": "<value>", "kind": "<value>", "createdAt": 8734.21, "updatedAt": 4902.29}
+  updateAiGatewayVirtualModelConfigBySlug:
+    speakeasy-default-update-ai-gateway-virtual-model-config-by-slug:
+      parameters:
+        path:
+          vmcSlug: "<value>"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      responses:
+        "200":
+          application/json: {"ownerId": "<id>", "virtualModelSlug": "<value>", "deleted": true, "status": "<value>", "kind": "<value>", "createdAt": 4128.28, "updatedAt": 1.74}
+  deleteAiGatewayVirtualModelConfigBySlug:
+    speakeasy-default-delete-ai-gateway-virtual-model-config-by-slug:
+      parameters:
+        path:
+          vmcSlug: "<value>"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      responses:
+        "204":
+          application/json: "<value>"
 examplesVersion: 1.0.2
 generatedTests:
   readAccessGroup: "2025-04-29T14:51:46-05:00"
@@ -55250,7 +55323,7 @@ generatedTests:
   listDrives: "2026-06-08T17:06:46-06:00"
   getOrCreateDrive: "2026-06-08T17:06:46-06:00"
   deleteDrive: "2026-06-08T17:06:46-06:00"
-releaseNotes: "## Typescript SDK Changes:\n* `vercel.integrations.getConfigurations()`:  `response` **Changed** (Breaking ⚠️)\n* `vercel.user.listEventTypes()`:  `response.types[]` **Changed** (Breaking ⚠️)\n* `vercel.user.listUserEvents()`:  `response.events[]` **Changed** (Breaking ⚠️)\n* `vercel.integrations.getConfiguration()`:  `response` **Changed** (Breaking ⚠️)\n* `vercel.sandboxes.listDrives()`:  `response.drives[].id` **Added**\n* `vercel.sandboxes.updateSessionNetworkPolicy()`: \n  *  `request.requestBody.union(2).allow.union(Map<Array<2>>).Map<Array<2>>[].response` **Added**\n* `vercel.integrations.getBillingPlans()`: \n  *  `request.source` **Changed**\n* `vercel.deployments.createDeployment()`:  `response.union(2).resourceConfig.buildMachine.selectionSource` **Added**\n* `vercel.deployments.getDeployment()`:  `response.union(2).resourceConfig.buildMachine.selectionSource` **Added**\n* `vercel.integrations.createIntegrationStoreDirect()`: \n  *  `request.requestBody.source.enum(organization)` **Added**\n* `vercel.createObservabilityQuery()`:  `error` **Changed**\n* `vercel.sandboxes.listSandboxes()`: **Removed** (Breaking ⚠️)\n* `vercel.sandboxes.listNamedSandboxes()`: **Added**\n* `vercel.sandboxes.getOrCreateDrive()`:  `response.drive.id` **Added**\n* `vercel.sandboxes.deleteDrive()`:  `response.drive.id` **Added**\n* `vercel.deployments.cancelDeployment()`:  `response.resourceConfig.buildMachine.selectionSource` **Added**\n* `vercel.security.getBypassIp()`:  `error.status[402]` **Added**\n* `vercel.security.addBypassIp()`:  `error.status[402]` **Added**\n* `vercel.security.removeBypassIp()`:  `error.status[402]` **Added**\n* `vercel.teams.getTeam()`:  `response.strictConnectors` **Added**\n* `vercel.teams.patchTeam()`: \n  *  `request.requestBody.strictConnectors` **Added**\n  *  `response.strictConnectors` **Added**\n* `vercel.teams.getTeams()`:  `response.teams[].union(Team).strictConnectors` **Added**\n* `vercel.webAnalytics.aggregatePageviews()`:  `error.status[404]` **Added**\n* `vercel.webAnalytics.aggregateEvents()`:  `error.status[404]` **Added**\n* `vercel.webAnalytics.countPageviews()`:  `error.status[404]` **Added**\n* `vercel.webAnalytics.countEvents()`:  `error.status[404]` **Added**\n"
+releaseNotes: "## Typescript SDK Changes:\n* `vercel.apiAiGateway.getAiGatewayVirtualModelConfig()`: \n  *  `request` **Changed**\n  *  `response` **Changed** (Breaking ⚠️)\n* `vercel.user.listUserEvents()`:  `response.events[]` **Changed** (Breaking ⚠️)\n* `vercel.user.listEventTypes()`:  `response.types[]` **Changed** (Breaking ⚠️)\n* `vercel.apiAiGateway.getAiGatewayVirtualModelConfigBySlug()`: **Added**\n* `vercel.apiAiGateway.updateAiGatewayVirtualModelConfigBySlug()`: **Added**\n* `vercel.apiAiGateway.deleteAiGatewayVirtualModelConfigBySlug()`: **Added**\n"
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json

@@ -6,7 +6,17 @@
 import { AiGatewayVirtualModelConfigList } from "@vercel/sdk/models/aigatewayvirtualmodelconfiglist.js";
 
 let value: AiGatewayVirtualModelConfigList = {
-  virtualModelConfigs: [],
+  virtualModelConfigs: [
+    {
+      ownerId: "<id>",
+      virtualModelSlug: "<value>",
+      deleted: true,
+      status: "<value>",
+      kind: "<value>",
+      createdAt: 704.67,
+      updatedAt: 3886.13,
+    },
+  ],
   cursor: "<value>",
 };
 ```

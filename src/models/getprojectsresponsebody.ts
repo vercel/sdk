@@ -10,16 +10,18 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
+  GetProjectsResponseBody3,
+  GetProjectsResponseBody3$inboundSchema,
+} from "./getprojectsfromprojectsresponsepreset.js";
+import {
   FirewallRoutes,
   FirewallRoutes$inboundSchema,
   GetProjectsResponseBodyNodeVersion,
   GetProjectsResponseBodyNodeVersion$inboundSchema,
-  GetProjectsResponseBodyProjectsResponse200ApplicationJson1Action,
-  GetProjectsResponseBodyProjectsResponse200ApplicationJson1Action$inboundSchema,
+  GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityManagedRulesAction,
+  GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityManagedRulesAction$inboundSchema,
   GetProjectsResponseBodyResourceConfig,
   GetProjectsResponseBodyResourceConfig$inboundSchema,
-  ResponseBodyBotFilter,
-  ResponseBodyBotFilter$inboundSchema,
   ResponseBodyEnv,
   ResponseBodyEnv$inboundSchema,
   ResponseBodyFramework,
@@ -28,6 +30,8 @@ import {
   ResponseBodyGitComments$inboundSchema,
   ResponseBodyGitProviderOptions,
   ResponseBodyGitProviderOptions$inboundSchema,
+  ResponseBodyIpBuckets,
+  ResponseBodyIpBuckets$inboundSchema,
   ResponseBodyLatestDeployments,
   ResponseBodyLatestDeployments$inboundSchema,
   ResponseBodyLink,
@@ -46,15 +50,11 @@ import {
   ResponseBodySsoProtection$inboundSchema,
   ResponseBodyTargets,
   ResponseBodyTargets$inboundSchema,
-  ResponseBodyTrafficSources,
-  ResponseBodyTrafficSources$inboundSchema,
   ResponseBodyTrustedSources,
   ResponseBodyTrustedSources$inboundSchema,
-  ResponseBodyVercelRuleset,
-  ResponseBodyVercelRuleset$inboundSchema,
   ResponseBodyWebAnalytics,
   ResponseBodyWebAnalytics$inboundSchema,
-} from "./getprojectsresponsebodyprojectsresponse200applicationjson1action.js";
+} from "./getprojectsresponsebodyprojectsresponse200applicationjson1securitymanagedrulesaction.js";
 import {
   GetProjectsResponseBody2,
   GetProjectsResponseBody2$inboundSchema,
@@ -66,14 +66,62 @@ import {
   ResponseBodyAnalytics$inboundSchema,
   ResponseBodyDeploymentExpiration,
   ResponseBodyDeploymentExpiration$inboundSchema,
-  ResponseBodyIpBuckets,
-  ResponseBodyIpBuckets$inboundSchema,
-} from "./getprojectsresponsebodyprojectstarget.js";
-import {
-  GetProjectsResponseBody3,
-  GetProjectsResponseBody3$inboundSchema,
-} from "./getprojectstoprojectsresponse200applicationjsonresponsebody2.js";
+} from "./responsebodydeploymentexpiration.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type ResponseBodyVercelRuleset = {
+  active: boolean;
+  action?:
+    | GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityManagedRulesAction
+    | undefined;
+};
+
+export const GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityManagedRulesTrafficSourcesAction =
+  {
+    Challenge: "challenge",
+    Deny: "deny",
+    Log: "log",
+  } as const;
+export type GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityManagedRulesTrafficSourcesAction =
+  ClosedEnum<
+    typeof GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityManagedRulesTrafficSourcesAction
+  >;
+
+export type ResponseBodyTrafficSources = {
+  active: boolean;
+  action?:
+    | GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityManagedRulesTrafficSourcesAction
+    | undefined;
+};
+
+export const GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityManagedRulesBotFilterAction =
+  {
+    Challenge: "challenge",
+    Deny: "deny",
+    Log: "log",
+  } as const;
+export type GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityManagedRulesBotFilterAction =
+  ClosedEnum<
+    typeof GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityManagedRulesBotFilterAction
+  >;
+
+export type ResponseBodyBotFilter = {
+  active: boolean;
+  action?:
+    | GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityManagedRulesBotFilterAction
+    | undefined;
+};
+
+export const GetProjectsResponseBodyProjectsResponse200ApplicationJson1Action =
+  {
+    Challenge: "challenge",
+    Deny: "deny",
+    Log: "log",
+  } as const;
+export type GetProjectsResponseBodyProjectsResponse200ApplicationJson1Action =
+  ClosedEnum<
+    typeof GetProjectsResponseBodyProjectsResponse200ApplicationJson1Action
+  >;
 
 export type ResponseBodyAiBots = {
   active: boolean;
@@ -541,6 +589,96 @@ export type GetProjectsResponseBody =
   | Array<GetProjectsResponseBody1>;
 
 /** @internal */
+export const ResponseBodyVercelRuleset$inboundSchema: z.ZodType<
+  ResponseBodyVercelRuleset,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  active: types.boolean(),
+  action: types.optional(
+    GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityManagedRulesAction$inboundSchema,
+  ),
+});
+
+export function responseBodyVercelRulesetFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyVercelRuleset, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyVercelRuleset$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyVercelRuleset' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityManagedRulesTrafficSourcesAction$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityManagedRulesTrafficSourcesAction
+  > = z.nativeEnum(
+    GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityManagedRulesTrafficSourcesAction,
+  );
+
+/** @internal */
+export const ResponseBodyTrafficSources$inboundSchema: z.ZodType<
+  ResponseBodyTrafficSources,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  active: types.boolean(),
+  action: types.optional(
+    GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityManagedRulesTrafficSourcesAction$inboundSchema,
+  ),
+});
+
+export function responseBodyTrafficSourcesFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyTrafficSources, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyTrafficSources$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyTrafficSources' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityManagedRulesBotFilterAction$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityManagedRulesBotFilterAction
+  > = z.nativeEnum(
+    GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityManagedRulesBotFilterAction,
+  );
+
+/** @internal */
+export const ResponseBodyBotFilter$inboundSchema: z.ZodType<
+  ResponseBodyBotFilter,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  active: types.boolean(),
+  action: types.optional(
+    GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityManagedRulesBotFilterAction$inboundSchema,
+  ),
+});
+
+export function responseBodyBotFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyBotFilter, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyBotFilter$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyBotFilter' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectsResponseBodyProjectsResponse200ApplicationJson1Action$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetProjectsResponseBodyProjectsResponse200ApplicationJson1Action
+  > = z.nativeEnum(
+    GetProjectsResponseBodyProjectsResponse200ApplicationJson1Action,
+  );
+
+/** @internal */
 export const ResponseBodyAiBots$inboundSchema: z.ZodType<
   ResponseBodyAiBots,
   z.ZodTypeDef,
@@ -598,9 +736,9 @@ export const ResponseBodyManagedRules$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  vercel_ruleset: ResponseBodyVercelRuleset$inboundSchema,
-  traffic_sources: ResponseBodyTrafficSources$inboundSchema,
-  bot_filter: ResponseBodyBotFilter$inboundSchema,
+  vercel_ruleset: z.lazy(() => ResponseBodyVercelRuleset$inboundSchema),
+  traffic_sources: z.lazy(() => ResponseBodyTrafficSources$inboundSchema),
+  bot_filter: z.lazy(() => ResponseBodyBotFilter$inboundSchema),
   ai_bots: z.lazy(() => ResponseBodyAiBots$inboundSchema),
   owasp: z.lazy(() => ResponseBodyOwasp$inboundSchema),
 }).transform((v) => {

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyPermissions } from "@vercel/sdk/models/getprojectsinternalroutesprojectsresponsemitigate.js";
+import { ResponseBodyPermissions } from "@vercel/sdk/models/getprojectsinternalroutesprojectsresponsehas.js";
 
 let value: ResponseBodyPermissions = {};
 ```

@@ -5,7 +5,7 @@ The checks to evaluate. An empty array means nothing is evaluated.
 ## Example Usage
 
 ```typescript
-import { CreateProjectChecks } from "@vercel/sdk/models/routeaction.js";
+import { CreateProjectChecks } from "@vercel/sdk/models/createprojecthasprojectsresponse1.js";
 
 let value: CreateProjectChecks = {
   type: "error-rate-5xx",

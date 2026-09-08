@@ -5,7 +5,7 @@ Project-level rolling release configuration that defines how deployments should 
 ## Example Usage
 
 ```typescript
-import { GetProjectRollingRelease } from "@vercel/sdk/models/getprojectprojectsbuildmachinetype.js";
+import { GetProjectRollingRelease } from "@vercel/sdk/models/getprojectrollingrelease.js";
 
 let value: GetProjectRollingRelease = {
   target: "production",

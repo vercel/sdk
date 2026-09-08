@@ -117,6 +117,19 @@ const value: models.GetProjectsLinkProjects6 = {
 
 ```typescript
 const value: models.GetProjectsLinkProjects7 = {
+  org: "<value>",
+  repo: "<value>",
+  type: "v0",
+  deployHooks: [],
+  gitCredentialId: "<id>",
+  productionBranch: "<value>",
+};
+```
+
+### `models.GetProjectsLinkProjects8`
+
+```typescript
+const value: models.GetProjectsLinkProjects8 = {
   owner: "<value>",
   repo: "<value>",
   repoId: "<id>",

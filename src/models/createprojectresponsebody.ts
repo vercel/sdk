@@ -9,54 +9,6 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
-  Alias,
-  Alias$inboundSchema,
-  Analytics,
-  Analytics$inboundSchema,
-  Blobs,
-  Blobs$inboundSchema,
-  CreateProjectConnectConfigurations,
-  CreateProjectConnectConfigurations$inboundSchema,
-  CreateProjectCreator,
-  CreateProjectCreator$inboundSchema,
-  CreateProjectCrons,
-  CreateProjectCrons$inboundSchema,
-  CreateProjectCustomEnvironments,
-  CreateProjectCustomEnvironments$inboundSchema,
-  CreateProjectDataCache,
-  CreateProjectDataCache$inboundSchema,
-  CreateProjectEnv,
-  CreateProjectEnv$inboundSchema,
-  CreateProjectExpiration,
-  CreateProjectExpiration$inboundSchema,
-  CreateProjectIpBuckets,
-  CreateProjectIpBuckets$inboundSchema,
-  CreateProjectMicrofrontends,
-  CreateProjectMicrofrontends$inboundSchema,
-  CreateProjectNodeVersion,
-  CreateProjectNodeVersion$inboundSchema,
-  CreateProjectOptionsAllowlist,
-  CreateProjectOptionsAllowlist$inboundSchema,
-  CreateProjectPassport,
-  CreateProjectPassport$inboundSchema,
-  CreateProjectPasswordProtection,
-  CreateProjectPasswordProtection$inboundSchema,
-  CreateProjectProjectsFramework,
-  CreateProjectProjectsFramework$inboundSchema,
-  CreateProjectServices,
-  CreateProjectServices$inboundSchema,
-  DeploymentExpiration,
-  DeploymentExpiration$inboundSchema,
-  Jobs,
-  Jobs$inboundSchema,
-  LatestDeployments,
-  LatestDeployments$inboundSchema,
-  Link,
-  Link$inboundSchema,
-  SpeedInsights,
-  SpeedInsights$inboundSchema,
-} from "./createprojectpassport.js";
-import {
   Block,
   Block$inboundSchema,
   BlockHistory4,
@@ -65,10 +17,16 @@ import {
   CreateProjectDeploymentPolicy$inboundSchema,
   CreateProjectGitComments,
   CreateProjectGitComments$inboundSchema,
+  CreateProjectHasProjectsResponse1,
+  CreateProjectHasProjectsResponse1$inboundSchema,
+  CreateProjectHasProjectsResponse2,
+  CreateProjectHasProjectsResponse2$inboundSchema,
   CreateProjectHistory,
   CreateProjectHistory$inboundSchema,
   CreateProjectOidcTokenConfig,
   CreateProjectOidcTokenConfig$inboundSchema,
+  CreateProjectPassport,
+  CreateProjectPassport$inboundSchema,
   CreateProjectPermissions,
   CreateProjectPermissions$inboundSchema,
   CreateProjectProjectsResourceConfig,
@@ -109,21 +67,74 @@ import {
   ProtectionConfig$inboundSchema,
   RollingRelease,
   RollingRelease$inboundSchema,
-  RouteAction,
-  RouteAction$inboundSchema,
-  RouteHas,
-  RouteHas$inboundSchema,
   UsageStatus,
   UsageStatus$inboundSchema,
-} from "./routeaction.js";
+} from "./createprojecthasprojectsresponse1.js";
+import {
+  Alias,
+  Alias$inboundSchema,
+  Analytics,
+  Analytics$inboundSchema,
+  Blobs,
+  Blobs$inboundSchema,
+  CreateProjectConnectConfigurations,
+  CreateProjectConnectConfigurations$inboundSchema,
+  CreateProjectCreator,
+  CreateProjectCreator$inboundSchema,
+  CreateProjectCrons,
+  CreateProjectCrons$inboundSchema,
+  CreateProjectCustomEnvironments,
+  CreateProjectCustomEnvironments$inboundSchema,
+  CreateProjectDataCache,
+  CreateProjectDataCache$inboundSchema,
+  CreateProjectEnv,
+  CreateProjectEnv$inboundSchema,
+  CreateProjectExpiration,
+  CreateProjectExpiration$inboundSchema,
+  CreateProjectIpBuckets,
+  CreateProjectIpBuckets$inboundSchema,
+  CreateProjectMicrofrontends,
+  CreateProjectMicrofrontends$inboundSchema,
+  CreateProjectNodeVersion,
+  CreateProjectNodeVersion$inboundSchema,
+  CreateProjectOptionsAllowlist,
+  CreateProjectOptionsAllowlist$inboundSchema,
+  CreateProjectPasswordProtection,
+  CreateProjectPasswordProtection$inboundSchema,
+  CreateProjectProjectsFramework,
+  CreateProjectProjectsFramework$inboundSchema,
+  CreateProjectServices,
+  CreateProjectServices$inboundSchema,
+  DeploymentExpiration,
+  DeploymentExpiration$inboundSchema,
+  Jobs,
+  Jobs$inboundSchema,
+  LatestDeployments,
+  LatestDeployments$inboundSchema,
+  Link,
+  Link$inboundSchema,
+  SpeedInsights,
+  SpeedInsights$inboundSchema,
+} from "./createprojectpasswordprotection.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type RouteHas =
+  | CreateProjectHasProjectsResponse1
+  | CreateProjectHasProjectsResponse2;
+
+export const RouteAction = {
+  BlockLegalCwc: "block_legal_cwc",
+} as const;
+export type RouteAction = ClosedEnum<typeof RouteAction>;
 
 export type RouteMitigate = {
   action: RouteAction;
 };
 
 export type Route2 = {
-  has: Array<RouteHas>;
+  has: Array<
+    CreateProjectHasProjectsResponse1 | CreateProjectHasProjectsResponse2
+  >;
   mitigate: RouteMitigate;
   src?: string | undefined;
 };
@@ -438,6 +449,30 @@ export type CreateProjectResponseBody = {
 };
 
 /** @internal */
+export const RouteHas$inboundSchema: z.ZodType<
+  RouteHas,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  CreateProjectHasProjectsResponse1$inboundSchema,
+  CreateProjectHasProjectsResponse2$inboundSchema,
+]);
+
+export function routeHasFromJSON(
+  jsonString: string,
+): SafeParseResult<RouteHas, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RouteHas$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RouteHas' from JSON`,
+  );
+}
+
+/** @internal */
+export const RouteAction$inboundSchema: z.ZodNativeEnum<typeof RouteAction> = z
+  .nativeEnum(RouteAction);
+
+/** @internal */
 export const RouteMitigate$inboundSchema: z.ZodType<
   RouteMitigate,
   z.ZodTypeDef,
@@ -459,7 +494,12 @@ export function routeMitigateFromJSON(
 /** @internal */
 export const Route2$inboundSchema: z.ZodType<Route2, z.ZodTypeDef, unknown> = z
   .object({
-    has: z.array(RouteHas$inboundSchema),
+    has: z.array(
+      z.union([
+        CreateProjectHasProjectsResponse1$inboundSchema,
+        CreateProjectHasProjectsResponse2$inboundSchema,
+      ]),
+    ),
     mitigate: z.lazy(() => RouteMitigate$inboundSchema),
     src: types.optional(types.string()),
   });

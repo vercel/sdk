@@ -5,21 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFiftyNine } from "@vercel/sdk/models/usereventpayload336budget.js";
+import { ThreeHundredAndFiftyNine } from "@vercel/sdk/models/usereventpayload338budget.js";
 
 let value: ThreeHundredAndFiftyNine = {
-  projectId: "<id>",
-  projectName: "<value>",
-  enabled: true,
-  environment: "preview",
+  previous: {},
+  next: {},
 };
 ```
 
 ## Fields
 
-| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `projectId`                                                  | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `projectName`                                                | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `enabled`                                                    | *boolean*                                                    | :heavy_check_mark:                                           | N/A                                                          |
-| `environment`                                                | [models.PayloadEnvironment](../models/payloadenvironment.md) | :heavy_check_mark:                                           | N/A                                                          |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `previous`                                                                     | [models.UserEventPayload359Previous](../models/usereventpayload359previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `next`                                                                         | [models.UserEventPayload359Next](../models/usereventpayload359next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |

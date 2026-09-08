@@ -8,32 +8,14 @@ The payload of the event, if requested.
 import { TwentySix } from "@vercel/sdk/models/userevent.js";
 
 let value: TwentySix = {
-  piiRedaction: {
-    from: true,
-    to: false,
+  privateProvider: {
+    slug: "<value>",
   },
-  moderationPolicyCount: 8583.61,
-  policiesAdded: [
-    "<value 1>",
-    "<value 2>",
-  ],
-  policiesRemoved: [
-    "<value 1>",
-  ],
-  policiesModified: [
-    "<value 1>",
-    "<value 2>",
-    "<value 3>",
-  ],
 };
 ```
 
 ## Fields
 
-| Field                                            | Type                                             | Required                                         | Description                                      |
-| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| `piiRedaction`                                   | [models.PiiRedaction](../models/piiredaction.md) | :heavy_check_mark:                               | N/A                                              |
-| `moderationPolicyCount`                          | *number*                                         | :heavy_check_mark:                               | N/A                                              |
-| `policiesAdded`                                  | *string*[]                                       | :heavy_check_mark:                               | N/A                                              |
-| `policiesRemoved`                                | *string*[]                                       | :heavy_check_mark:                               | N/A                                              |
-| `policiesModified`                               | *string*[]                                       | :heavy_check_mark:                               | N/A                                              |
+| Field                                                  | Type                                                   | Required                                               | Description                                            |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| `privateProvider`                                      | [models.PrivateProvider](../models/privateprovider.md) | :heavy_check_mark:                                     | N/A                                                    |

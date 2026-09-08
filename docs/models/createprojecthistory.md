@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectHistory } from "@vercel/sdk/models/routeaction.js";
+import { CreateProjectHistory } from "@vercel/sdk/models/createprojecthasprojectsresponse1.js";
 
 let value: CreateProjectHistory = {
   scanner: "<value>",

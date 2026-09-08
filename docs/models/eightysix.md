@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { EightySix } from "@vercel/sdk/models/twentynine.js";
+import { EightySix } from "@vercel/sdk/models/thirtyone.js";
 
 let value: EightySix = {
   team: {
@@ -15,7 +15,9 @@ let value: EightySix = {
   configuration: {
     id: "<id>",
   },
-  newName: "<value>",
+  project: {
+    id: "<id>",
+  },
 };
 ```
 
@@ -23,6 +25,6 @@ let value: EightySix = {
 
 | Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
 | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `team`                                                                                 | [models.UserEventPayload86Team](../models/usereventpayload86team.md)                   | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `team`                                                                                 | [models.UserEventPayloadTeam](../models/usereventpayloadteam.md)                       | :heavy_check_mark:                                                                     | N/A                                                                                    |
 | `configuration`                                                                        | [models.UserEventPayload86Configuration](../models/usereventpayload86configuration.md) | :heavy_check_mark:                                                                     | N/A                                                                                    |
-| `newName`                                                                              | *string*                                                                               | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `project`                                                                              | [models.UserEventPayload86Project](../models/usereventpayload86project.md)             | :heavy_check_mark:                                                                     | N/A                                                                                    |

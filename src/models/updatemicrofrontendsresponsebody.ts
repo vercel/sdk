@@ -22,8 +22,8 @@ import {
   UpdateMicrofrontendsGitComments$inboundSchema,
   UpdateMicrofrontendsGitProviderOptions,
   UpdateMicrofrontendsGitProviderOptions$inboundSchema,
-  UpdateMicrofrontendsInternalRoutes,
-  UpdateMicrofrontendsInternalRoutes$inboundSchema,
+  UpdateMicrofrontendsInternalRoutes2,
+  UpdateMicrofrontendsInternalRoutes2$inboundSchema,
   UpdateMicrofrontendsLastAliasRequest,
   UpdateMicrofrontendsLastAliasRequest$inboundSchema,
   UpdateMicrofrontendsLastRollbackTarget,
@@ -52,7 +52,7 @@ import {
   UpdateMicrofrontendsUsageStatus$inboundSchema,
   UpdateMicrofrontendsWebAnalytics,
   UpdateMicrofrontendsWebAnalytics$inboundSchema,
-} from "./updatemicrofrontendsinternalroutes.js";
+} from "./updatemicrofrontendsinternalroutes2.js";
 import {
   UpdateMicrofrontendsAlias,
   UpdateMicrofrontendsAlias$inboundSchema,
@@ -110,7 +110,17 @@ import {
   UpdateMicrofrontendsServices$inboundSchema,
   UpdateMicrofrontendsSpeedInsights,
   UpdateMicrofrontendsSpeedInsights$inboundSchema,
-} from "./updatemicrofrontendsprojectsbuildmachineselection.js";
+} from "./updatemicrofrontendsprojectsfunctiondefaultmemorytype.js";
+
+export type UpdateMicrofrontendsInternalRoutes1 = {
+  src: string;
+  status: number;
+  expiry?: number | undefined;
+};
+
+export type UpdateMicrofrontendsInternalRoutes =
+  | UpdateMicrofrontendsInternalRoutes1
+  | UpdateMicrofrontendsInternalRoutes2;
 
 export const UpdateMicrofrontendsAction = {
   Accept: "accept",
@@ -298,13 +308,60 @@ export type UpdateMicrofrontendsResponseBody = {
   v0?: boolean | undefined;
   v0Created?: boolean | undefined;
   abuse?: UpdateMicrofrontendsAbuse | undefined;
-  internalRoutes?: Array<UpdateMicrofrontendsInternalRoutes> | undefined;
+  internalRoutes?:
+    | Array<
+      UpdateMicrofrontendsInternalRoutes1 | UpdateMicrofrontendsInternalRoutes2
+    >
+    | undefined;
   hasDeployments?: boolean | undefined;
   dismissedToasts?: Array<UpdateMicrofrontendsDismissedToasts> | undefined;
   protectedSourcemaps?: boolean | undefined;
   tracing?: UpdateMicrofrontendsTracing | undefined;
   avatar?: string | null | undefined;
 };
+
+/** @internal */
+export const UpdateMicrofrontendsInternalRoutes1$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsInternalRoutes1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  src: types.string(),
+  status: types.number(),
+  expiry: types.optional(types.number()),
+});
+
+export function updateMicrofrontendsInternalRoutes1FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsInternalRoutes1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsInternalRoutes1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsInternalRoutes1' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsInternalRoutes$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsInternalRoutes,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => UpdateMicrofrontendsInternalRoutes1$inboundSchema),
+  UpdateMicrofrontendsInternalRoutes2$inboundSchema,
+]);
+
+export function updateMicrofrontendsInternalRoutesFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsInternalRoutes, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsInternalRoutes$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsInternalRoutes' from JSON`,
+  );
+}
 
 /** @internal */
 export const UpdateMicrofrontendsAction$inboundSchema: z.ZodNativeEnum<
@@ -611,7 +668,10 @@ export const UpdateMicrofrontendsResponseBody$inboundSchema: z.ZodType<
   v0Created: types.optional(types.boolean()),
   abuse: types.optional(UpdateMicrofrontendsAbuse$inboundSchema),
   internalRoutes: types.optional(
-    z.array(UpdateMicrofrontendsInternalRoutes$inboundSchema),
+    z.array(smartUnion([
+      z.lazy(() => UpdateMicrofrontendsInternalRoutes1$inboundSchema),
+      UpdateMicrofrontendsInternalRoutes2$inboundSchema,
+    ])),
   ),
   hasDeployments: types.optional(types.boolean()),
   dismissedToasts: types.optional(

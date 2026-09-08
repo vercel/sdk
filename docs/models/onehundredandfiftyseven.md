@@ -5,15 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFiftySeven } from "@vercel/sdk/models/payloadpreviousrule.js";
+import { OneHundredAndFiftySeven } from "@vercel/sdk/models/onehundredandfortynine.js";
 
 let value: OneHundredAndFiftySeven = {
+  projectId: "<id>",
+  projectName: "<value>",
   configVersion: 2195.44,
 };
 ```
 
 ## Fields
 
-| Field                         | Type                          | Required                      | Description                   |
-| ----------------------------- | ----------------------------- | ----------------------------- | ----------------------------- |
-| `configVersion`               | *models.PayloadConfigVersion* | :heavy_check_mark:            | N/A                           |
+| Field                  | Type                   | Required               | Description            |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `projectId`            | *string*               | :heavy_check_mark:     | N/A                    |
+| `projectName`          | *string*               | :heavy_check_mark:     | N/A                    |
+| `configVersion`        | *models.ConfigVersion* | :heavy_check_mark:     | N/A                    |

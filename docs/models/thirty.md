@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { Thirty } from "@vercel/sdk/models/twentynine.js";
+import { Thirty } from "@vercel/sdk/models/userevent.js";
 
 let value: Thirty = {
   rule: {
@@ -17,6 +17,6 @@ let value: Thirty = {
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `rule`                                         | [models.PayloadRule](../models/payloadrule.md) | :heavy_check_mark:                             | N/A                                            |
+| Field                            | Type                             | Required                         | Description                      |
+| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
+| `rule`                           | [models.Rule](../models/rule.md) | :heavy_check_mark:               | N/A                              |

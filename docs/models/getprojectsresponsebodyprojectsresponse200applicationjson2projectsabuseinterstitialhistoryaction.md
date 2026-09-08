@@ -5,7 +5,7 @@
 ```typescript
 import {
   GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsAbuseInterstitialHistoryAction,
-} from "@vercel/sdk/models/getprojectsresponsebodyprojectstarget.js";
+} from "@vercel/sdk/models/responsebodydeploymentexpiration.js";
 
 let value:
   GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsAbuseInterstitialHistoryAction =

@@ -8,14 +8,19 @@ The payload of the event, if requested.
 import { TwoHundredAndEighteen } from "@vercel/sdk/models/siftroute.js";
 
 let value: TwoHundredAndEighteen = {
-  oldName: "<value>",
-  newName: "<value>",
+  projectId: "<id>",
+  previousStatus: "<value>",
+  justification: "<value>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `oldName`          | *string*           | :heavy_check_mark: | N/A                |
-| `newName`          | *string*           | :heavy_check_mark: | N/A                |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `projectId`                                    | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `url`                                          | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `headerName`                                   | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `previousStatus`                               | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `justification`                                | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `kind`                                         | [models.PayloadKind](../models/payloadkind.md) | :heavy_minus_sign:                             | N/A                                            |

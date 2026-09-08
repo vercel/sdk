@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectRedirect } from "@vercel/sdk/models/routeaction.js";
+import { CreateProjectRedirect } from "@vercel/sdk/models/createprojecthasprojectsresponse1.js";
 
 let value: CreateProjectRedirect = {
   location: "<value>",

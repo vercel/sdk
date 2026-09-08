@@ -5,24 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFortyThree } from "@vercel/sdk/models/usereventpayload336budget.js";
+import { ThreeHundredAndFortyThree } from "@vercel/sdk/models/usereventpayload338budget.js";
 
 let value: ThreeHundredAndFortyThree = {
-  transferRequestCode: "<value>",
-  store: {
-    id: "<id>",
-    type: "redis",
-  },
-  destinationTeamId: "<id>",
-  destinationTeamName: "<value>",
+  storeType: "redis",
 };
 ```
 
 ## Fields
 
-| Field                                            | Type                                             | Required                                         | Description                                      |
-| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| `transferRequestCode`                            | *string*                                         | :heavy_check_mark:                               | N/A                                              |
-| `store`                                          | [models.PayloadStore](../models/payloadstore.md) | :heavy_check_mark:                               | N/A                                              |
-| `destinationTeamId`                              | *string*                                         | :heavy_check_mark:                               | N/A                                              |
-| `destinationTeamName`                            | *string*                                         | :heavy_check_mark:                               | N/A                                              |
+| Field                                      | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `storeType`                                | [models.StoreType](../models/storetype.md) | :heavy_check_mark:                         | N/A                                        |

@@ -8,7 +8,7 @@ The payload of the event, if requested.
 import { TwentyFive } from "@vercel/sdk/models/userevent.js";
 
 let value: TwentyFive = {
-  privateProvider: {
+  privateModel: {
     slug: "<value>",
   },
 };
@@ -16,6 +16,6 @@ let value: TwentyFive = {
 
 ## Fields
 
-| Field                                                  | Type                                                   | Required                                               | Description                                            |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `privateProvider`                                      | [models.PrivateProvider](../models/privateprovider.md) | :heavy_check_mark:                                     | N/A                                                    |
+| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `privateModel`                                                 | [models.PayloadPrivateModel](../models/payloadprivatemodel.md) | :heavy_check_mark:                                             | N/A                                                            |

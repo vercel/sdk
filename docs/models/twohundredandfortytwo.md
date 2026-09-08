@@ -10,14 +10,14 @@ import { TwoHundredAndFortyTwo } from "@vercel/sdk/models/siftroute.js";
 let value: TwoHundredAndFortyTwo = {
   projectId: "<id>",
   projectName: "<value>",
-  widget: "speed-insights-lcp",
+  sourceFilesOutsideRootDirectory: true,
 };
 ```
 
 ## Fields
 
-| Field                                | Type                                 | Required                             | Description                          |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `projectId`                          | *string*                             | :heavy_check_mark:                   | N/A                                  |
-| `projectName`                        | *string*                             | :heavy_check_mark:                   | N/A                                  |
-| `widget`                             | [models.Widget](../models/widget.md) | :heavy_check_mark:                   | N/A                                  |
+| Field                             | Type                              | Required                          | Description                       |
+| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| `projectId`                       | *string*                          | :heavy_check_mark:                | N/A                               |
+| `projectName`                     | *string*                          | :heavy_check_mark:                | N/A                               |
+| `sourceFilesOutsideRootDirectory` | *boolean*                         | :heavy_check_mark:                | N/A                               |

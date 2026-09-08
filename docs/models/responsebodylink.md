@@ -117,11 +117,9 @@ const value: models.GetProjectsLink6 = {
 
 ```typescript
 const value: models.GetProjectsLink7 = {
-  owner: "<value>",
+  org: "<value>",
   repo: "<value>",
-  repoId: "<id>",
-  ownerId: "<id>",
-  type: "cursor-origin",
+  type: "v0",
   deployHooks: [
     {
       id: "<id>",
@@ -130,6 +128,21 @@ const value: models.GetProjectsLink7 = {
       url: "https://sociable-runway.info/",
     },
   ],
+  gitCredentialId: "<id>",
+  productionBranch: "<value>",
+};
+```
+
+### `models.GetProjectsLink8`
+
+```typescript
+const value: models.GetProjectsLink8 = {
+  owner: "<value>",
+  repo: "<value>",
+  repoId: "<id>",
+  ownerId: "<id>",
+  type: "cursor-origin",
+  deployHooks: [],
   gitCredentialId: "<id>",
   productionBranch: "<value>",
 };

@@ -5,7 +5,7 @@ Automated gating configuration. Omitted (the default) means no gating is configu
 ## Example Usage
 
 ```typescript
-import { GetProjectGate } from "@vercel/sdk/models/getprojectprojectsbuildmachinetype.js";
+import { GetProjectGate } from "@vercel/sdk/models/getprojectrollingrelease.js";
 
 let value: GetProjectGate = {
   enabled: true,

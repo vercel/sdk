@@ -117,12 +117,32 @@ const value: models.UploadProjectAvatarLink6 = {
 
 ```typescript
 const value: models.UploadProjectAvatarLink7 = {
+  org: "<value>",
+  repo: "<value>",
+  type: "v0",
+  deployHooks: [],
+  gitCredentialId: "<id>",
+  productionBranch: "<value>",
+};
+```
+
+### `models.UploadProjectAvatarLink8`
+
+```typescript
+const value: models.UploadProjectAvatarLink8 = {
   owner: "<value>",
   repo: "<value>",
   repoId: "<id>",
   ownerId: "<id>",
   type: "cursor-origin",
-  deployHooks: [],
+  deployHooks: [
+    {
+      id: "<id>",
+      name: "<value>",
+      ref: "<value>",
+      url: "https://defenseless-lender.net/",
+    },
+  ],
   gitCredentialId: "<id>",
   productionBranch: "<value>",
 };

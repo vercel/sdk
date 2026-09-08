@@ -8,14 +8,21 @@ The payload of the event, if requested.
 import { OneHundredAndSeventyOne } from "@vercel/sdk/models/bandwidth.js";
 
 let value: OneHundredAndSeventyOne = {
-  configurations: [],
-  ownerId: "<id>",
+  integration: {
+    id: "<id>",
+    slug: "<value>",
+    name: "<value>",
+    configurationId: "<id>",
+  },
+  destinationTeamId: "<id>",
+  destinationTeamName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                  | Type                                                   | Required                                               | Description                                            |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `configurations`                                       | [models.Configurations](../models/configurations.md)[] | :heavy_check_mark:                                     | N/A                                                    |
-| `ownerId`                                              | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `integration`                                  | [models.Integration](../models/integration.md) | :heavy_check_mark:                             | N/A                                            |
+| `destinationTeamId`                            | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `destinationTeamName`                          | *string*                                       | :heavy_check_mark:                             | N/A                                            |

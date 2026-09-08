@@ -5,13 +5,13 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndThirtyFour } from "@vercel/sdk/models/twohundredandseventythree.js";
+import { ThreeHundredAndThirtyFour } from "@vercel/sdk/models/twohundredandseventyfive.js";
 
 let value: ThreeHundredAndThirtyFour = {
   email: "Elizabeth.Lang22@gmail.com",
-  gitlabLogin: "<value>",
-  gitlabEmail: "<value>",
-  gitlabName: "<value>",
+  bitbucketLogin: "<value>",
+  bitbucketEmail: "<value>",
+  bitbucketName: "<value>",
   zeitAccount: "<value>",
   zeitAccountType: "<value>",
 };
@@ -22,8 +22,8 @@ let value: ThreeHundredAndThirtyFour = {
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `email`            | *string*           | :heavy_check_mark: | N/A                |
-| `gitlabLogin`      | *string*           | :heavy_check_mark: | N/A                |
-| `gitlabEmail`      | *string*           | :heavy_check_mark: | N/A                |
-| `gitlabName`       | *string*           | :heavy_check_mark: | N/A                |
+| `bitbucketLogin`   | *string*           | :heavy_check_mark: | N/A                |
+| `bitbucketEmail`   | *string*           | :heavy_check_mark: | N/A                |
+| `bitbucketName`    | *string*           | :heavy_check_mark: | N/A                |
 | `zeitAccount`      | *string*           | :heavy_check_mark: | N/A                |
 | `zeitAccountType`  | *string*           | :heavy_check_mark: | N/A                |

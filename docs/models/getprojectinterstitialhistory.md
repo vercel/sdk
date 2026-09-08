@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectInterstitialHistory } from "@vercel/sdk/models/getprojectinternalroutes1.js";
+import { GetProjectInterstitialHistory } from "@vercel/sdk/models/getprojectinternalroutesmitigate.js";
 
 let value: GetProjectInterstitialHistory = {
   action: "remove-project-interstitial",

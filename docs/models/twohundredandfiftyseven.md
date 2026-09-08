@@ -11,10 +11,10 @@ let value: TwoHundredAndFiftySeven = {
   projectId: "<id>",
   projectName: "<value>",
   previous: {
-    functionDefaultRegions: [],
+    functionDefaultTimeout: 1.88,
   },
   next: {
-    functionDefaultRegions: [],
+    functionDefaultTimeout: 852.69,
   },
 };
 ```

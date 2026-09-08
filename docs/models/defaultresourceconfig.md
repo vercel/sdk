@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DefaultResourceConfig } from "@vercel/sdk/models/routeaction.js";
+import { DefaultResourceConfig } from "@vercel/sdk/models/createprojecthasprojectsresponse1.js";
 
 let value: DefaultResourceConfig = {
   functionDefaultRegions: [

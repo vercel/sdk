@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectContentHint14 } from "@vercel/sdk/models/getprojectprojectsbuildmachinetype.js";
+import { GetProjectContentHint14 } from "@vercel/sdk/models/getprojectrollingrelease.js";
 
 let value: GetProjectContentHint14 = {
   type: "postgres-database",

@@ -5,31 +5,25 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndThirtySeven } from "@vercel/sdk/models/usereventpayload336budget.js";
+import { ThreeHundredAndThirtySeven } from "@vercel/sdk/models/twohundredandseventyfive.js";
 
 let value: ThreeHundredAndThirtySeven = {
-  budget: {
-    type: "fixed",
-    fixedBudget: 9736.14,
-    previousSpend: [
-      1258.6,
-      4310.82,
-    ],
-    notifiedAt: [
-      3049.87,
-      339.39,
-      3860.82,
-    ],
-    createdAt: 1424.29,
-    isActive: false,
-    teamId: "<id>",
-    id: "<id>",
+  sampleRatePercent: 5259.03,
+  spendLimitInDollars: 4310.82,
+  previous: {
+    sampleRatePercent: 3049.87,
+    spendLimitInDollars: null,
   },
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `budget`                                                                   | [models.UserEventPayload337Budget](../models/usereventpayload337budget.md) | :heavy_check_mark:                                                         | Represents a budget for tracking and notifying teams on their spending.    |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `projectId`                                                                    | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `projectName`                                                                  | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `analyticsId`                                                                  | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `sampleRatePercent`                                                            | *number*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `spendLimitInDollars`                                                          | *number*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload337Previous](../models/usereventpayload337previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |

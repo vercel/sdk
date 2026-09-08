@@ -1,17 +1,17 @@
 # UserEventPayload254Type
 
-The budget type
+The type of matching to perform
 
 ## Example Usage
 
 ```typescript
-import { UserEventPayload254Type } from "@vercel/sdk/models/usereventpayload224next.js";
+import { UserEventPayload254Type } from "@vercel/sdk/models/siftroute.js";
 
-let value: UserEventPayload254Type = "fixed";
+let value: UserEventPayload254Type = "equals";
 ```
 
 ## Values
 
 ```typescript
-"fixed"
+"endsWith" | "equals" | "startsWith"
 ```

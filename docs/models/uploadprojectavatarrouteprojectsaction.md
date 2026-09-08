@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarRouteProjectsAction } from "@vercel/sdk/models/uploadprojectavataraction.js";
+import { UploadProjectAvatarRouteProjectsAction } from "@vercel/sdk/models/uploadprojectavatarinternalroutes1.js";
 
 let value: UploadProjectAvatarRouteProjectsAction = "block_legal_cwc";
 ```

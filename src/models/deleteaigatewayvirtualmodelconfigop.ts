@@ -7,6 +7,9 @@ import * as z from "zod/v3";
 export type DeleteAiGatewayVirtualModelConfigRequest = {
   ownerId?: string | undefined;
   virtualModelSlug: string;
+  updatedBy?: string | undefined;
+  actingIp?: string | undefined;
+  actingUserAgent?: string | undefined;
   /**
    * The Team identifier to perform the request on behalf of.
    */
@@ -21,6 +24,9 @@ export type DeleteAiGatewayVirtualModelConfigRequest = {
 export type DeleteAiGatewayVirtualModelConfigRequest$Outbound = {
   ownerId?: string | undefined;
   virtualModelSlug: string;
+  updatedBy?: string | undefined;
+  actingIp?: string | undefined;
+  actingUserAgent?: string | undefined;
   teamId?: string | undefined;
   slug?: string | undefined;
 };
@@ -33,6 +39,9 @@ export const DeleteAiGatewayVirtualModelConfigRequest$outboundSchema: z.ZodType<
 > = z.object({
   ownerId: z.string().optional(),
   virtualModelSlug: z.string(),
+  updatedBy: z.string().optional(),
+  actingIp: z.string().optional(),
+  actingUserAgent: z.string().optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });

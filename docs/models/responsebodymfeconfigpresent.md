@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyMfeConfigPresent } from "@vercel/sdk/models/getprojectsresponsebodyprojectsrollingrelease.js";
+import { ResponseBodyMfeConfigPresent } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson3action.js";
 
 let value: ResponseBodyMfeConfigPresent = {
   targets: [

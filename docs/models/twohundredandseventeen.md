@@ -9,18 +9,15 @@ import { TwoHundredAndSeventeen } from "@vercel/sdk/models/siftroute.js";
 
 let value: TwoHundredAndSeventeen = {
   projectId: "<id>",
-  projectName: "<value>",
-  pattern: "<value>",
-  justification: "<value>",
+  type: "connectSrc",
+  resourceUrl: "https://male-tenant.org/",
 };
 ```
 
 ## Fields
 
-| Field                  | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `projectId`            | *string*               | :heavy_check_mark:     | N/A                    |
-| `projectName`          | *string*               | :heavy_check_mark:     | N/A                    |
-| `pattern`              | *string*               | :heavy_check_mark:     | N/A                    |
-| `justification`        | *string*               | :heavy_check_mark:     | N/A                    |
-| `additionalProperties` | Record<string, *any*>  | :heavy_minus_sign:     | N/A                    |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `projectId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `type`                                                                 | [models.UserEventPayload217Type](../models/usereventpayload217type.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| `resourceUrl`                                                          | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |

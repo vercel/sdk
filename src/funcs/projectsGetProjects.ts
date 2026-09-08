@@ -18,7 +18,7 @@ import {
 import {
   GetProjectsRequest,
   GetProjectsRequest$outboundSchema,
-} from "../models/getprojectsresponsebodyprojectsrollingrelease.js";
+} from "../models/getprojectsresponsebodyprojectsresponse200applicationjson3action.js";
 import {
   ConnectionError,
   InvalidRequestError,

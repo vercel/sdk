@@ -47,8 +47,10 @@ export const Name = {
   AiGatewayByokCredentialCreated: "ai-gateway-byok-credential-created",
   AiGatewayByokCredentialDeleted: "ai-gateway-byok-credential-deleted",
   AiGatewayByokCredentialUpdated: "ai-gateway-byok-credential-updated",
+  AiGatewayByokModelMappingsUpdated: "ai-gateway-byok-model-mappings-updated",
   AiGatewayCreditsPurchased: "ai-gateway-credits-purchased",
   AiGatewayGuardrailsUpdated: "ai-gateway-guardrails-updated",
+  AiGatewayHipaaComplianceToggled: "ai-gateway-hipaa-compliance-toggled",
   AiGatewayInferenceRegionsUpdated: "ai-gateway-inference-regions-updated",
   AiGatewayModelAllowlistModelsUpdated:
     "ai-gateway-model-allowlist-models-updated",
@@ -59,6 +61,8 @@ export const Name = {
   AiGatewayPrivateProviderCreated: "ai-gateway-private-provider-created",
   AiGatewayPrivateProviderDeleted: "ai-gateway-private-provider-deleted",
   AiGatewayPrivateProviderUpdated: "ai-gateway-private-provider-updated",
+  AiGatewayPromptTrainingOptOutToggled:
+    "ai-gateway-prompt-training-opt-out-toggled",
   AiGatewayProviderAllowlistProvidersUpdated:
     "ai-gateway-provider-allowlist-providers-updated",
   AiGatewayProviderAllowlistToggled: "ai-gateway-provider-allowlist-toggled",
@@ -76,9 +80,11 @@ export const Name = {
   AiGatewayVirtualModelConfigArchived:
     "ai-gateway-virtual-model-config-archived",
   AiGatewayVirtualModelConfigCreated: "ai-gateway-virtual-model-config-created",
+  AiGatewayVirtualModelConfigDeleted: "ai-gateway-virtual-model-config-deleted",
   AiGatewayVirtualModelConfigRestored:
     "ai-gateway-virtual-model-config-restored",
   AiGatewayVirtualModelConfigUpdated: "ai-gateway-virtual-model-config-updated",
+  AiGatewayZeroDataRetentionToggled: "ai-gateway-zero-data-retention-toggled",
   AiOmniagent: "ai-omniagent",
   AlertInvestigationProjectAllowlistUpdated:
     "alert-investigation-project-allowlist-updated",
@@ -273,6 +279,7 @@ export const Name = {
   FlagsSegment: "flags-segment",
   FlagsSettings: "flags-settings",
   FlagsTransferred: "flags-transferred",
+  FlatRateCdnAutoUpgradeConsent: "flat-rate-cdn-auto-upgrade-consent",
   GitIntegrationRepoPush: "git-integration-repo-push",
   GitAccountIntegrationLinkAdded: "git_account_integration_link_added",
   GlobalConfigBackupRestored: "global-config-backup-restored",
@@ -803,8 +810,10 @@ export const ReplacedBy = {
   AiGatewayByokCredentialCreated: "ai-gateway-byok-credential-created",
   AiGatewayByokCredentialDeleted: "ai-gateway-byok-credential-deleted",
   AiGatewayByokCredentialUpdated: "ai-gateway-byok-credential-updated",
+  AiGatewayByokModelMappingsUpdated: "ai-gateway-byok-model-mappings-updated",
   AiGatewayCreditsPurchased: "ai-gateway-credits-purchased",
   AiGatewayGuardrailsUpdated: "ai-gateway-guardrails-updated",
+  AiGatewayHipaaComplianceToggled: "ai-gateway-hipaa-compliance-toggled",
   AiGatewayInferenceRegionsUpdated: "ai-gateway-inference-regions-updated",
   AiGatewayModelAllowlistModelsUpdated:
     "ai-gateway-model-allowlist-models-updated",
@@ -815,6 +824,8 @@ export const ReplacedBy = {
   AiGatewayPrivateProviderCreated: "ai-gateway-private-provider-created",
   AiGatewayPrivateProviderDeleted: "ai-gateway-private-provider-deleted",
   AiGatewayPrivateProviderUpdated: "ai-gateway-private-provider-updated",
+  AiGatewayPromptTrainingOptOutToggled:
+    "ai-gateway-prompt-training-opt-out-toggled",
   AiGatewayProviderAllowlistProvidersUpdated:
     "ai-gateway-provider-allowlist-providers-updated",
   AiGatewayProviderAllowlistToggled: "ai-gateway-provider-allowlist-toggled",
@@ -832,9 +843,11 @@ export const ReplacedBy = {
   AiGatewayVirtualModelConfigArchived:
     "ai-gateway-virtual-model-config-archived",
   AiGatewayVirtualModelConfigCreated: "ai-gateway-virtual-model-config-created",
+  AiGatewayVirtualModelConfigDeleted: "ai-gateway-virtual-model-config-deleted",
   AiGatewayVirtualModelConfigRestored:
     "ai-gateway-virtual-model-config-restored",
   AiGatewayVirtualModelConfigUpdated: "ai-gateway-virtual-model-config-updated",
+  AiGatewayZeroDataRetentionToggled: "ai-gateway-zero-data-retention-toggled",
   AiOmniagent: "ai-omniagent",
   AlertInvestigationProjectAllowlistUpdated:
     "alert-investigation-project-allowlist-updated",
@@ -1029,6 +1042,7 @@ export const ReplacedBy = {
   FlagsSegment: "flags-segment",
   FlagsSettings: "flags-settings",
   FlagsTransferred: "flags-transferred",
+  FlatRateCdnAutoUpgradeConsent: "flat-rate-cdn-auto-upgrade-consent",
   GitIntegrationRepoPush: "git-integration-repo-push",
   GitAccountIntegrationLinkAdded: "git_account_integration_link_added",
   GlobalConfigBackupRestored: "global-config-backup-restored",

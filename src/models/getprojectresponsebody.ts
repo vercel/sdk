@@ -21,10 +21,10 @@ import {
   GetProjectGitComments$inboundSchema,
   GetProjectGitProviderOptions,
   GetProjectGitProviderOptions$inboundSchema,
-  GetProjectInternalRoutes1,
-  GetProjectInternalRoutes1$inboundSchema,
-  GetProjectInternalRoutes2,
-  GetProjectInternalRoutes2$inboundSchema,
+  GetProjectInternalRoutesHas,
+  GetProjectInternalRoutesHas$inboundSchema,
+  GetProjectInternalRoutesMitigate,
+  GetProjectInternalRoutesMitigate$inboundSchema,
   GetProjectLastAliasRequest,
   GetProjectLastAliasRequest$inboundSchema,
   GetProjectLastRollbackTarget,
@@ -53,7 +53,7 @@ import {
   GetProjectUsageStatus$inboundSchema,
   GetProjectWebAnalytics,
   GetProjectWebAnalytics$inboundSchema,
-} from "./getprojectinternalroutes1.js";
+} from "./getprojectinternalroutesmitigate.js";
 import {
   GetProjectAlias,
   GetProjectAlias$inboundSchema,
@@ -113,8 +113,20 @@ import {
   GetProjectServices$inboundSchema,
   GetProjectSpeedInsights,
   GetProjectSpeedInsights$inboundSchema,
-} from "./getprojectprojectsbuildmachinetype.js";
+} from "./getprojectrollingrelease.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type GetProjectInternalRoutes2 = {
+  has: Array<GetProjectInternalRoutesHas>;
+  mitigate: GetProjectInternalRoutesMitigate;
+  src?: string | undefined;
+};
+
+export type GetProjectInternalRoutes1 = {
+  src: string;
+  status: number;
+  expiry?: number | undefined;
+};
 
 export type GetProjectInternalRoutes =
   | GetProjectInternalRoutes1
@@ -301,13 +313,55 @@ export type GetProjectResponseBody = {
 };
 
 /** @internal */
+export const GetProjectInternalRoutes2$inboundSchema: z.ZodType<
+  GetProjectInternalRoutes2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  has: z.array(GetProjectInternalRoutesHas$inboundSchema),
+  mitigate: GetProjectInternalRoutesMitigate$inboundSchema,
+  src: types.optional(types.string()),
+});
+
+export function getProjectInternalRoutes2FromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectInternalRoutes2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectInternalRoutes2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectInternalRoutes2' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectInternalRoutes1$inboundSchema: z.ZodType<
+  GetProjectInternalRoutes1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  src: types.string(),
+  status: types.number(),
+  expiry: types.optional(types.number()),
+});
+
+export function getProjectInternalRoutes1FromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectInternalRoutes1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectInternalRoutes1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectInternalRoutes1' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetProjectInternalRoutes$inboundSchema: z.ZodType<
   GetProjectInternalRoutes,
   z.ZodTypeDef,
   unknown
 > = smartUnion([
-  GetProjectInternalRoutes1$inboundSchema,
-  GetProjectInternalRoutes2$inboundSchema,
+  z.lazy(() => GetProjectInternalRoutes1$inboundSchema),
+  z.lazy(() => GetProjectInternalRoutes2$inboundSchema),
 ]);
 
 export function getProjectInternalRoutesFromJSON(
@@ -603,12 +657,12 @@ export const GetProjectResponseBody$inboundSchema: z.ZodType<
   v0Created: types.optional(types.boolean()),
   abuse: types.optional(GetProjectAbuse$inboundSchema),
   internalRoutes: types.optional(
-    z.array(
-      smartUnion([
-        GetProjectInternalRoutes1$inboundSchema,
-        GetProjectInternalRoutes2$inboundSchema,
-      ]),
-    ),
+    z.array(smartUnion([
+      z.lazy(() => GetProjectInternalRoutes1$inboundSchema),
+      z.lazy(() =>
+        GetProjectInternalRoutes2$inboundSchema
+      ),
+    ])),
   ),
   hasDeployments: types.optional(types.boolean()),
   dismissedToasts: types.optional(

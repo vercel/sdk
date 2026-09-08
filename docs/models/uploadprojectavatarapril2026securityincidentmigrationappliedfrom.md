@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarApril2026SecurityIncidentMigrationAppliedFrom } from "@vercel/sdk/models/uploadprojectavataraction.js";
+import { UploadProjectAvatarApril2026SecurityIncidentMigrationAppliedFrom } from "@vercel/sdk/models/uploadprojectavatarinternalroutes1.js";
 
 let value: UploadProjectAvatarApril2026SecurityIncidentMigrationAppliedFrom =
   "all_except_custom_domains";

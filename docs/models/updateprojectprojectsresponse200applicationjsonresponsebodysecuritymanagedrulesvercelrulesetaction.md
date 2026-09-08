@@ -5,7 +5,7 @@
 ```typescript
 import {
   UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesVercelRulesetAction,
-} from "@vercel/sdk/models/updateprojectbotfilter.js";
+} from "@vercel/sdk/models/updateprojecttrafficsources.js";
 
 let value:
   UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesVercelRulesetAction =

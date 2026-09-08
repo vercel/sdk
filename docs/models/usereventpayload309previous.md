@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload309Previous } from "@vercel/sdk/models/twohundredandseventythree.js";
+import { UserEventPayload309Previous } from "@vercel/sdk/models/twohundredandseventyfive.js";
 
 let value: UserEventPayload309Previous = {};
 ```
@@ -12,4 +12,7 @@ let value: UserEventPayload309Previous = {};
 
 | Field                  | Type                   | Required               | Description            |
 | ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `skewProtectionMaxAge` | *number*               | :heavy_minus_sign:     | N/A                    |
+| `expiration`           | *string*               | :heavy_minus_sign:     | N/A                    |
+| `expirationProduction` | *string*               | :heavy_minus_sign:     | N/A                    |
+| `expirationCanceled`   | *string*               | :heavy_minus_sign:     | N/A                    |
+| `expirationErrored`    | *string*               | :heavy_minus_sign:     | N/A                    |

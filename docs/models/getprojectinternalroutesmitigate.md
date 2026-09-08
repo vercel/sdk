@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectInternalRoutesMitigate } from "@vercel/sdk/models/getprojectinternalroutes1.js";
+import { GetProjectInternalRoutesMitigate } from "@vercel/sdk/models/getprojectinternalroutesmitigate.js";
 
 let value: GetProjectInternalRoutesMitigate = {
   action: "block_legal_cwc",

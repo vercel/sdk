@@ -11,10 +11,10 @@ let value: TwoHundredAndFiftyEight = {
   projectId: "<id>",
   projectName: "<value>",
   previous: {
-    functionZeroConfigFailover: true,
+    functionDefaultMemoryType: "<value>",
   },
   next: {
-    functionZeroConfigFailover: true,
+    functionDefaultMemoryType: "<value>",
   },
 };
 ```

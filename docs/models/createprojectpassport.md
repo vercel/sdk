@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectPassport } from "@vercel/sdk/models/createprojectpassport.js";
+import { CreateProjectPassport } from "@vercel/sdk/models/createprojecthasprojectsresponse1.js";
 
 let value: CreateProjectPassport = {
   deploymentType: "all_except_custom_domains",

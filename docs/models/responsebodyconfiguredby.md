@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyConfiguredBy } from "@vercel/sdk/models/getprojectsresponsebodyprojectstarget.js";
+import { ResponseBodyConfiguredBy } from "@vercel/sdk/models/responsebodydeploymentexpiration.js";
 
 let value: ResponseBodyConfiguredBy = "CNAME";
 ```

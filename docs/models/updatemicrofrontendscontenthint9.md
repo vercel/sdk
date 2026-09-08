@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsContentHint9 } from "@vercel/sdk/models/updatemicrofrontendsprojectsbuildmachineselection.js";
+import { UpdateMicrofrontendsContentHint9 } from "@vercel/sdk/models/updatemicrofrontendsprojectsfunctiondefaultmemorytype.js";
 
 let value: UpdateMicrofrontendsContentHint9 = {
   type: "postgres-url-non-pooling",

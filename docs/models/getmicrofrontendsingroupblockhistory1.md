@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupBlockHistory1 } from "@vercel/sdk/models/getmicrofrontendsingroupinternalroutes.js";
+import { GetMicrofrontendsInGroupBlockHistory1 } from "@vercel/sdk/models/getmicrofrontendsingroupinternalroutes2.js";
 
 let value: GetMicrofrontendsInGroupBlockHistory1 = {
   action: "blocked",

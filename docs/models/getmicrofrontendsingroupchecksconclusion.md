@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupChecksConclusion } from "@vercel/sdk/models/getmicrofrontendsingroupbuildmachineelasticreason.js";
+import { GetMicrofrontendsInGroupChecksConclusion } from "@vercel/sdk/models/getmicrofrontendsingroupbuildmachinetype.js";
 
 let value: GetMicrofrontendsInGroupChecksConclusion = "canceled";
 ```

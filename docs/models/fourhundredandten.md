@@ -5,17 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndTen } from "@vercel/sdk/models/fourhundredandfour.js";
+import { FourHundredAndTen } from "@vercel/sdk/models/fourhundredandsix.js";
 
 let value: FourHundredAndTen = {
-  action: "enable",
+  method: "totp",
   reason: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `action`                                                                   | [models.UserEventPayload410Action](../models/usereventpayload410action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
-| `reason`                                                                   | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field                                | Type                                 | Required                             | Description                          |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| `method`                             | [models.Method](../models/method.md) | :heavy_check_mark:                   | N/A                                  |
+| `reason`                             | *string*                             | :heavy_check_mark:                   | N/A                                  |
+| `flowId`                             | *string*                             | :heavy_minus_sign:                   | N/A                                  |
+| `loginSessionId`                     | *string*                             | :heavy_minus_sign:                   | N/A                                  |

@@ -8,18 +8,14 @@ The payload of the event, if requested.
 import { TwoHundredAndFour } from "@vercel/sdk/models/bandwidth.js";
 
 let value: TwoHundredAndFour = {
-  ownerId: "<id>",
-  source: "<value>",
-  cause: "<value>",
+  organizationId: "<id>",
+  slug: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                      | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `ownerId`                                  | *string*                                   | :heavy_check_mark:                         | N/A                                        |
-| `source`                                   | *string*                                   | :heavy_check_mark:                         | N/A                                        |
-| `cause`                                    | *string*                                   | :heavy_check_mark:                         | N/A                                        |
-| `blockReason`                              | *string*                                   | :heavy_minus_sign:                         | N/A                                        |
-| `siftRoute`                                | [models.SiftRoute](../models/siftroute.md) | :heavy_minus_sign:                         | N/A                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `organizationId`   | *string*           | :heavy_check_mark: | N/A                |
+| `slug`             | *string*           | :heavy_check_mark: | N/A                |

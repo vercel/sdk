@@ -96,9 +96,12 @@ async function $do(
   const path = pathToFunc("/v1/ai-gateway/virtual-model-configs")();
 
   const query = encodeFormQuery({
+    "actingIp": payload.actingIp,
+    "actingUserAgent": payload.actingUserAgent,
     "ownerId": payload.ownerId,
     "slug": payload.slug,
     "teamId": payload.teamId,
+    "updatedBy": payload.updatedBy,
     "virtualModelSlug": payload.virtualModelSlug,
   });
 

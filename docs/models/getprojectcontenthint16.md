@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectContentHint16 } from "@vercel/sdk/models/getprojectprojectsbuildmachinetype.js";
+import { GetProjectContentHint16 } from "@vercel/sdk/models/getprojectrollingrelease.js";
 
 let value: GetProjectContentHint16 = {
   type: "integration-store-secret",

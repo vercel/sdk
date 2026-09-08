@@ -5,7 +5,7 @@ User-facing config/secret model. When set, authoritative for new code paths when
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupVisibility } from "@vercel/sdk/models/getmicrofrontendsingroupbuildmachineelasticreason.js";
+import { GetMicrofrontendsInGroupVisibility } from "@vercel/sdk/models/getmicrofrontendsingroupbuildmachinetype.js";
 
 let value: GetMicrofrontendsInGroupVisibility = "config";
 ```

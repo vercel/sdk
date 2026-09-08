@@ -4,16 +4,25 @@
 
 import { apiAiGatewayCreateAiGatewayVirtualModelConfig } from "../funcs/apiAiGatewayCreateAiGatewayVirtualModelConfig.js";
 import { apiAiGatewayDeleteAiGatewayVirtualModelConfig } from "../funcs/apiAiGatewayDeleteAiGatewayVirtualModelConfig.js";
+import { apiAiGatewayDeleteAiGatewayVirtualModelConfigBySlug } from "../funcs/apiAiGatewayDeleteAiGatewayVirtualModelConfigBySlug.js";
 import { apiAiGatewayGetAiGatewayVirtualModelConfig } from "../funcs/apiAiGatewayGetAiGatewayVirtualModelConfig.js";
+import { apiAiGatewayGetAiGatewayVirtualModelConfigBySlug } from "../funcs/apiAiGatewayGetAiGatewayVirtualModelConfigBySlug.js";
 import { apiAiGatewayListAiGatewayVirtualModelConfigs } from "../funcs/apiAiGatewayListAiGatewayVirtualModelConfigs.js";
 import { apiAiGatewayUpdateAiGatewayVirtualModelConfig } from "../funcs/apiAiGatewayUpdateAiGatewayVirtualModelConfig.js";
+import { apiAiGatewayUpdateAiGatewayVirtualModelConfigBySlug } from "../funcs/apiAiGatewayUpdateAiGatewayVirtualModelConfigBySlug.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import { AiGatewayVirtualModelConfig } from "../models/aigatewayvirtualmodelconfig.js";
 import { AiGatewayVirtualModelConfigList } from "../models/aigatewayvirtualmodelconfiglist.js";
 import { CreateAiGatewayVirtualModelConfigRequest } from "../models/createaigatewayvirtualmodelconfigop.js";
+import { DeleteAiGatewayVirtualModelConfigBySlugRequest } from "../models/deleteaigatewayvirtualmodelconfigbyslugop.js";
 import { DeleteAiGatewayVirtualModelConfigRequest } from "../models/deleteaigatewayvirtualmodelconfigop.js";
-import { GetAiGatewayVirtualModelConfigRequest } from "../models/getaigatewayvirtualmodelconfigop.js";
+import { GetAiGatewayVirtualModelConfigBySlugRequest } from "../models/getaigatewayvirtualmodelconfigbyslugop.js";
+import {
+  GetAiGatewayVirtualModelConfigRequest,
+  GetAiGatewayVirtualModelConfigResponseBody,
+} from "../models/getaigatewayvirtualmodelconfigop.js";
 import { ListAiGatewayVirtualModelConfigsRequest } from "../models/listaigatewayvirtualmodelconfigsop.js";
+import { UpdateAiGatewayVirtualModelConfigBySlugRequest } from "../models/updateaigatewayvirtualmodelconfigbyslugop.js";
 import { UpdateAiGatewayVirtualModelConfigRequest } from "../models/updateaigatewayvirtualmodelconfigop.js";
 import { unwrapAsync } from "../types/fp.js";
 
@@ -44,7 +53,7 @@ export class ApiAiGateway extends ClientSDK {
   async getAiGatewayVirtualModelConfig(
     request: GetAiGatewayVirtualModelConfigRequest,
     options?: RequestOptions,
-  ): Promise<AiGatewayVirtualModelConfig> {
+  ): Promise<GetAiGatewayVirtualModelConfigResponseBody> {
     return unwrapAsync(apiAiGatewayGetAiGatewayVirtualModelConfig(
       this,
       request,
@@ -97,6 +106,57 @@ export class ApiAiGateway extends ClientSDK {
     options?: RequestOptions,
   ): Promise<AiGatewayVirtualModelConfigList> {
     return unwrapAsync(apiAiGatewayListAiGatewayVirtualModelConfigs(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get virtual model config
+   *
+   * @remarks
+   * Get a virtual model config by path slug
+   */
+  async getAiGatewayVirtualModelConfigBySlug(
+    request: GetAiGatewayVirtualModelConfigBySlugRequest,
+    options?: RequestOptions,
+  ): Promise<AiGatewayVirtualModelConfig> {
+    return unwrapAsync(apiAiGatewayGetAiGatewayVirtualModelConfigBySlug(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Update virtual model config
+   *
+   * @remarks
+   * Update a virtual model config by path slug
+   */
+  async updateAiGatewayVirtualModelConfigBySlug(
+    request: UpdateAiGatewayVirtualModelConfigBySlugRequest,
+    options?: RequestOptions,
+  ): Promise<AiGatewayVirtualModelConfig> {
+    return unwrapAsync(apiAiGatewayUpdateAiGatewayVirtualModelConfigBySlug(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Delete virtual model config
+   *
+   * @remarks
+   * Delete a virtual model config by path slug (soft delete)
+   */
+  async deleteAiGatewayVirtualModelConfigBySlug(
+    request: DeleteAiGatewayVirtualModelConfigBySlugRequest,
+    options?: RequestOptions,
+  ): Promise<any> {
+    return unwrapAsync(apiAiGatewayDeleteAiGatewayVirtualModelConfigBySlug(
       this,
       request,
       options,

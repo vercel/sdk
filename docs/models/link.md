@@ -110,11 +110,9 @@ const value: models.Link6 = {
 
 ```typescript
 const value: models.Link7 = {
-  owner: "<value>",
+  org: "<value>",
   repo: "<value>",
-  repoId: "<id>",
-  ownerId: "<id>",
-  type: "cursor-origin",
+  type: "v0",
   deployHooks: [
     {
       id: "<id>",
@@ -123,6 +121,21 @@ const value: models.Link7 = {
       url: "https://confused-dish.info",
     },
   ],
+  gitCredentialId: "<id>",
+  productionBranch: "<value>",
+};
+```
+
+### `models.Link8`
+
+```typescript
+const value: models.Link8 = {
+  owner: "<value>",
+  repo: "<value>",
+  repoId: "<id>",
+  ownerId: "<id>",
+  type: "cursor-origin",
+  deployHooks: [],
   gitCredentialId: "<id>",
   productionBranch: "<value>",
 };

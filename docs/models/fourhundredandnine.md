@@ -5,20 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndNine } from "@vercel/sdk/models/fourhundredandfour.js";
+import { FourHundredAndNine } from "@vercel/sdk/models/fourhundredandsix.js";
 
 let value: FourHundredAndNine = {
-  allowedMethods: [],
-  firstFactor: "<value>",
-  flowId: "<id>",
+  autoBlockPrevented: true,
+  actorId: "<id>",
+  actorType: "admin",
 };
 ```
 
 ## Fields
 
-| Field                                                  | Type                                                   | Required                                               | Description                                            |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `allowedMethods`                                       | [models.AllowedMethods](../models/allowedmethods.md)[] | :heavy_check_mark:                                     | N/A                                                    |
-| `firstFactor`                                          | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
-| `flowId`                                               | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
-| `loginSessionId`                                       | *string*                                               | :heavy_minus_sign:                                     | N/A                                                    |
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `autoBlockPrevented`                                                             | *boolean*                                                                        | :heavy_check_mark:                                                               | N/A                                                                              |
+| `preventUntil`                                                                   | *number*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `actorId`                                                                        | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
+| `actorType`                                                                      | [models.UserEventPayload409ActorType](../models/usereventpayload409actortype.md) | :heavy_check_mark:                                                               | N/A                                                                              |
+| `reason`                                                                         | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |

@@ -103,11 +103,9 @@ const value: models.GetMicrofrontendsInGroupLink6 = {
 
 ```typescript
 const value: models.GetMicrofrontendsInGroupLink7 = {
-  owner: "<value>",
+  org: "<value>",
   repo: "<value>",
-  repoId: "<id>",
-  ownerId: "<id>",
-  type: "cursor-origin",
+  type: "v0",
   deployHooks: [
     {
       id: "<id>",
@@ -116,6 +114,21 @@ const value: models.GetMicrofrontendsInGroupLink7 = {
       url: "https://tame-cheese.biz/",
     },
   ],
+  gitCredentialId: "<id>",
+  productionBranch: "<value>",
+};
+```
+
+### `models.GetMicrofrontendsInGroupLink8`
+
+```typescript
+const value: models.GetMicrofrontendsInGroupLink8 = {
+  owner: "<value>",
+  repo: "<value>",
+  repoId: "<id>",
+  ownerId: "<id>",
+  type: "cursor-origin",
+  deployHooks: [],
   gitCredentialId: "<id>",
   productionBranch: "<value>",
 };

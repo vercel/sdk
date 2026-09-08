@@ -12,8 +12,6 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
   UploadProjectAvatarAbuse,
   UploadProjectAvatarAbuse$inboundSchema,
-  UploadProjectAvatarAction,
-  UploadProjectAvatarAction$inboundSchema,
   UploadProjectAvatarDefaultResourceConfig,
   UploadProjectAvatarDefaultResourceConfig$inboundSchema,
   UploadProjectAvatarDeploymentPolicy,
@@ -24,8 +22,10 @@ import {
   UploadProjectAvatarGitComments$inboundSchema,
   UploadProjectAvatarGitProviderOptions,
   UploadProjectAvatarGitProviderOptions$inboundSchema,
-  UploadProjectAvatarInternalRoutes,
-  UploadProjectAvatarInternalRoutes$inboundSchema,
+  UploadProjectAvatarInternalRoutes1,
+  UploadProjectAvatarInternalRoutes1$inboundSchema,
+  UploadProjectAvatarInternalRoutes2,
+  UploadProjectAvatarInternalRoutes2$inboundSchema,
   UploadProjectAvatarLastAliasRequest,
   UploadProjectAvatarLastAliasRequest$inboundSchema,
   UploadProjectAvatarLastRollbackTarget,
@@ -54,7 +54,7 @@ import {
   UploadProjectAvatarUsageStatus$inboundSchema,
   UploadProjectAvatarWebAnalytics,
   UploadProjectAvatarWebAnalytics$inboundSchema,
-} from "./uploadprojectavataraction.js";
+} from "./uploadprojectavatarinternalroutes1.js";
 import {
   UploadProjectAvatarAlias,
   UploadProjectAvatarAlias$inboundSchema,
@@ -112,7 +112,20 @@ import {
   UploadProjectAvatarServices$inboundSchema,
   UploadProjectAvatarSpeedInsights,
   UploadProjectAvatarSpeedInsights$inboundSchema,
-} from "./uploadprojectavatarprojectsbuildmachineelasticreason.js";
+} from "./uploadprojectavatarprojectsbuildmachinetype.js";
+
+export type UploadProjectAvatarInternalRoutes =
+  | UploadProjectAvatarInternalRoutes1
+  | UploadProjectAvatarInternalRoutes2;
+
+export const UploadProjectAvatarAction = {
+  Accept: "accept",
+  Cancel: "cancel",
+  Delete: "delete",
+} as const;
+export type UploadProjectAvatarAction = ClosedEnum<
+  typeof UploadProjectAvatarAction
+>;
 
 export type UploadProjectAvatarValuePreviousValue = string | number | boolean;
 
@@ -283,13 +296,42 @@ export type UploadProjectAvatarResponseBody = {
   v0?: boolean | undefined;
   v0Created?: boolean | undefined;
   abuse?: UploadProjectAvatarAbuse | undefined;
-  internalRoutes?: Array<UploadProjectAvatarInternalRoutes> | undefined;
+  internalRoutes?:
+    | Array<
+      UploadProjectAvatarInternalRoutes1 | UploadProjectAvatarInternalRoutes2
+    >
+    | undefined;
   hasDeployments?: boolean | undefined;
   dismissedToasts?: Array<UploadProjectAvatarDismissedToasts> | undefined;
   protectedSourcemaps?: boolean | undefined;
   tracing?: UploadProjectAvatarTracing | undefined;
   avatar?: string | null | undefined;
 };
+
+/** @internal */
+export const UploadProjectAvatarInternalRoutes$inboundSchema: z.ZodType<
+  UploadProjectAvatarInternalRoutes,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  UploadProjectAvatarInternalRoutes1$inboundSchema,
+  UploadProjectAvatarInternalRoutes2$inboundSchema,
+]);
+
+export function uploadProjectAvatarInternalRoutesFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadProjectAvatarInternalRoutes, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadProjectAvatarInternalRoutes$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadProjectAvatarInternalRoutes' from JSON`,
+  );
+}
+
+/** @internal */
+export const UploadProjectAvatarAction$inboundSchema: z.ZodNativeEnum<
+  typeof UploadProjectAvatarAction
+> = z.nativeEnum(UploadProjectAvatarAction);
 
 /** @internal */
 export const UploadProjectAvatarValuePreviousValue$inboundSchema: z.ZodType<
@@ -588,7 +630,12 @@ export const UploadProjectAvatarResponseBody$inboundSchema: z.ZodType<
   v0Created: types.optional(types.boolean()),
   abuse: types.optional(UploadProjectAvatarAbuse$inboundSchema),
   internalRoutes: types.optional(
-    z.array(UploadProjectAvatarInternalRoutes$inboundSchema),
+    z.array(
+      smartUnion([
+        UploadProjectAvatarInternalRoutes1$inboundSchema,
+        UploadProjectAvatarInternalRoutes2$inboundSchema,
+      ]),
+    ),
   ),
   hasDeployments: types.optional(types.boolean()),
   dismissedToasts: types.optional(

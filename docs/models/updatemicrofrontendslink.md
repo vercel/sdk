@@ -110,6 +110,19 @@ const value: models.UpdateMicrofrontendsLink6 = {
 
 ```typescript
 const value: models.UpdateMicrofrontendsLink7 = {
+  org: "<value>",
+  repo: "<value>",
+  type: "v0",
+  deployHooks: [],
+  gitCredentialId: "<id>",
+  productionBranch: "<value>",
+};
+```
+
+### `models.UpdateMicrofrontendsLink8`
+
+```typescript
+const value: models.UpdateMicrofrontendsLink8 = {
   owner: "<value>",
   repo: "<value>",
   repoId: "<id>",

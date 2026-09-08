@@ -5,23 +5,20 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFiftyTwo } from "@vercel/sdk/models/usereventpayload336budget.js";
+import { ThreeHundredAndFiftyTwo } from "@vercel/sdk/models/usereventpayload338budget.js";
 
 let value: ThreeHundredAndFiftyTwo = {
-  eventId: "<id>",
-  sessionId: "<id>",
-  sessionKind: "<value>",
-  surface: "<value>",
-  occurredAt: 3984.46,
+  next: {
+    enabled: true,
+    scope: "all",
+    includeDrafts: false,
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                                       | Type                                                                        | Required                                                                    | Description                                                                 |
-| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `eventId`                                                                   | *string*                                                                    | :heavy_check_mark:                                                          | N/A                                                                         |
-| `sessionId`                                                                 | *string*                                                                    | :heavy_check_mark:                                                          | N/A                                                                         |
-| `sessionKind`                                                               | *string*                                                                    | :heavy_check_mark:                                                          | Currently emitted session kinds: chat, investigation.                       |
-| `surface`                                                                   | *string*                                                                    | :heavy_check_mark:                                                          | Currently emitted surfaces: dashboard, internal, slack, automation, github. |
-| `occurredAt`                                                                | *number*                                                                    | :heavy_check_mark:                                                          | N/A                                                                         |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `previous`                                                                     | [models.UserEventPayload352Previous](../models/usereventpayload352previous.md) | :heavy_minus_sign:                                                             | Automatic code review settings                                                 |
+| `next`                                                                         | [models.UserEventPayload352Next](../models/usereventpayload352next.md)         | :heavy_check_mark:                                                             | Automatic code review settings                                                 |

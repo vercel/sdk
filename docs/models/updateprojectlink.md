@@ -96,12 +96,32 @@ const value: models.UpdateProjectLink6 = {
 
 ```typescript
 const value: models.UpdateProjectLink7 = {
+  org: "<value>",
+  repo: "<value>",
+  type: "v0",
+  deployHooks: [],
+  gitCredentialId: "<id>",
+  productionBranch: "<value>",
+};
+```
+
+### `models.UpdateProjectLink8`
+
+```typescript
+const value: models.UpdateProjectLink8 = {
   owner: "<value>",
   repo: "<value>",
   repoId: "<id>",
   ownerId: "<id>",
   type: "cursor-origin",
-  deployHooks: [],
+  deployHooks: [
+    {
+      id: "<id>",
+      name: "<value>",
+      ref: "<value>",
+      url: "https://trained-goat.org",
+    },
+  ],
   gitCredentialId: "<id>",
   productionBranch: "<value>",
 };

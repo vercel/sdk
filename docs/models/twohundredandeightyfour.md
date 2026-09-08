@@ -5,22 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndEightyFour } from "@vercel/sdk/models/twohundredandseventythree.js";
+import { TwoHundredAndEightyFour } from "@vercel/sdk/models/twohundredandseventyfive.js";
 
 let value: TwoHundredAndEightyFour = {
-  previousProjectName: "<value>",
-  newProjectName: "<value>",
-  originAccountName: "<value>",
+  project: {
+    name: "<value>",
+  },
+  removedMembership: {
+    role: "PROJECT_VIEWER",
+    uid: "<id>",
+    createdAt: 7244.07,
+  },
 };
 ```
 
 ## Fields
 
-| Field                 | Type                  | Required              | Description           |
-| --------------------- | --------------------- | --------------------- | --------------------- |
-| `previousProjectId`   | *string*              | :heavy_minus_sign:    | N/A                   |
-| `newProjectId`        | *string*              | :heavy_minus_sign:    | N/A                   |
-| `previousProjectName` | *string*              | :heavy_check_mark:    | N/A                   |
-| `newProjectName`      | *string*              | :heavy_check_mark:    | N/A                   |
-| `originAccountName`   | *string*              | :heavy_check_mark:    | N/A                   |
-| `transferId`          | *string*              | :heavy_minus_sign:    | N/A                   |
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `project`                                                                    | [models.UserEventPayload284Project](../models/usereventpayload284project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
+| `removedMembership`                                                          | [models.RemovedMembership](../models/removedmembership.md)                   | :heavy_check_mark:                                                           | N/A                                                                          |

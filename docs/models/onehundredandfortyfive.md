@@ -5,17 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFortyFive } from "@vercel/sdk/models/deployhook.js";
+import { OneHundredAndFortyFive } from "@vercel/sdk/models/onehundredandthree.js";
 
 let value: OneHundredAndFortyFive = {
-  email: "Kariane.Harris@hotmail.com",
-  name: "<value>",
+  edgeConfigId: "<id>",
+  edgeConfigSlug: "<value>",
+  edgeConfigTokenIds: [
+    "<value 1>",
+    "<value 2>",
+  ],
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `email`            | *string*           | :heavy_check_mark: | N/A                |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
+| Field                 | Type                  | Required              | Description           |
+| --------------------- | --------------------- | --------------------- | --------------------- |
+| `edgeConfigId`        | *string*              | :heavy_check_mark:    | N/A                   |
+| `edgeConfigSlug`      | *string*              | :heavy_check_mark:    | N/A                   |
+| `edgeConfigTokenIds`  | *string*[]            | :heavy_check_mark:    | ids of deleted tokens |

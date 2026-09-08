@@ -8,16 +8,12 @@ The payload of the event, if requested.
 import { OneHundredAndNinetyThree } from "@vercel/sdk/models/bandwidth.js";
 
 let value: OneHundredAndNinetyThree = {
-  id: "<id>",
-  slug: "<value>",
-  name: "<value>",
+  periods: [],
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *string*           | :heavy_check_mark: | N/A                |
-| `slug`             | *string*           | :heavy_check_mark: | N/A                |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `periods`                                | [models.Periods](../models/periods.md)[] | :heavy_check_mark:                       | N/A                                      |

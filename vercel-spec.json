@@ -1823,7 +1823,14 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AiGatewayVirtualModelConfig"
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/AiGatewayVirtualModelConfig"
+                    },
+                    {
+                      "$ref": "#/components/schemas/AiGatewayVirtualModelConfigList"
+                    }
+                  ]
                 }
               }
             }
@@ -1851,7 +1858,6 @@
           {
             "name": "ownerId",
             "in": "query",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -1859,7 +1865,21 @@
           {
             "name": "virtualModelSlug",
             "in": "query",
-            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
             "schema": {
               "type": "string"
             }
@@ -2007,6 +2027,30 @@
             }
           },
           {
+            "name": "updatedBy",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "actingIp",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "actingUserAgent",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "description": "The Team identifier to perform the request on behalf of.",
             "in": "query",
             "name": "teamId",
@@ -2086,6 +2130,261 @@
           {
             "name": "cursor",
             "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ]
+      }
+    },
+    "/v1/ai-gateway/virtual-model-configs/{vmcSlug}": {
+      "get": {
+        "description": "Get a virtual model config by path slug",
+        "operationId": "getAiGatewayVirtualModelConfigBySlug",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Get virtual model config",
+        "tags": [
+          "api-ai-gateway"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AiGatewayVirtualModelConfig"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          },
+          "500": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "ownerId",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "vmcSlug",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ]
+      },
+      "patch": {
+        "description": "Update a virtual model config by path slug",
+        "operationId": "updateAiGatewayVirtualModelConfigBySlug",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Update virtual model config",
+        "tags": [
+          "api-ai-gateway"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AiGatewayVirtualModelConfig"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          },
+          "500": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "vmcSlug",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ]
+      },
+      "delete": {
+        "description": "Delete a virtual model config by path slug (soft delete)",
+        "operationId": "deleteAiGatewayVirtualModelConfigBySlug",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Delete virtual model config",
+        "tags": [
+          "api-ai-gateway"
+        ],
+        "responses": {
+          "204": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "nullable": true
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          },
+          "500": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "ownerId",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "vmcSlug",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "updatedBy",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "actingIp",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "actingUserAgent",
+            "in": "query",
+            "required": false,
             "schema": {
               "type": "string"
             }
@@ -75592,7 +75891,7 @@
                   },
                   "algorithm": {
                     "type": "string",
-                    "description": "The signing algorithm to use for the issuer.",
+                    "description": "The signing algorithm to use for the issuer. EdDSA is not accepted for new issuers.",
                     "enum": [
                       "RS256",
                       "RS384",
@@ -75602,8 +75901,7 @@
                       "PS512",
                       "ES256",
                       "ES384",
-                      "ES512",
-                      "EdDSA"
+                      "ES512"
                     ],
                     "default": "RS512"
                   },
@@ -81303,6 +81601,79 @@
                                     "type": "string",
                                     "enum": [
                                       "vercel"
+                                    ]
+                                  },
+                                  "createdAt": {
+                                    "type": "number"
+                                  },
+                                  "deployHooks": {
+                                    "items": {
+                                      "properties": {
+                                        "createdAt": {
+                                          "type": "number"
+                                        },
+                                        "id": {
+                                          "type": "string"
+                                        },
+                                        "name": {
+                                          "type": "string"
+                                        },
+                                        "ref": {
+                                          "type": "string"
+                                        },
+                                        "url": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "required": [
+                                        "id",
+                                        "name",
+                                        "ref",
+                                        "url"
+                                      ],
+                                      "type": "object"
+                                    },
+                                    "type": "array"
+                                  },
+                                  "gitCredentialId": {
+                                    "type": "string"
+                                  },
+                                  "updatedAt": {
+                                    "type": "number"
+                                  },
+                                  "sourceless": {
+                                    "type": "boolean",
+                                    "enum": [
+                                      false,
+                                      true
+                                    ]
+                                  },
+                                  "productionBranch": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "deployHooks",
+                                  "gitCredentialId",
+                                  "org",
+                                  "productionBranch",
+                                  "repo",
+                                  "type"
+                                ],
+                                "type": "object"
+                              },
+                              {
+                                "properties": {
+                                  "org": {
+                                    "type": "string"
+                                  },
+                                  "repo": {
+                                    "type": "string"
+                                  },
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "v0"
                                     ]
                                   },
                                   "createdAt": {
@@ -95526,6 +95897,79 @@
                               },
                               {
                                 "properties": {
+                                  "org": {
+                                    "type": "string"
+                                  },
+                                  "repo": {
+                                    "type": "string"
+                                  },
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "v0"
+                                    ]
+                                  },
+                                  "createdAt": {
+                                    "type": "number"
+                                  },
+                                  "deployHooks": {
+                                    "items": {
+                                      "properties": {
+                                        "createdAt": {
+                                          "type": "number"
+                                        },
+                                        "id": {
+                                          "type": "string"
+                                        },
+                                        "name": {
+                                          "type": "string"
+                                        },
+                                        "ref": {
+                                          "type": "string"
+                                        },
+                                        "url": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "required": [
+                                        "id",
+                                        "name",
+                                        "ref",
+                                        "url"
+                                      ],
+                                      "type": "object"
+                                    },
+                                    "type": "array"
+                                  },
+                                  "gitCredentialId": {
+                                    "type": "string"
+                                  },
+                                  "updatedAt": {
+                                    "type": "number"
+                                  },
+                                  "sourceless": {
+                                    "type": "boolean",
+                                    "enum": [
+                                      false,
+                                      true
+                                    ]
+                                  },
+                                  "productionBranch": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "deployHooks",
+                                  "gitCredentialId",
+                                  "org",
+                                  "productionBranch",
+                                  "repo",
+                                  "type"
+                                ],
+                                "type": "object"
+                              },
+                              {
+                                "properties": {
                                   "owner": {
                                     "type": "string",
                                     "description": "Owner (namespace) slug, e.g. `acme`."
@@ -100197,6 +100641,79 @@
                                         "type": "string",
                                         "enum": [
                                           "vercel"
+                                        ]
+                                      },
+                                      "createdAt": {
+                                        "type": "number"
+                                      },
+                                      "deployHooks": {
+                                        "items": {
+                                          "properties": {
+                                            "createdAt": {
+                                              "type": "number"
+                                            },
+                                            "id": {
+                                              "type": "string"
+                                            },
+                                            "name": {
+                                              "type": "string"
+                                            },
+                                            "ref": {
+                                              "type": "string"
+                                            },
+                                            "url": {
+                                              "type": "string"
+                                            }
+                                          },
+                                          "required": [
+                                            "id",
+                                            "name",
+                                            "ref",
+                                            "url"
+                                          ],
+                                          "type": "object"
+                                        },
+                                        "type": "array"
+                                      },
+                                      "gitCredentialId": {
+                                        "type": "string"
+                                      },
+                                      "updatedAt": {
+                                        "type": "number"
+                                      },
+                                      "sourceless": {
+                                        "type": "boolean",
+                                        "enum": [
+                                          false,
+                                          true
+                                        ]
+                                      },
+                                      "productionBranch": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "required": [
+                                      "deployHooks",
+                                      "gitCredentialId",
+                                      "org",
+                                      "productionBranch",
+                                      "repo",
+                                      "type"
+                                    ],
+                                    "type": "object"
+                                  },
+                                  {
+                                    "properties": {
+                                      "org": {
+                                        "type": "string"
+                                      },
+                                      "repo": {
+                                        "type": "string"
+                                      },
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "v0"
                                         ]
                                       },
                                       "createdAt": {
@@ -105552,6 +106069,79 @@
                                         "type": "string",
                                         "enum": [
                                           "vercel"
+                                        ]
+                                      },
+                                      "createdAt": {
+                                        "type": "number"
+                                      },
+                                      "deployHooks": {
+                                        "items": {
+                                          "properties": {
+                                            "createdAt": {
+                                              "type": "number"
+                                            },
+                                            "id": {
+                                              "type": "string"
+                                            },
+                                            "name": {
+                                              "type": "string"
+                                            },
+                                            "ref": {
+                                              "type": "string"
+                                            },
+                                            "url": {
+                                              "type": "string"
+                                            }
+                                          },
+                                          "required": [
+                                            "id",
+                                            "name",
+                                            "ref",
+                                            "url"
+                                          ],
+                                          "type": "object"
+                                        },
+                                        "type": "array"
+                                      },
+                                      "gitCredentialId": {
+                                        "type": "string"
+                                      },
+                                      "updatedAt": {
+                                        "type": "number"
+                                      },
+                                      "sourceless": {
+                                        "type": "boolean",
+                                        "enum": [
+                                          false,
+                                          true
+                                        ]
+                                      },
+                                      "productionBranch": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "required": [
+                                      "deployHooks",
+                                      "gitCredentialId",
+                                      "org",
+                                      "productionBranch",
+                                      "repo",
+                                      "type"
+                                    ],
+                                    "type": "object"
+                                  },
+                                  {
+                                    "properties": {
+                                      "org": {
+                                        "type": "string"
+                                      },
+                                      "repo": {
+                                        "type": "string"
+                                      },
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "v0"
                                         ]
                                       },
                                       "createdAt": {
@@ -113779,6 +114369,79 @@
                               "type": "string",
                               "enum": [
                                 "vercel"
+                              ]
+                            },
+                            "createdAt": {
+                              "type": "number"
+                            },
+                            "deployHooks": {
+                              "items": {
+                                "properties": {
+                                  "createdAt": {
+                                    "type": "number"
+                                  },
+                                  "id": {
+                                    "type": "string"
+                                  },
+                                  "name": {
+                                    "type": "string"
+                                  },
+                                  "ref": {
+                                    "type": "string"
+                                  },
+                                  "url": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "name",
+                                  "ref",
+                                  "url"
+                                ],
+                                "type": "object"
+                              },
+                              "type": "array"
+                            },
+                            "gitCredentialId": {
+                              "type": "string"
+                            },
+                            "updatedAt": {
+                              "type": "number"
+                            },
+                            "sourceless": {
+                              "type": "boolean",
+                              "enum": [
+                                false,
+                                true
+                              ]
+                            },
+                            "productionBranch": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "deployHooks",
+                            "gitCredentialId",
+                            "org",
+                            "productionBranch",
+                            "repo",
+                            "type"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "properties": {
+                            "org": {
+                              "type": "string"
+                            },
+                            "repo": {
+                              "type": "string"
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "v0"
                               ]
                             },
                             "createdAt": {
@@ -122295,6 +122958,79 @@
                         },
                         {
                           "properties": {
+                            "org": {
+                              "type": "string"
+                            },
+                            "repo": {
+                              "type": "string"
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "v0"
+                              ]
+                            },
+                            "createdAt": {
+                              "type": "number"
+                            },
+                            "deployHooks": {
+                              "items": {
+                                "properties": {
+                                  "createdAt": {
+                                    "type": "number"
+                                  },
+                                  "id": {
+                                    "type": "string"
+                                  },
+                                  "name": {
+                                    "type": "string"
+                                  },
+                                  "ref": {
+                                    "type": "string"
+                                  },
+                                  "url": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "name",
+                                  "ref",
+                                  "url"
+                                ],
+                                "type": "object"
+                              },
+                              "type": "array"
+                            },
+                            "gitCredentialId": {
+                              "type": "string"
+                            },
+                            "updatedAt": {
+                              "type": "number"
+                            },
+                            "sourceless": {
+                              "type": "boolean",
+                              "enum": [
+                                false,
+                                true
+                              ]
+                            },
+                            "productionBranch": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "deployHooks",
+                            "gitCredentialId",
+                            "org",
+                            "productionBranch",
+                            "repo",
+                            "type"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "properties": {
                             "owner": {
                               "type": "string",
                               "description": "Owner (namespace) slug, e.g. `acme`."
@@ -129977,6 +130713,79 @@
                               "type": "string",
                               "enum": [
                                 "vercel"
+                              ]
+                            },
+                            "createdAt": {
+                              "type": "number"
+                            },
+                            "deployHooks": {
+                              "items": {
+                                "properties": {
+                                  "createdAt": {
+                                    "type": "number"
+                                  },
+                                  "id": {
+                                    "type": "string"
+                                  },
+                                  "name": {
+                                    "type": "string"
+                                  },
+                                  "ref": {
+                                    "type": "string"
+                                  },
+                                  "url": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "name",
+                                  "ref",
+                                  "url"
+                                ],
+                                "type": "object"
+                              },
+                              "type": "array"
+                            },
+                            "gitCredentialId": {
+                              "type": "string"
+                            },
+                            "updatedAt": {
+                              "type": "number"
+                            },
+                            "sourceless": {
+                              "type": "boolean",
+                              "enum": [
+                                false,
+                                true
+                              ]
+                            },
+                            "productionBranch": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "deployHooks",
+                            "gitCredentialId",
+                            "org",
+                            "productionBranch",
+                            "repo",
+                            "type"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "properties": {
+                            "org": {
+                              "type": "string"
+                            },
+                            "repo": {
+                              "type": "string"
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "v0"
                               ]
                             },
                             "createdAt": {
@@ -139028,6 +139837,79 @@
                               "type": "string",
                               "enum": [
                                 "vercel"
+                              ]
+                            },
+                            "createdAt": {
+                              "type": "number"
+                            },
+                            "deployHooks": {
+                              "items": {
+                                "properties": {
+                                  "createdAt": {
+                                    "type": "number"
+                                  },
+                                  "id": {
+                                    "type": "string"
+                                  },
+                                  "name": {
+                                    "type": "string"
+                                  },
+                                  "ref": {
+                                    "type": "string"
+                                  },
+                                  "url": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "name",
+                                  "ref",
+                                  "url"
+                                ],
+                                "type": "object"
+                              },
+                              "type": "array"
+                            },
+                            "gitCredentialId": {
+                              "type": "string"
+                            },
+                            "updatedAt": {
+                              "type": "number"
+                            },
+                            "sourceless": {
+                              "type": "boolean",
+                              "enum": [
+                                false,
+                                true
+                              ]
+                            },
+                            "productionBranch": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "deployHooks",
+                            "gitCredentialId",
+                            "org",
+                            "productionBranch",
+                            "repo",
+                            "type"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "properties": {
+                            "org": {
+                              "type": "string"
+                            },
+                            "repo": {
+                              "type": "string"
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "v0"
                               ]
                             },
                             "createdAt": {
@@ -159546,6 +160428,79 @@
                               "type": "string",
                               "enum": [
                                 "vercel"
+                              ]
+                            },
+                            "createdAt": {
+                              "type": "number"
+                            },
+                            "deployHooks": {
+                              "items": {
+                                "properties": {
+                                  "createdAt": {
+                                    "type": "number"
+                                  },
+                                  "id": {
+                                    "type": "string"
+                                  },
+                                  "name": {
+                                    "type": "string"
+                                  },
+                                  "ref": {
+                                    "type": "string"
+                                  },
+                                  "url": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "name",
+                                  "ref",
+                                  "url"
+                                ],
+                                "type": "object"
+                              },
+                              "type": "array"
+                            },
+                            "gitCredentialId": {
+                              "type": "string"
+                            },
+                            "updatedAt": {
+                              "type": "number"
+                            },
+                            "sourceless": {
+                              "type": "boolean",
+                              "enum": [
+                                false,
+                                true
+                              ]
+                            },
+                            "productionBranch": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "deployHooks",
+                            "gitCredentialId",
+                            "org",
+                            "productionBranch",
+                            "repo",
+                            "type"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "properties": {
+                            "org": {
+                              "type": "string"
+                            },
+                            "repo": {
+                              "type": "string"
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "v0"
                               ]
                             },
                             "createdAt": {
@@ -215477,8 +216432,10 @@
               "ai-gateway-byok-credential-created",
               "ai-gateway-byok-credential-deleted",
               "ai-gateway-byok-credential-updated",
+              "ai-gateway-byok-model-mappings-updated",
               "ai-gateway-credits-purchased",
               "ai-gateway-guardrails-updated",
+              "ai-gateway-hipaa-compliance-toggled",
               "ai-gateway-inference-regions-updated",
               "ai-gateway-model-allowlist-models-updated",
               "ai-gateway-model-allowlist-toggled",
@@ -215488,6 +216445,7 @@
               "ai-gateway-private-provider-created",
               "ai-gateway-private-provider-deleted",
               "ai-gateway-private-provider-updated",
+              "ai-gateway-prompt-training-opt-out-toggled",
               "ai-gateway-provider-allowlist-providers-updated",
               "ai-gateway-provider-allowlist-toggled",
               "ai-gateway-rule-created",
@@ -215501,8 +216459,10 @@
               "ai-gateway-transcripts-retention-updated",
               "ai-gateway-virtual-model-config-archived",
               "ai-gateway-virtual-model-config-created",
+              "ai-gateway-virtual-model-config-deleted",
               "ai-gateway-virtual-model-config-restored",
               "ai-gateway-virtual-model-config-updated",
+              "ai-gateway-zero-data-retention-toggled",
               "ai-omniagent",
               "alert-investigation-project-allowlist-updated",
               "alert-rule-created",
@@ -215692,6 +216652,7 @@
               "flags-segment",
               "flags-settings",
               "flags-transferred",
+              "flat-rate-cdn-auto-upgrade-consent",
               "git-integration-repo-push",
               "git_account_integration_link_added",
               "global-config-backup-restored",
@@ -217227,16 +218188,49 @@
               },
               {
                 "properties": {
-                  "amount": {
-                    "type": "string"
+                  "credential": {
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "providerSlug": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "name",
+                      "providerSlug"
+                    ],
+                    "type": "object"
                   },
-                  "purchaseIntentId": {
-                    "type": "string"
+                  "added": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "removed": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "changed": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
                   }
                 },
                 "required": [
-                  "amount",
-                  "purchaseIntentId"
+                  "added",
+                  "changed",
+                  "credential",
+                  "removed"
                 ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
@@ -217253,6 +218247,22 @@
                 },
                 "required": [
                   "enabled"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "amount": {
+                    "type": "string"
+                  },
+                  "purchaseIntentId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "amount",
+                  "purchaseIntentId"
                 ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
@@ -224764,6 +225774,23 @@
                 },
                 "required": [
                   "action"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "enum": [
+                      "create",
+                      "enable",
+                      "upgrade"
+                    ]
+                  }
+                },
+                "required": [
+                  "source"
                 ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
@@ -232310,6 +233337,7 @@
                           "github-custom-host",
                           "github-limited",
                           "gitlab",
+                          "v0",
                           "vercel"
                         ]
                       },
@@ -232338,6 +233366,7 @@
                           "github-custom-host",
                           "github-limited",
                           "gitlab",
+                          "v0",
                           "vercel"
                         ]
                       },
@@ -232381,6 +233410,7 @@
                       "github-custom-host",
                       "github-limited",
                       "gitlab",
+                      "v0",
                       "vercel"
                     ]
                   },
@@ -239800,8 +240830,10 @@
               "ai-gateway-byok-credential-created",
               "ai-gateway-byok-credential-deleted",
               "ai-gateway-byok-credential-updated",
+              "ai-gateway-byok-model-mappings-updated",
               "ai-gateway-credits-purchased",
               "ai-gateway-guardrails-updated",
+              "ai-gateway-hipaa-compliance-toggled",
               "ai-gateway-inference-regions-updated",
               "ai-gateway-model-allowlist-models-updated",
               "ai-gateway-model-allowlist-toggled",
@@ -239811,6 +240843,7 @@
               "ai-gateway-private-provider-created",
               "ai-gateway-private-provider-deleted",
               "ai-gateway-private-provider-updated",
+              "ai-gateway-prompt-training-opt-out-toggled",
               "ai-gateway-provider-allowlist-providers-updated",
               "ai-gateway-provider-allowlist-toggled",
               "ai-gateway-rule-created",
@@ -239824,8 +240857,10 @@
               "ai-gateway-transcripts-retention-updated",
               "ai-gateway-virtual-model-config-archived",
               "ai-gateway-virtual-model-config-created",
+              "ai-gateway-virtual-model-config-deleted",
               "ai-gateway-virtual-model-config-restored",
               "ai-gateway-virtual-model-config-updated",
+              "ai-gateway-zero-data-retention-toggled",
               "ai-omniagent",
               "alert-investigation-project-allowlist-updated",
               "alert-rule-created",
@@ -240015,6 +241050,7 @@
               "flags-segment",
               "flags-settings",
               "flags-transferred",
+              "flat-rate-cdn-auto-upgrade-consent",
               "git-integration-repo-push",
               "git_account_integration_link_added",
               "global-config-backup-restored",
@@ -240521,8 +241557,10 @@
                 "ai-gateway-byok-credential-created",
                 "ai-gateway-byok-credential-deleted",
                 "ai-gateway-byok-credential-updated",
+                "ai-gateway-byok-model-mappings-updated",
                 "ai-gateway-credits-purchased",
                 "ai-gateway-guardrails-updated",
+                "ai-gateway-hipaa-compliance-toggled",
                 "ai-gateway-inference-regions-updated",
                 "ai-gateway-model-allowlist-models-updated",
                 "ai-gateway-model-allowlist-toggled",
@@ -240532,6 +241570,7 @@
                 "ai-gateway-private-provider-created",
                 "ai-gateway-private-provider-deleted",
                 "ai-gateway-private-provider-updated",
+                "ai-gateway-prompt-training-opt-out-toggled",
                 "ai-gateway-provider-allowlist-providers-updated",
                 "ai-gateway-provider-allowlist-toggled",
                 "ai-gateway-rule-created",
@@ -240545,8 +241584,10 @@
                 "ai-gateway-transcripts-retention-updated",
                 "ai-gateway-virtual-model-config-archived",
                 "ai-gateway-virtual-model-config-created",
+                "ai-gateway-virtual-model-config-deleted",
                 "ai-gateway-virtual-model-config-restored",
                 "ai-gateway-virtual-model-config-updated",
+                "ai-gateway-zero-data-retention-toggled",
                 "ai-omniagent",
                 "alert-investigation-project-allowlist-updated",
                 "alert-rule-created",
@@ -240736,6 +241777,7 @@
                 "flags-segment",
                 "flags-settings",
                 "flags-transferred",
+                "flat-rate-cdn-auto-upgrade-consent",
                 "git-integration-repo-push",
                 "git_account_integration_link_added",
                 "global-config-backup-restored",

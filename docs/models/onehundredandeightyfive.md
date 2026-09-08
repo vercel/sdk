@@ -8,7 +8,9 @@ The payload of the event, if requested.
 import { OneHundredAndEightyFive } from "@vercel/sdk/models/bandwidth.js";
 
 let value: OneHundredAndEightyFive = {
-  logDrainUrl: "https://somber-obesity.biz/",
+  issuerId: "<id>",
+  issuerName: "<value>",
+  kind: "<value>",
 };
 ```
 
@@ -16,5 +18,9 @@ let value: OneHundredAndEightyFive = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `logDrainUrl`      | *string*           | :heavy_check_mark: | N/A                |
-| `integrationName`  | *string*           | :heavy_minus_sign: | N/A                |
+| `issuerId`         | *string*           | :heavy_check_mark: | N/A                |
+| `issuerName`       | *string*           | :heavy_check_mark: | N/A                |
+| `kind`             | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_minus_sign: | N/A                |
+| `clientId`         | *string*           | :heavy_minus_sign: | N/A                |
+| `environments`     | *string*[]         | :heavy_minus_sign: | N/A                |

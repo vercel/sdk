@@ -5,7 +5,7 @@ Whether the Vercel bot should automatically create GitHub deployments https://do
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarCreateDeployments } from "@vercel/sdk/models/uploadprojectavataraction.js";
+import { UploadProjectAvatarCreateDeployments } from "@vercel/sdk/models/uploadprojectavatarinternalroutes1.js";
 
 let value: UploadProjectAvatarCreateDeployments = "disabled";
 ```

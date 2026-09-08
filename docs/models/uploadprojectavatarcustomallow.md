@@ -5,7 +5,7 @@ Optional overrides for the default same-env-by-slug matching. Provide explicit r
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarCustomAllow } from "@vercel/sdk/models/uploadprojectavataraction.js";
+import { UploadProjectAvatarCustomAllow } from "@vercel/sdk/models/uploadprojectavatarinternalroutes1.js";
 
 let value: UploadProjectAvatarCustomAllow = {
   from: {

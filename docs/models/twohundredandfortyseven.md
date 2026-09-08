@@ -8,16 +8,21 @@ The payload of the event, if requested.
 import { TwoHundredAndFortySeven } from "@vercel/sdk/models/siftroute.js";
 
 let value: TwoHundredAndFortySeven = {
-  projectId: "<id>",
-  projectName: "<value>",
-  action: "disabled",
+  team: {
+    name: "<value>",
+    id: "<id>",
+  },
+  project: {
+    id: "<id>",
+    oldConnectConfigurations: [],
+    newConnectConfigurations: [],
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `projectId`                                                                | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `projectName`                                                              | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `action`                                                                   | [models.UserEventPayload247Action](../models/usereventpayload247action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `team`                                                                       | [models.UserEventPayload247Team](../models/usereventpayload247team.md)       | :heavy_check_mark:                                                           | N/A                                                                          |
+| `project`                                                                    | [models.UserEventPayload247Project](../models/usereventpayload247project.md) | :heavy_check_mark:                                                           | N/A                                                                          |

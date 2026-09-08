@@ -8,14 +8,7 @@ The payload of the event, if requested.
 import { TwoHundredAndTwentyEight } from "@vercel/sdk/models/siftroute.js";
 
 let value: TwoHundredAndTwentyEight = {
-  prev: {
-    id: "<id>",
-    name: "<value>",
-    projectId: "<id>",
-    vercelRegion: "<value>",
-    awsServiceName: "<value>",
-  },
-  current: {
+  endpoint: {
     id: "<id>",
     name: "<value>",
     projectId: "<id>",
@@ -27,8 +20,7 @@ let value: TwoHundredAndTwentyEight = {
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `projectName`                                                    | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
-| `prev`                                                           | [models.UserEventPayloadPrev](../models/usereventpayloadprev.md) | :heavy_check_mark:                                               | N/A                                                              |
-| `current`                                                        | [models.Current](../models/current.md)                           | :heavy_check_mark:                                               | N/A                                                              |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `projectName`                            | *string*                                 | :heavy_minus_sign:                       | N/A                                      |
+| `endpoint`                               | [models.Endpoint](../models/endpoint.md) | :heavy_check_mark:                       | N/A                                      |

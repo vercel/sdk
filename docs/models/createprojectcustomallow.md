@@ -5,7 +5,7 @@ Optional overrides for the default same-env-by-slug matching. Provide explicit r
 ## Example Usage
 
 ```typescript
-import { CreateProjectCustomAllow } from "@vercel/sdk/models/routeaction.js";
+import { CreateProjectCustomAllow } from "@vercel/sdk/models/createprojecthasprojectsresponse1.js";
 
 let value: CreateProjectCustomAllow = {
   from: {

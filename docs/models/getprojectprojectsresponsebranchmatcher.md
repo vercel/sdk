@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectProjectsResponseBranchMatcher } from "@vercel/sdk/models/getprojectinternalroutes1.js";
+import { GetProjectProjectsResponseBranchMatcher } from "@vercel/sdk/models/getprojectinternalroutesmitigate.js";
 
 let value: GetProjectProjectsResponseBranchMatcher = {
   type: "equals",

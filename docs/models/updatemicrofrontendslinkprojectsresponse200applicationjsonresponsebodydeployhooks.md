@@ -5,7 +5,7 @@
 ```typescript
 import {
   UpdateMicrofrontendsLinkProjectsResponse200ApplicationJSONResponseBodyDeployHooks,
-} from "@vercel/sdk/models/updatemicrofrontendsprojectsbuildmachineselection.js";
+} from "@vercel/sdk/models/updatemicrofrontendsprojectsfunctiondefaultmemorytype.js";
 
 let value:
   UpdateMicrofrontendsLinkProjectsResponse200ApplicationJSONResponseBodyDeployHooks =

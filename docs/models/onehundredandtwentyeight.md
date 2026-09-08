@@ -5,12 +5,12 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndTwentyEight } from "@vercel/sdk/models/deployhook.js";
+import { OneHundredAndTwentyEight } from "@vercel/sdk/models/onehundredandthree.js";
 
 let value: OneHundredAndTwentyEight = {
   name: "<value>",
   destinationId: "<id>",
-  destinationName: "<value>",
+  destinationName: null,
 };
 ```
 

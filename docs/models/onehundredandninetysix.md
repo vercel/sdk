@@ -8,25 +8,22 @@ The payload of the event, if requested.
 import { OneHundredAndNinetySix } from "@vercel/sdk/models/bandwidth.js";
 
 let value: OneHundredAndNinetySix = {
-  project: {
-    id: "<id>",
-    name: "<value>",
-  },
+  id: "<id>",
   prev: {
-    project: {},
-  },
-  group: {
-    id: "<id>",
-    slug: "<value>",
     name: "<value>",
+    slug: "<value>",
+    fallbackEnvironment: "<value>",
   },
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `project`                                                                    | [models.UserEventPayload196Project](../models/usereventpayload196project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
-| `prev`                                                                       | [models.PayloadPrev](../models/payloadprev.md)                               | :heavy_check_mark:                                                           | N/A                                                                          |
-| `group`                                                                      | [models.PayloadGroup](../models/payloadgroup.md)                             | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field                            | Type                             | Required                         | Description                      |
+| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
+| `id`                             | *string*                         | :heavy_check_mark:               | N/A                              |
+| `slug`                           | *string*                         | :heavy_minus_sign:               | N/A                              |
+| `name`                           | *string*                         | :heavy_minus_sign:               | N/A                              |
+| `fallbackEnvironment`            | *string*                         | :heavy_minus_sign:               | N/A                              |
+| `enablePolyrepoBranchRouting`    | *boolean*                        | :heavy_minus_sign:               | N/A                              |
+| `prev`                           | [models.Prev](../models/prev.md) | :heavy_check_mark:               | N/A                              |

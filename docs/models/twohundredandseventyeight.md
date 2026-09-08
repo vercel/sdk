@@ -5,23 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSeventyEight } from "@vercel/sdk/models/twohundredandseventythree.js";
+import { TwoHundredAndSeventyEight } from "@vercel/sdk/models/twohundredandseventyfive.js";
 
 let value: TwoHundredAndSeventyEight = {
-  projects: [
-    {
-      projectId: "<id>",
-      role: "PROJECT_DEVELOPER",
-      membershipCreatedAt: 9726.09,
-    },
-  ],
+  oldProjectId: "<id>",
+  oldProjectName: "<value>",
+  newProjectId: "<id>",
+  newProjectName: "<value>",
+  domain: "realistic-heartbeat.org",
 };
 ```
 
 ## Fields
 
-| Field                                                    | Type                                                     | Required                                                 | Description                                              |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `projects`                                               | [models.PayloadProjects](../models/payloadprojects.md)[] | :heavy_check_mark:                                       | N/A                                                      |
-| `teamMembership`                                         | [models.TeamMembership](../models/teammembership.md)     | :heavy_minus_sign:                                       | N/A                                                      |
-| `directoryType`                                          | *string*                                                 | :heavy_minus_sign:                                       | N/A                                                      |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `oldProjectId`     | *string*           | :heavy_check_mark: | N/A                |
+| `oldProjectName`   | *string*           | :heavy_check_mark: | N/A                |
+| `newProjectId`     | *string*           | :heavy_check_mark: | N/A                |
+| `newProjectName`   | *string*           | :heavy_check_mark: | N/A                |
+| `domain`           | *string*           | :heavy_check_mark: | N/A                |

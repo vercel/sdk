@@ -5,18 +5,18 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FortyOne } from "@vercel/sdk/models/twentynine.js";
+import { FortyOne } from "@vercel/sdk/models/thirtyone.js";
 
 let value: FortyOne = {
-  alias: "<value>",
+  projectId: "<id>",
+  aliasCount: 7038.08,
 };
 ```
 
 ## Fields
 
-| Field                                  | Type                                   | Required                               | Description                            |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| `name`                                 | *string*                               | :heavy_minus_sign:                     | N/A                                    |
-| `alias`                                | *string*                               | :heavy_check_mark:                     | N/A                                    |
-| `oldTeam`                              | [models.OldTeam](../models/oldteam.md) | :heavy_minus_sign:                     | N/A                                    |
-| `newTeam`                              | [models.NewTeam](../models/newteam.md) | :heavy_minus_sign:                     | N/A                                    |
+| Field                                                      | Type                                                       | Required                                                   | Description                                                |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `projectId`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| `aliasCount`                                               | *number*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| `deployment`                                               | [models.PayloadDeployment](../models/payloaddeployment.md) | :heavy_minus_sign:                                         | N/A                                                        |

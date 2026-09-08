@@ -8,10 +8,8 @@ The payload of the event, if requested.
 import { OneHundredAndNinetyNine } from "@vercel/sdk/models/bandwidth.js";
 
 let value: OneHundredAndNinetyNine = {
-  organizationId: "<id>",
-  rootTeamId: "<id>",
-  slug: "<value>",
-  name: "<value>",
+  alertId: "<id>",
+  alertName: "<value>",
 };
 ```
 
@@ -19,7 +17,5 @@ let value: OneHundredAndNinetyNine = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `organizationId`   | *string*           | :heavy_check_mark: | N/A                |
-| `rootTeamId`       | *string*           | :heavy_check_mark: | N/A                |
-| `slug`             | *string*           | :heavy_check_mark: | N/A                |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `alertId`          | *string*           | :heavy_check_mark: | N/A                |
+| `alertName`        | *string*           | :heavy_check_mark: | N/A                |

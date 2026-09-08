@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectConfiguration } from "@vercel/sdk/models/getprojectprojectsbuildmachinetype.js";
+import { GetProjectConfiguration } from "@vercel/sdk/models/getprojectrollingrelease.js";
 
 let value: GetProjectConfiguration = "WAIT_FOR_NAMESPACE_QUEUE";
 ```

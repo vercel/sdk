@@ -8,16 +8,16 @@ The payload of the event, if requested.
 import { TwoHundredAndThree } from "@vercel/sdk/models/bandwidth.js";
 
 let value: TwoHundredAndThree = {
+  directoryGroupId: "<id>",
+  directoryId: "<id>",
   organizationId: "<id>",
-  teamId: "<id>",
-  billingPlan: "platform",
 };
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `organizationId`                               | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `teamId`                                       | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `billingPlan`                                  | [models.BillingPlan](../models/billingplan.md) | :heavy_check_mark:                             | N/A                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `directoryGroupId` | *string*           | :heavy_check_mark: | N/A                |
+| `directoryId`      | *string*           | :heavy_check_mark: | N/A                |
+| `organizationId`   | *string*           | :heavy_check_mark: | N/A                |

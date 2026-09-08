@@ -5,32 +5,27 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFour } from "@vercel/sdk/models/deployhook.js";
+import { OneHundredAndFour } from "@vercel/sdk/models/onehundredandthree.js";
 
 let value: OneHundredAndFour = {
-  job: {
-    headInfo: {
-      owner: "<value>",
-      ownerId: "<id>",
-      ref: "<value>",
-      repo: "<value>",
-      repoId: "<id>",
-      sha: "<value>",
-    },
-    installationId: "<id>",
-    owner: "<value>",
-    prId: 8284.36,
-    projectId: "<id>",
-    repo: "<value>",
-    repoId: "<id>",
-    type: "cursor-origin-now-comment",
-    provider: "cursor-origin",
-  },
+  url: "https://surprised-eyebrow.info",
 };
 ```
 
 ## Fields
 
-| Field               | Type                | Required            | Description         |
-| ------------------- | ------------------- | ------------------- | ------------------- |
-| `job`               | *models.PayloadJob* | :heavy_check_mark:  | N/A                 |
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `name`                                                                       | *string*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `alias`                                                                      | *string*[]                                                                   | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `target`                                                                     | *string*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `deployment`                                                                 | [models.UserEventPayloadDeployment](../models/usereventpayloaddeployment.md) | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `url`                                                                        | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
+| `forced`                                                                     | *boolean*                                                                    | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `gitCredentialSource`                                                        | [models.GitCredentialSource](../models/gitcredentialsource.md)               | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `deploymentId`                                                               | *string*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `plan`                                                                       | *string*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `project`                                                                    | *string*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `projectId`                                                                  | *string*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `regions`                                                                    | *string*[]                                                                   | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `type`                                                                       | *string*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |

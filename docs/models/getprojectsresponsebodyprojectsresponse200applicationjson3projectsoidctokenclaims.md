@@ -5,7 +5,7 @@
 ```typescript
 import {
   GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsOidcTokenClaims,
-} from "@vercel/sdk/models/getprojectsinternalroutesprojectsresponsemitigate.js";
+} from "@vercel/sdk/models/getprojectsinternalroutesprojectsresponsehas.js";
 
 let value:
   GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsOidcTokenClaims =

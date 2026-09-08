@@ -65,7 +65,7 @@ import {
   GetMicrofrontendsInGroupServices$inboundSchema,
   GetMicrofrontendsInGroupSpeedInsights,
   GetMicrofrontendsInGroupSpeedInsights$inboundSchema,
-} from "./getmicrofrontendsingroupbuildmachineelasticreason.js";
+} from "./getmicrofrontendsingroupbuildmachinetype.js";
 import {
   GetMicrofrontendsInGroupAbuse,
   GetMicrofrontendsInGroupAbuse$inboundSchema,
@@ -79,8 +79,8 @@ import {
   GetMicrofrontendsInGroupGitComments$inboundSchema,
   GetMicrofrontendsInGroupGitProviderOptions,
   GetMicrofrontendsInGroupGitProviderOptions$inboundSchema,
-  GetMicrofrontendsInGroupInternalRoutes,
-  GetMicrofrontendsInGroupInternalRoutes$inboundSchema,
+  GetMicrofrontendsInGroupInternalRoutes2,
+  GetMicrofrontendsInGroupInternalRoutes2$inboundSchema,
   GetMicrofrontendsInGroupLastAliasRequest,
   GetMicrofrontendsInGroupLastAliasRequest$inboundSchema,
   GetMicrofrontendsInGroupLastRollbackTarget,
@@ -109,8 +109,18 @@ import {
   GetMicrofrontendsInGroupUsageStatus$inboundSchema,
   GetMicrofrontendsInGroupWebAnalytics,
   GetMicrofrontendsInGroupWebAnalytics$inboundSchema,
-} from "./getmicrofrontendsingroupinternalroutes.js";
+} from "./getmicrofrontendsingroupinternalroutes2.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type GetMicrofrontendsInGroupInternalRoutes1 = {
+  src: string;
+  status: number;
+  expiry?: number | undefined;
+};
+
+export type GetMicrofrontendsInGroupInternalRoutes =
+  | GetMicrofrontendsInGroupInternalRoutes1
+  | GetMicrofrontendsInGroupInternalRoutes2;
 
 export const GetMicrofrontendsInGroupAction = {
   Accept: "accept",
@@ -315,7 +325,12 @@ export type GetMicrofrontendsInGroupProjects = {
   v0?: boolean | undefined;
   v0Created?: boolean | undefined;
   abuse?: GetMicrofrontendsInGroupAbuse | undefined;
-  internalRoutes?: Array<GetMicrofrontendsInGroupInternalRoutes> | undefined;
+  internalRoutes?:
+    | Array<
+      | GetMicrofrontendsInGroupInternalRoutes1
+      | GetMicrofrontendsInGroupInternalRoutes2
+    >
+    | undefined;
   hasDeployments?: boolean | undefined;
   dismissedToasts?: Array<GetMicrofrontendsInGroupDismissedToasts> | undefined;
   protectedSourcemaps?: boolean | undefined;
@@ -326,6 +341,54 @@ export type GetMicrofrontendsInGroupProjects = {
 export type GetMicrofrontendsInGroupResponseBody = {
   projects: Array<GetMicrofrontendsInGroupProjects>;
 };
+
+/** @internal */
+export const GetMicrofrontendsInGroupInternalRoutes1$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupInternalRoutes1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  src: types.string(),
+  status: types.number(),
+  expiry: types.optional(types.number()),
+});
+
+export function getMicrofrontendsInGroupInternalRoutes1FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetMicrofrontendsInGroupInternalRoutes1,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMicrofrontendsInGroupInternalRoutes1$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetMicrofrontendsInGroupInternalRoutes1' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetMicrofrontendsInGroupInternalRoutes$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupInternalRoutes,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => GetMicrofrontendsInGroupInternalRoutes1$inboundSchema),
+  GetMicrofrontendsInGroupInternalRoutes2$inboundSchema,
+]);
+
+export function getMicrofrontendsInGroupInternalRoutesFromJSON(
+  jsonString: string,
+): SafeParseResult<GetMicrofrontendsInGroupInternalRoutes, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMicrofrontendsInGroupInternalRoutes$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMicrofrontendsInGroupInternalRoutes' from JSON`,
+  );
+}
 
 /** @internal */
 export const GetMicrofrontendsInGroupAction$inboundSchema: z.ZodNativeEnum<
@@ -663,7 +726,10 @@ export const GetMicrofrontendsInGroupProjects$inboundSchema: z.ZodType<
   v0Created: types.optional(types.boolean()),
   abuse: types.optional(GetMicrofrontendsInGroupAbuse$inboundSchema),
   internalRoutes: types.optional(
-    z.array(GetMicrofrontendsInGroupInternalRoutes$inboundSchema),
+    z.array(smartUnion([
+      z.lazy(() => GetMicrofrontendsInGroupInternalRoutes1$inboundSchema),
+      GetMicrofrontendsInGroupInternalRoutes2$inboundSchema,
+    ])),
   ),
   hasDeployments: types.optional(types.boolean()),
   dismissedToasts: types.optional(

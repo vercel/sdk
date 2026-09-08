@@ -12,12 +12,10 @@ import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import {
-  AiGatewayVirtualModelConfig,
-  AiGatewayVirtualModelConfig$inboundSchema,
-} from "../models/aigatewayvirtualmodelconfig.js";
-import {
   GetAiGatewayVirtualModelConfigRequest,
   GetAiGatewayVirtualModelConfigRequest$outboundSchema,
+  GetAiGatewayVirtualModelConfigResponseBody,
+  GetAiGatewayVirtualModelConfigResponseBody$inboundSchema,
 } from "../models/getaigatewayvirtualmodelconfigop.js";
 import {
   ConnectionError,
@@ -46,7 +44,7 @@ export function apiAiGatewayGetAiGatewayVirtualModelConfig(
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    AiGatewayVirtualModelConfig,
+    GetAiGatewayVirtualModelConfigResponseBody,
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -71,7 +69,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      AiGatewayVirtualModelConfig,
+      GetAiGatewayVirtualModelConfigResponseBody,
       | VercelError
       | ResponseValidationError
       | ConnectionError
@@ -99,6 +97,8 @@ async function $do(
   const path = pathToFunc("/v1/ai-gateway/virtual-model-configs")();
 
   const query = encodeFormQuery({
+    "cursor": payload.cursor,
+    "limit": payload.limit,
     "ownerId": payload.ownerId,
     "slug": payload.slug,
     "teamId": payload.teamId,
@@ -157,7 +157,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    AiGatewayVirtualModelConfig,
+    GetAiGatewayVirtualModelConfigResponseBody,
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -167,7 +167,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, AiGatewayVirtualModelConfig$inboundSchema),
+    M.json(200, GetAiGatewayVirtualModelConfigResponseBody$inboundSchema),
     M.fail([400, 401, 403, 404, 410, "4XX"]),
     M.fail([500, "5XX"]),
   )(response, req);

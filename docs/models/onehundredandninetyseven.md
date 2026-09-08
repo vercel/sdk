@@ -8,14 +8,21 @@ The payload of the event, if requested.
 import { OneHundredAndNinetySeven } from "@vercel/sdk/models/bandwidth.js";
 
 let value: OneHundredAndNinetySeven = {
-  alertId: "<id>",
-  alertName: "<value>",
+  project: {
+    id: "<id>",
+    name: "<value>",
+  },
+  group: {
+    id: "<id>",
+    slug: "<value>",
+    name: "<value>",
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `alertId`          | *string*           | :heavy_check_mark: | N/A                |
-| `alertName`        | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `project`                                                                    | [models.UserEventPayload197Project](../models/usereventpayload197project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
+| `group`                                                                      | [models.Group](../models/group.md)                                           | :heavy_check_mark:                                                           | N/A                                                                          |

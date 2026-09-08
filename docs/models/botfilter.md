@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { BotFilter } from "@vercel/sdk/models/routeaction.js";
+import { BotFilter } from "@vercel/sdk/models/createprojecthasprojectsresponse1.js";
 
 let value: BotFilter = {
   active: false,

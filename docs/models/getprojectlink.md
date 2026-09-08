@@ -124,11 +124,9 @@ const value: models.GetProjectLink6 = {
 
 ```typescript
 const value: models.GetProjectLink7 = {
-  owner: "<value>",
+  org: "<value>",
   repo: "<value>",
-  repoId: "<id>",
-  ownerId: "<id>",
-  type: "cursor-origin",
+  type: "v0",
   deployHooks: [
     {
       id: "<id>",
@@ -137,6 +135,21 @@ const value: models.GetProjectLink7 = {
       url: "https://warm-goat.biz/",
     },
   ],
+  gitCredentialId: "<id>",
+  productionBranch: "<value>",
+};
+```
+
+### `models.GetProjectLink8`
+
+```typescript
+const value: models.GetProjectLink8 = {
+  owner: "<value>",
+  repo: "<value>",
+  repoId: "<id>",
+  ownerId: "<id>",
+  type: "cursor-origin",
+  deployHooks: [],
   gitCredentialId: "<id>",
   productionBranch: "<value>",
 };

@@ -7,7 +7,7 @@ The metric this check evaluates.
 ```typescript
 import {
   GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsRollingReleaseType,
-} from "@vercel/sdk/models/getmicrofrontendsingroupbuildmachineelasticreason.js";
+} from "@vercel/sdk/models/getmicrofrontendsingroupbuildmachinetype.js";
 
 let value:
   GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsRollingReleaseType =

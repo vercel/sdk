@@ -8,14 +8,13 @@ The payload of the event, if requested.
 import { OneHundredAndEightySeven } from "@vercel/sdk/models/bandwidth.js";
 
 let value: OneHundredAndEightySeven = {
-  provider: "apple",
-  login: "Brendan.Abernathy",
+  logDrainUrl: null,
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `provider`                                                                     | [models.UserEventPayload187Provider](../models/usereventpayload187provider.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `login`                                                                        | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `logDrainUrl`      | *string*           | :heavy_check_mark: | N/A                |
+| `integrationName`  | *string*           | :heavy_minus_sign: | N/A                |

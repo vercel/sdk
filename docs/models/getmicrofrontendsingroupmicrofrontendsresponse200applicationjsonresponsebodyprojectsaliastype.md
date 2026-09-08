@@ -5,7 +5,7 @@
 ```typescript
 import {
   GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsAliasType,
-} from "@vercel/sdk/models/getmicrofrontendsingroupbuildmachineelasticreason.js";
+} from "@vercel/sdk/models/getmicrofrontendsingroupbuildmachinetype.js";
 
 let value:
   GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsAliasType =

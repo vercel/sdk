@@ -5,38 +5,33 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFourteen } from "@vercel/sdk/models/twohundredandseventythree.js";
+import { ThreeHundredAndFourteen } from "@vercel/sdk/models/twohundredandseventyfive.js";
 
 let value: ThreeHundredAndFourteen = {
   projectId: "<id>",
   projectName: "<value>",
-  addedProjects: [
-    {
-      id: "<id>",
-      name: "<value>",
+  next: {
+    project: {
+      staticIps: {
+        enabled: true,
+      },
     },
-  ],
-  removedProjects: [
-    {
-      id: "<id>",
-      name: "<value>",
+  },
+  previous: {
+    project: {
+      staticIps: {
+        enabled: true,
+      },
     },
-  ],
-  addedProviders: [
-    "<value 1>",
-    "<value 2>",
-  ],
-  removedProviders: [],
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                    | Type                                                     | Required                                                 | Description                                              |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `projectId`                                              | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
-| `projectName`                                            | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
-| `addedProjects`                                          | [models.AddedProjects](../models/addedprojects.md)[]     | :heavy_check_mark:                                       | N/A                                                      |
-| `removedProjects`                                        | [models.RemovedProjects](../models/removedprojects.md)[] | :heavy_check_mark:                                       | N/A                                                      |
-| `addedProviders`                                         | *string*[]                                               | :heavy_check_mark:                                       | N/A                                                      |
-| `removedProviders`                                       | *string*[]                                               | :heavy_check_mark:                                       | N/A                                                      |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `next`                                                                         | [models.UserEventPayload314Next](../models/usereventpayload314next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload314Previous](../models/usereventpayload314previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |

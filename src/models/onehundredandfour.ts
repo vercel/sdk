@@ -7,7 +7,17 @@ import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
+import { DeletedUser, DeletedUser$inboundSchema } from "./deleteduser.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+/**
+ * The payload of the event, if requested.
+ */
+export type OneHundredAndFortyNine = {
+  deletedUser?: DeletedUser | undefined;
+  deletedUid?: string | undefined;
+  emailDomain?: string | undefined;
+};
 
 export type UserEventPayload148Team = {
   id: string;
@@ -1922,15 +1932,26 @@ export type OneHundredAndFour = {
   type?: string | undefined;
 };
 
-/**
- * The payload of the event, if requested.
- */
-export type OneHundredAndThree = {
-  projectId: string;
-  projectName: string;
-  checkId: string;
-  checkName: string;
-};
+/** @internal */
+export const OneHundredAndFortyNine$inboundSchema: z.ZodType<
+  OneHundredAndFortyNine,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  deletedUser: types.optional(DeletedUser$inboundSchema),
+  deletedUid: types.optional(types.string()),
+  emailDomain: types.optional(types.string()),
+});
+
+export function oneHundredAndFortyNineFromJSON(
+  jsonString: string,
+): SafeParseResult<OneHundredAndFortyNine, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OneHundredAndFortyNine$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OneHundredAndFortyNine' from JSON`,
+  );
+}
 
 /** @internal */
 export const UserEventPayload148Team$inboundSchema: z.ZodType<
@@ -4746,27 +4767,5 @@ export function oneHundredAndFourFromJSON(
     jsonString,
     (x) => OneHundredAndFour$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'OneHundredAndFour' from JSON`,
-  );
-}
-
-/** @internal */
-export const OneHundredAndThree$inboundSchema: z.ZodType<
-  OneHundredAndThree,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: types.string(),
-  projectName: types.string(),
-  checkId: types.string(),
-  checkName: types.string(),
-});
-
-export function oneHundredAndThreeFromJSON(
-  jsonString: string,
-): SafeParseResult<OneHundredAndThree, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => OneHundredAndThree$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'OneHundredAndThree' from JSON`,
   );
 }

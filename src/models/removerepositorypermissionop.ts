@@ -17,6 +17,9 @@ export type RemoveRepositoryPermissionRequestBody = {
 };
 
 export type RemoveRepositoryPermissionRequest = {
+  /**
+   * Project ID. Missing or empty values return HTTP 400.
+   */
   projectId: string;
   idOrName: string;
   /**

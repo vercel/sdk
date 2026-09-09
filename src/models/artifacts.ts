@@ -1042,15 +1042,21 @@ export const PayloadWidget = {
   ObservabilityEdgeRequests: "observability-edge-requests",
   ObservabilityErrorRate: "observability-error-rate",
   ObservabilityFunctionInvocations: "observability-function-invocations",
+  Shortcut: "shortcut",
   SpeedInsightsCls: "speed-insights-cls",
   SpeedInsightsLcp: "speed-insights-lcp",
   SpeedInsightsRes: "speed-insights-res",
 } as const;
 export type PayloadWidget = ClosedEnum<typeof PayloadWidget>;
 
+export type Config = {
+  url: string;
+};
+
 export type ProjectCardWidgetPreferences = {
   projectId: string;
   widget: PayloadWidget;
+  config?: Config | undefined;
 };
 
 /**
@@ -1512,13 +1518,6 @@ export type AnalyticsUsage = {
 };
 
 export type Artifacts = {
-  currentThreshold: number;
-  warningAt?: number | null | undefined;
-  blockedAt?: number | null | undefined;
-  blockGracePeriodStartedAt?: number | null | undefined;
-};
-
-export type Bandwidth = {
   currentThreshold: number;
   warningAt?: number | null | undefined;
   blockedAt?: number | null | undefined;
@@ -3572,6 +3571,22 @@ export const PayloadWidget$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(PayloadWidget);
 
 /** @internal */
+export const Config$inboundSchema: z.ZodType<Config, z.ZodTypeDef, unknown> = z
+  .object({
+    url: types.string(),
+  });
+
+export function configFromJSON(
+  jsonString: string,
+): SafeParseResult<Config, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Config$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Config' from JSON`,
+  );
+}
+
+/** @internal */
 export const ProjectCardWidgetPreferences$inboundSchema: z.ZodType<
   ProjectCardWidgetPreferences,
   z.ZodTypeDef,
@@ -3579,6 +3594,7 @@ export const ProjectCardWidgetPreferences$inboundSchema: z.ZodType<
 > = z.object({
   projectId: types.string(),
   widget: PayloadWidget$inboundSchema,
+  config: types.optional(z.lazy(() => Config$inboundSchema)),
 });
 
 export function projectCardWidgetPreferencesFromJSON(
@@ -4214,27 +4230,5 @@ export function artifactsFromJSON(
     jsonString,
     (x) => Artifacts$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'Artifacts' from JSON`,
-  );
-}
-
-/** @internal */
-export const Bandwidth$inboundSchema: z.ZodType<
-  Bandwidth,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  currentThreshold: types.number(),
-  warningAt: z.nullable(types.number()).optional(),
-  blockedAt: z.nullable(types.number()).optional(),
-  blockGracePeriodStartedAt: z.nullable(types.number()).optional(),
-});
-
-export function bandwidthFromJSON(
-  jsonString: string,
-): SafeParseResult<Bandwidth, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Bandwidth$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Bandwidth' from JSON`,
   );
 }

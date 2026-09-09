@@ -46,7 +46,7 @@ export type GetOrCreateDriveRequestBody = {
    */
   projectId?: string | undefined;
   /**
-   * Maximum drive size in bytes. Defaults to 1 TiB when omitted. The maximum quota is 16 TiB. Request a quota above 16 TiB at https://vercel.com/help.
+   * Maximum drive size in bytes. Defaults to 1 TiB when omitted (1 GiB for Hobby). The maximum quota is 16 TiB. Request a quota above 16 TiB at https://vercel.com/help.
    */
   maxSizeBytes?: number | undefined;
   /**

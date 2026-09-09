@@ -861,6 +861,7 @@ export const PayloadReason = {
   LongBuildDuration: "long-build-duration",
   OomFailure: "oom-failure",
   PlanChange: "plan-change",
+  ProjectTransfer: "project-transfer",
   ShortBuildDuration: "short-build-duration",
   SustainedHighCpu: "sustained-high-cpu",
 } as const;

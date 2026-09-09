@@ -5,7 +5,7 @@ Pauses Speed Insights free data-point ingestion when the team-wide free allocati
 ## Example Usage
 
 ```typescript
-import { PayloadSpeedInsightsFree } from "@vercel/sdk/models/onehundredandfortynine.js";
+import { PayloadSpeedInsightsFree } from "@vercel/sdk/models/deleteduser.js";
 
 let value: PayloadSpeedInsightsFree = {
   updatedAt: 8502.87,

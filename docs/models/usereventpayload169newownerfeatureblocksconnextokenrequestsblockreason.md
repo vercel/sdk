@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload169NewOwnerFeatureBlocksConnexTokenRequestsBlockReason } from "@vercel/sdk/models/onehundredandfortynine.js";
+import { UserEventPayload169NewOwnerFeatureBlocksConnexTokenRequestsBlockReason } from "@vercel/sdk/models/deleteduser.js";
 
 let value:
   UserEventPayload169NewOwnerFeatureBlocksConnexTokenRequestsBlockReason =

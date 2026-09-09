@@ -542,6 +542,7 @@ export const Widget = {
   ObservabilityFunctionInvocations: "observability-function-invocations",
   Online: "online",
   Res: "res",
+  Shortcut: "shortcut",
   SpeedInsightsCls: "speed-insights-cls",
   SpeedInsightsLcp: "speed-insights-lcp",
   SpeedInsightsRes: "speed-insights-res",

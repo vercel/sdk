@@ -10,6 +10,9 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 import { VcrRepository, VcrRepository$inboundSchema } from "./vcrrepository.js";
 
 export type CreateRepositoryRequestBody = {
+  /**
+   * Project ID. Missing or empty values return HTTP 400.
+   */
   projectId: string;
   /**
    * Single Docker repository name component.

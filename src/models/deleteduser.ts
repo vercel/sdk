@@ -15,8 +15,6 @@ import {
   AnalyticsUsage$inboundSchema,
   Artifacts,
   Artifacts$inboundSchema,
-  Bandwidth,
-  Bandwidth$inboundSchema,
   Credentials,
   Credentials$inboundSchema,
   EmailNotifications,
@@ -63,8 +61,15 @@ import {
   UserEventPayload169Type$inboundSchema,
   UserEventPayloadRemoteCaching,
   UserEventPayloadRemoteCaching$inboundSchema,
-} from "./bandwidth.js";
+} from "./artifacts.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type Bandwidth = {
+  currentThreshold: number;
+  warningAt?: number | null | undefined;
+  blockedAt?: number | null | undefined;
+  blockGracePeriodStartedAt?: number | null | undefined;
+};
 
 export type BlobTotalAdvancedRequests = {
   currentThreshold: number;
@@ -1956,14 +1961,27 @@ export type DeletedUser = {
   email: string;
 };
 
-/**
- * The payload of the event, if requested.
- */
-export type OneHundredAndFortyNine = {
-  deletedUser?: DeletedUser | undefined;
-  deletedUid?: string | undefined;
-  emailDomain?: string | undefined;
-};
+/** @internal */
+export const Bandwidth$inboundSchema: z.ZodType<
+  Bandwidth,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  currentThreshold: types.number(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockedAt: z.nullable(types.number()).optional(),
+  blockGracePeriodStartedAt: z.nullable(types.number()).optional(),
+});
+
+export function bandwidthFromJSON(
+  jsonString: string,
+): SafeParseResult<Bandwidth, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Bandwidth$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Bandwidth' from JSON`,
+  );
+}
 
 /** @internal */
 export const BlobTotalAdvancedRequests$inboundSchema: z.ZodType<
@@ -2766,7 +2784,7 @@ export const OverageUsageAlerts$inboundSchema: z.ZodType<
 > = z.object({
   analyticsUsage: types.optional(AnalyticsUsage$inboundSchema),
   artifacts: types.optional(Artifacts$inboundSchema),
-  bandwidth: types.optional(Bandwidth$inboundSchema),
+  bandwidth: types.optional(z.lazy(() => Bandwidth$inboundSchema)),
   blobTotalAdvancedRequests: types.optional(
     z.lazy(() => BlobTotalAdvancedRequests$inboundSchema),
   ),
@@ -4787,26 +4805,5 @@ export function deletedUserFromJSON(
     jsonString,
     (x) => DeletedUser$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'DeletedUser' from JSON`,
-  );
-}
-
-/** @internal */
-export const OneHundredAndFortyNine$inboundSchema: z.ZodType<
-  OneHundredAndFortyNine,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  deletedUser: types.optional(z.lazy(() => DeletedUser$inboundSchema)),
-  deletedUid: types.optional(types.string()),
-  emailDomain: types.optional(types.string()),
-});
-
-export function oneHundredAndFortyNineFromJSON(
-  jsonString: string,
-): SafeParseResult<OneHundredAndFortyNine, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => OneHundredAndFortyNine$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'OneHundredAndFortyNine' from JSON`,
   );
 }

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { SandboxStorage } from "@vercel/sdk/models/onehundredandfortynine.js";
+import { SandboxStorage } from "@vercel/sdk/models/deleteduser.js";
 
 let value: SandboxStorage = {
   updatedAt: 4169.46,

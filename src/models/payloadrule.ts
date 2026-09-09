@@ -13,6 +13,16 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
+/**
+ * The payload of the event, if requested.
+ */
+export type OneHundredAndThree = {
+  projectId: string;
+  projectName: string;
+  checkId: string;
+  checkName: string;
+};
+
 export type UserEventPayload102Project = {
   name: string;
 };
@@ -720,6 +730,7 @@ export const PayloadPermissions = {
   ReadAiGatewayVirtualModelConfigs: "read:ai-gateway-virtual-model-configs",
   ReadAlerts: "read:alerts",
   ReadBilling: "read:billing",
+  ReadConnect: "read:connect",
   ReadDeployment: "read:deployment",
   ReadDomain: "read:domain",
   ReadEvent: "read:event",
@@ -826,6 +837,7 @@ export const UserEventPayload55Permissions = {
   ReadAiGatewayVirtualModelConfigs: "read:ai-gateway-virtual-model-configs",
   ReadAlerts: "read:alerts",
   ReadBilling: "read:billing",
+  ReadConnect: "read:connect",
   ReadDeployment: "read:deployment",
   ReadDomain: "read:domain",
   ReadEvent: "read:event",
@@ -931,6 +943,7 @@ export const UserEventPayloadPermissions = {
   ReadAiGatewayVirtualModelConfigs: "read:ai-gateway-virtual-model-configs",
   ReadAlerts: "read:alerts",
   ReadBilling: "read:billing",
+  ReadConnect: "read:connect",
   ReadDeployment: "read:deployment",
   ReadDomain: "read:domain",
   ReadEvent: "read:event",
@@ -1022,6 +1035,7 @@ export const NextPermissions = {
   ReadAiGatewayVirtualModelConfigs: "read:ai-gateway-virtual-model-configs",
   ReadAlerts: "read:alerts",
   ReadBilling: "read:billing",
+  ReadConnect: "read:connect",
   ReadDeployment: "read:deployment",
   ReadDomain: "read:domain",
   ReadEvent: "read:event",
@@ -1114,6 +1128,7 @@ export const Permissions = {
   ReadAiGatewayVirtualModelConfigs: "read:ai-gateway-virtual-model-configs",
   ReadAlerts: "read:alerts",
   ReadBilling: "read:billing",
+  ReadConnect: "read:connect",
   ReadDeployment: "read:deployment",
   ReadDomain: "read:domain",
   ReadEvent: "read:event",
@@ -1487,12 +1502,27 @@ export type PayloadRule = {
   model?: string | undefined;
 };
 
-/**
- * The payload of the event, if requested.
- */
-export type ThirtyOne = {
-  rule: PayloadRule;
-};
+/** @internal */
+export const OneHundredAndThree$inboundSchema: z.ZodType<
+  OneHundredAndThree,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  projectId: types.string(),
+  projectName: types.string(),
+  checkId: types.string(),
+  checkName: types.string(),
+});
+
+export function oneHundredAndThreeFromJSON(
+  jsonString: string,
+): SafeParseResult<OneHundredAndThree, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OneHundredAndThree$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OneHundredAndThree' from JSON`,
+  );
+}
 
 /** @internal */
 export const UserEventPayload102Project$inboundSchema: z.ZodType<
@@ -4133,24 +4163,5 @@ export function payloadRuleFromJSON(
     jsonString,
     (x) => PayloadRule$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'PayloadRule' from JSON`,
-  );
-}
-
-/** @internal */
-export const ThirtyOne$inboundSchema: z.ZodType<
-  ThirtyOne,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  rule: z.lazy(() => PayloadRule$inboundSchema),
-});
-
-export function thirtyOneFromJSON(
-  jsonString: string,
-): SafeParseResult<ThirtyOne, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ThirtyOne$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ThirtyOne' from JSON`,
   );
 }

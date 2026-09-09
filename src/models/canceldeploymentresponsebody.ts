@@ -693,7 +693,7 @@ export type CancelDeploymentDeploymentsResourceConfig = {
 /**
  * Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured
  */
-export type Config = {
+export type CancelDeploymentConfig = {
   version?: number | undefined;
   functionType: FunctionType;
   functionMemoryType: FunctionMemoryType;
@@ -1064,7 +1064,7 @@ export type CancelDeploymentResponseBody = {
   /**
    * Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured
    */
-  config?: Config | undefined;
+  config?: CancelDeploymentConfig | undefined;
   checks?: CancelDeploymentChecks | undefined;
   /**
    * NSNB Blocked metadata
@@ -2111,27 +2111,30 @@ export function cancelDeploymentDeploymentsResourceConfigFromJSON(
 }
 
 /** @internal */
-export const Config$inboundSchema: z.ZodType<Config, z.ZodTypeDef, unknown> = z
-  .object({
-    version: types.optional(types.number()),
-    functionType: FunctionType$inboundSchema,
-    functionMemoryType: FunctionMemoryType$inboundSchema,
-    functionTimeout: types.nullable(types.number()),
-    secureComputePrimaryRegion: types.nullable(types.string()),
-    secureComputeFallbackRegion: types.nullable(types.string()),
-    isUsingActiveCPU: types.optional(types.boolean()),
-    resourceConfig: types.optional(
-      z.lazy(() => CancelDeploymentDeploymentsResourceConfig$inboundSchema),
-    ),
-  });
+export const CancelDeploymentConfig$inboundSchema: z.ZodType<
+  CancelDeploymentConfig,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  version: types.optional(types.number()),
+  functionType: FunctionType$inboundSchema,
+  functionMemoryType: FunctionMemoryType$inboundSchema,
+  functionTimeout: types.nullable(types.number()),
+  secureComputePrimaryRegion: types.nullable(types.string()),
+  secureComputeFallbackRegion: types.nullable(types.string()),
+  isUsingActiveCPU: types.optional(types.boolean()),
+  resourceConfig: types.optional(
+    z.lazy(() => CancelDeploymentDeploymentsResourceConfig$inboundSchema),
+  ),
+});
 
-export function configFromJSON(
+export function cancelDeploymentConfigFromJSON(
   jsonString: string,
-): SafeParseResult<Config, SDKValidationError> {
+): SafeParseResult<CancelDeploymentConfig, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Config$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Config' from JSON`,
+    (x) => CancelDeploymentConfig$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentConfig' from JSON`,
   );
 }
 
@@ -2452,7 +2455,7 @@ export const CancelDeploymentResponseBody$inboundSchema: z.ZodType<
     ]),
   ),
   platform: types.optional(z.lazy(() => Platform$inboundSchema)),
-  config: types.optional(z.lazy(() => Config$inboundSchema)),
+  config: types.optional(z.lazy(() => CancelDeploymentConfig$inboundSchema)),
   checks: types.optional(z.lazy(() => CancelDeploymentChecks$inboundSchema)),
   seatBlock: types.optional(z.lazy(() => SeatBlock$inboundSchema)),
   attribution: types.optional(

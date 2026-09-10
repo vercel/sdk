@@ -289,6 +289,7 @@ export type Data2 = {
   isByok: string;
   spendAttribution: string;
   isPrivateModel: string;
+  isStreaming: string;
   isRequestZdr: string;
   hipaaRequested: string;
   quotaRequested: string;
@@ -513,6 +514,7 @@ export type Data1 = {
   isByok?: string | undefined;
   spendAttribution?: string | undefined;
   isPrivateModel?: string | undefined;
+  isStreaming?: string | undefined;
   isRequestZdr?: string | undefined;
   hipaaRequested?: string | undefined;
   quotaRequested?: string | undefined;
@@ -867,6 +869,7 @@ export const Data2$inboundSchema: z.ZodType<Data2, z.ZodTypeDef, unknown> =
       isByok: types.string(),
       spendAttribution: types.string(),
       isPrivateModel: types.string(),
+      isStreaming: types.string(),
       isRequestZdr: types.string(),
       hipaaRequested: types.string(),
       quotaRequested: types.string(),
@@ -1105,6 +1108,7 @@ export const Data1$inboundSchema: z.ZodType<Data1, z.ZodTypeDef, unknown> = z
     isByok: types.optional(types.string()),
     spendAttribution: types.optional(types.string()),
     isPrivateModel: types.optional(types.string()),
+    isStreaming: types.optional(types.string()),
     isRequestZdr: types.optional(types.string()),
     hipaaRequested: types.optional(types.string()),
     quotaRequested: types.optional(types.string()),

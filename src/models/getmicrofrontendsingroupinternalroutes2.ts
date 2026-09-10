@@ -426,6 +426,7 @@ export type GetMicrofrontendsInGroupPermissions = {
   vercelAppInstallation?: Array<ACLAction> | undefined;
   vercelAppInstallationRequest?: Array<ACLAction> | undefined;
   auditLog?: Array<ACLAction> | undefined;
+  automation?: Array<ACLAction> | undefined;
   billingAddress?: Array<ACLAction> | undefined;
   billingInformation?: Array<ACLAction> | undefined;
   billingInvoice?: Array<ACLAction> | undefined;
@@ -1298,8 +1299,8 @@ export type GetMicrofrontendsInGroupDeploymentPolicy = {
 };
 
 export const GetMicrofrontendsInGroupTier = {
-  Advanced: "advanced",
   Critical: "critical",
+  Priority: "priority",
 } as const;
 export type GetMicrofrontendsInGroupTier = ClosedEnum<
   typeof GetMicrofrontendsInGroupTier
@@ -2231,6 +2232,7 @@ export const GetMicrofrontendsInGroupPermissions$inboundSchema: z.ZodType<
     z.array(ACLAction$inboundSchema),
   ),
   auditLog: types.optional(z.array(ACLAction$inboundSchema)),
+  automation: types.optional(z.array(ACLAction$inboundSchema)),
   billingAddress: types.optional(z.array(ACLAction$inboundSchema)),
   billingInformation: types.optional(z.array(ACLAction$inboundSchema)),
   billingInvoice: types.optional(z.array(ACLAction$inboundSchema)),

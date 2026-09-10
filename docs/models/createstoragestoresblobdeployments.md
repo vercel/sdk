@@ -10,7 +10,9 @@ let value: CreateStorageStoresBlobDeployments = {
   actions: [
     {
       slug: "<value>",
-      environments: [],
+      environments: [
+        "<value 1>",
+      ],
     },
   ],
 };

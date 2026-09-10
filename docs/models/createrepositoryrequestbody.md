@@ -13,7 +13,7 @@ let value: CreateRepositoryRequestBody = {
 
 ## Fields
 
-| Field                                    | Type                                     | Required                                 | Description                              | Example                                  |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| `projectId`                              | *string*                                 | :heavy_check_mark:                       | N/A                                      |                                          |
-| `name`                                   | *string*                                 | :heavy_check_mark:                       | Single Docker repository name component. | nginx                                    |
+| Field                                                | Type                                                 | Required                                             | Description                                          | Example                                              |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| `projectId`                                          | *string*                                             | :heavy_check_mark:                                   | Project ID. Missing or empty values return HTTP 400. |                                                      |
+| `name`                                               | *string*                                             | :heavy_check_mark:                                   | Single Docker repository name component.             | nginx                                                |

@@ -14,7 +14,7 @@ import { integrationsGitNamespaces } from "../funcs/integrationsGitNamespaces.js
 import { integrationsSearchRepo } from "../funcs/integrationsSearchRepo.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import { ConnectIntegrationResourceToProjectRequest } from "../models/connectintegrationresourcetoprojectop.js";
-import { CreateIntegrationStoreDirectRequest } from "../models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema7type.js";
+import { CreateIntegrationStoreDirectRequest } from "../models/createintegrationstoredirectpropertiesintegrationsitems.js";
 import { CreateIntegrationStoreDirectResponseBody } from "../models/createintegrationstoredirectresponsebody.js";
 import { DeleteConfigurationRequest } from "../models/deleteconfigurationop.js";
 import {

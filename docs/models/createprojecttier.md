@@ -5,11 +5,11 @@
 ```typescript
 import { CreateProjectTier } from "@vercel/sdk/models/createprojecthasprojectsresponse1.js";
 
-let value: CreateProjectTier = "critical";
+let value: CreateProjectTier = "priority";
 ```
 
 ## Values
 
 ```typescript
-"advanced" | "critical"
+"critical" | "priority"
 ```

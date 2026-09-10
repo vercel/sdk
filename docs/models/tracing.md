@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Tracing } from "@vercel/sdk/models/onehundredandfortynine.js";
+import { Tracing } from "@vercel/sdk/models/payloadpreviousrule.js";
 
 let value: Tracing = {
   updatedAt: 3761.97,

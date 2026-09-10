@@ -97,18 +97,9 @@ export type GetStorageStoresByIdFramework = ClosedEnum<
   typeof GetStorageStoresByIdFramework
 >;
 
-export const GetStorageStoresByIdEnvironments = {
-  Development: "development",
-  Preview: "preview",
-  Production: "production",
-} as const;
-export type GetStorageStoresByIdEnvironments = ClosedEnum<
-  typeof GetStorageStoresByIdEnvironments
->;
-
 export type GetStorageStoresByIdActions = {
   slug: string;
-  environments: Array<GetStorageStoresByIdEnvironments>;
+  environments: Array<string>;
 };
 
 export type GetStorageStoresByIdDeployments = {
@@ -218,18 +209,13 @@ export const GetStorageStoresByIdFramework$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(GetStorageStoresByIdFramework);
 
 /** @internal */
-export const GetStorageStoresByIdEnvironments$inboundSchema: z.ZodNativeEnum<
-  typeof GetStorageStoresByIdEnvironments
-> = z.nativeEnum(GetStorageStoresByIdEnvironments);
-
-/** @internal */
 export const GetStorageStoresByIdActions$inboundSchema: z.ZodType<
   GetStorageStoresByIdActions,
   z.ZodTypeDef,
   unknown
 > = z.object({
   slug: types.string(),
-  environments: z.array(GetStorageStoresByIdEnvironments$inboundSchema),
+  environments: z.array(types.string()),
 });
 
 export function getStorageStoresByIdActionsFromJSON(

@@ -8,14 +8,6 @@ import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import {
-  CreateIntegrationStoreDirectAuthentication,
-  CreateIntegrationStoreDirectAuthentication$inboundSchema,
-  CreateIntegrationStoreDirectExperimentation,
-  CreateIntegrationStoreDirectExperimentation$inboundSchema,
-  Product,
-  Product$inboundSchema,
-} from "./createintegrationstoredirectauthentication.js";
-import {
   Capabilities,
   Capabilities$inboundSchema,
   CreateIntegrationStoreDirectIntegrationsMetadata,
@@ -30,13 +22,14 @@ import {
   CreateIntegrationStoreDirectStatus$inboundSchema,
   ExternalResourceStatus,
   ExternalResourceStatus$inboundSchema,
-} from "./createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema7type.js";
+} from "./createintegrationstoredirectpropertiesintegrationsitems.js";
+import {
+  CreateIntegrationStoreDirectProtocolSettings,
+  CreateIntegrationStoreDirectProtocolSettings$inboundSchema,
+  Product,
+  Product$inboundSchema,
+} from "./createintegrationstoredirectprotocolsettings.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-
-export type CreateIntegrationStoreDirectProtocolSettings = {
-  experimentation?: CreateIntegrationStoreDirectExperimentation | undefined;
-  authentication?: CreateIntegrationStoreDirectAuthentication | undefined;
-};
 
 export const CreateIntegrationStoreDirectLevel = {
   Error: "error",
@@ -176,37 +169,6 @@ export type CreateIntegrationStoreDirectStore = {
 export type CreateIntegrationStoreDirectResponseBody = {
   store: CreateIntegrationStoreDirectStore | null;
 };
-
-/** @internal */
-export const CreateIntegrationStoreDirectProtocolSettings$inboundSchema:
-  z.ZodType<
-    CreateIntegrationStoreDirectProtocolSettings,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    experimentation: types.optional(
-      CreateIntegrationStoreDirectExperimentation$inboundSchema,
-    ),
-    authentication: types.optional(
-      CreateIntegrationStoreDirectAuthentication$inboundSchema,
-    ),
-  });
-
-export function createIntegrationStoreDirectProtocolSettingsFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  CreateIntegrationStoreDirectProtocolSettings,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateIntegrationStoreDirectProtocolSettings$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'CreateIntegrationStoreDirectProtocolSettings' from JSON`,
-  );
-}
 
 /** @internal */
 export const CreateIntegrationStoreDirectLevel$inboundSchema: z.ZodNativeEnum<
@@ -423,7 +385,7 @@ export const CreateIntegrationStoreDirectStore$inboundSchema: z.ZodType<
   directPartnerConsoleUrl: types.optional(types.string()),
   product: Product$inboundSchema,
   protocolSettings: types.optional(
-    z.lazy(() => CreateIntegrationStoreDirectProtocolSettings$inboundSchema),
+    CreateIntegrationStoreDirectProtocolSettings$inboundSchema,
   ),
   notification: types.optional(
     z.lazy(() => CreateIntegrationStoreDirectNotification$inboundSchema),

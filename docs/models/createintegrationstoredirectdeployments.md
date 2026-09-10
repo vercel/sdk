@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateIntegrationStoreDirectDeployments } from "@vercel/sdk/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema7type.js";
+import { CreateIntegrationStoreDirectDeployments } from "@vercel/sdk/models/createintegrationstoredirectpropertiesintegrationsitems.js";
 
 let value: CreateIntegrationStoreDirectDeployments = {
   required: false,
@@ -11,7 +11,8 @@ let value: CreateIntegrationStoreDirectDeployments = {
     {
       slug: "<value>",
       environments: [
-        "development",
+        "<value 1>",
+        "<value 2>",
       ],
     },
   ],

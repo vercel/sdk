@@ -8,14 +8,15 @@ import { CreateStorageStoresBlobActions } from "@vercel/sdk/models/createstorage
 let value: CreateStorageStoresBlobActions = {
   slug: "<value>",
   environments: [
-    "development",
+    "<value 1>",
+    "<value 2>",
   ],
 };
 ```
 
 ## Fields
 
-| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `slug`                                                                                           | *string*                                                                                         | :heavy_check_mark:                                                                               | N/A                                                                                              |
-| `environments`                                                                                   | [models.CreateStorageStoresBlobEnvironments](../models/createstoragestoresblobenvironments.md)[] | :heavy_check_mark:                                                                               | N/A                                                                                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `slug`             | *string*           | :heavy_check_mark: | N/A                |
+| `environments`     | *string*[]         | :heavy_check_mark: | N/A                |

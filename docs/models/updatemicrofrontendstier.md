@@ -5,11 +5,11 @@
 ```typescript
 import { UpdateMicrofrontendsTier } from "@vercel/sdk/models/updatemicrofrontendsinternalroutes2.js";
 
-let value: UpdateMicrofrontendsTier = "critical";
+let value: UpdateMicrofrontendsTier = "priority";
 ```
 
 ## Values
 
 ```typescript
-"advanced" | "critical"
+"critical" | "priority"
 ```

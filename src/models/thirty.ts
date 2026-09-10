@@ -11,18 +11,13 @@ import {
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
+import {
+  DeployHook,
+  DeployHook$inboundSchema,
+  UserEventPayload102Project,
+  UserEventPayload102Project$inboundSchema,
+} from "./deployhook.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-
-export type UserEventPayload102Project = {
-  name: string;
-};
-
-export type DeployHook = {
-  createdAt: number;
-  id: string;
-  name: string;
-  ref: string;
-};
 
 export type Job = {
   deployHook: DeployHook;
@@ -688,6 +683,7 @@ export const PayloadPermissions = {
   ReadWriteAiGatewayVirtualModelConfigs:
     "read-write:ai-gateway-virtual-model-configs",
   ReadWriteAlerts: "read-write:alerts",
+  ReadWriteAutomations: "read-write:automations",
   ReadWriteBilling: "read-write:billing",
   ReadWriteBlob: "read-write:blob",
   ReadWriteConnect: "read-write:connect",
@@ -719,7 +715,9 @@ export const PayloadPermissions = {
   ReadAiGatewayRules: "read:ai-gateway-rules",
   ReadAiGatewayVirtualModelConfigs: "read:ai-gateway-virtual-model-configs",
   ReadAlerts: "read:alerts",
+  ReadAutomations: "read:automations",
   ReadBilling: "read:billing",
+  ReadConnect: "read:connect",
   ReadDeployment: "read:deployment",
   ReadDomain: "read:domain",
   ReadEvent: "read:event",
@@ -794,6 +792,7 @@ export const UserEventPayload55Permissions = {
   ReadWriteAiGatewayVirtualModelConfigs:
     "read-write:ai-gateway-virtual-model-configs",
   ReadWriteAlerts: "read-write:alerts",
+  ReadWriteAutomations: "read-write:automations",
   ReadWriteBilling: "read-write:billing",
   ReadWriteBlob: "read-write:blob",
   ReadWriteConnect: "read-write:connect",
@@ -825,7 +824,9 @@ export const UserEventPayload55Permissions = {
   ReadAiGatewayRules: "read:ai-gateway-rules",
   ReadAiGatewayVirtualModelConfigs: "read:ai-gateway-virtual-model-configs",
   ReadAlerts: "read:alerts",
+  ReadAutomations: "read:automations",
   ReadBilling: "read:billing",
+  ReadConnect: "read:connect",
   ReadDeployment: "read:deployment",
   ReadDomain: "read:domain",
   ReadEvent: "read:event",
@@ -899,6 +900,7 @@ export const UserEventPayloadPermissions = {
   ReadWriteAiGatewayVirtualModelConfigs:
     "read-write:ai-gateway-virtual-model-configs",
   ReadWriteAlerts: "read-write:alerts",
+  ReadWriteAutomations: "read-write:automations",
   ReadWriteBilling: "read-write:billing",
   ReadWriteBlob: "read-write:blob",
   ReadWriteConnect: "read-write:connect",
@@ -930,7 +932,9 @@ export const UserEventPayloadPermissions = {
   ReadAiGatewayRules: "read:ai-gateway-rules",
   ReadAiGatewayVirtualModelConfigs: "read:ai-gateway-virtual-model-configs",
   ReadAlerts: "read:alerts",
+  ReadAutomations: "read:automations",
   ReadBilling: "read:billing",
+  ReadConnect: "read:connect",
   ReadDeployment: "read:deployment",
   ReadDomain: "read:domain",
   ReadEvent: "read:event",
@@ -990,6 +994,7 @@ export const NextPermissions = {
   ReadWriteAiGatewayVirtualModelConfigs:
     "read-write:ai-gateway-virtual-model-configs",
   ReadWriteAlerts: "read-write:alerts",
+  ReadWriteAutomations: "read-write:automations",
   ReadWriteBilling: "read-write:billing",
   ReadWriteBlob: "read-write:blob",
   ReadWriteConnect: "read-write:connect",
@@ -1021,7 +1026,9 @@ export const NextPermissions = {
   ReadAiGatewayRules: "read:ai-gateway-rules",
   ReadAiGatewayVirtualModelConfigs: "read:ai-gateway-virtual-model-configs",
   ReadAlerts: "read:alerts",
+  ReadAutomations: "read:automations",
   ReadBilling: "read:billing",
+  ReadConnect: "read:connect",
   ReadDeployment: "read:deployment",
   ReadDomain: "read:domain",
   ReadEvent: "read:event",
@@ -1082,6 +1089,7 @@ export const Permissions = {
   ReadWriteAiGatewayVirtualModelConfigs:
     "read-write:ai-gateway-virtual-model-configs",
   ReadWriteAlerts: "read-write:alerts",
+  ReadWriteAutomations: "read-write:automations",
   ReadWriteBilling: "read-write:billing",
   ReadWriteBlob: "read-write:blob",
   ReadWriteConnect: "read-write:connect",
@@ -1113,7 +1121,9 @@ export const Permissions = {
   ReadAiGatewayRules: "read:ai-gateway-rules",
   ReadAiGatewayVirtualModelConfigs: "read:ai-gateway-virtual-model-configs",
   ReadAlerts: "read:alerts",
+  ReadAutomations: "read:automations",
   ReadBilling: "read:billing",
+  ReadConnect: "read:connect",
   ReadDeployment: "read:deployment",
   ReadDomain: "read:domain",
   ReadEvent: "read:event",
@@ -1494,51 +1504,24 @@ export type ThirtyOne = {
   rule: PayloadRule;
 };
 
-/** @internal */
-export const UserEventPayload102Project$inboundSchema: z.ZodType<
-  UserEventPayload102Project,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: types.string(),
-});
+export type Rule = {
+  id: string;
+  type: string;
+  model?: string | undefined;
+  rewriteModel?: string | undefined;
+};
 
-export function userEventPayload102ProjectFromJSON(
-  jsonString: string,
-): SafeParseResult<UserEventPayload102Project, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UserEventPayload102Project$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserEventPayload102Project' from JSON`,
-  );
-}
-
-/** @internal */
-export const DeployHook$inboundSchema: z.ZodType<
-  DeployHook,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  createdAt: types.number(),
-  id: types.string(),
-  name: types.string(),
-  ref: types.string(),
-});
-
-export function deployHookFromJSON(
-  jsonString: string,
-): SafeParseResult<DeployHook, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeployHook$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeployHook' from JSON`,
-  );
-}
+/**
+ * The payload of the event, if requested.
+ */
+export type Thirty = {
+  rule: Rule;
+};
 
 /** @internal */
 export const Job$inboundSchema: z.ZodType<Job, z.ZodTypeDef, unknown> = z
   .object({
-    deployHook: z.lazy(() => DeployHook$inboundSchema),
+    deployHook: DeployHook$inboundSchema,
     state: types.string(),
   });
 
@@ -1558,7 +1541,7 @@ export const OneHundredAndTwo$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  project: z.lazy(() => UserEventPayload102Project$inboundSchema),
+  project: UserEventPayload102Project$inboundSchema,
   job: z.lazy(() => Job$inboundSchema),
 });
 
@@ -4152,5 +4135,40 @@ export function thirtyOneFromJSON(
     jsonString,
     (x) => ThirtyOne$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'ThirtyOne' from JSON`,
+  );
+}
+
+/** @internal */
+export const Rule$inboundSchema: z.ZodType<Rule, z.ZodTypeDef, unknown> = z
+  .object({
+    id: types.string(),
+    type: types.string(),
+    model: types.optional(types.string()),
+    rewriteModel: types.optional(types.string()),
+  });
+
+export function ruleFromJSON(
+  jsonString: string,
+): SafeParseResult<Rule, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Rule$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Rule' from JSON`,
+  );
+}
+
+/** @internal */
+export const Thirty$inboundSchema: z.ZodType<Thirty, z.ZodTypeDef, unknown> = z
+  .object({
+    rule: z.lazy(() => Rule$inboundSchema),
+  });
+
+export function thirtyFromJSON(
+  jsonString: string,
+): SafeParseResult<Thirty, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Thirty$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Thirty' from JSON`,
   );
 }

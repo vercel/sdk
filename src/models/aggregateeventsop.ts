@@ -295,6 +295,7 @@ export type AggregateEventsData2 = {
   isByok: string;
   spendAttribution: string;
   isPrivateModel: string;
+  isStreaming: string;
   isRequestZdr: string;
   hipaaRequested: string;
   quotaRequested: string;
@@ -519,6 +520,7 @@ export type AggregateEventsData1 = {
   isByok?: string | undefined;
   spendAttribution?: string | undefined;
   isPrivateModel?: string | undefined;
+  isStreaming?: string | undefined;
   isRequestZdr?: string | undefined;
   hipaaRequested?: string | undefined;
   quotaRequested?: string | undefined;
@@ -895,6 +897,7 @@ export const AggregateEventsData2$inboundSchema: z.ZodType<
     isByok: types.string(),
     spendAttribution: types.string(),
     isPrivateModel: types.string(),
+    isStreaming: types.string(),
     isRequestZdr: types.string(),
     hipaaRequested: types.string(),
     quotaRequested: types.string(),
@@ -1136,6 +1139,7 @@ export const AggregateEventsData1$inboundSchema: z.ZodType<
   isByok: types.optional(types.string()),
   spendAttribution: types.optional(types.string()),
   isPrivateModel: types.optional(types.string()),
+  isStreaming: types.optional(types.string()),
   isRequestZdr: types.optional(types.string()),
   hipaaRequested: types.optional(types.string()),
   quotaRequested: types.optional(types.string()),

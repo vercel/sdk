@@ -131,18 +131,9 @@ export type CreateStorageStoresBlobFramework = ClosedEnum<
   typeof CreateStorageStoresBlobFramework
 >;
 
-export const CreateStorageStoresBlobEnvironments = {
-  Development: "development",
-  Preview: "preview",
-  Production: "production",
-} as const;
-export type CreateStorageStoresBlobEnvironments = ClosedEnum<
-  typeof CreateStorageStoresBlobEnvironments
->;
-
 export type CreateStorageStoresBlobActions = {
   slug: string;
-  environments: Array<CreateStorageStoresBlobEnvironments>;
+  environments: Array<string>;
 };
 
 export type CreateStorageStoresBlobDeployments = {
@@ -328,18 +319,13 @@ export const CreateStorageStoresBlobFramework$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(CreateStorageStoresBlobFramework);
 
 /** @internal */
-export const CreateStorageStoresBlobEnvironments$inboundSchema: z.ZodNativeEnum<
-  typeof CreateStorageStoresBlobEnvironments
-> = z.nativeEnum(CreateStorageStoresBlobEnvironments);
-
-/** @internal */
 export const CreateStorageStoresBlobActions$inboundSchema: z.ZodType<
   CreateStorageStoresBlobActions,
   z.ZodTypeDef,
   unknown
 > = z.object({
   slug: types.string(),
-  environments: z.array(CreateStorageStoresBlobEnvironments$inboundSchema),
+  environments: z.array(types.string()),
 });
 
 export function createStorageStoresBlobActionsFromJSON(

@@ -9,6 +9,9 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 import { VcrTag, VcrTag$inboundSchema } from "./vcrtag.js";
 
 export type GetRepositoryTagRequest = {
+  /**
+   * Project ID. Missing or empty values return HTTP 400.
+   */
   projectId: string;
   idOrName: string;
   tag: string;

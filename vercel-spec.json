@@ -83747,6 +83747,12 @@
                                 },
                                 "type": "array"
                               },
+                              "automation": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
                               "billingAddress": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
@@ -85828,8 +85834,8 @@
                           "tier": {
                             "type": "string",
                             "enum": [
-                              "advanced",
-                              "critical"
+                              "critical",
+                              "priority"
                             ]
                           },
                           "usageStatus": {
@@ -97251,8 +97257,8 @@
                                     "tierRequirement": {
                                       "type": "string",
                                       "enum": [
-                                        "advanced",
-                                        "critical"
+                                        "critical",
+                                        "priority"
                                       ]
                                     },
                                     "has": {
@@ -97905,8 +97911,8 @@
                           "tier": {
                             "type": "string",
                             "enum": [
-                              "advanced",
-                              "critical"
+                              "critical",
+                              "priority"
                             ]
                           },
                           "abuse": {
@@ -102058,8 +102064,8 @@
                                         "tierRequirement": {
                                           "type": "string",
                                           "enum": [
-                                            "advanced",
-                                            "critical"
+                                            "critical",
+                                            "priority"
                                           ]
                                         },
                                         "has": {
@@ -102712,8 +102718,8 @@
                               "tier": {
                                 "type": "string",
                                 "enum": [
-                                  "advanced",
-                                  "critical"
+                                  "critical",
+                                  "priority"
                                 ]
                               },
                               "abuse": {
@@ -107717,6 +107723,12 @@
                                     },
                                     "type": "array"
                                   },
+                                  "automation": {
+                                    "items": {
+                                      "$ref": "#/components/schemas/ACLAction"
+                                    },
+                                    "type": "array"
+                                  },
                                   "billingAddress": {
                                     "items": {
                                       "$ref": "#/components/schemas/ACLAction"
@@ -110285,8 +110297,8 @@
                               "tier": {
                                 "type": "string",
                                 "enum": [
-                                  "advanced",
-                                  "critical"
+                                  "critical",
+                                  "priority"
                                 ]
                               },
                               "usageStatus": {
@@ -116017,6 +116029,12 @@
                           },
                           "type": "array"
                         },
+                        "automation": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "billingAddress": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -118585,8 +118603,8 @@
                     "tier": {
                       "type": "string",
                       "enum": [
-                        "advanced",
-                        "critical"
+                        "critical",
+                        "priority"
                       ]
                     },
                     "usageStatus": {
@@ -124543,6 +124561,12 @@
                           },
                           "type": "array"
                         },
+                        "automation": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "billingAddress": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -127111,8 +127135,8 @@
                     "tier": {
                       "type": "string",
                       "enum": [
-                        "advanced",
-                        "critical"
+                        "critical",
+                        "priority"
                       ]
                     },
                     "usageStatus": {
@@ -132361,6 +132385,12 @@
                           },
                           "type": "array"
                         },
+                        "automation": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "billingAddress": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -134929,8 +134959,8 @@
                     "tier": {
                       "type": "string",
                       "enum": [
-                        "advanced",
-                        "critical"
+                        "critical",
+                        "priority"
                       ]
                     },
                     "usageStatus": {
@@ -141485,6 +141515,12 @@
                           },
                           "type": "array"
                         },
+                        "automation": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "billingAddress": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -144053,8 +144089,8 @@
                     "tier": {
                       "type": "string",
                       "enum": [
-                        "advanced",
-                        "critical"
+                        "critical",
+                        "priority"
                       ]
                     },
                     "usageStatus": {
@@ -162076,6 +162112,12 @@
                           },
                           "type": "array"
                         },
+                        "automation": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "billingAddress": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -164644,8 +164686,8 @@
                     "tier": {
                       "type": "string",
                       "enum": [
-                        "advanced",
-                        "critical"
+                        "critical",
+                        "priority"
                       ]
                     },
                     "usageStatus": {
@@ -166891,12 +166933,12 @@
                         },
                         "mode": {
                           "type": "string",
+                          "description": "Mount the drive as read-write, or as a read-only snapshot. One writer is permitted at a time.",
+                          "default": "read-write",
                           "enum": [
-                            "read-only",
+                            "snapshot",
                             "read-write"
-                          ],
-                          "description": "Mount the drive read-only or read-write.",
-                          "default": "read-write"
+                          ]
                         }
                       }
                     }
@@ -166981,6 +167023,11 @@
                       "sfo1",
                       "cle1"
                     ]
+                  },
+                  "networkId": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "The Connect network id for the target Secure Compute private network."
                   },
                   "name": {
                     "example": "my-sandbox",
@@ -167344,7 +167391,7 @@
                   },
                   "maxSizeBytes": {
                     "type": "integer",
-                    "description": "Maximum drive size in bytes. Defaults to 1 TiB when omitted. The maximum quota is 16 TiB. Request a quota above 16 TiB at https://vercel.com/help."
+                    "description": "Maximum drive size in bytes. Defaults to 1 TiB when omitted (1 GiB for Hobby). The maximum quota is 16 TiB. Request a quota above 16 TiB at https://vercel.com/help."
                   },
                   "region": {
                     "type": "string",
@@ -168937,15 +168984,27 @@
                         },
                         "mode": {
                           "type": "string",
+                          "description": "Mount the drive as read-write, or as a read-only snapshot. One writer is permitted at a time.",
+                          "default": "read-write",
                           "enum": [
-                            "read-only",
+                            "snapshot",
                             "read-write"
-                          ],
-                          "description": "Mount the drive read-only or read-write.",
-                          "default": "read-write"
+                          ]
                         }
                       }
                     }
+                  },
+                  "networkId": {
+                    "description": "The Connect network id for the target Secure Compute private network. Set to null to remove the sandbox from Secure Compute.",
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "string",
+                        "maxLength": 255
+                      }
+                    ]
                   },
                   "env": {
                     "type": "object",
@@ -171616,12 +171675,12 @@
                         },
                         "mode": {
                           "type": "string",
+                          "description": "Mount the drive as read-write, or as a read-only snapshot. One writer is permitted at a time.",
+                          "default": "read-write",
                           "enum": [
-                            "read-only",
+                            "snapshot",
                             "read-write"
-                          ],
-                          "description": "Mount the drive read-only or read-write.",
-                          "default": "read-write"
+                          ]
                         }
                       }
                     }
@@ -171706,6 +171765,11 @@
                       "sfo1",
                       "cle1"
                     ]
+                  },
+                  "networkId": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "The Connect network id for the target Secure Compute private network."
                   },
                   "name": {
                     "example": "my-sandbox-fork",
@@ -172450,12 +172514,12 @@
                         },
                         "mode": {
                           "type": "string",
+                          "description": "Mount the drive as read-write, or as a read-only snapshot. One writer is permitted at a time.",
+                          "default": "read-write",
                           "enum": [
-                            "read-only",
+                            "snapshot",
                             "read-write"
-                          ],
-                          "description": "Mount the drive read-only or read-write.",
-                          "default": "read-write"
+                          ]
                         }
                       }
                     }
@@ -172540,6 +172604,11 @@
                       "sfo1",
                       "cle1"
                     ]
+                  },
+                  "networkId": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "The Connect network id for the target Secure Compute private network."
                   },
                   "name": {
                     "example": "my-sandbox",
@@ -173338,12 +173407,12 @@
                         },
                         "mode": {
                           "type": "string",
+                          "description": "Mount the drive as read-write, or as a read-only snapshot. One writer is permitted at a time.",
+                          "default": "read-write",
                           "enum": [
-                            "read-only",
+                            "snapshot",
                             "read-write"
-                          ],
-                          "description": "Mount the drive read-only or read-write.",
-                          "default": "read-write"
+                          ]
                         }
                       }
                     }
@@ -173428,6 +173497,11 @@
                       "sfo1",
                       "cle1"
                     ]
+                  },
+                  "networkId": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "The Connect network id for the target Secure Compute private network."
                   },
                   "name": {
                     "example": "my-sandbox-fork",
@@ -174179,12 +174253,12 @@
                         },
                         "mode": {
                           "type": "string",
+                          "description": "Mount the drive as read-write, or as a read-only snapshot. One writer is permitted at a time.",
+                          "default": "read-write",
                           "enum": [
-                            "read-only",
+                            "snapshot",
                             "read-write"
-                          ],
-                          "description": "Mount the drive read-only or read-write.",
-                          "default": "read-write"
+                          ]
                         }
                       }
                     }
@@ -174269,6 +174343,11 @@
                       "sfo1",
                       "cle1"
                     ]
+                  },
+                  "networkId": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "The Connect network id for the target Secure Compute private network."
                   },
                   "name": {
                     "example": "my-sandbox",
@@ -188380,12 +188459,7 @@
                                         },
                                         "environments": {
                                           "items": {
-                                            "type": "string",
-                                            "enum": [
-                                              "development",
-                                              "preview",
-                                              "production"
-                                            ]
+                                            "type": "string"
                                           },
                                           "type": "array"
                                         }
@@ -188705,12 +188779,7 @@
                                         },
                                         "environments": {
                                           "items": {
-                                            "type": "string",
-                                            "enum": [
-                                              "development",
-                                              "preview",
-                                              "production"
-                                            ]
+                                            "type": "string"
                                           },
                                           "type": "array"
                                         }
@@ -189193,12 +189262,7 @@
                                         },
                                         "environments": {
                                           "items": {
-                                            "type": "string",
-                                            "enum": [
-                                              "development",
-                                              "preview",
-                                              "production"
-                                            ]
+                                            "type": "string"
                                           },
                                           "type": "array"
                                         }
@@ -197285,7 +197349,8 @@
                 ],
                 "properties": {
                   "projectId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Project ID. Missing or empty values return HTTP 400."
                   },
                   "name": {
                     "type": "string",
@@ -197342,10 +197407,12 @@
         "parameters": [
           {
             "name": "projectId",
+            "description": "Project ID. Missing or empty values return HTTP 400.",
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "description": "Project ID. Missing or empty values return HTTP 400."
             }
           },
           {
@@ -197441,10 +197508,12 @@
         "parameters": [
           {
             "name": "projectId",
+            "description": "Project ID. Missing or empty values return HTTP 400.",
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "description": "Project ID. Missing or empty values return HTTP 400."
             }
           },
           {
@@ -197518,10 +197587,12 @@
         "parameters": [
           {
             "name": "projectId",
+            "description": "Project ID. Missing or empty values return HTTP 400.",
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "description": "Project ID. Missing or empty values return HTTP 400."
             }
           },
           {
@@ -197597,10 +197668,12 @@
         "parameters": [
           {
             "name": "projectId",
+            "description": "Project ID. Missing or empty values return HTTP 400.",
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "description": "Project ID. Missing or empty values return HTTP 400."
             }
           },
           {
@@ -197713,10 +197786,12 @@
         "parameters": [
           {
             "name": "projectId",
+            "description": "Project ID. Missing or empty values return HTTP 400.",
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "description": "Project ID. Missing or empty values return HTTP 400."
             }
           },
           {
@@ -197816,10 +197891,12 @@
         "parameters": [
           {
             "name": "projectId",
+            "description": "Project ID. Missing or empty values return HTTP 400.",
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "description": "Project ID. Missing or empty values return HTTP 400."
             }
           },
           {
@@ -197919,10 +197996,12 @@
         "parameters": [
           {
             "name": "projectId",
+            "description": "Project ID. Missing or empty values return HTTP 400.",
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "description": "Project ID. Missing or empty values return HTTP 400."
             }
           },
           {
@@ -198019,10 +198098,12 @@
         "parameters": [
           {
             "name": "projectId",
+            "description": "Project ID. Missing or empty values return HTTP 400.",
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "description": "Project ID. Missing or empty values return HTTP 400."
             }
           },
           {
@@ -198169,10 +198250,12 @@
         "parameters": [
           {
             "name": "projectId",
+            "description": "Project ID. Missing or empty values return HTTP 400.",
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "description": "Project ID. Missing or empty values return HTTP 400."
             }
           },
           {
@@ -198304,10 +198387,12 @@
         "parameters": [
           {
             "name": "projectId",
+            "description": "Project ID. Missing or empty values return HTTP 400.",
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "description": "Project ID. Missing or empty values return HTTP 400."
             }
           },
           {
@@ -198400,10 +198485,12 @@
         "parameters": [
           {
             "name": "projectId",
+            "description": "Project ID. Missing or empty values return HTTP 400.",
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "description": "Project ID. Missing or empty values return HTTP 400."
             }
           },
           {
@@ -198490,10 +198577,12 @@
         "parameters": [
           {
             "name": "projectId",
+            "description": "Project ID. Missing or empty values return HTTP 400.",
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "description": "Project ID. Missing or empty values return HTTP 400."
             }
           },
           {
@@ -200395,6 +200484,9 @@
                               "isPrivateModel": {
                                 "type": "string"
                               },
+                              "isStreaming": {
+                                "type": "string"
+                              },
                               "isRequestZdr": {
                                 "type": "string"
                               },
@@ -201070,6 +201162,9 @@
                               "isPrivateModel": {
                                 "type": "string"
                               },
+                              "isStreaming": {
+                                "type": "string"
+                              },
                               "isRequestZdr": {
                                 "type": "string"
                               },
@@ -201407,6 +201502,7 @@
                               "isPrefetchRequest",
                               "isPrivateModel",
                               "isRequestZdr",
+                              "isStreaming",
                               "isrAction",
                               "isrCacheRegion",
                               "keyId",
@@ -202217,6 +202313,9 @@
                               "isPrivateModel": {
                                 "type": "string"
                               },
+                              "isStreaming": {
+                                "type": "string"
+                              },
                               "isRequestZdr": {
                                 "type": "string"
                               },
@@ -202892,6 +202991,9 @@
                               "isPrivateModel": {
                                 "type": "string"
                               },
+                              "isStreaming": {
+                                "type": "string"
+                              },
                               "isRequestZdr": {
                                 "type": "string"
                               },
@@ -203229,6 +203331,7 @@
                               "isPrefetchRequest",
                               "isPrivateModel",
                               "isRequestZdr",
+                              "isStreaming",
                               "isrAction",
                               "isrCacheRegion",
                               "keyId",
@@ -204005,6 +204108,9 @@
                             "isPrivateModel": {
                               "type": "string"
                             },
+                            "isStreaming": {
+                              "type": "string"
+                            },
                             "isRequestZdr": {
                               "type": "string"
                             },
@@ -204342,6 +204448,7 @@
                             "isPrefetchRequest",
                             "isPrivateModel",
                             "isRequestZdr",
+                            "isStreaming",
                             "isrAction",
                             "isrCacheRegion",
                             "keyId",
@@ -205066,6 +205173,9 @@
                             "isPrivateModel": {
                               "type": "string"
                             },
+                            "isStreaming": {
+                              "type": "string"
+                            },
                             "isRequestZdr": {
                               "type": "string"
                             },
@@ -205403,6 +205513,7 @@
                             "isPrefetchRequest",
                             "isPrivateModel",
                             "isRequestZdr",
+                            "isStreaming",
                             "isrAction",
                             "isrCacheRegion",
                             "keyId",
@@ -212820,6 +212931,11 @@
                   "format": "uri"
                 },
                 "description": "The HTTPS resources the API key authenticates against."
+              },
+              "instructions": {
+                "type": "string",
+                "maxLength": 4000,
+                "description": "Markdown instructions shown to each user on the authorization screen, explaining how to obtain the key they should paste."
               }
             },
             "additionalProperties": false,
@@ -214191,6 +214307,18 @@
                   "additionalProperties": false
                 },
                 "description": "Existing API key values to update."
+              },
+              "instructions": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "maxLength": 4000
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "description": "Markdown instructions shown to each user on the authorization screen, explaining how to obtain the key they should paste."
               }
             },
             "additionalProperties": false,
@@ -219197,6 +219325,7 @@
                         "read-write:ai-gateway-rules",
                         "read-write:ai-gateway-virtual-model-configs",
                         "read-write:alerts",
+                        "read-write:automations",
                         "read-write:billing",
                         "read-write:blob",
                         "read-write:connect",
@@ -219227,7 +219356,9 @@
                         "read:ai-gateway-rules",
                         "read:ai-gateway-virtual-model-configs",
                         "read:alerts",
+                        "read:automations",
                         "read:billing",
+                        "read:connect",
                         "read:deployment",
                         "read:domain",
                         "read:event",
@@ -219308,6 +219439,7 @@
                         "read-write:ai-gateway-rules",
                         "read-write:ai-gateway-virtual-model-configs",
                         "read-write:alerts",
+                        "read-write:automations",
                         "read-write:billing",
                         "read-write:blob",
                         "read-write:connect",
@@ -219338,7 +219470,9 @@
                         "read:ai-gateway-rules",
                         "read:ai-gateway-virtual-model-configs",
                         "read:alerts",
+                        "read:automations",
                         "read:billing",
+                        "read:connect",
                         "read:deployment",
                         "read:domain",
                         "read:event",
@@ -219441,6 +219575,7 @@
                             "read-write:ai-gateway-rules",
                             "read-write:ai-gateway-virtual-model-configs",
                             "read-write:alerts",
+                            "read-write:automations",
                             "read-write:billing",
                             "read-write:blob",
                             "read-write:connect",
@@ -219471,7 +219606,9 @@
                             "read:ai-gateway-rules",
                             "read:ai-gateway-virtual-model-configs",
                             "read:alerts",
+                            "read:automations",
                             "read:billing",
+                            "read:connect",
                             "read:deployment",
                             "read:domain",
                             "read:event",
@@ -219557,6 +219694,7 @@
                             "read-write:ai-gateway-rules",
                             "read-write:ai-gateway-virtual-model-configs",
                             "read-write:alerts",
+                            "read-write:automations",
                             "read-write:billing",
                             "read-write:blob",
                             "read-write:connect",
@@ -219587,7 +219725,9 @@
                             "read:ai-gateway-rules",
                             "read:ai-gateway-virtual-model-configs",
                             "read:alerts",
+                            "read:automations",
                             "read:billing",
+                            "read:connect",
                             "read:deployment",
                             "read:domain",
                             "read:event",
@@ -219686,6 +219826,7 @@
                         "read-write:ai-gateway-rules",
                         "read-write:ai-gateway-virtual-model-configs",
                         "read-write:alerts",
+                        "read-write:automations",
                         "read-write:billing",
                         "read-write:blob",
                         "read-write:connect",
@@ -219716,7 +219857,9 @@
                         "read:ai-gateway-rules",
                         "read:ai-gateway-virtual-model-configs",
                         "read:alerts",
+                        "read:automations",
                         "read:billing",
+                        "read:connect",
                         "read:deployment",
                         "read:domain",
                         "read:event",
@@ -226431,10 +226574,22 @@
                                 "observability-edge-requests",
                                 "observability-error-rate",
                                 "observability-function-invocations",
+                                "shortcut",
                                 "speed-insights-cls",
                                 "speed-insights-lcp",
                                 "speed-insights-res"
                               ]
+                            },
+                            "config": {
+                              "properties": {
+                                "url": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "url"
+                              ],
+                              "type": "object"
                             }
                           },
                           "required": [
@@ -226829,7 +226984,6 @@
                               "ENTERPRISE_UNPAID_INVOICE",
                               "EXPOSURE_CAP_EXCEEDED",
                               "FAIR_USE_LIMITS_EXCEEDED",
-                              "HOBBY_ALLOCATION_PAUSED",
                               "SUBSCRIPTION_CANCELED",
                               "SUBSCRIPTION_EXPIRED",
                               "UNPAID_INVOICE"
@@ -226878,93 +227032,6 @@
                               "wafRateLimitRequest",
                               "webAnalyticsEvent"
                             ]
-                          },
-                          "hobbyAllocationPause": {
-                            "properties": {
-                              "pausedUntil": {
-                                "type": "number",
-                                "description": "Unix ms timestamp at which the pause is eligible to end. This is the single source of truth for when the pause ends. Never re-derive it by re-checking usage — usage keeps moving while a team is paused, and the pause duration is a fixed experiment parameter."
-                              },
-                              "pausedAt": {
-                                "type": "number",
-                                "description": "Unix ms timestamp of when the pause was applied."
-                              },
-                              "triggers": {
-                                "items": {
-                                  "properties": {
-                                    "allocation": {
-                                      "type": "string",
-                                      "enum": [
-                                        "analyticsUsage",
-                                        "artifacts",
-                                        "bandwidth",
-                                        "blobDataTransfer",
-                                        "blobTotalAdvancedRequests",
-                                        "blobTotalAvgSizeInBytes",
-                                        "blobTotalGetResponseObjectSizeInBytes",
-                                        "blobTotalSimpleRequests",
-                                        "connectDataTransfer",
-                                        "dataCacheRead",
-                                        "dataCacheWrite",
-                                        "edgeConfigRead",
-                                        "edgeConfigWrite",
-                                        "edgeFunctionExecutionUnits",
-                                        "edgeMiddlewareInvocations",
-                                        "edgeRequest",
-                                        "edgeRequestAdditionalCpuDuration",
-                                        "elasticConcurrencyBuildSlots",
-                                        "fastDataTransfer",
-                                        "fastOriginTransfer",
-                                        "fluidCpuDuration",
-                                        "fluidDuration",
-                                        "functionDuration",
-                                        "functionInvocation",
-                                        "imageOptimizationCacheRead",
-                                        "imageOptimizationCacheWrite",
-                                        "imageOptimizationTransformation",
-                                        "logDrainsVolume",
-                                        "monitoringMetric",
-                                        "observabilityEvent",
-                                        "onDemandConcurrencyMinutes",
-                                        "runtimeCacheRead",
-                                        "runtimeCacheWrite",
-                                        "serverlessFunctionExecution",
-                                        "sourceImages",
-                                        "wafOwaspExcessBytes",
-                                        "wafOwaspRequests",
-                                        "wafRateLimitRequest",
-                                        "webAnalyticsEvent"
-                                      ],
-                                      "description": "Metered allocation whose included amount was fully consumed."
-                                    },
-                                    "usage": {
-                                      "type": "number",
-                                      "description": "Usage recorded for that allocation when the pause was applied."
-                                    }
-                                  },
-                                  "required": [
-                                    "allocation",
-                                    "usage"
-                                  ],
-                                  "type": "object",
-                                  "description": "Allocations that were at or over 100% when the pause was applied."
-                                },
-                                "type": "array",
-                                "description": "Allocations that were at or over 100% when the pause was applied."
-                              },
-                              "cohort": {
-                                "type": "string",
-                                "description": "Experiment cohort the owner was assigned to when the pause fired. Free-form so cohort naming stays owned by the assignment path."
-                              }
-                            },
-                            "required": [
-                              "cohort",
-                              "pausedAt",
-                              "pausedUntil",
-                              "triggers"
-                            ],
-                            "type": "object",
-                            "description": "Present only when `reason` is `HOBBY_ALLOCATION_PAUSED`. Makes the pause self-describing for support without a separate lookup."
                           }
                         },
                         "required": [
@@ -232575,6 +232642,7 @@
                       "observability-function-invocations",
                       "online",
                       "res",
+                      "shortcut",
                       "speed-insights-cls",
                       "speed-insights-lcp",
                       "speed-insights-res",
@@ -237226,6 +237294,7 @@
                       "long-build-duration",
                       "oom-failure",
                       "plan-change",
+                      "project-transfer",
                       "short-build-duration",
                       "sustained-high-cpu"
                     ]
@@ -243888,6 +243957,10 @@
             "type": "object",
             "description": "Network policy configuration."
           },
+          "networkId": {
+            "type": "string",
+            "description": "The Connect network id for the target Secure Compute private network."
+          },
           "totalEgressBytes": {
             "type": "number",
             "description": "Cumulative egress bytes across all sandbox runs.",
@@ -243934,7 +244007,8 @@
                   "type": "string",
                   "enum": [
                     "read-only",
-                    "read-write"
+                    "read-write",
+                    "snapshot"
                   ]
                 }
               },
@@ -246309,7 +246383,6 @@
                   "ENTERPRISE_UNPAID_INVOICE",
                   "EXPOSURE_CAP_EXCEEDED",
                   "FAIR_USE_LIMITS_EXCEEDED",
-                  "HOBBY_ALLOCATION_PAUSED",
                   "SUBSCRIPTION_CANCELED",
                   "SUBSCRIPTION_EXPIRED",
                   "UNPAID_INVOICE"
@@ -246358,93 +246431,6 @@
                   "wafRateLimitRequest",
                   "webAnalyticsEvent"
                 ]
-              },
-              "hobbyAllocationPause": {
-                "properties": {
-                  "pausedUntil": {
-                    "type": "number",
-                    "description": "Unix ms timestamp at which the pause is eligible to end. This is the single source of truth for when the pause ends. Never re-derive it by re-checking usage — usage keeps moving while a team is paused, and the pause duration is a fixed experiment parameter."
-                  },
-                  "pausedAt": {
-                    "type": "number",
-                    "description": "Unix ms timestamp of when the pause was applied."
-                  },
-                  "triggers": {
-                    "items": {
-                      "properties": {
-                        "allocation": {
-                          "type": "string",
-                          "enum": [
-                            "analyticsUsage",
-                            "artifacts",
-                            "bandwidth",
-                            "blobDataTransfer",
-                            "blobTotalAdvancedRequests",
-                            "blobTotalAvgSizeInBytes",
-                            "blobTotalGetResponseObjectSizeInBytes",
-                            "blobTotalSimpleRequests",
-                            "connectDataTransfer",
-                            "dataCacheRead",
-                            "dataCacheWrite",
-                            "edgeConfigRead",
-                            "edgeConfigWrite",
-                            "edgeFunctionExecutionUnits",
-                            "edgeMiddlewareInvocations",
-                            "edgeRequest",
-                            "edgeRequestAdditionalCpuDuration",
-                            "elasticConcurrencyBuildSlots",
-                            "fastDataTransfer",
-                            "fastOriginTransfer",
-                            "fluidCpuDuration",
-                            "fluidDuration",
-                            "functionDuration",
-                            "functionInvocation",
-                            "imageOptimizationCacheRead",
-                            "imageOptimizationCacheWrite",
-                            "imageOptimizationTransformation",
-                            "logDrainsVolume",
-                            "monitoringMetric",
-                            "observabilityEvent",
-                            "onDemandConcurrencyMinutes",
-                            "runtimeCacheRead",
-                            "runtimeCacheWrite",
-                            "serverlessFunctionExecution",
-                            "sourceImages",
-                            "wafOwaspExcessBytes",
-                            "wafOwaspRequests",
-                            "wafRateLimitRequest",
-                            "webAnalyticsEvent"
-                          ],
-                          "description": "Metered allocation whose included amount was fully consumed."
-                        },
-                        "usage": {
-                          "type": "number",
-                          "description": "Usage recorded for that allocation when the pause was applied."
-                        }
-                      },
-                      "required": [
-                        "allocation",
-                        "usage"
-                      ],
-                      "type": "object",
-                      "description": "Allocations that were at or over 100% when the pause was applied."
-                    },
-                    "type": "array",
-                    "description": "Allocations that were at or over 100% when the pause was applied."
-                  },
-                  "cohort": {
-                    "type": "string",
-                    "description": "Experiment cohort the owner was assigned to when the pause fired. Free-form so cohort naming stays owned by the assignment path."
-                  }
-                },
-                "required": [
-                  "cohort",
-                  "pausedAt",
-                  "pausedUntil",
-                  "triggers"
-                ],
-                "type": "object",
-                "description": "Present only when `reason` is `HOBBY_ALLOCATION_PAUSED`. Makes the pause self-describing for support without a separate lookup."
               }
             },
             "required": [

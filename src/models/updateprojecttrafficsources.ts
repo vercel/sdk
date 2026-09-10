@@ -1452,6 +1452,7 @@ export type UpdateProjectPermissions = {
   vercelAppInstallation?: Array<ACLAction> | undefined;
   vercelAppInstallationRequest?: Array<ACLAction> | undefined;
   auditLog?: Array<ACLAction> | undefined;
+  automation?: Array<ACLAction> | undefined;
   billingAddress?: Array<ACLAction> | undefined;
   billingInformation?: Array<ACLAction> | undefined;
   billingInvoice?: Array<ACLAction> | undefined;
@@ -4070,6 +4071,7 @@ export const UpdateProjectPermissions$inboundSchema: z.ZodType<
     z.array(ACLAction$inboundSchema),
   ),
   auditLog: types.optional(z.array(ACLAction$inboundSchema)),
+  automation: types.optional(z.array(ACLAction$inboundSchema)),
   billingAddress: types.optional(z.array(ACLAction$inboundSchema)),
   billingInformation: types.optional(z.array(ACLAction$inboundSchema)),
   billingInvoice: types.optional(z.array(ACLAction$inboundSchema)),

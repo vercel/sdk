@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Country } from "@vercel/sdk/models/bandwidth.js";
+import { Country } from "@vercel/sdk/models/blobtotalavgsizeinbytes.js";
 
 let value: Country = {
   names: {

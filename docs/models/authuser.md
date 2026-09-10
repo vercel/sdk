@@ -11,7 +11,7 @@ let value: AuthUser = {
   createdAt: 1630748523395,
   softBlock: {
     blockedAt: 3863.42,
-    reason: "FAIR_USE_LIMITS_EXCEEDED",
+    reason: "EXPOSURE_CAP_EXCEEDED",
   },
   billing: {},
   resourceConfig: {},

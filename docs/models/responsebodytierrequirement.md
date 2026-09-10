@@ -5,11 +5,11 @@
 ```typescript
 import { ResponseBodyTierRequirement } from "@vercel/sdk/models/responsebodydeploymentexpiration.js";
 
-let value: ResponseBodyTierRequirement = "advanced";
+let value: ResponseBodyTierRequirement = "critical";
 ```
 
 ## Values
 
 ```typescript
-"advanced" | "critical"
+"critical" | "priority"
 ```

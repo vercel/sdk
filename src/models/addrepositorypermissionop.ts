@@ -24,6 +24,9 @@ export type AddRepositoryPermissionRequestBody = {
 };
 
 export type AddRepositoryPermissionRequest = {
+  /**
+   * Project ID. Missing or empty values return HTTP 400.
+   */
   projectId: string;
   idOrName: string;
   /**

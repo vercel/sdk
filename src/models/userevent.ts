@@ -83,7 +83,101 @@ import {
   TwoHundredAndThree$inboundSchema,
   TwoHundredAndTwo,
   TwoHundredAndTwo$inboundSchema,
-} from "./bandwidth.js";
+} from "./blobtotalavgsizeinbytes.js";
+import {
+  OneHundredAndEight,
+  OneHundredAndEight$inboundSchema,
+  OneHundredAndEighteen,
+  OneHundredAndEighteen$inboundSchema,
+  OneHundredAndEleven,
+  OneHundredAndEleven$inboundSchema,
+  OneHundredAndFifteen,
+  OneHundredAndFifteen$inboundSchema,
+  OneHundredAndFive,
+  OneHundredAndFive$inboundSchema,
+  OneHundredAndForty,
+  OneHundredAndForty$inboundSchema,
+  OneHundredAndFortyEight,
+  OneHundredAndFortyEight$inboundSchema,
+  OneHundredAndFortyFive,
+  OneHundredAndFortyFive$inboundSchema,
+  OneHundredAndFortyFour,
+  OneHundredAndFortyFour$inboundSchema,
+  OneHundredAndFortyOne,
+  OneHundredAndFortyOne$inboundSchema,
+  OneHundredAndFortySeven,
+  OneHundredAndFortySeven$inboundSchema,
+  OneHundredAndFortySix,
+  OneHundredAndFortySix$inboundSchema,
+  OneHundredAndFortyThree,
+  OneHundredAndFortyThree$inboundSchema,
+  OneHundredAndFortyTwo,
+  OneHundredAndFortyTwo$inboundSchema,
+  OneHundredAndFour,
+  OneHundredAndFour$inboundSchema,
+  OneHundredAndFourteen,
+  OneHundredAndFourteen$inboundSchema,
+  OneHundredAndNine,
+  OneHundredAndNine$inboundSchema,
+  OneHundredAndNineteen,
+  OneHundredAndNineteen$inboundSchema,
+  OneHundredAndSeven,
+  OneHundredAndSeven$inboundSchema,
+  OneHundredAndSeventeen,
+  OneHundredAndSeventeen$inboundSchema,
+  OneHundredAndSix,
+  OneHundredAndSix$inboundSchema,
+  OneHundredAndSixteen,
+  OneHundredAndSixteen$inboundSchema,
+  OneHundredAndTen,
+  OneHundredAndTen$inboundSchema,
+  OneHundredAndThirteen,
+  OneHundredAndThirteen$inboundSchema,
+  OneHundredAndThirty,
+  OneHundredAndThirty$inboundSchema,
+  OneHundredAndThirtyEight,
+  OneHundredAndThirtyEight$inboundSchema,
+  OneHundredAndThirtyFive,
+  OneHundredAndThirtyFive$inboundSchema,
+  OneHundredAndThirtyFour,
+  OneHundredAndThirtyFour$inboundSchema,
+  OneHundredAndThirtyNine,
+  OneHundredAndThirtyNine$inboundSchema,
+  OneHundredAndThirtyOne,
+  OneHundredAndThirtyOne$inboundSchema,
+  OneHundredAndThirtySeven,
+  OneHundredAndThirtySeven$inboundSchema,
+  OneHundredAndThirtySix,
+  OneHundredAndThirtySix$inboundSchema,
+  OneHundredAndThirtyThree,
+  OneHundredAndThirtyThree$inboundSchema,
+  OneHundredAndThirtyTwo,
+  OneHundredAndThirtyTwo$inboundSchema,
+  OneHundredAndThree,
+  OneHundredAndThree$inboundSchema,
+  OneHundredAndTwelve,
+  OneHundredAndTwelve$inboundSchema,
+  OneHundredAndTwenty,
+  OneHundredAndTwenty$inboundSchema,
+  OneHundredAndTwentyEight,
+  OneHundredAndTwentyEight$inboundSchema,
+  OneHundredAndTwentyFive,
+  OneHundredAndTwentyFive$inboundSchema,
+  OneHundredAndTwentyFour,
+  OneHundredAndTwentyFour$inboundSchema,
+  OneHundredAndTwentyNine,
+  OneHundredAndTwentyNine$inboundSchema,
+  OneHundredAndTwentyOne,
+  OneHundredAndTwentyOne$inboundSchema,
+  OneHundredAndTwentySeven,
+  OneHundredAndTwentySeven$inboundSchema,
+  OneHundredAndTwentySix,
+  OneHundredAndTwentySix$inboundSchema,
+  OneHundredAndTwentyThree,
+  OneHundredAndTwentyThree$inboundSchema,
+  OneHundredAndTwentyTwo,
+  OneHundredAndTwentyTwo$inboundSchema,
+} from "./deployhook.js";
 import {
   Categories,
   Categories$inboundSchema,
@@ -227,101 +321,7 @@ import {
   OneHundredAndSixtyThree$inboundSchema,
   OneHundredAndSixtyTwo,
   OneHundredAndSixtyTwo$inboundSchema,
-} from "./onehundredandfortynine.js";
-import {
-  OneHundredAndEight,
-  OneHundredAndEight$inboundSchema,
-  OneHundredAndEighteen,
-  OneHundredAndEighteen$inboundSchema,
-  OneHundredAndEleven,
-  OneHundredAndEleven$inboundSchema,
-  OneHundredAndFifteen,
-  OneHundredAndFifteen$inboundSchema,
-  OneHundredAndFive,
-  OneHundredAndFive$inboundSchema,
-  OneHundredAndForty,
-  OneHundredAndForty$inboundSchema,
-  OneHundredAndFortyEight,
-  OneHundredAndFortyEight$inboundSchema,
-  OneHundredAndFortyFive,
-  OneHundredAndFortyFive$inboundSchema,
-  OneHundredAndFortyFour,
-  OneHundredAndFortyFour$inboundSchema,
-  OneHundredAndFortyOne,
-  OneHundredAndFortyOne$inboundSchema,
-  OneHundredAndFortySeven,
-  OneHundredAndFortySeven$inboundSchema,
-  OneHundredAndFortySix,
-  OneHundredAndFortySix$inboundSchema,
-  OneHundredAndFortyThree,
-  OneHundredAndFortyThree$inboundSchema,
-  OneHundredAndFortyTwo,
-  OneHundredAndFortyTwo$inboundSchema,
-  OneHundredAndFour,
-  OneHundredAndFour$inboundSchema,
-  OneHundredAndFourteen,
-  OneHundredAndFourteen$inboundSchema,
-  OneHundredAndNine,
-  OneHundredAndNine$inboundSchema,
-  OneHundredAndNineteen,
-  OneHundredAndNineteen$inboundSchema,
-  OneHundredAndSeven,
-  OneHundredAndSeven$inboundSchema,
-  OneHundredAndSeventeen,
-  OneHundredAndSeventeen$inboundSchema,
-  OneHundredAndSix,
-  OneHundredAndSix$inboundSchema,
-  OneHundredAndSixteen,
-  OneHundredAndSixteen$inboundSchema,
-  OneHundredAndTen,
-  OneHundredAndTen$inboundSchema,
-  OneHundredAndThirteen,
-  OneHundredAndThirteen$inboundSchema,
-  OneHundredAndThirty,
-  OneHundredAndThirty$inboundSchema,
-  OneHundredAndThirtyEight,
-  OneHundredAndThirtyEight$inboundSchema,
-  OneHundredAndThirtyFive,
-  OneHundredAndThirtyFive$inboundSchema,
-  OneHundredAndThirtyFour,
-  OneHundredAndThirtyFour$inboundSchema,
-  OneHundredAndThirtyNine,
-  OneHundredAndThirtyNine$inboundSchema,
-  OneHundredAndThirtyOne,
-  OneHundredAndThirtyOne$inboundSchema,
-  OneHundredAndThirtySeven,
-  OneHundredAndThirtySeven$inboundSchema,
-  OneHundredAndThirtySix,
-  OneHundredAndThirtySix$inboundSchema,
-  OneHundredAndThirtyThree,
-  OneHundredAndThirtyThree$inboundSchema,
-  OneHundredAndThirtyTwo,
-  OneHundredAndThirtyTwo$inboundSchema,
-  OneHundredAndThree,
-  OneHundredAndThree$inboundSchema,
-  OneHundredAndTwelve,
-  OneHundredAndTwelve$inboundSchema,
-  OneHundredAndTwenty,
-  OneHundredAndTwenty$inboundSchema,
-  OneHundredAndTwentyEight,
-  OneHundredAndTwentyEight$inboundSchema,
-  OneHundredAndTwentyFive,
-  OneHundredAndTwentyFive$inboundSchema,
-  OneHundredAndTwentyFour,
-  OneHundredAndTwentyFour$inboundSchema,
-  OneHundredAndTwentyNine,
-  OneHundredAndTwentyNine$inboundSchema,
-  OneHundredAndTwentyOne,
-  OneHundredAndTwentyOne$inboundSchema,
-  OneHundredAndTwentySeven,
-  OneHundredAndTwentySeven$inboundSchema,
-  OneHundredAndTwentySix,
-  OneHundredAndTwentySix$inboundSchema,
-  OneHundredAndTwentyThree,
-  OneHundredAndTwentyThree$inboundSchema,
-  OneHundredAndTwentyTwo,
-  OneHundredAndTwentyTwo$inboundSchema,
-} from "./onehundredandthree.js";
+} from "./payloadpreviousrule.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
   TwoHundredAndEight,
@@ -588,6 +588,8 @@ import {
   SixtyThree$inboundSchema,
   SixtyTwo,
   SixtyTwo$inboundSchema,
+  Thirty,
+  Thirty$inboundSchema,
   ThirtyEight,
   ThirtyEight$inboundSchema,
   ThirtyFive,
@@ -606,7 +608,7 @@ import {
   ThirtyThree$inboundSchema,
   ThirtyTwo,
   ThirtyTwo$inboundSchema,
-} from "./thirtyone.js";
+} from "./thirty.js";
 import {
   ThreeHundred,
   ThreeHundred$inboundSchema,
@@ -873,20 +875,6 @@ import {
   ThreeHundredAndThirtyNine,
   ThreeHundredAndThirtyNine$inboundSchema,
 } from "./usereventpayload338budget.js";
-
-export type Rule = {
-  id: string;
-  type: string;
-  model?: string | undefined;
-  rewriteModel?: string | undefined;
-};
-
-/**
- * The payload of the event, if requested.
- */
-export type Thirty = {
-  rule: Rule;
-};
 
 export const DefaultMode = {
   Days: "days",
@@ -2596,41 +2584,6 @@ export type UserEvent = {
 };
 
 /** @internal */
-export const Rule$inboundSchema: z.ZodType<Rule, z.ZodTypeDef, unknown> = z
-  .object({
-    id: types.string(),
-    type: types.string(),
-    model: types.optional(types.string()),
-    rewriteModel: types.optional(types.string()),
-  });
-
-export function ruleFromJSON(
-  jsonString: string,
-): SafeParseResult<Rule, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Rule$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Rule' from JSON`,
-  );
-}
-
-/** @internal */
-export const Thirty$inboundSchema: z.ZodType<Thirty, z.ZodTypeDef, unknown> = z
-  .object({
-    rule: z.lazy(() => Rule$inboundSchema),
-  });
-
-export function thirtyFromJSON(
-  jsonString: string,
-): SafeParseResult<Thirty, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Thirty$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Thirty' from JSON`,
-  );
-}
-
-/** @internal */
 export const DefaultMode$inboundSchema: z.ZodNativeEnum<typeof DefaultMode> = z
   .nativeEnum(DefaultMode);
 
@@ -4016,7 +3969,7 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     z.lazy(() => TwentySix$inboundSchema),
     z.lazy(() => TwentyEight$inboundSchema),
     z.lazy(() => TwentyNine$inboundSchema),
-    z.lazy(() => Thirty$inboundSchema),
+    Thirty$inboundSchema,
     ThirtyOne$inboundSchema,
     ThirtyTwo$inboundSchema,
     ThirtyThree$inboundSchema,
@@ -4499,7 +4452,7 @@ export const UserEvent$inboundSchema: z.ZodType<
       z.lazy(() => TwentySix$inboundSchema),
       z.lazy(() => TwentyEight$inboundSchema),
       z.lazy(() => TwentyNine$inboundSchema),
-      z.lazy(() => Thirty$inboundSchema),
+      Thirty$inboundSchema,
       ThirtyOne$inboundSchema,
       ThirtyTwo$inboundSchema,
       ThirtyThree$inboundSchema,

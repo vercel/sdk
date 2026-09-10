@@ -145,6 +145,7 @@ let value: AggregateEventsData2 = {
   isByok: "<value>",
   spendAttribution: "<value>",
   isPrivateModel: "<value>",
+  isStreaming: "<value>",
   isRequestZdr: "<value>",
   hipaaRequested: "<value>",
   quotaRequested: "<value>",
@@ -372,6 +373,7 @@ let value: AggregateEventsData2 = {
 | `isByok`                               | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `spendAttribution`                     | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `isPrivateModel`                       | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `isStreaming`                          | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `isRequestZdr`                         | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `hipaaRequested`                       | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `quotaRequested`                       | *string*                               | :heavy_check_mark:                     | N/A                                    |

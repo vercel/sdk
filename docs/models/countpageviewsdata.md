@@ -146,6 +146,7 @@ const value: models.CountPageviewsData1 = {
   isByok: "<value>",
   spendAttribution: "<value>",
   isPrivateModel: "<value>",
+  isStreaming: "<value>",
   isRequestZdr: "<value>",
   hipaaRequested: "<value>",
   quotaRequested: "<value>",

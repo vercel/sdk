@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFiftyTwo } from "@vercel/sdk/models/onehundredandfortynine.js";
+import { OneHundredAndFiftyTwo } from "@vercel/sdk/models/payloadpreviousrule.js";
 
 let value: OneHundredAndFiftyTwo = {
   created: new Date("2021-02-10T13:11:49.180Z"),

@@ -5,6 +5,9 @@
 import * as z from "zod/v3";
 
 export type ListRepositoryPermissionsRequest = {
+  /**
+   * Project ID. Missing or empty values return HTTP 400.
+   */
   projectId: string;
   idOrName: string;
   limit?: number | undefined;

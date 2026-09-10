@@ -461,6 +461,10 @@ export type TypeApiKey = {
    * The HTTPS resources the API key authenticates against.
    */
   serviceUrls?: Array<string> | undefined;
+  /**
+   * Markdown instructions shown to each user on the authorization screen, explaining how to obtain the key they should paste.
+   */
+  instructions?: string | undefined;
 };
 
 /**
@@ -1308,6 +1312,7 @@ export type TypeApiKey$Outbound = {
   subjectType?: string | undefined;
   values?: Array<Values$Outbound> | undefined;
   serviceUrls?: Array<string> | undefined;
+  instructions?: string | undefined;
 };
 
 /** @internal */
@@ -1319,6 +1324,7 @@ export const TypeApiKey$outboundSchema: z.ZodType<
   subjectType: ConnectConnectorCreateDataSubjectType$outboundSchema.optional(),
   values: z.array(z.lazy(() => Values$outboundSchema)).optional(),
   serviceUrls: z.array(z.string()).optional(),
+  instructions: z.string().optional(),
 });
 
 export function typeApiKeyToJSON(typeApiKey: TypeApiKey): string {

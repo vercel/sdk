@@ -1042,15 +1042,21 @@ export const PayloadWidget = {
   ObservabilityEdgeRequests: "observability-edge-requests",
   ObservabilityErrorRate: "observability-error-rate",
   ObservabilityFunctionInvocations: "observability-function-invocations",
+  Shortcut: "shortcut",
   SpeedInsightsCls: "speed-insights-cls",
   SpeedInsightsLcp: "speed-insights-lcp",
   SpeedInsightsRes: "speed-insights-res",
 } as const;
 export type PayloadWidget = ClosedEnum<typeof PayloadWidget>;
 
+export type Config = {
+  url: string;
+};
+
 export type ProjectCardWidgetPreferences = {
   projectId: string;
   widget: PayloadWidget;
+  config?: Config | undefined;
 };
 
 /**
@@ -1231,7 +1237,6 @@ export const UserEventPayload169Reason = {
   EnterpriseUnpaidInvoice: "ENTERPRISE_UNPAID_INVOICE",
   ExposureCapExceeded: "EXPOSURE_CAP_EXCEEDED",
   FairUseLimitsExceeded: "FAIR_USE_LIMITS_EXCEEDED",
-  HobbyAllocationPaused: "HOBBY_ALLOCATION_PAUSED",
   SubscriptionCanceled: "SUBSCRIPTION_CANCELED",
   SubscriptionExpired: "SUBSCRIPTION_EXPIRED",
   UnpaidInvoice: "UNPAID_INVOICE",
@@ -1286,100 +1291,10 @@ export type PayloadBlockedDueToOverageType = ClosedEnum<
   typeof PayloadBlockedDueToOverageType
 >;
 
-/**
- * Metered allocation whose included amount was fully consumed.
- */
-export const PayloadAllocation = {
-  AnalyticsUsage: "analyticsUsage",
-  Artifacts: "artifacts",
-  Bandwidth: "bandwidth",
-  BlobDataTransfer: "blobDataTransfer",
-  BlobTotalAdvancedRequests: "blobTotalAdvancedRequests",
-  BlobTotalAvgSizeInBytes: "blobTotalAvgSizeInBytes",
-  BlobTotalGetResponseObjectSizeInBytes:
-    "blobTotalGetResponseObjectSizeInBytes",
-  BlobTotalSimpleRequests: "blobTotalSimpleRequests",
-  ConnectDataTransfer: "connectDataTransfer",
-  DataCacheRead: "dataCacheRead",
-  DataCacheWrite: "dataCacheWrite",
-  EdgeConfigRead: "edgeConfigRead",
-  EdgeConfigWrite: "edgeConfigWrite",
-  EdgeFunctionExecutionUnits: "edgeFunctionExecutionUnits",
-  EdgeMiddlewareInvocations: "edgeMiddlewareInvocations",
-  EdgeRequest: "edgeRequest",
-  EdgeRequestAdditionalCpuDuration: "edgeRequestAdditionalCpuDuration",
-  ElasticConcurrencyBuildSlots: "elasticConcurrencyBuildSlots",
-  FastDataTransfer: "fastDataTransfer",
-  FastOriginTransfer: "fastOriginTransfer",
-  FluidCpuDuration: "fluidCpuDuration",
-  FluidDuration: "fluidDuration",
-  FunctionDuration: "functionDuration",
-  FunctionInvocation: "functionInvocation",
-  ImageOptimizationCacheRead: "imageOptimizationCacheRead",
-  ImageOptimizationCacheWrite: "imageOptimizationCacheWrite",
-  ImageOptimizationTransformation: "imageOptimizationTransformation",
-  LogDrainsVolume: "logDrainsVolume",
-  MonitoringMetric: "monitoringMetric",
-  ObservabilityEvent: "observabilityEvent",
-  OnDemandConcurrencyMinutes: "onDemandConcurrencyMinutes",
-  RuntimeCacheRead: "runtimeCacheRead",
-  RuntimeCacheWrite: "runtimeCacheWrite",
-  ServerlessFunctionExecution: "serverlessFunctionExecution",
-  SourceImages: "sourceImages",
-  WafOwaspExcessBytes: "wafOwaspExcessBytes",
-  WafOwaspRequests: "wafOwaspRequests",
-  WafRateLimitRequest: "wafRateLimitRequest",
-  WebAnalyticsEvent: "webAnalyticsEvent",
-} as const;
-/**
- * Metered allocation whose included amount was fully consumed.
- */
-export type PayloadAllocation = ClosedEnum<typeof PayloadAllocation>;
-
-/**
- * Allocations that were at or over 100% when the pause was applied.
- */
-export type PayloadTriggers = {
-  /**
-   * Metered allocation whose included amount was fully consumed.
-   */
-  allocation: PayloadAllocation;
-  /**
-   * Usage recorded for that allocation when the pause was applied.
-   */
-  usage: number;
-};
-
-/**
- * Present only when `reason` is `HOBBY_ALLOCATION_PAUSED`. Makes the pause self-describing for support without a separate lookup.
- */
-export type PayloadHobbyAllocationPause = {
-  /**
-   * Unix ms timestamp at which the pause is eligible to end. This is the single source of truth for when the pause ends. Never re-derive it by re-checking usage — usage keeps moving while a team is paused, and the pause duration is a fixed experiment parameter.
-   */
-  pausedUntil: number;
-  /**
-   * Unix ms timestamp of when the pause was applied.
-   */
-  pausedAt: number;
-  /**
-   * Allocations that were at or over 100% when the pause was applied.
-   */
-  triggers: Array<PayloadTriggers>;
-  /**
-   * Experiment cohort the owner was assigned to when the pause fired. Free-form so cohort naming stays owned by the assignment path.
-   */
-  cohort: string;
-};
-
 export type PayloadSoftBlock = {
   blockedAt: number;
   reason: UserEventPayload169Reason;
   blockedDueToOverageType?: PayloadBlockedDueToOverageType | undefined;
-  /**
-   * Present only when `reason` is `HOBBY_ALLOCATION_PAUSED`. Makes the pause self-describing for support without a separate lookup.
-   */
-  hobbyAllocationPause?: PayloadHobbyAllocationPause | undefined;
 };
 
 export const UserEventPayload169Role = {
@@ -1519,6 +1434,20 @@ export type Artifacts = {
 };
 
 export type Bandwidth = {
+  currentThreshold: number;
+  warningAt?: number | null | undefined;
+  blockedAt?: number | null | undefined;
+  blockGracePeriodStartedAt?: number | null | undefined;
+};
+
+export type BlobTotalAdvancedRequests = {
+  currentThreshold: number;
+  warningAt?: number | null | undefined;
+  blockedAt?: number | null | undefined;
+  blockGracePeriodStartedAt?: number | null | undefined;
+};
+
+export type BlobTotalAvgSizeInBytes = {
   currentThreshold: number;
   warningAt?: number | null | undefined;
   blockedAt?: number | null | undefined;
@@ -3572,6 +3501,22 @@ export const PayloadWidget$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(PayloadWidget);
 
 /** @internal */
+export const Config$inboundSchema: z.ZodType<Config, z.ZodTypeDef, unknown> = z
+  .object({
+    url: types.string(),
+  });
+
+export function configFromJSON(
+  jsonString: string,
+): SafeParseResult<Config, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Config$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Config' from JSON`,
+  );
+}
+
+/** @internal */
 export const ProjectCardWidgetPreferences$inboundSchema: z.ZodType<
   ProjectCardWidgetPreferences,
   z.ZodTypeDef,
@@ -3579,6 +3524,7 @@ export const ProjectCardWidgetPreferences$inboundSchema: z.ZodType<
 > = z.object({
   projectId: types.string(),
   widget: PayloadWidget$inboundSchema,
+  config: types.optional(z.lazy(() => Config$inboundSchema)),
 });
 
 export function projectCardWidgetPreferencesFromJSON(
@@ -3981,53 +3927,6 @@ export const PayloadBlockedDueToOverageType$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(PayloadBlockedDueToOverageType);
 
 /** @internal */
-export const PayloadAllocation$inboundSchema: z.ZodNativeEnum<
-  typeof PayloadAllocation
-> = z.nativeEnum(PayloadAllocation);
-
-/** @internal */
-export const PayloadTriggers$inboundSchema: z.ZodType<
-  PayloadTriggers,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  allocation: PayloadAllocation$inboundSchema,
-  usage: types.number(),
-});
-
-export function payloadTriggersFromJSON(
-  jsonString: string,
-): SafeParseResult<PayloadTriggers, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PayloadTriggers$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PayloadTriggers' from JSON`,
-  );
-}
-
-/** @internal */
-export const PayloadHobbyAllocationPause$inboundSchema: z.ZodType<
-  PayloadHobbyAllocationPause,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  pausedUntil: types.number(),
-  pausedAt: types.number(),
-  triggers: z.array(z.lazy(() => PayloadTriggers$inboundSchema)),
-  cohort: types.string(),
-});
-
-export function payloadHobbyAllocationPauseFromJSON(
-  jsonString: string,
-): SafeParseResult<PayloadHobbyAllocationPause, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PayloadHobbyAllocationPause$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PayloadHobbyAllocationPause' from JSON`,
-  );
-}
-
-/** @internal */
 export const PayloadSoftBlock$inboundSchema: z.ZodType<
   PayloadSoftBlock,
   z.ZodTypeDef,
@@ -4037,9 +3936,6 @@ export const PayloadSoftBlock$inboundSchema: z.ZodType<
   reason: UserEventPayload169Reason$inboundSchema,
   blockedDueToOverageType: types.optional(
     PayloadBlockedDueToOverageType$inboundSchema,
-  ),
-  hobbyAllocationPause: types.optional(
-    z.lazy(() => PayloadHobbyAllocationPause$inboundSchema),
   ),
 });
 
@@ -4236,5 +4132,49 @@ export function bandwidthFromJSON(
     jsonString,
     (x) => Bandwidth$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'Bandwidth' from JSON`,
+  );
+}
+
+/** @internal */
+export const BlobTotalAdvancedRequests$inboundSchema: z.ZodType<
+  BlobTotalAdvancedRequests,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  currentThreshold: types.number(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockedAt: z.nullable(types.number()).optional(),
+  blockGracePeriodStartedAt: z.nullable(types.number()).optional(),
+});
+
+export function blobTotalAdvancedRequestsFromJSON(
+  jsonString: string,
+): SafeParseResult<BlobTotalAdvancedRequests, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BlobTotalAdvancedRequests$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BlobTotalAdvancedRequests' from JSON`,
+  );
+}
+
+/** @internal */
+export const BlobTotalAvgSizeInBytes$inboundSchema: z.ZodType<
+  BlobTotalAvgSizeInBytes,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  currentThreshold: types.number(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockedAt: z.nullable(types.number()).optional(),
+  blockGracePeriodStartedAt: z.nullable(types.number()).optional(),
+});
+
+export function blobTotalAvgSizeInBytesFromJSON(
+  jsonString: string,
+): SafeParseResult<BlobTotalAvgSizeInBytes, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BlobTotalAvgSizeInBytes$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BlobTotalAvgSizeInBytes' from JSON`,
   );
 }

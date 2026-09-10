@@ -5,11 +5,11 @@
 ```typescript
 import { ResponseBodyTier } from "@vercel/sdk/models/getprojectsresponsebody.js";
 
-let value: ResponseBodyTier = "critical";
+let value: ResponseBodyTier = "priority";
 ```
 
 ## Values
 
 ```typescript
-"advanced" | "critical"
+"critical" | "priority"
 ```

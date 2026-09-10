@@ -230,6 +230,7 @@ export type CountPageviewsData1 = {
   isByok: string;
   spendAttribution: string;
   isPrivateModel: string;
+  isStreaming: string;
   isRequestZdr: string;
   hipaaRequested: string;
   quotaRequested: string;
@@ -581,6 +582,7 @@ export const CountPageviewsData1$inboundSchema: z.ZodType<
     isByok: types.string(),
     spendAttribution: types.string(),
     isPrivateModel: types.string(),
+    isStreaming: types.string(),
     isRequestZdr: types.string(),
     hipaaRequested: types.string(),
     quotaRequested: types.string(),

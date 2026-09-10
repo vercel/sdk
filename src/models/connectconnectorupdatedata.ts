@@ -455,6 +455,10 @@ export type ConnectConnectorUpdateDataTypeApiKey = {
    * Existing API key values to update.
    */
   toUpdate?: Array<ToUpdate> | undefined;
+  /**
+   * Markdown instructions shown to each user on the authorization screen, explaining how to obtain the key they should paste.
+   */
+  instructions?: string | undefined;
 };
 
 /**
@@ -1432,6 +1436,7 @@ export type ConnectConnectorUpdateDataTypeApiKey$Outbound = {
   toDelete?: Array<string> | undefined;
   toAdd?: Array<ToAdd$Outbound> | undefined;
   toUpdate?: Array<ToUpdate$Outbound> | undefined;
+  instructions?: string | undefined;
 };
 
 /** @internal */
@@ -1443,6 +1448,7 @@ export const ConnectConnectorUpdateDataTypeApiKey$outboundSchema: z.ZodType<
   toDelete: z.array(z.string()).optional(),
   toAdd: z.array(z.lazy(() => ToAdd$outboundSchema)).optional(),
   toUpdate: z.array(z.lazy(() => ToUpdate$outboundSchema)).optional(),
+  instructions: z.string().optional(),
 });
 
 export function connectConnectorUpdateDataTypeApiKeyToJSON(

@@ -360,8 +360,8 @@ export type UpdateProjectProjectsDeploymentPolicy = {
 };
 
 export const UpdateProjectTier = {
-  Advanced: "advanced",
   Critical: "critical",
+  Priority: "priority",
 } as const;
 export type UpdateProjectTier = ClosedEnum<typeof UpdateProjectTier>;
 

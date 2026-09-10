@@ -17,6 +17,10 @@ import {
   Artifacts$inboundSchema,
   Bandwidth,
   Bandwidth$inboundSchema,
+  BlobTotalAdvancedRequests,
+  BlobTotalAdvancedRequests$inboundSchema,
+  BlobTotalAvgSizeInBytes,
+  BlobTotalAvgSizeInBytes$inboundSchema,
   Credentials,
   Credentials$inboundSchema,
   EmailNotifications,
@@ -63,22 +67,8 @@ import {
   UserEventPayload169Type$inboundSchema,
   UserEventPayloadRemoteCaching,
   UserEventPayloadRemoteCaching$inboundSchema,
-} from "./bandwidth.js";
+} from "./blobtotalavgsizeinbytes.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-
-export type BlobTotalAdvancedRequests = {
-  currentThreshold: number;
-  warningAt?: number | null | undefined;
-  blockedAt?: number | null | undefined;
-  blockGracePeriodStartedAt?: number | null | undefined;
-};
-
-export type BlobTotalAvgSizeInBytes = {
-  currentThreshold: number;
-  warningAt?: number | null | undefined;
-  blockedAt?: number | null | undefined;
-  blockGracePeriodStartedAt?: number | null | undefined;
-};
 
 export type BlobTotalGetResponseObjectSizeInBytes = {
   currentThreshold: number;
@@ -1965,49 +1955,14 @@ export type OneHundredAndFortyNine = {
   emailDomain?: string | undefined;
 };
 
-/** @internal */
-export const BlobTotalAdvancedRequests$inboundSchema: z.ZodType<
-  BlobTotalAdvancedRequests,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  currentThreshold: types.number(),
-  warningAt: z.nullable(types.number()).optional(),
-  blockedAt: z.nullable(types.number()).optional(),
-  blockGracePeriodStartedAt: z.nullable(types.number()).optional(),
-});
+export type UserEventPayload148Team = {
+  id: string;
+  name?: string | undefined;
+};
 
-export function blobTotalAdvancedRequestsFromJSON(
-  jsonString: string,
-): SafeParseResult<BlobTotalAdvancedRequests, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => BlobTotalAdvancedRequests$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BlobTotalAdvancedRequests' from JSON`,
-  );
-}
-
-/** @internal */
-export const BlobTotalAvgSizeInBytes$inboundSchema: z.ZodType<
-  BlobTotalAvgSizeInBytes,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  currentThreshold: types.number(),
-  warningAt: z.nullable(types.number()).optional(),
-  blockedAt: z.nullable(types.number()).optional(),
-  blockGracePeriodStartedAt: z.nullable(types.number()).optional(),
-});
-
-export function blobTotalAvgSizeInBytesFromJSON(
-  jsonString: string,
-): SafeParseResult<BlobTotalAvgSizeInBytes, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => BlobTotalAvgSizeInBytes$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BlobTotalAvgSizeInBytes' from JSON`,
-  );
-}
+export type PayloadPreviousRule = {
+  email: string;
+};
 
 /** @internal */
 export const BlobTotalGetResponseObjectSizeInBytes$inboundSchema: z.ZodType<
@@ -2768,10 +2723,10 @@ export const OverageUsageAlerts$inboundSchema: z.ZodType<
   artifacts: types.optional(Artifacts$inboundSchema),
   bandwidth: types.optional(Bandwidth$inboundSchema),
   blobTotalAdvancedRequests: types.optional(
-    z.lazy(() => BlobTotalAdvancedRequests$inboundSchema),
+    BlobTotalAdvancedRequests$inboundSchema,
   ),
   blobTotalAvgSizeInBytes: types.optional(
-    z.lazy(() => BlobTotalAvgSizeInBytes$inboundSchema),
+    BlobTotalAvgSizeInBytes$inboundSchema,
   ),
   blobTotalGetResponseObjectSizeInBytes: types.optional(
     z.lazy(() => BlobTotalGetResponseObjectSizeInBytes$inboundSchema),
@@ -4808,5 +4763,44 @@ export function oneHundredAndFortyNineFromJSON(
     jsonString,
     (x) => OneHundredAndFortyNine$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'OneHundredAndFortyNine' from JSON`,
+  );
+}
+
+/** @internal */
+export const UserEventPayload148Team$inboundSchema: z.ZodType<
+  UserEventPayload148Team,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: types.string(),
+  name: types.optional(types.string()),
+});
+
+export function userEventPayload148TeamFromJSON(
+  jsonString: string,
+): SafeParseResult<UserEventPayload148Team, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UserEventPayload148Team$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventPayload148Team' from JSON`,
+  );
+}
+
+/** @internal */
+export const PayloadPreviousRule$inboundSchema: z.ZodType<
+  PayloadPreviousRule,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  email: types.string(),
+});
+
+export function payloadPreviousRuleFromJSON(
+  jsonString: string,
+): SafeParseResult<PayloadPreviousRule, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PayloadPreviousRule$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PayloadPreviousRule' from JSON`,
   );
 }

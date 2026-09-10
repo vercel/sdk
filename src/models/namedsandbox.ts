@@ -94,6 +94,7 @@ export type NetworkPolicy = {
 export const NamedSandboxMode = {
   ReadOnly: "read-only",
   ReadWrite: "read-write",
+  Snapshot: "snapshot",
 } as const;
 export type NamedSandboxMode = ClosedEnum<typeof NamedSandboxMode>;
 
@@ -173,6 +174,10 @@ export type NamedSandbox = {
    * Network policy configuration.
    */
   networkPolicy?: NetworkPolicy | undefined;
+  /**
+   * The Connect network id for the target Secure Compute private network.
+   */
+  networkId?: string | undefined;
   /**
    * Cumulative egress bytes across all sandbox runs.
    */
@@ -320,6 +325,7 @@ export const NamedSandbox$inboundSchema: z.ZodType<
     z.lazy(() => KeepLastSnapshots$inboundSchema),
   ),
   networkPolicy: types.optional(z.lazy(() => NetworkPolicy$inboundSchema)),
+  networkId: types.optional(types.string()),
   totalEgressBytes: types.optional(types.number()),
   totalIngressBytes: types.optional(types.number()),
   totalActiveCpuDurationMs: types.optional(types.number()),

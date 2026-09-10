@@ -24,23 +24,12 @@ import {
   CreateIntegrationStoreDirectProperties8$inboundSchema,
   CreateIntegrationStoreDirectProperties9,
   CreateIntegrationStoreDirectProperties9$inboundSchema,
-  CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema7Type,
-  CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema7Type$inboundSchema,
+  CreateIntegrationStoreDirectPropertiesIntegrationsItems,
+  CreateIntegrationStoreDirectPropertiesIntegrationsItems$inboundSchema,
   CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreType,
   CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreType$inboundSchema,
-} from "./createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema7type.js";
+} from "./createintegrationstoredirectpropertiesintegrationsitems.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-
-export type CreateIntegrationStoreDirectPropertiesIntegrationsItems = {
-  type:
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema7Type;
-  default?: string | undefined;
-  enum?: Array<string> | undefined;
-  maxLength?: number | undefined;
-  minLength?: number | undefined;
-  pattern?: string | undefined;
-  description?: string | undefined;
-};
 
 export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreUiControl =
   {
@@ -1355,37 +1344,10 @@ export type CreateIntegrationStoreDirectAuthentication = {
   appUrls?: Array<CreateIntegrationStoreDirectAppUrls> | undefined;
 };
 
-/** @internal */
-export const CreateIntegrationStoreDirectPropertiesIntegrationsItems$inboundSchema:
-  z.ZodType<
-    CreateIntegrationStoreDirectPropertiesIntegrationsItems,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    type:
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema7Type$inboundSchema,
-    default: types.optional(types.string()),
-    enum: types.optional(z.array(types.string())),
-    maxLength: types.optional(types.number()),
-    minLength: types.optional(types.number()),
-    pattern: types.optional(types.string()),
-    description: types.optional(types.string()),
-  });
-
-export function createIntegrationStoreDirectPropertiesIntegrationsItemsFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  CreateIntegrationStoreDirectPropertiesIntegrationsItems,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsItems$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsItems' from JSON`,
-  );
-}
+export type CreateIntegrationStoreDirectProtocolSettings = {
+  experimentation?: CreateIntegrationStoreDirectExperimentation | undefined;
+  authentication?: CreateIntegrationStoreDirectAuthentication | undefined;
+};
 
 /** @internal */
 export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreUiControl$inboundSchema:
@@ -1832,9 +1794,7 @@ export const CreateIntegrationStoreDirectProperties7$inboundSchema: z.ZodType<
 > = z.object({
   type:
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreType$inboundSchema,
-  items: z.lazy(() =>
-    CreateIntegrationStoreDirectPropertiesIntegrationsItems$inboundSchema
-  ),
+  items: CreateIntegrationStoreDirectPropertiesIntegrationsItems$inboundSchema,
   "ui:control":
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreUiControl$inboundSchema,
   "ui:options": z.array(
@@ -4922,5 +4882,36 @@ export function createIntegrationStoreDirectAuthenticationFromJSON(
         JSON.parse(x),
       ),
     `Failed to parse 'CreateIntegrationStoreDirectAuthentication' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateIntegrationStoreDirectProtocolSettings$inboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectProtocolSettings,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    experimentation: types.optional(
+      z.lazy(() => CreateIntegrationStoreDirectExperimentation$inboundSchema),
+    ),
+    authentication: types.optional(
+      z.lazy(() => CreateIntegrationStoreDirectAuthentication$inboundSchema),
+    ),
+  });
+
+export function createIntegrationStoreDirectProtocolSettingsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateIntegrationStoreDirectProtocolSettings,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateIntegrationStoreDirectProtocolSettings$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateIntegrationStoreDirectProtocolSettings' from JSON`,
   );
 }

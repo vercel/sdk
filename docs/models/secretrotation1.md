@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { SecretRotation1 } from "@vercel/sdk/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema7type.js";
+import { SecretRotation1 } from "@vercel/sdk/models/createintegrationstoredirectpropertiesintegrationsitems.js";
 
 let value: SecretRotation1 = {
   maxDelayHours: 6492.13,

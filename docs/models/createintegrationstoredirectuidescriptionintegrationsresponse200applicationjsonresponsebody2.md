@@ -5,7 +5,7 @@
 ```typescript
 import {
   CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBody2,
-} from "@vercel/sdk/models/createintegrationstoredirectauthentication.js";
+} from "@vercel/sdk/models/createintegrationstoredirectprotocolsettings.js";
 
 let value:
   CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBody2 =

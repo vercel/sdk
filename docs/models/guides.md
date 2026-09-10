@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Guides } from "@vercel/sdk/models/createintegrationstoredirectauthentication.js";
+import { Guides } from "@vercel/sdk/models/createintegrationstoredirectprotocolsettings.js";
 
 let value: Guides = {
   framework: "<value>",

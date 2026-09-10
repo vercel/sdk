@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Group } from "@vercel/sdk/models/bandwidth.js";
+import { Group } from "@vercel/sdk/models/blobtotalavgsizeinbytes.js";
 
 let value: Group = {
   id: "<id>",

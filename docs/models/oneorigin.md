@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { OneOrigin } from "@vercel/sdk/models/bandwidth.js";
+import { OneOrigin } from "@vercel/sdk/models/blobtotalavgsizeinbytes.js";
 
 let value: OneOrigin = "chatgpt";
 ```

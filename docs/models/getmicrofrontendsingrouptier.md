@@ -5,11 +5,11 @@
 ```typescript
 import { GetMicrofrontendsInGroupTier } from "@vercel/sdk/models/getmicrofrontendsingroupinternalroutes2.js";
 
-let value: GetMicrofrontendsInGroupTier = "critical";
+let value: GetMicrofrontendsInGroupTier = "priority";
 ```
 
 ## Values
 
 ```typescript
-"advanced" | "critical"
+"critical" | "priority"
 ```

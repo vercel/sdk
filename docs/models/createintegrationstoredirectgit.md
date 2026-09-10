@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateIntegrationStoreDirectGit } from "@vercel/sdk/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema7type.js";
+import { CreateIntegrationStoreDirectGit } from "@vercel/sdk/models/createintegrationstoredirectpropertiesintegrationsitems.js";
 
 let value: CreateIntegrationStoreDirectGit = {
   providers: [

@@ -1393,8 +1393,8 @@ export type Src2 = {
 export type Src = string | Src2;
 
 export const TierRequirement = {
-  Advanced: "advanced",
   Critical: "critical",
+  Priority: "priority",
 } as const;
 export type TierRequirement = ClosedEnum<typeof TierRequirement>;
 

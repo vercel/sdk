@@ -220,8 +220,8 @@ export type ResponseBodyOidcTokenConfig = {
 };
 
 export const ResponseBodyTier = {
-  Advanced: "advanced",
   Critical: "critical",
+  Priority: "priority",
 } as const;
 export type ResponseBodyTier = ClosedEnum<typeof ResponseBodyTier>;
 

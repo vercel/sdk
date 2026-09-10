@@ -8,14 +8,16 @@ import { GetStorageStoresByIdActions } from "@vercel/sdk/models/getstoragestores
 let value: GetStorageStoresByIdActions = {
   slug: "<value>",
   environments: [
-    "preview",
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
   ],
 };
 ```
 
 ## Fields
 
-| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `slug`                                                                                     | *string*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
-| `environments`                                                                             | [models.GetStorageStoresByIdEnvironments](../models/getstoragestoresbyidenvironments.md)[] | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `slug`             | *string*           | :heavy_check_mark: | N/A                |
+| `environments`     | *string*[]         | :heavy_check_mark: | N/A                |

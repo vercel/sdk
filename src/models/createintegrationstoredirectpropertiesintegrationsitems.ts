@@ -177,18 +177,9 @@ export type CreateIntegrationStoreDirectFramework = ClosedEnum<
   typeof CreateIntegrationStoreDirectFramework
 >;
 
-export const CreateIntegrationStoreDirectEnvironments = {
-  Development: "development",
-  Preview: "preview",
-  Production: "production",
-} as const;
-export type CreateIntegrationStoreDirectEnvironments = ClosedEnum<
-  typeof CreateIntegrationStoreDirectEnvironments
->;
-
 export type CreateIntegrationStoreDirectActions = {
   slug: string;
-  environments: Array<CreateIntegrationStoreDirectEnvironments>;
+  environments: Array<string>;
 };
 
 export type CreateIntegrationStoreDirectDeployments = {
@@ -1391,6 +1382,17 @@ export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applica
     typeof CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema7Type
   >;
 
+export type CreateIntegrationStoreDirectPropertiesIntegrationsItems = {
+  type:
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema7Type;
+  default?: string | undefined;
+  enum?: Array<string> | undefined;
+  maxLength?: number | undefined;
+  minLength?: number | undefined;
+  pattern?: string | undefined;
+  description?: string | undefined;
+};
+
 /** @internal */
 export type CreateIntegrationStoreDirectMetadata$Outbound =
   | string
@@ -1523,18 +1525,13 @@ export const CreateIntegrationStoreDirectFramework$inboundSchema:
   );
 
 /** @internal */
-export const CreateIntegrationStoreDirectEnvironments$inboundSchema:
-  z.ZodNativeEnum<typeof CreateIntegrationStoreDirectEnvironments> = z
-    .nativeEnum(CreateIntegrationStoreDirectEnvironments);
-
-/** @internal */
 export const CreateIntegrationStoreDirectActions$inboundSchema: z.ZodType<
   CreateIntegrationStoreDirectActions,
   z.ZodTypeDef,
   unknown
 > = z.object({
   slug: types.string(),
-  environments: z.array(CreateIntegrationStoreDirectEnvironments$inboundSchema),
+  environments: z.array(types.string()),
 });
 
 export function createIntegrationStoreDirectActionsFromJSON(
@@ -4945,3 +4942,35 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
   > = z.nativeEnum(
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema7Type,
   );
+
+/** @internal */
+export const CreateIntegrationStoreDirectPropertiesIntegrationsItems$inboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectPropertiesIntegrationsItems,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    type:
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema7Type$inboundSchema,
+    default: types.optional(types.string()),
+    enum: types.optional(z.array(types.string())),
+    maxLength: types.optional(types.number()),
+    minLength: types.optional(types.number()),
+    pattern: types.optional(types.string()),
+    description: types.optional(types.string()),
+  });
+
+export function createIntegrationStoreDirectPropertiesIntegrationsItemsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateIntegrationStoreDirectPropertiesIntegrationsItems,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateIntegrationStoreDirectPropertiesIntegrationsItems$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsItems' from JSON`,
+  );
+}

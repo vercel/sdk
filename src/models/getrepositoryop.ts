@@ -9,6 +9,9 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 import { VcrRepository, VcrRepository$inboundSchema } from "./vcrrepository.js";
 
 export type GetRepositoryRequest = {
+  /**
+   * Project ID. Missing or empty values return HTTP 400.
+   */
   projectId: string;
   idOrName: string;
   /**

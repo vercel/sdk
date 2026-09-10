@@ -38,6 +38,9 @@ export type ListRepositoryTagsQueryParamSortOrder = ClosedEnum<
 >;
 
 export type ListRepositoryTagsRequest = {
+  /**
+   * Project ID. Missing or empty values return HTTP 400.
+   */
   projectId: string;
   idOrName: string;
   limit?: number | undefined;

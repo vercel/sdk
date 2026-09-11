@@ -113,6 +113,7 @@ const value: models.GetProjectLink5 = {
 const value: models.GetProjectLink6 = {
   org: "<value>",
   repo: "<value>",
+  repoId: "<id>",
   type: "vercel",
   deployHooks: [],
   gitCredentialId: "<id>",
@@ -126,6 +127,7 @@ const value: models.GetProjectLink6 = {
 const value: models.GetProjectLink7 = {
   org: "<value>",
   repo: "<value>",
+  repoId: "<id>",
   type: "v0",
   deployHooks: [
     {

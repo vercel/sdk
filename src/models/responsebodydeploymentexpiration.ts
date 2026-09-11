@@ -279,6 +279,7 @@ export type GetProjectsSrc2 = {
 export type ResponseBodySrc = string | GetProjectsSrc2;
 
 export const ResponseBodyTierRequirement = {
+  Advanced: "advanced",
   Critical: "critical",
   Priority: "priority",
 } as const;
@@ -720,6 +721,7 @@ export type GetProjectsResponseBodyOidcTokenConfig = {
 };
 
 export const GetProjectsResponseBodyTier = {
+  Advanced: "advanced",
   Critical: "critical",
   Priority: "priority",
 } as const;

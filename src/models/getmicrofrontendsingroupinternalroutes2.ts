@@ -1299,6 +1299,7 @@ export type GetMicrofrontendsInGroupDeploymentPolicy = {
 };
 
 export const GetMicrofrontendsInGroupTier = {
+  Advanced: "advanced",
   Critical: "critical",
   Priority: "priority",
 } as const;

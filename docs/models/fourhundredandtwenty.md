@@ -5,17 +5,28 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndTwenty } from "@vercel/sdk/models/fourhundredandsix.js";
+import { FourHundredAndTwenty } from "@vercel/sdk/models/fourhundredandseven.js";
 
 let value: FourHundredAndTwenty = {
-  email: "Caleigh17@hotmail.com",
-  prevEmail: "<value>",
+  provider: "google",
+  providerSubjectId: "<id>",
+  outcome: "linking-required",
+  decision: {
+    authoritative: true,
+    basis: "workspace-mx",
+    emailDomain: "<value>",
+    emailVerified: true,
+    hostedDomainMatch: true,
+    mxOutcome: "google",
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `email`            | *string*           | :heavy_check_mark: | N/A                |
-| `prevEmail`        | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `provider`                                                                     | [models.UserEventPayload420Provider](../models/usereventpayload420provider.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `providerSubjectId`                                                            | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `outcome`                                                                      | [models.PayloadOutcome](../models/payloadoutcome.md)                           | :heavy_check_mark:                                                             | N/A                                                                            |
+| `decision`                                                                     | [models.PayloadDecision](../models/payloaddecision.md)                         | :heavy_check_mark:                                                             | N/A                                                                            |

@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSeventy } from "@vercel/sdk/models/usereventpayload338budget.js";
+import { ThreeHundredAndSeventy } from "@vercel/sdk/models/usereventpayload339budget.js";
 
 let value: ThreeHundredAndSeventy = {
   entitlement: "<value>",
@@ -18,8 +18,7 @@ let value: ThreeHundredAndSeventy = {
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `entitlement`                                                          | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
-| `user`                                                                 | [models.UserEventPayload370User](../models/usereventpayload370user.md) | :heavy_check_mark:                                                     | N/A                                                                    |
-| `previousCanceledAt`                                                   | *string*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `entitlement`                                                    | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `user`                                                           | [models.UserEventPayloadUser](../models/usereventpayloaduser.md) | :heavy_check_mark:                                               | N/A                                                              |

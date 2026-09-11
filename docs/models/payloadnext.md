@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadNext } from "@vercel/sdk/models/blobtotalavgsizeinbytes.js";
+import { PayloadNext } from "@vercel/sdk/models/artifacts.js";
 
 let value: PayloadNext = {
   roles: {},

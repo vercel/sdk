@@ -76,6 +76,10 @@ export type SoftBlock = {
   blockedAt: number;
   reason: Reason;
   blockedDueToOverageType?: BlockedDueToOverageType | undefined;
+  /**
+   * Since September 2026. Set only by `billing-usage-alerts` for usage plans with a `blockDurationMs`; its presence marks a pause that expires on its own.
+   */
+  unpauseAt?: number | undefined;
 };
 
 /**
@@ -519,6 +523,7 @@ export const SoftBlock$inboundSchema: z.ZodType<
   blockedDueToOverageType: types.optional(
     BlockedDueToOverageType$inboundSchema,
   ),
+  unpauseAt: types.optional(types.number()),
 });
 
 export function softBlockFromJSON(

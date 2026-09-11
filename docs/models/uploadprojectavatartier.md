@@ -5,11 +5,11 @@
 ```typescript
 import { UploadProjectAvatarTier } from "@vercel/sdk/models/uploadprojectavatarinternalroutes1.js";
 
-let value: UploadProjectAvatarTier = "critical";
+let value: UploadProjectAvatarTier = "advanced";
 ```
 
 ## Values
 
 ```typescript
-"critical" | "priority"
+"advanced" | "critical" | "priority"
 ```

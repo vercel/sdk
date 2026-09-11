@@ -8,6 +8,8 @@ The payload of the event, if requested.
 import { TwoHundredAndTwentyThree } from "@vercel/sdk/models/siftroute.js";
 
 let value: TwoHundredAndTwentyThree = {
+  projectId: "<id>",
+  projectName: "<value>",
   previous: {},
   next: {},
 };
@@ -17,5 +19,7 @@ let value: TwoHundredAndTwentyThree = {
 
 | Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
 | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
 | `previous`                                                                     | [models.UserEventPayload223Previous](../models/usereventpayload223previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
 | `next`                                                                         | [models.UserEventPayload223Next](../models/usereventpayload223next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |

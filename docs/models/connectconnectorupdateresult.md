@@ -13,7 +13,7 @@ let value: ConnectConnectorUpdateResult = {
     uid: "<id>",
     createdAt: 5474.56,
     updatedAt: 2563.14,
-    type: "discord",
+    type: "custom",
     service: "<value>",
     name: "<value>",
     displayName: "Baylee_Champlin",

@@ -99,6 +99,7 @@ const value: models.UploadProjectAvatarLink5 = {
 const value: models.UploadProjectAvatarLink6 = {
   org: "<value>",
   repo: "<value>",
+  repoId: "<id>",
   type: "vercel",
   deployHooks: [
     {
@@ -119,6 +120,7 @@ const value: models.UploadProjectAvatarLink6 = {
 const value: models.UploadProjectAvatarLink7 = {
   org: "<value>",
   repo: "<value>",
+  repoId: "<id>",
   type: "v0",
   deployHooks: [],
   gitCredentialId: "<id>",

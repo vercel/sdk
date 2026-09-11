@@ -12,7 +12,7 @@ let value: ConnectConnector = {
   uid: "<id>",
   createdAt: 636.06,
   updatedAt: 7440.54,
-  type: "microsoft-teams",
+  type: "microsoft-entra",
   service: "<value>",
   name: "<value>",
   displayName: "Rogers.Witting29",

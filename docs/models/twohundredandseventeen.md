@@ -9,8 +9,8 @@ import { TwoHundredAndSeventeen } from "@vercel/sdk/models/siftroute.js";
 
 let value: TwoHundredAndSeventeen = {
   projectId: "<id>",
-  type: "connectSrc",
-  resourceUrl: "https://male-tenant.org/",
+  type: "header",
+  headerName: "<value>",
 };
 ```
 
@@ -20,4 +20,4 @@ let value: TwoHundredAndSeventeen = {
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | `projectId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
 | `type`                                                                 | [models.UserEventPayload217Type](../models/usereventpayload217type.md) | :heavy_check_mark:                                                     | N/A                                                                    |
-| `resourceUrl`                                                          | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `headerName`                                                           | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |

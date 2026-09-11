@@ -1554,6 +1554,7 @@ export type CreateProjectDeploymentPolicy = {
 };
 
 export const CreateProjectTier = {
+  Advanced: "advanced",
   Critical: "critical",
   Priority: "priority",
 } as const;

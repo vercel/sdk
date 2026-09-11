@@ -1235,6 +1235,7 @@ export type GetProjectDeploymentPolicy = {
 };
 
 export const GetProjectTier = {
+  Advanced: "advanced",
   Critical: "critical",
   Priority: "priority",
 } as const;

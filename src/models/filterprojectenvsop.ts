@@ -62,6 +62,25 @@ export type FilterProjectEnvsRequest = {
   slug?: string | undefined;
 };
 
+export const FilterProjectEnvsResponseBodyProjectsSecurityIssues = {
+  FlagsSecretNeedsSplit: "flags-secret-needs-split",
+  ReadableSecret: "readable-secret",
+} as const;
+export type FilterProjectEnvsResponseBodyProjectsSecurityIssues = ClosedEnum<
+  typeof FilterProjectEnvsResponseBodyProjectsSecurityIssues
+>;
+
+export const FilterProjectEnvsResponseBodyProjectsResponse200Type = {
+  Encrypted: "encrypted",
+  Plain: "plain",
+  Secret: "secret",
+  Sensitive: "sensitive",
+  System: "system",
+} as const;
+export type FilterProjectEnvsResponseBodyProjectsResponse200Type = ClosedEnum<
+  typeof FilterProjectEnvsResponseBodyProjectsResponse200Type
+>;
+
 export const FilterProjectEnvsTargetProjectsResponse2 = {
   Development: "development",
   Preview: "preview",
@@ -83,17 +102,6 @@ export type FilterProjectEnvsTargetProjectsResponse1 = ClosedEnum<
 export type FilterProjectEnvsResponseBodyProjectsResponseTarget =
   | Array<FilterProjectEnvsTargetProjectsResponse1>
   | FilterProjectEnvsTargetProjectsResponse2;
-
-export const FilterProjectEnvsResponseBodyProjectsResponse200Type = {
-  Encrypted: "encrypted",
-  Plain: "plain",
-  Secret: "secret",
-  Sensitive: "sensitive",
-  System: "system",
-} as const;
-export type FilterProjectEnvsResponseBodyProjectsResponse200Type = ClosedEnum<
-  typeof FilterProjectEnvsResponseBodyProjectsResponse200Type
->;
 
 /**
  * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
@@ -237,11 +245,23 @@ export type FilterProjectEnvsResponseBodyProjectsInternalContentHint = {
 };
 
 export type ResponseBodyEnvs = {
+  securityIssues: Array<FilterProjectEnvsResponseBodyProjectsSecurityIssues>;
+  type: FilterProjectEnvsResponseBodyProjectsResponse200Type;
+  value: string;
+  edgeConfigId?: string | null | undefined;
+  edgeConfigTokenId?: string | null | undefined;
+  createdAt?: number | undefined;
+  updatedAt?: number | undefined;
+  system?: boolean | undefined;
+  id?: string | undefined;
+  key: string;
   target?:
     | Array<FilterProjectEnvsTargetProjectsResponse1>
     | FilterProjectEnvsTargetProjectsResponse2
     | undefined;
-  type: FilterProjectEnvsResponseBodyProjectsResponse200Type;
+  gitBranch?: string | undefined;
+  createdBy?: string | null | undefined;
+  updatedBy?: string | null | undefined;
   /**
    * This is used to identify variables that have been migrated from type secret to sensitive.
    */
@@ -251,22 +271,11 @@ export type ResponseBodyEnvs = {
    */
   legacyValue?: string | undefined;
   decrypted?: boolean | undefined;
-  value: string;
-  vsmValue?: string | undefined;
-  id?: string | undefined;
-  key: string;
   configurationId?: string | null | undefined;
-  createdAt?: number | undefined;
-  updatedAt?: number | undefined;
-  createdBy?: string | null | undefined;
-  updatedBy?: string | null | undefined;
-  gitBranch?: string | undefined;
   /**
    * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
    */
   visibility?: FilterProjectEnvsResponseBodyProjectsVisibility | undefined;
-  edgeConfigId?: string | null | undefined;
-  edgeConfigTokenId?: string | null | undefined;
   contentHint?:
     | FilterProjectEnvsContentHintProjectsResponse1
     | FilterProjectEnvsContentHintProjectsResponse2
@@ -296,7 +305,6 @@ export type ResponseBodyEnvs = {
     | undefined;
   comment?: string | undefined;
   customEnvironmentIds?: Array<string> | undefined;
-  system?: boolean | undefined;
 };
 
 /**
@@ -306,6 +314,25 @@ export type FilterProjectEnvsResponseBody3 = {
   envs: Array<ResponseBodyEnvs>;
   hiddenProductionEnvCount: number;
 };
+
+export const FilterProjectEnvsResponseBodySecurityIssues = {
+  FlagsSecretNeedsSplit: "flags-secret-needs-split",
+  ReadableSecret: "readable-secret",
+} as const;
+export type FilterProjectEnvsResponseBodySecurityIssues = ClosedEnum<
+  typeof FilterProjectEnvsResponseBodySecurityIssues
+>;
+
+export const FilterProjectEnvsResponseBodyProjectsResponseType = {
+  Encrypted: "encrypted",
+  Plain: "plain",
+  Secret: "secret",
+  Sensitive: "sensitive",
+  System: "system",
+} as const;
+export type FilterProjectEnvsResponseBodyProjectsResponseType = ClosedEnum<
+  typeof FilterProjectEnvsResponseBodyProjectsResponseType
+>;
 
 export const FilterProjectEnvsTargetProjects2 = {
   Development: "development",
@@ -328,17 +355,6 @@ export type FilterProjectEnvsTargetProjects1 = ClosedEnum<
 export type FilterProjectEnvsResponseBodyProjectsTarget =
   | Array<FilterProjectEnvsTargetProjects1>
   | FilterProjectEnvsTargetProjects2;
-
-export const FilterProjectEnvsResponseBodyProjectsResponseType = {
-  Encrypted: "encrypted",
-  Plain: "plain",
-  Secret: "secret",
-  Sensitive: "sensitive",
-  System: "system",
-} as const;
-export type FilterProjectEnvsResponseBodyProjectsResponseType = ClosedEnum<
-  typeof FilterProjectEnvsResponseBodyProjectsResponseType
->;
 
 /**
  * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
@@ -482,11 +498,23 @@ export type FilterProjectEnvsResponseBodyInternalContentHint = {
 };
 
 export type Envs = {
+  securityIssues: Array<FilterProjectEnvsResponseBodySecurityIssues>;
+  type: FilterProjectEnvsResponseBodyProjectsResponseType;
+  value: string;
+  edgeConfigId?: string | null | undefined;
+  edgeConfigTokenId?: string | null | undefined;
+  createdAt?: number | undefined;
+  updatedAt?: number | undefined;
+  system?: boolean | undefined;
+  id?: string | undefined;
+  key: string;
   target?:
     | Array<FilterProjectEnvsTargetProjects1>
     | FilterProjectEnvsTargetProjects2
     | undefined;
-  type: FilterProjectEnvsResponseBodyProjectsResponseType;
+  gitBranch?: string | undefined;
+  createdBy?: string | null | undefined;
+  updatedBy?: string | null | undefined;
   /**
    * This is used to identify variables that have been migrated from type secret to sensitive.
    */
@@ -496,22 +524,11 @@ export type Envs = {
    */
   legacyValue?: string | undefined;
   decrypted?: boolean | undefined;
-  value: string;
-  vsmValue?: string | undefined;
-  id?: string | undefined;
-  key: string;
   configurationId?: string | null | undefined;
-  createdAt?: number | undefined;
-  updatedAt?: number | undefined;
-  createdBy?: string | null | undefined;
-  updatedBy?: string | null | undefined;
-  gitBranch?: string | undefined;
   /**
    * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
    */
   visibility?: FilterProjectEnvsResponseBodyVisibility | undefined;
-  edgeConfigId?: string | null | undefined;
-  edgeConfigTokenId?: string | null | undefined;
   contentHint?:
     | FilterProjectEnvsContentHintProjects1
     | FilterProjectEnvsContentHintProjects2
@@ -541,7 +558,6 @@ export type Envs = {
     | undefined;
   comment?: string | undefined;
   customEnvironmentIds?: Array<string> | undefined;
-  system?: boolean | undefined;
 };
 
 export type FilterProjectEnvsResponseBody2 = {
@@ -551,6 +567,25 @@ export type FilterProjectEnvsResponseBody2 = {
    */
   pagination: Pagination;
 };
+
+export const ResponseBodySecurityIssues = {
+  FlagsSecretNeedsSplit: "flags-secret-needs-split",
+  ReadableSecret: "readable-secret",
+} as const;
+export type ResponseBodySecurityIssues = ClosedEnum<
+  typeof ResponseBodySecurityIssues
+>;
+
+export const FilterProjectEnvsResponseBodyType = {
+  Encrypted: "encrypted",
+  Plain: "plain",
+  Secret: "secret",
+  Sensitive: "sensitive",
+  System: "system",
+} as const;
+export type FilterProjectEnvsResponseBodyType = ClosedEnum<
+  typeof FilterProjectEnvsResponseBodyType
+>;
 
 export const FilterProjectEnvsTarget2 = {
   Development: "development",
@@ -573,17 +608,6 @@ export type FilterProjectEnvsTarget1 = ClosedEnum<
 export type FilterProjectEnvsResponseBodyTarget =
   | Array<FilterProjectEnvsTarget1>
   | FilterProjectEnvsTarget2;
-
-export const FilterProjectEnvsResponseBodyType = {
-  Encrypted: "encrypted",
-  Plain: "plain",
-  Secret: "secret",
-  Sensitive: "sensitive",
-  System: "system",
-} as const;
-export type FilterProjectEnvsResponseBodyType = ClosedEnum<
-  typeof FilterProjectEnvsResponseBodyType
->;
 
 /**
  * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
@@ -723,11 +747,23 @@ export type ResponseBodyInternalContentHint = {
 };
 
 export type FilterProjectEnvsResponseBody1 = {
+  securityIssues: Array<ResponseBodySecurityIssues>;
+  type: FilterProjectEnvsResponseBodyType;
+  value: string;
+  edgeConfigId?: string | null | undefined;
+  edgeConfigTokenId?: string | null | undefined;
+  createdAt?: number | undefined;
+  updatedAt?: number | undefined;
+  system?: boolean | undefined;
+  id?: string | undefined;
+  key: string;
   target?:
     | Array<FilterProjectEnvsTarget1>
     | FilterProjectEnvsTarget2
     | undefined;
-  type: FilterProjectEnvsResponseBodyType;
+  gitBranch?: string | undefined;
+  createdBy?: string | null | undefined;
+  updatedBy?: string | null | undefined;
   /**
    * This is used to identify variables that have been migrated from type secret to sensitive.
    */
@@ -737,22 +773,11 @@ export type FilterProjectEnvsResponseBody1 = {
    */
   legacyValue?: string | undefined;
   decrypted?: boolean | undefined;
-  value: string;
-  vsmValue?: string | undefined;
-  id?: string | undefined;
-  key: string;
   configurationId?: string | null | undefined;
-  createdAt?: number | undefined;
-  updatedAt?: number | undefined;
-  createdBy?: string | null | undefined;
-  updatedBy?: string | null | undefined;
-  gitBranch?: string | undefined;
   /**
    * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
    */
   visibility?: ResponseBodyVisibility | undefined;
-  edgeConfigId?: string | null | undefined;
-  edgeConfigTokenId?: string | null | undefined;
   contentHint?:
     | FilterProjectEnvsContentHint1
     | FilterProjectEnvsContentHint2
@@ -779,7 +804,6 @@ export type FilterProjectEnvsResponseBody1 = {
   internalContentHint?: ResponseBodyInternalContentHint | null | undefined;
   comment?: string | undefined;
   customEnvironmentIds?: Array<string> | undefined;
-  system?: boolean | undefined;
 };
 
 /**
@@ -831,6 +855,16 @@ export function filterProjectEnvsRequestToJSON(
 }
 
 /** @internal */
+export const FilterProjectEnvsResponseBodyProjectsSecurityIssues$inboundSchema:
+  z.ZodNativeEnum<typeof FilterProjectEnvsResponseBodyProjectsSecurityIssues> =
+    z.nativeEnum(FilterProjectEnvsResponseBodyProjectsSecurityIssues);
+
+/** @internal */
+export const FilterProjectEnvsResponseBodyProjectsResponse200Type$inboundSchema:
+  z.ZodNativeEnum<typeof FilterProjectEnvsResponseBodyProjectsResponse200Type> =
+    z.nativeEnum(FilterProjectEnvsResponseBodyProjectsResponse200Type);
+
+/** @internal */
 export const FilterProjectEnvsTargetProjectsResponse2$inboundSchema:
   z.ZodNativeEnum<typeof FilterProjectEnvsTargetProjectsResponse2> = z
     .nativeEnum(FilterProjectEnvsTargetProjectsResponse2);
@@ -866,11 +900,6 @@ export function filterProjectEnvsResponseBodyProjectsResponseTargetFromJSON(
     `Failed to parse 'FilterProjectEnvsResponseBodyProjectsResponseTarget' from JSON`,
   );
 }
-
-/** @internal */
-export const FilterProjectEnvsResponseBodyProjectsResponse200Type$inboundSchema:
-  z.ZodNativeEnum<typeof FilterProjectEnvsResponseBodyProjectsResponse200Type> =
-    z.nativeEnum(FilterProjectEnvsResponseBodyProjectsResponse200Type);
 
 /** @internal */
 export const FilterProjectEnvsResponseBodyProjectsVisibility$inboundSchema:
@@ -1422,31 +1451,34 @@ export const ResponseBodyEnvs$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  securityIssues: z.array(
+    FilterProjectEnvsResponseBodyProjectsSecurityIssues$inboundSchema,
+  ),
+  type: FilterProjectEnvsResponseBodyProjectsResponse200Type$inboundSchema,
+  value: types.string(),
+  edgeConfigId: z.nullable(types.string()).optional(),
+  edgeConfigTokenId: z.nullable(types.string()).optional(),
+  createdAt: types.optional(types.number()),
+  updatedAt: types.optional(types.number()),
+  system: types.optional(types.boolean()),
+  id: types.optional(types.string()),
+  key: types.string(),
   target: types.optional(
     smartUnion([
       z.array(FilterProjectEnvsTargetProjectsResponse1$inboundSchema),
       FilterProjectEnvsTargetProjectsResponse2$inboundSchema,
     ]),
   ),
-  type: FilterProjectEnvsResponseBodyProjectsResponse200Type$inboundSchema,
+  gitBranch: types.optional(types.string()),
+  createdBy: z.nullable(types.string()).optional(),
+  updatedBy: z.nullable(types.string()).optional(),
   sunsetSecretId: types.optional(types.string()),
   legacyValue: types.optional(types.string()),
   decrypted: types.optional(types.boolean()),
-  value: types.string(),
-  vsmValue: types.optional(types.string()),
-  id: types.optional(types.string()),
-  key: types.string(),
   configurationId: z.nullable(types.string()).optional(),
-  createdAt: types.optional(types.number()),
-  updatedAt: types.optional(types.number()),
-  createdBy: z.nullable(types.string()).optional(),
-  updatedBy: z.nullable(types.string()).optional(),
-  gitBranch: types.optional(types.string()),
   visibility: types.optional(
     FilterProjectEnvsResponseBodyProjectsVisibility$inboundSchema,
   ),
-  edgeConfigId: z.nullable(types.string()).optional(),
-  edgeConfigTokenId: z.nullable(types.string()).optional(),
   contentHint: z.nullable(
     z.union([
       z.lazy(() => FilterProjectEnvsContentHintProjectsResponse1$inboundSchema),
@@ -1493,7 +1525,6 @@ export const ResponseBodyEnvs$inboundSchema: z.ZodType<
   ).optional(),
   comment: types.optional(types.string()),
   customEnvironmentIds: types.optional(z.array(types.string())),
-  system: types.optional(types.boolean()),
 });
 
 export function responseBodyEnvsFromJSON(
@@ -1525,6 +1556,16 @@ export function filterProjectEnvsResponseBody3FromJSON(
     `Failed to parse 'FilterProjectEnvsResponseBody3' from JSON`,
   );
 }
+
+/** @internal */
+export const FilterProjectEnvsResponseBodySecurityIssues$inboundSchema:
+  z.ZodNativeEnum<typeof FilterProjectEnvsResponseBodySecurityIssues> = z
+    .nativeEnum(FilterProjectEnvsResponseBodySecurityIssues);
+
+/** @internal */
+export const FilterProjectEnvsResponseBodyProjectsResponseType$inboundSchema:
+  z.ZodNativeEnum<typeof FilterProjectEnvsResponseBodyProjectsResponseType> = z
+    .nativeEnum(FilterProjectEnvsResponseBodyProjectsResponseType);
 
 /** @internal */
 export const FilterProjectEnvsTargetProjects2$inboundSchema: z.ZodNativeEnum<
@@ -1562,11 +1603,6 @@ export function filterProjectEnvsResponseBodyProjectsTargetFromJSON(
     `Failed to parse 'FilterProjectEnvsResponseBodyProjectsTarget' from JSON`,
   );
 }
-
-/** @internal */
-export const FilterProjectEnvsResponseBodyProjectsResponseType$inboundSchema:
-  z.ZodNativeEnum<typeof FilterProjectEnvsResponseBodyProjectsResponseType> = z
-    .nativeEnum(FilterProjectEnvsResponseBodyProjectsResponseType);
 
 /** @internal */
 export const FilterProjectEnvsResponseBodyVisibility$inboundSchema:
@@ -2013,31 +2049,34 @@ export function filterProjectEnvsResponseBodyInternalContentHintFromJSON(
 /** @internal */
 export const Envs$inboundSchema: z.ZodType<Envs, z.ZodTypeDef, unknown> = z
   .object({
+    securityIssues: z.array(
+      FilterProjectEnvsResponseBodySecurityIssues$inboundSchema,
+    ),
+    type: FilterProjectEnvsResponseBodyProjectsResponseType$inboundSchema,
+    value: types.string(),
+    edgeConfigId: z.nullable(types.string()).optional(),
+    edgeConfigTokenId: z.nullable(types.string()).optional(),
+    createdAt: types.optional(types.number()),
+    updatedAt: types.optional(types.number()),
+    system: types.optional(types.boolean()),
+    id: types.optional(types.string()),
+    key: types.string(),
     target: types.optional(
       smartUnion([
         z.array(FilterProjectEnvsTargetProjects1$inboundSchema),
         FilterProjectEnvsTargetProjects2$inboundSchema,
       ]),
     ),
-    type: FilterProjectEnvsResponseBodyProjectsResponseType$inboundSchema,
+    gitBranch: types.optional(types.string()),
+    createdBy: z.nullable(types.string()).optional(),
+    updatedBy: z.nullable(types.string()).optional(),
     sunsetSecretId: types.optional(types.string()),
     legacyValue: types.optional(types.string()),
     decrypted: types.optional(types.boolean()),
-    value: types.string(),
-    vsmValue: types.optional(types.string()),
-    id: types.optional(types.string()),
-    key: types.string(),
     configurationId: z.nullable(types.string()).optional(),
-    createdAt: types.optional(types.number()),
-    updatedAt: types.optional(types.number()),
-    createdBy: z.nullable(types.string()).optional(),
-    updatedBy: z.nullable(types.string()).optional(),
-    gitBranch: types.optional(types.string()),
     visibility: types.optional(
       FilterProjectEnvsResponseBodyVisibility$inboundSchema,
     ),
-    edgeConfigId: z.nullable(types.string()).optional(),
-    edgeConfigTokenId: z.nullable(types.string()).optional(),
     contentHint: z.nullable(
       z.union([
         z.lazy(() => FilterProjectEnvsContentHintProjects1$inboundSchema),
@@ -2066,7 +2105,6 @@ export const Envs$inboundSchema: z.ZodType<Envs, z.ZodTypeDef, unknown> = z
     ).optional(),
     comment: types.optional(types.string()),
     customEnvironmentIds: types.optional(z.array(types.string())),
-    system: types.optional(types.boolean()),
   });
 
 export function envsFromJSON(
@@ -2100,6 +2138,16 @@ export function filterProjectEnvsResponseBody2FromJSON(
 }
 
 /** @internal */
+export const ResponseBodySecurityIssues$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodySecurityIssues
+> = z.nativeEnum(ResponseBodySecurityIssues);
+
+/** @internal */
+export const FilterProjectEnvsResponseBodyType$inboundSchema: z.ZodNativeEnum<
+  typeof FilterProjectEnvsResponseBodyType
+> = z.nativeEnum(FilterProjectEnvsResponseBodyType);
+
+/** @internal */
 export const FilterProjectEnvsTarget2$inboundSchema: z.ZodNativeEnum<
   typeof FilterProjectEnvsTarget2
 > = z.nativeEnum(FilterProjectEnvsTarget2);
@@ -2129,11 +2177,6 @@ export function filterProjectEnvsResponseBodyTargetFromJSON(
     `Failed to parse 'FilterProjectEnvsResponseBodyTarget' from JSON`,
   );
 }
-
-/** @internal */
-export const FilterProjectEnvsResponseBodyType$inboundSchema: z.ZodNativeEnum<
-  typeof FilterProjectEnvsResponseBodyType
-> = z.nativeEnum(FilterProjectEnvsResponseBodyType);
 
 /** @internal */
 export const ResponseBodyVisibility$inboundSchema: z.ZodNativeEnum<
@@ -2549,29 +2592,30 @@ export const FilterProjectEnvsResponseBody1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  securityIssues: z.array(ResponseBodySecurityIssues$inboundSchema),
+  type: FilterProjectEnvsResponseBodyType$inboundSchema,
+  value: types.string(),
+  edgeConfigId: z.nullable(types.string()).optional(),
+  edgeConfigTokenId: z.nullable(types.string()).optional(),
+  createdAt: types.optional(types.number()),
+  updatedAt: types.optional(types.number()),
+  system: types.optional(types.boolean()),
+  id: types.optional(types.string()),
+  key: types.string(),
   target: types.optional(
     smartUnion([
       z.array(FilterProjectEnvsTarget1$inboundSchema),
       FilterProjectEnvsTarget2$inboundSchema,
     ]),
   ),
-  type: FilterProjectEnvsResponseBodyType$inboundSchema,
+  gitBranch: types.optional(types.string()),
+  createdBy: z.nullable(types.string()).optional(),
+  updatedBy: z.nullable(types.string()).optional(),
   sunsetSecretId: types.optional(types.string()),
   legacyValue: types.optional(types.string()),
   decrypted: types.optional(types.boolean()),
-  value: types.string(),
-  vsmValue: types.optional(types.string()),
-  id: types.optional(types.string()),
-  key: types.string(),
   configurationId: z.nullable(types.string()).optional(),
-  createdAt: types.optional(types.number()),
-  updatedAt: types.optional(types.number()),
-  createdBy: z.nullable(types.string()).optional(),
-  updatedBy: z.nullable(types.string()).optional(),
-  gitBranch: types.optional(types.string()),
   visibility: types.optional(ResponseBodyVisibility$inboundSchema),
-  edgeConfigId: z.nullable(types.string()).optional(),
-  edgeConfigTokenId: z.nullable(types.string()).optional(),
   contentHint: z.nullable(
     z.union([
       z.lazy(() => FilterProjectEnvsContentHint1$inboundSchema),
@@ -2598,7 +2642,6 @@ export const FilterProjectEnvsResponseBody1$inboundSchema: z.ZodType<
   ).optional(),
   comment: types.optional(types.string()),
   customEnvironmentIds: types.optional(z.array(types.string())),
-  system: types.optional(types.boolean()),
 });
 
 export function filterProjectEnvsResponseBody1FromJSON(

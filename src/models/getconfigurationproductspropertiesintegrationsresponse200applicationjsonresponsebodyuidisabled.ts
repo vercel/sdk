@@ -496,11 +496,11 @@ export type Properties11 = {
   uiControl:
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema11UiControl;
   description?: string | undefined;
-  default?: string | undefined;
   enum?: Array<string> | undefined;
   maxLength?: number | undefined;
   minLength?: number | undefined;
   pattern?: string | undefined;
+  default?: string | undefined;
   uiLabel?: string | undefined;
   uiReadOnly?:
     | GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaProperties111
@@ -747,11 +747,11 @@ export type Properties10 = {
     | string
   >;
   description?: string | undefined;
-  default?: string | undefined;
   enum?: Array<string> | undefined;
   maxLength?: number | undefined;
   minLength?: number | undefined;
   pattern?: string | undefined;
+  default?: string | undefined;
   uiLabel?: string | undefined;
   uiReadOnly?:
     | GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaProperties1
@@ -801,11 +801,11 @@ export type GetConfigurationProductsPropertiesIntegrationsItems = {
   type:
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9Type;
   description?: string | undefined;
-  default?: string | undefined;
   enum?: Array<string> | undefined;
   maxLength?: number | undefined;
   minLength?: number | undefined;
   pattern?: string | undefined;
+  default?: string | undefined;
 };
 
 export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiControl =
@@ -1019,9 +1019,9 @@ export type Properties9 = {
     | string
   >;
   description?: string | undefined;
-  default?: Array<string> | undefined;
   maxItems?: number | undefined;
   minItems?: number | undefined;
+  default?: Array<string> | undefined;
   example?: Array<string> | undefined;
   uiLabel?: string | undefined;
   uiReadOnly?:
@@ -2317,11 +2317,11 @@ export const Properties11$inboundSchema: z.ZodType<
   "ui:control":
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema11UiControl$inboundSchema,
   description: types.optional(types.string()),
-  default: types.optional(types.string()),
   enum: types.optional(z.array(types.string())),
   maxLength: types.optional(types.number()),
   minLength: types.optional(types.number()),
   pattern: types.optional(types.string()),
+  default: types.optional(types.string()),
   "ui:label": types.optional(types.string()),
   "ui:read-only": types.optional(
     smartUnion([
@@ -3057,11 +3057,11 @@ export const Properties10$inboundSchema: z.ZodType<
     ]),
   ),
   description: types.optional(types.string()),
-  default: types.optional(types.string()),
   enum: types.optional(z.array(types.string())),
   maxLength: types.optional(types.number()),
   minLength: types.optional(types.number()),
   pattern: types.optional(types.string()),
+  default: types.optional(types.string()),
   "ui:label": types.optional(types.string()),
   "ui:read-only": types.optional(
     smartUnion([
@@ -3156,11 +3156,11 @@ export const GetConfigurationProductsPropertiesIntegrationsItems$inboundSchema:
     type:
       GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9Type$inboundSchema,
     description: types.optional(types.string()),
-    default: types.optional(types.string()),
     enum: types.optional(z.array(types.string())),
     maxLength: types.optional(types.number()),
     minLength: types.optional(types.number()),
     pattern: types.optional(types.string()),
+    default: types.optional(types.string()),
   });
 
 export function getConfigurationProductsPropertiesIntegrationsItemsFromJSON(
@@ -3828,9 +3828,9 @@ export const Properties9$inboundSchema: z.ZodType<
     ]),
   ),
   description: types.optional(types.string()),
-  default: types.optional(z.array(types.string())),
   maxItems: types.optional(types.number()),
   minItems: types.optional(types.number()),
+  default: types.optional(z.array(types.string())),
   example: types.optional(z.array(types.string())),
   "ui:label": types.optional(types.string()),
   "ui:read-only": types.optional(

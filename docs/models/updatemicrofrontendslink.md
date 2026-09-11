@@ -99,6 +99,7 @@ const value: models.UpdateMicrofrontendsLink5 = {
 const value: models.UpdateMicrofrontendsLink6 = {
   org: "<value>",
   repo: "<value>",
+  repoId: "<id>",
   type: "vercel",
   deployHooks: [],
   gitCredentialId: "<id>",
@@ -112,6 +113,7 @@ const value: models.UpdateMicrofrontendsLink6 = {
 const value: models.UpdateMicrofrontendsLink7 = {
   org: "<value>",
   repo: "<value>",
+  repoId: "<id>",
   type: "v0",
   deployHooks: [],
   gitCredentialId: "<id>",

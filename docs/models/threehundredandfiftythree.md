@@ -5,21 +5,20 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFiftyThree } from "@vercel/sdk/models/usereventpayload338budget.js";
+import { ThreeHundredAndFiftyThree } from "@vercel/sdk/models/usereventpayload339budget.js";
 
 let value: ThreeHundredAndFiftyThree = {
-  trialCreditsIssuedAt: 8333.06,
-  expiresAt: "1765826068254",
-  amount: "192.19",
-  currency: "Iranian Rial",
+  next: {
+    enabled: false,
+    scope: "selected_repos",
+    includeDrafts: true,
+  },
 };
 ```
 
 ## Fields
 
-| Field                  | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `trialCreditsIssuedAt` | *number*               | :heavy_check_mark:     | N/A                    |
-| `expiresAt`            | *string*               | :heavy_check_mark:     | N/A                    |
-| `amount`               | *string*               | :heavy_check_mark:     | N/A                    |
-| `currency`             | *string*               | :heavy_check_mark:     | N/A                    |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `previous`                                                                     | [models.UserEventPayload353Previous](../models/usereventpayload353previous.md) | :heavy_minus_sign:                                                             | Automatic code review settings                                                 |
+| `next`                                                                         | [models.UserEventPayload353Next](../models/usereventpayload353next.md)         | :heavy_check_mark:                                                             | Automatic code review settings                                                 |

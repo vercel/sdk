@@ -47,6 +47,12 @@ export type ListSharedEnvVariableRequest = {
   slug?: string | undefined;
 };
 
+export const SecurityIssues = {
+  FlagsSecretNeedsSplit: "flags-secret-needs-split",
+  ReadableSecret: "readable-secret",
+} as const;
+export type SecurityIssues = ClosedEnum<typeof SecurityIssues>;
+
 /**
  * The type of this cosmos doc instance, if blank, assume secret.
  */
@@ -79,14 +85,15 @@ export type ListSharedEnvVariableTarget = ClosedEnum<
 >;
 
 export type ListSharedEnvVariableData = {
+  securityIssues: Array<SecurityIssues>;
   /**
    * The date when the Shared Env Var was created.
    */
-  created?: Date | undefined;
+  created: Date;
   /**
    * The name of the Shared Env Var.
    */
-  key?: string | undefined;
+  key: string;
   /**
    * The unique identifier of the owner (team) the Shared Env Var was created for.
    */
@@ -94,7 +101,7 @@ export type ListSharedEnvVariableData = {
   /**
    * The unique identifier of the Shared Env Var.
    */
-  id?: string | undefined;
+  id: string;
   /**
    * The unique identifier of the user who created the Shared Env Var.
    */
@@ -146,7 +153,7 @@ export type ListSharedEnvVariableData = {
   /**
    * whether or not this env variable is decrypted
    */
-  decrypted?: boolean | undefined;
+  decrypted: boolean;
   /**
    * A user provided comment that describes what this Shared Env Var is for.
    */
@@ -213,6 +220,11 @@ export function listSharedEnvVariableRequestToJSON(
 }
 
 /** @internal */
+export const SecurityIssues$inboundSchema: z.ZodNativeEnum<
+  typeof SecurityIssues
+> = z.nativeEnum(SecurityIssues);
+
+/** @internal */
 export const ListSharedEnvVariableType$inboundSchema: z.ZodNativeEnum<
   typeof ListSharedEnvVariableType
 > = z.nativeEnum(ListSharedEnvVariableType);
@@ -228,10 +240,11 @@ export const ListSharedEnvVariableData$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  created: types.optional(types.date()),
-  key: types.optional(types.string()),
+  securityIssues: z.array(SecurityIssues$inboundSchema),
+  created: types.date(),
+  key: types.string(),
   ownerId: z.nullable(types.string()).optional(),
-  id: types.optional(types.string()),
+  id: types.string(),
   createdBy: z.nullable(types.string()).optional(),
   deletedBy: z.nullable(types.string()).optional(),
   updatedBy: z.nullable(types.string()).optional(),
@@ -244,7 +257,7 @@ export const ListSharedEnvVariableData$inboundSchema: z.ZodType<
   target: types.optional(z.array(ListSharedEnvVariableTarget$inboundSchema)),
   applyToAllCustomEnvironments: types.optional(types.boolean()),
   customEnvironmentIds: types.optional(z.array(types.string())),
-  decrypted: types.optional(types.boolean()),
+  decrypted: types.boolean(),
   comment: types.optional(types.string()),
   lastEditedByDisplayName: types.optional(types.string()),
 });

@@ -11,5 +11,5 @@ let value: TierRequirement = "priority";
 ## Values
 
 ```typescript
-"critical" | "priority"
+"advanced" | "critical" | "priority"
 ```

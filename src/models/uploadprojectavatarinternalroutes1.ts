@@ -1258,6 +1258,7 @@ export type UploadProjectAvatarDeploymentPolicy = {
 };
 
 export const UploadProjectAvatarTier = {
+  Advanced: "advanced",
   Critical: "critical",
   Priority: "priority",
 } as const;

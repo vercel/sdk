@@ -1410,6 +1410,7 @@ export type ResponseBodyDeploymentPolicy = {
 };
 
 export const GetProjectsResponseBodyProjectsTier = {
+  Advanced: "advanced",
   Critical: "critical",
   Priority: "priority",
 } as const;

@@ -360,6 +360,7 @@ export type UpdateProjectProjectsDeploymentPolicy = {
 };
 
 export const UpdateProjectTier = {
+  Advanced: "advanced",
   Critical: "critical",
   Priority: "priority",
 } as const;

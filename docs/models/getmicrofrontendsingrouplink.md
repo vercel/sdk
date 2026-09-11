@@ -92,6 +92,7 @@ const value: models.GetMicrofrontendsInGroupLink5 = {
 const value: models.GetMicrofrontendsInGroupLink6 = {
   org: "<value>",
   repo: "<value>",
+  repoId: "<id>",
   type: "vercel",
   deployHooks: [],
   gitCredentialId: "<id>",
@@ -105,6 +106,7 @@ const value: models.GetMicrofrontendsInGroupLink6 = {
 const value: models.GetMicrofrontendsInGroupLink7 = {
   org: "<value>",
   repo: "<value>",
+  repoId: "<id>",
   type: "v0",
   deployHooks: [
     {

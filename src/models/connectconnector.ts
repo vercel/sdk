@@ -145,6 +145,7 @@ export type Managed = {
  */
 export const ConnectConnectorType = {
   ApiKey: "api-key",
+  AwsAlpha: "aws-alpha",
   Custom: "custom",
   Discord: "discord",
   Github: "github",
@@ -178,6 +179,10 @@ export type AppTokens = {
    */
   supportsRefinement: boolean;
   /**
+   * Whether callers can request resource-specific app tokens.
+   */
+  supportsResources?: boolean | undefined;
+  /**
    * True when changing app token grants requires reinstalling the app, so tokens cannot be partitioned independently by requester environment.
    */
   requiresReinstallation?: boolean | undefined;
@@ -207,6 +212,10 @@ export type UserTokens = {
    * Whether callers can narrow user-token grants per request.
    */
   supportsRefinement: boolean;
+  /**
+   * Whether callers can request resource-specific user tokens.
+   */
+  supportsResources?: boolean | undefined;
   /**
    * Known allowed user-level scopes. For Slack this is the user scope set configured on the app; for OAuth it is the connector's enabled `userAuthorization.scopes` configuration.
    */
@@ -576,6 +585,7 @@ export const AppTokens$inboundSchema: z.ZodType<
 > = z.object({
   crossInstallation: types.boolean(),
   supportsRefinement: types.boolean(),
+  supportsResources: types.optional(types.boolean()),
   requiresReinstallation: types.optional(types.boolean()),
   scopes: types.optional(z.array(types.string())),
   supportedAuthorizationDetails: types.optional(z.array(types.string())),
@@ -600,6 +610,7 @@ export const UserTokens$inboundSchema: z.ZodType<
 > = z.object({
   crossInstallation: types.boolean(),
   supportsRefinement: types.boolean(),
+  supportsResources: types.optional(types.boolean()),
   scopes: types.optional(z.array(types.string())),
   supportedAuthorizationDetails: types.optional(z.array(types.string())),
   manualCredentialInput: types.optional(types.boolean()),

@@ -92,6 +92,7 @@ const value: models.Link5 = {
 const value: models.Link6 = {
   org: "<value>",
   repo: "<value>",
+  repoId: "<id>",
   type: "vercel",
   deployHooks: [
     {
@@ -112,6 +113,7 @@ const value: models.Link6 = {
 const value: models.Link7 = {
   org: "<value>",
   repo: "<value>",
+  repoId: "<id>",
   type: "v0",
   deployHooks: [
     {

@@ -99,6 +99,7 @@ const value: models.GetProjectsLinkProjectsResponse5 = {
 const value: models.GetProjectsLinkProjectsResponse6 = {
   org: "<value>",
   repo: "<value>",
+  repoId: "<id>",
   type: "vercel",
   deployHooks: [],
   gitCredentialId: "<id>",
@@ -112,6 +113,7 @@ const value: models.GetProjectsLinkProjectsResponse6 = {
 const value: models.GetProjectsLinkProjectsResponse7 = {
   org: "<value>",
   repo: "<value>",
+  repoId: "<id>",
   type: "v0",
   deployHooks: [],
   gitCredentialId: "<id>",

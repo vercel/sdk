@@ -60,11 +60,11 @@ export type Properties8 = {
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiControl;
   uiOptions: Array<GetConfigurationProductsPropertiesIntegrationsUiOptions>;
   description?: string | undefined;
-  default?: string | undefined;
   enum?: Array<string> | undefined;
   maxLength?: number | undefined;
   minLength?: number | undefined;
   pattern?: string | undefined;
+  default?: string | undefined;
   uiLabel?: string | undefined;
   uiReadOnly?:
     | GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiReadOnly
@@ -108,11 +108,11 @@ export type GetConfigurationProductsPropertiesItems = {
   type:
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema7Type;
   description?: string | undefined;
-  default?: string | undefined;
   enum?: Array<string> | undefined;
   maxLength?: number | undefined;
   minLength?: number | undefined;
   pattern?: string | undefined;
+  default?: string | undefined;
 };
 
 export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiControl =
@@ -256,9 +256,9 @@ export type Properties7 = {
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiControl;
   uiOptions: Array<GetConfigurationProductsPropertiesUiOptions>;
   description?: string | undefined;
-  default?: Array<string> | undefined;
   maxItems?: number | undefined;
   minItems?: number | undefined;
+  default?: Array<string> | undefined;
   example?: Array<string> | undefined;
   uiLabel?: string | undefined;
   uiReadOnly?:
@@ -435,11 +435,11 @@ export type Properties6 = {
   uiControl: GetConfigurationProductsPropertiesIntegrationsResponse200UiControl;
   uiOptions: Array<PropertiesUiOptions>;
   description?: string | undefined;
-  default?: string | undefined;
   enum?: Array<string> | undefined;
   maxLength?: number | undefined;
   minLength?: number | undefined;
   pattern?: string | undefined;
+  default?: string | undefined;
   uiLabel?: string | undefined;
   uiReadOnly?:
     | GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson1
@@ -581,11 +581,11 @@ export type Properties5 = {
   uiControl: GetConfigurationProductsPropertiesIntegrationsResponseUiControl;
   uiOptions: Array<UiOptions>;
   description?: string | undefined;
-  default?: string | undefined;
   enum?: Array<string> | undefined;
   maxLength?: number | undefined;
   minLength?: number | undefined;
   pattern?: string | undefined;
+  default?: string | undefined;
   uiLabel?: string | undefined;
   uiReadOnly?:
     | GetConfigurationProductsUiReadOnlyIntegrationsResponse2001
@@ -634,9 +634,9 @@ export type PropertiesItems = {
   minimum?: number | undefined;
   maximum?: number | undefined;
   description?: string | undefined;
-  default?: number | undefined;
   exclusiveMaximum?: number | undefined;
   exclusiveMinimum?: number | undefined;
+  default?: number | undefined;
 };
 
 export const GetConfigurationProductsPropertiesIntegrationsUiControl = {
@@ -712,9 +712,9 @@ export type Properties4 = {
   uiControl: GetConfigurationProductsPropertiesIntegrationsUiControl;
   uiSteps: Array<number>;
   description?: string | undefined;
-  default?: Array<number> | undefined;
   maxItems?: number | undefined;
   minItems?: number | undefined;
+  default?: Array<number> | undefined;
   uiLabel?: string | undefined;
   uiReadOnly?:
     | GetConfigurationProductsUiReadOnlyIntegrationsResponse1
@@ -930,9 +930,9 @@ export type Properties2 = {
   minimum?: number | undefined;
   maximum?: number | undefined;
   description?: string | undefined;
-  default?: number | undefined;
   exclusiveMaximum?: number | undefined;
   exclusiveMinimum?: number | undefined;
+  default?: number | undefined;
   uiLabel?: string | undefined;
   uiReadOnly?:
     | GetConfigurationProductsUiReadOnly1
@@ -1015,11 +1015,11 @@ export type Properties1 = {
   type: PropertiesType;
   uiControl: UiControl;
   description?: string | undefined;
-  default?: string | undefined;
   enum?: Array<string> | undefined;
   maxLength?: number | undefined;
   minLength?: number | undefined;
   pattern?: string | undefined;
+  default?: string | undefined;
   uiLabel?: string | undefined;
   uiReadOnly?: UiReadOnly1 | boolean | UiReadOnly3 | undefined;
   uiHidden?: UiHidden1 | boolean | UiHidden3 | undefined;
@@ -1185,11 +1185,11 @@ export const Properties8$inboundSchema: z.ZodType<
     GetConfigurationProductsPropertiesIntegrationsUiOptions$inboundSchema,
   ),
   description: types.optional(types.string()),
-  default: types.optional(types.string()),
   enum: types.optional(z.array(types.string())),
   maxLength: types.optional(types.number()),
   minLength: types.optional(types.number()),
   pattern: types.optional(types.string()),
+  default: types.optional(types.string()),
   "ui:label": types.optional(types.string()),
   "ui:read-only": types.optional(
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiReadOnly$inboundSchema,
@@ -1265,11 +1265,11 @@ export const GetConfigurationProductsPropertiesItems$inboundSchema: z.ZodType<
   type:
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema7Type$inboundSchema,
   description: types.optional(types.string()),
-  default: types.optional(types.string()),
   enum: types.optional(z.array(types.string())),
   maxLength: types.optional(types.number()),
   minLength: types.optional(types.number()),
   pattern: types.optional(types.string()),
+  default: types.optional(types.string()),
 });
 
 export function getConfigurationProductsPropertiesItemsFromJSON(
@@ -1733,9 +1733,9 @@ export const Properties7$inboundSchema: z.ZodType<
     z.lazy(() => GetConfigurationProductsPropertiesUiOptions$inboundSchema),
   ),
   description: types.optional(types.string()),
-  default: types.optional(z.array(types.string())),
   maxItems: types.optional(types.number()),
   minItems: types.optional(types.number()),
+  default: types.optional(z.array(types.string())),
   example: types.optional(z.array(types.string())),
   "ui:label": types.optional(types.string()),
   "ui:read-only": types.optional(
@@ -2222,11 +2222,11 @@ export const Properties6$inboundSchema: z.ZodType<
     GetConfigurationProductsPropertiesIntegrationsResponse200UiControl$inboundSchema,
   "ui:options": z.array(z.lazy(() => PropertiesUiOptions$inboundSchema)),
   description: types.optional(types.string()),
-  default: types.optional(types.string()),
   enum: types.optional(z.array(types.string())),
   maxLength: types.optional(types.number()),
   minLength: types.optional(types.number()),
   pattern: types.optional(types.string()),
+  default: types.optional(types.string()),
   "ui:label": types.optional(types.string()),
   "ui:read-only": types.optional(
     smartUnion([
@@ -2698,11 +2698,11 @@ export const Properties5$inboundSchema: z.ZodType<
     GetConfigurationProductsPropertiesIntegrationsResponseUiControl$inboundSchema,
   "ui:options": z.array(z.lazy(() => UiOptions$inboundSchema)),
   description: types.optional(types.string()),
-  default: types.optional(types.string()),
   enum: types.optional(z.array(types.string())),
   maxLength: types.optional(types.number()),
   minLength: types.optional(types.number()),
   pattern: types.optional(types.string()),
+  default: types.optional(types.string()),
   "ui:label": types.optional(types.string()),
   "ui:read-only": types.optional(
     smartUnion([
@@ -2796,9 +2796,9 @@ export const PropertiesItems$inboundSchema: z.ZodType<
   minimum: types.optional(types.number()),
   maximum: types.optional(types.number()),
   description: types.optional(types.string()),
-  default: types.optional(types.number()),
   exclusiveMaximum: types.optional(types.number()),
   exclusiveMinimum: types.optional(types.number()),
+  default: types.optional(types.number()),
 });
 
 export function propertiesItemsFromJSON(
@@ -3089,9 +3089,9 @@ export const Properties4$inboundSchema: z.ZodType<
     GetConfigurationProductsPropertiesIntegrationsUiControl$inboundSchema,
   "ui:steps": z.array(types.number()),
   description: types.optional(types.string()),
-  default: types.optional(z.array(types.number())),
   maxItems: types.optional(types.number()),
   minItems: types.optional(types.number()),
+  default: types.optional(z.array(types.number())),
   "ui:label": types.optional(types.string()),
   "ui:read-only": types.optional(
     smartUnion([
@@ -3714,9 +3714,9 @@ export const Properties2$inboundSchema: z.ZodType<
   minimum: types.optional(types.number()),
   maximum: types.optional(types.number()),
   description: types.optional(types.string()),
-  default: types.optional(types.number()),
   exclusiveMaximum: types.optional(types.number()),
   exclusiveMinimum: types.optional(types.number()),
+  default: types.optional(types.number()),
   "ui:label": types.optional(types.string()),
   "ui:read-only": types.optional(
     smartUnion([
@@ -3979,11 +3979,11 @@ export const Properties1$inboundSchema: z.ZodType<
   type: PropertiesType$inboundSchema,
   "ui:control": UiControl$inboundSchema,
   description: types.optional(types.string()),
-  default: types.optional(types.string()),
   enum: types.optional(z.array(types.string())),
   maxLength: types.optional(types.number()),
   minLength: types.optional(types.number()),
   pattern: types.optional(types.string()),
+  default: types.optional(types.string()),
   "ui:label": types.optional(types.string()),
   "ui:read-only": types.optional(
     smartUnion([

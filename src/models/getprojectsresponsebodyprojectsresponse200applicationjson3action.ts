@@ -1459,6 +1459,7 @@ export type GetProjectsLinkProjectsResponse200ApplicationJSONResponseBody3Projec
 export type GetProjectsLinkProjectsResponse7 = {
   org: string;
   repo: string;
+  repoId: string;
   type: "v0";
   createdAt?: number | undefined;
   deployHooks: Array<
@@ -1482,6 +1483,7 @@ export type GetProjectsLinkProjectsResponse200ApplicationJSONResponseBody3Projec
 export type GetProjectsLinkProjectsResponse6 = {
   org: string;
   repo: string;
+  repoId: string;
   type: "vercel";
   createdAt?: number | undefined;
   deployHooks: Array<
@@ -4383,6 +4385,7 @@ export const GetProjectsLinkProjectsResponse7$inboundSchema: z.ZodType<
 > = z.object({
   org: types.string(),
   repo: types.string(),
+  repoId: types.string(),
   type: types.literal("v0"),
   createdAt: types.optional(types.number()),
   deployHooks: z.array(
@@ -4443,6 +4446,7 @@ export const GetProjectsLinkProjectsResponse6$inboundSchema: z.ZodType<
 > = z.object({
   org: types.string(),
   repo: types.string(),
+  repoId: types.string(),
   type: types.literal("vercel"),
   createdAt: types.optional(types.number()),
   deployHooks: z.array(

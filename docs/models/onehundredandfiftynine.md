@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFiftyNine } from "@vercel/sdk/models/payloadpreviousrule.js";
+import { OneHundredAndFiftyNine } from "@vercel/sdk/models/deleteduser.js";
 
 let value: OneHundredAndFiftyNine = {
   configVersion: "<value>",

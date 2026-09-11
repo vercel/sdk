@@ -11,13 +11,10 @@ let value: TwoHundredAndFiftyNine = {
   projectId: "<id>",
   projectName: "<value>",
   previous: {
-    functionDefaultRegions: [
-      "<value 1>",
-      "<value 2>",
-    ],
+    functionDefaultMemoryType: "<value>",
   },
   next: {
-    functionDefaultRegions: [],
+    functionDefaultMemoryType: "<value>",
   },
 };
 ```

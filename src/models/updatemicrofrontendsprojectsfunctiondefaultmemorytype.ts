@@ -1313,6 +1313,7 @@ export type UpdateMicrofrontendsLinkProjectsResponse200ApplicationJSONResponseBo
 export type UpdateMicrofrontendsLink7 = {
   org: string;
   repo: string;
+  repoId: string;
   type: "v0";
   createdAt?: number | undefined;
   deployHooks: Array<
@@ -1336,6 +1337,7 @@ export type UpdateMicrofrontendsLinkProjectsResponse200ApplicationJSONResponseBo
 export type UpdateMicrofrontendsLink6 = {
   org: string;
   repo: string;
+  repoId: string;
   type: "vercel";
   createdAt?: number | undefined;
   deployHooks: Array<
@@ -4015,6 +4017,7 @@ export const UpdateMicrofrontendsLink7$inboundSchema: z.ZodType<
 > = z.object({
   org: types.string(),
   repo: types.string(),
+  repoId: types.string(),
   type: types.literal("v0"),
   createdAt: types.optional(types.number()),
   deployHooks: z.array(
@@ -4075,6 +4078,7 @@ export const UpdateMicrofrontendsLink6$inboundSchema: z.ZodType<
 > = z.object({
   org: types.string(),
   repo: types.string(),
+  repoId: types.string(),
   type: types.literal("vercel"),
   createdAt: types.optional(types.number()),
   deployHooks: z.array(

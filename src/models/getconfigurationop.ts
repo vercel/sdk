@@ -546,6 +546,26 @@ export type GetConfigurationResponseBody1 = {
    */
   id: string;
   /**
+   * The slug of the integration the configuration is created for.
+   */
+  slug: string;
+  /**
+   * A timestamp that tells you when the configuration was created
+   */
+  createdAt: number;
+  /**
+   * A timestamp that tells you when the configuration was updated.
+   */
+  updatedAt: number;
+  /**
+   * The user or team ID that owns the configuration
+   */
+  ownerId: string;
+  /**
+   * A timestamp that tells you when the configuration was deleted.
+   */
+  deletedAt?: number | null | undefined;
+  /**
    * The unique identifier of the app the configuration was created for
    */
   integrationId: string;
@@ -554,33 +574,13 @@ export type GetConfigurationResponseBody1 = {
    */
   userId: string;
   /**
-   * A timestamp that tells you when the configuration was created
-   */
-  createdAt: number;
-  /**
-   * A timestamp that tells you when the configuration was deleted.
-   */
-  deletedAt?: number | null | undefined;
-  /**
-   * The slug of the integration the configuration is created for.
-   */
-  slug: string;
-  /**
    * When the configuration was created for a team, this will show the ID of the team.
    */
   teamId?: string | null | undefined;
   /**
-   * A timestamp that tells you when the configuration was updated.
-   */
-  updatedAt: number;
-  /**
    * The resources that are allowed to be accessed by the configuration.
    */
   scopes: Array<string>;
-  /**
-   * The user or team ID that owns the configuration
-   */
-  ownerId: string;
   canConfigureOpenTelemetry?: boolean | undefined;
   /**
    * A timestamp that tells you when the configuration was installed successfully
@@ -1039,15 +1039,15 @@ export const GetConfigurationResponseBody1$inboundSchema: z.ZodType<
   status: types.optional(GetConfigurationResponseBodyStatus$inboundSchema),
   type: GetConfigurationResponseBodyType$inboundSchema,
   id: types.string(),
+  slug: types.string(),
+  createdAt: types.number(),
+  updatedAt: types.number(),
+  ownerId: types.string(),
+  deletedAt: z.nullable(types.number()).optional(),
   integrationId: types.string(),
   userId: types.string(),
-  createdAt: types.number(),
-  deletedAt: z.nullable(types.number()).optional(),
-  slug: types.string(),
   teamId: z.nullable(types.string()).optional(),
-  updatedAt: types.number(),
   scopes: z.array(types.string()),
-  ownerId: types.string(),
   canConfigureOpenTelemetry: types.optional(types.boolean()),
   completedAt: types.optional(types.number()),
   externalId: types.optional(types.string()),

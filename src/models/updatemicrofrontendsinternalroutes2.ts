@@ -1266,6 +1266,7 @@ export type UpdateMicrofrontendsDeploymentPolicy = {
 };
 
 export const UpdateMicrofrontendsTier = {
+  Advanced: "advanced",
   Critical: "critical",
   Priority: "priority",
 } as const;

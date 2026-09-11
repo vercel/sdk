@@ -5,12 +5,14 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndEightyNine } from "@vercel/sdk/models/twohundredandseventyfive.js";
+import { TwoHundredAndEightyNine } from "@vercel/sdk/models/twohundredandseventysix.js";
 
 let value: TwoHundredAndEightyNine = {
-  previousProjectName: "<value>",
-  newProjectName: "<value>",
+  projectId: "<id>",
+  projectName: "<value>",
+  originAccountName: "<value>",
   destinationAccountName: "<value>",
+  destinationAccountId: "<id>",
 };
 ```
 
@@ -18,9 +20,9 @@ let value: TwoHundredAndEightyNine = {
 
 | Field                    | Type                     | Required                 | Description              |
 | ------------------------ | ------------------------ | ------------------------ | ------------------------ |
-| `previousProjectId`      | *string*                 | :heavy_minus_sign:       | N/A                      |
-| `newProjectId`           | *string*                 | :heavy_minus_sign:       | N/A                      |
-| `previousProjectName`    | *string*                 | :heavy_check_mark:       | N/A                      |
-| `newProjectName`         | *string*                 | :heavy_check_mark:       | N/A                      |
+| `projectId`              | *string*                 | :heavy_check_mark:       | N/A                      |
+| `projectName`            | *string*                 | :heavy_check_mark:       | N/A                      |
+| `originAccountName`      | *string*                 | :heavy_check_mark:       | N/A                      |
 | `destinationAccountName` | *string*                 | :heavy_check_mark:       | N/A                      |
+| `destinationAccountId`   | *string*                 | :heavy_check_mark:       | N/A                      |
 | `transferId`             | *string*                 | :heavy_minus_sign:       | N/A                      |

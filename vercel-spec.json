@@ -66493,12 +66493,7 @@
                   "envVarEnvironments": {
                     "type": "array",
                     "items": {
-                      "type": "string",
-                      "enum": [
-                        "production",
-                        "preview",
-                        "development"
-                      ]
+                      "type": "string"
                     }
                   },
                   "makeEnvVarsSensitive": {

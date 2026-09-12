@@ -29,6 +29,7 @@
     "url": "https://github.com/vercel/sdk.git"
   },
   "scripts": {
+    "test": "npm run test:connect-environments",
     "test:connect-environments": "npm run build && node --test tests/connect-integration-resource-to-project.test.mjs",
     "lint": "oxlint --max-warnings=0 --deny-warnings --no-error-on-unmatched-pattern src",
     "build": "tsgo",

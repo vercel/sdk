@@ -41,6 +41,7 @@ typescript:
   additionalPackageJSON:
     license: Apache-2.0
   additionalScripts:
+    test: npm run test:connect-environments
     test:connect-environments: npm run build && node --test tests/connect-integration-resource-to-project.test.mjs
   alwaysIncludeInboundAndOutbound: false
   apiPromiseHelpers: false

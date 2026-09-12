@@ -6412,21 +6412,7 @@
                     "type": "array",
                     "minItems": 1,
                     "items": {
-                      "title": "EnvVarEnvironmentsTarget",
-                      "anyOf": [
-                        {
-                          "type": "string",
-                          "enum": [
-                            "production",
-                            "preview",
-                            "development"
-                          ],
-                          "x-speakeasy-name-override": "env_var_environments"
-                        },
-                        {
-                          "type": "string"
-                        }
-                      ]
+                      "type": "string"
                     }
                   }
                 },
@@ -66507,7 +66493,21 @@
                   "envVarEnvironments": {
                     "type": "array",
                     "items": {
-                      "type": "string"
+                      "title": "EnvVarEnvironmentsTarget",
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "enum": [
+                            "production",
+                            "preview",
+                            "development"
+                          ],
+                          "x-speakeasy-name-override": "env_var_environments"
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ]
                     }
                   },
                   "makeEnvVarsSensitive": {

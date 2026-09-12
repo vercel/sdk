@@ -5,22 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSeventyTwo } from "@vercel/sdk/models/usereventpayload339budget.js";
+import { ThreeHundredAndSeventyTwo } from "@vercel/sdk/models/usereventpayload340budget.js";
 
-let value: ThreeHundredAndSeventyTwo = {};
+let value: ThreeHundredAndSeventyTwo = {
+  entitlement: "<value>",
+  user: {
+    id: "<id>",
+    username: "Scotty39",
+  },
+};
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `role`                                         | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `uid`                                          | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `updatedUid`                                   | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `updatedUser`                                  | [models.UpdatedUser](../models/updateduser.md) | :heavy_minus_sign:                             | N/A                                            |
-| `origin`                                       | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `teamSlug`                                     | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `teamRoles`                                    | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
-| `teamPermissions`                              | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
-| `entitlements`                                 | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
-| `invitedBy`                                    | [models.InvitedBy](../models/invitedby.md)     | :heavy_minus_sign:                             | N/A                                            |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `entitlement`                                                          | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `user`                                                                 | [models.UserEventPayload372User](../models/usereventpayload372user.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| `previousCanceledAt`                                                   | *string*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |

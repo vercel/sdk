@@ -5,15 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndEightyNine } from "@vercel/sdk/models/usereventpayload339budget.js";
+import { ThreeHundredAndEightyNine } from "@vercel/sdk/models/usereventpayload340budget.js";
 
 let value: ThreeHundredAndEightyNine = {
-  enabled: "on",
+  deletedCount: 7883.28,
 };
 ```
 
 ## Fields
 
-| Field                                                | Type                                                 | Required                                             | Description                                          |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `enabled`                                            | [models.PayloadEnabled](../models/payloadenabled.md) | :heavy_check_mark:                                   | N/A                                                  |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `deletedCount`     | *number*           | :heavy_check_mark: | N/A                |

@@ -9,21 +9,14 @@ import { TwoHundredAndFiftyEight } from "@vercel/sdk/models/siftroute.js";
 
 let value: TwoHundredAndFiftyEight = {
   projectId: "<id>",
-  projectName: "<value>",
-  previous: {
-    functionDefaultTimeout: 3669.87,
-  },
-  next: {
-    functionDefaultTimeout: 943.37,
-  },
+  enableFunctionsBeta: true,
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload258Previous](../models/usereventpayload258previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `next`                                                                         | [models.UserEventPayload258Next](../models/usereventpayload258next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                 | Type                  | Required              | Description           |
+| --------------------- | --------------------- | --------------------- | --------------------- |
+| `projectName`         | *string*              | :heavy_minus_sign:    | N/A                   |
+| `projectId`           | *string*              | :heavy_check_mark:    | N/A                   |
+| `enableFunctionsBeta` | *boolean*             | :heavy_check_mark:    | N/A                   |

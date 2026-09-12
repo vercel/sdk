@@ -8,9 +8,8 @@ The payload of the event, if requested.
 import { TwoHundredAndThirtyFour } from "@vercel/sdk/models/siftroute.js";
 
 let value: TwoHundredAndThirtyFour = {
-  projectId: "<id>",
   projectName: "<value>",
-  directoryListing: true,
+  branch: "<value>",
 };
 ```
 
@@ -18,6 +17,6 @@ let value: TwoHundredAndThirtyFour = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_minus_sign: | N/A                |
 | `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `directoryListing` | *boolean*          | :heavy_check_mark: | N/A                |
+| `branch`           | *string*           | :heavy_check_mark: | N/A                |

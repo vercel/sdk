@@ -5,15 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFortyNine } from "@vercel/sdk/models/onehundredandfour.js";
+import { OneHundredAndFortyNine } from "@vercel/sdk/models/gitcredentialsource.js";
 
-let value: OneHundredAndFortyNine = {};
+let value: OneHundredAndFortyNine = {
+  team: {
+    id: "<id>",
+  },
+};
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `deletedUser`                                  | [models.DeletedUser](../models/deleteduser.md) | :heavy_minus_sign:                             | N/A                                            |
-| `deletedUid`                                   | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `emailDomain`                                  | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `team`                                                                 | [models.UserEventPayload149Team](../models/usereventpayload149team.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| `previousRule`                                                         | [models.PayloadPreviousRule](../models/payloadpreviousrule.md)         | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `nextRule`                                                             | [models.NextRule](../models/nextrule.md)                               | :heavy_minus_sign:                                                     | N/A                                                                    |

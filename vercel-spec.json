@@ -16752,6 +16752,7 @@
                                     "elastic-algorithm",
                                     "plan-default",
                                     "project-setting",
+                                    "team-entitlement",
                                     "team-setting"
                                   ],
                                   "description": "The setting which selected the build machine when the deployment was created. Frozen here so later project or team changes do not rewrite its history."
@@ -24962,6 +24963,7 @@
                                     "elastic-algorithm",
                                     "plan-default",
                                     "project-setting",
+                                    "team-entitlement",
                                     "team-setting"
                                   ],
                                   "description": "The setting which selected the build machine when the deployment was created. Frozen here so later project or team changes do not rewrite its history."
@@ -31951,24 +31953,30 @@
                         "type": "object"
                       },
                       {
+                        "description": "Deploys from the Cursor Origin repository linked to the target project. The repository ID must match the linked repository; Vercel resolves the owner and repository name from the project link.",
                         "properties": {
                           "owner": {
+                            "description": "The Origin workspace slug. Optional because Vercel resolves it from the linked project.",
                             "type": "string",
                             "example": "bitbucket_user"
                           },
                           "ref": {
+                            "description": "The branch or Git reference to deploy.",
                             "type": "string",
                             "example": "main"
                           },
                           "repo": {
+                            "description": "The Origin repository name. Optional because Vercel resolves it from the linked project.",
                             "type": "string",
                             "example": "next.js"
                           },
                           "repoId": {
+                            "description": "The stable Origin repository ID. Read it from the `link.repoId` field returned by the project API.",
                             "type": "string",
                             "example": 123456789
                           },
                           "sha": {
+                            "description": "The commit SHA to deploy. When omitted, Vercel resolves the latest commit on `ref`.",
                             "type": "string",
                             "example": "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0"
                           },
@@ -31993,7 +32001,7 @@
                       "maxLength": 65536,
                       "type": "string"
                     },
-                    "description": "An object containing the deployment's metadata. Multiple key-value pairs can be attached to a deployment",
+                    "description": "An object containing the deployment's metadata. Multiple key-value pairs can be attached to a deployment. For deployments created with a Cursor Origin `gitSource`, Vercel automatically adds `cursorOriginDeployment`, `cursorOriginCommitSha`, `cursorOriginCommitRef`, `cursorOriginCommitMessage`, `cursorOriginCommitAuthorName`, `cursorOriginCommitAuthorEmail` when available, `cursorOriginOwner`, `cursorOriginRepo`, `cursorOriginRepoId`, and `cursorOriginPrId` for pull request deployments.",
                     "example": {
                       "foo": "bar"
                     },
@@ -32318,6 +32326,7 @@
                                 "elastic-algorithm",
                                 "plan-default",
                                 "project-setting",
+                                "team-entitlement",
                                 "team-setting"
                               ],
                               "description": "The setting which selected the build machine when the deployment was created. Frozen here so later project or team changes do not rewrite its history."
@@ -84940,6 +84949,14 @@
                           "trustedSources": {
                             "nullable": true,
                             "properties": {
+                              "enableVercelCiSameRepository": {
+                                "type": "boolean",
+                                "enum": [
+                                  false,
+                                  true
+                                ],
+                                "description": "Allow same-team Vercel CI access to preview deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value."
+                              },
                               "projects": {
                                 "additionalProperties": {
                                   "properties": {
@@ -96859,6 +96876,14 @@
                           "trustedSources": {
                             "nullable": true,
                             "properties": {
+                              "enableVercelCiSameRepository": {
+                                "type": "boolean",
+                                "enum": [
+                                  false,
+                                  true
+                                ],
+                                "description": "Allow same-team Vercel CI access to preview deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value."
+                              },
                               "projects": {
                                 "additionalProperties": {
                                   "properties": {
@@ -101676,6 +101701,14 @@
                               "trustedSources": {
                                 "nullable": true,
                                 "properties": {
+                                  "enableVercelCiSameRepository": {
+                                    "type": "boolean",
+                                    "enum": [
+                                      false,
+                                      true
+                                    ],
+                                    "description": "Allow same-team Vercel CI access to preview deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value."
+                                  },
                                   "projects": {
                                     "additionalProperties": {
                                       "properties": {
@@ -109443,6 +109476,14 @@
                               "trustedSources": {
                                 "nullable": true,
                                 "properties": {
+                                  "enableVercelCiSameRepository": {
+                                    "type": "boolean",
+                                    "enum": [
+                                      false,
+                                      true
+                                    ],
+                                    "description": "Allow same-team Vercel CI access to preview deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value."
+                                  },
                                   "projects": {
                                     "additionalProperties": {
                                       "properties": {
@@ -117758,6 +117799,14 @@
                     "trustedSources": {
                       "nullable": true,
                       "properties": {
+                        "enableVercelCiSameRepository": {
+                          "type": "boolean",
+                          "enum": [
+                            false,
+                            true
+                          ],
+                          "description": "Allow same-team Vercel CI access to preview deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value."
+                        },
                         "projects": {
                           "additionalProperties": {
                             "properties": {
@@ -126299,6 +126348,14 @@
                     "trustedSources": {
                       "nullable": true,
                       "properties": {
+                        "enableVercelCiSameRepository": {
+                          "type": "boolean",
+                          "enum": [
+                            false,
+                            true
+                          ],
+                          "description": "Allow same-team Vercel CI access to preview deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value."
+                        },
                         "projects": {
                           "additionalProperties": {
                             "properties": {
@@ -134132,6 +134189,14 @@
                     "trustedSources": {
                       "nullable": true,
                       "properties": {
+                        "enableVercelCiSameRepository": {
+                          "type": "boolean",
+                          "enum": [
+                            false,
+                            true
+                          ],
+                          "description": "Allow same-team Vercel CI access to preview deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value."
+                        },
                         "projects": {
                           "additionalProperties": {
                             "properties": {
@@ -136654,6 +136719,10 @@
                     "additionalProperties": false,
                     "description": "Deployment Protection Trusted Sources",
                     "properties": {
+                      "enableVercelCiSameRepository": {
+                        "type": "boolean",
+                        "description": "Allow same-team Vercel CI access to preview deployments built from the same repository as the CI run. The deployment source repository, not the current project repository link, is authoritative. Defaults to enabled when not stored. Omitting this field preserves its stored value, including when trustedSources is cleared. Set true explicitly to re-enable."
+                      },
                       "projects": {
                         "type": "object",
                         "maxProperties": 100,
@@ -143271,6 +143340,14 @@
                     "trustedSources": {
                       "nullable": true,
                       "properties": {
+                        "enableVercelCiSameRepository": {
+                          "type": "boolean",
+                          "enum": [
+                            false,
+                            true
+                          ],
+                          "description": "Allow same-team Vercel CI access to preview deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value."
+                        },
                         "projects": {
                           "additionalProperties": {
                             "properties": {
@@ -163901,6 +163978,14 @@
                     "trustedSources": {
                       "nullable": true,
                       "properties": {
+                        "enableVercelCiSameRepository": {
+                          "type": "boolean",
+                          "enum": [
+                            false,
+                            true
+                          ],
+                          "description": "Allow same-team Vercel CI access to preview deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value."
+                        },
                         "projects": {
                           "additionalProperties": {
                             "properties": {
@@ -217097,6 +217182,12 @@
               "project-git-commit-comments-toggled",
               "project-git-commit-status-toggled",
               "project-git-create-deployments-toggled",
+              "project-git-credential-bound-created",
+              "project-git-credential-bound-deleted",
+              "project-git-credential-bound-updated",
+              "project-git-credential-grant-created",
+              "project-git-credential-grant-deleted",
+              "project-git-credential-grant-updated",
               "project-git-fork-protection-updated",
               "project-git-lfs-toggled",
               "project-git-pr-comments-toggled",
@@ -217802,6 +217893,26 @@
                 "required": [
                   "action",
                   "environment"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "projectId": {
+                    "type": "string"
+                  },
+                  "projectName": {
+                    "type": "string"
+                  },
+                  "policyId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "policyId",
+                  "projectId",
+                  "projectName"
                 ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
@@ -219531,6 +219642,7 @@
                         "read:user",
                         "read:vcr",
                         "read:web-analytics",
+                        "read:webhooks",
                         "use:ai-gateway"
                       ]
                     },
@@ -219645,6 +219757,7 @@
                         "read:user",
                         "read:vcr",
                         "read:web-analytics",
+                        "read:webhooks",
                         "use:ai-gateway"
                       ]
                     },
@@ -219780,6 +219893,7 @@
                             "read:team",
                             "read:vcr",
                             "read:web-analytics",
+                            "read:webhooks",
                             "use:ai-gateway"
                           ]
                         },
@@ -219899,6 +220013,7 @@
                             "read:team",
                             "read:vcr",
                             "read:web-analytics",
+                            "read:webhooks",
                             "use:ai-gateway"
                           ]
                         },
@@ -220031,6 +220146,7 @@
                         "read:team",
                         "read:vcr",
                         "read:web-analytics",
+                        "read:webhooks",
                         "use:ai-gateway"
                       ]
                     },
@@ -229678,7 +229794,7 @@
                   "configurationId": {
                     "type": "string"
                   },
-                  "error": {
+                  "errorCode": {
                     "type": "string"
                   },
                   "requestKind": {
@@ -229696,11 +229812,22 @@
                   },
                   "commands": {
                     "items": {
-                      "type": "string"
+                      "properties": {
+                        "command": {
+                          "type": "string"
+                        },
+                        "errorCode": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "command"
+                      ],
+                      "type": "object"
                     },
                     "type": "array"
                   },
-                  "failedIndex": {
+                  "errorIndex": {
                     "type": "number"
                   }
                 },
@@ -229734,7 +229861,7 @@
                   "configurationId": {
                     "type": "string"
                   },
-                  "error": {
+                  "errorCode": {
                     "type": "string"
                   },
                   "requestKind": {
@@ -229778,7 +229905,7 @@
                   "configurationId": {
                     "type": "string"
                   },
-                  "error": {
+                  "errorCode": {
                     "type": "string"
                   },
                   "requestKind": {
@@ -229823,7 +229950,7 @@
                   "configurationId": {
                     "type": "string"
                   },
-                  "error": {
+                  "errorCode": {
                     "type": "string"
                   },
                   "requestKind": {
@@ -235533,6 +235660,13 @@
                   },
                   "projectName": {
                     "type": "string"
+                  },
+                  "enableVercelCiSameRepository": {
+                    "type": "boolean",
+                    "enum": [
+                      false,
+                      true
+                    ]
                   },
                   "addedProjects": {
                     "items": {
@@ -241477,6 +241611,12 @@
               "project-git-commit-comments-toggled",
               "project-git-commit-status-toggled",
               "project-git-create-deployments-toggled",
+              "project-git-credential-bound-created",
+              "project-git-credential-bound-deleted",
+              "project-git-credential-bound-updated",
+              "project-git-credential-grant-created",
+              "project-git-credential-grant-deleted",
+              "project-git-credential-grant-updated",
               "project-git-fork-protection-updated",
               "project-git-lfs-toggled",
               "project-git-pr-comments-toggled",
@@ -242205,6 +242345,12 @@
                 "project-git-commit-comments-toggled",
                 "project-git-commit-status-toggled",
                 "project-git-create-deployments-toggled",
+                "project-git-credential-bound-created",
+                "project-git-credential-bound-deleted",
+                "project-git-credential-bound-updated",
+                "project-git-credential-grant-created",
+                "project-git-credential-grant-deleted",
+                "project-git-credential-grant-updated",
                 "project-git-fork-protection-updated",
                 "project-git-lfs-toggled",
                 "project-git-pr-comments-toggled",

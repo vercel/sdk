@@ -5,17 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndTwentyFive } from "@vercel/sdk/models/onehundredandfour.js";
+import { OneHundredAndTwentyFive } from "@vercel/sdk/models/gitcredentialsource.js";
 
 let value: OneHundredAndTwentyFive = {
   domain: "grouchy-compromise.com",
-  zone: true,
+  echMode: "auto",
+  previousEchMode: "enabled",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `domain`           | *string*           | :heavy_check_mark: | N/A                |
-| `zone`             | *boolean*          | :heavy_check_mark: | N/A                |
+| Field                                                  | Type                                                   | Required                                               | Description                                            |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| `domain`                                               | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
+| `echMode`                                              | [models.EchMode](../models/echmode.md)                 | :heavy_check_mark:                                     | N/A                                                    |
+| `previousEchMode`                                      | [models.PreviousEchMode](../models/previousechmode.md) | :heavy_check_mark:                                     | N/A                                                    |

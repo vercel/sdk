@@ -5,18 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndSeventeen } from "@vercel/sdk/models/fourhundredandseven.js";
+import { FourHundredAndSeventeen } from "@vercel/sdk/models/fourhundredandeight.js";
 
 let value: FourHundredAndSeventeen = {
-  mfa: {
-    enabled: true,
-    totpVerified: false,
-  },
+  mfaEnabled: true,
 };
 ```
 
 ## Fields
 
-| Field                          | Type                           | Required                       | Description                    |
-| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
-| `mfa`                          | [models.Mfa](../models/mfa.md) | :heavy_check_mark:             | N/A                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `mfaEnabled`       | *boolean*          | :heavy_check_mark: | N/A                |

@@ -40,7 +40,8 @@ typescript:
     peerDependencies: {}
   additionalPackageJSON:
     license: Apache-2.0
-  additionalScripts: {}
+  additionalScripts:
+    test:connect-environments: npm run build && node --test tests/connect-integration-resource-to-project.test.mjs
   alwaysIncludeInboundAndOutbound: false
   apiPromiseHelpers: false
   author: Speakeasy

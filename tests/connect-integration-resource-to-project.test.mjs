@@ -28,6 +28,14 @@ test("keeps the named union on the Connect operation only", async () => {
   assert.deepEqual(redirectItems, { type: "string" });
 });
 
+test("preserves the focused test command during generation", async () => {
+  const generatorConfig = await readFile(".speakeasy/gen.yaml", "utf8");
+  assert.match(
+    generatorConfig,
+    /additionalScripts:\n\s+test:connect-environments: npm run build && node --test tests\/connect-integration-resource-to-project\.test\.mjs/,
+  );
+});
+
 test("accepts built-in, custom, and mixed environment strings", () => {
   const values = [
     ["production"],

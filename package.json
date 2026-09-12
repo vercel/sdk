@@ -29,7 +29,7 @@
     "url": "https://github.com/vercel/sdk.git"
   },
   "scripts": {
-    "test:connect-environments": "pnpm --dir examples exec tsx --test ../tests/connect-integration-resource-to-project.test.ts",
+    "test:connect-environments": "npm run build && node --test tests/connect-integration-resource-to-project.test.mjs",
     "lint": "oxlint --max-warnings=0 --deny-warnings --no-error-on-unmatched-pattern src",
     "build": "tsgo",
     "prepublishOnly": "npm run build"
@@ -43,6 +43,6 @@
     "typescript": "~5.8.3"
   },
   "dependencies": {
-    "zod": "^3.25.0 || ^4.0.0"
+    "zod": "^3.25.30 || ^4.0.0"
   }
 }

@@ -3,7 +3,7 @@ import test from "node:test";
 import {
   ConnectIntegrationResourceToProjectRequestBody$outboundSchema,
   EnvVarEnvironments,
-} from "../src/models/connectintegrationresourcetoprojectop.ts";
+} from "../esm/models/connectintegrationresourcetoprojectop.js";
 
 test("accepts built-in, custom, and mixed environment strings", () => {
   const values = [

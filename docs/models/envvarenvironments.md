@@ -11,5 +11,5 @@ let value: EnvVarEnvironments = "preview";
 ## Values
 
 ```typescript
-"production" | "preview" | "development"
+string
 ```

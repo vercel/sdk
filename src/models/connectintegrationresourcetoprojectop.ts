@@ -4,14 +4,13 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { ClosedEnum } from "../types/enums.js";
 
 export const EnvVarEnvironments = {
   Production: "production",
   Preview: "preview",
   Development: "development",
 } as const;
-export type EnvVarEnvironments = ClosedEnum<typeof EnvVarEnvironments>;
+export type EnvVarEnvironments = string;
 
 export type ConnectIntegrationResourceToProjectRequestBody = {
   projectId: string;
@@ -34,9 +33,7 @@ export type ConnectIntegrationResourceToProjectRequest = {
 };
 
 /** @internal */
-export const EnvVarEnvironments$outboundSchema: z.ZodNativeEnum<
-  typeof EnvVarEnvironments
-> = z.nativeEnum(EnvVarEnvironments);
+export const EnvVarEnvironments$outboundSchema: z.ZodString = z.string();
 
 /** @internal */
 export type ConnectIntegrationResourceToProjectRequestBody$Outbound = {

@@ -66493,11 +66493,20 @@
                   "envVarEnvironments": {
                     "type": "array",
                     "items": {
-                      "type": "string",
-                      "enum": [
-                        "production",
-                        "preview",
-                        "development"
+                      "title": "EnvVarEnvironmentsTarget",
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "enum": [
+                            "production",
+                            "preview",
+                            "development"
+                          ],
+                          "x-speakeasy-name-override": "env_var_environments"
+                        },
+                        {
+                          "type": "string"
+                        }
                       ]
                     }
                   },

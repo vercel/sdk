@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { BlobTotalGetResponseObjectSizeInBytes } from "@vercel/sdk/models/deleteduser.js";
+import { BlobTotalGetResponseObjectSizeInBytes } from "@vercel/sdk/models/onehundredandfiftyone.js";
 
 let value: BlobTotalGetResponseObjectSizeInBytes = {
   currentThreshold: 2862.79,

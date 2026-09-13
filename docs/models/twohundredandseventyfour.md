@@ -10,7 +10,7 @@ import { TwoHundredAndSeventyFour } from "@vercel/sdk/models/siftroute.js";
 let value: TwoHundredAndSeventyFour = {
   projectId: "<id>",
   projectName: "<value>",
-  gitLFS: true,
+  gitCommitStatus: true,
 };
 ```
 
@@ -20,4 +20,4 @@ let value: TwoHundredAndSeventyFour = {
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `projectId`        | *string*           | :heavy_check_mark: | N/A                |
 | `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `gitLFS`           | *boolean*          | :heavy_check_mark: | N/A                |
+| `gitCommitStatus`  | *boolean*          | :heavy_check_mark: | N/A                |

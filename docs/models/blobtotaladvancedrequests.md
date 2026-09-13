@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { BlobTotalAdvancedRequests } from "@vercel/sdk/models/deleteduser.js";
+import { BlobTotalAdvancedRequests } from "@vercel/sdk/models/onehundredandfiftyone.js";
 
 let value: BlobTotalAdvancedRequests = {
   currentThreshold: 8152.88,

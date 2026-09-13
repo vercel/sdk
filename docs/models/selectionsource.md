@@ -13,5 +13,5 @@ let value: SelectionSource = "plan-default";
 ## Values
 
 ```typescript
-"elastic-algorithm" | "plan-default" | "project-setting" | "team-setting"
+"elastic-algorithm" | "plan-default" | "project-setting" | "team-entitlement" | "team-setting"
 ```

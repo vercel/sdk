@@ -8,16 +8,31 @@ The payload of the event, if requested.
 import { TwentyEight } from "@vercel/sdk/models/userevent.js";
 
 let value: TwentyEight = {
-  regions: [
+  piiRedaction: {
+    from: false,
+    to: true,
+  },
+  moderationPolicyCount: 444.34,
+  policiesAdded: [
+    "<value 1>",
+  ],
+  policiesRemoved: [
     "<value 1>",
     "<value 2>",
-    "<value 3>",
+  ],
+  policiesModified: [
+    "<value 1>",
+    "<value 2>",
   ],
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `regions`          | *string*[]         | :heavy_check_mark: | N/A                |
+| Field                                            | Type                                             | Required                                         | Description                                      |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| `piiRedaction`                                   | [models.PiiRedaction](../models/piiredaction.md) | :heavy_check_mark:                               | N/A                                              |
+| `moderationPolicyCount`                          | *number*                                         | :heavy_check_mark:                               | N/A                                              |
+| `policiesAdded`                                  | *string*[]                                       | :heavy_check_mark:                               | N/A                                              |
+| `policiesRemoved`                                | *string*[]                                       | :heavy_check_mark:                               | N/A                                              |
+| `policiesModified`                               | *string*[]                                       | :heavy_check_mark:                               | N/A                                              |

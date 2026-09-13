@@ -1080,6 +1080,7 @@ export const GetDeploymentResponseBodySelectionSource = {
   ElasticAlgorithm: "elastic-algorithm",
   PlanDefault: "plan-default",
   ProjectSetting: "project-setting",
+  TeamEntitlement: "team-entitlement",
   TeamSetting: "team-setting",
 } as const;
 /**

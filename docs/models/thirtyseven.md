@@ -5,26 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThirtySeven } from "@vercel/sdk/models/payloadrule.js";
+import { ThirtySeven } from "@vercel/sdk/models/thirtythree.js";
 
 let value: ThirtySeven = {
   accessGroup: {
     id: "<id>",
     name: "<value>",
   },
+  project: {
+    id: "<id>",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `accessGroup`                                                                      | [models.UserEventPayload37AccessGroup](../models/usereventpayload37accessgroup.md) | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `name`                                                                             | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `previousName`                                                                     | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `teamRoles`                                                                        | *string*[]                                                                         | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `previousTeamRoles`                                                                | *string*[]                                                                         | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `teamPermissions`                                                                  | *string*[]                                                                         | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `previousTeamPermissions`                                                          | *string*[]                                                                         | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `entitlementsAdded`                                                                | *string*[]                                                                         | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `entitlementsRemoved`                                                              | *string*[]                                                                         | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `accessGroup`                                                                  | [models.UserEventPayloadAccessGroup](../models/usereventpayloadaccessgroup.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `project`                                                                      | [models.PayloadProject](../models/payloadproject.md)                           | :heavy_check_mark:                                                             | N/A                                                                            |
+| `nextRole`                                                                     | [models.NextRole](../models/nextrole.md)                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `previousRole`                                                                 | [models.PreviousRole](../models/previousrole.md)                               | :heavy_minus_sign:                                                             | N/A                                                                            |

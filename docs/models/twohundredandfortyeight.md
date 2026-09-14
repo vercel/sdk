@@ -7,31 +7,14 @@ The payload of the event, if requested.
 ```typescript
 import { TwoHundredAndFortyEight } from "@vercel/sdk/models/siftroute.js";
 
-let value: TwoHundredAndFortyEight = {
-  team: {
-    name: "<value>",
-    id: "<id>",
-  },
-  project: {
-    id: "<id>",
-    oldConnectConfigurations: [
-      {
-        envId: "<id>",
-        connectConfigurationId: "<id>",
-        passive: false,
-        buildsEnabled: true,
-        createdAt: 9005.75,
-        updatedAt: 8968.35,
-      },
-    ],
-    newConnectConfigurations: null,
-  },
-};
+let value: TwoHundredAndFortyEight = {};
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `team`                                                                       | [models.UserEventPayload248Team](../models/usereventpayload248team.md)       | :heavy_check_mark:                                                           | N/A                                                                          |
-| `project`                                                                    | [models.UserEventPayload248Project](../models/usereventpayload248project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_minus_sign: | N/A                |
+| `projectName`      | *string*           | :heavy_minus_sign: | N/A                |
+| `target`           | *string*[]         | :heavy_minus_sign: | N/A                |
+| `updated`          | *boolean*          | :heavy_minus_sign: | N/A                |

@@ -5,23 +5,26 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndTwentyTwo } from "@vercel/sdk/models/onehundredandfour.js";
+import { OneHundredAndTwentyTwo } from "@vercel/sdk/models/gitcredentialsource.js";
 
 let value: OneHundredAndTwentyTwo = {
-  domain: "silky-apparatus.net",
-  customNameservers: [
+  previousServiceType: "<value>",
+  serviceType: "<value>",
+  id: "<id>",
+  name: "<value>",
+  nameservers: [
     "<value 1>",
     "<value 2>",
-    "<value 3>",
   ],
-  prevCustomNameservers: [],
 };
 ```
 
 ## Fields
 
-| Field                   | Type                    | Required                | Description             |
-| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
-| `domain`                | *string*                | :heavy_check_mark:      | N/A                     |
-| `customNameservers`     | *string*[]              | :heavy_check_mark:      | N/A                     |
-| `prevCustomNameservers` | *string*[]              | :heavy_check_mark:      | N/A                     |
+| Field                 | Type                  | Required              | Description           |
+| --------------------- | --------------------- | --------------------- | --------------------- |
+| `previousServiceType` | *string*              | :heavy_check_mark:    | N/A                   |
+| `serviceType`         | *string*              | :heavy_check_mark:    | N/A                   |
+| `id`                  | *string*              | :heavy_check_mark:    | N/A                   |
+| `name`                | *string*              | :heavy_check_mark:    | N/A                   |
+| `nameservers`         | *string*[]            | :heavy_check_mark:    | N/A                   |

@@ -5,15 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndEightySix } from "@vercel/sdk/models/usereventpayload339budget.js";
+import { ThreeHundredAndEightySix } from "@vercel/sdk/models/usereventpayload340budget.js";
 
 let value: ThreeHundredAndEightySix = {
-  consent: "granted",
+  decision: "keep_on",
+  version: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                | Type                                                 | Required                                             | Description                                          |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `consent`                                            | [models.PayloadConsent](../models/payloadconsent.md) | :heavy_check_mark:                                   | N/A                                                  |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `decision`                               | [models.Decision](../models/decision.md) | :heavy_check_mark:                       | N/A                                      |
+| `version`                                | *string*                                 | :heavy_check_mark:                       | N/A                                      |

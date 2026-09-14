@@ -7,11 +7,11 @@ The setting which selected the build machine when the deployment was created. Fr
 ```typescript
 import { GetDeploymentResponseBodySelectionSource } from "@vercel/sdk/models/getdeploymentgitsourcedeploymentsresponse200type.js";
 
-let value: GetDeploymentResponseBodySelectionSource = "project-setting";
+let value: GetDeploymentResponseBodySelectionSource = "team-entitlement";
 ```
 
 ## Values
 
 ```typescript
-"elastic-algorithm" | "plan-default" | "project-setting" | "team-setting"
+"elastic-algorithm" | "plan-default" | "project-setting" | "team-entitlement" | "team-setting"
 ```

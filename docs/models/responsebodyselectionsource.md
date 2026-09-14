@@ -13,5 +13,5 @@ let value: ResponseBodySelectionSource = "team-setting";
 ## Values
 
 ```typescript
-"elastic-algorithm" | "plan-default" | "project-setting" | "team-setting"
+"elastic-algorithm" | "plan-default" | "project-setting" | "team-entitlement" | "team-setting"
 ```

@@ -5,7 +5,7 @@ Since June 2023
 ## Example Usage
 
 ```typescript
-import { BlockHistory } from "@vercel/sdk/models/artifacts.js";
+import { BlockHistory } from "@vercel/sdk/models/analyticsusage.js";
 
 let value: BlockHistory = {
   action: "unblocked",
@@ -18,7 +18,7 @@ let value: BlockHistory = {
 
 | Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
 | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `action`                                                                   | [models.UserEventPayload169Action](../models/usereventpayload169action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| `action`                                                                   | [models.UserEventPayload170Action](../models/usereventpayload170action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
 | `createdAt`                                                                | *number*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
 | `caseId`                                                                   | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
 | `reason`                                                                   | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |

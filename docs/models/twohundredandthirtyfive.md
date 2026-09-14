@@ -9,24 +9,15 @@ import { TwoHundredAndThirtyFive } from "@vercel/sdk/models/siftroute.js";
 
 let value: TwoHundredAndThirtyFive = {
   projectId: "<id>",
-  projectAnalytics: {
-    id: "<id>",
-    disabledAt: 8158.98,
-    enabledAt: 6092.21,
-  },
-  prevProjectAnalytics: {
-    id: "<id>",
-    disabledAt: 6378.26,
-    enabledAt: 1532.79,
-  },
+  projectName: "<value>",
+  directoryListing: false,
 };
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `projectName`                                                    | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
-| `projectId`                                                      | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `projectAnalytics`                                               | [models.ProjectAnalytics](../models/projectanalytics.md)         | :heavy_check_mark:                                               | N/A                                                              |
-| `prevProjectAnalytics`                                           | [models.PrevProjectAnalytics](../models/prevprojectanalytics.md) | :heavy_check_mark:                                               | N/A                                                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `directoryListing` | *boolean*          | :heavy_check_mark: | N/A                |

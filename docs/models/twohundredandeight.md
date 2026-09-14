@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndEight } from "@vercel/sdk/models/siftroute.js";
+import { TwoHundredAndEight } from "@vercel/sdk/models/analyticsusage.js";
 
 let value: TwoHundredAndEight = {
   ownerId: "<id>",
@@ -16,9 +16,10 @@ let value: TwoHundredAndEight = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `ownerId`          | *string*           | :heavy_check_mark: | N/A                |
-| `source`           | *string*           | :heavy_check_mark: | N/A                |
-| `cause`            | *string*           | :heavy_check_mark: | N/A                |
-| `reason`           | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                      | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `ownerId`                                  | *string*                                   | :heavy_check_mark:                         | N/A                                        |
+| `source`                                   | *string*                                   | :heavy_check_mark:                         | N/A                                        |
+| `cause`                                    | *string*                                   | :heavy_check_mark:                         | N/A                                        |
+| `blockReason`                              | *string*                                   | :heavy_minus_sign:                         | N/A                                        |
+| `siftRoute`                                | [models.SiftRoute](../models/siftroute.md) | :heavy_minus_sign:                         | N/A                                        |

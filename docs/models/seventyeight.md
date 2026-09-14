@@ -5,10 +5,11 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { SeventyEight } from "@vercel/sdk/models/payloadrule.js";
+import { SeventyEight } from "@vercel/sdk/models/thirtythree.js";
 
 let value: SeventyEight = {
-  id: "<id>",
+  src: "<value>",
+  dst: "<value>",
 };
 ```
 
@@ -16,6 +17,5 @@ let value: SeventyEight = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *string*           | :heavy_check_mark: | N/A                |
-| `cn`               | *string*           | :heavy_minus_sign: | N/A                |
-| `cns`              | *string*[]         | :heavy_minus_sign: | N/A                |
+| `src`              | *string*           | :heavy_check_mark: | N/A                |
+| `dst`              | *string*           | :heavy_check_mark: | N/A                |

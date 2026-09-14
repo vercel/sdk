@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayloadDataCache } from "@vercel/sdk/models/deleteduser.js";
+import { UserEventPayloadDataCache } from "@vercel/sdk/models/onehundredandfiftyone.js";
 
 let value: UserEventPayloadDataCache = {
   updatedAt: 2335.94,
@@ -18,4 +18,4 @@ let value: UserEventPayloadDataCache = {
 | `updatedAt`                                                                          | *number*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
 | `blockedFrom`                                                                        | *number*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
 | `blockedUntil`                                                                       | *number*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `blockReason`                                                                        | [models.UserEventPayload169BlockReason](../models/usereventpayload169blockreason.md) | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `blockReason`                                                                        | [models.UserEventPayload170BlockReason](../models/usereventpayload170blockreason.md) | :heavy_check_mark:                                                                   | N/A                                                                                  |

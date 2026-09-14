@@ -610,6 +610,10 @@ export type OidcProviders = {
  * Deployment Protection Trusted Sources
  */
 export type TrustedSources = {
+  /**
+   * Allow same-team Vercel CI access to preview deployments built from the same repository as the CI run. The deployment source repository, not the current project repository link, is authoritative. Defaults to enabled when not stored. Omitting this field preserves its stored value, including when trustedSources is cleared. Set true explicitly to re-enable.
+   */
+  enableVercelCiSameRepository?: boolean | undefined;
   projects?: { [k: string]: UpdateProjectProjects } | undefined;
   oidcProviders?: { [k: string]: Array<OidcProviders> } | undefined;
 };
@@ -2357,6 +2361,7 @@ export function oidcProvidersToJSON(oidcProviders: OidcProviders): string {
 
 /** @internal */
 export type TrustedSources$Outbound = {
+  enableVercelCiSameRepository?: boolean | undefined;
   projects?: { [k: string]: UpdateProjectProjects$Outbound } | undefined;
   oidcProviders?: { [k: string]: Array<OidcProviders$Outbound> } | undefined;
 };
@@ -2367,6 +2372,7 @@ export const TrustedSources$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TrustedSources
 > = z.object({
+  enableVercelCiSameRepository: z.boolean().optional(),
   projects: z.record(z.lazy(() => UpdateProjectProjects$outboundSchema))
     .optional(),
   oidcProviders: z.record(z.array(z.lazy(() => OidcProviders$outboundSchema)))

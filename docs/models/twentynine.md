@@ -8,15 +8,15 @@ The payload of the event, if requested.
 import { TwentyNine } from "@vercel/sdk/models/userevent.js";
 
 let value: TwentyNine = {
-  retention: {
-    defaultMode: "until-requested",
-    ceilingMode: "days",
-  },
+  regions: [
+    "<value 1>",
+    "<value 2>",
+  ],
 };
 ```
 
 ## Fields
 
-| Field                                      | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `retention`                                | [models.Retention](../models/retention.md) | :heavy_check_mark:                         | N/A                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `regions`          | *string*[]         | :heavy_check_mark: | N/A                |

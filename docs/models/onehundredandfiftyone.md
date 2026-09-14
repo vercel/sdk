@@ -5,12 +5,9 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFiftyOne } from "@vercel/sdk/models/deleteduser.js";
+import { OneHundredAndFiftyOne } from "@vercel/sdk/models/onehundredandfiftyone.js";
 
-let value: OneHundredAndFiftyOne = {
-  deploymentId: "<id>",
-  deploymentUrl: "https://tragic-teriyaki.org",
-};
+let value: OneHundredAndFiftyOne = {};
 ```
 
 ## Fields
@@ -20,7 +17,7 @@ let value: OneHundredAndFiftyOne = {
 | `key`                    | *string*                 | :heavy_minus_sign:       | N/A                      |
 | `projectId`              | *string*                 | :heavy_minus_sign:       | N/A                      |
 | `projectName`            | *string*                 | :heavy_minus_sign:       | N/A                      |
-| `target`                 | *models.PayloadTarget*   | :heavy_minus_sign:       | N/A                      |
+| `target`                 | *models.Target*          | :heavy_minus_sign:       | N/A                      |
 | `customEnvironmentSlugs` | *string*[]               | :heavy_minus_sign:       | N/A                      |
 | `id`                     | *string*                 | :heavy_minus_sign:       | N/A                      |
 | `gitBranch`              | *string*                 | :heavy_minus_sign:       | N/A                      |
@@ -28,5 +25,3 @@ let value: OneHundredAndFiftyOne = {
 | `edgeConfigTokenId`      | *string*                 | :heavy_minus_sign:       | N/A                      |
 | `source`                 | *string*                 | :heavy_minus_sign:       | N/A                      |
 | `ipAddress`              | *string*                 | :heavy_minus_sign:       | N/A                      |
-| `deploymentId`           | *string*                 | :heavy_check_mark:       | N/A                      |
-| `deploymentUrl`          | *string*                 | :heavy_check_mark:       | N/A                      |

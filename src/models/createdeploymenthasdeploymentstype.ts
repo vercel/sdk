@@ -149,11 +149,29 @@ export type CreateDeploymentGitSourceDeploymentsRequestRequestBody9Type =
     typeof CreateDeploymentGitSourceDeploymentsRequestRequestBody9Type
   >;
 
+/**
+ * Deploys from the Cursor Origin repository linked to the target project. The repository ID must match the linked repository; Vercel resolves the owner and repository name from the project link.
+ */
 export type GitSource9 = {
+  /**
+   * The Origin workspace slug. Optional because Vercel resolves it from the linked project.
+   */
   owner?: string | undefined;
+  /**
+   * The branch or Git reference to deploy.
+   */
   ref: string;
+  /**
+   * The Origin repository name. Optional because Vercel resolves it from the linked project.
+   */
   repo?: string | undefined;
+  /**
+   * The stable Origin repository ID. Read it from the `link.repoId` field returned by the project API.
+   */
   repoId: string;
+  /**
+   * The commit SHA to deploy. When omitted, Vercel resolves the latest commit on `ref`.
+   */
   sha?: string | undefined;
   type: CreateDeploymentGitSourceDeploymentsRequestRequestBody9Type;
 };
@@ -480,7 +498,7 @@ export type CreateDeploymentRequestBody = {
     | GitSource1
     | undefined;
   /**
-   * An object containing the deployment's metadata. Multiple key-value pairs can be attached to a deployment
+   * An object containing the deployment's metadata. Multiple key-value pairs can be attached to a deployment. For deployments created with a Cursor Origin `gitSource`, Vercel automatically adds `cursorOriginDeployment`, `cursorOriginCommitSha`, `cursorOriginCommitRef`, `cursorOriginCommitMessage`, `cursorOriginCommitAuthorName`, `cursorOriginCommitAuthorEmail` when available, `cursorOriginOwner`, `cursorOriginRepo`, `cursorOriginRepoId`, and `cursorOriginPrId` for pull request deployments.
    */
   meta?: { [k: string]: string } | undefined;
   /**
@@ -593,6 +611,7 @@ export const ResponseBodySelectionSource = {
   ElasticAlgorithm: "elastic-algorithm",
   PlanDefault: "plan-default",
   ProjectSetting: "project-setting",
+  TeamEntitlement: "team-entitlement",
   TeamSetting: "team-setting",
 } as const;
 /**

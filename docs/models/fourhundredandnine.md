@@ -5,10 +5,9 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndNine } from "@vercel/sdk/models/fourhundredandseven.js";
+import { FourHundredAndNine } from "@vercel/sdk/models/fourhundredandeight.js";
 
 let value: FourHundredAndNine = {
-  enabled: true,
   actorId: "<id>",
   actorType: "admin",
 };
@@ -18,6 +17,5 @@ let value: FourHundredAndNine = {
 
 | Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
 | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `enabled`                                                                        | *boolean*                                                                        | :heavy_check_mark:                                                               | N/A                                                                              |
 | `actorId`                                                                        | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
 | `actorType`                                                                      | [models.UserEventPayload409ActorType](../models/usereventpayload409actortype.md) | :heavy_check_mark:                                                               | N/A                                                                              |

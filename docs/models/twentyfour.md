@@ -8,15 +8,18 @@ The payload of the event, if requested.
 import { TwentyFour } from "@vercel/sdk/models/userevent.js";
 
 let value: TwentyFour = {
-  privateModel: {
-    slug: "<value>",
-    providerSlug: "<value>",
-  },
+  added: [
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
+  ],
+  removed: [],
 };
 ```
 
 ## Fields
 
-| Field                                            | Type                                             | Required                                         | Description                                      |
-| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| `privateModel`                                   | [models.PrivateModel](../models/privatemodel.md) | :heavy_check_mark:                               | N/A                                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `added`            | *string*[]         | :heavy_check_mark: | N/A                |
+| `removed`          | *string*[]         | :heavy_check_mark: | N/A                |

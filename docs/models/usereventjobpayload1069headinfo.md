@@ -5,7 +5,7 @@ Cursor Origin
 ## Example Usage
 
 ```typescript
-import { UserEventJobPayload1069HeadInfo } from "@vercel/sdk/models/gitcredentialsource.js";
+import { UserEventJobPayload1069HeadInfo } from "@vercel/sdk/models/headinfo.js";
 
 let value: UserEventJobPayload1069HeadInfo = {
   owner: "<value>",

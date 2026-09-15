@@ -170,7 +170,7 @@ async function $do(
   >(
     M.json(200, AggregatePageviewsResponseBody$inboundSchema),
     M.fail([400, 401, 402, 403, 404, 410, "4XX"]),
-    M.fail("5XX"),
+    M.fail([503, "5XX"]),
   )(response, req);
   if (!result.ok) {
     return [result, { status: "complete", request: req, response }];

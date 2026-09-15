@@ -15,13 +15,24 @@ const value: string = "<value>";
 const value: number = 1284.03;
 ```
 
-### `models.GetProjectsValue3`
+### `{ [k: string]: any }`
 
 ```typescript
-const value: models.GetProjectsValue3 = {
-  previousValue: 6985.95,
-  currentValue: "<value>",
+const value: { [k: string]: any } = {
+  "key": "<value>",
+  "key1": "<value>",
+  "key2": "<value>",
 };
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = [
+  "<value 1>",
+  "<value 2>",
+  "<value 3>",
+];
 ```
 
 ### `boolean`

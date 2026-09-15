@@ -7,10 +7,13 @@ import { ListFlagVersionsData } from "@vercel/sdk/models/listflagversionsop.js";
 
 let value: ListFlagVersionsData = {
   variants: [
-    {},
+    {
+      value: {},
+      id: "<id>",
+    },
   ],
   environments: {},
-  seed: 5467.94,
+  seed: 7513.46,
   state: "active",
 };
 ```

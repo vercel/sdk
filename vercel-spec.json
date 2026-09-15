@@ -4069,6 +4069,43 @@
                                 {
                                   "properties": {
                                     "options": {
+                                      "properties": {
+                                        "orbSubscriptionId": {
+                                          "type": "string",
+                                          "description": "The ID of the Orb subscription to modify price intervals for"
+                                        },
+                                        "add": {
+                                          "items": {},
+                                          "type": "array",
+                                          "description": "The price intervals to add to the subscription"
+                                        },
+                                        "addAdjustments": {
+                                          "items": {},
+                                          "type": "array",
+                                          "description": "The adjustment intervals to add to the subscription"
+                                        },
+                                        "allowInvoiceCreditOrVoid": {
+                                          "type": "boolean",
+                                          "enum": [
+                                            false,
+                                            true
+                                          ],
+                                          "description": "Whether to allow invoice credit or void"
+                                        },
+                                        "edit": {
+                                          "items": {},
+                                          "type": "array",
+                                          "description": "The price intervals to edit on the subscription"
+                                        },
+                                        "editAdjustments": {
+                                          "items": {},
+                                          "type": "array",
+                                          "description": "The adjustment intervals to edit on the subscription"
+                                        }
+                                      },
+                                      "required": [
+                                        "orbSubscriptionId"
+                                      ],
                                       "type": "object"
                                     },
                                     "output": {
@@ -16749,6 +16786,7 @@
                                 "selectionSource": {
                                   "type": "string",
                                   "enum": [
+                                    "deployment-override",
                                     "elastic-algorithm",
                                     "plan-default",
                                     "project-setting",
@@ -19912,6 +19950,10 @@
                                           "serviceName": {
                                             "type": "string",
                                             "description": "Owning service name; scopes per-function config such as the v2beta consumer."
+                                          },
+                                          "buildpack": {
+                                            "type": "string",
+                                            "description": "Buildpack runtime slug (e.g. \"ruby\")."
                                           }
                                         },
                                         "type": "object"
@@ -20437,6 +20479,10 @@
                                           "serviceName": {
                                             "type": "string",
                                             "description": "Owning service name; scopes per-function config such as the v2beta consumer."
+                                          },
+                                          "buildpack": {
+                                            "type": "string",
+                                            "description": "Buildpack runtime slug (e.g. \"ruby\")."
                                           }
                                         },
                                         "type": "object"
@@ -24960,6 +25006,7 @@
                                 "selectionSource": {
                                   "type": "string",
                                   "enum": [
+                                    "deployment-override",
                                     "elastic-algorithm",
                                     "plan-default",
                                     "project-setting",
@@ -28123,6 +28170,10 @@
                                           "serviceName": {
                                             "type": "string",
                                             "description": "Owning service name; scopes per-function config such as the v2beta consumer."
+                                          },
+                                          "buildpack": {
+                                            "type": "string",
+                                            "description": "Buildpack runtime slug (e.g. \"ruby\")."
                                           }
                                         },
                                         "type": "object"
@@ -28648,6 +28699,10 @@
                                           "serviceName": {
                                             "type": "string",
                                             "description": "Owning service name; scopes per-function config such as the v2beta consumer."
+                                          },
+                                          "buildpack": {
+                                            "type": "string",
+                                            "description": "Buildpack runtime slug (e.g. \"ruby\")."
                                           }
                                         },
                                         "type": "object"
@@ -32323,6 +32378,7 @@
                             "selectionSource": {
                               "type": "string",
                               "enum": [
+                                "deployment-override",
                                 "elastic-algorithm",
                                 "plan-default",
                                 "project-setting",
@@ -35486,6 +35542,10 @@
                                       "serviceName": {
                                         "type": "string",
                                         "description": "Owning service name; scopes per-function config such as the v2beta consumer."
+                                      },
+                                      "buildpack": {
+                                        "type": "string",
+                                        "description": "Buildpack runtime slug (e.g. \"ruby\")."
                                       }
                                     },
                                     "type": "object"
@@ -36011,6 +36071,10 @@
                                       "serviceName": {
                                         "type": "string",
                                         "description": "Owning service name; scopes per-function config such as the v2beta consumer."
+                                      },
+                                      "buildpack": {
+                                        "type": "string",
+                                        "description": "Buildpack runtime slug (e.g. \"ruby\")."
                                       }
                                     },
                                     "type": "object"
@@ -58465,6 +58529,47 @@
                     },
                     "variants": {
                       "items": {
+                        "properties": {
+                          "description": {
+                            "type": "string"
+                          },
+                          "label": {
+                            "type": "string"
+                          },
+                          "value": {
+                            "nullable": true,
+                            "oneOf": [
+                              {
+                                "type": "string"
+                              },
+                              {
+                                "type": "number"
+                              },
+                              {
+                                "additionalProperties": true,
+                                "type": "object"
+                              },
+                              {
+                                "items": {},
+                                "type": "array"
+                              },
+                              {
+                                "type": "boolean",
+                                "enum": [
+                                  false,
+                                  true
+                                ]
+                              }
+                            ]
+                          },
+                          "id": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "value"
+                        ],
                         "type": "object"
                       },
                       "type": "array"
@@ -60022,6 +60127,47 @@
                         },
                         "variants": {
                           "items": {
+                            "properties": {
+                              "description": {
+                                "type": "string"
+                              },
+                              "label": {
+                                "type": "string"
+                              },
+                              "value": {
+                                "nullable": true,
+                                "oneOf": [
+                                  {
+                                    "type": "string"
+                                  },
+                                  {
+                                    "type": "number"
+                                  },
+                                  {
+                                    "additionalProperties": true,
+                                    "type": "object"
+                                  },
+                                  {
+                                    "items": {},
+                                    "type": "array"
+                                  },
+                                  {
+                                    "type": "boolean",
+                                    "enum": [
+                                      false,
+                                      true
+                                    ]
+                                  }
+                                ]
+                              },
+                              "id": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "value"
+                            ],
                             "type": "object"
                           },
                           "type": "array"
@@ -61629,6 +61775,47 @@
                               },
                               "variants": {
                                 "items": {
+                                  "properties": {
+                                    "description": {
+                                      "type": "string"
+                                    },
+                                    "label": {
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "nullable": true,
+                                      "oneOf": [
+                                        {
+                                          "type": "string"
+                                        },
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "additionalProperties": true,
+                                          "type": "object"
+                                        },
+                                        {
+                                          "items": {},
+                                          "type": "array"
+                                        },
+                                        {
+                                          "type": "boolean",
+                                          "enum": [
+                                            false,
+                                            true
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    "id": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "id",
+                                    "value"
+                                  ],
                                   "type": "object"
                                 },
                                 "type": "array"
@@ -80045,7 +80232,7 @@
                                     "config",
                                     "secret"
                                   ],
-                                  "description": "User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior."
+                                  "description": "User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior."
                                 },
                                 "edgeConfigId": {
                                   "nullable": true,
@@ -94653,7 +94840,7 @@
                                     "config",
                                     "secret"
                                   ],
-                                  "description": "User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior."
+                                  "description": "User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior."
                                 },
                                 "edgeConfigId": {
                                   "nullable": true,
@@ -99478,7 +99665,7 @@
                                         "config",
                                         "secret"
                                       ],
-                                      "description": "User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior."
+                                      "description": "User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior."
                                     },
                                     "edgeConfigId": {
                                       "nullable": true,
@@ -104572,7 +104759,7 @@
                                         "config",
                                         "secret"
                                       ],
-                                      "description": "User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior."
+                                      "description": "User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior."
                                     },
                                     "edgeConfigId": {
                                       "nullable": true,
@@ -112895,7 +113082,7 @@
                               "config",
                               "secret"
                             ],
-                            "description": "User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior."
+                            "description": "User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior."
                           },
                           "edgeConfigId": {
                             "nullable": true,
@@ -121444,7 +121631,7 @@
                               "config",
                               "secret"
                             ],
-                            "description": "User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior."
+                            "description": "User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior."
                           },
                           "edgeConfigId": {
                             "nullable": true,
@@ -129285,7 +129472,7 @@
                               "config",
                               "secret"
                             ],
-                            "description": "User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior."
+                            "description": "User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior."
                           },
                           "edgeConfigId": {
                             "nullable": true,
@@ -138436,7 +138623,7 @@
                               "config",
                               "secret"
                             ],
-                            "description": "User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior."
+                            "description": "User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior."
                           },
                           "edgeConfigId": {
                             "nullable": true,
@@ -148314,7 +148501,7 @@
                             "config",
                             "secret"
                           ],
-                          "description": "User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior."
+                          "description": "User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior."
                         },
                         "contentHint": {
                           "nullable": true,
@@ -148796,7 +148983,7 @@
                                   "config",
                                   "secret"
                                 ],
-                                "description": "User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior."
+                                "description": "User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior."
                               },
                               "contentHint": {
                                 "nullable": true,
@@ -149290,7 +149477,7 @@
                                   "config",
                                   "secret"
                                 ],
-                                "description": "User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior."
+                                "description": "User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior."
                               },
                               "contentHint": {
                                 "nullable": true,
@@ -149900,7 +150087,7 @@
                                 "config",
                                 "secret"
                               ],
-                              "description": "User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior."
+                              "description": "User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior."
                             },
                             "edgeConfigId": {
                               "nullable": true,
@@ -150363,7 +150550,7 @@
                                   "config",
                                   "secret"
                                 ],
-                                "description": "User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior."
+                                "description": "User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior."
                               },
                               "edgeConfigId": {
                                 "nullable": true,
@@ -151206,7 +151393,7 @@
                             "config",
                             "secret"
                           ],
-                          "description": "User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior."
+                          "description": "User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior."
                         },
                         "contentHint": {
                           "nullable": true,
@@ -151663,7 +151850,7 @@
                             "config",
                             "secret"
                           ],
-                          "description": "User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior."
+                          "description": "User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior."
                         },
                         "contentHint": {
                           "nullable": true,
@@ -152215,7 +152402,7 @@
                               "config",
                               "secret"
                             ],
-                            "description": "User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior."
+                            "description": "User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior."
                           },
                           "contentHint": {
                             "nullable": true,
@@ -152683,7 +152870,7 @@
                             "config",
                             "secret"
                           ],
-                          "description": "User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior."
+                          "description": "User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior."
                         },
                         "contentHint": {
                           "nullable": true,
@@ -153143,7 +153330,7 @@
                             "config",
                             "secret"
                           ],
-                          "description": "User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior."
+                          "description": "User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior."
                         },
                         "contentHint": {
                           "nullable": true,
@@ -153710,7 +153897,7 @@
                         "config",
                         "secret"
                       ],
-                      "description": "User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior."
+                      "description": "User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior."
                     },
                     "contentHint": {
                       "nullable": true,
@@ -159074,7 +159261,7 @@
                               "config",
                               "secret"
                             ],
-                            "description": "User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior."
+                            "description": "User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior."
                           },
                           "edgeConfigId": {
                             "nullable": true,
@@ -197553,7 +197740,7 @@
                 "properties": {
                   "projectId": {
                     "type": "string",
-                    "description": "Project ID. Missing or empty values return HTTP 400."
+                    "description": "Project ID or name (slug) within the authenticated team. IDs take precedence over names. Missing or empty values return HTTP 400."
                   },
                   "name": {
                     "type": "string",
@@ -197610,12 +197797,12 @@
         "parameters": [
           {
             "name": "projectId",
-            "description": "Project ID. Missing or empty values return HTTP 400.",
+            "description": "Project ID or name (slug) within the authenticated team. IDs take precedence over names. Missing or empty values return HTTP 400.",
             "in": "query",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "Project ID. Missing or empty values return HTTP 400."
+              "description": "Project ID or name (slug) within the authenticated team. IDs take precedence over names. Missing or empty values return HTTP 400."
             }
           },
           {
@@ -197711,12 +197898,12 @@
         "parameters": [
           {
             "name": "projectId",
-            "description": "Project ID. Missing or empty values return HTTP 400.",
+            "description": "Project ID or name (slug) within the authenticated team. IDs take precedence over names. Missing or empty values return HTTP 400.",
             "in": "query",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "Project ID. Missing or empty values return HTTP 400."
+              "description": "Project ID or name (slug) within the authenticated team. IDs take precedence over names. Missing or empty values return HTTP 400."
             }
           },
           {
@@ -197790,12 +197977,12 @@
         "parameters": [
           {
             "name": "projectId",
-            "description": "Project ID. Missing or empty values return HTTP 400.",
+            "description": "Project ID or name (slug) within the authenticated team. IDs take precedence over names. Missing or empty values return HTTP 400.",
             "in": "query",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "Project ID. Missing or empty values return HTTP 400."
+              "description": "Project ID or name (slug) within the authenticated team. IDs take precedence over names. Missing or empty values return HTTP 400."
             }
           },
           {
@@ -197871,12 +198058,12 @@
         "parameters": [
           {
             "name": "projectId",
-            "description": "Project ID. Missing or empty values return HTTP 400.",
+            "description": "Project ID or name (slug) within the authenticated team. IDs take precedence over names. Missing or empty values return HTTP 400.",
             "in": "query",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "Project ID. Missing or empty values return HTTP 400."
+              "description": "Project ID or name (slug) within the authenticated team. IDs take precedence over names. Missing or empty values return HTTP 400."
             }
           },
           {
@@ -197989,12 +198176,12 @@
         "parameters": [
           {
             "name": "projectId",
-            "description": "Project ID. Missing or empty values return HTTP 400.",
+            "description": "Project ID or name (slug) within the authenticated team. IDs take precedence over names. Missing or empty values return HTTP 400.",
             "in": "query",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "Project ID. Missing or empty values return HTTP 400."
+              "description": "Project ID or name (slug) within the authenticated team. IDs take precedence over names. Missing or empty values return HTTP 400."
             }
           },
           {
@@ -198094,12 +198281,12 @@
         "parameters": [
           {
             "name": "projectId",
-            "description": "Project ID. Missing or empty values return HTTP 400.",
+            "description": "Project ID or name (slug) within the authenticated team. IDs take precedence over names. Missing or empty values return HTTP 400.",
             "in": "query",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "Project ID. Missing or empty values return HTTP 400."
+              "description": "Project ID or name (slug) within the authenticated team. IDs take precedence over names. Missing or empty values return HTTP 400."
             }
           },
           {
@@ -198199,12 +198386,12 @@
         "parameters": [
           {
             "name": "projectId",
-            "description": "Project ID. Missing or empty values return HTTP 400.",
+            "description": "Project ID or name (slug) within the authenticated team. IDs take precedence over names. Missing or empty values return HTTP 400.",
             "in": "query",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "Project ID. Missing or empty values return HTTP 400."
+              "description": "Project ID or name (slug) within the authenticated team. IDs take precedence over names. Missing or empty values return HTTP 400."
             }
           },
           {
@@ -198301,12 +198488,12 @@
         "parameters": [
           {
             "name": "projectId",
-            "description": "Project ID. Missing or empty values return HTTP 400.",
+            "description": "Project ID or name (slug) within the authenticated team. IDs take precedence over names. Missing or empty values return HTTP 400.",
             "in": "query",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "Project ID. Missing or empty values return HTTP 400."
+              "description": "Project ID or name (slug) within the authenticated team. IDs take precedence over names. Missing or empty values return HTTP 400."
             }
           },
           {
@@ -198453,12 +198640,12 @@
         "parameters": [
           {
             "name": "projectId",
-            "description": "Project ID. Missing or empty values return HTTP 400.",
+            "description": "Project ID or name (slug) within the authenticated team. IDs take precedence over names. Missing or empty values return HTTP 400.",
             "in": "query",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "Project ID. Missing or empty values return HTTP 400."
+              "description": "Project ID or name (slug) within the authenticated team. IDs take precedence over names. Missing or empty values return HTTP 400."
             }
           },
           {
@@ -198590,12 +198777,12 @@
         "parameters": [
           {
             "name": "projectId",
-            "description": "Project ID. Missing or empty values return HTTP 400.",
+            "description": "Project ID or name (slug) within the authenticated team. IDs take precedence over names. Missing or empty values return HTTP 400.",
             "in": "query",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "Project ID. Missing or empty values return HTTP 400."
+              "description": "Project ID or name (slug) within the authenticated team. IDs take precedence over names. Missing or empty values return HTTP 400."
             }
           },
           {
@@ -198688,12 +198875,12 @@
         "parameters": [
           {
             "name": "projectId",
-            "description": "Project ID. Missing or empty values return HTTP 400.",
+            "description": "Project ID or name (slug) within the authenticated team. IDs take precedence over names. Missing or empty values return HTTP 400.",
             "in": "query",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "Project ID. Missing or empty values return HTTP 400."
+              "description": "Project ID or name (slug) within the authenticated team. IDs take precedence over names. Missing or empty values return HTTP 400."
             }
           },
           {
@@ -198780,12 +198967,12 @@
         "parameters": [
           {
             "name": "projectId",
-            "description": "Project ID. Missing or empty values return HTTP 400.",
+            "description": "Project ID or name (slug) within the authenticated team. IDs take precedence over names. Missing or empty values return HTTP 400.",
             "in": "query",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "Project ID. Missing or empty values return HTTP 400."
+              "description": "Project ID or name (slug) within the authenticated team. IDs take precedence over names. Missing or empty values return HTTP 400."
             }
           },
           {
@@ -201873,6 +202060,9 @@
           },
           "410": {
             "description": ""
+          },
+          "503": {
+            "description": ""
           }
         },
         "parameters": [
@@ -203702,6 +203892,9 @@
           },
           "410": {
             "description": ""
+          },
+          "503": {
+            "description": ""
           }
         },
         "parameters": [
@@ -204832,6 +205025,9 @@
           },
           "410": {
             "description": ""
+          },
+          "503": {
+            "description": ""
           }
         },
         "parameters": [
@@ -205896,6 +206092,9 @@
             "description": ""
           },
           "410": {
+            "description": ""
+          },
+          "503": {
             "description": ""
           }
         },
@@ -217253,6 +217452,9 @@
               "project-web-analytics-enabled",
               "protected-git-scope-added",
               "protected-git-scope-removed",
+              "repository-ci-env-variable-create",
+              "repository-ci-env-variable-delete",
+              "repository-ci-env-variable-update",
               "runtime-cache-purge-all",
               "saml-connection-created",
               "saml-connection-deleted",
@@ -225368,6 +225570,44 @@
                   "deploymentId",
                   "deploymentUrl"
                 ]
+              },
+              {
+                "properties": {
+                  "provider": {
+                    "type": "string"
+                  },
+                  "organizationId": {
+                    "type": "string"
+                  },
+                  "repository": {
+                    "type": "string"
+                  },
+                  "key": {
+                    "type": "string"
+                  },
+                  "visibility": {
+                    "type": "string",
+                    "enum": [
+                      "config",
+                      "secret"
+                    ]
+                  },
+                  "changedFields": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                },
+                "required": [
+                  "key",
+                  "organizationId",
+                  "provider",
+                  "repository",
+                  "visibility"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
               },
               {
                 "properties": {
@@ -234986,10 +235226,34 @@
                   },
                   "previous": {
                     "nullable": true,
+                    "properties": {
+                      "gitSources": {
+                        "nullable": true,
+                        "items": {},
+                        "type": "array"
+                      },
+                      "deploymentSources": {
+                        "nullable": true,
+                        "items": {},
+                        "type": "array"
+                      }
+                    },
                     "type": "object"
                   },
                   "next": {
                     "nullable": true,
+                    "properties": {
+                      "gitSources": {
+                        "nullable": true,
+                        "items": {},
+                        "type": "array"
+                      },
+                      "deploymentSources": {
+                        "nullable": true,
+                        "items": {},
+                        "type": "array"
+                      }
+                    },
                     "type": "object"
                   }
                 },
@@ -236546,6 +236810,19 @@
                             ],
                             "description": "The acive pricing plan the team is billed with"
                           },
+                          "scope": {
+                            "type": "string",
+                            "enum": [
+                              "organization",
+                              "project",
+                              "team"
+                            ],
+                            "description": "Which budget this is. Matches Copper SDK `BudgetScope`. Omitted on events published before team/org/project scopes existed (treat as team)."
+                          },
+                          "scopeId": {
+                            "type": "string",
+                            "description": "Project id when `scope` is `project`."
+                          },
                           "teamId": {
                             "type": "string",
                             "description": "Partition key"
@@ -236657,6 +236934,19 @@
                         ],
                         "description": "The acive pricing plan the team is billed with"
                       },
+                      "scope": {
+                        "type": "string",
+                        "enum": [
+                          "organization",
+                          "project",
+                          "team"
+                        ],
+                        "description": "Which budget this is. Matches Copper SDK `BudgetScope`. Omitted on events published before team/org/project scopes existed (treat as team)."
+                      },
+                      "scopeId": {
+                        "type": "string",
+                        "description": "Project id when `scope` is `project`."
+                      },
                       "teamId": {
                         "type": "string",
                         "description": "Partition key"
@@ -236761,6 +237051,19 @@
                           "unbundled"
                         ],
                         "description": "The acive pricing plan the team is billed with"
+                      },
+                      "scope": {
+                        "type": "string",
+                        "enum": [
+                          "organization",
+                          "project",
+                          "team"
+                        ],
+                        "description": "Which budget this is. Matches Copper SDK `BudgetScope`. Omitted on events published before team/org/project scopes existed (treat as team)."
+                      },
+                      "scopeId": {
+                        "type": "string",
+                        "description": "Project id when `scope` is `project`."
                       },
                       "teamId": {
                         "type": "string",
@@ -236870,6 +237173,19 @@
                         ],
                         "description": "The acive pricing plan the team is billed with"
                       },
+                      "scope": {
+                        "type": "string",
+                        "enum": [
+                          "organization",
+                          "project",
+                          "team"
+                        ],
+                        "description": "Which budget this is. Matches Copper SDK `BudgetScope`. Omitted on events published before team/org/project scopes existed (treat as team)."
+                      },
+                      "scopeId": {
+                        "type": "string",
+                        "description": "Project id when `scope` is `project`."
+                      },
                       "teamId": {
                         "type": "string",
                         "description": "Partition key"
@@ -236965,6 +237281,19 @@
                           "unbundled"
                         ],
                         "description": "The acive pricing plan the team is billed with"
+                      },
+                      "scope": {
+                        "type": "string",
+                        "enum": [
+                          "organization",
+                          "project",
+                          "team"
+                        ],
+                        "description": "Which budget this is. Matches Copper SDK `BudgetScope`. Omitted on events published before team/org/project scopes existed (treat as team)."
+                      },
+                      "scopeId": {
+                        "type": "string",
+                        "description": "Project id when `scope` is `project`."
                       },
                       "teamId": {
                         "type": "string",
@@ -237716,10 +238045,34 @@
                 "properties": {
                   "previous": {
                     "nullable": true,
+                    "properties": {
+                      "gitSources": {
+                        "nullable": true,
+                        "items": {},
+                        "type": "array"
+                      },
+                      "deploymentSources": {
+                        "nullable": true,
+                        "items": {},
+                        "type": "array"
+                      }
+                    },
                     "type": "object"
                   },
                   "next": {
                     "nullable": true,
+                    "properties": {
+                      "gitSources": {
+                        "nullable": true,
+                        "items": {},
+                        "type": "array"
+                      },
+                      "deploymentSources": {
+                        "nullable": true,
+                        "items": {},
+                        "type": "array"
+                      }
+                    },
                     "type": "object"
                   }
                 },
@@ -241682,6 +242035,9 @@
               "project-web-analytics-enabled",
               "protected-git-scope-added",
               "protected-git-scope-removed",
+              "repository-ci-env-variable-create",
+              "repository-ci-env-variable-delete",
+              "repository-ci-env-variable-update",
               "runtime-cache-purge-all",
               "saml-connection-created",
               "saml-connection-deleted",
@@ -242416,6 +242772,9 @@
                 "project-web-analytics-enabled",
                 "protected-git-scope-added",
                 "protected-git-scope-removed",
+                "repository-ci-env-variable-create",
+                "repository-ci-env-variable-delete",
+                "repository-ci-env-variable-update",
                 "runtime-cache-purge-all",
                 "saml-connection-created",
                 "saml-connection-deleted",
@@ -242684,6 +243043,47 @@
           },
           "variants": {
             "items": {
+              "properties": {
+                "description": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "value": {
+                  "nullable": true,
+                  "oneOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "additionalProperties": true,
+                      "type": "object"
+                    },
+                    {
+                      "items": {},
+                      "type": "array"
+                    },
+                    {
+                      "type": "boolean",
+                      "enum": [
+                        false,
+                        true
+                      ]
+                    }
+                  ]
+                },
+                "id": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "value"
+              ],
               "type": "object"
             },
             "type": "array"

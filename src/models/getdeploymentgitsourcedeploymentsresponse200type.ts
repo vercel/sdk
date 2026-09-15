@@ -1077,6 +1077,7 @@ export type GetDeploymentResponseBodyMachineSelectionType = ClosedEnum<
  * The setting which selected the build machine when the deployment was created. Frozen here so later project or team changes do not rewrite its history.
  */
 export const GetDeploymentResponseBodySelectionSource = {
+  DeploymentOverride: "deployment-override",
   ElasticAlgorithm: "elastic-algorithm",
   PlanDefault: "plan-default",
   ProjectSetting: "project-setting",

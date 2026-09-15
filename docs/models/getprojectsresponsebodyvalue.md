@@ -9,9 +9,24 @@
 const value: string = "<value>";
 ```
 
-### `models.GetProjectsValueProjects2`
+### `number`
 
 ```typescript
-const value: models.GetProjectsValueProjects2 = {};
+const value: number = 1284.03;
+```
+
+### `models.GetProjectsValue3`
+
+```typescript
+const value: models.GetProjectsValue3 = {
+  previousValue: 6985.95,
+  currentValue: "<value>",
+};
+```
+
+### `boolean`
+
+```typescript
+const value: boolean = true;
 ```
 

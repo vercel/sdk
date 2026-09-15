@@ -48,7 +48,9 @@ const value: models.BuyCreditsConfiguration3 = {
 
 ```typescript
 const value: models.BuyCreditsConfiguration4 = {
-  options: {},
+  options: {
+    orbSubscriptionId: "<id>",
+  },
   output: {
     pendingSubscriptionChangeId: "<id>",
   },

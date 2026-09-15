@@ -13,5 +13,5 @@ let value: GetDeploymentResponseBodySelectionSource = "team-entitlement";
 ## Values
 
 ```typescript
-"elastic-algorithm" | "plan-default" | "project-setting" | "team-entitlement" | "team-setting"
+"deployment-override" | "elastic-algorithm" | "plan-default" | "project-setting" | "team-entitlement" | "team-setting"
 ```

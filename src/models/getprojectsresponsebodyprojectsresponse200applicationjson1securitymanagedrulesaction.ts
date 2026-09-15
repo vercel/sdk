@@ -47,14 +47,14 @@ export type GetProjectsResponseBodyType = ClosedEnum<
 >;
 
 /**
- * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+ * User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior.
  */
 export const GetProjectsResponseBodyVisibility = {
   Config: "config",
   Secret: "secret",
 } as const;
 /**
- * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+ * User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior.
  */
 export type GetProjectsResponseBodyVisibility = ClosedEnum<
   typeof GetProjectsResponseBodyVisibility
@@ -210,7 +210,7 @@ export type ResponseBodyEnv = {
   updatedBy?: string | null | undefined;
   gitBranch?: string | undefined;
   /**
-   * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+   * User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior.
    */
   visibility?: GetProjectsResponseBodyVisibility | undefined;
   edgeConfigId?: string | null | undefined;
@@ -1443,7 +1443,9 @@ export type GetProjectsValue2 = {
   list?: string | undefined;
 };
 
-export type GetProjectsResponseBodyProjectsValue = string | GetProjectsValue2;
+export type GetProjectsResponseBodyProjectsResponseValue =
+  | string
+  | GetProjectsValue2;
 
 export type GetProjectsResponseBodyHas = {
   type: GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityType;
@@ -1489,7 +1491,9 @@ export type GetProjectsValueProjects2 = {
   list?: string | undefined;
 };
 
-export type GetProjectsResponseBodyValue = string | GetProjectsValueProjects2;
+export type GetProjectsResponseBodyProjectsValue =
+  | string
+  | GetProjectsValueProjects2;
 
 export type GetProjectsResponseBodyMissing = {
   type:
@@ -4032,20 +4036,29 @@ export function getProjectsValue2FromJSON(
 }
 
 /** @internal */
-export const GetProjectsResponseBodyProjectsValue$inboundSchema: z.ZodType<
-  GetProjectsResponseBodyProjectsValue,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([types.string(), z.lazy(() => GetProjectsValue2$inboundSchema)]);
+export const GetProjectsResponseBodyProjectsResponseValue$inboundSchema:
+  z.ZodType<
+    GetProjectsResponseBodyProjectsResponseValue,
+    z.ZodTypeDef,
+    unknown
+  > = smartUnion([
+    types.string(),
+    z.lazy(() => GetProjectsValue2$inboundSchema),
+  ]);
 
-export function getProjectsResponseBodyProjectsValueFromJSON(
+export function getProjectsResponseBodyProjectsResponseValueFromJSON(
   jsonString: string,
-): SafeParseResult<GetProjectsResponseBodyProjectsValue, SDKValidationError> {
+): SafeParseResult<
+  GetProjectsResponseBodyProjectsResponseValue,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
     (x) =>
-      GetProjectsResponseBodyProjectsValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProjectsResponseBodyProjectsValue' from JSON`,
+      GetProjectsResponseBodyProjectsResponseValue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetProjectsResponseBodyProjectsResponseValue' from JSON`,
   );
 }
 
@@ -4112,8 +4125,8 @@ export function getProjectsValueProjects2FromJSON(
 }
 
 /** @internal */
-export const GetProjectsResponseBodyValue$inboundSchema: z.ZodType<
-  GetProjectsResponseBodyValue,
+export const GetProjectsResponseBodyProjectsValue$inboundSchema: z.ZodType<
+  GetProjectsResponseBodyProjectsValue,
   z.ZodTypeDef,
   unknown
 > = smartUnion([
@@ -4121,13 +4134,14 @@ export const GetProjectsResponseBodyValue$inboundSchema: z.ZodType<
   z.lazy(() => GetProjectsValueProjects2$inboundSchema),
 ]);
 
-export function getProjectsResponseBodyValueFromJSON(
+export function getProjectsResponseBodyProjectsValueFromJSON(
   jsonString: string,
-): SafeParseResult<GetProjectsResponseBodyValue, SDKValidationError> {
+): SafeParseResult<GetProjectsResponseBodyProjectsValue, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetProjectsResponseBodyValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProjectsResponseBodyValue' from JSON`,
+    (x) =>
+      GetProjectsResponseBodyProjectsValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsResponseBodyProjectsValue' from JSON`,
   );
 }
 

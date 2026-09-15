@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPostgresBlockReason } from "@vercel/sdk/models/onehundredandfiftyone.js";
+import { UserEventPostgresBlockReason } from "@vercel/sdk/models/usereventpayloadtarget.js";
 
 let value: UserEventPostgresBlockReason = "hard_blocked";
 ```

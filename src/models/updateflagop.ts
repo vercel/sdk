@@ -388,7 +388,19 @@ export type UpdateFlagRequest = {
   requestBody?: UpdateFlagRequestBody | undefined;
 };
 
-export type ResponseBodyVariants = {};
+export type ResponseBodyValue =
+  | string
+  | number
+  | { [k: string]: any }
+  | Array<any>
+  | boolean;
+
+export type ResponseBodyVariants = {
+  description?: string | undefined;
+  label?: string | undefined;
+  value: string | number | { [k: string]: any } | Array<any> | boolean | null;
+  id: string;
+};
 
 export type ResponseBodyReuse = {
   active: boolean;
@@ -1655,11 +1667,47 @@ export function updateFlagRequestToJSON(
 }
 
 /** @internal */
+export const ResponseBodyValue$inboundSchema: z.ZodType<
+  ResponseBodyValue,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  types.string(),
+  types.number(),
+  z.record(z.any()),
+  z.array(z.any()),
+  types.boolean(),
+]);
+
+export function responseBodyValueFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyValue' from JSON`,
+  );
+}
+
+/** @internal */
 export const ResponseBodyVariants$inboundSchema: z.ZodType<
   ResponseBodyVariants,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = z.object({
+  description: types.optional(types.string()),
+  label: types.optional(types.string()),
+  value: types.nullable(
+    smartUnion([
+      types.string(),
+      types.number(),
+      z.record(z.any()),
+      z.array(z.any()),
+      types.boolean(),
+    ]),
+  ),
+  id: types.string(),
+});
 
 export function responseBodyVariantsFromJSON(
   jsonString: string,

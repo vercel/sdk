@@ -10,7 +10,7 @@ import { VcrRepository, VcrRepository$inboundSchema } from "./vcrrepository.js";
 
 export type GetRepositoryRequest = {
   /**
-   * Project ID. Missing or empty values return HTTP 400.
+   * Project ID or name (slug) within the authenticated team. IDs take precedence over names. Missing or empty values return HTTP 400.
    */
   projectId: string;
   idOrName: string;

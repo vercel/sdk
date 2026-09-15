@@ -5,7 +5,7 @@ Whether the Vercel Toolbar is enabled for preview deployments.
 ## Example Usage
 
 ```typescript
-import { PayloadEnablePreviewFeedback } from "@vercel/sdk/models/onehundredandfiftyone.js";
+import { PayloadEnablePreviewFeedback } from "@vercel/sdk/models/usereventpayloadtarget.js";
 
 let value: PayloadEnablePreviewFeedback = "on";
 ```

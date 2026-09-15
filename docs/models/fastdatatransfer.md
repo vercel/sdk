@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { FastDataTransfer } from "@vercel/sdk/models/onehundredandfiftyone.js";
+import { FastDataTransfer } from "@vercel/sdk/models/usereventpayloadtarget.js";
 
 let value: FastDataTransfer = {
   currentThreshold: 1855.37,

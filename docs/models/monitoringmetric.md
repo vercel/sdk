@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { MonitoringMetric } from "@vercel/sdk/models/onehundredandfiftyone.js";
+import { MonitoringMetric } from "@vercel/sdk/models/usereventpayloadtarget.js";
 
 let value: MonitoringMetric = {
   currentThreshold: 1959.51,

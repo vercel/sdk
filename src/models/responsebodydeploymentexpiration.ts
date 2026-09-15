@@ -329,7 +329,7 @@ export type GetProjectsValueProjectsResponse2 = {
   list?: string | undefined;
 };
 
-export type GetProjectsResponseBodyProjectsResponse200Value =
+export type GetProjectsResponseBodyProjectsResponse200ApplicationJSONValue =
   | string
   | GetProjectsValueProjectsResponse2;
 
@@ -378,7 +378,7 @@ export type GetProjectsValueProjectsResponse2002 = {
   list?: string | undefined;
 };
 
-export type GetProjectsResponseBodyProjectsResponseValue =
+export type GetProjectsResponseBodyProjectsResponse200Value =
   | string
   | GetProjectsValueProjectsResponse2002;
 
@@ -2007,9 +2007,9 @@ export function getProjectsValueProjectsResponse2FromJSON(
 }
 
 /** @internal */
-export const GetProjectsResponseBodyProjectsResponse200Value$inboundSchema:
+export const GetProjectsResponseBodyProjectsResponse200ApplicationJSONValue$inboundSchema:
   z.ZodType<
-    GetProjectsResponseBodyProjectsResponse200Value,
+    GetProjectsResponseBodyProjectsResponse200ApplicationJSONValue,
     z.ZodTypeDef,
     unknown
   > = smartUnion([
@@ -2017,19 +2017,18 @@ export const GetProjectsResponseBodyProjectsResponse200Value$inboundSchema:
     z.lazy(() => GetProjectsValueProjectsResponse2$inboundSchema),
   ]);
 
-export function getProjectsResponseBodyProjectsResponse200ValueFromJSON(
+export function getProjectsResponseBodyProjectsResponse200ApplicationJSONValueFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetProjectsResponseBodyProjectsResponse200Value,
+  GetProjectsResponseBodyProjectsResponse200ApplicationJSONValue,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetProjectsResponseBodyProjectsResponse200Value$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetProjectsResponseBodyProjectsResponse200Value' from JSON`,
+      GetProjectsResponseBodyProjectsResponse200ApplicationJSONValue$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsResponseBodyProjectsResponse200ApplicationJSONValue' from JSON`,
   );
 }
 
@@ -2101,9 +2100,9 @@ export function getProjectsValueProjectsResponse2002FromJSON(
 }
 
 /** @internal */
-export const GetProjectsResponseBodyProjectsResponseValue$inboundSchema:
+export const GetProjectsResponseBodyProjectsResponse200Value$inboundSchema:
   z.ZodType<
-    GetProjectsResponseBodyProjectsResponseValue,
+    GetProjectsResponseBodyProjectsResponse200Value,
     z.ZodTypeDef,
     unknown
   > = smartUnion([
@@ -2111,19 +2110,19 @@ export const GetProjectsResponseBodyProjectsResponseValue$inboundSchema:
     z.lazy(() => GetProjectsValueProjectsResponse2002$inboundSchema),
   ]);
 
-export function getProjectsResponseBodyProjectsResponseValueFromJSON(
+export function getProjectsResponseBodyProjectsResponse200ValueFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetProjectsResponseBodyProjectsResponseValue,
+  GetProjectsResponseBodyProjectsResponse200Value,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetProjectsResponseBodyProjectsResponseValue$inboundSchema.parse(
+      GetProjectsResponseBodyProjectsResponse200Value$inboundSchema.parse(
         JSON.parse(x),
       ),
-    `Failed to parse 'GetProjectsResponseBodyProjectsResponseValue' from JSON`,
+    `Failed to parse 'GetProjectsResponseBodyProjectsResponse200Value' from JSON`,
   );
 }
 

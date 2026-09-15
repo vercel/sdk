@@ -10,7 +10,19 @@ import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
-export type Variants = {};
+export type Value =
+  | string
+  | number
+  | { [k: string]: any }
+  | Array<any>
+  | boolean;
+
+export type Variants = {
+  description?: string | undefined;
+  label?: string | undefined;
+  value: string | number | { [k: string]: any } | Array<any> | boolean | null;
+  id: string;
+};
 
 export type Reuse = {
   active: boolean;
@@ -312,11 +324,44 @@ export type Flag = {
 };
 
 /** @internal */
+export const Value$inboundSchema: z.ZodType<Value, z.ZodTypeDef, unknown> =
+  smartUnion([
+    types.string(),
+    types.number(),
+    z.record(z.any()),
+    z.array(z.any()),
+    types.boolean(),
+  ]);
+
+export function valueFromJSON(
+  jsonString: string,
+): SafeParseResult<Value, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Value$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Value' from JSON`,
+  );
+}
+
+/** @internal */
 export const Variants$inboundSchema: z.ZodType<
   Variants,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = z.object({
+  description: types.optional(types.string()),
+  label: types.optional(types.string()),
+  value: types.nullable(
+    smartUnion([
+      types.string(),
+      types.number(),
+      z.record(z.any()),
+      z.array(z.any()),
+      types.boolean(),
+    ]),
+  ),
+  id: types.string(),
+});
 
 export function variantsFromJSON(
   jsonString: string,

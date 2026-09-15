@@ -21,7 +21,7 @@ export const Field = {
 } as const;
 export type Field = ClosedEnum<typeof Field>;
 
-export type Value = {
+export type UpdateFlagSegmentValue = {
   note?: string | undefined;
   value: string;
 };
@@ -31,7 +31,7 @@ export type Operations = {
   field: Field;
   entity: string;
   attribute: string;
-  value: Value;
+  value: UpdateFlagSegmentValue;
 };
 
 export type UpdateFlagSegmentLhs2 = {
@@ -229,23 +229,27 @@ export const Field$outboundSchema: z.ZodNativeEnum<typeof Field> = z.nativeEnum(
 );
 
 /** @internal */
-export type Value$Outbound = {
+export type UpdateFlagSegmentValue$Outbound = {
   note?: string | undefined;
   value: string;
 };
 
 /** @internal */
-export const Value$outboundSchema: z.ZodType<
-  Value$Outbound,
+export const UpdateFlagSegmentValue$outboundSchema: z.ZodType<
+  UpdateFlagSegmentValue$Outbound,
   z.ZodTypeDef,
-  Value
+  UpdateFlagSegmentValue
 > = z.object({
   note: z.string().optional(),
   value: z.string(),
 });
 
-export function valueToJSON(value: Value): string {
-  return JSON.stringify(Value$outboundSchema.parse(value));
+export function updateFlagSegmentValueToJSON(
+  updateFlagSegmentValue: UpdateFlagSegmentValue,
+): string {
+  return JSON.stringify(
+    UpdateFlagSegmentValue$outboundSchema.parse(updateFlagSegmentValue),
+  );
 }
 
 /** @internal */
@@ -254,7 +258,7 @@ export type Operations$Outbound = {
   field: string;
   entity: string;
   attribute: string;
-  value: Value$Outbound;
+  value: UpdateFlagSegmentValue$Outbound;
 };
 
 /** @internal */
@@ -267,7 +271,7 @@ export const Operations$outboundSchema: z.ZodType<
   field: Field$outboundSchema,
   entity: z.string(),
   attribute: z.string(),
-  value: z.lazy(() => Value$outboundSchema),
+  value: z.lazy(() => UpdateFlagSegmentValue$outboundSchema),
 });
 
 export function operationsToJSON(operations: Operations): string {

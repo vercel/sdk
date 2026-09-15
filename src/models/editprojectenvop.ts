@@ -113,16 +113,18 @@ export type EditProjectEnvProjectsTarget =
   | EditProjectEnvTarget2;
 
 /**
- * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+ * User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior.
  */
-export const Visibility = {
+export const EditProjectEnvVisibility = {
   Config: "config",
   Secret: "secret",
 } as const;
 /**
- * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+ * User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior.
  */
-export type Visibility = ClosedEnum<typeof Visibility>;
+export type EditProjectEnvVisibility = ClosedEnum<
+  typeof EditProjectEnvVisibility
+>;
 
 export type ContentHint17 = {
   type: "flags-connection-string";
@@ -273,9 +275,9 @@ export type EditProjectEnvResponseBody = {
   decrypted?: boolean | undefined;
   configurationId?: string | null | undefined;
   /**
-   * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+   * User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior.
    */
-  visibility?: Visibility | undefined;
+  visibility?: EditProjectEnvVisibility | undefined;
   contentHint?:
     | ContentHint1
     | ContentHint2
@@ -418,8 +420,9 @@ export function editProjectEnvProjectsTargetFromJSON(
 }
 
 /** @internal */
-export const Visibility$inboundSchema: z.ZodNativeEnum<typeof Visibility> = z
-  .nativeEnum(Visibility);
+export const EditProjectEnvVisibility$inboundSchema: z.ZodNativeEnum<
+  typeof EditProjectEnvVisibility
+> = z.nativeEnum(EditProjectEnvVisibility);
 
 /** @internal */
 export const ContentHint17$inboundSchema: z.ZodType<
@@ -851,7 +854,7 @@ export const EditProjectEnvResponseBody$inboundSchema: z.ZodType<
   legacyValue: types.optional(types.string()),
   decrypted: types.optional(types.boolean()),
   configurationId: z.nullable(types.string()).optional(),
-  visibility: types.optional(Visibility$inboundSchema),
+  visibility: types.optional(EditProjectEnvVisibility$inboundSchema),
   contentHint: z.nullable(
     z.union([
       z.lazy(() => ContentHint1$inboundSchema),

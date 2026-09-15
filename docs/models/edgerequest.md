@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { EdgeRequest } from "@vercel/sdk/models/onehundredandfiftyone.js";
+import { EdgeRequest } from "@vercel/sdk/models/usereventpayloadtarget.js";
 
 let value: EdgeRequest = {
   currentThreshold: 4078.48,

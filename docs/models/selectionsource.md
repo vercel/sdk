@@ -7,11 +7,11 @@ The setting which selected the build machine when the deployment was created. Fr
 ```typescript
 import { SelectionSource } from "@vercel/sdk/models/locale.js";
 
-let value: SelectionSource = "plan-default";
+let value: SelectionSource = "elastic-algorithm";
 ```
 
 ## Values
 
 ```typescript
-"elastic-algorithm" | "plan-default" | "project-setting" | "team-entitlement" | "team-setting"
+"deployment-override" | "elastic-algorithm" | "plan-default" | "project-setting" | "team-entitlement" | "team-setting"
 ```

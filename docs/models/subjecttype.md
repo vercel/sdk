@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { SubjectType } from "@vercel/sdk/models/thirtythree.js";
+import { SubjectType } from "@vercel/sdk/models/payloadaccessgroup.js";
 
 let value: SubjectType = "app";
 ```

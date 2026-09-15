@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadBilling } from "@vercel/sdk/models/analyticsusage.js";
+import { PayloadBilling } from "@vercel/sdk/models/usereventpayload171gituserid.js";
 
 let value: PayloadBilling = {
   plan: "pro",
@@ -14,4 +14,4 @@ let value: PayloadBilling = {
 
 | Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `plan`                                                                 | [models.UserEventPayload170Plan](../models/usereventpayload170plan.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| `plan`                                                                 | [models.UserEventPayload171Plan](../models/usereventpayload171plan.md) | :heavy_check_mark:                                                     | N/A                                                                    |

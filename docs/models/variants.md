@@ -5,10 +5,17 @@
 ```typescript
 import { Variants } from "@vercel/sdk/models/flag.js";
 
-let value: Variants = {};
+let value: Variants = {
+  value: false,
+  id: "<id>",
+};
 ```
 
 ## Fields
 
-| Field       | Type        | Required    | Description |
-| ----------- | ----------- | ----------- | ----------- |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `description`      | *string*           | :heavy_minus_sign: | N/A                |
+| `label`            | *string*           | :heavy_minus_sign: | N/A                |
+| `value`            | *models.Value*     | :heavy_check_mark: | N/A                |
+| `id`               | *string*           | :heavy_check_mark: | N/A                |

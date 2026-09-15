@@ -5,17 +5,16 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndEighty } from "@vercel/sdk/models/usereventpayload340budget.js";
+import { ThreeHundredAndEighty } from "@vercel/sdk/models/threehundredandfortytwo.js";
 
 let value: ThreeHundredAndEighty = {
-  previousConcurrentBuilds: 3729.95,
-  nextConcurrentBuilds: 4538.98,
+  publicId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                      | Type                       | Required                   | Description                |
-| -------------------------- | -------------------------- | -------------------------- | -------------------------- |
-| `previousConcurrentBuilds` | *number*                   | :heavy_check_mark:         | N/A                        |
-| `nextConcurrentBuilds`     | *number*                   | :heavy_check_mark:         | N/A                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `publicId`         | *string*           | :heavy_check_mark: | N/A                |
+| `name`             | *string*           | :heavy_minus_sign: | N/A                |

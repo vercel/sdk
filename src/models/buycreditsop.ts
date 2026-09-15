@@ -1003,7 +1003,32 @@ export type Configuration5 = {
   type: "orb_subscription";
 };
 
-export type BuyCreditsConfigurationBillingOptions = {};
+export type BuyCreditsConfigurationBillingOptions = {
+  /**
+   * The ID of the Orb subscription to modify price intervals for
+   */
+  orbSubscriptionId: string;
+  /**
+   * The price intervals to add to the subscription
+   */
+  add?: Array<any> | undefined;
+  /**
+   * The adjustment intervals to add to the subscription
+   */
+  addAdjustments?: Array<any> | undefined;
+  /**
+   * Whether to allow invoice credit or void
+   */
+  allowInvoiceCreditOrVoid?: boolean | undefined;
+  /**
+   * The price intervals to edit on the subscription
+   */
+  edit?: Array<any> | undefined;
+  /**
+   * The adjustment intervals to edit on the subscription
+   */
+  editAdjustments?: Array<any> | undefined;
+};
 
 export type ConfigurationOutput = {
   /**
@@ -2629,7 +2654,14 @@ export const BuyCreditsConfigurationBillingOptions$inboundSchema: z.ZodType<
   BuyCreditsConfigurationBillingOptions,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = z.object({
+  orbSubscriptionId: types.string(),
+  add: types.optional(z.array(z.any())),
+  addAdjustments: types.optional(z.array(z.any())),
+  allowInvoiceCreditOrVoid: types.optional(types.boolean()),
+  edit: types.optional(z.array(z.any())),
+  editAdjustments: types.optional(z.array(z.any())),
+});
 
 export function buyCreditsConfigurationBillingOptionsFromJSON(
   jsonString: string,

@@ -8,7 +8,9 @@ The configuration for a credit purchase
 import { BuyCreditsConfiguration4 } from "@vercel/sdk/models/buycreditsop.js";
 
 let value: BuyCreditsConfiguration4 = {
-  options: {},
+  options: {
+    orbSubscriptionId: "<id>",
+  },
   output: {
     pendingSubscriptionChangeId: "<id>",
   },

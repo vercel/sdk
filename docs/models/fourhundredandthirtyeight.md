@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndThirtyEight } from "@vercel/sdk/models/fourhundredandeight.js";
+import { FourHundredAndThirtyEight } from "@vercel/sdk/models/fourhundredandnine.js";
 
 let value: FourHundredAndThirtyEight = {
   team: {
@@ -27,5 +27,4 @@ let value: FourHundredAndThirtyEight = {
 | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
 | `team`                                                                                   | [models.UserEventPayload438Team](../models/usereventpayload438team.md)                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
 | `configuration`                                                                          | [models.UserEventPayload438Configuration](../models/usereventpayload438configuration.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `peering`                                                                                | [models.UserEventPayloadPeering](../models/usereventpayloadpeering.md)                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `newName`                                                                                | *string*                                                                                 | :heavy_minus_sign:                                                                       | N/A                                                                                      |
+| `peering`                                                                                | [models.PayloadPeering](../models/payloadpeering.md)                                     | :heavy_check_mark:                                                                       | N/A                                                                                      |

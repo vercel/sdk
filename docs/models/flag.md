@@ -7,17 +7,20 @@ import { Flag } from "@vercel/sdk/models/flag.js";
 
 let value: Flag = {
   variants: [
-    {},
+    {
+      value: false,
+      id: "<id>",
+    },
   ],
   id: "<id>",
   environments: {},
   kind: "string",
-  revision: 7245.99,
-  seed: 4797.93,
+  revision: 6977.76,
+  seed: 4972.47,
   state: "archived",
   slug: "<value>",
-  createdAt: 6977.76,
-  updatedAt: 4972.47,
+  createdAt: 3631.95,
+  updatedAt: 9866.32,
   createdBy: "<value>",
   ownerId: "<id>",
   projectId: "<id>",

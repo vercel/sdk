@@ -5,19 +5,13 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndEightyFive } from "@vercel/sdk/models/usereventpayload340budget.js";
+import { ThreeHundredAndEightyFive } from "@vercel/sdk/models/threehundredandfortytwo.js";
 
-let value: ThreeHundredAndEightyFive = {
-  actorId: "<id>",
-  actorType: "admin",
-};
+let value: ThreeHundredAndEightyFive = {};
 ```
 
 ## Fields
 
-| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `name`                                                                           | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `actorId`                                                                        | *string*                                                                         | :heavy_check_mark:                                                               | Okta user id.                                                                    |
-| `actorType`                                                                      | [models.UserEventPayload385ActorType](../models/usereventpayload385actortype.md) | :heavy_check_mark:                                                               | N/A                                                                              |
-| `actorName`                                                                      | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `name`             | *string*           | :heavy_minus_sign: | N/A                |

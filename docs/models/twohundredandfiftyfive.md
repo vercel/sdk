@@ -5,19 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFiftyFive } from "@vercel/sdk/models/siftroute.js";
+import { TwoHundredAndFiftyFive } from "@vercel/sdk/models/usereventpayloadnext.js";
 
 let value: TwoHundredAndFiftyFive = {
   projectId: "<id>",
   projectName: "<value>",
-  previewDeploymentsEnabled: false,
+  autoAssignCustomDomains: false,
 };
 ```
 
 ## Fields
 
-| Field                       | Type                        | Required                    | Description                 |
-| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
-| `projectId`                 | *string*                    | :heavy_check_mark:          | N/A                         |
-| `projectName`               | *string*                    | :heavy_check_mark:          | N/A                         |
-| `previewDeploymentsEnabled` | *boolean*                   | :heavy_check_mark:          | N/A                         |
+| Field                     | Type                      | Required                  | Description               |
+| ------------------------- | ------------------------- | ------------------------- | ------------------------- |
+| `projectId`               | *string*                  | :heavy_check_mark:        | N/A                       |
+| `projectName`             | *string*                  | :heavy_check_mark:        | N/A                       |
+| `autoAssignCustomDomains` | *boolean*                 | :heavy_check_mark:        | N/A                       |

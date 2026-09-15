@@ -5,19 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFifty } from "@vercel/sdk/models/usereventpayload340budget.js";
+import { ThreeHundredAndFifty } from "@vercel/sdk/models/threehundredandfortytwo.js";
 
 let value: ThreeHundredAndFifty = {
-  store: {
-    name: "<value>",
-    id: "<id>",
-  },
+  id: "<id>",
+  type: "integration",
 };
 ```
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `store`                                                                  | [models.UserEventPayload350Store](../models/usereventpayload350store.md) | :heavy_check_mark:                                                       | N/A                                                                      |
-| `ownerId`                                                                | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `id`                                                                   | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `name`                                                                 | *string*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `computeUnitsMax`                                                      | *number*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `computeUnitsMin`                                                      | *number*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `suspendTimeoutSeconds`                                                | *number*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `type`                                                                 | [models.UserEventPayload350Type](../models/usereventpayload350type.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| `access`                                                               | [models.Access](../models/access.md)                                   | :heavy_minus_sign:                                                     | N/A                                                                    |

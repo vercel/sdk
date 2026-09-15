@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Vcr } from "@vercel/sdk/models/onehundredandfiftyone.js";
+import { Vcr } from "@vercel/sdk/models/usereventpayloadtarget.js";
 
 let value: Vcr = {
   updatedAt: 2905.32,
@@ -18,4 +18,4 @@ let value: Vcr = {
 | `updatedAt`                                                                                                                          | *number*                                                                                                                             | :heavy_check_mark:                                                                                                                   | N/A                                                                                                                                  |
 | `blockedFrom`                                                                                                                        | *number*                                                                                                                             | :heavy_minus_sign:                                                                                                                   | N/A                                                                                                                                  |
 | `blockedUntil`                                                                                                                       | *number*                                                                                                                             | :heavy_minus_sign:                                                                                                                   | N/A                                                                                                                                  |
-| `blockReason`                                                                                                                        | [models.UserEventPayload170NewOwnerFeatureBlocksVcrBlockReason](../models/usereventpayload170newownerfeatureblocksvcrblockreason.md) | :heavy_check_mark:                                                                                                                   | N/A                                                                                                                                  |
+| `blockReason`                                                                                                                        | [models.UserEventPayload171NewOwnerFeatureBlocksVcrBlockReason](../models/usereventpayload171newownerfeatureblocksvcrblockreason.md) | :heavy_check_mark:                                                                                                                   | N/A                                                                                                                                  |

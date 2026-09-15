@@ -384,7 +384,19 @@ export type CreateFlagRequest = {
   requestBody?: CreateFlagRequestBody | undefined;
 };
 
-export type CreateFlagFeatureFlagsVariants = {};
+export type CreateFlagValue =
+  | string
+  | number
+  | { [k: string]: any }
+  | Array<any>
+  | boolean;
+
+export type CreateFlagFeatureFlagsVariants = {
+  description?: string | undefined;
+  label?: string | undefined;
+  value: string | number | { [k: string]: any } | Array<any> | boolean | null;
+  id: string;
+};
 
 export type CreateFlagFeatureFlagsReuse = {
   active: boolean;
@@ -1635,11 +1647,47 @@ export function createFlagRequestToJSON(
 }
 
 /** @internal */
+export const CreateFlagValue$inboundSchema: z.ZodType<
+  CreateFlagValue,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  types.string(),
+  types.number(),
+  z.record(z.any()),
+  z.array(z.any()),
+  types.boolean(),
+]);
+
+export function createFlagValueFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateFlagValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateFlagValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateFlagValue' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateFlagFeatureFlagsVariants$inboundSchema: z.ZodType<
   CreateFlagFeatureFlagsVariants,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = z.object({
+  description: types.optional(types.string()),
+  label: types.optional(types.string()),
+  value: types.nullable(
+    smartUnion([
+      types.string(),
+      types.number(),
+      z.record(z.any()),
+      z.array(z.any()),
+      types.boolean(),
+    ]),
+  ),
+  id: types.string(),
+});
 
 export function createFlagFeatureFlagsVariantsFromJSON(
   jsonString: string,

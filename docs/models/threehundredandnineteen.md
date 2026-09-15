@@ -5,17 +5,39 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndNineteen } from "@vercel/sdk/models/twohundredandseventyseven.js";
+import { ThreeHundredAndNineteen } from "@vercel/sdk/models/twohundredandeightyone.js";
 
 let value: ThreeHundredAndNineteen = {
   projectId: "<id>",
+  projectName: "<value>",
+  addedProjects: [
+    {
+      id: "<id>",
+      name: "<value>",
+    },
+  ],
+  removedProjects: [
+    {
+      id: "<id>",
+      name: "<value>",
+    },
+  ],
+  addedProviders: [],
+  removedProviders: [
+    "<value 1>",
+    "<value 2>",
+  ],
 };
 ```
 
 ## Fields
 
-| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `projectId`                                                                          | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
-| `projectName`                                                                        | *string*                                                                             | :heavy_minus_sign:                                                                   | Display name for Activity links. Optional for events stored before it was published. |
-| `reasonCode`                                                                         | [models.PayloadReasonCode](../models/payloadreasoncode.md)                           | :heavy_minus_sign:                                                                   | N/A                                                                                  |
+| Field                                                    | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `projectId`                                              | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
+| `projectName`                                            | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
+| `enableVercelCiSameRepository`                           | *boolean*                                                | :heavy_minus_sign:                                       | N/A                                                      |
+| `addedProjects`                                          | [models.AddedProjects](../models/addedprojects.md)[]     | :heavy_check_mark:                                       | N/A                                                      |
+| `removedProjects`                                        | [models.RemovedProjects](../models/removedprojects.md)[] | :heavy_check_mark:                                       | N/A                                                      |
+| `addedProviders`                                         | *string*[]                                               | :heavy_check_mark:                                       | N/A                                                      |
+| `removedProviders`                                       | *string*[]                                               | :heavy_check_mark:                                       | N/A                                                      |

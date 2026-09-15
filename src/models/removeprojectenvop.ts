@@ -67,14 +67,14 @@ export type RemoveProjectEnvResponseBodyProjectsResponseTarget =
   | RemoveProjectEnvTargetProjectsResponse2;
 
 /**
- * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+ * User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior.
  */
 export const RemoveProjectEnvResponseBodyProjectsResponseVisibility = {
   Config: "config",
   Secret: "secret",
 } as const;
 /**
- * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+ * User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior.
  */
 export type RemoveProjectEnvResponseBodyProjectsResponseVisibility = ClosedEnum<
   typeof RemoveProjectEnvResponseBodyProjectsResponseVisibility
@@ -234,7 +234,7 @@ export type RemoveProjectEnvResponseBody3 = {
   decrypted?: boolean | undefined;
   configurationId?: string | null | undefined;
   /**
-   * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+   * User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior.
    */
   visibility?:
     | RemoveProjectEnvResponseBodyProjectsResponseVisibility
@@ -304,14 +304,14 @@ export type RemoveProjectEnvResponseBodyProjectsTarget =
   | RemoveProjectEnvTargetProjects2;
 
 /**
- * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+ * User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior.
  */
 export const RemoveProjectEnvResponseBodyProjectsVisibility = {
   Config: "config",
   Secret: "secret",
 } as const;
 /**
- * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+ * User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior.
  */
 export type RemoveProjectEnvResponseBodyProjectsVisibility = ClosedEnum<
   typeof RemoveProjectEnvResponseBodyProjectsVisibility
@@ -470,7 +470,7 @@ export type RemoveProjectEnvResponseBody2 = {
   decrypted?: boolean | undefined;
   configurationId?: string | null | undefined;
   /**
-   * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+   * User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior.
    */
   visibility?: RemoveProjectEnvResponseBodyProjectsVisibility | undefined;
   contentHint?:
@@ -538,14 +538,14 @@ export type RemoveProjectEnvResponseBodyTarget =
   | RemoveProjectEnvTarget2;
 
 /**
- * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+ * User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior.
  */
 export const RemoveProjectEnvResponseBodyVisibility = {
   Config: "config",
   Secret: "secret",
 } as const;
 /**
- * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+ * User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior.
  */
 export type RemoveProjectEnvResponseBodyVisibility = ClosedEnum<
   typeof RemoveProjectEnvResponseBodyVisibility
@@ -702,7 +702,7 @@ export type RemoveProjectEnvResponseBody1 = {
   decrypted?: boolean | undefined;
   configurationId?: string | null | undefined;
   /**
-   * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+   * User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior.
    */
   visibility?: RemoveProjectEnvResponseBodyVisibility | undefined;
   contentHint?:

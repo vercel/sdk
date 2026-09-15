@@ -5,10 +5,21 @@
 ```typescript
 import { ListFlagVersionsVariants } from "@vercel/sdk/models/listflagversionsop.js";
 
-let value: ListFlagVersionsVariants = {};
+let value: ListFlagVersionsVariants = {
+  value: {
+    "key": "<value>",
+    "key1": "<value>",
+    "key2": "<value>",
+  },
+  id: "<id>",
+};
 ```
 
 ## Fields
 
-| Field       | Type        | Required    | Description |
-| ----------- | ----------- | ----------- | ----------- |
+| Field                          | Type                           | Required                       | Description                    |
+| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
+| `description`                  | *string*                       | :heavy_minus_sign:             | N/A                            |
+| `label`                        | *string*                       | :heavy_minus_sign:             | N/A                            |
+| `value`                        | *models.ListFlagVersionsValue* | :heavy_check_mark:             | N/A                            |
+| `id`                           | *string*                       | :heavy_check_mark:             | N/A                            |

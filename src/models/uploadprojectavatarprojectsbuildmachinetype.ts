@@ -524,14 +524,14 @@ export type UploadProjectAvatarType = ClosedEnum<
 >;
 
 /**
- * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+ * User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior.
  */
 export const UploadProjectAvatarVisibility = {
   Config: "config",
   Secret: "secret",
 } as const;
 /**
- * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+ * User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior.
  */
 export type UploadProjectAvatarVisibility = ClosedEnum<
   typeof UploadProjectAvatarVisibility
@@ -691,7 +691,7 @@ export type UploadProjectAvatarEnv = {
   updatedBy?: string | null | undefined;
   gitBranch?: string | undefined;
   /**
-   * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+   * User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior.
    */
   visibility?: UploadProjectAvatarVisibility | undefined;
   edgeConfigId?: string | null | undefined;

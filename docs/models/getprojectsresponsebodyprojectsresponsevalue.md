@@ -9,9 +9,9 @@
 const value: string = "<value>";
 ```
 
-### `models.GetProjectsValueProjectsResponse2002`
+### `models.GetProjectsValue2`
 
 ```typescript
-const value: models.GetProjectsValueProjectsResponse2002 = {};
+const value: models.GetProjectsValue2 = {};
 ```
 

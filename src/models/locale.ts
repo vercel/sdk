@@ -81,6 +81,7 @@ export type MachineSelectionType = ClosedEnum<typeof MachineSelectionType>;
  * The setting which selected the build machine when the deployment was created. Frozen here so later project or team changes do not rewrite its history.
  */
 export const SelectionSource = {
+  DeploymentOverride: "deployment-override",
   ElasticAlgorithm: "elastic-algorithm",
   PlanDefault: "plan-default",
   ProjectSetting: "project-setting",

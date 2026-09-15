@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GrantType } from "@vercel/sdk/models/fourhundredandeight.js";
+import { GrantType } from "@vercel/sdk/models/fourhundredandnine.js";
 
 let value: GrantType = "authorization_code";
 ```

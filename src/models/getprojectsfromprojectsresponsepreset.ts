@@ -159,7 +159,11 @@ export type GetProjectsValue3 = {
   currentValue: string | number | boolean;
 };
 
-export type ResponseBodyValue = GetProjectsValue3 | string | number | boolean;
+export type GetProjectsResponseBodyValue =
+  | GetProjectsValue3
+  | string
+  | number
+  | boolean;
 
 export type ResponseBodyDismissedToasts = {
   key: string;
@@ -771,14 +775,14 @@ export type GetProjectsResponseBodyProjectsResponse200ApplicationJson2Type =
   >;
 
 /**
- * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+ * User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior.
  */
 export const GetProjectsResponseBodyProjectsResponseVisibility = {
   Config: "config",
   Secret: "secret",
 } as const;
 /**
- * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+ * User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior.
  */
 export type GetProjectsResponseBodyProjectsResponseVisibility = ClosedEnum<
   typeof GetProjectsResponseBodyProjectsResponseVisibility
@@ -938,7 +942,7 @@ export type GetProjectsResponseBodyEnv = {
   updatedBy?: string | null | undefined;
   gitBranch?: string | undefined;
   /**
-   * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+   * User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior.
    */
   visibility?: GetProjectsResponseBodyProjectsResponseVisibility | undefined;
   edgeConfigId?: string | null | undefined;
@@ -2168,8 +2172,8 @@ export function getProjectsValue3FromJSON(
 }
 
 /** @internal */
-export const ResponseBodyValue$inboundSchema: z.ZodType<
-  ResponseBodyValue,
+export const GetProjectsResponseBodyValue$inboundSchema: z.ZodType<
+  GetProjectsResponseBodyValue,
   z.ZodTypeDef,
   unknown
 > = smartUnion([
@@ -2179,13 +2183,13 @@ export const ResponseBodyValue$inboundSchema: z.ZodType<
   types.boolean(),
 ]);
 
-export function responseBodyValueFromJSON(
+export function getProjectsResponseBodyValueFromJSON(
   jsonString: string,
-): SafeParseResult<ResponseBodyValue, SDKValidationError> {
+): SafeParseResult<GetProjectsResponseBodyValue, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ResponseBodyValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBodyValue' from JSON`,
+    (x) => GetProjectsResponseBodyValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsResponseBodyValue' from JSON`,
   );
 }
 

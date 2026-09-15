@@ -1,18 +1,43 @@
 # Value
 
-## Example Usage
+
+## Supported Types
+
+### `string`
 
 ```typescript
-import { Value } from "@vercel/sdk/models/updateflagsegmentop.js";
+const value: string = "<value>";
+```
 
-let value: Value = {
-  value: "<value>",
+### `number`
+
+```typescript
+const value: number = 1284.03;
+```
+
+### `{ [k: string]: any }`
+
+```typescript
+const value: { [k: string]: any } = {
+  "key": "<value>",
+  "key1": "<value>",
+  "key2": "<value>",
 };
 ```
 
-## Fields
+### `any[]`
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `note`             | *string*           | :heavy_minus_sign: | N/A                |
-| `value`            | *string*           | :heavy_check_mark: | N/A                |
+```typescript
+const value: any[] = [
+  "<value 1>",
+  "<value 2>",
+  "<value 3>",
+];
+```
+
+### `boolean`
+
+```typescript
+const value: boolean = true;
+```
+

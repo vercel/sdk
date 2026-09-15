@@ -286,6 +286,10 @@ export type CancelDeploymentServicesConfig = {
    * Owning service name; scopes per-function config such as the v2beta consumer.
    */
   serviceName?: string | undefined;
+  /**
+   * Buildpack runtime slug (e.g. "ruby").
+   */
+  buildpack?: string | undefined;
 };
 
 /**
@@ -1960,6 +1964,7 @@ export const CancelDeploymentServicesConfig$inboundSchema: z.ZodType<
     smartUnion([types.string(), z.array(types.string())]),
   ),
   serviceName: types.optional(types.string()),
+  buildpack: types.optional(types.string()),
 });
 
 export function cancelDeploymentServicesConfigFromJSON(

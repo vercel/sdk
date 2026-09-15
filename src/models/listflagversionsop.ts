@@ -36,7 +36,19 @@ export type ListFlagVersionsRequest = {
   slug?: string | undefined;
 };
 
-export type ListFlagVersionsVariants = {};
+export type ListFlagVersionsValue =
+  | string
+  | number
+  | { [k: string]: any }
+  | Array<any>
+  | boolean;
+
+export type ListFlagVersionsVariants = {
+  description?: string | undefined;
+  label?: string | undefined;
+  value: string | number | { [k: string]: any } | Array<any> | boolean | null;
+  id: string;
+};
 
 export type ListFlagVersionsReuse = {
   active: boolean;
@@ -409,11 +421,47 @@ export function listFlagVersionsRequestToJSON(
 }
 
 /** @internal */
+export const ListFlagVersionsValue$inboundSchema: z.ZodType<
+  ListFlagVersionsValue,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  types.string(),
+  types.number(),
+  z.record(z.any()),
+  z.array(z.any()),
+  types.boolean(),
+]);
+
+export function listFlagVersionsValueFromJSON(
+  jsonString: string,
+): SafeParseResult<ListFlagVersionsValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListFlagVersionsValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListFlagVersionsValue' from JSON`,
+  );
+}
+
+/** @internal */
 export const ListFlagVersionsVariants$inboundSchema: z.ZodType<
   ListFlagVersionsVariants,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = z.object({
+  description: types.optional(types.string()),
+  label: types.optional(types.string()),
+  value: types.nullable(
+    smartUnion([
+      types.string(),
+      types.number(),
+      z.record(z.any()),
+      z.array(z.any()),
+      types.boolean(),
+    ]),
+  ),
+  id: types.string(),
+});
 
 export function listFlagVersionsVariantsFromJSON(
   jsonString: string,

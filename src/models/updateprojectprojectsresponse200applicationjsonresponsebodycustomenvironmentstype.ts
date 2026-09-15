@@ -1452,14 +1452,14 @@ export const UpdateProjectType = {
 export type UpdateProjectType = ClosedEnum<typeof UpdateProjectType>;
 
 /**
- * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+ * User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior.
  */
 export const UpdateProjectVisibility = {
   Config: "config",
   Secret: "secret",
 } as const;
 /**
- * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+ * User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior.
  */
 export type UpdateProjectVisibility = ClosedEnum<
   typeof UpdateProjectVisibility
@@ -1615,7 +1615,7 @@ export type UpdateProjectProjectsEnv = {
   updatedBy?: string | null | undefined;
   gitBranch?: string | undefined;
   /**
-   * User-facing config/secret model. When set, authoritative for new code paths when the env-var-config-secret-ui flag is enabled. Legacy rows omit this field; legacy rows omit it and callers fall back to existing `type` behavior.
+   * User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior.
    */
   visibility?: UpdateProjectVisibility | undefined;
   edgeConfigId?: string | null | undefined;

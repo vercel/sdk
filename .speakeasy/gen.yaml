@@ -40,7 +40,8 @@ typescript:
     peerDependencies: {}
   additionalPackageJSON:
     license: Apache-2.0
-  additionalScripts: {}
+  additionalScripts:
+    test: npm run build
   alwaysIncludeInboundAndOutbound: false
   apiPromiseHelpers: false
   author: Speakeasy

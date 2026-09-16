@@ -5,18 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFiftyNine } from "@vercel/sdk/models/threehundredandfortytwo.js";
+import { ThreeHundredAndFiftyNine } from "@vercel/sdk/models/payloadmostspecificsubdivision.js";
 
 let value: ThreeHundredAndFiftyNine = {
-  previous: "block",
-  next: "manual-approval",
+  amount: "303.78",
+  currency: "Won",
+  expiresAt: "1742871792210",
+  trialCreditsIssuedAt: 6669.66,
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `previous`                                                                     | [models.UserEventPayload359Previous](../models/usereventpayload359previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `next`                                                                         | [models.UserEventPayload359Next](../models/usereventpayload359next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `teamSlug`                                                                     | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| Field                  | Type                   | Required               | Description            |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `amount`               | *string*               | :heavy_check_mark:     | N/A                    |
+| `currency`             | *string*               | :heavy_check_mark:     | N/A                    |
+| `expiresAt`            | *string*               | :heavy_check_mark:     | N/A                    |
+| `trialCreditsIssuedAt` | *number*               | :heavy_check_mark:     | N/A                    |

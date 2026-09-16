@@ -8,8 +8,8 @@
 ```typescript
 const value:
   models.GetProjectsHasProjectsResponse200ApplicationJSONResponseBody31 = {
-    type: "header",
     key: "x-vercel-ip-country",
+    type: "header",
     value: {
       eq: "<value>",
     },

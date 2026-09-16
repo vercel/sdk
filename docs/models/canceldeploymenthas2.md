@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentHas2 } from "@vercel/sdk/models/includefiles.js";
+import { CancelDeploymentHas2 } from "@vercel/sdk/models/canceldeploymentdestinationdeployments2.js";
 
 let value: CancelDeploymentHas2 = {
-  type: "query",
   key: "<key>",
+  type: "query",
 };
 ```
 
@@ -15,6 +15,6 @@ let value: CancelDeploymentHas2 = {
 
 | Field                                                                                                        | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
 | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| `type`                                                                                                       | [models.CancelDeploymentHasDeploymentsResponseType](../models/canceldeploymenthasdeploymentsresponsetype.md) | :heavy_check_mark:                                                                                           | N/A                                                                                                          |
 | `key`                                                                                                        | *string*                                                                                                     | :heavy_check_mark:                                                                                           | N/A                                                                                                          |
+| `type`                                                                                                       | [models.CancelDeploymentHasDeploymentsResponseType](../models/canceldeploymenthasdeploymentsresponsetype.md) | :heavy_check_mark:                                                                                           | N/A                                                                                                          |
 | `value`                                                                                                      | *models.CancelDeploymentHasDeploymentsValue*                                                                 | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |

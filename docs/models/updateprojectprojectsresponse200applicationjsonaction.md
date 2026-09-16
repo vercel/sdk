@@ -1,16 +1,17 @@
 # UpdateProjectProjectsResponse200ApplicationJSONAction
 
+What to do when the gate trips: pause the rollout, or roll it back.
+
 ## Example Usage
 
 ```typescript
-import { UpdateProjectProjectsResponse200ApplicationJSONAction } from "@vercel/sdk/models/updateprojectresponsebody.js";
+import { UpdateProjectProjectsResponse200ApplicationJSONAction } from "@vercel/sdk/models/updateprojectprojectsresponse200applicationjsonaction.js";
 
-let value: UpdateProjectProjectsResponse200ApplicationJSONAction =
-  "add-project-interstitial";
+let value: UpdateProjectProjectsResponse200ApplicationJSONAction = "pause";
 ```
 
 ## Values
 
 ```typescript
-"add-deployment-interstitial" | "add-project-interstitial" | "remove-deployment-interstitial" | "remove-project-interstitial"
+"pause" | "rollback"
 ```

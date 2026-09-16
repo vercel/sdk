@@ -104,8 +104,8 @@ export type ListNamedSandboxesPagination = {
 };
 
 export type ListNamedSandboxesResponseBody = {
-  sandboxes: Array<NamedSandbox>;
   pagination: ListNamedSandboxesPagination;
+  sandboxes: Array<NamedSandbox>;
 };
 
 /** @internal */
@@ -203,8 +203,8 @@ export const ListNamedSandboxesResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  sandboxes: z.array(NamedSandbox$inboundSchema),
   pagination: z.lazy(() => ListNamedSandboxesPagination$inboundSchema),
+  sandboxes: z.array(NamedSandbox$inboundSchema),
 });
 
 export function listNamedSandboxesResponseBodyFromJSON(

@@ -26,6 +26,10 @@ import {
   DuplicateDomains$inboundSchema,
 } from "./duplicatedomains.js";
 import {
+  EmojiTldNotSupported,
+  EmojiTldNotSupported$inboundSchema,
+} from "./emojitldnotsupported.js";
+import {
   ExpectedPriceMismatch,
   ExpectedPriceMismatch$inboundSchema,
 } from "./expectedpricemismatch.js";
@@ -151,11 +155,11 @@ export type BuyDomainsRequest = {
 };
 
 /**
- * NotAuthorizedForScope
+ * Forbidden
  */
 export type BuyDomainsDomainsRegistrarResponseResponseBody =
-  | (NotAuthorizedForScope & { code: "not_authorized_for_scope" })
-  | Forbidden;
+  | Forbidden
+  | (NotAuthorizedForScope & { code: "not_authorized_for_scope" });
 
 /**
  * There was something wrong with the request
@@ -169,6 +173,7 @@ export type BuyDomainsDomainsRegistrarResponseBody =
   | DuplicateDomains
   | ExpectedPriceMismatch
   | DomainNotAvailable
+  | EmojiTldNotSupported
   | LanguageCodeRequired
   | TldNotSupported
   | HttpApiDecodeError;
@@ -349,10 +354,10 @@ export const BuyDomainsDomainsRegistrarResponseResponseBody$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.union([
+    Forbidden$inboundSchema,
     NotAuthorizedForScope$inboundSchema.and(
       z.object({ code: z.literal("not_authorized_for_scope") }),
     ),
-    Forbidden$inboundSchema,
   ]);
 
 export function buyDomainsDomainsRegistrarResponseResponseBodyFromJSON(
@@ -385,6 +390,7 @@ export const BuyDomainsDomainsRegistrarResponseBody$inboundSchema: z.ZodType<
   DuplicateDomains$inboundSchema,
   ExpectedPriceMismatch$inboundSchema,
   DomainNotAvailable$inboundSchema,
+  EmojiTldNotSupported$inboundSchema,
   LanguageCodeRequired$inboundSchema,
   TldNotSupported$inboundSchema,
   HttpApiDecodeError$inboundSchema,

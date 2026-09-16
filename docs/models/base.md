@@ -6,9 +6,9 @@
 import { Base } from "@vercel/sdk/models/flag.js";
 
 let value: Base = {
-  type: "entity",
-  kind: "<value>",
   attribute: "<value>",
+  kind: "<value>",
+  type: "entity",
 };
 ```
 
@@ -16,6 +16,6 @@ let value: Base = {
 
 | Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
 | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `type`                                                                                   | [models.FlagFallthroughEnvironments2Type](../models/flagfallthroughenvironments2type.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `kind`                                                                                   | *string*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |
 | `attribute`                                                                              | *string*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `kind`                                                                                   | *string*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `type`                                                                                   | [models.FlagFallthroughEnvironments2Type](../models/flagfallthroughenvironments2type.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |

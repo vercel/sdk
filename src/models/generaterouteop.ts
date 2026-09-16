@@ -63,16 +63,40 @@ export type GenerateRouteRequest = {
   requestBody?: GenerateRouteRequestBody | undefined;
 };
 
-export const Syntax = {
-  Equals: "equals",
-  PathToRegexp: "path-to-regexp",
-  Regex: "regex",
+export const GenerateRouteOp = {
+  Append: "append",
+  Delete: "delete",
+  Set: "set",
 } as const;
-export type Syntax = ClosedEnum<typeof Syntax>;
+export type GenerateRouteOp = ClosedEnum<typeof GenerateRouteOp>;
 
-export type GenerateRoutePathCondition = {
-  value: string;
-  syntax: Syntax;
+export type GenerateRouteProjectRoutesHeaders = {
+  key: string;
+  op: GenerateRouteOp;
+  value?: string | undefined;
+};
+
+export const SubType = {
+  ResponseHeaders: "response-headers",
+  TransformRequestHeader: "transform-request-header",
+  TransformRequestQuery: "transform-request-query",
+} as const;
+export type SubType = ClosedEnum<typeof SubType>;
+
+export const GenerateRouteType = {
+  Modify: "modify",
+  Redirect: "redirect",
+  Rewrite: "rewrite",
+  SetStatus: "set-status",
+} as const;
+export type GenerateRouteType = ClosedEnum<typeof GenerateRouteType>;
+
+export type GenerateRouteActions = {
+  dest?: string | undefined;
+  headers?: Array<GenerateRouteProjectRoutesHeaders> | undefined;
+  status?: number | undefined;
+  subType?: SubType | undefined;
+  type: GenerateRouteType;
 };
 
 export const GenerateRouteField = {
@@ -93,59 +117,35 @@ export type Operator = ClosedEnum<typeof Operator>;
 
 export type GenerateRouteProjectRoutesConditions = {
   field: GenerateRouteField;
-  operator: Operator;
   key?: string | undefined;
-  value?: string | undefined;
   missing: boolean;
-};
-
-export const GenerateRouteType = {
-  Modify: "modify",
-  Redirect: "redirect",
-  Rewrite: "rewrite",
-  SetStatus: "set-status",
-} as const;
-export type GenerateRouteType = ClosedEnum<typeof GenerateRouteType>;
-
-export const SubType = {
-  ResponseHeaders: "response-headers",
-  TransformRequestHeader: "transform-request-header",
-  TransformRequestQuery: "transform-request-query",
-} as const;
-export type SubType = ClosedEnum<typeof SubType>;
-
-export const GenerateRouteOp = {
-  Append: "append",
-  Delete: "delete",
-  Set: "set",
-} as const;
-export type GenerateRouteOp = ClosedEnum<typeof GenerateRouteOp>;
-
-export type GenerateRouteProjectRoutesHeaders = {
-  key: string;
+  operator: Operator;
   value?: string | undefined;
-  op: GenerateRouteOp;
 };
 
-export type GenerateRouteActions = {
-  type: GenerateRouteType;
-  subType?: SubType | undefined;
-  dest?: string | undefined;
-  status?: number | undefined;
-  headers?: Array<GenerateRouteProjectRoutesHeaders> | undefined;
+export const Syntax = {
+  Equals: "equals",
+  PathToRegexp: "path-to-regexp",
+  Regex: "regex",
+} as const;
+export type Syntax = ClosedEnum<typeof Syntax>;
+
+export type GenerateRoutePathCondition = {
+  syntax: Syntax;
+  value: string;
 };
 
 export type GenerateRouteRoute = {
-  name: string;
-  description: string;
-  pathCondition: GenerateRoutePathCondition;
-  conditions?: Array<GenerateRouteProjectRoutesConditions> | undefined;
   actions: Array<GenerateRouteActions>;
+  conditions?: Array<GenerateRouteProjectRoutesConditions> | undefined;
+  description: string;
+  name: string;
+  pathCondition: GenerateRoutePathCondition;
 };
 
 export type GenerateRouteResponseBody = {
-  route?: GenerateRouteRoute | undefined;
   error?: string | undefined;
+  route?: GenerateRouteRoute | undefined;
 };
 
 /** @internal */
@@ -335,26 +335,62 @@ export function generateRouteRequestToJSON(
 }
 
 /** @internal */
-export const Syntax$inboundSchema: z.ZodNativeEnum<typeof Syntax> = z
-  .nativeEnum(Syntax);
+export const GenerateRouteOp$inboundSchema: z.ZodNativeEnum<
+  typeof GenerateRouteOp
+> = z.nativeEnum(GenerateRouteOp);
 
 /** @internal */
-export const GenerateRoutePathCondition$inboundSchema: z.ZodType<
-  GenerateRoutePathCondition,
+export const GenerateRouteProjectRoutesHeaders$inboundSchema: z.ZodType<
+  GenerateRouteProjectRoutesHeaders,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  value: types.string(),
-  syntax: Syntax$inboundSchema,
+  key: types.string(),
+  op: GenerateRouteOp$inboundSchema,
+  value: types.optional(types.string()),
 });
 
-export function generateRoutePathConditionFromJSON(
+export function generateRouteProjectRoutesHeadersFromJSON(
   jsonString: string,
-): SafeParseResult<GenerateRoutePathCondition, SDKValidationError> {
+): SafeParseResult<GenerateRouteProjectRoutesHeaders, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GenerateRoutePathCondition$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GenerateRoutePathCondition' from JSON`,
+    (x) => GenerateRouteProjectRoutesHeaders$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GenerateRouteProjectRoutesHeaders' from JSON`,
+  );
+}
+
+/** @internal */
+export const SubType$inboundSchema: z.ZodNativeEnum<typeof SubType> = z
+  .nativeEnum(SubType);
+
+/** @internal */
+export const GenerateRouteType$inboundSchema: z.ZodNativeEnum<
+  typeof GenerateRouteType
+> = z.nativeEnum(GenerateRouteType);
+
+/** @internal */
+export const GenerateRouteActions$inboundSchema: z.ZodType<
+  GenerateRouteActions,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  dest: types.optional(types.string()),
+  headers: types.optional(
+    z.array(z.lazy(() => GenerateRouteProjectRoutesHeaders$inboundSchema)),
+  ),
+  status: types.optional(types.number()),
+  subType: types.optional(SubType$inboundSchema),
+  type: GenerateRouteType$inboundSchema,
+});
+
+export function generateRouteActionsFromJSON(
+  jsonString: string,
+): SafeParseResult<GenerateRouteActions, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GenerateRouteActions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GenerateRouteActions' from JSON`,
   );
 }
 
@@ -374,10 +410,10 @@ export const GenerateRouteProjectRoutesConditions$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   field: GenerateRouteField$inboundSchema,
-  operator: Operator$inboundSchema,
   key: types.optional(types.string()),
-  value: types.optional(types.string()),
   missing: types.boolean(),
+  operator: Operator$inboundSchema,
+  value: types.optional(types.string()),
 });
 
 export function generateRouteProjectRoutesConditionsFromJSON(
@@ -392,62 +428,26 @@ export function generateRouteProjectRoutesConditionsFromJSON(
 }
 
 /** @internal */
-export const GenerateRouteType$inboundSchema: z.ZodNativeEnum<
-  typeof GenerateRouteType
-> = z.nativeEnum(GenerateRouteType);
+export const Syntax$inboundSchema: z.ZodNativeEnum<typeof Syntax> = z
+  .nativeEnum(Syntax);
 
 /** @internal */
-export const SubType$inboundSchema: z.ZodNativeEnum<typeof SubType> = z
-  .nativeEnum(SubType);
-
-/** @internal */
-export const GenerateRouteOp$inboundSchema: z.ZodNativeEnum<
-  typeof GenerateRouteOp
-> = z.nativeEnum(GenerateRouteOp);
-
-/** @internal */
-export const GenerateRouteProjectRoutesHeaders$inboundSchema: z.ZodType<
-  GenerateRouteProjectRoutesHeaders,
+export const GenerateRoutePathCondition$inboundSchema: z.ZodType<
+  GenerateRoutePathCondition,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  key: types.string(),
-  value: types.optional(types.string()),
-  op: GenerateRouteOp$inboundSchema,
+  syntax: Syntax$inboundSchema,
+  value: types.string(),
 });
 
-export function generateRouteProjectRoutesHeadersFromJSON(
+export function generateRoutePathConditionFromJSON(
   jsonString: string,
-): SafeParseResult<GenerateRouteProjectRoutesHeaders, SDKValidationError> {
+): SafeParseResult<GenerateRoutePathCondition, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GenerateRouteProjectRoutesHeaders$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GenerateRouteProjectRoutesHeaders' from JSON`,
-  );
-}
-
-/** @internal */
-export const GenerateRouteActions$inboundSchema: z.ZodType<
-  GenerateRouteActions,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: GenerateRouteType$inboundSchema,
-  subType: types.optional(SubType$inboundSchema),
-  dest: types.optional(types.string()),
-  status: types.optional(types.number()),
-  headers: types.optional(
-    z.array(z.lazy(() => GenerateRouteProjectRoutesHeaders$inboundSchema)),
-  ),
-});
-
-export function generateRouteActionsFromJSON(
-  jsonString: string,
-): SafeParseResult<GenerateRouteActions, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GenerateRouteActions$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GenerateRouteActions' from JSON`,
+    (x) => GenerateRoutePathCondition$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GenerateRoutePathCondition' from JSON`,
   );
 }
 
@@ -457,13 +457,13 @@ export const GenerateRouteRoute$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: types.string(),
-  description: types.string(),
-  pathCondition: z.lazy(() => GenerateRoutePathCondition$inboundSchema),
+  actions: z.array(z.lazy(() => GenerateRouteActions$inboundSchema)),
   conditions: types.optional(
     z.array(z.lazy(() => GenerateRouteProjectRoutesConditions$inboundSchema)),
   ),
-  actions: z.array(z.lazy(() => GenerateRouteActions$inboundSchema)),
+  description: types.string(),
+  name: types.string(),
+  pathCondition: z.lazy(() => GenerateRoutePathCondition$inboundSchema),
 });
 
 export function generateRouteRouteFromJSON(
@@ -482,8 +482,8 @@ export const GenerateRouteResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  route: types.optional(z.lazy(() => GenerateRouteRoute$inboundSchema)),
   error: types.optional(types.string()),
+  route: types.optional(z.lazy(() => GenerateRouteRoute$inboundSchema)),
 });
 
 export function generateRouteResponseBodyFromJSON(

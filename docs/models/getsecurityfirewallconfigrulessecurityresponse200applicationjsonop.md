@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetSecurityFirewallConfigRulesSecurityResponse200ApplicationJSONOp } from "@vercel/sdk/models/getsecurityfirewallconfigsecurityresponsemanagedrules.js";
+import { GetSecurityFirewallConfigRulesSecurityResponse200ApplicationJSONOp } from "@vercel/sdk/models/getsecurityfirewallconfigrulesetssecurityresponse200action.js";
 
 let value: GetSecurityFirewallConfigRulesSecurityResponse200ApplicationJSONOp =
   "ninc";

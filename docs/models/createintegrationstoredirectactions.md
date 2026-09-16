@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { CreateIntegrationStoreDirectActions } from "@vercel/sdk/models/createintegrationstoredirectpropertiesintegrationsitems.js";
+import { CreateIntegrationStoreDirectActions } from "@vercel/sdk/models/createintegrationstoredirectpropertiesintegrationsresponse200uioptions.js";
 
 let value: CreateIntegrationStoreDirectActions = {
-  slug: "<value>",
   environments: [
     "<value 1>",
   ],
+  slug: "<value>",
 };
 ```
 
@@ -17,5 +17,5 @@ let value: CreateIntegrationStoreDirectActions = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `slug`             | *string*           | :heavy_check_mark: | N/A                |
 | `environments`     | *string*[]         | :heavy_check_mark: | N/A                |
+| `slug`             | *string*           | :heavy_check_mark: | N/A                |

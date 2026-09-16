@@ -71,6 +71,20 @@ export type RequestAccessToTeamRequest = {
   requestBody: RequestAccessToTeamRequestBody;
 };
 
+export type Bitbucket = {
+  login?: string | undefined;
+};
+
+export type Github = {
+  login?: string | undefined;
+};
+
+export type Gitlab = {
+  login?: string | undefined;
+};
+
+export type RequestAccessToTeamTeamsGitUserId = string | number;
+
 export const RequestAccessToTeamTeamsOrigin = {
   AccountUpdate: "account-update",
   Bitbucket: "bitbucket",
@@ -96,46 +110,32 @@ export type RequestAccessToTeamTeamsOrigin = ClosedEnum<
   typeof RequestAccessToTeamTeamsOrigin
 >;
 
-export type RequestAccessToTeamTeamsGitUserId = string | number;
-
 export type RequestAccessToTeamTeamsJoinedFrom = {
-  origin: RequestAccessToTeamTeamsOrigin;
   commitId?: string | undefined;
-  repoId?: string | undefined;
-  repoPath?: string | undefined;
+  dsyncConnectedAt?: number | undefined;
+  dsyncUserId?: string | undefined;
   gitUserId?: string | number | undefined;
   gitUserLogin?: string | undefined;
-  ssoUserId?: string | undefined;
-  ssoConnectedAt?: number | undefined;
   idpUserId?: string | undefined;
-  dsyncUserId?: string | undefined;
-  dsyncConnectedAt?: number | undefined;
-};
-
-export type Github = {
-  login?: string | undefined;
-};
-
-export type Gitlab = {
-  login?: string | undefined;
-};
-
-export type Bitbucket = {
-  login?: string | undefined;
+  origin: RequestAccessToTeamTeamsOrigin;
+  repoId?: string | undefined;
+  repoPath?: string | undefined;
+  ssoConnectedAt?: number | undefined;
+  ssoUserId?: string | undefined;
 };
 
 /**
  * Successfuly requested access to the team.
  */
 export type RequestAccessToTeamResponseBody = {
-  teamSlug: string;
-  teamName: string;
-  confirmed?: boolean | undefined;
-  joinedFrom?: RequestAccessToTeamTeamsJoinedFrom | undefined;
   accessRequestedAt?: number | undefined;
+  bitbucket: Bitbucket | null;
+  confirmed?: boolean | undefined;
   github: Github | null;
   gitlab: Gitlab | null;
-  bitbucket: Bitbucket | null;
+  joinedFrom?: RequestAccessToTeamTeamsJoinedFrom | undefined;
+  teamName: string;
+  teamSlug: string;
 };
 
 /** @internal */
@@ -250,54 +250,21 @@ export function requestAccessToTeamRequestToJSON(
 }
 
 /** @internal */
-export const RequestAccessToTeamTeamsOrigin$inboundSchema: z.ZodNativeEnum<
-  typeof RequestAccessToTeamTeamsOrigin
-> = z.nativeEnum(RequestAccessToTeamTeamsOrigin);
-
-/** @internal */
-export const RequestAccessToTeamTeamsGitUserId$inboundSchema: z.ZodType<
-  RequestAccessToTeamTeamsGitUserId,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([types.string(), types.number()]);
-
-export function requestAccessToTeamTeamsGitUserIdFromJSON(
-  jsonString: string,
-): SafeParseResult<RequestAccessToTeamTeamsGitUserId, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestAccessToTeamTeamsGitUserId$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestAccessToTeamTeamsGitUserId' from JSON`,
-  );
-}
-
-/** @internal */
-export const RequestAccessToTeamTeamsJoinedFrom$inboundSchema: z.ZodType<
-  RequestAccessToTeamTeamsJoinedFrom,
+export const Bitbucket$inboundSchema: z.ZodType<
+  Bitbucket,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  origin: RequestAccessToTeamTeamsOrigin$inboundSchema,
-  commitId: types.optional(types.string()),
-  repoId: types.optional(types.string()),
-  repoPath: types.optional(types.string()),
-  gitUserId: types.optional(smartUnion([types.string(), types.number()])),
-  gitUserLogin: types.optional(types.string()),
-  ssoUserId: types.optional(types.string()),
-  ssoConnectedAt: types.optional(types.number()),
-  idpUserId: types.optional(types.string()),
-  dsyncUserId: types.optional(types.string()),
-  dsyncConnectedAt: types.optional(types.number()),
+  login: types.optional(types.string()),
 });
 
-export function requestAccessToTeamTeamsJoinedFromFromJSON(
+export function bitbucketFromJSON(
   jsonString: string,
-): SafeParseResult<RequestAccessToTeamTeamsJoinedFrom, SDKValidationError> {
+): SafeParseResult<Bitbucket, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      RequestAccessToTeamTeamsJoinedFrom$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestAccessToTeamTeamsJoinedFrom' from JSON`,
+    (x) => Bitbucket$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Bitbucket' from JSON`,
   );
 }
 
@@ -334,21 +301,54 @@ export function gitlabFromJSON(
 }
 
 /** @internal */
-export const Bitbucket$inboundSchema: z.ZodType<
-  Bitbucket,
+export const RequestAccessToTeamTeamsGitUserId$inboundSchema: z.ZodType<
+  RequestAccessToTeamTeamsGitUserId,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), types.number()]);
+
+export function requestAccessToTeamTeamsGitUserIdFromJSON(
+  jsonString: string,
+): SafeParseResult<RequestAccessToTeamTeamsGitUserId, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RequestAccessToTeamTeamsGitUserId$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RequestAccessToTeamTeamsGitUserId' from JSON`,
+  );
+}
+
+/** @internal */
+export const RequestAccessToTeamTeamsOrigin$inboundSchema: z.ZodNativeEnum<
+  typeof RequestAccessToTeamTeamsOrigin
+> = z.nativeEnum(RequestAccessToTeamTeamsOrigin);
+
+/** @internal */
+export const RequestAccessToTeamTeamsJoinedFrom$inboundSchema: z.ZodType<
+  RequestAccessToTeamTeamsJoinedFrom,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  login: types.optional(types.string()),
+  commitId: types.optional(types.string()),
+  dsyncConnectedAt: types.optional(types.number()),
+  dsyncUserId: types.optional(types.string()),
+  gitUserId: types.optional(smartUnion([types.string(), types.number()])),
+  gitUserLogin: types.optional(types.string()),
+  idpUserId: types.optional(types.string()),
+  origin: RequestAccessToTeamTeamsOrigin$inboundSchema,
+  repoId: types.optional(types.string()),
+  repoPath: types.optional(types.string()),
+  ssoConnectedAt: types.optional(types.number()),
+  ssoUserId: types.optional(types.string()),
 });
 
-export function bitbucketFromJSON(
+export function requestAccessToTeamTeamsJoinedFromFromJSON(
   jsonString: string,
-): SafeParseResult<Bitbucket, SDKValidationError> {
+): SafeParseResult<RequestAccessToTeamTeamsJoinedFrom, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Bitbucket$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Bitbucket' from JSON`,
+    (x) =>
+      RequestAccessToTeamTeamsJoinedFrom$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RequestAccessToTeamTeamsJoinedFrom' from JSON`,
   );
 }
 
@@ -358,16 +358,16 @@ export const RequestAccessToTeamResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  teamSlug: types.string(),
-  teamName: types.string(),
+  accessRequestedAt: types.optional(types.number()),
+  bitbucket: types.nullable(z.lazy(() => Bitbucket$inboundSchema)),
   confirmed: types.optional(types.boolean()),
+  github: types.nullable(z.lazy(() => Github$inboundSchema)),
+  gitlab: types.nullable(z.lazy(() => Gitlab$inboundSchema)),
   joinedFrom: types.optional(
     z.lazy(() => RequestAccessToTeamTeamsJoinedFrom$inboundSchema),
   ),
-  accessRequestedAt: types.optional(types.number()),
-  github: types.nullable(z.lazy(() => Github$inboundSchema)),
-  gitlab: types.nullable(z.lazy(() => Gitlab$inboundSchema)),
-  bitbucket: types.nullable(z.lazy(() => Bitbucket$inboundSchema)),
+  teamName: types.string(),
+  teamSlug: types.string(),
 });
 
 export function requestAccessToTeamResponseBodyFromJSON(

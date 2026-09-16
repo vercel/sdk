@@ -44,20 +44,6 @@ export type GetProjectMembersRequest = {
 /**
  * Role of this user in the project.
  */
-export const ResponseBodyRole = {
-  Admin: "ADMIN",
-  ProjectDeveloper: "PROJECT_DEVELOPER",
-  ProjectGuest: "PROJECT_GUEST",
-  ProjectViewer: "PROJECT_VIEWER",
-} as const;
-/**
- * Role of this user in the project.
- */
-export type ResponseBodyRole = ClosedEnum<typeof ResponseBodyRole>;
-
-/**
- * Role of this user in the project.
- */
 export const ComputedProjectRole = {
   Admin: "ADMIN",
   ProjectDeveloper: "PROJECT_DEVELOPER",
@@ -68,6 +54,20 @@ export const ComputedProjectRole = {
  * Role of this user in the project.
  */
 export type ComputedProjectRole = ClosedEnum<typeof ComputedProjectRole>;
+
+/**
+ * Role of this user in the project.
+ */
+export const ResponseBodyRole = {
+  Admin: "ADMIN",
+  ProjectDeveloper: "PROJECT_DEVELOPER",
+  ProjectGuest: "PROJECT_GUEST",
+  ProjectViewer: "PROJECT_VIEWER",
+} as const;
+/**
+ * Role of this user in the project.
+ */
+export type ResponseBodyRole = ClosedEnum<typeof ResponseBodyRole>;
 
 /**
  * The role of this user in the team.
@@ -93,17 +93,29 @@ export type ResponseBodyMembers = {
    */
   avatar?: string | undefined;
   /**
+   * Role of this user in the project.
+   */
+  computedProjectRole: ComputedProjectRole;
+  /**
+   * Timestamp in milliseconds when this member was added.
+   */
+  createdAt: number;
+  /**
    * The email of this member.
    */
   email: string;
+  /**
+   * The name of this user.
+   */
+  name?: string | undefined;
   /**
    * Role of this user in the project.
    */
   role: ResponseBodyRole;
   /**
-   * Role of this user in the project.
+   * The role of this user in the team.
    */
-  computedProjectRole: ComputedProjectRole;
+  teamRole: ResponseBodyTeamRole;
   /**
    * The ID of this user.
    */
@@ -112,26 +124,14 @@ export type ResponseBodyMembers = {
    * The unique username of this user.
    */
   username: string;
-  /**
-   * The name of this user.
-   */
-  name?: string | undefined;
-  /**
-   * Timestamp in milliseconds when this member was added.
-   */
-  createdAt: number;
-  /**
-   * The role of this user in the team.
-   */
-  teamRole: ResponseBodyTeamRole;
 };
 
 export type GetProjectMembersResponseBodyPagination = {
-  hasNext: boolean;
   /**
    * Amount of items in the current page.
    */
   count: number;
+  hasNext: boolean;
   /**
    * Timestamp that must be used to request the next page.
    */
@@ -194,14 +194,14 @@ export function getProjectMembersRequestToJSON(
 }
 
 /** @internal */
-export const ResponseBodyRole$inboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyRole
-> = z.nativeEnum(ResponseBodyRole);
-
-/** @internal */
 export const ComputedProjectRole$inboundSchema: z.ZodNativeEnum<
   typeof ComputedProjectRole
 > = z.nativeEnum(ComputedProjectRole);
+
+/** @internal */
+export const ResponseBodyRole$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyRole
+> = z.nativeEnum(ResponseBodyRole);
 
 /** @internal */
 export const ResponseBodyTeamRole$inboundSchema: z.ZodNativeEnum<
@@ -215,14 +215,14 @@ export const ResponseBodyMembers$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   avatar: types.optional(types.string()),
-  email: types.string(),
-  role: ResponseBodyRole$inboundSchema,
   computedProjectRole: ComputedProjectRole$inboundSchema,
+  createdAt: types.number(),
+  email: types.string(),
+  name: types.optional(types.string()),
+  role: ResponseBodyRole$inboundSchema,
+  teamRole: ResponseBodyTeamRole$inboundSchema,
   uid: types.string(),
   username: types.string(),
-  name: types.optional(types.string()),
-  createdAt: types.number(),
-  teamRole: ResponseBodyTeamRole$inboundSchema,
 });
 
 export function responseBodyMembersFromJSON(
@@ -241,8 +241,8 @@ export const GetProjectMembersResponseBodyPagination$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  hasNext: types.boolean(),
   count: types.number(),
+  hasNext: types.boolean(),
   next: types.nullable(types.number()),
   prev: types.nullable(types.number()),
 });

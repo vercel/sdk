@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsProjectsResponseBranchMatcher } from "@vercel/sdk/models/updatemicrofrontendsinternalroutes2.js";
+import { UpdateMicrofrontendsProjectsResponseBranchMatcher } from "@vercel/sdk/models/updatemicrofrontendsfrom1.js";
 
 let value: UpdateMicrofrontendsProjectsResponseBranchMatcher = {
-  type: "endsWith",
   pattern: "<value>",
+  type: "endsWith",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: UpdateMicrofrontendsProjectsResponseBranchMatcher = {
 
 | Field                                                                                                                                                                              | Type                                                                                                                                                                               | Required                                                                                                                                                                           | Description                                                                                                                                                                        |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `type`                                                                                                                                                                             | [models.UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyTargetsType](../models/updatemicrofrontendsprojectsresponse200applicationjsonresponsebodytargetstype.md) | :heavy_check_mark:                                                                                                                                                                 | The type of matching to perform                                                                                                                                                    |
 | `pattern`                                                                                                                                                                          | *string*                                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                                 | The pattern to match against branch names                                                                                                                                          |
+| `type`                                                                                                                                                                             | [models.UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyTargetsType](../models/updatemicrofrontendsprojectsresponse200applicationjsonresponsebodytargetstype.md) | :heavy_check_mark:                                                                                                                                                                 | The type of matching to perform                                                                                                                                                    |

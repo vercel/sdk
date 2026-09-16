@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { UpdateProjectProjectsResponseType } from "@vercel/sdk/models/updateprojecttrafficsources.js";
+import { UpdateProjectProjectsResponseType } from "@vercel/sdk/models/updateprojectprojectsresponse200applicationjsonaction.js";
 
-let value: UpdateProjectProjectsResponseType = "LAMBDAS";
+let value: UpdateProjectProjectsResponseType = "rollback";
 ```
 
 ## Values
 
 ```typescript
-"LAMBDAS"
+"promote" | "rollback"
 ```

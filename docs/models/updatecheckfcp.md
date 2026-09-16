@@ -6,15 +6,15 @@
 import { UpdateCheckFCP } from "@vercel/sdk/models/updatecheckop.js";
 
 let value: UpdateCheckFCP = {
-  value: 5881.2,
   source: "web-vitals",
+  value: 5881.2,
 };
 ```
 
 ## Fields
 
-| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `value`                                                                                | *number*                                                                               | :heavy_check_mark:                                                                     | N/A                                                                                    |
-| `previousValue`                                                                        | *number*                                                                               | :heavy_minus_sign:                                                                     | N/A                                                                                    |
-| `source`                                                                               | [models.UpdateCheckChecksResponseSource](../models/updatecheckchecksresponsesource.md) | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `previousValue`                                                                              | *number*                                                                                     | :heavy_minus_sign:                                                                           | N/A                                                                                          |
+| `source`                                                                                     | [models.UpdateCheckChecksResponse200Source](../models/updatecheckchecksresponse200source.md) | :heavy_check_mark:                                                                           | N/A                                                                                          |
+| `value`                                                                                      | *number*                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          |

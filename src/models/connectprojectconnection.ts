@@ -10,6 +10,15 @@ import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
+export const EnabledEnvironments2 = {
+  Development: "development",
+  Preview: "preview",
+  Production: "production",
+} as const;
+export type EnabledEnvironments2 = ClosedEnum<typeof EnabledEnvironments2>;
+
+export type EnabledEnvironments = string | EnabledEnvironments2;
+
 /**
  * Custom environments available on the project. This list can include environments where the connector is not enabled.
  */
@@ -29,6 +38,10 @@ export type CustomEnvironments = {
  */
 export type Project = {
   /**
+   * Custom environments available on the project. This list can include environments where the connector is not enabled.
+   */
+  customEnvironments?: Array<CustomEnvironments> | undefined;
+  /**
    * Same Vercel project ID as the connection's top-level `projectId`.
    */
   id: string;
@@ -36,20 +49,7 @@ export type Project = {
    * Current Vercel project name.
    */
   name: string;
-  /**
-   * Custom environments available on the project. This list can include environments where the connector is not enabled.
-   */
-  customEnvironments?: Array<CustomEnvironments> | undefined;
 };
-
-export const EnabledEnvironments2 = {
-  Development: "development",
-  Preview: "preview",
-  Production: "production",
-} as const;
-export type EnabledEnvironments2 = ClosedEnum<typeof EnabledEnvironments2>;
-
-export type EnabledEnvironments = string | EnabledEnvironments2;
 
 /**
  * A connection between a connector and a Vercel project, including the environments where the connector is enabled.
@@ -60,62 +60,22 @@ export type ConnectProjectConnection = {
    */
   connectorId: string;
   /**
-   * Vercel project connected to the connector.
+   * Time when the project connection was created, in epoch milliseconds.
    */
-  project: Project;
+  createdAt: number;
   /**
    * Environments where the connector is enabled for the project.
    */
   enabledEnvironments: Array<string | EnabledEnvironments2>;
   /**
-   * Time when the project connection was created, in epoch milliseconds.
+   * Vercel project connected to the connector.
    */
-  createdAt: number;
+  project: Project;
   /**
    * Time when the project connection was last updated, in epoch milliseconds.
    */
   updatedAt: number;
 };
-
-/** @internal */
-export const CustomEnvironments$inboundSchema: z.ZodType<
-  CustomEnvironments,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: types.string(),
-  slug: types.string(),
-});
-
-export function customEnvironmentsFromJSON(
-  jsonString: string,
-): SafeParseResult<CustomEnvironments, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CustomEnvironments$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CustomEnvironments' from JSON`,
-  );
-}
-
-/** @internal */
-export const Project$inboundSchema: z.ZodType<Project, z.ZodTypeDef, unknown> =
-  z.object({
-    id: types.string(),
-    name: types.string(),
-    customEnvironments: types.optional(
-      z.array(z.lazy(() => CustomEnvironments$inboundSchema)),
-    ),
-  });
-
-export function projectFromJSON(
-  jsonString: string,
-): SafeParseResult<Project, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Project$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Project' from JSON`,
-  );
-}
 
 /** @internal */
 export const EnabledEnvironments2$inboundSchema: z.ZodNativeEnum<
@@ -140,17 +100,57 @@ export function enabledEnvironmentsFromJSON(
 }
 
 /** @internal */
+export const CustomEnvironments$inboundSchema: z.ZodType<
+  CustomEnvironments,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: types.string(),
+  slug: types.string(),
+});
+
+export function customEnvironmentsFromJSON(
+  jsonString: string,
+): SafeParseResult<CustomEnvironments, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CustomEnvironments$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CustomEnvironments' from JSON`,
+  );
+}
+
+/** @internal */
+export const Project$inboundSchema: z.ZodType<Project, z.ZodTypeDef, unknown> =
+  z.object({
+    customEnvironments: types.optional(
+      z.array(z.lazy(() => CustomEnvironments$inboundSchema)),
+    ),
+    id: types.string(),
+    name: types.string(),
+  });
+
+export function projectFromJSON(
+  jsonString: string,
+): SafeParseResult<Project, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Project$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Project' from JSON`,
+  );
+}
+
+/** @internal */
 export const ConnectProjectConnection$inboundSchema: z.ZodType<
   ConnectProjectConnection,
   z.ZodTypeDef,
   unknown
 > = z.object({
   connectorId: types.string(),
-  project: z.lazy(() => Project$inboundSchema),
+  createdAt: types.number(),
   enabledEnvironments: z.array(
     smartUnion([types.string(), EnabledEnvironments2$inboundSchema]),
   ),
-  createdAt: types.number(),
+  project: z.lazy(() => Project$inboundSchema),
   updatedAt: types.number(),
 });
 

@@ -9,106 +9,8 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
-  Categories,
-  Categories$inboundSchema,
-  Entities,
-  Entities$inboundSchema,
-  FourHundredAndEighteen,
-  FourHundredAndEighteen$inboundSchema,
-  FourHundredAndEleven,
-  FourHundredAndEleven$inboundSchema,
-  FourHundredAndFifteen,
-  FourHundredAndFifteen$inboundSchema,
-  FourHundredAndFifty,
-  FourHundredAndFifty$inboundSchema,
-  FourHundredAndFiftyOne,
-  FourHundredAndFiftyOne$inboundSchema,
-  FourHundredAndForty,
-  FourHundredAndForty$inboundSchema,
-  FourHundredAndFortyEight,
-  FourHundredAndFortyEight$inboundSchema,
-  FourHundredAndFortyFive,
-  FourHundredAndFortyFive$inboundSchema,
-  FourHundredAndFortyFour,
-  FourHundredAndFortyFour$inboundSchema,
-  FourHundredAndFortyNine,
-  FourHundredAndFortyNine$inboundSchema,
-  FourHundredAndFortyOne,
-  FourHundredAndFortyOne$inboundSchema,
-  FourHundredAndFortySeven,
-  FourHundredAndFortySeven$inboundSchema,
-  FourHundredAndFortySix,
-  FourHundredAndFortySix$inboundSchema,
-  FourHundredAndFortyThree,
-  FourHundredAndFortyThree$inboundSchema,
-  FourHundredAndFortyTwo,
-  FourHundredAndFortyTwo$inboundSchema,
-  FourHundredAndFourteen,
-  FourHundredAndFourteen$inboundSchema,
-  FourHundredAndNine,
-  FourHundredAndNine$inboundSchema,
-  FourHundredAndNineteen,
-  FourHundredAndNineteen$inboundSchema,
-  FourHundredAndSeventeen,
-  FourHundredAndSeventeen$inboundSchema,
-  FourHundredAndSixteen,
-  FourHundredAndSixteen$inboundSchema,
-  FourHundredAndTen,
-  FourHundredAndTen$inboundSchema,
-  FourHundredAndThirteen,
-  FourHundredAndThirteen$inboundSchema,
-  FourHundredAndThirty,
-  FourHundredAndThirty$inboundSchema,
-  FourHundredAndThirtyEight,
-  FourHundredAndThirtyEight$inboundSchema,
-  FourHundredAndThirtyFive,
-  FourHundredAndThirtyFive$inboundSchema,
-  FourHundredAndThirtyFour,
-  FourHundredAndThirtyFour$inboundSchema,
-  FourHundredAndThirtyNine,
-  FourHundredAndThirtyNine$inboundSchema,
-  FourHundredAndThirtyOne,
-  FourHundredAndThirtyOne$inboundSchema,
-  FourHundredAndThirtySeven,
-  FourHundredAndThirtySeven$inboundSchema,
-  FourHundredAndThirtySix,
-  FourHundredAndThirtySix$inboundSchema,
-  FourHundredAndThirtyThree,
-  FourHundredAndThirtyThree$inboundSchema,
-  FourHundredAndThirtyTwo,
-  FourHundredAndThirtyTwo$inboundSchema,
-  FourHundredAndTwelve,
-  FourHundredAndTwelve$inboundSchema,
-  FourHundredAndTwenty,
-  FourHundredAndTwenty$inboundSchema,
-  FourHundredAndTwentyEight,
-  FourHundredAndTwentyEight$inboundSchema,
-  FourHundredAndTwentyFive,
-  FourHundredAndTwentyFive$inboundSchema,
-  FourHundredAndTwentyFour,
-  FourHundredAndTwentyFour$inboundSchema,
-  FourHundredAndTwentyNine,
-  FourHundredAndTwentyNine$inboundSchema,
-  FourHundredAndTwentyOne,
-  FourHundredAndTwentyOne$inboundSchema,
-  FourHundredAndTwentySeven,
-  FourHundredAndTwentySeven$inboundSchema,
-  FourHundredAndTwentySix,
-  FourHundredAndTwentySix$inboundSchema,
-  FourHundredAndTwentyThree,
-  FourHundredAndTwentyThree$inboundSchema,
-  FourHundredAndTwentyTwo,
-  FourHundredAndTwentyTwo$inboundSchema,
-  Principal,
-  Principal$inboundSchema,
-  User,
-  User$inboundSchema,
-  UserEventType,
-  UserEventType$inboundSchema,
-  Via,
-  Via$inboundSchema,
-} from "./fourhundredandnine.js";
-import {
+  OneHundred,
+  OneHundred$inboundSchema,
   OneHundredAndEight,
   OneHundredAndEight$inboundSchema,
   OneHundredAndEighteen,
@@ -117,26 +19,14 @@ import {
   OneHundredAndEleven$inboundSchema,
   OneHundredAndFifteen,
   OneHundredAndFifteen$inboundSchema,
-  OneHundredAndFifty,
-  OneHundredAndFifty$inboundSchema,
-  OneHundredAndFiftyFour,
-  OneHundredAndFiftyFour$inboundSchema,
-  OneHundredAndFiftyOne,
-  OneHundredAndFiftyOne$inboundSchema,
-  OneHundredAndFiftyThree,
-  OneHundredAndFiftyThree$inboundSchema,
-  OneHundredAndFiftyTwo,
-  OneHundredAndFiftyTwo$inboundSchema,
+  OneHundredAndFive,
+  OneHundredAndFive$inboundSchema,
   OneHundredAndForty,
   OneHundredAndForty$inboundSchema,
-  OneHundredAndFortyEight,
-  OneHundredAndFortyEight$inboundSchema,
   OneHundredAndFortyFive,
   OneHundredAndFortyFive$inboundSchema,
   OneHundredAndFortyFour,
   OneHundredAndFortyFour$inboundSchema,
-  OneHundredAndFortyNine,
-  OneHundredAndFortyNine$inboundSchema,
   OneHundredAndFortyOne,
   OneHundredAndFortyOne$inboundSchema,
   OneHundredAndFortySeven,
@@ -147,16 +37,22 @@ import {
   OneHundredAndFortyThree$inboundSchema,
   OneHundredAndFortyTwo,
   OneHundredAndFortyTwo$inboundSchema,
+  OneHundredAndFour,
+  OneHundredAndFour$inboundSchema,
   OneHundredAndFourteen,
   OneHundredAndFourteen$inboundSchema,
   OneHundredAndNine,
   OneHundredAndNine$inboundSchema,
   OneHundredAndNineteen,
   OneHundredAndNineteen$inboundSchema,
+  OneHundredAndOne,
+  OneHundredAndOne$inboundSchema,
   OneHundredAndSeven,
   OneHundredAndSeven$inboundSchema,
   OneHundredAndSeventeen,
   OneHundredAndSeventeen$inboundSchema,
+  OneHundredAndSix,
+  OneHundredAndSix$inboundSchema,
   OneHundredAndSixteen,
   OneHundredAndSixteen$inboundSchema,
   OneHundredAndTen,
@@ -183,6 +79,8 @@ import {
   OneHundredAndThirtyThree$inboundSchema,
   OneHundredAndThirtyTwo,
   OneHundredAndThirtyTwo$inboundSchema,
+  OneHundredAndThree,
+  OneHundredAndThree$inboundSchema,
   OneHundredAndTwelve,
   OneHundredAndTwelve$inboundSchema,
   OneHundredAndTwenty,
@@ -205,7 +103,430 @@ import {
   OneHundredAndTwentyThree$inboundSchema,
   OneHundredAndTwentyTwo,
   OneHundredAndTwentyTwo$inboundSchema,
-} from "./headinfo.js";
+  OneHundredAndTwo,
+  OneHundredAndTwo$inboundSchema,
+} from "./onehundred.js";
+import {
+  OneHundredAndFifty,
+  OneHundredAndFifty$inboundSchema,
+  OneHundredAndFiftyEight,
+  OneHundredAndFiftyEight$inboundSchema,
+  OneHundredAndFiftyFive,
+  OneHundredAndFiftyFive$inboundSchema,
+  OneHundredAndFiftyFour,
+  OneHundredAndFiftyFour$inboundSchema,
+  OneHundredAndFiftyNine,
+  OneHundredAndFiftyNine$inboundSchema,
+  OneHundredAndFiftyOne,
+  OneHundredAndFiftyOne$inboundSchema,
+  OneHundredAndFiftySeven,
+  OneHundredAndFiftySeven$inboundSchema,
+  OneHundredAndFiftySix,
+  OneHundredAndFiftySix$inboundSchema,
+  OneHundredAndFiftyThree,
+  OneHundredAndFiftyThree$inboundSchema,
+  OneHundredAndFiftyTwo,
+  OneHundredAndFiftyTwo$inboundSchema,
+  OneHundredAndFortyEight,
+  OneHundredAndFortyEight$inboundSchema,
+  OneHundredAndFortyNine,
+  OneHundredAndFortyNine$inboundSchema,
+  OneHundredAndSeventy,
+  OneHundredAndSeventy$inboundSchema,
+  OneHundredAndSeventyOne,
+  OneHundredAndSeventyOne$inboundSchema,
+  OneHundredAndSixty,
+  OneHundredAndSixty$inboundSchema,
+  OneHundredAndSixtyEight,
+  OneHundredAndSixtyEight$inboundSchema,
+  OneHundredAndSixtyFive,
+  OneHundredAndSixtyFive$inboundSchema,
+  OneHundredAndSixtyFour,
+  OneHundredAndSixtyFour$inboundSchema,
+  OneHundredAndSixtyNine,
+  OneHundredAndSixtyNine$inboundSchema,
+  OneHundredAndSixtyOne,
+  OneHundredAndSixtyOne$inboundSchema,
+  OneHundredAndSixtySeven,
+  OneHundredAndSixtySeven$inboundSchema,
+  OneHundredAndSixtySix,
+  OneHundredAndSixtySix$inboundSchema,
+  OneHundredAndSixtyThree,
+  OneHundredAndSixtyThree$inboundSchema,
+  OneHundredAndSixtyTwo,
+  OneHundredAndSixtyTwo$inboundSchema,
+} from "./onehundredandfortyeight.js";
+import {
+  ThreeHundredAndEighty,
+  ThreeHundredAndEighty$inboundSchema,
+  ThreeHundredAndEightyEight,
+  ThreeHundredAndEightyEight$inboundSchema,
+  ThreeHundredAndEightyFive,
+  ThreeHundredAndEightyFive$inboundSchema,
+  ThreeHundredAndEightyFour,
+  ThreeHundredAndEightyFour$inboundSchema,
+  ThreeHundredAndEightyNine,
+  ThreeHundredAndEightyNine$inboundSchema,
+  ThreeHundredAndEightyOne,
+  ThreeHundredAndEightyOne$inboundSchema,
+  ThreeHundredAndEightySeven,
+  ThreeHundredAndEightySeven$inboundSchema,
+  ThreeHundredAndEightySix,
+  ThreeHundredAndEightySix$inboundSchema,
+  ThreeHundredAndEightyThree,
+  ThreeHundredAndEightyThree$inboundSchema,
+  ThreeHundredAndEightyTwo,
+  ThreeHundredAndEightyTwo$inboundSchema,
+  ThreeHundredAndFifty,
+  ThreeHundredAndFifty$inboundSchema,
+  ThreeHundredAndFiftyEight,
+  ThreeHundredAndFiftyEight$inboundSchema,
+  ThreeHundredAndFiftyFive,
+  ThreeHundredAndFiftyFive$inboundSchema,
+  ThreeHundredAndFiftyFour,
+  ThreeHundredAndFiftyFour$inboundSchema,
+  ThreeHundredAndFiftyNine,
+  ThreeHundredAndFiftyNine$inboundSchema,
+  ThreeHundredAndFiftyOne,
+  ThreeHundredAndFiftyOne$inboundSchema,
+  ThreeHundredAndFiftySeven,
+  ThreeHundredAndFiftySeven$inboundSchema,
+  ThreeHundredAndFiftySix,
+  ThreeHundredAndFiftySix$inboundSchema,
+  ThreeHundredAndFiftyThree,
+  ThreeHundredAndFiftyThree$inboundSchema,
+  ThreeHundredAndFiftyTwo,
+  ThreeHundredAndFiftyTwo$inboundSchema,
+  ThreeHundredAndForty,
+  ThreeHundredAndForty$inboundSchema,
+  ThreeHundredAndFortyEight,
+  ThreeHundredAndFortyEight$inboundSchema,
+  ThreeHundredAndFortyFive,
+  ThreeHundredAndFortyFive$inboundSchema,
+  ThreeHundredAndFortyFour,
+  ThreeHundredAndFortyFour$inboundSchema,
+  ThreeHundredAndFortyNine,
+  ThreeHundredAndFortyNine$inboundSchema,
+  ThreeHundredAndFortyOne,
+  ThreeHundredAndFortyOne$inboundSchema,
+  ThreeHundredAndFortySeven,
+  ThreeHundredAndFortySeven$inboundSchema,
+  ThreeHundredAndFortySix,
+  ThreeHundredAndFortySix$inboundSchema,
+  ThreeHundredAndFortyThree,
+  ThreeHundredAndFortyThree$inboundSchema,
+  ThreeHundredAndFortyTwo,
+  ThreeHundredAndFortyTwo$inboundSchema,
+  ThreeHundredAndNinety,
+  ThreeHundredAndNinety$inboundSchema,
+  ThreeHundredAndNinetyEight,
+  ThreeHundredAndNinetyEight$inboundSchema,
+  ThreeHundredAndNinetyFive,
+  ThreeHundredAndNinetyFive$inboundSchema,
+  ThreeHundredAndNinetyFour,
+  ThreeHundredAndNinetyFour$inboundSchema,
+  ThreeHundredAndNinetyOne,
+  ThreeHundredAndNinetyOne$inboundSchema,
+  ThreeHundredAndNinetySeven,
+  ThreeHundredAndNinetySeven$inboundSchema,
+  ThreeHundredAndNinetySix,
+  ThreeHundredAndNinetySix$inboundSchema,
+  ThreeHundredAndNinetyThree,
+  ThreeHundredAndNinetyThree$inboundSchema,
+  ThreeHundredAndNinetyTwo,
+  ThreeHundredAndNinetyTwo$inboundSchema,
+  ThreeHundredAndSeventy,
+  ThreeHundredAndSeventy$inboundSchema,
+  ThreeHundredAndSeventyEight,
+  ThreeHundredAndSeventyEight$inboundSchema,
+  ThreeHundredAndSeventyFive,
+  ThreeHundredAndSeventyFive$inboundSchema,
+  ThreeHundredAndSeventyFour,
+  ThreeHundredAndSeventyFour$inboundSchema,
+  ThreeHundredAndSeventyNine,
+  ThreeHundredAndSeventyNine$inboundSchema,
+  ThreeHundredAndSeventyOne,
+  ThreeHundredAndSeventyOne$inboundSchema,
+  ThreeHundredAndSeventySeven,
+  ThreeHundredAndSeventySeven$inboundSchema,
+  ThreeHundredAndSeventySix,
+  ThreeHundredAndSeventySix$inboundSchema,
+  ThreeHundredAndSeventyThree,
+  ThreeHundredAndSeventyThree$inboundSchema,
+  ThreeHundredAndSeventyTwo,
+  ThreeHundredAndSeventyTwo$inboundSchema,
+  ThreeHundredAndSixty,
+  ThreeHundredAndSixty$inboundSchema,
+  ThreeHundredAndSixtyEight,
+  ThreeHundredAndSixtyEight$inboundSchema,
+  ThreeHundredAndSixtyFive,
+  ThreeHundredAndSixtyFive$inboundSchema,
+  ThreeHundredAndSixtyFour,
+  ThreeHundredAndSixtyFour$inboundSchema,
+  ThreeHundredAndSixtyNine,
+  ThreeHundredAndSixtyNine$inboundSchema,
+  ThreeHundredAndSixtyOne,
+  ThreeHundredAndSixtyOne$inboundSchema,
+  ThreeHundredAndSixtySeven,
+  ThreeHundredAndSixtySeven$inboundSchema,
+  ThreeHundredAndSixtySix,
+  ThreeHundredAndSixtySix$inboundSchema,
+  ThreeHundredAndSixtyThree,
+  ThreeHundredAndSixtyThree$inboundSchema,
+  ThreeHundredAndSixtyTwo,
+  ThreeHundredAndSixtyTwo$inboundSchema,
+} from "./payloadmostspecificsubdivision.js";
+import {
+  TwoHundredAndEight,
+  TwoHundredAndEight$inboundSchema,
+  TwoHundredAndEighteen,
+  TwoHundredAndEighteen$inboundSchema,
+  TwoHundredAndEleven,
+  TwoHundredAndEleven$inboundSchema,
+  TwoHundredAndFifteen,
+  TwoHundredAndFifteen$inboundSchema,
+  TwoHundredAndFifty,
+  TwoHundredAndFifty$inboundSchema,
+  TwoHundredAndFiftyEight,
+  TwoHundredAndFiftyEight$inboundSchema,
+  TwoHundredAndFiftyFive,
+  TwoHundredAndFiftyFive$inboundSchema,
+  TwoHundredAndFiftyFour,
+  TwoHundredAndFiftyFour$inboundSchema,
+  TwoHundredAndFiftyNine,
+  TwoHundredAndFiftyNine$inboundSchema,
+  TwoHundredAndFiftyOne,
+  TwoHundredAndFiftyOne$inboundSchema,
+  TwoHundredAndFiftySeven,
+  TwoHundredAndFiftySeven$inboundSchema,
+  TwoHundredAndFiftySix,
+  TwoHundredAndFiftySix$inboundSchema,
+  TwoHundredAndFiftyThree,
+  TwoHundredAndFiftyThree$inboundSchema,
+  TwoHundredAndFiftyTwo,
+  TwoHundredAndFiftyTwo$inboundSchema,
+  TwoHundredAndFive,
+  TwoHundredAndFive$inboundSchema,
+  TwoHundredAndForty,
+  TwoHundredAndForty$inboundSchema,
+  TwoHundredAndFortyEight,
+  TwoHundredAndFortyEight$inboundSchema,
+  TwoHundredAndFortyFive,
+  TwoHundredAndFortyFive$inboundSchema,
+  TwoHundredAndFortyFour,
+  TwoHundredAndFortyFour$inboundSchema,
+  TwoHundredAndFortyNine,
+  TwoHundredAndFortyNine$inboundSchema,
+  TwoHundredAndFortyOne,
+  TwoHundredAndFortyOne$inboundSchema,
+  TwoHundredAndFortySeven,
+  TwoHundredAndFortySeven$inboundSchema,
+  TwoHundredAndFortySix,
+  TwoHundredAndFortySix$inboundSchema,
+  TwoHundredAndFortyThree,
+  TwoHundredAndFortyThree$inboundSchema,
+  TwoHundredAndFortyTwo,
+  TwoHundredAndFortyTwo$inboundSchema,
+  TwoHundredAndFourteen,
+  TwoHundredAndFourteen$inboundSchema,
+  TwoHundredAndNine,
+  TwoHundredAndNine$inboundSchema,
+  TwoHundredAndNineteen,
+  TwoHundredAndNineteen$inboundSchema,
+  TwoHundredAndSeven,
+  TwoHundredAndSeven$inboundSchema,
+  TwoHundredAndSeventeen,
+  TwoHundredAndSeventeen$inboundSchema,
+  TwoHundredAndSix,
+  TwoHundredAndSix$inboundSchema,
+  TwoHundredAndSixteen,
+  TwoHundredAndSixteen$inboundSchema,
+  TwoHundredAndSixty,
+  TwoHundredAndSixty$inboundSchema,
+  TwoHundredAndSixtyEight,
+  TwoHundredAndSixtyEight$inboundSchema,
+  TwoHundredAndSixtyFive,
+  TwoHundredAndSixtyFive$inboundSchema,
+  TwoHundredAndSixtyFour,
+  TwoHundredAndSixtyFour$inboundSchema,
+  TwoHundredAndSixtyNine,
+  TwoHundredAndSixtyNine$inboundSchema,
+  TwoHundredAndSixtyOne,
+  TwoHundredAndSixtyOne$inboundSchema,
+  TwoHundredAndSixtySeven,
+  TwoHundredAndSixtySeven$inboundSchema,
+  TwoHundredAndSixtySix,
+  TwoHundredAndSixtySix$inboundSchema,
+  TwoHundredAndSixtyThree,
+  TwoHundredAndSixtyThree$inboundSchema,
+  TwoHundredAndSixtyTwo,
+  TwoHundredAndSixtyTwo$inboundSchema,
+  TwoHundredAndTen,
+  TwoHundredAndTen$inboundSchema,
+  TwoHundredAndThirteen,
+  TwoHundredAndThirteen$inboundSchema,
+  TwoHundredAndThirty,
+  TwoHundredAndThirty$inboundSchema,
+  TwoHundredAndThirtyEight,
+  TwoHundredAndThirtyEight$inboundSchema,
+  TwoHundredAndThirtyFive,
+  TwoHundredAndThirtyFive$inboundSchema,
+  TwoHundredAndThirtyFour,
+  TwoHundredAndThirtyFour$inboundSchema,
+  TwoHundredAndThirtyNine,
+  TwoHundredAndThirtyNine$inboundSchema,
+  TwoHundredAndThirtyOne,
+  TwoHundredAndThirtyOne$inboundSchema,
+  TwoHundredAndThirtySeven,
+  TwoHundredAndThirtySeven$inboundSchema,
+  TwoHundredAndThirtySix,
+  TwoHundredAndThirtySix$inboundSchema,
+  TwoHundredAndThirtyThree,
+  TwoHundredAndThirtyThree$inboundSchema,
+  TwoHundredAndThirtyTwo,
+  TwoHundredAndThirtyTwo$inboundSchema,
+  TwoHundredAndTwelve,
+  TwoHundredAndTwelve$inboundSchema,
+  TwoHundredAndTwenty,
+  TwoHundredAndTwenty$inboundSchema,
+  TwoHundredAndTwentyEight,
+  TwoHundredAndTwentyEight$inboundSchema,
+  TwoHundredAndTwentyFive,
+  TwoHundredAndTwentyFive$inboundSchema,
+  TwoHundredAndTwentyFour,
+  TwoHundredAndTwentyFour$inboundSchema,
+  TwoHundredAndTwentyNine,
+  TwoHundredAndTwentyNine$inboundSchema,
+  TwoHundredAndTwentyOne,
+  TwoHundredAndTwentyOne$inboundSchema,
+  TwoHundredAndTwentySeven,
+  TwoHundredAndTwentySeven$inboundSchema,
+  TwoHundredAndTwentySix,
+  TwoHundredAndTwentySix$inboundSchema,
+  TwoHundredAndTwentyThree,
+  TwoHundredAndTwentyThree$inboundSchema,
+  TwoHundredAndTwentyTwo,
+  TwoHundredAndTwentyTwo$inboundSchema,
+} from "./payloadnext.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
+import {
+  Categories,
+  Categories$inboundSchema,
+  Entities,
+  Entities$inboundSchema,
+  FourHundred,
+  FourHundred$inboundSchema,
+  FourHundredAndEight,
+  FourHundredAndEight$inboundSchema,
+  FourHundredAndEighteen,
+  FourHundredAndEighteen$inboundSchema,
+  FourHundredAndEleven,
+  FourHundredAndEleven$inboundSchema,
+  FourHundredAndFifteen,
+  FourHundredAndFifteen$inboundSchema,
+  FourHundredAndFifty,
+  FourHundredAndFifty$inboundSchema,
+  FourHundredAndFiftyFour,
+  FourHundredAndFiftyFour$inboundSchema,
+  FourHundredAndFiftyOne,
+  FourHundredAndFiftyOne$inboundSchema,
+  FourHundredAndFiftyThree,
+  FourHundredAndFiftyThree$inboundSchema,
+  FourHundredAndFiftyTwo,
+  FourHundredAndFiftyTwo$inboundSchema,
+  FourHundredAndFive,
+  FourHundredAndFive$inboundSchema,
+  FourHundredAndForty,
+  FourHundredAndForty$inboundSchema,
+  FourHundredAndFortyEight,
+  FourHundredAndFortyEight$inboundSchema,
+  FourHundredAndFortyFive,
+  FourHundredAndFortyFive$inboundSchema,
+  FourHundredAndFortyFour,
+  FourHundredAndFortyFour$inboundSchema,
+  FourHundredAndFortyNine,
+  FourHundredAndFortyNine$inboundSchema,
+  FourHundredAndFortyOne,
+  FourHundredAndFortyOne$inboundSchema,
+  FourHundredAndFortySeven,
+  FourHundredAndFortySeven$inboundSchema,
+  FourHundredAndFortySix,
+  FourHundredAndFortySix$inboundSchema,
+  FourHundredAndFortyThree,
+  FourHundredAndFortyThree$inboundSchema,
+  FourHundredAndFortyTwo,
+  FourHundredAndFortyTwo$inboundSchema,
+  FourHundredAndFour,
+  FourHundredAndFour$inboundSchema,
+  FourHundredAndFourteen,
+  FourHundredAndFourteen$inboundSchema,
+  FourHundredAndNine,
+  FourHundredAndNine$inboundSchema,
+  FourHundredAndNineteen,
+  FourHundredAndNineteen$inboundSchema,
+  FourHundredAndOne,
+  FourHundredAndOne$inboundSchema,
+  FourHundredAndSeven,
+  FourHundredAndSeven$inboundSchema,
+  FourHundredAndSeventeen,
+  FourHundredAndSeventeen$inboundSchema,
+  FourHundredAndSix,
+  FourHundredAndSix$inboundSchema,
+  FourHundredAndSixteen,
+  FourHundredAndSixteen$inboundSchema,
+  FourHundredAndTen,
+  FourHundredAndTen$inboundSchema,
+  FourHundredAndThirteen,
+  FourHundredAndThirteen$inboundSchema,
+  FourHundredAndThirty,
+  FourHundredAndThirty$inboundSchema,
+  FourHundredAndThirtyEight,
+  FourHundredAndThirtyEight$inboundSchema,
+  FourHundredAndThirtyFive,
+  FourHundredAndThirtyFive$inboundSchema,
+  FourHundredAndThirtyFour,
+  FourHundredAndThirtyFour$inboundSchema,
+  FourHundredAndThirtyNine,
+  FourHundredAndThirtyNine$inboundSchema,
+  FourHundredAndThirtyOne,
+  FourHundredAndThirtyOne$inboundSchema,
+  FourHundredAndThirtySeven,
+  FourHundredAndThirtySeven$inboundSchema,
+  FourHundredAndThirtySix,
+  FourHundredAndThirtySix$inboundSchema,
+  FourHundredAndThirtyThree,
+  FourHundredAndThirtyThree$inboundSchema,
+  FourHundredAndThirtyTwo,
+  FourHundredAndThirtyTwo$inboundSchema,
+  FourHundredAndThree,
+  FourHundredAndThree$inboundSchema,
+  FourHundredAndTwelve,
+  FourHundredAndTwelve$inboundSchema,
+  FourHundredAndTwenty,
+  FourHundredAndTwenty$inboundSchema,
+  FourHundredAndTwentyEight,
+  FourHundredAndTwentyEight$inboundSchema,
+  FourHundredAndTwentyFive,
+  FourHundredAndTwentyFive$inboundSchema,
+  FourHundredAndTwentyFour,
+  FourHundredAndTwentyFour$inboundSchema,
+  FourHundredAndTwentyNine,
+  FourHundredAndTwentyNine$inboundSchema,
+  FourHundredAndTwentyOne,
+  FourHundredAndTwentyOne$inboundSchema,
+  FourHundredAndTwentySeven,
+  FourHundredAndTwentySeven$inboundSchema,
+  FourHundredAndTwentySix,
+  FourHundredAndTwentySix$inboundSchema,
+  FourHundredAndTwentyThree,
+  FourHundredAndTwentyThree$inboundSchema,
+  FourHundredAndTwentyTwo,
+  FourHundredAndTwentyTwo$inboundSchema,
+  FourHundredAndTwo,
+  FourHundredAndTwo$inboundSchema,
+  ThreeHundredAndNinetyNine,
+  ThreeHundredAndNinetyNine$inboundSchema,
+} from "./threehundredandninetynine.js";
 import {
   Eighty,
   Eighty$inboundSchema,
@@ -287,22 +608,6 @@ import {
   NinetyThree$inboundSchema,
   NinetyTwo,
   NinetyTwo$inboundSchema,
-  OneHundred,
-  OneHundred$inboundSchema,
-  OneHundredAndFive,
-  OneHundredAndFive$inboundSchema,
-  OneHundredAndFour,
-  OneHundredAndFour$inboundSchema,
-  OneHundredAndOne,
-  OneHundredAndOne$inboundSchema,
-  OneHundredAndSix,
-  OneHundredAndSix$inboundSchema,
-  OneHundredAndThree,
-  OneHundredAndThree$inboundSchema,
-  OneHundredAndTwo,
-  OneHundredAndTwo$inboundSchema,
-  PayloadAccessGroup,
-  PayloadAccessGroup$inboundSchema,
   Seventy,
   Seventy$inboundSchema,
   SeventyEight,
@@ -343,150 +648,97 @@ import {
   SixtyThree$inboundSchema,
   SixtyTwo,
   SixtyTwo$inboundSchema,
+  Thirty,
+  Thirty$inboundSchema,
   ThirtyEight,
   ThirtyEight$inboundSchema,
+  ThirtyFive,
+  ThirtyFive$inboundSchema,
+  ThirtyFour,
+  ThirtyFour$inboundSchema,
   ThirtyNine,
   ThirtyNine$inboundSchema,
+  ThirtyOne,
+  ThirtyOne$inboundSchema,
   ThirtySeven,
   ThirtySeven$inboundSchema,
-} from "./payloadaccessgroup.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
+  ThirtySix,
+  ThirtySix$inboundSchema,
+  ThirtyThree,
+  ThirtyThree$inboundSchema,
+  ThirtyTwo,
+  ThirtyTwo$inboundSchema,
+  TwentyNine,
+  TwentyNine$inboundSchema,
+} from "./twentynine.js";
 import {
-  FourHundred,
-  FourHundred$inboundSchema,
-  FourHundredAndEight,
-  FourHundredAndEight$inboundSchema,
-  FourHundredAndFive,
-  FourHundredAndFive$inboundSchema,
-  FourHundredAndFour,
-  FourHundredAndFour$inboundSchema,
-  FourHundredAndOne,
-  FourHundredAndOne$inboundSchema,
-  FourHundredAndSeven,
-  FourHundredAndSeven$inboundSchema,
-  FourHundredAndSix,
-  FourHundredAndSix$inboundSchema,
-  FourHundredAndThree,
-  FourHundredAndThree$inboundSchema,
-  FourHundredAndTwo,
-  FourHundredAndTwo$inboundSchema,
-  ThreeHundredAndEighty,
-  ThreeHundredAndEighty$inboundSchema,
-  ThreeHundredAndEightyEight,
-  ThreeHundredAndEightyEight$inboundSchema,
-  ThreeHundredAndEightyFive,
-  ThreeHundredAndEightyFive$inboundSchema,
-  ThreeHundredAndEightyFour,
-  ThreeHundredAndEightyFour$inboundSchema,
-  ThreeHundredAndEightyNine,
-  ThreeHundredAndEightyNine$inboundSchema,
-  ThreeHundredAndEightyOne,
-  ThreeHundredAndEightyOne$inboundSchema,
-  ThreeHundredAndEightySeven,
-  ThreeHundredAndEightySeven$inboundSchema,
-  ThreeHundredAndEightySix,
-  ThreeHundredAndEightySix$inboundSchema,
-  ThreeHundredAndEightyThree,
-  ThreeHundredAndEightyThree$inboundSchema,
-  ThreeHundredAndEightyTwo,
-  ThreeHundredAndEightyTwo$inboundSchema,
-  ThreeHundredAndFifty,
-  ThreeHundredAndFifty$inboundSchema,
-  ThreeHundredAndFiftyEight,
-  ThreeHundredAndFiftyEight$inboundSchema,
-  ThreeHundredAndFiftyFive,
-  ThreeHundredAndFiftyFive$inboundSchema,
-  ThreeHundredAndFiftyFour,
-  ThreeHundredAndFiftyFour$inboundSchema,
-  ThreeHundredAndFiftyNine,
-  ThreeHundredAndFiftyNine$inboundSchema,
-  ThreeHundredAndFiftyOne,
-  ThreeHundredAndFiftyOne$inboundSchema,
-  ThreeHundredAndFiftySeven,
-  ThreeHundredAndFiftySeven$inboundSchema,
-  ThreeHundredAndFiftySix,
-  ThreeHundredAndFiftySix$inboundSchema,
-  ThreeHundredAndFiftyThree,
-  ThreeHundredAndFiftyThree$inboundSchema,
-  ThreeHundredAndFiftyTwo,
-  ThreeHundredAndFiftyTwo$inboundSchema,
-  ThreeHundredAndFortyEight,
-  ThreeHundredAndFortyEight$inboundSchema,
-  ThreeHundredAndFortyFive,
-  ThreeHundredAndFortyFive$inboundSchema,
-  ThreeHundredAndFortyFour,
-  ThreeHundredAndFortyFour$inboundSchema,
-  ThreeHundredAndFortyNine,
-  ThreeHundredAndFortyNine$inboundSchema,
-  ThreeHundredAndFortySeven,
-  ThreeHundredAndFortySeven$inboundSchema,
-  ThreeHundredAndFortySix,
-  ThreeHundredAndFortySix$inboundSchema,
-  ThreeHundredAndFortyThree,
-  ThreeHundredAndFortyThree$inboundSchema,
-  ThreeHundredAndFortyTwo,
-  ThreeHundredAndFortyTwo$inboundSchema,
-  ThreeHundredAndNinety,
-  ThreeHundredAndNinety$inboundSchema,
-  ThreeHundredAndNinetyEight,
-  ThreeHundredAndNinetyEight$inboundSchema,
-  ThreeHundredAndNinetyFive,
-  ThreeHundredAndNinetyFive$inboundSchema,
-  ThreeHundredAndNinetyFour,
-  ThreeHundredAndNinetyFour$inboundSchema,
-  ThreeHundredAndNinetyNine,
-  ThreeHundredAndNinetyNine$inboundSchema,
-  ThreeHundredAndNinetyOne,
-  ThreeHundredAndNinetyOne$inboundSchema,
-  ThreeHundredAndNinetySeven,
-  ThreeHundredAndNinetySeven$inboundSchema,
-  ThreeHundredAndNinetySix,
-  ThreeHundredAndNinetySix$inboundSchema,
-  ThreeHundredAndNinetyThree,
-  ThreeHundredAndNinetyThree$inboundSchema,
-  ThreeHundredAndNinetyTwo,
-  ThreeHundredAndNinetyTwo$inboundSchema,
-  ThreeHundredAndSeventy,
-  ThreeHundredAndSeventy$inboundSchema,
-  ThreeHundredAndSeventyEight,
-  ThreeHundredAndSeventyEight$inboundSchema,
-  ThreeHundredAndSeventyFive,
-  ThreeHundredAndSeventyFive$inboundSchema,
-  ThreeHundredAndSeventyFour,
-  ThreeHundredAndSeventyFour$inboundSchema,
-  ThreeHundredAndSeventyNine,
-  ThreeHundredAndSeventyNine$inboundSchema,
-  ThreeHundredAndSeventyOne,
-  ThreeHundredAndSeventyOne$inboundSchema,
-  ThreeHundredAndSeventySeven,
-  ThreeHundredAndSeventySeven$inboundSchema,
-  ThreeHundredAndSeventySix,
-  ThreeHundredAndSeventySix$inboundSchema,
-  ThreeHundredAndSeventyThree,
-  ThreeHundredAndSeventyThree$inboundSchema,
-  ThreeHundredAndSeventyTwo,
-  ThreeHundredAndSeventyTwo$inboundSchema,
-  ThreeHundredAndSixty,
-  ThreeHundredAndSixty$inboundSchema,
-  ThreeHundredAndSixtyEight,
-  ThreeHundredAndSixtyEight$inboundSchema,
-  ThreeHundredAndSixtyFive,
-  ThreeHundredAndSixtyFive$inboundSchema,
-  ThreeHundredAndSixtyFour,
-  ThreeHundredAndSixtyFour$inboundSchema,
-  ThreeHundredAndSixtyNine,
-  ThreeHundredAndSixtyNine$inboundSchema,
-  ThreeHundredAndSixtyOne,
-  ThreeHundredAndSixtyOne$inboundSchema,
-  ThreeHundredAndSixtySeven,
-  ThreeHundredAndSixtySeven$inboundSchema,
-  ThreeHundredAndSixtySix,
-  ThreeHundredAndSixtySix$inboundSchema,
-  ThreeHundredAndSixtyThree,
-  ThreeHundredAndSixtyThree$inboundSchema,
-  ThreeHundredAndSixtyTwo,
-  ThreeHundredAndSixtyTwo$inboundSchema,
-} from "./threehundredandfortytwo.js";
+  OneHundredAndEighty,
+  OneHundredAndEighty$inboundSchema,
+  OneHundredAndEightyEight,
+  OneHundredAndEightyEight$inboundSchema,
+  OneHundredAndEightyFive,
+  OneHundredAndEightyFive$inboundSchema,
+  OneHundredAndEightyFour,
+  OneHundredAndEightyFour$inboundSchema,
+  OneHundredAndEightyNine,
+  OneHundredAndEightyNine$inboundSchema,
+  OneHundredAndEightyOne,
+  OneHundredAndEightyOne$inboundSchema,
+  OneHundredAndEightySeven,
+  OneHundredAndEightySeven$inboundSchema,
+  OneHundredAndEightySix,
+  OneHundredAndEightySix$inboundSchema,
+  OneHundredAndEightyThree,
+  OneHundredAndEightyThree$inboundSchema,
+  OneHundredAndEightyTwo,
+  OneHundredAndEightyTwo$inboundSchema,
+  OneHundredAndNinety,
+  OneHundredAndNinety$inboundSchema,
+  OneHundredAndNinetyEight,
+  OneHundredAndNinetyEight$inboundSchema,
+  OneHundredAndNinetyFive,
+  OneHundredAndNinetyFive$inboundSchema,
+  OneHundredAndNinetyFour,
+  OneHundredAndNinetyFour$inboundSchema,
+  OneHundredAndNinetyNine,
+  OneHundredAndNinetyNine$inboundSchema,
+  OneHundredAndNinetyOne,
+  OneHundredAndNinetyOne$inboundSchema,
+  OneHundredAndNinetySeven,
+  OneHundredAndNinetySeven$inboundSchema,
+  OneHundredAndNinetySix,
+  OneHundredAndNinetySix$inboundSchema,
+  OneHundredAndNinetyThree,
+  OneHundredAndNinetyThree$inboundSchema,
+  OneHundredAndNinetyTwo,
+  OneHundredAndNinetyTwo$inboundSchema,
+  OneHundredAndSeventyEight,
+  OneHundredAndSeventyEight$inboundSchema,
+  OneHundredAndSeventyFive,
+  OneHundredAndSeventyFive$inboundSchema,
+  OneHundredAndSeventyFour,
+  OneHundredAndSeventyFour$inboundSchema,
+  OneHundredAndSeventyNine,
+  OneHundredAndSeventyNine$inboundSchema,
+  OneHundredAndSeventySeven,
+  OneHundredAndSeventySeven$inboundSchema,
+  OneHundredAndSeventySix,
+  OneHundredAndSeventySix$inboundSchema,
+  OneHundredAndSeventyThree,
+  OneHundredAndSeventyThree$inboundSchema,
+  OneHundredAndSeventyTwo,
+  OneHundredAndSeventyTwo$inboundSchema,
+  TwoHundred,
+  TwoHundred$inboundSchema,
+  TwoHundredAndFour,
+  TwoHundredAndFour$inboundSchema,
+  TwoHundredAndOne,
+  TwoHundredAndOne$inboundSchema,
+  TwoHundredAndThree,
+  TwoHundredAndThree$inboundSchema,
+  TwoHundredAndTwo,
+  TwoHundredAndTwo$inboundSchema,
+} from "./usereventpayload171newownerfeatureblocksworkflowstoragewriteblockreason.js";
 import {
   ThreeHundred,
   ThreeHundred$inboundSchema,
@@ -500,10 +752,6 @@ import {
   ThreeHundredAndFifteen$inboundSchema,
   ThreeHundredAndFive,
   ThreeHundredAndFive$inboundSchema,
-  ThreeHundredAndForty,
-  ThreeHundredAndForty$inboundSchema,
-  ThreeHundredAndFortyOne,
-  ThreeHundredAndFortyOne$inboundSchema,
   ThreeHundredAndFour,
   ThreeHundredAndFour$inboundSchema,
   ThreeHundredAndFourteen,
@@ -572,6 +820,8 @@ import {
   ThreeHundredAndTwentyTwo$inboundSchema,
   ThreeHundredAndTwo,
   ThreeHundredAndTwo$inboundSchema,
+  TwoHundredAndEighty,
+  TwoHundredAndEighty$inboundSchema,
   TwoHundredAndEightyEight,
   TwoHundredAndEightyEight$inboundSchema,
   TwoHundredAndEightyFive,
@@ -610,146 +860,6 @@ import {
   TwoHundredAndNinetyThree$inboundSchema,
   TwoHundredAndNinetyTwo,
   TwoHundredAndNinetyTwo$inboundSchema,
-} from "./twohundredandeightyone.js";
-import {
-  OneHundredAndEighty,
-  OneHundredAndEighty$inboundSchema,
-  OneHundredAndEightyEight,
-  OneHundredAndEightyEight$inboundSchema,
-  OneHundredAndEightyFive,
-  OneHundredAndEightyFive$inboundSchema,
-  OneHundredAndEightyFour,
-  OneHundredAndEightyFour$inboundSchema,
-  OneHundredAndEightyNine,
-  OneHundredAndEightyNine$inboundSchema,
-  OneHundredAndEightyOne,
-  OneHundredAndEightyOne$inboundSchema,
-  OneHundredAndEightySeven,
-  OneHundredAndEightySeven$inboundSchema,
-  OneHundredAndEightySix,
-  OneHundredAndEightySix$inboundSchema,
-  OneHundredAndEightyThree,
-  OneHundredAndEightyThree$inboundSchema,
-  OneHundredAndEightyTwo,
-  OneHundredAndEightyTwo$inboundSchema,
-  OneHundredAndNinety,
-  OneHundredAndNinety$inboundSchema,
-  OneHundredAndNinetyEight,
-  OneHundredAndNinetyEight$inboundSchema,
-  OneHundredAndNinetyFive,
-  OneHundredAndNinetyFive$inboundSchema,
-  OneHundredAndNinetyFour,
-  OneHundredAndNinetyFour$inboundSchema,
-  OneHundredAndNinetyNine,
-  OneHundredAndNinetyNine$inboundSchema,
-  OneHundredAndNinetyOne,
-  OneHundredAndNinetyOne$inboundSchema,
-  OneHundredAndNinetySeven,
-  OneHundredAndNinetySeven$inboundSchema,
-  OneHundredAndNinetySix,
-  OneHundredAndNinetySix$inboundSchema,
-  OneHundredAndNinetyThree,
-  OneHundredAndNinetyThree$inboundSchema,
-  OneHundredAndNinetyTwo,
-  OneHundredAndNinetyTwo$inboundSchema,
-  OneHundredAndSeventyEight,
-  OneHundredAndSeventyEight$inboundSchema,
-  OneHundredAndSeventyFive,
-  OneHundredAndSeventyFive$inboundSchema,
-  OneHundredAndSeventyFour,
-  OneHundredAndSeventyFour$inboundSchema,
-  OneHundredAndSeventyNine,
-  OneHundredAndSeventyNine$inboundSchema,
-  OneHundredAndSeventySeven,
-  OneHundredAndSeventySeven$inboundSchema,
-  OneHundredAndSeventySix,
-  OneHundredAndSeventySix$inboundSchema,
-  OneHundredAndSeventyThree,
-  OneHundredAndSeventyThree$inboundSchema,
-  OneHundredAndSeventyTwo,
-  OneHundredAndSeventyTwo$inboundSchema,
-  TwoHundred,
-  TwoHundred$inboundSchema,
-  TwoHundredAndEight,
-  TwoHundredAndEight$inboundSchema,
-  TwoHundredAndEleven,
-  TwoHundredAndEleven$inboundSchema,
-  TwoHundredAndFive,
-  TwoHundredAndFive$inboundSchema,
-  TwoHundredAndFour,
-  TwoHundredAndFour$inboundSchema,
-  TwoHundredAndNine,
-  TwoHundredAndNine$inboundSchema,
-  TwoHundredAndOne,
-  TwoHundredAndOne$inboundSchema,
-  TwoHundredAndSeven,
-  TwoHundredAndSeven$inboundSchema,
-  TwoHundredAndSix,
-  TwoHundredAndSix$inboundSchema,
-  TwoHundredAndTen,
-  TwoHundredAndTen$inboundSchema,
-  TwoHundredAndThirteen,
-  TwoHundredAndThirteen$inboundSchema,
-  TwoHundredAndThree,
-  TwoHundredAndThree$inboundSchema,
-  TwoHundredAndTwelve,
-  TwoHundredAndTwelve$inboundSchema,
-  TwoHundredAndTwo,
-  TwoHundredAndTwo$inboundSchema,
-} from "./usereventpayload171gituserid.js";
-import {
-  TwoHundredAndEighteen,
-  TwoHundredAndEighteen$inboundSchema,
-  TwoHundredAndEighty,
-  TwoHundredAndEighty$inboundSchema,
-  TwoHundredAndFifteen,
-  TwoHundredAndFifteen$inboundSchema,
-  TwoHundredAndFifty,
-  TwoHundredAndFifty$inboundSchema,
-  TwoHundredAndFiftyEight,
-  TwoHundredAndFiftyEight$inboundSchema,
-  TwoHundredAndFiftyFive,
-  TwoHundredAndFiftyFive$inboundSchema,
-  TwoHundredAndFiftyFour,
-  TwoHundredAndFiftyFour$inboundSchema,
-  TwoHundredAndFiftyNine,
-  TwoHundredAndFiftyNine$inboundSchema,
-  TwoHundredAndFiftyOne,
-  TwoHundredAndFiftyOne$inboundSchema,
-  TwoHundredAndFiftySeven,
-  TwoHundredAndFiftySeven$inboundSchema,
-  TwoHundredAndFiftySix,
-  TwoHundredAndFiftySix$inboundSchema,
-  TwoHundredAndFiftyThree,
-  TwoHundredAndFiftyThree$inboundSchema,
-  TwoHundredAndFiftyTwo,
-  TwoHundredAndFiftyTwo$inboundSchema,
-  TwoHundredAndForty,
-  TwoHundredAndForty$inboundSchema,
-  TwoHundredAndFortyEight,
-  TwoHundredAndFortyEight$inboundSchema,
-  TwoHundredAndFortyFive,
-  TwoHundredAndFortyFive$inboundSchema,
-  TwoHundredAndFortyFour,
-  TwoHundredAndFortyFour$inboundSchema,
-  TwoHundredAndFortyNine,
-  TwoHundredAndFortyNine$inboundSchema,
-  TwoHundredAndFortyOne,
-  TwoHundredAndFortyOne$inboundSchema,
-  TwoHundredAndFortySeven,
-  TwoHundredAndFortySeven$inboundSchema,
-  TwoHundredAndFortySix,
-  TwoHundredAndFortySix$inboundSchema,
-  TwoHundredAndFortyThree,
-  TwoHundredAndFortyThree$inboundSchema,
-  TwoHundredAndFortyTwo,
-  TwoHundredAndFortyTwo$inboundSchema,
-  TwoHundredAndFourteen,
-  TwoHundredAndFourteen$inboundSchema,
-  TwoHundredAndNineteen,
-  TwoHundredAndNineteen$inboundSchema,
-  TwoHundredAndSeventeen,
-  TwoHundredAndSeventeen$inboundSchema,
   TwoHundredAndSeventy,
   TwoHundredAndSeventy$inboundSchema,
   TwoHundredAndSeventyEight,
@@ -770,215 +880,7 @@ import {
   TwoHundredAndSeventyThree$inboundSchema,
   TwoHundredAndSeventyTwo,
   TwoHundredAndSeventyTwo$inboundSchema,
-  TwoHundredAndSixteen,
-  TwoHundredAndSixteen$inboundSchema,
-  TwoHundredAndSixty,
-  TwoHundredAndSixty$inboundSchema,
-  TwoHundredAndSixtyEight,
-  TwoHundredAndSixtyEight$inboundSchema,
-  TwoHundredAndSixtyFive,
-  TwoHundredAndSixtyFive$inboundSchema,
-  TwoHundredAndSixtyFour,
-  TwoHundredAndSixtyFour$inboundSchema,
-  TwoHundredAndSixtyNine,
-  TwoHundredAndSixtyNine$inboundSchema,
-  TwoHundredAndSixtyOne,
-  TwoHundredAndSixtyOne$inboundSchema,
-  TwoHundredAndSixtySeven,
-  TwoHundredAndSixtySeven$inboundSchema,
-  TwoHundredAndSixtySix,
-  TwoHundredAndSixtySix$inboundSchema,
-  TwoHundredAndSixtyThree,
-  TwoHundredAndSixtyThree$inboundSchema,
-  TwoHundredAndSixtyTwo,
-  TwoHundredAndSixtyTwo$inboundSchema,
-  TwoHundredAndThirty,
-  TwoHundredAndThirty$inboundSchema,
-  TwoHundredAndThirtyEight,
-  TwoHundredAndThirtyEight$inboundSchema,
-  TwoHundredAndThirtyFive,
-  TwoHundredAndThirtyFive$inboundSchema,
-  TwoHundredAndThirtyFour,
-  TwoHundredAndThirtyFour$inboundSchema,
-  TwoHundredAndThirtyNine,
-  TwoHundredAndThirtyNine$inboundSchema,
-  TwoHundredAndThirtyOne,
-  TwoHundredAndThirtyOne$inboundSchema,
-  TwoHundredAndThirtySeven,
-  TwoHundredAndThirtySeven$inboundSchema,
-  TwoHundredAndThirtySix,
-  TwoHundredAndThirtySix$inboundSchema,
-  TwoHundredAndThirtyThree,
-  TwoHundredAndThirtyThree$inboundSchema,
-  TwoHundredAndThirtyTwo,
-  TwoHundredAndThirtyTwo$inboundSchema,
-  TwoHundredAndTwenty,
-  TwoHundredAndTwenty$inboundSchema,
-  TwoHundredAndTwentyEight,
-  TwoHundredAndTwentyEight$inboundSchema,
-  TwoHundredAndTwentyFive,
-  TwoHundredAndTwentyFive$inboundSchema,
-  TwoHundredAndTwentyFour,
-  TwoHundredAndTwentyFour$inboundSchema,
-  TwoHundredAndTwentyNine,
-  TwoHundredAndTwentyNine$inboundSchema,
-  TwoHundredAndTwentyOne,
-  TwoHundredAndTwentyOne$inboundSchema,
-  TwoHundredAndTwentySeven,
-  TwoHundredAndTwentySeven$inboundSchema,
-  TwoHundredAndTwentySix,
-  TwoHundredAndTwentySix$inboundSchema,
-  TwoHundredAndTwentyThree,
-  TwoHundredAndTwentyThree$inboundSchema,
-  TwoHundredAndTwentyTwo,
-  TwoHundredAndTwentyTwo$inboundSchema,
-} from "./usereventpayloadnext.js";
-import {
-  OneHundredAndFiftyEight,
-  OneHundredAndFiftyEight$inboundSchema,
-  OneHundredAndFiftyFive,
-  OneHundredAndFiftyFive$inboundSchema,
-  OneHundredAndFiftyNine,
-  OneHundredAndFiftyNine$inboundSchema,
-  OneHundredAndFiftySeven,
-  OneHundredAndFiftySeven$inboundSchema,
-  OneHundredAndFiftySix,
-  OneHundredAndFiftySix$inboundSchema,
-  OneHundredAndSeventy,
-  OneHundredAndSeventy$inboundSchema,
-  OneHundredAndSeventyOne,
-  OneHundredAndSeventyOne$inboundSchema,
-  OneHundredAndSixty,
-  OneHundredAndSixty$inboundSchema,
-  OneHundredAndSixtyEight,
-  OneHundredAndSixtyEight$inboundSchema,
-  OneHundredAndSixtyFive,
-  OneHundredAndSixtyFive$inboundSchema,
-  OneHundredAndSixtyFour,
-  OneHundredAndSixtyFour$inboundSchema,
-  OneHundredAndSixtyNine,
-  OneHundredAndSixtyNine$inboundSchema,
-  OneHundredAndSixtyOne,
-  OneHundredAndSixtyOne$inboundSchema,
-  OneHundredAndSixtySeven,
-  OneHundredAndSixtySeven$inboundSchema,
-  OneHundredAndSixtySix,
-  OneHundredAndSixtySix$inboundSchema,
-  OneHundredAndSixtyThree,
-  OneHundredAndSixtyThree$inboundSchema,
-  OneHundredAndSixtyTwo,
-  OneHundredAndSixtyTwo$inboundSchema,
-} from "./usereventpayloadtarget.js";
-
-/**
- * The payload of the event, if requested.
- */
-export type ThirtySix = {
-  author: string;
-  accessGroup: PayloadAccessGroup;
-};
-
-export type AccessGroup = {
-  id: string;
-  name: string;
-};
-
-/**
- * The payload of the event, if requested.
- */
-export type ThirtyFive = {
-  accessGroup: AccessGroup;
-  teamRoles?: Array<string> | undefined;
-  teamPermissions?: Array<string> | undefined;
-  entitlements?: Array<string> | undefined;
-};
-
-export type VirtualModelConfig = {
-  id: string;
-  displayName?: string | undefined;
-  modelSlug?: string | undefined;
-};
-
-/**
- * The payload of the event, if requested.
- */
-export type ThirtyFour = {
-  virtualModelConfig: VirtualModelConfig;
-};
-
-export type UserEventPayloadRule = {
-  id: string;
-  type: string;
-  model?: string | undefined;
-};
-
-/**
- * The payload of the event, if requested.
- */
-export type ThirtyThree = {
-  rule: UserEventPayloadRule;
-  enabled?: boolean | undefined;
-};
-
-export type PayloadRule = {
-  id: string;
-  type: string;
-  model?: string | undefined;
-};
-
-/**
- * The payload of the event, if requested.
- */
-export type ThirtyTwo = {
-  rule: PayloadRule;
-};
-
-export type Rule = {
-  id: string;
-  type: string;
-  model?: string | undefined;
-  rewriteModel?: string | undefined;
-};
-
-/**
- * The payload of the event, if requested.
- */
-export type ThirtyOne = {
-  rule: Rule;
-};
-
-export const DefaultMode = {
-  Days: "days",
-  UntilRequested: "until-requested",
-} as const;
-export type DefaultMode = ClosedEnum<typeof DefaultMode>;
-
-export const CeilingMode = {
-  Days: "days",
-  UntilRequested: "until-requested",
-} as const;
-export type CeilingMode = ClosedEnum<typeof CeilingMode>;
-
-export type Retention = {
-  defaultMode: DefaultMode;
-  defaultDays?: number | undefined;
-  ceilingMode: CeilingMode;
-  ceilingDays?: number | undefined;
-};
-
-/**
- * The payload of the event, if requested.
- */
-export type Thirty = {
-  retention: Retention;
-};
-
-/**
- * The payload of the event, if requested.
- */
-export type TwentyNine = {
-  regions: Array<string>;
-};
+} from "./usereventpayloadgitprovider.js";
 
 export type PiiRedaction = {
   from: boolean;
@@ -989,11 +891,11 @@ export type PiiRedaction = {
  * The payload of the event, if requested.
  */
 export type TwentyEight = {
-  piiRedaction: PiiRedaction;
   moderationPolicyCount: number;
+  piiRedaction: PiiRedaction;
   policiesAdded: Array<string>;
-  policiesRemoved: Array<string>;
   policiesModified: Array<string>;
+  policiesRemoved: Array<string>;
 };
 
 export type PrivateProvider = {
@@ -1019,8 +921,8 @@ export type TwentySix = {
 };
 
 export type PrivateModel = {
-  slug: string;
   providerSlug: string;
+  slug: string;
 };
 
 /**
@@ -1063,10 +965,10 @@ export type PayloadCredential = {
  * The payload of the event, if requested.
  */
 export type TwentyOne = {
-  credential: PayloadCredential;
   added: Array<string>;
-  removed: Array<string>;
   changed: Array<string>;
+  credential: PayloadCredential;
+  removed: Array<string>;
 };
 
 export type Credential = {
@@ -1082,13 +984,6 @@ export type Twenty = {
   credential: Credential;
 };
 
-export const PayloadScopeType = {
-  Project: "project",
-  Team: "team",
-  User: "user",
-} as const;
-export type PayloadScopeType = ClosedEnum<typeof PayloadScopeType>;
-
 export const UserEventPayload19RefreshPeriod = {
   Daily: "daily",
   Monthly: "monthly",
@@ -1103,12 +998,12 @@ export type UserEventPayload19RefreshPeriod = ClosedEnum<
  * Spend budget on an AI Gateway API key, as surfaced in activity messages. Defined locally (rather than imported from `@api/pubsub-types`) because `@api/pubsub-types` already depends on `@api/events`; importing it here would create a circular dependency. Must stay structurally aligned with `APIKeyBudget` in `@api/pubsub-types/event-payloads/api-keys`.
  */
 export type UserEventPayload19Budget = {
+  alertThresholds?: Array<number> | undefined;
   /**
    * Spend cap, in dollars.
    */
   limitAmount: number;
   refreshPeriod: UserEventPayload19RefreshPeriod;
-  alertThresholds?: Array<number> | undefined;
 };
 
 export const UserEventPayload19Change = {
@@ -1121,35 +1016,34 @@ export type UserEventPayload19Change = ClosedEnum<
   typeof UserEventPayload19Change
 >;
 
+export const PayloadScopeType = {
+  Project: "project",
+  Team: "team",
+  User: "user",
+} as const;
+export type PayloadScopeType = ClosedEnum<typeof PayloadScopeType>;
+
 /**
  * The payload of the event, if requested.
  */
 export type Nineteen = {
-  scopeType: PayloadScopeType;
-  /**
-   * Associates the event with a project for filtering; not rendered.
-   */
-  projectId?: string | undefined;
-  projectName?: string | undefined;
-  /**
-   * Associates the event with a member for filtering; not rendered.
-   */
-  userId?: string | undefined;
-  userName?: string | undefined;
   /**
    * Spend budget on an AI Gateway API key, as surfaced in activity messages. Defined locally (rather than imported from `@api/pubsub-types`) because `@api/pubsub-types` already depends on `@api/events`; importing it here would create a circular dependency. Must stay structurally aligned with `APIKeyBudget` in `@api/pubsub-types/event-payloads/api-keys`.
    */
   budget?: UserEventPayload19Budget | null | undefined;
   change: UserEventPayload19Change;
+  /**
+   * Associates the event with a project for filtering; not rendered.
+   */
+  projectId?: string | undefined;
+  projectName?: string | undefined;
+  scopeType: PayloadScopeType;
+  /**
+   * Associates the event with a member for filtering; not rendered.
+   */
+  userId?: string | undefined;
+  userName?: string | undefined;
 };
-
-export const ScopeType = {
-  ApiKey: "api-key",
-  Project: "project",
-  Team: "team",
-  User: "user",
-} as const;
-export type ScopeType = ClosedEnum<typeof ScopeType>;
 
 export const UserEventPayloadRefreshPeriod = {
   Daily: "daily",
@@ -1165,12 +1059,12 @@ export type UserEventPayloadRefreshPeriod = ClosedEnum<
  * Spend budget on an AI Gateway API key, as surfaced in activity messages. Defined locally (rather than imported from `@api/pubsub-types`) because `@api/pubsub-types` already depends on `@api/events`; importing it here would create a circular dependency. Must stay structurally aligned with `APIKeyBudget` in `@api/pubsub-types/event-payloads/api-keys`.
  */
 export type UserEventPayloadBudget = {
+  alertThresholds?: Array<number> | undefined;
   /**
    * Spend cap, in dollars.
    */
   limitAmount: number;
   refreshPeriod: UserEventPayloadRefreshPeriod;
-  alertThresholds?: Array<number> | undefined;
 };
 
 export const UserEventPayloadChange = {
@@ -1181,16 +1075,24 @@ export const UserEventPayloadChange = {
 } as const;
 export type UserEventPayloadChange = ClosedEnum<typeof UserEventPayloadChange>;
 
+export const ScopeType = {
+  ApiKey: "api-key",
+  Project: "project",
+  Team: "team",
+  User: "user",
+} as const;
+export type ScopeType = ClosedEnum<typeof ScopeType>;
+
 /**
  * The payload of the event, if requested.
  */
 export type Eighteen = {
-  scopeType: ScopeType;
   /**
    * Spend budget on an AI Gateway API key, as surfaced in activity messages. Defined locally (rather than imported from `@api/pubsub-types`) because `@api/pubsub-types` already depends on `@api/events`; importing it here would create a circular dependency. Must stay structurally aligned with `APIKeyBudget` in `@api/pubsub-types/event-payloads/api-keys`.
    */
   budget?: UserEventPayloadBudget | null | undefined;
   change: UserEventPayloadChange;
+  scopeType: ScopeType;
 };
 
 export const PayloadChange = {
@@ -1202,21 +1104,21 @@ export const PayloadChange = {
 } as const;
 export type PayloadChange = ClosedEnum<typeof PayloadChange>;
 
-export type Settings = {
-  minimumBalance: string;
-  targetBalance: string;
+export type Commitment = {
+  deferredInvoiceTargetBalance: string;
   maximumMonthlySpend: string | null;
 };
 
 export type Previous = {
+  maximumMonthlySpend: string | null;
   minimumBalance: string;
   targetBalance: string;
-  maximumMonthlySpend: string | null;
 };
 
-export type Commitment = {
+export type Settings = {
   maximumMonthlySpend: string | null;
-  deferredInvoiceTargetBalance: string;
+  minimumBalance: string;
+  targetBalance: string;
 };
 
 /**
@@ -1224,9 +1126,9 @@ export type Commitment = {
  */
 export type Seventeen = {
   change: PayloadChange;
-  settings?: Settings | undefined;
-  previous?: Previous | undefined;
   commitment?: Commitment | undefined;
+  previous?: Previous | undefined;
+  settings?: Settings | undefined;
 };
 
 export type UserEventPayloadApiKey = {
@@ -1246,12 +1148,12 @@ export type PayloadRefreshPeriod = ClosedEnum<typeof PayloadRefreshPeriod>;
  * Spend budget on an AI Gateway API key, as surfaced in activity messages. Defined locally (rather than imported from `@api/pubsub-types`) because `@api/pubsub-types` already depends on `@api/events`; importing it here would create a circular dependency. Must stay structurally aligned with `APIKeyBudget` in `@api/pubsub-types/event-payloads/api-keys`.
  */
 export type PayloadBudget = {
+  alertThresholds?: Array<number> | undefined;
   /**
    * Spend cap, in dollars.
    */
   limitAmount: number;
   refreshPeriod: PayloadRefreshPeriod;
-  alertThresholds?: Array<number> | undefined;
 };
 
 export const Change = {
@@ -1303,12 +1205,12 @@ export type RefreshPeriod = ClosedEnum<typeof RefreshPeriod>;
  * Spend budget on an AI Gateway API key, as surfaced in activity messages. Defined locally (rather than imported from `@api/pubsub-types`) because `@api/pubsub-types` already depends on `@api/events`; importing it here would create a circular dependency. Must stay structurally aligned with `APIKeyBudget` in `@api/pubsub-types/event-payloads/api-keys`.
  */
 export type Budget = {
+  alertThresholds?: Array<number> | undefined;
   /**
    * Spend cap, in dollars.
    */
   limitAmount: number;
   refreshPeriod: RefreshPeriod;
-  alertThresholds?: Array<number> | undefined;
 };
 
 /**
@@ -1321,13 +1223,13 @@ export type Fourteen = {
    */
   budget?: Budget | null | undefined;
   /**
-   * True when the key was created with a ZDR exemption.
-   */
-  zdrExemption?: boolean | undefined;
-  /**
    * True when the key was created to bypass all of the team's restrictions (the ZDR-only model restriction and the provider/model allowlist).
    */
   bypassAll?: boolean | undefined;
+  /**
+   * True when the key was created with a ZDR exemption.
+   */
+  zdrExemption?: boolean | undefined;
 };
 
 /**
@@ -1376,9 +1278,9 @@ export type Thirteen = {
    * Present when `provider` is "stripe".
    */
   stripeOrganisation?: string | undefined;
-  teamId: string;
-  resourceId: string;
   fromPlan: FromPlan;
+  resourceId: string;
+  teamId: string;
   toPlan: ToPlan;
 };
 
@@ -1426,8 +1328,8 @@ export type Twelve = {
    * Okta user id.
    */
   actorId: string;
-  actorType: ActorType;
   actorName?: string | undefined;
+  actorType: ActorType;
 };
 
 /**
@@ -1460,8 +1362,8 @@ export type Eleven = {
    * Present when `provider` is "stripe". Equivalent to `providerAccount`.
    */
   stripeAccount?: string | undefined;
-  resourceId: string;
   projectName: string;
+  resourceId: string;
 };
 
 /**
@@ -1498,8 +1400,8 @@ export type Ten = {
    * Present when `provider` is "stripe".
    */
   stripeOrganisation?: string | undefined;
-  reason: string;
   blockCode: string;
+  reason: string;
 };
 
 /**
@@ -1607,17 +1509,17 @@ export type Seven = {
    * Present when `provider` is "stripe".
    */
   stripeOrganisation?: string | undefined;
-  teamId: string;
   accountRequestId: string;
+  teamId: string;
 };
 
 /**
  * The payload of the event, if requested.
  */
 export type Six = {
+  policyId: string;
   projectId: string;
   projectName: string;
-  policyId: string;
 };
 
 export const UserEventPayload5Action = {
@@ -1632,9 +1534,9 @@ export type UserEventPayload5Action = ClosedEnum<
  */
 export type Five = {
   action: UserEventPayload5Action;
-  projectName?: string | undefined;
-  projectId?: string | undefined;
   environment: Array<string>;
+  projectId?: string | undefined;
+  projectName?: string | undefined;
 };
 
 export const UserEventPayload4Action = {
@@ -1649,12 +1551,12 @@ export type UserEventPayload4Action = ClosedEnum<
 /**
  * The payload of the event, if requested.
  */
-export type Payload4 = {
+export type Four = {
   action: UserEventPayload4Action;
-  label?: string | undefined;
-  projectName?: string | undefined;
-  projectId?: string | undefined;
   environment: string;
+  label?: string | undefined;
+  projectId?: string | undefined;
+  projectName?: string | undefined;
 };
 
 export const UserEventPayloadAction = {
@@ -1668,14 +1570,14 @@ export type UserEventPayloadAction = ClosedEnum<typeof UserEventPayloadAction>;
 /**
  * The payload of the event, if requested.
  */
-export type Payload3 = {
+export type Three = {
   action: UserEventPayloadAction;
   id: string;
   name: string;
-  slug: string;
-  state: string;
   projectId: string;
   projectName?: string | undefined;
+  slug: string;
+  state: string;
 };
 
 export const PayloadAction = {
@@ -1693,9 +1595,9 @@ export type PayloadAction = ClosedEnum<typeof PayloadAction>;
 export type Payload2 = {
   action: PayloadAction;
   id: string;
-  slug: string;
   projectId: string;
   projectName?: string | undefined;
+  slug: string;
 };
 
 /**
@@ -1704,26 +1606,27 @@ export type Payload2 = {
 export type Payload1 = {};
 
 export type Payload =
-  | ThreeHundredAndFiftyEight
+  | ThreeHundredAndSixtyOne
   | OneHundredAndSeventyEight
   | OneHundredAndSixtyEight
-  | TwoHundredAndTwentyFour
+  | TwoHundredAndTwentyFive
   | OneHundredAndSeventyNine
-  | FourHundredAndFortyThree
+  | FourHundredAndFortySix
   | OneHundredAndFourteen
   | OneHundredAndEightyOne
   | OneHundredAndEightyTwo
-  | TwoHundredAndSixteen
-  | TwoHundredAndSeventyNine
-  | Payload3
+  | TwoHundredAndSeventeen
+  | TwoHundredAndEightyTwo
+  | Three
   | OneHundredAndFiftyFive
   | OneHundredAndSeventyTwo
   | OneHundredAndSeventySix
   | OneHundredAndEighty
-  | TwoHundredAndFiftySeven
-  | ThreeHundredAndNineteen
-  | ThreeHundredAndThirtySeven
-  | ThreeHundredAndThirtyNine
+  | TwoHundredAndSix
+  | TwoHundredAndFiftyEight
+  | ThreeHundredAndTwentyTwo
+  | ThreeHundredAndForty
+  | ThreeHundredAndFortyTwo
   | TwentyEight
   | OneHundredAndEight
   | OneHundredAndEleven
@@ -1736,14 +1639,15 @@ export type Payload =
   | OneHundredAndSeventyOne
   | OneHundredAndSeventySeven
   | TwoHundredAndFour
-  | TwoHundredAndEight
-  | TwoHundredAndSixtySeven
-  | TwoHundredAndEightyOne
-  | TwoHundredAndNinetyOne
-  | ThreeHundredAndFiftySeven
-  | FourHundredAndTwentySeven
-  | FourHundredAndTwentyNine
-  | FourHundredAndFortySix
+  | TwoHundredAndNine
+  | TwoHundredAndFiftyNine
+  | TwoHundredAndSeventy
+  | TwoHundredAndEightyFour
+  | TwoHundredAndNinetyFour
+  | ThreeHundredAndSixty
+  | FourHundredAndThirty
+  | FourHundredAndThirtyTwo
+  | FourHundredAndFortyNine
   | Payload2
   | Thirteen
   | TwentyOne
@@ -1762,48 +1666,49 @@ export type Payload =
   | OneHundredAndEightyFour
   | OneHundredAndEightyEight
   | TwoHundredAndThree
-  | TwoHundredAndFourteen
   | TwoHundredAndFifteen
-  | TwoHundredAndSeventeen
-  | TwoHundredAndTwentyTwo
-  | TwoHundredAndTwentyFive
-  | TwoHundredAndFortyThree
-  | TwoHundredAndFortySix
-  | TwoHundredAndFiftyFour
-  | TwoHundredAndFiftyEight
+  | TwoHundredAndSixteen
+  | TwoHundredAndEighteen
+  | TwoHundredAndTwentyThree
+  | TwoHundredAndTwentySix
+  | TwoHundredAndFortyFour
+  | TwoHundredAndFortySeven
+  | TwoHundredAndFiftyFive
   | TwoHundredAndSixty
   | TwoHundredAndSixtyOne
-  | TwoHundredAndSixtyTwo
   | TwoHundredAndSixtyThree
-  | TwoHundredAndSeventyEight
-  | TwoHundredAndEighty
-  | TwoHundredAndEightyFour
-  | ThreeHundred
-  | ThreeHundredAndFour
-  | ThreeHundredAndSix
-  | ThreeHundredAndThirteen
-  | ThreeHundredAndFourteen
-  | ThreeHundredAndFifteen
+  | TwoHundredAndSixtyFour
+  | TwoHundredAndSixtyFive
+  | TwoHundredAndSixtySix
+  | TwoHundredAndEightyOne
+  | TwoHundredAndEightyThree
+  | TwoHundredAndEightySeven
+  | ThreeHundredAndThree
+  | ThreeHundredAndSeven
+  | ThreeHundredAndNine
+  | ThreeHundredAndSixteen
   | ThreeHundredAndSeventeen
-  | ThreeHundredAndTwentyFive
-  | ThreeHundredAndTwentySix
+  | ThreeHundredAndEighteen
+  | ThreeHundredAndTwenty
+  | ThreeHundredAndTwentyEight
   | ThreeHundredAndTwentyNine
-  | ThreeHundredAndThirtyFive
+  | ThreeHundredAndThirtyTwo
   | ThreeHundredAndThirtyEight
-  | ThreeHundredAndFortyEight
-  | ThreeHundredAndFortyNine
-  | ThreeHundredAndFiftySix
-  | ThreeHundredAndSixtyFour
-  | ThreeHundredAndSeventyNine
-  | ThreeHundredAndNinetySix
-  | FourHundredAndTwentyTwo
-  | FourHundredAndTwentyFour
-  | FourHundredAndTwentyEight
-  | FourHundredAndThirty
+  | ThreeHundredAndFortyOne
+  | ThreeHundredAndFiftyOne
+  | ThreeHundredAndFiftyTwo
+  | ThreeHundredAndFiftyNine
+  | ThreeHundredAndSixtySeven
+  | ThreeHundredAndEightyTwo
+  | ThreeHundredAndNinetyNine
+  | FourHundredAndTwentyFive
+  | FourHundredAndTwentySeven
   | FourHundredAndThirtyOne
-  | FourHundredAndThirtyTwo
-  | FourHundredAndFortyNine
-  | FourHundredAndFifty
+  | FourHundredAndThirtyThree
+  | FourHundredAndThirtyFour
+  | FourHundredAndThirtyFive
+  | FourHundredAndFiftyTwo
+  | FourHundredAndFiftyThree
   | Six
   | Twelve
   | FortyFour
@@ -1842,66 +1747,66 @@ export type Payload =
   | OneHundredAndNinetySeven
   | TwoHundred
   | TwoHundredAndFive
-  | TwoHundredAndSeven
-  | TwoHundredAndNine
+  | TwoHundredAndEight
   | TwoHundredAndTen
   | TwoHundredAndEleven
   | TwoHundredAndTwelve
   | TwoHundredAndThirteen
-  | TwoHundredAndEighteen
+  | TwoHundredAndFourteen
   | TwoHundredAndNineteen
   | TwoHundredAndTwenty
   | TwoHundredAndTwentyOne
-  | TwoHundredAndTwentyEight
-  | TwoHundredAndThirtyFour
-  | TwoHundredAndThirtySix
+  | TwoHundredAndTwentyTwo
+  | TwoHundredAndTwentyNine
+  | TwoHundredAndThirtyFive
   | TwoHundredAndThirtySeven
-  | TwoHundredAndThirtyNine
-  | TwoHundredAndFortyOne
+  | TwoHundredAndThirtyEight
+  | TwoHundredAndForty
   | TwoHundredAndFortyTwo
-  | TwoHundredAndFortyFour
+  | TwoHundredAndFortyThree
   | TwoHundredAndFortyFive
-  | TwoHundredAndFortySeven
-  | TwoHundredAndFiftyTwo
-  | TwoHundredAndFiftyFive
+  | TwoHundredAndFortySix
+  | TwoHundredAndFortyEight
+  | TwoHundredAndFiftyThree
   | TwoHundredAndFiftySix
-  | TwoHundredAndSixtyFour
-  | TwoHundredAndSixtyFive
-  | TwoHundredAndSixtySix
+  | TwoHundredAndFiftySeven
+  | TwoHundredAndSixtySeven
   | TwoHundredAndSixtyEight
   | TwoHundredAndSixtyNine
-  | TwoHundredAndSeventy
   | TwoHundredAndSeventyOne
   | TwoHundredAndSeventyTwo
+  | TwoHundredAndSeventyThree
+  | TwoHundredAndSeventyFour
   | TwoHundredAndSeventyFive
-  | TwoHundredAndSeventySix
-  | TwoHundredAndSeventySeven
-  | TwoHundredAndEightyTwo
-  | TwoHundredAndEightyNine
+  | TwoHundredAndSeventyEight
+  | TwoHundredAndSeventyNine
+  | TwoHundredAndEighty
+  | TwoHundredAndEightyFive
   | TwoHundredAndNinetyTwo
-  | TwoHundredAndNinetyThree
-  | ThreeHundredAndSeven
-  | ThreeHundredAndEight
-  | ThreeHundredAndNine
+  | TwoHundredAndNinetyFive
+  | TwoHundredAndNinetySix
   | ThreeHundredAndTen
   | ThreeHundredAndEleven
-  | ThreeHundredAndTwentyTwo
-  | ThreeHundredAndForty
-  | ThreeHundredAndFiftyTwo
-  | ThreeHundredAndSixtyOne
-  | ThreeHundredAndEightyThree
-  | FourHundredAndFive
-  | FourHundredAndEleven
-  | FourHundredAndTwelve
+  | ThreeHundredAndTwelve
+  | ThreeHundredAndThirteen
+  | ThreeHundredAndFourteen
+  | ThreeHundredAndTwentyFive
+  | ThreeHundredAndFortyThree
+  | ThreeHundredAndFiftyFive
+  | ThreeHundredAndSixtyFour
+  | ThreeHundredAndEightySix
+  | FourHundredAndEight
   | FourHundredAndFourteen
-  | FourHundredAndTwentyFive
-  | FourHundredAndTwentySix
-  | FourHundredAndThirtySix
-  | FourHundredAndThirtySeven
-  | FourHundredAndThirtyEight
+  | FourHundredAndFifteen
+  | FourHundredAndSeventeen
+  | FourHundredAndTwentyEight
+  | FourHundredAndTwentyNine
   | FourHundredAndThirtyNine
-  | FourHundredAndFortyFive
-  | Payload4
+  | FourHundredAndForty
+  | FourHundredAndFortyOne
+  | FourHundredAndFortyTwo
+  | FourHundredAndFortyEight
+  | Four
   | Five
   | Seven
   | Nine
@@ -1952,69 +1857,69 @@ export type Payload =
   | OneHundredAndNinetyEight
   | OneHundredAndNinetyNine
   | TwoHundredAndOne
-  | TwoHundredAndSix
-  | TwoHundredAndTwentyThree
-  | TwoHundredAndTwentySix
-  | TwoHundredAndThirtyTwo
+  | TwoHundredAndSeven
+  | TwoHundredAndTwentyFour
+  | TwoHundredAndTwentySeven
   | TwoHundredAndThirtyThree
-  | TwoHundredAndThirtyFive
-  | TwoHundredAndForty
-  | TwoHundredAndFifty
-  | TwoHundredAndFiftyThree
-  | TwoHundredAndFiftyNine
-  | TwoHundredAndEightyFive
-  | TwoHundredAndEightySeven
+  | TwoHundredAndThirtyFour
+  | TwoHundredAndThirtySix
+  | TwoHundredAndFortyOne
+  | TwoHundredAndFiftyOne
+  | TwoHundredAndFiftyFour
+  | TwoHundredAndSixtyTwo
   | TwoHundredAndEightyEight
   | TwoHundredAndNinety
-  | TwoHundredAndNinetyFour
-  | TwoHundredAndNinetyFive
+  | TwoHundredAndNinetyOne
+  | TwoHundredAndNinetyThree
   | TwoHundredAndNinetySeven
-  | TwoHundredAndNinetyNine
-  | ThreeHundredAndOne
+  | TwoHundredAndNinetyEight
+  | ThreeHundred
   | ThreeHundredAndTwo
-  | ThreeHundredAndThree
+  | ThreeHundredAndFour
   | ThreeHundredAndFive
-  | ThreeHundredAndTwelve
-  | ThreeHundredAndSixteen
-  | ThreeHundredAndEighteen
+  | ThreeHundredAndSix
+  | ThreeHundredAndEight
+  | ThreeHundredAndFifteen
+  | ThreeHundredAndNineteen
   | ThreeHundredAndTwentyOne
-  | ThreeHundredAndTwentyThree
   | ThreeHundredAndTwentyFour
+  | ThreeHundredAndTwentySix
   | ThreeHundredAndTwentySeven
-  | ThreeHundredAndTwentyEight
+  | ThreeHundredAndThirty
   | ThreeHundredAndThirtyOne
-  | ThreeHundredAndThirtyTwo
-  | ThreeHundredAndThirtyThree
-  | ThreeHundredAndFortySeven
+  | ThreeHundredAndThirtyFour
+  | ThreeHundredAndThirtyFive
+  | ThreeHundredAndThirtySix
   | ThreeHundredAndFifty
-  | ThreeHundredAndFiftyNine
+  | ThreeHundredAndFiftyThree
   | ThreeHundredAndSixtyTwo
   | ThreeHundredAndSixtyFive
-  | ThreeHundredAndSixtySeven
-  | ThreeHundredAndSeventyTwo
-  | ThreeHundredAndSeventyThree
-  | ThreeHundredAndEightyOne
-  | ThreeHundredAndEightySix
-  | ThreeHundredAndEightySeven
-  | ThreeHundredAndNinetyTwo
-  | ThreeHundredAndNinetyFour
-  | ThreeHundredAndNinetyNine
-  | FourHundred
+  | ThreeHundredAndSixtyEight
+  | ThreeHundredAndSeventy
+  | ThreeHundredAndSeventyFive
+  | ThreeHundredAndSeventySix
+  | ThreeHundredAndEightyFour
+  | ThreeHundredAndEightyNine
+  | ThreeHundredAndNinety
+  | ThreeHundredAndNinetyFive
+  | ThreeHundredAndNinetySeven
+  | FourHundredAndTwo
   | FourHundredAndThree
-  | FourHundredAndEight
-  | FourHundredAndNine
-  | FourHundredAndTen
+  | FourHundredAndSix
+  | FourHundredAndEleven
+  | FourHundredAndTwelve
   | FourHundredAndThirteen
-  | FourHundredAndFifteen
   | FourHundredAndSixteen
-  | FourHundredAndTwenty
-  | FourHundredAndTwentyOne
+  | FourHundredAndEighteen
+  | FourHundredAndNineteen
   | FourHundredAndTwentyThree
-  | FourHundredAndThirtyFour
-  | FourHundredAndFortyOne
+  | FourHundredAndTwentyFour
+  | FourHundredAndTwentySix
+  | FourHundredAndThirtySeven
   | FourHundredAndFortyFour
-  | FourHundredAndFortyEight
+  | FourHundredAndFortySeven
   | FourHundredAndFiftyOne
+  | FourHundredAndFiftyFour
   | Eight
   | Fourteen
   | Fifteen
@@ -2072,53 +1977,53 @@ export type Payload =
   | OneHundredAndNinetyFive
   | OneHundredAndNinetySix
   | TwoHundredAndTwo
-  | TwoHundredAndTwentySeven
-  | TwoHundredAndThirtyOne
-  | TwoHundredAndThirtyEight
-  | TwoHundredAndFiftyOne
-  | TwoHundredAndSeventyThree
-  | TwoHundredAndSeventyFour
-  | TwoHundredAndEightyThree
+  | TwoHundredAndTwentyEight
+  | TwoHundredAndThirtyTwo
+  | TwoHundredAndThirtyNine
+  | TwoHundredAndFiftyTwo
+  | TwoHundredAndSeventySix
+  | TwoHundredAndSeventySeven
   | TwoHundredAndEightySix
-  | TwoHundredAndNinetySix
-  | TwoHundredAndNinetyEight
-  | ThreeHundredAndTwenty
-  | ThreeHundredAndThirty
-  | ThreeHundredAndThirtyFour
-  | ThreeHundredAndFortyOne
-  | ThreeHundredAndFortyTwo
-  | ThreeHundredAndFortyThree
+  | TwoHundredAndEightyNine
+  | TwoHundredAndNinetyNine
+  | ThreeHundredAndOne
+  | ThreeHundredAndTwentyThree
+  | ThreeHundredAndThirtyThree
+  | ThreeHundredAndThirtySeven
   | ThreeHundredAndFortyFour
+  | ThreeHundredAndFortyFive
   | ThreeHundredAndFortySix
-  | ThreeHundredAndFiftyOne
+  | ThreeHundredAndFortySeven
+  | ThreeHundredAndFortyNine
   | ThreeHundredAndFiftyFour
-  | ThreeHundredAndFiftyFive
-  | ThreeHundredAndSixtyThree
-  | ThreeHundredAndSixtyNine
-  | ThreeHundredAndSeventy
-  | ThreeHundredAndSeventyFive
-  | ThreeHundredAndSeventySix
-  | ThreeHundredAndSeventySeven
+  | ThreeHundredAndFiftySeven
+  | ThreeHundredAndFiftyEight
+  | ThreeHundredAndSixtySix
+  | ThreeHundredAndSeventyTwo
+  | ThreeHundredAndSeventyThree
   | ThreeHundredAndSeventyEight
+  | ThreeHundredAndSeventyNine
   | ThreeHundredAndEighty
-  | ThreeHundredAndEightyTwo
-  | ThreeHundredAndEightyEight
-  | ThreeHundredAndNinety
+  | ThreeHundredAndEightyOne
+  | ThreeHundredAndEightyThree
+  | ThreeHundredAndEightyFive
   | ThreeHundredAndNinetyOne
-  | ThreeHundredAndNinetyFive
-  | ThreeHundredAndNinetySeven
-  | FourHundredAndOne
+  | ThreeHundredAndNinetyThree
+  | ThreeHundredAndNinetyFour
+  | ThreeHundredAndNinetyEight
+  | FourHundred
   | FourHundredAndFour
-  | FourHundredAndSix
   | FourHundredAndSeven
-  | FourHundredAndSeventeen
-  | FourHundredAndEighteen
-  | FourHundredAndNineteen
-  | FourHundredAndThirtyThree
-  | FourHundredAndThirtyFive
-  | FourHundredAndForty
-  | FourHundredAndFortyTwo
-  | FourHundredAndFortySeven
+  | FourHundredAndNine
+  | FourHundredAndTen
+  | FourHundredAndTwenty
+  | FourHundredAndTwentyOne
+  | FourHundredAndTwentyTwo
+  | FourHundredAndThirtySix
+  | FourHundredAndThirtyEight
+  | FourHundredAndFortyThree
+  | FourHundredAndFortyFive
+  | FourHundredAndFifty
   | Payload1
   | Forty
   | FortyOne
@@ -2137,45 +2042,919 @@ export type Payload =
   | OneHundredAndFiftyFour
   | OneHundredAndFiftySix
   | OneHundredAndNinetyThree
-  | TwoHundredAndTwentyNine
   | TwoHundredAndThirty
-  | TwoHundredAndFortyEight
+  | TwoHundredAndThirtyOne
   | TwoHundredAndFortyNine
-  | ThreeHundredAndThirtySix
-  | ThreeHundredAndFortyFive
-  | ThreeHundredAndFiftyThree
-  | ThreeHundredAndSixty
-  | ThreeHundredAndSixtySix
-  | ThreeHundredAndSixtyEight
+  | TwoHundredAndFifty
+  | ThreeHundredAndThirtyNine
+  | ThreeHundredAndFortyEight
+  | ThreeHundredAndFiftySix
+  | ThreeHundredAndSixtyThree
+  | ThreeHundredAndSixtyNine
   | ThreeHundredAndSeventyOne
   | ThreeHundredAndSeventyFour
-  | ThreeHundredAndEightyFour
-  | ThreeHundredAndEightyFive
-  | ThreeHundredAndEightyNine
-  | ThreeHundredAndNinetyThree
-  | ThreeHundredAndNinetyEight
-  | FourHundredAndTwo;
+  | ThreeHundredAndSeventySeven
+  | ThreeHundredAndEightySeven
+  | ThreeHundredAndEightyEight
+  | ThreeHundredAndNinetyTwo
+  | ThreeHundredAndNinetySix
+  | FourHundredAndOne
+  | FourHundredAndFive;
+
+export const UserEventPrincipal4Type = {
+  System: "system",
+} as const;
+export type UserEventPrincipal4Type = ClosedEnum<
+  typeof UserEventPrincipal4Type
+>;
+
+/**
+ * Metadata for {@link principalId}.
+ */
+export type Principal4 = {
+  type: UserEventPrincipal4Type;
+};
+
+export const UserEventPrincipal3Type = {
+  External: "external",
+} as const;
+export type UserEventPrincipal3Type = ClosedEnum<
+  typeof UserEventPrincipal3Type
+>;
+
+/**
+ * Metadata for {@link principalId}.
+ */
+export type Principal3 = {
+  email?: string | undefined;
+  id: string;
+  name: string;
+  type: UserEventPrincipal3Type;
+};
+
+export const UserEventPrincipalType = {
+  App: "app",
+} as const;
+export type UserEventPrincipalType = ClosedEnum<typeof UserEventPrincipalType>;
+
+/**
+ * Metadata for {@link principalId}.
+ */
+export type Principal2 = {
+  /**
+   * The OAuth 2.0 client ID, which may be a CIMD URL.
+   */
+  clientId: string;
+  /**
+   * The backing Vercel App ID. When absent, defaults to `clientId`.
+   */
+  id?: string | undefined;
+  name: string;
+  type: UserEventPrincipalType;
+};
+
+export const PrincipalType = {
+  User: "user",
+} as const;
+export type PrincipalType = ClosedEnum<typeof PrincipalType>;
+
+/**
+ * Metadata for {@link principalId}.
+ */
+export type Principal1 = {
+  avatar: string;
+  email: string;
+  slug?: string | undefined;
+  type?: PrincipalType | undefined;
+  uid: string;
+  username: string;
+};
+
+export type Principal = Principal1 | Principal2 | Principal3 | Principal4;
+
+/**
+ * The type of the event.
+ */
+export const UserEventType = {
+  AccessGroupCreated: "access-group-created",
+  AccessGroupDeleted: "access-group-deleted",
+  AccessGroupProjectUpdated: "access-group-project-updated",
+  AccessGroupUpdated: "access-group-updated",
+  AccessGroupUserAdded: "access-group-user-added",
+  AccessGroupUserRemoved: "access-group-user-removed",
+  AdminAgenticProvisioningAccountUnlinked:
+    "admin-agentic-provisioning-account-unlinked",
+  AdminPlanUpdated: "admin-plan-updated",
+  AdminSecondaryEmailAdded: "admin-secondary-email-added",
+  AdminSecondaryEmailRemoved: "admin-secondary-email-removed",
+  AdminTeamNameUpdate: "admin-team-name-update",
+  AdminTeamSlugUpdate: "admin-team-slug-update",
+  AdminUserDelete: "admin-user-delete",
+  AdminUserPrimaryEmailUpdated: "admin-user-primary-email-updated",
+  AdminUsernameUpdated: "admin-username-updated",
+  AgenticProvisioningAccountBlocked: "agentic-provisioning-account-blocked",
+  AgenticProvisioningAccountLinked: "agentic-provisioning-account-linked",
+  AgenticProvisioningAccountRelinked: "agentic-provisioning-account-relinked",
+  AgenticProvisioningAccountUnlinked: "agentic-provisioning-account-unlinked",
+  AgenticProvisioningCredentialsRotated:
+    "agentic-provisioning-credentials-rotated",
+  AgenticProvisioningPlanChanged: "agentic-provisioning-plan-changed",
+  AgenticProvisioningTeamCreated: "agentic-provisioning-team-created",
+  AiAlertInvestigation: "ai-alert-investigation",
+  AiCodeReview: "ai-code-review",
+  AiGatewayApiKeyCreated: "ai-gateway-api-key-created",
+  AiGatewayApiKeyDeleted: "ai-gateway-api-key-deleted",
+  AiGatewayApiKeyQuotaUpdated: "ai-gateway-api-key-quota-updated",
+  AiGatewayAutoReloadUpdated: "ai-gateway-auto-reload-updated",
+  AiGatewayBudgetDefaultUpdated: "ai-gateway-budget-default-updated",
+  AiGatewayByokCredentialCreated: "ai-gateway-byok-credential-created",
+  AiGatewayByokCredentialDeleted: "ai-gateway-byok-credential-deleted",
+  AiGatewayByokCredentialUpdated: "ai-gateway-byok-credential-updated",
+  AiGatewayByokModelMappingsUpdated: "ai-gateway-byok-model-mappings-updated",
+  AiGatewayCreditsPurchased: "ai-gateway-credits-purchased",
+  AiGatewayGuardrailsUpdated: "ai-gateway-guardrails-updated",
+  AiGatewayHipaaComplianceToggled: "ai-gateway-hipaa-compliance-toggled",
+  AiGatewayInferenceRegionsUpdated: "ai-gateway-inference-regions-updated",
+  AiGatewayModelAllowlistModelsUpdated:
+    "ai-gateway-model-allowlist-models-updated",
+  AiGatewayModelAllowlistToggled: "ai-gateway-model-allowlist-toggled",
+  AiGatewayPrivateModelCreated: "ai-gateway-private-model-created",
+  AiGatewayPrivateModelDeleted: "ai-gateway-private-model-deleted",
+  AiGatewayPrivateModelUpdated: "ai-gateway-private-model-updated",
+  AiGatewayPrivateProviderCreated: "ai-gateway-private-provider-created",
+  AiGatewayPrivateProviderDeleted: "ai-gateway-private-provider-deleted",
+  AiGatewayPrivateProviderUpdated: "ai-gateway-private-provider-updated",
+  AiGatewayPromptTrainingOptOutToggled:
+    "ai-gateway-prompt-training-opt-out-toggled",
+  AiGatewayProviderAllowlistProvidersUpdated:
+    "ai-gateway-provider-allowlist-providers-updated",
+  AiGatewayProviderAllowlistToggled: "ai-gateway-provider-allowlist-toggled",
+  AiGatewayRuleCreated: "ai-gateway-rule-created",
+  AiGatewayRuleDeleted: "ai-gateway-rule-deleted",
+  AiGatewayRuleUpdated: "ai-gateway-rule-updated",
+  AiGatewayScopeBudgetUpdated: "ai-gateway-scope-budget-updated",
+  AiGatewayTranscriptsDefaultDisabled:
+    "ai-gateway-transcripts-default-disabled",
+  AiGatewayTranscriptsDefaultEnabled: "ai-gateway-transcripts-default-enabled",
+  AiGatewayTranscriptsDisabled: "ai-gateway-transcripts-disabled",
+  AiGatewayTranscriptsEnabled: "ai-gateway-transcripts-enabled",
+  AiGatewayTranscriptsRetentionUpdated:
+    "ai-gateway-transcripts-retention-updated",
+  AiGatewayVirtualModelConfigArchived:
+    "ai-gateway-virtual-model-config-archived",
+  AiGatewayVirtualModelConfigCreated: "ai-gateway-virtual-model-config-created",
+  AiGatewayVirtualModelConfigDeleted: "ai-gateway-virtual-model-config-deleted",
+  AiGatewayVirtualModelConfigRestored:
+    "ai-gateway-virtual-model-config-restored",
+  AiGatewayVirtualModelConfigUpdated: "ai-gateway-virtual-model-config-updated",
+  AiGatewayZeroDataRetentionToggled: "ai-gateway-zero-data-retention-toggled",
+  AiOmniagent: "ai-omniagent",
+  AlertInvestigationProjectAllowlistUpdated:
+    "alert-investigation-project-allowlist-updated",
+  AlertRuleCreated: "alert-rule-created",
+  AlertRuleDeleted: "alert-rule-deleted",
+  AlertRuleUpdated: "alert-rule-updated",
+  Alias: "alias",
+  AliasChown: "alias-chown",
+  AliasDelete: "alias-delete",
+  AliasInviteCreated: "alias-invite-created",
+  AliasInviteJoined: "alias-invite-joined",
+  AliasInviteRevoked: "alias-invite-revoked",
+  AliasProtectionBypassCreated: "alias-protection-bypass-created",
+  AliasProtectionBypassException: "alias-protection-bypass-exception",
+  AliasProtectionBypassRegenerated: "alias-protection-bypass-regenerated",
+  AliasProtectionBypassRevoked: "alias-protection-bypass-revoked",
+  AliasSystem: "alias-system",
+  AliasUserScopedAccessDenied: "alias-user-scoped-access-denied",
+  AliasUserScopedAccessGranted: "alias-user-scoped-access-granted",
+  AliasUserScopedAccessRequested: "alias-user-scoped-access-requested",
+  AliasUserScopedAccessRevoked: "alias-user-scoped-access-revoked",
+  AliasesAssigned: "aliases-assigned",
+  AttackModeDisabled: "attack-mode-disabled",
+  AttackModeEnabled: "attack-mode-enabled",
+  AuditLogExportDownloaded: "audit-log-export-downloaded",
+  AuditLogExportRequested: "audit-log-export-requested",
+  AuthorizeGitDeployment: "authorize-git-deployment",
+  AutoExposeSystemEnvs: "auto-expose-system-envs",
+  Avatar: "avatar",
+  BillingSettingsUpdated: "billing-settings-updated",
+  BulkRedirectsSettingsUpdated: "bulk-redirects-settings-updated",
+  BulkRedirectsVersionPromoted: "bulk-redirects-version-promoted",
+  BulkRedirectsVersionRestored: "bulk-redirects-version-restored",
+  Cert: "cert",
+  CertAutorenew: "cert-autorenew",
+  CertChown: "cert-chown",
+  CertClone: "cert-clone",
+  CertDelete: "cert-delete",
+  CertRenew: "cert-renew",
+  CertReplace: "cert-replace",
+  CertSystemCreate: "cert-system-create",
+  CodeOwnersConfigUpdated: "code-owners-config-updated",
+  ComplianceDocumentDownloaded: "compliance-document-downloaded",
+  ComplianceDocumentPreviewed: "compliance-document-previewed",
+  ComplianceDocumentsBulkDownloaded: "compliance-documents-bulk-downloaded",
+  ConcurrentBuildsUpdate: "concurrent-builds-update",
+  ConnectAttachProject: "connect-attach-project",
+  ConnectBitbucket: "connect-bitbucket",
+  ConnectBitbucketApp: "connect-bitbucket-app",
+  ConnectConfigurationCreated: "connect-configuration-created",
+  ConnectConfigurationDeleted: "connect-configuration-deleted",
+  ConnectConfigurationLinkUpdated: "connect-configuration-link-updated",
+  ConnectConfigurationLinked: "connect-configuration-linked",
+  ConnectConfigurationUnlinked: "connect-configuration-unlinked",
+  ConnectConfigurationUpdated: "connect-configuration-updated",
+  ConnectCreateConnector: "connect-create-connector",
+  ConnectDeleteConnector: "connect-delete-connector",
+  ConnectDeleteInstallation: "connect-delete-installation",
+  ConnectDetachProject: "connect-detach-project",
+  ConnectGithub: "connect-github",
+  ConnectGithubCustomHost: "connect-github-custom-host",
+  ConnectGithubLimited: "connect-github-limited",
+  ConnectGitlab: "connect-gitlab",
+  ConnectGitlabApp: "connect-gitlab-app",
+  ConnectImportTokens: "connect-import-tokens",
+  ConnectRevokeAllTokens: "connect-revoke-all-tokens",
+  ConnectUpdateConnector: "connect-update-connector",
+  ConnectUpdateTriggerDestinations: "connect-update-trigger-destinations",
+  ConnectUpsertInstallation: "connect-upsert-installation",
+  CustomAlertCreated: "custom-alert-created",
+  CustomAlertDeleted: "custom-alert-deleted",
+  CustomAlertUpdated: "custom-alert-updated",
+  CustomEnvironmentsSettingsUpdated: "custom-environments-settings-updated",
+  CustomMetricMetadataDeleted: "custom-metric-metadata-deleted",
+  CustomMetricMetadataUpdated: "custom-metric-metadata-updated",
+  CustomSuffixClear: "custom-suffix-clear",
+  CustomSuffixDisable: "custom-suffix-disable",
+  CustomSuffixEnable: "custom-suffix-enable",
+  CustomSuffixPending: "custom-suffix-pending",
+  CustomSuffixReady: "custom-suffix-ready",
+  DeployHookCreated: "deploy-hook-created",
+  DeployHookDeduped: "deploy-hook-deduped",
+  DeployHookDeleted: "deploy-hook-deleted",
+  DeployHookProcessed: "deploy-hook-processed",
+  Deployment: "deployment",
+  DeploymentCheckCreated: "deployment-check-created",
+  DeploymentCheckDeleted: "deployment-check-deleted",
+  DeploymentCheckUpdated: "deployment-check-updated",
+  DeploymentChown: "deployment-chown",
+  DeploymentCreationBlocked: "deployment-creation-blocked",
+  DeploymentDelete: "deployment-delete",
+  DeploymentPolicyBlocked: "deployment-policy-blocked",
+  DeploymentUndeleted: "deployment-undeleted",
+  DisabledIntegrationInstallationRemoved:
+    "disabled-integration-installation-removed",
+  DisconnectBitbucketApp: "disconnect-bitbucket-app",
+  DisconnectGithub: "disconnect-github",
+  DisconnectGithubCustomHost: "disconnect-github-custom-host",
+  DisconnectGithubLimited: "disconnect-github-limited",
+  DisconnectGitlabApp: "disconnect-gitlab-app",
+  DnsAdd: "dns-add",
+  DnsDelete: "dns-delete",
+  DnsRecordInternal: "dns-record-internal",
+  DnsUpdate: "dns-update",
+  DnsZonefileImport: "dns-zonefile-import",
+  Domain: "domain",
+  DomainBuy: "domain-buy",
+  DomainCdn: "domain-cdn",
+  DomainChown: "domain-chown",
+  DomainCustomNsChange: "domain-custom-ns-change",
+  DomainDelegated: "domain-delegated",
+  DomainDelete: "domain-delete",
+  DomainEchChange: "domain-ech-change",
+  DomainMoveIn: "domain-move-in",
+  DomainMoveOut: "domain-move-out",
+  DomainMoveOutRequestSent: "domain-move-out-request-sent",
+  DomainRenewChange: "domain-renew-change",
+  DomainServiceTypeUpdated: "domain-service-type-updated",
+  DomainTransferIn: "domain-transfer-in",
+  DomainTransferInCanceled: "domain-transfer-in-canceled",
+  DomainTransferInCompleted: "domain-transfer-in-completed",
+  DomainZoneChange: "domain-zone-change",
+  DomainZoneChangeInternal: "domain-zone-change-internal",
+  DrainCreated: "drain-created",
+  DrainDeleted: "drain-deleted",
+  DrainDisabled: "drain-disabled",
+  DrainEnabled: "drain-enabled",
+  DrainUpdated: "drain-updated",
+  EdgeCacheDangerouslyDeleteBySrcImages:
+    "edge-cache-dangerously-delete-by-src-images",
+  EdgeCacheDangerouslyDeleteByTags: "edge-cache-dangerously-delete-by-tags",
+  EdgeCacheDangerouslyDeleteImmutableStatic:
+    "edge-cache-dangerously-delete-immutable-static",
+  EdgeCacheInvalidateBySrcImages: "edge-cache-invalidate-by-src-images",
+  EdgeCacheInvalidateByTags: "edge-cache-invalidate-by-tags",
+  EdgeCachePurgeAll: "edge-cache-purge-all",
+  EdgeCacheRollbackPurge: "edge-cache-rollback-purge",
+  EdgeConfigBackupRestored: "edge-config-backup-restored",
+  EdgeConfigCreated: "edge-config-created",
+  EdgeConfigDeleted: "edge-config-deleted",
+  EdgeConfigItemsUpdated: "edge-config-items-updated",
+  EdgeConfigSchemaDeleted: "edge-config-schema-deleted",
+  EdgeConfigSchemaUpdated: "edge-config-schema-updated",
+  EdgeConfigTokenCreated: "edge-config-token-created",
+  EdgeConfigTokenDeleted: "edge-config-token-deleted",
+  EdgeConfigTransferIn: "edge-config-transfer-in",
+  EdgeConfigTransferOut: "edge-config-transfer-out",
+  EdgeConfigUpdated: "edge-config-updated",
+  Email: "email",
+  EmailNotificationRuleRemoved: "email-notification-rule-removed",
+  EmailNotificationRuleUpdated: "email-notification-rule-updated",
+  EmuMemberRemovedUnverifiedDomain: "emu-member-removed-unverified-domain",
+  EnforceDisjunctiveProductionSecrets: "enforce-disjunctive-production-secrets",
+  EnforceSensitiveEnvironmentVariables:
+    "enforce-sensitive-environment-variables",
+  EnvVariableAdd: "env-variable-add",
+  EnvVariableDelete: "env-variable-delete",
+  EnvVariableEdit: "env-variable-edit",
+  EnvVariableMasked: "env-variable-masked",
+  EnvVariableRead: "env-variable-read",
+  EnvVariableReadCliDev: "env-variable-read:cli:dev",
+  EnvVariableReadCliEnvAdd: "env-variable-read:cli:env:add",
+  EnvVariableReadCliEnvLs: "env-variable-read:cli:env:ls",
+  EnvVariableReadCliEnvPull: "env-variable-read:cli:env:pull",
+  EnvVariableReadCliEnvRm: "env-variable-read:cli:env:rm",
+  EnvVariableReadCliPull: "env-variable-read:cli:pull",
+  EnvVariableReadUnknownSource: "env-variable-read:unknown-source",
+  EnvVariableReadV0EnvPull: "env-variable-read:v0:env:pull",
+  EnvVariableRotated: "env-variable-rotated",
+  ExperimentCreated: "experiment-created",
+  ExperimentDeleted: "experiment-deleted",
+  ExperimentTransitioned: "experiment-transitioned",
+  ExperimentUpdated: "experiment-updated",
+  FirewallBypassCreated: "firewall-bypass-created",
+  FirewallBypassDeleted: "firewall-bypass-deleted",
+  FirewallConfigModified: "firewall-config-modified",
+  FirewallConfigPromoted: "firewall-config-promoted",
+  FirewallConfigRemoved: "firewall-config-removed",
+  FirewallManagedRulegroupUpdated: "firewall-managed-rulegroup-updated",
+  FirewallManagedRulesetUpdated: "firewall-managed-ruleset-updated",
+  Flag: "flag",
+  FlagArchived: "flag-archived",
+  FlagCreated: "flag-created",
+  FlagDeleted: "flag-deleted",
+  FlagUnarchived: "flag-unarchived",
+  FlagUpdated: "flag-updated",
+  FlagsExplorerSubscription: "flags-explorer-subscription",
+  FlagsSDKKey: "flags-sdk-key",
+  FlagsSDKKeyAdded: "flags-sdk-key-added",
+  FlagsSDKKeyDeleted: "flags-sdk-key-deleted",
+  FlagsSDKKeyRead: "flags-sdk-key-read",
+  FlagsSegment: "flags-segment",
+  FlagsSettings: "flags-settings",
+  FlagsTransferred: "flags-transferred",
+  FlatRateCdnAutoUpgradeConsent: "flat-rate-cdn-auto-upgrade-consent",
+  GitIntegrationRepoPush: "git-integration-repo-push",
+  GitAccountIntegrationLinkAdded: "git_account_integration_link_added",
+  GlobalConfigBackupRestored: "global-config-backup-restored",
+  GlobalConfigCreated: "global-config-created",
+  GlobalConfigDeleted: "global-config-deleted",
+  GlobalConfigItemsUpdated: "global-config-items-updated",
+  GlobalConfigSchemaDeleted: "global-config-schema-deleted",
+  GlobalConfigSchemaUpdated: "global-config-schema-updated",
+  GlobalConfigTokenCreated: "global-config-token-created",
+  GlobalConfigTokenDeleted: "global-config-token-deleted",
+  GlobalConfigTransferIn: "global-config-transfer-in",
+  GlobalConfigTransferOut: "global-config-transfer-out",
+  GlobalConfigUpdated: "global-config-updated",
+  InstantRollbackCreated: "instant-rollback-created",
+  IntegrationConfigurationCredentialRevoked:
+    "integration-configuration-credential-revoked",
+  IntegrationConfigurationCredentialRotated:
+    "integration-configuration-credential-rotated",
+  IntegrationConfigurationOwnerChanged:
+    "integration-configuration-owner-changed",
+  IntegrationConfigurationScopeChangeConfirmed:
+    "integration-configuration-scope-change-confirmed",
+  IntegrationConfigurationTransferInSuccess:
+    "integration-configuration-transfer-in-success",
+  IntegrationConfigurationTransferOutSuccess:
+    "integration-configuration-transfer-out-success",
+  IntegrationConfigurationsDisabled: "integration-configurations-disabled",
+  IntegrationInstallationBillingPlanUpdated:
+    "integration-installation-billing-plan-updated",
+  IntegrationInstallationCompleted: "integration-installation-completed",
+  IntegrationInstallationPermissionUpdated:
+    "integration-installation-permission-updated",
+  IntegrationInstallationRemoved: "integration-installation-removed",
+  IntegrationResourceRedisCommandExecuted:
+    "integration-resource-redis-command-executed",
+  IntegrationResourceSqlQueryExecuted:
+    "integration-resource-sql-query-executed",
+  IntegrationScopeChanged: "integration-scope-changed",
+  InvoiceModified: "invoice-modified",
+  InvoiceRefunded: "invoice-refunded",
+  KmsIssuerCreated: "kms-issuer-created",
+  KmsIssuerDeleted: "kms-issuer-deleted",
+  KmsIssuerKeyActivated: "kms-issuer-key-activated",
+  KmsIssuerKeyCreated: "kms-issuer-key-created",
+  KmsIssuerKeyRevoked: "kms-issuer-key-revoked",
+  KmsIssuerKeyRotated: "kms-issuer-key-rotated",
+  KmsIssuerPolicyCreated: "kms-issuer-policy-created",
+  KmsIssuerPolicyDeleted: "kms-issuer-policy-deleted",
+  KmsIssuerPolicyUpdated: "kms-issuer-policy-updated",
+  KmsIssuerUpdated: "kms-issuer-updated",
+  LogDrainCreated: "log-drain-created",
+  LogDrainDeleted: "log-drain-deleted",
+  LogDrainDisabled: "log-drain-disabled",
+  LogDrainEnabled: "log-drain-enabled",
+  Login: "login",
+  LoginConnectionLinked: "login-connection-linked",
+  LoginConnectionUnlinked: "login-connection-unlinked",
+  ManualDeploymentPromotionCreated: "manual-deployment-promotion-created",
+  MarketplaceFlexCommitOptIn: "marketplace-flex-commit-opt-in",
+  MarketplaceIntegrationAllowlistUpdated:
+    "marketplace-integration-allowlist-updated",
+  MicrofrontendGroupAdded: "microfrontend-group-added",
+  MicrofrontendGroupDeleted: "microfrontend-group-deleted",
+  MicrofrontendGroupUpdated: "microfrontend-group-updated",
+  MicrofrontendProjectAddedToGroup: "microfrontend-project-added-to-group",
+  MicrofrontendProjectRemovedFromGroup:
+    "microfrontend-project-removed-from-group",
+  MicrofrontendProjectUpdated: "microfrontend-project-updated",
+  MonitoringAlertUpdated: "monitoring-alert-updated",
+  MonitoringDisabled: "monitoring-disabled",
+  MonitoringEnabled: "monitoring-enabled",
+  OauthAppConnectionCreated: "oauth-app-connection-created",
+  OauthAppConnectionRemoved: "oauth-app-connection-removed",
+  OauthAppConnectionUpdated: "oauth-app-connection-updated",
+  OauthAppCreated: "oauth-app-created",
+  OauthAppDeleted: "oauth-app-deleted",
+  OauthAppSecretDeleted: "oauth-app-secret-deleted",
+  OauthAppSecretGenerated: "oauth-app-secret-generated",
+  OauthAppTokenCreated: "oauth-app-token-created",
+  OauthAppUpdated: "oauth-app-updated",
+  ObservabilityDisabled: "observability-disabled",
+  ObservabilityEnabled: "observability-enabled",
+  ObservabilityPlusProjectDisabled: "observability-plus-project-disabled",
+  ObservabilityPlusProjectEnabled: "observability-plus-project-enabled",
+  OidcPolicyCreated: "oidc-policy-created",
+  OidcPolicyDeleted: "oidc-policy-deleted",
+  OidcPolicyUpdated: "oidc-policy-updated",
+  OidcPolicyUsedToObtainAppToken: "oidc-policy-used-to-obtain-app-token",
+  OrganizationCreate: "organization-create",
+  OrganizationDelete: "organization-delete",
+  OrganizationDsyncGroupDelete: "organization-dsync-group-delete",
+  OrganizationDsyncGroupUpsert: "organization-dsync-group-upsert",
+  OrganizationEmuUpdated: "organization-emu-updated",
+  OrganizationSlugUpdate: "organization-slug-update",
+  OrganizationTeamAdd: "organization-team-add",
+  OrganizationTeamCreate: "organization-team-create",
+  OrganizationTeamDelete: "organization-team-delete",
+  OrganizationTeamSsoUpdate: "organization-team-sso-update",
+  OwnerBlocked: "owner-blocked",
+  OwnerSoftBlocked: "owner-soft-blocked",
+  OwnerSoftUnblocked: "owner-soft-unblocked",
+  OwnerUnblocked: "owner-unblocked",
+  PageIntegrityConfigUpdated: "page-integrity-config-updated",
+  PageIntegrityHeaderApproved: "page-integrity-header-approved",
+  PageIntegrityHeaderRejected: "page-integrity-header-rejected",
+  PageIntegrityInventoryCleared: "page-integrity-inventory-cleared",
+  PageIntegrityResourceApproved: "page-integrity-resource-approved",
+  PageIntegrityResourceDeleted: "page-integrity-resource-deleted",
+  PageIntegrityResourceRejected: "page-integrity-resource-rejected",
+  PageIntegrityScriptApprovalRuleCreated:
+    "page-integrity-script-approval-rule-created",
+  PageIntegrityScriptApprovalRuleDeleted:
+    "page-integrity-script-approval-rule-deleted",
+  PasskeyCreated: "passkey-created",
+  PasskeyDeleted: "passkey-deleted",
+  PasskeyUpdated: "passkey-updated",
+  PassportAccessGranted: "passport-access-granted",
+  PasswordProtectionDisabled: "password-protection-disabled",
+  PasswordProtectionEnabled: "password-protection-enabled",
+  PaymentMethodAdded: "payment-method-added",
+  PaymentMethodDefaultUpdated: "payment-method-default-updated",
+  PaymentMethodRemoved: "payment-method-removed",
+  Plan: "plan",
+  PreviewDeploymentSuffixDisabled: "preview-deployment-suffix-disabled",
+  PreviewDeploymentSuffixEnabled: "preview-deployment-suffix-enabled",
+  PreviewDeploymentSuffixUpdate: "preview-deployment-suffix-update",
+  PrivatelinkEndpointCreated: "privatelink-endpoint-created",
+  PrivatelinkEndpointDeleted: "privatelink-endpoint-deleted",
+  PrivatelinkEndpointUpdated: "privatelink-endpoint-updated",
+  ProductionBranchUpdated: "production-branch-updated",
+  ProjectAddAlias: "project-add-alias",
+  ProjectAddRedirect: "project-add-redirect",
+  ProjectAffectedProjectsDeploymentsUpdated:
+    "project-affected-projects-deployments-updated",
+  ProjectAliasConfiguredChange: "project-alias-configured-change",
+  ProjectAnalyticsDisabled: "project-analytics-disabled",
+  ProjectAnalyticsEnabled: "project-analytics-enabled",
+  ProjectAutoAssignCustomProductionDomainsUpdated:
+    "project-auto-assign-custom-production-domains-updated",
+  ProjectAutomationBypass: "project-automation-bypass",
+  ProjectAvatarUpdate: "project-avatar-update",
+  ProjectBuildCommandUpdated: "project-build-command-updated",
+  ProjectBuildLogsAndSourceProtectionUpdated:
+    "project-build-logs-and-source-protection-updated",
+  ProjectBuildMachineUpdated: "project-build-machine-updated",
+  ProjectCardWidgetPreferenceUpdated: "project-card-widget-preference-updated",
+  ProjectClientCertDelete: "project-client-cert-delete",
+  ProjectClientCertUpload: "project-client-cert-upload",
+  ProjectConnectConfigurations: "project-connect-configurations",
+  ProjectConsolidatedGitCommitStatusUpdated:
+    "project-consolidated-git-commit-status-updated",
+  ProjectCreated: "project-created",
+  ProjectCronJobsToggled: "project-cron-jobs-toggled",
+  ProjectCustomEnvironmentCreated: "project-custom-environment-created",
+  ProjectCustomEnvironmentDeleted: "project-custom-environment-deleted",
+  ProjectCustomEnvironmentSchedulesDefaultUpdated:
+    "project-custom-environment-schedules-default-updated",
+  ProjectCustomEnvironmentUpdated: "project-custom-environment-updated",
+  ProjectCustomerSuccessCodeVisibilityUpdated:
+    "project-customer-success-code-visibility-updated",
+  ProjectDelete: "project-delete",
+  ProjectDeploymentPolicyUpdated: "project-deployment-policy-updated",
+  ProjectDeploymentRetentionUpdated: "project-deployment-retention-updated",
+  ProjectDirectoryListing: "project-directory-listing",
+  ProjectDomainDeleted: "project-domain-deleted",
+  ProjectDomainMoved: "project-domain-moved",
+  ProjectDomainUnverified: "project-domain-unverified",
+  ProjectDomainUpdated: "project-domain-updated",
+  ProjectDomainVerified: "project-domain-verified",
+  ProjectElasticConcurrencyUpdated: "project-elastic-concurrency-updated",
+  ProjectExpirationLocked: "project-expiration-locked",
+  ProjectExpirationReached: "project-expiration-reached",
+  ProjectExpirationScheduled: "project-expiration-scheduled",
+  ProjectExpirationUnlocked: "project-expiration-unlocked",
+  ProjectExternalRewriteCachingUpdated:
+    "project-external-rewrite-caching-updated",
+  ProjectFrameworkUpdated: "project-framework-updated",
+  ProjectFunctionCpuMemory: "project-function-cpu-memory",
+  ProjectFunctionFailover: "project-function-failover",
+  ProjectFunctionMaxDuration: "project-function-max-duration",
+  ProjectFunctionRegions: "project-function-regions",
+  ProjectFunctionsBetaUpdated: "project-functions-beta-updated",
+  ProjectFunctionsFluidDisabled: "project-functions-fluid-disabled",
+  ProjectFunctionsFluidEnabled: "project-functions-fluid-enabled",
+  ProjectGitCommitCommentsToggled: "project-git-commit-comments-toggled",
+  ProjectGitCommitStatusToggled: "project-git-commit-status-toggled",
+  ProjectGitCreateDeploymentsToggled: "project-git-create-deployments-toggled",
+  ProjectGitCredentialBoundCreated: "project-git-credential-bound-created",
+  ProjectGitCredentialBoundDeleted: "project-git-credential-bound-deleted",
+  ProjectGitCredentialBoundUpdated: "project-git-credential-bound-updated",
+  ProjectGitCredentialGrantCreated: "project-git-credential-grant-created",
+  ProjectGitCredentialGrantDeleted: "project-git-credential-grant-deleted",
+  ProjectGitCredentialGrantUpdated: "project-git-credential-grant-updated",
+  ProjectGitForkProtectionUpdated: "project-git-fork-protection-updated",
+  ProjectGitLfsToggled: "project-git-lfs-toggled",
+  ProjectGitPrCommentsToggled: "project-git-pr-comments-toggled",
+  ProjectGitRepositoryConnected: "project-git-repository-connected",
+  ProjectGitRepositoryDisconnected: "project-git-repository-disconnected",
+  ProjectGitRepositoryDispatchEventsToggled:
+    "project-git-repository-dispatch-events-toggled",
+  ProjectGitRequireVerifiedCommitsToggled:
+    "project-git-require-verified-commits-toggled",
+  ProjectIgnoredBuildStepUpdated: "project-ignored-build-step-updated",
+  ProjectInstallCommandUpdated: "project-install-command-updated",
+  ProjectMemberAdded: "project-member-added",
+  ProjectMemberInvited: "project-member-invited",
+  ProjectMemberRemoved: "project-member-removed",
+  ProjectMemberRemovedBatch: "project-member-removed-batch",
+  ProjectMemberUpdated: "project-member-updated",
+  ProjectMoveInSuccess: "project-move-in-success",
+  ProjectMoveOutFailed: "project-move-out-failed",
+  ProjectMoveOutStarted: "project-move-out-started",
+  ProjectMoveOutSuccess: "project-move-out-success",
+  ProjectName: "project-name",
+  ProjectNodeVersionUpdated: "project-node-version-updated",
+  ProjectOidcIssuerModeUpdated: "project-oidc-issuer-mode-updated",
+  ProjectOidcTokenCreated: "project-oidc-token-created",
+  ProjectOptionsAllowlist: "project-options-allowlist",
+  ProjectOutputDirectoryUpdated: "project-output-directory-updated",
+  ProjectPassportUpdated: "project-passport-updated",
+  ProjectPasswordProtection: "project-password-protection",
+  ProjectPaused: "project-paused",
+  ProjectPreviewDeploymentSuffix: "project-preview-deployment-suffix",
+  ProjectPreviewEnvironmentBranchTrackingUpdated:
+    "project-preview-environment-branch-tracking-updated",
+  ProjectPrioritizeProductionBuildsUpdated:
+    "project-prioritize-production-builds-updated",
+  ProjectProgramEnrollmentChanged: "project-program-enrollment-changed",
+  ProjectProtectedSourcemapsUpdated: "project-protected-sourcemaps-updated",
+  ProjectRollbackDescriptionUpdated: "project-rollback-description-updated",
+  ProjectRollingReleaseAborted: "project-rolling-release-aborted",
+  ProjectRollingReleaseApproved: "project-rolling-release-approved",
+  ProjectRollingReleaseCompleted: "project-rolling-release-completed",
+  ProjectRollingReleaseConfigured: "project-rolling-release-configured",
+  ProjectRollingReleaseContinued: "project-rolling-release-continued",
+  ProjectRollingReleaseDisabled: "project-rolling-release-disabled",
+  ProjectRollingReleaseEnabled: "project-rolling-release-enabled",
+  ProjectRollingReleasePaused: "project-rolling-release-paused",
+  ProjectRollingReleaseStarted: "project-rolling-release-started",
+  ProjectRollingReleaseSuggestedActionsGenerated:
+    "project-rolling-release-suggested-actions-generated",
+  ProjectRollingReleaseTimer: "project-rolling-release-timer",
+  ProjectRootDirectoryUpdated: "project-root-directory-updated",
+  ProjectRoutesVersionPromoted: "project-routes-version-promoted",
+  ProjectRoutesVersionRestored: "project-routes-version-restored",
+  ProjectSandboxConfigUpdated: "project-sandbox-config-updated",
+  ProjectSandboxUrlProtectionUpdated: "project-sandbox-url-protection-updated",
+  ProjectSkewProtectionAllowedDomainsUpdated:
+    "project-skew-protection-allowed-domains-updated",
+  ProjectSkewProtectionMaxAgeUpdated: "project-skew-protection-max-age-updated",
+  ProjectSkewProtectionThresholdUpdated:
+    "project-skew-protection-threshold-updated",
+  ProjectSourceFilesOutsideRootDirectoryUpdated:
+    "project-source-files-outside-root-directory-updated",
+  ProjectSpeedInsightsDisabled: "project-speed-insights-disabled",
+  ProjectSpeedInsightsEnabled: "project-speed-insights-enabled",
+  ProjectSpeedInsightsFreeDataStarted:
+    "project-speed-insights-free-data-started",
+  ProjectSsoProtection: "project-sso-protection",
+  ProjectStaticIpsUpdated: "project-static-ips-updated",
+  ProjectTrustedIps: "project-trusted-ips",
+  ProjectTrustedSources: "project-trusted-sources",
+  ProjectUnpaused: "project-unpaused",
+  ProjectWebAnalyticsDisabled: "project-web-analytics-disabled",
+  ProjectWebAnalyticsEnabled: "project-web-analytics-enabled",
+  ProtectedGitScopeAdded: "protected-git-scope-added",
+  ProtectedGitScopeRemoved: "protected-git-scope-removed",
+  RepositoryCiEnvVariableCreate: "repository-ci-env-variable-create",
+  RepositoryCiEnvVariableDelete: "repository-ci-env-variable-delete",
+  RepositoryCiEnvVariableUpdate: "repository-ci-env-variable-update",
+  RuntimeCachePurgeAll: "runtime-cache-purge-all",
+  SamlConnectionCreated: "saml-connection-created",
+  SamlConnectionDeleted: "saml-connection-deleted",
+  SandboxAliasAssigned: "sandbox-alias-assigned",
+  SandboxAliasDelete: "sandbox-alias-delete",
+  SandboxDriveCreated: "sandbox-drive-created",
+  SandboxDriveDeleted: "sandbox-drive-deleted",
+  SandboxSnapshotRegionsUpdated: "sandbox-snapshot-regions-updated",
+  Scale: "scale",
+  ScaleAuto: "scale-auto",
+  SecondaryEmailAdded: "secondary-email-added",
+  SecondaryEmailRemoved: "secondary-email-removed",
+  SecondaryEmailVerified: "secondary-email-verified",
+  SecretAdd: "secret-add",
+  SecretDelete: "secret-delete",
+  SecretRename: "secret-rename",
+  SecurityListCreated: "security-list-created",
+  SecurityListDeleted: "security-list-deleted",
+  SecurityListUpdated: "security-list-updated",
+  SecurityPlusUpdated: "security-plus-updated",
+  SetBio: "set-bio",
+  SetName: "set-name",
+  SetProfiles: "set-profiles",
+  SetScale: "set-scale",
+  SharedEnvVariableCreate: "shared-env-variable-create",
+  SharedEnvVariableDelete: "shared-env-variable-delete",
+  SharedEnvVariableRead: "shared-env-variable-read",
+  SharedEnvVariableRepoLink: "shared-env-variable-repo-link",
+  SharedEnvVariableRepoUnlink: "shared-env-variable-repo-unlink",
+  SharedEnvVariableUpdate: "shared-env-variable-update",
+  ShowIpAddresses: "show-ip-addresses",
+  Signup: "signup",
+  SignupViaBitbucket: "signup-via-bitbucket",
+  SignupViaGithub: "signup-via-github",
+  SignupViaGitlab: "signup-via-gitlab",
+  SpeedInsightsSettingsUpdated: "speed-insights-settings-updated",
+  SpendCreated: "spend-created",
+  SpendDeleted: "spend-deleted",
+  SpendUpdated: "spend-updated",
+  SsoLogin: "sso-login",
+  StorageAcceptTos: "storage-accept-tos",
+  StorageAccessTokenSet: "storage-access-token-set",
+  StorageAccessedDataBrowser: "storage-accessed-data-browser",
+  StorageConnectProject: "storage-connect-project",
+  StorageCreate: "storage-create",
+  StorageDelete: "storage-delete",
+  StorageDisconnectProject: "storage-disconnect-project",
+  StorageDisconnectProjects: "storage-disconnect-projects",
+  StorageInactiveStoreDeleted: "storage-inactive-store-deleted",
+  StorageResetCredentials: "storage-reset-credentials",
+  StorageResourceReplCommand: "storage-resource-repl-command",
+  StorageSetLocked: "storage-set-locked",
+  StorageTransferInSuccess: "storage-transfer-in-success",
+  StorageTransferOutSuccess: "storage-transfer-out-success",
+  StorageTransferRequestCreated: "storage-transfer-request-created",
+  StorageUpdate: "storage-update",
+  StorageUpdateProjectConnection: "storage-update-project-connection",
+  StorageUpgradeProjectConnectionToOidc:
+    "storage-upgrade-project-connection-to-oidc",
+  StorageViewSecret: "storage-view-secret",
+  StrictConnectors: "strict-connectors",
+  StrictDeploymentProtectionSettings: "strict-deployment-protection-settings",
+  StrictPasswordProtectionSettings: "strict-password-protection-settings",
+  StrictShareableLinks: "strict-shareable-links",
+  SubscriptionCreated: "subscription-created",
+  SubscriptionProductAdded: "subscription-product-added",
+  SubscriptionProductRemoved: "subscription-product-removed",
+  SubscriptionUpdated: "subscription-updated",
+  SupportSessionCreated: "support-session-created",
+  Team: "team",
+  TeamAgentBillingMigrationDecisionChanged:
+    "team-agent-billing-migration-decision-changed",
+  TeamAvatarUpdate: "team-avatar-update",
+  TeamCollaborationSettingsUpdated: "team-collaboration-settings-updated",
+  TeamDefaultBuildMachineUpdated: "team-default-build-machine-updated",
+  TeamDefaultPassportUpdated: "team-default-passport-updated",
+  TeamDelete: "team-delete",
+  TeamDeploymentPolicyUpdated: "team-deployment-policy-updated",
+  TeamDomainVerificationCreated: "team-domain-verification-created",
+  TeamDomainVerificationDeleted: "team-domain-verification-deleted",
+  TeamDomainVerificationVerified: "team-domain-verification-verified",
+  TeamEmailDomainUpdate: "team-email-domain-update",
+  TeamEmuUpdated: "team-emu-updated",
+  TeamEndedTrial: "team-ended-trial",
+  TeamFirewallConfigModified: "team-firewall-config-modified",
+  TeamFirewallConfigPromoted: "team-firewall-config-promoted",
+  TeamGitRepositoryDispatchEventsToggled:
+    "team-git-repository-dispatch-events-toggled",
+  TeamGitRequireVerifiedCommitsToggled:
+    "team-git-require-verified-commits-toggled",
+  TeamInviteBulkDelete: "team-invite-bulk-delete",
+  TeamInviteCodeReset: "team-invite-code-reset",
+  TeamInviteLinkCreated: "team-invite-link-created",
+  TeamInviteLinkDeleted: "team-invite-link-deleted",
+  TeamIpBlockingRulesCreated: "team-ip-blocking-rules-created",
+  TeamIpBlockingRulesRemoved: "team-ip-blocking-rules-removed",
+  TeamMemberAdd: "team-member-add",
+  TeamMemberConfirmRequest: "team-member-confirm-request",
+  TeamMemberDeclineRequest: "team-member-decline-request",
+  TeamMemberDelete: "team-member-delete",
+  TeamMemberEntitlementAdded: "team-member-entitlement-added",
+  TeamMemberEntitlementCanceled: "team-member-entitlement-canceled",
+  TeamMemberEntitlementReactivated: "team-member-entitlement-reactivated",
+  TeamMemberEntitlementRemoved: "team-member-entitlement-removed",
+  TeamMemberJoin: "team-member-join",
+  TeamMemberLeave: "team-member-leave",
+  TeamMemberRequestAccess: "team-member-request-access",
+  TeamMemberRoleUpdate: "team-member-role-update",
+  TeamMemberSsoAuthorizationAttempt: "team-member-sso-authorization-attempt",
+  TeamMfaEnforcementUpdated: "team-mfa-enforcement-updated",
+  TeamNameUpdate: "team-name-update",
+  TeamPaidInvoice: "team-paid-invoice",
+  TeamProgramEnrollmentChanged: "team-program-enrollment-changed",
+  TeamRemoteCachingPurge: "team-remote-caching-purge",
+  TeamRemoteCachingUpdate: "team-remote-caching-update",
+  TeamSamlEnforced: "team-saml-enforced",
+  TeamSamlRoles: "team-saml-roles",
+  TeamSlugUpdate: "team-slug-update",
+  TeamTokensInvalidated: "team-tokens-invalidated",
+  TracingConfigured: "tracing-configured",
+  TracingDisabled: "tracing-disabled",
+  TracingPaused: "tracing-paused",
+  TracingResumed: "tracing-resumed",
+  UnlinkLoginConnection: "unlink-login-connection",
+  UpdateAccountFlowDismissed: "update-account-flow-dismissed",
+  UpdateAccountFlowTriggered: "update-account-flow-triggered",
+  UserAutoBlockConfigured: "user-auto-block-configured",
+  UserBlocked: "user-blocked",
+  UserDelete: "user-delete",
+  UserDeleteRequested: "user-delete-requested",
+  UserEmuAccountArchived: "user-emu-account-archived",
+  UserEmuAccountDeleted: "user-emu-account-deleted",
+  UserEmuAccountRecovered: "user-emu-account-recovered",
+  UserEmuAccountUpdateOptedIn: "user-emu-account-update-opted-in",
+  UserEmuAccountUpdateOptedOut: "user-emu-account-update-opted-out",
+  UserEmuRecoveryEmailSent: "user-emu-recovery-email-sent",
+  UserEmuRecoveryInitiated: "user-emu-recovery-initiated",
+  UserEmuToggled: "user-emu-toggled",
+  UserMfaChallengeFailed: "user-mfa-challenge-failed",
+  UserMfaChallengeInitiated: "user-mfa-challenge-initiated",
+  UserMfaChallengeVerified: "user-mfa-challenge-verified",
+  UserMfaChangeFailed: "user-mfa-change-failed",
+  UserMfaConfigurationUpdated: "user-mfa-configuration-updated",
+  UserMfaRecoveryCodeUsed: "user-mfa-recovery-code-used",
+  UserMfaRecoveryCodesRegenerated: "user-mfa-recovery-codes-regenerated",
+  UserMfaRemoved: "user-mfa-removed",
+  UserMfaSetupSkipped: "user-mfa-setup-skipped",
+  UserMfaTotpVerificationStarted: "user-mfa-totp-verification-started",
+  UserMfaTotpVerified: "user-mfa-totp-verified",
+  UserPhoneRemoved: "user-phone-removed",
+  UserPhoneUpdated: "user-phone-updated",
+  UserPrimaryEmailUpdated: "user-primary-email-updated",
+  UserProviderEmailClaimEvaluated: "user-provider-email-claim-evaluated",
+  UserSudoModeRemoved: "user-sudo-mode-removed",
+  UserTokenCreated: "user-token-created",
+  UserTokenDeleted: "user-token-deleted",
+  UserTokensDeleted: "user-tokens-deleted",
+  UserUnblocked: "user-unblocked",
+  Username: "username",
+  V0ChatAiUsage: "v0-chat-ai-usage",
+  V0ChatCreated: "v0-chat-created",
+  V0ChatMessageSent: "v0-chat-message-sent",
+  VcrImageDeleted: "vcr-image-deleted",
+  VcrImagePushed: "vcr-image-pushed",
+  VcrRepositoryCreated: "vcr-repository-created",
+  VcrRepositoryDeleted: "vcr-repository-deleted",
+  VcrRepositoryPermissionAdded: "vcr-repository-permission-added",
+  VcrRepositoryPermissionRemoved: "vcr-repository-permission-removed",
+  VcrRepositoryPermissionsCleared: "vcr-repository-permissions-cleared",
+  VcrRepositoryVisibilityChanged: "vcr-repository-visibility-changed",
+  VercelAgentElevatedPermissionsApproved:
+    "vercel-agent-elevated-permissions-approved",
+  VercelAgentElevatedPermissionsRequested:
+    "vercel-agent-elevated-permissions-requested",
+  VercelAgentSessionCreated: "vercel-agent-session-created",
+  VercelAgentTeamTrialCreditsApplied: "vercel-agent-team-trial-credits-applied",
+  VercelAppInstallationRequestDismissed:
+    "vercel-app-installation-request-dismissed",
+  VercelAppInstallationRequested: "vercel-app-installation-requested",
+  VercelAppInstallationUpdated: "vercel-app-installation-updated",
+  VercelAppInstalled: "vercel-app-installed",
+  VercelAppTokensRevoked: "vercel-app-tokens-revoked",
+  VercelAppUninstalled: "vercel-app-uninstalled",
+  VercelToolbar: "vercel-toolbar",
+  VpcPeeringConnectionAccepted: "vpc-peering-connection-accepted",
+  VpcPeeringConnectionDeleted: "vpc-peering-connection-deleted",
+  VpcPeeringConnectionRejected: "vpc-peering-connection-rejected",
+  VpcPeeringConnectionUpdated: "vpc-peering-connection-updated",
+  VulnerabilityBannerDismissed: "vulnerability-banner-dismissed",
+  WebAnalyticsTierUpdated: "web-analytics-tier-updated",
+  WebhookCreated: "webhook-created",
+  WebhookDeleted: "webhook-deleted",
+  WebhookUpdated: "webhook-updated",
+  WorkflowDeploymentKeyAccessed: "workflow-deployment-key-accessed",
+} as const;
+/**
+ * The type of the event.
+ */
+export type UserEventType = ClosedEnum<typeof UserEventType>;
+
+/**
+ * Metadata for {@link userId}.
+ */
+export type User = {
+  avatar: string;
+  email: string;
+  slug?: string | undefined;
+  uid: string;
+  username: string;
+};
+
+export const UserEventVia4Type = {
+  System: "system",
+} as const;
+export type UserEventVia4Type = ClosedEnum<typeof UserEventVia4Type>;
+
+/**
+ * Metadata for {@link viaIds}.
+ */
+export type Via4 = {
+  type: UserEventVia4Type;
+};
+
+export const UserEventVia3Type = {
+  External: "external",
+} as const;
+export type UserEventVia3Type = ClosedEnum<typeof UserEventVia3Type>;
+
+/**
+ * Metadata for {@link viaIds}.
+ */
+export type Via3 = {
+  email?: string | undefined;
+  id: string;
+  name: string;
+  type: UserEventVia3Type;
+};
+
+export const UserEventViaType = {
+  App: "app",
+} as const;
+export type UserEventViaType = ClosedEnum<typeof UserEventViaType>;
+
+/**
+ * Metadata for {@link viaIds}.
+ */
+export type Via2 = {
+  /**
+   * The OAuth 2.0 client ID, which may be a CIMD URL.
+   */
+  clientId: string;
+  /**
+   * The backing Vercel App ID. When absent, defaults to `clientId`.
+   */
+  id?: string | undefined;
+  name: string;
+  type: UserEventViaType;
+};
+
+export const ViaType = {
+  User: "user",
+} as const;
+export type ViaType = ClosedEnum<typeof ViaType>;
+
+/**
+ * Metadata for {@link viaIds}.
+ */
+export type Via1 = {
+  avatar: string;
+  email: string;
+  slug?: string | undefined;
+  type?: ViaType | undefined;
+  uid: string;
+  username: string;
+};
+
+export type Via = Via1 | Via2 | Via3 | Via4;
 
 /**
  * Array of events generated by the User.
  */
 export type UserEvent = {
-  /**
-   * The unique identifier of the Event.
-   */
-  id: string;
-  /**
-   * The human-readable text of the Event.
-   */
-  text: string;
-  /**
-   * A list of "entities" within the event `text`. Useful for enhancing the displayed text with additional styling and links.
-   */
-  entities: Array<Entities>;
-  /**
-   * The type of the event.
-   */
-  type?: UserEventType | undefined;
   /**
    * The categories that group this event with related event types. An event can belong to multiple categories (e.g. a firewall event is both Firewall and Security). The first entry is the "primary" category. Use the `/events/types` endpoint to discover the full list of categories.
    */
@@ -2185,56 +2964,35 @@ export type UserEvent = {
    */
   createdAt: number;
   /**
-   * Metadata for {@link userId}.
+   * A list of "entities" within the event `text`. Useful for enhancing the displayed text with additional styling and links.
    */
-  user?: User | undefined;
-  principal?: Principal | undefined;
+  entities: Array<Entities>;
   /**
-   * Metadata for {@link viaIds}.
+   * The unique identifier of the Event.
    */
-  via?: Array<Via> | undefined;
-  /**
-   * When the principal who generated the event is a user, this is their ID; otherwise, it is empty.
-   */
-  userId?: string | undefined;
-  /**
-   * The ID of the principal who generated the event. The principal is typically a user, but it could also be an app, an integration, etc. The principal may have delegated its authority to an acting party, and so {@link viaIds} should be checked as well.
-   */
-  principalId: string;
-  /**
-   * If the principal delegated its authority (for example, a user delegating to an app), then this array contains the ID of the current actor. For example, if `principalId` is "user123" and `viaIds` is `["app456"]`, we can say the event was triggered by - "app456 on behalf of user123", or - "user123 via app4556". Both are equivalent. Arbitrarily long chains of delegation can be represented. For example, if `principalId` is "user123" and `viaIds` is `["service1", "service2"]`, we can say the event was triggered by "user123 via service1 via service2".
-   */
-  viaIds?: Array<string> | undefined;
-  /**
-   * The public ID of the token that the principal authenticated with, when the request behind this event carried one.
-   */
-  tokenId?: string | undefined;
-  /**
-   * The ID of the session that the principal's token belongs to, when it belongs to one.
-   */
-  sessionId?: string | undefined;
-  requestId?: string | undefined;
+  id: string;
   payload?:
-    | ThreeHundredAndFiftyEight
+    | ThreeHundredAndSixtyOne
     | OneHundredAndSeventyEight
     | OneHundredAndSixtyEight
-    | TwoHundredAndTwentyFour
+    | TwoHundredAndTwentyFive
     | OneHundredAndSeventyNine
-    | FourHundredAndFortyThree
+    | FourHundredAndFortySix
     | OneHundredAndFourteen
     | OneHundredAndEightyOne
     | OneHundredAndEightyTwo
-    | TwoHundredAndSixteen
-    | TwoHundredAndSeventyNine
-    | Payload3
+    | TwoHundredAndSeventeen
+    | TwoHundredAndEightyTwo
+    | Three
     | OneHundredAndFiftyFive
     | OneHundredAndSeventyTwo
     | OneHundredAndSeventySix
     | OneHundredAndEighty
-    | TwoHundredAndFiftySeven
-    | ThreeHundredAndNineteen
-    | ThreeHundredAndThirtySeven
-    | ThreeHundredAndThirtyNine
+    | TwoHundredAndSix
+    | TwoHundredAndFiftyEight
+    | ThreeHundredAndTwentyTwo
+    | ThreeHundredAndForty
+    | ThreeHundredAndFortyTwo
     | TwentyEight
     | OneHundredAndEight
     | OneHundredAndEleven
@@ -2247,14 +3005,15 @@ export type UserEvent = {
     | OneHundredAndSeventyOne
     | OneHundredAndSeventySeven
     | TwoHundredAndFour
-    | TwoHundredAndEight
-    | TwoHundredAndSixtySeven
-    | TwoHundredAndEightyOne
-    | TwoHundredAndNinetyOne
-    | ThreeHundredAndFiftySeven
-    | FourHundredAndTwentySeven
-    | FourHundredAndTwentyNine
-    | FourHundredAndFortySix
+    | TwoHundredAndNine
+    | TwoHundredAndFiftyNine
+    | TwoHundredAndSeventy
+    | TwoHundredAndEightyFour
+    | TwoHundredAndNinetyFour
+    | ThreeHundredAndSixty
+    | FourHundredAndThirty
+    | FourHundredAndThirtyTwo
+    | FourHundredAndFortyNine
     | Payload2
     | Thirteen
     | TwentyOne
@@ -2273,48 +3032,49 @@ export type UserEvent = {
     | OneHundredAndEightyFour
     | OneHundredAndEightyEight
     | TwoHundredAndThree
-    | TwoHundredAndFourteen
     | TwoHundredAndFifteen
-    | TwoHundredAndSeventeen
-    | TwoHundredAndTwentyTwo
-    | TwoHundredAndTwentyFive
-    | TwoHundredAndFortyThree
-    | TwoHundredAndFortySix
-    | TwoHundredAndFiftyFour
-    | TwoHundredAndFiftyEight
+    | TwoHundredAndSixteen
+    | TwoHundredAndEighteen
+    | TwoHundredAndTwentyThree
+    | TwoHundredAndTwentySix
+    | TwoHundredAndFortyFour
+    | TwoHundredAndFortySeven
+    | TwoHundredAndFiftyFive
     | TwoHundredAndSixty
     | TwoHundredAndSixtyOne
-    | TwoHundredAndSixtyTwo
     | TwoHundredAndSixtyThree
-    | TwoHundredAndSeventyEight
-    | TwoHundredAndEighty
-    | TwoHundredAndEightyFour
-    | ThreeHundred
-    | ThreeHundredAndFour
-    | ThreeHundredAndSix
-    | ThreeHundredAndThirteen
-    | ThreeHundredAndFourteen
-    | ThreeHundredAndFifteen
+    | TwoHundredAndSixtyFour
+    | TwoHundredAndSixtyFive
+    | TwoHundredAndSixtySix
+    | TwoHundredAndEightyOne
+    | TwoHundredAndEightyThree
+    | TwoHundredAndEightySeven
+    | ThreeHundredAndThree
+    | ThreeHundredAndSeven
+    | ThreeHundredAndNine
+    | ThreeHundredAndSixteen
     | ThreeHundredAndSeventeen
-    | ThreeHundredAndTwentyFive
-    | ThreeHundredAndTwentySix
+    | ThreeHundredAndEighteen
+    | ThreeHundredAndTwenty
+    | ThreeHundredAndTwentyEight
     | ThreeHundredAndTwentyNine
-    | ThreeHundredAndThirtyFive
+    | ThreeHundredAndThirtyTwo
     | ThreeHundredAndThirtyEight
-    | ThreeHundredAndFortyEight
-    | ThreeHundredAndFortyNine
-    | ThreeHundredAndFiftySix
-    | ThreeHundredAndSixtyFour
-    | ThreeHundredAndSeventyNine
-    | ThreeHundredAndNinetySix
-    | FourHundredAndTwentyTwo
-    | FourHundredAndTwentyFour
-    | FourHundredAndTwentyEight
-    | FourHundredAndThirty
+    | ThreeHundredAndFortyOne
+    | ThreeHundredAndFiftyOne
+    | ThreeHundredAndFiftyTwo
+    | ThreeHundredAndFiftyNine
+    | ThreeHundredAndSixtySeven
+    | ThreeHundredAndEightyTwo
+    | ThreeHundredAndNinetyNine
+    | FourHundredAndTwentyFive
+    | FourHundredAndTwentySeven
     | FourHundredAndThirtyOne
-    | FourHundredAndThirtyTwo
-    | FourHundredAndFortyNine
-    | FourHundredAndFifty
+    | FourHundredAndThirtyThree
+    | FourHundredAndThirtyFour
+    | FourHundredAndThirtyFive
+    | FourHundredAndFiftyTwo
+    | FourHundredAndFiftyThree
     | Six
     | Twelve
     | FortyFour
@@ -2353,66 +3113,66 @@ export type UserEvent = {
     | OneHundredAndNinetySeven
     | TwoHundred
     | TwoHundredAndFive
-    | TwoHundredAndSeven
-    | TwoHundredAndNine
+    | TwoHundredAndEight
     | TwoHundredAndTen
     | TwoHundredAndEleven
     | TwoHundredAndTwelve
     | TwoHundredAndThirteen
-    | TwoHundredAndEighteen
+    | TwoHundredAndFourteen
     | TwoHundredAndNineteen
     | TwoHundredAndTwenty
     | TwoHundredAndTwentyOne
-    | TwoHundredAndTwentyEight
-    | TwoHundredAndThirtyFour
-    | TwoHundredAndThirtySix
+    | TwoHundredAndTwentyTwo
+    | TwoHundredAndTwentyNine
+    | TwoHundredAndThirtyFive
     | TwoHundredAndThirtySeven
-    | TwoHundredAndThirtyNine
-    | TwoHundredAndFortyOne
+    | TwoHundredAndThirtyEight
+    | TwoHundredAndForty
     | TwoHundredAndFortyTwo
-    | TwoHundredAndFortyFour
+    | TwoHundredAndFortyThree
     | TwoHundredAndFortyFive
-    | TwoHundredAndFortySeven
-    | TwoHundredAndFiftyTwo
-    | TwoHundredAndFiftyFive
+    | TwoHundredAndFortySix
+    | TwoHundredAndFortyEight
+    | TwoHundredAndFiftyThree
     | TwoHundredAndFiftySix
-    | TwoHundredAndSixtyFour
-    | TwoHundredAndSixtyFive
-    | TwoHundredAndSixtySix
+    | TwoHundredAndFiftySeven
+    | TwoHundredAndSixtySeven
     | TwoHundredAndSixtyEight
     | TwoHundredAndSixtyNine
-    | TwoHundredAndSeventy
     | TwoHundredAndSeventyOne
     | TwoHundredAndSeventyTwo
+    | TwoHundredAndSeventyThree
+    | TwoHundredAndSeventyFour
     | TwoHundredAndSeventyFive
-    | TwoHundredAndSeventySix
-    | TwoHundredAndSeventySeven
-    | TwoHundredAndEightyTwo
-    | TwoHundredAndEightyNine
+    | TwoHundredAndSeventyEight
+    | TwoHundredAndSeventyNine
+    | TwoHundredAndEighty
+    | TwoHundredAndEightyFive
     | TwoHundredAndNinetyTwo
-    | TwoHundredAndNinetyThree
-    | ThreeHundredAndSeven
-    | ThreeHundredAndEight
-    | ThreeHundredAndNine
+    | TwoHundredAndNinetyFive
+    | TwoHundredAndNinetySix
     | ThreeHundredAndTen
     | ThreeHundredAndEleven
-    | ThreeHundredAndTwentyTwo
-    | ThreeHundredAndForty
-    | ThreeHundredAndFiftyTwo
-    | ThreeHundredAndSixtyOne
-    | ThreeHundredAndEightyThree
-    | FourHundredAndFive
-    | FourHundredAndEleven
-    | FourHundredAndTwelve
+    | ThreeHundredAndTwelve
+    | ThreeHundredAndThirteen
+    | ThreeHundredAndFourteen
+    | ThreeHundredAndTwentyFive
+    | ThreeHundredAndFortyThree
+    | ThreeHundredAndFiftyFive
+    | ThreeHundredAndSixtyFour
+    | ThreeHundredAndEightySix
+    | FourHundredAndEight
     | FourHundredAndFourteen
-    | FourHundredAndTwentyFive
-    | FourHundredAndTwentySix
-    | FourHundredAndThirtySix
-    | FourHundredAndThirtySeven
-    | FourHundredAndThirtyEight
+    | FourHundredAndFifteen
+    | FourHundredAndSeventeen
+    | FourHundredAndTwentyEight
+    | FourHundredAndTwentyNine
     | FourHundredAndThirtyNine
-    | FourHundredAndFortyFive
-    | Payload4
+    | FourHundredAndForty
+    | FourHundredAndFortyOne
+    | FourHundredAndFortyTwo
+    | FourHundredAndFortyEight
+    | Four
     | Five
     | Seven
     | Nine
@@ -2463,69 +3223,69 @@ export type UserEvent = {
     | OneHundredAndNinetyEight
     | OneHundredAndNinetyNine
     | TwoHundredAndOne
-    | TwoHundredAndSix
-    | TwoHundredAndTwentyThree
-    | TwoHundredAndTwentySix
-    | TwoHundredAndThirtyTwo
+    | TwoHundredAndSeven
+    | TwoHundredAndTwentyFour
+    | TwoHundredAndTwentySeven
     | TwoHundredAndThirtyThree
-    | TwoHundredAndThirtyFive
-    | TwoHundredAndForty
-    | TwoHundredAndFifty
-    | TwoHundredAndFiftyThree
-    | TwoHundredAndFiftyNine
-    | TwoHundredAndEightyFive
-    | TwoHundredAndEightySeven
+    | TwoHundredAndThirtyFour
+    | TwoHundredAndThirtySix
+    | TwoHundredAndFortyOne
+    | TwoHundredAndFiftyOne
+    | TwoHundredAndFiftyFour
+    | TwoHundredAndSixtyTwo
     | TwoHundredAndEightyEight
     | TwoHundredAndNinety
-    | TwoHundredAndNinetyFour
-    | TwoHundredAndNinetyFive
+    | TwoHundredAndNinetyOne
+    | TwoHundredAndNinetyThree
     | TwoHundredAndNinetySeven
-    | TwoHundredAndNinetyNine
-    | ThreeHundredAndOne
+    | TwoHundredAndNinetyEight
+    | ThreeHundred
     | ThreeHundredAndTwo
-    | ThreeHundredAndThree
+    | ThreeHundredAndFour
     | ThreeHundredAndFive
-    | ThreeHundredAndTwelve
-    | ThreeHundredAndSixteen
-    | ThreeHundredAndEighteen
+    | ThreeHundredAndSix
+    | ThreeHundredAndEight
+    | ThreeHundredAndFifteen
+    | ThreeHundredAndNineteen
     | ThreeHundredAndTwentyOne
-    | ThreeHundredAndTwentyThree
     | ThreeHundredAndTwentyFour
+    | ThreeHundredAndTwentySix
     | ThreeHundredAndTwentySeven
-    | ThreeHundredAndTwentyEight
+    | ThreeHundredAndThirty
     | ThreeHundredAndThirtyOne
-    | ThreeHundredAndThirtyTwo
-    | ThreeHundredAndThirtyThree
-    | ThreeHundredAndFortySeven
+    | ThreeHundredAndThirtyFour
+    | ThreeHundredAndThirtyFive
+    | ThreeHundredAndThirtySix
     | ThreeHundredAndFifty
-    | ThreeHundredAndFiftyNine
+    | ThreeHundredAndFiftyThree
     | ThreeHundredAndSixtyTwo
     | ThreeHundredAndSixtyFive
-    | ThreeHundredAndSixtySeven
-    | ThreeHundredAndSeventyTwo
-    | ThreeHundredAndSeventyThree
-    | ThreeHundredAndEightyOne
-    | ThreeHundredAndEightySix
-    | ThreeHundredAndEightySeven
-    | ThreeHundredAndNinetyTwo
-    | ThreeHundredAndNinetyFour
-    | ThreeHundredAndNinetyNine
-    | FourHundred
+    | ThreeHundredAndSixtyEight
+    | ThreeHundredAndSeventy
+    | ThreeHundredAndSeventyFive
+    | ThreeHundredAndSeventySix
+    | ThreeHundredAndEightyFour
+    | ThreeHundredAndEightyNine
+    | ThreeHundredAndNinety
+    | ThreeHundredAndNinetyFive
+    | ThreeHundredAndNinetySeven
+    | FourHundredAndTwo
     | FourHundredAndThree
-    | FourHundredAndEight
-    | FourHundredAndNine
-    | FourHundredAndTen
+    | FourHundredAndSix
+    | FourHundredAndEleven
+    | FourHundredAndTwelve
     | FourHundredAndThirteen
-    | FourHundredAndFifteen
     | FourHundredAndSixteen
-    | FourHundredAndTwenty
-    | FourHundredAndTwentyOne
+    | FourHundredAndEighteen
+    | FourHundredAndNineteen
     | FourHundredAndTwentyThree
-    | FourHundredAndThirtyFour
-    | FourHundredAndFortyOne
+    | FourHundredAndTwentyFour
+    | FourHundredAndTwentySix
+    | FourHundredAndThirtySeven
     | FourHundredAndFortyFour
-    | FourHundredAndFortyEight
+    | FourHundredAndFortySeven
     | FourHundredAndFiftyOne
+    | FourHundredAndFiftyFour
     | Eight
     | Fourteen
     | Fifteen
@@ -2583,53 +3343,53 @@ export type UserEvent = {
     | OneHundredAndNinetyFive
     | OneHundredAndNinetySix
     | TwoHundredAndTwo
-    | TwoHundredAndTwentySeven
-    | TwoHundredAndThirtyOne
-    | TwoHundredAndThirtyEight
-    | TwoHundredAndFiftyOne
-    | TwoHundredAndSeventyThree
-    | TwoHundredAndSeventyFour
-    | TwoHundredAndEightyThree
+    | TwoHundredAndTwentyEight
+    | TwoHundredAndThirtyTwo
+    | TwoHundredAndThirtyNine
+    | TwoHundredAndFiftyTwo
+    | TwoHundredAndSeventySix
+    | TwoHundredAndSeventySeven
     | TwoHundredAndEightySix
-    | TwoHundredAndNinetySix
-    | TwoHundredAndNinetyEight
-    | ThreeHundredAndTwenty
-    | ThreeHundredAndThirty
-    | ThreeHundredAndThirtyFour
-    | ThreeHundredAndFortyOne
-    | ThreeHundredAndFortyTwo
-    | ThreeHundredAndFortyThree
+    | TwoHundredAndEightyNine
+    | TwoHundredAndNinetyNine
+    | ThreeHundredAndOne
+    | ThreeHundredAndTwentyThree
+    | ThreeHundredAndThirtyThree
+    | ThreeHundredAndThirtySeven
     | ThreeHundredAndFortyFour
+    | ThreeHundredAndFortyFive
     | ThreeHundredAndFortySix
-    | ThreeHundredAndFiftyOne
+    | ThreeHundredAndFortySeven
+    | ThreeHundredAndFortyNine
     | ThreeHundredAndFiftyFour
-    | ThreeHundredAndFiftyFive
-    | ThreeHundredAndSixtyThree
-    | ThreeHundredAndSixtyNine
-    | ThreeHundredAndSeventy
-    | ThreeHundredAndSeventyFive
-    | ThreeHundredAndSeventySix
-    | ThreeHundredAndSeventySeven
+    | ThreeHundredAndFiftySeven
+    | ThreeHundredAndFiftyEight
+    | ThreeHundredAndSixtySix
+    | ThreeHundredAndSeventyTwo
+    | ThreeHundredAndSeventyThree
     | ThreeHundredAndSeventyEight
+    | ThreeHundredAndSeventyNine
     | ThreeHundredAndEighty
-    | ThreeHundredAndEightyTwo
-    | ThreeHundredAndEightyEight
-    | ThreeHundredAndNinety
+    | ThreeHundredAndEightyOne
+    | ThreeHundredAndEightyThree
+    | ThreeHundredAndEightyFive
     | ThreeHundredAndNinetyOne
-    | ThreeHundredAndNinetyFive
-    | ThreeHundredAndNinetySeven
-    | FourHundredAndOne
+    | ThreeHundredAndNinetyThree
+    | ThreeHundredAndNinetyFour
+    | ThreeHundredAndNinetyEight
+    | FourHundred
     | FourHundredAndFour
-    | FourHundredAndSix
     | FourHundredAndSeven
-    | FourHundredAndSeventeen
-    | FourHundredAndEighteen
-    | FourHundredAndNineteen
-    | FourHundredAndThirtyThree
-    | FourHundredAndThirtyFive
-    | FourHundredAndForty
-    | FourHundredAndFortyTwo
-    | FourHundredAndFortySeven
+    | FourHundredAndNine
+    | FourHundredAndTen
+    | FourHundredAndTwenty
+    | FourHundredAndTwentyOne
+    | FourHundredAndTwentyTwo
+    | FourHundredAndThirtySix
+    | FourHundredAndThirtyEight
+    | FourHundredAndFortyThree
+    | FourHundredAndFortyFive
+    | FourHundredAndFifty
     | Payload1
     | Forty
     | FortyOne
@@ -2648,312 +3408,64 @@ export type UserEvent = {
     | OneHundredAndFiftyFour
     | OneHundredAndFiftySix
     | OneHundredAndNinetyThree
-    | TwoHundredAndTwentyNine
     | TwoHundredAndThirty
-    | TwoHundredAndFortyEight
+    | TwoHundredAndThirtyOne
     | TwoHundredAndFortyNine
-    | ThreeHundredAndThirtySix
-    | ThreeHundredAndFortyFive
-    | ThreeHundredAndFiftyThree
-    | ThreeHundredAndSixty
-    | ThreeHundredAndSixtySix
-    | ThreeHundredAndSixtyEight
+    | TwoHundredAndFifty
+    | ThreeHundredAndThirtyNine
+    | ThreeHundredAndFortyEight
+    | ThreeHundredAndFiftySix
+    | ThreeHundredAndSixtyThree
+    | ThreeHundredAndSixtyNine
     | ThreeHundredAndSeventyOne
     | ThreeHundredAndSeventyFour
-    | ThreeHundredAndEightyFour
-    | ThreeHundredAndEightyFive
-    | ThreeHundredAndEightyNine
-    | ThreeHundredAndNinetyThree
-    | ThreeHundredAndNinetyEight
-    | FourHundredAndTwo
+    | ThreeHundredAndSeventySeven
+    | ThreeHundredAndEightySeven
+    | ThreeHundredAndEightyEight
+    | ThreeHundredAndNinetyTwo
+    | ThreeHundredAndNinetySix
+    | FourHundredAndOne
+    | FourHundredAndFive
     | undefined;
+  principal?: Principal1 | Principal2 | Principal3 | Principal4 | undefined;
+  /**
+   * The ID of the principal who generated the event. The principal is typically a user, but it could also be an app, an integration, etc. The principal may have delegated its authority to an acting party, and so {@link viaIds} should be checked as well.
+   */
+  principalId: string;
+  requestId?: string | undefined;
+  /**
+   * The ID of the session that the principal's token belongs to, when it belongs to one.
+   */
+  sessionId?: string | undefined;
+  /**
+   * The human-readable text of the Event.
+   */
+  text: string;
+  /**
+   * The public ID of the token that the principal authenticated with, when the request behind this event carried one.
+   */
+  tokenId?: string | undefined;
+  /**
+   * The type of the event.
+   */
+  type?: UserEventType | undefined;
+  /**
+   * Metadata for {@link userId}.
+   */
+  user?: User | undefined;
+  /**
+   * When the principal who generated the event is a user, this is their ID; otherwise, it is empty.
+   */
+  userId?: string | undefined;
+  /**
+   * Metadata for {@link viaIds}.
+   */
+  via?: Array<Via1 | Via2 | Via3 | Via4> | undefined;
+  /**
+   * If the principal delegated its authority (for example, a user delegating to an app), then this array contains the ID of the current actor. For example, if `principalId` is "user123" and `viaIds` is `["app456"]`, we can say the event was triggered by - "app456 on behalf of user123", or - "user123 via app4556". Both are equivalent. Arbitrarily long chains of delegation can be represented. For example, if `principalId` is "user123" and `viaIds` is `["service1", "service2"]`, we can say the event was triggered by "user123 via service1 via service2".
+   */
+  viaIds?: Array<string> | undefined;
 };
-
-/** @internal */
-export const ThirtySix$inboundSchema: z.ZodType<
-  ThirtySix,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  author: types.string(),
-  accessGroup: PayloadAccessGroup$inboundSchema,
-});
-
-export function thirtySixFromJSON(
-  jsonString: string,
-): SafeParseResult<ThirtySix, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ThirtySix$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ThirtySix' from JSON`,
-  );
-}
-
-/** @internal */
-export const AccessGroup$inboundSchema: z.ZodType<
-  AccessGroup,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: types.string(),
-  name: types.string(),
-});
-
-export function accessGroupFromJSON(
-  jsonString: string,
-): SafeParseResult<AccessGroup, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AccessGroup$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AccessGroup' from JSON`,
-  );
-}
-
-/** @internal */
-export const ThirtyFive$inboundSchema: z.ZodType<
-  ThirtyFive,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  accessGroup: z.lazy(() => AccessGroup$inboundSchema),
-  teamRoles: types.optional(z.array(types.string())),
-  teamPermissions: types.optional(z.array(types.string())),
-  entitlements: types.optional(z.array(types.string())),
-});
-
-export function thirtyFiveFromJSON(
-  jsonString: string,
-): SafeParseResult<ThirtyFive, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ThirtyFive$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ThirtyFive' from JSON`,
-  );
-}
-
-/** @internal */
-export const VirtualModelConfig$inboundSchema: z.ZodType<
-  VirtualModelConfig,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: types.string(),
-  displayName: types.optional(types.string()),
-  modelSlug: types.optional(types.string()),
-});
-
-export function virtualModelConfigFromJSON(
-  jsonString: string,
-): SafeParseResult<VirtualModelConfig, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => VirtualModelConfig$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'VirtualModelConfig' from JSON`,
-  );
-}
-
-/** @internal */
-export const ThirtyFour$inboundSchema: z.ZodType<
-  ThirtyFour,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  virtualModelConfig: z.lazy(() => VirtualModelConfig$inboundSchema),
-});
-
-export function thirtyFourFromJSON(
-  jsonString: string,
-): SafeParseResult<ThirtyFour, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ThirtyFour$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ThirtyFour' from JSON`,
-  );
-}
-
-/** @internal */
-export const UserEventPayloadRule$inboundSchema: z.ZodType<
-  UserEventPayloadRule,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: types.string(),
-  type: types.string(),
-  model: types.optional(types.string()),
-});
-
-export function userEventPayloadRuleFromJSON(
-  jsonString: string,
-): SafeParseResult<UserEventPayloadRule, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UserEventPayloadRule$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserEventPayloadRule' from JSON`,
-  );
-}
-
-/** @internal */
-export const ThirtyThree$inboundSchema: z.ZodType<
-  ThirtyThree,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  rule: z.lazy(() => UserEventPayloadRule$inboundSchema),
-  enabled: types.optional(types.boolean()),
-});
-
-export function thirtyThreeFromJSON(
-  jsonString: string,
-): SafeParseResult<ThirtyThree, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ThirtyThree$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ThirtyThree' from JSON`,
-  );
-}
-
-/** @internal */
-export const PayloadRule$inboundSchema: z.ZodType<
-  PayloadRule,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: types.string(),
-  type: types.string(),
-  model: types.optional(types.string()),
-});
-
-export function payloadRuleFromJSON(
-  jsonString: string,
-): SafeParseResult<PayloadRule, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PayloadRule$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PayloadRule' from JSON`,
-  );
-}
-
-/** @internal */
-export const ThirtyTwo$inboundSchema: z.ZodType<
-  ThirtyTwo,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  rule: z.lazy(() => PayloadRule$inboundSchema),
-});
-
-export function thirtyTwoFromJSON(
-  jsonString: string,
-): SafeParseResult<ThirtyTwo, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ThirtyTwo$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ThirtyTwo' from JSON`,
-  );
-}
-
-/** @internal */
-export const Rule$inboundSchema: z.ZodType<Rule, z.ZodTypeDef, unknown> = z
-  .object({
-    id: types.string(),
-    type: types.string(),
-    model: types.optional(types.string()),
-    rewriteModel: types.optional(types.string()),
-  });
-
-export function ruleFromJSON(
-  jsonString: string,
-): SafeParseResult<Rule, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Rule$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Rule' from JSON`,
-  );
-}
-
-/** @internal */
-export const ThirtyOne$inboundSchema: z.ZodType<
-  ThirtyOne,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  rule: z.lazy(() => Rule$inboundSchema),
-});
-
-export function thirtyOneFromJSON(
-  jsonString: string,
-): SafeParseResult<ThirtyOne, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ThirtyOne$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ThirtyOne' from JSON`,
-  );
-}
-
-/** @internal */
-export const DefaultMode$inboundSchema: z.ZodNativeEnum<typeof DefaultMode> = z
-  .nativeEnum(DefaultMode);
-
-/** @internal */
-export const CeilingMode$inboundSchema: z.ZodNativeEnum<typeof CeilingMode> = z
-  .nativeEnum(CeilingMode);
-
-/** @internal */
-export const Retention$inboundSchema: z.ZodType<
-  Retention,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  defaultMode: DefaultMode$inboundSchema,
-  defaultDays: types.optional(types.number()),
-  ceilingMode: CeilingMode$inboundSchema,
-  ceilingDays: types.optional(types.number()),
-});
-
-export function retentionFromJSON(
-  jsonString: string,
-): SafeParseResult<Retention, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Retention$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Retention' from JSON`,
-  );
-}
-
-/** @internal */
-export const Thirty$inboundSchema: z.ZodType<Thirty, z.ZodTypeDef, unknown> = z
-  .object({
-    retention: z.lazy(() => Retention$inboundSchema),
-  });
-
-export function thirtyFromJSON(
-  jsonString: string,
-): SafeParseResult<Thirty, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Thirty$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Thirty' from JSON`,
-  );
-}
-
-/** @internal */
-export const TwentyNine$inboundSchema: z.ZodType<
-  TwentyNine,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  regions: z.array(types.string()),
-});
-
-export function twentyNineFromJSON(
-  jsonString: string,
-): SafeParseResult<TwentyNine, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TwentyNine$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TwentyNine' from JSON`,
-  );
-}
 
 /** @internal */
 export const PiiRedaction$inboundSchema: z.ZodType<
@@ -2981,11 +3493,11 @@ export const TwentyEight$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  piiRedaction: z.lazy(() => PiiRedaction$inboundSchema),
   moderationPolicyCount: types.number(),
+  piiRedaction: z.lazy(() => PiiRedaction$inboundSchema),
   policiesAdded: z.array(types.string()),
-  policiesRemoved: z.array(types.string()),
   policiesModified: z.array(types.string()),
+  policiesRemoved: z.array(types.string()),
 });
 
 export function twentyEightFromJSON(
@@ -3080,8 +3592,8 @@ export const PrivateModel$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  slug: types.string(),
   providerSlug: types.string(),
+  slug: types.string(),
 });
 
 export function privateModelFromJSON(
@@ -3199,10 +3711,10 @@ export const TwentyOne$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  credential: z.lazy(() => PayloadCredential$inboundSchema),
   added: z.array(types.string()),
-  removed: z.array(types.string()),
   changed: z.array(types.string()),
+  credential: z.lazy(() => PayloadCredential$inboundSchema),
+  removed: z.array(types.string()),
 });
 
 export function twentyOneFromJSON(
@@ -3253,11 +3765,6 @@ export function twentyFromJSON(
 }
 
 /** @internal */
-export const PayloadScopeType$inboundSchema: z.ZodNativeEnum<
-  typeof PayloadScopeType
-> = z.nativeEnum(PayloadScopeType);
-
-/** @internal */
 export const UserEventPayload19RefreshPeriod$inboundSchema: z.ZodNativeEnum<
   typeof UserEventPayload19RefreshPeriod
 > = z.nativeEnum(UserEventPayload19RefreshPeriod);
@@ -3268,9 +3775,9 @@ export const UserEventPayload19Budget$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  alertThresholds: types.optional(z.array(types.number())),
   limitAmount: types.number(),
   refreshPeriod: UserEventPayload19RefreshPeriod$inboundSchema,
-  alertThresholds: types.optional(z.array(types.number())),
 });
 
 export function userEventPayload19BudgetFromJSON(
@@ -3289,19 +3796,24 @@ export const UserEventPayload19Change$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(UserEventPayload19Change);
 
 /** @internal */
+export const PayloadScopeType$inboundSchema: z.ZodNativeEnum<
+  typeof PayloadScopeType
+> = z.nativeEnum(PayloadScopeType);
+
+/** @internal */
 export const Nineteen$inboundSchema: z.ZodType<
   Nineteen,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  scopeType: PayloadScopeType$inboundSchema,
-  projectId: types.optional(types.string()),
-  projectName: types.optional(types.string()),
-  userId: types.optional(types.string()),
-  userName: types.optional(types.string()),
   budget: z.nullable(z.lazy(() => UserEventPayload19Budget$inboundSchema))
     .optional(),
   change: UserEventPayload19Change$inboundSchema,
+  projectId: types.optional(types.string()),
+  projectName: types.optional(types.string()),
+  scopeType: PayloadScopeType$inboundSchema,
+  userId: types.optional(types.string()),
+  userName: types.optional(types.string()),
 });
 
 export function nineteenFromJSON(
@@ -3315,10 +3827,6 @@ export function nineteenFromJSON(
 }
 
 /** @internal */
-export const ScopeType$inboundSchema: z.ZodNativeEnum<typeof ScopeType> = z
-  .nativeEnum(ScopeType);
-
-/** @internal */
 export const UserEventPayloadRefreshPeriod$inboundSchema: z.ZodNativeEnum<
   typeof UserEventPayloadRefreshPeriod
 > = z.nativeEnum(UserEventPayloadRefreshPeriod);
@@ -3329,9 +3837,9 @@ export const UserEventPayloadBudget$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  alertThresholds: types.optional(z.array(types.number())),
   limitAmount: types.number(),
   refreshPeriod: UserEventPayloadRefreshPeriod$inboundSchema,
-  alertThresholds: types.optional(z.array(types.number())),
 });
 
 export function userEventPayloadBudgetFromJSON(
@@ -3350,15 +3858,19 @@ export const UserEventPayloadChange$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(UserEventPayloadChange);
 
 /** @internal */
+export const ScopeType$inboundSchema: z.ZodNativeEnum<typeof ScopeType> = z
+  .nativeEnum(ScopeType);
+
+/** @internal */
 export const Eighteen$inboundSchema: z.ZodType<
   Eighteen,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  scopeType: ScopeType$inboundSchema,
   budget: z.nullable(z.lazy(() => UserEventPayloadBudget$inboundSchema))
     .optional(),
   change: UserEventPayloadChange$inboundSchema,
+  scopeType: ScopeType$inboundSchema,
 });
 
 export function eighteenFromJSON(
@@ -3377,55 +3889,13 @@ export const PayloadChange$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(PayloadChange);
 
 /** @internal */
-export const Settings$inboundSchema: z.ZodType<
-  Settings,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  minimumBalance: types.string(),
-  targetBalance: types.string(),
-  maximumMonthlySpend: types.nullable(types.string()),
-});
-
-export function settingsFromJSON(
-  jsonString: string,
-): SafeParseResult<Settings, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Settings$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Settings' from JSON`,
-  );
-}
-
-/** @internal */
-export const Previous$inboundSchema: z.ZodType<
-  Previous,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  minimumBalance: types.string(),
-  targetBalance: types.string(),
-  maximumMonthlySpend: types.nullable(types.string()),
-});
-
-export function previousFromJSON(
-  jsonString: string,
-): SafeParseResult<Previous, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Previous$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Previous' from JSON`,
-  );
-}
-
-/** @internal */
 export const Commitment$inboundSchema: z.ZodType<
   Commitment,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  maximumMonthlySpend: types.nullable(types.string()),
   deferredInvoiceTargetBalance: types.string(),
+  maximumMonthlySpend: types.nullable(types.string()),
 });
 
 export function commitmentFromJSON(
@@ -3439,15 +3909,57 @@ export function commitmentFromJSON(
 }
 
 /** @internal */
+export const Previous$inboundSchema: z.ZodType<
+  Previous,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  maximumMonthlySpend: types.nullable(types.string()),
+  minimumBalance: types.string(),
+  targetBalance: types.string(),
+});
+
+export function previousFromJSON(
+  jsonString: string,
+): SafeParseResult<Previous, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Previous$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Previous' from JSON`,
+  );
+}
+
+/** @internal */
+export const Settings$inboundSchema: z.ZodType<
+  Settings,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  maximumMonthlySpend: types.nullable(types.string()),
+  minimumBalance: types.string(),
+  targetBalance: types.string(),
+});
+
+export function settingsFromJSON(
+  jsonString: string,
+): SafeParseResult<Settings, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Settings$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Settings' from JSON`,
+  );
+}
+
+/** @internal */
 export const Seventeen$inboundSchema: z.ZodType<
   Seventeen,
   z.ZodTypeDef,
   unknown
 > = z.object({
   change: PayloadChange$inboundSchema,
-  settings: types.optional(z.lazy(() => Settings$inboundSchema)),
-  previous: types.optional(z.lazy(() => Previous$inboundSchema)),
   commitment: types.optional(z.lazy(() => Commitment$inboundSchema)),
+  previous: types.optional(z.lazy(() => Previous$inboundSchema)),
+  settings: types.optional(z.lazy(() => Settings$inboundSchema)),
 });
 
 export function seventeenFromJSON(
@@ -3491,9 +4003,9 @@ export const PayloadBudget$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  alertThresholds: types.optional(z.array(types.number())),
   limitAmount: types.number(),
   refreshPeriod: PayloadRefreshPeriod$inboundSchema,
-  alertThresholds: types.optional(z.array(types.number())),
 });
 
 export function payloadBudgetFromJSON(
@@ -3592,9 +4104,9 @@ export const RefreshPeriod$inboundSchema: z.ZodNativeEnum<
 /** @internal */
 export const Budget$inboundSchema: z.ZodType<Budget, z.ZodTypeDef, unknown> = z
   .object({
+    alertThresholds: types.optional(z.array(types.number())),
     limitAmount: types.number(),
     refreshPeriod: RefreshPeriod$inboundSchema,
-    alertThresholds: types.optional(z.array(types.number())),
   });
 
 export function budgetFromJSON(
@@ -3615,8 +4127,8 @@ export const Fourteen$inboundSchema: z.ZodType<
 > = z.object({
   apiKey: z.lazy(() => UserEventPayload14ApiKey$inboundSchema),
   budget: z.nullable(z.lazy(() => Budget$inboundSchema)).optional(),
-  zdrExemption: types.optional(types.boolean()),
   bypassAll: types.optional(types.boolean()),
+  zdrExemption: types.optional(types.boolean()),
 });
 
 export function fourteenFromJSON(
@@ -3652,9 +4164,9 @@ export const Thirteen$inboundSchema: z.ZodType<
   providerAccount: types.optional(types.string()),
   stripeAccount: types.optional(types.string()),
   stripeOrganisation: types.optional(types.string()),
-  teamId: types.string(),
-  resourceId: types.string(),
   fromPlan: FromPlan$inboundSchema,
+  resourceId: types.string(),
+  teamId: types.string(),
   toPlan: ToPlan$inboundSchema,
 });
 
@@ -3686,8 +4198,8 @@ export const Twelve$inboundSchema: z.ZodType<Twelve, z.ZodTypeDef, unknown> = z
     stripeOrganisation: types.optional(types.string()),
     teamId: types.string(),
     actorId: types.string(),
-    actorType: ActorType$inboundSchema,
     actorName: types.optional(types.string()),
+    actorType: ActorType$inboundSchema,
   });
 
 export function twelveFromJSON(
@@ -3711,8 +4223,8 @@ export const Eleven$inboundSchema: z.ZodType<Eleven, z.ZodTypeDef, unknown> = z
     provider: types.optional(UserEventPayload11Provider$inboundSchema),
     providerAccount: types.optional(types.string()),
     stripeAccount: types.optional(types.string()),
-    resourceId: types.string(),
     projectName: types.string(),
+    resourceId: types.string(),
   });
 
 export function elevenFromJSON(
@@ -3737,8 +4249,8 @@ export const Ten$inboundSchema: z.ZodType<Ten, z.ZodTypeDef, unknown> = z
     providerAccount: types.optional(types.string()),
     stripeAccount: types.optional(types.string()),
     stripeOrganisation: types.optional(types.string()),
-    reason: types.string(),
     blockCode: types.string(),
+    reason: types.string(),
   });
 
 export function tenFromJSON(
@@ -3813,8 +4325,8 @@ export const Seven$inboundSchema: z.ZodType<Seven, z.ZodTypeDef, unknown> = z
     providerAccount: types.optional(types.string()),
     stripeAccount: types.optional(types.string()),
     stripeOrganisation: types.optional(types.string()),
-    teamId: types.string(),
     accountRequestId: types.string(),
+    teamId: types.string(),
   });
 
 export function sevenFromJSON(
@@ -3830,9 +4342,9 @@ export function sevenFromJSON(
 /** @internal */
 export const Six$inboundSchema: z.ZodType<Six, z.ZodTypeDef, unknown> = z
   .object({
+    policyId: types.string(),
     projectId: types.string(),
     projectName: types.string(),
-    policyId: types.string(),
   });
 
 export function sixFromJSON(
@@ -3854,9 +4366,9 @@ export const UserEventPayload5Action$inboundSchema: z.ZodNativeEnum<
 export const Five$inboundSchema: z.ZodType<Five, z.ZodTypeDef, unknown> = z
   .object({
     action: UserEventPayload5Action$inboundSchema,
-    projectName: types.optional(types.string()),
-    projectId: types.optional(types.string()),
     environment: z.array(types.string()),
+    projectId: types.optional(types.string()),
+    projectName: types.optional(types.string()),
   });
 
 export function fiveFromJSON(
@@ -3875,25 +4387,22 @@ export const UserEventPayload4Action$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(UserEventPayload4Action);
 
 /** @internal */
-export const Payload4$inboundSchema: z.ZodType<
-  Payload4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  action: UserEventPayload4Action$inboundSchema,
-  label: types.optional(types.string()),
-  projectName: types.optional(types.string()),
-  projectId: types.optional(types.string()),
-  environment: types.string(),
-});
+export const Four$inboundSchema: z.ZodType<Four, z.ZodTypeDef, unknown> = z
+  .object({
+    action: UserEventPayload4Action$inboundSchema,
+    environment: types.string(),
+    label: types.optional(types.string()),
+    projectId: types.optional(types.string()),
+    projectName: types.optional(types.string()),
+  });
 
-export function payload4FromJSON(
+export function fourFromJSON(
   jsonString: string,
-): SafeParseResult<Payload4, SDKValidationError> {
+): SafeParseResult<Four, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Payload4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Payload4' from JSON`,
+    (x) => Four$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Four' from JSON`,
   );
 }
 
@@ -3903,27 +4412,24 @@ export const UserEventPayloadAction$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(UserEventPayloadAction);
 
 /** @internal */
-export const Payload3$inboundSchema: z.ZodType<
-  Payload3,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  action: UserEventPayloadAction$inboundSchema,
-  id: types.string(),
-  name: types.string(),
-  slug: types.string(),
-  state: types.string(),
-  projectId: types.string(),
-  projectName: types.optional(types.string()),
-});
+export const Three$inboundSchema: z.ZodType<Three, z.ZodTypeDef, unknown> = z
+  .object({
+    action: UserEventPayloadAction$inboundSchema,
+    id: types.string(),
+    name: types.string(),
+    projectId: types.string(),
+    projectName: types.optional(types.string()),
+    slug: types.string(),
+    state: types.string(),
+  });
 
-export function payload3FromJSON(
+export function threeFromJSON(
   jsonString: string,
-): SafeParseResult<Payload3, SDKValidationError> {
+): SafeParseResult<Three, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Payload3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Payload3' from JSON`,
+    (x) => Three$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Three' from JSON`,
   );
 }
 
@@ -3940,9 +4446,9 @@ export const Payload2$inboundSchema: z.ZodType<
 > = z.object({
   action: PayloadAction$inboundSchema,
   id: types.string(),
-  slug: types.string(),
   projectId: types.string(),
   projectName: types.optional(types.string()),
+  slug: types.string(),
 });
 
 export function payload2FromJSON(
@@ -3975,26 +4481,27 @@ export function payload1FromJSON(
 /** @internal */
 export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
   smartUnion([
-    ThreeHundredAndFiftyEight$inboundSchema,
+    ThreeHundredAndSixtyOne$inboundSchema,
     OneHundredAndSeventyEight$inboundSchema,
     OneHundredAndSixtyEight$inboundSchema,
-    TwoHundredAndTwentyFour$inboundSchema,
+    TwoHundredAndTwentyFive$inboundSchema,
     OneHundredAndSeventyNine$inboundSchema,
-    FourHundredAndFortyThree$inboundSchema,
+    FourHundredAndFortySix$inboundSchema,
     OneHundredAndFourteen$inboundSchema,
     OneHundredAndEightyOne$inboundSchema,
     OneHundredAndEightyTwo$inboundSchema,
-    TwoHundredAndSixteen$inboundSchema,
-    TwoHundredAndSeventyNine$inboundSchema,
-    z.lazy(() => Payload3$inboundSchema),
+    TwoHundredAndSeventeen$inboundSchema,
+    TwoHundredAndEightyTwo$inboundSchema,
+    z.lazy(() => Three$inboundSchema),
     OneHundredAndFiftyFive$inboundSchema,
     OneHundredAndSeventyTwo$inboundSchema,
     OneHundredAndSeventySix$inboundSchema,
     OneHundredAndEighty$inboundSchema,
-    TwoHundredAndFiftySeven$inboundSchema,
-    ThreeHundredAndNineteen$inboundSchema,
-    ThreeHundredAndThirtySeven$inboundSchema,
-    ThreeHundredAndThirtyNine$inboundSchema,
+    TwoHundredAndSix$inboundSchema,
+    TwoHundredAndFiftyEight$inboundSchema,
+    ThreeHundredAndTwentyTwo$inboundSchema,
+    ThreeHundredAndForty$inboundSchema,
+    ThreeHundredAndFortyTwo$inboundSchema,
     z.lazy(() => TwentyEight$inboundSchema),
     OneHundredAndEight$inboundSchema,
     OneHundredAndEleven$inboundSchema,
@@ -4007,14 +4514,15 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     OneHundredAndSeventyOne$inboundSchema,
     OneHundredAndSeventySeven$inboundSchema,
     TwoHundredAndFour$inboundSchema,
-    TwoHundredAndEight$inboundSchema,
-    TwoHundredAndSixtySeven$inboundSchema,
-    TwoHundredAndEightyOne$inboundSchema,
-    TwoHundredAndNinetyOne$inboundSchema,
-    ThreeHundredAndFiftySeven$inboundSchema,
-    FourHundredAndTwentySeven$inboundSchema,
-    FourHundredAndTwentyNine$inboundSchema,
-    FourHundredAndFortySix$inboundSchema,
+    TwoHundredAndNine$inboundSchema,
+    TwoHundredAndFiftyNine$inboundSchema,
+    TwoHundredAndSeventy$inboundSchema,
+    TwoHundredAndEightyFour$inboundSchema,
+    TwoHundredAndNinetyFour$inboundSchema,
+    ThreeHundredAndSixty$inboundSchema,
+    FourHundredAndThirty$inboundSchema,
+    FourHundredAndThirtyTwo$inboundSchema,
+    FourHundredAndFortyNine$inboundSchema,
     z.lazy(() => Payload2$inboundSchema),
     z.lazy(() => Thirteen$inboundSchema),
     z.lazy(() => TwentyOne$inboundSchema),
@@ -4033,48 +4541,49 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     OneHundredAndEightyFour$inboundSchema,
     OneHundredAndEightyEight$inboundSchema,
     TwoHundredAndThree$inboundSchema,
-    TwoHundredAndFourteen$inboundSchema,
     TwoHundredAndFifteen$inboundSchema,
-    TwoHundredAndSeventeen$inboundSchema,
-    TwoHundredAndTwentyTwo$inboundSchema,
-    TwoHundredAndTwentyFive$inboundSchema,
-    TwoHundredAndFortyThree$inboundSchema,
-    TwoHundredAndFortySix$inboundSchema,
-    TwoHundredAndFiftyFour$inboundSchema,
-    TwoHundredAndFiftyEight$inboundSchema,
+    TwoHundredAndSixteen$inboundSchema,
+    TwoHundredAndEighteen$inboundSchema,
+    TwoHundredAndTwentyThree$inboundSchema,
+    TwoHundredAndTwentySix$inboundSchema,
+    TwoHundredAndFortyFour$inboundSchema,
+    TwoHundredAndFortySeven$inboundSchema,
+    TwoHundredAndFiftyFive$inboundSchema,
     TwoHundredAndSixty$inboundSchema,
     TwoHundredAndSixtyOne$inboundSchema,
-    TwoHundredAndSixtyTwo$inboundSchema,
     TwoHundredAndSixtyThree$inboundSchema,
-    TwoHundredAndSeventyEight$inboundSchema,
-    TwoHundredAndEighty$inboundSchema,
-    TwoHundredAndEightyFour$inboundSchema,
-    ThreeHundred$inboundSchema,
-    ThreeHundredAndFour$inboundSchema,
-    ThreeHundredAndSix$inboundSchema,
-    ThreeHundredAndThirteen$inboundSchema,
-    ThreeHundredAndFourteen$inboundSchema,
-    ThreeHundredAndFifteen$inboundSchema,
+    TwoHundredAndSixtyFour$inboundSchema,
+    TwoHundredAndSixtyFive$inboundSchema,
+    TwoHundredAndSixtySix$inboundSchema,
+    TwoHundredAndEightyOne$inboundSchema,
+    TwoHundredAndEightyThree$inboundSchema,
+    TwoHundredAndEightySeven$inboundSchema,
+    ThreeHundredAndThree$inboundSchema,
+    ThreeHundredAndSeven$inboundSchema,
+    ThreeHundredAndNine$inboundSchema,
+    ThreeHundredAndSixteen$inboundSchema,
     ThreeHundredAndSeventeen$inboundSchema,
-    ThreeHundredAndTwentyFive$inboundSchema,
-    ThreeHundredAndTwentySix$inboundSchema,
+    ThreeHundredAndEighteen$inboundSchema,
+    ThreeHundredAndTwenty$inboundSchema,
+    ThreeHundredAndTwentyEight$inboundSchema,
     ThreeHundredAndTwentyNine$inboundSchema,
-    ThreeHundredAndThirtyFive$inboundSchema,
+    ThreeHundredAndThirtyTwo$inboundSchema,
     ThreeHundredAndThirtyEight$inboundSchema,
-    ThreeHundredAndFortyEight$inboundSchema,
-    ThreeHundredAndFortyNine$inboundSchema,
-    ThreeHundredAndFiftySix$inboundSchema,
-    ThreeHundredAndSixtyFour$inboundSchema,
-    ThreeHundredAndSeventyNine$inboundSchema,
-    ThreeHundredAndNinetySix$inboundSchema,
-    FourHundredAndTwentyTwo$inboundSchema,
-    FourHundredAndTwentyFour$inboundSchema,
-    FourHundredAndTwentyEight$inboundSchema,
-    FourHundredAndThirty$inboundSchema,
+    ThreeHundredAndFortyOne$inboundSchema,
+    ThreeHundredAndFiftyOne$inboundSchema,
+    ThreeHundredAndFiftyTwo$inboundSchema,
+    ThreeHundredAndFiftyNine$inboundSchema,
+    ThreeHundredAndSixtySeven$inboundSchema,
+    ThreeHundredAndEightyTwo$inboundSchema,
+    ThreeHundredAndNinetyNine$inboundSchema,
+    FourHundredAndTwentyFive$inboundSchema,
+    FourHundredAndTwentySeven$inboundSchema,
     FourHundredAndThirtyOne$inboundSchema,
-    FourHundredAndThirtyTwo$inboundSchema,
-    FourHundredAndFortyNine$inboundSchema,
-    FourHundredAndFifty$inboundSchema,
+    FourHundredAndThirtyThree$inboundSchema,
+    FourHundredAndThirtyFour$inboundSchema,
+    FourHundredAndThirtyFive$inboundSchema,
+    FourHundredAndFiftyTwo$inboundSchema,
+    FourHundredAndFiftyThree$inboundSchema,
     z.lazy(() => Six$inboundSchema),
     z.lazy(() => Twelve$inboundSchema),
     FortyFour$inboundSchema,
@@ -4113,66 +4622,66 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     OneHundredAndNinetySeven$inboundSchema,
     TwoHundred$inboundSchema,
     TwoHundredAndFive$inboundSchema,
-    TwoHundredAndSeven$inboundSchema,
-    TwoHundredAndNine$inboundSchema,
+    TwoHundredAndEight$inboundSchema,
     TwoHundredAndTen$inboundSchema,
     TwoHundredAndEleven$inboundSchema,
     TwoHundredAndTwelve$inboundSchema,
     TwoHundredAndThirteen$inboundSchema,
-    TwoHundredAndEighteen$inboundSchema,
+    TwoHundredAndFourteen$inboundSchema,
     TwoHundredAndNineteen$inboundSchema,
     TwoHundredAndTwenty$inboundSchema,
     TwoHundredAndTwentyOne$inboundSchema,
-    TwoHundredAndTwentyEight$inboundSchema,
-    TwoHundredAndThirtyFour$inboundSchema,
-    TwoHundredAndThirtySix$inboundSchema,
+    TwoHundredAndTwentyTwo$inboundSchema,
+    TwoHundredAndTwentyNine$inboundSchema,
+    TwoHundredAndThirtyFive$inboundSchema,
     TwoHundredAndThirtySeven$inboundSchema,
-    TwoHundredAndThirtyNine$inboundSchema,
-    TwoHundredAndFortyOne$inboundSchema,
+    TwoHundredAndThirtyEight$inboundSchema,
+    TwoHundredAndForty$inboundSchema,
     TwoHundredAndFortyTwo$inboundSchema,
-    TwoHundredAndFortyFour$inboundSchema,
+    TwoHundredAndFortyThree$inboundSchema,
     TwoHundredAndFortyFive$inboundSchema,
-    TwoHundredAndFortySeven$inboundSchema,
-    TwoHundredAndFiftyTwo$inboundSchema,
-    TwoHundredAndFiftyFive$inboundSchema,
+    TwoHundredAndFortySix$inboundSchema,
+    TwoHundredAndFortyEight$inboundSchema,
+    TwoHundredAndFiftyThree$inboundSchema,
     TwoHundredAndFiftySix$inboundSchema,
-    TwoHundredAndSixtyFour$inboundSchema,
-    TwoHundredAndSixtyFive$inboundSchema,
-    TwoHundredAndSixtySix$inboundSchema,
+    TwoHundredAndFiftySeven$inboundSchema,
+    TwoHundredAndSixtySeven$inboundSchema,
     TwoHundredAndSixtyEight$inboundSchema,
     TwoHundredAndSixtyNine$inboundSchema,
-    TwoHundredAndSeventy$inboundSchema,
     TwoHundredAndSeventyOne$inboundSchema,
     TwoHundredAndSeventyTwo$inboundSchema,
+    TwoHundredAndSeventyThree$inboundSchema,
+    TwoHundredAndSeventyFour$inboundSchema,
     TwoHundredAndSeventyFive$inboundSchema,
-    TwoHundredAndSeventySix$inboundSchema,
-    TwoHundredAndSeventySeven$inboundSchema,
-    TwoHundredAndEightyTwo$inboundSchema,
-    TwoHundredAndEightyNine$inboundSchema,
+    TwoHundredAndSeventyEight$inboundSchema,
+    TwoHundredAndSeventyNine$inboundSchema,
+    TwoHundredAndEighty$inboundSchema,
+    TwoHundredAndEightyFive$inboundSchema,
     TwoHundredAndNinetyTwo$inboundSchema,
-    TwoHundredAndNinetyThree$inboundSchema,
-    ThreeHundredAndSeven$inboundSchema,
-    ThreeHundredAndEight$inboundSchema,
-    ThreeHundredAndNine$inboundSchema,
+    TwoHundredAndNinetyFive$inboundSchema,
+    TwoHundredAndNinetySix$inboundSchema,
     ThreeHundredAndTen$inboundSchema,
     ThreeHundredAndEleven$inboundSchema,
-    ThreeHundredAndTwentyTwo$inboundSchema,
-    ThreeHundredAndForty$inboundSchema,
-    ThreeHundredAndFiftyTwo$inboundSchema,
-    ThreeHundredAndSixtyOne$inboundSchema,
-    ThreeHundredAndEightyThree$inboundSchema,
-    FourHundredAndFive$inboundSchema,
-    FourHundredAndEleven$inboundSchema,
-    FourHundredAndTwelve$inboundSchema,
+    ThreeHundredAndTwelve$inboundSchema,
+    ThreeHundredAndThirteen$inboundSchema,
+    ThreeHundredAndFourteen$inboundSchema,
+    ThreeHundredAndTwentyFive$inboundSchema,
+    ThreeHundredAndFortyThree$inboundSchema,
+    ThreeHundredAndFiftyFive$inboundSchema,
+    ThreeHundredAndSixtyFour$inboundSchema,
+    ThreeHundredAndEightySix$inboundSchema,
+    FourHundredAndEight$inboundSchema,
     FourHundredAndFourteen$inboundSchema,
-    FourHundredAndTwentyFive$inboundSchema,
-    FourHundredAndTwentySix$inboundSchema,
-    FourHundredAndThirtySix$inboundSchema,
-    FourHundredAndThirtySeven$inboundSchema,
-    FourHundredAndThirtyEight$inboundSchema,
+    FourHundredAndFifteen$inboundSchema,
+    FourHundredAndSeventeen$inboundSchema,
+    FourHundredAndTwentyEight$inboundSchema,
+    FourHundredAndTwentyNine$inboundSchema,
     FourHundredAndThirtyNine$inboundSchema,
-    FourHundredAndFortyFive$inboundSchema,
-    z.lazy(() => Payload4$inboundSchema),
+    FourHundredAndForty$inboundSchema,
+    FourHundredAndFortyOne$inboundSchema,
+    FourHundredAndFortyTwo$inboundSchema,
+    FourHundredAndFortyEight$inboundSchema,
+    z.lazy(() => Four$inboundSchema),
     z.lazy(() => Five$inboundSchema),
     z.lazy(() => Seven$inboundSchema),
     z.lazy(() => Nine$inboundSchema),
@@ -4183,7 +4692,7 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     z.lazy(() => Nineteen$inboundSchema),
     z.lazy(() => TwentyThree$inboundSchema),
     z.lazy(() => TwentyFour$inboundSchema),
-    z.lazy(() => ThirtySix$inboundSchema),
+    ThirtySix$inboundSchema,
     ThirtySeven$inboundSchema,
     ThirtyNine$inboundSchema,
     FortyTwo$inboundSchema,
@@ -4223,69 +4732,69 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     OneHundredAndNinetyEight$inboundSchema,
     OneHundredAndNinetyNine$inboundSchema,
     TwoHundredAndOne$inboundSchema,
-    TwoHundredAndSix$inboundSchema,
-    TwoHundredAndTwentyThree$inboundSchema,
-    TwoHundredAndTwentySix$inboundSchema,
-    TwoHundredAndThirtyTwo$inboundSchema,
+    TwoHundredAndSeven$inboundSchema,
+    TwoHundredAndTwentyFour$inboundSchema,
+    TwoHundredAndTwentySeven$inboundSchema,
     TwoHundredAndThirtyThree$inboundSchema,
-    TwoHundredAndThirtyFive$inboundSchema,
-    TwoHundredAndForty$inboundSchema,
-    TwoHundredAndFifty$inboundSchema,
-    TwoHundredAndFiftyThree$inboundSchema,
-    TwoHundredAndFiftyNine$inboundSchema,
-    TwoHundredAndEightyFive$inboundSchema,
-    TwoHundredAndEightySeven$inboundSchema,
+    TwoHundredAndThirtyFour$inboundSchema,
+    TwoHundredAndThirtySix$inboundSchema,
+    TwoHundredAndFortyOne$inboundSchema,
+    TwoHundredAndFiftyOne$inboundSchema,
+    TwoHundredAndFiftyFour$inboundSchema,
+    TwoHundredAndSixtyTwo$inboundSchema,
     TwoHundredAndEightyEight$inboundSchema,
     TwoHundredAndNinety$inboundSchema,
-    TwoHundredAndNinetyFour$inboundSchema,
-    TwoHundredAndNinetyFive$inboundSchema,
+    TwoHundredAndNinetyOne$inboundSchema,
+    TwoHundredAndNinetyThree$inboundSchema,
     TwoHundredAndNinetySeven$inboundSchema,
-    TwoHundredAndNinetyNine$inboundSchema,
-    ThreeHundredAndOne$inboundSchema,
+    TwoHundredAndNinetyEight$inboundSchema,
+    ThreeHundred$inboundSchema,
     ThreeHundredAndTwo$inboundSchema,
-    ThreeHundredAndThree$inboundSchema,
+    ThreeHundredAndFour$inboundSchema,
     ThreeHundredAndFive$inboundSchema,
-    ThreeHundredAndTwelve$inboundSchema,
-    ThreeHundredAndSixteen$inboundSchema,
-    ThreeHundredAndEighteen$inboundSchema,
+    ThreeHundredAndSix$inboundSchema,
+    ThreeHundredAndEight$inboundSchema,
+    ThreeHundredAndFifteen$inboundSchema,
+    ThreeHundredAndNineteen$inboundSchema,
     ThreeHundredAndTwentyOne$inboundSchema,
-    ThreeHundredAndTwentyThree$inboundSchema,
     ThreeHundredAndTwentyFour$inboundSchema,
+    ThreeHundredAndTwentySix$inboundSchema,
     ThreeHundredAndTwentySeven$inboundSchema,
-    ThreeHundredAndTwentyEight$inboundSchema,
+    ThreeHundredAndThirty$inboundSchema,
     ThreeHundredAndThirtyOne$inboundSchema,
-    ThreeHundredAndThirtyTwo$inboundSchema,
-    ThreeHundredAndThirtyThree$inboundSchema,
-    ThreeHundredAndFortySeven$inboundSchema,
+    ThreeHundredAndThirtyFour$inboundSchema,
+    ThreeHundredAndThirtyFive$inboundSchema,
+    ThreeHundredAndThirtySix$inboundSchema,
     ThreeHundredAndFifty$inboundSchema,
-    ThreeHundredAndFiftyNine$inboundSchema,
+    ThreeHundredAndFiftyThree$inboundSchema,
     ThreeHundredAndSixtyTwo$inboundSchema,
     ThreeHundredAndSixtyFive$inboundSchema,
-    ThreeHundredAndSixtySeven$inboundSchema,
-    ThreeHundredAndSeventyTwo$inboundSchema,
-    ThreeHundredAndSeventyThree$inboundSchema,
-    ThreeHundredAndEightyOne$inboundSchema,
-    ThreeHundredAndEightySix$inboundSchema,
-    ThreeHundredAndEightySeven$inboundSchema,
-    ThreeHundredAndNinetyTwo$inboundSchema,
-    ThreeHundredAndNinetyFour$inboundSchema,
-    ThreeHundredAndNinetyNine$inboundSchema,
-    FourHundred$inboundSchema,
+    ThreeHundredAndSixtyEight$inboundSchema,
+    ThreeHundredAndSeventy$inboundSchema,
+    ThreeHundredAndSeventyFive$inboundSchema,
+    ThreeHundredAndSeventySix$inboundSchema,
+    ThreeHundredAndEightyFour$inboundSchema,
+    ThreeHundredAndEightyNine$inboundSchema,
+    ThreeHundredAndNinety$inboundSchema,
+    ThreeHundredAndNinetyFive$inboundSchema,
+    ThreeHundredAndNinetySeven$inboundSchema,
+    FourHundredAndTwo$inboundSchema,
     FourHundredAndThree$inboundSchema,
-    FourHundredAndEight$inboundSchema,
-    FourHundredAndNine$inboundSchema,
-    FourHundredAndTen$inboundSchema,
+    FourHundredAndSix$inboundSchema,
+    FourHundredAndEleven$inboundSchema,
+    FourHundredAndTwelve$inboundSchema,
     FourHundredAndThirteen$inboundSchema,
-    FourHundredAndFifteen$inboundSchema,
     FourHundredAndSixteen$inboundSchema,
-    FourHundredAndTwenty$inboundSchema,
-    FourHundredAndTwentyOne$inboundSchema,
+    FourHundredAndEighteen$inboundSchema,
+    FourHundredAndNineteen$inboundSchema,
     FourHundredAndTwentyThree$inboundSchema,
-    FourHundredAndThirtyFour$inboundSchema,
-    FourHundredAndFortyOne$inboundSchema,
+    FourHundredAndTwentyFour$inboundSchema,
+    FourHundredAndTwentySix$inboundSchema,
+    FourHundredAndThirtySeven$inboundSchema,
     FourHundredAndFortyFour$inboundSchema,
-    FourHundredAndFortyEight$inboundSchema,
+    FourHundredAndFortySeven$inboundSchema,
     FourHundredAndFiftyOne$inboundSchema,
+    FourHundredAndFiftyFour$inboundSchema,
     z.lazy(() => Eight$inboundSchema),
     z.lazy(() => Fourteen$inboundSchema),
     z.lazy(() => Fifteen$inboundSchema),
@@ -4295,13 +4804,13 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     z.lazy(() => TwentyFive$inboundSchema),
     z.lazy(() => TwentySix$inboundSchema),
     z.lazy(() => TwentySeven$inboundSchema),
-    z.lazy(() => TwentyNine$inboundSchema),
-    z.lazy(() => Thirty$inboundSchema),
-    z.lazy(() => ThirtyOne$inboundSchema),
-    z.lazy(() => ThirtyTwo$inboundSchema),
-    z.lazy(() => ThirtyThree$inboundSchema),
-    z.lazy(() => ThirtyFour$inboundSchema),
-    z.lazy(() => ThirtyFive$inboundSchema),
+    TwentyNine$inboundSchema,
+    Thirty$inboundSchema,
+    ThirtyOne$inboundSchema,
+    ThirtyTwo$inboundSchema,
+    ThirtyThree$inboundSchema,
+    ThirtyFour$inboundSchema,
+    ThirtyFive$inboundSchema,
     ThirtyEight$inboundSchema,
     FortyThree$inboundSchema,
     FiftyFour$inboundSchema,
@@ -4343,53 +4852,53 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     OneHundredAndNinetyFive$inboundSchema,
     OneHundredAndNinetySix$inboundSchema,
     TwoHundredAndTwo$inboundSchema,
-    TwoHundredAndTwentySeven$inboundSchema,
-    TwoHundredAndThirtyOne$inboundSchema,
-    TwoHundredAndThirtyEight$inboundSchema,
-    TwoHundredAndFiftyOne$inboundSchema,
-    TwoHundredAndSeventyThree$inboundSchema,
-    TwoHundredAndSeventyFour$inboundSchema,
-    TwoHundredAndEightyThree$inboundSchema,
+    TwoHundredAndTwentyEight$inboundSchema,
+    TwoHundredAndThirtyTwo$inboundSchema,
+    TwoHundredAndThirtyNine$inboundSchema,
+    TwoHundredAndFiftyTwo$inboundSchema,
+    TwoHundredAndSeventySix$inboundSchema,
+    TwoHundredAndSeventySeven$inboundSchema,
     TwoHundredAndEightySix$inboundSchema,
-    TwoHundredAndNinetySix$inboundSchema,
-    TwoHundredAndNinetyEight$inboundSchema,
-    ThreeHundredAndTwenty$inboundSchema,
-    ThreeHundredAndThirty$inboundSchema,
-    ThreeHundredAndThirtyFour$inboundSchema,
-    ThreeHundredAndFortyOne$inboundSchema,
-    ThreeHundredAndFortyTwo$inboundSchema,
-    ThreeHundredAndFortyThree$inboundSchema,
+    TwoHundredAndEightyNine$inboundSchema,
+    TwoHundredAndNinetyNine$inboundSchema,
+    ThreeHundredAndOne$inboundSchema,
+    ThreeHundredAndTwentyThree$inboundSchema,
+    ThreeHundredAndThirtyThree$inboundSchema,
+    ThreeHundredAndThirtySeven$inboundSchema,
     ThreeHundredAndFortyFour$inboundSchema,
+    ThreeHundredAndFortyFive$inboundSchema,
     ThreeHundredAndFortySix$inboundSchema,
-    ThreeHundredAndFiftyOne$inboundSchema,
+    ThreeHundredAndFortySeven$inboundSchema,
+    ThreeHundredAndFortyNine$inboundSchema,
     ThreeHundredAndFiftyFour$inboundSchema,
-    ThreeHundredAndFiftyFive$inboundSchema,
-    ThreeHundredAndSixtyThree$inboundSchema,
-    ThreeHundredAndSixtyNine$inboundSchema,
-    ThreeHundredAndSeventy$inboundSchema,
-    ThreeHundredAndSeventyFive$inboundSchema,
-    ThreeHundredAndSeventySix$inboundSchema,
-    ThreeHundredAndSeventySeven$inboundSchema,
+    ThreeHundredAndFiftySeven$inboundSchema,
+    ThreeHundredAndFiftyEight$inboundSchema,
+    ThreeHundredAndSixtySix$inboundSchema,
+    ThreeHundredAndSeventyTwo$inboundSchema,
+    ThreeHundredAndSeventyThree$inboundSchema,
     ThreeHundredAndSeventyEight$inboundSchema,
+    ThreeHundredAndSeventyNine$inboundSchema,
     ThreeHundredAndEighty$inboundSchema,
-    ThreeHundredAndEightyTwo$inboundSchema,
-    ThreeHundredAndEightyEight$inboundSchema,
-    ThreeHundredAndNinety$inboundSchema,
+    ThreeHundredAndEightyOne$inboundSchema,
+    ThreeHundredAndEightyThree$inboundSchema,
+    ThreeHundredAndEightyFive$inboundSchema,
     ThreeHundredAndNinetyOne$inboundSchema,
-    ThreeHundredAndNinetyFive$inboundSchema,
-    ThreeHundredAndNinetySeven$inboundSchema,
-    FourHundredAndOne$inboundSchema,
+    ThreeHundredAndNinetyThree$inboundSchema,
+    ThreeHundredAndNinetyFour$inboundSchema,
+    ThreeHundredAndNinetyEight$inboundSchema,
+    FourHundred$inboundSchema,
     FourHundredAndFour$inboundSchema,
-    FourHundredAndSix$inboundSchema,
     FourHundredAndSeven$inboundSchema,
-    FourHundredAndSeventeen$inboundSchema,
-    FourHundredAndEighteen$inboundSchema,
-    FourHundredAndNineteen$inboundSchema,
-    FourHundredAndThirtyThree$inboundSchema,
-    FourHundredAndThirtyFive$inboundSchema,
-    FourHundredAndForty$inboundSchema,
-    FourHundredAndFortyTwo$inboundSchema,
-    FourHundredAndFortySeven$inboundSchema,
+    FourHundredAndNine$inboundSchema,
+    FourHundredAndTen$inboundSchema,
+    FourHundredAndTwenty$inboundSchema,
+    FourHundredAndTwentyOne$inboundSchema,
+    FourHundredAndTwentyTwo$inboundSchema,
+    FourHundredAndThirtySix$inboundSchema,
+    FourHundredAndThirtyEight$inboundSchema,
+    FourHundredAndFortyThree$inboundSchema,
+    FourHundredAndFortyFive$inboundSchema,
+    FourHundredAndFifty$inboundSchema,
     z.lazy(() => Payload1$inboundSchema),
     Forty$inboundSchema,
     FortyOne$inboundSchema,
@@ -4408,24 +4917,24 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     OneHundredAndFiftyFour$inboundSchema,
     OneHundredAndFiftySix$inboundSchema,
     OneHundredAndNinetyThree$inboundSchema,
-    TwoHundredAndTwentyNine$inboundSchema,
     TwoHundredAndThirty$inboundSchema,
-    TwoHundredAndFortyEight$inboundSchema,
+    TwoHundredAndThirtyOne$inboundSchema,
     TwoHundredAndFortyNine$inboundSchema,
-    ThreeHundredAndThirtySix$inboundSchema,
-    ThreeHundredAndFortyFive$inboundSchema,
-    ThreeHundredAndFiftyThree$inboundSchema,
-    ThreeHundredAndSixty$inboundSchema,
-    ThreeHundredAndSixtySix$inboundSchema,
-    ThreeHundredAndSixtyEight$inboundSchema,
+    TwoHundredAndFifty$inboundSchema,
+    ThreeHundredAndThirtyNine$inboundSchema,
+    ThreeHundredAndFortyEight$inboundSchema,
+    ThreeHundredAndFiftySix$inboundSchema,
+    ThreeHundredAndSixtyThree$inboundSchema,
+    ThreeHundredAndSixtyNine$inboundSchema,
     ThreeHundredAndSeventyOne$inboundSchema,
     ThreeHundredAndSeventyFour$inboundSchema,
-    ThreeHundredAndEightyFour$inboundSchema,
-    ThreeHundredAndEightyFive$inboundSchema,
-    ThreeHundredAndEightyNine$inboundSchema,
-    ThreeHundredAndNinetyThree$inboundSchema,
-    ThreeHundredAndNinetyEight$inboundSchema,
-    FourHundredAndTwo$inboundSchema,
+    ThreeHundredAndSeventySeven$inboundSchema,
+    ThreeHundredAndEightySeven$inboundSchema,
+    ThreeHundredAndEightyEight$inboundSchema,
+    ThreeHundredAndNinetyTwo$inboundSchema,
+    ThreeHundredAndNinetySix$inboundSchema,
+    FourHundredAndOne$inboundSchema,
+    FourHundredAndFive$inboundSchema,
   ]);
 
 export function payloadFromJSON(
@@ -4439,48 +4948,305 @@ export function payloadFromJSON(
 }
 
 /** @internal */
+export const UserEventPrincipal4Type$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPrincipal4Type
+> = z.nativeEnum(UserEventPrincipal4Type);
+
+/** @internal */
+export const Principal4$inboundSchema: z.ZodType<
+  Principal4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: UserEventPrincipal4Type$inboundSchema,
+});
+
+export function principal4FromJSON(
+  jsonString: string,
+): SafeParseResult<Principal4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Principal4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Principal4' from JSON`,
+  );
+}
+
+/** @internal */
+export const UserEventPrincipal3Type$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPrincipal3Type
+> = z.nativeEnum(UserEventPrincipal3Type);
+
+/** @internal */
+export const Principal3$inboundSchema: z.ZodType<
+  Principal3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  email: types.optional(types.string()),
+  id: types.string(),
+  name: types.string(),
+  type: UserEventPrincipal3Type$inboundSchema,
+});
+
+export function principal3FromJSON(
+  jsonString: string,
+): SafeParseResult<Principal3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Principal3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Principal3' from JSON`,
+  );
+}
+
+/** @internal */
+export const UserEventPrincipalType$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPrincipalType
+> = z.nativeEnum(UserEventPrincipalType);
+
+/** @internal */
+export const Principal2$inboundSchema: z.ZodType<
+  Principal2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  clientId: types.string(),
+  id: types.optional(types.string()),
+  name: types.string(),
+  type: UserEventPrincipalType$inboundSchema,
+});
+
+export function principal2FromJSON(
+  jsonString: string,
+): SafeParseResult<Principal2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Principal2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Principal2' from JSON`,
+  );
+}
+
+/** @internal */
+export const PrincipalType$inboundSchema: z.ZodNativeEnum<
+  typeof PrincipalType
+> = z.nativeEnum(PrincipalType);
+
+/** @internal */
+export const Principal1$inboundSchema: z.ZodType<
+  Principal1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  avatar: types.string(),
+  email: types.string(),
+  slug: types.optional(types.string()),
+  type: types.optional(PrincipalType$inboundSchema),
+  uid: types.string(),
+  username: types.string(),
+});
+
+export function principal1FromJSON(
+  jsonString: string,
+): SafeParseResult<Principal1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Principal1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Principal1' from JSON`,
+  );
+}
+
+/** @internal */
+export const Principal$inboundSchema: z.ZodType<
+  Principal,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => Principal1$inboundSchema),
+  z.lazy(() => Principal2$inboundSchema),
+  z.lazy(() => Principal3$inboundSchema),
+  z.lazy(() => Principal4$inboundSchema),
+]);
+
+export function principalFromJSON(
+  jsonString: string,
+): SafeParseResult<Principal, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Principal$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Principal' from JSON`,
+  );
+}
+
+/** @internal */
+export const UserEventType$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventType
+> = z.nativeEnum(UserEventType);
+
+/** @internal */
+export const User$inboundSchema: z.ZodType<User, z.ZodTypeDef, unknown> = z
+  .object({
+    avatar: types.string(),
+    email: types.string(),
+    slug: types.optional(types.string()),
+    uid: types.string(),
+    username: types.string(),
+  });
+
+export function userFromJSON(
+  jsonString: string,
+): SafeParseResult<User, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => User$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'User' from JSON`,
+  );
+}
+
+/** @internal */
+export const UserEventVia4Type$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventVia4Type
+> = z.nativeEnum(UserEventVia4Type);
+
+/** @internal */
+export const Via4$inboundSchema: z.ZodType<Via4, z.ZodTypeDef, unknown> = z
+  .object({
+    type: UserEventVia4Type$inboundSchema,
+  });
+
+export function via4FromJSON(
+  jsonString: string,
+): SafeParseResult<Via4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Via4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Via4' from JSON`,
+  );
+}
+
+/** @internal */
+export const UserEventVia3Type$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventVia3Type
+> = z.nativeEnum(UserEventVia3Type);
+
+/** @internal */
+export const Via3$inboundSchema: z.ZodType<Via3, z.ZodTypeDef, unknown> = z
+  .object({
+    email: types.optional(types.string()),
+    id: types.string(),
+    name: types.string(),
+    type: UserEventVia3Type$inboundSchema,
+  });
+
+export function via3FromJSON(
+  jsonString: string,
+): SafeParseResult<Via3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Via3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Via3' from JSON`,
+  );
+}
+
+/** @internal */
+export const UserEventViaType$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventViaType
+> = z.nativeEnum(UserEventViaType);
+
+/** @internal */
+export const Via2$inboundSchema: z.ZodType<Via2, z.ZodTypeDef, unknown> = z
+  .object({
+    clientId: types.string(),
+    id: types.optional(types.string()),
+    name: types.string(),
+    type: UserEventViaType$inboundSchema,
+  });
+
+export function via2FromJSON(
+  jsonString: string,
+): SafeParseResult<Via2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Via2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Via2' from JSON`,
+  );
+}
+
+/** @internal */
+export const ViaType$inboundSchema: z.ZodNativeEnum<typeof ViaType> = z
+  .nativeEnum(ViaType);
+
+/** @internal */
+export const Via1$inboundSchema: z.ZodType<Via1, z.ZodTypeDef, unknown> = z
+  .object({
+    avatar: types.string(),
+    email: types.string(),
+    slug: types.optional(types.string()),
+    type: types.optional(ViaType$inboundSchema),
+    uid: types.string(),
+    username: types.string(),
+  });
+
+export function via1FromJSON(
+  jsonString: string,
+): SafeParseResult<Via1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Via1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Via1' from JSON`,
+  );
+}
+
+/** @internal */
+export const Via$inboundSchema: z.ZodType<Via, z.ZodTypeDef, unknown> =
+  smartUnion([
+    z.lazy(() => Via1$inboundSchema),
+    z.lazy(() => Via2$inboundSchema),
+    z.lazy(() => Via3$inboundSchema),
+    z.lazy(() => Via4$inboundSchema),
+  ]);
+
+export function viaFromJSON(
+  jsonString: string,
+): SafeParseResult<Via, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Via$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Via' from JSON`,
+  );
+}
+
+/** @internal */
 export const UserEvent$inboundSchema: z.ZodType<
   UserEvent,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: types.string(),
-  text: types.string(),
-  entities: z.array(Entities$inboundSchema),
-  type: types.optional(UserEventType$inboundSchema),
   categories: types.optional(z.array(Categories$inboundSchema)),
   createdAt: types.number(),
-  user: types.optional(User$inboundSchema),
-  principal: types.optional(Principal$inboundSchema),
-  via: types.optional(z.array(Via$inboundSchema)),
-  userId: types.optional(types.string()),
-  principalId: types.string(),
-  viaIds: types.optional(z.array(types.string())),
-  tokenId: types.optional(types.string()),
-  sessionId: types.optional(types.string()),
-  requestId: types.optional(types.string()),
+  entities: z.array(Entities$inboundSchema),
+  id: types.string(),
   payload: types.optional(
     smartUnion([
-      ThreeHundredAndFiftyEight$inboundSchema,
+      ThreeHundredAndSixtyOne$inboundSchema,
       OneHundredAndSeventyEight$inboundSchema,
       OneHundredAndSixtyEight$inboundSchema,
-      TwoHundredAndTwentyFour$inboundSchema,
+      TwoHundredAndTwentyFive$inboundSchema,
       OneHundredAndSeventyNine$inboundSchema,
-      FourHundredAndFortyThree$inboundSchema,
+      FourHundredAndFortySix$inboundSchema,
       OneHundredAndFourteen$inboundSchema,
       OneHundredAndEightyOne$inboundSchema,
       OneHundredAndEightyTwo$inboundSchema,
-      TwoHundredAndSixteen$inboundSchema,
-      TwoHundredAndSeventyNine$inboundSchema,
-      z.lazy(() => Payload3$inboundSchema),
+      TwoHundredAndSeventeen$inboundSchema,
+      TwoHundredAndEightyTwo$inboundSchema,
+      z.lazy(() => Three$inboundSchema),
       OneHundredAndFiftyFive$inboundSchema,
       OneHundredAndSeventyTwo$inboundSchema,
       OneHundredAndSeventySix$inboundSchema,
       OneHundredAndEighty$inboundSchema,
-      TwoHundredAndFiftySeven$inboundSchema,
-      ThreeHundredAndNineteen$inboundSchema,
-      ThreeHundredAndThirtySeven$inboundSchema,
-      ThreeHundredAndThirtyNine$inboundSchema,
+      TwoHundredAndSix$inboundSchema,
+      TwoHundredAndFiftyEight$inboundSchema,
+      ThreeHundredAndTwentyTwo$inboundSchema,
+      ThreeHundredAndForty$inboundSchema,
+      ThreeHundredAndFortyTwo$inboundSchema,
       z.lazy(() => TwentyEight$inboundSchema),
       OneHundredAndEight$inboundSchema,
       OneHundredAndEleven$inboundSchema,
@@ -4493,14 +5259,15 @@ export const UserEvent$inboundSchema: z.ZodType<
       OneHundredAndSeventyOne$inboundSchema,
       OneHundredAndSeventySeven$inboundSchema,
       TwoHundredAndFour$inboundSchema,
-      TwoHundredAndEight$inboundSchema,
-      TwoHundredAndSixtySeven$inboundSchema,
-      TwoHundredAndEightyOne$inboundSchema,
-      TwoHundredAndNinetyOne$inboundSchema,
-      ThreeHundredAndFiftySeven$inboundSchema,
-      FourHundredAndTwentySeven$inboundSchema,
-      FourHundredAndTwentyNine$inboundSchema,
-      FourHundredAndFortySix$inboundSchema,
+      TwoHundredAndNine$inboundSchema,
+      TwoHundredAndFiftyNine$inboundSchema,
+      TwoHundredAndSeventy$inboundSchema,
+      TwoHundredAndEightyFour$inboundSchema,
+      TwoHundredAndNinetyFour$inboundSchema,
+      ThreeHundredAndSixty$inboundSchema,
+      FourHundredAndThirty$inboundSchema,
+      FourHundredAndThirtyTwo$inboundSchema,
+      FourHundredAndFortyNine$inboundSchema,
       z.lazy(() => Payload2$inboundSchema),
       z.lazy(() => Thirteen$inboundSchema),
       z.lazy(() => TwentyOne$inboundSchema),
@@ -4519,48 +5286,49 @@ export const UserEvent$inboundSchema: z.ZodType<
       OneHundredAndEightyFour$inboundSchema,
       OneHundredAndEightyEight$inboundSchema,
       TwoHundredAndThree$inboundSchema,
-      TwoHundredAndFourteen$inboundSchema,
       TwoHundredAndFifteen$inboundSchema,
-      TwoHundredAndSeventeen$inboundSchema,
-      TwoHundredAndTwentyTwo$inboundSchema,
-      TwoHundredAndTwentyFive$inboundSchema,
-      TwoHundredAndFortyThree$inboundSchema,
-      TwoHundredAndFortySix$inboundSchema,
-      TwoHundredAndFiftyFour$inboundSchema,
-      TwoHundredAndFiftyEight$inboundSchema,
+      TwoHundredAndSixteen$inboundSchema,
+      TwoHundredAndEighteen$inboundSchema,
+      TwoHundredAndTwentyThree$inboundSchema,
+      TwoHundredAndTwentySix$inboundSchema,
+      TwoHundredAndFortyFour$inboundSchema,
+      TwoHundredAndFortySeven$inboundSchema,
+      TwoHundredAndFiftyFive$inboundSchema,
       TwoHundredAndSixty$inboundSchema,
       TwoHundredAndSixtyOne$inboundSchema,
-      TwoHundredAndSixtyTwo$inboundSchema,
       TwoHundredAndSixtyThree$inboundSchema,
-      TwoHundredAndSeventyEight$inboundSchema,
-      TwoHundredAndEighty$inboundSchema,
-      TwoHundredAndEightyFour$inboundSchema,
-      ThreeHundred$inboundSchema,
-      ThreeHundredAndFour$inboundSchema,
-      ThreeHundredAndSix$inboundSchema,
-      ThreeHundredAndThirteen$inboundSchema,
-      ThreeHundredAndFourteen$inboundSchema,
-      ThreeHundredAndFifteen$inboundSchema,
+      TwoHundredAndSixtyFour$inboundSchema,
+      TwoHundredAndSixtyFive$inboundSchema,
+      TwoHundredAndSixtySix$inboundSchema,
+      TwoHundredAndEightyOne$inboundSchema,
+      TwoHundredAndEightyThree$inboundSchema,
+      TwoHundredAndEightySeven$inboundSchema,
+      ThreeHundredAndThree$inboundSchema,
+      ThreeHundredAndSeven$inboundSchema,
+      ThreeHundredAndNine$inboundSchema,
+      ThreeHundredAndSixteen$inboundSchema,
       ThreeHundredAndSeventeen$inboundSchema,
-      ThreeHundredAndTwentyFive$inboundSchema,
-      ThreeHundredAndTwentySix$inboundSchema,
+      ThreeHundredAndEighteen$inboundSchema,
+      ThreeHundredAndTwenty$inboundSchema,
+      ThreeHundredAndTwentyEight$inboundSchema,
       ThreeHundredAndTwentyNine$inboundSchema,
-      ThreeHundredAndThirtyFive$inboundSchema,
+      ThreeHundredAndThirtyTwo$inboundSchema,
       ThreeHundredAndThirtyEight$inboundSchema,
-      ThreeHundredAndFortyEight$inboundSchema,
-      ThreeHundredAndFortyNine$inboundSchema,
-      ThreeHundredAndFiftySix$inboundSchema,
-      ThreeHundredAndSixtyFour$inboundSchema,
-      ThreeHundredAndSeventyNine$inboundSchema,
-      ThreeHundredAndNinetySix$inboundSchema,
-      FourHundredAndTwentyTwo$inboundSchema,
-      FourHundredAndTwentyFour$inboundSchema,
-      FourHundredAndTwentyEight$inboundSchema,
-      FourHundredAndThirty$inboundSchema,
+      ThreeHundredAndFortyOne$inboundSchema,
+      ThreeHundredAndFiftyOne$inboundSchema,
+      ThreeHundredAndFiftyTwo$inboundSchema,
+      ThreeHundredAndFiftyNine$inboundSchema,
+      ThreeHundredAndSixtySeven$inboundSchema,
+      ThreeHundredAndEightyTwo$inboundSchema,
+      ThreeHundredAndNinetyNine$inboundSchema,
+      FourHundredAndTwentyFive$inboundSchema,
+      FourHundredAndTwentySeven$inboundSchema,
       FourHundredAndThirtyOne$inboundSchema,
-      FourHundredAndThirtyTwo$inboundSchema,
-      FourHundredAndFortyNine$inboundSchema,
-      FourHundredAndFifty$inboundSchema,
+      FourHundredAndThirtyThree$inboundSchema,
+      FourHundredAndThirtyFour$inboundSchema,
+      FourHundredAndThirtyFive$inboundSchema,
+      FourHundredAndFiftyTwo$inboundSchema,
+      FourHundredAndFiftyThree$inboundSchema,
       z.lazy(() => Six$inboundSchema),
       z.lazy(() => Twelve$inboundSchema),
       FortyFour$inboundSchema,
@@ -4599,66 +5367,66 @@ export const UserEvent$inboundSchema: z.ZodType<
       OneHundredAndNinetySeven$inboundSchema,
       TwoHundred$inboundSchema,
       TwoHundredAndFive$inboundSchema,
-      TwoHundredAndSeven$inboundSchema,
-      TwoHundredAndNine$inboundSchema,
+      TwoHundredAndEight$inboundSchema,
       TwoHundredAndTen$inboundSchema,
       TwoHundredAndEleven$inboundSchema,
       TwoHundredAndTwelve$inboundSchema,
       TwoHundredAndThirteen$inboundSchema,
-      TwoHundredAndEighteen$inboundSchema,
+      TwoHundredAndFourteen$inboundSchema,
       TwoHundredAndNineteen$inboundSchema,
       TwoHundredAndTwenty$inboundSchema,
       TwoHundredAndTwentyOne$inboundSchema,
-      TwoHundredAndTwentyEight$inboundSchema,
-      TwoHundredAndThirtyFour$inboundSchema,
-      TwoHundredAndThirtySix$inboundSchema,
+      TwoHundredAndTwentyTwo$inboundSchema,
+      TwoHundredAndTwentyNine$inboundSchema,
+      TwoHundredAndThirtyFive$inboundSchema,
       TwoHundredAndThirtySeven$inboundSchema,
-      TwoHundredAndThirtyNine$inboundSchema,
-      TwoHundredAndFortyOne$inboundSchema,
+      TwoHundredAndThirtyEight$inboundSchema,
+      TwoHundredAndForty$inboundSchema,
       TwoHundredAndFortyTwo$inboundSchema,
-      TwoHundredAndFortyFour$inboundSchema,
+      TwoHundredAndFortyThree$inboundSchema,
       TwoHundredAndFortyFive$inboundSchema,
-      TwoHundredAndFortySeven$inboundSchema,
-      TwoHundredAndFiftyTwo$inboundSchema,
-      TwoHundredAndFiftyFive$inboundSchema,
+      TwoHundredAndFortySix$inboundSchema,
+      TwoHundredAndFortyEight$inboundSchema,
+      TwoHundredAndFiftyThree$inboundSchema,
       TwoHundredAndFiftySix$inboundSchema,
-      TwoHundredAndSixtyFour$inboundSchema,
-      TwoHundredAndSixtyFive$inboundSchema,
-      TwoHundredAndSixtySix$inboundSchema,
+      TwoHundredAndFiftySeven$inboundSchema,
+      TwoHundredAndSixtySeven$inboundSchema,
       TwoHundredAndSixtyEight$inboundSchema,
       TwoHundredAndSixtyNine$inboundSchema,
-      TwoHundredAndSeventy$inboundSchema,
       TwoHundredAndSeventyOne$inboundSchema,
       TwoHundredAndSeventyTwo$inboundSchema,
+      TwoHundredAndSeventyThree$inboundSchema,
+      TwoHundredAndSeventyFour$inboundSchema,
       TwoHundredAndSeventyFive$inboundSchema,
-      TwoHundredAndSeventySix$inboundSchema,
-      TwoHundredAndSeventySeven$inboundSchema,
-      TwoHundredAndEightyTwo$inboundSchema,
-      TwoHundredAndEightyNine$inboundSchema,
+      TwoHundredAndSeventyEight$inboundSchema,
+      TwoHundredAndSeventyNine$inboundSchema,
+      TwoHundredAndEighty$inboundSchema,
+      TwoHundredAndEightyFive$inboundSchema,
       TwoHundredAndNinetyTwo$inboundSchema,
-      TwoHundredAndNinetyThree$inboundSchema,
-      ThreeHundredAndSeven$inboundSchema,
-      ThreeHundredAndEight$inboundSchema,
-      ThreeHundredAndNine$inboundSchema,
+      TwoHundredAndNinetyFive$inboundSchema,
+      TwoHundredAndNinetySix$inboundSchema,
       ThreeHundredAndTen$inboundSchema,
       ThreeHundredAndEleven$inboundSchema,
-      ThreeHundredAndTwentyTwo$inboundSchema,
-      ThreeHundredAndForty$inboundSchema,
-      ThreeHundredAndFiftyTwo$inboundSchema,
-      ThreeHundredAndSixtyOne$inboundSchema,
-      ThreeHundredAndEightyThree$inboundSchema,
-      FourHundredAndFive$inboundSchema,
-      FourHundredAndEleven$inboundSchema,
-      FourHundredAndTwelve$inboundSchema,
+      ThreeHundredAndTwelve$inboundSchema,
+      ThreeHundredAndThirteen$inboundSchema,
+      ThreeHundredAndFourteen$inboundSchema,
+      ThreeHundredAndTwentyFive$inboundSchema,
+      ThreeHundredAndFortyThree$inboundSchema,
+      ThreeHundredAndFiftyFive$inboundSchema,
+      ThreeHundredAndSixtyFour$inboundSchema,
+      ThreeHundredAndEightySix$inboundSchema,
+      FourHundredAndEight$inboundSchema,
       FourHundredAndFourteen$inboundSchema,
-      FourHundredAndTwentyFive$inboundSchema,
-      FourHundredAndTwentySix$inboundSchema,
-      FourHundredAndThirtySix$inboundSchema,
-      FourHundredAndThirtySeven$inboundSchema,
-      FourHundredAndThirtyEight$inboundSchema,
+      FourHundredAndFifteen$inboundSchema,
+      FourHundredAndSeventeen$inboundSchema,
+      FourHundredAndTwentyEight$inboundSchema,
+      FourHundredAndTwentyNine$inboundSchema,
       FourHundredAndThirtyNine$inboundSchema,
-      FourHundredAndFortyFive$inboundSchema,
-      z.lazy(() => Payload4$inboundSchema),
+      FourHundredAndForty$inboundSchema,
+      FourHundredAndFortyOne$inboundSchema,
+      FourHundredAndFortyTwo$inboundSchema,
+      FourHundredAndFortyEight$inboundSchema,
+      z.lazy(() => Four$inboundSchema),
       z.lazy(() => Five$inboundSchema),
       z.lazy(() => Seven$inboundSchema),
       z.lazy(() => Nine$inboundSchema),
@@ -4669,7 +5437,7 @@ export const UserEvent$inboundSchema: z.ZodType<
       z.lazy(() => Nineteen$inboundSchema),
       z.lazy(() => TwentyThree$inboundSchema),
       z.lazy(() => TwentyFour$inboundSchema),
-      z.lazy(() => ThirtySix$inboundSchema),
+      ThirtySix$inboundSchema,
       ThirtySeven$inboundSchema,
       ThirtyNine$inboundSchema,
       FortyTwo$inboundSchema,
@@ -4709,69 +5477,69 @@ export const UserEvent$inboundSchema: z.ZodType<
       OneHundredAndNinetyEight$inboundSchema,
       OneHundredAndNinetyNine$inboundSchema,
       TwoHundredAndOne$inboundSchema,
-      TwoHundredAndSix$inboundSchema,
-      TwoHundredAndTwentyThree$inboundSchema,
-      TwoHundredAndTwentySix$inboundSchema,
-      TwoHundredAndThirtyTwo$inboundSchema,
+      TwoHundredAndSeven$inboundSchema,
+      TwoHundredAndTwentyFour$inboundSchema,
+      TwoHundredAndTwentySeven$inboundSchema,
       TwoHundredAndThirtyThree$inboundSchema,
-      TwoHundredAndThirtyFive$inboundSchema,
-      TwoHundredAndForty$inboundSchema,
-      TwoHundredAndFifty$inboundSchema,
-      TwoHundredAndFiftyThree$inboundSchema,
-      TwoHundredAndFiftyNine$inboundSchema,
-      TwoHundredAndEightyFive$inboundSchema,
-      TwoHundredAndEightySeven$inboundSchema,
+      TwoHundredAndThirtyFour$inboundSchema,
+      TwoHundredAndThirtySix$inboundSchema,
+      TwoHundredAndFortyOne$inboundSchema,
+      TwoHundredAndFiftyOne$inboundSchema,
+      TwoHundredAndFiftyFour$inboundSchema,
+      TwoHundredAndSixtyTwo$inboundSchema,
       TwoHundredAndEightyEight$inboundSchema,
       TwoHundredAndNinety$inboundSchema,
-      TwoHundredAndNinetyFour$inboundSchema,
-      TwoHundredAndNinetyFive$inboundSchema,
+      TwoHundredAndNinetyOne$inboundSchema,
+      TwoHundredAndNinetyThree$inboundSchema,
       TwoHundredAndNinetySeven$inboundSchema,
-      TwoHundredAndNinetyNine$inboundSchema,
-      ThreeHundredAndOne$inboundSchema,
+      TwoHundredAndNinetyEight$inboundSchema,
+      ThreeHundred$inboundSchema,
       ThreeHundredAndTwo$inboundSchema,
-      ThreeHundredAndThree$inboundSchema,
+      ThreeHundredAndFour$inboundSchema,
       ThreeHundredAndFive$inboundSchema,
-      ThreeHundredAndTwelve$inboundSchema,
-      ThreeHundredAndSixteen$inboundSchema,
-      ThreeHundredAndEighteen$inboundSchema,
+      ThreeHundredAndSix$inboundSchema,
+      ThreeHundredAndEight$inboundSchema,
+      ThreeHundredAndFifteen$inboundSchema,
+      ThreeHundredAndNineteen$inboundSchema,
       ThreeHundredAndTwentyOne$inboundSchema,
-      ThreeHundredAndTwentyThree$inboundSchema,
       ThreeHundredAndTwentyFour$inboundSchema,
+      ThreeHundredAndTwentySix$inboundSchema,
       ThreeHundredAndTwentySeven$inboundSchema,
-      ThreeHundredAndTwentyEight$inboundSchema,
+      ThreeHundredAndThirty$inboundSchema,
       ThreeHundredAndThirtyOne$inboundSchema,
-      ThreeHundredAndThirtyTwo$inboundSchema,
-      ThreeHundredAndThirtyThree$inboundSchema,
-      ThreeHundredAndFortySeven$inboundSchema,
+      ThreeHundredAndThirtyFour$inboundSchema,
+      ThreeHundredAndThirtyFive$inboundSchema,
+      ThreeHundredAndThirtySix$inboundSchema,
       ThreeHundredAndFifty$inboundSchema,
-      ThreeHundredAndFiftyNine$inboundSchema,
+      ThreeHundredAndFiftyThree$inboundSchema,
       ThreeHundredAndSixtyTwo$inboundSchema,
       ThreeHundredAndSixtyFive$inboundSchema,
-      ThreeHundredAndSixtySeven$inboundSchema,
-      ThreeHundredAndSeventyTwo$inboundSchema,
-      ThreeHundredAndSeventyThree$inboundSchema,
-      ThreeHundredAndEightyOne$inboundSchema,
-      ThreeHundredAndEightySix$inboundSchema,
-      ThreeHundredAndEightySeven$inboundSchema,
-      ThreeHundredAndNinetyTwo$inboundSchema,
-      ThreeHundredAndNinetyFour$inboundSchema,
-      ThreeHundredAndNinetyNine$inboundSchema,
-      FourHundred$inboundSchema,
+      ThreeHundredAndSixtyEight$inboundSchema,
+      ThreeHundredAndSeventy$inboundSchema,
+      ThreeHundredAndSeventyFive$inboundSchema,
+      ThreeHundredAndSeventySix$inboundSchema,
+      ThreeHundredAndEightyFour$inboundSchema,
+      ThreeHundredAndEightyNine$inboundSchema,
+      ThreeHundredAndNinety$inboundSchema,
+      ThreeHundredAndNinetyFive$inboundSchema,
+      ThreeHundredAndNinetySeven$inboundSchema,
+      FourHundredAndTwo$inboundSchema,
       FourHundredAndThree$inboundSchema,
-      FourHundredAndEight$inboundSchema,
-      FourHundredAndNine$inboundSchema,
-      FourHundredAndTen$inboundSchema,
+      FourHundredAndSix$inboundSchema,
+      FourHundredAndEleven$inboundSchema,
+      FourHundredAndTwelve$inboundSchema,
       FourHundredAndThirteen$inboundSchema,
-      FourHundredAndFifteen$inboundSchema,
       FourHundredAndSixteen$inboundSchema,
-      FourHundredAndTwenty$inboundSchema,
-      FourHundredAndTwentyOne$inboundSchema,
+      FourHundredAndEighteen$inboundSchema,
+      FourHundredAndNineteen$inboundSchema,
       FourHundredAndTwentyThree$inboundSchema,
-      FourHundredAndThirtyFour$inboundSchema,
-      FourHundredAndFortyOne$inboundSchema,
+      FourHundredAndTwentyFour$inboundSchema,
+      FourHundredAndTwentySix$inboundSchema,
+      FourHundredAndThirtySeven$inboundSchema,
       FourHundredAndFortyFour$inboundSchema,
-      FourHundredAndFortyEight$inboundSchema,
+      FourHundredAndFortySeven$inboundSchema,
       FourHundredAndFiftyOne$inboundSchema,
+      FourHundredAndFiftyFour$inboundSchema,
       z.lazy(() => Eight$inboundSchema),
       z.lazy(() => Fourteen$inboundSchema),
       z.lazy(() => Fifteen$inboundSchema),
@@ -4781,13 +5549,13 @@ export const UserEvent$inboundSchema: z.ZodType<
       z.lazy(() => TwentyFive$inboundSchema),
       z.lazy(() => TwentySix$inboundSchema),
       z.lazy(() => TwentySeven$inboundSchema),
-      z.lazy(() => TwentyNine$inboundSchema),
-      z.lazy(() => Thirty$inboundSchema),
-      z.lazy(() => ThirtyOne$inboundSchema),
-      z.lazy(() => ThirtyTwo$inboundSchema),
-      z.lazy(() => ThirtyThree$inboundSchema),
-      z.lazy(() => ThirtyFour$inboundSchema),
-      z.lazy(() => ThirtyFive$inboundSchema),
+      TwentyNine$inboundSchema,
+      Thirty$inboundSchema,
+      ThirtyOne$inboundSchema,
+      ThirtyTwo$inboundSchema,
+      ThirtyThree$inboundSchema,
+      ThirtyFour$inboundSchema,
+      ThirtyFive$inboundSchema,
       ThirtyEight$inboundSchema,
       FortyThree$inboundSchema,
       FiftyFour$inboundSchema,
@@ -4829,53 +5597,53 @@ export const UserEvent$inboundSchema: z.ZodType<
       OneHundredAndNinetyFive$inboundSchema,
       OneHundredAndNinetySix$inboundSchema,
       TwoHundredAndTwo$inboundSchema,
-      TwoHundredAndTwentySeven$inboundSchema,
-      TwoHundredAndThirtyOne$inboundSchema,
-      TwoHundredAndThirtyEight$inboundSchema,
-      TwoHundredAndFiftyOne$inboundSchema,
-      TwoHundredAndSeventyThree$inboundSchema,
-      TwoHundredAndSeventyFour$inboundSchema,
-      TwoHundredAndEightyThree$inboundSchema,
+      TwoHundredAndTwentyEight$inboundSchema,
+      TwoHundredAndThirtyTwo$inboundSchema,
+      TwoHundredAndThirtyNine$inboundSchema,
+      TwoHundredAndFiftyTwo$inboundSchema,
+      TwoHundredAndSeventySix$inboundSchema,
+      TwoHundredAndSeventySeven$inboundSchema,
       TwoHundredAndEightySix$inboundSchema,
-      TwoHundredAndNinetySix$inboundSchema,
-      TwoHundredAndNinetyEight$inboundSchema,
-      ThreeHundredAndTwenty$inboundSchema,
-      ThreeHundredAndThirty$inboundSchema,
-      ThreeHundredAndThirtyFour$inboundSchema,
-      ThreeHundredAndFortyOne$inboundSchema,
-      ThreeHundredAndFortyTwo$inboundSchema,
-      ThreeHundredAndFortyThree$inboundSchema,
+      TwoHundredAndEightyNine$inboundSchema,
+      TwoHundredAndNinetyNine$inboundSchema,
+      ThreeHundredAndOne$inboundSchema,
+      ThreeHundredAndTwentyThree$inboundSchema,
+      ThreeHundredAndThirtyThree$inboundSchema,
+      ThreeHundredAndThirtySeven$inboundSchema,
       ThreeHundredAndFortyFour$inboundSchema,
+      ThreeHundredAndFortyFive$inboundSchema,
       ThreeHundredAndFortySix$inboundSchema,
-      ThreeHundredAndFiftyOne$inboundSchema,
+      ThreeHundredAndFortySeven$inboundSchema,
+      ThreeHundredAndFortyNine$inboundSchema,
       ThreeHundredAndFiftyFour$inboundSchema,
-      ThreeHundredAndFiftyFive$inboundSchema,
-      ThreeHundredAndSixtyThree$inboundSchema,
-      ThreeHundredAndSixtyNine$inboundSchema,
-      ThreeHundredAndSeventy$inboundSchema,
-      ThreeHundredAndSeventyFive$inboundSchema,
-      ThreeHundredAndSeventySix$inboundSchema,
-      ThreeHundredAndSeventySeven$inboundSchema,
+      ThreeHundredAndFiftySeven$inboundSchema,
+      ThreeHundredAndFiftyEight$inboundSchema,
+      ThreeHundredAndSixtySix$inboundSchema,
+      ThreeHundredAndSeventyTwo$inboundSchema,
+      ThreeHundredAndSeventyThree$inboundSchema,
       ThreeHundredAndSeventyEight$inboundSchema,
+      ThreeHundredAndSeventyNine$inboundSchema,
       ThreeHundredAndEighty$inboundSchema,
-      ThreeHundredAndEightyTwo$inboundSchema,
-      ThreeHundredAndEightyEight$inboundSchema,
-      ThreeHundredAndNinety$inboundSchema,
+      ThreeHundredAndEightyOne$inboundSchema,
+      ThreeHundredAndEightyThree$inboundSchema,
+      ThreeHundredAndEightyFive$inboundSchema,
       ThreeHundredAndNinetyOne$inboundSchema,
-      ThreeHundredAndNinetyFive$inboundSchema,
-      ThreeHundredAndNinetySeven$inboundSchema,
-      FourHundredAndOne$inboundSchema,
+      ThreeHundredAndNinetyThree$inboundSchema,
+      ThreeHundredAndNinetyFour$inboundSchema,
+      ThreeHundredAndNinetyEight$inboundSchema,
+      FourHundred$inboundSchema,
       FourHundredAndFour$inboundSchema,
-      FourHundredAndSix$inboundSchema,
       FourHundredAndSeven$inboundSchema,
-      FourHundredAndSeventeen$inboundSchema,
-      FourHundredAndEighteen$inboundSchema,
-      FourHundredAndNineteen$inboundSchema,
-      FourHundredAndThirtyThree$inboundSchema,
-      FourHundredAndThirtyFive$inboundSchema,
-      FourHundredAndForty$inboundSchema,
-      FourHundredAndFortyTwo$inboundSchema,
-      FourHundredAndFortySeven$inboundSchema,
+      FourHundredAndNine$inboundSchema,
+      FourHundredAndTen$inboundSchema,
+      FourHundredAndTwenty$inboundSchema,
+      FourHundredAndTwentyOne$inboundSchema,
+      FourHundredAndTwentyTwo$inboundSchema,
+      FourHundredAndThirtySix$inboundSchema,
+      FourHundredAndThirtyEight$inboundSchema,
+      FourHundredAndFortyThree$inboundSchema,
+      FourHundredAndFortyFive$inboundSchema,
+      FourHundredAndFifty$inboundSchema,
       z.lazy(() => Payload1$inboundSchema),
       Forty$inboundSchema,
       FortyOne$inboundSchema,
@@ -4894,26 +5662,53 @@ export const UserEvent$inboundSchema: z.ZodType<
       OneHundredAndFiftyFour$inboundSchema,
       OneHundredAndFiftySix$inboundSchema,
       OneHundredAndNinetyThree$inboundSchema,
-      TwoHundredAndTwentyNine$inboundSchema,
       TwoHundredAndThirty$inboundSchema,
-      TwoHundredAndFortyEight$inboundSchema,
+      TwoHundredAndThirtyOne$inboundSchema,
       TwoHundredAndFortyNine$inboundSchema,
-      ThreeHundredAndThirtySix$inboundSchema,
-      ThreeHundredAndFortyFive$inboundSchema,
-      ThreeHundredAndFiftyThree$inboundSchema,
-      ThreeHundredAndSixty$inboundSchema,
-      ThreeHundredAndSixtySix$inboundSchema,
-      ThreeHundredAndSixtyEight$inboundSchema,
+      TwoHundredAndFifty$inboundSchema,
+      ThreeHundredAndThirtyNine$inboundSchema,
+      ThreeHundredAndFortyEight$inboundSchema,
+      ThreeHundredAndFiftySix$inboundSchema,
+      ThreeHundredAndSixtyThree$inboundSchema,
+      ThreeHundredAndSixtyNine$inboundSchema,
       ThreeHundredAndSeventyOne$inboundSchema,
       ThreeHundredAndSeventyFour$inboundSchema,
-      ThreeHundredAndEightyFour$inboundSchema,
-      ThreeHundredAndEightyFive$inboundSchema,
-      ThreeHundredAndEightyNine$inboundSchema,
-      ThreeHundredAndNinetyThree$inboundSchema,
-      ThreeHundredAndNinetyEight$inboundSchema,
-      FourHundredAndTwo$inboundSchema,
+      ThreeHundredAndSeventySeven$inboundSchema,
+      ThreeHundredAndEightySeven$inboundSchema,
+      ThreeHundredAndEightyEight$inboundSchema,
+      ThreeHundredAndNinetyTwo$inboundSchema,
+      ThreeHundredAndNinetySix$inboundSchema,
+      FourHundredAndOne$inboundSchema,
+      FourHundredAndFive$inboundSchema,
     ]),
   ),
+  principal: types.optional(
+    smartUnion([
+      z.lazy(() => Principal1$inboundSchema),
+      z.lazy(() => Principal2$inboundSchema),
+      z.lazy(() => Principal3$inboundSchema),
+      z.lazy(() => Principal4$inboundSchema),
+    ]),
+  ),
+  principalId: types.string(),
+  requestId: types.optional(types.string()),
+  sessionId: types.optional(types.string()),
+  text: types.string(),
+  tokenId: types.optional(types.string()),
+  type: types.optional(UserEventType$inboundSchema),
+  user: types.optional(z.lazy(() => User$inboundSchema)),
+  userId: types.optional(types.string()),
+  via: types.optional(
+    z.array(smartUnion([
+      z.lazy(() => Via1$inboundSchema),
+      z.lazy(() =>
+        Via2$inboundSchema
+      ),
+      z.lazy(() => Via3$inboundSchema),
+      z.lazy(() => Via4$inboundSchema),
+    ])),
+  ),
+  viaIds: types.optional(z.array(types.string())),
 });
 
 export function userEventFromJSON(

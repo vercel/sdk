@@ -13,22 +13,14 @@ const value: models.GetRoutesResponseBody1 = {};
 
 ```typescript
 const value: models.GetRoutesResponseBody2 = {
-  routes: [
-    {
-      id: "<id>",
-      name: "<value>",
-      route: {
-        src: "<value>",
-      },
-    },
-  ],
+  diffCount: 7838.68,
+  routes: [],
   version: {
-    id: "<id>",
-    s3Key: "<value>",
-    lastModified: 4323.06,
     createdBy: "<value>",
+    id: "<id>",
+    lastModified: 3571.92,
+    s3Key: "<value>",
   },
-  diffCount: 3571.92,
 };
 ```
 
@@ -46,10 +38,10 @@ const value: models.GetRoutesResponseBody3 = {
     },
   ],
   version: {
-    id: "<id>",
-    s3Key: "<value>",
-    lastModified: 6411.04,
     createdBy: "<value>",
+    id: "<id>",
+    lastModified: 6411.04,
+    s3Key: "<value>",
   },
 };
 ```
@@ -58,6 +50,10 @@ const value: models.GetRoutesResponseBody3 = {
 
 ```typescript
 const value: models.GetRoutesResponseBody4 = {
+  limit: {
+    currentRoutes: 9222.27,
+    maxRoutes: 5613.61,
+  },
   routes: [
     {
       id: "<id>",
@@ -68,14 +64,10 @@ const value: models.GetRoutesResponseBody4 = {
     },
   ],
   version: {
-    id: "<id>",
-    s3Key: "<value>",
-    lastModified: 5613.61,
     createdBy: "<value>",
-  },
-  limit: {
-    maxRoutes: 6227.91,
-    currentRoutes: 4493.36,
+    id: "<id>",
+    lastModified: 4493.36,
+    s3Key: "<value>",
   },
 };
 ```

@@ -15,8 +15,8 @@ const value: models.CreateDrainFilter1 = {
 
 ```typescript
 const value: models.CreateDrainFilter2 = {
-  type: "odata",
   text: "<value>",
+  type: "odata",
 };
 ```
 

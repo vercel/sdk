@@ -5,11 +5,11 @@ Similar to `contentHints`, but should not be exposed to the user.
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsInternalContentHint } from "@vercel/sdk/models/updatemicrofrontendsprojectsfunctiondefaultmemorytype.js";
+import { UpdateMicrofrontendsInternalContentHint } from "@vercel/sdk/models/updatemicrofrontendshaskey.js";
 
 let value: UpdateMicrofrontendsInternalContentHint = {
-  type: "flags-secret",
   encryptedValue: "<value>",
+  type: "flags-secret",
 };
 ```
 
@@ -17,5 +17,5 @@ let value: UpdateMicrofrontendsInternalContentHint = {
 
 | Field                                                                                                                                                                      | Type                                                                                                                                                                       | Required                                                                                                                                                                   | Description                                                                                                                                                                |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `type`                                                                                                                                                                     | [models.UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyEnvType](../models/updatemicrofrontendsprojectsresponse200applicationjsonresponsebodyenvtype.md) | :heavy_check_mark:                                                                                                                                                         | N/A                                                                                                                                                                        |
 | `encryptedValue`                                                                                                                                                           | *string*                                                                                                                                                                   | :heavy_check_mark:                                                                                                                                                         | Contains the `value` of the env variable, encrypted with a special key to make decryption possible in the subscriber Lambda.                                               |
+| `type`                                                                                                                                                                     | [models.UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyEnvType](../models/updatemicrofrontendsprojectsresponse200applicationjsonresponsebodyenvtype.md) | :heavy_check_mark:                                                                                                                                                         | N/A                                                                                                                                                                        |

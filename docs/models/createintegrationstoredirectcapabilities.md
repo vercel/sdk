@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateIntegrationStoreDirectCapabilities } from "@vercel/sdk/models/createintegrationstoredirectpropertiesintegrationsitems.js";
+import { CreateIntegrationStoreDirectCapabilities } from "@vercel/sdk/models/createintegrationstoredirectpropertiesintegrationsresponse200uioptions.js";
 
 let value: CreateIntegrationStoreDirectCapabilities = {};
 ```
@@ -12,21 +12,21 @@ let value: CreateIntegrationStoreDirectCapabilities = {};
 
 | Field                                               | Type                                                | Required                                            | Description                                         |
 | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| `agentTools`                                        | *boolean*                                           | :heavy_minus_sign:                                  | N/A                                                 |
+| `autoSensitive`                                     | *boolean*                                           | :heavy_minus_sign:                                  | N/A                                                 |
+| `billable`                                          | *boolean*                                           | :heavy_minus_sign:                                  | N/A                                                 |
+| `connectedImportResource`                           | *boolean*                                           | :heavy_minus_sign:                                  | N/A                                                 |
+| `databaseUI`                                        | *boolean*                                           | :heavy_minus_sign:                                  | N/A                                                 |
+| `importResource`                                    | *boolean*                                           | :heavy_minus_sign:                                  | N/A                                                 |
+| `linking`                                           | *boolean*                                           | :heavy_minus_sign:                                  | N/A                                                 |
 | `mcp`                                               | *boolean*                                           | :heavy_minus_sign:                                  | N/A                                                 |
 | `mcpReadonly`                                       | *boolean*                                           | :heavy_minus_sign:                                  | N/A                                                 |
-| `sso`                                               | *boolean*                                           | :heavy_minus_sign:                                  | N/A                                                 |
-| `billable`                                          | *boolean*                                           | :heavy_minus_sign:                                  | N/A                                                 |
-| `transferable`                                      | *boolean*                                           | :heavy_minus_sign:                                  | N/A                                                 |
-| `secretsSync`                                       | *boolean*                                           | :heavy_minus_sign:                                  | N/A                                                 |
-| `secretRotation`                                    | *models.CreateIntegrationStoreDirectSecretRotation* | :heavy_minus_sign:                                  | N/A                                                 |
-| `sandbox`                                           | *boolean*                                           | :heavy_minus_sign:                                  | N/A                                                 |
-| `linking`                                           | *boolean*                                           | :heavy_minus_sign:                                  | N/A                                                 |
-| `projects`                                          | *boolean*                                           | :heavy_minus_sign:                                  | N/A                                                 |
-| `v0`                                                | *boolean*                                           | :heavy_minus_sign:                                  | N/A                                                 |
-| `importResource`                                    | *boolean*                                           | :heavy_minus_sign:                                  | N/A                                                 |
-| `connectedImportResource`                           | *boolean*                                           | :heavy_minus_sign:                                  | N/A                                                 |
 | `nativeImportResource`                              | *boolean*                                           | :heavy_minus_sign:                                  | N/A                                                 |
-| `databaseUI`                                        | *boolean*                                           | :heavy_minus_sign:                                  | N/A                                                 |
+| `projects`                                          | *boolean*                                           | :heavy_minus_sign:                                  | N/A                                                 |
+| `sandbox`                                           | *boolean*                                           | :heavy_minus_sign:                                  | N/A                                                 |
+| `secretRotation`                                    | *models.CreateIntegrationStoreDirectSecretRotation* | :heavy_minus_sign:                                  | N/A                                                 |
+| `secretsSync`                                       | *boolean*                                           | :heavy_minus_sign:                                  | N/A                                                 |
+| `sso`                                               | *boolean*                                           | :heavy_minus_sign:                                  | N/A                                                 |
+| `transferable`                                      | *boolean*                                           | :heavy_minus_sign:                                  | N/A                                                 |
+| `v0`                                                | *boolean*                                           | :heavy_minus_sign:                                  | N/A                                                 |
 | `v0Flavors`                                         | *boolean*                                           | :heavy_minus_sign:                                  | N/A                                                 |
-| `autoSensitive`                                     | *boolean*                                           | :heavy_minus_sign:                                  | N/A                                                 |
-| `agentTools`                                        | *boolean*                                           | :heavy_minus_sign:                                  | N/A                                                 |

@@ -18,7 +18,7 @@ import {
 import {
   GetProjectsRequest,
   GetProjectsRequest$outboundSchema,
-} from "../models/getprojectsresponsebodyprojectsresponse200applicationjson3action.js";
+} from "../models/getprojectsresponsebodyprojectsconsolidatedgitcommitstatus.js";
 import {
   ConnectionError,
   InvalidRequestError,

@@ -10,6 +10,41 @@ import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
+ * Categories that group this event type with related event types.
+ */
+export const ListEventTypeCategories = {
+  Account: "account",
+  Ai: "ai",
+  AiGateway: "ai-gateway",
+  Billing: "billing",
+  Connect: "connect",
+  Deployment: "deployment",
+  Domain: "domain",
+  Edge: "edge",
+  EnvVariable: "env-variable",
+  FeatureFlags: "feature-flags",
+  Firewall: "firewall",
+  Integration: "integration",
+  Microfrontends: "microfrontends",
+  Network: "network",
+  Observability: "observability",
+  Other: "other",
+  Project: "project",
+  Security: "security",
+  Storage: "storage",
+  Team: "team",
+  V0: "v0",
+  VercelApp: "vercel-app",
+  Workflow: "workflow",
+} as const;
+/**
+ * Categories that group this event type with related event types.
+ */
+export type ListEventTypeCategories = ClosedEnum<
+  typeof ListEventTypeCategories
+>;
+
+/**
  * The name of the event type.
  */
 export const Name = {
@@ -372,6 +407,7 @@ export const Name = {
   OrganizationDelete: "organization-delete",
   OrganizationDsyncGroupDelete: "organization-dsync-group-delete",
   OrganizationDsyncGroupUpsert: "organization-dsync-group-upsert",
+  OrganizationEmuUpdated: "organization-emu-updated",
   OrganizationSlugUpdate: "organization-slug-update",
   OrganizationTeamAdd: "organization-team-add",
   OrganizationTeamCreate: "organization-team-create",
@@ -434,6 +470,8 @@ export const Name = {
   ProjectCronJobsToggled: "project-cron-jobs-toggled",
   ProjectCustomEnvironmentCreated: "project-custom-environment-created",
   ProjectCustomEnvironmentDeleted: "project-custom-environment-deleted",
+  ProjectCustomEnvironmentSchedulesDefaultUpdated:
+    "project-custom-environment-schedules-default-updated",
   ProjectCustomEnvironmentUpdated: "project-custom-environment-updated",
   ProjectCustomerSuccessCodeVisibilityUpdated:
     "project-customer-success-code-visibility-updated",
@@ -746,41 +784,6 @@ export const Name = {
  * The name of the event type.
  */
 export type Name = ClosedEnum<typeof Name>;
-
-/**
- * Categories that group this event type with related event types.
- */
-export const ListEventTypeCategories = {
-  Account: "account",
-  Ai: "ai",
-  AiGateway: "ai-gateway",
-  Billing: "billing",
-  Connect: "connect",
-  Deployment: "deployment",
-  Domain: "domain",
-  Edge: "edge",
-  EnvVariable: "env-variable",
-  FeatureFlags: "feature-flags",
-  Firewall: "firewall",
-  Integration: "integration",
-  Microfrontends: "microfrontends",
-  Network: "network",
-  Observability: "observability",
-  Other: "other",
-  Project: "project",
-  Security: "security",
-  Storage: "storage",
-  Team: "team",
-  V0: "v0",
-  VercelApp: "vercel-app",
-  Workflow: "workflow",
-} as const;
-/**
- * Categories that group this event type with related event types.
- */
-export type ListEventTypeCategories = ClosedEnum<
-  typeof ListEventTypeCategories
->;
 
 /**
  * Event type names that supersede this deprecated event type.
@@ -1145,6 +1148,7 @@ export const ReplacedBy = {
   OrganizationDelete: "organization-delete",
   OrganizationDsyncGroupDelete: "organization-dsync-group-delete",
   OrganizationDsyncGroupUpsert: "organization-dsync-group-upsert",
+  OrganizationEmuUpdated: "organization-emu-updated",
   OrganizationSlugUpdate: "organization-slug-update",
   OrganizationTeamAdd: "organization-team-add",
   OrganizationTeamCreate: "organization-team-create",
@@ -1207,6 +1211,8 @@ export const ReplacedBy = {
   ProjectCronJobsToggled: "project-cron-jobs-toggled",
   ProjectCustomEnvironmentCreated: "project-custom-environment-created",
   ProjectCustomEnvironmentDeleted: "project-custom-environment-deleted",
+  ProjectCustomEnvironmentSchedulesDefaultUpdated:
+    "project-custom-environment-schedules-default-updated",
   ProjectCustomEnvironmentUpdated: "project-custom-environment-updated",
   ProjectCustomerSuccessCodeVisibilityUpdated:
     "project-customer-success-code-visibility-updated",
@@ -1525,14 +1531,6 @@ export type ReplacedBy = ClosedEnum<typeof ReplacedBy>;
  */
 export type ListEventType = {
   /**
-   * The name of the event type.
-   */
-  name: Name;
-  /**
-   * Description of the event, visible to users in the Activity dashboard and docs.
-   */
-  description: string;
-  /**
    * Categories that group this event type with related event types.
    */
   categories: Array<ListEventTypeCategories>;
@@ -1541,20 +1539,28 @@ export type ListEventType = {
    */
   deprecated?: boolean | undefined;
   /**
+   * Description of the event, visible to users in the Activity dashboard and docs.
+   */
+  description: string;
+  /**
+   * The name of the event type.
+   */
+  name: Name;
+  /**
    * Event type names that supersede this deprecated event type.
    */
   replacedBy?: Array<ReplacedBy> | undefined;
 };
 
 /** @internal */
-export const Name$inboundSchema: z.ZodNativeEnum<typeof Name> = z.nativeEnum(
-  Name,
-);
-
-/** @internal */
 export const ListEventTypeCategories$inboundSchema: z.ZodNativeEnum<
   typeof ListEventTypeCategories
 > = z.nativeEnum(ListEventTypeCategories);
+
+/** @internal */
+export const Name$inboundSchema: z.ZodNativeEnum<typeof Name> = z.nativeEnum(
+  Name,
+);
 
 /** @internal */
 export const ReplacedBy$inboundSchema: z.ZodNativeEnum<typeof ReplacedBy> = z
@@ -1566,10 +1572,10 @@ export const ListEventType$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: Name$inboundSchema,
-  description: types.string(),
   categories: z.array(ListEventTypeCategories$inboundSchema),
   deprecated: types.optional(types.boolean()),
+  description: types.string(),
+  name: Name$inboundSchema,
   replacedBy: types.optional(z.array(ReplacedBy$inboundSchema)),
 });
 

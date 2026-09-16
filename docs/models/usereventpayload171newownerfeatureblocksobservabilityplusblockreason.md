@@ -1,0 +1,17 @@
+# UserEventPayload171NewOwnerFeatureBlocksObservabilityPlusBlockReason
+
+## Example Usage
+
+```typescript
+import { UserEventPayload171NewOwnerFeatureBlocksObservabilityPlusBlockReason } from "@vercel/sdk/models/usereventpayload171newownerfeatureblocksworkflowstoragewriteblockreason.js";
+
+let value:
+  UserEventPayload171NewOwnerFeatureBlocksObservabilityPlusBlockReason =
+    "admin_override";
+```
+
+## Values
+
+```typescript
+"admin_override" | "hard_blocked" | "limits_exceeded"
+```

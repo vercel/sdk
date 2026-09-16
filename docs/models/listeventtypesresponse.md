@@ -8,11 +8,14 @@ Response returned by the List Event Types endpoint.
 import { ListEventTypesResponse } from "@vercel/sdk/models/listeventtypesresponse.js";
 
 let value: ListEventTypesResponse = {
-  types: [],
-  categories: [
+  categories: [],
+  types: [
     {
-      name: "account",
-      label: "<value>",
+      categories: [
+        "deployment",
+      ],
+      description: "hopelessly busy for",
+      name: "project-rolling-release-continued",
     },
   ],
 };
@@ -22,5 +25,5 @@ let value: ListEventTypesResponse = {
 
 | Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
 | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `types`                                                                                    | [models.ListEventType](../models/listeventtype.md)[]                                       | :heavy_check_mark:                                                                         | N/A                                                                                        |
 | `categories`                                                                               | [models.ListEventTypesResponseCategories](../models/listeventtypesresponsecategories.md)[] | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `types`                                                                                    | [models.ListEventType](../models/listeventtype.md)[]                                       | :heavy_check_mark:                                                                         | N/A                                                                                        |

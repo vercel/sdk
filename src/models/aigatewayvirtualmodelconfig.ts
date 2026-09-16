@@ -10,6 +10,29 @@ import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
+ * Use caching if available.
+ */
+export const Caching = {
+  Auto: "auto",
+} as const;
+/**
+ * Use caching if available.
+ */
+export type Caching = ClosedEnum<typeof Caching>;
+
+/**
+ * Limit providers to those with these features.
+ */
+export const Has = {
+  ImplicitCaching: "implicit-caching",
+  Vision: "vision",
+} as const;
+/**
+ * Limit providers to those with these features.
+ */
+export type Has = ClosedEnum<typeof Has>;
+
+/**
  * Pin scope: `specific` (one provider region), `zone` (geo zone), or `global`.
  */
 export const AiGatewayVirtualModelConfigInferenceRegionScope = {
@@ -29,10 +52,6 @@ export type AiGatewayVirtualModelConfigInferenceRegionScope = ClosedEnum<
  */
 export type Providers = {
   /**
-   * Pin scope: `specific` (one provider region), `zone` (geo zone), or `global`.
-   */
-  scope?: AiGatewayVirtualModelConfigInferenceRegionScope | undefined;
-  /**
    * Geo zone (e.g. "us", "eu").
    */
   geoRegion?: string | undefined;
@@ -40,6 +59,10 @@ export type Providers = {
    * Provider-specific region identifier.
    */
   providerRegion?: string | undefined;
+  /**
+   * Pin scope: `specific` (one provider region), `zone` (geo zone), or `global`.
+   */
+  scope?: AiGatewayVirtualModelConfigInferenceRegionScope | undefined;
 };
 
 /**
@@ -62,14 +85,6 @@ export type AiGatewayVirtualModelConfigScope = ClosedEnum<
  */
 export type InferenceRegion = {
   /**
-   * Per-provider region overrides keyed by provider slug.
-   */
-  providers?: { [k: string]: Providers | null } | undefined;
-  /**
-   * Pin scope: `specific` (one provider region), `zone` (geo zone), or `global`.
-   */
-  scope?: AiGatewayVirtualModelConfigScope | undefined;
-  /**
    * Geo zone (e.g. "us", "eu").
    */
   geoRegion?: string | undefined;
@@ -77,6 +92,21 @@ export type InferenceRegion = {
    * Provider-specific region identifier.
    */
   providerRegion?: string | undefined;
+  /**
+   * Per-provider region overrides keyed by provider slug.
+   */
+  providers?: { [k: string]: Providers | null } | undefined;
+  /**
+   * Pin scope: `specific` (one provider region), `zone` (geo zone), or `global`.
+   */
+  scope?: AiGatewayVirtualModelConfigScope | undefined;
+};
+
+/**
+ * Per-request provider timeouts in ms, keyed by provider slug for BYOK credentials.
+ */
+export type ProviderTimeouts = {
+  byok?: { [k: string]: number } | undefined;
 };
 
 /**
@@ -92,6 +122,19 @@ export const Selector = {
  * For kind=router: how to order candidates.
  */
 export type Selector = ClosedEnum<typeof Selector>;
+
+/**
+ * Service tier for providers that support it.
+ */
+export const ServiceTier = {
+  Fast: "fast",
+  Flex: "flex",
+  Priority: "priority",
+} as const;
+/**
+ * Service tier for providers that support it.
+ */
+export type ServiceTier = ClosedEnum<typeof ServiceTier>;
 
 /**
  * Rank eligible providers by an attribute.
@@ -110,49 +153,6 @@ export const Sort = {
 export type Sort = ClosedEnum<typeof Sort>;
 
 /**
- * Limit providers to those with these features.
- */
-export const Has = {
-  ImplicitCaching: "implicit-caching",
-  Vision: "vision",
-} as const;
-/**
- * Limit providers to those with these features.
- */
-export type Has = ClosedEnum<typeof Has>;
-
-/**
- * Use caching if available.
- */
-export const Caching = {
-  Auto: "auto",
-} as const;
-/**
- * Use caching if available.
- */
-export type Caching = ClosedEnum<typeof Caching>;
-
-/**
- * Service tier for providers that support it.
- */
-export const ServiceTier = {
-  Fast: "fast",
-  Flex: "flex",
-  Priority: "priority",
-} as const;
-/**
- * Service tier for providers that support it.
- */
-export type ServiceTier = ClosedEnum<typeof ServiceTier>;
-
-/**
- * Per-request provider timeouts in ms, keyed by provider slug for BYOK credentials.
- */
-export type ProviderTimeouts = {
-  byok?: { [k: string]: number } | undefined;
-};
-
-/**
  * Only use fastest providers with short timeouts.
  */
 export const Speed = {
@@ -168,53 +168,77 @@ export type Speed = ClosedEnum<typeof Speed>;
  */
 export type AiGatewayVirtualModelConfig = {
   /**
-   * Team (owner) that owns this VMC.
+   * Allow fallback from fast to standard providers on failure.
    */
-  ownerId: string;
-  /**
-   * Client-facing alias used as the model slug in Gateway calls.
-   */
-  virtualModelSlug: string;
-  /**
-   * Human-readable name for UI.
-   */
-  displayName?: string | undefined;
-  /**
-   * Optional description for UI.
-   */
-  description?: string | undefined;
-  /**
-   * Whether this VMC is soft-deleted.
-   */
-  deleted: boolean;
-  /**
-   * UI lifecycle status: draft, active, or archived.
-   */
-  status: string;
-  /**
-   * Visibility in listings: public, internal, or stealth.
-   */
-  visibility?: string | undefined;
-  /**
-   * User id that last updated this VMC.
-   */
-  updatedBy?: string | undefined;
-  /**
-   * VMC kind: alias, relay, or router.
-   */
-  kind: string;
+  allowFallbackFromFast?: boolean | undefined;
   /**
    * For kind=relay: URL the gateway forwards requests to as a transparent proxy.
    */
   baseUrl?: string | undefined;
   /**
+   * BYOK credential IDs allowed for this VMC.
+   */
+  byokCredentialIds?: Array<string> | undefined;
+  /**
+   * Use caching if available.
+   */
+  caching?: Caching | undefined;
+  /**
+   * Creation timestamp (epoch ms).
+   */
+  createdAt: number;
+  /**
+   * Whether this VMC is soft-deleted.
+   */
+  deleted: boolean;
+  /**
+   * Optional description for UI.
+   */
+  description?: string | undefined;
+  /**
+   * Only use providers that will not train on your prompts.
+   */
+  disallowPromptTraining?: boolean | undefined;
+  /**
+   * Human-readable name for UI.
+   */
+  displayName?: string | undefined;
+  /**
+   * Limit providers to those with these features.
+   */
+  has?: Array<Has> | undefined;
+  /**
+   * Only use HIPAA-compliant providers.
+   */
+  hipaaCompliant?: boolean | undefined;
+  /**
+   * Region pinned on the VMC for system-credential routing (alias/router only).
+   */
+  inferenceRegion?: InferenceRegion | undefined;
+  /**
    * The concrete model-provider instance this VMC resolves to.
    */
   instanceId?: string | undefined;
   /**
-   * Ordered list of providers to try as fallbacks on failure.
+   * VMC kind: alias, relay, or router.
    */
-  providerOrder?: Array<string> | undefined;
+  kind: string;
+  /**
+   * For kind=router: ordered candidates, model slugs or router references. Otherwise: fallback models.
+   */
+  models?: Array<string> | undefined;
+  /**
+   * Canonical model slug this VMC maps to (e.g. "creator/model"). Not used by kind=router.
+   */
+  modelSlug?: string | undefined;
+  /**
+   * Observability tags attached to requests through this VMC.
+   */
+  observabilityTags?: Array<string> | undefined;
+  /**
+   * Team (owner) that owns this VMC.
+   */
+  ownerId: string;
   /**
    * Restrict routing to only these providers.
    */
@@ -224,82 +248,65 @@ export type AiGatewayVirtualModelConfig = {
    */
   providerOptions?: { [k: string]: { [k: string]: any } } | undefined;
   /**
-   * Region pinned on the VMC for system-credential routing (alias/router only).
+   * Ordered list of providers to try as fallbacks on failure.
    */
-  inferenceRegion?: InferenceRegion | undefined;
-  /**
-   * Canonical model slug this VMC maps to (e.g. "creator/model"). Not used by kind=router.
-   */
-  modelSlug?: string | undefined;
-  /**
-   * For kind=router: ordered candidates, model slugs or router references. Otherwise: fallback models.
-   */
-  models?: Array<string> | undefined;
-  /**
-   * For kind=router: how to order candidates.
-   */
-  selector?: Selector | undefined;
-  /**
-   * For kind=router: capability tags a candidate must have.
-   */
-  requires?: Array<string> | undefined;
-  /**
-   * BYOK credential IDs allowed for this VMC.
-   */
-  byokCredentialIds?: Array<string> | undefined;
-  /**
-   * Observability tags attached to requests through this VMC.
-   */
-  observabilityTags?: Array<string> | undefined;
-  /**
-   * Rank eligible providers by an attribute.
-   */
-  sort?: Sort | undefined;
-  /**
-   * Limit providers to those with these features.
-   */
-  has?: Array<Has> | undefined;
-  /**
-   * Use caching if available.
-   */
-  caching?: Caching | undefined;
-  /**
-   * Service tier for providers that support it.
-   */
-  serviceTier?: ServiceTier | undefined;
+  providerOrder?: Array<string> | undefined;
   /**
    * Per-request provider timeouts in ms, keyed by provider slug for BYOK credentials.
    */
   providerTimeouts?: ProviderTimeouts | undefined;
   /**
-   * Only use providers with zero data retention.
+   * For kind=router: capability tags a candidate must have.
    */
-  zeroDataRetention?: boolean | undefined;
+  requires?: Array<string> | undefined;
   /**
-   * Only use HIPAA-compliant providers.
+   * For kind=router: how to order candidates.
    */
-  hipaaCompliant?: boolean | undefined;
+  selector?: Selector | undefined;
   /**
-   * Only use providers that will not train on your prompts.
+   * Service tier for providers that support it.
    */
-  disallowPromptTraining?: boolean | undefined;
+  serviceTier?: ServiceTier | undefined;
+  /**
+   * Rank eligible providers by an attribute.
+   */
+  sort?: Sort | undefined;
   /**
    * Only use fastest providers with short timeouts.
    */
   speed?: Speed | undefined;
   /**
-   * Allow fallback from fast to standard providers on failure.
+   * UI lifecycle status: draft, active, or archived.
    */
-  allowFallbackFromFast?: boolean | undefined;
-  /**
-   * Creation timestamp (epoch ms).
-   */
-  createdAt: number;
+  status: string;
   /**
    * Last update timestamp (epoch ms).
    */
   updatedAt: number;
+  /**
+   * User id that last updated this VMC.
+   */
+  updatedBy?: string | undefined;
+  /**
+   * Client-facing alias used as the model slug in Gateway calls.
+   */
+  virtualModelSlug: string;
+  /**
+   * Visibility in listings: public, internal, or stealth.
+   */
+  visibility?: string | undefined;
+  /**
+   * Only use providers with zero data retention.
+   */
+  zeroDataRetention?: boolean | undefined;
 };
+
+/** @internal */
+export const Caching$inboundSchema: z.ZodNativeEnum<typeof Caching> = z
+  .nativeEnum(Caching);
+
+/** @internal */
+export const Has$inboundSchema: z.ZodNativeEnum<typeof Has> = z.nativeEnum(Has);
 
 /** @internal */
 export const AiGatewayVirtualModelConfigInferenceRegionScope$inboundSchema:
@@ -312,11 +319,11 @@ export const Providers$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  geoRegion: types.optional(types.string()),
+  providerRegion: types.optional(types.string()),
   scope: types.optional(
     AiGatewayVirtualModelConfigInferenceRegionScope$inboundSchema,
   ),
-  geoRegion: types.optional(types.string()),
-  providerRegion: types.optional(types.string()),
 });
 
 export function providersFromJSON(
@@ -340,12 +347,12 @@ export const InferenceRegion$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  geoRegion: types.optional(types.string()),
+  providerRegion: types.optional(types.string()),
   providers: types.optional(
     z.record(types.nullable(z.lazy(() => Providers$inboundSchema))),
   ),
   scope: types.optional(AiGatewayVirtualModelConfigScope$inboundSchema),
-  geoRegion: types.optional(types.string()),
-  providerRegion: types.optional(types.string()),
 });
 
 export function inferenceRegionFromJSON(
@@ -357,26 +364,6 @@ export function inferenceRegionFromJSON(
     `Failed to parse 'InferenceRegion' from JSON`,
   );
 }
-
-/** @internal */
-export const Selector$inboundSchema: z.ZodNativeEnum<typeof Selector> = z
-  .nativeEnum(Selector);
-
-/** @internal */
-export const Sort$inboundSchema: z.ZodNativeEnum<typeof Sort> = z.nativeEnum(
-  Sort,
-);
-
-/** @internal */
-export const Has$inboundSchema: z.ZodNativeEnum<typeof Has> = z.nativeEnum(Has);
-
-/** @internal */
-export const Caching$inboundSchema: z.ZodNativeEnum<typeof Caching> = z
-  .nativeEnum(Caching);
-
-/** @internal */
-export const ServiceTier$inboundSchema: z.ZodNativeEnum<typeof ServiceTier> = z
-  .nativeEnum(ServiceTier);
 
 /** @internal */
 export const ProviderTimeouts$inboundSchema: z.ZodType<
@@ -398,6 +385,19 @@ export function providerTimeoutsFromJSON(
 }
 
 /** @internal */
+export const Selector$inboundSchema: z.ZodNativeEnum<typeof Selector> = z
+  .nativeEnum(Selector);
+
+/** @internal */
+export const ServiceTier$inboundSchema: z.ZodNativeEnum<typeof ServiceTier> = z
+  .nativeEnum(ServiceTier);
+
+/** @internal */
+export const Sort$inboundSchema: z.ZodNativeEnum<typeof Sort> = z.nativeEnum(
+  Sort,
+);
+
+/** @internal */
 export const Speed$inboundSchema: z.ZodNativeEnum<typeof Speed> = z.nativeEnum(
   Speed,
 );
@@ -408,41 +408,41 @@ export const AiGatewayVirtualModelConfig$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  ownerId: types.string(),
-  virtualModelSlug: types.string(),
-  displayName: types.optional(types.string()),
-  description: types.optional(types.string()),
-  deleted: types.boolean(),
-  status: types.string(),
-  visibility: types.optional(types.string()),
-  updatedBy: types.optional(types.string()),
-  kind: types.string(),
+  allowFallbackFromFast: types.optional(types.boolean()),
   baseUrl: types.optional(types.string()),
+  byokCredentialIds: types.optional(z.array(types.string())),
+  caching: types.optional(Caching$inboundSchema),
+  createdAt: types.number(),
+  deleted: types.boolean(),
+  description: types.optional(types.string()),
+  disallowPromptTraining: types.optional(types.boolean()),
+  displayName: types.optional(types.string()),
+  has: types.optional(z.array(Has$inboundSchema)),
+  hipaaCompliant: types.optional(types.boolean()),
+  inferenceRegion: types.optional(z.lazy(() => InferenceRegion$inboundSchema)),
   instanceId: types.optional(types.string()),
-  providerOrder: types.optional(z.array(types.string())),
+  kind: types.string(),
+  models: types.optional(z.array(types.string())),
+  modelSlug: types.optional(types.string()),
+  observabilityTags: types.optional(z.array(types.string())),
+  ownerId: types.string(),
   providerOnly: types.optional(z.array(types.string())),
   providerOptions: types.optional(z.record(z.record(z.any()))),
-  inferenceRegion: types.optional(z.lazy(() => InferenceRegion$inboundSchema)),
-  modelSlug: types.optional(types.string()),
-  models: types.optional(z.array(types.string())),
-  selector: types.optional(Selector$inboundSchema),
-  requires: types.optional(z.array(types.string())),
-  byokCredentialIds: types.optional(z.array(types.string())),
-  observabilityTags: types.optional(z.array(types.string())),
-  sort: types.optional(Sort$inboundSchema),
-  has: types.optional(z.array(Has$inboundSchema)),
-  caching: types.optional(Caching$inboundSchema),
-  serviceTier: types.optional(ServiceTier$inboundSchema),
+  providerOrder: types.optional(z.array(types.string())),
   providerTimeouts: types.optional(
     z.lazy(() => ProviderTimeouts$inboundSchema),
   ),
-  zeroDataRetention: types.optional(types.boolean()),
-  hipaaCompliant: types.optional(types.boolean()),
-  disallowPromptTraining: types.optional(types.boolean()),
+  requires: types.optional(z.array(types.string())),
+  selector: types.optional(Selector$inboundSchema),
+  serviceTier: types.optional(ServiceTier$inboundSchema),
+  sort: types.optional(Sort$inboundSchema),
   speed: types.optional(Speed$inboundSchema),
-  allowFallbackFromFast: types.optional(types.boolean()),
-  createdAt: types.number(),
+  status: types.string(),
   updatedAt: types.number(),
+  updatedBy: types.optional(types.string()),
+  virtualModelSlug: types.string(),
+  visibility: types.optional(types.string()),
+  zeroDataRetention: types.optional(types.boolean()),
 });
 
 export function aiGatewayVirtualModelConfigFromJSON(

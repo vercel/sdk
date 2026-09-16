@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyBranchMatcher } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson1securitymanagedrulesaction.js";
+import { ResponseBodyBranchMatcher } from "@vercel/sdk/models/getprojectslogheaders2.js";
 
 let value: ResponseBodyBranchMatcher = {
-  type: "startsWith",
   pattern: "<value>",
+  type: "startsWith",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: ResponseBodyBranchMatcher = {
 
 | Field                                                                                                                | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
 | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `type`                                                                                                               | [models.GetProjectsResponseBodyProjectsResponse200Type](../models/getprojectsresponsebodyprojectsresponse200type.md) | :heavy_check_mark:                                                                                                   | The type of matching to perform                                                                                      |
 | `pattern`                                                                                                            | *string*                                                                                                             | :heavy_check_mark:                                                                                                   | The pattern to match against branch names                                                                            |
+| `type`                                                                                                               | [models.GetProjectsResponseBodyProjectsResponse200Type](../models/getprojectsresponsebodyprojectsresponse200type.md) | :heavy_check_mark:                                                                                                   | The type of matching to perform                                                                                      |

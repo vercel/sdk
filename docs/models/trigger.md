@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { Trigger } from "@vercel/sdk/models/includefiles.js";
+import { Trigger } from "@vercel/sdk/models/payloadnext.js";
 
-let value: Trigger = "queue";
+let value: Trigger = "domain_verified";
 ```
 
 ## Values
 
 ```typescript
-"queue" | "schedule" | "workflow"
+"directory_sync_updated" | "domain_deleted" | "domain_verified" | "saml_updated" | "team_attached" | "team_participation_updated" | "toggle"
 ```

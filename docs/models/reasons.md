@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { Reasons } from "@vercel/sdk/models/threehundredandfortytwo.js";
+import { Reasons } from "@vercel/sdk/models/payloadmostspecificsubdivision.js";
 
 let value: Reasons = {
-  slug: "<value>",
   description: "indeed mmm jagged brave within",
+  slug: "<value>",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: Reasons = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `slug`             | *string*           | :heavy_check_mark: | N/A                |
 | `description`      | *string*           | :heavy_check_mark: | N/A                |
+| `slug`             | *string*           | :heavy_check_mark: | N/A                |

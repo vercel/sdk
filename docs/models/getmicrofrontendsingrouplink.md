@@ -7,8 +7,6 @@
 
 ```typescript
 const value: models.GetMicrofrontendsInGroupLink1 = {
-  org: "<value>",
-  type: "github",
   deployHooks: [
     {
       id: "<id>",
@@ -18,7 +16,9 @@ const value: models.GetMicrofrontendsInGroupLink1 = {
     },
   ],
   gitCredentialId: "<id>",
+  org: "<value>",
   productionBranch: "<value>",
+  type: "github",
 };
 ```
 
@@ -26,11 +26,11 @@ const value: models.GetMicrofrontendsInGroupLink1 = {
 
 ```typescript
 const value: models.GetMicrofrontendsInGroupLink2 = {
-  type: "github-limited",
-  org: "<value>",
   deployHooks: [],
   gitCredentialId: "<id>",
+  org: "<value>",
   productionBranch: "<value>",
+  type: "github-limited",
 };
 ```
 
@@ -38,12 +38,19 @@ const value: models.GetMicrofrontendsInGroupLink2 = {
 
 ```typescript
 const value: models.GetMicrofrontendsInGroupLink3 = {
-  org: "<value>",
-  type: "github-custom-host",
-  host: "stormy-gripper.net",
-  deployHooks: [],
+  deployHooks: [
+    {
+      id: "<id>",
+      name: "<value>",
+      ref: "<value>",
+      url: "https://recent-gray.info/",
+    },
+  ],
   gitCredentialId: "<id>",
+  host: "remorseful-newsprint.org",
+  org: "<value>",
   productionBranch: "<value>",
+  type: "github-custom-host",
 };
 ```
 
@@ -51,15 +58,15 @@ const value: models.GetMicrofrontendsInGroupLink3 = {
 
 ```typescript
 const value: models.GetMicrofrontendsInGroupLink4 = {
-  projectId: "<id>",
-  projectName: "<value>",
-  projectNameWithNamespace: "<value>",
-  projectNamespace: "<value>",
-  projectUrl: "https://tame-switchboard.com/",
-  type: "gitlab",
   deployHooks: [],
   gitCredentialId: "<id>",
   productionBranch: "<value>",
+  projectId: "<id>",
+  projectName: "<value>",
+  projectNamespace: "<value>",
+  projectNameWithNamespace: "<value>",
+  projectUrl: "https://unfinished-best-seller.com",
+  type: "gitlab",
 };
 ```
 
@@ -67,22 +74,15 @@ const value: models.GetMicrofrontendsInGroupLink4 = {
 
 ```typescript
 const value: models.GetMicrofrontendsInGroupLink5 = {
-  name: "<value>",
-  slug: "<value>",
-  owner: "<value>",
-  type: "bitbucket",
-  uuid: "63f1a314-fad3-4ee1-ad2b-06f0eecc0dc8",
-  workspaceUuid: "<id>",
-  deployHooks: [
-    {
-      id: "<id>",
-      name: "<value>",
-      ref: "<value>",
-      url: "https://whirlwind-dead.net",
-    },
-  ],
+  deployHooks: [],
   gitCredentialId: "<id>",
+  name: "<value>",
+  owner: "<value>",
   productionBranch: "<value>",
+  slug: "<value>",
+  type: "bitbucket",
+  uuid: "3f1a314f-ad3e-4e1d-a2b0-6f0eecc0dc8a",
+  workspaceUuid: "<id>",
 };
 ```
 
@@ -90,13 +90,13 @@ const value: models.GetMicrofrontendsInGroupLink5 = {
 
 ```typescript
 const value: models.GetMicrofrontendsInGroupLink6 = {
+  deployHooks: [],
+  gitCredentialId: "<id>",
   org: "<value>",
+  productionBranch: "<value>",
   repo: "<value>",
   repoId: "<id>",
   type: "vercel",
-  deployHooks: [],
-  gitCredentialId: "<id>",
-  productionBranch: "<value>",
 };
 ```
 
@@ -104,10 +104,6 @@ const value: models.GetMicrofrontendsInGroupLink6 = {
 
 ```typescript
 const value: models.GetMicrofrontendsInGroupLink7 = {
-  org: "<value>",
-  repo: "<value>",
-  repoId: "<id>",
-  type: "v0",
   deployHooks: [
     {
       id: "<id>",
@@ -117,7 +113,11 @@ const value: models.GetMicrofrontendsInGroupLink7 = {
     },
   ],
   gitCredentialId: "<id>",
+  org: "<value>",
   productionBranch: "<value>",
+  repo: "<value>",
+  repoId: "<id>",
+  type: "v0",
 };
 ```
 
@@ -125,14 +125,14 @@ const value: models.GetMicrofrontendsInGroupLink7 = {
 
 ```typescript
 const value: models.GetMicrofrontendsInGroupLink8 = {
-  owner: "<value>",
-  repo: "<value>",
-  repoId: "<id>",
-  ownerId: "<id>",
-  type: "cursor-origin",
   deployHooks: [],
   gitCredentialId: "<id>",
+  owner: "<value>",
+  ownerId: "<id>",
   productionBranch: "<value>",
+  repo: "<value>",
+  repoId: "<id>",
+  type: "cursor-origin",
 };
 ```
 

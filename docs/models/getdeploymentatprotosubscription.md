@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetDeploymentAtprotoSubscription } from "@vercel/sdk/models/getdeploymentmissingdeployments1.js";
+import { GetDeploymentAtprotoSubscription } from "@vercel/sdk/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody215type.js";
 
 let value: GetDeploymentAtprotoSubscription = {
   collections: [],

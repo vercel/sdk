@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { Totp } from "@vercel/sdk/models/usereventpayloadtarget.js";
+import { Totp } from "@vercel/sdk/models/onehundredandfortyeight.js";
 
 let value: Totp = {
-  secret: "<value>",
   createdAt: 1292.35,
+  secret: "<value>",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: Totp = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `secret`           | *string*           | :heavy_check_mark: | N/A                |
 | `createdAt`        | *number*           | :heavy_check_mark: | N/A                |
+| `secret`           | *string*           | :heavy_check_mark: | N/A                |

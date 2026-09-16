@@ -7,8 +7,8 @@ import { SearchRepoResponseBody3 } from "@vercel/sdk/models/searchrepoop.js";
 
 let value: SearchRepoResponseBody3 = {
   gitAccount: {
-    provider: "<value>",
     namespaceId: "<id>",
+    provider: "<value>",
   },
   repos: [],
 };

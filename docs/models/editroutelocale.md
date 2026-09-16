@@ -12,5 +12,5 @@ let value: EditRouteLocale = {};
 
 | Field                    | Type                     | Required                 | Description              |
 | ------------------------ | ------------------------ | ------------------------ | ------------------------ |
-| `redirect`               | Record<string, *string*> | :heavy_minus_sign:       | N/A                      |
 | `cookie`                 | *string*                 | :heavy_minus_sign:       | N/A                      |
+| `redirect`               | Record<string, *string*> | :heavy_minus_sign:       | N/A                      |

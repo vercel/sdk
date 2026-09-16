@@ -7,11 +7,11 @@
 
 ```typescript
 const value: models.GetProjectsLinkProjectsResponse1 = {
-  org: "<value>",
-  type: "github",
   deployHooks: [],
   gitCredentialId: "<id>",
+  org: "<value>",
   productionBranch: "<value>",
+  type: "github",
 };
 ```
 
@@ -19,8 +19,6 @@ const value: models.GetProjectsLinkProjectsResponse1 = {
 
 ```typescript
 const value: models.GetProjectsLinkProjectsResponse2 = {
-  type: "github-limited",
-  org: "<value>",
   deployHooks: [
     {
       id: "<id>",
@@ -30,7 +28,9 @@ const value: models.GetProjectsLinkProjectsResponse2 = {
     },
   ],
   gitCredentialId: "<id>",
+  org: "<value>",
   productionBranch: "<value>",
+  type: "github-limited",
 };
 ```
 
@@ -38,19 +38,12 @@ const value: models.GetProjectsLinkProjectsResponse2 = {
 
 ```typescript
 const value: models.GetProjectsLinkProjectsResponse3 = {
-  org: "<value>",
-  type: "github-custom-host",
-  host: "ill-essence.net",
-  deployHooks: [
-    {
-      id: "<id>",
-      name: "<value>",
-      ref: "<value>",
-      url: "https://lonely-dash.com/",
-    },
-  ],
+  deployHooks: [],
   gitCredentialId: "<id>",
+  host: "frilly-polarisation.org",
+  org: "<value>",
   productionBranch: "<value>",
+  type: "github-custom-host",
 };
 ```
 
@@ -58,15 +51,15 @@ const value: models.GetProjectsLinkProjectsResponse3 = {
 
 ```typescript
 const value: models.GetProjectsLinkProjectsResponse4 = {
-  projectId: "<id>",
-  projectName: "<value>",
-  projectNameWithNamespace: "<value>",
-  projectNamespace: "<value>",
-  projectUrl: "https://whirlwind-disclosure.info/",
-  type: "gitlab",
   deployHooks: [],
   gitCredentialId: "<id>",
   productionBranch: "<value>",
+  projectId: "<id>",
+  projectName: "<value>",
+  projectNamespace: "<value>",
+  projectNameWithNamespace: "<value>",
+  projectUrl: "https://fake-finger.info",
+  type: "gitlab",
 };
 ```
 
@@ -74,22 +67,22 @@ const value: models.GetProjectsLinkProjectsResponse4 = {
 
 ```typescript
 const value: models.GetProjectsLinkProjectsResponse5 = {
-  name: "<value>",
-  slug: "<value>",
-  owner: "<value>",
-  type: "bitbucket",
-  uuid: "cd0c74d6-a58d-4ce8-be87-ff9c820f2f35",
-  workspaceUuid: "<id>",
   deployHooks: [
     {
       id: "<id>",
       name: "<value>",
       ref: "<value>",
-      url: "https://upbeat-decryption.name",
+      url: "https://apprehensive-sanity.info",
     },
   ],
   gitCredentialId: "<id>",
+  name: "<value>",
+  owner: "<value>",
   productionBranch: "<value>",
+  slug: "<value>",
+  type: "bitbucket",
+  uuid: "4d6a58dc-e8e8-47ff-a9c8-20f2f35cdce3",
+  workspaceUuid: "<id>",
 };
 ```
 
@@ -97,13 +90,13 @@ const value: models.GetProjectsLinkProjectsResponse5 = {
 
 ```typescript
 const value: models.GetProjectsLinkProjectsResponse6 = {
+  deployHooks: [],
+  gitCredentialId: "<id>",
   org: "<value>",
+  productionBranch: "<value>",
   repo: "<value>",
   repoId: "<id>",
   type: "vercel",
-  deployHooks: [],
-  gitCredentialId: "<id>",
-  productionBranch: "<value>",
 };
 ```
 
@@ -111,13 +104,13 @@ const value: models.GetProjectsLinkProjectsResponse6 = {
 
 ```typescript
 const value: models.GetProjectsLinkProjectsResponse7 = {
+  deployHooks: [],
+  gitCredentialId: "<id>",
   org: "<value>",
+  productionBranch: "<value>",
   repo: "<value>",
   repoId: "<id>",
   type: "v0",
-  deployHooks: [],
-  gitCredentialId: "<id>",
-  productionBranch: "<value>",
 };
 ```
 
@@ -125,14 +118,14 @@ const value: models.GetProjectsLinkProjectsResponse7 = {
 
 ```typescript
 const value: models.GetProjectsLinkProjectsResponse8 = {
-  owner: "<value>",
-  repo: "<value>",
-  repoId: "<id>",
-  ownerId: "<id>",
-  type: "cursor-origin",
   deployHooks: [],
   gitCredentialId: "<id>",
+  owner: "<value>",
+  ownerId: "<id>",
   productionBranch: "<value>",
+  repo: "<value>",
+  repoId: "<id>",
+  type: "cursor-origin",
 };
 ```
 

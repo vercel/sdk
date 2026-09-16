@@ -6,8 +6,8 @@
 import { RemoveProjectEnvContentHintProjectsResponse9 } from "@vercel/sdk/models/removeprojectenvop.js";
 
 let value: RemoveProjectEnvContentHintProjectsResponse9 = {
-  type: "postgres-url-non-pooling",
   storeId: "<id>",
+  type: "postgres-url-non-pooling",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: RemoveProjectEnvContentHintProjectsResponse9 = {
 
 | Field                        | Type                         | Required                     | Description                  |
 | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-| `type`                       | *"postgres-url-non-pooling"* | :heavy_check_mark:           | N/A                          |
 | `storeId`                    | *string*                     | :heavy_check_mark:           | N/A                          |
+| `type`                       | *"postgres-url-non-pooling"* | :heavy_check_mark:           | N/A                          |

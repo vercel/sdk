@@ -7,8 +7,8 @@
 
 ```typescript
 const value: models.TeamEnvironments1 = {
-  type: "system",
   target: "production",
+  type: "system",
 };
 ```
 
@@ -16,8 +16,8 @@ const value: models.TeamEnvironments1 = {
 
 ```typescript
 const value: models.Environments2 = {
-  type: "custom",
   environmentId: "<id>",
+  type: "custom",
 };
 ```
 

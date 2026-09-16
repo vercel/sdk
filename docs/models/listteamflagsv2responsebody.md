@@ -11,62 +11,69 @@ let value: ListTeamFlagsV2ResponseBody = {
   },
   data: [
     {
-      variants: [
-        {
-          value: false,
-          id: "<id>",
-        },
-      ],
-      id: "<id>",
+      createdAt: 5840.18,
+      createdBy: "<value>",
       environments: {
         "key": {
+          active: false,
+          fallthrough: {
+            base: {
+              attribute: "<value>",
+              kind: "<value>",
+              type: "entity",
+            },
+            defaultVariantId: "<id>",
+            rollFromVariantId: "<id>",
+            rollToVariantId: "<id>",
+            slots: [],
+            startTimestamp: 1190.68,
+            type: "rollout",
+          },
           pausedOutcome: {
             type: "variant",
             variantId: "<id>",
           },
-          fallthrough: {
-            type: "rollout",
-            base: {
-              type: "entity",
-              kind: "<value>",
-              attribute: "<value>",
-            },
-            defaultVariantId: "<id>",
-            startTimestamp: 6873.48,
-            rollFromVariantId: "<id>",
-            rollToVariantId: "<id>",
-            slots: [],
-          },
-          active: true,
           rules: [
             {
-              id: "<id>",
-              outcome: {
-                type: "experiment",
-              },
               conditions: [
                 {
+                  cmp: "contains",
                   lhs: {
-                    type: "segment",
+                    attribute: "<value>",
+                    kind: "<value>",
+                    type: "entity",
                   },
-                  cmp: "containsAnyOf",
                 },
               ],
+              id: "<id>",
+              outcome: {
+                base: {
+                  attribute: "<value>",
+                  kind: "<value>",
+                  type: "entity",
+                },
+                defaultVariantId: "<id>",
+                rollFromVariantId: "<id>",
+                rollToVariantId: "<id>",
+                slots: [],
+                startTimestamp: 2235.64,
+                type: "rollout",
+              },
             },
           ],
         },
       },
+      id: "<id>",
       kind: "boolean",
-      revision: 2207.59,
-      seed: 6040.34,
-      state: "active",
-      slug: "<value>",
-      createdAt: 2092.69,
-      updatedAt: 2009.9,
-      createdBy: "<value>",
       ownerId: "<id>",
       projectId: "<id>",
+      revision: 2207.59,
+      seed: 6040.34,
+      slug: "<value>",
+      state: "active",
       typeName: "flag",
+      updatedAt: 2092.69,
+      variants: [],
     },
   ],
 };

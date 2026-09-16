@@ -3,15 +3,15 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsCreator1 } from "@vercel/sdk/models/updatemicrofrontendsprojectsfunctiondefaultmemorytype.js";
+import { UpdateMicrofrontendsCreator1 } from "@vercel/sdk/models/updatemicrofrontendshaskey.js";
 
 let value: UpdateMicrofrontendsCreator1 = {
   type: "user",
   via: {
-    type: "app",
     app: {
       id: "<id>",
     },
+    type: "app",
   },
   user: {
     id: "<id>",

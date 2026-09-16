@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetSecurityFirewallConfigRulesType } from "@vercel/sdk/models/getsecurityfirewallconfiglogheaderssecurityresponse200applicationjsonresponsebodydraftrules2.js";
+import { GetSecurityFirewallConfigRulesType } from "@vercel/sdk/models/getsecurityfirewallconfigrulessecurityresponse200applicationjsonresponsebodydraft2actionaction.js";
 
 let value: GetSecurityFirewallConfigRulesType = "shared_condition";
 ```

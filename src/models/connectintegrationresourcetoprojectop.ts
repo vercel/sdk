@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { ClosedEnum } from "../types/enums.js";
+import { smartUnion } from "../types/smartUnion.js";
 
 export const EnvVarEnvironments = {
   Production: "production",
@@ -13,9 +14,11 @@ export const EnvVarEnvironments = {
 } as const;
 export type EnvVarEnvironments = ClosedEnum<typeof EnvVarEnvironments>;
 
+export type EnvVarEnvironmentsTarget = EnvVarEnvironments | string;
+
 export type ConnectIntegrationResourceToProjectRequestBody = {
   projectId: string;
-  envVarEnvironments?: Array<EnvVarEnvironments> | undefined;
+  envVarEnvironments?: Array<EnvVarEnvironments | string> | undefined;
   makeEnvVarsSensitive?: boolean | undefined;
 };
 
@@ -39,9 +42,27 @@ export const EnvVarEnvironments$outboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(EnvVarEnvironments);
 
 /** @internal */
+export type EnvVarEnvironmentsTarget$Outbound = string | string;
+
+/** @internal */
+export const EnvVarEnvironmentsTarget$outboundSchema: z.ZodType<
+  EnvVarEnvironmentsTarget$Outbound,
+  z.ZodTypeDef,
+  EnvVarEnvironmentsTarget
+> = smartUnion([EnvVarEnvironments$outboundSchema, z.string()]);
+
+export function envVarEnvironmentsTargetToJSON(
+  envVarEnvironmentsTarget: EnvVarEnvironmentsTarget,
+): string {
+  return JSON.stringify(
+    EnvVarEnvironmentsTarget$outboundSchema.parse(envVarEnvironmentsTarget),
+  );
+}
+
+/** @internal */
 export type ConnectIntegrationResourceToProjectRequestBody$Outbound = {
   projectId: string;
-  envVarEnvironments?: Array<string> | undefined;
+  envVarEnvironments?: Array<string | string> | undefined;
   makeEnvVarsSensitive?: boolean | undefined;
 };
 
@@ -53,7 +74,9 @@ export const ConnectIntegrationResourceToProjectRequestBody$outboundSchema:
     ConnectIntegrationResourceToProjectRequestBody
   > = z.object({
     projectId: z.string(),
-    envVarEnvironments: z.array(EnvVarEnvironments$outboundSchema).optional(),
+    envVarEnvironments: z.array(
+      smartUnion([EnvVarEnvironments$outboundSchema, z.string()]),
+    ).optional(),
     makeEnvVarsSensitive: z.boolean().optional(),
   });
 

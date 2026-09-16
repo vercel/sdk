@@ -7,8 +7,8 @@
 
 ```typescript
 const value: models.Scopes1 = {
-  type: "user",
   createdAt: 6949.11,
+  type: "user",
 };
 ```
 
@@ -16,9 +16,9 @@ const value: models.Scopes1 = {
 
 ```typescript
 const value: models.Scopes2 = {
-  type: "team",
-  teamId: "<id>",
   createdAt: 7880.82,
+  teamId: "<id>",
+  type: "team",
 };
 ```
 

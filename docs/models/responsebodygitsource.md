@@ -7,8 +7,8 @@
 
 ```typescript
 const value: models.GetDeploymentGitSource1 = {
-  type: "github",
   repoId: 2047.24,
+  type: "github",
 };
 ```
 
@@ -16,9 +16,9 @@ const value: models.GetDeploymentGitSource1 = {
 
 ```typescript
 const value: models.GetDeploymentGitSource2 = {
-  type: "github",
   org: "<value>",
   repo: "<value>",
+  type: "github",
 };
 ```
 
@@ -26,9 +26,9 @@ const value: models.GetDeploymentGitSource2 = {
 
 ```typescript
 const value: models.GetDeploymentGitSource3 = {
-  type: "github-custom-host",
   host: "querulous-papa.name",
   repoId: "<id>",
+  type: "github-custom-host",
 };
 ```
 
@@ -36,19 +36,19 @@ const value: models.GetDeploymentGitSource3 = {
 
 ```typescript
 const value: models.GetDeploymentGitSource4 = {
-  type: "github-custom-host",
   host: "outstanding-shoulder.org",
   org: "<value>",
   repo: "<value>",
+  type: "github-custom-host",
 };
 ```
 
-### `models.GetDeploymentGitSourceDeployments5`
+### `models.GetDeploymentGitSource5`
 
 ```typescript
-const value: models.GetDeploymentGitSourceDeployments5 = {
+const value: models.GetDeploymentGitSource5 = {
+  repoId: "<id>",
   type: "github-limited",
-  repoId: 8837.73,
 };
 ```
 
@@ -56,9 +56,9 @@ const value: models.GetDeploymentGitSourceDeployments5 = {
 
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments6 = {
-  type: "github-limited",
   org: "<value>",
   repo: "<value>",
+  type: "github-limited",
 };
 ```
 
@@ -66,8 +66,8 @@ const value: models.GetDeploymentGitSourceDeployments6 = {
 
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments7 = {
-  type: "gitlab",
   projectId: "<id>",
+  type: "gitlab",
 };
 ```
 
@@ -75,8 +75,8 @@ const value: models.GetDeploymentGitSourceDeployments7 = {
 
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments8 = {
-  type: "bitbucket",
   repoUuid: "<id>",
+  type: "bitbucket",
 };
 ```
 
@@ -84,9 +84,9 @@ const value: models.GetDeploymentGitSourceDeployments8 = {
 
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments9 = {
-  type: "bitbucket",
   owner: "<value>",
   slug: "<value>",
+  type: "bitbucket",
 };
 ```
 
@@ -94,8 +94,8 @@ const value: models.GetDeploymentGitSourceDeployments9 = {
 
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments10 = {
-  type: "vercel",
   sha: "<value>",
+  type: "vercel",
 };
 ```
 
@@ -103,8 +103,8 @@ const value: models.GetDeploymentGitSourceDeployments10 = {
 
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments11 = {
-  type: "cursor-origin",
   repoId: "<id>",
+  type: "cursor-origin",
 };
 ```
 
@@ -112,10 +112,10 @@ const value: models.GetDeploymentGitSourceDeployments11 = {
 
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments12 = {
-  type: "custom",
+  gitUrl: "https://bright-heartbeat.biz",
   ref: "<value>",
   sha: "<value>",
-  gitUrl: "https://bright-heartbeat.biz",
+  type: "custom",
 };
 ```
 
@@ -123,10 +123,10 @@ const value: models.GetDeploymentGitSourceDeployments12 = {
 
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments13 = {
-  type: "github",
   ref: "<value>",
-  sha: "<value>",
   repoId: 4465.75,
+  sha: "<value>",
+  type: "github",
 };
 ```
 
@@ -134,11 +134,11 @@ const value: models.GetDeploymentGitSourceDeployments13 = {
 
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments14 = {
-  type: "github-custom-host",
   host: "discrete-cope.com",
   ref: "<value>",
-  sha: "<value>",
   repoId: 996.12,
+  sha: "<value>",
+  type: "github-custom-host",
 };
 ```
 
@@ -146,10 +146,10 @@ const value: models.GetDeploymentGitSourceDeployments14 = {
 
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments15 = {
-  type: "github-limited",
   ref: "<value>",
-  sha: "<value>",
   repoId: 139.24,
+  sha: "<value>",
+  type: "github-limited",
 };
 ```
 
@@ -157,10 +157,10 @@ const value: models.GetDeploymentGitSourceDeployments15 = {
 
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments16 = {
-  type: "gitlab",
+  projectId: 3708.56,
   ref: "<value>",
   sha: "<value>",
-  projectId: 3708.56,
+  type: "gitlab",
 };
 ```
 
@@ -168,11 +168,11 @@ const value: models.GetDeploymentGitSourceDeployments16 = {
 
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments17 = {
-  type: "bitbucket",
   ref: "<value>",
-  sha: "<value>",
-  workspaceUuid: "<id>",
   repoUuid: "<id>",
+  sha: "<value>",
+  type: "bitbucket",
+  workspaceUuid: "<id>",
 };
 ```
 
@@ -180,11 +180,11 @@ const value: models.GetDeploymentGitSourceDeployments17 = {
 
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments18 = {
-  type: "vercel",
-  ref: "<value>",
-  sha: "<value>",
   org: "<value>",
+  ref: "<value>",
   repo: "<value>",
+  sha: "<value>",
+  type: "vercel",
 };
 ```
 
@@ -192,12 +192,12 @@ const value: models.GetDeploymentGitSourceDeployments18 = {
 
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments19 = {
-  type: "cursor-origin",
-  ref: "<value>",
-  sha: "<value>",
-  repoId: "<id>",
   owner: "<value>",
+  ref: "<value>",
   repo: "<value>",
+  repoId: "<id>",
+  sha: "<value>",
+  type: "cursor-origin",
 };
 ```
 

@@ -5,7 +5,7 @@
 ```typescript
 import {
   CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema4Type,
-} from "@vercel/sdk/models/createintegrationstoredirectprotocolsettings.js";
+} from "@vercel/sdk/models/logdrainstatus.js";
 
 let value:
   CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema4Type =

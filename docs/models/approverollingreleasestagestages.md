@@ -8,12 +8,12 @@ All stages configured for this rolling release
 import { ApproveRollingReleaseStageStages } from "@vercel/sdk/models/approverollingreleasestageop.js";
 
 let value: ApproveRollingReleaseStageStages = {
+  duration: null,
   index: 0,
   isFinalStage: false,
-  targetPercentage: 25,
-  requireApproval: true,
-  duration: null,
   linearShift: false,
+  requireApproval: true,
+  targetPercentage: 25,
 };
 ```
 
@@ -21,9 +21,9 @@ let value: ApproveRollingReleaseStageStages = {
 
 | Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              | Example                                                                                  |
 | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `duration`                                                                               | *number*                                                                                 | :heavy_check_mark:                                                                       | Duration in seconds for automatic advancement, null for manual stages or the final stage | null                                                                                     |
 | `index`                                                                                  | *number*                                                                                 | :heavy_check_mark:                                                                       | The zero-based index of the stage                                                        | 0                                                                                        |
 | `isFinalStage`                                                                           | *boolean*                                                                                | :heavy_check_mark:                                                                       | Whether or not this stage is the final stage (targetPercentage === 100)                  | false                                                                                    |
-| `targetPercentage`                                                                       | *number*                                                                                 | :heavy_check_mark:                                                                       | The percentage of traffic to serve to the canary deployment (0-100)                      | 25                                                                                       |
-| `requireApproval`                                                                        | *boolean*                                                                                | :heavy_check_mark:                                                                       | Whether or not this stage requires manual approval to proceed                            |                                                                                          |
-| `duration`                                                                               | *number*                                                                                 | :heavy_check_mark:                                                                       | Duration in seconds for automatic advancement, null for manual stages or the final stage | null                                                                                     |
 | `linearShift`                                                                            | *boolean*                                                                                | :heavy_minus_sign:                                                                       | Whether to linearly shift traffic over the duration of this stage                        | false                                                                                    |
+| `requireApproval`                                                                        | *boolean*                                                                                | :heavy_check_mark:                                                                       | Whether or not this stage requires manual approval to proceed                            |                                                                                          |
+| `targetPercentage`                                                                       | *number*                                                                                 | :heavy_check_mark:                                                                       | The percentage of traffic to serve to the canary deployment (0-100)                      | 25                                                                                       |

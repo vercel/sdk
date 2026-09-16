@@ -32,13 +32,13 @@ export type ConnectServiceSyncStatus = ClosedEnum<
  */
 export type ConnectServiceSync = {
   /**
-   * done means the external service was updated. required means the Vercel update was saved, but provider-side configuration still needs attention.
-   */
-  status: ConnectServiceSyncStatus;
-  /**
    * Provider synchronization errors. Present when serviceSync.status is required.
    */
   errors?: Array<ConnectServiceSyncError> | undefined;
+  /**
+   * done means the external service was updated. required means the Vercel update was saved, but provider-side configuration still needs attention.
+   */
+  status: ConnectServiceSyncStatus;
 };
 
 /** @internal */
@@ -52,8 +52,8 @@ export const ConnectServiceSync$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  status: ConnectServiceSyncStatus$inboundSchema,
   errors: types.optional(z.array(ConnectServiceSyncError$inboundSchema)),
+  status: ConnectServiceSyncStatus$inboundSchema,
 });
 
 export function connectServiceSyncFromJSON(

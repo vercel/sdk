@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectSandbox } from "@vercel/sdk/models/getprojectrollingrelease.js";
+import { GetProjectSandbox } from "@vercel/sdk/models/getprojectfrompreset.js";
 
 let value: GetProjectSandbox = {};
 ```
@@ -12,5 +12,5 @@ let value: GetProjectSandbox = {};
 
 | Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `region`                                                                     | [models.GetProjectRegion](../models/getprojectregion.md)                     | :heavy_minus_sign:                                                           | N/A                                                                          |
 | `failoverRegions`                                                            | [models.GetProjectFailoverRegions](../models/getprojectfailoverregions.md)[] | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `region`                                                                     | [models.GetProjectRegion](../models/getprojectregion.md)                     | :heavy_minus_sign:                                                           | N/A                                                                          |

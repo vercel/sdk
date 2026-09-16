@@ -8,8 +8,8 @@ import { GetProjectDomainsResponseBody1 } from "@vercel/sdk/models/getprojectdom
 let value: GetProjectDomainsResponseBody1 = {
   domains: [
     {
-      name: "<value>",
       apexName: "<value>",
+      name: "<value>",
       projectId: "<id>",
       verified: true,
     },

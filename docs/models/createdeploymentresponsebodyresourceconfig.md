@@ -5,7 +5,7 @@ Build resource configuration snapshot for this deployment.
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentResponseBodyResourceConfig } from "@vercel/sdk/models/createdeploymentresponsebody.js";
+import { CreateDeploymentResponseBodyResourceConfig } from "@vercel/sdk/models/createdeploymentresponsebodydeploymentsstatus.js";
 
 let value: CreateDeploymentResponseBodyResourceConfig = {};
 ```

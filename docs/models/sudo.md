@@ -6,8 +6,8 @@
 import { Sudo } from "@vercel/sdk/models/authtoken.js";
 
 let value: Sudo = {
+  expiresAt: 3326.47,
   origin: "otp",
-  expiresAt: 2002.64,
 };
 ```
 
@@ -15,6 +15,6 @@ let value: Sudo = {
 
 | Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
 | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `expiresAt`                                                          | *number*                                                             | :heavy_check_mark:                                                   | N/A                                                                  |
 | `origin`                                                             | [models.AuthTokenScopes1Origin](../models/authtokenscopes1origin.md) | :heavy_check_mark:                                                   | Possible step-up auth origins                                        |
 | `verifiedAt`                                                         | *number*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |
-| `expiresAt`                                                          | *number*                                                             | :heavy_check_mark:                                                   | N/A                                                                  |

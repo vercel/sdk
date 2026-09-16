@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsHasProjects1 } from "@vercel/sdk/models/updatemicrofrontendsinternalroutes2.js";
+import { UpdateMicrofrontendsHasProjects1 } from "@vercel/sdk/models/updatemicrofrontendshaskey.js";
 
 let value: UpdateMicrofrontendsHasProjects1 = {
-  type: "header",
   key: "x-vercel-ip-country",
+  type: "header",
   value: {
     eq: "<value>",
   },
@@ -18,6 +18,6 @@ let value: UpdateMicrofrontendsHasProjects1 = {
 
 | Field                                                                                                            | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
 | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `type`                                                                                                           | *"header"*                                                                                                       | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
 | `key`                                                                                                            | [models.UpdateMicrofrontendsHasProjectsKey](../models/updatemicrofrontendshasprojectskey.md)                     | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
+| `type`                                                                                                           | *"header"*                                                                                                       | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
 | `value`                                                                                                          | [models.UpdateMicrofrontendsHasProjectsResponseValue](../models/updatemicrofrontendshasprojectsresponsevalue.md) | :heavy_check_mark:                                                                                               | N/A                                                                                                              |

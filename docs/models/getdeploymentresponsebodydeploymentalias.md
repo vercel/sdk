@@ -5,11 +5,11 @@ Condensed check data. Retrieve individual check and check run data using api-che
 ## Example Usage
 
 ```typescript
-import { GetDeploymentResponseBodyDeploymentAlias } from "@vercel/sdk/models/getdeploymentresponsebody1.js";
+import { GetDeploymentResponseBodyDeploymentAlias } from "@vercel/sdk/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody215type.js";
 
 let value: GetDeploymentResponseBodyDeploymentAlias = {
+  startedAt: 119.46,
   state: "failed",
-  startedAt: 72.98,
 };
 ```
 
@@ -17,6 +17,6 @@ let value: GetDeploymentResponseBodyDeploymentAlias = {
 
 | Field                                                                                                                      | Type                                                                                                                       | Required                                                                                                                   | Description                                                                                                                |
 | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `state`                                                                                                                    | [models.GetDeploymentResponseBodyDeploymentsResponseState](../models/getdeploymentresponsebodydeploymentsresponsestate.md) | :heavy_check_mark:                                                                                                         | N/A                                                                                                                        |
-| `startedAt`                                                                                                                | *number*                                                                                                                   | :heavy_check_mark:                                                                                                         | N/A                                                                                                                        |
 | `completedAt`                                                                                                              | *number*                                                                                                                   | :heavy_minus_sign:                                                                                                         | N/A                                                                                                                        |
+| `startedAt`                                                                                                                | *number*                                                                                                                   | :heavy_check_mark:                                                                                                         | N/A                                                                                                                        |
+| `state`                                                                                                                    | [models.GetDeploymentResponseBodyDeploymentsResponseState](../models/getdeploymentresponsebodydeploymentsresponsestate.md) | :heavy_check_mark:                                                                                                         | N/A                                                                                                                        |

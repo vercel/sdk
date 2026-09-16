@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupOidcTokenConfig } from "@vercel/sdk/models/getmicrofrontendsingroupinternalroutes2.js";
+import { GetMicrofrontendsInGroupOidcTokenConfig } from "@vercel/sdk/models/getmicrofrontendsingroupfrom1.js";
 
 let value: GetMicrofrontendsInGroupOidcTokenConfig = {};
 ```

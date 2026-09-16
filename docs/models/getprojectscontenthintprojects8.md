@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsContentHintProjects8 } from "@vercel/sdk/models/getprojectsfromprojectsresponsepreset.js";
+import { GetProjectsContentHintProjects8 } from "@vercel/sdk/models/getprojectslinkprojects6.js";
 
 let value: GetProjectsContentHintProjects8 = {
-  type: "postgres-url",
   storeId: "<id>",
+  type: "postgres-url",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: GetProjectsContentHintProjects8 = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `type`             | *"postgres-url"*   | :heavy_check_mark: | N/A                |
 | `storeId`          | *string*           | :heavy_check_mark: | N/A                |
+| `type`             | *"postgres-url"*   | :heavy_check_mark: | N/A                |

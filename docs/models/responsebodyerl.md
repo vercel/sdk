@@ -3,16 +3,16 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyErl } from "@vercel/sdk/models/responsebodydeploymentexpiration.js";
+import { ResponseBodyErl } from "@vercel/sdk/models/responsebodyabuse.js";
 
 let value: ResponseBodyErl = {
   algo: "token_bucket",
-  window: 6874.54,
-  limit: 710.59,
   keys: [
     "<value 1>",
     "<value 2>",
   ],
+  limit: 710.59,
+  window: 6862.88,
 };
 ```
 
@@ -21,6 +21,6 @@ let value: ResponseBodyErl = {
 | Field                                                                                                                | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
 | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
 | `algo`                                                                                                               | [models.GetProjectsResponseBodyProjectsResponse200Algo](../models/getprojectsresponsebodyprojectsresponse200algo.md) | :heavy_check_mark:                                                                                                   | N/A                                                                                                                  |
-| `window`                                                                                                             | *number*                                                                                                             | :heavy_check_mark:                                                                                                   | N/A                                                                                                                  |
-| `limit`                                                                                                              | *number*                                                                                                             | :heavy_check_mark:                                                                                                   | N/A                                                                                                                  |
 | `keys`                                                                                                               | *string*[]                                                                                                           | :heavy_check_mark:                                                                                                   | N/A                                                                                                                  |
+| `limit`                                                                                                              | *number*                                                                                                             | :heavy_check_mark:                                                                                                   | N/A                                                                                                                  |
+| `window`                                                                                                             | *number*                                                                                                             | :heavy_check_mark:                                                                                                   | N/A                                                                                                                  |

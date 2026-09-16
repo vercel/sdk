@@ -7,8 +7,8 @@
 
 ```typescript
 const value: models.Credentials1 = {
-  type: "github-oauth-limited",
   id: "<id>",
+  type: "github-oauth-limited",
 };
 ```
 
@@ -16,8 +16,8 @@ const value: models.Credentials1 = {
 
 ```typescript
 const value: models.Credentials1 = {
-  type: "github-oauth-limited",
   id: "<id>",
+  type: "github-oauth-limited",
 };
 ```
 
@@ -25,8 +25,8 @@ const value: models.Credentials1 = {
 
 ```typescript
 const value: models.Credentials1 = {
-  type: "github-oauth-limited",
   id: "<id>",
+  type: "github-oauth-limited",
 };
 ```
 
@@ -34,8 +34,8 @@ const value: models.Credentials1 = {
 
 ```typescript
 const value: models.Credentials1 = {
-  type: "github-oauth-limited",
   id: "<id>",
+  type: "github-oauth-limited",
 };
 ```
 
@@ -43,8 +43,8 @@ const value: models.Credentials1 = {
 
 ```typescript
 const value: models.Credentials1 = {
-  type: "github-oauth-limited",
   id: "<id>",
+  type: "github-oauth-limited",
 };
 ```
 
@@ -52,8 +52,8 @@ const value: models.Credentials1 = {
 
 ```typescript
 const value: models.Credentials1 = {
-  type: "github-oauth-limited",
   id: "<id>",
+  type: "github-oauth-limited",
 };
 ```
 
@@ -61,8 +61,8 @@ const value: models.Credentials1 = {
 
 ```typescript
 const value: models.Credentials1 = {
-  type: "github-oauth-limited",
   id: "<id>",
+  type: "github-oauth-limited",
 };
 ```
 
@@ -70,8 +70,8 @@ const value: models.Credentials1 = {
 
 ```typescript
 const value: models.Credentials1 = {
-  type: "github-oauth-limited",
   id: "<id>",
+  type: "github-oauth-limited",
 };
 ```
 
@@ -79,9 +79,9 @@ const value: models.Credentials1 = {
 
 ```typescript
 const value: models.Credentials2 = {
-  type: "github-oauth-custom-host",
   host: "silver-perp.biz",
   id: "<id>",
+  type: "github-oauth-custom-host",
 };
 ```
 

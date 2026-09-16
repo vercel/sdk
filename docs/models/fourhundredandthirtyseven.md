@@ -5,29 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndThirtySeven } from "@vercel/sdk/models/fourhundredandnine.js";
+import { FourHundredAndThirtySeven } from "@vercel/sdk/models/threehundredandninetynine.js";
 
 let value: FourHundredAndThirtySeven = {
-  team: {
-    name: "<value>",
-    id: "<id>",
-  },
-  configuration: {
-    id: "<id>",
-  },
-  peering: {
-    id: "<id>",
-    accountId: "<id>",
-    region: "<value>",
-    vpcId: "<id>",
-  },
+  nextProjectCount: 561.23,
+  previousProjectCount: 7009.75,
 };
 ```
 
 ## Fields
 
-| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `team`                                                                                   | [models.UserEventPayload437Team](../models/usereventpayload437team.md)                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `configuration`                                                                          | [models.UserEventPayload437Configuration](../models/usereventpayload437configuration.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `peering`                                                                                | [models.Peering](../models/peering.md)                                                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| Field                  | Type                   | Required               | Description            |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `nextProjectCount`     | *number*               | :heavy_check_mark:     | N/A                    |
+| `previousProjectCount` | *number*               | :heavy_check_mark:     | N/A                    |

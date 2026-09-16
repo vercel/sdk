@@ -102,20 +102,20 @@ export type GetConfigurableLogDrainFramework = ClosedEnum<
 >;
 
 export type ProjectsMetadata = {
-  id: string;
-  name: string;
   framework?: GetConfigurableLogDrainFramework | null | undefined;
+  id: string;
   latestDeployment?: string | undefined;
+  name: string;
 };
 
 export type GetConfigurableLogDrainResponseBody = {
-  createdFrom: string;
   clientId?: string | undefined;
   configurationId?: string | undefined;
-  projectsMetadata?: Array<ProjectsMetadata> | null | undefined;
-  integrationIcon?: string | undefined;
+  createdFrom: string;
   integrationConfigurationUri?: string | undefined;
+  integrationIcon?: string | undefined;
   integrationWebsite?: string | undefined;
+  projectsMetadata?: Array<ProjectsMetadata> | null | undefined;
 };
 
 /** @internal */
@@ -157,11 +157,11 @@ export const ProjectsMetadata$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: types.string(),
-  name: types.string(),
   framework: z.nullable(GetConfigurableLogDrainFramework$inboundSchema)
     .optional(),
+  id: types.string(),
   latestDeployment: types.optional(types.string()),
+  name: types.string(),
 });
 
 export function projectsMetadataFromJSON(
@@ -180,15 +180,15 @@ export const GetConfigurableLogDrainResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  createdFrom: types.string(),
   clientId: types.optional(types.string()),
   configurationId: types.optional(types.string()),
+  createdFrom: types.string(),
+  integrationConfigurationUri: types.optional(types.string()),
+  integrationIcon: types.optional(types.string()),
+  integrationWebsite: types.optional(types.string()),
   projectsMetadata: z.nullable(
     z.array(z.lazy(() => ProjectsMetadata$inboundSchema)),
   ).optional(),
-  integrationIcon: types.optional(types.string()),
-  integrationConfigurationUri: types.optional(types.string()),
-  integrationWebsite: types.optional(types.string()),
 });
 
 export function getConfigurableLogDrainResponseBodyFromJSON(

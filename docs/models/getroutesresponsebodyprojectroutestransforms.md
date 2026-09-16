@@ -7,11 +7,11 @@
 
 ```typescript
 const value: models.GetRoutesTransformsProjectRoutesResponse1 = {
-  type: "request.headers",
-  op: "set",
+  op: "append",
   target: {
     key: {},
   },
+  type: "response.headers",
 };
 ```
 
@@ -19,11 +19,11 @@ const value: models.GetRoutesTransformsProjectRoutesResponse1 = {
 
 ```typescript
 const value: models.GetRoutesTransformsProjectRoutesResponse1 = {
-  type: "request.headers",
-  op: "set",
+  op: "append",
   target: {
     key: {},
   },
+  type: "response.headers",
 };
 ```
 
@@ -31,11 +31,11 @@ const value: models.GetRoutesTransformsProjectRoutesResponse1 = {
 
 ```typescript
 const value: models.GetRoutesTransformsProjectRoutesResponse1 = {
-  type: "request.headers",
-  op: "set",
+  op: "append",
   target: {
     key: {},
   },
+  type: "response.headers",
 };
 ```
 
@@ -43,9 +43,9 @@ const value: models.GetRoutesTransformsProjectRoutesResponse1 = {
 
 ```typescript
 const value: models.GetRoutesTransformsProjectRoutesResponse2 = {
-  type: "request.path",
-  op: "set",
   args: "<value>",
+  op: "set",
+  type: "request.path",
 };
 ```
 

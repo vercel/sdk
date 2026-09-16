@@ -12,6 +12,10 @@ import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import {
+  CancelDeploymentRequest,
+  CancelDeploymentRequest$outboundSchema,
+} from "../models/canceldeploymentresourceconfig.js";
+import {
   CancelDeploymentResponseBody,
   CancelDeploymentResponseBody$inboundSchema,
 } from "../models/canceldeploymentresponsebody.js";
@@ -22,10 +26,6 @@ import {
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/httpclienterrors.js";
-import {
-  CancelDeploymentRequest,
-  CancelDeploymentRequest$outboundSchema,
-} from "../models/locale.js";
 import { ResponseValidationError } from "../models/responsevalidationerror.js";
 import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import { VercelError } from "../models/vercelerror.js";

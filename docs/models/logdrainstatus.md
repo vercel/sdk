@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { LogDrainStatus } from "@vercel/sdk/models/createintegrationstoredirectprotocolsettings.js";
+import { LogDrainStatus } from "@vercel/sdk/models/logdrainstatus.js";
 
 let value: LogDrainStatus = "disabled";
 ```

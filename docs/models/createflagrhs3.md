@@ -6,12 +6,12 @@
 import { CreateFlagRhs3 } from "@vercel/sdk/models/createflagop.js";
 
 let value: CreateFlagRhs3 = {
-  type: "list/inline",
   items: [
     {
-      value: 5935.6,
+      value: "<value>",
     },
   ],
+  type: "list",
 };
 ```
 
@@ -19,5 +19,5 @@ let value: CreateFlagRhs3 = {
 
 | Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
 | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `type`                                                                             | [models.CreateFlagRhsFeatureFlagsType](../models/createflagrhsfeatureflagstype.md) | :heavy_check_mark:                                                                 | N/A                                                                                |
 | `items`                                                                            | *models.CreateFlagRhsFeatureFlagsItems*[]                                          | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `type`                                                                             | [models.CreateFlagRhsFeatureFlagsType](../models/createflagrhsfeatureflagstype.md) | :heavy_check_mark:                                                                 | N/A                                                                                |

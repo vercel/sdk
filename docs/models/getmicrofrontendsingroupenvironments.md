@@ -7,8 +7,8 @@
 
 ```typescript
 const value: models.GetMicrofrontendsInGroupEnvironments1 = {
-  type: "system",
   target: "production",
+  type: "system",
 };
 ```
 
@@ -16,8 +16,8 @@ const value: models.GetMicrofrontendsInGroupEnvironments1 = {
 
 ```typescript
 const value: models.GetMicrofrontendsInGroupEnvironmentsMicrofrontends2 = {
-  type: "custom",
   environmentId: "<id>",
+  type: "custom",
 };
 ```
 

@@ -5,11 +5,11 @@ Allowlist entry for GitHub and Bitbucket, whose repos are identified by a flat `
 ## Example Usage
 
 ```typescript
-import { CreateProjectSources1 } from "@vercel/sdk/models/createprojecthasprojectsresponse1.js";
+import { CreateProjectSources1 } from "@vercel/sdk/models/createprojectcontenthint2.js";
 
 let value: CreateProjectSources1 = {
-  provider: "bitbucket",
   org: "<value>",
+  provider: "bitbucket",
 };
 ```
 
@@ -17,6 +17,6 @@ let value: CreateProjectSources1 = {
 
 | Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
 | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `provider`                                                                                       | [models.CreateProjectSourcesProjectsProvider](../models/createprojectsourcesprojectsprovider.md) | :heavy_check_mark:                                                                               | N/A                                                                                              |
 | `org`                                                                                            | *string*                                                                                         | :heavy_check_mark:                                                                               | N/A                                                                                              |
+| `provider`                                                                                       | [models.CreateProjectSourcesProjectsProvider](../models/createprojectsourcesprojectsprovider.md) | :heavy_check_mark:                                                                               | N/A                                                                                              |
 | `repo`                                                                                           | *string*                                                                                         | :heavy_minus_sign:                                                                               | N/A                                                                                              |

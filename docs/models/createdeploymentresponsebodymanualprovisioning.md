@@ -5,7 +5,7 @@ Present when deployment was created with manual provisioning enabled, either exp
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentResponseBodyManualProvisioning } from "@vercel/sdk/models/createdeploymenthasdeploymentstype.js";
+import { CreateDeploymentResponseBodyManualProvisioning } from "@vercel/sdk/models/createdeploymentmissingdeploymentsresponse1.js";
 
 let value: CreateDeploymentResponseBodyManualProvisioning = {
   state: "TIMEOUT",
@@ -16,5 +16,5 @@ let value: CreateDeploymentResponseBodyManualProvisioning = {
 
 | Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
 | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `state`                                                                                    | [models.CreateDeploymentResponseBodyState](../models/createdeploymentresponsebodystate.md) | :heavy_check_mark:                                                                         | Current provisioning state                                                                 |
 | `completedAt`                                                                              | *number*                                                                                   | :heavy_minus_sign:                                                                         | Timestamp when manual provisioning completed                                               |
+| `state`                                                                                    | [models.CreateDeploymentResponseBodyState](../models/createdeploymentresponsebodystate.md) | :heavy_check_mark:                                                                         | Current provisioning state                                                                 |

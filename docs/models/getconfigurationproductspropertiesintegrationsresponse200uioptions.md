@@ -7,8 +7,8 @@
 
 ```typescript
 const value: models.GetConfigurationProductsUiOptionsIntegrations1 = {
-  value: "<value>",
   label: "<value>",
+  value: "<value>",
 };
 ```
 

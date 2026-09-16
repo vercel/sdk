@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsHasProjectsResponse1 } from "@vercel/sdk/models/getprojectsinternalroutesprojectsresponsehas.js";
+import { GetProjectsHasProjectsResponse1 } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponseto.js";
 
 let value: GetProjectsHasProjectsResponse1 = {
-  type: "header",
   key: "x-vercel-ip-country",
+  type: "header",
   value: {
     eq: "<value>",
   },
@@ -18,6 +18,6 @@ let value: GetProjectsHasProjectsResponse1 = {
 
 | Field                                                                                                                              | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
 | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `type`                                                                                                                             | *"header"*                                                                                                                         | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
 | `key`                                                                                                                              | [models.GetProjectsHasProjectsResponseKey](../models/getprojectshasprojectsresponsekey.md)                                         | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
+| `type`                                                                                                                             | *"header"*                                                                                                                         | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
 | `value`                                                                                                                            | [models.GetProjectsHasProjectsResponse200ApplicationJSONValue](../models/getprojectshasprojectsresponse200applicationjsonvalue.md) | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |

@@ -6,10 +6,10 @@
 import { FilterV2 } from "@vercel/sdk/models/createdrainop.js";
 
 let value: FilterV2 = {
-  version: "v2",
   filter: {
     type: "basic",
   },
+  version: "v2",
 };
 ```
 
@@ -17,5 +17,5 @@ let value: FilterV2 = {
 
 | Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
 | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `version`                                                                            | [models.CreateDrainResponseBodyVersion](../models/createdrainresponsebodyversion.md) | :heavy_check_mark:                                                                   | N/A                                                                                  |
 | `filter`                                                                             | *models.ResponseBodyFilter*                                                          | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `version`                                                                            | [models.CreateDrainResponseBodyVersion](../models/createdrainresponsebodyversion.md) | :heavy_check_mark:                                                                   | N/A                                                                                  |

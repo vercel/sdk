@@ -7,11 +7,11 @@
 
 ```typescript
 const value: models.UpdateMicrofrontendsProtectionBypass1 = {
+  configurationId: "<id>",
   createdAt: 4870.7,
   createdBy: "<value>",
-  scope: "integration-automation-bypass",
   integrationId: "<id>",
-  configurationId: "<id>",
+  scope: "integration-automation-bypass",
 };
 ```
 

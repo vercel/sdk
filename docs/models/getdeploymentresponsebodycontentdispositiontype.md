@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetDeploymentResponseBodyContentDispositionType } from "@vercel/sdk/models/getdeploymentgitsourcedeploymentsresponse200type.js";
+import { GetDeploymentResponseBodyContentDispositionType } from "@vercel/sdk/models/getdeploymentservicesfunctions.js";
 
 let value: GetDeploymentResponseBodyContentDispositionType = "attachment";
 ```

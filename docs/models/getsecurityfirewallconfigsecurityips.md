@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { GetSecurityFirewallConfigSecurityIps } from "@vercel/sdk/models/getsecurityfirewallconfigsecurityresponsemanagedrules.js";
+import { GetSecurityFirewallConfigSecurityIps } from "@vercel/sdk/models/getsecurityfirewallconfigrulesetssecurityresponse200action.js";
 
 let value: GetSecurityFirewallConfigSecurityIps = {
-  id: "<id>",
-  hostname: "bad-louse.info",
-  ip: "dffd:cfee:42c5:4694:98d7:22a2:beb3:afbc",
   action: "bypass",
+  hostname: "mushy-flame.net",
+  id: "<id>",
+  ip: "ffdc:fee4:2c54:6949:8d72:2a2b:eb3a:fbc5",
 };
 ```
 
@@ -17,8 +17,8 @@ let value: GetSecurityFirewallConfigSecurityIps = {
 
 | Field                                                                                                                  | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
 | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `id`                                                                                                                   | *string*                                                                                                               | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |
+| `action`                                                                                                               | [models.GetSecurityFirewallConfigSecurityResponseAction](../models/getsecurityfirewallconfigsecurityresponseaction.md) | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |
 | `hostname`                                                                                                             | *string*                                                                                                               | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |
+| `id`                                                                                                                   | *string*                                                                                                               | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |
 | `ip`                                                                                                                   | *string*                                                                                                               | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |
 | `notes`                                                                                                                | *string*                                                                                                               | :heavy_minus_sign:                                                                                                     | N/A                                                                                                                    |
-| `action`                                                                                                               | [models.GetSecurityFirewallConfigSecurityResponseAction](../models/getsecurityfirewallconfigsecurityresponseaction.md) | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |

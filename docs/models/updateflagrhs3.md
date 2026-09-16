@@ -6,12 +6,12 @@
 import { UpdateFlagRhs3 } from "@vercel/sdk/models/updateflagop.js";
 
 let value: UpdateFlagRhs3 = {
-  type: "list/inline",
   items: [
     {
-      value: 8890.17,
+      value: "<value>",
     },
   ],
+  type: "list",
 };
 ```
 
@@ -19,5 +19,5 @@ let value: UpdateFlagRhs3 = {
 
 | Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
 | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `type`                                                                             | [models.UpdateFlagRhsFeatureFlagsType](../models/updateflagrhsfeatureflagstype.md) | :heavy_check_mark:                                                                 | N/A                                                                                |
 | `items`                                                                            | *models.UpdateFlagRhsFeatureFlagsItems*[]                                          | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `type`                                                                             | [models.UpdateFlagRhsFeatureFlagsType](../models/updateflagrhsfeatureflagstype.md) | :heavy_check_mark:                                                                 | N/A                                                                                |

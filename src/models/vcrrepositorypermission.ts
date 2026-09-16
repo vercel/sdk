@@ -13,6 +13,10 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
  */
 export type VcrRepositoryPermission = {
   /**
+   * ISO 8601 timestamp of when the permission was created.
+   */
+  createdAt: string;
+  /**
    * Identifier of the repository the permission grants access to.
    */
   repositoryId: string;
@@ -24,10 +28,6 @@ export type VcrRepositoryPermission = {
    * Slug of the team that is granted access to the repository.
    */
   teamSlug: string;
-  /**
-   * ISO 8601 timestamp of when the permission was created.
-   */
-  createdAt: string;
 };
 
 /** @internal */
@@ -36,10 +36,10 @@ export const VcrRepositoryPermission$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  createdAt: types.string(),
   repositoryId: types.string(),
   teamId: types.string(),
   teamSlug: types.string(),
-  createdAt: types.string(),
 });
 
 export function vcrRepositoryPermissionFromJSON(

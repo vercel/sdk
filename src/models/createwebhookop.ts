@@ -279,11 +279,11 @@ export type CreateWebhookWebhooksEvents = ClosedEnum<
 >;
 
 export type CreateWebhookResponseBody = {
-  /**
-   * The webhook secret used to sign the payload
-   */
-  secret: string;
   alertRuleIds?: Array<string> | undefined;
+  /**
+   * A number containing the date when the webhook was created in in milliseconds
+   */
+  createdAt: number;
   /**
    * The webhooks events
    */
@@ -293,25 +293,25 @@ export type CreateWebhookResponseBody = {
    */
   id: string;
   /**
-   * A string with the URL of the webhook
-   */
-  url: string;
-  /**
    * The unique ID of the team the webhook belongs to
    */
   ownerId: string;
   /**
-   * A number containing the date when the webhook was created in in milliseconds
+   * The ID of the projects the webhook is associated with
    */
-  createdAt: number;
+  projectIds?: Array<string> | undefined;
+  /**
+   * The webhook secret used to sign the payload
+   */
+  secret: string;
   /**
    * A number containing the date when the webhook was updated in in milliseconds
    */
   updatedAt: number;
   /**
-   * The ID of the projects the webhook is associated with
+   * A string with the URL of the webhook
    */
-  projectIds?: Array<string> | undefined;
+  url: string;
 };
 
 /** @internal */
@@ -386,15 +386,15 @@ export const CreateWebhookResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  secret: types.string(),
   alertRuleIds: types.optional(z.array(types.string())),
+  createdAt: types.number(),
   events: z.array(CreateWebhookWebhooksEvents$inboundSchema),
   id: types.string(),
-  url: types.string(),
   ownerId: types.string(),
-  createdAt: types.number(),
-  updatedAt: types.number(),
   projectIds: types.optional(z.array(types.string())),
+  secret: types.string(),
+  updatedAt: types.number(),
+  url: types.string(),
 });
 
 export function createWebhookResponseBodyFromJSON(

@@ -12,8 +12,8 @@ let value: ConnectIntegrationResourceToProjectRequestBody = {
 
 ## Fields
 
-| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| `projectId`                                                    | *string*                                                       | :heavy_check_mark:                                             | N/A                                                            |
-| `envVarEnvironments`                                           | [models.EnvVarEnvironments](../models/envvarenvironments.md)[] | :heavy_minus_sign:                                             | N/A                                                            |
-| `makeEnvVarsSensitive`                                         | *boolean*                                                      | :heavy_minus_sign:                                             | N/A                                                            |
+| Field                               | Type                                | Required                            | Description                         |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| `projectId`                         | *string*                            | :heavy_check_mark:                  | N/A                                 |
+| `envVarEnvironments`                | *models.EnvVarEnvironmentsTarget*[] | :heavy_minus_sign:                  | N/A                                 |
+| `makeEnvVarsSensitive`              | *boolean*                           | :heavy_minus_sign:                  | N/A                                 |

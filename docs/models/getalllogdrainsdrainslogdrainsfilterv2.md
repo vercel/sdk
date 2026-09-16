@@ -6,10 +6,10 @@
 import { GetAllLogDrainsDrainsLogDrainsFilterV2 } from "@vercel/sdk/models/getalllogdrainsop.js";
 
 let value: GetAllLogDrainsDrainsLogDrainsFilterV2 = {
-  version: "v2",
   filter: {
     type: "basic",
   },
+  version: "v2",
 };
 ```
 
@@ -17,5 +17,5 @@ let value: GetAllLogDrainsDrainsLogDrainsFilterV2 = {
 
 | Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
 | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `version`                                                                        | [models.GetAllLogDrainsDrainsVersion](../models/getalllogdrainsdrainsversion.md) | :heavy_check_mark:                                                               | N/A                                                                              |
 | `filter`                                                                         | *models.GetAllLogDrainsDrainsLogDrainsFilter*                                    | :heavy_check_mark:                                                               | N/A                                                                              |
+| `version`                                                                        | [models.GetAllLogDrainsDrainsVersion](../models/getalllogdrainsdrainsversion.md) | :heavy_check_mark:                                                               | N/A                                                                              |

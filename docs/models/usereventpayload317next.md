@@ -3,19 +3,15 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload317Next } from "@vercel/sdk/models/twohundredandeightyone.js";
+import { UserEventPayload317Next } from "@vercel/sdk/models/usereventpayloadgitprovider.js";
 
 let value: UserEventPayload317Next = {
-  project: {
-    staticIps: {
-      enabled: false,
-    },
-  },
+  skewProtectionMaxAge: 1903.63,
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `project`                                                                    | [models.UserEventPayload317Project](../models/usereventpayload317project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field                  | Type                   | Required               | Description            |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `skewProtectionMaxAge` | *number*               | :heavy_check_mark:     | N/A                    |

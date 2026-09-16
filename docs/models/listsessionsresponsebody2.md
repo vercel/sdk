@@ -6,11 +6,11 @@
 import { ListSessionsResponseBody2 } from "@vercel/sdk/models/listsessionsop.js";
 
 let value: ListSessionsResponseBody2 = {
-  sessions: [],
   pagination: {
-    count: 4708.44,
+    count: 4334.62,
     next: "<value>",
   },
+  sessions: [],
 };
 ```
 
@@ -18,5 +18,5 @@ let value: ListSessionsResponseBody2 = {
 
 | Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  |
 | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `sessions`                                                                                   | [models.Session](../models/session.md)[]                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          |
 | `pagination`                                                                                 | [models.ListSessionsResponseBodyPagination](../models/listsessionsresponsebodypagination.md) | :heavy_check_mark:                                                                           | N/A                                                                                          |
+| `sessions`                                                                                   | [models.Session](../models/session.md)[]                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          |

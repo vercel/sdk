@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectDataCache } from "@vercel/sdk/models/createprojectpasswordprotection.js";
+import { CreateProjectDataCache } from "@vercel/sdk/models/createprojectcontenthint2.js";
 
 let value: CreateProjectDataCache = {
   userDisabled: false,
@@ -14,6 +14,6 @@ let value: CreateProjectDataCache = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `userDisabled`     | *boolean*          | :heavy_check_mark: | N/A                |
 | `storageSizeBytes` | *number*           | :heavy_minus_sign: | N/A                |
 | `unlimited`        | *boolean*          | :heavy_minus_sign: | N/A                |
+| `userDisabled`     | *boolean*          | :heavy_check_mark: | N/A                |

@@ -51,19 +51,37 @@ export const ListKmsIssuersOrigin = {
 } as const;
 export type ListKmsIssuersOrigin = ClosedEnum<typeof ListKmsIssuersOrigin>;
 
-export const ListKmsIssuersStatus = {
-  Active: "active",
-  Pending: "pending",
-  Revoking: "revoking",
-} as const;
-export type ListKmsIssuersStatus = ClosedEnum<typeof ListKmsIssuersStatus>;
+export type ListKmsIssuersPolicies2 = {
+  clientId: string;
+  createdAt: string;
+  kind: "connex-grant";
+  tokenClaims?: { [k: string]: any } | undefined;
+  updatedAt: string;
+};
+
+export type ListKmsIssuersPolicies1 = {
+  createdAt: string;
+  /**
+   * Environments whose OIDC tokens this grant authorizes. Each entry is either a system environment slug (`production`, `preview`, `development`) or a custom environment ID (prefixed `env_`). Custom environments are matched against the token's `custom_environment_id` claim (the stable ID); system environments against its `environment` claim.
+   */
+  environments: Array<string>;
+  kind: "project-grant";
+  projectId: string;
+  teamId: string;
+  tokenClaims?: { [k: string]: any } | undefined;
+  updatedAt: string;
+};
+
+export type ListKmsIssuersPolicies =
+  | ListKmsIssuersPolicies1
+  | ListKmsIssuersPolicies2;
 
 export type ListKmsIssuersPublicKey = {
-  kty?: string | undefined;
-  kid?: string | undefined;
   alg?: string | undefined;
-  use?: string | undefined;
   keyOps?: Array<string> | undefined;
+  kid?: string | undefined;
+  kty?: string | undefined;
+  use?: string | undefined;
   /**
    * The X.509 certificate chain (RFC 7517 §4.7). Each entry is the base64 DER (not base64url) of a certificate. For keys minted with a stored certificate this holds the single self-signed cert as `[x5c]`.
    */
@@ -74,75 +92,57 @@ export type ListKmsIssuersPublicKey = {
   x5tNumberS256?: string | undefined;
 };
 
+export const ListKmsIssuersStatus = {
+  Active: "active",
+  Pending: "pending",
+  Revoking: "revoking",
+} as const;
+export type ListKmsIssuersStatus = ClosedEnum<typeof ListKmsIssuersStatus>;
+
 export type ListKmsIssuersSigningKeys = {
+  activateAt?: string | undefined;
   /**
-   * The server-minted, unique record identifier. Use this to address the key on the activate / certificate endpoints.
+   * When the key became the active signer. Present for active and revoking keys (and absent for pending keys and rows predating this field).
    */
-  keyId: string;
+  activatedAt?: string | undefined;
+  algorithm: string;
+  /**
+   * The stored X.509 certificate (from `publicKey.x5c[0]`) in PEM form, ready to render. Present only for keys created with a stored certificate; omitted for keys created before certificates were stored.
+   */
+  certificatePem?: string | undefined;
+  createdAt: string;
   /**
    * The caller-supplied key id (imported keys only), used as the JWT/JWKS `kid`. Not unique across an issuer's keys; omitted for generated keys.
    */
   importKeyId?: string | undefined;
   issuerId: string;
-  algorithm: string;
-  status: ListKmsIssuersStatus;
+  /**
+   * The server-minted, unique record identifier. Use this to address the key on the activate / certificate endpoints.
+   */
+  keyId: string;
   publicKey?: ListKmsIssuersPublicKey | undefined;
   publicKeyFingerprint?: string | undefined;
   /**
    * The public key in SPKI PEM form, ready to render. Present whenever the key has public key material. Derived from `publicKey`; the embedded certificate members (`x5c`/`x5t#S256`) do not affect it.
    */
   publicKeyPem?: string | undefined;
-  /**
-   * The stored X.509 certificate (from `publicKey.x5c[0]`) in PEM form, ready to render. Present only for keys created with a stored certificate; omitted for keys created before certificates were stored.
-   */
-  certificatePem?: string | undefined;
-  createdAt: string;
-  updatedAt: string;
   revokeAt?: string | undefined;
-  activateAt?: string | undefined;
-  /**
-   * When the key became the active signer. Present for active and revoking keys (and absent for pending keys and rows predating this field).
-   */
-  activatedAt?: string | undefined;
-};
-
-export type ListKmsIssuersPolicies2 = {
-  kind: "connex-grant";
-  clientId: string;
-  tokenClaims?: { [k: string]: any } | undefined;
-  createdAt: string;
+  status: ListKmsIssuersStatus;
   updatedAt: string;
 };
-
-export type ListKmsIssuersPolicies1 = {
-  kind: "project-grant";
-  teamId: string;
-  projectId: string;
-  /**
-   * Environments whose OIDC tokens this grant authorizes. Each entry is either a system environment slug (`production`, `preview`, `development`) or a custom environment ID (prefixed `env_`). Custom environments are matched against the token's `custom_environment_id` claim (the stable ID); system environments against its `environment` claim.
-   */
-  environments: Array<string>;
-  tokenClaims?: { [k: string]: any } | undefined;
-  createdAt: string;
-  updatedAt: string;
-};
-
-export type ListKmsIssuersPolicies =
-  | ListKmsIssuersPolicies1
-  | ListKmsIssuersPolicies2;
 
 export type Issuers = {
-  id: string;
-  ownerId: string;
-  name: string;
   algorithm: ListKmsIssuersAlgorithm;
-  origin: ListKmsIssuersOrigin;
-  managedBy?: string | undefined;
   claimsSchema?: { [k: string]: any } | undefined;
   createdAt: string;
-  updatedAt: string;
-  signingKeys: Array<ListKmsIssuersSigningKeys>;
+  id: string;
+  managedBy?: string | undefined;
+  name: string;
+  origin: ListKmsIssuersOrigin;
+  ownerId: string;
   policies: Array<ListKmsIssuersPolicies1 | ListKmsIssuersPolicies2>;
+  signingKeys: Array<ListKmsIssuersSigningKeys>;
+  updatedAt: string;
 };
 
 export type ListKmsIssuersPagination = {
@@ -194,84 +194,15 @@ export const ListKmsIssuersOrigin$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(ListKmsIssuersOrigin);
 
 /** @internal */
-export const ListKmsIssuersStatus$inboundSchema: z.ZodNativeEnum<
-  typeof ListKmsIssuersStatus
-> = z.nativeEnum(ListKmsIssuersStatus);
-
-/** @internal */
-export const ListKmsIssuersPublicKey$inboundSchema: z.ZodType<
-  ListKmsIssuersPublicKey,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  kty: types.optional(types.string()),
-  kid: types.optional(types.string()),
-  alg: types.optional(types.string()),
-  use: types.optional(types.string()),
-  key_ops: types.optional(z.array(types.string())),
-  x5c: types.optional(z.array(types.string())),
-  "x5t#S256": types.optional(types.string()),
-}).transform((v) => {
-  return remap$(v, {
-    "key_ops": "keyOps",
-    "x5t#S256": "x5tNumberS256",
-  });
-});
-
-export function listKmsIssuersPublicKeyFromJSON(
-  jsonString: string,
-): SafeParseResult<ListKmsIssuersPublicKey, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListKmsIssuersPublicKey$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListKmsIssuersPublicKey' from JSON`,
-  );
-}
-
-/** @internal */
-export const ListKmsIssuersSigningKeys$inboundSchema: z.ZodType<
-  ListKmsIssuersSigningKeys,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  keyId: types.string(),
-  importKeyId: types.optional(types.string()),
-  issuerId: types.string(),
-  algorithm: types.string(),
-  status: ListKmsIssuersStatus$inboundSchema,
-  publicKey: types.optional(
-    z.lazy(() => ListKmsIssuersPublicKey$inboundSchema),
-  ),
-  publicKeyFingerprint: types.optional(types.string()),
-  publicKeyPem: types.optional(types.string()),
-  certificatePem: types.optional(types.string()),
-  createdAt: types.string(),
-  updatedAt: types.string(),
-  revokeAt: types.optional(types.string()),
-  activateAt: types.optional(types.string()),
-  activatedAt: types.optional(types.string()),
-});
-
-export function listKmsIssuersSigningKeysFromJSON(
-  jsonString: string,
-): SafeParseResult<ListKmsIssuersSigningKeys, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListKmsIssuersSigningKeys$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListKmsIssuersSigningKeys' from JSON`,
-  );
-}
-
-/** @internal */
 export const ListKmsIssuersPolicies2$inboundSchema: z.ZodType<
   ListKmsIssuersPolicies2,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  kind: types.literal("connex-grant"),
   clientId: types.string(),
-  tokenClaims: types.optional(z.record(z.any())),
   createdAt: types.string(),
+  kind: types.literal("connex-grant"),
+  tokenClaims: types.optional(z.record(z.any())),
   updatedAt: types.string(),
 });
 
@@ -291,12 +222,12 @@ export const ListKmsIssuersPolicies1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  kind: types.literal("project-grant"),
-  teamId: types.string(),
-  projectId: types.string(),
-  environments: z.array(types.string()),
-  tokenClaims: types.optional(z.record(z.any())),
   createdAt: types.string(),
+  environments: z.array(types.string()),
+  kind: types.literal("project-grant"),
+  projectId: types.string(),
+  teamId: types.string(),
+  tokenClaims: types.optional(z.record(z.any())),
   updatedAt: types.string(),
 });
 
@@ -331,24 +262,93 @@ export function listKmsIssuersPoliciesFromJSON(
 }
 
 /** @internal */
+export const ListKmsIssuersPublicKey$inboundSchema: z.ZodType<
+  ListKmsIssuersPublicKey,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  alg: types.optional(types.string()),
+  key_ops: types.optional(z.array(types.string())),
+  kid: types.optional(types.string()),
+  kty: types.optional(types.string()),
+  use: types.optional(types.string()),
+  x5c: types.optional(z.array(types.string())),
+  "x5t#S256": types.optional(types.string()),
+}).transform((v) => {
+  return remap$(v, {
+    "key_ops": "keyOps",
+    "x5t#S256": "x5tNumberS256",
+  });
+});
+
+export function listKmsIssuersPublicKeyFromJSON(
+  jsonString: string,
+): SafeParseResult<ListKmsIssuersPublicKey, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListKmsIssuersPublicKey$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListKmsIssuersPublicKey' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListKmsIssuersStatus$inboundSchema: z.ZodNativeEnum<
+  typeof ListKmsIssuersStatus
+> = z.nativeEnum(ListKmsIssuersStatus);
+
+/** @internal */
+export const ListKmsIssuersSigningKeys$inboundSchema: z.ZodType<
+  ListKmsIssuersSigningKeys,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  activateAt: types.optional(types.string()),
+  activatedAt: types.optional(types.string()),
+  algorithm: types.string(),
+  certificatePem: types.optional(types.string()),
+  createdAt: types.string(),
+  importKeyId: types.optional(types.string()),
+  issuerId: types.string(),
+  keyId: types.string(),
+  publicKey: types.optional(
+    z.lazy(() => ListKmsIssuersPublicKey$inboundSchema),
+  ),
+  publicKeyFingerprint: types.optional(types.string()),
+  publicKeyPem: types.optional(types.string()),
+  revokeAt: types.optional(types.string()),
+  status: ListKmsIssuersStatus$inboundSchema,
+  updatedAt: types.string(),
+});
+
+export function listKmsIssuersSigningKeysFromJSON(
+  jsonString: string,
+): SafeParseResult<ListKmsIssuersSigningKeys, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListKmsIssuersSigningKeys$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListKmsIssuersSigningKeys' from JSON`,
+  );
+}
+
+/** @internal */
 export const Issuers$inboundSchema: z.ZodType<Issuers, z.ZodTypeDef, unknown> =
   z.object({
-    id: types.string(),
-    ownerId: types.string(),
-    name: types.string(),
     algorithm: ListKmsIssuersAlgorithm$inboundSchema,
-    origin: ListKmsIssuersOrigin$inboundSchema,
-    managedBy: types.optional(types.string()),
     claimsSchema: types.optional(z.record(z.any())),
     createdAt: types.string(),
-    updatedAt: types.string(),
-    signingKeys: z.array(z.lazy(() => ListKmsIssuersSigningKeys$inboundSchema)),
+    id: types.string(),
+    managedBy: types.optional(types.string()),
+    name: types.string(),
+    origin: ListKmsIssuersOrigin$inboundSchema,
+    ownerId: types.string(),
     policies: z.array(
       z.union([
         z.lazy(() => ListKmsIssuersPolicies1$inboundSchema),
         z.lazy(() => ListKmsIssuersPolicies2$inboundSchema),
       ]),
     ),
+    signingKeys: z.array(z.lazy(() => ListKmsIssuersSigningKeys$inboundSchema)),
+    updatedAt: types.string(),
   });
 
 export function issuersFromJSON(

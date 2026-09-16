@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsHasProjectsResponse1 } from "@vercel/sdk/models/updatemicrofrontendsinternalroutes2.js";
+import { UpdateMicrofrontendsHasProjectsResponse1 } from "@vercel/sdk/models/updatemicrofrontendshaskey.js";
 
 let value: UpdateMicrofrontendsHasProjectsResponse1 = {
-  type: "header",
   key: "x-vercel-ip-country",
+  type: "header",
   value: {
     eq: "<value>",
   },
@@ -18,6 +18,6 @@ let value: UpdateMicrofrontendsHasProjectsResponse1 = {
 
 | Field                                                                                                                                                | Type                                                                                                                                                 | Required                                                                                                                                             | Description                                                                                                                                          |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `type`                                                                                                                                               | *"header"*                                                                                                                                           | :heavy_check_mark:                                                                                                                                   | N/A                                                                                                                                                  |
 | `key`                                                                                                                                                | [models.UpdateMicrofrontendsHasProjectsResponseKey](../models/updatemicrofrontendshasprojectsresponsekey.md)                                         | :heavy_check_mark:                                                                                                                                   | N/A                                                                                                                                                  |
+| `type`                                                                                                                                               | *"header"*                                                                                                                                           | :heavy_check_mark:                                                                                                                                   | N/A                                                                                                                                                  |
 | `value`                                                                                                                                              | [models.UpdateMicrofrontendsHasProjectsResponse200ApplicationJSONValue](../models/updatemicrofrontendshasprojectsresponse200applicationjsonvalue.md) | :heavy_check_mark:                                                                                                                                   | N/A                                                                                                                                                  |

@@ -8,16 +8,16 @@ import { GetSecurityFirewallEventsResponseBody } from "@vercel/sdk/models/getsec
 let value: GetSecurityFirewallEventsResponseBody = {
   actions: [
     {
+      action: "<value>",
+      actionType: "<value>",
+      count: 6945.03,
+      endTime: "<value>",
+      host: "severe-massage.org",
+      isActive: true,
+      publicIp: "<value>",
+      ruleId: "<id>",
       ruleName: "<value>",
       startTime: "<value>",
-      endTime: "<value>",
-      isActive: false,
-      actionType: "<value>",
-      action: "<value>",
-      ruleId: "<id>",
-      host: "tense-apricot.org",
-      publicIp: "<value>",
-      count: 2155.38,
     },
   ],
 };

@@ -3,15 +3,25 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupBlockHistory4 } from "@vercel/sdk/models/getmicrofrontendsingroupinternalroutes2.js";
+import { GetMicrofrontendsInGroupBlockHistory4 } from "@vercel/sdk/models/getmicrofrontendsingrouphasvalue.js";
 
 let value: GetMicrofrontendsInGroupBlockHistory4 = {
   action: "route-unblocked",
+  createdAt: 3199.53,
   route: {
-    src: "<value>",
-    status: 5495.08,
+    has: [
+      {
+        key: "x-vercel-ip-country",
+        type: "header",
+        value: {
+          eq: "<value>",
+        },
+      },
+    ],
+    mitigate: {
+      action: "block_legal_cwc",
+    },
   },
-  createdAt: 5016.95,
 };
 ```
 
@@ -20,11 +30,11 @@ let value: GetMicrofrontendsInGroupBlockHistory4 = {
 | Field                                                            | Type                                                             | Required                                                         | Description                                                      |
 | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
 | `action`                                                         | *"route-unblocked"*                                              | :heavy_check_mark:                                               | N/A                                                              |
-| `route`                                                          | *models.GetMicrofrontendsInGroupBlockHistoryMicrofrontendsRoute* | :heavy_check_mark:                                               | N/A                                                              |
-| `statusCode`                                                     | *number*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
-| `createdAt`                                                      | *number*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `caseId`                                                         | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
 | `actor`                                                          | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
+| `caseId`                                                         | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
 | `comment`                                                        | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
+| `createdAt`                                                      | *number*                                                         | :heavy_check_mark:                                               | N/A                                                              |
 | `ineligibleForAppeal`                                            | *boolean*                                                        | :heavy_minus_sign:                                               | N/A                                                              |
 | `isCascading`                                                    | *boolean*                                                        | :heavy_minus_sign:                                               | N/A                                                              |
+| `route`                                                          | *models.GetMicrofrontendsInGroupBlockHistoryMicrofrontendsRoute* | :heavy_check_mark:                                               | N/A                                                              |
+| `statusCode`                                                     | *number*                                                         | :heavy_minus_sign:                                               | N/A                                                              |

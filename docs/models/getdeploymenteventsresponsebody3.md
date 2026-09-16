@@ -7,14 +7,14 @@
 
 ```typescript
 const value: models.Three1 = {
-  type: "delimiter",
-  created: 4034.37,
+  created: 1385.38,
   payload: {
+    date: 4034.37,
     deploymentId: "<id>",
     id: "<id>",
-    date: 5232.2,
     serial: "<value>",
   },
+  type: "metric",
 };
 ```
 
@@ -27,8 +27,8 @@ const value: models.Three2 = {
   deploymentId: "<id>",
   id: "<id>",
   info: {
-    type: "<value>",
     name: "<value>",
+    type: "<value>",
   },
   serial: "<value>",
   type: "middleware-invocation",
@@ -39,9 +39,9 @@ const value: models.Three2 = {
 
 ```typescript
 const value: models.Three3 = {
-  type: "alias-assigned",
-  deploymentId: "<id>",
   date: 6251.14,
+  deploymentId: "<id>",
+  type: "alias-assigned",
   alias: [],
   aliasError: {
     code: "<value>",

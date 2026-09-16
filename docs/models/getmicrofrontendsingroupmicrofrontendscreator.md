@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupMicrofrontendsCreator } from "@vercel/sdk/models/getmicrofrontendsingroupbuildmachinetype.js";
+import { GetMicrofrontendsInGroupMicrofrontendsCreator } from "@vercel/sdk/models/getmicrofrontendsingroupfrom1.js";
 
 let value: GetMicrofrontendsInGroupMicrofrontendsCreator = {
   email: "Noel.Conn@gmail.com",

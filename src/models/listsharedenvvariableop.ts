@@ -54,6 +54,21 @@ export const SecurityIssues = {
 export type SecurityIssues = ClosedEnum<typeof SecurityIssues>;
 
 /**
+ * environments this env variable targets
+ */
+export const ListSharedEnvVariableTarget = {
+  Development: "development",
+  Preview: "preview",
+  Production: "production",
+} as const;
+/**
+ * environments this env variable targets
+ */
+export type ListSharedEnvVariableTarget = ClosedEnum<
+  typeof ListSharedEnvVariableTarget
+>;
+
+/**
  * The type of this cosmos doc instance, if blank, assume secret.
  */
 export const ListSharedEnvVariableType = {
@@ -69,83 +84,27 @@ export type ListSharedEnvVariableType = ClosedEnum<
   typeof ListSharedEnvVariableType
 >;
 
-/**
- * environments this env variable targets
- */
-export const ListSharedEnvVariableTarget = {
-  Development: "development",
-  Preview: "preview",
-  Production: "production",
-} as const;
-/**
- * environments this env variable targets
- */
-export type ListSharedEnvVariableTarget = ClosedEnum<
-  typeof ListSharedEnvVariableTarget
->;
-
 export type ListSharedEnvVariableData = {
-  securityIssues: Array<SecurityIssues>;
+  /**
+   * whether or not this env varible applies to custom environments
+   */
+  applyToAllCustomEnvironments?: boolean | undefined;
+  /**
+   * A user provided comment that describes what this Shared Env Var is for.
+   */
+  comment?: string | undefined;
   /**
    * The date when the Shared Env Var was created.
    */
   created: Date;
   /**
-   * The name of the Shared Env Var.
-   */
-  key: string;
-  /**
-   * The unique identifier of the owner (team) the Shared Env Var was created for.
-   */
-  ownerId?: string | null | undefined;
-  /**
-   * The unique identifier of the Shared Env Var.
-   */
-  id: string;
-  /**
-   * The unique identifier of the user who created the Shared Env Var.
-   */
-  createdBy?: string | null | undefined;
-  /**
-   * The unique identifier of the user who deleted the Shared Env Var.
-   */
-  deletedBy?: string | null | undefined;
-  /**
-   * The unique identifier of the user who last updated the Shared Env Var.
-   */
-  updatedBy?: string | null | undefined;
-  /**
    * Timestamp for when the Shared Env Var was created.
    */
   createdAt?: number | undefined;
   /**
-   * Timestamp for when the Shared Env Var was (soft) deleted.
+   * The unique identifier of the user who created the Shared Env Var.
    */
-  deletedAt?: number | undefined;
-  /**
-   * Timestamp for when the Shared Env Var was last updated.
-   */
-  updatedAt?: number | undefined;
-  /**
-   * The value of the Shared Env Var.
-   */
-  value?: string | undefined;
-  /**
-   * The unique identifiers of the projects which the Shared Env Var is linked to.
-   */
-  projectId?: Array<string> | undefined;
-  /**
-   * The type of this cosmos doc instance, if blank, assume secret.
-   */
-  type?: ListSharedEnvVariableType | undefined;
-  /**
-   * environments this env variable targets
-   */
-  target?: Array<ListSharedEnvVariableTarget> | undefined;
-  /**
-   * whether or not this env varible applies to custom environments
-   */
-  applyToAllCustomEnvironments?: boolean | undefined;
+  createdBy?: string | null | undefined;
   /**
    * The custom environment IDs that this Shared Env Var is scoped to.
    */
@@ -155,13 +114,54 @@ export type ListSharedEnvVariableData = {
    */
   decrypted: boolean;
   /**
-   * A user provided comment that describes what this Shared Env Var is for.
+   * Timestamp for when the Shared Env Var was (soft) deleted.
    */
-  comment?: string | undefined;
+  deletedAt?: number | undefined;
+  /**
+   * The unique identifier of the user who deleted the Shared Env Var.
+   */
+  deletedBy?: string | null | undefined;
+  /**
+   * The unique identifier of the Shared Env Var.
+   */
+  id: string;
+  /**
+   * The name of the Shared Env Var.
+   */
+  key: string;
   /**
    * The last editor full name or username.
    */
   lastEditedByDisplayName?: string | undefined;
+  /**
+   * The unique identifier of the owner (team) the Shared Env Var was created for.
+   */
+  ownerId?: string | null | undefined;
+  /**
+   * The unique identifiers of the projects which the Shared Env Var is linked to.
+   */
+  projectId?: Array<string> | undefined;
+  securityIssues: Array<SecurityIssues>;
+  /**
+   * environments this env variable targets
+   */
+  target?: Array<ListSharedEnvVariableTarget> | undefined;
+  /**
+   * The type of this cosmos doc instance, if blank, assume secret.
+   */
+  type?: ListSharedEnvVariableType | undefined;
+  /**
+   * Timestamp for when the Shared Env Var was last updated.
+   */
+  updatedAt?: number | undefined;
+  /**
+   * The unique identifier of the user who last updated the Shared Env Var.
+   */
+  updatedBy?: string | null | undefined;
+  /**
+   * The value of the Shared Env Var.
+   */
+  value?: string | undefined;
 };
 
 export type ListSharedEnvVariableResponseBody = {
@@ -225,14 +225,14 @@ export const SecurityIssues$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(SecurityIssues);
 
 /** @internal */
-export const ListSharedEnvVariableType$inboundSchema: z.ZodNativeEnum<
-  typeof ListSharedEnvVariableType
-> = z.nativeEnum(ListSharedEnvVariableType);
-
-/** @internal */
 export const ListSharedEnvVariableTarget$inboundSchema: z.ZodNativeEnum<
   typeof ListSharedEnvVariableTarget
 > = z.nativeEnum(ListSharedEnvVariableTarget);
+
+/** @internal */
+export const ListSharedEnvVariableType$inboundSchema: z.ZodNativeEnum<
+  typeof ListSharedEnvVariableType
+> = z.nativeEnum(ListSharedEnvVariableType);
 
 /** @internal */
 export const ListSharedEnvVariableData$inboundSchema: z.ZodType<
@@ -240,26 +240,26 @@ export const ListSharedEnvVariableData$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  securityIssues: z.array(SecurityIssues$inboundSchema),
-  created: types.date(),
-  key: types.string(),
-  ownerId: z.nullable(types.string()).optional(),
-  id: types.string(),
-  createdBy: z.nullable(types.string()).optional(),
-  deletedBy: z.nullable(types.string()).optional(),
-  updatedBy: z.nullable(types.string()).optional(),
-  createdAt: types.optional(types.number()),
-  deletedAt: types.optional(types.number()),
-  updatedAt: types.optional(types.number()),
-  value: types.optional(types.string()),
-  projectId: types.optional(z.array(types.string())),
-  type: types.optional(ListSharedEnvVariableType$inboundSchema),
-  target: types.optional(z.array(ListSharedEnvVariableTarget$inboundSchema)),
   applyToAllCustomEnvironments: types.optional(types.boolean()),
+  comment: types.optional(types.string()),
+  created: types.date(),
+  createdAt: types.optional(types.number()),
+  createdBy: z.nullable(types.string()).optional(),
   customEnvironmentIds: types.optional(z.array(types.string())),
   decrypted: types.boolean(),
-  comment: types.optional(types.string()),
+  deletedAt: types.optional(types.number()),
+  deletedBy: z.nullable(types.string()).optional(),
+  id: types.string(),
+  key: types.string(),
   lastEditedByDisplayName: types.optional(types.string()),
+  ownerId: z.nullable(types.string()).optional(),
+  projectId: types.optional(z.array(types.string())),
+  securityIssues: z.array(SecurityIssues$inboundSchema),
+  target: types.optional(z.array(ListSharedEnvVariableTarget$inboundSchema)),
+  type: types.optional(ListSharedEnvVariableType$inboundSchema),
+  updatedAt: types.optional(types.number()),
+  updatedBy: z.nullable(types.string()).optional(),
+  value: types.optional(types.string()),
 });
 
 export function listSharedEnvVariableDataFromJSON(

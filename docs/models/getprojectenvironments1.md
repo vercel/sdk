@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectEnvironments1 } from "@vercel/sdk/models/getprojectinternalroutesmitigate.js";
+import { GetProjectEnvironments1 } from "@vercel/sdk/models/getprojecthas2.js";
 
 let value: GetProjectEnvironments1 = {
-  type: "system",
   target: "production",
+  type: "system",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: GetProjectEnvironments1 = {
 
 | Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
 | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `type`                                                                           | *"system"*                                                                       | :heavy_check_mark:                                                               | N/A                                                                              |
 | `target`                                                                         | [models.GetProjectEnvironmentsTarget](../models/getprojectenvironmentstarget.md) | :heavy_check_mark:                                                               | N/A                                                                              |
+| `type`                                                                           | *"system"*                                                                       | :heavy_check_mark:                                                               | N/A                                                                              |

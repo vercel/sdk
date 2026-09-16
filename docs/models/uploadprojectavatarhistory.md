@@ -3,14 +3,14 @@
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarHistory } from "@vercel/sdk/models/uploadprojectavatarinternalroutes1.js";
+import { UploadProjectAvatarHistory } from "@vercel/sdk/models/uploadprojectavatarhasvalue.js";
 
 let value: UploadProjectAvatarHistory = {
-  scanner: "<value>",
-  reason: "<value>",
+  at: 4703.69,
   by: "<value>",
   byId: "<id>",
-  at: 4703.69,
+  reason: "<value>",
+  scanner: "<value>",
 };
 ```
 
@@ -18,8 +18,8 @@ let value: UploadProjectAvatarHistory = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `scanner`          | *string*           | :heavy_check_mark: | N/A                |
-| `reason`           | *string*           | :heavy_check_mark: | N/A                |
+| `at`               | *number*           | :heavy_check_mark: | N/A                |
 | `by`               | *string*           | :heavy_check_mark: | N/A                |
 | `byId`             | *string*           | :heavy_check_mark: | N/A                |
-| `at`               | *number*           | :heavy_check_mark: | N/A                |
+| `reason`           | *string*           | :heavy_check_mark: | N/A                |
+| `scanner`          | *string*           | :heavy_check_mark: | N/A                |

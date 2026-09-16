@@ -6,9 +6,9 @@
 import { GetIntegrationLogDrainsSource2 } from "@vercel/sdk/models/getintegrationlogdrainsop.js";
 
 let value: GetIntegrationLogDrainsSource2 = {
-  kind: "integration",
-  integrationId: "<id>",
   integrationConfigurationId: "<id>",
+  integrationId: "<id>",
+  kind: "integration",
 };
 ```
 
@@ -16,8 +16,8 @@ let value: GetIntegrationLogDrainsSource2 = {
 
 | Field                        | Type                         | Required                     | Description                  |
 | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
+| `externalResourceId`         | *string*                     | :heavy_minus_sign:           | N/A                          |
+| `integrationConfigurationId` | *string*                     | :heavy_check_mark:           | N/A                          |
+| `integrationId`              | *string*                     | :heavy_check_mark:           | N/A                          |
 | `kind`                       | *"integration"*              | :heavy_check_mark:           | N/A                          |
 | `resourceId`                 | *string*                     | :heavy_minus_sign:           | N/A                          |
-| `externalResourceId`         | *string*                     | :heavy_minus_sign:           | N/A                          |
-| `integrationId`              | *string*                     | :heavy_check_mark:           | N/A                          |
-| `integrationConfigurationId` | *string*                     | :heavy_check_mark:           | N/A                          |

@@ -14,6 +14,14 @@ import {
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
+ * The quantity of data transfered to and from the sandbox, in bytes. This value is only available once the sandbox is stopped, and only if it stopped successfully.
+ */
+export type NetworkTransfer = {
+  egress: number;
+  ingress: number;
+};
+
+/**
  * The status of the sandbox.
  */
 export const SessionStatus = {
@@ -31,25 +39,29 @@ export const SessionStatus = {
 export type SessionStatus = ClosedEnum<typeof SessionStatus>;
 
 /**
- * The quantity of data transfered to and from the sandbox, in bytes. This value is only available once the sandbox is stopped, and only if it stopped successfully.
- */
-export type NetworkTransfer = {
-  ingress: number;
-  egress: number;
-};
-
-/**
  * This object contains information related to a Vercel Sandbox Session. v2 endpoints return "session" instead of "sandbox" as the response wrapper key.
  */
 export type Session = {
   /**
-   * The name of the source sandbox.
+   * The time when the sandbox was aborted, in milliseconds since the epoch.
    */
-  sourceSandboxName: string;
+  abortedAt?: number | undefined;
   /**
-   * The unique identifier of the project associated with this session.
+   * The amount of CPU time the sandbox consumed, if available, in milliseconds. This value is only available once the sandbox is stopped, and only if it stopped successfully.
    */
-  projectId: string;
+  activeCpuDurationMs?: number | undefined;
+  /**
+   * The time when the sandbox was created, in milliseconds since the epoch.
+   */
+  createdAt: number;
+  /**
+   * The working directory of the sandbox.
+   */
+  cwd: string;
+  /**
+   * The duration of the sandbox in milliseconds.
+   */
+  duration?: number | undefined;
   /**
    * The unique identifier of the sandbox.
    */
@@ -59,87 +71,70 @@ export type Session = {
    */
   memory: number;
   /**
-   * Number of vCPUs allocated to this sandbox.
+   * The network policy applied to this sandbox, if any.
    */
-  vcpus: number;
+  networkPolicy?: SandboxNetworkPolicy | undefined;
+  /**
+   * The quantity of data transfered to and from the sandbox, in bytes. This value is only available once the sandbox is stopped, and only if it stopped successfully.
+   */
+  networkTransfer?: NetworkTransfer | undefined;
+  /**
+   * The unique identifier of the project associated with this session.
+   */
+  projectId: string;
   /**
    * The region where the sandbox is hosted.
    */
   region: string;
   /**
-   * The runtime of the sandbox.
-   */
-  runtime: string;
-  /**
-   * The maximum amount of time the sandbox will run for in milliseconds.
-   */
-  timeout: number;
-  /**
-   * The status of the sandbox.
-   */
-  status: SessionStatus;
-  /**
    * The time when the sandbox was requested, in milliseconds since the epoch.
    */
   requestedAt: number;
-  /**
-   * The time when the sandbox was started, in milliseconds since the epoch.
-   */
-  startedAt?: number | undefined;
-  /**
-   * The working directory of the sandbox.
-   */
-  cwd: string;
   /**
    * The time when the sandbox was requested to stop, in milliseconds since the epoch.
    */
   requestedStopAt?: number | undefined;
   /**
-   * The time when the sandbox was stopped, in milliseconds since the epoch.
+   * The runtime of the sandbox.
    */
-  stoppedAt?: number | undefined;
-  /**
-   * The time when the sandbox was aborted, in milliseconds since the epoch.
-   */
-  abortedAt?: number | undefined;
-  /**
-   * The duration of the sandbox in milliseconds.
-   */
-  duration?: number | undefined;
-  /**
-   * The unique identifier of the snapshot associated with this sandbox, if any.
-   */
-  sourceSnapshotId?: string | undefined;
+  runtime: string;
   /**
    * The time when a snapshot was requested, in milliseconds since the epoch.
    */
   snapshottedAt?: number | undefined;
   /**
-   * The time when the sandbox was created, in milliseconds since the epoch.
+   * The name of the source sandbox.
    */
-  createdAt: number;
+  sourceSandboxName: string;
+  /**
+   * The unique identifier of the snapshot associated with this sandbox, if any.
+   */
+  sourceSnapshotId?: string | undefined;
+  /**
+   * The time when the sandbox was started, in milliseconds since the epoch.
+   */
+  startedAt?: number | undefined;
+  /**
+   * The status of the sandbox.
+   */
+  status: SessionStatus;
+  /**
+   * The time when the sandbox was stopped, in milliseconds since the epoch.
+   */
+  stoppedAt?: number | undefined;
+  /**
+   * The maximum amount of time the sandbox will run for in milliseconds.
+   */
+  timeout: number;
   /**
    * The last time the sandbox was updated, in milliseconds since the epoch.
    */
   updatedAt: number;
   /**
-   * The network policy applied to this sandbox, if any.
+   * Number of vCPUs allocated to this sandbox.
    */
-  networkPolicy?: SandboxNetworkPolicy | undefined;
-  /**
-   * The amount of CPU time the sandbox consumed, if available, in milliseconds. This value is only available once the sandbox is stopped, and only if it stopped successfully.
-   */
-  activeCpuDurationMs?: number | undefined;
-  /**
-   * The quantity of data transfered to and from the sandbox, in bytes. This value is only available once the sandbox is stopped, and only if it stopped successfully.
-   */
-  networkTransfer?: NetworkTransfer | undefined;
+  vcpus: number;
 };
-
-/** @internal */
-export const SessionStatus$inboundSchema: z.ZodNativeEnum<
-  typeof SessionStatus
-> = z.nativeEnum(SessionStatus);
 
 /** @internal */
 export const NetworkTransfer$inboundSchema: z.ZodType<
@@ -147,8 +142,8 @@ export const NetworkTransfer$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  ingress: types.number(),
   egress: types.number(),
+  ingress: types.number(),
 });
 
 export function networkTransferFromJSON(
@@ -162,33 +157,38 @@ export function networkTransferFromJSON(
 }
 
 /** @internal */
+export const SessionStatus$inboundSchema: z.ZodNativeEnum<
+  typeof SessionStatus
+> = z.nativeEnum(SessionStatus);
+
+/** @internal */
 export const Session$inboundSchema: z.ZodType<Session, z.ZodTypeDef, unknown> =
   z.object({
-    sourceSandboxName: types.string(),
-    projectId: types.string(),
+    abortedAt: types.optional(types.number()),
+    activeCpuDurationMs: types.optional(types.number()),
+    createdAt: types.number(),
+    cwd: types.string(),
+    duration: types.optional(types.number()),
     id: types.string(),
     memory: types.number(),
-    vcpus: types.number(),
-    region: types.string(),
-    runtime: types.string(),
-    timeout: types.number(),
-    status: SessionStatus$inboundSchema,
-    requestedAt: types.number(),
-    startedAt: types.optional(types.number()),
-    cwd: types.string(),
-    requestedStopAt: types.optional(types.number()),
-    stoppedAt: types.optional(types.number()),
-    abortedAt: types.optional(types.number()),
-    duration: types.optional(types.number()),
-    sourceSnapshotId: types.optional(types.string()),
-    snapshottedAt: types.optional(types.number()),
-    createdAt: types.number(),
-    updatedAt: types.number(),
     networkPolicy: types.optional(SandboxNetworkPolicy$inboundSchema),
-    activeCpuDurationMs: types.optional(types.number()),
     networkTransfer: types.optional(
       z.lazy(() => NetworkTransfer$inboundSchema),
     ),
+    projectId: types.string(),
+    region: types.string(),
+    requestedAt: types.number(),
+    requestedStopAt: types.optional(types.number()),
+    runtime: types.string(),
+    snapshottedAt: types.optional(types.number()),
+    sourceSandboxName: types.string(),
+    sourceSnapshotId: types.optional(types.string()),
+    startedAt: types.optional(types.number()),
+    status: SessionStatus$inboundSchema,
+    stoppedAt: types.optional(types.number()),
+    timeout: types.number(),
+    updatedAt: types.number(),
+    vcpus: types.number(),
   });
 
 export function sessionFromJSON(

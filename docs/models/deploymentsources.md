@@ -8,16 +8,23 @@
 import { DeploymentSources } from "@vercel/sdk/models/team.js";
 
 let value: DeploymentSources = {
-  sources: [],
-  enabled: false,
-  environments: [],
+  enabled: true,
+  environments: [
+    {
+      target: "production",
+      type: "system",
+    },
+  ],
+  sources: [
+    "cli",
+  ],
 };
 ```
 
 ## Fields
 
-| Field                                            | Type                                             | Required                                         | Description                                      |
-| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| `sources`                                        | [models.TeamSources](../models/teamsources.md)[] | :heavy_check_mark:                               | N/A                                              |
-| `enabled`                                        | *boolean*                                        | :heavy_check_mark:                               | N/A                                              |
-| `environments`                                   | *models.TeamDeploymentPolicyEnvironments*[]      | :heavy_check_mark:                               | N/A                                              |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `enabled`                                | *boolean*                                | :heavy_check_mark:                       | N/A                                      |
+| `environments`                           | *models.TeamEnvironments*[]              | :heavy_check_mark:                       | N/A                                      |
+| `sources`                                | [models.Sources](../models/sources.md)[] | :heavy_check_mark:                       | N/A                                      |

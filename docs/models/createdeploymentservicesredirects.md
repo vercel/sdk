@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentServicesRedirects } from "@vercel/sdk/models/createdeploymentroutesdeploymentshas.js";
+import { CreateDeploymentServicesRedirects } from "@vercel/sdk/models/createdeploymentresponsebody.js";
 
 let value: CreateDeploymentServicesRedirects = {
-  source: "<value>",
   destination: "<value>",
+  source: "<value>",
 };
 ```
 
@@ -15,10 +15,10 @@ let value: CreateDeploymentServicesRedirects = {
 
 | Field                                                 | Type                                                  | Required                                              | Description                                           |
 | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| `source`                                              | *string*                                              | :heavy_check_mark:                                    | N/A                                                   |
 | `destination`                                         | *string*                                              | :heavy_check_mark:                                    | N/A                                                   |
-| `permanent`                                           | *boolean*                                             | :heavy_minus_sign:                                    | N/A                                                   |
-| `statusCode`                                          | *number*                                              | :heavy_minus_sign:                                    | N/A                                                   |
+| `env`                                                 | *string*[]                                            | :heavy_minus_sign:                                    | N/A                                                   |
 | `has`                                                 | *models.CreateDeploymentServicesDeploymentsHas*[]     | :heavy_minus_sign:                                    | N/A                                                   |
 | `missing`                                             | *models.CreateDeploymentServicesDeploymentsMissing*[] | :heavy_minus_sign:                                    | N/A                                                   |
-| `env`                                                 | *string*[]                                            | :heavy_minus_sign:                                    | N/A                                                   |
+| `permanent`                                           | *boolean*                                             | :heavy_minus_sign:                                    | N/A                                                   |
+| `source`                                              | *string*                                              | :heavy_check_mark:                                    | N/A                                                   |
+| `statusCode`                                          | *number*                                              | :heavy_minus_sign:                                    | N/A                                                   |

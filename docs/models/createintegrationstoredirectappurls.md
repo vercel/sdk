@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { CreateIntegrationStoreDirectAppUrls } from "@vercel/sdk/models/createintegrationstoredirectprotocolsettings.js";
+import { CreateIntegrationStoreDirectAppUrls } from "@vercel/sdk/models/createintegrationstoredirectresponsebody.js";
 
 let value: CreateIntegrationStoreDirectAppUrls = {
-  url: "https://merry-festival.com",
   target: "production",
+  url: "https://good-natured-blight.net",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: CreateIntegrationStoreDirectAppUrls = {
 
 | Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  |
 | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `url`                                                                                        | *string*                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          |
 | `target`                                                                                     | [models.CreateIntegrationStoreDirectTarget](../models/createintegrationstoredirecttarget.md) | :heavy_check_mark:                                                                           | N/A                                                                                          |
+| `url`                                                                                        | *string*                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          |

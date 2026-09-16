@@ -15,9 +15,9 @@ const value: models.SegmentLhs1 = {
 
 ```typescript
 const value: models.SegmentLhs2 = {
-  type: "entity",
-  kind: "<value>",
   attribute: "<value>",
+  kind: "<value>",
+  type: "entity",
 };
 ```
 

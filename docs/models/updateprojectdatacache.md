@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateProjectDataCache } from "@vercel/sdk/models/updateprojectprojectsresponse200applicationjsonresponsebodycustomenvironmentstype.js";
+import { UpdateProjectDataCache } from "@vercel/sdk/models/updateprojectprojectsresponse200applicationjsonaction.js";
 
 let value: UpdateProjectDataCache = {
   userDisabled: false,
@@ -14,6 +14,6 @@ let value: UpdateProjectDataCache = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `userDisabled`     | *boolean*          | :heavy_check_mark: | N/A                |
 | `storageSizeBytes` | *number*           | :heavy_minus_sign: | N/A                |
 | `unlimited`        | *boolean*          | :heavy_minus_sign: | N/A                |
+| `userDisabled`     | *boolean*          | :heavy_check_mark: | N/A                |

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetSecurityFirewallConfigRulesetsSecurityResponseRedirect } from "@vercel/sdk/models/getsecurityfirewallconfiglogheaderssecurityresponse200applicationjsonresponsebodydraftrules2.js";
+import { GetSecurityFirewallConfigRulesetsSecurityResponseRedirect } from "@vercel/sdk/models/getsecurityfirewallconfigrulessecurityresponse200applicationjsonresponsebodydraft2actionaction.js";
 
 let value: GetSecurityFirewallConfigRulesetsSecurityResponseRedirect = {
   location: "<value>",

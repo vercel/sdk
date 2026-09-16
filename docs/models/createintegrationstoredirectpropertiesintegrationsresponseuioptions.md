@@ -3,12 +3,12 @@
 ## Example Usage
 
 ```typescript
-import { CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiOptions } from "@vercel/sdk/models/createintegrationstoredirectprotocolsettings.js";
+import { CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiOptions } from "@vercel/sdk/models/logdrainstatus.js";
 
 let value: CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiOptions =
   {
-    value: "<value>",
     label: "<value>",
+    value: "<value>",
   };
 ```
 
@@ -16,8 +16,8 @@ let value: CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiOptions =
 
 | Field                                                                       | Type                                                                        | Required                                                                    | Description                                                                 |
 | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `value`                                                                     | *string*                                                                    | :heavy_check_mark:                                                          | N/A                                                                         |
-| `label`                                                                     | *string*                                                                    | :heavy_check_mark:                                                          | N/A                                                                         |
 | `description`                                                               | *string*                                                                    | :heavy_minus_sign:                                                          | N/A                                                                         |
 | `disabled`                                                                  | *models.CreateIntegrationStoreDirectPropertiesIntegrationsResponseDisabled* | :heavy_minus_sign:                                                          | N/A                                                                         |
 | `hidden`                                                                    | *models.CreateIntegrationStoreDirectPropertiesIntegrationsResponseHidden*   | :heavy_minus_sign:                                                          | N/A                                                                         |
+| `label`                                                                     | *string*                                                                    | :heavy_check_mark:                                                          | N/A                                                                         |
+| `value`                                                                     | *string*                                                                    | :heavy_check_mark:                                                          | N/A                                                                         |

@@ -9,22 +9,21 @@ let value: GetStorageStoresByIdResponseBody = {
   store: {
     projectsMetadata: [
       {
-        id: "<id>",
-        projectId: "<id>",
-        name: "<value>",
         environments: [
           "<value 1>",
         ],
-        envVarPrefix: "<value>",
         environmentVariables: [
           "<value 1>",
           "<value 2>",
-          "<value 3>",
         ],
+        envVarPrefix: "<value>",
+        id: "<id>",
+        name: "<value>",
+        projectId: "<id>",
       },
     ],
+    status: "suspended",
     usageQuotaExceeded: false,
-    status: "limits-exceeded-suspended-store-count",
   },
 };
 ```

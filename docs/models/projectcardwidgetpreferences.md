@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ProjectCardWidgetPreferences } from "@vercel/sdk/models/usereventpayload171gituserid.js";
+import { ProjectCardWidgetPreferences } from "@vercel/sdk/models/onehundredandfortyeight.js";
 
 let value: ProjectCardWidgetPreferences = {
   projectId: "<id>",
@@ -15,6 +15,6 @@ let value: ProjectCardWidgetPreferences = {
 
 | Field                                              | Type                                               | Required                                           | Description                                        |
 | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| `config`                                           | [models.Config](../models/config.md)               | :heavy_minus_sign:                                 | N/A                                                |
 | `projectId`                                        | *string*                                           | :heavy_check_mark:                                 | N/A                                                |
 | `widget`                                           | [models.PayloadWidget](../models/payloadwidget.md) | :heavy_check_mark:                                 | N/A                                                |
-| `config`                                           | [models.Config](../models/config.md)               | :heavy_minus_sign:                                 | N/A                                                |

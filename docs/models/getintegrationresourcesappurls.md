@@ -6,8 +6,8 @@
 import { GetIntegrationResourcesAppUrls } from "@vercel/sdk/models/getintegrationresourcesop.js";
 
 let value: GetIntegrationResourcesAppUrls = {
-  url: "https://concrete-requirement.name/",
   target: "development",
+  url: "https://sizzling-operating.biz/",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: GetIntegrationResourcesAppUrls = {
 
 | Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
 | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `url`                                                                              | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
 | `target`                                                                           | [models.GetIntegrationResourcesTarget](../models/getintegrationresourcestarget.md) | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `url`                                                                              | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |

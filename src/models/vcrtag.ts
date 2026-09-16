@@ -40,13 +40,13 @@ export type VcrTagStatus = ClosedEnum<typeof VcrTagStatus>;
  */
 export type VcrTag = {
   /**
-   * The tag name.
+   * CPU architecture the manifest targets. Only present for single-platform manifests.
    */
-  tag: string;
+  arch?: string | undefined;
   /**
-   * SHA-256 digest of the image manifest the tag points at.
+   * ISO 8601 timestamp of when the tag was created.
    */
-  manifestDigest: string;
+  createdAt: string;
   /**
    * Internal identifier of the image the tag points at.
    */
@@ -56,29 +56,29 @@ export type VcrTag = {
    */
   kind: VcrTagKind;
   /**
+   * SHA-256 digest of the image manifest the tag points at.
+   */
+  manifestDigest: string;
+  /**
    * Operating system the manifest targets. Only present for single-platform manifests.
    */
   platform?: string | undefined;
-  /**
-   * CPU architecture the manifest targets. Only present for single-platform manifests.
-   */
-  arch?: string | undefined;
   /**
    * Identifier of the actor that pushed the image.
    */
   pushedBy?: string | undefined;
   /**
-   * VHS-readiness status, or `null` for a multi-platform index.
-   */
-  status: VcrTagStatus | null;
-  /**
    * Total size in bytes of the image's resources (manifest, config and layer blobs) stored by the registry.
    */
   sizeInBytes: number;
   /**
-   * ISO 8601 timestamp of when the tag was created.
+   * VHS-readiness status, or `null` for a multi-platform index.
    */
-  createdAt: string;
+  status: VcrTagStatus | null;
+  /**
+   * The tag name.
+   */
+  tag: string;
   /**
    * ISO 8601 timestamp of when the tag was last updated.
    */
@@ -96,16 +96,16 @@ export const VcrTagStatus$inboundSchema: z.ZodNativeEnum<typeof VcrTagStatus> =
 /** @internal */
 export const VcrTag$inboundSchema: z.ZodType<VcrTag, z.ZodTypeDef, unknown> = z
   .object({
-    tag: types.string(),
-    manifestDigest: types.string(),
+    arch: types.optional(types.string()),
+    createdAt: types.string(),
     imageId: types.string(),
     kind: VcrTagKind$inboundSchema,
+    manifestDigest: types.string(),
     platform: types.optional(types.string()),
-    arch: types.optional(types.string()),
     pushedBy: types.optional(types.string()),
-    status: types.nullable(VcrTagStatus$inboundSchema),
     sizeInBytes: types.number(),
-    createdAt: types.string(),
+    status: types.nullable(VcrTagStatus$inboundSchema),
+    tag: types.string(),
     updatedAt: types.string(),
   });
 

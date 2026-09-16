@@ -10,6 +10,18 @@ import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
+ * The method used to create the snapshot.
+ */
+export const CreationMethod = {
+  Automatic: "automatic",
+  Manual: "manual",
+} as const;
+/**
+ * The method used to create the snapshot.
+ */
+export type CreationMethod = ClosedEnum<typeof CreationMethod>;
+
+/**
  * The status of the snapshot.
  */
 export const SnapshotStatus = {
@@ -23,29 +35,33 @@ export const SnapshotStatus = {
 export type SnapshotStatus = ClosedEnum<typeof SnapshotStatus>;
 
 /**
- * The method used to create the snapshot.
- */
-export const CreationMethod = {
-  Automatic: "automatic",
-  Manual: "manual",
-} as const;
-/**
- * The method used to create the snapshot.
- */
-export type CreationMethod = ClosedEnum<typeof CreationMethod>;
-
-/**
  * This object contains information related to a Snapshot of a Vercel Sandbox session (v2 API).
  */
 export type Snapshot = {
+  /**
+   * The time when the snapshot was created, in milliseconds since the epoch.
+   */
+  createdAt: number;
+  /**
+   * The method used to create the snapshot.
+   */
+  creationMethod?: CreationMethod | undefined;
+  /**
+   * The time when the snapshot will expire, in milliseconds since the epoch. If not set, the snapshot does not have any expiration.
+   */
+  expiresAt?: number | undefined;
   /**
    * The unique identifier of the snapshot.
    */
   id: string;
   /**
-   * The unique identifier of the session from which the snapshot was created.
+   * The last time the snapshot was used (e.g. to resume or create a sandbox), in milliseconds since the epoch. Falls back to `createdAt` for older snapshots that predate this field.
    */
-  sourceSessionId: string;
+  lastUsedAt: number;
+  /**
+   * The unique identifier of the parent snapshot, if this snapshot was created from another snapshot.
+   */
+  parentId?: string | undefined;
   /**
    * The region where the snapshot is stored.
    */
@@ -55,43 +71,22 @@ export type Snapshot = {
    */
   regions?: Array<string> | undefined;
   /**
-   * The status of the snapshot.
-   */
-  status: SnapshotStatus;
-  /**
    * The size of the snapshot in bytes.
    */
   sizeBytes: number;
   /**
-   * The time when the snapshot will expire, in milliseconds since the epoch. If not set, the snapshot does not have any expiration.
+   * The unique identifier of the session from which the snapshot was created.
    */
-  expiresAt?: number | undefined;
+  sourceSessionId: string;
   /**
-   * The time when the snapshot was created, in milliseconds since the epoch.
+   * The status of the snapshot.
    */
-  createdAt: number;
+  status: SnapshotStatus;
   /**
    * The last time the snapshot was updated, in milliseconds since the epoch.
    */
   updatedAt: number;
-  /**
-   * The last time the snapshot was used (e.g. to resume or create a sandbox), in milliseconds since the epoch. Falls back to `createdAt` for older snapshots that predate this field.
-   */
-  lastUsedAt: number;
-  /**
-   * The method used to create the snapshot.
-   */
-  creationMethod?: CreationMethod | undefined;
-  /**
-   * The unique identifier of the parent snapshot, if this snapshot was created from another snapshot.
-   */
-  parentId?: string | undefined;
 };
-
-/** @internal */
-export const SnapshotStatus$inboundSchema: z.ZodNativeEnum<
-  typeof SnapshotStatus
-> = z.nativeEnum(SnapshotStatus);
 
 /** @internal */
 export const CreationMethod$inboundSchema: z.ZodNativeEnum<
@@ -99,23 +94,28 @@ export const CreationMethod$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(CreationMethod);
 
 /** @internal */
+export const SnapshotStatus$inboundSchema: z.ZodNativeEnum<
+  typeof SnapshotStatus
+> = z.nativeEnum(SnapshotStatus);
+
+/** @internal */
 export const Snapshot$inboundSchema: z.ZodType<
   Snapshot,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  createdAt: types.number(),
+  creationMethod: types.optional(CreationMethod$inboundSchema),
+  expiresAt: types.optional(types.number()),
   id: types.string(),
-  sourceSessionId: types.string(),
+  lastUsedAt: types.number(),
+  parentId: types.optional(types.string()),
   region: types.optional(types.string()),
   regions: types.optional(z.array(types.string())),
-  status: SnapshotStatus$inboundSchema,
   sizeBytes: types.number(),
-  expiresAt: types.optional(types.number()),
-  createdAt: types.number(),
+  sourceSessionId: types.string(),
+  status: SnapshotStatus$inboundSchema,
   updatedAt: types.number(),
-  lastUsedAt: types.number(),
-  creationMethod: types.optional(CreationMethod$inboundSchema),
-  parentId: types.optional(types.string()),
 });
 
 export function snapshotFromJSON(

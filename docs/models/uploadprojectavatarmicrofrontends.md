@@ -7,13 +7,12 @@
 
 ```typescript
 const value: models.UploadProjectAvatarMicrofrontends1 = {
-  isDefaultApp: true,
-  updatedAt: 2518.88,
+  enabled: true,
   groupIds: [
     "<value 1>",
-    "<value 2>",
   ],
-  enabled: true,
+  isDefaultApp: true,
+  updatedAt: 5856.92,
 };
 ```
 
@@ -21,13 +20,11 @@ const value: models.UploadProjectAvatarMicrofrontends1 = {
 
 ```typescript
 const value: models.UploadProjectAvatarMicrofrontends2 = {
-  updatedAt: 4075.38,
+  enabled: true,
   groupIds: [
     "<value 1>",
-    "<value 2>",
-    "<value 3>",
   ],
-  enabled: true,
+  updatedAt: 7523.94,
 };
 ```
 
@@ -35,11 +32,13 @@ const value: models.UploadProjectAvatarMicrofrontends2 = {
 
 ```typescript
 const value: models.UploadProjectAvatarMicrofrontends3 = {
-  updatedAt: 9784.52,
+  enabled: false,
   groupIds: [
     "<value 1>",
+    "<value 2>",
+    "<value 3>",
   ],
-  enabled: false,
+  updatedAt: 2961.45,
 };
 ```
 

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetDeploymentRoutesLocale } from "@vercel/sdk/models/getdeploymentmissingdeployments1.js";
+import { GetDeploymentRoutesLocale } from "@vercel/sdk/models/getdeploymentservicesfunctions.js";
 
 let value: GetDeploymentRoutesLocale = {};
 ```
@@ -12,5 +12,5 @@ let value: GetDeploymentRoutesLocale = {};
 
 | Field                    | Type                     | Required                 | Description              |
 | ------------------------ | ------------------------ | ------------------------ | ------------------------ |
-| `redirect`               | Record<string, *string*> | :heavy_minus_sign:       | N/A                      |
 | `cookie`                 | *string*                 | :heavy_minus_sign:       | N/A                      |
+| `redirect`               | Record<string, *string*> | :heavy_minus_sign:       | N/A                      |

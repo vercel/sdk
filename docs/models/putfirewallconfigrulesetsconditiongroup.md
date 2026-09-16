@@ -8,8 +8,8 @@ import { PutFirewallConfigRulesetsConditionGroup } from "@vercel/sdk/models/putf
 let value: PutFirewallConfigRulesetsConditionGroup = {
   conditions: [
     {
-      type: "geo_as_number",
-      op: "re",
+      op: "gte",
+      type: "shared_condition",
     },
   ],
 };

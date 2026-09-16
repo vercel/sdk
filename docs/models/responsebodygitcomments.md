@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyGitComments } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson1securitymanagedrulesaction.js";
+import { ResponseBodyGitComments } from "@vercel/sdk/models/getprojectslogheaders2.js";
 
 let value: ResponseBodyGitComments = {
-  onPullRequest: true,
   onCommit: true,
+  onPullRequest: true,
 };
 ```
 
@@ -15,5 +15,5 @@ let value: ResponseBodyGitComments = {
 
 | Field                                            | Type                                             | Required                                         | Description                                      |
 | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| `onPullRequest`                                  | *boolean*                                        | :heavy_check_mark:                               | Whether the Vercel bot should comment on PRs     |
 | `onCommit`                                       | *boolean*                                        | :heavy_check_mark:                               | Whether the Vercel bot should comment on commits |
+| `onPullRequest`                                  | *boolean*                                        | :heavy_check_mark:                               | Whether the Vercel bot should comment on PRs     |

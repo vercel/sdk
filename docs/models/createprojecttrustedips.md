@@ -7,12 +7,12 @@
 
 ```typescript
 const value: models.TrustedIps1 = {
-  deploymentType: "prod_deployment_urls_and_all_previews",
   addresses: [
     {
       value: "<value>",
     },
   ],
+  deploymentType: "prod_deployment_urls_and_all_previews",
   protectionMode: "exclusive",
 };
 ```

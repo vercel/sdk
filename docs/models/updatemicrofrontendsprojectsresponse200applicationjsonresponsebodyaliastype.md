@@ -1,17 +1,19 @@
 # UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyAliasType
 
+The type of matching to perform
+
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyAliasType } from "@vercel/sdk/models/updatemicrofrontendsprojectsfunctiondefaultmemorytype.js";
+import { UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyAliasType } from "@vercel/sdk/models/updatemicrofrontendshaskey.js";
 
 let value:
   UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyAliasType =
-    "LAMBDAS";
+    "startsWith";
 ```
 
 ## Values
 
 ```typescript
-"LAMBDAS"
+"endsWith" | "equals" | "startsWith"
 ```

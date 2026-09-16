@@ -7,21 +7,25 @@
 
 ```typescript
 const value: models.CreateDrainResponseBody1 = {
-  id: "<id>",
   createdAt: 9104.12,
-  updatedAt: 815.09,
+  delivery: {
+    encoding: "ndjson",
+    endpoint: "<value>",
+    headers: {
+      "key": "<value>",
+      "key1": "<value>",
+      "key2": "<value>",
+    },
+    type: "http",
+  },
+  id: "<id>",
   name: "<value>",
   ownerId: "<id>",
   schemas: {},
-  delivery: {
-    type: "internal",
-    target: "vercel-otel-traces-db",
-  },
   source: {
-    kind: "integration",
-    integrationId: "<id>",
-    integrationConfigurationId: "<id>",
+    kind: "self-served",
   },
+  updatedAt: 4140.09,
 };
 ```
 
@@ -29,26 +33,21 @@ const value: models.CreateDrainResponseBody1 = {
 
 ```typescript
 const value: models.CreateDrainResponseBody2 = {
-  id: "<id>",
   createdAt: 8513.2,
-  updatedAt: 8458.35,
+  delivery: {
+    target: "vercel-otel-traces-db",
+    type: "internal",
+  },
+  id: "<id>",
   name: "<value>",
   ownerId: "<id>",
   schemas: {},
-  delivery: {
-    type: "s3",
-    endpoint: "<value>",
-    encoding: "ndjson",
-    compression: "none",
-    fileStructure: "hive",
-    roleArn: "<value>",
-    region: "<value>",
-  },
   source: {
-    kind: "integration",
-    integrationId: "<id>",
     integrationConfigurationId: "<id>",
+    integrationId: "<id>",
+    kind: "integration",
   },
+  updatedAt: 6072.17,
 };
 ```
 

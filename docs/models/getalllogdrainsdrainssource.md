@@ -15,9 +15,9 @@ const value: models.GetAllLogDrainsSourceLogDrains1 = {
 
 ```typescript
 const value: models.GetAllLogDrainsSourceLogDrains2 = {
-  kind: "integration",
-  integrationId: "<id>",
   integrationConfigurationId: "<id>",
+  integrationId: "<id>",
+  kind: "integration",
 };
 ```
 

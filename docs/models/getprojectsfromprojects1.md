@@ -5,7 +5,7 @@ The source envs on the trusted project that are allowed to access `to`.
 ## Example Usage
 
 ```typescript
-import { GetProjectsFromProjects1 } from "@vercel/sdk/models/responsebodydeploymentexpiration.js";
+import { GetProjectsFromProjects1 } from "@vercel/sdk/models/responsebodyabuse.js";
 
 let value: GetProjectsFromProjects1 = {
   slugs: [
@@ -20,5 +20,5 @@ let value: GetProjectsFromProjects1 = {
 
 | Field                                                                                                                 | Type                                                                                                                  | Required                                                                                                              | Description                                                                                                           |
 | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `slugs`                                                                                                               | *string*[]                                                                                                            | :heavy_check_mark:                                                                                                    | System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project. |
 | `preset`                                                                                                              | [models.GetProjectsFromProjectsResponsePreset](../models/getprojectsfromprojectsresponsepreset.md)                    | :heavy_minus_sign:                                                                                                    | N/A                                                                                                                   |
+| `slugs`                                                                                                               | *string*[]                                                                                                            | :heavy_check_mark:                                                                                                    | System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project. |

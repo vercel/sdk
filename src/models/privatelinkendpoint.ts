@@ -33,6 +33,18 @@ export type PrivateLinkEndpointStatus = ClosedEnum<
  */
 export type PrivateLinkEndpoint = {
   /**
+   * The regional DNS names assigned to the endpoint by AWS. Use these to reach the service when private DNS is not enabled.
+   */
+  awsDnsEntries?: Array<string> | undefined;
+  /**
+   * The AWS VPC endpoint service the endpoint connects to.
+   */
+  awsServiceName: string;
+  /**
+   * Timestamp in milliseconds since the UNIX epoch for when the endpoint was created.
+   */
+  createdAt: number;
+  /**
    * The unique identifier of the PrivateLink endpoint.
    */
   endpointId: string;
@@ -41,33 +53,13 @@ export type PrivateLinkEndpoint = {
    */
   name: string;
   /**
-   * The identifier of the team that owns the PrivateLink endpoint.
+   * The private DNS names of the endpoint service, populated when private DNS is enabled for the endpoint.
    */
-  teamId: string;
+  privateDnsNames?: Array<string> | undefined;
   /**
    * The identifier of the project the PrivateLink endpoint belongs to.
    */
   projectId: string;
-  /**
-   * The Vercel region the endpoint is provisioned in.
-   */
-  vercelRegion: string;
-  /**
-   * The AWS VPC endpoint service the endpoint connects to.
-   */
-  awsServiceName: string;
-  /**
-   * The identifier of the underlying AWS VPC endpoint. Absent until AWS has created the endpoint.
-   */
-  vpcEndpointId?: string | undefined;
-  /**
-   * The regional DNS names assigned to the endpoint by AWS. Use these to reach the service when private DNS is not enabled.
-   */
-  awsDnsEntries?: Array<string> | undefined;
-  /**
-   * The private DNS names of the endpoint service, populated when private DNS is enabled for the endpoint.
-   */
-  privateDnsNames?: Array<string> | undefined;
   /**
    * The current state of the endpoint. - `creating`: the endpoint is being created. - `pending-acceptance`: waiting for the endpoint service owner to accept the connection. Only occurs for services that require manual acceptance. - `provisioning`: the connection was accepted and AWS is finishing setup. - `available`: the endpoint is fully provisioned and ready to use. - `rejected`: the endpoint service owner rejected the connection. - `failed`: the endpoint could not be provisioned. - `deleting`: the endpoint is being deleted.
    */
@@ -77,13 +69,21 @@ export type PrivateLinkEndpoint = {
    */
   statusMessage?: string | undefined;
   /**
-   * Timestamp in milliseconds since the UNIX epoch for when the endpoint was created.
+   * The identifier of the team that owns the PrivateLink endpoint.
    */
-  createdAt: number;
+  teamId: string;
   /**
    * Timestamp in milliseconds since the UNIX epoch for when the endpoint was last updated.
    */
   updatedAt: number;
+  /**
+   * The Vercel region the endpoint is provisioned in.
+   */
+  vercelRegion: string;
+  /**
+   * The identifier of the underlying AWS VPC endpoint. Absent until AWS has created the endpoint.
+   */
+  vpcEndpointId?: string | undefined;
 };
 
 /** @internal */
@@ -97,19 +97,19 @@ export const PrivateLinkEndpoint$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  awsDnsEntries: types.optional(z.array(types.string())),
+  awsServiceName: types.string(),
+  createdAt: types.number(),
   endpointId: types.string(),
   name: types.string(),
-  teamId: types.string(),
-  projectId: types.string(),
-  vercelRegion: types.string(),
-  awsServiceName: types.string(),
-  vpcEndpointId: types.optional(types.string()),
-  awsDnsEntries: types.optional(z.array(types.string())),
   privateDnsNames: types.optional(z.array(types.string())),
+  projectId: types.string(),
   status: PrivateLinkEndpointStatus$inboundSchema,
   statusMessage: types.optional(types.string()),
-  createdAt: types.number(),
+  teamId: types.string(),
   updatedAt: types.number(),
+  vercelRegion: types.string(),
+  vpcEndpointId: types.optional(types.string()),
 });
 
 export function privateLinkEndpointFromJSON(

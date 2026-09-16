@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsTrustedIps1 } from "@vercel/sdk/models/updatemicrofrontendsinternalroutes2.js";
+import { UpdateMicrofrontendsTrustedIps1 } from "@vercel/sdk/models/updatemicrofrontendsfrom1.js";
 
 let value: UpdateMicrofrontendsTrustedIps1 = {
-  deploymentType: "all",
   addresses: [],
+  deploymentType: "all",
   protectionMode: "exclusive",
 };
 ```
@@ -16,6 +16,6 @@ let value: UpdateMicrofrontendsTrustedIps1 = {
 
 | Field                                                                                                            | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
 | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `deploymentType`                                                                                                 | [models.UpdateMicrofrontendsTrustedIpsDeploymentType](../models/updatemicrofrontendstrustedipsdeploymenttype.md) | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
 | `addresses`                                                                                                      | [models.UpdateMicrofrontendsTrustedIpsAddresses](../models/updatemicrofrontendstrustedipsaddresses.md)[]         | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
+| `deploymentType`                                                                                                 | [models.UpdateMicrofrontendsTrustedIpsDeploymentType](../models/updatemicrofrontendstrustedipsdeploymenttype.md) | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
 | `protectionMode`                                                                                                 | [models.UpdateMicrofrontendsTrustedIpsProtectionMode](../models/updatemicrofrontendstrustedipsprotectionmode.md) | :heavy_check_mark:                                                                                               | N/A                                                                                                              |

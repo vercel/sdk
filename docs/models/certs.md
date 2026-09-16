@@ -6,14 +6,14 @@
 import { Certs } from "@vercel/sdk/models/getcertsop.js";
 
 let value: Certs = {
-  id: "<id>",
-  createdAt: 7567.26,
-  expiresAt: 6914.11,
-  autoRenew: true,
+  autoRenew: false,
   cns: [
     "<value 1>",
     "<value 2>",
   ],
+  createdAt: 2165.26,
+  expiresAt: 5426.74,
+  id: "<id>",
 };
 ```
 
@@ -21,8 +21,8 @@ let value: Certs = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *string*           | :heavy_check_mark: | N/A                |
-| `createdAt`        | *number*           | :heavy_check_mark: | N/A                |
-| `expiresAt`        | *number*           | :heavy_check_mark: | N/A                |
 | `autoRenew`        | *boolean*          | :heavy_check_mark: | N/A                |
 | `cns`              | *string*[]         | :heavy_check_mark: | N/A                |
+| `createdAt`        | *number*           | :heavy_check_mark: | N/A                |
+| `expiresAt`        | *number*           | :heavy_check_mark: | N/A                |
+| `id`               | *string*           | :heavy_check_mark: | N/A                |

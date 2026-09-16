@@ -6,8 +6,8 @@
 import { CreateDrainFilterDrains2 } from "@vercel/sdk/models/createdrainop.js";
 
 let value: CreateDrainFilterDrains2 = {
-  type: "odata",
   text: "<value>",
+  type: "odata",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: CreateDrainFilterDrains2 = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `type`             | *"odata"*          | :heavy_check_mark: | N/A                |
 | `text`             | *string*           | :heavy_check_mark: | N/A                |
+| `type`             | *"odata"*          | :heavy_check_mark: | N/A                |

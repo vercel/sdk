@@ -17,8 +17,8 @@ const value: models.GetProjectMembersResponseBody1 = {};
 const value: models.GetProjectMembersResponseBody2 = {
   members: [],
   pagination: {
-    hasNext: false,
     count: 20,
+    hasNext: false,
     next: 1540095775951,
     prev: 1540095775951,
   },

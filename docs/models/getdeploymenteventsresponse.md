@@ -13,8 +13,8 @@ const value: models.GetDeploymentEventsDeploymentsResponseBody[] = [
     deploymentId: "<id>",
     id: "<id>",
     info: {
-      type: "<value>",
       name: "<value>",
+      type: "<value>",
     },
     serial: "<value>",
     type: "middleware",
@@ -26,14 +26,14 @@ const value: models.GetDeploymentEventsDeploymentsResponseBody[] = [
 
 ```typescript
 const value: models.GetDeploymentEventsResponseBody = {
-  type: "edge-function-invocation",
-  created: 9847.97,
+  created: 3170.71,
   payload: {
+    date: 2469.14,
     deploymentId: "<id>",
     id: "<id>",
-    date: 4386.4,
     serial: "<value>",
   },
+  type: "stdout",
 };
 ```
 

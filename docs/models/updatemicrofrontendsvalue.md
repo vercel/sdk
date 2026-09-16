@@ -19,8 +19,8 @@ const value: number = 1284.03;
 
 ```typescript
 const value: models.UpdateMicrofrontendsValue3 = {
-  previousValue: "<value>",
   currentValue: "<value>",
+  previousValue: "<value>",
 };
 ```
 

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupHasValue } from "@vercel/sdk/models/getmicrofrontendsingroupinternalroutes2.js";
+import { GetMicrofrontendsInGroupHasValue } from "@vercel/sdk/models/getmicrofrontendsingrouphasvalue.js";
 
 let value: GetMicrofrontendsInGroupHasValue = {
   eq: "<value>",

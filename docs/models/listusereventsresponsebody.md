@@ -10,28 +10,28 @@ import { ListUserEventsResponseBody } from "@vercel/sdk/models/listusereventsop.
 let value: ListUserEventsResponseBody = {
   events: [
     {
-      id: "uev_bfmMjiMnXfnPbT97dGdpJbCN",
-      text: "You logged in via GitHub",
-      entities: [
-        {
-          type: "author",
-          start: 0,
-          end: 3,
-        },
-      ],
-      type: "login",
       categories: [
         "deployment",
       ],
       createdAt: 1632859321020,
-      userId: "zTuNVUXEAvvnNN3IaqinkyMw",
-      principalId: "<id>",
+      entities: [
+        {
+          end: 3,
+          start: 0,
+          type: "author",
+        },
+      ],
+      id: "uev_bfmMjiMnXfnPbT97dGdpJbCN",
       payload: {
-        action: "cancel_plan",
+        action: "resume_plan",
         data: {
           planSlug: "v0_business",
         },
       },
+      principalId: "<id>",
+      text: "You logged in via GitHub",
+      type: "login",
+      userId: "zTuNVUXEAvvnNN3IaqinkyMw",
     },
   ],
 };

@@ -10,11 +10,11 @@ let value: GetDeploymentFeatureFlagsResponseBody = {
     {},
   ],
   status: {
+    createdAt: 809.53,
     deploymentId: "<id>",
-    projectId: "<id>",
-    responseStatus: 809.53,
     flagCount: 1745.14,
-    createdAt: 793.25,
+    projectId: "<id>",
+    responseStatus: 793.25,
   },
 };
 ```

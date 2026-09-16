@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { RemovedUsers } from "@vercel/sdk/models/usereventpayloadnext.js";
+import { RemovedUsers } from "@vercel/sdk/models/payloadnext.js";
 
 let value: RemovedUsers = {
-  role: "BILLING",
   confirmed: true,
+  role: "MEMBER",
 };
 ```
 
@@ -15,7 +15,7 @@ let value: RemovedUsers = {
 
 | Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `role`                                                                       | [models.UserEventPayload227Role](../models/usereventpayload227role.md)       | :heavy_check_mark:                                                           | N/A                                                                          |
 | `confirmed`                                                                  | *boolean*                                                                    | :heavy_check_mark:                                                           | N/A                                                                          |
 | `confirmedAt`                                                                | *number*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
 | `joinedFrom`                                                                 | [models.UserEventPayloadJoinedFrom](../models/usereventpayloadjoinedfrom.md) | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `role`                                                                       | [models.UserEventPayload228Role](../models/usereventpayload228role.md)       | :heavy_check_mark:                                                           | N/A                                                                          |

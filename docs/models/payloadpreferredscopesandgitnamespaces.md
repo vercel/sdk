@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { PayloadPreferredScopesAndGitNamespaces } from "@vercel/sdk/models/usereventpayload171gituserid.js";
+import { PayloadPreferredScopesAndGitNamespaces } from "@vercel/sdk/models/onehundredandfortyeight.js";
 
 let value: PayloadPreferredScopesAndGitNamespaces = {
-  scopeId: "<id>",
   gitNamespaceId: "<id>",
+  scopeId: "<id>",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: PayloadPreferredScopesAndGitNamespaces = {
 
 | Field                          | Type                           | Required                       | Description                    |
 | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
-| `scopeId`                      | *string*                       | :heavy_check_mark:             | N/A                            |
 | `gitNamespaceId`               | *models.PayloadGitNamespaceId* | :heavy_check_mark:             | N/A                            |
+| `scopeId`                      | *string*                       | :heavy_check_mark:             | N/A                            |

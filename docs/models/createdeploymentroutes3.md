@@ -3,12 +3,12 @@
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentRoutes3 } from "@vercel/sdk/models/createdeploymenthasdeploymentstype.js";
+import { CreateDeploymentRoutes3 } from "@vercel/sdk/models/createdeploymentmissingdeploymentsresponse1.js";
 
 let value: CreateDeploymentRoutes3 = {
-  src: "<value>",
   continue: true,
   middleware: 9033.5,
+  src: "<value>",
 };
 ```
 
@@ -16,6 +16,6 @@ let value: CreateDeploymentRoutes3 = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `src`              | *string*           | :heavy_check_mark: | N/A                |
 | `continue`         | *boolean*          | :heavy_check_mark: | N/A                |
 | `middleware`       | *number*           | :heavy_check_mark: | N/A                |
+| `src`              | *string*           | :heavy_check_mark: | N/A                |

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateProjectInternalRoutes1 } from "@vercel/sdk/models/updateprojectresponsebody.js";
+import { UpdateProjectInternalRoutes1 } from "@vercel/sdk/models/updateprojectprojectsresponse200applicationjsonaction.js";
 
 let value: UpdateProjectInternalRoutes1 = {
   src: "<value>",
@@ -15,6 +15,6 @@ let value: UpdateProjectInternalRoutes1 = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
+| `expiry`           | *number*           | :heavy_minus_sign: | N/A                |
 | `src`              | *string*           | :heavy_check_mark: | N/A                |
 | `status`           | *number*           | :heavy_check_mark: | N/A                |
-| `expiry`           | *number*           | :heavy_minus_sign: | N/A                |

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { OptionsAllowlist } from "@vercel/sdk/models/twohundredandeightyone.js";
+import { OptionsAllowlist } from "@vercel/sdk/models/usereventpayloadgitprovider.js";
 
 let value: OptionsAllowlist = {
   paths: [
@@ -16,6 +16,6 @@ let value: OptionsAllowlist = {
 
 ## Fields
 
-| Field                                | Type                                 | Required                             | Description                          |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `paths`                              | [models.Paths](../models/paths.md)[] | :heavy_check_mark:                   | N/A                                  |
+| Field                                              | Type                                               | Required                                           | Description                                        |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| `paths`                                            | [models.PayloadPaths](../models/payloadpaths.md)[] | :heavy_check_mark:                                 | N/A                                                |

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsProjectsBuilds } from "@vercel/sdk/models/updatemicrofrontendsinternalroutes2.js";
+import { UpdateMicrofrontendsProjectsBuilds } from "@vercel/sdk/models/updatemicrofrontendsfrom1.js";
 
 let value: UpdateMicrofrontendsProjectsBuilds = {
   use: "<value>",
@@ -14,6 +14,6 @@ let value: UpdateMicrofrontendsProjectsBuilds = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `use`              | *string*           | :heavy_check_mark: | N/A                |
-| `src`              | *string*           | :heavy_minus_sign: | N/A                |
 | `dest`             | *string*           | :heavy_minus_sign: | N/A                |
+| `src`              | *string*           | :heavy_minus_sign: | N/A                |
+| `use`              | *string*           | :heavy_check_mark: | N/A                |

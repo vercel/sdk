@@ -65,20 +65,20 @@ export const ResponseBodyAction = {
 export type ResponseBodyAction = ClosedEnum<typeof ResponseBodyAction>;
 
 export type AddBypassIpResponseBodyResult = {
-  ownerId: string;
-  id: string;
-  domain: string;
-  ip: string;
   action?: ResponseBodyAction | undefined;
-  projectId?: string | undefined;
+  actorId?: string | undefined;
+  createdAt: string;
+  deletedAt?: string | undefined;
+  domain: string;
+  expiresAt?: number | null | undefined;
+  id: string;
+  ip: string;
   isProjectRule?: boolean | undefined;
   note?: string | undefined;
-  createdAt: string;
-  actorId?: string | undefined;
+  ownerId: string;
+  projectId?: string | undefined;
   updatedAt: string;
   updatedAtHour: string;
-  deletedAt?: string | undefined;
-  expiresAt?: number | null | undefined;
 };
 
 export type AddBypassIpResponseBody2 = {
@@ -87,19 +87,19 @@ export type AddBypassIpResponseBody2 = {
 };
 
 export type ResponseBodyResult = {
-  ownerId: string;
-  id: string;
   domain: string;
+  id: string;
   ip?: string | undefined;
-  projectId: string;
-  note: string;
   isProjectRule: boolean;
+  note: string;
+  ownerId: string;
+  projectId: string;
 };
 
 export type AddBypassIpResponseBody1 = {
   ok: boolean;
-  result: Array<ResponseBodyResult>;
   pagination?: any | null | undefined;
+  result: Array<ResponseBodyResult>;
 };
 
 export type AddBypassIpResponseBody =
@@ -242,36 +242,36 @@ export const AddBypassIpResponseBodyResult$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  OwnerId: types.string(),
-  Id: types.string(),
-  Domain: types.string(),
-  Ip: types.string(),
   Action: types.optional(ResponseBodyAction$inboundSchema),
-  ProjectId: types.optional(types.string()),
+  ActorId: types.optional(types.string()),
+  CreatedAt: types.string(),
+  DeletedAt: types.optional(types.string()),
+  Domain: types.string(),
+  ExpiresAt: z.nullable(types.number()).optional(),
+  Id: types.string(),
+  Ip: types.string(),
   IsProjectRule: types.optional(types.boolean()),
   Note: types.optional(types.string()),
-  CreatedAt: types.string(),
-  ActorId: types.optional(types.string()),
+  OwnerId: types.string(),
+  ProjectId: types.optional(types.string()),
   UpdatedAt: types.string(),
   UpdatedAtHour: types.string(),
-  DeletedAt: types.optional(types.string()),
-  ExpiresAt: z.nullable(types.number()).optional(),
 }).transform((v) => {
   return remap$(v, {
-    "OwnerId": "ownerId",
-    "Id": "id",
-    "Domain": "domain",
-    "Ip": "ip",
     "Action": "action",
-    "ProjectId": "projectId",
+    "ActorId": "actorId",
+    "CreatedAt": "createdAt",
+    "DeletedAt": "deletedAt",
+    "Domain": "domain",
+    "ExpiresAt": "expiresAt",
+    "Id": "id",
+    "Ip": "ip",
     "IsProjectRule": "isProjectRule",
     "Note": "note",
-    "CreatedAt": "createdAt",
-    "ActorId": "actorId",
+    "OwnerId": "ownerId",
+    "ProjectId": "projectId",
     "UpdatedAt": "updatedAt",
     "UpdatedAtHour": "updatedAtHour",
-    "DeletedAt": "deletedAt",
-    "ExpiresAt": "expiresAt",
   });
 });
 
@@ -313,22 +313,22 @@ export const ResponseBodyResult$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  OwnerId: types.string(),
-  Id: types.string(),
   Domain: types.string(),
+  Id: types.string(),
   Ip: types.optional(types.string()),
-  ProjectId: types.string(),
-  Note: types.string(),
   IsProjectRule: types.boolean(),
+  Note: types.string(),
+  OwnerId: types.string(),
+  ProjectId: types.string(),
 }).transform((v) => {
   return remap$(v, {
-    "OwnerId": "ownerId",
-    "Id": "id",
     "Domain": "domain",
+    "Id": "id",
     "Ip": "ip",
-    "ProjectId": "projectId",
-    "Note": "note",
     "IsProjectRule": "isProjectRule",
+    "Note": "note",
+    "OwnerId": "ownerId",
+    "ProjectId": "projectId",
   });
 });
 
@@ -349,8 +349,8 @@ export const AddBypassIpResponseBody1$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ok: types.boolean(),
-  result: z.array(z.lazy(() => ResponseBodyResult$inboundSchema)),
   pagination: z.nullable(z.any()).optional(),
+  result: z.array(z.lazy(() => ResponseBodyResult$inboundSchema)),
 });
 
 export function addBypassIpResponseBody1FromJSON(

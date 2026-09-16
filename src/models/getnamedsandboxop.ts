@@ -38,6 +38,8 @@ export type GetNamedSandboxRequest = {
 };
 
 export type GetNamedSandboxResponseBody = {
+  resumed: boolean;
+  routes: Array<SandboxPublicRoute>;
   /**
    * This object contains information related to a Vercel NamedSandbox.
    */
@@ -46,8 +48,6 @@ export type GetNamedSandboxResponseBody = {
    * This object contains information related to a Vercel Sandbox Session. v2 endpoints return "session" instead of "sandbox" as the response wrapper key.
    */
   session: Session;
-  routes: Array<SandboxPublicRoute>;
-  resumed: boolean;
 };
 
 /** @internal */
@@ -86,10 +86,10 @@ export const GetNamedSandboxResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  resumed: types.boolean(),
+  routes: z.array(SandboxPublicRoute$inboundSchema),
   sandbox: NamedSandbox$inboundSchema,
   session: Session$inboundSchema,
-  routes: z.array(SandboxPublicRoute$inboundSchema),
-  resumed: types.boolean(),
 });
 
 export function getNamedSandboxResponseBodyFromJSON(

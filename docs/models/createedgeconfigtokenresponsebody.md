@@ -6,8 +6,8 @@
 import { CreateEdgeConfigTokenResponseBody } from "@vercel/sdk/models/createedgeconfigtokenop.js";
 
 let value: CreateEdgeConfigTokenResponseBody = {
-  token: "<value>",
   id: "<id>",
+  token: "<value>",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: CreateEdgeConfigTokenResponseBody = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `token`            | *string*           | :heavy_check_mark: | N/A                |
 | `id`               | *string*           | :heavy_check_mark: | N/A                |
+| `token`            | *string*           | :heavy_check_mark: | N/A                |

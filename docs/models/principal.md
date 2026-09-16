@@ -18,26 +18,26 @@ const value: models.Principal1 = {
 
 ```typescript
 const value: models.Principal2 = {
-  type: "app",
   clientId: "<id>",
   name: "<value>",
+  type: "app",
 };
 ```
 
-### `models.Three`
+### `models.Principal3`
 
 ```typescript
-const value: models.Three = {
-  type: "external",
+const value: models.Principal3 = {
   id: "<id>",
   name: "<value>",
+  type: "external",
 };
 ```
 
-### `models.Four`
+### `models.Principal4`
 
 ```typescript
-const value: models.Four = {
+const value: models.Principal4 = {
   type: "system",
 };
 ```

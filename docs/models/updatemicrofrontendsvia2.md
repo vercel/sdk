@@ -5,14 +5,14 @@ Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures 
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsVia2 } from "@vercel/sdk/models/updatemicrofrontendsprojectsfunctiondefaultmemorytype.js";
+import { UpdateMicrofrontendsVia2 } from "@vercel/sdk/models/updatemicrofrontendshaskey.js";
 
 let value: UpdateMicrofrontendsVia2 = {
-  type: "integration",
   integration: {
-    integrationId: "<id>",
     configurationId: "<id>",
+    integrationId: "<id>",
   },
+  type: "integration",
 };
 ```
 
@@ -20,5 +20,5 @@ let value: UpdateMicrofrontendsVia2 = {
 
 | Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  |
 | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `type`                                                                                       | *"integration"*                                                                              | :heavy_check_mark:                                                                           | N/A                                                                                          |
 | `integration`                                                                                | [models.UpdateMicrofrontendsViaIntegration](../models/updatemicrofrontendsviaintegration.md) | :heavy_check_mark:                                                                           | N/A                                                                                          |
+| `type`                                                                                       | *"integration"*                                                                              | :heavy_check_mark:                                                                           | N/A                                                                                          |

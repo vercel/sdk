@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { GetSecurityFirewallConfigRulesetsSecurityResponseConditionGroup } from "@vercel/sdk/models/getsecurityfirewallconfiglogheaderssecurityresponse200applicationjsonresponsebodydraftrules2.js";
+import { GetSecurityFirewallConfigRulesetsSecurityResponseConditionGroup } from "@vercel/sdk/models/getsecurityfirewallconfigrulessecurityresponse200applicationjsonresponsebodydraft2actionaction.js";
 
 let value: GetSecurityFirewallConfigRulesetsSecurityResponseConditionGroup = {
   conditions: [
     {
-      type: "query",
-      op: "ex",
+      op: "nex",
+      type: "bot_protection",
     },
   ],
 };

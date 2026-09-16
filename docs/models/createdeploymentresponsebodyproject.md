@@ -5,7 +5,7 @@ The public project information associated with the deployment.
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentResponseBodyProject } from "@vercel/sdk/models/createdeploymenthasdeploymentstype.js";
+import { CreateDeploymentResponseBodyProject } from "@vercel/sdk/models/createdeploymentmissingdeploymentsresponse1.js";
 
 let value: CreateDeploymentResponseBodyProject = {
   id: "<id>",
@@ -17,6 +17,6 @@ let value: CreateDeploymentResponseBodyProject = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
+| `framework`        | *string*           | :heavy_minus_sign: | N/A                |
 | `id`               | *string*           | :heavy_check_mark: | N/A                |
 | `name`             | *string*           | :heavy_check_mark: | N/A                |
-| `framework`        | *string*           | :heavy_minus_sign: | N/A                |

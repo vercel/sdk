@@ -7,10 +7,10 @@
 
 ```typescript
 const value: models.GetDeploymentCustomEnvironmentDeployments1 = {
+  createdAt: 760.71,
   id: "<id>",
   slug: "<value>",
-  type: "development",
-  createdAt: 7799.26,
+  type: "production",
   updatedAt: 1685.64,
 };
 ```

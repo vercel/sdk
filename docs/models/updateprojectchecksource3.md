@@ -6,9 +6,9 @@
 import { UpdateProjectCheckSource3 } from "@vercel/sdk/models/updateprojectcheckop.js";
 
 let value: UpdateProjectCheckSource3 = {
+  externalCheckName: "<value>",
   kind: "git-provider",
   provider: "github",
-  externalCheckName: "<value>",
 };
 ```
 
@@ -16,6 +16,6 @@ let value: UpdateProjectCheckSource3 = {
 
 | Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
 | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `externalCheckName`                                                                      | *string*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |
 | `kind`                                                                                   | *"git-provider"*                                                                         | :heavy_check_mark:                                                                       | N/A                                                                                      |
 | `provider`                                                                               | [models.UpdateProjectCheckSourceProvider](../models/updateprojectchecksourceprovider.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `externalCheckName`                                                                      | *string*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |

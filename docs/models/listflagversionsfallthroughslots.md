@@ -6,8 +6,8 @@
 import { ListFlagVersionsFallthroughSlots } from "@vercel/sdk/models/listflagversionsop.js";
 
 let value: ListFlagVersionsFallthroughSlots = {
-  promille: 2736,
-  durationMs: 1842.19,
+  durationMs: 2736,
+  promille: 1842.19,
 };
 ```
 
@@ -15,5 +15,5 @@ let value: ListFlagVersionsFallthroughSlots = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `promille`         | *number*           | :heavy_check_mark: | N/A                |
 | `durationMs`       | *number*           | :heavy_check_mark: | N/A                |
+| `promille`         | *number*           | :heavy_check_mark: | N/A                |

@@ -45,43 +45,43 @@ export type ListAccessGroupsRequest = {
 };
 
 export type AccessGroups = {
-  members?: Array<string> | undefined;
-  projects?: Array<string> | undefined;
-  entitlements?: Array<string> | undefined;
-  teamPermissions?: Array<string> | undefined;
-  isDsyncManaged: boolean;
-  /**
-   * The name of this access group.
-   */
-  name: string;
-  /**
-   * Timestamp in milliseconds when the access group was created.
-   */
-  createdAt: string;
-  /**
-   * ID of the team that this access group belongs to.
-   */
-  teamId: string;
-  /**
-   * Timestamp in milliseconds when the access group was last updated.
-   */
-  updatedAt: string;
   /**
    * ID of the access group.
    */
   accessGroupId: string;
   /**
+   * Timestamp in milliseconds when the access group was created.
+   */
+  createdAt: string;
+  entitlements?: Array<string> | undefined;
+  isDsyncManaged: boolean;
+  members?: Array<string> | undefined;
+  /**
    * Number of members in the access group.
    */
   membersCount: number;
+  /**
+   * The name of this access group.
+   */
+  name: string;
+  projects?: Array<string> | undefined;
   /**
    * Number of projects in the access group.
    */
   projectsCount: number;
   /**
+   * ID of the team that this access group belongs to.
+   */
+  teamId: string;
+  teamPermissions?: Array<string> | undefined;
+  /**
    * Roles that the team has in the access group.
    */
   teamRoles?: Array<string> | undefined;
+  /**
+   * Timestamp in milliseconds when the access group was last updated.
+   */
+  updatedAt: string;
 };
 
 export type ResponseBodyPagination = {
@@ -142,19 +142,19 @@ export const AccessGroups$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  members: types.optional(z.array(types.string())),
-  projects: types.optional(z.array(types.string())),
-  entitlements: types.optional(z.array(types.string())),
-  teamPermissions: types.optional(z.array(types.string())),
-  isDsyncManaged: types.boolean(),
-  name: types.string(),
-  createdAt: types.string(),
-  teamId: types.string(),
-  updatedAt: types.string(),
   accessGroupId: types.string(),
+  createdAt: types.string(),
+  entitlements: types.optional(z.array(types.string())),
+  isDsyncManaged: types.boolean(),
+  members: types.optional(z.array(types.string())),
   membersCount: types.number(),
+  name: types.string(),
+  projects: types.optional(z.array(types.string())),
   projectsCount: types.number(),
+  teamId: types.string(),
+  teamPermissions: types.optional(z.array(types.string())),
   teamRoles: types.optional(z.array(types.string())),
+  updatedAt: types.string(),
 });
 
 export function accessGroupsFromJSON(

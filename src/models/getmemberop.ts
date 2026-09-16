@@ -27,12 +27,12 @@ export const GetMemberRole = {
 export type GetMemberRole = ClosedEnum<typeof GetMemberRole>;
 
 export type GetMemberResponseBody = {
+  globalUserId?: string | undefined;
   id: string;
   /**
    * "The `ADMIN` role, by default, is provided to users capable of installing integrations, while the `USER` role can be granted to Vercel users with the Vercel `Billing` or Vercel `Viewer` role, which are considered to be Read-Only roles."
    */
   role: GetMemberRole;
-  globalUserId?: string | undefined;
   userEmail?: string | undefined;
 };
 
@@ -71,9 +71,9 @@ export const GetMemberResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  globalUserId: types.optional(types.string()),
   id: types.string(),
   role: GetMemberRole$inboundSchema,
-  globalUserId: types.optional(types.string()),
   userEmail: types.optional(types.string()),
 });
 

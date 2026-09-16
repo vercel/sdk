@@ -7,15 +7,15 @@
 
 ```typescript
 const value: models.Policies1 = {
-  kind: "project-grant",
-  teamId: "<id>",
-  projectId: "<id>",
+  createdAt: "1732670486285",
   environments: [
     "<value 1>",
     "<value 2>",
     "<value 3>",
   ],
-  createdAt: "1733863086575",
+  kind: "project-grant",
+  projectId: "<id>",
+  teamId: "<id>",
   updatedAt: "1735656347472",
 };
 ```
@@ -24,9 +24,9 @@ const value: models.Policies1 = {
 
 ```typescript
 const value: models.Policies2 = {
-  kind: "connex-grant",
   clientId: "<id>",
   createdAt: "1729089397287",
+  kind: "connex-grant",
   updatedAt: "1735611505327",
 };
 ```

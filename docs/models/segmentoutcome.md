@@ -15,13 +15,13 @@ const value: models.SegmentOutcome1 = {
 
 ```typescript
 const value: models.SegmentOutcome2 = {
-  type: "split",
   base: {
-    type: "entity",
-    kind: "<value>",
     attribute: "<value>",
+    kind: "<value>",
+    type: "entity",
   },
   passPromille: 6187.2,
+  type: "split",
 };
 ```
 

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyAws } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson3action.js";
+import { ResponseBodyAws } from "@vercel/sdk/models/getprojectsresponsebodyprojectsconsolidatedgitcommitstatus.js";
 
 let value: ResponseBodyAws = {
   subnetIds: [],
@@ -14,5 +14,5 @@ let value: ResponseBodyAws = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `subnetIds`        | *string*[]         | :heavy_check_mark: | N/A                |
 | `securityGroupId`  | *string*           | :heavy_minus_sign: | N/A                |
+| `subnetIds`        | *string*[]         | :heavy_check_mark: | N/A                |

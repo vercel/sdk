@@ -35,19 +35,19 @@ export type GetSDKKeysType = ClosedEnum<typeof GetSDKKeysType>;
  * Shared metadata for a Flags SDK key, safe to return on both LIST and CREATE. Never contains cleartext secrets.
  */
 export type GetSDKKeysData = {
-  hashKey: string;
-  projectId: string;
-  type: GetSDKKeysType;
-  environment: string;
-  createdBy: string;
   createdAt: number;
-  updatedAt: number;
-  label?: string | undefined;
+  createdBy: string;
   deletedAt?: number | undefined;
+  environment: string;
+  hashKey: string;
+  label?: string | undefined;
   /**
    * Partially-masked representation of the SDK key value, safe to display in UIs. The value is the `vf_<type>_` prefix followed by the first 3 characters of the secret portion and a fixed 8-character `*` mask (e.g. `vf_server_abc********`).
    */
   partialKeyValue: string;
+  projectId: string;
+  type: GetSDKKeysType;
+  updatedAt: number;
 };
 
 export type GetSDKKeysResponseBody = {
@@ -91,16 +91,16 @@ export const GetSDKKeysData$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  createdAt: types.number(),
+  createdBy: types.string(),
+  deletedAt: types.optional(types.number()),
+  environment: types.string(),
   hashKey: types.string(),
+  label: types.optional(types.string()),
+  partialKeyValue: types.string(),
   projectId: types.string(),
   type: GetSDKKeysType$inboundSchema,
-  environment: types.string(),
-  createdBy: types.string(),
-  createdAt: types.number(),
   updatedAt: types.number(),
-  label: types.optional(types.string()),
-  deletedAt: types.optional(types.number()),
-  partialKeyValue: types.string(),
 });
 
 export function getSDKKeysDataFromJSON(

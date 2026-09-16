@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectPassport } from "@vercel/sdk/models/getprojectrollingrelease.js";
+import { GetProjectPassport } from "@vercel/sdk/models/getprojectfrompreset.js";
 
 let value: GetProjectPassport = {
-  deploymentType: "all_except_custom_domains",
   connectorId: "<id>",
+  deploymentType: "all_except_custom_domains",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: GetProjectPassport = {
 
 | Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
 | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `deploymentType`                                                         | [models.GetProjectDeploymentType](../models/getprojectdeploymenttype.md) | :heavy_check_mark:                                                       | N/A                                                                      |
 | `connectorId`                                                            | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
+| `deploymentType`                                                         | [models.GetProjectDeploymentType](../models/getprojectdeploymenttype.md) | :heavy_check_mark:                                                       | N/A                                                                      |

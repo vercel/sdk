@@ -5,7 +5,7 @@
 ```typescript
 import {
   GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3,
-} from "@vercel/sdk/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyuidisabled.js";
+} from "@vercel/sdk/models/properties7.js";
 
 let value:
   GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3 =

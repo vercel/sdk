@@ -3,22 +3,22 @@
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarManagedRules } from "@vercel/sdk/models/uploadprojectavatarinternalroutes1.js";
+import { UploadProjectAvatarManagedRules } from "@vercel/sdk/models/uploadprojectavatarfrom.js";
 
 let value: UploadProjectAvatarManagedRules = {
-  vercelRuleset: {
-    active: false,
-  },
-  trafficSources: {
+  aiBots: {
     active: false,
   },
   botFilter: {
     active: false,
   },
-  aiBots: {
+  owasp: {
     active: false,
   },
-  owasp: {
+  trafficSources: {
+    active: false,
+  },
+  vercelRuleset: {
     active: false,
   },
 };
@@ -28,8 +28,8 @@ let value: UploadProjectAvatarManagedRules = {
 
 | Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
 | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `vercelRuleset`                                                                            | [models.UploadProjectAvatarVercelRuleset](../models/uploadprojectavatarvercelruleset.md)   | :heavy_check_mark:                                                                         | N/A                                                                                        |
-| `trafficSources`                                                                           | [models.UploadProjectAvatarTrafficSources](../models/uploadprojectavatartrafficsources.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
-| `botFilter`                                                                                | [models.UploadProjectAvatarBotFilter](../models/uploadprojectavatarbotfilter.md)           | :heavy_check_mark:                                                                         | N/A                                                                                        |
 | `aiBots`                                                                                   | [models.UploadProjectAvatarAiBots](../models/uploadprojectavataraibots.md)                 | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `botFilter`                                                                                | [models.UploadProjectAvatarBotFilter](../models/uploadprojectavatarbotfilter.md)           | :heavy_check_mark:                                                                         | N/A                                                                                        |
 | `owasp`                                                                                    | [models.UploadProjectAvatarOwasp](../models/uploadprojectavatarowasp.md)                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `trafficSources`                                                                           | [models.UploadProjectAvatarTrafficSources](../models/uploadprojectavatartrafficsources.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `vercelRuleset`                                                                            | [models.UploadProjectAvatarVercelRuleset](../models/uploadprojectavatarvercelruleset.md)   | :heavy_check_mark:                                                                         | N/A                                                                                        |

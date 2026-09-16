@@ -23,9 +23,9 @@ const value: models.CreateDeploymentRoutes2 = {
 
 ```typescript
 const value: models.CreateDeploymentRoutes3 = {
-  src: "<value>",
   continue: true,
   middleware: 9033.5,
+  src: "<value>",
 };
 ```
 

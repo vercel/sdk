@@ -5,7 +5,7 @@ Forces a new deployment even if there is a previous similar deployment. Set to `
 ## Example Usage
 
 ```typescript
-import { ForceNew } from "@vercel/sdk/models/createdeploymenthasdeploymentstype.js";
+import { ForceNew } from "@vercel/sdk/models/createdeploymentresponsebodydeploymentsstatus.js";
 
 let value: ForceNew = "1";
 ```

@@ -13,14 +13,6 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
  */
 export type SessionCommand = {
   /**
-   * The ID of the command.
-   */
-  id: string;
-  /**
-   * The name of the command.
-   */
-  name: string;
-  /**
    * The arguments of the command.
    */
   args: Array<string>;
@@ -29,21 +21,29 @@ export type SessionCommand = {
    */
   cwd: string;
   /**
-   * The ID of the session associated with the command.
+   * Duration of the command execution in milliseconds.
    */
-  sessionId: string;
+  durationMs?: number | undefined;
   /**
    * If the command did finish, the exit code.
    */
   exitCode: number | null;
   /**
+   * The ID of the command.
+   */
+  id: string;
+  /**
+   * The name of the command.
+   */
+  name: string;
+  /**
+   * The ID of the session associated with the command.
+   */
+  sessionId: string;
+  /**
    * When the command was started, in milliseconds since the epoch.
    */
   startedAt: number;
-  /**
-   * Duration of the command execution in milliseconds.
-   */
-  durationMs?: number | undefined;
 };
 
 /** @internal */
@@ -52,14 +52,14 @@ export const SessionCommand$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: types.string(),
-  name: types.string(),
   args: z.array(types.string()),
   cwd: types.string(),
-  sessionId: types.string(),
-  exitCode: types.nullable(types.number()),
-  startedAt: types.number(),
   durationMs: types.optional(types.number()),
+  exitCode: types.nullable(types.number()),
+  id: types.string(),
+  name: types.string(),
+  sessionId: types.string(),
+  startedAt: types.number(),
 });
 
 export function sessionCommandFromJSON(

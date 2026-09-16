@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarContentHint14 } from "@vercel/sdk/models/uploadprojectavatarprojectsbuildmachinetype.js";
+import { UploadProjectAvatarContentHint14 } from "@vercel/sdk/models/uploadprojectavatarhasvalue.js";
 
 let value: UploadProjectAvatarContentHint14 = {
-  type: "postgres-database",
   storeId: "<id>",
+  type: "postgres-database",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: UploadProjectAvatarContentHint14 = {
 
 | Field                 | Type                  | Required              | Description           |
 | --------------------- | --------------------- | --------------------- | --------------------- |
-| `type`                | *"postgres-database"* | :heavy_check_mark:    | N/A                   |
 | `storeId`             | *string*              | :heavy_check_mark:    | N/A                   |
+| `type`                | *"postgres-database"* | :heavy_check_mark:    | N/A                   |

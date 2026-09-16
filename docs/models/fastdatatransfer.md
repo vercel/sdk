@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { FastDataTransfer } from "@vercel/sdk/models/usereventpayloadtarget.js";
+import { FastDataTransfer } from "@vercel/sdk/models/onehundredandfortyeight.js";
 
 let value: FastDataTransfer = {
   currentThreshold: 1855.37,
@@ -14,7 +14,7 @@ let value: FastDataTransfer = {
 
 | Field                       | Type                        | Required                    | Description                 |
 | --------------------------- | --------------------------- | --------------------------- | --------------------------- |
-| `currentThreshold`          | *number*                    | :heavy_check_mark:          | N/A                         |
-| `warningAt`                 | *number*                    | :heavy_minus_sign:          | N/A                         |
 | `blockedAt`                 | *number*                    | :heavy_minus_sign:          | N/A                         |
 | `blockGracePeriodStartedAt` | *number*                    | :heavy_minus_sign:          | N/A                         |
+| `currentThreshold`          | *number*                    | :heavy_check_mark:          | N/A                         |
+| `warningAt`                 | *number*                    | :heavy_minus_sign:          | N/A                         |

@@ -21,6 +21,13 @@ export type ReadAccessGroupRequest = {
   slug?: string | undefined;
 };
 
+export const ReadAccessGroupEntitlements = {
+  V0: "v0",
+} as const;
+export type ReadAccessGroupEntitlements = ClosedEnum<
+  typeof ReadAccessGroupEntitlements
+>;
+
 export const ReadAccessGroupTeamPermissions = {
   AiGatewayApiKeyOwnedBySelf: "AiGatewayApiKeyOwnedBySelf",
   AiGatewayBudgetManager: "AiGatewayBudgetManager",
@@ -46,49 +53,42 @@ export type ReadAccessGroupTeamPermissions = ClosedEnum<
   typeof ReadAccessGroupTeamPermissions
 >;
 
-export const ReadAccessGroupEntitlements = {
-  V0: "v0",
-} as const;
-export type ReadAccessGroupEntitlements = ClosedEnum<
-  typeof ReadAccessGroupEntitlements
->;
-
 export type ReadAccessGroupResponseBody = {
-  teamPermissions?: Array<ReadAccessGroupTeamPermissions> | undefined;
-  entitlements?: Array<ReadAccessGroupEntitlements> | undefined;
-  isDsyncManaged: boolean;
-  /**
-   * The name of this access group.
-   */
-  name: string;
-  /**
-   * Timestamp in milliseconds when the access group was created.
-   */
-  createdAt: string;
-  /**
-   * ID of the team that this access group belongs to.
-   */
-  teamId: string;
-  /**
-   * Timestamp in milliseconds when the access group was last updated.
-   */
-  updatedAt: string;
   /**
    * ID of the access group.
    */
   accessGroupId: string;
   /**
+   * Timestamp in milliseconds when the access group was created.
+   */
+  createdAt: string;
+  entitlements?: Array<ReadAccessGroupEntitlements> | undefined;
+  isDsyncManaged: boolean;
+  /**
    * Number of members in the access group.
    */
   membersCount: number;
+  /**
+   * The name of this access group.
+   */
+  name: string;
   /**
    * Number of projects in the access group.
    */
   projectsCount: number;
   /**
+   * ID of the team that this access group belongs to.
+   */
+  teamId: string;
+  teamPermissions?: Array<ReadAccessGroupTeamPermissions> | undefined;
+  /**
    * Roles that the team has in the access group.
    */
   teamRoles?: Array<string> | undefined;
+  /**
+   * Timestamp in milliseconds when the access group was last updated.
+   */
+  updatedAt: string;
 };
 
 /** @internal */
@@ -118,14 +118,14 @@ export function readAccessGroupRequestToJSON(
 }
 
 /** @internal */
-export const ReadAccessGroupTeamPermissions$inboundSchema: z.ZodNativeEnum<
-  typeof ReadAccessGroupTeamPermissions
-> = z.nativeEnum(ReadAccessGroupTeamPermissions);
-
-/** @internal */
 export const ReadAccessGroupEntitlements$inboundSchema: z.ZodNativeEnum<
   typeof ReadAccessGroupEntitlements
 > = z.nativeEnum(ReadAccessGroupEntitlements);
+
+/** @internal */
+export const ReadAccessGroupTeamPermissions$inboundSchema: z.ZodNativeEnum<
+  typeof ReadAccessGroupTeamPermissions
+> = z.nativeEnum(ReadAccessGroupTeamPermissions);
 
 /** @internal */
 export const ReadAccessGroupResponseBody$inboundSchema: z.ZodType<
@@ -133,21 +133,21 @@ export const ReadAccessGroupResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  teamPermissions: types.optional(
-    z.array(ReadAccessGroupTeamPermissions$inboundSchema),
-  ),
+  accessGroupId: types.string(),
+  createdAt: types.string(),
   entitlements: types.optional(
     z.array(ReadAccessGroupEntitlements$inboundSchema),
   ),
   isDsyncManaged: types.boolean(),
-  name: types.string(),
-  createdAt: types.string(),
-  teamId: types.string(),
-  updatedAt: types.string(),
-  accessGroupId: types.string(),
   membersCount: types.number(),
+  name: types.string(),
   projectsCount: types.number(),
+  teamId: types.string(),
+  teamPermissions: types.optional(
+    z.array(ReadAccessGroupTeamPermissions$inboundSchema),
+  ),
   teamRoles: types.optional(z.array(types.string())),
+  updatedAt: types.string(),
 });
 
 export function readAccessGroupResponseBodyFromJSON(

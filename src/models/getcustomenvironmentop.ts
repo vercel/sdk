@@ -29,21 +29,6 @@ export type GetCustomEnvironmentRequest = {
 };
 
 /**
- * The type of environment (production, preview, or development)
- */
-export const GetCustomEnvironmentType = {
-  Development: "development",
-  Preview: "preview",
-  Production: "production",
-} as const;
-/**
- * The type of environment (production, preview, or development)
- */
-export type GetCustomEnvironmentType = ClosedEnum<
-  typeof GetCustomEnvironmentType
->;
-
-/**
  * The type of matching to perform
  */
 export const GetCustomEnvironmentEnvironmentType = {
@@ -63,52 +48,87 @@ export type GetCustomEnvironmentEnvironmentType = ClosedEnum<
  */
 export type GetCustomEnvironmentBranchMatcher = {
   /**
-   * The type of matching to perform
-   */
-  type: GetCustomEnvironmentEnvironmentType;
-  /**
    * The pattern to match against branch names
    */
   pattern: string;
+  /**
+   * The type of matching to perform
+   */
+  type: GetCustomEnvironmentEnvironmentType;
 };
 
 /**
  * A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
  */
 export type GetCustomEnvironmentVerification = {
-  type: string;
   domain: string;
-  value: string;
   reason: string;
+  type: string;
+  value: string;
 };
 
 /**
  * List of domains associated with this environment
  */
 export type GetCustomEnvironmentDomains = {
-  name: string;
   apexName: string;
+  createdAt?: number | undefined;
+  customEnvironmentId?: string | null | undefined;
+  gitBranch?: string | null | undefined;
+  name: string;
   projectId: string;
   redirect?: string | null | undefined;
   redirectStatusCode?: number | null | undefined;
-  gitBranch?: string | null | undefined;
-  customEnvironmentId?: string | null | undefined;
   updatedAt?: number | undefined;
-  createdAt?: number | undefined;
-  /**
-   * `true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed.
-   */
-  verified: boolean;
   /**
    * A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
    */
   verification?: Array<GetCustomEnvironmentVerification> | undefined;
+  /**
+   * `true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed.
+   */
+  verified: boolean;
 };
+
+/**
+ * The type of environment (production, preview, or development)
+ */
+export const GetCustomEnvironmentType = {
+  Development: "development",
+  Preview: "preview",
+  Production: "production",
+} as const;
+/**
+ * The type of environment (production, preview, or development)
+ */
+export type GetCustomEnvironmentType = ClosedEnum<
+  typeof GetCustomEnvironmentType
+>;
 
 /**
  * Internal representation of a custom environment with all required properties
  */
 export type GetCustomEnvironmentResponseBody = {
+  /**
+   * Configuration for matching git branches to this environment
+   */
+  branchMatcher?: GetCustomEnvironmentBranchMatcher | undefined;
+  /**
+   * Timestamp when the environment was created
+   */
+  createdAt: number;
+  /**
+   * List of aliases for the current deployment
+   */
+  currentDeploymentAliases?: Array<string> | undefined;
+  /**
+   * Optional description of the environment's purpose
+   */
+  description?: string | undefined;
+  /**
+   * List of domains associated with this environment
+   */
+  domains?: Array<GetCustomEnvironmentDomains> | undefined;
   /**
    * Unique identifier for the custom environment (format: env_*)
    */
@@ -121,26 +141,6 @@ export type GetCustomEnvironmentResponseBody = {
    * The type of environment (production, preview, or development)
    */
   type: GetCustomEnvironmentType;
-  /**
-   * Optional description of the environment's purpose
-   */
-  description?: string | undefined;
-  /**
-   * Configuration for matching git branches to this environment
-   */
-  branchMatcher?: GetCustomEnvironmentBranchMatcher | undefined;
-  /**
-   * List of domains associated with this environment
-   */
-  domains?: Array<GetCustomEnvironmentDomains> | undefined;
-  /**
-   * List of aliases for the current deployment
-   */
-  currentDeploymentAliases?: Array<string> | undefined;
-  /**
-   * Timestamp when the environment was created
-   */
-  createdAt: number;
   /**
    * Timestamp when the environment was last updated
    */
@@ -178,11 +178,6 @@ export function getCustomEnvironmentRequestToJSON(
 }
 
 /** @internal */
-export const GetCustomEnvironmentType$inboundSchema: z.ZodNativeEnum<
-  typeof GetCustomEnvironmentType
-> = z.nativeEnum(GetCustomEnvironmentType);
-
-/** @internal */
 export const GetCustomEnvironmentEnvironmentType$inboundSchema: z.ZodNativeEnum<
   typeof GetCustomEnvironmentEnvironmentType
 > = z.nativeEnum(GetCustomEnvironmentEnvironmentType);
@@ -193,8 +188,8 @@ export const GetCustomEnvironmentBranchMatcher$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: GetCustomEnvironmentEnvironmentType$inboundSchema,
   pattern: types.string(),
+  type: GetCustomEnvironmentEnvironmentType$inboundSchema,
 });
 
 export function getCustomEnvironmentBranchMatcherFromJSON(
@@ -213,10 +208,10 @@ export const GetCustomEnvironmentVerification$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.string(),
   domain: types.string(),
-  value: types.string(),
   reason: types.string(),
+  type: types.string(),
+  value: types.string(),
 });
 
 export function getCustomEnvironmentVerificationFromJSON(
@@ -235,19 +230,19 @@ export const GetCustomEnvironmentDomains$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: types.string(),
   apexName: types.string(),
+  createdAt: types.optional(types.number()),
+  customEnvironmentId: z.nullable(types.string()).optional(),
+  gitBranch: z.nullable(types.string()).optional(),
+  name: types.string(),
   projectId: types.string(),
   redirect: z.nullable(types.string()).optional(),
   redirectStatusCode: z.nullable(types.number()).optional(),
-  gitBranch: z.nullable(types.string()).optional(),
-  customEnvironmentId: z.nullable(types.string()).optional(),
   updatedAt: types.optional(types.number()),
-  createdAt: types.optional(types.number()),
-  verified: types.boolean(),
   verification: types.optional(
     z.array(z.lazy(() => GetCustomEnvironmentVerification$inboundSchema)),
   ),
+  verified: types.boolean(),
 });
 
 export function getCustomEnvironmentDomainsFromJSON(
@@ -261,23 +256,28 @@ export function getCustomEnvironmentDomainsFromJSON(
 }
 
 /** @internal */
+export const GetCustomEnvironmentType$inboundSchema: z.ZodNativeEnum<
+  typeof GetCustomEnvironmentType
+> = z.nativeEnum(GetCustomEnvironmentType);
+
+/** @internal */
 export const GetCustomEnvironmentResponseBody$inboundSchema: z.ZodType<
   GetCustomEnvironmentResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: types.string(),
-  slug: types.string(),
-  type: GetCustomEnvironmentType$inboundSchema,
-  description: types.optional(types.string()),
   branchMatcher: types.optional(
     z.lazy(() => GetCustomEnvironmentBranchMatcher$inboundSchema),
   ),
+  createdAt: types.number(),
+  currentDeploymentAliases: types.optional(z.array(types.string())),
+  description: types.optional(types.string()),
   domains: types.optional(
     z.array(z.lazy(() => GetCustomEnvironmentDomains$inboundSchema)),
   ),
-  currentDeploymentAliases: types.optional(z.array(types.string())),
-  createdAt: types.number(),
+  id: types.string(),
+  slug: types.string(),
+  type: GetCustomEnvironmentType$inboundSchema,
   updatedAt: types.number(),
 });
 

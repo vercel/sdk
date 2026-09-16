@@ -57,23 +57,23 @@ export type UpdateKmsIssuerPolicyRequest = {
 };
 
 export type UpdateKmsIssuerPolicyResponseBody2 = {
-  kind: "connex-grant";
   clientId: string;
-  tokenClaims?: { [k: string]: any } | undefined;
   createdAt: string;
+  kind: "connex-grant";
+  tokenClaims?: { [k: string]: any } | undefined;
   updatedAt: string;
 };
 
 export type UpdateKmsIssuerPolicyResponseBody1 = {
-  kind: "project-grant";
-  teamId: string;
-  projectId: string;
+  createdAt: string;
   /**
    * Environments whose OIDC tokens this grant authorizes. Each entry is either a system environment slug (`production`, `preview`, `development`) or a custom environment ID (prefixed `env_`). Custom environments are matched against the token's `custom_environment_id` claim (the stable ID); system environments against its `environment` claim.
    */
   environments: Array<string>;
+  kind: "project-grant";
+  projectId: string;
+  teamId: string;
   tokenClaims?: { [k: string]: any } | undefined;
-  createdAt: string;
   updatedAt: string;
 };
 
@@ -157,10 +157,10 @@ export const UpdateKmsIssuerPolicyResponseBody2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  kind: types.literal("connex-grant"),
   clientId: types.string(),
-  tokenClaims: types.optional(z.record(z.any())),
   createdAt: types.string(),
+  kind: types.literal("connex-grant"),
+  tokenClaims: types.optional(z.record(z.any())),
   updatedAt: types.string(),
 });
 
@@ -181,12 +181,12 @@ export const UpdateKmsIssuerPolicyResponseBody1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  kind: types.literal("project-grant"),
-  teamId: types.string(),
-  projectId: types.string(),
-  environments: z.array(types.string()),
-  tokenClaims: types.optional(z.record(z.any())),
   createdAt: types.string(),
+  environments: z.array(types.string()),
+  kind: types.literal("project-grant"),
+  projectId: types.string(),
+  teamId: types.string(),
+  tokenClaims: types.optional(z.record(z.any())),
   updatedAt: types.string(),
 });
 

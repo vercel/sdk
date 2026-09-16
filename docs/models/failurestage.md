@@ -5,7 +5,7 @@ Mirrors `PushFailureStage` in `@api/git-push-repo`.
 ## Example Usage
 
 ```typescript
-import { FailureStage } from "@vercel/sdk/models/usereventpayloadtarget.js";
+import { FailureStage } from "@vercel/sdk/models/onehundredandfortyeight.js";
 
 let value: FailureStage = "push";
 ```

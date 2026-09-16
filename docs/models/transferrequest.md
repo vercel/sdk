@@ -7,14 +7,14 @@
 
 ```typescript
 const value: models.TransferRequest1 = {
+  createdAt: 2542.83,
+  expiresAt: 1531.68,
   kind: "transfer-to-marketplace",
-  requestId: "<id>",
-  transferId: "<id>",
   requester: {
     name: "<value>",
   },
-  createdAt: 2542.83,
-  expiresAt: 1531.68,
+  requestId: "<id>",
+  transferId: "<id>",
 };
 ```
 
@@ -22,14 +22,14 @@ const value: models.TransferRequest1 = {
 
 ```typescript
 const value: models.TransferRequest2 = {
+  createdAt: 2316.33,
+  expiresAt: 1385.21,
   kind: "transfer-from-marketplace",
-  requestId: "<id>",
-  transferId: "<id>",
   requester: {
     name: "<value>",
   },
-  createdAt: 2316.33,
-  expiresAt: 1385.21,
+  requestId: "<id>",
+  transferId: "<id>",
 };
 ```
 

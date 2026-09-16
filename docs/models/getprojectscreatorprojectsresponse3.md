@@ -3,14 +3,14 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsCreatorProjectsResponse3 } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson3action.js";
+import { GetProjectsCreatorProjectsResponse3 } from "@vercel/sdk/models/getprojectsresponsebodyprojectsconsolidatedgitcommitstatus.js";
 
 let value: GetProjectsCreatorProjectsResponse3 = {
-  type: "integration",
   integration: {
-    integrationId: "<id>",
     configurationId: "<id>",
+    integrationId: "<id>",
   },
+  type: "integration",
 };
 ```
 
@@ -18,5 +18,5 @@ let value: GetProjectsCreatorProjectsResponse3 = {
 
 | Field                                                                                                              | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
 | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
-| `type`                                                                                                             | *"integration"*                                                                                                    | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
 | `integration`                                                                                                      | [models.GetProjectsCreatorProjectsResponseIntegration](../models/getprojectscreatorprojectsresponseintegration.md) | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
+| `type`                                                                                                             | *"integration"*                                                                                                    | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |

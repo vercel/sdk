@@ -6,8 +6,8 @@
 import { AddRouteMissing2 } from "@vercel/sdk/models/addrouteop.js";
 
 let value: AddRouteMissing2 = {
-  type: "cookie",
   key: "<key>",
+  type: "cookie",
 };
 ```
 
@@ -15,6 +15,6 @@ let value: AddRouteMissing2 = {
 
 | Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
 | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `type`                                                                                   | [models.AddRouteMissingProjectRoutesType](../models/addroutemissingprojectroutestype.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
 | `key`                                                                                    | *string*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `type`                                                                                   | [models.AddRouteMissingProjectRoutesType](../models/addroutemissingprojectroutestype.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
 | `value`                                                                                  | *models.AddRouteMissingProjectRoutesValue*                                               | :heavy_minus_sign:                                                                       | N/A                                                                                      |

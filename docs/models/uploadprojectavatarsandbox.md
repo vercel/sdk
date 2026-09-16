@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarSandbox } from "@vercel/sdk/models/uploadprojectavatarprojectsbuildmachinetype.js";
+import { UploadProjectAvatarSandbox } from "@vercel/sdk/models/uploadprojectavatarfrom.js";
 
 let value: UploadProjectAvatarSandbox = {};
 ```
@@ -12,5 +12,5 @@ let value: UploadProjectAvatarSandbox = {};
 
 | Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
 | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `region`                                                                                       | [models.UploadProjectAvatarRegion](../models/uploadprojectavatarregion.md)                     | :heavy_minus_sign:                                                                             | N/A                                                                                            |
 | `failoverRegions`                                                                              | [models.UploadProjectAvatarFailoverRegions](../models/uploadprojectavatarfailoverregions.md)[] | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `region`                                                                                       | [models.UploadProjectAvatarRegion](../models/uploadprojectavatarregion.md)                     | :heavy_minus_sign:                                                                             | N/A                                                                                            |

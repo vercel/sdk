@@ -3,11 +3,10 @@
 ## Example Usage
 
 ```typescript
-import { UpdateProjectAlias } from "@vercel/sdk/models/updateprojectprojectsresponse200applicationjsonresponsebodycustomenvironmentstype.js";
+import { UpdateProjectAlias } from "@vercel/sdk/models/updateprojectdefinitions.js";
 
 let value: UpdateProjectAlias = {
   deployment: {
-    id: "<id>",
     createdAt: 6761.1,
     createdIn: "<value>",
     creator: {
@@ -16,6 +15,7 @@ let value: UpdateProjectAlias = {
       username: "Guido_Cassin",
     },
     deploymentHostname: "<value>",
+    id: "<id>",
     name: "<value>",
     plan: "hobby",
     previewCommentsEnabled: false,

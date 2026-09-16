@@ -6,8 +6,8 @@
 import { RemoveProjectEnvContentHint6 } from "@vercel/sdk/models/removeprojectenvop.js";
 
 let value: RemoveProjectEnvContentHint6 = {
-  type: "blob-store-id",
   storeId: "<id>",
+  type: "blob-store-id",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: RemoveProjectEnvContentHint6 = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `type`             | *"blob-store-id"*  | :heavy_check_mark: | N/A                |
 | `storeId`          | *string*           | :heavy_check_mark: | N/A                |
+| `type`             | *"blob-store-id"*  | :heavy_check_mark: | N/A                |

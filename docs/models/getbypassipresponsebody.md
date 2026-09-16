@@ -8,11 +8,11 @@ import { GetBypassIpResponseBody } from "@vercel/sdk/models/getbypassipop.js";
 let value: GetBypassIpResponseBody = {
   result: [
     {
-      ownerId: "<id>",
+      createdAt: "1719040492539",
+      domain: "sore-lobster.biz",
       id: "<id>",
-      domain: "linear-saloon.name",
-      ip: "30.100.7.225",
-      createdAt: "1719080074273",
+      ip: "100.7.225.121",
+      ownerId: "<id>",
       updatedAt: "1735626440973",
       updatedAtHour: "<value>",
     },
@@ -24,5 +24,5 @@ let value: GetBypassIpResponseBody = {
 
 | Field                                                              | Type                                                               | Required                                                           | Description                                                        |
 | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| `result`                                                           | [models.GetBypassIpResult](../models/getbypassipresult.md)[]       | :heavy_check_mark:                                                 | N/A                                                                |
 | `pagination`                                                       | [models.GetBypassIpPagination](../models/getbypassippagination.md) | :heavy_minus_sign:                                                 | N/A                                                                |
+| `result`                                                           | [models.GetBypassIpResult](../models/getbypassipresult.md)[]       | :heavy_check_mark:                                                 | N/A                                                                |

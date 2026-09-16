@@ -7,12 +7,12 @@
 
 ```typescript
 const value: models.UpdateDrainDeliveryDrainsResponse1 = {
-  type: "http",
-  endpoint: "<value>",
   encoding: "json",
+  endpoint: "<value>",
   headers: {
     "key": "<value>",
   },
+  type: "http",
 };
 ```
 
@@ -20,14 +20,14 @@ const value: models.UpdateDrainDeliveryDrainsResponse1 = {
 
 ```typescript
 const value: models.UpdateDrainDeliveryDrainsResponse2 = {
-  type: "otlphttp",
+  encoding: "json",
   endpoint: {
     traces: "<value>",
   },
-  encoding: "json",
   headers: {
     "key": "<value>",
   },
+  type: "otlphttp",
 };
 ```
 
@@ -35,9 +35,9 @@ const value: models.UpdateDrainDeliveryDrainsResponse2 = {
 
 ```typescript
 const value: models.UpdateDrainDeliveryDrainsResponse3 = {
-  type: "clickhouse",
   endpoint: "<value>",
   table: "<value>",
+  type: "clickhouse",
 };
 ```
 
@@ -45,13 +45,13 @@ const value: models.UpdateDrainDeliveryDrainsResponse3 = {
 
 ```typescript
 const value: models.UpdateDrainDeliveryDrains4 = {
-  type: "s3",
-  endpoint: "<value>",
-  encoding: "json",
   compression: "none",
+  encoding: "json",
+  endpoint: "<value>",
   fileStructure: "hive",
-  roleArn: "<value>",
   region: "<value>",
+  roleArn: "<value>",
+  type: "s3",
 };
 ```
 
@@ -59,8 +59,8 @@ const value: models.UpdateDrainDeliveryDrains4 = {
 
 ```typescript
 const value: models.UpdateDrainDeliveryDrains5 = {
-  type: "internal",
   target: "vercel-otel-traces-db",
+  type: "internal",
 };
 ```
 

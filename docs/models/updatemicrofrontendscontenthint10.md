@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsContentHint10 } from "@vercel/sdk/models/updatemicrofrontendsprojectsfunctiondefaultmemorytype.js";
+import { UpdateMicrofrontendsContentHint10 } from "@vercel/sdk/models/updatemicrofrontendshaskey.js";
 
 let value: UpdateMicrofrontendsContentHint10 = {
-  type: "postgres-prisma-url",
   storeId: "<id>",
+  type: "postgres-prisma-url",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: UpdateMicrofrontendsContentHint10 = {
 
 | Field                   | Type                    | Required                | Description             |
 | ----------------------- | ----------------------- | ----------------------- | ----------------------- |
-| `type`                  | *"postgres-prisma-url"* | :heavy_check_mark:      | N/A                     |
 | `storeId`               | *string*                | :heavy_check_mark:      | N/A                     |
+| `type`                  | *"postgres-prisma-url"* | :heavy_check_mark:      | N/A                     |

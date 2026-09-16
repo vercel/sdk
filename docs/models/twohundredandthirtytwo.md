@@ -5,21 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndThirtyTwo } from "@vercel/sdk/models/usereventpayloadnext.js";
+import { TwoHundredAndThirtyTwo } from "@vercel/sdk/models/payloadnext.js";
 
 let value: TwoHundredAndThirtyTwo = {
-  privateLinkEndpoint: {
+  endpoint: {
+    awsServiceName: "<value>",
     id: "<id>",
     name: "<value>",
+    projectId: "<id>",
+    vercelRegion: "<value>",
   },
-  projectId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `projectName`                                                                | *string*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
-| `privateLinkEndpoint`                                                        | [models.PayloadPrivateLinkEndpoint](../models/payloadprivatelinkendpoint.md) | :heavy_check_mark:                                                           | N/A                                                                          |
-| `projectId`                                                                  | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `endpoint`                               | [models.Endpoint](../models/endpoint.md) | :heavy_check_mark:                       | N/A                                      |
+| `projectName`                            | *string*                                 | :heavy_minus_sign:                       | N/A                                      |

@@ -5,11 +5,11 @@ Condensed check data. Retrieve individual check and check run data using api-che
 ## Example Usage
 
 ```typescript
-import { ResponseBodyDeploymentAlias } from "@vercel/sdk/models/createdeploymentresponsebody.js";
+import { ResponseBodyDeploymentAlias } from "@vercel/sdk/models/createdeploymentresponsebodydeploymentsstatus.js";
 
 let value: ResponseBodyDeploymentAlias = {
+  startedAt: 6434.02,
   state: "pending",
-  startedAt: 3522.6,
 };
 ```
 
@@ -17,6 +17,6 @@ let value: ResponseBodyDeploymentAlias = {
 
 | Field                                                                                                            | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
 | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `state`                                                                                                          | [models.CreateDeploymentResponseBodyDeploymentsState](../models/createdeploymentresponsebodydeploymentsstate.md) | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
-| `startedAt`                                                                                                      | *number*                                                                                                         | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
 | `completedAt`                                                                                                    | *number*                                                                                                         | :heavy_minus_sign:                                                                                               | N/A                                                                                                              |
+| `startedAt`                                                                                                      | *number*                                                                                                         | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
+| `state`                                                                                                          | [models.CreateDeploymentResponseBodyDeploymentsState](../models/createdeploymentresponsebodydeploymentsstate.md) | :heavy_check_mark:                                                                                               | N/A                                                                                                              |

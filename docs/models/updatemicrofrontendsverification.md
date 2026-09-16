@@ -5,13 +5,13 @@ A list of verification challenges, one of which must be completed to verify the 
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsVerification } from "@vercel/sdk/models/updatemicrofrontendsprojectsfunctiondefaultmemorytype.js";
+import { UpdateMicrofrontendsVerification } from "@vercel/sdk/models/updatemicrofrontendshaskey.js";
 
 let value: UpdateMicrofrontendsVerification = {
-  type: "<value>",
   domain: "front-guard.biz",
-  value: "<value>",
   reason: "<value>",
+  type: "<value>",
+  value: "<value>",
 };
 ```
 
@@ -19,7 +19,7 @@ let value: UpdateMicrofrontendsVerification = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `type`             | *string*           | :heavy_check_mark: | N/A                |
 | `domain`           | *string*           | :heavy_check_mark: | N/A                |
-| `value`            | *string*           | :heavy_check_mark: | N/A                |
 | `reason`           | *string*           | :heavy_check_mark: | N/A                |
+| `type`             | *string*           | :heavy_check_mark: | N/A                |
+| `value`            | *string*           | :heavy_check_mark: | N/A                |

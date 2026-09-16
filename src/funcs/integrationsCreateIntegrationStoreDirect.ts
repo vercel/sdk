@@ -14,7 +14,7 @@ import { pathToFunc } from "../lib/url.js";
 import {
   CreateIntegrationStoreDirectRequest,
   CreateIntegrationStoreDirectRequest$outboundSchema,
-} from "../models/createintegrationstoredirectpropertiesintegrationsitems.js";
+} from "../models/createintegrationstoredirectpropertiesintegrationsresponse200uioptions.js";
 import {
   CreateIntegrationStoreDirectResponseBody,
   CreateIntegrationStoreDirectResponseBody$inboundSchema,

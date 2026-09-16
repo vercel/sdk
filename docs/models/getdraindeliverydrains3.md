@@ -6,9 +6,9 @@
 import { GetDrainDeliveryDrains3 } from "@vercel/sdk/models/getdrainop.js";
 
 let value: GetDrainDeliveryDrains3 = {
-  type: "clickhouse",
   endpoint: "<value>",
   table: "<value>",
+  type: "clickhouse",
 };
 ```
 
@@ -16,6 +16,6 @@ let value: GetDrainDeliveryDrains3 = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `type`             | *"clickhouse"*     | :heavy_check_mark: | N/A                |
 | `endpoint`         | *string*           | :heavy_check_mark: | N/A                |
 | `table`            | *string*           | :heavy_check_mark: | N/A                |
+| `type`             | *"clickhouse"*     | :heavy_check_mark: | N/A                |

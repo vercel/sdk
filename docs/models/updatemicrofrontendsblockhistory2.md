@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsBlockHistory2 } from "@vercel/sdk/models/updatemicrofrontendsinternalroutes2.js";
+import { UpdateMicrofrontendsBlockHistory2 } from "@vercel/sdk/models/updatemicrofrontendshaskey.js";
 
 let value: UpdateMicrofrontendsBlockHistory2 = {
   action: "unblocked",
@@ -16,9 +16,9 @@ let value: UpdateMicrofrontendsBlockHistory2 = {
 | Field                 | Type                  | Required              | Description           |
 | --------------------- | --------------------- | --------------------- | --------------------- |
 | `action`              | *"unblocked"*         | :heavy_check_mark:    | N/A                   |
-| `createdAt`           | *number*              | :heavy_check_mark:    | N/A                   |
-| `caseId`              | *string*              | :heavy_minus_sign:    | N/A                   |
 | `actor`               | *string*              | :heavy_minus_sign:    | N/A                   |
+| `caseId`              | *string*              | :heavy_minus_sign:    | N/A                   |
 | `comment`             | *string*              | :heavy_minus_sign:    | N/A                   |
+| `createdAt`           | *number*              | :heavy_check_mark:    | N/A                   |
 | `ineligibleForAppeal` | *boolean*             | :heavy_minus_sign:    | N/A                   |
 | `isCascading`         | *boolean*             | :heavy_minus_sign:    | N/A                   |

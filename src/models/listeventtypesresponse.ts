@@ -40,16 +40,16 @@ export type ListEventTypesResponseName = ClosedEnum<
 >;
 
 export type ListEventTypesResponseCategories = {
-  name: ListEventTypesResponseName;
   label: string;
+  name: ListEventTypesResponseName;
 };
 
 /**
  * Response returned by the List Event Types endpoint.
  */
 export type ListEventTypesResponse = {
-  types: Array<ListEventType>;
   categories: Array<ListEventTypesResponseCategories>;
+  types: Array<ListEventType>;
 };
 
 /** @internal */
@@ -63,8 +63,8 @@ export const ListEventTypesResponseCategories$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: ListEventTypesResponseName$inboundSchema,
   label: types.string(),
+  name: ListEventTypesResponseName$inboundSchema,
 });
 
 export function listEventTypesResponseCategoriesFromJSON(
@@ -83,10 +83,10 @@ export const ListEventTypesResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  types: z.array(ListEventType$inboundSchema),
   categories: z.array(
     z.lazy(() => ListEventTypesResponseCategories$inboundSchema),
   ),
+  types: z.array(ListEventType$inboundSchema),
 });
 
 export function listEventTypesResponseFromJSON(

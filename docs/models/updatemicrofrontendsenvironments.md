@@ -7,8 +7,8 @@
 
 ```typescript
 const value: models.UpdateMicrofrontendsEnvironments1 = {
-  type: "system",
   target: "production",
+  type: "system",
 };
 ```
 
@@ -16,8 +16,8 @@ const value: models.UpdateMicrofrontendsEnvironments1 = {
 
 ```typescript
 const value: models.UpdateMicrofrontendsEnvironments2 = {
-  type: "custom",
   environmentId: "<id>",
+  type: "custom",
 };
 ```
 

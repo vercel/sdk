@@ -7,10 +7,10 @@ import { UpdateRouteVersionsResponseBody } from "@vercel/sdk/models/updateroutev
 
 let value: UpdateRouteVersionsResponseBody = {
   version: {
-    id: "<id>",
-    s3Key: "<value>",
-    lastModified: 4796.91,
     createdBy: "<value>",
+    id: "<id>",
+    lastModified: 4796.91,
+    s3Key: "<value>",
   },
 };
 ```

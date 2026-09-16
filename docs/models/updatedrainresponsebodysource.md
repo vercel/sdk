@@ -15,9 +15,9 @@ const value: models.UpdateDrainSourceDrains1 = {
 
 ```typescript
 const value: models.UpdateDrainSourceDrains2 = {
-  kind: "integration",
-  integrationId: "<id>",
   integrationConfigurationId: "<id>",
+  integrationId: "<id>",
+  kind: "integration",
 };
 ```
 

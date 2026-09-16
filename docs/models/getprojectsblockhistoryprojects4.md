@@ -3,10 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsBlockHistoryProjects4 } from "@vercel/sdk/models/responsebodydeploymentexpiration.js";
+import { GetProjectsBlockHistoryProjects4 } from "@vercel/sdk/models/getprojectslinkprojects6.js";
 
 let value: GetProjectsBlockHistoryProjects4 = {
   action: "route-unblocked",
+  createdAt: 7773.11,
   route: {
     has: [
       {
@@ -20,7 +21,6 @@ let value: GetProjectsBlockHistoryProjects4 = {
       action: "block_legal_cwc",
     },
   },
-  createdAt: 8632.82,
 };
 ```
 
@@ -29,11 +29,11 @@ let value: GetProjectsBlockHistoryProjects4 = {
 | Field                                                    | Type                                                     | Required                                                 | Description                                              |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `action`                                                 | *"route-unblocked"*                                      | :heavy_check_mark:                                       | N/A                                                      |
-| `route`                                                  | *models.GetProjectsBlockHistoryProjectsResponse200Route* | :heavy_check_mark:                                       | N/A                                                      |
-| `statusCode`                                             | *number*                                                 | :heavy_minus_sign:                                       | N/A                                                      |
-| `createdAt`                                              | *number*                                                 | :heavy_check_mark:                                       | N/A                                                      |
-| `caseId`                                                 | *string*                                                 | :heavy_minus_sign:                                       | N/A                                                      |
 | `actor`                                                  | *string*                                                 | :heavy_minus_sign:                                       | N/A                                                      |
+| `caseId`                                                 | *string*                                                 | :heavy_minus_sign:                                       | N/A                                                      |
 | `comment`                                                | *string*                                                 | :heavy_minus_sign:                                       | N/A                                                      |
+| `createdAt`                                              | *number*                                                 | :heavy_check_mark:                                       | N/A                                                      |
 | `ineligibleForAppeal`                                    | *boolean*                                                | :heavy_minus_sign:                                       | N/A                                                      |
 | `isCascading`                                            | *boolean*                                                | :heavy_minus_sign:                                       | N/A                                                      |
+| `route`                                                  | *models.GetProjectsBlockHistoryProjectsResponse200Route* | :heavy_check_mark:                                       | N/A                                                      |
+| `statusCode`                                             | *number*                                                 | :heavy_minus_sign:                                       | N/A                                                      |

@@ -5,7 +5,7 @@ MFA configuration. When enabled, the user will be required to provide a second f
 ## Example Usage
 
 ```typescript
-import { MfaConfiguration } from "@vercel/sdk/models/usereventpayloadtarget.js";
+import { MfaConfiguration } from "@vercel/sdk/models/onehundredandfortyeight.js";
 
 let value: MfaConfiguration = {
   enabled: true,
@@ -23,6 +23,6 @@ let value: MfaConfiguration = {
 | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | `enabled`                                                                         | *boolean*                                                                         | :heavy_check_mark:                                                                | N/A                                                                               |
 | `enabledAt`                                                                       | *number*                                                                          | :heavy_minus_sign:                                                                | N/A                                                                               |
+| `history`                                                                         | [models.PayloadHistory](../models/payloadhistory.md)[]                            | :heavy_minus_sign:                                                                | History of MFA state changes (enabled/disabled events). Most recent events first. |
 | `recoveryCodes`                                                                   | *string*[]                                                                        | :heavy_check_mark:                                                                | N/A                                                                               |
 | `totp`                                                                            | [models.Totp](../models/totp.md)                                                  | :heavy_minus_sign:                                                                | N/A                                                                               |
-| `history`                                                                         | [models.PayloadHistory](../models/payloadhistory.md)[]                            | :heavy_minus_sign:                                                                | History of MFA state changes (enabled/disabled events). Most recent events first. |

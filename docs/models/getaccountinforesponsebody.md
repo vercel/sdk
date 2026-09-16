@@ -6,10 +6,10 @@
 import { GetAccountInfoResponseBody } from "@vercel/sdk/models/getaccountinfoop.js";
 
 let value: GetAccountInfoResponseBody = {
-  url: "https://friendly-sesame.org/",
   contact: {
-    email: "Al_Stamm51@yahoo.com",
+    email: "Providenci2@gmail.com",
   },
+  url: "https://mindless-legend.com",
 };
 ```
 
@@ -17,6 +17,6 @@ let value: GetAccountInfoResponseBody = {
 
 | Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
 | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `contact`                                                                                      | [models.Contact](../models/contact.md)                                                         | :heavy_check_mark:                                                                             | The best contact for the integration, which can change as team members and their roles change. |
 | `name`                                                                                         | *string*                                                                                       | :heavy_minus_sign:                                                                             | The name of the team the installation is tied to.                                              |
 | `url`                                                                                          | *string*                                                                                       | :heavy_check_mark:                                                                             | A URL linking to the installation in the Vercel Dashboard.                                     |
-| `contact`                                                                                      | [models.Contact](../models/contact.md)                                                         | :heavy_check_mark:                                                                             | The best contact for the integration, which can change as team members and their roles change. |

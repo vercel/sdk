@@ -6,8 +6,8 @@
 import { GetBypassIpPagination } from "@vercel/sdk/models/getbypassipop.js";
 
 let value: GetBypassIpPagination = {
-  ownerId: "<id>",
   id: "<id>",
+  ownerId: "<id>",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: GetBypassIpPagination = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `ownerId`          | *string*           | :heavy_check_mark: | N/A                |
 | `id`               | *string*           | :heavy_check_mark: | N/A                |
+| `ownerId`          | *string*           | :heavy_check_mark: | N/A                |

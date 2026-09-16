@@ -15,9 +15,9 @@ const value: models.UpdateFlagLhsFeatureFlags1 = {
 
 ```typescript
 const value: models.UpdateFlagLhsFeatureFlags2 = {
-  type: "entity",
-  kind: "<value>",
   attribute: "<value>",
+  kind: "<value>",
+  type: "entity",
 };
 ```
 

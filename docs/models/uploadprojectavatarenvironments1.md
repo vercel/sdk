@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarEnvironments1 } from "@vercel/sdk/models/uploadprojectavatarinternalroutes1.js";
+import { UploadProjectAvatarEnvironments1 } from "@vercel/sdk/models/uploadprojectavatarhasvalue.js";
 
 let value: UploadProjectAvatarEnvironments1 = {
-  type: "system",
   target: "preview",
+  type: "system",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: UploadProjectAvatarEnvironments1 = {
 
 | Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `type`                                                                                             | *"system"*                                                                                         | :heavy_check_mark:                                                                                 | N/A                                                                                                |
 | `target`                                                                                           | [models.UploadProjectAvatarEnvironmentsTarget](../models/uploadprojectavatarenvironmentstarget.md) | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `type`                                                                                             | *"system"*                                                                                         | :heavy_check_mark:                                                                                 | N/A                                                                                                |

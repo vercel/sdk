@@ -71,43 +71,43 @@ export type UpdateAccessGroupEntitlements = ClosedEnum<
 >;
 
 export type UpdateAccessGroupResponseBody = {
-  entitlements: Array<UpdateAccessGroupEntitlements>;
-  /**
-   * The name of this access group.
-   */
-  name: string;
-  /**
-   * Timestamp in milliseconds when the access group was created.
-   */
-  createdAt: string;
-  /**
-   * ID of the team that this access group belongs to.
-   */
-  teamId: string;
-  /**
-   * Timestamp in milliseconds when the access group was last updated.
-   */
-  updatedAt: string;
   /**
    * ID of the access group.
    */
   accessGroupId: string;
   /**
+   * Timestamp in milliseconds when the access group was created.
+   */
+  createdAt: string;
+  entitlements: Array<UpdateAccessGroupEntitlements>;
+  /**
    * Number of members in the access group.
    */
   membersCount: number;
+  /**
+   * The name of this access group.
+   */
+  name: string;
   /**
    * Number of projects in the access group.
    */
   projectsCount: number;
   /**
-   * Roles that the team has in the access group.
+   * ID of the team that this access group belongs to.
    */
-  teamRoles?: Array<string> | undefined;
+  teamId: string;
   /**
    * Permissions that the team has in the access group.
    */
   teamPermissions?: Array<string> | undefined;
+  /**
+   * Roles that the team has in the access group.
+   */
+  teamRoles?: Array<string> | undefined;
+  /**
+   * Timestamp in milliseconds when the access group was last updated.
+   */
+  updatedAt: string;
 };
 
 /** @internal */
@@ -213,16 +213,16 @@ export const UpdateAccessGroupResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  entitlements: z.array(UpdateAccessGroupEntitlements$inboundSchema),
-  name: types.string(),
-  createdAt: types.string(),
-  teamId: types.string(),
-  updatedAt: types.string(),
   accessGroupId: types.string(),
+  createdAt: types.string(),
+  entitlements: z.array(UpdateAccessGroupEntitlements$inboundSchema),
   membersCount: types.number(),
+  name: types.string(),
   projectsCount: types.number(),
-  teamRoles: types.optional(z.array(types.string())),
+  teamId: types.string(),
   teamPermissions: types.optional(z.array(types.string())),
+  teamRoles: types.optional(z.array(types.string())),
+  updatedAt: types.string(),
 });
 
 export function updateAccessGroupResponseBodyFromJSON(

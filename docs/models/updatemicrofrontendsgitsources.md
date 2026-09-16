@@ -5,24 +5,19 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsGitSources } from "@vercel/sdk/models/updatemicrofrontendsinternalroutes2.js";
+import { UpdateMicrofrontendsGitSources } from "@vercel/sdk/models/updatemicrofrontendshaskey.js";
 
 let value: UpdateMicrofrontendsGitSources = {
-  sources: [
-    {
-      provider: "github",
-      org: "<value>",
-    },
-  ],
-  enabled: true,
+  enabled: false,
   environments: [],
+  sources: [],
 };
 ```
 
 ## Fields
 
-| Field                                       | Type                                        | Required                                    | Description                                 |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| `sources`                                   | *models.UpdateMicrofrontendsSources*[]      | :heavy_check_mark:                          | N/A                                         |
-| `enabled`                                   | *boolean*                                   | :heavy_check_mark:                          | N/A                                         |
-| `environments`                              | *models.UpdateMicrofrontendsEnvironments*[] | :heavy_check_mark:                          | N/A                                         |
+| Field                                               | Type                                                | Required                                            | Description                                         |
+| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| `enabled`                                           | *boolean*                                           | :heavy_check_mark:                                  | N/A                                                 |
+| `environments`                                      | *models.UpdateMicrofrontendsProjectsEnvironments*[] | :heavy_check_mark:                                  | N/A                                                 |
+| `sources`                                           | *models.UpdateMicrofrontendsProjectsSources*[]      | :heavy_check_mark:                                  | N/A                                                 |

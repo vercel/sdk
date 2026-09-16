@@ -3,14 +3,16 @@
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarMicrofrontends3 } from "@vercel/sdk/models/uploadprojectavatarprojectsbuildmachinetype.js";
+import { UploadProjectAvatarMicrofrontends3 } from "@vercel/sdk/models/uploadprojectavatarfrom.js";
 
 let value: UploadProjectAvatarMicrofrontends3 = {
-  updatedAt: 9784.52,
+  enabled: false,
   groupIds: [
     "<value 1>",
+    "<value 2>",
+    "<value 3>",
   ],
-  enabled: false,
+  updatedAt: 2961.45,
 };
 ```
 
@@ -18,7 +20,7 @@ let value: UploadProjectAvatarMicrofrontends3 = {
 
 | Field                        | Type                         | Required                     | Description                  |
 | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-| `updatedAt`                  | *number*                     | :heavy_check_mark:           | N/A                          |
-| `groupIds`                   | *any*[]                      | :heavy_check_mark:           | N/A                          |
 | `enabled`                    | *false*                      | :heavy_check_mark:           | N/A                          |
 | `freeProjectForLegacyLimits` | *boolean*                    | :heavy_minus_sign:           | N/A                          |
+| `groupIds`                   | *any*[]                      | :heavy_check_mark:           | N/A                          |
+| `updatedAt`                  | *number*                     | :heavy_check_mark:           | N/A                          |

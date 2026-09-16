@@ -50,116 +50,116 @@ export type GetRedirectsRequest = {
   slug?: string | undefined;
 };
 
+export type GetRedirectsResponseBodyBulkRedirectsPagination = {
+  numPages: number;
+  page: number;
+  perPage: number;
+};
+
+export type GetRedirectsResponseBodyRedirects = {
+  caseSensitive?: boolean | undefined;
+  destination: string;
+  permanent?: boolean | undefined;
+  preserveQueryParams?: boolean | undefined;
+  query?: boolean | undefined;
+  sensitive?: boolean | undefined;
+  source: string;
+  statusCode?: number | undefined;
+};
+
 export type GetRedirectsResponseBodyVersion = {
+  /**
+   * The staging link for previewing redirects in this version.
+   */
+  alias?: string | undefined;
+  createdBy: string;
   /**
    * The unique identifier for the version.
    */
   id: string;
   /**
-   * The key of the version. The key may be duplicated across versions if the contents are the same as a different version.
+   * Whether this version is currently live in production.
    */
-  key: string;
-  lastModified: number;
-  createdBy: string;
-  /**
-   * Optional name for the version. If not provided, defaults to an ISO timestamp string.
-   */
-  name?: string | undefined;
+  isLive?: boolean | undefined;
   /**
    * Whether this version has not been promoted to production yet and is not serving end users.
    */
   isStaging?: boolean | undefined;
   /**
-   * Whether this version is currently live in production.
+   * The key of the version. The key may be duplicated across versions if the contents are the same as a different version.
    */
-  isLive?: boolean | undefined;
+  key: string;
+  lastModified: number;
+  /**
+   * Optional name for the version. If not provided, defaults to an ISO timestamp string.
+   */
+  name?: string | undefined;
   /**
    * The number of redirects in this version.
    */
   redirectCount?: number | undefined;
-  /**
-   * The staging link for previewing redirects in this version.
-   */
-  alias?: string | undefined;
-};
-
-export type GetRedirectsResponseBodyRedirects = {
-  statusCode?: number | undefined;
-  permanent?: boolean | undefined;
-  sensitive?: boolean | undefined;
-  caseSensitive?: boolean | undefined;
-  query?: boolean | undefined;
-  preserveQueryParams?: boolean | undefined;
-  destination: string;
-  source: string;
-};
-
-export type GetRedirectsResponseBodyBulkRedirectsPagination = {
-  page: number;
-  perPage: number;
-  numPages: number;
 };
 
 export type ResponseBody3 = {
-  version: GetRedirectsResponseBodyVersion;
-  redirects: Array<GetRedirectsResponseBodyRedirects>;
   pagination: GetRedirectsResponseBodyBulkRedirectsPagination;
+  redirects: Array<GetRedirectsResponseBodyRedirects>;
+  version: GetRedirectsResponseBodyVersion;
+};
+
+export type GetRedirectsResponseBodyPagination = {
+  numPages: number;
+  page: number;
+  perPage: number;
+};
+
+export type ResponseBodyRedirects = {
+  caseSensitive?: boolean | undefined;
+  destination: string;
+  permanent?: boolean | undefined;
+  preserveQueryParams?: boolean | undefined;
+  query?: boolean | undefined;
+  sensitive?: boolean | undefined;
+  source: string;
+  statusCode?: number | undefined;
 };
 
 export type ResponseBodyVersion = {
   /**
+   * The staging link for previewing redirects in this version.
+   */
+  alias?: string | undefined;
+  createdBy: string;
+  /**
    * The unique identifier for the version.
    */
   id: string;
-  /**
-   * The key of the version. The key may be duplicated across versions if the contents are the same as a different version.
-   */
-  key: string;
-  lastModified: number;
-  createdBy: string;
-  /**
-   * Optional name for the version. If not provided, defaults to an ISO timestamp string.
-   */
-  name?: string | undefined;
-  /**
-   * Whether this version has not been promoted to production yet and is not serving end users.
-   */
-  isStaging?: boolean | undefined;
   /**
    * Whether this version is currently live in production.
    */
   isLive?: boolean | undefined;
   /**
+   * Whether this version has not been promoted to production yet and is not serving end users.
+   */
+  isStaging?: boolean | undefined;
+  /**
+   * The key of the version. The key may be duplicated across versions if the contents are the same as a different version.
+   */
+  key: string;
+  lastModified: number;
+  /**
+   * Optional name for the version. If not provided, defaults to an ISO timestamp string.
+   */
+  name?: string | undefined;
+  /**
    * The number of redirects in this version.
    */
   redirectCount?: number | undefined;
-  /**
-   * The staging link for previewing redirects in this version.
-   */
-  alias?: string | undefined;
-};
-
-export type ResponseBodyRedirects = {
-  statusCode?: number | undefined;
-  permanent?: boolean | undefined;
-  sensitive?: boolean | undefined;
-  caseSensitive?: boolean | undefined;
-  query?: boolean | undefined;
-  preserveQueryParams?: boolean | undefined;
-  destination: string;
-  source: string;
-};
-
-export type GetRedirectsResponseBodyPagination = {
-  page: number;
-  perPage: number;
-  numPages: number;
 };
 
 export type GetRedirectsResponseBody2 = {
-  version?: ResponseBodyVersion | undefined;
-  redirects: Array<ResponseBodyRedirects>;
   pagination: GetRedirectsResponseBodyPagination;
+  redirects: Array<ResponseBodyRedirects>;
+  version?: ResponseBodyVersion | undefined;
 };
 
 export type GetRedirectsResponseBody =
@@ -237,68 +237,15 @@ export function getRedirectsRequestToJSON(
 }
 
 /** @internal */
-export const GetRedirectsResponseBodyVersion$inboundSchema: z.ZodType<
-  GetRedirectsResponseBodyVersion,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: types.string(),
-  key: types.string(),
-  lastModified: types.number(),
-  createdBy: types.string(),
-  name: types.optional(types.string()),
-  isStaging: types.optional(types.boolean()),
-  isLive: types.optional(types.boolean()),
-  redirectCount: types.optional(types.number()),
-  alias: types.optional(types.string()),
-});
-
-export function getRedirectsResponseBodyVersionFromJSON(
-  jsonString: string,
-): SafeParseResult<GetRedirectsResponseBodyVersion, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetRedirectsResponseBodyVersion$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetRedirectsResponseBodyVersion' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetRedirectsResponseBodyRedirects$inboundSchema: z.ZodType<
-  GetRedirectsResponseBodyRedirects,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  statusCode: types.optional(types.number()),
-  permanent: types.optional(types.boolean()),
-  sensitive: types.optional(types.boolean()),
-  caseSensitive: types.optional(types.boolean()),
-  query: types.optional(types.boolean()),
-  preserveQueryParams: types.optional(types.boolean()),
-  destination: types.string(),
-  source: types.string(),
-});
-
-export function getRedirectsResponseBodyRedirectsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetRedirectsResponseBodyRedirects, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetRedirectsResponseBodyRedirects$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetRedirectsResponseBodyRedirects' from JSON`,
-  );
-}
-
-/** @internal */
 export const GetRedirectsResponseBodyBulkRedirectsPagination$inboundSchema:
   z.ZodType<
     GetRedirectsResponseBodyBulkRedirectsPagination,
     z.ZodTypeDef,
     unknown
   > = z.object({
+    numPages: types.number(),
     page: types.number(),
     per_page: types.number(),
-    numPages: types.number(),
   }).transform((v) => {
     return remap$(v, {
       "per_page": "perPage",
@@ -322,18 +269,71 @@ export function getRedirectsResponseBodyBulkRedirectsPaginationFromJSON(
 }
 
 /** @internal */
+export const GetRedirectsResponseBodyRedirects$inboundSchema: z.ZodType<
+  GetRedirectsResponseBodyRedirects,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  caseSensitive: types.optional(types.boolean()),
+  destination: types.string(),
+  permanent: types.optional(types.boolean()),
+  preserveQueryParams: types.optional(types.boolean()),
+  query: types.optional(types.boolean()),
+  sensitive: types.optional(types.boolean()),
+  source: types.string(),
+  statusCode: types.optional(types.number()),
+});
+
+export function getRedirectsResponseBodyRedirectsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetRedirectsResponseBodyRedirects, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetRedirectsResponseBodyRedirects$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetRedirectsResponseBodyRedirects' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetRedirectsResponseBodyVersion$inboundSchema: z.ZodType<
+  GetRedirectsResponseBodyVersion,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  alias: types.optional(types.string()),
+  createdBy: types.string(),
+  id: types.string(),
+  isLive: types.optional(types.boolean()),
+  isStaging: types.optional(types.boolean()),
+  key: types.string(),
+  lastModified: types.number(),
+  name: types.optional(types.string()),
+  redirectCount: types.optional(types.number()),
+});
+
+export function getRedirectsResponseBodyVersionFromJSON(
+  jsonString: string,
+): SafeParseResult<GetRedirectsResponseBodyVersion, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetRedirectsResponseBodyVersion$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetRedirectsResponseBodyVersion' from JSON`,
+  );
+}
+
+/** @internal */
 export const ResponseBody3$inboundSchema: z.ZodType<
   ResponseBody3,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  version: z.lazy(() => GetRedirectsResponseBodyVersion$inboundSchema),
-  redirects: z.array(
-    z.lazy(() => GetRedirectsResponseBodyRedirects$inboundSchema),
-  ),
   pagination: z.lazy(() =>
     GetRedirectsResponseBodyBulkRedirectsPagination$inboundSchema
   ),
+  redirects: z.array(
+    z.lazy(() => GetRedirectsResponseBodyRedirects$inboundSchema),
+  ),
+  version: z.lazy(() => GetRedirectsResponseBodyVersion$inboundSchema),
 });
 
 export function responseBody3FromJSON(
@@ -347,67 +347,14 @@ export function responseBody3FromJSON(
 }
 
 /** @internal */
-export const ResponseBodyVersion$inboundSchema: z.ZodType<
-  ResponseBodyVersion,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: types.string(),
-  key: types.string(),
-  lastModified: types.number(),
-  createdBy: types.string(),
-  name: types.optional(types.string()),
-  isStaging: types.optional(types.boolean()),
-  isLive: types.optional(types.boolean()),
-  redirectCount: types.optional(types.number()),
-  alias: types.optional(types.string()),
-});
-
-export function responseBodyVersionFromJSON(
-  jsonString: string,
-): SafeParseResult<ResponseBodyVersion, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ResponseBodyVersion$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBodyVersion' from JSON`,
-  );
-}
-
-/** @internal */
-export const ResponseBodyRedirects$inboundSchema: z.ZodType<
-  ResponseBodyRedirects,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  statusCode: types.optional(types.number()),
-  permanent: types.optional(types.boolean()),
-  sensitive: types.optional(types.boolean()),
-  caseSensitive: types.optional(types.boolean()),
-  query: types.optional(types.boolean()),
-  preserveQueryParams: types.optional(types.boolean()),
-  destination: types.string(),
-  source: types.string(),
-});
-
-export function responseBodyRedirectsFromJSON(
-  jsonString: string,
-): SafeParseResult<ResponseBodyRedirects, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ResponseBodyRedirects$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBodyRedirects' from JSON`,
-  );
-}
-
-/** @internal */
 export const GetRedirectsResponseBodyPagination$inboundSchema: z.ZodType<
   GetRedirectsResponseBodyPagination,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  numPages: types.number(),
   page: types.number(),
   per_page: types.number(),
-  numPages: types.number(),
 }).transform((v) => {
   return remap$(v, {
     "per_page": "perPage",
@@ -426,14 +373,67 @@ export function getRedirectsResponseBodyPaginationFromJSON(
 }
 
 /** @internal */
+export const ResponseBodyRedirects$inboundSchema: z.ZodType<
+  ResponseBodyRedirects,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  caseSensitive: types.optional(types.boolean()),
+  destination: types.string(),
+  permanent: types.optional(types.boolean()),
+  preserveQueryParams: types.optional(types.boolean()),
+  query: types.optional(types.boolean()),
+  sensitive: types.optional(types.boolean()),
+  source: types.string(),
+  statusCode: types.optional(types.number()),
+});
+
+export function responseBodyRedirectsFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyRedirects, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyRedirects$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyRedirects' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyVersion$inboundSchema: z.ZodType<
+  ResponseBodyVersion,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  alias: types.optional(types.string()),
+  createdBy: types.string(),
+  id: types.string(),
+  isLive: types.optional(types.boolean()),
+  isStaging: types.optional(types.boolean()),
+  key: types.string(),
+  lastModified: types.number(),
+  name: types.optional(types.string()),
+  redirectCount: types.optional(types.number()),
+});
+
+export function responseBodyVersionFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyVersion, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyVersion$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyVersion' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetRedirectsResponseBody2$inboundSchema: z.ZodType<
   GetRedirectsResponseBody2,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  version: types.optional(z.lazy(() => ResponseBodyVersion$inboundSchema)),
-  redirects: z.array(z.lazy(() => ResponseBodyRedirects$inboundSchema)),
   pagination: z.lazy(() => GetRedirectsResponseBodyPagination$inboundSchema),
+  redirects: z.array(z.lazy(() => ResponseBodyRedirects$inboundSchema)),
+  version: types.optional(z.lazy(() => ResponseBodyVersion$inboundSchema)),
 });
 
 export function getRedirectsResponseBody2FromJSON(

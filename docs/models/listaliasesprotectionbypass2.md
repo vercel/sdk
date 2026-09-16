@@ -8,10 +8,10 @@ The protection bypass for the alias
 import { ListAliasesProtectionBypass2 } from "@vercel/sdk/models/listaliasesop.js";
 
 let value: ListAliasesProtectionBypass2 = {
-  createdAt: 999,
-  lastUpdatedAt: 4632.56,
-  lastUpdatedBy: "<value>",
   access: "granted",
+  createdAt: 4632.56,
+  lastUpdatedAt: 2046.4,
+  lastUpdatedBy: "<value>",
   scope: "user",
 };
 ```
@@ -20,8 +20,8 @@ let value: ListAliasesProtectionBypass2 = {
 
 | Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
 | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `access`                                                                                   | [models.ListAliasesProtectionBypassAccess](../models/listaliasesprotectionbypassaccess.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
 | `createdAt`                                                                                | *number*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
 | `lastUpdatedAt`                                                                            | *number*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
 | `lastUpdatedBy`                                                                            | *string*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
-| `access`                                                                                   | [models.ListAliasesProtectionBypassAccess](../models/listaliasesprotectionbypassaccess.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
 | `scope`                                                                                    | *"user"*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |

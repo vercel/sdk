@@ -7,12 +7,10 @@
 
 ```typescript
 const value: models.UserEventMicrofrontends1 = {
-  isDefaultApp: true,
-  updatedAt: 1770.01,
-  groupIds: [
-    "<value 1>",
-  ],
   enabled: true,
+  groupIds: [],
+  isDefaultApp: true,
+  updatedAt: 3153.83,
 };
 ```
 
@@ -20,12 +18,11 @@ const value: models.UserEventMicrofrontends1 = {
 
 ```typescript
 const value: models.UserEventMicrofrontends2 = {
-  updatedAt: 3136.49,
+  enabled: true,
   groupIds: [
     "<value 1>",
-    "<value 2>",
   ],
-  enabled: true,
+  updatedAt: 5460.19,
 };
 ```
 
@@ -33,12 +30,12 @@ const value: models.UserEventMicrofrontends2 = {
 
 ```typescript
 const value: models.UserEventMicrofrontends3 = {
-  updatedAt: 6600.72,
+  enabled: false,
   groupIds: [
     "<value 1>",
     "<value 2>",
   ],
-  enabled: false,
+  updatedAt: 6395.35,
 };
 ```
 

@@ -6,18 +6,17 @@
 import { SegmentRules } from "@vercel/sdk/models/segment.js";
 
 let value: SegmentRules = {
+  conditions: [],
   id: "<id>",
   outcome: {
-    type: "all",
-  },
-  conditions: [
-    {
-      lhs: {
-        type: "segment",
-      },
-      cmp: "contains",
+    base: {
+      attribute: "<value>",
+      kind: "<value>",
+      type: "entity",
     },
-  ],
+    passPromille: 1235.3,
+    type: "split",
+  },
 };
 ```
 
@@ -25,6 +24,6 @@ let value: SegmentRules = {
 
 | Field                                                        | Type                                                         | Required                                                     | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `conditions`                                                 | [models.SegmentConditions](../models/segmentconditions.md)[] | :heavy_check_mark:                                           | N/A                                                          |
 | `id`                                                         | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
 | `outcome`                                                    | *models.SegmentOutcome*                                      | :heavy_check_mark:                                           | N/A                                                          |
-| `conditions`                                                 | [models.SegmentConditions](../models/segmentconditions.md)[] | :heavy_check_mark:                                           | N/A                                                          |

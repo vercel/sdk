@@ -8,8 +8,8 @@
 ```typescript
 const value: models.CreateIntegrationStoreDirectUiOptionsIntegrationsResponse1 =
   {
-    value: "<value>",
     label: "<value>",
+    value: "<value>",
   };
 ```
 

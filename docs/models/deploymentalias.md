@@ -5,11 +5,11 @@ Condensed check data. Retrieve individual check and check run data using api-che
 ## Example Usage
 
 ```typescript
-import { DeploymentAlias } from "@vercel/sdk/models/canceldeploymentresponsebody.js";
+import { DeploymentAlias } from "@vercel/sdk/models/canceldeploymentresourceconfig.js";
 
 let value: DeploymentAlias = {
-  state: "pending",
-  startedAt: 1385.88,
+  startedAt: 3512.67,
+  state: "failed",
 };
 ```
 
@@ -17,6 +17,6 @@ let value: DeploymentAlias = {
 
 | Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
 | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `state`                                                                                  | [models.CancelDeploymentDeploymentsState](../models/canceldeploymentdeploymentsstate.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `startedAt`                                                                              | *number*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |
 | `completedAt`                                                                            | *number*                                                                                 | :heavy_minus_sign:                                                                       | N/A                                                                                      |
+| `startedAt`                                                                              | *number*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `state`                                                                                  | [models.CancelDeploymentDeploymentsState](../models/canceldeploymentdeploymentsstate.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |

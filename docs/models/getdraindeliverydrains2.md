@@ -6,14 +6,14 @@
 import { GetDrainDeliveryDrains2 } from "@vercel/sdk/models/getdrainop.js";
 
 let value: GetDrainDeliveryDrains2 = {
-  type: "otlphttp",
+  encoding: "json",
   endpoint: {
     traces: "<value>",
   },
-  encoding: "json",
   headers: {
     "key": "<value>",
   },
+  type: "otlphttp",
 };
 ```
 
@@ -21,8 +21,8 @@ let value: GetDrainDeliveryDrains2 = {
 
 | Field                                                                                                                                    | Type                                                                                                                                     | Required                                                                                                                                 | Description                                                                                                                              |
 | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| `type`                                                                                                                                   | *"otlphttp"*                                                                                                                             | :heavy_check_mark:                                                                                                                       | N/A                                                                                                                                      |
-| `endpoint`                                                                                                                               | [models.GetDrainDeliveryDrainsEndpoint](../models/getdraindeliverydrainsendpoint.md)                                                     | :heavy_check_mark:                                                                                                                       | N/A                                                                                                                                      |
 | `encoding`                                                                                                                               | [models.GetDrainDeliveryDrainsResponse200ApplicationJSONEncoding](../models/getdraindeliverydrainsresponse200applicationjsonencoding.md) | :heavy_check_mark:                                                                                                                       | N/A                                                                                                                                      |
+| `endpoint`                                                                                                                               | [models.GetDrainDeliveryDrainsEndpoint](../models/getdraindeliverydrainsendpoint.md)                                                     | :heavy_check_mark:                                                                                                                       | N/A                                                                                                                                      |
 | `headers`                                                                                                                                | Record<string, *string*>                                                                                                                 | :heavy_check_mark:                                                                                                                       | N/A                                                                                                                                      |
 | `secret`                                                                                                                                 | *models.GetDrainDeliveryDrainsResponse200Secret*                                                                                         | :heavy_minus_sign:                                                                                                                       | N/A                                                                                                                                      |
+| `type`                                                                                                                                   | *"otlphttp"*                                                                                                                             | :heavy_check_mark:                                                                                                                       | N/A                                                                                                                                      |

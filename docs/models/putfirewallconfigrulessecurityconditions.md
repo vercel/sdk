@@ -6,8 +6,8 @@
 import { PutFirewallConfigRulesSecurityConditions } from "@vercel/sdk/models/putfirewallconfigop.js";
 
 let value: PutFirewallConfigRulesSecurityConditions = {
-  type: "ja4_digest",
-  op: "ninc",
+  op: "lte",
+  type: "raw_path",
 };
 ```
 
@@ -15,8 +15,8 @@ let value: PutFirewallConfigRulesSecurityConditions = {
 
 | Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  |
 | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `type`                                                                                       | [models.PutFirewallConfigRulesSecurityType](../models/putfirewallconfigrulessecuritytype.md) | :heavy_check_mark:                                                                           | N/A                                                                                          |
-| `op`                                                                                         | [models.PutFirewallConfigRulesSecurityOp](../models/putfirewallconfigrulessecurityop.md)     | :heavy_check_mark:                                                                           | N/A                                                                                          |
-| `neg`                                                                                        | *boolean*                                                                                    | :heavy_minus_sign:                                                                           | N/A                                                                                          |
 | `key`                                                                                        | *string*                                                                                     | :heavy_minus_sign:                                                                           | N/A                                                                                          |
+| `neg`                                                                                        | *boolean*                                                                                    | :heavy_minus_sign:                                                                           | N/A                                                                                          |
+| `op`                                                                                         | [models.PutFirewallConfigRulesSecurityOp](../models/putfirewallconfigrulessecurityop.md)     | :heavy_check_mark:                                                                           | N/A                                                                                          |
+| `type`                                                                                       | [models.PutFirewallConfigRulesSecurityType](../models/putfirewallconfigrulessecuritytype.md) | :heavy_check_mark:                                                                           | N/A                                                                                          |
 | `value`                                                                                      | *models.PutFirewallConfigRulesSecurityValue*                                                 | :heavy_minus_sign:                                                                           | N/A                                                                                          |

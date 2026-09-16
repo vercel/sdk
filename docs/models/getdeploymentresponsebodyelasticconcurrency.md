@@ -5,7 +5,7 @@ When elastic concurrency is used for this deployment, a value is set. The value 
 ## Example Usage
 
 ```typescript
-import { GetDeploymentResponseBodyElasticConcurrency } from "@vercel/sdk/models/getdeploymentresponsebody1.js";
+import { GetDeploymentResponseBodyElasticConcurrency } from "@vercel/sdk/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody215type.js";
 
 let value: GetDeploymentResponseBodyElasticConcurrency = "TEAM_SETTING";
 ```

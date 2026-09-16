@@ -3,18 +3,19 @@
 ## Example Usage
 
 ```typescript
-import { ImageOptimizationTransformation } from "@vercel/sdk/models/usereventpayloadtarget.js";
+import { ImageOptimizationTransformation } from "@vercel/sdk/models/usereventpayload171newownerfeatureblocksworkflowstoragewriteblockreason.js";
 
 let value: ImageOptimizationTransformation = {
-  currentThreshold: 6667.74,
+  blockReason: "limits_exceeded",
+  updatedAt: 695.97,
 };
 ```
 
 ## Fields
 
-| Field                       | Type                        | Required                    | Description                 |
-| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
-| `currentThreshold`          | *number*                    | :heavy_check_mark:          | N/A                         |
-| `warningAt`                 | *number*                    | :heavy_minus_sign:          | N/A                         |
-| `blockedAt`                 | *number*                    | :heavy_minus_sign:          | N/A                         |
-| `blockGracePeriodStartedAt` | *number*                    | :heavy_minus_sign:          | N/A                         |
+| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `blockedFrom`                                                                        | *number*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
+| `blockedUntil`                                                                       | *number*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
+| `blockReason`                                                                        | [models.UserEventPayload171BlockReason](../models/usereventpayload171blockreason.md) | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `updatedAt`                                                                          | *number*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |

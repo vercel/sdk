@@ -7,11 +7,11 @@
 
 ```typescript
 const value: models.UploadProjectAvatarProtectionBypass1 = {
+  configurationId: "<id>",
   createdAt: 9856.08,
   createdBy: "<value>",
-  scope: "integration-automation-bypass",
   integrationId: "<id>",
-  configurationId: "<id>",
+  scope: "integration-automation-bypass",
 };
 ```
 

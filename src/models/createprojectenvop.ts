@@ -259,6 +259,131 @@ export type CreateProjectEnvRequest = {
     | Array<CreateProjectEnv21 | CreateProjectEnv22>;
 };
 
+export type CreateProjectEnvContentHintProjects17 = {
+  projectId: string;
+  type: "flags-connection-string";
+};
+
+export type CreateProjectEnvContentHintProjects16 = {
+  integrationConfigurationId: string;
+  integrationId: string;
+  integrationProductId: string;
+  storeId: string;
+  type: "integration-store-secret";
+};
+
+export type CreateProjectEnvContentHintProjects15 = {
+  storeId: string;
+  type: "postgres-url-no-ssl";
+};
+
+export type CreateProjectEnvContentHintProjects14 = {
+  storeId: string;
+  type: "postgres-database";
+};
+
+export type CreateProjectEnvContentHintProjects13 = {
+  storeId: string;
+  type: "postgres-password";
+};
+
+export type CreateProjectEnvContentHintProjects12 = {
+  storeId: string;
+  type: "postgres-host";
+};
+
+export type CreateProjectEnvContentHintProjects11 = {
+  storeId: string;
+  type: "postgres-user";
+};
+
+export type CreateProjectEnvContentHintProjects10 = {
+  storeId: string;
+  type: "postgres-prisma-url";
+};
+
+export type CreateProjectEnvContentHintProjects9 = {
+  storeId: string;
+  type: "postgres-url-non-pooling";
+};
+
+export type CreateProjectEnvContentHintProjects8 = {
+  storeId: string;
+  type: "postgres-url";
+};
+
+export type CreateProjectEnvContentHintProjects7 = {
+  storeId: string;
+  type: "blob-webhook-public-key";
+};
+
+export type CreateProjectEnvContentHintProjects6 = {
+  storeId: string;
+  type: "blob-store-id";
+};
+
+export type CreateProjectEnvContentHintProjects5 = {
+  storeId: string;
+  type: "blob-read-write-token";
+};
+
+export type CreateProjectEnvContentHintProjects4 = {
+  storeId: string;
+  type: "redis-rest-api-read-only-token";
+};
+
+export type CreateProjectEnvContentHintProjects3 = {
+  storeId: string;
+  type: "redis-rest-api-token";
+};
+
+export type CreateProjectEnvContentHintProjects2 = {
+  storeId: string;
+  type: "redis-rest-api-url";
+};
+
+export type CreateProjectEnvContentHintProjects1 = {
+  storeId: string;
+  type: "redis-url";
+};
+
+export type CreateProjectEnvCreatedContentHint =
+  | CreateProjectEnvContentHintProjects1
+  | CreateProjectEnvContentHintProjects2
+  | CreateProjectEnvContentHintProjects3
+  | CreateProjectEnvContentHintProjects4
+  | CreateProjectEnvContentHintProjects5
+  | CreateProjectEnvContentHintProjects6
+  | CreateProjectEnvContentHintProjects7
+  | CreateProjectEnvContentHintProjects8
+  | CreateProjectEnvContentHintProjects9
+  | CreateProjectEnvContentHintProjects10
+  | CreateProjectEnvContentHintProjects11
+  | CreateProjectEnvContentHintProjects12
+  | CreateProjectEnvContentHintProjects13
+  | CreateProjectEnvContentHintProjects14
+  | CreateProjectEnvContentHintProjects15
+  | CreateProjectEnvContentHintProjects16
+  | CreateProjectEnvContentHintProjects17;
+
+export const CreateProjectEnvCreatedProjectsType = {
+  FlagsSecret: "flags-secret",
+} as const;
+export type CreateProjectEnvCreatedProjectsType = ClosedEnum<
+  typeof CreateProjectEnvCreatedProjectsType
+>;
+
+/**
+ * Similar to `contentHints`, but should not be exposed to the user.
+ */
+export type CreateProjectEnvCreatedInternalContentHint = {
+  /**
+   * Contains the `value` of the env variable, encrypted with a special key to make decryption possible in the subscriber Lambda.
+   */
+  encryptedValue: string;
+  type: CreateProjectEnvCreatedProjectsType;
+};
+
 export const CreateProjectEnvTargetProjects2 = {
   Production: "production",
   Preview: "preview",
@@ -297,159 +422,9 @@ export type CreateProjectEnvCreatedVisibility = ClosedEnum<
   typeof CreateProjectEnvCreatedVisibility
 >;
 
-export type CreateProjectEnvContentHintProjects17 = {
-  type: "flags-connection-string";
-  projectId: string;
-};
-
-export type CreateProjectEnvContentHintProjects16 = {
-  type: "integration-store-secret";
-  storeId: string;
-  integrationId: string;
-  integrationProductId: string;
-  integrationConfigurationId: string;
-};
-
-export type CreateProjectEnvContentHintProjects15 = {
-  type: "postgres-url-no-ssl";
-  storeId: string;
-};
-
-export type CreateProjectEnvContentHintProjects14 = {
-  type: "postgres-database";
-  storeId: string;
-};
-
-export type CreateProjectEnvContentHintProjects13 = {
-  type: "postgres-password";
-  storeId: string;
-};
-
-export type CreateProjectEnvContentHintProjects12 = {
-  type: "postgres-host";
-  storeId: string;
-};
-
-export type CreateProjectEnvContentHintProjects11 = {
-  type: "postgres-user";
-  storeId: string;
-};
-
-export type CreateProjectEnvContentHintProjects10 = {
-  type: "postgres-prisma-url";
-  storeId: string;
-};
-
-export type CreateProjectEnvContentHintProjects9 = {
-  type: "postgres-url-non-pooling";
-  storeId: string;
-};
-
-export type CreateProjectEnvContentHintProjects8 = {
-  type: "postgres-url";
-  storeId: string;
-};
-
-export type CreateProjectEnvContentHintProjects7 = {
-  type: "blob-webhook-public-key";
-  storeId: string;
-};
-
-export type CreateProjectEnvContentHintProjects6 = {
-  type: "blob-store-id";
-  storeId: string;
-};
-
-export type CreateProjectEnvContentHintProjects5 = {
-  type: "blob-read-write-token";
-  storeId: string;
-};
-
-export type CreateProjectEnvContentHintProjects4 = {
-  type: "redis-rest-api-read-only-token";
-  storeId: string;
-};
-
-export type CreateProjectEnvContentHintProjects3 = {
-  type: "redis-rest-api-token";
-  storeId: string;
-};
-
-export type CreateProjectEnvContentHintProjects2 = {
-  type: "redis-rest-api-url";
-  storeId: string;
-};
-
-export type CreateProjectEnvContentHintProjects1 = {
-  type: "redis-url";
-  storeId: string;
-};
-
-export type CreateProjectEnvCreatedContentHint =
-  | CreateProjectEnvContentHintProjects1
-  | CreateProjectEnvContentHintProjects2
-  | CreateProjectEnvContentHintProjects3
-  | CreateProjectEnvContentHintProjects4
-  | CreateProjectEnvContentHintProjects5
-  | CreateProjectEnvContentHintProjects6
-  | CreateProjectEnvContentHintProjects7
-  | CreateProjectEnvContentHintProjects8
-  | CreateProjectEnvContentHintProjects9
-  | CreateProjectEnvContentHintProjects10
-  | CreateProjectEnvContentHintProjects11
-  | CreateProjectEnvContentHintProjects12
-  | CreateProjectEnvContentHintProjects13
-  | CreateProjectEnvContentHintProjects14
-  | CreateProjectEnvContentHintProjects15
-  | CreateProjectEnvContentHintProjects16
-  | CreateProjectEnvContentHintProjects17;
-
-export const CreateProjectEnvCreatedProjectsResponseType = {
-  FlagsSecret: "flags-secret",
-} as const;
-export type CreateProjectEnvCreatedProjectsResponseType = ClosedEnum<
-  typeof CreateProjectEnvCreatedProjectsResponseType
->;
-
-/**
- * Similar to `contentHints`, but should not be exposed to the user.
- */
-export type CreateProjectEnvCreatedInternalContentHint = {
-  type: CreateProjectEnvCreatedProjectsResponseType;
-  /**
-   * Contains the `value` of the env variable, encrypted with a special key to make decryption possible in the subscriber Lambda.
-   */
-  encryptedValue: string;
-};
-
 export type Created2 = {
-  target?: Array<string> | CreateProjectEnvTargetProjects2 | undefined;
-  type: CreateProjectEnvCreatedType;
-  /**
-   * This is used to identify variables that have been migrated from type secret to sensitive.
-   */
-  sunsetSecretId?: string | undefined;
-  /**
-   * Legacy now-encryption ciphertext, present after migration swaps value/vsmValue
-   */
-  legacyValue?: string | undefined;
-  decrypted?: boolean | undefined;
-  value: string;
-  vsmValue?: string | undefined;
-  id?: string | undefined;
-  key: string;
+  comment?: string | undefined;
   configurationId?: string | null | undefined;
-  createdAt?: number | undefined;
-  updatedAt?: number | undefined;
-  createdBy?: string | null | undefined;
-  updatedBy?: string | null | undefined;
-  gitBranch?: string | undefined;
-  /**
-   * User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior.
-   */
-  visibility?: CreateProjectEnvCreatedVisibility | undefined;
-  edgeConfigId?: string | null | undefined;
-  edgeConfigTokenId?: string | null | undefined;
   contentHint?:
     | CreateProjectEnvContentHintProjects1
     | CreateProjectEnvContentHintProjects2
@@ -470,6 +445,14 @@ export type Created2 = {
     | CreateProjectEnvContentHintProjects17
     | null
     | undefined;
+  createdAt?: number | undefined;
+  createdBy?: string | null | undefined;
+  customEnvironmentIds?: Array<string> | undefined;
+  decrypted?: boolean | undefined;
+  edgeConfigId?: string | null | undefined;
+  edgeConfigTokenId?: string | null | undefined;
+  gitBranch?: string | undefined;
+  id?: string | undefined;
   /**
    * Similar to `contentHints`, but should not be exposed to the user.
    */
@@ -477,9 +460,151 @@ export type Created2 = {
     | CreateProjectEnvCreatedInternalContentHint
     | null
     | undefined;
-  comment?: string | undefined;
-  customEnvironmentIds?: Array<string> | undefined;
+  key: string;
+  /**
+   * Legacy now-encryption ciphertext, present after migration swaps value/vsmValue
+   */
+  legacyValue?: string | undefined;
+  /**
+   * This is used to identify variables that have been migrated from type secret to sensitive.
+   */
+  sunsetSecretId?: string | undefined;
+  target?: Array<string> | CreateProjectEnvTargetProjects2 | undefined;
+  type: CreateProjectEnvCreatedType;
+  updatedAt?: number | undefined;
+  updatedBy?: string | null | undefined;
+  value: string;
+  /**
+   * User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior.
+   */
+  visibility?: CreateProjectEnvCreatedVisibility | undefined;
+  vsmValue?: string | undefined;
   system?: boolean | undefined;
+};
+
+export type CreateProjectEnvContentHint17 = {
+  projectId: string;
+  type: "flags-connection-string";
+};
+
+export type CreateProjectEnvContentHint16 = {
+  integrationConfigurationId: string;
+  integrationId: string;
+  integrationProductId: string;
+  storeId: string;
+  type: "integration-store-secret";
+};
+
+export type CreateProjectEnvContentHint15 = {
+  storeId: string;
+  type: "postgres-url-no-ssl";
+};
+
+export type CreateProjectEnvContentHint14 = {
+  storeId: string;
+  type: "postgres-database";
+};
+
+export type CreateProjectEnvContentHint13 = {
+  storeId: string;
+  type: "postgres-password";
+};
+
+export type CreateProjectEnvContentHint12 = {
+  storeId: string;
+  type: "postgres-host";
+};
+
+export type CreateProjectEnvContentHint11 = {
+  storeId: string;
+  type: "postgres-user";
+};
+
+export type CreateProjectEnvContentHint10 = {
+  storeId: string;
+  type: "postgres-prisma-url";
+};
+
+export type CreateProjectEnvContentHint9 = {
+  storeId: string;
+  type: "postgres-url-non-pooling";
+};
+
+export type CreateProjectEnvContentHint8 = {
+  storeId: string;
+  type: "postgres-url";
+};
+
+export type CreateProjectEnvContentHint7 = {
+  storeId: string;
+  type: "blob-webhook-public-key";
+};
+
+export type CreateProjectEnvContentHint6 = {
+  storeId: string;
+  type: "blob-store-id";
+};
+
+export type CreateProjectEnvContentHint5 = {
+  storeId: string;
+  type: "blob-read-write-token";
+};
+
+export type CreateProjectEnvContentHint4 = {
+  storeId: string;
+  type: "redis-rest-api-read-only-token";
+};
+
+export type CreateProjectEnvContentHint3 = {
+  storeId: string;
+  type: "redis-rest-api-token";
+};
+
+export type CreateProjectEnvContentHint2 = {
+  storeId: string;
+  type: "redis-rest-api-url";
+};
+
+export type CreateProjectEnvContentHint1 = {
+  storeId: string;
+  type: "redis-url";
+};
+
+export type CreatedContentHint =
+  | CreateProjectEnvContentHint1
+  | CreateProjectEnvContentHint2
+  | CreateProjectEnvContentHint3
+  | CreateProjectEnvContentHint4
+  | CreateProjectEnvContentHint5
+  | CreateProjectEnvContentHint6
+  | CreateProjectEnvContentHint7
+  | CreateProjectEnvContentHint8
+  | CreateProjectEnvContentHint9
+  | CreateProjectEnvContentHint10
+  | CreateProjectEnvContentHint11
+  | CreateProjectEnvContentHint12
+  | CreateProjectEnvContentHint13
+  | CreateProjectEnvContentHint14
+  | CreateProjectEnvContentHint15
+  | CreateProjectEnvContentHint16
+  | CreateProjectEnvContentHint17;
+
+export const CreateProjectEnvCreatedProjectsResponseType = {
+  FlagsSecret: "flags-secret",
+} as const;
+export type CreateProjectEnvCreatedProjectsResponseType = ClosedEnum<
+  typeof CreateProjectEnvCreatedProjectsResponseType
+>;
+
+/**
+ * Similar to `contentHints`, but should not be exposed to the user.
+ */
+export type CreatedInternalContentHint = {
+  /**
+   * Contains the `value` of the env variable, encrypted with a special key to make decryption possible in the subscriber Lambda.
+   */
+  encryptedValue: string;
+  type: CreateProjectEnvCreatedProjectsResponseType;
 };
 
 export const CreateProjectEnvTarget2 = {
@@ -525,159 +650,9 @@ export const CreatedVisibility = {
  */
 export type CreatedVisibility = ClosedEnum<typeof CreatedVisibility>;
 
-export type CreateProjectEnvContentHint17 = {
-  type: "flags-connection-string";
-  projectId: string;
-};
-
-export type CreateProjectEnvContentHint16 = {
-  type: "integration-store-secret";
-  storeId: string;
-  integrationId: string;
-  integrationProductId: string;
-  integrationConfigurationId: string;
-};
-
-export type CreateProjectEnvContentHint15 = {
-  type: "postgres-url-no-ssl";
-  storeId: string;
-};
-
-export type CreateProjectEnvContentHint14 = {
-  type: "postgres-database";
-  storeId: string;
-};
-
-export type CreateProjectEnvContentHint13 = {
-  type: "postgres-password";
-  storeId: string;
-};
-
-export type CreateProjectEnvContentHint12 = {
-  type: "postgres-host";
-  storeId: string;
-};
-
-export type CreateProjectEnvContentHint11 = {
-  type: "postgres-user";
-  storeId: string;
-};
-
-export type CreateProjectEnvContentHint10 = {
-  type: "postgres-prisma-url";
-  storeId: string;
-};
-
-export type CreateProjectEnvContentHint9 = {
-  type: "postgres-url-non-pooling";
-  storeId: string;
-};
-
-export type CreateProjectEnvContentHint8 = {
-  type: "postgres-url";
-  storeId: string;
-};
-
-export type CreateProjectEnvContentHint7 = {
-  type: "blob-webhook-public-key";
-  storeId: string;
-};
-
-export type CreateProjectEnvContentHint6 = {
-  type: "blob-store-id";
-  storeId: string;
-};
-
-export type CreateProjectEnvContentHint5 = {
-  type: "blob-read-write-token";
-  storeId: string;
-};
-
-export type CreateProjectEnvContentHint4 = {
-  type: "redis-rest-api-read-only-token";
-  storeId: string;
-};
-
-export type CreateProjectEnvContentHint3 = {
-  type: "redis-rest-api-token";
-  storeId: string;
-};
-
-export type CreateProjectEnvContentHint2 = {
-  type: "redis-rest-api-url";
-  storeId: string;
-};
-
-export type CreateProjectEnvContentHint1 = {
-  type: "redis-url";
-  storeId: string;
-};
-
-export type CreatedContentHint =
-  | CreateProjectEnvContentHint1
-  | CreateProjectEnvContentHint2
-  | CreateProjectEnvContentHint3
-  | CreateProjectEnvContentHint4
-  | CreateProjectEnvContentHint5
-  | CreateProjectEnvContentHint6
-  | CreateProjectEnvContentHint7
-  | CreateProjectEnvContentHint8
-  | CreateProjectEnvContentHint9
-  | CreateProjectEnvContentHint10
-  | CreateProjectEnvContentHint11
-  | CreateProjectEnvContentHint12
-  | CreateProjectEnvContentHint13
-  | CreateProjectEnvContentHint14
-  | CreateProjectEnvContentHint15
-  | CreateProjectEnvContentHint16
-  | CreateProjectEnvContentHint17;
-
-export const CreateProjectEnvCreatedProjectsType = {
-  FlagsSecret: "flags-secret",
-} as const;
-export type CreateProjectEnvCreatedProjectsType = ClosedEnum<
-  typeof CreateProjectEnvCreatedProjectsType
->;
-
-/**
- * Similar to `contentHints`, but should not be exposed to the user.
- */
-export type CreatedInternalContentHint = {
-  type: CreateProjectEnvCreatedProjectsType;
-  /**
-   * Contains the `value` of the env variable, encrypted with a special key to make decryption possible in the subscriber Lambda.
-   */
-  encryptedValue: string;
-};
-
 export type Created1 = {
-  target?: Array<CreateProjectEnvTarget1> | CreateProjectEnvTarget2 | undefined;
-  type: CreatedType;
-  /**
-   * This is used to identify variables that have been migrated from type secret to sensitive.
-   */
-  sunsetSecretId?: string | undefined;
-  /**
-   * Legacy now-encryption ciphertext, present after migration swaps value/vsmValue
-   */
-  legacyValue?: string | undefined;
-  decrypted?: boolean | undefined;
-  value: string;
-  vsmValue?: string | undefined;
-  id?: string | undefined;
-  key: string;
+  comment?: string | undefined;
   configurationId?: string | null | undefined;
-  createdAt?: number | undefined;
-  updatedAt?: number | undefined;
-  createdBy?: string | null | undefined;
-  updatedBy?: string | null | undefined;
-  gitBranch?: string | undefined;
-  /**
-   * User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior.
-   */
-  visibility?: CreatedVisibility | undefined;
-  edgeConfigId?: string | null | undefined;
-  edgeConfigTokenId?: string | null | undefined;
   contentHint?:
     | CreateProjectEnvContentHint1
     | CreateProjectEnvContentHint2
@@ -698,25 +673,41 @@ export type Created1 = {
     | CreateProjectEnvContentHint17
     | null
     | undefined;
+  createdAt?: number | undefined;
+  createdBy?: string | null | undefined;
+  customEnvironmentIds?: Array<string> | undefined;
+  decrypted?: boolean | undefined;
+  edgeConfigId?: string | null | undefined;
+  edgeConfigTokenId?: string | null | undefined;
+  gitBranch?: string | undefined;
+  id?: string | undefined;
   /**
    * Similar to `contentHints`, but should not be exposed to the user.
    */
   internalContentHint?: CreatedInternalContentHint | null | undefined;
-  comment?: string | undefined;
-  customEnvironmentIds?: Array<string> | undefined;
+  key: string;
+  /**
+   * Legacy now-encryption ciphertext, present after migration swaps value/vsmValue
+   */
+  legacyValue?: string | undefined;
+  /**
+   * This is used to identify variables that have been migrated from type secret to sensitive.
+   */
+  sunsetSecretId?: string | undefined;
+  target?: Array<CreateProjectEnvTarget1> | CreateProjectEnvTarget2 | undefined;
+  type: CreatedType;
+  updatedAt?: number | undefined;
+  updatedBy?: string | null | undefined;
+  value: string;
+  /**
+   * User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and callers fall back to existing `type` behavior.
+   */
+  visibility?: CreatedVisibility | undefined;
+  vsmValue?: string | undefined;
   system?: boolean | undefined;
 };
 
 export type CreateProjectEnvCreated = Created1 | Array<Created2>;
-
-export const CreateProjectEnvValue2 = {
-  Production: "production",
-  Preview: "preview",
-  Development: "development",
-} as const;
-export type CreateProjectEnvValue2 = ClosedEnum<typeof CreateProjectEnvValue2>;
-
-export type CreateProjectEnvValue = string | Array<CreateProjectEnvValue2>;
 
 export const CreateProjectEnvTargetProjectsResponse2 = {
   Production: "production",
@@ -740,21 +731,30 @@ export type CreateProjectEnvTarget =
   | Array<CreateProjectEnvTargetProjects1>
   | CreateProjectEnvTargetProjectsResponse2;
 
+export const CreateProjectEnvValue2 = {
+  Production: "production",
+  Preview: "preview",
+  Development: "development",
+} as const;
+export type CreateProjectEnvValue2 = ClosedEnum<typeof CreateProjectEnvValue2>;
+
+export type CreateProjectEnvValue = string | Array<CreateProjectEnvValue2>;
+
 export type CreateProjectEnvError = {
+  action?: string | undefined;
   code: string;
-  message: string;
-  key?: string | undefined;
   envVarId?: string | undefined;
   envVarKey?: string | undefined;
-  action?: string | undefined;
-  link?: string | undefined;
-  value?: string | Array<CreateProjectEnvValue2> | undefined;
   gitBranch?: string | undefined;
+  key?: string | undefined;
+  link?: string | undefined;
+  message: string;
+  project?: string | undefined;
   target?:
     | Array<CreateProjectEnvTargetProjects1>
     | CreateProjectEnvTargetProjectsResponse2
     | undefined;
-  project?: string | undefined;
+  value?: string | Array<CreateProjectEnvValue2> | undefined;
 };
 
 export type CreateProjectEnvFailed = {
@@ -1074,48 +1074,13 @@ export function createProjectEnvRequestToJSON(
 }
 
 /** @internal */
-export const CreateProjectEnvTargetProjects2$inboundSchema: z.ZodNativeEnum<
-  typeof CreateProjectEnvTargetProjects2
-> = z.nativeEnum(CreateProjectEnvTargetProjects2);
-
-/** @internal */
-export const CreateProjectEnvCreatedTarget$inboundSchema: z.ZodType<
-  CreateProjectEnvCreatedTarget,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.array(types.string()),
-  CreateProjectEnvTargetProjects2$inboundSchema,
-]);
-
-export function createProjectEnvCreatedTargetFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateProjectEnvCreatedTarget, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateProjectEnvCreatedTarget$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateProjectEnvCreatedTarget' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateProjectEnvCreatedType$inboundSchema: z.ZodNativeEnum<
-  typeof CreateProjectEnvCreatedType
-> = z.nativeEnum(CreateProjectEnvCreatedType);
-
-/** @internal */
-export const CreateProjectEnvCreatedVisibility$inboundSchema: z.ZodNativeEnum<
-  typeof CreateProjectEnvCreatedVisibility
-> = z.nativeEnum(CreateProjectEnvCreatedVisibility);
-
-/** @internal */
 export const CreateProjectEnvContentHintProjects17$inboundSchema: z.ZodType<
   CreateProjectEnvContentHintProjects17,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("flags-connection-string"),
   projectId: types.string(),
+  type: types.literal("flags-connection-string"),
 });
 
 export function createProjectEnvContentHintProjects17FromJSON(
@@ -1135,11 +1100,11 @@ export const CreateProjectEnvContentHintProjects16$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("integration-store-secret"),
-  storeId: types.string(),
+  integrationConfigurationId: types.string(),
   integrationId: types.string(),
   integrationProductId: types.string(),
-  integrationConfigurationId: types.string(),
+  storeId: types.string(),
+  type: types.literal("integration-store-secret"),
 });
 
 export function createProjectEnvContentHintProjects16FromJSON(
@@ -1159,8 +1124,8 @@ export const CreateProjectEnvContentHintProjects15$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("postgres-url-no-ssl"),
   storeId: types.string(),
+  type: types.literal("postgres-url-no-ssl"),
 });
 
 export function createProjectEnvContentHintProjects15FromJSON(
@@ -1180,8 +1145,8 @@ export const CreateProjectEnvContentHintProjects14$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("postgres-database"),
   storeId: types.string(),
+  type: types.literal("postgres-database"),
 });
 
 export function createProjectEnvContentHintProjects14FromJSON(
@@ -1201,8 +1166,8 @@ export const CreateProjectEnvContentHintProjects13$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("postgres-password"),
   storeId: types.string(),
+  type: types.literal("postgres-password"),
 });
 
 export function createProjectEnvContentHintProjects13FromJSON(
@@ -1222,8 +1187,8 @@ export const CreateProjectEnvContentHintProjects12$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("postgres-host"),
   storeId: types.string(),
+  type: types.literal("postgres-host"),
 });
 
 export function createProjectEnvContentHintProjects12FromJSON(
@@ -1243,8 +1208,8 @@ export const CreateProjectEnvContentHintProjects11$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("postgres-user"),
   storeId: types.string(),
+  type: types.literal("postgres-user"),
 });
 
 export function createProjectEnvContentHintProjects11FromJSON(
@@ -1264,8 +1229,8 @@ export const CreateProjectEnvContentHintProjects10$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("postgres-prisma-url"),
   storeId: types.string(),
+  type: types.literal("postgres-prisma-url"),
 });
 
 export function createProjectEnvContentHintProjects10FromJSON(
@@ -1285,8 +1250,8 @@ export const CreateProjectEnvContentHintProjects9$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("postgres-url-non-pooling"),
   storeId: types.string(),
+  type: types.literal("postgres-url-non-pooling"),
 });
 
 export function createProjectEnvContentHintProjects9FromJSON(
@@ -1306,8 +1271,8 @@ export const CreateProjectEnvContentHintProjects8$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("postgres-url"),
   storeId: types.string(),
+  type: types.literal("postgres-url"),
 });
 
 export function createProjectEnvContentHintProjects8FromJSON(
@@ -1327,8 +1292,8 @@ export const CreateProjectEnvContentHintProjects7$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("blob-webhook-public-key"),
   storeId: types.string(),
+  type: types.literal("blob-webhook-public-key"),
 });
 
 export function createProjectEnvContentHintProjects7FromJSON(
@@ -1348,8 +1313,8 @@ export const CreateProjectEnvContentHintProjects6$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("blob-store-id"),
   storeId: types.string(),
+  type: types.literal("blob-store-id"),
 });
 
 export function createProjectEnvContentHintProjects6FromJSON(
@@ -1369,8 +1334,8 @@ export const CreateProjectEnvContentHintProjects5$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("blob-read-write-token"),
   storeId: types.string(),
+  type: types.literal("blob-read-write-token"),
 });
 
 export function createProjectEnvContentHintProjects5FromJSON(
@@ -1390,8 +1355,8 @@ export const CreateProjectEnvContentHintProjects4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("redis-rest-api-read-only-token"),
   storeId: types.string(),
+  type: types.literal("redis-rest-api-read-only-token"),
 });
 
 export function createProjectEnvContentHintProjects4FromJSON(
@@ -1411,8 +1376,8 @@ export const CreateProjectEnvContentHintProjects3$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("redis-rest-api-token"),
   storeId: types.string(),
+  type: types.literal("redis-rest-api-token"),
 });
 
 export function createProjectEnvContentHintProjects3FromJSON(
@@ -1432,8 +1397,8 @@ export const CreateProjectEnvContentHintProjects2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("redis-rest-api-url"),
   storeId: types.string(),
+  type: types.literal("redis-rest-api-url"),
 });
 
 export function createProjectEnvContentHintProjects2FromJSON(
@@ -1453,8 +1418,8 @@ export const CreateProjectEnvContentHintProjects1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("redis-url"),
   storeId: types.string(),
+  type: types.literal("redis-url"),
 });
 
 export function createProjectEnvContentHintProjects1FromJSON(
@@ -1505,16 +1470,16 @@ export function createProjectEnvCreatedContentHintFromJSON(
 }
 
 /** @internal */
-export const CreateProjectEnvCreatedProjectsResponseType$inboundSchema:
-  z.ZodNativeEnum<typeof CreateProjectEnvCreatedProjectsResponseType> = z
-    .nativeEnum(CreateProjectEnvCreatedProjectsResponseType);
+export const CreateProjectEnvCreatedProjectsType$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectEnvCreatedProjectsType
+> = z.nativeEnum(CreateProjectEnvCreatedProjectsType);
 
 /** @internal */
 export const CreateProjectEnvCreatedInternalContentHint$inboundSchema:
   z.ZodType<CreateProjectEnvCreatedInternalContentHint, z.ZodTypeDef, unknown> =
     z.object({
-      type: CreateProjectEnvCreatedProjectsResponseType$inboundSchema,
       encryptedValue: types.string(),
+      type: CreateProjectEnvCreatedProjectsType$inboundSchema,
     });
 
 export function createProjectEnvCreatedInternalContentHintFromJSON(
@@ -1534,34 +1499,48 @@ export function createProjectEnvCreatedInternalContentHintFromJSON(
 }
 
 /** @internal */
+export const CreateProjectEnvTargetProjects2$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectEnvTargetProjects2
+> = z.nativeEnum(CreateProjectEnvTargetProjects2);
+
+/** @internal */
+export const CreateProjectEnvCreatedTarget$inboundSchema: z.ZodType<
+  CreateProjectEnvCreatedTarget,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.array(types.string()),
+  CreateProjectEnvTargetProjects2$inboundSchema,
+]);
+
+export function createProjectEnvCreatedTargetFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectEnvCreatedTarget, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectEnvCreatedTarget$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectEnvCreatedTarget' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectEnvCreatedType$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectEnvCreatedType
+> = z.nativeEnum(CreateProjectEnvCreatedType);
+
+/** @internal */
+export const CreateProjectEnvCreatedVisibility$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectEnvCreatedVisibility
+> = z.nativeEnum(CreateProjectEnvCreatedVisibility);
+
+/** @internal */
 export const Created2$inboundSchema: z.ZodType<
   Created2,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  target: types.optional(
-    smartUnion([
-      z.array(types.string()),
-      CreateProjectEnvTargetProjects2$inboundSchema,
-    ]),
-  ),
-  type: CreateProjectEnvCreatedType$inboundSchema,
-  sunsetSecretId: types.optional(types.string()),
-  legacyValue: types.optional(types.string()),
-  decrypted: types.optional(types.boolean()),
-  value: types.string(),
-  vsmValue: types.optional(types.string()),
-  id: types.optional(types.string()),
-  key: types.string(),
+  comment: types.optional(types.string()),
   configurationId: z.nullable(types.string()).optional(),
-  createdAt: types.optional(types.number()),
-  updatedAt: types.optional(types.number()),
-  createdBy: z.nullable(types.string()).optional(),
-  updatedBy: z.nullable(types.string()).optional(),
-  gitBranch: types.optional(types.string()),
-  visibility: types.optional(CreateProjectEnvCreatedVisibility$inboundSchema),
-  edgeConfigId: z.nullable(types.string()).optional(),
-  edgeConfigTokenId: z.nullable(types.string()).optional(),
   contentHint: z.nullable(
     z.union([
       z.lazy(() => CreateProjectEnvContentHintProjects1$inboundSchema),
@@ -1583,11 +1562,32 @@ export const Created2$inboundSchema: z.ZodType<
       z.lazy(() => CreateProjectEnvContentHintProjects17$inboundSchema),
     ]),
   ).optional(),
+  createdAt: types.optional(types.number()),
+  createdBy: z.nullable(types.string()).optional(),
+  customEnvironmentIds: types.optional(z.array(types.string())),
+  decrypted: types.optional(types.boolean()),
+  edgeConfigId: z.nullable(types.string()).optional(),
+  edgeConfigTokenId: z.nullable(types.string()).optional(),
+  gitBranch: types.optional(types.string()),
+  id: types.optional(types.string()),
   internalContentHint: z.nullable(
     z.lazy(() => CreateProjectEnvCreatedInternalContentHint$inboundSchema),
   ).optional(),
-  comment: types.optional(types.string()),
-  customEnvironmentIds: types.optional(z.array(types.string())),
+  key: types.string(),
+  legacyValue: types.optional(types.string()),
+  sunsetSecretId: types.optional(types.string()),
+  target: types.optional(
+    smartUnion([
+      z.array(types.string()),
+      CreateProjectEnvTargetProjects2$inboundSchema,
+    ]),
+  ),
+  type: CreateProjectEnvCreatedType$inboundSchema,
+  updatedAt: types.optional(types.number()),
+  updatedBy: z.nullable(types.string()).optional(),
+  value: types.string(),
+  visibility: types.optional(CreateProjectEnvCreatedVisibility$inboundSchema),
+  vsmValue: types.optional(types.string()),
   system: types.optional(types.boolean()),
 });
 
@@ -1602,52 +1602,13 @@ export function created2FromJSON(
 }
 
 /** @internal */
-export const CreateProjectEnvTarget2$inboundSchema: z.ZodNativeEnum<
-  typeof CreateProjectEnvTarget2
-> = z.nativeEnum(CreateProjectEnvTarget2);
-
-/** @internal */
-export const CreateProjectEnvTarget1$inboundSchema: z.ZodNativeEnum<
-  typeof CreateProjectEnvTarget1
-> = z.nativeEnum(CreateProjectEnvTarget1);
-
-/** @internal */
-export const CreatedTarget$inboundSchema: z.ZodType<
-  CreatedTarget,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.array(CreateProjectEnvTarget1$inboundSchema),
-  CreateProjectEnvTarget2$inboundSchema,
-]);
-
-export function createdTargetFromJSON(
-  jsonString: string,
-): SafeParseResult<CreatedTarget, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreatedTarget$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreatedTarget' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreatedType$inboundSchema: z.ZodNativeEnum<typeof CreatedType> = z
-  .nativeEnum(CreatedType);
-
-/** @internal */
-export const CreatedVisibility$inboundSchema: z.ZodNativeEnum<
-  typeof CreatedVisibility
-> = z.nativeEnum(CreatedVisibility);
-
-/** @internal */
 export const CreateProjectEnvContentHint17$inboundSchema: z.ZodType<
   CreateProjectEnvContentHint17,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("flags-connection-string"),
   projectId: types.string(),
+  type: types.literal("flags-connection-string"),
 });
 
 export function createProjectEnvContentHint17FromJSON(
@@ -1666,11 +1627,11 @@ export const CreateProjectEnvContentHint16$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("integration-store-secret"),
-  storeId: types.string(),
+  integrationConfigurationId: types.string(),
   integrationId: types.string(),
   integrationProductId: types.string(),
-  integrationConfigurationId: types.string(),
+  storeId: types.string(),
+  type: types.literal("integration-store-secret"),
 });
 
 export function createProjectEnvContentHint16FromJSON(
@@ -1689,8 +1650,8 @@ export const CreateProjectEnvContentHint15$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("postgres-url-no-ssl"),
   storeId: types.string(),
+  type: types.literal("postgres-url-no-ssl"),
 });
 
 export function createProjectEnvContentHint15FromJSON(
@@ -1709,8 +1670,8 @@ export const CreateProjectEnvContentHint14$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("postgres-database"),
   storeId: types.string(),
+  type: types.literal("postgres-database"),
 });
 
 export function createProjectEnvContentHint14FromJSON(
@@ -1729,8 +1690,8 @@ export const CreateProjectEnvContentHint13$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("postgres-password"),
   storeId: types.string(),
+  type: types.literal("postgres-password"),
 });
 
 export function createProjectEnvContentHint13FromJSON(
@@ -1749,8 +1710,8 @@ export const CreateProjectEnvContentHint12$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("postgres-host"),
   storeId: types.string(),
+  type: types.literal("postgres-host"),
 });
 
 export function createProjectEnvContentHint12FromJSON(
@@ -1769,8 +1730,8 @@ export const CreateProjectEnvContentHint11$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("postgres-user"),
   storeId: types.string(),
+  type: types.literal("postgres-user"),
 });
 
 export function createProjectEnvContentHint11FromJSON(
@@ -1789,8 +1750,8 @@ export const CreateProjectEnvContentHint10$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("postgres-prisma-url"),
   storeId: types.string(),
+  type: types.literal("postgres-prisma-url"),
 });
 
 export function createProjectEnvContentHint10FromJSON(
@@ -1809,8 +1770,8 @@ export const CreateProjectEnvContentHint9$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("postgres-url-non-pooling"),
   storeId: types.string(),
+  type: types.literal("postgres-url-non-pooling"),
 });
 
 export function createProjectEnvContentHint9FromJSON(
@@ -1829,8 +1790,8 @@ export const CreateProjectEnvContentHint8$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("postgres-url"),
   storeId: types.string(),
+  type: types.literal("postgres-url"),
 });
 
 export function createProjectEnvContentHint8FromJSON(
@@ -1849,8 +1810,8 @@ export const CreateProjectEnvContentHint7$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("blob-webhook-public-key"),
   storeId: types.string(),
+  type: types.literal("blob-webhook-public-key"),
 });
 
 export function createProjectEnvContentHint7FromJSON(
@@ -1869,8 +1830,8 @@ export const CreateProjectEnvContentHint6$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("blob-store-id"),
   storeId: types.string(),
+  type: types.literal("blob-store-id"),
 });
 
 export function createProjectEnvContentHint6FromJSON(
@@ -1889,8 +1850,8 @@ export const CreateProjectEnvContentHint5$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("blob-read-write-token"),
   storeId: types.string(),
+  type: types.literal("blob-read-write-token"),
 });
 
 export function createProjectEnvContentHint5FromJSON(
@@ -1909,8 +1870,8 @@ export const CreateProjectEnvContentHint4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("redis-rest-api-read-only-token"),
   storeId: types.string(),
+  type: types.literal("redis-rest-api-read-only-token"),
 });
 
 export function createProjectEnvContentHint4FromJSON(
@@ -1929,8 +1890,8 @@ export const CreateProjectEnvContentHint3$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("redis-rest-api-token"),
   storeId: types.string(),
+  type: types.literal("redis-rest-api-token"),
 });
 
 export function createProjectEnvContentHint3FromJSON(
@@ -1949,8 +1910,8 @@ export const CreateProjectEnvContentHint2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("redis-rest-api-url"),
   storeId: types.string(),
+  type: types.literal("redis-rest-api-url"),
 });
 
 export function createProjectEnvContentHint2FromJSON(
@@ -1969,8 +1930,8 @@ export const CreateProjectEnvContentHint1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("redis-url"),
   storeId: types.string(),
+  type: types.literal("redis-url"),
 });
 
 export function createProjectEnvContentHint1FromJSON(
@@ -2019,9 +1980,9 @@ export function createdContentHintFromJSON(
 }
 
 /** @internal */
-export const CreateProjectEnvCreatedProjectsType$inboundSchema: z.ZodNativeEnum<
-  typeof CreateProjectEnvCreatedProjectsType
-> = z.nativeEnum(CreateProjectEnvCreatedProjectsType);
+export const CreateProjectEnvCreatedProjectsResponseType$inboundSchema:
+  z.ZodNativeEnum<typeof CreateProjectEnvCreatedProjectsResponseType> = z
+    .nativeEnum(CreateProjectEnvCreatedProjectsResponseType);
 
 /** @internal */
 export const CreatedInternalContentHint$inboundSchema: z.ZodType<
@@ -2029,8 +1990,8 @@ export const CreatedInternalContentHint$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: CreateProjectEnvCreatedProjectsType$inboundSchema,
   encryptedValue: types.string(),
+  type: CreateProjectEnvCreatedProjectsResponseType$inboundSchema,
 });
 
 export function createdInternalContentHintFromJSON(
@@ -2044,34 +2005,52 @@ export function createdInternalContentHintFromJSON(
 }
 
 /** @internal */
+export const CreateProjectEnvTarget2$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectEnvTarget2
+> = z.nativeEnum(CreateProjectEnvTarget2);
+
+/** @internal */
+export const CreateProjectEnvTarget1$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectEnvTarget1
+> = z.nativeEnum(CreateProjectEnvTarget1);
+
+/** @internal */
+export const CreatedTarget$inboundSchema: z.ZodType<
+  CreatedTarget,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.array(CreateProjectEnvTarget1$inboundSchema),
+  CreateProjectEnvTarget2$inboundSchema,
+]);
+
+export function createdTargetFromJSON(
+  jsonString: string,
+): SafeParseResult<CreatedTarget, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreatedTarget$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreatedTarget' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreatedType$inboundSchema: z.ZodNativeEnum<typeof CreatedType> = z
+  .nativeEnum(CreatedType);
+
+/** @internal */
+export const CreatedVisibility$inboundSchema: z.ZodNativeEnum<
+  typeof CreatedVisibility
+> = z.nativeEnum(CreatedVisibility);
+
+/** @internal */
 export const Created1$inboundSchema: z.ZodType<
   Created1,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  target: types.optional(
-    smartUnion([
-      z.array(CreateProjectEnvTarget1$inboundSchema),
-      CreateProjectEnvTarget2$inboundSchema,
-    ]),
-  ),
-  type: CreatedType$inboundSchema,
-  sunsetSecretId: types.optional(types.string()),
-  legacyValue: types.optional(types.string()),
-  decrypted: types.optional(types.boolean()),
-  value: types.string(),
-  vsmValue: types.optional(types.string()),
-  id: types.optional(types.string()),
-  key: types.string(),
+  comment: types.optional(types.string()),
   configurationId: z.nullable(types.string()).optional(),
-  createdAt: types.optional(types.number()),
-  updatedAt: types.optional(types.number()),
-  createdBy: z.nullable(types.string()).optional(),
-  updatedBy: z.nullable(types.string()).optional(),
-  gitBranch: types.optional(types.string()),
-  visibility: types.optional(CreatedVisibility$inboundSchema),
-  edgeConfigId: z.nullable(types.string()).optional(),
-  edgeConfigTokenId: z.nullable(types.string()).optional(),
   contentHint: z.nullable(
     z.union([
       z.lazy(() => CreateProjectEnvContentHint1$inboundSchema),
@@ -2093,11 +2072,32 @@ export const Created1$inboundSchema: z.ZodType<
       z.lazy(() => CreateProjectEnvContentHint17$inboundSchema),
     ]),
   ).optional(),
+  createdAt: types.optional(types.number()),
+  createdBy: z.nullable(types.string()).optional(),
+  customEnvironmentIds: types.optional(z.array(types.string())),
+  decrypted: types.optional(types.boolean()),
+  edgeConfigId: z.nullable(types.string()).optional(),
+  edgeConfigTokenId: z.nullable(types.string()).optional(),
+  gitBranch: types.optional(types.string()),
+  id: types.optional(types.string()),
   internalContentHint: z.nullable(
     z.lazy(() => CreatedInternalContentHint$inboundSchema),
   ).optional(),
-  comment: types.optional(types.string()),
-  customEnvironmentIds: types.optional(z.array(types.string())),
+  key: types.string(),
+  legacyValue: types.optional(types.string()),
+  sunsetSecretId: types.optional(types.string()),
+  target: types.optional(
+    smartUnion([
+      z.array(CreateProjectEnvTarget1$inboundSchema),
+      CreateProjectEnvTarget2$inboundSchema,
+    ]),
+  ),
+  type: CreatedType$inboundSchema,
+  updatedAt: types.optional(types.number()),
+  updatedBy: z.nullable(types.string()).optional(),
+  value: types.string(),
+  visibility: types.optional(CreatedVisibility$inboundSchema),
+  vsmValue: types.optional(types.string()),
   system: types.optional(types.boolean()),
 });
 
@@ -2132,28 +2132,6 @@ export function createProjectEnvCreatedFromJSON(
 }
 
 /** @internal */
-export const CreateProjectEnvValue2$inboundSchema: z.ZodNativeEnum<
-  typeof CreateProjectEnvValue2
-> = z.nativeEnum(CreateProjectEnvValue2);
-
-/** @internal */
-export const CreateProjectEnvValue$inboundSchema: z.ZodType<
-  CreateProjectEnvValue,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([types.string(), z.array(CreateProjectEnvValue2$inboundSchema)]);
-
-export function createProjectEnvValueFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateProjectEnvValue, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateProjectEnvValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateProjectEnvValue' from JSON`,
-  );
-}
-
-/** @internal */
 export const CreateProjectEnvTargetProjectsResponse2$inboundSchema:
   z.ZodNativeEnum<typeof CreateProjectEnvTargetProjectsResponse2> = z
     .nativeEnum(CreateProjectEnvTargetProjectsResponse2);
@@ -2184,29 +2162,51 @@ export function createProjectEnvTargetFromJSON(
 }
 
 /** @internal */
+export const CreateProjectEnvValue2$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectEnvValue2
+> = z.nativeEnum(CreateProjectEnvValue2);
+
+/** @internal */
+export const CreateProjectEnvValue$inboundSchema: z.ZodType<
+  CreateProjectEnvValue,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), z.array(CreateProjectEnvValue2$inboundSchema)]);
+
+export function createProjectEnvValueFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectEnvValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectEnvValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectEnvValue' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateProjectEnvError$inboundSchema: z.ZodType<
   CreateProjectEnvError,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  action: types.optional(types.string()),
   code: types.string(),
-  message: types.string(),
-  key: types.optional(types.string()),
   envVarId: types.optional(types.string()),
   envVarKey: types.optional(types.string()),
-  action: types.optional(types.string()),
-  link: types.optional(types.string()),
-  value: types.optional(
-    smartUnion([types.string(), z.array(CreateProjectEnvValue2$inboundSchema)]),
-  ),
   gitBranch: types.optional(types.string()),
+  key: types.optional(types.string()),
+  link: types.optional(types.string()),
+  message: types.string(),
+  project: types.optional(types.string()),
   target: types.optional(
     smartUnion([
       z.array(CreateProjectEnvTargetProjects1$inboundSchema),
       CreateProjectEnvTargetProjectsResponse2$inboundSchema,
     ]),
   ),
-  project: types.optional(types.string()),
+  value: types.optional(
+    smartUnion([types.string(), z.array(CreateProjectEnvValue2$inboundSchema)]),
+  ),
 });
 
 export function createProjectEnvErrorFromJSON(

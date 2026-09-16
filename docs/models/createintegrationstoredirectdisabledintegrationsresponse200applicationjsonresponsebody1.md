@@ -5,7 +5,7 @@
 ```typescript
 import {
   CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody1,
-} from "@vercel/sdk/models/createintegrationstoredirectpropertiesintegrationsitems.js";
+} from "@vercel/sdk/models/createintegrationstoredirectpropertiesintegrationsresponse200uioptions.js";
 
 let value:
   CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody1 =

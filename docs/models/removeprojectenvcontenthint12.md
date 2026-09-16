@@ -6,8 +6,8 @@
 import { RemoveProjectEnvContentHint12 } from "@vercel/sdk/models/removeprojectenvop.js";
 
 let value: RemoveProjectEnvContentHint12 = {
-  type: "postgres-host",
   storeId: "<id>",
+  type: "postgres-host",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: RemoveProjectEnvContentHint12 = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `type`             | *"postgres-host"*  | :heavy_check_mark: | N/A                |
 | `storeId`          | *string*           | :heavy_check_mark: | N/A                |
+| `type`             | *"postgres-host"*  | :heavy_check_mark: | N/A                |

@@ -5,7 +5,7 @@
 ```typescript
 import {
   GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsAliasReadyState,
-} from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson3action.js";
+} from "@vercel/sdk/models/getprojectsresponsebodyprojectsconsolidatedgitcommitstatus.js";
 
 let value:
   GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsAliasReadyState =

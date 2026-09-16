@@ -3,12 +3,12 @@
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarAnalytics } from "@vercel/sdk/models/uploadprojectavatarprojectsbuildmachinetype.js";
+import { UploadProjectAvatarAnalytics } from "@vercel/sdk/models/uploadprojectavatarhasvalue.js";
 
 let value: UploadProjectAvatarAnalytics = {
-  id: "<id>",
   disabledAt: 580.85,
   enabledAt: 1738.82,
+  id: "<id>",
 };
 ```
 
@@ -16,10 +16,10 @@ let value: UploadProjectAvatarAnalytics = {
 
 | Field                 | Type                  | Required              | Description           |
 | --------------------- | --------------------- | --------------------- | --------------------- |
-| `id`                  | *string*              | :heavy_check_mark:    | N/A                   |
 | `canceledAt`          | *number*              | :heavy_minus_sign:    | N/A                   |
 | `disabledAt`          | *number*              | :heavy_check_mark:    | N/A                   |
 | `enabledAt`           | *number*              | :heavy_check_mark:    | N/A                   |
+| `id`                  | *string*              | :heavy_check_mark:    | N/A                   |
 | `paidAt`              | *number*              | :heavy_minus_sign:    | N/A                   |
 | `sampleRatePercent`   | *number*              | :heavy_minus_sign:    | N/A                   |
 | `spendLimitInDollars` | *number*              | :heavy_minus_sign:    | N/A                   |

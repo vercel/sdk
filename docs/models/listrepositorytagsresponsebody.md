@@ -8,13 +8,13 @@ import { ListRepositoryTagsResponseBody } from "@vercel/sdk/models/listrepositor
 let value: ListRepositoryTagsResponseBody = {
   tags: [
     {
-      tag: "<value>",
-      manifestDigest: "<value>",
+      createdAt: "1734178660182",
       imageId: "<id>",
-      kind: "manifest",
-      status: "ready",
-      sizeInBytes: 5084.87,
-      createdAt: "1712317719384",
+      kind: "attestation",
+      manifestDigest: "<value>",
+      sizeInBytes: 4844.75,
+      status: "preparing",
+      tag: "<value>",
       updatedAt: "1735645123526",
     },
   ],
@@ -25,5 +25,5 @@ let value: ListRepositoryTagsResponseBody = {
 
 | Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `tags`                                                                 | [models.ListRepositoryTagsTags](../models/listrepositorytagstags.md)[] | :heavy_check_mark:                                                     | N/A                                                                    |
 | `nextCursor`                                                           | *string*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `tags`                                                                 | [models.ListRepositoryTagsTags](../models/listrepositorytagstags.md)[] | :heavy_check_mark:                                                     | N/A                                                                    |

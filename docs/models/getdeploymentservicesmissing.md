@@ -16,8 +16,8 @@ const value: models.GetDeploymentMissingDeployments1 = {
 
 ```typescript
 const value: models.GetDeploymentMissingDeployments2 = {
-  type: "query",
   key: "<key>",
+  type: "query",
 };
 ```
 
@@ -25,8 +25,8 @@ const value: models.GetDeploymentMissingDeployments2 = {
 
 ```typescript
 const value: models.GetDeploymentMissingDeployments2 = {
-  type: "query",
   key: "<key>",
+  type: "query",
 };
 ```
 
@@ -34,8 +34,8 @@ const value: models.GetDeploymentMissingDeployments2 = {
 
 ```typescript
 const value: models.GetDeploymentMissingDeployments2 = {
-  type: "query",
   key: "<key>",
+  type: "query",
 };
 ```
 

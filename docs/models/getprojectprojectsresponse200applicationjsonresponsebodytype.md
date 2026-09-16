@@ -1,18 +1,16 @@
 # GetProjectProjectsResponse200ApplicationJSONResponseBodyType
 
-The type of matching to perform
-
 ## Example Usage
 
 ```typescript
-import { GetProjectProjectsResponse200ApplicationJSONResponseBodyType } from "@vercel/sdk/models/getprojectrollingrelease.js";
+import { GetProjectProjectsResponse200ApplicationJSONResponseBodyType } from "@vercel/sdk/models/getprojecthas2.js";
 
 let value: GetProjectProjectsResponse200ApplicationJSONResponseBodyType =
-  "startsWith";
+  "LAMBDAS";
 ```
 
 ## Values
 
 ```typescript
-"endsWith" | "equals" | "startsWith"
+"LAMBDAS"
 ```

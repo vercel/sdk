@@ -5,24 +5,21 @@
 ## Example Usage
 
 ```typescript
-import { UpdateProjectDeploymentSources } from "@vercel/sdk/models/updateprojectresponsebody.js";
+import { UpdateProjectDeploymentSources } from "@vercel/sdk/models/updateprojectprojectsresponse200applicationjsonaction.js";
 
 let value: UpdateProjectDeploymentSources = {
-  sources: [],
   enabled: true,
-  environments: [
-    {
-      type: "custom",
-      environmentId: "<id>",
-    },
+  environments: [],
+  sources: [
+    "integration",
   ],
 };
 ```
 
 ## Fields
 
-| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `sources`                                                                          | [models.UpdateProjectProjectsSources](../models/updateprojectprojectssources.md)[] | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `enabled`                                                                          | *boolean*                                                                          | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `environments`                                                                     | *models.UpdateProjectProjectsEnvironments*[]                                       | :heavy_check_mark:                                                                 | N/A                                                                                |
+| Field                                                              | Type                                                               | Required                                                           | Description                                                        |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `enabled`                                                          | *boolean*                                                          | :heavy_check_mark:                                                 | N/A                                                                |
+| `environments`                                                     | *models.UpdateProjectEnvironments*[]                               | :heavy_check_mark:                                                 | N/A                                                                |
+| `sources`                                                          | [models.UpdateProjectSources](../models/updateprojectsources.md)[] | :heavy_check_mark:                                                 | N/A                                                                |

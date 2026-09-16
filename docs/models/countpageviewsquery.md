@@ -15,6 +15,6 @@ let value: CountPageviewsQuery = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
+| `filter`           | *string*           | :heavy_minus_sign: | N/A                |
 | `since`            | *string*           | :heavy_check_mark: | N/A                |
 | `until`            | *string*           | :heavy_check_mark: | N/A                |
-| `filter`           | *string*           | :heavy_minus_sign: | N/A                |

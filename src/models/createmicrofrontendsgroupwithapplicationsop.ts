@@ -64,12 +64,12 @@ export type CreateMicrofrontendsGroupWithApplicationsRequest = {
 };
 
 export type NewMicrofrontendsGroup = {
-  id: string;
-  slug: string;
-  name: string;
-  fallbackEnvironment: string;
-  enablePolyrepoBranchRouting: boolean;
   createdAt: number;
+  enablePolyrepoBranchRouting: boolean;
+  fallbackEnvironment: string;
+  id: string;
+  name: string;
+  slug: string;
   updatedAt: number;
 };
 
@@ -195,12 +195,12 @@ export const NewMicrofrontendsGroup$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: types.string(),
-  slug: types.string(),
-  name: types.string(),
-  fallbackEnvironment: types.string(),
-  enablePolyrepoBranchRouting: types.boolean(),
   createdAt: types.number(),
+  enablePolyrepoBranchRouting: types.boolean(),
+  fallbackEnvironment: types.string(),
+  id: types.string(),
+  name: types.string(),
+  slug: types.string(),
   updatedAt: types.number(),
 });
 

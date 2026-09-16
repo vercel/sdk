@@ -14,5 +14,5 @@ let value: ProtocolSettings = {};
 
 | Field                                                  | Type                                                   | Required                                               | Description                                            |
 | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `experimentation`                                      | [models.Experimentation](../models/experimentation.md) | :heavy_minus_sign:                                     | N/A                                                    |
 | `authentication`                                       | [models.Authentication](../models/authentication.md)   | :heavy_minus_sign:                                     | N/A                                                    |
+| `experimentation`                                      | [models.Experimentation](../models/experimentation.md) | :heavy_minus_sign:                                     | N/A                                                    |

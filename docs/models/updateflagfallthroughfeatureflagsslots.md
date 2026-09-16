@@ -6,8 +6,8 @@
 import { UpdateFlagFallthroughFeatureFlagsSlots } from "@vercel/sdk/models/updateflagop.js";
 
 let value: UpdateFlagFallthroughFeatureFlagsSlots = {
-  promille: 4020.98,
-  durationMs: 5251.48,
+  durationMs: 4020.98,
+  promille: 5251.48,
 };
 ```
 
@@ -15,5 +15,5 @@ let value: UpdateFlagFallthroughFeatureFlagsSlots = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `promille`         | *number*           | :heavy_check_mark: | N/A                |
 | `durationMs`       | *number*           | :heavy_check_mark: | N/A                |
+| `promille`         | *number*           | :heavy_check_mark: | N/A                |

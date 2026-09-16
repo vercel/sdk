@@ -41,11 +41,11 @@ export type UpdateDomainAutoRenewRequest = {
 };
 
 /**
- * NotAuthorizedForScope
+ * Forbidden
  */
 export type UpdateDomainAutoRenewDomainsRegistrarResponseBody =
-  | (NotAuthorizedForScope & { code: "not_authorized_for_scope" })
-  | Forbidden;
+  | Forbidden
+  | (NotAuthorizedForScope & { code: "not_authorized_for_scope" });
 
 /**
  * There was something wrong with the request
@@ -119,10 +119,10 @@ export const UpdateDomainAutoRenewDomainsRegistrarResponseBody$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.union([
+    Forbidden$inboundSchema,
     NotAuthorizedForScope$inboundSchema.and(
       z.object({ code: z.literal("not_authorized_for_scope") }),
     ),
-    Forbidden$inboundSchema,
   ]);
 
 export function updateDomainAutoRenewDomainsRegistrarResponseBodyFromJSON(

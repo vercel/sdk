@@ -8,14 +8,14 @@ import { ListDrivesResponseBody } from "@vercel/sdk/models/listdrivesop.js";
 let value: ListDrivesResponseBody = {
   drives: [
     {
+      createdAt: 1750344501629,
+      currentSandboxName: "my-sandbox",
+      currentSessionId: "sbx_123",
       id: "drive_abc123",
+      maxSizeBytes: 1099511627776,
       name: "workspace",
       projectId: "prj_abc123",
-      maxSizeBytes: 1099511627776,
       region: "iad1",
-      currentSessionId: "sbx_123",
-      currentSandboxName: "my-sandbox",
-      createdAt: 1750344501629,
       updatedAt: 1750344501629,
     },
   ],

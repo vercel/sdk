@@ -6,8 +6,8 @@
 import { GetRoutesMissingProjectRoutes2 } from "@vercel/sdk/models/getroutesop.js";
 
 let value: GetRoutesMissingProjectRoutes2 = {
-  type: "header",
   key: "<key>",
+  type: "header",
 };
 ```
 
@@ -15,6 +15,6 @@ let value: GetRoutesMissingProjectRoutes2 = {
 
 | Field                                                                                                            | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
 | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `type`                                                                                                           | [models.GetRoutesMissingProjectRoutesResponse200Type](../models/getroutesmissingprojectroutesresponse200type.md) | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
 | `key`                                                                                                            | *string*                                                                                                         | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
+| `type`                                                                                                           | [models.GetRoutesMissingProjectRoutesResponse200Type](../models/getroutesmissingprojectroutesresponse200type.md) | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
 | `value`                                                                                                          | *models.GetRoutesMissingProjectRoutesResponse200Value*                                                           | :heavy_minus_sign:                                                                                               | N/A                                                                                                              |

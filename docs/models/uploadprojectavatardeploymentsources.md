@@ -5,24 +5,26 @@
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarDeploymentSources } from "@vercel/sdk/models/uploadprojectavatarinternalroutes1.js";
+import { UploadProjectAvatarDeploymentSources } from "@vercel/sdk/models/uploadprojectavatarhasvalue.js";
 
 let value: UploadProjectAvatarDeploymentSources = {
-  sources: [],
-  enabled: false,
+  enabled: true,
   environments: [
     {
-      type: "custom",
       environmentId: "<id>",
+      type: "custom",
     },
+  ],
+  sources: [
+    "rest-api",
   ],
 };
 ```
 
 ## Fields
 
-| Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
-| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `sources`                                                                                      | [models.UploadProjectAvatarProjectsSources](../models/uploadprojectavatarprojectssources.md)[] | :heavy_check_mark:                                                                             | N/A                                                                                            |
-| `enabled`                                                                                      | *boolean*                                                                                      | :heavy_check_mark:                                                                             | N/A                                                                                            |
-| `environments`                                                                                 | *models.UploadProjectAvatarProjectsEnvironments*[]                                             | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `enabled`                                                                      | *boolean*                                                                      | :heavy_check_mark:                                                             | N/A                                                                            |
+| `environments`                                                                 | *models.UploadProjectAvatarEnvironments*[]                                     | :heavy_check_mark:                                                             | N/A                                                                            |
+| `sources`                                                                      | [models.UploadProjectAvatarSources](../models/uploadprojectavatarsources.md)[] | :heavy_check_mark:                                                             | N/A                                                                            |

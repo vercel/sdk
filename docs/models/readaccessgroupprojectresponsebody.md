@@ -6,11 +6,11 @@
 import { ReadAccessGroupProjectResponseBody } from "@vercel/sdk/models/readaccessgroupprojectop.js";
 
 let value: ReadAccessGroupProjectResponseBody = {
-  teamId: "<id>",
   accessGroupId: "<id>",
+  createdAt: "1723505741809",
   projectId: "<id>",
-  role: "PROJECT_GUEST",
-  createdAt: "1704538843818",
+  role: "ADMIN",
+  teamId: "<id>",
   updatedAt: "1735616501560",
 };
 ```
@@ -19,9 +19,9 @@ let value: ReadAccessGroupProjectResponseBody = {
 
 | Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `teamId`                                                                     | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
 | `accessGroupId`                                                              | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
+| `createdAt`                                                                  | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
 | `projectId`                                                                  | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
 | `role`                                                                       | [models.ReadAccessGroupProjectRole](../models/readaccessgroupprojectrole.md) | :heavy_check_mark:                                                           | N/A                                                                          |
-| `createdAt`                                                                  | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
+| `teamId`                                                                     | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
 | `updatedAt`                                                                  | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |

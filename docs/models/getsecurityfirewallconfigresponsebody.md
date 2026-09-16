@@ -7,66 +7,73 @@ import { GetSecurityFirewallConfigResponseBody } from "@vercel/sdk/models/getsec
 
 let value: GetSecurityFirewallConfigResponseBody = {
   active: {
+    changes: [],
+    firewallEnabled: true,
+    id: "<id>",
+    ips: [],
     ownerId: "<id>",
     projectKey: "<value>",
-    id: "<id>",
-    version: 4355.26,
-    updatedAt: "1735639075593",
-    firewallEnabled: true,
     rules: [
       {
-        id: "<id>",
-        name: "<value>",
+        action: {},
         active: false,
         conditionGroup: [],
-        action: {},
+        id: "<id>",
+        name: "<value>",
         valid: true,
         validationErrors: "<value>",
       },
     ],
-    ips: [
-      {
-        id: "<id>",
-        hostname: "normal-certification.com",
-        ip: "99.152.200.139",
-        action: "challenge",
-      },
-    ],
-    changes: [
-      {},
-    ],
+    updatedAt: "1735659608327",
+    version: 1498.82,
   },
   draft: {
-    ownerId: "<id>",
-    projectKey: "<value>",
-    id: "<id>",
-    version: 1814.25,
-    updatedAt: "1735677109797",
-    firewallEnabled: true,
-    rules: [
-      {
-        id: "<id>",
-        name: "<value>",
-        active: false,
-        conditionGroup: [],
-        action: {},
-        valid: true,
-        validationErrors: "<value>",
-      },
-    ],
-    ips: [
-      {
-        id: "<id>",
-        hostname: "whirlwind-fowl.name",
-        ip: "a8e9:ddfb:f5d0:8dee:0e86:af4a:c4ea:941d",
-        action: "bypass",
-      },
-    ],
     changes: [
       {},
     ],
+    firewallEnabled: false,
+    id: "<id>",
+    ips: [],
+    ownerId: "<id>",
+    projectKey: "<value>",
+    rules: [],
+    updatedAt: "1735643797339",
+    version: 3905.97,
   },
-  versions: [],
+  versions: [
+    {
+      changes: [
+        {},
+      ],
+      firewallEnabled: false,
+      id: "<id>",
+      ips: [],
+      ownerId: "<id>",
+      projectKey: "<value>",
+      rules: [
+        {
+          action: {},
+          active: true,
+          conditionGroup: [
+            {
+              conditions: [
+                {
+                  op: "eq",
+                  type: "ja3_digest",
+                },
+              ],
+            },
+          ],
+          id: "<id>",
+          name: "<value>",
+          valid: true,
+          validationErrors: "<value>",
+        },
+      ],
+      updatedAt: "1735684440630",
+      version: 4505.82,
+    },
+  ],
 };
 ```
 

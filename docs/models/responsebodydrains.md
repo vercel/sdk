@@ -14,19 +14,22 @@ const value: models.GetAllLogDrainsDrains1[] = [];
 ```typescript
 const value: models.GetAllLogDrainsDrains2[] = [
   {
-    id: "<id>",
     createdAt: 7250.96,
-    updatedAt: 5978.89,
+    delivery: {
+      endpoint: "<value>",
+      table: "<value>",
+      type: "clickhouse",
+    },
+    id: "<id>",
     name: "<value>",
     ownerId: "<id>",
     schemas: {},
-    delivery: {
-      type: "internal",
-      target: "vercel-otel-traces-db",
-    },
     source: {
-      kind: "self-served",
+      integrationConfigurationId: "<id>",
+      integrationId: "<id>",
+      kind: "integration",
     },
+    updatedAt: 48.08,
   },
 ];
 ```

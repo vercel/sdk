@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ImageOptimizationCacheRead } from "@vercel/sdk/models/usereventpayloadtarget.js";
+import { ImageOptimizationCacheRead } from "@vercel/sdk/models/onehundredandfortyeight.js";
 
 let value: ImageOptimizationCacheRead = {
   currentThreshold: 655.57,
@@ -14,7 +14,7 @@ let value: ImageOptimizationCacheRead = {
 
 | Field                       | Type                        | Required                    | Description                 |
 | --------------------------- | --------------------------- | --------------------------- | --------------------------- |
-| `currentThreshold`          | *number*                    | :heavy_check_mark:          | N/A                         |
-| `warningAt`                 | *number*                    | :heavy_minus_sign:          | N/A                         |
 | `blockedAt`                 | *number*                    | :heavy_minus_sign:          | N/A                         |
 | `blockGracePeriodStartedAt` | *number*                    | :heavy_minus_sign:          | N/A                         |
+| `currentThreshold`          | *number*                    | :heavy_check_mark:          | N/A                         |
+| `warningAt`                 | *number*                    | :heavy_minus_sign:          | N/A                         |

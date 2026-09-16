@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { UiOptions1 } from "@vercel/sdk/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyuidisabled.js";
+import { UiOptions1 } from "@vercel/sdk/models/properties7.js";
 
 let value: UiOptions1 = {
-  value: "<value>",
   label: "<value>",
+  value: "<value>",
 };
 ```
 
@@ -15,8 +15,8 @@ let value: UiOptions1 = {
 
 | Field                      | Type                       | Required                   | Description                |
 | -------------------------- | -------------------------- | -------------------------- | -------------------------- |
-| `value`                    | *string*                   | :heavy_check_mark:         | N/A                        |
-| `label`                    | *string*                   | :heavy_check_mark:         | N/A                        |
 | `description`              | *string*                   | :heavy_minus_sign:         | N/A                        |
 | `disabled`                 | *models.UiOptionsDisabled* | :heavy_minus_sign:         | N/A                        |
 | `hidden`                   | *models.UiOptionsHidden*   | :heavy_minus_sign:         | N/A                        |
+| `label`                    | *string*                   | :heavy_check_mark:         | N/A                        |
+| `value`                    | *string*                   | :heavy_check_mark:         | N/A                        |

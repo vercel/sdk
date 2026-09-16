@@ -9,42 +9,42 @@ The configuration with the provided id
 
 ```typescript
 const value: models.GetConfigurationResponseBody1 = {
-  projectSelection: "all",
+  completedAt: 1558531915505,
+  createdAt: 1558531915505,
+  deletedAt: 1558531915505,
+  deleteRequestedAt: 1558531915505,
+  disabledAt: 1558531915505,
+  id: "icfg_3bwCLgxL8qt5kjRLcv2Dit7F",
+  integrationId: "oac_xzpVzcUOgcB1nrVlirtKhbWV",
   notification: {
     level: "error",
     title: "<value>",
   },
-  transferRequest: {
-    kind: "transfer-to-marketplace",
-    requestId: "<id>",
-    transferId: "<id>",
-    requester: {
-      name: "<value>",
-    },
-    createdAt: 5796.66,
-    expiresAt: 3098.33,
-  },
+  ownerId: "kr1PsOIzqEL5Xg6M4VZcZosf",
   projects: [
     "prj_xQxbutw1HpL6HLYPAzt5h75m8NjO",
   ],
-  type: "integration-configuration",
-  id: "icfg_3bwCLgxL8qt5kjRLcv2Dit7F",
-  slug: "slack",
-  createdAt: 1558531915505,
-  updatedAt: 1558531915505,
-  ownerId: "kr1PsOIzqEL5Xg6M4VZcZosf",
-  deletedAt: 1558531915505,
-  integrationId: "oac_xzpVzcUOgcB1nrVlirtKhbWV",
-  userId: "kr1PsOIzqEL5Xg6M4VZcZosf",
-  teamId: "team_nLlpyC6RE1qxydlFKbrxDlud",
+  projectSelection: "all",
   scopes: [
     "read:project",
     "read-write:log-drain",
   ],
-  completedAt: 1558531915505,
+  slug: "slack",
   source: "marketplace",
-  disabledAt: 1558531915505,
-  deleteRequestedAt: 1558531915505,
+  teamId: "team_nLlpyC6RE1qxydlFKbrxDlud",
+  transferRequest: {
+    createdAt: 5796.66,
+    expiresAt: 3098.33,
+    kind: "transfer-to-marketplace",
+    requester: {
+      name: "<value>",
+    },
+    requestId: "<id>",
+    transferId: "<id>",
+  },
+  type: "integration-configuration",
+  updatedAt: 1558531915505,
+  userId: "kr1PsOIzqEL5Xg6M4VZcZosf",
 };
 ```
 
@@ -54,25 +54,25 @@ const value: models.GetConfigurationResponseBody1 = {
 const value: models.GetConfigurationResponseBody2 = {
   completedAt: 1558531915505,
   createdAt: 1558531915505,
+  deletedAt: 1558531915505,
+  deleteRequestedAt: 1558531915505,
+  disabledAt: 1558531915505,
   id: "icfg_3bwCLgxL8qt5kjRLcv2Dit7F",
   integrationId: "oac_xzpVzcUOgcB1nrVlirtKhbWV",
   ownerId: "kr1PsOIzqEL5Xg6M4VZcZosf",
   projects: [
     "prj_xQxbutw1HpL6HLYPAzt5h75m8NjO",
   ],
-  source: "marketplace",
-  slug: "slack",
-  teamId: "team_nLlpyC6RE1qxydlFKbrxDlud",
-  type: "integration-configuration",
-  updatedAt: 1558531915505,
-  userId: "kr1PsOIzqEL5Xg6M4VZcZosf",
   scopes: [
     "read:project",
     "read-write:log-drain",
   ],
-  disabledAt: 1558531915505,
-  deletedAt: 1558531915505,
-  deleteRequestedAt: 1558531915505,
+  slug: "slack",
+  source: "marketplace",
+  teamId: "team_nLlpyC6RE1qxydlFKbrxDlud",
+  type: "integration-configuration",
+  updatedAt: 1558531915505,
+  userId: "kr1PsOIzqEL5Xg6M4VZcZosf",
 };
 ```
 
@@ -82,24 +82,24 @@ const value: models.GetConfigurationResponseBody2 = {
 const value: models.GetConfigurationResponseBody3 = {
   completedAt: 1558531915505,
   createdAt: 1558531915505,
+  deletedAt: 1558531915505,
+  deleteRequestedAt: 1558531915505,
+  disabledAt: 1558531915505,
   id: "icfg_3bwCLgxL8qt5kjRLcv2Dit7F",
   integrationId: "oac_xzpVzcUOgcB1nrVlirtKhbWV",
   ownerId: "kr1PsOIzqEL5Xg6M4VZcZosf",
   projects: [
     "prj_xQxbutw1HpL6HLYPAzt5h75m8NjO",
   ],
-  source: "marketplace",
-  slug: "slack",
-  teamId: "team_nLlpyC6RE1qxydlFKbrxDlud",
-  updatedAt: 1558531915505,
-  userId: "kr1PsOIzqEL5Xg6M4VZcZosf",
   scopes: [
     "read:project",
     "read-write:log-drain",
   ],
-  disabledAt: 1558531915505,
-  deletedAt: 1558531915505,
-  deleteRequestedAt: 1558531915505,
+  slug: "slack",
+  source: "marketplace",
+  teamId: "team_nLlpyC6RE1qxydlFKbrxDlud",
+  updatedAt: 1558531915505,
+  userId: "kr1PsOIzqEL5Xg6M4VZcZosf",
 };
 ```
 

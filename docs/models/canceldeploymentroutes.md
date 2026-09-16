@@ -23,9 +23,9 @@ const value: models.Routes2 = {
 
 ```typescript
 const value: models.Routes3 = {
-  src: "<value>",
   continue: false,
   middleware: 1714.6,
+  src: "<value>",
 };
 ```
 

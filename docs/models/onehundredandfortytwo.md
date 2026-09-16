@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFortyTwo } from "@vercel/sdk/models/headinfo.js";
+import { OneHundredAndFortyTwo } from "@vercel/sdk/models/onehundred.js";
 
 let value: OneHundredAndFortyTwo = {
   edgeConfigId: "<id>",
@@ -18,5 +18,5 @@ let value: OneHundredAndFortyTwo = {
 | Field                                                    | Type                                                     | Required                                                 | Description                                              |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `edgeConfigId`                                           | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
-| `edgeConfigSlug`                                         | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
 | `edgeConfigSchema`                                       | [models.EdgeConfigSchema](../models/edgeconfigschema.md) | :heavy_minus_sign:                                       | N/A                                                      |
+| `edgeConfigSlug`                                         | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |

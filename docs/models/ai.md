@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Ai } from "@vercel/sdk/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyuidisabled.js";
+import { Ai } from "@vercel/sdk/models/getconfigurationproductsresponsebody.js";
 
 let value: Ai = {
   status: "enabled",
@@ -12,6 +12,6 @@ let value: Ai = {
 
 ## Fields
 
-| Field                                                                                                                        | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  |
-| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `status`                                                                                                                     | [models.GetConfigurationProductsIntegrationsResponseStatus](../models/getconfigurationproductsintegrationsresponsestatus.md) | :heavy_check_mark:                                                                                                           | N/A                                                                                                                          |
+| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `status`                                                                             | [models.GetConfigurationProductsStatus](../models/getconfigurationproductsstatus.md) | :heavy_check_mark:                                                                   | N/A                                                                                  |

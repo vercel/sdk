@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetDeploymentFlagsDefinitions } from "@vercel/sdk/models/getdeploymentresponsebody1.js";
+import { GetDeploymentFlagsDefinitions } from "@vercel/sdk/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody215type.js";
 
 let value: GetDeploymentFlagsDefinitions = {};
 ```
@@ -12,6 +12,6 @@ let value: GetDeploymentFlagsDefinitions = {};
 
 | Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `description`                                                                | *string*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
 | `options`                                                                    | [models.GetDeploymentFlagsOptions](../models/getdeploymentflagsoptions.md)[] | :heavy_minus_sign:                                                           | N/A                                                                          |
 | `url`                                                                        | *string*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
-| `description`                                                                | *string*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |

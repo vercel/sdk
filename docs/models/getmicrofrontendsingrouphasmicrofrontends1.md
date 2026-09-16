@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupHasMicrofrontends1 } from "@vercel/sdk/models/getmicrofrontendsingroupinternalroutes2.js";
+import { GetMicrofrontendsInGroupHasMicrofrontends1 } from "@vercel/sdk/models/getmicrofrontendsingrouphasvalue.js";
 
 let value: GetMicrofrontendsInGroupHasMicrofrontends1 = {
-  type: "header",
   key: "x-vercel-ip-country",
+  type: "header",
   value: {
     eq: "<value>",
   },
@@ -18,6 +18,6 @@ let value: GetMicrofrontendsInGroupHasMicrofrontends1 = {
 
 | Field                                                                                                                                | Type                                                                                                                                 | Required                                                                                                                             | Description                                                                                                                          |
 | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `type`                                                                                                                               | *"header"*                                                                                                                           | :heavy_check_mark:                                                                                                                   | N/A                                                                                                                                  |
 | `key`                                                                                                                                | [models.GetMicrofrontendsInGroupHasMicrofrontendsResponseKey](../models/getmicrofrontendsingrouphasmicrofrontendsresponsekey.md)     | :heavy_check_mark:                                                                                                                   | N/A                                                                                                                                  |
+| `type`                                                                                                                               | *"header"*                                                                                                                           | :heavy_check_mark:                                                                                                                   | N/A                                                                                                                                  |
 | `value`                                                                                                                              | [models.GetMicrofrontendsInGroupHasMicrofrontendsResponseValue](../models/getmicrofrontendsingrouphasmicrofrontendsresponsevalue.md) | :heavy_check_mark:                                                                                                                   | N/A                                                                                                                                  |

@@ -5,13 +5,13 @@ Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures 
 ## Example Usage
 
 ```typescript
-import { UpdateProjectVia1 } from "@vercel/sdk/models/updateprojectprojectsresponse200applicationjsonresponsebodycustomenvironmentstype.js";
+import { UpdateProjectVia1 } from "@vercel/sdk/models/updateprojectdefinitions.js";
 
 let value: UpdateProjectVia1 = {
-  type: "app",
   app: {
     id: "<id>",
   },
+  type: "app",
 };
 ```
 
@@ -19,5 +19,5 @@ let value: UpdateProjectVia1 = {
 
 | Field                                                          | Type                                                           | Required                                                       | Description                                                    |
 | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| `type`                                                         | *"app"*                                                        | :heavy_check_mark:                                             | N/A                                                            |
 | `app`                                                          | [models.UpdateProjectViaApp](../models/updateprojectviaapp.md) | :heavy_check_mark:                                             | N/A                                                            |
+| `type`                                                         | *"app"*                                                        | :heavy_check_mark:                                             | N/A                                                            |

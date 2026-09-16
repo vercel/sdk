@@ -3,19 +3,19 @@
 ## Example Usage
 
 ```typescript
-import { Blob2 } from "@vercel/sdk/models/usereventpayloadtarget.js";
+import { Blob2 } from "@vercel/sdk/models/usereventpayload171newownerfeatureblocksworkflowstoragewriteblockreason.js";
 
 let value: Blob2 = {
-  updatedAt: 6885.52,
   blockReason: "hard_blocked",
+  updatedAt: 6407.4,
 };
 ```
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `updatedAt`                                                              | *number*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
-| `blockedFrom`                                                            | *number*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
-| `blockedUntil`                                                           | *number*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
-| `blockReason`                                                            | [models.UserEventBlobBlockReason](../models/usereventblobblockreason.md) | :heavy_check_mark:                                                       | N/A                                                                      |
+| Field                                                  | Type                                                   | Required                                               | Description                                            |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| `blockedFrom`                                          | *number*                                               | :heavy_minus_sign:                                     | N/A                                                    |
+| `blockedUntil`                                         | *number*                                               | :heavy_minus_sign:                                     | N/A                                                    |
+| `blockReason`                                          | [models.BlobBlockReason](../models/blobblockreason.md) | :heavy_check_mark:                                     | N/A                                                    |
+| `updatedAt`                                            | *number*                                               | :heavy_check_mark:                                     | N/A                                                    |

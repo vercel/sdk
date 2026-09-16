@@ -7,54 +7,54 @@ import { GetProjectTraceResponseBody } from "@vercel/sdk/models/getprojecttraceo
 
 let value: GetProjectTraceResponseBody = {
   trace: {
-    traceId: "<id>",
     spans: [
       {
-        name: "<value>",
-        kind: 9949.01,
-        resource: "<value>",
-        library: {
-          name: "<value>",
-        },
-        spanId: "<id>",
-        status: {
-          code: 6061.62,
-        },
-        traceFlags: 1802,
         attributes: {
           "key": "<value>",
+          "key1": "<value>",
+          "key2": "<value>",
+        },
+        duration: [
+          1802,
+          4048.99,
+        ],
+        endTime: [
+          9442.69,
+        ],
+        events: [
+          {
+            attributes: {
+              "key": "<value>",
+              "key1": "<value>",
+              "key2": "<value>",
+            },
+            name: "<value>",
+            timestamp: [
+              3967.45,
+              1769.22,
+            ],
+          },
+        ],
+        kind: 7206.35,
+        library: {
+          name: "<value>",
         },
         links: [
           {
             "key": "<value>",
-            "key1": "<value>",
-            "key2": "<value>",
           },
         ],
-        events: [
-          {
-            name: "<value>",
-            timestamp: [
-              6190.78,
-              3967.45,
-              1769.22,
-            ],
-            attributes: {
-              "key": "<value>",
-              "key1": "<value>",
-            },
-          },
-        ],
-        startTime: [
-          3911.28,
-        ],
-        endTime: [],
-        duration: [
-          120.18,
-          2048.63,
-        ],
+        name: "<value>",
+        resource: "<value>",
+        spanId: "<id>",
+        startTime: [],
+        status: {
+          code: 5662.64,
+        },
+        traceFlags: 120.18,
       },
     ],
+    traceId: "<id>",
   },
 };
 ```

@@ -3,15 +3,15 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectConnectConfigurations } from "@vercel/sdk/models/createprojectpasswordprotection.js";
+import { CreateProjectConnectConfigurations } from "@vercel/sdk/models/createprojectcontenthint2.js";
 
 let value: CreateProjectConnectConfigurations = {
-  envId: "<id>",
+  buildsEnabled: true,
   connectConfigurationId: "<id>",
-  passive: false,
-  buildsEnabled: false,
-  createdAt: 6832.38,
-  updatedAt: 3013.56,
+  createdAt: 8919.66,
+  envId: "production",
+  passive: true,
+  updatedAt: 219.2,
 };
 ```
 
@@ -19,11 +19,11 @@ let value: CreateProjectConnectConfigurations = {
 
 | Field                                                    | Type                                                     | Required                                                 | Description                                              |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `envId`                                                  | *models.CreateProjectEnvId*                              | :heavy_check_mark:                                       | N/A                                                      |
-| `connectConfigurationId`                                 | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
-| `dc`                                                     | *string*                                                 | :heavy_minus_sign:                                       | N/A                                                      |
-| `passive`                                                | *boolean*                                                | :heavy_check_mark:                                       | N/A                                                      |
-| `buildsEnabled`                                          | *boolean*                                                | :heavy_check_mark:                                       | N/A                                                      |
 | `aws`                                                    | [models.CreateProjectAws](../models/createprojectaws.md) | :heavy_minus_sign:                                       | N/A                                                      |
+| `buildsEnabled`                                          | *boolean*                                                | :heavy_check_mark:                                       | N/A                                                      |
+| `connectConfigurationId`                                 | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
 | `createdAt`                                              | *number*                                                 | :heavy_check_mark:                                       | N/A                                                      |
+| `dc`                                                     | *string*                                                 | :heavy_minus_sign:                                       | N/A                                                      |
+| `envId`                                                  | *models.CreateProjectEnvId*                              | :heavy_check_mark:                                       | N/A                                                      |
+| `passive`                                                | *boolean*                                                | :heavy_check_mark:                                       | N/A                                                      |
 | `updatedAt`                                              | *number*                                                 | :heavy_check_mark:                                       | N/A                                                      |

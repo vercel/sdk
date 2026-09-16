@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateIntegrationStoreDirectSecretRotation1 } from "@vercel/sdk/models/createintegrationstoredirectpropertiesintegrationsitems.js";
+import { CreateIntegrationStoreDirectSecretRotation1 } from "@vercel/sdk/models/createintegrationstoredirectpropertiesintegrationsresponse200uioptions.js";
 
 let value: CreateIntegrationStoreDirectSecretRotation1 = {
   maxDelayHours: 312.23,
@@ -14,5 +14,5 @@ let value: CreateIntegrationStoreDirectSecretRotation1 = {
 
 | Field                   | Type                    | Required                | Description             |
 | ----------------------- | ----------------------- | ----------------------- | ----------------------- |
-| `maxDelayHours`         | *number*                | :heavy_check_mark:      | N/A                     |
 | `customRotationWarning` | *string*                | :heavy_minus_sign:      | N/A                     |
+| `maxDelayHours`         | *number*                | :heavy_check_mark:      | N/A                     |

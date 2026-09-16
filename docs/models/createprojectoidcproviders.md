@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectOidcProviders } from "@vercel/sdk/models/createprojecthasprojectsresponse1.js";
+import { CreateProjectOidcProviders } from "@vercel/sdk/models/createprojectresponsebody.js";
 
 let value: CreateProjectOidcProviders = {
   to: {
@@ -26,5 +26,5 @@ let value: CreateProjectOidcProviders = {
 | Field                      | Type                       | Required                   | Description                |
 | -------------------------- | -------------------------- | -------------------------- | -------------------------- |
 | `to`                       | *models.CreateProjectTo*   | :heavy_check_mark:         | N/A                        |
-| `label`                    | *string*                   | :heavy_minus_sign:         | N/A                        |
 | `claims`                   | Record<string, *string*[]> | :heavy_check_mark:         | N/A                        |
+| `label`                    | *string*                   | :heavy_minus_sign:         | N/A                        |

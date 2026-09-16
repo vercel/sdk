@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsCreatorIntegration } from "@vercel/sdk/models/updatemicrofrontendsprojectsfunctiondefaultmemorytype.js";
+import { UpdateMicrofrontendsCreatorIntegration } from "@vercel/sdk/models/updatemicrofrontendshaskey.js";
 
 let value: UpdateMicrofrontendsCreatorIntegration = {
-  integrationId: "<id>",
   configurationId: "<id>",
+  integrationId: "<id>",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: UpdateMicrofrontendsCreatorIntegration = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `integrationId`    | *string*           | :heavy_check_mark: | N/A                |
 | `configurationId`  | *string*           | :heavy_check_mark: | N/A                |
+| `integrationId`    | *string*           | :heavy_check_mark: | N/A                |

@@ -16,8 +16,8 @@ const value: models.CancelDeploymentMissingDeploymentsResponse2001 = {
 
 ```typescript
 const value: models.CancelDeploymentMissingDeploymentsResponse2002 = {
-  type: "header",
   key: "<key>",
+  type: "header",
 };
 ```
 
@@ -25,8 +25,8 @@ const value: models.CancelDeploymentMissingDeploymentsResponse2002 = {
 
 ```typescript
 const value: models.CancelDeploymentMissingDeploymentsResponse2002 = {
-  type: "header",
   key: "<key>",
+  type: "header",
 };
 ```
 
@@ -34,8 +34,8 @@ const value: models.CancelDeploymentMissingDeploymentsResponse2002 = {
 
 ```typescript
 const value: models.CancelDeploymentMissingDeploymentsResponse2002 = {
-  type: "header",
   key: "<key>",
+  type: "header",
 };
 ```
 

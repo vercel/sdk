@@ -6,12 +6,10 @@
 import { CreateFlagSegmentFeatureFlagsConditions } from "@vercel/sdk/models/createflagsegmentop.js";
 
 let value: CreateFlagSegmentFeatureFlagsConditions = {
+  cmp: "regex",
   lhs: {
-    type: "entity",
-    kind: "<value>",
-    attribute: "<value>",
+    type: "segment",
   },
-  cmp: "!ex",
 };
 ```
 
@@ -19,7 +17,7 @@ let value: CreateFlagSegmentFeatureFlagsConditions = {
 
 | Field                                                                                                  | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
 | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| `rhs`                                                                                                  | *models.CreateFlagSegmentFeatureFlagsRhs*                                                              | :heavy_minus_sign:                                                                                     | N/A                                                                                                    |
+| `cmp`                                                                                                  | [models.CreateFlagSegmentFeatureFlagsCmp](../models/createflagsegmentfeatureflagscmp.md)               | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
 | `cmpOptions`                                                                                           | [models.CreateFlagSegmentFeatureFlagsCmpOptions](../models/createflagsegmentfeatureflagscmpoptions.md) | :heavy_minus_sign:                                                                                     | N/A                                                                                                    |
 | `lhs`                                                                                                  | *models.CreateFlagSegmentFeatureFlagsLhs*                                                              | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
-| `cmp`                                                                                                  | [models.CreateFlagSegmentFeatureFlagsCmp](../models/createflagsegmentfeatureflagscmp.md)               | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
+| `rhs`                                                                                                  | *models.CreateFlagSegmentFeatureFlagsRhs*                                                              | :heavy_minus_sign:                                                                                     | N/A                                                                                                    |

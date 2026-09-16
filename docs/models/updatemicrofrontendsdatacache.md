@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsDataCache } from "@vercel/sdk/models/updatemicrofrontendsprojectsfunctiondefaultmemorytype.js";
+import { UpdateMicrofrontendsDataCache } from "@vercel/sdk/models/updatemicrofrontendshaskey.js";
 
 let value: UpdateMicrofrontendsDataCache = {
   userDisabled: false,
@@ -14,6 +14,6 @@ let value: UpdateMicrofrontendsDataCache = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `userDisabled`     | *boolean*          | :heavy_check_mark: | N/A                |
 | `storageSizeBytes` | *number*           | :heavy_minus_sign: | N/A                |
 | `unlimited`        | *boolean*          | :heavy_minus_sign: | N/A                |
+| `userDisabled`     | *boolean*          | :heavy_check_mark: | N/A                |

@@ -5,13 +5,13 @@ A list of verification challenges, one of which must be completed to verify the 
 ## Example Usage
 
 ```typescript
-import { UpdateProjectVerification } from "@vercel/sdk/models/updateprojecttrafficsources.js";
+import { UpdateProjectVerification } from "@vercel/sdk/models/updateprojectprojectsresponse200applicationjsonaction.js";
 
 let value: UpdateProjectVerification = {
-  type: "<value>",
   domain: "knowledgeable-typeface.name",
-  value: "<value>",
   reason: "<value>",
+  type: "<value>",
+  value: "<value>",
 };
 ```
 
@@ -19,7 +19,7 @@ let value: UpdateProjectVerification = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `type`             | *string*           | :heavy_check_mark: | N/A                |
 | `domain`           | *string*           | :heavy_check_mark: | N/A                |
-| `value`            | *string*           | :heavy_check_mark: | N/A                |
 | `reason`           | *string*           | :heavy_check_mark: | N/A                |
+| `type`             | *string*           | :heavy_check_mark: | N/A                |
+| `value`            | *string*           | :heavy_check_mark: | N/A                |

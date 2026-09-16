@@ -15,7 +15,7 @@ let value: GetDeploymentResponseBodyDeploymentsAliasWarning = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `code`             | *string*           | :heavy_check_mark: | N/A                |
-| `message`          | *string*           | :heavy_check_mark: | N/A                |
-| `link`             | *string*           | :heavy_minus_sign: | N/A                |
 | `action`           | *string*           | :heavy_minus_sign: | N/A                |
+| `code`             | *string*           | :heavy_check_mark: | N/A                |
+| `link`             | *string*           | :heavy_minus_sign: | N/A                |
+| `message`          | *string*           | :heavy_check_mark: | N/A                |

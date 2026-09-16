@@ -6,9 +6,9 @@
 import { Rhs4 } from "@vercel/sdk/models/flag.js";
 
 let value: Rhs4 = {
-  type: "regex",
-  pattern: "<value>",
   flags: "<value>",
+  pattern: "<value>",
+  type: "regex",
 };
 ```
 
@@ -16,6 +16,6 @@ let value: Rhs4 = {
 
 | Field                                          | Type                                           | Required                                       | Description                                    |
 | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `type`                                         | [models.FlagRhsType](../models/flagrhstype.md) | :heavy_check_mark:                             | N/A                                            |
-| `pattern`                                      | *string*                                       | :heavy_check_mark:                             | N/A                                            |
 | `flags`                                        | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `pattern`                                      | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `type`                                         | [models.FlagRhsType](../models/flagrhstype.md) | :heavy_check_mark:                             | N/A                                            |

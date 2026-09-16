@@ -8,10 +8,10 @@ A list of verification challenges, one of which must be completed to verify the 
 import { GetDomainProjectDomainsVerification } from "@vercel/sdk/models/getdomainprojectdomainsop.js";
 
 let value: GetDomainProjectDomainsVerification = {
-  type: "<value>",
   domain: "possible-mousse.biz",
-  value: "<value>",
   reason: "<value>",
+  type: "<value>",
+  value: "<value>",
 };
 ```
 
@@ -19,7 +19,7 @@ let value: GetDomainProjectDomainsVerification = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `type`             | *string*           | :heavy_check_mark: | N/A                |
 | `domain`           | *string*           | :heavy_check_mark: | N/A                |
-| `value`            | *string*           | :heavy_check_mark: | N/A                |
 | `reason`           | *string*           | :heavy_check_mark: | N/A                |
+| `type`             | *string*           | :heavy_check_mark: | N/A                |
+| `value`            | *string*           | :heavy_check_mark: | N/A                |

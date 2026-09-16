@@ -6,11 +6,11 @@
 import { PutFirewallConfigRules1 } from "@vercel/sdk/models/putfirewallconfigop.js";
 
 let value: PutFirewallConfigRules1 = {
-  id: "<id>",
-  name: "<value>",
+  action: {},
   active: false,
   conditionGroup: [],
-  action: {},
+  id: "<id>",
+  name: "<value>",
   valid: true,
   validationErrors: "<value>",
 };
@@ -20,11 +20,11 @@ let value: PutFirewallConfigRules1 = {
 
 | Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `id`                                                                                               | *string*                                                                                           | :heavy_check_mark:                                                                                 | N/A                                                                                                |
-| `name`                                                                                             | *string*                                                                                           | :heavy_check_mark:                                                                                 | N/A                                                                                                |
-| `description`                                                                                      | *string*                                                                                           | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
+| `action`                                                                                           | [models.PutFirewallConfigRulesAction](../models/putfirewallconfigrulesaction.md)                   | :heavy_check_mark:                                                                                 | N/A                                                                                                |
 | `active`                                                                                           | *boolean*                                                                                          | :heavy_check_mark:                                                                                 | N/A                                                                                                |
 | `conditionGroup`                                                                                   | [models.PutFirewallConfigRulesConditionGroup](../models/putfirewallconfigrulesconditiongroup.md)[] | :heavy_check_mark:                                                                                 | N/A                                                                                                |
-| `action`                                                                                           | [models.PutFirewallConfigRulesAction](../models/putfirewallconfigrulesaction.md)                   | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `description`                                                                                      | *string*                                                                                           | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
+| `id`                                                                                               | *string*                                                                                           | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `name`                                                                                             | *string*                                                                                           | :heavy_check_mark:                                                                                 | N/A                                                                                                |
 | `valid`                                                                                            | *true*                                                                                             | :heavy_check_mark:                                                                                 | N/A                                                                                                |
 | `validationErrors`                                                                                 | *any*                                                                                              | :heavy_check_mark:                                                                                 | N/A                                                                                                |

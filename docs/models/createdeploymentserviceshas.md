@@ -16,8 +16,8 @@ const value: models.CreateDeploymentHasDeployments1 = {
 
 ```typescript
 const value: models.CreateDeploymentHasDeployments2 = {
-  type: "header",
   key: "<key>",
+  type: "header",
 };
 ```
 
@@ -25,8 +25,8 @@ const value: models.CreateDeploymentHasDeployments2 = {
 
 ```typescript
 const value: models.CreateDeploymentHasDeployments2 = {
-  type: "header",
   key: "<key>",
+  type: "header",
 };
 ```
 
@@ -34,8 +34,8 @@ const value: models.CreateDeploymentHasDeployments2 = {
 
 ```typescript
 const value: models.CreateDeploymentHasDeployments2 = {
-  type: "header",
   key: "<key>",
+  type: "header",
 };
 ```
 

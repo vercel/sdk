@@ -6,8 +6,8 @@
 import { AppUrls } from "@vercel/sdk/models/getintegrationresourceop.js";
 
 let value: AppUrls = {
-  url: "https://linear-lox.info",
-  target: "development",
+  target: "preview",
+  url: "https://musty-gallery.com/",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: AppUrls = {
 
 | Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
 | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `url`                                                                            | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
 | `target`                                                                         | [models.GetIntegrationResourceTarget](../models/getintegrationresourcetarget.md) | :heavy_check_mark:                                                               | N/A                                                                              |
+| `url`                                                                            | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |

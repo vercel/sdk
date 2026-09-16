@@ -6,10 +6,10 @@
 import { ResponseBodyFilterV2 } from "@vercel/sdk/models/createdrainop.js";
 
 let value: ResponseBodyFilterV2 = {
-  version: "v2",
   filter: {
     type: "basic",
   },
+  version: "v2",
 };
 ```
 
@@ -17,5 +17,5 @@ let value: ResponseBodyFilterV2 = {
 
 | Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
 | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `version`                                                                                        | [models.CreateDrainResponseBodyDrainsVersion](../models/createdrainresponsebodydrainsversion.md) | :heavy_check_mark:                                                                               | N/A                                                                                              |
 | `filter`                                                                                         | *models.CreateDrainResponseBodyFilter*                                                           | :heavy_check_mark:                                                                               | N/A                                                                                              |
+| `version`                                                                                        | [models.CreateDrainResponseBodyDrainsVersion](../models/createdrainresponsebodydrainsversion.md) | :heavy_check_mark:                                                                               | N/A                                                                                              |

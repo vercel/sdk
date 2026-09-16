@@ -9,8 +9,8 @@ import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetObservabilitySchemaMetrics = {
-  id: string;
   description: string;
+  id: string;
 };
 
 export type GetObservabilitySchemaResponseBody = {
@@ -23,8 +23,8 @@ export const GetObservabilitySchemaMetrics$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: types.string(),
   description: types.string(),
+  id: types.string(),
 });
 
 export function getObservabilitySchemaMetricsFromJSON(

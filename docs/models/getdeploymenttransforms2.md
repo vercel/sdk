@@ -3,12 +3,12 @@
 ## Example Usage
 
 ```typescript
-import { GetDeploymentTransforms2 } from "@vercel/sdk/models/getdeploymentmissingdeployments1.js";
+import { GetDeploymentTransforms2 } from "@vercel/sdk/models/getdeploymentservicesfunctions.js";
 
 let value: GetDeploymentTransforms2 = {
-  type: "request.path",
-  op: "set",
   args: "<value>",
+  op: "set",
+  type: "request.path",
 };
 ```
 
@@ -16,7 +16,7 @@ let value: GetDeploymentTransforms2 = {
 
 | Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
 | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `type`                                                                                           | *"request.path"*                                                                                 | :heavy_check_mark:                                                                               | N/A                                                                                              |
-| `op`                                                                                             | [models.GetDeploymentTransformsDeploymentsOp](../models/getdeploymenttransformsdeploymentsop.md) | :heavy_check_mark:                                                                               | N/A                                                                                              |
 | `args`                                                                                           | *string*                                                                                         | :heavy_check_mark:                                                                               | N/A                                                                                              |
 | `env`                                                                                            | *string*[]                                                                                       | :heavy_minus_sign:                                                                               | N/A                                                                                              |
+| `op`                                                                                             | [models.GetDeploymentTransformsDeploymentsOp](../models/getdeploymenttransformsdeploymentsop.md) | :heavy_check_mark:                                                                               | N/A                                                                                              |
+| `type`                                                                                           | *"request.path"*                                                                                 | :heavy_check_mark:                                                                               | N/A                                                                                              |

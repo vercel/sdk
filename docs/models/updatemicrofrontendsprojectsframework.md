@@ -5,7 +5,7 @@ Framework slug, when the service has one (omitted otherwise).
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsProjectsFramework } from "@vercel/sdk/models/updatemicrofrontendsprojectsfunctiondefaultmemorytype.js";
+import { UpdateMicrofrontendsProjectsFramework } from "@vercel/sdk/models/updatemicrofrontendsfrom1.js";
 
 let value: UpdateMicrofrontendsProjectsFramework = "zola";
 ```

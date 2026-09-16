@@ -5,11 +5,11 @@ Since June 2023 Determines if comments should be posted to the git host. Replace
 ## Example Usage
 
 ```typescript
-import { UserEventJobPayloadGitComments } from "@vercel/sdk/models/headinfo.js";
+import { UserEventJobPayloadGitComments } from "@vercel/sdk/models/onehundred.js";
 
 let value: UserEventJobPayloadGitComments = {
-  onPullRequest: false,
   onCommit: false,
+  onPullRequest: false,
 };
 ```
 
@@ -17,5 +17,5 @@ let value: UserEventJobPayloadGitComments = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `onPullRequest`    | *boolean*          | :heavy_check_mark: | N/A                |
 | `onCommit`         | *boolean*          | :heavy_check_mark: | N/A                |
+| `onPullRequest`    | *boolean*          | :heavy_check_mark: | N/A                |

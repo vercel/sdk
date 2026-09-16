@@ -7,14 +7,14 @@
 
 ```typescript
 const value: models.GetDeploymentEventsResponseBodyDeployments1 = {
-  type: "stderr",
-  created: 1498.12,
+  created: 8352.2,
   payload: {
+    date: 1498.12,
     deploymentId: "<id>",
     id: "<id>",
-    date: 5814.47,
     serial: "<value>",
   },
+  type: "metric",
 };
 ```
 
@@ -27,8 +27,8 @@ const value: models.GetDeploymentEventsResponseBodyDeployments2 = {
   deploymentId: "<id>",
   id: "<id>",
   info: {
-    type: "<value>",
     name: "<value>",
+    type: "<value>",
   },
   serial: "<value>",
   type: "edge-function-invocation",
@@ -39,9 +39,9 @@ const value: models.GetDeploymentEventsResponseBodyDeployments2 = {
 
 ```typescript
 const value: models.GetDeploymentEventsResponseBodyDeployments3 = {
-  type: "alias-assigned",
-  deploymentId: "<id>",
   date: 7833.06,
+  deploymentId: "<id>",
+  type: "alias-assigned",
   alias: [],
   aliasError: {
     code: "<value>",

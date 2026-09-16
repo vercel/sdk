@@ -20,58 +20,58 @@ export type GetEdgeConfigsRequest = {
 };
 
 export type Purpose2 = {
-  type: "experimentation";
   resourceId: string;
+  type: "experimentation";
 };
 
 export type Purpose1 = {
-  type: "flags";
   projectId: string;
+  type: "flags";
 };
 
 export type Purpose = Purpose1 | Purpose2;
+
+export type Schema = {};
 
 /**
  * Keeps track of the current state of the Global Config while it gets transferred.
  */
 export type Transfer = {
+  doneAt: number | null;
   fromAccountId: string;
   startedAt: number;
-  doneAt: number | null;
 };
-
-export type Schema = {};
 
 /**
  * List of all global configs.
  */
 export type GetEdgeConfigsResponseBody = {
-  id: string;
   createdAt: number;
   /**
    * The ID of the user who created the Global Config, optional because it is not always set.
    */
   createdBy?: string | undefined;
+  deletedAt?: number | null | undefined;
+  digest: string;
+  id: string;
   ownerId: string;
+  purpose?: Purpose1 | Purpose2 | undefined;
+  schema?: Schema | undefined;
   /**
    * Name for the Global Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores).
    */
   slug: string;
-  updatedAt: number;
-  digest: string;
-  purpose?: Purpose1 | Purpose2 | undefined;
-  deletedAt?: number | null | undefined;
-  /**
-   * Keeps track of the current state of the Global Config while it gets transferred.
-   */
-  transfer?: Transfer | undefined;
-  schema?: Schema | undefined;
   /**
    * Timestamp of when the Global Config was synced to DynamoDB initially. It is only set when syncing the entire Global Config, not when updating.
    */
   syncedToDynamoAt?: number | undefined;
-  sizeInBytes: number;
+  /**
+   * Keeps track of the current state of the Global Config while it gets transferred.
+   */
+  transfer?: Transfer | undefined;
+  updatedAt: number;
   itemCount: number;
+  sizeInBytes: number;
 };
 
 /** @internal */
@@ -104,8 +104,8 @@ export const Purpose2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("experimentation"),
   resourceId: types.string(),
+  type: types.literal("experimentation"),
 });
 
 export function purpose2FromJSON(
@@ -124,8 +124,8 @@ export const Purpose1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("flags"),
   projectId: types.string(),
+  type: types.literal("flags"),
 });
 
 export function purpose1FromJSON(
@@ -156,27 +156,6 @@ export function purposeFromJSON(
 }
 
 /** @internal */
-export const Transfer$inboundSchema: z.ZodType<
-  Transfer,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fromAccountId: types.string(),
-  startedAt: types.number(),
-  doneAt: types.nullable(types.number()),
-});
-
-export function transferFromJSON(
-  jsonString: string,
-): SafeParseResult<Transfer, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Transfer$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Transfer' from JSON`,
-  );
-}
-
-/** @internal */
 export const Schema$inboundSchema: z.ZodType<Schema, z.ZodTypeDef, unknown> = z
   .object({});
 
@@ -191,30 +170,51 @@ export function schemaFromJSON(
 }
 
 /** @internal */
+export const Transfer$inboundSchema: z.ZodType<
+  Transfer,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  doneAt: types.nullable(types.number()),
+  fromAccountId: types.string(),
+  startedAt: types.number(),
+});
+
+export function transferFromJSON(
+  jsonString: string,
+): SafeParseResult<Transfer, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Transfer$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Transfer' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetEdgeConfigsResponseBody$inboundSchema: z.ZodType<
   GetEdgeConfigsResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: types.string(),
   createdAt: types.number(),
   createdBy: types.optional(types.string()),
-  ownerId: types.string(),
-  slug: types.string(),
-  updatedAt: types.number(),
+  deletedAt: z.nullable(types.number()).optional(),
   digest: types.string(),
+  id: types.string(),
+  ownerId: types.string(),
   purpose: types.optional(
     z.union([
       z.lazy(() => Purpose1$inboundSchema),
       z.lazy(() => Purpose2$inboundSchema),
     ]),
   ),
-  deletedAt: z.nullable(types.number()).optional(),
-  transfer: types.optional(z.lazy(() => Transfer$inboundSchema)),
   schema: types.optional(z.lazy(() => Schema$inboundSchema)),
+  slug: types.string(),
   syncedToDynamoAt: types.optional(types.number()),
-  sizeInBytes: types.number(),
+  transfer: types.optional(z.lazy(() => Transfer$inboundSchema)),
+  updatedAt: types.number(),
   itemCount: types.number(),
+  sizeInBytes: types.number(),
 });
 
 export function getEdgeConfigsResponseBodyFromJSON(

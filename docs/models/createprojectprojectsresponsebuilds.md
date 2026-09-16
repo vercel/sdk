@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectProjectsResponseBuilds } from "@vercel/sdk/models/createprojectpasswordprotection.js";
+import { CreateProjectProjectsResponseBuilds } from "@vercel/sdk/models/createprojectcontenthint2.js";
 
 let value: CreateProjectProjectsResponseBuilds = {
   use: "<value>",
@@ -14,6 +14,6 @@ let value: CreateProjectProjectsResponseBuilds = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `use`              | *string*           | :heavy_check_mark: | N/A                |
-| `src`              | *string*           | :heavy_minus_sign: | N/A                |
 | `dest`             | *string*           | :heavy_minus_sign: | N/A                |
+| `src`              | *string*           | :heavy_minus_sign: | N/A                |
+| `use`              | *string*           | :heavy_check_mark: | N/A                |

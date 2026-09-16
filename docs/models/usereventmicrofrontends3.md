@@ -3,15 +3,15 @@
 ## Example Usage
 
 ```typescript
-import { UserEventMicrofrontends3 } from "@vercel/sdk/models/usereventpayload171gituserid.js";
+import { UserEventMicrofrontends3 } from "@vercel/sdk/models/usereventpayload171newownerfeatureblocksworkflowstoragewriteblockreason.js";
 
 let value: UserEventMicrofrontends3 = {
-  updatedAt: 6600.72,
+  enabled: false,
   groupIds: [
     "<value 1>",
     "<value 2>",
   ],
-  enabled: false,
+  updatedAt: 6395.35,
 };
 ```
 
@@ -19,7 +19,7 @@ let value: UserEventMicrofrontends3 = {
 
 | Field                        | Type                         | Required                     | Description                  |
 | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-| `updatedAt`                  | *number*                     | :heavy_check_mark:           | N/A                          |
-| `groupIds`                   | *any*[]                      | :heavy_check_mark:           | N/A                          |
 | `enabled`                    | *false*                      | :heavy_check_mark:           | N/A                          |
 | `freeProjectForLegacyLimits` | *boolean*                    | :heavy_minus_sign:           | N/A                          |
+| `groupIds`                   | *any*[]                      | :heavy_check_mark:           | N/A                          |
+| `updatedAt`                  | *number*                     | :heavy_check_mark:           | N/A                          |

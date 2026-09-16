@@ -8,10 +8,10 @@ The protection bypass for the alias
 import { GetAliasProtectionBypass2 } from "@vercel/sdk/models/getaliasop.js";
 
 let value: GetAliasProtectionBypass2 = {
-  createdAt: 7811.81,
-  lastUpdatedAt: 7676.73,
+  access: "requested",
+  createdAt: 7676.73,
+  lastUpdatedAt: 336.27,
   lastUpdatedBy: "<value>",
-  access: "granted",
   scope: "user",
 };
 ```
@@ -20,8 +20,8 @@ let value: GetAliasProtectionBypass2 = {
 
 | Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
 | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `access`                                                             | [models.ProtectionBypassAccess](../models/protectionbypassaccess.md) | :heavy_check_mark:                                                   | N/A                                                                  |
 | `createdAt`                                                          | *number*                                                             | :heavy_check_mark:                                                   | N/A                                                                  |
 | `lastUpdatedAt`                                                      | *number*                                                             | :heavy_check_mark:                                                   | N/A                                                                  |
 | `lastUpdatedBy`                                                      | *string*                                                             | :heavy_check_mark:                                                   | N/A                                                                  |
-| `access`                                                             | [models.ProtectionBypassAccess](../models/protectionbypassaccess.md) | :heavy_check_mark:                                                   | N/A                                                                  |
 | `scope`                                                              | *"user"*                                                             | :heavy_check_mark:                                                   | N/A                                                                  |

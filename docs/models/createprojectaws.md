@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectAws } from "@vercel/sdk/models/createprojectpasswordprotection.js";
+import { CreateProjectAws } from "@vercel/sdk/models/createprojectcontenthint2.js";
 
 let value: CreateProjectAws = {
   subnetIds: [
@@ -17,5 +17,5 @@ let value: CreateProjectAws = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `subnetIds`        | *string*[]         | :heavy_check_mark: | N/A                |
 | `securityGroupId`  | *string*           | :heavy_minus_sign: | N/A                |
+| `subnetIds`        | *string*[]         | :heavy_check_mark: | N/A                |

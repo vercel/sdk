@@ -15,9 +15,9 @@ const value: models.ListPromoteAliasesResponseBody1 = {};
 const value: models.ListPromoteAliasesResponseBody2 = {
   aliases: [
     {
-      status: "<value>",
       alias: "<value>",
       id: "<id>",
+      status: "<value>",
     },
   ],
   pagination: {

@@ -6,8 +6,8 @@
 import { GetDrainDeliveryDrains5 } from "@vercel/sdk/models/getdrainop.js";
 
 let value: GetDrainDeliveryDrains5 = {
-  type: "internal",
   target: "vercel-otel-traces-db",
+  type: "internal",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: GetDrainDeliveryDrains5 = {
 
 | Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
 | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `type`                                                                           | *"internal"*                                                                     | :heavy_check_mark:                                                               | N/A                                                                              |
 | `target`                                                                         | [models.GetDrainDeliveryDrainsTarget](../models/getdraindeliverydrainstarget.md) | :heavy_check_mark:                                                               | N/A                                                                              |
+| `type`                                                                           | *"internal"*                                                                     | :heavy_check_mark:                                                               | N/A                                                                              |

@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectContentHint17 } from "@vercel/sdk/models/createprojectpasswordprotection.js";
+import { CreateProjectContentHint17 } from "@vercel/sdk/models/createprojectcontenthint2.js";
 
 let value: CreateProjectContentHint17 = {
-  type: "flags-connection-string",
   projectId: "<id>",
+  type: "flags-connection-string",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: CreateProjectContentHint17 = {
 
 | Field                       | Type                        | Required                    | Description                 |
 | --------------------------- | --------------------------- | --------------------------- | --------------------------- |
-| `type`                      | *"flags-connection-string"* | :heavy_check_mark:          | N/A                         |
 | `projectId`                 | *string*                    | :heavy_check_mark:          | N/A                         |
+| `type`                      | *"flags-connection-string"* | :heavy_check_mark:          | N/A                         |

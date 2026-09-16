@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsContentHint7 } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson1securitymanagedrulesaction.js";
+import { GetProjectsContentHint7 } from "@vercel/sdk/models/getprojectslogheaders2.js";
 
 let value: GetProjectsContentHint7 = {
-  type: "blob-webhook-public-key",
   storeId: "<id>",
+  type: "blob-webhook-public-key",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: GetProjectsContentHint7 = {
 
 | Field                       | Type                        | Required                    | Description                 |
 | --------------------------- | --------------------------- | --------------------------- | --------------------------- |
-| `type`                      | *"blob-webhook-public-key"* | :heavy_check_mark:          | N/A                         |
 | `storeId`                   | *string*                    | :heavy_check_mark:          | N/A                         |
+| `type`                      | *"blob-webhook-public-key"* | :heavy_check_mark:          | N/A                         |

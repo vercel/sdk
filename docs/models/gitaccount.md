@@ -6,8 +6,8 @@
 import { GitAccount } from "@vercel/sdk/models/searchrepoop.js";
 
 let value: GitAccount = {
-  provider: "<value>",
   namespaceId: "<id>",
+  provider: "<value>",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: GitAccount = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `provider`         | *string*           | :heavy_check_mark: | N/A                |
 | `namespaceId`      | *string*           | :heavy_check_mark: | N/A                |
+| `provider`         | *string*           | :heavy_check_mark: | N/A                |

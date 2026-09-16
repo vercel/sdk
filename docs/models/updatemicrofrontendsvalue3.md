@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsValue3 } from "@vercel/sdk/models/updatemicrofrontendsresponsebody.js";
+import { UpdateMicrofrontendsValue3 } from "@vercel/sdk/models/updatemicrofrontendshaskey.js";
 
 let value: UpdateMicrofrontendsValue3 = {
-  previousValue: "<value>",
   currentValue: "<value>",
+  previousValue: "<value>",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: UpdateMicrofrontendsValue3 = {
 
 | Field                                           | Type                                            | Required                                        | Description                                     |
 | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| `previousValue`                                 | *models.UpdateMicrofrontendsValuePreviousValue* | :heavy_check_mark:                              | N/A                                             |
 | `currentValue`                                  | *models.UpdateMicrofrontendsValueCurrentValue*  | :heavy_check_mark:                              | N/A                                             |
+| `previousValue`                                 | *models.UpdateMicrofrontendsValuePreviousValue* | :heavy_check_mark:                              | N/A                                             |

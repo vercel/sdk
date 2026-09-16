@@ -7,9 +7,9 @@
 
 ```typescript
 const value: models.ListProjectChecksSource1 = {
-  kind: "integration",
-  integrationId: "<id>",
   integrationConfigurationId: "<id>",
+  integrationId: "<id>",
+  kind: "integration",
 };
 ```
 
@@ -25,9 +25,9 @@ const value: models.ListProjectChecksSource2 = {
 
 ```typescript
 const value: models.ListProjectChecksSource3 = {
+  externalCheckName: "<value>",
   kind: "git-provider",
   provider: "gitlab",
-  externalCheckName: "<value>",
 };
 ```
 

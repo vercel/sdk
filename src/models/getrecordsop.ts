@@ -52,31 +52,31 @@ export type GetRecordsResponseBodyDnsType = ClosedEnum<
 >;
 
 export type ResponseBodyRecords = {
-  id: string;
-  slug: string;
-  name: string;
-  type: GetRecordsResponseBodyDnsType;
-  value: string;
-  mxPriority?: number | undefined;
-  priority?: number | undefined;
-  creator: string;
-  created: number | null;
-  updated: number | null;
-  createdAt: number | null;
-  updatedAt: number | null;
-  ttl?: number | undefined;
   comment?: string | undefined;
+  created: number | null;
+  createdAt: number | null;
+  creator: string;
+  id: string;
+  mxPriority?: number | undefined;
+  name: string;
+  priority?: number | undefined;
+  slug: string;
+  ttl?: number | undefined;
+  type: GetRecordsResponseBodyDnsType;
+  updated: number | null;
+  updatedAt: number | null;
+  value: string;
 };
 
 /**
  * Successful response retrieving a list of paginated DNS records.
  */
 export type GetRecordsResponseBody3 = {
-  records: Array<ResponseBodyRecords>;
   /**
    * This object contains information related to the pagination of the current request, including the necessary parameters to get the next or previous page of data.
    */
   pagination: Pagination;
+  records: Array<ResponseBodyRecords>;
 };
 
 export const GetRecordsResponseBodyType = {
@@ -96,20 +96,20 @@ export type GetRecordsResponseBodyType = ClosedEnum<
 >;
 
 export type Records = {
-  id: string;
-  slug: string;
-  name: string;
-  type: GetRecordsResponseBodyType;
-  value: string;
-  mxPriority?: number | undefined;
-  priority?: number | undefined;
-  creator: string;
-  created: number | null;
-  updated: number | null;
-  createdAt: number | null;
-  updatedAt: number | null;
-  ttl?: number | undefined;
   comment?: string | undefined;
+  created: number | null;
+  createdAt: number | null;
+  creator: string;
+  id: string;
+  mxPriority?: number | undefined;
+  name: string;
+  priority?: number | undefined;
+  slug: string;
+  ttl?: number | undefined;
+  type: GetRecordsResponseBodyType;
+  updated: number | null;
+  updatedAt: number | null;
+  value: string;
 };
 
 export type GetRecordsResponseBody2 = {
@@ -167,20 +167,20 @@ export const ResponseBodyRecords$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: types.string(),
-  slug: types.string(),
-  name: types.string(),
-  type: GetRecordsResponseBodyDnsType$inboundSchema,
-  value: types.string(),
-  mxPriority: types.optional(types.number()),
-  priority: types.optional(types.number()),
-  creator: types.string(),
-  created: types.nullable(types.number()),
-  updated: types.nullable(types.number()),
-  createdAt: types.nullable(types.number()),
-  updatedAt: types.nullable(types.number()),
-  ttl: types.optional(types.number()),
   comment: types.optional(types.string()),
+  created: types.nullable(types.number()),
+  createdAt: types.nullable(types.number()),
+  creator: types.string(),
+  id: types.string(),
+  mxPriority: types.optional(types.number()),
+  name: types.string(),
+  priority: types.optional(types.number()),
+  slug: types.string(),
+  ttl: types.optional(types.number()),
+  type: GetRecordsResponseBodyDnsType$inboundSchema,
+  updated: types.nullable(types.number()),
+  updatedAt: types.nullable(types.number()),
+  value: types.string(),
 });
 
 export function responseBodyRecordsFromJSON(
@@ -199,8 +199,8 @@ export const GetRecordsResponseBody3$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  records: z.array(z.lazy(() => ResponseBodyRecords$inboundSchema)),
   pagination: Pagination$inboundSchema,
+  records: z.array(z.lazy(() => ResponseBodyRecords$inboundSchema)),
 });
 
 export function getRecordsResponseBody3FromJSON(
@@ -221,20 +221,20 @@ export const GetRecordsResponseBodyType$inboundSchema: z.ZodNativeEnum<
 /** @internal */
 export const Records$inboundSchema: z.ZodType<Records, z.ZodTypeDef, unknown> =
   z.object({
-    id: types.string(),
-    slug: types.string(),
-    name: types.string(),
-    type: GetRecordsResponseBodyType$inboundSchema,
-    value: types.string(),
-    mxPriority: types.optional(types.number()),
-    priority: types.optional(types.number()),
-    creator: types.string(),
-    created: types.nullable(types.number()),
-    updated: types.nullable(types.number()),
-    createdAt: types.nullable(types.number()),
-    updatedAt: types.nullable(types.number()),
-    ttl: types.optional(types.number()),
     comment: types.optional(types.string()),
+    created: types.nullable(types.number()),
+    createdAt: types.nullable(types.number()),
+    creator: types.string(),
+    id: types.string(),
+    mxPriority: types.optional(types.number()),
+    name: types.string(),
+    priority: types.optional(types.number()),
+    slug: types.string(),
+    ttl: types.optional(types.number()),
+    type: GetRecordsResponseBodyType$inboundSchema,
+    updated: types.nullable(types.number()),
+    updatedAt: types.nullable(types.number()),
+    value: types.string(),
   });
 
 export function recordsFromJSON(

@@ -191,101 +191,15 @@ export type CreateFlagSegmentRequest = {
   requestBody?: CreateFlagSegmentRequestBody | undefined;
 };
 
-export const CreateFlagSegmentOutcomeFeatureFlagsResponseType = {
-  Entity: "entity",
-} as const;
-export type CreateFlagSegmentOutcomeFeatureFlagsResponseType = ClosedEnum<
-  typeof CreateFlagSegmentOutcomeFeatureFlagsResponseType
->;
-
-export type CreateFlagSegmentOutcomeFeatureFlagsBase = {
-  type: CreateFlagSegmentOutcomeFeatureFlagsResponseType;
-  kind: string;
-  attribute: string;
-};
-
-export type CreateFlagSegmentOutcomeFeatureFlags2 = {
-  type: "split";
-  base: CreateFlagSegmentOutcomeFeatureFlagsBase;
-  passPromille: number;
-};
-
-export type CreateFlagSegmentOutcomeFeatureFlags1 = {
-  type: "all";
-};
-
-export type CreateFlagSegmentFeatureFlagsOutcome =
-  | CreateFlagSegmentOutcomeFeatureFlags1
-  | CreateFlagSegmentOutcomeFeatureFlags2;
-
-export const CreateFlagSegmentRhsFeatureFlagsResponseType = {
-  Regex: "regex",
-} as const;
-export type CreateFlagSegmentRhsFeatureFlagsResponseType = ClosedEnum<
-  typeof CreateFlagSegmentRhsFeatureFlagsResponseType
->;
-
-export type CreateFlagSegmentRhs4 = {
-  type: CreateFlagSegmentRhsFeatureFlagsResponseType;
-  pattern: string;
-  flags: string;
-};
-
-export const CreateFlagSegmentRhsFeatureFlagsType = {
-  List: "list",
-  ListInline: "list/inline",
-} as const;
-export type CreateFlagSegmentRhsFeatureFlagsType = ClosedEnum<
-  typeof CreateFlagSegmentRhsFeatureFlagsType
->;
-
-export type CreateFlagSegmentItemsFeatureFlags2 = {
-  label?: string | undefined;
+export type CreateFlagSegmentFeatureFlagsExclude = {
   note?: string | undefined;
   value: string;
 };
 
-export type CreateFlagSegmentItemsFeatureFlags1 = {
-  label?: string | undefined;
+export type CreateFlagSegmentFeatureFlagsInclude = {
   note?: string | undefined;
-  value: number;
+  value: string;
 };
-
-export type CreateFlagSegmentRhsFeatureFlagsItems =
-  | CreateFlagSegmentItemsFeatureFlags1
-  | CreateFlagSegmentItemsFeatureFlags2;
-
-export type CreateFlagSegmentRhs3 = {
-  type: CreateFlagSegmentRhsFeatureFlagsType;
-  items: Array<
-    CreateFlagSegmentItemsFeatureFlags1 | CreateFlagSegmentItemsFeatureFlags2
-  >;
-};
-
-export type CreateFlagSegmentFeatureFlagsRhs =
-  | CreateFlagSegmentRhs4
-  | CreateFlagSegmentRhs3
-  | string
-  | number
-  | boolean;
-
-export type CreateFlagSegmentFeatureFlagsCmpOptions = {
-  ignoreCase?: boolean | undefined;
-};
-
-export type CreateFlagSegmentLhsFeatureFlags2 = {
-  type: "entity";
-  kind: string;
-  attribute: string;
-};
-
-export type CreateFlagSegmentLhsFeatureFlags1 = {
-  type: "segment";
-};
-
-export type CreateFlagSegmentFeatureFlagsLhs =
-  | CreateFlagSegmentLhsFeatureFlags1
-  | CreateFlagSegmentLhsFeatureFlags2;
 
 export const CreateFlagSegmentFeatureFlagsCmp = {
   NotContains: "!contains",
@@ -316,7 +230,79 @@ export type CreateFlagSegmentFeatureFlagsCmp = ClosedEnum<
   typeof CreateFlagSegmentFeatureFlagsCmp
 >;
 
+export type CreateFlagSegmentFeatureFlagsCmpOptions = {
+  ignoreCase?: boolean | undefined;
+};
+
+export type CreateFlagSegmentLhsFeatureFlags2 = {
+  attribute: string;
+  kind: string;
+  type: "entity";
+};
+
+export type CreateFlagSegmentLhsFeatureFlags1 = {
+  type: "segment";
+};
+
+export type CreateFlagSegmentFeatureFlagsLhs =
+  | CreateFlagSegmentLhsFeatureFlags1
+  | CreateFlagSegmentLhsFeatureFlags2;
+
+export const CreateFlagSegmentRhsFeatureFlagsResponseType = {
+  Regex: "regex",
+} as const;
+export type CreateFlagSegmentRhsFeatureFlagsResponseType = ClosedEnum<
+  typeof CreateFlagSegmentRhsFeatureFlagsResponseType
+>;
+
+export type CreateFlagSegmentRhs4 = {
+  flags: string;
+  pattern: string;
+  type: CreateFlagSegmentRhsFeatureFlagsResponseType;
+};
+
+export type CreateFlagSegmentItemsFeatureFlags2 = {
+  label?: string | undefined;
+  note?: string | undefined;
+  value: string;
+};
+
+export type CreateFlagSegmentItemsFeatureFlags1 = {
+  label?: string | undefined;
+  note?: string | undefined;
+  value: number;
+};
+
+export type CreateFlagSegmentRhsFeatureFlagsItems =
+  | CreateFlagSegmentItemsFeatureFlags1
+  | CreateFlagSegmentItemsFeatureFlags2;
+
+export const CreateFlagSegmentRhsFeatureFlagsType = {
+  List: "list",
+  ListInline: "list/inline",
+} as const;
+export type CreateFlagSegmentRhsFeatureFlagsType = ClosedEnum<
+  typeof CreateFlagSegmentRhsFeatureFlagsType
+>;
+
+export type CreateFlagSegmentRhs3 = {
+  items: Array<
+    CreateFlagSegmentItemsFeatureFlags1 | CreateFlagSegmentItemsFeatureFlags2
+  >;
+  type: CreateFlagSegmentRhsFeatureFlagsType;
+};
+
+export type CreateFlagSegmentFeatureFlagsRhs =
+  | CreateFlagSegmentRhs4
+  | CreateFlagSegmentRhs3
+  | string
+  | number
+  | boolean;
+
 export type CreateFlagSegmentFeatureFlagsConditions = {
+  cmp: CreateFlagSegmentFeatureFlagsCmp;
+  cmpOptions?: CreateFlagSegmentFeatureFlagsCmpOptions | undefined;
+  lhs: CreateFlagSegmentLhsFeatureFlags1 | CreateFlagSegmentLhsFeatureFlags2;
   rhs?:
     | CreateFlagSegmentRhs4
     | CreateFlagSegmentRhs3
@@ -324,37 +310,51 @@ export type CreateFlagSegmentFeatureFlagsConditions = {
     | number
     | boolean
     | undefined;
-  cmpOptions?: CreateFlagSegmentFeatureFlagsCmpOptions | undefined;
-  lhs: CreateFlagSegmentLhsFeatureFlags1 | CreateFlagSegmentLhsFeatureFlags2;
-  cmp: CreateFlagSegmentFeatureFlagsCmp;
 };
 
+export const CreateFlagSegmentOutcomeFeatureFlagsResponseType = {
+  Entity: "entity",
+} as const;
+export type CreateFlagSegmentOutcomeFeatureFlagsResponseType = ClosedEnum<
+  typeof CreateFlagSegmentOutcomeFeatureFlagsResponseType
+>;
+
+export type CreateFlagSegmentOutcomeFeatureFlagsBase = {
+  attribute: string;
+  kind: string;
+  type: CreateFlagSegmentOutcomeFeatureFlagsResponseType;
+};
+
+export type CreateFlagSegmentOutcomeFeatureFlags2 = {
+  base: CreateFlagSegmentOutcomeFeatureFlagsBase;
+  passPromille: number;
+  type: "split";
+};
+
+export type CreateFlagSegmentOutcomeFeatureFlags1 = {
+  type: "all";
+};
+
+export type CreateFlagSegmentFeatureFlagsOutcome =
+  | CreateFlagSegmentOutcomeFeatureFlags1
+  | CreateFlagSegmentOutcomeFeatureFlags2;
+
 export type CreateFlagSegmentFeatureFlagsRules = {
+  conditions: Array<CreateFlagSegmentFeatureFlagsConditions>;
   id: string;
   outcome:
     | CreateFlagSegmentOutcomeFeatureFlags1
     | CreateFlagSegmentOutcomeFeatureFlags2;
-  conditions: Array<CreateFlagSegmentFeatureFlagsConditions>;
-};
-
-export type CreateFlagSegmentFeatureFlagsInclude = {
-  note?: string | undefined;
-  value: string;
-};
-
-export type CreateFlagSegmentFeatureFlagsExclude = {
-  note?: string | undefined;
-  value: string;
 };
 
 export type CreateFlagSegmentFeatureFlagsData = {
-  rules?: Array<CreateFlagSegmentFeatureFlagsRules> | undefined;
-  include?: {
-    [k: string]: { [k: string]: Array<CreateFlagSegmentFeatureFlagsInclude> };
-  } | undefined;
   exclude?: {
     [k: string]: { [k: string]: Array<CreateFlagSegmentFeatureFlagsExclude> };
   } | undefined;
+  include?: {
+    [k: string]: { [k: string]: Array<CreateFlagSegmentFeatureFlagsInclude> };
+  } | undefined;
+  rules?: Array<CreateFlagSegmentFeatureFlagsRules> | undefined;
 };
 
 export const CreateFlagSegmentTypeName = {
@@ -365,19 +365,19 @@ export type CreateFlagSegmentTypeName = ClosedEnum<
 >;
 
 export type CreateFlagSegmentResponseBody = {
-  description?: string | undefined;
+  createdAt: number;
   createdBy?: string | undefined;
-  usedByFlags?: Array<string> | undefined;
-  usedBySegments?: Array<string> | undefined;
   data: CreateFlagSegmentFeatureFlagsData;
+  description?: string | undefined;
+  hint: string;
   id: string;
   label: string;
-  slug: string;
-  createdAt: number;
-  updatedAt: number;
   projectId: string;
+  slug: string;
   typeName: CreateFlagSegmentTypeName;
-  hint: string;
+  updatedAt: number;
+  usedByFlags?: Array<string> | undefined;
+  usedBySegments?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -973,97 +973,134 @@ export function createFlagSegmentRequestToJSON(
 }
 
 /** @internal */
-export const CreateFlagSegmentOutcomeFeatureFlagsResponseType$inboundSchema:
-  z.ZodNativeEnum<typeof CreateFlagSegmentOutcomeFeatureFlagsResponseType> = z
-    .nativeEnum(CreateFlagSegmentOutcomeFeatureFlagsResponseType);
-
-/** @internal */
-export const CreateFlagSegmentOutcomeFeatureFlagsBase$inboundSchema: z.ZodType<
-  CreateFlagSegmentOutcomeFeatureFlagsBase,
+export const CreateFlagSegmentFeatureFlagsExclude$inboundSchema: z.ZodType<
+  CreateFlagSegmentFeatureFlagsExclude,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: CreateFlagSegmentOutcomeFeatureFlagsResponseType$inboundSchema,
-  kind: types.string(),
-  attribute: types.string(),
+  note: types.optional(types.string()),
+  value: types.string(),
 });
 
-export function createFlagSegmentOutcomeFeatureFlagsBaseFromJSON(
+export function createFlagSegmentFeatureFlagsExcludeFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateFlagSegmentFeatureFlagsExclude, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateFlagSegmentFeatureFlagsExclude$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateFlagSegmentFeatureFlagsExclude' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateFlagSegmentFeatureFlagsInclude$inboundSchema: z.ZodType<
+  CreateFlagSegmentFeatureFlagsInclude,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  note: types.optional(types.string()),
+  value: types.string(),
+});
+
+export function createFlagSegmentFeatureFlagsIncludeFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateFlagSegmentFeatureFlagsInclude, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateFlagSegmentFeatureFlagsInclude$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateFlagSegmentFeatureFlagsInclude' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateFlagSegmentFeatureFlagsCmp$inboundSchema: z.ZodNativeEnum<
+  typeof CreateFlagSegmentFeatureFlagsCmp
+> = z.nativeEnum(CreateFlagSegmentFeatureFlagsCmp);
+
+/** @internal */
+export const CreateFlagSegmentFeatureFlagsCmpOptions$inboundSchema: z.ZodType<
+  CreateFlagSegmentFeatureFlagsCmpOptions,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  ignoreCase: types.optional(types.boolean()),
+});
+
+export function createFlagSegmentFeatureFlagsCmpOptionsFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  CreateFlagSegmentOutcomeFeatureFlagsBase,
+  CreateFlagSegmentFeatureFlagsCmpOptions,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      CreateFlagSegmentOutcomeFeatureFlagsBase$inboundSchema.parse(
+      CreateFlagSegmentFeatureFlagsCmpOptions$inboundSchema.parse(
         JSON.parse(x),
       ),
-    `Failed to parse 'CreateFlagSegmentOutcomeFeatureFlagsBase' from JSON`,
+    `Failed to parse 'CreateFlagSegmentFeatureFlagsCmpOptions' from JSON`,
   );
 }
 
 /** @internal */
-export const CreateFlagSegmentOutcomeFeatureFlags2$inboundSchema: z.ZodType<
-  CreateFlagSegmentOutcomeFeatureFlags2,
+export const CreateFlagSegmentLhsFeatureFlags2$inboundSchema: z.ZodType<
+  CreateFlagSegmentLhsFeatureFlags2,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("split"),
-  base: z.lazy(() => CreateFlagSegmentOutcomeFeatureFlagsBase$inboundSchema),
-  passPromille: types.number(),
+  attribute: types.string(),
+  kind: types.string(),
+  type: types.literal("entity"),
 });
 
-export function createFlagSegmentOutcomeFeatureFlags2FromJSON(
+export function createFlagSegmentLhsFeatureFlags2FromJSON(
   jsonString: string,
-): SafeParseResult<CreateFlagSegmentOutcomeFeatureFlags2, SDKValidationError> {
+): SafeParseResult<CreateFlagSegmentLhsFeatureFlags2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      CreateFlagSegmentOutcomeFeatureFlags2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateFlagSegmentOutcomeFeatureFlags2' from JSON`,
+    (x) => CreateFlagSegmentLhsFeatureFlags2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateFlagSegmentLhsFeatureFlags2' from JSON`,
   );
 }
 
 /** @internal */
-export const CreateFlagSegmentOutcomeFeatureFlags1$inboundSchema: z.ZodType<
-  CreateFlagSegmentOutcomeFeatureFlags1,
+export const CreateFlagSegmentLhsFeatureFlags1$inboundSchema: z.ZodType<
+  CreateFlagSegmentLhsFeatureFlags1,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("all"),
+  type: types.literal("segment"),
 });
 
-export function createFlagSegmentOutcomeFeatureFlags1FromJSON(
+export function createFlagSegmentLhsFeatureFlags1FromJSON(
   jsonString: string,
-): SafeParseResult<CreateFlagSegmentOutcomeFeatureFlags1, SDKValidationError> {
+): SafeParseResult<CreateFlagSegmentLhsFeatureFlags1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      CreateFlagSegmentOutcomeFeatureFlags1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateFlagSegmentOutcomeFeatureFlags1' from JSON`,
+    (x) => CreateFlagSegmentLhsFeatureFlags1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateFlagSegmentLhsFeatureFlags1' from JSON`,
   );
 }
 
 /** @internal */
-export const CreateFlagSegmentFeatureFlagsOutcome$inboundSchema: z.ZodType<
-  CreateFlagSegmentFeatureFlagsOutcome,
+export const CreateFlagSegmentFeatureFlagsLhs$inboundSchema: z.ZodType<
+  CreateFlagSegmentFeatureFlagsLhs,
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => CreateFlagSegmentOutcomeFeatureFlags1$inboundSchema),
-  z.lazy(() => CreateFlagSegmentOutcomeFeatureFlags2$inboundSchema),
+  z.lazy(() => CreateFlagSegmentLhsFeatureFlags1$inboundSchema),
+  z.lazy(() => CreateFlagSegmentLhsFeatureFlags2$inboundSchema),
 ]);
 
-export function createFlagSegmentFeatureFlagsOutcomeFromJSON(
+export function createFlagSegmentFeatureFlagsLhsFromJSON(
   jsonString: string,
-): SafeParseResult<CreateFlagSegmentFeatureFlagsOutcome, SDKValidationError> {
+): SafeParseResult<CreateFlagSegmentFeatureFlagsLhs, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      CreateFlagSegmentFeatureFlagsOutcome$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateFlagSegmentFeatureFlagsOutcome' from JSON`,
+    (x) => CreateFlagSegmentFeatureFlagsLhs$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateFlagSegmentFeatureFlagsLhs' from JSON`,
   );
 }
 
@@ -1078,9 +1115,9 @@ export const CreateFlagSegmentRhs4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: CreateFlagSegmentRhsFeatureFlagsResponseType$inboundSchema,
-  pattern: types.string(),
   flags: types.string(),
+  pattern: types.string(),
+  type: CreateFlagSegmentRhsFeatureFlagsResponseType$inboundSchema,
 });
 
 export function createFlagSegmentRhs4FromJSON(
@@ -1092,12 +1129,6 @@ export function createFlagSegmentRhs4FromJSON(
     `Failed to parse 'CreateFlagSegmentRhs4' from JSON`,
   );
 }
-
-/** @internal */
-export const CreateFlagSegmentRhsFeatureFlagsType$inboundSchema:
-  z.ZodNativeEnum<typeof CreateFlagSegmentRhsFeatureFlagsType> = z.nativeEnum(
-    CreateFlagSegmentRhsFeatureFlagsType,
-  );
 
 /** @internal */
 export const CreateFlagSegmentItemsFeatureFlags2$inboundSchema: z.ZodType<
@@ -1165,18 +1196,24 @@ export function createFlagSegmentRhsFeatureFlagsItemsFromJSON(
 }
 
 /** @internal */
+export const CreateFlagSegmentRhsFeatureFlagsType$inboundSchema:
+  z.ZodNativeEnum<typeof CreateFlagSegmentRhsFeatureFlagsType> = z.nativeEnum(
+    CreateFlagSegmentRhsFeatureFlagsType,
+  );
+
+/** @internal */
 export const CreateFlagSegmentRhs3$inboundSchema: z.ZodType<
   CreateFlagSegmentRhs3,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: CreateFlagSegmentRhsFeatureFlagsType$inboundSchema,
   items: z.array(
     smartUnion([
       z.lazy(() => CreateFlagSegmentItemsFeatureFlags1$inboundSchema),
       z.lazy(() => CreateFlagSegmentItemsFeatureFlags2$inboundSchema),
     ]),
   ),
+  type: CreateFlagSegmentRhsFeatureFlagsType$inboundSchema,
 });
 
 export function createFlagSegmentRhs3FromJSON(
@@ -1213,101 +1250,19 @@ export function createFlagSegmentFeatureFlagsRhsFromJSON(
 }
 
 /** @internal */
-export const CreateFlagSegmentFeatureFlagsCmpOptions$inboundSchema: z.ZodType<
-  CreateFlagSegmentFeatureFlagsCmpOptions,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  ignoreCase: types.optional(types.boolean()),
-});
-
-export function createFlagSegmentFeatureFlagsCmpOptionsFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  CreateFlagSegmentFeatureFlagsCmpOptions,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateFlagSegmentFeatureFlagsCmpOptions$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'CreateFlagSegmentFeatureFlagsCmpOptions' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateFlagSegmentLhsFeatureFlags2$inboundSchema: z.ZodType<
-  CreateFlagSegmentLhsFeatureFlags2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: types.literal("entity"),
-  kind: types.string(),
-  attribute: types.string(),
-});
-
-export function createFlagSegmentLhsFeatureFlags2FromJSON(
-  jsonString: string,
-): SafeParseResult<CreateFlagSegmentLhsFeatureFlags2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateFlagSegmentLhsFeatureFlags2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateFlagSegmentLhsFeatureFlags2' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateFlagSegmentLhsFeatureFlags1$inboundSchema: z.ZodType<
-  CreateFlagSegmentLhsFeatureFlags1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: types.literal("segment"),
-});
-
-export function createFlagSegmentLhsFeatureFlags1FromJSON(
-  jsonString: string,
-): SafeParseResult<CreateFlagSegmentLhsFeatureFlags1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateFlagSegmentLhsFeatureFlags1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateFlagSegmentLhsFeatureFlags1' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateFlagSegmentFeatureFlagsLhs$inboundSchema: z.ZodType<
-  CreateFlagSegmentFeatureFlagsLhs,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => CreateFlagSegmentLhsFeatureFlags1$inboundSchema),
-  z.lazy(() => CreateFlagSegmentLhsFeatureFlags2$inboundSchema),
-]);
-
-export function createFlagSegmentFeatureFlagsLhsFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateFlagSegmentFeatureFlagsLhs, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateFlagSegmentFeatureFlagsLhs$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateFlagSegmentFeatureFlagsLhs' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateFlagSegmentFeatureFlagsCmp$inboundSchema: z.ZodNativeEnum<
-  typeof CreateFlagSegmentFeatureFlagsCmp
-> = z.nativeEnum(CreateFlagSegmentFeatureFlagsCmp);
-
-/** @internal */
 export const CreateFlagSegmentFeatureFlagsConditions$inboundSchema: z.ZodType<
   CreateFlagSegmentFeatureFlagsConditions,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  cmp: CreateFlagSegmentFeatureFlagsCmp$inboundSchema,
+  cmpOptions: types.optional(
+    z.lazy(() => CreateFlagSegmentFeatureFlagsCmpOptions$inboundSchema),
+  ),
+  lhs: z.union([
+    z.lazy(() => CreateFlagSegmentLhsFeatureFlags1$inboundSchema),
+    z.lazy(() => CreateFlagSegmentLhsFeatureFlags2$inboundSchema),
+  ]),
   rhs: types.optional(
     smartUnion([
       z.lazy(() => CreateFlagSegmentRhs4$inboundSchema),
@@ -1317,14 +1272,6 @@ export const CreateFlagSegmentFeatureFlagsConditions$inboundSchema: z.ZodType<
       types.boolean(),
     ]),
   ),
-  cmpOptions: types.optional(
-    z.lazy(() => CreateFlagSegmentFeatureFlagsCmpOptions$inboundSchema),
-  ),
-  lhs: z.union([
-    z.lazy(() => CreateFlagSegmentLhsFeatureFlags1$inboundSchema),
-    z.lazy(() => CreateFlagSegmentLhsFeatureFlags2$inboundSchema),
-  ]),
-  cmp: CreateFlagSegmentFeatureFlagsCmp$inboundSchema,
 });
 
 export function createFlagSegmentFeatureFlagsConditionsFromJSON(
@@ -1344,19 +1291,114 @@ export function createFlagSegmentFeatureFlagsConditionsFromJSON(
 }
 
 /** @internal */
+export const CreateFlagSegmentOutcomeFeatureFlagsResponseType$inboundSchema:
+  z.ZodNativeEnum<typeof CreateFlagSegmentOutcomeFeatureFlagsResponseType> = z
+    .nativeEnum(CreateFlagSegmentOutcomeFeatureFlagsResponseType);
+
+/** @internal */
+export const CreateFlagSegmentOutcomeFeatureFlagsBase$inboundSchema: z.ZodType<
+  CreateFlagSegmentOutcomeFeatureFlagsBase,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  attribute: types.string(),
+  kind: types.string(),
+  type: CreateFlagSegmentOutcomeFeatureFlagsResponseType$inboundSchema,
+});
+
+export function createFlagSegmentOutcomeFeatureFlagsBaseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateFlagSegmentOutcomeFeatureFlagsBase,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateFlagSegmentOutcomeFeatureFlagsBase$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateFlagSegmentOutcomeFeatureFlagsBase' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateFlagSegmentOutcomeFeatureFlags2$inboundSchema: z.ZodType<
+  CreateFlagSegmentOutcomeFeatureFlags2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  base: z.lazy(() => CreateFlagSegmentOutcomeFeatureFlagsBase$inboundSchema),
+  passPromille: types.number(),
+  type: types.literal("split"),
+});
+
+export function createFlagSegmentOutcomeFeatureFlags2FromJSON(
+  jsonString: string,
+): SafeParseResult<CreateFlagSegmentOutcomeFeatureFlags2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateFlagSegmentOutcomeFeatureFlags2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateFlagSegmentOutcomeFeatureFlags2' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateFlagSegmentOutcomeFeatureFlags1$inboundSchema: z.ZodType<
+  CreateFlagSegmentOutcomeFeatureFlags1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("all"),
+});
+
+export function createFlagSegmentOutcomeFeatureFlags1FromJSON(
+  jsonString: string,
+): SafeParseResult<CreateFlagSegmentOutcomeFeatureFlags1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateFlagSegmentOutcomeFeatureFlags1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateFlagSegmentOutcomeFeatureFlags1' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateFlagSegmentFeatureFlagsOutcome$inboundSchema: z.ZodType<
+  CreateFlagSegmentFeatureFlagsOutcome,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => CreateFlagSegmentOutcomeFeatureFlags1$inboundSchema),
+  z.lazy(() => CreateFlagSegmentOutcomeFeatureFlags2$inboundSchema),
+]);
+
+export function createFlagSegmentFeatureFlagsOutcomeFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateFlagSegmentFeatureFlagsOutcome, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateFlagSegmentFeatureFlagsOutcome$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateFlagSegmentFeatureFlagsOutcome' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateFlagSegmentFeatureFlagsRules$inboundSchema: z.ZodType<
   CreateFlagSegmentFeatureFlagsRules,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  conditions: z.array(
+    z.lazy(() => CreateFlagSegmentFeatureFlagsConditions$inboundSchema),
+  ),
   id: types.string(),
   outcome: z.union([
     z.lazy(() => CreateFlagSegmentOutcomeFeatureFlags1$inboundSchema),
     z.lazy(() => CreateFlagSegmentOutcomeFeatureFlags2$inboundSchema),
   ]),
-  conditions: z.array(
-    z.lazy(() => CreateFlagSegmentFeatureFlagsConditions$inboundSchema),
-  ),
 });
 
 export function createFlagSegmentFeatureFlagsRulesFromJSON(
@@ -1371,65 +1413,23 @@ export function createFlagSegmentFeatureFlagsRulesFromJSON(
 }
 
 /** @internal */
-export const CreateFlagSegmentFeatureFlagsInclude$inboundSchema: z.ZodType<
-  CreateFlagSegmentFeatureFlagsInclude,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  note: types.optional(types.string()),
-  value: types.string(),
-});
-
-export function createFlagSegmentFeatureFlagsIncludeFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateFlagSegmentFeatureFlagsInclude, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateFlagSegmentFeatureFlagsInclude$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateFlagSegmentFeatureFlagsInclude' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateFlagSegmentFeatureFlagsExclude$inboundSchema: z.ZodType<
-  CreateFlagSegmentFeatureFlagsExclude,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  note: types.optional(types.string()),
-  value: types.string(),
-});
-
-export function createFlagSegmentFeatureFlagsExcludeFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateFlagSegmentFeatureFlagsExclude, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateFlagSegmentFeatureFlagsExclude$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateFlagSegmentFeatureFlagsExclude' from JSON`,
-  );
-}
-
-/** @internal */
 export const CreateFlagSegmentFeatureFlagsData$inboundSchema: z.ZodType<
   CreateFlagSegmentFeatureFlagsData,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  rules: types.optional(
-    z.array(z.lazy(() => CreateFlagSegmentFeatureFlagsRules$inboundSchema)),
+  exclude: types.optional(
+    z.record(z.record(z.array(z.lazy(() =>
+      CreateFlagSegmentFeatureFlagsExclude$inboundSchema
+    )))),
   ),
   include: types.optional(
     z.record(z.record(z.array(z.lazy(() =>
       CreateFlagSegmentFeatureFlagsInclude$inboundSchema
     )))),
   ),
-  exclude: types.optional(
-    z.record(z.record(z.array(z.lazy(() =>
-      CreateFlagSegmentFeatureFlagsExclude$inboundSchema
-    )))),
+  rules: types.optional(
+    z.array(z.lazy(() => CreateFlagSegmentFeatureFlagsRules$inboundSchema)),
   ),
 });
 
@@ -1454,19 +1454,19 @@ export const CreateFlagSegmentResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  description: types.optional(types.string()),
+  createdAt: types.number(),
   createdBy: types.optional(types.string()),
-  usedByFlags: types.optional(z.array(types.string())),
-  usedBySegments: types.optional(z.array(types.string())),
   data: z.lazy(() => CreateFlagSegmentFeatureFlagsData$inboundSchema),
+  description: types.optional(types.string()),
+  hint: types.string(),
   id: types.string(),
   label: types.string(),
-  slug: types.string(),
-  createdAt: types.number(),
-  updatedAt: types.number(),
   projectId: types.string(),
+  slug: types.string(),
   typeName: CreateFlagSegmentTypeName$inboundSchema,
-  hint: types.string(),
+  updatedAt: types.number(),
+  usedByFlags: types.optional(z.array(types.string())),
+  usedBySegments: types.optional(z.array(types.string())),
 });
 
 export function createFlagSegmentResponseBodyFromJSON(

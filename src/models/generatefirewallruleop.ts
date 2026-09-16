@@ -21,26 +21,12 @@ export type GenerateFirewallRuleRequest = {
   slug?: string | undefined;
 };
 
-export type GenerateFirewallRuleValue = string | number | Array<string>;
-
-export type GenerateFirewallRuleConditions = {
-  type: string;
-  op: string;
-  neg?: boolean | undefined;
-  key?: string | undefined;
-  value?: string | number | Array<string> | undefined;
-};
-
-export type GenerateFirewallRuleConditionGroup = {
-  conditions: Array<GenerateFirewallRuleConditions>;
-};
-
 export type GenerateFirewallRuleRateLimit = {
-  algo: string;
-  window: number;
-  limit: number;
-  keys: Array<string>;
   action?: string | null | undefined;
+  algo: string;
+  keys: Array<string>;
+  limit: number;
+  window: number;
 };
 
 export type GenerateFirewallRuleRedirect = {
@@ -50,26 +36,40 @@ export type GenerateFirewallRuleRedirect = {
 
 export type GenerateFirewallRuleMitigate = {
   action: string;
+  actionDuration?: string | null | undefined;
   rateLimit?: GenerateFirewallRuleRateLimit | null | undefined;
   redirect?: GenerateFirewallRuleRedirect | null | undefined;
-  actionDuration?: string | null | undefined;
 };
 
 export type GenerateFirewallRuleAction = {
   mitigate?: GenerateFirewallRuleMitigate | undefined;
 };
 
+export type GenerateFirewallRuleValue = string | number | Array<string>;
+
+export type GenerateFirewallRuleConditions = {
+  key?: string | undefined;
+  neg?: boolean | undefined;
+  op: string;
+  type: string;
+  value?: string | number | Array<string> | undefined;
+};
+
+export type GenerateFirewallRuleConditionGroup = {
+  conditions: Array<GenerateFirewallRuleConditions>;
+};
+
 export type GenerateFirewallRuleRule = {
-  name: string;
-  description?: string | undefined;
+  action: GenerateFirewallRuleAction;
   active: boolean;
   conditionGroup: Array<GenerateFirewallRuleConditionGroup>;
-  action: GenerateFirewallRuleAction;
+  description?: string | undefined;
+  name: string;
 };
 
 export type GenerateFirewallRuleResponseBody = {
-  rule?: GenerateFirewallRuleRule | undefined;
   error?: string | undefined;
+  rule?: GenerateFirewallRuleRule | undefined;
 };
 
 /** @internal */
@@ -101,80 +101,16 @@ export function generateFirewallRuleRequestToJSON(
 }
 
 /** @internal */
-export const GenerateFirewallRuleValue$inboundSchema: z.ZodType<
-  GenerateFirewallRuleValue,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([types.string(), types.number(), z.array(types.string())]);
-
-export function generateFirewallRuleValueFromJSON(
-  jsonString: string,
-): SafeParseResult<GenerateFirewallRuleValue, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GenerateFirewallRuleValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GenerateFirewallRuleValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const GenerateFirewallRuleConditions$inboundSchema: z.ZodType<
-  GenerateFirewallRuleConditions,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: types.string(),
-  op: types.string(),
-  neg: types.optional(types.boolean()),
-  key: types.optional(types.string()),
-  value: types.optional(
-    smartUnion([types.string(), types.number(), z.array(types.string())]),
-  ),
-});
-
-export function generateFirewallRuleConditionsFromJSON(
-  jsonString: string,
-): SafeParseResult<GenerateFirewallRuleConditions, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GenerateFirewallRuleConditions$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GenerateFirewallRuleConditions' from JSON`,
-  );
-}
-
-/** @internal */
-export const GenerateFirewallRuleConditionGroup$inboundSchema: z.ZodType<
-  GenerateFirewallRuleConditionGroup,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  conditions: z.array(
-    z.lazy(() => GenerateFirewallRuleConditions$inboundSchema),
-  ),
-});
-
-export function generateFirewallRuleConditionGroupFromJSON(
-  jsonString: string,
-): SafeParseResult<GenerateFirewallRuleConditionGroup, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GenerateFirewallRuleConditionGroup$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GenerateFirewallRuleConditionGroup' from JSON`,
-  );
-}
-
-/** @internal */
 export const GenerateFirewallRuleRateLimit$inboundSchema: z.ZodType<
   GenerateFirewallRuleRateLimit,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  algo: types.string(),
-  window: types.number(),
-  limit: types.number(),
-  keys: z.array(types.string()),
   action: z.nullable(types.string()).optional(),
+  algo: types.string(),
+  keys: z.array(types.string()),
+  limit: types.number(),
+  window: types.number(),
 });
 
 export function generateFirewallRuleRateLimitFromJSON(
@@ -214,12 +150,12 @@ export const GenerateFirewallRuleMitigate$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   action: types.string(),
+  actionDuration: z.nullable(types.string()).optional(),
   rateLimit: z.nullable(
     z.lazy(() => GenerateFirewallRuleRateLimit$inboundSchema),
   ).optional(),
   redirect: z.nullable(z.lazy(() => GenerateFirewallRuleRedirect$inboundSchema))
     .optional(),
-  actionDuration: z.nullable(types.string()).optional(),
 });
 
 export function generateFirewallRuleMitigateFromJSON(
@@ -254,18 +190,82 @@ export function generateFirewallRuleActionFromJSON(
 }
 
 /** @internal */
+export const GenerateFirewallRuleValue$inboundSchema: z.ZodType<
+  GenerateFirewallRuleValue,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), types.number(), z.array(types.string())]);
+
+export function generateFirewallRuleValueFromJSON(
+  jsonString: string,
+): SafeParseResult<GenerateFirewallRuleValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GenerateFirewallRuleValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GenerateFirewallRuleValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const GenerateFirewallRuleConditions$inboundSchema: z.ZodType<
+  GenerateFirewallRuleConditions,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  key: types.optional(types.string()),
+  neg: types.optional(types.boolean()),
+  op: types.string(),
+  type: types.string(),
+  value: types.optional(
+    smartUnion([types.string(), types.number(), z.array(types.string())]),
+  ),
+});
+
+export function generateFirewallRuleConditionsFromJSON(
+  jsonString: string,
+): SafeParseResult<GenerateFirewallRuleConditions, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GenerateFirewallRuleConditions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GenerateFirewallRuleConditions' from JSON`,
+  );
+}
+
+/** @internal */
+export const GenerateFirewallRuleConditionGroup$inboundSchema: z.ZodType<
+  GenerateFirewallRuleConditionGroup,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  conditions: z.array(
+    z.lazy(() => GenerateFirewallRuleConditions$inboundSchema),
+  ),
+});
+
+export function generateFirewallRuleConditionGroupFromJSON(
+  jsonString: string,
+): SafeParseResult<GenerateFirewallRuleConditionGroup, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GenerateFirewallRuleConditionGroup$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GenerateFirewallRuleConditionGroup' from JSON`,
+  );
+}
+
+/** @internal */
 export const GenerateFirewallRuleRule$inboundSchema: z.ZodType<
   GenerateFirewallRuleRule,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: types.string(),
-  description: types.optional(types.string()),
+  action: z.lazy(() => GenerateFirewallRuleAction$inboundSchema),
   active: types.boolean(),
   conditionGroup: z.array(
     z.lazy(() => GenerateFirewallRuleConditionGroup$inboundSchema),
   ),
-  action: z.lazy(() => GenerateFirewallRuleAction$inboundSchema),
+  description: types.optional(types.string()),
+  name: types.string(),
 });
 
 export function generateFirewallRuleRuleFromJSON(
@@ -284,8 +284,8 @@ export const GenerateFirewallRuleResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  rule: types.optional(z.lazy(() => GenerateFirewallRuleRule$inboundSchema)),
   error: types.optional(types.string()),
+  rule: types.optional(z.lazy(() => GenerateFirewallRuleRule$inboundSchema)),
 });
 
 export function generateFirewallRuleResponseBodyFromJSON(

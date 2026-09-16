@@ -5,7 +5,7 @@
 ```typescript
 import {
   GetSecurityFirewallConfigRulesetsSecurityResponse200ApplicationJSONResponseBodyVersions1ActionAction,
-} from "@vercel/sdk/models/getsecurityfirewallconfigsecurityresponsemanagedrules.js";
+} from "@vercel/sdk/models/getsecurityfirewallconfigrulesetssecurityresponse200action.js";
 
 let value:
   GetSecurityFirewallConfigRulesetsSecurityResponse200ApplicationJSONResponseBodyVersions1ActionAction =

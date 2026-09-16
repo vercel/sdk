@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentOutput } from "@vercel/sdk/models/locale.js";
+import { CancelDeploymentOutput } from "@vercel/sdk/models/canceldeploymentresourceconfig.js";
 
 let value: CancelDeploymentOutput = {
-  path: "/opt/sbin",
   functionName: "<value>",
+  path: "/opt/sbin",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: CancelDeploymentOutput = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `path`             | *string*           | :heavy_check_mark: | N/A                |
 | `functionName`     | *string*           | :heavy_check_mark: | N/A                |
+| `path`             | *string*           | :heavy_check_mark: | N/A                |

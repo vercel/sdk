@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsEnvironmentsProjects2 } from "@vercel/sdk/models/getprojectsinternalroutesprojectsresponsehas.js";
+import { GetProjectsEnvironmentsProjects2 } from "@vercel/sdk/models/getprojectsresponsebodyprojectsconsolidatedgitcommitstatus.js";
 
 let value: GetProjectsEnvironmentsProjects2 = {
-  type: "custom",
   environmentId: "<id>",
+  type: "custom",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: GetProjectsEnvironmentsProjects2 = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `type`             | *"custom"*         | :heavy_check_mark: | N/A                |
 | `environmentId`    | *string*           | :heavy_check_mark: | N/A                |
+| `type`             | *"custom"*         | :heavy_check_mark: | N/A                |

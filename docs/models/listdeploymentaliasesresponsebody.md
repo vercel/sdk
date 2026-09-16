@@ -10,9 +10,9 @@ import { ListDeploymentAliasesResponseBody } from "@vercel/sdk/models/listdeploy
 let value: ListDeploymentAliasesResponseBody = {
   aliases: [
     {
-      uid: "2WjyKQmM8ZnGcJsPWMrHRHrE",
       alias: "my-alias.vercel.app",
       created: new Date("2017-04-26T23:00:34.232Z"),
+      uid: "2WjyKQmM8ZnGcJsPWMrHRHrE",
     },
   ],
 };

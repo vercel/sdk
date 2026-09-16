@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyIntegrations } from "@vercel/sdk/models/createdeploymenthasdeploymentstype.js";
+import { ResponseBodyIntegrations } from "@vercel/sdk/models/createdeploymentmissingdeploymentsresponse1.js";
 
 let value: ResponseBodyIntegrations = {
-  status: "skipped",
-  startedAt: 1770.55,
+  startedAt: 6410.6,
+  status: "error",
 };
 ```
 
@@ -15,9 +15,9 @@ let value: ResponseBodyIntegrations = {
 
 | Field                                                                                                              | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
 | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
-| `status`                                                                                                           | [models.CreateDeploymentResponseBodyDeploymentsStatus](../models/createdeploymentresponsebodydeploymentsstatus.md) | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
-| `startedAt`                                                                                                        | *number*                                                                                                           | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
 | `claimedAt`                                                                                                        | *number*                                                                                                           | :heavy_minus_sign:                                                                                                 | N/A                                                                                                                |
 | `completedAt`                                                                                                      | *number*                                                                                                           | :heavy_minus_sign:                                                                                                 | N/A                                                                                                                |
 | `skippedAt`                                                                                                        | *number*                                                                                                           | :heavy_minus_sign:                                                                                                 | N/A                                                                                                                |
 | `skippedBy`                                                                                                        | *string*                                                                                                           | :heavy_minus_sign:                                                                                                 | N/A                                                                                                                |
+| `startedAt`                                                                                                        | *number*                                                                                                           | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
+| `status`                                                                                                           | [models.CreateDeploymentResponseBodyDeploymentsStatus](../models/createdeploymentresponsebodydeploymentsstatus.md) | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |

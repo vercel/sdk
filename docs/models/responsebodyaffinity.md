@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyAffinity } from "@vercel/sdk/models/createdeploymenthasdeploymentstype.js";
+import { ResponseBodyAffinity } from "@vercel/sdk/models/createdeploymentresponsebodydeploymentsstatus.js";
 
 let value: ResponseBodyAffinity = {
   mode: "strict",

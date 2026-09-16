@@ -10,19 +10,6 @@ import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
- * The status of the current sandbox.
- */
-export const NamedSandboxStatus = {
-  Running: "running",
-  Stopped: "stopped",
-  Stopping: "stopping",
-} as const;
-/**
- * The status of the current sandbox.
- */
-export type NamedSandboxStatus = ClosedEnum<typeof NamedSandboxStatus>;
-
-/**
  * The regions the sandbox fails over to. Empty when it does not fail over.
  */
 export const FailoverRegions = {
@@ -60,76 +47,119 @@ export type KeepLastSnapshots = {
    */
   count: number;
   /**
-   * Expiration time in milliseconds for kept snapshots.
-   */
-  expiration?: number | undefined;
-  /**
    * Whether to immediately delete evicted snapshots.
    */
   deleteEvicted: boolean;
+  /**
+   * Expiration time in milliseconds for kept snapshots.
+   */
+  expiration?: number | undefined;
 };
 
-export const NamedSandboxNetworkPolicyMode = {
-  AllowAll: "allow-all",
-  Custom: "custom",
-  DefaultAllow: "default-allow",
-  DefaultDeny: "default-deny",
-  DenyAll: "deny-all",
-} as const;
-export type NamedSandboxNetworkPolicyMode = ClosedEnum<
-  typeof NamedSandboxNetworkPolicyMode
->;
-
-/**
- * Network policy configuration.
- */
-export type NetworkPolicy = {
-  mode: NamedSandboxNetworkPolicyMode;
-  allowedDomains?: Array<string> | undefined;
-  allowedCIDRs?: Array<string> | undefined;
-  deniedCIDRs?: Array<string> | undefined;
-  s3Key?: string | undefined;
-};
-
-export const NamedSandboxMode = {
+export const NamedSandboxMountsMode = {
   ReadOnly: "read-only",
   ReadWrite: "read-write",
   Snapshot: "snapshot",
 } as const;
-export type NamedSandboxMode = ClosedEnum<typeof NamedSandboxMode>;
+export type NamedSandboxMountsMode = ClosedEnum<typeof NamedSandboxMountsMode>;
 
 /**
  * Key-value pairs of mount path and drive.
  */
 export type Mounts = {
   drive: string;
-  mode?: NamedSandboxMode | undefined;
+  mode?: NamedSandboxMountsMode | undefined;
 };
+
+export const NamedSandboxMode = {
+  AllowAll: "allow-all",
+  Custom: "custom",
+  DefaultAllow: "default-allow",
+  DefaultDeny: "default-deny",
+  DenyAll: "deny-all",
+} as const;
+export type NamedSandboxMode = ClosedEnum<typeof NamedSandboxMode>;
+
+/**
+ * Network policy configuration.
+ */
+export type NetworkPolicy = {
+  allowedCIDRs?: Array<string> | undefined;
+  allowedDomains?: Array<string> | undefined;
+  deniedCIDRs?: Array<string> | undefined;
+  mode: NamedSandboxMode;
+  s3Key?: string | undefined;
+};
+
+/**
+ * The status of the current sandbox.
+ */
+export const NamedSandboxStatus = {
+  Running: "running",
+  Stopped: "stopped",
+  Stopping: "stopping",
+} as const;
+/**
+ * The status of the current sandbox.
+ */
+export type NamedSandboxStatus = ClosedEnum<typeof NamedSandboxStatus>;
 
 /**
  * This object contains information related to a Vercel NamedSandbox.
  */
 export type NamedSandbox = {
   /**
-   * The unique identifier of the sandbox.
+   * The time when the named sandbox was created, in milliseconds since the epoch.
    */
-  name: string;
-  /**
-   * Current snapshot ID that the named sandbox is pointing to.
-   */
-  currentSnapshotId?: string | undefined;
+  createdAt: number;
   /**
    * Current session ID the sandbox is pointing to.
    */
   currentSessionId: string;
   /**
-   * The status of the current sandbox.
+   * Current snapshot ID that the named sandbox is pointing to.
    */
-  status: NamedSandboxStatus;
+  currentSnapshotId?: string | undefined;
   /**
-   * The time when the sandbox status was last updated, in milliseconds since the epoch.
+   * The working directory of the sandbox.
    */
-  statusUpdatedAt: number;
+  cwd?: string | undefined;
+  /**
+   * The time at which the currently running sandbox will time out, in milliseconds since the epoch. Only present while a session is running.
+   */
+  expiresAt?: number | undefined;
+  /**
+   * The regions the sandbox fails over to. Empty when it does not fail over.
+   */
+  failoverRegions?: Array<FailoverRegions> | undefined;
+  /**
+   * Digest-pinned reference of the container image the sandbox was created from, when it was created from an image ("{repository}@{manifestDigest}").
+   */
+  image?: string | undefined;
+  /**
+   * Keep-last snapshot configuration.
+   */
+  keepLastSnapshots?: KeepLastSnapshots | undefined;
+  /**
+   * Memory allocated in MB.
+   */
+  memory?: number | undefined;
+  /**
+   * Key-value pairs of mount path and drive.
+   */
+  mounts?: { [k: string]: Mounts } | undefined;
+  /**
+   * The unique identifier of the sandbox.
+   */
+  name: string;
+  /**
+   * The Connect network id for the target Secure Compute private network.
+   */
+  networkId?: string | undefined;
+  /**
+   * Network policy configuration.
+   */
+  networkPolicy?: NetworkPolicy | undefined;
   /**
    * Whether the sandbox persists its state across restarts via automatic snapshots.
    */
@@ -139,53 +169,29 @@ export type NamedSandbox = {
    */
   region?: string | undefined;
   /**
-   * The regions the sandbox fails over to. Empty when it does not fail over.
-   */
-  failoverRegions?: Array<FailoverRegions> | undefined;
-  /**
-   * Number of virtual CPUs allocated.
-   */
-  vcpus?: number | undefined;
-  /**
-   * Memory allocated in MB.
-   */
-  memory?: number | undefined;
-  /**
    * Runtime identifier.
    */
   runtime?: string | undefined;
-  /**
-   * Digest-pinned reference of the container image the sandbox was created from, when it was created from an image ("{repository}@{manifestDigest}").
-   */
-  image?: string | undefined;
-  /**
-   * Timeout in milliseconds.
-   */
-  timeout?: number | undefined;
   /**
    * Default snapshot expiration time in milliseconds. 0 means no expiration.
    */
   snapshotExpiration?: number | undefined;
   /**
-   * Keep-last snapshot configuration.
+   * The status of the current sandbox.
    */
-  keepLastSnapshots?: KeepLastSnapshots | undefined;
+  status: NamedSandboxStatus;
   /**
-   * Network policy configuration.
+   * The time when the sandbox status was last updated, in milliseconds since the epoch.
    */
-  networkPolicy?: NetworkPolicy | undefined;
+  statusUpdatedAt: number;
   /**
-   * The Connect network id for the target Secure Compute private network.
+   * Key-value tags attached to the named sandbox.
    */
-  networkId?: string | undefined;
+  tags?: { [k: string]: string } | undefined;
   /**
-   * Cumulative egress bytes across all sandbox runs.
+   * Timeout in milliseconds.
    */
-  totalEgressBytes?: number | undefined;
-  /**
-   * Cumulative ingress bytes across all sandbox runs.
-   */
-  totalIngressBytes?: number | undefined;
+  timeout?: number | undefined;
   /**
    * Cumulative active CPU duration in milliseconds across all sandbox runs.
    */
@@ -195,35 +201,22 @@ export type NamedSandbox = {
    */
   totalDurationMs?: number | undefined;
   /**
-   * The working directory of the sandbox.
+   * Cumulative egress bytes across all sandbox runs.
    */
-  cwd?: string | undefined;
+  totalEgressBytes?: number | undefined;
   /**
-   * Key-value tags attached to the named sandbox.
+   * Cumulative ingress bytes across all sandbox runs.
    */
-  tags?: { [k: string]: string } | undefined;
-  /**
-   * Key-value pairs of mount path and drive.
-   */
-  mounts?: { [k: string]: Mounts } | undefined;
-  /**
-   * The time when the named sandbox was created, in milliseconds since the epoch.
-   */
-  createdAt: number;
+  totalIngressBytes?: number | undefined;
   /**
    * The time when the named sandbox was last updated, in milliseconds since the epoch.
    */
   updatedAt: number;
   /**
-   * The time at which the currently running sandbox will time out, in milliseconds since the epoch. Only present while a session is running.
+   * Number of virtual CPUs allocated.
    */
-  expiresAt?: number | undefined;
+  vcpus?: number | undefined;
 };
-
-/** @internal */
-export const NamedSandboxStatus$inboundSchema: z.ZodNativeEnum<
-  typeof NamedSandboxStatus
-> = z.nativeEnum(NamedSandboxStatus);
 
 /** @internal */
 export const FailoverRegions$inboundSchema: z.ZodNativeEnum<
@@ -237,8 +230,8 @@ export const KeepLastSnapshots$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   count: types.number(),
-  expiration: types.optional(types.number()),
   deleteEvicted: types.boolean(),
+  expiration: types.optional(types.number()),
 });
 
 export function keepLastSnapshotsFromJSON(
@@ -252,9 +245,31 @@ export function keepLastSnapshotsFromJSON(
 }
 
 /** @internal */
-export const NamedSandboxNetworkPolicyMode$inboundSchema: z.ZodNativeEnum<
-  typeof NamedSandboxNetworkPolicyMode
-> = z.nativeEnum(NamedSandboxNetworkPolicyMode);
+export const NamedSandboxMountsMode$inboundSchema: z.ZodNativeEnum<
+  typeof NamedSandboxMountsMode
+> = z.nativeEnum(NamedSandboxMountsMode);
+
+/** @internal */
+export const Mounts$inboundSchema: z.ZodType<Mounts, z.ZodTypeDef, unknown> = z
+  .object({
+    drive: types.string(),
+    mode: types.optional(NamedSandboxMountsMode$inboundSchema),
+  });
+
+export function mountsFromJSON(
+  jsonString: string,
+): SafeParseResult<Mounts, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Mounts$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Mounts' from JSON`,
+  );
+}
+
+/** @internal */
+export const NamedSandboxMode$inboundSchema: z.ZodNativeEnum<
+  typeof NamedSandboxMode
+> = z.nativeEnum(NamedSandboxMode);
 
 /** @internal */
 export const NetworkPolicy$inboundSchema: z.ZodType<
@@ -262,10 +277,10 @@ export const NetworkPolicy$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  mode: NamedSandboxNetworkPolicyMode$inboundSchema,
-  allowedDomains: types.optional(z.array(types.string())),
   allowedCIDRs: types.optional(z.array(types.string())),
+  allowedDomains: types.optional(z.array(types.string())),
   deniedCIDRs: types.optional(z.array(types.string())),
+  mode: NamedSandboxMode$inboundSchema,
   s3Key: types.optional(types.string()),
 });
 
@@ -280,26 +295,9 @@ export function networkPolicyFromJSON(
 }
 
 /** @internal */
-export const NamedSandboxMode$inboundSchema: z.ZodNativeEnum<
-  typeof NamedSandboxMode
-> = z.nativeEnum(NamedSandboxMode);
-
-/** @internal */
-export const Mounts$inboundSchema: z.ZodType<Mounts, z.ZodTypeDef, unknown> = z
-  .object({
-    drive: types.string(),
-    mode: types.optional(NamedSandboxMode$inboundSchema),
-  });
-
-export function mountsFromJSON(
-  jsonString: string,
-): SafeParseResult<Mounts, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Mounts$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Mounts' from JSON`,
-  );
-}
+export const NamedSandboxStatus$inboundSchema: z.ZodNativeEnum<
+  typeof NamedSandboxStatus
+> = z.nativeEnum(NamedSandboxStatus);
 
 /** @internal */
 export const NamedSandbox$inboundSchema: z.ZodType<
@@ -307,35 +305,35 @@ export const NamedSandbox$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: types.string(),
-  currentSnapshotId: types.optional(types.string()),
+  createdAt: types.number(),
   currentSessionId: types.string(),
-  status: NamedSandboxStatus$inboundSchema,
-  statusUpdatedAt: types.number(),
-  persistent: types.boolean(),
-  region: types.optional(types.string()),
+  currentSnapshotId: types.optional(types.string()),
+  cwd: types.optional(types.string()),
+  expiresAt: types.optional(types.number()),
   failoverRegions: types.optional(z.array(FailoverRegions$inboundSchema)),
-  vcpus: types.optional(types.number()),
-  memory: types.optional(types.number()),
-  runtime: types.optional(types.string()),
   image: types.optional(types.string()),
-  timeout: types.optional(types.number()),
-  snapshotExpiration: types.optional(types.number()),
   keepLastSnapshots: types.optional(
     z.lazy(() => KeepLastSnapshots$inboundSchema),
   ),
-  networkPolicy: types.optional(z.lazy(() => NetworkPolicy$inboundSchema)),
+  memory: types.optional(types.number()),
+  mounts: types.optional(z.record(z.lazy(() => Mounts$inboundSchema))),
+  name: types.string(),
   networkId: types.optional(types.string()),
-  totalEgressBytes: types.optional(types.number()),
-  totalIngressBytes: types.optional(types.number()),
+  networkPolicy: types.optional(z.lazy(() => NetworkPolicy$inboundSchema)),
+  persistent: types.boolean(),
+  region: types.optional(types.string()),
+  runtime: types.optional(types.string()),
+  snapshotExpiration: types.optional(types.number()),
+  status: NamedSandboxStatus$inboundSchema,
+  statusUpdatedAt: types.number(),
+  tags: types.optional(z.record(types.string())),
+  timeout: types.optional(types.number()),
   totalActiveCpuDurationMs: types.optional(types.number()),
   totalDurationMs: types.optional(types.number()),
-  cwd: types.optional(types.string()),
-  tags: types.optional(z.record(types.string())),
-  mounts: types.optional(z.record(z.lazy(() => Mounts$inboundSchema))),
-  createdAt: types.number(),
+  totalEgressBytes: types.optional(types.number()),
+  totalIngressBytes: types.optional(types.number()),
   updatedAt: types.number(),
-  expiresAt: types.optional(types.number()),
+  vcpus: types.optional(types.number()),
 });
 
 export function namedSandboxFromJSON(

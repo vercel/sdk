@@ -5,14 +5,14 @@
 ## Example Usage
 
 ```typescript
-import { History } from "@vercel/sdk/models/usereventpayload171gituserid.js";
+import { History } from "@vercel/sdk/models/usereventpayload171newownerfeatureblocksworkflowstoragewriteblockreason.js";
 
 let value: History = {
-  scanner: "<value>",
-  reason: "<value>",
+  at: 4164.1,
   by: "<value>",
   byId: "<id>",
-  at: 4164.1,
+  reason: "<value>",
+  scanner: "<value>",
 };
 ```
 
@@ -20,8 +20,8 @@ let value: History = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `scanner`          | *string*           | :heavy_check_mark: | N/A                |
-| `reason`           | *string*           | :heavy_check_mark: | N/A                |
+| `at`               | *number*           | :heavy_check_mark: | N/A                |
 | `by`               | *string*           | :heavy_check_mark: | N/A                |
 | `byId`             | *string*           | :heavy_check_mark: | N/A                |
-| `at`               | *number*           | :heavy_check_mark: | N/A                |
+| `reason`           | *string*           | :heavy_check_mark: | N/A                |
+| `scanner`          | *string*           | :heavy_check_mark: | N/A                |

@@ -6,9 +6,9 @@
 import { CreateFlagSegmentOutcomeFeatureFlagsBase } from "@vercel/sdk/models/createflagsegmentop.js";
 
 let value: CreateFlagSegmentOutcomeFeatureFlagsBase = {
-  type: "entity",
-  kind: "<value>",
   attribute: "<value>",
+  kind: "<value>",
+  type: "entity",
 };
 ```
 
@@ -16,6 +16,6 @@ let value: CreateFlagSegmentOutcomeFeatureFlagsBase = {
 
 | Field                                                                                                                    | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
 | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
-| `type`                                                                                                                   | [models.CreateFlagSegmentOutcomeFeatureFlagsResponseType](../models/createflagsegmentoutcomefeatureflagsresponsetype.md) | :heavy_check_mark:                                                                                                       | N/A                                                                                                                      |
-| `kind`                                                                                                                   | *string*                                                                                                                 | :heavy_check_mark:                                                                                                       | N/A                                                                                                                      |
 | `attribute`                                                                                                              | *string*                                                                                                                 | :heavy_check_mark:                                                                                                       | N/A                                                                                                                      |
+| `kind`                                                                                                                   | *string*                                                                                                                 | :heavy_check_mark:                                                                                                       | N/A                                                                                                                      |
+| `type`                                                                                                                   | [models.CreateFlagSegmentOutcomeFeatureFlagsResponseType](../models/createflagsegmentoutcomefeatureflagsresponsetype.md) | :heavy_check_mark:                                                                                                       | N/A                                                                                                                      |

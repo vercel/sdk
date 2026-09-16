@@ -3,14 +3,14 @@
 ## Example Usage
 
 ```typescript
-import { UpdateProjectCreator3 } from "@vercel/sdk/models/updateprojectprojectsresponse200applicationjsonresponsebodycustomenvironmentstype.js";
+import { UpdateProjectCreator3 } from "@vercel/sdk/models/updateprojectdefinitions.js";
 
 let value: UpdateProjectCreator3 = {
-  type: "integration",
   integration: {
-    integrationId: "<id>",
     configurationId: "<id>",
+    integrationId: "<id>",
   },
+  type: "integration",
 };
 ```
 
@@ -18,5 +18,5 @@ let value: UpdateProjectCreator3 = {
 
 | Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
 | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `type`                                                                                 | *"integration"*                                                                        | :heavy_check_mark:                                                                     | N/A                                                                                    |
 | `integration`                                                                          | [models.UpdateProjectCreatorIntegration](../models/updateprojectcreatorintegration.md) | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `type`                                                                                 | *"integration"*                                                                        | :heavy_check_mark:                                                                     | N/A                                                                                    |

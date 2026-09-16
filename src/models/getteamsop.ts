@@ -32,11 +32,11 @@ export type GetTeamsTeams = Team | TeamLimited;
  * A paginated list of teams.
  */
 export type GetTeamsResponseBody = {
-  teams: Array<Team | TeamLimited>;
   /**
    * This object contains information related to the pagination of the current request, including the necessary parameters to get the next or previous page of data.
    */
   pagination: Pagination;
+  teams: Array<Team | TeamLimited>;
 };
 
 /** @internal */
@@ -86,8 +86,8 @@ export const GetTeamsResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  teams: z.array(smartUnion([Team$inboundSchema, TeamLimited$inboundSchema])),
   pagination: Pagination$inboundSchema,
+  teams: z.array(smartUnion([Team$inboundSchema, TeamLimited$inboundSchema])),
 });
 
 export function getTeamsResponseBodyFromJSON(

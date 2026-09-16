@@ -3,16 +3,16 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectCreator1 } from "@vercel/sdk/models/getprojectrollingrelease.js";
+import { GetProjectCreator1 } from "@vercel/sdk/models/getprojecthas2.js";
 
 let value: GetProjectCreator1 = {
   type: "user",
   via: {
-    type: "integration",
     integration: {
-      integrationId: "<id>",
       configurationId: "<id>",
+      integrationId: "<id>",
     },
+    type: "integration",
   },
   user: {
     id: "<id>",

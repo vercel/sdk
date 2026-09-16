@@ -9,8 +9,8 @@ Principal that most recently updated the connector.
 
 ```typescript
 const value: models.ConnectConnectorCreateResultUpdatedBy1 = {
-  type: "user",
   id: "<id>",
+  type: "user",
 };
 ```
 
@@ -18,9 +18,9 @@ const value: models.ConnectConnectorCreateResultUpdatedBy1 = {
 
 ```typescript
 const value: models.ConnectConnectorCreateResultUpdatedBy2 = {
-  type: "project",
-  id: "<id>",
   environment: "preview",
+  id: "<id>",
+  type: "project",
 };
 ```
 

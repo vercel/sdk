@@ -5,14 +5,13 @@ Description of why a project was rolled back, and by whom. Note that lastAliasRe
 ## Example Usage
 
 ```typescript
-import { GetProjectRollbackDescription } from "@vercel/sdk/models/getprojectrollingrelease.js";
+import { GetProjectRollbackDescription } from "@vercel/sdk/models/getprojectfrompreset.js";
 
 let value: GetProjectRollbackDescription = {
+  createdAt: 4672.55,
+  description: "uh-huh jungle than split",
   userId: "<id>",
-  username: "Jammie_Morissette87",
-  description:
-    "slip orientate rim since ew whoa conservative camouflage whether intrigue",
-  createdAt: 6042.84,
+  username: "Lorenz.Kuhlman",
 };
 ```
 
@@ -20,7 +19,7 @@ let value: GetProjectRollbackDescription = {
 
 | Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               |
 | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `createdAt`                                                                               | *number*                                                                                  | :heavy_check_mark:                                                                        | Timestamp of when the rollback was requested.                                             |
+| `description`                                                                             | *string*                                                                                  | :heavy_check_mark:                                                                        | User-supplied explanation of why they rolled back the project. Limited to 250 characters. |
 | `userId`                                                                                  | *string*                                                                                  | :heavy_check_mark:                                                                        | The user who rolled back the project.                                                     |
 | `username`                                                                                | *string*                                                                                  | :heavy_check_mark:                                                                        | The username of the user who rolled back the project.                                     |
-| `description`                                                                             | *string*                                                                                  | :heavy_check_mark:                                                                        | User-supplied explanation of why they rolled back the project. Limited to 250 characters. |
-| `createdAt`                                                                               | *number*                                                                                  | :heavy_check_mark:                                                                        | Timestamp of when the rollback was requested.                                             |

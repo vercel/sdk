@@ -38,6 +38,290 @@ export type ApproveRollingReleaseStageRequest = {
 };
 
 /**
+ * The currently active stage, null if the rollout is aborted
+ */
+export type ApproveRollingReleaseStageActiveStage = {
+  /**
+   * Duration in seconds for automatic advancement, null for manual stages or the final stage
+   */
+  duration: number | null;
+  /**
+   * The zero-based index of the stage
+   */
+  index: number;
+  /**
+   * Whether or not this stage is the final stage (targetPercentage === 100)
+   */
+  isFinalStage: boolean;
+  /**
+   * Whether to linearly shift traffic over the duration of this stage
+   */
+  linearShift?: boolean | undefined;
+  /**
+   * Whether or not this stage requires manual approval to proceed
+   */
+  requireApproval: boolean;
+  /**
+   * The percentage of traffic to serve to the canary deployment (0-100)
+   */
+  targetPercentage: number;
+};
+
+/**
+ * The advancement type of the rolling release
+ */
+export const ApproveRollingReleaseStageAdvancementType = {
+  Automatic: "automatic",
+  ManualApproval: "manual-approval",
+} as const;
+/**
+ * The advancement type of the rolling release
+ */
+export type ApproveRollingReleaseStageAdvancementType = ClosedEnum<
+  typeof ApproveRollingReleaseStageAdvancementType
+>;
+
+/**
+ * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+ */
+export const ApproveRollingReleaseStageReadyState = {
+  Blocked: "BLOCKED",
+  Building: "BUILDING",
+  Canceled: "CANCELED",
+  Error: "ERROR",
+  Initializing: "INITIALIZING",
+  Queued: "QUEUED",
+  Ready: "READY",
+} as const;
+/**
+ * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+ */
+export type ApproveRollingReleaseStageReadyState = ClosedEnum<
+  typeof ApproveRollingReleaseStageReadyState
+>;
+
+/**
+ * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
+ */
+export const ApproveRollingReleaseStageSource = {
+  ApiTriggerGitDeploy: "api-trigger-git-deploy",
+  Cli: "cli",
+  CloneRepo: "clone/repo",
+  Drop: "drop",
+  Git: "git",
+  GitDeployHook: "git-deploy-hook",
+  Import: "import",
+  ImportRepo: "import/repo",
+  Redeploy: "redeploy",
+  V0Web: "v0-web",
+} as const;
+/**
+ * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
+ */
+export type ApproveRollingReleaseStageSource = ClosedEnum<
+  typeof ApproveRollingReleaseStageSource
+>;
+
+/**
+ * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+ */
+export const ApproveRollingReleaseStageTarget = {
+  Production: "production",
+  Staging: "staging",
+} as const;
+/**
+ * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+ */
+export type ApproveRollingReleaseStageTarget = ClosedEnum<
+  typeof ApproveRollingReleaseStageTarget
+>;
+
+/**
+ * The canary deployment being rolled out
+ */
+export type ApproveRollingReleaseStageCanaryDeployment = {
+  /**
+   * A number containing the date when the deployment was created in milliseconds
+   */
+  createdAt: number;
+  /**
+   * A string holding the unique ID of the deployment
+   */
+  id: string;
+  /**
+   * The name of the project associated with the deployment at the time that the deployment was created
+   */
+  name: string;
+  /**
+   * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+   */
+  readyState: ApproveRollingReleaseStageReadyState;
+  readyStateAt?: number | undefined;
+  /**
+   * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
+   */
+  source?: ApproveRollingReleaseStageSource | undefined;
+  /**
+   * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+   */
+  target?: ApproveRollingReleaseStageTarget | null | undefined;
+  /**
+   * A string with the unique URL of the deployment
+   */
+  url: string;
+};
+
+/**
+ * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+ */
+export const ApproveRollingReleaseStageRollingReleaseReadyState = {
+  Blocked: "BLOCKED",
+  Building: "BUILDING",
+  Canceled: "CANCELED",
+  Error: "ERROR",
+  Initializing: "INITIALIZING",
+  Queued: "QUEUED",
+  Ready: "READY",
+} as const;
+/**
+ * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+ */
+export type ApproveRollingReleaseStageRollingReleaseReadyState = ClosedEnum<
+  typeof ApproveRollingReleaseStageRollingReleaseReadyState
+>;
+
+/**
+ * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
+ */
+export const ApproveRollingReleaseStageRollingReleaseSource = {
+  ApiTriggerGitDeploy: "api-trigger-git-deploy",
+  Cli: "cli",
+  CloneRepo: "clone/repo",
+  Drop: "drop",
+  Git: "git",
+  GitDeployHook: "git-deploy-hook",
+  Import: "import",
+  ImportRepo: "import/repo",
+  Redeploy: "redeploy",
+  V0Web: "v0-web",
+} as const;
+/**
+ * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
+ */
+export type ApproveRollingReleaseStageRollingReleaseSource = ClosedEnum<
+  typeof ApproveRollingReleaseStageRollingReleaseSource
+>;
+
+/**
+ * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+ */
+export const ApproveRollingReleaseStageRollingReleaseTarget = {
+  Production: "production",
+  Staging: "staging",
+} as const;
+/**
+ * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+ */
+export type ApproveRollingReleaseStageRollingReleaseTarget = ClosedEnum<
+  typeof ApproveRollingReleaseStageRollingReleaseTarget
+>;
+
+/**
+ * The current deployment receiving production traffic
+ */
+export type ApproveRollingReleaseStageCurrentDeployment = {
+  /**
+   * A number containing the date when the deployment was created in milliseconds
+   */
+  createdAt: number;
+  /**
+   * A string holding the unique ID of the deployment
+   */
+  id: string;
+  /**
+   * The name of the project associated with the deployment at the time that the deployment was created
+   */
+  name: string;
+  /**
+   * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+   */
+  readyState: ApproveRollingReleaseStageRollingReleaseReadyState;
+  readyStateAt?: number | undefined;
+  /**
+   * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
+   */
+  source?: ApproveRollingReleaseStageRollingReleaseSource | undefined;
+  /**
+   * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+   */
+  target?: ApproveRollingReleaseStageRollingReleaseTarget | null | undefined;
+  /**
+   * A string with the unique URL of the deployment
+   */
+  url: string;
+};
+
+/**
+ * The next stage to be activated, null if not in ACTIVE state
+ */
+export type ApproveRollingReleaseStageNextStage = {
+  /**
+   * Duration in seconds for automatic advancement, null for manual stages or the final stage
+   */
+  duration: number | null;
+  /**
+   * The zero-based index of the stage
+   */
+  index: number;
+  /**
+   * Whether or not this stage is the final stage (targetPercentage === 100)
+   */
+  isFinalStage: boolean;
+  /**
+   * Whether to linearly shift traffic over the duration of this stage
+   */
+  linearShift?: boolean | undefined;
+  /**
+   * Whether or not this stage requires manual approval to proceed
+   */
+  requireApproval: boolean;
+  /**
+   * The percentage of traffic to serve to the canary deployment (0-100)
+   */
+  targetPercentage: number;
+};
+
+/**
+ * All stages configured for this rolling release
+ */
+export type ApproveRollingReleaseStageStages = {
+  /**
+   * Duration in seconds for automatic advancement, null for manual stages or the final stage
+   */
+  duration: number | null;
+  /**
+   * The zero-based index of the stage
+   */
+  index: number;
+  /**
+   * Whether or not this stage is the final stage (targetPercentage === 100)
+   */
+  isFinalStage: boolean;
+  /**
+   * Whether to linearly shift traffic over the duration of this stage
+   */
+  linearShift?: boolean | undefined;
+  /**
+   * Whether or not this stage requires manual approval to proceed
+   */
+  requireApproval: boolean;
+  /**
+   * The percentage of traffic to serve to the canary deployment (0-100)
+   */
+  targetPercentage: number;
+};
+
+/**
  * The current state of the rolling release
  */
 export const ApproveRollingReleaseStageState = {
@@ -66,293 +350,45 @@ export type ApproveRollingReleaseStageSubstate = ClosedEnum<
 >;
 
 /**
- * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
- */
-export const ApproveRollingReleaseStageReadyState = {
-  Blocked: "BLOCKED",
-  Building: "BUILDING",
-  Canceled: "CANCELED",
-  Error: "ERROR",
-  Initializing: "INITIALIZING",
-  Queued: "QUEUED",
-  Ready: "READY",
-} as const;
-/**
- * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
- */
-export type ApproveRollingReleaseStageReadyState = ClosedEnum<
-  typeof ApproveRollingReleaseStageReadyState
->;
-
-/**
- * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
- */
-export const ApproveRollingReleaseStageTarget = {
-  Production: "production",
-  Staging: "staging",
-} as const;
-/**
- * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
- */
-export type ApproveRollingReleaseStageTarget = ClosedEnum<
-  typeof ApproveRollingReleaseStageTarget
->;
-
-/**
- * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
- */
-export const ApproveRollingReleaseStageSource = {
-  ApiTriggerGitDeploy: "api-trigger-git-deploy",
-  Cli: "cli",
-  CloneRepo: "clone/repo",
-  Drop: "drop",
-  Git: "git",
-  GitDeployHook: "git-deploy-hook",
-  Import: "import",
-  ImportRepo: "import/repo",
-  Redeploy: "redeploy",
-  V0Web: "v0-web",
-} as const;
-/**
- * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
- */
-export type ApproveRollingReleaseStageSource = ClosedEnum<
-  typeof ApproveRollingReleaseStageSource
->;
-
-/**
- * The current deployment receiving production traffic
- */
-export type ApproveRollingReleaseStageCurrentDeployment = {
-  /**
-   * The name of the project associated with the deployment at the time that the deployment was created
-   */
-  name: string;
-  /**
-   * A number containing the date when the deployment was created in milliseconds
-   */
-  createdAt: number;
-  /**
-   * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
-   */
-  readyState: ApproveRollingReleaseStageReadyState;
-  /**
-   * A string holding the unique ID of the deployment
-   */
-  id: string;
-  /**
-   * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
-   */
-  target?: ApproveRollingReleaseStageTarget | null | undefined;
-  readyStateAt?: number | undefined;
-  /**
-   * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
-   */
-  source?: ApproveRollingReleaseStageSource | undefined;
-  /**
-   * A string with the unique URL of the deployment
-   */
-  url: string;
-};
-
-/**
- * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
- */
-export const ApproveRollingReleaseStageRollingReleaseReadyState = {
-  Blocked: "BLOCKED",
-  Building: "BUILDING",
-  Canceled: "CANCELED",
-  Error: "ERROR",
-  Initializing: "INITIALIZING",
-  Queued: "QUEUED",
-  Ready: "READY",
-} as const;
-/**
- * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
- */
-export type ApproveRollingReleaseStageRollingReleaseReadyState = ClosedEnum<
-  typeof ApproveRollingReleaseStageRollingReleaseReadyState
->;
-
-/**
- * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
- */
-export const ApproveRollingReleaseStageRollingReleaseTarget = {
-  Production: "production",
-  Staging: "staging",
-} as const;
-/**
- * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
- */
-export type ApproveRollingReleaseStageRollingReleaseTarget = ClosedEnum<
-  typeof ApproveRollingReleaseStageRollingReleaseTarget
->;
-
-/**
- * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
- */
-export const ApproveRollingReleaseStageRollingReleaseSource = {
-  ApiTriggerGitDeploy: "api-trigger-git-deploy",
-  Cli: "cli",
-  CloneRepo: "clone/repo",
-  Drop: "drop",
-  Git: "git",
-  GitDeployHook: "git-deploy-hook",
-  Import: "import",
-  ImportRepo: "import/repo",
-  Redeploy: "redeploy",
-  V0Web: "v0-web",
-} as const;
-/**
- * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
- */
-export type ApproveRollingReleaseStageRollingReleaseSource = ClosedEnum<
-  typeof ApproveRollingReleaseStageRollingReleaseSource
->;
-
-/**
- * The canary deployment being rolled out
- */
-export type ApproveRollingReleaseStageCanaryDeployment = {
-  /**
-   * The name of the project associated with the deployment at the time that the deployment was created
-   */
-  name: string;
-  /**
-   * A number containing the date when the deployment was created in milliseconds
-   */
-  createdAt: number;
-  /**
-   * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
-   */
-  readyState: ApproveRollingReleaseStageRollingReleaseReadyState;
-  /**
-   * A string holding the unique ID of the deployment
-   */
-  id: string;
-  /**
-   * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
-   */
-  target?: ApproveRollingReleaseStageRollingReleaseTarget | null | undefined;
-  readyStateAt?: number | undefined;
-  /**
-   * Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it.
-   */
-  source?: ApproveRollingReleaseStageRollingReleaseSource | undefined;
-  /**
-   * A string with the unique URL of the deployment
-   */
-  url: string;
-};
-
-/**
- * The advancement type of the rolling release
- */
-export const ApproveRollingReleaseStageAdvancementType = {
-  Automatic: "automatic",
-  ManualApproval: "manual-approval",
-} as const;
-/**
- * The advancement type of the rolling release
- */
-export type ApproveRollingReleaseStageAdvancementType = ClosedEnum<
-  typeof ApproveRollingReleaseStageAdvancementType
->;
-
-/**
- * All stages configured for this rolling release
- */
-export type ApproveRollingReleaseStageStages = {
-  /**
-   * The zero-based index of the stage
-   */
-  index: number;
-  /**
-   * Whether or not this stage is the final stage (targetPercentage === 100)
-   */
-  isFinalStage: boolean;
-  /**
-   * The percentage of traffic to serve to the canary deployment (0-100)
-   */
-  targetPercentage: number;
-  /**
-   * Whether or not this stage requires manual approval to proceed
-   */
-  requireApproval: boolean;
-  /**
-   * Duration in seconds for automatic advancement, null for manual stages or the final stage
-   */
-  duration: number | null;
-  /**
-   * Whether to linearly shift traffic over the duration of this stage
-   */
-  linearShift?: boolean | undefined;
-};
-
-/**
- * The currently active stage, null if the rollout is aborted
- */
-export type ApproveRollingReleaseStageActiveStage = {
-  /**
-   * The zero-based index of the stage
-   */
-  index: number;
-  /**
-   * Whether or not this stage is the final stage (targetPercentage === 100)
-   */
-  isFinalStage: boolean;
-  /**
-   * The percentage of traffic to serve to the canary deployment (0-100)
-   */
-  targetPercentage: number;
-  /**
-   * Whether or not this stage requires manual approval to proceed
-   */
-  requireApproval: boolean;
-  /**
-   * Duration in seconds for automatic advancement, null for manual stages or the final stage
-   */
-  duration: number | null;
-  /**
-   * Whether to linearly shift traffic over the duration of this stage
-   */
-  linearShift?: boolean | undefined;
-};
-
-/**
- * The next stage to be activated, null if not in ACTIVE state
- */
-export type ApproveRollingReleaseStageNextStage = {
-  /**
-   * The zero-based index of the stage
-   */
-  index: number;
-  /**
-   * Whether or not this stage is the final stage (targetPercentage === 100)
-   */
-  isFinalStage: boolean;
-  /**
-   * The percentage of traffic to serve to the canary deployment (0-100)
-   */
-  targetPercentage: number;
-  /**
-   * Whether or not this stage requires manual approval to proceed
-   */
-  requireApproval: boolean;
-  /**
-   * Duration in seconds for automatic advancement, null for manual stages or the final stage
-   */
-  duration: number | null;
-  /**
-   * Whether to linearly shift traffic over the duration of this stage
-   */
-  linearShift?: boolean | undefined;
-};
-
-/**
  * Rolling release information including configuration and document details, or null if no rolling release exists
  */
 export type ApproveRollingReleaseStageRollingRelease = {
+  /**
+   * The currently active stage, null if the rollout is aborted
+   */
+  activeStage: ApproveRollingReleaseStageActiveStage | null;
+  /**
+   * The advancement type of the rolling release
+   */
+  advancementType: ApproveRollingReleaseStageAdvancementType;
+  /**
+   * The canary deployment being rolled out
+   */
+  canaryDeployment: ApproveRollingReleaseStageCanaryDeployment | null;
+  /**
+   * When set (for example while {@link substate} is `PAUSED`), the canary traffic percentage persisted on the rollout document — use for dashboard display when linear shift is active.
+   */
+  currentCanaryPercentage?: number | undefined;
+  /**
+   * The current deployment receiving production traffic
+   */
+  currentDeployment: ApproveRollingReleaseStageCurrentDeployment | null;
+  /**
+   * The next stage to be activated, null if not in ACTIVE state
+   */
+  nextStage: ApproveRollingReleaseStageNextStage | null;
+  /**
+   * The ID of a deployment queued for the next rolling release
+   */
+  queuedDeploymentId: string | null;
+  /**
+   * All stages configured for this rolling release
+   */
+  stages: Array<ApproveRollingReleaseStageStages>;
+  /**
+   * Unix timestamp in milliseconds when the rolling release started
+   */
+  startedAt: number;
   /**
    * The current state of the rolling release
    */
@@ -362,45 +398,9 @@ export type ApproveRollingReleaseStageRollingRelease = {
    */
   substate: ApproveRollingReleaseStageSubstate | null;
   /**
-   * The current deployment receiving production traffic
-   */
-  currentDeployment: ApproveRollingReleaseStageCurrentDeployment | null;
-  /**
-   * The canary deployment being rolled out
-   */
-  canaryDeployment: ApproveRollingReleaseStageCanaryDeployment | null;
-  /**
-   * The ID of a deployment queued for the next rolling release
-   */
-  queuedDeploymentId: string | null;
-  /**
-   * The advancement type of the rolling release
-   */
-  advancementType: ApproveRollingReleaseStageAdvancementType;
-  /**
-   * All stages configured for this rolling release
-   */
-  stages: Array<ApproveRollingReleaseStageStages>;
-  /**
-   * The currently active stage, null if the rollout is aborted
-   */
-  activeStage: ApproveRollingReleaseStageActiveStage | null;
-  /**
-   * The next stage to be activated, null if not in ACTIVE state
-   */
-  nextStage: ApproveRollingReleaseStageNextStage | null;
-  /**
-   * Unix timestamp in milliseconds when the rolling release started
-   */
-  startedAt: number;
-  /**
    * Unix timestamp in milliseconds when the rolling release was last updated
    */
   updatedAt: number;
-  /**
-   * When set (for example while {@link substate} is `PAUSED`), the canary traffic percentage persisted on the rollout document — use for dashboard display when linear shift is active.
-   */
-  currentCanaryPercentage?: number | undefined;
 };
 
 /**
@@ -476,14 +476,34 @@ export function approveRollingReleaseStageRequestToJSON(
 }
 
 /** @internal */
-export const ApproveRollingReleaseStageState$inboundSchema: z.ZodNativeEnum<
-  typeof ApproveRollingReleaseStageState
-> = z.nativeEnum(ApproveRollingReleaseStageState);
+export const ApproveRollingReleaseStageActiveStage$inboundSchema: z.ZodType<
+  ApproveRollingReleaseStageActiveStage,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  duration: types.nullable(types.number()),
+  index: types.number(),
+  isFinalStage: types.boolean(),
+  linearShift: types.optional(types.boolean()),
+  requireApproval: types.boolean(),
+  targetPercentage: types.number(),
+});
+
+export function approveRollingReleaseStageActiveStageFromJSON(
+  jsonString: string,
+): SafeParseResult<ApproveRollingReleaseStageActiveStage, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ApproveRollingReleaseStageActiveStage$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ApproveRollingReleaseStageActiveStage' from JSON`,
+  );
+}
 
 /** @internal */
-export const ApproveRollingReleaseStageSubstate$inboundSchema: z.ZodNativeEnum<
-  typeof ApproveRollingReleaseStageSubstate
-> = z.nativeEnum(ApproveRollingReleaseStageSubstate);
+export const ApproveRollingReleaseStageAdvancementType$inboundSchema:
+  z.ZodNativeEnum<typeof ApproveRollingReleaseStageAdvancementType> = z
+    .nativeEnum(ApproveRollingReleaseStageAdvancementType);
 
 /** @internal */
 export const ApproveRollingReleaseStageReadyState$inboundSchema:
@@ -492,80 +512,27 @@ export const ApproveRollingReleaseStageReadyState$inboundSchema:
   );
 
 /** @internal */
-export const ApproveRollingReleaseStageTarget$inboundSchema: z.ZodNativeEnum<
-  typeof ApproveRollingReleaseStageTarget
-> = z.nativeEnum(ApproveRollingReleaseStageTarget);
-
-/** @internal */
 export const ApproveRollingReleaseStageSource$inboundSchema: z.ZodNativeEnum<
   typeof ApproveRollingReleaseStageSource
 > = z.nativeEnum(ApproveRollingReleaseStageSource);
 
 /** @internal */
-export const ApproveRollingReleaseStageCurrentDeployment$inboundSchema:
-  z.ZodType<
-    ApproveRollingReleaseStageCurrentDeployment,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    name: types.string(),
-    createdAt: types.number(),
-    readyState: ApproveRollingReleaseStageReadyState$inboundSchema,
-    id: types.string(),
-    target: z.nullable(ApproveRollingReleaseStageTarget$inboundSchema)
-      .optional(),
-    readyStateAt: types.optional(types.number()),
-    source: types.optional(ApproveRollingReleaseStageSource$inboundSchema),
-    url: types.string(),
-  });
-
-export function approveRollingReleaseStageCurrentDeploymentFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  ApproveRollingReleaseStageCurrentDeployment,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      ApproveRollingReleaseStageCurrentDeployment$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'ApproveRollingReleaseStageCurrentDeployment' from JSON`,
-  );
-}
-
-/** @internal */
-export const ApproveRollingReleaseStageRollingReleaseReadyState$inboundSchema:
-  z.ZodNativeEnum<typeof ApproveRollingReleaseStageRollingReleaseReadyState> = z
-    .nativeEnum(ApproveRollingReleaseStageRollingReleaseReadyState);
-
-/** @internal */
-export const ApproveRollingReleaseStageRollingReleaseTarget$inboundSchema:
-  z.ZodNativeEnum<typeof ApproveRollingReleaseStageRollingReleaseTarget> = z
-    .nativeEnum(ApproveRollingReleaseStageRollingReleaseTarget);
-
-/** @internal */
-export const ApproveRollingReleaseStageRollingReleaseSource$inboundSchema:
-  z.ZodNativeEnum<typeof ApproveRollingReleaseStageRollingReleaseSource> = z
-    .nativeEnum(ApproveRollingReleaseStageRollingReleaseSource);
+export const ApproveRollingReleaseStageTarget$inboundSchema: z.ZodNativeEnum<
+  typeof ApproveRollingReleaseStageTarget
+> = z.nativeEnum(ApproveRollingReleaseStageTarget);
 
 /** @internal */
 export const ApproveRollingReleaseStageCanaryDeployment$inboundSchema:
   z.ZodType<ApproveRollingReleaseStageCanaryDeployment, z.ZodTypeDef, unknown> =
     z.object({
-      name: types.string(),
       createdAt: types.number(),
-      readyState:
-        ApproveRollingReleaseStageRollingReleaseReadyState$inboundSchema,
       id: types.string(),
-      target: z.nullable(
-        ApproveRollingReleaseStageRollingReleaseTarget$inboundSchema,
-      ).optional(),
+      name: types.string(),
+      readyState: ApproveRollingReleaseStageReadyState$inboundSchema,
       readyStateAt: types.optional(types.number()),
-      source: types.optional(
-        ApproveRollingReleaseStageRollingReleaseSource$inboundSchema,
-      ),
+      source: types.optional(ApproveRollingReleaseStageSource$inboundSchema),
+      target: z.nullable(ApproveRollingReleaseStageTarget$inboundSchema)
+        .optional(),
       url: types.string(),
     });
 
@@ -586,56 +553,55 @@ export function approveRollingReleaseStageCanaryDeploymentFromJSON(
 }
 
 /** @internal */
-export const ApproveRollingReleaseStageAdvancementType$inboundSchema:
-  z.ZodNativeEnum<typeof ApproveRollingReleaseStageAdvancementType> = z
-    .nativeEnum(ApproveRollingReleaseStageAdvancementType);
+export const ApproveRollingReleaseStageRollingReleaseReadyState$inboundSchema:
+  z.ZodNativeEnum<typeof ApproveRollingReleaseStageRollingReleaseReadyState> = z
+    .nativeEnum(ApproveRollingReleaseStageRollingReleaseReadyState);
 
 /** @internal */
-export const ApproveRollingReleaseStageStages$inboundSchema: z.ZodType<
-  ApproveRollingReleaseStageStages,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  index: types.number(),
-  isFinalStage: types.boolean(),
-  targetPercentage: types.number(),
-  requireApproval: types.boolean(),
-  duration: types.nullable(types.number()),
-  linearShift: types.optional(types.boolean()),
-});
-
-export function approveRollingReleaseStageStagesFromJSON(
-  jsonString: string,
-): SafeParseResult<ApproveRollingReleaseStageStages, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ApproveRollingReleaseStageStages$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ApproveRollingReleaseStageStages' from JSON`,
-  );
-}
+export const ApproveRollingReleaseStageRollingReleaseSource$inboundSchema:
+  z.ZodNativeEnum<typeof ApproveRollingReleaseStageRollingReleaseSource> = z
+    .nativeEnum(ApproveRollingReleaseStageRollingReleaseSource);
 
 /** @internal */
-export const ApproveRollingReleaseStageActiveStage$inboundSchema: z.ZodType<
-  ApproveRollingReleaseStageActiveStage,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  index: types.number(),
-  isFinalStage: types.boolean(),
-  targetPercentage: types.number(),
-  requireApproval: types.boolean(),
-  duration: types.nullable(types.number()),
-  linearShift: types.optional(types.boolean()),
-});
+export const ApproveRollingReleaseStageRollingReleaseTarget$inboundSchema:
+  z.ZodNativeEnum<typeof ApproveRollingReleaseStageRollingReleaseTarget> = z
+    .nativeEnum(ApproveRollingReleaseStageRollingReleaseTarget);
 
-export function approveRollingReleaseStageActiveStageFromJSON(
+/** @internal */
+export const ApproveRollingReleaseStageCurrentDeployment$inboundSchema:
+  z.ZodType<
+    ApproveRollingReleaseStageCurrentDeployment,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    createdAt: types.number(),
+    id: types.string(),
+    name: types.string(),
+    readyState:
+      ApproveRollingReleaseStageRollingReleaseReadyState$inboundSchema,
+    readyStateAt: types.optional(types.number()),
+    source: types.optional(
+      ApproveRollingReleaseStageRollingReleaseSource$inboundSchema,
+    ),
+    target: z.nullable(
+      ApproveRollingReleaseStageRollingReleaseTarget$inboundSchema,
+    ).optional(),
+    url: types.string(),
+  });
+
+export function approveRollingReleaseStageCurrentDeploymentFromJSON(
   jsonString: string,
-): SafeParseResult<ApproveRollingReleaseStageActiveStage, SDKValidationError> {
+): SafeParseResult<
+  ApproveRollingReleaseStageCurrentDeployment,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
     (x) =>
-      ApproveRollingReleaseStageActiveStage$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ApproveRollingReleaseStageActiveStage' from JSON`,
+      ApproveRollingReleaseStageCurrentDeployment$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ApproveRollingReleaseStageCurrentDeployment' from JSON`,
   );
 }
 
@@ -645,12 +611,12 @@ export const ApproveRollingReleaseStageNextStage$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  duration: types.nullable(types.number()),
   index: types.number(),
   isFinalStage: types.boolean(),
-  targetPercentage: types.number(),
-  requireApproval: types.boolean(),
-  duration: types.nullable(types.number()),
   linearShift: types.optional(types.boolean()),
+  requireApproval: types.boolean(),
+  targetPercentage: types.number(),
 });
 
 export function approveRollingReleaseStageNextStageFromJSON(
@@ -665,31 +631,65 @@ export function approveRollingReleaseStageNextStageFromJSON(
 }
 
 /** @internal */
+export const ApproveRollingReleaseStageStages$inboundSchema: z.ZodType<
+  ApproveRollingReleaseStageStages,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  duration: types.nullable(types.number()),
+  index: types.number(),
+  isFinalStage: types.boolean(),
+  linearShift: types.optional(types.boolean()),
+  requireApproval: types.boolean(),
+  targetPercentage: types.number(),
+});
+
+export function approveRollingReleaseStageStagesFromJSON(
+  jsonString: string,
+): SafeParseResult<ApproveRollingReleaseStageStages, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ApproveRollingReleaseStageStages$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ApproveRollingReleaseStageStages' from JSON`,
+  );
+}
+
+/** @internal */
+export const ApproveRollingReleaseStageState$inboundSchema: z.ZodNativeEnum<
+  typeof ApproveRollingReleaseStageState
+> = z.nativeEnum(ApproveRollingReleaseStageState);
+
+/** @internal */
+export const ApproveRollingReleaseStageSubstate$inboundSchema: z.ZodNativeEnum<
+  typeof ApproveRollingReleaseStageSubstate
+> = z.nativeEnum(ApproveRollingReleaseStageSubstate);
+
+/** @internal */
 export const ApproveRollingReleaseStageRollingRelease$inboundSchema: z.ZodType<
   ApproveRollingReleaseStageRollingRelease,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  state: ApproveRollingReleaseStageState$inboundSchema,
-  substate: types.nullable(ApproveRollingReleaseStageSubstate$inboundSchema),
-  currentDeployment: types.nullable(
-    z.lazy(() => ApproveRollingReleaseStageCurrentDeployment$inboundSchema),
+  activeStage: types.nullable(
+    z.lazy(() => ApproveRollingReleaseStageActiveStage$inboundSchema),
   ),
+  advancementType: ApproveRollingReleaseStageAdvancementType$inboundSchema,
   canaryDeployment: types.nullable(
     z.lazy(() => ApproveRollingReleaseStageCanaryDeployment$inboundSchema),
   ),
-  queuedDeploymentId: types.nullable(types.string()),
-  advancementType: ApproveRollingReleaseStageAdvancementType$inboundSchema,
-  stages: z.array(z.lazy(() => ApproveRollingReleaseStageStages$inboundSchema)),
-  activeStage: types.nullable(
-    z.lazy(() => ApproveRollingReleaseStageActiveStage$inboundSchema),
+  currentCanaryPercentage: types.optional(types.number()),
+  currentDeployment: types.nullable(
+    z.lazy(() => ApproveRollingReleaseStageCurrentDeployment$inboundSchema),
   ),
   nextStage: types.nullable(
     z.lazy(() => ApproveRollingReleaseStageNextStage$inboundSchema),
   ),
+  queuedDeploymentId: types.nullable(types.string()),
+  stages: z.array(z.lazy(() => ApproveRollingReleaseStageStages$inboundSchema)),
   startedAt: types.number(),
+  state: ApproveRollingReleaseStageState$inboundSchema,
+  substate: types.nullable(ApproveRollingReleaseStageSubstate$inboundSchema),
   updatedAt: types.number(),
-  currentCanaryPercentage: types.optional(types.number()),
 });
 
 export function approveRollingReleaseStageRollingReleaseFromJSON(

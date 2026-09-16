@@ -3,16 +3,16 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupCreator1 } from "@vercel/sdk/models/getmicrofrontendsingroupbuildmachinetype.js";
+import { GetMicrofrontendsInGroupCreator1 } from "@vercel/sdk/models/getmicrofrontendsingrouphasvalue.js";
 
 let value: GetMicrofrontendsInGroupCreator1 = {
   type: "user",
   via: {
-    type: "integration",
     integration: {
-      integrationId: "<id>",
       configurationId: "<id>",
+      integrationId: "<id>",
     },
+    type: "integration",
   },
   user: {
     id: "<id>",

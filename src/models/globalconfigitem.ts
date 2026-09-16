@@ -16,12 +16,12 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
  * The Global Config.
  */
 export type GlobalConfigItem = {
-  key: string;
-  value: GlobalConfigItemValue | null;
+  createdAt: number;
   description?: string | undefined;
   edgeConfigId: string;
-  createdAt: number;
+  key: string;
   updatedAt: number;
+  value: GlobalConfigItemValue | null;
 };
 
 /** @internal */
@@ -30,12 +30,12 @@ export const GlobalConfigItem$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  key: types.string(),
-  value: types.nullable(GlobalConfigItemValue$inboundSchema),
+  createdAt: types.number(),
   description: types.optional(types.string()),
   edgeConfigId: types.string(),
-  createdAt: types.number(),
+  key: types.string(),
   updatedAt: types.number(),
+  value: types.nullable(GlobalConfigItemValue$inboundSchema),
 });
 
 export function globalConfigItemFromJSON(

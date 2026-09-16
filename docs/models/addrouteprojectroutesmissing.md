@@ -16,8 +16,8 @@ const value: models.AddRouteMissing1 = {
 
 ```typescript
 const value: models.AddRouteMissing2 = {
-  type: "cookie",
   key: "<key>",
+  type: "cookie",
 };
 ```
 
@@ -25,8 +25,8 @@ const value: models.AddRouteMissing2 = {
 
 ```typescript
 const value: models.AddRouteMissing2 = {
-  type: "cookie",
   key: "<key>",
+  type: "cookie",
 };
 ```
 
@@ -34,8 +34,8 @@ const value: models.AddRouteMissing2 = {
 
 ```typescript
 const value: models.AddRouteMissing2 = {
-  type: "cookie",
   key: "<key>",
+  type: "cookie",
 };
 ```
 

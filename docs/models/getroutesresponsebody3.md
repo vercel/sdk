@@ -16,10 +16,10 @@ let value: GetRoutesResponseBody3 = {
     },
   ],
   version: {
-    id: "<id>",
-    s3Key: "<value>",
-    lastModified: 6411.04,
     createdBy: "<value>",
+    id: "<id>",
+    lastModified: 6411.04,
+    s3Key: "<value>",
   },
 };
 ```

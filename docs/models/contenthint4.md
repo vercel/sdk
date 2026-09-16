@@ -6,8 +6,8 @@
 import { ContentHint4 } from "@vercel/sdk/models/editprojectenvop.js";
 
 let value: ContentHint4 = {
-  type: "redis-rest-api-read-only-token",
   storeId: "<id>",
+  type: "redis-rest-api-read-only-token",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: ContentHint4 = {
 
 | Field                              | Type                               | Required                           | Description                        |
 | ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| `type`                             | *"redis-rest-api-read-only-token"* | :heavy_check_mark:                 | N/A                                |
 | `storeId`                          | *string*                           | :heavy_check_mark:                 | N/A                                |
+| `type`                             | *"redis-rest-api-read-only-token"* | :heavy_check_mark:                 | N/A                                |

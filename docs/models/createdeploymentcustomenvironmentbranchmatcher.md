@@ -5,11 +5,11 @@ Configuration for matching git branches to this environment
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentCustomEnvironmentBranchMatcher } from "@vercel/sdk/models/createdeploymenthasdeploymentstype.js";
+import { CreateDeploymentCustomEnvironmentBranchMatcher } from "@vercel/sdk/models/createdeploymentresponsebodydeploymentsstatus.js";
 
 let value: CreateDeploymentCustomEnvironmentBranchMatcher = {
-  type: "endsWith",
   pattern: "<value>",
+  type: "endsWith",
 };
 ```
 
@@ -17,5 +17,5 @@ let value: CreateDeploymentCustomEnvironmentBranchMatcher = {
 
 | Field                                                                                                                    | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
 | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
-| `type`                                                                                                                   | [models.CreateDeploymentCustomEnvironmentDeploymentsType](../models/createdeploymentcustomenvironmentdeploymentstype.md) | :heavy_check_mark:                                                                                                       | The type of matching to perform                                                                                          |
 | `pattern`                                                                                                                | *string*                                                                                                                 | :heavy_check_mark:                                                                                                       | The pattern to match against branch names                                                                                |
+| `type`                                                                                                                   | [models.CreateDeploymentCustomEnvironmentDeploymentsType](../models/createdeploymentcustomenvironmentdeploymentstype.md) | :heavy_check_mark:                                                                                                       | The type of matching to perform                                                                                          |

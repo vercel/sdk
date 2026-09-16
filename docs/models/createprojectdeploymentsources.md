@@ -5,21 +5,26 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectDeploymentSources } from "@vercel/sdk/models/createprojecthasprojectsresponse1.js";
+import { CreateProjectDeploymentSources } from "@vercel/sdk/models/createprojectcontenthint2.js";
 
 let value: CreateProjectDeploymentSources = {
-  sources: [
-    "v0",
+  enabled: false,
+  environments: [
+    {
+      target: "preview",
+      type: "system",
+    },
   ],
-  enabled: true,
-  environments: [],
+  sources: [
+    "cli",
+  ],
 };
 ```
 
 ## Fields
 
-| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `sources`                                                                          | [models.CreateProjectProjectsSources](../models/createprojectprojectssources.md)[] | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `enabled`                                                                          | *boolean*                                                                          | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `environments`                                                                     | *models.CreateProjectProjectsEnvironments*[]                                       | :heavy_check_mark:                                                                 | N/A                                                                                |
+| Field                                                              | Type                                                               | Required                                                           | Description                                                        |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `enabled`                                                          | *boolean*                                                          | :heavy_check_mark:                                                 | N/A                                                                |
+| `environments`                                                     | *models.CreateProjectEnvironments*[]                               | :heavy_check_mark:                                                 | N/A                                                                |
+| `sources`                                                          | [models.CreateProjectSources](../models/createprojectsources.md)[] | :heavy_check_mark:                                                 | N/A                                                                |

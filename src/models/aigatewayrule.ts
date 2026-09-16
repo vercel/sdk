@@ -9,43 +9,55 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
+export type Action = {
+  reason?: string | undefined;
+  rewriteModel?: string | undefined;
+};
+
+export type Match = {
+  model?: string | undefined;
+};
+
 export const Type = {
   Deny: "deny",
   Rewrite: "rewrite",
 } as const;
 export type Type = ClosedEnum<typeof Type>;
 
-export type Match = {
-  model?: string | undefined;
-};
-
-export type Action = {
-  rewriteModel?: string | undefined;
-  reason?: string | undefined;
-};
-
 /**
  * Public response shape for AI Gateway routing rules. Used so OpenAPI generation can avoid ElectroDB's recursive EntityItem types.
  */
 export type AiGatewayRule = {
+  action?: Action | undefined;
+  createdAt: number;
+  createdBy?: string | undefined;
+  deleted?: boolean | undefined;
+  description?: string | undefined;
+  enabled: boolean;
+  match?: Match | undefined;
   ownerId: string;
   ruleId: string;
   type: Type;
-  match?: Match | undefined;
-  action?: Action | undefined;
-  enabled: boolean;
-  deleted?: boolean | undefined;
-  description?: string | undefined;
-  createdBy?: string | undefined;
-  updatedBy?: string | undefined;
-  createdAt: number;
   updatedAt: number;
+  updatedBy?: string | undefined;
 };
 
 /** @internal */
-export const Type$inboundSchema: z.ZodNativeEnum<typeof Type> = z.nativeEnum(
-  Type,
-);
+export const Action$inboundSchema: z.ZodType<Action, z.ZodTypeDef, unknown> = z
+  .object({
+    reason: types.optional(types.string()),
+    rewriteModel: types.optional(types.string()),
+  });
+
+export function actionFromJSON(
+  jsonString: string,
+): SafeParseResult<Action, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Action$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Action' from JSON`,
+  );
+}
 
 /** @internal */
 export const Match$inboundSchema: z.ZodType<Match, z.ZodTypeDef, unknown> = z
@@ -64,21 +76,9 @@ export function matchFromJSON(
 }
 
 /** @internal */
-export const Action$inboundSchema: z.ZodType<Action, z.ZodTypeDef, unknown> = z
-  .object({
-    rewriteModel: types.optional(types.string()),
-    reason: types.optional(types.string()),
-  });
-
-export function actionFromJSON(
-  jsonString: string,
-): SafeParseResult<Action, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Action$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Action' from JSON`,
-  );
-}
+export const Type$inboundSchema: z.ZodNativeEnum<typeof Type> = z.nativeEnum(
+  Type,
+);
 
 /** @internal */
 export const AiGatewayRule$inboundSchema: z.ZodType<
@@ -86,18 +86,18 @@ export const AiGatewayRule$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  action: types.optional(z.lazy(() => Action$inboundSchema)),
+  createdAt: types.number(),
+  createdBy: types.optional(types.string()),
+  deleted: types.optional(types.boolean()),
+  description: types.optional(types.string()),
+  enabled: types.boolean(),
+  match: types.optional(z.lazy(() => Match$inboundSchema)),
   ownerId: types.string(),
   ruleId: types.string(),
   type: Type$inboundSchema,
-  match: types.optional(z.lazy(() => Match$inboundSchema)),
-  action: types.optional(z.lazy(() => Action$inboundSchema)),
-  enabled: types.boolean(),
-  deleted: types.optional(types.boolean()),
-  description: types.optional(types.string()),
-  createdBy: types.optional(types.string()),
-  updatedBy: types.optional(types.string()),
-  createdAt: types.number(),
   updatedAt: types.number(),
+  updatedBy: types.optional(types.string()),
 });
 
 export function aiGatewayRuleFromJSON(

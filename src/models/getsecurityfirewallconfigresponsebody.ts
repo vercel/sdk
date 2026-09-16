@@ -4,17 +4,18 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
-import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
-  Active,
-  Active$inboundSchema,
-} from "./getsecurityfirewallconfiglogheaderssecurityresponse200applicationjsonresponsebodydraftrules2.js";
-import {
   Draft,
   Draft$inboundSchema,
+  GetSecurityFirewallConfigRulesetsSecurity2,
+  GetSecurityFirewallConfigRulesetsSecurity2$inboundSchema,
+  GetSecurityFirewallConfigRulesetsSecurityConditionGroup,
+  GetSecurityFirewallConfigRulesetsSecurityConditionGroup$inboundSchema,
+  GetSecurityFirewallConfigRulesetsSecurityResponse200Action,
+  GetSecurityFirewallConfigRulesetsSecurityResponse200Action$inboundSchema,
   GetSecurityFirewallConfigSecurityChanges,
   GetSecurityFirewallConfigSecurityChanges$inboundSchema,
   GetSecurityFirewallConfigSecurityCrs,
@@ -23,49 +24,58 @@ import {
   GetSecurityFirewallConfigSecurityIps$inboundSchema,
   GetSecurityFirewallConfigSecurityResponseConditions,
   GetSecurityFirewallConfigSecurityResponseConditions$inboundSchema,
+  GetSecurityFirewallConfigSecurityResponseLogHeaders,
+  GetSecurityFirewallConfigSecurityResponseLogHeaders$inboundSchema,
   GetSecurityFirewallConfigSecurityResponseManagedRules,
   GetSecurityFirewallConfigSecurityResponseManagedRules$inboundSchema,
   GetSecurityFirewallConfigSecurityResponseRules,
   GetSecurityFirewallConfigSecurityResponseRules$inboundSchema,
-  GetSecurityFirewallConfigSecurityResponseRulesets,
-  GetSecurityFirewallConfigSecurityResponseRulesets$inboundSchema,
-} from "./getsecurityfirewallconfigsecurityresponsemanagedrules.js";
+} from "./getsecurityfirewallconfigrulesetssecurityresponse200action.js";
+import {
+  Active,
+  Active$inboundSchema,
+} from "./getsecurityfirewallconfigrulessecurityresponse200applicationjsonresponsebodydraft2actionaction.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
-export const GetSecurityFirewallConfigLogHeadersSecurityResponse2 = {
-  Wildcard: "*",
-} as const;
-export type GetSecurityFirewallConfigLogHeadersSecurityResponse2 = ClosedEnum<
-  typeof GetSecurityFirewallConfigLogHeadersSecurityResponse2
->;
+export type GetSecurityFirewallConfigRulesetsSecurity1 = {
+  active: boolean;
+  conditionGroup: Array<
+    GetSecurityFirewallConfigRulesetsSecurityConditionGroup
+  >;
+  description?: string | undefined;
+  id: string;
+  name: string;
+  action?:
+    | GetSecurityFirewallConfigRulesetsSecurityResponse200Action
+    | undefined;
+};
 
-export type GetSecurityFirewallConfigSecurityResponseLogHeaders =
-  | Array<string>
-  | GetSecurityFirewallConfigLogHeadersSecurityResponse2;
+export type GetSecurityFirewallConfigSecurityResponseRulesets =
+  | Array<GetSecurityFirewallConfigRulesetsSecurity1>
+  | { [k: string]: GetSecurityFirewallConfigRulesetsSecurity2 };
 
 export type GetSecurityFirewallConfigVersions = {
-  ownerId: string;
-  projectKey: string;
-  id: string;
-  version: number;
-  updatedAt: string;
-  firewallEnabled: boolean;
-  crs?: GetSecurityFirewallConfigSecurityCrs | undefined;
-  rules: Array<GetSecurityFirewallConfigSecurityResponseRules>;
-  ips: Array<GetSecurityFirewallConfigSecurityIps>;
-  rulesets?: GetSecurityFirewallConfigSecurityResponseRulesets | undefined;
+  botIdEnabled?: boolean | undefined;
+  changes: Array<GetSecurityFirewallConfigSecurityChanges>;
   conditions?:
     | Array<GetSecurityFirewallConfigSecurityResponseConditions>
     | undefined;
-  changes: Array<GetSecurityFirewallConfigSecurityChanges>;
+  crs?: GetSecurityFirewallConfigSecurityCrs | undefined;
+  firewallEnabled: boolean;
+  id: string;
+  ips: Array<GetSecurityFirewallConfigSecurityIps>;
+  logHeaders?: GetSecurityFirewallConfigSecurityResponseLogHeaders | undefined;
   managedRules?:
     | GetSecurityFirewallConfigSecurityResponseManagedRules
     | undefined;
-  botIdEnabled?: boolean | undefined;
-  logHeaders?:
-    | Array<string>
-    | GetSecurityFirewallConfigLogHeadersSecurityResponse2
-    | undefined;
+  ownerId: string;
+  projectKey: string;
+  rules: Array<GetSecurityFirewallConfigSecurityResponseRules>;
+  rulesets?: Array<GetSecurityFirewallConfigRulesetsSecurity1> | {
+    [k: string]: GetSecurityFirewallConfigRulesetsSecurity2;
+  } | undefined;
+  updatedAt: string;
+  version: number;
 };
 
 export type GetSecurityFirewallConfigResponseBody = {
@@ -75,34 +85,63 @@ export type GetSecurityFirewallConfigResponseBody = {
 };
 
 /** @internal */
-export const GetSecurityFirewallConfigLogHeadersSecurityResponse2$inboundSchema:
-  z.ZodNativeEnum<typeof GetSecurityFirewallConfigLogHeadersSecurityResponse2> =
-    z.nativeEnum(GetSecurityFirewallConfigLogHeadersSecurityResponse2);
+export const GetSecurityFirewallConfigRulesetsSecurity1$inboundSchema:
+  z.ZodType<GetSecurityFirewallConfigRulesetsSecurity1, z.ZodTypeDef, unknown> =
+    z.object({
+      active: types.boolean(),
+      conditionGroup: z.array(
+        GetSecurityFirewallConfigRulesetsSecurityConditionGroup$inboundSchema,
+      ),
+      description: types.optional(types.string()),
+      id: types.string(),
+      name: types.string(),
+      action: types.optional(
+        GetSecurityFirewallConfigRulesetsSecurityResponse200Action$inboundSchema,
+      ),
+    });
 
-/** @internal */
-export const GetSecurityFirewallConfigSecurityResponseLogHeaders$inboundSchema:
-  z.ZodType<
-    GetSecurityFirewallConfigSecurityResponseLogHeaders,
-    z.ZodTypeDef,
-    unknown
-  > = smartUnion([
-    z.array(types.string()),
-    GetSecurityFirewallConfigLogHeadersSecurityResponse2$inboundSchema,
-  ]);
-
-export function getSecurityFirewallConfigSecurityResponseLogHeadersFromJSON(
+export function getSecurityFirewallConfigRulesetsSecurity1FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetSecurityFirewallConfigSecurityResponseLogHeaders,
+  GetSecurityFirewallConfigRulesetsSecurity1,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetSecurityFirewallConfigSecurityResponseLogHeaders$inboundSchema.parse(
+      GetSecurityFirewallConfigRulesetsSecurity1$inboundSchema.parse(
         JSON.parse(x),
       ),
-    `Failed to parse 'GetSecurityFirewallConfigSecurityResponseLogHeaders' from JSON`,
+    `Failed to parse 'GetSecurityFirewallConfigRulesetsSecurity1' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetSecurityFirewallConfigSecurityResponseRulesets$inboundSchema:
+  z.ZodType<
+    GetSecurityFirewallConfigSecurityResponseRulesets,
+    z.ZodTypeDef,
+    unknown
+  > = smartUnion([
+    z.array(z.lazy(() =>
+      GetSecurityFirewallConfigRulesetsSecurity1$inboundSchema
+    )),
+    z.record(GetSecurityFirewallConfigRulesetsSecurity2$inboundSchema),
+  ]);
+
+export function getSecurityFirewallConfigSecurityResponseRulesetsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetSecurityFirewallConfigSecurityResponseRulesets,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetSecurityFirewallConfigSecurityResponseRulesets$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetSecurityFirewallConfigSecurityResponseRulesets' from JSON`,
   );
 }
 
@@ -112,32 +151,34 @@ export const GetSecurityFirewallConfigVersions$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  ownerId: types.string(),
-  projectKey: types.string(),
-  id: types.string(),
-  version: types.number(),
-  updatedAt: types.string(),
-  firewallEnabled: types.boolean(),
-  crs: types.optional(GetSecurityFirewallConfigSecurityCrs$inboundSchema),
-  rules: z.array(GetSecurityFirewallConfigSecurityResponseRules$inboundSchema),
-  ips: z.array(GetSecurityFirewallConfigSecurityIps$inboundSchema),
-  rulesets: types.optional(
-    GetSecurityFirewallConfigSecurityResponseRulesets$inboundSchema,
-  ),
+  botIdEnabled: types.optional(types.boolean()),
+  changes: z.array(GetSecurityFirewallConfigSecurityChanges$inboundSchema),
   conditions: types.optional(
     z.array(GetSecurityFirewallConfigSecurityResponseConditions$inboundSchema),
   ),
-  changes: z.array(GetSecurityFirewallConfigSecurityChanges$inboundSchema),
+  crs: types.optional(GetSecurityFirewallConfigSecurityCrs$inboundSchema),
+  firewallEnabled: types.boolean(),
+  id: types.string(),
+  ips: z.array(GetSecurityFirewallConfigSecurityIps$inboundSchema),
+  logHeaders: types.optional(
+    GetSecurityFirewallConfigSecurityResponseLogHeaders$inboundSchema,
+  ),
   managedRules: types.optional(
     GetSecurityFirewallConfigSecurityResponseManagedRules$inboundSchema,
   ),
-  botIdEnabled: types.optional(types.boolean()),
-  logHeaders: types.optional(
+  ownerId: types.string(),
+  projectKey: types.string(),
+  rules: z.array(GetSecurityFirewallConfigSecurityResponseRules$inboundSchema),
+  rulesets: types.optional(
     smartUnion([
-      z.array(types.string()),
-      GetSecurityFirewallConfigLogHeadersSecurityResponse2$inboundSchema,
+      z.array(
+        z.lazy(() => GetSecurityFirewallConfigRulesetsSecurity1$inboundSchema),
+      ),
+      z.record(GetSecurityFirewallConfigRulesetsSecurity2$inboundSchema),
     ]),
   ),
+  updatedAt: types.string(),
+  version: types.number(),
 });
 
 export function getSecurityFirewallConfigVersionsFromJSON(

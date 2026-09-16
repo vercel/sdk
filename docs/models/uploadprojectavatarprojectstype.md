@@ -1,17 +1,15 @@
 # UploadProjectAvatarProjectsType
 
-The type of environment (production, preview, or development)
-
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarProjectsType } from "@vercel/sdk/models/uploadprojectavatarprojectsbuildmachinetype.js";
+import { UploadProjectAvatarProjectsType } from "@vercel/sdk/models/uploadprojectavatarhasvalue.js";
 
-let value: UploadProjectAvatarProjectsType = "development";
+let value: UploadProjectAvatarProjectsType = "encrypted";
 ```
 
 ## Values
 
 ```typescript
-"development" | "preview" | "production"
+"encrypted" | "plain" | "secret" | "sensitive" | "system"
 ```

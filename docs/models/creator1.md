@@ -3,15 +3,15 @@
 ## Example Usage
 
 ```typescript
-import { Creator1 } from "@vercel/sdk/models/createprojectpasswordprotection.js";
+import { Creator1 } from "@vercel/sdk/models/createprojectcontenthint2.js";
 
 let value: Creator1 = {
   type: "user",
   via: {
-    type: "app",
     app: {
       id: "<id>",
     },
+    type: "app",
   },
   user: {
     id: "<id>",

@@ -7,7 +7,6 @@ import { BuyCreditsResponseBody2 } from "@vercel/sdk/models/buycreditsop.js";
 
 let value: BuyCreditsResponseBody2 = {
   purchaseIntent: {
-    id: "<id>",
     configuration: {
       options: {
         planId: "<id>",
@@ -17,6 +16,7 @@ let value: BuyCreditsResponseBody2 = {
     },
     createdAt: "1723484693361",
     currency: "miu",
+    id: "<id>",
     ownerId: "<id>",
     provider: {
       resourceId: "<id>",

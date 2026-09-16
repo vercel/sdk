@@ -17,7 +17,6 @@ const value: models.BuyCreditsResponseBody1 = {
 ```typescript
 const value: models.BuyCreditsResponseBody2 = {
   purchaseIntent: {
-    id: "<id>",
     configuration: {
       options: {
         planId: "<id>",
@@ -27,6 +26,7 @@ const value: models.BuyCreditsResponseBody2 = {
     },
     createdAt: "1723484693361",
     currency: "miu",
+    id: "<id>",
     ownerId: "<id>",
     provider: {
       resourceId: "<id>",
@@ -46,7 +46,6 @@ const value: models.BuyCreditsResponseBody2 = {
 ```typescript
 const value: models.BuyCreditsResponseBody3 = {
   orbSubscriptionIntent: {
-    id: "<id>",
     configuration: {
       options: {
         productAlias: "<value>",
@@ -63,6 +62,7 @@ const value: models.BuyCreditsResponseBody3 = {
       type: "increase_plan_item_quantity",
     },
     createdAt: "1729837603767",
+    id: "<id>",
     orbSubscriptionId: "<id>",
     orbUpdate: {
       mode: "sync",

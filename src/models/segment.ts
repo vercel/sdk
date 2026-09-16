@@ -10,84 +10,15 @@ import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
-export const SegmentOutcomeDataRulesType = {
-  Entity: "entity",
-} as const;
-export type SegmentOutcomeDataRulesType = ClosedEnum<
-  typeof SegmentOutcomeDataRulesType
->;
-
-export type SegmentOutcomeBase = {
-  type: SegmentOutcomeDataRulesType;
-  kind: string;
-  attribute: string;
-};
-
-export type SegmentOutcome2 = {
-  type: "split";
-  base: SegmentOutcomeBase;
-  passPromille: number;
-};
-
-export type SegmentOutcome1 = {
-  type: "all";
-};
-
-export type SegmentOutcome = SegmentOutcome1 | SegmentOutcome2;
-
-export const SegmentRhsDataType = {
-  Regex: "regex",
-} as const;
-export type SegmentRhsDataType = ClosedEnum<typeof SegmentRhsDataType>;
-
-export type SegmentRhs4 = {
-  type: SegmentRhsDataType;
-  pattern: string;
-  flags: string;
-};
-
-export const SegmentRhsType = {
-  List: "list",
-  ListInline: "list/inline",
-} as const;
-export type SegmentRhsType = ClosedEnum<typeof SegmentRhsType>;
-
-export type SegmentItems2 = {
-  label?: string | undefined;
+export type ExcludeT = {
   note?: string | undefined;
   value: string;
 };
 
-export type SegmentItems1 = {
-  label?: string | undefined;
+export type Include = {
   note?: string | undefined;
-  value: number;
+  value: string;
 };
-
-export type SegmentRhsItems = SegmentItems1 | SegmentItems2;
-
-export type SegmentRhs3 = {
-  type: SegmentRhsType;
-  items: Array<SegmentItems1 | SegmentItems2>;
-};
-
-export type SegmentRhs = SegmentRhs4 | SegmentRhs3 | string | number | boolean;
-
-export type SegmentCmpOptions = {
-  ignoreCase?: boolean | undefined;
-};
-
-export type SegmentLhs2 = {
-  type: "entity";
-  kind: string;
-  attribute: string;
-};
-
-export type SegmentLhs1 = {
-  type: "segment";
-};
-
-export type SegmentLhs = SegmentLhs1 | SegmentLhs2;
 
 export const SegmentCmp = {
   NotContains: "!contains",
@@ -116,33 +47,102 @@ export const SegmentCmp = {
 } as const;
 export type SegmentCmp = ClosedEnum<typeof SegmentCmp>;
 
+export type SegmentCmpOptions = {
+  ignoreCase?: boolean | undefined;
+};
+
+export type SegmentLhs2 = {
+  attribute: string;
+  kind: string;
+  type: "entity";
+};
+
+export type SegmentLhs1 = {
+  type: "segment";
+};
+
+export type SegmentLhs = SegmentLhs1 | SegmentLhs2;
+
+export const SegmentRhsDataType = {
+  Regex: "regex",
+} as const;
+export type SegmentRhsDataType = ClosedEnum<typeof SegmentRhsDataType>;
+
+export type SegmentRhs4 = {
+  flags: string;
+  pattern: string;
+  type: SegmentRhsDataType;
+};
+
+export type SegmentItems2 = {
+  label?: string | undefined;
+  note?: string | undefined;
+  value: string;
+};
+
+export type SegmentItems1 = {
+  label?: string | undefined;
+  note?: string | undefined;
+  value: number;
+};
+
+export type SegmentRhsItems = SegmentItems1 | SegmentItems2;
+
+export const SegmentRhsType = {
+  List: "list",
+  ListInline: "list/inline",
+} as const;
+export type SegmentRhsType = ClosedEnum<typeof SegmentRhsType>;
+
+export type SegmentRhs3 = {
+  items: Array<SegmentItems1 | SegmentItems2>;
+  type: SegmentRhsType;
+};
+
+export type SegmentRhs = SegmentRhs4 | SegmentRhs3 | string | number | boolean;
+
 export type SegmentConditions = {
-  rhs?: SegmentRhs4 | SegmentRhs3 | string | number | boolean | undefined;
+  cmp: SegmentCmp;
   cmpOptions?: SegmentCmpOptions | undefined;
   lhs: SegmentLhs1 | SegmentLhs2;
-  cmp: SegmentCmp;
+  rhs?: SegmentRhs4 | SegmentRhs3 | string | number | boolean | undefined;
 };
+
+export const SegmentOutcomeDataRulesType = {
+  Entity: "entity",
+} as const;
+export type SegmentOutcomeDataRulesType = ClosedEnum<
+  typeof SegmentOutcomeDataRulesType
+>;
+
+export type SegmentOutcomeBase = {
+  attribute: string;
+  kind: string;
+  type: SegmentOutcomeDataRulesType;
+};
+
+export type SegmentOutcome2 = {
+  base: SegmentOutcomeBase;
+  passPromille: number;
+  type: "split";
+};
+
+export type SegmentOutcome1 = {
+  type: "all";
+};
+
+export type SegmentOutcome = SegmentOutcome1 | SegmentOutcome2;
 
 export type SegmentRules = {
+  conditions: Array<SegmentConditions>;
   id: string;
   outcome: SegmentOutcome1 | SegmentOutcome2;
-  conditions: Array<SegmentConditions>;
-};
-
-export type Include = {
-  note?: string | undefined;
-  value: string;
-};
-
-export type ExcludeT = {
-  note?: string | undefined;
-  value: string;
 };
 
 export type Data = {
-  rules?: Array<SegmentRules> | undefined;
-  include?: { [k: string]: { [k: string]: Array<Include> } } | undefined;
   exclude?: { [k: string]: { [k: string]: Array<ExcludeT> } } | undefined;
+  include?: { [k: string]: { [k: string]: Array<Include> } } | undefined;
+  rules?: Array<SegmentRules> | undefined;
 };
 
 export const SegmentTypeName = {
@@ -160,105 +160,139 @@ export type SegmentMetadata = {
 };
 
 export type Segment = {
-  description?: string | undefined;
+  createdAt: number;
   createdBy?: string | undefined;
-  usedByFlags?: Array<string> | undefined;
-  usedBySegments?: Array<string> | undefined;
   data: Data;
+  description?: string | undefined;
+  hint: string;
   id: string;
   label: string;
-  slug: string;
-  createdAt: number;
-  updatedAt: number;
   projectId: string;
+  slug: string;
   typeName: SegmentTypeName;
-  hint: string;
+  updatedAt: number;
+  usedByFlags?: Array<string> | undefined;
+  usedBySegments?: Array<string> | undefined;
   metadata?: SegmentMetadata | undefined;
 };
 
 /** @internal */
-export const SegmentOutcomeDataRulesType$inboundSchema: z.ZodNativeEnum<
-  typeof SegmentOutcomeDataRulesType
-> = z.nativeEnum(SegmentOutcomeDataRulesType);
-
-/** @internal */
-export const SegmentOutcomeBase$inboundSchema: z.ZodType<
-  SegmentOutcomeBase,
+export const ExcludeT$inboundSchema: z.ZodType<
+  ExcludeT,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: SegmentOutcomeDataRulesType$inboundSchema,
-  kind: types.string(),
+  note: types.optional(types.string()),
+  value: types.string(),
+});
+
+export function excludeFromJSON(
+  jsonString: string,
+): SafeParseResult<ExcludeT, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ExcludeT$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ExcludeT' from JSON`,
+  );
+}
+
+/** @internal */
+export const Include$inboundSchema: z.ZodType<Include, z.ZodTypeDef, unknown> =
+  z.object({
+    note: types.optional(types.string()),
+    value: types.string(),
+  });
+
+export function includeFromJSON(
+  jsonString: string,
+): SafeParseResult<Include, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Include$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Include' from JSON`,
+  );
+}
+
+/** @internal */
+export const SegmentCmp$inboundSchema: z.ZodNativeEnum<typeof SegmentCmp> = z
+  .nativeEnum(SegmentCmp);
+
+/** @internal */
+export const SegmentCmpOptions$inboundSchema: z.ZodType<
+  SegmentCmpOptions,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  ignoreCase: types.optional(types.boolean()),
+});
+
+export function segmentCmpOptionsFromJSON(
+  jsonString: string,
+): SafeParseResult<SegmentCmpOptions, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SegmentCmpOptions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SegmentCmpOptions' from JSON`,
+  );
+}
+
+/** @internal */
+export const SegmentLhs2$inboundSchema: z.ZodType<
+  SegmentLhs2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
   attribute: types.string(),
+  kind: types.string(),
+  type: types.literal("entity"),
 });
 
-export function segmentOutcomeBaseFromJSON(
+export function segmentLhs2FromJSON(
   jsonString: string,
-): SafeParseResult<SegmentOutcomeBase, SDKValidationError> {
+): SafeParseResult<SegmentLhs2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => SegmentOutcomeBase$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SegmentOutcomeBase' from JSON`,
+    (x) => SegmentLhs2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SegmentLhs2' from JSON`,
   );
 }
 
 /** @internal */
-export const SegmentOutcome2$inboundSchema: z.ZodType<
-  SegmentOutcome2,
+export const SegmentLhs1$inboundSchema: z.ZodType<
+  SegmentLhs1,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("split"),
-  base: z.lazy(() => SegmentOutcomeBase$inboundSchema),
-  passPromille: types.number(),
+  type: types.literal("segment"),
 });
 
-export function segmentOutcome2FromJSON(
+export function segmentLhs1FromJSON(
   jsonString: string,
-): SafeParseResult<SegmentOutcome2, SDKValidationError> {
+): SafeParseResult<SegmentLhs1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => SegmentOutcome2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SegmentOutcome2' from JSON`,
+    (x) => SegmentLhs1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SegmentLhs1' from JSON`,
   );
 }
 
 /** @internal */
-export const SegmentOutcome1$inboundSchema: z.ZodType<
-  SegmentOutcome1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: types.literal("all"),
-});
-
-export function segmentOutcome1FromJSON(
-  jsonString: string,
-): SafeParseResult<SegmentOutcome1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => SegmentOutcome1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SegmentOutcome1' from JSON`,
-  );
-}
-
-/** @internal */
-export const SegmentOutcome$inboundSchema: z.ZodType<
-  SegmentOutcome,
+export const SegmentLhs$inboundSchema: z.ZodType<
+  SegmentLhs,
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => SegmentOutcome1$inboundSchema),
-  z.lazy(() => SegmentOutcome2$inboundSchema),
+  z.lazy(() => SegmentLhs1$inboundSchema),
+  z.lazy(() => SegmentLhs2$inboundSchema),
 ]);
 
-export function segmentOutcomeFromJSON(
+export function segmentLhsFromJSON(
   jsonString: string,
-): SafeParseResult<SegmentOutcome, SDKValidationError> {
+): SafeParseResult<SegmentLhs, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => SegmentOutcome$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SegmentOutcome' from JSON`,
+    (x) => SegmentLhs$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SegmentLhs' from JSON`,
   );
 }
 
@@ -273,9 +307,9 @@ export const SegmentRhs4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: SegmentRhsDataType$inboundSchema,
-  pattern: types.string(),
   flags: types.string(),
+  pattern: types.string(),
+  type: SegmentRhsDataType$inboundSchema,
 });
 
 export function segmentRhs4FromJSON(
@@ -287,11 +321,6 @@ export function segmentRhs4FromJSON(
     `Failed to parse 'SegmentRhs4' from JSON`,
   );
 }
-
-/** @internal */
-export const SegmentRhsType$inboundSchema: z.ZodNativeEnum<
-  typeof SegmentRhsType
-> = z.nativeEnum(SegmentRhsType);
 
 /** @internal */
 export const SegmentItems2$inboundSchema: z.ZodType<
@@ -356,18 +385,23 @@ export function segmentRhsItemsFromJSON(
 }
 
 /** @internal */
+export const SegmentRhsType$inboundSchema: z.ZodNativeEnum<
+  typeof SegmentRhsType
+> = z.nativeEnum(SegmentRhsType);
+
+/** @internal */
 export const SegmentRhs3$inboundSchema: z.ZodType<
   SegmentRhs3,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: SegmentRhsType$inboundSchema,
   items: z.array(
     smartUnion([
       z.lazy(() => SegmentItems1$inboundSchema),
       z.lazy(() => SegmentItems2$inboundSchema),
     ]),
   ),
+  type: SegmentRhsType$inboundSchema,
 });
 
 export function segmentRhs3FromJSON(
@@ -404,94 +438,17 @@ export function segmentRhsFromJSON(
 }
 
 /** @internal */
-export const SegmentCmpOptions$inboundSchema: z.ZodType<
-  SegmentCmpOptions,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  ignoreCase: types.optional(types.boolean()),
-});
-
-export function segmentCmpOptionsFromJSON(
-  jsonString: string,
-): SafeParseResult<SegmentCmpOptions, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => SegmentCmpOptions$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SegmentCmpOptions' from JSON`,
-  );
-}
-
-/** @internal */
-export const SegmentLhs2$inboundSchema: z.ZodType<
-  SegmentLhs2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: types.literal("entity"),
-  kind: types.string(),
-  attribute: types.string(),
-});
-
-export function segmentLhs2FromJSON(
-  jsonString: string,
-): SafeParseResult<SegmentLhs2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => SegmentLhs2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SegmentLhs2' from JSON`,
-  );
-}
-
-/** @internal */
-export const SegmentLhs1$inboundSchema: z.ZodType<
-  SegmentLhs1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: types.literal("segment"),
-});
-
-export function segmentLhs1FromJSON(
-  jsonString: string,
-): SafeParseResult<SegmentLhs1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => SegmentLhs1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SegmentLhs1' from JSON`,
-  );
-}
-
-/** @internal */
-export const SegmentLhs$inboundSchema: z.ZodType<
-  SegmentLhs,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => SegmentLhs1$inboundSchema),
-  z.lazy(() => SegmentLhs2$inboundSchema),
-]);
-
-export function segmentLhsFromJSON(
-  jsonString: string,
-): SafeParseResult<SegmentLhs, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => SegmentLhs$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SegmentLhs' from JSON`,
-  );
-}
-
-/** @internal */
-export const SegmentCmp$inboundSchema: z.ZodNativeEnum<typeof SegmentCmp> = z
-  .nativeEnum(SegmentCmp);
-
-/** @internal */
 export const SegmentConditions$inboundSchema: z.ZodType<
   SegmentConditions,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  cmp: SegmentCmp$inboundSchema,
+  cmpOptions: types.optional(z.lazy(() => SegmentCmpOptions$inboundSchema)),
+  lhs: z.union([
+    z.lazy(() => SegmentLhs1$inboundSchema),
+    z.lazy(() => SegmentLhs2$inboundSchema),
+  ]),
   rhs: types.optional(
     smartUnion([
       z.lazy(() => SegmentRhs4$inboundSchema),
@@ -501,12 +458,6 @@ export const SegmentConditions$inboundSchema: z.ZodType<
       types.boolean(),
     ]),
   ),
-  cmpOptions: types.optional(z.lazy(() => SegmentCmpOptions$inboundSchema)),
-  lhs: z.union([
-    z.lazy(() => SegmentLhs1$inboundSchema),
-    z.lazy(() => SegmentLhs2$inboundSchema),
-  ]),
-  cmp: SegmentCmp$inboundSchema,
 });
 
 export function segmentConditionsFromJSON(
@@ -520,17 +471,103 @@ export function segmentConditionsFromJSON(
 }
 
 /** @internal */
+export const SegmentOutcomeDataRulesType$inboundSchema: z.ZodNativeEnum<
+  typeof SegmentOutcomeDataRulesType
+> = z.nativeEnum(SegmentOutcomeDataRulesType);
+
+/** @internal */
+export const SegmentOutcomeBase$inboundSchema: z.ZodType<
+  SegmentOutcomeBase,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  attribute: types.string(),
+  kind: types.string(),
+  type: SegmentOutcomeDataRulesType$inboundSchema,
+});
+
+export function segmentOutcomeBaseFromJSON(
+  jsonString: string,
+): SafeParseResult<SegmentOutcomeBase, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SegmentOutcomeBase$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SegmentOutcomeBase' from JSON`,
+  );
+}
+
+/** @internal */
+export const SegmentOutcome2$inboundSchema: z.ZodType<
+  SegmentOutcome2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  base: z.lazy(() => SegmentOutcomeBase$inboundSchema),
+  passPromille: types.number(),
+  type: types.literal("split"),
+});
+
+export function segmentOutcome2FromJSON(
+  jsonString: string,
+): SafeParseResult<SegmentOutcome2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SegmentOutcome2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SegmentOutcome2' from JSON`,
+  );
+}
+
+/** @internal */
+export const SegmentOutcome1$inboundSchema: z.ZodType<
+  SegmentOutcome1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("all"),
+});
+
+export function segmentOutcome1FromJSON(
+  jsonString: string,
+): SafeParseResult<SegmentOutcome1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SegmentOutcome1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SegmentOutcome1' from JSON`,
+  );
+}
+
+/** @internal */
+export const SegmentOutcome$inboundSchema: z.ZodType<
+  SegmentOutcome,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => SegmentOutcome1$inboundSchema),
+  z.lazy(() => SegmentOutcome2$inboundSchema),
+]);
+
+export function segmentOutcomeFromJSON(
+  jsonString: string,
+): SafeParseResult<SegmentOutcome, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SegmentOutcome$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SegmentOutcome' from JSON`,
+  );
+}
+
+/** @internal */
 export const SegmentRules$inboundSchema: z.ZodType<
   SegmentRules,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  conditions: z.array(z.lazy(() => SegmentConditions$inboundSchema)),
   id: types.string(),
   outcome: z.union([
     z.lazy(() => SegmentOutcome1$inboundSchema),
     z.lazy(() => SegmentOutcome2$inboundSchema),
   ]),
-  conditions: z.array(z.lazy(() => SegmentConditions$inboundSchema)),
 });
 
 export function segmentRulesFromJSON(
@@ -544,52 +581,15 @@ export function segmentRulesFromJSON(
 }
 
 /** @internal */
-export const Include$inboundSchema: z.ZodType<Include, z.ZodTypeDef, unknown> =
-  z.object({
-    note: types.optional(types.string()),
-    value: types.string(),
-  });
-
-export function includeFromJSON(
-  jsonString: string,
-): SafeParseResult<Include, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Include$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Include' from JSON`,
-  );
-}
-
-/** @internal */
-export const ExcludeT$inboundSchema: z.ZodType<
-  ExcludeT,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  note: types.optional(types.string()),
-  value: types.string(),
-});
-
-export function excludeFromJSON(
-  jsonString: string,
-): SafeParseResult<ExcludeT, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ExcludeT$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ExcludeT' from JSON`,
-  );
-}
-
-/** @internal */
 export const Data$inboundSchema: z.ZodType<Data, z.ZodTypeDef, unknown> = z
   .object({
-    rules: types.optional(z.array(z.lazy(() => SegmentRules$inboundSchema))),
-    include: types.optional(
-      z.record(z.record(z.array(z.lazy(() => Include$inboundSchema)))),
-    ),
     exclude: types.optional(
       z.record(z.record(z.array(z.lazy(() => ExcludeT$inboundSchema)))),
     ),
+    include: types.optional(
+      z.record(z.record(z.array(z.lazy(() => Include$inboundSchema)))),
+    ),
+    rules: types.optional(z.array(z.lazy(() => SegmentRules$inboundSchema))),
   });
 
 export function dataFromJSON(
@@ -649,19 +649,19 @@ export function segmentMetadataFromJSON(
 /** @internal */
 export const Segment$inboundSchema: z.ZodType<Segment, z.ZodTypeDef, unknown> =
   z.object({
-    description: types.optional(types.string()),
+    createdAt: types.number(),
     createdBy: types.optional(types.string()),
-    usedByFlags: types.optional(z.array(types.string())),
-    usedBySegments: types.optional(z.array(types.string())),
     data: z.lazy(() => Data$inboundSchema),
+    description: types.optional(types.string()),
+    hint: types.string(),
     id: types.string(),
     label: types.string(),
-    slug: types.string(),
-    createdAt: types.number(),
-    updatedAt: types.number(),
     projectId: types.string(),
+    slug: types.string(),
     typeName: SegmentTypeName$inboundSchema,
-    hint: types.string(),
+    updatedAt: types.number(),
+    usedByFlags: types.optional(z.array(types.string())),
+    usedBySegments: types.optional(z.array(types.string())),
     metadata: types.optional(z.lazy(() => SegmentMetadata$inboundSchema)),
   });
 

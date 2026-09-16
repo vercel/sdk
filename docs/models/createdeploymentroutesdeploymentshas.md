@@ -18,8 +18,8 @@ const value: models.CreateDeploymentHasDeploymentsResponse200ApplicationJson1 =
 ```typescript
 const value: models.CreateDeploymentHasDeploymentsResponse200ApplicationJson2 =
   {
-    type: "query",
     key: "<key>",
+    type: "query",
   };
 ```
 
@@ -28,8 +28,8 @@ const value: models.CreateDeploymentHasDeploymentsResponse200ApplicationJson2 =
 ```typescript
 const value: models.CreateDeploymentHasDeploymentsResponse200ApplicationJson2 =
   {
-    type: "query",
     key: "<key>",
+    type: "query",
   };
 ```
 
@@ -38,8 +38,8 @@ const value: models.CreateDeploymentHasDeploymentsResponse200ApplicationJson2 =
 ```typescript
 const value: models.CreateDeploymentHasDeploymentsResponse200ApplicationJson2 =
   {
-    type: "query",
     key: "<key>",
+    type: "query",
   };
 ```
 

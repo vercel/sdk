@@ -5,7 +5,7 @@ Present when deployment was created with manual provisioning enabled, either exp
 ## Example Usage
 
 ```typescript
-import { ResponseBodyManualProvisioning } from "@vercel/sdk/models/getdeploymentgitsourcedeploymentsresponse200type.js";
+import { ResponseBodyManualProvisioning } from "@vercel/sdk/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody215type.js";
 
 let value: ResponseBodyManualProvisioning = {
   state: "COMPLETE",
@@ -16,5 +16,5 @@ let value: ResponseBodyManualProvisioning = {
 
 | Field                                                                                                      | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
 | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `state`                                                                                                    | [models.GetDeploymentResponseBodyDeploymentsState](../models/getdeploymentresponsebodydeploymentsstate.md) | :heavy_check_mark:                                                                                         | Current provisioning state                                                                                 |
 | `completedAt`                                                                                              | *number*                                                                                                   | :heavy_minus_sign:                                                                                         | Timestamp when manual provisioning completed                                                               |
+| `state`                                                                                                    | [models.GetDeploymentResponseBodyDeploymentsState](../models/getdeploymentresponsebodydeploymentsstate.md) | :heavy_check_mark:                                                                                         | Current provisioning state                                                                                 |

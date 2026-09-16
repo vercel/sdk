@@ -20,13 +20,13 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
  */
 export type ConnectConnectorProjectConnectionList = {
   /**
-   * Project connections in this page.
-   */
-  projects: Array<ConnectProjectConnection>;
-  /**
    * Cursor for the next page.
    */
   pagination: ConnectPagination;
+  /**
+   * Project connections in this page.
+   */
+  projects: Array<ConnectProjectConnection>;
 };
 
 /** @internal */
@@ -35,8 +35,8 @@ export const ConnectConnectorProjectConnectionList$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projects: z.array(ConnectProjectConnection$inboundSchema),
   pagination: ConnectPagination$inboundSchema,
+  projects: z.array(ConnectProjectConnection$inboundSchema),
 });
 
 export function connectConnectorProjectConnectionListFromJSON(

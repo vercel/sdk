@@ -5,19 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndEightySix } from "@vercel/sdk/models/threehundredandfortytwo.js";
+import { ThreeHundredAndEightySix } from "@vercel/sdk/models/payloadmostspecificsubdivision.js";
 
 let value: ThreeHundredAndEightySix = {
-  actorId: "<id>",
-  actorType: "admin",
+  convertedFromTrial: true,
+  invoiceId: "<id>",
+  plan: "pro",
 };
 ```
 
 ## Fields
 
-| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `name`                                                                           | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `actorId`                                                                        | *string*                                                                         | :heavy_check_mark:                                                               | Okta user id.                                                                    |
-| `actorType`                                                                      | [models.UserEventPayload386ActorType](../models/usereventpayload386actortype.md) | :heavy_check_mark:                                                               | N/A                                                                              |
-| `actorName`                                                                      | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `convertedFromTrial`                           | *boolean*                                      | :heavy_check_mark:                             | N/A                                            |
+| `invoiceId`                                    | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `plan`                                         | [models.PayloadPlan](../models/payloadplan.md) | :heavy_check_mark:                             | N/A                                            |

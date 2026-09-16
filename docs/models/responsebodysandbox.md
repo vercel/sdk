@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodySandbox } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson3action.js";
+import { ResponseBodySandbox } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponseto.js";
 
 let value: ResponseBodySandbox = {};
 ```
@@ -12,5 +12,5 @@ let value: ResponseBodySandbox = {};
 
 | Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
 | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `region`                                                                         | [models.ResponseBodyRegion](../models/responsebodyregion.md)                     | :heavy_minus_sign:                                                               | N/A                                                                              |
 | `failoverRegions`                                                                | [models.ResponseBodyFailoverRegions](../models/responsebodyfailoverregions.md)[] | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `region`                                                                         | [models.ResponseBodyRegion](../models/responsebodyregion.md)                     | :heavy_minus_sign:                                                               | N/A                                                                              |

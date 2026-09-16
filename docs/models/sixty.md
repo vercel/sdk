@@ -5,11 +5,11 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { Sixty } from "@vercel/sdk/models/payloadaccessgroup.js";
+import { Sixty } from "@vercel/sdk/models/twentynine.js";
 
 let value: Sixty = {
-  projectId: "<id>",
   attackModeEnabled: true,
+  projectId: "<id>",
 };
 ```
 
@@ -17,8 +17,8 @@ let value: Sixty = {
 
 | Field                       | Type                        | Required                    | Description                 |
 | --------------------------- | --------------------------- | --------------------------- | --------------------------- |
-| `projectId`                 | *string*                    | :heavy_check_mark:          | N/A                         |
-| `prevAttackModeEnabled`     | *boolean*                   | :heavy_minus_sign:          | N/A                         |
-| `prevAttackModeActiveUntil` | *number*                    | :heavy_minus_sign:          | N/A                         |
-| `attackModeEnabled`         | *boolean*                   | :heavy_check_mark:          | N/A                         |
 | `attackModeActiveUntil`     | *number*                    | :heavy_minus_sign:          | N/A                         |
+| `attackModeEnabled`         | *boolean*                   | :heavy_check_mark:          | N/A                         |
+| `prevAttackModeActiveUntil` | *number*                    | :heavy_minus_sign:          | N/A                         |
+| `prevAttackModeEnabled`     | *boolean*                   | :heavy_minus_sign:          | N/A                         |
+| `projectId`                 | *string*                    | :heavy_check_mark:          | N/A                         |

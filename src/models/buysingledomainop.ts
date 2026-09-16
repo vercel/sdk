@@ -22,6 +22,10 @@ import {
   DomainTooShort$inboundSchema,
 } from "./domaintooshort.js";
 import {
+  EmojiTldNotSupported,
+  EmojiTldNotSupported$inboundSchema,
+} from "./emojitldnotsupported.js";
+import {
   ExpectedPriceMismatch,
   ExpectedPriceMismatch$inboundSchema,
 } from "./expectedpricemismatch.js";
@@ -136,11 +140,11 @@ export type BuySingleDomainRequest = {
 };
 
 /**
- * NotAuthorizedForScope
+ * Forbidden
  */
 export type BuySingleDomainDomainsRegistrarResponseResponseBody =
-  | (NotAuthorizedForScope & { code: "not_authorized_for_scope" })
-  | Forbidden;
+  | Forbidden
+  | (NotAuthorizedForScope & { code: "not_authorized_for_scope" });
 
 /**
  * There was something wrong with the request
@@ -152,6 +156,7 @@ export type BuySingleDomainDomainsRegistrarResponseBody =
   | AdditionalContactInfoRequired
   | ExpectedPriceMismatch
   | DomainNotAvailable
+  | EmojiTldNotSupported
   | LanguageCodeRequired
   | TldNotSupported
   | HttpApiDecodeError;
@@ -308,10 +313,10 @@ export const BuySingleDomainDomainsRegistrarResponseResponseBody$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.union([
+    Forbidden$inboundSchema,
     NotAuthorizedForScope$inboundSchema.and(
       z.object({ code: z.literal("not_authorized_for_scope") }),
     ),
-    Forbidden$inboundSchema,
   ]);
 
 export function buySingleDomainDomainsRegistrarResponseResponseBodyFromJSON(
@@ -343,6 +348,7 @@ export const BuySingleDomainDomainsRegistrarResponseBody$inboundSchema:
     AdditionalContactInfoRequired$inboundSchema,
     ExpectedPriceMismatch$inboundSchema,
     DomainNotAvailable$inboundSchema,
+    EmojiTldNotSupported$inboundSchema,
     LanguageCodeRequired$inboundSchema,
     TldNotSupported$inboundSchema,
     HttpApiDecodeError$inboundSchema,

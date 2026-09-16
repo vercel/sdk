@@ -87,30 +87,38 @@ export type ThreeAliasError = {
 };
 
 export type ThreeAliasWarning = {
-  code: string;
-  message: string;
-  link?: string | undefined;
   action?: string | undefined;
+  code: string;
+  link?: string | undefined;
+  message: string;
 };
 
 export type GetDeploymentEvents33 = {
-  type: GetDeploymentEvents3DeploymentsResponse200ApplicationStreamPlusJsonType;
-  deploymentId: string;
   date: number;
+  deploymentId: string;
+  type: GetDeploymentEvents3DeploymentsResponse200ApplicationStreamPlusJsonType;
   alias: Array<string>;
   aliasError: ThreeAliasError | null;
   aliasWarning: ThreeAliasWarning | null;
 };
 
 export type GetDeploymentEvents3Info = {
-  type: string;
-  name: string;
   entrypoint?: string | undefined;
+  name: string;
   path?: string | undefined;
-  step?: string | undefined;
   readyState?: string | undefined;
   serviceName?: string | undefined;
+  step?: string | undefined;
+  type: string;
 };
+
+export const GetDeploymentEvents3Level = {
+  Error: "error",
+  Warning: "warning",
+} as const;
+export type GetDeploymentEvents3Level = ClosedEnum<
+  typeof GetDeploymentEvents3Level
+>;
 
 export const GetDeploymentEvents3DeploymentsResponse200Type = {
   Command: "command",
@@ -130,52 +138,26 @@ export type GetDeploymentEvents3DeploymentsResponse200Type = ClosedEnum<
   typeof GetDeploymentEvents3DeploymentsResponse200Type
 >;
 
-export const GetDeploymentEvents3Level = {
-  Error: "error",
-  Warning: "warning",
-} as const;
-export type GetDeploymentEvents3Level = ClosedEnum<
-  typeof GetDeploymentEvents3Level
->;
-
 export type GetDeploymentEvents32 = {
   created: number;
   date: number;
   deploymentId: string;
   id: string;
   info: GetDeploymentEvents3Info;
+  level?: GetDeploymentEvents3Level | undefined;
   serial: string;
   text?: string | undefined;
   type: GetDeploymentEvents3DeploymentsResponse200Type;
-  level?: GetDeploymentEvents3Level | undefined;
 };
 
-export const GetDeploymentEvents3DeploymentsResponseType = {
-  Command: "command",
-  Delimiter: "delimiter",
-  DeploymentState: "deployment-state",
-  EdgeFunctionInvocation: "edge-function-invocation",
-  Exit: "exit",
-  Fatal: "fatal",
-  Metric: "metric",
-  Middleware: "middleware",
-  MiddlewareInvocation: "middleware-invocation",
-  Report: "report",
-  Stderr: "stderr",
-  Stdout: "stdout",
-} as const;
-export type GetDeploymentEvents3DeploymentsResponseType = ClosedEnum<
-  typeof GetDeploymentEvents3DeploymentsResponseType
->;
-
 export type GetDeploymentEvents3DeploymentsInfo = {
-  type: string;
-  name: string;
   entrypoint?: string | undefined;
+  name: string;
   path?: string | undefined;
-  step?: string | undefined;
   readyState?: string | undefined;
   serviceName?: string | undefined;
+  step?: string | undefined;
+  type: string;
 };
 
 export const GetDeploymentEvents3VercelCache = {
@@ -202,44 +184,62 @@ export type GetDeploymentEvents3WafAction = ClosedEnum<
 >;
 
 export type GetDeploymentEvents3Proxy = {
-  timestamp: number;
-  method: string;
-  host: string;
-  path?: string | undefined;
-  statusCode?: number | undefined;
-  userAgent?: Array<string> | undefined;
-  referer?: string | undefined;
-  clientIp?: string | undefined;
-  region?: string | undefined;
-  scheme?: string | undefined;
-  responseByteSize?: number | undefined;
   cacheId?: string | undefined;
+  clientIp?: string | undefined;
+  host: string;
+  lambdaRegion?: string | undefined;
+  method: string;
+  path?: string | undefined;
   pathType?: string | undefined;
   pathTypeVariant?: string | undefined;
-  vercelId?: string | undefined;
+  referer?: string | undefined;
+  region?: string | undefined;
+  responseByteSize?: number | undefined;
+  scheme?: string | undefined;
+  statusCode?: number | undefined;
+  timestamp: number;
+  userAgent?: Array<string> | undefined;
   vercelCache?: GetDeploymentEvents3VercelCache | undefined;
-  lambdaRegion?: string | undefined;
+  vercelId?: string | undefined;
   wafAction?: GetDeploymentEvents3WafAction | undefined;
   wafRuleId?: string | undefined;
 };
 
 export type GetDeploymentEvents3Payload = {
-  deploymentId: string;
-  info?: GetDeploymentEvents3DeploymentsInfo | undefined;
-  text?: string | undefined;
-  id: string;
-  date: number;
-  serial: string;
   created?: number | undefined;
-  statusCode?: number | undefined;
-  requestId?: string | undefined;
+  date: number;
+  deploymentId: string;
+  id: string;
+  info?: GetDeploymentEvents3DeploymentsInfo | undefined;
   proxy?: GetDeploymentEvents3Proxy | undefined;
+  requestId?: string | undefined;
+  serial: string;
+  statusCode?: number | undefined;
+  text?: string | undefined;
 };
 
+export const GetDeploymentEvents3DeploymentsResponseType = {
+  Command: "command",
+  Delimiter: "delimiter",
+  DeploymentState: "deployment-state",
+  EdgeFunctionInvocation: "edge-function-invocation",
+  Exit: "exit",
+  Fatal: "fatal",
+  Metric: "metric",
+  Middleware: "middleware",
+  MiddlewareInvocation: "middleware-invocation",
+  Report: "report",
+  Stderr: "stderr",
+  Stdout: "stdout",
+} as const;
+export type GetDeploymentEvents3DeploymentsResponseType = ClosedEnum<
+  typeof GetDeploymentEvents3DeploymentsResponseType
+>;
+
 export type GetDeploymentEvents31 = {
-  type: GetDeploymentEvents3DeploymentsResponseType;
   created: number;
   payload: GetDeploymentEvents3Payload;
+  type: GetDeploymentEvents3DeploymentsResponseType;
 };
 
 export type GetDeploymentEventsResponseBodyDeployments3 =
@@ -248,14 +248,20 @@ export type GetDeploymentEventsResponseBodyDeployments3 =
   | GetDeploymentEvents31;
 
 export type ResponseBodyInfo = {
-  type: string;
-  name: string;
   entrypoint?: string | undefined;
+  name: string;
   path?: string | undefined;
-  step?: string | undefined;
   readyState?: string | undefined;
   serviceName?: string | undefined;
+  step?: string | undefined;
+  type: string;
 };
+
+export const ResponseBodyLevel = {
+  Error: "error",
+  Warning: "warning",
+} as const;
+export type ResponseBodyLevel = ClosedEnum<typeof ResponseBodyLevel>;
 
 export const GetDeploymentEventsResponseBodyDeploymentsResponseType = {
   Command: "command",
@@ -275,50 +281,26 @@ export type GetDeploymentEventsResponseBodyDeploymentsResponseType = ClosedEnum<
   typeof GetDeploymentEventsResponseBodyDeploymentsResponseType
 >;
 
-export const ResponseBodyLevel = {
-  Error: "error",
-  Warning: "warning",
-} as const;
-export type ResponseBodyLevel = ClosedEnum<typeof ResponseBodyLevel>;
-
 export type GetDeploymentEventsResponseBodyDeployments2 = {
   created: number;
   date: number;
   deploymentId: string;
   id: string;
   info: ResponseBodyInfo;
+  level?: ResponseBodyLevel | undefined;
   serial: string;
   text?: string | undefined;
   type: GetDeploymentEventsResponseBodyDeploymentsResponseType;
-  level?: ResponseBodyLevel | undefined;
 };
 
-export const GetDeploymentEventsResponseBodyDeploymentsType = {
-  Command: "command",
-  Delimiter: "delimiter",
-  DeploymentState: "deployment-state",
-  EdgeFunctionInvocation: "edge-function-invocation",
-  Exit: "exit",
-  Fatal: "fatal",
-  Metric: "metric",
-  Middleware: "middleware",
-  MiddlewareInvocation: "middleware-invocation",
-  Report: "report",
-  Stderr: "stderr",
-  Stdout: "stdout",
-} as const;
-export type GetDeploymentEventsResponseBodyDeploymentsType = ClosedEnum<
-  typeof GetDeploymentEventsResponseBodyDeploymentsType
->;
-
 export type GetDeploymentEventsResponseBodyInfo = {
-  type: string;
-  name: string;
   entrypoint?: string | undefined;
+  name: string;
   path?: string | undefined;
-  step?: string | undefined;
   readyState?: string | undefined;
   serviceName?: string | undefined;
+  step?: string | undefined;
+  type: string;
 };
 
 export const ResponseBodyVercelCache = {
@@ -343,44 +325,62 @@ export const ResponseBodyWafAction = {
 export type ResponseBodyWafAction = ClosedEnum<typeof ResponseBodyWafAction>;
 
 export type ResponseBodyProxy = {
-  timestamp: number;
-  method: string;
-  host: string;
-  path?: string | undefined;
-  statusCode?: number | undefined;
-  userAgent?: Array<string> | undefined;
-  referer?: string | undefined;
-  clientIp?: string | undefined;
-  region?: string | undefined;
-  scheme?: string | undefined;
-  responseByteSize?: number | undefined;
   cacheId?: string | undefined;
+  clientIp?: string | undefined;
+  host: string;
+  lambdaRegion?: string | undefined;
+  method: string;
+  path?: string | undefined;
   pathType?: string | undefined;
   pathTypeVariant?: string | undefined;
-  vercelId?: string | undefined;
+  referer?: string | undefined;
+  region?: string | undefined;
+  responseByteSize?: number | undefined;
+  scheme?: string | undefined;
+  statusCode?: number | undefined;
+  timestamp: number;
+  userAgent?: Array<string> | undefined;
   vercelCache?: ResponseBodyVercelCache | undefined;
-  lambdaRegion?: string | undefined;
+  vercelId?: string | undefined;
   wafAction?: ResponseBodyWafAction | undefined;
   wafRuleId?: string | undefined;
 };
 
 export type ResponseBodyPayload = {
-  deploymentId: string;
-  info?: GetDeploymentEventsResponseBodyInfo | undefined;
-  text?: string | undefined;
-  id: string;
-  date: number;
-  serial: string;
   created?: number | undefined;
-  statusCode?: number | undefined;
-  requestId?: string | undefined;
+  date: number;
+  deploymentId: string;
+  id: string;
+  info?: GetDeploymentEventsResponseBodyInfo | undefined;
   proxy?: ResponseBodyProxy | undefined;
+  requestId?: string | undefined;
+  serial: string;
+  statusCode?: number | undefined;
+  text?: string | undefined;
 };
 
+export const GetDeploymentEventsResponseBodyDeploymentsType = {
+  Command: "command",
+  Delimiter: "delimiter",
+  DeploymentState: "deployment-state",
+  EdgeFunctionInvocation: "edge-function-invocation",
+  Exit: "exit",
+  Fatal: "fatal",
+  Metric: "metric",
+  Middleware: "middleware",
+  MiddlewareInvocation: "middleware-invocation",
+  Report: "report",
+  Stderr: "stderr",
+  Stdout: "stdout",
+} as const;
+export type GetDeploymentEventsResponseBodyDeploymentsType = ClosedEnum<
+  typeof GetDeploymentEventsResponseBodyDeploymentsType
+>;
+
 export type GetDeploymentEventsResponseBodyDeployments1 = {
-  type: GetDeploymentEventsResponseBodyDeploymentsType;
   created: number;
   payload: ResponseBodyPayload;
+  type: GetDeploymentEventsResponseBodyDeploymentsType;
 };
 
 export type GetDeploymentEventsResponseBody =
@@ -403,30 +403,36 @@ export type GetDeploymentEvents3AliasError = {
 };
 
 export type GetDeploymentEvents3AliasWarning = {
-  code: string;
-  message: string;
-  link?: string | undefined;
   action?: string | undefined;
+  code: string;
+  link?: string | undefined;
+  message: string;
 };
 
 export type Three3 = {
-  type: GetDeploymentEvents3DeploymentsType;
-  deploymentId: string;
   date: number;
+  deploymentId: string;
+  type: GetDeploymentEvents3DeploymentsType;
   alias: Array<string>;
   aliasError: GetDeploymentEvents3AliasError | null;
   aliasWarning: GetDeploymentEvents3AliasWarning | null;
 };
 
 export type ThreeInfo = {
-  type: string;
-  name: string;
   entrypoint?: string | undefined;
+  name: string;
   path?: string | undefined;
-  step?: string | undefined;
   readyState?: string | undefined;
   serviceName?: string | undefined;
+  step?: string | undefined;
+  type: string;
 };
+
+export const ThreeLevel = {
+  Error: "error",
+  Warning: "warning",
+} as const;
+export type ThreeLevel = ClosedEnum<typeof ThreeLevel>;
 
 export const GetDeploymentEvents3Type = {
   Command: "command",
@@ -446,48 +452,26 @@ export type GetDeploymentEvents3Type = ClosedEnum<
   typeof GetDeploymentEvents3Type
 >;
 
-export const ThreeLevel = {
-  Error: "error",
-  Warning: "warning",
-} as const;
-export type ThreeLevel = ClosedEnum<typeof ThreeLevel>;
-
 export type Three2 = {
   created: number;
   date: number;
   deploymentId: string;
   id: string;
   info: ThreeInfo;
+  level?: ThreeLevel | undefined;
   serial: string;
   text?: string | undefined;
   type: GetDeploymentEvents3Type;
-  level?: ThreeLevel | undefined;
 };
 
-export const ThreeType = {
-  Command: "command",
-  Delimiter: "delimiter",
-  DeploymentState: "deployment-state",
-  EdgeFunctionInvocation: "edge-function-invocation",
-  Exit: "exit",
-  Fatal: "fatal",
-  Metric: "metric",
-  Middleware: "middleware",
-  MiddlewareInvocation: "middleware-invocation",
-  Report: "report",
-  Stderr: "stderr",
-  Stdout: "stdout",
-} as const;
-export type ThreeType = ClosedEnum<typeof ThreeType>;
-
 export type GetDeploymentEvents3DeploymentsResponseInfo = {
-  type: string;
-  name: string;
   entrypoint?: string | undefined;
+  name: string;
   path?: string | undefined;
-  step?: string | undefined;
   readyState?: string | undefined;
   serviceName?: string | undefined;
+  step?: string | undefined;
+  type: string;
 };
 
 export const ThreeVercelCache = {
@@ -510,57 +494,81 @@ export const ThreeWafAction = {
 export type ThreeWafAction = ClosedEnum<typeof ThreeWafAction>;
 
 export type ThreeProxy = {
-  timestamp: number;
-  method: string;
-  host: string;
-  path?: string | undefined;
-  statusCode?: number | undefined;
-  userAgent?: Array<string> | undefined;
-  referer?: string | undefined;
-  clientIp?: string | undefined;
-  region?: string | undefined;
-  scheme?: string | undefined;
-  responseByteSize?: number | undefined;
   cacheId?: string | undefined;
+  clientIp?: string | undefined;
+  host: string;
+  lambdaRegion?: string | undefined;
+  method: string;
+  path?: string | undefined;
   pathType?: string | undefined;
   pathTypeVariant?: string | undefined;
-  vercelId?: string | undefined;
+  referer?: string | undefined;
+  region?: string | undefined;
+  responseByteSize?: number | undefined;
+  scheme?: string | undefined;
+  statusCode?: number | undefined;
+  timestamp: number;
+  userAgent?: Array<string> | undefined;
   vercelCache?: ThreeVercelCache | undefined;
-  lambdaRegion?: string | undefined;
+  vercelId?: string | undefined;
   wafAction?: ThreeWafAction | undefined;
   wafRuleId?: string | undefined;
 };
 
 export type ThreePayload = {
-  deploymentId: string;
-  info?: GetDeploymentEvents3DeploymentsResponseInfo | undefined;
-  text?: string | undefined;
-  id: string;
-  date: number;
-  serial: string;
   created?: number | undefined;
-  statusCode?: number | undefined;
-  requestId?: string | undefined;
+  date: number;
+  deploymentId: string;
+  id: string;
+  info?: GetDeploymentEvents3DeploymentsResponseInfo | undefined;
   proxy?: ThreeProxy | undefined;
+  requestId?: string | undefined;
+  serial: string;
+  statusCode?: number | undefined;
+  text?: string | undefined;
 };
 
+export const ThreeType = {
+  Command: "command",
+  Delimiter: "delimiter",
+  DeploymentState: "deployment-state",
+  EdgeFunctionInvocation: "edge-function-invocation",
+  Exit: "exit",
+  Fatal: "fatal",
+  Metric: "metric",
+  Middleware: "middleware",
+  MiddlewareInvocation: "middleware-invocation",
+  Report: "report",
+  Stderr: "stderr",
+  Stdout: "stdout",
+} as const;
+export type ThreeType = ClosedEnum<typeof ThreeType>;
+
 export type Three1 = {
-  type: ThreeType;
   created: number;
   payload: ThreePayload;
+  type: ThreeType;
 };
 
 export type GetDeploymentEventsResponseBody3 = Three2 | Three3 | Three1;
 
 export type Info = {
-  type: string;
-  name: string;
   entrypoint?: string | undefined;
+  name: string;
   path?: string | undefined;
-  step?: string | undefined;
   readyState?: string | undefined;
   serviceName?: string | undefined;
+  step?: string | undefined;
+  type: string;
 };
+
+export const GetDeploymentEventsResponseBodyLevel = {
+  Error: "error",
+  Warning: "warning",
+} as const;
+export type GetDeploymentEventsResponseBodyLevel = ClosedEnum<
+  typeof GetDeploymentEventsResponseBodyLevel
+>;
 
 export const GetDeploymentEventsResponseBodyType = {
   Command: "command",
@@ -580,50 +588,26 @@ export type GetDeploymentEventsResponseBodyType = ClosedEnum<
   typeof GetDeploymentEventsResponseBodyType
 >;
 
-export const GetDeploymentEventsResponseBodyLevel = {
-  Error: "error",
-  Warning: "warning",
-} as const;
-export type GetDeploymentEventsResponseBodyLevel = ClosedEnum<
-  typeof GetDeploymentEventsResponseBodyLevel
->;
-
 export type GetDeploymentEventsResponseBody2 = {
   created: number;
   date: number;
   deploymentId: string;
   id: string;
   info: Info;
+  level?: GetDeploymentEventsResponseBodyLevel | undefined;
   serial: string;
   text?: string | undefined;
   type: GetDeploymentEventsResponseBodyType;
-  level?: GetDeploymentEventsResponseBodyLevel | undefined;
 };
 
-export const ResponseBodyType = {
-  Command: "command",
-  Delimiter: "delimiter",
-  DeploymentState: "deployment-state",
-  EdgeFunctionInvocation: "edge-function-invocation",
-  Exit: "exit",
-  Fatal: "fatal",
-  Metric: "metric",
-  Middleware: "middleware",
-  MiddlewareInvocation: "middleware-invocation",
-  Report: "report",
-  Stderr: "stderr",
-  Stdout: "stdout",
-} as const;
-export type ResponseBodyType = ClosedEnum<typeof ResponseBodyType>;
-
 export type GetDeploymentEventsResponseBodyDeploymentsInfo = {
-  type: string;
-  name: string;
   entrypoint?: string | undefined;
+  name: string;
   path?: string | undefined;
-  step?: string | undefined;
   readyState?: string | undefined;
   serviceName?: string | undefined;
+  step?: string | undefined;
+  type: string;
 };
 
 export const VercelCache = {
@@ -646,44 +630,60 @@ export const WafAction = {
 export type WafAction = ClosedEnum<typeof WafAction>;
 
 export type Proxy = {
-  timestamp: number;
-  method: string;
-  host: string;
-  path?: string | undefined;
-  statusCode?: number | undefined;
-  userAgent?: Array<string> | undefined;
-  referer?: string | undefined;
-  clientIp?: string | undefined;
-  region?: string | undefined;
-  scheme?: string | undefined;
-  responseByteSize?: number | undefined;
   cacheId?: string | undefined;
+  clientIp?: string | undefined;
+  host: string;
+  lambdaRegion?: string | undefined;
+  method: string;
+  path?: string | undefined;
   pathType?: string | undefined;
   pathTypeVariant?: string | undefined;
-  vercelId?: string | undefined;
+  referer?: string | undefined;
+  region?: string | undefined;
+  responseByteSize?: number | undefined;
+  scheme?: string | undefined;
+  statusCode?: number | undefined;
+  timestamp: number;
+  userAgent?: Array<string> | undefined;
   vercelCache?: VercelCache | undefined;
-  lambdaRegion?: string | undefined;
+  vercelId?: string | undefined;
   wafAction?: WafAction | undefined;
   wafRuleId?: string | undefined;
 };
 
 export type GetDeploymentEventsResponseBodyPayload = {
-  deploymentId: string;
-  info?: GetDeploymentEventsResponseBodyDeploymentsInfo | undefined;
-  text?: string | undefined;
-  id: string;
-  date: number;
-  serial: string;
   created?: number | undefined;
-  statusCode?: number | undefined;
-  requestId?: string | undefined;
+  date: number;
+  deploymentId: string;
+  id: string;
+  info?: GetDeploymentEventsResponseBodyDeploymentsInfo | undefined;
   proxy?: Proxy | undefined;
+  requestId?: string | undefined;
+  serial: string;
+  statusCode?: number | undefined;
+  text?: string | undefined;
 };
 
+export const ResponseBodyType = {
+  Command: "command",
+  Delimiter: "delimiter",
+  DeploymentState: "deployment-state",
+  EdgeFunctionInvocation: "edge-function-invocation",
+  Exit: "exit",
+  Fatal: "fatal",
+  Metric: "metric",
+  Middleware: "middleware",
+  MiddlewareInvocation: "middleware-invocation",
+  Report: "report",
+  Stderr: "stderr",
+  Stdout: "stdout",
+} as const;
+export type ResponseBodyType = ClosedEnum<typeof ResponseBodyType>;
+
 export type GetDeploymentEventsResponseBody1 = {
-  type: ResponseBodyType;
   created: number;
   payload: GetDeploymentEventsResponseBodyPayload;
+  type: ResponseBodyType;
 };
 
 export type GetDeploymentEventsDeploymentsResponseBody =
@@ -808,10 +808,10 @@ export const ThreeAliasWarning$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  code: types.string(),
-  message: types.string(),
-  link: types.optional(types.string()),
   action: types.optional(types.string()),
+  code: types.string(),
+  link: types.optional(types.string()),
+  message: types.string(),
 });
 
 export function threeAliasWarningFromJSON(
@@ -830,10 +830,10 @@ export const GetDeploymentEvents33$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  date: types.number(),
+  deploymentId: types.string(),
   type:
     GetDeploymentEvents3DeploymentsResponse200ApplicationStreamPlusJsonType$inboundSchema,
-  deploymentId: types.string(),
-  date: types.number(),
   alias: z.array(types.string()),
   aliasError: types.nullable(z.lazy(() => ThreeAliasError$inboundSchema)),
   aliasWarning: types.nullable(z.lazy(() => ThreeAliasWarning$inboundSchema)),
@@ -855,13 +855,13 @@ export const GetDeploymentEvents3Info$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.string(),
-  name: types.string(),
   entrypoint: types.optional(types.string()),
+  name: types.string(),
   path: types.optional(types.string()),
-  step: types.optional(types.string()),
   readyState: types.optional(types.string()),
   serviceName: types.optional(types.string()),
+  step: types.optional(types.string()),
+  type: types.string(),
 });
 
 export function getDeploymentEvents3InfoFromJSON(
@@ -875,14 +875,14 @@ export function getDeploymentEvents3InfoFromJSON(
 }
 
 /** @internal */
-export const GetDeploymentEvents3DeploymentsResponse200Type$inboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentEvents3DeploymentsResponse200Type> = z
-    .nativeEnum(GetDeploymentEvents3DeploymentsResponse200Type);
-
-/** @internal */
 export const GetDeploymentEvents3Level$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentEvents3Level
 > = z.nativeEnum(GetDeploymentEvents3Level);
+
+/** @internal */
+export const GetDeploymentEvents3DeploymentsResponse200Type$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentEvents3DeploymentsResponse200Type> = z
+    .nativeEnum(GetDeploymentEvents3DeploymentsResponse200Type);
 
 /** @internal */
 export const GetDeploymentEvents32$inboundSchema: z.ZodType<
@@ -895,10 +895,10 @@ export const GetDeploymentEvents32$inboundSchema: z.ZodType<
   deploymentId: types.string(),
   id: types.string(),
   info: z.lazy(() => GetDeploymentEvents3Info$inboundSchema),
+  level: types.optional(GetDeploymentEvents3Level$inboundSchema),
   serial: types.string(),
   text: types.optional(types.string()),
   type: GetDeploymentEvents3DeploymentsResponse200Type$inboundSchema,
-  level: types.optional(GetDeploymentEvents3Level$inboundSchema),
 });
 
 export function getDeploymentEvents32FromJSON(
@@ -912,23 +912,18 @@ export function getDeploymentEvents32FromJSON(
 }
 
 /** @internal */
-export const GetDeploymentEvents3DeploymentsResponseType$inboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentEvents3DeploymentsResponseType> = z
-    .nativeEnum(GetDeploymentEvents3DeploymentsResponseType);
-
-/** @internal */
 export const GetDeploymentEvents3DeploymentsInfo$inboundSchema: z.ZodType<
   GetDeploymentEvents3DeploymentsInfo,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.string(),
-  name: types.string(),
   entrypoint: types.optional(types.string()),
+  name: types.string(),
   path: types.optional(types.string()),
-  step: types.optional(types.string()),
   readyState: types.optional(types.string()),
   serviceName: types.optional(types.string()),
+  step: types.optional(types.string()),
+  type: types.string(),
 });
 
 export function getDeploymentEvents3DeploymentsInfoFromJSON(
@@ -958,23 +953,23 @@ export const GetDeploymentEvents3Proxy$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  timestamp: types.number(),
-  method: types.string(),
-  host: types.string(),
-  path: types.optional(types.string()),
-  statusCode: types.optional(types.number()),
-  userAgent: types.optional(z.array(types.string())),
-  referer: types.optional(types.string()),
-  clientIp: types.optional(types.string()),
-  region: types.optional(types.string()),
-  scheme: types.optional(types.string()),
-  responseByteSize: types.optional(types.number()),
   cacheId: types.optional(types.string()),
+  clientIp: types.optional(types.string()),
+  host: types.string(),
+  lambdaRegion: types.optional(types.string()),
+  method: types.string(),
+  path: types.optional(types.string()),
   pathType: types.optional(types.string()),
   pathTypeVariant: types.optional(types.string()),
-  vercelId: types.optional(types.string()),
+  referer: types.optional(types.string()),
+  region: types.optional(types.string()),
+  responseByteSize: types.optional(types.number()),
+  scheme: types.optional(types.string()),
+  statusCode: types.optional(types.number()),
+  timestamp: types.number(),
+  userAgent: types.optional(z.array(types.string())),
   vercelCache: types.optional(GetDeploymentEvents3VercelCache$inboundSchema),
-  lambdaRegion: types.optional(types.string()),
+  vercelId: types.optional(types.string()),
   wafAction: types.optional(GetDeploymentEvents3WafAction$inboundSchema),
   wafRuleId: types.optional(types.string()),
 });
@@ -995,18 +990,18 @@ export const GetDeploymentEvents3Payload$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  created: types.optional(types.number()),
+  date: types.number(),
   deploymentId: types.string(),
+  id: types.string(),
   info: types.optional(
     z.lazy(() => GetDeploymentEvents3DeploymentsInfo$inboundSchema),
   ),
-  text: types.optional(types.string()),
-  id: types.string(),
-  date: types.number(),
-  serial: types.string(),
-  created: types.optional(types.number()),
-  statusCode: types.optional(types.number()),
-  requestId: types.optional(types.string()),
   proxy: types.optional(z.lazy(() => GetDeploymentEvents3Proxy$inboundSchema)),
+  requestId: types.optional(types.string()),
+  serial: types.string(),
+  statusCode: types.optional(types.number()),
+  text: types.optional(types.string()),
 });
 
 export function getDeploymentEvents3PayloadFromJSON(
@@ -1020,14 +1015,19 @@ export function getDeploymentEvents3PayloadFromJSON(
 }
 
 /** @internal */
+export const GetDeploymentEvents3DeploymentsResponseType$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentEvents3DeploymentsResponseType> = z
+    .nativeEnum(GetDeploymentEvents3DeploymentsResponseType);
+
+/** @internal */
 export const GetDeploymentEvents31$inboundSchema: z.ZodType<
   GetDeploymentEvents31,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: GetDeploymentEvents3DeploymentsResponseType$inboundSchema,
   created: types.number(),
   payload: z.lazy(() => GetDeploymentEvents3Payload$inboundSchema),
+  type: GetDeploymentEvents3DeploymentsResponseType$inboundSchema,
 });
 
 export function getDeploymentEvents31FromJSON(
@@ -1074,13 +1074,13 @@ export const ResponseBodyInfo$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.string(),
-  name: types.string(),
   entrypoint: types.optional(types.string()),
+  name: types.string(),
   path: types.optional(types.string()),
-  step: types.optional(types.string()),
   readyState: types.optional(types.string()),
   serviceName: types.optional(types.string()),
+  step: types.optional(types.string()),
+  type: types.string(),
 });
 
 export function responseBodyInfoFromJSON(
@@ -1094,15 +1094,15 @@ export function responseBodyInfoFromJSON(
 }
 
 /** @internal */
+export const ResponseBodyLevel$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyLevel
+> = z.nativeEnum(ResponseBodyLevel);
+
+/** @internal */
 export const GetDeploymentEventsResponseBodyDeploymentsResponseType$inboundSchema:
   z.ZodNativeEnum<
     typeof GetDeploymentEventsResponseBodyDeploymentsResponseType
   > = z.nativeEnum(GetDeploymentEventsResponseBodyDeploymentsResponseType);
-
-/** @internal */
-export const ResponseBodyLevel$inboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyLevel
-> = z.nativeEnum(ResponseBodyLevel);
 
 /** @internal */
 export const GetDeploymentEventsResponseBodyDeployments2$inboundSchema:
@@ -1116,10 +1116,10 @@ export const GetDeploymentEventsResponseBodyDeployments2$inboundSchema:
     deploymentId: types.string(),
     id: types.string(),
     info: z.lazy(() => ResponseBodyInfo$inboundSchema),
+    level: types.optional(ResponseBodyLevel$inboundSchema),
     serial: types.string(),
     text: types.optional(types.string()),
     type: GetDeploymentEventsResponseBodyDeploymentsResponseType$inboundSchema,
-    level: types.optional(ResponseBodyLevel$inboundSchema),
   });
 
 export function getDeploymentEventsResponseBodyDeployments2FromJSON(
@@ -1139,23 +1139,18 @@ export function getDeploymentEventsResponseBodyDeployments2FromJSON(
 }
 
 /** @internal */
-export const GetDeploymentEventsResponseBodyDeploymentsType$inboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentEventsResponseBodyDeploymentsType> = z
-    .nativeEnum(GetDeploymentEventsResponseBodyDeploymentsType);
-
-/** @internal */
 export const GetDeploymentEventsResponseBodyInfo$inboundSchema: z.ZodType<
   GetDeploymentEventsResponseBodyInfo,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.string(),
-  name: types.string(),
   entrypoint: types.optional(types.string()),
+  name: types.string(),
   path: types.optional(types.string()),
-  step: types.optional(types.string()),
   readyState: types.optional(types.string()),
   serviceName: types.optional(types.string()),
+  step: types.optional(types.string()),
+  type: types.string(),
 });
 
 export function getDeploymentEventsResponseBodyInfoFromJSON(
@@ -1185,23 +1180,23 @@ export const ResponseBodyProxy$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  timestamp: types.number(),
-  method: types.string(),
-  host: types.string(),
-  path: types.optional(types.string()),
-  statusCode: types.optional(types.number()),
-  userAgent: types.optional(z.array(types.string())),
-  referer: types.optional(types.string()),
-  clientIp: types.optional(types.string()),
-  region: types.optional(types.string()),
-  scheme: types.optional(types.string()),
-  responseByteSize: types.optional(types.number()),
   cacheId: types.optional(types.string()),
+  clientIp: types.optional(types.string()),
+  host: types.string(),
+  lambdaRegion: types.optional(types.string()),
+  method: types.string(),
+  path: types.optional(types.string()),
   pathType: types.optional(types.string()),
   pathTypeVariant: types.optional(types.string()),
-  vercelId: types.optional(types.string()),
+  referer: types.optional(types.string()),
+  region: types.optional(types.string()),
+  responseByteSize: types.optional(types.number()),
+  scheme: types.optional(types.string()),
+  statusCode: types.optional(types.number()),
+  timestamp: types.number(),
+  userAgent: types.optional(z.array(types.string())),
   vercelCache: types.optional(ResponseBodyVercelCache$inboundSchema),
-  lambdaRegion: types.optional(types.string()),
+  vercelId: types.optional(types.string()),
   wafAction: types.optional(ResponseBodyWafAction$inboundSchema),
   wafRuleId: types.optional(types.string()),
 });
@@ -1222,18 +1217,18 @@ export const ResponseBodyPayload$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  created: types.optional(types.number()),
+  date: types.number(),
   deploymentId: types.string(),
+  id: types.string(),
   info: types.optional(
     z.lazy(() => GetDeploymentEventsResponseBodyInfo$inboundSchema),
   ),
-  text: types.optional(types.string()),
-  id: types.string(),
-  date: types.number(),
-  serial: types.string(),
-  created: types.optional(types.number()),
-  statusCode: types.optional(types.number()),
-  requestId: types.optional(types.string()),
   proxy: types.optional(z.lazy(() => ResponseBodyProxy$inboundSchema)),
+  requestId: types.optional(types.string()),
+  serial: types.string(),
+  statusCode: types.optional(types.number()),
+  text: types.optional(types.string()),
 });
 
 export function responseBodyPayloadFromJSON(
@@ -1247,15 +1242,20 @@ export function responseBodyPayloadFromJSON(
 }
 
 /** @internal */
+export const GetDeploymentEventsResponseBodyDeploymentsType$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentEventsResponseBodyDeploymentsType> = z
+    .nativeEnum(GetDeploymentEventsResponseBodyDeploymentsType);
+
+/** @internal */
 export const GetDeploymentEventsResponseBodyDeployments1$inboundSchema:
   z.ZodType<
     GetDeploymentEventsResponseBodyDeployments1,
     z.ZodTypeDef,
     unknown
   > = z.object({
-    type: GetDeploymentEventsResponseBodyDeploymentsType$inboundSchema,
     created: types.number(),
     payload: z.lazy(() => ResponseBodyPayload$inboundSchema),
+    type: GetDeploymentEventsResponseBodyDeploymentsType$inboundSchema,
   });
 
 export function getDeploymentEventsResponseBodyDeployments1FromJSON(
@@ -1330,10 +1330,10 @@ export const GetDeploymentEvents3AliasWarning$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  code: types.string(),
-  message: types.string(),
-  link: types.optional(types.string()),
   action: types.optional(types.string()),
+  code: types.string(),
+  link: types.optional(types.string()),
+  message: types.string(),
 });
 
 export function getDeploymentEvents3AliasWarningFromJSON(
@@ -1349,9 +1349,9 @@ export function getDeploymentEvents3AliasWarningFromJSON(
 /** @internal */
 export const Three3$inboundSchema: z.ZodType<Three3, z.ZodTypeDef, unknown> = z
   .object({
-    type: GetDeploymentEvents3DeploymentsType$inboundSchema,
-    deploymentId: types.string(),
     date: types.number(),
+    deploymentId: types.string(),
+    type: GetDeploymentEvents3DeploymentsType$inboundSchema,
     alias: z.array(types.string()),
     aliasError: types.nullable(
       z.lazy(() => GetDeploymentEvents3AliasError$inboundSchema),
@@ -1377,13 +1377,13 @@ export const ThreeInfo$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.string(),
-  name: types.string(),
   entrypoint: types.optional(types.string()),
+  name: types.string(),
   path: types.optional(types.string()),
-  step: types.optional(types.string()),
   readyState: types.optional(types.string()),
   serviceName: types.optional(types.string()),
+  step: types.optional(types.string()),
+  type: types.string(),
 });
 
 export function threeInfoFromJSON(
@@ -1397,13 +1397,13 @@ export function threeInfoFromJSON(
 }
 
 /** @internal */
+export const ThreeLevel$inboundSchema: z.ZodNativeEnum<typeof ThreeLevel> = z
+  .nativeEnum(ThreeLevel);
+
+/** @internal */
 export const GetDeploymentEvents3Type$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentEvents3Type
 > = z.nativeEnum(GetDeploymentEvents3Type);
-
-/** @internal */
-export const ThreeLevel$inboundSchema: z.ZodNativeEnum<typeof ThreeLevel> = z
-  .nativeEnum(ThreeLevel);
 
 /** @internal */
 export const Three2$inboundSchema: z.ZodType<Three2, z.ZodTypeDef, unknown> = z
@@ -1413,10 +1413,10 @@ export const Three2$inboundSchema: z.ZodType<Three2, z.ZodTypeDef, unknown> = z
     deploymentId: types.string(),
     id: types.string(),
     info: z.lazy(() => ThreeInfo$inboundSchema),
+    level: types.optional(ThreeLevel$inboundSchema),
     serial: types.string(),
     text: types.optional(types.string()),
     type: GetDeploymentEvents3Type$inboundSchema,
-    level: types.optional(ThreeLevel$inboundSchema),
   });
 
 export function three2FromJSON(
@@ -1430,23 +1430,19 @@ export function three2FromJSON(
 }
 
 /** @internal */
-export const ThreeType$inboundSchema: z.ZodNativeEnum<typeof ThreeType> = z
-  .nativeEnum(ThreeType);
-
-/** @internal */
 export const GetDeploymentEvents3DeploymentsResponseInfo$inboundSchema:
   z.ZodType<
     GetDeploymentEvents3DeploymentsResponseInfo,
     z.ZodTypeDef,
     unknown
   > = z.object({
-    type: types.string(),
-    name: types.string(),
     entrypoint: types.optional(types.string()),
+    name: types.string(),
     path: types.optional(types.string()),
-    step: types.optional(types.string()),
     readyState: types.optional(types.string()),
     serviceName: types.optional(types.string()),
+    step: types.optional(types.string()),
+    type: types.string(),
   });
 
 export function getDeploymentEvents3DeploymentsResponseInfoFromJSON(
@@ -1481,23 +1477,23 @@ export const ThreeProxy$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  timestamp: types.number(),
-  method: types.string(),
-  host: types.string(),
-  path: types.optional(types.string()),
-  statusCode: types.optional(types.number()),
-  userAgent: types.optional(z.array(types.string())),
-  referer: types.optional(types.string()),
-  clientIp: types.optional(types.string()),
-  region: types.optional(types.string()),
-  scheme: types.optional(types.string()),
-  responseByteSize: types.optional(types.number()),
   cacheId: types.optional(types.string()),
+  clientIp: types.optional(types.string()),
+  host: types.string(),
+  lambdaRegion: types.optional(types.string()),
+  method: types.string(),
+  path: types.optional(types.string()),
   pathType: types.optional(types.string()),
   pathTypeVariant: types.optional(types.string()),
-  vercelId: types.optional(types.string()),
+  referer: types.optional(types.string()),
+  region: types.optional(types.string()),
+  responseByteSize: types.optional(types.number()),
+  scheme: types.optional(types.string()),
+  statusCode: types.optional(types.number()),
+  timestamp: types.number(),
+  userAgent: types.optional(z.array(types.string())),
   vercelCache: types.optional(ThreeVercelCache$inboundSchema),
-  lambdaRegion: types.optional(types.string()),
+  vercelId: types.optional(types.string()),
   wafAction: types.optional(ThreeWafAction$inboundSchema),
   wafRuleId: types.optional(types.string()),
 });
@@ -1518,18 +1514,18 @@ export const ThreePayload$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  created: types.optional(types.number()),
+  date: types.number(),
   deploymentId: types.string(),
+  id: types.string(),
   info: types.optional(
     z.lazy(() => GetDeploymentEvents3DeploymentsResponseInfo$inboundSchema),
   ),
-  text: types.optional(types.string()),
-  id: types.string(),
-  date: types.number(),
-  serial: types.string(),
-  created: types.optional(types.number()),
-  statusCode: types.optional(types.number()),
-  requestId: types.optional(types.string()),
   proxy: types.optional(z.lazy(() => ThreeProxy$inboundSchema)),
+  requestId: types.optional(types.string()),
+  serial: types.string(),
+  statusCode: types.optional(types.number()),
+  text: types.optional(types.string()),
 });
 
 export function threePayloadFromJSON(
@@ -1543,11 +1539,15 @@ export function threePayloadFromJSON(
 }
 
 /** @internal */
+export const ThreeType$inboundSchema: z.ZodNativeEnum<typeof ThreeType> = z
+  .nativeEnum(ThreeType);
+
+/** @internal */
 export const Three1$inboundSchema: z.ZodType<Three1, z.ZodTypeDef, unknown> = z
   .object({
-    type: ThreeType$inboundSchema,
     created: types.number(),
     payload: z.lazy(() => ThreePayload$inboundSchema),
+    type: ThreeType$inboundSchema,
   });
 
 export function three1FromJSON(
@@ -1584,13 +1584,13 @@ export function getDeploymentEventsResponseBody3FromJSON(
 /** @internal */
 export const Info$inboundSchema: z.ZodType<Info, z.ZodTypeDef, unknown> = z
   .object({
-    type: types.string(),
-    name: types.string(),
     entrypoint: types.optional(types.string()),
+    name: types.string(),
     path: types.optional(types.string()),
-    step: types.optional(types.string()),
     readyState: types.optional(types.string()),
     serviceName: types.optional(types.string()),
+    step: types.optional(types.string()),
+    type: types.string(),
   });
 
 export function infoFromJSON(
@@ -1604,15 +1604,15 @@ export function infoFromJSON(
 }
 
 /** @internal */
-export const GetDeploymentEventsResponseBodyType$inboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentEventsResponseBodyType
-> = z.nativeEnum(GetDeploymentEventsResponseBodyType);
-
-/** @internal */
 export const GetDeploymentEventsResponseBodyLevel$inboundSchema:
   z.ZodNativeEnum<typeof GetDeploymentEventsResponseBodyLevel> = z.nativeEnum(
     GetDeploymentEventsResponseBodyLevel,
   );
+
+/** @internal */
+export const GetDeploymentEventsResponseBodyType$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentEventsResponseBodyType
+> = z.nativeEnum(GetDeploymentEventsResponseBodyType);
 
 /** @internal */
 export const GetDeploymentEventsResponseBody2$inboundSchema: z.ZodType<
@@ -1625,10 +1625,10 @@ export const GetDeploymentEventsResponseBody2$inboundSchema: z.ZodType<
   deploymentId: types.string(),
   id: types.string(),
   info: z.lazy(() => Info$inboundSchema),
+  level: types.optional(GetDeploymentEventsResponseBodyLevel$inboundSchema),
   serial: types.string(),
   text: types.optional(types.string()),
   type: GetDeploymentEventsResponseBodyType$inboundSchema,
-  level: types.optional(GetDeploymentEventsResponseBodyLevel$inboundSchema),
 });
 
 export function getDeploymentEventsResponseBody2FromJSON(
@@ -1642,24 +1642,19 @@ export function getDeploymentEventsResponseBody2FromJSON(
 }
 
 /** @internal */
-export const ResponseBodyType$inboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyType
-> = z.nativeEnum(ResponseBodyType);
-
-/** @internal */
 export const GetDeploymentEventsResponseBodyDeploymentsInfo$inboundSchema:
   z.ZodType<
     GetDeploymentEventsResponseBodyDeploymentsInfo,
     z.ZodTypeDef,
     unknown
   > = z.object({
-    type: types.string(),
-    name: types.string(),
     entrypoint: types.optional(types.string()),
+    name: types.string(),
     path: types.optional(types.string()),
-    step: types.optional(types.string()),
     readyState: types.optional(types.string()),
     serviceName: types.optional(types.string()),
+    step: types.optional(types.string()),
+    type: types.string(),
   });
 
 export function getDeploymentEventsResponseBodyDeploymentsInfoFromJSON(
@@ -1689,23 +1684,23 @@ export const WafAction$inboundSchema: z.ZodNativeEnum<typeof WafAction> = z
 /** @internal */
 export const Proxy$inboundSchema: z.ZodType<Proxy, z.ZodTypeDef, unknown> = z
   .object({
-    timestamp: types.number(),
-    method: types.string(),
-    host: types.string(),
-    path: types.optional(types.string()),
-    statusCode: types.optional(types.number()),
-    userAgent: types.optional(z.array(types.string())),
-    referer: types.optional(types.string()),
-    clientIp: types.optional(types.string()),
-    region: types.optional(types.string()),
-    scheme: types.optional(types.string()),
-    responseByteSize: types.optional(types.number()),
     cacheId: types.optional(types.string()),
+    clientIp: types.optional(types.string()),
+    host: types.string(),
+    lambdaRegion: types.optional(types.string()),
+    method: types.string(),
+    path: types.optional(types.string()),
     pathType: types.optional(types.string()),
     pathTypeVariant: types.optional(types.string()),
-    vercelId: types.optional(types.string()),
+    referer: types.optional(types.string()),
+    region: types.optional(types.string()),
+    responseByteSize: types.optional(types.number()),
+    scheme: types.optional(types.string()),
+    statusCode: types.optional(types.number()),
+    timestamp: types.number(),
+    userAgent: types.optional(z.array(types.string())),
     vercelCache: types.optional(VercelCache$inboundSchema),
-    lambdaRegion: types.optional(types.string()),
+    vercelId: types.optional(types.string()),
     wafAction: types.optional(WafAction$inboundSchema),
     wafRuleId: types.optional(types.string()),
   });
@@ -1726,18 +1721,18 @@ export const GetDeploymentEventsResponseBodyPayload$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  created: types.optional(types.number()),
+  date: types.number(),
   deploymentId: types.string(),
+  id: types.string(),
   info: types.optional(
     z.lazy(() => GetDeploymentEventsResponseBodyDeploymentsInfo$inboundSchema),
   ),
-  text: types.optional(types.string()),
-  id: types.string(),
-  date: types.number(),
-  serial: types.string(),
-  created: types.optional(types.number()),
-  statusCode: types.optional(types.number()),
-  requestId: types.optional(types.string()),
   proxy: types.optional(z.lazy(() => Proxy$inboundSchema)),
+  requestId: types.optional(types.string()),
+  serial: types.string(),
+  statusCode: types.optional(types.number()),
+  text: types.optional(types.string()),
 });
 
 export function getDeploymentEventsResponseBodyPayloadFromJSON(
@@ -1752,14 +1747,19 @@ export function getDeploymentEventsResponseBodyPayloadFromJSON(
 }
 
 /** @internal */
+export const ResponseBodyType$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyType
+> = z.nativeEnum(ResponseBodyType);
+
+/** @internal */
 export const GetDeploymentEventsResponseBody1$inboundSchema: z.ZodType<
   GetDeploymentEventsResponseBody1,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: ResponseBodyType$inboundSchema,
   created: types.number(),
   payload: z.lazy(() => GetDeploymentEventsResponseBodyPayload$inboundSchema),
+  type: ResponseBodyType$inboundSchema,
 });
 
 export function getDeploymentEventsResponseBody1FromJSON(

@@ -5,27 +5,27 @@ Project-level rolling release configuration that defines how deployments should 
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsRollingRelease } from "@vercel/sdk/models/updatemicrofrontendsprojectsfunctiondefaultmemorytype.js";
+import { UpdateMicrofrontendsRollingRelease } from "@vercel/sdk/models/updatemicrofrontendsfrom1.js";
 
 let value: UpdateMicrofrontendsRollingRelease = {
-  target: "production",
-  stages: [
-    {
-      targetPercentage: 25,
-      requireApproval: false,
-      duration: 600,
-      linearShift: false,
-    },
-  ],
   canaryResponseHeader: false,
   gate: {
-    enabled: true,
+    action: "pause",
     checks: [],
+    dryRun: true,
+    enabled: true,
     failureThreshold: 3,
     windowSize: 5,
-    action: "pause",
-    dryRun: false,
   },
+  stages: [
+    {
+      duration: 600,
+      linearShift: false,
+      requireApproval: false,
+      targetPercentage: 25,
+    },
+  ],
+  target: "production",
 };
 ```
 
@@ -33,7 +33,7 @@ let value: UpdateMicrofrontendsRollingRelease = {
 
 | Field                                                                                                                                                                                  | Type                                                                                                                                                                                   | Required                                                                                                                                                                               | Description                                                                                                                                                                            | Example                                                                                                                                                                                |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `target`                                                                                                                                                                               | *string*                                                                                                                                                                               | :heavy_check_mark:                                                                                                                                                                     | The environment that the release targets, currently only supports production. Adding in case we want to configure with alias groups or custom environments.                            | production                                                                                                                                                                             |
-| `stages`                                                                                                                                                                               | [models.UpdateMicrofrontendsStages](../models/updatemicrofrontendsstages.md)[]                                                                                                         | :heavy_minus_sign:                                                                                                                                                                     | An array of all the stages required during a deployment release. Each stage defines a target percentage and advancement rules. The final stage must always have targetPercentage: 100. |                                                                                                                                                                                        |
 | `canaryResponseHeader`                                                                                                                                                                 | *boolean*                                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                                     | Whether the request served by a canary deployment should return a header indicating a canary was served. Defaults to `false` when omitted.                                             | false                                                                                                                                                                                  |
 | `gate`                                                                                                                                                                                 | [models.UpdateMicrofrontendsGate](../models/updatemicrofrontendsgate.md)                                                                                                               | :heavy_minus_sign:                                                                                                                                                                     | Automated gating configuration. Omitted (the default) means no gating is configured, which is equivalent to `enabled: false`.                                                          |                                                                                                                                                                                        |
+| `stages`                                                                                                                                                                               | [models.UpdateMicrofrontendsStages](../models/updatemicrofrontendsstages.md)[]                                                                                                         | :heavy_minus_sign:                                                                                                                                                                     | An array of all the stages required during a deployment release. Each stage defines a target percentage and advancement rules. The final stage must always have targetPercentage: 100. |                                                                                                                                                                                        |
+| `target`                                                                                                                                                                               | *string*                                                                                                                                                                               | :heavy_check_mark:                                                                                                                                                                     | The environment that the release targets, currently only supports production. Adding in case we want to configure with alias groups or custom environments.                            | production                                                                                                                                                                             |

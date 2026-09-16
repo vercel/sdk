@@ -9,8 +9,8 @@ let value:
   CreateSecurityFirewallConfigByConfigVersionActivateRulesetsConditionGroup = {
     conditions: [
       {
-        type: "protocol",
-        op: "list",
+        op: "neq",
+        type: "header",
       },
     ],
   };

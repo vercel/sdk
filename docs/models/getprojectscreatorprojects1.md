@@ -3,15 +3,15 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsCreatorProjects1 } from "@vercel/sdk/models/getprojectsfromprojectsresponsepreset.js";
+import { GetProjectsCreatorProjects1 } from "@vercel/sdk/models/getprojectslinkprojects6.js";
 
 let value: GetProjectsCreatorProjects1 = {
   type: "user",
   via: {
-    type: "app",
     app: {
       id: "<id>",
     },
+    type: "app",
   },
   user: {
     id: "<id>",

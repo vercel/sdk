@@ -16,17 +16,17 @@ const value: models.Fallthrough1 = {
 
 ```typescript
 const value: models.Fallthrough2 = {
-  type: "split",
   base: {
-    type: "entity",
-    kind: "<value>",
     attribute: "<value>",
+    kind: "<value>",
+    type: "entity",
   },
+  defaultVariantId: "<id>",
+  type: "split",
   weights: {
     "key": 863.6,
     "key1": 9268.36,
   },
-  defaultVariantId: "<id>",
 };
 ```
 
@@ -34,17 +34,22 @@ const value: models.Fallthrough2 = {
 
 ```typescript
 const value: models.Fallthrough3 = {
-  type: "rollout",
   base: {
-    type: "entity",
-    kind: "<value>",
     attribute: "<value>",
+    kind: "<value>",
+    type: "entity",
   },
   defaultVariantId: "<id>",
-  startTimestamp: 5899.25,
   rollFromVariantId: "<id>",
   rollToVariantId: "<id>",
-  slots: [],
+  slots: [
+    {
+      durationMs: 5899.46,
+      promille: 942.23,
+    },
+  ],
+  startTimestamp: 3482.02,
+  type: "rollout",
 };
 ```
 

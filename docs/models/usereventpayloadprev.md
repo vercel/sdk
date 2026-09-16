@@ -3,14 +3,14 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayloadPrev } from "@vercel/sdk/models/usereventpayloadnext.js";
+import { UserEventPayloadPrev } from "@vercel/sdk/models/payloadnext.js";
 
 let value: UserEventPayloadPrev = {
+  awsServiceName: "<value>",
   id: "<id>",
   name: "<value>",
   projectId: "<id>",
   vercelRegion: "<value>",
-  awsServiceName: "<value>",
 };
 ```
 
@@ -18,9 +18,9 @@ let value: UserEventPayloadPrev = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
+| `awsServiceName`   | *string*           | :heavy_check_mark: | N/A                |
 | `id`               | *string*           | :heavy_check_mark: | N/A                |
 | `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `privateDnsNames`  | *string*[]         | :heavy_minus_sign: | N/A                |
 | `projectId`        | *string*           | :heavy_check_mark: | N/A                |
 | `vercelRegion`     | *string*           | :heavy_check_mark: | N/A                |
-| `awsServiceName`   | *string*           | :heavy_check_mark: | N/A                |
-| `privateDnsNames`  | *string*[]         | :heavy_minus_sign: | N/A                |

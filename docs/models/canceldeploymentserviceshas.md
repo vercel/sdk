@@ -16,8 +16,8 @@ const value: models.CancelDeploymentHasDeployments1 = {
 
 ```typescript
 const value: models.CancelDeploymentHasDeployments2 = {
-  type: "cookie",
   key: "<key>",
+  type: "cookie",
 };
 ```
 
@@ -25,8 +25,8 @@ const value: models.CancelDeploymentHasDeployments2 = {
 
 ```typescript
 const value: models.CancelDeploymentHasDeployments2 = {
-  type: "cookie",
   key: "<key>",
+  type: "cookie",
 };
 ```
 
@@ -34,8 +34,8 @@ const value: models.CancelDeploymentHasDeployments2 = {
 
 ```typescript
 const value: models.CancelDeploymentHasDeployments2 = {
-  type: "cookie",
   key: "<key>",
+  type: "cookie",
 };
 ```
 

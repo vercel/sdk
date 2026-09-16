@@ -15,9 +15,9 @@ const value: models.ListFlagVersionsLhs1 = {
 
 ```typescript
 const value: models.ListFlagVersionsLhs2 = {
-  type: "entity",
-  kind: "<value>",
   attribute: "<value>",
+  kind: "<value>",
+  type: "entity",
 };
 ```
 

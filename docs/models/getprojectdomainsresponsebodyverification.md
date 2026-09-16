@@ -8,10 +8,10 @@ A list of verification challenges, one of which must be completed to verify the 
 import { GetProjectDomainsResponseBodyVerification } from "@vercel/sdk/models/getprojectdomainsop.js";
 
 let value: GetProjectDomainsResponseBodyVerification = {
-  type: "<value>",
   domain: "cheap-lay.com",
-  value: "<value>",
   reason: "<value>",
+  type: "<value>",
+  value: "<value>",
 };
 ```
 
@@ -19,7 +19,7 @@ let value: GetProjectDomainsResponseBodyVerification = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `type`             | *string*           | :heavy_check_mark: | N/A                |
 | `domain`           | *string*           | :heavy_check_mark: | N/A                |
-| `value`            | *string*           | :heavy_check_mark: | N/A                |
 | `reason`           | *string*           | :heavy_check_mark: | N/A                |
+| `type`             | *string*           | :heavy_check_mark: | N/A                |
+| `value`            | *string*           | :heavy_check_mark: | N/A                |

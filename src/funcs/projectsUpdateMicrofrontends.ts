@@ -23,7 +23,7 @@ import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import {
   UpdateMicrofrontendsRequest,
   UpdateMicrofrontendsRequest$outboundSchema,
-} from "../models/updatemicrofrontendsprojectsfunctiondefaultmemorytype.js";
+} from "../models/updatemicrofrontendshaskey.js";
 import {
   UpdateMicrofrontendsResponseBody,
   UpdateMicrofrontendsResponseBody$inboundSchema,

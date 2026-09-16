@@ -6,8 +6,8 @@
 import { FilterProjectEnvsContentHintProjects1 } from "@vercel/sdk/models/filterprojectenvsop.js";
 
 let value: FilterProjectEnvsContentHintProjects1 = {
-  type: "redis-url",
   storeId: "<id>",
+  type: "redis-url",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: FilterProjectEnvsContentHintProjects1 = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `type`             | *"redis-url"*      | :heavy_check_mark: | N/A                |
 | `storeId`          | *string*           | :heavy_check_mark: | N/A                |
+| `type`             | *"redis-url"*      | :heavy_check_mark: | N/A                |

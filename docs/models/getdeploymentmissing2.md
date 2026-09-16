@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { GetDeploymentMissing2 } from "@vercel/sdk/models/getdeploymentmissingdeployments1.js";
+import { GetDeploymentMissing2 } from "@vercel/sdk/models/getdeploymentservicesfunctions.js";
 
 let value: GetDeploymentMissing2 = {
-  type: "cookie",
   key: "<key>",
+  type: "cookie",
 };
 ```
 
@@ -15,6 +15,6 @@ let value: GetDeploymentMissing2 = {
 
 | Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
 | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `type`                                                                   | [models.GetDeploymentMissingType](../models/getdeploymentmissingtype.md) | :heavy_check_mark:                                                       | N/A                                                                      |
 | `key`                                                                    | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
+| `type`                                                                   | [models.GetDeploymentMissingType](../models/getdeploymentmissingtype.md) | :heavy_check_mark:                                                       | N/A                                                                      |
 | `value`                                                                  | *models.GetDeploymentMissingValue*                                       | :heavy_minus_sign:                                                       | N/A                                                                      |

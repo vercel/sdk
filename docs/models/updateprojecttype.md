@@ -1,15 +1,17 @@
 # UpdateProjectType
 
+The type of environment (production, preview, or development)
+
 ## Example Usage
 
 ```typescript
-import { UpdateProjectType } from "@vercel/sdk/models/updateprojectprojectsresponse200applicationjsonresponsebodycustomenvironmentstype.js";
+import { UpdateProjectType } from "@vercel/sdk/models/updateprojectprojectsresponse200applicationjsonaction.js";
 
-let value: UpdateProjectType = "secret";
+let value: UpdateProjectType = "preview";
 ```
 
 ## Values
 
 ```typescript
-"encrypted" | "plain" | "secret" | "sensitive" | "system"
+"development" | "preview" | "production"
 ```

@@ -9,8 +9,8 @@ let value:
   CreateSecurityFirewallConfigByConfigVersionActivateRulesConditionGroup = {
     conditions: [
       {
-        type: "method",
-        op: "gt",
+        op: "lte",
+        type: "domain_environment",
       },
     ],
   };

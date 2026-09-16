@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarHasProjectsResponse1 } from "@vercel/sdk/models/uploadprojectavatarinternalroutes1.js";
+import { UploadProjectAvatarHasProjectsResponse1 } from "@vercel/sdk/models/uploadprojectavatarhasvalue.js";
 
 let value: UploadProjectAvatarHasProjectsResponse1 = {
-  type: "header",
   key: "x-vercel-ip-country",
+  type: "header",
   value: {
     eq: "<value>",
   },
@@ -18,6 +18,6 @@ let value: UploadProjectAvatarHasProjectsResponse1 = {
 
 | Field                                                                                                                                              | Type                                                                                                                                               | Required                                                                                                                                           | Description                                                                                                                                        |
 | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `type`                                                                                                                                             | *"header"*                                                                                                                                         | :heavy_check_mark:                                                                                                                                 | N/A                                                                                                                                                |
 | `key`                                                                                                                                              | [models.UploadProjectAvatarHasProjectsResponseKey](../models/uploadprojectavatarhasprojectsresponsekey.md)                                         | :heavy_check_mark:                                                                                                                                 | N/A                                                                                                                                                |
+| `type`                                                                                                                                             | *"header"*                                                                                                                                         | :heavy_check_mark:                                                                                                                                 | N/A                                                                                                                                                |
 | `value`                                                                                                                                            | [models.UploadProjectAvatarHasProjectsResponse200ApplicationJSONValue](../models/uploadprojectavatarhasprojectsresponse200applicationjsonvalue.md) | :heavy_check_mark:                                                                                                                                 | N/A                                                                                                                                                |

@@ -50,6 +50,8 @@ export type AcceptProjectTransferRequestRequest = {
 
 export type AcceptProjectTransferRequestResponseBody2 = {};
 
+export type AcceptProjectTransferRequestResponseBodyError = {};
+
 export const AcceptProjectTransferRequestResponseBodyStatus = {
   Errored: "errored",
   Fulfilled: "fulfilled",
@@ -58,12 +60,10 @@ export type AcceptProjectTransferRequestResponseBodyStatus = ClosedEnum<
   typeof AcceptProjectTransferRequestResponseBodyStatus
 >;
 
-export type AcceptProjectTransferRequestResponseBodyError = {};
-
 export type AcceptProjectTransferRequestResponseBodyResult = {
-  status: AcceptProjectTransferRequestResponseBodyStatus;
-  error?: AcceptProjectTransferRequestResponseBodyError | undefined;
   code?: string | undefined;
+  error?: AcceptProjectTransferRequestResponseBodyError | undefined;
+  status: AcceptProjectTransferRequestResponseBodyStatus;
 };
 
 export type PartnerCalls = {
@@ -233,11 +233,6 @@ export function acceptProjectTransferRequestResponseBody2FromJSON(
 }
 
 /** @internal */
-export const AcceptProjectTransferRequestResponseBodyStatus$inboundSchema:
-  z.ZodNativeEnum<typeof AcceptProjectTransferRequestResponseBodyStatus> = z
-    .nativeEnum(AcceptProjectTransferRequestResponseBodyStatus);
-
-/** @internal */
 export const AcceptProjectTransferRequestResponseBodyError$inboundSchema:
   z.ZodType<
     AcceptProjectTransferRequestResponseBodyError,
@@ -262,17 +257,22 @@ export function acceptProjectTransferRequestResponseBodyErrorFromJSON(
 }
 
 /** @internal */
+export const AcceptProjectTransferRequestResponseBodyStatus$inboundSchema:
+  z.ZodNativeEnum<typeof AcceptProjectTransferRequestResponseBodyStatus> = z
+    .nativeEnum(AcceptProjectTransferRequestResponseBodyStatus);
+
+/** @internal */
 export const AcceptProjectTransferRequestResponseBodyResult$inboundSchema:
   z.ZodType<
     AcceptProjectTransferRequestResponseBodyResult,
     z.ZodTypeDef,
     unknown
   > = z.object({
-    status: AcceptProjectTransferRequestResponseBodyStatus$inboundSchema,
+    code: types.optional(types.string()),
     error: types.optional(
       z.lazy(() => AcceptProjectTransferRequestResponseBodyError$inboundSchema),
     ),
-    code: types.optional(types.string()),
+    status: AcceptProjectTransferRequestResponseBodyStatus$inboundSchema,
   });
 
 export function acceptProjectTransferRequestResponseBodyResultFromJSON(

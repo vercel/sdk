@@ -34,12 +34,12 @@ export type HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdEx
  */
 export type HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponseBody =
   {
-    items: { [k: string]: GlobalConfigItemValue | null };
-    updatedAt: number;
     digest: string;
+    items: { [k: string]: GlobalConfigItemValue | null };
     purpose?:
       | HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigPurpose
       | undefined;
+    updatedAt: number;
   };
 
 /** @internal */
@@ -87,12 +87,12 @@ export const HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdE
     z.ZodTypeDef,
     unknown
   > = z.object({
-    items: z.record(types.nullable(GlobalConfigItemValue$inboundSchema)),
-    updatedAt: types.number(),
     digest: types.string(),
+    items: z.record(types.nullable(GlobalConfigItemValue$inboundSchema)),
     purpose: types.optional(
       HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigPurpose$inboundSchema,
     ),
+    updatedAt: types.number(),
   });
 
 export function headInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponseBodyFromJSON(

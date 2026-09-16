@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsHasProjectsResponse2001 } from "@vercel/sdk/models/getprojectsresponsebody.js";
+import { GetProjectsHasProjectsResponse2001 } from "@vercel/sdk/models/responsebodyabuse.js";
 
 let value: GetProjectsHasProjectsResponse2001 = {
-  type: "header",
   key: "x-vercel-ip-country",
+  type: "header",
   value: {
     eq: "<value>",
   },
@@ -18,6 +18,6 @@ let value: GetProjectsHasProjectsResponse2001 = {
 
 | Field                                                                                                                                                        | Type                                                                                                                                                         | Required                                                                                                                                                     | Description                                                                                                                                                  |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `type`                                                                                                                                                       | *"header"*                                                                                                                                                   | :heavy_check_mark:                                                                                                                                           | N/A                                                                                                                                                          |
 | `key`                                                                                                                                                        | [models.GetProjectsHasProjectsResponse200Key](../models/getprojectshasprojectsresponse200key.md)                                                             | :heavy_check_mark:                                                                                                                                           | N/A                                                                                                                                                          |
+| `type`                                                                                                                                                       | *"header"*                                                                                                                                                   | :heavy_check_mark:                                                                                                                                           | N/A                                                                                                                                                          |
 | `value`                                                                                                                                                      | [models.GetProjectsHasProjectsResponse200ApplicationJSONResponseBody1Value](../models/getprojectshasprojectsresponse200applicationjsonresponsebody1value.md) | :heavy_check_mark:                                                                                                                                           | N/A                                                                                                                                                          |

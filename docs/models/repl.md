@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Repl } from "@vercel/sdk/models/createintegrationstoredirectprotocolsettings.js";
+import { Repl } from "@vercel/sdk/models/logdrainstatus.js";
 
 let value: Repl = {
   enabled: true,

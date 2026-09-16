@@ -6,8 +6,8 @@
 import { ContentHint9 } from "@vercel/sdk/models/editprojectenvop.js";
 
 let value: ContentHint9 = {
-  type: "postgres-url-non-pooling",
   storeId: "<id>",
+  type: "postgres-url-non-pooling",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: ContentHint9 = {
 
 | Field                        | Type                         | Required                     | Description                  |
 | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-| `type`                       | *"postgres-url-non-pooling"* | :heavy_check_mark:           | N/A                          |
 | `storeId`                    | *string*                     | :heavy_check_mark:           | N/A                          |
+| `type`                       | *"postgres-url-non-pooling"* | :heavy_check_mark:           | N/A                          |

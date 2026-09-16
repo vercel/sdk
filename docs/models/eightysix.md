@@ -5,18 +5,18 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { EightySix } from "@vercel/sdk/models/payloadaccessgroup.js";
+import { EightySix } from "@vercel/sdk/models/twentynine.js";
 
 let value: EightySix = {
-  team: {
-    name: "<value>",
-    id: "<id>",
-  },
   configuration: {
     id: "<id>",
   },
   project: {
     id: "<id>",
+  },
+  team: {
+    id: "<id>",
+    name: "<value>",
   },
 };
 ```
@@ -25,8 +25,8 @@ let value: EightySix = {
 
 | Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
 | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `team`                                                                             | [models.PayloadTeam](../models/payloadteam.md)                                     | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `configuration`                                                                    | [models.UserEventPayloadConfiguration](../models/usereventpayloadconfiguration.md) | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `project`                                                                          | [models.UserEventPayload86Project](../models/usereventpayload86project.md)         | :heavy_check_mark:                                                                 | N/A                                                                                |
 | `buildsEnabled`                                                                    | *boolean*                                                                          | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `configuration`                                                                    | [models.UserEventPayloadConfiguration](../models/usereventpayloadconfiguration.md) | :heavy_check_mark:                                                                 | N/A                                                                                |
 | `passive`                                                                          | *boolean*                                                                          | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `project`                                                                          | [models.UserEventPayload86Project](../models/usereventpayload86project.md)         | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `team`                                                                             | [models.PayloadTeam](../models/payloadteam.md)                                     | :heavy_check_mark:                                                                 | N/A                                                                                |

@@ -7,10 +7,10 @@ import { AddRepositoryPermissionResponseBody } from "@vercel/sdk/models/addrepos
 
 let value: AddRepositoryPermissionResponseBody = {
   permission: {
+    createdAt: "2026-06-30T10:00:00.000Z",
     repositoryId: "repo_a1b2c3d4e5f6",
     teamId: "team_a1b2c3d4e5f6",
     teamSlug: "my-team",
-    createdAt: "2026-06-30T10:00:00.000Z",
   },
 };
 ```

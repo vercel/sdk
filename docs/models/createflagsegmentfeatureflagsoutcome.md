@@ -15,13 +15,13 @@ const value: models.CreateFlagSegmentOutcomeFeatureFlags1 = {
 
 ```typescript
 const value: models.CreateFlagSegmentOutcomeFeatureFlags2 = {
-  type: "split",
   base: {
-    type: "entity",
-    kind: "<value>",
     attribute: "<value>",
+    kind: "<value>",
+    type: "entity",
   },
   passPromille: 3577.43,
+  type: "split",
 };
 ```
 

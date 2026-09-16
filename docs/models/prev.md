@@ -3,12 +3,12 @@
 ## Example Usage
 
 ```typescript
-import { Prev } from "@vercel/sdk/models/usereventpayload171gituserid.js";
+import { Prev } from "@vercel/sdk/models/usereventpayload171newownerfeatureblocksworkflowstoragewriteblockreason.js";
 
 let value: Prev = {
+  fallbackEnvironment: "<value>",
   name: "<value>",
   slug: "<value>",
-  fallbackEnvironment: "<value>",
 };
 ```
 
@@ -16,7 +16,7 @@ let value: Prev = {
 
 | Field                         | Type                          | Required                      | Description                   |
 | ----------------------------- | ----------------------------- | ----------------------------- | ----------------------------- |
+| `enablePolyrepoBranchRouting` | *boolean*                     | :heavy_minus_sign:            | N/A                           |
+| `fallbackEnvironment`         | *string*                      | :heavy_check_mark:            | N/A                           |
 | `name`                        | *string*                      | :heavy_check_mark:            | N/A                           |
 | `slug`                        | *string*                      | :heavy_check_mark:            | N/A                           |
-| `fallbackEnvironment`         | *string*                      | :heavy_check_mark:            | N/A                           |
-| `enablePolyrepoBranchRouting` | *boolean*                     | :heavy_minus_sign:            | N/A                           |

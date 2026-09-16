@@ -7,8 +7,8 @@ import { GetRollingReleaseBillingStatusResponseBody4 } from "@vercel/sdk/models/
 
 let value: GetRollingReleaseBillingStatusResponseBody4 = {
   availableSlots: 9612.38,
-  reason: "available_slots",
   message: "<value>",
+  reason: "available_slots",
 };
 ```
 
@@ -17,5 +17,5 @@ let value: GetRollingReleaseBillingStatusResponseBody4 = {
 | Field               | Type                | Required            | Description         |
 | ------------------- | ------------------- | ------------------- | ------------------- |
 | `availableSlots`    | *number*            | :heavy_check_mark:  | N/A                 |
-| `reason`            | *"available_slots"* | :heavy_check_mark:  | N/A                 |
 | `message`           | *string*            | :heavy_check_mark:  | N/A                 |
+| `reason`            | *"available_slots"* | :heavy_check_mark:  | N/A                 |

@@ -3,12 +3,12 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupDismissedToasts } from "@vercel/sdk/models/getmicrofrontendsingroupresponsebody.js";
+import { GetMicrofrontendsInGroupDismissedToasts } from "@vercel/sdk/models/getmicrofrontendsingrouphasvalue.js";
 
 let value: GetMicrofrontendsInGroupDismissedToasts = {
+  action: "accept",
+  dismissedAt: 7819.93,
   key: "<key>",
-  dismissedAt: 1752.12,
-  action: "delete",
   value: null,
 };
 ```
@@ -17,7 +17,7 @@ let value: GetMicrofrontendsInGroupDismissedToasts = {
 
 | Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
 | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `key`                                                                                | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
-| `dismissedAt`                                                                        | *number*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
 | `action`                                                                             | [models.GetMicrofrontendsInGroupAction](../models/getmicrofrontendsingroupaction.md) | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `dismissedAt`                                                                        | *number*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `key`                                                                                | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
 | `value`                                                                              | *models.GetMicrofrontendsInGroupValue*                                               | :heavy_check_mark:                                                                   | N/A                                                                                  |

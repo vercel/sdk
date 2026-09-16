@@ -7,8 +7,8 @@
 
 ```typescript
 const value: models.UpdateEdgeConfigPurpose1 = {
-  type: "flags",
   projectId: "<id>",
+  type: "flags",
 };
 ```
 
@@ -16,8 +16,8 @@ const value: models.UpdateEdgeConfigPurpose1 = {
 
 ```typescript
 const value: models.UpdateEdgeConfigPurpose2 = {
-  type: "experimentation",
   resourceId: "<id>",
+  type: "experimentation",
 };
 ```
 

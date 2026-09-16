@@ -8,11 +8,11 @@
 ```typescript
 const value: models.CreateSecurityFirewallConfigByConfigVersionActivateRules1 =
   {
-    id: "<id>",
-    name: "<value>",
+    action: {},
     active: true,
     conditionGroup: [],
-    action: {},
+    id: "<id>",
+    name: "<value>",
     valid: true,
     validationErrors: "<value>",
   };
@@ -23,11 +23,11 @@ const value: models.CreateSecurityFirewallConfigByConfigVersionActivateRules1 =
 ```typescript
 const value: models.CreateSecurityFirewallConfigByConfigVersionActivateRules2 =
   {
-    id: "<id>",
-    name: "<value>",
+    action: {},
     active: true,
     conditionGroup: [],
-    action: {},
+    id: "<id>",
+    name: "<value>",
     valid: false,
     validationErrors: [
       "<value 1>",

@@ -5,14 +5,14 @@ Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures 
 ## Example Usage
 
 ```typescript
-import { GetProjectsVia2 } from "@vercel/sdk/models/responsebodydeploymentexpiration.js";
+import { GetProjectsVia2 } from "@vercel/sdk/models/getprojectslogheaders2.js";
 
 let value: GetProjectsVia2 = {
-  type: "integration",
   integration: {
-    integrationId: "<id>",
     configurationId: "<id>",
+    integrationId: "<id>",
   },
+  type: "integration",
 };
 ```
 
@@ -20,5 +20,5 @@ let value: GetProjectsVia2 = {
 
 | Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
 | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `type`                                                                     | *"integration"*                                                            | :heavy_check_mark:                                                         | N/A                                                                        |
 | `integration`                                                              | [models.GetProjectsViaIntegration](../models/getprojectsviaintegration.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| `type`                                                                     | *"integration"*                                                            | :heavy_check_mark:                                                         | N/A                                                                        |

@@ -5,7 +5,7 @@ Present when deployment was created with manual provisioning enabled, either exp
 ## Example Usage
 
 ```typescript
-import { GetDeploymentResponseBodyManualProvisioning } from "@vercel/sdk/models/getdeploymentmissingdeployments1.js";
+import { GetDeploymentResponseBodyManualProvisioning } from "@vercel/sdk/models/getdeploymentservicesfunctions.js";
 
 let value: GetDeploymentResponseBodyManualProvisioning = {
   state: "PENDING",
@@ -16,5 +16,5 @@ let value: GetDeploymentResponseBodyManualProvisioning = {
 
 | Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
 | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `state`                                                                              | [models.GetDeploymentResponseBodyState](../models/getdeploymentresponsebodystate.md) | :heavy_check_mark:                                                                   | Current provisioning state                                                           |
 | `completedAt`                                                                        | *number*                                                                             | :heavy_minus_sign:                                                                   | Timestamp when manual provisioning completed                                         |
+| `state`                                                                              | [models.GetDeploymentResponseBodyState](../models/getdeploymentresponsebodystate.md) | :heavy_check_mark:                                                                   | Current provisioning state                                                           |

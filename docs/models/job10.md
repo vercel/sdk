@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Job10 } from "@vercel/sdk/models/headinfo.js";
+import { Job10 } from "@vercel/sdk/models/onehundred.js";
 
 let value: Job10 = {
   headInfo: {
@@ -18,10 +18,10 @@ let value: Job10 = {
   owner: "<value>",
   prId: 6654.62,
   projectId: "<id>",
+  provider: "cursor-origin",
   repo: "<value>",
   repoId: "<id>",
   type: "cursor-origin-now-comment",
-  provider: "cursor-origin",
 };
 ```
 
@@ -30,16 +30,16 @@ let value: Job10 = {
 | Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
 | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | `createdAt`                                                                                    | *number*                                                                                       | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `customEnvId`                                                                                  | *any*                                                                                          | :heavy_minus_sign:                                                                             | N/A                                                                                            |
 | `eventful`                                                                                     | *boolean*                                                                                      | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `gitComments`                                                                                  | [models.UserEventJobPayload10610GitComments](../models/usereventjobpayload10610gitcomments.md) | :heavy_minus_sign:                                                                             | N/A                                                                                            |
 | `headInfo`                                                                                     | [models.UserEventJobPayload10610HeadInfo](../models/usereventjobpayload10610headinfo.md)       | :heavy_check_mark:                                                                             | Cursor Origin                                                                                  |
 | `installationId`                                                                               | *string*                                                                                       | :heavy_check_mark:                                                                             | Origin installation id (`i_…`) used to resolve the credential.                                 |
 | `linkedProjectId`                                                                              | *string*                                                                                       | :heavy_minus_sign:                                                                             | N/A                                                                                            |
 | `owner`                                                                                        | *string*                                                                                       | :heavy_check_mark:                                                                             | N/A                                                                                            |
 | `prId`                                                                                         | *number*                                                                                       | :heavy_check_mark:                                                                             | N/A                                                                                            |
 | `projectId`                                                                                    | *any*                                                                                          | :heavy_check_mark:                                                                             | N/A                                                                                            |
-| `customEnvId`                                                                                  | *any*                                                                                          | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `provider`                                                                                     | [models.UserEventJobPayload10610Provider](../models/usereventjobpayload10610provider.md)       | :heavy_check_mark:                                                                             | N/A                                                                                            |
 | `repo`                                                                                         | *string*                                                                                       | :heavy_check_mark:                                                                             | N/A                                                                                            |
 | `repoId`                                                                                       | *string*                                                                                       | :heavy_check_mark:                                                                             | N/A                                                                                            |
 | `type`                                                                                         | *"cursor-origin-now-comment"*                                                                  | :heavy_check_mark:                                                                             | N/A                                                                                            |
-| `gitComments`                                                                                  | [models.UserEventJobPayload10610GitComments](../models/usereventjobpayload10610gitcomments.md) | :heavy_minus_sign:                                                                             | N/A                                                                                            |
-| `provider`                                                                                     | [models.UserEventJobPayload10610Provider](../models/usereventjobpayload10610provider.md)       | :heavy_check_mark:                                                                             | N/A                                                                                            |

@@ -67,30 +67,14 @@ export type GetTeamMembersRequest = {
   slug?: string | undefined;
 };
 
-/**
- * Information about the GitHub account for this user.
- */
-export type GetTeamMembersGithub = {
-  login?: string | undefined;
-};
+export const GetTeamMembersProjects = {
+  Admin: "ADMIN",
+  ProjectDeveloper: "PROJECT_DEVELOPER",
+  ProjectGuest: "PROJECT_GUEST",
+  ProjectViewer: "PROJECT_VIEWER",
+} as const;
+export type GetTeamMembersProjects = ClosedEnum<typeof GetTeamMembersProjects>;
 
-/**
- * Information about the GitLab account of this user.
- */
-export type GetTeamMembersGitlab = {
-  login?: string | undefined;
-};
-
-/**
- * Information about the Bitbucket account of this user.
- */
-export type GetTeamMembersBitbucket = {
-  login?: string | undefined;
-};
-
-/**
- * Role of this user in the team.
- */
 export const GetTeamMembersRole = {
   Billing: "BILLING",
   Contributor: "CONTRIBUTOR",
@@ -101,162 +85,7 @@ export const GetTeamMembersRole = {
   Viewer: "VIEWER",
   ViewerForPlus: "VIEWER_FOR_PLUS",
 } as const;
-/**
- * Role of this user in the team.
- */
 export type GetTeamMembersRole = ClosedEnum<typeof GetTeamMembersRole>;
-
-export const GetTeamMembersOrigin = {
-  AccountUpdate: "account-update",
-  Bitbucket: "bitbucket",
-  Dsync: "dsync",
-  Feedback: "feedback",
-  Github: "github",
-  Gitlab: "gitlab",
-  Import: "import",
-  Link: "link",
-  Mail: "mail",
-  NsnbAutoApprove: "nsnb-auto-approve",
-  NsnbHobbyUpgrade: "nsnb-hobby-upgrade",
-  NsnbInvite: "nsnb-invite",
-  NsnbRedeploy: "nsnb-redeploy",
-  NsnbRedeployAttributionCard: "nsnb-redeploy-attribution-card",
-  NsnbRequestAccess: "nsnb-request-access",
-  NsnbViewerUpgrade: "nsnb-viewer-upgrade",
-  OrganizationTeams: "organization-teams",
-  Saml: "saml",
-  Teams: "teams",
-} as const;
-export type GetTeamMembersOrigin = ClosedEnum<typeof GetTeamMembersOrigin>;
-
-export type GetTeamMembersGitUserId = string | number;
-
-/**
- * Map with information about the members origin if they joined by requesting access.
- */
-export type GetTeamMembersJoinedFrom = {
-  origin: GetTeamMembersOrigin;
-  commitId?: string | undefined;
-  repoId?: string | undefined;
-  repoPath?: string | undefined;
-  gitUserId?: string | number | undefined;
-  gitUserLogin?: string | undefined;
-  ssoUserId?: string | undefined;
-  ssoConnectedAt?: number | undefined;
-  idpUserId?: string | undefined;
-  dsyncUserId?: string | undefined;
-  dsyncConnectedAt?: number | undefined;
-};
-
-export const GetTeamMembersTeamsResponseRole = {
-  Admin: "ADMIN",
-  ProjectDeveloper: "PROJECT_DEVELOPER",
-  ProjectGuest: "PROJECT_GUEST",
-  ProjectViewer: "PROJECT_VIEWER",
-} as const;
-export type GetTeamMembersTeamsResponseRole = ClosedEnum<
-  typeof GetTeamMembersTeamsResponseRole
->;
-
-/**
- * Array of project memberships
- */
-export type GetTeamMembersProjects = {
-  name: string;
-  id: string;
-  role?: GetTeamMembersTeamsResponseRole | undefined;
-};
-
-export type GetTeamMembersMembers = {
-  /**
-   * ID of the file for the Avatar of this member.
-   */
-  avatar?: string | undefined;
-  /**
-   * Boolean that indicates if this member was confirmed by an owner.
-   */
-  confirmed: boolean;
-  /**
-   * The email of this member.
-   */
-  email: string;
-  /**
-   * Information about the GitHub account for this user.
-   */
-  github?: GetTeamMembersGithub | undefined;
-  /**
-   * Information about the GitLab account of this user.
-   */
-  gitlab?: GetTeamMembersGitlab | undefined;
-  /**
-   * Information about the Bitbucket account of this user.
-   */
-  bitbucket?: GetTeamMembersBitbucket | undefined;
-  /**
-   * Role of this user in the team.
-   */
-  role: GetTeamMembersRole;
-  /**
-   * The ID of this user.
-   */
-  uid: string;
-  /**
-   * The unique username of this user.
-   */
-  username: string;
-  /**
-   * The name of this user.
-   */
-  name?: string | undefined;
-  /**
-   * Timestamp in milliseconds when this member was added.
-   */
-  createdAt: number;
-  /**
-   * Timestamp in milliseconds for when this team member was accepted by an owner.
-   */
-  accessRequestedAt?: number | undefined;
-  /**
-   * Map with information about the members origin if they joined by requesting access.
-   */
-  joinedFrom?: GetTeamMembersJoinedFrom | undefined;
-  /**
-   * Array of project memberships
-   */
-  projects?: Array<GetTeamMembersProjects> | undefined;
-  /**
-   * Indicates whether the user is managed by an enterprise.
-   */
-  isEnterpriseManaged?: boolean | undefined;
-};
-
-export const GetTeamMembersTeamsRole = {
-  Billing: "BILLING",
-  Contributor: "CONTRIBUTOR",
-  Developer: "DEVELOPER",
-  Member: "MEMBER",
-  Owner: "OWNER",
-  Security: "SECURITY",
-  Viewer: "VIEWER",
-  ViewerForPlus: "VIEWER_FOR_PLUS",
-} as const;
-export type GetTeamMembersTeamsRole = ClosedEnum<
-  typeof GetTeamMembersTeamsRole
->;
-
-export const GetTeamMembersTeamRoles = {
-  Billing: "BILLING",
-  Contributor: "CONTRIBUTOR",
-  Developer: "DEVELOPER",
-  Member: "MEMBER",
-  Owner: "OWNER",
-  Security: "SECURITY",
-  Viewer: "VIEWER",
-  ViewerForPlus: "VIEWER_FOR_PLUS",
-} as const;
-export type GetTeamMembersTeamRoles = ClosedEnum<
-  typeof GetTeamMembersTeamRoles
->;
 
 export const GetTeamMembersTeamPermissions = {
   AiGatewayApiKeyOwnedBySelf: "AiGatewayApiKeyOwnedBySelf",
@@ -283,36 +112,205 @@ export type GetTeamMembersTeamPermissions = ClosedEnum<
   typeof GetTeamMembersTeamPermissions
 >;
 
-export const GetTeamMembersTeamsProjects = {
+export const GetTeamMembersTeamRoles = {
+  Billing: "BILLING",
+  Contributor: "CONTRIBUTOR",
+  Developer: "DEVELOPER",
+  Member: "MEMBER",
+  Owner: "OWNER",
+  Security: "SECURITY",
+  Viewer: "VIEWER",
+  ViewerForPlus: "VIEWER_FOR_PLUS",
+} as const;
+export type GetTeamMembersTeamRoles = ClosedEnum<
+  typeof GetTeamMembersTeamRoles
+>;
+
+export type EmailInviteCodes = {
+  accessGroups?: Array<string> | undefined;
+  createdAt?: number | undefined;
+  email?: string | undefined;
+  entitlements?: Array<string> | undefined;
+  expired?: true | undefined;
+  id: string;
+  isDSyncUser: boolean;
+  projects?: { [k: string]: GetTeamMembersProjects } | undefined;
+  role?: GetTeamMembersRole | undefined;
+  teamPermissions?: Array<GetTeamMembersTeamPermissions> | undefined;
+  teamRoles?: Array<GetTeamMembersTeamRoles> | undefined;
+};
+
+/**
+ * Information about the Bitbucket account of this user.
+ */
+export type GetTeamMembersBitbucket = {
+  login?: string | undefined;
+};
+
+/**
+ * Information about the GitHub account for this user.
+ */
+export type GetTeamMembersGithub = {
+  login?: string | undefined;
+};
+
+/**
+ * Information about the GitLab account of this user.
+ */
+export type GetTeamMembersGitlab = {
+  login?: string | undefined;
+};
+
+export type GetTeamMembersGitUserId = string | number;
+
+export const GetTeamMembersOrigin = {
+  AccountUpdate: "account-update",
+  Bitbucket: "bitbucket",
+  Dsync: "dsync",
+  Feedback: "feedback",
+  Github: "github",
+  Gitlab: "gitlab",
+  Import: "import",
+  Link: "link",
+  Mail: "mail",
+  NsnbAutoApprove: "nsnb-auto-approve",
+  NsnbHobbyUpgrade: "nsnb-hobby-upgrade",
+  NsnbInvite: "nsnb-invite",
+  NsnbRedeploy: "nsnb-redeploy",
+  NsnbRedeployAttributionCard: "nsnb-redeploy-attribution-card",
+  NsnbRequestAccess: "nsnb-request-access",
+  NsnbViewerUpgrade: "nsnb-viewer-upgrade",
+  OrganizationTeams: "organization-teams",
+  Saml: "saml",
+  Teams: "teams",
+} as const;
+export type GetTeamMembersOrigin = ClosedEnum<typeof GetTeamMembersOrigin>;
+
+/**
+ * Map with information about the members origin if they joined by requesting access.
+ */
+export type GetTeamMembersJoinedFrom = {
+  commitId?: string | undefined;
+  dsyncConnectedAt?: number | undefined;
+  dsyncUserId?: string | undefined;
+  gitUserId?: string | number | undefined;
+  gitUserLogin?: string | undefined;
+  idpUserId?: string | undefined;
+  origin: GetTeamMembersOrigin;
+  repoId?: string | undefined;
+  repoPath?: string | undefined;
+  ssoConnectedAt?: number | undefined;
+  ssoUserId?: string | undefined;
+};
+
+export const GetTeamMembersTeamsResponseRole = {
   Admin: "ADMIN",
   ProjectDeveloper: "PROJECT_DEVELOPER",
   ProjectGuest: "PROJECT_GUEST",
   ProjectViewer: "PROJECT_VIEWER",
 } as const;
-export type GetTeamMembersTeamsProjects = ClosedEnum<
-  typeof GetTeamMembersTeamsProjects
+export type GetTeamMembersTeamsResponseRole = ClosedEnum<
+  typeof GetTeamMembersTeamsResponseRole
 >;
 
-export type EmailInviteCodes = {
-  accessGroups?: Array<string> | undefined;
+/**
+ * Array of project memberships
+ */
+export type GetTeamMembersTeamsProjects = {
   id: string;
-  email?: string | undefined;
-  role?: GetTeamMembersTeamsRole | undefined;
-  teamRoles?: Array<GetTeamMembersTeamRoles> | undefined;
-  teamPermissions?: Array<GetTeamMembersTeamPermissions> | undefined;
-  isDSyncUser: boolean;
-  createdAt?: number | undefined;
-  expired?: true | undefined;
-  projects?: { [k: string]: GetTeamMembersTeamsProjects } | undefined;
-  entitlements?: Array<string> | undefined;
+  name: string;
+  role?: GetTeamMembersTeamsResponseRole | undefined;
+};
+
+/**
+ * Role of this user in the team.
+ */
+export const GetTeamMembersTeamsRole = {
+  Billing: "BILLING",
+  Contributor: "CONTRIBUTOR",
+  Developer: "DEVELOPER",
+  Member: "MEMBER",
+  Owner: "OWNER",
+  Security: "SECURITY",
+  Viewer: "VIEWER",
+  ViewerForPlus: "VIEWER_FOR_PLUS",
+} as const;
+/**
+ * Role of this user in the team.
+ */
+export type GetTeamMembersTeamsRole = ClosedEnum<
+  typeof GetTeamMembersTeamsRole
+>;
+
+export type GetTeamMembersMembers = {
+  /**
+   * Timestamp in milliseconds for when this team member was accepted by an owner.
+   */
+  accessRequestedAt?: number | undefined;
+  /**
+   * ID of the file for the Avatar of this member.
+   */
+  avatar?: string | undefined;
+  /**
+   * Information about the Bitbucket account of this user.
+   */
+  bitbucket?: GetTeamMembersBitbucket | undefined;
+  /**
+   * Boolean that indicates if this member was confirmed by an owner.
+   */
+  confirmed: boolean;
+  /**
+   * Timestamp in milliseconds when this member was added.
+   */
+  createdAt: number;
+  /**
+   * The email of this member.
+   */
+  email: string;
+  /**
+   * Information about the GitHub account for this user.
+   */
+  github?: GetTeamMembersGithub | undefined;
+  /**
+   * Information about the GitLab account of this user.
+   */
+  gitlab?: GetTeamMembersGitlab | undefined;
+  /**
+   * Indicates whether the user is managed by an enterprise.
+   */
+  isEnterpriseManaged?: boolean | undefined;
+  /**
+   * Map with information about the members origin if they joined by requesting access.
+   */
+  joinedFrom?: GetTeamMembersJoinedFrom | undefined;
+  /**
+   * The name of this user.
+   */
+  name?: string | undefined;
+  /**
+   * Array of project memberships
+   */
+  projects?: Array<GetTeamMembersTeamsProjects> | undefined;
+  /**
+   * Role of this user in the team.
+   */
+  role: GetTeamMembersTeamsRole;
+  /**
+   * The ID of this user.
+   */
+  uid: string;
+  /**
+   * The unique username of this user.
+   */
+  username: string;
 };
 
 export type GetTeamMembersPagination = {
-  hasNext: boolean;
   /**
    * Amount of items in the current page.
    */
   count: number;
+  hasNext: boolean;
   /**
    * Timestamp that must be used to request the next page.
    */
@@ -324,8 +322,8 @@ export type GetTeamMembersPagination = {
 };
 
 export type GetTeamMembersResponseBody = {
-  members: Array<GetTeamMembersMembers>;
   emailInviteCodes?: Array<EmailInviteCodes> | undefined;
+  members: Array<GetTeamMembersMembers>;
   pagination: GetTeamMembersPagination;
 };
 
@@ -373,6 +371,76 @@ export function getTeamMembersRequestToJSON(
 }
 
 /** @internal */
+export const GetTeamMembersProjects$inboundSchema: z.ZodNativeEnum<
+  typeof GetTeamMembersProjects
+> = z.nativeEnum(GetTeamMembersProjects);
+
+/** @internal */
+export const GetTeamMembersRole$inboundSchema: z.ZodNativeEnum<
+  typeof GetTeamMembersRole
+> = z.nativeEnum(GetTeamMembersRole);
+
+/** @internal */
+export const GetTeamMembersTeamPermissions$inboundSchema: z.ZodNativeEnum<
+  typeof GetTeamMembersTeamPermissions
+> = z.nativeEnum(GetTeamMembersTeamPermissions);
+
+/** @internal */
+export const GetTeamMembersTeamRoles$inboundSchema: z.ZodNativeEnum<
+  typeof GetTeamMembersTeamRoles
+> = z.nativeEnum(GetTeamMembersTeamRoles);
+
+/** @internal */
+export const EmailInviteCodes$inboundSchema: z.ZodType<
+  EmailInviteCodes,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  accessGroups: types.optional(z.array(types.string())),
+  createdAt: types.optional(types.number()),
+  email: types.optional(types.string()),
+  entitlements: types.optional(z.array(types.string())),
+  expired: types.optional(types.literal(true)),
+  id: types.string(),
+  isDSyncUser: types.boolean(),
+  projects: types.optional(z.record(GetTeamMembersProjects$inboundSchema)),
+  role: types.optional(GetTeamMembersRole$inboundSchema),
+  teamPermissions: types.optional(
+    z.array(GetTeamMembersTeamPermissions$inboundSchema),
+  ),
+  teamRoles: types.optional(z.array(GetTeamMembersTeamRoles$inboundSchema)),
+});
+
+export function emailInviteCodesFromJSON(
+  jsonString: string,
+): SafeParseResult<EmailInviteCodes, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmailInviteCodes$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmailInviteCodes' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetTeamMembersBitbucket$inboundSchema: z.ZodType<
+  GetTeamMembersBitbucket,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  login: types.optional(types.string()),
+});
+
+export function getTeamMembersBitbucketFromJSON(
+  jsonString: string,
+): SafeParseResult<GetTeamMembersBitbucket, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetTeamMembersBitbucket$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetTeamMembersBitbucket' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetTeamMembersGithub$inboundSchema: z.ZodType<
   GetTeamMembersGithub,
   z.ZodTypeDef,
@@ -411,35 +479,6 @@ export function getTeamMembersGitlabFromJSON(
 }
 
 /** @internal */
-export const GetTeamMembersBitbucket$inboundSchema: z.ZodType<
-  GetTeamMembersBitbucket,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  login: types.optional(types.string()),
-});
-
-export function getTeamMembersBitbucketFromJSON(
-  jsonString: string,
-): SafeParseResult<GetTeamMembersBitbucket, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetTeamMembersBitbucket$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetTeamMembersBitbucket' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetTeamMembersRole$inboundSchema: z.ZodNativeEnum<
-  typeof GetTeamMembersRole
-> = z.nativeEnum(GetTeamMembersRole);
-
-/** @internal */
-export const GetTeamMembersOrigin$inboundSchema: z.ZodNativeEnum<
-  typeof GetTeamMembersOrigin
-> = z.nativeEnum(GetTeamMembersOrigin);
-
-/** @internal */
 export const GetTeamMembersGitUserId$inboundSchema: z.ZodType<
   GetTeamMembersGitUserId,
   z.ZodTypeDef,
@@ -457,22 +496,27 @@ export function getTeamMembersGitUserIdFromJSON(
 }
 
 /** @internal */
+export const GetTeamMembersOrigin$inboundSchema: z.ZodNativeEnum<
+  typeof GetTeamMembersOrigin
+> = z.nativeEnum(GetTeamMembersOrigin);
+
+/** @internal */
 export const GetTeamMembersJoinedFrom$inboundSchema: z.ZodType<
   GetTeamMembersJoinedFrom,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  origin: GetTeamMembersOrigin$inboundSchema,
   commitId: types.optional(types.string()),
-  repoId: types.optional(types.string()),
-  repoPath: types.optional(types.string()),
+  dsyncConnectedAt: types.optional(types.number()),
+  dsyncUserId: types.optional(types.string()),
   gitUserId: types.optional(smartUnion([types.string(), types.number()])),
   gitUserLogin: types.optional(types.string()),
-  ssoUserId: types.optional(types.string()),
-  ssoConnectedAt: types.optional(types.number()),
   idpUserId: types.optional(types.string()),
-  dsyncUserId: types.optional(types.string()),
-  dsyncConnectedAt: types.optional(types.number()),
+  origin: GetTeamMembersOrigin$inboundSchema,
+  repoId: types.optional(types.string()),
+  repoPath: types.optional(types.string()),
+  ssoConnectedAt: types.optional(types.number()),
+  ssoUserId: types.optional(types.string()),
 });
 
 export function getTeamMembersJoinedFromFromJSON(
@@ -491,25 +535,30 @@ export const GetTeamMembersTeamsResponseRole$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(GetTeamMembersTeamsResponseRole);
 
 /** @internal */
-export const GetTeamMembersProjects$inboundSchema: z.ZodType<
-  GetTeamMembersProjects,
+export const GetTeamMembersTeamsProjects$inboundSchema: z.ZodType<
+  GetTeamMembersTeamsProjects,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: types.string(),
   id: types.string(),
+  name: types.string(),
   role: types.optional(GetTeamMembersTeamsResponseRole$inboundSchema),
 });
 
-export function getTeamMembersProjectsFromJSON(
+export function getTeamMembersTeamsProjectsFromJSON(
   jsonString: string,
-): SafeParseResult<GetTeamMembersProjects, SDKValidationError> {
+): SafeParseResult<GetTeamMembersTeamsProjects, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetTeamMembersProjects$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetTeamMembersProjects' from JSON`,
+    (x) => GetTeamMembersTeamsProjects$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetTeamMembersTeamsProjects' from JSON`,
   );
 }
+
+/** @internal */
+export const GetTeamMembersTeamsRole$inboundSchema: z.ZodNativeEnum<
+  typeof GetTeamMembersTeamsRole
+> = z.nativeEnum(GetTeamMembersTeamsRole);
 
 /** @internal */
 export const GetTeamMembersMembers$inboundSchema: z.ZodType<
@@ -517,27 +566,27 @@ export const GetTeamMembersMembers$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  accessRequestedAt: types.optional(types.number()),
   avatar: types.optional(types.string()),
-  confirmed: types.boolean(),
-  email: types.string(),
-  github: types.optional(z.lazy(() => GetTeamMembersGithub$inboundSchema)),
-  gitlab: types.optional(z.lazy(() => GetTeamMembersGitlab$inboundSchema)),
   bitbucket: types.optional(
     z.lazy(() => GetTeamMembersBitbucket$inboundSchema),
   ),
-  role: GetTeamMembersRole$inboundSchema,
-  uid: types.string(),
-  username: types.string(),
-  name: types.optional(types.string()),
+  confirmed: types.boolean(),
   createdAt: types.number(),
-  accessRequestedAt: types.optional(types.number()),
+  email: types.string(),
+  github: types.optional(z.lazy(() => GetTeamMembersGithub$inboundSchema)),
+  gitlab: types.optional(z.lazy(() => GetTeamMembersGitlab$inboundSchema)),
+  isEnterpriseManaged: types.optional(types.boolean()),
   joinedFrom: types.optional(
     z.lazy(() => GetTeamMembersJoinedFrom$inboundSchema),
   ),
+  name: types.optional(types.string()),
   projects: types.optional(
-    z.array(z.lazy(() => GetTeamMembersProjects$inboundSchema)),
+    z.array(z.lazy(() => GetTeamMembersTeamsProjects$inboundSchema)),
   ),
-  isEnterpriseManaged: types.optional(types.boolean()),
+  role: GetTeamMembersTeamsRole$inboundSchema,
+  uid: types.string(),
+  username: types.string(),
 });
 
 export function getTeamMembersMembersFromJSON(
@@ -551,64 +600,13 @@ export function getTeamMembersMembersFromJSON(
 }
 
 /** @internal */
-export const GetTeamMembersTeamsRole$inboundSchema: z.ZodNativeEnum<
-  typeof GetTeamMembersTeamsRole
-> = z.nativeEnum(GetTeamMembersTeamsRole);
-
-/** @internal */
-export const GetTeamMembersTeamRoles$inboundSchema: z.ZodNativeEnum<
-  typeof GetTeamMembersTeamRoles
-> = z.nativeEnum(GetTeamMembersTeamRoles);
-
-/** @internal */
-export const GetTeamMembersTeamPermissions$inboundSchema: z.ZodNativeEnum<
-  typeof GetTeamMembersTeamPermissions
-> = z.nativeEnum(GetTeamMembersTeamPermissions);
-
-/** @internal */
-export const GetTeamMembersTeamsProjects$inboundSchema: z.ZodNativeEnum<
-  typeof GetTeamMembersTeamsProjects
-> = z.nativeEnum(GetTeamMembersTeamsProjects);
-
-/** @internal */
-export const EmailInviteCodes$inboundSchema: z.ZodType<
-  EmailInviteCodes,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  accessGroups: types.optional(z.array(types.string())),
-  id: types.string(),
-  email: types.optional(types.string()),
-  role: types.optional(GetTeamMembersTeamsRole$inboundSchema),
-  teamRoles: types.optional(z.array(GetTeamMembersTeamRoles$inboundSchema)),
-  teamPermissions: types.optional(
-    z.array(GetTeamMembersTeamPermissions$inboundSchema),
-  ),
-  isDSyncUser: types.boolean(),
-  createdAt: types.optional(types.number()),
-  expired: types.optional(types.literal(true)),
-  projects: types.optional(z.record(GetTeamMembersTeamsProjects$inboundSchema)),
-  entitlements: types.optional(z.array(types.string())),
-});
-
-export function emailInviteCodesFromJSON(
-  jsonString: string,
-): SafeParseResult<EmailInviteCodes, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => EmailInviteCodes$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EmailInviteCodes' from JSON`,
-  );
-}
-
-/** @internal */
 export const GetTeamMembersPagination$inboundSchema: z.ZodType<
   GetTeamMembersPagination,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  hasNext: types.boolean(),
   count: types.number(),
+  hasNext: types.boolean(),
   next: types.nullable(types.number()),
   prev: types.nullable(types.number()),
 });
@@ -629,10 +627,10 @@ export const GetTeamMembersResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  members: z.array(z.lazy(() => GetTeamMembersMembers$inboundSchema)),
   emailInviteCodes: types.optional(
     z.array(z.lazy(() => EmailInviteCodes$inboundSchema)),
   ),
+  members: z.array(z.lazy(() => GetTeamMembersMembers$inboundSchema)),
   pagination: z.lazy(() => GetTeamMembersPagination$inboundSchema),
 });
 

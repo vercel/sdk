@@ -17,6 +17,40 @@ export type GetStorageStoresByIdRequest = {
   includeGuides?: boolean | undefined;
 };
 
+export const Providers2 = {
+  Wildcard: "*",
+} as const;
+export type Providers2 = ClosedEnum<typeof Providers2>;
+
+export const Providers1 = {
+  Bitbucket: "bitbucket",
+  Github: "github",
+  Gitlab: "gitlab",
+} as const;
+export type Providers1 = ClosedEnum<typeof Providers1>;
+
+export type GetStorageStoresByIdProviders = Array<Providers1> | Providers2;
+
+export type Git = {
+  owners?: Array<string> | undefined;
+  providers: Array<Providers1> | Providers2;
+  repos?: Array<string> | undefined;
+};
+
+export type ProjectFilter = {
+  git?: Git | undefined;
+};
+
+export type GetStorageStoresByIdActions = {
+  environments: Array<string>;
+  slug: string;
+};
+
+export type GetStorageStoresByIdDeployments = {
+  actions: Array<GetStorageStoresByIdActions>;
+  required: boolean;
+};
+
 export const GetStorageStoresByIdFramework = {
   ActixWeb: "actix-web",
   Angular: "angular",
@@ -97,51 +131,17 @@ export type GetStorageStoresByIdFramework = ClosedEnum<
   typeof GetStorageStoresByIdFramework
 >;
 
-export type GetStorageStoresByIdActions = {
-  slug: string;
-  environments: Array<string>;
-};
-
-export type GetStorageStoresByIdDeployments = {
-  required: boolean;
-  actions: Array<GetStorageStoresByIdActions>;
-};
-
 export type GetStorageStoresByIdProjectsMetadata = {
-  id: string;
-  projectId: string;
-  name: string;
-  framework?: GetStorageStoresByIdFramework | null | undefined;
-  latestDeployment?: string | undefined;
-  environments: Array<string>;
-  envVarPrefix: string | null;
-  environmentVariables: Array<string>;
   deployments?: GetStorageStoresByIdDeployments | undefined;
+  environments: Array<string>;
+  environmentVariables: Array<string>;
+  envVarPrefix: string | null;
+  framework?: GetStorageStoresByIdFramework | null | undefined;
+  id: string;
+  latestDeployment?: string | undefined;
   makeEnvVarsSensitive?: boolean | undefined;
-};
-
-export const Providers2 = {
-  Wildcard: "*",
-} as const;
-export type Providers2 = ClosedEnum<typeof Providers2>;
-
-export const Providers1 = {
-  Bitbucket: "bitbucket",
-  Github: "github",
-  Gitlab: "gitlab",
-} as const;
-export type Providers1 = ClosedEnum<typeof Providers1>;
-
-export type GetStorageStoresByIdProviders = Array<Providers1> | Providers2;
-
-export type Git = {
-  providers: Array<Providers1> | Providers2;
-  owners?: Array<string> | undefined;
-  repos?: Array<string> | undefined;
-};
-
-export type ProjectFilter = {
-  git?: Git | undefined;
+  name: string;
+  projectId: string;
 };
 
 export const GetStorageStoresByIdStatus = {
@@ -159,11 +159,11 @@ export type GetStorageStoresByIdStatus = ClosedEnum<
 >;
 
 export type GetStorageStoresByIdStore = {
-  projectsMetadata: Array<GetStorageStoresByIdProjectsMetadata>;
   projectFilter?: ProjectFilter | undefined;
+  projectsMetadata: Array<GetStorageStoresByIdProjectsMetadata>;
+  status: GetStorageStoresByIdStatus | null;
   totalConnectedProjects?: number | undefined;
   usageQuotaExceeded: boolean;
-  status: GetStorageStoresByIdStatus | null;
 };
 
 export type GetStorageStoresByIdResponseBody = {
@@ -204,82 +204,6 @@ export function getStorageStoresByIdRequestToJSON(
 }
 
 /** @internal */
-export const GetStorageStoresByIdFramework$inboundSchema: z.ZodNativeEnum<
-  typeof GetStorageStoresByIdFramework
-> = z.nativeEnum(GetStorageStoresByIdFramework);
-
-/** @internal */
-export const GetStorageStoresByIdActions$inboundSchema: z.ZodType<
-  GetStorageStoresByIdActions,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  slug: types.string(),
-  environments: z.array(types.string()),
-});
-
-export function getStorageStoresByIdActionsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetStorageStoresByIdActions, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetStorageStoresByIdActions$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetStorageStoresByIdActions' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetStorageStoresByIdDeployments$inboundSchema: z.ZodType<
-  GetStorageStoresByIdDeployments,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  required: types.boolean(),
-  actions: z.array(z.lazy(() => GetStorageStoresByIdActions$inboundSchema)),
-});
-
-export function getStorageStoresByIdDeploymentsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetStorageStoresByIdDeployments, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetStorageStoresByIdDeployments$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetStorageStoresByIdDeployments' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetStorageStoresByIdProjectsMetadata$inboundSchema: z.ZodType<
-  GetStorageStoresByIdProjectsMetadata,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: types.string(),
-  projectId: types.string(),
-  name: types.string(),
-  framework: z.nullable(GetStorageStoresByIdFramework$inboundSchema).optional(),
-  latestDeployment: types.optional(types.string()),
-  environments: z.array(types.string()),
-  envVarPrefix: types.nullable(types.string()),
-  environmentVariables: z.array(types.string()),
-  deployments: types.optional(
-    z.lazy(() => GetStorageStoresByIdDeployments$inboundSchema),
-  ),
-  makeEnvVarsSensitive: types.optional(types.boolean()),
-});
-
-export function getStorageStoresByIdProjectsMetadataFromJSON(
-  jsonString: string,
-): SafeParseResult<GetStorageStoresByIdProjectsMetadata, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetStorageStoresByIdProjectsMetadata$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetStorageStoresByIdProjectsMetadata' from JSON`,
-  );
-}
-
-/** @internal */
 export const Providers2$inboundSchema: z.ZodNativeEnum<typeof Providers2> = z
   .nativeEnum(Providers2);
 
@@ -307,11 +231,11 @@ export function getStorageStoresByIdProvidersFromJSON(
 /** @internal */
 export const Git$inboundSchema: z.ZodType<Git, z.ZodTypeDef, unknown> = z
   .object({
+    owners: types.optional(z.array(types.string())),
     providers: smartUnion([
       z.array(Providers1$inboundSchema),
       Providers2$inboundSchema,
     ]),
-    owners: types.optional(z.array(types.string())),
     repos: types.optional(z.array(types.string())),
   });
 
@@ -345,6 +269,82 @@ export function projectFilterFromJSON(
 }
 
 /** @internal */
+export const GetStorageStoresByIdActions$inboundSchema: z.ZodType<
+  GetStorageStoresByIdActions,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  environments: z.array(types.string()),
+  slug: types.string(),
+});
+
+export function getStorageStoresByIdActionsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetStorageStoresByIdActions, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetStorageStoresByIdActions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetStorageStoresByIdActions' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetStorageStoresByIdDeployments$inboundSchema: z.ZodType<
+  GetStorageStoresByIdDeployments,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  actions: z.array(z.lazy(() => GetStorageStoresByIdActions$inboundSchema)),
+  required: types.boolean(),
+});
+
+export function getStorageStoresByIdDeploymentsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetStorageStoresByIdDeployments, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetStorageStoresByIdDeployments$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetStorageStoresByIdDeployments' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetStorageStoresByIdFramework$inboundSchema: z.ZodNativeEnum<
+  typeof GetStorageStoresByIdFramework
+> = z.nativeEnum(GetStorageStoresByIdFramework);
+
+/** @internal */
+export const GetStorageStoresByIdProjectsMetadata$inboundSchema: z.ZodType<
+  GetStorageStoresByIdProjectsMetadata,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  deployments: types.optional(
+    z.lazy(() => GetStorageStoresByIdDeployments$inboundSchema),
+  ),
+  environments: z.array(types.string()),
+  environmentVariables: z.array(types.string()),
+  envVarPrefix: types.nullable(types.string()),
+  framework: z.nullable(GetStorageStoresByIdFramework$inboundSchema).optional(),
+  id: types.string(),
+  latestDeployment: types.optional(types.string()),
+  makeEnvVarsSensitive: types.optional(types.boolean()),
+  name: types.string(),
+  projectId: types.string(),
+});
+
+export function getStorageStoresByIdProjectsMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<GetStorageStoresByIdProjectsMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetStorageStoresByIdProjectsMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetStorageStoresByIdProjectsMetadata' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetStorageStoresByIdStatus$inboundSchema: z.ZodNativeEnum<
   typeof GetStorageStoresByIdStatus
 > = z.nativeEnum(GetStorageStoresByIdStatus);
@@ -355,13 +355,13 @@ export const GetStorageStoresByIdStore$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  projectFilter: types.optional(z.lazy(() => ProjectFilter$inboundSchema)),
   projectsMetadata: z.array(
     z.lazy(() => GetStorageStoresByIdProjectsMetadata$inboundSchema),
   ),
-  projectFilter: types.optional(z.lazy(() => ProjectFilter$inboundSchema)),
+  status: types.nullable(GetStorageStoresByIdStatus$inboundSchema),
   totalConnectedProjects: types.optional(types.number()),
   usageQuotaExceeded: types.boolean(),
-  status: types.nullable(GetStorageStoresByIdStatus$inboundSchema),
 });
 
 export function getStorageStoresByIdStoreFromJSON(

@@ -3,14 +3,14 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyProjectsResponse200ApplicationJSONType } from "@vercel/sdk/models/responsebodydeploymentexpiration.js";
+import { GetProjectsResponseBodyProjectsResponse200ApplicationJSONType } from "@vercel/sdk/models/getprojectslogheaders2.js";
 
 let value: GetProjectsResponseBodyProjectsResponse200ApplicationJSONType =
-  "LAMBDAS";
+  "flags-secret";
 ```
 
 ## Values
 
 ```typescript
-"LAMBDAS"
+"flags-secret"
 ```

@@ -7,8 +7,8 @@ import { GetRollingReleaseBillingStatusResponseBody1 } from "@vercel/sdk/models/
 
 let value: GetRollingReleaseBillingStatusResponseBody1 = {
   availableSlots: 8978.48,
-  reason: "plan_not_supported",
   message: "<value>",
+  reason: "plan_not_supported",
 };
 ```
 
@@ -17,5 +17,5 @@ let value: GetRollingReleaseBillingStatusResponseBody1 = {
 | Field                  | Type                   | Required               | Description            |
 | ---------------------- | ---------------------- | ---------------------- | ---------------------- |
 | `availableSlots`       | *number*               | :heavy_check_mark:     | N/A                    |
-| `reason`               | *"plan_not_supported"* | :heavy_check_mark:     | N/A                    |
 | `message`              | *string*               | :heavy_check_mark:     | N/A                    |
+| `reason`               | *"plan_not_supported"* | :heavy_check_mark:     | N/A                    |

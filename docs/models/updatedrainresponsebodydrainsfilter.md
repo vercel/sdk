@@ -15,8 +15,8 @@ const value: models.UpdateDrainFilterDrainsResponse1 = {
 
 ```typescript
 const value: models.UpdateDrainFilterDrainsResponse2002 = {
-  type: "odata",
   text: "<value>",
+  type: "odata",
 };
 ```
 

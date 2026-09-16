@@ -11,15 +11,13 @@ let value: ConnectProjectConnectorConnectionList = {
   connectors: [
     {
       connectorId: "<id>",
+      createdAt: 9758.9,
+      enabledEnvironments: [],
       project: {
         id: "<id>",
         name: "<value>",
       },
-      enabledEnvironments: [
-        "<value>",
-      ],
-      createdAt: 7168.99,
-      updatedAt: 7457.72,
+      updatedAt: 7168.99,
     },
   ],
   pagination: {

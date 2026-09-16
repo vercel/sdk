@@ -3,11 +3,10 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupAlias } from "@vercel/sdk/models/getmicrofrontendsingroupbuildmachinetype.js";
+import { GetMicrofrontendsInGroupAlias } from "@vercel/sdk/models/getmicrofrontendsingrouphasvalue.js";
 
 let value: GetMicrofrontendsInGroupAlias = {
   deployment: {
-    id: "<id>",
     createdAt: 6870,
     createdIn: "<value>",
     creator: {
@@ -16,6 +15,7 @@ let value: GetMicrofrontendsInGroupAlias = {
       username: "Jefferey32",
     },
     deploymentHostname: "<value>",
+    id: "<id>",
     name: "<value>",
     plan: "pro",
     previewCommentsEnabled: false,

@@ -6,11 +6,11 @@
 import { CreateAccessGroupProjectResponseBody } from "@vercel/sdk/models/createaccessgroupprojectop.js";
 
 let value: CreateAccessGroupProjectResponseBody = {
-  teamId: "<id>",
   accessGroupId: "<id>",
+  createdAt: "1730387047932",
   projectId: "<id>",
-  role: "PROJECT_VIEWER",
-  createdAt: "1713178326932",
+  role: "PROJECT_DEVELOPER",
+  teamId: "<id>",
   updatedAt: "1735649190673",
 };
 ```
@@ -19,9 +19,9 @@ let value: CreateAccessGroupProjectResponseBody = {
 
 | Field                                                                                                    | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
 | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| `teamId`                                                                                                 | *string*                                                                                                 | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
 | `accessGroupId`                                                                                          | *string*                                                                                                 | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
+| `createdAt`                                                                                              | *string*                                                                                                 | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
 | `projectId`                                                                                              | *string*                                                                                                 | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
 | `role`                                                                                                   | [models.CreateAccessGroupProjectAccessGroupsRole](../models/createaccessgroupprojectaccessgroupsrole.md) | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
-| `createdAt`                                                                                              | *string*                                                                                                 | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
+| `teamId`                                                                                                 | *string*                                                                                                 | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
 | `updatedAt`                                                                                              | *string*                                                                                                 | :heavy_check_mark:                                                                                       | N/A                                                                                                      |

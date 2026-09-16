@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupContentHint1 } from "@vercel/sdk/models/getmicrofrontendsingroupbuildmachinetype.js";
+import { GetMicrofrontendsInGroupContentHint1 } from "@vercel/sdk/models/getmicrofrontendsingrouphasvalue.js";
 
 let value: GetMicrofrontendsInGroupContentHint1 = {
-  type: "redis-url",
   storeId: "<id>",
+  type: "redis-url",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: GetMicrofrontendsInGroupContentHint1 = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `type`             | *"redis-url"*      | :heavy_check_mark: | N/A                |
 | `storeId`          | *string*           | :heavy_check_mark: | N/A                |
+| `type`             | *"redis-url"*      | :heavy_check_mark: | N/A                |

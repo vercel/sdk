@@ -8,9 +8,9 @@ import { GetIntegrationResourcesResponseBody } from "@vercel/sdk/models/getinteg
 let value: GetIntegrationResourcesResponseBody = {
   resources: [
     {
-      partnerId: "<id>",
       internalId: "<id>",
       name: "<value>",
+      partnerId: "<id>",
       productId: "<id>",
     },
   ],

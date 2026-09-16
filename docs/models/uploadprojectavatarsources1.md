@@ -5,11 +5,11 @@ Allowlist entry for GitHub and Bitbucket, whose repos are identified by a flat `
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarSources1 } from "@vercel/sdk/models/uploadprojectavatarinternalroutes1.js";
+import { UploadProjectAvatarSources1 } from "@vercel/sdk/models/uploadprojectavatarhasvalue.js";
 
 let value: UploadProjectAvatarSources1 = {
-  provider: "bitbucket",
   org: "<value>",
+  provider: "bitbucket",
 };
 ```
 
@@ -17,6 +17,6 @@ let value: UploadProjectAvatarSources1 = {
 
 | Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  |
 | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `provider`                                                                                   | [models.UploadProjectAvatarSourcesProvider](../models/uploadprojectavatarsourcesprovider.md) | :heavy_check_mark:                                                                           | N/A                                                                                          |
 | `org`                                                                                        | *string*                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          |
+| `provider`                                                                                   | [models.UploadProjectAvatarSourcesProvider](../models/uploadprojectavatarsourcesprovider.md) | :heavy_check_mark:                                                                           | N/A                                                                                          |
 | `repo`                                                                                       | *string*                                                                                     | :heavy_minus_sign:                                                                           | N/A                                                                                          |

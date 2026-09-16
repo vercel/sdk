@@ -8,10 +8,10 @@ import { GetRouteVersionsResponseBody } from "@vercel/sdk/models/getrouteversion
 let value: GetRouteVersionsResponseBody = {
   versions: [
     {
-      id: "<id>",
-      s3Key: "<value>",
-      lastModified: 234.54,
       createdBy: "<value>",
+      id: "<id>",
+      lastModified: 234.54,
+      s3Key: "<value>",
     },
   ],
 };

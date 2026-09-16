@@ -3,14 +3,14 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyHistory } from "@vercel/sdk/models/getprojectsresponsebody.js";
+import { ResponseBodyHistory } from "@vercel/sdk/models/responsebodyabuse.js";
 
 let value: ResponseBodyHistory = {
-  scanner: "<value>",
-  reason: "<value>",
+  at: 7357.81,
   by: "<value>",
   byId: "<id>",
-  at: 7357.81,
+  reason: "<value>",
+  scanner: "<value>",
 };
 ```
 
@@ -18,8 +18,8 @@ let value: ResponseBodyHistory = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `scanner`          | *string*           | :heavy_check_mark: | N/A                |
-| `reason`           | *string*           | :heavy_check_mark: | N/A                |
+| `at`               | *number*           | :heavy_check_mark: | N/A                |
 | `by`               | *string*           | :heavy_check_mark: | N/A                |
 | `byId`             | *string*           | :heavy_check_mark: | N/A                |
-| `at`               | *number*           | :heavy_check_mark: | N/A                |
+| `reason`           | *string*           | :heavy_check_mark: | N/A                |
+| `scanner`          | *string*           | :heavy_check_mark: | N/A                |

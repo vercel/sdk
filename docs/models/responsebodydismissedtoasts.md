@@ -3,15 +3,15 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyDismissedToasts } from "@vercel/sdk/models/getprojectsfromprojectsresponsepreset.js";
+import { ResponseBodyDismissedToasts } from "@vercel/sdk/models/getprojectsresponsebodyprojectsconsolidatedgitcommitstatus.js";
 
 let value: ResponseBodyDismissedToasts = {
-  key: "<key>",
-  dismissedAt: 9794.9,
   action: "delete",
+  dismissedAt: 7642.98,
+  key: "<key>",
   value: {
-    previousValue: false,
-    currentValue: 9956.01,
+    currentValue: false,
+    previousValue: 9956.01,
   },
 };
 ```
@@ -20,7 +20,7 @@ let value: ResponseBodyDismissedToasts = {
 
 | Field                                                                                                                    | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
 | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
-| `key`                                                                                                                    | *string*                                                                                                                 | :heavy_check_mark:                                                                                                       | N/A                                                                                                                      |
-| `dismissedAt`                                                                                                            | *number*                                                                                                                 | :heavy_check_mark:                                                                                                       | N/A                                                                                                                      |
 | `action`                                                                                                                 | [models.GetProjectsResponseBodyProjectsResponse200Action](../models/getprojectsresponsebodyprojectsresponse200action.md) | :heavy_check_mark:                                                                                                       | N/A                                                                                                                      |
+| `dismissedAt`                                                                                                            | *number*                                                                                                                 | :heavy_check_mark:                                                                                                       | N/A                                                                                                                      |
+| `key`                                                                                                                    | *string*                                                                                                                 | :heavy_check_mark:                                                                                                       | N/A                                                                                                                      |
 | `value`                                                                                                                  | *models.GetProjectsResponseBodyValue*                                                                                    | :heavy_check_mark:                                                                                                       | N/A                                                                                                                      |

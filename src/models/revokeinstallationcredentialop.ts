@@ -21,8 +21,8 @@ export type RevokeInstallationCredentialRequest = {
 };
 
 export type RevokeInstallationCredentialResponseBody = {
-  revoked: boolean;
   alreadyRevoked: boolean;
+  revoked: boolean;
 };
 
 /** @internal */
@@ -97,8 +97,8 @@ export const RevokeInstallationCredentialResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  revoked: types.boolean(),
   already_revoked: types.boolean(),
+  revoked: types.boolean(),
 }).transform((v) => {
   return remap$(v, {
     "already_revoked": "alreadyRevoked",

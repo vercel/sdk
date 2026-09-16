@@ -8,8 +8,8 @@ The payload of the event, if requested.
 import { Seven } from "@vercel/sdk/models/userevent.js";
 
 let value: Seven = {
-  teamId: "<id>",
   accountRequestId: "<id>",
+  teamId: "<id>",
 };
 ```
 
@@ -21,5 +21,5 @@ let value: Seven = {
 | `providerAccount`                                                      | *string*                                                               | :heavy_minus_sign:                                                     | Present on new events only. Equivalent to `stripeAccount` when absent. |
 | `stripeAccount`                                                        | *string*                                                               | :heavy_minus_sign:                                                     | Present when `provider` is "stripe". Equivalent to `providerAccount`.  |
 | `stripeOrganisation`                                                   | *string*                                                               | :heavy_minus_sign:                                                     | Present when `provider` is "stripe".                                   |
-| `teamId`                                                               | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
 | `accountRequestId`                                                     | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `teamId`                                                               | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |

@@ -3,14 +3,14 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsHistory } from "@vercel/sdk/models/updatemicrofrontendsinternalroutes2.js";
+import { UpdateMicrofrontendsHistory } from "@vercel/sdk/models/updatemicrofrontendshaskey.js";
 
 let value: UpdateMicrofrontendsHistory = {
-  scanner: "<value>",
-  reason: "<value>",
+  at: 3028.57,
   by: "<value>",
   byId: "<id>",
-  at: 3028.57,
+  reason: "<value>",
+  scanner: "<value>",
 };
 ```
 
@@ -18,8 +18,8 @@ let value: UpdateMicrofrontendsHistory = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `scanner`          | *string*           | :heavy_check_mark: | N/A                |
-| `reason`           | *string*           | :heavy_check_mark: | N/A                |
+| `at`               | *number*           | :heavy_check_mark: | N/A                |
 | `by`               | *string*           | :heavy_check_mark: | N/A                |
 | `byId`             | *string*           | :heavy_check_mark: | N/A                |
-| `at`               | *number*           | :heavy_check_mark: | N/A                |
+| `reason`           | *string*           | :heavy_check_mark: | N/A                |
+| `scanner`          | *string*           | :heavy_check_mark: | N/A                |

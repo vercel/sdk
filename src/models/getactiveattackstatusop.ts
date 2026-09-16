@@ -25,10 +25,10 @@ export type GetActiveAttackStatusRequest = {
 
 export type AnomalyAlerts = {
   atMinute: string;
-  zscore: number;
-  totalRequestsMinute: number;
   avgRequests: number;
   stddevRequests: number;
+  totalRequestsMinute: number;
+  zscore: number;
 };
 
 export type DdosAlerts = {
@@ -42,13 +42,13 @@ export type AffectedHostMap = {
 };
 
 export type Anomalies = {
-  projectId: string;
-  ownerId: string;
-  startTime: number;
-  endTime: number | null;
-  atMinute: number;
-  state?: string | undefined;
   affectedHostMap: { [k: string]: AffectedHostMap };
+  atMinute: number;
+  endTime: number | null;
+  ownerId: string;
+  projectId: string;
+  startTime: number;
+  state?: string | undefined;
 };
 
 export type GetActiveAttackStatusResponseBody2 = {
@@ -98,16 +98,16 @@ export const AnomalyAlerts$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   at_minute: types.string(),
-  zscore: types.number(),
-  total_requests_minute: types.number(),
   avg_requests: types.number(),
   stddev_requests: types.number(),
+  total_requests_minute: types.number(),
+  zscore: types.number(),
 }).transform((v) => {
   return remap$(v, {
     "at_minute": "atMinute",
-    "total_requests_minute": "totalRequestsMinute",
     "avg_requests": "avgRequests",
     "stddev_requests": "stddevRequests",
+    "total_requests_minute": "totalRequestsMinute",
   });
 });
 
@@ -169,13 +169,13 @@ export const Anomalies$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: types.string(),
-  ownerId: types.string(),
-  startTime: types.number(),
-  endTime: types.nullable(types.number()),
-  atMinute: types.number(),
-  state: types.optional(types.string()),
   affectedHostMap: z.record(z.lazy(() => AffectedHostMap$inboundSchema)),
+  atMinute: types.number(),
+  endTime: types.nullable(types.number()),
+  ownerId: types.string(),
+  projectId: types.string(),
+  startTime: types.number(),
+  state: types.optional(types.string()),
 });
 
 export function anomaliesFromJSON(

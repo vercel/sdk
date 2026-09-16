@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupOidcProviders } from "@vercel/sdk/models/getmicrofrontendsingroupinternalroutes2.js";
+import { GetMicrofrontendsInGroupOidcProviders } from "@vercel/sdk/models/getmicrofrontendsingroupfrom1.js";
 
 let value: GetMicrofrontendsInGroupOidcProviders = {
   to: {
@@ -23,5 +23,5 @@ let value: GetMicrofrontendsInGroupOidcProviders = {
 | Field                               | Type                                | Required                            | Description                         |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------------- |
 | `to`                                | *models.GetMicrofrontendsInGroupTo* | :heavy_check_mark:                  | N/A                                 |
-| `label`                             | *string*                            | :heavy_minus_sign:                  | N/A                                 |
 | `claims`                            | Record<string, *string*[]>          | :heavy_check_mark:                  | N/A                                 |
+| `label`                             | *string*                            | :heavy_minus_sign:                  | N/A                                 |

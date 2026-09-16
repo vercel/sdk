@@ -8,15 +8,15 @@ List of products available for this integration configuration
 import { GetConfigurationProductsResponseBody } from "@vercel/sdk/models/getconfigurationproductsresponsebody.js";
 
 let value: GetConfigurationProductsResponseBody = {
-  products: [],
-  integration: {
-    id: "<id>",
-    slug: "<value>",
-    name: "<value>",
-  },
   configuration: {
     id: "<id>",
   },
+  integration: {
+    id: "<id>",
+    name: "<value>",
+    slug: "<value>",
+  },
+  products: [],
 };
 ```
 
@@ -24,6 +24,6 @@ let value: GetConfigurationProductsResponseBody = {
 
 | Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `products`                                                                                         | [models.Products](../models/products.md)[]                                                         | :heavy_check_mark:                                                                                 | N/A                                                                                                |
-| `integration`                                                                                      | [models.GetConfigurationProductsIntegration](../models/getconfigurationproductsintegration.md)     | :heavy_check_mark:                                                                                 | N/A                                                                                                |
 | `configuration`                                                                                    | [models.GetConfigurationProductsConfiguration](../models/getconfigurationproductsconfiguration.md) | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `integration`                                                                                      | [models.GetConfigurationProductsIntegration](../models/getconfigurationproductsintegration.md)     | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `products`                                                                                         | [models.Products](../models/products.md)[]                                                         | :heavy_check_mark:                                                                                 | N/A                                                                                                |

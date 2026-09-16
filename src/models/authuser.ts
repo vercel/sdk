@@ -10,18 +10,326 @@ import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
-export const Reason = {
-  BlockedForPlatformAbuse: "BLOCKED_FOR_PLATFORM_ABUSE",
-  DomainOwnerDeletionRequest: "DOMAIN_OWNER_DELETION_REQUEST",
-  EnterpriseTrialEnded: "ENTERPRISE_TRIAL_ENDED",
-  EnterpriseUnpaidInvoice: "ENTERPRISE_UNPAID_INVOICE",
-  ExposureCapExceeded: "EXPOSURE_CAP_EXCEEDED",
-  FairUseLimitsExceeded: "FAIR_USE_LIMITS_EXCEEDED",
-  SubscriptionCanceled: "SUBSCRIPTION_CANCELED",
-  SubscriptionExpired: "SUBSCRIPTION_EXPIRED",
-  UnpaidInvoice: "UNPAID_INVOICE",
+export type ManagedTeams = {
+  avatar: string | null;
+  name: string;
+  slug: string;
+  teamId: string;
+  workEmail: string;
+};
+
+export type Organization = {
+  id: string;
+  name: string;
+  slug: string;
+};
+
+/**
+ * Context for the Update Account screen. Present only when `isAccountUpdateRequired` is true. `managedTeams` is empty for orphan mode (user matches an EMU domain but is not on the team).
+ */
+export type AccountUpdateContext = {
+  /**
+   * Whether this user can cancel their optional Account Update flow.
+   */
+  canOptOut: boolean;
+  managedTeams: Array<ManagedTeams>;
+  organization?: Organization | undefined;
+  verifiedEmuDomains: Array<string>;
+};
+
+export const FavoritesViewPreference = {
+  Closed: "closed",
+  Open: "open",
 } as const;
-export type Reason = ClosedEnum<typeof Reason>;
+export type FavoritesViewPreference = ClosedEnum<
+  typeof FavoritesViewPreference
+>;
+
+export const RecentsViewPreference = {
+  Closed: "closed",
+  Open: "open",
+} as const;
+export type RecentsViewPreference = ClosedEnum<typeof RecentsViewPreference>;
+
+export const ViewPreference = {
+  Cards: "cards",
+  List: "list",
+} as const;
+export type ViewPreference = ClosedEnum<typeof ViewPreference>;
+
+/**
+ * set of dashboard view preferences (cards or list) per scopeId
+ */
+export type ActiveDashboardViews = {
+  favoritesViewPreference?: FavoritesViewPreference | null | undefined;
+  recentsViewPreference?: RecentsViewPreference | null | undefined;
+  scopeId: string;
+  viewPreference?: ViewPreference | null | undefined;
+};
+
+/**
+ * An object containing billing infomation associated with the User account.
+ */
+export type AuthUserBilling = {};
+
+/**
+ * data cache settings
+ */
+export type DataCache = {
+  excessBillingEnabled?: boolean | undefined;
+};
+
+export type Dismissals = {
+  createdAt: number;
+  scopeId: string;
+};
+
+/**
+ * A record of when, under a certain scopeId, a toast was dismissed
+ */
+export type DismissedToasts = {
+  dismissals: Array<Dismissals>;
+  name: string;
+};
+
+/**
+ * A list of projects and spaces across teams that a user has marked as a favorite.
+ */
+export type FavoriteProjectsAndSpaces = {
+  projectId: string;
+  teamId: string;
+};
+
+export const BlockReason = {
+  AdminOverride: "admin_override",
+  HardBlocked: "hard_blocked",
+  LimitsExceeded: "limits_exceeded",
+} as const;
+export type BlockReason = ClosedEnum<typeof BlockReason>;
+
+/**
+ * Client-facing view of the `speedInsightsFree` ingestion block. The dashboard needs `blockReason` to tell usage pauses apart from admin blocks.
+ */
+export type SpeedInsightsFree = {
+  blockedFrom?: number | undefined;
+  blockedUntil?: number | undefined;
+  blockReason: BlockReason;
+  isCurrentlyBlocked: boolean;
+};
+
+export type WebAnalytics = {
+  blockedFrom?: number | undefined;
+  blockedUntil?: number | undefined;
+  isCurrentlyBlocked: boolean;
+};
+
+/**
+ * Feature blocks for the user
+ */
+export type FeatureBlocks = {
+  /**
+   * Client-facing view of the `speedInsightsFree` ingestion block. The dashboard needs `blockReason` to tell usage pauses apart from admin blocks.
+   */
+  speedInsightsFree?: SpeedInsightsFree | undefined;
+  webAnalytics?: WebAnalytics | undefined;
+};
+
+export type ImportFlowGitNamespace = string | number;
+
+export type ImportFlowGitNamespaceId = string | number;
+
+export const ImportFlowGitProvider = {
+  Bitbucket: "bitbucket",
+  CursorOrigin: "cursor-origin",
+  Github: "github",
+  GithubCustomHost: "github-custom-host",
+  GithubLimited: "github-limited",
+  Gitlab: "gitlab",
+  Vercel: "vercel",
+} as const;
+export type ImportFlowGitProvider = ClosedEnum<typeof ImportFlowGitProvider>;
+
+export type GitNamespaceId = string | number;
+
+export type PreferredScopesAndGitNamespaces = {
+  gitNamespaceId: string | number | null;
+  scopeId: string;
+};
+
+/**
+ * remote caching settings
+ */
+export type AuthUserRemoteCaching = {
+  enabled?: boolean | undefined;
+};
+
+/**
+ * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+ */
+export type AuthUserBuildEntitlements = {
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  enhancedBuilds?: boolean | undefined;
+};
+
+/**
+ * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+ */
+export const AuthUserConfiguration = {
+  SkipNamespaceQueue: "SKIP_NAMESPACE_QUEUE",
+  WaitForNamespaceQueue: "WAIT_FOR_NAMESPACE_QUEUE",
+} as const;
+/**
+ * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+ */
+export type AuthUserConfiguration = ClosedEnum<typeof AuthUserConfiguration>;
+
+/**
+ * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+ */
+export type BuildQueue = {
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  configuration?: AuthUserConfiguration | undefined;
+};
+
+/**
+ * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+ */
+export type AuthUserSecurity = {
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  customRules?: number | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  ipBlocks?: number | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  ipBypass?: number | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  rateLimit?: number | undefined;
+};
+
+/**
+ * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+ */
+export type AuthUserResourceConfig = {
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  awsAccountIds?: Array<string> | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  awsAccountType?: string | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  blobStores?: number | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  buildEntitlements?: AuthUserBuildEntitlements | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  buildQueue?: BuildQueue | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  bulkRedirectsFreeLimitOverride?: number | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  cfZoneName?: string | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  concurrentBuilds?: number | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  cronJobsPerProject?: number | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  customEnvironmentsPerProject?: number | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  edgeConfigs?: number | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  edgeConfigSize?: number | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  edgeFunctionExecutionTimeoutMs?: number | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  edgeFunctionMaxSizeBytes?: number | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  elasticConcurrencyEnabled?: boolean | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  flagsExplorerOverridesThreshold?: number | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  flagsExplorerUnlimitedOverrides?: boolean | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  imageOptimizationType?: string | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  integrationStores?: number | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  kvDatabases?: number | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  microfrontendGroupsPerTeam?: number | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  microfrontendProjectsPerGroup?: number | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  nodeType?: string | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  postgresDatabases?: number | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  security?: AuthUserSecurity | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  serverlessFunctionMaxDuration?: number | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  serverlessFunctionMaxMemorySize?: number | undefined;
+};
 
 export const BlockedDueToOverageType = {
   AnalyticsUsage: "analyticsUsage",
@@ -69,13 +377,26 @@ export type BlockedDueToOverageType = ClosedEnum<
   typeof BlockedDueToOverageType
 >;
 
+export const Reason = {
+  BlockedForPlatformAbuse: "BLOCKED_FOR_PLATFORM_ABUSE",
+  DomainOwnerDeletionRequest: "DOMAIN_OWNER_DELETION_REQUEST",
+  EnterpriseTrialEnded: "ENTERPRISE_TRIAL_ENDED",
+  EnterpriseUnpaidInvoice: "ENTERPRISE_UNPAID_INVOICE",
+  ExposureCapExceeded: "EXPOSURE_CAP_EXCEEDED",
+  FairUseLimitsExceeded: "FAIR_USE_LIMITS_EXCEEDED",
+  SubscriptionCanceled: "SUBSCRIPTION_CANCELED",
+  SubscriptionExpired: "SUBSCRIPTION_EXPIRED",
+  UnpaidInvoice: "UNPAID_INVOICE",
+} as const;
+export type Reason = ClosedEnum<typeof Reason>;
+
 /**
  * When the User account has been "soft blocked", this property will contain the date when the restriction was enacted, and the identifier for why.
  */
 export type SoftBlock = {
   blockedAt: number;
-  reason: Reason;
   blockedDueToOverageType?: BlockedDueToOverageType | undefined;
+  reason: Reason;
   /**
    * Since September 2026. Set only by `billing-usage-alerts` for usage plans with a `blockDurationMs`; its presence marks a pause that expires on its own.
    */
@@ -83,456 +404,207 @@ export type SoftBlock = {
 };
 
 /**
- * An object containing billing infomation associated with the User account.
- */
-export type AuthUserBilling = {};
-
-/**
- * An object containing infomation related to the amount of platform resources may be allocated to the User account.
- */
-export type AuthUserBuildEntitlements = {
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
-  enhancedBuilds?: boolean | undefined;
-};
-
-/**
- * An object containing infomation related to the amount of platform resources may be allocated to the User account.
- */
-export const AuthUserConfiguration = {
-  SkipNamespaceQueue: "SKIP_NAMESPACE_QUEUE",
-  WaitForNamespaceQueue: "WAIT_FOR_NAMESPACE_QUEUE",
-} as const;
-/**
- * An object containing infomation related to the amount of platform resources may be allocated to the User account.
- */
-export type AuthUserConfiguration = ClosedEnum<typeof AuthUserConfiguration>;
-
-/**
- * An object containing infomation related to the amount of platform resources may be allocated to the User account.
- */
-export type BuildQueue = {
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
-  configuration?: AuthUserConfiguration | undefined;
-};
-
-/**
- * An object containing infomation related to the amount of platform resources may be allocated to the User account.
- */
-export type AuthUserSecurity = {
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
-  rateLimit?: number | undefined;
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
-  customRules?: number | undefined;
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
-  ipBlocks?: number | undefined;
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
-  ipBypass?: number | undefined;
-};
-
-/**
- * An object containing infomation related to the amount of platform resources may be allocated to the User account.
- */
-export type AuthUserResourceConfig = {
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
-  concurrentBuilds?: number | undefined;
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
-  nodeType?: string | undefined;
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
-  elasticConcurrencyEnabled?: boolean | undefined;
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
-  buildEntitlements?: AuthUserBuildEntitlements | undefined;
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
-  buildQueue?: BuildQueue | undefined;
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
-  awsAccountType?: string | undefined;
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
-  awsAccountIds?: Array<string> | undefined;
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
-  cfZoneName?: string | undefined;
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
-  imageOptimizationType?: string | undefined;
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
-  edgeConfigs?: number | undefined;
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
-  edgeConfigSize?: number | undefined;
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
-  edgeFunctionMaxSizeBytes?: number | undefined;
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
-  edgeFunctionExecutionTimeoutMs?: number | undefined;
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
-  serverlessFunctionMaxDuration?: number | undefined;
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
-  serverlessFunctionMaxMemorySize?: number | undefined;
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
-  kvDatabases?: number | undefined;
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
-  postgresDatabases?: number | undefined;
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
-  blobStores?: number | undefined;
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
-  integrationStores?: number | undefined;
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
-  cronJobsPerProject?: number | undefined;
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
-  microfrontendGroupsPerTeam?: number | undefined;
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
-  microfrontendProjectsPerGroup?: number | undefined;
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
-  flagsExplorerOverridesThreshold?: number | undefined;
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
-  flagsExplorerUnlimitedOverrides?: boolean | undefined;
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
-  customEnvironmentsPerProject?: number | undefined;
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
-  security?: AuthUserSecurity | undefined;
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
-  bulkRedirectsFreeLimitOverride?: number | undefined;
-};
-
-export const ViewPreference = {
-  Cards: "cards",
-  List: "list",
-} as const;
-export type ViewPreference = ClosedEnum<typeof ViewPreference>;
-
-export const FavoritesViewPreference = {
-  Closed: "closed",
-  Open: "open",
-} as const;
-export type FavoritesViewPreference = ClosedEnum<
-  typeof FavoritesViewPreference
->;
-
-export const RecentsViewPreference = {
-  Closed: "closed",
-  Open: "open",
-} as const;
-export type RecentsViewPreference = ClosedEnum<typeof RecentsViewPreference>;
-
-/**
- * set of dashboard view preferences (cards or list) per scopeId
- */
-export type ActiveDashboardViews = {
-  scopeId: string;
-  viewPreference?: ViewPreference | null | undefined;
-  favoritesViewPreference?: FavoritesViewPreference | null | undefined;
-  recentsViewPreference?: RecentsViewPreference | null | undefined;
-};
-
-export type ImportFlowGitNamespace = string | number;
-
-export type ImportFlowGitNamespaceId = string | number;
-
-export const ImportFlowGitProvider = {
-  Bitbucket: "bitbucket",
-  CursorOrigin: "cursor-origin",
-  Github: "github",
-  GithubCustomHost: "github-custom-host",
-  GithubLimited: "github-limited",
-  Gitlab: "gitlab",
-  Vercel: "vercel",
-} as const;
-export type ImportFlowGitProvider = ClosedEnum<typeof ImportFlowGitProvider>;
-
-export type GitNamespaceId = string | number;
-
-export type PreferredScopesAndGitNamespaces = {
-  scopeId: string;
-  gitNamespaceId: string | number | null;
-};
-
-export type Dismissals = {
-  scopeId: string;
-  createdAt: number;
-};
-
-/**
- * A record of when, under a certain scopeId, a toast was dismissed
- */
-export type DismissedToasts = {
-  name: string;
-  dismissals: Array<Dismissals>;
-};
-
-/**
- * A list of projects and spaces across teams that a user has marked as a favorite.
- */
-export type FavoriteProjectsAndSpaces = {
-  teamId: string;
-  projectId: string;
-};
-
-/**
- * remote caching settings
- */
-export type AuthUserRemoteCaching = {
-  enabled?: boolean | undefined;
-};
-
-/**
- * data cache settings
- */
-export type DataCache = {
-  excessBillingEnabled?: boolean | undefined;
-};
-
-export type WebAnalytics = {
-  blockedFrom?: number | undefined;
-  blockedUntil?: number | undefined;
-  isCurrentlyBlocked: boolean;
-};
-
-export const BlockReason = {
-  AdminOverride: "admin_override",
-  HardBlocked: "hard_blocked",
-  LimitsExceeded: "limits_exceeded",
-} as const;
-export type BlockReason = ClosedEnum<typeof BlockReason>;
-
-/**
- * Client-facing view of the `speedInsightsFree` ingestion block. The dashboard needs `blockReason` to tell usage pauses apart from admin blocks.
- */
-export type SpeedInsightsFree = {
-  blockedFrom?: number | undefined;
-  blockedUntil?: number | undefined;
-  blockReason: BlockReason;
-  isCurrentlyBlocked: boolean;
-};
-
-/**
- * Feature blocks for the user
- */
-export type FeatureBlocks = {
-  webAnalytics?: WebAnalytics | undefined;
-  /**
-   * Client-facing view of the `speedInsightsFree` ingestion block. The dashboard needs `blockReason` to tell usage pauses apart from admin blocks.
-   */
-  speedInsightsFree?: SpeedInsightsFree | undefined;
-};
-
-export type Organization = {
-  id: string;
-  name: string;
-  slug: string;
-};
-
-export type ManagedTeams = {
-  teamId: string;
-  slug: string;
-  name: string;
-  avatar: string | null;
-  workEmail: string;
-};
-
-/**
- * Context for the Update Account screen. Present only when `isAccountUpdateRequired` is true. `managedTeams` is empty for orphan mode (user matches an EMU domain but is not on the team).
- */
-export type AccountUpdateContext = {
-  /**
-   * Whether this user can cancel their optional Account Update flow.
-   */
-  canOptOut: boolean;
-  organization?: Organization | undefined;
-  managedTeams: Array<ManagedTeams>;
-  verifiedEmuDomains: Array<string>;
-};
-
-/**
  * Data for the currently authenticated User.
  */
 export type AuthUser = {
-  /**
-   * UNIX timestamp (in milliseconds) when the User account was created.
-   */
-  createdAt: number;
-  /**
-   * When the User account has been "soft blocked", this property will contain the date when the restriction was enacted, and the identifier for why.
-   */
-  softBlock: SoftBlock | null;
-  /**
-   * An object containing billing infomation associated with the User account.
-   */
-  billing: AuthUserBilling | null;
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
-  resourceConfig: AuthUserResourceConfig;
-  /**
-   * Prefix that will be used in the URL of "Preview" deployments created by the User account.
-   */
-  stagingPrefix: string;
-  /**
-   * set of dashboard view preferences (cards or list) per scopeId
-   */
-  activeDashboardViews?: Array<ActiveDashboardViews> | undefined;
-  importFlowGitNamespace?: string | number | null | undefined;
-  importFlowGitNamespaceId?: string | number | null | undefined;
-  importFlowGitProvider?: ImportFlowGitProvider | null | undefined;
-  preferredScopesAndGitNamespaces?:
-    | Array<PreferredScopesAndGitNamespaces>
-    | undefined;
-  /**
-   * A record of when, under a certain scopeId, a toast was dismissed
-   */
-  dismissedToasts?: Array<DismissedToasts> | undefined;
-  /**
-   * A list of projects and spaces across teams that a user has marked as a favorite.
-   */
-  favoriteProjectsAndSpaces?: Array<FavoriteProjectsAndSpaces> | undefined;
-  /**
-   * Whether the user has a trial available for a paid plan subscription.
-   */
-  hasTrialAvailable: boolean;
-  /**
-   * remote caching settings
-   */
-  remoteCaching?: AuthUserRemoteCaching | undefined;
-  /**
-   * data cache settings
-   */
-  dataCache?: DataCache | undefined;
-  /**
-   * Feature blocks for the user
-   */
-  featureBlocks?: FeatureBlocks | undefined;
-  /**
-   * When `true`, the user must complete the EMU Update Account flow before they can use the dashboard.
-   */
-  isAccountUpdateRequired?: boolean | undefined;
   /**
    * Context for the Update Account screen. Present only when `isAccountUpdateRequired` is true. `managedTeams` is empty for orphan mode (user matches an EMU domain but is not on the team).
    */
   accountUpdateContext?: AccountUpdateContext | undefined;
   /**
-   * The User's unique identifier.
+   * set of dashboard view preferences (cards or list) per scopeId
    */
-  id: string;
-  /**
-   * Email address associated with the User account.
-   */
-  email: string;
-  /**
-   * Name associated with the User account, or `null` if none has been provided.
-   */
-  name: string | null;
-  /**
-   * Unique username associated with the User account.
-   */
-  username: string;
+  activeDashboardViews?: Array<ActiveDashboardViews> | undefined;
   /**
    * SHA1 hash of the avatar for the User account. Can be used in conjuction with the ... endpoint to retrieve the avatar image.
    */
   avatar: string | null;
   /**
+   * An object containing billing infomation associated with the User account.
+   */
+  billing: AuthUserBilling | null;
+  /**
+   * UNIX timestamp (in milliseconds) when the User account was created.
+   */
+  createdAt: number;
+  /**
+   * data cache settings
+   */
+  dataCache?: DataCache | undefined;
+  /**
    * The user's default team.
    */
   defaultTeamId: string | null;
+  /**
+   * A record of when, under a certain scopeId, a toast was dismissed
+   */
+  dismissedToasts?: Array<DismissedToasts> | undefined;
+  /**
+   * Email address associated with the User account.
+   */
+  email: string;
+  /**
+   * A list of projects and spaces across teams that a user has marked as a favorite.
+   */
+  favoriteProjectsAndSpaces?: Array<FavoriteProjectsAndSpaces> | undefined;
+  /**
+   * Feature blocks for the user
+   */
+  featureBlocks?: FeatureBlocks | undefined;
+  /**
+   * Whether the user has a trial available for a paid plan subscription.
+   */
+  hasTrialAvailable: boolean;
+  /**
+   * The User's unique identifier.
+   */
+  id: string;
+  importFlowGitNamespace?: string | number | null | undefined;
+  importFlowGitNamespaceId?: string | number | null | undefined;
+  importFlowGitProvider?: ImportFlowGitProvider | null | undefined;
+  /**
+   * When `true`, the user must complete the EMU Update Account flow before they can use the dashboard.
+   */
+  isAccountUpdateRequired?: boolean | undefined;
   /**
    * Indicates whether the user is managed by an enterprise.
    */
   isEnterpriseManaged?: boolean | undefined;
   /**
+   * Name associated with the User account, or `null` if none has been provided.
+   */
+  name: string | null;
+  preferredScopesAndGitNamespaces?:
+    | Array<PreferredScopesAndGitNamespaces>
+    | undefined;
+  /**
+   * remote caching settings
+   */
+  remoteCaching?: AuthUserRemoteCaching | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  resourceConfig: AuthUserResourceConfig;
+  /**
    * Whether the Enterprise Managed User joined the current team through the Update Account flow and should see its welcome experience.
    */
   shouldShowEnterpriseManagedWelcome?: boolean | undefined;
+  /**
+   * When the User account has been "soft blocked", this property will contain the date when the restriction was enacted, and the identifier for why.
+   */
+  softBlock: SoftBlock | null;
+  /**
+   * Prefix that will be used in the URL of "Preview" deployments created by the User account.
+   */
+  stagingPrefix: string;
+  /**
+   * Unique username associated with the User account.
+   */
+  username: string;
 };
 
 /** @internal */
-export const Reason$inboundSchema: z.ZodNativeEnum<typeof Reason> = z
-  .nativeEnum(Reason);
-
-/** @internal */
-export const BlockedDueToOverageType$inboundSchema: z.ZodNativeEnum<
-  typeof BlockedDueToOverageType
-> = z.nativeEnum(BlockedDueToOverageType);
-
-/** @internal */
-export const SoftBlock$inboundSchema: z.ZodType<
-  SoftBlock,
+export const ManagedTeams$inboundSchema: z.ZodType<
+  ManagedTeams,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  blockedAt: types.number(),
-  reason: Reason$inboundSchema,
-  blockedDueToOverageType: types.optional(
-    BlockedDueToOverageType$inboundSchema,
-  ),
-  unpauseAt: types.optional(types.number()),
+  avatar: types.nullable(types.string()),
+  name: types.string(),
+  slug: types.string(),
+  teamId: types.string(),
+  workEmail: types.string(),
 });
 
-export function softBlockFromJSON(
+export function managedTeamsFromJSON(
   jsonString: string,
-): SafeParseResult<SoftBlock, SDKValidationError> {
+): SafeParseResult<ManagedTeams, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => SoftBlock$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SoftBlock' from JSON`,
+    (x) => ManagedTeams$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ManagedTeams' from JSON`,
+  );
+}
+
+/** @internal */
+export const Organization$inboundSchema: z.ZodType<
+  Organization,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: types.string(),
+  name: types.string(),
+  slug: types.string(),
+});
+
+export function organizationFromJSON(
+  jsonString: string,
+): SafeParseResult<Organization, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Organization$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Organization' from JSON`,
+  );
+}
+
+/** @internal */
+export const AccountUpdateContext$inboundSchema: z.ZodType<
+  AccountUpdateContext,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  canOptOut: types.boolean(),
+  managedTeams: z.array(z.lazy(() => ManagedTeams$inboundSchema)),
+  organization: types.optional(z.lazy(() => Organization$inboundSchema)),
+  verifiedEmuDomains: z.array(types.string()),
+});
+
+export function accountUpdateContextFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountUpdateContext, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountUpdateContext$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountUpdateContext' from JSON`,
+  );
+}
+
+/** @internal */
+export const FavoritesViewPreference$inboundSchema: z.ZodNativeEnum<
+  typeof FavoritesViewPreference
+> = z.nativeEnum(FavoritesViewPreference);
+
+/** @internal */
+export const RecentsViewPreference$inboundSchema: z.ZodNativeEnum<
+  typeof RecentsViewPreference
+> = z.nativeEnum(RecentsViewPreference);
+
+/** @internal */
+export const ViewPreference$inboundSchema: z.ZodNativeEnum<
+  typeof ViewPreference
+> = z.nativeEnum(ViewPreference);
+
+/** @internal */
+export const ActiveDashboardViews$inboundSchema: z.ZodType<
+  ActiveDashboardViews,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  favoritesViewPreference: z.nullable(FavoritesViewPreference$inboundSchema)
+    .optional(),
+  recentsViewPreference: z.nullable(RecentsViewPreference$inboundSchema)
+    .optional(),
+  scopeId: types.string(),
+  viewPreference: z.nullable(ViewPreference$inboundSchema).optional(),
+});
+
+export function activeDashboardViewsFromJSON(
+  jsonString: string,
+): SafeParseResult<ActiveDashboardViews, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ActiveDashboardViews$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ActiveDashboardViews' from JSON`,
   );
 }
 
@@ -554,153 +626,150 @@ export function authUserBillingFromJSON(
 }
 
 /** @internal */
-export const AuthUserBuildEntitlements$inboundSchema: z.ZodType<
-  AuthUserBuildEntitlements,
+export const DataCache$inboundSchema: z.ZodType<
+  DataCache,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  enhancedBuilds: types.optional(types.boolean()),
+  excessBillingEnabled: types.optional(types.boolean()),
 });
 
-export function authUserBuildEntitlementsFromJSON(
+export function dataCacheFromJSON(
   jsonString: string,
-): SafeParseResult<AuthUserBuildEntitlements, SDKValidationError> {
+): SafeParseResult<DataCache, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => AuthUserBuildEntitlements$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AuthUserBuildEntitlements' from JSON`,
+    (x) => DataCache$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DataCache' from JSON`,
   );
 }
 
 /** @internal */
-export const AuthUserConfiguration$inboundSchema: z.ZodNativeEnum<
-  typeof AuthUserConfiguration
-> = z.nativeEnum(AuthUserConfiguration);
-
-/** @internal */
-export const BuildQueue$inboundSchema: z.ZodType<
-  BuildQueue,
+export const Dismissals$inboundSchema: z.ZodType<
+  Dismissals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  configuration: types.optional(AuthUserConfiguration$inboundSchema),
-});
-
-export function buildQueueFromJSON(
-  jsonString: string,
-): SafeParseResult<BuildQueue, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => BuildQueue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BuildQueue' from JSON`,
-  );
-}
-
-/** @internal */
-export const AuthUserSecurity$inboundSchema: z.ZodType<
-  AuthUserSecurity,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  rateLimit: types.optional(types.number()),
-  customRules: types.optional(types.number()),
-  ipBlocks: types.optional(types.number()),
-  ipBypass: types.optional(types.number()),
-});
-
-export function authUserSecurityFromJSON(
-  jsonString: string,
-): SafeParseResult<AuthUserSecurity, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AuthUserSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AuthUserSecurity' from JSON`,
-  );
-}
-
-/** @internal */
-export const AuthUserResourceConfig$inboundSchema: z.ZodType<
-  AuthUserResourceConfig,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  concurrentBuilds: types.optional(types.number()),
-  nodeType: types.optional(types.string()),
-  elasticConcurrencyEnabled: types.optional(types.boolean()),
-  buildEntitlements: types.optional(
-    z.lazy(() => AuthUserBuildEntitlements$inboundSchema),
-  ),
-  buildQueue: types.optional(z.lazy(() => BuildQueue$inboundSchema)),
-  awsAccountType: types.optional(types.string()),
-  awsAccountIds: types.optional(z.array(types.string())),
-  cfZoneName: types.optional(types.string()),
-  imageOptimizationType: types.optional(types.string()),
-  edgeConfigs: types.optional(types.number()),
-  edgeConfigSize: types.optional(types.number()),
-  edgeFunctionMaxSizeBytes: types.optional(types.number()),
-  edgeFunctionExecutionTimeoutMs: types.optional(types.number()),
-  serverlessFunctionMaxDuration: types.optional(types.number()),
-  serverlessFunctionMaxMemorySize: types.optional(types.number()),
-  kvDatabases: types.optional(types.number()),
-  postgresDatabases: types.optional(types.number()),
-  blobStores: types.optional(types.number()),
-  integrationStores: types.optional(types.number()),
-  cronJobsPerProject: types.optional(types.number()),
-  microfrontendGroupsPerTeam: types.optional(types.number()),
-  microfrontendProjectsPerGroup: types.optional(types.number()),
-  flagsExplorerOverridesThreshold: types.optional(types.number()),
-  flagsExplorerUnlimitedOverrides: types.optional(types.boolean()),
-  customEnvironmentsPerProject: types.optional(types.number()),
-  security: types.optional(z.lazy(() => AuthUserSecurity$inboundSchema)),
-  bulkRedirectsFreeLimitOverride: types.optional(types.number()),
-});
-
-export function authUserResourceConfigFromJSON(
-  jsonString: string,
-): SafeParseResult<AuthUserResourceConfig, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AuthUserResourceConfig$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AuthUserResourceConfig' from JSON`,
-  );
-}
-
-/** @internal */
-export const ViewPreference$inboundSchema: z.ZodNativeEnum<
-  typeof ViewPreference
-> = z.nativeEnum(ViewPreference);
-
-/** @internal */
-export const FavoritesViewPreference$inboundSchema: z.ZodNativeEnum<
-  typeof FavoritesViewPreference
-> = z.nativeEnum(FavoritesViewPreference);
-
-/** @internal */
-export const RecentsViewPreference$inboundSchema: z.ZodNativeEnum<
-  typeof RecentsViewPreference
-> = z.nativeEnum(RecentsViewPreference);
-
-/** @internal */
-export const ActiveDashboardViews$inboundSchema: z.ZodType<
-  ActiveDashboardViews,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
+  createdAt: types.number(),
   scopeId: types.string(),
-  viewPreference: z.nullable(ViewPreference$inboundSchema).optional(),
-  favoritesViewPreference: z.nullable(FavoritesViewPreference$inboundSchema)
-    .optional(),
-  recentsViewPreference: z.nullable(RecentsViewPreference$inboundSchema)
-    .optional(),
 });
 
-export function activeDashboardViewsFromJSON(
+export function dismissalsFromJSON(
   jsonString: string,
-): SafeParseResult<ActiveDashboardViews, SDKValidationError> {
+): SafeParseResult<Dismissals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ActiveDashboardViews$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ActiveDashboardViews' from JSON`,
+    (x) => Dismissals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Dismissals' from JSON`,
+  );
+}
+
+/** @internal */
+export const DismissedToasts$inboundSchema: z.ZodType<
+  DismissedToasts,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  dismissals: z.array(z.lazy(() => Dismissals$inboundSchema)),
+  name: types.string(),
+});
+
+export function dismissedToastsFromJSON(
+  jsonString: string,
+): SafeParseResult<DismissedToasts, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DismissedToasts$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DismissedToasts' from JSON`,
+  );
+}
+
+/** @internal */
+export const FavoriteProjectsAndSpaces$inboundSchema: z.ZodType<
+  FavoriteProjectsAndSpaces,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  projectId: types.string(),
+  teamId: types.string(),
+});
+
+export function favoriteProjectsAndSpacesFromJSON(
+  jsonString: string,
+): SafeParseResult<FavoriteProjectsAndSpaces, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FavoriteProjectsAndSpaces$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FavoriteProjectsAndSpaces' from JSON`,
+  );
+}
+
+/** @internal */
+export const BlockReason$inboundSchema: z.ZodNativeEnum<typeof BlockReason> = z
+  .nativeEnum(BlockReason);
+
+/** @internal */
+export const SpeedInsightsFree$inboundSchema: z.ZodType<
+  SpeedInsightsFree,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  blockedFrom: types.optional(types.number()),
+  blockedUntil: types.optional(types.number()),
+  blockReason: BlockReason$inboundSchema,
+  isCurrentlyBlocked: types.boolean(),
+});
+
+export function speedInsightsFreeFromJSON(
+  jsonString: string,
+): SafeParseResult<SpeedInsightsFree, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SpeedInsightsFree$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SpeedInsightsFree' from JSON`,
+  );
+}
+
+/** @internal */
+export const WebAnalytics$inboundSchema: z.ZodType<
+  WebAnalytics,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  blockedFrom: types.optional(types.number()),
+  blockedUntil: types.optional(types.number()),
+  isCurrentlyBlocked: types.boolean(),
+});
+
+export function webAnalyticsFromJSON(
+  jsonString: string,
+): SafeParseResult<WebAnalytics, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WebAnalytics$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WebAnalytics' from JSON`,
+  );
+}
+
+/** @internal */
+export const FeatureBlocks$inboundSchema: z.ZodType<
+  FeatureBlocks,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  speedInsightsFree: types.optional(
+    z.lazy(() => SpeedInsightsFree$inboundSchema),
+  ),
+  webAnalytics: types.optional(z.lazy(() => WebAnalytics$inboundSchema)),
+});
+
+export function featureBlocksFromJSON(
+  jsonString: string,
+): SafeParseResult<FeatureBlocks, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FeatureBlocks$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FeatureBlocks' from JSON`,
   );
 }
 
@@ -766,8 +835,8 @@ export const PreferredScopesAndGitNamespaces$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  scopeId: types.string(),
   gitNamespaceId: types.nullable(smartUnion([types.string(), types.number()])),
+  scopeId: types.string(),
 });
 
 export function preferredScopesAndGitNamespacesFromJSON(
@@ -777,66 +846,6 @@ export function preferredScopesAndGitNamespacesFromJSON(
     jsonString,
     (x) => PreferredScopesAndGitNamespaces$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'PreferredScopesAndGitNamespaces' from JSON`,
-  );
-}
-
-/** @internal */
-export const Dismissals$inboundSchema: z.ZodType<
-  Dismissals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  scopeId: types.string(),
-  createdAt: types.number(),
-});
-
-export function dismissalsFromJSON(
-  jsonString: string,
-): SafeParseResult<Dismissals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Dismissals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Dismissals' from JSON`,
-  );
-}
-
-/** @internal */
-export const DismissedToasts$inboundSchema: z.ZodType<
-  DismissedToasts,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: types.string(),
-  dismissals: z.array(z.lazy(() => Dismissals$inboundSchema)),
-});
-
-export function dismissedToastsFromJSON(
-  jsonString: string,
-): SafeParseResult<DismissedToasts, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DismissedToasts$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DismissedToasts' from JSON`,
-  );
-}
-
-/** @internal */
-export const FavoriteProjectsAndSpaces$inboundSchema: z.ZodType<
-  FavoriteProjectsAndSpaces,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  teamId: types.string(),
-  projectId: types.string(),
-});
-
-export function favoriteProjectsAndSpacesFromJSON(
-  jsonString: string,
-): SafeParseResult<FavoriteProjectsAndSpaces, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => FavoriteProjectsAndSpaces$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'FavoriteProjectsAndSpaces' from JSON`,
   );
 }
 
@@ -860,156 +869,147 @@ export function authUserRemoteCachingFromJSON(
 }
 
 /** @internal */
-export const DataCache$inboundSchema: z.ZodType<
-  DataCache,
+export const AuthUserBuildEntitlements$inboundSchema: z.ZodType<
+  AuthUserBuildEntitlements,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  excessBillingEnabled: types.optional(types.boolean()),
+  enhancedBuilds: types.optional(types.boolean()),
 });
 
-export function dataCacheFromJSON(
+export function authUserBuildEntitlementsFromJSON(
   jsonString: string,
-): SafeParseResult<DataCache, SDKValidationError> {
+): SafeParseResult<AuthUserBuildEntitlements, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => DataCache$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DataCache' from JSON`,
+    (x) => AuthUserBuildEntitlements$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AuthUserBuildEntitlements' from JSON`,
   );
 }
 
 /** @internal */
-export const WebAnalytics$inboundSchema: z.ZodType<
-  WebAnalytics,
+export const AuthUserConfiguration$inboundSchema: z.ZodNativeEnum<
+  typeof AuthUserConfiguration
+> = z.nativeEnum(AuthUserConfiguration);
+
+/** @internal */
+export const BuildQueue$inboundSchema: z.ZodType<
+  BuildQueue,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  blockedFrom: types.optional(types.number()),
-  blockedUntil: types.optional(types.number()),
-  isCurrentlyBlocked: types.boolean(),
+  configuration: types.optional(AuthUserConfiguration$inboundSchema),
 });
 
-export function webAnalyticsFromJSON(
+export function buildQueueFromJSON(
   jsonString: string,
-): SafeParseResult<WebAnalytics, SDKValidationError> {
+): SafeParseResult<BuildQueue, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => WebAnalytics$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'WebAnalytics' from JSON`,
+    (x) => BuildQueue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BuildQueue' from JSON`,
   );
 }
 
 /** @internal */
-export const BlockReason$inboundSchema: z.ZodNativeEnum<typeof BlockReason> = z
-  .nativeEnum(BlockReason);
-
-/** @internal */
-export const SpeedInsightsFree$inboundSchema: z.ZodType<
-  SpeedInsightsFree,
+export const AuthUserSecurity$inboundSchema: z.ZodType<
+  AuthUserSecurity,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  blockedFrom: types.optional(types.number()),
-  blockedUntil: types.optional(types.number()),
-  blockReason: BlockReason$inboundSchema,
-  isCurrentlyBlocked: types.boolean(),
+  customRules: types.optional(types.number()),
+  ipBlocks: types.optional(types.number()),
+  ipBypass: types.optional(types.number()),
+  rateLimit: types.optional(types.number()),
 });
 
-export function speedInsightsFreeFromJSON(
+export function authUserSecurityFromJSON(
   jsonString: string,
-): SafeParseResult<SpeedInsightsFree, SDKValidationError> {
+): SafeParseResult<AuthUserSecurity, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => SpeedInsightsFree$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SpeedInsightsFree' from JSON`,
+    (x) => AuthUserSecurity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AuthUserSecurity' from JSON`,
   );
 }
 
 /** @internal */
-export const FeatureBlocks$inboundSchema: z.ZodType<
-  FeatureBlocks,
+export const AuthUserResourceConfig$inboundSchema: z.ZodType<
+  AuthUserResourceConfig,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  webAnalytics: types.optional(z.lazy(() => WebAnalytics$inboundSchema)),
-  speedInsightsFree: types.optional(
-    z.lazy(() => SpeedInsightsFree$inboundSchema),
+  awsAccountIds: types.optional(z.array(types.string())),
+  awsAccountType: types.optional(types.string()),
+  blobStores: types.optional(types.number()),
+  buildEntitlements: types.optional(
+    z.lazy(() => AuthUserBuildEntitlements$inboundSchema),
   ),
+  buildQueue: types.optional(z.lazy(() => BuildQueue$inboundSchema)),
+  bulkRedirectsFreeLimitOverride: types.optional(types.number()),
+  cfZoneName: types.optional(types.string()),
+  concurrentBuilds: types.optional(types.number()),
+  cronJobsPerProject: types.optional(types.number()),
+  customEnvironmentsPerProject: types.optional(types.number()),
+  edgeConfigs: types.optional(types.number()),
+  edgeConfigSize: types.optional(types.number()),
+  edgeFunctionExecutionTimeoutMs: types.optional(types.number()),
+  edgeFunctionMaxSizeBytes: types.optional(types.number()),
+  elasticConcurrencyEnabled: types.optional(types.boolean()),
+  flagsExplorerOverridesThreshold: types.optional(types.number()),
+  flagsExplorerUnlimitedOverrides: types.optional(types.boolean()),
+  imageOptimizationType: types.optional(types.string()),
+  integrationStores: types.optional(types.number()),
+  kvDatabases: types.optional(types.number()),
+  microfrontendGroupsPerTeam: types.optional(types.number()),
+  microfrontendProjectsPerGroup: types.optional(types.number()),
+  nodeType: types.optional(types.string()),
+  postgresDatabases: types.optional(types.number()),
+  security: types.optional(z.lazy(() => AuthUserSecurity$inboundSchema)),
+  serverlessFunctionMaxDuration: types.optional(types.number()),
+  serverlessFunctionMaxMemorySize: types.optional(types.number()),
 });
 
-export function featureBlocksFromJSON(
+export function authUserResourceConfigFromJSON(
   jsonString: string,
-): SafeParseResult<FeatureBlocks, SDKValidationError> {
+): SafeParseResult<AuthUserResourceConfig, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => FeatureBlocks$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'FeatureBlocks' from JSON`,
+    (x) => AuthUserResourceConfig$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AuthUserResourceConfig' from JSON`,
   );
 }
 
 /** @internal */
-export const Organization$inboundSchema: z.ZodType<
-  Organization,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: types.string(),
-  name: types.string(),
-  slug: types.string(),
-});
-
-export function organizationFromJSON(
-  jsonString: string,
-): SafeParseResult<Organization, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Organization$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Organization' from JSON`,
-  );
-}
+export const BlockedDueToOverageType$inboundSchema: z.ZodNativeEnum<
+  typeof BlockedDueToOverageType
+> = z.nativeEnum(BlockedDueToOverageType);
 
 /** @internal */
-export const ManagedTeams$inboundSchema: z.ZodType<
-  ManagedTeams,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  teamId: types.string(),
-  slug: types.string(),
-  name: types.string(),
-  avatar: types.nullable(types.string()),
-  workEmail: types.string(),
-});
-
-export function managedTeamsFromJSON(
-  jsonString: string,
-): SafeParseResult<ManagedTeams, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ManagedTeams$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ManagedTeams' from JSON`,
-  );
-}
+export const Reason$inboundSchema: z.ZodNativeEnum<typeof Reason> = z
+  .nativeEnum(Reason);
 
 /** @internal */
-export const AccountUpdateContext$inboundSchema: z.ZodType<
-  AccountUpdateContext,
+export const SoftBlock$inboundSchema: z.ZodType<
+  SoftBlock,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  canOptOut: types.boolean(),
-  organization: types.optional(z.lazy(() => Organization$inboundSchema)),
-  managedTeams: z.array(z.lazy(() => ManagedTeams$inboundSchema)),
-  verifiedEmuDomains: z.array(types.string()),
+  blockedAt: types.number(),
+  blockedDueToOverageType: types.optional(
+    BlockedDueToOverageType$inboundSchema,
+  ),
+  reason: Reason$inboundSchema,
+  unpauseAt: types.optional(types.number()),
 });
 
-export function accountUpdateContextFromJSON(
+export function softBlockFromJSON(
   jsonString: string,
-): SafeParseResult<AccountUpdateContext, SDKValidationError> {
+): SafeParseResult<SoftBlock, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => AccountUpdateContext$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AccountUpdateContext' from JSON`,
+    (x) => SoftBlock$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SoftBlock' from JSON`,
   );
 }
 
@@ -1019,14 +1019,27 @@ export const AuthUser$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  createdAt: types.number(),
-  softBlock: types.nullable(z.lazy(() => SoftBlock$inboundSchema)),
-  billing: types.nullable(z.lazy(() => AuthUserBilling$inboundSchema)),
-  resourceConfig: z.lazy(() => AuthUserResourceConfig$inboundSchema),
-  stagingPrefix: types.string(),
+  accountUpdateContext: types.optional(
+    z.lazy(() => AccountUpdateContext$inboundSchema),
+  ),
   activeDashboardViews: types.optional(
     z.array(z.lazy(() => ActiveDashboardViews$inboundSchema)),
   ),
+  avatar: types.nullable(types.string()),
+  billing: types.nullable(z.lazy(() => AuthUserBilling$inboundSchema)),
+  createdAt: types.number(),
+  dataCache: types.optional(z.lazy(() => DataCache$inboundSchema)),
+  defaultTeamId: types.nullable(types.string()),
+  dismissedToasts: types.optional(
+    z.array(z.lazy(() => DismissedToasts$inboundSchema)),
+  ),
+  email: types.string(),
+  favoriteProjectsAndSpaces: types.optional(
+    z.array(z.lazy(() => FavoriteProjectsAndSpaces$inboundSchema)),
+  ),
+  featureBlocks: types.optional(z.lazy(() => FeatureBlocks$inboundSchema)),
+  hasTrialAvailable: types.boolean(),
+  id: types.string(),
   importFlowGitNamespace: z.nullable(
     smartUnion([types.string(), types.number()]),
   ).optional(),
@@ -1035,33 +1048,20 @@ export const AuthUser$inboundSchema: z.ZodType<
   ).optional(),
   importFlowGitProvider: z.nullable(ImportFlowGitProvider$inboundSchema)
     .optional(),
+  isAccountUpdateRequired: types.optional(types.boolean()),
+  isEnterpriseManaged: types.optional(types.boolean()),
+  name: types.nullable(types.string()),
   preferredScopesAndGitNamespaces: types.optional(
     z.array(z.lazy(() => PreferredScopesAndGitNamespaces$inboundSchema)),
   ),
-  dismissedToasts: types.optional(
-    z.array(z.lazy(() => DismissedToasts$inboundSchema)),
-  ),
-  favoriteProjectsAndSpaces: types.optional(
-    z.array(z.lazy(() => FavoriteProjectsAndSpaces$inboundSchema)),
-  ),
-  hasTrialAvailable: types.boolean(),
   remoteCaching: types.optional(
     z.lazy(() => AuthUserRemoteCaching$inboundSchema),
   ),
-  dataCache: types.optional(z.lazy(() => DataCache$inboundSchema)),
-  featureBlocks: types.optional(z.lazy(() => FeatureBlocks$inboundSchema)),
-  isAccountUpdateRequired: types.optional(types.boolean()),
-  accountUpdateContext: types.optional(
-    z.lazy(() => AccountUpdateContext$inboundSchema),
-  ),
-  id: types.string(),
-  email: types.string(),
-  name: types.nullable(types.string()),
-  username: types.string(),
-  avatar: types.nullable(types.string()),
-  defaultTeamId: types.nullable(types.string()),
-  isEnterpriseManaged: types.optional(types.boolean()),
+  resourceConfig: z.lazy(() => AuthUserResourceConfig$inboundSchema),
   shouldShowEnterpriseManagedWelcome: types.optional(types.boolean()),
+  softBlock: types.nullable(z.lazy(() => SoftBlock$inboundSchema)),
+  stagingPrefix: types.string(),
+  username: types.string(),
 });
 
 export function authUserFromJSON(

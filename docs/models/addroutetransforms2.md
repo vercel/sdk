@@ -6,9 +6,9 @@
 import { AddRouteTransforms2 } from "@vercel/sdk/models/addrouteop.js";
 
 let value: AddRouteTransforms2 = {
-  type: "request.path",
-  op: "set",
   args: "<value>",
+  op: "set",
+  type: "request.path",
 };
 ```
 
@@ -16,7 +16,7 @@ let value: AddRouteTransforms2 = {
 
 | Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
 | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `type`                                                                                     | *"request.path"*                                                                           | :heavy_check_mark:                                                                         | N/A                                                                                        |
-| `op`                                                                                       | [models.AddRouteTransformsProjectRoutesOp](../models/addroutetransformsprojectroutesop.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
 | `args`                                                                                     | *string*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
 | `env`                                                                                      | *string*[]                                                                                 | :heavy_minus_sign:                                                                         | N/A                                                                                        |
+| `op`                                                                                       | [models.AddRouteTransformsProjectRoutesOp](../models/addroutetransformsprojectroutesop.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `type`                                                                                     | *"request.path"*                                                                           | :heavy_check_mark:                                                                         | N/A                                                                                        |

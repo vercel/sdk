@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { Periods } from "@vercel/sdk/models/usereventpayload171gituserid.js";
+import { Periods } from "@vercel/sdk/models/usereventpayload171newownerfeatureblocksworkflowstoragewriteblockreason.js";
 
 let value: Periods = {
-  periodNumber: 4098.45,
-  percent: "<value>",
-  startDate: "<value>",
   endDate: "<value>",
+  percent: "<value>",
+  periodNumber: 4098.45,
+  startDate: "<value>",
 };
 ```
 
@@ -17,7 +17,7 @@ let value: Periods = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `periodNumber`     | *number*           | :heavy_check_mark: | N/A                |
-| `percent`          | *string*           | :heavy_check_mark: | N/A                |
-| `startDate`        | *string*           | :heavy_check_mark: | N/A                |
 | `endDate`          | *string*           | :heavy_check_mark: | N/A                |
+| `percent`          | *string*           | :heavy_check_mark: | N/A                |
+| `periodNumber`     | *number*           | :heavy_check_mark: | N/A                |
+| `startDate`        | *string*           | :heavy_check_mark: | N/A                |

@@ -8,8 +8,8 @@ Allowlist entry for GitHub and Bitbucket, whose repos are identified by a flat `
 import { Sources1 } from "@vercel/sdk/models/team.js";
 
 let value: Sources1 = {
-  provider: "github",
   org: "<value>",
+  provider: "github",
 };
 ```
 
@@ -17,6 +17,6 @@ let value: Sources1 = {
 
 | Field                                                  | Type                                                   | Required                                               | Description                                            |
 | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `provider`                                             | [models.SourcesProvider](../models/sourcesprovider.md) | :heavy_check_mark:                                     | N/A                                                    |
 | `org`                                                  | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
+| `provider`                                             | [models.SourcesProvider](../models/sourcesprovider.md) | :heavy_check_mark:                                     | N/A                                                    |
 | `repo`                                                 | *string*                                               | :heavy_minus_sign:                                     | N/A                                                    |

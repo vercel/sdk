@@ -18,9 +18,9 @@ const value: models.Via1 = {
 
 ```typescript
 const value: models.Via2 = {
-  type: "app",
   clientId: "<id>",
   name: "<value>",
+  type: "app",
 };
 ```
 
@@ -28,9 +28,9 @@ const value: models.Via2 = {
 
 ```typescript
 const value: models.Via3 = {
-  type: "external",
   id: "<id>",
   name: "<value>",
+  type: "external",
 };
 ```
 

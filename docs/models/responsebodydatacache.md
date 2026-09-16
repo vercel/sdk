@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyDataCache } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson3action.js";
+import { ResponseBodyDataCache } from "@vercel/sdk/models/getprojectsresponsebodyprojectsconsolidatedgitcommitstatus.js";
 
 let value: ResponseBodyDataCache = {
   userDisabled: true,
@@ -14,6 +14,6 @@ let value: ResponseBodyDataCache = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `userDisabled`     | *boolean*          | :heavy_check_mark: | N/A                |
 | `storageSizeBytes` | *number*           | :heavy_minus_sign: | N/A                |
 | `unlimited`        | *boolean*          | :heavy_minus_sign: | N/A                |
+| `userDisabled`     | *boolean*          | :heavy_check_mark: | N/A                |

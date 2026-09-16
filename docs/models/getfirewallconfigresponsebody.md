@@ -8,15 +8,17 @@ If the firewall configuration includes a [custom managed ruleset](https://vercel
 import { GetFirewallConfigResponseBody } from "@vercel/sdk/models/getfirewallconfigop.js";
 
 let value: GetFirewallConfigResponseBody = {
+  changes: [
+    {},
+  ],
+  firewallEnabled: false,
+  id: "<id>",
+  ips: [],
   ownerId: "<id>",
   projectKey: "<value>",
-  id: "<id>",
-  version: 5092.12,
-  updatedAt: "1735667145927",
-  firewallEnabled: true,
   rules: [],
-  ips: [],
-  changes: [],
+  updatedAt: "1735609805038",
+  version: 1545.28,
 };
 ```
 
@@ -24,18 +26,18 @@ let value: GetFirewallConfigResponseBody = {
 
 | Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
 | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `botIdEnabled`                                                                     | *boolean*                                                                          | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `changes`                                                                          | [models.Changes](../models/changes.md)[]                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `conditions`                                                                       | [models.GetFirewallConfigConditions](../models/getfirewallconfigconditions.md)[]   | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `crs`                                                                              | [models.GetFirewallConfigCrs](../models/getfirewallconfigcrs.md)                   | :heavy_minus_sign:                                                                 | Custom Ruleset                                                                     |
+| `firewallEnabled`                                                                  | *boolean*                                                                          | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `id`                                                                               | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `ips`                                                                              | [models.GetFirewallConfigIps](../models/getfirewallconfigips.md)[]                 | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `logHeaders`                                                                       | *models.GetFirewallConfigLogHeaders*                                               | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `managedRules`                                                                     | [models.GetFirewallConfigManagedRules](../models/getfirewallconfigmanagedrules.md) | :heavy_minus_sign:                                                                 | N/A                                                                                |
 | `ownerId`                                                                          | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
 | `projectKey`                                                                       | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `id`                                                                               | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `version`                                                                          | *number*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `updatedAt`                                                                        | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `firewallEnabled`                                                                  | *boolean*                                                                          | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `crs`                                                                              | [models.GetFirewallConfigCrs](../models/getfirewallconfigcrs.md)                   | :heavy_minus_sign:                                                                 | Custom Ruleset                                                                     |
 | `rules`                                                                            | *models.GetFirewallConfigRules*[]                                                  | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `ips`                                                                              | [models.GetFirewallConfigIps](../models/getfirewallconfigips.md)[]                 | :heavy_check_mark:                                                                 | N/A                                                                                |
 | `rulesets`                                                                         | *models.GetFirewallConfigRulesets*                                                 | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `conditions`                                                                       | [models.GetFirewallConfigConditions](../models/getfirewallconfigconditions.md)[]   | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `changes`                                                                          | [models.Changes](../models/changes.md)[]                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `managedRules`                                                                     | [models.GetFirewallConfigManagedRules](../models/getfirewallconfigmanagedrules.md) | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `botIdEnabled`                                                                     | *boolean*                                                                          | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `logHeaders`                                                                       | *models.GetFirewallConfigLogHeaders*                                               | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `updatedAt`                                                                        | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `version`                                                                          | *number*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |

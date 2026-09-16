@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectTier } from "@vercel/sdk/models/getprojectinternalroutesmitigate.js";
+import { GetProjectTier } from "@vercel/sdk/models/getprojectfrompreset.js";
 
 let value: GetProjectTier = "critical";
 ```

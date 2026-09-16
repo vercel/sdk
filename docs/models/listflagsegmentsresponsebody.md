@@ -8,15 +8,15 @@ import { ListFlagSegmentsResponseBody } from "@vercel/sdk/models/listflagsegment
 let value: ListFlagSegmentsResponseBody = {
   data: [
     {
+      createdAt: 9292,
       data: {},
+      hint: "<value>",
       id: "<id>",
       label: "<value>",
-      slug: "<value>",
-      createdAt: 9292,
-      updatedAt: 5843.52,
       projectId: "<id>",
+      slug: "<value>",
       typeName: "segment",
-      hint: "<value>",
+      updatedAt: 5843.52,
     },
   ],
 };

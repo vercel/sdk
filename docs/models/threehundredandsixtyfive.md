@@ -5,11 +5,11 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSixtyFive } from "@vercel/sdk/models/threehundredandfortytwo.js";
+import { ThreeHundredAndSixtyFive } from "@vercel/sdk/models/payloadmostspecificsubdivision.js";
 
 let value: ThreeHundredAndSixtyFive = {
-  environment: "preview",
-  enabled: "on",
+  next: {},
+  previous: {},
 };
 ```
 
@@ -17,5 +17,5 @@ let value: ThreeHundredAndSixtyFive = {
 
 | Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
 | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `environment`                                                                  | [models.UserEventPayloadEnvironment](../models/usereventpayloadenvironment.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `enabled`                                                                      | [models.Enabled](../models/enabled.md)                                         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `next`                                                                         | [models.UserEventPayload365Next](../models/usereventpayload365next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload365Previous](../models/usereventpayload365previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |

@@ -40,37 +40,37 @@ export type VcrImageListItemStatus = ClosedEnum<typeof VcrImageListItemStatus>;
  */
 export type VcrImageListItem = {
   /**
-   * Tags pointing at this image's manifest.
+   * CPU architecture the manifest targets. Only present for single-platform manifests.
    */
-  tags: Array<string>;
+  arch?: string | undefined;
+  /**
+   * ISO 8601 timestamp of when the image was created.
+   */
+  createdAt: string;
   /**
    * Internal identifier of the image.
    */
   id: string;
   /**
-   * Identifier of the repository the image belongs to.
+   * Whether the manifest is a multi-platform image index, a single-platform image manifest or an attestation.
    */
-  repositoryId: string;
+  kind: VcrImageListItemKind;
   /**
    * SHA-256 digest of the image manifest.
    */
   manifestDigest: string;
   /**
-   * Whether the manifest is a multi-platform image index, a single-platform image manifest or an attestation.
-   */
-  kind: VcrImageListItemKind;
-  /**
    * Operating system the manifest targets. Only present for single-platform manifests.
    */
   platform?: string | undefined;
   /**
-   * CPU architecture the manifest targets. Only present for single-platform manifests.
-   */
-  arch?: string | undefined;
-  /**
    * Identifier of the actor that pushed the image.
    */
   pushedBy?: string | undefined;
+  /**
+   * Identifier of the repository the image belongs to.
+   */
+  repositoryId: string;
   /**
    * Total size in bytes of the image's resources (manifest, config and layer blobs) stored by the registry.
    */
@@ -80,9 +80,9 @@ export type VcrImageListItem = {
    */
   status: VcrImageListItemStatus | null;
   /**
-   * ISO 8601 timestamp of when the image was created.
+   * Tags pointing at this image's manifest.
    */
-  createdAt: string;
+  tags: Array<string>;
 };
 
 /** @internal */
@@ -101,17 +101,17 @@ export const VcrImageListItem$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  tags: z.array(types.string()),
-  id: types.string(),
-  repositoryId: types.string(),
-  manifestDigest: types.string(),
-  kind: VcrImageListItemKind$inboundSchema,
-  platform: types.optional(types.string()),
   arch: types.optional(types.string()),
+  createdAt: types.string(),
+  id: types.string(),
+  kind: VcrImageListItemKind$inboundSchema,
+  manifestDigest: types.string(),
+  platform: types.optional(types.string()),
   pushedBy: types.optional(types.string()),
+  repositoryId: types.string(),
   sizeInBytes: types.number(),
   status: types.nullable(VcrImageListItemStatus$inboundSchema),
-  createdAt: types.string(),
+  tags: z.array(types.string()),
 });
 
 export function vcrImageListItemFromJSON(

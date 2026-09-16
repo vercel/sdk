@@ -30,19 +30,6 @@ export type DeleteSharedEnvVariableRequest = {
   requestBody?: DeleteSharedEnvVariableRequestBody | undefined;
 };
 
-export const DeleteSharedEnvVariableValue2 = {
-  Development: "development",
-  Preview: "preview",
-  Production: "production",
-} as const;
-export type DeleteSharedEnvVariableValue2 = ClosedEnum<
-  typeof DeleteSharedEnvVariableValue2
->;
-
-export type DeleteSharedEnvVariableValue =
-  | string
-  | Array<DeleteSharedEnvVariableValue2>;
-
 export const DeleteSharedEnvVariableTarget2 = {
   Development: "development",
   Preview: "preview",
@@ -65,21 +52,34 @@ export type DeleteSharedEnvVariableTarget =
   | Array<DeleteSharedEnvVariableTarget1>
   | DeleteSharedEnvVariableTarget2;
 
+export const DeleteSharedEnvVariableValue2 = {
+  Development: "development",
+  Preview: "preview",
+  Production: "production",
+} as const;
+export type DeleteSharedEnvVariableValue2 = ClosedEnum<
+  typeof DeleteSharedEnvVariableValue2
+>;
+
+export type DeleteSharedEnvVariableValue =
+  | string
+  | Array<DeleteSharedEnvVariableValue2>;
+
 export type DeleteSharedEnvVariableError = {
+  action?: string | undefined;
   code: string;
-  message: string;
-  key?: string | undefined;
   envVarId?: string | undefined;
   envVarKey?: string | undefined;
-  action?: string | undefined;
-  link?: string | undefined;
-  value?: string | Array<DeleteSharedEnvVariableValue2> | undefined;
   gitBranch?: string | undefined;
+  key?: string | undefined;
+  link?: string | undefined;
+  message: string;
+  project?: string | undefined;
   target?:
     | Array<DeleteSharedEnvVariableTarget1>
     | DeleteSharedEnvVariableTarget2
     | undefined;
-  project?: string | undefined;
+  value?: string | Array<DeleteSharedEnvVariableValue2> | undefined;
 };
 
 export type DeleteSharedEnvVariableFailed = {
@@ -149,31 +149,6 @@ export function deleteSharedEnvVariableRequestToJSON(
 }
 
 /** @internal */
-export const DeleteSharedEnvVariableValue2$inboundSchema: z.ZodNativeEnum<
-  typeof DeleteSharedEnvVariableValue2
-> = z.nativeEnum(DeleteSharedEnvVariableValue2);
-
-/** @internal */
-export const DeleteSharedEnvVariableValue$inboundSchema: z.ZodType<
-  DeleteSharedEnvVariableValue,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  types.string(),
-  z.array(DeleteSharedEnvVariableValue2$inboundSchema),
-]);
-
-export function deleteSharedEnvVariableValueFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteSharedEnvVariableValue, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteSharedEnvVariableValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteSharedEnvVariableValue' from JSON`,
-  );
-}
-
-/** @internal */
 export const DeleteSharedEnvVariableTarget2$inboundSchema: z.ZodNativeEnum<
   typeof DeleteSharedEnvVariableTarget2
 > = z.nativeEnum(DeleteSharedEnvVariableTarget2);
@@ -204,32 +179,57 @@ export function deleteSharedEnvVariableTargetFromJSON(
 }
 
 /** @internal */
+export const DeleteSharedEnvVariableValue2$inboundSchema: z.ZodNativeEnum<
+  typeof DeleteSharedEnvVariableValue2
+> = z.nativeEnum(DeleteSharedEnvVariableValue2);
+
+/** @internal */
+export const DeleteSharedEnvVariableValue$inboundSchema: z.ZodType<
+  DeleteSharedEnvVariableValue,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  types.string(),
+  z.array(DeleteSharedEnvVariableValue2$inboundSchema),
+]);
+
+export function deleteSharedEnvVariableValueFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteSharedEnvVariableValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteSharedEnvVariableValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteSharedEnvVariableValue' from JSON`,
+  );
+}
+
+/** @internal */
 export const DeleteSharedEnvVariableError$inboundSchema: z.ZodType<
   DeleteSharedEnvVariableError,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  action: types.optional(types.string()),
   code: types.string(),
-  message: types.string(),
-  key: types.optional(types.string()),
   envVarId: types.optional(types.string()),
   envVarKey: types.optional(types.string()),
-  action: types.optional(types.string()),
-  link: types.optional(types.string()),
-  value: types.optional(
-    smartUnion([
-      types.string(),
-      z.array(DeleteSharedEnvVariableValue2$inboundSchema),
-    ]),
-  ),
   gitBranch: types.optional(types.string()),
+  key: types.optional(types.string()),
+  link: types.optional(types.string()),
+  message: types.string(),
+  project: types.optional(types.string()),
   target: types.optional(
     smartUnion([
       z.array(DeleteSharedEnvVariableTarget1$inboundSchema),
       DeleteSharedEnvVariableTarget2$inboundSchema,
     ]),
   ),
-  project: types.optional(types.string()),
+  value: types.optional(
+    smartUnion([
+      types.string(),
+      z.array(DeleteSharedEnvVariableValue2$inboundSchema),
+    ]),
+  ),
 });
 
 export function deleteSharedEnvVariableErrorFromJSON(

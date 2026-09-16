@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyRedirect } from "@vercel/sdk/models/responsebodydeploymentexpiration.js";
+import { GetProjectsResponseBodyRedirect } from "@vercel/sdk/models/responsebodyabuse.js";
 
 let value: GetProjectsResponseBodyRedirect = {
   location: "<value>",

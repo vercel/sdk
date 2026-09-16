@@ -3,15 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarTrustedIps1 } from "@vercel/sdk/models/uploadprojectavatarinternalroutes1.js";
+import { UploadProjectAvatarTrustedIps1 } from "@vercel/sdk/models/uploadprojectavatarfrom.js";
 
 let value: UploadProjectAvatarTrustedIps1 = {
-  deploymentType: "all",
-  addresses: [
-    {
-      value: "<value>",
-    },
-  ],
+  addresses: [],
+  deploymentType: "production",
   protectionMode: "additional",
 };
 ```
@@ -20,6 +16,6 @@ let value: UploadProjectAvatarTrustedIps1 = {
 
 | Field                                                                                                          | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
 | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `deploymentType`                                                                                               | [models.UploadProjectAvatarTrustedIpsDeploymentType](../models/uploadprojectavatartrustedipsdeploymenttype.md) | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
 | `addresses`                                                                                                    | [models.UploadProjectAvatarTrustedIpsAddresses](../models/uploadprojectavatartrustedipsaddresses.md)[]         | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
+| `deploymentType`                                                                                               | [models.UploadProjectAvatarTrustedIpsDeploymentType](../models/uploadprojectavatartrustedipsdeploymenttype.md) | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
 | `protectionMode`                                                                                               | [models.UploadProjectAvatarTrustedIpsProtectionMode](../models/uploadprojectavatartrustedipsprotectionmode.md) | :heavy_check_mark:                                                                                             | N/A                                                                                                            |

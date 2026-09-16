@@ -9,7 +9,7 @@ import { smartUnion } from "../types/smartUnion.js";
 import {
   GetDeploymentResponseBody3,
   GetDeploymentResponseBody3$inboundSchema,
-} from "./getdeploymentgitsourcedeploymentsresponse200type.js";
+} from "./getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody215type.js";
 import {
   GetDeploymentResponseBody1,
   GetDeploymentResponseBody1$inboundSchema,

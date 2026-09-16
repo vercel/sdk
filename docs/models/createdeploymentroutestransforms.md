@@ -7,11 +7,11 @@
 
 ```typescript
 const value: models.CreateDeploymentTransforms1 = {
-  type: "request.query",
-  op: "set",
+  op: "delete",
   target: {
-    key: "<key>",
+    key: {},
   },
+  type: "request.headers",
 };
 ```
 
@@ -19,11 +19,11 @@ const value: models.CreateDeploymentTransforms1 = {
 
 ```typescript
 const value: models.CreateDeploymentTransforms1 = {
-  type: "request.query",
-  op: "set",
+  op: "delete",
   target: {
-    key: "<key>",
+    key: {},
   },
+  type: "request.headers",
 };
 ```
 
@@ -31,11 +31,11 @@ const value: models.CreateDeploymentTransforms1 = {
 
 ```typescript
 const value: models.CreateDeploymentTransforms1 = {
-  type: "request.query",
-  op: "set",
+  op: "delete",
   target: {
-    key: "<key>",
+    key: {},
   },
+  type: "request.headers",
 };
 ```
 
@@ -43,9 +43,9 @@ const value: models.CreateDeploymentTransforms1 = {
 
 ```typescript
 const value: models.CreateDeploymentTransforms2 = {
-  type: "request.path",
-  op: "set",
   args: "<value>",
+  op: "set",
+  type: "request.path",
 };
 ```
 

@@ -3,14 +3,14 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsCreator3 } from "@vercel/sdk/models/responsebodydeploymentexpiration.js";
+import { GetProjectsCreator3 } from "@vercel/sdk/models/getprojectslogheaders2.js";
 
 let value: GetProjectsCreator3 = {
-  type: "integration",
   integration: {
-    integrationId: "<id>",
     configurationId: "<id>",
+    integrationId: "<id>",
   },
+  type: "integration",
 };
 ```
 
@@ -18,5 +18,5 @@ let value: GetProjectsCreator3 = {
 
 | Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
 | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `type`                                                                             | *"integration"*                                                                    | :heavy_check_mark:                                                                 | N/A                                                                                |
 | `integration`                                                                      | [models.GetProjectsCreatorIntegration](../models/getprojectscreatorintegration.md) | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `type`                                                                             | *"integration"*                                                                    | :heavy_check_mark:                                                                 | N/A                                                                                |

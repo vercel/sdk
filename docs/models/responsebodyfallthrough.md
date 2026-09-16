@@ -16,16 +16,16 @@ const value: models.UpdateFlagFallthroughFeatureFlags1 = {
 
 ```typescript
 const value: models.UpdateFlagFallthroughFeatureFlags2 = {
-  type: "split",
   base: {
-    type: "entity",
-    kind: "<value>",
     attribute: "<value>",
+    kind: "<value>",
+    type: "entity",
   },
+  defaultVariantId: "<id>",
+  type: "split",
   weights: {
     "key": 1178.49,
   },
-  defaultVariantId: "<id>",
 };
 ```
 
@@ -33,17 +33,22 @@ const value: models.UpdateFlagFallthroughFeatureFlags2 = {
 
 ```typescript
 const value: models.UpdateFlagFallthroughFeatureFlags3 = {
-  type: "rollout",
   base: {
-    type: "entity",
-    kind: "<value>",
     attribute: "<value>",
+    kind: "<value>",
+    type: "entity",
   },
   defaultVariantId: "<id>",
-  startTimestamp: 7807.09,
   rollFromVariantId: "<id>",
   rollToVariantId: "<id>",
-  slots: [],
+  slots: [
+    {
+      durationMs: 2920.38,
+      promille: 2566.4,
+    },
+  ],
+  startTimestamp: 4638.07,
+  type: "rollout",
 };
 ```
 

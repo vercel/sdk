@@ -6,19 +6,19 @@
 import { UpdateProjectManagedRules } from "@vercel/sdk/models/updateprojectresponsebody.js";
 
 let value: UpdateProjectManagedRules = {
-  vercelRuleset: {
+  aiBots: {
     active: true,
-  },
-  trafficSources: {
-    active: false,
   },
   botFilter: {
     active: false,
   },
-  aiBots: {
+  owasp: {
+    active: false,
+  },
+  trafficSources: {
     active: true,
   },
-  owasp: {
+  vercelRuleset: {
     active: false,
   },
 };
@@ -28,8 +28,8 @@ let value: UpdateProjectManagedRules = {
 
 | Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
 | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `vercelRuleset`                                                                | [models.UpdateProjectVercelRuleset](../models/updateprojectvercelruleset.md)   | :heavy_check_mark:                                                             | N/A                                                                            |
-| `trafficSources`                                                               | [models.UpdateProjectTrafficSources](../models/updateprojecttrafficsources.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `botFilter`                                                                    | [models.UpdateProjectBotFilter](../models/updateprojectbotfilter.md)           | :heavy_check_mark:                                                             | N/A                                                                            |
 | `aiBots`                                                                       | [models.UpdateProjectAiBots](../models/updateprojectaibots.md)                 | :heavy_check_mark:                                                             | N/A                                                                            |
+| `botFilter`                                                                    | [models.UpdateProjectBotFilter](../models/updateprojectbotfilter.md)           | :heavy_check_mark:                                                             | N/A                                                                            |
 | `owasp`                                                                        | [models.UpdateProjectOwasp](../models/updateprojectowasp.md)                   | :heavy_check_mark:                                                             | N/A                                                                            |
+| `trafficSources`                                                               | [models.UpdateProjectTrafficSources](../models/updateprojecttrafficsources.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `vercelRuleset`                                                                | [models.UpdateProjectVercelRuleset](../models/updateprojectvercelruleset.md)   | :heavy_check_mark:                                                             | N/A                                                                            |

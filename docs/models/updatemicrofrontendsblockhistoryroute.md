@@ -18,8 +18,8 @@ const value: models.UpdateMicrofrontendsRoute1 = {
 const value: models.UpdateMicrofrontendsRoute2 = {
   has: [
     {
-      type: "header",
       key: "x-vercel-ip-country",
+      type: "header",
       value: {
         eq: "<value>",
       },

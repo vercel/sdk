@@ -8,14 +8,14 @@ CI sentinel — check run `source` only (no parent check).
 import { CreateDeploymentCheckRunSourceChecksV22 } from "@vercel/sdk/models/createdeploymentcheckrunop.js";
 
 let value: CreateDeploymentCheckRunSourceChecksV22 = {
-  subKind: "vercel-ci-sentinel",
   origin: "platform",
+  subKind: "vercel-ci-sentinel",
 };
 ```
 
 ## Fields
 
-| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `subKind`                                                                                        | *"vercel-ci-sentinel"*                                                                           | :heavy_check_mark:                                                                               | N/A                                                                                              |
-| `origin`                                                                                         | [models.CreateDeploymentCheckRunSourceOrigin](../models/createdeploymentcheckrunsourceorigin.md) | :heavy_check_mark:                                                                               | N/A                                                                                              |
+| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `origin`                                                                                           | *"platform"*                                                                                       | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `subKind`                                                                                          | [models.CreateDeploymentCheckRunSourceSubKind](../models/createdeploymentcheckrunsourcesubkind.md) | :heavy_check_mark:                                                                                 | N/A                                                                                                |

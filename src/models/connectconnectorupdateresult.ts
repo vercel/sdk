@@ -29,13 +29,13 @@ export type ConnectConnectorUpdateResult = {
    */
   connector: ConnectConnector;
   /**
-   * When true, prompt a team owner or administrator to reinstall the connector before relying on the change.
-   */
-  reinstallNeeded?: boolean | undefined;
-  /**
    * Existing authorizations no longer cover the connector's configured scopes, so they must be re-authorized.
    */
   reconsentNeeded?: ConnectReconsent | undefined;
+  /**
+   * When true, prompt a team owner or administrator to reinstall the connector before relying on the change.
+   */
+  reinstallNeeded?: boolean | undefined;
   /**
    * Provider-side configuration synchronization result.
    */
@@ -49,8 +49,8 @@ export const ConnectConnectorUpdateResult$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   connector: ConnectConnector$inboundSchema,
-  reinstallNeeded: types.optional(types.boolean()),
   reconsentNeeded: types.optional(ConnectReconsent$inboundSchema),
+  reinstallNeeded: types.optional(types.boolean()),
   serviceSync: types.optional(ConnectServiceSync$inboundSchema),
 });
 

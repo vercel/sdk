@@ -1,5 +1,7 @@
 # GetTeamMembersTeamsRole
 
+Role of this user in the team.
+
 ## Example Usage
 
 ```typescript

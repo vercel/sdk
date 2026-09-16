@@ -6,8 +6,8 @@
 import { OutcomeSlots } from "@vercel/sdk/models/flag.js";
 
 let value: OutcomeSlots = {
-  promille: 1866.39,
-  durationMs: 1172.58,
+  durationMs: 1866.39,
+  promille: 1172.58,
 };
 ```
 
@@ -15,5 +15,5 @@ let value: OutcomeSlots = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `promille`         | *number*           | :heavy_check_mark: | N/A                |
 | `durationMs`       | *number*           | :heavy_check_mark: | N/A                |
+| `promille`         | *number*           | :heavy_check_mark: | N/A                |

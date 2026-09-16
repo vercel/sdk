@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { Trial } from "@vercel/sdk/models/threehundredandfortytwo.js";
+import { Trial } from "@vercel/sdk/models/payloadmostspecificsubdivision.js";
 
 let value: Trial = {
-  start: 9288.8,
-  end: 8439.53,
+  end: 9288.8,
+  start: 8439.53,
 };
 ```
 
@@ -15,5 +15,5 @@ let value: Trial = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `start`            | *number*           | :heavy_check_mark: | N/A                |
 | `end`              | *number*           | :heavy_check_mark: | N/A                |
+| `start`            | *number*           | :heavy_check_mark: | N/A                |

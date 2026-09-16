@@ -1,17 +1,15 @@
 # GetMicrofrontendsInGroupMicrofrontendsType
 
-The type of environment (production, preview, or development)
-
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupMicrofrontendsType } from "@vercel/sdk/models/getmicrofrontendsingroupbuildmachinetype.js";
+import { GetMicrofrontendsInGroupMicrofrontendsType } from "@vercel/sdk/models/getmicrofrontendsingrouphasvalue.js";
 
-let value: GetMicrofrontendsInGroupMicrofrontendsType = "preview";
+let value: GetMicrofrontendsInGroupMicrofrontendsType = "secret";
 ```
 
 ## Values
 
 ```typescript
-"development" | "preview" | "production"
+"encrypted" | "plain" | "secret" | "sensitive" | "system"
 ```

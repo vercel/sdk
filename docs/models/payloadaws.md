@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadAws } from "@vercel/sdk/models/usereventpayloadnext.js";
+import { PayloadAws } from "@vercel/sdk/models/payloadnext.js";
 
 let value: PayloadAws = {
   subnetIds: [
@@ -16,5 +16,5 @@ let value: PayloadAws = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `subnetIds`        | *string*[]         | :heavy_check_mark: | N/A                |
 | `securityGroupId`  | *string*           | :heavy_minus_sign: | N/A                |
+| `subnetIds`        | *string*[]         | :heavy_check_mark: | N/A                |

@@ -13,21 +13,21 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
  */
 export type ConnectTriggerDestination = {
   /**
-   * Vercel project that receives matching trigger requests.
+   * Git branch used to select a preview deployment.
    */
-  projectId: string;
+  branch?: string | undefined;
   /**
    * Stable custom-environment ID to route this destination to. Mutually exclusive with `branch`; omitted destinations keep the legacy production behavior.
    */
   customEnvironmentId?: string | undefined;
   /**
-   * Git branch used to select a preview deployment.
-   */
-  branch?: string | undefined;
-  /**
    * Route path that receives the forwarded trigger request.
    */
   path?: string | undefined;
+  /**
+   * Vercel project that receives matching trigger requests.
+   */
+  projectId: string;
 };
 
 /** @internal */
@@ -36,10 +36,10 @@ export const ConnectTriggerDestination$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: types.string(),
-  customEnvironmentId: types.optional(types.string()),
   branch: types.optional(types.string()),
+  customEnvironmentId: types.optional(types.string()),
   path: types.optional(types.string()),
+  projectId: types.string(),
 });
 
 export function connectTriggerDestinationFromJSON(

@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { Peering } from "@vercel/sdk/models/fourhundredandnine.js";
+import { Peering } from "@vercel/sdk/models/threehundredandninetynine.js";
 
 let value: Peering = {
-  id: "<id>",
   accountId: "<id>",
+  id: "<id>",
   region: "<value>",
   vpcId: "<id>",
 };
@@ -17,7 +17,7 @@ let value: Peering = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *string*           | :heavy_check_mark: | N/A                |
 | `accountId`        | *string*           | :heavy_check_mark: | N/A                |
+| `id`               | *string*           | :heavy_check_mark: | N/A                |
 | `region`           | *string*           | :heavy_check_mark: | N/A                |
 | `vpcId`            | *string*           | :heavy_check_mark: | N/A                |

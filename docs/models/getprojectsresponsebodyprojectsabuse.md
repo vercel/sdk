@@ -3,16 +3,16 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyProjectsAbuse } from "@vercel/sdk/models/getprojectsinternalroutesprojectsresponsehas.js";
+import { GetProjectsResponseBodyProjectsAbuse } from "@vercel/sdk/models/getprojectsresponsebodyprojectsconsolidatedgitcommitstatus.js";
 
 let value: GetProjectsResponseBodyProjectsAbuse = {
   history: [
     {
-      scanner: "<value>",
-      reason: "<value>",
+      at: 4583.27,
       by: "<value>",
       byId: "<id>",
-      at: 4583.27,
+      reason: "<value>",
+      scanner: "<value>",
     },
   ],
   updatedAt: 1731.55,
@@ -23,10 +23,10 @@ let value: GetProjectsResponseBodyProjectsAbuse = {
 
 | Field                                                                                                                          | Type                                                                                                                           | Required                                                                                                                       | Description                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
-| `scanner`                                                                                                                      | *string*                                                                                                                       | :heavy_minus_sign:                                                                                                             | N/A                                                                                                                            |
-| `history`                                                                                                                      | [models.GetProjectsResponseBodyProjectsHistory](../models/getprojectsresponsebodyprojectshistory.md)[]                         | :heavy_check_mark:                                                                                                             | N/A                                                                                                                            |
-| `updatedAt`                                                                                                                    | *number*                                                                                                                       | :heavy_check_mark:                                                                                                             | N/A                                                                                                                            |
 | `block`                                                                                                                        | [models.GetProjectsResponseBodyProjectsBlock](../models/getprojectsresponsebodyprojectsblock.md)                               | :heavy_minus_sign:                                                                                                             | N/A                                                                                                                            |
 | `blockHistory`                                                                                                                 | *models.GetProjectsResponseBodyProjectsBlockHistory*[]                                                                         | :heavy_minus_sign:                                                                                                             | N/A                                                                                                                            |
+| `history`                                                                                                                      | [models.GetProjectsResponseBodyProjectsHistory](../models/getprojectsresponsebodyprojectshistory.md)[]                         | :heavy_check_mark:                                                                                                             | N/A                                                                                                                            |
 | `interstitial`                                                                                                                 | *boolean*                                                                                                                      | :heavy_minus_sign:                                                                                                             | N/A                                                                                                                            |
 | `interstitialHistory`                                                                                                          | [models.GetProjectsResponseBodyProjectsInterstitialHistory](../models/getprojectsresponsebodyprojectsinterstitialhistory.md)[] | :heavy_minus_sign:                                                                                                             | N/A                                                                                                                            |
+| `scanner`                                                                                                                      | *string*                                                                                                                       | :heavy_minus_sign:                                                                                                             | N/A                                                                                                                            |
+| `updatedAt`                                                                                                                    | *number*                                                                                                                       | :heavy_check_mark:                                                                                                             | N/A                                                                                                                            |

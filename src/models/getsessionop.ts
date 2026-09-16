@@ -31,11 +31,11 @@ export type GetSessionRequest = {
  * The session was retrieved successfully.
  */
 export type GetSessionResponseBody = {
+  routes: Array<SandboxPublicRoute>;
   /**
    * This object contains information related to a Vercel Sandbox Session. v2 endpoints return "session" instead of "sandbox" as the response wrapper key.
    */
   session: Session;
-  routes: Array<SandboxPublicRoute>;
 };
 
 /** @internal */
@@ -70,8 +70,8 @@ export const GetSessionResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  session: Session$inboundSchema,
   routes: z.array(SandboxPublicRoute$inboundSchema),
+  session: Session$inboundSchema,
 });
 
 export function getSessionResponseBodyFromJSON(

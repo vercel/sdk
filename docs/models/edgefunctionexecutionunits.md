@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { EdgeFunctionExecutionUnits } from "@vercel/sdk/models/usereventpayloadtarget.js";
+import { EdgeFunctionExecutionUnits } from "@vercel/sdk/models/onehundredandfortyeight.js";
 
 let value: EdgeFunctionExecutionUnits = {
   currentThreshold: 5747.96,
@@ -14,7 +14,7 @@ let value: EdgeFunctionExecutionUnits = {
 
 | Field                       | Type                        | Required                    | Description                 |
 | --------------------------- | --------------------------- | --------------------------- | --------------------------- |
-| `currentThreshold`          | *number*                    | :heavy_check_mark:          | N/A                         |
-| `warningAt`                 | *number*                    | :heavy_minus_sign:          | N/A                         |
 | `blockedAt`                 | *number*                    | :heavy_minus_sign:          | N/A                         |
 | `blockGracePeriodStartedAt` | *number*                    | :heavy_minus_sign:          | N/A                         |
+| `currentThreshold`          | *number*                    | :heavy_check_mark:          | N/A                         |
+| `warningAt`                 | *number*                    | :heavy_minus_sign:          | N/A                         |

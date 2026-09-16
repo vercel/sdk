@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsSandbox } from "@vercel/sdk/models/updatemicrofrontendsprojectsfunctiondefaultmemorytype.js";
+import { UpdateMicrofrontendsSandbox } from "@vercel/sdk/models/updatemicrofrontendsfrom1.js";
 
 let value: UpdateMicrofrontendsSandbox = {};
 ```
@@ -12,5 +12,5 @@ let value: UpdateMicrofrontendsSandbox = {};
 
 | Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
 | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `region`                                                                                         | [models.UpdateMicrofrontendsRegion](../models/updatemicrofrontendsregion.md)                     | :heavy_minus_sign:                                                                               | N/A                                                                                              |
 | `failoverRegions`                                                                                | [models.UpdateMicrofrontendsFailoverRegions](../models/updatemicrofrontendsfailoverregions.md)[] | :heavy_minus_sign:                                                                               | N/A                                                                                              |
+| `region`                                                                                         | [models.UpdateMicrofrontendsRegion](../models/updatemicrofrontendsregion.md)                     | :heavy_minus_sign:                                                                               | N/A                                                                                              |

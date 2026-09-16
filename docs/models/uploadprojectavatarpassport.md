@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarPassport } from "@vercel/sdk/models/uploadprojectavatarprojectsbuildmachinetype.js";
+import { UploadProjectAvatarPassport } from "@vercel/sdk/models/uploadprojectavatarfrom.js";
 
 let value: UploadProjectAvatarPassport = {
-  deploymentType: "prod_deployment_urls_and_all_previews",
   connectorId: "<id>",
+  deploymentType: "prod_deployment_urls_and_all_previews",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: UploadProjectAvatarPassport = {
 
 | Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
 | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `deploymentType`                                                                           | [models.UploadProjectAvatarDeploymentType](../models/uploadprojectavatardeploymenttype.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
 | `connectorId`                                                                              | *string*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `deploymentType`                                                                           | [models.UploadProjectAvatarDeploymentType](../models/uploadprojectavatardeploymenttype.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |

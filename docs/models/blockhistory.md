@@ -5,7 +5,7 @@ Since June 2023
 ## Example Usage
 
 ```typescript
-import { BlockHistory } from "@vercel/sdk/models/usereventpayload171gituserid.js";
+import { BlockHistory } from "@vercel/sdk/models/usereventpayload171newownerfeatureblocksworkflowstoragewriteblockreason.js";
 
 let value: BlockHistory = {
   action: "unblocked",
@@ -19,10 +19,10 @@ let value: BlockHistory = {
 | Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
 | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
 | `action`                                                                   | [models.UserEventPayload171Action](../models/usereventpayload171action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
-| `createdAt`                                                                | *number*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `caseId`                                                                   | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
-| `reason`                                                                   | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
 | `actor`                                                                    | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
-| `statusCode`                                                               | *number*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `caseId`                                                                   | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
 | `comment`                                                                  | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `createdAt`                                                                | *number*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
 | `ineligibleForAppeal`                                                      | *boolean*                                                                  | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `reason`                                                                   | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `statusCode`                                                               | *number*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |

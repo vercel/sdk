@@ -7,8 +7,6 @@
 
 ```typescript
 const value: models.Link1 = {
-  org: "<value>",
-  type: "github",
   deployHooks: [
     {
       id: "<id>",
@@ -18,7 +16,9 @@ const value: models.Link1 = {
     },
   ],
   gitCredentialId: "<id>",
+  org: "<value>",
   productionBranch: "<value>",
+  type: "github",
 };
 ```
 
@@ -26,11 +26,11 @@ const value: models.Link1 = {
 
 ```typescript
 const value: models.Link2 = {
-  type: "github-limited",
-  org: "<value>",
   deployHooks: [],
   gitCredentialId: "<id>",
+  org: "<value>",
   productionBranch: "<value>",
+  type: "github-limited",
 };
 ```
 
@@ -38,12 +38,12 @@ const value: models.Link2 = {
 
 ```typescript
 const value: models.Link3 = {
-  org: "<value>",
-  type: "github-custom-host",
-  host: "hidden-hammock.name",
   deployHooks: [],
   gitCredentialId: "<id>",
+  host: "inborn-lotion.info",
+  org: "<value>",
   productionBranch: "<value>",
+  type: "github-custom-host",
 };
 ```
 
@@ -51,15 +51,15 @@ const value: models.Link3 = {
 
 ```typescript
 const value: models.Link4 = {
-  projectId: "<id>",
-  projectName: "<value>",
-  projectNameWithNamespace: "<value>",
-  projectNamespace: "<value>",
-  projectUrl: "https://self-reliant-orchid.name/",
-  type: "gitlab",
   deployHooks: [],
   gitCredentialId: "<id>",
   productionBranch: "<value>",
+  projectId: "<id>",
+  projectName: "<value>",
+  projectNamespace: "<value>",
+  projectNameWithNamespace: "<value>",
+  projectUrl: "https://powerful-leading.info",
+  type: "gitlab",
 };
 ```
 
@@ -67,22 +67,22 @@ const value: models.Link4 = {
 
 ```typescript
 const value: models.Link5 = {
-  name: "<value>",
-  slug: "<value>",
-  owner: "<value>",
-  type: "bitbucket",
-  uuid: "db41c2ce-804b-460c-bab1-a5e2d810be5f",
-  workspaceUuid: "<id>",
   deployHooks: [
     {
       id: "<id>",
       name: "<value>",
       ref: "<value>",
-      url: "https://insistent-bourgeoisie.name/",
+      url: "https://fatal-bungalow.net",
     },
   ],
   gitCredentialId: "<id>",
+  name: "<value>",
+  owner: "<value>",
   productionBranch: "<value>",
+  slug: "<value>",
+  type: "bitbucket",
+  uuid: "2ce804b6-0cab-41a5-ae2d-810be5fcd261",
+  workspaceUuid: "<id>",
 };
 ```
 
@@ -90,10 +90,6 @@ const value: models.Link5 = {
 
 ```typescript
 const value: models.Link6 = {
-  org: "<value>",
-  repo: "<value>",
-  repoId: "<id>",
-  type: "vercel",
   deployHooks: [
     {
       id: "<id>",
@@ -103,7 +99,11 @@ const value: models.Link6 = {
     },
   ],
   gitCredentialId: "<id>",
+  org: "<value>",
   productionBranch: "<value>",
+  repo: "<value>",
+  repoId: "<id>",
+  type: "vercel",
 };
 ```
 
@@ -111,10 +111,6 @@ const value: models.Link6 = {
 
 ```typescript
 const value: models.Link7 = {
-  org: "<value>",
-  repo: "<value>",
-  repoId: "<id>",
-  type: "v0",
   deployHooks: [
     {
       id: "<id>",
@@ -124,7 +120,11 @@ const value: models.Link7 = {
     },
   ],
   gitCredentialId: "<id>",
+  org: "<value>",
   productionBranch: "<value>",
+  repo: "<value>",
+  repoId: "<id>",
+  type: "v0",
 };
 ```
 
@@ -132,14 +132,14 @@ const value: models.Link7 = {
 
 ```typescript
 const value: models.Link8 = {
-  owner: "<value>",
-  repo: "<value>",
-  repoId: "<id>",
-  ownerId: "<id>",
-  type: "cursor-origin",
   deployHooks: [],
   gitCredentialId: "<id>",
+  owner: "<value>",
+  ownerId: "<id>",
   productionBranch: "<value>",
+  repo: "<value>",
+  repoId: "<id>",
+  type: "cursor-origin",
 };
 ```
 

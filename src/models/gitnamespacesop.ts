@@ -41,14 +41,14 @@ export type Viewer = {
 };
 
 export type GitNamespacesResponseBody = {
-  provider: string;
-  slug: string;
   id: string | number;
-  ownerType: string;
-  name?: string | undefined;
-  isAccessRestricted?: boolean | undefined;
   installationId?: number | undefined;
+  isAccessRestricted?: boolean | undefined;
+  name?: string | undefined;
+  ownerType: string;
+  provider: string;
   requireReauth?: boolean | undefined;
+  slug: string;
   viewer?: Viewer | undefined;
 };
 
@@ -140,14 +140,14 @@ export const GitNamespacesResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  provider: types.string(),
-  slug: types.string(),
   id: smartUnion([types.string(), types.number()]),
-  ownerType: types.string(),
-  name: types.optional(types.string()),
-  isAccessRestricted: types.optional(types.boolean()),
   installationId: types.optional(types.number()),
+  isAccessRestricted: types.optional(types.boolean()),
+  name: types.optional(types.string()),
+  ownerType: types.string(),
+  provider: types.string(),
   requireReauth: types.optional(types.boolean()),
+  slug: types.string(),
   viewer: types.optional(z.lazy(() => Viewer$inboundSchema)),
 });
 

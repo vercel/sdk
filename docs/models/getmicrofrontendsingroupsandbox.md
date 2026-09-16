@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupSandbox } from "@vercel/sdk/models/getmicrofrontendsingroupbuildmachinetype.js";
+import { GetMicrofrontendsInGroupSandbox } from "@vercel/sdk/models/getmicrofrontendsingroupfrom1.js";
 
 let value: GetMicrofrontendsInGroupSandbox = {};
 ```
@@ -12,5 +12,5 @@ let value: GetMicrofrontendsInGroupSandbox = {};
 
 | Field                                                                                                    | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
 | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| `region`                                                                                                 | [models.GetMicrofrontendsInGroupRegion](../models/getmicrofrontendsingroupregion.md)                     | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |
 | `failoverRegions`                                                                                        | [models.GetMicrofrontendsInGroupFailoverRegions](../models/getmicrofrontendsingroupfailoverregions.md)[] | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |
+| `region`                                                                                                 | [models.GetMicrofrontendsInGroupRegion](../models/getmicrofrontendsingroupregion.md)                     | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |

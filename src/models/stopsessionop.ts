@@ -28,10 +28,6 @@ export type StopSessionRequest = {
 
 export type StopSessionResponseBody2 = {
   /**
-   * This object contains information related to a Snapshot of a Vercel Sandbox session (v2 API).
-   */
-  snapshot: Snapshot;
-  /**
    * This object contains information related to a Vercel NamedSandbox.
    */
   sandbox: NamedSandbox;
@@ -39,6 +35,10 @@ export type StopSessionResponseBody2 = {
    * This object contains information related to a Vercel Sandbox Session. v2 endpoints return "session" instead of "sandbox" as the response wrapper key.
    */
   session: Session;
+  /**
+   * This object contains information related to a Snapshot of a Vercel Sandbox session (v2 API).
+   */
+  snapshot: Snapshot;
 };
 
 export type StopSessionResponseBody1 = {
@@ -87,9 +87,9 @@ export const StopSessionResponseBody2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  snapshot: Snapshot$inboundSchema,
   sandbox: NamedSandbox$inboundSchema,
   session: Session$inboundSchema,
+  snapshot: Snapshot$inboundSchema,
 });
 
 export function stopSessionResponseBody2FromJSON(

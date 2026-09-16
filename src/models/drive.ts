@@ -13,9 +13,25 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
  */
 export type Drive = {
   /**
+   * The time when the drive was created, in milliseconds since the epoch.
+   */
+  createdAt: number;
+  /**
+   * Current sandbox name the drive is attached to, if any.
+   */
+  currentSandboxName?: string | undefined;
+  /**
+   * Current session ID the drive is attached to, if any.
+   */
+  currentSessionId?: string | undefined;
+  /**
    * The unique drive ID.
    */
   id: string;
+  /**
+   * The maximum drive size in bytes.
+   */
+  maxSizeBytes: number;
   /**
    * The unique drive name within the project.
    */
@@ -25,25 +41,9 @@ export type Drive = {
    */
   projectId: string;
   /**
-   * The maximum drive size in bytes.
-   */
-  maxSizeBytes: number;
-  /**
    * The region where the drive is stored.
    */
   region: string;
-  /**
-   * Current session ID the drive is attached to, if any.
-   */
-  currentSessionId?: string | undefined;
-  /**
-   * Current sandbox name the drive is attached to, if any.
-   */
-  currentSandboxName?: string | undefined;
-  /**
-   * The time when the drive was created, in milliseconds since the epoch.
-   */
-  createdAt: number;
   /**
    * The last time the drive was updated, in milliseconds since the epoch.
    */
@@ -53,14 +53,14 @@ export type Drive = {
 /** @internal */
 export const Drive$inboundSchema: z.ZodType<Drive, z.ZodTypeDef, unknown> = z
   .object({
+    createdAt: types.number(),
+    currentSandboxName: types.optional(types.string()),
+    currentSessionId: types.optional(types.string()),
     id: types.string(),
+    maxSizeBytes: types.number(),
     name: types.string(),
     projectId: types.string(),
-    maxSizeBytes: types.number(),
     region: types.string(),
-    currentSessionId: types.optional(types.string()),
-    currentSandboxName: types.optional(types.string()),
-    createdAt: types.number(),
     updatedAt: types.number(),
   });
 

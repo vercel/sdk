@@ -19,12 +19,12 @@ const value: number = 1284.03;
 
 ```typescript
 const value: models.ListFlagVersionsRhs3 = {
-  type: "list/inline",
   items: [
     {
       value: "<value>",
     },
   ],
+  type: "list/inline",
 };
 ```
 
@@ -32,9 +32,9 @@ const value: models.ListFlagVersionsRhs3 = {
 
 ```typescript
 const value: models.ListFlagVersionsRhs4 = {
-  type: "regex",
-  pattern: "<value>",
   flags: "<value>",
+  pattern: "<value>",
+  type: "regex",
 };
 ```
 

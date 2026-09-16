@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyProjectsResponseChecksState } from "@vercel/sdk/models/responsebodydeploymentexpiration.js";
+import { GetProjectsResponseBodyProjectsResponseChecksState } from "@vercel/sdk/models/getprojectslogheaders2.js";
 
 let value: GetProjectsResponseBodyProjectsResponseChecksState = "running";
 ```

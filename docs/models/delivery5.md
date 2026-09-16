@@ -6,8 +6,8 @@
 import { Delivery5 } from "@vercel/sdk/models/createdrainop.js";
 
 let value: Delivery5 = {
-  type: "internal",
   target: "vercel-otel-traces-db",
+  type: "internal",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: Delivery5 = {
 
 | Field                                                | Type                                                 | Required                                             | Description                                          |
 | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `type`                                               | *"internal"*                                         | :heavy_check_mark:                                   | N/A                                                  |
 | `target`                                             | [models.DeliveryTarget](../models/deliverytarget.md) | :heavy_check_mark:                                   | N/A                                                  |
+| `type`                                               | *"internal"*                                         | :heavy_check_mark:                                   | N/A                                                  |

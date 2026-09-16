@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentServicesHeaders } from "@vercel/sdk/models/createdeploymentroutesdeploymentshas.js";
+import { CreateDeploymentServicesHeaders } from "@vercel/sdk/models/createdeploymentmissingdeploymentsresponse1.js";
 
 let value: CreateDeploymentServicesHeaders = {
-  source: "<value>",
   headers: [],
+  source: "<value>",
 };
 ```
 
@@ -15,7 +15,7 @@ let value: CreateDeploymentServicesHeaders = {
 
 | Field                                                                                                          | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
 | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `source`                                                                                                       | *string*                                                                                                       | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
-| `headers`                                                                                                      | [models.CreateDeploymentServicesDeploymentsHeaders](../models/createdeploymentservicesdeploymentsheaders.md)[] | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
 | `has`                                                                                                          | *models.CreateDeploymentServicesHas*[]                                                                         | :heavy_minus_sign:                                                                                             | N/A                                                                                                            |
+| `headers`                                                                                                      | [models.CreateDeploymentServicesDeploymentsHeaders](../models/createdeploymentservicesdeploymentsheaders.md)[] | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
 | `missing`                                                                                                      | *models.CreateDeploymentServicesMissing*[]                                                                     | :heavy_minus_sign:                                                                                             | N/A                                                                                                            |
+| `source`                                                                                                       | *string*                                                                                                       | :heavy_check_mark:                                                                                             | N/A                                                                                                            |

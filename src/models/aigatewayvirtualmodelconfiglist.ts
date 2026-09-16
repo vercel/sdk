@@ -14,13 +14,13 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type AiGatewayVirtualModelConfigList = {
   /**
-   * The page of VMCs.
-   */
-  virtualModelConfigs: Array<AiGatewayVirtualModelConfig>;
-  /**
    * Cursor for the next page, or null when no more pages remain.
    */
   cursor: string | null;
+  /**
+   * The page of VMCs.
+   */
+  virtualModelConfigs: Array<AiGatewayVirtualModelConfig>;
 };
 
 /** @internal */
@@ -29,8 +29,8 @@ export const AiGatewayVirtualModelConfigList$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  virtualModelConfigs: z.array(AiGatewayVirtualModelConfig$inboundSchema),
   cursor: types.nullable(types.string()),
+  virtualModelConfigs: z.array(AiGatewayVirtualModelConfig$inboundSchema),
 });
 
 export function aiGatewayVirtualModelConfigListFromJSON(

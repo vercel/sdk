@@ -42,16 +42,16 @@ export const GetRuntimeLogsSource = {
 export type GetRuntimeLogsSource = ClosedEnum<typeof GetRuntimeLogsSource>;
 
 export type GetRuntimeLogsResponseBody = {
+  domain: string;
   level: GetRuntimeLogsLevel;
   message: string;
-  rowId: string;
-  source: GetRuntimeLogsSource;
-  timestampInMs: number;
-  domain: string;
   messageTruncated: boolean;
   requestMethod: string;
   requestPath: string;
   responseStatusCode: number;
+  rowId: string;
+  source: GetRuntimeLogsSource;
+  timestampInMs: number;
 };
 
 /** @internal */
@@ -98,16 +98,16 @@ export const GetRuntimeLogsResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  domain: types.string(),
   level: GetRuntimeLogsLevel$inboundSchema,
   message: types.string(),
-  rowId: types.string(),
-  source: GetRuntimeLogsSource$inboundSchema,
-  timestampInMs: types.number(),
-  domain: types.string(),
   messageTruncated: types.boolean(),
   requestMethod: types.string(),
   requestPath: types.string(),
   responseStatusCode: types.number(),
+  rowId: types.string(),
+  source: GetRuntimeLogsSource$inboundSchema,
+  timestampInMs: types.number(),
 });
 
 export function getRuntimeLogsResponseBodyFromJSON(

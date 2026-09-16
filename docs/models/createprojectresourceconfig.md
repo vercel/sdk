@@ -5,7 +5,7 @@ Specifies resource override configuration for the project
 ## Example Usage
 
 ```typescript
-import { CreateProjectResourceConfig } from "@vercel/sdk/models/createprojectpasswordprotection.js";
+import { CreateProjectResourceConfig } from "@vercel/sdk/models/createprojectcontenthint2.js";
 
 let value: CreateProjectResourceConfig = {};
 ```

@@ -19,12 +19,8 @@ const value: number = 1284.03;
 
 ```typescript
 const value: models.Rhs3 = {
-  type: "list",
-  items: [
-    {
-      value: "<value>",
-    },
-  ],
+  items: [],
+  type: "list/inline",
 };
 ```
 
@@ -32,9 +28,9 @@ const value: models.Rhs3 = {
 
 ```typescript
 const value: models.Rhs4 = {
-  type: "regex",
-  pattern: "<value>",
   flags: "<value>",
+  pattern: "<value>",
+  type: "regex",
 };
 ```
 

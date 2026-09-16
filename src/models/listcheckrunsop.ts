@@ -26,15 +26,6 @@ export type ListCheckRunsRequest = {
   slug?: string | undefined;
 };
 
-export const ListCheckRunsRunsRequires = {
-  BuildReady: "build-ready",
-  DeploymentUrl: "deployment-url",
-  None: "none",
-} as const;
-export type ListCheckRunsRunsRequires = ClosedEnum<
-  typeof ListCheckRunsRunsRequires
->;
-
 export const ListCheckRunsRunsBlocks = {
   BuildStart: "build-start",
   DeploymentAlias: "deployment-alias",
@@ -44,15 +35,6 @@ export const ListCheckRunsRunsBlocks = {
 } as const;
 export type ListCheckRunsRunsBlocks = ClosedEnum<
   typeof ListCheckRunsRunsBlocks
->;
-
-export const ListCheckRunsRunsStatus = {
-  Completed: "completed",
-  Queued: "queued",
-  Running: "running",
-} as const;
-export type ListCheckRunsRunsStatus = ClosedEnum<
-  typeof ListCheckRunsRunsStatus
 >;
 
 export const RunsConclusion = {
@@ -65,37 +47,55 @@ export const RunsConclusion = {
 } as const;
 export type RunsConclusion = ClosedEnum<typeof RunsConclusion>;
 
-export const ListCheckRunsSourceOrigin = {
-  Platform: "platform",
+export const ListCheckRunsRunsRequires = {
+  BuildReady: "build-ready",
+  DeploymentUrl: "deployment-url",
+  None: "none",
 } as const;
-export type ListCheckRunsSourceOrigin = ClosedEnum<
-  typeof ListCheckRunsSourceOrigin
+export type ListCheckRunsRunsRequires = ClosedEnum<
+  typeof ListCheckRunsRunsRequires
+>;
+
+export const ListCheckRunsRunsStatus = {
+  Completed: "completed",
+  Queued: "queued",
+  Running: "running",
+} as const;
+export type ListCheckRunsRunsStatus = ClosedEnum<
+  typeof ListCheckRunsRunsStatus
+>;
+
+export const ListCheckRunsSourceSubKind = {
+  VercelCiSentinel: "vercel-ci-sentinel",
+} as const;
+export type ListCheckRunsSourceSubKind = ClosedEnum<
+  typeof ListCheckRunsSourceSubKind
 >;
 
 /**
  * CI sentinel — check run `source` only (no parent check).
  */
 export type ListCheckRunsSourceChecksV22 = {
-  subKind: "vercel-ci-sentinel";
-  origin: ListCheckRunsSourceOrigin;
+  origin: "platform";
+  subKind: ListCheckRunsSourceSubKind;
 };
 
-export const ListCheckRunsSourceChecksV2ResponseOrigin = {
-  Config: "config",
+export const ListCheckRunsSourceChecksV2ResponseSubKind = {
+  VercelCi: "vercel-ci",
 } as const;
-export type ListCheckRunsSourceChecksV2ResponseOrigin = ClosedEnum<
-  typeof ListCheckRunsSourceChecksV2ResponseOrigin
+export type ListCheckRunsSourceChecksV2ResponseSubKind = ClosedEnum<
+  typeof ListCheckRunsSourceChecksV2ResponseSubKind
 >;
 
 /**
  * Config-driven CI task — check run `source` only (no parent check).
  */
 export type ListCheckRunsSourceChecksV21 = {
-  subKind: "vercel-ci";
-  origin: ListCheckRunsSourceChecksV2ResponseOrigin;
-  invocationId: string;
   invocationAttempt?: number | undefined;
+  invocationId: string;
   jobDefinitionId: string;
+  origin: "config";
+  subKind: ListCheckRunsSourceChecksV2ResponseSubKind;
 };
 
 export type ListCheckRunsRunsSource =
@@ -106,33 +106,26 @@ export type ListCheckRunsRunsSource =
  * Vercel CI check run without a parent `check` (no `checkId` field).
  */
 export type Runs2 = {
-  id: string;
-  name: string;
-  ownerId: string;
-  deploymentId: string;
-  projectId?: string | undefined;
-  requires?: ListCheckRunsRunsRequires | undefined;
   blocks?: ListCheckRunsRunsBlocks | undefined;
-  targets?: Array<string> | undefined;
-  status: ListCheckRunsRunsStatus;
+  completedAt?: number | undefined;
   conclusion?: RunsConclusion | undefined;
   conclusionText?: string | undefined;
+  createdAt: number;
+  deploymentId: string;
   externalId?: string | undefined;
   externalUrl?: string | undefined;
+  id: string;
+  name: string;
   output?: { [k: string]: any } | undefined;
+  ownerId: string;
+  projectId?: string | undefined;
+  requires?: ListCheckRunsRunsRequires | undefined;
+  status: ListCheckRunsRunsStatus;
+  targets?: Array<string> | undefined;
   timeout: number;
-  createdAt: number;
   updatedAt: number;
-  completedAt?: number | undefined;
   source: ListCheckRunsSourceChecksV21 | ListCheckRunsSourceChecksV22;
 };
-
-export const RunsRequires = {
-  BuildReady: "build-ready",
-  DeploymentUrl: "deployment-url",
-  None: "none",
-} as const;
-export type RunsRequires = ClosedEnum<typeof RunsRequires>;
 
 export const RunsBlocks = {
   BuildStart: "build-start",
@@ -142,13 +135,6 @@ export const RunsBlocks = {
   None: "none",
 } as const;
 export type RunsBlocks = ClosedEnum<typeof RunsBlocks>;
-
-export const RunsStatus = {
-  Completed: "completed",
-  Queued: "queued",
-  Running: "running",
-} as const;
-export type RunsStatus = ClosedEnum<typeof RunsStatus>;
 
 export const ListCheckRunsRunsConclusion = {
   Canceled: "canceled",
@@ -162,12 +148,19 @@ export type ListCheckRunsRunsConclusion = ClosedEnum<
   typeof ListCheckRunsRunsConclusion
 >;
 
-export const ListCheckRunsSourceChecksV2SubKind = {
-  VercelNativeCheck: "vercel-native-check",
+export const RunsRequires = {
+  BuildReady: "build-ready",
+  DeploymentUrl: "deployment-url",
+  None: "none",
 } as const;
-export type ListCheckRunsSourceChecksV2SubKind = ClosedEnum<
-  typeof ListCheckRunsSourceChecksV2SubKind
->;
+export type RunsRequires = ClosedEnum<typeof RunsRequires>;
+
+export const RunsStatus = {
+  Completed: "completed",
+  Queued: "queued",
+  Running: "running",
+} as const;
+export type RunsStatus = ClosedEnum<typeof RunsStatus>;
 
 export const ListCheckRunsSourceChecksV2Origin = {
   Api: "api",
@@ -177,12 +170,19 @@ export type ListCheckRunsSourceChecksV2Origin = ClosedEnum<
   typeof ListCheckRunsSourceChecksV2Origin
 >;
 
+export const ListCheckRunsSourceChecksV2SubKind = {
+  VercelNativeCheck: "vercel-native-check",
+} as const;
+export type ListCheckRunsSourceChecksV2SubKind = ClosedEnum<
+  typeof ListCheckRunsSourceChecksV2SubKind
+>;
+
 /**
  * Native Vercel checks — check definition and check run `source`.
  */
 export type ListCheckRunsSource4 = {
-  subKind?: ListCheckRunsSourceChecksV2SubKind | undefined;
   origin?: ListCheckRunsSourceChecksV2Origin | undefined;
+  subKind?: ListCheckRunsSourceChecksV2SubKind | undefined;
 };
 
 export const ListCheckRunsSourceChecksV2ResponseKind = {
@@ -202,9 +202,9 @@ export type ListCheckRunsSourceProvider = ClosedEnum<
 >;
 
 export type ListCheckRunsSource3 = {
+  externalCheckName: string;
   kind: ListCheckRunsSourceChecksV2ResponseKind;
   provider: ListCheckRunsSourceProvider;
-  externalCheckName: string;
 };
 
 export const ListCheckRunsSourceChecksV2Kind = {
@@ -227,11 +227,11 @@ export type ListCheckRunsSourceKind = ClosedEnum<
 >;
 
 export type ListCheckRunsSource1 = {
-  kind: ListCheckRunsSourceKind;
-  integrationId: string;
-  integrationConfigurationId: string;
-  resourceId?: string | undefined;
   externalResourceId?: string | undefined;
+  integrationConfigurationId: string;
+  integrationId: string;
+  kind: ListCheckRunsSourceKind;
+  resourceId?: string | undefined;
 };
 
 export type RunsSource =
@@ -244,24 +244,24 @@ export type RunsSource =
  * Check run backed by a project-level `check` definition.
  */
 export type Runs1 = {
-  id: string;
-  name: string;
-  ownerId: string;
-  deploymentId: string;
-  projectId?: string | undefined;
-  requires?: RunsRequires | undefined;
   blocks?: RunsBlocks | undefined;
-  targets?: Array<string> | undefined;
-  status: RunsStatus;
+  completedAt?: number | undefined;
   conclusion?: ListCheckRunsRunsConclusion | undefined;
   conclusionText?: string | undefined;
+  createdAt: number;
+  deploymentId: string;
   externalId?: string | undefined;
   externalUrl?: string | undefined;
+  id: string;
+  name: string;
   output?: { [k: string]: any } | undefined;
+  ownerId: string;
+  projectId?: string | undefined;
+  requires?: RunsRequires | undefined;
+  status: RunsStatus;
+  targets?: Array<string> | undefined;
   timeout: number;
-  createdAt: number;
   updatedAt: number;
-  completedAt?: number | undefined;
   checkId: string;
   source:
     | ListCheckRunsSource1
@@ -305,19 +305,9 @@ export function listCheckRunsRequestToJSON(
 }
 
 /** @internal */
-export const ListCheckRunsRunsRequires$inboundSchema: z.ZodNativeEnum<
-  typeof ListCheckRunsRunsRequires
-> = z.nativeEnum(ListCheckRunsRunsRequires);
-
-/** @internal */
 export const ListCheckRunsRunsBlocks$inboundSchema: z.ZodNativeEnum<
   typeof ListCheckRunsRunsBlocks
 > = z.nativeEnum(ListCheckRunsRunsBlocks);
-
-/** @internal */
-export const ListCheckRunsRunsStatus$inboundSchema: z.ZodNativeEnum<
-  typeof ListCheckRunsRunsStatus
-> = z.nativeEnum(ListCheckRunsRunsStatus);
 
 /** @internal */
 export const RunsConclusion$inboundSchema: z.ZodNativeEnum<
@@ -325,9 +315,19 @@ export const RunsConclusion$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(RunsConclusion);
 
 /** @internal */
-export const ListCheckRunsSourceOrigin$inboundSchema: z.ZodNativeEnum<
-  typeof ListCheckRunsSourceOrigin
-> = z.nativeEnum(ListCheckRunsSourceOrigin);
+export const ListCheckRunsRunsRequires$inboundSchema: z.ZodNativeEnum<
+  typeof ListCheckRunsRunsRequires
+> = z.nativeEnum(ListCheckRunsRunsRequires);
+
+/** @internal */
+export const ListCheckRunsRunsStatus$inboundSchema: z.ZodNativeEnum<
+  typeof ListCheckRunsRunsStatus
+> = z.nativeEnum(ListCheckRunsRunsStatus);
+
+/** @internal */
+export const ListCheckRunsSourceSubKind$inboundSchema: z.ZodNativeEnum<
+  typeof ListCheckRunsSourceSubKind
+> = z.nativeEnum(ListCheckRunsSourceSubKind);
 
 /** @internal */
 export const ListCheckRunsSourceChecksV22$inboundSchema: z.ZodType<
@@ -335,8 +335,8 @@ export const ListCheckRunsSourceChecksV22$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  subKind: types.literal("vercel-ci-sentinel"),
-  origin: ListCheckRunsSourceOrigin$inboundSchema,
+  origin: types.literal("platform"),
+  subKind: ListCheckRunsSourceSubKind$inboundSchema,
 });
 
 export function listCheckRunsSourceChecksV22FromJSON(
@@ -350,9 +350,9 @@ export function listCheckRunsSourceChecksV22FromJSON(
 }
 
 /** @internal */
-export const ListCheckRunsSourceChecksV2ResponseOrigin$inboundSchema:
-  z.ZodNativeEnum<typeof ListCheckRunsSourceChecksV2ResponseOrigin> = z
-    .nativeEnum(ListCheckRunsSourceChecksV2ResponseOrigin);
+export const ListCheckRunsSourceChecksV2ResponseSubKind$inboundSchema:
+  z.ZodNativeEnum<typeof ListCheckRunsSourceChecksV2ResponseSubKind> = z
+    .nativeEnum(ListCheckRunsSourceChecksV2ResponseSubKind);
 
 /** @internal */
 export const ListCheckRunsSourceChecksV21$inboundSchema: z.ZodType<
@@ -360,11 +360,11 @@ export const ListCheckRunsSourceChecksV21$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  subKind: types.literal("vercel-ci"),
-  origin: ListCheckRunsSourceChecksV2ResponseOrigin$inboundSchema,
-  invocationId: types.string(),
   invocationAttempt: types.optional(types.number()),
+  invocationId: types.string(),
   jobDefinitionId: types.string(),
+  origin: types.literal("config"),
+  subKind: ListCheckRunsSourceChecksV2ResponseSubKind$inboundSchema,
 });
 
 export function listCheckRunsSourceChecksV21FromJSON(
@@ -400,24 +400,24 @@ export function listCheckRunsRunsSourceFromJSON(
 /** @internal */
 export const Runs2$inboundSchema: z.ZodType<Runs2, z.ZodTypeDef, unknown> = z
   .object({
-    id: types.string(),
-    name: types.string(),
-    ownerId: types.string(),
-    deploymentId: types.string(),
-    projectId: types.optional(types.string()),
-    requires: types.optional(ListCheckRunsRunsRequires$inboundSchema),
     blocks: types.optional(ListCheckRunsRunsBlocks$inboundSchema),
-    targets: types.optional(z.array(types.string())),
-    status: ListCheckRunsRunsStatus$inboundSchema,
+    completedAt: types.optional(types.number()),
     conclusion: types.optional(RunsConclusion$inboundSchema),
     conclusionText: types.optional(types.string()),
+    createdAt: types.number(),
+    deploymentId: types.string(),
     externalId: types.optional(types.string()),
     externalUrl: types.optional(types.string()),
+    id: types.string(),
+    name: types.string(),
     output: types.optional(z.record(z.any())),
+    ownerId: types.string(),
+    projectId: types.optional(types.string()),
+    requires: types.optional(ListCheckRunsRunsRequires$inboundSchema),
+    status: ListCheckRunsRunsStatus$inboundSchema,
+    targets: types.optional(z.array(types.string())),
     timeout: types.number(),
-    createdAt: types.number(),
     updatedAt: types.number(),
-    completedAt: types.optional(types.number()),
     source: z.union([
       z.lazy(() => ListCheckRunsSourceChecksV21$inboundSchema),
       z.lazy(() => ListCheckRunsSourceChecksV22$inboundSchema),
@@ -435,16 +435,8 @@ export function runs2FromJSON(
 }
 
 /** @internal */
-export const RunsRequires$inboundSchema: z.ZodNativeEnum<typeof RunsRequires> =
-  z.nativeEnum(RunsRequires);
-
-/** @internal */
 export const RunsBlocks$inboundSchema: z.ZodNativeEnum<typeof RunsBlocks> = z
   .nativeEnum(RunsBlocks);
-
-/** @internal */
-export const RunsStatus$inboundSchema: z.ZodNativeEnum<typeof RunsStatus> = z
-  .nativeEnum(RunsStatus);
 
 /** @internal */
 export const ListCheckRunsRunsConclusion$inboundSchema: z.ZodNativeEnum<
@@ -452,9 +444,12 @@ export const ListCheckRunsRunsConclusion$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(ListCheckRunsRunsConclusion);
 
 /** @internal */
-export const ListCheckRunsSourceChecksV2SubKind$inboundSchema: z.ZodNativeEnum<
-  typeof ListCheckRunsSourceChecksV2SubKind
-> = z.nativeEnum(ListCheckRunsSourceChecksV2SubKind);
+export const RunsRequires$inboundSchema: z.ZodNativeEnum<typeof RunsRequires> =
+  z.nativeEnum(RunsRequires);
+
+/** @internal */
+export const RunsStatus$inboundSchema: z.ZodNativeEnum<typeof RunsStatus> = z
+  .nativeEnum(RunsStatus);
 
 /** @internal */
 export const ListCheckRunsSourceChecksV2Origin$inboundSchema: z.ZodNativeEnum<
@@ -462,13 +457,18 @@ export const ListCheckRunsSourceChecksV2Origin$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(ListCheckRunsSourceChecksV2Origin);
 
 /** @internal */
+export const ListCheckRunsSourceChecksV2SubKind$inboundSchema: z.ZodNativeEnum<
+  typeof ListCheckRunsSourceChecksV2SubKind
+> = z.nativeEnum(ListCheckRunsSourceChecksV2SubKind);
+
+/** @internal */
 export const ListCheckRunsSource4$inboundSchema: z.ZodType<
   ListCheckRunsSource4,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  subKind: types.optional(ListCheckRunsSourceChecksV2SubKind$inboundSchema),
   origin: types.optional(ListCheckRunsSourceChecksV2Origin$inboundSchema),
+  subKind: types.optional(ListCheckRunsSourceChecksV2SubKind$inboundSchema),
 });
 
 export function listCheckRunsSource4FromJSON(
@@ -497,9 +497,9 @@ export const ListCheckRunsSource3$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  externalCheckName: types.string(),
   kind: ListCheckRunsSourceChecksV2ResponseKind$inboundSchema,
   provider: ListCheckRunsSourceProvider$inboundSchema,
-  externalCheckName: types.string(),
 });
 
 export function listCheckRunsSource3FromJSON(
@@ -548,11 +548,11 @@ export const ListCheckRunsSource1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  kind: ListCheckRunsSourceKind$inboundSchema,
-  integrationId: types.string(),
-  integrationConfigurationId: types.string(),
-  resourceId: types.optional(types.string()),
   externalResourceId: types.optional(types.string()),
+  integrationConfigurationId: types.string(),
+  integrationId: types.string(),
+  kind: ListCheckRunsSourceKind$inboundSchema,
+  resourceId: types.optional(types.string()),
 });
 
 export function listCheckRunsSource1FromJSON(
@@ -590,24 +590,24 @@ export function runsSourceFromJSON(
 /** @internal */
 export const Runs1$inboundSchema: z.ZodType<Runs1, z.ZodTypeDef, unknown> = z
   .object({
-    id: types.string(),
-    name: types.string(),
-    ownerId: types.string(),
-    deploymentId: types.string(),
-    projectId: types.optional(types.string()),
-    requires: types.optional(RunsRequires$inboundSchema),
     blocks: types.optional(RunsBlocks$inboundSchema),
-    targets: types.optional(z.array(types.string())),
-    status: RunsStatus$inboundSchema,
+    completedAt: types.optional(types.number()),
     conclusion: types.optional(ListCheckRunsRunsConclusion$inboundSchema),
     conclusionText: types.optional(types.string()),
+    createdAt: types.number(),
+    deploymentId: types.string(),
     externalId: types.optional(types.string()),
     externalUrl: types.optional(types.string()),
+    id: types.string(),
+    name: types.string(),
     output: types.optional(z.record(z.any())),
+    ownerId: types.string(),
+    projectId: types.optional(types.string()),
+    requires: types.optional(RunsRequires$inboundSchema),
+    status: RunsStatus$inboundSchema,
+    targets: types.optional(z.array(types.string())),
     timeout: types.number(),
-    createdAt: types.number(),
     updatedAt: types.number(),
-    completedAt: types.optional(types.number()),
     checkId: types.string(),
     source: smartUnion([
       z.lazy(() => ListCheckRunsSource1$inboundSchema),

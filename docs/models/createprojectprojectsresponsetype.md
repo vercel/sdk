@@ -1,15 +1,17 @@
 # CreateProjectProjectsResponseType
 
+The type of environment (production, preview, or development)
+
 ## Example Usage
 
 ```typescript
-import { CreateProjectProjectsResponseType } from "@vercel/sdk/models/createprojectpasswordprotection.js";
+import { CreateProjectProjectsResponseType } from "@vercel/sdk/models/createprojectcontenthint2.js";
 
-let value: CreateProjectProjectsResponseType = "sensitive";
+let value: CreateProjectProjectsResponseType = "production";
 ```
 
 ## Values
 
 ```typescript
-"encrypted" | "plain" | "secret" | "sensitive" | "system"
+"development" | "preview" | "production"
 ```

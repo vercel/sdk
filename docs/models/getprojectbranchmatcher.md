@@ -5,11 +5,11 @@ Configuration for matching git branches to this environment
 ## Example Usage
 
 ```typescript
-import { GetProjectBranchMatcher } from "@vercel/sdk/models/getprojectrollingrelease.js";
+import { GetProjectBranchMatcher } from "@vercel/sdk/models/getprojecthas2.js";
 
 let value: GetProjectBranchMatcher = {
-  type: "equals",
   pattern: "<value>",
+  type: "equals",
 };
 ```
 
@@ -17,5 +17,5 @@ let value: GetProjectBranchMatcher = {
 
 | Field                                                                                                                                                                                | Type                                                                                                                                                                                 | Required                                                                                                                                                                             | Description                                                                                                                                                                          |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `type`                                                                                                                                                                               | [models.GetProjectProjectsResponse200ApplicationJSONResponseBodyCustomEnvironmentsType](../models/getprojectprojectsresponse200applicationjsonresponsebodycustomenvironmentstype.md) | :heavy_check_mark:                                                                                                                                                                   | The type of matching to perform                                                                                                                                                      |
 | `pattern`                                                                                                                                                                            | *string*                                                                                                                                                                             | :heavy_check_mark:                                                                                                                                                                   | The pattern to match against branch names                                                                                                                                            |
+| `type`                                                                                                                                                                               | [models.GetProjectProjectsResponse200ApplicationJSONResponseBodyCustomEnvironmentsType](../models/getprojectprojectsresponse200applicationjsonresponsebodycustomenvironmentstype.md) | :heavy_check_mark:                                                                                                                                                                   | The type of matching to perform                                                                                                                                                      |

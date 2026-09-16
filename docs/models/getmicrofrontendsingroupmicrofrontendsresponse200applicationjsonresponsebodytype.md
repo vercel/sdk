@@ -1,19 +1,17 @@
 # GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyType
 
-The type of matching to perform
-
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyType } from "@vercel/sdk/models/getmicrofrontendsingroupbuildmachinetype.js";
+import { GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyType } from "@vercel/sdk/models/getmicrofrontendsingrouphasvalue.js";
 
 let value:
   GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyType =
-    "equals";
+    "LAMBDAS";
 ```
 
 ## Values
 
 ```typescript
-"endsWith" | "equals" | "startsWith"
+"LAMBDAS"
 ```

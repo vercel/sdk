@@ -7,12 +7,12 @@ import { CreateMicrofrontendsGroupWithApplicationsResponseBody } from "@vercel/s
 
 let value: CreateMicrofrontendsGroupWithApplicationsResponseBody = {
   newMicrofrontendsGroup: {
-    id: "<id>",
-    slug: "<value>",
-    name: "<value>",
+    createdAt: 4186.85,
+    enablePolyrepoBranchRouting: false,
     fallbackEnvironment: "<value>",
-    enablePolyrepoBranchRouting: true,
-    createdAt: 5764.78,
+    id: "<id>",
+    name: "<value>",
+    slug: "<value>",
     updatedAt: 4592.44,
   },
 };

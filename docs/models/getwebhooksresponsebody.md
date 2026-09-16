@@ -14,17 +14,17 @@ const value: models.GetWebhooksResponseBody1[] = [];
 ```typescript
 const value: models.GetWebhooksResponseBody2[] = [
   {
+    createdAt: 1567024758130,
     events: [
       "deployment.created",
     ],
     id: "account_hook_GflD6EYyo7F4ViYS",
-    url: "https://my-webhook.com",
     ownerId: "ZspSRT4ljIEEmMHgoDwKWDei",
-    createdAt: 1567024758130,
-    updatedAt: 1567024758130,
     projectIds: [
       "prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
     ],
+    updatedAt: 1567024758130,
+    url: "https://my-webhook.com",
   },
 ];
 ```

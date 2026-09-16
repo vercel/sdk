@@ -3,22 +3,22 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupManagedRules } from "@vercel/sdk/models/getmicrofrontendsingroupinternalroutes2.js";
+import { GetMicrofrontendsInGroupManagedRules } from "@vercel/sdk/models/getmicrofrontendsingroupfrom1.js";
 
 let value: GetMicrofrontendsInGroupManagedRules = {
-  vercelRuleset: {
-    active: true,
-  },
-  trafficSources: {
+  aiBots: {
     active: true,
   },
   botFilter: {
     active: true,
   },
-  aiBots: {
+  owasp: {
     active: true,
   },
-  owasp: {
+  trafficSources: {
+    active: true,
+  },
+  vercelRuleset: {
     active: false,
   },
 };
@@ -28,8 +28,8 @@ let value: GetMicrofrontendsInGroupManagedRules = {
 
 | Field                                                                                                | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
 | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `vercelRuleset`                                                                                      | [models.GetMicrofrontendsInGroupVercelRuleset](../models/getmicrofrontendsingroupvercelruleset.md)   | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
-| `trafficSources`                                                                                     | [models.GetMicrofrontendsInGroupTrafficSources](../models/getmicrofrontendsingrouptrafficsources.md) | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
-| `botFilter`                                                                                          | [models.GetMicrofrontendsInGroupBotFilter](../models/getmicrofrontendsingroupbotfilter.md)           | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
 | `aiBots`                                                                                             | [models.GetMicrofrontendsInGroupAiBots](../models/getmicrofrontendsingroupaibots.md)                 | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
+| `botFilter`                                                                                          | [models.GetMicrofrontendsInGroupBotFilter](../models/getmicrofrontendsingroupbotfilter.md)           | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
 | `owasp`                                                                                              | [models.GetMicrofrontendsInGroupOwasp](../models/getmicrofrontendsingroupowasp.md)                   | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
+| `trafficSources`                                                                                     | [models.GetMicrofrontendsInGroupTrafficSources](../models/getmicrofrontendsingrouptrafficsources.md) | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
+| `vercelRuleset`                                                                                      | [models.GetMicrofrontendsInGroupVercelRuleset](../models/getmicrofrontendsingroupvercelruleset.md)   | :heavy_check_mark:                                                                                   | N/A                                                                                                  |

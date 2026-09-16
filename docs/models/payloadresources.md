@@ -3,15 +3,15 @@
 ## Example Usage
 
 ```typescript
-import { PayloadResources } from "@vercel/sdk/models/payloadaccessgroup.js";
+import { PayloadResources } from "@vercel/sdk/models/twentynine.js";
 
 let value: PayloadResources = {
   projectIds: {
-    type: "list",
-    required: true,
     items: {
       type: "string",
     },
+    required: true,
+    type: "list",
   },
 };
 ```

@@ -16,11 +16,11 @@ import {
  * A paginated list of Vercel Container Registry repository permissions.
  */
 export type VcrRepositoryPermissionList = {
-  permissions: Array<VcrRepositoryPermission>;
   /**
    * Cursor to fetch the next page of results, when more are available.
    */
   nextCursor?: string | undefined;
+  permissions: Array<VcrRepositoryPermission>;
 };
 
 /** @internal */
@@ -29,8 +29,8 @@ export const VcrRepositoryPermissionList$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  permissions: z.array(VcrRepositoryPermission$inboundSchema),
   nextCursor: types.optional(types.string()),
+  permissions: z.array(VcrRepositoryPermission$inboundSchema),
 });
 
 export function vcrRepositoryPermissionListFromJSON(

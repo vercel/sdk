@@ -16,16 +16,16 @@ const value: models.ListFlagVersionsOutcome1 = {
 
 ```typescript
 const value: models.ListFlagVersionsOutcome2 = {
-  type: "split",
   base: {
-    type: "entity",
-    kind: "<value>",
     attribute: "<value>",
+    kind: "<value>",
+    type: "entity",
   },
+  defaultVariantId: "<id>",
+  type: "split",
   weights: {
     "key": 2789.66,
   },
-  defaultVariantId: "<id>",
 };
 ```
 
@@ -33,22 +33,22 @@ const value: models.ListFlagVersionsOutcome2 = {
 
 ```typescript
 const value: models.ListFlagVersionsOutcome3 = {
-  type: "rollout",
   base: {
-    type: "entity",
-    kind: "<value>",
     attribute: "<value>",
+    kind: "<value>",
+    type: "entity",
   },
   defaultVariantId: "<id>",
-  startTimestamp: 6729.99,
   rollFromVariantId: "<id>",
   rollToVariantId: "<id>",
   slots: [
     {
+      durationMs: 6663.21,
       promille: 2557.11,
-      durationMs: 4705.48,
     },
   ],
+  startTimestamp: 4705.48,
+  type: "rollout",
 };
 ```
 

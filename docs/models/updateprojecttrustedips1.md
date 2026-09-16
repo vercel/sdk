@@ -3,15 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { UpdateProjectTrustedIps1 } from "@vercel/sdk/models/updateprojecttrafficsources.js";
+import { UpdateProjectTrustedIps1 } from "@vercel/sdk/models/updateprojectresponsebody.js";
 
 let value: UpdateProjectTrustedIps1 = {
-  deploymentType: "all",
-  addresses: [
-    {
-      value: "<value>",
-    },
-  ],
+  addresses: [],
+  deploymentType: "prod_deployment_urls_and_all_previews",
   protectionMode: "additional",
 };
 ```
@@ -20,6 +16,6 @@ let value: UpdateProjectTrustedIps1 = {
 
 | Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `deploymentType`                                                                                   | [models.UpdateProjectTrustedIpsDeploymentType](../models/updateprojecttrustedipsdeploymenttype.md) | :heavy_check_mark:                                                                                 | N/A                                                                                                |
 | `addresses`                                                                                        | [models.UpdateProjectTrustedIpsAddresses](../models/updateprojecttrustedipsaddresses.md)[]         | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `deploymentType`                                                                                   | [models.UpdateProjectTrustedIpsDeploymentType](../models/updateprojecttrustedipsdeploymenttype.md) | :heavy_check_mark:                                                                                 | N/A                                                                                                |
 | `protectionMode`                                                                                   | [models.UpdateProjectTrustedIpsProtectionMode](../models/updateprojecttrustedipsprotectionmode.md) | :heavy_check_mark:                                                                                 | N/A                                                                                                |

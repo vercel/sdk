@@ -6,9 +6,9 @@
 import { OutcomeBase } from "@vercel/sdk/models/flag.js";
 
 let value: OutcomeBase = {
-  type: "entity",
-  kind: "<value>",
   attribute: "<value>",
+  kind: "<value>",
+  type: "entity",
 };
 ```
 
@@ -16,6 +16,6 @@ let value: OutcomeBase = {
 
 | Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
 | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `type`                                                                                     | [models.FlagOutcomeEnvironmentsRules2Type](../models/flagoutcomeenvironmentsrules2type.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
-| `kind`                                                                                     | *string*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
 | `attribute`                                                                                | *string*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `kind`                                                                                     | *string*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `type`                                                                                     | [models.FlagOutcomeEnvironmentsRules2Type](../models/flagoutcomeenvironmentsrules2type.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |

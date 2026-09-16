@@ -6,8 +6,8 @@
 import { Commitment } from "@vercel/sdk/models/userevent.js";
 
 let value: Commitment = {
-  maximumMonthlySpend: "<value>",
   deferredInvoiceTargetBalance: "<value>",
+  maximumMonthlySpend: "<value>",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: Commitment = {
 
 | Field                          | Type                           | Required                       | Description                    |
 | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
-| `maximumMonthlySpend`          | *string*                       | :heavy_check_mark:             | N/A                            |
 | `deferredInvoiceTargetBalance` | *string*                       | :heavy_check_mark:             | N/A                            |
+| `maximumMonthlySpend`          | *string*                       | :heavy_check_mark:             | N/A                            |

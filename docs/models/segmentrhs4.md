@@ -6,9 +6,9 @@
 import { SegmentRhs4 } from "@vercel/sdk/models/segment.js";
 
 let value: SegmentRhs4 = {
-  type: "regex",
-  pattern: "<value>",
   flags: "<value>",
+  pattern: "<value>",
+  type: "regex",
 };
 ```
 
@@ -16,6 +16,6 @@ let value: SegmentRhs4 = {
 
 | Field                                                        | Type                                                         | Required                                                     | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `type`                                                       | [models.SegmentRhsDataType](../models/segmentrhsdatatype.md) | :heavy_check_mark:                                           | N/A                                                          |
-| `pattern`                                                    | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
 | `flags`                                                      | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `pattern`                                                    | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `type`                                                       | [models.SegmentRhsDataType](../models/segmentrhsdatatype.md) | :heavy_check_mark:                                           | N/A                                                          |

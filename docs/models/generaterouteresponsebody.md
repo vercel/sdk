@@ -12,5 +12,5 @@ let value: GenerateRouteResponseBody = {};
 
 | Field                                                        | Type                                                         | Required                                                     | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `route`                                                      | [models.GenerateRouteRoute](../models/generaterouteroute.md) | :heavy_minus_sign:                                           | N/A                                                          |
 | `error`                                                      | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
+| `route`                                                      | [models.GenerateRouteRoute](../models/generaterouteroute.md) | :heavy_minus_sign:                                           | N/A                                                          |

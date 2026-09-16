@@ -8,9 +8,9 @@ Keeps track of the current state of the Global Config while it gets transferred.
 import { Transfer } from "@vercel/sdk/models/getedgeconfigsop.js";
 
 let value: Transfer = {
+  doneAt: 581.88,
   fromAccountId: "<id>",
-  startedAt: 9171.2,
-  doneAt: null,
+  startedAt: 554.79,
 };
 ```
 
@@ -18,6 +18,6 @@ let value: Transfer = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
+| `doneAt`           | *number*           | :heavy_check_mark: | N/A                |
 | `fromAccountId`    | *string*           | :heavy_check_mark: | N/A                |
 | `startedAt`        | *number*           | :heavy_check_mark: | N/A                |
-| `doneAt`           | *number*           | :heavy_check_mark: | N/A                |

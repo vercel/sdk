@@ -133,13 +133,32 @@ export type EditRouteRequest = {
   requestBody?: EditRouteRequestBody | undefined;
 };
 
-export const EditRouteRouteType = {
-  Redirect: "redirect",
-  Rewrite: "rewrite",
-  SetStatus: "set_status",
-  Transform: "transform",
+/**
+ * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+ */
+export const EditRouteDestinationType = {
+  Service: "service",
 } as const;
-export type EditRouteRouteType = ClosedEnum<typeof EditRouteRouteType>;
+/**
+ * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+ */
+export type EditRouteDestinationType = ClosedEnum<
+  typeof EditRouteDestinationType
+>;
+
+export type EditRouteDestination2 = {
+  /**
+   * Routing-only path used to select a route inside the target service.
+   */
+  path?: string | undefined;
+  service: string;
+  /**
+   * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+   */
+  type?: EditRouteDestinationType | undefined;
+};
+
+export type EditRouteDestination = EditRouteDestination2 | string;
 
 export const EditRouteHasProjectRoutesType = {
   Cookie: "cookie",
@@ -154,16 +173,16 @@ export type EditRouteValueProjectRoutesEq = string | number;
 
 export type EditRouteValueProjectRoutes2 = {
   eq?: string | number | undefined;
-  neq?: string | undefined;
-  inc?: Array<string> | undefined;
-  ninc?: Array<string> | undefined;
-  pre?: string | undefined;
-  suf?: string | undefined;
-  re?: string | undefined;
   gt?: number | undefined;
   gte?: number | undefined;
+  inc?: Array<string> | undefined;
   lt?: number | undefined;
   lte?: number | undefined;
+  neq?: string | undefined;
+  ninc?: Array<string> | undefined;
+  pre?: string | undefined;
+  re?: string | undefined;
+  suf?: string | undefined;
 };
 
 export type EditRouteHasProjectRoutesValue =
@@ -171,8 +190,8 @@ export type EditRouteHasProjectRoutesValue =
   | EditRouteValueProjectRoutes2;
 
 export type EditRouteHas2 = {
-  type: EditRouteHasProjectRoutesType;
   key: string;
+  type: EditRouteHasProjectRoutesType;
   value?: string | EditRouteValueProjectRoutes2 | undefined;
 };
 
@@ -180,16 +199,16 @@ export type EditRouteValueEq = string | number;
 
 export type EditRouteValue2 = {
   eq?: string | number | undefined;
-  neq?: string | undefined;
-  inc?: Array<string> | undefined;
-  ninc?: Array<string> | undefined;
-  pre?: string | undefined;
-  suf?: string | undefined;
-  re?: string | undefined;
   gt?: number | undefined;
   gte?: number | undefined;
+  inc?: Array<string> | undefined;
   lt?: number | undefined;
   lte?: number | undefined;
+  neq?: string | undefined;
+  ninc?: Array<string> | undefined;
+  pre?: string | undefined;
+  re?: string | undefined;
+  suf?: string | undefined;
 };
 
 export type EditRouteHasValue = string | EditRouteValue2;
@@ -205,6 +224,11 @@ export type EditRouteProjectRoutesHas =
   | (EditRouteHas2 & { type: "header" })
   | (EditRouteHas2 & { type: "query" });
 
+export type EditRouteLocale = {
+  cookie?: string | undefined;
+  redirect?: { [k: string]: string } | undefined;
+};
+
 export const EditRouteMissingProjectRoutesType = {
   Cookie: "cookie",
   Header: "header",
@@ -218,16 +242,16 @@ export type EditRouteValueProjectRoutesResponse200Eq = string | number;
 
 export type EditRouteValueProjectRoutesResponse2002 = {
   eq?: string | number | undefined;
-  neq?: string | undefined;
-  inc?: Array<string> | undefined;
-  ninc?: Array<string> | undefined;
-  pre?: string | undefined;
-  suf?: string | undefined;
-  re?: string | undefined;
   gt?: number | undefined;
   gte?: number | undefined;
+  inc?: Array<string> | undefined;
   lt?: number | undefined;
   lte?: number | undefined;
+  neq?: string | undefined;
+  ninc?: Array<string> | undefined;
+  pre?: string | undefined;
+  re?: string | undefined;
+  suf?: string | undefined;
 };
 
 export type EditRouteMissingProjectRoutesValue =
@@ -235,8 +259,8 @@ export type EditRouteMissingProjectRoutesValue =
   | EditRouteValueProjectRoutesResponse2002;
 
 export type EditRouteMissing2 = {
-  type: EditRouteMissingProjectRoutesType;
   key: string;
+  type: EditRouteMissingProjectRoutesType;
   value?: string | EditRouteValueProjectRoutesResponse2002 | undefined;
 };
 
@@ -244,16 +268,16 @@ export type EditRouteValueProjectRoutesResponseEq = string | number;
 
 export type EditRouteValueProjectRoutesResponse2 = {
   eq?: string | number | undefined;
-  neq?: string | undefined;
-  inc?: Array<string> | undefined;
-  ninc?: Array<string> | undefined;
-  pre?: string | undefined;
-  suf?: string | undefined;
-  re?: string | undefined;
   gt?: number | undefined;
   gte?: number | undefined;
+  inc?: Array<string> | undefined;
   lt?: number | undefined;
   lte?: number | undefined;
+  neq?: string | undefined;
+  ninc?: Array<string> | undefined;
+  pre?: string | undefined;
+  re?: string | undefined;
+  suf?: string | undefined;
 };
 
 export type EditRouteMissingValue =
@@ -289,20 +313,13 @@ export type EditRouteTransformsProjectRoutesOp = ClosedEnum<
 >;
 
 export type EditRouteTransforms2 = {
-  type: "request.path";
-  op: EditRouteTransformsProjectRoutesOp;
   args: string;
   env?: Array<string> | undefined;
+  op: EditRouteTransformsProjectRoutesOp;
+  type: "request.path";
 };
 
-export const EditRouteTransformsType = {
-  RequestHeaders: "request.headers",
-  RequestQuery: "request.query",
-  ResponseHeaders: "response.headers",
-} as const;
-export type EditRouteTransformsType = ClosedEnum<
-  typeof EditRouteTransformsType
->;
+export type EditRouteTransformsArgs = string | Array<string>;
 
 export const EditRouteTransformsOp = {
   Append: "append",
@@ -315,15 +332,15 @@ export type EditRouteKeyEq = string | number;
 
 export type EditRouteKey2 = {
   eq?: string | number | undefined;
-  neq?: string | undefined;
+  gt?: number | undefined;
+  gte?: number | undefined;
   inc?: Array<string> | undefined;
+  lt?: number | undefined;
+  lte?: number | undefined;
+  neq?: string | undefined;
   ninc?: Array<string> | undefined;
   pre?: string | undefined;
   suf?: string | undefined;
-  gt?: number | undefined;
-  gte?: number | undefined;
-  lt?: number | undefined;
-  lte?: number | undefined;
 };
 
 export type EditRouteTransformsKey = string | EditRouteKey2;
@@ -332,14 +349,21 @@ export type EditRouteTransformsTarget = {
   key: string | EditRouteKey2;
 };
 
-export type EditRouteTransformsArgs = string | Array<string>;
+export const EditRouteTransformsType = {
+  RequestHeaders: "request.headers",
+  RequestQuery: "request.query",
+  ResponseHeaders: "response.headers",
+} as const;
+export type EditRouteTransformsType = ClosedEnum<
+  typeof EditRouteTransformsType
+>;
 
 export type EditRouteTransforms1 = {
-  type: EditRouteTransformsType;
-  op: EditRouteTransformsOp;
-  target: EditRouteTransformsTarget;
   args?: string | Array<string> | undefined;
   env?: Array<string> | undefined;
+  op: EditRouteTransformsOp;
+  target: EditRouteTransformsTarget;
+  type: EditRouteTransformsType;
 };
 
 export type EditRouteProjectRoutesTransforms =
@@ -348,52 +372,16 @@ export type EditRouteProjectRoutesTransforms =
   | (EditRouteTransforms1 & { type: "response.headers" })
   | EditRouteTransforms2;
 
-export type EditRouteLocale = {
-  redirect?: { [k: string]: string } | undefined;
-  cookie?: string | undefined;
-};
-
-/**
- * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
- */
-export const EditRouteDestinationType = {
-  Service: "service",
-} as const;
-/**
- * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
- */
-export type EditRouteDestinationType = ClosedEnum<
-  typeof EditRouteDestinationType
->;
-
-export type EditRouteDestination2 = {
-  /**
-   * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
-   */
-  type?: EditRouteDestinationType | undefined;
-  service: string;
-  /**
-   * Routing-only path used to select a route inside the target service.
-   */
-  path?: string | undefined;
-};
-
-export type EditRouteDestination = EditRouteDestination2 | string;
-
 /**
  * The route definition from @vercel/routing-utils.
  */
 export type EditRouteProjectRoutesResponse200Route = {
-  src: string;
-  dest?: string | undefined;
-  headers?: { [k: string]: string } | undefined;
-  methods?: Array<string> | undefined;
-  continue?: boolean | undefined;
-  override?: boolean | undefined;
   caseSensitive?: boolean | undefined;
   check?: boolean | undefined;
-  important?: boolean | undefined;
-  status?: number | undefined;
+  continue?: boolean | undefined;
+  dest?: string | undefined;
+  destination?: EditRouteDestination2 | string | undefined;
+  env?: Array<string> | undefined;
   has?:
     | Array<
       | EditRouteHas1
@@ -402,6 +390,22 @@ export type EditRouteProjectRoutesResponse200Route = {
       | (EditRouteHas2 & { type: "query" })
     >
     | undefined;
+  headers?: { [k: string]: string } | undefined;
+  important?: boolean | undefined;
+  locale?: EditRouteLocale | undefined;
+  methods?: Array<string> | undefined;
+  /**
+   * A middleware index in the `middleware` key under the build result
+   */
+  middleware?: number | undefined;
+  /**
+   * A middleware key within the `output` key under the build result. Overrides a `middleware` definition.
+   */
+  middlewarePath?: string | undefined;
+  /**
+   * The original middleware matchers.
+   */
+  middlewareRawSrc?: Array<string> | undefined;
   missing?:
     | Array<
       | EditRouteMissing1
@@ -411,6 +415,15 @@ export type EditRouteProjectRoutesResponse200Route = {
     >
     | undefined;
   mitigate?: EditRouteMitigate | undefined;
+  override?: boolean | undefined;
+  respectOriginCacheControl?: boolean | undefined;
+  /**
+   * Aliases for `src`, `dest`, and `status`. These provide consistency with the `rewrites`, `redirects`, and `headers` fields which use `source`, `destination`, and `statusCode`. During normalization, the string forms are converted to their canonical forms (`src`, `dest`, `status`) and stripped from the route object. `destination` may also be a service-targeted object, in which case routing is delegated into the named service's internal route table and the object is preserved as-is (not folded into `dest`).
+   */
+  source?: string | undefined;
+  src: string;
+  status?: number | undefined;
+  statusCode?: number | undefined;
   transforms?:
     | Array<
       | (EditRouteTransforms1 & { type: "request.headers" })
@@ -419,28 +432,15 @@ export type EditRouteProjectRoutesResponse200Route = {
       | EditRouteTransforms2
     >
     | undefined;
-  env?: Array<string> | undefined;
-  locale?: EditRouteLocale | undefined;
-  /**
-   * Aliases for `src`, `dest`, and `status`. These provide consistency with the `rewrites`, `redirects`, and `headers` fields which use `source`, `destination`, and `statusCode`. During normalization, the string forms are converted to their canonical forms (`src`, `dest`, `status`) and stripped from the route object. `destination` may also be a service-targeted object, in which case routing is delegated into the named service's internal route table and the object is preserved as-is (not folded into `dest`).
-   */
-  source?: string | undefined;
-  destination?: EditRouteDestination2 | string | undefined;
-  statusCode?: number | undefined;
-  /**
-   * A middleware key within the `output` key under the build result. Overrides a `middleware` definition.
-   */
-  middlewarePath?: string | undefined;
-  /**
-   * The original middleware matchers.
-   */
-  middlewareRawSrc?: Array<string> | undefined;
-  /**
-   * A middleware index in the `middleware` key under the build result
-   */
-  middleware?: number | undefined;
-  respectOriginCacheControl?: boolean | undefined;
 };
+
+export const EditRouteRouteType = {
+  Redirect: "redirect",
+  Rewrite: "rewrite",
+  SetStatus: "set_status",
+  Transform: "transform",
+} as const;
+export type EditRouteRouteType = ClosedEnum<typeof EditRouteRouteType>;
 
 /**
  * The syntax type of the source pattern. Determines how the pattern is compiled to regex.
@@ -458,15 +458,6 @@ export type EditRouteProjectRoutesSrcSyntax = ClosedEnum<
 >;
 
 export type EditRouteProjectRoutesResponseRoute = {
-  routeType?: EditRouteRouteType | undefined;
-  /**
-   * Unique identifier for the routing rule.
-   */
-  id: string;
-  /**
-   * Human-readable name for the routing rule.
-   */
-  name: string;
   /**
    * Optional description of what the routing rule does.
    */
@@ -476,25 +467,34 @@ export type EditRouteProjectRoutesResponseRoute = {
    */
   enabled?: boolean | undefined;
   /**
-   * Whether this route is new and not yet published to production. Set to true only when a route is first created via add-route. Cleared (set to false) when a version is promoted to production.
+   * Unique identifier for the routing rule.
    */
-  staged?: boolean | undefined;
+  id: string;
   /**
-   * The route definition from @vercel/routing-utils.
+   * Human-readable name for the routing rule.
    */
-  route: EditRouteProjectRoutesResponse200Route;
-  /**
-   * Original source pattern provided by user (path-to-regexp or regex). Used to display the user's input in API responses.
-   */
-  rawSrc?: string | undefined;
+  name: string;
   /**
    * Original destination provided by user.
    */
   rawDest?: string | undefined;
   /**
+   * Original source pattern provided by user (path-to-regexp or regex). Used to display the user's input in API responses.
+   */
+  rawSrc?: string | undefined;
+  /**
+   * The route definition from @vercel/routing-utils.
+   */
+  route: EditRouteProjectRoutesResponse200Route;
+  routeType?: EditRouteRouteType | undefined;
+  /**
    * The syntax type of the source pattern. Determines how the pattern is compiled to regex.
    */
   srcSyntax?: EditRouteProjectRoutesSrcSyntax | undefined;
+  /**
+   * Whether this route is new and not yet published to production. Set to true only when a route is first created via add-route. Cleared (set to false) when a version is promoted to production.
+   */
+  staged?: boolean | undefined;
 };
 
 /**
@@ -502,37 +502,37 @@ export type EditRouteProjectRoutesResponseRoute = {
  */
 export type EditRouteVersion = {
   /**
-   * Unique identifier for the version.
+   * The staging alias for previewing this version.
    */
-  id: string;
-  /**
-   * The S3 key where the routing rules are stored.
-   */
-  s3Key: string;
-  /**
-   * Timestamp of when this version was last modified.
-   */
-  lastModified: number;
+  alias?: string | undefined;
   /**
    * The user who created this version.
    */
   createdBy: string;
   /**
-   * Whether this version is staged and not yet promoted to production.
+   * Unique identifier for the version.
    */
-  isStaging?: boolean | undefined;
+  id: string;
   /**
    * Whether this version is currently live in production.
    */
   isLive?: boolean | undefined;
   /**
+   * Whether this version is staged and not yet promoted to production.
+   */
+  isStaging?: boolean | undefined;
+  /**
+   * Timestamp of when this version was last modified.
+   */
+  lastModified: number;
+  /**
    * The number of routing rules in this version.
    */
   ruleCount?: number | undefined;
   /**
-   * The staging alias for previewing this version.
+   * The S3 key where the routing rules are stored.
    */
-  alias?: string | undefined;
+  s3Key: string;
 };
 
 export type EditRouteResponseBody = {
@@ -805,9 +805,50 @@ export function editRouteRequestToJSON(
 }
 
 /** @internal */
-export const EditRouteRouteType$inboundSchema: z.ZodNativeEnum<
-  typeof EditRouteRouteType
-> = z.nativeEnum(EditRouteRouteType);
+export const EditRouteDestinationType$inboundSchema: z.ZodNativeEnum<
+  typeof EditRouteDestinationType
+> = z.nativeEnum(EditRouteDestinationType);
+
+/** @internal */
+export const EditRouteDestination2$inboundSchema: z.ZodType<
+  EditRouteDestination2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  path: types.optional(types.string()),
+  service: types.string(),
+  type: types.optional(EditRouteDestinationType$inboundSchema),
+});
+
+export function editRouteDestination2FromJSON(
+  jsonString: string,
+): SafeParseResult<EditRouteDestination2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EditRouteDestination2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EditRouteDestination2' from JSON`,
+  );
+}
+
+/** @internal */
+export const EditRouteDestination$inboundSchema: z.ZodType<
+  EditRouteDestination,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => EditRouteDestination2$inboundSchema),
+  types.string(),
+]);
+
+export function editRouteDestinationFromJSON(
+  jsonString: string,
+): SafeParseResult<EditRouteDestination, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EditRouteDestination$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EditRouteDestination' from JSON`,
+  );
+}
 
 /** @internal */
 export const EditRouteHasProjectRoutesType$inboundSchema: z.ZodNativeEnum<
@@ -838,16 +879,16 @@ export const EditRouteValueProjectRoutes2$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   eq: types.optional(smartUnion([types.string(), types.number()])),
-  neq: types.optional(types.string()),
-  inc: types.optional(z.array(types.string())),
-  ninc: types.optional(z.array(types.string())),
-  pre: types.optional(types.string()),
-  suf: types.optional(types.string()),
-  re: types.optional(types.string()),
   gt: types.optional(types.number()),
   gte: types.optional(types.number()),
+  inc: types.optional(z.array(types.string())),
   lt: types.optional(types.number()),
   lte: types.optional(types.number()),
+  neq: types.optional(types.string()),
+  ninc: types.optional(z.array(types.string())),
+  pre: types.optional(types.string()),
+  re: types.optional(types.string()),
+  suf: types.optional(types.string()),
 });
 
 export function editRouteValueProjectRoutes2FromJSON(
@@ -886,8 +927,8 @@ export const EditRouteHas2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: EditRouteHasProjectRoutesType$inboundSchema,
   key: types.string(),
+  type: EditRouteHasProjectRoutesType$inboundSchema,
   value: types.optional(
     smartUnion([
       types.string(),
@@ -930,16 +971,16 @@ export const EditRouteValue2$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   eq: types.optional(smartUnion([types.string(), types.number()])),
-  neq: types.optional(types.string()),
-  inc: types.optional(z.array(types.string())),
-  ninc: types.optional(z.array(types.string())),
-  pre: types.optional(types.string()),
-  suf: types.optional(types.string()),
-  re: types.optional(types.string()),
   gt: types.optional(types.number()),
   gte: types.optional(types.number()),
+  inc: types.optional(z.array(types.string())),
   lt: types.optional(types.number()),
   lte: types.optional(types.number()),
+  neq: types.optional(types.string()),
+  ninc: types.optional(z.array(types.string())),
+  pre: types.optional(types.string()),
+  re: types.optional(types.string()),
+  suf: types.optional(types.string()),
 });
 
 export function editRouteValue2FromJSON(
@@ -1021,6 +1062,26 @@ export function editRouteProjectRoutesHasFromJSON(
 }
 
 /** @internal */
+export const EditRouteLocale$inboundSchema: z.ZodType<
+  EditRouteLocale,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  cookie: types.optional(types.string()),
+  redirect: types.optional(z.record(types.string())),
+});
+
+export function editRouteLocaleFromJSON(
+  jsonString: string,
+): SafeParseResult<EditRouteLocale, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EditRouteLocale$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EditRouteLocale' from JSON`,
+  );
+}
+
+/** @internal */
 export const EditRouteMissingProjectRoutesType$inboundSchema: z.ZodNativeEnum<
   typeof EditRouteMissingProjectRoutesType
 > = z.nativeEnum(EditRouteMissingProjectRoutesType);
@@ -1055,16 +1116,16 @@ export const EditRouteValueProjectRoutesResponse2002$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   eq: types.optional(smartUnion([types.string(), types.number()])),
-  neq: types.optional(types.string()),
-  inc: types.optional(z.array(types.string())),
-  ninc: types.optional(z.array(types.string())),
-  pre: types.optional(types.string()),
-  suf: types.optional(types.string()),
-  re: types.optional(types.string()),
   gt: types.optional(types.number()),
   gte: types.optional(types.number()),
+  inc: types.optional(z.array(types.string())),
   lt: types.optional(types.number()),
   lte: types.optional(types.number()),
+  neq: types.optional(types.string()),
+  ninc: types.optional(z.array(types.string())),
+  pre: types.optional(types.string()),
+  re: types.optional(types.string()),
+  suf: types.optional(types.string()),
 });
 
 export function editRouteValueProjectRoutesResponse2002FromJSON(
@@ -1110,8 +1171,8 @@ export const EditRouteMissing2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: EditRouteMissingProjectRoutesType$inboundSchema,
   key: types.string(),
+  type: EditRouteMissingProjectRoutesType$inboundSchema,
   value: types.optional(
     smartUnion([
       types.string(),
@@ -1155,16 +1216,16 @@ export const EditRouteValueProjectRoutesResponse2$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   eq: types.optional(smartUnion([types.string(), types.number()])),
-  neq: types.optional(types.string()),
-  inc: types.optional(z.array(types.string())),
-  ninc: types.optional(z.array(types.string())),
-  pre: types.optional(types.string()),
-  suf: types.optional(types.string()),
-  re: types.optional(types.string()),
   gt: types.optional(types.number()),
   gte: types.optional(types.number()),
+  inc: types.optional(z.array(types.string())),
   lt: types.optional(types.number()),
   lte: types.optional(types.number()),
+  neq: types.optional(types.string()),
+  ninc: types.optional(z.array(types.string())),
+  pre: types.optional(types.string()),
+  re: types.optional(types.string()),
+  suf: types.optional(types.string()),
 });
 
 export function editRouteValueProjectRoutesResponse2FromJSON(
@@ -1284,10 +1345,10 @@ export const EditRouteTransforms2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("request.path"),
-  op: EditRouteTransformsProjectRoutesOp$inboundSchema,
   args: types.string(),
   env: types.optional(z.array(types.string())),
+  op: EditRouteTransformsProjectRoutesOp$inboundSchema,
+  type: types.literal("request.path"),
 });
 
 export function editRouteTransforms2FromJSON(
@@ -1301,9 +1362,21 @@ export function editRouteTransforms2FromJSON(
 }
 
 /** @internal */
-export const EditRouteTransformsType$inboundSchema: z.ZodNativeEnum<
-  typeof EditRouteTransformsType
-> = z.nativeEnum(EditRouteTransformsType);
+export const EditRouteTransformsArgs$inboundSchema: z.ZodType<
+  EditRouteTransformsArgs,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), z.array(types.string())]);
+
+export function editRouteTransformsArgsFromJSON(
+  jsonString: string,
+): SafeParseResult<EditRouteTransformsArgs, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EditRouteTransformsArgs$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EditRouteTransformsArgs' from JSON`,
+  );
+}
 
 /** @internal */
 export const EditRouteTransformsOp$inboundSchema: z.ZodNativeEnum<
@@ -1334,15 +1407,15 @@ export const EditRouteKey2$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   eq: types.optional(smartUnion([types.string(), types.number()])),
-  neq: types.optional(types.string()),
+  gt: types.optional(types.number()),
+  gte: types.optional(types.number()),
   inc: types.optional(z.array(types.string())),
+  lt: types.optional(types.number()),
+  lte: types.optional(types.number()),
+  neq: types.optional(types.string()),
   ninc: types.optional(z.array(types.string())),
   pre: types.optional(types.string()),
   suf: types.optional(types.string()),
-  gt: types.optional(types.number()),
-  gte: types.optional(types.number()),
-  lt: types.optional(types.number()),
-  lte: types.optional(types.number()),
 });
 
 export function editRouteKey2FromJSON(
@@ -1392,21 +1465,9 @@ export function editRouteTransformsTargetFromJSON(
 }
 
 /** @internal */
-export const EditRouteTransformsArgs$inboundSchema: z.ZodType<
-  EditRouteTransformsArgs,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([types.string(), z.array(types.string())]);
-
-export function editRouteTransformsArgsFromJSON(
-  jsonString: string,
-): SafeParseResult<EditRouteTransformsArgs, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => EditRouteTransformsArgs$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EditRouteTransformsArgs' from JSON`,
-  );
-}
+export const EditRouteTransformsType$inboundSchema: z.ZodNativeEnum<
+  typeof EditRouteTransformsType
+> = z.nativeEnum(EditRouteTransformsType);
 
 /** @internal */
 export const EditRouteTransforms1$inboundSchema: z.ZodType<
@@ -1414,11 +1475,11 @@ export const EditRouteTransforms1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: EditRouteTransformsType$inboundSchema,
-  op: EditRouteTransformsOp$inboundSchema,
-  target: z.lazy(() => EditRouteTransformsTarget$inboundSchema),
   args: types.optional(smartUnion([types.string(), z.array(types.string())])),
   env: types.optional(z.array(types.string())),
+  op: EditRouteTransformsOp$inboundSchema,
+  target: z.lazy(() => EditRouteTransformsTarget$inboundSchema),
+  type: EditRouteTransformsType$inboundSchema,
 });
 
 export function editRouteTransforms1FromJSON(
@@ -1460,87 +1521,22 @@ export function editRouteProjectRoutesTransformsFromJSON(
 }
 
 /** @internal */
-export const EditRouteLocale$inboundSchema: z.ZodType<
-  EditRouteLocale,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  redirect: types.optional(z.record(types.string())),
-  cookie: types.optional(types.string()),
-});
-
-export function editRouteLocaleFromJSON(
-  jsonString: string,
-): SafeParseResult<EditRouteLocale, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => EditRouteLocale$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EditRouteLocale' from JSON`,
-  );
-}
-
-/** @internal */
-export const EditRouteDestinationType$inboundSchema: z.ZodNativeEnum<
-  typeof EditRouteDestinationType
-> = z.nativeEnum(EditRouteDestinationType);
-
-/** @internal */
-export const EditRouteDestination2$inboundSchema: z.ZodType<
-  EditRouteDestination2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: types.optional(EditRouteDestinationType$inboundSchema),
-  service: types.string(),
-  path: types.optional(types.string()),
-});
-
-export function editRouteDestination2FromJSON(
-  jsonString: string,
-): SafeParseResult<EditRouteDestination2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => EditRouteDestination2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EditRouteDestination2' from JSON`,
-  );
-}
-
-/** @internal */
-export const EditRouteDestination$inboundSchema: z.ZodType<
-  EditRouteDestination,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.lazy(() => EditRouteDestination2$inboundSchema),
-  types.string(),
-]);
-
-export function editRouteDestinationFromJSON(
-  jsonString: string,
-): SafeParseResult<EditRouteDestination, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => EditRouteDestination$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EditRouteDestination' from JSON`,
-  );
-}
-
-/** @internal */
 export const EditRouteProjectRoutesResponse200Route$inboundSchema: z.ZodType<
   EditRouteProjectRoutesResponse200Route,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  src: types.string(),
-  dest: types.optional(types.string()),
-  headers: types.optional(z.record(types.string())),
-  methods: types.optional(z.array(types.string())),
-  continue: types.optional(types.boolean()),
-  override: types.optional(types.boolean()),
   caseSensitive: types.optional(types.boolean()),
   check: types.optional(types.boolean()),
-  important: types.optional(types.boolean()),
-  status: types.optional(types.number()),
+  continue: types.optional(types.boolean()),
+  dest: types.optional(types.string()),
+  destination: types.optional(
+    smartUnion([
+      z.lazy(() => EditRouteDestination2$inboundSchema),
+      types.string(),
+    ]),
+  ),
+  env: types.optional(z.array(types.string())),
   has: types.optional(
     z.array(z.union([
       z.lazy(() => EditRouteHas1$inboundSchema),
@@ -1555,6 +1551,13 @@ export const EditRouteProjectRoutesResponse200Route$inboundSchema: z.ZodType<
       ),
     ])),
   ),
+  headers: types.optional(z.record(types.string())),
+  important: types.optional(types.boolean()),
+  locale: types.optional(z.lazy(() => EditRouteLocale$inboundSchema)),
+  methods: types.optional(z.array(types.string())),
+  middleware: types.optional(types.number()),
+  middlewarePath: types.optional(types.string()),
+  middlewareRawSrc: types.optional(z.array(types.string())),
   missing: types.optional(
     z.array(z.union([
       z.lazy(() => EditRouteMissing1$inboundSchema),
@@ -1570,6 +1573,12 @@ export const EditRouteProjectRoutesResponse200Route$inboundSchema: z.ZodType<
     ])),
   ),
   mitigate: types.optional(z.lazy(() => EditRouteMitigate$inboundSchema)),
+  override: types.optional(types.boolean()),
+  respectOriginCacheControl: types.optional(types.boolean()),
+  source: types.optional(types.string()),
+  src: types.string(),
+  status: types.optional(types.number()),
+  statusCode: types.optional(types.number()),
   transforms: types.optional(
     z.array(z.union([
       z.lazy(() => EditRouteTransforms1$inboundSchema).and(
@@ -1584,20 +1593,6 @@ export const EditRouteProjectRoutesResponse200Route$inboundSchema: z.ZodType<
       z.lazy(() => EditRouteTransforms2$inboundSchema),
     ])),
   ),
-  env: types.optional(z.array(types.string())),
-  locale: types.optional(z.lazy(() => EditRouteLocale$inboundSchema)),
-  source: types.optional(types.string()),
-  destination: types.optional(
-    smartUnion([
-      z.lazy(() => EditRouteDestination2$inboundSchema),
-      types.string(),
-    ]),
-  ),
-  statusCode: types.optional(types.number()),
-  middlewarePath: types.optional(types.string()),
-  middlewareRawSrc: types.optional(z.array(types.string())),
-  middleware: types.optional(types.number()),
-  respectOriginCacheControl: types.optional(types.boolean()),
 });
 
 export function editRouteProjectRoutesResponse200RouteFromJSON(
@@ -1612,6 +1607,11 @@ export function editRouteProjectRoutesResponse200RouteFromJSON(
 }
 
 /** @internal */
+export const EditRouteRouteType$inboundSchema: z.ZodNativeEnum<
+  typeof EditRouteRouteType
+> = z.nativeEnum(EditRouteRouteType);
+
+/** @internal */
 export const EditRouteProjectRoutesSrcSyntax$inboundSchema: z.ZodNativeEnum<
   typeof EditRouteProjectRoutesSrcSyntax
 > = z.nativeEnum(EditRouteProjectRoutesSrcSyntax);
@@ -1622,16 +1622,16 @@ export const EditRouteProjectRoutesResponseRoute$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  routeType: types.optional(EditRouteRouteType$inboundSchema),
-  id: types.string(),
-  name: types.string(),
   description: types.optional(types.string()),
   enabled: types.optional(types.boolean()),
-  staged: types.optional(types.boolean()),
-  route: z.lazy(() => EditRouteProjectRoutesResponse200Route$inboundSchema),
-  rawSrc: types.optional(types.string()),
+  id: types.string(),
+  name: types.string(),
   rawDest: types.optional(types.string()),
+  rawSrc: types.optional(types.string()),
+  route: z.lazy(() => EditRouteProjectRoutesResponse200Route$inboundSchema),
+  routeType: types.optional(EditRouteRouteType$inboundSchema),
   srcSyntax: types.optional(EditRouteProjectRoutesSrcSyntax$inboundSchema),
+  staged: types.optional(types.boolean()),
 });
 
 export function editRouteProjectRoutesResponseRouteFromJSON(
@@ -1651,14 +1651,14 @@ export const EditRouteVersion$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: types.string(),
-  s3Key: types.string(),
-  lastModified: types.number(),
-  createdBy: types.string(),
-  isStaging: types.optional(types.boolean()),
-  isLive: types.optional(types.boolean()),
-  ruleCount: types.optional(types.number()),
   alias: types.optional(types.string()),
+  createdBy: types.string(),
+  id: types.string(),
+  isLive: types.optional(types.boolean()),
+  isStaging: types.optional(types.boolean()),
+  lastModified: types.number(),
+  ruleCount: types.optional(types.number()),
+  s3Key: types.string(),
 });
 
 export function editRouteVersionFromJSON(

@@ -3,22 +3,22 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyManagedRules } from "@vercel/sdk/models/responsebodydeploymentexpiration.js";
+import { GetProjectsResponseBodyManagedRules } from "@vercel/sdk/models/responsebodyabuse.js";
 
 let value: GetProjectsResponseBodyManagedRules = {
-  vercelRuleset: {
-    active: false,
-  },
-  trafficSources: {
+  aiBots: {
     active: false,
   },
   botFilter: {
     active: false,
   },
-  aiBots: {
+  owasp: {
+    active: false,
+  },
+  trafficSources: {
     active: true,
   },
-  owasp: {
+  vercelRuleset: {
     active: true,
   },
 };
@@ -28,8 +28,8 @@ let value: GetProjectsResponseBodyManagedRules = {
 
 | Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `vercelRuleset`                                                                                    | [models.GetProjectsResponseBodyVercelRuleset](../models/getprojectsresponsebodyvercelruleset.md)   | :heavy_check_mark:                                                                                 | N/A                                                                                                |
-| `trafficSources`                                                                                   | [models.GetProjectsResponseBodyTrafficSources](../models/getprojectsresponsebodytrafficsources.md) | :heavy_check_mark:                                                                                 | N/A                                                                                                |
-| `botFilter`                                                                                        | [models.GetProjectsResponseBodyBotFilter](../models/getprojectsresponsebodybotfilter.md)           | :heavy_check_mark:                                                                                 | N/A                                                                                                |
 | `aiBots`                                                                                           | [models.GetProjectsResponseBodyAiBots](../models/getprojectsresponsebodyaibots.md)                 | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `botFilter`                                                                                        | [models.GetProjectsResponseBodyBotFilter](../models/getprojectsresponsebodybotfilter.md)           | :heavy_check_mark:                                                                                 | N/A                                                                                                |
 | `owasp`                                                                                            | [models.GetProjectsResponseBodyOwasp](../models/getprojectsresponsebodyowasp.md)                   | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `trafficSources`                                                                                   | [models.GetProjectsResponseBodyTrafficSources](../models/getprojectsresponsebodytrafficsources.md) | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `vercelRuleset`                                                                                    | [models.GetProjectsResponseBodyVercelRuleset](../models/getprojectsresponsebodyvercelruleset.md)   | :heavy_check_mark:                                                                                 | N/A                                                                                                |

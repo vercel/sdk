@@ -8,11 +8,11 @@ A user-facing event type.
 import { ListEventType } from "@vercel/sdk/models/listeventtype.js";
 
 let value: ListEventType = {
-  name: "project-analytics-enabled",
-  description: "monocle jealous accurate vain obscure though",
   categories: [
     "deployment",
   ],
+  description: "mummify medium whirlwind vanish via glaring yum",
+  name: "project-domain-deleted",
 };
 ```
 
@@ -20,8 +20,8 @@ let value: ListEventType = {
 
 | Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    | Example                                                                        |
 | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `name`                                                                         | [models.Name](../models/name.md)                                               | :heavy_check_mark:                                                             | The name of the event type.                                                    | deployment-created                                                             |
-| `description`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | Description of the event, visible to users in the Activity dashboard and docs. |                                                                                |
 | `categories`                                                                   | [models.ListEventTypeCategories](../models/listeventtypecategories.md)[]       | :heavy_check_mark:                                                             | Categories that group this event type with related event types.                | [<br/>"deployment"<br/>]                                                       |
 | `deprecated`                                                                   | *boolean*                                                                      | :heavy_minus_sign:                                                             | Present only when this event type is deprecated.                               |                                                                                |
+| `description`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | Description of the event, visible to users in the Activity dashboard and docs. |                                                                                |
+| `name`                                                                         | [models.Name](../models/name.md)                                               | :heavy_check_mark:                                                             | The name of the event type.                                                    | deployment-created                                                             |
 | `replacedBy`                                                                   | [models.ReplacedBy](../models/replacedby.md)[]                                 | :heavy_minus_sign:                                                             | Event type names that supersede this deprecated event type.                    |                                                                                |

@@ -6,8 +6,8 @@
 import { GetDrainResponseBodySampling } from "@vercel/sdk/models/getdrainop.js";
 
 let value: GetDrainResponseBodySampling = {
-  type: "head_sampling",
   rate: 5823.78,
+  type: "head_sampling",
 };
 ```
 
@@ -15,7 +15,7 @@ let value: GetDrainResponseBodySampling = {
 
 | Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
 | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `type`                                                                   | [models.GetDrainResponseBodyType](../models/getdrainresponsebodytype.md) | :heavy_check_mark:                                                       | N/A                                                                      |
-| `rate`                                                                   | *number*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
 | `env`                                                                    | [models.GetDrainResponseBodyEnv](../models/getdrainresponsebodyenv.md)   | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `rate`                                                                   | *number*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
 | `requestPath`                                                            | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `type`                                                                   | [models.GetDrainResponseBodyType](../models/getdrainresponsebodytype.md) | :heavy_check_mark:                                                       | N/A                                                                      |

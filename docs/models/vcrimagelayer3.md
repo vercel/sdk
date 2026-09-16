@@ -10,8 +10,8 @@ let value: VcrImageLayer3 = {
   digest: "<value>",
   operation: "RUN",
   sizeBytes: 7274.03,
-  type: "ENV",
   env: "<value>",
+  type: "ENV",
 };
 ```
 
@@ -23,5 +23,5 @@ let value: VcrImageLayer3 = {
 | `digest`                                                               | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
 | `operation`                                                            | [models.VcrImageLayer3Operation](../models/vcrimagelayer3operation.md) | :heavy_check_mark:                                                     | Docker/OCI build instruction associated with an image layer.           |
 | `sizeBytes`                                                            | *number*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
-| `type`                                                                 | *"ENV"*                                                                | :heavy_check_mark:                                                     | N/A                                                                    |
 | `env`                                                                  | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `type`                                                                 | *"ENV"*                                                                | :heavy_check_mark:                                                     | N/A                                                                    |

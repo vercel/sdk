@@ -5,7 +5,7 @@ Contains the timestamps when a user was notified about their usage
 ## Example Usage
 
 ```typescript
-import { UsageAlerts } from "@vercel/sdk/models/usereventpayloadtarget.js";
+import { UsageAlerts } from "@vercel/sdk/models/onehundredandfortyeight.js";
 
 let value: UsageAlerts = {};
 ```
@@ -14,5 +14,5 @@ let value: UsageAlerts = {};
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `warningAt`        | *number*           | :heavy_minus_sign: | N/A                |
 | `blockingAt`       | *number*           | :heavy_minus_sign: | N/A                |
+| `warningAt`        | *number*           | :heavy_minus_sign: | N/A                |

@@ -3,14 +3,14 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupProtectionBypass1 } from "@vercel/sdk/models/getmicrofrontendsingroupinternalroutes2.js";
+import { GetMicrofrontendsInGroupProtectionBypass1 } from "@vercel/sdk/models/getmicrofrontendsingroupfrom1.js";
 
 let value: GetMicrofrontendsInGroupProtectionBypass1 = {
+  configurationId: "<id>",
   createdAt: 4063.95,
   createdBy: "<value>",
-  scope: "integration-automation-bypass",
   integrationId: "<id>",
-  configurationId: "<id>",
+  scope: "integration-automation-bypass",
 };
 ```
 
@@ -18,8 +18,8 @@ let value: GetMicrofrontendsInGroupProtectionBypass1 = {
 
 | Field                             | Type                              | Required                          | Description                       |
 | --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| `configurationId`                 | *string*                          | :heavy_check_mark:                | N/A                               |
 | `createdAt`                       | *number*                          | :heavy_check_mark:                | N/A                               |
 | `createdBy`                       | *string*                          | :heavy_check_mark:                | N/A                               |
-| `scope`                           | *"integration-automation-bypass"* | :heavy_check_mark:                | N/A                               |
 | `integrationId`                   | *string*                          | :heavy_check_mark:                | N/A                               |
-| `configurationId`                 | *string*                          | :heavy_check_mark:                | N/A                               |
+| `scope`                           | *"integration-automation-bypass"* | :heavy_check_mark:                | N/A                               |

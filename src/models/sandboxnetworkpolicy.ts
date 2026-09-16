@@ -31,17 +31,13 @@ export type Mode = ClosedEnum<typeof Mode>;
  */
 export type SandboxNetworkPolicy = {
   /**
-   * The network policy mode. - 'allow-all': All traffic is allowed. - 'deny-all': All traffic is blocked. - 'custom': Traffic is controlled by explicit allow/deny rules.
+   * List of IP address ranges (in CIDR notation) the sandbox is allowed to connect to.
    */
-  mode: Mode;
+  allowedCIDRs?: Array<string> | undefined;
   /**
    * List of domain names the sandbox is allowed to connect to. Supports wildcard patterns (e.g., "*.vercel.com" matches all subdomains).
    */
   allowedDomains?: Array<string> | undefined;
-  /**
-   * List of IP address ranges (in CIDR notation) the sandbox is allowed to connect to.
-   */
-  allowedCIDRs?: Array<string> | undefined;
   /**
    * List of IP address ranges (in CIDR notation) the sandbox is blocked from connecting to. These rules take precedence over all allowed rules.
    */
@@ -50,6 +46,10 @@ export type SandboxNetworkPolicy = {
    * HTTP header injection rules for outgoing requests matching specific domains.
    */
   injectionRules?: Array<SandboxInjectionRule> | undefined;
+  /**
+   * The network policy mode. - 'allow-all': All traffic is allowed. - 'deny-all': All traffic is blocked. - 'custom': Traffic is controlled by explicit allow/deny rules.
+   */
+  mode: Mode;
 };
 
 /** @internal */
@@ -63,11 +63,11 @@ export const SandboxNetworkPolicy$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  mode: Mode$inboundSchema,
-  allowedDomains: types.optional(z.array(types.string())),
   allowedCIDRs: types.optional(z.array(types.string())),
+  allowedDomains: types.optional(z.array(types.string())),
   deniedCIDRs: types.optional(z.array(types.string())),
   injectionRules: types.optional(z.array(SandboxInjectionRule$inboundSchema)),
+  mode: Mode$inboundSchema,
 });
 
 export function sandboxNetworkPolicyFromJSON(

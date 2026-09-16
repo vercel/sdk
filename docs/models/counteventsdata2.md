@@ -6,8 +6,8 @@
 import { CountEventsData2 } from "@vercel/sdk/models/counteventsop.js";
 
 let value: CountEventsData2 = {
-  visitors: 3754.65,
-  count: 2958.95,
+  count: 3754.65,
+  visitors: 2958.95,
 };
 ```
 
@@ -15,5 +15,5 @@ let value: CountEventsData2 = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `visitors`         | *number*           | :heavy_check_mark: | N/A                |
 | `count`            | *number*           | :heavy_check_mark: | N/A                |
+| `visitors`         | *number*           | :heavy_check_mark: | N/A                |

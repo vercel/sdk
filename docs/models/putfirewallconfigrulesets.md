@@ -8,10 +8,10 @@
 ```typescript
 const value: models.PutFirewallConfigRulesets1[] = [
   {
-    id: "<id>",
-    name: "<value>",
     active: true,
     conditionGroup: [],
+    id: "<id>",
+    name: "<value>",
   },
 ];
 ```

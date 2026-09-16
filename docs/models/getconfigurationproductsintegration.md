@@ -3,12 +3,12 @@
 ## Example Usage
 
 ```typescript
-import { GetConfigurationProductsIntegration } from "@vercel/sdk/models/getconfigurationproductsresponsebody.js";
+import { GetConfigurationProductsIntegration } from "@vercel/sdk/models/properties7.js";
 
 let value: GetConfigurationProductsIntegration = {
   id: "<id>",
-  slug: "<value>",
   name: "<value>",
+  slug: "<value>",
 };
 ```
 
@@ -17,5 +17,5 @@ let value: GetConfigurationProductsIntegration = {
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `id`               | *string*           | :heavy_check_mark: | N/A                |
-| `slug`             | *string*           | :heavy_check_mark: | N/A                |
 | `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `slug`             | *string*           | :heavy_check_mark: | N/A                |

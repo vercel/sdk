@@ -7,22 +7,22 @@ import { Products } from "@vercel/sdk/models/getconfigurationproductsresponsebod
 
 let value: Products = {
   id: "<id>",
-  slug: "<value>",
-  name: "<value>",
-  protocols: {},
   metadataSchema: {
-    type: "object",
     properties: {
       "key": {
-        type: "array",
         items: {
           type: "number",
         },
+        type: "array",
         uiControl: "slider",
         uiSteps: [],
       },
     },
+    type: "object",
   },
+  name: "<value>",
+  protocols: {},
+  slug: "<value>",
 };
 ```
 
@@ -31,8 +31,8 @@ let value: Products = {
 | Field                                                  | Type                                                   | Required                                               | Description                                            |
 | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
 | `id`                                                   | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
-| `slug`                                                 | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
-| `name`                                                 | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
-| `protocols`                                            | [models.Protocols](../models/protocols.md)             | :heavy_check_mark:                                     | N/A                                                    |
-| `primaryProtocol`                                      | [models.PrimaryProtocol](../models/primaryprotocol.md) | :heavy_minus_sign:                                     | N/A                                                    |
 | `metadataSchema`                                       | [models.MetadataSchema](../models/metadataschema.md)   | :heavy_check_mark:                                     | N/A                                                    |
+| `name`                                                 | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
+| `primaryProtocol`                                      | [models.PrimaryProtocol](../models/primaryprotocol.md) | :heavy_minus_sign:                                     | N/A                                                    |
+| `protocols`                                            | [models.Protocols](../models/protocols.md)             | :heavy_check_mark:                                     | N/A                                                    |
+| `slug`                                                 | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |

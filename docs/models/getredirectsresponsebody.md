@@ -17,12 +17,12 @@ const value: { [k: string]: any } = {
 
 ```typescript
 const value: models.GetRedirectsResponseBody2 = {
-  redirects: [],
   pagination: {
+    numPages: 1969.09,
     page: 3516.57,
     perPage: 4243.02,
-    numPages: 1133.45,
   },
+  redirects: [],
 };
 ```
 
@@ -30,17 +30,22 @@ const value: models.GetRedirectsResponseBody2 = {
 
 ```typescript
 const value: models.ResponseBody3 = {
+  pagination: {
+    numPages: 8356.94,
+    page: 4187.18,
+    perPage: 8377.18,
+  },
+  redirects: [
+    {
+      destination: "<value>",
+      source: "<value>",
+    },
+  ],
   version: {
+    createdBy: "<value>",
     id: "<id>",
     key: "<key>",
-    lastModified: 8356.94,
-    createdBy: "<value>",
-  },
-  redirects: [],
-  pagination: {
-    page: 8377.18,
-    perPage: 6882.51,
-    numPages: 8198.95,
+    lastModified: 8198.95,
   },
 };
 ```

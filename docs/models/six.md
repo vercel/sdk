@@ -8,9 +8,9 @@ The payload of the event, if requested.
 import { Six } from "@vercel/sdk/models/userevent.js";
 
 let value: Six = {
+  policyId: "<id>",
   projectId: "<id>",
   projectName: "<value>",
-  policyId: "<id>",
 };
 ```
 
@@ -18,6 +18,6 @@ let value: Six = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
+| `policyId`         | *string*           | :heavy_check_mark: | N/A                |
 | `projectId`        | *string*           | :heavy_check_mark: | N/A                |
 | `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `policyId`         | *string*           | :heavy_check_mark: | N/A                |

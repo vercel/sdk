@@ -8,10 +8,10 @@ import { StageRedirectsResponseBody } from "@vercel/sdk/models/stageredirectsop.
 let value: StageRedirectsResponseBody = {
   alias: "<value>",
   version: {
+    createdBy: "<value>",
     id: "<id>",
     key: "<key>",
     lastModified: 4066.68,
-    createdBy: "<value>",
   },
 };
 ```

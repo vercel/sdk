@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreatorApp } from "@vercel/sdk/models/createprojectpasswordprotection.js";
+import { CreatorApp } from "@vercel/sdk/models/createprojectcontenthint2.js";
 
 let value: CreatorApp = {
   id: "<id>",
@@ -14,5 +14,5 @@ let value: CreatorApp = {
 
 | Field                                                                                                                   | Type                                                                                                                    | Required                                                                                                                | Description                                                                                                             |
 | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| `id`                                                                                                                    | *string*                                                                                                                | :heavy_check_mark:                                                                                                      | The internal ID of the Vercel App backing this principal.                                                               |
 | `clientId`                                                                                                              | *string*                                                                                                                | :heavy_minus_sign:                                                                                                      | The protocol-facing OAuth client ID. This may differ from {@link id} when Client ID Metadata Documents (CIMD) are used. |
+| `id`                                                                                                                    | *string*                                                                                                                | :heavy_check_mark:                                                                                                      | The internal ID of the Vercel App backing this principal.                                                               |

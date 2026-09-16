@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadItems } from "@vercel/sdk/models/payloadaccessgroup.js";
+import { PayloadItems } from "@vercel/sdk/models/twentynine.js";
 
 let value: PayloadItems = {
   type: "string",
@@ -12,6 +12,6 @@ let value: PayloadItems = {
 
 ## Fields
 
-| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `type`                                                                                           | [models.UserEventPayload56AfterResourcesType](../models/usereventpayload56afterresourcestype.md) | :heavy_check_mark:                                                                               | N/A                                                                                              |
+| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `type`                                                                                             | [models.UserEventPayload56BeforeResourcesType](../models/usereventpayload56beforeresourcestype.md) | :heavy_check_mark:                                                                                 | N/A                                                                                                |

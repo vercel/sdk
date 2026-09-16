@@ -11,16 +11,16 @@ let value: ListFlagsV2ResponseBody = {
   },
   data: [
     {
-      typeName: "marketplaceFlag",
-      id: "<id>",
       externalId: "<id>",
-      slug: "<value>",
+      id: "<id>",
+      integrationConfigurationId: "<id>",
       origin: "<value>",
       ownerId: "<id>",
       projectId: "<id>",
       resourceId: "<id>",
-      integrationConfigurationId: "<id>",
+      slug: "<value>",
       state: "archived",
+      typeName: "marketplaceFlag",
     },
   ],
 };

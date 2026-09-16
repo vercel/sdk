@@ -3,12 +3,12 @@
 ## Example Usage
 
 ```typescript
-import { Credentials2 } from "@vercel/sdk/models/usereventpayload171gituserid.js";
+import { Credentials2 } from "@vercel/sdk/models/usereventpayload171newownerfeatureblocksworkflowstoragewriteblockreason.js";
 
 let value: Credentials2 = {
-  type: "github-oauth-custom-host",
   host: "silver-perp.biz",
   id: "<id>",
+  type: "github-oauth-custom-host",
 };
 ```
 
@@ -16,6 +16,6 @@ let value: Credentials2 = {
 
 | Field                        | Type                         | Required                     | Description                  |
 | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-| `type`                       | *"github-oauth-custom-host"* | :heavy_check_mark:           | N/A                          |
 | `host`                       | *string*                     | :heavy_check_mark:           | N/A                          |
 | `id`                         | *string*                     | :heavy_check_mark:           | N/A                          |
+| `type`                       | *"github-oauth-custom-host"* | :heavy_check_mark:           | N/A                          |

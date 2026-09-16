@@ -6,8 +6,8 @@
 import { FilterProjectEnvsContentHint12 } from "@vercel/sdk/models/filterprojectenvsop.js";
 
 let value: FilterProjectEnvsContentHint12 = {
-  type: "postgres-host",
   storeId: "<id>",
+  type: "postgres-host",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: FilterProjectEnvsContentHint12 = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `type`             | *"postgres-host"*  | :heavy_check_mark: | N/A                |
 | `storeId`          | *string*           | :heavy_check_mark: | N/A                |
+| `type`             | *"postgres-host"*  | :heavy_check_mark: | N/A                |

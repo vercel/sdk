@@ -1,15 +1,17 @@
 # UpdateMicrofrontendsType
 
+The type of environment (production, preview, or development)
+
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsType } from "@vercel/sdk/models/updatemicrofrontendsprojectsfunctiondefaultmemorytype.js";
+import { UpdateMicrofrontendsType } from "@vercel/sdk/models/updatemicrofrontendshaskey.js";
 
-let value: UpdateMicrofrontendsType = "sensitive";
+let value: UpdateMicrofrontendsType = "production";
 ```
 
 ## Values
 
 ```typescript
-"encrypted" | "plain" | "secret" | "sensitive" | "system"
+"development" | "preview" | "production"
 ```

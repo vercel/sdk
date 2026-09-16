@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsPassport } from "@vercel/sdk/models/updatemicrofrontendsprojectsfunctiondefaultmemorytype.js";
+import { UpdateMicrofrontendsPassport } from "@vercel/sdk/models/updatemicrofrontendsfrom1.js";
 
 let value: UpdateMicrofrontendsPassport = {
-  deploymentType: "prod_deployment_urls_and_all_previews",
   connectorId: "<id>",
+  deploymentType: "prod_deployment_urls_and_all_previews",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: UpdateMicrofrontendsPassport = {
 
 | Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  |
 | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `deploymentType`                                                                             | [models.UpdateMicrofrontendsDeploymentType](../models/updatemicrofrontendsdeploymenttype.md) | :heavy_check_mark:                                                                           | N/A                                                                                          |
 | `connectorId`                                                                                | *string*                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          |
+| `deploymentType`                                                                             | [models.UpdateMicrofrontendsDeploymentType](../models/updatemicrofrontendsdeploymenttype.md) | :heavy_check_mark:                                                                           | N/A                                                                                          |

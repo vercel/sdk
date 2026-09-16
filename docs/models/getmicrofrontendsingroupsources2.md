@@ -5,11 +5,11 @@ Allowlist entry for GitLab, which uses nested groups rather than a flat org/repo
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupSources2 } from "@vercel/sdk/models/getmicrofrontendsingroupinternalroutes2.js";
+import { GetMicrofrontendsInGroupSources2 } from "@vercel/sdk/models/getmicrofrontendsingrouphasvalue.js";
 
 let value: GetMicrofrontendsInGroupSources2 = {
-  provider: "gitlab",
   namespace: "<value>",
+  provider: "gitlab",
 };
 ```
 
@@ -17,6 +17,6 @@ let value: GetMicrofrontendsInGroupSources2 = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `provider`         | *"gitlab"*         | :heavy_check_mark: | N/A                |
 | `namespace`        | *string*           | :heavy_check_mark: | N/A                |
 | `project`          | *string*           | :heavy_minus_sign: | N/A                |
+| `provider`         | *"gitlab"*         | :heavy_check_mark: | N/A                |

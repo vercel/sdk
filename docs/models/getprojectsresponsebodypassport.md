@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyPassport } from "@vercel/sdk/models/getprojectsfromprojectsresponsepreset.js";
+import { GetProjectsResponseBodyPassport } from "@vercel/sdk/models/responsebodyabuse.js";
 
 let value: GetProjectsResponseBodyPassport = {
-  deploymentType: "all",
   connectorId: "<id>",
+  deploymentType: "all",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: GetProjectsResponseBodyPassport = {
 
 | Field                                                                                                              | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
 | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
-| `deploymentType`                                                                                                   | [models.GetProjectsResponseBodyProjectsDeploymentType](../models/getprojectsresponsebodyprojectsdeploymenttype.md) | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
 | `connectorId`                                                                                                      | *string*                                                                                                           | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
+| `deploymentType`                                                                                                   | [models.GetProjectsResponseBodyProjectsDeploymentType](../models/getprojectsresponsebodyprojectsdeploymenttype.md) | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |

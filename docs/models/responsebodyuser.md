@@ -6,9 +6,9 @@
 import { ResponseBodyUser } from "@vercel/sdk/models/getedgeconfigbackupop.js";
 
 let value: ResponseBodyUser = {
+  email: "Dixie.Barrows@yahoo.com",
   id: "<id>",
-  username: "Jacinto.Kuvalis15",
-  email: "Annie.Hickle@yahoo.com",
+  username: "Annie.Hickle",
 };
 ```
 
@@ -16,8 +16,8 @@ let value: ResponseBodyUser = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *string*           | :heavy_check_mark: | N/A                |
-| `username`         | *string*           | :heavy_check_mark: | N/A                |
-| `email`            | *string*           | :heavy_check_mark: | N/A                |
-| `name`             | *string*           | :heavy_minus_sign: | N/A                |
 | `avatar`           | *string*           | :heavy_minus_sign: | N/A                |
+| `email`            | *string*           | :heavy_check_mark: | N/A                |
+| `id`               | *string*           | :heavy_check_mark: | N/A                |
+| `name`             | *string*           | :heavy_minus_sign: | N/A                |
+| `username`         | *string*           | :heavy_check_mark: | N/A                |

@@ -6,8 +6,8 @@
 import { CountPageviewsData2 } from "@vercel/sdk/models/countpageviewsop.js";
 
 let value: CountPageviewsData2 = {
-  visitors: 1501.39,
-  pageviews: 4011.98,
+  pageviews: 1501.39,
+  visitors: 4011.98,
 };
 ```
 
@@ -15,5 +15,5 @@ let value: CountPageviewsData2 = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `visitors`         | *number*           | :heavy_check_mark: | N/A                |
 | `pageviews`        | *number*           | :heavy_check_mark: | N/A                |
+| `visitors`         | *number*           | :heavy_check_mark: | N/A                |

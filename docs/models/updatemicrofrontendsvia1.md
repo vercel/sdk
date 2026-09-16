@@ -5,13 +5,13 @@ Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures 
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsVia1 } from "@vercel/sdk/models/updatemicrofrontendsprojectsfunctiondefaultmemorytype.js";
+import { UpdateMicrofrontendsVia1 } from "@vercel/sdk/models/updatemicrofrontendshaskey.js";
 
 let value: UpdateMicrofrontendsVia1 = {
-  type: "app",
   app: {
     id: "<id>",
   },
+  type: "app",
 };
 ```
 
@@ -19,5 +19,5 @@ let value: UpdateMicrofrontendsVia1 = {
 
 | Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `type`                                                                       | *"app"*                                                                      | :heavy_check_mark:                                                           | N/A                                                                          |
 | `app`                                                                        | [models.UpdateMicrofrontendsViaApp](../models/updatemicrofrontendsviaapp.md) | :heavy_check_mark:                                                           | N/A                                                                          |
+| `type`                                                                       | *"app"*                                                                      | :heavy_check_mark:                                                           | N/A                                                                          |

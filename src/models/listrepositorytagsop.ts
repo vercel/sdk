@@ -80,22 +80,22 @@ export type ListRepositoryTagsStatus = ClosedEnum<
 >;
 
 export type ListRepositoryTagsTags = {
-  tag: string;
-  manifestDigest: string;
+  arch?: string | undefined;
+  createdAt: string;
   imageId: string;
   kind: ListRepositoryTagsKind;
+  manifestDigest: string;
   platform?: string | undefined;
-  arch?: string | undefined;
   pushedBy?: string | undefined;
-  status: ListRepositoryTagsStatus | null;
   sizeInBytes: number;
-  createdAt: string;
+  status: ListRepositoryTagsStatus | null;
+  tag: string;
   updatedAt: string;
 };
 
 export type ListRepositoryTagsResponseBody = {
-  tags: Array<ListRepositoryTagsTags>;
   nextCursor?: string | undefined;
+  tags: Array<ListRepositoryTagsTags>;
 };
 
 /** @internal */
@@ -165,16 +165,16 @@ export const ListRepositoryTagsTags$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  tag: types.string(),
-  manifestDigest: types.string(),
+  arch: types.optional(types.string()),
+  createdAt: types.string(),
   imageId: types.string(),
   kind: ListRepositoryTagsKind$inboundSchema,
+  manifestDigest: types.string(),
   platform: types.optional(types.string()),
-  arch: types.optional(types.string()),
   pushedBy: types.optional(types.string()),
-  status: types.nullable(ListRepositoryTagsStatus$inboundSchema),
   sizeInBytes: types.number(),
-  createdAt: types.string(),
+  status: types.nullable(ListRepositoryTagsStatus$inboundSchema),
+  tag: types.string(),
   updatedAt: types.string(),
 });
 
@@ -194,8 +194,8 @@ export const ListRepositoryTagsResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  tags: z.array(z.lazy(() => ListRepositoryTagsTags$inboundSchema)),
   nextCursor: types.optional(types.string()),
+  tags: z.array(z.lazy(() => ListRepositoryTagsTags$inboundSchema)),
 });
 
 export function listRepositoryTagsResponseBodyFromJSON(

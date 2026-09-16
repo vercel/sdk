@@ -5,15 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndNinetyFive } from "@vercel/sdk/models/usereventpayload171gituserid.js";
+import { OneHundredAndNinetyFive } from "@vercel/sdk/models/usereventpayload171newownerfeatureblocksworkflowstoragewriteblockreason.js";
 
 let value: OneHundredAndNinetyFive = {
   periods: [
     {
-      periodNumber: 4098.45,
-      percent: "<value>",
-      startDate: "<value>",
       endDate: "<value>",
+      percent: "<value>",
+      periodNumber: 4098.45,
+      startDate: "<value>",
     },
   ],
 };

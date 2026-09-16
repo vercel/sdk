@@ -8,14 +8,14 @@
 ```typescript
 const value: models.GetSecurityFirewallConfigRulesetsSecurity1[] = [
   {
-    id: "<id>",
-    name: "<value>",
     active: false,
     conditionGroup: [
       {
         conditions: [],
       },
     ],
+    id: "<id>",
+    name: "<value>",
   },
 ];
 ```

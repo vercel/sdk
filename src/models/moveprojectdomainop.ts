@@ -69,33 +69,33 @@ export type MoveProjectDomainRequest = {
  * A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
  */
 export type MoveProjectDomainVerification = {
-  type: string;
   domain: string;
-  value: string;
   reason: string;
+  type: string;
+  value: string;
 };
 
 /**
  * The domain was updated successfuly
  */
 export type MoveProjectDomainResponseBody = {
-  name: string;
   apexName: string;
+  createdAt?: number | undefined;
+  customEnvironmentId?: string | null | undefined;
+  gitBranch?: string | null | undefined;
+  name: string;
   projectId: string;
   redirect?: string | null | undefined;
   redirectStatusCode?: number | null | undefined;
-  gitBranch?: string | null | undefined;
-  customEnvironmentId?: string | null | undefined;
   updatedAt?: number | undefined;
-  createdAt?: number | undefined;
-  /**
-   * `true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed.
-   */
-  verified: boolean;
   /**
    * A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
    */
   verification?: Array<MoveProjectDomainVerification> | undefined;
+  /**
+   * `true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed.
+   */
+  verified: boolean;
 };
 
 /** @internal */
@@ -177,10 +177,10 @@ export const MoveProjectDomainVerification$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.string(),
   domain: types.string(),
-  value: types.string(),
   reason: types.string(),
+  type: types.string(),
+  value: types.string(),
 });
 
 export function moveProjectDomainVerificationFromJSON(
@@ -199,19 +199,19 @@ export const MoveProjectDomainResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: types.string(),
   apexName: types.string(),
+  createdAt: types.optional(types.number()),
+  customEnvironmentId: z.nullable(types.string()).optional(),
+  gitBranch: z.nullable(types.string()).optional(),
+  name: types.string(),
   projectId: types.string(),
   redirect: z.nullable(types.string()).optional(),
   redirectStatusCode: z.nullable(types.number()).optional(),
-  gitBranch: z.nullable(types.string()).optional(),
-  customEnvironmentId: z.nullable(types.string()).optional(),
   updatedAt: types.optional(types.number()),
-  createdAt: types.optional(types.number()),
-  verified: types.boolean(),
   verification: types.optional(
     z.array(z.lazy(() => MoveProjectDomainVerification$inboundSchema)),
   ),
+  verified: types.boolean(),
 });
 
 export function moveProjectDomainResponseBodyFromJSON(

@@ -5,19 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundred } from "@vercel/sdk/models/usereventpayload171gituserid.js";
+import { TwoHundred } from "@vercel/sdk/models/usereventpayload171newownerfeatureblocksworkflowstoragewriteblockreason.js";
 
 let value: TwoHundred = {
-  project: {
+  group: {
     id: "<id>",
     name: "<value>",
+    slug: "<value>",
   },
   prev: {
     project: {},
   },
-  group: {
+  project: {
     id: "<id>",
-    slug: "<value>",
     name: "<value>",
   },
 };
@@ -27,6 +27,6 @@ let value: TwoHundred = {
 
 | Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `project`                                                                    | [models.UserEventPayload200Project](../models/usereventpayload200project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
-| `prev`                                                                       | [models.PayloadPrev](../models/payloadprev.md)                               | :heavy_check_mark:                                                           | N/A                                                                          |
 | `group`                                                                      | [models.PayloadGroup](../models/payloadgroup.md)                             | :heavy_check_mark:                                                           | N/A                                                                          |
+| `prev`                                                                       | [models.PayloadPrev](../models/payloadprev.md)                               | :heavy_check_mark:                                                           | N/A                                                                          |
+| `project`                                                                    | [models.UserEventPayload200Project](../models/usereventpayload200project.md) | :heavy_check_mark:                                                           | N/A                                                                          |

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TrustedIpsAddresses } from "@vercel/sdk/models/getprojectinternalroutesmitigate.js";
+import { TrustedIpsAddresses } from "@vercel/sdk/models/getprojectfrompreset.js";
 
 let value: TrustedIpsAddresses = {
   value: "<value>",
@@ -14,5 +14,5 @@ let value: TrustedIpsAddresses = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `value`            | *string*           | :heavy_check_mark: | N/A                |
 | `note`             | *string*           | :heavy_minus_sign: | N/A                |
+| `value`            | *string*           | :heavy_check_mark: | N/A                |

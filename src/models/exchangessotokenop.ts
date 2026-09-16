@@ -61,19 +61,19 @@ export type ExchangeSsoTokenRequestBody =
   | ExchangeSsoTokenRequestBody2;
 
 export type ExchangeSsoTokenResponseBody2 = {
-  idToken: string;
-  tokenType: string;
   accessToken: string;
-  refreshToken: string;
   expiresIn: number;
+  idToken: string;
+  refreshToken: string;
+  tokenType: string;
 };
 
 export type ExchangeSsoTokenResponseBody1 = {
-  idToken: string;
-  tokenType: string | null;
-  expiresIn?: number | undefined;
   accessToken: string | null;
+  expiresIn?: number | undefined;
+  idToken: string;
   refreshToken?: string | undefined;
+  tokenType: string | null;
 };
 
 export type ExchangeSsoTokenResponseBody =
@@ -189,18 +189,18 @@ export const ExchangeSsoTokenResponseBody2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id_token: types.string(),
-  token_type: types.string(),
   access_token: types.string(),
-  refresh_token: types.string(),
   expires_in: types.number(),
+  id_token: types.string(),
+  refresh_token: types.string(),
+  token_type: types.string(),
 }).transform((v) => {
   return remap$(v, {
-    "id_token": "idToken",
-    "token_type": "tokenType",
     "access_token": "accessToken",
-    "refresh_token": "refreshToken",
     "expires_in": "expiresIn",
+    "id_token": "idToken",
+    "refresh_token": "refreshToken",
+    "token_type": "tokenType",
   });
 });
 
@@ -220,18 +220,18 @@ export const ExchangeSsoTokenResponseBody1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id_token: types.string(),
-  token_type: types.nullable(types.string()),
-  expires_in: types.optional(types.number()),
   access_token: types.nullable(types.string()),
+  expires_in: types.optional(types.number()),
+  id_token: types.string(),
   refresh_token: types.optional(types.string()),
+  token_type: types.nullable(types.string()),
 }).transform((v) => {
   return remap$(v, {
-    "id_token": "idToken",
-    "token_type": "tokenType",
-    "expires_in": "expiresIn",
     "access_token": "accessToken",
+    "expires_in": "expiresIn",
+    "id_token": "idToken",
     "refresh_token": "refreshToken",
+    "token_type": "tokenType",
   });
 });
 

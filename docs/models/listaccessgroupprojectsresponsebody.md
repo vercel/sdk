@@ -6,11 +6,19 @@
 import { ListAccessGroupProjectsResponseBody } from "@vercel/sdk/models/listaccessgroupprojectsop.js";
 
 let value: ListAccessGroupProjectsResponseBody = {
-  projects: [],
   pagination: {
-    count: 3521.35,
+    count: 4189.7,
     next: "<value>",
   },
+  projects: [
+    {
+      createdAt: "1711045106114",
+      project: {},
+      projectId: "<id>",
+      role: "PROJECT_GUEST",
+      updatedAt: "1735677535035",
+    },
+  ],
 };
 ```
 
@@ -18,5 +26,5 @@ let value: ListAccessGroupProjectsResponseBody = {
 
 | Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
 | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `projects`                                                                                 | [models.ListAccessGroupProjectsProjects](../models/listaccessgroupprojectsprojects.md)[]   | :heavy_check_mark:                                                                         | N/A                                                                                        |
 | `pagination`                                                                               | [models.ListAccessGroupProjectsPagination](../models/listaccessgroupprojectspagination.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `projects`                                                                                 | [models.ListAccessGroupProjectsProjects](../models/listaccessgroupprojectsprojects.md)[]   | :heavy_check_mark:                                                                         | N/A                                                                                        |

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsAws } from "@vercel/sdk/models/updatemicrofrontendsprojectsfunctiondefaultmemorytype.js";
+import { UpdateMicrofrontendsAws } from "@vercel/sdk/models/updatemicrofrontendshaskey.js";
 
 let value: UpdateMicrofrontendsAws = {
   subnetIds: [
@@ -16,5 +16,5 @@ let value: UpdateMicrofrontendsAws = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `subnetIds`        | *string*[]         | :heavy_check_mark: | N/A                |
 | `securityGroupId`  | *string*           | :heavy_minus_sign: | N/A                |
+| `subnetIds`        | *string*[]         | :heavy_check_mark: | N/A                |

@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentResponseBodyOutput } from "@vercel/sdk/models/createdeploymenthasdeploymentstype.js";
+import { CreateDeploymentResponseBodyOutput } from "@vercel/sdk/models/createdeploymentmissingdeploymentsresponse1.js";
 
 let value: CreateDeploymentResponseBodyOutput = {
-  path: "/root",
   functionName: "<value>",
+  path: "/root",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: CreateDeploymentResponseBodyOutput = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `path`             | *string*           | :heavy_check_mark: | N/A                |
 | `functionName`     | *string*           | :heavy_check_mark: | N/A                |
+| `path`             | *string*           | :heavy_check_mark: | N/A                |

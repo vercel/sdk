@@ -11,11 +11,11 @@ let value: GetProjectsByIdOrNameCustomEnvironmentsResponseBody = {
   },
   environments: [
     {
-      type: "preview",
-      createdAt: 518.37,
-      updatedAt: 1483.86,
-      slug: "<value>",
+      createdAt: 6382.28,
       id: "<id>",
+      slug: "<value>",
+      type: "development",
+      updatedAt: 1483.86,
     },
   ],
 };

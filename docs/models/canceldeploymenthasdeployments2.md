@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentHasDeployments2 } from "@vercel/sdk/models/includefiles.js";
+import { CancelDeploymentHasDeployments2 } from "@vercel/sdk/models/canceldeploymentdestinationdeployments2.js";
 
 let value: CancelDeploymentHasDeployments2 = {
-  type: "cookie",
   key: "<key>",
+  type: "cookie",
 };
 ```
 
@@ -15,6 +15,6 @@ let value: CancelDeploymentHasDeployments2 = {
 
 | Field                                                                                                                                            | Type                                                                                                                                             | Required                                                                                                                                         | Description                                                                                                                                      |
 | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `type`                                                                                                                                           | [models.CancelDeploymentHasDeploymentsResponse200ApplicationJSONType](../models/canceldeploymenthasdeploymentsresponse200applicationjsontype.md) | :heavy_check_mark:                                                                                                                               | N/A                                                                                                                                              |
 | `key`                                                                                                                                            | *string*                                                                                                                                         | :heavy_check_mark:                                                                                                                               | N/A                                                                                                                                              |
+| `type`                                                                                                                                           | [models.CancelDeploymentHasDeploymentsResponse200ApplicationJSONType](../models/canceldeploymenthasdeploymentsresponse200applicationjsontype.md) | :heavy_check_mark:                                                                                                                               | N/A                                                                                                                                              |
 | `value`                                                                                                                                          | *models.CancelDeploymentHasDeploymentsResponse200Value*                                                                                          | :heavy_minus_sign:                                                                                                                               | N/A                                                                                                                                              |

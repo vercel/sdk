@@ -7,13 +7,13 @@
 
 ```typescript
 const value: models.Services1 = {
-  schema: "experimentalServices",
-  name: "<value>",
-  type: "cron",
-  workspace: "<value>",
   builder: {
     use: "<value>",
   },
+  name: "<value>",
+  schema: "experimentalServices",
+  type: "cron",
+  workspace: "<value>",
 };
 ```
 
@@ -21,12 +21,12 @@ const value: models.Services1 = {
 
 ```typescript
 const value: models.Services2 = {
-  schema: "experimentalServicesV2",
-  name: "<value>",
-  root: "<value>",
   builder: {
     use: "<value>",
   },
+  name: "<value>",
+  root: "<value>",
+  schema: "experimentalServicesV2",
 };
 ```
 

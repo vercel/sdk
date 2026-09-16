@@ -1,13 +1,11 @@
 # GetTeamMembersRole
 
-Role of this user in the team.
-
 ## Example Usage
 
 ```typescript
 import { GetTeamMembersRole } from "@vercel/sdk/models/getteammembersop.js";
 
-let value: GetTeamMembersRole = "OWNER";
+let value: GetTeamMembersRole = "SECURITY";
 ```
 
 ## Values

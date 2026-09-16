@@ -13,9 +13,9 @@ const value: models.TestDrainResponseBody1 = {};
 
 ```typescript
 const value: models.TestDrainResponseBody2 = {
-  status: "<value>",
-  error: "<value>",
   endpoint: "<value>",
+  error: "<value>",
+  status: "<value>",
 };
 ```
 

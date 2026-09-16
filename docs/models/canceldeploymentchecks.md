@@ -3,12 +3,12 @@
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentChecks } from "@vercel/sdk/models/canceldeploymentresponsebody.js";
+import { CancelDeploymentChecks } from "@vercel/sdk/models/canceldeploymentresourceconfig.js";
 
 let value: CancelDeploymentChecks = {
   deploymentAlias: {
-    state: "succeeded",
-    startedAt: 2830.05,
+    startedAt: 8799.79,
+    state: "failed",
   },
 };
 ```

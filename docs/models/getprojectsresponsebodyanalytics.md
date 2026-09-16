@@ -3,12 +3,12 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyAnalytics } from "@vercel/sdk/models/getprojectsfromprojectsresponsepreset.js";
+import { GetProjectsResponseBodyAnalytics } from "@vercel/sdk/models/getprojectslinkprojects6.js";
 
 let value: GetProjectsResponseBodyAnalytics = {
-  id: "<id>",
   disabledAt: 8692,
   enabledAt: 549.8,
+  id: "<id>",
 };
 ```
 
@@ -16,10 +16,10 @@ let value: GetProjectsResponseBodyAnalytics = {
 
 | Field                 | Type                  | Required              | Description           |
 | --------------------- | --------------------- | --------------------- | --------------------- |
-| `id`                  | *string*              | :heavy_check_mark:    | N/A                   |
 | `canceledAt`          | *number*              | :heavy_minus_sign:    | N/A                   |
 | `disabledAt`          | *number*              | :heavy_check_mark:    | N/A                   |
 | `enabledAt`           | *number*              | :heavy_check_mark:    | N/A                   |
+| `id`                  | *string*              | :heavy_check_mark:    | N/A                   |
 | `paidAt`              | *number*              | :heavy_minus_sign:    | N/A                   |
 | `sampleRatePercent`   | *number*              | :heavy_minus_sign:    | N/A                   |
 | `spendLimitInDollars` | *number*              | :heavy_minus_sign:    | N/A                   |

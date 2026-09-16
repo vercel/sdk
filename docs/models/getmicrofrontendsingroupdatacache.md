@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupDataCache } from "@vercel/sdk/models/getmicrofrontendsingroupbuildmachinetype.js";
+import { GetMicrofrontendsInGroupDataCache } from "@vercel/sdk/models/getmicrofrontendsingrouphasvalue.js";
 
 let value: GetMicrofrontendsInGroupDataCache = {
   userDisabled: false,
@@ -14,6 +14,6 @@ let value: GetMicrofrontendsInGroupDataCache = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `userDisabled`     | *boolean*          | :heavy_check_mark: | N/A                |
 | `storageSizeBytes` | *number*           | :heavy_minus_sign: | N/A                |
 | `unlimited`        | *boolean*          | :heavy_minus_sign: | N/A                |
+| `userDisabled`     | *boolean*          | :heavy_check_mark: | N/A                |

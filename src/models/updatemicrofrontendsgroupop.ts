@@ -38,11 +38,11 @@ export type UpdateMicrofrontendsGroupRequest = {
 };
 
 export type UpdatedMicrofrontendsGroup = {
+  enablePolyrepoBranchRouting?: boolean | undefined;
+  fallbackEnvironment?: string | undefined;
+  id: string;
   name?: string | undefined;
   slug?: string | undefined;
-  id: string;
-  fallbackEnvironment?: string | undefined;
-  enablePolyrepoBranchRouting?: boolean | undefined;
 };
 
 export type UpdateMicrofrontendsGroupResponseBody = {
@@ -118,11 +118,11 @@ export const UpdatedMicrofrontendsGroup$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  enablePolyrepoBranchRouting: types.optional(types.boolean()),
+  fallbackEnvironment: types.optional(types.string()),
+  id: types.string(),
   name: types.optional(types.string()),
   slug: types.optional(types.string()),
-  id: types.string(),
-  fallbackEnvironment: types.optional(types.string()),
-  enablePolyrepoBranchRouting: types.optional(types.boolean()),
 });
 
 export function updatedMicrofrontendsGroupFromJSON(

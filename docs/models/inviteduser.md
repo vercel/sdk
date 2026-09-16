@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { InvitedUser } from "@vercel/sdk/models/threehundredandfortytwo.js";
+import { InvitedUser } from "@vercel/sdk/models/payloadmostspecificsubdivision.js";
 
 let value: InvitedUser = {
-  username: "Marcia_Kub",
-  email: "Sabryna.Leuschke@hotmail.com",
+  email: "Alison45@hotmail.com",
+  username: "Sabryna.Leuschke",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: InvitedUser = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `username`         | *string*           | :heavy_check_mark: | N/A                |
 | `email`            | *string*           | :heavy_check_mark: | N/A                |
+| `username`         | *string*           | :heavy_check_mark: | N/A                |

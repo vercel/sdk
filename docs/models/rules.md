@@ -6,18 +6,30 @@
 import { Rules } from "@vercel/sdk/models/flag.js";
 
 let value: Rules = {
-  id: "<id>",
-  outcome: {
-    type: "experiment",
-  },
   conditions: [
     {
+      cmp: "contains",
       lhs: {
-        type: "segment",
+        attribute: "<value>",
+        kind: "<value>",
+        type: "entity",
       },
-      cmp: "containsAnyOf",
     },
   ],
+  id: "<id>",
+  outcome: {
+    base: {
+      attribute: "<value>",
+      kind: "<value>",
+      type: "entity",
+    },
+    defaultVariantId: "<id>",
+    rollFromVariantId: "<id>",
+    rollToVariantId: "<id>",
+    slots: [],
+    startTimestamp: 2235.64,
+    type: "rollout",
+  },
 };
 ```
 
@@ -25,6 +37,6 @@ let value: Rules = {
 
 | Field                                          | Type                                           | Required                                       | Description                                    |
 | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `conditions`                                   | [models.Conditions](../models/conditions.md)[] | :heavy_check_mark:                             | N/A                                            |
 | `id`                                           | *string*                                       | :heavy_check_mark:                             | N/A                                            |
 | `outcome`                                      | *models.FlagOutcome*                           | :heavy_check_mark:                             | N/A                                            |
-| `conditions`                                   | [models.Conditions](../models/conditions.md)[] | :heavy_check_mark:                             | N/A                                            |

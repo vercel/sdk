@@ -16,8 +16,8 @@ const value: models.CreateDeploymentMissingDeploymentsResponse1 = {
 
 ```typescript
 const value: models.CreateDeploymentMissingDeploymentsResponse2 = {
-  type: "query",
   key: "<key>",
+  type: "query",
 };
 ```
 
@@ -25,8 +25,8 @@ const value: models.CreateDeploymentMissingDeploymentsResponse2 = {
 
 ```typescript
 const value: models.CreateDeploymentMissingDeploymentsResponse2 = {
-  type: "query",
   key: "<key>",
+  type: "query",
 };
 ```
 
@@ -34,8 +34,8 @@ const value: models.CreateDeploymentMissingDeploymentsResponse2 = {
 
 ```typescript
 const value: models.CreateDeploymentMissingDeploymentsResponse2 = {
-  type: "query",
   key: "<key>",
+  type: "query",
 };
 ```
 

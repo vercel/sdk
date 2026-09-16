@@ -137,9 +137,9 @@ export type TestDrainRequest = {
 };
 
 export type TestDrainResponseBody2 = {
-  status: string;
-  error: string;
   endpoint: string;
+  error: string;
+  status: string;
 };
 
 export type TestDrainResponseBody1 = {};
@@ -445,9 +445,9 @@ export const TestDrainResponseBody2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  status: types.string(),
-  error: types.string(),
   endpoint: types.string(),
+  error: types.string(),
+  status: types.string(),
 });
 
 export function testDrainResponseBody2FromJSON(

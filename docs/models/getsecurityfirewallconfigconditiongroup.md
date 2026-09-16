@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { GetSecurityFirewallConfigConditionGroup } from "@vercel/sdk/models/getsecurityfirewallconfigsecurityresponsemanagedrules.js";
+import { GetSecurityFirewallConfigConditionGroup } from "@vercel/sdk/models/getsecurityfirewallconfigrulessecurityresponse200applicationjsonresponsebodydraft2actionaction.js";
 
 let value: GetSecurityFirewallConfigConditionGroup = {
   conditions: [
     {
-      type: "user_agent",
-      op: "list",
+      op: "suf",
+      type: "geo_country_region",
     },
   ],
 };

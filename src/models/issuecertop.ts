@@ -29,11 +29,11 @@ export type IssueCertRequest = {
 };
 
 export type IssueCertResponseBody = {
-  id: string;
-  createdAt: number;
-  expiresAt: number;
   autoRenew: boolean;
   cns: Array<string>;
+  createdAt: number;
+  expiresAt: number;
+  id: string;
 };
 
 /** @internal */
@@ -94,11 +94,11 @@ export const IssueCertResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: types.string(),
-  createdAt: types.number(),
-  expiresAt: types.number(),
   autoRenew: types.boolean(),
   cns: z.array(types.string()),
+  createdAt: types.number(),
+  expiresAt: types.number(),
+  id: types.string(),
 });
 
 export function issueCertResponseBodyFromJSON(

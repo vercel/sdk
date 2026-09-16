@@ -5,25 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSixty } from "@vercel/sdk/models/usereventpayloadnext.js";
+import { TwoHundredAndSixty } from "@vercel/sdk/models/payloadnext.js";
 
 let value: TwoHundredAndSixty = {
+  customEnvironmentId: "<id>",
+  customEnvironmentSlug: "<value>",
   projectId: "<id>",
   projectName: "<value>",
-  previous: {
-    functionDefaultTimeout: 3821.15,
-  },
-  next: {
-    functionDefaultTimeout: 5164.53,
-  },
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload260Previous](../models/usereventpayload260previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `next`                                                                         | [models.UserEventPayload260Next](../models/usereventpayload260next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                      | Type                       | Required                   | Description                |
+| -------------------------- | -------------------------- | -------------------------- | -------------------------- |
+| `customEnvironmentId`      | *string*                   | :heavy_check_mark:         | N/A                        |
+| `customEnvironmentSlug`    | *string*                   | :heavy_check_mark:         | N/A                        |
+| `enableSchedulesByDefault` | *boolean*                  | :heavy_minus_sign:         | N/A                        |
+| `projectId`                | *string*                   | :heavy_check_mark:         | N/A                        |
+| `projectName`              | *string*                   | :heavy_check_mark:         | N/A                        |

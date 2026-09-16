@@ -89,7 +89,6 @@ export type UpdateProjectProtectionBypassRequest = {
 export type UpdateProjectProtectionBypassProtectionBypass2 = {
   createdAt: number;
   createdBy: string;
-  scope: "automation-bypass";
   /**
    * When there was only one bypass, it was automatically set as an env var on deployments. With multiple bypasses, there is always one bypass that is selected as the default, and gets set as an env var on deployments. As this is a new field, undefined means that the bypass is the env var. If there are any automation bypasses, exactly one must be the env var.
    */
@@ -98,14 +97,15 @@ export type UpdateProjectProtectionBypassProtectionBypass2 = {
    * Optional note about the bypass to be displayed in the UI
    */
   note?: string | undefined;
+  scope: "automation-bypass";
 };
 
 export type UpdateProjectProtectionBypassProtectionBypass1 = {
+  configurationId: string;
   createdAt: number;
   createdBy: string;
-  scope: "integration-automation-bypass";
   integrationId: string;
-  configurationId: string;
+  scope: "integration-automation-bypass";
 };
 
 export type UpdateProjectProtectionBypassProtectionBypass =
@@ -256,9 +256,9 @@ export const UpdateProjectProtectionBypassProtectionBypass2$inboundSchema:
   > = z.object({
     createdAt: types.number(),
     createdBy: types.string(),
-    scope: types.literal("automation-bypass"),
     isEnvVar: types.optional(types.boolean()),
     note: types.optional(types.string()),
+    scope: types.literal("automation-bypass"),
   });
 
 export function updateProjectProtectionBypassProtectionBypass2FromJSON(
@@ -284,11 +284,11 @@ export const UpdateProjectProtectionBypassProtectionBypass1$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
+    configurationId: types.string(),
     createdAt: types.number(),
     createdBy: types.string(),
-    scope: types.literal("integration-automation-bypass"),
     integrationId: types.string(),
-    configurationId: types.string(),
+    scope: types.literal("integration-automation-bypass"),
   });
 
 export function updateProjectProtectionBypassProtectionBypass1FromJSON(

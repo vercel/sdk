@@ -9,35 +9,39 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
-export const MarketplaceFlagState = {
-  Active: "active",
-  Archived: "archived",
-} as const;
-export type MarketplaceFlagState = ClosedEnum<typeof MarketplaceFlagState>;
-
 export const Category = {
   Experiment: "experiment",
   Flag: "flag",
 } as const;
 export type Category = ClosedEnum<typeof Category>;
 
+export const MarketplaceFlagState = {
+  Active: "active",
+  Archived: "archived",
+} as const;
+export type MarketplaceFlagState = ClosedEnum<typeof MarketplaceFlagState>;
+
 export type MarketplaceFlag = {
-  typeName: "marketplaceFlag";
-  id: string;
+  category?: Category | undefined;
+  createdAt?: number | undefined;
+  description?: string | undefined;
   externalId: string;
-  slug: string;
+  id: string;
+  integrationConfigurationId: string;
+  name?: string | undefined;
   origin: string;
   ownerId: string;
   projectId: string;
   resourceId: string;
-  integrationConfigurationId: string;
+  slug: string;
   state: MarketplaceFlagState;
-  name?: string | undefined;
-  description?: string | undefined;
-  category?: Category | undefined;
-  createdAt?: number | undefined;
+  typeName: "marketplaceFlag";
   updatedAt?: number | undefined;
 };
+
+/** @internal */
+export const Category$inboundSchema: z.ZodNativeEnum<typeof Category> = z
+  .nativeEnum(Category);
 
 /** @internal */
 export const MarketplaceFlagState$inboundSchema: z.ZodNativeEnum<
@@ -45,29 +49,25 @@ export const MarketplaceFlagState$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(MarketplaceFlagState);
 
 /** @internal */
-export const Category$inboundSchema: z.ZodNativeEnum<typeof Category> = z
-  .nativeEnum(Category);
-
-/** @internal */
 export const MarketplaceFlag$inboundSchema: z.ZodType<
   MarketplaceFlag,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  typeName: types.literal("marketplaceFlag"),
-  id: types.string(),
+  category: types.optional(Category$inboundSchema),
+  createdAt: types.optional(types.number()),
+  description: types.optional(types.string()),
   externalId: types.string(),
-  slug: types.string(),
+  id: types.string(),
+  integrationConfigurationId: types.string(),
+  name: types.optional(types.string()),
   origin: types.string(),
   ownerId: types.string(),
   projectId: types.string(),
   resourceId: types.string(),
-  integrationConfigurationId: types.string(),
+  slug: types.string(),
   state: MarketplaceFlagState$inboundSchema,
-  name: types.optional(types.string()),
-  description: types.optional(types.string()),
-  category: types.optional(Category$inboundSchema),
-  createdAt: types.optional(types.number()),
+  typeName: types.literal("marketplaceFlag"),
   updatedAt: types.optional(types.number()),
 });
 

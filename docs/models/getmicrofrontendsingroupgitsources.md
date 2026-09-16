@@ -5,20 +5,15 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupGitSources } from "@vercel/sdk/models/getmicrofrontendsingroupinternalroutes2.js";
+import { GetMicrofrontendsInGroupGitSources } from "@vercel/sdk/models/getmicrofrontendsingrouphasvalue.js";
 
 let value: GetMicrofrontendsInGroupGitSources = {
+  enabled: false,
+  environments: [],
   sources: [
     {
-      provider: "bitbucket",
-      org: "<value>",
-    },
-  ],
-  enabled: false,
-  environments: [
-    {
-      type: "custom",
-      environmentId: "<id>",
+      namespace: "<value>",
+      provider: "gitlab",
     },
   ],
 };
@@ -26,8 +21,8 @@ let value: GetMicrofrontendsInGroupGitSources = {
 
 ## Fields
 
-| Field                                           | Type                                            | Required                                        | Description                                     |
-| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| `sources`                                       | *models.GetMicrofrontendsInGroupSources*[]      | :heavy_check_mark:                              | N/A                                             |
-| `enabled`                                       | *boolean*                                       | :heavy_check_mark:                              | N/A                                             |
-| `environments`                                  | *models.GetMicrofrontendsInGroupEnvironments*[] | :heavy_check_mark:                              | N/A                                             |
+| Field                                                         | Type                                                          | Required                                                      | Description                                                   |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| `enabled`                                                     | *boolean*                                                     | :heavy_check_mark:                                            | N/A                                                           |
+| `environments`                                                | *models.GetMicrofrontendsInGroupMicrofrontendsEnvironments*[] | :heavy_check_mark:                                            | N/A                                                           |
+| `sources`                                                     | *models.GetMicrofrontendsInGroupMicrofrontendsSources*[]      | :heavy_check_mark:                                            | N/A                                                           |

@@ -8,8 +8,8 @@ Principal that originally created the connector — either a Vercel user (intera
 import { One } from "@vercel/sdk/models/connectconnector.js";
 
 let value: One = {
-  type: "user",
   id: "<id>",
+  type: "user",
 };
 ```
 
@@ -17,5 +17,5 @@ let value: One = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `type`             | *"user"*           | :heavy_check_mark: | Principal kind.    |
 | `id`               | *string*           | :heavy_check_mark: | Vercel user ID.    |
+| `type`             | *"user"*           | :heavy_check_mark: | Principal kind.    |

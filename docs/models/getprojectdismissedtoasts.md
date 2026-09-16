@@ -3,12 +3,12 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectDismissedToasts } from "@vercel/sdk/models/getprojectresponsebody.js";
+import { GetProjectDismissedToasts } from "@vercel/sdk/models/getprojecthas2.js";
 
 let value: GetProjectDismissedToasts = {
+  action: "cancel",
+  dismissedAt: 1237.16,
   key: "<key>",
-  dismissedAt: 6503.6,
-  action: "accept",
   value: "<value>",
 };
 ```
@@ -17,7 +17,7 @@ let value: GetProjectDismissedToasts = {
 
 | Field                                                    | Type                                                     | Required                                                 | Description                                              |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `key`                                                    | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
-| `dismissedAt`                                            | *number*                                                 | :heavy_check_mark:                                       | N/A                                                      |
 | `action`                                                 | [models.GetProjectAction](../models/getprojectaction.md) | :heavy_check_mark:                                       | N/A                                                      |
+| `dismissedAt`                                            | *number*                                                 | :heavy_check_mark:                                       | N/A                                                      |
+| `key`                                                    | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
 | `value`                                                  | *models.GetProjectValue*                                 | :heavy_check_mark:                                       | N/A                                                      |

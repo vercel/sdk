@@ -154,6 +154,10 @@ export type GetWebhooksResponseBodyEvents = ClosedEnum<
 export type GetWebhooksResponseBody2 = {
   alertRuleIds?: Array<string> | undefined;
   /**
+   * A number containing the date when the webhook was created in in milliseconds
+   */
+  createdAt: number;
+  /**
    * The webhooks events
    */
   events: Array<GetWebhooksResponseBodyEvents>;
@@ -162,112 +166,21 @@ export type GetWebhooksResponseBody2 = {
    */
   id: string;
   /**
-   * A string with the URL of the webhook
-   */
-  url: string;
-  /**
    * The unique ID of the team the webhook belongs to
    */
   ownerId: string;
   /**
-   * A number containing the date when the webhook was created in in milliseconds
+   * The ID of the projects the webhook is associated with
    */
-  createdAt: number;
+  projectIds?: Array<string> | undefined;
   /**
    * A number containing the date when the webhook was updated in in milliseconds
    */
   updatedAt: number;
   /**
-   * The ID of the projects the webhook is associated with
+   * A string with the URL of the webhook
    */
-  projectIds?: Array<string> | undefined;
-};
-
-export const GetWebhooksResponseBodyFramework = {
-  ActixWeb: "actix-web",
-  Angular: "angular",
-  Ash: "ash",
-  Astro: "astro",
-  Axum: "axum",
-  Blitzjs: "blitzjs",
-  Brunch: "brunch",
-  Bun: "bun",
-  Container: "container",
-  CreateReactApp: "create-react-app",
-  Django: "django",
-  Docusaurus: "docusaurus",
-  Docusaurus2: "docusaurus-2",
-  Dojo: "dojo",
-  Eleventy: "eleventy",
-  Elysia: "elysia",
-  Ember: "ember",
-  Eve: "eve",
-  Express: "express",
-  FactoryEve: "factory-eve",
-  Fastapi: "fastapi",
-  Fasthtml: "fasthtml",
-  Fastify: "fastify",
-  Flask: "flask",
-  Gatsby: "gatsby",
-  Go: "go",
-  Gridsome: "gridsome",
-  H3: "h3",
-  Hexo: "hexo",
-  Hono: "hono",
-  Hugo: "hugo",
-  Hydrogen: "hydrogen",
-  IonicAngular: "ionic-angular",
-  IonicReact: "ionic-react",
-  Jekyll: "jekyll",
-  Koa: "koa",
-  Mastra: "mastra",
-  Middleman: "middleman",
-  Nestjs: "nestjs",
-  Nextjs: "nextjs",
-  Nitro: "nitro",
-  Node: "node",
-  Nuxtjs: "nuxtjs",
-  Parcel: "parcel",
-  Polymer: "polymer",
-  Preact: "preact",
-  Python: "python",
-  ReactRouter: "react-router",
-  Redwoodjs: "redwoodjs",
-  Remix: "remix",
-  Ruby: "ruby",
-  Rust: "rust",
-  Saber: "saber",
-  Sanity: "sanity",
-  SanityV2: "sanity-v2",
-  Sapper: "sapper",
-  Scully: "scully",
-  Services: "services",
-  Solidstart: "solidstart",
-  Solidstart1: "solidstart-1",
-  Stencil: "stencil",
-  Storybook: "storybook",
-  Svelte: "svelte",
-  Sveltekit: "sveltekit",
-  Sveltekit1: "sveltekit-1",
-  TanstackStart: "tanstack-start",
-  TanstackStartLovable: "tanstack-start-lovable",
-  Umijs: "umijs",
-  Vite: "vite",
-  Vitepress: "vitepress",
-  Vue: "vue",
-  Vuepress: "vuepress",
-  Xmcp: "xmcp",
-  Zola: "zola",
-} as const;
-export type GetWebhooksResponseBodyFramework = ClosedEnum<
-  typeof GetWebhooksResponseBodyFramework
->;
-
-export type GetWebhooksResponseBodyProjectsMetadata = {
-  id: string;
-  name: string;
-  framework?: GetWebhooksResponseBodyFramework | null | undefined;
-  latestDeployment?: string | undefined;
+  url: string;
 };
 
 /**
@@ -397,9 +310,99 @@ export const ResponseBodyEvents = {
  */
 export type ResponseBodyEvents = ClosedEnum<typeof ResponseBodyEvents>;
 
+export const GetWebhooksResponseBodyFramework = {
+  ActixWeb: "actix-web",
+  Angular: "angular",
+  Ash: "ash",
+  Astro: "astro",
+  Axum: "axum",
+  Blitzjs: "blitzjs",
+  Brunch: "brunch",
+  Bun: "bun",
+  Container: "container",
+  CreateReactApp: "create-react-app",
+  Django: "django",
+  Docusaurus: "docusaurus",
+  Docusaurus2: "docusaurus-2",
+  Dojo: "dojo",
+  Eleventy: "eleventy",
+  Elysia: "elysia",
+  Ember: "ember",
+  Eve: "eve",
+  Express: "express",
+  FactoryEve: "factory-eve",
+  Fastapi: "fastapi",
+  Fasthtml: "fasthtml",
+  Fastify: "fastify",
+  Flask: "flask",
+  Gatsby: "gatsby",
+  Go: "go",
+  Gridsome: "gridsome",
+  H3: "h3",
+  Hexo: "hexo",
+  Hono: "hono",
+  Hugo: "hugo",
+  Hydrogen: "hydrogen",
+  IonicAngular: "ionic-angular",
+  IonicReact: "ionic-react",
+  Jekyll: "jekyll",
+  Koa: "koa",
+  Mastra: "mastra",
+  Middleman: "middleman",
+  Nestjs: "nestjs",
+  Nextjs: "nextjs",
+  Nitro: "nitro",
+  Node: "node",
+  Nuxtjs: "nuxtjs",
+  Parcel: "parcel",
+  Polymer: "polymer",
+  Preact: "preact",
+  Python: "python",
+  ReactRouter: "react-router",
+  Redwoodjs: "redwoodjs",
+  Remix: "remix",
+  Ruby: "ruby",
+  Rust: "rust",
+  Saber: "saber",
+  Sanity: "sanity",
+  SanityV2: "sanity-v2",
+  Sapper: "sapper",
+  Scully: "scully",
+  Services: "services",
+  Solidstart: "solidstart",
+  Solidstart1: "solidstart-1",
+  Stencil: "stencil",
+  Storybook: "storybook",
+  Svelte: "svelte",
+  Sveltekit: "sveltekit",
+  Sveltekit1: "sveltekit-1",
+  TanstackStart: "tanstack-start",
+  TanstackStartLovable: "tanstack-start-lovable",
+  Umijs: "umijs",
+  Vite: "vite",
+  Vitepress: "vitepress",
+  Vue: "vue",
+  Vuepress: "vuepress",
+  Xmcp: "xmcp",
+  Zola: "zola",
+} as const;
+export type GetWebhooksResponseBodyFramework = ClosedEnum<
+  typeof GetWebhooksResponseBodyFramework
+>;
+
+export type GetWebhooksResponseBodyProjectsMetadata = {
+  framework?: GetWebhooksResponseBodyFramework | null | undefined;
+  id: string;
+  latestDeployment?: string | undefined;
+  name: string;
+};
+
 export type GetWebhooksResponseBody1 = {
-  projectsMetadata: Array<GetWebhooksResponseBodyProjectsMetadata> | null;
   alertRuleIds?: Array<string> | undefined;
+  /**
+   * A number containing the date when the webhook was created in in milliseconds
+   */
+  createdAt: number;
   /**
    * The webhooks events
    */
@@ -409,25 +412,22 @@ export type GetWebhooksResponseBody1 = {
    */
   id: string;
   /**
-   * A string with the URL of the webhook
-   */
-  url: string;
-  /**
    * The unique ID of the team the webhook belongs to
    */
   ownerId: string;
   /**
-   * A number containing the date when the webhook was created in in milliseconds
+   * The ID of the projects the webhook is associated with
    */
-  createdAt: number;
+  projectIds?: Array<string> | undefined;
+  projectsMetadata: Array<GetWebhooksResponseBodyProjectsMetadata> | null;
   /**
    * A number containing the date when the webhook was updated in in milliseconds
    */
   updatedAt: number;
   /**
-   * The ID of the projects the webhook is associated with
+   * A string with the URL of the webhook
    */
-  projectIds?: Array<string> | undefined;
+  url: string;
 };
 
 export type GetWebhooksResponseBody =
@@ -472,13 +472,13 @@ export const GetWebhooksResponseBody2$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   alertRuleIds: types.optional(z.array(types.string())),
+  createdAt: types.number(),
   events: z.array(GetWebhooksResponseBodyEvents$inboundSchema),
   id: types.string(),
-  url: types.string(),
   ownerId: types.string(),
-  createdAt: types.number(),
-  updatedAt: types.number(),
   projectIds: types.optional(z.array(types.string())),
+  updatedAt: types.number(),
+  url: types.string(),
 });
 
 export function getWebhooksResponseBody2FromJSON(
@@ -492,6 +492,11 @@ export function getWebhooksResponseBody2FromJSON(
 }
 
 /** @internal */
+export const ResponseBodyEvents$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyEvents
+> = z.nativeEnum(ResponseBodyEvents);
+
+/** @internal */
 export const GetWebhooksResponseBodyFramework$inboundSchema: z.ZodNativeEnum<
   typeof GetWebhooksResponseBodyFramework
 > = z.nativeEnum(GetWebhooksResponseBodyFramework);
@@ -502,11 +507,11 @@ export const GetWebhooksResponseBodyProjectsMetadata$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: types.string(),
-  name: types.string(),
   framework: z.nullable(GetWebhooksResponseBodyFramework$inboundSchema)
     .optional(),
+  id: types.string(),
   latestDeployment: types.optional(types.string()),
+  name: types.string(),
 });
 
 export function getWebhooksResponseBodyProjectsMetadataFromJSON(
@@ -526,29 +531,24 @@ export function getWebhooksResponseBodyProjectsMetadataFromJSON(
 }
 
 /** @internal */
-export const ResponseBodyEvents$inboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyEvents
-> = z.nativeEnum(ResponseBodyEvents);
-
-/** @internal */
 export const GetWebhooksResponseBody1$inboundSchema: z.ZodType<
   GetWebhooksResponseBody1,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  alertRuleIds: types.optional(z.array(types.string())),
+  createdAt: types.number(),
+  events: z.array(ResponseBodyEvents$inboundSchema),
+  id: types.string(),
+  ownerId: types.string(),
+  projectIds: types.optional(z.array(types.string())),
   projectsMetadata: types.nullable(
     z.array(
       z.lazy(() => GetWebhooksResponseBodyProjectsMetadata$inboundSchema),
     ),
   ),
-  alertRuleIds: types.optional(z.array(types.string())),
-  events: z.array(ResponseBodyEvents$inboundSchema),
-  id: types.string(),
-  url: types.string(),
-  ownerId: types.string(),
-  createdAt: types.number(),
   updatedAt: types.number(),
-  projectIds: types.optional(z.array(types.string())),
+  url: types.string(),
 });
 
 export function getWebhooksResponseBody1FromJSON(

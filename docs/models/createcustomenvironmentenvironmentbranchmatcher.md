@@ -8,8 +8,8 @@ Configuration for matching git branches to this environment
 import { CreateCustomEnvironmentEnvironmentBranchMatcher } from "@vercel/sdk/models/createcustomenvironmentop.js";
 
 let value: CreateCustomEnvironmentEnvironmentBranchMatcher = {
-  type: "equals",
   pattern: "<value>",
+  type: "equals",
 };
 ```
 
@@ -17,5 +17,5 @@ let value: CreateCustomEnvironmentEnvironmentBranchMatcher = {
 
 | Field                                                                                                                | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
 | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `type`                                                                                                               | [models.CreateCustomEnvironmentEnvironmentResponseType](../models/createcustomenvironmentenvironmentresponsetype.md) | :heavy_check_mark:                                                                                                   | The type of matching to perform                                                                                      |
 | `pattern`                                                                                                            | *string*                                                                                                             | :heavy_check_mark:                                                                                                   | The pattern to match against branch names                                                                            |
+| `type`                                                                                                               | [models.CreateCustomEnvironmentEnvironmentResponseType](../models/createcustomenvironmentenvironmentresponsetype.md) | :heavy_check_mark:                                                                                                   | The type of matching to perform                                                                                      |

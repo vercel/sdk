@@ -25,37 +25,37 @@ export type GetRouteVersionsRequest = {
  */
 export type GetRouteVersionsVersions = {
   /**
-   * Unique identifier for the version.
+   * The staging alias for previewing this version.
    */
-  id: string;
-  /**
-   * The S3 key where the routing rules are stored.
-   */
-  s3Key: string;
-  /**
-   * Timestamp of when this version was last modified.
-   */
-  lastModified: number;
+  alias?: string | undefined;
   /**
    * The user who created this version.
    */
   createdBy: string;
   /**
-   * Whether this version is staged and not yet promoted to production.
+   * Unique identifier for the version.
    */
-  isStaging?: boolean | undefined;
+  id: string;
   /**
    * Whether this version is currently live in production.
    */
   isLive?: boolean | undefined;
   /**
+   * Whether this version is staged and not yet promoted to production.
+   */
+  isStaging?: boolean | undefined;
+  /**
+   * Timestamp of when this version was last modified.
+   */
+  lastModified: number;
+  /**
    * The number of routing rules in this version.
    */
   ruleCount?: number | undefined;
   /**
-   * The staging alias for previewing this version.
+   * The S3 key where the routing rules are stored.
    */
-  alias?: string | undefined;
+  s3Key: string;
 };
 
 export type GetRouteVersionsResponseBody = {
@@ -94,14 +94,14 @@ export const GetRouteVersionsVersions$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: types.string(),
-  s3Key: types.string(),
-  lastModified: types.number(),
-  createdBy: types.string(),
-  isStaging: types.optional(types.boolean()),
-  isLive: types.optional(types.boolean()),
-  ruleCount: types.optional(types.number()),
   alias: types.optional(types.string()),
+  createdBy: types.string(),
+  id: types.string(),
+  isLive: types.optional(types.boolean()),
+  isStaging: types.optional(types.boolean()),
+  lastModified: types.number(),
+  ruleCount: types.optional(types.number()),
+  s3Key: types.string(),
 });
 
 export function getRouteVersionsVersionsFromJSON(

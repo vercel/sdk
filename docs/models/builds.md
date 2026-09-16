@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Builds } from "@vercel/sdk/models/locale.js";
+import { Builds } from "@vercel/sdk/models/canceldeploymentresourceconfig.js";
 
 let value: Builds = {
   use: "<value>",
@@ -14,6 +14,6 @@ let value: Builds = {
 
 | Field                 | Type                  | Required              | Description           |
 | --------------------- | --------------------- | --------------------- | --------------------- |
-| `use`                 | *string*              | :heavy_check_mark:    | N/A                   |
-| `src`                 | *string*              | :heavy_minus_sign:    | N/A                   |
 | `config`              | Record<string, *any*> | :heavy_minus_sign:    | N/A                   |
+| `src`                 | *string*              | :heavy_minus_sign:    | N/A                   |
+| `use`                 | *string*              | :heavy_check_mark:    | N/A                   |

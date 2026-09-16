@@ -3,12 +3,12 @@
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentGitSource2 } from "@vercel/sdk/models/locale.js";
+import { CancelDeploymentGitSource2 } from "@vercel/sdk/models/canceldeploymentresourceconfig.js";
 
 let value: CancelDeploymentGitSource2 = {
-  type: "github",
   org: "<value>",
   repo: "<value>",
+  type: "github",
 };
 ```
 
@@ -16,9 +16,9 @@ let value: CancelDeploymentGitSource2 = {
 
 | Field                                                                                                    | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
 | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| `type`                                                                                                   | [models.CancelDeploymentGitSourceDeploymentsType](../models/canceldeploymentgitsourcedeploymentstype.md) | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
 | `org`                                                                                                    | *string*                                                                                                 | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
-| `repo`                                                                                                   | *string*                                                                                                 | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
-| `ref`                                                                                                    | *string*                                                                                                 | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |
-| `sha`                                                                                                    | *string*                                                                                                 | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |
 | `prId`                                                                                                   | *number*                                                                                                 | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |
+| `ref`                                                                                                    | *string*                                                                                                 | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |
+| `repo`                                                                                                   | *string*                                                                                                 | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
+| `sha`                                                                                                    | *string*                                                                                                 | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |
+| `type`                                                                                                   | [models.CancelDeploymentGitSourceDeploymentsType](../models/canceldeploymentgitsourcedeploymentstype.md) | :heavy_check_mark:                                                                                       | N/A                                                                                                      |

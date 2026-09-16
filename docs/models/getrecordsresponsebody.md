@@ -23,12 +23,12 @@ const value: models.GetRecordsResponseBody2 = {
 
 ```typescript
 const value: models.GetRecordsResponseBody3 = {
-  records: [],
   pagination: {
     count: 20,
     next: 1540095775951,
     prev: 1540095775951,
   },
+  records: [],
 };
 ```
 

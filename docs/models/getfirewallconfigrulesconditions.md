@@ -6,8 +6,8 @@
 import { GetFirewallConfigRulesConditions } from "@vercel/sdk/models/getfirewallconfigop.js";
 
 let value: GetFirewallConfigRulesConditions = {
-  type: "traffic_source",
   op: "sub",
+  type: "shared_condition",
 };
 ```
 
@@ -15,8 +15,8 @@ let value: GetFirewallConfigRulesConditions = {
 
 | Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `type`                                                                       | [models.GetFirewallConfigRulesType](../models/getfirewallconfigrulestype.md) | :heavy_check_mark:                                                           | N/A                                                                          |
-| `op`                                                                         | [models.GetFirewallConfigRulesOp](../models/getfirewallconfigrulesop.md)     | :heavy_check_mark:                                                           | N/A                                                                          |
-| `neg`                                                                        | *boolean*                                                                    | :heavy_minus_sign:                                                           | N/A                                                                          |
 | `key`                                                                        | *string*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `neg`                                                                        | *boolean*                                                                    | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `op`                                                                         | [models.GetFirewallConfigRulesOp](../models/getfirewallconfigrulesop.md)     | :heavy_check_mark:                                                           | N/A                                                                          |
+| `type`                                                                       | [models.GetFirewallConfigRulesType](../models/getfirewallconfigrulestype.md) | :heavy_check_mark:                                                           | N/A                                                                          |
 | `value`                                                                      | *models.GetFirewallConfigRulesValue*                                         | :heavy_minus_sign:                                                           | N/A                                                                          |

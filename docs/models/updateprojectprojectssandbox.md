@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateProjectProjectsSandbox } from "@vercel/sdk/models/updateprojecttrafficsources.js";
+import { UpdateProjectProjectsSandbox } from "@vercel/sdk/models/updateprojectresponsebody.js";
 
 let value: UpdateProjectProjectsSandbox = {};
 ```
@@ -12,5 +12,5 @@ let value: UpdateProjectProjectsSandbox = {};
 
 | Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `region`                                                                                           | [models.UpdateProjectProjectsRegion](../models/updateprojectprojectsregion.md)                     | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 | `failoverRegions`                                                                                  | [models.UpdateProjectProjectsFailoverRegions](../models/updateprojectprojectsfailoverregions.md)[] | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
+| `region`                                                                                           | [models.UpdateProjectProjectsRegion](../models/updateprojectprojectsregion.md)                     | :heavy_minus_sign:                                                                                 | N/A                                                                                                |

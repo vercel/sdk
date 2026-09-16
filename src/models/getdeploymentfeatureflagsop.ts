@@ -23,17 +23,17 @@ export type GetDeploymentFeatureFlagsRequest = {
 export type GetDeploymentFeatureFlagsFlags = {};
 
 export type GetDeploymentFeatureFlagsStatus = {
+  createdAt: number;
   deploymentId: string;
+  /**
+   * The number of flag definitions returned by the flags discovery endpoint.
+   */
+  flagCount: number;
   projectId: string;
   /**
    * The HTTP status code from the flags discovery endpoint.
    */
   responseStatus: number;
-  /**
-   * The number of flag definitions returned by the flags discovery endpoint.
-   */
-  flagCount: number;
-  createdAt: number;
 };
 
 export type GetDeploymentFeatureFlagsResponseBody = {
@@ -92,11 +92,11 @@ export const GetDeploymentFeatureFlagsStatus$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  createdAt: types.number(),
   deploymentId: types.string(),
+  flagCount: types.number(),
   projectId: types.string(),
   responseStatus: types.number(),
-  flagCount: types.number(),
-  createdAt: types.number(),
 });
 
 export function getDeploymentFeatureFlagsStatusFromJSON(

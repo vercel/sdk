@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { Credentials1 } from "@vercel/sdk/models/usereventpayload171gituserid.js";
+import { Credentials1 } from "@vercel/sdk/models/usereventpayload171newownerfeatureblocksworkflowstoragewriteblockreason.js";
 
 let value: Credentials1 = {
-  type: "github-oauth-limited",
   id: "<id>",
+  type: "github-oauth-limited",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: Credentials1 = {
 
 | Field                                                  | Type                                                   | Required                                               | Description                                            |
 | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `type`                                                 | [models.CredentialsType](../models/credentialstype.md) | :heavy_check_mark:                                     | N/A                                                    |
 | `id`                                                   | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
+| `type`                                                 | [models.CredentialsType](../models/credentialstype.md) | :heavy_check_mark:                                     | N/A                                                    |

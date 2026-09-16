@@ -5,14 +5,14 @@ Specific project IDs or all projects on the team (`['*']`).
 ## Example Usage
 
 ```typescript
-import { PayloadProjectIds } from "@vercel/sdk/models/payloadaccessgroup.js";
+import { PayloadProjectIds } from "@vercel/sdk/models/twentynine.js";
 
 let value: PayloadProjectIds = {
-  type: "list",
-  required: true,
   items: {
     type: "string",
   },
+  required: true,
+  type: "list",
 };
 ```
 
@@ -20,6 +20,6 @@ let value: PayloadProjectIds = {
 
 | Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
 | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `type`                                                               | [models.UserEventPayload57Type](../models/usereventpayload57type.md) | :heavy_check_mark:                                                   | N/A                                                                  |
-| `required`                                                           | *true*                                                               | :heavy_check_mark:                                                   | N/A                                                                  |
 | `items`                                                              | [models.Items](../models/items.md)                                   | :heavy_check_mark:                                                   | N/A                                                                  |
+| `required`                                                           | *true*                                                               | :heavy_check_mark:                                                   | N/A                                                                  |
+| `type`                                                               | [models.UserEventPayload57Type](../models/usereventpayload57type.md) | :heavy_check_mark:                                                   | N/A                                                                  |

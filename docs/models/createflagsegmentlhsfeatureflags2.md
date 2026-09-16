@@ -6,9 +6,9 @@
 import { CreateFlagSegmentLhsFeatureFlags2 } from "@vercel/sdk/models/createflagsegmentop.js";
 
 let value: CreateFlagSegmentLhsFeatureFlags2 = {
-  type: "entity",
-  kind: "<value>",
   attribute: "<value>",
+  kind: "<value>",
+  type: "entity",
 };
 ```
 
@@ -16,6 +16,6 @@ let value: CreateFlagSegmentLhsFeatureFlags2 = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `type`             | *"entity"*         | :heavy_check_mark: | N/A                |
-| `kind`             | *string*           | :heavy_check_mark: | N/A                |
 | `attribute`        | *string*           | :heavy_check_mark: | N/A                |
+| `kind`             | *string*           | :heavy_check_mark: | N/A                |
+| `type`             | *"entity"*         | :heavy_check_mark: | N/A                |

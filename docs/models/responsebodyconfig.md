@@ -5,14 +5,14 @@ Since February 2025 the configuration must include snapshot data at the time of 
 ## Example Usage
 
 ```typescript
-import { ResponseBodyConfig } from "@vercel/sdk/models/createdeploymentresponsebody.js";
+import { ResponseBodyConfig } from "@vercel/sdk/models/createdeploymentresponsebodydeploymentsstatus.js";
 
 let value: ResponseBodyConfig = {
-  functionType: "standard",
-  functionMemoryType: "performance",
+  functionMemoryType: "standard_legacy",
   functionTimeout: null,
-  secureComputePrimaryRegion: "<value>",
-  secureComputeFallbackRegion: null,
+  functionType: "fluid",
+  secureComputeFallbackRegion: "<value>",
+  secureComputePrimaryRegion: null,
 };
 ```
 
@@ -20,11 +20,11 @@ let value: ResponseBodyConfig = {
 
 | Field                                                                                                        | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
 | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| `version`                                                                                                    | *number*                                                                                                     | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |
-| `functionType`                                                                                               | [models.ResponseBodyFunctionType](../models/responsebodyfunctiontype.md)                                     | :heavy_check_mark:                                                                                           | N/A                                                                                                          |
 | `functionMemoryType`                                                                                         | [models.ResponseBodyFunctionMemoryType](../models/responsebodyfunctionmemorytype.md)                         | :heavy_check_mark:                                                                                           | N/A                                                                                                          |
 | `functionTimeout`                                                                                            | *number*                                                                                                     | :heavy_check_mark:                                                                                           | N/A                                                                                                          |
-| `secureComputePrimaryRegion`                                                                                 | *string*                                                                                                     | :heavy_check_mark:                                                                                           | N/A                                                                                                          |
-| `secureComputeFallbackRegion`                                                                                | *string*                                                                                                     | :heavy_check_mark:                                                                                           | N/A                                                                                                          |
+| `functionType`                                                                                               | [models.ResponseBodyFunctionType](../models/responsebodyfunctiontype.md)                                     | :heavy_check_mark:                                                                                           | N/A                                                                                                          |
 | `isUsingActiveCPU`                                                                                           | *boolean*                                                                                                    | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |
 | `resourceConfig`                                                                                             | [models.CreateDeploymentResponseBodyResourceConfig](../models/createdeploymentresponsebodyresourceconfig.md) | :heavy_minus_sign:                                                                                           | Build resource configuration snapshot for this deployment.                                                   |
+| `secureComputeFallbackRegion`                                                                                | *string*                                                                                                     | :heavy_check_mark:                                                                                           | N/A                                                                                                          |
+| `secureComputePrimaryRegion`                                                                                 | *string*                                                                                                     | :heavy_check_mark:                                                                                           | N/A                                                                                                          |
+| `version`                                                                                                    | *number*                                                                                                     | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |

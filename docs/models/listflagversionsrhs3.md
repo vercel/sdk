@@ -6,12 +6,12 @@
 import { ListFlagVersionsRhs3 } from "@vercel/sdk/models/listflagversionsop.js";
 
 let value: ListFlagVersionsRhs3 = {
-  type: "list/inline",
   items: [
     {
       value: "<value>",
     },
   ],
+  type: "list/inline",
 };
 ```
 
@@ -19,5 +19,5 @@ let value: ListFlagVersionsRhs3 = {
 
 | Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `type`                                                                 | [models.ListFlagVersionsRhsType](../models/listflagversionsrhstype.md) | :heavy_check_mark:                                                     | N/A                                                                    |
 | `items`                                                                | *models.ListFlagVersionsRhsItems*[]                                    | :heavy_check_mark:                                                     | N/A                                                                    |
+| `type`                                                                 | [models.ListFlagVersionsRhsType](../models/listflagversionsrhstype.md) | :heavy_check_mark:                                                     | N/A                                                                    |

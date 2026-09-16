@@ -5,12 +5,12 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FortyNine } from "@vercel/sdk/models/payloadaccessgroup.js";
+import { FortyNine } from "@vercel/sdk/models/twentynine.js";
 
 let value: FortyNine = {
-  projectName: "<value>",
-  alias: "<value>",
   action: "removed",
+  alias: "<value>",
+  projectName: "<value>",
 };
 ```
 
@@ -18,7 +18,7 @@ let value: FortyNine = {
 
 | Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
 | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `action`                                                                 | [models.UserEventPayload49Action](../models/usereventpayload49action.md) | :heavy_check_mark:                                                       | N/A                                                                      |
+| `alias`                                                                  | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
 | `projectId`                                                              | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
 | `projectName`                                                            | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
-| `alias`                                                                  | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
-| `action`                                                                 | [models.UserEventPayload49Action](../models/usereventpayload49action.md) | :heavy_check_mark:                                                       | N/A                                                                      |

@@ -8,16 +8,16 @@
 import { GitSources } from "@vercel/sdk/models/team.js";
 
 let value: GitSources = {
-  sources: [],
   enabled: true,
   environments: [],
+  sources: [],
 };
 ```
 
 ## Fields
 
-| Field                       | Type                        | Required                    | Description                 |
-| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
-| `sources`                   | *models.Sources*[]          | :heavy_check_mark:          | N/A                         |
-| `enabled`                   | *boolean*                   | :heavy_check_mark:          | N/A                         |
-| `environments`              | *models.TeamEnvironments*[] | :heavy_check_mark:          | N/A                         |
+| Field                                       | Type                                        | Required                                    | Description                                 |
+| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
+| `enabled`                                   | *boolean*                                   | :heavy_check_mark:                          | N/A                                         |
+| `environments`                              | *models.TeamDeploymentPolicyEnvironments*[] | :heavy_check_mark:                          | N/A                                         |
+| `sources`                                   | *models.TeamSources*[]                      | :heavy_check_mark:                          | N/A                                         |

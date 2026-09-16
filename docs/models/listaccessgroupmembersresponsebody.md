@@ -9,9 +9,9 @@ let value: ListAccessGroupMembersResponseBody = {
   members: [
     {
       email: "Felicity63@yahoo.com",
+      teamRole: "CONTRIBUTOR",
       uid: "<id>",
-      username: "Brianne81",
-      teamRole: "SECURITY",
+      username: "Doyle89",
     },
   ],
   pagination: {

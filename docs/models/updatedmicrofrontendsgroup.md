@@ -14,8 +14,8 @@ let value: UpdatedMicrofrontendsGroup = {
 
 | Field                         | Type                          | Required                      | Description                   |
 | ----------------------------- | ----------------------------- | ----------------------------- | ----------------------------- |
+| `enablePolyrepoBranchRouting` | *boolean*                     | :heavy_minus_sign:            | N/A                           |
+| `fallbackEnvironment`         | *string*                      | :heavy_minus_sign:            | N/A                           |
+| `id`                          | *string*                      | :heavy_check_mark:            | N/A                           |
 | `name`                        | *string*                      | :heavy_minus_sign:            | N/A                           |
 | `slug`                        | *string*                      | :heavy_minus_sign:            | N/A                           |
-| `id`                          | *string*                      | :heavy_check_mark:            | N/A                           |
-| `fallbackEnvironment`         | *string*                      | :heavy_minus_sign:            | N/A                           |
-| `enablePolyrepoBranchRouting` | *boolean*                     | :heavy_minus_sign:            | N/A                           |

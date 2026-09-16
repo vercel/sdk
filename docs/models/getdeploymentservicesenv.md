@@ -6,8 +6,8 @@
 import { GetDeploymentServicesEnv } from "@vercel/sdk/models/getdeploymentresponsebody1.js";
 
 let value: GetDeploymentServicesEnv = {
-  type: "service-ref",
   service: "<value>",
+  type: "service-ref",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: GetDeploymentServicesEnv = {
 
 | Field                                                                                                            | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
 | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `type`                                                                                                           | [models.GetDeploymentServicesDeploymentsResponseType](../models/getdeploymentservicesdeploymentsresponsetype.md) | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
 | `service`                                                                                                        | *string*                                                                                                         | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
+| `type`                                                                                                           | [models.GetDeploymentServicesDeploymentsResponseType](../models/getdeploymentservicesdeploymentsresponsetype.md) | :heavy_check_mark:                                                                                               | N/A                                                                                                              |

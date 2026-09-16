@@ -27,60 +27,60 @@ export type CreateEdgeConfigRequest = {
 };
 
 export type CreateEdgeConfigPurpose2 = {
-  type: "experimentation";
   resourceId: string;
+  type: "experimentation";
 };
 
 export type CreateEdgeConfigPurpose1 = {
-  type: "flags";
   projectId: string;
+  type: "flags";
 };
 
 export type CreateEdgeConfigPurpose =
   | CreateEdgeConfigPurpose1
   | CreateEdgeConfigPurpose2;
 
+export type CreateEdgeConfigSchema = {};
+
 /**
  * Keeps track of the current state of the Global Config while it gets transferred.
  */
 export type CreateEdgeConfigTransfer = {
+  doneAt: number | null;
   fromAccountId: string;
   startedAt: number;
-  doneAt: number | null;
 };
-
-export type CreateEdgeConfigSchema = {};
 
 /**
  * A Global Config
  */
 export type CreateEdgeConfigResponseBody = {
-  id: string;
   createdAt: number;
   /**
    * The ID of the user who created the Global Config, optional because it is not always set.
    */
   createdBy?: string | undefined;
+  deletedAt?: number | null | undefined;
+  digest: string;
+  id: string;
   ownerId: string;
+  purpose?: CreateEdgeConfigPurpose1 | CreateEdgeConfigPurpose2 | undefined;
+  schema?: CreateEdgeConfigSchema | undefined;
   /**
    * Name for the Global Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores).
    */
   slug: string;
-  updatedAt: number;
-  digest: string;
-  purpose?: CreateEdgeConfigPurpose1 | CreateEdgeConfigPurpose2 | undefined;
-  deletedAt?: number | null | undefined;
-  /**
-   * Keeps track of the current state of the Global Config while it gets transferred.
-   */
-  transfer?: CreateEdgeConfigTransfer | undefined;
-  schema?: CreateEdgeConfigSchema | undefined;
   /**
    * Timestamp of when the Global Config was synced to DynamoDB initially. It is only set when syncing the entire Global Config, not when updating.
    */
   syncedToDynamoAt?: number | undefined;
-  sizeInBytes: number;
+  /**
+   * Keeps track of the current state of the Global Config while it gets transferred.
+   */
+  transfer?: CreateEdgeConfigTransfer | undefined;
+  updatedAt: number;
   itemCount: number;
+  sizeInBytes: number;
 };
 
 /** @internal */
@@ -146,8 +146,8 @@ export const CreateEdgeConfigPurpose2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("experimentation"),
   resourceId: types.string(),
+  type: types.literal("experimentation"),
 });
 
 export function createEdgeConfigPurpose2FromJSON(
@@ -166,8 +166,8 @@ export const CreateEdgeConfigPurpose1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("flags"),
   projectId: types.string(),
+  type: types.literal("flags"),
 });
 
 export function createEdgeConfigPurpose1FromJSON(
@@ -201,27 +201,6 @@ export function createEdgeConfigPurposeFromJSON(
 }
 
 /** @internal */
-export const CreateEdgeConfigTransfer$inboundSchema: z.ZodType<
-  CreateEdgeConfigTransfer,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fromAccountId: types.string(),
-  startedAt: types.number(),
-  doneAt: types.nullable(types.number()),
-});
-
-export function createEdgeConfigTransferFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateEdgeConfigTransfer, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateEdgeConfigTransfer$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateEdgeConfigTransfer' from JSON`,
-  );
-}
-
-/** @internal */
 export const CreateEdgeConfigSchema$inboundSchema: z.ZodType<
   CreateEdgeConfigSchema,
   z.ZodTypeDef,
@@ -239,32 +218,53 @@ export function createEdgeConfigSchemaFromJSON(
 }
 
 /** @internal */
+export const CreateEdgeConfigTransfer$inboundSchema: z.ZodType<
+  CreateEdgeConfigTransfer,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  doneAt: types.nullable(types.number()),
+  fromAccountId: types.string(),
+  startedAt: types.number(),
+});
+
+export function createEdgeConfigTransferFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateEdgeConfigTransfer, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateEdgeConfigTransfer$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateEdgeConfigTransfer' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateEdgeConfigResponseBody$inboundSchema: z.ZodType<
   CreateEdgeConfigResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: types.string(),
   createdAt: types.number(),
   createdBy: types.optional(types.string()),
-  ownerId: types.string(),
-  slug: types.string(),
-  updatedAt: types.number(),
+  deletedAt: z.nullable(types.number()).optional(),
   digest: types.string(),
+  id: types.string(),
+  ownerId: types.string(),
   purpose: types.optional(
     z.union([
       z.lazy(() => CreateEdgeConfigPurpose1$inboundSchema),
       z.lazy(() => CreateEdgeConfigPurpose2$inboundSchema),
     ]),
   ),
-  deletedAt: z.nullable(types.number()).optional(),
+  schema: types.optional(z.lazy(() => CreateEdgeConfigSchema$inboundSchema)),
+  slug: types.string(),
+  syncedToDynamoAt: types.optional(types.number()),
   transfer: types.optional(
     z.lazy(() => CreateEdgeConfigTransfer$inboundSchema),
   ),
-  schema: types.optional(z.lazy(() => CreateEdgeConfigSchema$inboundSchema)),
-  syncedToDynamoAt: types.optional(types.number()),
-  sizeInBytes: types.number(),
+  updatedAt: types.number(),
   itemCount: types.number(),
+  sizeInBytes: types.number(),
 });
 
 export function createEdgeConfigResponseBodyFromJSON(

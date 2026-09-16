@@ -5,26 +5,21 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyDeploymentSources } from "@vercel/sdk/models/getprojectsinternalroutesprojectsresponsehas.js";
+import { ResponseBodyDeploymentSources } from "@vercel/sdk/models/getprojectsresponsebodyprojectsconsolidatedgitcommitstatus.js";
 
 let value: ResponseBodyDeploymentSources = {
-  sources: [
-    "cli",
-  ],
   enabled: false,
-  environments: [
-    {
-      type: "system",
-      target: "preview",
-    },
+  environments: [],
+  sources: [
+    "integration",
   ],
 };
 ```
 
 ## Fields
 
-| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `sources`                                                                              | [models.GetProjectsResponseBodySources](../models/getprojectsresponsebodysources.md)[] | :heavy_check_mark:                                                                     | N/A                                                                                    |
-| `enabled`                                                                              | *boolean*                                                                              | :heavy_check_mark:                                                                     | N/A                                                                                    |
-| `environments`                                                                         | *models.GetProjectsResponseBodyProjectsEnvironments*[]                                 | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `enabled`                                                        | *boolean*                                                        | :heavy_check_mark:                                               | N/A                                                              |
+| `environments`                                                   | *models.GetProjectsResponseBodyEnvironments*[]                   | :heavy_check_mark:                                               | N/A                                                              |
+| `sources`                                                        | [models.ResponseBodySources](../models/responsebodysources.md)[] | :heavy_check_mark:                                               | N/A                                                              |

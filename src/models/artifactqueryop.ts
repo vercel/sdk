@@ -38,11 +38,11 @@ export type ArtifactQueryResponseBody2 = {
 };
 
 export type ArtifactQueryResponseBody1 = {
-  size: number;
-  taskDurationMs: number;
-  tag?: string | undefined;
-  sha?: string | undefined;
   dirtyHash?: string | undefined;
+  sha?: string | undefined;
+  size: number;
+  tag?: string | undefined;
+  taskDurationMs: number;
 };
 
 export type ArtifactQueryResponseBody =
@@ -145,11 +145,11 @@ export const ArtifactQueryResponseBody1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  size: types.number(),
-  taskDurationMs: types.number(),
-  tag: types.optional(types.string()),
-  sha: types.optional(types.string()),
   dirtyHash: types.optional(types.string()),
+  sha: types.optional(types.string()),
+  size: types.number(),
+  tag: types.optional(types.string()),
+  taskDurationMs: types.number(),
 });
 
 export function artifactQueryResponseBody1FromJSON(

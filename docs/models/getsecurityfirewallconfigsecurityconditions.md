@@ -3,17 +3,17 @@
 ## Example Usage
 
 ```typescript
-import { GetSecurityFirewallConfigSecurityConditions } from "@vercel/sdk/models/getsecurityfirewallconfigsecurityresponsemanagedrules.js";
+import { GetSecurityFirewallConfigSecurityConditions } from "@vercel/sdk/models/getsecurityfirewallconfigrulessecurityresponse200applicationjsonresponsebodydraft2actionaction.js";
 
 let value: GetSecurityFirewallConfigSecurityConditions = {
-  id: "<id>",
-  name: "<value>",
   active: false,
   conditionGroup: [
     {
       conditions: [],
     },
   ],
+  id: "<id>",
+  name: "<value>",
 };
 ```
 
@@ -21,8 +21,8 @@ let value: GetSecurityFirewallConfigSecurityConditions = {
 
 | Field                                                                                                    | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
 | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `active`                                                                                                 | *boolean*                                                                                                | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
+| `conditionGroup`                                                                                         | [models.GetSecurityFirewallConfigConditionGroup](../models/getsecurityfirewallconfigconditiongroup.md)[] | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
 | `description`                                                                                            | *string*                                                                                                 | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |
 | `id`                                                                                                     | *string*                                                                                                 | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
 | `name`                                                                                                   | *string*                                                                                                 | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
-| `active`                                                                                                 | *boolean*                                                                                                | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
-| `conditionGroup`                                                                                         | [models.GetSecurityFirewallConfigConditionGroup](../models/getsecurityfirewallconfigconditiongroup.md)[] | :heavy_check_mark:                                                                                       | N/A                                                                                                      |

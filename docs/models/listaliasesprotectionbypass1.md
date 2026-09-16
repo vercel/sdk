@@ -20,5 +20,5 @@ let value: ListAliasesProtectionBypass1 = {
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `createdAt`        | *number*           | :heavy_check_mark: | N/A                |
 | `createdBy`        | *string*           | :heavy_check_mark: | N/A                |
-| `scope`            | *"shareable-link"* | :heavy_check_mark: | N/A                |
 | `expires`          | *number*           | :heavy_minus_sign: | N/A                |
+| `scope`            | *"shareable-link"* | :heavy_check_mark: | N/A                |

@@ -10,32 +10,58 @@ import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
-  UpdateMicrofrontendsAbuse,
-  UpdateMicrofrontendsAbuse$inboundSchema,
-  UpdateMicrofrontendsDefaultResourceConfig,
-  UpdateMicrofrontendsDefaultResourceConfig$inboundSchema,
-  UpdateMicrofrontendsDeploymentPolicy,
-  UpdateMicrofrontendsDeploymentPolicy$inboundSchema,
-  UpdateMicrofrontendsFeatures,
-  UpdateMicrofrontendsFeatures$inboundSchema,
-  UpdateMicrofrontendsGitComments,
-  UpdateMicrofrontendsGitComments$inboundSchema,
-  UpdateMicrofrontendsGitProviderOptions,
-  UpdateMicrofrontendsGitProviderOptions$inboundSchema,
-  UpdateMicrofrontendsInternalRoutes2,
-  UpdateMicrofrontendsInternalRoutes2$inboundSchema,
+  UpdateMicrofrontendsFrom1,
+  UpdateMicrofrontendsFrom1$inboundSchema,
+  UpdateMicrofrontendsFrom2,
+  UpdateMicrofrontendsFrom2$inboundSchema,
+  UpdateMicrofrontendsInternalRoutes,
+  UpdateMicrofrontendsInternalRoutes$inboundSchema,
+  UpdateMicrofrontendsIpBuckets,
+  UpdateMicrofrontendsIpBuckets$inboundSchema,
+  UpdateMicrofrontendsJobs,
+  UpdateMicrofrontendsJobs$inboundSchema,
   UpdateMicrofrontendsLastAliasRequest,
   UpdateMicrofrontendsLastAliasRequest$inboundSchema,
   UpdateMicrofrontendsLastRollbackTarget,
   UpdateMicrofrontendsLastRollbackTarget$inboundSchema,
+  UpdateMicrofrontendsLatestDeployments,
+  UpdateMicrofrontendsLatestDeployments$inboundSchema,
+  UpdateMicrofrontendsLink,
+  UpdateMicrofrontendsLink$inboundSchema,
+  UpdateMicrofrontendsMicrofrontends,
+  UpdateMicrofrontendsMicrofrontends$inboundSchema,
+  UpdateMicrofrontendsNodeVersion,
+  UpdateMicrofrontendsNodeVersion$inboundSchema,
+  UpdateMicrofrontendsOidcProviders,
+  UpdateMicrofrontendsOidcProviders$inboundSchema,
   UpdateMicrofrontendsOidcTokenConfig,
   UpdateMicrofrontendsOidcTokenConfig$inboundSchema,
+  UpdateMicrofrontendsOptionsAllowlist,
+  UpdateMicrofrontendsOptionsAllowlist$inboundSchema,
+  UpdateMicrofrontendsPassport,
+  UpdateMicrofrontendsPassport$inboundSchema,
+  UpdateMicrofrontendsPasswordProtection,
+  UpdateMicrofrontendsPasswordProtection$inboundSchema,
   UpdateMicrofrontendsPermissions,
   UpdateMicrofrontendsPermissions$inboundSchema,
   UpdateMicrofrontendsProtectionBypass,
   UpdateMicrofrontendsProtectionBypass$inboundSchema,
+  UpdateMicrofrontendsProtectionConfig,
+  UpdateMicrofrontendsProtectionConfig$inboundSchema,
+  UpdateMicrofrontendsResourceConfig,
+  UpdateMicrofrontendsResourceConfig$inboundSchema,
+  UpdateMicrofrontendsRollbackDescription,
+  UpdateMicrofrontendsRollbackDescription$inboundSchema,
+  UpdateMicrofrontendsRollingRelease,
+  UpdateMicrofrontendsRollingRelease$inboundSchema,
+  UpdateMicrofrontendsSandbox,
+  UpdateMicrofrontendsSandbox$inboundSchema,
   UpdateMicrofrontendsSecurity,
   UpdateMicrofrontendsSecurity$inboundSchema,
+  UpdateMicrofrontendsServices,
+  UpdateMicrofrontendsServices$inboundSchema,
+  UpdateMicrofrontendsSpeedInsights,
+  UpdateMicrofrontendsSpeedInsights$inboundSchema,
   UpdateMicrofrontendsSsoProtection,
   UpdateMicrofrontendsSsoProtection$inboundSchema,
   UpdateMicrofrontendsStaticIps,
@@ -44,16 +70,14 @@ import {
   UpdateMicrofrontendsTargets$inboundSchema,
   UpdateMicrofrontendsTier,
   UpdateMicrofrontendsTier$inboundSchema,
+  UpdateMicrofrontendsTracing,
+  UpdateMicrofrontendsTracing$inboundSchema,
   UpdateMicrofrontendsTrustedIps,
   UpdateMicrofrontendsTrustedIps$inboundSchema,
-  UpdateMicrofrontendsTrustedSources,
-  UpdateMicrofrontendsTrustedSources$inboundSchema,
-  UpdateMicrofrontendsUsageStatus,
-  UpdateMicrofrontendsUsageStatus$inboundSchema,
-  UpdateMicrofrontendsWebAnalytics,
-  UpdateMicrofrontendsWebAnalytics$inboundSchema,
-} from "./updatemicrofrontendsinternalroutes2.js";
+} from "./updatemicrofrontendsfrom1.js";
 import {
+  UpdateMicrofrontendsAbuse,
+  UpdateMicrofrontendsAbuse$inboundSchema,
   UpdateMicrofrontendsAlias,
   UpdateMicrofrontendsAlias$inboundSchema,
   UpdateMicrofrontendsAnalytics,
@@ -70,185 +94,230 @@ import {
   UpdateMicrofrontendsCustomEnvironments$inboundSchema,
   UpdateMicrofrontendsDataCache,
   UpdateMicrofrontendsDataCache$inboundSchema,
+  UpdateMicrofrontendsDefaultResourceConfig,
+  UpdateMicrofrontendsDefaultResourceConfig$inboundSchema,
   UpdateMicrofrontendsDeploymentExpiration,
   UpdateMicrofrontendsDeploymentExpiration$inboundSchema,
+  UpdateMicrofrontendsDeploymentPolicy,
+  UpdateMicrofrontendsDeploymentPolicy$inboundSchema,
+  UpdateMicrofrontendsDismissedToasts,
+  UpdateMicrofrontendsDismissedToasts$inboundSchema,
   UpdateMicrofrontendsEnv,
   UpdateMicrofrontendsEnv$inboundSchema,
   UpdateMicrofrontendsExpiration,
   UpdateMicrofrontendsExpiration$inboundSchema,
+  UpdateMicrofrontendsFeatures,
+  UpdateMicrofrontendsFeatures$inboundSchema,
   UpdateMicrofrontendsFramework,
   UpdateMicrofrontendsFramework$inboundSchema,
-  UpdateMicrofrontendsIpBuckets,
-  UpdateMicrofrontendsIpBuckets$inboundSchema,
-  UpdateMicrofrontendsJobs,
-  UpdateMicrofrontendsJobs$inboundSchema,
-  UpdateMicrofrontendsLatestDeployments,
-  UpdateMicrofrontendsLatestDeployments$inboundSchema,
-  UpdateMicrofrontendsLink,
-  UpdateMicrofrontendsLink$inboundSchema,
-  UpdateMicrofrontendsMicrofrontends,
-  UpdateMicrofrontendsMicrofrontends$inboundSchema,
-  UpdateMicrofrontendsNodeVersion,
-  UpdateMicrofrontendsNodeVersion$inboundSchema,
-  UpdateMicrofrontendsOptionsAllowlist,
-  UpdateMicrofrontendsOptionsAllowlist$inboundSchema,
-  UpdateMicrofrontendsPassport,
-  UpdateMicrofrontendsPassport$inboundSchema,
-  UpdateMicrofrontendsPasswordProtection,
-  UpdateMicrofrontendsPasswordProtection$inboundSchema,
-  UpdateMicrofrontendsProtectionConfig,
-  UpdateMicrofrontendsProtectionConfig$inboundSchema,
-  UpdateMicrofrontendsResourceConfig,
-  UpdateMicrofrontendsResourceConfig$inboundSchema,
-  UpdateMicrofrontendsRollbackDescription,
-  UpdateMicrofrontendsRollbackDescription$inboundSchema,
-  UpdateMicrofrontendsRollingRelease,
-  UpdateMicrofrontendsRollingRelease$inboundSchema,
-  UpdateMicrofrontendsSandbox,
-  UpdateMicrofrontendsSandbox$inboundSchema,
-  UpdateMicrofrontendsServices,
-  UpdateMicrofrontendsServices$inboundSchema,
-  UpdateMicrofrontendsSpeedInsights,
-  UpdateMicrofrontendsSpeedInsights$inboundSchema,
-} from "./updatemicrofrontendsprojectsfunctiondefaultmemorytype.js";
+  UpdateMicrofrontendsGitComments,
+  UpdateMicrofrontendsGitComments$inboundSchema,
+  UpdateMicrofrontendsGitProviderOptions,
+  UpdateMicrofrontendsGitProviderOptions$inboundSchema,
+} from "./updatemicrofrontendshaskey.js";
 
-export type UpdateMicrofrontendsInternalRoutes1 = {
-  src: string;
-  status: number;
-  expiry?: number | undefined;
-};
+export type UpdateMicrofrontendsFrom =
+  | UpdateMicrofrontendsFrom1
+  | UpdateMicrofrontendsFrom2;
 
-export type UpdateMicrofrontendsInternalRoutes =
-  | UpdateMicrofrontendsInternalRoutes1
-  | UpdateMicrofrontendsInternalRoutes2;
-
-export const UpdateMicrofrontendsAction = {
-  Accept: "accept",
-  Cancel: "cancel",
-  Delete: "delete",
+export const UpdateMicrofrontendsToProjectsResponse200Preset = {
+  AllCustom: "all-custom",
 } as const;
-export type UpdateMicrofrontendsAction = ClosedEnum<
-  typeof UpdateMicrofrontendsAction
->;
-
-export type UpdateMicrofrontendsValuePreviousValue = string | number | boolean;
-
-export type UpdateMicrofrontendsValueCurrentValue = string | number | boolean;
-
-export type UpdateMicrofrontendsValue3 = {
-  previousValue: string | number | boolean;
-  currentValue: string | number | boolean;
-};
-
-export type UpdateMicrofrontendsValue =
-  | UpdateMicrofrontendsValue3
-  | string
-  | number
-  | boolean;
-
-export type UpdateMicrofrontendsDismissedToasts = {
-  key: string;
-  dismissedAt: number;
-  action: UpdateMicrofrontendsAction;
-  value: UpdateMicrofrontendsValue3 | string | number | boolean | null;
-};
-
-export const UpdateMicrofrontendsProjectsEnv = {
-  Preview: "preview",
-  Production: "production",
-} as const;
-export type UpdateMicrofrontendsProjectsEnv = ClosedEnum<
-  typeof UpdateMicrofrontendsProjectsEnv
+export type UpdateMicrofrontendsToProjectsResponse200Preset = ClosedEnum<
+  typeof UpdateMicrofrontendsToProjectsResponse200Preset
 >;
 
 /**
- * Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery type when project tracing is computed; absent on configs persisted before this field existed.
+ * The target envs on the current project that may be accessed.
  */
-export const UpdateMicrofrontendsDestination = {
-  External: "external",
-  Internal: "internal",
-} as const;
-/**
- * Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery type when project tracing is computed; absent on configs persisted before this field existed.
- */
-export type UpdateMicrofrontendsDestination = ClosedEnum<
-  typeof UpdateMicrofrontendsDestination
->;
-
-export type UpdateMicrofrontendsSamplingRules = {
-  rate: number;
-  env?: UpdateMicrofrontendsProjectsEnv | undefined;
-  requestPath?: string | undefined;
+export type UpdateMicrofrontendsToProjects2 = {
+  preset: UpdateMicrofrontendsToProjectsResponse200Preset;
   /**
-   * Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery type when project tracing is computed; absent on configs persisted before this field existed.
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
    */
-  destination?: UpdateMicrofrontendsDestination | undefined;
+  slugs?: Array<string> | undefined;
 };
 
-export type UpdateMicrofrontendsTracing = {
-  domains?: string | undefined;
-  ignorePaths?: Array<string> | undefined;
-  samplingRules?: Array<UpdateMicrofrontendsSamplingRules> | undefined;
+export const UpdateMicrofrontendsToProjectsResponsePreset = {
+  AllCustom: "all-custom",
+} as const;
+export type UpdateMicrofrontendsToProjectsResponsePreset = ClosedEnum<
+  typeof UpdateMicrofrontendsToProjectsResponsePreset
+>;
+
+/**
+ * The target envs on the current project that may be accessed.
+ */
+export type UpdateMicrofrontendsToProjects1 = {
+  preset?: UpdateMicrofrontendsToProjectsResponsePreset | undefined;
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs: Array<string>;
+};
+
+export type UpdateMicrofrontendsProjectsTo =
+  | UpdateMicrofrontendsToProjects1
+  | UpdateMicrofrontendsToProjects2;
+
+/**
+ * Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets.
+ */
+export type UpdateMicrofrontendsCustomAllow = {
+  from: UpdateMicrofrontendsFrom1 | UpdateMicrofrontendsFrom2;
+  to: UpdateMicrofrontendsToProjects1 | UpdateMicrofrontendsToProjects2;
+};
+
+export type UpdateMicrofrontendsProjects = {
+  /**
+   * Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets.
+   */
+  customAllow?: Array<UpdateMicrofrontendsCustomAllow> | undefined;
+  label?: string | undefined;
+};
+
+export type UpdateMicrofrontendsTrustedSources = {
+  /**
+   * Allow same-team Vercel CI access to preview deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value.
+   */
+  enableVercelCiSameRepository?: boolean | undefined;
+  oidcProviders?:
+    | { [k: string]: Array<UpdateMicrofrontendsOidcProviders> }
+    | undefined;
+  projects?: { [k: string]: UpdateMicrofrontendsProjects } | undefined;
+};
+
+/**
+ * Billing mode. Always 'flat' for flat-rate projects.
+ */
+export const UpdateMicrofrontendsKind = {
+  Flat: "flat",
+} as const;
+/**
+ * Billing mode. Always 'flat' for flat-rate projects.
+ */
+export type UpdateMicrofrontendsKind = ClosedEnum<
+  typeof UpdateMicrofrontendsKind
+>;
+
+export type UpdateMicrofrontendsUsageStatus = {
+  /**
+   * Timestamp until which throttling is bypassed (project pays list rates for overage).
+   */
+  bypassThrottleUntil?: number | undefined;
+  /**
+   * Timestamp until which the project has exceeded its CDN allowance.
+   */
+  exceededAllowanceUntil?: number | undefined;
+  /**
+   * Billing mode. Always 'flat' for flat-rate projects.
+   */
+  kind: UpdateMicrofrontendsKind;
+  /**
+   * Synced from `team.billing.usageStatus.throttled`. When `true`, the team has throttled all of its projects regardless of `throttled`. The effective throttle the CDN enforces is `throttled || teamThrottled`.
+   */
+  teamThrottled?: boolean | undefined;
+  /**
+   * Per-project throttle, set explicitly for this project (e.g. via the per-project Flat Rate CDN endpoint).
+   */
+  throttled?: boolean | undefined;
+};
+
+export type UpdateMicrofrontendsWebAnalytics = {
+  canceledAt?: number | undefined;
+  disabledAt?: number | undefined;
+  enabledAt?: number | undefined;
+  hasData?: true | undefined;
+  id: string;
 };
 
 export type UpdateMicrofrontendsResponseBody = {
+  abuse?: UpdateMicrofrontendsAbuse | undefined;
   accountId: string;
-  creator?: UpdateMicrofrontendsCreator | undefined;
   alias: Array<UpdateMicrofrontendsAlias>;
   analytics?: UpdateMicrofrontendsAnalytics | undefined;
   appliedCve55182Migration?: boolean | undefined;
-  speedInsights?: UpdateMicrofrontendsSpeedInsights | undefined;
-  autoExposeSystemEnvs?: boolean | undefined;
   autoAssignCustomDomains?: boolean | undefined;
   autoAssignCustomDomainsUpdatedBy?: string | undefined;
+  autoExposeSystemEnvs?: boolean | undefined;
+  avatar?: string | null | undefined;
+  blobs?: UpdateMicrofrontendsBlobs | undefined;
   buildCommand?: string | null | undefined;
   commandForIgnoringBuildStep?: string | null | undefined;
+  concurrencyBucketName?: string | undefined;
+  connectBuildsEnabled?: boolean | undefined;
+  connectConfigurationId?: string | null | undefined;
   connectConfigurations?:
     | Array<UpdateMicrofrontendsConnectConfigurations>
     | null
     | undefined;
-  connectConfigurationId?: string | null | undefined;
-  connectBuildsEnabled?: boolean | undefined;
-  passiveConnectConfigurationId?: string | null | undefined;
   createdAt?: number | undefined;
-  customerSupportCodeVisibility?: boolean | undefined;
+  creator?: UpdateMicrofrontendsCreator | undefined;
   crons?: UpdateMicrofrontendsCrons | undefined;
+  customEnvironments?:
+    | Array<UpdateMicrofrontendsCustomEnvironments>
+    | undefined;
+  customerSupportCodeVisibility?: boolean | undefined;
   dataCache?: UpdateMicrofrontendsDataCache | undefined;
+  defaultResourceConfig: UpdateMicrofrontendsDefaultResourceConfig;
   /**
    * Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects.
    */
   deploymentExpiration: UpdateMicrofrontendsDeploymentExpiration;
-  expiration?: UpdateMicrofrontendsExpiration | undefined;
+  /**
+   * Project shape. `null` on a rule list clears the project's override for that rule type (fall back to team for every env); omitting is equivalent. Setting `deploymentPolicy` itself to `null` clears every override at once. Kept structurally distinct from {@link TeamDeploymentPolicy} so the two storage locations don't share a type by accident.
+   */
+  deploymentPolicy?: UpdateMicrofrontendsDeploymentPolicy | null | undefined;
   devCommand?: string | null | undefined;
   directoryListing: boolean;
-  installCommand?: string | null | undefined;
+  dismissedToasts?: Array<UpdateMicrofrontendsDismissedToasts> | undefined;
+  enableAffectedProjectsDeployments?: boolean | undefined;
+  enableExternalRewriteCaching?: boolean | undefined;
+  enablePreviewFeedback?: boolean | null | undefined;
+  enableProductionFeedback?: boolean | null | undefined;
   env?: Array<UpdateMicrofrontendsEnv> | undefined;
-  customEnvironments?:
-    | Array<UpdateMicrofrontendsCustomEnvironments>
-    | undefined;
+  expiration?: UpdateMicrofrontendsExpiration | undefined;
+  features?: UpdateMicrofrontendsFeatures | undefined;
   framework?: UpdateMicrofrontendsFramework | null | undefined;
-  services?: Array<UpdateMicrofrontendsServices> | undefined;
+  gitComments?: UpdateMicrofrontendsGitComments | undefined;
   gitForkProtection?: boolean | undefined;
   gitLFS?: boolean | undefined;
+  gitProviderOptions?: UpdateMicrofrontendsGitProviderOptions | undefined;
+  hasActiveBranches?: boolean | undefined;
+  hasDeployments?: boolean | undefined;
   id: string;
+  installCommand?: string | null | undefined;
+  internalRoutes?: Array<UpdateMicrofrontendsInternalRoutes> | undefined;
   ipBuckets?: Array<UpdateMicrofrontendsIpBuckets> | undefined;
   jobs?: UpdateMicrofrontendsJobs | undefined;
+  lastAliasRequest?: UpdateMicrofrontendsLastAliasRequest | null | undefined;
+  lastRollbackTarget?:
+    | UpdateMicrofrontendsLastRollbackTarget
+    | null
+    | undefined;
   latestDeployments?: Array<UpdateMicrofrontendsLatestDeployments> | undefined;
   link?: UpdateMicrofrontendsLink | undefined;
-  blobs?: UpdateMicrofrontendsBlobs | undefined;
+  live?: boolean | undefined;
   microfrontends?: UpdateMicrofrontendsMicrofrontends | undefined;
   name: string;
   nodeVersion: UpdateMicrofrontendsNodeVersion;
+  oidcTokenConfig?: UpdateMicrofrontendsOidcTokenConfig | undefined;
   optionsAllowlist?: UpdateMicrofrontendsOptionsAllowlist | null | undefined;
   outputDirectory?: string | null | undefined;
+  passiveConnectConfigurationId?: string | null | undefined;
+  passport?: UpdateMicrofrontendsPassport | null | undefined;
   passwordProtection?:
     | UpdateMicrofrontendsPasswordProtection
     | null
     | undefined;
-  passport?: UpdateMicrofrontendsPassport | null | undefined;
-  protectionConfig?: UpdateMicrofrontendsProtectionConfig | undefined;
-  sandbox?: UpdateMicrofrontendsSandbox | undefined;
+  paused?: boolean | undefined;
+  permissions?: UpdateMicrofrontendsPermissions | undefined;
   productionDeploymentsFastLane?: boolean | undefined;
+  protectedSourcemaps?: boolean | undefined;
+  protectionBypass?:
+    | { [k: string]: UpdateMicrofrontendsProtectionBypass }
+    | undefined;
+  protectionConfig?: UpdateMicrofrontendsProtectionConfig | undefined;
   resourceConfig: UpdateMicrofrontendsResourceConfig;
   /**
    * Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback.
@@ -258,276 +327,249 @@ export type UpdateMicrofrontendsResponseBody = {
    * Project-level rolling release configuration that defines how deployments should be gradually rolled out
    */
   rollingRelease?: UpdateMicrofrontendsRollingRelease | null | undefined;
-  defaultResourceConfig: UpdateMicrofrontendsDefaultResourceConfig;
   rootDirectory?: string | null | undefined;
+  sandbox?: UpdateMicrofrontendsSandbox | undefined;
+  security?: UpdateMicrofrontendsSecurity | undefined;
   serverlessFunctionZeroConfigFailover?: boolean | undefined;
+  services?: Array<UpdateMicrofrontendsServices> | undefined;
+  skewProtectionAllowedDomains?: Array<string> | undefined;
   skewProtectionBoundaryAt?: number | undefined;
   skewProtectionMaxAge?: number | undefined;
-  skewProtectionAllowedDomains?: Array<string> | undefined;
   skipGitConnectDuringLink?: boolean | undefined;
-  staticIps?: UpdateMicrofrontendsStaticIps | undefined;
   sourceFilesOutsideRootDirectory?: boolean | undefined;
-  enableAffectedProjectsDeployments?: boolean | undefined;
-  enableExternalRewriteCaching?: boolean | undefined;
+  speedInsights?: UpdateMicrofrontendsSpeedInsights | undefined;
   ssoProtection?: UpdateMicrofrontendsSsoProtection | null | undefined;
+  staticIps?: UpdateMicrofrontendsStaticIps | undefined;
   targets?: { [k: string]: UpdateMicrofrontendsTargets | null } | undefined;
+  tier?: UpdateMicrofrontendsTier | undefined;
+  tracing?: UpdateMicrofrontendsTracing | undefined;
   transferCompletedAt?: number | undefined;
+  transferredFromAccountId?: string | undefined;
   transferStartedAt?: number | undefined;
   transferToAccountId?: string | undefined;
-  transferredFromAccountId?: string | undefined;
-  updatedAt?: number | undefined;
-  live?: boolean | undefined;
-  enablePreviewFeedback?: boolean | null | undefined;
-  enableProductionFeedback?: boolean | null | undefined;
-  permissions?: UpdateMicrofrontendsPermissions | undefined;
-  lastRollbackTarget?:
-    | UpdateMicrofrontendsLastRollbackTarget
-    | null
-    | undefined;
-  lastAliasRequest?: UpdateMicrofrontendsLastAliasRequest | null | undefined;
-  protectionBypass?:
-    | { [k: string]: UpdateMicrofrontendsProtectionBypass }
-    | undefined;
-  hasActiveBranches?: boolean | undefined;
   trustedIps?: UpdateMicrofrontendsTrustedIps | null | undefined;
   trustedSources?: UpdateMicrofrontendsTrustedSources | null | undefined;
-  gitComments?: UpdateMicrofrontendsGitComments | undefined;
-  gitProviderOptions?: UpdateMicrofrontendsGitProviderOptions | undefined;
-  paused?: boolean | undefined;
-  concurrencyBucketName?: string | undefined;
-  webAnalytics?: UpdateMicrofrontendsWebAnalytics | undefined;
-  security?: UpdateMicrofrontendsSecurity | undefined;
-  oidcTokenConfig?: UpdateMicrofrontendsOidcTokenConfig | undefined;
-  /**
-   * Project shape. `null` on a rule list clears the project's override for that rule type (fall back to team for every env); omitting is equivalent. Setting `deploymentPolicy` itself to `null` clears every override at once. Kept structurally distinct from {@link TeamDeploymentPolicy} so the two storage locations don't share a type by accident.
-   */
-  deploymentPolicy?: UpdateMicrofrontendsDeploymentPolicy | null | undefined;
-  tier?: UpdateMicrofrontendsTier | undefined;
+  updatedAt?: number | undefined;
   usageStatus?: UpdateMicrofrontendsUsageStatus | undefined;
-  features?: UpdateMicrofrontendsFeatures | undefined;
   v0?: boolean | undefined;
   v0Created?: boolean | undefined;
-  abuse?: UpdateMicrofrontendsAbuse | undefined;
-  internalRoutes?:
-    | Array<
-      UpdateMicrofrontendsInternalRoutes1 | UpdateMicrofrontendsInternalRoutes2
-    >
-    | undefined;
-  hasDeployments?: boolean | undefined;
-  dismissedToasts?: Array<UpdateMicrofrontendsDismissedToasts> | undefined;
-  protectedSourcemaps?: boolean | undefined;
-  tracing?: UpdateMicrofrontendsTracing | undefined;
-  avatar?: string | null | undefined;
+  webAnalytics?: UpdateMicrofrontendsWebAnalytics | undefined;
 };
 
 /** @internal */
-export const UpdateMicrofrontendsInternalRoutes1$inboundSchema: z.ZodType<
-  UpdateMicrofrontendsInternalRoutes1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  src: types.string(),
-  status: types.number(),
-  expiry: types.optional(types.number()),
-});
-
-export function updateMicrofrontendsInternalRoutes1FromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateMicrofrontendsInternalRoutes1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateMicrofrontendsInternalRoutes1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateMicrofrontendsInternalRoutes1' from JSON`,
-  );
-}
-
-/** @internal */
-export const UpdateMicrofrontendsInternalRoutes$inboundSchema: z.ZodType<
-  UpdateMicrofrontendsInternalRoutes,
+export const UpdateMicrofrontendsFrom$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsFrom,
   z.ZodTypeDef,
   unknown
 > = smartUnion([
-  z.lazy(() => UpdateMicrofrontendsInternalRoutes1$inboundSchema),
-  UpdateMicrofrontendsInternalRoutes2$inboundSchema,
+  UpdateMicrofrontendsFrom1$inboundSchema,
+  UpdateMicrofrontendsFrom2$inboundSchema,
 ]);
 
-export function updateMicrofrontendsInternalRoutesFromJSON(
+export function updateMicrofrontendsFromFromJSON(
   jsonString: string,
-): SafeParseResult<UpdateMicrofrontendsInternalRoutes, SDKValidationError> {
+): SafeParseResult<UpdateMicrofrontendsFrom, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      UpdateMicrofrontendsInternalRoutes$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateMicrofrontendsInternalRoutes' from JSON`,
+    (x) => UpdateMicrofrontendsFrom$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsFrom' from JSON`,
   );
 }
 
 /** @internal */
-export const UpdateMicrofrontendsAction$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateMicrofrontendsAction
-> = z.nativeEnum(UpdateMicrofrontendsAction);
+export const UpdateMicrofrontendsToProjectsResponse200Preset$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateMicrofrontendsToProjectsResponse200Preset> = z
+    .nativeEnum(UpdateMicrofrontendsToProjectsResponse200Preset);
 
 /** @internal */
-export const UpdateMicrofrontendsValuePreviousValue$inboundSchema: z.ZodType<
-  UpdateMicrofrontendsValuePreviousValue,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([types.string(), types.number(), types.boolean()]);
-
-export function updateMicrofrontendsValuePreviousValueFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateMicrofrontendsValuePreviousValue, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateMicrofrontendsValuePreviousValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateMicrofrontendsValuePreviousValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const UpdateMicrofrontendsValueCurrentValue$inboundSchema: z.ZodType<
-  UpdateMicrofrontendsValueCurrentValue,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([types.string(), types.number(), types.boolean()]);
-
-export function updateMicrofrontendsValueCurrentValueFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateMicrofrontendsValueCurrentValue, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateMicrofrontendsValueCurrentValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateMicrofrontendsValueCurrentValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const UpdateMicrofrontendsValue3$inboundSchema: z.ZodType<
-  UpdateMicrofrontendsValue3,
+export const UpdateMicrofrontendsToProjects2$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsToProjects2,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  previousValue: smartUnion([types.string(), types.number(), types.boolean()]),
-  currentValue: smartUnion([types.string(), types.number(), types.boolean()]),
+  preset: UpdateMicrofrontendsToProjectsResponse200Preset$inboundSchema,
+  slugs: types.optional(z.array(types.string())),
 });
 
-export function updateMicrofrontendsValue3FromJSON(
+export function updateMicrofrontendsToProjects2FromJSON(
   jsonString: string,
-): SafeParseResult<UpdateMicrofrontendsValue3, SDKValidationError> {
+): SafeParseResult<UpdateMicrofrontendsToProjects2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UpdateMicrofrontendsValue3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateMicrofrontendsValue3' from JSON`,
+    (x) => UpdateMicrofrontendsToProjects2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsToProjects2' from JSON`,
   );
 }
 
 /** @internal */
-export const UpdateMicrofrontendsValue$inboundSchema: z.ZodType<
-  UpdateMicrofrontendsValue,
+export const UpdateMicrofrontendsToProjectsResponsePreset$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateMicrofrontendsToProjectsResponsePreset> = z
+    .nativeEnum(UpdateMicrofrontendsToProjectsResponsePreset);
+
+/** @internal */
+export const UpdateMicrofrontendsToProjects1$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsToProjects1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  preset: types.optional(
+    UpdateMicrofrontendsToProjectsResponsePreset$inboundSchema,
+  ),
+  slugs: z.array(types.string()),
+});
+
+export function updateMicrofrontendsToProjects1FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsToProjects1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsToProjects1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsToProjects1' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsProjectsTo$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsProjectsTo,
   z.ZodTypeDef,
   unknown
 > = smartUnion([
-  z.lazy(() => UpdateMicrofrontendsValue3$inboundSchema),
-  types.string(),
-  types.number(),
-  types.boolean(),
+  z.lazy(() => UpdateMicrofrontendsToProjects1$inboundSchema),
+  z.lazy(() => UpdateMicrofrontendsToProjects2$inboundSchema),
 ]);
 
-export function updateMicrofrontendsValueFromJSON(
+export function updateMicrofrontendsProjectsToFromJSON(
   jsonString: string,
-): SafeParseResult<UpdateMicrofrontendsValue, SDKValidationError> {
+): SafeParseResult<UpdateMicrofrontendsProjectsTo, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UpdateMicrofrontendsValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateMicrofrontendsValue' from JSON`,
+    (x) => UpdateMicrofrontendsProjectsTo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsProjectsTo' from JSON`,
   );
 }
 
 /** @internal */
-export const UpdateMicrofrontendsDismissedToasts$inboundSchema: z.ZodType<
-  UpdateMicrofrontendsDismissedToasts,
+export const UpdateMicrofrontendsCustomAllow$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsCustomAllow,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  key: types.string(),
-  dismissedAt: types.number(),
-  action: UpdateMicrofrontendsAction$inboundSchema,
-  value: types.nullable(
-    smartUnion([
-      z.lazy(() => UpdateMicrofrontendsValue3$inboundSchema),
-      types.string(),
-      types.number(),
-      types.boolean(),
-    ]),
+  from: smartUnion([
+    UpdateMicrofrontendsFrom1$inboundSchema,
+    UpdateMicrofrontendsFrom2$inboundSchema,
+  ]),
+  to: smartUnion([
+    z.lazy(() => UpdateMicrofrontendsToProjects1$inboundSchema),
+    z.lazy(() => UpdateMicrofrontendsToProjects2$inboundSchema),
+  ]),
+});
+
+export function updateMicrofrontendsCustomAllowFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsCustomAllow, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsCustomAllow$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsCustomAllow' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsProjects$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsProjects,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  customAllow: types.optional(
+    z.array(z.lazy(() => UpdateMicrofrontendsCustomAllow$inboundSchema)),
+  ),
+  label: types.optional(types.string()),
+});
+
+export function updateMicrofrontendsProjectsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsProjects, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsProjects$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsProjects' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsTrustedSources$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsTrustedSources,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  enableVercelCiSameRepository: types.optional(types.boolean()),
+  oidcProviders: types.optional(
+    z.record(z.array(UpdateMicrofrontendsOidcProviders$inboundSchema)),
+  ),
+  projects: types.optional(
+    z.record(z.lazy(() => UpdateMicrofrontendsProjects$inboundSchema)),
   ),
 });
 
-export function updateMicrofrontendsDismissedToastsFromJSON(
+export function updateMicrofrontendsTrustedSourcesFromJSON(
   jsonString: string,
-): SafeParseResult<UpdateMicrofrontendsDismissedToasts, SDKValidationError> {
+): SafeParseResult<UpdateMicrofrontendsTrustedSources, SDKValidationError> {
   return safeParse(
     jsonString,
     (x) =>
-      UpdateMicrofrontendsDismissedToasts$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateMicrofrontendsDismissedToasts' from JSON`,
+      UpdateMicrofrontendsTrustedSources$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsTrustedSources' from JSON`,
   );
 }
 
 /** @internal */
-export const UpdateMicrofrontendsProjectsEnv$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateMicrofrontendsProjectsEnv
-> = z.nativeEnum(UpdateMicrofrontendsProjectsEnv);
+export const UpdateMicrofrontendsKind$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateMicrofrontendsKind
+> = z.nativeEnum(UpdateMicrofrontendsKind);
 
 /** @internal */
-export const UpdateMicrofrontendsDestination$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateMicrofrontendsDestination
-> = z.nativeEnum(UpdateMicrofrontendsDestination);
-
-/** @internal */
-export const UpdateMicrofrontendsSamplingRules$inboundSchema: z.ZodType<
-  UpdateMicrofrontendsSamplingRules,
+export const UpdateMicrofrontendsUsageStatus$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsUsageStatus,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  rate: types.number(),
-  env: types.optional(UpdateMicrofrontendsProjectsEnv$inboundSchema),
-  requestPath: types.optional(types.string()),
-  destination: types.optional(UpdateMicrofrontendsDestination$inboundSchema),
+  bypassThrottleUntil: types.optional(types.number()),
+  exceededAllowanceUntil: types.optional(types.number()),
+  kind: UpdateMicrofrontendsKind$inboundSchema,
+  teamThrottled: types.optional(types.boolean()),
+  throttled: types.optional(types.boolean()),
 });
 
-export function updateMicrofrontendsSamplingRulesFromJSON(
+export function updateMicrofrontendsUsageStatusFromJSON(
   jsonString: string,
-): SafeParseResult<UpdateMicrofrontendsSamplingRules, SDKValidationError> {
+): SafeParseResult<UpdateMicrofrontendsUsageStatus, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UpdateMicrofrontendsSamplingRules$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateMicrofrontendsSamplingRules' from JSON`,
+    (x) => UpdateMicrofrontendsUsageStatus$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsUsageStatus' from JSON`,
   );
 }
 
 /** @internal */
-export const UpdateMicrofrontendsTracing$inboundSchema: z.ZodType<
-  UpdateMicrofrontendsTracing,
+export const UpdateMicrofrontendsWebAnalytics$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsWebAnalytics,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  domains: types.optional(types.string()),
-  ignorePaths: types.optional(z.array(types.string())),
-  samplingRules: types.optional(
-    z.array(z.lazy(() => UpdateMicrofrontendsSamplingRules$inboundSchema)),
-  ),
+  canceledAt: types.optional(types.number()),
+  disabledAt: types.optional(types.number()),
+  enabledAt: types.optional(types.number()),
+  hasData: types.optional(types.literal(true)),
+  id: types.string(),
 });
 
-export function updateMicrofrontendsTracingFromJSON(
+export function updateMicrofrontendsWebAnalyticsFromJSON(
   jsonString: string,
-): SafeParseResult<UpdateMicrofrontendsTracing, SDKValidationError> {
+): SafeParseResult<UpdateMicrofrontendsWebAnalytics, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UpdateMicrofrontendsTracing$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateMicrofrontendsTracing' from JSON`,
+    (x) => UpdateMicrofrontendsWebAnalytics$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsWebAnalytics' from JSON`,
   );
 }
 
@@ -537,151 +579,151 @@ export const UpdateMicrofrontendsResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  abuse: types.optional(UpdateMicrofrontendsAbuse$inboundSchema),
   accountId: types.string(),
-  creator: types.optional(UpdateMicrofrontendsCreator$inboundSchema),
   alias: z.array(UpdateMicrofrontendsAlias$inboundSchema),
   analytics: types.optional(UpdateMicrofrontendsAnalytics$inboundSchema),
   appliedCve55182Migration: types.optional(types.boolean()),
-  speedInsights: types.optional(
-    UpdateMicrofrontendsSpeedInsights$inboundSchema,
-  ),
-  autoExposeSystemEnvs: types.optional(types.boolean()),
   autoAssignCustomDomains: types.optional(types.boolean()),
   autoAssignCustomDomainsUpdatedBy: types.optional(types.string()),
+  autoExposeSystemEnvs: types.optional(types.boolean()),
+  avatar: z.nullable(types.string()).optional(),
+  blobs: types.optional(UpdateMicrofrontendsBlobs$inboundSchema),
   buildCommand: z.nullable(types.string()).optional(),
   commandForIgnoringBuildStep: z.nullable(types.string()).optional(),
+  concurrencyBucketName: types.optional(types.string()),
+  connectBuildsEnabled: types.optional(types.boolean()),
+  connectConfigurationId: z.nullable(types.string()).optional(),
   connectConfigurations: z.nullable(
     z.array(UpdateMicrofrontendsConnectConfigurations$inboundSchema),
   ).optional(),
-  connectConfigurationId: z.nullable(types.string()).optional(),
-  connectBuildsEnabled: types.optional(types.boolean()),
-  passiveConnectConfigurationId: z.nullable(types.string()).optional(),
   createdAt: types.optional(types.number()),
-  customerSupportCodeVisibility: types.optional(types.boolean()),
+  creator: types.optional(UpdateMicrofrontendsCreator$inboundSchema),
   crons: types.optional(UpdateMicrofrontendsCrons$inboundSchema),
-  dataCache: types.optional(UpdateMicrofrontendsDataCache$inboundSchema),
-  deploymentExpiration: UpdateMicrofrontendsDeploymentExpiration$inboundSchema,
-  expiration: types.optional(UpdateMicrofrontendsExpiration$inboundSchema),
-  devCommand: z.nullable(types.string()).optional(),
-  directoryListing: types.boolean(),
-  installCommand: z.nullable(types.string()).optional(),
-  env: types.optional(z.array(UpdateMicrofrontendsEnv$inboundSchema)),
   customEnvironments: types.optional(
     z.array(UpdateMicrofrontendsCustomEnvironments$inboundSchema),
   ),
+  customerSupportCodeVisibility: types.optional(types.boolean()),
+  dataCache: types.optional(UpdateMicrofrontendsDataCache$inboundSchema),
+  defaultResourceConfig:
+    UpdateMicrofrontendsDefaultResourceConfig$inboundSchema,
+  deploymentExpiration: UpdateMicrofrontendsDeploymentExpiration$inboundSchema,
+  deploymentPolicy: z.nullable(
+    UpdateMicrofrontendsDeploymentPolicy$inboundSchema,
+  ).optional(),
+  devCommand: z.nullable(types.string()).optional(),
+  directoryListing: types.boolean(),
+  dismissedToasts: types.optional(
+    z.array(UpdateMicrofrontendsDismissedToasts$inboundSchema),
+  ),
+  enableAffectedProjectsDeployments: types.optional(types.boolean()),
+  enableExternalRewriteCaching: types.optional(types.boolean()),
+  enablePreviewFeedback: z.nullable(types.boolean()).optional(),
+  enableProductionFeedback: z.nullable(types.boolean()).optional(),
+  env: types.optional(z.array(UpdateMicrofrontendsEnv$inboundSchema)),
+  expiration: types.optional(UpdateMicrofrontendsExpiration$inboundSchema),
+  features: types.optional(UpdateMicrofrontendsFeatures$inboundSchema),
   framework: z.nullable(UpdateMicrofrontendsFramework$inboundSchema).optional(),
-  services: types.optional(z.array(UpdateMicrofrontendsServices$inboundSchema)),
+  gitComments: types.optional(UpdateMicrofrontendsGitComments$inboundSchema),
   gitForkProtection: types.optional(types.boolean()),
   gitLFS: types.optional(types.boolean()),
+  gitProviderOptions: types.optional(
+    UpdateMicrofrontendsGitProviderOptions$inboundSchema,
+  ),
+  hasActiveBranches: types.optional(types.boolean()),
+  hasDeployments: types.optional(types.boolean()),
   id: types.string(),
+  installCommand: z.nullable(types.string()).optional(),
+  internalRoutes: types.optional(
+    z.array(UpdateMicrofrontendsInternalRoutes$inboundSchema),
+  ),
   ipBuckets: types.optional(
     z.array(UpdateMicrofrontendsIpBuckets$inboundSchema),
   ),
   jobs: types.optional(UpdateMicrofrontendsJobs$inboundSchema),
+  lastAliasRequest: z.nullable(
+    UpdateMicrofrontendsLastAliasRequest$inboundSchema,
+  ).optional(),
+  lastRollbackTarget: z.nullable(
+    UpdateMicrofrontendsLastRollbackTarget$inboundSchema,
+  ).optional(),
   latestDeployments: types.optional(
     z.array(UpdateMicrofrontendsLatestDeployments$inboundSchema),
   ),
   link: types.optional(UpdateMicrofrontendsLink$inboundSchema),
-  blobs: types.optional(UpdateMicrofrontendsBlobs$inboundSchema),
+  live: types.optional(types.boolean()),
   microfrontends: types.optional(
     UpdateMicrofrontendsMicrofrontends$inboundSchema,
   ),
   name: types.string(),
   nodeVersion: UpdateMicrofrontendsNodeVersion$inboundSchema,
+  oidcTokenConfig: types.optional(
+    UpdateMicrofrontendsOidcTokenConfig$inboundSchema,
+  ),
   optionsAllowlist: z.nullable(
     UpdateMicrofrontendsOptionsAllowlist$inboundSchema,
   ).optional(),
   outputDirectory: z.nullable(types.string()).optional(),
+  passiveConnectConfigurationId: z.nullable(types.string()).optional(),
+  passport: z.nullable(UpdateMicrofrontendsPassport$inboundSchema).optional(),
   passwordProtection: z.nullable(
     UpdateMicrofrontendsPasswordProtection$inboundSchema,
   ).optional(),
-  passport: z.nullable(UpdateMicrofrontendsPassport$inboundSchema).optional(),
+  paused: types.optional(types.boolean()),
+  permissions: types.optional(UpdateMicrofrontendsPermissions$inboundSchema),
+  productionDeploymentsFastLane: types.optional(types.boolean()),
+  protectedSourcemaps: types.optional(types.boolean()),
+  protectionBypass: types.optional(
+    z.record(UpdateMicrofrontendsProtectionBypass$inboundSchema),
+  ),
   protectionConfig: types.optional(
     UpdateMicrofrontendsProtectionConfig$inboundSchema,
   ),
-  sandbox: types.optional(UpdateMicrofrontendsSandbox$inboundSchema),
-  productionDeploymentsFastLane: types.optional(types.boolean()),
   resourceConfig: UpdateMicrofrontendsResourceConfig$inboundSchema,
   rollbackDescription: types.optional(
     UpdateMicrofrontendsRollbackDescription$inboundSchema,
   ),
   rollingRelease: z.nullable(UpdateMicrofrontendsRollingRelease$inboundSchema)
     .optional(),
-  defaultResourceConfig:
-    UpdateMicrofrontendsDefaultResourceConfig$inboundSchema,
   rootDirectory: z.nullable(types.string()).optional(),
+  sandbox: types.optional(UpdateMicrofrontendsSandbox$inboundSchema),
+  security: types.optional(UpdateMicrofrontendsSecurity$inboundSchema),
   serverlessFunctionZeroConfigFailover: types.optional(types.boolean()),
+  services: types.optional(z.array(UpdateMicrofrontendsServices$inboundSchema)),
+  skewProtectionAllowedDomains: types.optional(z.array(types.string())),
   skewProtectionBoundaryAt: types.optional(types.number()),
   skewProtectionMaxAge: types.optional(types.number()),
-  skewProtectionAllowedDomains: types.optional(z.array(types.string())),
   skipGitConnectDuringLink: types.optional(types.boolean()),
-  staticIps: types.optional(UpdateMicrofrontendsStaticIps$inboundSchema),
   sourceFilesOutsideRootDirectory: types.optional(types.boolean()),
-  enableAffectedProjectsDeployments: types.optional(types.boolean()),
-  enableExternalRewriteCaching: types.optional(types.boolean()),
+  speedInsights: types.optional(
+    UpdateMicrofrontendsSpeedInsights$inboundSchema,
+  ),
   ssoProtection: z.nullable(UpdateMicrofrontendsSsoProtection$inboundSchema)
     .optional(),
+  staticIps: types.optional(UpdateMicrofrontendsStaticIps$inboundSchema),
   targets: types.optional(
     z.record(types.nullable(UpdateMicrofrontendsTargets$inboundSchema)),
   ),
+  tier: types.optional(UpdateMicrofrontendsTier$inboundSchema),
+  tracing: types.optional(UpdateMicrofrontendsTracing$inboundSchema),
   transferCompletedAt: types.optional(types.number()),
+  transferredFromAccountId: types.optional(types.string()),
   transferStartedAt: types.optional(types.number()),
   transferToAccountId: types.optional(types.string()),
-  transferredFromAccountId: types.optional(types.string()),
-  updatedAt: types.optional(types.number()),
-  live: types.optional(types.boolean()),
-  enablePreviewFeedback: z.nullable(types.boolean()).optional(),
-  enableProductionFeedback: z.nullable(types.boolean()).optional(),
-  permissions: types.optional(UpdateMicrofrontendsPermissions$inboundSchema),
-  lastRollbackTarget: z.nullable(
-    UpdateMicrofrontendsLastRollbackTarget$inboundSchema,
-  ).optional(),
-  lastAliasRequest: z.nullable(
-    UpdateMicrofrontendsLastAliasRequest$inboundSchema,
-  ).optional(),
-  protectionBypass: types.optional(
-    z.record(UpdateMicrofrontendsProtectionBypass$inboundSchema),
-  ),
-  hasActiveBranches: types.optional(types.boolean()),
   trustedIps: z.nullable(UpdateMicrofrontendsTrustedIps$inboundSchema)
     .optional(),
-  trustedSources: z.nullable(UpdateMicrofrontendsTrustedSources$inboundSchema)
-    .optional(),
-  gitComments: types.optional(UpdateMicrofrontendsGitComments$inboundSchema),
-  gitProviderOptions: types.optional(
-    UpdateMicrofrontendsGitProviderOptions$inboundSchema,
-  ),
-  paused: types.optional(types.boolean()),
-  concurrencyBucketName: types.optional(types.string()),
-  webAnalytics: types.optional(UpdateMicrofrontendsWebAnalytics$inboundSchema),
-  security: types.optional(UpdateMicrofrontendsSecurity$inboundSchema),
-  oidcTokenConfig: types.optional(
-    UpdateMicrofrontendsOidcTokenConfig$inboundSchema,
-  ),
-  deploymentPolicy: z.nullable(
-    UpdateMicrofrontendsDeploymentPolicy$inboundSchema,
+  trustedSources: z.nullable(
+    z.lazy(() => UpdateMicrofrontendsTrustedSources$inboundSchema),
   ).optional(),
-  tier: types.optional(UpdateMicrofrontendsTier$inboundSchema),
-  usageStatus: types.optional(UpdateMicrofrontendsUsageStatus$inboundSchema),
-  features: types.optional(UpdateMicrofrontendsFeatures$inboundSchema),
+  updatedAt: types.optional(types.number()),
+  usageStatus: types.optional(
+    z.lazy(() => UpdateMicrofrontendsUsageStatus$inboundSchema),
+  ),
   v0: types.optional(types.boolean()),
   v0Created: types.optional(types.boolean()),
-  abuse: types.optional(UpdateMicrofrontendsAbuse$inboundSchema),
-  internalRoutes: types.optional(
-    z.array(smartUnion([
-      z.lazy(() => UpdateMicrofrontendsInternalRoutes1$inboundSchema),
-      UpdateMicrofrontendsInternalRoutes2$inboundSchema,
-    ])),
+  webAnalytics: types.optional(
+    z.lazy(() => UpdateMicrofrontendsWebAnalytics$inboundSchema),
   ),
-  hasDeployments: types.optional(types.boolean()),
-  dismissedToasts: types.optional(
-    z.array(z.lazy(() => UpdateMicrofrontendsDismissedToasts$inboundSchema)),
-  ),
-  protectedSourcemaps: types.optional(types.boolean()),
-  tracing: types.optional(
-    z.lazy(() => UpdateMicrofrontendsTracing$inboundSchema),
-  ),
-  avatar: z.nullable(types.string()).optional(),
 });
 
 export function updateMicrofrontendsResponseBodyFromJSON(

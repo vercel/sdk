@@ -3,16 +3,16 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyAbuse } from "@vercel/sdk/models/getprojectsresponsebody.js";
+import { ResponseBodyAbuse } from "@vercel/sdk/models/responsebodyabuse.js";
 
 let value: ResponseBodyAbuse = {
   history: [
     {
-      scanner: "<value>",
-      reason: "<value>",
+      at: 374.36,
       by: "<value>",
       byId: "<id>",
-      at: 374.36,
+      reason: "<value>",
+      scanner: "<value>",
     },
   ],
   updatedAt: 7326.91,
@@ -23,10 +23,10 @@ let value: ResponseBodyAbuse = {
 
 | Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
 | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `scanner`                                                                                | *string*                                                                                 | :heavy_minus_sign:                                                                       | N/A                                                                                      |
-| `history`                                                                                | [models.ResponseBodyHistory](../models/responsebodyhistory.md)[]                         | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `updatedAt`                                                                              | *number*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |
 | `block`                                                                                  | [models.ResponseBodyBlock](../models/responsebodyblock.md)                               | :heavy_minus_sign:                                                                       | N/A                                                                                      |
 | `blockHistory`                                                                           | *models.ResponseBodyBlockHistory*[]                                                      | :heavy_minus_sign:                                                                       | N/A                                                                                      |
+| `history`                                                                                | [models.ResponseBodyHistory](../models/responsebodyhistory.md)[]                         | :heavy_check_mark:                                                                       | N/A                                                                                      |
 | `interstitial`                                                                           | *boolean*                                                                                | :heavy_minus_sign:                                                                       | N/A                                                                                      |
 | `interstitialHistory`                                                                    | [models.ResponseBodyInterstitialHistory](../models/responsebodyinterstitialhistory.md)[] | :heavy_minus_sign:                                                                       | N/A                                                                                      |
+| `scanner`                                                                                | *string*                                                                                 | :heavy_minus_sign:                                                                       | N/A                                                                                      |
+| `updatedAt`                                                                              | *number*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |

@@ -108,8 +108,8 @@ export type VcrImageLayer3 = {
    */
   operation: VcrImageLayer3Operation;
   sizeBytes: number | null;
-  type: "ENV";
   env: string | null;
+  type: "ENV";
 };
 
 /**
@@ -148,8 +148,8 @@ export type VcrImageLayer2 = {
    */
   operation: VcrImageLayerOperation;
   sizeBytes: number | null;
-  type: "RUN";
   command: string | null;
+  type: "RUN";
 };
 
 /**
@@ -188,10 +188,10 @@ export type VcrImageLayer1 = {
    */
   operation: Operation;
   sizeBytes: number | null;
-  type: "FROM";
   baseImage: string | null;
   collapsedDigests: Array<string>;
   collapsedLayerCount: number;
+  type: "FROM";
 };
 
 export type VcrImageLayer =
@@ -263,8 +263,8 @@ export const VcrImageLayer3$inboundSchema: z.ZodType<
   digest: types.nullable(types.string()),
   operation: VcrImageLayer3Operation$inboundSchema,
   sizeBytes: types.nullable(types.number()),
-  type: types.literal("ENV"),
   env: types.nullable(types.string()),
+  type: types.literal("ENV"),
 });
 
 export function vcrImageLayer3FromJSON(
@@ -292,8 +292,8 @@ export const VcrImageLayer2$inboundSchema: z.ZodType<
   digest: types.nullable(types.string()),
   operation: VcrImageLayerOperation$inboundSchema,
   sizeBytes: types.nullable(types.number()),
-  type: types.literal("RUN"),
   command: types.nullable(types.string()),
+  type: types.literal("RUN"),
 });
 
 export function vcrImageLayer2FromJSON(
@@ -320,10 +320,10 @@ export const VcrImageLayer1$inboundSchema: z.ZodType<
   digest: types.nullable(types.string()),
   operation: Operation$inboundSchema,
   sizeBytes: types.nullable(types.number()),
-  type: types.literal("FROM"),
   baseImage: types.nullable(types.string()),
   collapsedDigests: z.array(types.string()),
   collapsedLayerCount: types.number(),
+  type: types.literal("FROM"),
 });
 
 export function vcrImageLayer1FromJSON(

@@ -5,13 +5,13 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndEight } from "@vercel/sdk/models/headinfo.js";
+import { OneHundredAndEight } from "@vercel/sdk/models/onehundred.js";
 
 let value: OneHundredAndEight = {
-  sha: "<value>",
+  gitCommitterName: "<value>",
   gitUserPlatform: "<value>",
   projectName: "<value>",
-  gitCommitterName: "<value>",
+  sha: "<value>",
   source: "<value>",
 };
 ```
@@ -20,10 +20,10 @@ let value: OneHundredAndEight = {
 
 | Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
 | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `sha`                                                                      | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `gitCommitterName`                                                         | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
 | `gitUserPlatform`                                                          | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
 | `projectId`                                                                | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
 | `projectName`                                                              | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `gitCommitterName`                                                         | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `source`                                                                   | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
 | `reason`                                                                   | [models.UserEventPayload108Reason](../models/usereventpayload108reason.md) | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `sha`                                                                      | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `source`                                                                   | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |

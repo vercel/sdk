@@ -5,19 +5,19 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectGitSources } from "@vercel/sdk/models/getprojectinternalroutesmitigate.js";
+import { GetProjectGitSources } from "@vercel/sdk/models/getprojecthas2.js";
 
 let value: GetProjectGitSources = {
-  sources: [],
   enabled: true,
   environments: [],
+  sources: [],
 };
 ```
 
 ## Fields
 
-| Field                             | Type                              | Required                          | Description                       |
-| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
-| `sources`                         | *models.GetProjectSources*[]      | :heavy_check_mark:                | N/A                               |
-| `enabled`                         | *boolean*                         | :heavy_check_mark:                | N/A                               |
-| `environments`                    | *models.GetProjectEnvironments*[] | :heavy_check_mark:                | N/A                               |
+| Field                                     | Type                                      | Required                                  | Description                               |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| `enabled`                                 | *boolean*                                 | :heavy_check_mark:                        | N/A                                       |
+| `environments`                            | *models.GetProjectProjectsEnvironments*[] | :heavy_check_mark:                        | N/A                                       |
+| `sources`                                 | *models.GetProjectProjectsSources*[]      | :heavy_check_mark:                        | N/A                                       |

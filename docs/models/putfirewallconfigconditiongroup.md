@@ -8,8 +8,8 @@ import { PutFirewallConfigConditionGroup } from "@vercel/sdk/models/putfirewallc
 let value: PutFirewallConfigConditionGroup = {
   conditions: [
     {
-      type: "trusted_source",
-      op: "lte",
+      op: "suf",
+      type: "ja4_digest",
     },
   ],
 };

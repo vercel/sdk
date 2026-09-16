@@ -6,11 +6,11 @@
 import { AddRouteTransforms1 } from "@vercel/sdk/models/addrouteop.js";
 
 let value: AddRouteTransforms1 = {
-  type: "request.query",
-  op: "set",
+  op: "delete",
   target: {
     key: {},
   },
+  type: "response.headers",
 };
 ```
 
@@ -18,8 +18,8 @@ let value: AddRouteTransforms1 = {
 
 | Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
 | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `type`                                                                   | [models.AddRouteTransformsType](../models/addroutetransformstype.md)     | :heavy_check_mark:                                                       | N/A                                                                      |
-| `op`                                                                     | [models.AddRouteTransformsOp](../models/addroutetransformsop.md)         | :heavy_check_mark:                                                       | N/A                                                                      |
-| `target`                                                                 | [models.AddRouteTransformsTarget](../models/addroutetransformstarget.md) | :heavy_check_mark:                                                       | N/A                                                                      |
 | `args`                                                                   | *models.TransformsArgs*                                                  | :heavy_minus_sign:                                                       | N/A                                                                      |
 | `env`                                                                    | *string*[]                                                               | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `op`                                                                     | [models.AddRouteTransformsOp](../models/addroutetransformsop.md)         | :heavy_check_mark:                                                       | N/A                                                                      |
+| `target`                                                                 | [models.AddRouteTransformsTarget](../models/addroutetransformstarget.md) | :heavy_check_mark:                                                       | N/A                                                                      |
+| `type`                                                                   | [models.AddRouteTransformsType](../models/addroutetransformstype.md)     | :heavy_check_mark:                                                       | N/A                                                                      |

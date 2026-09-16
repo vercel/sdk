@@ -6,9 +6,9 @@
 import { CreateKmsIssuerPolicyResponseBody2 } from "@vercel/sdk/models/createkmsissuerpolicyop.js";
 
 let value: CreateKmsIssuerPolicyResponseBody2 = {
-  kind: "connex-grant",
   clientId: "<id>",
   createdAt: "1735296461524",
+  kind: "connex-grant",
   updatedAt: "1735681947388",
 };
 ```
@@ -17,8 +17,8 @@ let value: CreateKmsIssuerPolicyResponseBody2 = {
 
 | Field                 | Type                  | Required              | Description           |
 | --------------------- | --------------------- | --------------------- | --------------------- |
-| `kind`                | *"connex-grant"*      | :heavy_check_mark:    | N/A                   |
 | `clientId`            | *string*              | :heavy_check_mark:    | N/A                   |
-| `tokenClaims`         | Record<string, *any*> | :heavy_minus_sign:    | N/A                   |
 | `createdAt`           | *string*              | :heavy_check_mark:    | N/A                   |
+| `kind`                | *"connex-grant"*      | :heavy_check_mark:    | N/A                   |
+| `tokenClaims`         | Record<string, *any*> | :heavy_minus_sign:    | N/A                   |
 | `updatedAt`           | *string*              | :heavy_check_mark:    | N/A                   |

@@ -15,9 +15,9 @@ const value: models.Lhs1 = {
 
 ```typescript
 const value: models.Lhs2 = {
-  type: "entity",
-  kind: "<value>",
   attribute: "<value>",
+  kind: "<value>",
+  type: "entity",
 };
 ```
 

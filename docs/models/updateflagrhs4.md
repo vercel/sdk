@@ -6,9 +6,9 @@
 import { UpdateFlagRhs4 } from "@vercel/sdk/models/updateflagop.js";
 
 let value: UpdateFlagRhs4 = {
-  type: "regex",
-  pattern: "<value>",
   flags: "<value>",
+  pattern: "<value>",
+  type: "regex",
 };
 ```
 
@@ -16,6 +16,6 @@ let value: UpdateFlagRhs4 = {
 
 | Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `type`                                                                                             | [models.UpdateFlagRhsFeatureFlagsResponseType](../models/updateflagrhsfeatureflagsresponsetype.md) | :heavy_check_mark:                                                                                 | N/A                                                                                                |
-| `pattern`                                                                                          | *string*                                                                                           | :heavy_check_mark:                                                                                 | N/A                                                                                                |
 | `flags`                                                                                            | *string*                                                                                           | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `pattern`                                                                                          | *string*                                                                                           | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `type`                                                                                             | [models.UpdateFlagRhsFeatureFlagsResponseType](../models/updateflagrhsfeatureflagsresponsetype.md) | :heavy_check_mark:                                                                                 | N/A                                                                                                |

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectTrustedIpsProjectsDeploymentType } from "@vercel/sdk/models/getprojectinternalroutesmitigate.js";
+import { GetProjectTrustedIpsProjectsDeploymentType } from "@vercel/sdk/models/getprojectfrompreset.js";
 
 let value: GetProjectTrustedIpsProjectsDeploymentType =
   "all_except_custom_domains";

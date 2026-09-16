@@ -7,14 +7,11 @@
 
 ```typescript
 const value: models.CreateKmsIssuerPolicyResponseBody1 = {
+  createdAt: "1725736405555",
+  environments: [],
   kind: "project-grant",
-  teamId: "<id>",
   projectId: "<id>",
-  environments: [
-    "<value 1>",
-    "<value 2>",
-  ],
-  createdAt: "1704345068409",
+  teamId: "<id>",
   updatedAt: "1735604788256",
 };
 ```
@@ -23,9 +20,9 @@ const value: models.CreateKmsIssuerPolicyResponseBody1 = {
 
 ```typescript
 const value: models.CreateKmsIssuerPolicyResponseBody2 = {
-  kind: "connex-grant",
   clientId: "<id>",
   createdAt: "1735296461524",
+  kind: "connex-grant",
   updatedAt: "1735681947388",
 };
 ```

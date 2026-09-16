@@ -6,17 +6,17 @@
 import { Fallthrough2 } from "@vercel/sdk/models/flag.js";
 
 let value: Fallthrough2 = {
-  type: "split",
   base: {
-    type: "entity",
-    kind: "<value>",
     attribute: "<value>",
+    kind: "<value>",
+    type: "entity",
   },
+  defaultVariantId: "<id>",
+  type: "split",
   weights: {
     "key": 863.6,
     "key1": 9268.36,
   },
-  defaultVariantId: "<id>",
 };
 ```
 
@@ -24,7 +24,7 @@ let value: Fallthrough2 = {
 
 | Field                            | Type                             | Required                         | Description                      |
 | -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
-| `type`                           | *"split"*                        | :heavy_check_mark:               | N/A                              |
 | `base`                           | [models.Base](../models/base.md) | :heavy_check_mark:               | N/A                              |
-| `weights`                        | Record<string, *number*>         | :heavy_check_mark:               | N/A                              |
 | `defaultVariantId`               | *string*                         | :heavy_check_mark:               | N/A                              |
+| `type`                           | *"split"*                        | :heavy_check_mark:               | N/A                              |
+| `weights`                        | Record<string, *number*>         | :heavy_check_mark:               | N/A                              |

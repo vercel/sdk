@@ -8,8 +8,8 @@ import { PutFirewallConfigRulesSecurityConditionGroup } from "@vercel/sdk/models
 let value: PutFirewallConfigRulesSecurityConditionGroup = {
   conditions: [
     {
-      type: "user_agent",
-      op: "inc",
+      op: "suf",
+      type: "geo_country",
     },
   ],
 };

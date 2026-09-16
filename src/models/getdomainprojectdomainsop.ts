@@ -40,41 +40,41 @@ export type GetDomainProjectDomainsRequest = {
  * A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
  */
 export type GetDomainProjectDomainsVerification = {
-  type: string;
   domain: string;
-  value: string;
   reason: string;
+  type: string;
+  value: string;
 };
 
 export type ProjectDomains = {
-  name: string;
   apexName: string;
+  createdAt?: number | undefined;
+  customEnvironmentId?: string | null | undefined;
+  gitBranch?: string | null | undefined;
+  name: string;
   projectId: string;
   redirect?: string | null | undefined;
   redirectStatusCode?: number | null | undefined;
-  gitBranch?: string | null | undefined;
-  customEnvironmentId?: string | null | undefined;
   updatedAt?: number | undefined;
-  createdAt?: number | undefined;
-  /**
-   * `true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed.
-   */
-  verified: boolean;
   /**
    * A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
    */
   verification?: Array<GetDomainProjectDomainsVerification> | undefined;
+  /**
+   * `true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed.
+   */
+  verified: boolean;
 };
 
 /**
  * Successful response retrieving project domains for an apex domain.
  */
 export type GetDomainProjectDomainsResponseBody = {
-  projectDomains: Array<ProjectDomains>;
   /**
    * This object contains information related to the pagination of the current request, including the necessary parameters to get the next or previous page of data.
    */
   pagination: Pagination;
+  projectDomains: Array<ProjectDomains>;
 };
 
 /** @internal */
@@ -117,10 +117,10 @@ export const GetDomainProjectDomainsVerification$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.string(),
   domain: types.string(),
-  value: types.string(),
   reason: types.string(),
+  type: types.string(),
+  value: types.string(),
 });
 
 export function getDomainProjectDomainsVerificationFromJSON(
@@ -140,19 +140,19 @@ export const ProjectDomains$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: types.string(),
   apexName: types.string(),
+  createdAt: types.optional(types.number()),
+  customEnvironmentId: z.nullable(types.string()).optional(),
+  gitBranch: z.nullable(types.string()).optional(),
+  name: types.string(),
   projectId: types.string(),
   redirect: z.nullable(types.string()).optional(),
   redirectStatusCode: z.nullable(types.number()).optional(),
-  gitBranch: z.nullable(types.string()).optional(),
-  customEnvironmentId: z.nullable(types.string()).optional(),
   updatedAt: types.optional(types.number()),
-  createdAt: types.optional(types.number()),
-  verified: types.boolean(),
   verification: types.optional(
     z.array(z.lazy(() => GetDomainProjectDomainsVerification$inboundSchema)),
   ),
+  verified: types.boolean(),
 });
 
 export function projectDomainsFromJSON(
@@ -171,8 +171,8 @@ export const GetDomainProjectDomainsResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectDomains: z.array(z.lazy(() => ProjectDomains$inboundSchema)),
   pagination: Pagination$inboundSchema,
+  projectDomains: z.array(z.lazy(() => ProjectDomains$inboundSchema)),
 });
 
 export function getDomainProjectDomainsResponseBodyFromJSON(

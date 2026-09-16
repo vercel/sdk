@@ -41,10 +41,6 @@ export type AssignAliasRequest = {
  */
 export type AssignAliasResponseBody = {
   /**
-   * The unique identifier of the alias
-   */
-  uid: string;
-  /**
    * The assigned alias name
    */
   alias: string;
@@ -56,6 +52,10 @@ export type AssignAliasResponseBody = {
    * The unique identifier of the previously aliased deployment, only received when the alias was used before
    */
   oldDeploymentId?: string | null | undefined;
+  /**
+   * The unique identifier of the alias
+   */
+  uid: string;
 };
 
 /** @internal */
@@ -120,10 +120,10 @@ export const AssignAliasResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  uid: types.string(),
   alias: types.string(),
   created: types.date(),
   oldDeploymentId: z.nullable(types.string()).optional(),
+  uid: types.string(),
 });
 
 export function assignAliasResponseBodyFromJSON(

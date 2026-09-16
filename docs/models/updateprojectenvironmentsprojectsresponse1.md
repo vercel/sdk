@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { UpdateProjectEnvironmentsProjectsResponse1 } from "@vercel/sdk/models/updateprojectresponsebody.js";
+import { UpdateProjectEnvironmentsProjectsResponse1 } from "@vercel/sdk/models/updateprojectprojectsresponse200applicationjsonaction.js";
 
 let value: UpdateProjectEnvironmentsProjectsResponse1 = {
-  type: "system",
   target: "production",
+  type: "system",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: UpdateProjectEnvironmentsProjectsResponse1 = {
 
 | Field                                                                                                                        | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  |
 | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `type`                                                                                                                       | *"system"*                                                                                                                   | :heavy_check_mark:                                                                                                           | N/A                                                                                                                          |
 | `target`                                                                                                                     | [models.UpdateProjectEnvironmentsProjectsResponse200Target](../models/updateprojectenvironmentsprojectsresponse200target.md) | :heavy_check_mark:                                                                                                           | N/A                                                                                                                          |
+| `type`                                                                                                                       | *"system"*                                                                                                                   | :heavy_check_mark:                                                                                                           | N/A                                                                                                                          |

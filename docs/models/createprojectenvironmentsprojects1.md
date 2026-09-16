@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectEnvironmentsProjects1 } from "@vercel/sdk/models/createprojecthasprojectsresponse1.js";
+import { CreateProjectEnvironmentsProjects1 } from "@vercel/sdk/models/createprojectcontenthint2.js";
 
 let value: CreateProjectEnvironmentsProjects1 = {
-  type: "system",
   target: "production",
+  type: "system",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: CreateProjectEnvironmentsProjects1 = {
 
 | Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
 | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `type`                                                                                 | *"system"*                                                                             | :heavy_check_mark:                                                                     | N/A                                                                                    |
 | `target`                                                                               | [models.CreateProjectEnvironmentsTarget](../models/createprojectenvironmentstarget.md) | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `type`                                                                                 | *"system"*                                                                             | :heavy_check_mark:                                                                     | N/A                                                                                    |

@@ -8,35 +8,22 @@ The session was retrieved successfully.
 import { GetSessionResponseBody } from "@vercel/sdk/models/getsessionop.js";
 
 let value: GetSessionResponseBody = {
+  routes: [],
   session: {
-    sourceSandboxName: "my-sandbox",
-    projectId: "prj_123a6c5209bc3778245d011443644c8d27dc2c50",
+    abortedAt: 1750344501629,
+    activeCpuDurationMs: 42,
+    createdAt: 1750344501629,
+    cwd: "/vercel/sandbox",
+    duration: 3600000,
     id: "sbx_123a6c5209bc3778245d011443644c8d27dc2c50",
     memory: 2048,
-    vcpus: 2,
-    region: "iad1",
-    runtime: "node22",
-    timeout: 3600000,
-    status: "running",
-    requestedAt: 1750344501629,
-    startedAt: 1750344501629,
-    cwd: "/vercel/sandbox",
-    requestedStopAt: 1750344501629,
-    stoppedAt: 1750344501629,
-    abortedAt: 1750344501629,
-    duration: 3600000,
-    sourceSnapshotId: "snap_123a6c5209bc3778245d011443644c8d27dc2c50",
-    snapshottedAt: 1750344501629,
-    createdAt: 1750344501629,
-    updatedAt: 1750344501629,
     networkPolicy: {
-      mode: "custom",
+      allowedCIDRs: [
+        "10.0.0.0/8",
+      ],
       allowedDomains: [
         "api.vercel.com",
         "*.example.com",
-      ],
-      allowedCIDRs: [
-        "10.0.0.0/8",
       ],
       deniedCIDRs: [
         "10.0.0.0/8",
@@ -50,14 +37,27 @@ let value: GetSessionResponseBody = {
           ],
         },
       ],
+      mode: "custom",
     },
-    activeCpuDurationMs: 42,
     networkTransfer: {
-      ingress: 1009.44,
       egress: 7683.25,
+      ingress: 3996.32,
     },
+    projectId: "prj_123a6c5209bc3778245d011443644c8d27dc2c50",
+    region: "iad1",
+    requestedAt: 1750344501629,
+    requestedStopAt: 1750344501629,
+    runtime: "node22",
+    snapshottedAt: 1750344501629,
+    sourceSandboxName: "my-sandbox",
+    sourceSnapshotId: "snap_123a6c5209bc3778245d011443644c8d27dc2c50",
+    startedAt: 1750344501629,
+    status: "running",
+    stoppedAt: 1750344501629,
+    timeout: 3600000,
+    updatedAt: 1750344501629,
+    vcpus: 2,
   },
-  routes: [],
 };
 ```
 
@@ -65,5 +65,5 @@ let value: GetSessionResponseBody = {
 
 | Field                                                                                                                                                 | Type                                                                                                                                                  | Required                                                                                                                                              | Description                                                                                                                                           |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `session`                                                                                                                                             | [models.Session](../models/session.md)                                                                                                                | :heavy_check_mark:                                                                                                                                    | This object contains information related to a Vercel Sandbox Session. v2 endpoints return "session" instead of "sandbox" as the response wrapper key. |
 | `routes`                                                                                                                                              | [models.SandboxPublicRoute](../models/sandboxpublicroute.md)[]                                                                                        | :heavy_check_mark:                                                                                                                                    | N/A                                                                                                                                                   |
+| `session`                                                                                                                                             | [models.Session](../models/session.md)                                                                                                                | :heavy_check_mark:                                                                                                                                    | This object contains information related to a Vercel Sandbox Session. v2 endpoints return "session" instead of "sandbox" as the response wrapper key. |

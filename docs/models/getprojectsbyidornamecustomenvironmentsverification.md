@@ -8,10 +8,10 @@ A list of verification challenges, one of which must be completed to verify the 
 import { GetProjectsByIdOrNameCustomEnvironmentsVerification } from "@vercel/sdk/models/getprojectsbyidornamecustomenvironmentsop.js";
 
 let value: GetProjectsByIdOrNameCustomEnvironmentsVerification = {
-  type: "<value>",
   domain: "selfish-apricot.info",
-  value: "<value>",
   reason: "<value>",
+  type: "<value>",
+  value: "<value>",
 };
 ```
 
@@ -19,7 +19,7 @@ let value: GetProjectsByIdOrNameCustomEnvironmentsVerification = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `type`             | *string*           | :heavy_check_mark: | N/A                |
 | `domain`           | *string*           | :heavy_check_mark: | N/A                |
-| `value`            | *string*           | :heavy_check_mark: | N/A                |
 | `reason`           | *string*           | :heavy_check_mark: | N/A                |
+| `type`             | *string*           | :heavy_check_mark: | N/A                |
+| `value`            | *string*           | :heavy_check_mark: | N/A                |

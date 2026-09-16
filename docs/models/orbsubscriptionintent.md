@@ -6,7 +6,6 @@
 import { OrbSubscriptionIntent } from "@vercel/sdk/models/buycreditsop.js";
 
 let value: OrbSubscriptionIntent = {
-  id: "<id>",
   configuration: {
     options: {
       addedResourceIds: [
@@ -29,6 +28,7 @@ let value: OrbSubscriptionIntent = {
     type: "adjust_plan_item_quantity",
   },
   createdAt: "1728673646563",
+  id: "<id>",
   orbSubscriptionId: "<id>",
   orbUpdate: {
     appliedAt: "<value>",
@@ -45,12 +45,12 @@ let value: OrbSubscriptionIntent = {
 
 | Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
 | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `id`                                                                             | *string*                                                                         | :heavy_check_mark:                                                               | The ID of the Orb subscription intent with the format `orbsubint_`.              |
 | `configuration`                                                                  | *models.ResponseBodyConfiguration*                                               | :heavy_check_mark:                                                               | N/A                                                                              |
 | `createdAt`                                                                      | *string*                                                                         | :heavy_check_mark:                                                               | The ISO 8601 date-time that the intent was created.                              |
+| `id`                                                                             | *string*                                                                         | :heavy_check_mark:                                                               | The ID of the Orb subscription intent with the format `orbsubint_`.              |
 | `orbSubscriptionId`                                                              | *string*                                                                         | :heavy_check_mark:                                                               | The Orb subscription ID this intent is associated with.                          |
 | `orbUpdate`                                                                      | *models.OrbUpdate*                                                               | :heavy_check_mark:                                                               | N/A                                                                              |
 | `ownerId`                                                                        | *string*                                                                         | :heavy_check_mark:                                                               | The owner ID for this intent (e.g., team or user ID).                            |
+| `purchaseIntentId`                                                               | *string*                                                                         | :heavy_minus_sign:                                                               | Optional purchase intent ID if this is associated with a purchase.               |
 | `status`                                                                         | [models.BuyCreditsResponseBodyStatus](../models/buycreditsresponsebodystatus.md) | :heavy_check_mark:                                                               | The status of the Orb subscription intent.                                       |
 | `updatedAt`                                                                      | *string*                                                                         | :heavy_check_mark:                                                               | The ISO 8601 date-time that the intent was last updated.                         |
-| `purchaseIntentId`                                                               | *string*                                                                         | :heavy_minus_sign:                                                               | Optional purchase intent ID if this is associated with a purchase.               |

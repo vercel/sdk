@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetDeploymentResponseBodyWebAnalytics } from "@vercel/sdk/models/getdeploymentgitsourcedeploymentsresponse200type.js";
+import { GetDeploymentResponseBodyWebAnalytics } from "@vercel/sdk/models/getdeploymentservicesfunctions.js";
 
 let value: GetDeploymentResponseBodyWebAnalytics = {
   id: "<id>",
@@ -14,8 +14,8 @@ let value: GetDeploymentResponseBodyWebAnalytics = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *string*           | :heavy_check_mark: | N/A                |
-| `disabledAt`       | *number*           | :heavy_minus_sign: | N/A                |
 | `canceledAt`       | *number*           | :heavy_minus_sign: | N/A                |
+| `disabledAt`       | *number*           | :heavy_minus_sign: | N/A                |
 | `enabledAt`        | *number*           | :heavy_minus_sign: | N/A                |
 | `hasData`          | *true*             | :heavy_minus_sign: | N/A                |
+| `id`               | *string*           | :heavy_check_mark: | N/A                |

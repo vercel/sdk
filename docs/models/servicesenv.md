@@ -6,8 +6,8 @@
 import { ServicesEnv } from "@vercel/sdk/models/canceldeploymentresponsebody.js";
 
 let value: ServicesEnv = {
-  type: "service-ref",
   service: "<value>",
+  type: "service-ref",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: ServicesEnv = {
 
 | Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
 | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `type`                                                                           | [models.CancelDeploymentServicesType](../models/canceldeploymentservicestype.md) | :heavy_check_mark:                                                               | N/A                                                                              |
 | `service`                                                                        | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
+| `type`                                                                           | [models.CancelDeploymentServicesType](../models/canceldeploymentservicestype.md) | :heavy_check_mark:                                                               | N/A                                                                              |

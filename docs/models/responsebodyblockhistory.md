@@ -8,9 +8,9 @@
 ```typescript
 const value: models.GetProjectsBlockHistory1 = {
   action: "blocked",
+  createdAt: 2902.14,
   reason: "<value>",
-  statusCode: 2902.14,
-  createdAt: 1211.81,
+  statusCode: 1211.81,
 };
 ```
 
@@ -28,12 +28,12 @@ const value: models.GetProjectsBlockHistory2 = {
 ```typescript
 const value: models.GetProjectsBlockHistory3 = {
   action: "route-blocked",
+  createdAt: 3558.85,
+  reason: "<value>",
   route: {
     src: "<value>",
-    status: 3830.55,
+    status: 5491.52,
   },
-  reason: "<value>",
-  createdAt: 5491.52,
 };
 ```
 
@@ -42,11 +42,13 @@ const value: models.GetProjectsBlockHistory3 = {
 ```typescript
 const value: models.GetProjectsBlockHistory4 = {
   action: "route-unblocked",
+  createdAt: 2387.06,
   route: {
-    src: "<value>",
-    status: 8911.94,
+    has: [],
+    mitigate: {
+      action: "block_legal_cwc",
+    },
   },
-  createdAt: 3845.17,
 };
 ```
 

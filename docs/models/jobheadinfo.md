@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { JobHeadInfo } from "@vercel/sdk/models/headinfo.js";
+import { JobHeadInfo } from "@vercel/sdk/models/onehundred.js";
 
 let value: JobHeadInfo = {
   owner: "<value>",

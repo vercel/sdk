@@ -62,8 +62,8 @@ export type ListSessionSnapshotsResponseBodyPagination = {
 };
 
 export type ListSessionSnapshotsResponseBody2 = {
-  snapshots: Array<Snapshot>;
   pagination: ListSessionSnapshotsResponseBodyPagination;
+  snapshots: Array<Snapshot>;
 };
 
 export type ListSessionSnapshotsResponseBody1 = {};
@@ -145,10 +145,10 @@ export const ListSessionSnapshotsResponseBody2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  snapshots: z.array(Snapshot$inboundSchema),
   pagination: z.lazy(() =>
     ListSessionSnapshotsResponseBodyPagination$inboundSchema
   ),
+  snapshots: z.array(Snapshot$inboundSchema),
 });
 
 export function listSessionSnapshotsResponseBody2FromJSON(

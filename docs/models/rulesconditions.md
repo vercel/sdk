@@ -6,8 +6,8 @@
 import { RulesConditions } from "@vercel/sdk/models/getfirewallconfigop.js";
 
 let value: RulesConditions = {
-  type: "geo_country_region",
-  op: "re",
+  op: "list",
+  type: "server_action",
 };
 ```
 
@@ -15,8 +15,8 @@ let value: RulesConditions = {
 
 | Field                                      | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `type`                                     | [models.RulesType](../models/rulestype.md) | :heavy_check_mark:                         | N/A                                        |
-| `op`                                       | [models.RulesOp](../models/rulesop.md)     | :heavy_check_mark:                         | N/A                                        |
-| `neg`                                      | *boolean*                                  | :heavy_minus_sign:                         | N/A                                        |
 | `key`                                      | *string*                                   | :heavy_minus_sign:                         | N/A                                        |
+| `neg`                                      | *boolean*                                  | :heavy_minus_sign:                         | N/A                                        |
+| `op`                                       | [models.RulesOp](../models/rulesop.md)     | :heavy_check_mark:                         | N/A                                        |
+| `type`                                     | [models.RulesType](../models/rulestype.md) | :heavy_check_mark:                         | N/A                                        |
 | `value`                                    | *models.RulesValue*                        | :heavy_minus_sign:                         | N/A                                        |

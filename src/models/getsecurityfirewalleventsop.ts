@@ -25,16 +25,16 @@ export type GetSecurityFirewallEventsRequest = {
 };
 
 export type GetSecurityFirewallEventsActions = {
+  action: string;
+  actionType: string;
+  count: number;
+  endTime: string;
+  host: string;
+  isActive: boolean;
+  publicIp: string;
+  ruleId: string | null;
   ruleName: string | null;
   startTime: string;
-  endTime: string;
-  isActive: boolean;
-  actionType: string;
-  action: string;
-  ruleId: string | null;
-  host: string;
-  publicIp: string;
-  count: number;
 };
 
 export type GetSecurityFirewallEventsResponseBody = {
@@ -81,16 +81,16 @@ export const GetSecurityFirewallEventsActions$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  action: types.string(),
+  action_type: types.string(),
+  count: types.number(),
+  endTime: types.string(),
+  host: types.string(),
+  isActive: types.boolean(),
+  public_ip: types.string(),
+  ruleId: types.nullable(types.string()),
   ruleName: types.nullable(types.string()),
   startTime: types.string(),
-  endTime: types.string(),
-  isActive: types.boolean(),
-  action_type: types.string(),
-  action: types.string(),
-  ruleId: types.nullable(types.string()),
-  host: types.string(),
-  public_ip: types.string(),
-  count: types.number(),
 }).transform((v) => {
   return remap$(v, {
     "action_type": "actionType",

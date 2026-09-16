@@ -13,10 +13,6 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
  */
 export type SandboxPublicRoute = {
   /**
-   * A public URL to access the corresponding port in the Sandbox.
-   */
-  url: string;
-  /**
    * The user port number that the route is mapped to.
    */
   port: number;
@@ -28,6 +24,10 @@ export type SandboxPublicRoute = {
    * Whether the route is reserved by the system (e.g. for internal use).
    */
   system?: true | undefined;
+  /**
+   * A public URL to access the corresponding port in the Sandbox.
+   */
+  url: string;
 };
 
 /** @internal */
@@ -36,10 +36,10 @@ export const SandboxPublicRoute$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  url: types.string(),
   port: types.number(),
   subdomain: types.string(),
   system: types.optional(types.literal(true)),
+  url: types.string(),
 });
 
 export function sandboxPublicRouteFromJSON(

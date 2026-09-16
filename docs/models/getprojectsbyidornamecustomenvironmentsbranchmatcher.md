@@ -8,8 +8,8 @@ Configuration for matching git branches to this environment
 import { GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher } from "@vercel/sdk/models/getprojectsbyidornamecustomenvironmentsop.js";
 
 let value: GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher = {
-  type: "startsWith",
   pattern: "<value>",
+  type: "startsWith",
 };
 ```
 
@@ -17,5 +17,5 @@ let value: GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher = {
 
 | Field                                                                                                                                | Type                                                                                                                                 | Required                                                                                                                             | Description                                                                                                                          |
 | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `type`                                                                                                                               | [models.GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType](../models/getprojectsbyidornamecustomenvironmentsenvironmenttype.md) | :heavy_check_mark:                                                                                                                   | The type of matching to perform                                                                                                      |
 | `pattern`                                                                                                                            | *string*                                                                                                                             | :heavy_check_mark:                                                                                                                   | The pattern to match against branch names                                                                                            |
+| `type`                                                                                                                               | [models.GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType](../models/getprojectsbyidornamecustomenvironmentsenvironmenttype.md) | :heavy_check_mark:                                                                                                                   | The type of matching to perform                                                                                                      |

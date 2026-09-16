@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupEnvironments1 } from "@vercel/sdk/models/getmicrofrontendsingroupinternalroutes2.js";
+import { GetMicrofrontendsInGroupEnvironments1 } from "@vercel/sdk/models/getmicrofrontendsingrouphasvalue.js";
 
 let value: GetMicrofrontendsInGroupEnvironments1 = {
-  type: "system",
   target: "production",
+  type: "system",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: GetMicrofrontendsInGroupEnvironments1 = {
 
 | Field                                                                                                                                    | Type                                                                                                                                     | Required                                                                                                                                 | Description                                                                                                                              |
 | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| `type`                                                                                                                                   | *"system"*                                                                                                                               | :heavy_check_mark:                                                                                                                       | N/A                                                                                                                                      |
 | `target`                                                                                                                                 | [models.GetMicrofrontendsInGroupEnvironmentsMicrofrontendsTarget](../models/getmicrofrontendsingroupenvironmentsmicrofrontendstarget.md) | :heavy_check_mark:                                                                                                                       | N/A                                                                                                                                      |
+| `type`                                                                                                                                   | *"system"*                                                                                                                               | :heavy_check_mark:                                                                                                                       | N/A                                                                                                                                      |

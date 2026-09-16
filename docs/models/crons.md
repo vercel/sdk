@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { Crons } from "@vercel/sdk/models/locale.js";
+import { Crons } from "@vercel/sdk/models/canceldeploymentresourceconfig.js";
 
 let value: Crons = {
-  schedule: "<value>",
   path: "/var/yp",
+  schedule: "<value>",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: Crons = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `schedule`         | *string*           | :heavy_check_mark: | N/A                |
 | `path`             | *string*           | :heavy_check_mark: | N/A                |
+| `schedule`         | *string*           | :heavy_check_mark: | N/A                |

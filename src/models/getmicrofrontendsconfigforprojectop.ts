@@ -26,19 +26,6 @@ export type GetMicrofrontendsConfigForProjectRequest = {
   slug?: string | undefined;
 };
 
-/**
- * The version of the microfrontends config schema.
- */
-export const GetMicrofrontendsConfigForProjectVersion = {
-  One: "1",
-} as const;
-/**
- * The version of the microfrontends config schema.
- */
-export type GetMicrofrontendsConfigForProjectVersion = ClosedEnum<
-  typeof GetMicrofrontendsConfigForProjectVersion
->;
-
 export type GetMicrofrontendsConfigForProjectApplicationsMicrofrontendsLocal =
   | string
   | number;
@@ -64,13 +51,13 @@ export type GetMicrofrontendsConfigForProjectApplicationsMicrofrontendsDevelopme
  */
 export type ApplicationsRouting = {
   /**
-   * Group name for the paths.
-   */
-  group?: string | undefined;
-  /**
    * The name of the feature flag that controls routing for this group of paths. See https://vercel.com/docs/microfrontends/path-routing#routing-changes-safely-with-flags.
    */
   flag?: string | undefined;
+  /**
+   * Group name for the paths.
+   */
+  group?: string | undefined;
   /**
    * A list of path expressions that are routed to this application. See https://vercel.com/docs/microfrontends/path-routing#supported-path-expressions.
    */
@@ -79,23 +66,23 @@ export type ApplicationsRouting = {
 
 export type GetMicrofrontendsConfigForProjectApplications2 = {
   /**
+   * The name of the asset prefix to use instead of the auto-generated name. The asset prefix is used to prefix all paths to static assets, such as JS, CSS, or images that are served by a specific application. It is necessary to ensure there are no conflicts with other applications on the same domain. An auto-generated asset prefix of the form `vc-ap-<hash>` is used when this field is not provided. When this field is provided, `/${assetPrefix}/:path*` must also be added to the list of paths in the `routing` field. Changing the asset prefix after a microfrontend application has already been deployed is not a forwards and backwards compatible change, and the asset prefix should be added to the `routing` field and deployed before setting the `assetPrefix` field. The default value is the auto-generated asset prefix of the form `vc-ap-<hash>`. See https://vercel.com/docs/microfrontends/path-routing#asset-prefix.
+   */
+  assetPrefix?: string | undefined;
+  /**
    * Development configuration for the child application.
    */
   development?:
     | GetMicrofrontendsConfigForProjectApplicationsMicrofrontendsDevelopment
     | undefined;
   /**
-   * Groups of path expressions that are routed to this application. See https://vercel.com/docs/microfrontends/path-routing.
-   */
-  routing: Array<ApplicationsRouting>;
-  /**
-   * The name of the asset prefix to use instead of the auto-generated name. The asset prefix is used to prefix all paths to static assets, such as JS, CSS, or images that are served by a specific application. It is necessary to ensure there are no conflicts with other applications on the same domain. An auto-generated asset prefix of the form `vc-ap-<hash>` is used when this field is not provided. When this field is provided, `/${assetPrefix}/:path*` must also be added to the list of paths in the `routing` field. Changing the asset prefix after a microfrontend application has already been deployed is not a forwards and backwards compatible change, and the asset prefix should be added to the `routing` field and deployed before setting the `assetPrefix` field. The default value is the auto-generated asset prefix of the form `vc-ap-<hash>`. See https://vercel.com/docs/microfrontends/path-routing#asset-prefix.
-   */
-  assetPrefix?: string | undefined;
-  /**
    * The name used to run the application, e.g. the `name` field in the `package.json`. This is used by the local proxy to map the application config to the locally running app. This is only necessary when the application name does not match the `name` used in `package.json`. See https://vercel.com/docs/microfrontends/configuration#application-naming.
    */
   packageName?: string | undefined;
+  /**
+   * Groups of path expressions that are routed to this application. See https://vercel.com/docs/microfrontends/path-routing.
+   */
+  routing: Array<ApplicationsRouting>;
   projectId: string;
 };
 
@@ -149,6 +136,19 @@ export type GetMicrofrontendsConfigForProjectOptions = {
 };
 
 /**
+ * The version of the microfrontends config schema.
+ */
+export const GetMicrofrontendsConfigForProjectVersion = {
+  One: "1",
+} as const;
+/**
+ * The version of the microfrontends config schema.
+ */
+export type GetMicrofrontendsConfigForProjectVersion = ClosedEnum<
+  typeof GetMicrofrontendsConfigForProjectVersion
+>;
+
+/**
  * projectIds are added when the config is uploaded to s3 deployment assets.
  */
 export type GetMicrofrontendsConfigForProjectConfig = {
@@ -156,10 +156,6 @@ export type GetMicrofrontendsConfigForProjectConfig = {
    * See https://openapi.vercel.sh/microfrontends.json.
    */
   dollarSchema?: string | undefined;
-  /**
-   * The version of the microfrontends config schema.
-   */
-  version?: GetMicrofrontendsConfigForProjectVersion | undefined;
   applications: {
     [k: string]:
       | GetMicrofrontendsConfigForProjectApplications1
@@ -169,6 +165,10 @@ export type GetMicrofrontendsConfigForProjectConfig = {
    * Optional configuration options for the microfrontend.
    */
   options?: GetMicrofrontendsConfigForProjectOptions | undefined;
+  /**
+   * The version of the microfrontends config schema.
+   */
+  version?: GetMicrofrontendsConfigForProjectVersion | undefined;
 };
 
 export type GetMicrofrontendsConfigForProjectResponseBody = {
@@ -206,11 +206,6 @@ export function getMicrofrontendsConfigForProjectRequestToJSON(
     ),
   );
 }
-
-/** @internal */
-export const GetMicrofrontendsConfigForProjectVersion$inboundSchema:
-  z.ZodNativeEnum<typeof GetMicrofrontendsConfigForProjectVersion> = z
-    .nativeEnum(GetMicrofrontendsConfigForProjectVersion);
 
 /** @internal */
 export const GetMicrofrontendsConfigForProjectApplicationsMicrofrontendsLocal$inboundSchema:
@@ -268,8 +263,8 @@ export const ApplicationsRouting$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  group: types.optional(types.string()),
   flag: types.optional(types.string()),
+  group: types.optional(types.string()),
   paths: z.array(types.string()),
 });
 
@@ -290,14 +285,14 @@ export const GetMicrofrontendsConfigForProjectApplications2$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
+    assetPrefix: types.optional(types.string()),
     development: types.optional(
       z.lazy(() =>
         GetMicrofrontendsConfigForProjectApplicationsMicrofrontendsDevelopment$inboundSchema
       ),
     ),
-    routing: z.array(z.lazy(() => ApplicationsRouting$inboundSchema)),
-    assetPrefix: types.optional(types.string()),
     packageName: types.optional(types.string()),
+    routing: z.array(z.lazy(() => ApplicationsRouting$inboundSchema)),
     projectId: types.string(),
   });
 
@@ -452,15 +447,17 @@ export function getMicrofrontendsConfigForProjectOptionsFromJSON(
 }
 
 /** @internal */
+export const GetMicrofrontendsConfigForProjectVersion$inboundSchema:
+  z.ZodNativeEnum<typeof GetMicrofrontendsConfigForProjectVersion> = z
+    .nativeEnum(GetMicrofrontendsConfigForProjectVersion);
+
+/** @internal */
 export const GetMicrofrontendsConfigForProjectConfig$inboundSchema: z.ZodType<
   GetMicrofrontendsConfigForProjectConfig,
   z.ZodTypeDef,
   unknown
 > = z.object({
   $schema: types.optional(types.string()),
-  version: types.optional(
-    GetMicrofrontendsConfigForProjectVersion$inboundSchema,
-  ),
   applications: z.record(
     smartUnion([
       z.lazy(() =>
@@ -473,6 +470,9 @@ export const GetMicrofrontendsConfigForProjectConfig$inboundSchema: z.ZodType<
   ),
   options: types.optional(
     z.lazy(() => GetMicrofrontendsConfigForProjectOptions$inboundSchema),
+  ),
+  version: types.optional(
+    GetMicrofrontendsConfigForProjectVersion$inboundSchema,
   ),
 }).transform((v) => {
   return remap$(v, {

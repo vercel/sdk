@@ -7,11 +7,11 @@
 
 ```typescript
 const value: models.UploadProjectAvatarLink1 = {
-  org: "<value>",
-  type: "github",
   deployHooks: [],
   gitCredentialId: "<id>",
+  org: "<value>",
   productionBranch: "<value>",
+  type: "github",
 };
 ```
 
@@ -19,8 +19,6 @@ const value: models.UploadProjectAvatarLink1 = {
 
 ```typescript
 const value: models.UploadProjectAvatarLink2 = {
-  type: "github-limited",
-  org: "<value>",
   deployHooks: [
     {
       id: "<id>",
@@ -30,7 +28,9 @@ const value: models.UploadProjectAvatarLink2 = {
     },
   ],
   gitCredentialId: "<id>",
+  org: "<value>",
   productionBranch: "<value>",
+  type: "github-limited",
 };
 ```
 
@@ -38,19 +38,12 @@ const value: models.UploadProjectAvatarLink2 = {
 
 ```typescript
 const value: models.UploadProjectAvatarLink3 = {
-  org: "<value>",
-  type: "github-custom-host",
-  host: "limited-popularity.com",
-  deployHooks: [
-    {
-      id: "<id>",
-      name: "<value>",
-      ref: "<value>",
-      url: "https://new-spring.name/",
-    },
-  ],
+  deployHooks: [],
   gitCredentialId: "<id>",
+  host: "round-academics.name",
+  org: "<value>",
   productionBranch: "<value>",
+  type: "github-custom-host",
 };
 ```
 
@@ -58,22 +51,15 @@ const value: models.UploadProjectAvatarLink3 = {
 
 ```typescript
 const value: models.UploadProjectAvatarLink4 = {
-  projectId: "<id>",
-  projectName: "<value>",
-  projectNameWithNamespace: "<value>",
-  projectNamespace: "<value>",
-  projectUrl: "https://staid-legislature.org/",
-  type: "gitlab",
-  deployHooks: [
-    {
-      id: "<id>",
-      name: "<value>",
-      ref: "<value>",
-      url: "https://polite-exasperation.biz/",
-    },
-  ],
+  deployHooks: [],
   gitCredentialId: "<id>",
   productionBranch: "<value>",
+  projectId: "<id>",
+  projectName: "<value>",
+  projectNamespace: "<value>",
+  projectNameWithNamespace: "<value>",
+  projectUrl: "https://miserly-yak.org",
+  type: "gitlab",
 };
 ```
 
@@ -81,15 +67,22 @@ const value: models.UploadProjectAvatarLink4 = {
 
 ```typescript
 const value: models.UploadProjectAvatarLink5 = {
-  name: "<value>",
-  slug: "<value>",
-  owner: "<value>",
-  type: "bitbucket",
-  uuid: "dd1ccdd2-a182-46b7-af05-0abf915ab0ba",
-  workspaceUuid: "<id>",
-  deployHooks: [],
+  deployHooks: [
+    {
+      id: "<id>",
+      name: "<value>",
+      ref: "<value>",
+      url: "https://better-retrospectivity.net",
+    },
+  ],
   gitCredentialId: "<id>",
+  name: "<value>",
+  owner: "<value>",
   productionBranch: "<value>",
+  slug: "<value>",
+  type: "bitbucket",
+  uuid: "dd2a1826-b7f0-450a-9bf9-15ab0ba8575e",
+  workspaceUuid: "<id>",
 };
 ```
 
@@ -97,10 +90,6 @@ const value: models.UploadProjectAvatarLink5 = {
 
 ```typescript
 const value: models.UploadProjectAvatarLink6 = {
-  org: "<value>",
-  repo: "<value>",
-  repoId: "<id>",
-  type: "vercel",
   deployHooks: [
     {
       id: "<id>",
@@ -110,7 +99,11 @@ const value: models.UploadProjectAvatarLink6 = {
     },
   ],
   gitCredentialId: "<id>",
+  org: "<value>",
   productionBranch: "<value>",
+  repo: "<value>",
+  repoId: "<id>",
+  type: "vercel",
 };
 ```
 
@@ -118,13 +111,13 @@ const value: models.UploadProjectAvatarLink6 = {
 
 ```typescript
 const value: models.UploadProjectAvatarLink7 = {
+  deployHooks: [],
+  gitCredentialId: "<id>",
   org: "<value>",
+  productionBranch: "<value>",
   repo: "<value>",
   repoId: "<id>",
   type: "v0",
-  deployHooks: [],
-  gitCredentialId: "<id>",
-  productionBranch: "<value>",
 };
 ```
 
@@ -132,11 +125,6 @@ const value: models.UploadProjectAvatarLink7 = {
 
 ```typescript
 const value: models.UploadProjectAvatarLink8 = {
-  owner: "<value>",
-  repo: "<value>",
-  repoId: "<id>",
-  ownerId: "<id>",
-  type: "cursor-origin",
   deployHooks: [
     {
       id: "<id>",
@@ -146,7 +134,12 @@ const value: models.UploadProjectAvatarLink8 = {
     },
   ],
   gitCredentialId: "<id>",
+  owner: "<value>",
+  ownerId: "<id>",
   productionBranch: "<value>",
+  repo: "<value>",
+  repoId: "<id>",
+  type: "cursor-origin",
 };
 ```
 

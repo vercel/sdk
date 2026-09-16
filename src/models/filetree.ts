@@ -30,18 +30,6 @@ export type FileTreeType = ClosedEnum<typeof FileTreeType>;
  */
 export type FileTree = {
   /**
-   * The name of the file tree entry
-   */
-  name: string;
-  /**
-   * String indicating the type of file tree entry.
-   */
-  type: FileTreeType;
-  /**
-   * The unique identifier of the file (only valid for the `file` type)
-   */
-  uid?: string | undefined;
-  /**
    * The list of children files of the directory (only valid for the `directory` type)
    */
   children?: Array<FileTree> | undefined;
@@ -53,6 +41,18 @@ export type FileTree = {
    * The file "mode" indicating file type and permissions.
    */
   mode: number;
+  /**
+   * The name of the file tree entry
+   */
+  name: string;
+  /**
+   * String indicating the type of file tree entry.
+   */
+  type: FileTreeType;
+  /**
+   * The unique identifier of the file (only valid for the `file` type)
+   */
+  uid?: string | undefined;
 };
 
 /** @internal */
@@ -65,12 +65,12 @@ export const FileTree$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: types.string(),
-  type: FileTreeType$inboundSchema,
-  uid: types.optional(types.string()),
   children: types.optional(z.array(z.lazy(() => FileTree$inboundSchema))),
   contentType: types.optional(types.string()),
   mode: types.number(),
+  name: types.string(),
+  type: FileTreeType$inboundSchema,
+  uid: types.optional(types.string()),
 });
 
 export function fileTreeFromJSON(

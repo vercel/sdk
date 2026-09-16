@@ -7,20 +7,20 @@
 
 ```typescript
 const value: models.GetSecurityFirewallConfigRulesSecurity1 = {
-  id: "<id>",
-  name: "<value>",
+  action: {},
   active: false,
   conditionGroup: [
     {
       conditions: [
         {
-          type: "bot_name",
-          op: "lte",
+          op: "eq",
+          type: "ja3_digest",
         },
       ],
     },
   ],
-  action: {},
+  id: "<id>",
+  name: "<value>",
   valid: true,
   validationErrors: "<value>",
 };
@@ -30,20 +30,20 @@ const value: models.GetSecurityFirewallConfigRulesSecurity1 = {
 
 ```typescript
 const value: models.GetSecurityFirewallConfigRulesSecurity2 = {
-  id: "<id>",
-  name: "<value>",
+  action: {},
   active: true,
   conditionGroup: [
     {
       conditions: [
         {
-          type: "ja4_digest",
-          op: "gt",
+          op: "lte",
+          type: "environment",
         },
       ],
     },
   ],
-  action: {},
+  id: "<id>",
+  name: "<value>",
   valid: false,
   validationErrors: [
     "<value 1>",

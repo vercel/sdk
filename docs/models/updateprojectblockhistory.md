@@ -8,9 +8,9 @@
 ```typescript
 const value: models.UpdateProjectBlockHistory1 = {
   action: "blocked",
+  createdAt: 9457.82,
   reason: "<value>",
-  statusCode: 9457.82,
-  createdAt: 6178.34,
+  statusCode: 6178.34,
 };
 ```
 
@@ -28,25 +28,13 @@ const value: models.UpdateProjectBlockHistory2 = {
 ```typescript
 const value: models.UpdateProjectBlockHistory3 = {
   action: "route-blocked",
-  route: {
-    src: "<value>",
-    status: 5377.98,
-  },
+  createdAt: 2767.46,
   reason: "<value>",
-  createdAt: 8650.96,
-};
-```
-
-### `models.UpdateProjectBlockHistory4`
-
-```typescript
-const value: models.UpdateProjectBlockHistory4 = {
-  action: "route-unblocked",
   route: {
     has: [
       {
-        type: "header",
         key: "x-vercel-ip-country",
+        type: "header",
         value: {
           eq: "<value>",
         },
@@ -56,7 +44,21 @@ const value: models.UpdateProjectBlockHistory4 = {
       action: "block_legal_cwc",
     },
   },
-  createdAt: 207.55,
+};
+```
+
+### `models.UpdateProjectBlockHistory4`
+
+```typescript
+const value: models.UpdateProjectBlockHistory4 = {
+  action: "route-unblocked",
+  createdAt: 6185.55,
+  route: {
+    has: [],
+    mitigate: {
+      action: "block_legal_cwc",
+    },
+  },
 };
 ```
 

@@ -29,13 +29,6 @@ export type ListTeamFlagSettingsRequest = {
   slug?: string | undefined;
 };
 
-export const ListTeamFlagSettingsResponseBodyTypeName = {
-  Settings: "settings",
-} as const;
-export type ListTeamFlagSettingsResponseBodyTypeName = ClosedEnum<
-  typeof ListTeamFlagSettingsResponseBodyTypeName
->;
-
 export type ResponseBodyLabels = {
   label: string;
   value: string;
@@ -43,35 +36,42 @@ export type ResponseBodyLabels = {
 
 export type ResponseBodyAttributes = {
   key: string;
-  type: string;
   labels?: Array<ResponseBodyLabels> | undefined;
+  type: string;
 };
 
 export type ResponseBodyEntities = {
+  attributes: Array<ResponseBodyAttributes>;
   kind: string;
   label: string;
-  attributes: Array<ResponseBodyAttributes>;
 };
 
 export type ListTeamFlagSettingsResponseBodyMetadata = {
   activeFlagCount: number;
   archivedFlagCount: number;
-  segmentCount: number;
-  packSizeInBytes: number;
-  packRevision?: number | undefined;
   configUpdatedAt?: number | undefined;
+  packRevision?: number | undefined;
+  packSizeInBytes: number;
+  segmentCount: number;
 };
 
+export const ListTeamFlagSettingsResponseBodyTypeName = {
+  Settings: "settings",
+} as const;
+export type ListTeamFlagSettingsResponseBodyTypeName = ClosedEnum<
+  typeof ListTeamFlagSettingsResponseBodyTypeName
+>;
+
 export type ResponseBodyData = {
-  typeName: ListTeamFlagSettingsResponseBodyTypeName;
-  projectId: string;
-  ownerId?: string | undefined;
-  enabled: boolean;
-  environments: Array<string>;
-  entities: Array<ResponseBodyEntities>;
   createdAt?: number | undefined;
-  updatedAt?: number | undefined;
+  enabled: boolean;
+  entities: Array<ResponseBodyEntities>;
+  environments: Array<string>;
   metadata: ListTeamFlagSettingsResponseBodyMetadata;
+  ownerId?: string | undefined;
+  projectId: string;
+  typeName: ListTeamFlagSettingsResponseBodyTypeName;
+  updatedAt?: number | undefined;
 };
 
 export type ListTeamFlagSettingsResponseBodyPagination = {
@@ -120,11 +120,6 @@ export function listTeamFlagSettingsRequestToJSON(
 }
 
 /** @internal */
-export const ListTeamFlagSettingsResponseBodyTypeName$inboundSchema:
-  z.ZodNativeEnum<typeof ListTeamFlagSettingsResponseBodyTypeName> = z
-    .nativeEnum(ListTeamFlagSettingsResponseBodyTypeName);
-
-/** @internal */
 export const ResponseBodyLabels$inboundSchema: z.ZodType<
   ResponseBodyLabels,
   z.ZodTypeDef,
@@ -151,10 +146,10 @@ export const ResponseBodyAttributes$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   key: types.string(),
-  type: types.string(),
   labels: types.optional(
     z.array(z.lazy(() => ResponseBodyLabels$inboundSchema)),
   ),
+  type: types.string(),
 });
 
 export function responseBodyAttributesFromJSON(
@@ -173,9 +168,9 @@ export const ResponseBodyEntities$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  attributes: z.array(z.lazy(() => ResponseBodyAttributes$inboundSchema)),
   kind: types.string(),
   label: types.string(),
-  attributes: z.array(z.lazy(() => ResponseBodyAttributes$inboundSchema)),
 });
 
 export function responseBodyEntitiesFromJSON(
@@ -196,10 +191,10 @@ export const ListTeamFlagSettingsResponseBodyMetadata$inboundSchema: z.ZodType<
 > = z.object({
   activeFlagCount: types.number(),
   archivedFlagCount: types.number(),
-  segmentCount: types.number(),
-  packSizeInBytes: types.number(),
-  packRevision: types.optional(types.number()),
   configUpdatedAt: types.optional(types.number()),
+  packRevision: types.optional(types.number()),
+  packSizeInBytes: types.number(),
+  segmentCount: types.number(),
 });
 
 export function listTeamFlagSettingsResponseBodyMetadataFromJSON(
@@ -219,22 +214,27 @@ export function listTeamFlagSettingsResponseBodyMetadataFromJSON(
 }
 
 /** @internal */
+export const ListTeamFlagSettingsResponseBodyTypeName$inboundSchema:
+  z.ZodNativeEnum<typeof ListTeamFlagSettingsResponseBodyTypeName> = z
+    .nativeEnum(ListTeamFlagSettingsResponseBodyTypeName);
+
+/** @internal */
 export const ResponseBodyData$inboundSchema: z.ZodType<
   ResponseBodyData,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  typeName: ListTeamFlagSettingsResponseBodyTypeName$inboundSchema,
-  projectId: types.string(),
-  ownerId: types.optional(types.string()),
-  enabled: types.boolean(),
-  environments: z.array(types.string()),
-  entities: z.array(z.lazy(() => ResponseBodyEntities$inboundSchema)),
   createdAt: types.optional(types.number()),
-  updatedAt: types.optional(types.number()),
+  enabled: types.boolean(),
+  entities: z.array(z.lazy(() => ResponseBodyEntities$inboundSchema)),
+  environments: z.array(types.string()),
   metadata: z.lazy(() =>
     ListTeamFlagSettingsResponseBodyMetadata$inboundSchema
   ),
+  ownerId: types.optional(types.string()),
+  projectId: types.string(),
+  typeName: ListTeamFlagSettingsResponseBodyTypeName$inboundSchema,
+  updatedAt: types.optional(types.number()),
 });
 
 export function responseBodyDataFromJSON(

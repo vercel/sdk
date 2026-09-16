@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Passport } from "@vercel/sdk/models/usereventpayloadnext.js";
+import { Passport } from "@vercel/sdk/models/payloadnext.js";
 
 let value: Passport = {
   connectorId: "<id>",
@@ -16,4 +16,4 @@ let value: Passport = {
 | Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
 | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
 | `connectorId`                                                                              | *string*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
-| `deploymentType`                                                                           | [models.UserEventPayload225DeploymentType](../models/usereventpayload225deploymenttype.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `deploymentType`                                                                           | [models.UserEventPayload226DeploymentType](../models/usereventpayload226deploymenttype.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |

@@ -3,11 +3,10 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyProjectsAlias } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson3action.js";
+import { GetProjectsResponseBodyProjectsAlias } from "@vercel/sdk/models/getprojectsresponsebodyprojectsconsolidatedgitcommitstatus.js";
 
 let value: GetProjectsResponseBodyProjectsAlias = {
   deployment: {
-    id: "<id>",
     createdAt: 7546.47,
     createdIn: "<value>",
     creator: {
@@ -16,6 +15,7 @@ let value: GetProjectsResponseBodyProjectsAlias = {
       username: "Sally.Beier",
     },
     deploymentHostname: "<value>",
+    id: "<id>",
     name: "<value>",
     plan: "enterprise",
     previewCommentsEnabled: false,

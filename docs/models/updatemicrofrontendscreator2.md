@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsCreator2 } from "@vercel/sdk/models/updatemicrofrontendsprojectsfunctiondefaultmemorytype.js";
+import { UpdateMicrofrontendsCreator2 } from "@vercel/sdk/models/updatemicrofrontendshaskey.js";
 
 let value: UpdateMicrofrontendsCreator2 = {
-  type: "app",
   app: {
     id: "<id>",
   },
+  type: "app",
 };
 ```
 
@@ -17,5 +17,5 @@ let value: UpdateMicrofrontendsCreator2 = {
 
 | Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
 | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `type`                                                                               | *"app"*                                                                              | :heavy_check_mark:                                                                   | N/A                                                                                  |
 | `app`                                                                                | [models.UpdateMicrofrontendsCreatorApp](../models/updatemicrofrontendscreatorapp.md) | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `type`                                                                               | *"app"*                                                                              | :heavy_check_mark:                                                                   | N/A                                                                                  |

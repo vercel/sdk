@@ -5,19 +5,29 @@
 ## Example Usage
 
 ```typescript
-import { UpdateProjectGitSources } from "@vercel/sdk/models/updateprojectresponsebody.js";
+import { UpdateProjectGitSources } from "@vercel/sdk/models/updateprojectprojectsresponse200applicationjsonaction.js";
 
 let value: UpdateProjectGitSources = {
-  sources: [],
-  enabled: false,
-  environments: [],
+  enabled: true,
+  environments: [
+    {
+      target: "production",
+      type: "system",
+    },
+  ],
+  sources: [
+    {
+      namespace: "<value>",
+      provider: "gitlab",
+    },
+  ],
 };
 ```
 
 ## Fields
 
-| Field                                | Type                                 | Required                             | Description                          |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `sources`                            | *models.UpdateProjectSources*[]      | :heavy_check_mark:                   | N/A                                  |
-| `enabled`                            | *boolean*                            | :heavy_check_mark:                   | N/A                                  |
-| `environments`                       | *models.UpdateProjectEnvironments*[] | :heavy_check_mark:                   | N/A                                  |
+| Field                                        | Type                                         | Required                                     | Description                                  |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| `enabled`                                    | *boolean*                                    | :heavy_check_mark:                           | N/A                                          |
+| `environments`                               | *models.UpdateProjectProjectsEnvironments*[] | :heavy_check_mark:                           | N/A                                          |
+| `sources`                                    | *models.UpdateProjectProjectsSources*[]      | :heavy_check_mark:                           | N/A                                          |

@@ -3,14 +3,14 @@
 ## Example Usage
 
 ```typescript
-import { UpdateProjectProtectionBypass1 } from "@vercel/sdk/models/updateprojecttrafficsources.js";
+import { UpdateProjectProtectionBypass1 } from "@vercel/sdk/models/updateprojectprojectsresponse200applicationjsonaction.js";
 
 let value: UpdateProjectProtectionBypass1 = {
+  configurationId: "<id>",
   createdAt: 4219.97,
   createdBy: "<value>",
-  scope: "integration-automation-bypass",
   integrationId: "<id>",
-  configurationId: "<id>",
+  scope: "integration-automation-bypass",
 };
 ```
 
@@ -18,8 +18,8 @@ let value: UpdateProjectProtectionBypass1 = {
 
 | Field                             | Type                              | Required                          | Description                       |
 | --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| `configurationId`                 | *string*                          | :heavy_check_mark:                | N/A                               |
 | `createdAt`                       | *number*                          | :heavy_check_mark:                | N/A                               |
 | `createdBy`                       | *string*                          | :heavy_check_mark:                | N/A                               |
-| `scope`                           | *"integration-automation-bypass"* | :heavy_check_mark:                | N/A                               |
 | `integrationId`                   | *string*                          | :heavy_check_mark:                | N/A                               |
-| `configurationId`                 | *string*                          | :heavy_check_mark:                | N/A                               |
+| `scope`                           | *"integration-automation-bypass"* | :heavy_check_mark:                | N/A                               |

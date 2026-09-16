@@ -98,129 +98,6 @@ export type UpdateSharedEnvVariableRequest = {
   requestBody?: UpdateSharedEnvVariableRequestBody | undefined;
 };
 
-/**
- * The type of this cosmos doc instance, if blank, assume secret.
- */
-export const UpdateSharedEnvVariableEnvironmentType = {
-  Encrypted: "encrypted",
-  Plain: "plain",
-  Sensitive: "sensitive",
-  System: "system",
-} as const;
-/**
- * The type of this cosmos doc instance, if blank, assume secret.
- */
-export type UpdateSharedEnvVariableEnvironmentType = ClosedEnum<
-  typeof UpdateSharedEnvVariableEnvironmentType
->;
-
-/**
- * environments this env variable targets
- */
-export const UpdateSharedEnvVariableEnvironmentTarget = {
-  Development: "development",
-  Preview: "preview",
-  Production: "production",
-} as const;
-/**
- * environments this env variable targets
- */
-export type UpdateSharedEnvVariableEnvironmentTarget = ClosedEnum<
-  typeof UpdateSharedEnvVariableEnvironmentTarget
->;
-
-export type Updated = {
-  /**
-   * The date when the Shared Env Var was created.
-   */
-  created?: Date | undefined;
-  /**
-   * The name of the Shared Env Var.
-   */
-  key?: string | undefined;
-  /**
-   * The unique identifier of the owner (team) the Shared Env Var was created for.
-   */
-  ownerId?: string | null | undefined;
-  /**
-   * The unique identifier of the Shared Env Var.
-   */
-  id?: string | undefined;
-  /**
-   * The unique identifier of the user who created the Shared Env Var.
-   */
-  createdBy?: string | null | undefined;
-  /**
-   * The unique identifier of the user who deleted the Shared Env Var.
-   */
-  deletedBy?: string | null | undefined;
-  /**
-   * The unique identifier of the user who last updated the Shared Env Var.
-   */
-  updatedBy?: string | null | undefined;
-  /**
-   * Timestamp for when the Shared Env Var was created.
-   */
-  createdAt?: number | undefined;
-  /**
-   * Timestamp for when the Shared Env Var was (soft) deleted.
-   */
-  deletedAt?: number | undefined;
-  /**
-   * Timestamp for when the Shared Env Var was last updated.
-   */
-  updatedAt?: number | undefined;
-  /**
-   * The value of the Shared Env Var.
-   */
-  value?: string | undefined;
-  /**
-   * The unique identifiers of the projects which the Shared Env Var is linked to.
-   */
-  projectId?: Array<string> | undefined;
-  /**
-   * The type of this cosmos doc instance, if blank, assume secret.
-   */
-  type?: UpdateSharedEnvVariableEnvironmentType | undefined;
-  /**
-   * environments this env variable targets
-   */
-  target?: Array<UpdateSharedEnvVariableEnvironmentTarget> | undefined;
-  /**
-   * whether or not this env varible applies to custom environments
-   */
-  applyToAllCustomEnvironments?: boolean | undefined;
-  /**
-   * The custom environment IDs that this Shared Env Var is scoped to.
-   */
-  customEnvironmentIds?: Array<string> | undefined;
-  /**
-   * whether or not this env variable is decrypted
-   */
-  decrypted?: boolean | undefined;
-  /**
-   * A user provided comment that describes what this Shared Env Var is for.
-   */
-  comment?: string | undefined;
-  /**
-   * The last editor full name or username.
-   */
-  lastEditedByDisplayName?: string | undefined;
-};
-
-export const UpdateSharedEnvVariableValue2 = {
-  Development: "development",
-  Preview: "preview",
-  Production: "production",
-} as const;
-export type UpdateSharedEnvVariableValue2 = ClosedEnum<
-  typeof UpdateSharedEnvVariableValue2
->;
-
-export type UpdateSharedEnvVariableValue =
-  | string
-  | Array<UpdateSharedEnvVariableValue2>;
-
 export const UpdateSharedEnvVariableTarget2 = {
   Development: "development",
   Preview: "preview",
@@ -243,30 +120,153 @@ export type UpdateSharedEnvVariableEnvironmentResponseTarget =
   | Array<UpdateSharedEnvVariableTarget1>
   | UpdateSharedEnvVariableTarget2;
 
+export const UpdateSharedEnvVariableValue2 = {
+  Development: "development",
+  Preview: "preview",
+  Production: "production",
+} as const;
+export type UpdateSharedEnvVariableValue2 = ClosedEnum<
+  typeof UpdateSharedEnvVariableValue2
+>;
+
+export type UpdateSharedEnvVariableValue =
+  | string
+  | Array<UpdateSharedEnvVariableValue2>;
+
 export type UpdateSharedEnvVariableError = {
+  action?: string | undefined;
   code: string;
-  message: string;
-  key?: string | undefined;
   envVarId?: string | undefined;
   envVarKey?: string | undefined;
-  action?: string | undefined;
-  link?: string | undefined;
-  value?: string | Array<UpdateSharedEnvVariableValue2> | undefined;
   gitBranch?: string | undefined;
+  key?: string | undefined;
+  link?: string | undefined;
+  message: string;
+  project?: string | undefined;
   target?:
     | Array<UpdateSharedEnvVariableTarget1>
     | UpdateSharedEnvVariableTarget2
     | undefined;
-  project?: string | undefined;
+  value?: string | Array<UpdateSharedEnvVariableValue2> | undefined;
 };
 
 export type UpdateSharedEnvVariableFailed = {
   error: UpdateSharedEnvVariableError;
 };
 
+/**
+ * environments this env variable targets
+ */
+export const UpdateSharedEnvVariableEnvironmentTarget = {
+  Development: "development",
+  Preview: "preview",
+  Production: "production",
+} as const;
+/**
+ * environments this env variable targets
+ */
+export type UpdateSharedEnvVariableEnvironmentTarget = ClosedEnum<
+  typeof UpdateSharedEnvVariableEnvironmentTarget
+>;
+
+/**
+ * The type of this cosmos doc instance, if blank, assume secret.
+ */
+export const UpdateSharedEnvVariableEnvironmentType = {
+  Encrypted: "encrypted",
+  Plain: "plain",
+  Sensitive: "sensitive",
+  System: "system",
+} as const;
+/**
+ * The type of this cosmos doc instance, if blank, assume secret.
+ */
+export type UpdateSharedEnvVariableEnvironmentType = ClosedEnum<
+  typeof UpdateSharedEnvVariableEnvironmentType
+>;
+
+export type Updated = {
+  /**
+   * whether or not this env varible applies to custom environments
+   */
+  applyToAllCustomEnvironments?: boolean | undefined;
+  /**
+   * A user provided comment that describes what this Shared Env Var is for.
+   */
+  comment?: string | undefined;
+  /**
+   * The date when the Shared Env Var was created.
+   */
+  created?: Date | undefined;
+  /**
+   * Timestamp for when the Shared Env Var was created.
+   */
+  createdAt?: number | undefined;
+  /**
+   * The unique identifier of the user who created the Shared Env Var.
+   */
+  createdBy?: string | null | undefined;
+  /**
+   * The custom environment IDs that this Shared Env Var is scoped to.
+   */
+  customEnvironmentIds?: Array<string> | undefined;
+  /**
+   * whether or not this env variable is decrypted
+   */
+  decrypted?: boolean | undefined;
+  /**
+   * Timestamp for when the Shared Env Var was (soft) deleted.
+   */
+  deletedAt?: number | undefined;
+  /**
+   * The unique identifier of the user who deleted the Shared Env Var.
+   */
+  deletedBy?: string | null | undefined;
+  /**
+   * The unique identifier of the Shared Env Var.
+   */
+  id?: string | undefined;
+  /**
+   * The name of the Shared Env Var.
+   */
+  key?: string | undefined;
+  /**
+   * The last editor full name or username.
+   */
+  lastEditedByDisplayName?: string | undefined;
+  /**
+   * The unique identifier of the owner (team) the Shared Env Var was created for.
+   */
+  ownerId?: string | null | undefined;
+  /**
+   * The unique identifiers of the projects which the Shared Env Var is linked to.
+   */
+  projectId?: Array<string> | undefined;
+  /**
+   * environments this env variable targets
+   */
+  target?: Array<UpdateSharedEnvVariableEnvironmentTarget> | undefined;
+  /**
+   * The type of this cosmos doc instance, if blank, assume secret.
+   */
+  type?: UpdateSharedEnvVariableEnvironmentType | undefined;
+  /**
+   * Timestamp for when the Shared Env Var was last updated.
+   */
+  updatedAt?: number | undefined;
+  /**
+   * The unique identifier of the user who last updated the Shared Env Var.
+   */
+  updatedBy?: string | null | undefined;
+  /**
+   * The value of the Shared Env Var.
+   */
+  value?: string | undefined;
+};
+
 export type UpdateSharedEnvVariableResponseBody = {
-  updated: Array<Updated>;
   failed: Array<UpdateSharedEnvVariableFailed>;
+  updated: Array<Updated>;
 };
 
 /** @internal */
@@ -391,78 +391,6 @@ export function updateSharedEnvVariableRequestToJSON(
 }
 
 /** @internal */
-export const UpdateSharedEnvVariableEnvironmentType$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateSharedEnvVariableEnvironmentType> = z.nativeEnum(
-    UpdateSharedEnvVariableEnvironmentType,
-  );
-
-/** @internal */
-export const UpdateSharedEnvVariableEnvironmentTarget$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateSharedEnvVariableEnvironmentTarget> = z
-    .nativeEnum(UpdateSharedEnvVariableEnvironmentTarget);
-
-/** @internal */
-export const Updated$inboundSchema: z.ZodType<Updated, z.ZodTypeDef, unknown> =
-  z.object({
-    created: types.optional(types.date()),
-    key: types.optional(types.string()),
-    ownerId: z.nullable(types.string()).optional(),
-    id: types.optional(types.string()),
-    createdBy: z.nullable(types.string()).optional(),
-    deletedBy: z.nullable(types.string()).optional(),
-    updatedBy: z.nullable(types.string()).optional(),
-    createdAt: types.optional(types.number()),
-    deletedAt: types.optional(types.number()),
-    updatedAt: types.optional(types.number()),
-    value: types.optional(types.string()),
-    projectId: types.optional(z.array(types.string())),
-    type: types.optional(UpdateSharedEnvVariableEnvironmentType$inboundSchema),
-    target: types.optional(
-      z.array(UpdateSharedEnvVariableEnvironmentTarget$inboundSchema),
-    ),
-    applyToAllCustomEnvironments: types.optional(types.boolean()),
-    customEnvironmentIds: types.optional(z.array(types.string())),
-    decrypted: types.optional(types.boolean()),
-    comment: types.optional(types.string()),
-    lastEditedByDisplayName: types.optional(types.string()),
-  });
-
-export function updatedFromJSON(
-  jsonString: string,
-): SafeParseResult<Updated, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Updated$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Updated' from JSON`,
-  );
-}
-
-/** @internal */
-export const UpdateSharedEnvVariableValue2$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateSharedEnvVariableValue2
-> = z.nativeEnum(UpdateSharedEnvVariableValue2);
-
-/** @internal */
-export const UpdateSharedEnvVariableValue$inboundSchema: z.ZodType<
-  UpdateSharedEnvVariableValue,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  types.string(),
-  z.array(UpdateSharedEnvVariableValue2$inboundSchema),
-]);
-
-export function updateSharedEnvVariableValueFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateSharedEnvVariableValue, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateSharedEnvVariableValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateSharedEnvVariableValue' from JSON`,
-  );
-}
-
-/** @internal */
 export const UpdateSharedEnvVariableTarget2$inboundSchema: z.ZodNativeEnum<
   typeof UpdateSharedEnvVariableTarget2
 > = z.nativeEnum(UpdateSharedEnvVariableTarget2);
@@ -500,32 +428,57 @@ export function updateSharedEnvVariableEnvironmentResponseTargetFromJSON(
 }
 
 /** @internal */
+export const UpdateSharedEnvVariableValue2$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateSharedEnvVariableValue2
+> = z.nativeEnum(UpdateSharedEnvVariableValue2);
+
+/** @internal */
+export const UpdateSharedEnvVariableValue$inboundSchema: z.ZodType<
+  UpdateSharedEnvVariableValue,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  types.string(),
+  z.array(UpdateSharedEnvVariableValue2$inboundSchema),
+]);
+
+export function updateSharedEnvVariableValueFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateSharedEnvVariableValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateSharedEnvVariableValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateSharedEnvVariableValue' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateSharedEnvVariableError$inboundSchema: z.ZodType<
   UpdateSharedEnvVariableError,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  action: types.optional(types.string()),
   code: types.string(),
-  message: types.string(),
-  key: types.optional(types.string()),
   envVarId: types.optional(types.string()),
   envVarKey: types.optional(types.string()),
-  action: types.optional(types.string()),
-  link: types.optional(types.string()),
-  value: types.optional(
-    smartUnion([
-      types.string(),
-      z.array(UpdateSharedEnvVariableValue2$inboundSchema),
-    ]),
-  ),
   gitBranch: types.optional(types.string()),
+  key: types.optional(types.string()),
+  link: types.optional(types.string()),
+  message: types.string(),
+  project: types.optional(types.string()),
   target: types.optional(
     smartUnion([
       z.array(UpdateSharedEnvVariableTarget1$inboundSchema),
       UpdateSharedEnvVariableTarget2$inboundSchema,
     ]),
   ),
-  project: types.optional(types.string()),
+  value: types.optional(
+    smartUnion([
+      types.string(),
+      z.array(UpdateSharedEnvVariableValue2$inboundSchema),
+    ]),
+  ),
 });
 
 export function updateSharedEnvVariableErrorFromJSON(
@@ -558,13 +511,60 @@ export function updateSharedEnvVariableFailedFromJSON(
 }
 
 /** @internal */
+export const UpdateSharedEnvVariableEnvironmentTarget$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateSharedEnvVariableEnvironmentTarget> = z
+    .nativeEnum(UpdateSharedEnvVariableEnvironmentTarget);
+
+/** @internal */
+export const UpdateSharedEnvVariableEnvironmentType$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateSharedEnvVariableEnvironmentType> = z.nativeEnum(
+    UpdateSharedEnvVariableEnvironmentType,
+  );
+
+/** @internal */
+export const Updated$inboundSchema: z.ZodType<Updated, z.ZodTypeDef, unknown> =
+  z.object({
+    applyToAllCustomEnvironments: types.optional(types.boolean()),
+    comment: types.optional(types.string()),
+    created: types.optional(types.date()),
+    createdAt: types.optional(types.number()),
+    createdBy: z.nullable(types.string()).optional(),
+    customEnvironmentIds: types.optional(z.array(types.string())),
+    decrypted: types.optional(types.boolean()),
+    deletedAt: types.optional(types.number()),
+    deletedBy: z.nullable(types.string()).optional(),
+    id: types.optional(types.string()),
+    key: types.optional(types.string()),
+    lastEditedByDisplayName: types.optional(types.string()),
+    ownerId: z.nullable(types.string()).optional(),
+    projectId: types.optional(z.array(types.string())),
+    target: types.optional(
+      z.array(UpdateSharedEnvVariableEnvironmentTarget$inboundSchema),
+    ),
+    type: types.optional(UpdateSharedEnvVariableEnvironmentType$inboundSchema),
+    updatedAt: types.optional(types.number()),
+    updatedBy: z.nullable(types.string()).optional(),
+    value: types.optional(types.string()),
+  });
+
+export function updatedFromJSON(
+  jsonString: string,
+): SafeParseResult<Updated, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Updated$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Updated' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateSharedEnvVariableResponseBody$inboundSchema: z.ZodType<
   UpdateSharedEnvVariableResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  updated: z.array(z.lazy(() => Updated$inboundSchema)),
   failed: z.array(z.lazy(() => UpdateSharedEnvVariableFailed$inboundSchema)),
+  updated: z.array(z.lazy(() => Updated$inboundSchema)),
 });
 
 export function updateSharedEnvVariableResponseBodyFromJSON(

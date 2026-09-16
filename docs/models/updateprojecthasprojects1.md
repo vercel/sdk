@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { UpdateProjectHasProjects1 } from "@vercel/sdk/models/updateprojectresponsebody.js";
+import { UpdateProjectHasProjects1 } from "@vercel/sdk/models/updateprojectdefinitions.js";
 
 let value: UpdateProjectHasProjects1 = {
-  type: "header",
   key: "x-vercel-ip-country",
+  type: "header",
   value: {
     eq: "<value>",
   },
@@ -18,6 +18,6 @@ let value: UpdateProjectHasProjects1 = {
 
 | Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `type`                                                                                             | *"header"*                                                                                         | :heavy_check_mark:                                                                                 | N/A                                                                                                |
 | `key`                                                                                              | [models.UpdateProjectHasProjectsKey](../models/updateprojecthasprojectskey.md)                     | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `type`                                                                                             | *"header"*                                                                                         | :heavy_check_mark:                                                                                 | N/A                                                                                                |
 | `value`                                                                                            | [models.UpdateProjectHasProjectsResponseValue](../models/updateprojecthasprojectsresponsevalue.md) | :heavy_check_mark:                                                                                 | N/A                                                                                                |

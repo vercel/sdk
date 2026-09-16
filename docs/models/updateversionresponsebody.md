@@ -7,10 +7,10 @@ import { UpdateVersionResponseBody } from "@vercel/sdk/models/updateversionop.js
 
 let value: UpdateVersionResponseBody = {
   version: {
+    createdBy: "<value>",
     id: "<id>",
     key: "<key>",
     lastModified: 9961.33,
-    createdBy: "<value>",
   },
 };
 ```

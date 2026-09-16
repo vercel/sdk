@@ -3,12 +3,12 @@
 ## Example Usage
 
 ```typescript
-import { RemovedMembership } from "@vercel/sdk/models/twohundredandeightyone.js";
+import { RemovedMembership } from "@vercel/sdk/models/usereventpayloadgitprovider.js";
 
 let value: RemovedMembership = {
-  role: "ADMIN",
+  createdAt: 1430.49,
+  role: "PROJECT_VIEWER",
   uid: "<id>",
-  createdAt: 9038.16,
 };
 ```
 
@@ -16,7 +16,7 @@ let value: RemovedMembership = {
 
 | Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `role`                                                                 | [models.UserEventPayload287Role](../models/usereventpayload287role.md) | :heavy_check_mark:                                                     | N/A                                                                    |
-| `uid`                                                                  | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
 | `createdAt`                                                            | *number*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `role`                                                                 | [models.UserEventPayload290Role](../models/usereventpayload290role.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| `uid`                                                                  | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
 | `username`                                                             | *string*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |

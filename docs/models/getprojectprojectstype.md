@@ -1,17 +1,15 @@
 # GetProjectProjectsType
 
-The type of environment (production, preview, or development)
-
 ## Example Usage
 
 ```typescript
-import { GetProjectProjectsType } from "@vercel/sdk/models/getprojectrollingrelease.js";
+import { GetProjectProjectsType } from "@vercel/sdk/models/getprojecthas2.js";
 
-let value: GetProjectProjectsType = "preview";
+let value: GetProjectProjectsType = "secret";
 ```
 
 ## Values
 
 ```typescript
-"development" | "preview" | "production"
+"encrypted" | "plain" | "secret" | "sensitive" | "system"
 ```

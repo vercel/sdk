@@ -7,8 +7,8 @@
 
 ```typescript
 const value: models.FilterProjectEnvsContentHint1 = {
-  type: "redis-url",
   storeId: "<id>",
+  type: "redis-url",
 };
 ```
 
@@ -16,8 +16,8 @@ const value: models.FilterProjectEnvsContentHint1 = {
 
 ```typescript
 const value: models.FilterProjectEnvsContentHint2 = {
-  type: "redis-rest-api-url",
   storeId: "<id>",
+  type: "redis-rest-api-url",
 };
 ```
 
@@ -25,8 +25,8 @@ const value: models.FilterProjectEnvsContentHint2 = {
 
 ```typescript
 const value: models.FilterProjectEnvsContentHint3 = {
-  type: "redis-rest-api-token",
   storeId: "<id>",
+  type: "redis-rest-api-token",
 };
 ```
 
@@ -34,8 +34,8 @@ const value: models.FilterProjectEnvsContentHint3 = {
 
 ```typescript
 const value: models.FilterProjectEnvsContentHint4 = {
-  type: "redis-rest-api-read-only-token",
   storeId: "<id>",
+  type: "redis-rest-api-read-only-token",
 };
 ```
 
@@ -43,8 +43,8 @@ const value: models.FilterProjectEnvsContentHint4 = {
 
 ```typescript
 const value: models.FilterProjectEnvsContentHint5 = {
-  type: "blob-read-write-token",
   storeId: "<id>",
+  type: "blob-read-write-token",
 };
 ```
 
@@ -52,8 +52,8 @@ const value: models.FilterProjectEnvsContentHint5 = {
 
 ```typescript
 const value: models.FilterProjectEnvsContentHint6 = {
-  type: "blob-store-id",
   storeId: "<id>",
+  type: "blob-store-id",
 };
 ```
 
@@ -61,8 +61,8 @@ const value: models.FilterProjectEnvsContentHint6 = {
 
 ```typescript
 const value: models.FilterProjectEnvsContentHint7 = {
-  type: "blob-webhook-public-key",
   storeId: "<id>",
+  type: "blob-webhook-public-key",
 };
 ```
 
@@ -70,8 +70,8 @@ const value: models.FilterProjectEnvsContentHint7 = {
 
 ```typescript
 const value: models.FilterProjectEnvsContentHint8 = {
-  type: "postgres-url",
   storeId: "<id>",
+  type: "postgres-url",
 };
 ```
 
@@ -79,8 +79,8 @@ const value: models.FilterProjectEnvsContentHint8 = {
 
 ```typescript
 const value: models.FilterProjectEnvsContentHint9 = {
-  type: "postgres-url-non-pooling",
   storeId: "<id>",
+  type: "postgres-url-non-pooling",
 };
 ```
 
@@ -88,8 +88,8 @@ const value: models.FilterProjectEnvsContentHint9 = {
 
 ```typescript
 const value: models.FilterProjectEnvsContentHint10 = {
-  type: "postgres-prisma-url",
   storeId: "<id>",
+  type: "postgres-prisma-url",
 };
 ```
 
@@ -97,8 +97,8 @@ const value: models.FilterProjectEnvsContentHint10 = {
 
 ```typescript
 const value: models.FilterProjectEnvsContentHint11 = {
-  type: "postgres-user",
   storeId: "<id>",
+  type: "postgres-user",
 };
 ```
 
@@ -106,8 +106,8 @@ const value: models.FilterProjectEnvsContentHint11 = {
 
 ```typescript
 const value: models.FilterProjectEnvsContentHint12 = {
-  type: "postgres-host",
   storeId: "<id>",
+  type: "postgres-host",
 };
 ```
 
@@ -115,8 +115,8 @@ const value: models.FilterProjectEnvsContentHint12 = {
 
 ```typescript
 const value: models.FilterProjectEnvsContentHint13 = {
-  type: "postgres-password",
   storeId: "<id>",
+  type: "postgres-password",
 };
 ```
 
@@ -124,8 +124,8 @@ const value: models.FilterProjectEnvsContentHint13 = {
 
 ```typescript
 const value: models.FilterProjectEnvsContentHint14 = {
-  type: "postgres-database",
   storeId: "<id>",
+  type: "postgres-database",
 };
 ```
 
@@ -133,8 +133,8 @@ const value: models.FilterProjectEnvsContentHint14 = {
 
 ```typescript
 const value: models.FilterProjectEnvsContentHint15 = {
-  type: "postgres-url-no-ssl",
   storeId: "<id>",
+  type: "postgres-url-no-ssl",
 };
 ```
 
@@ -142,11 +142,11 @@ const value: models.FilterProjectEnvsContentHint15 = {
 
 ```typescript
 const value: models.FilterProjectEnvsContentHint16 = {
-  type: "integration-store-secret",
-  storeId: "<id>",
+  integrationConfigurationId: "<id>",
   integrationId: "<id>",
   integrationProductId: "<id>",
-  integrationConfigurationId: "<id>",
+  storeId: "<id>",
+  type: "integration-store-secret",
 };
 ```
 
@@ -154,8 +154,8 @@ const value: models.FilterProjectEnvsContentHint16 = {
 
 ```typescript
 const value: models.FilterProjectEnvsContentHint17 = {
-  type: "flags-connection-string",
   projectId: "<id>",
+  type: "flags-connection-string",
 };
 ```
 

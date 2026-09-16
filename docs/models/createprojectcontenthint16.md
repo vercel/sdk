@@ -3,14 +3,14 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectContentHint16 } from "@vercel/sdk/models/createprojectpasswordprotection.js";
+import { CreateProjectContentHint16 } from "@vercel/sdk/models/createprojectcontenthint2.js";
 
 let value: CreateProjectContentHint16 = {
-  type: "integration-store-secret",
-  storeId: "<id>",
+  integrationConfigurationId: "<id>",
   integrationId: "<id>",
   integrationProductId: "<id>",
-  integrationConfigurationId: "<id>",
+  storeId: "<id>",
+  type: "integration-store-secret",
 };
 ```
 
@@ -18,8 +18,8 @@ let value: CreateProjectContentHint16 = {
 
 | Field                        | Type                         | Required                     | Description                  |
 | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-| `type`                       | *"integration-store-secret"* | :heavy_check_mark:           | N/A                          |
-| `storeId`                    | *string*                     | :heavy_check_mark:           | N/A                          |
+| `integrationConfigurationId` | *string*                     | :heavy_check_mark:           | N/A                          |
 | `integrationId`              | *string*                     | :heavy_check_mark:           | N/A                          |
 | `integrationProductId`       | *string*                     | :heavy_check_mark:           | N/A                          |
-| `integrationConfigurationId` | *string*                     | :heavy_check_mark:           | N/A                          |
+| `storeId`                    | *string*                     | :heavy_check_mark:           | N/A                          |
+| `type`                       | *"integration-store-secret"* | :heavy_check_mark:           | N/A                          |

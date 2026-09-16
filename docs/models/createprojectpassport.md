@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectPassport } from "@vercel/sdk/models/createprojecthasprojectsresponse1.js";
+import { CreateProjectPassport } from "@vercel/sdk/models/createprojecttargets.js";
 
 let value: CreateProjectPassport = {
-  deploymentType: "all_except_custom_domains",
   connectorId: "<id>",
+  deploymentType: "all_except_custom_domains",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: CreateProjectPassport = {
 
 | Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
 | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `deploymentType`                                                                               | [models.CreateProjectProjectsDeploymentType](../models/createprojectprojectsdeploymenttype.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |
 | `connectorId`                                                                                  | *string*                                                                                       | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| `deploymentType`                                                                               | [models.CreateProjectProjectsDeploymentType](../models/createprojectprojectsdeploymenttype.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |

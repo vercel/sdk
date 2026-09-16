@@ -5,13 +5,13 @@ Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures 
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupVia1 } from "@vercel/sdk/models/getmicrofrontendsingroupbuildmachinetype.js";
+import { GetMicrofrontendsInGroupVia1 } from "@vercel/sdk/models/getmicrofrontendsingrouphasvalue.js";
 
 let value: GetMicrofrontendsInGroupVia1 = {
-  type: "app",
   app: {
     id: "<id>",
   },
+  type: "app",
 };
 ```
 
@@ -19,5 +19,5 @@ let value: GetMicrofrontendsInGroupVia1 = {
 
 | Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
 | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `type`                                                                               | *"app"*                                                                              | :heavy_check_mark:                                                                   | N/A                                                                                  |
 | `app`                                                                                | [models.GetMicrofrontendsInGroupViaApp](../models/getmicrofrontendsingroupviaapp.md) | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `type`                                                                               | *"app"*                                                                              | :heavy_check_mark:                                                                   | N/A                                                                                  |

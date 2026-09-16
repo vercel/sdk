@@ -8,8 +8,8 @@ Information of the user who created the alias
 import { GetAliasCreator } from "@vercel/sdk/models/getaliasop.js";
 
 let value: GetAliasCreator = {
-  uid: "96SnxkFiMyVKsK3pnoHfx3Hz",
   email: "john-doe@gmail.com",
+  uid: "96SnxkFiMyVKsK3pnoHfx3Hz",
   username: "john-doe",
 };
 ```
@@ -18,6 +18,6 @@ let value: GetAliasCreator = {
 
 | Field                                      | Type                                       | Required                                   | Description                                | Example                                    |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `uid`                                      | *string*                                   | :heavy_check_mark:                         | ID of the user who created the alias       | 96SnxkFiMyVKsK3pnoHfx3Hz                   |
 | `email`                                    | *string*                                   | :heavy_minus_sign:                         | Email of the user who created the alias    | john-doe@gmail.com                         |
+| `uid`                                      | *string*                                   | :heavy_check_mark:                         | ID of the user who created the alias       | 96SnxkFiMyVKsK3pnoHfx3Hz                   |
 | `username`                                 | *string*                                   | :heavy_minus_sign:                         | Username of the user who created the alias | john-doe                                   |

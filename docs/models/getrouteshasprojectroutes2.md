@@ -6,8 +6,8 @@
 import { GetRoutesHasProjectRoutes2 } from "@vercel/sdk/models/getroutesop.js";
 
 let value: GetRoutesHasProjectRoutes2 = {
-  type: "header",
   key: "<key>",
+  type: "header",
 };
 ```
 
@@ -15,6 +15,6 @@ let value: GetRoutesHasProjectRoutes2 = {
 
 | Field                                                                                                    | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
 | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| `type`                                                                                                   | [models.GetRoutesHasProjectRoutesResponse200Type](../models/getrouteshasprojectroutesresponse200type.md) | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
 | `key`                                                                                                    | *string*                                                                                                 | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
+| `type`                                                                                                   | [models.GetRoutesHasProjectRoutesResponse200Type](../models/getrouteshasprojectroutesresponse200type.md) | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
 | `value`                                                                                                  | *models.GetRoutesHasProjectRoutesResponse200Value*                                                       | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |

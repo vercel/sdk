@@ -15,11 +15,11 @@ const value: models.ListSessionsResponseBody1 = {};
 
 ```typescript
 const value: models.ListSessionsResponseBody2 = {
-  sessions: [],
   pagination: {
-    count: 4708.44,
+    count: 4334.62,
     next: "<value>",
   },
+  sessions: [],
 };
 ```
 

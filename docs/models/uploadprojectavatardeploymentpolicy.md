@@ -5,7 +5,7 @@ Project shape. `null` on a rule list clears the project's override for that rule
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarDeploymentPolicy } from "@vercel/sdk/models/uploadprojectavatarinternalroutes1.js";
+import { UploadProjectAvatarDeploymentPolicy } from "@vercel/sdk/models/uploadprojectavatarhasvalue.js";
 
 let value: UploadProjectAvatarDeploymentPolicy = {};
 ```
@@ -14,5 +14,5 @@ let value: UploadProjectAvatarDeploymentPolicy = {};
 
 | Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `gitSources`                                                                                       | [models.UploadProjectAvatarGitSources](../models/uploadprojectavatargitsources.md)[]               | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 | `deploymentSources`                                                                                | [models.UploadProjectAvatarDeploymentSources](../models/uploadprojectavatardeploymentsources.md)[] | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
+| `gitSources`                                                                                       | [models.UploadProjectAvatarGitSources](../models/uploadprojectavatargitsources.md)[]               | :heavy_minus_sign:                                                                                 | N/A                                                                                                |

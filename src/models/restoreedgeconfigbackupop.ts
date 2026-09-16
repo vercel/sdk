@@ -30,10 +30,10 @@ export type RestoreEdgeConfigBackupStatus = ClosedEnum<
 >;
 
 export type RestoreEdgeConfigBackupResponseBody = {
-  status: RestoreEdgeConfigBackupStatus;
-  restoredFrom: string;
-  previousDigest: string;
   digest: string;
+  previousDigest: string;
+  restoredFrom: string;
+  status: RestoreEdgeConfigBackupStatus;
 };
 
 /** @internal */
@@ -77,10 +77,10 @@ export const RestoreEdgeConfigBackupResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  status: RestoreEdgeConfigBackupStatus$inboundSchema,
-  restoredFrom: types.string(),
-  previousDigest: types.string(),
   digest: types.string(),
+  previousDigest: types.string(),
+  restoredFrom: types.string(),
+  status: RestoreEdgeConfigBackupStatus$inboundSchema,
 });
 
 export function restoreEdgeConfigBackupResponseBodyFromJSON(

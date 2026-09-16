@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectHas1 } from "@vercel/sdk/models/getprojectinternalroutesmitigate.js";
+import { GetProjectHas1 } from "@vercel/sdk/models/getprojectfrompreset.js";
 
 let value: GetProjectHas1 = {
-  type: "header",
   key: "x-vercel-ip-country",
+  type: "header",
   value: {
     eq: "<value>",
   },
@@ -18,6 +18,6 @@ let value: GetProjectHas1 = {
 
 | Field                                                        | Type                                                         | Required                                                     | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `type`                                                       | *"header"*                                                   | :heavy_check_mark:                                           | N/A                                                          |
 | `key`                                                        | [models.HasKey](../models/haskey.md)                         | :heavy_check_mark:                                           | N/A                                                          |
+| `type`                                                       | *"header"*                                                   | :heavy_check_mark:                                           | N/A                                                          |
 | `value`                                                      | [models.GetProjectHasValue](../models/getprojecthasvalue.md) | :heavy_check_mark:                                           | N/A                                                          |

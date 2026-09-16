@@ -10,8 +10,8 @@ import { GetBulkAvailabilityResponseBody } from "@vercel/sdk/models/getbulkavail
 let value: GetBulkAvailabilityResponseBody = {
   results: [
     {
-      domain: "wrathful-puppet.net",
-      available: true,
+      domain: "male-schedule.org",
+      available: false,
     },
   ],
 };
@@ -19,6 +19,6 @@ let value: GetBulkAvailabilityResponseBody = {
 
 ## Fields
 
-| Field                                    | Type                                     | Required                                 | Description                              |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| `results`                                | [models.Results](../models/results.md)[] | :heavy_check_mark:                       | N/A                                      |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `results`                                                                      | [models.GetBulkAvailabilityResults](../models/getbulkavailabilityresults.md)[] | :heavy_check_mark:                                                             | N/A                                                                            |

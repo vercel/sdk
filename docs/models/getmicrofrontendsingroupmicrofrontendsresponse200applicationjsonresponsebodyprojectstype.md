@@ -1,19 +1,21 @@
 # GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsType
 
+The type of matching to perform
+
 ## Example Usage
 
 ```typescript
 import {
   GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsType,
-} from "@vercel/sdk/models/getmicrofrontendsingroupbuildmachinetype.js";
+} from "@vercel/sdk/models/getmicrofrontendsingroupfrom1.js";
 
 let value:
   GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsType =
-    "flags-secret";
+    "startsWith";
 ```
 
 ## Values
 
 ```typescript
-"flags-secret"
+"endsWith" | "equals" | "startsWith"
 ```

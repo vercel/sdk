@@ -5,11 +5,11 @@ Configuration for matching git branches to this environment
 ## Example Usage
 
 ```typescript
-import { CustomEnvironmentBranchMatcher } from "@vercel/sdk/models/locale.js";
+import { CustomEnvironmentBranchMatcher } from "@vercel/sdk/models/canceldeploymentresourceconfig.js";
 
 let value: CustomEnvironmentBranchMatcher = {
-  type: "startsWith",
   pattern: "<value>",
+  type: "startsWith",
 };
 ```
 
@@ -17,5 +17,5 @@ let value: CustomEnvironmentBranchMatcher = {
 
 | Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `type`                                                                                             | [models.CancelDeploymentCustomEnvironmentType](../models/canceldeploymentcustomenvironmenttype.md) | :heavy_check_mark:                                                                                 | The type of matching to perform                                                                    |
 | `pattern`                                                                                          | *string*                                                                                           | :heavy_check_mark:                                                                                 | The pattern to match against branch names                                                          |
+| `type`                                                                                             | [models.CancelDeploymentCustomEnvironmentType](../models/canceldeploymentcustomenvironmenttype.md) | :heavy_check_mark:                                                                                 | The type of matching to perform                                                                    |

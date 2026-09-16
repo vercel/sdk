@@ -6,8 +6,8 @@
 import { DisabledProjects } from "@vercel/sdk/models/getobservabilityconfigurationprojectsop.js";
 
 let value: DisabledProjects = {
-  id: "<id>",
   disabledAt: 7450.06,
+  id: "<id>",
 };
 ```
 
@@ -15,6 +15,6 @@ let value: DisabledProjects = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
+| `disabledAt`       | *number*           | :heavy_check_mark: | N/A                |
 | `id`               | *string*           | :heavy_check_mark: | N/A                |
 | `name`             | *string*           | :heavy_minus_sign: | N/A                |
-| `disabledAt`       | *number*           | :heavy_check_mark: | N/A                |

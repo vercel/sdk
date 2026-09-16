@@ -62,8 +62,8 @@ export type ListSessionsResponseBodyPagination = {
 };
 
 export type ListSessionsResponseBody2 = {
-  sessions: Array<Session>;
   pagination: ListSessionsResponseBodyPagination;
+  sessions: Array<Session>;
 };
 
 export type ListSessionsResponseBody1 = {};
@@ -141,8 +141,8 @@ export const ListSessionsResponseBody2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  sessions: z.array(Session$inboundSchema),
   pagination: z.lazy(() => ListSessionsResponseBodyPagination$inboundSchema),
+  sessions: z.array(Session$inboundSchema),
 });
 
 export function listSessionsResponseBody2FromJSON(

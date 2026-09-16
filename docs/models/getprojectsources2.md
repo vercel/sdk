@@ -5,11 +5,11 @@ Allowlist entry for GitLab, which uses nested groups rather than a flat org/repo
 ## Example Usage
 
 ```typescript
-import { GetProjectSources2 } from "@vercel/sdk/models/getprojectinternalroutesmitigate.js";
+import { GetProjectSources2 } from "@vercel/sdk/models/getprojecthas2.js";
 
 let value: GetProjectSources2 = {
-  provider: "gitlab",
   namespace: "<value>",
+  provider: "gitlab",
 };
 ```
 
@@ -17,6 +17,6 @@ let value: GetProjectSources2 = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `provider`         | *"gitlab"*         | :heavy_check_mark: | N/A                |
 | `namespace`        | *string*           | :heavy_check_mark: | N/A                |
 | `project`          | *string*           | :heavy_minus_sign: | N/A                |
+| `provider`         | *"gitlab"*         | :heavy_check_mark: | N/A                |

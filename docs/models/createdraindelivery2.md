@@ -6,12 +6,12 @@
 import { CreateDrainDelivery2 } from "@vercel/sdk/models/createdrainop.js";
 
 let value: CreateDrainDelivery2 = {
-  type: "otlphttp",
+  encoding: "proto",
   endpoint: {
     traces: "<value>",
   },
-  encoding: "proto",
   headers: {},
+  type: "otlphttp",
 };
 ```
 
@@ -19,8 +19,8 @@ let value: CreateDrainDelivery2 = {
 
 | Field                                                                                                            | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
 | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `type`                                                                                                           | *"otlphttp"*                                                                                                     | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
-| `endpoint`                                                                                                       | [models.CreateDrainDeliveryDrainsEndpoint](../models/createdraindeliverydrainsendpoint.md)                       | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
 | `encoding`                                                                                                       | [models.CreateDrainDeliveryDrainsResponse200Encoding](../models/createdraindeliverydrainsresponse200encoding.md) | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
+| `endpoint`                                                                                                       | [models.CreateDrainDeliveryDrainsEndpoint](../models/createdraindeliverydrainsendpoint.md)                       | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
 | `headers`                                                                                                        | Record<string, *string*>                                                                                         | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
 | `secret`                                                                                                         | *models.DeliverySecret*                                                                                          | :heavy_minus_sign:                                                                                               | N/A                                                                                                              |
+| `type`                                                                                                           | *"otlphttp"*                                                                                                     | :heavy_check_mark:                                                                                               | N/A                                                                                                              |

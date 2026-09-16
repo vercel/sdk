@@ -8,20 +8,25 @@ import { GetDrainsResponseBody } from "@vercel/sdk/models/getdrainsop.js";
 let value: GetDrainsResponseBody = {
   drains: [
     {
-      id: "<id>",
       createdAt: 639.21,
-      updatedAt: 2576.2,
+      delivery: {
+        encoding: "proto",
+        endpoint: {
+          traces: "<value>",
+        },
+        headers: {},
+        type: "otlphttp",
+      },
+      id: "<id>",
       name: "<value>",
       ownerId: "<id>",
       schemas: {},
-      delivery: {
-        type: "clickhouse",
-        endpoint: "<value>",
-        table: "<value>",
-      },
       source: {
-        kind: "self-served",
+        integrationConfigurationId: "<id>",
+        integrationId: "<id>",
+        kind: "integration",
       },
+      updatedAt: 6031.42,
     },
   ],
 };

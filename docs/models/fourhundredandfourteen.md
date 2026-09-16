@@ -5,22 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndFourteen } from "@vercel/sdk/models/fourhundredandnine.js";
+import { FourHundredAndFourteen } from "@vercel/sdk/models/threehundredandninetynine.js";
 
 let value: FourHundredAndFourteen = {
-  allowedMethods: [
-    "webauthn",
-  ],
-  firstFactor: "<value>",
-  flowId: "<id>",
+  actorId: "<id>",
+  actorType: "admin",
+  enabled: false,
 };
 ```
 
 ## Fields
 
-| Field                                                  | Type                                                   | Required                                               | Description                                            |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `allowedMethods`                                       | [models.AllowedMethods](../models/allowedmethods.md)[] | :heavy_check_mark:                                     | N/A                                                    |
-| `firstFactor`                                          | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
-| `flowId`                                               | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
-| `loginSessionId`                                       | *string*                                               | :heavy_minus_sign:                                     | N/A                                                    |
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `actorId`                                                                        | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
+| `actorType`                                                                      | [models.UserEventPayload414ActorType](../models/usereventpayload414actortype.md) | :heavy_check_mark:                                                               | N/A                                                                              |
+| `enabled`                                                                        | *boolean*                                                                        | :heavy_check_mark:                                                               | N/A                                                                              |

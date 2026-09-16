@@ -8,9 +8,9 @@
 ```typescript
 const value: models.UpdateMicrofrontendsBlockHistory1 = {
   action: "blocked",
+  createdAt: 8310.26,
   reason: "<value>",
-  statusCode: 8310.26,
-  createdAt: 1224.12,
+  statusCode: 1224.12,
 };
 ```
 
@@ -28,14 +28,12 @@ const value: models.UpdateMicrofrontendsBlockHistory2 = {
 ```typescript
 const value: models.UpdateMicrofrontendsBlockHistory3 = {
   action: "route-blocked",
-  route: {
-    has: [],
-    mitigate: {
-      action: "block_legal_cwc",
-    },
-  },
+  createdAt: 8834.96,
   reason: "<value>",
-  createdAt: 9290.74,
+  route: {
+    src: "<value>",
+    status: 9290.74,
+  },
 };
 ```
 
@@ -44,11 +42,11 @@ const value: models.UpdateMicrofrontendsBlockHistory3 = {
 ```typescript
 const value: models.UpdateMicrofrontendsBlockHistory4 = {
   action: "route-unblocked",
+  createdAt: 827.05,
   route: {
     src: "<value>",
-    status: 1464.99,
+    status: 7670.1,
   },
-  createdAt: 7670.1,
 };
 ```
 

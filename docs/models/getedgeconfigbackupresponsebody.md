@@ -7,14 +7,14 @@
 
 ```typescript
 const value: models.GetEdgeConfigBackupResponseBody1 = {
-  id: "<id>",
-  lastModified: 3370.31,
   backup: {
+    digest: "<value>",
+    items: {},
     slug: "<value>",
     updatedAt: 7062.46,
-    items: {},
-    digest: "<value>",
   },
+  id: "<id>",
+  lastModified: 1254.45,
   metadata: {},
 };
 ```
@@ -23,26 +23,20 @@ const value: models.GetEdgeConfigBackupResponseBody1 = {
 
 ```typescript
 const value: models.GetEdgeConfigBackupResponseBody2 = {
-  user: {
-    id: "<id>",
-    username: "Carrie.Ondricka9",
-    email: "Anabel66@hotmail.com",
+  backup: {
+    digest: "<value>",
+    items: {},
+    slug: "<value>",
+    updatedAt: 6945.07,
   },
   id: "<id>",
-  lastModified: 9287.58,
-  backup: {
-    slug: "<value>",
-    updatedAt: 3016.46,
-    items: {
-      "key": {
-        createdAt: 7230.66,
-        updatedAt: 4755.84,
-        value: 3802.88,
-      },
-    },
-    digest: "<value>",
-  },
+  lastModified: 6632.62,
   metadata: {},
+  user: {
+    email: "Augustine.Wiza10@gmail.com",
+    id: "<id>",
+    username: "Fidel30",
+  },
 };
 ```
 

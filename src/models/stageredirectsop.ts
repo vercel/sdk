@@ -44,35 +44,35 @@ export type StageRedirectsRequest = {
 
 export type StageRedirectsVersion = {
   /**
+   * The staging link for previewing redirects in this version.
+   */
+  alias?: string | undefined;
+  createdBy: string;
+  /**
    * The unique identifier for the version.
    */
   id: string;
-  /**
-   * The key of the version. The key may be duplicated across versions if the contents are the same as a different version.
-   */
-  key: string;
-  lastModified: number;
-  createdBy: string;
-  /**
-   * Optional name for the version. If not provided, defaults to an ISO timestamp string.
-   */
-  name?: string | undefined;
-  /**
-   * Whether this version has not been promoted to production yet and is not serving end users.
-   */
-  isStaging?: boolean | undefined;
   /**
    * Whether this version is currently live in production.
    */
   isLive?: boolean | undefined;
   /**
+   * Whether this version has not been promoted to production yet and is not serving end users.
+   */
+  isStaging?: boolean | undefined;
+  /**
+   * The key of the version. The key may be duplicated across versions if the contents are the same as a different version.
+   */
+  key: string;
+  lastModified: number;
+  /**
+   * Optional name for the version. If not provided, defaults to an ISO timestamp string.
+   */
+  name?: string | undefined;
+  /**
    * The number of redirects in this version.
    */
   redirectCount?: number | undefined;
-  /**
-   * The staging link for previewing redirects in this version.
-   */
-  alias?: string | undefined;
 };
 
 export type StageRedirectsResponseBody = {
@@ -191,15 +191,15 @@ export const StageRedirectsVersion$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  alias: types.optional(types.string()),
+  createdBy: types.string(),
   id: types.string(),
+  isLive: types.optional(types.boolean()),
+  isStaging: types.optional(types.boolean()),
   key: types.string(),
   lastModified: types.number(),
-  createdBy: types.string(),
   name: types.optional(types.string()),
-  isStaging: types.optional(types.boolean()),
-  isLive: types.optional(types.boolean()),
   redirectCount: types.optional(types.number()),
-  alias: types.optional(types.string()),
 });
 
 export function stageRedirectsVersionFromJSON(

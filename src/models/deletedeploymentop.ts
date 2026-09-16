@@ -44,13 +44,13 @@ export type DeleteDeploymentState = ClosedEnum<typeof DeleteDeploymentState>;
  */
 export type DeleteDeploymentResponseBody = {
   /**
-   * The removed deployment ID.
-   */
-  uid: string;
-  /**
    * A constant with the final state of the deployment.
    */
   state: DeleteDeploymentState;
+  /**
+   * The removed deployment ID.
+   */
+  uid: string;
 };
 
 /** @internal */
@@ -92,8 +92,8 @@ export const DeleteDeploymentResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  uid: types.string(),
   state: DeleteDeploymentState$inboundSchema,
+  uid: types.string(),
 });
 
 export function deleteDeploymentResponseBodyFromJSON(

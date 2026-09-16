@@ -15,8 +15,8 @@ const value: models.GetDrainFilter1 = {
 
 ```typescript
 const value: models.GetDrainFilter2 = {
-  type: "odata",
   text: "<value>",
+  type: "odata",
 };
 ```
 

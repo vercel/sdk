@@ -3,27 +3,27 @@
 ## Example Usage
 
 ```typescript
-import { OldConnectConfigurations } from "@vercel/sdk/models/usereventpayloadnext.js";
+import { OldConnectConfigurations } from "@vercel/sdk/models/payloadnext.js";
 
 let value: OldConnectConfigurations = {
-  envId: "<id>",
-  connectConfigurationId: "<id>",
-  passive: false,
   buildsEnabled: true,
-  createdAt: 9005.75,
+  connectConfigurationId: "<id>",
+  createdAt: 7630.36,
+  envId: "<id>",
+  passive: false,
   updatedAt: 8968.35,
 };
 ```
 
 ## Fields
 
-| Field                          | Type                           | Required                       | Description                    |
-| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
-| `envId`                        | *models.EnvId*                 | :heavy_check_mark:             | N/A                            |
-| `connectConfigurationId`       | *string*                       | :heavy_check_mark:             | N/A                            |
-| `dc`                           | *string*                       | :heavy_minus_sign:             | N/A                            |
-| `passive`                      | *boolean*                      | :heavy_check_mark:             | N/A                            |
-| `buildsEnabled`                | *boolean*                      | :heavy_check_mark:             | N/A                            |
-| `aws`                          | [models.Aws](../models/aws.md) | :heavy_minus_sign:             | N/A                            |
-| `createdAt`                    | *number*                       | :heavy_check_mark:             | N/A                            |
-| `updatedAt`                    | *number*                       | :heavy_check_mark:             | N/A                            |
+| Field                                        | Type                                         | Required                                     | Description                                  |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| `aws`                                        | [models.PayloadAws](../models/payloadaws.md) | :heavy_minus_sign:                           | N/A                                          |
+| `buildsEnabled`                              | *boolean*                                    | :heavy_check_mark:                           | N/A                                          |
+| `connectConfigurationId`                     | *string*                                     | :heavy_check_mark:                           | N/A                                          |
+| `createdAt`                                  | *number*                                     | :heavy_check_mark:                           | N/A                                          |
+| `dc`                                         | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
+| `envId`                                      | *models.PayloadEnvId*                        | :heavy_check_mark:                           | N/A                                          |
+| `passive`                                    | *boolean*                                    | :heavy_check_mark:                           | N/A                                          |
+| `updatedAt`                                  | *number*                                     | :heavy_check_mark:                           | N/A                                          |

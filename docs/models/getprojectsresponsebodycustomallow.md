@@ -5,7 +5,7 @@ Optional overrides for the default same-env-by-slug matching. Provide explicit r
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyCustomAllow } from "@vercel/sdk/models/responsebodydeploymentexpiration.js";
+import { GetProjectsResponseBodyCustomAllow } from "@vercel/sdk/models/responsebodyabuse.js";
 
 let value: GetProjectsResponseBodyCustomAllow = {
   from: {
@@ -24,7 +24,7 @@ let value: GetProjectsResponseBodyCustomAllow = {
 
 ## Fields
 
-| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
-| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `from`                                                               | *models.GetProjectsResponseBodyFrom*                                 | :heavy_check_mark:                                                   | N/A                                                                  |
-| `to`                                                                 | *models.GetProjectsResponseBodyProjectsResponse200ApplicationJSONTo* | :heavy_check_mark:                                                   | N/A                                                                  |
+| Field                                                 | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `from`                                                | *models.GetProjectsResponseBodyFrom*                  | :heavy_check_mark:                                    | N/A                                                   |
+| `to`                                                  | *models.GetProjectsResponseBodyProjectsResponse200To* | :heavy_check_mark:                                    | N/A                                                   |

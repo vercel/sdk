@@ -12,11 +12,11 @@ import { Pagination, Pagination$inboundSchema } from "./pagination.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type ListAuthTokensResponseBody2 = {
-  tokens: Array<AuthToken>;
   /**
    * This object contains information related to the pagination of the current request, including the necessary parameters to get the next or previous page of data.
    */
   pagination: Pagination;
+  tokens: Array<AuthToken>;
 };
 
 export type ListAuthTokensResponseBodyPagination = {
@@ -26,8 +26,8 @@ export type ListAuthTokensResponseBodyPagination = {
 };
 
 export type ListAuthTokensResponseBody1 = {
-  tokens: Array<AuthToken>;
   pagination: ListAuthTokensResponseBodyPagination;
+  tokens: Array<AuthToken>;
 };
 
 export type ListAuthTokensResponseBody =
@@ -40,8 +40,8 @@ export const ListAuthTokensResponseBody2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  tokens: z.array(AuthToken$inboundSchema),
   pagination: Pagination$inboundSchema,
+  tokens: z.array(AuthToken$inboundSchema),
 });
 
 export function listAuthTokensResponseBody2FromJSON(
@@ -82,8 +82,8 @@ export const ListAuthTokensResponseBody1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  tokens: z.array(AuthToken$inboundSchema),
   pagination: z.lazy(() => ListAuthTokensResponseBodyPagination$inboundSchema),
+  tokens: z.array(AuthToken$inboundSchema),
 });
 
 export function listAuthTokensResponseBody1FromJSON(

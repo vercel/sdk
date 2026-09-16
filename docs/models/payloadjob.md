@@ -7,7 +7,6 @@
 
 ```typescript
 const value: models.Job1 = {
-  type: "bitbucket-push",
   headInfo: {
     owner: "<value>",
     ref: "<value>",
@@ -17,12 +16,13 @@ const value: models.Job1 = {
   },
   name: "<value>",
   owner: "<value>",
+  provider: "bitbucket",
   ref: "<value>",
   repoUuid: "<id>",
   sha: "<value>",
   slug: "<value>",
+  type: "bitbucket-push",
   workspaceUuid: "<id>",
-  provider: "bitbucket",
 };
 ```
 
@@ -40,13 +40,13 @@ const value: models.Job2 = {
   name: "<value>",
   owner: "<value>",
   prId: 2753.27,
+  provider: "bitbucket",
   ref: "<value>",
   repoUuid: "<id>",
   sha: "<value>",
   slug: "<value>",
   type: "bitbucket-now-comment",
   workspaceUuid: "<id>",
-  provider: "bitbucket",
 };
 ```
 
@@ -54,21 +54,21 @@ const value: models.Job2 = {
 
 ```typescript
 const value: models.Job3 = {
-  prId: 9833.18,
-  type: "pr",
   headInfo: {
     org: "<value>",
     ref: "<value>",
     repo: "<value>",
-    repoId: 7689.26,
+    repoId: 9833.18,
     sha: "<value>",
   },
-  installationId: 2467.86,
-  isPrivate: false,
+  installationId: 7689.26,
+  isPrivate: true,
   org: "<value>",
+  prId: 9263.01,
+  provider: "github-custom-host",
   repo: "<value>",
-  repoId: 6297.66,
-  provider: "github",
+  repoId: 2040.46,
+  type: "pr",
 };
 ```
 
@@ -76,22 +76,22 @@ const value: models.Job3 = {
 
 ```typescript
 const value: models.Job4 = {
-  repoPushedAt: 303.87,
-  type: "push",
   headInfo: {
     org: "<value>",
     ref: "<value>",
     repo: "<value>",
-    repoId: 6467.65,
+    repoId: 4252.15,
     sha: "<value>",
   },
-  installationId: 9847.95,
+  installationId: 303.87,
   isPrivate: false,
   org: "<value>",
-  prId: 1371.4,
+  prId: 7508.37,
+  provider: "github-custom-host",
   repo: "<value>",
-  repoId: 3515.58,
-  provider: "github-limited",
+  repoId: 1371.4,
+  repoPushedAt: 8181.47,
+  type: "push",
 };
 ```
 
@@ -111,10 +111,10 @@ const value: models.Job5 = {
   org: "<value>",
   prId: 338.22,
   projectId: "<id>",
-  repo: "<value>",
-  repoId: 897.64,
-  type: "now-comment",
   provider: "github",
+  repo: "<value>",
+  repoId: 599.5,
+  type: "now-comment",
 };
 ```
 
@@ -122,7 +122,6 @@ const value: models.Job5 = {
 
 ```typescript
 const value: models.Job6 = {
-  type: "gitlab-push",
   headInfo: {
     project: {
       id: "<id>",
@@ -133,9 +132,10 @@ const value: models.Job6 = {
   project: {
     id: "<id>",
   },
+  provider: "gitlab",
   ref: "<value>",
   sha: "<value>",
-  provider: "gitlab",
+  type: "gitlab-push",
 };
 ```
 
@@ -154,10 +154,10 @@ const value: models.Job7 = {
   project: {
     id: "<id>",
   },
+  provider: "gitlab",
   ref: "<value>",
   sha: "<value>",
   type: "gitlab-now-comment",
-  provider: "gitlab",
 };
 ```
 
@@ -165,10 +165,6 @@ const value: models.Job7 = {
 
 ```typescript
 const value: models.Job8 = {
-  type: "vercel-push",
-  ref: "<value>",
-  repo: "<value>",
-  sha: "<value>",
   headInfo: {
     org: "<value>",
     ref: "<value>",
@@ -177,6 +173,10 @@ const value: models.Job8 = {
   },
   org: "<value>",
   provider: "vercel",
+  ref: "<value>",
+  repo: "<value>",
+  sha: "<value>",
+  type: "vercel-push",
 };
 ```
 
@@ -184,9 +184,6 @@ const value: models.Job8 = {
 
 ```typescript
 const value: models.Job9 = {
-  type: "cursor-origin-push",
-  ref: "<value>",
-  sha: "<value>",
   headInfo: {
     owner: "<value>",
     ownerId: "<id>",
@@ -197,9 +194,12 @@ const value: models.Job9 = {
   },
   installationId: "<id>",
   owner: "<value>",
+  provider: "cursor-origin",
+  ref: "<value>",
   repo: "<value>",
   repoId: "<id>",
-  provider: "cursor-origin",
+  sha: "<value>",
+  type: "cursor-origin-push",
 };
 ```
 
@@ -219,10 +219,10 @@ const value: models.Job10 = {
   owner: "<value>",
   prId: 6654.62,
   projectId: "<id>",
+  provider: "cursor-origin",
   repo: "<value>",
   repoId: "<id>",
   type: "cursor-origin-now-comment",
-  provider: "cursor-origin",
 };
 ```
 

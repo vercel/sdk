@@ -19,10 +19,10 @@ const value: models.GetProjectsCreatorProjectsResponse1 = {
 
 ```typescript
 const value: models.GetProjectsCreatorProjectsResponse2 = {
-  type: "app",
   app: {
     id: "<id>",
   },
+  type: "app",
 };
 ```
 
@@ -30,11 +30,11 @@ const value: models.GetProjectsCreatorProjectsResponse2 = {
 
 ```typescript
 const value: models.GetProjectsCreatorProjectsResponse3 = {
-  type: "integration",
   integration: {
-    integrationId: "<id>",
     configurationId: "<id>",
+    integrationId: "<id>",
   },
+  type: "integration",
 };
 ```
 

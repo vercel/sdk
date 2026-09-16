@@ -21,6 +21,18 @@ export type GetIntegrationLogDrainsRequest = {
 };
 
 /**
+ * Whether the log drain was created by an integration or by a user
+ */
+export const CreatedFrom = {
+  Integration: "integration",
+  SelfServed: "self-served",
+} as const;
+/**
+ * Whether the log drain was created by an integration or by a user
+ */
+export type CreatedFrom = ClosedEnum<typeof CreatedFrom>;
+
+/**
  * The delivery log format
  */
 export const GetIntegrationLogDrainsDeliveryFormat = {
@@ -34,6 +46,36 @@ export const GetIntegrationLogDrainsDeliveryFormat = {
 export type GetIntegrationLogDrainsDeliveryFormat = ClosedEnum<
   typeof GetIntegrationLogDrainsDeliveryFormat
 >;
+
+/**
+ * The environment of log drain
+ */
+export const GetIntegrationLogDrainsEnvironments = {
+  Preview: "preview",
+  Production: "production",
+} as const;
+/**
+ * The environment of log drain
+ */
+export type GetIntegrationLogDrainsEnvironments = ClosedEnum<
+  typeof GetIntegrationLogDrainsEnvironments
+>;
+
+export type GetIntegrationLogDrainsSource2 = {
+  externalResourceId?: string | undefined;
+  integrationConfigurationId: string;
+  integrationId: string;
+  kind: "integration";
+  resourceId?: string | undefined;
+};
+
+export type GetIntegrationLogDrainsSource1 = {
+  kind: "self-served";
+};
+
+export type GetIntegrationLogDrainsSource =
+  | GetIntegrationLogDrainsSource1
+  | GetIntegrationLogDrainsSource2;
 
 /**
  * The sources from which logs are currently being delivered to this log drain.
@@ -54,49 +96,11 @@ export type GetIntegrationLogDrainsSources = ClosedEnum<
   typeof GetIntegrationLogDrainsSources
 >;
 
-/**
- * Whether the log drain was created by an integration or by a user
- */
-export const CreatedFrom = {
-  Integration: "integration",
-  SelfServed: "self-served",
-} as const;
-/**
- * Whether the log drain was created by an integration or by a user
- */
-export type CreatedFrom = ClosedEnum<typeof CreatedFrom>;
-
-/**
- * The environment of log drain
- */
-export const GetIntegrationLogDrainsEnvironments = {
-  Preview: "preview",
-  Production: "production",
-} as const;
-/**
- * The environment of log drain
- */
-export type GetIntegrationLogDrainsEnvironments = ClosedEnum<
-  typeof GetIntegrationLogDrainsEnvironments
->;
-
-export type GetIntegrationLogDrainsSource2 = {
-  kind: "integration";
-  resourceId?: string | undefined;
-  externalResourceId?: string | undefined;
-  integrationId: string;
-  integrationConfigurationId: string;
-};
-
-export type GetIntegrationLogDrainsSource1 = {
-  kind: "self-served";
-};
-
-export type GetIntegrationLogDrainsSource =
-  | GetIntegrationLogDrainsSource1
-  | GetIntegrationLogDrainsSource2;
-
 export type GetIntegrationLogDrainsResponseBody = {
+  /**
+   * The branch regexp of log drain
+   */
+  branch?: string | undefined;
   /**
    * The oauth2 client application id that created this log drain
    */
@@ -110,13 +114,25 @@ export type GetIntegrationLogDrainsResponseBody = {
    */
   createdAt: number;
   /**
-   * The unique identifier of the log drain. Always prefixed with `ld_`
+   * Whether the log drain was created by an integration or by a user
    */
-  id: string;
+  createdFrom?: CreatedFrom | undefined;
   /**
    * The delivery log format
    */
   deliveryFormat?: GetIntegrationLogDrainsDeliveryFormat | undefined;
+  /**
+   * The environment of log drain
+   */
+  environments?: Array<GetIntegrationLogDrainsEnvironments> | undefined;
+  /**
+   * The headers to send with the request
+   */
+  headers?: { [k: string]: string } | undefined;
+  /**
+   * The unique identifier of the log drain. Always prefixed with `ld_`
+   */
+  id: string;
   /**
    * The name of the log drain
    */
@@ -131,34 +147,18 @@ export type GetIntegrationLogDrainsResponseBody = {
    */
   projectIds?: Array<string> | undefined;
   /**
-   * The URL to call when logs are generated
+   * The sampling rate of log drain
    */
-  url: string;
+  samplingRate?: number | undefined;
+  source: GetIntegrationLogDrainsSource1 | GetIntegrationLogDrainsSource2;
   /**
    * The sources from which logs are currently being delivered to this log drain.
    */
   sources?: Array<GetIntegrationLogDrainsSources> | undefined;
   /**
-   * Whether the log drain was created by an integration or by a user
+   * The URL to call when logs are generated
    */
-  createdFrom?: CreatedFrom | undefined;
-  /**
-   * The headers to send with the request
-   */
-  headers?: { [k: string]: string } | undefined;
-  /**
-   * The environment of log drain
-   */
-  environments?: Array<GetIntegrationLogDrainsEnvironments> | undefined;
-  /**
-   * The branch regexp of log drain
-   */
-  branch?: string | undefined;
-  /**
-   * The sampling rate of log drain
-   */
-  samplingRate?: number | undefined;
-  source: GetIntegrationLogDrainsSource1 | GetIntegrationLogDrainsSource2;
+  url: string;
 };
 
 /** @internal */
@@ -188,19 +188,14 @@ export function getIntegrationLogDrainsRequestToJSON(
 }
 
 /** @internal */
+export const CreatedFrom$inboundSchema: z.ZodNativeEnum<typeof CreatedFrom> = z
+  .nativeEnum(CreatedFrom);
+
+/** @internal */
 export const GetIntegrationLogDrainsDeliveryFormat$inboundSchema:
   z.ZodNativeEnum<typeof GetIntegrationLogDrainsDeliveryFormat> = z.nativeEnum(
     GetIntegrationLogDrainsDeliveryFormat,
   );
-
-/** @internal */
-export const GetIntegrationLogDrainsSources$inboundSchema: z.ZodNativeEnum<
-  typeof GetIntegrationLogDrainsSources
-> = z.nativeEnum(GetIntegrationLogDrainsSources);
-
-/** @internal */
-export const CreatedFrom$inboundSchema: z.ZodNativeEnum<typeof CreatedFrom> = z
-  .nativeEnum(CreatedFrom);
 
 /** @internal */
 export const GetIntegrationLogDrainsEnvironments$inboundSchema: z.ZodNativeEnum<
@@ -213,11 +208,11 @@ export const GetIntegrationLogDrainsSource2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  externalResourceId: types.optional(types.string()),
+  integrationConfigurationId: types.string(),
+  integrationId: types.string(),
   kind: types.literal("integration"),
   resourceId: types.optional(types.string()),
-  externalResourceId: types.optional(types.string()),
-  integrationId: types.string(),
-  integrationConfigurationId: types.string(),
 });
 
 export function getIntegrationLogDrainsSource2FromJSON(
@@ -270,37 +265,42 @@ export function getIntegrationLogDrainsSourceFromJSON(
 }
 
 /** @internal */
+export const GetIntegrationLogDrainsSources$inboundSchema: z.ZodNativeEnum<
+  typeof GetIntegrationLogDrainsSources
+> = z.nativeEnum(GetIntegrationLogDrainsSources);
+
+/** @internal */
 export const GetIntegrationLogDrainsResponseBody$inboundSchema: z.ZodType<
   GetIntegrationLogDrainsResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  branch: types.optional(types.string()),
   clientId: types.optional(types.string()),
   configurationId: types.optional(types.string()),
   createdAt: types.number(),
-  id: types.string(),
+  createdFrom: types.optional(CreatedFrom$inboundSchema),
   deliveryFormat: types.optional(
     GetIntegrationLogDrainsDeliveryFormat$inboundSchema,
   ),
+  environments: types.optional(
+    z.array(GetIntegrationLogDrainsEnvironments$inboundSchema),
+  ),
+  headers: types.optional(z.record(types.string())),
+  id: types.string(),
   name: types.string(),
   ownerId: types.string(),
   projectId: z.nullable(types.string()).optional(),
   projectIds: types.optional(z.array(types.string())),
-  url: types.string(),
-  sources: types.optional(
-    z.array(GetIntegrationLogDrainsSources$inboundSchema),
-  ),
-  createdFrom: types.optional(CreatedFrom$inboundSchema),
-  headers: types.optional(z.record(types.string())),
-  environments: types.optional(
-    z.array(GetIntegrationLogDrainsEnvironments$inboundSchema),
-  ),
-  branch: types.optional(types.string()),
   samplingRate: types.optional(types.number()),
   source: z.union([
     z.lazy(() => GetIntegrationLogDrainsSource1$inboundSchema),
     z.lazy(() => GetIntegrationLogDrainsSource2$inboundSchema),
   ]),
+  sources: types.optional(
+    z.array(GetIntegrationLogDrainsSources$inboundSchema),
+  ),
+  url: types.string(),
 });
 
 export function getIntegrationLogDrainsResponseBodyFromJSON(

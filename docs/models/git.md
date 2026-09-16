@@ -14,6 +14,6 @@ let value: Git = {
 
 | Field                                  | Type                                   | Required                               | Description                            |
 | -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| `providers`                            | *models.GetStorageStoresByIdProviders* | :heavy_check_mark:                     | N/A                                    |
 | `owners`                               | *string*[]                             | :heavy_minus_sign:                     | N/A                                    |
+| `providers`                            | *models.GetStorageStoresByIdProviders* | :heavy_check_mark:                     | N/A                                    |
 | `repos`                                | *string*[]                             | :heavy_minus_sign:                     | N/A                                    |

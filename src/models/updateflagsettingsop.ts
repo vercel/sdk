@@ -53,13 +53,6 @@ export type UpdateFlagSettingsRequest = {
   requestBody?: UpdateFlagSettingsRequestBody | undefined;
 };
 
-export const UpdateFlagSettingsFeatureFlagsTypeName = {
-  Settings: "settings",
-} as const;
-export type UpdateFlagSettingsFeatureFlagsTypeName = ClosedEnum<
-  typeof UpdateFlagSettingsFeatureFlagsTypeName
->;
-
 export type UpdateFlagSettingsFeatureFlagsLabels = {
   label: string;
   value: string;
@@ -67,35 +60,68 @@ export type UpdateFlagSettingsFeatureFlagsLabels = {
 
 export type UpdateFlagSettingsFeatureFlagsAttributes = {
   key: string;
-  type: string;
   labels?: Array<UpdateFlagSettingsFeatureFlagsLabels> | undefined;
+  type: string;
 };
 
 export type UpdateFlagSettingsFeatureFlagsResponseEntities = {
+  attributes: Array<UpdateFlagSettingsFeatureFlagsAttributes>;
   kind: string;
   label: string;
-  attributes: Array<UpdateFlagSettingsFeatureFlagsAttributes>;
 };
 
 export type UpdateFlagSettingsFeatureFlagsMetadata = {
   activeFlagCount: number;
   archivedFlagCount: number;
-  segmentCount: number;
-  packSizeInBytes: number;
-  packRevision?: number | undefined;
   configUpdatedAt?: number | undefined;
+  packRevision?: number | undefined;
+  packSizeInBytes: number;
+  segmentCount: number;
 };
 
+export const UpdateFlagSettingsFeatureFlagsTypeName = {
+  Settings: "settings",
+} as const;
+export type UpdateFlagSettingsFeatureFlagsTypeName = ClosedEnum<
+  typeof UpdateFlagSettingsFeatureFlagsTypeName
+>;
+
 export type UpdateFlagSettingsFeatureFlagsResponseBody = {
-  typeName: UpdateFlagSettingsFeatureFlagsTypeName;
-  projectId: string;
-  ownerId?: string | undefined;
-  enabled: boolean;
-  environments: Array<string>;
-  entities: Array<UpdateFlagSettingsFeatureFlagsResponseEntities>;
   createdAt?: number | undefined;
-  updatedAt?: number | undefined;
+  enabled: boolean;
+  entities: Array<UpdateFlagSettingsFeatureFlagsResponseEntities>;
+  environments: Array<string>;
   metadata: UpdateFlagSettingsFeatureFlagsMetadata;
+  ownerId?: string | undefined;
+  projectId: string;
+  typeName: UpdateFlagSettingsFeatureFlagsTypeName;
+  updatedAt?: number | undefined;
+};
+
+export type UpdateFlagSettingsLabels = {
+  label: string;
+  value: string;
+};
+
+export type UpdateFlagSettingsAttributes = {
+  key: string;
+  labels?: Array<UpdateFlagSettingsLabels> | undefined;
+  type: string;
+};
+
+export type UpdateFlagSettingsFeatureFlagsEntities = {
+  attributes: Array<UpdateFlagSettingsAttributes>;
+  kind: string;
+  label: string;
+};
+
+export type UpdateFlagSettingsMetadata = {
+  activeFlagCount: number;
+  archivedFlagCount: number;
+  configUpdatedAt?: number | undefined;
+  packRevision?: number | undefined;
+  packSizeInBytes: number;
+  segmentCount: number;
 };
 
 export const UpdateFlagSettingsTypeName = {
@@ -105,42 +131,16 @@ export type UpdateFlagSettingsTypeName = ClosedEnum<
   typeof UpdateFlagSettingsTypeName
 >;
 
-export type UpdateFlagSettingsLabels = {
-  label: string;
-  value: string;
-};
-
-export type UpdateFlagSettingsAttributes = {
-  key: string;
-  type: string;
-  labels?: Array<UpdateFlagSettingsLabels> | undefined;
-};
-
-export type UpdateFlagSettingsFeatureFlagsEntities = {
-  kind: string;
-  label: string;
-  attributes: Array<UpdateFlagSettingsAttributes>;
-};
-
-export type UpdateFlagSettingsMetadata = {
-  activeFlagCount: number;
-  archivedFlagCount: number;
-  segmentCount: number;
-  packSizeInBytes: number;
-  packRevision?: number | undefined;
-  configUpdatedAt?: number | undefined;
-};
-
 export type UpdateFlagSettingsResponseBody = {
-  typeName: UpdateFlagSettingsTypeName;
-  projectId: string;
-  ownerId?: string | undefined;
-  enabled: boolean;
-  environments: Array<string>;
-  entities: Array<UpdateFlagSettingsFeatureFlagsEntities>;
   createdAt?: number | undefined;
-  updatedAt?: number | undefined;
+  enabled: boolean;
+  entities: Array<UpdateFlagSettingsFeatureFlagsEntities>;
+  environments: Array<string>;
   metadata: UpdateFlagSettingsMetadata;
+  ownerId?: string | undefined;
+  projectId: string;
+  typeName: UpdateFlagSettingsTypeName;
+  updatedAt?: number | undefined;
 };
 
 export type UpdateFlagSettingsResponse =
@@ -278,12 +278,6 @@ export function updateFlagSettingsRequestToJSON(
 }
 
 /** @internal */
-export const UpdateFlagSettingsFeatureFlagsTypeName$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateFlagSettingsFeatureFlagsTypeName> = z.nativeEnum(
-    UpdateFlagSettingsFeatureFlagsTypeName,
-  );
-
-/** @internal */
 export const UpdateFlagSettingsFeatureFlagsLabels$inboundSchema: z.ZodType<
   UpdateFlagSettingsFeatureFlagsLabels,
   z.ZodTypeDef,
@@ -311,10 +305,10 @@ export const UpdateFlagSettingsFeatureFlagsAttributes$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   key: types.string(),
-  type: types.string(),
   labels: types.optional(
     z.array(z.lazy(() => UpdateFlagSettingsFeatureFlagsLabels$inboundSchema)),
   ),
+  type: types.string(),
 });
 
 export function updateFlagSettingsFeatureFlagsAttributesFromJSON(
@@ -340,11 +334,11 @@ export const UpdateFlagSettingsFeatureFlagsResponseEntities$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    kind: types.string(),
-    label: types.string(),
     attributes: z.array(
       z.lazy(() => UpdateFlagSettingsFeatureFlagsAttributes$inboundSchema),
     ),
+    kind: types.string(),
+    label: types.string(),
   });
 
 export function updateFlagSettingsFeatureFlagsResponseEntitiesFromJSON(
@@ -371,10 +365,10 @@ export const UpdateFlagSettingsFeatureFlagsMetadata$inboundSchema: z.ZodType<
 > = z.object({
   activeFlagCount: types.number(),
   archivedFlagCount: types.number(),
-  segmentCount: types.number(),
-  packSizeInBytes: types.number(),
-  packRevision: types.optional(types.number()),
   configUpdatedAt: types.optional(types.number()),
+  packRevision: types.optional(types.number()),
+  packSizeInBytes: types.number(),
+  segmentCount: types.number(),
 });
 
 export function updateFlagSettingsFeatureFlagsMetadataFromJSON(
@@ -389,24 +383,30 @@ export function updateFlagSettingsFeatureFlagsMetadataFromJSON(
 }
 
 /** @internal */
+export const UpdateFlagSettingsFeatureFlagsTypeName$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateFlagSettingsFeatureFlagsTypeName> = z.nativeEnum(
+    UpdateFlagSettingsFeatureFlagsTypeName,
+  );
+
+/** @internal */
 export const UpdateFlagSettingsFeatureFlagsResponseBody$inboundSchema:
   z.ZodType<UpdateFlagSettingsFeatureFlagsResponseBody, z.ZodTypeDef, unknown> =
     z.object({
-      typeName: UpdateFlagSettingsFeatureFlagsTypeName$inboundSchema,
-      projectId: types.string(),
-      ownerId: types.optional(types.string()),
+      createdAt: types.optional(types.number()),
       enabled: types.boolean(),
-      environments: z.array(types.string()),
       entities: z.array(
         z.lazy(() =>
           UpdateFlagSettingsFeatureFlagsResponseEntities$inboundSchema
         ),
       ),
-      createdAt: types.optional(types.number()),
-      updatedAt: types.optional(types.number()),
+      environments: z.array(types.string()),
       metadata: z.lazy(() =>
         UpdateFlagSettingsFeatureFlagsMetadata$inboundSchema
       ),
+      ownerId: types.optional(types.string()),
+      projectId: types.string(),
+      typeName: UpdateFlagSettingsFeatureFlagsTypeName$inboundSchema,
+      updatedAt: types.optional(types.number()),
     });
 
 export function updateFlagSettingsFeatureFlagsResponseBodyFromJSON(
@@ -424,11 +424,6 @@ export function updateFlagSettingsFeatureFlagsResponseBodyFromJSON(
     `Failed to parse 'UpdateFlagSettingsFeatureFlagsResponseBody' from JSON`,
   );
 }
-
-/** @internal */
-export const UpdateFlagSettingsTypeName$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateFlagSettingsTypeName
-> = z.nativeEnum(UpdateFlagSettingsTypeName);
 
 /** @internal */
 export const UpdateFlagSettingsLabels$inboundSchema: z.ZodType<
@@ -457,10 +452,10 @@ export const UpdateFlagSettingsAttributes$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   key: types.string(),
-  type: types.string(),
   labels: types.optional(
     z.array(z.lazy(() => UpdateFlagSettingsLabels$inboundSchema)),
   ),
+  type: types.string(),
 });
 
 export function updateFlagSettingsAttributesFromJSON(
@@ -479,9 +474,9 @@ export const UpdateFlagSettingsFeatureFlagsEntities$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  attributes: z.array(z.lazy(() => UpdateFlagSettingsAttributes$inboundSchema)),
   kind: types.string(),
   label: types.string(),
-  attributes: z.array(z.lazy(() => UpdateFlagSettingsAttributes$inboundSchema)),
 });
 
 export function updateFlagSettingsFeatureFlagsEntitiesFromJSON(
@@ -503,10 +498,10 @@ export const UpdateFlagSettingsMetadata$inboundSchema: z.ZodType<
 > = z.object({
   activeFlagCount: types.number(),
   archivedFlagCount: types.number(),
-  segmentCount: types.number(),
-  packSizeInBytes: types.number(),
-  packRevision: types.optional(types.number()),
   configUpdatedAt: types.optional(types.number()),
+  packRevision: types.optional(types.number()),
+  packSizeInBytes: types.number(),
+  segmentCount: types.number(),
 });
 
 export function updateFlagSettingsMetadataFromJSON(
@@ -520,22 +515,27 @@ export function updateFlagSettingsMetadataFromJSON(
 }
 
 /** @internal */
+export const UpdateFlagSettingsTypeName$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateFlagSettingsTypeName
+> = z.nativeEnum(UpdateFlagSettingsTypeName);
+
+/** @internal */
 export const UpdateFlagSettingsResponseBody$inboundSchema: z.ZodType<
   UpdateFlagSettingsResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  typeName: UpdateFlagSettingsTypeName$inboundSchema,
-  projectId: types.string(),
-  ownerId: types.optional(types.string()),
+  createdAt: types.optional(types.number()),
   enabled: types.boolean(),
-  environments: z.array(types.string()),
   entities: z.array(
     z.lazy(() => UpdateFlagSettingsFeatureFlagsEntities$inboundSchema),
   ),
-  createdAt: types.optional(types.number()),
-  updatedAt: types.optional(types.number()),
+  environments: z.array(types.string()),
   metadata: z.lazy(() => UpdateFlagSettingsMetadata$inboundSchema),
+  ownerId: types.optional(types.string()),
+  projectId: types.string(),
+  typeName: UpdateFlagSettingsTypeName$inboundSchema,
+  updatedAt: types.optional(types.number()),
 });
 
 export function updateFlagSettingsResponseBodyFromJSON(

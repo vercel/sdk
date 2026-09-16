@@ -5,19 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndNinetyFive } from "@vercel/sdk/models/threehundredandfortytwo.js";
+import { ThreeHundredAndNinetyFive } from "@vercel/sdk/models/payloadmostspecificsubdivision.js";
 
 let value: ThreeHundredAndNinetyFive = {
-  tokenTypes: [
-    "<value 1>",
-    "<value 2>",
-    "<value 3>",
-  ],
+  enabled: false,
+  scope: "dashboard",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `tokenTypes`       | *string*[]         | :heavy_check_mark: | N/A                |
+| Field                                            | Type                                             | Required                                         | Description                                      |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| `enabled`                                        | *boolean*                                        | :heavy_check_mark:                               | N/A                                              |
+| `scope`                                          | [models.PayloadScope](../models/payloadscope.md) | :heavy_check_mark:                               | N/A                                              |

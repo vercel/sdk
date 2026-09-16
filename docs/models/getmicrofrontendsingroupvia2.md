@@ -5,14 +5,14 @@ Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures 
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupVia2 } from "@vercel/sdk/models/getmicrofrontendsingroupbuildmachinetype.js";
+import { GetMicrofrontendsInGroupVia2 } from "@vercel/sdk/models/getmicrofrontendsingrouphasvalue.js";
 
 let value: GetMicrofrontendsInGroupVia2 = {
-  type: "integration",
   integration: {
-    integrationId: "<id>",
     configurationId: "<id>",
+    integrationId: "<id>",
   },
+  type: "integration",
 };
 ```
 
@@ -20,5 +20,5 @@ let value: GetMicrofrontendsInGroupVia2 = {
 
 | Field                                                                                                | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
 | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `type`                                                                                               | *"integration"*                                                                                      | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
 | `integration`                                                                                        | [models.GetMicrofrontendsInGroupViaIntegration](../models/getmicrofrontendsingroupviaintegration.md) | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
+| `type`                                                                                               | *"integration"*                                                                                      | :heavy_check_mark:                                                                                   | N/A                                                                                                  |

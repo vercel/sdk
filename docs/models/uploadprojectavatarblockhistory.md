@@ -8,9 +8,9 @@
 ```typescript
 const value: models.UploadProjectAvatarBlockHistory1 = {
   action: "blocked",
+  createdAt: 2996.64,
   reason: "<value>",
-  statusCode: 2996.64,
-  createdAt: 2226.2,
+  statusCode: 2226.2,
 };
 ```
 
@@ -28,22 +28,14 @@ const value: models.UploadProjectAvatarBlockHistory2 = {
 ```typescript
 const value: models.UploadProjectAvatarBlockHistory3 = {
   action: "route-blocked",
+  createdAt: 5609.5,
+  reason: "<value>",
   route: {
-    has: [
-      {
-        type: "header",
-        key: "x-vercel-ip-country",
-        value: {
-          eq: "<value>",
-        },
-      },
-    ],
+    has: [],
     mitigate: {
       action: "block_legal_cwc",
     },
   },
-  reason: "<value>",
-  createdAt: 1981.14,
 };
 ```
 
@@ -52,11 +44,11 @@ const value: models.UploadProjectAvatarBlockHistory3 = {
 ```typescript
 const value: models.UploadProjectAvatarBlockHistory4 = {
   action: "route-unblocked",
+  createdAt: 109.87,
   route: {
     src: "<value>",
-    status: 172.55,
+    status: 6918.47,
   },
-  createdAt: 6918.47,
 };
 ```
 

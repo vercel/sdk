@@ -8,16 +8,16 @@ import { CreateIntegrationStoreDirectResponseBody } from "@vercel/sdk/models/cre
 let value: CreateIntegrationStoreDirectResponseBody = {
   store: {
     projectsMetadata: [],
-    usageQuotaExceeded: true,
-    status: "uninstalled",
+    status: "limits-exceeded-suspended-store-count",
+    usageQuotaExceeded: false,
     externalResourceId: "<id>",
     product: {
       resourceTitle: "Instance",
       integration: {
+        icon: "<value>",
         id: "<id>",
         name: "<value>",
         slug: "<value>",
-        icon: "<value>",
       },
       integrationConfigurationId: "<id>",
       supportedProtocols: [

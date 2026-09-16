@@ -7,19 +7,19 @@
 
 ```typescript
 const value: models.CreateDeploymentCheckRunResponseBody1 = {
+  createdAt: 3682.35,
+  deploymentId: "<id>",
   id: "<id>",
   name: "<value>",
   ownerId: "<id>",
-  deploymentId: "<id>",
   status: "queued",
-  timeout: 4515.7,
-  createdAt: 9207,
+  timeout: 9207,
   updatedAt: 412.51,
   checkId: "<id>",
   source: {
-    kind: "integration",
-    integrationId: "<id>",
     integrationConfigurationId: "<id>",
+    integrationId: "<id>",
+    kind: "integration",
   },
 };
 ```
@@ -28,17 +28,17 @@ const value: models.CreateDeploymentCheckRunResponseBody1 = {
 
 ```typescript
 const value: models.CreateDeploymentCheckRunResponseBody2 = {
+  createdAt: 8791.07,
+  deploymentId: "<id>",
   id: "<id>",
   name: "<value>",
   ownerId: "<id>",
-  deploymentId: "<id>",
-  status: "running",
-  timeout: 4968.62,
-  createdAt: 3657.11,
+  status: "queued",
+  timeout: 3657.11,
   updatedAt: 1425.77,
   source: {
-    subKind: "vercel-ci-sentinel",
     origin: "platform",
+    subKind: "vercel-ci-sentinel",
   },
 };
 ```

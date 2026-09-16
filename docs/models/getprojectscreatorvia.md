@@ -7,10 +7,10 @@
 
 ```typescript
 const value: models.GetProjectsVia1 = {
-  type: "app",
   app: {
     id: "<id>",
   },
+  type: "app",
 };
 ```
 
@@ -18,11 +18,11 @@ const value: models.GetProjectsVia1 = {
 
 ```typescript
 const value: models.GetProjectsVia2 = {
-  type: "integration",
   integration: {
-    integrationId: "<id>",
     configurationId: "<id>",
+    integrationId: "<id>",
   },
+  type: "integration",
 };
 ```
 

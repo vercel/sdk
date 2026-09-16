@@ -8,19 +8,19 @@ The payload of the event, if requested.
 import { TwentyOne } from "@vercel/sdk/models/userevent.js";
 
 let value: TwentyOne = {
+  added: [
+    "<value 1>",
+    "<value 2>",
+  ],
+  changed: [
+    "<value 1>",
+  ],
   credential: {
     id: "<id>",
     name: "<value>",
     providerSlug: "<value>",
   },
-  added: [
-    "<value 1>",
-    "<value 2>",
-  ],
   removed: [
-    "<value 1>",
-  ],
-  changed: [
     "<value 1>",
   ],
 };
@@ -30,7 +30,7 @@ let value: TwentyOne = {
 
 | Field                                                      | Type                                                       | Required                                                   | Description                                                |
 | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `credential`                                               | [models.PayloadCredential](../models/payloadcredential.md) | :heavy_check_mark:                                         | N/A                                                        |
 | `added`                                                    | *string*[]                                                 | :heavy_check_mark:                                         | N/A                                                        |
-| `removed`                                                  | *string*[]                                                 | :heavy_check_mark:                                         | N/A                                                        |
 | `changed`                                                  | *string*[]                                                 | :heavy_check_mark:                                         | N/A                                                        |
+| `credential`                                               | [models.PayloadCredential](../models/payloadcredential.md) | :heavy_check_mark:                                         | N/A                                                        |
+| `removed`                                                  | *string*[]                                                 | :heavy_check_mark:                                         | N/A                                                        |

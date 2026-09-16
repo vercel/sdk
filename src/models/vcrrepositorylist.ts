@@ -13,11 +13,11 @@ import { VcrRepository, VcrRepository$inboundSchema } from "./vcrrepository.js";
  * A paginated list of Vercel Container Registry repositories.
  */
 export type VcrRepositoryList = {
-  repositories: Array<VcrRepository>;
   /**
    * Cursor to fetch the next page of results, when more are available.
    */
   nextCursor?: string | undefined;
+  repositories: Array<VcrRepository>;
 };
 
 /** @internal */
@@ -26,8 +26,8 @@ export const VcrRepositoryList$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  repositories: z.array(VcrRepository$inboundSchema),
   nextCursor: types.optional(types.string()),
+  repositories: z.array(VcrRepository$inboundSchema),
 });
 
 export function vcrRepositoryListFromJSON(

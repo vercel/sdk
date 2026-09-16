@@ -29,14 +29,6 @@ export type UpdateRollingReleaseConfigRequest = {
  */
 export type UpdateRollingReleaseConfigResponseBodyStages = {
   /**
-   * The percentage of traffic to serve to the canary deployment (0-100)
-   */
-  targetPercentage: number;
-  /**
-   * Whether or not this stage requires manual approval to proceed
-   */
-  requireApproval?: boolean | undefined;
-  /**
    * Duration in minutes for automatic advancement to the next stage
    */
   duration?: number | undefined;
@@ -44,6 +36,14 @@ export type UpdateRollingReleaseConfigResponseBodyStages = {
    * Whether to linearly shift traffic over the duration of this stage
    */
   linearShift?: boolean | undefined;
+  /**
+   * Whether or not this stage requires manual approval to proceed
+   */
+  requireApproval?: boolean | undefined;
+  /**
+   * The percentage of traffic to serve to the canary deployment (0-100)
+   */
+  targetPercentage: number;
 };
 
 export type UpdateRollingReleaseConfigResponseBodyRollingRelease = {
@@ -100,10 +100,10 @@ export const UpdateRollingReleaseConfigResponseBodyStages$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    targetPercentage: types.number(),
-    requireApproval: types.optional(types.boolean()),
     duration: types.optional(types.number()),
     linearShift: types.optional(types.boolean()),
+    requireApproval: types.optional(types.boolean()),
+    targetPercentage: types.number(),
   });
 
 export function updateRollingReleaseConfigResponseBodyStagesFromJSON(

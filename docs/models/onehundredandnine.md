@@ -5,16 +5,16 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndNine } from "@vercel/sdk/models/headinfo.js";
+import { OneHundredAndNine } from "@vercel/sdk/models/onehundred.js";
 
 let value: OneHundredAndNine = {
   deployment: {
-    name: "<value>",
     id: "<id>",
     meta: {
       "key": "<value>",
       "key1": "<value>",
     },
+    name: "<value>",
     url: "https://incomparable-hose.name",
   },
   deploymentId: "<id>",

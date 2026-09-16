@@ -7,9 +7,9 @@
 
 ```typescript
 const value: models.UpdateProjectCheckSource1 = {
-  kind: "integration",
-  integrationId: "<id>",
   integrationConfigurationId: "<id>",
+  integrationId: "<id>",
+  kind: "integration",
 };
 ```
 
@@ -25,9 +25,9 @@ const value: models.UpdateProjectCheckSource2 = {
 
 ```typescript
 const value: models.UpdateProjectCheckSource3 = {
+  externalCheckName: "<value>",
   kind: "git-provider",
   provider: "github",
-  externalCheckName: "<value>",
 };
 ```
 

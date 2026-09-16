@@ -6,22 +6,14 @@
 import { GetRoutesResponseBody2 } from "@vercel/sdk/models/getroutesop.js";
 
 let value: GetRoutesResponseBody2 = {
-  routes: [
-    {
-      id: "<id>",
-      name: "<value>",
-      route: {
-        src: "<value>",
-      },
-    },
-  ],
+  diffCount: 7838.68,
+  routes: [],
   version: {
-    id: "<id>",
-    s3Key: "<value>",
-    lastModified: 4323.06,
     createdBy: "<value>",
+    id: "<id>",
+    lastModified: 3571.92,
+    s3Key: "<value>",
   },
-  diffCount: 3571.92,
 };
 ```
 
@@ -29,6 +21,6 @@ let value: GetRoutesResponseBody2 = {
 
 | Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
 | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `diffCount`                                                                      | *number*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
 | `routes`                                                                         | [models.GetRoutesResponseBodyRoutes](../models/getroutesresponsebodyroutes.md)[] | :heavy_check_mark:                                                               | N/A                                                                              |
 | `version`                                                                        | [models.GetRoutesResponseBodyVersion](../models/getroutesresponsebodyversion.md) | :heavy_check_mark:                                                               | A version of routing rules stored in S3.                                         |
-| `diffCount`                                                                      | *number*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |

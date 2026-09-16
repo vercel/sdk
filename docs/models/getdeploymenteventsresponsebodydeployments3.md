@@ -7,14 +7,14 @@
 
 ```typescript
 const value: models.GetDeploymentEvents31 = {
-  type: "command",
-  created: 2469.14,
+  created: 80.76,
   payload: {
+    date: 2469.14,
     deploymentId: "<id>",
     id: "<id>",
-    date: 4386.4,
     serial: "<value>",
   },
+  type: "fatal",
 };
 ```
 
@@ -27,8 +27,8 @@ const value: models.GetDeploymentEvents32 = {
   deploymentId: "<id>",
   id: "<id>",
   info: {
-    type: "<value>",
     name: "<value>",
+    type: "<value>",
   },
   serial: "<value>",
   type: "fatal",
@@ -39,9 +39,9 @@ const value: models.GetDeploymentEvents32 = {
 
 ```typescript
 const value: models.GetDeploymentEvents33 = {
-  type: "alias-assigned",
-  deploymentId: "<id>",
   date: 2381.48,
+  deploymentId: "<id>",
+  type: "alias-assigned",
   alias: [
     "<value 1>",
     "<value 2>",

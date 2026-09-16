@@ -9,24 +9,20 @@ let value: CreateStorageStoresBlobResponseBody = {
   store: {
     projectsMetadata: [
       {
-        id: "<id>",
-        projectId: "<id>",
-        name: "<value>",
         environments: [],
+        environmentVariables: [],
         envVarPrefix: "<value>",
-        environmentVariables: [
-          "<value 1>",
-          "<value 2>",
-          "<value 3>",
-        ],
+        id: "<id>",
+        name: "<value>",
+        projectId: "<id>",
       },
     ],
-    usageQuotaExceeded: true,
-    status: "suspended",
-    size: 4055.56,
-    count: 9414.98,
+    status: "limits-exceeded-suspended-store-count",
+    usageQuotaExceeded: false,
+    count: 4055.56,
+    isTokenExpired: false,
     region: "cle1",
-    isTokenExpired: true,
+    size: 4373.28,
   },
 };
 ```

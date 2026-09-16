@@ -5,7 +5,7 @@
 ```typescript
 import {
   GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityManagedRulesAction,
-} from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson1securitymanagedrulesaction.js";
+} from "@vercel/sdk/models/getprojectsresponsebody.js";
 
 let value:
   GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityManagedRulesAction =

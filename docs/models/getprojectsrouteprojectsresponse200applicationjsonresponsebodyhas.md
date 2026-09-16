@@ -9,8 +9,8 @@
 const value:
   models.GetProjectsHasProjectsResponse200ApplicationJSONResponseBody3Projects1 =
     {
-      type: "header",
       key: "x-vercel-ip-country",
+      type: "header",
       value: {
         eq: "<value>",
       },

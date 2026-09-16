@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsHas1 } from "@vercel/sdk/models/getprojectsresponsebody.js";
+import { GetProjectsHas1 } from "@vercel/sdk/models/getprojectslogheaders2.js";
 
 let value: GetProjectsHas1 = {
-  type: "header",
   key: "x-vercel-ip-country",
+  type: "header",
   value: {
     eq: "<value>",
   },
@@ -18,6 +18,6 @@ let value: GetProjectsHas1 = {
 
 | Field                                                          | Type                                                           | Required                                                       | Description                                                    |
 | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| `type`                                                         | *"header"*                                                     | :heavy_check_mark:                                             | N/A                                                            |
 | `key`                                                          | [models.GetProjectsHasKey](../models/getprojectshaskey.md)     | :heavy_check_mark:                                             | N/A                                                            |
+| `type`                                                         | *"header"*                                                     | :heavy_check_mark:                                             | N/A                                                            |
 | `value`                                                        | [models.GetProjectsHasValue](../models/getprojectshasvalue.md) | :heavy_check_mark:                                             | N/A                                                            |

@@ -19,8 +19,8 @@ const value: number = 1284.03;
 
 ```typescript
 const value: models.UpdateProjectValue3 = {
-  previousValue: "<value>",
-  currentValue: 8003.3,
+  currentValue: "<value>",
+  previousValue: 8003.3,
 };
 ```
 

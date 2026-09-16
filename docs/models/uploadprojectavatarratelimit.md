@@ -3,17 +3,16 @@
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarRateLimit } from "@vercel/sdk/models/uploadprojectavatarinternalroutes1.js";
+import { UploadProjectAvatarRateLimit } from "@vercel/sdk/models/uploadprojectavatarfrom.js";
 
 let value: UploadProjectAvatarRateLimit = {
   algo: "fixed_window",
-  window: 7097.08,
-  limit: 978.39,
   keys: [
     "<value 1>",
     "<value 2>",
-    "<value 3>",
   ],
+  limit: 978.39,
+  window: 9239.03,
 };
 ```
 
@@ -22,6 +21,6 @@ let value: UploadProjectAvatarRateLimit = {
 | Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | `algo`                                                                 | [models.UploadProjectAvatarAlgo](../models/uploadprojectavataralgo.md) | :heavy_check_mark:                                                     | N/A                                                                    |
-| `window`                                                               | *number*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
-| `limit`                                                                | *number*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
 | `keys`                                                                 | *string*[]                                                             | :heavy_check_mark:                                                     | N/A                                                                    |
+| `limit`                                                                | *number*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `window`                                                               | *number*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |

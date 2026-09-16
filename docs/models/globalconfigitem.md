@@ -8,11 +8,11 @@ The Global Config.
 import { GlobalConfigItem } from "@vercel/sdk/models/globalconfigitem.js";
 
 let value: GlobalConfigItem = {
-  key: "<key>",
-  value: {},
+  createdAt: 9101.09,
   edgeConfigId: "<id>",
-  createdAt: 3367.93,
-  updatedAt: 4196.37,
+  key: "<key>",
+  updatedAt: 4700.45,
+  value: 4196.37,
 };
 ```
 
@@ -20,9 +20,9 @@ let value: GlobalConfigItem = {
 
 | Field                          | Type                           | Required                       | Description                    |
 | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
-| `key`                          | *string*                       | :heavy_check_mark:             | N/A                            |
-| `value`                        | *models.GlobalConfigItemValue* | :heavy_check_mark:             | N/A                            |
+| `createdAt`                    | *number*                       | :heavy_check_mark:             | N/A                            |
 | `description`                  | *string*                       | :heavy_minus_sign:             | N/A                            |
 | `edgeConfigId`                 | *string*                       | :heavy_check_mark:             | N/A                            |
-| `createdAt`                    | *number*                       | :heavy_check_mark:             | N/A                            |
+| `key`                          | *string*                       | :heavy_check_mark:             | N/A                            |
 | `updatedAt`                    | *number*                       | :heavy_check_mark:             | N/A                            |
+| `value`                        | *models.GlobalConfigItemValue* | :heavy_check_mark:             | N/A                            |

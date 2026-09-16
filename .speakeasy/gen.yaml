@@ -32,7 +32,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: true
 typescript:
-  version: 1.28.33
+  version: 1.28.34
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
@@ -40,7 +40,8 @@ typescript:
     peerDependencies: {}
   additionalPackageJSON:
     license: Apache-2.0
-  additionalScripts: {}
+  additionalScripts:
+    test: npm run build
   alwaysIncludeInboundAndOutbound: false
   apiPromiseHelpers: false
   author: Speakeasy

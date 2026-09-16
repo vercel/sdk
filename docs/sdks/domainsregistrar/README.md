@@ -9,7 +9,10 @@
 * [getTldPrice](#gettldprice) - Get TLD price data
 * [getDomainAvailability](#getdomainavailability) - Get availability for a domain
 * [getDomainPrice](#getdomainprice) - Get price data for a domain
+* [getBulkPrice](#getbulkprice) - Get price data for multiple domains
 * [getBulkAvailability](#getbulkavailability) - Get availability for multiple domains
+* [searchDomains](#searchdomains) - Check domain availability and pricing
+* [getContactInfoSchema](#getcontactinfoschema) - Get contact info schema
 * [getDomainAuthCode](#getdomainauthcode) - Get the auth code for a domain
 * [buySingleDomain](#buysingledomain) - Buy a domain
 * [buyDomains](#buydomains) - Buy multiple domains
@@ -19,7 +22,6 @@
 * [updateDomainAutoRenew](#updatedomainautorenew) - Update auto-renew for a domain
 * [updateDomainNameservers](#updatedomainnameservers) - Update nameservers for a domain
 * [getDomainContactVerification](#getdomaincontactverification) - Get contact verification status for a domain
-* [getContactInfoSchema](#getcontactinfoschema) - Get contact info schema
 * [getOrder](#getorder) - Get a domain order
 
 ## getSupportedTlds
@@ -32,9 +34,7 @@ Get a list of TLDs supported by Vercel
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
-const vercel = new Vercel({
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-});
+const vercel = new Vercel();
 
 async function run() {
   const result = await vercel.domainsRegistrar.getSupportedTlds({
@@ -57,9 +57,7 @@ import { domainsRegistrarGetSupportedTlds } from "@vercel/sdk/funcs/domainsRegis
 
 // Use `VercelCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const vercel = new VercelCore({
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-});
+const vercel = new VercelCore();
 
 async function run() {
   const res = await domainsRegistrarGetSupportedTlds(vercel, {
@@ -110,9 +108,7 @@ Get the metadata for a specific TLD.
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
-const vercel = new Vercel({
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-});
+const vercel = new Vercel();
 
 async function run() {
   const result = await vercel.domainsRegistrar.getTld({
@@ -136,9 +132,7 @@ import { domainsRegistrarGetTld } from "@vercel/sdk/funcs/domainsRegistrarGetTld
 
 // Use `VercelCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const vercel = new VercelCore({
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-});
+const vercel = new VercelCore();
 
 async function run() {
   const res = await domainsRegistrarGetTld(vercel, {
@@ -191,9 +185,7 @@ Get price data for a specific TLD. This only reflects base prices for the given 
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
-const vercel = new Vercel({
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-});
+const vercel = new Vercel();
 
 async function run() {
   const result = await vercel.domainsRegistrar.getTldPrice({
@@ -217,9 +209,7 @@ import { domainsRegistrarGetTldPrice } from "@vercel/sdk/funcs/domainsRegistrarG
 
 // Use `VercelCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const vercel = new VercelCore({
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-});
+const vercel = new VercelCore();
 
 async function run() {
   const res = await domainsRegistrarGetTldPrice(vercel, {
@@ -272,9 +262,7 @@ Get availability for a specific domain. If the domain is available, it can be pu
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
-const vercel = new Vercel({
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-});
+const vercel = new Vercel();
 
 async function run() {
   const result = await vercel.domainsRegistrar.getDomainAvailability({
@@ -298,9 +286,7 @@ import { domainsRegistrarGetDomainAvailability } from "@vercel/sdk/funcs/domains
 
 // Use `VercelCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const vercel = new VercelCore({
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-});
+const vercel = new VercelCore();
 
 async function run() {
   const res = await domainsRegistrarGetDomainAvailability(vercel, {
@@ -353,9 +339,7 @@ Get price data for a specific domain
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
-const vercel = new Vercel({
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-});
+const vercel = new Vercel();
 
 async function run() {
   const result = await vercel.domainsRegistrar.getDomainPrice({
@@ -379,9 +363,7 @@ import { domainsRegistrarGetDomainPrice } from "@vercel/sdk/funcs/domainsRegistr
 
 // Use `VercelCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const vercel = new VercelCore({
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-});
+const vercel = new VercelCore();
 
 async function run() {
   const res = await domainsRegistrarGetDomainPrice(vercel, {
@@ -426,6 +408,93 @@ run();
 | models.InternalServerError   | 500                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
+## getBulkPrice
+
+Get price data for multiple domains in a single request.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="getBulkPrice" method="post" path="/v1/registrar/domains/price" -->
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel();
+
+async function run() {
+  const result = await vercel.domainsRegistrar.getBulkPrice({
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    requestBody: {
+      domains: [
+        "<value 1>",
+      ],
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import { domainsRegistrarGetBulkPrice } from "@vercel/sdk/funcs/domainsRegistrarGetBulkPrice.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore();
+
+async function run() {
+  const res = await domainsRegistrarGetBulkPrice(vercel, {
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    requestBody: {
+      domains: [
+        "<value 1>",
+      ],
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("domainsRegistrarGetBulkPrice failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.GetBulkPriceRequest](../../models/getbulkpricerequest.md)                                                                                                              | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.GetBulkPriceResponseBody](../../models/getbulkpriceresponsebody.md)\>**
+
+### Errors
+
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| models.BadRequest            | 400                          | application/json             |
+| models.DomainTooShort        | 400                          | application/json             |
+| models.TldNotSupported       | 400                          | application/json             |
+| models.HttpApiDecodeError    | 400                          | application/json             |
+| models.Unauthorized          | 401                          | application/json             |
+| models.NotAuthorizedForScope | 403                          | application/json             |
+| models.TooManyRequests       | 429                          | application/json             |
+| models.InternalServerError   | 500                          | application/json             |
+| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
+
 ## getBulkAvailability
 
 Get availability for multiple domains. If the domains are available, they can be purchased using the [Buy a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/buy-a-domain) endpoint or the [Buy multiple domains](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/buy-multiple-domains) endpoint.
@@ -436,9 +505,7 @@ Get availability for multiple domains. If the domains are available, they can be
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
-const vercel = new Vercel({
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-});
+const vercel = new Vercel();
 
 async function run() {
   const result = await vercel.domainsRegistrar.getBulkAvailability({
@@ -466,9 +533,7 @@ import { domainsRegistrarGetBulkAvailability } from "@vercel/sdk/funcs/domainsRe
 
 // Use `VercelCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const vercel = new VercelCore({
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-});
+const vercel = new VercelCore();
 
 async function run() {
   const res = await domainsRegistrarGetBulkAvailability(vercel, {
@@ -507,6 +572,167 @@ run();
 
 | Error Type                   | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
+| models.HttpApiDecodeError    | 400                          | application/json             |
+| models.Unauthorized          | 401                          | application/json             |
+| models.NotAuthorizedForScope | 403                          | application/json             |
+| models.TooManyRequests       | 429                          | application/json             |
+| models.InternalServerError   | 500                          | application/json             |
+| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
+
+## searchDomains
+
+Check registration availability for 1–200 exact domain names, such as `example.com`. Returns results in input order, with registration and renewal prices in USD for available domains. No authentication required.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="searchDomains" method="post" path="/v1/registrar/domains/search" -->
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel();
+
+async function run() {
+  const result = await vercel.domainsRegistrar.searchDomains({
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    requestBody: {
+      domains: [
+        "<value 1>",
+      ],
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import { domainsRegistrarSearchDomains } from "@vercel/sdk/funcs/domainsRegistrarSearchDomains.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore();
+
+async function run() {
+  const res = await domainsRegistrarSearchDomains(vercel, {
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    requestBody: {
+      domains: [
+        "<value 1>",
+      ],
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("domainsRegistrarSearchDomains failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.SearchDomainsRequest](../../models/searchdomainsrequest.md)                                                                                                            | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.SearchDomainsResponseBody](../../models/searchdomainsresponsebody.md)\>**
+
+### Errors
+
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| models.HttpApiDecodeError    | 400                          | application/json             |
+| models.Unauthorized          | 401                          | application/json             |
+| models.NotAuthorizedForScope | 403                          | application/json             |
+| models.TooManyRequests       | 429                          | application/json             |
+| models.InternalServerError   | 500                          | application/json             |
+| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
+
+## getContactInfoSchema
+
+Some TLDs require additional contact information. Use this endpoint to get the schema for the tld-specific contact information for a domain.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="getContactInfoSchema" method="get" path="/v1/registrar/domains/{domain}/contact-info/schema" -->
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel();
+
+async function run() {
+  const result = await vercel.domainsRegistrar.getContactInfoSchema({
+    domain: "tricky-issue.name",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import { domainsRegistrarGetContactInfoSchema } from "@vercel/sdk/funcs/domainsRegistrarGetContactInfoSchema.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore();
+
+async function run() {
+  const res = await domainsRegistrarGetContactInfoSchema(vercel, {
+    domain: "tricky-issue.name",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("domainsRegistrarGetContactInfoSchema failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.GetContactInfoSchemaRequest](../../models/getcontactinfoschemarequest.md)                                                                                              | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.GetContactInfoSchemaResponseBody](../../models/getcontactinfoschemaresponsebody.md)\>**
+
+### Errors
+
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| models.BadRequest            | 400                          | application/json             |
 | models.HttpApiDecodeError    | 400                          | application/json             |
 | models.Unauthorized          | 401                          | application/json             |
 | models.NotAuthorizedForScope | 403                          | application/json             |
@@ -590,8 +816,8 @@ run();
 | models.DomainNotRegistered              | 400                                     | application/json                        |
 | models.HttpApiDecodeError               | 400                                     | application/json                        |
 | models.Unauthorized                     | 401                                     | application/json                        |
-| models.NotAuthorizedForScope            | 403                                     | application/json                        |
 | models.Forbidden                        | 403                                     | application/json                        |
+| models.NotAuthorizedForScope            | 403                                     | application/json                        |
 | models.DomainNotFound                   | 404                                     | application/json                        |
 | models.DomainCannotBeTransferedOutUntil | 409                                     | application/json                        |
 | models.TooManyRequests                  | 429                                     | application/json                        |
@@ -709,12 +935,13 @@ run();
 | models.AdditionalContactInfoRequired | 400                                  | application/json                     |
 | models.ExpectedPriceMismatch         | 400                                  | application/json                     |
 | models.DomainNotAvailable            | 400                                  | application/json                     |
+| models.EmojiTldNotSupported          | 400                                  | application/json                     |
 | models.LanguageCodeRequired          | 400                                  | application/json                     |
 | models.TldNotSupported               | 400                                  | application/json                     |
 | models.HttpApiDecodeError            | 400                                  | application/json                     |
 | models.Unauthorized                  | 401                                  | application/json                     |
-| models.NotAuthorizedForScope         | 403                                  | application/json                     |
 | models.Forbidden                     | 403                                  | application/json                     |
+| models.NotAuthorizedForScope         | 403                                  | application/json                     |
 | models.TooManyRequests               | 429                                  | application/json                     |
 | models.InternalServerError           | 500                                  | application/json                     |
 | models.SDKError                      | 4XX, 5XX                             | \*/\*                                |
@@ -826,12 +1053,13 @@ run();
 | models.DuplicateDomains              | 400                                  | application/json                     |
 | models.ExpectedPriceMismatch         | 400                                  | application/json                     |
 | models.DomainNotAvailable            | 400                                  | application/json                     |
+| models.EmojiTldNotSupported          | 400                                  | application/json                     |
 | models.LanguageCodeRequired          | 400                                  | application/json                     |
 | models.TldNotSupported               | 400                                  | application/json                     |
 | models.HttpApiDecodeError            | 400                                  | application/json                     |
 | models.Unauthorized                  | 401                                  | application/json                     |
-| models.NotAuthorizedForScope         | 403                                  | application/json                     |
 | models.Forbidden                     | 403                                  | application/json                     |
+| models.NotAuthorizedForScope         | 403                                  | application/json                     |
 | models.TooManyRequests               | 429                                  | application/json                     |
 | models.InternalServerError           | 500                                  | application/json                     |
 | models.SDKError                      | 4XX, 5XX                             | \*/\*                                |
@@ -952,8 +1180,8 @@ run();
 | models.TldNotSupported       | 400                          | application/json             |
 | models.HttpApiDecodeError    | 400                          | application/json             |
 | models.Unauthorized          | 401                          | application/json             |
-| models.NotAuthorizedForScope | 403                          | application/json             |
 | models.Forbidden             | 403                          | application/json             |
+| models.NotAuthorizedForScope | 403                          | application/json             |
 | models.TooManyRequests       | 429                          | application/json             |
 | models.InternalServerError   | 500                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |
@@ -1033,8 +1261,8 @@ run();
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | models.HttpApiDecodeError    | 400                          | application/json             |
 | models.Unauthorized          | 401                          | application/json             |
-| models.NotAuthorizedForScope | 403                          | application/json             |
 | models.Forbidden             | 403                          | application/json             |
+| models.NotAuthorizedForScope | 403                          | application/json             |
 | models.NotFound              | 404                          | application/json             |
 | models.TooManyRequests       | 429                          | application/json             |
 | models.InternalServerError   | 500                          | application/json             |
@@ -1129,8 +1357,8 @@ run();
 | models.TldNotSupported       | 400                          | application/json             |
 | models.HttpApiDecodeError    | 400                          | application/json             |
 | models.Unauthorized          | 401                          | application/json             |
-| models.NotAuthorizedForScope | 403                          | application/json             |
 | models.Forbidden             | 403                          | application/json             |
+| models.NotAuthorizedForScope | 403                          | application/json             |
 | models.DomainNotFound        | 404                          | application/json             |
 | models.TooManyRequests       | 429                          | application/json             |
 | models.InternalServerError   | 500                          | application/json             |
@@ -1220,8 +1448,8 @@ run();
 | models.DomainNotRegistered   | 400                          | application/json             |
 | models.HttpApiDecodeError    | 400                          | application/json             |
 | models.Unauthorized          | 401                          | application/json             |
-| models.NotAuthorizedForScope | 403                          | application/json             |
 | models.Forbidden             | 403                          | application/json             |
+| models.NotAuthorizedForScope | 403                          | application/json             |
 | models.DomainNotFound        | 404                          | application/json             |
 | models.TooManyRequests       | 429                          | application/json             |
 | models.InternalServerError   | 500                          | application/json             |
@@ -1313,8 +1541,8 @@ run();
 | models.DomainNotRegistered   | 400                          | application/json             |
 | models.HttpApiDecodeError    | 400                          | application/json             |
 | models.Unauthorized          | 401                          | application/json             |
-| models.NotAuthorizedForScope | 403                          | application/json             |
 | models.Forbidden             | 403                          | application/json             |
+| models.NotAuthorizedForScope | 403                          | application/json             |
 | models.DomainNotFound        | 404                          | application/json             |
 | models.TooManyRequests       | 429                          | application/json             |
 | models.InternalServerError   | 500                          | application/json             |
@@ -1397,90 +1625,9 @@ run();
 | models.DomainNotRegistered   | 400                          | application/json             |
 | models.HttpApiDecodeError    | 400                          | application/json             |
 | models.Unauthorized          | 401                          | application/json             |
-| models.NotAuthorizedForScope | 403                          | application/json             |
 | models.Forbidden             | 403                          | application/json             |
-| models.DomainNotFound        | 404                          | application/json             |
-| models.TooManyRequests       | 429                          | application/json             |
-| models.InternalServerError   | 500                          | application/json             |
-| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
-
-## getContactInfoSchema
-
-Some TLDs require additional contact information. Use this endpoint to get the schema for the tld-specific contact information for a domain.
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="getContactInfoSchema" method="get" path="/v1/registrar/domains/{domain}/contact-info/schema" -->
-```typescript
-import { Vercel } from "@vercel/sdk";
-
-const vercel = new Vercel({
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-});
-
-async function run() {
-  const result = await vercel.domainsRegistrar.getContactInfoSchema({
-    domain: "tricky-issue.name",
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-  });
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { VercelCore } from "@vercel/sdk/core.js";
-import { domainsRegistrarGetContactInfoSchema } from "@vercel/sdk/funcs/domainsRegistrarGetContactInfoSchema.js";
-
-// Use `VercelCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const vercel = new VercelCore({
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-});
-
-async function run() {
-  const res = await domainsRegistrarGetContactInfoSchema(vercel, {
-    domain: "tricky-issue.name",
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-  });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("domainsRegistrarGetContactInfoSchema failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.GetContactInfoSchemaRequest](../../models/getcontactinfoschemarequest.md)                                                                                              | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[models.GetContactInfoSchemaResponseBody](../../models/getcontactinfoschemaresponsebody.md)\>**
-
-### Errors
-
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models.BadRequest            | 400                          | application/json             |
-| models.HttpApiDecodeError    | 400                          | application/json             |
-| models.Unauthorized          | 401                          | application/json             |
 | models.NotAuthorizedForScope | 403                          | application/json             |
+| models.DomainNotFound        | 404                          | application/json             |
 | models.TooManyRequests       | 429                          | application/json             |
 | models.InternalServerError   | 500                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |

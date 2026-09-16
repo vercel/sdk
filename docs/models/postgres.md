@@ -7,8 +7,8 @@
 
 ```typescript
 const value: models.Postgres1 = {
-  updatedAt: 1277.44,
   blockReason: "limits_exceeded",
+  updatedAt: 1277.44,
   overageReason: "edgeConfigRead",
 };
 ```
@@ -17,8 +17,8 @@ const value: models.Postgres1 = {
 
 ```typescript
 const value: models.Postgres2 = {
-  updatedAt: 7203.88,
-  blockReason: "admin_override",
+  blockReason: "hard_blocked",
+  updatedAt: 367.35,
 };
 ```
 
@@ -26,8 +26,8 @@ const value: models.Postgres2 = {
 
 ```typescript
 const value: models.Postgres2 = {
-  updatedAt: 7203.88,
-  blockReason: "admin_override",
+  blockReason: "hard_blocked",
+  updatedAt: 367.35,
 };
 ```
 

@@ -3,11 +3,10 @@
 ## Example Usage
 
 ```typescript
-import { Alias } from "@vercel/sdk/models/createprojectpasswordprotection.js";
+import { Alias } from "@vercel/sdk/models/createprojectcontenthint2.js";
 
 let value: Alias = {
   deployment: {
-    id: "<id>",
     createdAt: 6834.37,
     createdIn: "<value>",
     creator: {
@@ -16,6 +15,7 @@ let value: Alias = {
       username: "Kellie_Boyer3",
     },
     deploymentHostname: "<value>",
+    id: "<id>",
     name: "<value>",
     plan: "pro",
     previewCommentsEnabled: false,

@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { GetConfigurationProductsUiOptions1 } from "@vercel/sdk/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyuidisabled.js";
+import { GetConfigurationProductsUiOptions1 } from "@vercel/sdk/models/properties7.js";
 
 let value: GetConfigurationProductsUiOptions1 = {
-  value: "<value>",
   label: "<value>",
+  value: "<value>",
 };
 ```
 
@@ -15,8 +15,8 @@ let value: GetConfigurationProductsUiOptions1 = {
 
 | Field                                                          | Type                                                           | Required                                                       | Description                                                    |
 | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| `value`                                                        | *string*                                                       | :heavy_check_mark:                                             | N/A                                                            |
-| `label`                                                        | *string*                                                       | :heavy_check_mark:                                             | N/A                                                            |
 | `description`                                                  | *string*                                                       | :heavy_minus_sign:                                             | N/A                                                            |
 | `disabled`                                                     | *models.GetConfigurationProductsUiOptionsIntegrationsDisabled* | :heavy_minus_sign:                                             | N/A                                                            |
 | `hidden`                                                       | *models.GetConfigurationProductsUiOptionsIntegrationsHidden*   | :heavy_minus_sign:                                             | N/A                                                            |
+| `label`                                                        | *string*                                                       | :heavy_check_mark:                                             | N/A                                                            |
+| `value`                                                        | *string*                                                       | :heavy_check_mark:                                             | N/A                                                            |

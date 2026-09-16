@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { Missing2 } from "@vercel/sdk/models/locale.js";
+import { Missing2 } from "@vercel/sdk/models/canceldeploymentdestinationdeployments2.js";
 
 let value: Missing2 = {
-  type: "cookie",
   key: "<key>",
+  type: "cookie",
 };
 ```
 
@@ -15,6 +15,6 @@ let value: Missing2 = {
 
 | Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
 | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `type`                                                                         | [models.CancelDeploymentMissingType](../models/canceldeploymentmissingtype.md) | :heavy_check_mark:                                                             | N/A                                                                            |
 | `key`                                                                          | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `type`                                                                         | [models.CancelDeploymentMissingType](../models/canceldeploymentmissingtype.md) | :heavy_check_mark:                                                             | N/A                                                                            |
 | `value`                                                                        | *models.CancelDeploymentMissingValue*                                          | :heavy_minus_sign:                                                             | N/A                                                                            |

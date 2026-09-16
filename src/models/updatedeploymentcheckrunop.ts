@@ -56,15 +56,6 @@ export type UpdateDeploymentCheckRunRequest = {
   requestBody?: UpdateDeploymentCheckRunRequestBody | undefined;
 };
 
-export const UpdateDeploymentCheckRunResponseBodyChecksV2Requires = {
-  BuildReady: "build-ready",
-  DeploymentUrl: "deployment-url",
-  None: "none",
-} as const;
-export type UpdateDeploymentCheckRunResponseBodyChecksV2Requires = ClosedEnum<
-  typeof UpdateDeploymentCheckRunResponseBodyChecksV2Requires
->;
-
 export const UpdateDeploymentCheckRunResponseBodyChecksV2Blocks = {
   BuildStart: "build-start",
   DeploymentAlias: "deployment-alias",
@@ -74,15 +65,6 @@ export const UpdateDeploymentCheckRunResponseBodyChecksV2Blocks = {
 } as const;
 export type UpdateDeploymentCheckRunResponseBodyChecksV2Blocks = ClosedEnum<
   typeof UpdateDeploymentCheckRunResponseBodyChecksV2Blocks
->;
-
-export const UpdateDeploymentCheckRunResponseBodyChecksV2Status = {
-  Completed: "completed",
-  Queued: "queued",
-  Running: "running",
-} as const;
-export type UpdateDeploymentCheckRunResponseBodyChecksV2Status = ClosedEnum<
-  typeof UpdateDeploymentCheckRunResponseBodyChecksV2Status
 >;
 
 export const UpdateDeploymentCheckRunResponseBodyChecksV2Conclusion = {
@@ -97,37 +79,55 @@ export type UpdateDeploymentCheckRunResponseBodyChecksV2Conclusion = ClosedEnum<
   typeof UpdateDeploymentCheckRunResponseBodyChecksV2Conclusion
 >;
 
-export const UpdateDeploymentCheckRunSourceChecksV2ResponseOrigin = {
-  Platform: "platform",
+export const UpdateDeploymentCheckRunResponseBodyChecksV2Requires = {
+  BuildReady: "build-ready",
+  DeploymentUrl: "deployment-url",
+  None: "none",
 } as const;
-export type UpdateDeploymentCheckRunSourceChecksV2ResponseOrigin = ClosedEnum<
-  typeof UpdateDeploymentCheckRunSourceChecksV2ResponseOrigin
+export type UpdateDeploymentCheckRunResponseBodyChecksV2Requires = ClosedEnum<
+  typeof UpdateDeploymentCheckRunResponseBodyChecksV2Requires
+>;
+
+export const UpdateDeploymentCheckRunResponseBodyChecksV2Status = {
+  Completed: "completed",
+  Queued: "queued",
+  Running: "running",
+} as const;
+export type UpdateDeploymentCheckRunResponseBodyChecksV2Status = ClosedEnum<
+  typeof UpdateDeploymentCheckRunResponseBodyChecksV2Status
+>;
+
+export const UpdateDeploymentCheckRunSourceChecksV2ResponseSubKind = {
+  VercelCiSentinel: "vercel-ci-sentinel",
+} as const;
+export type UpdateDeploymentCheckRunSourceChecksV2ResponseSubKind = ClosedEnum<
+  typeof UpdateDeploymentCheckRunSourceChecksV2ResponseSubKind
 >;
 
 /**
  * CI sentinel — check run `source` only (no parent check).
  */
 export type UpdateDeploymentCheckRunSourceChecksV22 = {
-  subKind: "vercel-ci-sentinel";
-  origin: UpdateDeploymentCheckRunSourceChecksV2ResponseOrigin;
+  origin: "platform";
+  subKind: UpdateDeploymentCheckRunSourceChecksV2ResponseSubKind;
 };
 
-export const UpdateDeploymentCheckRunSourceChecksV2Origin = {
-  Config: "config",
+export const UpdateDeploymentCheckRunSourceChecksV2SubKind = {
+  VercelCi: "vercel-ci",
 } as const;
-export type UpdateDeploymentCheckRunSourceChecksV2Origin = ClosedEnum<
-  typeof UpdateDeploymentCheckRunSourceChecksV2Origin
+export type UpdateDeploymentCheckRunSourceChecksV2SubKind = ClosedEnum<
+  typeof UpdateDeploymentCheckRunSourceChecksV2SubKind
 >;
 
 /**
  * Config-driven CI task — check run `source` only (no parent check).
  */
 export type UpdateDeploymentCheckRunSourceChecksV21 = {
-  subKind: "vercel-ci";
-  origin: UpdateDeploymentCheckRunSourceChecksV2Origin;
-  invocationId: string;
   invocationAttempt?: number | undefined;
+  invocationId: string;
   jobDefinitionId: string;
+  origin: "config";
+  subKind: UpdateDeploymentCheckRunSourceChecksV2SubKind;
 };
 
 export type UpdateDeploymentCheckRunResponseBodyChecksV2Source =
@@ -138,39 +138,30 @@ export type UpdateDeploymentCheckRunResponseBodyChecksV2Source =
  * Vercel CI check run without a parent `check` (no `checkId` field).
  */
 export type UpdateDeploymentCheckRunResponseBody2 = {
-  id: string;
-  name: string;
-  ownerId: string;
-  deploymentId: string;
-  projectId?: string | undefined;
-  requires?: UpdateDeploymentCheckRunResponseBodyChecksV2Requires | undefined;
   blocks?: UpdateDeploymentCheckRunResponseBodyChecksV2Blocks | undefined;
-  targets?: Array<string> | undefined;
-  status: UpdateDeploymentCheckRunResponseBodyChecksV2Status;
+  completedAt?: number | undefined;
   conclusion?:
     | UpdateDeploymentCheckRunResponseBodyChecksV2Conclusion
     | undefined;
   conclusionText?: string | undefined;
+  createdAt: number;
+  deploymentId: string;
   externalId?: string | undefined;
   externalUrl?: string | undefined;
+  id: string;
+  name: string;
   output?: { [k: string]: any } | undefined;
+  ownerId: string;
+  projectId?: string | undefined;
+  requires?: UpdateDeploymentCheckRunResponseBodyChecksV2Requires | undefined;
+  status: UpdateDeploymentCheckRunResponseBodyChecksV2Status;
+  targets?: Array<string> | undefined;
   timeout: number;
-  createdAt: number;
   updatedAt: number;
-  completedAt?: number | undefined;
   source:
     | UpdateDeploymentCheckRunSourceChecksV21
     | UpdateDeploymentCheckRunSourceChecksV22;
 };
-
-export const UpdateDeploymentCheckRunResponseBodyRequires = {
-  BuildReady: "build-ready",
-  DeploymentUrl: "deployment-url",
-  None: "none",
-} as const;
-export type UpdateDeploymentCheckRunResponseBodyRequires = ClosedEnum<
-  typeof UpdateDeploymentCheckRunResponseBodyRequires
->;
 
 export const UpdateDeploymentCheckRunResponseBodyBlocks = {
   BuildStart: "build-start",
@@ -181,15 +172,6 @@ export const UpdateDeploymentCheckRunResponseBodyBlocks = {
 } as const;
 export type UpdateDeploymentCheckRunResponseBodyBlocks = ClosedEnum<
   typeof UpdateDeploymentCheckRunResponseBodyBlocks
->;
-
-export const UpdateDeploymentCheckRunResponseBodyStatus = {
-  Completed: "completed",
-  Queued: "queued",
-  Running: "running",
-} as const;
-export type UpdateDeploymentCheckRunResponseBodyStatus = ClosedEnum<
-  typeof UpdateDeploymentCheckRunResponseBodyStatus
 >;
 
 export const UpdateDeploymentCheckRunResponseBodyConclusion = {
@@ -204,11 +186,22 @@ export type UpdateDeploymentCheckRunResponseBodyConclusion = ClosedEnum<
   typeof UpdateDeploymentCheckRunResponseBodyConclusion
 >;
 
-export const UpdateDeploymentCheckRunSourceSubKind = {
-  VercelNativeCheck: "vercel-native-check",
+export const UpdateDeploymentCheckRunResponseBodyRequires = {
+  BuildReady: "build-ready",
+  DeploymentUrl: "deployment-url",
+  None: "none",
 } as const;
-export type UpdateDeploymentCheckRunSourceSubKind = ClosedEnum<
-  typeof UpdateDeploymentCheckRunSourceSubKind
+export type UpdateDeploymentCheckRunResponseBodyRequires = ClosedEnum<
+  typeof UpdateDeploymentCheckRunResponseBodyRequires
+>;
+
+export const UpdateDeploymentCheckRunResponseBodyStatus = {
+  Completed: "completed",
+  Queued: "queued",
+  Running: "running",
+} as const;
+export type UpdateDeploymentCheckRunResponseBodyStatus = ClosedEnum<
+  typeof UpdateDeploymentCheckRunResponseBodyStatus
 >;
 
 export const UpdateDeploymentCheckRunSourceOrigin = {
@@ -219,12 +212,19 @@ export type UpdateDeploymentCheckRunSourceOrigin = ClosedEnum<
   typeof UpdateDeploymentCheckRunSourceOrigin
 >;
 
+export const UpdateDeploymentCheckRunSourceSubKind = {
+  VercelNativeCheck: "vercel-native-check",
+} as const;
+export type UpdateDeploymentCheckRunSourceSubKind = ClosedEnum<
+  typeof UpdateDeploymentCheckRunSourceSubKind
+>;
+
 /**
  * Native Vercel checks — check definition and check run `source`.
  */
 export type UpdateDeploymentCheckRunSource4 = {
-  subKind?: UpdateDeploymentCheckRunSourceSubKind | undefined;
   origin?: UpdateDeploymentCheckRunSourceOrigin | undefined;
+  subKind?: UpdateDeploymentCheckRunSourceSubKind | undefined;
 };
 
 export const UpdateDeploymentCheckRunSourceChecksV2ResponseKind = {
@@ -244,9 +244,9 @@ export type UpdateDeploymentCheckRunSourceProvider = ClosedEnum<
 >;
 
 export type UpdateDeploymentCheckRunSource3 = {
+  externalCheckName: string;
   kind: UpdateDeploymentCheckRunSourceChecksV2ResponseKind;
   provider: UpdateDeploymentCheckRunSourceProvider;
-  externalCheckName: string;
 };
 
 export const UpdateDeploymentCheckRunSourceChecksV2Kind = {
@@ -269,11 +269,11 @@ export type UpdateDeploymentCheckRunSourceKind = ClosedEnum<
 >;
 
 export type UpdateDeploymentCheckRunSource1 = {
-  kind: UpdateDeploymentCheckRunSourceKind;
-  integrationId: string;
-  integrationConfigurationId: string;
-  resourceId?: string | undefined;
   externalResourceId?: string | undefined;
+  integrationConfigurationId: string;
+  integrationId: string;
+  kind: UpdateDeploymentCheckRunSourceKind;
+  resourceId?: string | undefined;
 };
 
 export type UpdateDeploymentCheckRunResponseBodySource =
@@ -286,24 +286,24 @@ export type UpdateDeploymentCheckRunResponseBodySource =
  * Check run backed by a project-level `check` definition.
  */
 export type UpdateDeploymentCheckRunResponseBody1 = {
-  id: string;
-  name: string;
-  ownerId: string;
-  deploymentId: string;
-  projectId?: string | undefined;
-  requires?: UpdateDeploymentCheckRunResponseBodyRequires | undefined;
   blocks?: UpdateDeploymentCheckRunResponseBodyBlocks | undefined;
-  targets?: Array<string> | undefined;
-  status: UpdateDeploymentCheckRunResponseBodyStatus;
+  completedAt?: number | undefined;
   conclusion?: UpdateDeploymentCheckRunResponseBodyConclusion | undefined;
   conclusionText?: string | undefined;
+  createdAt: number;
+  deploymentId: string;
   externalId?: string | undefined;
   externalUrl?: string | undefined;
+  id: string;
+  name: string;
   output?: { [k: string]: any } | undefined;
+  ownerId: string;
+  projectId?: string | undefined;
+  requires?: UpdateDeploymentCheckRunResponseBodyRequires | undefined;
+  status: UpdateDeploymentCheckRunResponseBodyStatus;
+  targets?: Array<string> | undefined;
   timeout: number;
-  createdAt: number;
   updatedAt: number;
-  completedAt?: number | undefined;
   checkId: string;
   source:
     | UpdateDeploymentCheckRunSource1
@@ -413,19 +413,9 @@ export function updateDeploymentCheckRunRequestToJSON(
 }
 
 /** @internal */
-export const UpdateDeploymentCheckRunResponseBodyChecksV2Requires$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunResponseBodyChecksV2Requires> =
-    z.nativeEnum(UpdateDeploymentCheckRunResponseBodyChecksV2Requires);
-
-/** @internal */
 export const UpdateDeploymentCheckRunResponseBodyChecksV2Blocks$inboundSchema:
   z.ZodNativeEnum<typeof UpdateDeploymentCheckRunResponseBodyChecksV2Blocks> = z
     .nativeEnum(UpdateDeploymentCheckRunResponseBodyChecksV2Blocks);
-
-/** @internal */
-export const UpdateDeploymentCheckRunResponseBodyChecksV2Status$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunResponseBodyChecksV2Status> = z
-    .nativeEnum(UpdateDeploymentCheckRunResponseBodyChecksV2Status);
 
 /** @internal */
 export const UpdateDeploymentCheckRunResponseBodyChecksV2Conclusion$inboundSchema:
@@ -434,9 +424,20 @@ export const UpdateDeploymentCheckRunResponseBodyChecksV2Conclusion$inboundSchem
   > = z.nativeEnum(UpdateDeploymentCheckRunResponseBodyChecksV2Conclusion);
 
 /** @internal */
-export const UpdateDeploymentCheckRunSourceChecksV2ResponseOrigin$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunSourceChecksV2ResponseOrigin> =
-    z.nativeEnum(UpdateDeploymentCheckRunSourceChecksV2ResponseOrigin);
+export const UpdateDeploymentCheckRunResponseBodyChecksV2Requires$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunResponseBodyChecksV2Requires> =
+    z.nativeEnum(UpdateDeploymentCheckRunResponseBodyChecksV2Requires);
+
+/** @internal */
+export const UpdateDeploymentCheckRunResponseBodyChecksV2Status$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunResponseBodyChecksV2Status> = z
+    .nativeEnum(UpdateDeploymentCheckRunResponseBodyChecksV2Status);
+
+/** @internal */
+export const UpdateDeploymentCheckRunSourceChecksV2ResponseSubKind$inboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateDeploymentCheckRunSourceChecksV2ResponseSubKind
+  > = z.nativeEnum(UpdateDeploymentCheckRunSourceChecksV2ResponseSubKind);
 
 /** @internal */
 export const UpdateDeploymentCheckRunSourceChecksV22$inboundSchema: z.ZodType<
@@ -444,8 +445,8 @@ export const UpdateDeploymentCheckRunSourceChecksV22$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  subKind: types.literal("vercel-ci-sentinel"),
-  origin: UpdateDeploymentCheckRunSourceChecksV2ResponseOrigin$inboundSchema,
+  origin: types.literal("platform"),
+  subKind: UpdateDeploymentCheckRunSourceChecksV2ResponseSubKind$inboundSchema,
 });
 
 export function updateDeploymentCheckRunSourceChecksV22FromJSON(
@@ -465,9 +466,9 @@ export function updateDeploymentCheckRunSourceChecksV22FromJSON(
 }
 
 /** @internal */
-export const UpdateDeploymentCheckRunSourceChecksV2Origin$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunSourceChecksV2Origin> = z
-    .nativeEnum(UpdateDeploymentCheckRunSourceChecksV2Origin);
+export const UpdateDeploymentCheckRunSourceChecksV2SubKind$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunSourceChecksV2SubKind> = z
+    .nativeEnum(UpdateDeploymentCheckRunSourceChecksV2SubKind);
 
 /** @internal */
 export const UpdateDeploymentCheckRunSourceChecksV21$inboundSchema: z.ZodType<
@@ -475,11 +476,11 @@ export const UpdateDeploymentCheckRunSourceChecksV21$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  subKind: types.literal("vercel-ci"),
-  origin: UpdateDeploymentCheckRunSourceChecksV2Origin$inboundSchema,
-  invocationId: types.string(),
   invocationAttempt: types.optional(types.number()),
+  invocationId: types.string(),
   jobDefinitionId: types.string(),
+  origin: types.literal("config"),
+  subKind: UpdateDeploymentCheckRunSourceChecksV2SubKind$inboundSchema,
 });
 
 export function updateDeploymentCheckRunSourceChecksV21FromJSON(
@@ -531,30 +532,30 @@ export const UpdateDeploymentCheckRunResponseBody2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: types.string(),
-  name: types.string(),
-  ownerId: types.string(),
-  deploymentId: types.string(),
-  projectId: types.optional(types.string()),
-  requires: types.optional(
-    UpdateDeploymentCheckRunResponseBodyChecksV2Requires$inboundSchema,
-  ),
   blocks: types.optional(
     UpdateDeploymentCheckRunResponseBodyChecksV2Blocks$inboundSchema,
   ),
-  targets: types.optional(z.array(types.string())),
-  status: UpdateDeploymentCheckRunResponseBodyChecksV2Status$inboundSchema,
+  completedAt: types.optional(types.number()),
   conclusion: types.optional(
     UpdateDeploymentCheckRunResponseBodyChecksV2Conclusion$inboundSchema,
   ),
   conclusionText: types.optional(types.string()),
+  createdAt: types.number(),
+  deploymentId: types.string(),
   externalId: types.optional(types.string()),
   externalUrl: types.optional(types.string()),
+  id: types.string(),
+  name: types.string(),
   output: types.optional(z.record(z.any())),
+  ownerId: types.string(),
+  projectId: types.optional(types.string()),
+  requires: types.optional(
+    UpdateDeploymentCheckRunResponseBodyChecksV2Requires$inboundSchema,
+  ),
+  status: UpdateDeploymentCheckRunResponseBodyChecksV2Status$inboundSchema,
+  targets: types.optional(z.array(types.string())),
   timeout: types.number(),
-  createdAt: types.number(),
   updatedAt: types.number(),
-  completedAt: types.optional(types.number()),
   source: z.union([
     z.lazy(() => UpdateDeploymentCheckRunSourceChecksV21$inboundSchema),
     z.lazy(() => UpdateDeploymentCheckRunSourceChecksV22$inboundSchema),
@@ -573,19 +574,9 @@ export function updateDeploymentCheckRunResponseBody2FromJSON(
 }
 
 /** @internal */
-export const UpdateDeploymentCheckRunResponseBodyRequires$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunResponseBodyRequires> = z
-    .nativeEnum(UpdateDeploymentCheckRunResponseBodyRequires);
-
-/** @internal */
 export const UpdateDeploymentCheckRunResponseBodyBlocks$inboundSchema:
   z.ZodNativeEnum<typeof UpdateDeploymentCheckRunResponseBodyBlocks> = z
     .nativeEnum(UpdateDeploymentCheckRunResponseBodyBlocks);
-
-/** @internal */
-export const UpdateDeploymentCheckRunResponseBodyStatus$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunResponseBodyStatus> = z
-    .nativeEnum(UpdateDeploymentCheckRunResponseBodyStatus);
 
 /** @internal */
 export const UpdateDeploymentCheckRunResponseBodyConclusion$inboundSchema:
@@ -593,10 +584,14 @@ export const UpdateDeploymentCheckRunResponseBodyConclusion$inboundSchema:
     .nativeEnum(UpdateDeploymentCheckRunResponseBodyConclusion);
 
 /** @internal */
-export const UpdateDeploymentCheckRunSourceSubKind$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunSourceSubKind> = z.nativeEnum(
-    UpdateDeploymentCheckRunSourceSubKind,
-  );
+export const UpdateDeploymentCheckRunResponseBodyRequires$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunResponseBodyRequires> = z
+    .nativeEnum(UpdateDeploymentCheckRunResponseBodyRequires);
+
+/** @internal */
+export const UpdateDeploymentCheckRunResponseBodyStatus$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunResponseBodyStatus> = z
+    .nativeEnum(UpdateDeploymentCheckRunResponseBodyStatus);
 
 /** @internal */
 export const UpdateDeploymentCheckRunSourceOrigin$inboundSchema:
@@ -605,13 +600,19 @@ export const UpdateDeploymentCheckRunSourceOrigin$inboundSchema:
   );
 
 /** @internal */
+export const UpdateDeploymentCheckRunSourceSubKind$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunSourceSubKind> = z.nativeEnum(
+    UpdateDeploymentCheckRunSourceSubKind,
+  );
+
+/** @internal */
 export const UpdateDeploymentCheckRunSource4$inboundSchema: z.ZodType<
   UpdateDeploymentCheckRunSource4,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  subKind: types.optional(UpdateDeploymentCheckRunSourceSubKind$inboundSchema),
   origin: types.optional(UpdateDeploymentCheckRunSourceOrigin$inboundSchema),
+  subKind: types.optional(UpdateDeploymentCheckRunSourceSubKind$inboundSchema),
 });
 
 export function updateDeploymentCheckRunSource4FromJSON(
@@ -641,9 +642,9 @@ export const UpdateDeploymentCheckRunSource3$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  externalCheckName: types.string(),
   kind: UpdateDeploymentCheckRunSourceChecksV2ResponseKind$inboundSchema,
   provider: UpdateDeploymentCheckRunSourceProvider$inboundSchema,
-  externalCheckName: types.string(),
 });
 
 export function updateDeploymentCheckRunSource3FromJSON(
@@ -692,11 +693,11 @@ export const UpdateDeploymentCheckRunSource1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  kind: UpdateDeploymentCheckRunSourceKind$inboundSchema,
-  integrationId: types.string(),
-  integrationConfigurationId: types.string(),
-  resourceId: types.optional(types.string()),
   externalResourceId: types.optional(types.string()),
+  integrationConfigurationId: types.string(),
+  integrationId: types.string(),
+  kind: UpdateDeploymentCheckRunSourceKind$inboundSchema,
+  resourceId: types.optional(types.string()),
 });
 
 export function updateDeploymentCheckRunSource1FromJSON(
@@ -741,30 +742,30 @@ export const UpdateDeploymentCheckRunResponseBody1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: types.string(),
-  name: types.string(),
-  ownerId: types.string(),
-  deploymentId: types.string(),
-  projectId: types.optional(types.string()),
-  requires: types.optional(
-    UpdateDeploymentCheckRunResponseBodyRequires$inboundSchema,
-  ),
   blocks: types.optional(
     UpdateDeploymentCheckRunResponseBodyBlocks$inboundSchema,
   ),
-  targets: types.optional(z.array(types.string())),
-  status: UpdateDeploymentCheckRunResponseBodyStatus$inboundSchema,
+  completedAt: types.optional(types.number()),
   conclusion: types.optional(
     UpdateDeploymentCheckRunResponseBodyConclusion$inboundSchema,
   ),
   conclusionText: types.optional(types.string()),
+  createdAt: types.number(),
+  deploymentId: types.string(),
   externalId: types.optional(types.string()),
   externalUrl: types.optional(types.string()),
+  id: types.string(),
+  name: types.string(),
   output: types.optional(z.record(z.any())),
+  ownerId: types.string(),
+  projectId: types.optional(types.string()),
+  requires: types.optional(
+    UpdateDeploymentCheckRunResponseBodyRequires$inboundSchema,
+  ),
+  status: UpdateDeploymentCheckRunResponseBodyStatus$inboundSchema,
+  targets: types.optional(z.array(types.string())),
   timeout: types.number(),
-  createdAt: types.number(),
   updatedAt: types.number(),
-  completedAt: types.optional(types.number()),
   checkId: types.string(),
   source: smartUnion([
     z.lazy(() => UpdateDeploymentCheckRunSource1$inboundSchema),

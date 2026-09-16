@@ -11,8 +11,8 @@ let value: Three2 = {
   deploymentId: "<id>",
   id: "<id>",
   info: {
-    type: "<value>",
     name: "<value>",
+    type: "<value>",
   },
   serial: "<value>",
   type: "middleware-invocation",
@@ -28,7 +28,7 @@ let value: Three2 = {
 | `deploymentId`                                                           | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
 | `id`                                                                     | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
 | `info`                                                                   | [models.ThreeInfo](../models/threeinfo.md)                               | :heavy_check_mark:                                                       | N/A                                                                      |
+| `level`                                                                  | [models.ThreeLevel](../models/threelevel.md)                             | :heavy_minus_sign:                                                       | N/A                                                                      |
 | `serial`                                                                 | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
 | `text`                                                                   | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
 | `type`                                                                   | [models.GetDeploymentEvents3Type](../models/getdeploymentevents3type.md) | :heavy_check_mark:                                                       | N/A                                                                      |
-| `level`                                                                  | [models.ThreeLevel](../models/threelevel.md)                             | :heavy_minus_sign:                                                       | N/A                                                                      |

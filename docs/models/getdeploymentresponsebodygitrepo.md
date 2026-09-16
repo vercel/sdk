@@ -7,15 +7,15 @@
 
 ```typescript
 const value: models.GetDeploymentGitRepo1 = {
-  namespace: "<value>",
-  projectId: 4314.42,
-  type: "gitlab",
-  url: "https://crushing-willow.org/",
-  path: "/usr/share",
   defaultBranch: "<value>",
   name: "<value>",
-  private: false,
-  ownerType: "user",
+  namespace: "<value>",
+  ownerType: "team",
+  path: "/home",
+  private: true,
+  projectId: 9877.04,
+  type: "gitlab",
+  url: "https://twin-populist.name",
 };
 ```
 
@@ -23,16 +23,16 @@ const value: models.GetDeploymentGitRepo1 = {
 
 ```typescript
 const value: models.GetDeploymentGitRepo2 = {
-  org: "<value>",
-  repo: "<value>",
-  repoId: 5109.9,
-  type: "github",
-  repoOwnerId: 8818.8,
-  path: "/etc/defaults",
   defaultBranch: "<value>",
   name: "<value>",
-  private: true,
+  org: "<value>",
   ownerType: "user",
+  path: "/usr/share",
+  private: true,
+  repo: "<value>",
+  repoId: 2554.02,
+  repoOwnerId: 7790.38,
+  type: "github",
 };
 ```
 
@@ -40,16 +40,16 @@ const value: models.GetDeploymentGitRepo2 = {
 
 ```typescript
 const value: models.GetDeploymentGitRepo3 = {
+  defaultBranch: "<value>",
+  name: "<value>",
   owner: "<value>",
+  ownerType: "user",
+  path: "/Library",
+  private: true,
   repoUuid: "<id>",
   slug: "<value>",
   type: "bitbucket",
   workspaceUuid: "<id>",
-  path: "/usr/include",
-  defaultBranch: "<value>",
-  name: "<value>",
-  private: true,
-  ownerType: "team",
 };
 ```
 
@@ -57,14 +57,14 @@ const value: models.GetDeploymentGitRepo3 = {
 
 ```typescript
 const value: models.GetDeploymentGitRepo4 = {
-  org: "<value>",
-  repo: "<value>",
-  type: "vercel",
-  path: "/etc/namedb",
   defaultBranch: "<value>",
   name: "<value>",
+  org: "<value>",
+  ownerType: "team",
+  path: "/sbin",
   private: false,
-  ownerType: "user",
+  repo: "<value>",
+  type: "vercel",
 };
 ```
 
@@ -72,15 +72,15 @@ const value: models.GetDeploymentGitRepo4 = {
 
 ```typescript
 const value: models.GetDeploymentGitRepo5 = {
+  defaultBranch: "<value>",
+  name: "<value>",
   owner: "<value>",
+  ownerType: "team",
+  path: "/root",
+  private: false,
   repo: "<value>",
   repoId: "<id>",
   type: "cursor-origin",
-  path: "/bin",
-  defaultBranch: "<value>",
-  name: "<value>",
-  private: false,
-  ownerType: "user",
 };
 ```
 

@@ -11,8 +11,8 @@ Successful response retrieving a list of domains
 const value: models.GetProjectDomainsResponseBody1 = {
   domains: [
     {
-      name: "<value>",
       apexName: "<value>",
+      name: "<value>",
       projectId: "<id>",
       verified: true,
     },
@@ -31,8 +31,8 @@ const value: models.GetProjectDomainsResponseBody1 = {
 const value: models.GetProjectDomainsResponseBody2 = {
   domains: [
     {
-      name: "<value>",
       apexName: "<value>",
+      name: "<value>",
       projectId: "<id>",
       verified: true,
     },

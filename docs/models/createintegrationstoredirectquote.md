@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { CreateIntegrationStoreDirectQuote } from "@vercel/sdk/models/createintegrationstoredirectresponsebody.js";
+import { CreateIntegrationStoreDirectQuote } from "@vercel/sdk/models/createintegrationstoredirectpropertiesintegrationsresponse200uioptions.js";
 
 let value: CreateIntegrationStoreDirectQuote = {
-  line: "<value>",
   amount: "718.56",
+  line: "<value>",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: CreateIntegrationStoreDirectQuote = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `line`             | *string*           | :heavy_check_mark: | N/A                |
 | `amount`           | *string*           | :heavy_check_mark: | N/A                |
+| `line`             | *string*           | :heavy_check_mark: | N/A                |

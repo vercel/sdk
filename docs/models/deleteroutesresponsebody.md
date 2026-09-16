@@ -8,10 +8,10 @@ import { DeleteRoutesResponseBody } from "@vercel/sdk/models/deleteroutesop.js";
 let value: DeleteRoutesResponseBody = {
   deletedCount: 1232.35,
   version: {
-    id: "<id>",
-    s3Key: "<value>",
-    lastModified: 2798.46,
     createdBy: "<value>",
+    id: "<id>",
+    lastModified: 2798.46,
+    s3Key: "<value>",
   },
 };
 ```

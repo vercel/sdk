@@ -7,25 +7,20 @@
 
 ```typescript
 const value: models.Flag = {
-  variants: [
-    {
-      value: false,
-      id: "<id>",
-    },
-  ],
-  id: "<id>",
-  environments: {},
-  kind: "string",
-  revision: 6977.76,
-  seed: 4972.47,
-  state: "archived",
-  slug: "<value>",
-  createdAt: 3631.95,
-  updatedAt: 9866.32,
+  createdAt: 5233.11,
   createdBy: "<value>",
+  environments: {},
+  id: "<id>",
+  kind: "string",
   ownerId: "<id>",
   projectId: "<id>",
+  revision: 7245.99,
+  seed: 4797.93,
+  slug: "<value>",
+  state: "archived",
   typeName: "flag",
+  updatedAt: 6977.76,
+  variants: [],
 };
 ```
 
@@ -33,16 +28,16 @@ const value: models.Flag = {
 
 ```typescript
 const value: models.MarketplaceFlag = {
-  typeName: "marketplaceFlag",
-  id: "<id>",
   externalId: "<id>",
-  slug: "<value>",
+  id: "<id>",
+  integrationConfigurationId: "<id>",
   origin: "<value>",
   ownerId: "<id>",
   projectId: "<id>",
   resourceId: "<id>",
-  integrationConfigurationId: "<id>",
+  slug: "<value>",
   state: "archived",
+  typeName: "marketplaceFlag",
 };
 ```
 

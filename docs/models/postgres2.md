@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { Postgres2 } from "@vercel/sdk/models/usereventpayloadtarget.js";
+import { Postgres2 } from "@vercel/sdk/models/usereventpayload171newownerfeatureblocksworkflowstoragewriteblockreason.js";
 
 let value: Postgres2 = {
-  updatedAt: 7203.88,
-  blockReason: "admin_override",
+  blockReason: "hard_blocked",
+  updatedAt: 367.35,
 };
 ```
 
@@ -15,7 +15,7 @@ let value: Postgres2 = {
 
 | Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
 | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `updatedAt`                                                                      | *number*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
 | `blockedFrom`                                                                    | *number*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
 | `blockedUntil`                                                                   | *number*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
 | `blockReason`                                                                    | [models.UserEventPostgresBlockReason](../models/usereventpostgresblockreason.md) | :heavy_check_mark:                                                               | N/A                                                                              |
+| `updatedAt`                                                                      | *number*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |

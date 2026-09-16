@@ -6,12 +6,12 @@
 import { GetAllLogDrainsDelivery2 } from "@vercel/sdk/models/getalllogdrainsop.js";
 
 let value: GetAllLogDrainsDelivery2 = {
-  type: "otlphttp",
+  encoding: "proto",
   endpoint: {
     traces: "<value>",
   },
-  encoding: "proto",
   headers: {},
+  type: "otlphttp",
 };
 ```
 
@@ -19,8 +19,8 @@ let value: GetAllLogDrainsDelivery2 = {
 
 | Field                                                                                                                          | Type                                                                                                                           | Required                                                                                                                       | Description                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
-| `type`                                                                                                                         | *"otlphttp"*                                                                                                                   | :heavy_check_mark:                                                                                                             | N/A                                                                                                                            |
-| `endpoint`                                                                                                                     | [models.GetAllLogDrainsDeliveryLogDrainsEndpoint](../models/getalllogdrainsdeliverylogdrainsendpoint.md)                       | :heavy_check_mark:                                                                                                             | N/A                                                                                                                            |
 | `encoding`                                                                                                                     | [models.GetAllLogDrainsDeliveryLogDrainsResponse200Encoding](../models/getalllogdrainsdeliverylogdrainsresponse200encoding.md) | :heavy_check_mark:                                                                                                             | N/A                                                                                                                            |
+| `endpoint`                                                                                                                     | [models.GetAllLogDrainsDeliveryLogDrainsEndpoint](../models/getalllogdrainsdeliverylogdrainsendpoint.md)                       | :heavy_check_mark:                                                                                                             | N/A                                                                                                                            |
 | `headers`                                                                                                                      | Record<string, *string*>                                                                                                       | :heavy_check_mark:                                                                                                             | N/A                                                                                                                            |
 | `secret`                                                                                                                       | *models.GetAllLogDrainsDeliveryLogDrainsSecret*                                                                                | :heavy_minus_sign:                                                                                                             | N/A                                                                                                                            |
+| `type`                                                                                                                         | *"otlphttp"*                                                                                                                   | :heavy_check_mark:                                                                                                             | N/A                                                                                                                            |

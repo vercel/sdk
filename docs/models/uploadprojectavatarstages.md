@@ -5,13 +5,13 @@ An array of all the stages required during a deployment release. Each stage defi
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarStages } from "@vercel/sdk/models/uploadprojectavatarprojectsbuildmachinetype.js";
+import { UploadProjectAvatarStages } from "@vercel/sdk/models/uploadprojectavatarfrom.js";
 
 let value: UploadProjectAvatarStages = {
-  targetPercentage: 25,
-  requireApproval: false,
   duration: 600,
   linearShift: false,
+  requireApproval: false,
+  targetPercentage: 25,
 };
 ```
 
@@ -19,7 +19,7 @@ let value: UploadProjectAvatarStages = {
 
 | Field                                                               | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `targetPercentage`                                                  | *number*                                                            | :heavy_check_mark:                                                  | The percentage of traffic to serve to the canary deployment (0-100) | 25                                                                  |
-| `requireApproval`                                                   | *boolean*                                                           | :heavy_minus_sign:                                                  | Whether or not this stage requires manual approval to proceed       | false                                                               |
 | `duration`                                                          | *number*                                                            | :heavy_minus_sign:                                                  | Duration in minutes for automatic advancement to the next stage     | 600                                                                 |
 | `linearShift`                                                       | *boolean*                                                           | :heavy_minus_sign:                                                  | Whether to linearly shift traffic over the duration of this stage   | false                                                               |
+| `requireApproval`                                                   | *boolean*                                                           | :heavy_minus_sign:                                                  | Whether or not this stage requires manual approval to proceed       | false                                                               |
+| `targetPercentage`                                                  | *number*                                                            | :heavy_check_mark:                                                  | The percentage of traffic to serve to the canary deployment (0-100) | 25                                                                  |

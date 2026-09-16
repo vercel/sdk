@@ -7,8 +7,8 @@
 
 ```typescript
 const value: models.UpdateMicrofrontendsTrustedIps1 = {
-  deploymentType: "all",
   addresses: [],
+  deploymentType: "all",
   protectionMode: "exclusive",
 };
 ```

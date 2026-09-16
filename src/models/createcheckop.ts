@@ -53,13 +53,6 @@ export type CreateCheckRequest = {
   requestBody: CreateCheckRequestBody;
 };
 
-export const CreateCheckStatus = {
-  Completed: "completed",
-  Registered: "registered",
-  Running: "running",
-} as const;
-export type CreateCheckStatus = ClosedEnum<typeof CreateCheckStatus>;
-
 export const CreateCheckConclusion = {
   Canceled: "canceled",
   Failed: "failed",
@@ -75,10 +68,10 @@ export const CreateCheckSource = {
 } as const;
 export type CreateCheckSource = ClosedEnum<typeof CreateCheckSource>;
 
-export type CreateCheckFCP = {
-  value: number | null;
+export type CreateCheckCLS = {
   previousValue?: number | undefined;
   source: CreateCheckSource;
+  value: number | null;
 };
 
 export const CreateCheckChecksSource = {
@@ -88,10 +81,10 @@ export type CreateCheckChecksSource = ClosedEnum<
   typeof CreateCheckChecksSource
 >;
 
-export type CreateCheckLCP = {
-  value: number | null;
+export type CreateCheckFCP = {
   previousValue?: number | undefined;
   source: CreateCheckChecksSource;
+  value: number | null;
 };
 
 export const CreateCheckChecksResponseSource = {
@@ -101,10 +94,10 @@ export type CreateCheckChecksResponseSource = ClosedEnum<
   typeof CreateCheckChecksResponseSource
 >;
 
-export type CreateCheckCLS = {
-  value: number | null;
+export type CreateCheckLCP = {
   previousValue?: number | undefined;
   source: CreateCheckChecksResponseSource;
+  value: number | null;
 };
 
 export const CreateCheckChecksResponse200Source = {
@@ -115,9 +108,9 @@ export type CreateCheckChecksResponse200Source = ClosedEnum<
 >;
 
 export type CreateCheckTBT = {
-  value: number | null;
   previousValue?: number | undefined;
   source: CreateCheckChecksResponse200Source;
+  value: number | null;
 };
 
 export const CreateCheckChecksResponse200ApplicationJSONSource = {
@@ -128,15 +121,15 @@ export type CreateCheckChecksResponse200ApplicationJSONSource = ClosedEnum<
 >;
 
 export type CreateCheckVirtualExperienceScore = {
-  value: number | null;
   previousValue?: number | undefined;
   source: CreateCheckChecksResponse200ApplicationJSONSource;
+  value: number | null;
 };
 
 export type CreateCheckMetrics = {
+  cls: CreateCheckCLS;
   fcp: CreateCheckFCP;
   lcp: CreateCheckLCP;
-  cls: CreateCheckCLS;
   tbt: CreateCheckTBT;
   virtualExperienceScore?: CreateCheckVirtualExperienceScore | undefined;
 };
@@ -145,23 +138,30 @@ export type CreateCheckOutput = {
   metrics?: CreateCheckMetrics | undefined;
 };
 
+export const CreateCheckStatus = {
+  Completed: "completed",
+  Registered: "registered",
+  Running: "running",
+} as const;
+export type CreateCheckStatus = ClosedEnum<typeof CreateCheckStatus>;
+
 export type CreateCheckResponseBody = {
-  id: string;
-  name: string;
-  createdAt: number;
-  updatedAt: number;
-  deploymentId: string;
-  status: CreateCheckStatus;
-  conclusion?: CreateCheckConclusion | undefined;
-  externalId?: string | undefined;
-  output?: CreateCheckOutput | undefined;
-  completedAt?: number | undefined;
-  path?: string | undefined;
   blocking: boolean;
+  completedAt?: number | undefined;
+  conclusion?: CreateCheckConclusion | undefined;
+  createdAt: number;
+  deploymentId: string;
   detailsUrl?: string | undefined;
+  externalId?: string | undefined;
+  id: string;
   integrationId: string;
-  startedAt?: number | undefined;
+  name: string;
+  output?: CreateCheckOutput | undefined;
+  path?: string | undefined;
   rerequestable?: boolean | undefined;
+  startedAt?: number | undefined;
+  status: CreateCheckStatus;
+  updatedAt: number;
 };
 
 /** @internal */
@@ -229,11 +229,6 @@ export function createCheckRequestToJSON(
 }
 
 /** @internal */
-export const CreateCheckStatus$inboundSchema: z.ZodNativeEnum<
-  typeof CreateCheckStatus
-> = z.nativeEnum(CreateCheckStatus);
-
-/** @internal */
 export const CreateCheckConclusion$inboundSchema: z.ZodNativeEnum<
   typeof CreateCheckConclusion
 > = z.nativeEnum(CreateCheckConclusion);
@@ -244,14 +239,40 @@ export const CreateCheckSource$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(CreateCheckSource);
 
 /** @internal */
+export const CreateCheckCLS$inboundSchema: z.ZodType<
+  CreateCheckCLS,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  previousValue: types.optional(types.number()),
+  source: CreateCheckSource$inboundSchema,
+  value: types.nullable(types.number()),
+});
+
+export function createCheckCLSFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateCheckCLS, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateCheckCLS$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateCheckCLS' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateCheckChecksSource$inboundSchema: z.ZodNativeEnum<
+  typeof CreateCheckChecksSource
+> = z.nativeEnum(CreateCheckChecksSource);
+
+/** @internal */
 export const CreateCheckFCP$inboundSchema: z.ZodType<
   CreateCheckFCP,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  value: types.nullable(types.number()),
   previousValue: types.optional(types.number()),
-  source: CreateCheckSource$inboundSchema,
+  source: CreateCheckChecksSource$inboundSchema,
+  value: types.nullable(types.number()),
 });
 
 export function createCheckFCPFromJSON(
@@ -265,9 +286,9 @@ export function createCheckFCPFromJSON(
 }
 
 /** @internal */
-export const CreateCheckChecksSource$inboundSchema: z.ZodNativeEnum<
-  typeof CreateCheckChecksSource
-> = z.nativeEnum(CreateCheckChecksSource);
+export const CreateCheckChecksResponseSource$inboundSchema: z.ZodNativeEnum<
+  typeof CreateCheckChecksResponseSource
+> = z.nativeEnum(CreateCheckChecksResponseSource);
 
 /** @internal */
 export const CreateCheckLCP$inboundSchema: z.ZodType<
@@ -275,9 +296,9 @@ export const CreateCheckLCP$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  value: types.nullable(types.number()),
   previousValue: types.optional(types.number()),
-  source: CreateCheckChecksSource$inboundSchema,
+  source: CreateCheckChecksResponseSource$inboundSchema,
+  value: types.nullable(types.number()),
 });
 
 export function createCheckLCPFromJSON(
@@ -287,32 +308,6 @@ export function createCheckLCPFromJSON(
     jsonString,
     (x) => CreateCheckLCP$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'CreateCheckLCP' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateCheckChecksResponseSource$inboundSchema: z.ZodNativeEnum<
-  typeof CreateCheckChecksResponseSource
-> = z.nativeEnum(CreateCheckChecksResponseSource);
-
-/** @internal */
-export const CreateCheckCLS$inboundSchema: z.ZodType<
-  CreateCheckCLS,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  value: types.nullable(types.number()),
-  previousValue: types.optional(types.number()),
-  source: CreateCheckChecksResponseSource$inboundSchema,
-});
-
-export function createCheckCLSFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateCheckCLS, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateCheckCLS$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateCheckCLS' from JSON`,
   );
 }
 
@@ -327,9 +322,9 @@ export const CreateCheckTBT$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  value: types.nullable(types.number()),
   previousValue: types.optional(types.number()),
   source: CreateCheckChecksResponse200Source$inboundSchema,
+  value: types.nullable(types.number()),
 });
 
 export function createCheckTBTFromJSON(
@@ -353,9 +348,9 @@ export const CreateCheckVirtualExperienceScore$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  value: types.nullable(types.number()),
   previousValue: types.optional(types.number()),
   source: CreateCheckChecksResponse200ApplicationJSONSource$inboundSchema,
+  value: types.nullable(types.number()),
 });
 
 export function createCheckVirtualExperienceScoreFromJSON(
@@ -374,18 +369,18 @@ export const CreateCheckMetrics$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  CLS: z.lazy(() => CreateCheckCLS$inboundSchema),
   FCP: z.lazy(() => CreateCheckFCP$inboundSchema),
   LCP: z.lazy(() => CreateCheckLCP$inboundSchema),
-  CLS: z.lazy(() => CreateCheckCLS$inboundSchema),
   TBT: z.lazy(() => CreateCheckTBT$inboundSchema),
   virtualExperienceScore: types.optional(
     z.lazy(() => CreateCheckVirtualExperienceScore$inboundSchema),
   ),
 }).transform((v) => {
   return remap$(v, {
+    "CLS": "cls",
     "FCP": "fcp",
     "LCP": "lcp",
-    "CLS": "cls",
     "TBT": "tbt",
   });
 });
@@ -420,27 +415,32 @@ export function createCheckOutputFromJSON(
 }
 
 /** @internal */
+export const CreateCheckStatus$inboundSchema: z.ZodNativeEnum<
+  typeof CreateCheckStatus
+> = z.nativeEnum(CreateCheckStatus);
+
+/** @internal */
 export const CreateCheckResponseBody$inboundSchema: z.ZodType<
   CreateCheckResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: types.string(),
-  name: types.string(),
-  createdAt: types.number(),
-  updatedAt: types.number(),
-  deploymentId: types.string(),
-  status: CreateCheckStatus$inboundSchema,
-  conclusion: types.optional(CreateCheckConclusion$inboundSchema),
-  externalId: types.optional(types.string()),
-  output: types.optional(z.lazy(() => CreateCheckOutput$inboundSchema)),
-  completedAt: types.optional(types.number()),
-  path: types.optional(types.string()),
   blocking: types.boolean(),
+  completedAt: types.optional(types.number()),
+  conclusion: types.optional(CreateCheckConclusion$inboundSchema),
+  createdAt: types.number(),
+  deploymentId: types.string(),
   detailsUrl: types.optional(types.string()),
+  externalId: types.optional(types.string()),
+  id: types.string(),
   integrationId: types.string(),
-  startedAt: types.optional(types.number()),
+  name: types.string(),
+  output: types.optional(z.lazy(() => CreateCheckOutput$inboundSchema)),
+  path: types.optional(types.string()),
   rerequestable: types.optional(types.boolean()),
+  startedAt: types.optional(types.number()),
+  status: CreateCheckStatus$inboundSchema,
+  updatedAt: types.number(),
 });
 
 export function createCheckResponseBodyFromJSON(

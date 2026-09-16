@@ -51,6 +51,48 @@ export type CreateStorageStoresBlobRequestBody = {
   projectId?: string | undefined;
 };
 
+export const CreateStorageStoresBlobProviders2 = {
+  Wildcard: "*",
+} as const;
+export type CreateStorageStoresBlobProviders2 = ClosedEnum<
+  typeof CreateStorageStoresBlobProviders2
+>;
+
+export const CreateStorageStoresBlobProviders1 = {
+  Bitbucket: "bitbucket",
+  Github: "github",
+  Gitlab: "gitlab",
+} as const;
+export type CreateStorageStoresBlobProviders1 = ClosedEnum<
+  typeof CreateStorageStoresBlobProviders1
+>;
+
+export type CreateStorageStoresBlobProviders =
+  | Array<CreateStorageStoresBlobProviders1>
+  | CreateStorageStoresBlobProviders2;
+
+export type CreateStorageStoresBlobGit = {
+  owners?: Array<string> | undefined;
+  providers:
+    | Array<CreateStorageStoresBlobProviders1>
+    | CreateStorageStoresBlobProviders2;
+  repos?: Array<string> | undefined;
+};
+
+export type CreateStorageStoresBlobProjectFilter = {
+  git?: CreateStorageStoresBlobGit | undefined;
+};
+
+export type CreateStorageStoresBlobActions = {
+  environments: Array<string>;
+  slug: string;
+};
+
+export type CreateStorageStoresBlobDeployments = {
+  actions: Array<CreateStorageStoresBlobActions>;
+  required: boolean;
+};
+
 export const CreateStorageStoresBlobFramework = {
   ActixWeb: "actix-web",
   Angular: "angular",
@@ -131,59 +173,17 @@ export type CreateStorageStoresBlobFramework = ClosedEnum<
   typeof CreateStorageStoresBlobFramework
 >;
 
-export type CreateStorageStoresBlobActions = {
-  slug: string;
-  environments: Array<string>;
-};
-
-export type CreateStorageStoresBlobDeployments = {
-  required: boolean;
-  actions: Array<CreateStorageStoresBlobActions>;
-};
-
 export type CreateStorageStoresBlobProjectsMetadata = {
-  id: string;
-  projectId: string;
-  name: string;
-  framework?: CreateStorageStoresBlobFramework | null | undefined;
-  latestDeployment?: string | undefined;
-  environments: Array<string>;
-  envVarPrefix: string | null;
-  environmentVariables: Array<string>;
   deployments?: CreateStorageStoresBlobDeployments | undefined;
+  environments: Array<string>;
+  environmentVariables: Array<string>;
+  envVarPrefix: string | null;
+  framework?: CreateStorageStoresBlobFramework | null | undefined;
+  id: string;
+  latestDeployment?: string | undefined;
   makeEnvVarsSensitive?: boolean | undefined;
-};
-
-export const CreateStorageStoresBlobProviders2 = {
-  Wildcard: "*",
-} as const;
-export type CreateStorageStoresBlobProviders2 = ClosedEnum<
-  typeof CreateStorageStoresBlobProviders2
->;
-
-export const CreateStorageStoresBlobProviders1 = {
-  Bitbucket: "bitbucket",
-  Github: "github",
-  Gitlab: "gitlab",
-} as const;
-export type CreateStorageStoresBlobProviders1 = ClosedEnum<
-  typeof CreateStorageStoresBlobProviders1
->;
-
-export type CreateStorageStoresBlobProviders =
-  | Array<CreateStorageStoresBlobProviders1>
-  | CreateStorageStoresBlobProviders2;
-
-export type CreateStorageStoresBlobGit = {
-  providers:
-    | Array<CreateStorageStoresBlobProviders1>
-    | CreateStorageStoresBlobProviders2;
-  owners?: Array<string> | undefined;
-  repos?: Array<string> | undefined;
-};
-
-export type CreateStorageStoresBlobProjectFilter = {
-  git?: CreateStorageStoresBlobGit | undefined;
+  name: string;
+  projectId: string;
 };
 
 export const CreateStorageStoresBlobStatus = {
@@ -249,11 +249,11 @@ export type CreateStorageStoresBlobStorageRegion = ClosedEnum<
 >;
 
 export type CreateStorageStoresBlobStore = {
-  projectsMetadata: Array<CreateStorageStoresBlobProjectsMetadata>;
   projectFilter?: CreateStorageStoresBlobProjectFilter | undefined;
+  projectsMetadata: Array<CreateStorageStoresBlobProjectsMetadata>;
+  status: CreateStorageStoresBlobStatus | null;
   totalConnectedProjects?: number | undefined;
   usageQuotaExceeded: boolean;
-  status: CreateStorageStoresBlobStatus | null;
   access?: CreateStorageStoresBlobStorageAccess | undefined;
   /**
    * A project-default store is a private blob store that is lazily created per-project, uses OIDC auth instead of read-write tokens, and cannot be modified through standard store mutation APIs. Undefined for legacy stores.
@@ -263,10 +263,10 @@ export type CreateStorageStoresBlobStore = {
    * The project this store is scoped to. Set for project-default stores and user-created stores with enforced project association.
    */
   projectId?: string | undefined;
-  size: number;
   count: number;
-  region: CreateStorageStoresBlobStorageRegion;
   isTokenExpired: boolean;
+  region: CreateStorageStoresBlobStorageRegion;
+  size: number;
 };
 
 export type CreateStorageStoresBlobResponseBody = {
@@ -314,89 +314,6 @@ export function createStorageStoresBlobRequestBodyToJSON(
 }
 
 /** @internal */
-export const CreateStorageStoresBlobFramework$inboundSchema: z.ZodNativeEnum<
-  typeof CreateStorageStoresBlobFramework
-> = z.nativeEnum(CreateStorageStoresBlobFramework);
-
-/** @internal */
-export const CreateStorageStoresBlobActions$inboundSchema: z.ZodType<
-  CreateStorageStoresBlobActions,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  slug: types.string(),
-  environments: z.array(types.string()),
-});
-
-export function createStorageStoresBlobActionsFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateStorageStoresBlobActions, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateStorageStoresBlobActions$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateStorageStoresBlobActions' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateStorageStoresBlobDeployments$inboundSchema: z.ZodType<
-  CreateStorageStoresBlobDeployments,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  required: types.boolean(),
-  actions: z.array(z.lazy(() => CreateStorageStoresBlobActions$inboundSchema)),
-});
-
-export function createStorageStoresBlobDeploymentsFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateStorageStoresBlobDeployments, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateStorageStoresBlobDeployments$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateStorageStoresBlobDeployments' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateStorageStoresBlobProjectsMetadata$inboundSchema: z.ZodType<
-  CreateStorageStoresBlobProjectsMetadata,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: types.string(),
-  projectId: types.string(),
-  name: types.string(),
-  framework: z.nullable(CreateStorageStoresBlobFramework$inboundSchema)
-    .optional(),
-  latestDeployment: types.optional(types.string()),
-  environments: z.array(types.string()),
-  envVarPrefix: types.nullable(types.string()),
-  environmentVariables: z.array(types.string()),
-  deployments: types.optional(
-    z.lazy(() => CreateStorageStoresBlobDeployments$inboundSchema),
-  ),
-  makeEnvVarsSensitive: types.optional(types.boolean()),
-});
-
-export function createStorageStoresBlobProjectsMetadataFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  CreateStorageStoresBlobProjectsMetadata,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateStorageStoresBlobProjectsMetadata$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'CreateStorageStoresBlobProjectsMetadata' from JSON`,
-  );
-}
-
-/** @internal */
 export const CreateStorageStoresBlobProviders2$inboundSchema: z.ZodNativeEnum<
   typeof CreateStorageStoresBlobProviders2
 > = z.nativeEnum(CreateStorageStoresBlobProviders2);
@@ -432,11 +349,11 @@ export const CreateStorageStoresBlobGit$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  owners: types.optional(z.array(types.string())),
   providers: smartUnion([
     z.array(CreateStorageStoresBlobProviders1$inboundSchema),
     CreateStorageStoresBlobProviders2$inboundSchema,
   ]),
-  owners: types.optional(z.array(types.string())),
   repos: types.optional(z.array(types.string())),
 });
 
@@ -471,6 +388,89 @@ export function createStorageStoresBlobProjectFilterFromJSON(
 }
 
 /** @internal */
+export const CreateStorageStoresBlobActions$inboundSchema: z.ZodType<
+  CreateStorageStoresBlobActions,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  environments: z.array(types.string()),
+  slug: types.string(),
+});
+
+export function createStorageStoresBlobActionsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateStorageStoresBlobActions, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateStorageStoresBlobActions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateStorageStoresBlobActions' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateStorageStoresBlobDeployments$inboundSchema: z.ZodType<
+  CreateStorageStoresBlobDeployments,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  actions: z.array(z.lazy(() => CreateStorageStoresBlobActions$inboundSchema)),
+  required: types.boolean(),
+});
+
+export function createStorageStoresBlobDeploymentsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateStorageStoresBlobDeployments, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateStorageStoresBlobDeployments$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateStorageStoresBlobDeployments' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateStorageStoresBlobFramework$inboundSchema: z.ZodNativeEnum<
+  typeof CreateStorageStoresBlobFramework
+> = z.nativeEnum(CreateStorageStoresBlobFramework);
+
+/** @internal */
+export const CreateStorageStoresBlobProjectsMetadata$inboundSchema: z.ZodType<
+  CreateStorageStoresBlobProjectsMetadata,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  deployments: types.optional(
+    z.lazy(() => CreateStorageStoresBlobDeployments$inboundSchema),
+  ),
+  environments: z.array(types.string()),
+  environmentVariables: z.array(types.string()),
+  envVarPrefix: types.nullable(types.string()),
+  framework: z.nullable(CreateStorageStoresBlobFramework$inboundSchema)
+    .optional(),
+  id: types.string(),
+  latestDeployment: types.optional(types.string()),
+  makeEnvVarsSensitive: types.optional(types.boolean()),
+  name: types.string(),
+  projectId: types.string(),
+});
+
+export function createStorageStoresBlobProjectsMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateStorageStoresBlobProjectsMetadata,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateStorageStoresBlobProjectsMetadata$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateStorageStoresBlobProjectsMetadata' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateStorageStoresBlobStatus$inboundSchema: z.ZodNativeEnum<
   typeof CreateStorageStoresBlobStatus
 > = z.nativeEnum(CreateStorageStoresBlobStatus);
@@ -498,22 +498,22 @@ export const CreateStorageStoresBlobStore$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectsMetadata: z.array(
-    z.lazy(() => CreateStorageStoresBlobProjectsMetadata$inboundSchema),
-  ),
   projectFilter: types.optional(
     z.lazy(() => CreateStorageStoresBlobProjectFilter$inboundSchema),
   ),
+  projectsMetadata: z.array(
+    z.lazy(() => CreateStorageStoresBlobProjectsMetadata$inboundSchema),
+  ),
+  status: types.nullable(CreateStorageStoresBlobStatus$inboundSchema),
   totalConnectedProjects: types.optional(types.number()),
   usageQuotaExceeded: types.boolean(),
-  status: types.nullable(CreateStorageStoresBlobStatus$inboundSchema),
   access: types.optional(CreateStorageStoresBlobStorageAccess$inboundSchema),
   kind: types.optional(CreateStorageStoresBlobKind$inboundSchema),
   projectId: types.optional(types.string()),
-  size: types.number(),
   count: types.number(),
-  region: CreateStorageStoresBlobStorageRegion$inboundSchema,
   isTokenExpired: types.boolean(),
+  region: CreateStorageStoresBlobStorageRegion$inboundSchema,
+  size: types.number(),
 });
 
 export function createStorageStoresBlobStoreFromJSON(

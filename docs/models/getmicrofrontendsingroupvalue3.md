@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupValue3 } from "@vercel/sdk/models/getmicrofrontendsingroupresponsebody.js";
+import { GetMicrofrontendsInGroupValue3 } from "@vercel/sdk/models/getmicrofrontendsingrouphasvalue.js";
 
 let value: GetMicrofrontendsInGroupValue3 = {
-  previousValue: false,
   currentValue: false,
+  previousValue: false,
 };
 ```
 
@@ -15,5 +15,5 @@ let value: GetMicrofrontendsInGroupValue3 = {
 
 | Field                                               | Type                                                | Required                                            | Description                                         |
 | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
-| `previousValue`                                     | *models.GetMicrofrontendsInGroupValuePreviousValue* | :heavy_check_mark:                                  | N/A                                                 |
 | `currentValue`                                      | *models.GetMicrofrontendsInGroupValueCurrentValue*  | :heavy_check_mark:                                  | N/A                                                 |
+| `previousValue`                                     | *models.GetMicrofrontendsInGroupValuePreviousValue* | :heavy_check_mark:                                  | N/A                                                 |

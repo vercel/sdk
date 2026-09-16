@@ -6,8 +6,8 @@
 import { ResponseBodyLimit } from "@vercel/sdk/models/getroutesop.js";
 
 let value: ResponseBodyLimit = {
-  maxRoutes: 999.91,
-  currentRoutes: 1025.94,
+  currentRoutes: 999.91,
+  maxRoutes: 1025.94,
 };
 ```
 
@@ -15,5 +15,5 @@ let value: ResponseBodyLimit = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `maxRoutes`        | *number*           | :heavy_check_mark: | N/A                |
 | `currentRoutes`    | *number*           | :heavy_check_mark: | N/A                |
+| `maxRoutes`        | *number*           | :heavy_check_mark: | N/A                |

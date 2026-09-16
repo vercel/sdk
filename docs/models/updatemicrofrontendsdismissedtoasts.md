@@ -3,15 +3,15 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsDismissedToasts } from "@vercel/sdk/models/updatemicrofrontendsresponsebody.js";
+import { UpdateMicrofrontendsDismissedToasts } from "@vercel/sdk/models/updatemicrofrontendshaskey.js";
 
 let value: UpdateMicrofrontendsDismissedToasts = {
+  action: "cancel",
+  dismissedAt: 8652.27,
   key: "<key>",
-  dismissedAt: 6429.29,
-  action: "delete",
   value: {
-    previousValue: false,
     currentValue: false,
+    previousValue: false,
   },
 };
 ```
@@ -20,7 +20,7 @@ let value: UpdateMicrofrontendsDismissedToasts = {
 
 | Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `key`                                                                        | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
-| `dismissedAt`                                                                | *number*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
 | `action`                                                                     | [models.UpdateMicrofrontendsAction](../models/updatemicrofrontendsaction.md) | :heavy_check_mark:                                                           | N/A                                                                          |
+| `dismissedAt`                                                                | *number*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
+| `key`                                                                        | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
 | `value`                                                                      | *models.UpdateMicrofrontendsValue*                                           | :heavy_check_mark:                                                           | N/A                                                                          |

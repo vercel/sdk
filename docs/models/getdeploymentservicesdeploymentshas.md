@@ -16,8 +16,8 @@ const value: models.GetDeploymentHasDeploymentsResponse1 = {
 
 ```typescript
 const value: models.GetDeploymentHasDeploymentsResponse2 = {
-  type: "header",
   key: "<key>",
+  type: "header",
 };
 ```
 
@@ -25,8 +25,8 @@ const value: models.GetDeploymentHasDeploymentsResponse2 = {
 
 ```typescript
 const value: models.GetDeploymentHasDeploymentsResponse2 = {
-  type: "header",
   key: "<key>",
+  type: "header",
 };
 ```
 
@@ -34,8 +34,8 @@ const value: models.GetDeploymentHasDeploymentsResponse2 = {
 
 ```typescript
 const value: models.GetDeploymentHasDeploymentsResponse2 = {
-  type: "header",
   key: "<key>",
+  type: "header",
 };
 ```
 

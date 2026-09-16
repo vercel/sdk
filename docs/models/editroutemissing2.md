@@ -6,8 +6,8 @@
 import { EditRouteMissing2 } from "@vercel/sdk/models/editrouteop.js";
 
 let value: EditRouteMissing2 = {
-  type: "header",
   key: "<key>",
+  type: "header",
 };
 ```
 
@@ -15,6 +15,6 @@ let value: EditRouteMissing2 = {
 
 | Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
 | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `type`                                                                                     | [models.EditRouteMissingProjectRoutesType](../models/editroutemissingprojectroutestype.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
 | `key`                                                                                      | *string*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `type`                                                                                     | [models.EditRouteMissingProjectRoutesType](../models/editroutemissingprojectroutestype.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
 | `value`                                                                                    | *models.EditRouteMissingProjectRoutesValue*                                                | :heavy_minus_sign:                                                                         | N/A                                                                                        |

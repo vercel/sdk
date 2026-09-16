@@ -8,8 +8,8 @@ import { UpdateFlagSettingsFeatureFlagsMetadata } from "@vercel/sdk/models/updat
 let value: UpdateFlagSettingsFeatureFlagsMetadata = {
   activeFlagCount: 1527.91,
   archivedFlagCount: 5109.16,
-  segmentCount: 8081.24,
-  packSizeInBytes: 6221.66,
+  packSizeInBytes: 8081.24,
+  segmentCount: 6221.66,
 };
 ```
 
@@ -19,7 +19,7 @@ let value: UpdateFlagSettingsFeatureFlagsMetadata = {
 | ------------------- | ------------------- | ------------------- | ------------------- |
 | `activeFlagCount`   | *number*            | :heavy_check_mark:  | N/A                 |
 | `archivedFlagCount` | *number*            | :heavy_check_mark:  | N/A                 |
-| `segmentCount`      | *number*            | :heavy_check_mark:  | N/A                 |
-| `packSizeInBytes`   | *number*            | :heavy_check_mark:  | N/A                 |
-| `packRevision`      | *number*            | :heavy_minus_sign:  | N/A                 |
 | `configUpdatedAt`   | *number*            | :heavy_minus_sign:  | N/A                 |
+| `packRevision`      | *number*            | :heavy_minus_sign:  | N/A                 |
+| `packSizeInBytes`   | *number*            | :heavy_check_mark:  | N/A                 |
+| `segmentCount`      | *number*            | :heavy_check_mark:  | N/A                 |

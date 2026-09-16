@@ -17,113 +17,47 @@ export const LimitedBy = {
 } as const;
 export type LimitedBy = ClosedEnum<typeof LimitedBy>;
 
-/**
- * Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
- */
-export const TeamLimitedSyncState = {
-  Active: "ACTIVE",
-  Setup: "SETUP",
-} as const;
-/**
- * Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
- */
-export type TeamLimitedSyncState = ClosedEnum<typeof TeamLimitedSyncState>;
-
-/**
- * Information for the SAML Single Sign-On configuration.
- */
-export type TeamLimitedConnection = {
-  /**
-   * The Identity Provider "type", for example Okta.
-   */
-  type: string;
-  /**
-   * Current state of the connection.
-   */
-  state: string;
-  /**
-   * Timestamp (in milliseconds) of when the configuration was connected.
-   */
-  connectedAt: number;
-  /**
-   * Timestamp (in milliseconds) of when the last webhook event was received from WorkOS.
-   */
-  lastReceivedWebhookEvent?: number | undefined;
-  /**
-   * Timestamp (in milliseconds) of when the last directory sync was performed.
-   */
-  lastSyncedAt?: number | undefined;
-  /**
-   * Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
-   */
-  syncState?: TeamLimitedSyncState | undefined;
-  status: string;
-};
-
-/**
- * Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
- */
-export const TeamLimitedSamlSyncState = {
-  Active: "ACTIVE",
-  Setup: "SETUP",
-} as const;
-/**
- * Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
- */
-export type TeamLimitedSamlSyncState = ClosedEnum<
-  typeof TeamLimitedSamlSyncState
->;
-
-/**
- * Information for the Directory Sync configuration.
- */
-export type TeamLimitedDirectory = {
-  /**
-   * The Identity Provider "type", for example Okta.
-   */
-  type: string;
-  /**
-   * Current state of the connection.
-   */
-  state: string;
-  /**
-   * Timestamp (in milliseconds) of when the configuration was connected.
-   */
-  connectedAt: number;
-  /**
-   * Timestamp (in milliseconds) of when the last webhook event was received from WorkOS.
-   */
-  lastReceivedWebhookEvent?: number | undefined;
-  /**
-   * Timestamp (in milliseconds) of when the last directory sync was performed.
-   */
-  lastSyncedAt?: number | undefined;
-  /**
-   * Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
-   */
-  syncState?: TeamLimitedSamlSyncState | undefined;
-};
-
-/**
- * When "Single Sign-On (SAML)" is configured, this object contains information that allows the client-side to identify whether or not this Team has SAML enforced.
- */
-export type TeamLimitedSaml = {
-  /**
-   * Information for the SAML Single Sign-On configuration.
-   */
-  connection?: TeamLimitedConnection | undefined;
-  /**
-   * Information for the Directory Sync configuration.
-   */
-  directory?: TeamLimitedDirectory | undefined;
-  /**
-   * When `true`, interactions with the Team **must** be done with an authentication token that has been authenticated with the Team's SAML Single Sign-On provider.
-   */
-  enforced: boolean;
-};
-
 export type TeamLimitedEntitlements = {
   entitlement: string;
+};
+
+export type TeamLimitedGitUserId = string | number;
+
+export const TeamLimitedOrigin = {
+  AccountUpdate: "account-update",
+  Bitbucket: "bitbucket",
+  Dsync: "dsync",
+  Feedback: "feedback",
+  Github: "github",
+  Gitlab: "gitlab",
+  Import: "import",
+  Link: "link",
+  Mail: "mail",
+  NsnbAutoApprove: "nsnb-auto-approve",
+  NsnbHobbyUpgrade: "nsnb-hobby-upgrade",
+  NsnbInvite: "nsnb-invite",
+  NsnbRedeploy: "nsnb-redeploy",
+  NsnbRedeployAttributionCard: "nsnb-redeploy-attribution-card",
+  NsnbRequestAccess: "nsnb-request-access",
+  NsnbViewerUpgrade: "nsnb-viewer-upgrade",
+  OrganizationTeams: "organization-teams",
+  Saml: "saml",
+  Teams: "teams",
+} as const;
+export type TeamLimitedOrigin = ClosedEnum<typeof TeamLimitedOrigin>;
+
+export type TeamLimitedJoinedFrom = {
+  commitId?: string | undefined;
+  dsyncConnectedAt?: number | undefined;
+  dsyncUserId?: string | undefined;
+  gitUserId?: string | number | undefined;
+  gitUserLogin?: string | undefined;
+  idpUserId?: string | undefined;
+  origin: TeamLimitedOrigin;
+  repoId?: string | undefined;
+  repoPath?: string | undefined;
+  ssoConnectedAt?: number | undefined;
+  ssoUserId?: string | undefined;
 };
 
 export const TeamLimitedRole = {
@@ -137,18 +71,6 @@ export const TeamLimitedRole = {
   ViewerForPlus: "VIEWER_FOR_PLUS",
 } as const;
 export type TeamLimitedRole = ClosedEnum<typeof TeamLimitedRole>;
-
-export const TeamLimitedTeamRoles = {
-  Billing: "BILLING",
-  Contributor: "CONTRIBUTOR",
-  Developer: "DEVELOPER",
-  Member: "MEMBER",
-  Owner: "OWNER",
-  Security: "SECURITY",
-  Viewer: "VIEWER",
-  ViewerForPlus: "VIEWER_FOR_PLUS",
-} as const;
-export type TeamLimitedTeamRoles = ClosedEnum<typeof TeamLimitedTeamRoles>;
 
 export const TeamLimitedTeamPermissions = {
   AiGatewayApiKeyOwnedBySelf: "AiGatewayApiKeyOwnedBySelf",
@@ -175,60 +97,138 @@ export type TeamLimitedTeamPermissions = ClosedEnum<
   typeof TeamLimitedTeamPermissions
 >;
 
-export const TeamLimitedOrigin = {
-  AccountUpdate: "account-update",
-  Bitbucket: "bitbucket",
-  Dsync: "dsync",
-  Feedback: "feedback",
-  Github: "github",
-  Gitlab: "gitlab",
-  Import: "import",
-  Link: "link",
-  Mail: "mail",
-  NsnbAutoApprove: "nsnb-auto-approve",
-  NsnbHobbyUpgrade: "nsnb-hobby-upgrade",
-  NsnbInvite: "nsnb-invite",
-  NsnbRedeploy: "nsnb-redeploy",
-  NsnbRedeployAttributionCard: "nsnb-redeploy-attribution-card",
-  NsnbRequestAccess: "nsnb-request-access",
-  NsnbViewerUpgrade: "nsnb-viewer-upgrade",
-  OrganizationTeams: "organization-teams",
-  Saml: "saml",
-  Teams: "teams",
+export const TeamLimitedTeamRoles = {
+  Billing: "BILLING",
+  Contributor: "CONTRIBUTOR",
+  Developer: "DEVELOPER",
+  Member: "MEMBER",
+  Owner: "OWNER",
+  Security: "SECURITY",
+  Viewer: "VIEWER",
+  ViewerForPlus: "VIEWER_FOR_PLUS",
 } as const;
-export type TeamLimitedOrigin = ClosedEnum<typeof TeamLimitedOrigin>;
-
-export type TeamLimitedGitUserId = string | number;
-
-export type TeamLimitedJoinedFrom = {
-  origin: TeamLimitedOrigin;
-  commitId?: string | undefined;
-  repoId?: string | undefined;
-  repoPath?: string | undefined;
-  gitUserId?: string | number | undefined;
-  gitUserLogin?: string | undefined;
-  ssoUserId?: string | undefined;
-  ssoConnectedAt?: number | undefined;
-  idpUserId?: string | undefined;
-  dsyncUserId?: string | undefined;
-  dsyncConnectedAt?: number | undefined;
-};
+export type TeamLimitedTeamRoles = ClosedEnum<typeof TeamLimitedTeamRoles>;
 
 /**
  * The membership of the authenticated User in relation to the Team.
  */
 export type TeamLimitedMembership = {
-  uid?: string | undefined;
-  entitlements?: Array<TeamLimitedEntitlements> | undefined;
-  teamId?: string | undefined;
-  confirmed: true;
   accessRequestedAt?: number | undefined;
-  role: TeamLimitedRole;
-  teamRoles?: Array<TeamLimitedTeamRoles> | undefined;
-  teamPermissions?: Array<TeamLimitedTeamPermissions> | undefined;
-  createdAt: number;
+  confirmed: true;
   created: number;
+  createdAt: number;
+  entitlements?: Array<TeamLimitedEntitlements> | undefined;
   joinedFrom?: TeamLimitedJoinedFrom | undefined;
+  role: TeamLimitedRole;
+  teamId?: string | undefined;
+  teamPermissions?: Array<TeamLimitedTeamPermissions> | undefined;
+  teamRoles?: Array<TeamLimitedTeamRoles> | undefined;
+  uid?: string | undefined;
+};
+
+/**
+ * Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
+ */
+export const TeamLimitedSyncState = {
+  Active: "ACTIVE",
+  Setup: "SETUP",
+} as const;
+/**
+ * Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
+ */
+export type TeamLimitedSyncState = ClosedEnum<typeof TeamLimitedSyncState>;
+
+/**
+ * Information for the SAML Single Sign-On configuration.
+ */
+export type TeamLimitedConnection = {
+  /**
+   * Timestamp (in milliseconds) of when the configuration was connected.
+   */
+  connectedAt: number;
+  /**
+   * Timestamp (in milliseconds) of when the last webhook event was received from WorkOS.
+   */
+  lastReceivedWebhookEvent?: number | undefined;
+  /**
+   * Timestamp (in milliseconds) of when the last directory sync was performed.
+   */
+  lastSyncedAt?: number | undefined;
+  /**
+   * Current state of the connection.
+   */
+  state: string;
+  /**
+   * Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
+   */
+  syncState?: TeamLimitedSyncState | undefined;
+  /**
+   * The Identity Provider "type", for example Okta.
+   */
+  type: string;
+  status: string;
+};
+
+/**
+ * Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
+ */
+export const TeamLimitedSamlSyncState = {
+  Active: "ACTIVE",
+  Setup: "SETUP",
+} as const;
+/**
+ * Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
+ */
+export type TeamLimitedSamlSyncState = ClosedEnum<
+  typeof TeamLimitedSamlSyncState
+>;
+
+/**
+ * Information for the Directory Sync configuration.
+ */
+export type TeamLimitedDirectory = {
+  /**
+   * Timestamp (in milliseconds) of when the configuration was connected.
+   */
+  connectedAt: number;
+  /**
+   * Timestamp (in milliseconds) of when the last webhook event was received from WorkOS.
+   */
+  lastReceivedWebhookEvent?: number | undefined;
+  /**
+   * Timestamp (in milliseconds) of when the last directory sync was performed.
+   */
+  lastSyncedAt?: number | undefined;
+  /**
+   * Current state of the connection.
+   */
+  state: string;
+  /**
+   * Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
+   */
+  syncState?: TeamLimitedSamlSyncState | undefined;
+  /**
+   * The Identity Provider "type", for example Okta.
+   */
+  type: string;
+};
+
+/**
+ * When "Single Sign-On (SAML)" is configured, this object contains information that allows the client-side to identify whether or not this Team has SAML enforced.
+ */
+export type TeamLimitedSaml = {
+  /**
+   * Information for the SAML Single Sign-On configuration.
+   */
+  connection?: TeamLimitedConnection | undefined;
+  /**
+   * Information for the Directory Sync configuration.
+   */
+  directory?: TeamLimitedDirectory | undefined;
+  /**
+   * When `true`, interactions with the Team **must** be done with an authentication token that has been authenticated with the Team's SAML Single Sign-On provider.
+   */
+  enforced: boolean;
 };
 
 /**
@@ -236,51 +236,169 @@ export type TeamLimitedMembership = {
  */
 export type TeamLimited = {
   /**
-   * Property indicating that this Team data contains only limited information, due to the authentication token missing privileges to read the full Team data or due to team having MFA enforced and the user not having MFA enabled. Re-login with the Team's configured SAML Single Sign-On provider in order to upgrade the authentication token with the necessary privileges.
-   */
-  limited: true;
-  limitedBy: Array<LimitedBy>;
-  /**
-   * When "Single Sign-On (SAML)" is configured, this object contains information that allows the client-side to identify whether or not this Team has SAML enforced.
-   */
-  saml?: TeamLimitedSaml | undefined;
-  /**
-   * The Team's unique identifier.
-   */
-  id: string;
-  /**
-   * The Team's slug, which is unique across the Vercel platform.
-   */
-  slug: string;
-  /**
-   * Name associated with the Team account, or `null` if none has been provided.
-   */
-  name: string | null;
-  /**
    * The ID of the file used as avatar for this Team.
    */
   avatar: string | null;
-  /**
-   * The membership of the authenticated User in relation to the Team.
-   */
-  membership?: TeamLimitedMembership | undefined;
   /**
    * UNIX timestamp (in milliseconds) when the Team was created.
    */
   createdAt: number;
   /**
-   * The organizationId for teams that belong to an organization (set on both the organization's root team and its child teams).
+   * The Team's unique identifier.
    */
-  parentId?: string | undefined;
+  id: string;
+  /**
+   * Property indicating that this Team data contains only limited information, due to the authentication token missing privileges to read the full Team data or due to team having MFA enforced and the user not having MFA enabled. Re-login with the Team's configured SAML Single Sign-On provider in order to upgrade the authentication token with the necessary privileges.
+   */
+  limited: true;
+  limitedBy: Array<LimitedBy>;
+  /**
+   * The membership of the authenticated User in relation to the Team.
+   */
+  membership?: TeamLimitedMembership | undefined;
+  /**
+   * Name associated with the Team account, or `null` if none has been provided.
+   */
+  name: string | null;
   /**
    * Best-effort ID of the organization’s root billing team. When present, compare `orgRootTeamId === id` to identify the root team. It may be omitted even when `parentId` is set if organization resolution fails or the referenced organization is missing. Always omitted for non-organization teams.
    */
   orgRootTeamId?: string | undefined;
+  /**
+   * The organizationId for teams that belong to an organization (set on both the organization's root team and its child teams).
+   */
+  parentId?: string | undefined;
+  /**
+   * When "Single Sign-On (SAML)" is configured, this object contains information that allows the client-side to identify whether or not this Team has SAML enforced.
+   */
+  saml?: TeamLimitedSaml | undefined;
+  /**
+   * The Team's slug, which is unique across the Vercel platform.
+   */
+  slug: string;
 };
 
 /** @internal */
 export const LimitedBy$inboundSchema: z.ZodNativeEnum<typeof LimitedBy> = z
   .nativeEnum(LimitedBy);
+
+/** @internal */
+export const TeamLimitedEntitlements$inboundSchema: z.ZodType<
+  TeamLimitedEntitlements,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  entitlement: types.string(),
+});
+
+export function teamLimitedEntitlementsFromJSON(
+  jsonString: string,
+): SafeParseResult<TeamLimitedEntitlements, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TeamLimitedEntitlements$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TeamLimitedEntitlements' from JSON`,
+  );
+}
+
+/** @internal */
+export const TeamLimitedGitUserId$inboundSchema: z.ZodType<
+  TeamLimitedGitUserId,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), types.number()]);
+
+export function teamLimitedGitUserIdFromJSON(
+  jsonString: string,
+): SafeParseResult<TeamLimitedGitUserId, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TeamLimitedGitUserId$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TeamLimitedGitUserId' from JSON`,
+  );
+}
+
+/** @internal */
+export const TeamLimitedOrigin$inboundSchema: z.ZodNativeEnum<
+  typeof TeamLimitedOrigin
+> = z.nativeEnum(TeamLimitedOrigin);
+
+/** @internal */
+export const TeamLimitedJoinedFrom$inboundSchema: z.ZodType<
+  TeamLimitedJoinedFrom,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  commitId: types.optional(types.string()),
+  dsyncConnectedAt: types.optional(types.number()),
+  dsyncUserId: types.optional(types.string()),
+  gitUserId: types.optional(smartUnion([types.string(), types.number()])),
+  gitUserLogin: types.optional(types.string()),
+  idpUserId: types.optional(types.string()),
+  origin: TeamLimitedOrigin$inboundSchema,
+  repoId: types.optional(types.string()),
+  repoPath: types.optional(types.string()),
+  ssoConnectedAt: types.optional(types.number()),
+  ssoUserId: types.optional(types.string()),
+});
+
+export function teamLimitedJoinedFromFromJSON(
+  jsonString: string,
+): SafeParseResult<TeamLimitedJoinedFrom, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TeamLimitedJoinedFrom$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TeamLimitedJoinedFrom' from JSON`,
+  );
+}
+
+/** @internal */
+export const TeamLimitedRole$inboundSchema: z.ZodNativeEnum<
+  typeof TeamLimitedRole
+> = z.nativeEnum(TeamLimitedRole);
+
+/** @internal */
+export const TeamLimitedTeamPermissions$inboundSchema: z.ZodNativeEnum<
+  typeof TeamLimitedTeamPermissions
+> = z.nativeEnum(TeamLimitedTeamPermissions);
+
+/** @internal */
+export const TeamLimitedTeamRoles$inboundSchema: z.ZodNativeEnum<
+  typeof TeamLimitedTeamRoles
+> = z.nativeEnum(TeamLimitedTeamRoles);
+
+/** @internal */
+export const TeamLimitedMembership$inboundSchema: z.ZodType<
+  TeamLimitedMembership,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  accessRequestedAt: types.optional(types.number()),
+  confirmed: types.literal(true),
+  created: types.number(),
+  createdAt: types.number(),
+  entitlements: types.optional(
+    z.array(z.lazy(() => TeamLimitedEntitlements$inboundSchema)),
+  ),
+  joinedFrom: types.optional(z.lazy(() => TeamLimitedJoinedFrom$inboundSchema)),
+  role: TeamLimitedRole$inboundSchema,
+  teamId: types.optional(types.string()),
+  teamPermissions: types.optional(
+    z.array(TeamLimitedTeamPermissions$inboundSchema),
+  ),
+  teamRoles: types.optional(z.array(TeamLimitedTeamRoles$inboundSchema)),
+  uid: types.optional(types.string()),
+});
+
+export function teamLimitedMembershipFromJSON(
+  jsonString: string,
+): SafeParseResult<TeamLimitedMembership, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TeamLimitedMembership$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TeamLimitedMembership' from JSON`,
+  );
+}
 
 /** @internal */
 export const TeamLimitedSyncState$inboundSchema: z.ZodNativeEnum<
@@ -293,12 +411,12 @@ export const TeamLimitedConnection$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.string(),
-  state: types.string(),
   connectedAt: types.number(),
   lastReceivedWebhookEvent: types.optional(types.number()),
   lastSyncedAt: types.optional(types.number()),
+  state: types.string(),
   syncState: types.optional(TeamLimitedSyncState$inboundSchema),
+  type: types.string(),
   status: types.string(),
 });
 
@@ -323,12 +441,12 @@ export const TeamLimitedDirectory$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.string(),
-  state: types.string(),
   connectedAt: types.number(),
   lastReceivedWebhookEvent: types.optional(types.number()),
   lastSyncedAt: types.optional(types.number()),
+  state: types.string(),
   syncState: types.optional(TeamLimitedSamlSyncState$inboundSchema),
+  type: types.string(),
 });
 
 export function teamLimitedDirectoryFromJSON(
@@ -363,140 +481,22 @@ export function teamLimitedSamlFromJSON(
 }
 
 /** @internal */
-export const TeamLimitedEntitlements$inboundSchema: z.ZodType<
-  TeamLimitedEntitlements,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  entitlement: types.string(),
-});
-
-export function teamLimitedEntitlementsFromJSON(
-  jsonString: string,
-): SafeParseResult<TeamLimitedEntitlements, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TeamLimitedEntitlements$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TeamLimitedEntitlements' from JSON`,
-  );
-}
-
-/** @internal */
-export const TeamLimitedRole$inboundSchema: z.ZodNativeEnum<
-  typeof TeamLimitedRole
-> = z.nativeEnum(TeamLimitedRole);
-
-/** @internal */
-export const TeamLimitedTeamRoles$inboundSchema: z.ZodNativeEnum<
-  typeof TeamLimitedTeamRoles
-> = z.nativeEnum(TeamLimitedTeamRoles);
-
-/** @internal */
-export const TeamLimitedTeamPermissions$inboundSchema: z.ZodNativeEnum<
-  typeof TeamLimitedTeamPermissions
-> = z.nativeEnum(TeamLimitedTeamPermissions);
-
-/** @internal */
-export const TeamLimitedOrigin$inboundSchema: z.ZodNativeEnum<
-  typeof TeamLimitedOrigin
-> = z.nativeEnum(TeamLimitedOrigin);
-
-/** @internal */
-export const TeamLimitedGitUserId$inboundSchema: z.ZodType<
-  TeamLimitedGitUserId,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([types.string(), types.number()]);
-
-export function teamLimitedGitUserIdFromJSON(
-  jsonString: string,
-): SafeParseResult<TeamLimitedGitUserId, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TeamLimitedGitUserId$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TeamLimitedGitUserId' from JSON`,
-  );
-}
-
-/** @internal */
-export const TeamLimitedJoinedFrom$inboundSchema: z.ZodType<
-  TeamLimitedJoinedFrom,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  origin: TeamLimitedOrigin$inboundSchema,
-  commitId: types.optional(types.string()),
-  repoId: types.optional(types.string()),
-  repoPath: types.optional(types.string()),
-  gitUserId: types.optional(smartUnion([types.string(), types.number()])),
-  gitUserLogin: types.optional(types.string()),
-  ssoUserId: types.optional(types.string()),
-  ssoConnectedAt: types.optional(types.number()),
-  idpUserId: types.optional(types.string()),
-  dsyncUserId: types.optional(types.string()),
-  dsyncConnectedAt: types.optional(types.number()),
-});
-
-export function teamLimitedJoinedFromFromJSON(
-  jsonString: string,
-): SafeParseResult<TeamLimitedJoinedFrom, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TeamLimitedJoinedFrom$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TeamLimitedJoinedFrom' from JSON`,
-  );
-}
-
-/** @internal */
-export const TeamLimitedMembership$inboundSchema: z.ZodType<
-  TeamLimitedMembership,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  uid: types.optional(types.string()),
-  entitlements: types.optional(
-    z.array(z.lazy(() => TeamLimitedEntitlements$inboundSchema)),
-  ),
-  teamId: types.optional(types.string()),
-  confirmed: types.literal(true),
-  accessRequestedAt: types.optional(types.number()),
-  role: TeamLimitedRole$inboundSchema,
-  teamRoles: types.optional(z.array(TeamLimitedTeamRoles$inboundSchema)),
-  teamPermissions: types.optional(
-    z.array(TeamLimitedTeamPermissions$inboundSchema),
-  ),
-  createdAt: types.number(),
-  created: types.number(),
-  joinedFrom: types.optional(z.lazy(() => TeamLimitedJoinedFrom$inboundSchema)),
-});
-
-export function teamLimitedMembershipFromJSON(
-  jsonString: string,
-): SafeParseResult<TeamLimitedMembership, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TeamLimitedMembership$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TeamLimitedMembership' from JSON`,
-  );
-}
-
-/** @internal */
 export const TeamLimited$inboundSchema: z.ZodType<
   TeamLimited,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  avatar: types.nullable(types.string()),
+  createdAt: types.number(),
+  id: types.string(),
   limited: types.literal(true),
   limitedBy: z.array(LimitedBy$inboundSchema),
-  saml: types.optional(z.lazy(() => TeamLimitedSaml$inboundSchema)),
-  id: types.string(),
-  slug: types.string(),
-  name: types.nullable(types.string()),
-  avatar: types.nullable(types.string()),
   membership: types.optional(z.lazy(() => TeamLimitedMembership$inboundSchema)),
-  createdAt: types.number(),
-  parentId: types.optional(types.string()),
+  name: types.nullable(types.string()),
   orgRootTeamId: types.optional(types.string()),
+  parentId: types.optional(types.string()),
+  saml: types.optional(z.lazy(() => TeamLimitedSaml$inboundSchema)),
+  slug: types.string(),
 });
 
 export function teamLimitedFromJSON(

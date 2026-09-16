@@ -5,17 +5,17 @@ Metadata about the source platform that triggered the deployment. Allows us to m
 ## Example Usage
 
 ```typescript
-import { Platform } from "@vercel/sdk/models/canceldeploymentresponsebody.js";
+import { Platform } from "@vercel/sdk/models/canceldeploymentresourceconfig.js";
 
 let value: Platform = {
-  source: {
+  creator: {
     name: "<value>",
   },
   origin: {
     type: "url",
     value: "<value>",
   },
-  creator: {
+  source: {
     name: "<value>",
   },
 };
@@ -25,7 +25,7 @@ let value: Platform = {
 
 | Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  |
 | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `source`                                                                                     | [models.CancelDeploymentDeploymentsSource](../models/canceldeploymentdeploymentssource.md)   | :heavy_check_mark:                                                                           | The external platform that created the deployment (e.g. its display name).                   |
-| `origin`                                                                                     | [models.CancelDeploymentOrigin](../models/canceldeploymentorigin.md)                         | :heavy_check_mark:                                                                           | Reference back to the entity on the platform that initiated the deployment.                  |
 | `creator`                                                                                    | [models.CancelDeploymentDeploymentsCreator](../models/canceldeploymentdeploymentscreator.md) | :heavy_check_mark:                                                                           | The user on the external platform who triggered the deployment.                              |
 | `meta`                                                                                       | Record<string, *string*>                                                                     | :heavy_minus_sign:                                                                           | Arbitrary key-value metadata provided by the platform.                                       |
+| `origin`                                                                                     | [models.CancelDeploymentOrigin](../models/canceldeploymentorigin.md)                         | :heavy_check_mark:                                                                           | Reference back to the entity on the platform that initiated the deployment.                  |
+| `source`                                                                                     | [models.CancelDeploymentDeploymentsSource](../models/canceldeploymentdeploymentssource.md)   | :heavy_check_mark:                                                                           | The external platform that created the deployment (e.g. its display name).                   |

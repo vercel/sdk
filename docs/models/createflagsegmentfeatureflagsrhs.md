@@ -19,8 +19,8 @@ const value: number = 1284.03;
 
 ```typescript
 const value: models.CreateFlagSegmentRhs3 = {
-  type: "list",
   items: [],
+  type: "list",
 };
 ```
 
@@ -28,9 +28,9 @@ const value: models.CreateFlagSegmentRhs3 = {
 
 ```typescript
 const value: models.CreateFlagSegmentRhs4 = {
-  type: "regex",
-  pattern: "<value>",
   flags: "<value>",
+  pattern: "<value>",
+  type: "regex",
 };
 ```
 

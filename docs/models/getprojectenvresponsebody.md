@@ -8,8 +8,8 @@
 ```typescript
 const value: models.GetProjectEnvResponseBody1 = {
   decrypted: false,
-  type: "sensitive",
   key: "<key>",
+  type: "sensitive",
 };
 ```
 
@@ -17,9 +17,9 @@ const value: models.GetProjectEnvResponseBody1 = {
 
 ```typescript
 const value: models.GetProjectEnvResponseBody2 = {
+  key: "<key>",
   type: "encrypted",
   value: "<value>",
-  key: "<key>",
 };
 ```
 

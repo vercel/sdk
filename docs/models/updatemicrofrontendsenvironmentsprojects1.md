@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsEnvironmentsProjects1 } from "@vercel/sdk/models/updatemicrofrontendsinternalroutes2.js";
+import { UpdateMicrofrontendsEnvironmentsProjects1 } from "@vercel/sdk/models/updatemicrofrontendshaskey.js";
 
 let value: UpdateMicrofrontendsEnvironmentsProjects1 = {
-  type: "system",
   target: "preview",
+  type: "system",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: UpdateMicrofrontendsEnvironmentsProjects1 = {
 
 | Field                                                                                                                | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
 | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `type`                                                                                                               | *"system"*                                                                                                           | :heavy_check_mark:                                                                                                   | N/A                                                                                                                  |
 | `target`                                                                                                             | [models.UpdateMicrofrontendsEnvironmentsProjectsTarget](../models/updatemicrofrontendsenvironmentsprojectstarget.md) | :heavy_check_mark:                                                                                                   | N/A                                                                                                                  |
+| `type`                                                                                                               | *"system"*                                                                                                           | :heavy_check_mark:                                                                                                   | N/A                                                                                                                  |

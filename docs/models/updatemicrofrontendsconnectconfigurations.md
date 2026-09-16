@@ -3,14 +3,14 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsConnectConfigurations } from "@vercel/sdk/models/updatemicrofrontendsprojectsfunctiondefaultmemorytype.js";
+import { UpdateMicrofrontendsConnectConfigurations } from "@vercel/sdk/models/updatemicrofrontendshaskey.js";
 
 let value: UpdateMicrofrontendsConnectConfigurations = {
-  envId: "<id>",
-  connectConfigurationId: "<id>",
-  passive: false,
   buildsEnabled: true,
-  createdAt: 805.47,
+  connectConfigurationId: "<id>",
+  createdAt: 5744.71,
+  envId: "<id>",
+  passive: true,
   updatedAt: 7608.59,
 };
 ```
@@ -19,11 +19,11 @@ let value: UpdateMicrofrontendsConnectConfigurations = {
 
 | Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `envId`                                                                | *models.UpdateMicrofrontendsEnvId*                                     | :heavy_check_mark:                                                     | N/A                                                                    |
-| `connectConfigurationId`                                               | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
-| `dc`                                                                   | *string*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
-| `passive`                                                              | *boolean*                                                              | :heavy_check_mark:                                                     | N/A                                                                    |
-| `buildsEnabled`                                                        | *boolean*                                                              | :heavy_check_mark:                                                     | N/A                                                                    |
 | `aws`                                                                  | [models.UpdateMicrofrontendsAws](../models/updatemicrofrontendsaws.md) | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `buildsEnabled`                                                        | *boolean*                                                              | :heavy_check_mark:                                                     | N/A                                                                    |
+| `connectConfigurationId`                                               | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
 | `createdAt`                                                            | *number*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `dc`                                                                   | *string*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `envId`                                                                | *models.UpdateMicrofrontendsEnvId*                                     | :heavy_check_mark:                                                     | N/A                                                                    |
+| `passive`                                                              | *boolean*                                                              | :heavy_check_mark:                                                     | N/A                                                                    |
 | `updatedAt`                                                            | *number*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |

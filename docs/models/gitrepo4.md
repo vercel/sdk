@@ -3,17 +3,17 @@
 ## Example Usage
 
 ```typescript
-import { GitRepo4 } from "@vercel/sdk/models/canceldeploymentresponsebody.js";
+import { GitRepo4 } from "@vercel/sdk/models/canceldeploymentresourceconfig.js";
 
 let value: GitRepo4 = {
-  org: "<value>",
-  repo: "<value>",
-  type: "vercel",
-  path: "/private",
   defaultBranch: "<value>",
   name: "<value>",
-  private: true,
+  org: "<value>",
   ownerType: "team",
+  path: "/private/tmp",
+  private: true,
+  repo: "<value>",
+  type: "vercel",
 };
 ```
 
@@ -21,11 +21,11 @@ let value: GitRepo4 = {
 
 | Field                                                                                                          | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
 | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `org`                                                                                                          | *string*                                                                                                       | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
-| `repo`                                                                                                         | *string*                                                                                                       | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
-| `type`                                                                                                         | *"vercel"*                                                                                                     | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
-| `path`                                                                                                         | *string*                                                                                                       | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
 | `defaultBranch`                                                                                                | *string*                                                                                                       | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
 | `name`                                                                                                         | *string*                                                                                                       | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
-| `private`                                                                                                      | *boolean*                                                                                                      | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
+| `org`                                                                                                          | *string*                                                                                                       | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
 | `ownerType`                                                                                                    | [models.CancelDeploymentGitRepoDeploymentsOwnerType](../models/canceldeploymentgitrepodeploymentsownertype.md) | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
+| `path`                                                                                                         | *string*                                                                                                       | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
+| `private`                                                                                                      | *boolean*                                                                                                      | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
+| `repo`                                                                                                         | *string*                                                                                                       | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
+| `type`                                                                                                         | *"vercel"*                                                                                                     | :heavy_check_mark:                                                                                             | N/A                                                                                                            |

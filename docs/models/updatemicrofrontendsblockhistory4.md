@@ -3,15 +3,15 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsBlockHistory4 } from "@vercel/sdk/models/updatemicrofrontendsinternalroutes2.js";
+import { UpdateMicrofrontendsBlockHistory4 } from "@vercel/sdk/models/updatemicrofrontendshaskey.js";
 
 let value: UpdateMicrofrontendsBlockHistory4 = {
   action: "route-unblocked",
+  createdAt: 827.05,
   route: {
     src: "<value>",
-    status: 1464.99,
+    status: 7670.1,
   },
-  createdAt: 7670.1,
 };
 ```
 
@@ -20,11 +20,11 @@ let value: UpdateMicrofrontendsBlockHistory4 = {
 | Field                                                  | Type                                                   | Required                                               | Description                                            |
 | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
 | `action`                                               | *"route-unblocked"*                                    | :heavy_check_mark:                                     | N/A                                                    |
-| `route`                                                | *models.UpdateMicrofrontendsBlockHistoryProjectsRoute* | :heavy_check_mark:                                     | N/A                                                    |
-| `statusCode`                                           | *number*                                               | :heavy_minus_sign:                                     | N/A                                                    |
-| `createdAt`                                            | *number*                                               | :heavy_check_mark:                                     | N/A                                                    |
-| `caseId`                                               | *string*                                               | :heavy_minus_sign:                                     | N/A                                                    |
 | `actor`                                                | *string*                                               | :heavy_minus_sign:                                     | N/A                                                    |
+| `caseId`                                               | *string*                                               | :heavy_minus_sign:                                     | N/A                                                    |
 | `comment`                                              | *string*                                               | :heavy_minus_sign:                                     | N/A                                                    |
+| `createdAt`                                            | *number*                                               | :heavy_check_mark:                                     | N/A                                                    |
 | `ineligibleForAppeal`                                  | *boolean*                                              | :heavy_minus_sign:                                     | N/A                                                    |
 | `isCascading`                                          | *boolean*                                              | :heavy_minus_sign:                                     | N/A                                                    |
+| `route`                                                | *models.UpdateMicrofrontendsBlockHistoryProjectsRoute* | :heavy_check_mark:                                     | N/A                                                    |
+| `statusCode`                                           | *number*                                               | :heavy_minus_sign:                                     | N/A                                                    |

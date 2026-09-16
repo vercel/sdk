@@ -16,8 +16,8 @@ const value: models.CancelDeploymentHasDeploymentsResponse2001 = {
 
 ```typescript
 const value: models.CancelDeploymentHasDeploymentsResponse2002 = {
-  type: "cookie",
   key: "<key>",
+  type: "cookie",
 };
 ```
 
@@ -25,8 +25,8 @@ const value: models.CancelDeploymentHasDeploymentsResponse2002 = {
 
 ```typescript
 const value: models.CancelDeploymentHasDeploymentsResponse2002 = {
-  type: "cookie",
   key: "<key>",
+  type: "cookie",
 };
 ```
 
@@ -34,8 +34,8 @@ const value: models.CancelDeploymentHasDeploymentsResponse2002 = {
 
 ```typescript
 const value: models.CancelDeploymentHasDeploymentsResponse2002 = {
-  type: "cookie",
   key: "<key>",
+  type: "cookie",
 };
 ```
 

@@ -16,14 +16,14 @@ const value: models.UpdateFlagOutcomeFeatureFlags1 = {
 
 ```typescript
 const value: models.UpdateFlagOutcomeFeatureFlags2 = {
-  type: "split",
   base: {
-    type: "entity",
-    kind: "<value>",
     attribute: "<value>",
+    kind: "<value>",
+    type: "entity",
   },
-  weights: {},
   defaultVariantId: "<id>",
+  type: "split",
+  weights: {},
 };
 ```
 
@@ -31,22 +31,22 @@ const value: models.UpdateFlagOutcomeFeatureFlags2 = {
 
 ```typescript
 const value: models.UpdateFlagOutcomeFeatureFlags3 = {
-  type: "rollout",
   base: {
-    type: "entity",
-    kind: "<value>",
     attribute: "<value>",
+    kind: "<value>",
+    type: "entity",
   },
   defaultVariantId: "<id>",
-  startTimestamp: 9372.47,
   rollFromVariantId: "<id>",
   rollToVariantId: "<id>",
   slots: [
     {
+      durationMs: 7957.18,
       promille: 5618.61,
-      durationMs: 194.97,
     },
   ],
+  startTimestamp: 194.97,
+  type: "rollout",
 };
 ```
 

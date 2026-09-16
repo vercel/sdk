@@ -9,8 +9,8 @@ Principal that created the connector.
 
 ```typescript
 const value: models.One = {
-  type: "user",
   id: "<id>",
+  type: "user",
 };
 ```
 
@@ -18,9 +18,9 @@ const value: models.One = {
 
 ```typescript
 const value: models.Two = {
-  type: "project",
-  id: "<id>",
   environment: "development",
+  id: "<id>",
+  type: "project",
 };
 ```
 

@@ -154,13 +154,32 @@ export type AddRouteRequest = {
   requestBody?: AddRouteRequestBody | undefined;
 };
 
-export const RouteType = {
-  Redirect: "redirect",
-  Rewrite: "rewrite",
-  SetStatus: "set_status",
-  Transform: "transform",
+/**
+ * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+ */
+export const AddRouteDestinationType = {
+  Service: "service",
 } as const;
-export type RouteType = ClosedEnum<typeof RouteType>;
+/**
+ * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+ */
+export type AddRouteDestinationType = ClosedEnum<
+  typeof AddRouteDestinationType
+>;
+
+export type AddRouteDestination2 = {
+  /**
+   * Routing-only path used to select a route inside the target service.
+   */
+  path?: string | undefined;
+  service: string;
+  /**
+   * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+   */
+  type?: AddRouteDestinationType | undefined;
+};
+
+export type AddRouteDestination = AddRouteDestination2 | string;
 
 export const AddRouteHasProjectRoutesType = {
   Cookie: "cookie",
@@ -175,16 +194,16 @@ export type AddRouteValueProjectRoutesEq = string | number;
 
 export type AddRouteValueProjectRoutes2 = {
   eq?: string | number | undefined;
-  neq?: string | undefined;
-  inc?: Array<string> | undefined;
-  ninc?: Array<string> | undefined;
-  pre?: string | undefined;
-  suf?: string | undefined;
-  re?: string | undefined;
   gt?: number | undefined;
   gte?: number | undefined;
+  inc?: Array<string> | undefined;
   lt?: number | undefined;
   lte?: number | undefined;
+  neq?: string | undefined;
+  ninc?: Array<string> | undefined;
+  pre?: string | undefined;
+  re?: string | undefined;
+  suf?: string | undefined;
 };
 
 export type AddRouteHasProjectRoutesValue =
@@ -192,8 +211,8 @@ export type AddRouteHasProjectRoutesValue =
   | AddRouteValueProjectRoutes2;
 
 export type AddRouteHas2 = {
-  type: AddRouteHasProjectRoutesType;
   key: string;
+  type: AddRouteHasProjectRoutesType;
   value?: string | AddRouteValueProjectRoutes2 | undefined;
 };
 
@@ -201,16 +220,16 @@ export type AddRouteValueEq = string | number;
 
 export type AddRouteValue2 = {
   eq?: string | number | undefined;
-  neq?: string | undefined;
-  inc?: Array<string> | undefined;
-  ninc?: Array<string> | undefined;
-  pre?: string | undefined;
-  suf?: string | undefined;
-  re?: string | undefined;
   gt?: number | undefined;
   gte?: number | undefined;
+  inc?: Array<string> | undefined;
   lt?: number | undefined;
   lte?: number | undefined;
+  neq?: string | undefined;
+  ninc?: Array<string> | undefined;
+  pre?: string | undefined;
+  re?: string | undefined;
+  suf?: string | undefined;
 };
 
 export type AddRouteHasValue = string | AddRouteValue2;
@@ -226,6 +245,11 @@ export type AddRouteProjectRoutesHas =
   | (AddRouteHas2 & { type: "header" })
   | (AddRouteHas2 & { type: "query" });
 
+export type AddRouteLocale = {
+  cookie?: string | undefined;
+  redirect?: { [k: string]: string } | undefined;
+};
+
 export const AddRouteMissingProjectRoutesType = {
   Cookie: "cookie",
   Header: "header",
@@ -239,16 +263,16 @@ export type AddRouteValueProjectRoutesResponse200Eq = string | number;
 
 export type AddRouteValueProjectRoutesResponse2002 = {
   eq?: string | number | undefined;
-  neq?: string | undefined;
-  inc?: Array<string> | undefined;
-  ninc?: Array<string> | undefined;
-  pre?: string | undefined;
-  suf?: string | undefined;
-  re?: string | undefined;
   gt?: number | undefined;
   gte?: number | undefined;
+  inc?: Array<string> | undefined;
   lt?: number | undefined;
   lte?: number | undefined;
+  neq?: string | undefined;
+  ninc?: Array<string> | undefined;
+  pre?: string | undefined;
+  re?: string | undefined;
+  suf?: string | undefined;
 };
 
 export type AddRouteMissingProjectRoutesValue =
@@ -256,8 +280,8 @@ export type AddRouteMissingProjectRoutesValue =
   | AddRouteValueProjectRoutesResponse2002;
 
 export type AddRouteMissing2 = {
-  type: AddRouteMissingProjectRoutesType;
   key: string;
+  type: AddRouteMissingProjectRoutesType;
   value?: string | AddRouteValueProjectRoutesResponse2002 | undefined;
 };
 
@@ -265,16 +289,16 @@ export type AddRouteValueProjectRoutesResponseEq = string | number;
 
 export type AddRouteValueProjectRoutesResponse2 = {
   eq?: string | number | undefined;
-  neq?: string | undefined;
-  inc?: Array<string> | undefined;
-  ninc?: Array<string> | undefined;
-  pre?: string | undefined;
-  suf?: string | undefined;
-  re?: string | undefined;
   gt?: number | undefined;
   gte?: number | undefined;
+  inc?: Array<string> | undefined;
   lt?: number | undefined;
   lte?: number | undefined;
+  neq?: string | undefined;
+  ninc?: Array<string> | undefined;
+  pre?: string | undefined;
+  re?: string | undefined;
+  suf?: string | undefined;
 };
 
 export type AddRouteMissingValue = string | AddRouteValueProjectRoutesResponse2;
@@ -308,18 +332,13 @@ export type AddRouteTransformsProjectRoutesOp = ClosedEnum<
 >;
 
 export type AddRouteTransforms2 = {
-  type: "request.path";
-  op: AddRouteTransformsProjectRoutesOp;
   args: string;
   env?: Array<string> | undefined;
+  op: AddRouteTransformsProjectRoutesOp;
+  type: "request.path";
 };
 
-export const AddRouteTransformsType = {
-  RequestHeaders: "request.headers",
-  RequestQuery: "request.query",
-  ResponseHeaders: "response.headers",
-} as const;
-export type AddRouteTransformsType = ClosedEnum<typeof AddRouteTransformsType>;
+export type TransformsArgs = string | Array<string>;
 
 export const AddRouteTransformsOp = {
   Append: "append",
@@ -332,15 +351,15 @@ export type AddRouteKeyEq = string | number;
 
 export type AddRouteKey2 = {
   eq?: string | number | undefined;
-  neq?: string | undefined;
+  gt?: number | undefined;
+  gte?: number | undefined;
   inc?: Array<string> | undefined;
+  lt?: number | undefined;
+  lte?: number | undefined;
+  neq?: string | undefined;
   ninc?: Array<string> | undefined;
   pre?: string | undefined;
   suf?: string | undefined;
-  gt?: number | undefined;
-  gte?: number | undefined;
-  lt?: number | undefined;
-  lte?: number | undefined;
 };
 
 export type TransformsKey = string | AddRouteKey2;
@@ -349,14 +368,19 @@ export type AddRouteTransformsTarget = {
   key: string | AddRouteKey2;
 };
 
-export type TransformsArgs = string | Array<string>;
+export const AddRouteTransformsType = {
+  RequestHeaders: "request.headers",
+  RequestQuery: "request.query",
+  ResponseHeaders: "response.headers",
+} as const;
+export type AddRouteTransformsType = ClosedEnum<typeof AddRouteTransformsType>;
 
 export type AddRouteTransforms1 = {
-  type: AddRouteTransformsType;
-  op: AddRouteTransformsOp;
-  target: AddRouteTransformsTarget;
   args?: string | Array<string> | undefined;
   env?: Array<string> | undefined;
+  op: AddRouteTransformsOp;
+  target: AddRouteTransformsTarget;
+  type: AddRouteTransformsType;
 };
 
 export type AddRouteProjectRoutesTransforms =
@@ -365,52 +389,16 @@ export type AddRouteProjectRoutesTransforms =
   | (AddRouteTransforms1 & { type: "response.headers" })
   | AddRouteTransforms2;
 
-export type AddRouteLocale = {
-  redirect?: { [k: string]: string } | undefined;
-  cookie?: string | undefined;
-};
-
-/**
- * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
- */
-export const AddRouteDestinationType = {
-  Service: "service",
-} as const;
-/**
- * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
- */
-export type AddRouteDestinationType = ClosedEnum<
-  typeof AddRouteDestinationType
->;
-
-export type AddRouteDestination2 = {
-  /**
-   * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
-   */
-  type?: AddRouteDestinationType | undefined;
-  service: string;
-  /**
-   * Routing-only path used to select a route inside the target service.
-   */
-  path?: string | undefined;
-};
-
-export type AddRouteDestination = AddRouteDestination2 | string;
-
 /**
  * The route definition from @vercel/routing-utils.
  */
 export type AddRouteProjectRoutesResponse200Route = {
-  src: string;
-  dest?: string | undefined;
-  headers?: { [k: string]: string } | undefined;
-  methods?: Array<string> | undefined;
-  continue?: boolean | undefined;
-  override?: boolean | undefined;
   caseSensitive?: boolean | undefined;
   check?: boolean | undefined;
-  important?: boolean | undefined;
-  status?: number | undefined;
+  continue?: boolean | undefined;
+  dest?: string | undefined;
+  destination?: AddRouteDestination2 | string | undefined;
+  env?: Array<string> | undefined;
   has?:
     | Array<
       | AddRouteHas1
@@ -419,6 +407,22 @@ export type AddRouteProjectRoutesResponse200Route = {
       | (AddRouteHas2 & { type: "query" })
     >
     | undefined;
+  headers?: { [k: string]: string } | undefined;
+  important?: boolean | undefined;
+  locale?: AddRouteLocale | undefined;
+  methods?: Array<string> | undefined;
+  /**
+   * A middleware index in the `middleware` key under the build result
+   */
+  middleware?: number | undefined;
+  /**
+   * A middleware key within the `output` key under the build result. Overrides a `middleware` definition.
+   */
+  middlewarePath?: string | undefined;
+  /**
+   * The original middleware matchers.
+   */
+  middlewareRawSrc?: Array<string> | undefined;
   missing?:
     | Array<
       | AddRouteMissing1
@@ -428,6 +432,15 @@ export type AddRouteProjectRoutesResponse200Route = {
     >
     | undefined;
   mitigate?: AddRouteMitigate | undefined;
+  override?: boolean | undefined;
+  respectOriginCacheControl?: boolean | undefined;
+  /**
+   * Aliases for `src`, `dest`, and `status`. These provide consistency with the `rewrites`, `redirects`, and `headers` fields which use `source`, `destination`, and `statusCode`. During normalization, the string forms are converted to their canonical forms (`src`, `dest`, `status`) and stripped from the route object. `destination` may also be a service-targeted object, in which case routing is delegated into the named service's internal route table and the object is preserved as-is (not folded into `dest`).
+   */
+  source?: string | undefined;
+  src: string;
+  status?: number | undefined;
+  statusCode?: number | undefined;
   transforms?:
     | Array<
       | (AddRouteTransforms1 & { type: "request.headers" })
@@ -436,28 +449,15 @@ export type AddRouteProjectRoutesResponse200Route = {
       | AddRouteTransforms2
     >
     | undefined;
-  env?: Array<string> | undefined;
-  locale?: AddRouteLocale | undefined;
-  /**
-   * Aliases for `src`, `dest`, and `status`. These provide consistency with the `rewrites`, `redirects`, and `headers` fields which use `source`, `destination`, and `statusCode`. During normalization, the string forms are converted to their canonical forms (`src`, `dest`, `status`) and stripped from the route object. `destination` may also be a service-targeted object, in which case routing is delegated into the named service's internal route table and the object is preserved as-is (not folded into `dest`).
-   */
-  source?: string | undefined;
-  destination?: AddRouteDestination2 | string | undefined;
-  statusCode?: number | undefined;
-  /**
-   * A middleware key within the `output` key under the build result. Overrides a `middleware` definition.
-   */
-  middlewarePath?: string | undefined;
-  /**
-   * The original middleware matchers.
-   */
-  middlewareRawSrc?: Array<string> | undefined;
-  /**
-   * A middleware index in the `middleware` key under the build result
-   */
-  middleware?: number | undefined;
-  respectOriginCacheControl?: boolean | undefined;
 };
+
+export const RouteType = {
+  Redirect: "redirect",
+  Rewrite: "rewrite",
+  SetStatus: "set_status",
+  Transform: "transform",
+} as const;
+export type RouteType = ClosedEnum<typeof RouteType>;
 
 /**
  * The syntax type of the source pattern. Determines how the pattern is compiled to regex.
@@ -473,15 +473,6 @@ export const AddRouteSrcSyntax = {
 export type AddRouteSrcSyntax = ClosedEnum<typeof AddRouteSrcSyntax>;
 
 export type AddRouteProjectRoutesResponseRoute = {
-  routeType?: RouteType | undefined;
-  /**
-   * Unique identifier for the routing rule.
-   */
-  id: string;
-  /**
-   * Human-readable name for the routing rule.
-   */
-  name: string;
   /**
    * Optional description of what the routing rule does.
    */
@@ -491,25 +482,34 @@ export type AddRouteProjectRoutesResponseRoute = {
    */
   enabled?: boolean | undefined;
   /**
-   * Whether this route is new and not yet published to production. Set to true only when a route is first created via add-route. Cleared (set to false) when a version is promoted to production.
+   * Unique identifier for the routing rule.
    */
-  staged?: boolean | undefined;
+  id: string;
   /**
-   * The route definition from @vercel/routing-utils.
+   * Human-readable name for the routing rule.
    */
-  route: AddRouteProjectRoutesResponse200Route;
-  /**
-   * Original source pattern provided by user (path-to-regexp or regex). Used to display the user's input in API responses.
-   */
-  rawSrc?: string | undefined;
+  name: string;
   /**
    * Original destination provided by user.
    */
   rawDest?: string | undefined;
   /**
+   * Original source pattern provided by user (path-to-regexp or regex). Used to display the user's input in API responses.
+   */
+  rawSrc?: string | undefined;
+  /**
+   * The route definition from @vercel/routing-utils.
+   */
+  route: AddRouteProjectRoutesResponse200Route;
+  routeType?: RouteType | undefined;
+  /**
    * The syntax type of the source pattern. Determines how the pattern is compiled to regex.
    */
   srcSyntax?: AddRouteSrcSyntax | undefined;
+  /**
+   * Whether this route is new and not yet published to production. Set to true only when a route is first created via add-route. Cleared (set to false) when a version is promoted to production.
+   */
+  staged?: boolean | undefined;
 };
 
 /**
@@ -517,37 +517,37 @@ export type AddRouteProjectRoutesResponseRoute = {
  */
 export type AddRouteVersion = {
   /**
-   * Unique identifier for the version.
+   * The staging alias for previewing this version.
    */
-  id: string;
-  /**
-   * The S3 key where the routing rules are stored.
-   */
-  s3Key: string;
-  /**
-   * Timestamp of when this version was last modified.
-   */
-  lastModified: number;
+  alias?: string | undefined;
   /**
    * The user who created this version.
    */
   createdBy: string;
   /**
-   * Whether this version is staged and not yet promoted to production.
+   * Unique identifier for the version.
    */
-  isStaging?: boolean | undefined;
+  id: string;
   /**
    * Whether this version is currently live in production.
    */
   isLive?: boolean | undefined;
   /**
+   * Whether this version is staged and not yet promoted to production.
+   */
+  isStaging?: boolean | undefined;
+  /**
+   * Timestamp of when this version was last modified.
+   */
+  lastModified: number;
+  /**
    * The number of routing rules in this version.
    */
   ruleCount?: number | undefined;
   /**
-   * The staging alias for previewing this version.
+   * The S3 key where the routing rules are stored.
    */
-  alias?: string | undefined;
+  s3Key: string;
 };
 
 export type AddRouteResponseBody = {
@@ -830,8 +830,50 @@ export function addRouteRequestToJSON(
 }
 
 /** @internal */
-export const RouteType$inboundSchema: z.ZodNativeEnum<typeof RouteType> = z
-  .nativeEnum(RouteType);
+export const AddRouteDestinationType$inboundSchema: z.ZodNativeEnum<
+  typeof AddRouteDestinationType
+> = z.nativeEnum(AddRouteDestinationType);
+
+/** @internal */
+export const AddRouteDestination2$inboundSchema: z.ZodType<
+  AddRouteDestination2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  path: types.optional(types.string()),
+  service: types.string(),
+  type: types.optional(AddRouteDestinationType$inboundSchema),
+});
+
+export function addRouteDestination2FromJSON(
+  jsonString: string,
+): SafeParseResult<AddRouteDestination2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AddRouteDestination2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AddRouteDestination2' from JSON`,
+  );
+}
+
+/** @internal */
+export const AddRouteDestination$inboundSchema: z.ZodType<
+  AddRouteDestination,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => AddRouteDestination2$inboundSchema),
+  types.string(),
+]);
+
+export function addRouteDestinationFromJSON(
+  jsonString: string,
+): SafeParseResult<AddRouteDestination, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AddRouteDestination$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AddRouteDestination' from JSON`,
+  );
+}
 
 /** @internal */
 export const AddRouteHasProjectRoutesType$inboundSchema: z.ZodNativeEnum<
@@ -862,16 +904,16 @@ export const AddRouteValueProjectRoutes2$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   eq: types.optional(smartUnion([types.string(), types.number()])),
-  neq: types.optional(types.string()),
-  inc: types.optional(z.array(types.string())),
-  ninc: types.optional(z.array(types.string())),
-  pre: types.optional(types.string()),
-  suf: types.optional(types.string()),
-  re: types.optional(types.string()),
   gt: types.optional(types.number()),
   gte: types.optional(types.number()),
+  inc: types.optional(z.array(types.string())),
   lt: types.optional(types.number()),
   lte: types.optional(types.number()),
+  neq: types.optional(types.string()),
+  ninc: types.optional(z.array(types.string())),
+  pre: types.optional(types.string()),
+  re: types.optional(types.string()),
+  suf: types.optional(types.string()),
 });
 
 export function addRouteValueProjectRoutes2FromJSON(
@@ -910,8 +952,8 @@ export const AddRouteHas2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: AddRouteHasProjectRoutesType$inboundSchema,
   key: types.string(),
+  type: AddRouteHasProjectRoutesType$inboundSchema,
   value: types.optional(
     smartUnion([
       types.string(),
@@ -954,16 +996,16 @@ export const AddRouteValue2$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   eq: types.optional(smartUnion([types.string(), types.number()])),
-  neq: types.optional(types.string()),
-  inc: types.optional(z.array(types.string())),
-  ninc: types.optional(z.array(types.string())),
-  pre: types.optional(types.string()),
-  suf: types.optional(types.string()),
-  re: types.optional(types.string()),
   gt: types.optional(types.number()),
   gte: types.optional(types.number()),
+  inc: types.optional(z.array(types.string())),
   lt: types.optional(types.number()),
   lte: types.optional(types.number()),
+  neq: types.optional(types.string()),
+  ninc: types.optional(z.array(types.string())),
+  pre: types.optional(types.string()),
+  re: types.optional(types.string()),
+  suf: types.optional(types.string()),
 });
 
 export function addRouteValue2FromJSON(
@@ -1045,6 +1087,26 @@ export function addRouteProjectRoutesHasFromJSON(
 }
 
 /** @internal */
+export const AddRouteLocale$inboundSchema: z.ZodType<
+  AddRouteLocale,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  cookie: types.optional(types.string()),
+  redirect: types.optional(z.record(types.string())),
+});
+
+export function addRouteLocaleFromJSON(
+  jsonString: string,
+): SafeParseResult<AddRouteLocale, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AddRouteLocale$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AddRouteLocale' from JSON`,
+  );
+}
+
+/** @internal */
 export const AddRouteMissingProjectRoutesType$inboundSchema: z.ZodNativeEnum<
   typeof AddRouteMissingProjectRoutesType
 > = z.nativeEnum(AddRouteMissingProjectRoutesType);
@@ -1079,16 +1141,16 @@ export const AddRouteValueProjectRoutesResponse2002$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   eq: types.optional(smartUnion([types.string(), types.number()])),
-  neq: types.optional(types.string()),
-  inc: types.optional(z.array(types.string())),
-  ninc: types.optional(z.array(types.string())),
-  pre: types.optional(types.string()),
-  suf: types.optional(types.string()),
-  re: types.optional(types.string()),
   gt: types.optional(types.number()),
   gte: types.optional(types.number()),
+  inc: types.optional(z.array(types.string())),
   lt: types.optional(types.number()),
   lte: types.optional(types.number()),
+  neq: types.optional(types.string()),
+  ninc: types.optional(z.array(types.string())),
+  pre: types.optional(types.string()),
+  re: types.optional(types.string()),
+  suf: types.optional(types.string()),
 });
 
 export function addRouteValueProjectRoutesResponse2002FromJSON(
@@ -1128,8 +1190,8 @@ export const AddRouteMissing2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: AddRouteMissingProjectRoutesType$inboundSchema,
   key: types.string(),
+  type: AddRouteMissingProjectRoutesType$inboundSchema,
   value: types.optional(
     smartUnion([
       types.string(),
@@ -1173,16 +1235,16 @@ export const AddRouteValueProjectRoutesResponse2$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   eq: types.optional(smartUnion([types.string(), types.number()])),
-  neq: types.optional(types.string()),
-  inc: types.optional(z.array(types.string())),
-  ninc: types.optional(z.array(types.string())),
-  pre: types.optional(types.string()),
-  suf: types.optional(types.string()),
-  re: types.optional(types.string()),
   gt: types.optional(types.number()),
   gte: types.optional(types.number()),
+  inc: types.optional(z.array(types.string())),
   lt: types.optional(types.number()),
   lte: types.optional(types.number()),
+  neq: types.optional(types.string()),
+  ninc: types.optional(z.array(types.string())),
+  pre: types.optional(types.string()),
+  re: types.optional(types.string()),
+  suf: types.optional(types.string()),
 });
 
 export function addRouteValueProjectRoutesResponse2FromJSON(
@@ -1302,10 +1364,10 @@ export const AddRouteTransforms2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("request.path"),
-  op: AddRouteTransformsProjectRoutesOp$inboundSchema,
   args: types.string(),
   env: types.optional(z.array(types.string())),
+  op: AddRouteTransformsProjectRoutesOp$inboundSchema,
+  type: types.literal("request.path"),
 });
 
 export function addRouteTransforms2FromJSON(
@@ -1319,9 +1381,21 @@ export function addRouteTransforms2FromJSON(
 }
 
 /** @internal */
-export const AddRouteTransformsType$inboundSchema: z.ZodNativeEnum<
-  typeof AddRouteTransformsType
-> = z.nativeEnum(AddRouteTransformsType);
+export const TransformsArgs$inboundSchema: z.ZodType<
+  TransformsArgs,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), z.array(types.string())]);
+
+export function transformsArgsFromJSON(
+  jsonString: string,
+): SafeParseResult<TransformsArgs, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TransformsArgs$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TransformsArgs' from JSON`,
+  );
+}
 
 /** @internal */
 export const AddRouteTransformsOp$inboundSchema: z.ZodNativeEnum<
@@ -1352,15 +1426,15 @@ export const AddRouteKey2$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   eq: types.optional(smartUnion([types.string(), types.number()])),
-  neq: types.optional(types.string()),
+  gt: types.optional(types.number()),
+  gte: types.optional(types.number()),
   inc: types.optional(z.array(types.string())),
+  lt: types.optional(types.number()),
+  lte: types.optional(types.number()),
+  neq: types.optional(types.string()),
   ninc: types.optional(z.array(types.string())),
   pre: types.optional(types.string()),
   suf: types.optional(types.string()),
-  gt: types.optional(types.number()),
-  gte: types.optional(types.number()),
-  lt: types.optional(types.number()),
-  lte: types.optional(types.number()),
 });
 
 export function addRouteKey2FromJSON(
@@ -1410,21 +1484,9 @@ export function addRouteTransformsTargetFromJSON(
 }
 
 /** @internal */
-export const TransformsArgs$inboundSchema: z.ZodType<
-  TransformsArgs,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([types.string(), z.array(types.string())]);
-
-export function transformsArgsFromJSON(
-  jsonString: string,
-): SafeParseResult<TransformsArgs, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TransformsArgs$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TransformsArgs' from JSON`,
-  );
-}
+export const AddRouteTransformsType$inboundSchema: z.ZodNativeEnum<
+  typeof AddRouteTransformsType
+> = z.nativeEnum(AddRouteTransformsType);
 
 /** @internal */
 export const AddRouteTransforms1$inboundSchema: z.ZodType<
@@ -1432,11 +1494,11 @@ export const AddRouteTransforms1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: AddRouteTransformsType$inboundSchema,
-  op: AddRouteTransformsOp$inboundSchema,
-  target: z.lazy(() => AddRouteTransformsTarget$inboundSchema),
   args: types.optional(smartUnion([types.string(), z.array(types.string())])),
   env: types.optional(z.array(types.string())),
+  op: AddRouteTransformsOp$inboundSchema,
+  target: z.lazy(() => AddRouteTransformsTarget$inboundSchema),
+  type: AddRouteTransformsType$inboundSchema,
 });
 
 export function addRouteTransforms1FromJSON(
@@ -1478,87 +1540,22 @@ export function addRouteProjectRoutesTransformsFromJSON(
 }
 
 /** @internal */
-export const AddRouteLocale$inboundSchema: z.ZodType<
-  AddRouteLocale,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  redirect: types.optional(z.record(types.string())),
-  cookie: types.optional(types.string()),
-});
-
-export function addRouteLocaleFromJSON(
-  jsonString: string,
-): SafeParseResult<AddRouteLocale, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AddRouteLocale$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AddRouteLocale' from JSON`,
-  );
-}
-
-/** @internal */
-export const AddRouteDestinationType$inboundSchema: z.ZodNativeEnum<
-  typeof AddRouteDestinationType
-> = z.nativeEnum(AddRouteDestinationType);
-
-/** @internal */
-export const AddRouteDestination2$inboundSchema: z.ZodType<
-  AddRouteDestination2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: types.optional(AddRouteDestinationType$inboundSchema),
-  service: types.string(),
-  path: types.optional(types.string()),
-});
-
-export function addRouteDestination2FromJSON(
-  jsonString: string,
-): SafeParseResult<AddRouteDestination2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AddRouteDestination2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AddRouteDestination2' from JSON`,
-  );
-}
-
-/** @internal */
-export const AddRouteDestination$inboundSchema: z.ZodType<
-  AddRouteDestination,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.lazy(() => AddRouteDestination2$inboundSchema),
-  types.string(),
-]);
-
-export function addRouteDestinationFromJSON(
-  jsonString: string,
-): SafeParseResult<AddRouteDestination, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AddRouteDestination$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AddRouteDestination' from JSON`,
-  );
-}
-
-/** @internal */
 export const AddRouteProjectRoutesResponse200Route$inboundSchema: z.ZodType<
   AddRouteProjectRoutesResponse200Route,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  src: types.string(),
-  dest: types.optional(types.string()),
-  headers: types.optional(z.record(types.string())),
-  methods: types.optional(z.array(types.string())),
-  continue: types.optional(types.boolean()),
-  override: types.optional(types.boolean()),
   caseSensitive: types.optional(types.boolean()),
   check: types.optional(types.boolean()),
-  important: types.optional(types.boolean()),
-  status: types.optional(types.number()),
+  continue: types.optional(types.boolean()),
+  dest: types.optional(types.string()),
+  destination: types.optional(
+    smartUnion([
+      z.lazy(() => AddRouteDestination2$inboundSchema),
+      types.string(),
+    ]),
+  ),
+  env: types.optional(z.array(types.string())),
   has: types.optional(
     z.array(z.union([
       z.lazy(() => AddRouteHas1$inboundSchema),
@@ -1573,6 +1570,13 @@ export const AddRouteProjectRoutesResponse200Route$inboundSchema: z.ZodType<
       ),
     ])),
   ),
+  headers: types.optional(z.record(types.string())),
+  important: types.optional(types.boolean()),
+  locale: types.optional(z.lazy(() => AddRouteLocale$inboundSchema)),
+  methods: types.optional(z.array(types.string())),
+  middleware: types.optional(types.number()),
+  middlewarePath: types.optional(types.string()),
+  middlewareRawSrc: types.optional(z.array(types.string())),
   missing: types.optional(
     z.array(z.union([
       z.lazy(() => AddRouteMissing1$inboundSchema),
@@ -1588,6 +1592,12 @@ export const AddRouteProjectRoutesResponse200Route$inboundSchema: z.ZodType<
     ])),
   ),
   mitigate: types.optional(z.lazy(() => AddRouteMitigate$inboundSchema)),
+  override: types.optional(types.boolean()),
+  respectOriginCacheControl: types.optional(types.boolean()),
+  source: types.optional(types.string()),
+  src: types.string(),
+  status: types.optional(types.number()),
+  statusCode: types.optional(types.number()),
   transforms: types.optional(
     z.array(z.union([
       z.lazy(() => AddRouteTransforms1$inboundSchema).and(
@@ -1602,20 +1612,6 @@ export const AddRouteProjectRoutesResponse200Route$inboundSchema: z.ZodType<
       z.lazy(() => AddRouteTransforms2$inboundSchema),
     ])),
   ),
-  env: types.optional(z.array(types.string())),
-  locale: types.optional(z.lazy(() => AddRouteLocale$inboundSchema)),
-  source: types.optional(types.string()),
-  destination: types.optional(
-    smartUnion([
-      z.lazy(() => AddRouteDestination2$inboundSchema),
-      types.string(),
-    ]),
-  ),
-  statusCode: types.optional(types.number()),
-  middlewarePath: types.optional(types.string()),
-  middlewareRawSrc: types.optional(z.array(types.string())),
-  middleware: types.optional(types.number()),
-  respectOriginCacheControl: types.optional(types.boolean()),
 });
 
 export function addRouteProjectRoutesResponse200RouteFromJSON(
@@ -1630,6 +1626,10 @@ export function addRouteProjectRoutesResponse200RouteFromJSON(
 }
 
 /** @internal */
+export const RouteType$inboundSchema: z.ZodNativeEnum<typeof RouteType> = z
+  .nativeEnum(RouteType);
+
+/** @internal */
 export const AddRouteSrcSyntax$inboundSchema: z.ZodNativeEnum<
   typeof AddRouteSrcSyntax
 > = z.nativeEnum(AddRouteSrcSyntax);
@@ -1640,16 +1640,16 @@ export const AddRouteProjectRoutesResponseRoute$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  routeType: types.optional(RouteType$inboundSchema),
-  id: types.string(),
-  name: types.string(),
   description: types.optional(types.string()),
   enabled: types.optional(types.boolean()),
-  staged: types.optional(types.boolean()),
-  route: z.lazy(() => AddRouteProjectRoutesResponse200Route$inboundSchema),
-  rawSrc: types.optional(types.string()),
+  id: types.string(),
+  name: types.string(),
   rawDest: types.optional(types.string()),
+  rawSrc: types.optional(types.string()),
+  route: z.lazy(() => AddRouteProjectRoutesResponse200Route$inboundSchema),
+  routeType: types.optional(RouteType$inboundSchema),
   srcSyntax: types.optional(AddRouteSrcSyntax$inboundSchema),
+  staged: types.optional(types.boolean()),
 });
 
 export function addRouteProjectRoutesResponseRouteFromJSON(
@@ -1669,14 +1669,14 @@ export const AddRouteVersion$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: types.string(),
-  s3Key: types.string(),
-  lastModified: types.number(),
-  createdBy: types.string(),
-  isStaging: types.optional(types.boolean()),
-  isLive: types.optional(types.boolean()),
-  ruleCount: types.optional(types.number()),
   alias: types.optional(types.string()),
+  createdBy: types.string(),
+  id: types.string(),
+  isLive: types.optional(types.boolean()),
+  isStaging: types.optional(types.boolean()),
+  lastModified: types.number(),
+  ruleCount: types.optional(types.number()),
+  s3Key: types.string(),
 });
 
 export function addRouteVersionFromJSON(

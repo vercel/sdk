@@ -12,10 +12,11 @@ const value: string[] = [
 ];
 ```
 
-### `models.GetSecurityFirewallConfigLogHeadersSecurityResponse2002`
+### `models.GetSecurityFirewallConfigLogHeadersSecurityResponse200ApplicationJson2`
 
 ```typescript
-const value: models.GetSecurityFirewallConfigLogHeadersSecurityResponse2002 =
-  "*";
+const value:
+  models.GetSecurityFirewallConfigLogHeadersSecurityResponse200ApplicationJson2 =
+    "*";
 ```
 

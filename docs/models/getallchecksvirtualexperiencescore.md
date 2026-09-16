@@ -6,8 +6,8 @@
 import { GetAllChecksVirtualExperienceScore } from "@vercel/sdk/models/getallchecksop.js";
 
 let value: GetAllChecksVirtualExperienceScore = {
-  value: 3186.71,
   source: "web-vitals",
+  value: 3186.71,
 };
 ```
 
@@ -15,6 +15,6 @@ let value: GetAllChecksVirtualExperienceScore = {
 
 | Field                                                                                                                        | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  |
 | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `value`                                                                                                                      | *number*                                                                                                                     | :heavy_check_mark:                                                                                                           | N/A                                                                                                                          |
 | `previousValue`                                                                                                              | *number*                                                                                                                     | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |
 | `source`                                                                                                                     | [models.GetAllChecksChecksResponse200ApplicationJSONSource](../models/getallcheckschecksresponse200applicationjsonsource.md) | :heavy_check_mark:                                                                                                           | N/A                                                                                                                          |
+| `value`                                                                                                                      | *number*                                                                                                                     | :heavy_check_mark:                                                                                                           | N/A                                                                                                                          |

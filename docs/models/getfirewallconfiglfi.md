@@ -8,8 +8,8 @@ Local File Inclusion Attack - Prevent unauthorized access to local files through
 import { GetFirewallConfigLfi } from "@vercel/sdk/models/getfirewallconfigop.js";
 
 let value: GetFirewallConfigLfi = {
-  active: false,
   action: "log",
+  active: false,
 };
 ```
 
@@ -17,5 +17,5 @@ let value: GetFirewallConfigLfi = {
 
 | Field                                                                                                  | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
 | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| `active`                                                                                               | *boolean*                                                                                              | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
 | `action`                                                                                               | [models.GetFirewallConfigSecurityResponseAction](../models/getfirewallconfigsecurityresponseaction.md) | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
+| `active`                                                                                               | *boolean*                                                                                              | :heavy_check_mark:                                                                                     | N/A                                                                                                    |

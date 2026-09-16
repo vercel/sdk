@@ -15,6 +15,29 @@ export type GetTeamAccessRequestRequest = {
   teamId: string;
 };
 
+/**
+ * Map of the connected Bitbucket account.
+ */
+export type GetTeamAccessRequestBitbucket = {
+  login?: string | undefined;
+};
+
+/**
+ * Map of the connected GitHub account.
+ */
+export type GetTeamAccessRequestGithub = {
+  login?: string | undefined;
+};
+
+/**
+ * Map of the connected GitLab account.
+ */
+export type GetTeamAccessRequestGitlab = {
+  login?: string | undefined;
+};
+
+export type GetTeamAccessRequestGitUserId = string | number;
+
 export const GetTeamAccessRequestOrigin = {
   AccountUpdate: "account-update",
   Bitbucket: "bitbucket",
@@ -40,44 +63,21 @@ export type GetTeamAccessRequestOrigin = ClosedEnum<
   typeof GetTeamAccessRequestOrigin
 >;
 
-export type GetTeamAccessRequestGitUserId = string | number;
-
 /**
  * A map that describes the origin from where the user joined.
  */
 export type GetTeamAccessRequestJoinedFrom = {
-  origin: GetTeamAccessRequestOrigin;
   commitId?: string | undefined;
-  repoId?: string | undefined;
-  repoPath?: string | undefined;
+  dsyncConnectedAt?: number | undefined;
+  dsyncUserId?: string | undefined;
   gitUserId?: string | number | undefined;
   gitUserLogin?: string | undefined;
-  ssoUserId?: string | undefined;
-  ssoConnectedAt?: number | undefined;
   idpUserId?: string | undefined;
-  dsyncUserId?: string | undefined;
-  dsyncConnectedAt?: number | undefined;
-};
-
-/**
- * Map of the connected GitHub account.
- */
-export type GetTeamAccessRequestGithub = {
-  login?: string | undefined;
-};
-
-/**
- * Map of the connected GitLab account.
- */
-export type GetTeamAccessRequestGitlab = {
-  login?: string | undefined;
-};
-
-/**
- * Map of the connected Bitbucket account.
- */
-export type GetTeamAccessRequestBitbucket = {
-  login?: string | undefined;
+  origin: GetTeamAccessRequestOrigin;
+  repoId?: string | undefined;
+  repoPath?: string | undefined;
+  ssoConnectedAt?: number | undefined;
+  ssoUserId?: string | undefined;
 };
 
 /**
@@ -85,25 +85,17 @@ export type GetTeamAccessRequestBitbucket = {
  */
 export type GetTeamAccessRequestResponseBody = {
   /**
-   * The slug of the team.
+   * Timestamp in milliseconds when the user requested access to the team.
    */
-  teamSlug: string;
+  accessRequestedAt: number;
   /**
-   * The name of the team.
+   * Map of the connected Bitbucket account.
    */
-  teamName: string;
+  bitbucket: GetTeamAccessRequestBitbucket | null;
   /**
    * Current status of the membership. Will be `true` if confirmed, if pending it'll be `false`.
    */
   confirmed: boolean;
-  /**
-   * A map that describes the origin from where the user joined.
-   */
-  joinedFrom: GetTeamAccessRequestJoinedFrom;
-  /**
-   * Timestamp in milliseconds when the user requested access to the team.
-   */
-  accessRequestedAt: number;
   /**
    * Map of the connected GitHub account.
    */
@@ -113,9 +105,17 @@ export type GetTeamAccessRequestResponseBody = {
    */
   gitlab: GetTeamAccessRequestGitlab | null;
   /**
-   * Map of the connected Bitbucket account.
+   * A map that describes the origin from where the user joined.
    */
-  bitbucket: GetTeamAccessRequestBitbucket | null;
+  joinedFrom: GetTeamAccessRequestJoinedFrom;
+  /**
+   * The name of the team.
+   */
+  teamName: string;
+  /**
+   * The slug of the team.
+   */
+  teamSlug: string;
 };
 
 /** @internal */
@@ -145,53 +145,21 @@ export function getTeamAccessRequestRequestToJSON(
 }
 
 /** @internal */
-export const GetTeamAccessRequestOrigin$inboundSchema: z.ZodNativeEnum<
-  typeof GetTeamAccessRequestOrigin
-> = z.nativeEnum(GetTeamAccessRequestOrigin);
-
-/** @internal */
-export const GetTeamAccessRequestGitUserId$inboundSchema: z.ZodType<
-  GetTeamAccessRequestGitUserId,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([types.string(), types.number()]);
-
-export function getTeamAccessRequestGitUserIdFromJSON(
-  jsonString: string,
-): SafeParseResult<GetTeamAccessRequestGitUserId, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetTeamAccessRequestGitUserId$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetTeamAccessRequestGitUserId' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetTeamAccessRequestJoinedFrom$inboundSchema: z.ZodType<
-  GetTeamAccessRequestJoinedFrom,
+export const GetTeamAccessRequestBitbucket$inboundSchema: z.ZodType<
+  GetTeamAccessRequestBitbucket,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  origin: GetTeamAccessRequestOrigin$inboundSchema,
-  commitId: types.optional(types.string()),
-  repoId: types.optional(types.string()),
-  repoPath: types.optional(types.string()),
-  gitUserId: types.optional(smartUnion([types.string(), types.number()])),
-  gitUserLogin: types.optional(types.string()),
-  ssoUserId: types.optional(types.string()),
-  ssoConnectedAt: types.optional(types.number()),
-  idpUserId: types.optional(types.string()),
-  dsyncUserId: types.optional(types.string()),
-  dsyncConnectedAt: types.optional(types.number()),
+  login: types.optional(types.string()),
 });
 
-export function getTeamAccessRequestJoinedFromFromJSON(
+export function getTeamAccessRequestBitbucketFromJSON(
   jsonString: string,
-): SafeParseResult<GetTeamAccessRequestJoinedFrom, SDKValidationError> {
+): SafeParseResult<GetTeamAccessRequestBitbucket, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetTeamAccessRequestJoinedFrom$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetTeamAccessRequestJoinedFrom' from JSON`,
+    (x) => GetTeamAccessRequestBitbucket$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetTeamAccessRequestBitbucket' from JSON`,
   );
 }
 
@@ -234,21 +202,53 @@ export function getTeamAccessRequestGitlabFromJSON(
 }
 
 /** @internal */
-export const GetTeamAccessRequestBitbucket$inboundSchema: z.ZodType<
-  GetTeamAccessRequestBitbucket,
+export const GetTeamAccessRequestGitUserId$inboundSchema: z.ZodType<
+  GetTeamAccessRequestGitUserId,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), types.number()]);
+
+export function getTeamAccessRequestGitUserIdFromJSON(
+  jsonString: string,
+): SafeParseResult<GetTeamAccessRequestGitUserId, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetTeamAccessRequestGitUserId$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetTeamAccessRequestGitUserId' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetTeamAccessRequestOrigin$inboundSchema: z.ZodNativeEnum<
+  typeof GetTeamAccessRequestOrigin
+> = z.nativeEnum(GetTeamAccessRequestOrigin);
+
+/** @internal */
+export const GetTeamAccessRequestJoinedFrom$inboundSchema: z.ZodType<
+  GetTeamAccessRequestJoinedFrom,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  login: types.optional(types.string()),
+  commitId: types.optional(types.string()),
+  dsyncConnectedAt: types.optional(types.number()),
+  dsyncUserId: types.optional(types.string()),
+  gitUserId: types.optional(smartUnion([types.string(), types.number()])),
+  gitUserLogin: types.optional(types.string()),
+  idpUserId: types.optional(types.string()),
+  origin: GetTeamAccessRequestOrigin$inboundSchema,
+  repoId: types.optional(types.string()),
+  repoPath: types.optional(types.string()),
+  ssoConnectedAt: types.optional(types.number()),
+  ssoUserId: types.optional(types.string()),
 });
 
-export function getTeamAccessRequestBitbucketFromJSON(
+export function getTeamAccessRequestJoinedFromFromJSON(
   jsonString: string,
-): SafeParseResult<GetTeamAccessRequestBitbucket, SDKValidationError> {
+): SafeParseResult<GetTeamAccessRequestJoinedFrom, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetTeamAccessRequestBitbucket$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetTeamAccessRequestBitbucket' from JSON`,
+    (x) => GetTeamAccessRequestJoinedFrom$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetTeamAccessRequestJoinedFrom' from JSON`,
   );
 }
 
@@ -258,20 +258,20 @@ export const GetTeamAccessRequestResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  teamSlug: types.string(),
-  teamName: types.string(),
-  confirmed: types.boolean(),
-  joinedFrom: z.lazy(() => GetTeamAccessRequestJoinedFrom$inboundSchema),
   accessRequestedAt: types.number(),
+  bitbucket: types.nullable(
+    z.lazy(() => GetTeamAccessRequestBitbucket$inboundSchema),
+  ),
+  confirmed: types.boolean(),
   github: types.nullable(
     z.lazy(() => GetTeamAccessRequestGithub$inboundSchema),
   ),
   gitlab: types.nullable(
     z.lazy(() => GetTeamAccessRequestGitlab$inboundSchema),
   ),
-  bitbucket: types.nullable(
-    z.lazy(() => GetTeamAccessRequestBitbucket$inboundSchema),
-  ),
+  joinedFrom: z.lazy(() => GetTeamAccessRequestJoinedFrom$inboundSchema),
+  teamName: types.string(),
+  teamSlug: types.string(),
 });
 
 export function getTeamAccessRequestResponseBodyFromJSON(

@@ -5,25 +5,26 @@ A full point-in-time snapshot of an OIDC exchange policy, captured on every life
 ## Example Usage
 
 ```typescript
-import { Policy } from "@vercel/sdk/models/fourhundredandnine.js";
+import { Policy } from "@vercel/sdk/models/threehundredandninetynine.js";
 
 let value: Policy = {
-  policyId: "<id>",
+  claims: [
+    {
+      name: "<value>",
+      values: [],
+    },
+  ],
   clientId: "<id>",
-  issuerUrl: "https://gifted-councilman.org",
-  teamId: "<id>",
+  createdAt: 3142.86,
+  issuerUrl: "https://thin-rawhide.com/",
   name: "<value>",
-  claims: [],
   permissions: [
     "<value 1>",
-    "<value 2>",
-    "<value 3>",
   ],
-  resources: {
-    projectIds: [],
-  },
-  createdAt: 7712.5,
-  updatedAt: 174.88,
+  policyId: "<id>",
+  resources: null,
+  teamId: "<id>",
+  updatedAt: 7712.5,
 };
 ```
 
@@ -31,13 +32,13 @@ let value: Policy = {
 
 | Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
 | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `policyId`                                                                       | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
-| `clientId`                                                                       | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
-| `issuerUrl`                                                                      | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
-| `teamId`                                                                         | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
-| `name`                                                                           | *string*                                                                         | :heavy_check_mark:                                                               | Human-readable policy name, or `null` when unnamed.                              |
 | `claims`                                                                         | [models.Claims](../models/claims.md)[]                                           | :heavy_check_mark:                                                               | Claim matchers an OIDC token must satisfy to use the policy.                     |
-| `permissions`                                                                    | *string*[]                                                                       | :heavy_check_mark:                                                               | Permission boundary (`['*']` = the app's full declared permissions).             |
-| `resources`                                                                      | [models.UserEventPayload447Resources](../models/usereventpayload447resources.md) | :heavy_check_mark:                                                               | Resource boundary, or `null` when the policy has none.                           |
+| `clientId`                                                                       | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
 | `createdAt`                                                                      | *number*                                                                         | :heavy_check_mark:                                                               | Creation time (epoch ms).                                                        |
+| `issuerUrl`                                                                      | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
+| `name`                                                                           | *string*                                                                         | :heavy_check_mark:                                                               | Human-readable policy name, or `null` when unnamed.                              |
+| `permissions`                                                                    | *string*[]                                                                       | :heavy_check_mark:                                                               | Permission boundary (`['*']` = the app's full declared permissions).             |
+| `policyId`                                                                       | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
+| `resources`                                                                      | [models.UserEventPayload450Resources](../models/usereventpayload450resources.md) | :heavy_check_mark:                                                               | Resource boundary, or `null` when the policy has none.                           |
+| `teamId`                                                                         | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
 | `updatedAt`                                                                      | *number*                                                                         | :heavy_check_mark:                                                               | Last-update time (epoch ms).                                                     |

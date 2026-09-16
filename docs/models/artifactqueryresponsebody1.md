@@ -15,8 +15,8 @@ let value: ArtifactQueryResponseBody1 = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `size`             | *number*           | :heavy_check_mark: | N/A                |
-| `taskDurationMs`   | *number*           | :heavy_check_mark: | N/A                |
-| `tag`              | *string*           | :heavy_minus_sign: | N/A                |
-| `sha`              | *string*           | :heavy_minus_sign: | N/A                |
 | `dirtyHash`        | *string*           | :heavy_minus_sign: | N/A                |
+| `sha`              | *string*           | :heavy_minus_sign: | N/A                |
+| `size`             | *number*           | :heavy_check_mark: | N/A                |
+| `tag`              | *string*           | :heavy_minus_sign: | N/A                |
+| `taskDurationMs`   | *number*           | :heavy_check_mark: | N/A                |

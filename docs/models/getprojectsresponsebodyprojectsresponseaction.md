@@ -5,12 +5,11 @@
 ```typescript
 import { GetProjectsResponseBodyProjectsResponseAction } from "@vercel/sdk/models/getprojectsresponsebody.js";
 
-let value: GetProjectsResponseBodyProjectsResponseAction =
-  "remove-project-interstitial";
+let value: GetProjectsResponseBodyProjectsResponseAction = "rate_limit";
 ```
 
 ## Values
 
 ```typescript
-"add-deployment-interstitial" | "add-project-interstitial" | "remove-deployment-interstitial" | "remove-project-interstitial"
+"allow" | "bypass" | "challenge" | "deny" | "log" | "rate_limit" | "redirect"
 ```

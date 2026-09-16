@@ -6,14 +6,14 @@
 import { GetDeploymentEventsResponseBodyDeployments1 } from "@vercel/sdk/models/getdeploymenteventsop.js";
 
 let value: GetDeploymentEventsResponseBodyDeployments1 = {
-  type: "stderr",
-  created: 1498.12,
+  created: 8352.2,
   payload: {
+    date: 1498.12,
     deploymentId: "<id>",
     id: "<id>",
-    date: 5814.47,
     serial: "<value>",
   },
+  type: "metric",
 };
 ```
 
@@ -21,6 +21,6 @@ let value: GetDeploymentEventsResponseBodyDeployments1 = {
 
 | Field                                                                                                                | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
 | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `type`                                                                                                               | [models.GetDeploymentEventsResponseBodyDeploymentsType](../models/getdeploymenteventsresponsebodydeploymentstype.md) | :heavy_check_mark:                                                                                                   | N/A                                                                                                                  |
 | `created`                                                                                                            | *number*                                                                                                             | :heavy_check_mark:                                                                                                   | N/A                                                                                                                  |
 | `payload`                                                                                                            | [models.ResponseBodyPayload](../models/responsebodypayload.md)                                                       | :heavy_check_mark:                                                                                                   | N/A                                                                                                                  |
+| `type`                                                                                                               | [models.GetDeploymentEventsResponseBodyDeploymentsType](../models/getdeploymenteventsresponsebodydeploymentstype.md) | :heavy_check_mark:                                                                                                   | N/A                                                                                                                  |

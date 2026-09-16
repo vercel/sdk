@@ -7,11 +7,11 @@
 
 ```typescript
 const value: models.PutFirewallConfigRules1 = {
-  id: "<id>",
-  name: "<value>",
+  action: {},
   active: false,
   conditionGroup: [],
-  action: {},
+  id: "<id>",
+  name: "<value>",
   valid: true,
   validationErrors: "<value>",
 };
@@ -21,11 +21,11 @@ const value: models.PutFirewallConfigRules1 = {
 
 ```typescript
 const value: models.PutFirewallConfigRules2 = {
-  id: "<id>",
-  name: "<value>",
+  action: {},
   active: true,
   conditionGroup: [],
-  action: {},
+  id: "<id>",
+  name: "<value>",
   valid: false,
   validationErrors: [
     "<value 1>",

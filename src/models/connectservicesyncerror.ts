@@ -13,13 +13,13 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
  */
 export type ConnectServiceSyncError = {
   /**
-   * Human-readable provider synchronization error.
-   */
-  message: string;
-  /**
    * Connector fields that caused the synchronization error.
    */
   fields?: Array<string> | undefined;
+  /**
+   * Human-readable provider synchronization error.
+   */
+  message: string;
   /**
    * Provider-specific error details that are safe to expose.
    */
@@ -32,8 +32,8 @@ export const ConnectServiceSyncError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  message: types.string(),
   fields: types.optional(z.array(types.string())),
+  message: types.string(),
   vendor: types.optional(z.record(z.any())),
 });
 

@@ -19,11 +19,11 @@ export type GetDomainTransferInRequest = {
 };
 
 /**
- * NotAuthorizedForScope
+ * Forbidden
  */
 export type GetDomainTransferInDomainsRegistrarResponseBody =
-  | (NotAuthorizedForScope & { code: "not_authorized_for_scope" })
-  | Forbidden;
+  | Forbidden
+  | (NotAuthorizedForScope & { code: "not_authorized_for_scope" });
 
 export const GetDomainTransferInStatus = {
   Canceled: "canceled",
@@ -82,10 +82,10 @@ export const GetDomainTransferInDomainsRegistrarResponseBody$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.union([
+    Forbidden$inboundSchema,
     NotAuthorizedForScope$inboundSchema.and(
       z.object({ code: z.literal("not_authorized_for_scope") }),
     ),
-    Forbidden$inboundSchema,
   ]);
 
 export function getDomainTransferInDomainsRegistrarResponseBodyFromJSON(

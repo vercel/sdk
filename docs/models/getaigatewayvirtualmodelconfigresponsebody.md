@@ -7,13 +7,13 @@
 
 ```typescript
 const value: models.AiGatewayVirtualModelConfig = {
-  ownerId: "<id>",
-  virtualModelSlug: "<value>",
+  createdAt: 9240.95,
   deleted: false,
-  status: "<value>",
   kind: "<value>",
-  createdAt: 5188.59,
+  ownerId: "<id>",
+  status: "<value>",
   updatedAt: 5306.71,
+  virtualModelSlug: "<value>",
 };
 ```
 
@@ -21,18 +21,8 @@ const value: models.AiGatewayVirtualModelConfig = {
 
 ```typescript
 const value: models.AiGatewayVirtualModelConfigList = {
-  virtualModelConfigs: [
-    {
-      ownerId: "<id>",
-      virtualModelSlug: "<value>",
-      deleted: true,
-      status: "<value>",
-      kind: "<value>",
-      createdAt: 704.67,
-      updatedAt: 3886.13,
-    },
-  ],
   cursor: "<value>",
+  virtualModelConfigs: [],
 };
 ```
 

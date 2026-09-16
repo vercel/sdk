@@ -3,11 +3,10 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsAlias } from "@vercel/sdk/models/updatemicrofrontendsprojectsfunctiondefaultmemorytype.js";
+import { UpdateMicrofrontendsAlias } from "@vercel/sdk/models/updatemicrofrontendshaskey.js";
 
 let value: UpdateMicrofrontendsAlias = {
   deployment: {
-    id: "<id>",
     createdAt: 334.53,
     createdIn: "<value>",
     creator: {
@@ -16,6 +15,7 @@ let value: UpdateMicrofrontendsAlias = {
       username: "Ronny.Raynor-Murphy",
     },
     deploymentHostname: "<value>",
+    id: "<id>",
     name: "<value>",
     plan: "pro",
     previewCommentsEnabled: false,

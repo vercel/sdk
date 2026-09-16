@@ -5,15 +5,15 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectGitSources } from "@vercel/sdk/models/createprojecthasprojectsresponse1.js";
+import { CreateProjectGitSources } from "@vercel/sdk/models/createprojectcontenthint2.js";
 
 let value: CreateProjectGitSources = {
-  sources: [],
   enabled: true,
-  environments: [
+  environments: [],
+  sources: [
     {
-      type: "system",
-      target: "production",
+      org: "<value>",
+      provider: "bitbucket",
     },
   ],
 };
@@ -21,8 +21,8 @@ let value: CreateProjectGitSources = {
 
 ## Fields
 
-| Field                                | Type                                 | Required                             | Description                          |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `sources`                            | *models.CreateProjectSources*[]      | :heavy_check_mark:                   | N/A                                  |
-| `enabled`                            | *boolean*                            | :heavy_check_mark:                   | N/A                                  |
-| `environments`                       | *models.CreateProjectEnvironments*[] | :heavy_check_mark:                   | N/A                                  |
+| Field                                        | Type                                         | Required                                     | Description                                  |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| `enabled`                                    | *boolean*                                    | :heavy_check_mark:                           | N/A                                          |
+| `environments`                               | *models.CreateProjectProjectsEnvironments*[] | :heavy_check_mark:                           | N/A                                          |
+| `sources`                                    | *models.CreateProjectProjectsSources*[]      | :heavy_check_mark:                           | N/A                                          |

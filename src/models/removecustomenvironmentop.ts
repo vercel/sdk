@@ -38,21 +38,6 @@ export type RemoveCustomEnvironmentRequest = {
 };
 
 /**
- * The type of environment (production, preview, or development)
- */
-export const RemoveCustomEnvironmentType = {
-  Development: "development",
-  Preview: "preview",
-  Production: "production",
-} as const;
-/**
- * The type of environment (production, preview, or development)
- */
-export type RemoveCustomEnvironmentType = ClosedEnum<
-  typeof RemoveCustomEnvironmentType
->;
-
-/**
  * The type of matching to perform
  */
 export const RemoveCustomEnvironmentEnvironmentType = {
@@ -72,52 +57,87 @@ export type RemoveCustomEnvironmentEnvironmentType = ClosedEnum<
  */
 export type RemoveCustomEnvironmentBranchMatcher = {
   /**
-   * The type of matching to perform
-   */
-  type: RemoveCustomEnvironmentEnvironmentType;
-  /**
    * The pattern to match against branch names
    */
   pattern: string;
+  /**
+   * The type of matching to perform
+   */
+  type: RemoveCustomEnvironmentEnvironmentType;
 };
 
 /**
  * A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
  */
 export type RemoveCustomEnvironmentVerification = {
-  type: string;
   domain: string;
-  value: string;
   reason: string;
+  type: string;
+  value: string;
 };
 
 /**
  * List of domains associated with this environment
  */
 export type RemoveCustomEnvironmentDomains = {
-  name: string;
   apexName: string;
+  createdAt?: number | undefined;
+  customEnvironmentId?: string | null | undefined;
+  gitBranch?: string | null | undefined;
+  name: string;
   projectId: string;
   redirect?: string | null | undefined;
   redirectStatusCode?: number | null | undefined;
-  gitBranch?: string | null | undefined;
-  customEnvironmentId?: string | null | undefined;
   updatedAt?: number | undefined;
-  createdAt?: number | undefined;
-  /**
-   * `true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed.
-   */
-  verified: boolean;
   /**
    * A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
    */
   verification?: Array<RemoveCustomEnvironmentVerification> | undefined;
+  /**
+   * `true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed.
+   */
+  verified: boolean;
 };
+
+/**
+ * The type of environment (production, preview, or development)
+ */
+export const RemoveCustomEnvironmentType = {
+  Development: "development",
+  Preview: "preview",
+  Production: "production",
+} as const;
+/**
+ * The type of environment (production, preview, or development)
+ */
+export type RemoveCustomEnvironmentType = ClosedEnum<
+  typeof RemoveCustomEnvironmentType
+>;
 
 /**
  * Internal representation of a custom environment with all required properties
  */
 export type RemoveCustomEnvironmentResponseBody = {
+  /**
+   * Configuration for matching git branches to this environment
+   */
+  branchMatcher?: RemoveCustomEnvironmentBranchMatcher | undefined;
+  /**
+   * Timestamp when the environment was created
+   */
+  createdAt: number;
+  /**
+   * List of aliases for the current deployment
+   */
+  currentDeploymentAliases?: Array<string> | undefined;
+  /**
+   * Optional description of the environment's purpose
+   */
+  description?: string | undefined;
+  /**
+   * List of domains associated with this environment
+   */
+  domains?: Array<RemoveCustomEnvironmentDomains> | undefined;
   /**
    * Unique identifier for the custom environment (format: env_*)
    */
@@ -130,26 +150,6 @@ export type RemoveCustomEnvironmentResponseBody = {
    * The type of environment (production, preview, or development)
    */
   type: RemoveCustomEnvironmentType;
-  /**
-   * Optional description of the environment's purpose
-   */
-  description?: string | undefined;
-  /**
-   * Configuration for matching git branches to this environment
-   */
-  branchMatcher?: RemoveCustomEnvironmentBranchMatcher | undefined;
-  /**
-   * List of domains associated with this environment
-   */
-  domains?: Array<RemoveCustomEnvironmentDomains> | undefined;
-  /**
-   * List of aliases for the current deployment
-   */
-  currentDeploymentAliases?: Array<string> | undefined;
-  /**
-   * Timestamp when the environment was created
-   */
-  createdAt: number;
   /**
    * Timestamp when the environment was last updated
    */
@@ -218,11 +218,6 @@ export function removeCustomEnvironmentRequestToJSON(
 }
 
 /** @internal */
-export const RemoveCustomEnvironmentType$inboundSchema: z.ZodNativeEnum<
-  typeof RemoveCustomEnvironmentType
-> = z.nativeEnum(RemoveCustomEnvironmentType);
-
-/** @internal */
 export const RemoveCustomEnvironmentEnvironmentType$inboundSchema:
   z.ZodNativeEnum<typeof RemoveCustomEnvironmentEnvironmentType> = z.nativeEnum(
     RemoveCustomEnvironmentEnvironmentType,
@@ -234,8 +229,8 @@ export const RemoveCustomEnvironmentBranchMatcher$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: RemoveCustomEnvironmentEnvironmentType$inboundSchema,
   pattern: types.string(),
+  type: RemoveCustomEnvironmentEnvironmentType$inboundSchema,
 });
 
 export function removeCustomEnvironmentBranchMatcherFromJSON(
@@ -255,10 +250,10 @@ export const RemoveCustomEnvironmentVerification$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.string(),
   domain: types.string(),
-  value: types.string(),
   reason: types.string(),
+  type: types.string(),
+  value: types.string(),
 });
 
 export function removeCustomEnvironmentVerificationFromJSON(
@@ -278,19 +273,19 @@ export const RemoveCustomEnvironmentDomains$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: types.string(),
   apexName: types.string(),
+  createdAt: types.optional(types.number()),
+  customEnvironmentId: z.nullable(types.string()).optional(),
+  gitBranch: z.nullable(types.string()).optional(),
+  name: types.string(),
   projectId: types.string(),
   redirect: z.nullable(types.string()).optional(),
   redirectStatusCode: z.nullable(types.number()).optional(),
-  gitBranch: z.nullable(types.string()).optional(),
-  customEnvironmentId: z.nullable(types.string()).optional(),
   updatedAt: types.optional(types.number()),
-  createdAt: types.optional(types.number()),
-  verified: types.boolean(),
   verification: types.optional(
     z.array(z.lazy(() => RemoveCustomEnvironmentVerification$inboundSchema)),
   ),
+  verified: types.boolean(),
 });
 
 export function removeCustomEnvironmentDomainsFromJSON(
@@ -304,23 +299,28 @@ export function removeCustomEnvironmentDomainsFromJSON(
 }
 
 /** @internal */
+export const RemoveCustomEnvironmentType$inboundSchema: z.ZodNativeEnum<
+  typeof RemoveCustomEnvironmentType
+> = z.nativeEnum(RemoveCustomEnvironmentType);
+
+/** @internal */
 export const RemoveCustomEnvironmentResponseBody$inboundSchema: z.ZodType<
   RemoveCustomEnvironmentResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: types.string(),
-  slug: types.string(),
-  type: RemoveCustomEnvironmentType$inboundSchema,
-  description: types.optional(types.string()),
   branchMatcher: types.optional(
     z.lazy(() => RemoveCustomEnvironmentBranchMatcher$inboundSchema),
   ),
+  createdAt: types.number(),
+  currentDeploymentAliases: types.optional(z.array(types.string())),
+  description: types.optional(types.string()),
   domains: types.optional(
     z.array(z.lazy(() => RemoveCustomEnvironmentDomains$inboundSchema)),
   ),
-  currentDeploymentAliases: types.optional(z.array(types.string())),
-  createdAt: types.number(),
+  id: types.string(),
+  slug: types.string(),
+  type: RemoveCustomEnvironmentType$inboundSchema,
   updatedAt: types.number(),
 });
 

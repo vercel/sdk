@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentFlagsDefinitions } from "@vercel/sdk/models/createdeploymentresponsebody.js";
+import { CreateDeploymentFlagsDefinitions } from "@vercel/sdk/models/createdeploymentresponsebodydeploymentsstatus.js";
 
 let value: CreateDeploymentFlagsDefinitions = {};
 ```
@@ -12,6 +12,6 @@ let value: CreateDeploymentFlagsDefinitions = {};
 
 | Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
 | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `description`                                                                      | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
 | `options`                                                                          | [models.CreateDeploymentFlagsOptions](../models/createdeploymentflagsoptions.md)[] | :heavy_minus_sign:                                                                 | N/A                                                                                |
 | `url`                                                                              | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `description`                                                                      | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |

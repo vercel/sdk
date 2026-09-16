@@ -3,13 +3,9 @@
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarCrons } from "@vercel/sdk/models/uploadprojectavatarprojectsbuildmachinetype.js";
+import { UploadProjectAvatarCrons } from "@vercel/sdk/models/uploadprojectavatarhasvalue.js";
 
 let value: UploadProjectAvatarCrons = {
-  enabledAt: 7038.17,
-  disabledAt: 4007.98,
-  updatedAt: 1486.87,
-  deploymentId: "<id>",
   definitions: [
     {
       host: "vercel.com",
@@ -17,6 +13,10 @@ let value: UploadProjectAvatarCrons = {
       schedule: "0 0 * * *",
     },
   ],
+  deploymentId: "<id>",
+  disabledAt: 1486.87,
+  enabledAt: 3078.79,
+  updatedAt: 5056.25,
 };
 ```
 
@@ -24,8 +24,8 @@ let value: UploadProjectAvatarCrons = {
 
 | Field                                                                                                                              | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
 | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `enabledAt`                                                                                                                        | *number*                                                                                                                           | :heavy_check_mark:                                                                                                                 | The time the feature was enabled for this project. Note: It enables automatically with the first Deployment that outputs cronjobs. |
-| `disabledAt`                                                                                                                       | *number*                                                                                                                           | :heavy_check_mark:                                                                                                                 | The time the feature was disabled for this project.                                                                                |
-| `updatedAt`                                                                                                                        | *number*                                                                                                                           | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
-| `deploymentId`                                                                                                                     | *string*                                                                                                                           | :heavy_check_mark:                                                                                                                 | The ID of the Deployment from which the definitions originated.                                                                    |
 | `definitions`                                                                                                                      | [models.UploadProjectAvatarDefinitions](../models/uploadprojectavatardefinitions.md)[]                                             | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
+| `deploymentId`                                                                                                                     | *string*                                                                                                                           | :heavy_check_mark:                                                                                                                 | The ID of the Deployment from which the definitions originated.                                                                    |
+| `disabledAt`                                                                                                                       | *number*                                                                                                                           | :heavy_check_mark:                                                                                                                 | The time the feature was disabled for this project.                                                                                |
+| `enabledAt`                                                                                                                        | *number*                                                                                                                           | :heavy_check_mark:                                                                                                                 | The time the feature was enabled for this project. Note: It enables automatically with the first Deployment that outputs cronjobs. |
+| `updatedAt`                                                                                                                        | *number*                                                                                                                           | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |

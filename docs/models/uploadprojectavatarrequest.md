@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarRequest } from "@vercel/sdk/models/uploadprojectavatarprojectsbuildmachinetype.js";
+import { UploadProjectAvatarRequest } from "@vercel/sdk/models/uploadprojectavatarhasvalue.js";
 
 // No examples available for this model
 ```

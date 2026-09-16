@@ -7,12 +7,8 @@
 
 ```typescript
 const value: models.UpdateProjectTrustedIps1 = {
-  deploymentType: "all",
-  addresses: [
-    {
-      value: "<value>",
-    },
-  ],
+  addresses: [],
+  deploymentType: "prod_deployment_urls_and_all_previews",
   protectionMode: "additional",
 };
 ```

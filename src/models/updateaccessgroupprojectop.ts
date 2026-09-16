@@ -57,11 +57,11 @@ export type UpdateAccessGroupProjectAccessGroupsRole = ClosedEnum<
 >;
 
 export type UpdateAccessGroupProjectResponseBody = {
-  teamId: string;
   accessGroupId: string;
+  createdAt: string;
   projectId: string;
   role: UpdateAccessGroupProjectAccessGroupsRole;
-  createdAt: string;
+  teamId: string;
   updatedAt: string;
 };
 
@@ -141,11 +141,11 @@ export const UpdateAccessGroupProjectResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  teamId: types.string(),
   accessGroupId: types.string(),
+  createdAt: types.string(),
   projectId: types.string(),
   role: UpdateAccessGroupProjectAccessGroupsRole$inboundSchema,
-  createdAt: types.string(),
+  teamId: types.string(),
   updatedAt: types.string(),
 });
 

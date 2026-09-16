@@ -7,15 +7,15 @@
 
 ```typescript
 const value: models.GitRepo1 = {
-  namespace: "<value>",
-  projectId: 9403.59,
-  type: "gitlab",
-  url: "https://mixed-steak.info",
-  path: "/usr",
   defaultBranch: "<value>",
   name: "<value>",
-  private: false,
+  namespace: "<value>",
   ownerType: "user",
+  path: "/var/log",
+  private: false,
+  projectId: 8485.82,
+  type: "gitlab",
+  url: "https://regal-lobster.name/",
 };
 ```
 
@@ -23,16 +23,16 @@ const value: models.GitRepo1 = {
 
 ```typescript
 const value: models.GitRepo2 = {
-  org: "<value>",
-  repo: "<value>",
-  repoId: 1189.82,
-  type: "github",
-  repoOwnerId: 8955.43,
-  path: "/Network",
   defaultBranch: "<value>",
   name: "<value>",
-  private: true,
+  org: "<value>",
   ownerType: "team",
+  path: "/usr/src",
+  private: true,
+  repo: "<value>",
+  repoId: 4778.01,
+  repoOwnerId: 290.03,
+  type: "github",
 };
 ```
 
@@ -40,16 +40,16 @@ const value: models.GitRepo2 = {
 
 ```typescript
 const value: models.GitRepo3 = {
+  defaultBranch: "<value>",
+  name: "<value>",
   owner: "<value>",
+  ownerType: "user",
+  path: "/usr/local/src",
+  private: true,
   repoUuid: "<id>",
   slug: "<value>",
   type: "bitbucket",
   workspaceUuid: "<id>",
-  path: "/usr/share",
-  defaultBranch: "<value>",
-  name: "<value>",
-  private: false,
-  ownerType: "team",
 };
 ```
 
@@ -57,14 +57,14 @@ const value: models.GitRepo3 = {
 
 ```typescript
 const value: models.GitRepo4 = {
-  org: "<value>",
-  repo: "<value>",
-  type: "vercel",
-  path: "/private",
   defaultBranch: "<value>",
   name: "<value>",
-  private: true,
+  org: "<value>",
   ownerType: "team",
+  path: "/private/tmp",
+  private: true,
+  repo: "<value>",
+  type: "vercel",
 };
 ```
 
@@ -72,15 +72,15 @@ const value: models.GitRepo4 = {
 
 ```typescript
 const value: models.GitRepo5 = {
+  defaultBranch: "<value>",
+  name: "<value>",
   owner: "<value>",
+  ownerType: "user",
+  path: "/var",
+  private: false,
   repo: "<value>",
   repoId: "<id>",
   type: "cursor-origin",
-  path: "/usr/bin",
-  defaultBranch: "<value>",
-  name: "<value>",
-  private: false,
-  ownerType: "user",
 };
 ```
 

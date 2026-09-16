@@ -28,24 +28,6 @@ export const Role = {
 export type Role = ClosedEnum<typeof Role>;
 
 /**
- * The team roles of the user
- */
-export const TeamRoles = {
-  Billing: "BILLING",
-  Contributor: "CONTRIBUTOR",
-  Developer: "DEVELOPER",
-  Member: "MEMBER",
-  Owner: "OWNER",
-  Security: "SECURITY",
-  Viewer: "VIEWER",
-  ViewerForPlus: "VIEWER_FOR_PLUS",
-} as const;
-/**
- * The team roles of the user
- */
-export type TeamRoles = ClosedEnum<typeof TeamRoles>;
-
-/**
  * The team permissions of the user
  */
 export const TeamPermissions = {
@@ -75,17 +57,27 @@ export const TeamPermissions = {
 export type TeamPermissions = ClosedEnum<typeof TeamPermissions>;
 
 /**
+ * The team roles of the user
+ */
+export const TeamRoles = {
+  Billing: "BILLING",
+  Contributor: "CONTRIBUTOR",
+  Developer: "DEVELOPER",
+  Member: "MEMBER",
+  Owner: "OWNER",
+  Security: "SECURITY",
+  Viewer: "VIEWER",
+  ViewerForPlus: "VIEWER_FOR_PLUS",
+} as const;
+/**
+ * The team roles of the user
+ */
+export type TeamRoles = ClosedEnum<typeof TeamRoles>;
+
+/**
  * The member was successfully added to the team.
  */
 export type InvitedTeamMember = {
-  /**
-   * The ID of the invited user
-   */
-  uid: string;
-  /**
-   * The username of the invited user
-   */
-  username: string;
   /**
    * The email of the invited user.
    */
@@ -95,13 +87,21 @@ export type InvitedTeamMember = {
    */
   role: Role;
   /**
+   * The team permissions of the user
+   */
+  teamPermissions?: Array<TeamPermissions> | undefined;
+  /**
    * The team roles of the user
    */
   teamRoles?: Array<TeamRoles> | undefined;
   /**
-   * The team permissions of the user
+   * The ID of the invited user
    */
-  teamPermissions?: Array<TeamPermissions> | undefined;
+  uid: string;
+  /**
+   * The username of the invited user
+   */
+  username: string;
 };
 
 /** @internal */
@@ -110,13 +110,13 @@ export const Role$inboundSchema: z.ZodNativeEnum<typeof Role> = z.nativeEnum(
 );
 
 /** @internal */
-export const TeamRoles$inboundSchema: z.ZodNativeEnum<typeof TeamRoles> = z
-  .nativeEnum(TeamRoles);
-
-/** @internal */
 export const TeamPermissions$inboundSchema: z.ZodNativeEnum<
   typeof TeamPermissions
 > = z.nativeEnum(TeamPermissions);
+
+/** @internal */
+export const TeamRoles$inboundSchema: z.ZodNativeEnum<typeof TeamRoles> = z
+  .nativeEnum(TeamRoles);
 
 /** @internal */
 export const InvitedTeamMember$inboundSchema: z.ZodType<
@@ -124,12 +124,12 @@ export const InvitedTeamMember$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  uid: types.string(),
-  username: types.string(),
   email: types.string(),
   role: Role$inboundSchema,
-  teamRoles: types.optional(z.array(TeamRoles$inboundSchema)),
   teamPermissions: types.optional(z.array(TeamPermissions$inboundSchema)),
+  teamRoles: types.optional(z.array(TeamRoles$inboundSchema)),
+  uid: types.string(),
+  username: types.string(),
 });
 
 export function invitedTeamMemberFromJSON(

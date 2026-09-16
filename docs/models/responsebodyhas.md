@@ -16,8 +16,8 @@ const value: models.GetRoutesHas1 = {
 
 ```typescript
 const value: models.GetRoutesHas2 = {
-  type: "query",
   key: "<key>",
+  type: "query",
 };
 ```
 
@@ -25,8 +25,8 @@ const value: models.GetRoutesHas2 = {
 
 ```typescript
 const value: models.GetRoutesHas2 = {
-  type: "query",
   key: "<key>",
+  type: "query",
 };
 ```
 
@@ -34,8 +34,8 @@ const value: models.GetRoutesHas2 = {
 
 ```typescript
 const value: models.GetRoutesHas2 = {
-  type: "query",
   key: "<key>",
+  type: "query",
 };
 ```
 

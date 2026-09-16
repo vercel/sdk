@@ -5,14 +5,14 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSeventyFour } from "@vercel/sdk/models/usereventpayload171gituserid.js";
+import { OneHundredAndSeventyFour } from "@vercel/sdk/models/usereventpayload171newownerfeatureblocksworkflowstoragewriteblockreason.js";
 
 let value: OneHundredAndSeventyFour = {
   integration: {
-    id: "<id>",
-    slug: "<value>",
-    name: "<value>",
     configurationId: "<id>",
+    id: "<id>",
+    name: "<value>",
+    slug: "<value>",
   },
   originTeamId: "<id>",
   originTeamName: "<value>",

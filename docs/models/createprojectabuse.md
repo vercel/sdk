@@ -3,16 +3,16 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectAbuse } from "@vercel/sdk/models/createprojectresponsebody.js";
+import { CreateProjectAbuse } from "@vercel/sdk/models/createprojectcontenthint2.js";
 
 let value: CreateProjectAbuse = {
   history: [
     {
-      scanner: "<value>",
-      reason: "<value>",
+      at: 6290.64,
       by: "<value>",
       byId: "<id>",
-      at: 6290.64,
+      reason: "<value>",
+      scanner: "<value>",
     },
   ],
   updatedAt: 7527.08,
@@ -23,10 +23,10 @@ let value: CreateProjectAbuse = {
 
 | Field                                                              | Type                                                               | Required                                                           | Description                                                        |
 | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| `scanner`                                                          | *string*                                                           | :heavy_minus_sign:                                                 | N/A                                                                |
-| `history`                                                          | [models.CreateProjectHistory](../models/createprojecthistory.md)[] | :heavy_check_mark:                                                 | N/A                                                                |
-| `updatedAt`                                                        | *number*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
 | `block`                                                            | [models.Block](../models/block.md)                                 | :heavy_minus_sign:                                                 | N/A                                                                |
 | `blockHistory`                                                     | *models.CreateProjectBlockHistory*[]                               | :heavy_minus_sign:                                                 | N/A                                                                |
+| `history`                                                          | [models.CreateProjectHistory](../models/createprojecthistory.md)[] | :heavy_check_mark:                                                 | N/A                                                                |
 | `interstitial`                                                     | *boolean*                                                          | :heavy_minus_sign:                                                 | N/A                                                                |
 | `interstitialHistory`                                              | [models.InterstitialHistory](../models/interstitialhistory.md)[]   | :heavy_minus_sign:                                                 | N/A                                                                |
+| `scanner`                                                          | *string*                                                           | :heavy_minus_sign:                                                 | N/A                                                                |
+| `updatedAt`                                                        | *number*                                                           | :heavy_check_mark:                                                 | N/A                                                                |

@@ -14,5 +14,5 @@ let value: DeploymentPolicy = {};
 
 | Field                                                        | Type                                                         | Required                                                     | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `gitSources`                                                 | [models.GitSources](../models/gitsources.md)[]               | :heavy_minus_sign:                                           | N/A                                                          |
 | `deploymentSources`                                          | [models.DeploymentSources](../models/deploymentsources.md)[] | :heavy_minus_sign:                                           | N/A                                                          |
+| `gitSources`                                                 | [models.GitSources](../models/gitsources.md)[]               | :heavy_minus_sign:                                           | N/A                                                          |

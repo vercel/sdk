@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { UserEventJobPayload106GitComments } from "@vercel/sdk/models/headinfo.js";
+import { UserEventJobPayload106GitComments } from "@vercel/sdk/models/onehundred.js";
 
 let value: UserEventJobPayload106GitComments = {
-  onPullRequest: false,
   onCommit: false,
+  onPullRequest: false,
 };
 ```
 
@@ -15,5 +15,5 @@ let value: UserEventJobPayload106GitComments = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `onPullRequest`    | *boolean*          | :heavy_check_mark: | N/A                |
 | `onCommit`         | *boolean*          | :heavy_check_mark: | N/A                |
+| `onPullRequest`    | *boolean*          | :heavy_check_mark: | N/A                |

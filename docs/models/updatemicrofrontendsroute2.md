@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsRoute2 } from "@vercel/sdk/models/updatemicrofrontendsinternalroutes2.js";
+import { UpdateMicrofrontendsRoute2 } from "@vercel/sdk/models/updatemicrofrontendshaskey.js";
 
 let value: UpdateMicrofrontendsRoute2 = {
   has: [
     {
-      type: "header",
       key: "x-vercel-ip-country",
+      type: "header",
       value: {
         eq: "<value>",
       },

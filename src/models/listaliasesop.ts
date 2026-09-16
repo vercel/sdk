@@ -60,13 +60,13 @@ export type ListAliasesRequest = {
  */
 export type ListAliasesCreator = {
   /**
-   * ID of the user who created the alias
-   */
-  uid: string;
-  /**
    * Email of the user who created the alias
    */
   email?: string | undefined;
+  /**
+   * ID of the user who created the alias
+   */
+  uid: string;
   /**
    * Username of the user who created the alias
    */
@@ -82,13 +82,92 @@ export type ListAliasesDeployment = {
    */
   id: string;
   /**
-   * The deployment unique URL
-   */
-  url?: string | undefined;
-  /**
    * The deployment metadata
    */
   meta?: string | undefined;
+  /**
+   * The deployment unique URL
+   */
+  url?: string | undefined;
+};
+
+/**
+ * A list of the deployment routing information for each project.
+ */
+export type ListAliasesApplications3 = {
+  branchAlias?: string | undefined;
+  /**
+   * This is the latest non-cancelled deployment of the branch alias at the time the commit alias was created. It is possible there is no deployment for the branch, or this was set before the deployment was canceled, in which case this will point to a cancelled deployment, in either case the proxy will fallback to the fallbackDeploymentId.
+   */
+  branchDeploymentId?: string | undefined;
+  /**
+   * This is the deployment for the same commit, it could be a cancelled deployment. The proxy will fallback to the branchDeploymentId and then the fallbackDeploymentId.
+   */
+  deploymentId?: string | undefined;
+  /**
+   * This is the deployment of the fallback host at the time the commit alias was created. It is possible for this to be a deleted deployment, in which case the proxy will show that the deployment is deleted. It will not use the fallbackHost, as a future deployment on the fallback host could be invalid for this deployment, and it could lead to confusion / incorrect behavior for the commit alias.
+   */
+  fallbackDeploymentId?: string | undefined;
+  /**
+   * Temporary for backwards compatibility. Can remove when metadata change is released
+   */
+  fallbackHost?: string | undefined;
+  /**
+   * The project ID of the microfrontends application.
+   */
+  projectId: string;
+};
+
+/**
+ * A list of the deployment routing information for each project.
+ */
+export type ListAliasesApplications2 = {
+  /**
+   * Could point to a branch without a deployment if the project was never deployed. The proxy will fallback to the fallbackHost if there is no deployment.
+   */
+  branchAlias: string;
+  /**
+   * This is always set. For branch aliases, it's used as the fallback if there is no deployment for the branch.
+   */
+  fallbackHost: string;
+  /**
+   * The project ID of the microfrontends application.
+   */
+  projectId: string;
+};
+
+/**
+ * A list of the deployment routing information for each project.
+ */
+export type ListAliasesApplications1 = {
+  /**
+   * This is always set. In production it is used as a pointer to each apps production deployment. For pre-production, it's used as the fallback if there is no deployment for the branch.
+   */
+  fallbackHost: string;
+  /**
+   * The project ID of the microfrontends application.
+   */
+  projectId: string;
+};
+
+export type ListAliasesApplications =
+  | Array<ListAliasesApplications1>
+  | Array<ListAliasesApplications2>
+  | Array<ListAliasesApplications3>;
+
+export type ListAliasesDefaultApp = {
+  projectId: string;
+};
+
+/**
+ * The microfrontends for the alias including the routing configuration
+ */
+export type ListAliasesMicrofrontends = {
+  applications:
+    | Array<ListAliasesApplications1>
+    | Array<ListAliasesApplications2>
+    | Array<ListAliasesApplications3>;
+  defaultApp: ListAliasesDefaultApp;
 };
 
 /**
@@ -122,10 +201,10 @@ export type ListAliasesProtectionBypassAccess = ClosedEnum<
  * The protection bypass for the alias
  */
 export type ListAliasesProtectionBypass2 = {
+  access: ListAliasesProtectionBypassAccess;
   createdAt: number;
   lastUpdatedAt: number;
   lastUpdatedBy: string;
-  access: ListAliasesProtectionBypassAccess;
   scope: "user";
 };
 
@@ -135,8 +214,8 @@ export type ListAliasesProtectionBypass2 = {
 export type ListAliasesProtectionBypass1 = {
   createdAt: number;
   createdBy: string;
-  scope: "shareable-link";
   expires?: number | undefined;
+  scope: "shareable-link";
 };
 
 export type ListAliasesProtectionBypass =
@@ -144,85 +223,6 @@ export type ListAliasesProtectionBypass =
   | ListAliasesProtectionBypass2
   | ListAliasesProtectionBypass3
   | ListAliasesProtectionBypass4;
-
-export type ListAliasesDefaultApp = {
-  projectId: string;
-};
-
-/**
- * A list of the deployment routing information for each project.
- */
-export type ListAliasesApplications3 = {
-  /**
-   * This is the deployment for the same commit, it could be a cancelled deployment. The proxy will fallback to the branchDeploymentId and then the fallbackDeploymentId.
-   */
-  deploymentId?: string | undefined;
-  /**
-   * This is the latest non-cancelled deployment of the branch alias at the time the commit alias was created. It is possible there is no deployment for the branch, or this was set before the deployment was canceled, in which case this will point to a cancelled deployment, in either case the proxy will fallback to the fallbackDeploymentId.
-   */
-  branchDeploymentId?: string | undefined;
-  /**
-   * This is the deployment of the fallback host at the time the commit alias was created. It is possible for this to be a deleted deployment, in which case the proxy will show that the deployment is deleted. It will not use the fallbackHost, as a future deployment on the fallback host could be invalid for this deployment, and it could lead to confusion / incorrect behavior for the commit alias.
-   */
-  fallbackDeploymentId?: string | undefined;
-  /**
-   * Temporary for backwards compatibility. Can remove when metadata change is released
-   */
-  fallbackHost?: string | undefined;
-  branchAlias?: string | undefined;
-  /**
-   * The project ID of the microfrontends application.
-   */
-  projectId: string;
-};
-
-/**
- * A list of the deployment routing information for each project.
- */
-export type ListAliasesApplications2 = {
-  /**
-   * This is always set. For branch aliases, it's used as the fallback if there is no deployment for the branch.
-   */
-  fallbackHost: string;
-  /**
-   * Could point to a branch without a deployment if the project was never deployed. The proxy will fallback to the fallbackHost if there is no deployment.
-   */
-  branchAlias: string;
-  /**
-   * The project ID of the microfrontends application.
-   */
-  projectId: string;
-};
-
-/**
- * A list of the deployment routing information for each project.
- */
-export type ListAliasesApplications1 = {
-  /**
-   * This is always set. In production it is used as a pointer to each apps production deployment. For pre-production, it's used as the fallback if there is no deployment for the branch.
-   */
-  fallbackHost: string;
-  /**
-   * The project ID of the microfrontends application.
-   */
-  projectId: string;
-};
-
-export type ListAliasesApplications =
-  | Array<ListAliasesApplications1>
-  | Array<ListAliasesApplications2>
-  | Array<ListAliasesApplications3>;
-
-/**
- * The microfrontends for the alias including the routing configuration
- */
-export type ListAliasesMicrofrontends = {
-  defaultApp: ListAliasesDefaultApp;
-  applications:
-    | Array<ListAliasesApplications1>
-    | Array<ListAliasesApplications2>
-    | Array<ListAliasesApplications3>;
-};
 
 export type ListAliasesAliases = {
   /**
@@ -254,9 +254,23 @@ export type ListAliasesAliases = {
    */
   deploymentId: string | null;
   /**
+   * The microfrontends for the alias including the routing configuration
+   */
+  microfrontends?: ListAliasesMicrofrontends | undefined;
+  /**
    * The unique identifier of the project
    */
   projectId: string | null;
+  /**
+   * The protection bypass for the alias
+   */
+  protectionBypass?: {
+    [k: string]:
+      | ListAliasesProtectionBypass1
+      | ListAliasesProtectionBypass2
+      | ListAliasesProtectionBypass3
+      | ListAliasesProtectionBypass4;
+  } | undefined;
   /**
    * Target destination domain for redirect when the alias is a redirect
    */
@@ -273,20 +287,6 @@ export type ListAliasesAliases = {
    * The date when the alias was updated in milliseconds since the UNIX epoch
    */
   updatedAt?: number | undefined;
-  /**
-   * The protection bypass for the alias
-   */
-  protectionBypass?: {
-    [k: string]:
-      | ListAliasesProtectionBypass1
-      | ListAliasesProtectionBypass2
-      | ListAliasesProtectionBypass3
-      | ListAliasesProtectionBypass4;
-  } | undefined;
-  /**
-   * The microfrontends for the alias including the routing configuration
-   */
-  microfrontends?: ListAliasesMicrofrontends | undefined;
 };
 
 /**
@@ -358,8 +358,8 @@ export const ListAliasesCreator$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  uid: types.string(),
   email: types.optional(types.string()),
+  uid: types.string(),
   username: types.optional(types.string()),
 });
 
@@ -380,8 +380,8 @@ export const ListAliasesDeployment$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: types.string(),
-  url: types.optional(types.string()),
   meta: types.optional(types.string()),
+  url: types.optional(types.string()),
 });
 
 export function listAliasesDeploymentFromJSON(
@@ -391,6 +391,135 @@ export function listAliasesDeploymentFromJSON(
     jsonString,
     (x) => ListAliasesDeployment$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'ListAliasesDeployment' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListAliasesApplications3$inboundSchema: z.ZodType<
+  ListAliasesApplications3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  branchAlias: types.optional(types.string()),
+  branchDeploymentId: types.optional(types.string()),
+  deploymentId: types.optional(types.string()),
+  fallbackDeploymentId: types.optional(types.string()),
+  fallbackHost: types.optional(types.string()),
+  projectId: types.string(),
+});
+
+export function listAliasesApplications3FromJSON(
+  jsonString: string,
+): SafeParseResult<ListAliasesApplications3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListAliasesApplications3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAliasesApplications3' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListAliasesApplications2$inboundSchema: z.ZodType<
+  ListAliasesApplications2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  branchAlias: types.string(),
+  fallbackHost: types.string(),
+  projectId: types.string(),
+});
+
+export function listAliasesApplications2FromJSON(
+  jsonString: string,
+): SafeParseResult<ListAliasesApplications2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListAliasesApplications2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAliasesApplications2' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListAliasesApplications1$inboundSchema: z.ZodType<
+  ListAliasesApplications1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  fallbackHost: types.string(),
+  projectId: types.string(),
+});
+
+export function listAliasesApplications1FromJSON(
+  jsonString: string,
+): SafeParseResult<ListAliasesApplications1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListAliasesApplications1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAliasesApplications1' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListAliasesApplications$inboundSchema: z.ZodType<
+  ListAliasesApplications,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.array(z.lazy(() => ListAliasesApplications1$inboundSchema)),
+  z.array(z.lazy(() => ListAliasesApplications2$inboundSchema)),
+  z.array(z.lazy(() => ListAliasesApplications3$inboundSchema)),
+]);
+
+export function listAliasesApplicationsFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAliasesApplications, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListAliasesApplications$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAliasesApplications' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListAliasesDefaultApp$inboundSchema: z.ZodType<
+  ListAliasesDefaultApp,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  projectId: types.string(),
+});
+
+export function listAliasesDefaultAppFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAliasesDefaultApp, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListAliasesDefaultApp$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAliasesDefaultApp' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListAliasesMicrofrontends$inboundSchema: z.ZodType<
+  ListAliasesMicrofrontends,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  applications: smartUnion([
+    z.array(z.lazy(() => ListAliasesApplications1$inboundSchema)),
+    z.array(z.lazy(() => ListAliasesApplications2$inboundSchema)),
+    z.array(z.lazy(() => ListAliasesApplications3$inboundSchema)),
+  ]),
+  defaultApp: z.lazy(() => ListAliasesDefaultApp$inboundSchema),
+});
+
+export function listAliasesMicrofrontendsFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAliasesMicrofrontends, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListAliasesMicrofrontends$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAliasesMicrofrontends' from JSON`,
   );
 }
 
@@ -448,10 +577,10 @@ export const ListAliasesProtectionBypass2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  access: ListAliasesProtectionBypassAccess$inboundSchema,
   createdAt: types.number(),
   lastUpdatedAt: types.number(),
   lastUpdatedBy: types.string(),
-  access: ListAliasesProtectionBypassAccess$inboundSchema,
   scope: types.literal("user"),
 });
 
@@ -473,8 +602,8 @@ export const ListAliasesProtectionBypass1$inboundSchema: z.ZodType<
 > = z.object({
   createdAt: types.number(),
   createdBy: types.string(),
-  scope: types.literal("shareable-link"),
   expires: types.optional(types.number()),
+  scope: types.literal("shareable-link"),
 });
 
 export function listAliasesProtectionBypass1FromJSON(
@@ -510,135 +639,6 @@ export function listAliasesProtectionBypassFromJSON(
 }
 
 /** @internal */
-export const ListAliasesDefaultApp$inboundSchema: z.ZodType<
-  ListAliasesDefaultApp,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: types.string(),
-});
-
-export function listAliasesDefaultAppFromJSON(
-  jsonString: string,
-): SafeParseResult<ListAliasesDefaultApp, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListAliasesDefaultApp$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListAliasesDefaultApp' from JSON`,
-  );
-}
-
-/** @internal */
-export const ListAliasesApplications3$inboundSchema: z.ZodType<
-  ListAliasesApplications3,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  deploymentId: types.optional(types.string()),
-  branchDeploymentId: types.optional(types.string()),
-  fallbackDeploymentId: types.optional(types.string()),
-  fallbackHost: types.optional(types.string()),
-  branchAlias: types.optional(types.string()),
-  projectId: types.string(),
-});
-
-export function listAliasesApplications3FromJSON(
-  jsonString: string,
-): SafeParseResult<ListAliasesApplications3, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListAliasesApplications3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListAliasesApplications3' from JSON`,
-  );
-}
-
-/** @internal */
-export const ListAliasesApplications2$inboundSchema: z.ZodType<
-  ListAliasesApplications2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fallbackHost: types.string(),
-  branchAlias: types.string(),
-  projectId: types.string(),
-});
-
-export function listAliasesApplications2FromJSON(
-  jsonString: string,
-): SafeParseResult<ListAliasesApplications2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListAliasesApplications2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListAliasesApplications2' from JSON`,
-  );
-}
-
-/** @internal */
-export const ListAliasesApplications1$inboundSchema: z.ZodType<
-  ListAliasesApplications1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fallbackHost: types.string(),
-  projectId: types.string(),
-});
-
-export function listAliasesApplications1FromJSON(
-  jsonString: string,
-): SafeParseResult<ListAliasesApplications1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListAliasesApplications1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListAliasesApplications1' from JSON`,
-  );
-}
-
-/** @internal */
-export const ListAliasesApplications$inboundSchema: z.ZodType<
-  ListAliasesApplications,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.array(z.lazy(() => ListAliasesApplications1$inboundSchema)),
-  z.array(z.lazy(() => ListAliasesApplications2$inboundSchema)),
-  z.array(z.lazy(() => ListAliasesApplications3$inboundSchema)),
-]);
-
-export function listAliasesApplicationsFromJSON(
-  jsonString: string,
-): SafeParseResult<ListAliasesApplications, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListAliasesApplications$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListAliasesApplications' from JSON`,
-  );
-}
-
-/** @internal */
-export const ListAliasesMicrofrontends$inboundSchema: z.ZodType<
-  ListAliasesMicrofrontends,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  defaultApp: z.lazy(() => ListAliasesDefaultApp$inboundSchema),
-  applications: smartUnion([
-    z.array(z.lazy(() => ListAliasesApplications1$inboundSchema)),
-    z.array(z.lazy(() => ListAliasesApplications2$inboundSchema)),
-    z.array(z.lazy(() => ListAliasesApplications3$inboundSchema)),
-  ]),
-});
-
-export function listAliasesMicrofrontendsFromJSON(
-  jsonString: string,
-): SafeParseResult<ListAliasesMicrofrontends, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListAliasesMicrofrontends$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListAliasesMicrofrontends' from JSON`,
-  );
-}
-
-/** @internal */
 export const ListAliasesAliases$inboundSchema: z.ZodType<
   ListAliasesAliases,
   z.ZodTypeDef,
@@ -651,11 +651,10 @@ export const ListAliasesAliases$inboundSchema: z.ZodType<
   deletedAt: z.nullable(types.number()).optional(),
   deployment: types.optional(z.lazy(() => ListAliasesDeployment$inboundSchema)),
   deploymentId: types.nullable(types.string()),
+  microfrontends: types.optional(
+    z.lazy(() => ListAliasesMicrofrontends$inboundSchema),
+  ),
   projectId: types.nullable(types.string()),
-  redirect: z.nullable(types.string()).optional(),
-  redirectStatusCode: z.nullable(types.number()).optional(),
-  uid: types.string(),
-  updatedAt: types.optional(types.number()),
   protectionBypass: types.optional(
     z.record(z.union([
       z.lazy(() => ListAliasesProtectionBypass1$inboundSchema),
@@ -666,9 +665,10 @@ export const ListAliasesAliases$inboundSchema: z.ZodType<
       z.lazy(() => ListAliasesProtectionBypass4$inboundSchema),
     ])),
   ),
-  microfrontends: types.optional(
-    z.lazy(() => ListAliasesMicrofrontends$inboundSchema),
-  ),
+  redirect: z.nullable(types.string()).optional(),
+  redirectStatusCode: z.nullable(types.number()).optional(),
+  uid: types.string(),
+  updatedAt: types.optional(types.number()),
 });
 
 export function listAliasesAliasesFromJSON(

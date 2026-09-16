@@ -7,10 +7,10 @@
 
 ```typescript
 const value: models.GetMicrofrontendsInGroupVia1 = {
-  type: "app",
   app: {
     id: "<id>",
   },
+  type: "app",
 };
 ```
 
@@ -18,11 +18,11 @@ const value: models.GetMicrofrontendsInGroupVia1 = {
 
 ```typescript
 const value: models.GetMicrofrontendsInGroupVia2 = {
-  type: "integration",
   integration: {
-    integrationId: "<id>",
     configurationId: "<id>",
+    integrationId: "<id>",
   },
+  type: "integration",
 };
 ```
 

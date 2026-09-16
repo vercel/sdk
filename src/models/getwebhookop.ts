@@ -151,6 +151,10 @@ export type GetWebhookEvents = ClosedEnum<typeof GetWebhookEvents>;
 export type GetWebhookResponseBody = {
   alertRuleIds?: Array<string> | undefined;
   /**
+   * A number containing the date when the webhook was created in in milliseconds
+   */
+  createdAt: number;
+  /**
    * The webhooks events
    */
   events: Array<GetWebhookEvents>;
@@ -159,25 +163,21 @@ export type GetWebhookResponseBody = {
    */
   id: string;
   /**
-   * A string with the URL of the webhook
-   */
-  url: string;
-  /**
    * The unique ID of the team the webhook belongs to
    */
   ownerId: string;
   /**
-   * A number containing the date when the webhook was created in in milliseconds
+   * The ID of the projects the webhook is associated with
    */
-  createdAt: number;
+  projectIds?: Array<string> | undefined;
   /**
    * A number containing the date when the webhook was updated in in milliseconds
    */
   updatedAt: number;
   /**
-   * The ID of the projects the webhook is associated with
+   * A string with the URL of the webhook
    */
-  projectIds?: Array<string> | undefined;
+  url: string;
 };
 
 /** @internal */
@@ -218,13 +218,13 @@ export const GetWebhookResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   alertRuleIds: types.optional(z.array(types.string())),
+  createdAt: types.number(),
   events: z.array(GetWebhookEvents$inboundSchema),
   id: types.string(),
-  url: types.string(),
   ownerId: types.string(),
-  createdAt: types.number(),
-  updatedAt: types.number(),
   projectIds: types.optional(z.array(types.string())),
+  updatedAt: types.number(),
+  url: types.string(),
 });
 
 export function getWebhookResponseBodyFromJSON(

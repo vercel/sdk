@@ -6,8 +6,8 @@
 import { DrainsSampling } from "@vercel/sdk/models/getdrainsop.js";
 
 let value: DrainsSampling = {
-  type: "head_sampling",
   rate: 8962.45,
+  type: "head_sampling",
 };
 ```
 
@@ -15,7 +15,7 @@ let value: DrainsSampling = {
 
 | Field                                        | Type                                         | Required                                     | Description                                  |
 | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| `type`                                       | [models.DrainsType](../models/drainstype.md) | :heavy_check_mark:                           | N/A                                          |
-| `rate`                                       | *number*                                     | :heavy_check_mark:                           | N/A                                          |
 | `env`                                        | [models.DrainsEnv](../models/drainsenv.md)   | :heavy_minus_sign:                           | N/A                                          |
+| `rate`                                       | *number*                                     | :heavy_check_mark:                           | N/A                                          |
 | `requestPath`                                | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
+| `type`                                       | [models.DrainsType](../models/drainstype.md) | :heavy_check_mark:                           | N/A                                          |

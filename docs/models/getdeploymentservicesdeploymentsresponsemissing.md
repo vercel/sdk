@@ -16,8 +16,8 @@ const value: models.GetDeploymentMissingDeploymentsResponse2001 = {
 
 ```typescript
 const value: models.GetDeploymentMissingDeploymentsResponse2002 = {
-  type: "query",
   key: "<key>",
+  type: "query",
 };
 ```
 
@@ -25,8 +25,8 @@ const value: models.GetDeploymentMissingDeploymentsResponse2002 = {
 
 ```typescript
 const value: models.GetDeploymentMissingDeploymentsResponse2002 = {
-  type: "query",
   key: "<key>",
+  type: "query",
 };
 ```
 
@@ -34,8 +34,8 @@ const value: models.GetDeploymentMissingDeploymentsResponse2002 = {
 
 ```typescript
 const value: models.GetDeploymentMissingDeploymentsResponse2002 = {
-  type: "query",
   key: "<key>",
+  type: "query",
 };
 ```
 

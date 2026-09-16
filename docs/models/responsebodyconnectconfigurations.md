@@ -3,14 +3,14 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyConnectConfigurations } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson3action.js";
+import { ResponseBodyConnectConfigurations } from "@vercel/sdk/models/getprojectsresponsebodyprojectsconsolidatedgitcommitstatus.js";
 
 let value: ResponseBodyConnectConfigurations = {
-  envId: "production",
+  buildsEnabled: false,
   connectConfigurationId: "<id>",
-  passive: false,
-  buildsEnabled: true,
-  createdAt: 2582.03,
+  createdAt: 9300.43,
+  envId: "preview",
+  passive: true,
   updatedAt: 6080.32,
 };
 ```
@@ -19,11 +19,11 @@ let value: ResponseBodyConnectConfigurations = {
 
 | Field                                                  | Type                                                   | Required                                               | Description                                            |
 | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `envId`                                                | *models.ResponseBodyEnvId*                             | :heavy_check_mark:                                     | N/A                                                    |
-| `connectConfigurationId`                               | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
-| `dc`                                                   | *string*                                               | :heavy_minus_sign:                                     | N/A                                                    |
-| `passive`                                              | *boolean*                                              | :heavy_check_mark:                                     | N/A                                                    |
-| `buildsEnabled`                                        | *boolean*                                              | :heavy_check_mark:                                     | N/A                                                    |
 | `aws`                                                  | [models.ResponseBodyAws](../models/responsebodyaws.md) | :heavy_minus_sign:                                     | N/A                                                    |
+| `buildsEnabled`                                        | *boolean*                                              | :heavy_check_mark:                                     | N/A                                                    |
+| `connectConfigurationId`                               | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
 | `createdAt`                                            | *number*                                               | :heavy_check_mark:                                     | N/A                                                    |
+| `dc`                                                   | *string*                                               | :heavy_minus_sign:                                     | N/A                                                    |
+| `envId`                                                | *models.ResponseBodyEnvId*                             | :heavy_check_mark:                                     | N/A                                                    |
+| `passive`                                              | *boolean*                                              | :heavy_check_mark:                                     | N/A                                                    |
 | `updatedAt`                                            | *number*                                               | :heavy_check_mark:                                     | N/A                                                    |

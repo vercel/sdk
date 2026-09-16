@@ -36,56 +36,6 @@ export type AccountLimit = {
 };
 
 /**
- * The type of environment (production, preview, or development)
- */
-export const GetProjectsByIdOrNameCustomEnvironmentsType = {
-  Development: "development",
-  Preview: "preview",
-  Production: "production",
-} as const;
-/**
- * The type of environment (production, preview, or development)
- */
-export type GetProjectsByIdOrNameCustomEnvironmentsType = ClosedEnum<
-  typeof GetProjectsByIdOrNameCustomEnvironmentsType
->;
-
-/**
- * A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
- */
-export type GetProjectsByIdOrNameCustomEnvironmentsVerification = {
-  type: string;
-  domain: string;
-  value: string;
-  reason: string;
-};
-
-/**
- * List of domains associated with this environment
- */
-export type GetProjectsByIdOrNameCustomEnvironmentsDomains = {
-  name: string;
-  apexName: string;
-  projectId: string;
-  redirect?: string | null | undefined;
-  redirectStatusCode?: number | null | undefined;
-  gitBranch?: string | null | undefined;
-  customEnvironmentId?: string | null | undefined;
-  updatedAt?: number | undefined;
-  createdAt?: number | undefined;
-  /**
-   * `true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed.
-   */
-  verified: boolean;
-  /**
-   * A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
-   */
-  verification?:
-    | Array<GetProjectsByIdOrNameCustomEnvironmentsVerification>
-    | undefined;
-};
-
-/**
  * The type of matching to perform
  */
 export const GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType = {
@@ -105,44 +55,66 @@ export type GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType = ClosedEnum<
  */
 export type GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher = {
   /**
-   * The type of matching to perform
-   */
-  type: GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType;
-  /**
    * The pattern to match against branch names
    */
   pattern: string;
+  /**
+   * The type of matching to perform
+   */
+  type: GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType;
 };
 
+/**
+ * A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
+ */
+export type GetProjectsByIdOrNameCustomEnvironmentsVerification = {
+  domain: string;
+  reason: string;
+  type: string;
+  value: string;
+};
+
+/**
+ * List of domains associated with this environment
+ */
+export type GetProjectsByIdOrNameCustomEnvironmentsDomains = {
+  apexName: string;
+  createdAt?: number | undefined;
+  customEnvironmentId?: string | null | undefined;
+  gitBranch?: string | null | undefined;
+  name: string;
+  projectId: string;
+  redirect?: string | null | undefined;
+  redirectStatusCode?: number | null | undefined;
+  updatedAt?: number | undefined;
+  /**
+   * A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
+   */
+  verification?:
+    | Array<GetProjectsByIdOrNameCustomEnvironmentsVerification>
+    | undefined;
+  /**
+   * `true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed.
+   */
+  verified: boolean;
+};
+
+/**
+ * The type of environment (production, preview, or development)
+ */
+export const GetProjectsByIdOrNameCustomEnvironmentsType = {
+  Development: "development",
+  Preview: "preview",
+  Production: "production",
+} as const;
+/**
+ * The type of environment (production, preview, or development)
+ */
+export type GetProjectsByIdOrNameCustomEnvironmentsType = ClosedEnum<
+  typeof GetProjectsByIdOrNameCustomEnvironmentsType
+>;
+
 export type GetProjectsByIdOrNameCustomEnvironmentsEnvironments = {
-  /**
-   * The type of environment (production, preview, or development)
-   */
-  type: GetProjectsByIdOrNameCustomEnvironmentsType;
-  /**
-   * Optional description of the environment's purpose
-   */
-  description?: string | undefined;
-  /**
-   * Timestamp when the environment was created
-   */
-  createdAt: number;
-  /**
-   * Timestamp when the environment was last updated
-   */
-  updatedAt: number;
-  /**
-   * URL-friendly name of the environment
-   */
-  slug: string;
-  /**
-   * Unique identifier for the custom environment (format: env_*)
-   */
-  id: string;
-  /**
-   * List of domains associated with this environment
-   */
-  domains?: Array<GetProjectsByIdOrNameCustomEnvironmentsDomains> | undefined;
   /**
    * Configuration for matching git branches to this environment
    */
@@ -150,9 +122,37 @@ export type GetProjectsByIdOrNameCustomEnvironmentsEnvironments = {
     | GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher
     | undefined;
   /**
+   * Timestamp when the environment was created
+   */
+  createdAt: number;
+  /**
    * List of aliases for the current deployment
    */
   currentDeploymentAliases?: Array<string> | undefined;
+  /**
+   * Optional description of the environment's purpose
+   */
+  description?: string | undefined;
+  /**
+   * List of domains associated with this environment
+   */
+  domains?: Array<GetProjectsByIdOrNameCustomEnvironmentsDomains> | undefined;
+  /**
+   * Unique identifier for the custom environment (format: env_*)
+   */
+  id: string;
+  /**
+   * URL-friendly name of the environment
+   */
+  slug: string;
+  /**
+   * The type of environment (production, preview, or development)
+   */
+  type: GetProjectsByIdOrNameCustomEnvironmentsType;
+  /**
+   * Timestamp when the environment was last updated
+   */
+  updatedAt: number;
 };
 
 export type GetProjectsByIdOrNameCustomEnvironmentsResponseBody = {
@@ -215,9 +215,37 @@ export function accountLimitFromJSON(
 }
 
 /** @internal */
-export const GetProjectsByIdOrNameCustomEnvironmentsType$inboundSchema:
-  z.ZodNativeEnum<typeof GetProjectsByIdOrNameCustomEnvironmentsType> = z
-    .nativeEnum(GetProjectsByIdOrNameCustomEnvironmentsType);
+export const GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType
+  > = z.nativeEnum(GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType);
+
+/** @internal */
+export const GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher$inboundSchema:
+  z.ZodType<
+    GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    pattern: types.string(),
+    type: GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType$inboundSchema,
+  });
+
+export function getProjectsByIdOrNameCustomEnvironmentsBranchMatcherFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher' from JSON`,
+  );
+}
 
 /** @internal */
 export const GetProjectsByIdOrNameCustomEnvironmentsVerification$inboundSchema:
@@ -226,10 +254,10 @@ export const GetProjectsByIdOrNameCustomEnvironmentsVerification$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    type: types.string(),
     domain: types.string(),
-    value: types.string(),
     reason: types.string(),
+    type: types.string(),
+    value: types.string(),
   });
 
 export function getProjectsByIdOrNameCustomEnvironmentsVerificationFromJSON(
@@ -255,21 +283,21 @@ export const GetProjectsByIdOrNameCustomEnvironmentsDomains$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    name: types.string(),
     apexName: types.string(),
+    createdAt: types.optional(types.number()),
+    customEnvironmentId: z.nullable(types.string()).optional(),
+    gitBranch: z.nullable(types.string()).optional(),
+    name: types.string(),
     projectId: types.string(),
     redirect: z.nullable(types.string()).optional(),
     redirectStatusCode: z.nullable(types.number()).optional(),
-    gitBranch: z.nullable(types.string()).optional(),
-    customEnvironmentId: z.nullable(types.string()).optional(),
     updatedAt: types.optional(types.number()),
-    createdAt: types.optional(types.number()),
-    verified: types.boolean(),
     verification: types.optional(
       z.array(z.lazy(() =>
         GetProjectsByIdOrNameCustomEnvironmentsVerification$inboundSchema
       )),
     ),
+    verified: types.boolean(),
   });
 
 export function getProjectsByIdOrNameCustomEnvironmentsDomainsFromJSON(
@@ -289,37 +317,9 @@ export function getProjectsByIdOrNameCustomEnvironmentsDomainsFromJSON(
 }
 
 /** @internal */
-export const GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType
-  > = z.nativeEnum(GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType);
-
-/** @internal */
-export const GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher$inboundSchema:
-  z.ZodType<
-    GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    type: GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType$inboundSchema,
-    pattern: types.string(),
-  });
-
-export function getProjectsByIdOrNameCustomEnvironmentsBranchMatcherFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher' from JSON`,
-  );
-}
+export const GetProjectsByIdOrNameCustomEnvironmentsType$inboundSchema:
+  z.ZodNativeEnum<typeof GetProjectsByIdOrNameCustomEnvironmentsType> = z
+    .nativeEnum(GetProjectsByIdOrNameCustomEnvironmentsType);
 
 /** @internal */
 export const GetProjectsByIdOrNameCustomEnvironmentsEnvironments$inboundSchema:
@@ -328,23 +328,23 @@ export const GetProjectsByIdOrNameCustomEnvironmentsEnvironments$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    type: GetProjectsByIdOrNameCustomEnvironmentsType$inboundSchema,
-    description: types.optional(types.string()),
-    createdAt: types.number(),
-    updatedAt: types.number(),
-    slug: types.string(),
-    id: types.string(),
-    domains: types.optional(
-      z.array(z.lazy(() =>
-        GetProjectsByIdOrNameCustomEnvironmentsDomains$inboundSchema
-      )),
-    ),
     branchMatcher: types.optional(
       z.lazy(() =>
         GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher$inboundSchema
       ),
     ),
+    createdAt: types.number(),
     currentDeploymentAliases: types.optional(z.array(types.string())),
+    description: types.optional(types.string()),
+    domains: types.optional(
+      z.array(z.lazy(() =>
+        GetProjectsByIdOrNameCustomEnvironmentsDomains$inboundSchema
+      )),
+    ),
+    id: types.string(),
+    slug: types.string(),
+    type: GetProjectsByIdOrNameCustomEnvironmentsType$inboundSchema,
+    updatedAt: types.number(),
   });
 
 export function getProjectsByIdOrNameCustomEnvironmentsEnvironmentsFromJSON(

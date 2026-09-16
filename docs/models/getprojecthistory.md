@@ -3,14 +3,14 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectHistory } from "@vercel/sdk/models/getprojectinternalroutesmitigate.js";
+import { GetProjectHistory } from "@vercel/sdk/models/getprojecthas2.js";
 
 let value: GetProjectHistory = {
-  scanner: "<value>",
-  reason: "<value>",
+  at: 2427.19,
   by: "<value>",
   byId: "<id>",
-  at: 2427.19,
+  reason: "<value>",
+  scanner: "<value>",
 };
 ```
 
@@ -18,8 +18,8 @@ let value: GetProjectHistory = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `scanner`          | *string*           | :heavy_check_mark: | N/A                |
-| `reason`           | *string*           | :heavy_check_mark: | N/A                |
+| `at`               | *number*           | :heavy_check_mark: | N/A                |
 | `by`               | *string*           | :heavy_check_mark: | N/A                |
 | `byId`             | *string*           | :heavy_check_mark: | N/A                |
-| `at`               | *number*           | :heavy_check_mark: | N/A                |
+| `reason`           | *string*           | :heavy_check_mark: | N/A                |
+| `scanner`          | *string*           | :heavy_check_mark: | N/A                |

@@ -7,8 +7,8 @@
 
 ```typescript
 const value: models.UiOptions1 = {
-  value: "<value>",
   label: "<value>",
+  value: "<value>",
 };
 ```
 

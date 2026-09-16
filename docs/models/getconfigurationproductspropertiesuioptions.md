@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { GetConfigurationProductsPropertiesUiOptions } from "@vercel/sdk/models/getconfigurationproductsresponsebody.js";
+import { GetConfigurationProductsPropertiesUiOptions } from "@vercel/sdk/models/properties7.js";
 
 let value: GetConfigurationProductsPropertiesUiOptions = {
-  value: "<value>",
   label: "<value>",
+  value: "<value>",
 };
 ```
 
@@ -15,8 +15,8 @@ let value: GetConfigurationProductsPropertiesUiOptions = {
 
 | Field                                               | Type                                                | Required                                            | Description                                         |
 | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
-| `value`                                             | *string*                                            | :heavy_check_mark:                                  | N/A                                                 |
-| `label`                                             | *string*                                            | :heavy_check_mark:                                  | N/A                                                 |
 | `description`                                       | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
 | `disabled`                                          | *models.GetConfigurationProductsPropertiesDisabled* | :heavy_minus_sign:                                  | N/A                                                 |
 | `hidden`                                            | *models.GetConfigurationProductsPropertiesHidden*   | :heavy_minus_sign:                                  | N/A                                                 |
+| `label`                                             | *string*                                            | :heavy_check_mark:                                  | N/A                                                 |
+| `value`                                             | *string*                                            | :heavy_check_mark:                                  | N/A                                                 |

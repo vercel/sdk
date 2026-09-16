@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PreviousEndpoint } from "@vercel/sdk/models/usereventpayloadnext.js";
+import { PreviousEndpoint } from "@vercel/sdk/models/payloadnext.js";
 
 let value: PreviousEndpoint = {
   name: "<value>",
@@ -14,6 +14,6 @@ let value: PreviousEndpoint = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
 | `environmentIds`   | *string*[]         | :heavy_minus_sign: | N/A                |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |
 | `privateDnsNames`  | *string*[]         | :heavy_minus_sign: | N/A                |

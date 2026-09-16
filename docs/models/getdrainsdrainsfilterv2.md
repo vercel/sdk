@@ -6,11 +6,11 @@
 import { GetDrainsDrainsFilterV2 } from "@vercel/sdk/models/getdrainsop.js";
 
 let value: GetDrainsDrainsFilterV2 = {
-  version: "v2",
   filter: {
-    type: "odata",
     text: "<value>",
+    type: "odata",
   },
+  version: "v2",
 };
 ```
 
@@ -18,5 +18,5 @@ let value: GetDrainsDrainsFilterV2 = {
 
 | Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
 | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `version`                                                            | [models.GetDrainsDrainsVersion](../models/getdrainsdrainsversion.md) | :heavy_check_mark:                                                   | N/A                                                                  |
 | `filter`                                                             | *models.GetDrainsDrainsFilter*                                       | :heavy_check_mark:                                                   | N/A                                                                  |
+| `version`                                                            | [models.GetDrainsDrainsVersion](../models/getdrainsdrainsversion.md) | :heavy_check_mark:                                                   | N/A                                                                  |

@@ -5,7 +5,7 @@ Project shape. `null` on a rule list clears the project's override for that rule
 ## Example Usage
 
 ```typescript
-import { GetProjectDeploymentPolicy } from "@vercel/sdk/models/getprojectinternalroutesmitigate.js";
+import { GetProjectDeploymentPolicy } from "@vercel/sdk/models/getprojecthas2.js";
 
 let value: GetProjectDeploymentPolicy = {};
 ```
@@ -14,5 +14,5 @@ let value: GetProjectDeploymentPolicy = {};
 
 | Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
 | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `gitSources`                                                                     | [models.GetProjectGitSources](../models/getprojectgitsources.md)[]               | :heavy_minus_sign:                                                               | N/A                                                                              |
 | `deploymentSources`                                                              | [models.GetProjectDeploymentSources](../models/getprojectdeploymentsources.md)[] | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `gitSources`                                                                     | [models.GetProjectGitSources](../models/getprojectgitsources.md)[]               | :heavy_minus_sign:                                                               | N/A                                                                              |

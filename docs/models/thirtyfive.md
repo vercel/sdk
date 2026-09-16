@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThirtyFive } from "@vercel/sdk/models/userevent.js";
+import { ThirtyFive } from "@vercel/sdk/models/twentynine.js";
 
 let value: ThirtyFive = {
   accessGroup: {
@@ -20,6 +20,6 @@ let value: ThirtyFive = {
 | Field                                          | Type                                           | Required                                       | Description                                    |
 | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
 | `accessGroup`                                  | [models.AccessGroup](../models/accessgroup.md) | :heavy_check_mark:                             | N/A                                            |
-| `teamRoles`                                    | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
-| `teamPermissions`                              | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
 | `entitlements`                                 | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
+| `teamPermissions`                              | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
+| `teamRoles`                                    | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |

@@ -5,7 +5,7 @@ Build resource configuration snapshot for this deployment.
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentConfiguration } from "@vercel/sdk/models/canceldeploymentresponsebody.js";
+import { CancelDeploymentConfiguration } from "@vercel/sdk/models/canceldeploymentresourceconfig.js";
 
 let value: CancelDeploymentConfiguration = "WAIT_FOR_NAMESPACE_QUEUE";
 ```

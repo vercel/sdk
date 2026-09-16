@@ -5,12 +5,12 @@ A list of "entities" within the event `text`. Useful for enhancing the displayed
 ## Example Usage
 
 ```typescript
-import { Entities } from "@vercel/sdk/models/fourhundredandnine.js";
+import { Entities } from "@vercel/sdk/models/threehundredandninetynine.js";
 
 let value: Entities = {
-  type: "author",
-  start: 0,
   end: 3,
+  start: 0,
+  type: "author",
 };
 ```
 
@@ -18,6 +18,6 @@ let value: Entities = {
 
 | Field                                                                 | Type                                                                  | Required                                                              | Description                                                           | Example                                                               |
 | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| `type`                                                                | [models.UserEventEntitiesType](../models/userevententitiestype.md)    | :heavy_check_mark:                                                    | The type of entity.                                                   | author                                                                |
-| `start`                                                               | *number*                                                              | :heavy_check_mark:                                                    | The index of where the entity begins within the `text` (inclusive).   | 0                                                                     |
 | `end`                                                                 | *number*                                                              | :heavy_check_mark:                                                    | The index of where the entity ends within the `text` (non-inclusive). | 3                                                                     |
+| `start`                                                               | *number*                                                              | :heavy_check_mark:                                                    | The index of where the entity begins within the `text` (inclusive).   | 0                                                                     |
+| `type`                                                                | [models.UserEventEntitiesType](../models/userevententitiestype.md)    | :heavy_check_mark:                                                    | The type of entity.                                                   | author                                                                |

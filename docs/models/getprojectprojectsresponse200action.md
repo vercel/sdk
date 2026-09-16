@@ -1,15 +1,17 @@
 # GetProjectProjectsResponse200Action
 
+What to do when the gate trips: pause the rollout, or roll it back.
+
 ## Example Usage
 
 ```typescript
-import { GetProjectProjectsResponse200Action } from "@vercel/sdk/models/getprojectinternalroutesmitigate.js";
+import { GetProjectProjectsResponse200Action } from "@vercel/sdk/models/getprojectfrompreset.js";
 
-let value: GetProjectProjectsResponse200Action = "add-project-interstitial";
+let value: GetProjectProjectsResponse200Action = "pause";
 ```
 
 ## Values
 
 ```typescript
-"add-deployment-interstitial" | "add-project-interstitial" | "remove-deployment-interstitial" | "remove-project-interstitial"
+"pause" | "rollback"
 ```

@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsCreator2 } from "@vercel/sdk/models/responsebodydeploymentexpiration.js";
+import { GetProjectsCreator2 } from "@vercel/sdk/models/getprojectslogheaders2.js";
 
 let value: GetProjectsCreator2 = {
-  type: "app",
   app: {
     id: "<id>",
   },
+  type: "app",
 };
 ```
 
@@ -17,5 +17,5 @@ let value: GetProjectsCreator2 = {
 
 | Field                                                              | Type                                                               | Required                                                           | Description                                                        |
 | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| `type`                                                             | *"app"*                                                            | :heavy_check_mark:                                                 | N/A                                                                |
 | `app`                                                              | [models.GetProjectsCreatorApp](../models/getprojectscreatorapp.md) | :heavy_check_mark:                                                 | N/A                                                                |
+| `type`                                                             | *"app"*                                                            | :heavy_check_mark:                                                 | N/A                                                                |

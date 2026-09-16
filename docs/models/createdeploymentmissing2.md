@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentMissing2 } from "@vercel/sdk/models/createdeploymentroutesdeploymentshas.js";
+import { CreateDeploymentMissing2 } from "@vercel/sdk/models/createdeploymentmissingdeploymentsresponse1.js";
 
 let value: CreateDeploymentMissing2 = {
-  type: "header",
   key: "<key>",
+  type: "header",
 };
 ```
 
@@ -15,6 +15,6 @@ let value: CreateDeploymentMissing2 = {
 
 | Field                                                                                                | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
 | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `type`                                                                                               | [models.CreateDeploymentMissingDeploymentsType](../models/createdeploymentmissingdeploymentstype.md) | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
 | `key`                                                                                                | *string*                                                                                             | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
+| `type`                                                                                               | [models.CreateDeploymentMissingDeploymentsType](../models/createdeploymentmissingdeploymentstype.md) | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
 | `value`                                                                                              | *models.CreateDeploymentMissingDeploymentsValue*                                                     | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |

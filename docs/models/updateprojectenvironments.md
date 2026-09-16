@@ -7,8 +7,8 @@
 
 ```typescript
 const value: models.UpdateProjectEnvironmentsProjectsResponse1 = {
-  type: "system",
   target: "production",
+  type: "system",
 };
 ```
 
@@ -16,8 +16,8 @@ const value: models.UpdateProjectEnvironmentsProjectsResponse1 = {
 
 ```typescript
 const value: models.UpdateProjectEnvironmentsProjectsResponse2002 = {
-  type: "custom",
   environmentId: "<id>",
+  type: "custom",
 };
 ```
 

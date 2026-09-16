@@ -25,8 +25,8 @@ const value: models.SearchRepoResponseBody2 = {
 ```typescript
 const value: models.SearchRepoResponseBody3 = {
   gitAccount: {
-    provider: "<value>",
     namespaceId: "<id>",
+    provider: "<value>",
   },
   repos: [],
 };
@@ -37,8 +37,8 @@ const value: models.SearchRepoResponseBody3 = {
 ```typescript
 const value: models.ResponseBody4 = {
   gitAccount: {
-    provider: "cursor-origin",
-    namespaceId: 3848.91,
+    namespaceId: 9173.09,
+    provider: "github",
   },
   repos: [],
 };

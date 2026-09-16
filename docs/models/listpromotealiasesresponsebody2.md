@@ -8,9 +8,9 @@ import { ListPromoteAliasesResponseBody2 } from "@vercel/sdk/models/listpromotea
 let value: ListPromoteAliasesResponseBody2 = {
   aliases: [
     {
-      status: "<value>",
       alias: "<value>",
       id: "<id>",
+      status: "<value>",
     },
   ],
   pagination: {

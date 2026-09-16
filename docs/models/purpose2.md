@@ -6,8 +6,8 @@
 import { Purpose2 } from "@vercel/sdk/models/getedgeconfigsop.js";
 
 let value: Purpose2 = {
-  type: "experimentation",
   resourceId: "<id>",
+  type: "experimentation",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: Purpose2 = {
 
 | Field               | Type                | Required            | Description         |
 | ------------------- | ------------------- | ------------------- | ------------------- |
-| `type`              | *"experimentation"* | :heavy_check_mark:  | N/A                 |
 | `resourceId`        | *string*            | :heavy_check_mark:  | N/A                 |
+| `type`              | *"experimentation"* | :heavy_check_mark:  | N/A                 |

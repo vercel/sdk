@@ -6,8 +6,8 @@
 import { RemoveProjectEnvContentHintProjectsResponse2 } from "@vercel/sdk/models/removeprojectenvop.js";
 
 let value: RemoveProjectEnvContentHintProjectsResponse2 = {
-  type: "redis-rest-api-url",
   storeId: "<id>",
+  type: "redis-rest-api-url",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: RemoveProjectEnvContentHintProjectsResponse2 = {
 
 | Field                  | Type                   | Required               | Description            |
 | ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `type`                 | *"redis-rest-api-url"* | :heavy_check_mark:     | N/A                    |
 | `storeId`              | *string*               | :heavy_check_mark:     | N/A                    |
+| `type`                 | *"redis-rest-api-url"* | :heavy_check_mark:     | N/A                    |

@@ -6,9 +6,9 @@
 import { GetDeploymentServicesTransforms } from "@vercel/sdk/models/getdeploymentresponsebody1.js";
 
 let value: GetDeploymentServicesTransforms = {
-  type: "request.path",
-  op: "set",
   args: "<value>",
+  op: "set",
+  type: "request.path",
 };
 ```
 
@@ -16,7 +16,7 @@ let value: GetDeploymentServicesTransforms = {
 
 | Field                                                                                                                  | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
 | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `type`                                                                                                                 | [models.GetDeploymentServicesDeploymentsResponse200Type](../models/getdeploymentservicesdeploymentsresponse200type.md) | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |
-| `op`                                                                                                                   | [models.GetDeploymentServicesOp](../models/getdeploymentservicesop.md)                                                 | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |
 | `args`                                                                                                                 | *string*                                                                                                               | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |
 | `env`                                                                                                                  | *string*[]                                                                                                             | :heavy_minus_sign:                                                                                                     | N/A                                                                                                                    |
+| `op`                                                                                                                   | [models.GetDeploymentServicesOp](../models/getdeploymentservicesop.md)                                                 | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |
+| `type`                                                                                                                 | [models.GetDeploymentServicesDeploymentsResponse200Type](../models/getdeploymentservicesdeploymentsresponse200type.md) | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |

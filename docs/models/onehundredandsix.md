@@ -5,14 +5,10 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSix } from "@vercel/sdk/models/payloadaccessgroup.js";
+import { OneHundredAndSix } from "@vercel/sdk/models/onehundred.js";
 
 let value: OneHundredAndSix = {
   job: {
-    type: "vercel-push",
-    ref: "<value>",
-    repo: "<value>",
-    sha: "<value>",
     headInfo: {
       org: "<value>",
       ref: "<value>",
@@ -21,6 +17,10 @@ let value: OneHundredAndSix = {
     },
     org: "<value>",
     provider: "vercel",
+    ref: "<value>",
+    repo: "<value>",
+    sha: "<value>",
+    type: "vercel-push",
   },
 };
 ```

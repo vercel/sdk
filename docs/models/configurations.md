@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { Configurations } from "@vercel/sdk/models/usereventpayload171gituserid.js";
+import { Configurations } from "@vercel/sdk/models/usereventpayload171newownerfeatureblocksworkflowstoragewriteblockreason.js";
 
 let value: Configurations = {
-  integrationId: "<id>",
   configurationId: "<id>",
+  integrationId: "<id>",
   integrationSlug: "<value>",
 };
 ```
@@ -16,7 +16,7 @@ let value: Configurations = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `integrationId`    | *string*           | :heavy_check_mark: | N/A                |
 | `configurationId`  | *string*           | :heavy_check_mark: | N/A                |
-| `integrationSlug`  | *string*           | :heavy_check_mark: | N/A                |
+| `integrationId`    | *string*           | :heavy_check_mark: | N/A                |
 | `integrationName`  | *string*           | :heavy_minus_sign: | N/A                |
+| `integrationSlug`  | *string*           | :heavy_check_mark: | N/A                |

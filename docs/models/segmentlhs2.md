@@ -6,9 +6,9 @@
 import { SegmentLhs2 } from "@vercel/sdk/models/segment.js";
 
 let value: SegmentLhs2 = {
-  type: "entity",
-  kind: "<value>",
   attribute: "<value>",
+  kind: "<value>",
+  type: "entity",
 };
 ```
 
@@ -16,6 +16,6 @@ let value: SegmentLhs2 = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `type`             | *"entity"*         | :heavy_check_mark: | N/A                |
-| `kind`             | *string*           | :heavy_check_mark: | N/A                |
 | `attribute`        | *string*           | :heavy_check_mark: | N/A                |
+| `kind`             | *string*           | :heavy_check_mark: | N/A                |
+| `type`             | *"entity"*         | :heavy_check_mark: | N/A                |

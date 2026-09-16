@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentValueDeployments2 } from "@vercel/sdk/models/locale.js";
+import { CancelDeploymentValueDeployments2 } from "@vercel/sdk/models/canceldeploymentdestinationdeployments2.js";
 
 let value: CancelDeploymentValueDeployments2 = {};
 ```
@@ -13,13 +13,13 @@ let value: CancelDeploymentValueDeployments2 = {};
 | Field                            | Type                             | Required                         | Description                      |
 | -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
 | `eq`                             | *models.CancelDeploymentValueEq* | :heavy_minus_sign:               | N/A                              |
-| `neq`                            | *string*                         | :heavy_minus_sign:               | N/A                              |
-| `inc`                            | *string*[]                       | :heavy_minus_sign:               | N/A                              |
-| `ninc`                           | *string*[]                       | :heavy_minus_sign:               | N/A                              |
-| `pre`                            | *string*                         | :heavy_minus_sign:               | N/A                              |
-| `suf`                            | *string*                         | :heavy_minus_sign:               | N/A                              |
-| `re`                             | *string*                         | :heavy_minus_sign:               | N/A                              |
 | `gt`                             | *number*                         | :heavy_minus_sign:               | N/A                              |
 | `gte`                            | *number*                         | :heavy_minus_sign:               | N/A                              |
+| `inc`                            | *string*[]                       | :heavy_minus_sign:               | N/A                              |
 | `lt`                             | *number*                         | :heavy_minus_sign:               | N/A                              |
 | `lte`                            | *number*                         | :heavy_minus_sign:               | N/A                              |
+| `neq`                            | *string*                         | :heavy_minus_sign:               | N/A                              |
+| `ninc`                           | *string*[]                       | :heavy_minus_sign:               | N/A                              |
+| `pre`                            | *string*                         | :heavy_minus_sign:               | N/A                              |
+| `re`                             | *string*                         | :heavy_minus_sign:               | N/A                              |
+| `suf`                            | *string*                         | :heavy_minus_sign:               | N/A                              |

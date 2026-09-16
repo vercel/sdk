@@ -6,15 +6,15 @@
 import { Segment } from "@vercel/sdk/models/segment.js";
 
 let value: Segment = {
+  createdAt: 9171.2,
   data: {},
+  hint: "<value>",
   id: "<id>",
   label: "<value>",
-  slug: "<value>",
-  createdAt: 9171.2,
-  updatedAt: 8945.82,
   projectId: "<id>",
+  slug: "<value>",
   typeName: "segment",
-  hint: "<value>",
+  updatedAt: 8945.82,
 };
 ```
 
@@ -22,17 +22,17 @@ let value: Segment = {
 
 | Field                                                  | Type                                                   | Required                                               | Description                                            |
 | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `description`                                          | *string*                                               | :heavy_minus_sign:                                     | N/A                                                    |
+| `createdAt`                                            | *number*                                               | :heavy_check_mark:                                     | N/A                                                    |
 | `createdBy`                                            | *string*                                               | :heavy_minus_sign:                                     | N/A                                                    |
-| `usedByFlags`                                          | *string*[]                                             | :heavy_minus_sign:                                     | N/A                                                    |
-| `usedBySegments`                                       | *string*[]                                             | :heavy_minus_sign:                                     | N/A                                                    |
 | `data`                                                 | [models.Data](../models/data.md)                       | :heavy_check_mark:                                     | N/A                                                    |
+| `description`                                          | *string*                                               | :heavy_minus_sign:                                     | N/A                                                    |
+| `hint`                                                 | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
 | `id`                                                   | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
 | `label`                                                | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
-| `slug`                                                 | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
-| `createdAt`                                            | *number*                                               | :heavy_check_mark:                                     | N/A                                                    |
-| `updatedAt`                                            | *number*                                               | :heavy_check_mark:                                     | N/A                                                    |
 | `projectId`                                            | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
+| `slug`                                                 | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
 | `typeName`                                             | [models.SegmentTypeName](../models/segmenttypename.md) | :heavy_check_mark:                                     | N/A                                                    |
-| `hint`                                                 | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
+| `updatedAt`                                            | *number*                                               | :heavy_check_mark:                                     | N/A                                                    |
+| `usedByFlags`                                          | *string*[]                                             | :heavy_minus_sign:                                     | N/A                                                    |
+| `usedBySegments`                                       | *string*[]                                             | :heavy_minus_sign:                                     | N/A                                                    |
 | `metadata`                                             | [models.SegmentMetadata](../models/segmentmetadata.md) | :heavy_minus_sign:                                     | N/A                                                    |

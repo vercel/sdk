@@ -7,11 +7,11 @@
 
 ```typescript
 const value: models.GetProjectsLinkProjects1 = {
-  org: "<value>",
-  type: "github",
   deployHooks: [],
   gitCredentialId: "<id>",
+  org: "<value>",
   productionBranch: "<value>",
+  type: "github",
 };
 ```
 
@@ -19,8 +19,6 @@ const value: models.GetProjectsLinkProjects1 = {
 
 ```typescript
 const value: models.GetProjectsLinkProjects2 = {
-  type: "github-limited",
-  org: "<value>",
   deployHooks: [
     {
       id: "<id>",
@@ -30,7 +28,9 @@ const value: models.GetProjectsLinkProjects2 = {
     },
   ],
   gitCredentialId: "<id>",
+  org: "<value>",
   productionBranch: "<value>",
+  type: "github-limited",
 };
 ```
 
@@ -38,12 +38,12 @@ const value: models.GetProjectsLinkProjects2 = {
 
 ```typescript
 const value: models.GetProjectsLinkProjects3 = {
-  org: "<value>",
-  type: "github-custom-host",
-  host: "lined-milestone.name",
   deployHooks: [],
   gitCredentialId: "<id>",
+  host: "old-fashioned-meadow.info",
+  org: "<value>",
   productionBranch: "<value>",
+  type: "github-custom-host",
 };
 ```
 
@@ -51,22 +51,22 @@ const value: models.GetProjectsLinkProjects3 = {
 
 ```typescript
 const value: models.GetProjectsLinkProjects4 = {
-  projectId: "<id>",
-  projectName: "<value>",
-  projectNameWithNamespace: "<value>",
-  projectNamespace: "<value>",
-  projectUrl: "https://bleak-legislature.name",
-  type: "gitlab",
   deployHooks: [
     {
       id: "<id>",
       name: "<value>",
       ref: "<value>",
-      url: "https://rosy-skeleton.info/",
+      url: "https://miserly-monocle.org/",
     },
   ],
   gitCredentialId: "<id>",
   productionBranch: "<value>",
+  projectId: "<id>",
+  projectName: "<value>",
+  projectNamespace: "<value>",
+  projectNameWithNamespace: "<value>",
+  projectUrl: "https://rosy-skeleton.info/",
+  type: "gitlab",
 };
 ```
 
@@ -74,22 +74,15 @@ const value: models.GetProjectsLinkProjects4 = {
 
 ```typescript
 const value: models.GetProjectsLinkProjects5 = {
-  name: "<value>",
-  slug: "<value>",
-  owner: "<value>",
-  type: "bitbucket",
-  uuid: "271a8692-382b-4f4f-963a-4a7eb74f9b02",
-  workspaceUuid: "<id>",
-  deployHooks: [
-    {
-      id: "<id>",
-      name: "<value>",
-      ref: "<value>",
-      url: "https://rigid-elevation.org",
-    },
-  ],
+  deployHooks: [],
   gitCredentialId: "<id>",
+  name: "<value>",
+  owner: "<value>",
   productionBranch: "<value>",
+  slug: "<value>",
+  type: "bitbucket",
+  uuid: "71a86923-82bf-44f6-b3a4-a7eb74f9b025",
+  workspaceUuid: "<id>",
 };
 ```
 
@@ -97,10 +90,6 @@ const value: models.GetProjectsLinkProjects5 = {
 
 ```typescript
 const value: models.GetProjectsLinkProjects6 = {
-  org: "<value>",
-  repo: "<value>",
-  repoId: "<id>",
-  type: "vercel",
   deployHooks: [
     {
       id: "<id>",
@@ -110,7 +99,11 @@ const value: models.GetProjectsLinkProjects6 = {
     },
   ],
   gitCredentialId: "<id>",
+  org: "<value>",
   productionBranch: "<value>",
+  repo: "<value>",
+  repoId: "<id>",
+  type: "vercel",
 };
 ```
 
@@ -118,13 +111,13 @@ const value: models.GetProjectsLinkProjects6 = {
 
 ```typescript
 const value: models.GetProjectsLinkProjects7 = {
+  deployHooks: [],
+  gitCredentialId: "<id>",
   org: "<value>",
+  productionBranch: "<value>",
   repo: "<value>",
   repoId: "<id>",
   type: "v0",
-  deployHooks: [],
-  gitCredentialId: "<id>",
-  productionBranch: "<value>",
 };
 ```
 
@@ -132,14 +125,14 @@ const value: models.GetProjectsLinkProjects7 = {
 
 ```typescript
 const value: models.GetProjectsLinkProjects8 = {
-  owner: "<value>",
-  repo: "<value>",
-  repoId: "<id>",
-  ownerId: "<id>",
-  type: "cursor-origin",
   deployHooks: [],
   gitCredentialId: "<id>",
+  owner: "<value>",
+  ownerId: "<id>",
   productionBranch: "<value>",
+  repo: "<value>",
+  repoId: "<id>",
+  type: "cursor-origin",
 };
 ```
 

@@ -7,19 +7,19 @@
 
 ```typescript
 const value: models.ListDeploymentCheckRunsRuns1 = {
+  createdAt: 1369.39,
+  deploymentId: "<id>",
   id: "<id>",
   name: "<value>",
   ownerId: "<id>",
-  deploymentId: "<id>",
   status: "completed",
-  timeout: 1658.76,
-  createdAt: 3693.18,
+  timeout: 3693.18,
   updatedAt: 9022.83,
   checkId: "<id>",
   source: {
+    externalCheckName: "<value>",
     kind: "git-provider",
     provider: "github",
-    externalCheckName: "<value>",
   },
 };
 ```
@@ -28,17 +28,17 @@ const value: models.ListDeploymentCheckRunsRuns1 = {
 
 ```typescript
 const value: models.ListDeploymentCheckRunsRuns2 = {
+  createdAt: 4810.6,
+  deploymentId: "<id>",
   id: "<id>",
   name: "<value>",
   ownerId: "<id>",
-  deploymentId: "<id>",
-  status: "queued",
-  timeout: 7765.81,
-  createdAt: 3580.63,
+  status: "running",
+  timeout: 3580.63,
   updatedAt: 8998.16,
   source: {
-    subKind: "vercel-ci-sentinel",
     origin: "platform",
+    subKind: "vercel-ci-sentinel",
   },
 };
 ```

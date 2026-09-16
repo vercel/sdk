@@ -13,18 +13,18 @@ export type GetObservabilitySchemaByMetricIdRequest = {
 };
 
 export type Dimensions = {
-  name: string;
-  label: string;
   description?: string | undefined;
+  label: string;
+  name: string;
 };
 
 export type ResponseBody = {
-  id: string;
-  description: string;
-  dimensions: Array<Dimensions>;
-  unit: string;
   aggregations: Array<string>;
   defaultAggregation: string;
+  description: string;
+  dimensions: Array<Dimensions>;
+  id: string;
+  unit: string;
 };
 
 /** @internal */
@@ -58,9 +58,9 @@ export const Dimensions$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: types.string(),
-  label: types.string(),
   description: types.optional(types.string()),
+  label: types.string(),
+  name: types.string(),
 });
 
 export function dimensionsFromJSON(
@@ -79,12 +79,12 @@ export const ResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: types.string(),
-  description: types.string(),
-  dimensions: z.array(z.lazy(() => Dimensions$inboundSchema)),
-  unit: types.string(),
   aggregations: z.array(types.string()),
   defaultAggregation: types.string(),
+  description: types.string(),
+  dimensions: z.array(z.lazy(() => Dimensions$inboundSchema)),
+  id: types.string(),
+  unit: types.string(),
 });
 
 export function responseBodyFromJSON(

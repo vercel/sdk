@@ -8,8 +8,8 @@ Similar to `contentHints`, but should not be exposed to the user.
 import { InternalContentHint } from "@vercel/sdk/models/editprojectenvop.js";
 
 let value: InternalContentHint = {
-  type: "flags-secret",
   encryptedValue: "<value>",
+  type: "flags-secret",
 };
 ```
 
@@ -17,5 +17,5 @@ let value: InternalContentHint = {
 
 | Field                                                                                                                        | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  |
 | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `type`                                                                                                                       | [models.EditProjectEnvProjectsResponseType](../models/editprojectenvprojectsresponsetype.md)                                 | :heavy_check_mark:                                                                                                           | N/A                                                                                                                          |
 | `encryptedValue`                                                                                                             | *string*                                                                                                                     | :heavy_check_mark:                                                                                                           | Contains the `value` of the env variable, encrypted with a special key to make decryption possible in the subscriber Lambda. |
+| `type`                                                                                                                       | [models.EditProjectEnvProjectsResponseType](../models/editprojectenvprojectsresponsetype.md)                                 | :heavy_check_mark:                                                                                                           | N/A                                                                                                                          |

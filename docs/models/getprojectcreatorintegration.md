@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectCreatorIntegration } from "@vercel/sdk/models/getprojectrollingrelease.js";
+import { GetProjectCreatorIntegration } from "@vercel/sdk/models/getprojecthas2.js";
 
 let value: GetProjectCreatorIntegration = {
-  integrationId: "<id>",
   configurationId: "<id>",
+  integrationId: "<id>",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: GetProjectCreatorIntegration = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `integrationId`    | *string*           | :heavy_check_mark: | N/A                |
 | `configurationId`  | *string*           | :heavy_check_mark: | N/A                |
+| `integrationId`    | *string*           | :heavy_check_mark: | N/A                |

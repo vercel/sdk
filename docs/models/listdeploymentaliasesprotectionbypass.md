@@ -17,10 +17,10 @@ const value: models.ListDeploymentAliasesProtectionBypass1 = {
 
 ```typescript
 const value: models.ListDeploymentAliasesProtectionBypass2 = {
-  createdAt: 9476.4,
-  lastUpdatedAt: 3486.87,
-  lastUpdatedBy: "<value>",
   access: "requested",
+  createdAt: 3486.87,
+  lastUpdatedAt: 8235.02,
+  lastUpdatedBy: "<value>",
   scope: "user",
 };
 ```

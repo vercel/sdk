@@ -5,7 +5,7 @@ Project shape. `null` on a rule list clears the project's override for that rule
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsDeploymentPolicy } from "@vercel/sdk/models/updatemicrofrontendsinternalroutes2.js";
+import { UpdateMicrofrontendsDeploymentPolicy } from "@vercel/sdk/models/updatemicrofrontendshaskey.js";
 
 let value: UpdateMicrofrontendsDeploymentPolicy = {};
 ```
@@ -14,5 +14,5 @@ let value: UpdateMicrofrontendsDeploymentPolicy = {};
 
 | Field                                                                                                | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
 | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `gitSources`                                                                                         | [models.UpdateMicrofrontendsGitSources](../models/updatemicrofrontendsgitsources.md)[]               | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
 | `deploymentSources`                                                                                  | [models.UpdateMicrofrontendsDeploymentSources](../models/updatemicrofrontendsdeploymentsources.md)[] | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
+| `gitSources`                                                                                         | [models.UpdateMicrofrontendsGitSources](../models/updatemicrofrontendsgitsources.md)[]               | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |

@@ -7,12 +7,8 @@
 
 ```typescript
 const value: models.UploadProjectAvatarTrustedIps1 = {
-  deploymentType: "all",
-  addresses: [
-    {
-      value: "<value>",
-    },
-  ],
+  addresses: [],
+  deploymentType: "production",
   protectionMode: "additional",
 };
 ```

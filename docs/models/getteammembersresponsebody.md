@@ -8,8 +8,8 @@ import { GetTeamMembersResponseBody } from "@vercel/sdk/models/getteammembersop.
 let value: GetTeamMembersResponseBody = {
   members: [],
   pagination: {
-    hasNext: false,
     count: 20,
+    hasNext: false,
     next: 1540095775951,
     prev: 1540095775951,
   },
@@ -20,6 +20,6 @@ let value: GetTeamMembersResponseBody = {
 
 | Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
 | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `members`                                                                | [models.GetTeamMembersMembers](../models/getteammembersmembers.md)[]     | :heavy_check_mark:                                                       | N/A                                                                      |
 | `emailInviteCodes`                                                       | [models.EmailInviteCodes](../models/emailinvitecodes.md)[]               | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `members`                                                                | [models.GetTeamMembersMembers](../models/getteammembersmembers.md)[]     | :heavy_check_mark:                                                       | N/A                                                                      |
 | `pagination`                                                             | [models.GetTeamMembersPagination](../models/getteammemberspagination.md) | :heavy_check_mark:                                                       | N/A                                                                      |

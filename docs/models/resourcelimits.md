@@ -7,8 +7,8 @@
 
 ```typescript
 const value: models.ResourceLimits1 = {
-  max: 3751.02,
-  duration: 359.38,
+  duration: 3751.02,
+  max: 359.38,
 };
 ```
 

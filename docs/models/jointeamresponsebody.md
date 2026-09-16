@@ -8,10 +8,10 @@ Successfully joined a team.
 import { JoinTeamResponseBody } from "@vercel/sdk/models/jointeamop.js";
 
 let value: JoinTeamResponseBody = {
-  teamId: "team_LLHUOMOoDlqOp8wPE4kFo9pE",
-  slug: "my-team",
-  name: "My Team",
   from: "email",
+  name: "My Team",
+  slug: "my-team",
+  teamId: "team_LLHUOMOoDlqOp8wPE4kFo9pE",
 };
 ```
 
@@ -19,7 +19,7 @@ let value: JoinTeamResponseBody = {
 
 | Field                                 | Type                                  | Required                              | Description                           | Example                               |
 | ------------------------------------- | ------------------------------------- | ------------------------------------- | ------------------------------------- | ------------------------------------- |
-| `teamId`                              | *string*                              | :heavy_check_mark:                    | The ID of the team the user joined.   | team_LLHUOMOoDlqOp8wPE4kFo9pE         |
-| `slug`                                | *string*                              | :heavy_check_mark:                    | The slug of the team the user joined. | my-team                               |
-| `name`                                | *string*                              | :heavy_check_mark:                    | The name of the team the user joined. | My Team                               |
 | `from`                                | *string*                              | :heavy_check_mark:                    | The origin of how the user joined.    | email                                 |
+| `name`                                | *string*                              | :heavy_check_mark:                    | The name of the team the user joined. | My Team                               |
+| `slug`                                | *string*                              | :heavy_check_mark:                    | The slug of the team the user joined. | my-team                               |
+| `teamId`                              | *string*                              | :heavy_check_mark:                    | The ID of the team the user joined.   | team_LLHUOMOoDlqOp8wPE4kFo9pE         |

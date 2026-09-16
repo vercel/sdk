@@ -6,8 +6,8 @@
 import { MetadataSchema } from "@vercel/sdk/models/getconfigurationproductsresponsebody.js";
 
 let value: MetadataSchema = {
-  type: "object",
   properties: {},
+  type: "object",
 };
 ```
 
@@ -15,7 +15,7 @@ let value: MetadataSchema = {
 
 | Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
 | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `type`                                                                           | [models.GetConfigurationProductsType](../models/getconfigurationproductstype.md) | :heavy_check_mark:                                                               | N/A                                                                              |
 | `properties`                                                                     | Record<string, *models.Properties*>                                              | :heavy_check_mark:                                                               | N/A                                                                              |
 | `required`                                                                       | *string*[]                                                                       | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `type`                                                                           | [models.GetConfigurationProductsType](../models/getconfigurationproductstype.md) | :heavy_check_mark:                                                               | N/A                                                                              |
 | `uiOrder`                                                                        | *string*[]                                                                       | :heavy_minus_sign:                                                               | N/A                                                                              |

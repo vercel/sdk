@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { PayloadDeletedUser } from "@vercel/sdk/models/threehundredandfortytwo.js";
+import { PayloadDeletedUser } from "@vercel/sdk/models/payloadmostspecificsubdivision.js";
 
 let value: PayloadDeletedUser = {
-  username: "Greg.Wolf",
-  email: "Ezequiel.Gottlieb19@yahoo.com",
+  email: "Chelsea_Halvorson-Buckridge@yahoo.com",
+  username: "Norbert.Douglas",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: PayloadDeletedUser = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `username`         | *string*           | :heavy_check_mark: | N/A                |
 | `email`            | *string*           | :heavy_check_mark: | N/A                |
+| `username`         | *string*           | :heavy_check_mark: | N/A                |

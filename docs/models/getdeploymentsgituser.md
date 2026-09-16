@@ -19,5 +19,5 @@ let value: GetDeploymentsGitUser = {
 | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
 | `id`                                         | *models.GetDeploymentsId*                    | :heavy_check_mark:                           | N/A                                          |
 | `login`                                      | *string*                                     | :heavy_check_mark:                           | Git provider username/login                  |
-| `type`                                       | *string*                                     | :heavy_minus_sign:                           | User type                                    |
 | `provider`                                   | *string*                                     | :heavy_minus_sign:                           | The git provider (github, gitlab, bitbucket) |
+| `type`                                       | *string*                                     | :heavy_minus_sign:                           | User type                                    |

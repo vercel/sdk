@@ -3,15 +3,16 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsMicrofrontends3 } from "@vercel/sdk/models/updatemicrofrontendsprojectsfunctiondefaultmemorytype.js";
+import { UpdateMicrofrontendsMicrofrontends3 } from "@vercel/sdk/models/updatemicrofrontendsfrom1.js";
 
 let value: UpdateMicrofrontendsMicrofrontends3 = {
-  updatedAt: 9499.14,
+  enabled: false,
   groupIds: [
     "<value 1>",
     "<value 2>",
+    "<value 3>",
   ],
-  enabled: false,
+  updatedAt: 7392.34,
 };
 ```
 
@@ -19,7 +20,7 @@ let value: UpdateMicrofrontendsMicrofrontends3 = {
 
 | Field                        | Type                         | Required                     | Description                  |
 | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-| `updatedAt`                  | *number*                     | :heavy_check_mark:           | N/A                          |
-| `groupIds`                   | *any*[]                      | :heavy_check_mark:           | N/A                          |
 | `enabled`                    | *false*                      | :heavy_check_mark:           | N/A                          |
 | `freeProjectForLegacyLimits` | *boolean*                    | :heavy_minus_sign:           | N/A                          |
+| `groupIds`                   | *any*[]                      | :heavy_check_mark:           | N/A                          |
+| `updatedAt`                  | *number*                     | :heavy_check_mark:           | N/A                          |

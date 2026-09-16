@@ -9,8 +9,8 @@ import { ListAliasesDeployment } from "@vercel/sdk/models/listaliasesop.js";
 
 let value: ListAliasesDeployment = {
   id: "dpl_5m8CQaRBm3FnWRW1od3wKTpaECPx",
-  url: "my-instant-deployment-3ij3cxz9qr.now.sh",
   meta: "{}",
+  url: "my-instant-deployment-3ij3cxz9qr.now.sh",
 };
 ```
 
@@ -19,5 +19,5 @@ let value: ListAliasesDeployment = {
 | Field                                   | Type                                    | Required                                | Description                             | Example                                 |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- | --------------------------------------- | --------------------------------------- |
 | `id`                                    | *string*                                | :heavy_check_mark:                      | The deployment unique identifier        | dpl_5m8CQaRBm3FnWRW1od3wKTpaECPx        |
-| `url`                                   | *string*                                | :heavy_minus_sign:                      | The deployment unique URL               | my-instant-deployment-3ij3cxz9qr.now.sh |
 | `meta`                                  | *string*                                | :heavy_minus_sign:                      | The deployment metadata                 | {}                                      |
+| `url`                                   | *string*                                | :heavy_minus_sign:                      | The deployment unique URL               | my-instant-deployment-3ij3cxz9qr.now.sh |

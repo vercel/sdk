@@ -3,12 +3,12 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyChecks } from "@vercel/sdk/models/getdeploymentresponsebody1.js";
+import { ResponseBodyChecks } from "@vercel/sdk/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody215type.js";
 
 let value: ResponseBodyChecks = {
   deploymentAlias: {
-    state: "pending",
-    startedAt: 9310.58,
+    startedAt: 4039.29,
+    state: "succeeded",
   },
 };
 ```

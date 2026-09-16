@@ -6,11 +6,11 @@
 import { UpdateProjectProtectionBypassProtectionBypass1 } from "@vercel/sdk/models/updateprojectprotectionbypassop.js";
 
 let value: UpdateProjectProtectionBypassProtectionBypass1 = {
+  configurationId: "<id>",
   createdAt: 2784.96,
   createdBy: "<value>",
-  scope: "integration-automation-bypass",
   integrationId: "<id>",
-  configurationId: "<id>",
+  scope: "integration-automation-bypass",
 };
 ```
 
@@ -18,8 +18,8 @@ let value: UpdateProjectProtectionBypassProtectionBypass1 = {
 
 | Field                             | Type                              | Required                          | Description                       |
 | --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| `configurationId`                 | *string*                          | :heavy_check_mark:                | N/A                               |
 | `createdAt`                       | *number*                          | :heavy_check_mark:                | N/A                               |
 | `createdBy`                       | *string*                          | :heavy_check_mark:                | N/A                               |
-| `scope`                           | *"integration-automation-bypass"* | :heavy_check_mark:                | N/A                               |
 | `integrationId`                   | *string*                          | :heavy_check_mark:                | N/A                               |
-| `configurationId`                 | *string*                          | :heavy_check_mark:                | N/A                               |
+| `scope`                           | *"integration-automation-bypass"* | :heavy_check_mark:                | N/A                               |

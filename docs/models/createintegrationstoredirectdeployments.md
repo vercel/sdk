@@ -3,19 +3,19 @@
 ## Example Usage
 
 ```typescript
-import { CreateIntegrationStoreDirectDeployments } from "@vercel/sdk/models/createintegrationstoredirectpropertiesintegrationsitems.js";
+import { CreateIntegrationStoreDirectDeployments } from "@vercel/sdk/models/createintegrationstoredirectpropertiesintegrationsresponse200uioptions.js";
 
 let value: CreateIntegrationStoreDirectDeployments = {
-  required: false,
   actions: [
     {
-      slug: "<value>",
       environments: [
         "<value 1>",
         "<value 2>",
       ],
+      slug: "<value>",
     },
   ],
+  required: false,
 };
 ```
 
@@ -23,5 +23,5 @@ let value: CreateIntegrationStoreDirectDeployments = {
 
 | Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
 | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `required`                                                                                       | *boolean*                                                                                        | :heavy_check_mark:                                                                               | N/A                                                                                              |
 | `actions`                                                                                        | [models.CreateIntegrationStoreDirectActions](../models/createintegrationstoredirectactions.md)[] | :heavy_check_mark:                                                                               | N/A                                                                                              |
+| `required`                                                                                       | *boolean*                                                                                        | :heavy_check_mark:                                                                               | N/A                                                                                              |

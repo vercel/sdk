@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupHas1 } from "@vercel/sdk/models/getmicrofrontendsingroupinternalroutes2.js";
+import { GetMicrofrontendsInGroupHas1 } from "@vercel/sdk/models/getmicrofrontendsingroupfrom1.js";
 
 let value: GetMicrofrontendsInGroupHas1 = {
-  type: "header",
   key: "x-vercel-ip-country",
+  type: "header",
   value: {
     eq: "<value>",
   },
@@ -18,6 +18,6 @@ let value: GetMicrofrontendsInGroupHas1 = {
 
 | Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
 | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `type`                                                                                   | *"header"*                                                                               | :heavy_check_mark:                                                                       | N/A                                                                                      |
 | `key`                                                                                    | [models.GetMicrofrontendsInGroupHasKey](../models/getmicrofrontendsingrouphaskey.md)     | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `type`                                                                                   | *"header"*                                                                               | :heavy_check_mark:                                                                       | N/A                                                                                      |
 | `value`                                                                                  | [models.GetMicrofrontendsInGroupHasValue](../models/getmicrofrontendsingrouphasvalue.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |

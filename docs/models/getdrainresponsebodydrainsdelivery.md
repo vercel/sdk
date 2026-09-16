@@ -7,13 +7,13 @@
 
 ```typescript
 const value: models.GetDrainDeliveryDrains1 = {
-  type: "http",
-  endpoint: "<value>",
   encoding: "ndjson",
+  endpoint: "<value>",
   headers: {
     "key": "<value>",
     "key1": "<value>",
   },
+  type: "http",
 };
 ```
 
@@ -21,14 +21,14 @@ const value: models.GetDrainDeliveryDrains1 = {
 
 ```typescript
 const value: models.GetDrainDeliveryDrains2 = {
-  type: "otlphttp",
+  encoding: "json",
   endpoint: {
     traces: "<value>",
   },
-  encoding: "json",
   headers: {
     "key": "<value>",
   },
+  type: "otlphttp",
 };
 ```
 
@@ -36,9 +36,9 @@ const value: models.GetDrainDeliveryDrains2 = {
 
 ```typescript
 const value: models.GetDrainDeliveryDrains3 = {
-  type: "clickhouse",
   endpoint: "<value>",
   table: "<value>",
+  type: "clickhouse",
 };
 ```
 
@@ -46,13 +46,13 @@ const value: models.GetDrainDeliveryDrains3 = {
 
 ```typescript
 const value: models.GetDrainDeliveryDrains4 = {
-  type: "s3",
-  endpoint: "<value>",
-  encoding: "json",
   compression: "none",
+  encoding: "json",
+  endpoint: "<value>",
   fileStructure: "hive",
-  roleArn: "<value>",
   region: "<value>",
+  roleArn: "<value>",
+  type: "s3",
 };
 ```
 
@@ -60,8 +60,8 @@ const value: models.GetDrainDeliveryDrains4 = {
 
 ```typescript
 const value: models.GetDrainDeliveryDrains5 = {
-  type: "internal",
   target: "vercel-otel-traces-db",
+  type: "internal",
 };
 ```
 

@@ -5,13 +5,13 @@ Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures 
 ## Example Usage
 
 ```typescript
-import { GetProjectsViaProjectsResponse1 } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson3action.js";
+import { GetProjectsViaProjectsResponse1 } from "@vercel/sdk/models/getprojectsresponsebodyprojectsconsolidatedgitcommitstatus.js";
 
 let value: GetProjectsViaProjectsResponse1 = {
-  type: "app",
   app: {
     id: "<id>",
   },
+  type: "app",
 };
 ```
 
@@ -19,5 +19,5 @@ let value: GetProjectsViaProjectsResponse1 = {
 
 | Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
 | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `type`                                                                                     | *"app"*                                                                                    | :heavy_check_mark:                                                                         | N/A                                                                                        |
 | `app`                                                                                      | [models.GetProjectsViaProjectsResponseApp](../models/getprojectsviaprojectsresponseapp.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `type`                                                                                     | *"app"*                                                                                    | :heavy_check_mark:                                                                         | N/A                                                                                        |

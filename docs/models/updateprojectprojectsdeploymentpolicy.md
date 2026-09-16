@@ -5,7 +5,7 @@ Project shape. `null` on a rule list clears the project's override for that rule
 ## Example Usage
 
 ```typescript
-import { UpdateProjectProjectsDeploymentPolicy } from "@vercel/sdk/models/updateprojectresponsebody.js";
+import { UpdateProjectProjectsDeploymentPolicy } from "@vercel/sdk/models/updateprojectprojectsresponse200applicationjsonaction.js";
 
 let value: UpdateProjectProjectsDeploymentPolicy = {};
 ```
@@ -14,5 +14,5 @@ let value: UpdateProjectProjectsDeploymentPolicy = {};
 
 | Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
 | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `gitSources`                                                                           | [models.UpdateProjectGitSources](../models/updateprojectgitsources.md)[]               | :heavy_minus_sign:                                                                     | N/A                                                                                    |
 | `deploymentSources`                                                                    | [models.UpdateProjectDeploymentSources](../models/updateprojectdeploymentsources.md)[] | :heavy_minus_sign:                                                                     | N/A                                                                                    |
+| `gitSources`                                                                           | [models.UpdateProjectGitSources](../models/updateprojectgitsources.md)[]               | :heavy_minus_sign:                                                                     | N/A                                                                                    |

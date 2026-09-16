@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectProjectsResponseType } from "@vercel/sdk/models/getprojectrollingrelease.js";
+import { GetProjectProjectsResponseType } from "@vercel/sdk/models/getprojectfrompreset.js";
 
-let value: GetProjectProjectsResponseType = "LAMBDAS";
+let value: GetProjectProjectsResponseType = "promote";
 ```
 
 ## Values
 
 ```typescript
-"LAMBDAS"
+"promote" | "rollback"
 ```

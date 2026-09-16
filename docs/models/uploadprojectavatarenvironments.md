@@ -7,8 +7,8 @@
 
 ```typescript
 const value: models.UploadProjectAvatarEnvironments1 = {
-  type: "system",
   target: "preview",
+  type: "system",
 };
 ```
 
@@ -16,8 +16,8 @@ const value: models.UploadProjectAvatarEnvironments1 = {
 
 ```typescript
 const value: models.UploadProjectAvatarEnvironments2 = {
-  type: "custom",
   environmentId: "<id>",
+  type: "custom",
 };
 ```
 

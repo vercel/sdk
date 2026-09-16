@@ -8,10 +8,10 @@ A list of verification challenges, one of which must be completed to verify the 
 import { MoveProjectDomainVerification } from "@vercel/sdk/models/moveprojectdomainop.js";
 
 let value: MoveProjectDomainVerification = {
-  type: "<value>",
   domain: "wilted-cake.name",
-  value: "<value>",
   reason: "<value>",
+  type: "<value>",
+  value: "<value>",
 };
 ```
 
@@ -19,7 +19,7 @@ let value: MoveProjectDomainVerification = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `type`             | *string*           | :heavy_check_mark: | N/A                |
 | `domain`           | *string*           | :heavy_check_mark: | N/A                |
-| `value`            | *string*           | :heavy_check_mark: | N/A                |
 | `reason`           | *string*           | :heavy_check_mark: | N/A                |
+| `type`             | *string*           | :heavy_check_mark: | N/A                |
+| `value`            | *string*           | :heavy_check_mark: | N/A                |

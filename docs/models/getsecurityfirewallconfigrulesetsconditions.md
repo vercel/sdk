@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { GetSecurityFirewallConfigRulesetsConditions } from "@vercel/sdk/models/getsecurityfirewallconfigsecurityresponsemanagedrules.js";
+import { GetSecurityFirewallConfigRulesetsConditions } from "@vercel/sdk/models/getsecurityfirewallconfigrulesetssecurityresponse200action.js";
 
 let value: GetSecurityFirewallConfigRulesetsConditions = {
-  type: "bot_name",
-  op: "lte",
+  op: "eq",
+  type: "method",
 };
 ```
 
@@ -15,8 +15,8 @@ let value: GetSecurityFirewallConfigRulesetsConditions = {
 
 | Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `type`                                                                                             | [models.GetSecurityFirewallConfigRulesetsType](../models/getsecurityfirewallconfigrulesetstype.md) | :heavy_check_mark:                                                                                 | N/A                                                                                                |
-| `op`                                                                                               | [models.GetSecurityFirewallConfigRulesetsOp](../models/getsecurityfirewallconfigrulesetsop.md)     | :heavy_check_mark:                                                                                 | N/A                                                                                                |
-| `neg`                                                                                              | *boolean*                                                                                          | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 | `key`                                                                                              | *string*                                                                                           | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
+| `neg`                                                                                              | *boolean*                                                                                          | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
+| `op`                                                                                               | [models.GetSecurityFirewallConfigRulesetsOp](../models/getsecurityfirewallconfigrulesetsop.md)     | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `type`                                                                                             | [models.GetSecurityFirewallConfigRulesetsType](../models/getsecurityfirewallconfigrulesetstype.md) | :heavy_check_mark:                                                                                 | N/A                                                                                                |
 | `value`                                                                                            | *models.GetSecurityFirewallConfigRulesetsValue*                                                    | :heavy_minus_sign:                                                                                 | N/A                                                                                                |

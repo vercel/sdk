@@ -5,14 +5,14 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndNinetyEight } from "@vercel/sdk/models/usereventpayload171gituserid.js";
+import { OneHundredAndNinetyEight } from "@vercel/sdk/models/usereventpayload171newownerfeatureblocksworkflowstoragewriteblockreason.js";
 
 let value: OneHundredAndNinetyEight = {
   id: "<id>",
   prev: {
+    fallbackEnvironment: "<value>",
     name: "<value>",
     slug: "<value>",
-    fallbackEnvironment: "<value>",
   },
 };
 ```
@@ -21,9 +21,9 @@ let value: OneHundredAndNinetyEight = {
 
 | Field                            | Type                             | Required                         | Description                      |
 | -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
-| `id`                             | *string*                         | :heavy_check_mark:               | N/A                              |
-| `slug`                           | *string*                         | :heavy_minus_sign:               | N/A                              |
-| `name`                           | *string*                         | :heavy_minus_sign:               | N/A                              |
-| `fallbackEnvironment`            | *string*                         | :heavy_minus_sign:               | N/A                              |
 | `enablePolyrepoBranchRouting`    | *boolean*                        | :heavy_minus_sign:               | N/A                              |
+| `fallbackEnvironment`            | *string*                         | :heavy_minus_sign:               | N/A                              |
+| `id`                             | *string*                         | :heavy_check_mark:               | N/A                              |
+| `name`                           | *string*                         | :heavy_minus_sign:               | N/A                              |
 | `prev`                           | [models.Prev](../models/prev.md) | :heavy_check_mark:               | N/A                              |
+| `slug`                           | *string*                         | :heavy_minus_sign:               | N/A                              |

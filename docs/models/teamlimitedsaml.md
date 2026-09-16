@@ -9,19 +9,19 @@ import { TeamLimitedSaml } from "@vercel/sdk/models/teamlimited.js";
 
 let value: TeamLimitedSaml = {
   connection: {
-    type: "OktaSAML",
-    state: "active",
     connectedAt: 1611796915677,
     lastReceivedWebhookEvent: 1611796915677,
     lastSyncedAt: 1611796915677,
+    state: "active",
+    type: "OktaSAML",
     status: "<value>",
   },
   directory: {
-    type: "OktaSAML",
-    state: "active",
     connectedAt: 1611796915677,
     lastReceivedWebhookEvent: 1611796915677,
     lastSyncedAt: 1611796915677,
+    state: "active",
+    type: "OktaSAML",
   },
   enforced: false,
 };

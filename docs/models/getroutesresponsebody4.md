@@ -6,6 +6,10 @@
 import { GetRoutesResponseBody4 } from "@vercel/sdk/models/getroutesop.js";
 
 let value: GetRoutesResponseBody4 = {
+  limit: {
+    currentRoutes: 9222.27,
+    maxRoutes: 5613.61,
+  },
   routes: [
     {
       id: "<id>",
@@ -16,14 +20,10 @@ let value: GetRoutesResponseBody4 = {
     },
   ],
   version: {
-    id: "<id>",
-    s3Key: "<value>",
-    lastModified: 5613.61,
     createdBy: "<value>",
-  },
-  limit: {
-    maxRoutes: 6227.91,
-    currentRoutes: 4493.36,
+    id: "<id>",
+    lastModified: 4493.36,
+    s3Key: "<value>",
   },
 };
 ```
@@ -32,6 +32,6 @@ let value: GetRoutesResponseBody4 = {
 
 | Field                                                                                                                      | Type                                                                                                                       | Required                                                                                                                   | Description                                                                                                                |
 | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `limit`                                                                                                                    | [models.ResponseBodyLimit](../models/responsebodylimit.md)                                                                 | :heavy_check_mark:                                                                                                         | N/A                                                                                                                        |
 | `routes`                                                                                                                   | [models.GetRoutesResponseBodyProjectRoutesResponseRoutes](../models/getroutesresponsebodyprojectroutesresponseroutes.md)[] | :heavy_check_mark:                                                                                                         | N/A                                                                                                                        |
 | `version`                                                                                                                  | [models.GetRoutesResponseBodyProjectRoutesResponseVersion](../models/getroutesresponsebodyprojectroutesresponseversion.md) | :heavy_check_mark:                                                                                                         | A version of routing rules stored in S3.                                                                                   |
-| `limit`                                                                                                                    | [models.ResponseBodyLimit](../models/responsebodylimit.md)                                                                 | :heavy_check_mark:                                                                                                         | N/A                                                                                                                        |

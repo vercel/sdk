@@ -5,11 +5,11 @@ Allowlist entry for GitHub and Bitbucket, whose repos are identified by a flat `
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsSources1 } from "@vercel/sdk/models/updatemicrofrontendsinternalroutes2.js";
+import { UpdateMicrofrontendsSources1 } from "@vercel/sdk/models/updatemicrofrontendshaskey.js";
 
 let value: UpdateMicrofrontendsSources1 = {
-  provider: "github",
   org: "<value>",
+  provider: "github",
 };
 ```
 
@@ -17,6 +17,6 @@ let value: UpdateMicrofrontendsSources1 = {
 
 | Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
 | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `provider`                                                                                     | [models.UpdateMicrofrontendsSourcesProvider](../models/updatemicrofrontendssourcesprovider.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |
 | `org`                                                                                          | *string*                                                                                       | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| `provider`                                                                                     | [models.UpdateMicrofrontendsSourcesProvider](../models/updatemicrofrontendssourcesprovider.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |
 | `repo`                                                                                         | *string*                                                                                       | :heavy_minus_sign:                                                                             | N/A                                                                                            |

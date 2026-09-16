@@ -5,11 +5,11 @@ Allowlist entry for GitHub and Bitbucket, whose repos are identified by a flat `
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupSources1 } from "@vercel/sdk/models/getmicrofrontendsingroupinternalroutes2.js";
+import { GetMicrofrontendsInGroupSources1 } from "@vercel/sdk/models/getmicrofrontendsingrouphasvalue.js";
 
 let value: GetMicrofrontendsInGroupSources1 = {
-  provider: "github",
   org: "<value>",
+  provider: "github",
 };
 ```
 
@@ -17,6 +17,6 @@ let value: GetMicrofrontendsInGroupSources1 = {
 
 | Field                                                                                                                              | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
 | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `provider`                                                                                                                         | [models.GetMicrofrontendsInGroupSourcesMicrofrontendsProvider](../models/getmicrofrontendsingroupsourcesmicrofrontendsprovider.md) | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
 | `org`                                                                                                                              | *string*                                                                                                                           | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
+| `provider`                                                                                                                         | [models.GetMicrofrontendsInGroupSourcesMicrofrontendsProvider](../models/getmicrofrontendsingroupsourcesmicrofrontendsprovider.md) | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
 | `repo`                                                                                                                             | *string*                                                                                                                           | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |

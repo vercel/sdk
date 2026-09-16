@@ -8,8 +8,8 @@ Principal that most recently mutated the connector. Same shape as {@link created
 import { UpdatedBy1 } from "@vercel/sdk/models/connectconnector.js";
 
 let value: UpdatedBy1 = {
-  type: "user",
   id: "<id>",
+  type: "user",
 };
 ```
 
@@ -17,5 +17,5 @@ let value: UpdatedBy1 = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `type`             | *"user"*           | :heavy_check_mark: | Principal kind.    |
 | `id`               | *string*           | :heavy_check_mark: | Vercel user ID.    |
+| `type`             | *"user"*           | :heavy_check_mark: | Principal kind.    |

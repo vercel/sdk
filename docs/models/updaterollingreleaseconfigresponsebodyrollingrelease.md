@@ -8,10 +8,10 @@ import { UpdateRollingReleaseConfigResponseBodyRollingRelease } from "@vercel/sd
 let value: UpdateRollingReleaseConfigResponseBodyRollingRelease = {
   stages: [
     {
-      targetPercentage: 25,
-      requireApproval: false,
       duration: 600,
       linearShift: false,
+      requireApproval: false,
+      targetPercentage: 25,
     },
   ],
 };

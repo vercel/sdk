@@ -18,8 +18,8 @@ const value:
 ```typescript
 const value:
   models.CreateDeploymentMissingDeploymentsResponse200ApplicationJson2 = {
-    type: "cookie",
     key: "<key>",
+    type: "cookie",
   };
 ```
 
@@ -28,8 +28,8 @@ const value:
 ```typescript
 const value:
   models.CreateDeploymentMissingDeploymentsResponse200ApplicationJson2 = {
-    type: "cookie",
     key: "<key>",
+    type: "cookie",
   };
 ```
 
@@ -38,8 +38,8 @@ const value:
 ```typescript
 const value:
   models.CreateDeploymentMissingDeploymentsResponse200ApplicationJson2 = {
-    type: "cookie",
     key: "<key>",
+    type: "cookie",
   };
 ```
 

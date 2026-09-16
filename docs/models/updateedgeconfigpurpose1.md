@@ -6,8 +6,8 @@
 import { UpdateEdgeConfigPurpose1 } from "@vercel/sdk/models/updateedgeconfigop.js";
 
 let value: UpdateEdgeConfigPurpose1 = {
-  type: "flags",
   projectId: "<id>",
+  type: "flags",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: UpdateEdgeConfigPurpose1 = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `type`             | *"flags"*          | :heavy_check_mark: | N/A                |
 | `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `type`             | *"flags"*          | :heavy_check_mark: | N/A                |

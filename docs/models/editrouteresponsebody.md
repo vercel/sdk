@@ -7,10 +7,10 @@ import { EditRouteResponseBody } from "@vercel/sdk/models/editrouteop.js";
 
 let value: EditRouteResponseBody = {
   version: {
-    id: "<id>",
-    s3Key: "<value>",
-    lastModified: 506.42,
     createdBy: "<value>",
+    id: "<id>",
+    lastModified: 506.42,
+    s3Key: "<value>",
   },
 };
 ```

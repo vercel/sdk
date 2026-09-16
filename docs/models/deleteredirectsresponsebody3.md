@@ -8,10 +8,10 @@ import { DeleteRedirectsResponseBody3 } from "@vercel/sdk/models/deleteredirects
 let value: DeleteRedirectsResponseBody3 = {
   alias: "<value>",
   version: {
+    createdBy: "<value>",
     id: "<id>",
     key: "<key>",
     lastModified: 44.73,
-    createdBy: "<value>",
   },
 };
 ```

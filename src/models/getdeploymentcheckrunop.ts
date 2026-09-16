@@ -26,15 +26,6 @@ export type GetDeploymentCheckRunRequest = {
   slug?: string | undefined;
 };
 
-export const GetDeploymentCheckRunResponseBodyChecksV2Requires = {
-  BuildReady: "build-ready",
-  DeploymentUrl: "deployment-url",
-  None: "none",
-} as const;
-export type GetDeploymentCheckRunResponseBodyChecksV2Requires = ClosedEnum<
-  typeof GetDeploymentCheckRunResponseBodyChecksV2Requires
->;
-
 export const GetDeploymentCheckRunResponseBodyChecksV2Blocks = {
   BuildStart: "build-start",
   DeploymentAlias: "deployment-alias",
@@ -44,15 +35,6 @@ export const GetDeploymentCheckRunResponseBodyChecksV2Blocks = {
 } as const;
 export type GetDeploymentCheckRunResponseBodyChecksV2Blocks = ClosedEnum<
   typeof GetDeploymentCheckRunResponseBodyChecksV2Blocks
->;
-
-export const GetDeploymentCheckRunResponseBodyChecksV2Status = {
-  Completed: "completed",
-  Queued: "queued",
-  Running: "running",
-} as const;
-export type GetDeploymentCheckRunResponseBodyChecksV2Status = ClosedEnum<
-  typeof GetDeploymentCheckRunResponseBodyChecksV2Status
 >;
 
 export const GetDeploymentCheckRunResponseBodyChecksV2Conclusion = {
@@ -67,37 +49,55 @@ export type GetDeploymentCheckRunResponseBodyChecksV2Conclusion = ClosedEnum<
   typeof GetDeploymentCheckRunResponseBodyChecksV2Conclusion
 >;
 
-export const GetDeploymentCheckRunSourceChecksV2ResponseOrigin = {
-  Platform: "platform",
+export const GetDeploymentCheckRunResponseBodyChecksV2Requires = {
+  BuildReady: "build-ready",
+  DeploymentUrl: "deployment-url",
+  None: "none",
 } as const;
-export type GetDeploymentCheckRunSourceChecksV2ResponseOrigin = ClosedEnum<
-  typeof GetDeploymentCheckRunSourceChecksV2ResponseOrigin
+export type GetDeploymentCheckRunResponseBodyChecksV2Requires = ClosedEnum<
+  typeof GetDeploymentCheckRunResponseBodyChecksV2Requires
+>;
+
+export const GetDeploymentCheckRunResponseBodyChecksV2Status = {
+  Completed: "completed",
+  Queued: "queued",
+  Running: "running",
+} as const;
+export type GetDeploymentCheckRunResponseBodyChecksV2Status = ClosedEnum<
+  typeof GetDeploymentCheckRunResponseBodyChecksV2Status
+>;
+
+export const GetDeploymentCheckRunSourceChecksV2ResponseSubKind = {
+  VercelCiSentinel: "vercel-ci-sentinel",
+} as const;
+export type GetDeploymentCheckRunSourceChecksV2ResponseSubKind = ClosedEnum<
+  typeof GetDeploymentCheckRunSourceChecksV2ResponseSubKind
 >;
 
 /**
  * CI sentinel — check run `source` only (no parent check).
  */
 export type GetDeploymentCheckRunSourceChecksV22 = {
-  subKind: "vercel-ci-sentinel";
-  origin: GetDeploymentCheckRunSourceChecksV2ResponseOrigin;
+  origin: "platform";
+  subKind: GetDeploymentCheckRunSourceChecksV2ResponseSubKind;
 };
 
-export const GetDeploymentCheckRunSourceChecksV2Origin = {
-  Config: "config",
+export const GetDeploymentCheckRunSourceChecksV2SubKind = {
+  VercelCi: "vercel-ci",
 } as const;
-export type GetDeploymentCheckRunSourceChecksV2Origin = ClosedEnum<
-  typeof GetDeploymentCheckRunSourceChecksV2Origin
+export type GetDeploymentCheckRunSourceChecksV2SubKind = ClosedEnum<
+  typeof GetDeploymentCheckRunSourceChecksV2SubKind
 >;
 
 /**
  * Config-driven CI task — check run `source` only (no parent check).
  */
 export type GetDeploymentCheckRunSourceChecksV21 = {
-  subKind: "vercel-ci";
-  origin: GetDeploymentCheckRunSourceChecksV2Origin;
-  invocationId: string;
   invocationAttempt?: number | undefined;
+  invocationId: string;
   jobDefinitionId: string;
+  origin: "config";
+  subKind: GetDeploymentCheckRunSourceChecksV2SubKind;
 };
 
 export type GetDeploymentCheckRunResponseBodyChecksV2Source =
@@ -108,37 +108,28 @@ export type GetDeploymentCheckRunResponseBodyChecksV2Source =
  * Vercel CI check run without a parent `check` (no `checkId` field).
  */
 export type GetDeploymentCheckRunResponseBody2 = {
-  id: string;
-  name: string;
-  ownerId: string;
-  deploymentId: string;
-  projectId?: string | undefined;
-  requires?: GetDeploymentCheckRunResponseBodyChecksV2Requires | undefined;
   blocks?: GetDeploymentCheckRunResponseBodyChecksV2Blocks | undefined;
-  targets?: Array<string> | undefined;
-  status: GetDeploymentCheckRunResponseBodyChecksV2Status;
+  completedAt?: number | undefined;
   conclusion?: GetDeploymentCheckRunResponseBodyChecksV2Conclusion | undefined;
   conclusionText?: string | undefined;
+  createdAt: number;
+  deploymentId: string;
   externalId?: string | undefined;
   externalUrl?: string | undefined;
+  id: string;
+  name: string;
   output?: { [k: string]: any } | undefined;
+  ownerId: string;
+  projectId?: string | undefined;
+  requires?: GetDeploymentCheckRunResponseBodyChecksV2Requires | undefined;
+  status: GetDeploymentCheckRunResponseBodyChecksV2Status;
+  targets?: Array<string> | undefined;
   timeout: number;
-  createdAt: number;
   updatedAt: number;
-  completedAt?: number | undefined;
   source:
     | GetDeploymentCheckRunSourceChecksV21
     | GetDeploymentCheckRunSourceChecksV22;
 };
-
-export const GetDeploymentCheckRunResponseBodyRequires = {
-  BuildReady: "build-ready",
-  DeploymentUrl: "deployment-url",
-  None: "none",
-} as const;
-export type GetDeploymentCheckRunResponseBodyRequires = ClosedEnum<
-  typeof GetDeploymentCheckRunResponseBodyRequires
->;
 
 export const GetDeploymentCheckRunResponseBodyBlocks = {
   BuildStart: "build-start",
@@ -149,15 +140,6 @@ export const GetDeploymentCheckRunResponseBodyBlocks = {
 } as const;
 export type GetDeploymentCheckRunResponseBodyBlocks = ClosedEnum<
   typeof GetDeploymentCheckRunResponseBodyBlocks
->;
-
-export const GetDeploymentCheckRunResponseBodyStatus = {
-  Completed: "completed",
-  Queued: "queued",
-  Running: "running",
-} as const;
-export type GetDeploymentCheckRunResponseBodyStatus = ClosedEnum<
-  typeof GetDeploymentCheckRunResponseBodyStatus
 >;
 
 export const GetDeploymentCheckRunResponseBodyConclusion = {
@@ -172,11 +154,22 @@ export type GetDeploymentCheckRunResponseBodyConclusion = ClosedEnum<
   typeof GetDeploymentCheckRunResponseBodyConclusion
 >;
 
-export const GetDeploymentCheckRunSourceSubKind = {
-  VercelNativeCheck: "vercel-native-check",
+export const GetDeploymentCheckRunResponseBodyRequires = {
+  BuildReady: "build-ready",
+  DeploymentUrl: "deployment-url",
+  None: "none",
 } as const;
-export type GetDeploymentCheckRunSourceSubKind = ClosedEnum<
-  typeof GetDeploymentCheckRunSourceSubKind
+export type GetDeploymentCheckRunResponseBodyRequires = ClosedEnum<
+  typeof GetDeploymentCheckRunResponseBodyRequires
+>;
+
+export const GetDeploymentCheckRunResponseBodyStatus = {
+  Completed: "completed",
+  Queued: "queued",
+  Running: "running",
+} as const;
+export type GetDeploymentCheckRunResponseBodyStatus = ClosedEnum<
+  typeof GetDeploymentCheckRunResponseBodyStatus
 >;
 
 export const GetDeploymentCheckRunSourceOrigin = {
@@ -187,12 +180,19 @@ export type GetDeploymentCheckRunSourceOrigin = ClosedEnum<
   typeof GetDeploymentCheckRunSourceOrigin
 >;
 
+export const GetDeploymentCheckRunSourceSubKind = {
+  VercelNativeCheck: "vercel-native-check",
+} as const;
+export type GetDeploymentCheckRunSourceSubKind = ClosedEnum<
+  typeof GetDeploymentCheckRunSourceSubKind
+>;
+
 /**
  * Native Vercel checks — check definition and check run `source`.
  */
 export type Source4 = {
-  subKind?: GetDeploymentCheckRunSourceSubKind | undefined;
   origin?: GetDeploymentCheckRunSourceOrigin | undefined;
+  subKind?: GetDeploymentCheckRunSourceSubKind | undefined;
 };
 
 export const GetDeploymentCheckRunSourceChecksV2ResponseKind = {
@@ -212,9 +212,9 @@ export type GetDeploymentCheckRunSourceProvider = ClosedEnum<
 >;
 
 export type GetDeploymentCheckRunSource3 = {
+  externalCheckName: string;
   kind: GetDeploymentCheckRunSourceChecksV2ResponseKind;
   provider: GetDeploymentCheckRunSourceProvider;
-  externalCheckName: string;
 };
 
 export const GetDeploymentCheckRunSourceChecksV2Kind = {
@@ -237,11 +237,11 @@ export type GetDeploymentCheckRunSourceKind = ClosedEnum<
 >;
 
 export type GetDeploymentCheckRunSource1 = {
-  kind: GetDeploymentCheckRunSourceKind;
-  integrationId: string;
-  integrationConfigurationId: string;
-  resourceId?: string | undefined;
   externalResourceId?: string | undefined;
+  integrationConfigurationId: string;
+  integrationId: string;
+  kind: GetDeploymentCheckRunSourceKind;
+  resourceId?: string | undefined;
 };
 
 export type GetDeploymentCheckRunResponseBodySource =
@@ -254,24 +254,24 @@ export type GetDeploymentCheckRunResponseBodySource =
  * Check run backed by a project-level `check` definition.
  */
 export type GetDeploymentCheckRunResponseBody1 = {
-  id: string;
-  name: string;
-  ownerId: string;
-  deploymentId: string;
-  projectId?: string | undefined;
-  requires?: GetDeploymentCheckRunResponseBodyRequires | undefined;
   blocks?: GetDeploymentCheckRunResponseBodyBlocks | undefined;
-  targets?: Array<string> | undefined;
-  status: GetDeploymentCheckRunResponseBodyStatus;
+  completedAt?: number | undefined;
   conclusion?: GetDeploymentCheckRunResponseBodyConclusion | undefined;
   conclusionText?: string | undefined;
+  createdAt: number;
+  deploymentId: string;
   externalId?: string | undefined;
   externalUrl?: string | undefined;
+  id: string;
+  name: string;
   output?: { [k: string]: any } | undefined;
+  ownerId: string;
+  projectId?: string | undefined;
+  requires?: GetDeploymentCheckRunResponseBodyRequires | undefined;
+  status: GetDeploymentCheckRunResponseBodyStatus;
+  targets?: Array<string> | undefined;
   timeout: number;
-  createdAt: number;
   updatedAt: number;
-  completedAt?: number | undefined;
   checkId: string;
   source:
     | GetDeploymentCheckRunSource1
@@ -315,19 +315,9 @@ export function getDeploymentCheckRunRequestToJSON(
 }
 
 /** @internal */
-export const GetDeploymentCheckRunResponseBodyChecksV2Requires$inboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentCheckRunResponseBodyChecksV2Requires> = z
-    .nativeEnum(GetDeploymentCheckRunResponseBodyChecksV2Requires);
-
-/** @internal */
 export const GetDeploymentCheckRunResponseBodyChecksV2Blocks$inboundSchema:
   z.ZodNativeEnum<typeof GetDeploymentCheckRunResponseBodyChecksV2Blocks> = z
     .nativeEnum(GetDeploymentCheckRunResponseBodyChecksV2Blocks);
-
-/** @internal */
-export const GetDeploymentCheckRunResponseBodyChecksV2Status$inboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentCheckRunResponseBodyChecksV2Status> = z
-    .nativeEnum(GetDeploymentCheckRunResponseBodyChecksV2Status);
 
 /** @internal */
 export const GetDeploymentCheckRunResponseBodyChecksV2Conclusion$inboundSchema:
@@ -335,9 +325,19 @@ export const GetDeploymentCheckRunResponseBodyChecksV2Conclusion$inboundSchema:
     z.nativeEnum(GetDeploymentCheckRunResponseBodyChecksV2Conclusion);
 
 /** @internal */
-export const GetDeploymentCheckRunSourceChecksV2ResponseOrigin$inboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentCheckRunSourceChecksV2ResponseOrigin> = z
-    .nativeEnum(GetDeploymentCheckRunSourceChecksV2ResponseOrigin);
+export const GetDeploymentCheckRunResponseBodyChecksV2Requires$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentCheckRunResponseBodyChecksV2Requires> = z
+    .nativeEnum(GetDeploymentCheckRunResponseBodyChecksV2Requires);
+
+/** @internal */
+export const GetDeploymentCheckRunResponseBodyChecksV2Status$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentCheckRunResponseBodyChecksV2Status> = z
+    .nativeEnum(GetDeploymentCheckRunResponseBodyChecksV2Status);
+
+/** @internal */
+export const GetDeploymentCheckRunSourceChecksV2ResponseSubKind$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentCheckRunSourceChecksV2ResponseSubKind> = z
+    .nativeEnum(GetDeploymentCheckRunSourceChecksV2ResponseSubKind);
 
 /** @internal */
 export const GetDeploymentCheckRunSourceChecksV22$inboundSchema: z.ZodType<
@@ -345,8 +345,8 @@ export const GetDeploymentCheckRunSourceChecksV22$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  subKind: types.literal("vercel-ci-sentinel"),
-  origin: GetDeploymentCheckRunSourceChecksV2ResponseOrigin$inboundSchema,
+  origin: types.literal("platform"),
+  subKind: GetDeploymentCheckRunSourceChecksV2ResponseSubKind$inboundSchema,
 });
 
 export function getDeploymentCheckRunSourceChecksV22FromJSON(
@@ -361,9 +361,9 @@ export function getDeploymentCheckRunSourceChecksV22FromJSON(
 }
 
 /** @internal */
-export const GetDeploymentCheckRunSourceChecksV2Origin$inboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentCheckRunSourceChecksV2Origin> = z
-    .nativeEnum(GetDeploymentCheckRunSourceChecksV2Origin);
+export const GetDeploymentCheckRunSourceChecksV2SubKind$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentCheckRunSourceChecksV2SubKind> = z
+    .nativeEnum(GetDeploymentCheckRunSourceChecksV2SubKind);
 
 /** @internal */
 export const GetDeploymentCheckRunSourceChecksV21$inboundSchema: z.ZodType<
@@ -371,11 +371,11 @@ export const GetDeploymentCheckRunSourceChecksV21$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  subKind: types.literal("vercel-ci"),
-  origin: GetDeploymentCheckRunSourceChecksV2Origin$inboundSchema,
-  invocationId: types.string(),
   invocationAttempt: types.optional(types.number()),
+  invocationId: types.string(),
   jobDefinitionId: types.string(),
+  origin: types.literal("config"),
+  subKind: GetDeploymentCheckRunSourceChecksV2SubKind$inboundSchema,
 });
 
 export function getDeploymentCheckRunSourceChecksV21FromJSON(
@@ -422,30 +422,30 @@ export const GetDeploymentCheckRunResponseBody2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: types.string(),
-  name: types.string(),
-  ownerId: types.string(),
-  deploymentId: types.string(),
-  projectId: types.optional(types.string()),
-  requires: types.optional(
-    GetDeploymentCheckRunResponseBodyChecksV2Requires$inboundSchema,
-  ),
   blocks: types.optional(
     GetDeploymentCheckRunResponseBodyChecksV2Blocks$inboundSchema,
   ),
-  targets: types.optional(z.array(types.string())),
-  status: GetDeploymentCheckRunResponseBodyChecksV2Status$inboundSchema,
+  completedAt: types.optional(types.number()),
   conclusion: types.optional(
     GetDeploymentCheckRunResponseBodyChecksV2Conclusion$inboundSchema,
   ),
   conclusionText: types.optional(types.string()),
+  createdAt: types.number(),
+  deploymentId: types.string(),
   externalId: types.optional(types.string()),
   externalUrl: types.optional(types.string()),
+  id: types.string(),
+  name: types.string(),
   output: types.optional(z.record(z.any())),
+  ownerId: types.string(),
+  projectId: types.optional(types.string()),
+  requires: types.optional(
+    GetDeploymentCheckRunResponseBodyChecksV2Requires$inboundSchema,
+  ),
+  status: GetDeploymentCheckRunResponseBodyChecksV2Status$inboundSchema,
+  targets: types.optional(z.array(types.string())),
   timeout: types.number(),
-  createdAt: types.number(),
   updatedAt: types.number(),
-  completedAt: types.optional(types.number()),
   source: z.union([
     z.lazy(() => GetDeploymentCheckRunSourceChecksV21$inboundSchema),
     z.lazy(() => GetDeploymentCheckRunSourceChecksV22$inboundSchema),
@@ -464,19 +464,9 @@ export function getDeploymentCheckRunResponseBody2FromJSON(
 }
 
 /** @internal */
-export const GetDeploymentCheckRunResponseBodyRequires$inboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentCheckRunResponseBodyRequires> = z
-    .nativeEnum(GetDeploymentCheckRunResponseBodyRequires);
-
-/** @internal */
 export const GetDeploymentCheckRunResponseBodyBlocks$inboundSchema:
   z.ZodNativeEnum<typeof GetDeploymentCheckRunResponseBodyBlocks> = z
     .nativeEnum(GetDeploymentCheckRunResponseBodyBlocks);
-
-/** @internal */
-export const GetDeploymentCheckRunResponseBodyStatus$inboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentCheckRunResponseBodyStatus> = z
-    .nativeEnum(GetDeploymentCheckRunResponseBodyStatus);
 
 /** @internal */
 export const GetDeploymentCheckRunResponseBodyConclusion$inboundSchema:
@@ -484,9 +474,14 @@ export const GetDeploymentCheckRunResponseBodyConclusion$inboundSchema:
     .nativeEnum(GetDeploymentCheckRunResponseBodyConclusion);
 
 /** @internal */
-export const GetDeploymentCheckRunSourceSubKind$inboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentCheckRunSourceSubKind
-> = z.nativeEnum(GetDeploymentCheckRunSourceSubKind);
+export const GetDeploymentCheckRunResponseBodyRequires$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentCheckRunResponseBodyRequires> = z
+    .nativeEnum(GetDeploymentCheckRunResponseBodyRequires);
+
+/** @internal */
+export const GetDeploymentCheckRunResponseBodyStatus$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentCheckRunResponseBodyStatus> = z
+    .nativeEnum(GetDeploymentCheckRunResponseBodyStatus);
 
 /** @internal */
 export const GetDeploymentCheckRunSourceOrigin$inboundSchema: z.ZodNativeEnum<
@@ -494,10 +489,15 @@ export const GetDeploymentCheckRunSourceOrigin$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(GetDeploymentCheckRunSourceOrigin);
 
 /** @internal */
+export const GetDeploymentCheckRunSourceSubKind$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentCheckRunSourceSubKind
+> = z.nativeEnum(GetDeploymentCheckRunSourceSubKind);
+
+/** @internal */
 export const Source4$inboundSchema: z.ZodType<Source4, z.ZodTypeDef, unknown> =
   z.object({
-    subKind: types.optional(GetDeploymentCheckRunSourceSubKind$inboundSchema),
     origin: types.optional(GetDeploymentCheckRunSourceOrigin$inboundSchema),
+    subKind: types.optional(GetDeploymentCheckRunSourceSubKind$inboundSchema),
   });
 
 export function source4FromJSON(
@@ -526,9 +526,9 @@ export const GetDeploymentCheckRunSource3$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  externalCheckName: types.string(),
   kind: GetDeploymentCheckRunSourceChecksV2ResponseKind$inboundSchema,
   provider: GetDeploymentCheckRunSourceProvider$inboundSchema,
-  externalCheckName: types.string(),
 });
 
 export function getDeploymentCheckRunSource3FromJSON(
@@ -577,11 +577,11 @@ export const GetDeploymentCheckRunSource1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  kind: GetDeploymentCheckRunSourceKind$inboundSchema,
-  integrationId: types.string(),
-  integrationConfigurationId: types.string(),
-  resourceId: types.optional(types.string()),
   externalResourceId: types.optional(types.string()),
+  integrationConfigurationId: types.string(),
+  integrationId: types.string(),
+  kind: GetDeploymentCheckRunSourceKind$inboundSchema,
+  resourceId: types.optional(types.string()),
 });
 
 export function getDeploymentCheckRunSource1FromJSON(
@@ -628,28 +628,28 @@ export const GetDeploymentCheckRunResponseBody1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: types.string(),
-  name: types.string(),
-  ownerId: types.string(),
-  deploymentId: types.string(),
-  projectId: types.optional(types.string()),
-  requires: types.optional(
-    GetDeploymentCheckRunResponseBodyRequires$inboundSchema,
-  ),
   blocks: types.optional(GetDeploymentCheckRunResponseBodyBlocks$inboundSchema),
-  targets: types.optional(z.array(types.string())),
-  status: GetDeploymentCheckRunResponseBodyStatus$inboundSchema,
+  completedAt: types.optional(types.number()),
   conclusion: types.optional(
     GetDeploymentCheckRunResponseBodyConclusion$inboundSchema,
   ),
   conclusionText: types.optional(types.string()),
+  createdAt: types.number(),
+  deploymentId: types.string(),
   externalId: types.optional(types.string()),
   externalUrl: types.optional(types.string()),
+  id: types.string(),
+  name: types.string(),
   output: types.optional(z.record(z.any())),
+  ownerId: types.string(),
+  projectId: types.optional(types.string()),
+  requires: types.optional(
+    GetDeploymentCheckRunResponseBodyRequires$inboundSchema,
+  ),
+  status: GetDeploymentCheckRunResponseBodyStatus$inboundSchema,
+  targets: types.optional(z.array(types.string())),
   timeout: types.number(),
-  createdAt: types.number(),
   updatedAt: types.number(),
-  completedAt: types.optional(types.number()),
   checkId: types.string(),
   source: smartUnion([
     z.lazy(() => GetDeploymentCheckRunSource1$inboundSchema),

@@ -7,8 +7,8 @@
 
 ```typescript
 const value: models.GetProjectEnvironmentsProjects1 = {
-  type: "system",
   target: "preview",
+  type: "system",
 };
 ```
 
@@ -16,8 +16,8 @@ const value: models.GetProjectEnvironmentsProjects1 = {
 
 ```typescript
 const value: models.GetProjectEnvironmentsProjects2 = {
-  type: "custom",
   environmentId: "<id>",
+  type: "custom",
 };
 ```
 

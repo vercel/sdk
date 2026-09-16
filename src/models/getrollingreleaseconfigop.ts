@@ -25,26 +25,18 @@ export type GetRollingReleaseConfigRequest = {
 };
 
 /**
- * An array of all the stages required during a deployment release. Each stage defines a target percentage and advancement rules. The final stage must always have targetPercentage: 100.
+ * What to do when the gate trips: pause the rollout, or roll it back.
  */
-export type GetRollingReleaseConfigStages = {
-  /**
-   * The percentage of traffic to serve to the canary deployment (0-100)
-   */
-  targetPercentage: number;
-  /**
-   * Whether or not this stage requires manual approval to proceed
-   */
-  requireApproval?: boolean | undefined;
-  /**
-   * Duration in minutes for automatic advancement to the next stage
-   */
-  duration?: number | undefined;
-  /**
-   * Whether to linearly shift traffic over the duration of this stage
-   */
-  linearShift?: boolean | undefined;
-};
+export const GetRollingReleaseConfigAction = {
+  Pause: "pause",
+  Rollback: "rollback",
+} as const;
+/**
+ * What to do when the gate trips: pause the rollout, or roll it back.
+ */
+export type GetRollingReleaseConfigAction = ClosedEnum<
+  typeof GetRollingReleaseConfigAction
+>;
 
 /**
  * The metric this check evaluates.
@@ -64,53 +56,47 @@ export type GetRollingReleaseConfigType = ClosedEnum<
  */
 export type GetRollingReleaseConfigChecks = {
   /**
-   * The metric this check evaluates.
+   * Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted.
    */
-  type: GetRollingReleaseConfigType;
-  /**
-   * Minimum number of requests required in the window before the check can fail. Below this, the check is inconclusive rather than failing, so low-traffic stages don't gate on noise. Defaults to `100` when omitted.
-   */
-  minSampleSize?: number | undefined;
+  excludePaths?: Array<string> | undefined;
   /**
    * Response status codes to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted.
    */
   excludeStatusCodes?: Array<number> | undefined;
   /**
-   * Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted.
-   */
-  excludePaths?: Array<string> | undefined;
-  /**
    * Seconds of ingest lag to allow for: the query's upper bound is `now() - this value`, so the check never reads a window that is still filling. Defaults to `30` when omitted.
    */
   ingestWatermarkSeconds?: number | undefined;
+  /**
+   * Minimum number of requests required in the window before the check can fail. Below this, the check is inconclusive rather than failing, so low-traffic stages don't gate on noise. Defaults to `100` when omitted.
+   */
+  minSampleSize?: number | undefined;
+  /**
+   * The metric this check evaluates.
+   */
+  type: GetRollingReleaseConfigType;
 };
-
-/**
- * What to do when the gate trips: pause the rollout, or roll it back.
- */
-export const GetRollingReleaseConfigAction = {
-  Pause: "pause",
-  Rollback: "rollback",
-} as const;
-/**
- * What to do when the gate trips: pause the rollout, or roll it back.
- */
-export type GetRollingReleaseConfigAction = ClosedEnum<
-  typeof GetRollingReleaseConfigAction
->;
 
 /**
  * Automated gating configuration. Omitted (the default) means no gating is configured, which is equivalent to `enabled: false`.
  */
 export type GetRollingReleaseConfigGate = {
   /**
-   * Whether automated gating is enabled for this project's rollouts.
+   * What to do when the gate trips: pause the rollout, or roll it back.
    */
-  enabled: boolean;
+  action: GetRollingReleaseConfigAction;
   /**
    * The checks to evaluate. An empty array means nothing is evaluated.
    */
   checks: Array<GetRollingReleaseConfigChecks>;
+  /**
+   * When true, a tripped gate is only reported — {@link action} is not taken.
+   */
+  dryRun: boolean;
+  /**
+   * Whether automated gating is enabled for this project's rollouts.
+   */
+  enabled: boolean;
   /**
    * How many failing evaluations within {@link windowSize} trip the gate. Defaults to `3` when omitted.
    */
@@ -119,28 +105,34 @@ export type GetRollingReleaseConfigGate = {
    * How many of the most recent evaluations {@link failureThreshold} is counted against. Defaults to `5` when omitted.
    */
   windowSize?: number | undefined;
+};
+
+/**
+ * An array of all the stages required during a deployment release. Each stage defines a target percentage and advancement rules. The final stage must always have targetPercentage: 100.
+ */
+export type GetRollingReleaseConfigStages = {
   /**
-   * What to do when the gate trips: pause the rollout, or roll it back.
+   * Duration in minutes for automatic advancement to the next stage
    */
-  action: GetRollingReleaseConfigAction;
+  duration?: number | undefined;
   /**
-   * When true, a tripped gate is only reported — {@link action} is not taken.
+   * Whether to linearly shift traffic over the duration of this stage
    */
-  dryRun: boolean;
+  linearShift?: boolean | undefined;
+  /**
+   * Whether or not this stage requires manual approval to proceed
+   */
+  requireApproval?: boolean | undefined;
+  /**
+   * The percentage of traffic to serve to the canary deployment (0-100)
+   */
+  targetPercentage: number;
 };
 
 /**
  * Project-level rolling release configuration that defines how deployments should be gradually rolled out
  */
 export type GetRollingReleaseConfigRollingRelease = {
-  /**
-   * The environment that the release targets, currently only supports production. Adding in case we want to configure with alias groups or custom environments.
-   */
-  target: string;
-  /**
-   * An array of all the stages required during a deployment release. Each stage defines a target percentage and advancement rules. The final stage must always have targetPercentage: 100.
-   */
-  stages?: Array<GetRollingReleaseConfigStages> | null | undefined;
   /**
    * Whether the request served by a canary deployment should return a header indicating a canary was served. Defaults to `false` when omitted.
    */
@@ -149,6 +141,14 @@ export type GetRollingReleaseConfigRollingRelease = {
    * Automated gating configuration. Omitted (the default) means no gating is configured, which is equivalent to `enabled: false`.
    */
   gate?: GetRollingReleaseConfigGate | undefined;
+  /**
+   * An array of all the stages required during a deployment release. Each stage defines a target percentage and advancement rules. The final stage must always have targetPercentage: 100.
+   */
+  stages?: Array<GetRollingReleaseConfigStages> | null | undefined;
+  /**
+   * The environment that the release targets, currently only supports production. Adding in case we want to configure with alias groups or custom environments.
+   */
+  target: string;
 };
 
 export type GetRollingReleaseConfigResponseBody = {
@@ -187,26 +187,9 @@ export function getRollingReleaseConfigRequestToJSON(
 }
 
 /** @internal */
-export const GetRollingReleaseConfigStages$inboundSchema: z.ZodType<
-  GetRollingReleaseConfigStages,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  targetPercentage: types.number(),
-  requireApproval: types.optional(types.boolean()),
-  duration: types.optional(types.number()),
-  linearShift: types.optional(types.boolean()),
-});
-
-export function getRollingReleaseConfigStagesFromJSON(
-  jsonString: string,
-): SafeParseResult<GetRollingReleaseConfigStages, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetRollingReleaseConfigStages$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetRollingReleaseConfigStages' from JSON`,
-  );
-}
+export const GetRollingReleaseConfigAction$inboundSchema: z.ZodNativeEnum<
+  typeof GetRollingReleaseConfigAction
+> = z.nativeEnum(GetRollingReleaseConfigAction);
 
 /** @internal */
 export const GetRollingReleaseConfigType$inboundSchema: z.ZodNativeEnum<
@@ -219,11 +202,11 @@ export const GetRollingReleaseConfigChecks$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: GetRollingReleaseConfigType$inboundSchema,
-  minSampleSize: types.optional(types.number()),
-  excludeStatusCodes: types.optional(z.array(types.number())),
   excludePaths: types.optional(z.array(types.string())),
+  excludeStatusCodes: types.optional(z.array(types.number())),
   ingestWatermarkSeconds: types.optional(types.number()),
+  minSampleSize: types.optional(types.number()),
+  type: GetRollingReleaseConfigType$inboundSchema,
 });
 
 export function getRollingReleaseConfigChecksFromJSON(
@@ -237,22 +220,17 @@ export function getRollingReleaseConfigChecksFromJSON(
 }
 
 /** @internal */
-export const GetRollingReleaseConfigAction$inboundSchema: z.ZodNativeEnum<
-  typeof GetRollingReleaseConfigAction
-> = z.nativeEnum(GetRollingReleaseConfigAction);
-
-/** @internal */
 export const GetRollingReleaseConfigGate$inboundSchema: z.ZodType<
   GetRollingReleaseConfigGate,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  enabled: types.boolean(),
+  action: GetRollingReleaseConfigAction$inboundSchema,
   checks: z.array(z.lazy(() => GetRollingReleaseConfigChecks$inboundSchema)),
+  dryRun: types.boolean(),
+  enabled: types.boolean(),
   failureThreshold: types.optional(types.number()),
   windowSize: types.optional(types.number()),
-  action: GetRollingReleaseConfigAction$inboundSchema,
-  dryRun: types.boolean(),
 });
 
 export function getRollingReleaseConfigGateFromJSON(
@@ -266,17 +244,39 @@ export function getRollingReleaseConfigGateFromJSON(
 }
 
 /** @internal */
+export const GetRollingReleaseConfigStages$inboundSchema: z.ZodType<
+  GetRollingReleaseConfigStages,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  duration: types.optional(types.number()),
+  linearShift: types.optional(types.boolean()),
+  requireApproval: types.optional(types.boolean()),
+  targetPercentage: types.number(),
+});
+
+export function getRollingReleaseConfigStagesFromJSON(
+  jsonString: string,
+): SafeParseResult<GetRollingReleaseConfigStages, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetRollingReleaseConfigStages$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetRollingReleaseConfigStages' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetRollingReleaseConfigRollingRelease$inboundSchema: z.ZodType<
   GetRollingReleaseConfigRollingRelease,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  target: types.string(),
+  canaryResponseHeader: types.optional(types.boolean()),
+  gate: types.optional(z.lazy(() => GetRollingReleaseConfigGate$inboundSchema)),
   stages: z.nullable(
     z.array(z.lazy(() => GetRollingReleaseConfigStages$inboundSchema)),
   ).optional(),
-  canaryResponseHeader: types.optional(types.boolean()),
-  gate: types.optional(z.lazy(() => GetRollingReleaseConfigGate$inboundSchema)),
+  target: types.string(),
 });
 
 export function getRollingReleaseConfigRollingReleaseFromJSON(

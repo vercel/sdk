@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentResponseBodyDeploymentsAliasWarning } from "@vercel/sdk/models/createdeploymenthasdeploymentstype.js";
+import { CreateDeploymentResponseBodyDeploymentsAliasWarning } from "@vercel/sdk/models/createdeploymentresponsebodydeploymentsstatus.js";
 
 let value: CreateDeploymentResponseBodyDeploymentsAliasWarning = {
   code: "<value>",
@@ -15,7 +15,7 @@ let value: CreateDeploymentResponseBodyDeploymentsAliasWarning = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `code`             | *string*           | :heavy_check_mark: | N/A                |
-| `message`          | *string*           | :heavy_check_mark: | N/A                |
-| `link`             | *string*           | :heavy_minus_sign: | N/A                |
 | `action`           | *string*           | :heavy_minus_sign: | N/A                |
+| `code`             | *string*           | :heavy_check_mark: | N/A                |
+| `link`             | *string*           | :heavy_minus_sign: | N/A                |
+| `message`          | *string*           | :heavy_check_mark: | N/A                |

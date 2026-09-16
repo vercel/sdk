@@ -7,9 +7,9 @@
 
 ```typescript
 const value: models.Created1 = {
+  key: "<key>",
   type: "system",
   value: "<value>",
-  key: "<key>",
 };
 ```
 
@@ -18,9 +18,9 @@ const value: models.Created1 = {
 ```typescript
 const value: models.Created2[] = [
   {
+    key: "<key>",
     type: "sensitive",
     value: "<value>",
-    key: "<key>",
   },
 ];
 ```

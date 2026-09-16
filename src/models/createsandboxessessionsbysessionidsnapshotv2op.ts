@@ -45,13 +45,13 @@ export type CreateSandboxesSessionsBySessionIdSnapshotV2Request = {
 
 export type CreateSandboxesSessionsBySessionIdSnapshotV2ResponseBody = {
   /**
-   * This object contains information related to a Snapshot of a Vercel Sandbox session (v2 API).
-   */
-  snapshot: Snapshot;
-  /**
    * This object contains information related to a Vercel Sandbox Session. v2 endpoints return "session" instead of "sandbox" as the response wrapper key.
    */
   session: Session;
+  /**
+   * This object contains information related to a Snapshot of a Vercel Sandbox session (v2 API).
+   */
+  snapshot: Snapshot;
 };
 
 /** @internal */
@@ -150,8 +150,8 @@ export const CreateSandboxesSessionsBySessionIdSnapshotV2ResponseBody$inboundSch
     z.ZodTypeDef,
     unknown
   > = z.object({
-    snapshot: Snapshot$inboundSchema,
     session: Session$inboundSchema,
+    snapshot: Snapshot$inboundSchema,
   });
 
 export function createSandboxesSessionsBySessionIdSnapshotV2ResponseBodyFromJSON(

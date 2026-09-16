@@ -5,18 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFiftyNine } from "@vercel/sdk/models/usereventpayloadnext.js";
+import { TwoHundredAndFiftyNine } from "@vercel/sdk/models/payloadnext.js";
 
 let value: TwoHundredAndFiftyNine = {
+  customEnvironmentId: "<id>",
+  customEnvironmentSlug: "<value>",
+  enableSchedulesByDefault: false,
   projectId: "<id>",
-  enableFunctionsBeta: false,
+  projectName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                 | Type                  | Required              | Description           |
-| --------------------- | --------------------- | --------------------- | --------------------- |
-| `projectName`         | *string*              | :heavy_minus_sign:    | N/A                   |
-| `projectId`           | *string*              | :heavy_check_mark:    | N/A                   |
-| `enableFunctionsBeta` | *boolean*             | :heavy_check_mark:    | N/A                   |
+| Field                      | Type                       | Required                   | Description                |
+| -------------------------- | -------------------------- | -------------------------- | -------------------------- |
+| `customEnvironmentId`      | *string*                   | :heavy_check_mark:         | N/A                        |
+| `customEnvironmentSlug`    | *string*                   | :heavy_check_mark:         | N/A                        |
+| `enableSchedulesByDefault` | *boolean*                  | :heavy_check_mark:         | N/A                        |
+| `projectId`                | *string*                   | :heavy_check_mark:         | N/A                        |
+| `projectName`              | *string*                   | :heavy_check_mark:         | N/A                        |

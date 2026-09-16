@@ -5,11 +5,11 @@ Similar to `contentHints`, but should not be exposed to the user.
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyProjectsResponseInternalContentHint } from "@vercel/sdk/models/getprojectsfromprojectsresponsepreset.js";
+import { GetProjectsResponseBodyProjectsResponseInternalContentHint } from "@vercel/sdk/models/getprojectslinkprojects6.js";
 
 let value: GetProjectsResponseBodyProjectsResponseInternalContentHint = {
-  type: "flags-secret",
   encryptedValue: "<value>",
+  type: "flags-secret",
 };
 ```
 
@@ -17,5 +17,5 @@ let value: GetProjectsResponseBodyProjectsResponseInternalContentHint = {
 
 | Field                                                                                                                                                                      | Type                                                                                                                                                                       | Required                                                                                                                                                                   | Description                                                                                                                                                                |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `type`                                                                                                                                                                     | [models.GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsEnvType](../models/getprojectsresponsebodyprojectsresponse200applicationjson2projectsenvtype.md) | :heavy_check_mark:                                                                                                                                                         | N/A                                                                                                                                                                        |
 | `encryptedValue`                                                                                                                                                           | *string*                                                                                                                                                                   | :heavy_check_mark:                                                                                                                                                         | Contains the `value` of the env variable, encrypted with a special key to make decryption possible in the subscriber Lambda.                                               |
+| `type`                                                                                                                                                                     | [models.GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsEnvType](../models/getprojectsresponsebodyprojectsresponse200applicationjson2projectsenvtype.md) | :heavy_check_mark:                                                                                                                                                         | N/A                                                                                                                                                                        |

@@ -7,11 +7,11 @@
 
 ```typescript
 const value: models.UpdateProjectProtectionBypass1 = {
+  configurationId: "<id>",
   createdAt: 4219.97,
   createdBy: "<value>",
-  scope: "integration-automation-bypass",
   integrationId: "<id>",
-  configurationId: "<id>",
+  scope: "integration-automation-bypass",
 };
 ```
 

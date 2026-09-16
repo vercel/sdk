@@ -5,24 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndSixteen } from "@vercel/sdk/models/fourhundredandnine.js";
+import { FourHundredAndSixteen } from "@vercel/sdk/models/threehundredandninetynine.js";
 
 let value: FourHundredAndSixteen = {
-  previous: {
-    enabled: false,
-    totpVerified: true,
-  },
-  next: {
-    enabled: true,
-    totpVerified: false,
-  },
+  method: "webauthn",
+  reason: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `previous`                                                                     | [models.UserEventPayload416Previous](../models/usereventpayload416previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `next`                                                                         | [models.UserEventPayload416Next](../models/usereventpayload416next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `method`                                                                       | [models.PayloadMethod](../models/payloadmethod.md)                             | :heavy_minus_sign:                                                             | N/A                                                                            |
+| Field                                | Type                                 | Required                             | Description                          |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| `flowId`                             | *string*                             | :heavy_minus_sign:                   | N/A                                  |
+| `loginSessionId`                     | *string*                             | :heavy_minus_sign:                   | N/A                                  |
+| `method`                             | [models.Method](../models/method.md) | :heavy_check_mark:                   | N/A                                  |
+| `reason`                             | *string*                             | :heavy_check_mark:                   | N/A                                  |

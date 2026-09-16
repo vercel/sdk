@@ -8,10 +8,10 @@ A list of verification challenges, one of which must be completed to verify the 
 import { CreateCustomEnvironmentVerification } from "@vercel/sdk/models/createcustomenvironmentop.js";
 
 let value: CreateCustomEnvironmentVerification = {
-  type: "<value>",
   domain: "official-approach.com",
-  value: "<value>",
   reason: "<value>",
+  type: "<value>",
+  value: "<value>",
 };
 ```
 
@@ -19,7 +19,7 @@ let value: CreateCustomEnvironmentVerification = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `type`             | *string*           | :heavy_check_mark: | N/A                |
 | `domain`           | *string*           | :heavy_check_mark: | N/A                |
-| `value`            | *string*           | :heavy_check_mark: | N/A                |
 | `reason`           | *string*           | :heavy_check_mark: | N/A                |
+| `type`             | *string*           | :heavy_check_mark: | N/A                |
+| `value`            | *string*           | :heavy_check_mark: | N/A                |

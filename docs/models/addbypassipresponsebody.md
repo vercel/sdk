@@ -8,8 +8,17 @@
 ```typescript
 const value: models.AddBypassIpResponseBody1 = {
   ok: true,
-  result: [],
-  pagination: "<value>",
+  pagination: null,
+  result: [
+    {
+      domain: "steel-nightlife.info",
+      id: "<id>",
+      isProjectRule: true,
+      note: "<value>",
+      ownerId: "<id>",
+      projectId: "<id>",
+    },
+  ],
 };
 ```
 

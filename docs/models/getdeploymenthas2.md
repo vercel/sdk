@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { GetDeploymentHas2 } from "@vercel/sdk/models/getdeploymentmissingdeployments1.js";
+import { GetDeploymentHas2 } from "@vercel/sdk/models/getdeploymentservicesfunctions.js";
 
 let value: GetDeploymentHas2 = {
-  type: "header",
   key: "<key>",
+  type: "header",
 };
 ```
 
@@ -15,6 +15,6 @@ let value: GetDeploymentHas2 = {
 
 | Field                                                            | Type                                                             | Required                                                         | Description                                                      |
 | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `type`                                                           | [models.GetDeploymentHasType](../models/getdeploymenthastype.md) | :heavy_check_mark:                                               | N/A                                                              |
 | `key`                                                            | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `type`                                                           | [models.GetDeploymentHasType](../models/getdeploymenthastype.md) | :heavy_check_mark:                                               | N/A                                                              |
 | `value`                                                          | *models.GetDeploymentHasDeploymentsValue*                        | :heavy_minus_sign:                                               | N/A                                                              |

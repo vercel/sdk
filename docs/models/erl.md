@@ -3,16 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { Erl } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson1securitymanagedrulesaction.js";
+import { Erl } from "@vercel/sdk/models/getprojectslogheaders2.js";
 
 let value: Erl = {
   algo: "token_bucket",
-  window: 1689.99,
+  keys: [],
   limit: 4648.04,
-  keys: [
-    "<value 1>",
-    "<value 2>",
-  ],
+  window: 5573.92,
 };
 ```
 
@@ -21,6 +18,6 @@ let value: Erl = {
 | Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
 | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
 | `algo`                                                                         | [models.GetProjectsResponseBodyAlgo](../models/getprojectsresponsebodyalgo.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `window`                                                                       | *number*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `limit`                                                                        | *number*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
 | `keys`                                                                         | *string*[]                                                                     | :heavy_check_mark:                                                             | N/A                                                                            |
+| `limit`                                                                        | *number*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `window`                                                                       | *number*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |

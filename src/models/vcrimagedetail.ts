@@ -40,39 +40,39 @@ export type VcrImageDetailStatus = ClosedEnum<typeof VcrImageDetailStatus>;
  * A single image with its tags, status and resolved Dockerfile layer history.
  */
 export type VcrImageDetail = {
-  layers: Array<VcrImageLayer>;
-  /**
-   * Tags pointing at this image's manifest.
-   */
-  tags: Array<string>;
-  /**
-   * Internal identifier of the image.
-   */
-  id: string;
-  /**
-   * Identifier of the repository the image belongs to.
-   */
-  repositoryId: string;
-  /**
-   * SHA-256 digest of the image manifest.
-   */
-  manifestDigest: string;
-  /**
-   * Whether the manifest is a multi-platform image index, a single-platform image manifest or an attestation.
-   */
-  kind: VcrImageDetailKind;
-  /**
-   * Operating system the manifest targets. Only present for single-platform manifests.
-   */
-  platform?: string | undefined;
   /**
    * CPU architecture the manifest targets. Only present for single-platform manifests.
    */
   arch?: string | undefined;
   /**
+   * ISO 8601 timestamp of when the image was created.
+   */
+  createdAt: string;
+  /**
+   * Internal identifier of the image.
+   */
+  id: string;
+  /**
+   * Whether the manifest is a multi-platform image index, a single-platform image manifest or an attestation.
+   */
+  kind: VcrImageDetailKind;
+  layers: Array<VcrImageLayer>;
+  /**
+   * SHA-256 digest of the image manifest.
+   */
+  manifestDigest: string;
+  /**
+   * Operating system the manifest targets. Only present for single-platform manifests.
+   */
+  platform?: string | undefined;
+  /**
    * Identifier of the actor that pushed the image.
    */
   pushedBy?: string | undefined;
+  /**
+   * Identifier of the repository the image belongs to.
+   */
+  repositoryId: string;
   /**
    * Total size in bytes of the image's resources (manifest, config and layer blobs) stored by the registry.
    */
@@ -82,9 +82,9 @@ export type VcrImageDetail = {
    */
   status: VcrImageDetailStatus | null;
   /**
-   * ISO 8601 timestamp of when the image was created.
+   * Tags pointing at this image's manifest.
    */
-  createdAt: string;
+  tags: Array<string>;
 };
 
 /** @internal */
@@ -103,18 +103,18 @@ export const VcrImageDetail$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  layers: z.array(VcrImageLayer$inboundSchema),
-  tags: z.array(types.string()),
-  id: types.string(),
-  repositoryId: types.string(),
-  manifestDigest: types.string(),
-  kind: VcrImageDetailKind$inboundSchema,
-  platform: types.optional(types.string()),
   arch: types.optional(types.string()),
+  createdAt: types.string(),
+  id: types.string(),
+  kind: VcrImageDetailKind$inboundSchema,
+  layers: z.array(VcrImageLayer$inboundSchema),
+  manifestDigest: types.string(),
+  platform: types.optional(types.string()),
   pushedBy: types.optional(types.string()),
+  repositoryId: types.string(),
   sizeInBytes: types.number(),
   status: types.nullable(VcrImageDetailStatus$inboundSchema),
-  createdAt: types.string(),
+  tags: z.array(types.string()),
 });
 
 export function vcrImageDetailFromJSON(

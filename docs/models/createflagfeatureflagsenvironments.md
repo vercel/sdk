@@ -6,22 +6,30 @@
 import { CreateFlagFeatureFlagsEnvironments } from "@vercel/sdk/models/createflagop.js";
 
 let value: CreateFlagFeatureFlagsEnvironments = {
-  pausedOutcome: {
-    type: "variant",
-    variantId: "<id>",
-  },
+  active: true,
   fallthrough: {
     type: "variant",
     variantId: "<id>",
   },
-  active: true,
+  pausedOutcome: {
+    type: "variant",
+    variantId: "<id>",
+  },
   rules: [
     {
+      conditions: [
+        {
+          cmp: "oneOf",
+          lhs: {
+            type: "segment",
+          },
+        },
+      ],
       id: "<id>",
       outcome: {
-        type: "experiment",
+        type: "variant",
+        variantId: "<id>",
       },
-      conditions: [],
     },
   ],
 };
@@ -31,10 +39,10 @@ let value: CreateFlagFeatureFlagsEnvironments = {
 
 | Field                                                                                                                                | Type                                                                                                                                 | Required                                                                                                                             | Description                                                                                                                          |
 | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `reuse`                                                                                                                              | [models.CreateFlagFeatureFlagsReuse](../models/createflagfeatureflagsreuse.md)                                                       | :heavy_minus_sign:                                                                                                                   | N/A                                                                                                                                  |
-| `targets`                                                                                                                            | Record<string, Record<string, Record<string, [models.CreateFlagFeatureFlagsTargets](../models/createflagfeatureflagstargets.md)[]>>> | :heavy_minus_sign:                                                                                                                   | N/A                                                                                                                                  |
-| `revision`                                                                                                                           | *number*                                                                                                                             | :heavy_minus_sign:                                                                                                                   | N/A                                                                                                                                  |
-| `pausedOutcome`                                                                                                                      | [models.CreateFlagFeatureFlagsPausedOutcome](../models/createflagfeatureflagspausedoutcome.md)                                       | :heavy_check_mark:                                                                                                                   | N/A                                                                                                                                  |
-| `fallthrough`                                                                                                                        | *models.CreateFlagFeatureFlagsFallthrough*                                                                                           | :heavy_check_mark:                                                                                                                   | N/A                                                                                                                                  |
 | `active`                                                                                                                             | *boolean*                                                                                                                            | :heavy_check_mark:                                                                                                                   | N/A                                                                                                                                  |
+| `fallthrough`                                                                                                                        | *models.CreateFlagFeatureFlagsFallthrough*                                                                                           | :heavy_check_mark:                                                                                                                   | N/A                                                                                                                                  |
+| `pausedOutcome`                                                                                                                      | [models.CreateFlagFeatureFlagsPausedOutcome](../models/createflagfeatureflagspausedoutcome.md)                                       | :heavy_check_mark:                                                                                                                   | N/A                                                                                                                                  |
+| `reuse`                                                                                                                              | [models.CreateFlagFeatureFlagsReuse](../models/createflagfeatureflagsreuse.md)                                                       | :heavy_minus_sign:                                                                                                                   | N/A                                                                                                                                  |
+| `revision`                                                                                                                           | *number*                                                                                                                             | :heavy_minus_sign:                                                                                                                   | N/A                                                                                                                                  |
 | `rules`                                                                                                                              | [models.CreateFlagFeatureFlagsRules](../models/createflagfeatureflagsrules.md)[]                                                     | :heavy_check_mark:                                                                                                                   | N/A                                                                                                                                  |
+| `targets`                                                                                                                            | Record<string, Record<string, Record<string, [models.CreateFlagFeatureFlagsTargets](../models/createflagfeatureflagstargets.md)[]>>> | :heavy_minus_sign:                                                                                                                   | N/A                                                                                                                                  |

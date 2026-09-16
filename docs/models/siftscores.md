@@ -3,11 +3,16 @@
 ## Example Usage
 
 ```typescript
-import { SiftScores } from "@vercel/sdk/models/usereventpayload171gituserid.js";
+import { SiftScores } from "@vercel/sdk/models/onehundredandfortyeight.js";
 
 let value: SiftScores = {
-  score: 9472.34,
-  reasons: [],
+  reasons: [
+    {
+      name: "<value>",
+      value: "<value>",
+    },
+  ],
+  score: 4551.1,
 };
 ```
 
@@ -15,5 +20,5 @@ let value: SiftScores = {
 
 | Field                                                  | Type                                                   | Required                                               | Description                                            |
 | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `score`                                                | *number*                                               | :heavy_check_mark:                                     | N/A                                                    |
 | `reasons`                                              | [models.PayloadReasons](../models/payloadreasons.md)[] | :heavy_check_mark:                                     | N/A                                                    |
+| `score`                                                | *number*                                               | :heavy_check_mark:                                     | N/A                                                    |

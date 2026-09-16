@@ -15,8 +15,8 @@ const value: models.GetAllLogDrainsFilterLogDrains1 = {
 
 ```typescript
 const value: models.GetAllLogDrainsFilterLogDrains2 = {
-  type: "odata",
   text: "<value>",
+  type: "odata",
 };
 ```
 

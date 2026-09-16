@@ -26,9 +26,9 @@ export const TokenType = {
 export type TokenType = ClosedEnum<typeof TokenType>;
 
 export type RotateInstallationCredentialResponseBody = {
-  scope: string;
-  expiresIn: number;
   accessToken: string;
+  expiresIn: number;
+  scope: string;
   tokenType: TokenType;
 };
 
@@ -106,14 +106,14 @@ export const RotateInstallationCredentialResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  scope: types.string(),
-  expires_in: types.number(),
   access_token: types.string(),
+  expires_in: types.number(),
+  scope: types.string(),
   token_type: TokenType$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    "expires_in": "expiresIn",
     "access_token": "accessToken",
+    "expires_in": "expiresIn",
     "token_type": "tokenType",
   });
 });

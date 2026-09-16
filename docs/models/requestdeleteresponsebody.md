@@ -8,8 +8,8 @@ Response indicating that the User deletion process has been initiated, and a con
 import { RequestDeleteResponseBody } from "@vercel/sdk/models/requestdeleteop.js";
 
 let value: RequestDeleteResponseBody = {
-  id: "<id>",
   email: "Johnpaul_Farrell88@hotmail.com",
+  id: "<id>",
   message: "Verification email sent",
 };
 ```
@@ -18,6 +18,6 @@ let value: RequestDeleteResponseBody = {
 
 | Field                                                     | Type                                                      | Required                                                  | Description                                               | Example                                                   |
 | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
-| `id`                                                      | *string*                                                  | :heavy_check_mark:                                        | Unique identifier of the User who has initiated deletion. |                                                           |
 | `email`                                                   | *string*                                                  | :heavy_check_mark:                                        | Email address of the User who has initiated deletion.     |                                                           |
+| `id`                                                      | *string*                                                  | :heavy_check_mark:                                        | Unique identifier of the User who has initiated deletion. |                                                           |
 | `message`                                                 | *string*                                                  | :heavy_check_mark:                                        | User deletion progress status.                            | Verification email sent                                   |

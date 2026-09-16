@@ -8,8 +8,8 @@ import { GetObservabilityConfigurationProjectsResponseBody } from "@vercel/sdk/m
 let value: GetObservabilityConfigurationProjectsResponseBody = {
   disabledProjects: [
     {
-      id: "<id>",
       disabledAt: 7450.06,
+      id: "<id>",
     },
   ],
 };

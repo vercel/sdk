@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { PayloadRemovedUsers } from "@vercel/sdk/models/usereventpayloadnext.js";
+import { PayloadRemovedUsers } from "@vercel/sdk/models/payloadnext.js";
 
 let value: PayloadRemovedUsers = {
-  role: "VIEWER_FOR_PLUS",
   confirmed: false,
+  role: "VIEWER",
 };
 ```
 
@@ -15,7 +15,7 @@ let value: PayloadRemovedUsers = {
 
 | Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `role`                                                                 | [models.UserEventPayload228Role](../models/usereventpayload228role.md) | :heavy_check_mark:                                                     | N/A                                                                    |
 | `confirmed`                                                            | *boolean*                                                              | :heavy_check_mark:                                                     | N/A                                                                    |
 | `confirmedAt`                                                          | *number*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
 | `joinedFrom`                                                           | [models.PayloadJoinedFrom](../models/payloadjoinedfrom.md)             | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `role`                                                                 | [models.UserEventPayload229Role](../models/usereventpayload229role.md) | :heavy_check_mark:                                                     | N/A                                                                    |

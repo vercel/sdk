@@ -7,21 +7,21 @@
 
 ```typescript
 const value: models.AuthUser = {
-  createdAt: 1630748523395,
-  softBlock: {
-    blockedAt: 3863.42,
-    reason: "EXPOSURE_CAP_EXCEEDED",
-  },
-  billing: {},
-  resourceConfig: {},
-  stagingPrefix: "<value>",
-  hasTrialAvailable: true,
-  id: "AEIIDYVk59zbFF2Sxfyxxmua",
-  email: "me@example.com",
-  name: "John Doe",
-  username: "jdoe",
   avatar: "22cb30c85ff45ac4c72de8981500006b28114aa1",
+  billing: {},
+  createdAt: 1630748523395,
   defaultTeamId: "<id>",
+  email: "me@example.com",
+  hasTrialAvailable: false,
+  id: "AEIIDYVk59zbFF2Sxfyxxmua",
+  name: "John Doe",
+  resourceConfig: {},
+  softBlock: {
+    blockedAt: 2025.27,
+    reason: "DOMAIN_OWNER_DELETION_REQUEST",
+  },
+  stagingPrefix: "<value>",
+  username: "jdoe",
 };
 ```
 
@@ -29,13 +29,13 @@ const value: models.AuthUser = {
 
 ```typescript
 const value: models.AuthUserLimited = {
-  limited: true,
-  id: "AEIIDYVk59zbFF2Sxfyxxmua",
-  email: "me@example.com",
-  name: "John Doe",
-  username: "jdoe",
   avatar: "22cb30c85ff45ac4c72de8981500006b28114aa1",
   defaultTeamId: "<id>",
+  email: "me@example.com",
+  id: "AEIIDYVk59zbFF2Sxfyxxmua",
+  limited: true,
+  name: "John Doe",
+  username: "jdoe",
 };
 ```
 

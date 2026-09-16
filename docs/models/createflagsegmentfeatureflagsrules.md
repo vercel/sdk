@@ -6,11 +6,11 @@
 import { CreateFlagSegmentFeatureFlagsRules } from "@vercel/sdk/models/createflagsegmentop.js";
 
 let value: CreateFlagSegmentFeatureFlagsRules = {
+  conditions: [],
   id: "<id>",
   outcome: {
     type: "all",
   },
-  conditions: [],
 };
 ```
 
@@ -18,6 +18,6 @@ let value: CreateFlagSegmentFeatureFlagsRules = {
 
 | Field                                                                                                    | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
 | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `conditions`                                                                                             | [models.CreateFlagSegmentFeatureFlagsConditions](../models/createflagsegmentfeatureflagsconditions.md)[] | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
 | `id`                                                                                                     | *string*                                                                                                 | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
 | `outcome`                                                                                                | *models.CreateFlagSegmentFeatureFlagsOutcome*                                                            | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
-| `conditions`                                                                                             | [models.CreateFlagSegmentFeatureFlagsConditions](../models/createflagsegmentfeatureflagsconditions.md)[] | :heavy_check_mark:                                                                                       | N/A                                                                                                      |

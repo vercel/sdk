@@ -74,11 +74,11 @@ export type CreateOrTransferDomainRequest = {
  * An object containing information of the domain creator, including the user's id, username, and email.
  */
 export type CreateOrTransferDomainCreator = {
-  username: string;
-  email: string;
   customerId?: string | null | undefined;
-  isDomainReseller?: boolean | undefined;
+  email: string;
   id: string;
+  isDomainReseller?: boolean | undefined;
+  username: string;
 };
 
 /**
@@ -113,39 +113,6 @@ export type CreateOrTransferDomainServiceType = ClosedEnum<
 
 export type CreateOrTransferDomainDomain = {
   /**
-   * Timestamp in milliseconds at which the domain is set to expire. null if not bought with Vercel.
-   */
-  expiresAt: number | null;
-  /**
-   * If the domain has the ownership verified.
-   */
-  verified: boolean;
-  /**
-   * A list of the current nameservers of the domain.
-   */
-  nameservers: Array<string>;
-  /**
-   * A list of the intended nameservers for the domain to point to Vercel DNS.
-   */
-  intendedNameservers: Array<string>;
-  /**
-   * A list of custom nameservers for the domain to point to. Only applies to domains purchased with Vercel.
-   */
-  customNameservers?: Array<string> | undefined;
-  /**
-   * An object containing information of the domain creator, including the user's id, username, and email.
-   */
-  creator: CreateOrTransferDomainCreator;
-  /**
-   * Whether the domain is enrolled in Encrypted Client Hello. `auto` leaves the decision to Vercel, `enabled` always enrolls, and `disabled` never enrolls and opts out of automatic enrollment.
-   */
-  echMode: CreateOrTransferDomainEchMode;
-  /**
-   * The domain name.
-   */
-  name: string;
-  teamId: string | null;
-  /**
    * If it was purchased through Vercel, the timestamp in milliseconds when it was purchased.
    */
   boughtAt: number | null;
@@ -154,9 +121,37 @@ export type CreateOrTransferDomainDomain = {
    */
   createdAt: number;
   /**
+   * An object containing information of the domain creator, including the user's id, username, and email.
+   */
+  creator: CreateOrTransferDomainCreator;
+  /**
+   * A list of custom nameservers for the domain to point to. Only applies to domains purchased with Vercel.
+   */
+  customNameservers?: Array<string> | undefined;
+  /**
+   * Whether the domain is enrolled in Encrypted Client Hello. `auto` leaves the decision to Vercel, `enabled` always enrolls, and `disabled` never enrolls and opts out of automatic enrollment.
+   */
+  echMode: CreateOrTransferDomainEchMode;
+  /**
+   * Timestamp in milliseconds at which the domain is set to expire. null if not bought with Vercel.
+   */
+  expiresAt: number | null;
+  /**
    * The unique identifier of the domain.
    */
   id: string;
+  /**
+   * A list of the intended nameservers for the domain to point to Vercel DNS.
+   */
+  intendedNameservers: Array<string>;
+  /**
+   * The domain name.
+   */
+  name: string;
+  /**
+   * A list of the current nameservers of the domain.
+   */
+  nameservers: Array<string>;
   /**
    * Indicates whether the domain is set to automatically renew.
    */
@@ -165,6 +160,7 @@ export type CreateOrTransferDomainDomain = {
    * The type of service the domain is handled by. `external` if the DNS is externally handled, `zeit.world` if handled with Vercel, or `na` if the service is not available.
    */
   serviceType: CreateOrTransferDomainServiceType;
+  teamId: string | null;
   /**
    * Timestamp in milliseconds at which the domain was successfully transferred into Vercel. `null` if the transfer is still processing or was never transferred in.
    */
@@ -174,6 +170,10 @@ export type CreateOrTransferDomainDomain = {
    */
   transferStartedAt?: number | undefined;
   userId: string;
+  /**
+   * If the domain has the ownership verified.
+   */
+  verified: boolean;
 };
 
 export type CreateOrTransferDomainResponseBody = {
@@ -307,11 +307,11 @@ export const CreateOrTransferDomainCreator$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  username: types.string(),
-  email: types.string(),
   customerId: z.nullable(types.string()).optional(),
-  isDomainReseller: types.optional(types.boolean()),
+  email: types.string(),
   id: types.string(),
+  isDomainReseller: types.optional(types.boolean()),
+  username: types.string(),
 });
 
 export function createOrTransferDomainCreatorFromJSON(
@@ -340,23 +340,23 @@ export const CreateOrTransferDomainDomain$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  expiresAt: types.nullable(types.number()),
-  verified: types.boolean(),
-  nameservers: z.array(types.string()),
-  intendedNameservers: z.array(types.string()),
-  customNameservers: types.optional(z.array(types.string())),
-  creator: z.lazy(() => CreateOrTransferDomainCreator$inboundSchema),
-  echMode: CreateOrTransferDomainEchMode$inboundSchema,
-  name: types.string(),
-  teamId: types.nullable(types.string()),
   boughtAt: types.nullable(types.number()),
   createdAt: types.number(),
+  creator: z.lazy(() => CreateOrTransferDomainCreator$inboundSchema),
+  customNameservers: types.optional(z.array(types.string())),
+  echMode: CreateOrTransferDomainEchMode$inboundSchema,
+  expiresAt: types.nullable(types.number()),
   id: types.string(),
+  intendedNameservers: z.array(types.string()),
+  name: types.string(),
+  nameservers: z.array(types.string()),
   renew: types.optional(types.boolean()),
   serviceType: CreateOrTransferDomainServiceType$inboundSchema,
+  teamId: types.nullable(types.string()),
   transferredAt: z.nullable(types.number()).optional(),
   transferStartedAt: types.optional(types.number()),
   userId: types.string(),
+  verified: types.boolean(),
 });
 
 export function createOrTransferDomainDomainFromJSON(

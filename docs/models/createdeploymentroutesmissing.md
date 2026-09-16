@@ -16,8 +16,8 @@ const value: models.CreateDeploymentMissing1 = {
 
 ```typescript
 const value: models.CreateDeploymentMissing2 = {
-  type: "header",
   key: "<key>",
+  type: "header",
 };
 ```
 
@@ -25,8 +25,8 @@ const value: models.CreateDeploymentMissing2 = {
 
 ```typescript
 const value: models.CreateDeploymentMissing2 = {
-  type: "header",
   key: "<key>",
+  type: "header",
 };
 ```
 
@@ -34,8 +34,8 @@ const value: models.CreateDeploymentMissing2 = {
 
 ```typescript
 const value: models.CreateDeploymentMissing2 = {
-  type: "header",
   key: "<key>",
+  type: "header",
 };
 ```
 

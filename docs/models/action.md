@@ -12,5 +12,5 @@ let value: Action = {};
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `rewriteModel`     | *string*           | :heavy_minus_sign: | N/A                |
 | `reason`           | *string*           | :heavy_minus_sign: | N/A                |
+| `rewriteModel`     | *string*           | :heavy_minus_sign: | N/A                |

@@ -8,9 +8,9 @@
 ```typescript
 const value: models.GetMicrofrontendsInGroupBlockHistory1 = {
   action: "blocked",
+  createdAt: 6561.38,
   reason: "<value>",
-  statusCode: 6561.38,
-  createdAt: 983.18,
+  statusCode: 983.18,
 };
 ```
 
@@ -28,6 +28,8 @@ const value: models.GetMicrofrontendsInGroupBlockHistory2 = {
 ```typescript
 const value: models.GetMicrofrontendsInGroupBlockHistory3 = {
   action: "route-blocked",
+  createdAt: 8762.56,
+  reason: "<value>",
   route: {
     has: [
       {
@@ -41,8 +43,6 @@ const value: models.GetMicrofrontendsInGroupBlockHistory3 = {
       action: "block_legal_cwc",
     },
   },
-  reason: "<value>",
-  createdAt: 6838.43,
 };
 ```
 
@@ -51,11 +51,21 @@ const value: models.GetMicrofrontendsInGroupBlockHistory3 = {
 ```typescript
 const value: models.GetMicrofrontendsInGroupBlockHistory4 = {
   action: "route-unblocked",
+  createdAt: 3199.53,
   route: {
-    src: "<value>",
-    status: 5495.08,
+    has: [
+      {
+        key: "x-vercel-ip-country",
+        type: "header",
+        value: {
+          eq: "<value>",
+        },
+      },
+    ],
+    mitigate: {
+      action: "block_legal_cwc",
+    },
   },
-  createdAt: 5016.95,
 };
 ```
 

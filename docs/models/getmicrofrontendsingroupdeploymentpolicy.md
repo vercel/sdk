@@ -5,7 +5,7 @@ Project shape. `null` on a rule list clears the project's override for that rule
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupDeploymentPolicy } from "@vercel/sdk/models/getmicrofrontendsingroupinternalroutes2.js";
+import { GetMicrofrontendsInGroupDeploymentPolicy } from "@vercel/sdk/models/getmicrofrontendsingrouphasvalue.js";
 
 let value: GetMicrofrontendsInGroupDeploymentPolicy = {};
 ```
@@ -14,5 +14,5 @@ let value: GetMicrofrontendsInGroupDeploymentPolicy = {};
 
 | Field                                                                                                        | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
 | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| `gitSources`                                                                                                 | [models.GetMicrofrontendsInGroupGitSources](../models/getmicrofrontendsingroupgitsources.md)[]               | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |
 | `deploymentSources`                                                                                          | [models.GetMicrofrontendsInGroupDeploymentSources](../models/getmicrofrontendsingroupdeploymentsources.md)[] | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |
+| `gitSources`                                                                                                 | [models.GetMicrofrontendsInGroupGitSources](../models/getmicrofrontendsingroupgitsources.md)[]               | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |

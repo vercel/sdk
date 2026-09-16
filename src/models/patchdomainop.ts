@@ -86,10 +86,10 @@ export const ResponseBodyEchMode = {
 export type ResponseBodyEchMode = ClosedEnum<typeof ResponseBodyEchMode>;
 
 export type PatchDomainResponseBody3 = {
-  renew?: boolean | undefined;
   customNameservers?: Array<string> | undefined;
-  zone?: boolean | undefined;
   echMode: ResponseBodyEchMode;
+  renew?: boolean | undefined;
+  zone?: boolean | undefined;
 };
 
 export type PatchDomainResponseBody2 = {
@@ -236,10 +236,10 @@ export const PatchDomainResponseBody3$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  renew: types.optional(types.boolean()),
   customNameservers: types.optional(z.array(types.string())),
-  zone: types.optional(types.boolean()),
   echMode: ResponseBodyEchMode$inboundSchema,
+  renew: types.optional(types.boolean()),
+  zone: types.optional(types.boolean()),
 });
 
 export function patchDomainResponseBody3FromJSON(

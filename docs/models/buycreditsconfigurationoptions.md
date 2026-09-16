@@ -15,9 +15,9 @@ let value: BuyCreditsConfigurationOptions = {
 
 | Field                                                  | Type                                                   | Required                                               | Description                                            |
 | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `effectiveDate`                                        | *models.EffectiveDate*                                 | :heavy_check_mark:                                     | N/A                                                    |
-| `orbSubscriptionId`                                    | *string*                                               | :heavy_check_mark:                                     | The ID of the Orb subscription to change               |
 | `alignBillingWithPlanChangeDate`                       | *boolean*                                              | :heavy_minus_sign:                                     | Whether or not to reset the billing cycle              |
 | `couponRedemptionCode`                                 | *string*                                               | :heavy_minus_sign:                                     | The coupon redemption code to apply to the plan change |
+| `effectiveDate`                                        | *models.EffectiveDate*                                 | :heavy_check_mark:                                     | N/A                                                    |
 | `externalPlanId`                                       | *string*                                               | :heavy_minus_sign:                                     | The ID of the external plan to change to               |
+| `orbSubscriptionId`                                    | *string*                                               | :heavy_check_mark:                                     | The ID of the Orb subscription to change               |
 | `replacePrices`                                        | [models.ReplacePrices](../models/replaceprices.md)[]   | :heavy_minus_sign:                                     | The prices to replace in the subscription              |

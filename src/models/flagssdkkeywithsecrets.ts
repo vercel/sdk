@@ -22,19 +22,19 @@ export type FlagsSDKKeyWithSecretsType = ClosedEnum<
  * Representation of a Flags SDK key returned by CREATE. Includes cleartext secrets (`keyValue`, `tokenValue`, `connectionString`) which are only ever disclosed once, on creation.
  */
 export type FlagsSDKKeyWithSecrets = {
-  hashKey: string;
-  projectId: string;
-  type: FlagsSDKKeyWithSecretsType;
-  environment: string;
-  createdBy: string;
   createdAt: number;
-  updatedAt: number;
-  label?: string | undefined;
+  createdBy: string;
   deletedAt?: number | undefined;
+  environment: string;
+  hashKey: string;
+  label?: string | undefined;
   /**
    * Partially-masked representation of the SDK key value, safe to display in UIs. The value is the `vf_<type>_` prefix followed by the first 3 characters of the secret portion and a fixed 8-character `*` mask (e.g. `vf_server_abc********`).
    */
   partialKeyValue: string;
+  projectId: string;
+  type: FlagsSDKKeyWithSecretsType;
+  updatedAt: number;
   /**
    * Cleartext value of the SDK key.
    */
@@ -56,16 +56,16 @@ export const FlagsSDKKeyWithSecrets$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  createdAt: types.number(),
+  createdBy: types.string(),
+  deletedAt: types.optional(types.number()),
+  environment: types.string(),
   hashKey: types.string(),
+  label: types.optional(types.string()),
+  partialKeyValue: types.string(),
   projectId: types.string(),
   type: FlagsSDKKeyWithSecretsType$inboundSchema,
-  environment: types.string(),
-  createdBy: types.string(),
-  createdAt: types.number(),
   updatedAt: types.number(),
-  label: types.optional(types.string()),
-  deletedAt: types.optional(types.number()),
-  partialKeyValue: types.string(),
   keyValue: types.string(),
   tokenValue: types.optional(types.string()),
 });

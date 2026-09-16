@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { PayloadPrevious } from "@vercel/sdk/models/payloadaccessgroup.js";
+import { PayloadPrevious } from "@vercel/sdk/models/twentynine.js";
 
 let value: PayloadPrevious = {
-  enabled: false,
-  autoAddReviewers: true,
+  autoAddReviewers: false,
+  enabled: true,
 };
 ```
 
@@ -15,5 +15,5 @@ let value: PayloadPrevious = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
 | `autoAddReviewers` | *boolean*          | :heavy_check_mark: | N/A                |
+| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |

@@ -7,8 +7,12 @@
 
 ```typescript
 const value: models.GetMicrofrontendsInGroupTrustedIps1 = {
-  deploymentType: "prod_deployment_urls_and_all_previews",
-  addresses: [],
+  addresses: [
+    {
+      value: "<value>",
+    },
+  ],
+  deploymentType: "all_except_custom_domains",
   protectionMode: "exclusive",
 };
 ```

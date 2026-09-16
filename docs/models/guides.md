@@ -3,12 +3,12 @@
 ## Example Usage
 
 ```typescript
-import { Guides } from "@vercel/sdk/models/createintegrationstoredirectprotocolsettings.js";
+import { Guides } from "@vercel/sdk/models/logdrainstatus.js";
 
 let value: Guides = {
   framework: "<value>",
-  title: "<value>",
   steps: [],
+  title: "<value>",
 };
 ```
 
@@ -17,5 +17,5 @@ let value: Guides = {
 | Field                                | Type                                 | Required                             | Description                          |
 | ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
 | `framework`                          | *string*                             | :heavy_check_mark:                   | N/A                                  |
-| `title`                              | *string*                             | :heavy_check_mark:                   | N/A                                  |
 | `steps`                              | [models.Steps](../models/steps.md)[] | :heavy_check_mark:                   | N/A                                  |
+| `title`                              | *string*                             | :heavy_check_mark:                   | N/A                                  |

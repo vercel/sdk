@@ -10,8 +10,8 @@ import { GetProjectMembersResponseBody2 } from "@vercel/sdk/models/getprojectmem
 let value: GetProjectMembersResponseBody2 = {
   members: [],
   pagination: {
-    hasNext: false,
     count: 20,
+    hasNext: false,
     next: 1540095775951,
     prev: 1540095775951,
   },

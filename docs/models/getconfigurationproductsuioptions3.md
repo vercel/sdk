@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetConfigurationProductsUiOptions3 } from "@vercel/sdk/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyuidisabled.js";
+import { GetConfigurationProductsUiOptions3 } from "@vercel/sdk/models/properties7.js";
 
 let value: GetConfigurationProductsUiOptions3 = {
   value: "<value>",
@@ -14,7 +14,7 @@ let value: GetConfigurationProductsUiOptions3 = {
 
 | Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `value`                                                                | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
 | `description`                                                          | *string*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
 | `disabled`                                                             | *models.GetConfigurationProductsUiOptionsIntegrationsResponseDisabled* | :heavy_minus_sign:                                                     | N/A                                                                    |
 | `hidden`                                                               | *models.GetConfigurationProductsUiOptionsIntegrationsResponseHidden*   | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `value`                                                                | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |

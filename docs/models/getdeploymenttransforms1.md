@@ -3,14 +3,14 @@
 ## Example Usage
 
 ```typescript
-import { GetDeploymentTransforms1 } from "@vercel/sdk/models/getdeploymentmissingdeployments1.js";
+import { GetDeploymentTransforms1 } from "@vercel/sdk/models/getdeploymentservicesfunctions.js";
 
 let value: GetDeploymentTransforms1 = {
-  type: "request.headers",
   op: "append",
   target: {
-    key: {},
+    key: "<key>",
   },
+  type: "response.headers",
 };
 ```
 
@@ -18,8 +18,8 @@ let value: GetDeploymentTransforms1 = {
 
 | Field                                                                                                | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
 | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `type`                                                                                               | [models.GetDeploymentTransformsDeploymentsType](../models/getdeploymenttransformsdeploymentstype.md) | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
-| `op`                                                                                                 | [models.GetDeploymentTransformsOp](../models/getdeploymenttransformsop.md)                           | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
-| `target`                                                                                             | [models.GetDeploymentTransformsTarget](../models/getdeploymenttransformstarget.md)                   | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
 | `args`                                                                                               | *models.GetDeploymentTransformsArgs*                                                                 | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
 | `env`                                                                                                | *string*[]                                                                                           | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
+| `op`                                                                                                 | [models.GetDeploymentTransformsOp](../models/getdeploymenttransformsop.md)                           | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
+| `target`                                                                                             | [models.GetDeploymentTransformsTarget](../models/getdeploymenttransformstarget.md)                   | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
+| `type`                                                                                               | [models.GetDeploymentTransformsDeploymentsType](../models/getdeploymenttransformsdeploymentstype.md) | :heavy_check_mark:                                                                                   | N/A                                                                                                  |

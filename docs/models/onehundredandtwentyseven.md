@@ -5,12 +5,12 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndTwentySeven } from "@vercel/sdk/models/headinfo.js";
+import { OneHundredAndTwentySeven } from "@vercel/sdk/models/onehundred.js";
 
 let value: OneHundredAndTwentySeven = {
   domain: "bustling-skyscraper.info",
-  zone: true,
-  initiator: "user",
+  initiator: "system",
+  zone: false,
 };
 ```
 
@@ -19,7 +19,7 @@ let value: OneHundredAndTwentySeven = {
 | Field                                                    | Type                                                     | Required                                                 | Description                                              |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `domain`                                                 | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
-| `zone`                                                   | *boolean*                                                | :heavy_check_mark:                                       | N/A                                                      |
 | `initiator`                                              | [models.PayloadInitiator](../models/payloadinitiator.md) | :heavy_check_mark:                                       | N/A                                                      |
-| `source`                                                 | *string*                                                 | :heavy_minus_sign:                                       | N/A                                                      |
 | `previousZone`                                           | *boolean*                                                | :heavy_minus_sign:                                       | N/A                                                      |
+| `source`                                                 | *string*                                                 | :heavy_minus_sign:                                       | N/A                                                      |
+| `zone`                                                   | *boolean*                                                | :heavy_check_mark:                                       | N/A                                                      |

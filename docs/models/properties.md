@@ -34,10 +34,10 @@ const value: models.Properties3 = {
 
 ```typescript
 const value: models.Properties4 = {
-  type: "array",
   items: {
     type: "number",
   },
+  type: "array",
   uiControl: "slider",
   uiSteps: [
     6791.15,
@@ -55,8 +55,8 @@ const value: models.Properties5 = {
   uiControl: "select",
   uiOptions: [
     {
-      value: "<value>",
       label: "<value>",
+      value: "<value>",
     },
   ],
 };
@@ -76,10 +76,10 @@ const value: models.Properties6 = {
 
 ```typescript
 const value: models.Properties7 = {
-  type: "array",
   items: {
     type: "string",
   },
+  type: "array",
   uiControl: "multi-select",
   uiOptions: [],
 };
@@ -99,10 +99,10 @@ const value: models.Properties8 = {
 
 ```typescript
 const value: models.Properties9 = {
-  type: "array",
   items: {
     type: "string",
   },
+  type: "array",
   uiControl: "multi-vercel-region",
   uiOptions: [],
 };

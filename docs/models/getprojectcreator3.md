@@ -3,14 +3,14 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectCreator3 } from "@vercel/sdk/models/getprojectrollingrelease.js";
+import { GetProjectCreator3 } from "@vercel/sdk/models/getprojecthas2.js";
 
 let value: GetProjectCreator3 = {
-  type: "integration",
   integration: {
-    integrationId: "<id>",
     configurationId: "<id>",
+    integrationId: "<id>",
   },
+  type: "integration",
 };
 ```
 
@@ -18,5 +18,5 @@ let value: GetProjectCreator3 = {
 
 | Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
 | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `type`                                                                           | *"integration"*                                                                  | :heavy_check_mark:                                                               | N/A                                                                              |
 | `integration`                                                                    | [models.GetProjectCreatorIntegration](../models/getprojectcreatorintegration.md) | :heavy_check_mark:                                                               | N/A                                                                              |
+| `type`                                                                           | *"integration"*                                                                  | :heavy_check_mark:                                                               | N/A                                                                              |

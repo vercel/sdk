@@ -5,7 +5,7 @@ Machine type that was used for the build.
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentPurchaseType } from "@vercel/sdk/models/canceldeploymentresponsebody.js";
+import { CancelDeploymentPurchaseType } from "@vercel/sdk/models/canceldeploymentresourceconfig.js";
 
 let value: CancelDeploymentPurchaseType = "enhanced";
 ```

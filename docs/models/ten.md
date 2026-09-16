@@ -8,8 +8,8 @@ The payload of the event, if requested.
 import { Ten } from "@vercel/sdk/models/userevent.js";
 
 let value: Ten = {
-  reason: "<value>",
   blockCode: "<value>",
+  reason: "<value>",
 };
 ```
 
@@ -21,5 +21,5 @@ let value: Ten = {
 | `providerAccount`                                                            | *string*                                                                     | :heavy_minus_sign:                                                           | Present on new events only. Equivalent to `stripeAccount` when absent.       |
 | `stripeAccount`                                                              | *string*                                                                     | :heavy_minus_sign:                                                           | Present when `provider` is "stripe". Equivalent to `providerAccount`.        |
 | `stripeOrganisation`                                                         | *string*                                                                     | :heavy_minus_sign:                                                           | Present when `provider` is "stripe".                                         |
-| `reason`                                                                     | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
 | `blockCode`                                                                  | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
+| `reason`                                                                     | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |

@@ -14,10 +14,10 @@ let value: AddRouteResponseBody = {
     },
   },
   version: {
-    id: "<id>",
-    s3Key: "<value>",
-    lastModified: 8966.34,
     createdBy: "<value>",
+    id: "<id>",
+    lastModified: 8966.34,
+    s3Key: "<value>",
   },
 };
 ```

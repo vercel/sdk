@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { FlagsOptions } from "@vercel/sdk/models/canceldeploymentresponsebody.js";
+import { FlagsOptions } from "@vercel/sdk/models/canceldeploymentresourceconfig.js";
 
 let value: FlagsOptions = {
   value: "<value>",
@@ -14,5 +14,5 @@ let value: FlagsOptions = {
 
 | Field                  | Type                   | Required               | Description            |
 | ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `value`                | *models.FlagJSONValue* | :heavy_check_mark:     | N/A                    |
 | `label`                | *string*               | :heavy_minus_sign:     | N/A                    |
+| `value`                | *models.FlagJSONValue* | :heavy_check_mark:     | N/A                    |

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentKey2 } from "@vercel/sdk/models/includefiles.js";
+import { CancelDeploymentKey2 } from "@vercel/sdk/models/canceldeploymentresponsebody.js";
 
 let value: CancelDeploymentKey2 = {};
 ```
@@ -13,12 +13,12 @@ let value: CancelDeploymentKey2 = {};
 | Field                          | Type                           | Required                       | Description                    |
 | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
 | `eq`                           | *models.CancelDeploymentKeyEq* | :heavy_minus_sign:             | N/A                            |
-| `neq`                          | *string*                       | :heavy_minus_sign:             | N/A                            |
+| `gt`                           | *number*                       | :heavy_minus_sign:             | N/A                            |
+| `gte`                          | *number*                       | :heavy_minus_sign:             | N/A                            |
 | `inc`                          | *string*[]                     | :heavy_minus_sign:             | N/A                            |
+| `lt`                           | *number*                       | :heavy_minus_sign:             | N/A                            |
+| `lte`                          | *number*                       | :heavy_minus_sign:             | N/A                            |
+| `neq`                          | *string*                       | :heavy_minus_sign:             | N/A                            |
 | `ninc`                         | *string*[]                     | :heavy_minus_sign:             | N/A                            |
 | `pre`                          | *string*                       | :heavy_minus_sign:             | N/A                            |
 | `suf`                          | *string*                       | :heavy_minus_sign:             | N/A                            |
-| `gt`                           | *number*                       | :heavy_minus_sign:             | N/A                            |
-| `gte`                          | *number*                       | :heavy_minus_sign:             | N/A                            |
-| `lt`                           | *number*                       | :heavy_minus_sign:             | N/A                            |
-| `lte`                          | *number*                       | :heavy_minus_sign:             | N/A                            |

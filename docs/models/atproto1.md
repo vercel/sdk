@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Atproto1 } from "@vercel/sdk/models/locale.js";
+import { Atproto1 } from "@vercel/sdk/models/canceldeploymentresourceconfig.js";
 
 let value: Atproto1 = {
   enabled: false,

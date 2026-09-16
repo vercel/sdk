@@ -1,17 +1,19 @@
 # UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAliasType
 
+The type of matching to perform
+
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAliasType } from "@vercel/sdk/models/uploadprojectavatarprojectsbuildmachinetype.js";
+import { UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAliasType } from "@vercel/sdk/models/uploadprojectavatarhasvalue.js";
 
 let value:
   UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAliasType =
-    "LAMBDAS";
+    "startsWith";
 ```
 
 ## Values
 
 ```typescript
-"LAMBDAS"
+"endsWith" | "equals" | "startsWith"
 ```

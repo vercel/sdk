@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { Sampling } from "@vercel/sdk/models/threehundredandfortytwo.js";
+import { Sampling } from "@vercel/sdk/models/threehundredandninetynine.js";
 
 let value: Sampling = {
-  type: "head_sampling",
   rate: 1983.19,
+  type: "head_sampling",
 };
 ```
 
@@ -15,7 +15,7 @@ let value: Sampling = {
 
 | Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `type`                                                                 | [models.UserEventPayload400Type](../models/usereventpayload400type.md) | :heavy_check_mark:                                                     | N/A                                                                    |
-| `rate`                                                                 | *number*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
 | `env`                                                                  | [models.Env](../models/env.md)                                         | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `rate`                                                                 | *number*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
 | `requestPath`                                                          | *string*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `type`                                                                 | [models.UserEventPayload403Type](../models/usereventpayload403type.md) | :heavy_check_mark:                                                     | N/A                                                                    |

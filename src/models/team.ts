@@ -14,155 +14,6 @@ import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
-export type Connect = {
-  enabled?: boolean | undefined;
-};
-
-/**
- * Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
- */
-export const SyncState = {
-  Active: "ACTIVE",
-  Setup: "SETUP",
-} as const;
-/**
- * Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
- */
-export type SyncState = ClosedEnum<typeof SyncState>;
-
-/**
- * Information for the SAML Single Sign-On configuration.
- */
-export type Connection = {
-  /**
-   * The Identity Provider "type", for example Okta.
-   */
-  type: string;
-  /**
-   * Current state of the connection.
-   */
-  state: string;
-  /**
-   * Timestamp (in milliseconds) of when the configuration was connected.
-   */
-  connectedAt: number;
-  /**
-   * Timestamp (in milliseconds) of when the last webhook event was received from WorkOS.
-   */
-  lastReceivedWebhookEvent?: number | undefined;
-  /**
-   * Timestamp (in milliseconds) of when the last directory sync was performed.
-   */
-  lastSyncedAt?: number | undefined;
-  /**
-   * Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
-   */
-  syncState?: SyncState | undefined;
-  status: string;
-};
-
-/**
- * Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
- */
-export const TeamSyncState = {
-  Active: "ACTIVE",
-  Setup: "SETUP",
-} as const;
-/**
- * Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
- */
-export type TeamSyncState = ClosedEnum<typeof TeamSyncState>;
-
-/**
- * Information for the Directory Sync configuration.
- */
-export type Directory = {
-  /**
-   * The Identity Provider "type", for example Okta.
-   */
-  type: string;
-  /**
-   * Current state of the connection.
-   */
-  state: string;
-  /**
-   * Timestamp (in milliseconds) of when the configuration was connected.
-   */
-  connectedAt: number;
-  /**
-   * Timestamp (in milliseconds) of when the last webhook event was received from WorkOS.
-   */
-  lastReceivedWebhookEvent?: number | undefined;
-  /**
-   * Timestamp (in milliseconds) of when the last directory sync was performed.
-   */
-  lastSyncedAt?: number | undefined;
-  /**
-   * Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
-   */
-  syncState?: TeamSyncState | undefined;
-};
-
-/**
- * The default redirect URI to use after successful SAML authentication.
- */
-export const DefaultRedirectUri = {
-  V0App: "v0.app",
-  V0Dev: "v0.dev",
-  VercelCom: "vercel.com",
-} as const;
-/**
- * The default redirect URI to use after successful SAML authentication.
- */
-export type DefaultRedirectUri = ClosedEnum<typeof DefaultRedirectUri>;
-
-export const Roles2 = {
-  Billing: "BILLING",
-  Contributor: "CONTRIBUTOR",
-  Developer: "DEVELOPER",
-  Member: "MEMBER",
-  Owner: "OWNER",
-  Security: "SECURITY",
-  Viewer: "VIEWER",
-  ViewerForPlus: "VIEWER_FOR_PLUS",
-} as const;
-export type Roles2 = ClosedEnum<typeof Roles2>;
-
-/**
- * When "Directory Sync" is configured, this object contains a mapping of which Directory Group (by ID) should be assigned to which Vercel Team "role".
- */
-export type Roles1 = {
-  accessGroupId: string;
-};
-
-export type Roles = Roles1 | Roles2;
-
-/**
- * When "Single Sign-On (SAML)" is configured, this object contains information regarding the configuration of the Identity Provider (IdP).
- */
-export type Saml = {
-  /**
-   * Information for the SAML Single Sign-On configuration.
-   */
-  connection?: Connection | undefined;
-  /**
-   * Information for the Directory Sync configuration.
-   */
-  directory?: Directory | undefined;
-  /**
-   * When `true`, interactions with the Team **must** be done with an authentication token that has been authenticated with the Team's SAML Single Sign-On provider.
-   */
-  enforced: boolean;
-  /**
-   * The default redirect URI to use after successful SAML authentication.
-   */
-  defaultRedirectUri?: DefaultRedirectUri | undefined;
-  /**
-   * When "Directory Sync" is configured, this object contains a mapping of which Directory Group (by ID) should be assigned to which Vercel Team "role".
-   */
-  roles?: { [k: string]: Roles1 | Roles2 } | undefined;
-};
-
 export const Plan = {
   Enterprise: "enterprise",
   Hobby: "hobby",
@@ -177,128 +28,7 @@ export type Billing = {
   plan: Plan;
 };
 
-export const TeamTeamRoles = {
-  Billing: "BILLING",
-  Contributor: "CONTRIBUTOR",
-  Developer: "DEVELOPER",
-  Member: "MEMBER",
-  Owner: "OWNER",
-  Security: "SECURITY",
-  Viewer: "VIEWER",
-  ViewerForPlus: "VIEWER_FOR_PLUS",
-} as const;
-export type TeamTeamRoles = ClosedEnum<typeof TeamTeamRoles>;
-
-export const TeamTeamPermissions = {
-  AiGatewayApiKeyOwnedBySelf: "AiGatewayApiKeyOwnedBySelf",
-  AiGatewayBudgetManager: "AiGatewayBudgetManager",
-  AiGatewayCredits: "AiGatewayCredits",
-  AiGatewaySettings: "AiGatewaySettings",
-  AiGatewayTranscriptsManager: "AiGatewayTranscriptsManager",
-  AiGatewayTranscriptsViewer: "AiGatewayTranscriptsViewer",
-  ConnectorManager: "ConnectorManager",
-  CreateProject: "CreateProject",
-  EnvVariableManager: "EnvVariableManager",
-  EnvironmentManager: "EnvironmentManager",
-  FullProductionDeployment: "FullProductionDeployment",
-  IntegrationManager: "IntegrationManager",
-  OrgAdmin: "OrgAdmin",
-  OrgViewer: "OrgViewer",
-  UsageViewer: "UsageViewer",
-  V0Builder: "V0Builder",
-  V0Chatter: "V0Chatter",
-  V0Viewer: "V0Viewer",
-  WorkflowDecryptor: "WorkflowDecryptor",
-} as const;
-export type TeamTeamPermissions = ClosedEnum<typeof TeamTeamPermissions>;
-
-/**
- * Default roles for the team.
- */
-export type DefaultRoles = {
-  teamRoles?: Array<TeamTeamRoles> | undefined;
-  teamPermissions?: Array<TeamTeamPermissions> | undefined;
-};
-
-export type BuildEntitlements = {
-  enhancedBuilds?: boolean | undefined;
-};
-
-/**
- * Default build machine type for new builds
- */
-export const Default = {
-  Basic: "basic",
-  Elastic: "elastic",
-  Enhanced: "enhanced",
-  Standard: "standard",
-  Turbo: "turbo",
-} as const;
-/**
- * Default build machine type for new builds
- */
-export type Default = ClosedEnum<typeof Default>;
-
-/**
- * Build machine configuration
- */
-export type BuildMachine = {
-  /**
-   * Default build machine type for new builds
-   */
-  default?: Default | undefined;
-};
-
-export type ResourceConfig = {
-  /**
-   * The total amount of concurrent builds that can be used.
-   */
-  concurrentBuilds?: number | undefined;
-  /**
-   * Whether every build for this team / user has elastic concurrency enabled automatically.
-   */
-  elasticConcurrencyEnabled?: boolean | undefined;
-  /**
-   * The maximum size in kilobytes of an Edge Config. Only specified if a custom limit is set.
-   */
-  edgeConfigSize?: number | undefined;
-  /**
-   * The maximum number of edge configs an account can create.
-   */
-  edgeConfigs?: number | undefined;
-  /**
-   * The maximum number of kv databases an account can create.
-   */
-  kvDatabases?: number | undefined;
-  /**
-   * The maximum number of blob stores an account can create.
-   */
-  blobStores?: number | undefined;
-  /**
-   * The maximum number of postgres databases an account can create.
-   */
-  postgresDatabases?: number | undefined;
-  /**
-   * The maximum number of custom environments allowed per project.
-   */
-  customEnvironmentsPerProject?: number | undefined;
-  /**
-   * The maximum memory size (in MB) for a serverless function. Only specified if a custom limit is set.
-   */
-  serverlessFunctionMaxMemorySize?: number | undefined;
-  buildEntitlements?: BuildEntitlements | undefined;
-  /**
-   * Build machine configuration
-   */
-  buildMachine?: BuildMachine | undefined;
-};
-
-export type DisableHardAutoBlocks = number | boolean;
-
-/**
- * Is remote caching enabled for this team
- */
-export type RemoteCaching = {
+export type Connect = {
   enabled?: boolean | undefined;
 };
 
@@ -316,6 +46,32 @@ export type SsoProtection = {
 export type DefaultDeploymentProtection = {
   passwordProtection?: PasswordProtection | null | undefined;
   ssoProtection?: SsoProtection | null | undefined;
+};
+
+/**
+ * Default deployment expiration settings for this team
+ */
+export type DefaultExpirationSettings = {
+  /**
+   * Minimum number of production deployments to keep for this project, even if they are over the production expiration limit.
+   */
+  deploymentsToKeep?: number | undefined;
+  /**
+   * Number of days to keep non-production deployments (mostly preview deployments) before soft deletion.
+   */
+  expirationDays?: number | undefined;
+  /**
+   * Number of days to keep canceled deployments before soft deletion.
+   */
+  expirationDaysCanceled?: number | undefined;
+  /**
+   * Number of days to keep errored deployments before soft deletion.
+   */
+  expirationDaysErrored?: number | undefined;
+  /**
+   * Number of days to keep production deployments before soft deletion.
+   */
+  expirationDaysProduction?: number | undefined;
 };
 
 /**
@@ -347,45 +103,9 @@ export type DefaultPassport = {
 };
 
 /**
- * Default deployment expiration settings for this team
- */
-export type DefaultExpirationSettings = {
-  /**
-   * Number of days to keep non-production deployments (mostly preview deployments) before soft deletion.
-   */
-  expirationDays?: number | undefined;
-  /**
-   * Number of days to keep production deployments before soft deletion.
-   */
-  expirationDaysProduction?: number | undefined;
-  /**
-   * Number of days to keep canceled deployments before soft deletion.
-   */
-  expirationDaysCanceled?: number | undefined;
-  /**
-   * Number of days to keep errored deployments before soft deletion.
-   */
-  expirationDaysErrored?: number | undefined;
-  /**
-   * Minimum number of production deployments to keep for this project, even if they are over the production expiration limit.
-   */
-  deploymentsToKeep?: number | undefined;
-};
-
-/**
  * Default job configuration applied to new projects created in this team.
  */
 export type Lint = {
-  /**
-   * Default job configuration applied to new projects created in this team.
-   */
-  targets: Array<string>;
-};
-
-/**
- * Default job configuration applied to new projects created in this team.
- */
-export type Typecheck = {
   /**
    * Default job configuration applied to new projects created in this team.
    */
@@ -405,6 +125,16 @@ export type MfeConfigPresent = {
 /**
  * Default job configuration applied to new projects created in this team.
  */
+export type Typecheck = {
+  /**
+   * Default job configuration applied to new projects created in this team.
+   */
+  targets: Array<string>;
+};
+
+/**
+ * Default job configuration applied to new projects created in this team.
+ */
 export type DefaultProjectJobs = {
   /**
    * Default job configuration applied to new projects created in this team.
@@ -413,12 +143,198 @@ export type DefaultProjectJobs = {
   /**
    * Default job configuration applied to new projects created in this team.
    */
-  typecheck?: Typecheck | undefined;
+  mfeConfigPresent?: MfeConfigPresent | undefined;
   /**
    * Default job configuration applied to new projects created in this team.
    */
-  mfeConfigPresent?: MfeConfigPresent | undefined;
+  typecheck?: Typecheck | undefined;
 };
+
+export const TeamTeamPermissions = {
+  AiGatewayApiKeyOwnedBySelf: "AiGatewayApiKeyOwnedBySelf",
+  AiGatewayBudgetManager: "AiGatewayBudgetManager",
+  AiGatewayCredits: "AiGatewayCredits",
+  AiGatewaySettings: "AiGatewaySettings",
+  AiGatewayTranscriptsManager: "AiGatewayTranscriptsManager",
+  AiGatewayTranscriptsViewer: "AiGatewayTranscriptsViewer",
+  ConnectorManager: "ConnectorManager",
+  CreateProject: "CreateProject",
+  EnvVariableManager: "EnvVariableManager",
+  EnvironmentManager: "EnvironmentManager",
+  FullProductionDeployment: "FullProductionDeployment",
+  IntegrationManager: "IntegrationManager",
+  OrgAdmin: "OrgAdmin",
+  OrgViewer: "OrgViewer",
+  UsageViewer: "UsageViewer",
+  V0Builder: "V0Builder",
+  V0Chatter: "V0Chatter",
+  V0Viewer: "V0Viewer",
+  WorkflowDecryptor: "WorkflowDecryptor",
+} as const;
+export type TeamTeamPermissions = ClosedEnum<typeof TeamTeamPermissions>;
+
+export const TeamTeamRoles = {
+  Billing: "BILLING",
+  Contributor: "CONTRIBUTOR",
+  Developer: "DEVELOPER",
+  Member: "MEMBER",
+  Owner: "OWNER",
+  Security: "SECURITY",
+  Viewer: "VIEWER",
+  ViewerForPlus: "VIEWER_FOR_PLUS",
+} as const;
+export type TeamTeamRoles = ClosedEnum<typeof TeamTeamRoles>;
+
+/**
+ * Default roles for the team.
+ */
+export type DefaultRoles = {
+  teamPermissions?: Array<TeamTeamPermissions> | undefined;
+  teamRoles?: Array<TeamTeamRoles> | undefined;
+};
+
+export type Environments2 = {
+  environmentId: string;
+  type: "custom";
+};
+
+export const EnvironmentsTarget = {
+  Preview: "preview",
+  Production: "production",
+} as const;
+export type EnvironmentsTarget = ClosedEnum<typeof EnvironmentsTarget>;
+
+export type TeamEnvironments1 = {
+  target: EnvironmentsTarget;
+  type: "system";
+};
+
+export type TeamEnvironments = TeamEnvironments1 | Environments2;
+
+/**
+ * Customer-configurable deployment sources. Every deploy classifies to exactly one. JSON schema in `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'` — git provider webhook. - `'cli'` — Vercel CLI (legacy classic-token CLI and SIWV CLI both). - `'rest-api'` — direct user/team-token REST upload. Does NOT cover deploy hooks, Marketplace integrations, or first-party app tokens. - `'deploy-hook'` — project deploy-hook URL. The URL is the credential. - `'integration'` — third-party Marketplace actor: Marketplace integration token, user-delegated OAuth from a Marketplace app, or an unrecognized third-party Vercel App. First-party Vercel Apps are never `'integration'`. - `'v0'` — the v0 product surface (entitlement-gated). v0 deploys through the CLI under the hood, but classifies as its own source so a team can allow or deny v0 independently of `'cli'`. First-party Vercel apps (Toolbar, etc.) classify as `'first-party'` — see `ClassifiedSource` in `./checks`. They're not in this union because they aren't customer-configurable; they bypass `checkDeploymentSources` entirely. v0 is intentionally NOT among them: like the CLI, it's a real product surface and is policy-controllable.
+ */
+export const Sources = {
+  Cli: "cli",
+  DeployHook: "deploy-hook",
+  Git: "git",
+  Integration: "integration",
+  RestApi: "rest-api",
+  V0: "v0",
+} as const;
+/**
+ * Customer-configurable deployment sources. Every deploy classifies to exactly one. JSON schema in `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'` — git provider webhook. - `'cli'` — Vercel CLI (legacy classic-token CLI and SIWV CLI both). - `'rest-api'` — direct user/team-token REST upload. Does NOT cover deploy hooks, Marketplace integrations, or first-party app tokens. - `'deploy-hook'` — project deploy-hook URL. The URL is the credential. - `'integration'` — third-party Marketplace actor: Marketplace integration token, user-delegated OAuth from a Marketplace app, or an unrecognized third-party Vercel App. First-party Vercel Apps are never `'integration'`. - `'v0'` — the v0 product surface (entitlement-gated). v0 deploys through the CLI under the hood, but classifies as its own source so a team can allow or deny v0 independently of `'cli'`. First-party Vercel apps (Toolbar, etc.) classify as `'first-party'` — see `ClassifiedSource` in `./checks`. They're not in this union because they aren't customer-configurable; they bypass `checkDeploymentSources` entirely. v0 is intentionally NOT among them: like the CLI, it's a real product surface and is policy-controllable.
+ */
+export type Sources = ClosedEnum<typeof Sources>;
+
+/**
+ * `enabled: true` with empty `sources` is deny-all.
+ */
+export type DeploymentSources = {
+  enabled: boolean;
+  environments: Array<TeamEnvironments1 | Environments2>;
+  sources: Array<Sources>;
+};
+
+export type TeamEnvironments2 = {
+  environmentId: string;
+  type: "custom";
+};
+
+export const TeamEnvironmentsTarget = {
+  Preview: "preview",
+  Production: "production",
+} as const;
+export type TeamEnvironmentsTarget = ClosedEnum<typeof TeamEnvironmentsTarget>;
+
+export type TeamEnvironmentsDeploymentPolicy1 = {
+  target: TeamEnvironmentsTarget;
+  type: "system";
+};
+
+export type TeamDeploymentPolicyEnvironments =
+  | TeamEnvironmentsDeploymentPolicy1
+  | TeamEnvironments2;
+
+/**
+ * Allowlist entry for GitLab, which uses nested groups rather than a flat org/repo. `namespace` is the full group path (e.g. `group` or `group/subgroup`); `project` is the leaf project name. Omit `project` to match any project under the namespace. Namespace is matched case-insensitively.
+ */
+export type Sources2 = {
+  namespace: string;
+  project?: string | undefined;
+  provider: "gitlab";
+};
+
+export const SourcesProvider = {
+  Bitbucket: "bitbucket",
+  Github: "github",
+} as const;
+export type SourcesProvider = ClosedEnum<typeof SourcesProvider>;
+
+/**
+ * Allowlist entry for GitHub and Bitbucket, whose repos are identified by a flat `org`/`repo` (Bitbucket's workspace/owner maps to `org`, its repo slug to `repo`). Omit `repo` to match any repo in the org. Org is matched case-insensitively.
+ */
+export type Sources1 = {
+  org: string;
+  provider: SourcesProvider;
+  repo?: string | undefined;
+};
+
+export type TeamSources =
+  | (Sources1 & { provider: "bitbucket" })
+  | (Sources1 & { provider: "github" })
+  | Sources2;
+
+/**
+ * `enabled: true` with empty `sources` is deny-all.
+ */
+export type GitSources = {
+  enabled: boolean;
+  environments: Array<TeamEnvironmentsDeploymentPolicy1 | TeamEnvironments2>;
+  sources: Array<
+    | (Sources1 & { provider: "bitbucket" })
+    | (Sources1 & { provider: "github" })
+    | Sources2
+  >;
+};
+
+/**
+ * Composable deployment-time policy for the team. Used as the default for every project on the team, with optional per-project overrides on `project.deploymentPolicy`.
+ */
+export type DeploymentPolicy = {
+  deploymentSources?: Array<DeploymentSources> | undefined;
+  gitSources?: Array<GitSources> | undefined;
+};
+
+export type DisableHardAutoBlocks = number | boolean;
+
+/**
+ * Require production secrets to use a different value than preview or development.
+ */
+export const DisjunctiveProductionSecretPolicy = {
+  Default: "default",
+  Off: "off",
+  On: "on",
+} as const;
+/**
+ * Require production secrets to use a different value than preview or development.
+ */
+export type DisjunctiveProductionSecretPolicy = ClosedEnum<
+  typeof DisjunctiveProductionSecretPolicy
+>;
+
+/**
+ * Controls who can request access to protected deployments.
+ */
+export const DpAccessRequestsMode = {
+  All: "all",
+  EmailDomain: "email-domain",
+  None: "none",
+} as const;
+/**
+ * Controls who can request access to protected deployments.
+ */
+export type DpAccessRequestsMode = ClosedEnum<typeof DpAccessRequestsMode>;
 
 /**
  * Whether toolbar is enabled on preview deployments
@@ -454,216 +370,53 @@ export type EnableProductionFeedback = ClosedEnum<
   typeof EnableProductionFeedback
 >;
 
-/**
- * Sensitive environment variable policy for this team
- */
-export const SensitiveEnvironmentVariablePolicy = {
-  Default: "default",
-  Off: "off",
-  On: "on",
-} as const;
-/**
- * Sensitive environment variable policy for this team
- */
-export type SensitiveEnvironmentVariablePolicy = ClosedEnum<
-  typeof SensitiveEnvironmentVariablePolicy
->;
-
-/**
- * Require production secrets to use a different value than preview or development.
- */
-export const DisjunctiveProductionSecretPolicy = {
-  Default: "default",
-  Off: "off",
-  On: "on",
-} as const;
-/**
- * Require production secrets to use a different value than preview or development.
- */
-export type DisjunctiveProductionSecretPolicy = ClosedEnum<
-  typeof DisjunctiveProductionSecretPolicy
->;
-
-/**
- * Controls who can request access to protected deployments.
- */
-export const DpAccessRequestsMode = {
-  All: "all",
-  EmailDomain: "email-domain",
-  None: "none",
-} as const;
-/**
- * Controls who can request access to protected deployments.
- */
-export type DpAccessRequestsMode = ClosedEnum<typeof DpAccessRequestsMode>;
-
 export type IpBuckets = {
   bucket: string;
-  supportUntil?: number | undefined;
   default?: boolean | undefined;
-};
-
-/**
- * When enabled, deployment protection settings require stricter permissions (owner-only).
- */
-export type StrictDeploymentProtectionSettings = {
-  enabled: boolean;
-  updatedAt: number;
-};
-
-/**
- * When enabled, creating shareable links requires Owner role.
- */
-export type StrictShareableLinks = {
-  enabled: boolean;
-  updatedAt: number;
-};
-
-/**
- * When enabled, adding, changing, or removing project password protection requires Owner role.
- */
-export type StrictPasswordProtectionSettings = {
-  enabled: boolean;
-  updatedAt: number;
-};
-
-/**
- * When enabled, creating and managing connectors requires Owner role or the ConnectorManager permission.
- */
-export type StrictConnectors = {
-  enabled: boolean;
-  updatedAt: number;
-};
-
-export const Preference = {
-  AutoApproval: "auto-approval",
-  Block: "block",
-  ManualApproval: "manual-approval",
-} as const;
-export type Preference = ClosedEnum<typeof Preference>;
-
-/**
- * NSNB configuration for the team.
- */
-export type NsnbConfig = {
-  preference: Preference;
-};
-
-/**
- * Allowlist entry for GitLab, which uses nested groups rather than a flat org/repo. `namespace` is the full group path (e.g. `group` or `group/subgroup`); `project` is the leaf project name. Omit `project` to match any project under the namespace. Namespace is matched case-insensitively.
- */
-export type Sources2 = {
-  provider: "gitlab";
-  namespace: string;
-  project?: string | undefined;
-};
-
-export const SourcesProvider = {
-  Bitbucket: "bitbucket",
-  Github: "github",
-} as const;
-export type SourcesProvider = ClosedEnum<typeof SourcesProvider>;
-
-/**
- * Allowlist entry for GitHub and Bitbucket, whose repos are identified by a flat `org`/`repo` (Bitbucket's workspace/owner maps to `org`, its repo slug to `repo`). Omit `repo` to match any repo in the org. Org is matched case-insensitively.
- */
-export type Sources1 = {
-  provider: SourcesProvider;
-  org: string;
-  repo?: string | undefined;
-};
-
-export type Sources =
-  | (Sources1 & { provider: "bitbucket" })
-  | (Sources1 & { provider: "github" })
-  | Sources2;
-
-export type Environments2 = {
-  type: "custom";
-  environmentId: string;
-};
-
-export const EnvironmentsTarget = {
-  Preview: "preview",
-  Production: "production",
-} as const;
-export type EnvironmentsTarget = ClosedEnum<typeof EnvironmentsTarget>;
-
-export type TeamEnvironments1 = {
-  type: "system";
-  target: EnvironmentsTarget;
-};
-
-export type TeamEnvironments = TeamEnvironments1 | Environments2;
-
-/**
- * `enabled: true` with empty `sources` is deny-all.
- */
-export type GitSources = {
-  sources: Array<
-    | (Sources1 & { provider: "bitbucket" })
-    | (Sources1 & { provider: "github" })
-    | Sources2
-  >;
-  enabled: boolean;
-  environments: Array<TeamEnvironments1 | Environments2>;
-};
-
-/**
- * Customer-configurable deployment sources. Every deploy classifies to exactly one. JSON schema in `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'` — git provider webhook. - `'cli'` — Vercel CLI (legacy classic-token CLI and SIWV CLI both). - `'rest-api'` — direct user/team-token REST upload. Does NOT cover deploy hooks, Marketplace integrations, or first-party app tokens. - `'deploy-hook'` — project deploy-hook URL. The URL is the credential. - `'integration'` — third-party Marketplace actor: Marketplace integration token, user-delegated OAuth from a Marketplace app, or an unrecognized third-party Vercel App. First-party Vercel Apps are never `'integration'`. - `'v0'` — the v0 product surface (entitlement-gated). v0 deploys through the CLI under the hood, but classifies as its own source so a team can allow or deny v0 independently of `'cli'`. First-party Vercel apps (Toolbar, etc.) classify as `'first-party'` — see `ClassifiedSource` in `./checks`. They're not in this union because they aren't customer-configurable; they bypass `checkDeploymentSources` entirely. v0 is intentionally NOT among them: like the CLI, it's a real product surface and is policy-controllable.
- */
-export const TeamSources = {
-  Cli: "cli",
-  DeployHook: "deploy-hook",
-  Git: "git",
-  Integration: "integration",
-  RestApi: "rest-api",
-  V0: "v0",
-} as const;
-/**
- * Customer-configurable deployment sources. Every deploy classifies to exactly one. JSON schema in `packages/deployment-policy/schemas/body.ts` enumerates exactly these values. - `'git'` — git provider webhook. - `'cli'` — Vercel CLI (legacy classic-token CLI and SIWV CLI both). - `'rest-api'` — direct user/team-token REST upload. Does NOT cover deploy hooks, Marketplace integrations, or first-party app tokens. - `'deploy-hook'` — project deploy-hook URL. The URL is the credential. - `'integration'` — third-party Marketplace actor: Marketplace integration token, user-delegated OAuth from a Marketplace app, or an unrecognized third-party Vercel App. First-party Vercel Apps are never `'integration'`. - `'v0'` — the v0 product surface (entitlement-gated). v0 deploys through the CLI under the hood, but classifies as its own source so a team can allow or deny v0 independently of `'cli'`. First-party Vercel apps (Toolbar, etc.) classify as `'first-party'` — see `ClassifiedSource` in `./checks`. They're not in this union because they aren't customer-configurable; they bypass `checkDeploymentSources` entirely. v0 is intentionally NOT among them: like the CLI, it's a real product surface and is policy-controllable.
- */
-export type TeamSources = ClosedEnum<typeof TeamSources>;
-
-export type TeamEnvironments2 = {
-  type: "custom";
-  environmentId: string;
-};
-
-export const TeamEnvironmentsTarget = {
-  Preview: "preview",
-  Production: "production",
-} as const;
-export type TeamEnvironmentsTarget = ClosedEnum<typeof TeamEnvironmentsTarget>;
-
-export type TeamEnvironmentsDeploymentPolicy1 = {
-  type: "system";
-  target: TeamEnvironmentsTarget;
-};
-
-export type TeamDeploymentPolicyEnvironments =
-  | TeamEnvironmentsDeploymentPolicy1
-  | TeamEnvironments2;
-
-/**
- * `enabled: true` with empty `sources` is deny-all.
- */
-export type DeploymentSources = {
-  sources: Array<TeamSources>;
-  enabled: boolean;
-  environments: Array<TeamEnvironmentsDeploymentPolicy1 | TeamEnvironments2>;
-};
-
-/**
- * Composable deployment-time policy for the team. Used as the default for every project on the team, with optional per-project overrides on `project.deploymentPolicy`.
- */
-export type DeploymentPolicy = {
-  gitSources?: Array<GitSources> | undefined;
-  deploymentSources?: Array<DeploymentSources> | undefined;
+  supportUntil?: number | undefined;
 };
 
 export type Entitlements = {
   entitlement: string;
+};
+
+export type GitUserId = string | number;
+
+export const TeamOrigin = {
+  AccountUpdate: "account-update",
+  Bitbucket: "bitbucket",
+  Dsync: "dsync",
+  Feedback: "feedback",
+  Github: "github",
+  Gitlab: "gitlab",
+  Import: "import",
+  Link: "link",
+  Mail: "mail",
+  NsnbAutoApprove: "nsnb-auto-approve",
+  NsnbHobbyUpgrade: "nsnb-hobby-upgrade",
+  NsnbInvite: "nsnb-invite",
+  NsnbRedeploy: "nsnb-redeploy",
+  NsnbRedeployAttributionCard: "nsnb-redeploy-attribution-card",
+  NsnbRequestAccess: "nsnb-request-access",
+  NsnbViewerUpgrade: "nsnb-viewer-upgrade",
+  OrganizationTeams: "organization-teams",
+  Saml: "saml",
+  Teams: "teams",
+} as const;
+export type TeamOrigin = ClosedEnum<typeof TeamOrigin>;
+
+export type JoinedFrom = {
+  commitId?: string | undefined;
+  dsyncConnectedAt?: number | undefined;
+  dsyncUserId?: string | undefined;
+  gitUserId?: string | number | undefined;
+  gitUserLogin?: string | undefined;
+  idpUserId?: string | undefined;
+  origin: TeamOrigin;
+  repoId?: string | undefined;
+  repoPath?: string | undefined;
+  ssoConnectedAt?: number | undefined;
+  ssoUserId?: string | undefined;
 };
 
 export const TeamRole = {
@@ -677,20 +430,6 @@ export const TeamRole = {
   ViewerForPlus: "VIEWER_FOR_PLUS",
 } as const;
 export type TeamRole = ClosedEnum<typeof TeamRole>;
-
-export const TeamMembershipTeamRoles = {
-  Billing: "BILLING",
-  Contributor: "CONTRIBUTOR",
-  Developer: "DEVELOPER",
-  Member: "MEMBER",
-  Owner: "OWNER",
-  Security: "SECURITY",
-  Viewer: "VIEWER",
-  ViewerForPlus: "VIEWER_FOR_PLUS",
-} as const;
-export type TeamMembershipTeamRoles = ClosedEnum<
-  typeof TeamMembershipTeamRoles
->;
 
 export const TeamMembershipTeamPermissions = {
   AiGatewayApiKeyOwnedBySelf: "AiGatewayApiKeyOwnedBySelf",
@@ -717,133 +456,400 @@ export type TeamMembershipTeamPermissions = ClosedEnum<
   typeof TeamMembershipTeamPermissions
 >;
 
-export const TeamOrigin = {
-  AccountUpdate: "account-update",
-  Bitbucket: "bitbucket",
-  Dsync: "dsync",
-  Feedback: "feedback",
-  Github: "github",
-  Gitlab: "gitlab",
-  Import: "import",
-  Link: "link",
-  Mail: "mail",
-  NsnbAutoApprove: "nsnb-auto-approve",
-  NsnbHobbyUpgrade: "nsnb-hobby-upgrade",
-  NsnbInvite: "nsnb-invite",
-  NsnbRedeploy: "nsnb-redeploy",
-  NsnbRedeployAttributionCard: "nsnb-redeploy-attribution-card",
-  NsnbRequestAccess: "nsnb-request-access",
-  NsnbViewerUpgrade: "nsnb-viewer-upgrade",
-  OrganizationTeams: "organization-teams",
-  Saml: "saml",
-  Teams: "teams",
+export const TeamMembershipTeamRoles = {
+  Billing: "BILLING",
+  Contributor: "CONTRIBUTOR",
+  Developer: "DEVELOPER",
+  Member: "MEMBER",
+  Owner: "OWNER",
+  Security: "SECURITY",
+  Viewer: "VIEWER",
+  ViewerForPlus: "VIEWER_FOR_PLUS",
 } as const;
-export type TeamOrigin = ClosedEnum<typeof TeamOrigin>;
-
-export type GitUserId = string | number;
-
-export type JoinedFrom = {
-  origin: TeamOrigin;
-  commitId?: string | undefined;
-  repoId?: string | undefined;
-  repoPath?: string | undefined;
-  gitUserId?: string | number | undefined;
-  gitUserLogin?: string | undefined;
-  ssoUserId?: string | undefined;
-  ssoConnectedAt?: number | undefined;
-  idpUserId?: string | undefined;
-  dsyncUserId?: string | undefined;
-  dsyncConnectedAt?: number | undefined;
-};
+export type TeamMembershipTeamRoles = ClosedEnum<
+  typeof TeamMembershipTeamRoles
+>;
 
 /**
  * The membership of the authenticated User in relation to the Team.
  */
 export type Membership = {
-  uid?: string | undefined;
-  entitlements?: Array<Entitlements> | undefined;
-  teamId?: string | undefined;
-  confirmed: true;
   accessRequestedAt?: number | undefined;
-  role: TeamRole;
-  teamRoles?: Array<TeamMembershipTeamRoles> | undefined;
-  teamPermissions?: Array<TeamMembershipTeamPermissions> | undefined;
-  createdAt: number;
+  confirmed: true;
   created: number;
+  createdAt: number;
+  entitlements?: Array<Entitlements> | undefined;
   joinedFrom?: JoinedFrom | undefined;
+  role: TeamRole;
+  teamId?: string | undefined;
+  teamPermissions?: Array<TeamMembershipTeamPermissions> | undefined;
+  teamRoles?: Array<TeamMembershipTeamRoles> | undefined;
+  uid?: string | undefined;
+};
+
+export const Preference = {
+  AutoApproval: "auto-approval",
+  Block: "block",
+  ManualApproval: "manual-approval",
+} as const;
+export type Preference = ClosedEnum<typeof Preference>;
+
+/**
+ * NSNB configuration for the team.
+ */
+export type NsnbConfig = {
+  preference: Preference;
+};
+
+/**
+ * Is remote caching enabled for this team
+ */
+export type RemoteCaching = {
+  enabled?: boolean | undefined;
+};
+
+export type BuildEntitlements = {
+  enhancedBuilds?: boolean | undefined;
+};
+
+/**
+ * Default build machine type for new builds
+ */
+export const Default = {
+  Basic: "basic",
+  Elastic: "elastic",
+  Enhanced: "enhanced",
+  Standard: "standard",
+  Turbo: "turbo",
+} as const;
+/**
+ * Default build machine type for new builds
+ */
+export type Default = ClosedEnum<typeof Default>;
+
+/**
+ * Build machine configuration
+ */
+export type BuildMachine = {
+  /**
+   * Default build machine type for new builds
+   */
+  default?: Default | undefined;
+};
+
+export type ResourceConfig = {
+  /**
+   * The maximum number of blob stores an account can create.
+   */
+  blobStores?: number | undefined;
+  buildEntitlements?: BuildEntitlements | undefined;
+  /**
+   * Build machine configuration
+   */
+  buildMachine?: BuildMachine | undefined;
+  /**
+   * The total amount of concurrent builds that can be used.
+   */
+  concurrentBuilds?: number | undefined;
+  /**
+   * The maximum number of custom environments allowed per project.
+   */
+  customEnvironmentsPerProject?: number | undefined;
+  /**
+   * The maximum number of edge configs an account can create.
+   */
+  edgeConfigs?: number | undefined;
+  /**
+   * The maximum size in kilobytes of an Edge Config. Only specified if a custom limit is set.
+   */
+  edgeConfigSize?: number | undefined;
+  /**
+   * Whether every build for this team / user has elastic concurrency enabled automatically.
+   */
+  elasticConcurrencyEnabled?: boolean | undefined;
+  /**
+   * The maximum number of kv databases an account can create.
+   */
+  kvDatabases?: number | undefined;
+  /**
+   * The maximum number of postgres databases an account can create.
+   */
+  postgresDatabases?: number | undefined;
+  /**
+   * The maximum memory size (in MB) for a serverless function. Only specified if a custom limit is set.
+   */
+  serverlessFunctionMaxMemorySize?: number | undefined;
+};
+
+/**
+ * Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
+ */
+export const SyncState = {
+  Active: "ACTIVE",
+  Setup: "SETUP",
+} as const;
+/**
+ * Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
+ */
+export type SyncState = ClosedEnum<typeof SyncState>;
+
+/**
+ * Information for the SAML Single Sign-On configuration.
+ */
+export type Connection = {
+  /**
+   * Timestamp (in milliseconds) of when the configuration was connected.
+   */
+  connectedAt: number;
+  /**
+   * Timestamp (in milliseconds) of when the last webhook event was received from WorkOS.
+   */
+  lastReceivedWebhookEvent?: number | undefined;
+  /**
+   * Timestamp (in milliseconds) of when the last directory sync was performed.
+   */
+  lastSyncedAt?: number | undefined;
+  /**
+   * Current state of the connection.
+   */
+  state: string;
+  /**
+   * Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
+   */
+  syncState?: SyncState | undefined;
+  /**
+   * The Identity Provider "type", for example Okta.
+   */
+  type: string;
+  status: string;
+};
+
+/**
+ * The default redirect URI to use after successful SAML authentication.
+ */
+export const DefaultRedirectUri = {
+  V0App: "v0.app",
+  V0Dev: "v0.dev",
+  VercelCom: "vercel.com",
+} as const;
+/**
+ * The default redirect URI to use after successful SAML authentication.
+ */
+export type DefaultRedirectUri = ClosedEnum<typeof DefaultRedirectUri>;
+
+/**
+ * Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
+ */
+export const TeamSyncState = {
+  Active: "ACTIVE",
+  Setup: "SETUP",
+} as const;
+/**
+ * Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
+ */
+export type TeamSyncState = ClosedEnum<typeof TeamSyncState>;
+
+/**
+ * Information for the Directory Sync configuration.
+ */
+export type Directory = {
+  /**
+   * Timestamp (in milliseconds) of when the configuration was connected.
+   */
+  connectedAt: number;
+  /**
+   * Timestamp (in milliseconds) of when the last webhook event was received from WorkOS.
+   */
+  lastReceivedWebhookEvent?: number | undefined;
+  /**
+   * Timestamp (in milliseconds) of when the last directory sync was performed.
+   */
+  lastSyncedAt?: number | undefined;
+  /**
+   * Current state of the connection.
+   */
+  state: string;
+  /**
+   * Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
+   */
+  syncState?: TeamSyncState | undefined;
+  /**
+   * The Identity Provider "type", for example Okta.
+   */
+  type: string;
+};
+
+export const Roles2 = {
+  Billing: "BILLING",
+  Contributor: "CONTRIBUTOR",
+  Developer: "DEVELOPER",
+  Member: "MEMBER",
+  Owner: "OWNER",
+  Security: "SECURITY",
+  Viewer: "VIEWER",
+  ViewerForPlus: "VIEWER_FOR_PLUS",
+} as const;
+export type Roles2 = ClosedEnum<typeof Roles2>;
+
+/**
+ * When "Directory Sync" is configured, this object contains a mapping of which Directory Group (by ID) should be assigned to which Vercel Team "role".
+ */
+export type Roles1 = {
+  accessGroupId: string;
+};
+
+export type Roles = Roles1 | Roles2;
+
+/**
+ * When "Single Sign-On (SAML)" is configured, this object contains information regarding the configuration of the Identity Provider (IdP).
+ */
+export type Saml = {
+  /**
+   * Information for the SAML Single Sign-On configuration.
+   */
+  connection?: Connection | undefined;
+  /**
+   * The default redirect URI to use after successful SAML authentication.
+   */
+  defaultRedirectUri?: DefaultRedirectUri | undefined;
+  /**
+   * Information for the Directory Sync configuration.
+   */
+  directory?: Directory | undefined;
+  /**
+   * When `true`, interactions with the Team **must** be done with an authentication token that has been authenticated with the Team's SAML Single Sign-On provider.
+   */
+  enforced: boolean;
+  /**
+   * When "Directory Sync" is configured, this object contains a mapping of which Directory Group (by ID) should be assigned to which Vercel Team "role".
+   */
+  roles?: { [k: string]: Roles1 | Roles2 } | undefined;
+};
+
+/**
+ * Sensitive environment variable policy for this team
+ */
+export const SensitiveEnvironmentVariablePolicy = {
+  Default: "default",
+  Off: "off",
+  On: "on",
+} as const;
+/**
+ * Sensitive environment variable policy for this team
+ */
+export type SensitiveEnvironmentVariablePolicy = ClosedEnum<
+  typeof SensitiveEnvironmentVariablePolicy
+>;
+
+/**
+ * When enabled, creating and managing connectors requires Owner role or the ConnectorManager permission.
+ */
+export type StrictConnectors = {
+  enabled: boolean;
+  updatedAt: number;
+};
+
+/**
+ * When enabled, deployment protection settings require stricter permissions (owner-only).
+ */
+export type StrictDeploymentProtectionSettings = {
+  enabled: boolean;
+  updatedAt: number;
+};
+
+/**
+ * When enabled, adding, changing, or removing project password protection requires Owner role.
+ */
+export type StrictPasswordProtectionSettings = {
+  enabled: boolean;
+  updatedAt: number;
+};
+
+/**
+ * When enabled, creating shareable links requires Owner role.
+ */
+export type StrictShareableLinks = {
+  enabled: boolean;
+  updatedAt: number;
 };
 
 /**
  * Data representing a Team.
  */
 export type Team = {
+  /**
+   * Timestamp (ms) after which API keys created at or before this time are considered invalid for this team.
+   */
+  apiKeysInvalidatedAt?: number | undefined;
+  /**
+   * Timestamp (ms) after which Vercel App tokens created at or before this time are considered invalid for this team.
+   */
+  appTokensInvalidatedAt?: number | undefined;
+  /**
+   * The ID of the file used as avatar for this Team.
+   */
+  avatar: string | null;
+  /**
+   * The team's billing plan.
+   */
+  billing: Billing | null;
   connect?: Connect | undefined;
+  /**
+   * UNIX timestamp (in milliseconds) when the Team was created.
+   */
+  createdAt: number;
   /**
    * The ID of the user who created the Team.
    */
   creatorId: string;
   /**
-   * Timestamp (in milliseconds) of when the Team was last updated.
-   */
-  updatedAt: number;
-  /**
-   * Hostname that'll be matched with emails on sign-up to automatically join the Team.
-   */
-  emailDomain?: string | null | undefined;
-  /**
-   * When "Single Sign-On (SAML)" is configured, this object contains information regarding the configuration of the Identity Provider (IdP).
-   */
-  saml?: Saml | undefined;
-  /**
-   * Code that can be used to join this Team. Only visible to Team owners.
-   */
-  inviteCode?: string | undefined;
-  /**
-   * The team's billing plan.
-   */
-  billing: Billing | null;
-  /**
-   * A short description of the Team.
-   */
-  description: string | null;
-  /**
-   * Default roles for the team.
-   */
-  defaultRoles?: DefaultRoles | undefined;
-  /**
-   * The prefix that is prepended to automatic aliases.
-   */
-  stagingPrefix: string;
-  resourceConfig?: ResourceConfig | undefined;
-  /**
-   * The hostname that is current set as preview deployment suffix.
-   */
-  previewDeploymentSuffix?: string | null | undefined;
-  /**
-   * Whether the team is a platform team.
-   */
-  platform?: boolean | undefined;
-  disableHardAutoBlocks?: number | boolean | undefined;
-  /**
-   * Is remote caching enabled for this team
-   */
-  remoteCaching?: RemoteCaching | undefined;
-  /**
    * Default deployment protection for this team null indicates protection is disabled
    */
   defaultDeploymentProtection?: DefaultDeploymentProtection | undefined;
-  /**
-   * Default Passport configuration for new projects in this team.
-   */
-  defaultPassport?: DefaultPassport | null | undefined;
   /**
    * Default deployment expiration settings for this team
    */
   defaultExpirationSettings?: DefaultExpirationSettings | undefined;
   /**
+   * Default Passport configuration for new projects in this team.
+   */
+  defaultPassport?: DefaultPassport | null | undefined;
+  /**
    * Default job configuration applied to new projects created in this team.
    */
   defaultProjectJobs?: DefaultProjectJobs | undefined;
+  /**
+   * Default roles for the team.
+   */
+  defaultRoles?: DefaultRoles | undefined;
+  /**
+   * Composable deployment-time policy for the team. Used as the default for every project on the team, with optional per-project overrides on `project.deploymentPolicy`.
+   */
+  deploymentPolicy?: DeploymentPolicy | undefined;
+  /**
+   * A short description of the Team.
+   */
+  description: string | null;
+  disableHardAutoBlocks?: number | boolean | undefined;
+  /**
+   * Default for projects in the team. When `true`, projects in this team will not emit GitHub repository-dispatch events on deployment events unless the project explicitly overrides this setting via `project.gitProviderOptions.disableRepositoryDispatchEvents`.
+   */
+  disableRepositoryDispatchEvents?: boolean | undefined;
+  /**
+   * Require production secrets to use a different value than preview or development.
+   */
+  disjunctiveProductionSecretPolicy?:
+    | DisjunctiveProductionSecretPolicy
+    | null
+    | undefined;
+  /**
+   * Controls who can request access to protected deployments.
+   */
+  dpAccessRequestsMode?: DpAccessRequestsMode | undefined;
+  /**
+   * Hostname that'll be matched with emails on sign-up to automatically join the Team.
+   */
+  emailDomain?: string | null | undefined;
   /**
    * Whether toolbar is enabled on preview deployments
    */
@@ -853,20 +859,6 @@ export type Team = {
    */
   enableProductionFeedback?: EnableProductionFeedback | null | undefined;
   /**
-   * Sensitive environment variable policy for this team
-   */
-  sensitiveEnvironmentVariablePolicy?:
-    | SensitiveEnvironmentVariablePolicy
-    | null
-    | undefined;
-  /**
-   * Require production secrets to use a different value than preview or development.
-   */
-  disjunctiveProductionSecretPolicy?:
-    | DisjunctiveProductionSecretPolicy
-    | null
-    | undefined;
-  /**
    * Indicates if IP addresses should be accessible in observability (o11y) tooling
    */
   hideIpAddresses?: boolean | null | undefined;
@@ -875,18 +867,82 @@ export type Team = {
    */
   hideIpAddressesInLogDrains?: boolean | null | undefined;
   /**
-   * Controls who can request access to protected deployments.
+   * The Team's unique identifier.
    */
-  dpAccessRequestsMode?: DpAccessRequestsMode | undefined;
+  id: string;
+  /**
+   * Timestamp (ms) after which integration tokens created at or before this time are considered invalid for this team.
+   */
+  integrationTokensInvalidatedAt?: number | undefined;
+  /**
+   * Code that can be used to join this Team. Only visible to Team owners.
+   */
+  inviteCode?: string | undefined;
   ipBuckets?: Array<IpBuckets> | undefined;
+  /**
+   * The membership of the authenticated User in relation to the Team.
+   */
+  membership?: Membership | undefined;
+  /**
+   * Name associated with the Team account, or `null` if none has been provided.
+   */
+  name: string | null;
+  /**
+   * NSNB configuration for the team.
+   */
+  nsnbConfig?: NsnbConfig | undefined;
+  /**
+   * Best-effort ID of the organization’s root billing team. When present, compare `orgRootTeamId === id` to identify the root team. It may be omitted even when `parentId` is set if organization resolution fails or the referenced organization is missing. Always omitted for non-organization teams.
+   */
+  orgRootTeamId?: string | undefined;
+  /**
+   * The organizationId for teams that belong to an organization (set on both the organization's root team and its child teams).
+   */
+  parentId?: string | undefined;
+  /**
+   * Timestamp (ms) after which personal access tokens created at or before this time are considered invalid for this team.
+   */
+  personalAccessTokensInvalidatedAt?: number | undefined;
+  /**
+   * Whether the team is a platform team.
+   */
+  platform?: boolean | undefined;
+  /**
+   * The hostname that is current set as preview deployment suffix.
+   */
+  previewDeploymentSuffix?: string | null | undefined;
+  /**
+   * Is remote caching enabled for this team
+   */
+  remoteCaching?: RemoteCaching | undefined;
   /**
    * When enabled, all projects in the team require commits to be signed and verified by the git provider before deployments will be created. Projects may override this via `project.gitProviderOptions.requireVerifiedCommits` (gated by `Project:Update`).
    */
   requireVerifiedCommits?: boolean | undefined;
+  resourceConfig?: ResourceConfig | undefined;
   /**
-   * Default for projects in the team. When `true`, projects in this team will not emit GitHub repository-dispatch events on deployment events unless the project explicitly overrides this setting via `project.gitProviderOptions.disableRepositoryDispatchEvents`.
+   * When "Single Sign-On (SAML)" is configured, this object contains information regarding the configuration of the Identity Provider (IdP).
    */
-  disableRepositoryDispatchEvents?: boolean | undefined;
+  saml?: Saml | undefined;
+  /**
+   * Sensitive environment variable policy for this team
+   */
+  sensitiveEnvironmentVariablePolicy?:
+    | SensitiveEnvironmentVariablePolicy
+    | null
+    | undefined;
+  /**
+   * The Team's slug, which is unique across the Vercel platform.
+   */
+  slug: string;
+  /**
+   * The prefix that is prepended to automatic aliases.
+   */
+  stagingPrefix: string;
+  /**
+   * When enabled, creating and managing connectors requires Owner role or the ConnectorManager permission.
+   */
+  strictConnectors?: StrictConnectors | undefined;
   /**
    * When enabled, deployment protection settings require stricter permissions (owner-only).
    */
@@ -894,215 +950,21 @@ export type Team = {
     | StrictDeploymentProtectionSettings
     | undefined;
   /**
-   * When enabled, creating shareable links requires Owner role.
-   */
-  strictShareableLinks?: StrictShareableLinks | undefined;
-  /**
    * When enabled, adding, changing, or removing project password protection requires Owner role.
    */
   strictPasswordProtectionSettings?:
     | StrictPasswordProtectionSettings
     | undefined;
   /**
-   * When enabled, creating and managing connectors requires Owner role or the ConnectorManager permission.
+   * When enabled, creating shareable links requires Owner role.
    */
-  strictConnectors?: StrictConnectors | undefined;
+  strictShareableLinks?: StrictShareableLinks | undefined;
   /**
-   * NSNB configuration for the team.
+   * Timestamp (in milliseconds) of when the Team was last updated.
    */
-  nsnbConfig?: NsnbConfig | undefined;
-  /**
-   * Composable deployment-time policy for the team. Used as the default for every project on the team, with optional per-project overrides on `project.deploymentPolicy`.
-   */
-  deploymentPolicy?: DeploymentPolicy | undefined;
-  /**
-   * Timestamp (ms) after which personal access tokens created at or before this time are considered invalid for this team.
-   */
-  personalAccessTokensInvalidatedAt?: number | undefined;
-  /**
-   * Timestamp (ms) after which Vercel App tokens created at or before this time are considered invalid for this team.
-   */
-  appTokensInvalidatedAt?: number | undefined;
-  /**
-   * Timestamp (ms) after which API keys created at or before this time are considered invalid for this team.
-   */
-  apiKeysInvalidatedAt?: number | undefined;
-  /**
-   * Timestamp (ms) after which integration tokens created at or before this time are considered invalid for this team.
-   */
-  integrationTokensInvalidatedAt?: number | undefined;
-  /**
-   * The Team's unique identifier.
-   */
-  id: string;
-  /**
-   * The Team's slug, which is unique across the Vercel platform.
-   */
-  slug: string;
-  /**
-   * Name associated with the Team account, or `null` if none has been provided.
-   */
-  name: string | null;
-  /**
-   * The ID of the file used as avatar for this Team.
-   */
-  avatar: string | null;
-  /**
-   * The membership of the authenticated User in relation to the Team.
-   */
-  membership?: Membership | undefined;
-  /**
-   * UNIX timestamp (in milliseconds) when the Team was created.
-   */
-  createdAt: number;
-  /**
-   * The organizationId for teams that belong to an organization (set on both the organization's root team and its child teams).
-   */
-  parentId?: string | undefined;
-  /**
-   * Best-effort ID of the organization’s root billing team. When present, compare `orgRootTeamId === id` to identify the root team. It may be omitted even when `parentId` is set if organization resolution fails or the referenced organization is missing. Always omitted for non-organization teams.
-   */
-  orgRootTeamId?: string | undefined;
+  updatedAt: number;
   additionalProperties?: { [k: string]: any } | undefined;
 };
-
-/** @internal */
-export const Connect$inboundSchema: z.ZodType<Connect, z.ZodTypeDef, unknown> =
-  z.object({
-    enabled: types.optional(types.boolean()),
-  });
-
-export function connectFromJSON(
-  jsonString: string,
-): SafeParseResult<Connect, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Connect$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Connect' from JSON`,
-  );
-}
-
-/** @internal */
-export const SyncState$inboundSchema: z.ZodNativeEnum<typeof SyncState> = z
-  .nativeEnum(SyncState);
-
-/** @internal */
-export const Connection$inboundSchema: z.ZodType<
-  Connection,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: types.string(),
-  state: types.string(),
-  connectedAt: types.number(),
-  lastReceivedWebhookEvent: types.optional(types.number()),
-  lastSyncedAt: types.optional(types.number()),
-  syncState: types.optional(SyncState$inboundSchema),
-  status: types.string(),
-});
-
-export function connectionFromJSON(
-  jsonString: string,
-): SafeParseResult<Connection, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Connection$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Connection' from JSON`,
-  );
-}
-
-/** @internal */
-export const TeamSyncState$inboundSchema: z.ZodNativeEnum<
-  typeof TeamSyncState
-> = z.nativeEnum(TeamSyncState);
-
-/** @internal */
-export const Directory$inboundSchema: z.ZodType<
-  Directory,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: types.string(),
-  state: types.string(),
-  connectedAt: types.number(),
-  lastReceivedWebhookEvent: types.optional(types.number()),
-  lastSyncedAt: types.optional(types.number()),
-  syncState: types.optional(TeamSyncState$inboundSchema),
-});
-
-export function directoryFromJSON(
-  jsonString: string,
-): SafeParseResult<Directory, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Directory$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Directory' from JSON`,
-  );
-}
-
-/** @internal */
-export const DefaultRedirectUri$inboundSchema: z.ZodNativeEnum<
-  typeof DefaultRedirectUri
-> = z.nativeEnum(DefaultRedirectUri);
-
-/** @internal */
-export const Roles2$inboundSchema: z.ZodNativeEnum<typeof Roles2> = z
-  .nativeEnum(Roles2);
-
-/** @internal */
-export const Roles1$inboundSchema: z.ZodType<Roles1, z.ZodTypeDef, unknown> = z
-  .object({
-    accessGroupId: types.string(),
-  });
-
-export function roles1FromJSON(
-  jsonString: string,
-): SafeParseResult<Roles1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Roles1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Roles1' from JSON`,
-  );
-}
-
-/** @internal */
-export const Roles$inboundSchema: z.ZodType<Roles, z.ZodTypeDef, unknown> =
-  smartUnion([z.lazy(() => Roles1$inboundSchema), Roles2$inboundSchema]);
-
-export function rolesFromJSON(
-  jsonString: string,
-): SafeParseResult<Roles, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Roles$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Roles' from JSON`,
-  );
-}
-
-/** @internal */
-export const Saml$inboundSchema: z.ZodType<Saml, z.ZodTypeDef, unknown> = z
-  .object({
-    connection: types.optional(z.lazy(() => Connection$inboundSchema)),
-    directory: types.optional(z.lazy(() => Directory$inboundSchema)),
-    enforced: types.boolean(),
-    defaultRedirectUri: types.optional(DefaultRedirectUri$inboundSchema),
-    roles: types.optional(
-      z.record(smartUnion([
-        z.lazy(() => Roles1$inboundSchema),
-        Roles2$inboundSchema,
-      ])),
-    ),
-  });
-
-export function samlFromJSON(
-  jsonString: string,
-): SafeParseResult<Saml, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Saml$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Saml' from JSON`,
-  );
-}
 
 /** @internal */
 export const Plan$inboundSchema: z.ZodNativeEnum<typeof Plan> = z.nativeEnum(
@@ -1126,141 +988,18 @@ export function billingFromJSON(
 }
 
 /** @internal */
-export const TeamTeamRoles$inboundSchema: z.ZodNativeEnum<
-  typeof TeamTeamRoles
-> = z.nativeEnum(TeamTeamRoles);
+export const Connect$inboundSchema: z.ZodType<Connect, z.ZodTypeDef, unknown> =
+  z.object({
+    enabled: types.optional(types.boolean()),
+  });
 
-/** @internal */
-export const TeamTeamPermissions$inboundSchema: z.ZodNativeEnum<
-  typeof TeamTeamPermissions
-> = z.nativeEnum(TeamTeamPermissions);
-
-/** @internal */
-export const DefaultRoles$inboundSchema: z.ZodType<
-  DefaultRoles,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  teamRoles: types.optional(z.array(TeamTeamRoles$inboundSchema)),
-  teamPermissions: types.optional(z.array(TeamTeamPermissions$inboundSchema)),
-});
-
-export function defaultRolesFromJSON(
+export function connectFromJSON(
   jsonString: string,
-): SafeParseResult<DefaultRoles, SDKValidationError> {
+): SafeParseResult<Connect, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => DefaultRoles$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DefaultRoles' from JSON`,
-  );
-}
-
-/** @internal */
-export const BuildEntitlements$inboundSchema: z.ZodType<
-  BuildEntitlements,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  enhancedBuilds: types.optional(types.boolean()),
-});
-
-export function buildEntitlementsFromJSON(
-  jsonString: string,
-): SafeParseResult<BuildEntitlements, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => BuildEntitlements$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BuildEntitlements' from JSON`,
-  );
-}
-
-/** @internal */
-export const Default$inboundSchema: z.ZodNativeEnum<typeof Default> = z
-  .nativeEnum(Default);
-
-/** @internal */
-export const BuildMachine$inboundSchema: z.ZodType<
-  BuildMachine,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  default: types.optional(Default$inboundSchema),
-});
-
-export function buildMachineFromJSON(
-  jsonString: string,
-): SafeParseResult<BuildMachine, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => BuildMachine$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BuildMachine' from JSON`,
-  );
-}
-
-/** @internal */
-export const ResourceConfig$inboundSchema: z.ZodType<
-  ResourceConfig,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  concurrentBuilds: types.optional(types.number()),
-  elasticConcurrencyEnabled: types.optional(types.boolean()),
-  edgeConfigSize: types.optional(types.number()),
-  edgeConfigs: types.optional(types.number()),
-  kvDatabases: types.optional(types.number()),
-  blobStores: types.optional(types.number()),
-  postgresDatabases: types.optional(types.number()),
-  customEnvironmentsPerProject: types.optional(types.number()),
-  serverlessFunctionMaxMemorySize: types.optional(types.number()),
-  buildEntitlements: types.optional(
-    z.lazy(() => BuildEntitlements$inboundSchema),
-  ),
-  buildMachine: types.optional(z.lazy(() => BuildMachine$inboundSchema)),
-});
-
-export function resourceConfigFromJSON(
-  jsonString: string,
-): SafeParseResult<ResourceConfig, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ResourceConfig$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResourceConfig' from JSON`,
-  );
-}
-
-/** @internal */
-export const DisableHardAutoBlocks$inboundSchema: z.ZodType<
-  DisableHardAutoBlocks,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([types.number(), types.boolean()]);
-
-export function disableHardAutoBlocksFromJSON(
-  jsonString: string,
-): SafeParseResult<DisableHardAutoBlocks, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DisableHardAutoBlocks$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DisableHardAutoBlocks' from JSON`,
-  );
-}
-
-/** @internal */
-export const RemoteCaching$inboundSchema: z.ZodType<
-  RemoteCaching,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  enabled: types.optional(types.boolean()),
-});
-
-export function remoteCachingFromJSON(
-  jsonString: string,
-): SafeParseResult<RemoteCaching, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RemoteCaching$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RemoteCaching' from JSON`,
+    (x) => Connect$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Connect' from JSON`,
   );
 }
 
@@ -1325,6 +1064,29 @@ export function defaultDeploymentProtectionFromJSON(
 }
 
 /** @internal */
+export const DefaultExpirationSettings$inboundSchema: z.ZodType<
+  DefaultExpirationSettings,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  deploymentsToKeep: types.optional(types.number()),
+  expirationDays: types.optional(types.number()),
+  expirationDaysCanceled: types.optional(types.number()),
+  expirationDaysErrored: types.optional(types.number()),
+  expirationDaysProduction: types.optional(types.number()),
+});
+
+export function defaultExpirationSettingsFromJSON(
+  jsonString: string,
+): SafeParseResult<DefaultExpirationSettings, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DefaultExpirationSettings$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DefaultExpirationSettings' from JSON`,
+  );
+}
+
+/** @internal */
 export const DeploymentType$inboundSchema: z.ZodNativeEnum<
   typeof DeploymentType
 > = z.nativeEnum(DeploymentType);
@@ -1350,29 +1112,6 @@ export function defaultPassportFromJSON(
 }
 
 /** @internal */
-export const DefaultExpirationSettings$inboundSchema: z.ZodType<
-  DefaultExpirationSettings,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  expirationDays: types.optional(types.number()),
-  expirationDaysProduction: types.optional(types.number()),
-  expirationDaysCanceled: types.optional(types.number()),
-  expirationDaysErrored: types.optional(types.number()),
-  deploymentsToKeep: types.optional(types.number()),
-});
-
-export function defaultExpirationSettingsFromJSON(
-  jsonString: string,
-): SafeParseResult<DefaultExpirationSettings, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DefaultExpirationSettings$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DefaultExpirationSettings' from JSON`,
-  );
-}
-
-/** @internal */
 export const Lint$inboundSchema: z.ZodType<Lint, z.ZodTypeDef, unknown> = z
   .object({
     targets: z.array(types.string()),
@@ -1385,25 +1124,6 @@ export function lintFromJSON(
     jsonString,
     (x) => Lint$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'Lint' from JSON`,
-  );
-}
-
-/** @internal */
-export const Typecheck$inboundSchema: z.ZodType<
-  Typecheck,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  targets: z.array(types.string()),
-});
-
-export function typecheckFromJSON(
-  jsonString: string,
-): SafeParseResult<Typecheck, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Typecheck$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Typecheck' from JSON`,
   );
 }
 
@@ -1427,16 +1147,35 @@ export function mfeConfigPresentFromJSON(
 }
 
 /** @internal */
+export const Typecheck$inboundSchema: z.ZodType<
+  Typecheck,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  targets: z.array(types.string()),
+});
+
+export function typecheckFromJSON(
+  jsonString: string,
+): SafeParseResult<Typecheck, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Typecheck$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Typecheck' from JSON`,
+  );
+}
+
+/** @internal */
 export const DefaultProjectJobs$inboundSchema: z.ZodType<
   DefaultProjectJobs,
   z.ZodTypeDef,
   unknown
 > = z.object({
   lint: types.optional(z.lazy(() => Lint$inboundSchema)),
-  typecheck: types.optional(z.lazy(() => Typecheck$inboundSchema)),
   "mfe-config-present": types.optional(
     z.lazy(() => MfeConfigPresent$inboundSchema),
   ),
+  typecheck: types.optional(z.lazy(() => Typecheck$inboundSchema)),
 }).transform((v) => {
   return remap$(v, {
     "mfe-config-present": "mfeConfigPresent",
@@ -1454,221 +1193,32 @@ export function defaultProjectJobsFromJSON(
 }
 
 /** @internal */
-export const EnablePreviewFeedback$inboundSchema: z.ZodNativeEnum<
-  typeof EnablePreviewFeedback
-> = z.nativeEnum(EnablePreviewFeedback);
+export const TeamTeamPermissions$inboundSchema: z.ZodNativeEnum<
+  typeof TeamTeamPermissions
+> = z.nativeEnum(TeamTeamPermissions);
 
 /** @internal */
-export const EnableProductionFeedback$inboundSchema: z.ZodNativeEnum<
-  typeof EnableProductionFeedback
-> = z.nativeEnum(EnableProductionFeedback);
+export const TeamTeamRoles$inboundSchema: z.ZodNativeEnum<
+  typeof TeamTeamRoles
+> = z.nativeEnum(TeamTeamRoles);
 
 /** @internal */
-export const SensitiveEnvironmentVariablePolicy$inboundSchema: z.ZodNativeEnum<
-  typeof SensitiveEnvironmentVariablePolicy
-> = z.nativeEnum(SensitiveEnvironmentVariablePolicy);
-
-/** @internal */
-export const DisjunctiveProductionSecretPolicy$inboundSchema: z.ZodNativeEnum<
-  typeof DisjunctiveProductionSecretPolicy
-> = z.nativeEnum(DisjunctiveProductionSecretPolicy);
-
-/** @internal */
-export const DpAccessRequestsMode$inboundSchema: z.ZodNativeEnum<
-  typeof DpAccessRequestsMode
-> = z.nativeEnum(DpAccessRequestsMode);
-
-/** @internal */
-export const IpBuckets$inboundSchema: z.ZodType<
-  IpBuckets,
+export const DefaultRoles$inboundSchema: z.ZodType<
+  DefaultRoles,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  bucket: types.string(),
-  supportUntil: types.optional(types.number()),
-  default: types.optional(types.boolean()),
+  teamPermissions: types.optional(z.array(TeamTeamPermissions$inboundSchema)),
+  teamRoles: types.optional(z.array(TeamTeamRoles$inboundSchema)),
 });
 
-export function ipBucketsFromJSON(
+export function defaultRolesFromJSON(
   jsonString: string,
-): SafeParseResult<IpBuckets, SDKValidationError> {
+): SafeParseResult<DefaultRoles, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => IpBuckets$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'IpBuckets' from JSON`,
-  );
-}
-
-/** @internal */
-export const StrictDeploymentProtectionSettings$inboundSchema: z.ZodType<
-  StrictDeploymentProtectionSettings,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  enabled: types.boolean(),
-  updatedAt: types.number(),
-});
-
-export function strictDeploymentProtectionSettingsFromJSON(
-  jsonString: string,
-): SafeParseResult<StrictDeploymentProtectionSettings, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      StrictDeploymentProtectionSettings$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'StrictDeploymentProtectionSettings' from JSON`,
-  );
-}
-
-/** @internal */
-export const StrictShareableLinks$inboundSchema: z.ZodType<
-  StrictShareableLinks,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  enabled: types.boolean(),
-  updatedAt: types.number(),
-});
-
-export function strictShareableLinksFromJSON(
-  jsonString: string,
-): SafeParseResult<StrictShareableLinks, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => StrictShareableLinks$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'StrictShareableLinks' from JSON`,
-  );
-}
-
-/** @internal */
-export const StrictPasswordProtectionSettings$inboundSchema: z.ZodType<
-  StrictPasswordProtectionSettings,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  enabled: types.boolean(),
-  updatedAt: types.number(),
-});
-
-export function strictPasswordProtectionSettingsFromJSON(
-  jsonString: string,
-): SafeParseResult<StrictPasswordProtectionSettings, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => StrictPasswordProtectionSettings$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'StrictPasswordProtectionSettings' from JSON`,
-  );
-}
-
-/** @internal */
-export const StrictConnectors$inboundSchema: z.ZodType<
-  StrictConnectors,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  enabled: types.boolean(),
-  updatedAt: types.number(),
-});
-
-export function strictConnectorsFromJSON(
-  jsonString: string,
-): SafeParseResult<StrictConnectors, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => StrictConnectors$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'StrictConnectors' from JSON`,
-  );
-}
-
-/** @internal */
-export const Preference$inboundSchema: z.ZodNativeEnum<typeof Preference> = z
-  .nativeEnum(Preference);
-
-/** @internal */
-export const NsnbConfig$inboundSchema: z.ZodType<
-  NsnbConfig,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  preference: Preference$inboundSchema,
-});
-
-export function nsnbConfigFromJSON(
-  jsonString: string,
-): SafeParseResult<NsnbConfig, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => NsnbConfig$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'NsnbConfig' from JSON`,
-  );
-}
-
-/** @internal */
-export const Sources2$inboundSchema: z.ZodType<
-  Sources2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  provider: types.literal("gitlab"),
-  namespace: types.string(),
-  project: types.optional(types.string()),
-});
-
-export function sources2FromJSON(
-  jsonString: string,
-): SafeParseResult<Sources2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Sources2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Sources2' from JSON`,
-  );
-}
-
-/** @internal */
-export const SourcesProvider$inboundSchema: z.ZodNativeEnum<
-  typeof SourcesProvider
-> = z.nativeEnum(SourcesProvider);
-
-/** @internal */
-export const Sources1$inboundSchema: z.ZodType<
-  Sources1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  provider: SourcesProvider$inboundSchema,
-  org: types.string(),
-  repo: types.optional(types.string()),
-});
-
-export function sources1FromJSON(
-  jsonString: string,
-): SafeParseResult<Sources1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Sources1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Sources1' from JSON`,
-  );
-}
-
-/** @internal */
-export const Sources$inboundSchema: z.ZodType<Sources, z.ZodTypeDef, unknown> =
-  z.union([
-    z.lazy(() => Sources1$inboundSchema).and(
-      z.object({ provider: z.literal("bitbucket") }),
-    ),
-    z.lazy(() => Sources1$inboundSchema).and(
-      z.object({ provider: z.literal("github") }),
-    ),
-    z.lazy(() => Sources2$inboundSchema),
-  ]);
-
-export function sourcesFromJSON(
-  jsonString: string,
-): SafeParseResult<Sources, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Sources$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Sources' from JSON`,
+    (x) => DefaultRoles$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DefaultRoles' from JSON`,
   );
 }
 
@@ -1678,8 +1228,8 @@ export const Environments2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("custom"),
   environmentId: types.string(),
+  type: types.literal("custom"),
 });
 
 export function environments2FromJSON(
@@ -1703,8 +1253,8 @@ export const TeamEnvironments1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("system"),
   target: EnvironmentsTarget$inboundSchema,
+  type: types.literal("system"),
 });
 
 export function teamEnvironments1FromJSON(
@@ -1738,22 +1288,15 @@ export function teamEnvironmentsFromJSON(
 }
 
 /** @internal */
-export const GitSources$inboundSchema: z.ZodType<
-  GitSources,
+export const Sources$inboundSchema: z.ZodNativeEnum<typeof Sources> = z
+  .nativeEnum(Sources);
+
+/** @internal */
+export const DeploymentSources$inboundSchema: z.ZodType<
+  DeploymentSources,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  sources: z.array(
-    z.union([
-      z.lazy(() => Sources1$inboundSchema).and(
-        z.object({ provider: z.literal("bitbucket") }),
-      ),
-      z.lazy(() => Sources1$inboundSchema).and(
-        z.object({ provider: z.literal("github") }),
-      ),
-      z.lazy(() => Sources2$inboundSchema),
-    ]),
-  ),
   enabled: types.boolean(),
   environments: z.array(
     z.union([
@@ -1761,21 +1304,18 @@ export const GitSources$inboundSchema: z.ZodType<
       z.lazy(() => Environments2$inboundSchema),
     ]),
   ),
+  sources: z.array(Sources$inboundSchema),
 });
 
-export function gitSourcesFromJSON(
+export function deploymentSourcesFromJSON(
   jsonString: string,
-): SafeParseResult<GitSources, SDKValidationError> {
+): SafeParseResult<DeploymentSources, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GitSources$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GitSources' from JSON`,
+    (x) => DeploymentSources$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeploymentSources' from JSON`,
   );
 }
-
-/** @internal */
-export const TeamSources$inboundSchema: z.ZodNativeEnum<typeof TeamSources> = z
-  .nativeEnum(TeamSources);
 
 /** @internal */
 export const TeamEnvironments2$inboundSchema: z.ZodType<
@@ -1783,8 +1323,8 @@ export const TeamEnvironments2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("custom"),
   environmentId: types.string(),
+  type: types.literal("custom"),
 });
 
 export function teamEnvironments2FromJSON(
@@ -1808,8 +1348,8 @@ export const TeamEnvironmentsDeploymentPolicy1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("system"),
   target: TeamEnvironmentsTarget$inboundSchema,
+  type: types.literal("system"),
 });
 
 export function teamEnvironmentsDeploymentPolicy1FromJSON(
@@ -1843,12 +1383,83 @@ export function teamDeploymentPolicyEnvironmentsFromJSON(
 }
 
 /** @internal */
-export const DeploymentSources$inboundSchema: z.ZodType<
-  DeploymentSources,
+export const Sources2$inboundSchema: z.ZodType<
+  Sources2,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  sources: z.array(TeamSources$inboundSchema),
+  namespace: types.string(),
+  project: types.optional(types.string()),
+  provider: types.literal("gitlab"),
+});
+
+export function sources2FromJSON(
+  jsonString: string,
+): SafeParseResult<Sources2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Sources2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Sources2' from JSON`,
+  );
+}
+
+/** @internal */
+export const SourcesProvider$inboundSchema: z.ZodNativeEnum<
+  typeof SourcesProvider
+> = z.nativeEnum(SourcesProvider);
+
+/** @internal */
+export const Sources1$inboundSchema: z.ZodType<
+  Sources1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  org: types.string(),
+  provider: SourcesProvider$inboundSchema,
+  repo: types.optional(types.string()),
+});
+
+export function sources1FromJSON(
+  jsonString: string,
+): SafeParseResult<Sources1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Sources1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Sources1' from JSON`,
+  );
+}
+
+/** @internal */
+export const TeamSources$inboundSchema: z.ZodType<
+  TeamSources,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => Sources1$inboundSchema).and(
+    z.object({ provider: z.literal("bitbucket") }),
+  ),
+  z.lazy(() => Sources1$inboundSchema).and(
+    z.object({ provider: z.literal("github") }),
+  ),
+  z.lazy(() => Sources2$inboundSchema),
+]);
+
+export function teamSourcesFromJSON(
+  jsonString: string,
+): SafeParseResult<TeamSources, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TeamSources$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TeamSources' from JSON`,
+  );
+}
+
+/** @internal */
+export const GitSources$inboundSchema: z.ZodType<
+  GitSources,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
   enabled: types.boolean(),
   environments: z.array(
     z.union([
@@ -1856,15 +1467,26 @@ export const DeploymentSources$inboundSchema: z.ZodType<
       z.lazy(() => TeamEnvironments2$inboundSchema),
     ]),
   ),
+  sources: z.array(
+    z.union([
+      z.lazy(() => Sources1$inboundSchema).and(
+        z.object({ provider: z.literal("bitbucket") }),
+      ),
+      z.lazy(() => Sources1$inboundSchema).and(
+        z.object({ provider: z.literal("github") }),
+      ),
+      z.lazy(() => Sources2$inboundSchema),
+    ]),
+  ),
 });
 
-export function deploymentSourcesFromJSON(
+export function gitSourcesFromJSON(
   jsonString: string,
-): SafeParseResult<DeploymentSources, SDKValidationError> {
+): SafeParseResult<GitSources, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => DeploymentSources$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeploymentSources' from JSON`,
+    (x) => GitSources$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GitSources' from JSON`,
   );
 }
 
@@ -1874,10 +1496,10 @@ export const DeploymentPolicy$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  gitSources: types.optional(z.array(z.lazy(() => GitSources$inboundSchema))),
   deploymentSources: types.optional(
     z.array(z.lazy(() => DeploymentSources$inboundSchema)),
   ),
+  gitSources: types.optional(z.array(z.lazy(() => GitSources$inboundSchema))),
 });
 
 export function deploymentPolicyFromJSON(
@@ -1887,6 +1509,64 @@ export function deploymentPolicyFromJSON(
     jsonString,
     (x) => DeploymentPolicy$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'DeploymentPolicy' from JSON`,
+  );
+}
+
+/** @internal */
+export const DisableHardAutoBlocks$inboundSchema: z.ZodType<
+  DisableHardAutoBlocks,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.number(), types.boolean()]);
+
+export function disableHardAutoBlocksFromJSON(
+  jsonString: string,
+): SafeParseResult<DisableHardAutoBlocks, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DisableHardAutoBlocks$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DisableHardAutoBlocks' from JSON`,
+  );
+}
+
+/** @internal */
+export const DisjunctiveProductionSecretPolicy$inboundSchema: z.ZodNativeEnum<
+  typeof DisjunctiveProductionSecretPolicy
+> = z.nativeEnum(DisjunctiveProductionSecretPolicy);
+
+/** @internal */
+export const DpAccessRequestsMode$inboundSchema: z.ZodNativeEnum<
+  typeof DpAccessRequestsMode
+> = z.nativeEnum(DpAccessRequestsMode);
+
+/** @internal */
+export const EnablePreviewFeedback$inboundSchema: z.ZodNativeEnum<
+  typeof EnablePreviewFeedback
+> = z.nativeEnum(EnablePreviewFeedback);
+
+/** @internal */
+export const EnableProductionFeedback$inboundSchema: z.ZodNativeEnum<
+  typeof EnableProductionFeedback
+> = z.nativeEnum(EnableProductionFeedback);
+
+/** @internal */
+export const IpBuckets$inboundSchema: z.ZodType<
+  IpBuckets,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  bucket: types.string(),
+  default: types.optional(types.boolean()),
+  supportUntil: types.optional(types.number()),
+});
+
+export function ipBucketsFromJSON(
+  jsonString: string,
+): SafeParseResult<IpBuckets, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IpBuckets$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IpBuckets' from JSON`,
   );
 }
 
@@ -1910,24 +1590,6 @@ export function entitlementsFromJSON(
 }
 
 /** @internal */
-export const TeamRole$inboundSchema: z.ZodNativeEnum<typeof TeamRole> = z
-  .nativeEnum(TeamRole);
-
-/** @internal */
-export const TeamMembershipTeamRoles$inboundSchema: z.ZodNativeEnum<
-  typeof TeamMembershipTeamRoles
-> = z.nativeEnum(TeamMembershipTeamRoles);
-
-/** @internal */
-export const TeamMembershipTeamPermissions$inboundSchema: z.ZodNativeEnum<
-  typeof TeamMembershipTeamPermissions
-> = z.nativeEnum(TeamMembershipTeamPermissions);
-
-/** @internal */
-export const TeamOrigin$inboundSchema: z.ZodNativeEnum<typeof TeamOrigin> = z
-  .nativeEnum(TeamOrigin);
-
-/** @internal */
 export const GitUserId$inboundSchema: z.ZodType<
   GitUserId,
   z.ZodTypeDef,
@@ -1945,22 +1607,26 @@ export function gitUserIdFromJSON(
 }
 
 /** @internal */
+export const TeamOrigin$inboundSchema: z.ZodNativeEnum<typeof TeamOrigin> = z
+  .nativeEnum(TeamOrigin);
+
+/** @internal */
 export const JoinedFrom$inboundSchema: z.ZodType<
   JoinedFrom,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  origin: TeamOrigin$inboundSchema,
   commitId: types.optional(types.string()),
-  repoId: types.optional(types.string()),
-  repoPath: types.optional(types.string()),
+  dsyncConnectedAt: types.optional(types.number()),
+  dsyncUserId: types.optional(types.string()),
   gitUserId: types.optional(smartUnion([types.string(), types.number()])),
   gitUserLogin: types.optional(types.string()),
-  ssoUserId: types.optional(types.string()),
-  ssoConnectedAt: types.optional(types.number()),
   idpUserId: types.optional(types.string()),
-  dsyncUserId: types.optional(types.string()),
-  dsyncConnectedAt: types.optional(types.number()),
+  origin: TeamOrigin$inboundSchema,
+  repoId: types.optional(types.string()),
+  repoPath: types.optional(types.string()),
+  ssoConnectedAt: types.optional(types.number()),
+  ssoUserId: types.optional(types.string()),
 });
 
 export function joinedFromFromJSON(
@@ -1974,26 +1640,40 @@ export function joinedFromFromJSON(
 }
 
 /** @internal */
+export const TeamRole$inboundSchema: z.ZodNativeEnum<typeof TeamRole> = z
+  .nativeEnum(TeamRole);
+
+/** @internal */
+export const TeamMembershipTeamPermissions$inboundSchema: z.ZodNativeEnum<
+  typeof TeamMembershipTeamPermissions
+> = z.nativeEnum(TeamMembershipTeamPermissions);
+
+/** @internal */
+export const TeamMembershipTeamRoles$inboundSchema: z.ZodNativeEnum<
+  typeof TeamMembershipTeamRoles
+> = z.nativeEnum(TeamMembershipTeamRoles);
+
+/** @internal */
 export const Membership$inboundSchema: z.ZodType<
   Membership,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  uid: types.optional(types.string()),
+  accessRequestedAt: types.optional(types.number()),
+  confirmed: types.literal(true),
+  created: types.number(),
+  createdAt: types.number(),
   entitlements: types.optional(
     z.array(z.lazy(() => Entitlements$inboundSchema)),
   ),
-  teamId: types.optional(types.string()),
-  confirmed: types.literal(true),
-  accessRequestedAt: types.optional(types.number()),
+  joinedFrom: types.optional(z.lazy(() => JoinedFrom$inboundSchema)),
   role: TeamRole$inboundSchema,
-  teamRoles: types.optional(z.array(TeamMembershipTeamRoles$inboundSchema)),
+  teamId: types.optional(types.string()),
   teamPermissions: types.optional(
     z.array(TeamMembershipTeamPermissions$inboundSchema),
   ),
-  createdAt: types.number(),
-  created: types.number(),
-  joinedFrom: types.optional(z.lazy(() => JoinedFrom$inboundSchema)),
+  teamRoles: types.optional(z.array(TeamMembershipTeamRoles$inboundSchema)),
+  uid: types.optional(types.string()),
 });
 
 export function membershipFromJSON(
@@ -2007,84 +1687,407 @@ export function membershipFromJSON(
 }
 
 /** @internal */
+export const Preference$inboundSchema: z.ZodNativeEnum<typeof Preference> = z
+  .nativeEnum(Preference);
+
+/** @internal */
+export const NsnbConfig$inboundSchema: z.ZodType<
+  NsnbConfig,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  preference: Preference$inboundSchema,
+});
+
+export function nsnbConfigFromJSON(
+  jsonString: string,
+): SafeParseResult<NsnbConfig, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => NsnbConfig$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'NsnbConfig' from JSON`,
+  );
+}
+
+/** @internal */
+export const RemoteCaching$inboundSchema: z.ZodType<
+  RemoteCaching,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  enabled: types.optional(types.boolean()),
+});
+
+export function remoteCachingFromJSON(
+  jsonString: string,
+): SafeParseResult<RemoteCaching, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RemoteCaching$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RemoteCaching' from JSON`,
+  );
+}
+
+/** @internal */
+export const BuildEntitlements$inboundSchema: z.ZodType<
+  BuildEntitlements,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  enhancedBuilds: types.optional(types.boolean()),
+});
+
+export function buildEntitlementsFromJSON(
+  jsonString: string,
+): SafeParseResult<BuildEntitlements, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BuildEntitlements$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BuildEntitlements' from JSON`,
+  );
+}
+
+/** @internal */
+export const Default$inboundSchema: z.ZodNativeEnum<typeof Default> = z
+  .nativeEnum(Default);
+
+/** @internal */
+export const BuildMachine$inboundSchema: z.ZodType<
+  BuildMachine,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  default: types.optional(Default$inboundSchema),
+});
+
+export function buildMachineFromJSON(
+  jsonString: string,
+): SafeParseResult<BuildMachine, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BuildMachine$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BuildMachine' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResourceConfig$inboundSchema: z.ZodType<
+  ResourceConfig,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  blobStores: types.optional(types.number()),
+  buildEntitlements: types.optional(
+    z.lazy(() => BuildEntitlements$inboundSchema),
+  ),
+  buildMachine: types.optional(z.lazy(() => BuildMachine$inboundSchema)),
+  concurrentBuilds: types.optional(types.number()),
+  customEnvironmentsPerProject: types.optional(types.number()),
+  edgeConfigs: types.optional(types.number()),
+  edgeConfigSize: types.optional(types.number()),
+  elasticConcurrencyEnabled: types.optional(types.boolean()),
+  kvDatabases: types.optional(types.number()),
+  postgresDatabases: types.optional(types.number()),
+  serverlessFunctionMaxMemorySize: types.optional(types.number()),
+});
+
+export function resourceConfigFromJSON(
+  jsonString: string,
+): SafeParseResult<ResourceConfig, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResourceConfig$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResourceConfig' from JSON`,
+  );
+}
+
+/** @internal */
+export const SyncState$inboundSchema: z.ZodNativeEnum<typeof SyncState> = z
+  .nativeEnum(SyncState);
+
+/** @internal */
+export const Connection$inboundSchema: z.ZodType<
+  Connection,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  connectedAt: types.number(),
+  lastReceivedWebhookEvent: types.optional(types.number()),
+  lastSyncedAt: types.optional(types.number()),
+  state: types.string(),
+  syncState: types.optional(SyncState$inboundSchema),
+  type: types.string(),
+  status: types.string(),
+});
+
+export function connectionFromJSON(
+  jsonString: string,
+): SafeParseResult<Connection, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Connection$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Connection' from JSON`,
+  );
+}
+
+/** @internal */
+export const DefaultRedirectUri$inboundSchema: z.ZodNativeEnum<
+  typeof DefaultRedirectUri
+> = z.nativeEnum(DefaultRedirectUri);
+
+/** @internal */
+export const TeamSyncState$inboundSchema: z.ZodNativeEnum<
+  typeof TeamSyncState
+> = z.nativeEnum(TeamSyncState);
+
+/** @internal */
+export const Directory$inboundSchema: z.ZodType<
+  Directory,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  connectedAt: types.number(),
+  lastReceivedWebhookEvent: types.optional(types.number()),
+  lastSyncedAt: types.optional(types.number()),
+  state: types.string(),
+  syncState: types.optional(TeamSyncState$inboundSchema),
+  type: types.string(),
+});
+
+export function directoryFromJSON(
+  jsonString: string,
+): SafeParseResult<Directory, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Directory$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Directory' from JSON`,
+  );
+}
+
+/** @internal */
+export const Roles2$inboundSchema: z.ZodNativeEnum<typeof Roles2> = z
+  .nativeEnum(Roles2);
+
+/** @internal */
+export const Roles1$inboundSchema: z.ZodType<Roles1, z.ZodTypeDef, unknown> = z
+  .object({
+    accessGroupId: types.string(),
+  });
+
+export function roles1FromJSON(
+  jsonString: string,
+): SafeParseResult<Roles1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Roles1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Roles1' from JSON`,
+  );
+}
+
+/** @internal */
+export const Roles$inboundSchema: z.ZodType<Roles, z.ZodTypeDef, unknown> =
+  smartUnion([z.lazy(() => Roles1$inboundSchema), Roles2$inboundSchema]);
+
+export function rolesFromJSON(
+  jsonString: string,
+): SafeParseResult<Roles, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Roles$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Roles' from JSON`,
+  );
+}
+
+/** @internal */
+export const Saml$inboundSchema: z.ZodType<Saml, z.ZodTypeDef, unknown> = z
+  .object({
+    connection: types.optional(z.lazy(() => Connection$inboundSchema)),
+    defaultRedirectUri: types.optional(DefaultRedirectUri$inboundSchema),
+    directory: types.optional(z.lazy(() => Directory$inboundSchema)),
+    enforced: types.boolean(),
+    roles: types.optional(
+      z.record(smartUnion([
+        z.lazy(() => Roles1$inboundSchema),
+        Roles2$inboundSchema,
+      ])),
+    ),
+  });
+
+export function samlFromJSON(
+  jsonString: string,
+): SafeParseResult<Saml, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Saml$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Saml' from JSON`,
+  );
+}
+
+/** @internal */
+export const SensitiveEnvironmentVariablePolicy$inboundSchema: z.ZodNativeEnum<
+  typeof SensitiveEnvironmentVariablePolicy
+> = z.nativeEnum(SensitiveEnvironmentVariablePolicy);
+
+/** @internal */
+export const StrictConnectors$inboundSchema: z.ZodType<
+  StrictConnectors,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  enabled: types.boolean(),
+  updatedAt: types.number(),
+});
+
+export function strictConnectorsFromJSON(
+  jsonString: string,
+): SafeParseResult<StrictConnectors, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => StrictConnectors$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StrictConnectors' from JSON`,
+  );
+}
+
+/** @internal */
+export const StrictDeploymentProtectionSettings$inboundSchema: z.ZodType<
+  StrictDeploymentProtectionSettings,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  enabled: types.boolean(),
+  updatedAt: types.number(),
+});
+
+export function strictDeploymentProtectionSettingsFromJSON(
+  jsonString: string,
+): SafeParseResult<StrictDeploymentProtectionSettings, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      StrictDeploymentProtectionSettings$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StrictDeploymentProtectionSettings' from JSON`,
+  );
+}
+
+/** @internal */
+export const StrictPasswordProtectionSettings$inboundSchema: z.ZodType<
+  StrictPasswordProtectionSettings,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  enabled: types.boolean(),
+  updatedAt: types.number(),
+});
+
+export function strictPasswordProtectionSettingsFromJSON(
+  jsonString: string,
+): SafeParseResult<StrictPasswordProtectionSettings, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => StrictPasswordProtectionSettings$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StrictPasswordProtectionSettings' from JSON`,
+  );
+}
+
+/** @internal */
+export const StrictShareableLinks$inboundSchema: z.ZodType<
+  StrictShareableLinks,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  enabled: types.boolean(),
+  updatedAt: types.number(),
+});
+
+export function strictShareableLinksFromJSON(
+  jsonString: string,
+): SafeParseResult<StrictShareableLinks, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => StrictShareableLinks$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StrictShareableLinks' from JSON`,
+  );
+}
+
+/** @internal */
 export const Team$inboundSchema: z.ZodType<Team, z.ZodTypeDef, unknown> =
   collectExtraKeys$(
     z.object({
-      connect: types.optional(z.lazy(() => Connect$inboundSchema)),
-      creatorId: types.string(),
-      updatedAt: types.number(),
-      emailDomain: z.nullable(types.string()).optional(),
-      saml: types.optional(z.lazy(() => Saml$inboundSchema)),
-      inviteCode: types.optional(types.string()),
+      apiKeysInvalidatedAt: types.optional(types.number()),
+      appTokensInvalidatedAt: types.optional(types.number()),
+      avatar: types.nullable(types.string()),
       billing: types.nullable(z.lazy(() => Billing$inboundSchema)),
-      description: types.nullable(types.string()),
-      defaultRoles: types.optional(z.lazy(() => DefaultRoles$inboundSchema)),
-      stagingPrefix: types.string(),
-      resourceConfig: types.optional(
-        z.lazy(() => ResourceConfig$inboundSchema),
-      ),
-      previewDeploymentSuffix: z.nullable(types.string()).optional(),
-      platform: types.optional(types.boolean()),
-      disableHardAutoBlocks: types.optional(
-        smartUnion([types.number(), types.boolean()]),
-      ),
-      remoteCaching: types.optional(z.lazy(() => RemoteCaching$inboundSchema)),
+      connect: types.optional(z.lazy(() => Connect$inboundSchema)),
+      createdAt: types.number(),
+      creatorId: types.string(),
       defaultDeploymentProtection: types.optional(
         z.lazy(() => DefaultDeploymentProtection$inboundSchema),
       ),
-      defaultPassport: z.nullable(z.lazy(() => DefaultPassport$inboundSchema))
-        .optional(),
       defaultExpirationSettings: types.optional(
         z.lazy(() => DefaultExpirationSettings$inboundSchema),
       ),
+      defaultPassport: z.nullable(z.lazy(() => DefaultPassport$inboundSchema))
+        .optional(),
       defaultProjectJobs: types.optional(
         z.lazy(() => DefaultProjectJobs$inboundSchema),
       ),
+      defaultRoles: types.optional(z.lazy(() => DefaultRoles$inboundSchema)),
+      deploymentPolicy: types.optional(
+        z.lazy(() => DeploymentPolicy$inboundSchema),
+      ),
+      description: types.nullable(types.string()),
+      disableHardAutoBlocks: types.optional(
+        smartUnion([types.number(), types.boolean()]),
+      ),
+      disableRepositoryDispatchEvents: types.optional(types.boolean()),
+      disjunctiveProductionSecretPolicy: z.nullable(
+        DisjunctiveProductionSecretPolicy$inboundSchema,
+      ).optional(),
+      dpAccessRequestsMode: types.optional(DpAccessRequestsMode$inboundSchema),
+      emailDomain: z.nullable(types.string()).optional(),
       enablePreviewFeedback: z.nullable(EnablePreviewFeedback$inboundSchema)
         .optional(),
       enableProductionFeedback: z.nullable(
         EnableProductionFeedback$inboundSchema,
       ).optional(),
+      hideIpAddresses: z.nullable(types.boolean()).optional(),
+      hideIpAddressesInLogDrains: z.nullable(types.boolean()).optional(),
+      id: types.string(),
+      integrationTokensInvalidatedAt: types.optional(types.number()),
+      inviteCode: types.optional(types.string()),
+      ipBuckets: types.optional(z.array(z.lazy(() => IpBuckets$inboundSchema))),
+      membership: types.optional(z.lazy(() => Membership$inboundSchema)),
+      name: types.nullable(types.string()),
+      nsnbConfig: types.optional(z.lazy(() => NsnbConfig$inboundSchema)),
+      orgRootTeamId: types.optional(types.string()),
+      parentId: types.optional(types.string()),
+      personalAccessTokensInvalidatedAt: types.optional(types.number()),
+      platform: types.optional(types.boolean()),
+      previewDeploymentSuffix: z.nullable(types.string()).optional(),
+      remoteCaching: types.optional(z.lazy(() => RemoteCaching$inboundSchema)),
+      requireVerifiedCommits: types.optional(types.boolean()),
+      resourceConfig: types.optional(
+        z.lazy(() => ResourceConfig$inboundSchema),
+      ),
+      saml: types.optional(z.lazy(() => Saml$inboundSchema)),
       sensitiveEnvironmentVariablePolicy: z.nullable(
         SensitiveEnvironmentVariablePolicy$inboundSchema,
       ).optional(),
-      disjunctiveProductionSecretPolicy: z.nullable(
-        DisjunctiveProductionSecretPolicy$inboundSchema,
-      ).optional(),
-      hideIpAddresses: z.nullable(types.boolean()).optional(),
-      hideIpAddressesInLogDrains: z.nullable(types.boolean()).optional(),
-      dpAccessRequestsMode: types.optional(DpAccessRequestsMode$inboundSchema),
-      ipBuckets: types.optional(z.array(z.lazy(() => IpBuckets$inboundSchema))),
-      requireVerifiedCommits: types.optional(types.boolean()),
-      disableRepositoryDispatchEvents: types.optional(types.boolean()),
+      slug: types.string(),
+      stagingPrefix: types.string(),
+      strictConnectors: types.optional(
+        z.lazy(() => StrictConnectors$inboundSchema),
+      ),
       strictDeploymentProtectionSettings: types.optional(
         z.lazy(() => StrictDeploymentProtectionSettings$inboundSchema),
-      ),
-      strictShareableLinks: types.optional(
-        z.lazy(() => StrictShareableLinks$inboundSchema),
       ),
       strictPasswordProtectionSettings: types.optional(
         z.lazy(() => StrictPasswordProtectionSettings$inboundSchema),
       ),
-      strictConnectors: types.optional(
-        z.lazy(() => StrictConnectors$inboundSchema),
+      strictShareableLinks: types.optional(
+        z.lazy(() => StrictShareableLinks$inboundSchema),
       ),
-      nsnbConfig: types.optional(z.lazy(() => NsnbConfig$inboundSchema)),
-      deploymentPolicy: types.optional(
-        z.lazy(() => DeploymentPolicy$inboundSchema),
-      ),
-      personalAccessTokensInvalidatedAt: types.optional(types.number()),
-      appTokensInvalidatedAt: types.optional(types.number()),
-      apiKeysInvalidatedAt: types.optional(types.number()),
-      integrationTokensInvalidatedAt: types.optional(types.number()),
-      id: types.string(),
-      slug: types.string(),
-      name: types.nullable(types.string()),
-      avatar: types.nullable(types.string()),
-      membership: types.optional(z.lazy(() => Membership$inboundSchema)),
-      createdAt: types.number(),
-      parentId: types.optional(types.string()),
-      orgRootTeamId: types.optional(types.string()),
+      updatedAt: types.number(),
     }).catchall(z.any()),
     "additionalProperties",
     true,

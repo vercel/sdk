@@ -6,25 +6,21 @@
 import { GetFlagSettingsResponseBody } from "@vercel/sdk/models/getflagsettingsop.js";
 
 let value: GetFlagSettingsResponseBody = {
-  typeName: "settings",
-  projectId: "<id>",
   enabled: false,
+  entities: [],
   environments: [
     "<value 1>",
-  ],
-  entities: [
-    {
-      kind: "<value>",
-      label: "<value>",
-      attributes: [],
-    },
+    "<value 2>",
+    "<value 3>",
   ],
   metadata: {
-    activeFlagCount: 4993.67,
-    archivedFlagCount: 7452.85,
+    activeFlagCount: 3841.94,
+    archivedFlagCount: 4993.67,
+    packSizeInBytes: 7452.85,
     segmentCount: 6968.83,
-    packSizeInBytes: 1215.53,
   },
+  projectId: "<id>",
+  typeName: "settings",
 };
 ```
 
@@ -32,12 +28,12 @@ let value: GetFlagSettingsResponseBody = {
 
 | Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
 | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `typeName`                                                               | [models.GetFlagSettingsTypeName](../models/getflagsettingstypename.md)   | :heavy_check_mark:                                                       | N/A                                                                      |
-| `projectId`                                                              | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
-| `ownerId`                                                                | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
-| `enabled`                                                                | *boolean*                                                                | :heavy_check_mark:                                                       | N/A                                                                      |
-| `environments`                                                           | *string*[]                                                               | :heavy_check_mark:                                                       | N/A                                                                      |
-| `entities`                                                               | [models.GetFlagSettingsEntities](../models/getflagsettingsentities.md)[] | :heavy_check_mark:                                                       | N/A                                                                      |
 | `createdAt`                                                              | *number*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
-| `updatedAt`                                                              | *number*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `enabled`                                                                | *boolean*                                                                | :heavy_check_mark:                                                       | N/A                                                                      |
+| `entities`                                                               | [models.GetFlagSettingsEntities](../models/getflagsettingsentities.md)[] | :heavy_check_mark:                                                       | N/A                                                                      |
+| `environments`                                                           | *string*[]                                                               | :heavy_check_mark:                                                       | N/A                                                                      |
 | `metadata`                                                               | [models.GetFlagSettingsMetadata](../models/getflagsettingsmetadata.md)   | :heavy_check_mark:                                                       | N/A                                                                      |
+| `ownerId`                                                                | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `projectId`                                                              | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
+| `typeName`                                                               | [models.GetFlagSettingsTypeName](../models/getflagsettingstypename.md)   | :heavy_check_mark:                                                       | N/A                                                                      |
+| `updatedAt`                                                              | *number*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |

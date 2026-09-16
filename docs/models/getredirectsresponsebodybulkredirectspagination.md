@@ -6,9 +6,9 @@
 import { GetRedirectsResponseBodyBulkRedirectsPagination } from "@vercel/sdk/models/getredirectsop.js";
 
 let value: GetRedirectsResponseBodyBulkRedirectsPagination = {
-  page: 8865.04,
-  perPage: 3731.64,
-  numPages: 3365.45,
+  numPages: 8865.04,
+  page: 3731.64,
+  perPage: 3365.45,
 };
 ```
 
@@ -16,6 +16,6 @@ let value: GetRedirectsResponseBodyBulkRedirectsPagination = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
+| `numPages`         | *number*           | :heavy_check_mark: | N/A                |
 | `page`             | *number*           | :heavy_check_mark: | N/A                |
 | `perPage`          | *number*           | :heavy_check_mark: | N/A                |
-| `numPages`         | *number*           | :heavy_check_mark: | N/A                |

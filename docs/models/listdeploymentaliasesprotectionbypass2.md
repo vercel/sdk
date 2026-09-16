@@ -8,10 +8,10 @@ The protection bypass for the alias
 import { ListDeploymentAliasesProtectionBypass2 } from "@vercel/sdk/models/listdeploymentaliasesop.js";
 
 let value: ListDeploymentAliasesProtectionBypass2 = {
-  createdAt: 9476.4,
-  lastUpdatedAt: 3486.87,
-  lastUpdatedBy: "<value>",
   access: "requested",
+  createdAt: 3486.87,
+  lastUpdatedAt: 8235.02,
+  lastUpdatedBy: "<value>",
   scope: "user",
 };
 ```
@@ -20,8 +20,8 @@ let value: ListDeploymentAliasesProtectionBypass2 = {
 
 | Field                                                                                                          | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
 | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `access`                                                                                                       | [models.ListDeploymentAliasesProtectionBypassAccess](../models/listdeploymentaliasesprotectionbypassaccess.md) | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
 | `createdAt`                                                                                                    | *number*                                                                                                       | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
 | `lastUpdatedAt`                                                                                                | *number*                                                                                                       | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
 | `lastUpdatedBy`                                                                                                | *string*                                                                                                       | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
-| `access`                                                                                                       | [models.ListDeploymentAliasesProtectionBypassAccess](../models/listdeploymentaliasesprotectionbypassaccess.md) | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
 | `scope`                                                                                                        | *"user"*                                                                                                       | :heavy_check_mark:                                                                                             | N/A                                                                                                            |

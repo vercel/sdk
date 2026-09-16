@@ -8,8 +8,8 @@ Allowlist entry for GitLab, which uses nested groups rather than a flat org/repo
 import { Sources2 } from "@vercel/sdk/models/team.js";
 
 let value: Sources2 = {
-  provider: "gitlab",
   namespace: "<value>",
+  provider: "gitlab",
 };
 ```
 
@@ -17,6 +17,6 @@ let value: Sources2 = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `provider`         | *"gitlab"*         | :heavy_check_mark: | N/A                |
 | `namespace`        | *string*           | :heavy_check_mark: | N/A                |
 | `project`          | *string*           | :heavy_minus_sign: | N/A                |
+| `provider`         | *"gitlab"*         | :heavy_check_mark: | N/A                |

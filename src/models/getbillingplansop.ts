@@ -39,18 +39,6 @@ export type GetBillingPlansRequest = {
   slug?: string | undefined;
 };
 
-export const GetBillingPlansType = {
-  Prepayment: "prepayment",
-  Subscription: "subscription",
-} as const;
-export type GetBillingPlansType = ClosedEnum<typeof GetBillingPlansType>;
-
-export const GetBillingPlansScope = {
-  Installation: "installation",
-  Resource: "resource",
-} as const;
-export type GetBillingPlansScope = ClosedEnum<typeof GetBillingPlansScope>;
-
 export type GetBillingPlansDetails = {
   label: string;
   value?: string | undefined;
@@ -62,28 +50,40 @@ export type GetBillingPlansHighlightedDetails = {
 };
 
 export type Quote = {
-  line: string;
   amount: string;
+  line: string;
 };
 
+export const GetBillingPlansScope = {
+  Installation: "installation",
+  Resource: "resource",
+} as const;
+export type GetBillingPlansScope = ClosedEnum<typeof GetBillingPlansScope>;
+
+export const GetBillingPlansType = {
+  Prepayment: "prepayment",
+  Subscription: "subscription",
+} as const;
+export type GetBillingPlansType = ClosedEnum<typeof GetBillingPlansType>;
+
 export type Plans = {
-  type: GetBillingPlansType;
-  id: string;
-  name: string;
-  scope: GetBillingPlansScope;
+  cost?: string | undefined;
   description: string;
-  paymentMethodRequired: boolean;
-  preauthorizationAmount?: number | undefined;
+  details?: Array<GetBillingPlansDetails> | undefined;
+  disabled?: boolean | undefined;
+  effectiveDate?: string | undefined;
+  highlightedDetails?: Array<GetBillingPlansHighlightedDetails> | undefined;
+  id: string;
   initialCharge?: string | undefined;
-  minimumAmount?: string | undefined;
   maximumAmount?: string | undefined;
   maximumAmountAutoPurchasePerPeriod?: string | undefined;
-  cost?: string | undefined;
-  details?: Array<GetBillingPlansDetails> | undefined;
-  highlightedDetails?: Array<GetBillingPlansHighlightedDetails> | undefined;
+  minimumAmount?: string | undefined;
+  name: string;
+  paymentMethodRequired: boolean;
+  preauthorizationAmount?: number | undefined;
   quote?: Array<Quote> | undefined;
-  effectiveDate?: string | undefined;
-  disabled?: boolean | undefined;
+  scope: GetBillingPlansScope;
+  type: GetBillingPlansType;
 };
 
 export type GetBillingPlansResponseBody = {
@@ -130,16 +130,6 @@ export function getBillingPlansRequestToJSON(
 }
 
 /** @internal */
-export const GetBillingPlansType$inboundSchema: z.ZodNativeEnum<
-  typeof GetBillingPlansType
-> = z.nativeEnum(GetBillingPlansType);
-
-/** @internal */
-export const GetBillingPlansScope$inboundSchema: z.ZodNativeEnum<
-  typeof GetBillingPlansScope
-> = z.nativeEnum(GetBillingPlansScope);
-
-/** @internal */
 export const GetBillingPlansDetails$inboundSchema: z.ZodType<
   GetBillingPlansDetails,
   z.ZodTypeDef,
@@ -182,8 +172,8 @@ export function getBillingPlansHighlightedDetailsFromJSON(
 /** @internal */
 export const Quote$inboundSchema: z.ZodType<Quote, z.ZodTypeDef, unknown> = z
   .object({
-    line: types.string(),
     amount: types.string(),
+    line: types.string(),
   });
 
 export function quoteFromJSON(
@@ -197,29 +187,39 @@ export function quoteFromJSON(
 }
 
 /** @internal */
+export const GetBillingPlansScope$inboundSchema: z.ZodNativeEnum<
+  typeof GetBillingPlansScope
+> = z.nativeEnum(GetBillingPlansScope);
+
+/** @internal */
+export const GetBillingPlansType$inboundSchema: z.ZodNativeEnum<
+  typeof GetBillingPlansType
+> = z.nativeEnum(GetBillingPlansType);
+
+/** @internal */
 export const Plans$inboundSchema: z.ZodType<Plans, z.ZodTypeDef, unknown> = z
   .object({
-    type: GetBillingPlansType$inboundSchema,
-    id: types.string(),
-    name: types.string(),
-    scope: GetBillingPlansScope$inboundSchema,
-    description: types.string(),
-    paymentMethodRequired: types.boolean(),
-    preauthorizationAmount: types.optional(types.number()),
-    initialCharge: types.optional(types.string()),
-    minimumAmount: types.optional(types.string()),
-    maximumAmount: types.optional(types.string()),
-    maximumAmountAutoPurchasePerPeriod: types.optional(types.string()),
     cost: types.optional(types.string()),
+    description: types.string(),
     details: types.optional(
       z.array(z.lazy(() => GetBillingPlansDetails$inboundSchema)),
     ),
+    disabled: types.optional(types.boolean()),
+    effectiveDate: types.optional(types.string()),
     highlightedDetails: types.optional(
       z.array(z.lazy(() => GetBillingPlansHighlightedDetails$inboundSchema)),
     ),
+    id: types.string(),
+    initialCharge: types.optional(types.string()),
+    maximumAmount: types.optional(types.string()),
+    maximumAmountAutoPurchasePerPeriod: types.optional(types.string()),
+    minimumAmount: types.optional(types.string()),
+    name: types.string(),
+    paymentMethodRequired: types.boolean(),
+    preauthorizationAmount: types.optional(types.number()),
     quote: types.optional(z.array(z.lazy(() => Quote$inboundSchema))),
-    effectiveDate: types.optional(types.string()),
-    disabled: types.optional(types.boolean()),
+    scope: GetBillingPlansScope$inboundSchema,
+    type: GetBillingPlansType$inboundSchema,
   });
 
 export function plansFromJSON(

@@ -5,6 +5,7 @@
 import { domainsRegistrarBuyDomains } from "../funcs/domainsRegistrarBuyDomains.js";
 import { domainsRegistrarBuySingleDomain } from "../funcs/domainsRegistrarBuySingleDomain.js";
 import { domainsRegistrarGetBulkAvailability } from "../funcs/domainsRegistrarGetBulkAvailability.js";
+import { domainsRegistrarGetBulkPrice } from "../funcs/domainsRegistrarGetBulkPrice.js";
 import { domainsRegistrarGetContactInfoSchema } from "../funcs/domainsRegistrarGetContactInfoSchema.js";
 import { domainsRegistrarGetDomainAuthCode } from "../funcs/domainsRegistrarGetDomainAuthCode.js";
 import { domainsRegistrarGetDomainAvailability } from "../funcs/domainsRegistrarGetDomainAvailability.js";
@@ -16,6 +17,7 @@ import { domainsRegistrarGetSupportedTlds } from "../funcs/domainsRegistrarGetSu
 import { domainsRegistrarGetTld } from "../funcs/domainsRegistrarGetTld.js";
 import { domainsRegistrarGetTldPrice } from "../funcs/domainsRegistrarGetTldPrice.js";
 import { domainsRegistrarRenewDomain } from "../funcs/domainsRegistrarRenewDomain.js";
+import { domainsRegistrarSearchDomains } from "../funcs/domainsRegistrarSearchDomains.js";
 import { domainsRegistrarTransferInDomain } from "../funcs/domainsRegistrarTransferInDomain.js";
 import { domainsRegistrarUpdateDomainAutoRenew } from "../funcs/domainsRegistrarUpdateDomainAutoRenew.js";
 import { domainsRegistrarUpdateDomainNameservers } from "../funcs/domainsRegistrarUpdateDomainNameservers.js";
@@ -32,6 +34,10 @@ import {
   GetBulkAvailabilityRequest,
   GetBulkAvailabilityResponseBody,
 } from "../models/getbulkavailabilityop.js";
+import {
+  GetBulkPriceRequest,
+  GetBulkPriceResponseBody,
+} from "../models/getbulkpriceop.js";
 import {
   GetContactInfoSchemaRequest,
   GetContactInfoSchemaResponseBody,
@@ -67,6 +73,10 @@ import {
   RenewDomainRequest,
   RenewDomainResponseBody,
 } from "../models/renewdomainop.js";
+import {
+  SearchDomainsRequest,
+  SearchDomainsResponseBody,
+} from "../models/searchdomainsop.js";
 import {
   TransferInDomainRequest,
   TransferInDomainResponseBody,
@@ -162,6 +172,23 @@ export class DomainsRegistrar extends ClientSDK {
   }
 
   /**
+   * Get price data for multiple domains
+   *
+   * @remarks
+   * Get price data for multiple domains in a single request.
+   */
+  async getBulkPrice(
+    request: GetBulkPriceRequest,
+    options?: RequestOptions,
+  ): Promise<GetBulkPriceResponseBody> {
+    return unwrapAsync(domainsRegistrarGetBulkPrice(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Get availability for multiple domains
    *
    * @remarks
@@ -172,6 +199,40 @@ export class DomainsRegistrar extends ClientSDK {
     options?: RequestOptions,
   ): Promise<GetBulkAvailabilityResponseBody> {
     return unwrapAsync(domainsRegistrarGetBulkAvailability(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Check domain availability and pricing
+   *
+   * @remarks
+   * Check registration availability for 1–200 exact domain names, such as `example.com`. Returns results in input order, with registration and renewal prices in USD for available domains. No authentication required.
+   */
+  async searchDomains(
+    request: SearchDomainsRequest,
+    options?: RequestOptions,
+  ): Promise<SearchDomainsResponseBody> {
+    return unwrapAsync(domainsRegistrarSearchDomains(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get contact info schema
+   *
+   * @remarks
+   * Some TLDs require additional contact information. Use this endpoint to get the schema for the tld-specific contact information for a domain.
+   */
+  async getContactInfoSchema(
+    request: GetContactInfoSchemaRequest,
+    options?: RequestOptions,
+  ): Promise<GetContactInfoSchemaResponseBody> {
+    return unwrapAsync(domainsRegistrarGetContactInfoSchema(
       this,
       request,
       options,
@@ -325,23 +386,6 @@ export class DomainsRegistrar extends ClientSDK {
     options?: RequestOptions,
   ): Promise<GetDomainContactVerificationResponseBody> {
     return unwrapAsync(domainsRegistrarGetDomainContactVerification(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Get contact info schema
-   *
-   * @remarks
-   * Some TLDs require additional contact information. Use this endpoint to get the schema for the tld-specific contact information for a domain.
-   */
-  async getContactInfoSchema(
-    request: GetContactInfoSchemaRequest,
-    options?: RequestOptions,
-  ): Promise<GetContactInfoSchemaResponseBody> {
-    return unwrapAsync(domainsRegistrarGetContactInfoSchema(
       this,
       request,
       options,

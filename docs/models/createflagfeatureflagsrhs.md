@@ -19,12 +19,12 @@ const value: number = 1284.03;
 
 ```typescript
 const value: models.CreateFlagRhs3 = {
-  type: "list/inline",
   items: [
     {
-      value: 5935.6,
+      value: "<value>",
     },
   ],
+  type: "list",
 };
 ```
 
@@ -32,9 +32,9 @@ const value: models.CreateFlagRhs3 = {
 
 ```typescript
 const value: models.CreateFlagRhs4 = {
-  type: "regex",
-  pattern: "<value>",
   flags: "<value>",
+  pattern: "<value>",
+  type: "regex",
 };
 ```
 

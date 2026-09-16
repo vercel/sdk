@@ -5,14 +5,14 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThirtySix } from "@vercel/sdk/models/userevent.js";
+import { ThirtySix } from "@vercel/sdk/models/twentynine.js";
 
 let value: ThirtySix = {
-  author: "<value>",
   accessGroup: {
     id: "<id>",
     name: "<value>",
   },
+  author: "<value>",
 };
 ```
 
@@ -20,5 +20,5 @@ let value: ThirtySix = {
 
 | Field                                                        | Type                                                         | Required                                                     | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `author`                                                     | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
 | `accessGroup`                                                | [models.PayloadAccessGroup](../models/payloadaccessgroup.md) | :heavy_check_mark:                                           | N/A                                                          |
+| `author`                                                     | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |

@@ -8,8 +8,8 @@ Since June '23
 import { GetDeploymentsGitComments } from "@vercel/sdk/models/getdeploymentsop.js";
 
 let value: GetDeploymentsGitComments = {
-  onPullRequest: true,
-  onCommit: false,
+  onCommit: true,
+  onPullRequest: false,
 };
 ```
 
@@ -17,5 +17,5 @@ let value: GetDeploymentsGitComments = {
 
 | Field                                            | Type                                             | Required                                         | Description                                      |
 | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| `onPullRequest`                                  | *boolean*                                        | :heavy_check_mark:                               | Whether the Vercel bot should comment on PRs     |
 | `onCommit`                                       | *boolean*                                        | :heavy_check_mark:                               | Whether the Vercel bot should comment on commits |
+| `onPullRequest`                                  | *boolean*                                        | :heavy_check_mark:                               | Whether the Vercel bot should comment on PRs     |

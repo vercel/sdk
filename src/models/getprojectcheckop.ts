@@ -25,6 +25,15 @@ export type GetProjectCheckRequest = {
   slug?: string | undefined;
 };
 
+export const GetProjectCheckBlocks = {
+  BuildStart: "build-start",
+  DeploymentAlias: "deployment-alias",
+  DeploymentPromotion: "deployment-promotion",
+  DeploymentStart: "deployment-start",
+  None: "none",
+} as const;
+export type GetProjectCheckBlocks = ClosedEnum<typeof GetProjectCheckBlocks>;
+
 export const GetProjectCheckRequires = {
   BuildReady: "build-ready",
   DeploymentUrl: "deployment-url",
@@ -44,9 +53,9 @@ export type GetProjectCheckSourceProvider = ClosedEnum<
 >;
 
 export type GetProjectCheckSource3 = {
+  externalCheckName: string;
   kind: "git-provider";
   provider: GetProjectCheckSourceProvider;
-  externalCheckName: string;
 };
 
 export type GetProjectCheckSource2 = {
@@ -55,26 +64,17 @@ export type GetProjectCheckSource2 = {
 };
 
 export type GetProjectCheckSource1 = {
-  kind: "integration";
-  integrationId: string;
-  integrationConfigurationId: string;
-  resourceId?: string | undefined;
   externalResourceId?: string | undefined;
+  integrationConfigurationId: string;
+  integrationId: string;
+  kind: "integration";
+  resourceId?: string | undefined;
 };
 
 export type GetProjectCheckSource =
   | GetProjectCheckSource1
   | GetProjectCheckSource2
   | GetProjectCheckSource3;
-
-export const GetProjectCheckBlocks = {
-  BuildStart: "build-start",
-  DeploymentAlias: "deployment-alias",
-  DeploymentPromotion: "deployment-promotion",
-  DeploymentStart: "deployment-start",
-  None: "none",
-} as const;
-export type GetProjectCheckBlocks = ClosedEnum<typeof GetProjectCheckBlocks>;
 
 export const GetProjectCheckSourceKind = {
   GitProvider: "git-provider",
@@ -87,24 +87,24 @@ export type GetProjectCheckSourceKind = ClosedEnum<
 >;
 
 export type GetProjectCheckResponseBody = {
+  blocks: GetProjectCheckBlocks;
+  createdAt: number;
+  deletedAt?: number | undefined;
   id: string;
+  isRerequestable: boolean;
   name: string;
   ownerId: string;
   projectId: string;
-  isRerequestable: boolean;
   requires: GetProjectCheckRequires;
   source:
     | GetProjectCheckSource1
     | GetProjectCheckSource2
     | GetProjectCheckSource3;
-  blocks: GetProjectCheckBlocks;
-  targets: Array<string>;
-  sourceKind: GetProjectCheckSourceKind;
   sourceIntegrationConfigurationId?: string | undefined;
+  sourceKind: GetProjectCheckSourceKind;
+  targets: Array<string>;
   timeout: number;
-  createdAt: number;
   updatedAt: number;
-  deletedAt?: number | undefined;
 };
 
 /** @internal */
@@ -136,6 +136,11 @@ export function getProjectCheckRequestToJSON(
 }
 
 /** @internal */
+export const GetProjectCheckBlocks$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectCheckBlocks
+> = z.nativeEnum(GetProjectCheckBlocks);
+
+/** @internal */
 export const GetProjectCheckRequires$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectCheckRequires
 > = z.nativeEnum(GetProjectCheckRequires);
@@ -151,9 +156,9 @@ export const GetProjectCheckSource3$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  externalCheckName: types.string(),
   kind: types.literal("git-provider"),
   provider: GetProjectCheckSourceProvider$inboundSchema,
-  externalCheckName: types.string(),
 });
 
 export function getProjectCheckSource3FromJSON(
@@ -192,11 +197,11 @@ export const GetProjectCheckSource1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  kind: types.literal("integration"),
-  integrationId: types.string(),
-  integrationConfigurationId: types.string(),
-  resourceId: types.optional(types.string()),
   externalResourceId: types.optional(types.string()),
+  integrationConfigurationId: types.string(),
+  integrationId: types.string(),
+  kind: types.literal("integration"),
+  resourceId: types.optional(types.string()),
 });
 
 export function getProjectCheckSource1FromJSON(
@@ -231,11 +236,6 @@ export function getProjectCheckSourceFromJSON(
 }
 
 /** @internal */
-export const GetProjectCheckBlocks$inboundSchema: z.ZodNativeEnum<
-  typeof GetProjectCheckBlocks
-> = z.nativeEnum(GetProjectCheckBlocks);
-
-/** @internal */
 export const GetProjectCheckSourceKind$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectCheckSourceKind
 > = z.nativeEnum(GetProjectCheckSourceKind);
@@ -246,25 +246,25 @@ export const GetProjectCheckResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  blocks: GetProjectCheckBlocks$inboundSchema,
+  createdAt: types.number(),
+  deletedAt: types.optional(types.number()),
   id: types.string(),
+  isRerequestable: types.boolean(),
   name: types.string(),
   ownerId: types.string(),
   projectId: types.string(),
-  isRerequestable: types.boolean(),
   requires: GetProjectCheckRequires$inboundSchema,
   source: z.union([
     z.lazy(() => GetProjectCheckSource1$inboundSchema),
     z.lazy(() => GetProjectCheckSource2$inboundSchema),
     z.lazy(() => GetProjectCheckSource3$inboundSchema),
   ]),
-  blocks: GetProjectCheckBlocks$inboundSchema,
-  targets: z.array(types.string()),
-  sourceKind: GetProjectCheckSourceKind$inboundSchema,
   sourceIntegrationConfigurationId: types.optional(types.string()),
+  sourceKind: GetProjectCheckSourceKind$inboundSchema,
+  targets: z.array(types.string()),
   timeout: types.number(),
-  createdAt: types.number(),
   updatedAt: types.number(),
-  deletedAt: types.optional(types.number()),
 });
 
 export function getProjectCheckResponseBodyFromJSON(

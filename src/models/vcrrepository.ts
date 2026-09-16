@@ -13,25 +13,25 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
  */
 export type VcrRepository = {
   /**
+   * ISO 8601 timestamp of when the repository was created.
+   */
+  createdAt: string;
+  /**
    * Unique identifier of the repository.
    */
   id: string;
-  /**
-   * Identifier of the project the repository belongs to.
-   */
-  projectId: string;
   /**
    * Name of the repository.
    */
   name: string;
   /**
+   * Identifier of the project the repository belongs to.
+   */
+  projectId: string;
+  /**
    * Whether the repository is public. Images in public repositories can be pulled by anyone. Defaults to `false` (private).
    */
   public: boolean;
-  /**
-   * ISO 8601 timestamp of when the repository was created.
-   */
-  createdAt: string;
   /**
    * ISO 8601 timestamp of when the repository was last updated.
    */
@@ -44,11 +44,11 @@ export const VcrRepository$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: types.string(),
-  projectId: types.string(),
-  name: types.string(),
-  public: types.boolean(),
   createdAt: types.string(),
+  id: types.string(),
+  name: types.string(),
+  projectId: types.string(),
+  public: types.boolean(),
   updatedAt: types.string(),
 });
 

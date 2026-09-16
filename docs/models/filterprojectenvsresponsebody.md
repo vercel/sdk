@@ -9,12 +9,12 @@ The list of environment variables for the given project
 
 ```typescript
 const value: models.FilterProjectEnvsResponseBody1 = {
+  key: "<key>",
   securityIssues: [
     "readable-secret",
   ],
   type: "secret",
   value: "<value>",
-  key: "<key>",
 };
 ```
 

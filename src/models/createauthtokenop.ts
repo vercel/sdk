@@ -36,13 +36,13 @@ export type CreateAuthTokenRequest = {
  */
 export type CreateAuthTokenResponseBody = {
   /**
-   * Authentication token metadata.
-   */
-  token: AuthToken;
-  /**
    * The authentication token's actual value. This token is only provided in this response, and can never be retrieved again in the future. Be sure to save it somewhere safe!
    */
   bearerToken: string;
+  /**
+   * Authentication token metadata.
+   */
+  token: AuthToken;
 };
 
 /** @internal */
@@ -107,8 +107,8 @@ export const CreateAuthTokenResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  token: AuthToken$inboundSchema,
   bearerToken: types.string(),
+  token: AuthToken$inboundSchema,
 });
 
 export function createAuthTokenResponseBodyFromJSON(

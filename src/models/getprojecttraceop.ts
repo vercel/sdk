@@ -28,8 +28,14 @@ export type GetProjectTraceRequest = {
 };
 
 export type GetProjectTraceResources = {
-  name: string;
   attributes: { [k: string]: string };
+  name: string;
+};
+
+export type GetProjectTraceEvents = {
+  attributes: { [k: string]: any };
+  name: string;
+  timestamp: Array<number>;
 };
 
 export type Library = {
@@ -42,35 +48,29 @@ export type GetProjectTraceStatus = {
   message?: string | undefined;
 };
 
-export type GetProjectTraceEvents = {
-  name: string;
-  timestamp: Array<number>;
-  attributes: { [k: string]: any };
-};
-
 export type Spans = {
-  name: string;
-  kind: number;
-  resource: string;
-  library: Library;
-  spanId: string;
-  parentSpanId?: string | undefined;
-  status: GetProjectTraceStatus;
-  traceState?: string | undefined;
-  traceFlags: number;
   attributes: { [k: string]: any };
-  links: Array<{ [k: string]: any }>;
-  events: Array<GetProjectTraceEvents>;
-  startTime: Array<number>;
-  endTime: Array<number>;
   duration: Array<number>;
+  endTime: Array<number>;
+  events: Array<GetProjectTraceEvents>;
+  kind: number;
+  library: Library;
+  links: Array<{ [k: string]: any }>;
+  name: string;
+  parentSpanId?: string | undefined;
+  resource: string;
+  spanId: string;
+  startTime: Array<number>;
+  status: GetProjectTraceStatus;
+  traceFlags: number;
+  traceState?: string | undefined;
 };
 
 export type Trace = {
-  traceId: string;
   resources?: Array<GetProjectTraceResources> | undefined;
-  spans: Array<Spans>;
   rootSpanId?: string | undefined;
+  spans: Array<Spans>;
+  traceId: string;
 };
 
 export type GetProjectTraceResponseBody = {
@@ -111,8 +111,8 @@ export const GetProjectTraceResources$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: types.string(),
   attributes: z.record(types.string()),
+  name: types.string(),
 });
 
 export function getProjectTraceResourcesFromJSON(
@@ -122,6 +122,27 @@ export function getProjectTraceResourcesFromJSON(
     jsonString,
     (x) => GetProjectTraceResources$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetProjectTraceResources' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectTraceEvents$inboundSchema: z.ZodType<
+  GetProjectTraceEvents,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  attributes: z.record(z.any()),
+  name: types.string(),
+  timestamp: z.array(types.number()),
+});
+
+export function getProjectTraceEventsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectTraceEvents, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectTraceEvents$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectTraceEvents' from JSON`,
   );
 }
 
@@ -163,44 +184,23 @@ export function getProjectTraceStatusFromJSON(
 }
 
 /** @internal */
-export const GetProjectTraceEvents$inboundSchema: z.ZodType<
-  GetProjectTraceEvents,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: types.string(),
-  timestamp: z.array(types.number()),
-  attributes: z.record(z.any()),
-});
-
-export function getProjectTraceEventsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetProjectTraceEvents, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetProjectTraceEvents$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProjectTraceEvents' from JSON`,
-  );
-}
-
-/** @internal */
 export const Spans$inboundSchema: z.ZodType<Spans, z.ZodTypeDef, unknown> = z
   .object({
-    name: types.string(),
-    kind: types.number(),
-    resource: types.string(),
-    library: z.lazy(() => Library$inboundSchema),
-    spanId: types.string(),
-    parentSpanId: types.optional(types.string()),
-    status: z.lazy(() => GetProjectTraceStatus$inboundSchema),
-    traceState: types.optional(types.string()),
-    traceFlags: types.number(),
     attributes: z.record(z.any()),
-    links: z.array(z.record(z.any())),
-    events: z.array(z.lazy(() => GetProjectTraceEvents$inboundSchema)),
-    startTime: z.array(types.number()),
-    endTime: z.array(types.number()),
     duration: z.array(types.number()),
+    endTime: z.array(types.number()),
+    events: z.array(z.lazy(() => GetProjectTraceEvents$inboundSchema)),
+    kind: types.number(),
+    library: z.lazy(() => Library$inboundSchema),
+    links: z.array(z.record(z.any())),
+    name: types.string(),
+    parentSpanId: types.optional(types.string()),
+    resource: types.string(),
+    spanId: types.string(),
+    startTime: z.array(types.number()),
+    status: z.lazy(() => GetProjectTraceStatus$inboundSchema),
+    traceFlags: types.number(),
+    traceState: types.optional(types.string()),
   });
 
 export function spansFromJSON(
@@ -216,12 +216,12 @@ export function spansFromJSON(
 /** @internal */
 export const Trace$inboundSchema: z.ZodType<Trace, z.ZodTypeDef, unknown> = z
   .object({
-    traceId: types.string(),
     resources: types.optional(
       z.array(z.lazy(() => GetProjectTraceResources$inboundSchema)),
     ),
-    spans: z.array(z.lazy(() => Spans$inboundSchema)),
     rootSpanId: types.optional(types.string()),
+    spans: z.array(z.lazy(() => Spans$inboundSchema)),
+    traceId: types.string(),
   });
 
 export function traceFromJSON(

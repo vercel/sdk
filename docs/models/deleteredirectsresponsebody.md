@@ -8,10 +8,10 @@
 ```typescript
 const value: models.DeleteRedirectsResponseBody1 = {
   version: {
+    createdBy: "<value>",
     id: "<id>",
     key: "<key>",
     lastModified: 3808.37,
-    createdBy: "<value>",
   },
 };
 ```
@@ -22,10 +22,10 @@ const value: models.DeleteRedirectsResponseBody1 = {
 const value: models.DeleteRedirectsResponseBody2 = {
   alias: "<value>",
   version: {
+    createdBy: "<value>",
     id: "<id>",
     key: "<key>",
     lastModified: 3234.03,
-    createdBy: "<value>",
   },
 };
 ```
@@ -36,10 +36,10 @@ const value: models.DeleteRedirectsResponseBody2 = {
 const value: models.DeleteRedirectsResponseBody3 = {
   alias: "<value>",
   version: {
+    createdBy: "<value>",
     id: "<id>",
     key: "<key>",
     lastModified: 44.73,
-    createdBy: "<value>",
   },
 };
 ```

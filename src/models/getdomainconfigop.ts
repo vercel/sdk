@@ -45,6 +45,18 @@ export type GetDomainConfigRequest = {
 };
 
 /**
+ * Which challenge types the domain can use for issuing certs.
+ */
+export const AcceptedChallenges = {
+  Dns01: "dns-01",
+  Http01: "http-01",
+} as const;
+/**
+ * Which challenge types the domain can use for issuing certs.
+ */
+export type AcceptedChallenges = ClosedEnum<typeof AcceptedChallenges>;
+
+/**
  * How we see the domain's configuration. - `CNAME`: Domain has a CNAME pointing to Vercel. - `A`: Domain's A record is resolving to Vercel. - `http`: Domain is resolving to Vercel but may be behind a Proxy. - `dns-01`: Domain is not resolving to Vercel but dns-01 challenge is enabled. - `null`: Domain is not resolving to Vercel.
  */
 export const ConfiguredBy = {
@@ -59,16 +71,12 @@ export const ConfiguredBy = {
 export type ConfiguredBy = ClosedEnum<typeof ConfiguredBy>;
 
 /**
- * Which challenge types the domain can use for issuing certs.
+ * Recommended CNAMEs for the domain. rank=1 is the preferred value to use.
  */
-export const AcceptedChallenges = {
-  Dns01: "dns-01",
-  Http01: "http-01",
-} as const;
-/**
- * Which challenge types the domain can use for issuing certs.
- */
-export type AcceptedChallenges = ClosedEnum<typeof AcceptedChallenges>;
+export type RecommendedCNAME = {
+  rank: number;
+  value: string;
+};
 
 /**
  * Recommended IPv4s for the domain. rank=1 is the preferred value(s) to use. Only using 1 ip value is acceptable.
@@ -78,31 +86,23 @@ export type RecommendedIPv4 = {
   value: Array<string>;
 };
 
-/**
- * Recommended CNAMEs for the domain. rank=1 is the preferred value to use.
- */
-export type RecommendedCNAME = {
-  rank: number;
-  value: string;
-};
-
 export type GetDomainConfigResponseBody = {
-  /**
-   * How we see the domain's configuration. - `CNAME`: Domain has a CNAME pointing to Vercel. - `A`: Domain's A record is resolving to Vercel. - `http`: Domain is resolving to Vercel but may be behind a Proxy. - `dns-01`: Domain is not resolving to Vercel but dns-01 challenge is enabled. - `null`: Domain is not resolving to Vercel.
-   */
-  configuredBy: ConfiguredBy | null;
   /**
    * Which challenge types the domain can use for issuing certs.
    */
   acceptedChallenges: Array<AcceptedChallenges>;
   /**
-   * Recommended IPv4s for the domain. rank=1 is the preferred value(s) to use. Only using 1 ip value is acceptable.
+   * How we see the domain's configuration. - `CNAME`: Domain has a CNAME pointing to Vercel. - `A`: Domain's A record is resolving to Vercel. - `http`: Domain is resolving to Vercel but may be behind a Proxy. - `dns-01`: Domain is not resolving to Vercel but dns-01 challenge is enabled. - `null`: Domain is not resolving to Vercel.
    */
-  recommendedIPv4: Array<RecommendedIPv4>;
+  configuredBy: ConfiguredBy | null;
   /**
    * Recommended CNAMEs for the domain. rank=1 is the preferred value to use.
    */
   recommendedCNAME: Array<RecommendedCNAME>;
+  /**
+   * Recommended IPv4s for the domain. rank=1 is the preferred value(s) to use. Only using 1 ip value is acceptable.
+   */
+  recommendedIPv4: Array<RecommendedIPv4>;
   /**
    * Whether or not the domain is configured AND we can automatically generate a TLS certificate.
    */
@@ -144,33 +144,13 @@ export function getDomainConfigRequestToJSON(
 }
 
 /** @internal */
-export const ConfiguredBy$inboundSchema: z.ZodNativeEnum<typeof ConfiguredBy> =
-  z.nativeEnum(ConfiguredBy);
-
-/** @internal */
 export const AcceptedChallenges$inboundSchema: z.ZodNativeEnum<
   typeof AcceptedChallenges
 > = z.nativeEnum(AcceptedChallenges);
 
 /** @internal */
-export const RecommendedIPv4$inboundSchema: z.ZodType<
-  RecommendedIPv4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  rank: types.number(),
-  value: z.array(types.string()),
-});
-
-export function recommendedIPv4FromJSON(
-  jsonString: string,
-): SafeParseResult<RecommendedIPv4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RecommendedIPv4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RecommendedIPv4' from JSON`,
-  );
-}
+export const ConfiguredBy$inboundSchema: z.ZodNativeEnum<typeof ConfiguredBy> =
+  z.nativeEnum(ConfiguredBy);
 
 /** @internal */
 export const RecommendedCNAME$inboundSchema: z.ZodType<
@@ -193,15 +173,35 @@ export function recommendedCNAMEFromJSON(
 }
 
 /** @internal */
+export const RecommendedIPv4$inboundSchema: z.ZodType<
+  RecommendedIPv4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  rank: types.number(),
+  value: z.array(types.string()),
+});
+
+export function recommendedIPv4FromJSON(
+  jsonString: string,
+): SafeParseResult<RecommendedIPv4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RecommendedIPv4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RecommendedIPv4' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetDomainConfigResponseBody$inboundSchema: z.ZodType<
   GetDomainConfigResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  configuredBy: types.nullable(ConfiguredBy$inboundSchema),
   acceptedChallenges: z.array(AcceptedChallenges$inboundSchema),
-  recommendedIPv4: z.array(z.lazy(() => RecommendedIPv4$inboundSchema)),
+  configuredBy: types.nullable(ConfiguredBy$inboundSchema),
   recommendedCNAME: z.array(z.lazy(() => RecommendedCNAME$inboundSchema)),
+  recommendedIPv4: z.array(z.lazy(() => RecommendedIPv4$inboundSchema)),
   misconfigured: types.boolean(),
 });
 

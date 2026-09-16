@@ -6,19 +6,21 @@
 import { ListFlagVersionsVersions } from "@vercel/sdk/models/listflagversionsop.js";
 
 let value: ListFlagVersionsVersions = {
-  id: "<id>",
-  revision: 2006.83,
+  changedEnvironments: [],
   createdAt: 9041.39,
   flagId: "<id>",
-  changedEnvironments: [
-    "<value 1>",
-    "<value 2>",
-  ],
+  id: "<id>",
+  revision: 5771.97,
   data: {
-    variants: [],
     environments: {},
-    seed: 2916.52,
-    state: "archived",
+    seed: 1241.07,
+    state: "active",
+    variants: [
+      {
+        id: "<id>",
+        value: 711.35,
+      },
+    ],
   },
 };
 ```
@@ -27,12 +29,12 @@ let value: ListFlagVersionsVersions = {
 
 | Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
 | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `id`                                                                     | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
-| `revision`                                                               | *number*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
+| `changedEnvironments`                                                    | *string*[]                                                               | :heavy_check_mark:                                                       | N/A                                                                      |
 | `createdAt`                                                              | *number*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
 | `createdBy`                                                              | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
-| `message`                                                                | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
 | `flagId`                                                                 | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
-| `changedEnvironments`                                                    | *string*[]                                                               | :heavy_check_mark:                                                       | N/A                                                                      |
+| `id`                                                                     | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
+| `message`                                                                | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `revision`                                                               | *number*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
 | `data`                                                                   | [models.ListFlagVersionsData](../models/listflagversionsdata.md)         | :heavy_check_mark:                                                       | N/A                                                                      |
 | `metadata`                                                               | [models.ListFlagVersionsMetadata](../models/listflagversionsmetadata.md) | :heavy_minus_sign:                                                       | N/A                                                                      |

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateIntegrationStoreDirectGit } from "@vercel/sdk/models/createintegrationstoredirectpropertiesintegrationsitems.js";
+import { CreateIntegrationStoreDirectGit } from "@vercel/sdk/models/createintegrationstoredirectpropertiesintegrationsresponse200uioptions.js";
 
 let value: CreateIntegrationStoreDirectGit = {
   providers: [
@@ -16,6 +16,6 @@ let value: CreateIntegrationStoreDirectGit = {
 
 | Field                                          | Type                                           | Required                                       | Description                                    |
 | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `providers`                                    | *models.CreateIntegrationStoreDirectProviders* | :heavy_check_mark:                             | N/A                                            |
 | `owners`                                       | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
+| `providers`                                    | *models.CreateIntegrationStoreDirectProviders* | :heavy_check_mark:                             | N/A                                            |
 | `repos`                                        | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |

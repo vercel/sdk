@@ -12,7 +12,6 @@ const value: models.GetProjectsResponseBody1[] = [
     alias: [
       {
         deployment: {
-          id: "<id>",
           createdAt: 4315.2,
           createdIn: "<value>",
           creator: {
@@ -21,6 +20,7 @@ const value: models.GetProjectsResponseBody1[] = [
             username: "Annalise_DuBuque",
           },
           deploymentHostname: "<value>",
+          id: "<id>",
           name: "<value>",
           plan: "pro",
           previewCommentsEnabled: false,
@@ -34,12 +34,11 @@ const value: models.GetProjectsResponseBody1[] = [
         target: "STAGING",
       },
     ],
-    directoryListing: false,
     deploymentExpiration: {},
+    directoryListing: false,
     id: "<id>",
     latestDeployments: [
       {
-        id: "<id>",
         createdAt: 9565.98,
         createdIn: "<value>",
         creator: {
@@ -48,6 +47,7 @@ const value: models.GetProjectsResponseBody1[] = [
           username: "Jessy_Grant",
         },
         deploymentHostname: "<value>",
+        id: "<id>",
         name: "<value>",
         plan: "pro",
         previewCommentsEnabled: false,
@@ -67,45 +67,33 @@ const value: models.GetProjectsResponseBody1[] = [
       ],
     },
     rollingRelease: {
-      target: "production",
-      stages: [
-        {
-          targetPercentage: 25,
-          requireApproval: false,
-          duration: 600,
-          linearShift: false,
-        },
-      ],
       canaryResponseHeader: false,
       gate: {
-        enabled: true,
-        checks: [
-          {
-            type: "error-rate-5xx",
-            minSampleSize: 100,
-            excludeStatusCodes: [
-              503,
-            ],
-            excludePaths: [
-              "/api/health",
-            ],
-            ingestWatermarkSeconds: 30,
-          },
-        ],
+        action: "rollback",
+        checks: [],
+        dryRun: false,
+        enabled: false,
         failureThreshold: 3,
         windowSize: 5,
-        action: "rollback",
-        dryRun: false,
       },
+      stages: [
+        {
+          duration: 600,
+          linearShift: false,
+          requireApproval: false,
+          targetPercentage: 25,
+        },
+      ],
+      target: "production",
     },
     serverlessFunctionRegion: "<value>",
     targets: {
       "key": {
-        id: "<id>",
         createdAt: 2031.24,
         createdIn: "<value>",
         creator: null,
         deploymentHostname: "<value>",
+        id: "<id>",
         name: "<value>",
         plan: "enterprise",
         previewCommentsEnabled: false,
@@ -123,55 +111,63 @@ const value: models.GetProjectsResponseBody1[] = [
 
 ```typescript
 const value: models.GetProjectsResponseBody2 = {
-  projects: [],
   pagination: {
     count: 20,
-    next: 1540095775951,
-    prev: 1540095775951,
+    next: "JBSWY3DPEHPK3PXP",
   },
-};
-```
-
-### `models.GetProjectsResponseBody3`
-
-```typescript
-const value: models.GetProjectsResponseBody3 = {
   projects: [
     {
       accountId: "<id>",
-      alias: [],
-      crons: {
-        enabledAt: 8858.87,
-        disabledAt: 1432.7,
-        updatedAt: 4029.67,
-        deploymentId: null,
-        definitions: [],
-      },
+      alias: [
+        {
+          deployment: {
+            createdAt: 2521.56,
+            createdIn: "<value>",
+            creator: {
+              email: "Augusta_Thompson@gmail.com",
+              uid: "<id>",
+              username: "Guadalupe_Satterfield",
+            },
+            deploymentHostname: "<value>",
+            id: "<id>",
+            name: "<value>",
+            plan: "pro",
+            previewCommentsEnabled: false,
+            private: false,
+            readyState: "QUEUED",
+            type: "LAMBDAS",
+            url: "https://stingy-outlaw.biz",
+          },
+          domain: "dutiful-video.com",
+          environment: "production",
+          target: "STAGING",
+        },
+      ],
       deploymentExpiration: {},
-      directoryListing: false,
+      directoryListing: true,
       id: "<id>",
       latestDeployments: [
         {
-          id: "<id>",
-          createdAt: 6432.1,
+          createdAt: 3100.36,
           createdIn: "<value>",
           creator: {
-            email: "Annetta_Swift23@gmail.com",
+            email: "Amara9@yahoo.com",
             uid: "<id>",
-            username: "Earnestine_OReilly",
+            username: "Hal.Wisoky",
           },
           deploymentHostname: "<value>",
+          id: "<id>",
           name: "<value>",
           plan: "pro",
           previewCommentsEnabled: false,
           private: false,
-          readyState: "ERROR",
+          readyState: "INITIALIZING",
           type: "LAMBDAS",
-          url: "https://normal-statue.info",
+          url: "https://free-synergy.com/",
         },
       ],
       name: "<value>",
-      nodeVersion: "22.x",
+      nodeVersion: "16.x",
       resourceConfig: {
         functionDefaultRegions: [
           "<value 1>",
@@ -179,54 +175,61 @@ const value: models.GetProjectsResponseBody3 = {
         ],
       },
       rollingRelease: {
-        target: "production",
-        stages: [
-          {
-            targetPercentage: 25,
-            requireApproval: false,
-            duration: 600,
-            linearShift: false,
-          },
-        ],
         canaryResponseHeader: false,
         gate: {
-          enabled: true,
+          action: "rollback",
           checks: [],
+          dryRun: false,
+          enabled: false,
           failureThreshold: 3,
           windowSize: 5,
-          action: "rollback",
-          dryRun: false,
         },
+        stages: [
+          {
+            duration: 600,
+            linearShift: false,
+            requireApproval: false,
+            targetPercentage: 25,
+          },
+        ],
+        target: "production",
       },
-      defaultResourceConfig: {
-        functionDefaultRegions: [],
-      },
+      serverlessFunctionRegion: "<value>",
       targets: {
         "key": {
-          id: "<id>",
-          createdAt: 2108.09,
+          createdAt: 5771.7,
           createdIn: "<value>",
           creator: {
-            email: "Fritz.Streich@hotmail.com",
+            email: "Macey78@yahoo.com",
             uid: "<id>",
-            username: "Ashly82",
+            username: "Luisa.Pacocha",
           },
           deploymentHostname: "<value>",
+          id: "<id>",
           name: "<value>",
-          plan: "pro",
+          plan: "hobby",
           previewCommentsEnabled: false,
-          private: true,
+          private: false,
           readyState: "QUEUED",
           type: "LAMBDAS",
-          url: "https://frank-gloom.name/",
+          url: "https://minor-expense.name/",
         },
       },
     },
   ],
+};
+```
+
+### `models.GetProjectsResponseBody3`
+
+```typescript
+const value: models.GetProjectsResponseBody3 = {
   pagination: {
     count: 20,
-    next: "JBSWY3DPEHPK3PXP",
+    next: 1540095775951,
+    prev: 1540095775951,
   },
+  projects: [],
 };
 ```
 

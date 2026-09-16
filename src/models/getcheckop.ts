@@ -29,13 +29,6 @@ export type GetCheckRequest = {
   slug?: string | undefined;
 };
 
-export const GetCheckStatus = {
-  Completed: "completed",
-  Registered: "registered",
-  Running: "running",
-} as const;
-export type GetCheckStatus = ClosedEnum<typeof GetCheckStatus>;
-
 export const GetCheckConclusion = {
   Canceled: "canceled",
   Failed: "failed",
@@ -51,10 +44,10 @@ export const GetCheckSource = {
 } as const;
 export type GetCheckSource = ClosedEnum<typeof GetCheckSource>;
 
-export type GetCheckFCP = {
-  value: number | null;
+export type GetCheckCLS = {
   previousValue?: number | undefined;
   source: GetCheckSource;
+  value: number | null;
 };
 
 export const GetCheckChecksSource = {
@@ -62,10 +55,10 @@ export const GetCheckChecksSource = {
 } as const;
 export type GetCheckChecksSource = ClosedEnum<typeof GetCheckChecksSource>;
 
-export type GetCheckLCP = {
-  value: number | null;
+export type GetCheckFCP = {
   previousValue?: number | undefined;
   source: GetCheckChecksSource;
+  value: number | null;
 };
 
 export const GetCheckChecksResponseSource = {
@@ -75,10 +68,10 @@ export type GetCheckChecksResponseSource = ClosedEnum<
   typeof GetCheckChecksResponseSource
 >;
 
-export type GetCheckCLS = {
-  value: number | null;
+export type GetCheckLCP = {
   previousValue?: number | undefined;
   source: GetCheckChecksResponseSource;
+  value: number | null;
 };
 
 export const GetCheckChecksResponse200Source = {
@@ -89,9 +82,9 @@ export type GetCheckChecksResponse200Source = ClosedEnum<
 >;
 
 export type GetCheckTBT = {
-  value: number | null;
   previousValue?: number | undefined;
   source: GetCheckChecksResponse200Source;
+  value: number | null;
 };
 
 export const GetCheckChecksResponse200ApplicationJSONSource = {
@@ -102,15 +95,15 @@ export type GetCheckChecksResponse200ApplicationJSONSource = ClosedEnum<
 >;
 
 export type GetCheckVirtualExperienceScore = {
-  value: number | null;
   previousValue?: number | undefined;
   source: GetCheckChecksResponse200ApplicationJSONSource;
+  value: number | null;
 };
 
 export type GetCheckMetrics = {
+  cls: GetCheckCLS;
   fcp: GetCheckFCP;
   lcp: GetCheckLCP;
-  cls: GetCheckCLS;
   tbt: GetCheckTBT;
   virtualExperienceScore?: GetCheckVirtualExperienceScore | undefined;
 };
@@ -119,23 +112,30 @@ export type GetCheckOutput = {
   metrics?: GetCheckMetrics | undefined;
 };
 
+export const GetCheckStatus = {
+  Completed: "completed",
+  Registered: "registered",
+  Running: "running",
+} as const;
+export type GetCheckStatus = ClosedEnum<typeof GetCheckStatus>;
+
 export type GetCheckResponseBody = {
-  id: string;
-  name: string;
-  createdAt: number;
-  updatedAt: number;
-  deploymentId: string;
-  status: GetCheckStatus;
-  conclusion?: GetCheckConclusion | undefined;
-  externalId?: string | undefined;
-  output?: GetCheckOutput | undefined;
-  completedAt?: number | undefined;
-  path?: string | undefined;
   blocking: boolean;
+  completedAt?: number | undefined;
+  conclusion?: GetCheckConclusion | undefined;
+  createdAt: number;
+  deploymentId: string;
   detailsUrl?: string | undefined;
+  externalId?: string | undefined;
+  id: string;
   integrationId: string;
-  startedAt?: number | undefined;
+  name: string;
+  output?: GetCheckOutput | undefined;
+  path?: string | undefined;
   rerequestable?: boolean | undefined;
+  startedAt?: number | undefined;
+  status: GetCheckStatus;
+  updatedAt: number;
 };
 
 /** @internal */
@@ -165,11 +165,6 @@ export function getCheckRequestToJSON(
 }
 
 /** @internal */
-export const GetCheckStatus$inboundSchema: z.ZodNativeEnum<
-  typeof GetCheckStatus
-> = z.nativeEnum(GetCheckStatus);
-
-/** @internal */
 export const GetCheckConclusion$inboundSchema: z.ZodNativeEnum<
   typeof GetCheckConclusion
 > = z.nativeEnum(GetCheckConclusion);
@@ -180,14 +175,40 @@ export const GetCheckSource$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(GetCheckSource);
 
 /** @internal */
+export const GetCheckCLS$inboundSchema: z.ZodType<
+  GetCheckCLS,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  previousValue: types.optional(types.number()),
+  source: GetCheckSource$inboundSchema,
+  value: types.nullable(types.number()),
+});
+
+export function getCheckCLSFromJSON(
+  jsonString: string,
+): SafeParseResult<GetCheckCLS, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetCheckCLS$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetCheckCLS' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetCheckChecksSource$inboundSchema: z.ZodNativeEnum<
+  typeof GetCheckChecksSource
+> = z.nativeEnum(GetCheckChecksSource);
+
+/** @internal */
 export const GetCheckFCP$inboundSchema: z.ZodType<
   GetCheckFCP,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  value: types.nullable(types.number()),
   previousValue: types.optional(types.number()),
-  source: GetCheckSource$inboundSchema,
+  source: GetCheckChecksSource$inboundSchema,
+  value: types.nullable(types.number()),
 });
 
 export function getCheckFCPFromJSON(
@@ -201,9 +222,9 @@ export function getCheckFCPFromJSON(
 }
 
 /** @internal */
-export const GetCheckChecksSource$inboundSchema: z.ZodNativeEnum<
-  typeof GetCheckChecksSource
-> = z.nativeEnum(GetCheckChecksSource);
+export const GetCheckChecksResponseSource$inboundSchema: z.ZodNativeEnum<
+  typeof GetCheckChecksResponseSource
+> = z.nativeEnum(GetCheckChecksResponseSource);
 
 /** @internal */
 export const GetCheckLCP$inboundSchema: z.ZodType<
@@ -211,9 +232,9 @@ export const GetCheckLCP$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  value: types.nullable(types.number()),
   previousValue: types.optional(types.number()),
-  source: GetCheckChecksSource$inboundSchema,
+  source: GetCheckChecksResponseSource$inboundSchema,
+  value: types.nullable(types.number()),
 });
 
 export function getCheckLCPFromJSON(
@@ -223,32 +244,6 @@ export function getCheckLCPFromJSON(
     jsonString,
     (x) => GetCheckLCP$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetCheckLCP' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetCheckChecksResponseSource$inboundSchema: z.ZodNativeEnum<
-  typeof GetCheckChecksResponseSource
-> = z.nativeEnum(GetCheckChecksResponseSource);
-
-/** @internal */
-export const GetCheckCLS$inboundSchema: z.ZodType<
-  GetCheckCLS,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  value: types.nullable(types.number()),
-  previousValue: types.optional(types.number()),
-  source: GetCheckChecksResponseSource$inboundSchema,
-});
-
-export function getCheckCLSFromJSON(
-  jsonString: string,
-): SafeParseResult<GetCheckCLS, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetCheckCLS$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetCheckCLS' from JSON`,
   );
 }
 
@@ -263,9 +258,9 @@ export const GetCheckTBT$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  value: types.nullable(types.number()),
   previousValue: types.optional(types.number()),
   source: GetCheckChecksResponse200Source$inboundSchema,
+  value: types.nullable(types.number()),
 });
 
 export function getCheckTBTFromJSON(
@@ -289,9 +284,9 @@ export const GetCheckVirtualExperienceScore$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  value: types.nullable(types.number()),
   previousValue: types.optional(types.number()),
   source: GetCheckChecksResponse200ApplicationJSONSource$inboundSchema,
+  value: types.nullable(types.number()),
 });
 
 export function getCheckVirtualExperienceScoreFromJSON(
@@ -310,18 +305,18 @@ export const GetCheckMetrics$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  CLS: z.lazy(() => GetCheckCLS$inboundSchema),
   FCP: z.lazy(() => GetCheckFCP$inboundSchema),
   LCP: z.lazy(() => GetCheckLCP$inboundSchema),
-  CLS: z.lazy(() => GetCheckCLS$inboundSchema),
   TBT: z.lazy(() => GetCheckTBT$inboundSchema),
   virtualExperienceScore: types.optional(
     z.lazy(() => GetCheckVirtualExperienceScore$inboundSchema),
   ),
 }).transform((v) => {
   return remap$(v, {
+    "CLS": "cls",
     "FCP": "fcp",
     "LCP": "lcp",
-    "CLS": "cls",
     "TBT": "tbt",
   });
 });
@@ -356,27 +351,32 @@ export function getCheckOutputFromJSON(
 }
 
 /** @internal */
+export const GetCheckStatus$inboundSchema: z.ZodNativeEnum<
+  typeof GetCheckStatus
+> = z.nativeEnum(GetCheckStatus);
+
+/** @internal */
 export const GetCheckResponseBody$inboundSchema: z.ZodType<
   GetCheckResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: types.string(),
-  name: types.string(),
-  createdAt: types.number(),
-  updatedAt: types.number(),
-  deploymentId: types.string(),
-  status: GetCheckStatus$inboundSchema,
-  conclusion: types.optional(GetCheckConclusion$inboundSchema),
-  externalId: types.optional(types.string()),
-  output: types.optional(z.lazy(() => GetCheckOutput$inboundSchema)),
-  completedAt: types.optional(types.number()),
-  path: types.optional(types.string()),
   blocking: types.boolean(),
+  completedAt: types.optional(types.number()),
+  conclusion: types.optional(GetCheckConclusion$inboundSchema),
+  createdAt: types.number(),
+  deploymentId: types.string(),
   detailsUrl: types.optional(types.string()),
+  externalId: types.optional(types.string()),
+  id: types.string(),
   integrationId: types.string(),
-  startedAt: types.optional(types.number()),
+  name: types.string(),
+  output: types.optional(z.lazy(() => GetCheckOutput$inboundSchema)),
+  path: types.optional(types.string()),
   rerequestable: types.optional(types.boolean()),
+  startedAt: types.optional(types.number()),
+  status: GetCheckStatus$inboundSchema,
+  updatedAt: types.number(),
 });
 
 export function getCheckResponseBodyFromJSON(

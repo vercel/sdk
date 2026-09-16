@@ -79,68 +79,149 @@ export type GetDeploymentsRequest = {
   slug?: string | undefined;
 };
 
-export const GetDeploymentsReadyState = {
-  Blocked: "BLOCKED",
-  Building: "BUILDING",
-  Canceled: "CANCELED",
-  Deleted: "DELETED",
-  Error: "ERROR",
-  Initializing: "INITIALIZING",
-  Queued: "QUEUED",
-  Ready: "READY",
+export type GetDeploymentsAliasAssigned = number | boolean;
+
+/**
+ * An error object in case aliasing of the deployment failed.
+ */
+export type GetDeploymentsAliasError = {
+  code: string;
+  message: string;
+};
+
+/**
+ * Commit metadata from the git commit author
+ */
+export type GetDeploymentsCommitMeta = {
+  /**
+   * Email from git commit author
+   */
+  email?: string | undefined;
+  /**
+   * Whether the commit was signed/verified (GitHub only, others return undefined)
+   */
+  isVerified?: boolean | undefined;
+  /**
+   * Name from git commit author
+   */
+  name?: string | undefined;
+};
+
+export type GetDeploymentsId = string | number;
+
+/**
+ * Git provider user associated with the commit author email (only set if resolved)
+ */
+export type GetDeploymentsGitUser = {
+  id: string | number;
+  /**
+   * Git provider username/login
+   */
+  login: string;
+  /**
+   * The git provider (github, gitlab, bitbucket)
+   */
+  provider?: string | undefined;
+  /**
+   * User type
+   */
+  type?: string | undefined;
+};
+
+/**
+ * Vercel user linked to the git provider account (only set if resolved)
+ */
+export type GetDeploymentsVercelUser = {
+  /**
+   * Vercel user ID
+   */
+  id: string;
+  /**
+   * Team roles at time of deployment
+   */
+  teamRoles?: Array<string> | undefined;
+  /**
+   * Vercel username
+   */
+  username: string;
+};
+
+/**
+ * Commit attribution metadata
+ */
+export type GetDeploymentsAttribution = {
+  /**
+   * Commit metadata from the git commit author
+   */
+  commitMeta?: GetDeploymentsCommitMeta | undefined;
+  /**
+   * Git provider user associated with the commit author email (only set if resolved)
+   */
+  gitUser?: GetDeploymentsGitUser | undefined;
+  /**
+   * Vercel user linked to the git provider account (only set if resolved)
+   */
+  vercelUser?: GetDeploymentsVercelUser | undefined;
+};
+
+export const GetDeploymentsDeploymentsResponseState = {
+  Failed: "failed",
+  Pending: "pending",
+  Succeeded: "succeeded",
 } as const;
-export type GetDeploymentsReadyState = ClosedEnum<
-  typeof GetDeploymentsReadyState
+export type GetDeploymentsDeploymentsResponseState = ClosedEnum<
+  typeof GetDeploymentsDeploymentsResponseState
 >;
 
 /**
- * The source of the deployment.
+ * Detailed information about v2 deployment checks. Includes information about blocked workflows in the deployment lifecycle.
  */
-export const GetDeploymentsSource = {
-  ApiTriggerGitDeploy: "api-trigger-git-deploy",
-  Cli: "cli",
-  CloneRepo: "clone/repo",
-  Drop: "drop",
-  Git: "git",
-  GitDeployHook: "git-deploy-hook",
-  Import: "import",
-  ImportRepo: "import/repo",
-  Redeploy: "redeploy",
-  V0Web: "v0-web",
-} as const;
-/**
- * The source of the deployment.
- */
-export type GetDeploymentsSource = ClosedEnum<typeof GetDeploymentsSource>;
+export type GetDeploymentsDeploymentAlias = {
+  completedAt?: number | undefined;
+  startedAt: number;
+  state: GetDeploymentsDeploymentsResponseState;
+};
 
 /**
- * In which state is the deployment.
+ * Detailed information about v2 deployment checks. Includes information about blocked workflows in the deployment lifecycle.
  */
-export const GetDeploymentsState = {
-  Blocked: "BLOCKED",
-  Building: "BUILDING",
-  Canceled: "CANCELED",
-  Deleted: "DELETED",
-  Error: "ERROR",
-  Initializing: "INITIALIZING",
-  Queued: "QUEUED",
-  Ready: "READY",
-} as const;
-/**
- * In which state is the deployment.
- */
-export type GetDeploymentsState = ClosedEnum<typeof GetDeploymentsState>;
+export type GetDeploymentsChecks = {
+  /**
+   * Detailed information about v2 deployment checks. Includes information about blocked workflows in the deployment lifecycle.
+   */
+  deploymentAlias: GetDeploymentsDeploymentAlias;
+};
 
 /**
- * The type of the deployment.
+ * Conclusion for checks
  */
-export const GetDeploymentsType = {
-  Lambdas: "LAMBDAS",
+export const GetDeploymentsChecksConclusion = {
+  Canceled: "canceled",
+  Failed: "failed",
+  Skipped: "skipped",
+  Succeeded: "succeeded",
 } as const;
 /**
- * The type of the deployment.
+ * Conclusion for checks
  */
-export type GetDeploymentsType = ClosedEnum<typeof GetDeploymentsType>;
+export type GetDeploymentsChecksConclusion = ClosedEnum<
+  typeof GetDeploymentsChecksConclusion
+>;
+
+/**
+ * State of all registered checks
+ */
+export const GetDeploymentsChecksState = {
+  Completed: "completed",
+  Registered: "registered",
+  Running: "running",
+} as const;
+/**
+ * State of all registered checks
+ */
+export type GetDeploymentsChecksState = ClosedEnum<
+  typeof GetDeploymentsChecksState
+>;
 
 /**
  * Principal type of the deployment creator. Defaults to `"user"` if absent (legacy deployments created before principal attribution was recorded).
@@ -163,21 +244,9 @@ export type GetDeploymentsDeploymentsType = ClosedEnum<
  */
 export type GetDeploymentsCreator = {
   /**
-   * Stable creator id across principal types. This may be a user ID, an app ID, an integration configuration ID, or `system`.
-   */
-  uid: string;
-  /**
-   * Principal type of the deployment creator. Defaults to `"user"` if absent (legacy deployments created before principal attribution was recorded).
-   */
-  type?: GetDeploymentsDeploymentsType | undefined;
-  /**
    * The email address of the user.
    */
   email?: string | undefined;
-  /**
-   * The username of the user.
-   */
-  username?: string | undefined;
   /**
    * The GitHub login of the user.
    */
@@ -186,116 +255,27 @@ export type GetDeploymentsCreator = {
    * The GitLab login of the user.
    */
   gitlabLogin?: string | undefined;
-};
-
-/**
- * On which environment has the deployment been deployed to.
- */
-export const GetDeploymentsTarget = {
-  Production: "production",
-  Staging: "staging",
-} as const;
-/**
- * On which environment has the deployment been deployed to.
- */
-export type GetDeploymentsTarget = ClosedEnum<typeof GetDeploymentsTarget>;
-
-/**
- * An error object in case aliasing of the deployment failed.
- */
-export type GetDeploymentsAliasError = {
-  code: string;
-  message: string;
-};
-
-export type GetDeploymentsAliasAssigned = number | boolean;
-
-/**
- * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of gradually transitioning production traffic - PROMOTED: has seen production traffic
- */
-export const GetDeploymentsReadySubstate = {
-  Promoted: "PROMOTED",
-  Rolling: "ROLLING",
-  Staged: "STAGED",
-} as const;
-/**
- * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of gradually transitioning production traffic - PROMOTED: has seen production traffic
- */
-export type GetDeploymentsReadySubstate = ClosedEnum<
-  typeof GetDeploymentsReadySubstate
->;
-
-/**
- * State of all registered checks
- */
-export const GetDeploymentsChecksState = {
-  Completed: "completed",
-  Registered: "registered",
-  Running: "running",
-} as const;
-/**
- * State of all registered checks
- */
-export type GetDeploymentsChecksState = ClosedEnum<
-  typeof GetDeploymentsChecksState
->;
-
-/**
- * Conclusion for checks
- */
-export const GetDeploymentsChecksConclusion = {
-  Canceled: "canceled",
-  Failed: "failed",
-  Skipped: "skipped",
-  Succeeded: "succeeded",
-} as const;
-/**
- * Conclusion for checks
- */
-export type GetDeploymentsChecksConclusion = ClosedEnum<
-  typeof GetDeploymentsChecksConclusion
->;
-
-export const GetDeploymentsDeploymentsResponseState = {
-  Failed: "failed",
-  Pending: "pending",
-  Succeeded: "succeeded",
-} as const;
-export type GetDeploymentsDeploymentsResponseState = ClosedEnum<
-  typeof GetDeploymentsDeploymentsResponseState
->;
-
-/**
- * Detailed information about v2 deployment checks. Includes information about blocked workflows in the deployment lifecycle.
- */
-export type GetDeploymentsDeploymentAlias = {
-  state: GetDeploymentsDeploymentsResponseState;
-  startedAt: number;
-  completedAt?: number | undefined;
-};
-
-/**
- * Detailed information about v2 deployment checks. Includes information about blocked workflows in the deployment lifecycle.
- */
-export type GetDeploymentsChecks = {
   /**
-   * Detailed information about v2 deployment checks. Includes information about blocked workflows in the deployment lifecycle.
+   * Principal type of the deployment creator. Defaults to `"user"` if absent (legacy deployments created before principal attribution was recorded).
    */
-  deploymentAlias: GetDeploymentsDeploymentAlias;
+  type?: GetDeploymentsDeploymentsType | undefined;
+  /**
+   * Stable creator id across principal types. This may be a user ID, an app ID, an integration configuration ID, or `system`.
+   */
+  uid: string;
+  /**
+   * The username of the user.
+   */
+  username?: string | undefined;
 };
 
 /**
- * Indicates if the deployment encountered an out-of-memory error.
+ * The custom environment used for this deployment, if any
  */
-export const GetDeploymentsOomReport = {
-  OutOfMemory: "out-of-memory",
-} as const;
-/**
- * Indicates if the deployment encountered an out-of-memory error.
- */
-export type GetDeploymentsOomReport = ClosedEnum<
-  typeof GetDeploymentsOomReport
->;
+export type GetDeploymentsCustomEnvironment = {
+  id: string;
+  slug?: string | undefined;
+};
 
 /**
  * Current provisioning state
@@ -314,13 +294,100 @@ export type GetDeploymentsDeploymentsState = ClosedEnum<
 
 export type GetDeploymentsManualProvisioning = {
   /**
-   * Current provisioning state
-   */
-  state: GetDeploymentsDeploymentsState;
-  /**
    * Timestamp when manual provisioning completed
    */
   completedAt?: number | undefined;
+  /**
+   * Current provisioning state
+   */
+  state: GetDeploymentsDeploymentsState;
+};
+
+/**
+ * Indicates if the deployment encountered an out-of-memory error.
+ */
+export const GetDeploymentsOomReport = {
+  OutOfMemory: "out-of-memory",
+} as const;
+/**
+ * Indicates if the deployment encountered an out-of-memory error.
+ */
+export type GetDeploymentsOomReport = ClosedEnum<
+  typeof GetDeploymentsOomReport
+>;
+
+/**
+ * The user on the external platform who triggered the deployment.
+ */
+export type GetDeploymentsDeploymentsCreator = {
+  /**
+   * URL of the platform user's avatar image.
+   */
+  avatar?: string | undefined;
+  /**
+   * Display name of the platform user.
+   */
+  name: string;
+};
+
+/**
+ * Whether the value is an opaque identifier or a URL.
+ */
+export const GetDeploymentsDeploymentsResponseType = {
+  Id: "id",
+  Url: "url",
+} as const;
+/**
+ * Whether the value is an opaque identifier or a URL.
+ */
+export type GetDeploymentsDeploymentsResponseType = ClosedEnum<
+  typeof GetDeploymentsDeploymentsResponseType
+>;
+
+/**
+ * Reference back to the entity on the platform that initiated the deployment.
+ */
+export type GetDeploymentsOrigin = {
+  /**
+   * Whether the value is an opaque identifier or a URL.
+   */
+  type: GetDeploymentsDeploymentsResponseType;
+  /**
+   * The identifier or URL pointing to the originating entity.
+   */
+  value: string;
+};
+
+/**
+ * The external platform that created the deployment (e.g. its display name).
+ */
+export type GetDeploymentsDeploymentsSource = {
+  /**
+   * Display name of the platform.
+   */
+  name: string;
+};
+
+/**
+ * Metadata about the source platform that triggered the deployment.
+ */
+export type GetDeploymentsPlatform = {
+  /**
+   * The user on the external platform who triggered the deployment.
+   */
+  creator: GetDeploymentsDeploymentsCreator;
+  /**
+   * Arbitrary key-value metadata provided by the platform.
+   */
+  meta?: { [k: string]: string } | undefined;
+  /**
+   * Reference back to the entity on the platform that initiated the deployment.
+   */
+  origin: GetDeploymentsOrigin;
+  /**
+   * The external platform that created the deployment (e.g. its display name).
+   */
+  source: GetDeploymentsDeploymentsSource;
 };
 
 export const GetDeploymentsFramework = {
@@ -403,6 +470,20 @@ export type GetDeploymentsFramework = ClosedEnum<
   typeof GetDeploymentsFramework
 >;
 
+/**
+ * Since June '23
+ */
+export type GetDeploymentsGitComments = {
+  /**
+   * Whether the Vercel bot should comment on commits
+   */
+  onCommit: boolean;
+  /**
+   * Whether the Vercel bot should comment on PRs
+   */
+  onPullRequest: boolean;
+};
+
 export const GetDeploymentsNodeVersion = {
   TenDotX: "10.x",
   TwelveDotX: "12.x",
@@ -419,147 +500,80 @@ export type GetDeploymentsNodeVersion = ClosedEnum<
 >;
 
 export type GetDeploymentsSpeedInsights = {
-  id: string;
-  enabledAt?: number | undefined;
-  disabledAt?: number | undefined;
   canceledAt?: number | undefined;
-  hasData?: boolean | undefined;
   /**
    * When the first free (not Speed Insights Plus) production data point was observed, in ms. Set once by subscriber-analytics-events; projects that already had data before this field shipped get it backfilled on their next batch, so it reads "first free data point observed", not necessarily "first ever".
    */
   dataReceivedAt?: number | undefined;
+  disabledAt?: number | undefined;
+  enabledAt?: number | undefined;
+  hasData?: boolean | undefined;
+  id: string;
   paidAt?: number | undefined;
 };
 
 export type GetDeploymentsWebAnalytics = {
-  id: string;
-  disabledAt?: number | undefined;
   canceledAt?: number | undefined;
+  disabledAt?: number | undefined;
   enabledAt?: number | undefined;
   hasData?: true | undefined;
-};
-
-/**
- * Since June '23
- */
-export type GetDeploymentsGitComments = {
-  /**
-   * Whether the Vercel bot should comment on PRs
-   */
-  onPullRequest: boolean;
-  /**
-   * Whether the Vercel bot should comment on commits
-   */
-  onCommit: boolean;
+  id: string;
 };
 
 /**
  * The project settings which was used for this deployment
  */
 export type GetDeploymentsProjectSettings = {
-  framework?: GetDeploymentsFramework | null | undefined;
-  gitForkProtection?: boolean | undefined;
-  customerSupportCodeVisibility?: boolean | undefined;
-  gitLFS?: boolean | undefined;
-  devCommand?: string | null | undefined;
-  installCommand?: string | null | undefined;
   buildCommand?: string | null | undefined;
-  nodeVersion?: GetDeploymentsNodeVersion | undefined;
-  outputDirectory?: string | null | undefined;
-  rootDirectory?: string | null | undefined;
-  sourceFilesOutsideRootDirectory?: boolean | undefined;
   commandForIgnoringBuildStep?: string | null | undefined;
   createdAt?: number | undefined;
-  speedInsights?: GetDeploymentsSpeedInsights | undefined;
-  webAnalytics?: GetDeploymentsWebAnalytics | undefined;
-  skipGitConnectDuringLink?: boolean | undefined;
+  customerSupportCodeVisibility?: boolean | undefined;
+  devCommand?: string | null | undefined;
+  framework?: GetDeploymentsFramework | null | undefined;
   /**
    * Since June '23
    */
   gitComments?: GetDeploymentsGitComments | undefined;
+  gitForkProtection?: boolean | undefined;
+  gitLFS?: boolean | undefined;
+  installCommand?: string | null | undefined;
+  nodeVersion?: GetDeploymentsNodeVersion | undefined;
+  outputDirectory?: string | null | undefined;
+  rootDirectory?: string | null | undefined;
+  skipGitConnectDuringLink?: boolean | undefined;
+  sourceFilesOutsideRootDirectory?: boolean | undefined;
+  speedInsights?: GetDeploymentsSpeedInsights | undefined;
+  webAnalytics?: GetDeploymentsWebAnalytics | undefined;
 };
 
-/**
- * The external platform that created the deployment (e.g. its display name).
- */
-export type GetDeploymentsDeploymentsSource = {
-  /**
-   * Display name of the platform.
-   */
-  name: string;
-};
-
-/**
- * Whether the value is an opaque identifier or a URL.
- */
-export const GetDeploymentsDeploymentsResponseType = {
-  Id: "id",
-  Url: "url",
+export const GetDeploymentsReadyState = {
+  Blocked: "BLOCKED",
+  Building: "BUILDING",
+  Canceled: "CANCELED",
+  Deleted: "DELETED",
+  Error: "ERROR",
+  Initializing: "INITIALIZING",
+  Queued: "QUEUED",
+  Ready: "READY",
 } as const;
-/**
- * Whether the value is an opaque identifier or a URL.
- */
-export type GetDeploymentsDeploymentsResponseType = ClosedEnum<
-  typeof GetDeploymentsDeploymentsResponseType
+export type GetDeploymentsReadyState = ClosedEnum<
+  typeof GetDeploymentsReadyState
 >;
 
 /**
- * Reference back to the entity on the platform that initiated the deployment.
+ * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of gradually transitioning production traffic - PROMOTED: has seen production traffic
  */
-export type GetDeploymentsOrigin = {
-  /**
-   * Whether the value is an opaque identifier or a URL.
-   */
-  type: GetDeploymentsDeploymentsResponseType;
-  /**
-   * The identifier or URL pointing to the originating entity.
-   */
-  value: string;
-};
-
+export const GetDeploymentsReadySubstate = {
+  Promoted: "PROMOTED",
+  Rolling: "ROLLING",
+  Staged: "STAGED",
+} as const;
 /**
- * The user on the external platform who triggered the deployment.
+ * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of gradually transitioning production traffic - PROMOTED: has seen production traffic
  */
-export type GetDeploymentsDeploymentsCreator = {
-  /**
-   * Display name of the platform user.
-   */
-  name: string;
-  /**
-   * URL of the platform user's avatar image.
-   */
-  avatar?: string | undefined;
-};
-
-/**
- * Metadata about the source platform that triggered the deployment.
- */
-export type GetDeploymentsPlatform = {
-  /**
-   * The external platform that created the deployment (e.g. its display name).
-   */
-  source: GetDeploymentsDeploymentsSource;
-  /**
-   * Reference back to the entity on the platform that initiated the deployment.
-   */
-  origin: GetDeploymentsOrigin;
-  /**
-   * The user on the external platform who triggered the deployment.
-   */
-  creator: GetDeploymentsDeploymentsCreator;
-  /**
-   * Arbitrary key-value metadata provided by the platform.
-   */
-  meta?: { [k: string]: string } | undefined;
-};
-
-/**
- * The custom environment used for this deployment, if any
- */
-export type GetDeploymentsCustomEnvironment = {
-  id: string;
-  slug?: string | undefined;
-};
+export type GetDeploymentsReadySubstate = ClosedEnum<
+  typeof GetDeploymentsReadySubstate
+>;
 
 /**
  * The NSNB decision code for the seat block. TODO: We should consolidate block types.
@@ -574,8 +588,6 @@ export const GetDeploymentsBlockCode = {
 export type GetDeploymentsBlockCode = ClosedEnum<
   typeof GetDeploymentsBlockCode
 >;
-
-export type GetDeploymentsGitUserId = string | number;
 
 /**
  * The git provider type associated with gitUserId.
@@ -592,6 +604,8 @@ export type GetDeploymentsGitProvider = ClosedEnum<
   typeof GetDeploymentsGitProvider
 >;
 
+export type GetDeploymentsGitUserId = string | number;
+
 /**
  * NSNB Blocked metadata
  */
@@ -601,118 +615,128 @@ export type GetDeploymentsSeatBlock = {
    */
   blockCode: GetDeploymentsBlockCode;
   /**
-   * The blocked vercel user ID.
+   * The git provider type associated with gitUserId.
    */
-  userId?: string | undefined;
+  gitProvider?: GetDeploymentsGitProvider | undefined;
+  gitUserId?: string | number | undefined;
   /**
    * Determines if the user was verified during the block. In the git integration case, the commit sender was the author.
    */
   isVerified?: boolean | undefined;
-  gitUserId?: string | number | undefined;
   /**
-   * The git provider type associated with gitUserId.
+   * The blocked vercel user ID.
    */
-  gitProvider?: GetDeploymentsGitProvider | undefined;
+  userId?: string | undefined;
 };
 
 /**
- * Commit metadata from the git commit author
+ * The source of the deployment.
  */
-export type GetDeploymentsCommitMeta = {
-  /**
-   * Email from git commit author
-   */
-  email?: string | undefined;
-  /**
-   * Name from git commit author
-   */
-  name?: string | undefined;
-  /**
-   * Whether the commit was signed/verified (GitHub only, others return undefined)
-   */
-  isVerified?: boolean | undefined;
-};
-
-export type GetDeploymentsId = string | number;
+export const GetDeploymentsSource = {
+  ApiTriggerGitDeploy: "api-trigger-git-deploy",
+  Cli: "cli",
+  CloneRepo: "clone/repo",
+  Drop: "drop",
+  Git: "git",
+  GitDeployHook: "git-deploy-hook",
+  Import: "import",
+  ImportRepo: "import/repo",
+  Redeploy: "redeploy",
+  V0Web: "v0-web",
+} as const;
+/**
+ * The source of the deployment.
+ */
+export type GetDeploymentsSource = ClosedEnum<typeof GetDeploymentsSource>;
 
 /**
- * Git provider user associated with the commit author email (only set if resolved)
+ * In which state is the deployment.
  */
-export type GetDeploymentsGitUser = {
-  id: string | number;
-  /**
-   * Git provider username/login
-   */
-  login: string;
-  /**
-   * User type
-   */
-  type?: string | undefined;
-  /**
-   * The git provider (github, gitlab, bitbucket)
-   */
-  provider?: string | undefined;
-};
+export const GetDeploymentsState = {
+  Blocked: "BLOCKED",
+  Building: "BUILDING",
+  Canceled: "CANCELED",
+  Deleted: "DELETED",
+  Error: "ERROR",
+  Initializing: "INITIALIZING",
+  Queued: "QUEUED",
+  Ready: "READY",
+} as const;
+/**
+ * In which state is the deployment.
+ */
+export type GetDeploymentsState = ClosedEnum<typeof GetDeploymentsState>;
 
 /**
- * Vercel user linked to the git provider account (only set if resolved)
+ * On which environment has the deployment been deployed to.
  */
-export type GetDeploymentsVercelUser = {
-  /**
-   * Vercel user ID
-   */
-  id: string;
-  /**
-   * Vercel username
-   */
-  username: string;
-  /**
-   * Team roles at time of deployment
-   */
-  teamRoles?: Array<string> | undefined;
-};
+export const GetDeploymentsTarget = {
+  Production: "production",
+  Staging: "staging",
+} as const;
+/**
+ * On which environment has the deployment been deployed to.
+ */
+export type GetDeploymentsTarget = ClosedEnum<typeof GetDeploymentsTarget>;
 
 /**
- * Commit attribution metadata
+ * The type of the deployment.
  */
-export type GetDeploymentsAttribution = {
-  /**
-   * Commit metadata from the git commit author
-   */
-  commitMeta?: GetDeploymentsCommitMeta | undefined;
-  /**
-   * Git provider user associated with the commit author email (only set if resolved)
-   */
-  gitUser?: GetDeploymentsGitUser | undefined;
-  /**
-   * Vercel user linked to the git provider account (only set if resolved)
-   */
-  vercelUser?: GetDeploymentsVercelUser | undefined;
-};
+export const GetDeploymentsType = {
+  Lambdas: "LAMBDAS",
+} as const;
+/**
+ * The type of the deployment.
+ */
+export type GetDeploymentsType = ClosedEnum<typeof GetDeploymentsType>;
 
 export type Deployments = {
-  createdAt: number;
-  readyState: GetDeploymentsReadyState;
+  aliasAssigned?: number | boolean | null | undefined;
   /**
-   * The unique identifier of the deployment.
+   * An error object in case aliasing of the deployment failed.
    */
-  uid: string;
+  aliasError?: GetDeploymentsAliasError | null | undefined;
   /**
-   * The name of the deployment.
+   * Commit attribution metadata
    */
-  name: string;
+  attribution?: GetDeploymentsAttribution | undefined;
   /**
-   * The project ID of the deployment
+   * Timestamp of when the deployment started building at.
    */
-  projectId: string;
+  buildingAt?: number | undefined;
   /**
-   * The URL of the deployment.
+   * Detailed information about v2 deployment checks. Includes information about blocked workflows in the deployment lifecycle.
    */
-  url: string;
+  checks?: GetDeploymentsChecks | undefined;
+  /**
+   * Conclusion for checks
+   */
+  checksConclusion?: GetDeploymentsChecksConclusion | undefined;
+  /**
+   * State of all registered checks
+   */
+  checksState?: GetDeploymentsChecksState | undefined;
+  /**
+   * The flag saying if Secure Compute network is used for builds
+   */
+  connectBuildsEnabled?: boolean | undefined;
+  /**
+   * The ID of Secure Compute network used for this deployment
+   */
+  connectConfigurationId?: string | undefined;
   /**
    * Timestamp of when the deployment got created.
    */
   created: number;
+  createdAt: number;
+  /**
+   * Metadata information of the deployment creator.
+   */
+  creator: GetDeploymentsCreator;
+  /**
+   * The custom environment used for this deployment, if any
+   */
+  customEnvironment?: GetDeploymentsCustomEnvironment | undefined;
   /**
    * The default route that should be used for screenshots and links if configured with microfrontends.
    */
@@ -722,9 +746,72 @@ export type Deployments = {
    */
   deleted?: number | undefined;
   /**
-   * Timestamp of when the deployment was undeleted.
+   * Error code when the deployment is in an error state.
    */
-  undeleted?: number | undefined;
+  errorCode?: string | undefined;
+  /**
+   * Error message when the deployment is in an canceled or error state.
+   */
+  errorMessage?: string | null | undefined;
+  /**
+   * The expiration configured by the project retention policy
+   */
+  expiration?: number | undefined;
+  /**
+   * Vercel URL to inspect the deployment.
+   */
+  inspectorUrl: string | null;
+  /**
+   * Deployment can be used for instant rollback
+   */
+  isRollbackCandidate?: boolean | null | undefined;
+  manualProvisioning?: GetDeploymentsManualProvisioning | undefined;
+  /**
+   * Metadata information from the Git provider.
+   */
+  meta?: { [k: string]: string } | undefined;
+  /**
+   * The name of the deployment.
+   */
+  name: string;
+  /**
+   * Indicates if the deployment encountered an out-of-memory error.
+   */
+  oomReport?: GetDeploymentsOomReport | undefined;
+  /**
+   * The ID of Secure Compute network used for this deployment's passive functions
+   */
+  passiveConnectConfigurationId?: string | undefined;
+  /**
+   * Metadata about the source platform that triggered the deployment.
+   */
+  platform?: GetDeploymentsPlatform | undefined;
+  prebuilt?: boolean | undefined;
+  /**
+   * The project ID of the deployment
+   */
+  projectId: string;
+  /**
+   * The project settings which was used for this deployment
+   */
+  projectSettings?: GetDeploymentsProjectSettings | undefined;
+  /**
+   * The expiration proposed to replace the existing expiration
+   */
+  proposedExpiration?: number | undefined;
+  /**
+   * Timestamp of when the deployment got ready.
+   */
+  ready?: number | undefined;
+  readyState: GetDeploymentsReadyState;
+  /**
+   * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of gradually transitioning production traffic - PROMOTED: has seen production traffic
+   */
+  readySubstate?: GetDeploymentsReadySubstate | undefined;
+  /**
+   * NSNB Blocked metadata
+   */
+  seatBlock?: GetDeploymentsSeatBlock | undefined;
   /**
    * Optional flag to indicate if the deployment was soft deleted by retention policy.
    */
@@ -738,120 +825,33 @@ export type Deployments = {
    */
   state?: GetDeploymentsState | undefined;
   /**
-   * The type of the deployment.
-   */
-  type: GetDeploymentsType;
-  /**
-   * Metadata information of the deployment creator.
-   */
-  creator: GetDeploymentsCreator;
-  /**
-   * Metadata information from the Git provider.
-   */
-  meta?: { [k: string]: string } | undefined;
-  /**
    * On which environment has the deployment been deployed to.
    */
   target?: GetDeploymentsTarget | null | undefined;
   /**
-   * An error object in case aliasing of the deployment failed.
+   * The type of the deployment.
    */
-  aliasError?: GetDeploymentsAliasError | null | undefined;
-  aliasAssigned?: number | boolean | null | undefined;
+  type: GetDeploymentsType;
   /**
-   * Timestamp of when the deployment started building at.
+   * The unique identifier of the deployment.
    */
-  buildingAt?: number | undefined;
+  uid: string;
   /**
-   * Timestamp of when the deployment got ready.
+   * Timestamp of when the deployment was undeleted.
    */
-  ready?: number | undefined;
+  undeleted?: number | undefined;
   /**
-   * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of gradually transitioning production traffic - PROMOTED: has seen production traffic
+   * The URL of the deployment.
    */
-  readySubstate?: GetDeploymentsReadySubstate | undefined;
-  /**
-   * State of all registered checks
-   */
-  checksState?: GetDeploymentsChecksState | undefined;
-  /**
-   * Conclusion for checks
-   */
-  checksConclusion?: GetDeploymentsChecksConclusion | undefined;
-  /**
-   * Detailed information about v2 deployment checks. Includes information about blocked workflows in the deployment lifecycle.
-   */
-  checks?: GetDeploymentsChecks | undefined;
-  /**
-   * Vercel URL to inspect the deployment.
-   */
-  inspectorUrl: string | null;
-  /**
-   * Error code when the deployment is in an error state.
-   */
-  errorCode?: string | undefined;
-  /**
-   * Error message when the deployment is in an canceled or error state.
-   */
-  errorMessage?: string | null | undefined;
-  /**
-   * Indicates if the deployment encountered an out-of-memory error.
-   */
-  oomReport?: GetDeploymentsOomReport | undefined;
-  /**
-   * Deployment can be used for instant rollback
-   */
-  isRollbackCandidate?: boolean | null | undefined;
-  prebuilt?: boolean | undefined;
-  manualProvisioning?: GetDeploymentsManualProvisioning | undefined;
-  /**
-   * The project settings which was used for this deployment
-   */
-  projectSettings?: GetDeploymentsProjectSettings | undefined;
-  /**
-   * The flag saying if Secure Compute network is used for builds
-   */
-  connectBuildsEnabled?: boolean | undefined;
-  /**
-   * The ID of Secure Compute network used for this deployment
-   */
-  connectConfigurationId?: string | undefined;
-  /**
-   * The ID of Secure Compute network used for this deployment's passive functions
-   */
-  passiveConnectConfigurationId?: string | undefined;
-  /**
-   * The expiration configured by the project retention policy
-   */
-  expiration?: number | undefined;
-  /**
-   * The expiration proposed to replace the existing expiration
-   */
-  proposedExpiration?: number | undefined;
-  /**
-   * Metadata about the source platform that triggered the deployment.
-   */
-  platform?: GetDeploymentsPlatform | undefined;
-  /**
-   * The custom environment used for this deployment, if any
-   */
-  customEnvironment?: GetDeploymentsCustomEnvironment | undefined;
-  /**
-   * NSNB Blocked metadata
-   */
-  seatBlock?: GetDeploymentsSeatBlock | undefined;
-  /**
-   * Commit attribution metadata
-   */
-  attribution?: GetDeploymentsAttribution | undefined;
+  url: string;
 };
 
 export type GetDeploymentsResponseBody = {
+  deployments: Array<Deployments>;
   /**
    * This object contains information related to the pagination of the current request, including the necessary parameters to get the next or previous page of data.
    */
   pagination: Pagination;
-  deployments: Array<Deployments>;
 };
 
 /** @internal */
@@ -907,58 +907,21 @@ export function getDeploymentsRequestToJSON(
 }
 
 /** @internal */
-export const GetDeploymentsReadyState$inboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentsReadyState
-> = z.nativeEnum(GetDeploymentsReadyState);
-
-/** @internal */
-export const GetDeploymentsSource$inboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentsSource
-> = z.nativeEnum(GetDeploymentsSource);
-
-/** @internal */
-export const GetDeploymentsState$inboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentsState
-> = z.nativeEnum(GetDeploymentsState);
-
-/** @internal */
-export const GetDeploymentsType$inboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentsType
-> = z.nativeEnum(GetDeploymentsType);
-
-/** @internal */
-export const GetDeploymentsDeploymentsType$inboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentsDeploymentsType
-> = z.nativeEnum(GetDeploymentsDeploymentsType);
-
-/** @internal */
-export const GetDeploymentsCreator$inboundSchema: z.ZodType<
-  GetDeploymentsCreator,
+export const GetDeploymentsAliasAssigned$inboundSchema: z.ZodType<
+  GetDeploymentsAliasAssigned,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  uid: types.string(),
-  type: types.optional(GetDeploymentsDeploymentsType$inboundSchema),
-  email: types.optional(types.string()),
-  username: types.optional(types.string()),
-  githubLogin: types.optional(types.string()),
-  gitlabLogin: types.optional(types.string()),
-});
+> = smartUnion([types.number(), types.boolean()]);
 
-export function getDeploymentsCreatorFromJSON(
+export function getDeploymentsAliasAssignedFromJSON(
   jsonString: string,
-): SafeParseResult<GetDeploymentsCreator, SDKValidationError> {
+): SafeParseResult<GetDeploymentsAliasAssigned, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetDeploymentsCreator$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentsCreator' from JSON`,
+    (x) => GetDeploymentsAliasAssigned$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentsAliasAssigned' from JSON`,
   );
 }
-
-/** @internal */
-export const GetDeploymentsTarget$inboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentsTarget
-> = z.nativeEnum(GetDeploymentsTarget);
 
 /** @internal */
 export const GetDeploymentsAliasError$inboundSchema: z.ZodType<
@@ -981,402 +944,14 @@ export function getDeploymentsAliasErrorFromJSON(
 }
 
 /** @internal */
-export const GetDeploymentsAliasAssigned$inboundSchema: z.ZodType<
-  GetDeploymentsAliasAssigned,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([types.number(), types.boolean()]);
-
-export function getDeploymentsAliasAssignedFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDeploymentsAliasAssigned, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDeploymentsAliasAssigned$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentsAliasAssigned' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDeploymentsReadySubstate$inboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentsReadySubstate
-> = z.nativeEnum(GetDeploymentsReadySubstate);
-
-/** @internal */
-export const GetDeploymentsChecksState$inboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentsChecksState
-> = z.nativeEnum(GetDeploymentsChecksState);
-
-/** @internal */
-export const GetDeploymentsChecksConclusion$inboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentsChecksConclusion
-> = z.nativeEnum(GetDeploymentsChecksConclusion);
-
-/** @internal */
-export const GetDeploymentsDeploymentsResponseState$inboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentsDeploymentsResponseState> = z.nativeEnum(
-    GetDeploymentsDeploymentsResponseState,
-  );
-
-/** @internal */
-export const GetDeploymentsDeploymentAlias$inboundSchema: z.ZodType<
-  GetDeploymentsDeploymentAlias,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  state: GetDeploymentsDeploymentsResponseState$inboundSchema,
-  startedAt: types.number(),
-  completedAt: types.optional(types.number()),
-});
-
-export function getDeploymentsDeploymentAliasFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDeploymentsDeploymentAlias, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDeploymentsDeploymentAlias$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentsDeploymentAlias' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDeploymentsChecks$inboundSchema: z.ZodType<
-  GetDeploymentsChecks,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  "deployment-alias": z.lazy(() => GetDeploymentsDeploymentAlias$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "deployment-alias": "deploymentAlias",
-  });
-});
-
-export function getDeploymentsChecksFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDeploymentsChecks, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDeploymentsChecks$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentsChecks' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDeploymentsOomReport$inboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentsOomReport
-> = z.nativeEnum(GetDeploymentsOomReport);
-
-/** @internal */
-export const GetDeploymentsDeploymentsState$inboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentsDeploymentsState
-> = z.nativeEnum(GetDeploymentsDeploymentsState);
-
-/** @internal */
-export const GetDeploymentsManualProvisioning$inboundSchema: z.ZodType<
-  GetDeploymentsManualProvisioning,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  state: GetDeploymentsDeploymentsState$inboundSchema,
-  completedAt: types.optional(types.number()),
-});
-
-export function getDeploymentsManualProvisioningFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDeploymentsManualProvisioning, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDeploymentsManualProvisioning$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentsManualProvisioning' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDeploymentsFramework$inboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentsFramework
-> = z.nativeEnum(GetDeploymentsFramework);
-
-/** @internal */
-export const GetDeploymentsNodeVersion$inboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentsNodeVersion
-> = z.nativeEnum(GetDeploymentsNodeVersion);
-
-/** @internal */
-export const GetDeploymentsSpeedInsights$inboundSchema: z.ZodType<
-  GetDeploymentsSpeedInsights,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: types.string(),
-  enabledAt: types.optional(types.number()),
-  disabledAt: types.optional(types.number()),
-  canceledAt: types.optional(types.number()),
-  hasData: types.optional(types.boolean()),
-  dataReceivedAt: types.optional(types.number()),
-  paidAt: types.optional(types.number()),
-});
-
-export function getDeploymentsSpeedInsightsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDeploymentsSpeedInsights, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDeploymentsSpeedInsights$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentsSpeedInsights' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDeploymentsWebAnalytics$inboundSchema: z.ZodType<
-  GetDeploymentsWebAnalytics,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: types.string(),
-  disabledAt: types.optional(types.number()),
-  canceledAt: types.optional(types.number()),
-  enabledAt: types.optional(types.number()),
-  hasData: types.optional(types.literal(true)),
-});
-
-export function getDeploymentsWebAnalyticsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDeploymentsWebAnalytics, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDeploymentsWebAnalytics$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentsWebAnalytics' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDeploymentsGitComments$inboundSchema: z.ZodType<
-  GetDeploymentsGitComments,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  onPullRequest: types.boolean(),
-  onCommit: types.boolean(),
-});
-
-export function getDeploymentsGitCommentsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDeploymentsGitComments, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDeploymentsGitComments$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentsGitComments' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDeploymentsProjectSettings$inboundSchema: z.ZodType<
-  GetDeploymentsProjectSettings,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  framework: z.nullable(GetDeploymentsFramework$inboundSchema).optional(),
-  gitForkProtection: types.optional(types.boolean()),
-  customerSupportCodeVisibility: types.optional(types.boolean()),
-  gitLFS: types.optional(types.boolean()),
-  devCommand: z.nullable(types.string()).optional(),
-  installCommand: z.nullable(types.string()).optional(),
-  buildCommand: z.nullable(types.string()).optional(),
-  nodeVersion: types.optional(GetDeploymentsNodeVersion$inboundSchema),
-  outputDirectory: z.nullable(types.string()).optional(),
-  rootDirectory: z.nullable(types.string()).optional(),
-  sourceFilesOutsideRootDirectory: types.optional(types.boolean()),
-  commandForIgnoringBuildStep: z.nullable(types.string()).optional(),
-  createdAt: types.optional(types.number()),
-  speedInsights: types.optional(
-    z.lazy(() => GetDeploymentsSpeedInsights$inboundSchema),
-  ),
-  webAnalytics: types.optional(
-    z.lazy(() => GetDeploymentsWebAnalytics$inboundSchema),
-  ),
-  skipGitConnectDuringLink: types.optional(types.boolean()),
-  gitComments: types.optional(
-    z.lazy(() => GetDeploymentsGitComments$inboundSchema),
-  ),
-});
-
-export function getDeploymentsProjectSettingsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDeploymentsProjectSettings, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDeploymentsProjectSettings$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentsProjectSettings' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDeploymentsDeploymentsSource$inboundSchema: z.ZodType<
-  GetDeploymentsDeploymentsSource,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: types.string(),
-});
-
-export function getDeploymentsDeploymentsSourceFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDeploymentsDeploymentsSource, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDeploymentsDeploymentsSource$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentsDeploymentsSource' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDeploymentsDeploymentsResponseType$inboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentsDeploymentsResponseType> = z.nativeEnum(
-    GetDeploymentsDeploymentsResponseType,
-  );
-
-/** @internal */
-export const GetDeploymentsOrigin$inboundSchema: z.ZodType<
-  GetDeploymentsOrigin,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: GetDeploymentsDeploymentsResponseType$inboundSchema,
-  value: types.string(),
-});
-
-export function getDeploymentsOriginFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDeploymentsOrigin, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDeploymentsOrigin$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentsOrigin' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDeploymentsDeploymentsCreator$inboundSchema: z.ZodType<
-  GetDeploymentsDeploymentsCreator,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: types.string(),
-  avatar: types.optional(types.string()),
-});
-
-export function getDeploymentsDeploymentsCreatorFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDeploymentsDeploymentsCreator, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDeploymentsDeploymentsCreator$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentsDeploymentsCreator' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDeploymentsPlatform$inboundSchema: z.ZodType<
-  GetDeploymentsPlatform,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  source: z.lazy(() => GetDeploymentsDeploymentsSource$inboundSchema),
-  origin: z.lazy(() => GetDeploymentsOrigin$inboundSchema),
-  creator: z.lazy(() => GetDeploymentsDeploymentsCreator$inboundSchema),
-  meta: types.optional(z.record(types.string())),
-});
-
-export function getDeploymentsPlatformFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDeploymentsPlatform, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDeploymentsPlatform$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentsPlatform' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDeploymentsCustomEnvironment$inboundSchema: z.ZodType<
-  GetDeploymentsCustomEnvironment,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: types.string(),
-  slug: types.optional(types.string()),
-});
-
-export function getDeploymentsCustomEnvironmentFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDeploymentsCustomEnvironment, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDeploymentsCustomEnvironment$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentsCustomEnvironment' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDeploymentsBlockCode$inboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentsBlockCode
-> = z.nativeEnum(GetDeploymentsBlockCode);
-
-/** @internal */
-export const GetDeploymentsGitUserId$inboundSchema: z.ZodType<
-  GetDeploymentsGitUserId,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([types.string(), types.number()]);
-
-export function getDeploymentsGitUserIdFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDeploymentsGitUserId, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDeploymentsGitUserId$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentsGitUserId' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDeploymentsGitProvider$inboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentsGitProvider
-> = z.nativeEnum(GetDeploymentsGitProvider);
-
-/** @internal */
-export const GetDeploymentsSeatBlock$inboundSchema: z.ZodType<
-  GetDeploymentsSeatBlock,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  blockCode: GetDeploymentsBlockCode$inboundSchema,
-  userId: types.optional(types.string()),
-  isVerified: types.optional(types.boolean()),
-  gitUserId: types.optional(smartUnion([types.string(), types.number()])),
-  gitProvider: types.optional(GetDeploymentsGitProvider$inboundSchema),
-});
-
-export function getDeploymentsSeatBlockFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDeploymentsSeatBlock, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDeploymentsSeatBlock$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentsSeatBlock' from JSON`,
-  );
-}
-
-/** @internal */
 export const GetDeploymentsCommitMeta$inboundSchema: z.ZodType<
   GetDeploymentsCommitMeta,
   z.ZodTypeDef,
   unknown
 > = z.object({
   email: types.optional(types.string()),
-  name: types.optional(types.string()),
   isVerified: types.optional(types.boolean()),
+  name: types.optional(types.string()),
 });
 
 export function getDeploymentsCommitMetaFromJSON(
@@ -1414,8 +989,8 @@ export const GetDeploymentsGitUser$inboundSchema: z.ZodType<
 > = z.object({
   id: smartUnion([types.string(), types.number()]),
   login: types.string(),
-  type: types.optional(types.string()),
   provider: types.optional(types.string()),
+  type: types.optional(types.string()),
 });
 
 export function getDeploymentsGitUserFromJSON(
@@ -1435,8 +1010,8 @@ export const GetDeploymentsVercelUser$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: types.string(),
-  username: types.string(),
   teamRoles: types.optional(z.array(types.string())),
+  username: types.string(),
 });
 
 export function getDeploymentsVercelUserFromJSON(
@@ -1475,67 +1050,492 @@ export function getDeploymentsAttributionFromJSON(
 }
 
 /** @internal */
+export const GetDeploymentsDeploymentsResponseState$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentsDeploymentsResponseState> = z.nativeEnum(
+    GetDeploymentsDeploymentsResponseState,
+  );
+
+/** @internal */
+export const GetDeploymentsDeploymentAlias$inboundSchema: z.ZodType<
+  GetDeploymentsDeploymentAlias,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  completedAt: types.optional(types.number()),
+  startedAt: types.number(),
+  state: GetDeploymentsDeploymentsResponseState$inboundSchema,
+});
+
+export function getDeploymentsDeploymentAliasFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentsDeploymentAlias, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentsDeploymentAlias$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentsDeploymentAlias' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentsChecks$inboundSchema: z.ZodType<
+  GetDeploymentsChecks,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  "deployment-alias": z.lazy(() => GetDeploymentsDeploymentAlias$inboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    "deployment-alias": "deploymentAlias",
+  });
+});
+
+export function getDeploymentsChecksFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentsChecks, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentsChecks$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentsChecks' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentsChecksConclusion$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentsChecksConclusion
+> = z.nativeEnum(GetDeploymentsChecksConclusion);
+
+/** @internal */
+export const GetDeploymentsChecksState$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentsChecksState
+> = z.nativeEnum(GetDeploymentsChecksState);
+
+/** @internal */
+export const GetDeploymentsDeploymentsType$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentsDeploymentsType
+> = z.nativeEnum(GetDeploymentsDeploymentsType);
+
+/** @internal */
+export const GetDeploymentsCreator$inboundSchema: z.ZodType<
+  GetDeploymentsCreator,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  email: types.optional(types.string()),
+  githubLogin: types.optional(types.string()),
+  gitlabLogin: types.optional(types.string()),
+  type: types.optional(GetDeploymentsDeploymentsType$inboundSchema),
+  uid: types.string(),
+  username: types.optional(types.string()),
+});
+
+export function getDeploymentsCreatorFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentsCreator, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentsCreator$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentsCreator' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentsCustomEnvironment$inboundSchema: z.ZodType<
+  GetDeploymentsCustomEnvironment,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: types.string(),
+  slug: types.optional(types.string()),
+});
+
+export function getDeploymentsCustomEnvironmentFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentsCustomEnvironment, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentsCustomEnvironment$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentsCustomEnvironment' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentsDeploymentsState$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentsDeploymentsState
+> = z.nativeEnum(GetDeploymentsDeploymentsState);
+
+/** @internal */
+export const GetDeploymentsManualProvisioning$inboundSchema: z.ZodType<
+  GetDeploymentsManualProvisioning,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  completedAt: types.optional(types.number()),
+  state: GetDeploymentsDeploymentsState$inboundSchema,
+});
+
+export function getDeploymentsManualProvisioningFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentsManualProvisioning, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentsManualProvisioning$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentsManualProvisioning' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentsOomReport$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentsOomReport
+> = z.nativeEnum(GetDeploymentsOomReport);
+
+/** @internal */
+export const GetDeploymentsDeploymentsCreator$inboundSchema: z.ZodType<
+  GetDeploymentsDeploymentsCreator,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  avatar: types.optional(types.string()),
+  name: types.string(),
+});
+
+export function getDeploymentsDeploymentsCreatorFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentsDeploymentsCreator, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentsDeploymentsCreator$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentsDeploymentsCreator' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentsDeploymentsResponseType$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentsDeploymentsResponseType> = z.nativeEnum(
+    GetDeploymentsDeploymentsResponseType,
+  );
+
+/** @internal */
+export const GetDeploymentsOrigin$inboundSchema: z.ZodType<
+  GetDeploymentsOrigin,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: GetDeploymentsDeploymentsResponseType$inboundSchema,
+  value: types.string(),
+});
+
+export function getDeploymentsOriginFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentsOrigin, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentsOrigin$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentsOrigin' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentsDeploymentsSource$inboundSchema: z.ZodType<
+  GetDeploymentsDeploymentsSource,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  name: types.string(),
+});
+
+export function getDeploymentsDeploymentsSourceFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentsDeploymentsSource, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentsDeploymentsSource$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentsDeploymentsSource' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentsPlatform$inboundSchema: z.ZodType<
+  GetDeploymentsPlatform,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  creator: z.lazy(() => GetDeploymentsDeploymentsCreator$inboundSchema),
+  meta: types.optional(z.record(types.string())),
+  origin: z.lazy(() => GetDeploymentsOrigin$inboundSchema),
+  source: z.lazy(() => GetDeploymentsDeploymentsSource$inboundSchema),
+});
+
+export function getDeploymentsPlatformFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentsPlatform, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentsPlatform$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentsPlatform' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentsFramework$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentsFramework
+> = z.nativeEnum(GetDeploymentsFramework);
+
+/** @internal */
+export const GetDeploymentsGitComments$inboundSchema: z.ZodType<
+  GetDeploymentsGitComments,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  onCommit: types.boolean(),
+  onPullRequest: types.boolean(),
+});
+
+export function getDeploymentsGitCommentsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentsGitComments, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentsGitComments$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentsGitComments' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentsNodeVersion$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentsNodeVersion
+> = z.nativeEnum(GetDeploymentsNodeVersion);
+
+/** @internal */
+export const GetDeploymentsSpeedInsights$inboundSchema: z.ZodType<
+  GetDeploymentsSpeedInsights,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  canceledAt: types.optional(types.number()),
+  dataReceivedAt: types.optional(types.number()),
+  disabledAt: types.optional(types.number()),
+  enabledAt: types.optional(types.number()),
+  hasData: types.optional(types.boolean()),
+  id: types.string(),
+  paidAt: types.optional(types.number()),
+});
+
+export function getDeploymentsSpeedInsightsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentsSpeedInsights, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentsSpeedInsights$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentsSpeedInsights' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentsWebAnalytics$inboundSchema: z.ZodType<
+  GetDeploymentsWebAnalytics,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  canceledAt: types.optional(types.number()),
+  disabledAt: types.optional(types.number()),
+  enabledAt: types.optional(types.number()),
+  hasData: types.optional(types.literal(true)),
+  id: types.string(),
+});
+
+export function getDeploymentsWebAnalyticsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentsWebAnalytics, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentsWebAnalytics$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentsWebAnalytics' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentsProjectSettings$inboundSchema: z.ZodType<
+  GetDeploymentsProjectSettings,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  buildCommand: z.nullable(types.string()).optional(),
+  commandForIgnoringBuildStep: z.nullable(types.string()).optional(),
+  createdAt: types.optional(types.number()),
+  customerSupportCodeVisibility: types.optional(types.boolean()),
+  devCommand: z.nullable(types.string()).optional(),
+  framework: z.nullable(GetDeploymentsFramework$inboundSchema).optional(),
+  gitComments: types.optional(
+    z.lazy(() => GetDeploymentsGitComments$inboundSchema),
+  ),
+  gitForkProtection: types.optional(types.boolean()),
+  gitLFS: types.optional(types.boolean()),
+  installCommand: z.nullable(types.string()).optional(),
+  nodeVersion: types.optional(GetDeploymentsNodeVersion$inboundSchema),
+  outputDirectory: z.nullable(types.string()).optional(),
+  rootDirectory: z.nullable(types.string()).optional(),
+  skipGitConnectDuringLink: types.optional(types.boolean()),
+  sourceFilesOutsideRootDirectory: types.optional(types.boolean()),
+  speedInsights: types.optional(
+    z.lazy(() => GetDeploymentsSpeedInsights$inboundSchema),
+  ),
+  webAnalytics: types.optional(
+    z.lazy(() => GetDeploymentsWebAnalytics$inboundSchema),
+  ),
+});
+
+export function getDeploymentsProjectSettingsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentsProjectSettings, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentsProjectSettings$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentsProjectSettings' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentsReadyState$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentsReadyState
+> = z.nativeEnum(GetDeploymentsReadyState);
+
+/** @internal */
+export const GetDeploymentsReadySubstate$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentsReadySubstate
+> = z.nativeEnum(GetDeploymentsReadySubstate);
+
+/** @internal */
+export const GetDeploymentsBlockCode$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentsBlockCode
+> = z.nativeEnum(GetDeploymentsBlockCode);
+
+/** @internal */
+export const GetDeploymentsGitProvider$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentsGitProvider
+> = z.nativeEnum(GetDeploymentsGitProvider);
+
+/** @internal */
+export const GetDeploymentsGitUserId$inboundSchema: z.ZodType<
+  GetDeploymentsGitUserId,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), types.number()]);
+
+export function getDeploymentsGitUserIdFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentsGitUserId, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentsGitUserId$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentsGitUserId' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentsSeatBlock$inboundSchema: z.ZodType<
+  GetDeploymentsSeatBlock,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  blockCode: GetDeploymentsBlockCode$inboundSchema,
+  gitProvider: types.optional(GetDeploymentsGitProvider$inboundSchema),
+  gitUserId: types.optional(smartUnion([types.string(), types.number()])),
+  isVerified: types.optional(types.boolean()),
+  userId: types.optional(types.string()),
+});
+
+export function getDeploymentsSeatBlockFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentsSeatBlock, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentsSeatBlock$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentsSeatBlock' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentsSource$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentsSource
+> = z.nativeEnum(GetDeploymentsSource);
+
+/** @internal */
+export const GetDeploymentsState$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentsState
+> = z.nativeEnum(GetDeploymentsState);
+
+/** @internal */
+export const GetDeploymentsTarget$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentsTarget
+> = z.nativeEnum(GetDeploymentsTarget);
+
+/** @internal */
+export const GetDeploymentsType$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentsType
+> = z.nativeEnum(GetDeploymentsType);
+
+/** @internal */
 export const Deployments$inboundSchema: z.ZodType<
   Deployments,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  createdAt: types.number(),
-  readyState: GetDeploymentsReadyState$inboundSchema,
-  uid: types.string(),
-  name: types.string(),
-  projectId: types.string(),
-  url: types.string(),
-  created: types.number(),
-  defaultRoute: types.optional(types.string()),
-  deleted: types.optional(types.number()),
-  undeleted: types.optional(types.number()),
-  softDeletedByRetention: types.optional(types.boolean()),
-  source: types.optional(GetDeploymentsSource$inboundSchema),
-  state: types.optional(GetDeploymentsState$inboundSchema),
-  type: GetDeploymentsType$inboundSchema,
-  creator: z.lazy(() => GetDeploymentsCreator$inboundSchema),
-  meta: types.optional(z.record(types.string())),
-  target: z.nullable(GetDeploymentsTarget$inboundSchema).optional(),
-  aliasError: z.nullable(z.lazy(() => GetDeploymentsAliasError$inboundSchema))
-    .optional(),
   aliasAssigned: z.nullable(smartUnion([types.number(), types.boolean()]))
     .optional(),
-  buildingAt: types.optional(types.number()),
-  ready: types.optional(types.number()),
-  readySubstate: types.optional(GetDeploymentsReadySubstate$inboundSchema),
-  checksState: types.optional(GetDeploymentsChecksState$inboundSchema),
-  checksConclusion: types.optional(
-    GetDeploymentsChecksConclusion$inboundSchema,
-  ),
-  checks: types.optional(z.lazy(() => GetDeploymentsChecks$inboundSchema)),
-  inspectorUrl: types.nullable(types.string()),
-  errorCode: types.optional(types.string()),
-  errorMessage: z.nullable(types.string()).optional(),
-  oomReport: types.optional(GetDeploymentsOomReport$inboundSchema),
-  isRollbackCandidate: z.nullable(types.boolean()).optional(),
-  prebuilt: types.optional(types.boolean()),
-  manualProvisioning: types.optional(
-    z.lazy(() => GetDeploymentsManualProvisioning$inboundSchema),
-  ),
-  projectSettings: types.optional(
-    z.lazy(() => GetDeploymentsProjectSettings$inboundSchema),
-  ),
-  connectBuildsEnabled: types.optional(types.boolean()),
-  connectConfigurationId: types.optional(types.string()),
-  passiveConnectConfigurationId: types.optional(types.string()),
-  expiration: types.optional(types.number()),
-  proposedExpiration: types.optional(types.number()),
-  platform: types.optional(z.lazy(() => GetDeploymentsPlatform$inboundSchema)),
-  customEnvironment: types.optional(
-    z.lazy(() => GetDeploymentsCustomEnvironment$inboundSchema),
-  ),
-  seatBlock: types.optional(
-    z.lazy(() => GetDeploymentsSeatBlock$inboundSchema),
-  ),
+  aliasError: z.nullable(z.lazy(() => GetDeploymentsAliasError$inboundSchema))
+    .optional(),
   attribution: types.optional(
     z.lazy(() => GetDeploymentsAttribution$inboundSchema),
   ),
+  buildingAt: types.optional(types.number()),
+  checks: types.optional(z.lazy(() => GetDeploymentsChecks$inboundSchema)),
+  checksConclusion: types.optional(
+    GetDeploymentsChecksConclusion$inboundSchema,
+  ),
+  checksState: types.optional(GetDeploymentsChecksState$inboundSchema),
+  connectBuildsEnabled: types.optional(types.boolean()),
+  connectConfigurationId: types.optional(types.string()),
+  created: types.number(),
+  createdAt: types.number(),
+  creator: z.lazy(() => GetDeploymentsCreator$inboundSchema),
+  customEnvironment: types.optional(
+    z.lazy(() => GetDeploymentsCustomEnvironment$inboundSchema),
+  ),
+  defaultRoute: types.optional(types.string()),
+  deleted: types.optional(types.number()),
+  errorCode: types.optional(types.string()),
+  errorMessage: z.nullable(types.string()).optional(),
+  expiration: types.optional(types.number()),
+  inspectorUrl: types.nullable(types.string()),
+  isRollbackCandidate: z.nullable(types.boolean()).optional(),
+  manualProvisioning: types.optional(
+    z.lazy(() => GetDeploymentsManualProvisioning$inboundSchema),
+  ),
+  meta: types.optional(z.record(types.string())),
+  name: types.string(),
+  oomReport: types.optional(GetDeploymentsOomReport$inboundSchema),
+  passiveConnectConfigurationId: types.optional(types.string()),
+  platform: types.optional(z.lazy(() => GetDeploymentsPlatform$inboundSchema)),
+  prebuilt: types.optional(types.boolean()),
+  projectId: types.string(),
+  projectSettings: types.optional(
+    z.lazy(() => GetDeploymentsProjectSettings$inboundSchema),
+  ),
+  proposedExpiration: types.optional(types.number()),
+  ready: types.optional(types.number()),
+  readyState: GetDeploymentsReadyState$inboundSchema,
+  readySubstate: types.optional(GetDeploymentsReadySubstate$inboundSchema),
+  seatBlock: types.optional(
+    z.lazy(() => GetDeploymentsSeatBlock$inboundSchema),
+  ),
+  softDeletedByRetention: types.optional(types.boolean()),
+  source: types.optional(GetDeploymentsSource$inboundSchema),
+  state: types.optional(GetDeploymentsState$inboundSchema),
+  target: z.nullable(GetDeploymentsTarget$inboundSchema).optional(),
+  type: GetDeploymentsType$inboundSchema,
+  uid: types.string(),
+  undeleted: types.optional(types.number()),
+  url: types.string(),
 });
 
 export function deploymentsFromJSON(
@@ -1554,8 +1554,8 @@ export const GetDeploymentsResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  pagination: Pagination$inboundSchema,
   deployments: z.array(z.lazy(() => Deployments$inboundSchema)),
+  pagination: Pagination$inboundSchema,
 });
 
 export function getDeploymentsResponseBodyFromJSON(

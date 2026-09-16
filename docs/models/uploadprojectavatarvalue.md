@@ -19,8 +19,8 @@ const value: number = 1284.03;
 
 ```typescript
 const value: models.UploadProjectAvatarValue3 = {
-  previousValue: true,
-  currentValue: false,
+  currentValue: true,
+  previousValue: false,
 };
 ```
 

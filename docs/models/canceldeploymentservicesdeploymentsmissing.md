@@ -16,8 +16,8 @@ const value: models.CancelDeploymentMissingDeploymentsResponse1 = {
 
 ```typescript
 const value: models.CancelDeploymentMissingDeploymentsResponse2 = {
-  type: "query",
   key: "<key>",
+  type: "query",
 };
 ```
 
@@ -25,8 +25,8 @@ const value: models.CancelDeploymentMissingDeploymentsResponse2 = {
 
 ```typescript
 const value: models.CancelDeploymentMissingDeploymentsResponse2 = {
-  type: "query",
   key: "<key>",
+  type: "query",
 };
 ```
 
@@ -34,8 +34,8 @@ const value: models.CancelDeploymentMissingDeploymentsResponse2 = {
 
 ```typescript
 const value: models.CancelDeploymentMissingDeploymentsResponse2 = {
-  type: "query",
   key: "<key>",
+  type: "query",
 };
 ```
 

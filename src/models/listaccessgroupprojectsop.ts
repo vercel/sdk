@@ -32,6 +32,17 @@ export type ListAccessGroupProjectsRequest = {
   slug?: string | undefined;
 };
 
+export type ListAccessGroupProjectsPagination = {
+  count: number;
+  next: string | null;
+};
+
+export type ListAccessGroupProjectsProject = {
+  framework?: string | null | undefined;
+  latestDeploymentId?: string | undefined;
+  name?: string | undefined;
+};
+
 export const ListAccessGroupProjectsRole = {
   Admin: "ADMIN",
   ProjectDeveloper: "PROJECT_DEVELOPER",
@@ -42,28 +53,17 @@ export type ListAccessGroupProjectsRole = ClosedEnum<
   typeof ListAccessGroupProjectsRole
 >;
 
-export type ListAccessGroupProjectsProject = {
-  name?: string | undefined;
-  framework?: string | null | undefined;
-  latestDeploymentId?: string | undefined;
-};
-
 export type ListAccessGroupProjectsProjects = {
+  createdAt: string;
+  project: ListAccessGroupProjectsProject;
   projectId: string;
   role: ListAccessGroupProjectsRole;
-  createdAt: string;
   updatedAt: string;
-  project: ListAccessGroupProjectsProject;
-};
-
-export type ListAccessGroupProjectsPagination = {
-  count: number;
-  next: string | null;
 };
 
 export type ListAccessGroupProjectsResponseBody = {
-  projects: Array<ListAccessGroupProjectsProjects>;
   pagination: ListAccessGroupProjectsPagination;
+  projects: Array<ListAccessGroupProjectsProjects>;
 };
 
 /** @internal */
@@ -99,55 +99,6 @@ export function listAccessGroupProjectsRequestToJSON(
 }
 
 /** @internal */
-export const ListAccessGroupProjectsRole$inboundSchema: z.ZodNativeEnum<
-  typeof ListAccessGroupProjectsRole
-> = z.nativeEnum(ListAccessGroupProjectsRole);
-
-/** @internal */
-export const ListAccessGroupProjectsProject$inboundSchema: z.ZodType<
-  ListAccessGroupProjectsProject,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: types.optional(types.string()),
-  framework: z.nullable(types.string()).optional(),
-  latestDeploymentId: types.optional(types.string()),
-});
-
-export function listAccessGroupProjectsProjectFromJSON(
-  jsonString: string,
-): SafeParseResult<ListAccessGroupProjectsProject, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListAccessGroupProjectsProject$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListAccessGroupProjectsProject' from JSON`,
-  );
-}
-
-/** @internal */
-export const ListAccessGroupProjectsProjects$inboundSchema: z.ZodType<
-  ListAccessGroupProjectsProjects,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: types.string(),
-  role: ListAccessGroupProjectsRole$inboundSchema,
-  createdAt: types.string(),
-  updatedAt: types.string(),
-  project: z.lazy(() => ListAccessGroupProjectsProject$inboundSchema),
-});
-
-export function listAccessGroupProjectsProjectsFromJSON(
-  jsonString: string,
-): SafeParseResult<ListAccessGroupProjectsProjects, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListAccessGroupProjectsProjects$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListAccessGroupProjectsProjects' from JSON`,
-  );
-}
-
-/** @internal */
 export const ListAccessGroupProjectsPagination$inboundSchema: z.ZodType<
   ListAccessGroupProjectsPagination,
   z.ZodTypeDef,
@@ -168,15 +119,64 @@ export function listAccessGroupProjectsPaginationFromJSON(
 }
 
 /** @internal */
+export const ListAccessGroupProjectsProject$inboundSchema: z.ZodType<
+  ListAccessGroupProjectsProject,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  framework: z.nullable(types.string()).optional(),
+  latestDeploymentId: types.optional(types.string()),
+  name: types.optional(types.string()),
+});
+
+export function listAccessGroupProjectsProjectFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAccessGroupProjectsProject, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListAccessGroupProjectsProject$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAccessGroupProjectsProject' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListAccessGroupProjectsRole$inboundSchema: z.ZodNativeEnum<
+  typeof ListAccessGroupProjectsRole
+> = z.nativeEnum(ListAccessGroupProjectsRole);
+
+/** @internal */
+export const ListAccessGroupProjectsProjects$inboundSchema: z.ZodType<
+  ListAccessGroupProjectsProjects,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createdAt: types.string(),
+  project: z.lazy(() => ListAccessGroupProjectsProject$inboundSchema),
+  projectId: types.string(),
+  role: ListAccessGroupProjectsRole$inboundSchema,
+  updatedAt: types.string(),
+});
+
+export function listAccessGroupProjectsProjectsFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAccessGroupProjectsProjects, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListAccessGroupProjectsProjects$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAccessGroupProjectsProjects' from JSON`,
+  );
+}
+
+/** @internal */
 export const ListAccessGroupProjectsResponseBody$inboundSchema: z.ZodType<
   ListAccessGroupProjectsResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  pagination: z.lazy(() => ListAccessGroupProjectsPagination$inboundSchema),
   projects: z.array(
     z.lazy(() => ListAccessGroupProjectsProjects$inboundSchema),
   ),
-  pagination: z.lazy(() => ListAccessGroupProjectsPagination$inboundSchema),
 });
 
 export function listAccessGroupProjectsResponseBodyFromJSON(

@@ -19,8 +19,8 @@ const value: models.GetAliasApplications1[] = [
 ```typescript
 const value: models.GetAliasApplications2[] = [
   {
-    fallbackHost: "<value>",
     branchAlias: "<value>",
+    fallbackHost: "<value>",
     projectId: "<id>",
   },
 ];

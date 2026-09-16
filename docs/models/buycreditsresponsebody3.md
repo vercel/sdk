@@ -7,7 +7,6 @@ import { BuyCreditsResponseBody3 } from "@vercel/sdk/models/buycreditsop.js";
 
 let value: BuyCreditsResponseBody3 = {
   orbSubscriptionIntent: {
-    id: "<id>",
     configuration: {
       options: {
         productAlias: "<value>",
@@ -24,6 +23,7 @@ let value: BuyCreditsResponseBody3 = {
       type: "increase_plan_item_quantity",
     },
     createdAt: "1729837603767",
+    id: "<id>",
     orbSubscriptionId: "<id>",
     orbUpdate: {
       mode: "sync",

@@ -13,26 +13,6 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
  */
 export type AuthUserLimited = {
   /**
-   * Property indicating that this User data contains only limited information, due to the authentication token missing privileges to read the full User data. Re-login with email, GitHub, GitLab or Bitbucket in order to upgrade the authentication token with the necessary privileges.
-   */
-  limited: true;
-  /**
-   * The User's unique identifier.
-   */
-  id: string;
-  /**
-   * Email address associated with the User account.
-   */
-  email: string;
-  /**
-   * Name associated with the User account, or `null` if none has been provided.
-   */
-  name: string | null;
-  /**
-   * Unique username associated with the User account.
-   */
-  username: string;
-  /**
    * SHA1 hash of the avatar for the User account. Can be used in conjuction with the ... endpoint to retrieve the avatar image.
    */
   avatar: string | null;
@@ -41,13 +21,33 @@ export type AuthUserLimited = {
    */
   defaultTeamId: string | null;
   /**
+   * Email address associated with the User account.
+   */
+  email: string;
+  /**
+   * The User's unique identifier.
+   */
+  id: string;
+  /**
    * Indicates whether the user is managed by an enterprise.
    */
   isEnterpriseManaged?: boolean | undefined;
   /**
+   * Property indicating that this User data contains only limited information, due to the authentication token missing privileges to read the full User data. Re-login with email, GitHub, GitLab or Bitbucket in order to upgrade the authentication token with the necessary privileges.
+   */
+  limited: true;
+  /**
+   * Name associated with the User account, or `null` if none has been provided.
+   */
+  name: string | null;
+  /**
    * Whether the Enterprise Managed User joined the current team through the Update Account flow and should see its welcome experience.
    */
   shouldShowEnterpriseManagedWelcome?: boolean | undefined;
+  /**
+   * Unique username associated with the User account.
+   */
+  username: string;
 };
 
 /** @internal */
@@ -56,15 +56,15 @@ export const AuthUserLimited$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  limited: types.literal(true),
-  id: types.string(),
-  email: types.string(),
-  name: types.nullable(types.string()),
-  username: types.string(),
   avatar: types.nullable(types.string()),
   defaultTeamId: types.nullable(types.string()),
+  email: types.string(),
+  id: types.string(),
   isEnterpriseManaged: types.optional(types.boolean()),
+  limited: types.literal(true),
+  name: types.nullable(types.string()),
   shouldShowEnterpriseManagedWelcome: types.optional(types.boolean()),
+  username: types.string(),
 });
 
 export function authUserLimitedFromJSON(

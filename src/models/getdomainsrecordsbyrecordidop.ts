@@ -16,6 +16,20 @@ export type GetDomainsRecordsByRecordIdRequest = {
   recordId: string;
 };
 
+export const RecordType = {
+  A: "A",
+  Aaaa: "AAAA",
+  Alias: "ALIAS",
+  Caa: "CAA",
+  Cname: "CNAME",
+  Https: "HTTPS",
+  Mx: "MX",
+  Ns: "NS",
+  Srv: "SRV",
+  Txt: "TXT",
+} as const;
+export type RecordType = ClosedEnum<typeof RecordType>;
+
 export const GetDomainsRecordsByRecordIdType = {
   A: "A",
   Aaaa: "AAAA",
@@ -32,31 +46,17 @@ export type GetDomainsRecordsByRecordIdType = ClosedEnum<
   typeof GetDomainsRecordsByRecordIdType
 >;
 
-export const RecordType = {
-  A: "A",
-  Aaaa: "AAAA",
-  Alias: "ALIAS",
-  Caa: "CAA",
-  Cname: "CNAME",
-  Https: "HTTPS",
-  Mx: "MX",
-  Ns: "NS",
-  Srv: "SRV",
-  Txt: "TXT",
-} as const;
-export type RecordType = ClosedEnum<typeof RecordType>;
-
 export type GetDomainsRecordsByRecordIdResponseBody = {
-  type: GetDomainsRecordsByRecordIdType;
-  id: string;
-  name: string;
-  value: string;
+  comment?: string | undefined;
+  createdAt?: number | null | undefined;
   creator: string;
   domain: string;
-  ttl?: number | undefined;
-  comment?: string | undefined;
+  id: string;
+  name: string;
   recordType: RecordType;
-  createdAt?: number | null | undefined;
+  ttl?: number | undefined;
+  type: GetDomainsRecordsByRecordIdType;
+  value: string;
 };
 
 /** @internal */
@@ -84,13 +84,13 @@ export function getDomainsRecordsByRecordIdRequestToJSON(
 }
 
 /** @internal */
+export const RecordType$inboundSchema: z.ZodNativeEnum<typeof RecordType> = z
+  .nativeEnum(RecordType);
+
+/** @internal */
 export const GetDomainsRecordsByRecordIdType$inboundSchema: z.ZodNativeEnum<
   typeof GetDomainsRecordsByRecordIdType
 > = z.nativeEnum(GetDomainsRecordsByRecordIdType);
-
-/** @internal */
-export const RecordType$inboundSchema: z.ZodNativeEnum<typeof RecordType> = z
-  .nativeEnum(RecordType);
 
 /** @internal */
 export const GetDomainsRecordsByRecordIdResponseBody$inboundSchema: z.ZodType<
@@ -98,16 +98,16 @@ export const GetDomainsRecordsByRecordIdResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: GetDomainsRecordsByRecordIdType$inboundSchema,
-  id: types.string(),
-  name: types.string(),
-  value: types.string(),
+  comment: types.optional(types.string()),
+  createdAt: z.nullable(types.number()).optional(),
   creator: types.string(),
   domain: types.string(),
-  ttl: types.optional(types.number()),
-  comment: types.optional(types.string()),
+  id: types.string(),
+  name: types.string(),
   recordType: RecordType$inboundSchema,
-  createdAt: z.nullable(types.number()).optional(),
+  ttl: types.optional(types.number()),
+  type: GetDomainsRecordsByRecordIdType$inboundSchema,
+  value: types.string(),
 });
 
 export function getDomainsRecordsByRecordIdResponseBodyFromJSON(

@@ -1,18 +1,16 @@
 # GetProjectsResponseBodyProjectsResponse200ApplicationJson1AliasType
 
-The type of matching to perform
-
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyProjectsResponse200ApplicationJson1AliasType } from "@vercel/sdk/models/responsebodydeploymentexpiration.js";
+import { GetProjectsResponseBodyProjectsResponse200ApplicationJson1AliasType } from "@vercel/sdk/models/getprojectslogheaders2.js";
 
 let value: GetProjectsResponseBodyProjectsResponse200ApplicationJson1AliasType =
-  "equals";
+  "LAMBDAS";
 ```
 
 ## Values
 
 ```typescript
-"endsWith" | "equals" | "startsWith"
+"LAMBDAS"
 ```

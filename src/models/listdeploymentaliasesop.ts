@@ -55,10 +55,10 @@ export type ListDeploymentAliasesProtectionBypassAccess = ClosedEnum<
  * The protection bypass for the alias
  */
 export type ListDeploymentAliasesProtectionBypass2 = {
+  access: ListDeploymentAliasesProtectionBypassAccess;
   createdAt: number;
   lastUpdatedAt: number;
   lastUpdatedBy: string;
-  access: ListDeploymentAliasesProtectionBypassAccess;
   scope: "user";
 };
 
@@ -68,8 +68,8 @@ export type ListDeploymentAliasesProtectionBypass2 = {
 export type ListDeploymentAliasesProtectionBypass1 = {
   createdAt: number;
   createdBy: string;
-  scope: "shareable-link";
   expires?: number | undefined;
+  scope: "shareable-link";
 };
 
 export type ListDeploymentAliasesProtectionBypass =
@@ -83,10 +83,6 @@ export type ListDeploymentAliasesProtectionBypass =
  */
 export type Aliases = {
   /**
-   * The unique identifier of the alias
-   */
-  uid: string;
-  /**
    * The alias name, it could be a `.vercel.app` subdomain or a custom domain
    */
   alias: string;
@@ -94,10 +90,6 @@ export type Aliases = {
    * The date when the alias was created
    */
   created: Date;
-  /**
-   * Target destination domain for redirect when the alias is a redirect
-   */
-  redirect?: string | null | undefined;
   /**
    * The protection bypass for the alias
    */
@@ -108,6 +100,14 @@ export type Aliases = {
       | ListDeploymentAliasesProtectionBypass3
       | ListDeploymentAliasesProtectionBypass4;
   } | undefined;
+  /**
+   * Target destination domain for redirect when the alias is a redirect
+   */
+  redirect?: string | null | undefined;
+  /**
+   * The unique identifier of the alias
+   */
+  uid: string;
 };
 
 /**
@@ -204,10 +204,10 @@ export const ListDeploymentAliasesProtectionBypass2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  access: ListDeploymentAliasesProtectionBypassAccess$inboundSchema,
   createdAt: types.number(),
   lastUpdatedAt: types.number(),
   lastUpdatedBy: types.string(),
-  access: ListDeploymentAliasesProtectionBypassAccess$inboundSchema,
   scope: types.literal("user"),
 });
 
@@ -230,8 +230,8 @@ export const ListDeploymentAliasesProtectionBypass1$inboundSchema: z.ZodType<
 > = z.object({
   createdAt: types.number(),
   createdBy: types.string(),
-  scope: types.literal("shareable-link"),
   expires: types.optional(types.number()),
+  scope: types.literal("shareable-link"),
 });
 
 export function listDeploymentAliasesProtectionBypass1FromJSON(
@@ -271,10 +271,8 @@ export function listDeploymentAliasesProtectionBypassFromJSON(
 /** @internal */
 export const Aliases$inboundSchema: z.ZodType<Aliases, z.ZodTypeDef, unknown> =
   z.object({
-    uid: types.string(),
     alias: types.string(),
     created: types.date(),
-    redirect: z.nullable(types.string()).optional(),
     protectionBypass: types.optional(
       z.record(z.union([
         z.lazy(() => ListDeploymentAliasesProtectionBypass1$inboundSchema),
@@ -285,6 +283,8 @@ export const Aliases$inboundSchema: z.ZodType<Aliases, z.ZodTypeDef, unknown> =
         z.lazy(() => ListDeploymentAliasesProtectionBypass4$inboundSchema),
       ])),
     ),
+    redirect: z.nullable(types.string()).optional(),
+    uid: types.string(),
   });
 
 export function aliasesFromJSON(

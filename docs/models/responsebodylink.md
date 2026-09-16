@@ -7,11 +7,11 @@
 
 ```typescript
 const value: models.GetProjectsLink1 = {
-  org: "<value>",
-  type: "github",
   deployHooks: [],
   gitCredentialId: "<id>",
+  org: "<value>",
   productionBranch: "<value>",
+  type: "github",
 };
 ```
 
@@ -19,11 +19,11 @@ const value: models.GetProjectsLink1 = {
 
 ```typescript
 const value: models.GetProjectsLink2 = {
-  type: "github-limited",
-  org: "<value>",
   deployHooks: [],
   gitCredentialId: "<id>",
+  org: "<value>",
   productionBranch: "<value>",
+  type: "github-limited",
 };
 ```
 
@@ -31,19 +31,19 @@ const value: models.GetProjectsLink2 = {
 
 ```typescript
 const value: models.GetProjectsLink3 = {
-  org: "<value>",
-  type: "github-custom-host",
-  host: "pretty-guide.biz",
   deployHooks: [
     {
       id: "<id>",
       name: "<value>",
       ref: "<value>",
-      url: "https://probable-lady.net/",
+      url: "https://distant-repeat.com/",
     },
   ],
   gitCredentialId: "<id>",
+  host: "probable-lady.net",
+  org: "<value>",
   productionBranch: "<value>",
+  type: "github-custom-host",
 };
 ```
 
@@ -51,22 +51,15 @@ const value: models.GetProjectsLink3 = {
 
 ```typescript
 const value: models.GetProjectsLink4 = {
-  projectId: "<id>",
-  projectName: "<value>",
-  projectNameWithNamespace: "<value>",
-  projectNamespace: "<value>",
-  projectUrl: "https://negligible-baritone.biz/",
-  type: "gitlab",
-  deployHooks: [
-    {
-      id: "<id>",
-      name: "<value>",
-      ref: "<value>",
-      url: "https://same-baritone.com",
-    },
-  ],
+  deployHooks: [],
   gitCredentialId: "<id>",
   productionBranch: "<value>",
+  projectId: "<id>",
+  projectName: "<value>",
+  projectNamespace: "<value>",
+  projectNameWithNamespace: "<value>",
+  projectUrl: "https://best-deed.org",
+  type: "gitlab",
 };
 ```
 
@@ -74,22 +67,15 @@ const value: models.GetProjectsLink4 = {
 
 ```typescript
 const value: models.GetProjectsLink5 = {
-  name: "<value>",
-  slug: "<value>",
-  owner: "<value>",
-  type: "bitbucket",
-  uuid: "2c8c1b05-c73d-47ef-8b00-6fd5afb6a034",
-  workspaceUuid: "<id>",
-  deployHooks: [
-    {
-      id: "<id>",
-      name: "<value>",
-      ref: "<value>",
-      url: "https://sunny-longboat.com",
-    },
-  ],
+  deployHooks: [],
   gitCredentialId: "<id>",
+  name: "<value>",
+  owner: "<value>",
   productionBranch: "<value>",
+  slug: "<value>",
+  type: "bitbucket",
+  uuid: "c8c1b05c-73d7-4efb-a006-fd5afb6a0342",
+  workspaceUuid: "<id>",
 };
 ```
 
@@ -97,10 +83,6 @@ const value: models.GetProjectsLink5 = {
 
 ```typescript
 const value: models.GetProjectsLink6 = {
-  org: "<value>",
-  repo: "<value>",
-  repoId: "<id>",
-  type: "vercel",
   deployHooks: [
     {
       id: "<id>",
@@ -110,7 +92,11 @@ const value: models.GetProjectsLink6 = {
     },
   ],
   gitCredentialId: "<id>",
+  org: "<value>",
   productionBranch: "<value>",
+  repo: "<value>",
+  repoId: "<id>",
+  type: "vercel",
 };
 ```
 
@@ -118,10 +104,6 @@ const value: models.GetProjectsLink6 = {
 
 ```typescript
 const value: models.GetProjectsLink7 = {
-  org: "<value>",
-  repo: "<value>",
-  repoId: "<id>",
-  type: "v0",
   deployHooks: [
     {
       id: "<id>",
@@ -131,7 +113,11 @@ const value: models.GetProjectsLink7 = {
     },
   ],
   gitCredentialId: "<id>",
+  org: "<value>",
   productionBranch: "<value>",
+  repo: "<value>",
+  repoId: "<id>",
+  type: "v0",
 };
 ```
 
@@ -139,14 +125,14 @@ const value: models.GetProjectsLink7 = {
 
 ```typescript
 const value: models.GetProjectsLink8 = {
-  owner: "<value>",
-  repo: "<value>",
-  repoId: "<id>",
-  ownerId: "<id>",
-  type: "cursor-origin",
   deployHooks: [],
   gitCredentialId: "<id>",
+  owner: "<value>",
+  ownerId: "<id>",
   productionBranch: "<value>",
+  repo: "<value>",
+  repoId: "<id>",
+  type: "cursor-origin",
 };
 ```
 

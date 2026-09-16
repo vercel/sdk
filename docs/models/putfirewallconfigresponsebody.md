@@ -7,32 +7,41 @@ import { PutFirewallConfigResponseBody } from "@vercel/sdk/models/putfirewallcon
 
 let value: PutFirewallConfigResponseBody = {
   active: {
+    changes: [],
+    firewallEnabled: false,
+    id: "<id>",
+    ips: [
+      {
+        action: "deny",
+        hostname: "lovely-freckle.info",
+        id: "<id>",
+        ip: "177.52.247.144",
+      },
+    ],
     ownerId: "<id>",
     projectKey: "<value>",
-    id: "<id>",
-    version: 3941.34,
-    updatedAt: "1735667598775",
-    firewallEnabled: false,
     rules: [
       {
+        action: {},
+        active: false,
+        conditionGroup: [
+          {
+            conditions: [
+              {
+                op: "list",
+                type: "scheme",
+              },
+            ],
+          },
+        ],
         id: "<id>",
         name: "<value>",
-        active: true,
-        conditionGroup: [],
-        action: {},
         valid: true,
         validationErrors: "<value>",
       },
     ],
-    ips: [
-      {
-        id: "<id>",
-        hostname: "oily-knuckle.biz",
-        ip: "110.187.246.4",
-        action: "deny",
-      },
-    ],
-    changes: [],
+    updatedAt: "1735689524206",
+    version: 8272.58,
   },
 };
 ```

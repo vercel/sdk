@@ -1,18 +1,16 @@
 # UpdateMicrofrontendsProjectsResponse200ApplicationJSONAction
 
-What to do when the gate trips: pause the rollout, or roll it back.
-
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsProjectsResponse200ApplicationJSONAction } from "@vercel/sdk/models/updatemicrofrontendsprojectsfunctiondefaultmemorytype.js";
+import { UpdateMicrofrontendsProjectsResponse200ApplicationJSONAction } from "@vercel/sdk/models/updatemicrofrontendsfrom1.js";
 
 let value: UpdateMicrofrontendsProjectsResponse200ApplicationJSONAction =
-  "pause";
+  "bypass";
 ```
 
 ## Values
 
 ```typescript
-"pause" | "rollback"
+"allow" | "bypass" | "challenge" | "deny" | "log" | "rate_limit" | "redirect"
 ```

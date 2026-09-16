@@ -6,11 +6,11 @@
 import { UpdateDrainResponseBodyDrainsFilterV2 } from "@vercel/sdk/models/updatedrainop.js";
 
 let value: UpdateDrainResponseBodyDrainsFilterV2 = {
-  version: "v2",
   filter: {
-    type: "odata",
     text: "<value>",
+    type: "odata",
   },
+  version: "v2",
 };
 ```
 
@@ -18,5 +18,5 @@ let value: UpdateDrainResponseBodyDrainsFilterV2 = {
 
 | Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
 | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `version`                                                                                        | [models.UpdateDrainResponseBodyDrainsVersion](../models/updatedrainresponsebodydrainsversion.md) | :heavy_check_mark:                                                                               | N/A                                                                                              |
 | `filter`                                                                                         | *models.UpdateDrainResponseBodyDrainsFilter*                                                     | :heavy_check_mark:                                                                               | N/A                                                                                              |
+| `version`                                                                                        | [models.UpdateDrainResponseBodyDrainsVersion](../models/updatedrainresponsebodydrainsversion.md) | :heavy_check_mark:                                                                               | N/A                                                                                              |

@@ -24,10 +24,10 @@ export type GetEdgeConfigBackupsRequest = {
 };
 
 export type GetEdgeConfigBackupsMetadata = {
+  itemsBytes?: number | undefined;
+  itemsCount?: number | undefined;
   updatedAt?: string | undefined;
   updatedBy?: string | undefined;
-  itemsCount?: number | undefined;
-  itemsBytes?: number | undefined;
 };
 
 export type Backups = {
@@ -86,10 +86,10 @@ export const GetEdgeConfigBackupsMetadata$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  itemsBytes: types.optional(types.number()),
+  itemsCount: types.optional(types.number()),
   updatedAt: types.optional(types.string()),
   updatedBy: types.optional(types.string()),
-  itemsCount: types.optional(types.number()),
-  itemsBytes: types.optional(types.number()),
 });
 
 export function getEdgeConfigBackupsMetadataFromJSON(

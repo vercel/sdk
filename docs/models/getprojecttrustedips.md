@@ -7,8 +7,8 @@
 
 ```typescript
 const value: models.GetProjectTrustedIps1 = {
-  deploymentType: "all",
   addresses: [],
+  deploymentType: "all_except_custom_domains",
   protectionMode: "additional",
 };
 ```

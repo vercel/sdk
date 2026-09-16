@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { CreateIntegrationStoreDirectNotification } from "@vercel/sdk/models/createintegrationstoredirectresponsebody.js";
+import { CreateIntegrationStoreDirectNotification } from "@vercel/sdk/models/createintegrationstoredirectpropertiesintegrationsresponse200uioptions.js";
 
 let value: CreateIntegrationStoreDirectNotification = {
-  title: "<value>",
   level: "warn",
+  title: "<value>",
 };
 ```
 
@@ -15,7 +15,7 @@ let value: CreateIntegrationStoreDirectNotification = {
 
 | Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
 | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `title`                                                                                    | *string*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `href`                                                                                     | *string*                                                                                   | :heavy_minus_sign:                                                                         | N/A                                                                                        |
 | `level`                                                                                    | [models.CreateIntegrationStoreDirectLevel](../models/createintegrationstoredirectlevel.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
 | `message`                                                                                  | *string*                                                                                   | :heavy_minus_sign:                                                                         | N/A                                                                                        |
-| `href`                                                                                     | *string*                                                                                   | :heavy_minus_sign:                                                                         | N/A                                                                                        |
+| `title`                                                                                    | *string*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |

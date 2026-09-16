@@ -7,11 +7,11 @@
 
 ```typescript
 const value: models.CancelDeploymentTransforms1 = {
-  type: "request.headers",
   op: "append",
   target: {
     key: "<key>",
   },
+  type: "request.headers",
 };
 ```
 
@@ -19,11 +19,11 @@ const value: models.CancelDeploymentTransforms1 = {
 
 ```typescript
 const value: models.CancelDeploymentTransforms1 = {
-  type: "request.headers",
   op: "append",
   target: {
     key: "<key>",
   },
+  type: "request.headers",
 };
 ```
 
@@ -31,11 +31,11 @@ const value: models.CancelDeploymentTransforms1 = {
 
 ```typescript
 const value: models.CancelDeploymentTransforms1 = {
-  type: "request.headers",
   op: "append",
   target: {
     key: "<key>",
   },
+  type: "request.headers",
 };
 ```
 
@@ -43,9 +43,9 @@ const value: models.CancelDeploymentTransforms1 = {
 
 ```typescript
 const value: models.CancelDeploymentTransforms2 = {
-  type: "request.path",
-  op: "set",
   args: "<value>",
+  op: "set",
+  type: "request.path",
 };
 ```
 

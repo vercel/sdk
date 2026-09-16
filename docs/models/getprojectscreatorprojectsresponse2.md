@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsCreatorProjectsResponse2 } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson3action.js";
+import { GetProjectsCreatorProjectsResponse2 } from "@vercel/sdk/models/getprojectsresponsebodyprojectsconsolidatedgitcommitstatus.js";
 
 let value: GetProjectsCreatorProjectsResponse2 = {
-  type: "app",
   app: {
     id: "<id>",
   },
+  type: "app",
 };
 ```
 
@@ -17,5 +17,5 @@ let value: GetProjectsCreatorProjectsResponse2 = {
 
 | Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `type`                                                                                             | *"app"*                                                                                            | :heavy_check_mark:                                                                                 | N/A                                                                                                |
 | `app`                                                                                              | [models.GetProjectsCreatorProjectsResponseApp](../models/getprojectscreatorprojectsresponseapp.md) | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `type`                                                                                             | *"app"*                                                                                            | :heavy_check_mark:                                                                                 | N/A                                                                                                |

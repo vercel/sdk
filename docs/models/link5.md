@@ -3,25 +3,25 @@
 ## Example Usage
 
 ```typescript
-import { Link5 } from "@vercel/sdk/models/createprojectpasswordprotection.js";
+import { Link5 } from "@vercel/sdk/models/createprojecttargets.js";
 
 let value: Link5 = {
-  name: "<value>",
-  slug: "<value>",
-  owner: "<value>",
-  type: "bitbucket",
-  uuid: "db41c2ce-804b-460c-bab1-a5e2d810be5f",
-  workspaceUuid: "<id>",
   deployHooks: [
     {
       id: "<id>",
       name: "<value>",
       ref: "<value>",
-      url: "https://insistent-bourgeoisie.name/",
+      url: "https://fatal-bungalow.net",
     },
   ],
   gitCredentialId: "<id>",
+  name: "<value>",
+  owner: "<value>",
   productionBranch: "<value>",
+  slug: "<value>",
+  type: "bitbucket",
+  uuid: "2ce804b6-0cab-41a5-ae2d-810be5fcd261",
+  workspaceUuid: "<id>",
 };
 ```
 
@@ -29,15 +29,15 @@ let value: Link5 = {
 
 | Field                                                                                                              | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
 | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
-| `name`                                                                                                             | *string*                                                                                                           | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
-| `slug`                                                                                                             | *string*                                                                                                           | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
-| `owner`                                                                                                            | *string*                                                                                                           | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
-| `type`                                                                                                             | *"bitbucket"*                                                                                                      | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
-| `uuid`                                                                                                             | *string*                                                                                                           | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
-| `workspaceUuid`                                                                                                    | *string*                                                                                                           | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
 | `createdAt`                                                                                                        | *number*                                                                                                           | :heavy_minus_sign:                                                                                                 | N/A                                                                                                                |
 | `deployHooks`                                                                                                      | [models.CreateProjectLinkProjectsResponseDeployHooks](../models/createprojectlinkprojectsresponsedeployhooks.md)[] | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
 | `gitCredentialId`                                                                                                  | *string*                                                                                                           | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
-| `updatedAt`                                                                                                        | *number*                                                                                                           | :heavy_minus_sign:                                                                                                 | N/A                                                                                                                |
-| `sourceless`                                                                                                       | *boolean*                                                                                                          | :heavy_minus_sign:                                                                                                 | N/A                                                                                                                |
+| `name`                                                                                                             | *string*                                                                                                           | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
+| `owner`                                                                                                            | *string*                                                                                                           | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
 | `productionBranch`                                                                                                 | *string*                                                                                                           | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
+| `slug`                                                                                                             | *string*                                                                                                           | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
+| `sourceless`                                                                                                       | *boolean*                                                                                                          | :heavy_minus_sign:                                                                                                 | N/A                                                                                                                |
+| `type`                                                                                                             | *"bitbucket"*                                                                                                      | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
+| `updatedAt`                                                                                                        | *number*                                                                                                           | :heavy_minus_sign:                                                                                                 | N/A                                                                                                                |
+| `uuid`                                                                                                             | *string*                                                                                                           | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
+| `workspaceUuid`                                                                                                    | *string*                                                                                                           | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |

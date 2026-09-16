@@ -3,14 +3,20 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectCrons } from "@vercel/sdk/models/createprojectpasswordprotection.js";
+import { CreateProjectCrons } from "@vercel/sdk/models/createprojectcontenthint2.js";
 
 let value: CreateProjectCrons = {
-  enabledAt: 6003.25,
-  disabledAt: 299.8,
-  updatedAt: 6508.08,
+  definitions: [
+    {
+      host: "vercel.com",
+      path: "/api/crons/sync-something?hello=world",
+      schedule: "0 0 * * *",
+    },
+  ],
   deploymentId: "<id>",
-  definitions: [],
+  disabledAt: null,
+  enabledAt: 6508.08,
+  updatedAt: 5071.74,
 };
 ```
 
@@ -18,8 +24,8 @@ let value: CreateProjectCrons = {
 
 | Field                                                                                                                              | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
 | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `enabledAt`                                                                                                                        | *number*                                                                                                                           | :heavy_check_mark:                                                                                                                 | The time the feature was enabled for this project. Note: It enables automatically with the first Deployment that outputs cronjobs. |
-| `disabledAt`                                                                                                                       | *number*                                                                                                                           | :heavy_check_mark:                                                                                                                 | The time the feature was disabled for this project.                                                                                |
-| `updatedAt`                                                                                                                        | *number*                                                                                                                           | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
-| `deploymentId`                                                                                                                     | *string*                                                                                                                           | :heavy_check_mark:                                                                                                                 | The ID of the Deployment from which the definitions originated.                                                                    |
 | `definitions`                                                                                                                      | [models.Definitions](../models/definitions.md)[]                                                                                   | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
+| `deploymentId`                                                                                                                     | *string*                                                                                                                           | :heavy_check_mark:                                                                                                                 | The ID of the Deployment from which the definitions originated.                                                                    |
+| `disabledAt`                                                                                                                       | *number*                                                                                                                           | :heavy_check_mark:                                                                                                                 | The time the feature was disabled for this project.                                                                                |
+| `enabledAt`                                                                                                                        | *number*                                                                                                                           | :heavy_check_mark:                                                                                                                 | The time the feature was enabled for this project. Note: It enables automatically with the first Deployment that outputs cronjobs. |
+| `updatedAt`                                                                                                                        | *number*                                                                                                                           | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |

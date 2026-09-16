@@ -6,8 +6,8 @@
 import { CreateFlagFallthroughSlots } from "@vercel/sdk/models/createflagop.js";
 
 let value: CreateFlagFallthroughSlots = {
-  promille: 6224.93,
-  durationMs: 8221.77,
+  durationMs: 6224.93,
+  promille: 8221.77,
 };
 ```
 
@@ -15,5 +15,5 @@ let value: CreateFlagFallthroughSlots = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `promille`         | *number*           | :heavy_check_mark: | N/A                |
 | `durationMs`       | *number*           | :heavy_check_mark: | N/A                |
+| `promille`         | *number*           | :heavy_check_mark: | N/A                |

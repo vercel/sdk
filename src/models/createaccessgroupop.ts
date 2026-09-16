@@ -66,37 +66,37 @@ export type CreateAccessGroupEntitlements = ClosedEnum<
 >;
 
 export type CreateAccessGroupResponseBody = {
-  entitlements: Array<CreateAccessGroupEntitlements>;
-  membersCount: number;
-  projectsCount: number;
-  /**
-   * The name of this access group.
-   */
-  name: string;
-  /**
-   * Timestamp in milliseconds when the access group was created.
-   */
-  createdAt: string;
-  /**
-   * ID of the team that this access group belongs to.
-   */
-  teamId: string;
-  /**
-   * Timestamp in milliseconds when the access group was last updated.
-   */
-  updatedAt: string;
   /**
    * ID of the access group.
    */
   accessGroupId: string;
   /**
-   * Roles that the team has in the access group.
+   * Timestamp in milliseconds when the access group was created.
    */
-  teamRoles?: Array<string> | undefined;
+  createdAt: string;
+  entitlements: Array<CreateAccessGroupEntitlements>;
+  membersCount: number;
+  /**
+   * The name of this access group.
+   */
+  name: string;
+  projectsCount: number;
+  /**
+   * ID of the team that this access group belongs to.
+   */
+  teamId: string;
   /**
    * Permissions that the team has in the access group.
    */
   teamPermissions?: Array<string> | undefined;
+  /**
+   * Roles that the team has in the access group.
+   */
+  teamRoles?: Array<string> | undefined;
+  /**
+   * Timestamp in milliseconds when the access group was last updated.
+   */
+  updatedAt: string;
 };
 
 /** @internal */
@@ -198,16 +198,16 @@ export const CreateAccessGroupResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  accessGroupId: types.string(),
+  createdAt: types.string(),
   entitlements: z.array(CreateAccessGroupEntitlements$inboundSchema),
   membersCount: types.number(),
-  projectsCount: types.number(),
   name: types.string(),
-  createdAt: types.string(),
+  projectsCount: types.number(),
   teamId: types.string(),
-  updatedAt: types.string(),
-  accessGroupId: types.string(),
-  teamRoles: types.optional(z.array(types.string())),
   teamPermissions: types.optional(z.array(types.string())),
+  teamRoles: types.optional(z.array(types.string())),
+  updatedAt: types.string(),
 });
 
 export function createAccessGroupResponseBodyFromJSON(

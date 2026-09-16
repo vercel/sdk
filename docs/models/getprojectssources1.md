@@ -5,11 +5,11 @@ Allowlist entry for GitHub and Bitbucket, whose repos are identified by a flat `
 ## Example Usage
 
 ```typescript
-import { GetProjectsSources1 } from "@vercel/sdk/models/getprojectsinternalroutesprojectsresponsehas.js";
+import { GetProjectsSources1 } from "@vercel/sdk/models/getprojectsresponsebodyprojectsconsolidatedgitcommitstatus.js";
 
 let value: GetProjectsSources1 = {
-  provider: "bitbucket",
   org: "<value>",
+  provider: "bitbucket",
 };
 ```
 
@@ -17,6 +17,6 @@ let value: GetProjectsSources1 = {
 
 | Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `provider`                                                                   | [models.GetProjectsSourcesProvider](../models/getprojectssourcesprovider.md) | :heavy_check_mark:                                                           | N/A                                                                          |
 | `org`                                                                        | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
+| `provider`                                                                   | [models.GetProjectsSourcesProvider](../models/getprojectssourcesprovider.md) | :heavy_check_mark:                                                           | N/A                                                                          |
 | `repo`                                                                       | *string*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |

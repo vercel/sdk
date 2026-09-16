@@ -8,10 +8,10 @@ import { EditRedirectResponseBody } from "@vercel/sdk/models/editredirectop.js";
 let value: EditRedirectResponseBody = {
   alias: "<value>",
   version: {
+    createdBy: "<value>",
     id: "<id>",
     key: "<key>",
     lastModified: 6409.16,
-    createdBy: "<value>",
   },
 };
 ```

@@ -7,8 +7,8 @@
 
 ```typescript
 const value: models.Redis1 = {
-  updatedAt: 8275.72,
   blockReason: "limits_exceeded",
+  updatedAt: 8275.72,
   overageReason: "artifacts",
 };
 ```
@@ -17,8 +17,8 @@ const value: models.Redis1 = {
 
 ```typescript
 const value: models.Redis2 = {
-  updatedAt: 1522.96,
-  blockReason: "hard_blocked",
+  blockReason: "admin_override",
+  updatedAt: 8943.03,
 };
 ```
 
@@ -26,8 +26,8 @@ const value: models.Redis2 = {
 
 ```typescript
 const value: models.Redis2 = {
-  updatedAt: 1522.96,
-  blockReason: "hard_blocked",
+  blockReason: "admin_override",
+  updatedAt: 8943.03,
 };
 ```
 

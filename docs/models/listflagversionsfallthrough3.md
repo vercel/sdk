@@ -6,22 +6,22 @@
 import { ListFlagVersionsFallthrough3 } from "@vercel/sdk/models/listflagversionsop.js";
 
 let value: ListFlagVersionsFallthrough3 = {
-  type: "rollout",
   base: {
-    type: "entity",
-    kind: "<value>",
     attribute: "<value>",
+    kind: "<value>",
+    type: "entity",
   },
   defaultVariantId: "<id>",
-  startTimestamp: 5804.73,
   rollFromVariantId: "<id>",
   rollToVariantId: "<id>",
   slots: [
     {
+      durationMs: 6585.14,
       promille: 5267.08,
-      durationMs: 1714.17,
     },
   ],
+  startTimestamp: 1714.17,
+  type: "rollout",
 };
 ```
 
@@ -29,10 +29,10 @@ let value: ListFlagVersionsFallthrough3 = {
 
 | Field                                                                                                          | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
 | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `type`                                                                                                         | *"rollout"*                                                                                                    | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
 | `base`                                                                                                         | [models.ListFlagVersionsFallthroughFeatureFlagsBase](../models/listflagversionsfallthroughfeatureflagsbase.md) | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
 | `defaultVariantId`                                                                                             | *string*                                                                                                       | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
-| `startTimestamp`                                                                                               | *number*                                                                                                       | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
 | `rollFromVariantId`                                                                                            | *string*                                                                                                       | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
 | `rollToVariantId`                                                                                              | *string*                                                                                                       | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
 | `slots`                                                                                                        | [models.ListFlagVersionsFallthroughSlots](../models/listflagversionsfallthroughslots.md)[]                     | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
+| `startTimestamp`                                                                                               | *number*                                                                                                       | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
+| `type`                                                                                                         | *"rollout"*                                                                                                    | :heavy_check_mark:                                                                                             | N/A                                                                                                            |

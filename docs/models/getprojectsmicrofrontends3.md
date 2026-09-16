@@ -3,14 +3,12 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsMicrofrontends3 } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson3action.js";
+import { GetProjectsMicrofrontends3 } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponseto.js";
 
 let value: GetProjectsMicrofrontends3 = {
-  updatedAt: 2084.87,
-  groupIds: [
-    "<value 1>",
-  ],
   enabled: false,
+  groupIds: [],
+  updatedAt: 3310.8,
 };
 ```
 
@@ -18,7 +16,7 @@ let value: GetProjectsMicrofrontends3 = {
 
 | Field                        | Type                         | Required                     | Description                  |
 | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-| `updatedAt`                  | *number*                     | :heavy_check_mark:           | N/A                          |
-| `groupIds`                   | *any*[]                      | :heavy_check_mark:           | N/A                          |
 | `enabled`                    | *false*                      | :heavy_check_mark:           | N/A                          |
 | `freeProjectForLegacyLimits` | *boolean*                    | :heavy_minus_sign:           | N/A                          |
+| `groupIds`                   | *any*[]                      | :heavy_check_mark:           | N/A                          |
+| `updatedAt`                  | *number*                     | :heavy_check_mark:           | N/A                          |

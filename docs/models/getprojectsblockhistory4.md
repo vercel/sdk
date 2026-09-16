@@ -3,15 +3,17 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsBlockHistory4 } from "@vercel/sdk/models/getprojectsresponsebody.js";
+import { GetProjectsBlockHistory4 } from "@vercel/sdk/models/responsebodyabuse.js";
 
 let value: GetProjectsBlockHistory4 = {
   action: "route-unblocked",
+  createdAt: 2387.06,
   route: {
-    src: "<value>",
-    status: 8911.94,
+    has: [],
+    mitigate: {
+      action: "block_legal_cwc",
+    },
   },
-  createdAt: 3845.17,
 };
 ```
 
@@ -20,11 +22,11 @@ let value: GetProjectsBlockHistory4 = {
 | Field                                         | Type                                          | Required                                      | Description                                   |
 | --------------------------------------------- | --------------------------------------------- | --------------------------------------------- | --------------------------------------------- |
 | `action`                                      | *"route-unblocked"*                           | :heavy_check_mark:                            | N/A                                           |
-| `route`                                       | *models.GetProjectsBlockHistoryProjectsRoute* | :heavy_check_mark:                            | N/A                                           |
-| `statusCode`                                  | *number*                                      | :heavy_minus_sign:                            | N/A                                           |
-| `createdAt`                                   | *number*                                      | :heavy_check_mark:                            | N/A                                           |
-| `caseId`                                      | *string*                                      | :heavy_minus_sign:                            | N/A                                           |
 | `actor`                                       | *string*                                      | :heavy_minus_sign:                            | N/A                                           |
+| `caseId`                                      | *string*                                      | :heavy_minus_sign:                            | N/A                                           |
 | `comment`                                     | *string*                                      | :heavy_minus_sign:                            | N/A                                           |
+| `createdAt`                                   | *number*                                      | :heavy_check_mark:                            | N/A                                           |
 | `ineligibleForAppeal`                         | *boolean*                                     | :heavy_minus_sign:                            | N/A                                           |
 | `isCascading`                                 | *boolean*                                     | :heavy_minus_sign:                            | N/A                                           |
+| `route`                                       | *models.GetProjectsBlockHistoryProjectsRoute* | :heavy_check_mark:                            | N/A                                           |
+| `statusCode`                                  | *number*                                      | :heavy_minus_sign:                            | N/A                                           |

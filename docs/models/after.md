@@ -3,14 +3,14 @@
 ## Example Usage
 
 ```typescript
-import { After } from "@vercel/sdk/models/payloadaccessgroup.js";
+import { After } from "@vercel/sdk/models/twentynine.js";
 
 let value: After = {};
 ```
 
 ## Fields
 
-| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `resources`                                                                      | [models.PayloadResources](../models/payloadresources.md)                         | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `permissions`                                                                    | [models.UserEventPayloadPermissions](../models/usereventpayloadpermissions.md)[] | :heavy_minus_sign:                                                               | N/A                                                                              |
+| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `permissions`                                                                        | [models.UserEventPayload56Permissions](../models/usereventpayload56permissions.md)[] | :heavy_minus_sign:                                                                   | N/A                                                                                  |
+| `resources`                                                                          | [models.UserEventPayloadResources](../models/usereventpayloadresources.md)           | :heavy_minus_sign:                                                                   | N/A                                                                                  |

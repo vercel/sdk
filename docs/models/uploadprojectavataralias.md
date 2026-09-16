@@ -3,11 +3,10 @@
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarAlias } from "@vercel/sdk/models/uploadprojectavatarprojectsbuildmachinetype.js";
+import { UploadProjectAvatarAlias } from "@vercel/sdk/models/uploadprojectavatarhasvalue.js";
 
 let value: UploadProjectAvatarAlias = {
   deployment: {
-    id: "<id>",
     createdAt: 1199.75,
     createdIn: "<value>",
     creator: {
@@ -16,6 +15,7 @@ let value: UploadProjectAvatarAlias = {
       username: "Rebeka.Moen",
     },
     deploymentHostname: "<value>",
+    id: "<id>",
     name: "<value>",
     plan: "enterprise",
     previewCommentsEnabled: false,

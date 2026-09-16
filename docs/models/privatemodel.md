@@ -6,8 +6,8 @@
 import { PrivateModel } from "@vercel/sdk/models/userevent.js";
 
 let value: PrivateModel = {
-  slug: "<value>",
   providerSlug: "<value>",
+  slug: "<value>",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: PrivateModel = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `slug`             | *string*           | :heavy_check_mark: | N/A                |
 | `providerSlug`     | *string*           | :heavy_check_mark: | N/A                |
+| `slug`             | *string*           | :heavy_check_mark: | N/A                |

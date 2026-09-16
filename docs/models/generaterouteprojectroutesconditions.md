@@ -7,8 +7,8 @@ import { GenerateRouteProjectRoutesConditions } from "@vercel/sdk/models/generat
 
 let value: GenerateRouteProjectRoutesConditions = {
   field: "query",
-  operator: "exists",
-  missing: true,
+  missing: false,
+  operator: "eq",
 };
 ```
 
@@ -17,7 +17,7 @@ let value: GenerateRouteProjectRoutesConditions = {
 | Field                                                        | Type                                                         | Required                                                     | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | `field`                                                      | [models.GenerateRouteField](../models/generateroutefield.md) | :heavy_check_mark:                                           | N/A                                                          |
-| `operator`                                                   | [models.Operator](../models/operator.md)                     | :heavy_check_mark:                                           | N/A                                                          |
 | `key`                                                        | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
-| `value`                                                      | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
 | `missing`                                                    | *boolean*                                                    | :heavy_check_mark:                                           | N/A                                                          |
+| `operator`                                                   | [models.Operator](../models/operator.md)                     | :heavy_check_mark:                                           | N/A                                                          |
+| `value`                                                      | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |

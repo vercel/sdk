@@ -18,6 +18,40 @@ import {
 } from "./connecttriggerdestination.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
+/**
+ * App-token capabilities and known grants for the connector.
+ */
+export type ConnectConnectorCreateResultAppTokens = {
+  /**
+   * Whether one app token can be used across installations.
+   */
+  crossInstallation: boolean;
+  /**
+   * Link to the page on the service where this connector's app-level permissions are declared and granted, when the service has one and it differs from `clientUrl`.
+   */
+  permissionsUrl?: string | undefined;
+  /**
+   * True when changing app token grants requires reinstalling the app, so tokens cannot be partitioned independently by requester environment.
+   */
+  requiresReinstallation?: boolean | undefined;
+  /**
+   * Known allowed app-level scopes. For Slack this is the bot scope set configured on the app; for OAuth it is the connector's enabled `clientCredentials.scopes` configuration.
+   */
+  scopes?: Array<string> | undefined;
+  /**
+   * Supported OAuth authorization-detail type names.
+   */
+  supportedAuthorizationDetails?: Array<string> | undefined;
+  /**
+   * Whether callers can narrow app-token grants per request.
+   */
+  supportsRefinement: boolean;
+  /**
+   * Whether callers can request resource-specific app tokens.
+   */
+  supportsResources?: boolean | undefined;
+};
+
 export const CreatedByEnvironment = {
   Development: "development",
   Preview: "preview",
@@ -35,17 +69,17 @@ export type CreatedByEnvironmentTarget = string | CreatedByEnvironment;
  */
 export type CreatedBy2 = {
   /**
-   * Principal kind.
+   * Deployment environment of the project principal.
    */
-  type: "project";
+  environment: string | CreatedByEnvironment;
   /**
    * Vercel project ID.
    */
   id: string;
   /**
-   * Deployment environment of the project principal.
+   * Principal kind.
    */
-  environment: string | CreatedByEnvironment;
+  type: "project";
 };
 
 /**
@@ -53,74 +87,19 @@ export type CreatedBy2 = {
  */
 export type CreatedBy1 = {
   /**
-   * Principal kind.
-   */
-  type: "user";
-  /**
    * Vercel user ID.
    */
   id: string;
+  /**
+   * Principal kind.
+   */
+  type: "user";
 };
 
 /**
  * Principal that created the connector.
  */
 export type ConnectConnectorCreateResultCreatedBy = CreatedBy1 | CreatedBy2;
-
-export const UpdatedByEnvironmentTargetUpdatedByEnvironment = {
-  Development: "development",
-  Preview: "preview",
-  Production: "production",
-} as const;
-export type UpdatedByEnvironmentTargetUpdatedByEnvironment = ClosedEnum<
-  typeof UpdatedByEnvironmentTargetUpdatedByEnvironment
->;
-
-/**
- * Deployment environment of the project principal.
- */
-export type UpdatedByEnvironmentTarget =
-  | string
-  | UpdatedByEnvironmentTargetUpdatedByEnvironment;
-
-/**
- * Principal that most recently mutated the connector. Same shape as {@link createdBy} but tracks the most recent updater, not the original creator. At create time the two fields point at the same principal; they diverge on the first subsequent update.
- */
-export type ConnectConnectorCreateResultUpdatedBy2 = {
-  /**
-   * Principal kind.
-   */
-  type: "project";
-  /**
-   * Vercel project ID.
-   */
-  id: string;
-  /**
-   * Deployment environment of the project principal.
-   */
-  environment: string | UpdatedByEnvironmentTargetUpdatedByEnvironment;
-};
-
-/**
- * Principal that most recently mutated the connector. Same shape as {@link createdBy} but tracks the most recent updater, not the original creator. At create time the two fields point at the same principal; they diverge on the first subsequent update.
- */
-export type ConnectConnectorCreateResultUpdatedBy1 = {
-  /**
-   * Principal kind.
-   */
-  type: "user";
-  /**
-   * Vercel user ID.
-   */
-  id: string;
-};
-
-/**
- * Principal that most recently updated the connector.
- */
-export type ConnectConnectorCreateResultUpdatedBy =
-  | ConnectConnectorCreateResultUpdatedBy1
-  | ConnectConnectorCreateResultUpdatedBy2;
 
 /**
  * How the connector row was originally created. New create paths stamp this explicitly; older rows may omit it.
@@ -145,6 +124,21 @@ export type ConnectConnectorCreateResultManaged = {
    */
   sync?: boolean | undefined;
 };
+
+/**
+ * Whether the connector icon can propagate to the provider.
+ */
+export const ConnectConnectorCreateResultSupportsIcon = {
+  False: "false",
+  Maybe: "maybe",
+  True: "true",
+} as const;
+/**
+ * Whether the connector icon can propagate to the provider.
+ */
+export type ConnectConnectorCreateResultSupportsIcon = ClosedEnum<
+  typeof ConnectConnectorCreateResultSupportsIcon
+>;
 
 /**
  * Connector implementation type.
@@ -174,39 +168,60 @@ export type ConnectConnectorCreateResultType = ClosedEnum<
   typeof ConnectConnectorCreateResultType
 >;
 
+export const UpdatedByEnvironmentTargetUpdatedByEnvironment = {
+  Development: "development",
+  Preview: "preview",
+  Production: "production",
+} as const;
+export type UpdatedByEnvironmentTargetUpdatedByEnvironment = ClosedEnum<
+  typeof UpdatedByEnvironmentTargetUpdatedByEnvironment
+>;
+
 /**
- * App-token capabilities and known grants for the connector.
+ * Deployment environment of the project principal.
  */
-export type ConnectConnectorCreateResultAppTokens = {
+export type UpdatedByEnvironmentTarget =
+  | string
+  | UpdatedByEnvironmentTargetUpdatedByEnvironment;
+
+/**
+ * Principal that most recently mutated the connector. Same shape as {@link createdBy} but tracks the most recent updater, not the original creator. At create time the two fields point at the same principal; they diverge on the first subsequent update.
+ */
+export type ConnectConnectorCreateResultUpdatedBy2 = {
   /**
-   * Whether one app token can be used across installations.
+   * Deployment environment of the project principal.
    */
-  crossInstallation: boolean;
+  environment: string | UpdatedByEnvironmentTargetUpdatedByEnvironment;
   /**
-   * Whether callers can narrow app-token grants per request.
+   * Vercel project ID.
    */
-  supportsRefinement: boolean;
+  id: string;
   /**
-   * Whether callers can request resource-specific app tokens.
+   * Principal kind.
    */
-  supportsResources?: boolean | undefined;
-  /**
-   * True when changing app token grants requires reinstalling the app, so tokens cannot be partitioned independently by requester environment.
-   */
-  requiresReinstallation?: boolean | undefined;
-  /**
-   * Known allowed app-level scopes. For Slack this is the bot scope set configured on the app; for OAuth it is the connector's enabled `clientCredentials.scopes` configuration.
-   */
-  scopes?: Array<string> | undefined;
-  /**
-   * Supported OAuth authorization-detail type names.
-   */
-  supportedAuthorizationDetails?: Array<string> | undefined;
-  /**
-   * Link to the page on the service where this connector's app-level permissions are declared and granted, when the service has one and it differs from `clientUrl`.
-   */
-  permissionsUrl?: string | undefined;
+  type: "project";
 };
+
+/**
+ * Principal that most recently mutated the connector. Same shape as {@link createdBy} but tracks the most recent updater, not the original creator. At create time the two fields point at the same principal; they diverge on the first subsequent update.
+ */
+export type ConnectConnectorCreateResultUpdatedBy1 = {
+  /**
+   * Vercel user ID.
+   */
+  id: string;
+  /**
+   * Principal kind.
+   */
+  type: "user";
+};
+
+/**
+ * Principal that most recently updated the connector.
+ */
+export type ConnectConnectorCreateResultUpdatedBy =
+  | ConnectConnectorCreateResultUpdatedBy1
+  | ConnectConnectorCreateResultUpdatedBy2;
 
 /**
  * User-token capabilities and known grants for the connector.
@@ -217,13 +232,9 @@ export type ConnectConnectorCreateResultUserTokens = {
    */
   crossInstallation: boolean;
   /**
-   * Whether callers can narrow user-token grants per request.
+   * User authorization is completed by the Connect consent screen submitting a credential instead of an OAuth redirect.
    */
-  supportsRefinement: boolean;
-  /**
-   * Whether callers can request resource-specific user tokens.
-   */
-  supportsResources?: boolean | undefined;
+  manualCredentialInput?: boolean | undefined;
   /**
    * Known allowed user-level scopes. For Slack this is the user scope set configured on the app; for OAuth it is the connector's enabled `userAuthorization.scopes` configuration.
    */
@@ -233,149 +244,111 @@ export type ConnectConnectorCreateResultUserTokens = {
    */
   supportedAuthorizationDetails?: Array<string> | undefined;
   /**
-   * User authorization is completed by the Connect consent screen submitting a credential instead of an OAuth redirect.
+   * Whether callers can narrow user-token grants per request.
    */
-  manualCredentialInput?: boolean | undefined;
+  supportsRefinement: boolean;
+  /**
+   * Whether callers can request resource-specific user tokens.
+   */
+  supportsResources?: boolean | undefined;
 };
-
-/**
- * Whether the connector icon can propagate to the provider.
- */
-export const ConnectConnectorCreateResultSupportsIcon = {
-  False: "false",
-  Maybe: "maybe",
-  True: "true",
-} as const;
-/**
- * Whether the connector icon can propagate to the provider.
- */
-export type ConnectConnectorCreateResultSupportsIcon = ClosedEnum<
-  typeof ConnectConnectorCreateResultSupportsIcon
->;
 
 /**
  * Connector created by the request.
  */
 export type ConnectConnectorCreateResult = {
   /**
-   * Stable `scl_` connector ID. Use this value directly in `{connector}`.
-   */
-  id: string;
-  /**
-   * Team-scoped UID. URL-encode this value before using it in `{connector}`.
-   */
-  uid: string;
-  /**
-   * Installation used when a token request does not specify an installation.
-   */
-  defaultInstallationId?: string | undefined;
-  /**
-   * Creation time in epoch milliseconds.
-   */
-  createdAt: number;
-  /**
-   * Last update time in epoch milliseconds.
-   */
-  updatedAt: number;
-  /**
-   * Time when this connector started requiring reinstallation because an installation-affecting app-token grant changed.
-   */
-  reinstallAt?: number | undefined;
-  /**
-   * Principal that created the connector.
-   */
-  createdBy?: CreatedBy1 | CreatedBy2 | undefined;
-  /**
-   * Principal that most recently updated the connector.
-   */
-  updatedBy?:
-    | ConnectConnectorCreateResultUpdatedBy1
-    | ConnectConnectorCreateResultUpdatedBy2
-    | undefined;
-  /**
-   * How the connector row was originally created. New create paths stamp this explicitly; older rows may omit it.
-   */
-  creationMode?: ConnectConnectorCreateResultCreationMode | undefined;
-  /**
-   * Managed connector metadata exposed without leaking the manager connector or installation identifiers.
-   */
-  managed?: ConnectConnectorCreateResultManaged | undefined;
-  /**
-   * Connector implementation type.
-   */
-  type: ConnectConnectorCreateResultType;
-  /**
-   * Best-effort identifier of the third-party service this connector represents, independent of `type`. Examples: `'slack'`, `'mcp.linear.app'`, and `'auth.example.com'`. Always present in API responses.
-   */
-  service: string;
-  /**
-   * The connection method this connector was created from, when the create request named one.
-   */
-  connectionMethod?: string | undefined;
-  /**
-   * Which of the service's products/surfaces this connector points at.
-   */
-  target?: string | undefined;
-  /**
-   * Connector name within the owning team.
-   */
-  name: string;
-  /**
-   * Human-readable connector name.
-   */
-  displayName: string;
-  /**
-   * Provider-side URL for viewing or managing the resource represented by the connector. The destination can be an app, account, phone line, or service instance, depending on the connector type.
-   */
-  clientUrl?: string | null | undefined;
-  /**
-   * Redirect URI registered with the third-party service for this connector, if any. Used by `startAuthorization`/`startInstallation` to replay the exact URI back to the provider's token endpoint. Absent on connectors created before this field was introduced; those callers fall back to the `https://connect.vercel.com/callback` default.
-   */
-  redirectUri?: string | undefined;
-  /**
-   * Human-readable name of the connector type.
-   */
-  typeName: string;
-  /**
-   * Icon identifier supplied by the connector type.
-   */
-  typeIcon?: string | undefined;
-  /**
-   * Public website for the connected service.
-   */
-  website?: string | undefined;
-  /**
-   * Developer website for the connected service.
-   */
-  devsite?: string | undefined;
-  /**
-   * Developer documentation for the connected service.
-   */
-  docsite?: string | undefined;
-  /**
-   * Connector branding icon. SHA-1 hash that resolves to the uploaded icon through the Vercel avatar service. Consumers render this with `https://vercel.com/api/www/avatar/{icon}`.
-   */
-  icon?: string | undefined;
-  /**
-   * Hex background color (e.g., `#000000`) for branding.
-   */
-  backgroundColor?: string | undefined;
-  /**
    * Hex accent color (e.g., `#000000`) for branding.
    */
   accentColor?: string | undefined;
-  /**
-   * Token subject types supported by the connector.
-   */
-  supportedSubjectTypes: Array<string>;
   /**
    * App-token capabilities and known grants for the connector.
    */
   appTokens?: ConnectConnectorCreateResultAppTokens | undefined;
   /**
-   * User-token capabilities and known grants for the connector.
+   * Hex background color (e.g., `#000000`) for branding.
    */
-  userTokens?: ConnectConnectorCreateResultUserTokens | undefined;
+  backgroundColor?: string | undefined;
+  /**
+   * Provider-side URL for viewing or managing the resource represented by the connector. The destination can be an app, account, phone line, or service instance, depending on the connector type.
+   */
+  clientUrl?: string | null | undefined;
+  /**
+   * The connection method this connector was created from, when the create request named one.
+   */
+  connectionMethod?: string | undefined;
+  /**
+   * Creation time in epoch milliseconds.
+   */
+  createdAt: number;
+  /**
+   * Principal that created the connector.
+   */
+  createdBy?: CreatedBy1 | CreatedBy2 | undefined;
+  /**
+   * How the connector row was originally created. New create paths stamp this explicitly; older rows may omit it.
+   */
+  creationMode?: ConnectConnectorCreateResultCreationMode | undefined;
+  /**
+   * Installation used when a token request does not specify an installation.
+   */
+  defaultInstallationId?: string | undefined;
+  /**
+   * Developer website for the connected service.
+   */
+  devsite?: string | undefined;
+  /**
+   * Human-readable connector name.
+   */
+  displayName: string;
+  /**
+   * Developer documentation for the connected service.
+   */
+  docsite?: string | undefined;
+  /**
+   * Known events this connector subscribes to (e.g. Slack bot events, GitHub webhook events). Names are type-specific and validated by the managed-create flow when forwarded to the third-party service.
+   */
+  events?: Array<string> | undefined;
+  /**
+   * Connector branding icon. SHA-1 hash that resolves to the uploaded icon through the Vercel avatar service. Consumers render this with `https://vercel.com/api/www/avatar/{icon}`.
+   */
+  icon?: string | undefined;
+  /**
+   * Stable `scl_` connector ID. Use this value directly in `{connector}`.
+   */
+  id: string;
+  /**
+   * Whether the connector is known to have been edited since the app package it publishes to the provider was last built, so that package no longer matches it. Absent when it was not computed, or when the connector type publishes no such package. Derived on every read rather than marked at edit time, so reverting an edit clears it. Only reported by connector types that publish a package a user has to re-publish by hand — Microsoft Teams today.
+   */
+  knownStale?: boolean | undefined;
+  /**
+   * Managed connector metadata exposed without leaking the manager connector or installation identifiers.
+   */
+  managed?: ConnectConnectorCreateResultManaged | undefined;
+  /**
+   * Connector name within the owning team.
+   */
+  name: string;
+  /**
+   * Redirect URI registered with the third-party service for this connector, if any. Used by `startAuthorization`/`startInstallation` to replay the exact URI back to the provider's token endpoint. Absent on connectors created before this field was introduced; those callers fall back to the `https://connect.vercel.com/callback` default.
+   */
+  redirectUri?: string | undefined;
+  /**
+   * Time when this connector started requiring reinstallation because an installation-affecting app-token grant changed.
+   */
+  reinstallAt?: number | undefined;
+  /**
+   * Best-effort identifier of the third-party service this connector represents, independent of `type`. Examples: `'slack'`, `'mcp.linear.app'`, and `'auth.example.com'`. Always present in API responses.
+   */
+  service: string;
+  /**
+   * Token subject types supported by the connector.
+   */
+  supportedSubjectTypes: Array<string>;
+  /**
+   * Whether the connector icon can propagate to the provider.
+   */
+  supportsIcon: ConnectConnectorCreateResultSupportsIcon;
   /**
    * Whether the connector supports an installation flow.
    */
@@ -389,22 +362,79 @@ export type ConnectConnectorCreateResult = {
    */
   supportsTriggers: boolean;
   /**
-   * Whether the connector icon can propagate to the provider.
+   * Which of the service's products/surfaces this connector points at.
    */
-  supportsIcon: ConnectConnectorCreateResultSupportsIcon;
+  target?: string | undefined;
+  /**
+   * Destinations that incoming triggers should be forwarded to. Limited to 3 entries. Set the initial destination with `triggerDestination` during creation. Replace the complete set with `PATCH /v1/connect/connectors/{connector}/trigger-destinations`.
+   */
+  triggerDestinations?: Array<ConnectTriggerDestination> | undefined;
   /**
    * Incoming trigger configuration. Only present when enabled.
    */
   triggers?: ConnectTriggerConfiguration | undefined;
   /**
-   * Known events this connector subscribes to (e.g. Slack bot events, GitHub webhook events). Names are type-specific and validated by the managed-create flow when forwarded to the third-party service.
+   * Connector implementation type.
    */
-  events?: Array<string> | undefined;
+  type: ConnectConnectorCreateResultType;
   /**
-   * Destinations that incoming triggers should be forwarded to. Limited to 3 entries. Set the initial destination with `triggerDestination` during creation. Replace the complete set with `PATCH /v1/connect/connectors/{connector}/trigger-destinations`.
+   * Icon identifier supplied by the connector type.
    */
-  triggerDestinations?: Array<ConnectTriggerDestination> | undefined;
+  typeIcon?: string | undefined;
+  /**
+   * Human-readable name of the connector type.
+   */
+  typeName: string;
+  /**
+   * Team-scoped UID. URL-encode this value before using it in `{connector}`.
+   */
+  uid: string;
+  /**
+   * Last update time in epoch milliseconds.
+   */
+  updatedAt: number;
+  /**
+   * Principal that most recently updated the connector.
+   */
+  updatedBy?:
+    | ConnectConnectorCreateResultUpdatedBy1
+    | ConnectConnectorCreateResultUpdatedBy2
+    | undefined;
+  /**
+   * User-token capabilities and known grants for the connector.
+   */
+  userTokens?: ConnectConnectorCreateResultUserTokens | undefined;
+  /**
+   * Public website for the connected service.
+   */
+  website?: string | undefined;
 };
+
+/** @internal */
+export const ConnectConnectorCreateResultAppTokens$inboundSchema: z.ZodType<
+  ConnectConnectorCreateResultAppTokens,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  crossInstallation: types.boolean(),
+  permissionsUrl: types.optional(types.string()),
+  requiresReinstallation: types.optional(types.boolean()),
+  scopes: types.optional(z.array(types.string())),
+  supportedAuthorizationDetails: types.optional(z.array(types.string())),
+  supportsRefinement: types.boolean(),
+  supportsResources: types.optional(types.boolean()),
+});
+
+export function connectConnectorCreateResultAppTokensFromJSON(
+  jsonString: string,
+): SafeParseResult<ConnectConnectorCreateResultAppTokens, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ConnectConnectorCreateResultAppTokens$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ConnectConnectorCreateResultAppTokens' from JSON`,
+  );
+}
 
 /** @internal */
 export const CreatedByEnvironment$inboundSchema: z.ZodNativeEnum<
@@ -434,9 +464,9 @@ export const CreatedBy2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("project"),
-  id: types.string(),
   environment: smartUnion([types.string(), CreatedByEnvironment$inboundSchema]),
+  id: types.string(),
+  type: types.literal("project"),
 });
 
 export function createdBy2FromJSON(
@@ -455,8 +485,8 @@ export const CreatedBy1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("user"),
   id: types.string(),
+  type: types.literal("user"),
 });
 
 export function createdBy1FromJSON(
@@ -491,6 +521,41 @@ export function connectConnectorCreateResultCreatedByFromJSON(
 }
 
 /** @internal */
+export const ConnectConnectorCreateResultCreationMode$inboundSchema:
+  z.ZodNativeEnum<typeof ConnectConnectorCreateResultCreationMode> = z
+    .nativeEnum(ConnectConnectorCreateResultCreationMode);
+
+/** @internal */
+export const ConnectConnectorCreateResultManaged$inboundSchema: z.ZodType<
+  ConnectConnectorCreateResultManaged,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  sync: types.optional(types.boolean()),
+});
+
+export function connectConnectorCreateResultManagedFromJSON(
+  jsonString: string,
+): SafeParseResult<ConnectConnectorCreateResultManaged, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ConnectConnectorCreateResultManaged$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ConnectConnectorCreateResultManaged' from JSON`,
+  );
+}
+
+/** @internal */
+export const ConnectConnectorCreateResultSupportsIcon$inboundSchema:
+  z.ZodNativeEnum<typeof ConnectConnectorCreateResultSupportsIcon> = z
+    .nativeEnum(ConnectConnectorCreateResultSupportsIcon);
+
+/** @internal */
+export const ConnectConnectorCreateResultType$inboundSchema: z.ZodNativeEnum<
+  typeof ConnectConnectorCreateResultType
+> = z.nativeEnum(ConnectConnectorCreateResultType);
+
+/** @internal */
 export const UpdatedByEnvironmentTargetUpdatedByEnvironment$inboundSchema:
   z.ZodNativeEnum<typeof UpdatedByEnvironmentTargetUpdatedByEnvironment> = z
     .nativeEnum(UpdatedByEnvironmentTargetUpdatedByEnvironment);
@@ -521,12 +586,12 @@ export const ConnectConnectorCreateResultUpdatedBy2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("project"),
-  id: types.string(),
   environment: smartUnion([
     types.string(),
     UpdatedByEnvironmentTargetUpdatedByEnvironment$inboundSchema,
   ]),
+  id: types.string(),
+  type: types.literal("project"),
 });
 
 export function connectConnectorCreateResultUpdatedBy2FromJSON(
@@ -546,8 +611,8 @@ export const ConnectConnectorCreateResultUpdatedBy1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("user"),
   id: types.string(),
+  type: types.literal("user"),
 });
 
 export function connectConnectorCreateResultUpdatedBy1FromJSON(
@@ -583,73 +648,17 @@ export function connectConnectorCreateResultUpdatedByFromJSON(
 }
 
 /** @internal */
-export const ConnectConnectorCreateResultCreationMode$inboundSchema:
-  z.ZodNativeEnum<typeof ConnectConnectorCreateResultCreationMode> = z
-    .nativeEnum(ConnectConnectorCreateResultCreationMode);
-
-/** @internal */
-export const ConnectConnectorCreateResultManaged$inboundSchema: z.ZodType<
-  ConnectConnectorCreateResultManaged,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  sync: types.optional(types.boolean()),
-});
-
-export function connectConnectorCreateResultManagedFromJSON(
-  jsonString: string,
-): SafeParseResult<ConnectConnectorCreateResultManaged, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      ConnectConnectorCreateResultManaged$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ConnectConnectorCreateResultManaged' from JSON`,
-  );
-}
-
-/** @internal */
-export const ConnectConnectorCreateResultType$inboundSchema: z.ZodNativeEnum<
-  typeof ConnectConnectorCreateResultType
-> = z.nativeEnum(ConnectConnectorCreateResultType);
-
-/** @internal */
-export const ConnectConnectorCreateResultAppTokens$inboundSchema: z.ZodType<
-  ConnectConnectorCreateResultAppTokens,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  crossInstallation: types.boolean(),
-  supportsRefinement: types.boolean(),
-  supportsResources: types.optional(types.boolean()),
-  requiresReinstallation: types.optional(types.boolean()),
-  scopes: types.optional(z.array(types.string())),
-  supportedAuthorizationDetails: types.optional(z.array(types.string())),
-  permissionsUrl: types.optional(types.string()),
-});
-
-export function connectConnectorCreateResultAppTokensFromJSON(
-  jsonString: string,
-): SafeParseResult<ConnectConnectorCreateResultAppTokens, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      ConnectConnectorCreateResultAppTokens$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ConnectConnectorCreateResultAppTokens' from JSON`,
-  );
-}
-
-/** @internal */
 export const ConnectConnectorCreateResultUserTokens$inboundSchema: z.ZodType<
   ConnectConnectorCreateResultUserTokens,
   z.ZodTypeDef,
   unknown
 > = z.object({
   crossInstallation: types.boolean(),
-  supportsRefinement: types.boolean(),
-  supportsResources: types.optional(types.boolean()),
+  manualCredentialInput: types.optional(types.boolean()),
   scopes: types.optional(z.array(types.string())),
   supportedAuthorizationDetails: types.optional(z.array(types.string())),
-  manualCredentialInput: types.optional(types.boolean()),
+  supportsRefinement: types.boolean(),
+  supportsResources: types.optional(types.boolean()),
 });
 
 export function connectConnectorCreateResultUserTokensFromJSON(
@@ -664,72 +673,68 @@ export function connectConnectorCreateResultUserTokensFromJSON(
 }
 
 /** @internal */
-export const ConnectConnectorCreateResultSupportsIcon$inboundSchema:
-  z.ZodNativeEnum<typeof ConnectConnectorCreateResultSupportsIcon> = z
-    .nativeEnum(ConnectConnectorCreateResultSupportsIcon);
-
-/** @internal */
 export const ConnectConnectorCreateResult$inboundSchema: z.ZodType<
   ConnectConnectorCreateResult,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: types.string(),
-  uid: types.string(),
-  defaultInstallationId: types.optional(types.string()),
+  accentColor: types.optional(types.string()),
+  appTokens: types.optional(
+    z.lazy(() => ConnectConnectorCreateResultAppTokens$inboundSchema),
+  ),
+  backgroundColor: types.optional(types.string()),
+  clientUrl: z.nullable(types.string()).optional(),
+  connectionMethod: types.optional(types.string()),
   createdAt: types.number(),
-  updatedAt: types.number(),
-  reinstallAt: types.optional(types.number()),
   createdBy: types.optional(
     z.union([
       z.lazy(() => CreatedBy1$inboundSchema),
       z.lazy(() => CreatedBy2$inboundSchema),
     ]),
   ),
+  creationMode: types.optional(
+    ConnectConnectorCreateResultCreationMode$inboundSchema,
+  ),
+  defaultInstallationId: types.optional(types.string()),
+  devsite: types.optional(types.string()),
+  displayName: types.string(),
+  docsite: types.optional(types.string()),
+  events: types.optional(z.array(types.string())),
+  icon: types.optional(types.string()),
+  id: types.string(),
+  knownStale: types.optional(types.boolean()),
+  managed: types.optional(
+    z.lazy(() => ConnectConnectorCreateResultManaged$inboundSchema),
+  ),
+  name: types.string(),
+  redirectUri: types.optional(types.string()),
+  reinstallAt: types.optional(types.number()),
+  service: types.string(),
+  supportedSubjectTypes: z.array(types.string()),
+  supportsIcon: ConnectConnectorCreateResultSupportsIcon$inboundSchema,
+  supportsInstallation: types.boolean(),
+  supportsRevocation: types.boolean(),
+  supportsTriggers: types.boolean(),
+  target: types.optional(types.string()),
+  triggerDestinations: types.optional(
+    z.array(ConnectTriggerDestination$inboundSchema),
+  ),
+  triggers: types.optional(ConnectTriggerConfiguration$inboundSchema),
+  type: ConnectConnectorCreateResultType$inboundSchema,
+  typeIcon: types.optional(types.string()),
+  typeName: types.string(),
+  uid: types.string(),
+  updatedAt: types.number(),
   updatedBy: types.optional(
     z.union([
       z.lazy(() => ConnectConnectorCreateResultUpdatedBy1$inboundSchema),
       z.lazy(() => ConnectConnectorCreateResultUpdatedBy2$inboundSchema),
     ]),
   ),
-  creationMode: types.optional(
-    ConnectConnectorCreateResultCreationMode$inboundSchema,
-  ),
-  managed: types.optional(
-    z.lazy(() => ConnectConnectorCreateResultManaged$inboundSchema),
-  ),
-  type: ConnectConnectorCreateResultType$inboundSchema,
-  service: types.string(),
-  connectionMethod: types.optional(types.string()),
-  target: types.optional(types.string()),
-  name: types.string(),
-  displayName: types.string(),
-  clientUrl: z.nullable(types.string()).optional(),
-  redirectUri: types.optional(types.string()),
-  typeName: types.string(),
-  typeIcon: types.optional(types.string()),
-  website: types.optional(types.string()),
-  devsite: types.optional(types.string()),
-  docsite: types.optional(types.string()),
-  icon: types.optional(types.string()),
-  backgroundColor: types.optional(types.string()),
-  accentColor: types.optional(types.string()),
-  supportedSubjectTypes: z.array(types.string()),
-  appTokens: types.optional(
-    z.lazy(() => ConnectConnectorCreateResultAppTokens$inboundSchema),
-  ),
   userTokens: types.optional(
     z.lazy(() => ConnectConnectorCreateResultUserTokens$inboundSchema),
   ),
-  supportsInstallation: types.boolean(),
-  supportsRevocation: types.boolean(),
-  supportsTriggers: types.boolean(),
-  supportsIcon: ConnectConnectorCreateResultSupportsIcon$inboundSchema,
-  triggers: types.optional(ConnectTriggerConfiguration$inboundSchema),
-  events: types.optional(z.array(types.string())),
-  triggerDestinations: types.optional(
-    z.array(ConnectTriggerDestination$inboundSchema),
-  ),
+  website: types.optional(types.string()),
 });
 
 export function connectConnectorCreateResultFromJSON(

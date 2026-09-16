@@ -21,7 +21,7 @@ export type GetBulkAvailabilityRequest = {
   requestBody: GetBulkAvailabilityRequestBody;
 };
 
-export type Results = {
+export type GetBulkAvailabilityResults = {
   /**
    * A valid domain name
    */
@@ -33,7 +33,7 @@ export type Results = {
  * Success
  */
 export type GetBulkAvailabilityResponseBody = {
-  results: Array<Results>;
+  results: Array<GetBulkAvailabilityResults>;
 };
 
 /** @internal */
@@ -89,19 +89,22 @@ export function getBulkAvailabilityRequestToJSON(
 }
 
 /** @internal */
-export const Results$inboundSchema: z.ZodType<Results, z.ZodTypeDef, unknown> =
-  z.object({
-    domain: types.string(),
-    available: types.boolean(),
-  });
+export const GetBulkAvailabilityResults$inboundSchema: z.ZodType<
+  GetBulkAvailabilityResults,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  domain: types.string(),
+  available: types.boolean(),
+});
 
-export function resultsFromJSON(
+export function getBulkAvailabilityResultsFromJSON(
   jsonString: string,
-): SafeParseResult<Results, SDKValidationError> {
+): SafeParseResult<GetBulkAvailabilityResults, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Results$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Results' from JSON`,
+    (x) => GetBulkAvailabilityResults$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetBulkAvailabilityResults' from JSON`,
   );
 }
 
@@ -111,7 +114,7 @@ export const GetBulkAvailabilityResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  results: z.array(z.lazy(() => Results$inboundSchema)),
+  results: z.array(z.lazy(() => GetBulkAvailabilityResults$inboundSchema)),
 });
 
 export function getBulkAvailabilityResponseBodyFromJSON(

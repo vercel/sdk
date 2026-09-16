@@ -8,12 +8,12 @@ import { GetBillingPlansResponseBody } from "@vercel/sdk/models/getbillingplanso
 let value: GetBillingPlansResponseBody = {
   plans: [
     {
-      type: "subscription",
+      description: "dependable rue physically divert pish afore digital qua",
       id: "<id>",
       name: "<value>",
-      scope: "installation",
-      description: "delightfully buzzing opposite carefully",
       paymentMethodRequired: true,
+      scope: "resource",
+      type: "subscription",
     },
   ],
 };

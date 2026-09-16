@@ -5,7 +5,7 @@ The target envs on the current project that may be accessed.
 ## Example Usage
 
 ```typescript
-import { GetProjectToProjects1 } from "@vercel/sdk/models/getprojectinternalroutesmitigate.js";
+import { GetProjectToProjects1 } from "@vercel/sdk/models/getprojectresponsebody.js";
 
 let value: GetProjectToProjects1 = {
   slugs: [
@@ -18,5 +18,5 @@ let value: GetProjectToProjects1 = {
 
 | Field                                                                                                                 | Type                                                                                                                  | Required                                                                                                              | Description                                                                                                           |
 | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `slugs`                                                                                                               | *string*[]                                                                                                            | :heavy_check_mark:                                                                                                    | System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project. |
 | `preset`                                                                                                              | [models.GetProjectToProjectsResponsePreset](../models/getprojecttoprojectsresponsepreset.md)                          | :heavy_minus_sign:                                                                                                    | N/A                                                                                                                   |
+| `slugs`                                                                                                               | *string*[]                                                                                                            | :heavy_check_mark:                                                                                                    | System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project. |

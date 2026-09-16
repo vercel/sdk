@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ProjectConnectionScopes } from "@vercel/sdk/models/createintegrationstoredirectprotocolsettings.js";
+import { ProjectConnectionScopes } from "@vercel/sdk/models/logdrainstatus.js";
 
 let value: ProjectConnectionScopes = "read-write:deployment-check";
 ```

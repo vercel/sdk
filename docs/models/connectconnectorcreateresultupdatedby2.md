@@ -8,9 +8,9 @@ Principal that most recently mutated the connector. Same shape as {@link created
 import { ConnectConnectorCreateResultUpdatedBy2 } from "@vercel/sdk/models/connectconnectorcreateresult.js";
 
 let value: ConnectConnectorCreateResultUpdatedBy2 = {
-  type: "project",
-  id: "<id>",
   environment: "preview",
+  id: "<id>",
+  type: "project",
 };
 ```
 
@@ -18,6 +18,6 @@ let value: ConnectConnectorCreateResultUpdatedBy2 = {
 
 | Field                                            | Type                                             | Required                                         | Description                                      |
 | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| `type`                                           | *"project"*                                      | :heavy_check_mark:                               | Principal kind.                                  |
-| `id`                                             | *string*                                         | :heavy_check_mark:                               | Vercel project ID.                               |
 | `environment`                                    | *models.UpdatedByEnvironmentTarget*              | :heavy_check_mark:                               | Deployment environment of the project principal. |
+| `id`                                             | *string*                                         | :heavy_check_mark:                               | Vercel project ID.                               |
+| `type`                                           | *"project"*                                      | :heavy_check_mark:                               | Principal kind.                                  |

@@ -52,12 +52,12 @@ export type ListAccessGroupMembersTeamRole = ClosedEnum<
 
 export type Members = {
   avatar?: string | undefined;
+  createdAt?: string | undefined;
   email: string;
+  name?: string | undefined;
+  teamRole: ListAccessGroupMembersTeamRole;
   uid: string;
   username: string;
-  name?: string | undefined;
-  createdAt?: string | undefined;
-  teamRole: ListAccessGroupMembersTeamRole;
 };
 
 export type ListAccessGroupMembersPagination = {
@@ -113,12 +113,12 @@ export const ListAccessGroupMembersTeamRole$inboundSchema: z.ZodNativeEnum<
 export const Members$inboundSchema: z.ZodType<Members, z.ZodTypeDef, unknown> =
   z.object({
     avatar: types.optional(types.string()),
+    createdAt: types.optional(types.string()),
     email: types.string(),
+    name: types.optional(types.string()),
+    teamRole: ListAccessGroupMembersTeamRole$inboundSchema,
     uid: types.string(),
     username: types.string(),
-    name: types.optional(types.string()),
-    createdAt: types.optional(types.string()),
-    teamRole: ListAccessGroupMembersTeamRole$inboundSchema,
   });
 
 export function membersFromJSON(

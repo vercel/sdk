@@ -6,13 +6,27 @@
 import { UpdateSharedEnvVariableResponseBody } from "@vercel/sdk/models/updatesharedenvvariableop.js";
 
 let value: UpdateSharedEnvVariableResponseBody = {
-  updated: [],
-  failed: [
+  failed: [],
+  updated: [
     {
-      error: {
-        code: "<value>",
-        message: "<value>",
-      },
+      created: new Date("2021-02-10T13:11:49.180Z"),
+      createdAt: 1609492210000,
+      createdBy: "2qDDuGFTWXBLDNnqZfWPDp1A",
+      deletedAt: 1609492210000,
+      deletedBy: "2qDDuGFTWXBLDNnqZfWPDp1A",
+      id: "env_XCG7t7AIHuO2SBA8667zNUiM",
+      key: "my-api-key",
+      ownerId: "team_LLHUOMOoDlqOp8wPE4kFo9pE",
+      projectId: [
+        "prj_2WjyKQmM8ZnGcJsPWMrHRHrE",
+        "prj_2WjyKQmM8ZnGcJsPWMrasEFg",
+      ],
+      target: [
+        "production",
+      ],
+      type: "encrypted",
+      updatedAt: 1609492210000,
+      updatedBy: "2qDDuGFTWXBLDNnqZfWPDp1A",
     },
   ],
 };
@@ -22,5 +36,5 @@ let value: UpdateSharedEnvVariableResponseBody = {
 
 | Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
 | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `updated`                                                                            | [models.Updated](../models/updated.md)[]                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
 | `failed`                                                                             | [models.UpdateSharedEnvVariableFailed](../models/updatesharedenvvariablefailed.md)[] | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `updated`                                                                            | [models.Updated](../models/updated.md)[]                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |

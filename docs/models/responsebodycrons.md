@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyCrons } from "@vercel/sdk/models/createdeploymenthasdeploymentstype.js";
+import { ResponseBodyCrons } from "@vercel/sdk/models/createdeploymentresponsebodydeploymentsstatus.js";
 
 let value: ResponseBodyCrons = {
-  schedule: "<value>",
   path: "/mnt",
+  schedule: "<value>",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: ResponseBodyCrons = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `schedule`         | *string*           | :heavy_check_mark: | N/A                |
 | `path`             | *string*           | :heavy_check_mark: | N/A                |
+| `schedule`         | *string*           | :heavy_check_mark: | N/A                |

@@ -27,8 +27,8 @@ export type CreateEdgeConfigTokenRequest = {
 };
 
 export type CreateEdgeConfigTokenResponseBody = {
-  token: string;
   id: string;
+  token: string;
 };
 
 /** @internal */
@@ -96,8 +96,8 @@ export const CreateEdgeConfigTokenResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  token: types.string(),
   id: types.string(),
+  token: types.string(),
 });
 
 export function createEdgeConfigTokenResponseBodyFromJSON(

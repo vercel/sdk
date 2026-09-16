@@ -7,11 +7,11 @@
 
 ```typescript
 const value: models.UpdateMicrofrontendsLink1 = {
-  org: "<value>",
-  type: "github",
   deployHooks: [],
   gitCredentialId: "<id>",
+  org: "<value>",
   productionBranch: "<value>",
+  type: "github",
 };
 ```
 
@@ -19,11 +19,11 @@ const value: models.UpdateMicrofrontendsLink1 = {
 
 ```typescript
 const value: models.UpdateMicrofrontendsLink2 = {
-  type: "github-limited",
-  org: "<value>",
   deployHooks: [],
   gitCredentialId: "<id>",
+  org: "<value>",
   productionBranch: "<value>",
+  type: "github-limited",
 };
 ```
 
@@ -31,19 +31,19 @@ const value: models.UpdateMicrofrontendsLink2 = {
 
 ```typescript
 const value: models.UpdateMicrofrontendsLink3 = {
-  org: "<value>",
-  type: "github-custom-host",
-  host: "straight-platter.name",
   deployHooks: [
     {
       id: "<id>",
       name: "<value>",
       ref: "<value>",
-      url: "https://milky-coil.info/",
+      url: "https://negative-sprinkles.biz",
     },
   ],
   gitCredentialId: "<id>",
+  host: "milky-coil.info",
+  org: "<value>",
   productionBranch: "<value>",
+  type: "github-custom-host",
 };
 ```
 
@@ -51,22 +51,15 @@ const value: models.UpdateMicrofrontendsLink3 = {
 
 ```typescript
 const value: models.UpdateMicrofrontendsLink4 = {
-  projectId: "<id>",
-  projectName: "<value>",
-  projectNameWithNamespace: "<value>",
-  projectNamespace: "<value>",
-  projectUrl: "https://far-off-disconnection.info/",
-  type: "gitlab",
-  deployHooks: [
-    {
-      id: "<id>",
-      name: "<value>",
-      ref: "<value>",
-      url: "https://rich-technologist.biz/",
-    },
-  ],
+  deployHooks: [],
   gitCredentialId: "<id>",
   productionBranch: "<value>",
+  projectId: "<id>",
+  projectName: "<value>",
+  projectNamespace: "<value>",
+  projectNameWithNamespace: "<value>",
+  projectUrl: "https://familiar-handover.org/",
+  type: "gitlab",
 };
 ```
 
@@ -74,22 +67,22 @@ const value: models.UpdateMicrofrontendsLink4 = {
 
 ```typescript
 const value: models.UpdateMicrofrontendsLink5 = {
-  name: "<value>",
-  slug: "<value>",
-  owner: "<value>",
-  type: "bitbucket",
-  uuid: "e3ff6552-bb3f-4bfe-a070-e760f1080a7f",
-  workspaceUuid: "<id>",
   deployHooks: [
     {
       id: "<id>",
       name: "<value>",
       ref: "<value>",
-      url: "https://any-cuckoo.com/",
+      url: "https://wordy-wafer.info/",
     },
   ],
   gitCredentialId: "<id>",
+  name: "<value>",
+  owner: "<value>",
   productionBranch: "<value>",
+  slug: "<value>",
+  type: "bitbucket",
+  uuid: "552bb3fb-fe07-40e7-860f-1080a7fb9303",
+  workspaceUuid: "<id>",
 };
 ```
 
@@ -97,13 +90,13 @@ const value: models.UpdateMicrofrontendsLink5 = {
 
 ```typescript
 const value: models.UpdateMicrofrontendsLink6 = {
+  deployHooks: [],
+  gitCredentialId: "<id>",
   org: "<value>",
+  productionBranch: "<value>",
   repo: "<value>",
   repoId: "<id>",
   type: "vercel",
-  deployHooks: [],
-  gitCredentialId: "<id>",
-  productionBranch: "<value>",
 };
 ```
 
@@ -111,13 +104,13 @@ const value: models.UpdateMicrofrontendsLink6 = {
 
 ```typescript
 const value: models.UpdateMicrofrontendsLink7 = {
+  deployHooks: [],
+  gitCredentialId: "<id>",
   org: "<value>",
+  productionBranch: "<value>",
   repo: "<value>",
   repoId: "<id>",
   type: "v0",
-  deployHooks: [],
-  gitCredentialId: "<id>",
-  productionBranch: "<value>",
 };
 ```
 
@@ -125,14 +118,14 @@ const value: models.UpdateMicrofrontendsLink7 = {
 
 ```typescript
 const value: models.UpdateMicrofrontendsLink8 = {
-  owner: "<value>",
-  repo: "<value>",
-  repoId: "<id>",
-  ownerId: "<id>",
-  type: "cursor-origin",
   deployHooks: [],
   gitCredentialId: "<id>",
+  owner: "<value>",
+  ownerId: "<id>",
   productionBranch: "<value>",
+  repo: "<value>",
+  repoId: "<id>",
+  type: "cursor-origin",
 };
 ```
 

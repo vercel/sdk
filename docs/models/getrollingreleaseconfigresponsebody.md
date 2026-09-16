@@ -7,24 +7,24 @@ import { GetRollingReleaseConfigResponseBody } from "@vercel/sdk/models/getrolli
 
 let value: GetRollingReleaseConfigResponseBody = {
   rollingRelease: {
-    target: "production",
-    stages: [
-      {
-        targetPercentage: 25,
-        requireApproval: false,
-        duration: 600,
-        linearShift: false,
-      },
-    ],
     canaryResponseHeader: false,
     gate: {
-      enabled: true,
+      action: "pause",
       checks: [],
+      dryRun: true,
+      enabled: false,
       failureThreshold: 3,
       windowSize: 5,
-      action: "rollback",
-      dryRun: false,
     },
+    stages: [
+      {
+        duration: 600,
+        linearShift: false,
+        requireApproval: false,
+        targetPercentage: 25,
+      },
+    ],
+    target: "production",
   },
 };
 ```

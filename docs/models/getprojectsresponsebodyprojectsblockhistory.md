@@ -8,9 +8,9 @@
 ```typescript
 const value: models.GetProjectsBlockHistoryProjectsResponse1 = {
   action: "blocked",
+  createdAt: 4808.42,
   reason: "<value>",
-  statusCode: 4808.42,
-  createdAt: 9677.51,
+  statusCode: 9677.51,
 };
 ```
 
@@ -28,22 +28,14 @@ const value: models.GetProjectsBlockHistoryProjectsResponse2 = {
 ```typescript
 const value: models.GetProjectsBlockHistoryProjectsResponse3 = {
   action: "route-blocked",
+  createdAt: 8374.41,
+  reason: "<value>",
   route: {
-    has: [
-      {
-        type: "header",
-        key: "x-vercel-ip-country",
-        value: {
-          eq: "<value>",
-        },
-      },
-    ],
+    has: [],
     mitigate: {
       action: "block_legal_cwc",
     },
   },
-  reason: "<value>",
-  createdAt: 7229.26,
 };
 ```
 
@@ -52,21 +44,13 @@ const value: models.GetProjectsBlockHistoryProjectsResponse3 = {
 ```typescript
 const value: models.GetProjectsBlockHistoryProjectsResponse4 = {
   action: "route-unblocked",
+  createdAt: 5326.03,
   route: {
-    has: [
-      {
-        type: "header",
-        key: "x-vercel-ip-country",
-        value: {
-          eq: "<value>",
-        },
-      },
-    ],
+    has: [],
     mitigate: {
       action: "block_legal_cwc",
     },
   },
-  createdAt: 300.19,
 };
 ```
 

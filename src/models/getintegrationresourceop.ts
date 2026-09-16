@@ -21,6 +21,63 @@ export type GetIntegrationResourceRequest = {
   resourceId: string;
 };
 
+export type GetIntegrationResourceMetadata =
+  | string
+  | number
+  | Array<string>
+  | Array<number>
+  | boolean;
+
+export const GetIntegrationResourceLevel = {
+  Error: "error",
+  Info: "info",
+  Warn: "warn",
+} as const;
+export type GetIntegrationResourceLevel = ClosedEnum<
+  typeof GetIntegrationResourceLevel
+>;
+
+/**
+ * The notification, if set, displayed to the user when viewing the resource in Vercel
+ */
+export type GetIntegrationResourceNotification = {
+  href?: string | undefined;
+  level: GetIntegrationResourceLevel;
+  message?: string | undefined;
+  title: string;
+};
+
+export const GetIntegrationResourceTarget = {
+  Development: "development",
+  Preview: "preview",
+  Production: "production",
+} as const;
+export type GetIntegrationResourceTarget = ClosedEnum<
+  typeof GetIntegrationResourceTarget
+>;
+
+export type AppUrls = {
+  target: GetIntegrationResourceTarget;
+  url: string;
+};
+
+export type Authentication = {
+  appUrls?: Array<AppUrls> | undefined;
+};
+
+export type Experimentation = {
+  edgeConfigId?: string | undefined;
+  globalConfigId?: string | undefined;
+};
+
+/**
+ * Any settings provided for the resource to support its product's protocols
+ */
+export type ProtocolSettings = {
+  authentication?: Authentication | undefined;
+  experimentation?: Experimentation | undefined;
+};
+
 /**
  * The current status of the resource
  */
@@ -40,64 +97,11 @@ export type GetIntegrationResourceStatus = ClosedEnum<
   typeof GetIntegrationResourceStatus
 >;
 
-export type Experimentation = {
-  edgeConfigId?: string | undefined;
-  globalConfigId?: string | undefined;
-};
-
-export const GetIntegrationResourceTarget = {
-  Development: "development",
-  Preview: "preview",
-  Production: "production",
-} as const;
-export type GetIntegrationResourceTarget = ClosedEnum<
-  typeof GetIntegrationResourceTarget
->;
-
-export type AppUrls = {
-  url: string;
-  target: GetIntegrationResourceTarget;
-};
-
-export type Authentication = {
-  appUrls?: Array<AppUrls> | undefined;
-};
-
-/**
- * Any settings provided for the resource to support its product's protocols
- */
-export type ProtocolSettings = {
-  experimentation?: Experimentation | undefined;
-  authentication?: Authentication | undefined;
-};
-
-export const GetIntegrationResourceLevel = {
-  Error: "error",
-  Info: "info",
-  Warn: "warn",
-} as const;
-export type GetIntegrationResourceLevel = ClosedEnum<
-  typeof GetIntegrationResourceLevel
->;
-
-/**
- * The notification, if set, displayed to the user when viewing the resource in Vercel
- */
-export type GetIntegrationResourceNotification = {
-  title: string;
-  level: GetIntegrationResourceLevel;
-  message?: string | undefined;
-  href?: string | undefined;
-};
-
-export type GetIntegrationResourceMetadata =
-  | string
-  | number
-  | Array<string>
-  | Array<number>
-  | boolean;
-
 export type GetIntegrationResourceResponseBody = {
+  /**
+   * The ID of the billing plan the resource is subscribed to, if applicable
+   */
+  billingPlanId?: string | undefined;
   /**
    * The ID provided by the 3rd party provider for the given resource
    */
@@ -107,13 +111,19 @@ export type GetIntegrationResourceResponseBody = {
    */
   internalId: string;
   /**
+   * The configured metadata for the resource as defined by its product's Metadata Schema
+   */
+  metadata?: {
+    [k: string]: string | number | Array<string> | Array<number> | boolean;
+  } | undefined;
+  /**
    * The name of the resource as it is recorded in Vercel
    */
   name: string;
   /**
-   * The current status of the resource
+   * The notification, if set, displayed to the user when viewing the resource in Vercel
    */
-  status?: GetIntegrationResourceStatus | undefined;
+  notification?: GetIntegrationResourceNotification | undefined;
   /**
    * The ID of the product the resource is derived from
    */
@@ -123,19 +133,9 @@ export type GetIntegrationResourceResponseBody = {
    */
   protocolSettings?: ProtocolSettings | undefined;
   /**
-   * The notification, if set, displayed to the user when viewing the resource in Vercel
+   * The current status of the resource
    */
-  notification?: GetIntegrationResourceNotification | undefined;
-  /**
-   * The ID of the billing plan the resource is subscribed to, if applicable
-   */
-  billingPlanId?: string | undefined;
-  /**
-   * The configured metadata for the resource as defined by its product's Metadata Schema
-   */
-  metadata?: {
-    [k: string]: string | number | Array<string> | Array<number> | boolean;
-  } | undefined;
+  status?: GetIntegrationResourceStatus | undefined;
 };
 
 /** @internal */
@@ -165,27 +165,53 @@ export function getIntegrationResourceRequestToJSON(
 }
 
 /** @internal */
-export const GetIntegrationResourceStatus$inboundSchema: z.ZodNativeEnum<
-  typeof GetIntegrationResourceStatus
-> = z.nativeEnum(GetIntegrationResourceStatus);
+export const GetIntegrationResourceMetadata$inboundSchema: z.ZodType<
+  GetIntegrationResourceMetadata,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  types.string(),
+  types.number(),
+  z.array(types.string()),
+  z.array(types.number()),
+  types.boolean(),
+]);
+
+export function getIntegrationResourceMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<GetIntegrationResourceMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetIntegrationResourceMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetIntegrationResourceMetadata' from JSON`,
+  );
+}
 
 /** @internal */
-export const Experimentation$inboundSchema: z.ZodType<
-  Experimentation,
+export const GetIntegrationResourceLevel$inboundSchema: z.ZodNativeEnum<
+  typeof GetIntegrationResourceLevel
+> = z.nativeEnum(GetIntegrationResourceLevel);
+
+/** @internal */
+export const GetIntegrationResourceNotification$inboundSchema: z.ZodType<
+  GetIntegrationResourceNotification,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  edgeConfigId: types.optional(types.string()),
-  globalConfigId: types.optional(types.string()),
+  href: types.optional(types.string()),
+  level: GetIntegrationResourceLevel$inboundSchema,
+  message: types.optional(types.string()),
+  title: types.string(),
 });
 
-export function experimentationFromJSON(
+export function getIntegrationResourceNotificationFromJSON(
   jsonString: string,
-): SafeParseResult<Experimentation, SDKValidationError> {
+): SafeParseResult<GetIntegrationResourceNotification, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Experimentation$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Experimentation' from JSON`,
+    (x) =>
+      GetIntegrationResourceNotification$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetIntegrationResourceNotification' from JSON`,
   );
 }
 
@@ -197,8 +223,8 @@ export const GetIntegrationResourceTarget$inboundSchema: z.ZodNativeEnum<
 /** @internal */
 export const AppUrls$inboundSchema: z.ZodType<AppUrls, z.ZodTypeDef, unknown> =
   z.object({
-    url: types.string(),
     target: GetIntegrationResourceTarget$inboundSchema,
+    url: types.string(),
   });
 
 export function appUrlsFromJSON(
@@ -231,13 +257,33 @@ export function authenticationFromJSON(
 }
 
 /** @internal */
+export const Experimentation$inboundSchema: z.ZodType<
+  Experimentation,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  edgeConfigId: types.optional(types.string()),
+  globalConfigId: types.optional(types.string()),
+});
+
+export function experimentationFromJSON(
+  jsonString: string,
+): SafeParseResult<Experimentation, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Experimentation$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Experimentation' from JSON`,
+  );
+}
+
+/** @internal */
 export const ProtocolSettings$inboundSchema: z.ZodType<
   ProtocolSettings,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  experimentation: types.optional(z.lazy(() => Experimentation$inboundSchema)),
   authentication: types.optional(z.lazy(() => Authentication$inboundSchema)),
+  experimentation: types.optional(z.lazy(() => Experimentation$inboundSchema)),
 });
 
 export function protocolSettingsFromJSON(
@@ -251,55 +297,9 @@ export function protocolSettingsFromJSON(
 }
 
 /** @internal */
-export const GetIntegrationResourceLevel$inboundSchema: z.ZodNativeEnum<
-  typeof GetIntegrationResourceLevel
-> = z.nativeEnum(GetIntegrationResourceLevel);
-
-/** @internal */
-export const GetIntegrationResourceNotification$inboundSchema: z.ZodType<
-  GetIntegrationResourceNotification,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  title: types.string(),
-  level: GetIntegrationResourceLevel$inboundSchema,
-  message: types.optional(types.string()),
-  href: types.optional(types.string()),
-});
-
-export function getIntegrationResourceNotificationFromJSON(
-  jsonString: string,
-): SafeParseResult<GetIntegrationResourceNotification, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetIntegrationResourceNotification$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetIntegrationResourceNotification' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetIntegrationResourceMetadata$inboundSchema: z.ZodType<
-  GetIntegrationResourceMetadata,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  types.string(),
-  types.number(),
-  z.array(types.string()),
-  z.array(types.number()),
-  types.boolean(),
-]);
-
-export function getIntegrationResourceMetadataFromJSON(
-  jsonString: string,
-): SafeParseResult<GetIntegrationResourceMetadata, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetIntegrationResourceMetadata$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetIntegrationResourceMetadata' from JSON`,
-  );
-}
+export const GetIntegrationResourceStatus$inboundSchema: z.ZodNativeEnum<
+  typeof GetIntegrationResourceStatus
+> = z.nativeEnum(GetIntegrationResourceStatus);
 
 /** @internal */
 export const GetIntegrationResourceResponseBody$inboundSchema: z.ZodType<
@@ -307,18 +307,9 @@ export const GetIntegrationResourceResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  billingPlanId: types.optional(types.string()),
   id: types.string(),
   internalId: types.string(),
-  name: types.string(),
-  status: types.optional(GetIntegrationResourceStatus$inboundSchema),
-  productId: types.string(),
-  protocolSettings: types.optional(
-    z.lazy(() => ProtocolSettings$inboundSchema),
-  ),
-  notification: types.optional(
-    z.lazy(() => GetIntegrationResourceNotification$inboundSchema),
-  ),
-  billingPlanId: types.optional(types.string()),
   metadata: types.optional(
     z.record(
       smartUnion([
@@ -330,6 +321,15 @@ export const GetIntegrationResourceResponseBody$inboundSchema: z.ZodType<
       ]),
     ),
   ),
+  name: types.string(),
+  notification: types.optional(
+    z.lazy(() => GetIntegrationResourceNotification$inboundSchema),
+  ),
+  productId: types.string(),
+  protocolSettings: types.optional(
+    z.lazy(() => ProtocolSettings$inboundSchema),
+  ),
+  status: types.optional(GetIntegrationResourceStatus$inboundSchema),
 });
 
 export function getIntegrationResourceResponseBodyFromJSON(

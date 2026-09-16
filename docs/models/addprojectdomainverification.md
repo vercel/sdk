@@ -8,10 +8,10 @@ A list of verification challenges, one of which must be completed to verify the 
 import { AddProjectDomainVerification } from "@vercel/sdk/models/addprojectdomainop.js";
 
 let value: AddProjectDomainVerification = {
-  type: "<value>",
   domain: "potable-chiffonier.com",
-  value: "<value>",
   reason: "<value>",
+  type: "<value>",
+  value: "<value>",
 };
 ```
 
@@ -19,7 +19,7 @@ let value: AddProjectDomainVerification = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `type`             | *string*           | :heavy_check_mark: | N/A                |
 | `domain`           | *string*           | :heavy_check_mark: | N/A                |
-| `value`            | *string*           | :heavy_check_mark: | N/A                |
 | `reason`           | *string*           | :heavy_check_mark: | N/A                |
+| `type`             | *string*           | :heavy_check_mark: | N/A                |
+| `value`            | *string*           | :heavy_check_mark: | N/A                |

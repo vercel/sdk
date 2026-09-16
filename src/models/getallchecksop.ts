@@ -40,10 +40,10 @@ export const GetAllChecksSource = {
 } as const;
 export type GetAllChecksSource = ClosedEnum<typeof GetAllChecksSource>;
 
-export type GetAllChecksFCP = {
-  value: number | null;
+export type GetAllChecksCLS = {
   previousValue?: number | undefined;
   source: GetAllChecksSource;
+  value: number | null;
 };
 
 export const GetAllChecksChecksSource = {
@@ -53,10 +53,10 @@ export type GetAllChecksChecksSource = ClosedEnum<
   typeof GetAllChecksChecksSource
 >;
 
-export type GetAllChecksLCP = {
-  value: number | null;
+export type GetAllChecksFCP = {
   previousValue?: number | undefined;
   source: GetAllChecksChecksSource;
+  value: number | null;
 };
 
 export const GetAllChecksChecksResponseSource = {
@@ -66,10 +66,10 @@ export type GetAllChecksChecksResponseSource = ClosedEnum<
   typeof GetAllChecksChecksResponseSource
 >;
 
-export type GetAllChecksCLS = {
-  value: number | null;
+export type GetAllChecksLCP = {
   previousValue?: number | undefined;
   source: GetAllChecksChecksResponseSource;
+  value: number | null;
 };
 
 export const GetAllChecksChecksResponse200Source = {
@@ -80,9 +80,9 @@ export type GetAllChecksChecksResponse200Source = ClosedEnum<
 >;
 
 export type GetAllChecksTBT = {
-  value: number | null;
   previousValue?: number | undefined;
   source: GetAllChecksChecksResponse200Source;
+  value: number | null;
 };
 
 export const GetAllChecksChecksResponse200ApplicationJSONSource = {
@@ -93,15 +93,15 @@ export type GetAllChecksChecksResponse200ApplicationJSONSource = ClosedEnum<
 >;
 
 export type GetAllChecksVirtualExperienceScore = {
-  value: number | null;
   previousValue?: number | undefined;
   source: GetAllChecksChecksResponse200ApplicationJSONSource;
+  value: number | null;
 };
 
 export type GetAllChecksMetrics = {
+  cls: GetAllChecksCLS;
   fcp: GetAllChecksFCP;
   lcp: GetAllChecksLCP;
-  cls: GetAllChecksCLS;
   tbt: GetAllChecksTBT;
   virtualExperienceScore?: GetAllChecksVirtualExperienceScore | undefined;
 };
@@ -118,6 +118,7 @@ export const GetAllChecksStatus = {
 export type GetAllChecksStatus = ClosedEnum<typeof GetAllChecksStatus>;
 
 export type GetAllChecksChecks = {
+  blocking: boolean;
   completedAt?: number | undefined;
   conclusion?: GetAllChecksConclusion | undefined;
   createdAt: number;
@@ -128,7 +129,6 @@ export type GetAllChecksChecks = {
   output?: GetAllChecksOutput | undefined;
   path?: string | undefined;
   rerequestable: boolean;
-  blocking: boolean;
   startedAt?: number | undefined;
   status: GetAllChecksStatus;
   updatedAt: number;
@@ -175,14 +175,40 @@ export const GetAllChecksSource$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(GetAllChecksSource);
 
 /** @internal */
+export const GetAllChecksCLS$inboundSchema: z.ZodType<
+  GetAllChecksCLS,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  previousValue: types.optional(types.number()),
+  source: GetAllChecksSource$inboundSchema,
+  value: types.nullable(types.number()),
+});
+
+export function getAllChecksCLSFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllChecksCLS, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllChecksCLS$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllChecksCLS' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetAllChecksChecksSource$inboundSchema: z.ZodNativeEnum<
+  typeof GetAllChecksChecksSource
+> = z.nativeEnum(GetAllChecksChecksSource);
+
+/** @internal */
 export const GetAllChecksFCP$inboundSchema: z.ZodType<
   GetAllChecksFCP,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  value: types.nullable(types.number()),
   previousValue: types.optional(types.number()),
-  source: GetAllChecksSource$inboundSchema,
+  source: GetAllChecksChecksSource$inboundSchema,
+  value: types.nullable(types.number()),
 });
 
 export function getAllChecksFCPFromJSON(
@@ -196,9 +222,9 @@ export function getAllChecksFCPFromJSON(
 }
 
 /** @internal */
-export const GetAllChecksChecksSource$inboundSchema: z.ZodNativeEnum<
-  typeof GetAllChecksChecksSource
-> = z.nativeEnum(GetAllChecksChecksSource);
+export const GetAllChecksChecksResponseSource$inboundSchema: z.ZodNativeEnum<
+  typeof GetAllChecksChecksResponseSource
+> = z.nativeEnum(GetAllChecksChecksResponseSource);
 
 /** @internal */
 export const GetAllChecksLCP$inboundSchema: z.ZodType<
@@ -206,9 +232,9 @@ export const GetAllChecksLCP$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  value: types.nullable(types.number()),
   previousValue: types.optional(types.number()),
-  source: GetAllChecksChecksSource$inboundSchema,
+  source: GetAllChecksChecksResponseSource$inboundSchema,
+  value: types.nullable(types.number()),
 });
 
 export function getAllChecksLCPFromJSON(
@@ -218,32 +244,6 @@ export function getAllChecksLCPFromJSON(
     jsonString,
     (x) => GetAllChecksLCP$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetAllChecksLCP' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetAllChecksChecksResponseSource$inboundSchema: z.ZodNativeEnum<
-  typeof GetAllChecksChecksResponseSource
-> = z.nativeEnum(GetAllChecksChecksResponseSource);
-
-/** @internal */
-export const GetAllChecksCLS$inboundSchema: z.ZodType<
-  GetAllChecksCLS,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  value: types.nullable(types.number()),
-  previousValue: types.optional(types.number()),
-  source: GetAllChecksChecksResponseSource$inboundSchema,
-});
-
-export function getAllChecksCLSFromJSON(
-  jsonString: string,
-): SafeParseResult<GetAllChecksCLS, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetAllChecksCLS$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetAllChecksCLS' from JSON`,
   );
 }
 
@@ -258,9 +258,9 @@ export const GetAllChecksTBT$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  value: types.nullable(types.number()),
   previousValue: types.optional(types.number()),
   source: GetAllChecksChecksResponse200Source$inboundSchema,
+  value: types.nullable(types.number()),
 });
 
 export function getAllChecksTBTFromJSON(
@@ -284,9 +284,9 @@ export const GetAllChecksVirtualExperienceScore$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  value: types.nullable(types.number()),
   previousValue: types.optional(types.number()),
   source: GetAllChecksChecksResponse200ApplicationJSONSource$inboundSchema,
+  value: types.nullable(types.number()),
 });
 
 export function getAllChecksVirtualExperienceScoreFromJSON(
@@ -306,18 +306,18 @@ export const GetAllChecksMetrics$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  CLS: z.lazy(() => GetAllChecksCLS$inboundSchema),
   FCP: z.lazy(() => GetAllChecksFCP$inboundSchema),
   LCP: z.lazy(() => GetAllChecksLCP$inboundSchema),
-  CLS: z.lazy(() => GetAllChecksCLS$inboundSchema),
   TBT: z.lazy(() => GetAllChecksTBT$inboundSchema),
   virtualExperienceScore: types.optional(
     z.lazy(() => GetAllChecksVirtualExperienceScore$inboundSchema),
   ),
 }).transform((v) => {
   return remap$(v, {
+    "CLS": "cls",
     "FCP": "fcp",
     "LCP": "lcp",
-    "CLS": "cls",
     "TBT": "tbt",
   });
 });
@@ -362,6 +362,7 @@ export const GetAllChecksChecks$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  blocking: types.boolean(),
   completedAt: types.optional(types.number()),
   conclusion: types.optional(GetAllChecksConclusion$inboundSchema),
   createdAt: types.number(),
@@ -372,7 +373,6 @@ export const GetAllChecksChecks$inboundSchema: z.ZodType<
   output: types.optional(z.lazy(() => GetAllChecksOutput$inboundSchema)),
   path: types.optional(types.string()),
   rerequestable: types.boolean(),
-  blocking: types.boolean(),
   startedAt: types.optional(types.number()),
   status: GetAllChecksStatus$inboundSchema,
   updatedAt: types.number(),

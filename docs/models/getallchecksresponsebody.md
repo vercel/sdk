@@ -8,12 +8,12 @@ import { GetAllChecksResponseBody } from "@vercel/sdk/models/getallchecksop.js";
 let value: GetAllChecksResponseBody = {
   checks: [
     {
-      createdAt: 7107.03,
+      blocking: false,
+      createdAt: 2255.64,
       id: "<id>",
       integrationId: "<id>",
       name: "<value>",
       rerequestable: true,
-      blocking: true,
       status: "completed",
       updatedAt: 2249.21,
     },

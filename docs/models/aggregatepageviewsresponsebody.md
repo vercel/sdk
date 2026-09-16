@@ -6,13 +6,13 @@
 import { AggregatePageviewsResponseBody } from "@vercel/sdk/models/aggregatepageviewsop.js";
 
 let value: AggregatePageviewsResponseBody = {
-  version: 4155.07,
+  data: [],
   query: {
+    limit: 717.95,
     since: "<value>",
     until: "<value>",
-    limit: 2400.05,
   },
-  data: [],
+  version: 2026.63,
 };
 ```
 
@@ -20,6 +20,6 @@ let value: AggregatePageviewsResponseBody = {
 
 | Field                              | Type                               | Required                           | Description                        |
 | ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| `version`                          | *number*                           | :heavy_check_mark:                 | N/A                                |
-| `query`                            | [models.Query](../models/query.md) | :heavy_check_mark:                 | N/A                                |
 | `data`                             | *models.AggregatePageviewsData*    | :heavy_check_mark:                 | N/A                                |
+| `query`                            | [models.Query](../models/query.md) | :heavy_check_mark:                 | N/A                                |
+| `version`                          | *number*                           | :heavy_check_mark:                 | N/A                                |

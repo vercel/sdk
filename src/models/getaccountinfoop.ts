@@ -22,6 +22,10 @@ export type Contact = {
 
 export type GetAccountInfoResponseBody = {
   /**
+   * The best contact for the integration, which can change as team members and their roles change.
+   */
+  contact: Contact | null;
+  /**
    * The name of the team the installation is tied to.
    */
   name?: string | undefined;
@@ -29,10 +33,6 @@ export type GetAccountInfoResponseBody = {
    * A URL linking to the installation in the Vercel Dashboard.
    */
   url: string;
-  /**
-   * The best contact for the integration, which can change as team members and their roles change.
-   */
-  contact: Contact | null;
 };
 
 /** @internal */
@@ -80,9 +80,9 @@ export const GetAccountInfoResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  contact: types.nullable(z.lazy(() => Contact$inboundSchema)),
   name: types.optional(types.string()),
   url: types.string(),
-  contact: types.nullable(z.lazy(() => Contact$inboundSchema)),
 });
 
 export function getAccountInfoResponseBodyFromJSON(

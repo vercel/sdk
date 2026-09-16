@@ -39,9 +39,9 @@ export type ListPromoteAliasesRequest = {
 };
 
 export type ResponseBodyAliases = {
-  status: string;
   alias: string;
   id: string;
+  status: string;
 };
 
 export type ListPromoteAliasesResponseBody2 = {
@@ -98,9 +98,9 @@ export const ResponseBodyAliases$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  status: types.string(),
   alias: types.string(),
   id: types.string(),
+  status: types.string(),
 });
 
 export function responseBodyAliasesFromJSON(

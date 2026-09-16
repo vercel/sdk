@@ -33,8 +33,8 @@ export type UpdateObservabilityConfigurationProjectRequest = {
 };
 
 export type UpdateObservabilityConfigurationProjectResponseBody = {
-  id: string;
   disabledAt?: number | undefined;
+  id: string;
 };
 
 /** @internal */
@@ -110,8 +110,8 @@ export const UpdateObservabilityConfigurationProjectResponseBody$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    id: types.string(),
     disabledAt: types.optional(types.number()),
+    id: types.string(),
   });
 
 export function updateObservabilityConfigurationProjectResponseBodyFromJSON(

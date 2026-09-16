@@ -26,21 +26,21 @@ export type JoinTeamRequest = {
  */
 export type JoinTeamResponseBody = {
   /**
-   * The ID of the team the user joined.
+   * The origin of how the user joined.
    */
-  teamId: string;
-  /**
-   * The slug of the team the user joined.
-   */
-  slug: string;
+  from: string;
   /**
    * The name of the team the user joined.
    */
   name: string;
   /**
-   * The origin of how the user joined.
+   * The slug of the team the user joined.
    */
-  from: string;
+  slug: string;
+  /**
+   * The ID of the team the user joined.
+   */
+  teamId: string;
 };
 
 /** @internal */
@@ -97,10 +97,10 @@ export const JoinTeamResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  teamId: types.string(),
-  slug: types.string(),
-  name: types.string(),
   from: types.string(),
+  name: types.string(),
+  slug: types.string(),
+  teamId: types.string(),
 });
 
 export function joinTeamResponseBodyFromJSON(

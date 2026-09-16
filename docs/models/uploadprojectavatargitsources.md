@@ -5,20 +5,15 @@
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarGitSources } from "@vercel/sdk/models/uploadprojectavatarinternalroutes1.js";
+import { UploadProjectAvatarGitSources } from "@vercel/sdk/models/uploadprojectavatarhasvalue.js";
 
 let value: UploadProjectAvatarGitSources = {
+  enabled: false,
+  environments: [],
   sources: [
     {
-      provider: "bitbucket",
-      org: "<value>",
-    },
-  ],
-  enabled: false,
-  environments: [
-    {
-      type: "system",
-      target: "preview",
+      namespace: "<value>",
+      provider: "gitlab",
     },
   ],
 };
@@ -26,8 +21,8 @@ let value: UploadProjectAvatarGitSources = {
 
 ## Fields
 
-| Field                                      | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `sources`                                  | *models.UploadProjectAvatarSources*[]      | :heavy_check_mark:                         | N/A                                        |
-| `enabled`                                  | *boolean*                                  | :heavy_check_mark:                         | N/A                                        |
-| `environments`                             | *models.UploadProjectAvatarEnvironments*[] | :heavy_check_mark:                         | N/A                                        |
+| Field                                              | Type                                               | Required                                           | Description                                        |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| `enabled`                                          | *boolean*                                          | :heavy_check_mark:                                 | N/A                                                |
+| `environments`                                     | *models.UploadProjectAvatarProjectsEnvironments*[] | :heavy_check_mark:                                 | N/A                                                |
+| `sources`                                          | *models.UploadProjectAvatarProjectsSources*[]      | :heavy_check_mark:                                 | N/A                                                |

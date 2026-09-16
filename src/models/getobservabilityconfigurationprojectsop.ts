@@ -20,9 +20,9 @@ export type GetObservabilityConfigurationProjectsRequest = {
 };
 
 export type DisabledProjects = {
+  disabledAt: number;
   id: string;
   name?: string | undefined;
-  disabledAt: number;
 };
 
 export type GetObservabilityConfigurationProjectsResponseBody = {
@@ -63,9 +63,9 @@ export const DisabledProjects$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  disabledAt: types.number(),
   id: types.string(),
   name: types.optional(types.string()),
-  disabledAt: types.number(),
 });
 
 export function disabledProjectsFromJSON(

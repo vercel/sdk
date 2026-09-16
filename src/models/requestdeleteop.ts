@@ -34,13 +34,13 @@ export type RequestDeleteRequestBody = {
  */
 export type RequestDeleteResponseBody = {
   /**
-   * Unique identifier of the User who has initiated deletion.
-   */
-  id: string;
-  /**
    * Email address of the User who has initiated deletion.
    */
   email: string;
+  /**
+   * Unique identifier of the User who has initiated deletion.
+   */
+  id: string;
   /**
    * User deletion progress status.
    */
@@ -100,8 +100,8 @@ export const RequestDeleteResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: types.string(),
   email: types.string(),
+  id: types.string(),
   message: types.string(),
 });
 

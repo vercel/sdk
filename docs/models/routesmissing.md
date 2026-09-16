@@ -16,8 +16,8 @@ const value: models.Missing1 = {
 
 ```typescript
 const value: models.Missing2 = {
-  type: "cookie",
   key: "<key>",
+  type: "cookie",
 };
 ```
 
@@ -25,8 +25,8 @@ const value: models.Missing2 = {
 
 ```typescript
 const value: models.Missing2 = {
-  type: "cookie",
   key: "<key>",
+  type: "cookie",
 };
 ```
 
@@ -34,8 +34,8 @@ const value: models.Missing2 = {
 
 ```typescript
 const value: models.Missing2 = {
-  type: "cookie",
   key: "<key>",
+  type: "cookie",
 };
 ```
 

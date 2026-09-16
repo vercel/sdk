@@ -6,10 +6,10 @@
 import { GetFirewallConfigIps } from "@vercel/sdk/models/getfirewallconfigop.js";
 
 let value: GetFirewallConfigIps = {
-  id: "<id>",
-  hostname: "untimely-drive.org",
-  ip: "ef4c:b7e4:cefe:dbb7:adfa:3bee:9ca7:dd0f",
   action: "log",
+  hostname: "firsthand-valuable.name",
+  id: "<id>",
+  ip: "f4cb:7e4c:efed:bb7a:dfa3:bee9:ca7d:d0fe",
 };
 ```
 
@@ -17,8 +17,8 @@ let value: GetFirewallConfigIps = {
 
 | Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `id`                                                                   | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `action`                                                               | [models.GetFirewallConfigAction](../models/getfirewallconfigaction.md) | :heavy_check_mark:                                                     | N/A                                                                    |
 | `hostname`                                                             | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `id`                                                                   | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
 | `ip`                                                                   | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
 | `notes`                                                                | *string*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
-| `action`                                                               | [models.GetFirewallConfigAction](../models/getfirewallconfigaction.md) | :heavy_check_mark:                                                     | N/A                                                                    |

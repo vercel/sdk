@@ -11,12 +11,12 @@ const value: models.VcrImageLayer1 = {
   digest: "<value>",
   operation: "UNKNOWN",
   sizeBytes: 3930.23,
-  type: "FROM",
   baseImage: "<value>",
   collapsedDigests: [
     "<value 1>",
   ],
   collapsedLayerCount: 1241.24,
+  type: "FROM",
 };
 ```
 
@@ -28,8 +28,8 @@ const value: models.VcrImageLayer2 = {
   digest: "<value>",
   operation: "RUN",
   sizeBytes: 5870.36,
-  type: "RUN",
   command: "<value>",
+  type: "RUN",
 };
 ```
 
@@ -41,8 +41,8 @@ const value: models.VcrImageLayer3 = {
   digest: "<value>",
   operation: "RUN",
   sizeBytes: 7274.03,
-  type: "ENV",
   env: "<value>",
+  type: "ENV",
 };
 ```
 

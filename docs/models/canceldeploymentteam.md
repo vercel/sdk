@@ -5,7 +5,7 @@ The team that owns the deployment if any
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentTeam } from "@vercel/sdk/models/locale.js";
+import { CancelDeploymentTeam } from "@vercel/sdk/models/canceldeploymentresponsebody.js";
 
 let value: CancelDeploymentTeam = {
   id: "<id>",
@@ -18,7 +18,7 @@ let value: CancelDeploymentTeam = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
+| `avatar`           | *string*           | :heavy_minus_sign: | N/A                |
 | `id`               | *string*           | :heavy_check_mark: | N/A                |
 | `name`             | *string*           | :heavy_check_mark: | N/A                |
 | `slug`             | *string*           | :heavy_check_mark: | N/A                |
-| `avatar`           | *string*           | :heavy_minus_sign: | N/A                |

@@ -7,13 +7,13 @@
 
 ```typescript
 const value: models.GetDeploymentCheckRunResponseBody1 = {
+  createdAt: 9174.98,
+  deploymentId: "<id>",
   id: "<id>",
   name: "<value>",
   ownerId: "<id>",
-  deploymentId: "<id>",
-  status: "running",
-  timeout: 2839.55,
-  createdAt: 4278.28,
+  status: "completed",
+  timeout: 4278.28,
   updatedAt: 4806.55,
   checkId: "<id>",
   source: {
@@ -26,19 +26,19 @@ const value: models.GetDeploymentCheckRunResponseBody1 = {
 
 ```typescript
 const value: models.GetDeploymentCheckRunResponseBody2 = {
+  createdAt: 1336.67,
+  deploymentId: "<id>",
   id: "<id>",
   name: "<value>",
   ownerId: "<id>",
-  deploymentId: "<id>",
-  status: "completed",
-  timeout: 6824.27,
-  createdAt: 4581.01,
+  status: "running",
+  timeout: 4581.01,
   updatedAt: 5097.21,
   source: {
-    subKind: "vercel-ci",
-    origin: "config",
     invocationId: "<id>",
     jobDefinitionId: "<id>",
+    origin: "config",
+    subKind: "vercel-ci",
   },
 };
 ```

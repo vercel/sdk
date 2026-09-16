@@ -34,10 +34,10 @@ const value: models.CreateIntegrationStoreDirectProperties3 = {
 
 ```typescript
 const value: models.CreateIntegrationStoreDirectProperties4 = {
-  type: "array",
   items: {
     type: "number",
   },
+  type: "array",
   uiControl: "slider",
   uiSteps: [
     6115.85,
@@ -55,8 +55,8 @@ const value: models.CreateIntegrationStoreDirectProperties5 = {
   uiControl: "select",
   uiOptions: [
     {
-      value: "<value>",
       label: "<value>",
+      value: "<value>",
     },
   ],
 };
@@ -76,10 +76,10 @@ const value: models.CreateIntegrationStoreDirectProperties6 = {
 
 ```typescript
 const value: models.CreateIntegrationStoreDirectProperties7 = {
-  type: "array",
   items: {
     type: "string",
   },
+  type: "array",
   uiControl: "multi-select",
   uiOptions: [],
 };
@@ -103,10 +103,10 @@ const value: models.CreateIntegrationStoreDirectProperties8 = {
 
 ```typescript
 const value: models.CreateIntegrationStoreDirectProperties9 = {
-  type: "array",
   items: {
     type: "string",
   },
+  type: "array",
   uiControl: "multi-vercel-region",
   uiOptions: [],
 };

@@ -9,8 +9,8 @@ import { TwentyFive } from "@vercel/sdk/models/userevent.js";
 
 let value: TwentyFive = {
   privateModel: {
-    slug: "<value>",
     providerSlug: "<value>",
+    slug: "<value>",
   },
 };
 ```

@@ -6,14 +6,14 @@
 import { Three1 } from "@vercel/sdk/models/getdeploymenteventsop.js";
 
 let value: Three1 = {
-  type: "delimiter",
-  created: 4034.37,
+  created: 1385.38,
   payload: {
+    date: 4034.37,
     deploymentId: "<id>",
     id: "<id>",
-    date: 5232.2,
     serial: "<value>",
   },
+  type: "metric",
 };
 ```
 
@@ -21,6 +21,6 @@ let value: Three1 = {
 
 | Field                                            | Type                                             | Required                                         | Description                                      |
 | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| `type`                                           | [models.ThreeType](../models/threetype.md)       | :heavy_check_mark:                               | N/A                                              |
 | `created`                                        | *number*                                         | :heavy_check_mark:                               | N/A                                              |
 | `payload`                                        | [models.ThreePayload](../models/threepayload.md) | :heavy_check_mark:                               | N/A                                              |
+| `type`                                           | [models.ThreeType](../models/threetype.md)       | :heavy_check_mark:                               | N/A                                              |

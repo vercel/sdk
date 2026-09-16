@@ -15,9 +15,9 @@ const value: models.CreateFlagLhsFeatureFlags1 = {
 
 ```typescript
 const value: models.CreateFlagLhsFeatureFlags2 = {
-  type: "entity",
-  kind: "<value>",
   attribute: "<value>",
+  kind: "<value>",
+  type: "entity",
 };
 ```
 

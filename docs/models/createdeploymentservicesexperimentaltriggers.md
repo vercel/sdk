@@ -7,9 +7,9 @@
 
 ```typescript
 const value: models.CreateDeploymentExperimentalTriggersDeployments1 = {
-  type: "queue/v1beta",
   consumer: "<value>",
   topic: "<value>",
+  type: "queue/v1beta",
 };
 ```
 
@@ -17,8 +17,8 @@ const value: models.CreateDeploymentExperimentalTriggersDeployments1 = {
 
 ```typescript
 const value: models.CreateDeploymentExperimentalTriggersDeployments2 = {
-  type: "queue/v2beta",
   topic: "<value>",
+  type: "queue/v2beta",
 };
 ```
 

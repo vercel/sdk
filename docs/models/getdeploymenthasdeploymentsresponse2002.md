@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { GetDeploymentHasDeploymentsResponse2002 } from "@vercel/sdk/models/getdeploymentmissingdeployments1.js";
+import { GetDeploymentHasDeploymentsResponse2002 } from "@vercel/sdk/models/getdeploymentresponsebody1.js";
 
 let value: GetDeploymentHasDeploymentsResponse2002 = {
-  type: "query",
   key: "<key>",
+  type: "query",
 };
 ```
 
@@ -15,6 +15,6 @@ let value: GetDeploymentHasDeploymentsResponse2002 = {
 
 | Field                                                                                                  | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
 | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| `type`                                                                                                 | [models.GetDeploymentHasDeploymentsResponseType](../models/getdeploymenthasdeploymentsresponsetype.md) | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
 | `key`                                                                                                  | *string*                                                                                               | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
+| `type`                                                                                                 | [models.GetDeploymentHasDeploymentsResponseType](../models/getdeploymenthasdeploymentsresponsetype.md) | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
 | `value`                                                                                                | *models.GetDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody2ServicesValue*               | :heavy_minus_sign:                                                                                     | N/A                                                                                                    |

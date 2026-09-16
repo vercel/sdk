@@ -5,26 +5,26 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsDeploymentSources } from "@vercel/sdk/models/updatemicrofrontendsinternalroutes2.js";
+import { UpdateMicrofrontendsDeploymentSources } from "@vercel/sdk/models/updatemicrofrontendshaskey.js";
 
 let value: UpdateMicrofrontendsDeploymentSources = {
-  sources: [
-    "integration",
-  ],
-  enabled: true,
+  enabled: false,
   environments: [
     {
-      type: "custom",
-      environmentId: "<id>",
+      target: "production",
+      type: "system",
     },
+  ],
+  sources: [
+    "cli",
   ],
 };
 ```
 
 ## Fields
 
-| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `sources`                                                                                        | [models.UpdateMicrofrontendsProjectsSources](../models/updatemicrofrontendsprojectssources.md)[] | :heavy_check_mark:                                                                               | N/A                                                                                              |
-| `enabled`                                                                                        | *boolean*                                                                                        | :heavy_check_mark:                                                                               | N/A                                                                                              |
-| `environments`                                                                                   | *models.UpdateMicrofrontendsProjectsEnvironments*[]                                              | :heavy_check_mark:                                                                               | N/A                                                                                              |
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `enabled`                                                                        | *boolean*                                                                        | :heavy_check_mark:                                                               | N/A                                                                              |
+| `environments`                                                                   | *models.UpdateMicrofrontendsEnvironments*[]                                      | :heavy_check_mark:                                                               | N/A                                                                              |
+| `sources`                                                                        | [models.UpdateMicrofrontendsSources](../models/updatemicrofrontendssources.md)[] | :heavy_check_mark:                                                               | N/A                                                                              |

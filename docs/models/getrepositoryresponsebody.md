@@ -7,11 +7,11 @@ import { GetRepositoryResponseBody } from "@vercel/sdk/models/getrepositoryop.js
 
 let value: GetRepositoryResponseBody = {
   repository: {
-    id: "repo_a1b2c3d4e5f6",
-    projectId: "prj_a1b2c3d4e5f6",
-    name: "my-app",
-    public: false,
     createdAt: "2026-06-30T10:00:00.000Z",
+    id: "repo_a1b2c3d4e5f6",
+    name: "my-app",
+    projectId: "prj_a1b2c3d4e5f6",
+    public: false,
     updatedAt: "2026-06-30T10:00:00.000Z",
   },
 };

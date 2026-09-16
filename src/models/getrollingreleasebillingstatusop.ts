@@ -26,15 +26,15 @@ export type GetRollingReleaseBillingStatusRequest = {
 
 export type GetRollingReleaseBillingStatusResponseBody4 = {
   availableSlots: number;
-  reason: "available_slots";
   message: string;
+  reason: "available_slots";
 };
 
 export type GetRollingReleaseBillingStatusResponseBody3 = {
   availableSlots: number;
-  reason: "no_available_slots";
-  message: string;
   enabledProjects: Array<string>;
+  message: string;
+  reason: "no_available_slots";
 };
 
 export const AvailableSlots = {
@@ -44,14 +44,14 @@ export type AvailableSlots = ClosedEnum<typeof AvailableSlots>;
 
 export type GetRollingReleaseBillingStatusResponseBody2 = {
   availableSlots: AvailableSlots;
-  reason: "unlimited_slots";
   message: string;
+  reason: "unlimited_slots";
 };
 
 export type GetRollingReleaseBillingStatusResponseBody1 = {
   availableSlots: number;
-  reason: "plan_not_supported";
   message: string;
+  reason: "plan_not_supported";
 };
 
 export type GetRollingReleaseBillingStatusResponseBody =
@@ -96,8 +96,8 @@ export const GetRollingReleaseBillingStatusResponseBody4$inboundSchema:
     unknown
   > = z.object({
     availableSlots: types.number(),
-    reason: types.literal("available_slots"),
     message: types.string(),
+    reason: types.literal("available_slots"),
   });
 
 export function getRollingReleaseBillingStatusResponseBody4FromJSON(
@@ -124,9 +124,9 @@ export const GetRollingReleaseBillingStatusResponseBody3$inboundSchema:
     unknown
   > = z.object({
     availableSlots: types.number(),
-    reason: types.literal("no_available_slots"),
-    message: types.string(),
     enabledProjects: z.array(types.string()),
+    message: types.string(),
+    reason: types.literal("no_available_slots"),
   });
 
 export function getRollingReleaseBillingStatusResponseBody3FromJSON(
@@ -158,8 +158,8 @@ export const GetRollingReleaseBillingStatusResponseBody2$inboundSchema:
     unknown
   > = z.object({
     availableSlots: AvailableSlots$inboundSchema,
-    reason: types.literal("unlimited_slots"),
     message: types.string(),
+    reason: types.literal("unlimited_slots"),
   });
 
 export function getRollingReleaseBillingStatusResponseBody2FromJSON(
@@ -186,8 +186,8 @@ export const GetRollingReleaseBillingStatusResponseBody1$inboundSchema:
     unknown
   > = z.object({
     availableSlots: types.number(),
-    reason: types.literal("plan_not_supported"),
     message: types.string(),
+    reason: types.literal("plan_not_supported"),
   });
 
 export function getRollingReleaseBillingStatusResponseBody1FromJSON(

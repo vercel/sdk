@@ -37,21 +37,12 @@ export type ActivateKmsSigningKeyRequest = {
   requestBody?: ActivateKmsSigningKeyRequestBody | undefined;
 };
 
-export const ActivateKmsSigningKeyStatus = {
-  Active: "active",
-  Pending: "pending",
-  Revoking: "revoking",
-} as const;
-export type ActivateKmsSigningKeyStatus = ClosedEnum<
-  typeof ActivateKmsSigningKeyStatus
->;
-
 export type ActivateKmsSigningKeyPublicKey = {
-  kty?: string | undefined;
-  kid?: string | undefined;
   alg?: string | undefined;
-  use?: string | undefined;
   keyOps?: Array<string> | undefined;
+  kid?: string | undefined;
+  kty?: string | undefined;
+  use?: string | undefined;
   /**
    * The X.509 certificate chain (RFC 7517 §4.7). Each entry is the base64 DER (not base64url) of a certificate. For keys minted with a stored certificate this holds the single self-signed cert as `[x5c]`.
    */
@@ -62,36 +53,45 @@ export type ActivateKmsSigningKeyPublicKey = {
   x5tNumberS256?: string | undefined;
 };
 
+export const ActivateKmsSigningKeyStatus = {
+  Active: "active",
+  Pending: "pending",
+  Revoking: "revoking",
+} as const;
+export type ActivateKmsSigningKeyStatus = ClosedEnum<
+  typeof ActivateKmsSigningKeyStatus
+>;
+
 export type ActivateKmsSigningKeyResponseBody = {
+  activateAt?: string | undefined;
   /**
-   * The server-minted, unique record identifier. Use this to address the key on the activate / certificate endpoints.
+   * When the key became the active signer. Present for active and revoking keys (and absent for pending keys and rows predating this field).
    */
-  keyId: string;
+  activatedAt?: string | undefined;
+  algorithm: string;
+  /**
+   * The stored X.509 certificate (from `publicKey.x5c[0]`) in PEM form, ready to render. Present only for keys created with a stored certificate; omitted for keys created before certificates were stored.
+   */
+  certificatePem?: string | undefined;
+  createdAt: string;
   /**
    * The caller-supplied key id (imported keys only), used as the JWT/JWKS `kid`. Not unique across an issuer's keys; omitted for generated keys.
    */
   importKeyId?: string | undefined;
   issuerId: string;
-  algorithm: string;
-  status: ActivateKmsSigningKeyStatus;
+  /**
+   * The server-minted, unique record identifier. Use this to address the key on the activate / certificate endpoints.
+   */
+  keyId: string;
   publicKey?: ActivateKmsSigningKeyPublicKey | undefined;
   publicKeyFingerprint?: string | undefined;
   /**
    * The public key in SPKI PEM form, ready to render. Present whenever the key has public key material. Derived from `publicKey`; the embedded certificate members (`x5c`/`x5t#S256`) do not affect it.
    */
   publicKeyPem?: string | undefined;
-  /**
-   * The stored X.509 certificate (from `publicKey.x5c[0]`) in PEM form, ready to render. Present only for keys created with a stored certificate; omitted for keys created before certificates were stored.
-   */
-  certificatePem?: string | undefined;
-  createdAt: string;
-  updatedAt: string;
   revokeAt?: string | undefined;
-  activateAt?: string | undefined;
-  /**
-   * When the key became the active signer. Present for active and revoking keys (and absent for pending keys and rows predating this field).
-   */
-  activatedAt?: string | undefined;
+  status: ActivateKmsSigningKeyStatus;
+  updatedAt: string;
 };
 
 /** @internal */
@@ -156,21 +156,16 @@ export function activateKmsSigningKeyRequestToJSON(
 }
 
 /** @internal */
-export const ActivateKmsSigningKeyStatus$inboundSchema: z.ZodNativeEnum<
-  typeof ActivateKmsSigningKeyStatus
-> = z.nativeEnum(ActivateKmsSigningKeyStatus);
-
-/** @internal */
 export const ActivateKmsSigningKeyPublicKey$inboundSchema: z.ZodType<
   ActivateKmsSigningKeyPublicKey,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  kty: types.optional(types.string()),
-  kid: types.optional(types.string()),
   alg: types.optional(types.string()),
-  use: types.optional(types.string()),
   key_ops: types.optional(z.array(types.string())),
+  kid: types.optional(types.string()),
+  kty: types.optional(types.string()),
+  use: types.optional(types.string()),
   x5c: types.optional(z.array(types.string())),
   "x5t#S256": types.optional(types.string()),
 }).transform((v) => {
@@ -191,27 +186,32 @@ export function activateKmsSigningKeyPublicKeyFromJSON(
 }
 
 /** @internal */
+export const ActivateKmsSigningKeyStatus$inboundSchema: z.ZodNativeEnum<
+  typeof ActivateKmsSigningKeyStatus
+> = z.nativeEnum(ActivateKmsSigningKeyStatus);
+
+/** @internal */
 export const ActivateKmsSigningKeyResponseBody$inboundSchema: z.ZodType<
   ActivateKmsSigningKeyResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  keyId: types.string(),
+  activateAt: types.optional(types.string()),
+  activatedAt: types.optional(types.string()),
+  algorithm: types.string(),
+  certificatePem: types.optional(types.string()),
+  createdAt: types.string(),
   importKeyId: types.optional(types.string()),
   issuerId: types.string(),
-  algorithm: types.string(),
-  status: ActivateKmsSigningKeyStatus$inboundSchema,
+  keyId: types.string(),
   publicKey: types.optional(
     z.lazy(() => ActivateKmsSigningKeyPublicKey$inboundSchema),
   ),
   publicKeyFingerprint: types.optional(types.string()),
   publicKeyPem: types.optional(types.string()),
-  certificatePem: types.optional(types.string()),
-  createdAt: types.string(),
-  updatedAt: types.string(),
   revokeAt: types.optional(types.string()),
-  activateAt: types.optional(types.string()),
-  activatedAt: types.optional(types.string()),
+  status: ActivateKmsSigningKeyStatus$inboundSchema,
+  updatedAt: types.string(),
 });
 
 export function activateKmsSigningKeyResponseBodyFromJSON(

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Two1 } from "@vercel/sdk/models/usereventpayload171gituserid.js";
+import { Two1 } from "@vercel/sdk/models/usereventpayload171newownerfeatureblocksworkflowstoragewriteblockreason.js";
 
 let value: Two1 = {
   origin: "gitlab",
@@ -14,8 +14,8 @@ let value: Two1 = {
 
 | Field                                      | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `origin`                                   | [models.TwoOrigin](../models/twoorigin.md) | :heavy_check_mark:                         | N/A                                        |
-| `username`                                 | *string*                                   | :heavy_minus_sign:                         | N/A                                        |
-| `teamId`                                   | *string*                                   | :heavy_minus_sign:                         | N/A                                        |
 | `legacy`                                   | *boolean*                                  | :heavy_minus_sign:                         | N/A                                        |
+| `origin`                                   | [models.TwoOrigin](../models/twoorigin.md) | :heavy_check_mark:                         | N/A                                        |
 | `ssoType`                                  | *string*                                   | :heavy_minus_sign:                         | N/A                                        |
+| `teamId`                                   | *string*                                   | :heavy_minus_sign:                         | N/A                                        |
+| `username`                                 | *string*                                   | :heavy_minus_sign:                         | N/A                                        |

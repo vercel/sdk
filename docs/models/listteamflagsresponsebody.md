@@ -8,62 +8,74 @@ import { ListTeamFlagsResponseBody } from "@vercel/sdk/models/listteamflagsop.js
 let value: ListTeamFlagsResponseBody = {
   data: [
     {
-      variants: [
-        {
-          value: false,
-          id: "<id>",
-        },
-      ],
-      id: "<id>",
+      createdAt: 6105.99,
+      createdBy: "<value>",
       environments: {
         "key": {
+          active: false,
+          fallthrough: {
+            base: {
+              attribute: "<value>",
+              kind: "<value>",
+              type: "entity",
+            },
+            defaultVariantId: "<id>",
+            rollFromVariantId: "<id>",
+            rollToVariantId: "<id>",
+            slots: [],
+            startTimestamp: 1190.68,
+            type: "rollout",
+          },
           pausedOutcome: {
             type: "variant",
             variantId: "<id>",
           },
-          fallthrough: {
-            type: "rollout",
-            base: {
-              type: "entity",
-              kind: "<value>",
-              attribute: "<value>",
-            },
-            defaultVariantId: "<id>",
-            startTimestamp: 6873.48,
-            rollFromVariantId: "<id>",
-            rollToVariantId: "<id>",
-            slots: [],
-          },
-          active: true,
           rules: [
             {
-              id: "<id>",
-              outcome: {
-                type: "experiment",
-              },
               conditions: [
                 {
+                  cmp: "contains",
                   lhs: {
-                    type: "segment",
+                    attribute: "<value>",
+                    kind: "<value>",
+                    type: "entity",
                   },
-                  cmp: "containsAnyOf",
                 },
               ],
+              id: "<id>",
+              outcome: {
+                base: {
+                  attribute: "<value>",
+                  kind: "<value>",
+                  type: "entity",
+                },
+                defaultVariantId: "<id>",
+                rollFromVariantId: "<id>",
+                rollToVariantId: "<id>",
+                slots: [],
+                startTimestamp: 2235.64,
+                type: "rollout",
+              },
             },
           ],
         },
       },
+      id: "<id>",
       kind: "number",
-      revision: 3263.96,
-      seed: 432.41,
-      state: "active",
-      slug: "<value>",
-      createdAt: 9407.97,
-      updatedAt: 9157.74,
-      createdBy: "<value>",
       ownerId: "<id>",
       projectId: "<id>",
+      revision: 3263.96,
+      seed: 432.41,
+      slug: "<value>",
+      state: "active",
       typeName: "flag",
+      updatedAt: 9407.97,
+      variants: [
+        {
+          id: "<id>",
+          value: 2250.11,
+        },
+      ],
     },
   ],
   pagination: {

@@ -6,71 +6,59 @@
 import { GetNamedSandboxResponseBody } from "@vercel/sdk/models/getnamedsandboxop.js";
 
 let value: GetNamedSandboxResponseBody = {
+  resumed: true,
+  routes: [],
   sandbox: {
-    name: "my-sandbox",
+    createdAt: 1750344501629,
     currentSessionId: "<id>",
-    status: "running",
-    statusUpdatedAt: 1750344501629,
-    persistent: true,
-    region: "iad1",
+    cwd: "/vercel/sandbox",
+    expiresAt: 1750344801629,
     failoverRegions: [
       "sfo1",
       "cle1",
     ],
-    vcpus: 2,
-    memory: 1024,
-    runtime: "node22",
     image:
       "my-repo@sha256:2c4e8f9a1b3d5e7f091a2b3c4d5e6f708192a3b4c5d6e7f8091a2b3c4d5e6f708",
-    timeout: 300000,
-    snapshotExpiration: 604800000,
     keepLastSnapshots: {
       count: 5,
-      expiration: 604800000,
       deleteEvicted: true,
+      expiration: 604800000,
     },
-    totalEgressBytes: 4096,
-    totalIngressBytes: 2048,
-    totalActiveCpuDurationMs: 5000,
-    totalDurationMs: 60000,
-    cwd: "/vercel/sandbox",
+    memory: 1024,
+    name: "my-sandbox",
+    persistent: true,
+    region: "iad1",
+    runtime: "node22",
+    snapshotExpiration: 604800000,
+    status: "running",
+    statusUpdatedAt: 1750344501629,
     tags: {
       "team": "hive",
       "user": "bob",
     },
-    createdAt: 1750344501629,
+    timeout: 300000,
+    totalActiveCpuDurationMs: 5000,
+    totalDurationMs: 60000,
+    totalEgressBytes: 4096,
+    totalIngressBytes: 2048,
     updatedAt: 1750344501629,
-    expiresAt: 1750344801629,
+    vcpus: 2,
   },
   session: {
-    sourceSandboxName: "my-sandbox",
-    projectId: "prj_123a6c5209bc3778245d011443644c8d27dc2c50",
+    abortedAt: 1750344501629,
+    activeCpuDurationMs: 42,
+    createdAt: 1750344501629,
+    cwd: "/vercel/sandbox",
+    duration: 3600000,
     id: "sbx_123a6c5209bc3778245d011443644c8d27dc2c50",
     memory: 2048,
-    vcpus: 2,
-    region: "iad1",
-    runtime: "node22",
-    timeout: 3600000,
-    status: "running",
-    requestedAt: 1750344501629,
-    startedAt: 1750344501629,
-    cwd: "/vercel/sandbox",
-    requestedStopAt: 1750344501629,
-    stoppedAt: 1750344501629,
-    abortedAt: 1750344501629,
-    duration: 3600000,
-    sourceSnapshotId: "snap_123a6c5209bc3778245d011443644c8d27dc2c50",
-    snapshottedAt: 1750344501629,
-    createdAt: 1750344501629,
-    updatedAt: 1750344501629,
     networkPolicy: {
-      mode: "custom",
+      allowedCIDRs: [
+        "10.0.0.0/8",
+      ],
       allowedDomains: [
         "api.vercel.com",
         "*.example.com",
-      ],
-      allowedCIDRs: [
-        "10.0.0.0/8",
       ],
       deniedCIDRs: [
         "10.0.0.0/8",
@@ -84,15 +72,27 @@ let value: GetNamedSandboxResponseBody = {
           ],
         },
       ],
+      mode: "custom",
     },
-    activeCpuDurationMs: 42,
     networkTransfer: {
-      ingress: 1009.44,
       egress: 7683.25,
+      ingress: 3996.32,
     },
+    projectId: "prj_123a6c5209bc3778245d011443644c8d27dc2c50",
+    region: "iad1",
+    requestedAt: 1750344501629,
+    requestedStopAt: 1750344501629,
+    runtime: "node22",
+    snapshottedAt: 1750344501629,
+    sourceSandboxName: "my-sandbox",
+    sourceSnapshotId: "snap_123a6c5209bc3778245d011443644c8d27dc2c50",
+    startedAt: 1750344501629,
+    status: "running",
+    stoppedAt: 1750344501629,
+    timeout: 3600000,
+    updatedAt: 1750344501629,
+    vcpus: 2,
   },
-  routes: [],
-  resumed: true,
 };
 ```
 
@@ -100,7 +100,7 @@ let value: GetNamedSandboxResponseBody = {
 
 | Field                                                                                                                                                 | Type                                                                                                                                                  | Required                                                                                                                                              | Description                                                                                                                                           |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `resumed`                                                                                                                                             | *boolean*                                                                                                                                             | :heavy_check_mark:                                                                                                                                    | N/A                                                                                                                                                   |
+| `routes`                                                                                                                                              | [models.SandboxPublicRoute](../models/sandboxpublicroute.md)[]                                                                                        | :heavy_check_mark:                                                                                                                                    | N/A                                                                                                                                                   |
 | `sandbox`                                                                                                                                             | [models.NamedSandbox](../models/namedsandbox.md)                                                                                                      | :heavy_check_mark:                                                                                                                                    | This object contains information related to a Vercel NamedSandbox.                                                                                    |
 | `session`                                                                                                                                             | [models.Session](../models/session.md)                                                                                                                | :heavy_check_mark:                                                                                                                                    | This object contains information related to a Vercel Sandbox Session. v2 endpoints return "session" instead of "sandbox" as the response wrapper key. |
-| `routes`                                                                                                                                              | [models.SandboxPublicRoute](../models/sandboxpublicroute.md)[]                                                                                        | :heavy_check_mark:                                                                                                                                    | N/A                                                                                                                                                   |
-| `resumed`                                                                                                                                             | *boolean*                                                                                                                                             | :heavy_check_mark:                                                                                                                                    | N/A                                                                                                                                                   |

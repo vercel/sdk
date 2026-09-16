@@ -5,14 +5,14 @@ Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures 
 ## Example Usage
 
 ```typescript
-import { GetProjectsViaProjectsResponse2 } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson3action.js";
+import { GetProjectsViaProjectsResponse2 } from "@vercel/sdk/models/getprojectsresponsebodyprojectsconsolidatedgitcommitstatus.js";
 
 let value: GetProjectsViaProjectsResponse2 = {
-  type: "integration",
   integration: {
-    integrationId: "<id>",
     configurationId: "<id>",
+    integrationId: "<id>",
   },
+  type: "integration",
 };
 ```
 
@@ -20,5 +20,5 @@ let value: GetProjectsViaProjectsResponse2 = {
 
 | Field                                                                                                      | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
 | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `type`                                                                                                     | *"integration"*                                                                                            | :heavy_check_mark:                                                                                         | N/A                                                                                                        |
 | `integration`                                                                                              | [models.GetProjectsViaProjectsResponseIntegration](../models/getprojectsviaprojectsresponseintegration.md) | :heavy_check_mark:                                                                                         | N/A                                                                                                        |
+| `type`                                                                                                     | *"integration"*                                                                                            | :heavy_check_mark:                                                                                         | N/A                                                                                                        |

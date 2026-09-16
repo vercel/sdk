@@ -7,22 +7,21 @@
 
 ```typescript
 const value: models.UpdateDrainResponseBody1 = {
-  id: "<id>",
   createdAt: 2996.75,
-  updatedAt: 9500.11,
+  delivery: {
+    target: "vercel-otel-traces-db",
+    type: "internal",
+  },
+  id: "<id>",
   name: "<value>",
   ownerId: "<id>",
   schemas: {},
-  delivery: {
-    type: "clickhouse",
-    endpoint: "<value>",
-    table: "<value>",
-  },
   source: {
-    kind: "integration",
-    integrationId: "<id>",
     integrationConfigurationId: "<id>",
+    integrationId: "<id>",
+    kind: "integration",
   },
+  updatedAt: 7692.12,
 };
 ```
 
@@ -30,21 +29,26 @@ const value: models.UpdateDrainResponseBody1 = {
 
 ```typescript
 const value: models.UpdateDrainResponseBody2 = {
-  id: "<id>",
   createdAt: 7836.46,
-  updatedAt: 3329.98,
+  delivery: {
+    encoding: "proto",
+    endpoint: {
+      traces: "<value>",
+    },
+    headers: {
+      "key": "<value>",
+      "key1": "<value>",
+    },
+    type: "otlphttp",
+  },
+  id: "<id>",
   name: "<value>",
   ownerId: "<id>",
   schemas: {},
-  delivery: {
-    type: "internal",
-    target: "vercel-otel-traces-db",
-  },
   source: {
-    kind: "integration",
-    integrationId: "<id>",
-    integrationConfigurationId: "<id>",
+    kind: "self-served",
   },
+  updatedAt: 7610.88,
 };
 ```
 

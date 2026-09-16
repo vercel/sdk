@@ -7,11 +7,11 @@
 
 ```typescript
 const value: models.Rules1 = {
-  id: "<id>",
-  name: "<value>",
+  action: {},
   active: false,
   conditionGroup: [],
-  action: {},
+  id: "<id>",
+  name: "<value>",
   valid: true,
   validationErrors: "<value>",
 };
@@ -21,15 +21,15 @@ const value: models.Rules1 = {
 
 ```typescript
 const value: models.Rules2 = {
-  id: "<id>",
-  name: "<value>",
+  action: {},
   active: false,
   conditionGroup: [
     {
       conditions: [],
     },
   ],
-  action: {},
+  id: "<id>",
+  name: "<value>",
   valid: false,
   validationErrors: [
     "<value 1>",

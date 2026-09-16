@@ -65,6 +65,16 @@ const value: models.DomainNotAvailable = {
 };
 ```
 
+### `models.EmojiTldNotSupported`
+
+```typescript
+const value: models.EmojiTldNotSupported = {
+  status: 4735.83,
+  code: "emoji_tld_not_supported",
+  message: "<value>",
+};
+```
+
 ### `models.LanguageCodeRequired`
 
 ```typescript

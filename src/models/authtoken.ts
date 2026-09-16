@@ -34,35 +34,11 @@ export type AuthTokenScopesOrigin = ClosedEnum<typeof AuthTokenScopesOrigin>;
  * The access scopes granted to the token.
  */
 export type Scopes2 = {
-  type: "team";
-  teamId: string;
-  origin?: AuthTokenScopesOrigin | undefined;
   createdAt: number;
   expiresAt?: number | undefined;
-};
-
-/**
- * Possible step-up auth origins
- */
-export const AuthTokenScopes1Origin = {
-  EmailOtp: "email-otp",
-  Otp: "otp",
-  RecoveryCode: "recovery-code",
-  Totp: "totp",
-  Webauthn: "webauthn",
-} as const;
-/**
- * Possible step-up auth origins
- */
-export type AuthTokenScopes1Origin = ClosedEnum<typeof AuthTokenScopes1Origin>;
-
-export type Sudo = {
-  /**
-   * Possible step-up auth origins
-   */
-  origin: AuthTokenScopes1Origin;
-  verifiedAt?: number | undefined;
-  expiresAt: number;
+  origin?: AuthTokenScopesOrigin | undefined;
+  teamId: string;
+  type: "team";
 };
 
 export const ScopesOrigin = {
@@ -87,14 +63,38 @@ export const ScopesOrigin = {
 export type ScopesOrigin = ClosedEnum<typeof ScopesOrigin>;
 
 /**
+ * Possible step-up auth origins
+ */
+export const AuthTokenScopes1Origin = {
+  EmailOtp: "email-otp",
+  Otp: "otp",
+  RecoveryCode: "recovery-code",
+  Totp: "totp",
+  Webauthn: "webauthn",
+} as const;
+/**
+ * Possible step-up auth origins
+ */
+export type AuthTokenScopes1Origin = ClosedEnum<typeof AuthTokenScopes1Origin>;
+
+export type Sudo = {
+  expiresAt: number;
+  /**
+   * Possible step-up auth origins
+   */
+  origin: AuthTokenScopes1Origin;
+  verifiedAt?: number | undefined;
+};
+
+/**
  * The access scopes granted to the token.
  */
 export type Scopes1 = {
-  type: "user";
-  sudo?: Sudo | undefined;
-  origin?: ScopesOrigin | undefined;
   createdAt: number;
   expiresAt?: number | undefined;
+  origin?: ScopesOrigin | undefined;
+  sudo?: Sudo | undefined;
+  type: "user";
 };
 
 export type Scopes = Scopes1 | Scopes2;
@@ -104,49 +104,21 @@ export type Scopes = Scopes1 | Scopes2;
  */
 export type AuthToken = {
   /**
-   * The unique identifier of the token.
+   * Timestamp (in milliseconds) of when the token was most recently used.
    */
-  id: string;
-  /**
-   * The human-readable name of the token.
-   */
-  name: string;
-  /**
-   * The type of the token.
-   */
-  type: string;
-  /**
-   * The token's prefix, for identification purposes.
-   */
-  prefix?: string | undefined;
-  /**
-   * The last few characters of the token, for identification purposes.
-   */
-  suffix?: string | undefined;
-  /**
-   * The origin of how the token was created.
-   */
-  origin?: string | undefined;
-  /**
-   * The access scopes granted to the token.
-   */
-  scopes?: Array<Scopes1 | Scopes2> | undefined;
+  activeAt: number;
   /**
    * Timestamp (in milliseconds) of when the token was created.
    */
   createdAt: number;
   /**
-   * Timestamp (in milliseconds) of when the token was most recently used.
-   */
-  activeAt: number;
-  /**
    * Timestamp (in milliseconds) of when the token expires.
    */
   expiresAt?: number | undefined;
   /**
-   * Timestamp (in milliseconds) of when the token was revoked.
+   * The unique identifier of the token.
    */
-  revokedAt?: number | undefined;
+  id: string;
   /**
    * Timestamp (in milliseconds) of when the token was marked as leaked.
    */
@@ -155,6 +127,34 @@ export type AuthToken = {
    * URL where the token was discovered as leaked.
    */
   leakedUrl?: string | undefined;
+  /**
+   * The human-readable name of the token.
+   */
+  name: string;
+  /**
+   * The origin of how the token was created.
+   */
+  origin?: string | undefined;
+  /**
+   * The token's prefix, for identification purposes.
+   */
+  prefix?: string | undefined;
+  /**
+   * Timestamp (in milliseconds) of when the token was revoked.
+   */
+  revokedAt?: number | undefined;
+  /**
+   * The access scopes granted to the token.
+   */
+  scopes?: Array<Scopes1 | Scopes2> | undefined;
+  /**
+   * The last few characters of the token, for identification purposes.
+   */
+  suffix?: string | undefined;
+  /**
+   * The type of the token.
+   */
+  type: string;
 };
 
 /** @internal */
@@ -165,11 +165,11 @@ export const AuthTokenScopesOrigin$inboundSchema: z.ZodNativeEnum<
 /** @internal */
 export const Scopes2$inboundSchema: z.ZodType<Scopes2, z.ZodTypeDef, unknown> =
   z.object({
-    type: types.literal("team"),
-    teamId: types.string(),
-    origin: types.optional(AuthTokenScopesOrigin$inboundSchema),
     createdAt: types.number(),
     expiresAt: types.optional(types.number()),
+    origin: types.optional(AuthTokenScopesOrigin$inboundSchema),
+    teamId: types.string(),
+    type: types.literal("team"),
   });
 
 export function scopes2FromJSON(
@@ -183,6 +183,10 @@ export function scopes2FromJSON(
 }
 
 /** @internal */
+export const ScopesOrigin$inboundSchema: z.ZodNativeEnum<typeof ScopesOrigin> =
+  z.nativeEnum(ScopesOrigin);
+
+/** @internal */
 export const AuthTokenScopes1Origin$inboundSchema: z.ZodNativeEnum<
   typeof AuthTokenScopes1Origin
 > = z.nativeEnum(AuthTokenScopes1Origin);
@@ -190,9 +194,9 @@ export const AuthTokenScopes1Origin$inboundSchema: z.ZodNativeEnum<
 /** @internal */
 export const Sudo$inboundSchema: z.ZodType<Sudo, z.ZodTypeDef, unknown> = z
   .object({
+    expiresAt: types.number(),
     origin: AuthTokenScopes1Origin$inboundSchema,
     verifiedAt: types.optional(types.number()),
-    expiresAt: types.number(),
   });
 
 export function sudoFromJSON(
@@ -206,17 +210,13 @@ export function sudoFromJSON(
 }
 
 /** @internal */
-export const ScopesOrigin$inboundSchema: z.ZodNativeEnum<typeof ScopesOrigin> =
-  z.nativeEnum(ScopesOrigin);
-
-/** @internal */
 export const Scopes1$inboundSchema: z.ZodType<Scopes1, z.ZodTypeDef, unknown> =
   z.object({
-    type: types.literal("user"),
-    sudo: types.optional(z.lazy(() => Sudo$inboundSchema)),
-    origin: types.optional(ScopesOrigin$inboundSchema),
     createdAt: types.number(),
     expiresAt: types.optional(types.number()),
+    origin: types.optional(ScopesOrigin$inboundSchema),
+    sudo: types.optional(z.lazy(() => Sudo$inboundSchema)),
+    type: types.literal("user"),
   });
 
 export function scopes1FromJSON(
@@ -252,12 +252,16 @@ export const AuthToken$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  activeAt: types.number(),
+  createdAt: types.number(),
+  expiresAt: types.optional(types.number()),
   id: types.string(),
+  leakedAt: types.optional(types.number()),
+  leakedUrl: types.optional(types.string()),
   name: types.string(),
-  type: types.string(),
-  prefix: types.optional(types.string()),
-  suffix: types.optional(types.string()),
   origin: types.optional(types.string()),
+  prefix: types.optional(types.string()),
+  revokedAt: types.optional(types.number()),
   scopes: types.optional(
     z.array(z.union([
       z.lazy(() => Scopes1$inboundSchema),
@@ -266,12 +270,8 @@ export const AuthToken$inboundSchema: z.ZodType<
       ),
     ])),
   ),
-  createdAt: types.number(),
-  activeAt: types.number(),
-  expiresAt: types.optional(types.number()),
-  revokedAt: types.optional(types.number()),
-  leakedAt: types.optional(types.number()),
-  leakedUrl: types.optional(types.string()),
+  suffix: types.optional(types.string()),
+  type: types.string(),
 });
 
 export function authTokenFromJSON(

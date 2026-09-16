@@ -10,40 +10,6 @@ import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
-export type Value =
-  | string
-  | number
-  | { [k: string]: any }
-  | Array<any>
-  | boolean;
-
-export type Variants = {
-  description?: string | undefined;
-  label?: string | undefined;
-  value: string | number | { [k: string]: any } | Array<any> | boolean | null;
-  id: string;
-};
-
-export type Reuse = {
-  active: boolean;
-  environment: string;
-};
-
-export type Targets = {
-  note?: string | undefined;
-  value: string;
-};
-
-export const FlagType = {
-  Variant: "variant",
-} as const;
-export type FlagType = ClosedEnum<typeof FlagType>;
-
-export type PausedOutcome = {
-  type: FlagType;
-  variantId: string;
-};
-
 export type Fallthrough4 = {
   type: "experiment";
 };
@@ -56,24 +22,24 @@ export type FlagFallthroughEnvironments3Type = ClosedEnum<
 >;
 
 export type FallthroughBase = {
-  type: FlagFallthroughEnvironments3Type;
-  kind: string;
   attribute: string;
+  kind: string;
+  type: FlagFallthroughEnvironments3Type;
 };
 
 export type Slots = {
-  promille: number;
   durationMs: number;
+  promille: number;
 };
 
 export type Fallthrough3 = {
-  type: "rollout";
   base: FallthroughBase;
   defaultVariantId: string;
-  startTimestamp: number;
   rollFromVariantId: string;
   rollToVariantId: string;
   slots: Array<Slots>;
+  startTimestamp: number;
+  type: "rollout";
 };
 
 export const FlagFallthroughEnvironments2Type = {
@@ -84,16 +50,16 @@ export type FlagFallthroughEnvironments2Type = ClosedEnum<
 >;
 
 export type Base = {
-  type: FlagFallthroughEnvironments2Type;
-  kind: string;
   attribute: string;
+  kind: string;
+  type: FlagFallthroughEnvironments2Type;
 };
 
 export type Fallthrough2 = {
-  type: "split";
   base: Base;
-  weights: { [k: string]: number };
   defaultVariantId: string;
+  type: "split";
+  weights: { [k: string]: number };
 };
 
 export type Fallthrough1 = {
@@ -107,118 +73,20 @@ export type Fallthrough =
   | Fallthrough3
   | Fallthrough4;
 
-export type Outcome4 = {
-  type: "experiment";
-};
-
-export const FlagOutcomeEnvironmentsRules3Type = {
-  Entity: "entity",
+export const FlagType = {
+  Variant: "variant",
 } as const;
-export type FlagOutcomeEnvironmentsRules3Type = ClosedEnum<
-  typeof FlagOutcomeEnvironmentsRules3Type
->;
+export type FlagType = ClosedEnum<typeof FlagType>;
 
-export type FlagOutcomeBase = {
-  type: FlagOutcomeEnvironmentsRules3Type;
-  kind: string;
-  attribute: string;
-};
-
-export type OutcomeSlots = {
-  promille: number;
-  durationMs: number;
-};
-
-export type Outcome3 = {
-  type: "rollout";
-  base: FlagOutcomeBase;
-  defaultVariantId: string;
-  startTimestamp: number;
-  rollFromVariantId: string;
-  rollToVariantId: string;
-  slots: Array<OutcomeSlots>;
-};
-
-export const FlagOutcomeEnvironmentsRules2Type = {
-  Entity: "entity",
-} as const;
-export type FlagOutcomeEnvironmentsRules2Type = ClosedEnum<
-  typeof FlagOutcomeEnvironmentsRules2Type
->;
-
-export type OutcomeBase = {
-  type: FlagOutcomeEnvironmentsRules2Type;
-  kind: string;
-  attribute: string;
-};
-
-export type Outcome2 = {
-  type: "split";
-  base: OutcomeBase;
-  weights: { [k: string]: number };
-  defaultVariantId: string;
-};
-
-export type Outcome1 = {
-  type: "variant";
+export type PausedOutcome = {
+  type: FlagType;
   variantId: string;
 };
 
-export type FlagOutcome = Outcome1 | Outcome2 | Outcome3 | Outcome4;
-
-export const FlagRhsType = {
-  Regex: "regex",
-} as const;
-export type FlagRhsType = ClosedEnum<typeof FlagRhsType>;
-
-export type Rhs4 = {
-  type: FlagRhsType;
-  pattern: string;
-  flags: string;
+export type Reuse = {
+  active: boolean;
+  environment: string;
 };
-
-export const RhsType = {
-  List: "list",
-  ListInline: "list/inline",
-} as const;
-export type RhsType = ClosedEnum<typeof RhsType>;
-
-export type Items2 = {
-  label?: string | undefined;
-  note?: string | undefined;
-  value: string;
-};
-
-export type Items1 = {
-  label?: string | undefined;
-  note?: string | undefined;
-  value: number;
-};
-
-export type RhsItems = Items1 | Items2;
-
-export type Rhs3 = {
-  type: RhsType;
-  items: Array<Items1 | Items2>;
-};
-
-export type Rhs = Rhs4 | Rhs3 | string | number | boolean;
-
-export type CmpOptions = {
-  ignoreCase?: boolean | undefined;
-};
-
-export type Lhs2 = {
-  type: "entity";
-  kind: string;
-  attribute: string;
-};
-
-export type Lhs1 = {
-  type: "segment";
-};
-
-export type Lhs = Lhs1 | Lhs2;
 
 export const Cmp = {
   NotContains: "!contains",
@@ -247,29 +115,147 @@ export const Cmp = {
 } as const;
 export type Cmp = ClosedEnum<typeof Cmp>;
 
-export type Conditions = {
-  rhs?: Rhs4 | Rhs3 | string | number | boolean | undefined;
-  cmpOptions?: CmpOptions | undefined;
-  lhs: Lhs1 | Lhs2;
-  cmp: Cmp;
+export type CmpOptions = {
+  ignoreCase?: boolean | undefined;
 };
 
+export type Lhs2 = {
+  attribute: string;
+  kind: string;
+  type: "entity";
+};
+
+export type Lhs1 = {
+  type: "segment";
+};
+
+export type Lhs = Lhs1 | Lhs2;
+
+export const FlagRhsType = {
+  Regex: "regex",
+} as const;
+export type FlagRhsType = ClosedEnum<typeof FlagRhsType>;
+
+export type Rhs4 = {
+  flags: string;
+  pattern: string;
+  type: FlagRhsType;
+};
+
+export type Items2 = {
+  label?: string | undefined;
+  note?: string | undefined;
+  value: string;
+};
+
+export type Items1 = {
+  label?: string | undefined;
+  note?: string | undefined;
+  value: number;
+};
+
+export type RhsItems = Items1 | Items2;
+
+export const RhsType = {
+  List: "list",
+  ListInline: "list/inline",
+} as const;
+export type RhsType = ClosedEnum<typeof RhsType>;
+
+export type Rhs3 = {
+  items: Array<Items1 | Items2>;
+  type: RhsType;
+};
+
+export type Rhs = Rhs4 | Rhs3 | string | number | boolean;
+
+export type Conditions = {
+  cmp: Cmp;
+  cmpOptions?: CmpOptions | undefined;
+  lhs: Lhs1 | Lhs2;
+  rhs?: Rhs4 | Rhs3 | string | number | boolean | undefined;
+};
+
+export type Outcome4 = {
+  type: "experiment";
+};
+
+export const FlagOutcomeEnvironmentsRules3Type = {
+  Entity: "entity",
+} as const;
+export type FlagOutcomeEnvironmentsRules3Type = ClosedEnum<
+  typeof FlagOutcomeEnvironmentsRules3Type
+>;
+
+export type FlagOutcomeBase = {
+  attribute: string;
+  kind: string;
+  type: FlagOutcomeEnvironmentsRules3Type;
+};
+
+export type OutcomeSlots = {
+  durationMs: number;
+  promille: number;
+};
+
+export type Outcome3 = {
+  base: FlagOutcomeBase;
+  defaultVariantId: string;
+  rollFromVariantId: string;
+  rollToVariantId: string;
+  slots: Array<OutcomeSlots>;
+  startTimestamp: number;
+  type: "rollout";
+};
+
+export const FlagOutcomeEnvironmentsRules2Type = {
+  Entity: "entity",
+} as const;
+export type FlagOutcomeEnvironmentsRules2Type = ClosedEnum<
+  typeof FlagOutcomeEnvironmentsRules2Type
+>;
+
+export type OutcomeBase = {
+  attribute: string;
+  kind: string;
+  type: FlagOutcomeEnvironmentsRules2Type;
+};
+
+export type Outcome2 = {
+  base: OutcomeBase;
+  defaultVariantId: string;
+  type: "split";
+  weights: { [k: string]: number };
+};
+
+export type Outcome1 = {
+  type: "variant";
+  variantId: string;
+};
+
+export type FlagOutcome = Outcome1 | Outcome2 | Outcome3 | Outcome4;
+
 export type Rules = {
+  conditions: Array<Conditions>;
   id: string;
   outcome: Outcome1 | Outcome2 | Outcome3 | Outcome4;
-  conditions: Array<Conditions>;
+};
+
+export type Targets = {
+  note?: string | undefined;
+  value: string;
 };
 
 export type FlagEnvironments = {
+  active: boolean;
+  fallthrough: Fallthrough1 | Fallthrough2 | Fallthrough3 | Fallthrough4;
+  pausedOutcome: PausedOutcome;
   reuse?: Reuse | undefined;
+  revision?: number | undefined;
+  rules: Array<Rules>;
   targets?:
     | { [k: string]: { [k: string]: { [k: string]: Array<Targets> } } }
     | undefined;
-  revision?: number | undefined;
-  pausedOutcome: PausedOutcome;
-  fallthrough: Fallthrough1 | Fallthrough2 | Fallthrough3 | Fallthrough4;
-  active: boolean;
-  rules: Array<Rules>;
 };
 
 export const Kind = {
@@ -291,6 +277,20 @@ export const TypeName = {
 } as const;
 export type TypeName = ClosedEnum<typeof TypeName>;
 
+export type Value =
+  | string
+  | number
+  | { [k: string]: any }
+  | Array<any>
+  | boolean;
+
+export type Variants = {
+  description?: string | undefined;
+  id: string;
+  label?: string | undefined;
+  value: string | number | { [k: string]: any } | Array<any> | boolean | null;
+};
+
 export type Creator = {
   id: string;
   name: string;
@@ -301,135 +301,27 @@ export type Metadata = {
 };
 
 export type Flag = {
+  createdAt: number;
+  createdBy: string;
   description?: string | undefined;
-  variants: Array<Variants>;
-  id: string;
   environments: { [k: string]: FlagEnvironments };
+  id: string;
   kind: Kind;
+  maintainerIds?: Array<string> | undefined;
+  ownerId: string;
+  permanent?: boolean | undefined;
+  projectId: string;
   revision: number;
   seed: number;
-  state: State;
-  maintainerIds?: Array<string> | undefined;
-  permanent?: boolean | undefined;
-  tags?: Array<string> | undefined;
   slug: string;
-  createdAt: number;
+  state: State;
+  tags?: Array<string> | undefined;
+  typeName: TypeName;
   updatedAt: number;
   updatedBy?: string | undefined;
-  createdBy: string;
-  ownerId: string;
-  projectId: string;
-  typeName: TypeName;
+  variants: Array<Variants>;
   metadata?: Metadata | undefined;
 };
-
-/** @internal */
-export const Value$inboundSchema: z.ZodType<Value, z.ZodTypeDef, unknown> =
-  smartUnion([
-    types.string(),
-    types.number(),
-    z.record(z.any()),
-    z.array(z.any()),
-    types.boolean(),
-  ]);
-
-export function valueFromJSON(
-  jsonString: string,
-): SafeParseResult<Value, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Value$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Value' from JSON`,
-  );
-}
-
-/** @internal */
-export const Variants$inboundSchema: z.ZodType<
-  Variants,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  description: types.optional(types.string()),
-  label: types.optional(types.string()),
-  value: types.nullable(
-    smartUnion([
-      types.string(),
-      types.number(),
-      z.record(z.any()),
-      z.array(z.any()),
-      types.boolean(),
-    ]),
-  ),
-  id: types.string(),
-});
-
-export function variantsFromJSON(
-  jsonString: string,
-): SafeParseResult<Variants, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Variants$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Variants' from JSON`,
-  );
-}
-
-/** @internal */
-export const Reuse$inboundSchema: z.ZodType<Reuse, z.ZodTypeDef, unknown> = z
-  .object({
-    active: types.boolean(),
-    environment: types.string(),
-  });
-
-export function reuseFromJSON(
-  jsonString: string,
-): SafeParseResult<Reuse, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Reuse$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Reuse' from JSON`,
-  );
-}
-
-/** @internal */
-export const Targets$inboundSchema: z.ZodType<Targets, z.ZodTypeDef, unknown> =
-  z.object({
-    note: types.optional(types.string()),
-    value: types.string(),
-  });
-
-export function targetsFromJSON(
-  jsonString: string,
-): SafeParseResult<Targets, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Targets$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Targets' from JSON`,
-  );
-}
-
-/** @internal */
-export const FlagType$inboundSchema: z.ZodNativeEnum<typeof FlagType> = z
-  .nativeEnum(FlagType);
-
-/** @internal */
-export const PausedOutcome$inboundSchema: z.ZodType<
-  PausedOutcome,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: FlagType$inboundSchema,
-  variantId: types.string(),
-});
-
-export function pausedOutcomeFromJSON(
-  jsonString: string,
-): SafeParseResult<PausedOutcome, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PausedOutcome$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PausedOutcome' from JSON`,
-  );
-}
 
 /** @internal */
 export const Fallthrough4$inboundSchema: z.ZodType<
@@ -461,9 +353,9 @@ export const FallthroughBase$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: FlagFallthroughEnvironments3Type$inboundSchema,
-  kind: types.string(),
   attribute: types.string(),
+  kind: types.string(),
+  type: FlagFallthroughEnvironments3Type$inboundSchema,
 });
 
 export function fallthroughBaseFromJSON(
@@ -479,8 +371,8 @@ export function fallthroughBaseFromJSON(
 /** @internal */
 export const Slots$inboundSchema: z.ZodType<Slots, z.ZodTypeDef, unknown> = z
   .object({
-    promille: types.number(),
     durationMs: types.number(),
+    promille: types.number(),
   });
 
 export function slotsFromJSON(
@@ -499,13 +391,13 @@ export const Fallthrough3$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("rollout"),
   base: z.lazy(() => FallthroughBase$inboundSchema),
   defaultVariantId: types.string(),
-  startTimestamp: types.number(),
   rollFromVariantId: types.string(),
   rollToVariantId: types.string(),
   slots: z.array(z.lazy(() => Slots$inboundSchema)),
+  startTimestamp: types.number(),
+  type: types.literal("rollout"),
 });
 
 export function fallthrough3FromJSON(
@@ -526,9 +418,9 @@ export const FlagFallthroughEnvironments2Type$inboundSchema: z.ZodNativeEnum<
 /** @internal */
 export const Base$inboundSchema: z.ZodType<Base, z.ZodTypeDef, unknown> = z
   .object({
-    type: FlagFallthroughEnvironments2Type$inboundSchema,
-    kind: types.string(),
     attribute: types.string(),
+    kind: types.string(),
+    type: FlagFallthroughEnvironments2Type$inboundSchema,
   });
 
 export function baseFromJSON(
@@ -547,10 +439,10 @@ export const Fallthrough2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("split"),
   base: z.lazy(() => Base$inboundSchema),
-  weights: z.record(types.number()),
   defaultVariantId: types.string(),
+  type: types.literal("split"),
+  weights: z.record(types.number()),
 });
 
 export function fallthrough2FromJSON(
@@ -606,182 +498,114 @@ export function fallthroughFromJSON(
 }
 
 /** @internal */
-export const Outcome4$inboundSchema: z.ZodType<
-  Outcome4,
+export const FlagType$inboundSchema: z.ZodNativeEnum<typeof FlagType> = z
+  .nativeEnum(FlagType);
+
+/** @internal */
+export const PausedOutcome$inboundSchema: z.ZodType<
+  PausedOutcome,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: types.literal("experiment"),
-});
-
-export function outcome4FromJSON(
-  jsonString: string,
-): SafeParseResult<Outcome4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Outcome4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Outcome4' from JSON`,
-  );
-}
-
-/** @internal */
-export const FlagOutcomeEnvironmentsRules3Type$inboundSchema: z.ZodNativeEnum<
-  typeof FlagOutcomeEnvironmentsRules3Type
-> = z.nativeEnum(FlagOutcomeEnvironmentsRules3Type);
-
-/** @internal */
-export const FlagOutcomeBase$inboundSchema: z.ZodType<
-  FlagOutcomeBase,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: FlagOutcomeEnvironmentsRules3Type$inboundSchema,
-  kind: types.string(),
-  attribute: types.string(),
-});
-
-export function flagOutcomeBaseFromJSON(
-  jsonString: string,
-): SafeParseResult<FlagOutcomeBase, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => FlagOutcomeBase$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'FlagOutcomeBase' from JSON`,
-  );
-}
-
-/** @internal */
-export const OutcomeSlots$inboundSchema: z.ZodType<
-  OutcomeSlots,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  promille: types.number(),
-  durationMs: types.number(),
-});
-
-export function outcomeSlotsFromJSON(
-  jsonString: string,
-): SafeParseResult<OutcomeSlots, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => OutcomeSlots$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'OutcomeSlots' from JSON`,
-  );
-}
-
-/** @internal */
-export const Outcome3$inboundSchema: z.ZodType<
-  Outcome3,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: types.literal("rollout"),
-  base: z.lazy(() => FlagOutcomeBase$inboundSchema),
-  defaultVariantId: types.string(),
-  startTimestamp: types.number(),
-  rollFromVariantId: types.string(),
-  rollToVariantId: types.string(),
-  slots: z.array(z.lazy(() => OutcomeSlots$inboundSchema)),
-});
-
-export function outcome3FromJSON(
-  jsonString: string,
-): SafeParseResult<Outcome3, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Outcome3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Outcome3' from JSON`,
-  );
-}
-
-/** @internal */
-export const FlagOutcomeEnvironmentsRules2Type$inboundSchema: z.ZodNativeEnum<
-  typeof FlagOutcomeEnvironmentsRules2Type
-> = z.nativeEnum(FlagOutcomeEnvironmentsRules2Type);
-
-/** @internal */
-export const OutcomeBase$inboundSchema: z.ZodType<
-  OutcomeBase,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: FlagOutcomeEnvironmentsRules2Type$inboundSchema,
-  kind: types.string(),
-  attribute: types.string(),
-});
-
-export function outcomeBaseFromJSON(
-  jsonString: string,
-): SafeParseResult<OutcomeBase, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => OutcomeBase$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'OutcomeBase' from JSON`,
-  );
-}
-
-/** @internal */
-export const Outcome2$inboundSchema: z.ZodType<
-  Outcome2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: types.literal("split"),
-  base: z.lazy(() => OutcomeBase$inboundSchema),
-  weights: z.record(types.number()),
-  defaultVariantId: types.string(),
-});
-
-export function outcome2FromJSON(
-  jsonString: string,
-): SafeParseResult<Outcome2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Outcome2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Outcome2' from JSON`,
-  );
-}
-
-/** @internal */
-export const Outcome1$inboundSchema: z.ZodType<
-  Outcome1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: types.literal("variant"),
+  type: FlagType$inboundSchema,
   variantId: types.string(),
 });
 
-export function outcome1FromJSON(
+export function pausedOutcomeFromJSON(
   jsonString: string,
-): SafeParseResult<Outcome1, SDKValidationError> {
+): SafeParseResult<PausedOutcome, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Outcome1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Outcome1' from JSON`,
+    (x) => PausedOutcome$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PausedOutcome' from JSON`,
   );
 }
 
 /** @internal */
-export const FlagOutcome$inboundSchema: z.ZodType<
-  FlagOutcome,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => Outcome1$inboundSchema),
-  z.lazy(() => Outcome2$inboundSchema),
-  z.lazy(() => Outcome3$inboundSchema),
-  z.lazy(() => Outcome4$inboundSchema),
-]);
+export const Reuse$inboundSchema: z.ZodType<Reuse, z.ZodTypeDef, unknown> = z
+  .object({
+    active: types.boolean(),
+    environment: types.string(),
+  });
 
-export function flagOutcomeFromJSON(
+export function reuseFromJSON(
   jsonString: string,
-): SafeParseResult<FlagOutcome, SDKValidationError> {
+): SafeParseResult<Reuse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => FlagOutcome$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'FlagOutcome' from JSON`,
+    (x) => Reuse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Reuse' from JSON`,
+  );
+}
+
+/** @internal */
+export const Cmp$inboundSchema: z.ZodNativeEnum<typeof Cmp> = z.nativeEnum(Cmp);
+
+/** @internal */
+export const CmpOptions$inboundSchema: z.ZodType<
+  CmpOptions,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  ignoreCase: types.optional(types.boolean()),
+});
+
+export function cmpOptionsFromJSON(
+  jsonString: string,
+): SafeParseResult<CmpOptions, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CmpOptions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CmpOptions' from JSON`,
+  );
+}
+
+/** @internal */
+export const Lhs2$inboundSchema: z.ZodType<Lhs2, z.ZodTypeDef, unknown> = z
+  .object({
+    attribute: types.string(),
+    kind: types.string(),
+    type: types.literal("entity"),
+  });
+
+export function lhs2FromJSON(
+  jsonString: string,
+): SafeParseResult<Lhs2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Lhs2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Lhs2' from JSON`,
+  );
+}
+
+/** @internal */
+export const Lhs1$inboundSchema: z.ZodType<Lhs1, z.ZodTypeDef, unknown> = z
+  .object({
+    type: types.literal("segment"),
+  });
+
+export function lhs1FromJSON(
+  jsonString: string,
+): SafeParseResult<Lhs1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Lhs1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Lhs1' from JSON`,
+  );
+}
+
+/** @internal */
+export const Lhs$inboundSchema: z.ZodType<Lhs, z.ZodTypeDef, unknown> = z.union(
+  [z.lazy(() => Lhs1$inboundSchema), z.lazy(() => Lhs2$inboundSchema)],
+);
+
+export function lhsFromJSON(
+  jsonString: string,
+): SafeParseResult<Lhs, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Lhs$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Lhs' from JSON`,
   );
 }
 
@@ -792,9 +616,9 @@ export const FlagRhsType$inboundSchema: z.ZodNativeEnum<typeof FlagRhsType> = z
 /** @internal */
 export const Rhs4$inboundSchema: z.ZodType<Rhs4, z.ZodTypeDef, unknown> = z
   .object({
-    type: FlagRhsType$inboundSchema,
-    pattern: types.string(),
     flags: types.string(),
+    pattern: types.string(),
+    type: FlagRhsType$inboundSchema,
   });
 
 export function rhs4FromJSON(
@@ -806,10 +630,6 @@ export function rhs4FromJSON(
     `Failed to parse 'Rhs4' from JSON`,
   );
 }
-
-/** @internal */
-export const RhsType$inboundSchema: z.ZodNativeEnum<typeof RhsType> = z
-  .nativeEnum(RhsType);
 
 /** @internal */
 export const Items2$inboundSchema: z.ZodType<Items2, z.ZodTypeDef, unknown> = z
@@ -868,15 +688,19 @@ export function rhsItemsFromJSON(
 }
 
 /** @internal */
+export const RhsType$inboundSchema: z.ZodNativeEnum<typeof RhsType> = z
+  .nativeEnum(RhsType);
+
+/** @internal */
 export const Rhs3$inboundSchema: z.ZodType<Rhs3, z.ZodTypeDef, unknown> = z
   .object({
-    type: RhsType$inboundSchema,
     items: z.array(
       smartUnion([
         z.lazy(() => Items1$inboundSchema),
         z.lazy(() => Items2$inboundSchema),
       ]),
     ),
+    type: RhsType$inboundSchema,
   });
 
 export function rhs3FromJSON(
@@ -910,82 +734,17 @@ export function rhsFromJSON(
 }
 
 /** @internal */
-export const CmpOptions$inboundSchema: z.ZodType<
-  CmpOptions,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  ignoreCase: types.optional(types.boolean()),
-});
-
-export function cmpOptionsFromJSON(
-  jsonString: string,
-): SafeParseResult<CmpOptions, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CmpOptions$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CmpOptions' from JSON`,
-  );
-}
-
-/** @internal */
-export const Lhs2$inboundSchema: z.ZodType<Lhs2, z.ZodTypeDef, unknown> = z
-  .object({
-    type: types.literal("entity"),
-    kind: types.string(),
-    attribute: types.string(),
-  });
-
-export function lhs2FromJSON(
-  jsonString: string,
-): SafeParseResult<Lhs2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Lhs2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Lhs2' from JSON`,
-  );
-}
-
-/** @internal */
-export const Lhs1$inboundSchema: z.ZodType<Lhs1, z.ZodTypeDef, unknown> = z
-  .object({
-    type: types.literal("segment"),
-  });
-
-export function lhs1FromJSON(
-  jsonString: string,
-): SafeParseResult<Lhs1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Lhs1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Lhs1' from JSON`,
-  );
-}
-
-/** @internal */
-export const Lhs$inboundSchema: z.ZodType<Lhs, z.ZodTypeDef, unknown> = z.union(
-  [z.lazy(() => Lhs1$inboundSchema), z.lazy(() => Lhs2$inboundSchema)],
-);
-
-export function lhsFromJSON(
-  jsonString: string,
-): SafeParseResult<Lhs, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Lhs$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Lhs' from JSON`,
-  );
-}
-
-/** @internal */
-export const Cmp$inboundSchema: z.ZodNativeEnum<typeof Cmp> = z.nativeEnum(Cmp);
-
-/** @internal */
 export const Conditions$inboundSchema: z.ZodType<
   Conditions,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  cmp: Cmp$inboundSchema,
+  cmpOptions: types.optional(z.lazy(() => CmpOptions$inboundSchema)),
+  lhs: z.union([
+    z.lazy(() => Lhs1$inboundSchema),
+    z.lazy(() => Lhs2$inboundSchema),
+  ]),
   rhs: types.optional(
     smartUnion([
       z.lazy(() => Rhs4$inboundSchema),
@@ -995,12 +754,6 @@ export const Conditions$inboundSchema: z.ZodType<
       types.boolean(),
     ]),
   ),
-  cmpOptions: types.optional(z.lazy(() => CmpOptions$inboundSchema)),
-  lhs: z.union([
-    z.lazy(() => Lhs1$inboundSchema),
-    z.lazy(() => Lhs2$inboundSchema),
-  ]),
-  cmp: Cmp$inboundSchema,
 });
 
 export function conditionsFromJSON(
@@ -1014,8 +767,189 @@ export function conditionsFromJSON(
 }
 
 /** @internal */
+export const Outcome4$inboundSchema: z.ZodType<
+  Outcome4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("experiment"),
+});
+
+export function outcome4FromJSON(
+  jsonString: string,
+): SafeParseResult<Outcome4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Outcome4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Outcome4' from JSON`,
+  );
+}
+
+/** @internal */
+export const FlagOutcomeEnvironmentsRules3Type$inboundSchema: z.ZodNativeEnum<
+  typeof FlagOutcomeEnvironmentsRules3Type
+> = z.nativeEnum(FlagOutcomeEnvironmentsRules3Type);
+
+/** @internal */
+export const FlagOutcomeBase$inboundSchema: z.ZodType<
+  FlagOutcomeBase,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  attribute: types.string(),
+  kind: types.string(),
+  type: FlagOutcomeEnvironmentsRules3Type$inboundSchema,
+});
+
+export function flagOutcomeBaseFromJSON(
+  jsonString: string,
+): SafeParseResult<FlagOutcomeBase, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FlagOutcomeBase$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FlagOutcomeBase' from JSON`,
+  );
+}
+
+/** @internal */
+export const OutcomeSlots$inboundSchema: z.ZodType<
+  OutcomeSlots,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  durationMs: types.number(),
+  promille: types.number(),
+});
+
+export function outcomeSlotsFromJSON(
+  jsonString: string,
+): SafeParseResult<OutcomeSlots, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OutcomeSlots$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OutcomeSlots' from JSON`,
+  );
+}
+
+/** @internal */
+export const Outcome3$inboundSchema: z.ZodType<
+  Outcome3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  base: z.lazy(() => FlagOutcomeBase$inboundSchema),
+  defaultVariantId: types.string(),
+  rollFromVariantId: types.string(),
+  rollToVariantId: types.string(),
+  slots: z.array(z.lazy(() => OutcomeSlots$inboundSchema)),
+  startTimestamp: types.number(),
+  type: types.literal("rollout"),
+});
+
+export function outcome3FromJSON(
+  jsonString: string,
+): SafeParseResult<Outcome3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Outcome3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Outcome3' from JSON`,
+  );
+}
+
+/** @internal */
+export const FlagOutcomeEnvironmentsRules2Type$inboundSchema: z.ZodNativeEnum<
+  typeof FlagOutcomeEnvironmentsRules2Type
+> = z.nativeEnum(FlagOutcomeEnvironmentsRules2Type);
+
+/** @internal */
+export const OutcomeBase$inboundSchema: z.ZodType<
+  OutcomeBase,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  attribute: types.string(),
+  kind: types.string(),
+  type: FlagOutcomeEnvironmentsRules2Type$inboundSchema,
+});
+
+export function outcomeBaseFromJSON(
+  jsonString: string,
+): SafeParseResult<OutcomeBase, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OutcomeBase$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OutcomeBase' from JSON`,
+  );
+}
+
+/** @internal */
+export const Outcome2$inboundSchema: z.ZodType<
+  Outcome2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  base: z.lazy(() => OutcomeBase$inboundSchema),
+  defaultVariantId: types.string(),
+  type: types.literal("split"),
+  weights: z.record(types.number()),
+});
+
+export function outcome2FromJSON(
+  jsonString: string,
+): SafeParseResult<Outcome2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Outcome2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Outcome2' from JSON`,
+  );
+}
+
+/** @internal */
+export const Outcome1$inboundSchema: z.ZodType<
+  Outcome1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("variant"),
+  variantId: types.string(),
+});
+
+export function outcome1FromJSON(
+  jsonString: string,
+): SafeParseResult<Outcome1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Outcome1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Outcome1' from JSON`,
+  );
+}
+
+/** @internal */
+export const FlagOutcome$inboundSchema: z.ZodType<
+  FlagOutcome,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => Outcome1$inboundSchema),
+  z.lazy(() => Outcome2$inboundSchema),
+  z.lazy(() => Outcome3$inboundSchema),
+  z.lazy(() => Outcome4$inboundSchema),
+]);
+
+export function flagOutcomeFromJSON(
+  jsonString: string,
+): SafeParseResult<FlagOutcome, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FlagOutcome$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FlagOutcome' from JSON`,
+  );
+}
+
+/** @internal */
 export const Rules$inboundSchema: z.ZodType<Rules, z.ZodTypeDef, unknown> = z
   .object({
+    conditions: z.array(z.lazy(() => Conditions$inboundSchema)),
     id: types.string(),
     outcome: z.union([
       z.lazy(() => Outcome1$inboundSchema),
@@ -1023,7 +957,6 @@ export const Rules$inboundSchema: z.ZodType<Rules, z.ZodTypeDef, unknown> = z
       z.lazy(() => Outcome3$inboundSchema),
       z.lazy(() => Outcome4$inboundSchema),
     ]),
-    conditions: z.array(z.lazy(() => Conditions$inboundSchema)),
   });
 
 export function rulesFromJSON(
@@ -1037,25 +970,42 @@ export function rulesFromJSON(
 }
 
 /** @internal */
+export const Targets$inboundSchema: z.ZodType<Targets, z.ZodTypeDef, unknown> =
+  z.object({
+    note: types.optional(types.string()),
+    value: types.string(),
+  });
+
+export function targetsFromJSON(
+  jsonString: string,
+): SafeParseResult<Targets, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Targets$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Targets' from JSON`,
+  );
+}
+
+/** @internal */
 export const FlagEnvironments$inboundSchema: z.ZodType<
   FlagEnvironments,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  reuse: types.optional(z.lazy(() => Reuse$inboundSchema)),
-  targets: types.optional(
-    z.record(z.record(z.record(z.array(z.lazy(() => Targets$inboundSchema))))),
-  ),
-  revision: types.optional(types.number()),
-  pausedOutcome: z.lazy(() => PausedOutcome$inboundSchema),
+  active: types.boolean(),
   fallthrough: z.union([
     z.lazy(() => Fallthrough1$inboundSchema),
     z.lazy(() => Fallthrough2$inboundSchema),
     z.lazy(() => Fallthrough3$inboundSchema),
     z.lazy(() => Fallthrough4$inboundSchema),
   ]),
-  active: types.boolean(),
+  pausedOutcome: z.lazy(() => PausedOutcome$inboundSchema),
+  reuse: types.optional(z.lazy(() => Reuse$inboundSchema)),
+  revision: types.optional(types.number()),
   rules: z.array(z.lazy(() => Rules$inboundSchema)),
+  targets: types.optional(
+    z.record(z.record(z.record(z.array(z.lazy(() => Targets$inboundSchema))))),
+  ),
 });
 
 export function flagEnvironmentsFromJSON(
@@ -1081,6 +1031,56 @@ export const State$inboundSchema: z.ZodNativeEnum<typeof State> = z.nativeEnum(
 /** @internal */
 export const TypeName$inboundSchema: z.ZodNativeEnum<typeof TypeName> = z
   .nativeEnum(TypeName);
+
+/** @internal */
+export const Value$inboundSchema: z.ZodType<Value, z.ZodTypeDef, unknown> =
+  smartUnion([
+    types.string(),
+    types.number(),
+    z.record(z.any()),
+    z.array(z.any()),
+    types.boolean(),
+  ]);
+
+export function valueFromJSON(
+  jsonString: string,
+): SafeParseResult<Value, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Value$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Value' from JSON`,
+  );
+}
+
+/** @internal */
+export const Variants$inboundSchema: z.ZodType<
+  Variants,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  description: types.optional(types.string()),
+  id: types.string(),
+  label: types.optional(types.string()),
+  value: types.nullable(
+    smartUnion([
+      types.string(),
+      types.number(),
+      z.record(z.any()),
+      z.array(z.any()),
+      types.boolean(),
+    ]),
+  ),
+});
+
+export function variantsFromJSON(
+  jsonString: string,
+): SafeParseResult<Variants, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Variants$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Variants' from JSON`,
+  );
+}
 
 /** @internal */
 export const Creator$inboundSchema: z.ZodType<Creator, z.ZodTypeDef, unknown> =
@@ -1121,25 +1121,25 @@ export function metadataFromJSON(
 /** @internal */
 export const Flag$inboundSchema: z.ZodType<Flag, z.ZodTypeDef, unknown> = z
   .object({
+    createdAt: types.number(),
+    createdBy: types.string(),
     description: types.optional(types.string()),
-    variants: z.array(z.lazy(() => Variants$inboundSchema)),
-    id: types.string(),
     environments: z.record(z.lazy(() => FlagEnvironments$inboundSchema)),
+    id: types.string(),
     kind: Kind$inboundSchema,
+    maintainerIds: types.optional(z.array(types.string())),
+    ownerId: types.string(),
+    permanent: types.optional(types.boolean()),
+    projectId: types.string(),
     revision: types.number(),
     seed: types.number(),
-    state: State$inboundSchema,
-    maintainerIds: types.optional(z.array(types.string())),
-    permanent: types.optional(types.boolean()),
-    tags: types.optional(z.array(types.string())),
     slug: types.string(),
-    createdAt: types.number(),
+    state: State$inboundSchema,
+    tags: types.optional(z.array(types.string())),
+    typeName: TypeName$inboundSchema,
     updatedAt: types.number(),
     updatedBy: types.optional(types.string()),
-    createdBy: types.string(),
-    ownerId: types.string(),
-    projectId: types.string(),
-    typeName: TypeName$inboundSchema,
+    variants: z.array(z.lazy(() => Variants$inboundSchema)),
     metadata: types.optional(z.lazy(() => Metadata$inboundSchema)),
   });
 

@@ -21,11 +21,11 @@ export type GetCertsRequest = {
 };
 
 export type Certs = {
-  id: string;
-  createdAt: number;
-  expiresAt: number;
   autoRenew: boolean;
   cns: Array<string>;
+  createdAt: number;
+  expiresAt: number;
+  id: string;
 };
 
 export type GetCertsResponseBody = {
@@ -61,11 +61,11 @@ export function getCertsRequestToJSON(
 /** @internal */
 export const Certs$inboundSchema: z.ZodType<Certs, z.ZodTypeDef, unknown> = z
   .object({
-    id: types.string(),
-    createdAt: types.number(),
-    expiresAt: types.number(),
     autoRenew: types.boolean(),
     cns: z.array(types.string()),
+    createdAt: types.number(),
+    expiresAt: types.number(),
+    id: types.string(),
   });
 
 export function certsFromJSON(

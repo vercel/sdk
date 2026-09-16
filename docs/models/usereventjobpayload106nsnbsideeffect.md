@@ -5,7 +5,7 @@ Since March 2026 Records a successful NSNB auto-add result so later GitHub PR co
 ## Example Usage
 
 ```typescript
-import { UserEventJobPayload106NsnbSideEffect } from "@vercel/sdk/models/headinfo.js";
+import { UserEventJobPayload106NsnbSideEffect } from "@vercel/sdk/models/onehundred.js";
 
 let value: UserEventJobPayload106NsnbSideEffect = {
   action: "auto-approved-pending-invite",

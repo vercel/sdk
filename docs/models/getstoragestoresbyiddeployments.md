@@ -6,13 +6,8 @@
 import { GetStorageStoresByIdDeployments } from "@vercel/sdk/models/getstoragestoresbyidop.js";
 
 let value: GetStorageStoresByIdDeployments = {
-  required: true,
-  actions: [
-    {
-      slug: "<value>",
-      environments: [],
-    },
-  ],
+  actions: [],
+  required: false,
 };
 ```
 
@@ -20,5 +15,5 @@ let value: GetStorageStoresByIdDeployments = {
 
 | Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
 | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `required`                                                                       | *boolean*                                                                        | :heavy_check_mark:                                                               | N/A                                                                              |
 | `actions`                                                                        | [models.GetStorageStoresByIdActions](../models/getstoragestoresbyidactions.md)[] | :heavy_check_mark:                                                               | N/A                                                                              |
+| `required`                                                                       | *boolean*                                                                        | :heavy_check_mark:                                                               | N/A                                                                              |

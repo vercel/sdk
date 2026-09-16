@@ -5,7 +5,7 @@ Optional explicit format marker. The destination is identified by the presence o
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentDestinationDeploymentsType } from "@vercel/sdk/models/createdeploymentroutesdeploymentshas.js";
+import { CreateDeploymentDestinationDeploymentsType } from "@vercel/sdk/models/createdeploymentresponsebody.js";
 
 let value: CreateDeploymentDestinationDeploymentsType = "service";
 ```

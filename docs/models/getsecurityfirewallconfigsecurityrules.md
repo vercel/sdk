@@ -7,15 +7,15 @@
 
 ```typescript
 const value: models.GetSecurityFirewallConfigRules1 = {
-  id: "<id>",
-  name: "<value>",
+  action: {},
   active: false,
   conditionGroup: [
     {
       conditions: [],
     },
   ],
-  action: {},
+  id: "<id>",
+  name: "<value>",
   valid: true,
   validationErrors: "<value>",
 };
@@ -25,15 +25,15 @@ const value: models.GetSecurityFirewallConfigRules1 = {
 
 ```typescript
 const value: models.GetSecurityFirewallConfigRules2 = {
-  id: "<id>",
-  name: "<value>",
+  action: {},
   active: false,
   conditionGroup: [
     {
       conditions: [],
     },
   ],
-  action: {},
+  id: "<id>",
+  name: "<value>",
   valid: false,
   validationErrors: [
     "<value 1>",

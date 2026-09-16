@@ -7,19 +7,19 @@
 
 ```typescript
 const value: models.Runs1 = {
+  createdAt: 4020.09,
+  deploymentId: "<id>",
   id: "<id>",
   name: "<value>",
   ownerId: "<id>",
-  deploymentId: "<id>",
-  status: "queued",
-  timeout: 3307.59,
-  createdAt: 8886.43,
+  status: "completed",
+  timeout: 8886.43,
   updatedAt: 5816.3,
   checkId: "<id>",
   source: {
-    kind: "integration",
-    integrationId: "<id>",
     integrationConfigurationId: "<id>",
+    integrationId: "<id>",
+    kind: "integration",
   },
 };
 ```
@@ -28,17 +28,17 @@ const value: models.Runs1 = {
 
 ```typescript
 const value: models.Runs2 = {
+  createdAt: 4265.2,
+  deploymentId: "<id>",
   id: "<id>",
   name: "<value>",
   ownerId: "<id>",
-  deploymentId: "<id>",
-  status: "queued",
-  timeout: 7789.84,
-  createdAt: 7213.59,
+  status: "running",
+  timeout: 7213.59,
   updatedAt: 4371.74,
   source: {
-    subKind: "vercel-ci-sentinel",
     origin: "platform",
+    subKind: "vercel-ci-sentinel",
   },
 };
 ```

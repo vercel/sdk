@@ -5,12 +5,12 @@ Caller-side bindings to other services.
 ## Example Usage
 
 ```typescript
-import { GetDeploymentServicesBindings } from "@vercel/sdk/models/getdeploymentmissingdeployments1.js";
+import { GetDeploymentServicesBindings } from "@vercel/sdk/models/getdeploymentservicesfunctions.js";
 
 let value: GetDeploymentServicesBindings = {
-  service: "<value>",
-  format: "url",
   env: "<value>",
+  format: "url",
+  service: "<value>",
 };
 ```
 
@@ -18,7 +18,7 @@ let value: GetDeploymentServicesBindings = {
 
 | Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
 | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `type`                                                                                           | [models.GetDeploymentServicesDeploymentsType](../models/getdeploymentservicesdeploymentstype.md) | :heavy_minus_sign:                                                                               | If present, must be `"service"` for Service-to-Service HTTP bindings.                            |
-| `service`                                                                                        | *string*                                                                                         | :heavy_check_mark:                                                                               | Target service name from `services`.                                                             |
-| `format`                                                                                         | [models.GetDeploymentServicesFormat](../models/getdeploymentservicesformat.md)                   | :heavy_check_mark:                                                                               | Generated value shape, must be `"url"`.                                                          |
 | `env`                                                                                            | *string*                                                                                         | :heavy_check_mark:                                                                               | Environment variable name that will store the generated value                                    |
+| `format`                                                                                         | [models.GetDeploymentServicesFormat](../models/getdeploymentservicesformat.md)                   | :heavy_check_mark:                                                                               | Generated value shape, must be `"url"`.                                                          |
+| `service`                                                                                        | *string*                                                                                         | :heavy_check_mark:                                                                               | Target service name from `services`.                                                             |
+| `type`                                                                                           | [models.GetDeploymentServicesDeploymentsType](../models/getdeploymentservicesdeploymentstype.md) | :heavy_minus_sign:                                                                               | If present, must be `"service"` for Service-to-Service HTTP bindings.                            |

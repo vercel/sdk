@@ -6,8 +6,8 @@
 import { CreateIntegrationStoreDirectSecrets } from "@vercel/sdk/models/createintegrationstoredirectresponsebody.js";
 
 let value: CreateIntegrationStoreDirectSecrets = {
-  name: "<value>",
   length: 1973.38,
+  name: "<value>",
 };
 ```
 
@@ -15,6 +15,6 @@ let value: CreateIntegrationStoreDirectSecrets = {
 
 | Field                  | Type                   | Required               | Description            |
 | ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `name`                 | *string*               | :heavy_check_mark:     | N/A                    |
-| `length`               | *number*               | :heavy_check_mark:     | N/A                    |
 | `frameworkPublishable` | *boolean*              | :heavy_minus_sign:     | N/A                    |
+| `length`               | *number*               | :heavy_check_mark:     | N/A                    |
+| `name`                 | *string*               | :heavy_check_mark:     | N/A                    |

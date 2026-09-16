@@ -11,10 +11,10 @@ Returns the reduced deployment view for anonymous (`vcn_`) callers. Pool-team de
 ```typescript
 const value: models.CreateDeploymentResponseBody1 = {
   aliasAssigned: true,
-  id: "dpl_89qyp1cskzkLrVicDaZoDbjyHuDJ",
-  target: null,
-  readyState: "READY",
   aliasError: null,
+  id: "dpl_89qyp1cskzkLrVicDaZoDbjyHuDJ",
+  readyState: "READY",
+  target: null,
 };
 ```
 
@@ -22,62 +22,56 @@ const value: models.CreateDeploymentResponseBody1 = {
 
 ```typescript
 const value: models.CreateDeploymentResponseBody2 = {
-  build: {
-    env: [
-      "<value 1>",
-      "<value 2>",
-    ],
-  },
-  env: [],
-  inspectorUrl: "https://posh-remark.info/",
-  isInConcurrentBuildsQueue: false,
-  isInSystemBuildsQueue: false,
-  projectSettings: {},
   alias: [],
   aliasAssigned: true,
-  bootedAt: 4957.96,
-  buildingAt: 7594.9,
-  buildSkipped: false,
+  aliasError: null,
+  bootedAt: 6328.25,
+  build: {
+    env: [],
+  },
+  buildingAt: 9689.99,
+  buildSkipped: true,
+  createdAt: 1540257589405,
+  createdIn: "<value>",
   creator: {
     uid: "96SnxkFiMyVKsK3pnoHfx3Hz",
     username: "john-doe",
   },
+  deletedAt: 1540257589405,
+  env: [
+    "<value 1>",
+    "<value 2>",
+  ],
+  id: "dpl_89qyp1cskzkLrVicDaZoDbjyHuDJ",
+  inspectorUrl: "https://surprised-synergy.info/",
+  isInConcurrentBuildsQueue: false,
+  isInSystemBuildsQueue: false,
+  meta: {},
+  name: "my-project",
+  ownerId: "<id>",
+  plan: "enterprise",
+  previewCommentsEnabled: false,
+  projectId: "<id>",
+  projectSettings: {},
   public: false,
-  status: "BLOCKED",
+  readyState: "READY",
+  regions: [
+    "sfo1",
+  ],
+  routes: [],
+  softDeletedByRetention: true,
+  source: "cli",
+  status: "READY",
+  target: null,
+  type: "LAMBDAS",
+  undeletedAt: 1540257589405,
+  url: "my-instant-deployment-3ij3cxz9qr.now.sh",
   userAliases: [
     "sub1.example.com",
     "sub2.example.com",
   ],
-  previewCommentsEnabled: false,
-  id: "dpl_89qyp1cskzkLrVicDaZoDbjyHuDJ",
-  target: null,
-  readyState: "READY",
-  aliasError: null,
-  createdAt: 1540257589405,
-  name: "my-project",
-  type: "LAMBDAS",
-  deletedAt: 1540257589405,
-  meta: {},
-  regions: [
-    "sfo1",
-  ],
-  softDeletedByRetention: true,
-  source: "cli",
-  undeletedAt: 1540257589405,
-  url: "my-instant-deployment-3ij3cxz9qr.now.sh",
   userConfiguredDeploymentId: "abc123",
   version: 2,
-  projectId: "<id>",
-  plan: "enterprise",
-  createdIn: "<value>",
-  ownerId: "<id>",
-  routes: [
-    {
-      src: "<value>",
-      continue: true,
-      middleware: 9821.51,
-    },
-  ],
 };
 ```
 

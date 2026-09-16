@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventFactors1 } from "@vercel/sdk/models/twohundredandeightyone.js";
+import { UserEventFactors1 } from "@vercel/sdk/models/payloadmostspecificsubdivision.js";
 
 let value: UserEventFactors1 = {
   origin: "apple",
@@ -14,8 +14,8 @@ let value: UserEventFactors1 = {
 
 | Field                                              | Type                                               | Required                                           | Description                                        |
 | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `origin`                                           | [models.FactorsOrigin](../models/factorsorigin.md) | :heavy_check_mark:                                 | N/A                                                |
-| `username`                                         | *string*                                           | :heavy_minus_sign:                                 | N/A                                                |
-| `teamId`                                           | *string*                                           | :heavy_minus_sign:                                 | N/A                                                |
 | `legacy`                                           | *boolean*                                          | :heavy_minus_sign:                                 | N/A                                                |
+| `origin`                                           | [models.FactorsOrigin](../models/factorsorigin.md) | :heavy_check_mark:                                 | N/A                                                |
 | `ssoType`                                          | *string*                                           | :heavy_minus_sign:                                 | N/A                                                |
+| `teamId`                                           | *string*                                           | :heavy_minus_sign:                                 | N/A                                                |
+| `username`                                         | *string*                                           | :heavy_minus_sign:                                 | N/A                                                |

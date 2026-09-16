@@ -3,12 +3,12 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyProjectsAnalytics } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson3action.js";
+import { GetProjectsResponseBodyProjectsAnalytics } from "@vercel/sdk/models/getprojectsresponsebodyprojectsconsolidatedgitcommitstatus.js";
 
 let value: GetProjectsResponseBodyProjectsAnalytics = {
-  id: "<id>",
   disabledAt: 4019.74,
   enabledAt: 5358.93,
+  id: "<id>",
 };
 ```
 
@@ -16,10 +16,10 @@ let value: GetProjectsResponseBodyProjectsAnalytics = {
 
 | Field                 | Type                  | Required              | Description           |
 | --------------------- | --------------------- | --------------------- | --------------------- |
-| `id`                  | *string*              | :heavy_check_mark:    | N/A                   |
 | `canceledAt`          | *number*              | :heavy_minus_sign:    | N/A                   |
 | `disabledAt`          | *number*              | :heavy_check_mark:    | N/A                   |
 | `enabledAt`           | *number*              | :heavy_check_mark:    | N/A                   |
+| `id`                  | *string*              | :heavy_check_mark:    | N/A                   |
 | `paidAt`              | *number*              | :heavy_minus_sign:    | N/A                   |
 | `sampleRatePercent`   | *number*              | :heavy_minus_sign:    | N/A                   |
 | `spendLimitInDollars` | *number*              | :heavy_minus_sign:    | N/A                   |

@@ -7,8 +7,8 @@
 
 ```typescript
 const value: models.UpdateProjectHasProjects1 = {
-  type: "header",
   key: "x-vercel-ip-country",
+  type: "header",
   value: {
     eq: "<value>",
   },

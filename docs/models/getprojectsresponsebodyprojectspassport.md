@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyProjectsPassport } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson3action.js";
+import { GetProjectsResponseBodyProjectsPassport } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponseto.js";
 
 let value: GetProjectsResponseBodyProjectsPassport = {
-  deploymentType: "all_except_custom_domains",
   connectorId: "<id>",
+  deploymentType: "all_except_custom_domains",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: GetProjectsResponseBodyProjectsPassport = {
 
 | Field                                                                                                                                    | Type                                                                                                                                     | Required                                                                                                                                 | Description                                                                                                                              |
 | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| `deploymentType`                                                                                                                         | [models.GetProjectsResponseBodyProjectsResponse200DeploymentType](../models/getprojectsresponsebodyprojectsresponse200deploymenttype.md) | :heavy_check_mark:                                                                                                                       | N/A                                                                                                                                      |
 | `connectorId`                                                                                                                            | *string*                                                                                                                                 | :heavy_check_mark:                                                                                                                       | N/A                                                                                                                                      |
+| `deploymentType`                                                                                                                         | [models.GetProjectsResponseBodyProjectsResponse200DeploymentType](../models/getprojectsresponsebodyprojectsresponse200deploymenttype.md) | :heavy_check_mark:                                                                                                                       | N/A                                                                                                                                      |

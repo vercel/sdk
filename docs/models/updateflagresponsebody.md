@@ -7,20 +7,28 @@
 
 ```typescript
 const value: models.UpdateFlagResponseBody1 = {
-  variants: [],
-  id: "<id>",
-  environments: {},
-  kind: "string",
-  revision: 9662.69,
-  seed: 4558.32,
-  state: "archived",
-  slug: "<value>",
-  createdAt: 5171.38,
-  updatedAt: 5365.64,
+  createdAt: 1415.47,
   createdBy: "<value>",
+  environments: {},
+  id: "<id>",
+  kind: "string",
   ownerId: "<id>",
   projectId: "<id>",
+  revision: 9662.69,
+  seed: 4558.32,
+  slug: "<value>",
+  state: "archived",
   typeName: "flag",
+  updatedAt: 5171.38,
+  variants: [
+    {
+      id: "<id>",
+      value: {
+        "0": "<value 1>",
+        "1": "<value 2>",
+      },
+    },
+  ],
 };
 ```
 
@@ -28,25 +36,20 @@ const value: models.UpdateFlagResponseBody1 = {
 
 ```typescript
 const value: models.Flag = {
-  variants: [
-    {
-      value: false,
-      id: "<id>",
-    },
-  ],
-  id: "<id>",
-  environments: {},
-  kind: "string",
-  revision: 6977.76,
-  seed: 4972.47,
-  state: "archived",
-  slug: "<value>",
-  createdAt: 3631.95,
-  updatedAt: 9866.32,
+  createdAt: 5233.11,
   createdBy: "<value>",
+  environments: {},
+  id: "<id>",
+  kind: "string",
   ownerId: "<id>",
   projectId: "<id>",
+  revision: 7245.99,
+  seed: 4797.93,
+  slug: "<value>",
+  state: "archived",
   typeName: "flag",
+  updatedAt: 6977.76,
+  variants: [],
 };
 ```
 

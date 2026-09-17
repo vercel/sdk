@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyArchitecture } from "@vercel/sdk/models/createdeploymentresponsebodydeploymentsstatus.js";
+import { ResponseBodyArchitecture } from "@vercel/sdk/models/responsebodyimages.js";
 
 let value: ResponseBodyArchitecture = "x86_64";
 ```

@@ -5,7 +5,7 @@ History of MFA state changes (enabled/disabled events). Most recent events first
 ## Example Usage
 
 ```typescript
-import { PayloadHistory } from "@vercel/sdk/models/onehundredandfortyeight.js";
+import { PayloadHistory } from "@vercel/sdk/models/previousrule.js";
 
 let value: PayloadHistory = {
   action: "disabled",

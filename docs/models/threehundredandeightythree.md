@@ -8,7 +8,7 @@ The payload of the event, if requested.
 import { ThreeHundredAndEightyThree } from "@vercel/sdk/models/payloadmostspecificsubdivision.js";
 
 let value: ThreeHundredAndEightyThree = {
-  publicId: "<id>",
+  enforced: false,
 };
 ```
 
@@ -16,5 +16,4 @@ let value: ThreeHundredAndEightyThree = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `name`             | *string*           | :heavy_minus_sign: | N/A                |
-| `publicId`         | *string*           | :heavy_check_mark: | N/A                |
+| `enforced`         | *boolean*          | :heavy_check_mark: | N/A                |

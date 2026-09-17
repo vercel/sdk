@@ -5,17 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndEighteen } from "@vercel/sdk/models/threehundredandninetynine.js";
+import { FourHundredAndEighteen } from "@vercel/sdk/models/fourhundredandone.js";
 
 let value: FourHundredAndEighteen = {
-  action: "remove-passkey",
+  method: "webauthn",
   reason: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `action`                                                                   | [models.UserEventPayload418Action](../models/usereventpayload418action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
-| `reason`                                                                   | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field                                | Type                                 | Required                             | Description                          |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| `flowId`                             | *string*                             | :heavy_minus_sign:                   | N/A                                  |
+| `loginSessionId`                     | *string*                             | :heavy_minus_sign:                   | N/A                                  |
+| `method`                             | [models.Method](../models/method.md) | :heavy_check_mark:                   | N/A                                  |
+| `reason`                             | *string*                             | :heavy_check_mark:                   | N/A                                  |

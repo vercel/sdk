@@ -8,14 +8,12 @@ The payload of the event, if requested.
 import { ThreeHundredAndNinetyFive } from "@vercel/sdk/models/payloadmostspecificsubdivision.js";
 
 let value: ThreeHundredAndNinetyFive = {
-  enabled: false,
-  scope: "dashboard",
+  deletedCount: 8690.87,
 };
 ```
 
 ## Fields
 
-| Field                                            | Type                                             | Required                                         | Description                                      |
-| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| `enabled`                                        | *boolean*                                        | :heavy_check_mark:                               | N/A                                              |
-| `scope`                                          | [models.PayloadScope](../models/payloadscope.md) | :heavy_check_mark:                               | N/A                                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `deletedCount`     | *number*           | :heavy_check_mark: | N/A                |

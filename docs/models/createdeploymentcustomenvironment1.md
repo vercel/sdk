@@ -5,7 +5,7 @@ If the deployment was created using a Custom Environment, then this property con
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentCustomEnvironment1 } from "@vercel/sdk/models/createdeploymentresponsebodydeploymentsstatus.js";
+import { CreateDeploymentCustomEnvironment1 } from "@vercel/sdk/models/responsebodyimages.js";
 
 let value: CreateDeploymentCustomEnvironment1 = {
   createdAt: 5945.71,

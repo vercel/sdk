@@ -5,10 +5,10 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSeventyThree } from "@vercel/sdk/models/usereventpayloadgitprovider.js";
+import { TwoHundredAndSeventyThree } from "@vercel/sdk/models/twohundredandseventyone.js";
 
 let value: TwoHundredAndSeventyThree = {
-  disableRepositoryDispatchEvents: true,
+  onCommit: true,
   projectId: "<id>",
   projectName: "<value>",
 };
@@ -16,8 +16,8 @@ let value: TwoHundredAndSeventyThree = {
 
 ## Fields
 
-| Field                             | Type                              | Required                          | Description                       |
-| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
-| `disableRepositoryDispatchEvents` | *boolean*                         | :heavy_check_mark:                | N/A                               |
-| `projectId`                       | *string*                          | :heavy_check_mark:                | N/A                               |
-| `projectName`                     | *string*                          | :heavy_check_mark:                | N/A                               |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `onCommit`         | *boolean*          | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |

@@ -7,11 +7,15 @@ The payload of the event, if requested.
 ```typescript
 import { ThreeHundredAndNinetyTwo } from "@vercel/sdk/models/payloadmostspecificsubdivision.js";
 
-let value: ThreeHundredAndNinetyTwo = {};
+let value: ThreeHundredAndNinetyTwo = {
+  decision: "keep_on",
+  version: "<value>",
+};
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `remoteCaching`                                                  | [models.PayloadRemoteCaching](../models/payloadremotecaching.md) | :heavy_minus_sign:                                               | Represents configuration for remote caching                      |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `decision`                               | [models.Decision](../models/decision.md) | :heavy_check_mark:                       | N/A                                      |
+| `version`                                | *string*                                 | :heavy_check_mark:                       | N/A                                      |

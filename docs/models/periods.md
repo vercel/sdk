@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Periods } from "@vercel/sdk/models/usereventpayload171newownerfeatureblocksworkflowstoragewriteblockreason.js";
+import { Periods } from "@vercel/sdk/models/usereventpayload171newownerfeatureblocksworkfloweventsblockreason.js";
 
 let value: Periods = {
   endDate: "<value>",

@@ -7,12 +7,13 @@ The payload of the event, if requested.
 ```typescript
 import { ThreeHundredAndNinetySix } from "@vercel/sdk/models/payloadmostspecificsubdivision.js";
 
-let value: ThreeHundredAndNinetySix = {};
+let value: ThreeHundredAndNinetySix = {
+  enabled: "default",
+};
 ```
 
 ## Fields
 
 | Field                                                | Type                                                 | Required                                             | Description                                          |
 | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `next`                                               | Record<string, *models.UserEventPayload396Next*>     | :heavy_minus_sign:                                   | N/A                                                  |
-| `previous`                                           | Record<string, *models.UserEventPayload396Previous*> | :heavy_minus_sign:                                   | N/A                                                  |
+| `enabled`                                            | [models.PayloadEnabled](../models/payloadenabled.md) | :heavy_check_mark:                                   | N/A                                                  |

@@ -7,20 +7,18 @@ The payload of the event, if requested.
 ```typescript
 import { ThreeHundredAndSeventySeven } from "@vercel/sdk/models/payloadmostspecificsubdivision.js";
 
-let value: ThreeHundredAndSeventySeven = {};
+let value: ThreeHundredAndSeventySeven = {
+  entitlement: "<value>",
+  user: {
+    id: "<id>",
+    username: "Beth_Adams79",
+  },
+};
 ```
 
 ## Fields
 
 | Field                                          | Type                                           | Required                                       | Description                                    |
 | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `entitlements`                                 | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
-| `invitedBy`                                    | [models.InvitedBy](../models/invitedby.md)     | :heavy_minus_sign:                             | N/A                                            |
-| `origin`                                       | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `role`                                         | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `teamPermissions`                              | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
-| `teamRoles`                                    | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
-| `teamSlug`                                     | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `uid`                                          | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `updatedUid`                                   | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `updatedUser`                                  | [models.UpdatedUser](../models/updateduser.md) | :heavy_minus_sign:                             | N/A                                            |
+| `entitlement`                                  | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `user`                                         | [models.PayloadUser](../models/payloaduser.md) | :heavy_check_mark:                             | N/A                                            |

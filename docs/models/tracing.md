@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Tracing } from "@vercel/sdk/models/usereventpayload171newownerfeatureblocksworkflowstoragewriteblockreason.js";
+import { Tracing } from "@vercel/sdk/models/usereventpayload171newownerfeatureblocksworkfloweventsblockreason.js";
 
 let value: Tracing = {
   blockReason: "hard_blocked",

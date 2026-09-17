@@ -29,7 +29,6 @@ export const GetKmsIssuerAlgorithm = {
   Es256: "ES256",
   Es384: "ES384",
   Es512: "ES512",
-  EdDSA: "EdDSA",
   Ps256: "PS256",
   Ps384: "PS384",
   Ps512: "PS512",

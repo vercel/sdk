@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyContentDispositionType } from "@vercel/sdk/models/createdeploymentresponsebodydeploymentsstatus.js";
+import { ResponseBodyContentDispositionType } from "@vercel/sdk/models/responsebodyimages.js";
 
 let value: ResponseBodyContentDispositionType = "inline";
 ```

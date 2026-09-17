@@ -711,6 +711,7 @@ export type UploadProjectAvatarPermissions = {
   deploymentPrivate?: Array<ACLAction> | undefined;
   deploymentProductionGit?: Array<ACLAction> | undefined;
   deploymentPromote?: Array<ACLAction> | undefined;
+  deploymentProtectionException?: Array<ACLAction> | undefined;
   deploymentRollback?: Array<ACLAction> | undefined;
   deploymentV0?: Array<ACLAction> | undefined;
   domain?: Array<ACLAction> | undefined;
@@ -733,6 +734,7 @@ export type UploadProjectAvatarPermissions = {
   event?: Array<ACLAction> | undefined;
   fileUpload?: Array<ACLAction> | undefined;
   flagsExplorerSubscription?: Array<ACLAction> | undefined;
+  gitCredentialGrant?: Array<ACLAction> | undefined;
   gitRepository?: Array<ACLAction> | undefined;
   imageOptimizationNewPrice?: Array<ACLAction> | undefined;
   integration?: Array<ACLAction> | undefined;
@@ -846,6 +848,7 @@ export type UploadProjectAvatarPermissions = {
   projectProtectionBypass?: Array<ACLAction> | undefined;
   projectRollingRelease?: Array<ACLAction> | undefined;
   projectRoutes?: Array<ACLAction> | undefined;
+  projectSetting?: Array<ACLAction> | undefined;
   projectSupportCase?: Array<ACLAction> | undefined;
   projectSupportCaseComment?: Array<ACLAction> | undefined;
   projectTier?: Array<ACLAction> | undefined;
@@ -861,11 +864,13 @@ export type UploadProjectAvatarPermissions = {
   remoteCaching?: Array<ACLAction> | undefined;
   repository?: Array<ACLAction> | undefined;
   samlConfig?: Array<ACLAction> | undefined;
+  schedule?: Array<ACLAction> | undefined;
   seawallConfig?: Array<ACLAction> | undefined;
   secret?: Array<ACLAction> | undefined;
   securityConfig?: Array<ACLAction> | undefined;
   securityPlusConfiguration?: Array<ACLAction> | undefined;
   sensitiveEnvironmentVariablePolicy?: Array<ACLAction> | undefined;
+  setting?: Array<ACLAction> | undefined;
   shareableLink?: Array<ACLAction> | undefined;
   shareableLinkStrict?: Array<ACLAction> | undefined;
   sharedEnvVarConnection?: Array<ACLAction> | undefined;
@@ -3339,6 +3344,9 @@ export const UploadProjectAvatarPermissions$inboundSchema: z.ZodType<
   deploymentPrivate: types.optional(z.array(ACLAction$inboundSchema)),
   deploymentProductionGit: types.optional(z.array(ACLAction$inboundSchema)),
   deploymentPromote: types.optional(z.array(ACLAction$inboundSchema)),
+  deploymentProtectionException: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
   deploymentRollback: types.optional(z.array(ACLAction$inboundSchema)),
   deploymentV0: types.optional(z.array(ACLAction$inboundSchema)),
   domain: types.optional(z.array(ACLAction$inboundSchema)),
@@ -3361,6 +3369,7 @@ export const UploadProjectAvatarPermissions$inboundSchema: z.ZodType<
   event: types.optional(z.array(ACLAction$inboundSchema)),
   fileUpload: types.optional(z.array(ACLAction$inboundSchema)),
   flagsExplorerSubscription: types.optional(z.array(ACLAction$inboundSchema)),
+  gitCredentialGrant: types.optional(z.array(ACLAction$inboundSchema)),
   gitRepository: types.optional(z.array(ACLAction$inboundSchema)),
   imageOptimizationNewPrice: types.optional(z.array(ACLAction$inboundSchema)),
   integration: types.optional(z.array(ACLAction$inboundSchema)),
@@ -3508,6 +3517,7 @@ export const UploadProjectAvatarPermissions$inboundSchema: z.ZodType<
   projectProtectionBypass: types.optional(z.array(ACLAction$inboundSchema)),
   projectRollingRelease: types.optional(z.array(ACLAction$inboundSchema)),
   projectRoutes: types.optional(z.array(ACLAction$inboundSchema)),
+  projectSetting: types.optional(z.array(ACLAction$inboundSchema)),
   projectSupportCase: types.optional(z.array(ACLAction$inboundSchema)),
   projectSupportCaseComment: types.optional(z.array(ACLAction$inboundSchema)),
   projectTier: types.optional(z.array(ACLAction$inboundSchema)),
@@ -3523,6 +3533,7 @@ export const UploadProjectAvatarPermissions$inboundSchema: z.ZodType<
   remoteCaching: types.optional(z.array(ACLAction$inboundSchema)),
   repository: types.optional(z.array(ACLAction$inboundSchema)),
   samlConfig: types.optional(z.array(ACLAction$inboundSchema)),
+  schedule: types.optional(z.array(ACLAction$inboundSchema)),
   seawallConfig: types.optional(z.array(ACLAction$inboundSchema)),
   secret: types.optional(z.array(ACLAction$inboundSchema)),
   securityConfig: types.optional(z.array(ACLAction$inboundSchema)),
@@ -3530,6 +3541,7 @@ export const UploadProjectAvatarPermissions$inboundSchema: z.ZodType<
   sensitiveEnvironmentVariablePolicy: types.optional(
     z.array(ACLAction$inboundSchema),
   ),
+  setting: types.optional(z.array(ACLAction$inboundSchema)),
   shareableLink: types.optional(z.array(ACLAction$inboundSchema)),
   shareableLinkStrict: types.optional(z.array(ACLAction$inboundSchema)),
   sharedEnvVarConnection: types.optional(z.array(ACLAction$inboundSchema)),

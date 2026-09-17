@@ -7,11 +7,14 @@ The payload of the event, if requested.
 ```typescript
 import { ThreeHundredAndEightySeven } from "@vercel/sdk/models/payloadmostspecificsubdivision.js";
 
-let value: ThreeHundredAndEightySeven = {};
+let value: ThreeHundredAndEightySeven = {
+  plan: "enterprise",
+};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `inviteCode`       | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `plan`                                                           | [models.UserEventPayloadPlan](../models/usereventpayloadplan.md) | :heavy_check_mark:                                               | N/A                                                              |
+| `trial`                                                          | [models.Trial](../models/trial.md)                               | :heavy_minus_sign:                                               | N/A                                                              |

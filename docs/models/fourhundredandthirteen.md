@@ -5,17 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndThirteen } from "@vercel/sdk/models/threehundredandninetynine.js";
+import { FourHundredAndThirteen } from "@vercel/sdk/models/fourhundredandone.js";
 
 let value: FourHundredAndThirteen = {
-  actorId: "<id>",
-  actorType: "admin",
+  teamId: "<id>",
+  teamName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `actorId`                                                                        | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
-| `actorType`                                                                      | [models.UserEventPayload413ActorType](../models/usereventpayload413actortype.md) | :heavy_check_mark:                                                               | N/A                                                                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `teamId`           | *string*           | :heavy_check_mark: | N/A                |
+| `teamName`         | *string*           | :heavy_check_mark: | N/A                |

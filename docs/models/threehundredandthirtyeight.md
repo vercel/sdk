@@ -5,21 +5,20 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndThirtyEight } from "@vercel/sdk/models/usereventpayloadgitprovider.js";
+import { ThreeHundredAndThirtyEight } from "@vercel/sdk/models/twohundredandseventyone.js";
 
 let value: ThreeHundredAndThirtyEight = {
-  max: 1224.11,
-  min: 2132.95,
-  scalingRules: {},
-  url: "https://unfit-stranger.com/",
+  enabled: true,
+  updatedAt: 2132.95,
 };
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `max`                                                            | *number*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `min`                                                            | *number*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `scalingRules`                                                   | Record<string, [models.ScalingRules](../models/scalingrules.md)> | :heavy_check_mark:                                               | N/A                                                              |
-| `url`                                                            | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
+| `firstEnabledAt`   | *number*           | :heavy_minus_sign: | N/A                |
+| `projectId`        | *string*           | :heavy_minus_sign: | N/A                |
+| `projectName`      | *string*           | :heavy_minus_sign: | N/A                |
+| `updatedAt`        | *number*           | :heavy_check_mark: | N/A                |

@@ -1265,7 +1265,7 @@ export type GetDeploymentResponseBodyDeploymentsPurchaseType = ClosedEnum<
   typeof GetDeploymentResponseBodyDeploymentsPurchaseType
 >;
 
-export type GetDeploymentResponseBodyDeploymentsBuildMachine = {
+export type GetDeploymentResponseBodyBuildMachine = {
   /**
    * Machine type that was used for the build.
    */
@@ -1287,7 +1287,7 @@ export type GetDeploymentResponseBodyDeploymentsResourceConfig = {
    * When elastic concurrency is used for this deployment, a value is set. The value tells the reason where the setting was coming from. - TEAM_SETTING: Inherited from team settings - PROJECT_SETTING: Inherited from project settings - SKIP_QUEUE: Manually triggered by user to skip the queues
    */
   elasticConcurrency?: GetDeploymentResponseBodyElasticConcurrency | undefined;
-  buildMachine?: GetDeploymentResponseBodyDeploymentsBuildMachine | undefined;
+  buildMachine?: GetDeploymentResponseBodyBuildMachine | undefined;
 };
 
 /**
@@ -3634,30 +3634,24 @@ export const GetDeploymentResponseBodyDeploymentsPurchaseType$inboundSchema:
     .nativeEnum(GetDeploymentResponseBodyDeploymentsPurchaseType);
 
 /** @internal */
-export const GetDeploymentResponseBodyDeploymentsBuildMachine$inboundSchema:
-  z.ZodType<
-    GetDeploymentResponseBodyDeploymentsBuildMachine,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    purchaseType: z.nullable(
-      GetDeploymentResponseBodyDeploymentsPurchaseType$inboundSchema,
-    ).optional(),
-  });
+export const GetDeploymentResponseBodyBuildMachine$inboundSchema: z.ZodType<
+  GetDeploymentResponseBodyBuildMachine,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  purchaseType: z.nullable(
+    GetDeploymentResponseBodyDeploymentsPurchaseType$inboundSchema,
+  ).optional(),
+});
 
-export function getDeploymentResponseBodyDeploymentsBuildMachineFromJSON(
+export function getDeploymentResponseBodyBuildMachineFromJSON(
   jsonString: string,
-): SafeParseResult<
-  GetDeploymentResponseBodyDeploymentsBuildMachine,
-  SDKValidationError
-> {
+): SafeParseResult<GetDeploymentResponseBodyBuildMachine, SDKValidationError> {
   return safeParse(
     jsonString,
     (x) =>
-      GetDeploymentResponseBodyDeploymentsBuildMachine$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetDeploymentResponseBodyDeploymentsBuildMachine' from JSON`,
+      GetDeploymentResponseBodyBuildMachine$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentResponseBodyBuildMachine' from JSON`,
   );
 }
 
@@ -3675,9 +3669,7 @@ export const GetDeploymentResponseBodyDeploymentsResourceConfig$inboundSchema:
       GetDeploymentResponseBodyElasticConcurrency$inboundSchema,
     ),
     buildMachine: types.optional(
-      z.lazy(() =>
-        GetDeploymentResponseBodyDeploymentsBuildMachine$inboundSchema
-      ),
+      z.lazy(() => GetDeploymentResponseBodyBuildMachine$inboundSchema),
     ),
   });
 

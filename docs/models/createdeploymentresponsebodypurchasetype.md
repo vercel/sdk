@@ -5,7 +5,7 @@ Machine type that was used for the build.
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentResponseBodyPurchaseType } from "@vercel/sdk/models/createdeploymentresponsebodydeploymentsstatus.js";
+import { CreateDeploymentResponseBodyPurchaseType } from "@vercel/sdk/models/responsebodyimages.js";
 
 let value: CreateDeploymentResponseBodyPurchaseType = "basic";
 ```

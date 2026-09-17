@@ -5,33 +5,16 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFiftyOne } from "@vercel/sdk/models/payloadnext.js";
+import { TwoHundredAndFiftyOne } from "@vercel/sdk/models/payloaddefault.js";
 
-let value: TwoHundredAndFiftyOne = {
-  project: {
-    id: "<id>",
-    newConnectConfigurations: [],
-    oldConnectConfigurations: [
-      {
-        buildsEnabled: true,
-        connectConfigurationId: "<id>",
-        createdAt: 7630.36,
-        envId: "<id>",
-        passive: false,
-        updatedAt: 8968.35,
-      },
-    ],
-  },
-  team: {
-    id: "<id>",
-    name: "<value>",
-  },
-};
+let value: TwoHundredAndFiftyOne = {};
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `project`                                                                    | [models.UserEventPayload251Project](../models/usereventpayload251project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
-| `team`                                                                       | [models.UserEventPayload251Team](../models/usereventpayload251team.md)       | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_minus_sign: | N/A                |
+| `projectName`      | *string*           | :heavy_minus_sign: | N/A                |
+| `target`           | *string*[]         | :heavy_minus_sign: | N/A                |
+| `updated`          | *boolean*          | :heavy_minus_sign: | N/A                |

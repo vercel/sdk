@@ -8,14 +8,14 @@ The payload of the event, if requested.
 import { ThreeHundredAndNinetySeven } from "@vercel/sdk/models/payloadmostspecificsubdivision.js";
 
 let value: ThreeHundredAndNinetySeven = {
-  domain: "dependent-tune-up.biz",
-  ips: [],
+  enabled: true,
+  scope: "log-drains",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `domain`           | *string*           | :heavy_check_mark: | N/A                |
-| `ips`              | *string*[]         | :heavy_check_mark: | N/A                |
+| Field                                            | Type                                             | Required                                         | Description                                      |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| `enabled`                                        | *boolean*                                        | :heavy_check_mark:                               | N/A                                              |
+| `scope`                                          | [models.PayloadScope](../models/payloadscope.md) | :heavy_check_mark:                               | N/A                                              |

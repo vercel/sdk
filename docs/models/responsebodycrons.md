@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyCrons } from "@vercel/sdk/models/createdeploymentresponsebodydeploymentsstatus.js";
+import { ResponseBodyCrons } from "@vercel/sdk/models/responsebodyimages.js";
 
 let value: ResponseBodyCrons = {
   path: "/mnt",

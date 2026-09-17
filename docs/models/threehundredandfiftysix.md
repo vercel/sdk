@@ -7,15 +7,17 @@ The payload of the event, if requested.
 ```typescript
 import { ThreeHundredAndFiftySix } from "@vercel/sdk/models/payloadmostspecificsubdivision.js";
 
-let value: ThreeHundredAndFiftySix = {};
+let value: ThreeHundredAndFiftySix = {
+  store: {
+    id: "<id>",
+    name: "<value>",
+  },
+};
 ```
 
 ## Fields
 
-| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `actorId`                                                                        | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `actorType`                                                                      | [models.UserEventPayload356ActorType](../models/usereventpayload356actortype.md) | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `caseNumber`                                                                     | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `client`                                                                         | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `reason`                                                                         | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `ownerId`                                                                | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `store`                                                                  | [models.UserEventPayload356Store](../models/usereventpayload356store.md) | :heavy_check_mark:                                                       | N/A                                                                      |

@@ -8,14 +8,19 @@ The payload of the event, if requested.
 import { ThreeHundredAndEightyFour } from "@vercel/sdk/models/payloadmostspecificsubdivision.js";
 
 let value: ThreeHundredAndEightyFour = {
-  nextConcurrentBuilds: 2614.2,
-  previousConcurrentBuilds: 628.06,
+  expiresAt: "1743933759762",
+  maxUses: 628.06,
+  publicId: "<id>",
+  role: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                      | Type                       | Required                   | Description                |
-| -------------------------- | -------------------------- | -------------------------- | -------------------------- |
-| `nextConcurrentBuilds`     | *number*                   | :heavy_check_mark:         | N/A                        |
-| `previousConcurrentBuilds` | *number*                   | :heavy_check_mark:         | N/A                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `expiresAt`        | *string*           | :heavy_check_mark: | N/A                |
+| `maxUses`          | *number*           | :heavy_check_mark: | N/A                |
+| `name`             | *string*           | :heavy_minus_sign: | N/A                |
+| `publicId`         | *string*           | :heavy_check_mark: | N/A                |
+| `role`             | *string*           | :heavy_check_mark: | N/A                |

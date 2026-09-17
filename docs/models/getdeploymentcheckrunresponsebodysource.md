@@ -37,3 +37,16 @@ const value: models.GetDeploymentCheckRunSource3 = {
 const value: models.Source4 = {};
 ```
 
+### `models.Source5`
+
+```typescript
+const value: models.Source5 = {
+  origin: "api",
+  selection: {
+    job: "Principal Data Planner",
+    kind: "job",
+  },
+  subKind: "vercel-ci-check",
+};
+```
+

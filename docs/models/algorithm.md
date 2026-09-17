@@ -1,6 +1,6 @@
 # Algorithm
 
-The signing algorithm to use for the issuer. EdDSA is not accepted for new issuers.
+The signing algorithm to use for the issuer.
 
 ## Example Usage
 

@@ -7,18 +7,15 @@ The payload of the event, if requested.
 ```typescript
 import { ThreeHundredAndFiftyEight } from "@vercel/sdk/models/payloadmostspecificsubdivision.js";
 
-let value: ThreeHundredAndFiftyEight = {
-  next: {
-    enabled: true,
-    includeDrafts: false,
-    scope: "public",
-  },
-};
+let value: ThreeHundredAndFiftyEight = {};
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `next`                                                                         | [models.UserEventPayload358Next](../models/usereventpayload358next.md)         | :heavy_check_mark:                                                             | Automatic code review settings                                                 |
-| `previous`                                                                     | [models.UserEventPayload358Previous](../models/usereventpayload358previous.md) | :heavy_minus_sign:                                                             | Automatic code review settings                                                 |
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `actorId`                                                                        | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `actorType`                                                                      | [models.UserEventPayload358ActorType](../models/usereventpayload358actortype.md) | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `caseNumber`                                                                     | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `client`                                                                         | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `reason`                                                                         | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |

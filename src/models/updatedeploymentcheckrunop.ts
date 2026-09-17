@@ -97,26 +97,25 @@ export type UpdateDeploymentCheckRunResponseBodyChecksV2Status = ClosedEnum<
   typeof UpdateDeploymentCheckRunResponseBodyChecksV2Status
 >;
 
-export const UpdateDeploymentCheckRunSourceChecksV2ResponseSubKind = {
+export const UpdateDeploymentCheckRunSourceChecksV2Response200SubKind = {
   VercelCiSentinel: "vercel-ci-sentinel",
 } as const;
-export type UpdateDeploymentCheckRunSourceChecksV2ResponseSubKind = ClosedEnum<
-  typeof UpdateDeploymentCheckRunSourceChecksV2ResponseSubKind
->;
+export type UpdateDeploymentCheckRunSourceChecksV2Response200SubKind =
+  ClosedEnum<typeof UpdateDeploymentCheckRunSourceChecksV2Response200SubKind>;
 
 /**
  * CI sentinel — check run `source` only (no parent check).
  */
 export type UpdateDeploymentCheckRunSourceChecksV22 = {
   origin: "platform";
-  subKind: UpdateDeploymentCheckRunSourceChecksV2ResponseSubKind;
+  subKind: UpdateDeploymentCheckRunSourceChecksV2Response200SubKind;
 };
 
-export const UpdateDeploymentCheckRunSourceChecksV2SubKind = {
+export const UpdateDeploymentCheckRunSourceChecksV2ResponseSubKind = {
   VercelCi: "vercel-ci",
 } as const;
-export type UpdateDeploymentCheckRunSourceChecksV2SubKind = ClosedEnum<
-  typeof UpdateDeploymentCheckRunSourceChecksV2SubKind
+export type UpdateDeploymentCheckRunSourceChecksV2ResponseSubKind = ClosedEnum<
+  typeof UpdateDeploymentCheckRunSourceChecksV2ResponseSubKind
 >;
 
 /**
@@ -127,7 +126,7 @@ export type UpdateDeploymentCheckRunSourceChecksV21 = {
   invocationId: string;
   jobDefinitionId: string;
   origin: "config";
-  subKind: UpdateDeploymentCheckRunSourceChecksV2SubKind;
+  subKind: UpdateDeploymentCheckRunSourceChecksV2ResponseSubKind;
 };
 
 export type UpdateDeploymentCheckRunResponseBodyChecksV2Source =
@@ -204,6 +203,41 @@ export type UpdateDeploymentCheckRunResponseBodyStatus = ClosedEnum<
   typeof UpdateDeploymentCheckRunResponseBodyStatus
 >;
 
+export const UpdateDeploymentCheckRunSourceChecksV2Origin = {
+  Api: "api",
+} as const;
+export type UpdateDeploymentCheckRunSourceChecksV2Origin = ClosedEnum<
+  typeof UpdateDeploymentCheckRunSourceChecksV2Origin
+>;
+
+export const UpdateDeploymentCheckRunSourceChecksV2Response200Kind = {
+  Job: "job",
+} as const;
+export type UpdateDeploymentCheckRunSourceChecksV2Response200Kind = ClosedEnum<
+  typeof UpdateDeploymentCheckRunSourceChecksV2Response200Kind
+>;
+
+export type UpdateDeploymentCheckRunSourceSelection = {
+  job: string;
+  kind: UpdateDeploymentCheckRunSourceChecksV2Response200Kind;
+};
+
+export const UpdateDeploymentCheckRunSourceChecksV2SubKind = {
+  VercelCiCheck: "vercel-ci-check",
+} as const;
+export type UpdateDeploymentCheckRunSourceChecksV2SubKind = ClosedEnum<
+  typeof UpdateDeploymentCheckRunSourceChecksV2SubKind
+>;
+
+/**
+ * Project-defined CI requirement; its selection is frozen on each check run.
+ */
+export type UpdateDeploymentCheckRunSource5 = {
+  origin: UpdateDeploymentCheckRunSourceChecksV2Origin;
+  selection: UpdateDeploymentCheckRunSourceSelection;
+  subKind: UpdateDeploymentCheckRunSourceChecksV2SubKind;
+};
+
 export const UpdateDeploymentCheckRunSourceOrigin = {
   Api: "api",
   Platform: "platform",
@@ -279,6 +313,7 @@ export type UpdateDeploymentCheckRunSource1 = {
 export type UpdateDeploymentCheckRunResponseBodySource =
   | UpdateDeploymentCheckRunSource1
   | UpdateDeploymentCheckRunSource3
+  | UpdateDeploymentCheckRunSource5
   | UpdateDeploymentCheckRunSource2
   | UpdateDeploymentCheckRunSource4;
 
@@ -308,6 +343,7 @@ export type UpdateDeploymentCheckRunResponseBody1 = {
   source:
     | UpdateDeploymentCheckRunSource1
     | UpdateDeploymentCheckRunSource3
+    | UpdateDeploymentCheckRunSource5
     | UpdateDeploymentCheckRunSource2
     | UpdateDeploymentCheckRunSource4;
 };
@@ -434,10 +470,10 @@ export const UpdateDeploymentCheckRunResponseBodyChecksV2Status$inboundSchema:
     .nativeEnum(UpdateDeploymentCheckRunResponseBodyChecksV2Status);
 
 /** @internal */
-export const UpdateDeploymentCheckRunSourceChecksV2ResponseSubKind$inboundSchema:
+export const UpdateDeploymentCheckRunSourceChecksV2Response200SubKind$inboundSchema:
   z.ZodNativeEnum<
-    typeof UpdateDeploymentCheckRunSourceChecksV2ResponseSubKind
-  > = z.nativeEnum(UpdateDeploymentCheckRunSourceChecksV2ResponseSubKind);
+    typeof UpdateDeploymentCheckRunSourceChecksV2Response200SubKind
+  > = z.nativeEnum(UpdateDeploymentCheckRunSourceChecksV2Response200SubKind);
 
 /** @internal */
 export const UpdateDeploymentCheckRunSourceChecksV22$inboundSchema: z.ZodType<
@@ -446,7 +482,8 @@ export const UpdateDeploymentCheckRunSourceChecksV22$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   origin: types.literal("platform"),
-  subKind: UpdateDeploymentCheckRunSourceChecksV2ResponseSubKind$inboundSchema,
+  subKind:
+    UpdateDeploymentCheckRunSourceChecksV2Response200SubKind$inboundSchema,
 });
 
 export function updateDeploymentCheckRunSourceChecksV22FromJSON(
@@ -466,9 +503,10 @@ export function updateDeploymentCheckRunSourceChecksV22FromJSON(
 }
 
 /** @internal */
-export const UpdateDeploymentCheckRunSourceChecksV2SubKind$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunSourceChecksV2SubKind> = z
-    .nativeEnum(UpdateDeploymentCheckRunSourceChecksV2SubKind);
+export const UpdateDeploymentCheckRunSourceChecksV2ResponseSubKind$inboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateDeploymentCheckRunSourceChecksV2ResponseSubKind
+  > = z.nativeEnum(UpdateDeploymentCheckRunSourceChecksV2ResponseSubKind);
 
 /** @internal */
 export const UpdateDeploymentCheckRunSourceChecksV21$inboundSchema: z.ZodType<
@@ -480,7 +518,7 @@ export const UpdateDeploymentCheckRunSourceChecksV21$inboundSchema: z.ZodType<
   invocationId: types.string(),
   jobDefinitionId: types.string(),
   origin: types.literal("config"),
-  subKind: UpdateDeploymentCheckRunSourceChecksV2SubKind$inboundSchema,
+  subKind: UpdateDeploymentCheckRunSourceChecksV2ResponseSubKind$inboundSchema,
 });
 
 export function updateDeploymentCheckRunSourceChecksV21FromJSON(
@@ -592,6 +630,71 @@ export const UpdateDeploymentCheckRunResponseBodyRequires$inboundSchema:
 export const UpdateDeploymentCheckRunResponseBodyStatus$inboundSchema:
   z.ZodNativeEnum<typeof UpdateDeploymentCheckRunResponseBodyStatus> = z
     .nativeEnum(UpdateDeploymentCheckRunResponseBodyStatus);
+
+/** @internal */
+export const UpdateDeploymentCheckRunSourceChecksV2Origin$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunSourceChecksV2Origin> = z
+    .nativeEnum(UpdateDeploymentCheckRunSourceChecksV2Origin);
+
+/** @internal */
+export const UpdateDeploymentCheckRunSourceChecksV2Response200Kind$inboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateDeploymentCheckRunSourceChecksV2Response200Kind
+  > = z.nativeEnum(UpdateDeploymentCheckRunSourceChecksV2Response200Kind);
+
+/** @internal */
+export const UpdateDeploymentCheckRunSourceSelection$inboundSchema: z.ZodType<
+  UpdateDeploymentCheckRunSourceSelection,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  job: types.string(),
+  kind: UpdateDeploymentCheckRunSourceChecksV2Response200Kind$inboundSchema,
+});
+
+export function updateDeploymentCheckRunSourceSelectionFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateDeploymentCheckRunSourceSelection,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateDeploymentCheckRunSourceSelection$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateDeploymentCheckRunSourceSelection' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateDeploymentCheckRunSourceChecksV2SubKind$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunSourceChecksV2SubKind> = z
+    .nativeEnum(UpdateDeploymentCheckRunSourceChecksV2SubKind);
+
+/** @internal */
+export const UpdateDeploymentCheckRunSource5$inboundSchema: z.ZodType<
+  UpdateDeploymentCheckRunSource5,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  origin: UpdateDeploymentCheckRunSourceChecksV2Origin$inboundSchema,
+  selection: z.lazy(() =>
+    UpdateDeploymentCheckRunSourceSelection$inboundSchema
+  ),
+  subKind: UpdateDeploymentCheckRunSourceChecksV2SubKind$inboundSchema,
+});
+
+export function updateDeploymentCheckRunSource5FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateDeploymentCheckRunSource5, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateDeploymentCheckRunSource5$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateDeploymentCheckRunSource5' from JSON`,
+  );
+}
 
 /** @internal */
 export const UpdateDeploymentCheckRunSourceOrigin$inboundSchema:
@@ -716,6 +819,7 @@ export const UpdateDeploymentCheckRunResponseBodySource$inboundSchema:
     smartUnion([
       z.lazy(() => UpdateDeploymentCheckRunSource1$inboundSchema),
       z.lazy(() => UpdateDeploymentCheckRunSource3$inboundSchema),
+      z.lazy(() => UpdateDeploymentCheckRunSource5$inboundSchema),
       z.lazy(() => UpdateDeploymentCheckRunSource2$inboundSchema),
       z.lazy(() => UpdateDeploymentCheckRunSource4$inboundSchema),
     ]);
@@ -770,6 +874,7 @@ export const UpdateDeploymentCheckRunResponseBody1$inboundSchema: z.ZodType<
   source: smartUnion([
     z.lazy(() => UpdateDeploymentCheckRunSource1$inboundSchema),
     z.lazy(() => UpdateDeploymentCheckRunSource3$inboundSchema),
+    z.lazy(() => UpdateDeploymentCheckRunSource5$inboundSchema),
     z.lazy(() => UpdateDeploymentCheckRunSource2$inboundSchema),
     z.lazy(() => UpdateDeploymentCheckRunSource4$inboundSchema),
   ]),

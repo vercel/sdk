@@ -13,6 +13,7 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 export const UpdateProjectCheckRequires = {
   BuildReady: "build-ready",
   DeploymentUrl: "deployment-url",
+  None: "none",
 } as const;
 export type UpdateProjectCheckRequires = ClosedEnum<
   typeof UpdateProjectCheckRequires

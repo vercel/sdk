@@ -5,7 +5,7 @@ Principal type of the deployment creator.
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentResponseBodyDeploymentsType } from "@vercel/sdk/models/createdeploymentresponsebodydeploymentsstatus.js";
+import { CreateDeploymentResponseBodyDeploymentsType } from "@vercel/sdk/models/responsebodyimages.js";
 
 let value: CreateDeploymentResponseBodyDeploymentsType = "system";
 ```

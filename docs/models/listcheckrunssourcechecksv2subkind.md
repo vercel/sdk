@@ -5,11 +5,11 @@
 ```typescript
 import { ListCheckRunsSourceChecksV2SubKind } from "@vercel/sdk/models/listcheckrunsop.js";
 
-let value: ListCheckRunsSourceChecksV2SubKind = "vercel-native-check";
+let value: ListCheckRunsSourceChecksV2SubKind = "vercel-ci-sentinel";
 ```
 
 ## Values
 
 ```typescript
-"vercel-native-check"
+"vercel-ci-sentinel"
 ```

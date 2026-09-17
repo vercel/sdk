@@ -5,7 +5,7 @@ A full point-in-time snapshot of an OIDC exchange policy, captured on every life
 ## Example Usage
 
 ```typescript
-import { Policy } from "@vercel/sdk/models/threehundredandninetynine.js";
+import { Policy } from "@vercel/sdk/models/fourhundredandone.js";
 
 let value: Policy = {
   claims: [
@@ -39,6 +39,6 @@ let value: Policy = {
 | `name`                                                                           | *string*                                                                         | :heavy_check_mark:                                                               | Human-readable policy name, or `null` when unnamed.                              |
 | `permissions`                                                                    | *string*[]                                                                       | :heavy_check_mark:                                                               | Permission boundary (`['*']` = the app's full declared permissions).             |
 | `policyId`                                                                       | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
-| `resources`                                                                      | [models.UserEventPayload450Resources](../models/usereventpayload450resources.md) | :heavy_check_mark:                                                               | Resource boundary, or `null` when the policy has none.                           |
+| `resources`                                                                      | [models.UserEventPayload452Resources](../models/usereventpayload452resources.md) | :heavy_check_mark:                                                               | Resource boundary, or `null` when the policy has none.                           |
 | `teamId`                                                                         | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
 | `updatedAt`                                                                      | *number*                                                                         | :heavy_check_mark:                                                               | Last-update time (epoch ms).                                                     |

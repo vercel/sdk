@@ -6,7 +6,7 @@
 import { RevokeKmsSigningKeyResponseBody } from "@vercel/sdk/models/revokekmssigningkeyop.js";
 
 let value: RevokeKmsSigningKeyResponseBody = {
-  algorithm: "ES512",
+  algorithm: "ES384",
   createdAt: "1705060274009",
   id: "<id>",
   name: "<value>",

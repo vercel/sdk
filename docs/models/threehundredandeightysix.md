@@ -8,16 +8,14 @@ The payload of the event, if requested.
 import { ThreeHundredAndEightySix } from "@vercel/sdk/models/payloadmostspecificsubdivision.js";
 
 let value: ThreeHundredAndEightySix = {
-  convertedFromTrial: true,
-  invoiceId: "<id>",
-  plan: "pro",
+  nextConcurrentBuilds: 784.77,
+  previousConcurrentBuilds: 9264.11,
 };
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `convertedFromTrial`                           | *boolean*                                      | :heavy_check_mark:                             | N/A                                            |
-| `invoiceId`                                    | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `plan`                                         | [models.PayloadPlan](../models/payloadplan.md) | :heavy_check_mark:                             | N/A                                            |
+| Field                      | Type                       | Required                   | Description                |
+| -------------------------- | -------------------------- | -------------------------- | -------------------------- |
+| `nextConcurrentBuilds`     | *number*                   | :heavy_check_mark:         | N/A                        |
+| `previousConcurrentBuilds` | *number*                   | :heavy_check_mark:         | N/A                        |

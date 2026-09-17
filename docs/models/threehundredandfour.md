@@ -5,9 +5,11 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFour } from "@vercel/sdk/models/usereventpayloadgitprovider.js";
+import { ThreeHundredAndFour } from "@vercel/sdk/models/twohundredandseventyone.js";
 
 let value: ThreeHundredAndFour = {
+  deploymentId: "<id>",
+  projectAccountId: "<id>",
   projectId: "<id>",
   projectName: "<value>",
 };
@@ -15,8 +17,10 @@ let value: ThreeHundredAndFour = {
 
 ## Fields
 
-| Field                | Type                 | Required             | Description          |
-| -------------------- | -------------------- | -------------------- | -------------------- |
-| `projectId`          | *string*             | :heavy_check_mark:   | N/A                  |
-| `projectName`        | *string*             | :heavy_check_mark:   | N/A                  |
-| `targetDeploymentId` | *string*             | :heavy_minus_sign:   | N/A                  |
+| Field                                                                                                                               | Type                                                                                                                                | Required                                                                                                                            | Description                                                                                                                         |
+| ----------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `deploymentId`                                                                                                                      | *string*                                                                                                                            | :heavy_check_mark:                                                                                                                  | N/A                                                                                                                                 |
+| `projectAccountId`                                                                                                                  | *string*                                                                                                                            | :heavy_check_mark:                                                                                                                  | N/A                                                                                                                                 |
+| `projectId`                                                                                                                         | *string*                                                                                                                            | :heavy_check_mark:                                                                                                                  | N/A                                                                                                                                 |
+| `projectName`                                                                                                                       | *string*                                                                                                                            | :heavy_check_mark:                                                                                                                  | N/A                                                                                                                                 |
+| `rollbackDescription`                                                                                                               | [models.RollbackDescription](../models/rollbackdescription.md)                                                                      | :heavy_minus_sign:                                                                                                                  | Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback. |

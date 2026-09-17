@@ -5,7 +5,7 @@ Flags defined in the Build Output API, used by this deployment. Primarily used b
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentFlags1 } from "@vercel/sdk/models/createdeploymentresponsebodydeploymentsstatus.js";
+import { CreateDeploymentFlags1 } from "@vercel/sdk/models/responsebodyimages.js";
 
 let value: CreateDeploymentFlags1 = {
   definitions: {

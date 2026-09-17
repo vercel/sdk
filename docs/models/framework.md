@@ -5,7 +5,7 @@ The framework that is being used for this project. When `null` is used no framew
 ## Example Usage
 
 ```typescript
-import { Framework } from "@vercel/sdk/models/createdeploymentresponsebodydeploymentsstatus.js";
+import { Framework } from "@vercel/sdk/models/responsebodyimages.js";
 
 let value: Framework = "services";
 ```

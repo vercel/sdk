@@ -5,21 +5,34 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndTwentySix } from "@vercel/sdk/models/payloadnext.js";
+import { TwoHundredAndTwentySix } from "@vercel/sdk/models/payloaddefault.js";
 
 let value: TwoHundredAndTwentySix = {
-  next: {},
-  previous: {},
+  connectorId: "<id>",
+  connectorService: "<value>",
+  connectorType: "<value>",
+  environment: "<value>",
+  externalIssuer: "<value>",
+  externalSubject: "<value>",
+  host: "spotless-attraction.net",
   projectId: "<id>",
-  projectName: "<value>",
+  sessionId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `next`                                                                         | [models.UserEventPayload226Next](../models/usereventpayload226next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload226Previous](../models/usereventpayload226previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `connectorId`      | *string*           | :heavy_check_mark: | N/A                |
+| `connectorService` | *string*           | :heavy_check_mark: | N/A                |
+| `connectorType`    | *string*           | :heavy_check_mark: | N/A                |
+| `emailVerified`    | *boolean*          | :heavy_minus_sign: | N/A                |
+| `environment`      | *string*           | :heavy_check_mark: | N/A                |
+| `externalIssuer`   | *string*           | :heavy_check_mark: | N/A                |
+| `externalSubject`  | *string*           | :heavy_check_mark: | N/A                |
+| `host`             | *string*           | :heavy_check_mark: | N/A                |
+| `installationId`   | *string*           | :heavy_minus_sign: | N/A                |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `sessionId`        | *string*           | :heavy_check_mark: | N/A                |
+| `tenantId`         | *string*           | :heavy_minus_sign: | N/A                |

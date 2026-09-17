@@ -1,46 +1,32 @@
 # UserEventPayload346Budget
 
-Represents a budget for tracking and notifying teams on their spending.
-
 ## Example Usage
 
 ```typescript
 import { UserEventPayload346Budget } from "@vercel/sdk/models/payloadmostspecificsubdivision.js";
 
 let value: UserEventPayload346Budget = {
-  createdAt: 9371.03,
-  fixedBudget: 8606.07,
-  id: "<id>",
-  isActive: false,
-  notifiedAt: [
-    2423.52,
-    7782.73,
-  ],
-  previousSpend: [
-    397.47,
-    9537.22,
-  ],
-  teamId: "<id>",
-  type: "fixed",
+  budgetItem: {
+    createdAt: 9371.03,
+    fixedBudget: 8606.07,
+    id: "<id>",
+    isActive: false,
+    notifiedAt: [
+      2423.52,
+      7782.73,
+    ],
+    previousSpend: [
+      397.47,
+      9537.22,
+    ],
+    teamId: "<id>",
+    type: "fixed",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                                                                                                       | Type                                                                                                                                        | Required                                                                                                                                    | Description                                                                                                                                 |
-| ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `createdAt`                                                                                                                                 | *number*                                                                                                                                    | :heavy_check_mark:                                                                                                                          | Date time when budget is created                                                                                                            |
-| `fixedBudget`                                                                                                                               | *number*                                                                                                                                    | :heavy_check_mark:                                                                                                                          | Budget amount (USD / dollars)                                                                                                               |
-| `id`                                                                                                                                        | *string*                                                                                                                                    | :heavy_check_mark:                                                                                                                          | Sort key that needs to be unique per teamId                                                                                                 |
-| `isActive`                                                                                                                                  | *boolean*                                                                                                                                   | :heavy_check_mark:                                                                                                                          | Is the budget currently active for a customer                                                                                               |
-| `notifiedAt`                                                                                                                                | *number*[]                                                                                                                                  | :heavy_check_mark:                                                                                                                          | Array of 50, 75, 100 to keep track of notifications sent out                                                                                |
-| `pauseProjects`                                                                                                                             | *boolean*                                                                                                                                   | :heavy_minus_sign:                                                                                                                          | Should all projects be paused if budget is exceeded                                                                                         |
-| `previousSpend`                                                                                                                             | *number*[]                                                                                                                                  | :heavy_check_mark:                                                                                                                          | Array of the last 3 months of spend data                                                                                                    |
-| `pricingPlan`                                                                                                                               | [models.PayloadPricingPlan](../models/payloadpricingplan.md)                                                                                | :heavy_minus_sign:                                                                                                                          | The acive pricing plan the team is billed with                                                                                              |
-| `scope`                                                                                                                                     | [models.UserEventPayload346Scope](../models/usereventpayload346scope.md)                                                                    | :heavy_minus_sign:                                                                                                                          | Which budget this is. Matches Copper SDK `BudgetScope`. Omitted on events published before team/org/project scopes existed (treat as team). |
-| `scopeId`                                                                                                                                   | *string*                                                                                                                                    | :heavy_minus_sign:                                                                                                                          | Project id when `scope` is `project`.                                                                                                       |
-| `teamId`                                                                                                                                    | *string*                                                                                                                                    | :heavy_check_mark:                                                                                                                          | Partition key                                                                                                                               |
-| `type`                                                                                                                                      | [models.UserEventPayload346Type](../models/usereventpayload346type.md)                                                                      | :heavy_check_mark:                                                                                                                          | The budget type                                                                                                                             |
-| `updatedAt`                                                                                                                                 | *number*                                                                                                                                    | :heavy_minus_sign:                                                                                                                          | Date time when budget is updated last                                                                                                       |
-| `webhookId`                                                                                                                                 | *string*                                                                                                                                    | :heavy_minus_sign:                                                                                                                          | Webhook id that corresponds to a webhook in Cosmos webhook collection                                                                       |
-| `webhookNotified`                                                                                                                           | *boolean*                                                                                                                                   | :heavy_minus_sign:                                                                                                                          | Keep track if the webhook has been called for the month                                                                                     |
+| Field                                                                   | Type                                                                    | Required                                                                | Description                                                             |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `budgetItem`                                                            | [models.BudgetItem](../models/budgetitem.md)                            | :heavy_check_mark:                                                      | Represents a budget for tracking and notifying teams on their spending. |

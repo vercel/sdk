@@ -18,7 +18,9 @@ let value: GetDeploymentCheckRunResponseBody1 = {
   updatedAt: 4806.55,
   checkId: "<id>",
   source: {
-    kind: "webhook",
+    externalCheckName: "<value>",
+    kind: "git-provider",
+    provider: "gitlab",
   },
 };
 ```

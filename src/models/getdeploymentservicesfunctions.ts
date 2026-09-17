@@ -903,7 +903,7 @@ export type GetDeploymentResponseBodySelectionSource = ClosedEnum<
 /**
  * Build machine configuration recorded for this deployment's build. See {@link DeploymentBuildMachine}. Distinct from the team/user `resourceConfig.buildMachine`, which only carries `default`.
  */
-export type GetDeploymentResponseBodyBuildMachine = {
+export type ResponseBodyBuildMachine = {
   /**
    * Number of cores the build machine ran with. Set at dispatch time once the build lands on a hive.
    */
@@ -938,7 +938,7 @@ export type GetDeploymentResponseBodyResourceConfig = {
   /**
    * Build machine configuration recorded for this deployment's build. See {@link DeploymentBuildMachine}. Distinct from the team/user `resourceConfig.buildMachine`, which only carries `default`.
    */
-  buildMachine?: GetDeploymentResponseBodyBuildMachine | undefined;
+  buildMachine?: ResponseBodyBuildMachine | undefined;
 };
 
 export type GetDeploymentRoutes3 = {
@@ -2926,8 +2926,8 @@ export const GetDeploymentResponseBodySelectionSource$inboundSchema:
     .nativeEnum(GetDeploymentResponseBodySelectionSource);
 
 /** @internal */
-export const GetDeploymentResponseBodyBuildMachine$inboundSchema: z.ZodType<
-  GetDeploymentResponseBodyBuildMachine,
+export const ResponseBodyBuildMachine$inboundSchema: z.ZodType<
+  ResponseBodyBuildMachine,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -2947,14 +2947,13 @@ export const GetDeploymentResponseBodyBuildMachine$inboundSchema: z.ZodType<
   ),
 });
 
-export function getDeploymentResponseBodyBuildMachineFromJSON(
+export function responseBodyBuildMachineFromJSON(
   jsonString: string,
-): SafeParseResult<GetDeploymentResponseBodyBuildMachine, SDKValidationError> {
+): SafeParseResult<ResponseBodyBuildMachine, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      GetDeploymentResponseBodyBuildMachine$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentResponseBodyBuildMachine' from JSON`,
+    (x) => ResponseBodyBuildMachine$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyBuildMachine' from JSON`,
   );
 }
 
@@ -2965,7 +2964,7 @@ export const GetDeploymentResponseBodyResourceConfig$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   buildMachine: types.optional(
-    z.lazy(() => GetDeploymentResponseBodyBuildMachine$inboundSchema),
+    z.lazy(() => ResponseBodyBuildMachine$inboundSchema),
   ),
 });
 

@@ -9,10 +9,10 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
-  CreateDeploymentMissingDeploymentsResponse1,
-  CreateDeploymentMissingDeploymentsResponse1$inboundSchema,
   CreateDeploymentMissingDeploymentsResponse2,
   CreateDeploymentMissingDeploymentsResponse2$inboundSchema,
+  CreateDeploymentMissingDeploymentsResponse200ApplicationJSONValue,
+  CreateDeploymentMissingDeploymentsResponse200ApplicationJSONValue$inboundSchema,
   CreateDeploymentResponseBodyDeploymentsReadyState,
   CreateDeploymentResponseBodyDeploymentsReadyState$inboundSchema,
   CreateDeploymentResponseBodyLambdas,
@@ -55,7 +55,7 @@ import {
   ResponseBodySeatBlock$inboundSchema,
   ServicesBindings,
   ServicesBindings$inboundSchema,
-} from "./createdeploymentmissingdeploymentsresponse1.js";
+} from "./createdeploymentmissingdeploymentsresponse200applicationjsonvalue.js";
 import {
   CreateDeploymentResponseBodyChecks,
   CreateDeploymentResponseBodyChecks$inboundSchema,
@@ -95,8 +95,13 @@ import {
   ResponseBodyGitRepo$inboundSchema,
   ResponseBodyImages,
   ResponseBodyImages$inboundSchema,
-} from "./createdeploymentresponsebodydeploymentsstatus.js";
+} from "./responsebodyimages.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type CreateDeploymentMissingDeploymentsResponse1 = {
+  type: "host";
+  value: CreateDeploymentMissingDeploymentsResponse200ApplicationJSONValue;
+};
 
 export type CreateDeploymentServicesDeploymentsMissing =
   | CreateDeploymentMissingDeploymentsResponse1
@@ -1446,10 +1451,38 @@ export type CreateDeploymentResponseBody =
   | CreateDeploymentResponseBody1;
 
 /** @internal */
+export const CreateDeploymentMissingDeploymentsResponse1$inboundSchema:
+  z.ZodType<
+    CreateDeploymentMissingDeploymentsResponse1,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    type: types.literal("host"),
+    value:
+      CreateDeploymentMissingDeploymentsResponse200ApplicationJSONValue$inboundSchema,
+  });
+
+export function createDeploymentMissingDeploymentsResponse1FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateDeploymentMissingDeploymentsResponse1,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateDeploymentMissingDeploymentsResponse1$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateDeploymentMissingDeploymentsResponse1' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateDeploymentServicesDeploymentsMissing$inboundSchema:
   z.ZodType<CreateDeploymentServicesDeploymentsMissing, z.ZodTypeDef, unknown> =
     z.union([
-      CreateDeploymentMissingDeploymentsResponse1$inboundSchema,
+      z.lazy(() => CreateDeploymentMissingDeploymentsResponse1$inboundSchema),
       CreateDeploymentMissingDeploymentsResponse2$inboundSchema.and(
         z.object({ type: z.literal("cookie") }),
       ),
@@ -1489,20 +1522,18 @@ export const CreateDeploymentServicesRedirects$inboundSchema: z.ZodType<
     z.array(CreateDeploymentServicesDeploymentsHas$inboundSchema),
   ),
   missing: types.optional(
-    z.array(
-      z.union([
-        CreateDeploymentMissingDeploymentsResponse1$inboundSchema,
-        CreateDeploymentMissingDeploymentsResponse2$inboundSchema.and(
-          z.object({ type: z.literal("cookie") }),
-        ),
-        CreateDeploymentMissingDeploymentsResponse2$inboundSchema.and(
-          z.object({ type: z.literal("header") }),
-        ),
-        CreateDeploymentMissingDeploymentsResponse2$inboundSchema.and(
-          z.object({ type: z.literal("query") }),
-        ),
-      ]),
-    ),
+    z.array(z.union([
+      z.lazy(() => CreateDeploymentMissingDeploymentsResponse1$inboundSchema),
+      CreateDeploymentMissingDeploymentsResponse2$inboundSchema.and(
+        z.object({ type: z.literal("cookie") }),
+      ),
+      CreateDeploymentMissingDeploymentsResponse2$inboundSchema.and(
+        z.object({ type: z.literal("header") }),
+      ),
+      CreateDeploymentMissingDeploymentsResponse2$inboundSchema.and(
+        z.object({ type: z.literal("query") }),
+      ),
+    ])),
   ),
   permanent: types.optional(types.boolean()),
   source: types.string(),

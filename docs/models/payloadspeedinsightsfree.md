@@ -5,7 +5,7 @@ Pauses Speed Insights free data-point ingestion when the team-wide free allocati
 ## Example Usage
 
 ```typescript
-import { PayloadSpeedInsightsFree } from "@vercel/sdk/models/usereventpayload171newownerfeatureblocksworkflowstoragewriteblockreason.js";
+import { PayloadSpeedInsightsFree } from "@vercel/sdk/models/usereventpayload171newownerfeatureblocksworkfloweventsblockreason.js";
 
 let value: PayloadSpeedInsightsFree = {
   blockReason: "limits_exceeded",

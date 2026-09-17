@@ -37,3 +37,16 @@ const value: models.CreateDeploymentCheckRunSource3 = {
 const value: models.CreateDeploymentCheckRunSource4 = {};
 ```
 
+### `models.CreateDeploymentCheckRunSource5`
+
+```typescript
+const value: models.CreateDeploymentCheckRunSource5 = {
+  origin: "api",
+  selection: {
+    job: "Principal Marketing Associate",
+    kind: "job",
+  },
+  subKind: "vercel-ci-check",
+};
+```
+

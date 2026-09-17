@@ -5,12 +5,11 @@
 ```typescript
 import { UpdateDeploymentCheckRunSourceChecksV2ResponseSubKind } from "@vercel/sdk/models/updatedeploymentcheckrunop.js";
 
-let value: UpdateDeploymentCheckRunSourceChecksV2ResponseSubKind =
-  "vercel-ci-sentinel";
+let value: UpdateDeploymentCheckRunSourceChecksV2ResponseSubKind = "vercel-ci";
 ```
 
 ## Values
 
 ```typescript
-"vercel-ci-sentinel"
+"vercel-ci"
 ```

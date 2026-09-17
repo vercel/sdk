@@ -37,3 +37,16 @@ const value: models.UpdateDeploymentCheckRunSource3 = {
 const value: models.UpdateDeploymentCheckRunSource4 = {};
 ```
 
+### `models.UpdateDeploymentCheckRunSource5`
+
+```typescript
+const value: models.UpdateDeploymentCheckRunSource5 = {
+  origin: "api",
+  selection: {
+    job: "Legacy Applications Administrator",
+    kind: "job",
+  },
+  subKind: "vercel-ci-check",
+};
+```
+

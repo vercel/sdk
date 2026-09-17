@@ -8202,7 +8202,8 @@
                     "type": "string",
                     "enum": [
                       "build-ready",
-                      "deployment-url"
+                      "deployment-url",
+                      "none"
                     ],
                     "default": "deployment-url"
                   },
@@ -8528,6 +8529,47 @@
                                     },
                                     "type": "object",
                                     "description": "Native Vercel checks — check definition and check run `source`."
+                                  },
+                                  {
+                                    "properties": {
+                                      "origin": {
+                                        "type": "string",
+                                        "enum": [
+                                          "api"
+                                        ]
+                                      },
+                                      "selection": {
+                                        "properties": {
+                                          "job": {
+                                            "type": "string"
+                                          },
+                                          "kind": {
+                                            "type": "string",
+                                            "enum": [
+                                              "job"
+                                            ]
+                                          }
+                                        },
+                                        "required": [
+                                          "job",
+                                          "kind"
+                                        ],
+                                        "type": "object"
+                                      },
+                                      "subKind": {
+                                        "type": "string",
+                                        "enum": [
+                                          "vercel-ci-check"
+                                        ]
+                                      }
+                                    },
+                                    "required": [
+                                      "origin",
+                                      "selection",
+                                      "subKind"
+                                    ],
+                                    "type": "object",
+                                    "description": "Project-defined CI requirement; its selection is frozen on each check run."
                                   }
                                 ]
                               }
@@ -8979,6 +9021,47 @@
                                     },
                                     "type": "object",
                                     "description": "Native Vercel checks — check definition and check run `source`."
+                                  },
+                                  {
+                                    "properties": {
+                                      "origin": {
+                                        "type": "string",
+                                        "enum": [
+                                          "api"
+                                        ]
+                                      },
+                                      "selection": {
+                                        "properties": {
+                                          "job": {
+                                            "type": "string"
+                                          },
+                                          "kind": {
+                                            "type": "string",
+                                            "enum": [
+                                              "job"
+                                            ]
+                                          }
+                                        },
+                                        "required": [
+                                          "job",
+                                          "kind"
+                                        ],
+                                        "type": "object"
+                                      },
+                                      "subKind": {
+                                        "type": "string",
+                                        "enum": [
+                                          "vercel-ci-check"
+                                        ]
+                                      }
+                                    },
+                                    "required": [
+                                      "origin",
+                                      "selection",
+                                      "subKind"
+                                    ],
+                                    "type": "object",
+                                    "description": "Project-defined CI requirement; its selection is frozen on each check run."
                                   }
                                 ]
                               }
@@ -9414,6 +9497,47 @@
                               },
                               "type": "object",
                               "description": "Native Vercel checks — check definition and check run `source`."
+                            },
+                            {
+                              "properties": {
+                                "origin": {
+                                  "type": "string",
+                                  "enum": [
+                                    "api"
+                                  ]
+                                },
+                                "selection": {
+                                  "properties": {
+                                    "job": {
+                                      "type": "string"
+                                    },
+                                    "kind": {
+                                      "type": "string",
+                                      "enum": [
+                                        "job"
+                                      ]
+                                    }
+                                  },
+                                  "required": [
+                                    "job",
+                                    "kind"
+                                  ],
+                                  "type": "object"
+                                },
+                                "subKind": {
+                                  "type": "string",
+                                  "enum": [
+                                    "vercel-ci-check"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "origin",
+                                "selection",
+                                "subKind"
+                              ],
+                              "type": "object",
+                              "description": "Project-defined CI requirement; its selection is frozen on each check run."
                             }
                           ]
                         }
@@ -9863,6 +9987,47 @@
                               },
                               "type": "object",
                               "description": "Native Vercel checks — check definition and check run `source`."
+                            },
+                            {
+                              "properties": {
+                                "origin": {
+                                  "type": "string",
+                                  "enum": [
+                                    "api"
+                                  ]
+                                },
+                                "selection": {
+                                  "properties": {
+                                    "job": {
+                                      "type": "string"
+                                    },
+                                    "kind": {
+                                      "type": "string",
+                                      "enum": [
+                                        "job"
+                                      ]
+                                    }
+                                  },
+                                  "required": [
+                                    "job",
+                                    "kind"
+                                  ],
+                                  "type": "object"
+                                },
+                                "subKind": {
+                                  "type": "string",
+                                  "enum": [
+                                    "vercel-ci-check"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "origin",
+                                "selection",
+                                "subKind"
+                              ],
+                              "type": "object",
+                              "description": "Project-defined CI requirement; its selection is frozen on each check run."
                             }
                           ]
                         }
@@ -10304,6 +10469,47 @@
                               },
                               "type": "object",
                               "description": "Native Vercel checks — check definition and check run `source`."
+                            },
+                            {
+                              "properties": {
+                                "origin": {
+                                  "type": "string",
+                                  "enum": [
+                                    "api"
+                                  ]
+                                },
+                                "selection": {
+                                  "properties": {
+                                    "job": {
+                                      "type": "string"
+                                    },
+                                    "kind": {
+                                      "type": "string",
+                                      "enum": [
+                                        "job"
+                                      ]
+                                    }
+                                  },
+                                  "required": [
+                                    "job",
+                                    "kind"
+                                  ],
+                                  "type": "object"
+                                },
+                                "subKind": {
+                                  "type": "string",
+                                  "enum": [
+                                    "vercel-ci-check"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "origin",
+                                "selection",
+                                "subKind"
+                              ],
+                              "type": "object",
+                              "description": "Project-defined CI requirement; its selection is frozen on each check run."
                             }
                           ]
                         }
@@ -31590,6 +31796,13 @@
               "schema": {
                 "additionalProperties": false,
                 "properties": {
+                  "buildMachine": {
+                    "description": "Selects a custom build machine for this deployment without changing project settings.",
+                    "enum": [
+                      "turbo"
+                    ],
+                    "type": "string"
+                  },
                   "customEnvironmentSlugOrId": {
                     "description": "The slug or ID of a custom environment to deploy to, overriding the default target environment. When omitted, the deployment targets the environment inferred from the branch (production or preview).",
                     "type": "string",
@@ -75807,7 +76020,6 @@
                               "ES256",
                               "ES384",
                               "ES512",
-                              "EdDSA",
                               "PS256",
                               "PS384",
                               "PS512",
@@ -76146,7 +76358,6 @@
                         "ES256",
                         "ES384",
                         "ES512",
-                        "EdDSA",
                         "PS256",
                         "PS384",
                         "PS512",
@@ -76431,7 +76642,7 @@
                   },
                   "algorithm": {
                     "type": "string",
-                    "description": "The signing algorithm to use for the issuer. EdDSA is not accepted for new issuers.",
+                    "description": "The signing algorithm to use for the issuer.",
                     "enum": [
                       "RS256",
                       "RS384",
@@ -77154,7 +77365,6 @@
                         "ES256",
                         "ES384",
                         "ES512",
-                        "EdDSA",
                         "PS256",
                         "PS384",
                         "PS512",
@@ -77474,7 +77684,6 @@
                         "ES256",
                         "ES384",
                         "ES512",
-                        "EdDSA",
                         "PS256",
                         "PS384",
                         "PS512",
@@ -77779,7 +77988,6 @@
                         "ES256",
                         "ES384",
                         "ES512",
-                        "EdDSA",
                         "PS256",
                         "PS384",
                         "PS512",
@@ -84125,6 +84333,12 @@
                                 },
                                 "type": "array"
                               },
+                              "deploymentProtectionException": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
                               "deploymentRollback": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
@@ -84252,6 +84466,12 @@
                                 "type": "array"
                               },
                               "flagsExplorerSubscription": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "gitCredentialGrant": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
                                 },
@@ -84935,6 +85155,12 @@
                                 },
                                 "type": "array"
                               },
+                              "projectSetting": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
                               "projectSupportCase": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
@@ -85025,6 +85251,12 @@
                                 },
                                 "type": "array"
                               },
+                              "schedule": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
                               "seawallConfig": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
@@ -85050,6 +85282,12 @@
                                 "type": "array"
                               },
                               "sensitiveEnvironmentVariablePolicy": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "setting": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
                                 },
@@ -108680,6 +108918,12 @@
                                     },
                                     "type": "array"
                                   },
+                                  "deploymentProtectionException": {
+                                    "items": {
+                                      "$ref": "#/components/schemas/ACLAction"
+                                    },
+                                    "type": "array"
+                                  },
                                   "deploymentRollback": {
                                     "items": {
                                       "$ref": "#/components/schemas/ACLAction"
@@ -108807,6 +109051,12 @@
                                     "type": "array"
                                   },
                                   "flagsExplorerSubscription": {
+                                    "items": {
+                                      "$ref": "#/components/schemas/ACLAction"
+                                    },
+                                    "type": "array"
+                                  },
+                                  "gitCredentialGrant": {
                                     "items": {
                                       "$ref": "#/components/schemas/ACLAction"
                                     },
@@ -109490,6 +109740,12 @@
                                     },
                                     "type": "array"
                                   },
+                                  "projectSetting": {
+                                    "items": {
+                                      "$ref": "#/components/schemas/ACLAction"
+                                    },
+                                    "type": "array"
+                                  },
                                   "projectSupportCase": {
                                     "items": {
                                       "$ref": "#/components/schemas/ACLAction"
@@ -109580,6 +109836,12 @@
                                     },
                                     "type": "array"
                                   },
+                                  "schedule": {
+                                    "items": {
+                                      "$ref": "#/components/schemas/ACLAction"
+                                    },
+                                    "type": "array"
+                                  },
                                   "seawallConfig": {
                                     "items": {
                                       "$ref": "#/components/schemas/ACLAction"
@@ -109605,6 +109867,12 @@
                                     "type": "array"
                                   },
                                   "sensitiveEnvironmentVariablePolicy": {
+                                    "items": {
+                                      "$ref": "#/components/schemas/ACLAction"
+                                    },
+                                    "type": "array"
+                                  },
+                                  "setting": {
                                     "items": {
                                       "$ref": "#/components/schemas/ACLAction"
                                     },
@@ -116975,6 +117243,12 @@
                           },
                           "type": "array"
                         },
+                        "deploymentProtectionException": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "deploymentRollback": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -117102,6 +117376,12 @@
                           "type": "array"
                         },
                         "flagsExplorerSubscription": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "gitCredentialGrant": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -117785,6 +118065,12 @@
                           },
                           "type": "array"
                         },
+                        "projectSetting": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "projectSupportCase": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -117875,6 +118161,12 @@
                           },
                           "type": "array"
                         },
+                        "schedule": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "seawallConfig": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -117900,6 +118192,12 @@
                           "type": "array"
                         },
                         "sensitiveEnvironmentVariablePolicy": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "setting": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -125524,6 +125822,12 @@
                           },
                           "type": "array"
                         },
+                        "deploymentProtectionException": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "deploymentRollback": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -125651,6 +125955,12 @@
                           "type": "array"
                         },
                         "flagsExplorerSubscription": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "gitCredentialGrant": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -126334,6 +126644,12 @@
                           },
                           "type": "array"
                         },
+                        "projectSetting": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "projectSupportCase": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -126424,6 +126740,12 @@
                           },
                           "type": "array"
                         },
+                        "schedule": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "seawallConfig": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -126449,6 +126771,12 @@
                           "type": "array"
                         },
                         "sensitiveEnvironmentVariablePolicy": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "setting": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -133365,6 +133693,12 @@
                           },
                           "type": "array"
                         },
+                        "deploymentProtectionException": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "deploymentRollback": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -133492,6 +133826,12 @@
                           "type": "array"
                         },
                         "flagsExplorerSubscription": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "gitCredentialGrant": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -134175,6 +134515,12 @@
                           },
                           "type": "array"
                         },
+                        "projectSetting": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "projectSupportCase": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -134265,6 +134611,12 @@
                           },
                           "type": "array"
                         },
+                        "schedule": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "seawallConfig": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -134290,6 +134642,12 @@
                           "type": "array"
                         },
                         "sensitiveEnvironmentVariablePolicy": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "setting": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -142516,6 +142874,12 @@
                           },
                           "type": "array"
                         },
+                        "deploymentProtectionException": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "deploymentRollback": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -142643,6 +143007,12 @@
                           "type": "array"
                         },
                         "flagsExplorerSubscription": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "gitCredentialGrant": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -143326,6 +143696,12 @@
                           },
                           "type": "array"
                         },
+                        "projectSetting": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "projectSupportCase": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -143416,6 +143792,12 @@
                           },
                           "type": "array"
                         },
+                        "schedule": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "seawallConfig": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -143441,6 +143823,12 @@
                           "type": "array"
                         },
                         "sensitiveEnvironmentVariablePolicy": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "setting": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -163154,6 +163542,12 @@
                           },
                           "type": "array"
                         },
+                        "deploymentProtectionException": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "deploymentRollback": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -163281,6 +163675,12 @@
                           "type": "array"
                         },
                         "flagsExplorerSubscription": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "gitCredentialGrant": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -163964,6 +164364,12 @@
                           },
                           "type": "array"
                         },
+                        "projectSetting": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "projectSupportCase": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -164054,6 +164460,12 @@
                           },
                           "type": "array"
                         },
+                        "schedule": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "seawallConfig": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -164079,6 +164491,12 @@
                           "type": "array"
                         },
                         "sensitiveEnvironmentVariablePolicy": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "setting": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -166943,6 +167361,9 @@
           },
           "500": {
             "description": ""
+          },
+          "502": {
+            "description": ""
           }
         },
         "parameters": [
@@ -168818,6 +169239,9 @@
           },
           "500": {
             "description": ""
+          },
+          "502": {
+            "description": ""
           }
         },
         "parameters": [
@@ -168976,6 +169400,9 @@
             "description": "The concurrency limit has been exceeded."
           },
           "500": {
+            "description": ""
+          },
+          "502": {
             "description": ""
           }
         },
@@ -171762,6 +172189,9 @@
           },
           "500": {
             "description": ""
+          },
+          "502": {
+            "description": ""
           }
         },
         "parameters": [
@@ -172535,6 +172965,9 @@
             "description": "The concurrency limit has been exceeded."
           },
           "500": {
+            "description": ""
+          },
+          "502": {
             "description": ""
           }
         },
@@ -173494,6 +173927,9 @@
           },
           "500": {
             "description": ""
+          },
+          "502": {
+            "description": ""
           }
         },
         "parameters": [
@@ -174274,6 +174710,9 @@
             "description": "The concurrency limit has been exceeded."
           },
           "500": {
+            "description": ""
+          },
+          "502": {
             "description": ""
           }
         },
@@ -219115,6 +219554,7 @@
                         "read-write:project-protection-bypass",
                         "read-write:remote-cache",
                         "read-write:sandbox",
+                        "read-write:schedule",
                         "read-write:team-members",
                         "read-write:vcr",
                         "read:access-group",
@@ -219140,6 +219580,7 @@
                         "read:project-flags",
                         "read:remote-cache",
                         "read:sandbox",
+                        "read:schedule",
                         "read:speed-insights",
                         "read:team",
                         "read:user",
@@ -219230,6 +219671,7 @@
                         "read-write:project-protection-bypass",
                         "read-write:remote-cache",
                         "read-write:sandbox",
+                        "read-write:schedule",
                         "read-write:team-members",
                         "read-write:vcr",
                         "read:access-group",
@@ -219255,6 +219697,7 @@
                         "read:project-flags",
                         "read:remote-cache",
                         "read:sandbox",
+                        "read:schedule",
                         "read:speed-insights",
                         "read:team",
                         "read:user",
@@ -219325,6 +219768,7 @@
                             "read-write:project-protection-bypass",
                             "read-write:remote-cache",
                             "read-write:sandbox",
+                            "read-write:schedule",
                             "read-write:team-members",
                             "read-write:vcr",
                             "read:access-group",
@@ -219350,6 +219794,7 @@
                             "read:project-flags",
                             "read:remote-cache",
                             "read:sandbox",
+                            "read:schedule",
                             "read:speed-insights",
                             "read:team",
                             "read:vcr",
@@ -219451,6 +219896,7 @@
                             "read-write:project-protection-bypass",
                             "read-write:remote-cache",
                             "read-write:sandbox",
+                            "read-write:schedule",
                             "read-write:team-members",
                             "read-write:vcr",
                             "read:access-group",
@@ -219476,6 +219922,7 @@
                             "read:project-flags",
                             "read:remote-cache",
                             "read:sandbox",
+                            "read:schedule",
                             "read:speed-insights",
                             "read:team",
                             "read:vcr",
@@ -219587,6 +220034,7 @@
                         "read-write:project-protection-bypass",
                         "read-write:remote-cache",
                         "read-write:sandbox",
+                        "read-write:schedule",
                         "read-write:team-members",
                         "read-write:vcr",
                         "read:access-group",
@@ -219612,6 +220060,7 @@
                         "read:project-flags",
                         "read:remote-cache",
                         "read:sandbox",
+                        "read:schedule",
                         "read:speed-insights",
                         "read:team",
                         "read:vcr",
@@ -230775,6 +231224,34 @@
               },
               {
                 "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "enum": [
+                      false,
+                      true
+                    ]
+                  },
+                  "organizationId": {
+                    "type": "string"
+                  },
+                  "teamId": {
+                    "type": "string"
+                  },
+                  "teamSlug": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "enabled",
+                  "organizationId",
+                  "teamId",
+                  "teamSlug"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
                   "organizationId": {
                     "type": "string"
                   },
@@ -235633,6 +236110,30 @@
                   "projectName",
                   "snapshotId",
                   "targetRegions"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "projectId": {
+                    "type": "string"
+                  },
+                  "sandboxId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "email",
+                  "name",
+                  "projectId",
+                  "sandboxId"
                 ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
@@ -241437,6 +241938,7 @@
               "organization-delete",
               "organization-dsync-group-delete",
               "organization-dsync-group-upsert",
+              "organization-emu-team-updated",
               "organization-emu-updated",
               "organization-slug-update",
               "organization-team-add",
@@ -241604,6 +242106,7 @@
               "sandbox-alias-delete",
               "sandbox-drive-created",
               "sandbox-drive-deleted",
+              "sandbox-signed-commit-identity-configured",
               "sandbox-snapshot-regions-updated",
               "scale",
               "scale-auto",
@@ -242337,6 +242840,7 @@
               "organization-delete",
               "organization-dsync-group-delete",
               "organization-dsync-group-upsert",
+              "organization-emu-team-updated",
               "organization-emu-updated",
               "organization-slug-update",
               "organization-team-add",
@@ -242504,6 +243008,7 @@
               "sandbox-alias-delete",
               "sandbox-drive-created",
               "sandbox-drive-deleted",
+              "sandbox-signed-commit-identity-configured",
               "sandbox-snapshot-regions-updated",
               "scale",
               "scale-auto",
@@ -243025,6 +243530,7 @@
                 "organization-delete",
                 "organization-dsync-group-delete",
                 "organization-dsync-group-upsert",
+                "organization-emu-team-updated",
                 "organization-emu-updated",
                 "organization-slug-update",
                 "organization-team-add",
@@ -243192,6 +243698,7 @@
                 "sandbox-alias-delete",
                 "sandbox-drive-created",
                 "sandbox-drive-deleted",
+                "sandbox-signed-commit-identity-configured",
                 "sandbox-snapshot-regions-updated",
                 "scale",
                 "scale-auto",

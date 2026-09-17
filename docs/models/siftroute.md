@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { SiftRoute } from "@vercel/sdk/models/payloadnext.js";
+import { SiftRoute } from "@vercel/sdk/models/payloaddefault.js";
 
 let value: SiftRoute = {
   name: "<value>",

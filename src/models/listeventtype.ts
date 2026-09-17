@@ -407,6 +407,7 @@ export const Name = {
   OrganizationDelete: "organization-delete",
   OrganizationDsyncGroupDelete: "organization-dsync-group-delete",
   OrganizationDsyncGroupUpsert: "organization-dsync-group-upsert",
+  OrganizationEmuTeamUpdated: "organization-emu-team-updated",
   OrganizationEmuUpdated: "organization-emu-updated",
   OrganizationSlugUpdate: "organization-slug-update",
   OrganizationTeamAdd: "organization-team-add",
@@ -592,6 +593,8 @@ export const Name = {
   SandboxAliasDelete: "sandbox-alias-delete",
   SandboxDriveCreated: "sandbox-drive-created",
   SandboxDriveDeleted: "sandbox-drive-deleted",
+  SandboxSignedCommitIdentityConfigured:
+    "sandbox-signed-commit-identity-configured",
   SandboxSnapshotRegionsUpdated: "sandbox-snapshot-regions-updated",
   Scale: "scale",
   ScaleAuto: "scale-auto",
@@ -1148,6 +1151,7 @@ export const ReplacedBy = {
   OrganizationDelete: "organization-delete",
   OrganizationDsyncGroupDelete: "organization-dsync-group-delete",
   OrganizationDsyncGroupUpsert: "organization-dsync-group-upsert",
+  OrganizationEmuTeamUpdated: "organization-emu-team-updated",
   OrganizationEmuUpdated: "organization-emu-updated",
   OrganizationSlugUpdate: "organization-slug-update",
   OrganizationTeamAdd: "organization-team-add",
@@ -1333,6 +1337,8 @@ export const ReplacedBy = {
   SandboxAliasDelete: "sandbox-alias-delete",
   SandboxDriveCreated: "sandbox-drive-created",
   SandboxDriveDeleted: "sandbox-drive-deleted",
+  SandboxSignedCommitIdentityConfigured:
+    "sandbox-signed-commit-identity-configured",
   SandboxSnapshotRegionsUpdated: "sandbox-snapshot-regions-updated",
   Scale: "scale",
   ScaleAuto: "scale-auto",

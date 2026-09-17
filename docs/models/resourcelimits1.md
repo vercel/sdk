@@ -5,7 +5,7 @@ Override for a token-bucket rate limit: a fixed quantity per duration.
 ## Example Usage
 
 ```typescript
-import { ResourceLimits1 } from "@vercel/sdk/models/onehundredandfortyeight.js";
+import { ResourceLimits1 } from "@vercel/sdk/models/previousrule.js";
 
 let value: ResourceLimits1 = {
   duration: 3751.02,

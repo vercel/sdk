@@ -37,3 +37,16 @@ const value: models.ListCheckRunsSource3 = {
 const value: models.ListCheckRunsSource4 = {};
 ```
 
+### `models.ListCheckRunsSource5`
+
+```typescript
+const value: models.ListCheckRunsSource5 = {
+  origin: "api",
+  selection: {
+    job: "Product Solutions Engineer",
+    kind: "job",
+  },
+  subKind: "vercel-ci-check",
+};
+```
+

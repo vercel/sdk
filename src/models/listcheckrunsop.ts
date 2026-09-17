@@ -65,11 +65,11 @@ export type ListCheckRunsRunsStatus = ClosedEnum<
   typeof ListCheckRunsRunsStatus
 >;
 
-export const ListCheckRunsSourceSubKind = {
+export const ListCheckRunsSourceChecksV2SubKind = {
   VercelCiSentinel: "vercel-ci-sentinel",
 } as const;
-export type ListCheckRunsSourceSubKind = ClosedEnum<
-  typeof ListCheckRunsSourceSubKind
+export type ListCheckRunsSourceChecksV2SubKind = ClosedEnum<
+  typeof ListCheckRunsSourceChecksV2SubKind
 >;
 
 /**
@@ -77,14 +77,14 @@ export type ListCheckRunsSourceSubKind = ClosedEnum<
  */
 export type ListCheckRunsSourceChecksV22 = {
   origin: "platform";
-  subKind: ListCheckRunsSourceSubKind;
+  subKind: ListCheckRunsSourceChecksV2SubKind;
 };
 
-export const ListCheckRunsSourceChecksV2ResponseSubKind = {
+export const ListCheckRunsSourceSubKind = {
   VercelCi: "vercel-ci",
 } as const;
-export type ListCheckRunsSourceChecksV2ResponseSubKind = ClosedEnum<
-  typeof ListCheckRunsSourceChecksV2ResponseSubKind
+export type ListCheckRunsSourceSubKind = ClosedEnum<
+  typeof ListCheckRunsSourceSubKind
 >;
 
 /**
@@ -95,7 +95,7 @@ export type ListCheckRunsSourceChecksV21 = {
   invocationId: string;
   jobDefinitionId: string;
   origin: "config";
-  subKind: ListCheckRunsSourceChecksV2ResponseSubKind;
+  subKind: ListCheckRunsSourceSubKind;
 };
 
 export type ListCheckRunsRunsSource =
@@ -162,27 +162,62 @@ export const RunsStatus = {
 } as const;
 export type RunsStatus = ClosedEnum<typeof RunsStatus>;
 
-export const ListCheckRunsSourceChecksV2Origin = {
+export const ListCheckRunsSourceChecksV2Response200Origin = {
+  Api: "api",
+} as const;
+export type ListCheckRunsSourceChecksV2Response200Origin = ClosedEnum<
+  typeof ListCheckRunsSourceChecksV2Response200Origin
+>;
+
+export const ListCheckRunsSourceChecksV2Response200Kind = {
+  Job: "job",
+} as const;
+export type ListCheckRunsSourceChecksV2Response200Kind = ClosedEnum<
+  typeof ListCheckRunsSourceChecksV2Response200Kind
+>;
+
+export type ListCheckRunsSourceSelection = {
+  job: string;
+  kind: ListCheckRunsSourceChecksV2Response200Kind;
+};
+
+export const ListCheckRunsSourceChecksV2Response200SubKind = {
+  VercelCiCheck: "vercel-ci-check",
+} as const;
+export type ListCheckRunsSourceChecksV2Response200SubKind = ClosedEnum<
+  typeof ListCheckRunsSourceChecksV2Response200SubKind
+>;
+
+/**
+ * Project-defined CI requirement; its selection is frozen on each check run.
+ */
+export type ListCheckRunsSource5 = {
+  origin: ListCheckRunsSourceChecksV2Response200Origin;
+  selection: ListCheckRunsSourceSelection;
+  subKind: ListCheckRunsSourceChecksV2Response200SubKind;
+};
+
+export const ListCheckRunsSourceChecksV2ResponseOrigin = {
   Api: "api",
   Platform: "platform",
 } as const;
-export type ListCheckRunsSourceChecksV2Origin = ClosedEnum<
-  typeof ListCheckRunsSourceChecksV2Origin
+export type ListCheckRunsSourceChecksV2ResponseOrigin = ClosedEnum<
+  typeof ListCheckRunsSourceChecksV2ResponseOrigin
 >;
 
-export const ListCheckRunsSourceChecksV2SubKind = {
+export const ListCheckRunsSourceChecksV2ResponseSubKind = {
   VercelNativeCheck: "vercel-native-check",
 } as const;
-export type ListCheckRunsSourceChecksV2SubKind = ClosedEnum<
-  typeof ListCheckRunsSourceChecksV2SubKind
+export type ListCheckRunsSourceChecksV2ResponseSubKind = ClosedEnum<
+  typeof ListCheckRunsSourceChecksV2ResponseSubKind
 >;
 
 /**
  * Native Vercel checks — check definition and check run `source`.
  */
 export type ListCheckRunsSource4 = {
-  origin?: ListCheckRunsSourceChecksV2Origin | undefined;
-  subKind?: ListCheckRunsSourceChecksV2SubKind | undefined;
+  origin?: ListCheckRunsSourceChecksV2ResponseOrigin | undefined;
+  subKind?: ListCheckRunsSourceChecksV2ResponseSubKind | undefined;
 };
 
 export const ListCheckRunsSourceChecksV2ResponseKind = {
@@ -237,6 +272,7 @@ export type ListCheckRunsSource1 = {
 export type RunsSource =
   | ListCheckRunsSource1
   | ListCheckRunsSource3
+  | ListCheckRunsSource5
   | ListCheckRunsSource2
   | ListCheckRunsSource4;
 
@@ -266,6 +302,7 @@ export type Runs1 = {
   source:
     | ListCheckRunsSource1
     | ListCheckRunsSource3
+    | ListCheckRunsSource5
     | ListCheckRunsSource2
     | ListCheckRunsSource4;
 };
@@ -325,9 +362,9 @@ export const ListCheckRunsRunsStatus$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(ListCheckRunsRunsStatus);
 
 /** @internal */
-export const ListCheckRunsSourceSubKind$inboundSchema: z.ZodNativeEnum<
-  typeof ListCheckRunsSourceSubKind
-> = z.nativeEnum(ListCheckRunsSourceSubKind);
+export const ListCheckRunsSourceChecksV2SubKind$inboundSchema: z.ZodNativeEnum<
+  typeof ListCheckRunsSourceChecksV2SubKind
+> = z.nativeEnum(ListCheckRunsSourceChecksV2SubKind);
 
 /** @internal */
 export const ListCheckRunsSourceChecksV22$inboundSchema: z.ZodType<
@@ -336,7 +373,7 @@ export const ListCheckRunsSourceChecksV22$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   origin: types.literal("platform"),
-  subKind: ListCheckRunsSourceSubKind$inboundSchema,
+  subKind: ListCheckRunsSourceChecksV2SubKind$inboundSchema,
 });
 
 export function listCheckRunsSourceChecksV22FromJSON(
@@ -350,9 +387,9 @@ export function listCheckRunsSourceChecksV22FromJSON(
 }
 
 /** @internal */
-export const ListCheckRunsSourceChecksV2ResponseSubKind$inboundSchema:
-  z.ZodNativeEnum<typeof ListCheckRunsSourceChecksV2ResponseSubKind> = z
-    .nativeEnum(ListCheckRunsSourceChecksV2ResponseSubKind);
+export const ListCheckRunsSourceSubKind$inboundSchema: z.ZodNativeEnum<
+  typeof ListCheckRunsSourceSubKind
+> = z.nativeEnum(ListCheckRunsSourceSubKind);
 
 /** @internal */
 export const ListCheckRunsSourceChecksV21$inboundSchema: z.ZodType<
@@ -364,7 +401,7 @@ export const ListCheckRunsSourceChecksV21$inboundSchema: z.ZodType<
   invocationId: types.string(),
   jobDefinitionId: types.string(),
   origin: types.literal("config"),
-  subKind: ListCheckRunsSourceChecksV2ResponseSubKind$inboundSchema,
+  subKind: ListCheckRunsSourceSubKind$inboundSchema,
 });
 
 export function listCheckRunsSourceChecksV21FromJSON(
@@ -452,14 +489,70 @@ export const RunsStatus$inboundSchema: z.ZodNativeEnum<typeof RunsStatus> = z
   .nativeEnum(RunsStatus);
 
 /** @internal */
-export const ListCheckRunsSourceChecksV2Origin$inboundSchema: z.ZodNativeEnum<
-  typeof ListCheckRunsSourceChecksV2Origin
-> = z.nativeEnum(ListCheckRunsSourceChecksV2Origin);
+export const ListCheckRunsSourceChecksV2Response200Origin$inboundSchema:
+  z.ZodNativeEnum<typeof ListCheckRunsSourceChecksV2Response200Origin> = z
+    .nativeEnum(ListCheckRunsSourceChecksV2Response200Origin);
 
 /** @internal */
-export const ListCheckRunsSourceChecksV2SubKind$inboundSchema: z.ZodNativeEnum<
-  typeof ListCheckRunsSourceChecksV2SubKind
-> = z.nativeEnum(ListCheckRunsSourceChecksV2SubKind);
+export const ListCheckRunsSourceChecksV2Response200Kind$inboundSchema:
+  z.ZodNativeEnum<typeof ListCheckRunsSourceChecksV2Response200Kind> = z
+    .nativeEnum(ListCheckRunsSourceChecksV2Response200Kind);
+
+/** @internal */
+export const ListCheckRunsSourceSelection$inboundSchema: z.ZodType<
+  ListCheckRunsSourceSelection,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  job: types.string(),
+  kind: ListCheckRunsSourceChecksV2Response200Kind$inboundSchema,
+});
+
+export function listCheckRunsSourceSelectionFromJSON(
+  jsonString: string,
+): SafeParseResult<ListCheckRunsSourceSelection, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListCheckRunsSourceSelection$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListCheckRunsSourceSelection' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListCheckRunsSourceChecksV2Response200SubKind$inboundSchema:
+  z.ZodNativeEnum<typeof ListCheckRunsSourceChecksV2Response200SubKind> = z
+    .nativeEnum(ListCheckRunsSourceChecksV2Response200SubKind);
+
+/** @internal */
+export const ListCheckRunsSource5$inboundSchema: z.ZodType<
+  ListCheckRunsSource5,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  origin: ListCheckRunsSourceChecksV2Response200Origin$inboundSchema,
+  selection: z.lazy(() => ListCheckRunsSourceSelection$inboundSchema),
+  subKind: ListCheckRunsSourceChecksV2Response200SubKind$inboundSchema,
+});
+
+export function listCheckRunsSource5FromJSON(
+  jsonString: string,
+): SafeParseResult<ListCheckRunsSource5, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListCheckRunsSource5$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListCheckRunsSource5' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListCheckRunsSourceChecksV2ResponseOrigin$inboundSchema:
+  z.ZodNativeEnum<typeof ListCheckRunsSourceChecksV2ResponseOrigin> = z
+    .nativeEnum(ListCheckRunsSourceChecksV2ResponseOrigin);
+
+/** @internal */
+export const ListCheckRunsSourceChecksV2ResponseSubKind$inboundSchema:
+  z.ZodNativeEnum<typeof ListCheckRunsSourceChecksV2ResponseSubKind> = z
+    .nativeEnum(ListCheckRunsSourceChecksV2ResponseSubKind);
 
 /** @internal */
 export const ListCheckRunsSource4$inboundSchema: z.ZodType<
@@ -467,8 +560,12 @@ export const ListCheckRunsSource4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  origin: types.optional(ListCheckRunsSourceChecksV2Origin$inboundSchema),
-  subKind: types.optional(ListCheckRunsSourceChecksV2SubKind$inboundSchema),
+  origin: types.optional(
+    ListCheckRunsSourceChecksV2ResponseOrigin$inboundSchema,
+  ),
+  subKind: types.optional(
+    ListCheckRunsSourceChecksV2ResponseSubKind$inboundSchema,
+  ),
 });
 
 export function listCheckRunsSource4FromJSON(
@@ -573,6 +670,7 @@ export const RunsSource$inboundSchema: z.ZodType<
 > = smartUnion([
   z.lazy(() => ListCheckRunsSource1$inboundSchema),
   z.lazy(() => ListCheckRunsSource3$inboundSchema),
+  z.lazy(() => ListCheckRunsSource5$inboundSchema),
   z.lazy(() => ListCheckRunsSource2$inboundSchema),
   z.lazy(() => ListCheckRunsSource4$inboundSchema),
 ]);
@@ -612,6 +710,7 @@ export const Runs1$inboundSchema: z.ZodType<Runs1, z.ZodTypeDef, unknown> = z
     source: smartUnion([
       z.lazy(() => ListCheckRunsSource1$inboundSchema),
       z.lazy(() => ListCheckRunsSource3$inboundSchema),
+      z.lazy(() => ListCheckRunsSource5$inboundSchema),
       z.lazy(() => ListCheckRunsSource2$inboundSchema),
       z.lazy(() => ListCheckRunsSource4$inboundSchema),
     ]),

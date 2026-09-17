@@ -1,0 +1,17 @@
+# UserEventPayload267Next
+
+## Example Usage
+
+```typescript
+import { UserEventPayload267Next } from "@vercel/sdk/models/payloaddefault.js";
+
+let value: UserEventPayload267Next = {
+  functionZeroConfigFailover: false,
+};
+```
+
+## Fields
+
+| Field                        | Type                         | Required                     | Description                  |
+| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
+| `functionZeroConfigFailover` | *boolean*                    | :heavy_check_mark:           | N/A                          |

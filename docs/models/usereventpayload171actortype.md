@@ -5,7 +5,7 @@ Type of actor
 ## Example Usage
 
 ```typescript
-import { UserEventPayload171ActorType } from "@vercel/sdk/models/onehundredandfortyeight.js";
+import { UserEventPayload171ActorType } from "@vercel/sdk/models/previousrule.js";
 
 let value: UserEventPayload171ActorType = "user";
 ```

@@ -6,7 +6,7 @@
 import { GetKmsIssuerResponseBody } from "@vercel/sdk/models/getkmsissuerop.js";
 
 let value: GetKmsIssuerResponseBody = {
-  algorithm: "PS512",
+  algorithm: "RS256",
   createdAt: "1735684679272",
   id: "<id>",
   name: "<value>",

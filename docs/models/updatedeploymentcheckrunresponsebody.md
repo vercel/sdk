@@ -16,11 +16,7 @@ const value: models.UpdateDeploymentCheckRunResponseBody1 = {
   timeout: 2125,
   updatedAt: 4265.19,
   checkId: "<id>",
-  source: {
-    externalCheckName: "<value>",
-    kind: "git-provider",
-    provider: "bitbucket",
-  },
+  source: {},
 };
 ```
 

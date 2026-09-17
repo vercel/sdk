@@ -11,5 +11,5 @@ let value: UpdateProjectCheckRequires = "deployment-url";
 ## Values
 
 ```typescript
-"build-ready" | "deployment-url"
+"build-ready" | "deployment-url" | "none"
 ```

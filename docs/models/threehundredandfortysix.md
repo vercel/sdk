@@ -9,19 +9,22 @@ import { ThreeHundredAndFortySix } from "@vercel/sdk/models/payloadmostspecifics
 
 let value: ThreeHundredAndFortySix = {
   budget: {
-    createdAt: 7839.68,
-    fixedBudget: 6111.86,
-    id: "<id>",
-    isActive: true,
-    notifiedAt: [
-      7087.71,
-    ],
-    previousSpend: [
-      9204.39,
-      7050.42,
-    ],
-    teamId: "<id>",
-    type: "fixed",
+    budgetItem: {
+      createdAt: 9371.03,
+      fixedBudget: 8606.07,
+      id: "<id>",
+      isActive: false,
+      notifiedAt: [
+        2423.52,
+        7782.73,
+      ],
+      previousSpend: [
+        397.47,
+        9537.22,
+      ],
+      teamId: "<id>",
+      type: "fixed",
+    },
   },
 };
 ```
@@ -30,5 +33,4 @@ let value: ThreeHundredAndFortySix = {
 
 | Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
 | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `budget`                                                                   | [models.UserEventPayload346Budget](../models/usereventpayload346budget.md) | :heavy_check_mark:                                                         | Represents a budget for tracking and notifying teams on their spending.    |
-| `webhookUrl`                                                               | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `budget`                                                                   | [models.UserEventPayload346Budget](../models/usereventpayload346budget.md) | :heavy_check_mark:                                                         | N/A                                                                        |

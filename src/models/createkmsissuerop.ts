@@ -11,7 +11,7 @@ import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
- * The signing algorithm to use for the issuer. EdDSA is not accepted for new issuers.
+ * The signing algorithm to use for the issuer.
  */
 export const Algorithm = {
   Rs256: "RS256",
@@ -25,7 +25,7 @@ export const Algorithm = {
   Es512: "ES512",
 } as const;
 /**
- * The signing algorithm to use for the issuer. EdDSA is not accepted for new issuers.
+ * The signing algorithm to use for the issuer.
  */
 export type Algorithm = ClosedEnum<typeof Algorithm>;
 
@@ -69,7 +69,7 @@ export type CreateKmsIssuerRequestBody = {
    */
   name: string;
   /**
-   * The signing algorithm to use for the issuer. EdDSA is not accepted for new issuers.
+   * The signing algorithm to use for the issuer.
    */
   algorithm?: Algorithm | undefined;
   /**
@@ -103,7 +103,6 @@ export const CreateKmsIssuerAlgorithm = {
   Es256: "ES256",
   Es384: "ES384",
   Es512: "ES512",
-  EdDSA: "EdDSA",
   Ps256: "PS256",
   Ps384: "PS384",
   Ps512: "PS512",

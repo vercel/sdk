@@ -6,7 +6,7 @@
 import { UpdateKmsIssuerResponseBody } from "@vercel/sdk/models/updatekmsissuerop.js";
 
 let value: UpdateKmsIssuerResponseBody = {
-  algorithm: "PS512",
+  algorithm: "RS256",
   createdAt: "1704756688213",
   id: "<id>",
   name: "<value>",

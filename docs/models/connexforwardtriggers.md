@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ConnexForwardTriggers } from "@vercel/sdk/models/usereventpayload171newownerfeatureblocksworkflowstoragewriteblockreason.js";
+import { ConnexForwardTriggers } from "@vercel/sdk/models/usereventpayload171newownerfeatureblocksworkfloweventsblockreason.js";
 
 let value: ConnexForwardTriggers = {
   blockReason: "limits_exceeded",

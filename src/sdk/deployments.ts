@@ -19,7 +19,6 @@ import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import { CancelDeploymentRequest } from "../models/canceldeploymentresourceconfig.js";
 import { CancelDeploymentResponseBody } from "../models/canceldeploymentresponsebody.js";
 import { CreateDeploymentResponseBody } from "../models/createdeploymentresponsebody.js";
-import { CreateDeploymentRequest } from "../models/createdeploymentresponsebodydeploymentsstatus.js";
 import {
   DeleteDeploymentRequest,
   DeleteDeploymentResponseBody,
@@ -37,6 +36,7 @@ import {
   GetDeploymentsResponseBody,
 } from "../models/getdeploymentsop.js";
 import { ListDeploymentFilesRequest } from "../models/listdeploymentfilesop.js";
+import { CreateDeploymentRequest } from "../models/responsebodyimages.js";
 import { UpdateIntegrationDeploymentActionRequest } from "../models/updateintegrationdeploymentactionop.js";
 import {
   UploadFileRequest,

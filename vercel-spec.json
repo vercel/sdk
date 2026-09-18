@@ -87,12 +87,12 @@
                       "items": {
                         "type": "string",
                         "enum": [
-                          "AiGatewayApiKeyOwnedBySelf",
                           "AiGatewayBudgetManager",
                           "AiGatewayCredits",
                           "AiGatewaySettings",
                           "AiGatewayTranscriptsManager",
                           "AiGatewayTranscriptsViewer",
+                          "AiGatewayUser",
                           "ConnectorManager",
                           "CreateProject",
                           "EnvVariableManager",
@@ -8539,22 +8539,62 @@
                                         ]
                                       },
                                       "selection": {
-                                        "properties": {
-                                          "job": {
-                                            "type": "string"
+                                        "oneOf": [
+                                          {
+                                            "properties": {
+                                              "kind": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "invocation"
+                                                ]
+                                              }
+                                            },
+                                            "required": [
+                                              "kind"
+                                            ],
+                                            "type": "object"
                                           },
-                                          "kind": {
-                                            "type": "string",
-                                            "enum": [
-                                              "job"
-                                            ]
+                                          {
+                                            "properties": {
+                                              "job": {
+                                                "type": "string"
+                                              },
+                                              "kind": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "job"
+                                                ]
+                                              }
+                                            },
+                                            "required": [
+                                              "job",
+                                              "kind"
+                                            ],
+                                            "type": "object"
+                                          },
+                                          {
+                                            "properties": {
+                                              "job": {
+                                                "type": "string"
+                                              },
+                                              "kind": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "task"
+                                                ]
+                                              },
+                                              "task": {
+                                                "type": "string"
+                                              }
+                                            },
+                                            "required": [
+                                              "job",
+                                              "kind",
+                                              "task"
+                                            ],
+                                            "type": "object"
                                           }
-                                        },
-                                        "required": [
-                                          "job",
-                                          "kind"
-                                        ],
-                                        "type": "object"
+                                        ]
                                       },
                                       "subKind": {
                                         "type": "string",
@@ -9031,22 +9071,62 @@
                                         ]
                                       },
                                       "selection": {
-                                        "properties": {
-                                          "job": {
-                                            "type": "string"
+                                        "oneOf": [
+                                          {
+                                            "properties": {
+                                              "kind": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "invocation"
+                                                ]
+                                              }
+                                            },
+                                            "required": [
+                                              "kind"
+                                            ],
+                                            "type": "object"
                                           },
-                                          "kind": {
-                                            "type": "string",
-                                            "enum": [
-                                              "job"
-                                            ]
+                                          {
+                                            "properties": {
+                                              "job": {
+                                                "type": "string"
+                                              },
+                                              "kind": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "job"
+                                                ]
+                                              }
+                                            },
+                                            "required": [
+                                              "job",
+                                              "kind"
+                                            ],
+                                            "type": "object"
+                                          },
+                                          {
+                                            "properties": {
+                                              "job": {
+                                                "type": "string"
+                                              },
+                                              "kind": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "task"
+                                                ]
+                                              },
+                                              "task": {
+                                                "type": "string"
+                                              }
+                                            },
+                                            "required": [
+                                              "job",
+                                              "kind",
+                                              "task"
+                                            ],
+                                            "type": "object"
                                           }
-                                        },
-                                        "required": [
-                                          "job",
-                                          "kind"
-                                        ],
-                                        "type": "object"
+                                        ]
                                       },
                                       "subKind": {
                                         "type": "string",
@@ -9507,22 +9587,62 @@
                                   ]
                                 },
                                 "selection": {
-                                  "properties": {
-                                    "job": {
-                                      "type": "string"
+                                  "oneOf": [
+                                    {
+                                      "properties": {
+                                        "kind": {
+                                          "type": "string",
+                                          "enum": [
+                                            "invocation"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "kind"
+                                      ],
+                                      "type": "object"
                                     },
-                                    "kind": {
-                                      "type": "string",
-                                      "enum": [
-                                        "job"
-                                      ]
+                                    {
+                                      "properties": {
+                                        "job": {
+                                          "type": "string"
+                                        },
+                                        "kind": {
+                                          "type": "string",
+                                          "enum": [
+                                            "job"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "job",
+                                        "kind"
+                                      ],
+                                      "type": "object"
+                                    },
+                                    {
+                                      "properties": {
+                                        "job": {
+                                          "type": "string"
+                                        },
+                                        "kind": {
+                                          "type": "string",
+                                          "enum": [
+                                            "task"
+                                          ]
+                                        },
+                                        "task": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "required": [
+                                        "job",
+                                        "kind",
+                                        "task"
+                                      ],
+                                      "type": "object"
                                     }
-                                  },
-                                  "required": [
-                                    "job",
-                                    "kind"
-                                  ],
-                                  "type": "object"
+                                  ]
                                 },
                                 "subKind": {
                                   "type": "string",
@@ -9997,22 +10117,62 @@
                                   ]
                                 },
                                 "selection": {
-                                  "properties": {
-                                    "job": {
-                                      "type": "string"
+                                  "oneOf": [
+                                    {
+                                      "properties": {
+                                        "kind": {
+                                          "type": "string",
+                                          "enum": [
+                                            "invocation"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "kind"
+                                      ],
+                                      "type": "object"
                                     },
-                                    "kind": {
-                                      "type": "string",
-                                      "enum": [
-                                        "job"
-                                      ]
+                                    {
+                                      "properties": {
+                                        "job": {
+                                          "type": "string"
+                                        },
+                                        "kind": {
+                                          "type": "string",
+                                          "enum": [
+                                            "job"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "job",
+                                        "kind"
+                                      ],
+                                      "type": "object"
+                                    },
+                                    {
+                                      "properties": {
+                                        "job": {
+                                          "type": "string"
+                                        },
+                                        "kind": {
+                                          "type": "string",
+                                          "enum": [
+                                            "task"
+                                          ]
+                                        },
+                                        "task": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "required": [
+                                        "job",
+                                        "kind",
+                                        "task"
+                                      ],
+                                      "type": "object"
                                     }
-                                  },
-                                  "required": [
-                                    "job",
-                                    "kind"
-                                  ],
-                                  "type": "object"
+                                  ]
                                 },
                                 "subKind": {
                                   "type": "string",
@@ -10479,22 +10639,62 @@
                                   ]
                                 },
                                 "selection": {
-                                  "properties": {
-                                    "job": {
-                                      "type": "string"
+                                  "oneOf": [
+                                    {
+                                      "properties": {
+                                        "kind": {
+                                          "type": "string",
+                                          "enum": [
+                                            "invocation"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "kind"
+                                      ],
+                                      "type": "object"
                                     },
-                                    "kind": {
-                                      "type": "string",
-                                      "enum": [
-                                        "job"
-                                      ]
+                                    {
+                                      "properties": {
+                                        "job": {
+                                          "type": "string"
+                                        },
+                                        "kind": {
+                                          "type": "string",
+                                          "enum": [
+                                            "job"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "job",
+                                        "kind"
+                                      ],
+                                      "type": "object"
+                                    },
+                                    {
+                                      "properties": {
+                                        "job": {
+                                          "type": "string"
+                                        },
+                                        "kind": {
+                                          "type": "string",
+                                          "enum": [
+                                            "task"
+                                          ]
+                                        },
+                                        "task": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "required": [
+                                        "job",
+                                        "kind",
+                                        "task"
+                                      ],
+                                      "type": "object"
                                     }
-                                  },
-                                  "required": [
-                                    "job",
-                                    "kind"
-                                  ],
-                                  "type": "object"
+                                  ]
                                 },
                                 "subKind": {
                                   "type": "string",
@@ -86389,28 +86589,6 @@
                                   "type": "object"
                                 },
                                 "type": "object"
-                              },
-                              "securityPlus": {
-                                "type": "boolean",
-                                "enum": [
-                                  false,
-                                  true
-                                ]
-                              },
-                              "securityPlusMetadata": {
-                                "properties": {
-                                  "firstEnabledAt": {
-                                    "type": "number",
-                                    "description": "Timestamp when the feature was first enabled. Never changes after initial enablement."
-                                  },
-                                  "updatedAt": {
-                                    "type": "number"
-                                  }
-                                },
-                                "required": [
-                                  "updatedAt"
-                                ],
-                                "type": "object"
                               }
                             },
                             "type": "object"
@@ -86999,8 +87177,6 @@
                           "tier": {
                             "type": "string",
                             "enum": [
-                              "advanced",
-                              "critical",
                               "priority"
                             ]
                           },
@@ -98246,8 +98422,6 @@
                                     "tierRequirement": {
                                       "type": "string",
                                       "enum": [
-                                        "advanced",
-                                        "critical",
                                         "priority"
                                       ]
                                     },
@@ -98579,28 +98753,6 @@
                                   ],
                                   "type": "object"
                                 },
-                                "type": "object"
-                              },
-                              "securityPlus": {
-                                "type": "boolean",
-                                "enum": [
-                                  false,
-                                  true
-                                ]
-                              },
-                              "securityPlusMetadata": {
-                                "properties": {
-                                  "firstEnabledAt": {
-                                    "type": "number",
-                                    "description": "Timestamp when the feature was first enabled. Never changes after initial enablement."
-                                  },
-                                  "updatedAt": {
-                                    "type": "number"
-                                  }
-                                },
-                                "required": [
-                                  "updatedAt"
-                                ],
                                 "type": "object"
                               }
                             },
@@ -99042,8 +99194,6 @@
                           "tier": {
                             "type": "string",
                             "enum": [
-                              "advanced",
-                              "critical",
                               "priority"
                             ]
                           },
@@ -103099,8 +103249,6 @@
                                         "tierRequirement": {
                                           "type": "string",
                                           "enum": [
-                                            "advanced",
-                                            "critical",
                                             "priority"
                                           ]
                                         },
@@ -103432,28 +103580,6 @@
                                       ],
                                       "type": "object"
                                     },
-                                    "type": "object"
-                                  },
-                                  "securityPlus": {
-                                    "type": "boolean",
-                                    "enum": [
-                                      false,
-                                      true
-                                    ]
-                                  },
-                                  "securityPlusMetadata": {
-                                    "properties": {
-                                      "firstEnabledAt": {
-                                        "type": "number",
-                                        "description": "Timestamp when the feature was first enabled. Never changes after initial enablement."
-                                      },
-                                      "updatedAt": {
-                                        "type": "number"
-                                      }
-                                    },
-                                    "required": [
-                                      "updatedAt"
-                                    ],
                                     "type": "object"
                                   }
                                 },
@@ -103895,8 +104021,6 @@
                               "tier": {
                                 "type": "string",
                                 "enum": [
-                                  "advanced",
-                                  "critical",
                                   "priority"
                                 ]
                               },
@@ -110963,28 +111087,6 @@
                                       "type": "object"
                                     },
                                     "type": "object"
-                                  },
-                                  "securityPlus": {
-                                    "type": "boolean",
-                                    "enum": [
-                                      false,
-                                      true
-                                    ]
-                                  },
-                                  "securityPlusMetadata": {
-                                    "properties": {
-                                      "firstEnabledAt": {
-                                        "type": "number",
-                                        "description": "Timestamp when the feature was first enabled. Never changes after initial enablement."
-                                      },
-                                      "updatedAt": {
-                                        "type": "number"
-                                      }
-                                    },
-                                    "required": [
-                                      "updatedAt"
-                                    ],
-                                    "type": "object"
                                   }
                                 },
                                 "type": "object"
@@ -111573,8 +111675,6 @@
                               "tier": {
                                 "type": "string",
                                 "enum": [
-                                  "advanced",
-                                  "critical",
                                   "priority"
                                 ]
                               },
@@ -119288,28 +119388,6 @@
                             "type": "object"
                           },
                           "type": "object"
-                        },
-                        "securityPlus": {
-                          "type": "boolean",
-                          "enum": [
-                            false,
-                            true
-                          ]
-                        },
-                        "securityPlusMetadata": {
-                          "properties": {
-                            "firstEnabledAt": {
-                              "type": "number",
-                              "description": "Timestamp when the feature was first enabled. Never changes after initial enablement."
-                            },
-                            "updatedAt": {
-                              "type": "number"
-                            }
-                          },
-                          "required": [
-                            "updatedAt"
-                          ],
-                          "type": "object"
                         }
                       },
                       "type": "object"
@@ -119898,8 +119976,6 @@
                     "tier": {
                       "type": "string",
                       "enum": [
-                        "advanced",
-                        "critical",
                         "priority"
                       ]
                     },
@@ -127867,28 +127943,6 @@
                             "type": "object"
                           },
                           "type": "object"
-                        },
-                        "securityPlus": {
-                          "type": "boolean",
-                          "enum": [
-                            false,
-                            true
-                          ]
-                        },
-                        "securityPlusMetadata": {
-                          "properties": {
-                            "firstEnabledAt": {
-                              "type": "number",
-                              "description": "Timestamp when the feature was first enabled. Never changes after initial enablement."
-                            },
-                            "updatedAt": {
-                              "type": "number"
-                            }
-                          },
-                          "required": [
-                            "updatedAt"
-                          ],
-                          "type": "object"
                         }
                       },
                       "type": "object"
@@ -128477,8 +128531,6 @@
                     "tier": {
                       "type": "string",
                       "enum": [
-                        "advanced",
-                        "critical",
                         "priority"
                       ]
                     },
@@ -135738,28 +135790,6 @@
                             "type": "object"
                           },
                           "type": "object"
-                        },
-                        "securityPlus": {
-                          "type": "boolean",
-                          "enum": [
-                            false,
-                            true
-                          ]
-                        },
-                        "securityPlusMetadata": {
-                          "properties": {
-                            "firstEnabledAt": {
-                              "type": "number",
-                              "description": "Timestamp when the feature was first enabled. Never changes after initial enablement."
-                            },
-                            "updatedAt": {
-                              "type": "number"
-                            }
-                          },
-                          "required": [
-                            "updatedAt"
-                          ],
-                          "type": "object"
                         }
                       },
                       "type": "object"
@@ -136348,8 +136378,6 @@
                     "tier": {
                       "type": "string",
                       "enum": [
-                        "advanced",
-                        "critical",
                         "priority"
                       ]
                     },
@@ -144919,28 +144947,6 @@
                             "type": "object"
                           },
                           "type": "object"
-                        },
-                        "securityPlus": {
-                          "type": "boolean",
-                          "enum": [
-                            false,
-                            true
-                          ]
-                        },
-                        "securityPlusMetadata": {
-                          "properties": {
-                            "firstEnabledAt": {
-                              "type": "number",
-                              "description": "Timestamp when the feature was first enabled. Never changes after initial enablement."
-                            },
-                            "updatedAt": {
-                              "type": "number"
-                            }
-                          },
-                          "required": [
-                            "updatedAt"
-                          ],
-                          "type": "object"
                         }
                       },
                       "type": "object"
@@ -145529,8 +145535,6 @@
                     "tier": {
                       "type": "string",
                       "enum": [
-                        "advanced",
-                        "critical",
                         "priority"
                       ]
                     },
@@ -165587,28 +165591,6 @@
                             "type": "object"
                           },
                           "type": "object"
-                        },
-                        "securityPlus": {
-                          "type": "boolean",
-                          "enum": [
-                            false,
-                            true
-                          ]
-                        },
-                        "securityPlusMetadata": {
-                          "properties": {
-                            "firstEnabledAt": {
-                              "type": "number",
-                              "description": "Timestamp when the feature was first enabled. Never changes after initial enablement."
-                            },
-                            "updatedAt": {
-                              "type": "number"
-                            }
-                          },
-                          "required": [
-                            "updatedAt"
-                          ],
-                          "type": "object"
                         }
                       },
                       "type": "object"
@@ -166197,8 +166179,6 @@
                     "tier": {
                       "type": "string",
                       "enum": [
-                        "advanced",
-                        "critical",
                         "priority"
                       ]
                     },
@@ -194636,12 +194616,12 @@
                             "items": {
                               "type": "string",
                               "enum": [
-                                "AiGatewayApiKeyOwnedBySelf",
                                 "AiGatewayBudgetManager",
                                 "AiGatewayCredits",
                                 "AiGatewaySettings",
                                 "AiGatewayTranscriptsManager",
                                 "AiGatewayTranscriptsViewer",
+                                "AiGatewayUser",
                                 "ConnectorManager",
                                 "CreateProject",
                                 "EnvVariableManager",
@@ -195359,6 +195339,7 @@
                   },
                   "required": [
                     "bitbucket",
+                    "confirmed",
                     "github",
                     "gitlab",
                     "teamName",
@@ -195904,7 +195885,7 @@
                         "OrgViewer",
                         "AiGatewaySettings",
                         "AiGatewayCredits",
-                        "AiGatewayApiKeyOwnedBySelf",
+                        "AiGatewayUser",
                         "AiGatewayBudgetManager",
                         "AiGatewayTranscriptsManager",
                         "AiGatewayTranscriptsViewer",
@@ -201333,6 +201314,9 @@
                               "inferenceScope": {
                                 "type": "string"
                               },
+                              "invokeSource": {
+                                "type": "string"
+                              },
                               "isAdditionalRequest": {
                                 "type": "string"
                               },
@@ -201588,6 +201572,39 @@
                               "sandboxSessionId": {
                                 "type": "string"
                               },
+                              "scheduleEventType": {
+                                "type": "string"
+                              },
+                              "scheduleExecutionId": {
+                                "type": "string"
+                              },
+                              "scheduleExpressionType": {
+                                "type": "string"
+                              },
+                              "scheduleId": {
+                                "type": "string"
+                              },
+                              "scheduleName": {
+                                "type": "string"
+                              },
+                              "scheduleNamespace": {
+                                "type": "string"
+                              },
+                              "scheduleSource": {
+                                "type": "string"
+                              },
+                              "scheduleTarget": {
+                                "type": "string"
+                              },
+                              "scheduleTargetType": {
+                                "type": "string"
+                              },
+                              "scheduleTimezone": {
+                                "type": "string"
+                              },
+                              "scheduleTrack": {
+                                "type": "string"
+                              },
                               "sdkKeyEnvironment": {
                                 "type": "string"
                               },
@@ -201604,6 +201621,12 @@
                                 "type": "string"
                               },
                               "sessionId": {
+                                "type": "string"
+                              },
+                              "singleAtInput": {
+                                "type": "string"
+                              },
+                              "singleAtResolution": {
                                 "type": "string"
                               },
                               "skewProtection": {
@@ -202011,6 +202034,9 @@
                               "inferenceScope": {
                                 "type": "string"
                               },
+                              "invokeSource": {
+                                "type": "string"
+                              },
                               "isAdditionalRequest": {
                                 "type": "string"
                               },
@@ -202266,6 +202292,39 @@
                               "sandboxSessionId": {
                                 "type": "string"
                               },
+                              "scheduleEventType": {
+                                "type": "string"
+                              },
+                              "scheduleExecutionId": {
+                                "type": "string"
+                              },
+                              "scheduleExpressionType": {
+                                "type": "string"
+                              },
+                              "scheduleId": {
+                                "type": "string"
+                              },
+                              "scheduleName": {
+                                "type": "string"
+                              },
+                              "scheduleNamespace": {
+                                "type": "string"
+                              },
+                              "scheduleSource": {
+                                "type": "string"
+                              },
+                              "scheduleTarget": {
+                                "type": "string"
+                              },
+                              "scheduleTargetType": {
+                                "type": "string"
+                              },
+                              "scheduleTimezone": {
+                                "type": "string"
+                              },
+                              "scheduleTrack": {
+                                "type": "string"
+                              },
                               "sdkKeyEnvironment": {
                                 "type": "string"
                               },
@@ -202282,6 +202341,12 @@
                                 "type": "string"
                               },
                               "sessionId": {
+                                "type": "string"
+                              },
+                              "singleAtInput": {
+                                "type": "string"
+                              },
+                              "singleAtResolution": {
                                 "type": "string"
                               },
                               "skewProtection": {
@@ -202502,6 +202567,7 @@
                               "inferenceGeoRegion",
                               "inferenceProviderRegion",
                               "inferenceScope",
+                              "invokeSource",
                               "isAdditionalRequest",
                               "isByok",
                               "isPrefetchRequest",
@@ -202587,12 +202653,25 @@
                               "runtime",
                               "sandboxName",
                               "sandboxSessionId",
+                              "scheduleEventType",
+                              "scheduleExecutionId",
+                              "scheduleExpressionType",
+                              "scheduleId",
+                              "scheduleName",
+                              "scheduleNamespace",
+                              "scheduleSource",
+                              "scheduleTarget",
+                              "scheduleTargetType",
+                              "scheduleTimezone",
+                              "scheduleTrack",
                               "sdkKeyEnvironment",
                               "sdkKeyId",
                               "servedSpeed",
                               "serverActionName",
                               "service",
                               "sessionId",
+                              "singleAtInput",
+                              "singleAtResolution",
                               "skewProtection",
                               "source",
                               "sourceImage",
@@ -203163,6 +203242,9 @@
                               "inferenceScope": {
                                 "type": "string"
                               },
+                              "invokeSource": {
+                                "type": "string"
+                              },
                               "isAdditionalRequest": {
                                 "type": "string"
                               },
@@ -203418,6 +203500,39 @@
                               "sandboxSessionId": {
                                 "type": "string"
                               },
+                              "scheduleEventType": {
+                                "type": "string"
+                              },
+                              "scheduleExecutionId": {
+                                "type": "string"
+                              },
+                              "scheduleExpressionType": {
+                                "type": "string"
+                              },
+                              "scheduleId": {
+                                "type": "string"
+                              },
+                              "scheduleName": {
+                                "type": "string"
+                              },
+                              "scheduleNamespace": {
+                                "type": "string"
+                              },
+                              "scheduleSource": {
+                                "type": "string"
+                              },
+                              "scheduleTarget": {
+                                "type": "string"
+                              },
+                              "scheduleTargetType": {
+                                "type": "string"
+                              },
+                              "scheduleTimezone": {
+                                "type": "string"
+                              },
+                              "scheduleTrack": {
+                                "type": "string"
+                              },
                               "sdkKeyEnvironment": {
                                 "type": "string"
                               },
@@ -203434,6 +203549,12 @@
                                 "type": "string"
                               },
                               "sessionId": {
+                                "type": "string"
+                              },
+                              "singleAtInput": {
+                                "type": "string"
+                              },
+                              "singleAtResolution": {
                                 "type": "string"
                               },
                               "skewProtection": {
@@ -203841,6 +203962,9 @@
                               "inferenceScope": {
                                 "type": "string"
                               },
+                              "invokeSource": {
+                                "type": "string"
+                              },
                               "isAdditionalRequest": {
                                 "type": "string"
                               },
@@ -204096,6 +204220,39 @@
                               "sandboxSessionId": {
                                 "type": "string"
                               },
+                              "scheduleEventType": {
+                                "type": "string"
+                              },
+                              "scheduleExecutionId": {
+                                "type": "string"
+                              },
+                              "scheduleExpressionType": {
+                                "type": "string"
+                              },
+                              "scheduleId": {
+                                "type": "string"
+                              },
+                              "scheduleName": {
+                                "type": "string"
+                              },
+                              "scheduleNamespace": {
+                                "type": "string"
+                              },
+                              "scheduleSource": {
+                                "type": "string"
+                              },
+                              "scheduleTarget": {
+                                "type": "string"
+                              },
+                              "scheduleTargetType": {
+                                "type": "string"
+                              },
+                              "scheduleTimezone": {
+                                "type": "string"
+                              },
+                              "scheduleTrack": {
+                                "type": "string"
+                              },
                               "sdkKeyEnvironment": {
                                 "type": "string"
                               },
@@ -204112,6 +204269,12 @@
                                 "type": "string"
                               },
                               "sessionId": {
+                                "type": "string"
+                              },
+                              "singleAtInput": {
+                                "type": "string"
+                              },
+                              "singleAtResolution": {
                                 "type": "string"
                               },
                               "skewProtection": {
@@ -204332,6 +204495,7 @@
                               "inferenceGeoRegion",
                               "inferenceProviderRegion",
                               "inferenceScope",
+                              "invokeSource",
                               "isAdditionalRequest",
                               "isByok",
                               "isPrefetchRequest",
@@ -204417,12 +204581,25 @@
                               "runtime",
                               "sandboxName",
                               "sandboxSessionId",
+                              "scheduleEventType",
+                              "scheduleExecutionId",
+                              "scheduleExpressionType",
+                              "scheduleId",
+                              "scheduleName",
+                              "scheduleNamespace",
+                              "scheduleSource",
+                              "scheduleTarget",
+                              "scheduleTargetType",
+                              "scheduleTimezone",
+                              "scheduleTrack",
                               "sdkKeyEnvironment",
                               "sdkKeyId",
                               "servedSpeed",
                               "serverActionName",
                               "service",
                               "sessionId",
+                              "singleAtInput",
+                              "singleAtResolution",
                               "skewProtection",
                               "source",
                               "sourceImage",
@@ -204996,6 +205173,9 @@
                             "inferenceScope": {
                               "type": "string"
                             },
+                            "invokeSource": {
+                              "type": "string"
+                            },
                             "isAdditionalRequest": {
                               "type": "string"
                             },
@@ -205251,6 +205431,39 @@
                             "sandboxSessionId": {
                               "type": "string"
                             },
+                            "scheduleEventType": {
+                              "type": "string"
+                            },
+                            "scheduleExecutionId": {
+                              "type": "string"
+                            },
+                            "scheduleExpressionType": {
+                              "type": "string"
+                            },
+                            "scheduleId": {
+                              "type": "string"
+                            },
+                            "scheduleName": {
+                              "type": "string"
+                            },
+                            "scheduleNamespace": {
+                              "type": "string"
+                            },
+                            "scheduleSource": {
+                              "type": "string"
+                            },
+                            "scheduleTarget": {
+                              "type": "string"
+                            },
+                            "scheduleTargetType": {
+                              "type": "string"
+                            },
+                            "scheduleTimezone": {
+                              "type": "string"
+                            },
+                            "scheduleTrack": {
+                              "type": "string"
+                            },
                             "sdkKeyEnvironment": {
                               "type": "string"
                             },
@@ -205267,6 +205480,12 @@
                               "type": "string"
                             },
                             "sessionId": {
+                              "type": "string"
+                            },
+                            "singleAtInput": {
+                              "type": "string"
+                            },
+                            "singleAtResolution": {
                               "type": "string"
                             },
                             "skewProtection": {
@@ -205487,6 +205706,7 @@
                             "inferenceGeoRegion",
                             "inferenceProviderRegion",
                             "inferenceScope",
+                            "invokeSource",
                             "isAdditionalRequest",
                             "isByok",
                             "isPrefetchRequest",
@@ -205572,12 +205792,25 @@
                             "runtime",
                             "sandboxName",
                             "sandboxSessionId",
+                            "scheduleEventType",
+                            "scheduleExecutionId",
+                            "scheduleExpressionType",
+                            "scheduleId",
+                            "scheduleName",
+                            "scheduleNamespace",
+                            "scheduleSource",
+                            "scheduleTarget",
+                            "scheduleTargetType",
+                            "scheduleTimezone",
+                            "scheduleTrack",
                             "sdkKeyEnvironment",
                             "sdkKeyId",
                             "servedSpeed",
                             "serverActionName",
                             "service",
                             "sessionId",
+                            "singleAtInput",
+                            "singleAtResolution",
                             "skewProtection",
                             "source",
                             "sourceImage",
@@ -206064,6 +206297,9 @@
                             "inferenceScope": {
                               "type": "string"
                             },
+                            "invokeSource": {
+                              "type": "string"
+                            },
                             "isAdditionalRequest": {
                               "type": "string"
                             },
@@ -206319,6 +206555,39 @@
                             "sandboxSessionId": {
                               "type": "string"
                             },
+                            "scheduleEventType": {
+                              "type": "string"
+                            },
+                            "scheduleExecutionId": {
+                              "type": "string"
+                            },
+                            "scheduleExpressionType": {
+                              "type": "string"
+                            },
+                            "scheduleId": {
+                              "type": "string"
+                            },
+                            "scheduleName": {
+                              "type": "string"
+                            },
+                            "scheduleNamespace": {
+                              "type": "string"
+                            },
+                            "scheduleSource": {
+                              "type": "string"
+                            },
+                            "scheduleTarget": {
+                              "type": "string"
+                            },
+                            "scheduleTargetType": {
+                              "type": "string"
+                            },
+                            "scheduleTimezone": {
+                              "type": "string"
+                            },
+                            "scheduleTrack": {
+                              "type": "string"
+                            },
                             "sdkKeyEnvironment": {
                               "type": "string"
                             },
@@ -206335,6 +206604,12 @@
                               "type": "string"
                             },
                             "sessionId": {
+                              "type": "string"
+                            },
+                            "singleAtInput": {
+                              "type": "string"
+                            },
+                            "singleAtResolution": {
                               "type": "string"
                             },
                             "skewProtection": {
@@ -206555,6 +206830,7 @@
                             "inferenceGeoRegion",
                             "inferenceProviderRegion",
                             "inferenceScope",
+                            "invokeSource",
                             "isAdditionalRequest",
                             "isByok",
                             "isPrefetchRequest",
@@ -206640,12 +206916,25 @@
                             "runtime",
                             "sandboxName",
                             "sandboxSessionId",
+                            "scheduleEventType",
+                            "scheduleExecutionId",
+                            "scheduleExpressionType",
+                            "scheduleId",
+                            "scheduleName",
+                            "scheduleNamespace",
+                            "scheduleSource",
+                            "scheduleTarget",
+                            "scheduleTargetType",
+                            "scheduleTimezone",
+                            "scheduleTrack",
                             "sdkKeyEnvironment",
                             "sdkKeyId",
                             "servedSpeed",
                             "serverActionName",
                             "service",
                             "sessionId",
+                            "singleAtInput",
+                            "singleAtResolution",
                             "skewProtection",
                             "source",
                             "sourceImage",
@@ -211991,6 +212280,10 @@
             "type": "number",
             "description": "Creation timestamp (epoch ms)."
           },
+          "createdBy": {
+            "type": "string",
+            "description": "User or app id that created this VMC."
+          },
           "deleted": {
             "type": "boolean",
             "enum": [
@@ -212204,7 +212497,7 @@
           },
           "updatedBy": {
             "type": "string",
-            "description": "User id that last updated this VMC."
+            "description": "User or app id that last updated this VMC."
           },
           "virtualModelSlug": {
             "type": "string",
@@ -214706,6 +214999,15 @@
           "triggers": {
             "description": "Whether the triggers are enabled for this connector.",
             "type": "boolean"
+          },
+          "triggerType": {
+            "type": "string",
+            "description": "Trigger driver type. Resolved automatically from the service or known service registry when not provided. Only set when using the newly decoupled triggers resolution flow."
+          },
+          "triggerData": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "Trigger-specific credentials (e.g. webhook signing secret). Validated and encrypted against the trigger type definition."
           },
           "triggerDestination": {
             "description": "Initial trigger destination. Requires triggers to be enabled and a projectId here or at the top level. Connector responses expose the resulting set as triggerDestinations. Replace the complete set with PATCH /v1/connect/connectors/{connector}/trigger-destinations.",
@@ -218902,6 +219204,65 @@
               },
               {
                 "properties": {
+                  "virtualModelConfig": {
+                    "properties": {
+                      "displayName": {
+                        "type": "string"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "modelSlug": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "id"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "virtualModelConfig"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "changedFields": {
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "allowFallbackFromFast",
+                        "baseUrl",
+                        "byokCredentialIds",
+                        "caching",
+                        "description",
+                        "disallowPromptTraining",
+                        "displayName",
+                        "has",
+                        "hipaaCompliant",
+                        "inferenceRegion",
+                        "modelSlug",
+                        "models",
+                        "observabilityTags",
+                        "providerOnly",
+                        "providerOptions",
+                        "providerOrder",
+                        "providerTimeouts",
+                        "requires",
+                        "selector",
+                        "serviceTier",
+                        "sort",
+                        "speed",
+                        "status",
+                        "visibility",
+                        "zeroDataRetention"
+                      ]
+                    },
+                    "type": "array"
+                  },
                   "virtualModelConfig": {
                     "properties": {
                       "displayName": {
@@ -229299,12 +229660,12 @@
                               "items": {
                                 "type": "string",
                                 "enum": [
-                                  "AiGatewayApiKeyOwnedBySelf",
                                   "AiGatewayBudgetManager",
                                   "AiGatewayCredits",
                                   "AiGatewaySettings",
                                   "AiGatewayTranscriptsManager",
                                   "AiGatewayTranscriptsViewer",
+                                  "AiGatewayUser",
                                   "ConnectorManager",
                                   "CreateProject",
                                   "EnvVariableManager",
@@ -231063,6 +231424,23 @@
               },
               {
                 "properties": {
+                  "avatar": {
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "organizationId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "avatar",
+                  "organizationId"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
                   "name": {
                     "type": "string"
                   },
@@ -231286,6 +231664,38 @@
                   "billingPlan",
                   "organizationId",
                   "teamId"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "enforced": {
+                    "type": "boolean",
+                    "enum": [
+                      false,
+                      true
+                    ]
+                  },
+                  "organizationId": {
+                    "type": "string"
+                  },
+                  "organizationSlug": {
+                    "type": "string"
+                  },
+                  "previousEnforced": {
+                    "type": "boolean",
+                    "enum": [
+                      false,
+                      true
+                    ]
+                  }
+                },
+                "required": [
+                  "enforced",
+                  "organizationId",
+                  "organizationSlug",
+                  "previousEnforced"
                 ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
@@ -238532,12 +238942,12 @@
                     "items": {
                       "type": "string",
                       "enum": [
-                        "AiGatewayApiKeyOwnedBySelf",
                         "AiGatewayBudgetManager",
                         "AiGatewayCredits",
                         "AiGatewaySettings",
                         "AiGatewayTranscriptsManager",
                         "AiGatewayTranscriptsViewer",
+                        "AiGatewayUser",
                         "ConnectorManager",
                         "CreateProject",
                         "EnvVariableManager",
@@ -238581,12 +238991,12 @@
                     "items": {
                       "type": "string",
                       "enum": [
-                        "AiGatewayApiKeyOwnedBySelf",
                         "AiGatewayBudgetManager",
                         "AiGatewayCredits",
                         "AiGatewaySettings",
                         "AiGatewayTranscriptsManager",
                         "AiGatewayTranscriptsViewer",
+                        "AiGatewayUser",
                         "ConnectorManager",
                         "CreateProject",
                         "EnvVariableManager",
@@ -239189,6 +239599,37 @@
                 },
                 "required": [
                   "reason"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "organizationId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "organizationId"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "organizationId": {
+                    "type": "string"
+                  },
+                  "teamIds": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                },
+                "required": [
+                  "organizationId",
+                  "teamIds"
                 ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
@@ -241934,6 +242375,7 @@
               "oidc-policy-deleted",
               "oidc-policy-updated",
               "oidc-policy-used-to-obtain-app-token",
+              "organization-avatar-update",
               "organization-create",
               "organization-delete",
               "organization-dsync-group-delete",
@@ -241941,10 +242383,13 @@
               "organization-emu-team-updated",
               "organization-emu-updated",
               "organization-slug-update",
+              "organization-sso-enforced",
               "organization-team-add",
               "organization-team-create",
               "organization-team-delete",
               "organization-team-sso-update",
+              "organization-update-account-flow-dismissed",
+              "organization-update-account-flow-triggered",
               "owner-blocked",
               "owner-soft-blocked",
               "owner-soft-unblocked",
@@ -242836,6 +243281,7 @@
               "oidc-policy-deleted",
               "oidc-policy-updated",
               "oidc-policy-used-to-obtain-app-token",
+              "organization-avatar-update",
               "organization-create",
               "organization-delete",
               "organization-dsync-group-delete",
@@ -242843,10 +243289,13 @@
               "organization-emu-team-updated",
               "organization-emu-updated",
               "organization-slug-update",
+              "organization-sso-enforced",
               "organization-team-add",
               "organization-team-create",
               "organization-team-delete",
               "organization-team-sso-update",
+              "organization-update-account-flow-dismissed",
+              "organization-update-account-flow-triggered",
               "owner-blocked",
               "owner-soft-blocked",
               "owner-soft-unblocked",
@@ -243526,6 +243975,7 @@
                 "oidc-policy-deleted",
                 "oidc-policy-updated",
                 "oidc-policy-used-to-obtain-app-token",
+                "organization-avatar-update",
                 "organization-create",
                 "organization-delete",
                 "organization-dsync-group-delete",
@@ -243533,10 +243983,13 @@
                 "organization-emu-team-updated",
                 "organization-emu-updated",
                 "organization-slug-update",
+                "organization-sso-enforced",
                 "organization-team-add",
                 "organization-team-create",
                 "organization-team-delete",
                 "organization-team-sso-update",
+                "organization-update-account-flow-dismissed",
+                "organization-update-account-flow-triggered",
                 "owner-blocked",
                 "owner-soft-blocked",
                 "owner-soft-unblocked",
@@ -245437,6 +245890,14 @@
       },
       "NamedSandbox": {
         "properties": {
+          "architecture": {
+            "type": "string",
+            "enum": [
+              "amd64",
+              "arm64"
+            ],
+            "description": "CPU architecture of the sandbox. This value does not change."
+          },
           "createdAt": {
             "type": "number",
             "description": "The time when the named sandbox was created, in milliseconds since the epoch.",
@@ -245831,6 +246292,14 @@
             "description": "The amount of CPU time the sandbox consumed, if available, in milliseconds. This value is only available once the sandbox is stopped, and only if it stopped successfully.",
             "example": 42
           },
+          "architecture": {
+            "type": "string",
+            "enum": [
+              "amd64",
+              "arm64"
+            ],
+            "description": "CPU architecture of the sandbox."
+          },
           "createdAt": {
             "type": "number",
             "description": "The time when the sandbox was created, in milliseconds since the epoch.",
@@ -246039,6 +246508,14 @@
       },
       "Snapshot": {
         "properties": {
+          "architecture": {
+            "type": "string",
+            "enum": [
+              "amd64",
+              "arm64"
+            ],
+            "description": "CPU architecture required to restore the snapshot."
+          },
           "createdAt": {
             "type": "number",
             "description": "The time when the snapshot was created, in milliseconds since the epoch.",
@@ -246215,12 +246692,12 @@
             "items": {
               "type": "string",
               "enum": [
-                "AiGatewayApiKeyOwnedBySelf",
                 "AiGatewayBudgetManager",
                 "AiGatewayCredits",
                 "AiGatewaySettings",
                 "AiGatewayTranscriptsManager",
                 "AiGatewayTranscriptsViewer",
+                "AiGatewayUser",
                 "ConnectorManager",
                 "CreateProject",
                 "EnvVariableManager",
@@ -246487,12 +246964,12 @@
                 "items": {
                   "type": "string",
                   "enum": [
-                    "AiGatewayApiKeyOwnedBySelf",
                     "AiGatewayBudgetManager",
                     "AiGatewayCredits",
                     "AiGatewaySettings",
                     "AiGatewayTranscriptsManager",
                     "AiGatewayTranscriptsViewer",
+                    "AiGatewayUser",
                     "ConnectorManager",
                     "CreateProject",
                     "EnvVariableManager",
@@ -246999,12 +247476,12 @@
                 "items": {
                   "type": "string",
                   "enum": [
-                    "AiGatewayApiKeyOwnedBySelf",
                     "AiGatewayBudgetManager",
                     "AiGatewayCredits",
                     "AiGatewaySettings",
                     "AiGatewayTranscriptsManager",
                     "AiGatewayTranscriptsViewer",
+                    "AiGatewayUser",
                     "ConnectorManager",
                     "CreateProject",
                     "EnvVariableManager",
@@ -247627,12 +248104,12 @@
                 "items": {
                   "type": "string",
                   "enum": [
-                    "AiGatewayApiKeyOwnedBySelf",
                     "AiGatewayBudgetManager",
                     "AiGatewayCredits",
                     "AiGatewaySettings",
                     "AiGatewayTranscriptsManager",
                     "AiGatewayTranscriptsViewer",
+                    "AiGatewayUser",
                     "ConnectorManager",
                     "CreateProject",
                     "EnvVariableManager",

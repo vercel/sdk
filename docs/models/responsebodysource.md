@@ -43,8 +43,9 @@ const value: models.CreateDeploymentCheckRunSource4 = {};
 const value: models.CreateDeploymentCheckRunSource5 = {
   origin: "api",
   selection: {
-    job: "Principal Marketing Associate",
-    kind: "job",
+    job: "Corporate Program Strategist",
+    kind: "task",
+    task: "<value>",
   },
   subKind: "vercel-ci-check",
 };

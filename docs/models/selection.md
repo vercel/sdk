@@ -1,19 +1,32 @@
 # Selection
 
-## Example Usage
+
+## Supported Types
+
+### `models.Selection1`
 
 ```typescript
-import { Selection } from "@vercel/sdk/models/createdeploymentcheckrunop.js";
+const value: models.Selection1 = {
+  kind: "invocation",
+};
+```
 
-let value: Selection = {
-  job: "Internal Metrics Agent",
+### `models.Selection2`
+
+```typescript
+const value: models.Selection2 = {
+  job: "Product Assurance Executive",
   kind: "job",
 };
 ```
 
-## Fields
+### `models.Selection3`
 
-| Field                                                                                                                              | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
-| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `job`                                                                                                                              | *string*                                                                                                                           | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
-| `kind`                                                                                                                             | [models.CreateDeploymentCheckRunSourceChecksV2Response200Kind](../models/createdeploymentcheckrunsourcechecksv2response200kind.md) | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
+```typescript
+const value: models.Selection3 = {
+  job: "Future Paradigm Producer",
+  kind: "task",
+  task: "<value>",
+};
+```
+

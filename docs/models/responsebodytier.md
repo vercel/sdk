@@ -11,5 +11,5 @@ let value: ResponseBodyTier = "priority";
 ## Values
 
 ```typescript
-"advanced" | "critical" | "priority"
+"priority"
 ```

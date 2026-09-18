@@ -5,15 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndFortyFive } from "@vercel/sdk/models/fourhundredandone.js";
+import { FourHundredAndFortyFive } from "@vercel/sdk/models/fourhundredandsix.js";
 
 let value: FourHundredAndFortyFive = {
-  tier: "plus",
+  customAlertTitle: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                            | Type                             | Required                         | Description                      |
-| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
-| `tier`                           | [models.Tier](../models/tier.md) | :heavy_check_mark:               | N/A                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `customAlertTitle` | *string*           | :heavy_check_mark: | N/A                |

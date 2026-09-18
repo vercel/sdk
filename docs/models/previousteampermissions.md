@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { PreviousTeamPermissions } from "@vercel/sdk/models/payloadmostspecificsubdivision.js";
+import { PreviousTeamPermissions } from "@vercel/sdk/models/payloadcountry.js";
 
-let value: PreviousTeamPermissions = "AiGatewaySettings";
+let value: PreviousTeamPermissions = "AiGatewayTranscriptsManager";
 ```
 
 ## Values
 
 ```typescript
-"AiGatewayApiKeyOwnedBySelf" | "AiGatewayBudgetManager" | "AiGatewayCredits" | "AiGatewaySettings" | "AiGatewayTranscriptsManager" | "AiGatewayTranscriptsViewer" | "ConnectorManager" | "CreateProject" | "EnvVariableManager" | "EnvironmentManager" | "FullProductionDeployment" | "IntegrationManager" | "OrgAdmin" | "OrgViewer" | "UsageViewer" | "V0Builder" | "V0Chatter" | "V0Viewer" | "WorkflowDecryptor"
+"AiGatewayBudgetManager" | "AiGatewayCredits" | "AiGatewaySettings" | "AiGatewayTranscriptsManager" | "AiGatewayTranscriptsViewer" | "AiGatewayUser" | "ConnectorManager" | "CreateProject" | "EnvVariableManager" | "EnvironmentManager" | "FullProductionDeployment" | "IntegrationManager" | "OrgAdmin" | "OrgViewer" | "UsageViewer" | "V0Builder" | "V0Chatter" | "V0Viewer" | "WorkflowDecryptor"
 ```

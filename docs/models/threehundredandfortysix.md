@@ -5,32 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFortySix } from "@vercel/sdk/models/payloadmostspecificsubdivision.js";
+import { ThreeHundredAndFortySix } from "@vercel/sdk/models/payloadcountry.js";
 
 let value: ThreeHundredAndFortySix = {
-  budget: {
-    budgetItem: {
-      createdAt: 9371.03,
-      fixedBudget: 8606.07,
-      id: "<id>",
-      isActive: false,
-      notifiedAt: [
-        2423.52,
-        7782.73,
-      ],
-      previousSpend: [
-        397.47,
-        9537.22,
-      ],
-      teamId: "<id>",
-      type: "fixed",
-    },
-  },
+  email: "Leonora69@hotmail.com",
+  githubLogin: "<value>",
+  zeitAccount: "<value>",
+  zeitAccountType: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `budget`                                                                   | [models.UserEventPayload346Budget](../models/usereventpayload346budget.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `email`            | *string*           | :heavy_check_mark: | N/A                |
+| `githubLogin`      | *string*           | :heavy_check_mark: | N/A                |
+| `zeitAccount`      | *string*           | :heavy_check_mark: | N/A                |
+| `zeitAccountType`  | *string*           | :heavy_check_mark: | N/A                |

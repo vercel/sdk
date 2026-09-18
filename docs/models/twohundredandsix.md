@@ -5,27 +5,25 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSix } from "@vercel/sdk/models/payloaddefault.js";
+import { TwoHundredAndSix } from "@vercel/sdk/models/usereventpayload172newownerfeatureblocksvcrblockreason.js";
 
 let value: TwoHundredAndSix = {
-  enabled: true,
-  enforcedTeamIds: [
-    "<value 1>",
-  ],
+  directoryGroupId: "<id>",
+  directoryId: "<id>",
+  groupName: "<value>",
+  next: {
+    roles: {},
+  },
   organizationId: "<id>",
-  previousEnabled: false,
-  trigger: "saml_updated",
-  unenforcedTeamIds: [],
 };
 ```
 
 ## Fields
 
-| Field                                  | Type                                   | Required                               | Description                            |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| `enabled`                              | *boolean*                              | :heavy_check_mark:                     | N/A                                    |
-| `enforcedTeamIds`                      | *string*[]                             | :heavy_check_mark:                     | N/A                                    |
-| `organizationId`                       | *string*                               | :heavy_check_mark:                     | N/A                                    |
-| `previousEnabled`                      | *boolean*                              | :heavy_check_mark:                     | N/A                                    |
-| `trigger`                              | [models.Trigger](../models/trigger.md) | :heavy_check_mark:                     | N/A                                    |
-| `unenforcedTeamIds`                    | *string*[]                             | :heavy_check_mark:                     | N/A                                    |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `directoryGroupId`                             | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `directoryId`                                  | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `groupName`                                    | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `next`                                         | [models.PayloadNext](../models/payloadnext.md) | :heavy_check_mark:                             | N/A                                            |
+| `organizationId`                               | *string*                                       | :heavy_check_mark:                             | N/A                                            |

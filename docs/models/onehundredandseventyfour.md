@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSeventyFour } from "@vercel/sdk/models/usereventpayload171newownerfeatureblocksworkfloweventsblockreason.js";
+import { OneHundredAndSeventyFour } from "@vercel/sdk/models/usereventpayload172newownerfeatureblocksvcrblockreason.js";
 
 let value: OneHundredAndSeventyFour = {
   integration: {
@@ -14,15 +14,15 @@ let value: OneHundredAndSeventyFour = {
     name: "<value>",
     slug: "<value>",
   },
-  originTeamId: "<id>",
-  originTeamName: "<value>",
+  destinationTeamId: "<id>",
+  destinationTeamName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `integration`                                                | [models.PayloadIntegration](../models/payloadintegration.md) | :heavy_check_mark:                                           | N/A                                                          |
-| `originTeamId`                                               | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `originTeamName`                                             | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `integration`                                  | [models.Integration](../models/integration.md) | :heavy_check_mark:                             | N/A                                            |
+| `destinationTeamId`                            | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `destinationTeamName`                          | *string*                                       | :heavy_check_mark:                             | N/A                                            |

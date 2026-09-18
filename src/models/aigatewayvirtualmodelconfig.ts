@@ -188,6 +188,10 @@ export type AiGatewayVirtualModelConfig = {
    */
   createdAt: number;
   /**
+   * User or app id that created this VMC.
+   */
+  createdBy?: string | undefined;
+  /**
    * Whether this VMC is soft-deleted.
    */
   deleted: boolean;
@@ -284,7 +288,7 @@ export type AiGatewayVirtualModelConfig = {
    */
   updatedAt: number;
   /**
-   * User id that last updated this VMC.
+   * User or app id that last updated this VMC.
    */
   updatedBy?: string | undefined;
   /**
@@ -413,6 +417,7 @@ export const AiGatewayVirtualModelConfig$inboundSchema: z.ZodType<
   byokCredentialIds: types.optional(z.array(types.string())),
   caching: types.optional(Caching$inboundSchema),
   createdAt: types.number(),
+  createdBy: types.optional(types.string()),
   deleted: types.boolean(),
   description: types.optional(types.string()),
   disallowPromptTraining: types.optional(types.boolean()),

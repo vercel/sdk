@@ -5,20 +5,29 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFiftyTwo } from "@vercel/sdk/models/payloadmostspecificsubdivision.js";
+import { ThreeHundredAndFiftyTwo } from "@vercel/sdk/models/payloadcountry.js";
 
 let value: ThreeHundredAndFiftyTwo = {
-  store: {
+  budget: {
+    createdAt: 3984.46,
+    fixedBudget: 1904.75,
     id: "<id>",
-    type: "edge-config",
+    isActive: false,
+    notifiedAt: [
+      8551.32,
+    ],
+    previousSpend: [],
+    teamId: "<id>",
+    type: "fixed",
   },
-  transferRequestCode: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                              | Type                               | Required                           | Description                        |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| `store`                            | [models.Store](../models/store.md) | :heavy_check_mark:                 | N/A                                |
-| `transferRequestCode`              | *string*                           | :heavy_check_mark:                 | N/A                                |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `budget`                                                                   | [models.UserEventPayload352Budget](../models/usereventpayload352budget.md) | :heavy_check_mark:                                                         | Represents a budget for tracking and notifying teams on their spending.    |
+| `prevBudget`                                                               | [models.PrevBudget](../models/prevbudget.md)                               | :heavy_minus_sign:                                                         | Represents a budget for tracking and notifying teams on their spending.    |
+| `prevWebhookUrl`                                                           | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `webhookUrl`                                                               | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |

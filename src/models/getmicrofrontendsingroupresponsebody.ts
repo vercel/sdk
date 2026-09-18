@@ -9,10 +9,8 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
-  GetMicrofrontendsInGroupFrom1,
-  GetMicrofrontendsInGroupFrom1$inboundSchema,
-  GetMicrofrontendsInGroupFrom2,
-  GetMicrofrontendsInGroupFrom2$inboundSchema,
+  GetMicrofrontendsInGroupFrom,
+  GetMicrofrontendsInGroupFrom$inboundSchema,
   GetMicrofrontendsInGroupInternalRoutes,
   GetMicrofrontendsInGroupInternalRoutes$inboundSchema,
   GetMicrofrontendsInGroupIpBuckets,
@@ -73,7 +71,7 @@ import {
   GetMicrofrontendsInGroupTracing$inboundSchema,
   GetMicrofrontendsInGroupTrustedIps,
   GetMicrofrontendsInGroupTrustedIps$inboundSchema,
-} from "./getmicrofrontendsingroupfrom1.js";
+} from "./getmicrofrontendsingroupfrom.js";
 import {
   GetMicrofrontendsInGroupAbuse,
   GetMicrofrontendsInGroupAbuse$inboundSchema,
@@ -115,10 +113,6 @@ import {
   GetMicrofrontendsInGroupGitProviderOptions$inboundSchema,
 } from "./getmicrofrontendsingrouphasvalue.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-
-export type GetMicrofrontendsInGroupFrom =
-  | GetMicrofrontendsInGroupFrom1
-  | GetMicrofrontendsInGroupFrom2;
 
 export const GetMicrofrontendsInGroupToMicrofrontendsResponse200Preset = {
   AllCustom: "all-custom",
@@ -163,7 +157,7 @@ export type GetMicrofrontendsInGroupMicrofrontendsTo =
  * Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets.
  */
 export type GetMicrofrontendsInGroupCustomAllow = {
-  from: GetMicrofrontendsInGroupFrom1 | GetMicrofrontendsInGroupFrom2;
+  from: GetMicrofrontendsInGroupFrom;
   to:
     | GetMicrofrontendsInGroupToMicrofrontends1
     | GetMicrofrontendsInGroupToMicrofrontends2;
@@ -375,26 +369,6 @@ export type GetMicrofrontendsInGroupResponseBody = {
 };
 
 /** @internal */
-export const GetMicrofrontendsInGroupFrom$inboundSchema: z.ZodType<
-  GetMicrofrontendsInGroupFrom,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  GetMicrofrontendsInGroupFrom1$inboundSchema,
-  GetMicrofrontendsInGroupFrom2$inboundSchema,
-]);
-
-export function getMicrofrontendsInGroupFromFromJSON(
-  jsonString: string,
-): SafeParseResult<GetMicrofrontendsInGroupFrom, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetMicrofrontendsInGroupFrom$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetMicrofrontendsInGroupFrom' from JSON`,
-  );
-}
-
-/** @internal */
 export const GetMicrofrontendsInGroupToMicrofrontendsResponse200Preset$inboundSchema:
   z.ZodNativeEnum<
     typeof GetMicrofrontendsInGroupToMicrofrontendsResponse200Preset
@@ -493,10 +467,7 @@ export const GetMicrofrontendsInGroupCustomAllow$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  from: smartUnion([
-    GetMicrofrontendsInGroupFrom1$inboundSchema,
-    GetMicrofrontendsInGroupFrom2$inboundSchema,
-  ]),
+  from: GetMicrofrontendsInGroupFrom$inboundSchema,
   to: smartUnion([
     z.lazy(() => GetMicrofrontendsInGroupToMicrofrontends1$inboundSchema),
     z.lazy(() => GetMicrofrontendsInGroupToMicrofrontends2$inboundSchema),

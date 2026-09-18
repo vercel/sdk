@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { OldConnectConfigurations } from "@vercel/sdk/models/payloaddefault.js";
+import { OldConnectConfigurations } from "@vercel/sdk/models/trigger.js";
 
 let value: OldConnectConfigurations = {
   buildsEnabled: true,

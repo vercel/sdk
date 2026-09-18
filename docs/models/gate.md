@@ -5,7 +5,7 @@ Automated gating configuration. Omitted (the default) means no gating is configu
 ## Example Usage
 
 ```typescript
-import { Gate } from "@vercel/sdk/models/createprojecttargets.js";
+import { Gate } from "@vercel/sdk/models/createprojecttier.js";
 
 let value: Gate = {
   action: "rollback",

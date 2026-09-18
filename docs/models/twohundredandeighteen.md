@@ -5,29 +5,31 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndEighteen } from "@vercel/sdk/models/payloaddefault.js";
+import { TwoHundredAndEighteen } from "@vercel/sdk/models/trigger.js";
 
 let value: TwoHundredAndEighteen = {
-  connectSrcCount: 2164.06,
-  connectSrcOriginCount: 6783.61,
-  deletedCount: 534.69,
-  headerCount: 1342.21,
+  next: {
+    allowUnsafeScriptSrcKeywords: true,
+    enabled: false,
+    enforcePercentage: 534.69,
+    mode: "<value>",
+    newResourceBlockingPolicy: "allow",
+  },
+  previous: {
+    allowUnsafeScriptSrcKeywords: false,
+    enabled: true,
+    enforcePercentage: 5094.45,
+    mode: "<value>",
+    newResourceBlockingPolicy: "allow",
+  },
   projectId: "<id>",
-  projectName: "<value>",
-  scriptCount: 9990.01,
 };
 ```
 
 ## Fields
 
-| Field                                  | Type                                   | Required                               | Description                            |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| `connectSrcCount`                      | *number*                               | :heavy_check_mark:                     | N/A                                    |
-| `connectSrcNormalizationRulesCleared`  | *boolean*                              | :heavy_minus_sign:                     | N/A                                    |
-| `connectSrcOriginCount`                | *number*                               | :heavy_check_mark:                     | N/A                                    |
-| `connectSrcUserNormalizationRuleCount` | *number*                               | :heavy_minus_sign:                     | N/A                                    |
-| `deletedCount`                         | *number*                               | :heavy_check_mark:                     | N/A                                    |
-| `headerCount`                          | *number*                               | :heavy_check_mark:                     | N/A                                    |
-| `projectId`                            | *string*                               | :heavy_check_mark:                     | N/A                                    |
-| `projectName`                          | *string*                               | :heavy_check_mark:                     | N/A                                    |
-| `scriptCount`                          | *number*                               | :heavy_check_mark:                     | N/A                                    |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `next`                                                                   | [models.UserEventPayloadNext](../models/usereventpayloadnext.md)         | :heavy_check_mark:                                                       | N/A                                                                      |
+| `previous`                                                               | [models.UserEventPayloadPrevious](../models/usereventpayloadprevious.md) | :heavy_check_mark:                                                       | N/A                                                                      |
+| `projectId`                                                              | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |

@@ -151,12 +151,12 @@ export type DefaultProjectJobs = {
 };
 
 export const TeamTeamPermissions = {
-  AiGatewayApiKeyOwnedBySelf: "AiGatewayApiKeyOwnedBySelf",
   AiGatewayBudgetManager: "AiGatewayBudgetManager",
   AiGatewayCredits: "AiGatewayCredits",
   AiGatewaySettings: "AiGatewaySettings",
   AiGatewayTranscriptsManager: "AiGatewayTranscriptsManager",
   AiGatewayTranscriptsViewer: "AiGatewayTranscriptsViewer",
+  AiGatewayUser: "AiGatewayUser",
   ConnectorManager: "ConnectorManager",
   CreateProject: "CreateProject",
   EnvVariableManager: "EnvVariableManager",
@@ -432,12 +432,12 @@ export const TeamRole = {
 export type TeamRole = ClosedEnum<typeof TeamRole>;
 
 export const TeamMembershipTeamPermissions = {
-  AiGatewayApiKeyOwnedBySelf: "AiGatewayApiKeyOwnedBySelf",
   AiGatewayBudgetManager: "AiGatewayBudgetManager",
   AiGatewayCredits: "AiGatewayCredits",
   AiGatewaySettings: "AiGatewaySettings",
   AiGatewayTranscriptsManager: "AiGatewayTranscriptsManager",
   AiGatewayTranscriptsViewer: "AiGatewayTranscriptsViewer",
+  AiGatewayUser: "AiGatewayUser",
   ConnectorManager: "ConnectorManager",
   CreateProject: "CreateProject",
   EnvVariableManager: "EnvVariableManager",

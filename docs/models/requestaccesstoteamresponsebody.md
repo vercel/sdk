@@ -9,6 +9,7 @@ import { RequestAccessToTeamResponseBody } from "@vercel/sdk/models/requestacces
 
 let value: RequestAccessToTeamResponseBody = {
   bitbucket: {},
+  confirmed: true,
   github: {},
   gitlab: {},
   teamName: "<value>",
@@ -22,7 +23,7 @@ let value: RequestAccessToTeamResponseBody = {
 | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
 | `accessRequestedAt`                                                                          | *number*                                                                                     | :heavy_minus_sign:                                                                           | N/A                                                                                          |
 | `bitbucket`                                                                                  | [models.Bitbucket](../models/bitbucket.md)                                                   | :heavy_check_mark:                                                                           | N/A                                                                                          |
-| `confirmed`                                                                                  | *boolean*                                                                                    | :heavy_minus_sign:                                                                           | N/A                                                                                          |
+| `confirmed`                                                                                  | *boolean*                                                                                    | :heavy_check_mark:                                                                           | N/A                                                                                          |
 | `github`                                                                                     | [models.Github](../models/github.md)                                                         | :heavy_check_mark:                                                                           | N/A                                                                                          |
 | `gitlab`                                                                                     | [models.Gitlab](../models/gitlab.md)                                                         | :heavy_check_mark:                                                                           | N/A                                                                                          |
 | `joinedFrom`                                                                                 | [models.RequestAccessToTeamTeamsJoinedFrom](../models/requestaccesstoteamteamsjoinedfrom.md) | :heavy_minus_sign:                                                                           | N/A                                                                                          |

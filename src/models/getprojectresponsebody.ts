@@ -9,10 +9,10 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
+  GetProjectFrom1,
+  GetProjectFrom1$inboundSchema,
   GetProjectFrom2,
   GetProjectFrom2$inboundSchema,
-  GetProjectFromPreset,
-  GetProjectFromPreset$inboundSchema,
   GetProjectInternalRoutes,
   GetProjectInternalRoutes$inboundSchema,
   GetProjectIpBuckets,
@@ -73,7 +73,7 @@ import {
   GetProjectTracing$inboundSchema,
   GetProjectTrustedIps,
   GetProjectTrustedIps$inboundSchema,
-} from "./getprojectfrompreset.js";
+} from "./getprojectfrom1.js";
 import {
   GetProjectAbuse,
   GetProjectAbuse$inboundSchema,
@@ -117,17 +117,6 @@ import {
   GetProjectIntegrations$inboundSchema,
 } from "./getprojecthas2.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-
-/**
- * The source envs on the trusted project that are allowed to access `to`.
- */
-export type GetProjectFrom1 = {
-  preset?: GetProjectFromPreset | undefined;
-  /**
-   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
-   */
-  slugs: Array<string>;
-};
 
 export type GetProjectFrom = GetProjectFrom1 | GetProjectFrom2;
 
@@ -358,34 +347,11 @@ export type GetProjectResponseBody = {
 };
 
 /** @internal */
-export const GetProjectFrom1$inboundSchema: z.ZodType<
-  GetProjectFrom1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  preset: types.optional(GetProjectFromPreset$inboundSchema),
-  slugs: z.array(types.string()),
-});
-
-export function getProjectFrom1FromJSON(
-  jsonString: string,
-): SafeParseResult<GetProjectFrom1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetProjectFrom1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProjectFrom1' from JSON`,
-  );
-}
-
-/** @internal */
 export const GetProjectFrom$inboundSchema: z.ZodType<
   GetProjectFrom,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => GetProjectFrom1$inboundSchema),
-  GetProjectFrom2$inboundSchema,
-]);
+> = smartUnion([GetProjectFrom1$inboundSchema, GetProjectFrom2$inboundSchema]);
 
 export function getProjectFromFromJSON(
   jsonString: string,
@@ -475,7 +441,7 @@ export const GetProjectCustomAllow$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   from: smartUnion([
-    z.lazy(() => GetProjectFrom1$inboundSchema),
+    GetProjectFrom1$inboundSchema,
     GetProjectFrom2$inboundSchema,
   ]),
   to: smartUnion([

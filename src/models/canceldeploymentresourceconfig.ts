@@ -506,11 +506,13 @@ export type Affinity = {
   mode: CancelDeploymentMode;
 };
 
-export const Architecture = {
+export const CancelDeploymentArchitecture = {
   Arm64: "arm64",
   X8664: "x86_64",
 } as const;
-export type Architecture = ClosedEnum<typeof Architecture>;
+export type CancelDeploymentArchitecture = ClosedEnum<
+  typeof CancelDeploymentArchitecture
+>;
 
 export type ExperimentalTriggers3 = {
   /**
@@ -597,7 +599,7 @@ export type MaxDuration = number | MaxDuration2;
 
 export type Functions = {
   affinity?: Affinity | undefined;
-  architecture?: Architecture | undefined;
+  architecture?: CancelDeploymentArchitecture | undefined;
   excludeFiles?: string | undefined;
   experimentalTriggers?:
     | Array<
@@ -2482,8 +2484,9 @@ export function affinityFromJSON(
 }
 
 /** @internal */
-export const Architecture$inboundSchema: z.ZodNativeEnum<typeof Architecture> =
-  z.nativeEnum(Architecture);
+export const CancelDeploymentArchitecture$inboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentArchitecture
+> = z.nativeEnum(CancelDeploymentArchitecture);
 
 /** @internal */
 export const ExperimentalTriggers3$inboundSchema: z.ZodType<
@@ -2602,7 +2605,7 @@ export const Functions$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   affinity: types.optional(z.lazy(() => Affinity$inboundSchema)),
-  architecture: types.optional(Architecture$inboundSchema),
+  architecture: types.optional(CancelDeploymentArchitecture$inboundSchema),
   excludeFiles: types.optional(types.string()),
   experimentalTriggers: types.optional(
     z.array(z.union([

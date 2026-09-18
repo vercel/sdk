@@ -422,14 +422,6 @@ export type UpdateProjectRulesets = {
   redirect?: UpdateProjectRedirect | null | undefined;
 };
 
-export type UpdateProjectSecurityPlusMetadata = {
-  /**
-   * Timestamp when the feature was first enabled. Never changes after initial enablement.
-   */
-  firstEnabledAt?: number | undefined;
-  updatedAt: number;
-};
-
 export type UpdateProjectSecurity = {
   attackModeActiveUntil?: number | null | undefined;
   attackModeEnabled?: boolean | undefined;
@@ -449,8 +441,6 @@ export type UpdateProjectSecurity = {
    */
   pageIntegrityEnabled?: boolean | undefined;
   rulesets?: { [k: string]: UpdateProjectRulesets } | undefined;
-  securityPlus?: boolean | undefined;
-  securityPlusMetadata?: UpdateProjectSecurityPlusMetadata | undefined;
 };
 
 /**
@@ -801,8 +791,6 @@ export type UpdateProjectTargets = {
 };
 
 export const UpdateProjectTier = {
-  Advanced: "advanced",
-  Critical: "critical",
   Priority: "priority",
 } as const;
 export type UpdateProjectTier = ClosedEnum<typeof UpdateProjectTier>;
@@ -1665,26 +1653,6 @@ export function updateProjectRulesetsFromJSON(
 }
 
 /** @internal */
-export const UpdateProjectSecurityPlusMetadata$inboundSchema: z.ZodType<
-  UpdateProjectSecurityPlusMetadata,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  firstEnabledAt: types.optional(types.number()),
-  updatedAt: types.number(),
-});
-
-export function updateProjectSecurityPlusMetadataFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateProjectSecurityPlusMetadata, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateProjectSecurityPlusMetadata$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateProjectSecurityPlusMetadata' from JSON`,
-  );
-}
-
-/** @internal */
 export const UpdateProjectSecurity$inboundSchema: z.ZodType<
   UpdateProjectSecurity,
   z.ZodTypeDef,
@@ -1713,10 +1681,6 @@ export const UpdateProjectSecurity$inboundSchema: z.ZodType<
   pageIntegrityEnabled: types.optional(types.boolean()),
   rulesets: types.optional(
     z.record(z.lazy(() => UpdateProjectRulesets$inboundSchema)),
-  ),
-  securityPlus: types.optional(types.boolean()),
-  securityPlusMetadata: types.optional(
-    z.lazy(() => UpdateProjectSecurityPlusMetadata$inboundSchema),
   ),
 }).transform((v) => {
   return remap$(v, {

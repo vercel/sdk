@@ -5,7 +5,7 @@ Since February 2025 the configuration must include snapshot data at the time of 
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentConfig } from "@vercel/sdk/models/canceldeploymentresourceconfig.js";
+import { CancelDeploymentConfig } from "@vercel/sdk/models/canceldeploymentbuildmachine.js";
 
 let value: CancelDeploymentConfig = {
   functionMemoryType: "standard_legacy",

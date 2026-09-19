@@ -1,19 +1,32 @@
 # SourceSelection
 
-## Example Usage
+
+## Supported Types
+
+### `models.GetDeploymentCheckRunSelection1`
 
 ```typescript
-import { SourceSelection } from "@vercel/sdk/models/getdeploymentcheckrunop.js";
+const value: models.GetDeploymentCheckRunSelection1 = {
+  kind: "invocation",
+};
+```
 
-let value: SourceSelection = {
-  job: "Global Division Specialist",
+### `models.GetDeploymentCheckRunSelection2`
+
+```typescript
+const value: models.GetDeploymentCheckRunSelection2 = {
+  job: "International Interactions Architect",
   kind: "job",
 };
 ```
 
-## Fields
+### `models.GetDeploymentCheckRunSelection3`
 
-| Field                                                                                                                        | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  |
-| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `job`                                                                                                                        | *string*                                                                                                                     | :heavy_check_mark:                                                                                                           | N/A                                                                                                                          |
-| `kind`                                                                                                                       | [models.GetDeploymentCheckRunSourceChecksV2Response200Kind](../models/getdeploymentcheckrunsourcechecksv2response200kind.md) | :heavy_check_mark:                                                                                                           | N/A                                                                                                                          |
+```typescript
+const value: models.GetDeploymentCheckRunSelection3 = {
+  job: "Senior Data Administrator",
+  kind: "task",
+  task: "<value>",
+};
+```
+

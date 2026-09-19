@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetDeploymentServicesDeploymentsResponseMode } from "@vercel/sdk/models/getdeploymentservicesfunctions.js";
+import { GetDeploymentServicesDeploymentsResponseMode } from "@vercel/sdk/models/getdeploymentmaxdurationdeployments2.js";
 
 let value: GetDeploymentServicesDeploymentsResponseMode = "strict";
 ```

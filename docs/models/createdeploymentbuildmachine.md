@@ -5,7 +5,7 @@ Selects a custom build machine for this deployment without changing project sett
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentBuildMachine } from "@vercel/sdk/models/responsebodyimages.js";
+import { CreateDeploymentBuildMachine } from "@vercel/sdk/models/responsebodyremotepatterns.js";
 
 let value: CreateDeploymentBuildMachine = "turbo";
 ```

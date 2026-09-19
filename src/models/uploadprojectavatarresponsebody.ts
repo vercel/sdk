@@ -10,6 +10,46 @@ import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
+  UploadProjectAvatarAbuse,
+  UploadProjectAvatarAbuse$inboundSchema,
+  UploadProjectAvatarAlias,
+  UploadProjectAvatarAlias$inboundSchema,
+  UploadProjectAvatarAnalytics,
+  UploadProjectAvatarAnalytics$inboundSchema,
+  UploadProjectAvatarBlobs,
+  UploadProjectAvatarBlobs$inboundSchema,
+  UploadProjectAvatarConnectConfigurations,
+  UploadProjectAvatarConnectConfigurations$inboundSchema,
+  UploadProjectAvatarCreator,
+  UploadProjectAvatarCreator$inboundSchema,
+  UploadProjectAvatarCrons,
+  UploadProjectAvatarCrons$inboundSchema,
+  UploadProjectAvatarCustomEnvironments,
+  UploadProjectAvatarCustomEnvironments$inboundSchema,
+  UploadProjectAvatarDataCache,
+  UploadProjectAvatarDataCache$inboundSchema,
+  UploadProjectAvatarDefaultResourceConfig,
+  UploadProjectAvatarDefaultResourceConfig$inboundSchema,
+  UploadProjectAvatarDeploymentExpiration,
+  UploadProjectAvatarDeploymentExpiration$inboundSchema,
+  UploadProjectAvatarDeploymentPolicy,
+  UploadProjectAvatarDeploymentPolicy$inboundSchema,
+  UploadProjectAvatarDismissedToasts,
+  UploadProjectAvatarDismissedToasts$inboundSchema,
+  UploadProjectAvatarEnv,
+  UploadProjectAvatarEnv$inboundSchema,
+  UploadProjectAvatarExpiration,
+  UploadProjectAvatarExpiration$inboundSchema,
+  UploadProjectAvatarFeatures,
+  UploadProjectAvatarFeatures$inboundSchema,
+  UploadProjectAvatarFramework,
+  UploadProjectAvatarFramework$inboundSchema,
+  UploadProjectAvatarGitComments,
+  UploadProjectAvatarGitComments$inboundSchema,
+  UploadProjectAvatarGitProviderOptions,
+  UploadProjectAvatarGitProviderOptions$inboundSchema,
+} from "./uploadprojectavatarhasvalue.js";
+import {
   UploadProjectAvatarFrom,
   UploadProjectAvatarFrom$inboundSchema,
   UploadProjectAvatarInternalRoutes,
@@ -68,58 +108,13 @@ import {
   UploadProjectAvatarTargets$inboundSchema,
   UploadProjectAvatarTier,
   UploadProjectAvatarTier$inboundSchema,
+  UploadProjectAvatarToProjectsResponse200Preset,
+  UploadProjectAvatarToProjectsResponse200Preset$inboundSchema,
   UploadProjectAvatarTracing,
   UploadProjectAvatarTracing$inboundSchema,
   UploadProjectAvatarTrustedIps,
   UploadProjectAvatarTrustedIps$inboundSchema,
-} from "./uploadprojectavatarfrom.js";
-import {
-  UploadProjectAvatarAbuse,
-  UploadProjectAvatarAbuse$inboundSchema,
-  UploadProjectAvatarAlias,
-  UploadProjectAvatarAlias$inboundSchema,
-  UploadProjectAvatarAnalytics,
-  UploadProjectAvatarAnalytics$inboundSchema,
-  UploadProjectAvatarBlobs,
-  UploadProjectAvatarBlobs$inboundSchema,
-  UploadProjectAvatarConnectConfigurations,
-  UploadProjectAvatarConnectConfigurations$inboundSchema,
-  UploadProjectAvatarCreator,
-  UploadProjectAvatarCreator$inboundSchema,
-  UploadProjectAvatarCrons,
-  UploadProjectAvatarCrons$inboundSchema,
-  UploadProjectAvatarCustomEnvironments,
-  UploadProjectAvatarCustomEnvironments$inboundSchema,
-  UploadProjectAvatarDataCache,
-  UploadProjectAvatarDataCache$inboundSchema,
-  UploadProjectAvatarDefaultResourceConfig,
-  UploadProjectAvatarDefaultResourceConfig$inboundSchema,
-  UploadProjectAvatarDeploymentExpiration,
-  UploadProjectAvatarDeploymentExpiration$inboundSchema,
-  UploadProjectAvatarDeploymentPolicy,
-  UploadProjectAvatarDeploymentPolicy$inboundSchema,
-  UploadProjectAvatarDismissedToasts,
-  UploadProjectAvatarDismissedToasts$inboundSchema,
-  UploadProjectAvatarEnv,
-  UploadProjectAvatarEnv$inboundSchema,
-  UploadProjectAvatarExpiration,
-  UploadProjectAvatarExpiration$inboundSchema,
-  UploadProjectAvatarFeatures,
-  UploadProjectAvatarFeatures$inboundSchema,
-  UploadProjectAvatarFramework,
-  UploadProjectAvatarFramework$inboundSchema,
-  UploadProjectAvatarGitComments,
-  UploadProjectAvatarGitComments$inboundSchema,
-  UploadProjectAvatarGitProviderOptions,
-  UploadProjectAvatarGitProviderOptions$inboundSchema,
-} from "./uploadprojectavatarhasvalue.js";
-
-export const UploadProjectAvatarToProjectsResponse200Preset = {
-  AllCustom: "all-custom",
-} as const;
-export type UploadProjectAvatarToProjectsResponse200Preset = ClosedEnum<
-  typeof UploadProjectAvatarToProjectsResponse200Preset
->;
+} from "./uploadprojectavatartoprojectsresponse200preset.js";
 
 /**
  * The target envs on the current project that may be accessed.
@@ -297,6 +292,9 @@ export type UploadProjectAvatarResponseBody = {
   passport?: UploadProjectAvatarPassport | null | undefined;
   passwordProtection?: UploadProjectAvatarPasswordProtection | null | undefined;
   paused?: boolean | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
   permissions?: UploadProjectAvatarPermissions | undefined;
   productionDeploymentsFastLane?: boolean | undefined;
   protectedSourcemaps?: boolean | undefined;
@@ -341,11 +339,6 @@ export type UploadProjectAvatarResponseBody = {
   v0Created?: boolean | undefined;
   webAnalytics?: UploadProjectAvatarWebAnalytics | undefined;
 };
-
-/** @internal */
-export const UploadProjectAvatarToProjectsResponse200Preset$inboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarToProjectsResponse200Preset> = z
-    .nativeEnum(UploadProjectAvatarToProjectsResponse200Preset);
 
 /** @internal */
 export const UploadProjectAvatarToProjects2$inboundSchema: z.ZodType<

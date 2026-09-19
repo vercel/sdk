@@ -77,6 +77,8 @@ import {
   CreateProjectStaticIps$inboundSchema,
   CreateProjectTargets,
   CreateProjectTargets$inboundSchema,
+  CreateProjectTier,
+  CreateProjectTier$inboundSchema,
   Features,
   Features$inboundSchema,
   GitProviderOptions,
@@ -101,15 +103,8 @@ import {
   RollingRelease$inboundSchema,
   SpeedInsights,
   SpeedInsights$inboundSchema,
-} from "./createprojecttargets.js";
+} from "./createprojecttier.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-
-export const CreateProjectTier = {
-  Advanced: "advanced",
-  Critical: "critical",
-  Priority: "priority",
-} as const;
-export type CreateProjectTier = ClosedEnum<typeof CreateProjectTier>;
 
 /**
  * Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery type when project tracing is computed; absent on configs persisted before this field existed.
@@ -460,6 +455,9 @@ export type CreateProjectResponseBody = {
   passport?: CreateProjectPassport | null | undefined;
   passwordProtection?: CreateProjectPasswordProtection | null | undefined;
   paused?: boolean | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
   permissions?: CreateProjectPermissions | undefined;
   productionDeploymentsFastLane?: boolean | undefined;
   protectedSourcemaps?: boolean | undefined;
@@ -502,11 +500,6 @@ export type CreateProjectResponseBody = {
   v0Created?: boolean | undefined;
   webAnalytics?: CreateProjectWebAnalytics | undefined;
 };
-
-/** @internal */
-export const CreateProjectTier$inboundSchema: z.ZodNativeEnum<
-  typeof CreateProjectTier
-> = z.nativeEnum(CreateProjectTier);
 
 /** @internal */
 export const CreateProjectDestination$inboundSchema: z.ZodNativeEnum<

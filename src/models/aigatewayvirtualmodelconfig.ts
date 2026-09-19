@@ -110,16 +110,15 @@ export type ProviderTimeouts = {
 };
 
 /**
- * For kind=router: how to order candidates.
+ * For kind=router: how to order candidates. Absent means declared order.
  */
 export const Selector = {
   Cost: "cost",
-  Priority: "priority",
   Tps: "tps",
   Ttft: "ttft",
 } as const;
 /**
- * For kind=router: how to order candidates.
+ * For kind=router: how to order candidates. Absent means declared order.
  */
 export type Selector = ClosedEnum<typeof Selector>;
 
@@ -187,6 +186,10 @@ export type AiGatewayVirtualModelConfig = {
    * Creation timestamp (epoch ms).
    */
   createdAt: number;
+  /**
+   * User or app id that created this VMC.
+   */
+  createdBy?: string | undefined;
   /**
    * Whether this VMC is soft-deleted.
    */
@@ -256,11 +259,7 @@ export type AiGatewayVirtualModelConfig = {
    */
   providerTimeouts?: ProviderTimeouts | undefined;
   /**
-   * For kind=router: capability tags a candidate must have.
-   */
-  requires?: Array<string> | undefined;
-  /**
-   * For kind=router: how to order candidates.
+   * For kind=router: how to order candidates. Absent means declared order.
    */
   selector?: Selector | undefined;
   /**
@@ -284,7 +283,7 @@ export type AiGatewayVirtualModelConfig = {
    */
   updatedAt: number;
   /**
-   * User id that last updated this VMC.
+   * User or app id that last updated this VMC.
    */
   updatedBy?: string | undefined;
   /**
@@ -413,6 +412,7 @@ export const AiGatewayVirtualModelConfig$inboundSchema: z.ZodType<
   byokCredentialIds: types.optional(z.array(types.string())),
   caching: types.optional(Caching$inboundSchema),
   createdAt: types.number(),
+  createdBy: types.optional(types.string()),
   deleted: types.boolean(),
   description: types.optional(types.string()),
   disallowPromptTraining: types.optional(types.boolean()),
@@ -432,7 +432,6 @@ export const AiGatewayVirtualModelConfig$inboundSchema: z.ZodType<
   providerTimeouts: types.optional(
     z.lazy(() => ProviderTimeouts$inboundSchema),
   ),
-  requires: types.optional(z.array(types.string())),
   selector: types.optional(Selector$inboundSchema),
   serviceTier: types.optional(ServiceTier$inboundSchema),
   sort: types.optional(Sort$inboundSchema),

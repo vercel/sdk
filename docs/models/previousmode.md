@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { PreviousMode } from "@vercel/sdk/models/payloaddefault.js";
+import { PreviousMode } from "@vercel/sdk/models/jobaction.js";
 
-let value: PreviousMode = "organization";
+let value: PreviousMode = "none";
 ```
 
 ## Values
 
 ```typescript
-"organization" | "team"
+"none"
 ```

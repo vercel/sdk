@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { SettlementMethod } from "@vercel/sdk/models/retention.js";
+import { SettlementMethod } from "@vercel/sdk/models/thirtyeight.js";
 
 let value: SettlementMethod = "refunded-paid";
 ```

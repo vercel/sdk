@@ -5,20 +5,31 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFiftyTwo } from "@vercel/sdk/models/payloadmostspecificsubdivision.js";
+import { ThreeHundredAndFiftyTwo } from "@vercel/sdk/models/payloadcity.js";
 
 let value: ThreeHundredAndFiftyTwo = {
-  store: {
-    id: "<id>",
-    type: "edge-config",
+  budget: {
+    budgetItem: {
+      createdAt: 7668.85,
+      fixedBudget: 5900.75,
+      id: "<id>",
+      isActive: true,
+      notifiedAt: [
+        7484.22,
+        4354.37,
+      ],
+      previousSpend: [
+        2833.33,
+      ],
+      teamId: "<id>",
+      type: "fixed",
+    },
   },
-  transferRequestCode: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                              | Type                               | Required                           | Description                        |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| `store`                            | [models.Store](../models/store.md) | :heavy_check_mark:                 | N/A                                |
-| `transferRequestCode`              | *string*                           | :heavy_check_mark:                 | N/A                                |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `budget`                                                                   | [models.UserEventPayload352Budget](../models/usereventpayload352budget.md) | :heavy_check_mark:                                                         | N/A                                                                        |

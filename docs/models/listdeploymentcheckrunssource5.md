@@ -10,7 +10,7 @@ import { ListDeploymentCheckRunsSource5 } from "@vercel/sdk/models/listdeploymen
 let value: ListDeploymentCheckRunsSource5 = {
   origin: "api",
   selection: {
-    job: "Regional Response Administrator",
+    job: "Product Markets Facilitator",
     kind: "job",
   },
   subKind: "vercel-ci-check",
@@ -22,5 +22,5 @@ let value: ListDeploymentCheckRunsSource5 = {
 | Field                                                                                                            | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
 | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | `origin`                                                                                                         | [models.ListDeploymentCheckRunsSourceChecksV2Origin](../models/listdeploymentcheckrunssourcechecksv2origin.md)   | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
-| `selection`                                                                                                      | [models.ListDeploymentCheckRunsSourceSelection](../models/listdeploymentcheckrunssourceselection.md)             | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
+| `selection`                                                                                                      | *models.ListDeploymentCheckRunsSourceSelection*                                                                  | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
 | `subKind`                                                                                                        | [models.ListDeploymentCheckRunsSourceChecksV2SubKind](../models/listdeploymentcheckrunssourcechecksv2subkind.md) | :heavy_check_mark:                                                                                               | N/A                                                                                                              |

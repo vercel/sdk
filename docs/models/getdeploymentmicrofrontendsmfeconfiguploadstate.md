@@ -5,7 +5,7 @@ The result of the microfrontends config upload during deployment creation / buil
 ## Example Usage
 
 ```typescript
-import { GetDeploymentMicrofrontendsMfeConfigUploadState } from "@vercel/sdk/models/getdeploymentservicesfunctions.js";
+import { GetDeploymentMicrofrontendsMfeConfigUploadState } from "@vercel/sdk/models/getdeploymentmaxdurationdeployments2.js";
 
 let value: GetDeploymentMicrofrontendsMfeConfigUploadState = "no_config";
 ```

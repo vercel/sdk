@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentAtproto1 } from "@vercel/sdk/models/responsebodyimages.js";
+import { CreateDeploymentAtproto1 } from "@vercel/sdk/models/responsebodyremotepatterns.js";
 
 let value: CreateDeploymentAtproto1 = {
   enabled: false,

@@ -1,6 +1,6 @@
 # ACLAction
 
-Enum containing the actions that can be performed against a resource. Group operations are included.
+Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
 
 ## Example Usage
 

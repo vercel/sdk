@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ContentDispositionType } from "@vercel/sdk/models/canceldeploymentresourceconfig.js";
+import { ContentDispositionType } from "@vercel/sdk/models/canceldeploymentbuildmachine.js";
 
 let value: ContentDispositionType = "inline";
 ```

@@ -1,19 +1,32 @@
 # ListCheckRunsSourceSelection
 
-## Example Usage
+
+## Supported Types
+
+### `models.ListCheckRunsSelection1`
 
 ```typescript
-import { ListCheckRunsSourceSelection } from "@vercel/sdk/models/listcheckrunsop.js";
+const value: models.ListCheckRunsSelection1 = {
+  kind: "invocation",
+};
+```
 
-let value: ListCheckRunsSourceSelection = {
-  job: "Lead Quality Liaison",
+### `models.ListCheckRunsSelection2`
+
+```typescript
+const value: models.ListCheckRunsSelection2 = {
+  job: "Lead Usability Manager",
   kind: "job",
 };
 ```
 
-## Fields
+### `models.ListCheckRunsSelection3`
 
-| Field                                                                                                        | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
-| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| `job`                                                                                                        | *string*                                                                                                     | :heavy_check_mark:                                                                                           | N/A                                                                                                          |
-| `kind`                                                                                                       | [models.ListCheckRunsSourceChecksV2Response200Kind](../models/listcheckrunssourcechecksv2response200kind.md) | :heavy_check_mark:                                                                                           | N/A                                                                                                          |
+```typescript
+const value: models.ListCheckRunsSelection3 = {
+  job: "Customer Division Representative",
+  kind: "task",
+  task: "<value>",
+};
+```
+

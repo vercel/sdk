@@ -5,19 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndTwentySix } from "@vercel/sdk/models/twohundredandseventyone.js";
+import { ThreeHundredAndTwentySix } from "@vercel/sdk/models/twohundredandeightyone.js";
 
 let value: ThreeHundredAndTwentySix = {
-  gitProvider: "<value>",
-  gitProviderGroupDescriptor: "<value>",
-  gitScope: "<value>",
+  oldSsoProtection: {
+    deploymentType: "preview",
+  },
+  ssoProtection: {
+    deploymentType: "all",
+  },
 };
 ```
 
 ## Fields
 
-| Field                        | Type                         | Required                     | Description                  |
-| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-| `gitProvider`                | *string*                     | :heavy_check_mark:           | N/A                          |
-| `gitProviderGroupDescriptor` | *string*                     | :heavy_check_mark:           | N/A                          |
-| `gitScope`                   | *string*                     | :heavy_check_mark:           | N/A                          |
+| Field                                                              | Type                                                               | Required                                                           | Description                                                        |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `oldSsoProtection`                                                 | *models.OldSsoProtection*                                          | :heavy_check_mark:                                                 | N/A                                                                |
+| `projectId`                                                        | *string*                                                           | :heavy_minus_sign:                                                 | N/A                                                                |
+| `projectName`                                                      | *string*                                                           | :heavy_minus_sign:                                                 | N/A                                                                |
+| `scope`                                                            | [models.UserEventPayloadScope](../models/usereventpayloadscope.md) | :heavy_minus_sign:                                                 | N/A                                                                |
+| `ssoProtection`                                                    | *models.PayloadSsoProtection*                                      | :heavy_check_mark:                                                 | N/A                                                                |

@@ -10,6 +10,18 @@ import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
+ * CPU architecture required to restore the snapshot.
+ */
+export const SnapshotArchitecture = {
+  Amd64: "amd64",
+  Arm64: "arm64",
+} as const;
+/**
+ * CPU architecture required to restore the snapshot.
+ */
+export type SnapshotArchitecture = ClosedEnum<typeof SnapshotArchitecture>;
+
+/**
  * The method used to create the snapshot.
  */
 export const CreationMethod = {
@@ -38,6 +50,10 @@ export type SnapshotStatus = ClosedEnum<typeof SnapshotStatus>;
  * This object contains information related to a Snapshot of a Vercel Sandbox session (v2 API).
  */
 export type Snapshot = {
+  /**
+   * CPU architecture required to restore the snapshot.
+   */
+  architecture?: SnapshotArchitecture | undefined;
   /**
    * The time when the snapshot was created, in milliseconds since the epoch.
    */
@@ -89,6 +105,11 @@ export type Snapshot = {
 };
 
 /** @internal */
+export const SnapshotArchitecture$inboundSchema: z.ZodNativeEnum<
+  typeof SnapshotArchitecture
+> = z.nativeEnum(SnapshotArchitecture);
+
+/** @internal */
 export const CreationMethod$inboundSchema: z.ZodNativeEnum<
   typeof CreationMethod
 > = z.nativeEnum(CreationMethod);
@@ -104,6 +125,7 @@ export const Snapshot$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  architecture: types.optional(SnapshotArchitecture$inboundSchema),
   createdAt: types.number(),
   creationMethod: types.optional(CreationMethod$inboundSchema),
   expiresAt: types.optional(types.number()),

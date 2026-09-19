@@ -14,6 +14,18 @@ import {
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
+ * CPU architecture of the sandbox.
+ */
+export const SessionArchitecture = {
+  Amd64: "amd64",
+  Arm64: "arm64",
+} as const;
+/**
+ * CPU architecture of the sandbox.
+ */
+export type SessionArchitecture = ClosedEnum<typeof SessionArchitecture>;
+
+/**
  * The quantity of data transfered to and from the sandbox, in bytes. This value is only available once the sandbox is stopped, and only if it stopped successfully.
  */
 export type NetworkTransfer = {
@@ -50,6 +62,10 @@ export type Session = {
    * The amount of CPU time the sandbox consumed, if available, in milliseconds. This value is only available once the sandbox is stopped, and only if it stopped successfully.
    */
   activeCpuDurationMs?: number | undefined;
+  /**
+   * CPU architecture of the sandbox.
+   */
+  architecture?: SessionArchitecture | undefined;
   /**
    * The time when the sandbox was created, in milliseconds since the epoch.
    */
@@ -137,6 +153,11 @@ export type Session = {
 };
 
 /** @internal */
+export const SessionArchitecture$inboundSchema: z.ZodNativeEnum<
+  typeof SessionArchitecture
+> = z.nativeEnum(SessionArchitecture);
+
+/** @internal */
 export const NetworkTransfer$inboundSchema: z.ZodType<
   NetworkTransfer,
   z.ZodTypeDef,
@@ -166,6 +187,7 @@ export const Session$inboundSchema: z.ZodType<Session, z.ZodTypeDef, unknown> =
   z.object({
     abortedAt: types.optional(types.number()),
     activeCpuDurationMs: types.optional(types.number()),
+    architecture: types.optional(SessionArchitecture$inboundSchema),
     createdAt: types.number(),
     cwd: types.string(),
     duration: types.optional(types.number()),

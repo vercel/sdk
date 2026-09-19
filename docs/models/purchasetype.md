@@ -5,7 +5,7 @@ Machine type which was purchased/selected for this build. `basic` is the 2vCPU t
 ## Example Usage
 
 ```typescript
-import { PurchaseType } from "@vercel/sdk/models/canceldeploymentresourceconfig.js";
+import { PurchaseType } from "@vercel/sdk/models/canceldeploymentbuildmachine.js";
 
 let value: PurchaseType = "standard";
 ```

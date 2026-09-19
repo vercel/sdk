@@ -10,10 +10,8 @@ import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
-  UpdateMicrofrontendsFrom1,
-  UpdateMicrofrontendsFrom1$inboundSchema,
-  UpdateMicrofrontendsFrom2,
-  UpdateMicrofrontendsFrom2$inboundSchema,
+  UpdateMicrofrontendsFrom,
+  UpdateMicrofrontendsFrom$inboundSchema,
   UpdateMicrofrontendsInternalRoutes,
   UpdateMicrofrontendsInternalRoutes$inboundSchema,
   UpdateMicrofrontendsIpBuckets,
@@ -74,7 +72,7 @@ import {
   UpdateMicrofrontendsTracing$inboundSchema,
   UpdateMicrofrontendsTrustedIps,
   UpdateMicrofrontendsTrustedIps$inboundSchema,
-} from "./updatemicrofrontendsfrom1.js";
+} from "./updatemicrofrontendsfrom.js";
 import {
   UpdateMicrofrontendsAbuse,
   UpdateMicrofrontendsAbuse$inboundSchema,
@@ -115,10 +113,6 @@ import {
   UpdateMicrofrontendsGitProviderOptions,
   UpdateMicrofrontendsGitProviderOptions$inboundSchema,
 } from "./updatemicrofrontendshaskey.js";
-
-export type UpdateMicrofrontendsFrom =
-  | UpdateMicrofrontendsFrom1
-  | UpdateMicrofrontendsFrom2;
 
 export const UpdateMicrofrontendsToProjectsResponse200Preset = {
   AllCustom: "all-custom",
@@ -164,7 +158,7 @@ export type UpdateMicrofrontendsProjectsTo =
  * Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets.
  */
 export type UpdateMicrofrontendsCustomAllow = {
-  from: UpdateMicrofrontendsFrom1 | UpdateMicrofrontendsFrom2;
+  from: UpdateMicrofrontendsFrom;
   to: UpdateMicrofrontendsToProjects1 | UpdateMicrofrontendsToProjects2;
 };
 
@@ -311,6 +305,9 @@ export type UpdateMicrofrontendsResponseBody = {
     | null
     | undefined;
   paused?: boolean | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
   permissions?: UpdateMicrofrontendsPermissions | undefined;
   productionDeploymentsFastLane?: boolean | undefined;
   protectedSourcemaps?: boolean | undefined;
@@ -355,26 +352,6 @@ export type UpdateMicrofrontendsResponseBody = {
   v0Created?: boolean | undefined;
   webAnalytics?: UpdateMicrofrontendsWebAnalytics | undefined;
 };
-
-/** @internal */
-export const UpdateMicrofrontendsFrom$inboundSchema: z.ZodType<
-  UpdateMicrofrontendsFrom,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  UpdateMicrofrontendsFrom1$inboundSchema,
-  UpdateMicrofrontendsFrom2$inboundSchema,
-]);
-
-export function updateMicrofrontendsFromFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateMicrofrontendsFrom, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateMicrofrontendsFrom$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateMicrofrontendsFrom' from JSON`,
-  );
-}
 
 /** @internal */
 export const UpdateMicrofrontendsToProjectsResponse200Preset$inboundSchema:
@@ -454,10 +431,7 @@ export const UpdateMicrofrontendsCustomAllow$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  from: smartUnion([
-    UpdateMicrofrontendsFrom1$inboundSchema,
-    UpdateMicrofrontendsFrom2$inboundSchema,
-  ]),
+  from: UpdateMicrofrontendsFrom$inboundSchema,
   to: smartUnion([
     z.lazy(() => UpdateMicrofrontendsToProjects1$inboundSchema),
     z.lazy(() => UpdateMicrofrontendsToProjects2$inboundSchema),

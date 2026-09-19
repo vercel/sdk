@@ -5,7 +5,7 @@ Metadata about the source platform that triggered the deployment. Allows us to m
 ## Example Usage
 
 ```typescript
-import { Platform } from "@vercel/sdk/models/canceldeploymentresourceconfig.js";
+import { Platform } from "@vercel/sdk/models/canceldeploymentbuildmachine.js";
 
 let value: Platform = {
   creator: {

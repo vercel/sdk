@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentGitRepoDeploymentsResponse200OwnerType } from "@vercel/sdk/models/responsebodyimages.js";
+import { CreateDeploymentGitRepoDeploymentsResponse200OwnerType } from "@vercel/sdk/models/responsebodyremotepatterns.js";
 
 let value: CreateDeploymentGitRepoDeploymentsResponse200OwnerType = "user";
 ```

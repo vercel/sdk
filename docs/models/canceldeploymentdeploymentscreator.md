@@ -5,7 +5,7 @@ The user on the external platform who triggered the deployment.
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentDeploymentsCreator } from "@vercel/sdk/models/canceldeploymentresourceconfig.js";
+import { CancelDeploymentDeploymentsCreator } from "@vercel/sdk/models/canceldeploymentbuildmachine.js";
 
 let value: CancelDeploymentDeploymentsCreator = {
   name: "<value>",

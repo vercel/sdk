@@ -14,7 +14,7 @@ import { pathToFunc } from "../lib/url.js";
 import {
   CancelDeploymentRequest,
   CancelDeploymentRequest$outboundSchema,
-} from "../models/canceldeploymentresourceconfig.js";
+} from "../models/canceldeploymentbuildmachine.js";
 import {
   CancelDeploymentResponseBody,
   CancelDeploymentResponseBody$inboundSchema,

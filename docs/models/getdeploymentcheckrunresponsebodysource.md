@@ -43,8 +43,9 @@ const value: models.Source4 = {};
 const value: models.Source5 = {
   origin: "api",
   selection: {
-    job: "Principal Data Planner",
-    kind: "job",
+    job: "Forward Intranet Manager",
+    kind: "task",
+    task: "<value>",
   },
   subKind: "vercel-ci-check",
 };

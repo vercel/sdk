@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadTeamPermissions } from "@vercel/sdk/models/payloadmostspecificsubdivision.js";
+import { PayloadTeamPermissions } from "@vercel/sdk/models/payloadcity.js";
 
 let value: PayloadTeamPermissions = "V0Chatter";
 ```
@@ -11,5 +11,5 @@ let value: PayloadTeamPermissions = "V0Chatter";
 ## Values
 
 ```typescript
-"AiGatewayApiKeyOwnedBySelf" | "AiGatewayBudgetManager" | "AiGatewayCredits" | "AiGatewaySettings" | "AiGatewayTranscriptsManager" | "AiGatewayTranscriptsViewer" | "ConnectorManager" | "CreateProject" | "EnvVariableManager" | "EnvironmentManager" | "FullProductionDeployment" | "IntegrationManager" | "OrgAdmin" | "OrgViewer" | "UsageViewer" | "V0Builder" | "V0Chatter" | "V0Viewer" | "WorkflowDecryptor"
+"AiGatewayBudgetManager" | "AiGatewayCredits" | "AiGatewaySettings" | "AiGatewayTranscriptsManager" | "AiGatewayTranscriptsViewer" | "AiGatewayUser" | "ConnectorManager" | "CreateProject" | "EnvVariableManager" | "EnvironmentManager" | "FullProductionDeployment" | "IntegrationManager" | "OrgAdmin" | "OrgViewer" | "UsageViewer" | "V0Builder" | "V0Chatter" | "V0Viewer" | "WorkflowDecryptor"
 ```

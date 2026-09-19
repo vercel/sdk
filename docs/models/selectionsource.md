@@ -5,7 +5,7 @@ The setting which selected the build machine when the deployment was created. Fr
 ## Example Usage
 
 ```typescript
-import { SelectionSource } from "@vercel/sdk/models/canceldeploymentresourceconfig.js";
+import { SelectionSource } from "@vercel/sdk/models/canceldeploymentbuildmachine.js";
 
 let value: SelectionSource = "elastic-algorithm";
 ```

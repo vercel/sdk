@@ -11,8 +11,6 @@ import { smartUnion } from "../types/smartUnion.js";
 import {
   CreateDeploymentMissingDeploymentsResponse2,
   CreateDeploymentMissingDeploymentsResponse2$inboundSchema,
-  CreateDeploymentMissingDeploymentsResponse200ApplicationJSONValue,
-  CreateDeploymentMissingDeploymentsResponse200ApplicationJSONValue$inboundSchema,
   CreateDeploymentResponseBodyDeploymentsReadyState,
   CreateDeploymentResponseBodyDeploymentsReadyState$inboundSchema,
   CreateDeploymentResponseBodyLambdas,
@@ -39,6 +37,10 @@ import {
   CreateDeploymentServicesFunctions$inboundSchema,
   CreateDeploymentServicesHeaders,
   CreateDeploymentServicesHeaders$inboundSchema,
+  CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2RedirectsMissing2,
+  CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2RedirectsMissing2$inboundSchema,
+  ResponseBodyImages,
+  ResponseBodyImages$inboundSchema,
   ResponseBodyIntegrations,
   ResponseBodyIntegrations$inboundSchema,
   ResponseBodyMicrofrontends,
@@ -55,7 +57,7 @@ import {
   ResponseBodySeatBlock$inboundSchema,
   ServicesBindings,
   ServicesBindings$inboundSchema,
-} from "./createdeploymentmissingdeploymentsresponse200applicationjsonvalue.js";
+} from "./createdeploymentvaluedeploymentsresponse200applicationjsonresponsebody2services2redirectsmissing2.js";
 import {
   CreateDeploymentResponseBodyChecks,
   CreateDeploymentResponseBodyChecks$inboundSchema,
@@ -71,6 +73,8 @@ import {
   CreateDeploymentResponseBodyDeploymentsAliasError$inboundSchema,
   CreateDeploymentResponseBodyDeploymentsAliasWarning,
   CreateDeploymentResponseBodyDeploymentsAliasWarning$inboundSchema,
+  CreateDeploymentResponseBodyDeploymentsDuration,
+  CreateDeploymentResponseBodyDeploymentsDuration$inboundSchema,
   CreateDeploymentResponseBodyGitSource,
   CreateDeploymentResponseBodyGitSource$inboundSchema,
   ResponseBodyAliasAssignedAt,
@@ -93,14 +97,18 @@ import {
   ResponseBodyFunctions$inboundSchema,
   ResponseBodyGitRepo,
   ResponseBodyGitRepo$inboundSchema,
-  ResponseBodyImages,
-  ResponseBodyImages$inboundSchema,
-} from "./responsebodyimages.js";
+} from "./responsebodyremotepatterns.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type CreateDeploymentMissingDeploymentsResponse200ApplicationJSONValue =
+  | string
+  | CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2RedirectsMissing2;
 
 export type CreateDeploymentMissingDeploymentsResponse1 = {
   type: "host";
-  value: CreateDeploymentMissingDeploymentsResponse200ApplicationJSONValue;
+  value:
+    | string
+    | CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2RedirectsMissing2;
 };
 
 export type CreateDeploymentServicesDeploymentsMissing =
@@ -965,6 +973,10 @@ export type CreateDeploymentServicesProjectSettings = {
 
 export type CreateDeploymentServicesConfig = {
   buildCommand?: string | undefined;
+  /**
+   * Buildpack runtime slug (e.g. "ruby").
+   */
+  buildpack?: string | undefined;
   bundle?: boolean | undefined;
   bunVersion?: string | undefined;
   debug?: boolean | undefined;
@@ -1224,6 +1236,7 @@ export type CreateDeploymentResponseBody2 = {
    * A number containing the date when the deployment was deleted at milliseconds
    */
   deletedAt?: number | null | undefined;
+  duration: CreateDeploymentResponseBodyDeploymentsDuration;
   env: Array<string>;
   errorCode?: string | undefined;
   errorLink?: string | undefined;
@@ -1380,6 +1393,37 @@ export type CreateDeploymentResponseBodyAliasWarning = {
   message: string;
 };
 
+export type CreateDeploymentResponseBodyDuration = {
+  /**
+   * Unix timestamp in milliseconds when the build container exited.
+   */
+  endTime?: number | undefined;
+  /**
+   * Build-container exit Unix timestamp in milliseconds, capped at 45 minutes after `startTime`.
+   */
+  endTimeCapped?: number | undefined;
+  /**
+   * Unix timestamp in milliseconds when the deployment entered BUILDING.
+   */
+  startTime?: number | undefined;
+  /**
+   * Billable build-container duration in milliseconds, capped at 45 minutes, rounded up to a whole minute, with a one-minute minimum.
+   */
+  timeForBilling?: number | undefined;
+  /**
+   * Milliseconds from entering BUILDING until the build container exited, without the billing cap.
+   */
+  timeToContainerExit?: number | undefined;
+  /**
+   * Build-container duration in milliseconds, capped at 45 minutes and without billing rounding.
+   */
+  timeToContainerExitCapped?: number | undefined;
+  /**
+   * Milliseconds from entering BUILDING until the deployment reached its current ready state.
+   */
+  timeToReady?: number | undefined;
+};
+
 /**
  * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
  */
@@ -1424,6 +1468,7 @@ export type CreateDeploymentResponseBody1 = {
    */
   aliasError?: CreateDeploymentResponseBodyAliasError | null | undefined;
   aliasWarning?: CreateDeploymentResponseBodyAliasWarning | null | undefined;
+  duration: CreateDeploymentResponseBodyDuration;
   errorCode?: string | undefined;
   errorMessage?: string | null | undefined;
   /**
@@ -1451,6 +1496,32 @@ export type CreateDeploymentResponseBody =
   | CreateDeploymentResponseBody1;
 
 /** @internal */
+export const CreateDeploymentMissingDeploymentsResponse200ApplicationJSONValue$inboundSchema:
+  z.ZodType<
+    CreateDeploymentMissingDeploymentsResponse200ApplicationJSONValue,
+    z.ZodTypeDef,
+    unknown
+  > = smartUnion([
+    types.string(),
+    CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2RedirectsMissing2$inboundSchema,
+  ]);
+
+export function createDeploymentMissingDeploymentsResponse200ApplicationJSONValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateDeploymentMissingDeploymentsResponse200ApplicationJSONValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateDeploymentMissingDeploymentsResponse200ApplicationJSONValue$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentMissingDeploymentsResponse200ApplicationJSONValue' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateDeploymentMissingDeploymentsResponse1$inboundSchema:
   z.ZodType<
     CreateDeploymentMissingDeploymentsResponse1,
@@ -1458,8 +1529,10 @@ export const CreateDeploymentMissingDeploymentsResponse1$inboundSchema:
     unknown
   > = z.object({
     type: types.literal("host"),
-    value:
-      CreateDeploymentMissingDeploymentsResponse200ApplicationJSONValue$inboundSchema,
+    value: smartUnion([
+      types.string(),
+      CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2RedirectsMissing2$inboundSchema,
+    ]),
   });
 
 export function createDeploymentMissingDeploymentsResponse1FromJSON(
@@ -3696,6 +3769,7 @@ export const CreateDeploymentServicesConfig$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   buildCommand: types.optional(types.string()),
+  buildpack: types.optional(types.string()),
   bundle: types.optional(types.boolean()),
   bunVersion: types.optional(types.string()),
   debug: types.optional(types.boolean()),
@@ -4024,6 +4098,7 @@ export const CreateDeploymentResponseBody2$inboundSchema: z.ZodType<
   ),
   defaultRoute: types.optional(types.string()),
   deletedAt: z.nullable(types.number()).optional(),
+  duration: CreateDeploymentResponseBodyDeploymentsDuration$inboundSchema,
   env: z.array(types.string()),
   errorCode: types.optional(types.string()),
   errorLink: types.optional(types.string()),
@@ -4172,6 +4247,32 @@ export function createDeploymentResponseBodyAliasWarningFromJSON(
 }
 
 /** @internal */
+export const CreateDeploymentResponseBodyDuration$inboundSchema: z.ZodType<
+  CreateDeploymentResponseBodyDuration,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  endTime: types.optional(types.number()),
+  endTimeCapped: types.optional(types.number()),
+  startTime: types.optional(types.number()),
+  timeForBilling: types.optional(types.number()),
+  timeToContainerExit: types.optional(types.number()),
+  timeToContainerExitCapped: types.optional(types.number()),
+  timeToReady: types.optional(types.number()),
+});
+
+export function createDeploymentResponseBodyDurationFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateDeploymentResponseBodyDuration, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateDeploymentResponseBodyDuration$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentResponseBodyDuration' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateDeploymentResponseBodyReadyState$inboundSchema:
   z.ZodNativeEnum<typeof CreateDeploymentResponseBodyReadyState> = z.nativeEnum(
     CreateDeploymentResponseBodyReadyState,
@@ -4196,6 +4297,7 @@ export const CreateDeploymentResponseBody1$inboundSchema: z.ZodType<
   aliasWarning: z.nullable(
     z.lazy(() => CreateDeploymentResponseBodyAliasWarning$inboundSchema),
   ).optional(),
+  duration: z.lazy(() => CreateDeploymentResponseBodyDuration$inboundSchema),
   errorCode: types.optional(types.string()),
   errorMessage: z.nullable(types.string()).optional(),
   id: types.string(),

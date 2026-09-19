@@ -1,19 +1,32 @@
 # ListDeploymentCheckRunsSourceSelection
 
-## Example Usage
+
+## Supported Types
+
+### `models.ListDeploymentCheckRunsSelection1`
 
 ```typescript
-import { ListDeploymentCheckRunsSourceSelection } from "@vercel/sdk/models/listdeploymentcheckrunsop.js";
+const value: models.ListDeploymentCheckRunsSelection1 = {
+  kind: "invocation",
+};
+```
 
-let value: ListDeploymentCheckRunsSourceSelection = {
-  job: "Forward Paradigm Manager",
+### `models.ListDeploymentCheckRunsSelection2`
+
+```typescript
+const value: models.ListDeploymentCheckRunsSelection2 = {
+  job: "Corporate Usability Architect",
   kind: "job",
 };
 ```
 
-## Fields
+### `models.ListDeploymentCheckRunsSelection3`
 
-| Field                                                                                                                            | Type                                                                                                                             | Required                                                                                                                         | Description                                                                                                                      |
-| -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| `job`                                                                                                                            | *string*                                                                                                                         | :heavy_check_mark:                                                                                                               | N/A                                                                                                                              |
-| `kind`                                                                                                                           | [models.ListDeploymentCheckRunsSourceChecksV2Response200Kind](../models/listdeploymentcheckrunssourcechecksv2response200kind.md) | :heavy_check_mark:                                                                                                               | N/A                                                                                                                              |
+```typescript
+const value: models.ListDeploymentCheckRunsSelection3 = {
+  job: "Senior Identity Officer",
+  kind: "task",
+  task: "<value>",
+};
+```
+

@@ -10,8 +10,9 @@ import { Source5 } from "@vercel/sdk/models/getdeploymentcheckrunop.js";
 let value: Source5 = {
   origin: "api",
   selection: {
-    job: "Principal Data Planner",
-    kind: "job",
+    job: "Forward Intranet Manager",
+    kind: "task",
+    task: "<value>",
   },
   subKind: "vercel-ci-check",
 };
@@ -22,5 +23,5 @@ let value: Source5 = {
 | Field                                                                                                        | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
 | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
 | `origin`                                                                                                     | [models.GetDeploymentCheckRunSourceChecksV2Origin](../models/getdeploymentcheckrunsourcechecksv2origin.md)   | :heavy_check_mark:                                                                                           | N/A                                                                                                          |
-| `selection`                                                                                                  | [models.SourceSelection](../models/sourceselection.md)                                                       | :heavy_check_mark:                                                                                           | N/A                                                                                                          |
+| `selection`                                                                                                  | *models.SourceSelection*                                                                                     | :heavy_check_mark:                                                                                           | N/A                                                                                                          |
 | `subKind`                                                                                                    | [models.GetDeploymentCheckRunSourceChecksV2SubKind](../models/getdeploymentcheckrunsourcechecksv2subkind.md) | :heavy_check_mark:                                                                                           | N/A                                                                                                          |

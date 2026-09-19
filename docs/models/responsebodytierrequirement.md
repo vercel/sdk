@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyTierRequirement } from "@vercel/sdk/models/responsebodyabuse.js";
+import { ResponseBodyTierRequirement } from "@vercel/sdk/models/getprojectsresponsebodyprojectsaliasassigned.js";
 
-let value: ResponseBodyTierRequirement = "advanced";
+let value: ResponseBodyTierRequirement = "priority";
 ```
 
 ## Values
 
 ```typescript
-"advanced" | "critical" | "priority"
+"priority"
 ```

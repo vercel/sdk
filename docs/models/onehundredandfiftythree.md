@@ -5,24 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFiftyThree } from "@vercel/sdk/models/previousrule.js";
+import { OneHundredAndFiftyThree } from "@vercel/sdk/models/jobaction.js";
 
-let value: OneHundredAndFiftyThree = {
-  key: "<key>",
-  organizationId: "<id>",
-  provider: "<value>",
-  repository: "<value>",
-  visibility: "config",
-};
+let value: OneHundredAndFiftyThree = {};
 ```
 
 ## Fields
 
-| Field                                        | Type                                         | Required                                     | Description                                  |
-| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| `changedFields`                              | *string*[]                                   | :heavy_minus_sign:                           | N/A                                          |
-| `key`                                        | *string*                                     | :heavy_check_mark:                           | N/A                                          |
-| `organizationId`                             | *string*                                     | :heavy_check_mark:                           | N/A                                          |
-| `provider`                                   | *string*                                     | :heavy_check_mark:                           | N/A                                          |
-| `repository`                                 | *string*                                     | :heavy_check_mark:                           | N/A                                          |
-| `visibility`                                 | [models.Visibility](../models/visibility.md) | :heavy_check_mark:                           | N/A                                          |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `deletedUid`                                   | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `deletedUser`                                  | [models.DeletedUser](../models/deleteduser.md) | :heavy_minus_sign:                             | N/A                                            |
+| `emailDomain`                                  | *string*                                       | :heavy_minus_sign:                             | N/A                                            |

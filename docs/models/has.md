@@ -13,5 +13,5 @@ let value: Has = "implicit-caching";
 ## Values
 
 ```typescript
-"implicit-caching" | "vision"
+"implicit-caching" | "reasoning" | "tool-use" | "vision"
 ```

@@ -5,7 +5,7 @@ Builder selected by the resolver.
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentServicesDeploymentsBuilder } from "@vercel/sdk/models/createdeploymentmissingdeploymentsresponse200applicationjsonvalue.js";
+import { CreateDeploymentServicesDeploymentsBuilder } from "@vercel/sdk/models/createdeploymentvaluedeploymentsresponse200applicationjsonresponsebody2services2redirectsmissing2.js";
 
 let value: CreateDeploymentServicesDeploymentsBuilder = {
   use: "<value>",

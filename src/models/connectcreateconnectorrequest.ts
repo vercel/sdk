@@ -170,6 +170,14 @@ export type PresetConfiguration = {
    */
   triggers?: boolean | undefined;
   /**
+   * Trigger driver type. Resolved automatically from the service or known service registry when not provided. Only set when using the newly decoupled triggers resolution flow.
+   */
+  triggerType?: string | undefined;
+  /**
+   * Trigger-specific credentials (e.g. webhook signing secret). Validated and encrypted against the trigger type definition.
+   */
+  triggerData?: { [k: string]: any } | undefined;
+  /**
    * Initial trigger destination. Requires triggers to be enabled and a projectId here or at the top level. Connector responses expose the resulting set as triggerDestinations. Replace the complete set with PATCH /v1/connect/connectors/{connector}/trigger-destinations.
    */
   triggerDestination?:
@@ -341,6 +349,14 @@ export type FullConfiguration = {
    * Whether the triggers are enabled for this connector.
    */
   triggers?: boolean | undefined;
+  /**
+   * Trigger driver type. Resolved automatically from the service or known service registry when not provided. Only set when using the newly decoupled triggers resolution flow.
+   */
+  triggerType?: string | undefined;
+  /**
+   * Trigger-specific credentials (e.g. webhook signing secret). Validated and encrypted against the trigger type definition.
+   */
+  triggerData?: { [k: string]: any } | undefined;
   /**
    * Initial trigger destination. Requires triggers to be enabled and a projectId here or at the top level. Connector responses expose the resulting set as triggerDestinations. Replace the complete set with PATCH /v1/connect/connectors/{connector}/trigger-destinations.
    */
@@ -519,6 +535,8 @@ export type PresetConfiguration$Outbound = {
   projectId?: string | undefined;
   environments?: Array<string | string> | undefined;
   triggers?: boolean | undefined;
+  triggerType?: string | undefined;
+  triggerData?: { [k: string]: any } | undefined;
   triggerDestination?:
     | TriggerDestinationBranch$Outbound
     | TriggerDestinationCustomEnvironment$Outbound
@@ -552,6 +570,8 @@ export const PresetConfiguration$outboundSchema: z.ZodType<
     ]),
   ).optional(),
   triggers: z.boolean().optional(),
+  triggerType: z.string().optional(),
+  triggerData: z.record(z.any()).optional(),
   triggerDestination: smartUnion([
     z.lazy(() => TriggerDestinationBranch$outboundSchema),
     z.lazy(() => TriggerDestinationCustomEnvironment$outboundSchema),
@@ -735,6 +755,8 @@ export type FullConfiguration$Outbound = {
   projectId?: string | undefined;
   environments?: Array<string | string> | undefined;
   triggers?: boolean | undefined;
+  triggerType?: string | undefined;
+  triggerData?: { [k: string]: any } | undefined;
   triggerDestination?:
     | ConnectCreateConnectorRequestTriggerDestinationBranch$Outbound
     | ConnectCreateConnectorRequestTriggerDestinationCustomEnvironment$Outbound
@@ -768,6 +790,8 @@ export const FullConfiguration$outboundSchema: z.ZodType<
     ]),
   ).optional(),
   triggers: z.boolean().optional(),
+  triggerType: z.string().optional(),
+  triggerData: z.record(z.any()).optional(),
   triggerDestination: smartUnion([
     z.lazy(() =>
       ConnectCreateConnectorRequestTriggerDestinationBranch$outboundSchema

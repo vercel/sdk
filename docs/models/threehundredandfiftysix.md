@@ -5,19 +5,13 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFiftySix } from "@vercel/sdk/models/payloadmostspecificsubdivision.js";
+import { ThreeHundredAndFiftySix } from "@vercel/sdk/models/payloadcity.js";
 
-let value: ThreeHundredAndFiftySix = {
-  store: {
-    id: "<id>",
-    name: "<value>",
-  },
-};
+let value: ThreeHundredAndFiftySix = {};
 ```
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `ownerId`                                                                | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
-| `store`                                                                  | [models.UserEventPayload356Store](../models/usereventpayload356store.md) | :heavy_check_mark:                                                       | N/A                                                                      |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `webhookUrl`       | *string*           | :heavy_minus_sign: | N/A                |

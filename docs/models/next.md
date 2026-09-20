@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Next } from "@vercel/sdk/models/retention.js";
+import { Next } from "@vercel/sdk/models/thirtyeight.js";
 
 let value: Next = {
   autoAddReviewers: true,

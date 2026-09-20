@@ -1,19 +1,32 @@
 # UpdateDeploymentCheckRunSourceSelection
 
-## Example Usage
+
+## Supported Types
+
+### `models.UpdateDeploymentCheckRunSelection1`
 
 ```typescript
-import { UpdateDeploymentCheckRunSourceSelection } from "@vercel/sdk/models/updatedeploymentcheckrunop.js";
+const value: models.UpdateDeploymentCheckRunSelection1 = {
+  kind: "invocation",
+};
+```
 
-let value: UpdateDeploymentCheckRunSourceSelection = {
-  job: "District Applications Producer",
+### `models.UpdateDeploymentCheckRunSelection2`
+
+```typescript
+const value: models.UpdateDeploymentCheckRunSelection2 = {
+  job: "Dynamic Integration Assistant",
   kind: "job",
 };
 ```
 
-## Fields
+### `models.UpdateDeploymentCheckRunSelection3`
 
-| Field                                                                                                                              | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
-| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `job`                                                                                                                              | *string*                                                                                                                           | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
-| `kind`                                                                                                                             | [models.UpdateDeploymentCheckRunSourceChecksV2Response200Kind](../models/updatedeploymentcheckrunsourcechecksv2response200kind.md) | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
+```typescript
+const value: models.UpdateDeploymentCheckRunSelection3 = {
+  job: "Investor Operations Officer",
+  kind: "task",
+  task: "<value>",
+};
+```
+

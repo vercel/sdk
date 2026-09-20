@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupResourceConfig } from "@vercel/sdk/models/getmicrofrontendsingroupfrom1.js";
+import { GetMicrofrontendsInGroupResourceConfig } from "@vercel/sdk/models/getmicrofrontendsingroupfrom.js";
 
 let value: GetMicrofrontendsInGroupResourceConfig = {
   functionDefaultRegions: [

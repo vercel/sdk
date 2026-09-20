@@ -5,7 +5,7 @@ The target envs on the current project that may be accessed.
 ## Example Usage
 
 ```typescript
-import { GetProjectsToProjectsResponse200ApplicationJSONResponseBody2 } from "@vercel/sdk/models/getprojectslinkprojects6.js";
+import { GetProjectsToProjectsResponse200ApplicationJSONResponseBody2 } from "@vercel/sdk/models/getprojectslinkprojectsresponse200applicationjsonresponsebody2projects5deployhooks.js";
 
 let value: GetProjectsToProjectsResponse200ApplicationJSONResponseBody2 = {
   preset: "all-custom",

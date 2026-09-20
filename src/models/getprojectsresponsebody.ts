@@ -12,16 +12,22 @@ import { smartUnion } from "../types/smartUnion.js";
 import {
   GetProjectsResponseBody3,
   GetProjectsResponseBody3$inboundSchema,
-} from "./getprojectslinkprojects6.js";
+} from "./getprojectslinkprojectsresponse200applicationjsonresponsebody2projects5deployhooks.js";
+import {
+  GetProjectsResponseBody2,
+  GetProjectsResponseBody2$inboundSchema,
+  ResponseBodyAbuse,
+  ResponseBodyAbuse$inboundSchema,
+} from "./getprojectsresponsebodyprojectsaliasassigned.js";
 import {
   FirewallRoutes,
   FirewallRoutes$inboundSchema,
-  GetProjectsLogHeaders2,
-  GetProjectsLogHeaders2$inboundSchema,
   GetProjectsResponseBodyCreator,
   GetProjectsResponseBodyCreator$inboundSchema,
   GetProjectsResponseBodyNodeVersion,
   GetProjectsResponseBodyNodeVersion$inboundSchema,
+  GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityManagedRulesAiBotsAction,
+  GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityManagedRulesAiBotsAction$inboundSchema,
   GetProjectsResponseBodyResourceConfig,
   GetProjectsResponseBodyResourceConfig$inboundSchema,
   ResponseBodyAlias,
@@ -46,6 +52,8 @@ import {
   ResponseBodyLatestDeployments$inboundSchema,
   ResponseBodyLink,
   ResponseBodyLink$inboundSchema,
+  ResponseBodyLogHeaders,
+  ResponseBodyLogHeaders$inboundSchema,
   ResponseBodyOidcTokenConfig,
   ResponseBodyOidcTokenConfig$inboundSchema,
   ResponseBodyPassport,
@@ -54,27 +62,8 @@ import {
   ResponseBodyPasswordProtection$inboundSchema,
   ResponseBodyRollingRelease,
   ResponseBodyRollingRelease$inboundSchema,
-} from "./getprojectslogheaders2.js";
-import {
-  GetProjectsResponseBody2,
-  GetProjectsResponseBody2$inboundSchema,
-  ResponseBodyAbuse,
-  ResponseBodyAbuse$inboundSchema,
-} from "./responsebodyabuse.js";
+} from "./getprojectsresponsebodyprojectsresponse200applicationjson1securitymanagedrulesaibotsaction.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-
-export type ResponseBodyLogHeaders = Array<string> | GetProjectsLogHeaders2;
-
-export const GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityManagedRulesAiBotsAction =
-  {
-    Challenge: "challenge",
-    Deny: "deny",
-    Log: "log",
-  } as const;
-export type GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityManagedRulesAiBotsAction =
-  ClosedEnum<
-    typeof GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityManagedRulesAiBotsAction
-  >;
 
 export type ResponseBodyAiBots = {
   action?:
@@ -214,14 +203,6 @@ export type ResponseBodyRulesets = {
   redirect?: ResponseBodyRedirect | null | undefined;
 };
 
-export type ResponseBodySecurityPlusMetadata = {
-  /**
-   * Timestamp when the feature was first enabled. Never changes after initial enablement.
-   */
-  firstEnabledAt?: number | undefined;
-  updatedAt: number;
-};
-
 export type ResponseBodySecurity = {
   attackModeActiveUntil?: number | null | undefined;
   attackModeEnabled?: boolean | undefined;
@@ -235,7 +216,7 @@ export type ResponseBodySecurity = {
   firewallUpdatedAt?: number | undefined;
   ja3Enabled?: boolean | undefined;
   ja4Enabled?: boolean | undefined;
-  logHeaders?: Array<string> | GetProjectsLogHeaders2 | undefined;
+  logHeaders?: ResponseBodyLogHeaders | undefined;
   managedRules?: ResponseBodyManagedRules | null | undefined;
   /**
    * Whether Page Integrity is enabled for this project. Used by the metadata service to gate DynamoDB lookups against the page-integrity-inventory table.
@@ -243,8 +224,6 @@ export type ResponseBodySecurity = {
   pageIntegrityEnabled?: boolean | undefined;
   requestLogsKey?: Array<string> | undefined;
   rulesets?: { [k: string]: ResponseBodyRulesets } | undefined;
-  securityPlus?: boolean | undefined;
-  securityPlusMetadata?: ResponseBodySecurityPlusMetadata | undefined;
 };
 
 export type ResponseBodySpeedInsights = {
@@ -469,8 +448,6 @@ export type ResponseBodyTargets = {
 };
 
 export const ResponseBodyTier = {
-  Advanced: "advanced",
-  Critical: "critical",
   Priority: "priority",
 } as const;
 export type ResponseBodyTier = ClosedEnum<typeof ResponseBodyTier>;
@@ -696,31 +673,6 @@ export type GetProjectsResponseBody =
   | GetProjectsResponseBody2
   | GetProjectsResponseBody3
   | Array<GetProjectsResponseBody1>;
-
-/** @internal */
-export const ResponseBodyLogHeaders$inboundSchema: z.ZodType<
-  ResponseBodyLogHeaders,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([z.array(types.string()), GetProjectsLogHeaders2$inboundSchema]);
-
-export function responseBodyLogHeadersFromJSON(
-  jsonString: string,
-): SafeParseResult<ResponseBodyLogHeaders, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ResponseBodyLogHeaders$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBodyLogHeaders' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityManagedRulesAiBotsAction$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityManagedRulesAiBotsAction
-  > = z.nativeEnum(
-    GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityManagedRulesAiBotsAction,
-  );
 
 /** @internal */
 export const ResponseBodyAiBots$inboundSchema: z.ZodType<
@@ -1003,26 +955,6 @@ export function responseBodyRulesetsFromJSON(
 }
 
 /** @internal */
-export const ResponseBodySecurityPlusMetadata$inboundSchema: z.ZodType<
-  ResponseBodySecurityPlusMetadata,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  firstEnabledAt: types.optional(types.number()),
-  updatedAt: types.number(),
-});
-
-export function responseBodySecurityPlusMetadataFromJSON(
-  jsonString: string,
-): SafeParseResult<ResponseBodySecurityPlusMetadata, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ResponseBodySecurityPlusMetadata$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBodySecurityPlusMetadata' from JSON`,
-  );
-}
-
-/** @internal */
 export const ResponseBodySecurity$inboundSchema: z.ZodType<
   ResponseBodySecurity,
   z.ZodTypeDef,
@@ -1040,19 +972,13 @@ export const ResponseBodySecurity$inboundSchema: z.ZodType<
   firewallUpdatedAt: types.optional(types.number()),
   ja3Enabled: types.optional(types.boolean()),
   ja4Enabled: types.optional(types.boolean()),
-  log_headers: types.optional(
-    smartUnion([z.array(types.string()), GetProjectsLogHeaders2$inboundSchema]),
-  ),
+  log_headers: types.optional(ResponseBodyLogHeaders$inboundSchema),
   managedRules: z.nullable(z.lazy(() => ResponseBodyManagedRules$inboundSchema))
     .optional(),
   pageIntegrityEnabled: types.optional(types.boolean()),
   requestLogsKey: types.optional(z.array(types.string())),
   rulesets: types.optional(
     z.record(z.lazy(() => ResponseBodyRulesets$inboundSchema)),
-  ),
-  securityPlus: types.optional(types.boolean()),
-  securityPlusMetadata: types.optional(
-    z.lazy(() => ResponseBodySecurityPlusMetadata$inboundSchema),
   ),
 }).transform((v) => {
   return remap$(v, {

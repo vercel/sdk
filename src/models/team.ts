@@ -151,12 +151,12 @@ export type DefaultProjectJobs = {
 };
 
 export const TeamTeamPermissions = {
-  AiGatewayApiKeyOwnedBySelf: "AiGatewayApiKeyOwnedBySelf",
   AiGatewayBudgetManager: "AiGatewayBudgetManager",
   AiGatewayCredits: "AiGatewayCredits",
   AiGatewaySettings: "AiGatewaySettings",
   AiGatewayTranscriptsManager: "AiGatewayTranscriptsManager",
   AiGatewayTranscriptsViewer: "AiGatewayTranscriptsViewer",
+  AiGatewayUser: "AiGatewayUser",
   ConnectorManager: "ConnectorManager",
   CreateProject: "CreateProject",
   EnvVariableManager: "EnvVariableManager",
@@ -306,6 +306,40 @@ export type DeploymentPolicy = {
   gitSources?: Array<GitSources> | undefined;
 };
 
+export const Cohort = {
+  High: "high",
+  Low: "low",
+  Medium: "medium",
+} as const;
+export type Cohort = ClosedEnum<typeof Cohort>;
+
+export const MeterReason = {
+  HighRetentionOptIn: "high_retention_opt_in",
+  LowScheduled: "low_scheduled",
+  MediumScheduled: "medium_scheduled",
+} as const;
+export type MeterReason = ClosedEnum<typeof MeterReason>;
+
+/**
+ * Phase 2 Pro deployment-storage pricing rollout cohort and milestones. Absent when the team is not in a Phase 2 Pro cohort.
+ */
+export type DeploymentStorageRollout = {
+  cohort: Cohort;
+  /**
+   * When team-wide metering was recorded for this rollout.
+   */
+  meteredAt?: number | undefined;
+  meterReason?: MeterReason | undefined;
+  /**
+   * When the calendar retention-reduce migration applied 30d retention.
+   */
+  retentionAppliedAt?: number | undefined;
+  /**
+   * When the customer chose "keep my retention" before reduce day.
+   */
+  retentionOptOutAt?: number | undefined;
+};
+
 export type DisableHardAutoBlocks = number | boolean;
 
 /**
@@ -432,12 +466,12 @@ export const TeamRole = {
 export type TeamRole = ClosedEnum<typeof TeamRole>;
 
 export const TeamMembershipTeamPermissions = {
-  AiGatewayApiKeyOwnedBySelf: "AiGatewayApiKeyOwnedBySelf",
   AiGatewayBudgetManager: "AiGatewayBudgetManager",
   AiGatewayCredits: "AiGatewayCredits",
   AiGatewaySettings: "AiGatewaySettings",
   AiGatewayTranscriptsManager: "AiGatewayTranscriptsManager",
   AiGatewayTranscriptsViewer: "AiGatewayTranscriptsViewer",
+  AiGatewayUser: "AiGatewayUser",
   ConnectorManager: "ConnectorManager",
   CreateProject: "CreateProject",
   EnvVariableManager: "EnvVariableManager",
@@ -826,6 +860,10 @@ export type Team = {
    * Composable deployment-time policy for the team. Used as the default for every project on the team, with optional per-project overrides on `project.deploymentPolicy`.
    */
   deploymentPolicy?: DeploymentPolicy | undefined;
+  /**
+   * Phase 2 Pro deployment-storage pricing rollout cohort and milestones. Absent when the team is not in a Phase 2 Pro cohort.
+   */
+  deploymentStorageRollout?: DeploymentStorageRollout | undefined;
   /**
    * A short description of the Team.
    */
@@ -1513,6 +1551,37 @@ export function deploymentPolicyFromJSON(
 }
 
 /** @internal */
+export const Cohort$inboundSchema: z.ZodNativeEnum<typeof Cohort> = z
+  .nativeEnum(Cohort);
+
+/** @internal */
+export const MeterReason$inboundSchema: z.ZodNativeEnum<typeof MeterReason> = z
+  .nativeEnum(MeterReason);
+
+/** @internal */
+export const DeploymentStorageRollout$inboundSchema: z.ZodType<
+  DeploymentStorageRollout,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  cohort: Cohort$inboundSchema,
+  meteredAt: types.optional(types.number()),
+  meterReason: types.optional(MeterReason$inboundSchema),
+  retentionAppliedAt: types.optional(types.number()),
+  retentionOptOutAt: types.optional(types.number()),
+});
+
+export function deploymentStorageRolloutFromJSON(
+  jsonString: string,
+): SafeParseResult<DeploymentStorageRollout, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeploymentStorageRollout$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeploymentStorageRollout' from JSON`,
+  );
+}
+
+/** @internal */
 export const DisableHardAutoBlocks$inboundSchema: z.ZodType<
   DisableHardAutoBlocks,
   z.ZodTypeDef,
@@ -2034,6 +2103,9 @@ export const Team$inboundSchema: z.ZodType<Team, z.ZodTypeDef, unknown> =
       defaultRoles: types.optional(z.lazy(() => DefaultRoles$inboundSchema)),
       deploymentPolicy: types.optional(
         z.lazy(() => DeploymentPolicy$inboundSchema),
+      ),
+      deploymentStorageRollout: types.optional(
+        z.lazy(() => DeploymentStorageRollout$inboundSchema),
       ),
       description: types.nullable(types.string()),
       disableHardAutoBlocks: types.optional(

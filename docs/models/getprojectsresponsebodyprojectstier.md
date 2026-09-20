@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyProjectsTier } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponseto.js";
+import { GetProjectsResponseBodyProjectsTier } from "@vercel/sdk/models/getprojectsresponsebodyprojectsoidcproviders.js";
 
 let value: GetProjectsResponseBodyProjectsTier = "priority";
 ```
@@ -11,5 +11,5 @@ let value: GetProjectsResponseBodyProjectsTier = "priority";
 ## Values
 
 ```typescript
-"advanced" | "critical" | "priority"
+"priority"
 ```

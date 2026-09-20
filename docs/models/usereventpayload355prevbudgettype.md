@@ -1,0 +1,17 @@
+# UserEventPayload355PrevBudgetType
+
+The budget type
+
+## Example Usage
+
+```typescript
+import { UserEventPayload355PrevBudgetType } from "@vercel/sdk/models/payloadcity.js";
+
+let value: UserEventPayload355PrevBudgetType = "fixed";
+```
+
+## Values
+
+```typescript
+"fixed"
+```

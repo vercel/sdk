@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsTier } from "@vercel/sdk/models/updatemicrofrontendsfrom1.js";
+import { UpdateMicrofrontendsTier } from "@vercel/sdk/models/updatemicrofrontendsfrom.js";
 
 let value: UpdateMicrofrontendsTier = "priority";
 ```
@@ -11,5 +11,5 @@ let value: UpdateMicrofrontendsTier = "priority";
 ## Values
 
 ```typescript
-"advanced" | "critical" | "priority"
+"priority"
 ```

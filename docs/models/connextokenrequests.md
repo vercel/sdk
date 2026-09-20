@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ConnexTokenRequests } from "@vercel/sdk/models/usereventpayload171newownerfeatureblocksworkfloweventsblockreason.js";
+import { ConnexTokenRequests } from "@vercel/sdk/models/usereventpayload174newownerfeatureblocksspeedinsightsfreeblockreason.js";
 
 let value: ConnexTokenRequests = {
   blockReason: "admin_override",

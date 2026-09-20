@@ -5,21 +5,30 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFortyOne } from "@vercel/sdk/models/payloaddefault.js";
+import { TwoHundredAndFortyOne } from "@vercel/sdk/models/twohundredandfourteen.js";
 
 let value: TwoHundredAndFortyOne = {
-  action: "regenerated",
-  projectId: "<id>",
-  projectName: "<value>",
+  current: {
+    awsServiceName: "<value>",
+    id: "<id>",
+    name: "<value>",
+    projectId: "<id>",
+    vercelRegion: "<value>",
+  },
+  prev: {
+    awsServiceName: "<value>",
+    id: "<id>",
+    name: "<value>",
+    projectId: "<id>",
+    vercelRegion: "<value>",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `action`                                                                   | [models.UserEventPayload241Action](../models/usereventpayload241action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
-| `isEnvVar`                                                                 | *boolean*                                                                  | :heavy_minus_sign:                                                         | N/A                                                                        |
-| `note`                                                                     | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
-| `projectId`                                                                | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `projectName`                                                              | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `current`                                                        | [models.Current](../models/current.md)                           | :heavy_check_mark:                                               | N/A                                                              |
+| `prev`                                                           | [models.UserEventPayloadPrev](../models/usereventpayloadprev.md) | :heavy_check_mark:                                               | N/A                                                              |
+| `projectName`                                                    | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              |

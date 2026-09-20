@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyFirewallRoutes } from "@vercel/sdk/models/responsebodyabuse.js";
+import { ResponseBodyFirewallRoutes } from "@vercel/sdk/models/getprojectsresponsebodyprojectsaliasassigned.js";
 
 let value: ResponseBodyFirewallRoutes = {};
 ```

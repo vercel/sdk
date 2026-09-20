@@ -5,7 +5,7 @@ Current provisioning state
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentState } from "@vercel/sdk/models/canceldeploymentresourceconfig.js";
+import { CancelDeploymentState } from "@vercel/sdk/models/canceldeploymentbuildmachine.js";
 
 let value: CancelDeploymentState = "PENDING";
 ```

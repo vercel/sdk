@@ -5,7 +5,7 @@ Services detected during build from vercel.json experimentalServices or auto-det
 ## Example Usage
 
 ```typescript
-import { GetDeploymentServices2 } from "@vercel/sdk/models/getdeploymentresponsebody1.js";
+import { GetDeploymentServices2 } from "@vercel/sdk/models/getdeploymentresponsebodydeploymentsduration.js";
 
 let value: GetDeploymentServices2 = {
   builder: {

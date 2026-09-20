@@ -13,6 +13,7 @@ Returns the reduced deployment view for anonymous (`vcn_`) callers. Pool-team de
 const value: models.GetDeploymentResponseBody1 = {
   aliasAssigned: true,
   aliasError: null,
+  duration: {},
   id: "dpl_89qyp1cskzkLrVicDaZoDbjyHuDJ",
   readyState: "READY",
   target: null,
@@ -39,6 +40,7 @@ const value: models.GetDeploymentResponseBody2 = {
     username: "john-doe",
   },
   deletedAt: 1540257589405,
+  duration: {},
   env: [
     "<value 1>",
     "<value 2>",
@@ -97,6 +99,7 @@ const value: models.GetDeploymentResponseBody3 = {
     username: "john-doe",
   },
   deletedAt: 1540257589405,
+  duration: {},
   id: "dpl_89qyp1cskzkLrVicDaZoDbjyHuDJ",
   meta: {},
   name: "my-project",

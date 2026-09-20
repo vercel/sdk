@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupSamplingRules } from "@vercel/sdk/models/getmicrofrontendsingroupfrom1.js";
+import { GetMicrofrontendsInGroupSamplingRules } from "@vercel/sdk/models/getmicrofrontendsingroupfrom.js";
 
 let value: GetMicrofrontendsInGroupSamplingRules = {
   rate: 9911.19,

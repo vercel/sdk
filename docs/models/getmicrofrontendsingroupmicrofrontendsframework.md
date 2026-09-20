@@ -5,7 +5,7 @@ Framework slug, when the service has one (omitted otherwise).
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupMicrofrontendsFramework } from "@vercel/sdk/models/getmicrofrontendsingroupfrom1.js";
+import { GetMicrofrontendsInGroupMicrofrontendsFramework } from "@vercel/sdk/models/getmicrofrontendsingroupfrom.js";
 
 let value: GetMicrofrontendsInGroupMicrofrontendsFramework = "go";
 ```

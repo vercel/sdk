@@ -31,12 +31,12 @@ export type Role = ClosedEnum<typeof Role>;
  * The team permissions of the user
  */
 export const TeamPermissions = {
-  AiGatewayApiKeyOwnedBySelf: "AiGatewayApiKeyOwnedBySelf",
   AiGatewayBudgetManager: "AiGatewayBudgetManager",
   AiGatewayCredits: "AiGatewayCredits",
   AiGatewaySettings: "AiGatewaySettings",
   AiGatewayTranscriptsManager: "AiGatewayTranscriptsManager",
   AiGatewayTranscriptsViewer: "AiGatewayTranscriptsViewer",
+  AiGatewayUser: "AiGatewayUser",
   ConnectorManager: "ConnectorManager",
   CreateProject: "CreateProject",
   EnvVariableManager: "EnvVariableManager",

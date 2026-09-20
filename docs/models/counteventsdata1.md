@@ -93,6 +93,7 @@ let value: CountEventsData1 = {
   inferenceGeoRegion: "<value>",
   inferenceProviderRegion: "<value>",
   inferenceScope: "<value>",
+  invokeSource: "<value>",
   isAdditionalRequest: "<value>",
   isByok: "<value>",
   isPrefetchRequest: "<value>",
@@ -178,12 +179,25 @@ let value: CountEventsData1 = {
   runtime: "<value>",
   sandboxName: "<value>",
   sandboxSessionId: "<id>",
+  scheduleEventType: "<value>",
+  scheduleExecutionId: "<id>",
+  scheduleExpressionType: "<value>",
+  scheduleId: "<id>",
+  scheduleName: "<value>",
+  scheduleNamespace: "<value>",
+  scheduleSource: "<value>",
+  scheduleTarget: "<value>",
+  scheduleTargetType: "<value>",
+  scheduleTimezone: "<value>",
+  scheduleTrack: "<value>",
   sdkKeyEnvironment: "<value>",
   sdkKeyId: "<id>",
   servedSpeed: "<value>",
   serverActionName: "<value>",
   service: "<value>",
   sessionId: "<id>",
+  singleAtInput: "<value>",
+  singleAtResolution: "<value>",
   skewProtection: "<value>",
   source: "<value>",
   sourceImage: "<value>",
@@ -321,6 +335,7 @@ let value: CountEventsData1 = {
 | `inferenceGeoRegion`                   | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `inferenceProviderRegion`              | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `inferenceScope`                       | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `invokeSource`                         | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `isAdditionalRequest`                  | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `isByok`                               | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `isPrefetchRequest`                    | *string*                               | :heavy_check_mark:                     | N/A                                    |
@@ -406,12 +421,25 @@ let value: CountEventsData1 = {
 | `runtime`                              | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `sandboxName`                          | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `sandboxSessionId`                     | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `scheduleEventType`                    | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `scheduleExecutionId`                  | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `scheduleExpressionType`               | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `scheduleId`                           | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `scheduleName`                         | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `scheduleNamespace`                    | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `scheduleSource`                       | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `scheduleTarget`                       | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `scheduleTargetType`                   | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `scheduleTimezone`                     | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `scheduleTrack`                        | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `sdkKeyEnvironment`                    | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `sdkKeyId`                             | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `servedSpeed`                          | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `serverActionName`                     | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `service`                              | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `sessionId`                            | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `singleAtInput`                        | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `singleAtResolution`                   | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `skewProtection`                       | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `source`                               | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `sourceImage`                          | *string*                               | :heavy_check_mark:                     | N/A                                    |

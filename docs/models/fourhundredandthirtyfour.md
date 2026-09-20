@@ -5,23 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndThirtyFour } from "@vercel/sdk/models/fourhundredandone.js";
+import { FourHundredAndThirtyFour } from "@vercel/sdk/models/fourhundredandten.js";
 
 let value: FourHundredAndThirtyFour = {
-  projectId: "<id>",
-  projectName: "<value>",
-  repositoryName: "<value>",
-  sharedWithTeamId: "<id>",
-  sharedWithTeamSlug: "<value>",
+  enabled: false,
+  totpVerified: true,
 };
 ```
 
 ## Fields
 
-| Field                | Type                 | Required             | Description          |
-| -------------------- | -------------------- | -------------------- | -------------------- |
-| `projectId`          | *string*             | :heavy_check_mark:   | N/A                  |
-| `projectName`        | *string*             | :heavy_check_mark:   | N/A                  |
-| `repositoryName`     | *string*             | :heavy_check_mark:   | N/A                  |
-| `sharedWithTeamId`   | *string*             | :heavy_check_mark:   | N/A                  |
-| `sharedWithTeamSlug` | *string*             | :heavy_check_mark:   | N/A                  |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
+| `totpVerified`     | *boolean*          | :heavy_check_mark: | N/A                |

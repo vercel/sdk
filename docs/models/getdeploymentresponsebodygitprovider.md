@@ -5,7 +5,7 @@ The git provider type associated with gitUserId.
 ## Example Usage
 
 ```typescript
-import { GetDeploymentResponseBodyGitProvider } from "@vercel/sdk/models/getdeploymentservicesfunctions.js";
+import { GetDeploymentResponseBodyGitProvider } from "@vercel/sdk/models/getdeploymentmaxdurationdeployments2.js";
 
 let value: GetDeploymentResponseBodyGitProvider = "gitlab";
 ```

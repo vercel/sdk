@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectTier } from "@vercel/sdk/models/createprojectresponsebody.js";
+import { CreateProjectTier } from "@vercel/sdk/models/createprojecttier.js";
 
-let value: CreateProjectTier = "critical";
+let value: CreateProjectTier = "priority";
 ```
 
 ## Values
 
 ```typescript
-"advanced" | "critical" | "priority"
+"priority"
 ```

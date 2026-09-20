@@ -5,7 +5,7 @@ If present, must be `"service"` for Service-to-Service HTTP bindings.
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentServicesDeploymentsResponseType } from "@vercel/sdk/models/createdeploymentmissingdeploymentsresponse200applicationjsonvalue.js";
+import { CreateDeploymentServicesDeploymentsResponseType } from "@vercel/sdk/models/createdeploymentvaluedeploymentsresponse200applicationjsonresponsebody2services2redirectsmissing2.js";
 
 let value: CreateDeploymentServicesDeploymentsResponseType = "service";
 ```

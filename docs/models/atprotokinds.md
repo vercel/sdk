@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { AtprotoKinds } from "@vercel/sdk/models/responsebodyimages.js";
+import { AtprotoKinds } from "@vercel/sdk/models/responsebodyremotepatterns.js";
 
 let value: AtprotoKinds = "commit";
 ```

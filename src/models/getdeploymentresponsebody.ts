@@ -4,19 +4,92 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
+import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
   GetDeploymentResponseBody3,
   GetDeploymentResponseBody3$inboundSchema,
-} from "./getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody215type.js";
+} from "./getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody216type.js";
 import {
-  GetDeploymentResponseBody1,
-  GetDeploymentResponseBody1$inboundSchema,
   GetDeploymentResponseBody2,
   GetDeploymentResponseBody2$inboundSchema,
-} from "./getdeploymentresponsebody1.js";
+  GetDeploymentResponseBodyDeploymentsAliasError,
+  GetDeploymentResponseBodyDeploymentsAliasError$inboundSchema,
+  GetDeploymentResponseBodyDeploymentsAliasWarning,
+  GetDeploymentResponseBodyDeploymentsAliasWarning$inboundSchema,
+  GetDeploymentResponseBodyDeploymentsDuration,
+  GetDeploymentResponseBodyDeploymentsDuration$inboundSchema,
+} from "./getdeploymentresponsebodydeploymentsduration.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+/**
+ * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+ */
+export const GetDeploymentResponseBodyDeploymentsReadyState = {
+  Blocked: "BLOCKED",
+  Building: "BUILDING",
+  Canceled: "CANCELED",
+  Error: "ERROR",
+  Initializing: "INITIALIZING",
+  Queued: "QUEUED",
+  Ready: "READY",
+} as const;
+/**
+ * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+ */
+export type GetDeploymentResponseBodyDeploymentsReadyState = ClosedEnum<
+  typeof GetDeploymentResponseBodyDeploymentsReadyState
+>;
+
+/**
+ * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+ */
+export const GetDeploymentResponseBodyDeploymentsTarget = {
+  Production: "production",
+  Staging: "staging",
+} as const;
+/**
+ * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+ */
+export type GetDeploymentResponseBodyDeploymentsTarget = ClosedEnum<
+  typeof GetDeploymentResponseBodyDeploymentsTarget
+>;
+
+/**
+ * Returns the reduced deployment view for anonymous (`vcn_`) callers. Pool-team details are withheld.
+ */
+export type GetDeploymentResponseBody1 = {
+  alias?: Array<string> | undefined;
+  aliasAssigned: boolean;
+  /**
+   * An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null`
+   */
+  aliasError?:
+    | GetDeploymentResponseBodyDeploymentsAliasError
+    | null
+    | undefined;
+  aliasWarning?:
+    | GetDeploymentResponseBodyDeploymentsAliasWarning
+    | null
+    | undefined;
+  duration: GetDeploymentResponseBodyDeploymentsDuration;
+  errorCode?: string | undefined;
+  errorMessage?: string | null | undefined;
+  /**
+   * A string holding the unique ID of the deployment
+   */
+  id: string;
+  /**
+   * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+   */
+  readyState: GetDeploymentResponseBodyDeploymentsReadyState;
+  /**
+   * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+   */
+  target?: GetDeploymentResponseBodyDeploymentsTarget | null | undefined;
+};
 
 /**
  * Returns a reduced view of the deployment with public information only. Private fields are omitted when the requester is not the deployment owner.
@@ -31,6 +104,49 @@ export type GetDeploymentResponseBody =
   | GetDeploymentResponseBody1;
 
 /** @internal */
+export const GetDeploymentResponseBodyDeploymentsReadyState$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentResponseBodyDeploymentsReadyState> = z
+    .nativeEnum(GetDeploymentResponseBodyDeploymentsReadyState);
+
+/** @internal */
+export const GetDeploymentResponseBodyDeploymentsTarget$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentResponseBodyDeploymentsTarget> = z
+    .nativeEnum(GetDeploymentResponseBodyDeploymentsTarget);
+
+/** @internal */
+export const GetDeploymentResponseBody1$inboundSchema: z.ZodType<
+  GetDeploymentResponseBody1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  alias: types.optional(z.array(types.string())),
+  aliasAssigned: types.boolean(),
+  aliasError: z.nullable(
+    GetDeploymentResponseBodyDeploymentsAliasError$inboundSchema,
+  ).optional(),
+  aliasWarning: z.nullable(
+    GetDeploymentResponseBodyDeploymentsAliasWarning$inboundSchema,
+  ).optional(),
+  duration: GetDeploymentResponseBodyDeploymentsDuration$inboundSchema,
+  errorCode: types.optional(types.string()),
+  errorMessage: z.nullable(types.string()).optional(),
+  id: types.string(),
+  readyState: GetDeploymentResponseBodyDeploymentsReadyState$inboundSchema,
+  target: z.nullable(GetDeploymentResponseBodyDeploymentsTarget$inboundSchema)
+    .optional(),
+});
+
+export function getDeploymentResponseBody1FromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentResponseBody1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentResponseBody1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentResponseBody1' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetDeploymentResponseBody$inboundSchema: z.ZodType<
   GetDeploymentResponseBody,
   z.ZodTypeDef,
@@ -38,7 +154,7 @@ export const GetDeploymentResponseBody$inboundSchema: z.ZodType<
 > = smartUnion([
   GetDeploymentResponseBody2$inboundSchema,
   GetDeploymentResponseBody3$inboundSchema,
-  GetDeploymentResponseBody1$inboundSchema,
+  z.lazy(() => GetDeploymentResponseBody1$inboundSchema),
 ]);
 
 export function getDeploymentResponseBodyFromJSON(

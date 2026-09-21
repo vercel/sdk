@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { AtprotoSubscription } from "@vercel/sdk/models/responsebodyimages.js";
+import { AtprotoSubscription } from "@vercel/sdk/models/responsebodyremotepatterns.js";
 
 let value: AtprotoSubscription = {
   collections: [

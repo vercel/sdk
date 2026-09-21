@@ -5,7 +5,7 @@ Commit metadata from the git commit author
 ## Example Usage
 
 ```typescript
-import { CommitMeta } from "@vercel/sdk/models/canceldeploymentresourceconfig.js";
+import { CommitMeta } from "@vercel/sdk/models/canceldeploymentbuildmachine.js";
 
 let value: CommitMeta = {};
 ```

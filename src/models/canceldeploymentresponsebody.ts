@@ -9,28 +9,6 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
-  Bindings,
-  Bindings$inboundSchema,
-  CancelDeploymentDestinationDeployments2,
-  CancelDeploymentDestinationDeployments2$inboundSchema,
-  CancelDeploymentRoutes,
-  CancelDeploymentRoutes$inboundSchema,
-  CancelDeploymentRoutes2,
-  CancelDeploymentRoutes2$inboundSchema,
-  Rewrites,
-  Rewrites$inboundSchema,
-  SeatBlock,
-  SeatBlock$inboundSchema,
-  ServicesBuilder,
-  ServicesBuilder$inboundSchema,
-  ServicesFunctions,
-  ServicesFunctions$inboundSchema,
-  ServicesHeaders,
-  ServicesHeaders$inboundSchema,
-  ServicesRedirects,
-  ServicesRedirects$inboundSchema,
-} from "./canceldeploymentdestinationdeployments2.js";
-import {
   AliasAssignedAt,
   AliasAssignedAt$inboundSchema,
   AliasError,
@@ -65,14 +43,14 @@ import {
   CancelDeploymentProject$inboundSchema,
   CancelDeploymentProjectSettings,
   CancelDeploymentProjectSettings$inboundSchema,
-  CancelDeploymentResourceConfig,
-  CancelDeploymentResourceConfig$inboundSchema,
   ChecksConclusion,
   ChecksConclusion$inboundSchema,
   ChecksState,
   ChecksState$inboundSchema,
   Crons,
   Crons$inboundSchema,
+  Duration,
+  Duration$inboundSchema,
   Flags,
   Flags$inboundSchema,
   Functions,
@@ -97,8 +75,44 @@ import {
   ReadyState$inboundSchema,
   ReadySubstate,
   ReadySubstate$inboundSchema,
-} from "./canceldeploymentresourceconfig.js";
+} from "./canceldeploymentbuildmachine.js";
+import {
+  Bindings,
+  Bindings$inboundSchema,
+  CancelDeploymentDestinationDeploymentsType,
+  CancelDeploymentDestinationDeploymentsType$inboundSchema,
+  CancelDeploymentResourceConfig,
+  CancelDeploymentResourceConfig$inboundSchema,
+  CancelDeploymentRoutes,
+  CancelDeploymentRoutes$inboundSchema,
+  CancelDeploymentRoutes2,
+  CancelDeploymentRoutes2$inboundSchema,
+  Rewrites,
+  Rewrites$inboundSchema,
+  SeatBlock,
+  SeatBlock$inboundSchema,
+  ServicesBuilder,
+  ServicesBuilder$inboundSchema,
+  ServicesFunctions,
+  ServicesFunctions$inboundSchema,
+  ServicesHeaders,
+  ServicesHeaders$inboundSchema,
+  ServicesRedirects,
+  ServicesRedirects$inboundSchema,
+} from "./canceldeploymentdestinationdeploymentstype.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type CancelDeploymentDestinationDeployments2 = {
+  /**
+   * Routing-only path used to select a route inside the target service.
+   */
+  path?: string | undefined;
+  service: string;
+  /**
+   * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+   */
+  type?: CancelDeploymentDestinationDeploymentsType | undefined;
+};
 
 export type CancelDeploymentRoutesDestination =
   | CancelDeploymentDestinationDeployments2
@@ -624,6 +638,10 @@ export type ServicesProjectSettings = {
 
 export type ServicesConfig = {
   buildCommand?: string | undefined;
+  /**
+   * Buildpack runtime slug (e.g. "ruby").
+   */
+  buildpack?: string | undefined;
   bundle?: boolean | undefined;
   bunVersion?: string | undefined;
   debug?: boolean | undefined;
@@ -859,6 +877,7 @@ export type CancelDeploymentResponseBody = {
    * A number containing the date when the deployment was deleted at milliseconds
    */
   deletedAt?: number | null | undefined;
+  duration: Duration;
   env: Array<string>;
   errorCode?: string | undefined;
   errorLink?: string | undefined;
@@ -997,12 +1016,41 @@ export type CancelDeploymentResponseBody = {
 };
 
 /** @internal */
+export const CancelDeploymentDestinationDeployments2$inboundSchema: z.ZodType<
+  CancelDeploymentDestinationDeployments2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  path: types.optional(types.string()),
+  service: types.string(),
+  type: types.optional(
+    CancelDeploymentDestinationDeploymentsType$inboundSchema,
+  ),
+});
+
+export function cancelDeploymentDestinationDeployments2FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CancelDeploymentDestinationDeployments2,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CancelDeploymentDestinationDeployments2$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CancelDeploymentDestinationDeployments2' from JSON`,
+  );
+}
+
+/** @internal */
 export const CancelDeploymentRoutesDestination$inboundSchema: z.ZodType<
   CancelDeploymentRoutesDestination,
   z.ZodTypeDef,
   unknown
 > = smartUnion([
-  CancelDeploymentDestinationDeployments2$inboundSchema,
+  z.lazy(() => CancelDeploymentDestinationDeployments2$inboundSchema),
   types.string(),
 ]);
 
@@ -1813,7 +1861,7 @@ export const CancelDeploymentRoutes1$inboundSchema: z.ZodType<
   dest: types.optional(types.string()),
   destination: types.optional(
     smartUnion([
-      CancelDeploymentDestinationDeployments2$inboundSchema,
+      z.lazy(() => CancelDeploymentDestinationDeployments2$inboundSchema),
       types.string(),
     ]),
   ),
@@ -2273,6 +2321,7 @@ export const ServicesConfig$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   buildCommand: types.optional(types.string()),
+  buildpack: types.optional(types.string()),
   bundle: types.optional(types.boolean()),
   bunVersion: types.optional(types.string()),
   debug: types.optional(types.boolean()),
@@ -2574,6 +2623,7 @@ export const CancelDeploymentResponseBody$inboundSchema: z.ZodType<
   ),
   defaultRoute: types.optional(types.string()),
   deletedAt: z.nullable(types.number()).optional(),
+  duration: Duration$inboundSchema,
   env: z.array(types.string()),
   errorCode: types.optional(types.string()),
   errorLink: types.optional(types.string()),

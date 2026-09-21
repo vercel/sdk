@@ -5,7 +5,7 @@ Build machine configuration recorded for this deployment's build. See {@link Dep
 ## Example Usage
 
 ```typescript
-import { ResponseBodyBuildMachine } from "@vercel/sdk/models/getdeploymentservicesfunctions.js";
+import { ResponseBodyBuildMachine } from "@vercel/sdk/models/getdeploymentmaxdurationdeployments2.js";
 
 let value: ResponseBodyBuildMachine = {};
 ```

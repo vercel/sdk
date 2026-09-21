@@ -7,7 +7,7 @@ The type of matching to perform
 ```typescript
 import {
   GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsTargetsBranchMatcherType,
-} from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponseto.js";
+} from "@vercel/sdk/models/getprojectsresponsebodyprojectsoidcproviders.js";
 
 let value:
   GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsTargetsBranchMatcherType =

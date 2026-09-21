@@ -25,7 +25,7 @@ import {
 import {
   CreateDeploymentRequest,
   CreateDeploymentRequest$outboundSchema,
-} from "../models/responsebodyimages.js";
+} from "../models/responsebodyremotepatterns.js";
 import { ResponseValidationError } from "../models/responsevalidationerror.js";
 import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import { VercelError } from "../models/vercelerror.js";

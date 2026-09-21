@@ -115,7 +115,7 @@ export type GetProjectsRequest = {
    */
   staticIpsEnabled?: StaticIpsEnabled | undefined;
   /**
-   * Filter results by effective build machine types. Accepts comma-separated values. Use "elastic" for projects with elastic selection and "default" for projects without a build machine type set.
+   * Filter results by effective build machine types. Accepts comma-separated values. Use \"elastic\" for projects with elastic selection and \"default\" for projects without a build machine type set.
    */
   buildMachineTypes?: string | undefined;
   /**

@@ -5,7 +5,7 @@ Queue trigger input event for v1beta (from vercel.json config). Requires explici
 ## Example Usage
 
 ```typescript
-import { ExperimentalTriggers1 } from "@vercel/sdk/models/canceldeploymentresourceconfig.js";
+import { ExperimentalTriggers1 } from "@vercel/sdk/models/canceldeploymentbuildmachine.js";
 
 let value: ExperimentalTriggers1 = {
   consumer: "<value>",

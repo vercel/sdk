@@ -5,7 +5,7 @@ A narrowed subset of the deployment's `readyStateReasonInternal` — only values
 ## Example Usage
 
 ```typescript
-import { PayloadAllowListedReadyStateReasonInternal } from "@vercel/sdk/models/retention.js";
+import { PayloadAllowListedReadyStateReasonInternal } from "@vercel/sdk/models/thirtyeight.js";
 
 let value: PayloadAllowListedReadyStateReasonInternal = "EARLY_IGNORE_STEP";
 ```

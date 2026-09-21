@@ -5,7 +5,7 @@ List of domains associated with this environment
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentCustomEnvironmentDomains } from "@vercel/sdk/models/responsebodyimages.js";
+import { CreateDeploymentCustomEnvironmentDomains } from "@vercel/sdk/models/responsebodyremotepatterns.js";
 
 let value: CreateDeploymentCustomEnvironmentDomains = {
   apexName: "<value>",

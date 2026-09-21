@@ -5,7 +5,7 @@ Deploys from the Cursor Origin repository linked to the target project. The repo
 ## Example Usage
 
 ```typescript
-import { GitSource9 } from "@vercel/sdk/models/responsebodyimages.js";
+import { GitSource9 } from "@vercel/sdk/models/responsebodyremotepatterns.js";
 
 let value: GitSource9 = {
   owner: "bitbucket_user",

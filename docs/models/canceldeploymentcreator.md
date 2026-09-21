@@ -5,7 +5,7 @@ Information about the deployment creator
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentCreator } from "@vercel/sdk/models/canceldeploymentresourceconfig.js";
+import { CancelDeploymentCreator } from "@vercel/sdk/models/canceldeploymentbuildmachine.js";
 
 let value: CancelDeploymentCreator = {
   uid: "96SnxkFiMyVKsK3pnoHfx3Hz",

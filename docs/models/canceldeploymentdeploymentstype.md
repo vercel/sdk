@@ -5,7 +5,7 @@ Principal type of the deployment creator.
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentDeploymentsType } from "@vercel/sdk/models/canceldeploymentresourceconfig.js";
+import { CancelDeploymentDeploymentsType } from "@vercel/sdk/models/canceldeploymentbuildmachine.js";
 
 let value: CancelDeploymentDeploymentsType = "system";
 ```

@@ -5,32 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFortySix } from "@vercel/sdk/models/payloadmostspecificsubdivision.js";
+import { ThreeHundredAndFortySix } from "@vercel/sdk/models/twohundredandeightyone.js";
 
 let value: ThreeHundredAndFortySix = {
-  budget: {
-    budgetItem: {
-      createdAt: 9371.03,
-      fixedBudget: 8606.07,
-      id: "<id>",
-      isActive: false,
-      notifiedAt: [
-        2423.52,
-        7782.73,
-      ],
-      previousSpend: [
-        397.47,
-        9537.22,
-      ],
-      teamId: "<id>",
-      type: "fixed",
-    },
-  },
+  max: 7839.68,
+  min: 6111.86,
+  scalingRules: {},
+  url: "https://scaly-precedent.org/",
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `budget`                                                                   | [models.UserEventPayload346Budget](../models/usereventpayload346budget.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `max`                                                            | *number*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `min`                                                            | *number*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `scalingRules`                                                   | Record<string, [models.ScalingRules](../models/scalingrules.md)> | :heavy_check_mark:                                               | N/A                                                              |
+| `url`                                                            | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |

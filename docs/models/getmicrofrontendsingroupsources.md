@@ -5,7 +5,7 @@ Customer-configurable deployment sources. Every deploy classifies to exactly one
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupSources } from "@vercel/sdk/models/getmicrofrontendsingrouphasvalue.js";
+import { GetMicrofrontendsInGroupSources } from "@vercel/sdk/models/getmicrofrontendsingrouphas2.js";
 
 let value: GetMicrofrontendsInGroupSources = "deploy-hook";
 ```

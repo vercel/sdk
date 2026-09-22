@@ -5,7 +5,7 @@ Project-level rolling release configuration that defines how deployments should 
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarRollingRelease } from "@vercel/sdk/models/uploadprojectavatarfrom.js";
+import { UploadProjectAvatarRollingRelease } from "@vercel/sdk/models/uploadprojectavatarfrom1.js";
 
 let value: UploadProjectAvatarRollingRelease = {
   canaryResponseHeader: false,

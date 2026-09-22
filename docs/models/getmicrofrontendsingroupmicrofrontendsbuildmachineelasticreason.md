@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupMicrofrontendsBuildMachineElasticReason } from "@vercel/sdk/models/getmicrofrontendsingrouphasvalue.js";
+import { GetMicrofrontendsInGroupMicrofrontendsBuildMachineElasticReason } from "@vercel/sdk/models/getmicrofrontendsingrouphas2.js";
 
 let value: GetMicrofrontendsInGroupMicrofrontendsBuildMachineElasticReason =
   "basic-floor";

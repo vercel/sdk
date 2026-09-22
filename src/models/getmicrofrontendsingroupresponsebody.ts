@@ -9,10 +9,10 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
-  GetMicrofrontendsInGroupFrom1,
-  GetMicrofrontendsInGroupFrom1$inboundSchema,
   GetMicrofrontendsInGroupFrom2,
   GetMicrofrontendsInGroupFrom2$inboundSchema,
+  GetMicrofrontendsInGroupFromMicrofrontendsPreset,
+  GetMicrofrontendsInGroupFromMicrofrontendsPreset$inboundSchema,
   GetMicrofrontendsInGroupInternalRoutes,
   GetMicrofrontendsInGroupInternalRoutes$inboundSchema,
   GetMicrofrontendsInGroupIpBuckets,
@@ -73,7 +73,7 @@ import {
   GetMicrofrontendsInGroupTracing$inboundSchema,
   GetMicrofrontendsInGroupTrustedIps,
   GetMicrofrontendsInGroupTrustedIps$inboundSchema,
-} from "./getmicrofrontendsingroupfrom1.js";
+} from "./getmicrofrontendsingroupfrommicrofrontendspreset.js";
 import {
   GetMicrofrontendsInGroupAbuse,
   GetMicrofrontendsInGroupAbuse$inboundSchema,
@@ -113,8 +113,19 @@ import {
   GetMicrofrontendsInGroupGitComments$inboundSchema,
   GetMicrofrontendsInGroupGitProviderOptions,
   GetMicrofrontendsInGroupGitProviderOptions$inboundSchema,
-} from "./getmicrofrontendsingrouphasvalue.js";
+} from "./getmicrofrontendsingrouphas2.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+/**
+ * The source envs on the trusted project that are allowed to access `to`.
+ */
+export type GetMicrofrontendsInGroupFrom1 = {
+  preset?: GetMicrofrontendsInGroupFromMicrofrontendsPreset | undefined;
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs: Array<string>;
+};
 
 export type GetMicrofrontendsInGroupFrom =
   | GetMicrofrontendsInGroupFrom1
@@ -325,6 +336,9 @@ export type GetMicrofrontendsInGroupProjects = {
     | null
     | undefined;
   paused?: boolean | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
   permissions?: GetMicrofrontendsInGroupPermissions | undefined;
   productionDeploymentsFastLane?: boolean | undefined;
   protectedSourcemaps?: boolean | undefined;
@@ -375,12 +389,34 @@ export type GetMicrofrontendsInGroupResponseBody = {
 };
 
 /** @internal */
+export const GetMicrofrontendsInGroupFrom1$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupFrom1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  preset: types.optional(
+    GetMicrofrontendsInGroupFromMicrofrontendsPreset$inboundSchema,
+  ),
+  slugs: z.array(types.string()),
+});
+
+export function getMicrofrontendsInGroupFrom1FromJSON(
+  jsonString: string,
+): SafeParseResult<GetMicrofrontendsInGroupFrom1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetMicrofrontendsInGroupFrom1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMicrofrontendsInGroupFrom1' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetMicrofrontendsInGroupFrom$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupFrom,
   z.ZodTypeDef,
   unknown
 > = smartUnion([
-  GetMicrofrontendsInGroupFrom1$inboundSchema,
+  z.lazy(() => GetMicrofrontendsInGroupFrom1$inboundSchema),
   GetMicrofrontendsInGroupFrom2$inboundSchema,
 ]);
 
@@ -494,7 +530,7 @@ export const GetMicrofrontendsInGroupCustomAllow$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   from: smartUnion([
-    GetMicrofrontendsInGroupFrom1$inboundSchema,
+    z.lazy(() => GetMicrofrontendsInGroupFrom1$inboundSchema),
     GetMicrofrontendsInGroupFrom2$inboundSchema,
   ]),
   to: smartUnion([

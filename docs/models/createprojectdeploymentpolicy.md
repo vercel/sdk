@@ -5,7 +5,7 @@ Project shape. `null` on a rule list clears the project's override for that rule
 ## Example Usage
 
 ```typescript
-import { CreateProjectDeploymentPolicy } from "@vercel/sdk/models/createprojectcontenthint2.js";
+import { CreateProjectDeploymentPolicy } from "@vercel/sdk/models/createprojectcontenthint4.js";
 
 let value: CreateProjectDeploymentPolicy = {};
 ```

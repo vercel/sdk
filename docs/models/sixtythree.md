@@ -5,21 +5,13 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { SixtyThree } from "@vercel/sdk/models/retention.js";
+import { SixtyThree } from "@vercel/sdk/models/usereventpayloadaccessgroup.js";
 
-let value: SixtyThree = {
-  amount: 8100.92,
-  invoiceId: "<id>",
-  lineItemCount: 2170.96,
-  refundReason: "<value>",
-};
+let value: SixtyThree = {};
 ```
 
 ## Fields
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `amount`           | *number*           | :heavy_check_mark: | N/A                |
-| `invoiceId`        | *string*           | :heavy_check_mark: | N/A                |
-| `lineItemCount`    | *number*           | :heavy_check_mark: | N/A                |
-| `refundReason`     | *string*           | :heavy_check_mark: | N/A                |
+| `avatar`           | *string*           | :heavy_minus_sign: | N/A                |

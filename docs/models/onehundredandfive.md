@@ -5,27 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFive } from "@vercel/sdk/models/onehundredandtwo.js";
+import { OneHundredAndFive } from "@vercel/sdk/models/usereventpayloadaccessgroup.js";
 
 let value: OneHundredAndFive = {
-  url: "https://strident-substitution.info/",
+  checkId: "<id>",
+  checkName: "<value>",
+  projectId: "<id>",
+  projectName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `alias`                                                                      | *string*[]                                                                   | :heavy_minus_sign:                                                           | N/A                                                                          |
-| `deployment`                                                                 | [models.UserEventPayloadDeployment](../models/usereventpayloaddeployment.md) | :heavy_minus_sign:                                                           | N/A                                                                          |
-| `deploymentId`                                                               | *string*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
-| `forced`                                                                     | *boolean*                                                                    | :heavy_minus_sign:                                                           | N/A                                                                          |
-| `gitCredentialSource`                                                        | [models.GitCredentialSource](../models/gitcredentialsource.md)               | :heavy_minus_sign:                                                           | N/A                                                                          |
-| `name`                                                                       | *string*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
-| `plan`                                                                       | *string*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
-| `project`                                                                    | *string*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
-| `projectId`                                                                  | *string*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
-| `regions`                                                                    | *string*[]                                                                   | :heavy_minus_sign:                                                           | N/A                                                                          |
-| `target`                                                                     | *string*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
-| `type`                                                                       | *string*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
-| `url`                                                                        | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `checkId`          | *string*           | :heavy_check_mark: | N/A                |
+| `checkName`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |

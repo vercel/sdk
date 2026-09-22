@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ProtectionBypass2 } from "@vercel/sdk/models/createprojecttargets.js";
+import { ProtectionBypass2 } from "@vercel/sdk/models/createprojectprojectsresponse200applicationjsonresponsebodytargetstype.js";
 
 let value: ProtectionBypass2 = {
   createdAt: 5425.95,

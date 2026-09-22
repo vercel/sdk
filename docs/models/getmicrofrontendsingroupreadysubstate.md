@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupReadySubstate } from "@vercel/sdk/models/getmicrofrontendsingroupfrom1.js";
+import { GetMicrofrontendsInGroupReadySubstate } from "@vercel/sdk/models/getmicrofrontendsingroupfrommicrofrontendspreset.js";
 
 let value: GetMicrofrontendsInGroupReadySubstate = "STAGED";
 ```

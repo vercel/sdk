@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayloadTeamPermissions } from "@vercel/sdk/models/previousrule.js";
+import { UserEventPayloadTeamPermissions } from "@vercel/sdk/models/onehundredandfiftyfive.js";
 
 let value: UserEventPayloadTeamPermissions = "CreateProject";
 ```
@@ -11,5 +11,5 @@ let value: UserEventPayloadTeamPermissions = "CreateProject";
 ## Values
 
 ```typescript
-"AiGatewayApiKeyOwnedBySelf" | "AiGatewayBudgetManager" | "AiGatewayCredits" | "AiGatewaySettings" | "AiGatewayTranscriptsManager" | "AiGatewayTranscriptsViewer" | "ConnectorManager" | "CreateProject" | "EnvVariableManager" | "EnvironmentManager" | "FullProductionDeployment" | "IntegrationManager" | "OrgAdmin" | "OrgViewer" | "UsageViewer" | "V0Builder" | "V0Chatter" | "V0Viewer" | "WorkflowDecryptor"
+"AiGatewayBudgetManager" | "AiGatewayCredits" | "AiGatewaySettings" | "AiGatewayTranscriptsManager" | "AiGatewayTranscriptsViewer" | "AiGatewayUser" | "ConnectorManager" | "CreateProject" | "EnvVariableManager" | "EnvironmentManager" | "FullProductionDeployment" | "IntegrationManager" | "OrgAdmin" | "OrgViewer" | "UsageViewer" | "V0Builder" | "V0Chatter" | "V0Viewer" | "WorkflowDecryptor"
 ```

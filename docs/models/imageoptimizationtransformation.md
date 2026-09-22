@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ImageOptimizationTransformation } from "@vercel/sdk/models/usereventpayload171newownerfeatureblocksworkfloweventsblockreason.js";
+import { ImageOptimizationTransformation } from "@vercel/sdk/models/sourceimages.js";
 
 let value: ImageOptimizationTransformation = {
   blockReason: "limits_exceeded",
@@ -17,5 +17,5 @@ let value: ImageOptimizationTransformation = {
 | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
 | `blockedFrom`                                                                        | *number*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
 | `blockedUntil`                                                                       | *number*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `blockReason`                                                                        | [models.UserEventPayload171BlockReason](../models/usereventpayload171blockreason.md) | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `blockReason`                                                                        | [models.UserEventPayload174BlockReason](../models/usereventpayload174blockreason.md) | :heavy_check_mark:                                                                   | N/A                                                                                  |
 | `updatedAt`                                                                          | *number*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |

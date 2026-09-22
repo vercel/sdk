@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectProjectsAction } from "@vercel/sdk/models/getprojecthas2.js";
+import { GetProjectProjectsAction } from "@vercel/sdk/models/getprojectintegrations.js";
 
 let value: GetProjectProjectsAction = "remove-deployment-interstitial";
 ```

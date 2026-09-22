@@ -5,7 +5,7 @@ Internal representation of a custom environment with all required properties
 ## Example Usage
 
 ```typescript
-import { ResponseBodyCustomEnvironments } from "@vercel/sdk/models/getprojectsresponsebodyprojectsconsolidatedgitcommitstatus.js";
+import { ResponseBodyCustomEnvironments } from "@vercel/sdk/models/getprojectsresponsebodyprojectsframework.js";
 
 let value: ResponseBodyCustomEnvironments = {
   createdAt: 9892.6,

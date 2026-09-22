@@ -29,12 +29,12 @@ export type ReadAccessGroupEntitlements = ClosedEnum<
 >;
 
 export const ReadAccessGroupTeamPermissions = {
-  AiGatewayApiKeyOwnedBySelf: "AiGatewayApiKeyOwnedBySelf",
   AiGatewayBudgetManager: "AiGatewayBudgetManager",
   AiGatewayCredits: "AiGatewayCredits",
   AiGatewaySettings: "AiGatewaySettings",
   AiGatewayTranscriptsManager: "AiGatewayTranscriptsManager",
   AiGatewayTranscriptsViewer: "AiGatewayTranscriptsViewer",
+  AiGatewayUser: "AiGatewayUser",
   ConnectorManager: "ConnectorManager",
   CreateProject: "CreateProject",
   EnvVariableManager: "EnvVariableManager",

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyDismissedToasts } from "@vercel/sdk/models/getprojectsresponsebodyprojectsconsolidatedgitcommitstatus.js";
+import { ResponseBodyDismissedToasts } from "@vercel/sdk/models/getprojectsresponsebodyprojectsframework.js";
 
 let value: ResponseBodyDismissedToasts = {
   action: "delete",

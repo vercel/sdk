@@ -5,7 +5,7 @@ Specifies the default region and failover regions for sandboxes created in the p
 ## Example Usage
 
 ```typescript
-import { Sandbox } from "@vercel/sdk/models/createprojectcontenthint2.js";
+import { Sandbox } from "@vercel/sdk/models/createprojectcontenthint4.js";
 
 let value: Sandbox = {
   region: "iad1",

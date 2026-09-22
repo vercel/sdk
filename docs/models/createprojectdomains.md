@@ -5,7 +5,7 @@ List of domains associated with this environment
 ## Example Usage
 
 ```typescript
-import { CreateProjectDomains } from "@vercel/sdk/models/createprojectcontenthint2.js";
+import { CreateProjectDomains } from "@vercel/sdk/models/createprojectcontenthint4.js";
 
 let value: CreateProjectDomains = {
   apexName: "<value>",

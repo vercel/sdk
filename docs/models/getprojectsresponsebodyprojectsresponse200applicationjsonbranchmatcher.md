@@ -5,7 +5,7 @@ Configuration for matching git branches to this environment
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyProjectsResponse200ApplicationJSONBranchMatcher } from "@vercel/sdk/models/getprojectsresponsebodyprojectsconsolidatedgitcommitstatus.js";
+import { GetProjectsResponseBodyProjectsResponse200ApplicationJSONBranchMatcher } from "@vercel/sdk/models/getprojectsresponsebodyprojectsframework.js";
 
 let value:
   GetProjectsResponseBodyProjectsResponse200ApplicationJSONBranchMatcher = {

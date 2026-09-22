@@ -5,7 +5,7 @@ An array of all the stages required during a deployment release. Each stage defi
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyStages } from "@vercel/sdk/models/responsebodyabuse.js";
+import { GetProjectsResponseBodyStages } from "@vercel/sdk/models/responsebodyblockhistory.js";
 
 let value: GetProjectsResponseBodyStages = {
   duration: 600,

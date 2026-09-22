@@ -5,17 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { SixtyFive } from "@vercel/sdk/models/retention.js";
+import { SixtyFive } from "@vercel/sdk/models/usereventpayloadaccessgroup.js";
 
 let value: SixtyFive = {
-  paymentMethodId: "<id>",
+  amount: 5100.81,
+  invoiceId: "<id>",
+  newInvoiceId: "<id>",
+  settlementMethod: "credited-payment-pending",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `brand`            | *string*           | :heavy_minus_sign: | N/A                |
-| `last4`            | *string*           | :heavy_minus_sign: | N/A                |
-| `paymentMethodId`  | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                    | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `amount`                                                 | *number*                                                 | :heavy_check_mark:                                       | N/A                                                      |
+| `invoiceId`                                              | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
+| `newInvoiceId`                                           | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
+| `settlementMethod`                                       | [models.SettlementMethod](../models/settlementmethod.md) | :heavy_check_mark:                                       | N/A                                                      |

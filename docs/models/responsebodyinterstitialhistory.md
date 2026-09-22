@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyInterstitialHistory } from "@vercel/sdk/models/responsebodyabuse.js";
+import { ResponseBodyInterstitialHistory } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson1target.js";
 
 let value: ResponseBodyInterstitialHistory = {
   action: "add-deployment-interstitial",

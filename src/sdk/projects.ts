@@ -47,7 +47,7 @@ import {
   BatchRemoveProjectEnvRequest,
   BatchRemoveProjectEnvResponseBody,
 } from "../models/batchremoveprojectenvop.js";
-import { CreateProjectRequest } from "../models/createprojectcontenthint2.js";
+import { CreateProjectRequest } from "../models/createprojectcontenthint4.js";
 import {
   CreateProjectEnvRequest,
   CreateProjectEnvResponseBody,
@@ -82,10 +82,10 @@ import {
   GetProjectEnvRequest,
   GetProjectEnvResponseBody,
 } from "../models/getprojectenvop.js";
-import { GetProjectRequest } from "../models/getprojecthas2.js";
+import { GetProjectRequest } from "../models/getprojectintegrations.js";
 import { GetProjectResponseBody } from "../models/getprojectresponsebody.js";
 import { GetProjectsResponseBody } from "../models/getprojectsresponsebody.js";
-import { GetProjectsRequest } from "../models/getprojectsresponsebodyprojectsconsolidatedgitcommitstatus.js";
+import { GetProjectsRequest } from "../models/getprojectsresponsebodyprojectsframework.js";
 import {
   GetProjectTokenRequest,
   GetProjectTokenResponseBody,
@@ -114,9 +114,9 @@ import {
 import { RequestPromoteRequest } from "../models/requestpromoteop.js";
 import { RequestRollbackRequest } from "../models/requestrollbackop.js";
 import { UnpauseProjectRequest } from "../models/unpauseprojectop.js";
-import { UpdateMicrofrontendsRequest } from "../models/updatemicrofrontendshaskey.js";
+import { UpdateMicrofrontendsRequest } from "../models/updatemicrofrontendshasprojectsvalue.js";
 import { UpdateMicrofrontendsResponseBody } from "../models/updatemicrofrontendsresponsebody.js";
-import { UpdateProjectRequest } from "../models/updateprojectdefinitions.js";
+import { UpdateProjectRequest } from "../models/updateprojectcreator.js";
 import {
   UpdateProjectDomainRequest,
   UpdateProjectDomainResponseBody,
@@ -127,7 +127,7 @@ import {
 } from "../models/updateprojectprotectionbypassop.js";
 import { UpdateProjectResponseBody } from "../models/updateprojectresponsebody.js";
 import { UpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequest } from "../models/updateprojectsbyprojectidrollbackbydeploymentidupdatedescriptionop.js";
-import { UploadProjectAvatarRequest } from "../models/uploadprojectavatarhasvalue.js";
+import { UploadProjectAvatarRequest } from "../models/uploadprojectavatarhas2.js";
 import { UploadProjectAvatarResponseBody } from "../models/uploadprojectavatarresponsebody.js";
 import {
   VerifyProjectDomainRequest,

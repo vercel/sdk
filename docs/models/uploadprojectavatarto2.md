@@ -5,7 +5,7 @@ The target envs on the current project that may be accessed.
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarTo2 } from "@vercel/sdk/models/uploadprojectavatarfrom.js";
+import { UploadProjectAvatarTo2 } from "@vercel/sdk/models/uploadprojectavatarfrom1.js";
 
 let value: UploadProjectAvatarTo2 = {
   preset: "all-custom",

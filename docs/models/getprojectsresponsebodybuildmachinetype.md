@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyBuildMachineType } from "@vercel/sdk/models/responsebodyabuse.js";
+import { GetProjectsResponseBodyBuildMachineType } from "@vercel/sdk/models/responsebodyblockhistory.js";
 
 let value: GetProjectsResponseBodyBuildMachineType = "basic";
 ```

@@ -5,7 +5,7 @@ Condensed check data. Retrieve individual check and check run data using api-che
 ## Example Usage
 
 ```typescript
-import { ResponseBodyDeploymentAlias } from "@vercel/sdk/models/responsebodyimages.js";
+import { ResponseBodyDeploymentAlias } from "@vercel/sdk/models/createdeploymentgitsource1.js";
 
 let value: ResponseBodyDeploymentAlias = {
   startedAt: 6434.02,

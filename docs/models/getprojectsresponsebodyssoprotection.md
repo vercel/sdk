@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodySsoProtection } from "@vercel/sdk/models/responsebodyabuse.js";
+import { GetProjectsResponseBodySsoProtection } from "@vercel/sdk/models/responsebodyblockhistory.js";
 
 let value: GetProjectsResponseBodySsoProtection = {
   deploymentType: "prod_deployment_urls_and_all_previews",

@@ -5,7 +5,7 @@ A list of verification challenges, one of which must be completed to verify the 
 ## Example Usage
 
 ```typescript
-import { GetProjectVerification } from "@vercel/sdk/models/getprojecthas2.js";
+import { GetProjectVerification } from "@vercel/sdk/models/getprojectintegrations.js";
 
 let value: GetProjectVerification = {
   domain: "muted-folklore.com",

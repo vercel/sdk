@@ -5,17 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndTwentySix } from "@vercel/sdk/models/onehundredandtwo.js";
+import { OneHundredAndTwentySix } from "@vercel/sdk/models/jobdeployhook.js";
 
 let value: OneHundredAndTwentySix = {
-  domain: "compassionate-drug.name",
-  zone: false,
+  customNameservers: [
+    "<value 1>",
+  ],
+  domain: "misguided-steak.biz",
+  prevCustomNameservers: [],
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `domain`           | *string*           | :heavy_check_mark: | N/A                |
-| `zone`             | *boolean*          | :heavy_check_mark: | N/A                |
+| Field                   | Type                    | Required                | Description             |
+| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
+| `customNameservers`     | *string*[]              | :heavy_check_mark:      | N/A                     |
+| `domain`                | *string*                | :heavy_check_mark:      | N/A                     |
+| `prevCustomNameservers` | *string*[]              | :heavy_check_mark:      | N/A                     |

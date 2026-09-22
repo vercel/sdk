@@ -3,10 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload39AccessGroup } from "@vercel/sdk/models/retention.js";
+import { UserEventPayload39AccessGroup } from "@vercel/sdk/models/usereventpayloadaccessgroup.js";
 
 let value: UserEventPayload39AccessGroup = {
   id: "<id>",
+  name: "<value>",
 };
 ```
 
@@ -15,4 +16,4 @@ let value: UserEventPayload39AccessGroup = {
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `id`               | *string*           | :heavy_check_mark: | N/A                |
-| `name`             | *string*           | :heavy_minus_sign: | N/A                |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |

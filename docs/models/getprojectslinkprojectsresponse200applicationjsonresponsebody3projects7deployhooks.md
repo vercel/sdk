@@ -5,7 +5,7 @@
 ```typescript
 import {
   GetProjectsLinkProjectsResponse200ApplicationJSONResponseBody3Projects7DeployHooks,
-} from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponseto.js";
+} from "@vercel/sdk/models/getprojectstoprojectsresponse2001.js";
 
 let value:
   GetProjectsLinkProjectsResponse200ApplicationJSONResponseBody3Projects7DeployHooks =

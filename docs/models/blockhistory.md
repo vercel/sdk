@@ -5,7 +5,7 @@ Since June 2023
 ## Example Usage
 
 ```typescript
-import { BlockHistory } from "@vercel/sdk/models/usereventpayload171newownerfeatureblocksworkfloweventsblockreason.js";
+import { BlockHistory } from "@vercel/sdk/models/sourceimages.js";
 
 let value: BlockHistory = {
   action: "unblocked",
@@ -18,7 +18,7 @@ let value: BlockHistory = {
 
 | Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
 | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `action`                                                                   | [models.UserEventPayload171Action](../models/usereventpayload171action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| `action`                                                                   | [models.UserEventPayload174Action](../models/usereventpayload174action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
 | `actor`                                                                    | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
 | `caseId`                                                                   | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
 | `comment`                                                                  | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |

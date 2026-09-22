@@ -5,7 +5,7 @@ Git provider user associated with the commit author email (only set if resolved)
 ## Example Usage
 
 ```typescript
-import { ResponseBodyGitUser } from "@vercel/sdk/models/responsebodyimages.js";
+import { ResponseBodyGitUser } from "@vercel/sdk/models/createdeploymentgitsource1.js";
 
 let value: ResponseBodyGitUser = {
   id: 5710.09,

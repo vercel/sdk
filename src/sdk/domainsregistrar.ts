@@ -87,6 +87,23 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class DomainsRegistrar extends ClientSDK {
   /**
+   * Get Domain Availability and Pricing
+   *
+   * @remarks
+   * Start domain research here. Get registration availability and pricing for 1–200 exact domain names. Returns results in input order, with registration and renewal prices in USD for available domains. No authentication required.
+   */
+  async searchDomains(
+    request: SearchDomainsRequest,
+    options?: RequestOptions,
+  ): Promise<SearchDomainsResponseBody> {
+    return unwrapAsync(domainsRegistrarSearchDomains(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Get supported TLDs
    *
    * @remarks
@@ -199,23 +216,6 @@ export class DomainsRegistrar extends ClientSDK {
     options?: RequestOptions,
   ): Promise<GetBulkAvailabilityResponseBody> {
     return unwrapAsync(domainsRegistrarGetBulkAvailability(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Check domain availability and pricing
-   *
-   * @remarks
-   * Check registration availability for 1–200 exact domain names, such as `example.com`. Returns results in input order, with registration and renewal prices in USD for available domains. No authentication required.
-   */
-  async searchDomains(
-    request: SearchDomainsRequest,
-    options?: RequestOptions,
-  ): Promise<SearchDomainsResponseBody> {
-    return unwrapAsync(domainsRegistrarSearchDomains(
       this,
       request,
       options,

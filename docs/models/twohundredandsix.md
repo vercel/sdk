@@ -5,27 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSix } from "@vercel/sdk/models/payloaddefault.js";
+import { TwoHundredAndSix } from "@vercel/sdk/models/sourceimages.js";
 
 let value: TwoHundredAndSix = {
-  enabled: true,
-  enforcedTeamIds: [
-    "<value 1>",
-  ],
+  avatar: "https://loremflickr.com/1109/3740?lock=1204560224230476",
   organizationId: "<id>",
-  previousEnabled: false,
-  trigger: "saml_updated",
-  unenforcedTeamIds: [],
 };
 ```
 
 ## Fields
 
-| Field                                  | Type                                   | Required                               | Description                            |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| `enabled`                              | *boolean*                              | :heavy_check_mark:                     | N/A                                    |
-| `enforcedTeamIds`                      | *string*[]                             | :heavy_check_mark:                     | N/A                                    |
-| `organizationId`                       | *string*                               | :heavy_check_mark:                     | N/A                                    |
-| `previousEnabled`                      | *boolean*                              | :heavy_check_mark:                     | N/A                                    |
-| `trigger`                              | [models.Trigger](../models/trigger.md) | :heavy_check_mark:                     | N/A                                    |
-| `unenforcedTeamIds`                    | *string*[]                             | :heavy_check_mark:                     | N/A                                    |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `avatar`           | *string*           | :heavy_check_mark: | N/A                |
+| `organizationId`   | *string*           | :heavy_check_mark: | N/A                |

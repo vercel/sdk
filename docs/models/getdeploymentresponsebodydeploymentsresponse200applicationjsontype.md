@@ -5,7 +5,7 @@ Whether the value is an opaque identifier or a URL.
 ## Example Usage
 
 ```typescript
-import { GetDeploymentResponseBodyDeploymentsResponse200ApplicationJSONType } from "@vercel/sdk/models/getdeploymentservicesfunctions.js";
+import { GetDeploymentResponseBodyDeploymentsResponse200ApplicationJSONType } from "@vercel/sdk/models/getdeploymentservicesdeploymentsmiddlewarematcher.js";
 
 let value: GetDeploymentResponseBodyDeploymentsResponse200ApplicationJSONType =
   "url";

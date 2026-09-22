@@ -5,7 +5,7 @@ Deployment Protection Trusted Sources
 ## Example Usage
 
 ```typescript
-import { TrustedSources } from "@vercel/sdk/models/updateprojectdefinitions.js";
+import { TrustedSources } from "@vercel/sdk/models/updateprojectcreator.js";
 
 let value: TrustedSources = {};
 ```

@@ -5,15 +5,11 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFortyFour } from "@vercel/sdk/models/payloadmostspecificsubdivision.js";
+import { ThreeHundredAndFortyFour } from "@vercel/sdk/models/twohundredandeightyone.js";
 
 let value: ThreeHundredAndFortyFour = {
-  email: "Agnes_Wilkinson@gmail.com",
-  gitlabEmail: "<value>",
-  gitlabLogin: "<value>",
-  gitlabName: "<value>",
-  zeitAccount: "<value>",
-  zeitAccountType: "<value>",
+  enabled: true,
+  updatedAt: 164.91,
 };
 ```
 
@@ -21,9 +17,8 @@ let value: ThreeHundredAndFortyFour = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `email`            | *string*           | :heavy_check_mark: | N/A                |
-| `gitlabEmail`      | *string*           | :heavy_check_mark: | N/A                |
-| `gitlabLogin`      | *string*           | :heavy_check_mark: | N/A                |
-| `gitlabName`       | *string*           | :heavy_check_mark: | N/A                |
-| `zeitAccount`      | *string*           | :heavy_check_mark: | N/A                |
-| `zeitAccountType`  | *string*           | :heavy_check_mark: | N/A                |
+| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
+| `firstEnabledAt`   | *number*           | :heavy_minus_sign: | N/A                |
+| `projectId`        | *string*           | :heavy_minus_sign: | N/A                |
+| `projectName`      | *string*           | :heavy_minus_sign: | N/A                |
+| `updatedAt`        | *number*           | :heavy_check_mark: | N/A                |

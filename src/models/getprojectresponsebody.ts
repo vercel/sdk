@@ -11,8 +11,6 @@ import { smartUnion } from "../types/smartUnion.js";
 import {
   GetProjectFrom2,
   GetProjectFrom2$inboundSchema,
-  GetProjectFromPreset,
-  GetProjectFromPreset$inboundSchema,
   GetProjectInternalRoutes,
   GetProjectInternalRoutes$inboundSchema,
   GetProjectIpBuckets,
@@ -73,7 +71,7 @@ import {
   GetProjectTracing$inboundSchema,
   GetProjectTrustedIps,
   GetProjectTrustedIps$inboundSchema,
-} from "./getprojectfrompreset.js";
+} from "./getprojectfrom2.js";
 import {
   GetProjectAbuse,
   GetProjectAbuse$inboundSchema,
@@ -115,8 +113,13 @@ import {
   GetProjectGitProviderOptions$inboundSchema,
   GetProjectIntegrations,
   GetProjectIntegrations$inboundSchema,
-} from "./getprojecthas2.js";
+} from "./getprojectintegrations.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const GetProjectFromPreset = {
+  AllCustom: "all-custom",
+} as const;
+export type GetProjectFromPreset = ClosedEnum<typeof GetProjectFromPreset>;
 
 /**
  * The source envs on the trusted project that are allowed to access `to`.
@@ -314,6 +317,9 @@ export type GetProjectResponseBody = {
   passport?: GetProjectPassport | null | undefined;
   passwordProtection?: GetProjectPasswordProtection | null | undefined;
   paused?: boolean | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
   permissions?: GetProjectPermissions | undefined;
   productionDeploymentsFastLane?: boolean | undefined;
   protectedSourcemaps?: boolean | undefined;
@@ -356,6 +362,11 @@ export type GetProjectResponseBody = {
   v0Created?: boolean | undefined;
   webAnalytics?: GetProjectWebAnalytics | undefined;
 };
+
+/** @internal */
+export const GetProjectFromPreset$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectFromPreset
+> = z.nativeEnum(GetProjectFromPreset);
 
 /** @internal */
 export const GetProjectFrom1$inboundSchema: z.ZodType<

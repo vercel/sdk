@@ -330,6 +330,7 @@ run();
 
 ### [DomainsRegistrar](docs/sdks/domainsregistrar/README.md)
 
+* [searchDomains](docs/sdks/domainsregistrar/README.md#searchdomains) - Get Domain Availability and Pricing
 * [getSupportedTlds](docs/sdks/domainsregistrar/README.md#getsupportedtlds) - Get supported TLDs
 * [getTld](docs/sdks/domainsregistrar/README.md#gettld) - Get TLD
 * [getTldPrice](docs/sdks/domainsregistrar/README.md#gettldprice) - Get TLD price data
@@ -337,7 +338,6 @@ run();
 * [getDomainPrice](docs/sdks/domainsregistrar/README.md#getdomainprice) - Get price data for a domain
 * [getBulkPrice](docs/sdks/domainsregistrar/README.md#getbulkprice) - Get price data for multiple domains
 * [getBulkAvailability](docs/sdks/domainsregistrar/README.md#getbulkavailability) - Get availability for multiple domains
-* [searchDomains](docs/sdks/domainsregistrar/README.md#searchdomains) - Check domain availability and pricing
 * [getContactInfoSchema](docs/sdks/domainsregistrar/README.md#getcontactinfoschema) - Get contact info schema
 * [getDomainAuthCode](docs/sdks/domainsregistrar/README.md#getdomainauthcode) - Get the auth code for a domain
 * [buySingleDomain](docs/sdks/domainsregistrar/README.md#buysingledomain) - Buy a domain
@@ -842,7 +842,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`domainsRegistrarGetTld`](docs/sdks/domainsregistrar/README.md#gettld) - Get TLD
 - [`domainsRegistrarGetTldPrice`](docs/sdks/domainsregistrar/README.md#gettldprice) - Get TLD price data
 - [`domainsRegistrarRenewDomain`](docs/sdks/domainsregistrar/README.md#renewdomain) - Renew a domain
-- [`domainsRegistrarSearchDomains`](docs/sdks/domainsregistrar/README.md#searchdomains) - Check domain availability and pricing
+- [`domainsRegistrarSearchDomains`](docs/sdks/domainsregistrar/README.md#searchdomains) - Get Domain Availability and Pricing
 - [`domainsRegistrarTransferInDomain`](docs/sdks/domainsregistrar/README.md#transferindomain) - Transfer-in a domain
 - [`domainsRegistrarUpdateDomainAutoRenew`](docs/sdks/domainsregistrar/README.md#updatedomainautorenew) - Update auto-renew for a domain
 - [`domainsRegistrarUpdateDomainNameservers`](docs/sdks/domainsregistrar/README.md#updatedomainnameservers) - Update nameservers for a domain

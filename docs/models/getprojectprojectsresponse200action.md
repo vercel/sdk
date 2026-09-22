@@ -5,7 +5,7 @@ What to do when the gate trips: pause the rollout, or roll it back.
 ## Example Usage
 
 ```typescript
-import { GetProjectProjectsResponse200Action } from "@vercel/sdk/models/getprojectfrompreset.js";
+import { GetProjectProjectsResponse200Action } from "@vercel/sdk/models/getprojectfrom2.js";
 
 let value: GetProjectProjectsResponse200Action = "pause";
 ```

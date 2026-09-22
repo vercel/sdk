@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupTier } from "@vercel/sdk/models/getmicrofrontendsingroupfrom1.js";
+import { GetMicrofrontendsInGroupTier } from "@vercel/sdk/models/getmicrofrontendsingroupfrommicrofrontendspreset.js";
 
-let value: GetMicrofrontendsInGroupTier = "critical";
+let value: GetMicrofrontendsInGroupTier = "priority";
 ```
 
 ## Values
 
 ```typescript
-"advanced" | "critical" | "priority"
+"priority"
 ```

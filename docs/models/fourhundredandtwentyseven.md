@@ -5,28 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndTwentySeven } from "@vercel/sdk/models/fourhundredandone.js";
+import { FourHundredAndTwentySeven } from "@vercel/sdk/models/fourhundredandten.js";
 
 let value: FourHundredAndTwentySeven = {
-  decision: {
-    authoritative: false,
-    basis: "gmail",
-    emailDomain: "<value>",
-    emailVerified: false,
-    hostedDomainMatch: false,
-    mxOutcome: "not-checked",
-  },
-  outcome: "account-matched",
-  provider: "google",
-  providerSubjectId: "<id>",
+  method: "totp",
+  reason: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `decision`                                                                     | [models.PayloadDecision](../models/payloaddecision.md)                         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `outcome`                                                                      | [models.PayloadOutcome](../models/payloadoutcome.md)                           | :heavy_check_mark:                                                             | N/A                                                                            |
-| `provider`                                                                     | [models.UserEventPayload427Provider](../models/usereventpayload427provider.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `providerSubjectId`                                                            | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                                | Type                                 | Required                             | Description                          |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| `flowId`                             | *string*                             | :heavy_minus_sign:                   | N/A                                  |
+| `loginSessionId`                     | *string*                             | :heavy_minus_sign:                   | N/A                                  |
+| `method`                             | [models.Method](../models/method.md) | :heavy_check_mark:                   | N/A                                  |
+| `reason`                             | *string*                             | :heavy_check_mark:                   | N/A                                  |

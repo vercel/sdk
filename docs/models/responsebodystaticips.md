@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyStaticIps } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponseto.js";
+import { ResponseBodyStaticIps } from "@vercel/sdk/models/getprojectstoprojectsresponse2001.js";
 
 let value: ResponseBodyStaticIps = {
   builds: true,

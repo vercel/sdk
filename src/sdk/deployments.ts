@@ -16,8 +16,8 @@ import { deploymentsListDeploymentFiles } from "../funcs/deploymentsListDeployme
 import { deploymentsUpdateIntegrationDeploymentAction } from "../funcs/deploymentsUpdateIntegrationDeploymentAction.js";
 import { deploymentsUploadFile } from "../funcs/deploymentsUploadFile.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import { CancelDeploymentRequest } from "../models/canceldeploymentresourceconfig.js";
 import { CancelDeploymentResponseBody } from "../models/canceldeploymentresponsebody.js";
+import { CreateDeploymentRequest } from "../models/createdeploymentgitsource1.js";
 import { CreateDeploymentResponseBody } from "../models/createdeploymentresponsebody.js";
 import {
   DeleteDeploymentRequest,
@@ -29,14 +29,14 @@ import {
   GetDeploymentEventsResponse,
 } from "../models/getdeploymenteventsop.js";
 import { GetDeploymentFileContentsRequest } from "../models/getdeploymentfilecontentsop.js";
-import { GetDeploymentRequest } from "../models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody215type.js";
+import { GetDeploymentRequest } from "../models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody219type.js";
 import { GetDeploymentResponseBody } from "../models/getdeploymentresponsebody.js";
 import {
   GetDeploymentsRequest,
   GetDeploymentsResponseBody,
 } from "../models/getdeploymentsop.js";
 import { ListDeploymentFilesRequest } from "../models/listdeploymentfilesop.js";
-import { CreateDeploymentRequest } from "../models/responsebodyimages.js";
+import { CancelDeploymentRequest } from "../models/readystate.js";
 import { UpdateIntegrationDeploymentActionRequest } from "../models/updateintegrationdeploymentactionop.js";
 import {
   UploadFileRequest,

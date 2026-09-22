@@ -5,7 +5,7 @@ Attribution metadata for the deployment, linking commit author to git and Vercel
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentAttribution } from "@vercel/sdk/models/canceldeploymentresourceconfig.js";
+import { CancelDeploymentAttribution } from "@vercel/sdk/models/readystate.js";
 
 let value: CancelDeploymentAttribution = {};
 ```

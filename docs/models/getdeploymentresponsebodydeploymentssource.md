@@ -5,7 +5,7 @@ Where was the deployment created from. Best-effort guess for metrics only — no
 ## Example Usage
 
 ```typescript
-import { GetDeploymentResponseBodyDeploymentsSource } from "@vercel/sdk/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody215type.js";
+import { GetDeploymentResponseBodyDeploymentsSource } from "@vercel/sdk/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody219type.js";
 
 let value: GetDeploymentResponseBodyDeploymentsSource = "cli";
 ```

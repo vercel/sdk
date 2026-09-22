@@ -5,7 +5,7 @@
 ```typescript
 import {
   UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesVercelRulesetAction,
-} from "@vercel/sdk/models/uploadprojectavatarfrom.js";
+} from "@vercel/sdk/models/uploadprojectavatarfrom1.js";
 
 let value:
   UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesVercelRulesetAction =

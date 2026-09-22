@@ -5,19 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndNine } from "@vercel/sdk/models/payloaddefault.js";
+import { TwoHundredAndNine } from "@vercel/sdk/models/sourceimages.js";
 
 let value: TwoHundredAndNine = {
-  billingPlan: "platform",
+  directoryGroupId: "<id>",
+  directoryId: "<id>",
   organizationId: "<id>",
-  teamId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `billingPlan`                                  | [models.BillingPlan](../models/billingplan.md) | :heavy_check_mark:                             | N/A                                            |
-| `organizationId`                               | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `teamId`                                       | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `directoryGroupId` | *string*           | :heavy_check_mark: | N/A                |
+| `directoryId`      | *string*           | :heavy_check_mark: | N/A                |
+| `organizationId`   | *string*           | :heavy_check_mark: | N/A                |

@@ -5,17 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndTwentyEight } from "@vercel/sdk/models/payloaddefault.js";
+import { TwoHundredAndTwentyEight } from "@vercel/sdk/models/twohundredandfifteen.js";
 
 let value: TwoHundredAndTwentyEight = {
-  next: {},
-  previous: {},
+  headerName: "<value>",
+  projectId: "<id>",
+  type: "header",
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `next`                                                                         | [models.UserEventPayload228Next](../models/usereventpayload228next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload228Previous](../models/usereventpayload228previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `headerName`                                                           | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `projectId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `type`                                                                 | [models.UserEventPayload228Type](../models/usereventpayload228type.md) | :heavy_check_mark:                                                     | N/A                                                                    |

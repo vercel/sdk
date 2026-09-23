@@ -5,7 +5,7 @@ NSNB Blocked metadata
 ## Example Usage
 
 ```typescript
-import { SeatBlock } from "@vercel/sdk/models/canceldeploymentdestinationdeployments2.js";
+import { SeatBlock } from "@vercel/sdk/models/servicesop.js";
 
 let value: SeatBlock = {
   blockCode: "TEAM_ACCESS_REQUIRED",

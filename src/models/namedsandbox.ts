@@ -10,6 +10,18 @@ import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
+ * CPU architecture of the sandbox. This value does not change.
+ */
+export const Architecture = {
+  Amd64: "amd64",
+  Arm64: "arm64",
+} as const;
+/**
+ * CPU architecture of the sandbox. This value does not change.
+ */
+export type Architecture = ClosedEnum<typeof Architecture>;
+
+/**
  * The regions the sandbox fails over to. Empty when it does not fail over.
  */
 export const FailoverRegions = {
@@ -108,6 +120,10 @@ export type NamedSandboxStatus = ClosedEnum<typeof NamedSandboxStatus>;
  * This object contains information related to a Vercel NamedSandbox.
  */
 export type NamedSandbox = {
+  /**
+   * CPU architecture of the sandbox. This value does not change.
+   */
+  architecture?: Architecture | undefined;
   /**
    * The time when the named sandbox was created, in milliseconds since the epoch.
    */
@@ -219,6 +235,10 @@ export type NamedSandbox = {
 };
 
 /** @internal */
+export const Architecture$inboundSchema: z.ZodNativeEnum<typeof Architecture> =
+  z.nativeEnum(Architecture);
+
+/** @internal */
 export const FailoverRegions$inboundSchema: z.ZodNativeEnum<
   typeof FailoverRegions
 > = z.nativeEnum(FailoverRegions);
@@ -305,6 +325,7 @@ export const NamedSandbox$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  architecture: types.optional(Architecture$inboundSchema),
   createdAt: types.number(),
   currentSessionId: types.string(),
   currentSnapshotId: types.optional(types.string()),

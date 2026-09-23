@@ -5,7 +5,7 @@ The list of the installation resources connected to the project.
 ## Example Usage
 
 ```typescript
-import { GetProjectResources } from "@vercel/sdk/models/getprojecthas2.js";
+import { GetProjectResources } from "@vercel/sdk/models/getprojectto1.js";
 
 let value: GetProjectResources = {
   externalResourceId: "<id>",

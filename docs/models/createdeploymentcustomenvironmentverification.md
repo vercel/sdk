@@ -5,7 +5,7 @@ A list of verification challenges, one of which must be completed to verify the 
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentCustomEnvironmentVerification } from "@vercel/sdk/models/responsebodyimages.js";
+import { CreateDeploymentCustomEnvironmentVerification } from "@vercel/sdk/models/createdeploymentgitsource1.js";
 
 let value: CreateDeploymentCustomEnvironmentVerification = {
   domain: "ragged-amendment.com",

@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { PayloadScope } from "@vercel/sdk/models/payloadmostspecificsubdivision.js";
+import { PayloadScope } from "@vercel/sdk/models/commitverification.js";
 
-let value: PayloadScope = "log-drains";
+let value: PayloadScope = "organization";
 ```
 
 ## Values
 
 ```typescript
-"dashboard" | "log-drains"
+"organization"
 ```

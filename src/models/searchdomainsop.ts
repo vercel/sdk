@@ -45,7 +45,7 @@ export type Results1 = {
   available: false;
 };
 
-export type SearchDomainsResults = Results2 | Results1;
+export type Results = Results2 | Results1;
 
 /**
  * Success
@@ -149,22 +149,19 @@ export function results1FromJSON(
 }
 
 /** @internal */
-export const SearchDomainsResults$inboundSchema: z.ZodType<
-  SearchDomainsResults,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.lazy(() => Results2$inboundSchema),
-  z.lazy(() => Results1$inboundSchema),
-]);
+export const Results$inboundSchema: z.ZodType<Results, z.ZodTypeDef, unknown> =
+  smartUnion([
+    z.lazy(() => Results2$inboundSchema),
+    z.lazy(() => Results1$inboundSchema),
+  ]);
 
-export function searchDomainsResultsFromJSON(
+export function resultsFromJSON(
   jsonString: string,
-): SafeParseResult<SearchDomainsResults, SDKValidationError> {
+): SafeParseResult<Results, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => SearchDomainsResults$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SearchDomainsResults' from JSON`,
+    (x) => Results$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Results' from JSON`,
   );
 }
 

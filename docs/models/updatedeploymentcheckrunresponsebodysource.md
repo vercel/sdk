@@ -43,8 +43,9 @@ const value: models.UpdateDeploymentCheckRunSource4 = {};
 const value: models.UpdateDeploymentCheckRunSource5 = {
   origin: "api",
   selection: {
-    job: "Legacy Applications Administrator",
-    kind: "job",
+    job: "Central Group Architect",
+    kind: "task",
+    task: "<value>",
   },
   subKind: "vercel-ci-check",
 };

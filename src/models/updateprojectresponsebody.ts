@@ -21,10 +21,10 @@ import {
   UpdateProjectBlobs$inboundSchema,
   UpdateProjectConnectConfigurations,
   UpdateProjectConnectConfigurations$inboundSchema,
+} from "./updateprojectcreatoruser.js";
+import {
   UpdateProjectCreator,
   UpdateProjectCreator$inboundSchema,
-} from "./updateprojectdefinitions.js";
-import {
   UpdateProjectCrons,
   UpdateProjectCrons$inboundSchema,
   UpdateProjectCustomEnvironments,
@@ -79,17 +79,116 @@ import {
   UpdateProjectProjectsPassport$inboundSchema,
   UpdateProjectProjectsPasswordProtection,
   UpdateProjectProjectsPasswordProtection$inboundSchema,
-  UpdateProjectProjectsResourceConfig,
-  UpdateProjectProjectsResourceConfig$inboundSchema,
-  UpdateProjectProjectsResponse200ApplicationJSONAction,
-  UpdateProjectProjectsResponse200ApplicationJSONAction$inboundSchema,
+  UpdateProjectProjectsResponseBuildMachineElasticReason,
+  UpdateProjectProjectsResponseBuildMachineElasticReason$inboundSchema,
+  UpdateProjectProjectsResponseBuildMachineElasticTransition,
+  UpdateProjectProjectsResponseBuildMachineElasticTransition$inboundSchema,
   UpdateProjectProtectionBypass,
   UpdateProjectProtectionBypass$inboundSchema,
   UpdateProjectProtectionConfig,
   UpdateProjectProtectionConfig$inboundSchema,
-  UpdateProjectRollbackDescription,
-  UpdateProjectRollbackDescription$inboundSchema,
-} from "./updateprojectprojectsresponse200applicationjsonaction.js";
+} from "./updateprojectprojectsresponsebuildmachineelastictransition.js";
+
+export const UpdateProjectProjectsResponseBuildMachineSelection = {
+  Elastic: "elastic",
+  Fixed: "fixed",
+} as const;
+export type UpdateProjectProjectsResponseBuildMachineSelection = ClosedEnum<
+  typeof UpdateProjectProjectsResponseBuildMachineSelection
+>;
+
+export const UpdateProjectProjectsResponseBuildMachineType = {
+  Basic: "basic",
+  Enhanced: "enhanced",
+  Standard: "standard",
+  Turbo: "turbo",
+} as const;
+export type UpdateProjectProjectsResponseBuildMachineType = ClosedEnum<
+  typeof UpdateProjectProjectsResponseBuildMachineType
+>;
+
+export const UpdateProjectProjectsResponseConfiguration = {
+  SkipNamespaceQueue: "SKIP_NAMESPACE_QUEUE",
+  WaitForNamespaceQueue: "WAIT_FOR_NAMESPACE_QUEUE",
+} as const;
+export type UpdateProjectProjectsResponseConfiguration = ClosedEnum<
+  typeof UpdateProjectProjectsResponseConfiguration
+>;
+
+export type UpdateProjectProjectsResponseBuildQueue = {
+  configuration?: UpdateProjectProjectsResponseConfiguration | undefined;
+};
+
+export const UpdateProjectProjectsResponseFunctionDefaultMemoryType = {
+  Performance: "performance",
+  PerformanceXl: "performance_xl",
+  Standard: "standard",
+  StandardLegacy: "standard_legacy",
+} as const;
+export type UpdateProjectProjectsResponseFunctionDefaultMemoryType = ClosedEnum<
+  typeof UpdateProjectProjectsResponseFunctionDefaultMemoryType
+>;
+
+export type UpdateProjectProjectsResourceConfig = {
+  buildMachineElasticLastUpdated?: number | undefined;
+  buildMachineElasticReason?:
+    | UpdateProjectProjectsResponseBuildMachineElasticReason
+    | undefined;
+  buildMachineElasticTransition?:
+    | UpdateProjectProjectsResponseBuildMachineElasticTransition
+    | undefined;
+  buildMachineSelection?:
+    | UpdateProjectProjectsResponseBuildMachineSelection
+    | undefined;
+  buildMachineType?: UpdateProjectProjectsResponseBuildMachineType | undefined;
+  buildQueue?: UpdateProjectProjectsResponseBuildQueue | undefined;
+  elasticConcurrencyEnabled?: boolean | undefined;
+  enableFunctionsBeta?: boolean | undefined;
+  fluid?: boolean | undefined;
+  functionDefaultMemoryType?:
+    | UpdateProjectProjectsResponseFunctionDefaultMemoryType
+    | undefined;
+  functionDefaultRegions: Array<string>;
+  functionDefaultTimeout?: number | undefined;
+  functionZeroConfigFailover?: boolean | undefined;
+  isNSNBDisabled?: boolean | undefined;
+};
+
+/**
+ * Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback.
+ */
+export type UpdateProjectRollbackDescription = {
+  /**
+   * Timestamp of when the rollback was requested.
+   */
+  createdAt: number;
+  /**
+   * User-supplied explanation of why they rolled back the project. Limited to 250 characters.
+   */
+  description: string;
+  /**
+   * The user who rolled back the project.
+   */
+  userId: string;
+  /**
+   * The username of the user who rolled back the project.
+   */
+  username: string;
+};
+
+/**
+ * What to do when the gate trips: pause the rollout, or roll it back.
+ */
+export const UpdateProjectProjectsResponse200ApplicationJSONAction = {
+  Pause: "pause",
+  Rollback: "rollback",
+} as const;
+/**
+ * What to do when the gate trips: pause the rollout, or roll it back.
+ */
+export type UpdateProjectProjectsResponse200ApplicationJSONAction = ClosedEnum<
+  typeof UpdateProjectProjectsResponse200ApplicationJSONAction
+>;
 
 /**
  * The metric this check evaluates.
@@ -422,14 +521,6 @@ export type UpdateProjectRulesets = {
   redirect?: UpdateProjectRedirect | null | undefined;
 };
 
-export type UpdateProjectSecurityPlusMetadata = {
-  /**
-   * Timestamp when the feature was first enabled. Never changes after initial enablement.
-   */
-  firstEnabledAt?: number | undefined;
-  updatedAt: number;
-};
-
 export type UpdateProjectSecurity = {
   attackModeActiveUntil?: number | null | undefined;
   attackModeEnabled?: boolean | undefined;
@@ -449,8 +540,6 @@ export type UpdateProjectSecurity = {
    */
   pageIntegrityEnabled?: boolean | undefined;
   rulesets?: { [k: string]: UpdateProjectRulesets } | undefined;
-  securityPlus?: boolean | undefined;
-  securityPlusMetadata?: UpdateProjectSecurityPlusMetadata | undefined;
 };
 
 /**
@@ -801,8 +890,6 @@ export type UpdateProjectTargets = {
 };
 
 export const UpdateProjectTier = {
-  Advanced: "advanced",
-  Critical: "critical",
   Priority: "priority",
 } as const;
 export type UpdateProjectTier = ClosedEnum<typeof UpdateProjectTier>;
@@ -1166,6 +1253,9 @@ export type UpdateProjectResponseBody = {
     | null
     | undefined;
   paused?: boolean | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
   permissions?: UpdateProjectPermissions | undefined;
   productionDeploymentsFastLane?: boolean | undefined;
   protectedSourcemaps?: boolean | undefined;
@@ -1212,6 +1302,127 @@ export type UpdateProjectResponseBody = {
   v0Created?: boolean | undefined;
   webAnalytics?: UpdateProjectWebAnalytics | undefined;
 };
+
+/** @internal */
+export const UpdateProjectProjectsResponseBuildMachineSelection$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectProjectsResponseBuildMachineSelection> = z
+    .nativeEnum(UpdateProjectProjectsResponseBuildMachineSelection);
+
+/** @internal */
+export const UpdateProjectProjectsResponseBuildMachineType$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectProjectsResponseBuildMachineType> = z
+    .nativeEnum(UpdateProjectProjectsResponseBuildMachineType);
+
+/** @internal */
+export const UpdateProjectProjectsResponseConfiguration$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectProjectsResponseConfiguration> = z
+    .nativeEnum(UpdateProjectProjectsResponseConfiguration);
+
+/** @internal */
+export const UpdateProjectProjectsResponseBuildQueue$inboundSchema: z.ZodType<
+  UpdateProjectProjectsResponseBuildQueue,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  configuration: types.optional(
+    UpdateProjectProjectsResponseConfiguration$inboundSchema,
+  ),
+});
+
+export function updateProjectProjectsResponseBuildQueueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateProjectProjectsResponseBuildQueue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateProjectProjectsResponseBuildQueue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateProjectProjectsResponseBuildQueue' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectProjectsResponseFunctionDefaultMemoryType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateProjectProjectsResponseFunctionDefaultMemoryType
+  > = z.nativeEnum(UpdateProjectProjectsResponseFunctionDefaultMemoryType);
+
+/** @internal */
+export const UpdateProjectProjectsResourceConfig$inboundSchema: z.ZodType<
+  UpdateProjectProjectsResourceConfig,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  buildMachineElasticLastUpdated: types.optional(types.number()),
+  buildMachineElasticReason: types.optional(
+    UpdateProjectProjectsResponseBuildMachineElasticReason$inboundSchema,
+  ),
+  buildMachineElasticTransition: types.optional(
+    UpdateProjectProjectsResponseBuildMachineElasticTransition$inboundSchema,
+  ),
+  buildMachineSelection: types.optional(
+    UpdateProjectProjectsResponseBuildMachineSelection$inboundSchema,
+  ),
+  buildMachineType: types.optional(
+    UpdateProjectProjectsResponseBuildMachineType$inboundSchema,
+  ),
+  buildQueue: types.optional(
+    z.lazy(() => UpdateProjectProjectsResponseBuildQueue$inboundSchema),
+  ),
+  elasticConcurrencyEnabled: types.optional(types.boolean()),
+  enableFunctionsBeta: types.optional(types.boolean()),
+  fluid: types.optional(types.boolean()),
+  functionDefaultMemoryType: types.optional(
+    UpdateProjectProjectsResponseFunctionDefaultMemoryType$inboundSchema,
+  ),
+  functionDefaultRegions: z.array(types.string()),
+  functionDefaultTimeout: types.optional(types.number()),
+  functionZeroConfigFailover: types.optional(types.boolean()),
+  isNSNBDisabled: types.optional(types.boolean()),
+});
+
+export function updateProjectProjectsResourceConfigFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectProjectsResourceConfig, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateProjectProjectsResourceConfig$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectProjectsResourceConfig' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectRollbackDescription$inboundSchema: z.ZodType<
+  UpdateProjectRollbackDescription,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createdAt: types.number(),
+  description: types.string(),
+  userId: types.string(),
+  username: types.string(),
+});
+
+export function updateProjectRollbackDescriptionFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectRollbackDescription, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectRollbackDescription$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectRollbackDescription' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectProjectsResponse200ApplicationJSONAction$inboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateProjectProjectsResponse200ApplicationJSONAction
+  > = z.nativeEnum(UpdateProjectProjectsResponse200ApplicationJSONAction);
 
 /** @internal */
 export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodyRollingReleaseType$inboundSchema:
@@ -1665,26 +1876,6 @@ export function updateProjectRulesetsFromJSON(
 }
 
 /** @internal */
-export const UpdateProjectSecurityPlusMetadata$inboundSchema: z.ZodType<
-  UpdateProjectSecurityPlusMetadata,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  firstEnabledAt: types.optional(types.number()),
-  updatedAt: types.number(),
-});
-
-export function updateProjectSecurityPlusMetadataFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateProjectSecurityPlusMetadata, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateProjectSecurityPlusMetadata$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateProjectSecurityPlusMetadata' from JSON`,
-  );
-}
-
-/** @internal */
 export const UpdateProjectSecurity$inboundSchema: z.ZodType<
   UpdateProjectSecurity,
   z.ZodTypeDef,
@@ -1713,10 +1904,6 @@ export const UpdateProjectSecurity$inboundSchema: z.ZodType<
   pageIntegrityEnabled: types.optional(types.boolean()),
   rulesets: types.optional(
     z.record(z.lazy(() => UpdateProjectRulesets$inboundSchema)),
-  ),
-  securityPlus: types.optional(types.boolean()),
-  securityPlusMetadata: types.optional(
-    z.lazy(() => UpdateProjectSecurityPlusMetadata$inboundSchema),
   ),
 }).transform((v) => {
   return remap$(v, {
@@ -2734,9 +2921,11 @@ export const UpdateProjectResponseBody$inboundSchema: z.ZodType<
     z.record(UpdateProjectProtectionBypass$inboundSchema),
   ),
   protectionConfig: types.optional(UpdateProjectProtectionConfig$inboundSchema),
-  resourceConfig: UpdateProjectProjectsResourceConfig$inboundSchema,
+  resourceConfig: z.lazy(() =>
+    UpdateProjectProjectsResourceConfig$inboundSchema
+  ),
   rollbackDescription: types.optional(
-    UpdateProjectRollbackDescription$inboundSchema,
+    z.lazy(() => UpdateProjectRollbackDescription$inboundSchema),
   ),
   rollingRelease: z.nullable(
     z.lazy(() => UpdateProjectRollingRelease$inboundSchema),

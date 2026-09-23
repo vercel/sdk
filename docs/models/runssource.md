@@ -43,8 +43,7 @@ const value: models.ListCheckRunsSource4 = {};
 const value: models.ListCheckRunsSource5 = {
   origin: "api",
   selection: {
-    job: "Product Solutions Engineer",
-    kind: "job",
+    kind: "invocation",
   },
   subKind: "vercel-ci-check",
 };

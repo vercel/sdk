@@ -10,72 +10,6 @@ import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
-  UpdateMicrofrontendsFrom1,
-  UpdateMicrofrontendsFrom1$inboundSchema,
-  UpdateMicrofrontendsFrom2,
-  UpdateMicrofrontendsFrom2$inboundSchema,
-  UpdateMicrofrontendsInternalRoutes,
-  UpdateMicrofrontendsInternalRoutes$inboundSchema,
-  UpdateMicrofrontendsIpBuckets,
-  UpdateMicrofrontendsIpBuckets$inboundSchema,
-  UpdateMicrofrontendsJobs,
-  UpdateMicrofrontendsJobs$inboundSchema,
-  UpdateMicrofrontendsLastAliasRequest,
-  UpdateMicrofrontendsLastAliasRequest$inboundSchema,
-  UpdateMicrofrontendsLastRollbackTarget,
-  UpdateMicrofrontendsLastRollbackTarget$inboundSchema,
-  UpdateMicrofrontendsLatestDeployments,
-  UpdateMicrofrontendsLatestDeployments$inboundSchema,
-  UpdateMicrofrontendsLink,
-  UpdateMicrofrontendsLink$inboundSchema,
-  UpdateMicrofrontendsMicrofrontends,
-  UpdateMicrofrontendsMicrofrontends$inboundSchema,
-  UpdateMicrofrontendsNodeVersion,
-  UpdateMicrofrontendsNodeVersion$inboundSchema,
-  UpdateMicrofrontendsOidcProviders,
-  UpdateMicrofrontendsOidcProviders$inboundSchema,
-  UpdateMicrofrontendsOidcTokenConfig,
-  UpdateMicrofrontendsOidcTokenConfig$inboundSchema,
-  UpdateMicrofrontendsOptionsAllowlist,
-  UpdateMicrofrontendsOptionsAllowlist$inboundSchema,
-  UpdateMicrofrontendsPassport,
-  UpdateMicrofrontendsPassport$inboundSchema,
-  UpdateMicrofrontendsPasswordProtection,
-  UpdateMicrofrontendsPasswordProtection$inboundSchema,
-  UpdateMicrofrontendsPermissions,
-  UpdateMicrofrontendsPermissions$inboundSchema,
-  UpdateMicrofrontendsProtectionBypass,
-  UpdateMicrofrontendsProtectionBypass$inboundSchema,
-  UpdateMicrofrontendsProtectionConfig,
-  UpdateMicrofrontendsProtectionConfig$inboundSchema,
-  UpdateMicrofrontendsResourceConfig,
-  UpdateMicrofrontendsResourceConfig$inboundSchema,
-  UpdateMicrofrontendsRollbackDescription,
-  UpdateMicrofrontendsRollbackDescription$inboundSchema,
-  UpdateMicrofrontendsRollingRelease,
-  UpdateMicrofrontendsRollingRelease$inboundSchema,
-  UpdateMicrofrontendsSandbox,
-  UpdateMicrofrontendsSandbox$inboundSchema,
-  UpdateMicrofrontendsSecurity,
-  UpdateMicrofrontendsSecurity$inboundSchema,
-  UpdateMicrofrontendsServices,
-  UpdateMicrofrontendsServices$inboundSchema,
-  UpdateMicrofrontendsSpeedInsights,
-  UpdateMicrofrontendsSpeedInsights$inboundSchema,
-  UpdateMicrofrontendsSsoProtection,
-  UpdateMicrofrontendsSsoProtection$inboundSchema,
-  UpdateMicrofrontendsStaticIps,
-  UpdateMicrofrontendsStaticIps$inboundSchema,
-  UpdateMicrofrontendsTargets,
-  UpdateMicrofrontendsTargets$inboundSchema,
-  UpdateMicrofrontendsTier,
-  UpdateMicrofrontendsTier$inboundSchema,
-  UpdateMicrofrontendsTracing,
-  UpdateMicrofrontendsTracing$inboundSchema,
-  UpdateMicrofrontendsTrustedIps,
-  UpdateMicrofrontendsTrustedIps$inboundSchema,
-} from "./updatemicrofrontendsfrom1.js";
-import {
   UpdateMicrofrontendsAbuse,
   UpdateMicrofrontendsAbuse$inboundSchema,
   UpdateMicrofrontendsAlias,
@@ -112,9 +46,113 @@ import {
   UpdateMicrofrontendsFramework$inboundSchema,
   UpdateMicrofrontendsGitComments,
   UpdateMicrofrontendsGitComments$inboundSchema,
+} from "./updatemicrofrontendscreatedeployments.js";
+import {
   UpdateMicrofrontendsGitProviderOptions,
   UpdateMicrofrontendsGitProviderOptions$inboundSchema,
-} from "./updatemicrofrontendshaskey.js";
+  UpdateMicrofrontendsInternalRoutes,
+  UpdateMicrofrontendsInternalRoutes$inboundSchema,
+  UpdateMicrofrontendsIpBuckets,
+  UpdateMicrofrontendsIpBuckets$inboundSchema,
+  UpdateMicrofrontendsJobs,
+  UpdateMicrofrontendsJobs$inboundSchema,
+  UpdateMicrofrontendsLastAliasRequest,
+  UpdateMicrofrontendsLastAliasRequest$inboundSchema,
+  UpdateMicrofrontendsLastRollbackTarget,
+  UpdateMicrofrontendsLastRollbackTarget$inboundSchema,
+  UpdateMicrofrontendsLatestDeployments,
+  UpdateMicrofrontendsLatestDeployments$inboundSchema,
+  UpdateMicrofrontendsLink,
+  UpdateMicrofrontendsLink$inboundSchema,
+  UpdateMicrofrontendsMicrofrontends,
+  UpdateMicrofrontendsMicrofrontends$inboundSchema,
+  UpdateMicrofrontendsNodeVersion,
+  UpdateMicrofrontendsNodeVersion$inboundSchema,
+  UpdateMicrofrontendsOidcTokenConfig,
+  UpdateMicrofrontendsOidcTokenConfig$inboundSchema,
+  UpdateMicrofrontendsOptionsAllowlist,
+  UpdateMicrofrontendsOptionsAllowlist$inboundSchema,
+  UpdateMicrofrontendsPassport,
+  UpdateMicrofrontendsPassport$inboundSchema,
+  UpdateMicrofrontendsPasswordProtection,
+  UpdateMicrofrontendsPasswordProtection$inboundSchema,
+  UpdateMicrofrontendsPermissions,
+  UpdateMicrofrontendsPermissions$inboundSchema,
+  UpdateMicrofrontendsProtectionBypass,
+  UpdateMicrofrontendsProtectionBypass$inboundSchema,
+  UpdateMicrofrontendsProtectionConfig,
+  UpdateMicrofrontendsProtectionConfig$inboundSchema,
+  UpdateMicrofrontendsResourceConfig,
+  UpdateMicrofrontendsResourceConfig$inboundSchema,
+  UpdateMicrofrontendsRollbackDescription,
+  UpdateMicrofrontendsRollbackDescription$inboundSchema,
+  UpdateMicrofrontendsRollingRelease,
+  UpdateMicrofrontendsRollingRelease$inboundSchema,
+  UpdateMicrofrontendsSandbox,
+  UpdateMicrofrontendsSandbox$inboundSchema,
+  UpdateMicrofrontendsSecurity,
+  UpdateMicrofrontendsSecurity$inboundSchema,
+  UpdateMicrofrontendsServices,
+  UpdateMicrofrontendsServices$inboundSchema,
+  UpdateMicrofrontendsSpeedInsights,
+  UpdateMicrofrontendsSpeedInsights$inboundSchema,
+  UpdateMicrofrontendsSsoProtection,
+  UpdateMicrofrontendsSsoProtection$inboundSchema,
+  UpdateMicrofrontendsStaticIps,
+  UpdateMicrofrontendsStaticIps$inboundSchema,
+  UpdateMicrofrontendsTargets,
+  UpdateMicrofrontendsTargets$inboundSchema,
+  UpdateMicrofrontendsTier,
+  UpdateMicrofrontendsTier$inboundSchema,
+  UpdateMicrofrontendsTo,
+  UpdateMicrofrontendsTo$inboundSchema,
+  UpdateMicrofrontendsTracing,
+  UpdateMicrofrontendsTracing$inboundSchema,
+  UpdateMicrofrontendsTrustedIps,
+  UpdateMicrofrontendsTrustedIps$inboundSchema,
+} from "./updatemicrofrontendsto.js";
+
+export type UpdateMicrofrontendsOidcProviders = {
+  to: UpdateMicrofrontendsTo;
+  claims: { [k: string]: Array<string> };
+  label?: string | undefined;
+};
+
+export const UpdateMicrofrontendsFromProjectsPreset = {
+  AllCustom: "all-custom",
+} as const;
+export type UpdateMicrofrontendsFromProjectsPreset = ClosedEnum<
+  typeof UpdateMicrofrontendsFromProjectsPreset
+>;
+
+/**
+ * The source envs on the trusted project that are allowed to access `to`.
+ */
+export type UpdateMicrofrontendsFrom2 = {
+  preset: UpdateMicrofrontendsFromProjectsPreset;
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs?: Array<string> | undefined;
+};
+
+export const UpdateMicrofrontendsFromPreset = {
+  AllCustom: "all-custom",
+} as const;
+export type UpdateMicrofrontendsFromPreset = ClosedEnum<
+  typeof UpdateMicrofrontendsFromPreset
+>;
+
+/**
+ * The source envs on the trusted project that are allowed to access `to`.
+ */
+export type UpdateMicrofrontendsFrom1 = {
+  preset?: UpdateMicrofrontendsFromPreset | undefined;
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs: Array<string>;
+};
 
 export type UpdateMicrofrontendsFrom =
   | UpdateMicrofrontendsFrom1
@@ -311,6 +349,9 @@ export type UpdateMicrofrontendsResponseBody = {
     | null
     | undefined;
   paused?: boolean | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
   permissions?: UpdateMicrofrontendsPermissions | undefined;
   productionDeploymentsFastLane?: boolean | undefined;
   protectedSourcemaps?: boolean | undefined;
@@ -357,13 +398,85 @@ export type UpdateMicrofrontendsResponseBody = {
 };
 
 /** @internal */
+export const UpdateMicrofrontendsOidcProviders$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsOidcProviders,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  to: UpdateMicrofrontendsTo$inboundSchema,
+  claims: z.record(z.array(types.string())),
+  label: types.optional(types.string()),
+});
+
+export function updateMicrofrontendsOidcProvidersFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsOidcProviders, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsOidcProviders$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsOidcProviders' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsFromProjectsPreset$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateMicrofrontendsFromProjectsPreset> = z.nativeEnum(
+    UpdateMicrofrontendsFromProjectsPreset,
+  );
+
+/** @internal */
+export const UpdateMicrofrontendsFrom2$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsFrom2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  preset: UpdateMicrofrontendsFromProjectsPreset$inboundSchema,
+  slugs: types.optional(z.array(types.string())),
+});
+
+export function updateMicrofrontendsFrom2FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsFrom2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsFrom2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsFrom2' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsFromPreset$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateMicrofrontendsFromPreset
+> = z.nativeEnum(UpdateMicrofrontendsFromPreset);
+
+/** @internal */
+export const UpdateMicrofrontendsFrom1$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsFrom1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  preset: types.optional(UpdateMicrofrontendsFromPreset$inboundSchema),
+  slugs: z.array(types.string()),
+});
+
+export function updateMicrofrontendsFrom1FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsFrom1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsFrom1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsFrom1' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateMicrofrontendsFrom$inboundSchema: z.ZodType<
   UpdateMicrofrontendsFrom,
   z.ZodTypeDef,
   unknown
 > = smartUnion([
-  UpdateMicrofrontendsFrom1$inboundSchema,
-  UpdateMicrofrontendsFrom2$inboundSchema,
+  z.lazy(() => UpdateMicrofrontendsFrom1$inboundSchema),
+  z.lazy(() => UpdateMicrofrontendsFrom2$inboundSchema),
 ]);
 
 export function updateMicrofrontendsFromFromJSON(
@@ -455,8 +568,8 @@ export const UpdateMicrofrontendsCustomAllow$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   from: smartUnion([
-    UpdateMicrofrontendsFrom1$inboundSchema,
-    UpdateMicrofrontendsFrom2$inboundSchema,
+    z.lazy(() => UpdateMicrofrontendsFrom1$inboundSchema),
+    z.lazy(() => UpdateMicrofrontendsFrom2$inboundSchema),
   ]),
   to: smartUnion([
     z.lazy(() => UpdateMicrofrontendsToProjects1$inboundSchema),
@@ -504,7 +617,9 @@ export const UpdateMicrofrontendsTrustedSources$inboundSchema: z.ZodType<
 > = z.object({
   enableVercelCiSameRepository: types.optional(types.boolean()),
   oidcProviders: types.optional(
-    z.record(z.array(UpdateMicrofrontendsOidcProviders$inboundSchema)),
+    z.record(z.array(z.lazy(() =>
+      UpdateMicrofrontendsOidcProviders$inboundSchema
+    ))),
   ),
   projects: types.optional(
     z.record(z.lazy(() => UpdateMicrofrontendsProjects$inboundSchema)),

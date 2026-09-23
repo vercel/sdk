@@ -5,19 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndEightyEight } from "@vercel/sdk/models/payloadmostspecificsubdivision.js";
+import { ThreeHundredAndEightyEight } from "@vercel/sdk/models/payloadcity.js";
 
 let value: ThreeHundredAndEightyEight = {
-  convertedFromTrial: true,
-  invoiceId: "<id>",
-  plan: "pro",
+  requestedTeamName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `convertedFromTrial`                           | *boolean*                                      | :heavy_check_mark:                             | N/A                                            |
-| `invoiceId`                                    | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `plan`                                         | [models.PayloadPlan](../models/payloadplan.md) | :heavy_check_mark:                             | N/A                                            |
+| Field                                              | Type                                               | Required                                           | Description                                        |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| `bitbucketUsername`                                | *string*                                           | :heavy_minus_sign:                                 | N/A                                                |
+| `githubUsername`                                   | *string*                                           | :heavy_minus_sign:                                 | N/A                                                |
+| `gitlabUsername`                                   | *string*                                           | :heavy_minus_sign:                                 | N/A                                                |
+| `gitUsername`                                      | *string*                                           | :heavy_minus_sign:                                 | N/A                                                |
+| `requestedTeamName`                                | *string*                                           | :heavy_check_mark:                                 | N/A                                                |
+| `requestedTeamSlug`                                | *string*                                           | :heavy_minus_sign:                                 | N/A                                                |
+| `requestedUserName`                                | *string*                                           | :heavy_minus_sign:                                 | N/A                                                |
+| `source`                                           | [models.PayloadSource](../models/payloadsource.md) | :heavy_minus_sign:                                 | N/A                                                |

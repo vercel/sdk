@@ -246,7 +246,24 @@ export type GetDrainSourceDrains2 = {
   resourceId?: string | undefined;
 };
 
+/**
+ * Informational marker for a system-owned default drain.
+ */
+export const GetDrainSourceDrainsDefaultFor = {
+  EveTracing: "eve-tracing",
+} as const;
+/**
+ * Informational marker for a system-owned default drain.
+ */
+export type GetDrainSourceDrainsDefaultFor = ClosedEnum<
+  typeof GetDrainSourceDrainsDefaultFor
+>;
+
 export type GetDrainSourceDrains1 = {
+  /**
+   * Informational marker for a system-owned default drain.
+   */
+  defaultFor?: GetDrainSourceDrainsDefaultFor | undefined;
   kind: "self-served";
 };
 
@@ -598,7 +615,24 @@ export type GetDrainSource2 = {
   resourceId?: string | undefined;
 };
 
+/**
+ * Informational marker for a system-owned default drain.
+ */
+export const GetDrainSourceDefaultFor = {
+  EveTracing: "eve-tracing",
+} as const;
+/**
+ * Informational marker for a system-owned default drain.
+ */
+export type GetDrainSourceDefaultFor = ClosedEnum<
+  typeof GetDrainSourceDefaultFor
+>;
+
 export type GetDrainSource1 = {
+  /**
+   * Informational marker for a system-owned default drain.
+   */
+  defaultFor?: GetDrainSourceDefaultFor | undefined;
   kind: "self-served";
 };
 
@@ -1277,11 +1311,17 @@ export function getDrainSourceDrains2FromJSON(
 }
 
 /** @internal */
+export const GetDrainSourceDrainsDefaultFor$inboundSchema: z.ZodNativeEnum<
+  typeof GetDrainSourceDrainsDefaultFor
+> = z.nativeEnum(GetDrainSourceDrainsDefaultFor);
+
+/** @internal */
 export const GetDrainSourceDrains1$inboundSchema: z.ZodType<
   GetDrainSourceDrains1,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  defaultFor: types.optional(GetDrainSourceDrainsDefaultFor$inboundSchema),
   kind: types.literal("self-served"),
 });
 
@@ -2139,11 +2179,17 @@ export function getDrainSource2FromJSON(
 }
 
 /** @internal */
+export const GetDrainSourceDefaultFor$inboundSchema: z.ZodNativeEnum<
+  typeof GetDrainSourceDefaultFor
+> = z.nativeEnum(GetDrainSourceDefaultFor);
+
+/** @internal */
 export const GetDrainSource1$inboundSchema: z.ZodType<
   GetDrainSource1,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  defaultFor: types.optional(GetDrainSourceDefaultFor$inboundSchema),
   kind: types.literal("self-served"),
 });
 

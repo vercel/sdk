@@ -12,6 +12,7 @@ let value: GetDrainSourceDrains1 = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `kind`             | *"self-served"*    | :heavy_check_mark: | N/A                |
+| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `defaultFor`                                                                         | [models.GetDrainSourceDrainsDefaultFor](../models/getdrainsourcedrainsdefaultfor.md) | :heavy_minus_sign:                                                                   | Informational marker for a system-owned default drain.                               |
+| `kind`                                                                               | *"self-served"*                                                                      | :heavy_check_mark:                                                                   | N/A                                                                                  |

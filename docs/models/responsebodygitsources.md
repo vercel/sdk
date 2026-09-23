@@ -5,7 +5,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyGitSources } from "@vercel/sdk/models/getprojectsresponsebodyprojectsconsolidatedgitcommitstatus.js";
+import { ResponseBodyGitSources } from "@vercel/sdk/models/responsebodyexpiration.js";
 
 let value: ResponseBodyGitSources = {
   enabled: true,

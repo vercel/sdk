@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
@@ -35,8 +36,10 @@ import {
   DefaultResourceConfig$inboundSchema,
   DeploymentExpiration,
   DeploymentExpiration$inboundSchema,
-} from "./createprojectcontenthint2.js";
+} from "./createprojectcontenthint8.js";
 import {
+  CreateProjectAliasAssigned,
+  CreateProjectAliasAssigned$inboundSchema,
   CreateProjectEnv,
   CreateProjectEnv$inboundSchema,
   CreateProjectExpiration,
@@ -59,10 +62,20 @@ import {
   CreateProjectPasswordProtection$inboundSchema,
   CreateProjectPermissions,
   CreateProjectPermissions$inboundSchema,
+  CreateProjectProjectsAliasError,
+  CreateProjectProjectsAliasError$inboundSchema,
+  CreateProjectProjectsBuilds,
+  CreateProjectProjectsBuilds$inboundSchema,
+  CreateProjectProjectsChecksConclusion,
+  CreateProjectProjectsChecksConclusion$inboundSchema,
+  CreateProjectProjectsChecksState,
+  CreateProjectProjectsChecksState$inboundSchema,
   CreateProjectProjectsFramework,
   CreateProjectProjectsFramework$inboundSchema,
   CreateProjectProjectsResourceConfig,
   CreateProjectProjectsResourceConfig$inboundSchema,
+  CreateProjectProjectsResponseBranchMatcher,
+  CreateProjectProjectsResponseBranchMatcher$inboundSchema,
   CreateProjectProjectsSsoProtection,
   CreateProjectProjectsSsoProtection$inboundSchema,
   CreateProjectRollbackDescription,
@@ -75,8 +88,6 @@ import {
   CreateProjectServices$inboundSchema,
   CreateProjectStaticIps,
   CreateProjectStaticIps$inboundSchema,
-  CreateProjectTargets,
-  CreateProjectTargets$inboundSchema,
   Features,
   Features$inboundSchema,
   GitProviderOptions,
@@ -101,12 +112,118 @@ import {
   RollingRelease$inboundSchema,
   SpeedInsights,
   SpeedInsights$inboundSchema,
-} from "./createprojecttargets.js";
+} from "./createprojectprojectschecksstate.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
+export type CreateProjectProjectsResponseCreator = {
+  email: string;
+  githubLogin?: string | undefined;
+  gitlabLogin?: string | undefined;
+  uid: string;
+  username: string;
+};
+
+export type CreateProjectProjectsOidcTokenClaims = {
+  aud: string;
+  customEnvironmentId?: string | undefined;
+  environment: string;
+  iss: string;
+  mfeGroupIds?: Array<string> | undefined;
+  owner: string;
+  ownerId: string;
+  plan?: string | undefined;
+  project: string;
+  projectId: string;
+  scope: string;
+  sub: string;
+};
+
+export const CreateProjectProjectsPlan = {
+  Enterprise: "enterprise",
+  Hobby: "hobby",
+  Pro: "pro",
+} as const;
+export type CreateProjectProjectsPlan = ClosedEnum<
+  typeof CreateProjectProjectsPlan
+>;
+
+export const CreateProjectProjectsReadyState = {
+  Blocked: "BLOCKED",
+  Building: "BUILDING",
+  Canceled: "CANCELED",
+  Error: "ERROR",
+  Initializing: "INITIALIZING",
+  Queued: "QUEUED",
+  Ready: "READY",
+} as const;
+export type CreateProjectProjectsReadyState = ClosedEnum<
+  typeof CreateProjectProjectsReadyState
+>;
+
+export const CreateProjectProjectsReadySubstate = {
+  Promoted: "PROMOTED",
+  Rolling: "ROLLING",
+  Staged: "STAGED",
+} as const;
+export type CreateProjectProjectsReadySubstate = ClosedEnum<
+  typeof CreateProjectProjectsReadySubstate
+>;
+
+export const CreateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType =
+  {
+    Lambdas: "LAMBDAS",
+  } as const;
+export type CreateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType =
+  ClosedEnum<
+    typeof CreateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType
+  >;
+
+export type CreateProjectTargets = {
+  alias?: Array<string> | undefined;
+  aliasAssigned?: CreateProjectAliasAssigned | null | undefined;
+  aliasError?: CreateProjectProjectsAliasError | null | undefined;
+  aliasFinal?: string | null | undefined;
+  automaticAliases?: Array<string> | undefined;
+  branchMatcher?: CreateProjectProjectsResponseBranchMatcher | undefined;
+  buildingAt?: number | undefined;
+  builds?: Array<CreateProjectProjectsBuilds> | undefined;
+  checksConclusion?: CreateProjectProjectsChecksConclusion | undefined;
+  checksState?: CreateProjectProjectsChecksState | undefined;
+  connectBuildsEnabled?: boolean | undefined;
+  connectConfigurationId?: string | undefined;
+  createdAt: number;
+  createdIn: string;
+  creator: CreateProjectProjectsResponseCreator | null;
+  deletedAt?: number | undefined;
+  deploymentHostname: string;
+  forced?: boolean | undefined;
+  id: string;
+  meta?: { [k: string]: string } | undefined;
+  monorepoManager?: string | null | undefined;
+  name: string;
+  oidcTokenClaims?: CreateProjectProjectsOidcTokenClaims | undefined;
+  plan: CreateProjectProjectsPlan;
+  /**
+   * Whether or not preview comments are enabled for the deployment
+   */
+  previewCommentsEnabled?: boolean | undefined;
+  private: boolean;
+  readyAt?: number | undefined;
+  readyState: CreateProjectProjectsReadyState;
+  readySubstate?: CreateProjectProjectsReadySubstate | undefined;
+  requestedAt?: number | undefined;
+  target?: string | null | undefined;
+  teamId?: string | null | undefined;
+  type: CreateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType;
+  url: string;
+  /**
+   * Present for user creators; omitted for app/integration/system creators.
+   */
+  userId?: string | undefined;
+  withCache?: boolean | undefined;
+};
+
 export const CreateProjectTier = {
-  Advanced: "advanced",
-  Critical: "critical",
   Priority: "priority",
 } as const;
 export type CreateProjectTier = ClosedEnum<typeof CreateProjectTier>;
@@ -460,6 +577,9 @@ export type CreateProjectResponseBody = {
   passport?: CreateProjectPassport | null | undefined;
   passwordProtection?: CreateProjectPasswordProtection | null | undefined;
   paused?: boolean | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
   permissions?: CreateProjectPermissions | undefined;
   productionDeploymentsFastLane?: boolean | undefined;
   protectedSourcemaps?: boolean | undefined;
@@ -502,6 +622,158 @@ export type CreateProjectResponseBody = {
   v0Created?: boolean | undefined;
   webAnalytics?: CreateProjectWebAnalytics | undefined;
 };
+
+/** @internal */
+export const CreateProjectProjectsResponseCreator$inboundSchema: z.ZodType<
+  CreateProjectProjectsResponseCreator,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  email: types.string(),
+  githubLogin: types.optional(types.string()),
+  gitlabLogin: types.optional(types.string()),
+  uid: types.string(),
+  username: types.string(),
+});
+
+export function createProjectProjectsResponseCreatorFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectProjectsResponseCreator, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateProjectProjectsResponseCreator$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectProjectsResponseCreator' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectProjectsOidcTokenClaims$inboundSchema: z.ZodType<
+  CreateProjectProjectsOidcTokenClaims,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  aud: types.string(),
+  custom_environment_id: types.optional(types.string()),
+  environment: types.string(),
+  iss: types.string(),
+  mfe_group_ids: types.optional(z.array(types.string())),
+  owner: types.string(),
+  owner_id: types.string(),
+  plan: types.optional(types.string()),
+  project: types.string(),
+  project_id: types.string(),
+  scope: types.string(),
+  sub: types.string(),
+}).transform((v) => {
+  return remap$(v, {
+    "custom_environment_id": "customEnvironmentId",
+    "mfe_group_ids": "mfeGroupIds",
+    "owner_id": "ownerId",
+    "project_id": "projectId",
+  });
+});
+
+export function createProjectProjectsOidcTokenClaimsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectProjectsOidcTokenClaims, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateProjectProjectsOidcTokenClaims$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectProjectsOidcTokenClaims' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectProjectsPlan$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectProjectsPlan
+> = z.nativeEnum(CreateProjectProjectsPlan);
+
+/** @internal */
+export const CreateProjectProjectsReadyState$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectProjectsReadyState
+> = z.nativeEnum(CreateProjectProjectsReadyState);
+
+/** @internal */
+export const CreateProjectProjectsReadySubstate$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectProjectsReadySubstate
+> = z.nativeEnum(CreateProjectProjectsReadySubstate);
+
+/** @internal */
+export const CreateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType
+  > = z.nativeEnum(
+    CreateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType,
+  );
+
+/** @internal */
+export const CreateProjectTargets$inboundSchema: z.ZodType<
+  CreateProjectTargets,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  alias: types.optional(z.array(types.string())),
+  aliasAssigned: z.nullable(CreateProjectAliasAssigned$inboundSchema)
+    .optional(),
+  aliasError: z.nullable(CreateProjectProjectsAliasError$inboundSchema)
+    .optional(),
+  aliasFinal: z.nullable(types.string()).optional(),
+  automaticAliases: types.optional(z.array(types.string())),
+  branchMatcher: types.optional(
+    CreateProjectProjectsResponseBranchMatcher$inboundSchema,
+  ),
+  buildingAt: types.optional(types.number()),
+  builds: types.optional(z.array(CreateProjectProjectsBuilds$inboundSchema)),
+  checksConclusion: types.optional(
+    CreateProjectProjectsChecksConclusion$inboundSchema,
+  ),
+  checksState: types.optional(CreateProjectProjectsChecksState$inboundSchema),
+  connectBuildsEnabled: types.optional(types.boolean()),
+  connectConfigurationId: types.optional(types.string()),
+  createdAt: types.number(),
+  createdIn: types.string(),
+  creator: types.nullable(
+    z.lazy(() => CreateProjectProjectsResponseCreator$inboundSchema),
+  ),
+  deletedAt: types.optional(types.number()),
+  deploymentHostname: types.string(),
+  forced: types.optional(types.boolean()),
+  id: types.string(),
+  meta: types.optional(z.record(types.string())),
+  monorepoManager: z.nullable(types.string()).optional(),
+  name: types.string(),
+  oidcTokenClaims: types.optional(
+    z.lazy(() => CreateProjectProjectsOidcTokenClaims$inboundSchema),
+  ),
+  plan: CreateProjectProjectsPlan$inboundSchema,
+  previewCommentsEnabled: types.optional(types.boolean()),
+  private: types.boolean(),
+  readyAt: types.optional(types.number()),
+  readyState: CreateProjectProjectsReadyState$inboundSchema,
+  readySubstate: types.optional(
+    CreateProjectProjectsReadySubstate$inboundSchema,
+  ),
+  requestedAt: types.optional(types.number()),
+  target: z.nullable(types.string()).optional(),
+  teamId: z.nullable(types.string()).optional(),
+  type:
+    CreateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType$inboundSchema,
+  url: types.string(),
+  userId: types.optional(types.string()),
+  withCache: types.optional(types.boolean()),
+});
+
+export function createProjectTargetsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectTargets, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectTargets$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectTargets' from JSON`,
+  );
+}
 
 /** @internal */
 export const CreateProjectTier$inboundSchema: z.ZodNativeEnum<
@@ -1124,7 +1396,7 @@ export const CreateProjectResponseBody$inboundSchema: z.ZodType<
     .optional(),
   staticIps: types.optional(CreateProjectStaticIps$inboundSchema),
   targets: types.optional(
-    z.record(types.nullable(CreateProjectTargets$inboundSchema)),
+    z.record(types.nullable(z.lazy(() => CreateProjectTargets$inboundSchema))),
   ),
   tier: types.optional(CreateProjectTier$inboundSchema),
   tracing: types.optional(z.lazy(() => CreateProjectTracing$inboundSchema)),

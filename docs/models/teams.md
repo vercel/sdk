@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Teams } from "@vercel/sdk/models/previousrule.js";
+import { Teams } from "@vercel/sdk/models/payloadtarget.js";
 
 let value: Teams = {
   confirmed: true,
@@ -24,8 +24,8 @@ let value: Teams = {
 | `confirmedAt`                                                                            | *number*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |
 | `created`                                                                                | *number*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |
 | `createdAt`                                                                              | *number*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `joinedFrom`                                                                             | [models.UserEventPayload171JoinedFrom](../models/usereventpayload171joinedfrom.md)       | :heavy_minus_sign:                                                                       | N/A                                                                                      |
-| `role`                                                                                   | [models.UserEventPayload171Role](../models/usereventpayload171role.md)                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `joinedFrom`                                                                             | [models.UserEventPayload174JoinedFrom](../models/usereventpayload174joinedfrom.md)       | :heavy_minus_sign:                                                                       | N/A                                                                                      |
+| `role`                                                                                   | [models.UserEventPayload174Role](../models/usereventpayload174role.md)                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
 | `teamId`                                                                                 | *string*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |
 | `teamPermissions`                                                                        | [models.UserEventPayloadTeamPermissions](../models/usereventpayloadteampermissions.md)[] | :heavy_minus_sign:                                                                       | N/A                                                                                      |
 | `teamRoles`                                                                              | [models.UserEventPayloadTeamRoles](../models/usereventpayloadteamroles.md)[]             | :heavy_minus_sign:                                                                       | N/A                                                                                      |

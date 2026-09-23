@@ -14,6 +14,6 @@ let value: SearchDomainsResponseBody = {
 
 ## Fields
 
-| Field                           | Type                            | Required                        | Description                     |
-| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
-| `results`                       | *models.SearchDomainsResults*[] | :heavy_check_mark:              | N/A                             |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `results`          | *models.Results*[] | :heavy_check_mark: | N/A                |

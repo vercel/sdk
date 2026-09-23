@@ -5,34 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndTwentySix } from "@vercel/sdk/models/payloaddefault.js";
+import { TwoHundredAndTwentySix } from "@vercel/sdk/models/twohundredandfifteen.js";
 
 let value: TwoHundredAndTwentySix = {
-  connectorId: "<id>",
-  connectorService: "<value>",
-  connectorType: "<value>",
-  environment: "<value>",
-  externalIssuer: "<value>",
-  externalSubject: "<value>",
-  host: "spotless-attraction.net",
+  justification: "<value>",
+  previousStatus: "<value>",
   projectId: "<id>",
-  sessionId: "<id>",
+  url: "https://aware-repeat.info",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `connectorId`      | *string*           | :heavy_check_mark: | N/A                |
-| `connectorService` | *string*           | :heavy_check_mark: | N/A                |
-| `connectorType`    | *string*           | :heavy_check_mark: | N/A                |
-| `emailVerified`    | *boolean*          | :heavy_minus_sign: | N/A                |
-| `environment`      | *string*           | :heavy_check_mark: | N/A                |
-| `externalIssuer`   | *string*           | :heavy_check_mark: | N/A                |
-| `externalSubject`  | *string*           | :heavy_check_mark: | N/A                |
-| `host`             | *string*           | :heavy_check_mark: | N/A                |
-| `installationId`   | *string*           | :heavy_minus_sign: | N/A                |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `sessionId`        | *string*           | :heavy_check_mark: | N/A                |
-| `tenantId`         | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `approvalScope`                                                  | [models.ApprovalScope](../models/approvalscope.md)               | :heavy_minus_sign:                                               | N/A                                                              |
+| `justification`                                                  | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `kind`                                                           | [models.UserEventPayloadKind](../models/usereventpayloadkind.md) | :heavy_minus_sign:                                               | N/A                                                              |
+| `previousStatus`                                                 | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `projectId`                                                      | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `url`                                                            | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |

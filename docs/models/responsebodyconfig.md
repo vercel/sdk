@@ -5,7 +5,7 @@ Since February 2025 the configuration must include snapshot data at the time of 
 ## Example Usage
 
 ```typescript
-import { ResponseBodyConfig } from "@vercel/sdk/models/responsebodyimages.js";
+import { ResponseBodyConfig } from "@vercel/sdk/models/createdeploymentgitsource1.js";
 
 let value: ResponseBodyConfig = {
   functionMemoryType: "standard_legacy",

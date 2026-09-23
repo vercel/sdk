@@ -122,6 +122,7 @@ export type AggregatePageviewsRequest = {
 };
 
 export type Data2 = {
+  affinityOutcome: string;
   aiGatewayModelId: string;
   aiModel: string;
   aiModelType: string;
@@ -158,6 +159,7 @@ export type Data2 = {
   clientIp: string;
   clientIpCountry: string;
   clientJa4Digest: string;
+  clientSessionId: string;
   clientUserAgent: string;
   codingAgent: string;
   commitSha: string;
@@ -209,6 +211,7 @@ export type Data2 = {
   inferenceGeoRegion: string;
   inferenceProviderRegion: string;
   inferenceScope: string;
+  invokeSource: string;
   isAdditionalRequest: string;
   isByok: string;
   isPrefetchRequest: string;
@@ -294,12 +297,25 @@ export type Data2 = {
   runtime: string;
   sandboxName: string;
   sandboxSessionId: string;
+  scheduleEventType: string;
+  scheduleExecutionId: string;
+  scheduleExpressionType: string;
+  scheduleId: string;
+  scheduleName: string;
+  scheduleNamespace: string;
+  scheduleSource: string;
+  scheduleTarget: string;
+  scheduleTargetType: string;
+  scheduleTimezone: string;
+  scheduleTrack: string;
   sdkKeyEnvironment: string;
   sdkKeyId: string;
   servedSpeed: string;
   serverActionName: string;
   service: string;
   sessionId: string;
+  singleAtInput: string;
+  singleAtResolution: string;
   skewProtection: string;
   source: string;
   sourceImage: string;
@@ -347,6 +363,7 @@ export type Data2 = {
 };
 
 export type Data1 = {
+  affinityOutcome?: string | undefined;
   aiGatewayModelId?: string | undefined;
   aiModel?: string | undefined;
   aiModelType?: string | undefined;
@@ -383,6 +400,7 @@ export type Data1 = {
   clientIp?: string | undefined;
   clientIpCountry?: string | undefined;
   clientJa4Digest?: string | undefined;
+  clientSessionId?: string | undefined;
   clientUserAgent?: string | undefined;
   codingAgent?: string | undefined;
   commitSha?: string | undefined;
@@ -434,6 +452,7 @@ export type Data1 = {
   inferenceGeoRegion?: string | undefined;
   inferenceProviderRegion?: string | undefined;
   inferenceScope?: string | undefined;
+  invokeSource?: string | undefined;
   isAdditionalRequest?: string | undefined;
   isByok?: string | undefined;
   isPrefetchRequest?: string | undefined;
@@ -519,12 +538,25 @@ export type Data1 = {
   runtime?: string | undefined;
   sandboxName?: string | undefined;
   sandboxSessionId?: string | undefined;
+  scheduleEventType?: string | undefined;
+  scheduleExecutionId?: string | undefined;
+  scheduleExpressionType?: string | undefined;
+  scheduleId?: string | undefined;
+  scheduleName?: string | undefined;
+  scheduleNamespace?: string | undefined;
+  scheduleSource?: string | undefined;
+  scheduleTarget?: string | undefined;
+  scheduleTargetType?: string | undefined;
+  scheduleTimezone?: string | undefined;
+  scheduleTrack?: string | undefined;
   sdkKeyEnvironment?: string | undefined;
   sdkKeyId?: string | undefined;
   servedSpeed?: string | undefined;
   serverActionName?: string | undefined;
   service?: string | undefined;
   sessionId?: string | undefined;
+  singleAtInput?: string | undefined;
+  singleAtResolution?: string | undefined;
   skewProtection?: string | undefined;
   source?: string | undefined;
   sourceImage?: string | undefined;
@@ -690,6 +722,7 @@ export function aggregatePageviewsRequestToJSON(
 export const Data2$inboundSchema: z.ZodType<Data2, z.ZodTypeDef, unknown> =
   collectExtraKeys$(
     z.object({
+      affinityOutcome: types.string(),
       aiGatewayModelId: types.string(),
       aiModel: types.string(),
       aiModelType: types.string(),
@@ -726,6 +759,7 @@ export const Data2$inboundSchema: z.ZodType<Data2, z.ZodTypeDef, unknown> =
       clientIp: types.string(),
       clientIpCountry: types.string(),
       clientJa4Digest: types.string(),
+      clientSessionId: types.string(),
       clientUserAgent: types.string(),
       codingAgent: types.string(),
       commitSha: types.string(),
@@ -777,6 +811,7 @@ export const Data2$inboundSchema: z.ZodType<Data2, z.ZodTypeDef, unknown> =
       inferenceGeoRegion: types.string(),
       inferenceProviderRegion: types.string(),
       inferenceScope: types.string(),
+      invokeSource: types.string(),
       isAdditionalRequest: types.string(),
       isByok: types.string(),
       isPrefetchRequest: types.string(),
@@ -862,12 +897,25 @@ export const Data2$inboundSchema: z.ZodType<Data2, z.ZodTypeDef, unknown> =
       runtime: types.string(),
       sandboxName: types.string(),
       sandboxSessionId: types.string(),
+      scheduleEventType: types.string(),
+      scheduleExecutionId: types.string(),
+      scheduleExpressionType: types.string(),
+      scheduleId: types.string(),
+      scheduleName: types.string(),
+      scheduleNamespace: types.string(),
+      scheduleSource: types.string(),
+      scheduleTarget: types.string(),
+      scheduleTargetType: types.string(),
+      scheduleTimezone: types.string(),
+      scheduleTrack: types.string(),
       sdkKeyEnvironment: types.string(),
       sdkKeyId: types.string(),
       servedSpeed: types.string(),
       serverActionName: types.string(),
       service: types.string(),
       sessionId: types.string(),
+      singleAtInput: types.string(),
+      singleAtResolution: types.string(),
       skewProtection: types.string(),
       source: types.string(),
       sourceImage: types.string(),
@@ -929,6 +977,7 @@ export function data2FromJSON(
 /** @internal */
 export const Data1$inboundSchema: z.ZodType<Data1, z.ZodTypeDef, unknown> = z
   .object({
+    affinityOutcome: types.optional(types.string()),
     aiGatewayModelId: types.optional(types.string()),
     aiModel: types.optional(types.string()),
     aiModelType: types.optional(types.string()),
@@ -965,6 +1014,7 @@ export const Data1$inboundSchema: z.ZodType<Data1, z.ZodTypeDef, unknown> = z
     clientIp: types.optional(types.string()),
     clientIpCountry: types.optional(types.string()),
     clientJa4Digest: types.optional(types.string()),
+    clientSessionId: types.optional(types.string()),
     clientUserAgent: types.optional(types.string()),
     codingAgent: types.optional(types.string()),
     commitSha: types.optional(types.string()),
@@ -1016,6 +1066,7 @@ export const Data1$inboundSchema: z.ZodType<Data1, z.ZodTypeDef, unknown> = z
     inferenceGeoRegion: types.optional(types.string()),
     inferenceProviderRegion: types.optional(types.string()),
     inferenceScope: types.optional(types.string()),
+    invokeSource: types.optional(types.string()),
     isAdditionalRequest: types.optional(types.string()),
     isByok: types.optional(types.string()),
     isPrefetchRequest: types.optional(types.string()),
@@ -1101,12 +1152,25 @@ export const Data1$inboundSchema: z.ZodType<Data1, z.ZodTypeDef, unknown> = z
     runtime: types.optional(types.string()),
     sandboxName: types.optional(types.string()),
     sandboxSessionId: types.optional(types.string()),
+    scheduleEventType: types.optional(types.string()),
+    scheduleExecutionId: types.optional(types.string()),
+    scheduleExpressionType: types.optional(types.string()),
+    scheduleId: types.optional(types.string()),
+    scheduleName: types.optional(types.string()),
+    scheduleNamespace: types.optional(types.string()),
+    scheduleSource: types.optional(types.string()),
+    scheduleTarget: types.optional(types.string()),
+    scheduleTargetType: types.optional(types.string()),
+    scheduleTimezone: types.optional(types.string()),
+    scheduleTrack: types.optional(types.string()),
     sdkKeyEnvironment: types.optional(types.string()),
     sdkKeyId: types.optional(types.string()),
     servedSpeed: types.optional(types.string()),
     serverActionName: types.optional(types.string()),
     service: types.optional(types.string()),
     sessionId: types.optional(types.string()),
+    singleAtInput: types.optional(types.string()),
+    singleAtResolution: types.optional(types.string()),
     skewProtection: types.optional(types.string()),
     source: types.optional(types.string()),
     sourceImage: types.optional(types.string()),

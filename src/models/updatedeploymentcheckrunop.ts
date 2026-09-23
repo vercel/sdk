@@ -210,17 +210,25 @@ export type UpdateDeploymentCheckRunSourceChecksV2Origin = ClosedEnum<
   typeof UpdateDeploymentCheckRunSourceChecksV2Origin
 >;
 
-export const UpdateDeploymentCheckRunSourceChecksV2Response200Kind = {
-  Job: "job",
-} as const;
-export type UpdateDeploymentCheckRunSourceChecksV2Response200Kind = ClosedEnum<
-  typeof UpdateDeploymentCheckRunSourceChecksV2Response200Kind
->;
-
-export type UpdateDeploymentCheckRunSourceSelection = {
+export type UpdateDeploymentCheckRunSelection3 = {
   job: string;
-  kind: UpdateDeploymentCheckRunSourceChecksV2Response200Kind;
+  kind: "task";
+  task: string;
 };
+
+export type UpdateDeploymentCheckRunSelection2 = {
+  job: string;
+  kind: "job";
+};
+
+export type UpdateDeploymentCheckRunSelection1 = {
+  kind: "invocation";
+};
+
+export type UpdateDeploymentCheckRunSourceSelection =
+  | UpdateDeploymentCheckRunSelection1
+  | UpdateDeploymentCheckRunSelection2
+  | UpdateDeploymentCheckRunSelection3;
 
 export const UpdateDeploymentCheckRunSourceChecksV2SubKind = {
   VercelCiCheck: "vercel-ci-check",
@@ -234,7 +242,10 @@ export type UpdateDeploymentCheckRunSourceChecksV2SubKind = ClosedEnum<
  */
 export type UpdateDeploymentCheckRunSource5 = {
   origin: UpdateDeploymentCheckRunSourceChecksV2Origin;
-  selection: UpdateDeploymentCheckRunSourceSelection;
+  selection:
+    | UpdateDeploymentCheckRunSelection1
+    | UpdateDeploymentCheckRunSelection2
+    | UpdateDeploymentCheckRunSelection3;
   subKind: UpdateDeploymentCheckRunSourceChecksV2SubKind;
 };
 
@@ -637,20 +648,78 @@ export const UpdateDeploymentCheckRunSourceChecksV2Origin$inboundSchema:
     .nativeEnum(UpdateDeploymentCheckRunSourceChecksV2Origin);
 
 /** @internal */
-export const UpdateDeploymentCheckRunSourceChecksV2Response200Kind$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateDeploymentCheckRunSourceChecksV2Response200Kind
-  > = z.nativeEnum(UpdateDeploymentCheckRunSourceChecksV2Response200Kind);
+export const UpdateDeploymentCheckRunSelection3$inboundSchema: z.ZodType<
+  UpdateDeploymentCheckRunSelection3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  job: types.string(),
+  kind: types.literal("task"),
+  task: types.string(),
+});
+
+export function updateDeploymentCheckRunSelection3FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateDeploymentCheckRunSelection3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateDeploymentCheckRunSelection3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateDeploymentCheckRunSelection3' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateDeploymentCheckRunSelection2$inboundSchema: z.ZodType<
+  UpdateDeploymentCheckRunSelection2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  job: types.string(),
+  kind: types.literal("job"),
+});
+
+export function updateDeploymentCheckRunSelection2FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateDeploymentCheckRunSelection2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateDeploymentCheckRunSelection2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateDeploymentCheckRunSelection2' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateDeploymentCheckRunSelection1$inboundSchema: z.ZodType<
+  UpdateDeploymentCheckRunSelection1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  kind: types.literal("invocation"),
+});
+
+export function updateDeploymentCheckRunSelection1FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateDeploymentCheckRunSelection1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateDeploymentCheckRunSelection1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateDeploymentCheckRunSelection1' from JSON`,
+  );
+}
 
 /** @internal */
 export const UpdateDeploymentCheckRunSourceSelection$inboundSchema: z.ZodType<
   UpdateDeploymentCheckRunSourceSelection,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  job: types.string(),
-  kind: UpdateDeploymentCheckRunSourceChecksV2Response200Kind$inboundSchema,
-});
+> = z.union([
+  z.lazy(() => UpdateDeploymentCheckRunSelection1$inboundSchema),
+  z.lazy(() => UpdateDeploymentCheckRunSelection2$inboundSchema),
+  z.lazy(() => UpdateDeploymentCheckRunSelection3$inboundSchema),
+]);
 
 export function updateDeploymentCheckRunSourceSelectionFromJSON(
   jsonString: string,
@@ -680,9 +749,11 @@ export const UpdateDeploymentCheckRunSource5$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   origin: UpdateDeploymentCheckRunSourceChecksV2Origin$inboundSchema,
-  selection: z.lazy(() =>
-    UpdateDeploymentCheckRunSourceSelection$inboundSchema
-  ),
+  selection: z.union([
+    z.lazy(() => UpdateDeploymentCheckRunSelection1$inboundSchema),
+    z.lazy(() => UpdateDeploymentCheckRunSelection2$inboundSchema),
+    z.lazy(() => UpdateDeploymentCheckRunSelection3$inboundSchema),
+  ]),
   subKind: UpdateDeploymentCheckRunSourceChecksV2SubKind$inboundSchema,
 });
 

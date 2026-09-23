@@ -130,7 +130,7 @@ export type RequestAccessToTeamTeamsJoinedFrom = {
 export type RequestAccessToTeamResponseBody = {
   accessRequestedAt?: number | undefined;
   bitbucket: Bitbucket | null;
-  confirmed?: boolean | undefined;
+  confirmed: boolean;
   github: Github | null;
   gitlab: Gitlab | null;
   joinedFrom?: RequestAccessToTeamTeamsJoinedFrom | undefined;
@@ -360,7 +360,7 @@ export const RequestAccessToTeamResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   accessRequestedAt: types.optional(types.number()),
   bitbucket: types.nullable(z.lazy(() => Bitbucket$inboundSchema)),
-  confirmed: types.optional(types.boolean()),
+  confirmed: types.boolean(),
   github: types.nullable(z.lazy(() => Github$inboundSchema)),
   gitlab: types.nullable(z.lazy(() => Gitlab$inboundSchema)),
   joinedFrom: types.optional(

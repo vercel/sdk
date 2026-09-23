@@ -171,17 +171,22 @@ export const SourceOrigin = {
 } as const;
 export type SourceOrigin = ClosedEnum<typeof SourceOrigin>;
 
-export const CreateDeploymentCheckRunSourceChecksV2Response200Kind = {
-  Job: "job",
-} as const;
-export type CreateDeploymentCheckRunSourceChecksV2Response200Kind = ClosedEnum<
-  typeof CreateDeploymentCheckRunSourceChecksV2Response200Kind
->;
-
-export type Selection = {
+export type Selection3 = {
   job: string;
-  kind: CreateDeploymentCheckRunSourceChecksV2Response200Kind;
+  kind: "task";
+  task: string;
 };
+
+export type Selection2 = {
+  job: string;
+  kind: "job";
+};
+
+export type Selection1 = {
+  kind: "invocation";
+};
+
+export type Selection = Selection1 | Selection2 | Selection3;
 
 export const SourceSubKind = {
   VercelCiCheck: "vercel-ci-check",
@@ -193,7 +198,7 @@ export type SourceSubKind = ClosedEnum<typeof SourceSubKind>;
  */
 export type CreateDeploymentCheckRunSource5 = {
   origin: SourceOrigin;
-  selection: Selection;
+  selection: Selection1 | Selection2 | Selection3;
   subKind: SourceSubKind;
 };
 
@@ -548,20 +553,75 @@ export const SourceOrigin$inboundSchema: z.ZodNativeEnum<typeof SourceOrigin> =
   z.nativeEnum(SourceOrigin);
 
 /** @internal */
-export const CreateDeploymentCheckRunSourceChecksV2Response200Kind$inboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateDeploymentCheckRunSourceChecksV2Response200Kind
-  > = z.nativeEnum(CreateDeploymentCheckRunSourceChecksV2Response200Kind);
+export const Selection3$inboundSchema: z.ZodType<
+  Selection3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  job: types.string(),
+  kind: types.literal("task"),
+  task: types.string(),
+});
+
+export function selection3FromJSON(
+  jsonString: string,
+): SafeParseResult<Selection3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Selection3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Selection3' from JSON`,
+  );
+}
+
+/** @internal */
+export const Selection2$inboundSchema: z.ZodType<
+  Selection2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  job: types.string(),
+  kind: types.literal("job"),
+});
+
+export function selection2FromJSON(
+  jsonString: string,
+): SafeParseResult<Selection2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Selection2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Selection2' from JSON`,
+  );
+}
+
+/** @internal */
+export const Selection1$inboundSchema: z.ZodType<
+  Selection1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  kind: types.literal("invocation"),
+});
+
+export function selection1FromJSON(
+  jsonString: string,
+): SafeParseResult<Selection1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Selection1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Selection1' from JSON`,
+  );
+}
 
 /** @internal */
 export const Selection$inboundSchema: z.ZodType<
   Selection,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  job: types.string(),
-  kind: CreateDeploymentCheckRunSourceChecksV2Response200Kind$inboundSchema,
-});
+> = z.union([
+  z.lazy(() => Selection1$inboundSchema),
+  z.lazy(() => Selection2$inboundSchema),
+  z.lazy(() => Selection3$inboundSchema),
+]);
 
 export function selectionFromJSON(
   jsonString: string,
@@ -585,7 +645,11 @@ export const CreateDeploymentCheckRunSource5$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   origin: SourceOrigin$inboundSchema,
-  selection: z.lazy(() => Selection$inboundSchema),
+  selection: z.union([
+    z.lazy(() => Selection1$inboundSchema),
+    z.lazy(() => Selection2$inboundSchema),
+    z.lazy(() => Selection3$inboundSchema),
+  ]),
   subKind: SourceSubKind$inboundSchema,
 });
 

@@ -5,31 +5,43 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndEightyOne } from "@vercel/sdk/models/usereventpayload171newownerfeatureblocksworkfloweventsblockreason.js";
+import { OneHundredAndEightyOne } from "@vercel/sdk/models/usereventpayload174newownerfeatureblockssourceimagesblockreason.js";
 
 let value: OneHundredAndEightyOne = {
   configurationId: "<id>",
+  databaseName: "<value>",
+  errorCode: "<value>",
+  failedQueryIndex: 4.75,
   integrationId: "<id>",
   integrationProductSlug: "<value>",
   integrationSlug: "<value>",
-  resourceId: "<id>",
-  keys: [
-    "<value 1>",
-    "<value 2>",
+  queries: [
+    {
+      command: "<value>",
+    },
   ],
-  requestKind: "get_keys_metadata",
+  queryCount: 6303.85,
+  queryType: "schema",
+  readonly: false,
+  resourceId: "<id>",
+  rolledBack: true,
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `configurationId`                                                              | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `errorCode`                                                                    | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
-| `integrationId`                                                                | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `integrationProductSlug`                                                       | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `integrationSlug`                                                              | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `resourceId`                                                                   | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `keys`                                                                         | *string*[]                                                                     | :heavy_check_mark:                                                             | N/A                                                                            |
-| `requestKind`                                                                  | [models.UserEventPayloadRequestKind](../models/usereventpayloadrequestkind.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                                      | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `configurationId`                          | *string*                                   | :heavy_check_mark:                         | N/A                                        |
+| `databaseName`                             | *string*                                   | :heavy_check_mark:                         | N/A                                        |
+| `errorCode`                                | *string*                                   | :heavy_check_mark:                         | N/A                                        |
+| `failedQueryIndex`                         | *number*                                   | :heavy_check_mark:                         | N/A                                        |
+| `integrationId`                            | *string*                                   | :heavy_check_mark:                         | N/A                                        |
+| `integrationProductSlug`                   | *string*                                   | :heavy_check_mark:                         | N/A                                        |
+| `integrationSlug`                          | *string*                                   | :heavy_check_mark:                         | N/A                                        |
+| `queries`                                  | [models.Queries](../models/queries.md)[]   | :heavy_check_mark:                         | N/A                                        |
+| `queryCount`                               | *number*                                   | :heavy_check_mark:                         | N/A                                        |
+| `queryType`                                | [models.QueryType](../models/querytype.md) | :heavy_check_mark:                         | N/A                                        |
+| `readonly`                                 | *boolean*                                  | :heavy_check_mark:                         | N/A                                        |
+| `resourceId`                               | *string*                                   | :heavy_check_mark:                         | N/A                                        |
+| `rolledBack`                               | *boolean*                                  | :heavy_check_mark:                         | N/A                                        |

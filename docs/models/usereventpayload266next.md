@@ -3,17 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload266Next } from "@vercel/sdk/models/payloaddefault.js";
+import { UserEventPayload266Next } from "@vercel/sdk/models/twohundredandfifteen.js";
 
-let value: UserEventPayload266Next = {
-  functionDefaultRegions: [
-    "<value 1>",
-  ],
-};
+let value: UserEventPayload266Next = {};
 ```
 
 ## Fields
 
-| Field                    | Type                     | Required                 | Description              |
-| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
-| `functionDefaultRegions` | *string*[]               | :heavy_check_mark:       | N/A                      |
+| Field                                              | Type                                               | Required                                           | Description                                        |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| `branchMatcher`                                    | [models.BranchMatcher](../models/branchmatcher.md) | :heavy_minus_sign:                                 | N/A                                                |

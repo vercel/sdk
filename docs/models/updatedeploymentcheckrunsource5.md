@@ -10,8 +10,9 @@ import { UpdateDeploymentCheckRunSource5 } from "@vercel/sdk/models/updatedeploy
 let value: UpdateDeploymentCheckRunSource5 = {
   origin: "api",
   selection: {
-    job: "Legacy Applications Administrator",
-    kind: "job",
+    job: "Central Group Architect",
+    kind: "task",
+    task: "<value>",
   },
   subKind: "vercel-ci-check",
 };
@@ -22,5 +23,5 @@ let value: UpdateDeploymentCheckRunSource5 = {
 | Field                                                                                                              | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
 | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
 | `origin`                                                                                                           | [models.UpdateDeploymentCheckRunSourceChecksV2Origin](../models/updatedeploymentcheckrunsourcechecksv2origin.md)   | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
-| `selection`                                                                                                        | [models.UpdateDeploymentCheckRunSourceSelection](../models/updatedeploymentcheckrunsourceselection.md)             | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
+| `selection`                                                                                                        | *models.UpdateDeploymentCheckRunSourceSelection*                                                                   | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
 | `subKind`                                                                                                          | [models.UpdateDeploymentCheckRunSourceChecksV2SubKind](../models/updatedeploymentcheckrunsourcechecksv2subkind.md) | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |

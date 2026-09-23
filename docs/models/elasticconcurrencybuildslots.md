@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ElasticConcurrencyBuildSlots } from "@vercel/sdk/models/previousrule.js";
+import { ElasticConcurrencyBuildSlots } from "@vercel/sdk/models/payloadtarget.js";
 
 let value: ElasticConcurrencyBuildSlots = {
   currentThreshold: 3569.2,

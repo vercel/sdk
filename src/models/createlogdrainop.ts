@@ -131,7 +131,22 @@ export type CreateLogDrainSource2 = {
   resourceId?: string | undefined;
 };
 
+/**
+ * Informational marker for a system-owned default drain.
+ */
+export const SourceDefaultFor = {
+  EveTracing: "eve-tracing",
+} as const;
+/**
+ * Informational marker for a system-owned default drain.
+ */
+export type SourceDefaultFor = ClosedEnum<typeof SourceDefaultFor>;
+
 export type CreateLogDrainSource1 = {
+  /**
+   * Informational marker for a system-owned default drain.
+   */
+  defaultFor?: SourceDefaultFor | undefined;
   kind: "self-served";
 };
 
@@ -347,11 +362,17 @@ export function createLogDrainSource2FromJSON(
 }
 
 /** @internal */
+export const SourceDefaultFor$inboundSchema: z.ZodNativeEnum<
+  typeof SourceDefaultFor
+> = z.nativeEnum(SourceDefaultFor);
+
+/** @internal */
 export const CreateLogDrainSource1$inboundSchema: z.ZodType<
   CreateLogDrainSource1,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  defaultFor: types.optional(SourceDefaultFor$inboundSchema),
   kind: types.literal("self-served"),
 });
 

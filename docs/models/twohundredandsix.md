@@ -5,27 +5,28 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSix } from "@vercel/sdk/models/payloaddefault.js";
+import { TwoHundredAndSix } from "@vercel/sdk/models/sourceimages.js";
 
 let value: TwoHundredAndSix = {
-  enabled: true,
-  enforcedTeamIds: [
-    "<value 1>",
-  ],
-  organizationId: "<id>",
-  previousEnabled: false,
-  trigger: "saml_updated",
-  unenforcedTeamIds: [],
+  group: {
+    id: "<id>",
+    name: "<value>",
+    slug: "<value>",
+  },
+  prev: {
+    project: {},
+  },
+  project: {
+    id: "<id>",
+    name: "<value>",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                  | Type                                   | Required                               | Description                            |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| `enabled`                              | *boolean*                              | :heavy_check_mark:                     | N/A                                    |
-| `enforcedTeamIds`                      | *string*[]                             | :heavy_check_mark:                     | N/A                                    |
-| `organizationId`                       | *string*                               | :heavy_check_mark:                     | N/A                                    |
-| `previousEnabled`                      | *boolean*                              | :heavy_check_mark:                     | N/A                                    |
-| `trigger`                              | [models.Trigger](../models/trigger.md) | :heavy_check_mark:                     | N/A                                    |
-| `unenforcedTeamIds`                    | *string*[]                             | :heavy_check_mark:                     | N/A                                    |
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `group`                                                                      | [models.PayloadGroup](../models/payloadgroup.md)                             | :heavy_check_mark:                                                           | N/A                                                                          |
+| `prev`                                                                       | [models.PayloadPrev](../models/payloadprev.md)                               | :heavy_check_mark:                                                           | N/A                                                                          |
+| `project`                                                                    | [models.UserEventPayload206Project](../models/usereventpayload206project.md) | :heavy_check_mark:                                                           | N/A                                                                          |

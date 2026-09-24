@@ -5,19 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFiftyEight } from "@vercel/sdk/models/previousrule.js";
+import { OneHundredAndFiftyEight } from "@vercel/sdk/models/usereventjobaction.js";
 
 let value: OneHundredAndFiftyEight = {
-  projectId: "<id>",
-  scope: "<value>",
-  source: "<value>",
+  key: "<key>",
+  organizationId: "<id>",
+  provider: "<value>",
+  repository: "<value>",
+  visibility: "config",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `scope`            | *string*           | :heavy_check_mark: | N/A                |
-| `source`           | *string*           | :heavy_check_mark: | N/A                |
+| Field                                        | Type                                         | Required                                     | Description                                  |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| `changedFields`                              | *string*[]                                   | :heavy_minus_sign:                           | N/A                                          |
+| `key`                                        | *string*                                     | :heavy_check_mark:                           | N/A                                          |
+| `organizationId`                             | *string*                                     | :heavy_check_mark:                           | N/A                                          |
+| `provider`                                   | *string*                                     | :heavy_check_mark:                           | N/A                                          |
+| `repository`                                 | *string*                                     | :heavy_check_mark:                           | N/A                                          |
+| `visibility`                                 | [models.Visibility](../models/visibility.md) | :heavy_check_mark:                           | N/A                                          |

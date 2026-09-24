@@ -10,8 +10,46 @@ import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
-  UploadProjectAvatarFrom,
-  UploadProjectAvatarFrom$inboundSchema,
+  UploadProjectAvatarAbuse,
+  UploadProjectAvatarAbuse$inboundSchema,
+  UploadProjectAvatarAlias,
+  UploadProjectAvatarAlias$inboundSchema,
+  UploadProjectAvatarAnalytics,
+  UploadProjectAvatarAnalytics$inboundSchema,
+  UploadProjectAvatarBlobs,
+  UploadProjectAvatarBlobs$inboundSchema,
+  UploadProjectAvatarConnectConfigurations,
+  UploadProjectAvatarConnectConfigurations$inboundSchema,
+  UploadProjectAvatarCreator,
+  UploadProjectAvatarCreator$inboundSchema,
+  UploadProjectAvatarCrons,
+  UploadProjectAvatarCrons$inboundSchema,
+  UploadProjectAvatarCustomEnvironments,
+  UploadProjectAvatarCustomEnvironments$inboundSchema,
+  UploadProjectAvatarDataCache,
+  UploadProjectAvatarDataCache$inboundSchema,
+  UploadProjectAvatarDefaultResourceConfig,
+  UploadProjectAvatarDefaultResourceConfig$inboundSchema,
+  UploadProjectAvatarDeploymentExpiration,
+  UploadProjectAvatarDeploymentExpiration$inboundSchema,
+  UploadProjectAvatarDeploymentPolicy,
+  UploadProjectAvatarDeploymentPolicy$inboundSchema,
+  UploadProjectAvatarDismissedToasts,
+  UploadProjectAvatarDismissedToasts$inboundSchema,
+  UploadProjectAvatarEnv,
+  UploadProjectAvatarEnv$inboundSchema,
+  UploadProjectAvatarExpiration,
+  UploadProjectAvatarExpiration$inboundSchema,
+  UploadProjectAvatarFeatures,
+  UploadProjectAvatarFeatures$inboundSchema,
+  UploadProjectAvatarFramework,
+  UploadProjectAvatarFramework$inboundSchema,
+  UploadProjectAvatarGitComments,
+  UploadProjectAvatarGitComments$inboundSchema,
+  UploadProjectAvatarGitProviderOptions,
+  UploadProjectAvatarGitProviderOptions$inboundSchema,
+} from "./uploadprojectavatargitprovideroptions.js";
+import {
   UploadProjectAvatarInternalRoutes,
   UploadProjectAvatarInternalRoutes$inboundSchema,
   UploadProjectAvatarIpBuckets,
@@ -72,47 +110,47 @@ import {
   UploadProjectAvatarTracing$inboundSchema,
   UploadProjectAvatarTrustedIps,
   UploadProjectAvatarTrustedIps$inboundSchema,
-} from "./uploadprojectavatarfrom.js";
-import {
-  UploadProjectAvatarAbuse,
-  UploadProjectAvatarAbuse$inboundSchema,
-  UploadProjectAvatarAlias,
-  UploadProjectAvatarAlias$inboundSchema,
-  UploadProjectAvatarAnalytics,
-  UploadProjectAvatarAnalytics$inboundSchema,
-  UploadProjectAvatarBlobs,
-  UploadProjectAvatarBlobs$inboundSchema,
-  UploadProjectAvatarConnectConfigurations,
-  UploadProjectAvatarConnectConfigurations$inboundSchema,
-  UploadProjectAvatarCreator,
-  UploadProjectAvatarCreator$inboundSchema,
-  UploadProjectAvatarCrons,
-  UploadProjectAvatarCrons$inboundSchema,
-  UploadProjectAvatarCustomEnvironments,
-  UploadProjectAvatarCustomEnvironments$inboundSchema,
-  UploadProjectAvatarDataCache,
-  UploadProjectAvatarDataCache$inboundSchema,
-  UploadProjectAvatarDefaultResourceConfig,
-  UploadProjectAvatarDefaultResourceConfig$inboundSchema,
-  UploadProjectAvatarDeploymentExpiration,
-  UploadProjectAvatarDeploymentExpiration$inboundSchema,
-  UploadProjectAvatarDeploymentPolicy,
-  UploadProjectAvatarDeploymentPolicy$inboundSchema,
-  UploadProjectAvatarDismissedToasts,
-  UploadProjectAvatarDismissedToasts$inboundSchema,
-  UploadProjectAvatarEnv,
-  UploadProjectAvatarEnv$inboundSchema,
-  UploadProjectAvatarExpiration,
-  UploadProjectAvatarExpiration$inboundSchema,
-  UploadProjectAvatarFeatures,
-  UploadProjectAvatarFeatures$inboundSchema,
-  UploadProjectAvatarFramework,
-  UploadProjectAvatarFramework$inboundSchema,
-  UploadProjectAvatarGitComments,
-  UploadProjectAvatarGitComments$inboundSchema,
-  UploadProjectAvatarGitProviderOptions,
-  UploadProjectAvatarGitProviderOptions$inboundSchema,
-} from "./uploadprojectavatarhasvalue.js";
+} from "./uploadprojectavataroidcproviders.js";
+
+export const UploadProjectAvatarFromProjectsPreset = {
+  AllCustom: "all-custom",
+} as const;
+export type UploadProjectAvatarFromProjectsPreset = ClosedEnum<
+  typeof UploadProjectAvatarFromProjectsPreset
+>;
+
+/**
+ * The source envs on the trusted project that are allowed to access `to`.
+ */
+export type UploadProjectAvatarFrom2 = {
+  preset: UploadProjectAvatarFromProjectsPreset;
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs?: Array<string> | undefined;
+};
+
+export const UploadProjectAvatarFromPreset = {
+  AllCustom: "all-custom",
+} as const;
+export type UploadProjectAvatarFromPreset = ClosedEnum<
+  typeof UploadProjectAvatarFromPreset
+>;
+
+/**
+ * The source envs on the trusted project that are allowed to access `to`.
+ */
+export type UploadProjectAvatarFrom1 = {
+  preset?: UploadProjectAvatarFromPreset | undefined;
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs: Array<string>;
+};
+
+export type UploadProjectAvatarFrom =
+  | UploadProjectAvatarFrom1
+  | UploadProjectAvatarFrom2;
 
 export const UploadProjectAvatarToProjectsResponse200Preset = {
   AllCustom: "all-custom",
@@ -158,7 +196,7 @@ export type UploadProjectAvatarProjectsTo =
  * Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets.
  */
 export type UploadProjectAvatarCustomAllow = {
-  from: UploadProjectAvatarFrom;
+  from: UploadProjectAvatarFrom1 | UploadProjectAvatarFrom2;
   to: UploadProjectAvatarToProjects1 | UploadProjectAvatarToProjects2;
 };
 
@@ -297,6 +335,9 @@ export type UploadProjectAvatarResponseBody = {
   passport?: UploadProjectAvatarPassport | null | undefined;
   passwordProtection?: UploadProjectAvatarPasswordProtection | null | undefined;
   paused?: boolean | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
   permissions?: UploadProjectAvatarPermissions | undefined;
   productionDeploymentsFastLane?: boolean | undefined;
   protectedSourcemaps?: boolean | undefined;
@@ -341,6 +382,77 @@ export type UploadProjectAvatarResponseBody = {
   v0Created?: boolean | undefined;
   webAnalytics?: UploadProjectAvatarWebAnalytics | undefined;
 };
+
+/** @internal */
+export const UploadProjectAvatarFromProjectsPreset$inboundSchema:
+  z.ZodNativeEnum<typeof UploadProjectAvatarFromProjectsPreset> = z.nativeEnum(
+    UploadProjectAvatarFromProjectsPreset,
+  );
+
+/** @internal */
+export const UploadProjectAvatarFrom2$inboundSchema: z.ZodType<
+  UploadProjectAvatarFrom2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  preset: UploadProjectAvatarFromProjectsPreset$inboundSchema,
+  slugs: types.optional(z.array(types.string())),
+});
+
+export function uploadProjectAvatarFrom2FromJSON(
+  jsonString: string,
+): SafeParseResult<UploadProjectAvatarFrom2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadProjectAvatarFrom2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadProjectAvatarFrom2' from JSON`,
+  );
+}
+
+/** @internal */
+export const UploadProjectAvatarFromPreset$inboundSchema: z.ZodNativeEnum<
+  typeof UploadProjectAvatarFromPreset
+> = z.nativeEnum(UploadProjectAvatarFromPreset);
+
+/** @internal */
+export const UploadProjectAvatarFrom1$inboundSchema: z.ZodType<
+  UploadProjectAvatarFrom1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  preset: types.optional(UploadProjectAvatarFromPreset$inboundSchema),
+  slugs: z.array(types.string()),
+});
+
+export function uploadProjectAvatarFrom1FromJSON(
+  jsonString: string,
+): SafeParseResult<UploadProjectAvatarFrom1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadProjectAvatarFrom1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadProjectAvatarFrom1' from JSON`,
+  );
+}
+
+/** @internal */
+export const UploadProjectAvatarFrom$inboundSchema: z.ZodType<
+  UploadProjectAvatarFrom,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => UploadProjectAvatarFrom1$inboundSchema),
+  z.lazy(() => UploadProjectAvatarFrom2$inboundSchema),
+]);
+
+export function uploadProjectAvatarFromFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadProjectAvatarFrom, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadProjectAvatarFrom$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadProjectAvatarFrom' from JSON`,
+  );
+}
 
 /** @internal */
 export const UploadProjectAvatarToProjectsResponse200Preset$inboundSchema:
@@ -420,7 +532,10 @@ export const UploadProjectAvatarCustomAllow$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  from: UploadProjectAvatarFrom$inboundSchema,
+  from: smartUnion([
+    z.lazy(() => UploadProjectAvatarFrom1$inboundSchema),
+    z.lazy(() => UploadProjectAvatarFrom2$inboundSchema),
+  ]),
   to: smartUnion([
     z.lazy(() => UploadProjectAvatarToProjects1$inboundSchema),
     z.lazy(() => UploadProjectAvatarToProjects2$inboundSchema),

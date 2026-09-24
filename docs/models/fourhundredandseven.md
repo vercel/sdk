@@ -5,13 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndSeven } from "@vercel/sdk/models/fourhundredandone.js";
+import { FourHundredAndSeven } from "@vercel/sdk/models/payloadcity.js";
 
-let value: FourHundredAndSeven = {};
+let value: FourHundredAndSeven = {
+  enabled: true,
+  scope: "dashboard",
+};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `teamName`         | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `enabled`                                                                | *boolean*                                                                | :heavy_check_mark:                                                       | N/A                                                                      |
+| `scope`                                                                  | [models.UserEventPayload407Scope](../models/usereventpayload407scope.md) | :heavy_check_mark:                                                       | N/A                                                                      |

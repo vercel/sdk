@@ -5,7 +5,7 @@ The metric this check evaluates.
 ## Example Usage
 
 ```typescript
-import { GetProjectProjectsResponse200ApplicationJSONResponseBodyRollingReleaseType } from "@vercel/sdk/models/getprojectfrompreset.js";
+import { GetProjectProjectsResponse200ApplicationJSONResponseBodyRollingReleaseType } from "@vercel/sdk/models/getprojectto1.js";
 
 let value:
   GetProjectProjectsResponse200ApplicationJSONResponseBodyRollingReleaseType =

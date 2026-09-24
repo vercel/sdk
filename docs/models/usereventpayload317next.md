@@ -3,15 +3,14 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload317Next } from "@vercel/sdk/models/twohundredandseventyone.js";
+import { UserEventPayload317Next } from "@vercel/sdk/models/twohundredandeightythree.js";
 
-let value: UserEventPayload317Next = {
-  skewProtectionBoundaryAt: 1903.63,
-};
+let value: UserEventPayload317Next = {};
 ```
 
 ## Fields
 
-| Field                      | Type                       | Required                   | Description                |
-| -------------------------- | -------------------------- | -------------------------- | -------------------------- |
-| `skewProtectionBoundaryAt` | *number*                   | :heavy_check_mark:         | N/A                        |
+| Field               | Type                | Required            | Description         |
+| ------------------- | ------------------- | ------------------- | ------------------- |
+| `deploymentSources` | *any*[]             | :heavy_minus_sign:  | N/A                 |
+| `gitSources`        | *any*[]             | :heavy_minus_sign:  | N/A                 |

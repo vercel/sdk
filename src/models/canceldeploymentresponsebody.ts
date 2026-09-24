@@ -9,28 +9,6 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
-  Bindings,
-  Bindings$inboundSchema,
-  CancelDeploymentDestinationDeployments2,
-  CancelDeploymentDestinationDeployments2$inboundSchema,
-  CancelDeploymentRoutes,
-  CancelDeploymentRoutes$inboundSchema,
-  CancelDeploymentRoutes2,
-  CancelDeploymentRoutes2$inboundSchema,
-  Rewrites,
-  Rewrites$inboundSchema,
-  SeatBlock,
-  SeatBlock$inboundSchema,
-  ServicesBuilder,
-  ServicesBuilder$inboundSchema,
-  ServicesFunctions,
-  ServicesFunctions$inboundSchema,
-  ServicesHeaders,
-  ServicesHeaders$inboundSchema,
-  ServicesRedirects,
-  ServicesRedirects$inboundSchema,
-} from "./canceldeploymentdestinationdeployments2.js";
-import {
   AliasAssignedAt,
   AliasAssignedAt$inboundSchema,
   AliasError,
@@ -65,14 +43,14 @@ import {
   CancelDeploymentProject$inboundSchema,
   CancelDeploymentProjectSettings,
   CancelDeploymentProjectSettings$inboundSchema,
-  CancelDeploymentResourceConfig,
-  CancelDeploymentResourceConfig$inboundSchema,
   ChecksConclusion,
   ChecksConclusion$inboundSchema,
   ChecksState,
   ChecksState$inboundSchema,
   Crons,
   Crons$inboundSchema,
+  Duration,
+  Duration$inboundSchema,
   Flags,
   Flags$inboundSchema,
   Functions,
@@ -95,10 +73,105 @@ import {
   Platform$inboundSchema,
   ReadyState,
   ReadyState$inboundSchema,
+} from "./readystate.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
+import {
+  Bindings,
+  Bindings$inboundSchema,
+  CancelDeploymentResourceConfig,
+  CancelDeploymentResourceConfig$inboundSchema,
+  CancelDeploymentRoutes,
+  CancelDeploymentRoutes$inboundSchema,
+  CancelDeploymentServicesDeploymentsHas,
+  CancelDeploymentServicesDeploymentsHas$inboundSchema,
+  CancelDeploymentServicesDeploymentsMissing,
+  CancelDeploymentServicesDeploymentsMissing$inboundSchema,
   ReadySubstate,
   ReadySubstate$inboundSchema,
-} from "./canceldeploymentresourceconfig.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
+  SeatBlock,
+  SeatBlock$inboundSchema,
+  ServicesBuilder,
+  ServicesBuilder$inboundSchema,
+  ServicesDestination,
+  ServicesDestination$inboundSchema,
+  ServicesFunctions,
+  ServicesFunctions$inboundSchema,
+  ServicesHeaders,
+  ServicesHeaders$inboundSchema,
+  ServicesOp,
+  ServicesOp$inboundSchema,
+  ServicesRedirects,
+  ServicesRedirects$inboundSchema,
+} from "./servicesop.js";
+
+export const CancelDeploymentServicesDeploymentsResponseType = {
+  RequestPath: "request.path",
+} as const;
+export type CancelDeploymentServicesDeploymentsResponseType = ClosedEnum<
+  typeof CancelDeploymentServicesDeploymentsResponseType
+>;
+
+export type ServicesTransforms = {
+  args: string;
+  env?: Array<string> | undefined;
+  op: ServicesOp;
+  type: CancelDeploymentServicesDeploymentsResponseType;
+};
+
+export type Rewrites = {
+  destination: ServicesDestination;
+  env?: Array<string> | undefined;
+  has?: Array<CancelDeploymentServicesDeploymentsHas> | undefined;
+  missing?: Array<CancelDeploymentServicesDeploymentsMissing> | undefined;
+  respectOriginCacheControl?: boolean | undefined;
+  source: string;
+  statusCode?: number | undefined;
+  transforms?: Array<ServicesTransforms> | undefined;
+};
+
+export const CancelDeploymentRoutesHandle = {
+  Error: "error",
+  Filesystem: "filesystem",
+  Hit: "hit",
+  Miss: "miss",
+  Resource: "resource",
+  Rewrite: "rewrite",
+} as const;
+export type CancelDeploymentRoutesHandle = ClosedEnum<
+  typeof CancelDeploymentRoutesHandle
+>;
+
+export type CancelDeploymentRoutes2 = {
+  dest?: string | undefined;
+  handle: CancelDeploymentRoutesHandle;
+  src?: string | undefined;
+  status?: number | undefined;
+};
+
+/**
+ * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+ */
+export const CancelDeploymentDestinationDeploymentsType = {
+  Service: "service",
+} as const;
+/**
+ * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+ */
+export type CancelDeploymentDestinationDeploymentsType = ClosedEnum<
+  typeof CancelDeploymentDestinationDeploymentsType
+>;
+
+export type CancelDeploymentDestinationDeployments2 = {
+  /**
+   * Routing-only path used to select a route inside the target service.
+   */
+  path?: string | undefined;
+  service: string;
+  /**
+   * Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required.
+   */
+  type?: CancelDeploymentDestinationDeploymentsType | undefined;
+};
 
 export type CancelDeploymentRoutesDestination =
   | CancelDeploymentDestinationDeployments2
@@ -624,6 +697,10 @@ export type ServicesProjectSettings = {
 
 export type ServicesConfig = {
   buildCommand?: string | undefined;
+  /**
+   * Buildpack runtime slug (e.g. "ruby").
+   */
+  buildpack?: string | undefined;
   bundle?: boolean | undefined;
   bunVersion?: string | undefined;
   debug?: boolean | undefined;
@@ -859,6 +936,7 @@ export type CancelDeploymentResponseBody = {
    * A number containing the date when the deployment was deleted at milliseconds
    */
   deletedAt?: number | null | undefined;
+  duration: Duration;
   env: Array<string>;
   errorCode?: string | undefined;
   errorLink?: string | undefined;
@@ -997,12 +1075,132 @@ export type CancelDeploymentResponseBody = {
 };
 
 /** @internal */
+export const CancelDeploymentServicesDeploymentsResponseType$inboundSchema:
+  z.ZodNativeEnum<typeof CancelDeploymentServicesDeploymentsResponseType> = z
+    .nativeEnum(CancelDeploymentServicesDeploymentsResponseType);
+
+/** @internal */
+export const ServicesTransforms$inboundSchema: z.ZodType<
+  ServicesTransforms,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  args: types.string(),
+  env: types.optional(z.array(types.string())),
+  op: ServicesOp$inboundSchema,
+  type: CancelDeploymentServicesDeploymentsResponseType$inboundSchema,
+});
+
+export function servicesTransformsFromJSON(
+  jsonString: string,
+): SafeParseResult<ServicesTransforms, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ServicesTransforms$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ServicesTransforms' from JSON`,
+  );
+}
+
+/** @internal */
+export const Rewrites$inboundSchema: z.ZodType<
+  Rewrites,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  destination: ServicesDestination$inboundSchema,
+  env: types.optional(z.array(types.string())),
+  has: types.optional(
+    z.array(CancelDeploymentServicesDeploymentsHas$inboundSchema),
+  ),
+  missing: types.optional(
+    z.array(CancelDeploymentServicesDeploymentsMissing$inboundSchema),
+  ),
+  respectOriginCacheControl: types.optional(types.boolean()),
+  source: types.string(),
+  statusCode: types.optional(types.number()),
+  transforms: types.optional(
+    z.array(z.lazy(() => ServicesTransforms$inboundSchema)),
+  ),
+});
+
+export function rewritesFromJSON(
+  jsonString: string,
+): SafeParseResult<Rewrites, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Rewrites$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Rewrites' from JSON`,
+  );
+}
+
+/** @internal */
+export const CancelDeploymentRoutesHandle$inboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentRoutesHandle
+> = z.nativeEnum(CancelDeploymentRoutesHandle);
+
+/** @internal */
+export const CancelDeploymentRoutes2$inboundSchema: z.ZodType<
+  CancelDeploymentRoutes2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  dest: types.optional(types.string()),
+  handle: CancelDeploymentRoutesHandle$inboundSchema,
+  src: types.optional(types.string()),
+  status: types.optional(types.number()),
+});
+
+export function cancelDeploymentRoutes2FromJSON(
+  jsonString: string,
+): SafeParseResult<CancelDeploymentRoutes2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CancelDeploymentRoutes2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentRoutes2' from JSON`,
+  );
+}
+
+/** @internal */
+export const CancelDeploymentDestinationDeploymentsType$inboundSchema:
+  z.ZodNativeEnum<typeof CancelDeploymentDestinationDeploymentsType> = z
+    .nativeEnum(CancelDeploymentDestinationDeploymentsType);
+
+/** @internal */
+export const CancelDeploymentDestinationDeployments2$inboundSchema: z.ZodType<
+  CancelDeploymentDestinationDeployments2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  path: types.optional(types.string()),
+  service: types.string(),
+  type: types.optional(
+    CancelDeploymentDestinationDeploymentsType$inboundSchema,
+  ),
+});
+
+export function cancelDeploymentDestinationDeployments2FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CancelDeploymentDestinationDeployments2,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CancelDeploymentDestinationDeployments2$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CancelDeploymentDestinationDeployments2' from JSON`,
+  );
+}
+
+/** @internal */
 export const CancelDeploymentRoutesDestination$inboundSchema: z.ZodType<
   CancelDeploymentRoutesDestination,
   z.ZodTypeDef,
   unknown
 > = smartUnion([
-  CancelDeploymentDestinationDeployments2$inboundSchema,
+  z.lazy(() => CancelDeploymentDestinationDeployments2$inboundSchema),
   types.string(),
 ]);
 
@@ -1813,7 +2011,7 @@ export const CancelDeploymentRoutes1$inboundSchema: z.ZodType<
   dest: types.optional(types.string()),
   destination: types.optional(
     smartUnion([
-      CancelDeploymentDestinationDeployments2$inboundSchema,
+      z.lazy(() => CancelDeploymentDestinationDeployments2$inboundSchema),
       types.string(),
     ]),
   ),
@@ -1894,7 +2092,7 @@ export const ServicesRoutes$inboundSchema: z.ZodType<
   unknown
 > = smartUnion([
   z.lazy(() => CancelDeploymentRoutes1$inboundSchema),
-  CancelDeploymentRoutes2$inboundSchema,
+  z.lazy(() => CancelDeploymentRoutes2$inboundSchema),
 ]);
 
 export function servicesRoutesFromJSON(
@@ -1928,12 +2126,14 @@ export const Services2$inboundSchema: z.ZodType<
   name: types.string(),
   outputDirectory: types.optional(types.string()),
   redirects: types.optional(z.array(ServicesRedirects$inboundSchema)),
-  rewrites: types.optional(z.array(Rewrites$inboundSchema)),
+  rewrites: types.optional(z.array(z.lazy(() => Rewrites$inboundSchema))),
   root: types.string(),
   routes: types.optional(
     z.array(smartUnion([
       z.lazy(() => CancelDeploymentRoutes1$inboundSchema),
-      CancelDeploymentRoutes2$inboundSchema,
+      z.lazy(() =>
+        CancelDeploymentRoutes2$inboundSchema
+      ),
     ])),
   ),
   runtime: types.optional(types.string()),
@@ -2273,6 +2473,7 @@ export const ServicesConfig$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   buildCommand: types.optional(types.string()),
+  buildpack: types.optional(types.string()),
   bundle: types.optional(types.boolean()),
   bunVersion: types.optional(types.string()),
   debug: types.optional(types.boolean()),
@@ -2574,6 +2775,7 @@ export const CancelDeploymentResponseBody$inboundSchema: z.ZodType<
   ),
   defaultRoute: types.optional(types.string()),
   deletedAt: z.nullable(types.number()).optional(),
+  duration: Duration$inboundSchema,
   env: z.array(types.string()),
   errorCode: types.optional(types.string()),
   errorLink: types.optional(types.string()),

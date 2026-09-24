@@ -5,7 +5,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyIssuerMode } from "@vercel/sdk/models/responsebodyabuse.js";
+import { GetProjectsResponseBodyIssuerMode } from "@vercel/sdk/models/getprojectsroute1.js";
 
 let value: GetProjectsResponseBodyIssuerMode = "global";
 ```

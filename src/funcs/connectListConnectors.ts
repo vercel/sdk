@@ -183,7 +183,7 @@ async function $do(
     | SDKValidationError
   >(
     M.json(200, ConnectConnectorList$inboundSchema),
-    M.jsonErr([400, 401, 403, 410, 422], ConnectError$inboundSchema),
+    M.jsonErr([400, 401, 403, 409, 410, 422], ConnectError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, req, { extraFields: responseFields });

@@ -5,20 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSeventySeven } from "@vercel/sdk/models/payloadmostspecificsubdivision.js";
+import { ThreeHundredAndSeventySeven } from "@vercel/sdk/models/payloadcity.js";
 
 let value: ThreeHundredAndSeventySeven = {
-  entitlement: "<value>",
-  user: {
-    id: "<id>",
-    username: "Beth_Adams79",
-  },
+  next: {},
+  previous: {},
 };
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `entitlement`                                  | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `user`                                         | [models.PayloadUser](../models/payloaduser.md) | :heavy_check_mark:                             | N/A                                            |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `next`                                                                         | [models.UserEventPayload377Next](../models/usereventpayload377next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload377Previous](../models/usereventpayload377previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |

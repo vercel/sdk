@@ -5,25 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFiftyFive } from "@vercel/sdk/models/previousrule.js";
+import { OneHundredAndFiftyFive } from "@vercel/sdk/models/usereventjobaction.js";
 
-let value: OneHundredAndFiftyFive = {
-  envId: "<id>",
-  envKey: "<value>",
-  organizationId: "<id>",
-  provider: "<value>",
-  repository: "<value>",
-  target: [],
-};
+let value: OneHundredAndFiftyFive = {};
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `envId`                                                                      | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
-| `envKey`                                                                     | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
-| `organizationId`                                                             | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
-| `provider`                                                                   | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
-| `repository`                                                                 | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
-| `target`                                                                     | [models.UserEventPayload155Target](../models/usereventpayload155target.md)[] | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `deletedUid`                                   | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `deletedUser`                                  | [models.DeletedUser](../models/deleteduser.md) | :heavy_minus_sign:                             | N/A                                            |
+| `emailDomain`                                  | *string*                                       | :heavy_minus_sign:                             | N/A                                            |

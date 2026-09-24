@@ -23,10 +23,8 @@ let value: ListUserEventsResponseBody = {
       ],
       id: "uev_bfmMjiMnXfnPbT97dGdpJbCN",
       payload: {
-        action: "resume_plan",
-        data: {
-          planSlug: "v0_business",
-        },
+        action: "mutate",
+        data: {},
       },
       principalId: "<id>",
       text: "You logged in via GitHub",

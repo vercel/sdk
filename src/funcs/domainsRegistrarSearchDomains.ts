@@ -50,10 +50,10 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Check domain availability and pricing
+ * Get Domain Availability and Pricing
  *
  * @remarks
- * Check registration availability for 1–200 exact domain names, such as `example.com`. Returns results in input order, with registration and renewal prices in USD for available domains. No authentication required.
+ * Start domain research here. Get registration availability and pricing for 1–200 exact domain names. Returns results in input order, with registration and renewal prices in USD for available domains. No authentication required.
  */
 export function domainsRegistrarSearchDomains(
   client: VercelCore,

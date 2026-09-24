@@ -9,72 +9,6 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
-  GetMicrofrontendsInGroupFrom1,
-  GetMicrofrontendsInGroupFrom1$inboundSchema,
-  GetMicrofrontendsInGroupFrom2,
-  GetMicrofrontendsInGroupFrom2$inboundSchema,
-  GetMicrofrontendsInGroupInternalRoutes,
-  GetMicrofrontendsInGroupInternalRoutes$inboundSchema,
-  GetMicrofrontendsInGroupIpBuckets,
-  GetMicrofrontendsInGroupIpBuckets$inboundSchema,
-  GetMicrofrontendsInGroupJobs,
-  GetMicrofrontendsInGroupJobs$inboundSchema,
-  GetMicrofrontendsInGroupLastAliasRequest,
-  GetMicrofrontendsInGroupLastAliasRequest$inboundSchema,
-  GetMicrofrontendsInGroupLastRollbackTarget,
-  GetMicrofrontendsInGroupLastRollbackTarget$inboundSchema,
-  GetMicrofrontendsInGroupLatestDeployments,
-  GetMicrofrontendsInGroupLatestDeployments$inboundSchema,
-  GetMicrofrontendsInGroupLink,
-  GetMicrofrontendsInGroupLink$inboundSchema,
-  GetMicrofrontendsInGroupMicrofrontends,
-  GetMicrofrontendsInGroupMicrofrontends$inboundSchema,
-  GetMicrofrontendsInGroupNodeVersion,
-  GetMicrofrontendsInGroupNodeVersion$inboundSchema,
-  GetMicrofrontendsInGroupOidcProviders,
-  GetMicrofrontendsInGroupOidcProviders$inboundSchema,
-  GetMicrofrontendsInGroupOidcTokenConfig,
-  GetMicrofrontendsInGroupOidcTokenConfig$inboundSchema,
-  GetMicrofrontendsInGroupOptionsAllowlist,
-  GetMicrofrontendsInGroupOptionsAllowlist$inboundSchema,
-  GetMicrofrontendsInGroupPassport,
-  GetMicrofrontendsInGroupPassport$inboundSchema,
-  GetMicrofrontendsInGroupPasswordProtection,
-  GetMicrofrontendsInGroupPasswordProtection$inboundSchema,
-  GetMicrofrontendsInGroupPermissions,
-  GetMicrofrontendsInGroupPermissions$inboundSchema,
-  GetMicrofrontendsInGroupProtectionBypass,
-  GetMicrofrontendsInGroupProtectionBypass$inboundSchema,
-  GetMicrofrontendsInGroupProtectionConfig,
-  GetMicrofrontendsInGroupProtectionConfig$inboundSchema,
-  GetMicrofrontendsInGroupResourceConfig,
-  GetMicrofrontendsInGroupResourceConfig$inboundSchema,
-  GetMicrofrontendsInGroupRollbackDescription,
-  GetMicrofrontendsInGroupRollbackDescription$inboundSchema,
-  GetMicrofrontendsInGroupRollingRelease,
-  GetMicrofrontendsInGroupRollingRelease$inboundSchema,
-  GetMicrofrontendsInGroupSandbox,
-  GetMicrofrontendsInGroupSandbox$inboundSchema,
-  GetMicrofrontendsInGroupSecurity,
-  GetMicrofrontendsInGroupSecurity$inboundSchema,
-  GetMicrofrontendsInGroupServices,
-  GetMicrofrontendsInGroupServices$inboundSchema,
-  GetMicrofrontendsInGroupSpeedInsights,
-  GetMicrofrontendsInGroupSpeedInsights$inboundSchema,
-  GetMicrofrontendsInGroupSsoProtection,
-  GetMicrofrontendsInGroupSsoProtection$inboundSchema,
-  GetMicrofrontendsInGroupStaticIps,
-  GetMicrofrontendsInGroupStaticIps$inboundSchema,
-  GetMicrofrontendsInGroupTargets,
-  GetMicrofrontendsInGroupTargets$inboundSchema,
-  GetMicrofrontendsInGroupTier,
-  GetMicrofrontendsInGroupTier$inboundSchema,
-  GetMicrofrontendsInGroupTracing,
-  GetMicrofrontendsInGroupTracing$inboundSchema,
-  GetMicrofrontendsInGroupTrustedIps,
-  GetMicrofrontendsInGroupTrustedIps$inboundSchema,
-} from "./getmicrofrontendsingroupfrom1.js";
-import {
   GetMicrofrontendsInGroupAbuse,
   GetMicrofrontendsInGroupAbuse$inboundSchema,
   GetMicrofrontendsInGroupAlias,
@@ -113,8 +47,112 @@ import {
   GetMicrofrontendsInGroupGitComments$inboundSchema,
   GetMicrofrontendsInGroupGitProviderOptions,
   GetMicrofrontendsInGroupGitProviderOptions$inboundSchema,
-} from "./getmicrofrontendsingrouphasvalue.js";
+} from "./getmicrofrontendsingroupgitprovideroptions.js";
+import {
+  GetMicrofrontendsInGroupInternalRoutes,
+  GetMicrofrontendsInGroupInternalRoutes$inboundSchema,
+  GetMicrofrontendsInGroupIpBuckets,
+  GetMicrofrontendsInGroupIpBuckets$inboundSchema,
+  GetMicrofrontendsInGroupJobs,
+  GetMicrofrontendsInGroupJobs$inboundSchema,
+  GetMicrofrontendsInGroupLastAliasRequest,
+  GetMicrofrontendsInGroupLastAliasRequest$inboundSchema,
+  GetMicrofrontendsInGroupLastRollbackTarget,
+  GetMicrofrontendsInGroupLastRollbackTarget$inboundSchema,
+  GetMicrofrontendsInGroupLatestDeployments,
+  GetMicrofrontendsInGroupLatestDeployments$inboundSchema,
+  GetMicrofrontendsInGroupLink,
+  GetMicrofrontendsInGroupLink$inboundSchema,
+  GetMicrofrontendsInGroupMicrofrontends,
+  GetMicrofrontendsInGroupMicrofrontends$inboundSchema,
+  GetMicrofrontendsInGroupNodeVersion,
+  GetMicrofrontendsInGroupNodeVersion$inboundSchema,
+  GetMicrofrontendsInGroupOidcTokenConfig,
+  GetMicrofrontendsInGroupOidcTokenConfig$inboundSchema,
+  GetMicrofrontendsInGroupOptionsAllowlist,
+  GetMicrofrontendsInGroupOptionsAllowlist$inboundSchema,
+  GetMicrofrontendsInGroupPassport,
+  GetMicrofrontendsInGroupPassport$inboundSchema,
+  GetMicrofrontendsInGroupPasswordProtection,
+  GetMicrofrontendsInGroupPasswordProtection$inboundSchema,
+  GetMicrofrontendsInGroupPermissions,
+  GetMicrofrontendsInGroupPermissions$inboundSchema,
+  GetMicrofrontendsInGroupProtectionBypass,
+  GetMicrofrontendsInGroupProtectionBypass$inboundSchema,
+  GetMicrofrontendsInGroupProtectionConfig,
+  GetMicrofrontendsInGroupProtectionConfig$inboundSchema,
+  GetMicrofrontendsInGroupResourceConfig,
+  GetMicrofrontendsInGroupResourceConfig$inboundSchema,
+  GetMicrofrontendsInGroupRollbackDescription,
+  GetMicrofrontendsInGroupRollbackDescription$inboundSchema,
+  GetMicrofrontendsInGroupRollingRelease,
+  GetMicrofrontendsInGroupRollingRelease$inboundSchema,
+  GetMicrofrontendsInGroupSandbox,
+  GetMicrofrontendsInGroupSandbox$inboundSchema,
+  GetMicrofrontendsInGroupSecurity,
+  GetMicrofrontendsInGroupSecurity$inboundSchema,
+  GetMicrofrontendsInGroupServices,
+  GetMicrofrontendsInGroupServices$inboundSchema,
+  GetMicrofrontendsInGroupSpeedInsights,
+  GetMicrofrontendsInGroupSpeedInsights$inboundSchema,
+  GetMicrofrontendsInGroupSsoProtection,
+  GetMicrofrontendsInGroupSsoProtection$inboundSchema,
+  GetMicrofrontendsInGroupStaticIps,
+  GetMicrofrontendsInGroupStaticIps$inboundSchema,
+  GetMicrofrontendsInGroupTargets,
+  GetMicrofrontendsInGroupTargets$inboundSchema,
+  GetMicrofrontendsInGroupTier,
+  GetMicrofrontendsInGroupTier$inboundSchema,
+  GetMicrofrontendsInGroupTo,
+  GetMicrofrontendsInGroupTo$inboundSchema,
+  GetMicrofrontendsInGroupTracing,
+  GetMicrofrontendsInGroupTracing$inboundSchema,
+  GetMicrofrontendsInGroupTrustedIps,
+  GetMicrofrontendsInGroupTrustedIps$inboundSchema,
+} from "./getmicrofrontendsingroupto.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type GetMicrofrontendsInGroupOidcProviders = {
+  to: GetMicrofrontendsInGroupTo;
+  claims: { [k: string]: Array<string> };
+  label?: string | undefined;
+};
+
+export const GetMicrofrontendsInGroupFromPreset = {
+  AllCustom: "all-custom",
+} as const;
+export type GetMicrofrontendsInGroupFromPreset = ClosedEnum<
+  typeof GetMicrofrontendsInGroupFromPreset
+>;
+
+/**
+ * The source envs on the trusted project that are allowed to access `to`.
+ */
+export type GetMicrofrontendsInGroupFrom2 = {
+  preset: GetMicrofrontendsInGroupFromPreset;
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs?: Array<string> | undefined;
+};
+
+export const GetMicrofrontendsInGroupFromMicrofrontendsPreset = {
+  AllCustom: "all-custom",
+} as const;
+export type GetMicrofrontendsInGroupFromMicrofrontendsPreset = ClosedEnum<
+  typeof GetMicrofrontendsInGroupFromMicrofrontendsPreset
+>;
+
+/**
+ * The source envs on the trusted project that are allowed to access `to`.
+ */
+export type GetMicrofrontendsInGroupFrom1 = {
+  preset?: GetMicrofrontendsInGroupFromMicrofrontendsPreset | undefined;
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs: Array<string>;
+};
 
 export type GetMicrofrontendsInGroupFrom =
   | GetMicrofrontendsInGroupFrom1
@@ -325,6 +363,9 @@ export type GetMicrofrontendsInGroupProjects = {
     | null
     | undefined;
   paused?: boolean | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
   permissions?: GetMicrofrontendsInGroupPermissions | undefined;
   productionDeploymentsFastLane?: boolean | undefined;
   protectedSourcemaps?: boolean | undefined;
@@ -375,13 +416,87 @@ export type GetMicrofrontendsInGroupResponseBody = {
 };
 
 /** @internal */
+export const GetMicrofrontendsInGroupOidcProviders$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupOidcProviders,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  to: GetMicrofrontendsInGroupTo$inboundSchema,
+  claims: z.record(z.array(types.string())),
+  label: types.optional(types.string()),
+});
+
+export function getMicrofrontendsInGroupOidcProvidersFromJSON(
+  jsonString: string,
+): SafeParseResult<GetMicrofrontendsInGroupOidcProviders, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMicrofrontendsInGroupOidcProviders$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMicrofrontendsInGroupOidcProviders' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetMicrofrontendsInGroupFromPreset$inboundSchema: z.ZodNativeEnum<
+  typeof GetMicrofrontendsInGroupFromPreset
+> = z.nativeEnum(GetMicrofrontendsInGroupFromPreset);
+
+/** @internal */
+export const GetMicrofrontendsInGroupFrom2$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupFrom2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  preset: GetMicrofrontendsInGroupFromPreset$inboundSchema,
+  slugs: types.optional(z.array(types.string())),
+});
+
+export function getMicrofrontendsInGroupFrom2FromJSON(
+  jsonString: string,
+): SafeParseResult<GetMicrofrontendsInGroupFrom2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetMicrofrontendsInGroupFrom2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMicrofrontendsInGroupFrom2' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetMicrofrontendsInGroupFromMicrofrontendsPreset$inboundSchema:
+  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupFromMicrofrontendsPreset> = z
+    .nativeEnum(GetMicrofrontendsInGroupFromMicrofrontendsPreset);
+
+/** @internal */
+export const GetMicrofrontendsInGroupFrom1$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupFrom1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  preset: types.optional(
+    GetMicrofrontendsInGroupFromMicrofrontendsPreset$inboundSchema,
+  ),
+  slugs: z.array(types.string()),
+});
+
+export function getMicrofrontendsInGroupFrom1FromJSON(
+  jsonString: string,
+): SafeParseResult<GetMicrofrontendsInGroupFrom1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetMicrofrontendsInGroupFrom1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMicrofrontendsInGroupFrom1' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetMicrofrontendsInGroupFrom$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupFrom,
   z.ZodTypeDef,
   unknown
 > = smartUnion([
-  GetMicrofrontendsInGroupFrom1$inboundSchema,
-  GetMicrofrontendsInGroupFrom2$inboundSchema,
+  z.lazy(() => GetMicrofrontendsInGroupFrom1$inboundSchema),
+  z.lazy(() => GetMicrofrontendsInGroupFrom2$inboundSchema),
 ]);
 
 export function getMicrofrontendsInGroupFromFromJSON(
@@ -494,8 +609,8 @@ export const GetMicrofrontendsInGroupCustomAllow$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   from: smartUnion([
-    GetMicrofrontendsInGroupFrom1$inboundSchema,
-    GetMicrofrontendsInGroupFrom2$inboundSchema,
+    z.lazy(() => GetMicrofrontendsInGroupFrom1$inboundSchema),
+    z.lazy(() => GetMicrofrontendsInGroupFrom2$inboundSchema),
   ]),
   to: smartUnion([
     z.lazy(() => GetMicrofrontendsInGroupToMicrofrontends1$inboundSchema),
@@ -551,7 +666,9 @@ export const GetMicrofrontendsInGroupTrustedSources$inboundSchema: z.ZodType<
 > = z.object({
   enableVercelCiSameRepository: types.optional(types.boolean()),
   oidcProviders: types.optional(
-    z.record(z.array(GetMicrofrontendsInGroupOidcProviders$inboundSchema)),
+    z.record(z.array(z.lazy(() =>
+      GetMicrofrontendsInGroupOidcProviders$inboundSchema
+    ))),
   ),
   projects: types.optional(
     z.record(z.lazy(() =>

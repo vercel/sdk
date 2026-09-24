@@ -5,7 +5,7 @@ Customer-configurable deployment sources. Every deploy classifies to exactly one
 ## Example Usage
 
 ```typescript
-import { ResponseBodySources } from "@vercel/sdk/models/getprojectsresponsebodyprojectsconsolidatedgitcommitstatus.js";
+import { ResponseBodySources } from "@vercel/sdk/models/responsebodyexpiration.js";
 
 let value: ResponseBodySources = "v0";
 ```

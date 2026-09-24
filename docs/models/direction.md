@@ -1,17 +1,15 @@
 # Direction
 
-Order of the returned events based on the timestamp.
-
 ## Example Usage
 
 ```typescript
-import { Direction } from "@vercel/sdk/models/getdeploymenteventsop.js";
+import { Direction } from "@vercel/sdk/models/createprojectcontenthint8.js";
 
-let value: Direction = "backward";
+let value: Direction = "downgrade";
 ```
 
 ## Values
 
 ```typescript
-"backward" | "forward"
+"upgrade" | "downgrade"
 ```

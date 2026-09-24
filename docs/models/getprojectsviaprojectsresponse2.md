@@ -5,7 +5,7 @@ Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures 
 ## Example Usage
 
 ```typescript
-import { GetProjectsViaProjectsResponse2 } from "@vercel/sdk/models/getprojectsresponsebodyprojectsconsolidatedgitcommitstatus.js";
+import { GetProjectsViaProjectsResponse2 } from "@vercel/sdk/models/responsebodyexpiration.js";
 
 let value: GetProjectsViaProjectsResponse2 = {
   integration: {

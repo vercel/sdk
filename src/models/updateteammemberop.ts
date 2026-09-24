@@ -23,7 +23,7 @@ export const UpdateTeamMemberTeamPermissions = {
   OrgViewer: "OrgViewer",
   AiGatewaySettings: "AiGatewaySettings",
   AiGatewayCredits: "AiGatewayCredits",
-  AiGatewayApiKeyOwnedBySelf: "AiGatewayApiKeyOwnedBySelf",
+  AiGatewayUser: "AiGatewayUser",
   AiGatewayBudgetManager: "AiGatewayBudgetManager",
   AiGatewayTranscriptsManager: "AiGatewayTranscriptsManager",
   AiGatewayTranscriptsViewer: "AiGatewayTranscriptsViewer",

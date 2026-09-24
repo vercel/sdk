@@ -512,7 +512,24 @@ export type UpdateDrainSourceDrainsResponse2 = {
   resourceId?: string | undefined;
 };
 
+/**
+ * Informational marker for a system-owned default drain.
+ */
+export const UpdateDrainSourceDrainsDefaultFor = {
+  EveTracing: "eve-tracing",
+} as const;
+/**
+ * Informational marker for a system-owned default drain.
+ */
+export type UpdateDrainSourceDrainsDefaultFor = ClosedEnum<
+  typeof UpdateDrainSourceDrainsDefaultFor
+>;
+
 export type UpdateDrainSourceDrainsResponse1 = {
+  /**
+   * Informational marker for a system-owned default drain.
+   */
+  defaultFor?: UpdateDrainSourceDrainsDefaultFor | undefined;
   kind: "self-served";
 };
 
@@ -872,7 +889,24 @@ export type UpdateDrainSourceDrains2 = {
   resourceId?: string | undefined;
 };
 
+/**
+ * Informational marker for a system-owned default drain.
+ */
+export const UpdateDrainSourceDefaultFor = {
+  EveTracing: "eve-tracing",
+} as const;
+/**
+ * Informational marker for a system-owned default drain.
+ */
+export type UpdateDrainSourceDefaultFor = ClosedEnum<
+  typeof UpdateDrainSourceDefaultFor
+>;
+
 export type UpdateDrainSourceDrains1 = {
+  /**
+   * Informational marker for a system-owned default drain.
+   */
+  defaultFor?: UpdateDrainSourceDefaultFor | undefined;
   kind: "self-served";
 };
 
@@ -2273,11 +2307,17 @@ export function updateDrainSourceDrainsResponse2FromJSON(
 }
 
 /** @internal */
+export const UpdateDrainSourceDrainsDefaultFor$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateDrainSourceDrainsDefaultFor
+> = z.nativeEnum(UpdateDrainSourceDrainsDefaultFor);
+
+/** @internal */
 export const UpdateDrainSourceDrainsResponse1$inboundSchema: z.ZodType<
   UpdateDrainSourceDrainsResponse1,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  defaultFor: types.optional(UpdateDrainSourceDrainsDefaultFor$inboundSchema),
   kind: types.literal("self-served"),
 });
 
@@ -3155,11 +3195,17 @@ export function updateDrainSourceDrains2FromJSON(
 }
 
 /** @internal */
+export const UpdateDrainSourceDefaultFor$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateDrainSourceDefaultFor
+> = z.nativeEnum(UpdateDrainSourceDefaultFor);
+
+/** @internal */
 export const UpdateDrainSourceDrains1$inboundSchema: z.ZodType<
   UpdateDrainSourceDrains1,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  defaultFor: types.optional(UpdateDrainSourceDefaultFor$inboundSchema),
   kind: types.literal("self-served"),
 });
 

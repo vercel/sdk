@@ -13,5 +13,5 @@ let value: VcrImageDetailStatus = "ready";
 ## Values
 
 ```typescript
-"preparing" | "ready" | "unoptimized"
+"errored" | "preparing" | "ready" | "unoptimized"
 ```

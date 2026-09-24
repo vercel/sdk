@@ -1,0 +1,15 @@
+# UserEventPayload328Previous
+
+## Example Usage
+
+```typescript
+import { UserEventPayload328Previous } from "@vercel/sdk/models/twohundredandeightythree.js";
+
+let value: UserEventPayload328Previous = {};
+```
+
+## Fields
+
+| Field                          | Type                           | Required                       | Description                    |
+| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
+| `skewProtectionAllowedDomains` | *string*[]                     | :heavy_minus_sign:             | N/A                            |

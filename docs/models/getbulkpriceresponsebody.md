@@ -10,11 +10,11 @@ import { GetBulkPriceResponseBody } from "@vercel/sdk/models/getbulkpriceop.js";
 let value: GetBulkPriceResponseBody = {
   results: [
     {
-      domain: "wrathful-puppet.net",
-      years: 4599.97,
+      domain: "merry-awareness.name",
+      years: 8943.31,
       purchasePrice: "<value>",
-      renewalPrice: 2055.43,
-      transferPrice: 2831.69,
+      renewalPrice: 6220.29,
+      transferPrice: "<value>",
     },
   ],
 };
@@ -22,6 +22,6 @@ let value: GetBulkPriceResponseBody = {
 
 ## Fields
 
-| Field                                    | Type                                     | Required                                 | Description                              |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| `results`                                | [models.Results](../models/results.md)[] | :heavy_check_mark:                       | N/A                                      |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `results`                                                        | [models.GetBulkPriceResults](../models/getbulkpriceresults.md)[] | :heavy_check_mark:                                               | N/A                                                              |

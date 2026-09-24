@@ -134,7 +134,7 @@ export class Sandboxes extends ClientSDK {
    * List drives
    *
    * @remarks
-   * Retrieves a paginated list of drives belonging to a specific project. Drives are in private beta. Register your interest to get access: https://vercel.com/changelog/drives-for-vercel-sandbox-in-private-beta
+   * Retrieves a paginated list of drives belonging to a specific project.
    */
   async listDrives(
     request: ListDrivesRequest,
@@ -151,7 +151,7 @@ export class Sandboxes extends ClientSDK {
    * Get or create a drive
    *
    * @remarks
-   * Gets an existing drive by project and name, or creates it when it does not exist. Drives are in private beta. Register your interest to get access: https://vercel.com/changelog/drives-for-vercel-sandbox-in-private-beta
+   * Gets an existing drive by project and name, or creates it when it does not exist.
    */
   async getOrCreateDrive(
     request: GetOrCreateDriveRequest,
@@ -168,7 +168,7 @@ export class Sandboxes extends ClientSDK {
    * Delete a drive
    *
    * @remarks
-   * Deletes a drive by project and name. Attached drives cannot be deleted. Stop or replace the session currently using the drive before retrying deletion. Drives are in private beta. Register your interest to get access: https://vercel.com/changelog/drives-for-vercel-sandbox-in-private-beta
+   * Deletes a drive by project and name. Attached drives cannot be deleted. Stop or replace the session currently using the drive before retrying deletion.
    */
   async deleteDrive(
     request: DeleteDriveRequest,

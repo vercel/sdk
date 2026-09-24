@@ -5,7 +5,7 @@ Automated gating configuration. Omitted (the default) means no gating is configu
 ## Example Usage
 
 ```typescript
-import { ResponseBodyGate } from "@vercel/sdk/models/getprojectslogheaders2.js";
+import { ResponseBodyGate } from "@vercel/sdk/models/erl.js";
 
 let value: ResponseBodyGate = {
   action: "rollback",

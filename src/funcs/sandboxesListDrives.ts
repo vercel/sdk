@@ -34,7 +34,7 @@ import { Result } from "../types/fp.js";
  * List drives
  *
  * @remarks
- * Retrieves a paginated list of drives belonging to a specific project. Drives are in private beta. Register your interest to get access: https://vercel.com/changelog/drives-for-vercel-sandbox-in-private-beta
+ * Retrieves a paginated list of drives belonging to a specific project.
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
  */

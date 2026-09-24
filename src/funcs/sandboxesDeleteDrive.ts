@@ -34,7 +34,7 @@ import { Result } from "../types/fp.js";
  * Delete a drive
  *
  * @remarks
- * Deletes a drive by project and name. Attached drives cannot be deleted. Stop or replace the session currently using the drive before retrying deletion. Drives are in private beta. Register your interest to get access: https://vercel.com/changelog/drives-for-vercel-sandbox-in-private-beta
+ * Deletes a drive by project and name. Attached drives cannot be deleted. Stop or replace the session currently using the drive before retrying deletion.
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
  */

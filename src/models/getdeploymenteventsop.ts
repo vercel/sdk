@@ -13,14 +13,14 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 /**
  * Order of the returned events based on the timestamp.
  */
-export const Direction = {
+export const QueryParamDirection = {
   Backward: "backward",
   Forward: "forward",
 } as const;
 /**
  * Order of the returned events based on the timestamp.
  */
-export type Direction = ClosedEnum<typeof Direction>;
+export type QueryParamDirection = ClosedEnum<typeof QueryParamDirection>;
 
 /**
  * HTTP status code range to filter events by.
@@ -35,7 +35,7 @@ export type GetDeploymentEventsRequest = {
   /**
    * Order of the returned events based on the timestamp.
    */
-  direction?: Direction | undefined;
+  direction?: QueryParamDirection | undefined;
   /**
    * When enabled, this endpoint will return live events as they happen.
    */
@@ -709,8 +709,9 @@ export type GetDeploymentEventsResponse =
   | GetDeploymentEvents31;
 
 /** @internal */
-export const Direction$outboundSchema: z.ZodNativeEnum<typeof Direction> = z
-  .nativeEnum(Direction);
+export const QueryParamDirection$outboundSchema: z.ZodNativeEnum<
+  typeof QueryParamDirection
+> = z.nativeEnum(QueryParamDirection);
 
 /** @internal */
 export type QueryParamStatusCode$Outbound = number | string;
@@ -753,7 +754,7 @@ export const GetDeploymentEventsRequest$outboundSchema: z.ZodType<
   GetDeploymentEventsRequest
 > = z.object({
   idOrUrl: z.string(),
-  direction: Direction$outboundSchema.default("forward"),
+  direction: QueryParamDirection$outboundSchema.default("forward"),
   follow: z.number().optional(),
   limit: z.number().optional(),
   name: z.string().optional(),

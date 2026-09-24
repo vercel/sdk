@@ -9,72 +9,6 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
-  GetProjectFrom2,
-  GetProjectFrom2$inboundSchema,
-  GetProjectFromPreset,
-  GetProjectFromPreset$inboundSchema,
-  GetProjectInternalRoutes,
-  GetProjectInternalRoutes$inboundSchema,
-  GetProjectIpBuckets,
-  GetProjectIpBuckets$inboundSchema,
-  GetProjectJobs,
-  GetProjectJobs$inboundSchema,
-  GetProjectLastAliasRequest,
-  GetProjectLastAliasRequest$inboundSchema,
-  GetProjectLastRollbackTarget,
-  GetProjectLastRollbackTarget$inboundSchema,
-  GetProjectLatestDeployments,
-  GetProjectLatestDeployments$inboundSchema,
-  GetProjectLink,
-  GetProjectLink$inboundSchema,
-  GetProjectMicrofrontends,
-  GetProjectMicrofrontends$inboundSchema,
-  GetProjectNodeVersion,
-  GetProjectNodeVersion$inboundSchema,
-  GetProjectOidcProviders,
-  GetProjectOidcProviders$inboundSchema,
-  GetProjectOidcTokenConfig,
-  GetProjectOidcTokenConfig$inboundSchema,
-  GetProjectOptionsAllowlist,
-  GetProjectOptionsAllowlist$inboundSchema,
-  GetProjectPassport,
-  GetProjectPassport$inboundSchema,
-  GetProjectPasswordProtection,
-  GetProjectPasswordProtection$inboundSchema,
-  GetProjectPermissions,
-  GetProjectPermissions$inboundSchema,
-  GetProjectProtectionBypass,
-  GetProjectProtectionBypass$inboundSchema,
-  GetProjectProtectionConfig,
-  GetProjectProtectionConfig$inboundSchema,
-  GetProjectResourceConfig,
-  GetProjectResourceConfig$inboundSchema,
-  GetProjectRollbackDescription,
-  GetProjectRollbackDescription$inboundSchema,
-  GetProjectRollingRelease,
-  GetProjectRollingRelease$inboundSchema,
-  GetProjectSandbox,
-  GetProjectSandbox$inboundSchema,
-  GetProjectSecurity,
-  GetProjectSecurity$inboundSchema,
-  GetProjectServices,
-  GetProjectServices$inboundSchema,
-  GetProjectSpeedInsights,
-  GetProjectSpeedInsights$inboundSchema,
-  GetProjectSsoProtection,
-  GetProjectSsoProtection$inboundSchema,
-  GetProjectStaticIps,
-  GetProjectStaticIps$inboundSchema,
-  GetProjectTargets,
-  GetProjectTargets$inboundSchema,
-  GetProjectTier,
-  GetProjectTier$inboundSchema,
-  GetProjectTracing,
-  GetProjectTracing$inboundSchema,
-  GetProjectTrustedIps,
-  GetProjectTrustedIps$inboundSchema,
-} from "./getprojectfrompreset.js";
-import {
   GetProjectAbuse,
   GetProjectAbuse$inboundSchema,
   GetProjectAlias,
@@ -113,10 +47,105 @@ import {
   GetProjectGitComments$inboundSchema,
   GetProjectGitProviderOptions,
   GetProjectGitProviderOptions$inboundSchema,
+} from "./getprojectgitprovideroptions.js";
+import {
   GetProjectIntegrations,
   GetProjectIntegrations$inboundSchema,
-} from "./getprojecthas2.js";
+  GetProjectInternalRoutes,
+  GetProjectInternalRoutes$inboundSchema,
+  GetProjectIpBuckets,
+  GetProjectIpBuckets$inboundSchema,
+  GetProjectJobs,
+  GetProjectJobs$inboundSchema,
+  GetProjectLastAliasRequest,
+  GetProjectLastAliasRequest$inboundSchema,
+  GetProjectLastRollbackTarget,
+  GetProjectLastRollbackTarget$inboundSchema,
+  GetProjectLatestDeployments,
+  GetProjectLatestDeployments$inboundSchema,
+  GetProjectLink,
+  GetProjectLink$inboundSchema,
+  GetProjectMicrofrontends,
+  GetProjectMicrofrontends$inboundSchema,
+  GetProjectNodeVersion,
+  GetProjectNodeVersion$inboundSchema,
+  GetProjectOidcTokenConfig,
+  GetProjectOidcTokenConfig$inboundSchema,
+  GetProjectOptionsAllowlist,
+  GetProjectOptionsAllowlist$inboundSchema,
+  GetProjectPassport,
+  GetProjectPassport$inboundSchema,
+  GetProjectPasswordProtection,
+  GetProjectPasswordProtection$inboundSchema,
+  GetProjectPermissions,
+  GetProjectPermissions$inboundSchema,
+  GetProjectProtectionBypass,
+  GetProjectProtectionBypass$inboundSchema,
+  GetProjectProtectionConfig,
+  GetProjectProtectionConfig$inboundSchema,
+  GetProjectResourceConfig,
+  GetProjectResourceConfig$inboundSchema,
+  GetProjectRollbackDescription,
+  GetProjectRollbackDescription$inboundSchema,
+  GetProjectRollingRelease,
+  GetProjectRollingRelease$inboundSchema,
+  GetProjectSandbox,
+  GetProjectSandbox$inboundSchema,
+  GetProjectSecurity,
+  GetProjectSecurity$inboundSchema,
+  GetProjectServices,
+  GetProjectServices$inboundSchema,
+  GetProjectSpeedInsights,
+  GetProjectSpeedInsights$inboundSchema,
+  GetProjectSsoProtection,
+  GetProjectSsoProtection$inboundSchema,
+  GetProjectStaticIps,
+  GetProjectStaticIps$inboundSchema,
+  GetProjectTargets,
+  GetProjectTargets$inboundSchema,
+  GetProjectTier,
+  GetProjectTier$inboundSchema,
+  GetProjectTo1,
+  GetProjectTo1$inboundSchema,
+  GetProjectTo2,
+  GetProjectTo2$inboundSchema,
+  GetProjectTracing,
+  GetProjectTracing$inboundSchema,
+  GetProjectTrustedIps,
+  GetProjectTrustedIps$inboundSchema,
+} from "./getprojectto1.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type GetProjectTo = GetProjectTo1 | GetProjectTo2;
+
+export type GetProjectOidcProviders = {
+  to: GetProjectTo1 | GetProjectTo2;
+  claims: { [k: string]: Array<string> };
+  label?: string | undefined;
+};
+
+export const GetProjectFromProjectsPreset = {
+  AllCustom: "all-custom",
+} as const;
+export type GetProjectFromProjectsPreset = ClosedEnum<
+  typeof GetProjectFromProjectsPreset
+>;
+
+/**
+ * The source envs on the trusted project that are allowed to access `to`.
+ */
+export type GetProjectFrom2 = {
+  preset: GetProjectFromProjectsPreset;
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs?: Array<string> | undefined;
+};
+
+export const GetProjectFromPreset = {
+  AllCustom: "all-custom",
+} as const;
+export type GetProjectFromPreset = ClosedEnum<typeof GetProjectFromPreset>;
 
 /**
  * The source envs on the trusted project that are allowed to access `to`.
@@ -314,6 +343,9 @@ export type GetProjectResponseBody = {
   passport?: GetProjectPassport | null | undefined;
   passwordProtection?: GetProjectPasswordProtection | null | undefined;
   paused?: boolean | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
   permissions?: GetProjectPermissions | undefined;
   productionDeploymentsFastLane?: boolean | undefined;
   protectedSourcemaps?: boolean | undefined;
@@ -358,6 +390,74 @@ export type GetProjectResponseBody = {
 };
 
 /** @internal */
+export const GetProjectTo$inboundSchema: z.ZodType<
+  GetProjectTo,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([GetProjectTo1$inboundSchema, GetProjectTo2$inboundSchema]);
+
+export function getProjectToFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectTo, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectTo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectTo' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectOidcProviders$inboundSchema: z.ZodType<
+  GetProjectOidcProviders,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  to: smartUnion([GetProjectTo1$inboundSchema, GetProjectTo2$inboundSchema]),
+  claims: z.record(z.array(types.string())),
+  label: types.optional(types.string()),
+});
+
+export function getProjectOidcProvidersFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectOidcProviders, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectOidcProviders$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectOidcProviders' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectFromProjectsPreset$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectFromProjectsPreset
+> = z.nativeEnum(GetProjectFromProjectsPreset);
+
+/** @internal */
+export const GetProjectFrom2$inboundSchema: z.ZodType<
+  GetProjectFrom2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  preset: GetProjectFromProjectsPreset$inboundSchema,
+  slugs: types.optional(z.array(types.string())),
+});
+
+export function getProjectFrom2FromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectFrom2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectFrom2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectFrom2' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectFromPreset$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectFromPreset
+> = z.nativeEnum(GetProjectFromPreset);
+
+/** @internal */
 export const GetProjectFrom1$inboundSchema: z.ZodType<
   GetProjectFrom1,
   z.ZodTypeDef,
@@ -384,7 +484,7 @@ export const GetProjectFrom$inboundSchema: z.ZodType<
   unknown
 > = smartUnion([
   z.lazy(() => GetProjectFrom1$inboundSchema),
-  GetProjectFrom2$inboundSchema,
+  z.lazy(() => GetProjectFrom2$inboundSchema),
 ]);
 
 export function getProjectFromFromJSON(
@@ -476,7 +576,7 @@ export const GetProjectCustomAllow$inboundSchema: z.ZodType<
 > = z.object({
   from: smartUnion([
     z.lazy(() => GetProjectFrom1$inboundSchema),
-    GetProjectFrom2$inboundSchema,
+    z.lazy(() => GetProjectFrom2$inboundSchema),
   ]),
   to: smartUnion([
     z.lazy(() => GetProjectToProjects1$inboundSchema),
@@ -524,7 +624,7 @@ export const GetProjectTrustedSources$inboundSchema: z.ZodType<
 > = z.object({
   enableVercelCiSameRepository: types.optional(types.boolean()),
   oidcProviders: types.optional(
-    z.record(z.array(GetProjectOidcProviders$inboundSchema)),
+    z.record(z.array(z.lazy(() => GetProjectOidcProviders$inboundSchema))),
   ),
   projects: types.optional(
     z.record(z.lazy(() => GetProjectProjects$inboundSchema)),

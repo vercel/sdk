@@ -5,21 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndTwentySeven } from "@vercel/sdk/models/onehundredandtwo.js";
+import { OneHundredAndTwentySeven } from "@vercel/sdk/models/usereventjobaction.js";
 
 let value: OneHundredAndTwentySeven = {
-  domain: "bustling-skyscraper.info",
-  initiator: "system",
-  zone: false,
+  id: "<id>",
+  name: "<value>",
+  nameservers: [],
+  previousServiceType: "<value>",
+  serviceType: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                    | Type                                                     | Required                                                 | Description                                              |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `domain`                                                 | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
-| `initiator`                                              | [models.PayloadInitiator](../models/payloadinitiator.md) | :heavy_check_mark:                                       | N/A                                                      |
-| `previousZone`                                           | *boolean*                                                | :heavy_minus_sign:                                       | N/A                                                      |
-| `source`                                                 | *string*                                                 | :heavy_minus_sign:                                       | N/A                                                      |
-| `zone`                                                   | *boolean*                                                | :heavy_check_mark:                                       | N/A                                                      |
+| Field                 | Type                  | Required              | Description           |
+| --------------------- | --------------------- | --------------------- | --------------------- |
+| `id`                  | *string*              | :heavy_check_mark:    | N/A                   |
+| `name`                | *string*              | :heavy_check_mark:    | N/A                   |
+| `nameservers`         | *string*[]            | :heavy_check_mark:    | N/A                   |
+| `previousServiceType` | *string*              | :heavy_check_mark:    | N/A                   |
+| `serviceType`         | *string*              | :heavy_check_mark:    | N/A                   |

@@ -5,7 +5,7 @@ Build resource configuration snapshot for this deployment.
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentBuildQueue } from "@vercel/sdk/models/canceldeploymentresourceconfig.js";
+import { CancelDeploymentBuildQueue } from "@vercel/sdk/models/readystate.js";
 
 let value: CancelDeploymentBuildQueue = {};
 ```

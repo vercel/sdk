@@ -5,7 +5,7 @@ Filter results by projects with elastic concurrency enabled
 ## Example Usage
 
 ```typescript
-import { ElasticConcurrencyEnabled } from "@vercel/sdk/models/getprojectsresponsebodyprojectsconsolidatedgitcommitstatus.js";
+import { ElasticConcurrencyEnabled } from "@vercel/sdk/models/responsebodyexpiration.js";
 
 let value: ElasticConcurrencyEnabled = "1";
 ```

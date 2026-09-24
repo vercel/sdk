@@ -10,8 +10,9 @@ import { CreateDeploymentCheckRunSource5 } from "@vercel/sdk/models/createdeploy
 let value: CreateDeploymentCheckRunSource5 = {
   origin: "api",
   selection: {
-    job: "Principal Marketing Associate",
-    kind: "job",
+    job: "Corporate Program Strategist",
+    kind: "task",
+    task: "<value>",
   },
   subKind: "vercel-ci-check",
 };
@@ -22,5 +23,5 @@ let value: CreateDeploymentCheckRunSource5 = {
 | Field                                              | Type                                               | Required                                           | Description                                        |
 | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
 | `origin`                                           | [models.SourceOrigin](../models/sourceorigin.md)   | :heavy_check_mark:                                 | N/A                                                |
-| `selection`                                        | [models.Selection](../models/selection.md)         | :heavy_check_mark:                                 | N/A                                                |
+| `selection`                                        | *models.Selection*                                 | :heavy_check_mark:                                 | N/A                                                |
 | `subKind`                                          | [models.SourceSubKind](../models/sourcesubkind.md) | :heavy_check_mark:                                 | N/A                                                |

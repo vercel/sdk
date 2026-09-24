@@ -5,7 +5,7 @@ Machine type that was used for the build.
 ## Example Usage
 
 ```typescript
-import { GetDeploymentResponseBodyDeploymentsPurchaseType } from "@vercel/sdk/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody215type.js";
+import { GetDeploymentResponseBodyDeploymentsPurchaseType } from "@vercel/sdk/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody219type.js";
 
 let value: GetDeploymentResponseBodyDeploymentsPurchaseType = "enhanced";
 ```

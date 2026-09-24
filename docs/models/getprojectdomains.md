@@ -5,7 +5,7 @@ List of domains associated with this environment
 ## Example Usage
 
 ```typescript
-import { GetProjectDomains } from "@vercel/sdk/models/getprojecthas2.js";
+import { GetProjectDomains } from "@vercel/sdk/models/getprojectgitprovideroptions.js";
 
 let value: GetProjectDomains = {
   apexName: "<value>",

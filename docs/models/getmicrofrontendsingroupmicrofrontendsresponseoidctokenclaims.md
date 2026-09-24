@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupMicrofrontendsResponseOidcTokenClaims } from "@vercel/sdk/models/getmicrofrontendsingrouphasvalue.js";
+import { GetMicrofrontendsInGroupMicrofrontendsResponseOidcTokenClaims } from "@vercel/sdk/models/getmicrofrontendsingroupgitprovideroptions.js";
 
 let value: GetMicrofrontendsInGroupMicrofrontendsResponseOidcTokenClaims = {
   aud: "<value>",
@@ -24,6 +24,7 @@ let value: GetMicrofrontendsInGroupMicrofrontendsResponseOidcTokenClaims = {
 | --------------------- | --------------------- | --------------------- | --------------------- |
 | `aud`                 | *string*              | :heavy_check_mark:    | N/A                   |
 | `customEnvironmentId` | *string*              | :heavy_minus_sign:    | N/A                   |
+| `deploymentId`        | *string*              | :heavy_minus_sign:    | N/A                   |
 | `environment`         | *string*              | :heavy_check_mark:    | N/A                   |
 | `iss`                 | *string*              | :heavy_check_mark:    | N/A                   |
 | `mfeGroupIds`         | *string*[]            | :heavy_minus_sign:    | N/A                   |

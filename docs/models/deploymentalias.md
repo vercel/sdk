@@ -5,7 +5,7 @@ Condensed check data. Retrieve individual check and check run data using api-che
 ## Example Usage
 
 ```typescript
-import { DeploymentAlias } from "@vercel/sdk/models/canceldeploymentresourceconfig.js";
+import { DeploymentAlias } from "@vercel/sdk/models/readystate.js";
 
 let value: DeploymentAlias = {
   startedAt: 3512.67,

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyDataCache } from "@vercel/sdk/models/getprojectsresponsebodyprojectsconsolidatedgitcommitstatus.js";
+import { ResponseBodyDataCache } from "@vercel/sdk/models/responsebodyexpiration.js";
 
 let value: ResponseBodyDataCache = {
   userDisabled: true,

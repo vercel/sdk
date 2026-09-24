@@ -18,6 +18,10 @@ export type ConnectUpdateConnectorRequest = {
    */
   triggers?: boolean | undefined;
   /**
+   * Trigger configuration, validated and encrypted by the trigger driver. An empty object applies driver defaults.
+   */
+  triggerData?: { [k: string]: any } | undefined;
+  /**
    * Default trigger events for this connector.
    */
   events?: Array<string> | undefined;
@@ -78,6 +82,7 @@ export type ConnectUpdateConnectorRequest = {
 /** @internal */
 export type ConnectUpdateConnectorRequest$Outbound = {
   triggers?: boolean | undefined;
+  triggerData?: { [k: string]: any } | undefined;
   events?: Array<string> | undefined;
   data?: ConnectConnectorUpdateData$Outbound | undefined;
   icon?: string | undefined;
@@ -94,6 +99,7 @@ export const ConnectUpdateConnectorRequest$outboundSchema: z.ZodType<
   ConnectUpdateConnectorRequest
 > = z.object({
   triggers: z.boolean().optional(),
+  triggerData: z.record(z.any()).optional(),
   events: z.array(z.string()).optional(),
   data: ConnectConnectorUpdateData$outboundSchema.optional(),
   icon: z.string().optional(),

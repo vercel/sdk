@@ -5,7 +5,7 @@ An object that will contain a `code` and a `message` when the aliasing fails, ot
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentResponseBodyDeploymentsAliasError } from "@vercel/sdk/models/responsebodyimages.js";
+import { CreateDeploymentResponseBodyDeploymentsAliasError } from "@vercel/sdk/models/createdeploymentgitsource1.js";
 
 let value: CreateDeploymentResponseBodyDeploymentsAliasError = {
   code: "<value>",

@@ -10,8 +10,7 @@ import { ListCheckRunsSource5 } from "@vercel/sdk/models/listcheckrunsop.js";
 let value: ListCheckRunsSource5 = {
   origin: "api",
   selection: {
-    job: "Product Solutions Engineer",
-    kind: "job",
+    kind: "invocation",
   },
   subKind: "vercel-ci-check",
 };
@@ -22,5 +21,5 @@ let value: ListCheckRunsSource5 = {
 | Field                                                                                                              | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
 | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
 | `origin`                                                                                                           | [models.ListCheckRunsSourceChecksV2Response200Origin](../models/listcheckrunssourcechecksv2response200origin.md)   | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
-| `selection`                                                                                                        | [models.ListCheckRunsSourceSelection](../models/listcheckrunssourceselection.md)                                   | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
+| `selection`                                                                                                        | *models.ListCheckRunsSourceSelection*                                                                              | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
 | `subKind`                                                                                                          | [models.ListCheckRunsSourceChecksV2Response200SubKind](../models/listcheckrunssourcechecksv2response200subkind.md) | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyProjectsResponse200ApplicationJson3OidcTokenClaims } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponseto.js";
+import { GetProjectsResponseBodyProjectsResponse200ApplicationJson3OidcTokenClaims } from "@vercel/sdk/models/responsebodytrustedips.js";
 
 let value:
   GetProjectsResponseBodyProjectsResponse200ApplicationJson3OidcTokenClaims = {
@@ -25,6 +25,7 @@ let value:
 | --------------------- | --------------------- | --------------------- | --------------------- |
 | `aud`                 | *string*              | :heavy_check_mark:    | N/A                   |
 | `customEnvironmentId` | *string*              | :heavy_minus_sign:    | N/A                   |
+| `deploymentId`        | *string*              | :heavy_minus_sign:    | N/A                   |
 | `environment`         | *string*              | :heavy_check_mark:    | N/A                   |
 | `iss`                 | *string*              | :heavy_check_mark:    | N/A                   |
 | `mfeGroupIds`         | *string*[]            | :heavy_minus_sign:    | N/A                   |

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayloadPassport } from "@vercel/sdk/models/payloaddefault.js";
+import { UserEventPayloadPassport } from "@vercel/sdk/models/twohundredandsixteen.js";
 
 let value: UserEventPayloadPassport = {
   connectorId: "<id>",
@@ -13,7 +13,7 @@ let value: UserEventPayloadPassport = {
 
 ## Fields
 
-| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `connectorId`                                                                        | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
-| `deploymentType`                                                                     | [models.UserEventPayloadDeploymentType](../models/usereventpayloaddeploymenttype.md) | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `connectorId`                                                                              | *string*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `deploymentType`                                                                           | [models.UserEventPayload237DeploymentType](../models/usereventpayload237deploymenttype.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |

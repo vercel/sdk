@@ -5,11 +5,11 @@
 ```typescript
 import { ListRepositoryTagsStatus } from "@vercel/sdk/models/listrepositorytagsop.js";
 
-let value: ListRepositoryTagsStatus = "unoptimized";
+let value: ListRepositoryTagsStatus = "ready";
 ```
 
 ## Values
 
 ```typescript
-"preparing" | "ready" | "unoptimized"
+"errored" | "preparing" | "ready" | "unoptimized"
 ```

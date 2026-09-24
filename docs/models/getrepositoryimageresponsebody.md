@@ -17,7 +17,7 @@ let value: GetRepositoryImageResponseBody = {
     platform: "linux",
     repositoryId: "repo_a1b2c3d4e5f6",
     sizeInBytes: 1721.38,
-    status: "ready",
+    status: "preparing",
     tags: [],
   },
 };

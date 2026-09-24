@@ -54,7 +54,7 @@ export type GetBulkPriceRenewalPrice = number | string;
 
 export type GetBulkPriceTransferPrice = number | string;
 
-export type Results = {
+export type GetBulkPriceResults = {
   /**
    * A valid domain name
    */
@@ -69,7 +69,7 @@ export type Results = {
  * Success
  */
 export type GetBulkPriceResponseBody = {
-  results: Array<Results>;
+  results: Array<GetBulkPriceResults>;
 };
 
 /** @internal */
@@ -204,22 +204,25 @@ export function getBulkPriceTransferPriceFromJSON(
 }
 
 /** @internal */
-export const Results$inboundSchema: z.ZodType<Results, z.ZodTypeDef, unknown> =
-  z.object({
-    domain: types.string(),
-    years: types.number(),
-    purchasePrice: smartUnion([types.number(), types.string()]),
-    renewalPrice: smartUnion([types.number(), types.string()]),
-    transferPrice: smartUnion([types.number(), types.string()]),
-  });
+export const GetBulkPriceResults$inboundSchema: z.ZodType<
+  GetBulkPriceResults,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  domain: types.string(),
+  years: types.number(),
+  purchasePrice: smartUnion([types.number(), types.string()]),
+  renewalPrice: smartUnion([types.number(), types.string()]),
+  transferPrice: smartUnion([types.number(), types.string()]),
+});
 
-export function resultsFromJSON(
+export function getBulkPriceResultsFromJSON(
   jsonString: string,
-): SafeParseResult<Results, SDKValidationError> {
+): SafeParseResult<GetBulkPriceResults, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Results$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Results' from JSON`,
+    (x) => GetBulkPriceResults$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetBulkPriceResults' from JSON`,
   );
 }
 
@@ -229,7 +232,7 @@ export const GetBulkPriceResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  results: z.array(z.lazy(() => Results$inboundSchema)),
+  results: z.array(z.lazy(() => GetBulkPriceResults$inboundSchema)),
 });
 
 export function getBulkPriceResponseBodyFromJSON(

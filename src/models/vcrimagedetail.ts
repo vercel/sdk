@@ -27,6 +27,7 @@ export type VcrImageDetailKind = ClosedEnum<typeof VcrImageDetailKind>;
  * VHS-readiness status, or `null` for a multi-platform index.
  */
 export const VcrImageDetailStatus = {
+  Errored: "errored",
   Preparing: "preparing",
   Ready: "ready",
   Unoptimized: "unoptimized",

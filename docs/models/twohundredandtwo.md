@@ -5,16 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndTwo } from "@vercel/sdk/models/usereventpayload171newownerfeatureblocksworkfloweventsblockreason.js";
+import { TwoHundredAndTwo } from "@vercel/sdk/models/sourceimages.js";
 
 let value: TwoHundredAndTwo = {
-  projectName: "<value>",
+  enabled: true,
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_minus_sign: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| Field                     | Type                      | Required                  | Description               |
+| ------------------------- | ------------------------- | ------------------------- | ------------------------- |
+| `allowedIntegrationCount` | *number*                  | :heavy_minus_sign:        | N/A                       |
+| `allowedIntegrationIds`   | *string*[]                | :heavy_minus_sign:        | N/A                       |
+| `enabled`                 | *boolean*                 | :heavy_check_mark:        | N/A                       |

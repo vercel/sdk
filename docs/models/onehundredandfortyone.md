@@ -5,21 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFortyOne } from "@vercel/sdk/models/onehundredandtwo.js";
+import { OneHundredAndFortyOne } from "@vercel/sdk/models/usereventjobaction.js";
 
 let value: OneHundredAndFortyOne = {
-  edgeConfigDigest: "<value>",
-  edgeConfigId: "<id>",
-  edgeConfigSlug: "<value>",
-  edgeConfigBackupVersionId: "<id>",
+  projectId: "<id>",
+  projectName: "<value>",
+  srcImages: [],
 };
 ```
 
 ## Fields
 
-| Field                       | Type                        | Required                    | Description                 |
-| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
-| `edgeConfigDigest`          | *string*                    | :heavy_check_mark:          | N/A                         |
-| `edgeConfigId`              | *string*                    | :heavy_check_mark:          | N/A                         |
-| `edgeConfigSlug`            | *string*                    | :heavy_check_mark:          | N/A                         |
-| `edgeConfigBackupVersionId` | *string*                    | :heavy_check_mark:          | N/A                         |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `srcImages`        | *string*[]         | :heavy_check_mark: | N/A                |

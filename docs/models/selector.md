@@ -1,6 +1,6 @@
 # Selector
 
-For kind=router: how to order candidates.
+For kind=router: how to order candidates. Absent means declared order.
 
 ## Example Usage
 
@@ -13,5 +13,5 @@ let value: Selector = "tps";
 ## Values
 
 ```typescript
-"cost" | "priority" | "tps" | "ttft"
+"cost" | "tps" | "ttft"
 ```

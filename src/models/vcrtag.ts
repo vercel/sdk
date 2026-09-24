@@ -26,6 +26,7 @@ export type VcrTagKind = ClosedEnum<typeof VcrTagKind>;
  * VHS-readiness status, or `null` for a multi-platform index.
  */
 export const VcrTagStatus = {
+  Errored: "errored",
   Preparing: "preparing",
   Ready: "ready",
   Unoptimized: "unoptimized",

@@ -5,35 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSeventyNine } from "@vercel/sdk/models/usereventpayload171newownerfeatureblocksworkfloweventsblockreason.js";
+import { OneHundredAndSeventyNine } from "@vercel/sdk/models/sourceimages.js";
 
 let value: OneHundredAndSeventyNine = {
-  configurationId: "<id>",
-  integrationId: "<id>",
-  integrationProductSlug: "<value>",
-  integrationSlug: "<value>",
-  resourceId: "<id>",
-  commands: [
-    {
-      command: "<value>",
-    },
-  ],
-  readonly: false,
-  requestKind: "raw_commands",
+  integration: {
+    configurationId: "<id>",
+    id: "<id>",
+    name: "<value>",
+    slug: "<value>",
+  },
+  originTeamId: "<id>",
+  originTeamName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `configurationId`                              | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `errorCode`                                    | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `integrationId`                                | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `integrationProductSlug`                       | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `integrationSlug`                              | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `resourceId`                                   | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `commands`                                     | [models.Commands](../models/commands.md)[]     | :heavy_check_mark:                             | N/A                                            |
-| `errorIndex`                                   | *number*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `readonly`                                     | *boolean*                                      | :heavy_check_mark:                             | N/A                                            |
-| `requestKind`                                  | [models.RequestKind](../models/requestkind.md) | :heavy_check_mark:                             | N/A                                            |
+| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `integration`                                                | [models.PayloadIntegration](../models/payloadintegration.md) | :heavy_check_mark:                                           | N/A                                                          |
+| `originTeamId`                                               | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `originTeamName`                                             | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |

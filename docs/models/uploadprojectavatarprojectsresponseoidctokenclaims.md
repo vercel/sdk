@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarProjectsResponseOidcTokenClaims } from "@vercel/sdk/models/uploadprojectavatarhasvalue.js";
+import { UploadProjectAvatarProjectsResponseOidcTokenClaims } from "@vercel/sdk/models/uploadprojectavatargitprovideroptions.js";
 
 let value: UploadProjectAvatarProjectsResponseOidcTokenClaims = {
   aud: "<value>",
@@ -24,6 +24,7 @@ let value: UploadProjectAvatarProjectsResponseOidcTokenClaims = {
 | --------------------- | --------------------- | --------------------- | --------------------- |
 | `aud`                 | *string*              | :heavy_check_mark:    | N/A                   |
 | `customEnvironmentId` | *string*              | :heavy_minus_sign:    | N/A                   |
+| `deploymentId`        | *string*              | :heavy_minus_sign:    | N/A                   |
 | `environment`         | *string*              | :heavy_check_mark:    | N/A                   |
 | `iss`                 | *string*              | :heavy_check_mark:    | N/A                   |
 | `mfeGroupIds`         | *string*[]            | :heavy_minus_sign:    | N/A                   |

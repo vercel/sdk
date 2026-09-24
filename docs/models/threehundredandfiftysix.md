@@ -5,19 +5,32 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFiftySix } from "@vercel/sdk/models/payloadmostspecificsubdivision.js";
+import { ThreeHundredAndFiftySix } from "@vercel/sdk/models/payloadcity.js";
 
 let value: ThreeHundredAndFiftySix = {
-  store: {
+  budget: {
+    createdAt: 3993.73,
+    fixedBudget: 9120.6,
     id: "<id>",
-    name: "<value>",
+    isActive: false,
+    notifiedAt: [
+      6692.92,
+      1381.04,
+    ],
+    previousSpend: [
+      2260.21,
+    ],
+    teamId: "<id>",
+    type: "fixed",
   },
 };
 ```
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `ownerId`                                                                | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
-| `store`                                                                  | [models.UserEventPayload356Store](../models/usereventpayload356store.md) | :heavy_check_mark:                                                       | N/A                                                                      |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `budget`                                                                   | [models.UserEventPayload356Budget](../models/usereventpayload356budget.md) | :heavy_check_mark:                                                         | Represents a budget for tracking and notifying teams on their spending.    |
+| `projectId`                                                                | *string*                                                                   | :heavy_minus_sign:                                                         | Stored for project budgets. Same value as `budget.scopeId`.                |
+| `projectName`                                                              | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `webhookUrl`                                                               | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |

@@ -16,16 +16,16 @@ import {
   GetProjectsResponseBody$inboundSchema,
 } from "../models/getprojectsresponsebody.js";
 import {
-  GetProjectsRequest,
-  GetProjectsRequest$outboundSchema,
-} from "../models/getprojectsresponsebodyprojectsconsolidatedgitcommitstatus.js";
-import {
   ConnectionError,
   InvalidRequestError,
   RequestAbortedError,
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/httpclienterrors.js";
+import {
+  GetProjectsRequest,
+  GetProjectsRequest$outboundSchema,
+} from "../models/responsebodyexpiration.js";
 import { ResponseValidationError } from "../models/responsevalidationerror.js";
 import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import { VercelError } from "../models/vercelerror.js";

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectCve55182MigrationAppliedFrom } from "@vercel/sdk/models/createprojecttargets.js";
+import { CreateProjectCve55182MigrationAppliedFrom } from "@vercel/sdk/models/createprojectprojectschecksstate.js";
 
 let value: CreateProjectCve55182MigrationAppliedFrom =
   "prod_deployment_urls_and_all_previews";

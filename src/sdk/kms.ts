@@ -66,40 +66,6 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class Kms extends ClientSDK {
   /**
-   * List issuers
-   *
-   * @remarks
-   * Retrieve the list of KMS issuers that belong to the authenticated team. The results are paginated.
-   */
-  async listKmsIssuers(
-    request: ListKmsIssuersRequest,
-    options?: RequestOptions,
-  ): Promise<ListKmsIssuersResponseBody> {
-    return unwrapAsync(kmsListKmsIssuers(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Create an issuer
-   *
-   * @remarks
-   * Create a new KMS issuer for the authenticated team. An issuer owns the asymmetric signing keys that are used to sign tokens and messages.
-   */
-  async createKmsIssuer(
-    request: CreateKmsIssuerRequest,
-    options?: RequestOptions,
-  ): Promise<CreateKmsIssuerResponseBody> {
-    return unwrapAsync(kmsCreateKmsIssuer(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
    * Sign a message
    *
    * @remarks
@@ -127,6 +93,40 @@ export class Kms extends ClientSDK {
     options?: RequestOptions,
   ): Promise<SignKmsTokenResponseBody> {
     return unwrapAsync(kmsSignKmsToken(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List issuers
+   *
+   * @remarks
+   * Retrieve the list of KMS issuers that belong to the authenticated team. The results are paginated.
+   */
+  async listKmsIssuers(
+    request: ListKmsIssuersRequest,
+    options?: RequestOptions,
+  ): Promise<ListKmsIssuersResponseBody> {
+    return unwrapAsync(kmsListKmsIssuers(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Create an issuer
+   *
+   * @remarks
+   * Create a new KMS issuer for the authenticated team. An issuer owns the asymmetric signing keys that are used to sign tokens and messages.
+   */
+  async createKmsIssuer(
+    request: CreateKmsIssuerRequest,
+    options?: RequestOptions,
+  ): Promise<CreateKmsIssuerResponseBody> {
+    return unwrapAsync(kmsCreateKmsIssuer(
       this,
       request,
       options,

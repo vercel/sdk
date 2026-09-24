@@ -155,6 +155,31 @@ export type UpdateSharedEnvVariableFailed = {
 };
 
 /**
+ * The principal that last edited this env var, when the editor id resolves to a known user or app. Lets clients render the right avatar instead of assuming every editor is a user.
+ */
+export type UpdateSharedEnvVariableLastEditedByPrincipal2 = {
+  avatar?: string | undefined;
+  id: string;
+  name: string;
+  type: "app";
+};
+
+/**
+ * The principal that last edited this env var, when the editor id resolves to a known user or app. Lets clients render the right avatar instead of assuming every editor is a user.
+ */
+export type UpdateSharedEnvVariableLastEditedByPrincipal1 = {
+  avatar?: string | undefined;
+  id: string;
+  name?: string | null | undefined;
+  type: "user";
+  username: string;
+};
+
+export type UpdateSharedEnvVariableLastEditedByPrincipal =
+  | UpdateSharedEnvVariableLastEditedByPrincipal1
+  | UpdateSharedEnvVariableLastEditedByPrincipal2;
+
+/**
  * environments this env variable targets
  */
 export const UpdateSharedEnvVariableEnvironmentTarget = {
@@ -234,6 +259,10 @@ export type Updated = {
    * The last editor full name or username.
    */
   lastEditedByDisplayName?: string | undefined;
+  lastEditedByPrincipal?:
+    | UpdateSharedEnvVariableLastEditedByPrincipal1
+    | UpdateSharedEnvVariableLastEditedByPrincipal2
+    | undefined;
   /**
    * The unique identifier of the owner (team) the Shared Env Var was created for.
    */
@@ -511,6 +540,92 @@ export function updateSharedEnvVariableFailedFromJSON(
 }
 
 /** @internal */
+export const UpdateSharedEnvVariableLastEditedByPrincipal2$inboundSchema:
+  z.ZodType<
+    UpdateSharedEnvVariableLastEditedByPrincipal2,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    avatar: types.optional(types.string()),
+    id: types.string(),
+    name: types.string(),
+    type: types.literal("app"),
+  });
+
+export function updateSharedEnvVariableLastEditedByPrincipal2FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateSharedEnvVariableLastEditedByPrincipal2,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateSharedEnvVariableLastEditedByPrincipal2$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateSharedEnvVariableLastEditedByPrincipal2' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateSharedEnvVariableLastEditedByPrincipal1$inboundSchema:
+  z.ZodType<
+    UpdateSharedEnvVariableLastEditedByPrincipal1,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    avatar: types.optional(types.string()),
+    id: types.string(),
+    name: z.nullable(types.string()).optional(),
+    type: types.literal("user"),
+    username: types.string(),
+  });
+
+export function updateSharedEnvVariableLastEditedByPrincipal1FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateSharedEnvVariableLastEditedByPrincipal1,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateSharedEnvVariableLastEditedByPrincipal1$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateSharedEnvVariableLastEditedByPrincipal1' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateSharedEnvVariableLastEditedByPrincipal$inboundSchema:
+  z.ZodType<
+    UpdateSharedEnvVariableLastEditedByPrincipal,
+    z.ZodTypeDef,
+    unknown
+  > = z.union([
+    z.lazy(() => UpdateSharedEnvVariableLastEditedByPrincipal1$inboundSchema),
+    z.lazy(() => UpdateSharedEnvVariableLastEditedByPrincipal2$inboundSchema),
+  ]);
+
+export function updateSharedEnvVariableLastEditedByPrincipalFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateSharedEnvVariableLastEditedByPrincipal,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateSharedEnvVariableLastEditedByPrincipal$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateSharedEnvVariableLastEditedByPrincipal' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateSharedEnvVariableEnvironmentTarget$inboundSchema:
   z.ZodNativeEnum<typeof UpdateSharedEnvVariableEnvironmentTarget> = z
     .nativeEnum(UpdateSharedEnvVariableEnvironmentTarget);
@@ -536,6 +651,16 @@ export const Updated$inboundSchema: z.ZodType<Updated, z.ZodTypeDef, unknown> =
     id: types.optional(types.string()),
     key: types.optional(types.string()),
     lastEditedByDisplayName: types.optional(types.string()),
+    lastEditedByPrincipal: types.optional(
+      z.union([
+        z.lazy(() =>
+          UpdateSharedEnvVariableLastEditedByPrincipal1$inboundSchema
+        ),
+        z.lazy(() =>
+          UpdateSharedEnvVariableLastEditedByPrincipal2$inboundSchema
+        ),
+      ]),
+    ),
     ownerId: z.nullable(types.string()).optional(),
     projectId: types.optional(z.array(types.string())),
     target: types.optional(

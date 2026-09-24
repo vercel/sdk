@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyAction } from "@vercel/sdk/models/responsebodyabuse.js";
+import { GetProjectsResponseBodyAction } from "@vercel/sdk/models/erl.js";
 
 let value: GetProjectsResponseBodyAction = "remove-project-interstitial";
 ```

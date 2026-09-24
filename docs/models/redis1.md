@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Redis1 } from "@vercel/sdk/models/usereventpayload171newownerfeatureblocksworkfloweventsblockreason.js";
+import { Redis1 } from "@vercel/sdk/models/sourceimages.js";
 
 let value: Redis1 = {
   blockReason: "limits_exceeded",

@@ -6,7 +6,7 @@ import * as z from "zod/v3";
 import { ClosedEnum } from "../types/enums.js";
 
 /**
- * Enum containing the actions that can be performed against a resource. Group operations are included.
+ * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
  */
 export const ACLAction = {
   Create: "create",
@@ -16,7 +16,7 @@ export const ACLAction = {
   Update: "update",
 } as const;
 /**
- * Enum containing the actions that can be performed against a resource. Group operations are included.
+ * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
  */
 export type ACLAction = ClosedEnum<typeof ACLAction>;
 

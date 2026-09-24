@@ -5,7 +5,7 @@ Function configuration scoped to this service.
 ## Example Usage
 
 ```typescript
-import { ServicesFunctions } from "@vercel/sdk/models/canceldeploymentdestinationdeployments2.js";
+import { ServicesFunctions } from "@vercel/sdk/models/servicesop.js";
 
 let value: ServicesFunctions = {};
 ```

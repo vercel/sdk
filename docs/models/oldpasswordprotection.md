@@ -1,19 +1,17 @@
 # OldPasswordProtection
 
-
-## Supported Types
-
-### `models.OldPasswordProtection1`
+## Example Usage
 
 ```typescript
-const value: models.OldPasswordProtection1 = {
-  deploymentType: "all_except_custom_domains",
+import { OldPasswordProtection } from "@vercel/sdk/models/fiftythree.js";
+
+let value: OldPasswordProtection = {
+  deploymentType: "all",
 };
 ```
 
-### `models.OldPasswordProtection2`
+## Fields
 
-```typescript
-const value: models.OldPasswordProtection2 = "all_except_custom_domains";
-```
-
+| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `deploymentType`                                                                           | [models.UserEventPayload103DeploymentType](../models/usereventpayload103deploymenttype.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |

@@ -85,6 +85,7 @@ export type CountEventsData2 = {
 };
 
 export type CountEventsData1 = {
+  affinityOutcome: string;
   aiGatewayModelId: string;
   aiModel: string;
   aiModelType: string;
@@ -121,6 +122,7 @@ export type CountEventsData1 = {
   clientIp: string;
   clientIpCountry: string;
   clientJa4Digest: string;
+  clientSessionId: string;
   clientUserAgent: string;
   codingAgent: string;
   commitSha: string;
@@ -172,6 +174,7 @@ export type CountEventsData1 = {
   inferenceGeoRegion: string;
   inferenceProviderRegion: string;
   inferenceScope: string;
+  invokeSource: string;
   isAdditionalRequest: string;
   isByok: string;
   isPrefetchRequest: string;
@@ -257,12 +260,25 @@ export type CountEventsData1 = {
   runtime: string;
   sandboxName: string;
   sandboxSessionId: string;
+  scheduleEventType: string;
+  scheduleExecutionId: string;
+  scheduleExpressionType: string;
+  scheduleId: string;
+  scheduleName: string;
+  scheduleNamespace: string;
+  scheduleSource: string;
+  scheduleTarget: string;
+  scheduleTargetType: string;
+  scheduleTimezone: string;
+  scheduleTrack: string;
   sdkKeyEnvironment: string;
   sdkKeyId: string;
   servedSpeed: string;
   serverActionName: string;
   service: string;
   sessionId: string;
+  singleAtInput: string;
+  singleAtResolution: string;
   skewProtection: string;
   source: string;
   sourceImage: string;
@@ -418,6 +434,7 @@ export const CountEventsData1$inboundSchema: z.ZodType<
   unknown
 > = collectExtraKeys$(
   z.object({
+    affinityOutcome: types.string(),
     aiGatewayModelId: types.string(),
     aiModel: types.string(),
     aiModelType: types.string(),
@@ -454,6 +471,7 @@ export const CountEventsData1$inboundSchema: z.ZodType<
     clientIp: types.string(),
     clientIpCountry: types.string(),
     clientJa4Digest: types.string(),
+    clientSessionId: types.string(),
     clientUserAgent: types.string(),
     codingAgent: types.string(),
     commitSha: types.string(),
@@ -505,6 +523,7 @@ export const CountEventsData1$inboundSchema: z.ZodType<
     inferenceGeoRegion: types.string(),
     inferenceProviderRegion: types.string(),
     inferenceScope: types.string(),
+    invokeSource: types.string(),
     isAdditionalRequest: types.string(),
     isByok: types.string(),
     isPrefetchRequest: types.string(),
@@ -590,12 +609,25 @@ export const CountEventsData1$inboundSchema: z.ZodType<
     runtime: types.string(),
     sandboxName: types.string(),
     sandboxSessionId: types.string(),
+    scheduleEventType: types.string(),
+    scheduleExecutionId: types.string(),
+    scheduleExpressionType: types.string(),
+    scheduleId: types.string(),
+    scheduleName: types.string(),
+    scheduleNamespace: types.string(),
+    scheduleSource: types.string(),
+    scheduleTarget: types.string(),
+    scheduleTargetType: types.string(),
+    scheduleTimezone: types.string(),
+    scheduleTrack: types.string(),
     sdkKeyEnvironment: types.string(),
     sdkKeyId: types.string(),
     servedSpeed: types.string(),
     serverActionName: types.string(),
     service: types.string(),
     sessionId: types.string(),
+    singleAtInput: types.string(),
+    singleAtResolution: types.string(),
     skewProtection: types.string(),
     source: types.string(),
     sourceImage: types.string(),

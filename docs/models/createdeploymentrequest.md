@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentRequest } from "@vercel/sdk/models/responsebodyimages.js";
+import { CreateDeploymentRequest } from "@vercel/sdk/models/createdeploymentgitsource1.js";
 
 let value: CreateDeploymentRequest = {
   forceNew: "1",

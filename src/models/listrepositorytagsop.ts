@@ -71,6 +71,7 @@ export const ListRepositoryTagsKind = {
 export type ListRepositoryTagsKind = ClosedEnum<typeof ListRepositoryTagsKind>;
 
 export const ListRepositoryTagsStatus = {
+  Errored: "errored",
   Preparing: "preparing",
   Ready: "ready",
   Unoptimized: "unoptimized",

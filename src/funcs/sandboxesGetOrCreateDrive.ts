@@ -34,7 +34,7 @@ import { Result } from "../types/fp.js";
  * Get or create a drive
  *
  * @remarks
- * Gets an existing drive by project and name, or creates it when it does not exist. Drives are in private beta. Register your interest to get access: https://vercel.com/changelog/drives-for-vercel-sandbox-in-private-beta
+ * Gets an existing drive by project and name, or creates it when it does not exist.
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
  */

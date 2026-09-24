@@ -1,0 +1,17 @@
+# UserEventPayload468GeolocationNames
+
+## Example Usage
+
+```typescript
+import { UserEventPayload468GeolocationNames } from "@vercel/sdk/models/fourhundredandthirteen.js";
+
+let value: UserEventPayload468GeolocationNames = {
+  en: "<value>",
+};
+```
+
+## Fields
+
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `en`               | *string*           | :heavy_check_mark: | N/A                |

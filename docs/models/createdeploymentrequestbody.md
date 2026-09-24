@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentRequestBody } from "@vercel/sdk/models/responsebodyimages.js";
+import { CreateDeploymentRequestBody } from "@vercel/sdk/models/createdeploymentgitsource1.js";
 
 let value: CreateDeploymentRequestBody = {
   customEnvironmentSlugOrId: "staging",

@@ -7,7 +7,9 @@ import { CountPageviewsResponseBody } from "@vercel/sdk/models/countpageviewsop.
 
 let value: CountPageviewsResponseBody = {
   data: {
+    affinityDisplacedProvider: "<value>",
     affinityOutcome: "<value>",
+    affinityPinnedProvider: "<value>",
     aiGatewayModelId: "<id>",
     aiModel: "<value>",
     aiModelType: "<value>",
@@ -45,6 +47,7 @@ let value: CountPageviewsResponseBody = {
     clientIpCountry: "<value>",
     clientJa4Digest: "<value>",
     clientSessionId: "<id>",
+    clientSessionIdSource: "<value>",
     clientUserAgent: "<value>",
     codingAgent: "<value>",
     commitSha: "<value>",

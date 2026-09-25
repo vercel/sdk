@@ -803,6 +803,7 @@ export type GitSource18 = {
   org: string;
   ref: string;
   repo: string;
+  repoId?: string | undefined;
   repoPushedAt?: number | undefined;
   sha: string;
   type:
@@ -983,6 +984,7 @@ export type GitSource10 = {
   prId?: number | null | undefined;
   ref?: string | null | undefined;
   repo?: string | undefined;
+  repoId: string;
   repoPushedAt?: number | undefined;
   sha: string;
   type:
@@ -1169,11 +1171,11 @@ export type CancelDeploymentGitSource =
   | CancelDeploymentGitSource3
   | CancelDeploymentGitSource6
   | CancelDeploymentGitSource9
+  | GitSource10
   | CancelDeploymentGitSource1
   | CancelDeploymentGitSource5
   | CancelDeploymentGitSource7
   | CancelDeploymentGitSource8
-  | GitSource10
   | GitSource11;
 
 export const ContentDispositionType = {
@@ -2924,6 +2926,7 @@ export const GitSource18$inboundSchema: z.ZodType<
   org: types.string(),
   ref: types.string(),
   repo: types.string(),
+  repoId: types.optional(types.string()),
   repoPushedAt: types.optional(types.number()),
   sha: types.string(),
   type:
@@ -3261,6 +3264,7 @@ export const GitSource10$inboundSchema: z.ZodType<
   prId: z.nullable(types.number()).optional(),
   ref: z.nullable(types.string()).optional(),
   repo: types.optional(types.string()),
+  repoId: types.string(),
   repoPushedAt: types.optional(types.number()),
   sha: types.string(),
   type:
@@ -3654,11 +3658,11 @@ export const CancelDeploymentGitSource$inboundSchema: z.ZodType<
   z.lazy(() => CancelDeploymentGitSource3$inboundSchema),
   z.lazy(() => CancelDeploymentGitSource6$inboundSchema),
   z.lazy(() => CancelDeploymentGitSource9$inboundSchema),
+  z.lazy(() => GitSource10$inboundSchema),
   z.lazy(() => CancelDeploymentGitSource1$inboundSchema),
   z.lazy(() => CancelDeploymentGitSource5$inboundSchema),
   z.lazy(() => CancelDeploymentGitSource7$inboundSchema),
   z.lazy(() => CancelDeploymentGitSource8$inboundSchema),
-  z.lazy(() => GitSource10$inboundSchema),
   z.lazy(() => GitSource11$inboundSchema),
 ]);
 

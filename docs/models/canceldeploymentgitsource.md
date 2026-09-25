@@ -94,6 +94,7 @@ const value: models.CancelDeploymentGitSource9 = {
 
 ```typescript
 const value: models.GitSource10 = {
+  repoId: "<id>",
   sha: "<value>",
   type: "vercel",
 };

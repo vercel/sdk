@@ -10,6 +10,7 @@ Defines the Git Repository source to be deployed. This property can not be used 
 ```typescript
 const value: models.GitSource1 = {
   type: "vercel",
+  repoId: "123456789",
   sha: "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0",
 };
 ```

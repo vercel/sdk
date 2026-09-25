@@ -1,0 +1,30 @@
+# GetVercelCiJobRunLogsRequest
+
+## Example Usage
+
+```typescript
+import { GetVercelCiJobRunLogsRequest } from "@vercel/sdk/models/getvercelcijobrunlogsop.js";
+
+let value: GetVercelCiJobRunLogsRequest = {
+  invocationId: "<id>",
+  attempt: "<value>",
+  jobDefinitionId: "<id>",
+  runAttempt: "<value>",
+  teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+  slug: "my-team-url-slug",
+};
+```
+
+## Fields
+
+| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        | Example                                                                                            |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `invocationId`                                                                                     | *string*                                                                                           | :heavy_check_mark:                                                                                 | N/A                                                                                                |                                                                                                    |
+| `attempt`                                                                                          | *string*                                                                                           | :heavy_check_mark:                                                                                 | N/A                                                                                                |                                                                                                    |
+| `jobDefinitionId`                                                                                  | *string*                                                                                           | :heavy_check_mark:                                                                                 | N/A                                                                                                |                                                                                                    |
+| `runAttempt`                                                                                       | *string*                                                                                           | :heavy_check_mark:                                                                                 | N/A                                                                                                |                                                                                                    |
+| `follow`                                                                                           | *number*                                                                                           | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
+| `since`                                                                                            | *number*                                                                                           | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
+| `level`                                                                                            | [models.GetVercelCiJobRunLogsQueryParamLevel](../models/getvercelcijobrunlogsqueryparamlevel.md)[] | :heavy_minus_sign:                                                                                 | Only return log lines with one of these levels.                                                    |                                                                                                    |
+| `teamId`                                                                                           | *string*                                                                                           | :heavy_minus_sign:                                                                                 | The Team identifier to perform the request on behalf of.                                           | team_1a2b3c4d5e6f7g8h9i0j1k2l                                                                      |
+| `slug`                                                                                             | *string*                                                                                           | :heavy_minus_sign:                                                                                 | The Team slug to perform the request on behalf of.                                                 | my-team-url-slug                                                                                   |

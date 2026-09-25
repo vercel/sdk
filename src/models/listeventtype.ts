@@ -90,6 +90,8 @@ export const Name = {
   AiGatewayModelAllowlistModelsUpdated:
     "ai-gateway-model-allowlist-models-updated",
   AiGatewayModelAllowlistToggled: "ai-gateway-model-allowlist-toggled",
+  AiGatewayModelCatalogAlertSettingsUpdated:
+    "ai-gateway-model-catalog-alert-settings-updated",
   AiGatewayPrivateModelCreated: "ai-gateway-private-model-created",
   AiGatewayPrivateModelDeleted: "ai-gateway-private-model-deleted",
   AiGatewayPrivateModelUpdated: "ai-gateway-private-model-updated",
@@ -847,6 +849,8 @@ export const ReplacedBy = {
   AiGatewayModelAllowlistModelsUpdated:
     "ai-gateway-model-allowlist-models-updated",
   AiGatewayModelAllowlistToggled: "ai-gateway-model-allowlist-toggled",
+  AiGatewayModelCatalogAlertSettingsUpdated:
+    "ai-gateway-model-catalog-alert-settings-updated",
   AiGatewayPrivateModelCreated: "ai-gateway-private-model-created",
   AiGatewayPrivateModelDeleted: "ai-gateway-private-model-deleted",
   AiGatewayPrivateModelUpdated: "ai-gateway-private-model-updated",

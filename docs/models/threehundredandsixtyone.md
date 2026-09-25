@@ -8,17 +8,12 @@ The payload of the event, if requested.
 import { ThreeHundredAndSixtyOne } from "@vercel/sdk/models/payloadcity.js";
 
 let value: ThreeHundredAndSixtyOne = {
-  store: {
-    id: "<id>",
-    type: "integration",
-  },
-  transferRequestCode: "<value>",
+  storeType: "postgres",
 };
 ```
 
 ## Fields
 
-| Field                              | Type                               | Required                           | Description                        |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| `store`                            | [models.Store](../models/store.md) | :heavy_check_mark:                 | N/A                                |
-| `transferRequestCode`              | *string*                           | :heavy_check_mark:                 | N/A                                |
+| Field                                      | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `storeType`                                | [models.StoreType](../models/storetype.md) | :heavy_check_mark:                         | N/A                                        |

@@ -43,6 +43,21 @@ export type SignKmsTokenRequest = {
 };
 
 export type SignKmsTokenResponseBody = {
+  /**
+   * Algorithm of the signing key.
+   */
+  algorithm: string;
+  /**
+   * SHA-256 fingerprint of the signing key's public key (`SHA256:<base64>`).
+   */
+  fingerprint: string;
+  /**
+   * Key id of the signing key. Matches the JWKS `kid` so verifiers can select the key after rotation without trial-verifying every published key.
+   */
+  keyId: string;
+  /**
+   * Compact JWT signed by the issuer's active signing key.
+   */
   token: string;
 };
 
@@ -138,6 +153,9 @@ export const SignKmsTokenResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  algorithm: types.string(),
+  fingerprint: types.string(),
+  keyId: types.string(),
   token: types.string(),
 });
 

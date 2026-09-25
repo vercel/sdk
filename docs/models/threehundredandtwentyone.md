@@ -5,10 +5,10 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndTwentyOne } from "@vercel/sdk/models/twohundredandeightythree.js";
+import { ThreeHundredAndTwentyOne } from "@vercel/sdk/models/twohundredandeightyfour.js";
 
 let value: ThreeHundredAndTwentyOne = {
-  gitForkProtection: false,
+  customerSupportCodeVisibility: false,
   projectId: "<id>",
   projectName: "<value>",
 };
@@ -16,8 +16,8 @@ let value: ThreeHundredAndTwentyOne = {
 
 ## Fields
 
-| Field               | Type                | Required            | Description         |
-| ------------------- | ------------------- | ------------------- | ------------------- |
-| `gitForkProtection` | *boolean*           | :heavy_check_mark:  | N/A                 |
-| `projectId`         | *string*            | :heavy_check_mark:  | N/A                 |
-| `projectName`       | *string*            | :heavy_check_mark:  | N/A                 |
+| Field                           | Type                            | Required                        | Description                     |
+| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
+| `customerSupportCodeVisibility` | *boolean*                       | :heavy_check_mark:              | N/A                             |
+| `projectId`                     | *string*                        | :heavy_check_mark:              | N/A                             |
+| `projectName`                   | *string*                        | :heavy_check_mark:              | N/A                             |

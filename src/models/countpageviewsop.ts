@@ -85,7 +85,9 @@ export type CountPageviewsData2 = {
 };
 
 export type CountPageviewsData1 = {
+  affinityDisplacedProvider: string;
   affinityOutcome: string;
+  affinityPinnedProvider: string;
   aiGatewayModelId: string;
   aiModel: string;
   aiModelType: string;
@@ -123,6 +125,7 @@ export type CountPageviewsData1 = {
   clientIpCountry: string;
   clientJa4Digest: string;
   clientSessionId: string;
+  clientSessionIdSource: string;
   clientUserAgent: string;
   codingAgent: string;
   commitSha: string;
@@ -438,7 +441,9 @@ export const CountPageviewsData1$inboundSchema: z.ZodType<
   unknown
 > = collectExtraKeys$(
   z.object({
+    affinityDisplacedProvider: types.string(),
     affinityOutcome: types.string(),
+    affinityPinnedProvider: types.string(),
     aiGatewayModelId: types.string(),
     aiModel: types.string(),
     aiModelType: types.string(),
@@ -476,6 +481,7 @@ export const CountPageviewsData1$inboundSchema: z.ZodType<
     clientIpCountry: types.string(),
     clientJa4Digest: types.string(),
     clientSessionId: types.string(),
+    clientSessionIdSource: types.string(),
     clientUserAgent: types.string(),
     codingAgent: types.string(),
     commitSha: types.string(),

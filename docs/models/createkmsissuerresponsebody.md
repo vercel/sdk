@@ -19,6 +19,7 @@ let value: CreateKmsIssuerResponseBody = {
       createdAt: "1729152676948",
       issuerId: "<id>",
       keyId: "<id>",
+      publicKeyFingerprint: "<value>",
       status: "active",
       updatedAt: "1735674540461",
     },

@@ -8,29 +8,26 @@ The payload of the event, if requested.
 import { TwoHundredAndFourteen } from "@vercel/sdk/models/sourceimages.js";
 
 let value: TwoHundredAndFourteen = {
-  enabled: true,
-  enforcedTeamIds: [
+  copiedDomains: [
     "<value 1>",
-    "<value 2>",
+  ],
+  enabledOrganizationEmu: false,
+  enabledTeamIds: [
+    "<value 1>",
   ],
   organizationId: "<id>",
-  previousEnabled: true,
-  trigger: "directory_sync_updated",
-  unenforcedTeamIds: [
-    "<value 1>",
-    "<value 2>",
-    "<value 3>",
-  ],
+  teamId: "<id>",
+  teamSlug: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                  | Type                                   | Required                               | Description                            |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| `enabled`                              | *boolean*                              | :heavy_check_mark:                     | N/A                                    |
-| `enforcedTeamIds`                      | *string*[]                             | :heavy_check_mark:                     | N/A                                    |
-| `organizationId`                       | *string*                               | :heavy_check_mark:                     | N/A                                    |
-| `previousEnabled`                      | *boolean*                              | :heavy_check_mark:                     | N/A                                    |
-| `trigger`                              | [models.Trigger](../models/trigger.md) | :heavy_check_mark:                     | N/A                                    |
-| `unenforcedTeamIds`                    | *string*[]                             | :heavy_check_mark:                     | N/A                                    |
+| Field                    | Type                     | Required                 | Description              |
+| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
+| `copiedDomains`          | *string*[]               | :heavy_check_mark:       | N/A                      |
+| `enabledOrganizationEmu` | *boolean*                | :heavy_check_mark:       | N/A                      |
+| `enabledTeamIds`         | *string*[]               | :heavy_check_mark:       | N/A                      |
+| `organizationId`         | *string*                 | :heavy_check_mark:       | N/A                      |
+| `teamId`                 | *string*                 | :heavy_check_mark:       | N/A                      |
+| `teamSlug`               | *string*                 | :heavy_check_mark:       | N/A                      |

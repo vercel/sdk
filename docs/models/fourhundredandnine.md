@@ -7,17 +7,12 @@ The payload of the event, if requested.
 ```typescript
 import { FourHundredAndNine } from "@vercel/sdk/models/payloadcity.js";
 
-let value: FourHundredAndNine = {
-  domain: "celebrated-optimal.com",
-  ips: [
-    "<value 1>",
-  ],
-};
+let value: FourHundredAndNine = {};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `domain`           | *string*           | :heavy_check_mark: | N/A                |
-| `ips`              | *string*[]         | :heavy_check_mark: | N/A                |
+| Field                                                | Type                                                 | Required                                             | Description                                          |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| `next`                                               | Record<string, *models.UserEventPayload409Next*>     | :heavy_minus_sign:                                   | N/A                                                  |
+| `previous`                                           | Record<string, *models.UserEventPayload409Previous*> | :heavy_minus_sign:                                   | N/A                                                  |

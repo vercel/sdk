@@ -124,7 +124,9 @@ export type AggregateEventsRequest = {
 };
 
 export type AggregateEventsData2 = {
+  affinityDisplacedProvider: string;
   affinityOutcome: string;
+  affinityPinnedProvider: string;
   aiGatewayModelId: string;
   aiModel: string;
   aiModelType: string;
@@ -162,6 +164,7 @@ export type AggregateEventsData2 = {
   clientIpCountry: string;
   clientJa4Digest: string;
   clientSessionId: string;
+  clientSessionIdSource: string;
   clientUserAgent: string;
   codingAgent: string;
   commitSha: string;
@@ -365,7 +368,9 @@ export type AggregateEventsData2 = {
 };
 
 export type AggregateEventsData1 = {
+  affinityDisplacedProvider?: string | undefined;
   affinityOutcome?: string | undefined;
+  affinityPinnedProvider?: string | undefined;
   aiGatewayModelId?: string | undefined;
   aiModel?: string | undefined;
   aiModelType?: string | undefined;
@@ -403,6 +408,7 @@ export type AggregateEventsData1 = {
   clientIpCountry?: string | undefined;
   clientJa4Digest?: string | undefined;
   clientSessionId?: string | undefined;
+  clientSessionIdSource?: string | undefined;
   clientUserAgent?: string | undefined;
   codingAgent?: string | undefined;
   commitSha?: string | undefined;
@@ -741,7 +747,9 @@ export const AggregateEventsData2$inboundSchema: z.ZodType<
   unknown
 > = collectExtraKeys$(
   z.object({
+    affinityDisplacedProvider: types.string(),
     affinityOutcome: types.string(),
+    affinityPinnedProvider: types.string(),
     aiGatewayModelId: types.string(),
     aiModel: types.string(),
     aiModelType: types.string(),
@@ -779,6 +787,7 @@ export const AggregateEventsData2$inboundSchema: z.ZodType<
     clientIpCountry: types.string(),
     clientJa4Digest: types.string(),
     clientSessionId: types.string(),
+    clientSessionIdSource: types.string(),
     clientUserAgent: types.string(),
     codingAgent: types.string(),
     commitSha: types.string(),
@@ -999,7 +1008,9 @@ export const AggregateEventsData1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  affinityDisplacedProvider: types.optional(types.string()),
   affinityOutcome: types.optional(types.string()),
+  affinityPinnedProvider: types.optional(types.string()),
   aiGatewayModelId: types.optional(types.string()),
   aiModel: types.optional(types.string()),
   aiModelType: types.optional(types.string()),
@@ -1037,6 +1048,7 @@ export const AggregateEventsData1$inboundSchema: z.ZodType<
   clientIpCountry: types.optional(types.string()),
   clientJa4Digest: types.optional(types.string()),
   clientSessionId: types.optional(types.string()),
+  clientSessionIdSource: types.optional(types.string()),
   clientUserAgent: types.optional(types.string()),
   codingAgent: types.optional(types.string()),
   commitSha: types.optional(types.string()),

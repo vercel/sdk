@@ -65,11 +65,11 @@ export type CreateDeploymentResponseBodyGitSource =
   | CreateDeploymentGitSource3
   | CreateDeploymentGitSource6
   | CreateDeploymentGitSource9
+  | CreateDeploymentGitSource10
   | CreateDeploymentGitSource1
   | CreateDeploymentGitSource5
   | CreateDeploymentGitSource7
   | CreateDeploymentGitSource8
-  | CreateDeploymentGitSource10
   | CreateDeploymentGitSource11;
 
 export const ResponseBodyContentDispositionType = {
@@ -574,15 +574,16 @@ export type CreateDeploymentResponseBodyReadySubstate = ClosedEnum<
 >;
 
 /**
- * The default plan type for the build machine — what the customer is *paying* for on their plan. For most customers, this is standard, but some customers have an entitlement for enhanced builds.
+ * The build machine tier included with the customer's plan. For most customers this is standard; enhanced entitlements include enhanced, while `none` means every build is billed at its purchase type.
  */
 export const ResponseBodyDefaultPurchaseType = {
   Basic: "basic",
   Enhanced: "enhanced",
+  None: "none",
   Standard: "standard",
 } as const;
 /**
- * The default plan type for the build machine — what the customer is *paying* for on their plan. For most customers, this is standard, but some customers have an entitlement for enhanced builds.
+ * The build machine tier included with the customer's plan. For most customers this is standard; enhanced entitlements include enhanced, while `none` means every build is billed at its purchase type.
  */
 export type ResponseBodyDefaultPurchaseType = ClosedEnum<
   typeof ResponseBodyDefaultPurchaseType
@@ -645,7 +646,7 @@ export type CreateDeploymentResponseBodyBuildMachine = {
    */
   cores?: number | undefined;
   /**
-   * The default plan type for the build machine — what the customer is *paying* for on their plan. For most customers, this is standard, but some customers have an entitlement for enhanced builds.
+   * The build machine tier included with the customer's plan. For most customers this is standard; enhanced entitlements include enhanced, while `none` means every build is billed at its purchase type.
    */
   defaultPurchaseType?: ResponseBodyDefaultPurchaseType | undefined;
   /**
@@ -1743,11 +1744,11 @@ export const CreateDeploymentResponseBodyGitSource$inboundSchema: z.ZodType<
   CreateDeploymentGitSource3$inboundSchema,
   CreateDeploymentGitSource6$inboundSchema,
   CreateDeploymentGitSource9$inboundSchema,
+  CreateDeploymentGitSource10$inboundSchema,
   CreateDeploymentGitSource1$inboundSchema,
   CreateDeploymentGitSource5$inboundSchema,
   CreateDeploymentGitSource7$inboundSchema,
   CreateDeploymentGitSource8$inboundSchema,
-  CreateDeploymentGitSource10$inboundSchema,
   CreateDeploymentGitSource11$inboundSchema,
 ]);
 

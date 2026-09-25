@@ -114,7 +114,7 @@ export type CreateKmsSigningKeyResponseBody = {
    */
   keyId: string;
   publicKey?: PublicKey | undefined;
-  publicKeyFingerprint?: string | undefined;
+  publicKeyFingerprint: string;
   /**
    * The public key in SPKI PEM form, ready to render. Present whenever the key has public key material. Derived from `publicKey`; the embedded certificate members (`x5c`/`x5t#S256`) do not affect it.
    */
@@ -261,7 +261,7 @@ export const CreateKmsSigningKeyResponseBody$inboundSchema: z.ZodType<
   issuerId: types.string(),
   keyId: types.string(),
   publicKey: types.optional(z.lazy(() => PublicKey$inboundSchema)),
-  publicKeyFingerprint: types.optional(types.string()),
+  publicKeyFingerprint: types.string(),
   publicKeyPem: types.optional(types.string()),
   revokeAt: types.optional(types.string()),
   status: CreateKmsSigningKeyStatus$inboundSchema,

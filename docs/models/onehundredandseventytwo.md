@@ -8,12 +8,12 @@ The payload of the event, if requested.
 import { OneHundredAndSeventyTwo } from "@vercel/sdk/models/lasteditedbyprincipal2.js";
 
 let value: OneHundredAndSeventyTwo = {
-  source: "enable",
+  action: "disable",
 };
 ```
 
 ## Fields
 
-| Field                                | Type                                 | Required                             | Description                          |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `source`                             | [models.Source](../models/source.md) | :heavy_check_mark:                   | N/A                                  |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `action`                                                                   | [models.UserEventPayload172Action](../models/usereventpayload172action.md) | :heavy_check_mark:                                                         | N/A                                                                        |

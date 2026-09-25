@@ -8,6 +8,7 @@ The payload of the event, if requested.
 import { OneHundredAndEightyTwo } from "@vercel/sdk/models/sourceimages.js";
 
 let value: OneHundredAndEightyTwo = {
+  billingPlanId: "<id>",
   configurationId: "<id>",
   integrationId: "<id>",
   integrationName: "<value>",
@@ -18,11 +19,12 @@ let value: OneHundredAndEightyTwo = {
 
 ## Fields
 
-| Field               | Type                | Required            | Description         |
-| ------------------- | ------------------- | ------------------- | ------------------- |
-| `configurationId`   | *string*            | :heavy_check_mark:  | N/A                 |
-| `integrationId`     | *string*            | :heavy_check_mark:  | N/A                 |
-| `integrationName`   | *string*            | :heavy_check_mark:  | N/A                 |
-| `integrationSlug`   | *string*            | :heavy_check_mark:  | N/A                 |
-| `ownerId`           | *string*            | :heavy_check_mark:  | N/A                 |
-| `projectIds`        | *models.ProjectIds* | :heavy_minus_sign:  | N/A                 |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `billingPlanId`    | *string*           | :heavy_check_mark: | N/A                |
+| `billingPlanName`  | *string*           | :heavy_minus_sign: | N/A                |
+| `configurationId`  | *string*           | :heavy_check_mark: | N/A                |
+| `integrationId`    | *string*           | :heavy_check_mark: | N/A                |
+| `integrationName`  | *string*           | :heavy_check_mark: | N/A                |
+| `integrationSlug`  | *string*           | :heavy_check_mark: | N/A                |
+| `ownerId`          | *string*           | :heavy_check_mark: | N/A                |

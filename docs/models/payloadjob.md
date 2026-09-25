@@ -175,6 +175,7 @@ const value: models.Job8 = {
   provider: "vercel",
   ref: "<value>",
   repo: "<value>",
+  repoId: "<id>",
   sha: "<value>",
   type: "vercel-push",
 };

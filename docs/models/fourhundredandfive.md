@@ -7,13 +7,11 @@ The payload of the event, if requested.
 ```typescript
 import { FourHundredAndFive } from "@vercel/sdk/models/payloadcity.js";
 
-let value: FourHundredAndFive = {
-  deletedCount: 9730.9,
-};
+let value: FourHundredAndFive = {};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `deletedCount`     | *number*           | :heavy_check_mark: | N/A                |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `remoteCaching`                                                  | [models.PayloadRemoteCaching](../models/payloadremotecaching.md) | :heavy_minus_sign:                                               | Represents configuration for remote caching                      |

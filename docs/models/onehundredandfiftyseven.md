@@ -7,10 +7,7 @@ The payload of the event, if requested.
 ```typescript
 import { OneHundredAndFiftySeven } from "@vercel/sdk/models/usereventjobaction.js";
 
-let value: OneHundredAndFiftySeven = {
-  deploymentId: "<id>",
-  deploymentUrl: "https://elderly-iridescence.info",
-};
+let value: OneHundredAndFiftySeven = {};
 ```
 
 ## Fields
@@ -27,6 +24,4 @@ let value: OneHundredAndFiftySeven = {
 | `projectId`              | *string*                 | :heavy_minus_sign:       | N/A                      |
 | `projectName`            | *string*                 | :heavy_minus_sign:       | N/A                      |
 | `source`                 | *string*                 | :heavy_minus_sign:       | N/A                      |
-| `target`                 | *models.PayloadTarget*   | :heavy_minus_sign:       | N/A                      |
-| `deploymentId`           | *string*                 | :heavy_check_mark:       | N/A                      |
-| `deploymentUrl`          | *string*                 | :heavy_check_mark:       | N/A                      |
+| `target`                 | *models.Target*          | :heavy_minus_sign:       | N/A                      |

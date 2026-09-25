@@ -8,7 +8,8 @@ The payload of the event, if requested.
 import { OneHundredAndNinetySeven } from "@vercel/sdk/models/sourceimages.js";
 
 let value: OneHundredAndNinetySeven = {
-  provider: "github-custom-host",
+  login: "Jacky.Blanda50",
+  provider: "gitlab",
 };
 ```
 
@@ -16,4 +17,5 @@ let value: OneHundredAndNinetySeven = {
 
 | Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
 | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `login`                                                                        | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
 | `provider`                                                                     | [models.UserEventPayload197Provider](../models/usereventpayload197provider.md) | :heavy_check_mark:                                                             | N/A                                                                            |

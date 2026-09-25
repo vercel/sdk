@@ -144,6 +144,45 @@ export type Secrets1 = {
 
 export type UpdateResourceSecrets = Secrets2 | Array<Secrets1>;
 
+export type UpdateResourceWhen = {
+  /**
+   * Applies only when the token is minted for one of these roles.
+   */
+  role?: Array<string> | undefined;
+  /**
+   * Applies only when the token is minted for one of these environments: `production`, `preview`, `development`, or a custom environment slug. A custom environment also matches `preview`.
+   */
+  environment?: Array<string> | undefined;
+};
+
+export type UpdateResourceClaims = string | number | boolean;
+
+export type UpdateResourceClaimRules = {
+  when?: UpdateResourceWhen | undefined;
+  /**
+   * Claims to set (string, number, or boolean), shallow-merged over earlier rules and over the default claims. `null` removes a claim. Reserved claims cannot be set; `aud` and `sub` can be overridden with a string but not removed.
+   */
+  claims: { [k: string]: string | number | boolean | null };
+};
+
+/**
+ * Custom claims embedded in the resource tokens Vercel mints for this resource.
+ */
+export type UpdateResourceCustomClaims = {
+  /**
+   * Roles a deployment may request when minting a token. The selected role becomes the `sub` claim.
+   */
+  roles?: Array<string> | undefined;
+  /**
+   * Role used when the deployment does not request one. Required when `roles` is set.
+   */
+  defaultRole?: string | undefined;
+  /**
+   * Ordered rules resolved at mint time. Later rules win and shallow-merge over earlier ones.
+   */
+  claimRules?: Array<UpdateResourceClaimRules> | undefined;
+};
+
 export type UpdateResourceRequestBody = {
   ownership?: UpdateResourceOwnership | undefined;
   name?: string | undefined;
@@ -153,6 +192,10 @@ export type UpdateResourceRequestBody = {
   notification?: UpdateResourceNotification1 | string | undefined;
   extras?: { [k: string]: any } | undefined;
   secrets?: Secrets2 | Array<Secrets1> | undefined;
+  /**
+   * Custom claims embedded in the resource tokens Vercel mints for this resource.
+   */
+  customClaims?: UpdateResourceCustomClaims | undefined;
 };
 
 export type UpdateResourceRequest = {
@@ -495,6 +538,101 @@ export function updateResourceSecretsToJSON(
 }
 
 /** @internal */
+export type UpdateResourceWhen$Outbound = {
+  role?: Array<string> | undefined;
+  environment?: Array<string> | undefined;
+};
+
+/** @internal */
+export const UpdateResourceWhen$outboundSchema: z.ZodType<
+  UpdateResourceWhen$Outbound,
+  z.ZodTypeDef,
+  UpdateResourceWhen
+> = z.object({
+  role: z.array(z.string()).optional(),
+  environment: z.array(z.string()).optional(),
+});
+
+export function updateResourceWhenToJSON(
+  updateResourceWhen: UpdateResourceWhen,
+): string {
+  return JSON.stringify(
+    UpdateResourceWhen$outboundSchema.parse(updateResourceWhen),
+  );
+}
+
+/** @internal */
+export type UpdateResourceClaims$Outbound = string | number | boolean;
+
+/** @internal */
+export const UpdateResourceClaims$outboundSchema: z.ZodType<
+  UpdateResourceClaims$Outbound,
+  z.ZodTypeDef,
+  UpdateResourceClaims
+> = smartUnion([z.string(), z.number(), z.boolean()]);
+
+export function updateResourceClaimsToJSON(
+  updateResourceClaims: UpdateResourceClaims,
+): string {
+  return JSON.stringify(
+    UpdateResourceClaims$outboundSchema.parse(updateResourceClaims),
+  );
+}
+
+/** @internal */
+export type UpdateResourceClaimRules$Outbound = {
+  when?: UpdateResourceWhen$Outbound | undefined;
+  claims: { [k: string]: string | number | boolean | null };
+};
+
+/** @internal */
+export const UpdateResourceClaimRules$outboundSchema: z.ZodType<
+  UpdateResourceClaimRules$Outbound,
+  z.ZodTypeDef,
+  UpdateResourceClaimRules
+> = z.object({
+  when: z.lazy(() => UpdateResourceWhen$outboundSchema).optional(),
+  claims: z.record(
+    z.nullable(smartUnion([z.string(), z.number(), z.boolean()])),
+  ),
+});
+
+export function updateResourceClaimRulesToJSON(
+  updateResourceClaimRules: UpdateResourceClaimRules,
+): string {
+  return JSON.stringify(
+    UpdateResourceClaimRules$outboundSchema.parse(updateResourceClaimRules),
+  );
+}
+
+/** @internal */
+export type UpdateResourceCustomClaims$Outbound = {
+  roles?: Array<string> | undefined;
+  defaultRole?: string | undefined;
+  claimRules?: Array<UpdateResourceClaimRules$Outbound> | undefined;
+};
+
+/** @internal */
+export const UpdateResourceCustomClaims$outboundSchema: z.ZodType<
+  UpdateResourceCustomClaims$Outbound,
+  z.ZodTypeDef,
+  UpdateResourceCustomClaims
+> = z.object({
+  roles: z.array(z.string()).optional(),
+  defaultRole: z.string().optional(),
+  claimRules: z.array(z.lazy(() => UpdateResourceClaimRules$outboundSchema))
+    .optional(),
+});
+
+export function updateResourceCustomClaimsToJSON(
+  updateResourceCustomClaims: UpdateResourceCustomClaims,
+): string {
+  return JSON.stringify(
+    UpdateResourceCustomClaims$outboundSchema.parse(updateResourceCustomClaims),
+  );
+}
+
+/** @internal */
 export type UpdateResourceRequestBody$Outbound = {
   ownership?: string | undefined;
   name?: string | undefined;
@@ -504,6 +642,7 @@ export type UpdateResourceRequestBody$Outbound = {
   notification?: UpdateResourceNotification1$Outbound | string | undefined;
   extras?: { [k: string]: any } | undefined;
   secrets?: Secrets2$Outbound | Array<Secrets1$Outbound> | undefined;
+  customClaims?: UpdateResourceCustomClaims$Outbound | undefined;
 };
 
 /** @internal */
@@ -527,6 +666,8 @@ export const UpdateResourceRequestBody$outboundSchema: z.ZodType<
     z.lazy(() => Secrets2$outboundSchema),
     z.array(z.lazy(() => Secrets1$outboundSchema)),
   ]).optional(),
+  customClaims: z.lazy(() => UpdateResourceCustomClaims$outboundSchema)
+    .optional(),
 });
 
 export function updateResourceRequestBodyToJSON(

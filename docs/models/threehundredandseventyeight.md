@@ -8,13 +8,14 @@ The payload of the event, if requested.
 import { ThreeHundredAndSeventyEight } from "@vercel/sdk/models/payloadcity.js";
 
 let value: ThreeHundredAndSeventyEight = {
-  enabled: false,
+  next: {},
+  previous: {},
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `domain`           | *string*           | :heavy_minus_sign: | N/A                |
-| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `next`                                                                         | [models.UserEventPayload378Next](../models/usereventpayload378next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload378Previous](../models/usereventpayload378previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |

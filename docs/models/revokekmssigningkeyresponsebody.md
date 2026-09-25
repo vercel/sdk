@@ -19,6 +19,7 @@ let value: RevokeKmsSigningKeyResponseBody = {
       createdAt: "1726055314044",
       issuerId: "<id>",
       keyId: "<id>",
+      publicKeyFingerprint: "<value>",
       status: "revoking",
       updatedAt: "1735614463923",
     },

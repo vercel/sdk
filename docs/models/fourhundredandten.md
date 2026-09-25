@@ -8,7 +8,8 @@ The payload of the event, if requested.
 import { FourHundredAndTen } from "@vercel/sdk/models/payloadcity.js";
 
 let value: FourHundredAndTen = {
-  tokenTypes: [
+  domain: "probable-intent.biz",
+  ips: [
     "<value 1>",
     "<value 2>",
   ],
@@ -19,4 +20,5 @@ let value: FourHundredAndTen = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `tokenTypes`       | *string*[]         | :heavy_check_mark: | N/A                |
+| `domain`           | *string*           | :heavy_check_mark: | N/A                |
+| `ips`              | *string*[]         | :heavy_check_mark: | N/A                |

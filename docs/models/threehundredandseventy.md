@@ -8,18 +8,17 @@ The payload of the event, if requested.
 import { ThreeHundredAndSeventy } from "@vercel/sdk/models/payloadcity.js";
 
 let value: ThreeHundredAndSeventy = {
-  amount: "505.99",
-  currency: "Comoro Franc",
-  expiresAt: "1757196783953",
-  trialCreditsIssuedAt: 5244.97,
+  next: {
+    enabled: false,
+    includeDrafts: true,
+    scope: "public",
+  },
 };
 ```
 
 ## Fields
 
-| Field                  | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `amount`               | *string*               | :heavy_check_mark:     | N/A                    |
-| `currency`             | *string*               | :heavy_check_mark:     | N/A                    |
-| `expiresAt`            | *string*               | :heavy_check_mark:     | N/A                    |
-| `trialCreditsIssuedAt` | *number*               | :heavy_check_mark:     | N/A                    |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `next`                                                                         | [models.UserEventPayload370Next](../models/usereventpayload370next.md)         | :heavy_check_mark:                                                             | Automatic code review settings                                                 |
+| `previous`                                                                     | [models.UserEventPayload370Previous](../models/usereventpayload370previous.md) | :heavy_minus_sign:                                                             | Automatic code review settings                                                 |

@@ -30,6 +30,10 @@ export type SignKmsMessageResponseBody = {
    */
   algorithm: string;
   /**
+   * SHA-256 fingerprint of the signing key's public key (`SHA256:<base64>`).
+   */
+  fingerprint: string;
+  /**
    * Key id of the signing key. Matches the JWKS `kid` so verifiers can select the key after rotation without trial-verifying every published key.
    */
   keyId: string;
@@ -97,6 +101,7 @@ export const SignKmsMessageResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   algorithm: types.string(),
+  fingerprint: types.string(),
   keyId: types.string(),
   signature: types.string(),
 });

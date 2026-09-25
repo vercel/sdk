@@ -307,6 +307,10 @@ export type GitSourceType = ClosedEnum<typeof GitSourceType>;
 
 export type GitSource1 = {
   type: GitSourceType;
+  /**
+   * The stable Vercel Git repository ID.
+   */
+  repoId: string;
   sha: string;
 };
 
@@ -317,12 +321,12 @@ export type GitSource =
   | GitSource3
   | GitSource5
   | GitSource8
+  | GitSource1
   | GitSource2
   | GitSource4
   | GitSource6
   | GitSource7
-  | GitSource9
-  | GitSource1;
+  | GitSource9;
 
 /**
  * The framework that is being used for this project. When `null` is used no framework is selected
@@ -508,12 +512,12 @@ export type CreateDeploymentRequestBody = {
     | GitSource3
     | GitSource5
     | GitSource8
+    | GitSource1
     | GitSource2
     | GitSource4
     | GitSource6
     | GitSource7
     | GitSource9
-    | GitSource1
     | undefined;
   /**
    * An object containing the deployment's metadata. Multiple key-value pairs can be attached to a deployment. For deployments created with a Cursor Origin `gitSource`, Vercel automatically adds `cursorOriginDeployment`, `cursorOriginCommitSha`, `cursorOriginCommitRef`, `cursorOriginCommitMessage`, `cursorOriginCommitAuthorName`, `cursorOriginCommitAuthorEmail` when available, `cursorOriginOwner`, `cursorOriginRepo`, `cursorOriginRepoId`, and `cursorOriginPrId` for pull request deployments.
@@ -1379,6 +1383,7 @@ export type CreateDeploymentGitSource18 = {
   org: string;
   ref: string;
   repo: string;
+  repoId?: string | undefined;
   repoPushedAt?: number | undefined;
   sha: string;
   type:
@@ -1559,6 +1564,7 @@ export type CreateDeploymentGitSource10 = {
   prId?: number | null | undefined;
   ref?: string | null | undefined;
   repo?: string | undefined;
+  repoId: string;
   repoPushedAt?: number | undefined;
   sha: string;
   type:
@@ -2162,6 +2168,7 @@ export const GitSourceType$outboundSchema: z.ZodNativeEnum<
 /** @internal */
 export type GitSource1$Outbound = {
   type: string;
+  repoId: string;
   sha: string;
 };
 
@@ -2172,6 +2179,7 @@ export const GitSource1$outboundSchema: z.ZodType<
   GitSource1
 > = z.object({
   type: GitSourceType$outboundSchema,
+  repoId: z.string(),
   sha: z.string(),
 });
 
@@ -2184,12 +2192,12 @@ export type GitSource$Outbound =
   | GitSource3$Outbound
   | GitSource5$Outbound
   | GitSource8$Outbound
+  | GitSource1$Outbound
   | GitSource2$Outbound
   | GitSource4$Outbound
   | GitSource6$Outbound
   | GitSource7$Outbound
-  | GitSource9$Outbound
-  | GitSource1$Outbound;
+  | GitSource9$Outbound;
 
 /** @internal */
 export const GitSource$outboundSchema: z.ZodType<
@@ -2200,12 +2208,12 @@ export const GitSource$outboundSchema: z.ZodType<
   z.lazy(() => GitSource3$outboundSchema),
   z.lazy(() => GitSource5$outboundSchema),
   z.lazy(() => GitSource8$outboundSchema),
+  z.lazy(() => GitSource1$outboundSchema),
   z.lazy(() => GitSource2$outboundSchema),
   z.lazy(() => GitSource4$outboundSchema),
   z.lazy(() => GitSource6$outboundSchema),
   z.lazy(() => GitSource7$outboundSchema),
   z.lazy(() => GitSource9$outboundSchema),
-  z.lazy(() => GitSource1$outboundSchema),
 ]);
 
 export function gitSourceToJSON(gitSource: GitSource): string {
@@ -2272,12 +2280,12 @@ export type CreateDeploymentRequestBody$Outbound = {
     | GitSource3$Outbound
     | GitSource5$Outbound
     | GitSource8$Outbound
+    | GitSource1$Outbound
     | GitSource2$Outbound
     | GitSource4$Outbound
     | GitSource6$Outbound
     | GitSource7$Outbound
     | GitSource9$Outbound
-    | GitSource1$Outbound
     | undefined;
   meta?: { [k: string]: string } | undefined;
   monorepoManager?: string | null | undefined;
@@ -2309,12 +2317,12 @@ export const CreateDeploymentRequestBody$outboundSchema: z.ZodType<
     z.lazy(() => GitSource3$outboundSchema),
     z.lazy(() => GitSource5$outboundSchema),
     z.lazy(() => GitSource8$outboundSchema),
+    z.lazy(() => GitSource1$outboundSchema),
     z.lazy(() => GitSource2$outboundSchema),
     z.lazy(() => GitSource4$outboundSchema),
     z.lazy(() => GitSource6$outboundSchema),
     z.lazy(() => GitSource7$outboundSchema),
     z.lazy(() => GitSource9$outboundSchema),
-    z.lazy(() => GitSource1$outboundSchema),
   ]).optional(),
   meta: z.record(z.string()).optional(),
   monorepoManager: z.nullable(z.string()).optional(),
@@ -3753,6 +3761,7 @@ export const CreateDeploymentGitSource18$inboundSchema: z.ZodType<
   org: types.string(),
   ref: types.string(),
   repo: types.string(),
+  repoId: types.optional(types.string()),
   repoPushedAt: types.optional(types.number()),
   sha: types.string(),
   type:
@@ -4090,6 +4099,7 @@ export const CreateDeploymentGitSource10$inboundSchema: z.ZodType<
   prId: z.nullable(types.number()).optional(),
   ref: z.nullable(types.string()).optional(),
   repo: types.optional(types.string()),
+  repoId: types.string(),
   repoPushedAt: types.optional(types.number()),
   sha: types.string(),
   type:

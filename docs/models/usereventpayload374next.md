@@ -5,11 +5,11 @@
 ```typescript
 import { UserEventPayload374Next } from "@vercel/sdk/models/payloadcity.js";
 
-let value: UserEventPayload374Next = "enhanced";
+let value: UserEventPayload374Next = "block";
 ```
 
 ## Values
 
 ```typescript
-"basic" | "elastic" | "enhanced" | "standard" | "turbo"
+"auto-approval" | "block" | "manual-approval"
 ```

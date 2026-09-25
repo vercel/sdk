@@ -1,0 +1,16 @@
+# When
+
+## Example Usage
+
+```typescript
+import { When } from "@vercel/sdk/models/updateintegrationdeploymentactionop.js";
+
+let value: When = {};
+```
+
+## Fields
+
+| Field                                                                                                                                                                                   | Type                                                                                                                                                                                    | Required                                                                                                                                                                                | Description                                                                                                                                                                             |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `role`                                                                                                                                                                                  | *string*[]                                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                                      | Applies only when the token is minted for one of these roles.                                                                                                                           |
+| `environment`                                                                                                                                                                           | *string*[]                                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                                      | Applies only when the token is minted for one of these environments: `production`, `preview`, `development`, or a custom environment slug. A custom environment also matches `preview`. |

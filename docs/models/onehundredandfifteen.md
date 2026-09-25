@@ -9,13 +9,15 @@ import { OneHundredAndFifteen } from "@vercel/sdk/models/usereventjobaction.js";
 
 let value: OneHundredAndFifteen = {
   mode: "none",
-  previousMode: "email-domain",
+  previousMode: "none",
+  scope: "organization",
 };
 ```
 
 ## Fields
 
-| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| `mode`                                                         | [models.PayloadMode](../models/payloadmode.md)                 | :heavy_check_mark:                                             | N/A                                                            |
-| `previousMode`                                                 | [models.PayloadPreviousMode](../models/payloadpreviousmode.md) | :heavy_check_mark:                                             | N/A                                                            |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `mode`                                                                   | [models.UserEventPayload115Mode](../models/usereventpayload115mode.md)   | :heavy_check_mark:                                                       | N/A                                                                      |
+| `previousMode`                                                           | [models.PreviousMode](../models/previousmode.md)                         | :heavy_check_mark:                                                       | N/A                                                                      |
+| `scope`                                                                  | [models.UserEventPayload115Scope](../models/usereventpayload115scope.md) | :heavy_check_mark:                                                       | N/A                                                                      |

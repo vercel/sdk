@@ -7,7 +7,9 @@
 
 ```typescript
 const value: models.CountEventsData1 = {
+  affinityDisplacedProvider: "<value>",
   affinityOutcome: "<value>",
+  affinityPinnedProvider: "<value>",
   aiGatewayModelId: "<id>",
   aiModel: "<value>",
   aiModelType: "<value>",
@@ -45,6 +47,7 @@ const value: models.CountEventsData1 = {
   clientIpCountry: "<value>",
   clientJa4Digest: "<value>",
   clientSessionId: "<id>",
+  clientSessionIdSource: "<value>",
   clientUserAgent: "<value>",
   codingAgent: "<value>",
   commitSha: "<value>",

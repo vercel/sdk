@@ -3,15 +3,15 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload328Next } from "@vercel/sdk/models/twohundredandeightythree.js";
+import { UserEventPayload328Next } from "@vercel/sdk/models/twohundredandeightyfour.js";
 
 let value: UserEventPayload328Next = {
-  skewProtectionAllowedDomains: [],
+  skewProtectionMaxAge: 273.87,
 };
 ```
 
 ## Fields
 
-| Field                          | Type                           | Required                       | Description                    |
-| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
-| `skewProtectionAllowedDomains` | *string*[]                     | :heavy_check_mark:             | N/A                            |
+| Field                  | Type                   | Required               | Description            |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `skewProtectionMaxAge` | *number*               | :heavy_check_mark:     | N/A                    |

@@ -8,17 +8,12 @@ The payload of the event, if requested.
 import { ThreeHundredAndSixtyNine } from "@vercel/sdk/models/payloadcity.js";
 
 let value: ThreeHundredAndSixtyNine = {
-  next: {
-    enabled: false,
-    includeDrafts: false,
-    scope: "private",
-  },
+  slug: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `next`                                                                         | [models.UserEventPayload369Next](../models/usereventpayload369next.md)         | :heavy_check_mark:                                                             | Automatic code review settings                                                 |
-| `previous`                                                                     | [models.UserEventPayload369Previous](../models/usereventpayload369previous.md) | :heavy_minus_sign:                                                             | Automatic code review settings                                                 |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `slug`             | *string*           | :heavy_check_mark: | N/A                |

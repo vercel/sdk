@@ -7,6 +7,7 @@ import { GitSource1 } from "@vercel/sdk/models/createdeploymentgitsource1.js";
 
 let value: GitSource1 = {
   type: "vercel",
+  repoId: "123456789",
   sha: "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0",
 };
 ```
@@ -16,4 +17,5 @@ let value: GitSource1 = {
 | Field                                              | Type                                               | Required                                           | Description                                        | Example                                            |
 | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
 | `type`                                             | [models.GitSourceType](../models/gitsourcetype.md) | :heavy_check_mark:                                 | N/A                                                |                                                    |
+| `repoId`                                           | *string*                                           | :heavy_check_mark:                                 | The stable Vercel Git repository ID.               | 123456789                                          |
 | `sha`                                              | *string*                                           | :heavy_check_mark:                                 | N/A                                                | a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0           |

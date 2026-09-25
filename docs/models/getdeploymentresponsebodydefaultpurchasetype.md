@@ -1,17 +1,17 @@
 # GetDeploymentResponseBodyDefaultPurchaseType
 
-The default plan type for the build machine — what the customer is *paying* for on their plan. For most customers, this is standard, but some customers have an entitlement for enhanced builds.
+The build machine tier included with the customer's plan. For most customers this is standard; enhanced entitlements include enhanced, while `none` means every build is billed at its purchase type.
 
 ## Example Usage
 
 ```typescript
 import { GetDeploymentResponseBodyDefaultPurchaseType } from "@vercel/sdk/models/getdeploymentservicesdeploymentsmiddlewarematcher.js";
 
-let value: GetDeploymentResponseBodyDefaultPurchaseType = "standard";
+let value: GetDeploymentResponseBodyDefaultPurchaseType = "none";
 ```
 
 ## Values
 
 ```typescript
-"basic" | "enhanced" | "standard"
+"basic" | "enhanced" | "none" | "standard"
 ```

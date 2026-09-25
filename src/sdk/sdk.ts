@@ -81,6 +81,7 @@ import { Storage } from "./storage.js";
 import { Teams } from "./teams.js";
 import { User } from "./user.js";
 import { Vcr } from "./vcr.js";
+import { VercelCi } from "./vercelci.js";
 import { WebAnalytics } from "./webanalytics.js";
 import { Webhooks } from "./webhooks.js";
 
@@ -273,6 +274,11 @@ export class Vercel extends ClientSDK {
   private _vcr?: Vcr;
   get vcr(): Vcr {
     return (this._vcr ??= new Vcr(this._options));
+  }
+
+  private _vercelCi?: VercelCi;
+  get vercelCi(): VercelCi {
+    return (this._vercelCi ??= new VercelCi(this._options));
   }
 
   private _webAnalytics?: WebAnalytics;

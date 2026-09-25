@@ -8,21 +8,22 @@ The payload of the event, if requested.
 import { OneHundredAndTwelve } from "@vercel/sdk/models/usereventjobaction.js";
 
 let value: OneHundredAndTwelve = {
-  deployment: {
-    id: "<id>",
-    meta: {},
-    name: "<value>",
-    url: "https://next-airbus.name/",
-  },
-  deploymentId: "<id>",
-  url: "https://beneficial-runway.com",
+  gitCommitterName: "<value>",
+  gitUserPlatform: "<value>",
+  projectName: "<value>",
+  sha: "<value>",
+  source: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `deployment`                                                                       | [models.UserEventPayload112Deployment](../models/usereventpayload112deployment.md) | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `deploymentId`                                                                     | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `url`                                                                              | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `gitCommitterName`                                                         | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `gitUserPlatform`                                                          | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `projectId`                                                                | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `projectName`                                                              | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `reason`                                                                   | [models.UserEventPayload112Reason](../models/usereventpayload112reason.md) | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `sha`                                                                      | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `source`                                                                   | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |

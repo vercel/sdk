@@ -10,8 +10,6 @@ import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
-export type NamespaceId = string | number;
-
 export const SearchRepoQueryParamProvider = {
   Github: "github",
   GithubLimited: "github-limited",
@@ -26,7 +24,7 @@ export type SearchRepoQueryParamProvider = ClosedEnum<
 
 export type SearchRepoRequest = {
   query?: string | undefined;
-  namespaceId?: string | number | null | undefined;
+  namespaceId?: any | null | undefined;
   provider?: SearchRepoQueryParamProvider | undefined;
   installationId?: string | undefined;
   /**
@@ -43,7 +41,7 @@ export type SearchRepoRequest = {
   slug?: string | undefined;
 };
 
-export type ResponseBodyNamespaceId = string | number;
+export type NamespaceId = string | number;
 
 export const SearchRepoResponseBodyIntegrationsProvider = {
   Bitbucket: "bitbucket",
@@ -177,20 +175,6 @@ export type SearchRepoResponseBody =
   | SearchRepoResponseBody1;
 
 /** @internal */
-export type NamespaceId$Outbound = string | number;
-
-/** @internal */
-export const NamespaceId$outboundSchema: z.ZodType<
-  NamespaceId$Outbound,
-  z.ZodTypeDef,
-  NamespaceId
-> = smartUnion([z.string(), z.number()]);
-
-export function namespaceIdToJSON(namespaceId: NamespaceId): string {
-  return JSON.stringify(NamespaceId$outboundSchema.parse(namespaceId));
-}
-
-/** @internal */
 export const SearchRepoQueryParamProvider$outboundSchema: z.ZodNativeEnum<
   typeof SearchRepoQueryParamProvider
 > = z.nativeEnum(SearchRepoQueryParamProvider);
@@ -198,7 +182,7 @@ export const SearchRepoQueryParamProvider$outboundSchema: z.ZodNativeEnum<
 /** @internal */
 export type SearchRepoRequest$Outbound = {
   query?: string | undefined;
-  namespaceId?: string | number | null | undefined;
+  namespaceId?: any | null | undefined;
   provider?: string | undefined;
   installationId?: string | undefined;
   host?: string | undefined;
@@ -213,7 +197,7 @@ export const SearchRepoRequest$outboundSchema: z.ZodType<
   SearchRepoRequest
 > = z.object({
   query: z.string().optional(),
-  namespaceId: z.nullable(smartUnion([z.string(), z.number()])).optional(),
+  namespaceId: z.nullable(z.any()).optional(),
   provider: SearchRepoQueryParamProvider$outboundSchema.optional(),
   installationId: z.string().optional(),
   host: z.string().optional(),
@@ -230,19 +214,19 @@ export function searchRepoRequestToJSON(
 }
 
 /** @internal */
-export const ResponseBodyNamespaceId$inboundSchema: z.ZodType<
-  ResponseBodyNamespaceId,
+export const NamespaceId$inboundSchema: z.ZodType<
+  NamespaceId,
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), types.number()]);
 
-export function responseBodyNamespaceIdFromJSON(
+export function namespaceIdFromJSON(
   jsonString: string,
-): SafeParseResult<ResponseBodyNamespaceId, SDKValidationError> {
+): SafeParseResult<NamespaceId, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ResponseBodyNamespaceId$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBodyNamespaceId' from JSON`,
+    (x) => NamespaceId$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'NamespaceId' from JSON`,
   );
 }
 

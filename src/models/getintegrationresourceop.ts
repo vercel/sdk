@@ -21,6 +21,27 @@ export type GetIntegrationResourceRequest = {
   resourceId: string;
 };
 
+export type GetIntegrationResourceClaims = string | number | boolean;
+
+export type GetIntegrationResourceWhen = {
+  environment?: Array<string> | undefined;
+  role?: Array<string> | undefined;
+};
+
+export type GetIntegrationResourceClaimRules = {
+  claims: { [k: string]: string | number | boolean | null };
+  when?: GetIntegrationResourceWhen | undefined;
+};
+
+/**
+ * The roles and claim rules Vercel resolves into the resource tokens it mints for this resource
+ */
+export type GetIntegrationResourceCustomClaims = {
+  claimRules?: Array<GetIntegrationResourceClaimRules> | undefined;
+  defaultRole?: string | undefined;
+  roles?: Array<string> | undefined;
+};
+
 export type GetIntegrationResourceMetadata =
   | string
   | number
@@ -103,6 +124,10 @@ export type GetIntegrationResourceResponseBody = {
    */
   billingPlanId?: string | undefined;
   /**
+   * The roles and claim rules Vercel resolves into the resource tokens it mints for this resource
+   */
+  customClaims?: GetIntegrationResourceCustomClaims | undefined;
+  /**
    * The ID provided by the 3rd party provider for the given resource
    */
   id: string;
@@ -161,6 +186,91 @@ export function getIntegrationResourceRequestToJSON(
     GetIntegrationResourceRequest$outboundSchema.parse(
       getIntegrationResourceRequest,
     ),
+  );
+}
+
+/** @internal */
+export const GetIntegrationResourceClaims$inboundSchema: z.ZodType<
+  GetIntegrationResourceClaims,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), types.number(), types.boolean()]);
+
+export function getIntegrationResourceClaimsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetIntegrationResourceClaims, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetIntegrationResourceClaims$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetIntegrationResourceClaims' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetIntegrationResourceWhen$inboundSchema: z.ZodType<
+  GetIntegrationResourceWhen,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  environment: types.optional(z.array(types.string())),
+  role: types.optional(z.array(types.string())),
+});
+
+export function getIntegrationResourceWhenFromJSON(
+  jsonString: string,
+): SafeParseResult<GetIntegrationResourceWhen, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetIntegrationResourceWhen$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetIntegrationResourceWhen' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetIntegrationResourceClaimRules$inboundSchema: z.ZodType<
+  GetIntegrationResourceClaimRules,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  claims: z.record(
+    types.nullable(
+      smartUnion([types.string(), types.number(), types.boolean()]),
+    ),
+  ),
+  when: types.optional(z.lazy(() => GetIntegrationResourceWhen$inboundSchema)),
+});
+
+export function getIntegrationResourceClaimRulesFromJSON(
+  jsonString: string,
+): SafeParseResult<GetIntegrationResourceClaimRules, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetIntegrationResourceClaimRules$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetIntegrationResourceClaimRules' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetIntegrationResourceCustomClaims$inboundSchema: z.ZodType<
+  GetIntegrationResourceCustomClaims,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  claimRules: types.optional(
+    z.array(z.lazy(() => GetIntegrationResourceClaimRules$inboundSchema)),
+  ),
+  defaultRole: types.optional(types.string()),
+  roles: types.optional(z.array(types.string())),
+});
+
+export function getIntegrationResourceCustomClaimsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetIntegrationResourceCustomClaims, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetIntegrationResourceCustomClaims$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetIntegrationResourceCustomClaims' from JSON`,
   );
 }
 
@@ -308,6 +418,9 @@ export const GetIntegrationResourceResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   billingPlanId: types.optional(types.string()),
+  customClaims: types.optional(
+    z.lazy(() => GetIntegrationResourceCustomClaims$inboundSchema),
+  ),
   id: types.string(),
   internalId: types.string(),
   metadata: types.optional(

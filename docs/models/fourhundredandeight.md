@@ -7,12 +7,15 @@ The payload of the event, if requested.
 ```typescript
 import { FourHundredAndEight } from "@vercel/sdk/models/payloadcity.js";
 
-let value: FourHundredAndEight = {};
+let value: FourHundredAndEight = {
+  enabled: false,
+  scope: "dashboard",
+};
 ```
 
 ## Fields
 
-| Field                                                | Type                                                 | Required                                             | Description                                          |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `next`                                               | Record<string, *models.UserEventPayload408Next*>     | :heavy_minus_sign:                                   | N/A                                                  |
-| `previous`                                           | Record<string, *models.UserEventPayload408Previous*> | :heavy_minus_sign:                                   | N/A                                                  |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `enabled`                                                                | *boolean*                                                                | :heavy_check_mark:                                                       | N/A                                                                      |
+| `scope`                                                                  | [models.UserEventPayload408Scope](../models/usereventpayload408scope.md) | :heavy_check_mark:                                                       | N/A                                                                      |

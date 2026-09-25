@@ -8,7 +8,7 @@ The payload of the event, if requested.
 import { ThreeHundredAndNinetyThree } from "@vercel/sdk/models/payloadcity.js";
 
 let value: ThreeHundredAndNinetyThree = {
-  enforced: false,
+  authorized: false,
 };
 ```
 
@@ -16,4 +16,6 @@ let value: ThreeHundredAndNinetyThree = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `enforced`         | *boolean*          | :heavy_check_mark: | N/A                |
+| `authorized`       | *boolean*          | :heavy_check_mark: | N/A                |
+| `email`            | *string*           | :heavy_minus_sign: | N/A                |
+| `reason`           | *string*           | :heavy_minus_sign: | N/A                |

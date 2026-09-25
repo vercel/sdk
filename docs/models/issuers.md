@@ -31,6 +31,7 @@ let value: Issuers = {
       createdAt: "1729713623051",
       issuerId: "<id>",
       keyId: "<id>",
+      publicKeyFingerprint: "<value>",
       status: "revoking",
       updatedAt: "1735672827594",
     },

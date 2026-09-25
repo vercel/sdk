@@ -8,7 +8,8 @@ The payload of the event, if requested.
 import { OneHundredAndForty } from "@vercel/sdk/models/usereventjobaction.js";
 
 let value: OneHundredAndForty = {
-  drainUrl: "https://rotating-rust.com",
+  drainName: "<value>",
+  drainUrl: "https://somber-amendment.com",
 };
 ```
 
@@ -16,5 +17,6 @@ let value: OneHundredAndForty = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
+| `drainName`        | *string*           | :heavy_check_mark: | N/A                |
 | `drainUrl`         | *string*           | :heavy_check_mark: | N/A                |
 | `integrationName`  | *string*           | :heavy_minus_sign: | N/A                |

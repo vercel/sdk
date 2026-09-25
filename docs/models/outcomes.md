@@ -12,3 +12,16 @@ const value: models.Outcomes1 = {
 };
 ```
 
+### `models.Outcomes2`
+
+```typescript
+const value: models.Outcomes2 = {
+  kind: "<value>",
+  claimRules: [
+    {
+      claims: {},
+    },
+  ],
+};
+```
+

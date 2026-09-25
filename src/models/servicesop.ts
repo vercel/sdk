@@ -24,15 +24,16 @@ export const ReadySubstate = {
 export type ReadySubstate = ClosedEnum<typeof ReadySubstate>;
 
 /**
- * The default plan type for the build machine — what the customer is *paying* for on their plan. For most customers, this is standard, but some customers have an entitlement for enhanced builds.
+ * The build machine tier included with the customer's plan. For most customers this is standard; enhanced entitlements include enhanced, while `none` means every build is billed at its purchase type.
  */
 export const DefaultPurchaseType = {
   Basic: "basic",
   Enhanced: "enhanced",
+  None: "none",
   Standard: "standard",
 } as const;
 /**
- * The default plan type for the build machine — what the customer is *paying* for on their plan. For most customers, this is standard, but some customers have an entitlement for enhanced builds.
+ * The build machine tier included with the customer's plan. For most customers this is standard; enhanced entitlements include enhanced, while `none` means every build is billed at its purchase type.
  */
 export type DefaultPurchaseType = ClosedEnum<typeof DefaultPurchaseType>;
 
@@ -87,7 +88,7 @@ export type CancelDeploymentBuildMachine = {
    */
   cores?: number | undefined;
   /**
-   * The default plan type for the build machine — what the customer is *paying* for on their plan. For most customers, this is standard, but some customers have an entitlement for enhanced builds.
+   * The build machine tier included with the customer's plan. For most customers this is standard; enhanced entitlements include enhanced, while `none` means every build is billed at its purchase type.
    */
   defaultPurchaseType?: DefaultPurchaseType | undefined;
   /**

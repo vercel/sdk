@@ -9,13 +9,15 @@ import { OneHundredAndThirtyOne } from "@vercel/sdk/models/usereventjobaction.js
 
 let value: OneHundredAndThirtyOne = {
   domain: "rowdy-widow.biz",
-  zone: true,
+  echMode: "disabled",
+  previousEchMode: "enabled",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `domain`           | *string*           | :heavy_check_mark: | N/A                |
-| `zone`             | *boolean*          | :heavy_check_mark: | N/A                |
+| Field                                                  | Type                                                   | Required                                               | Description                                            |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| `domain`                                               | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
+| `echMode`                                              | [models.EchMode](../models/echmode.md)                 | :heavy_check_mark:                                     | N/A                                                    |
+| `previousEchMode`                                      | [models.PreviousEchMode](../models/previousechmode.md) | :heavy_check_mark:                                     | N/A                                                    |

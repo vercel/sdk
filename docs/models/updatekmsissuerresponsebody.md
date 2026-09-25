@@ -19,6 +19,7 @@ let value: UpdateKmsIssuerResponseBody = {
       createdAt: "1723301949289",
       issuerId: "<id>",
       keyId: "<id>",
+      publicKeyFingerprint: "<value>",
       status: "pending",
       updatedAt: "1735611881709",
     },

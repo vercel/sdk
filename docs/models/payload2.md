@@ -8,19 +8,14 @@ The payload of the event, if requested.
 import { Payload2 } from "@vercel/sdk/models/userevent.js";
 
 let value: Payload2 = {
-  action: "archived",
-  id: "<id>",
-  projectId: "<id>",
-  slug: "<value>",
+  enabled: true,
+  slackConfigured: false,
 };
 ```
 
 ## Fields
 
-| Field                                              | Type                                               | Required                                           | Description                                        |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `action`                                           | [models.PayloadAction](../models/payloadaction.md) | :heavy_check_mark:                                 | N/A                                                |
-| `id`                                               | *string*                                           | :heavy_check_mark:                                 | N/A                                                |
-| `projectId`                                        | *string*                                           | :heavy_check_mark:                                 | N/A                                                |
-| `projectName`                                      | *string*                                           | :heavy_minus_sign:                                 | N/A                                                |
-| `slug`                                             | *string*                                           | :heavy_check_mark:                                 | N/A                                                |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
+| `slackConfigured`  | *boolean*          | :heavy_check_mark: | N/A                |

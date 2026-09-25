@@ -59,6 +59,7 @@ export type GetDeploymentGitSource18 = {
   org: string;
   ref: string;
   repo: string;
+  repoId?: string | undefined;
   repoPushedAt?: number | undefined;
   sha: string;
   type:
@@ -241,6 +242,7 @@ export type GetDeploymentGitSource10 = {
   prId?: number | null | undefined;
   ref?: string | null | undefined;
   repo?: string | undefined;
+  repoId: string;
   repoPushedAt?: number | undefined;
   sha: string;
   type:
@@ -428,11 +430,11 @@ export type GetDeploymentResponseBodyGitSource =
   | GetDeploymentGitSourceDeployments3
   | GetDeploymentGitSource6
   | GetDeploymentGitSource9
+  | GetDeploymentGitSource10
   | GetDeploymentGitSourceDeployments1
   | GetDeploymentGitSourceDeployments5
   | GetDeploymentGitSource7
   | GetDeploymentGitSource8
-  | GetDeploymentGitSource10
   | GetDeploymentGitSource11;
 
 export const GetDeploymentResponseBodyContentDispositionType = {
@@ -948,15 +950,16 @@ export type GetDeploymentResponseBodyReadySubstate = ClosedEnum<
 >;
 
 /**
- * The default plan type for the build machine — what the customer is *paying* for on their plan. For most customers, this is standard, but some customers have an entitlement for enhanced builds.
+ * The build machine tier included with the customer's plan. For most customers this is standard; enhanced entitlements include enhanced, while `none` means every build is billed at its purchase type.
  */
 export const GetDeploymentResponseBodyDefaultPurchaseType = {
   Basic: "basic",
   Enhanced: "enhanced",
+  None: "none",
   Standard: "standard",
 } as const;
 /**
- * The default plan type for the build machine — what the customer is *paying* for on their plan. For most customers, this is standard, but some customers have an entitlement for enhanced builds.
+ * The build machine tier included with the customer's plan. For most customers this is standard; enhanced entitlements include enhanced, while `none` means every build is billed at its purchase type.
  */
 export type GetDeploymentResponseBodyDefaultPurchaseType = ClosedEnum<
   typeof GetDeploymentResponseBodyDefaultPurchaseType
@@ -1019,7 +1022,7 @@ export type ResponseBodyBuildMachine = {
    */
   cores?: number | undefined;
   /**
-   * The default plan type for the build machine — what the customer is *paying* for on their plan. For most customers, this is standard, but some customers have an entitlement for enhanced builds.
+   * The build machine tier included with the customer's plan. For most customers this is standard; enhanced entitlements include enhanced, while `none` means every build is billed at its purchase type.
    */
   defaultPurchaseType?:
     | GetDeploymentResponseBodyDefaultPurchaseType
@@ -1761,6 +1764,7 @@ export const GetDeploymentGitSource18$inboundSchema: z.ZodType<
   org: types.string(),
   ref: types.string(),
   repo: types.string(),
+  repoId: types.optional(types.string()),
   repoPushedAt: types.optional(types.number()),
   sha: types.string(),
   type:
@@ -2117,6 +2121,7 @@ export const GetDeploymentGitSource10$inboundSchema: z.ZodType<
   prId: z.nullable(types.number()).optional(),
   ref: z.nullable(types.string()).optional(),
   repo: types.optional(types.string()),
+  repoId: types.string(),
   repoPushedAt: types.optional(types.number()),
   sha: types.string(),
   type:
@@ -2517,11 +2522,11 @@ export const GetDeploymentResponseBodyGitSource$inboundSchema: z.ZodType<
   z.lazy(() => GetDeploymentGitSourceDeployments3$inboundSchema),
   z.lazy(() => GetDeploymentGitSource6$inboundSchema),
   z.lazy(() => GetDeploymentGitSource9$inboundSchema),
+  z.lazy(() => GetDeploymentGitSource10$inboundSchema),
   z.lazy(() => GetDeploymentGitSourceDeployments1$inboundSchema),
   z.lazy(() => GetDeploymentGitSourceDeployments5$inboundSchema),
   z.lazy(() => GetDeploymentGitSource7$inboundSchema),
   z.lazy(() => GetDeploymentGitSource8$inboundSchema),
-  z.lazy(() => GetDeploymentGitSource10$inboundSchema),
   z.lazy(() => GetDeploymentGitSource11$inboundSchema),
 ]);
 

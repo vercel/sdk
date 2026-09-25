@@ -7,15 +7,11 @@ The payload of the event, if requested.
 ```typescript
 import { ThreeHundredAndEightyTwo } from "@vercel/sdk/models/payloadcity.js";
 
-let value: ThreeHundredAndEightyTwo = {
-  deletedCount: 1264.98,
-  inviteIds: [],
-};
+let value: ThreeHundredAndEightyTwo = {};
 ```
 
 ## Fields
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `deletedCount`     | *number*           | :heavy_check_mark: | N/A                |
-| `inviteIds`        | *string*[]         | :heavy_check_mark: | N/A                |
+| `emailDomain`      | *string*           | :heavy_minus_sign: | N/A                |

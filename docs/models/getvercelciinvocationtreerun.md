@@ -1,0 +1,31 @@
+# GetVercelCiInvocationTreeRun
+
+## Example Usage
+
+```typescript
+import { GetVercelCiInvocationTreeRun } from "@vercel/sdk/models/getvercelciinvocationtreeop.js";
+
+let value: GetVercelCiInvocationTreeRun = {
+  invocationId: "<id>",
+  invocationAttempt: 89.45,
+  jobDefinitionId: "<id>",
+  jobRunAttempt: 6949.12,
+  taskDefinitionId: "<id>",
+  attempt: 3046.31,
+  createdAt: 6759.01,
+};
+```
+
+## Fields
+
+| Field                                                                                                                        | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `invocationId`                                                                                                               | *string*                                                                                                                     | :heavy_check_mark:                                                                                                           | N/A                                                                                                                          |
+| `invocationAttempt`                                                                                                          | *number*                                                                                                                     | :heavy_check_mark:                                                                                                           | N/A                                                                                                                          |
+| `jobDefinitionId`                                                                                                            | *string*                                                                                                                     | :heavy_check_mark:                                                                                                           | N/A                                                                                                                          |
+| `jobRunAttempt`                                                                                                              | *number*                                                                                                                     | :heavy_check_mark:                                                                                                           | N/A                                                                                                                          |
+| `taskDefinitionId`                                                                                                           | *string*                                                                                                                     | :heavy_check_mark:                                                                                                           | N/A                                                                                                                          |
+| `attempt`                                                                                                                    | *number*                                                                                                                     | :heavy_check_mark:                                                                                                           | N/A                                                                                                                          |
+| `createdAt`                                                                                                                  | *number*                                                                                                                     | :heavy_check_mark:                                                                                                           | N/A                                                                                                                          |
+| `started`                                                                                                                    | [models.GetVercelCiInvocationTreeVercelCiStarted](../models/getvercelciinvocationtreevercelcistarted.md)                     | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |
+| `completed`                                                                                                                  | [models.GetVercelCiInvocationTreeVercelCiResponseCompleted](../models/getvercelciinvocationtreevercelciresponsecompleted.md) | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |

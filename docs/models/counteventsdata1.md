@@ -6,7 +6,9 @@
 import { CountEventsData1 } from "@vercel/sdk/models/counteventsop.js";
 
 let value: CountEventsData1 = {
+  affinityDisplacedProvider: "<value>",
   affinityOutcome: "<value>",
+  affinityPinnedProvider: "<value>",
   aiGatewayModelId: "<id>",
   aiModel: "<value>",
   aiModelType: "<value>",
@@ -44,6 +46,7 @@ let value: CountEventsData1 = {
   clientIpCountry: "<value>",
   clientJa4Digest: "<value>",
   clientSessionId: "<id>",
+  clientSessionIdSource: "<value>",
   clientUserAgent: "<value>",
   codingAgent: "<value>",
   commitSha: "<value>",
@@ -250,7 +253,9 @@ let value: CountEventsData1 = {
 
 | Field                                  | Type                                   | Required                               | Description                            |
 | -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| `affinityDisplacedProvider`            | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `affinityOutcome`                      | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `affinityPinnedProvider`               | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `aiGatewayModelId`                     | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `aiModel`                              | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `aiModelType`                          | *string*                               | :heavy_check_mark:                     | N/A                                    |
@@ -288,6 +293,7 @@ let value: CountEventsData1 = {
 | `clientIpCountry`                      | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `clientJa4Digest`                      | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `clientSessionId`                      | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `clientSessionIdSource`                | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `clientUserAgent`                      | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `codingAgent`                          | *string*                               | :heavy_check_mark:                     | N/A                                    |
 | `commitSha`                            | *string*                               | :heavy_check_mark:                     | N/A                                    |

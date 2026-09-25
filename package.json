@@ -1,6 +1,6 @@
 {
   "name": "@vercel/sdk",
-  "version": "1.28.36",
+  "version": "1.28.37",
   "author": "Speakeasy",
   "license": "Apache-2.0",
   "type": "module",
@@ -32,8 +32,8 @@
     "lint": "oxlint --max-warnings=0 --deny-warnings --no-error-on-unmatched-pattern src",
     "build": "tsgo",
     "prepublishOnly": "npm run build",
-    "test:connect-environments": "npm run build && node --test tests/connect-integration-resource-to-project.test.mjs",
-    "test": "npm run test:connect-environments"
+    "test": "npm run test:connect-environments",
+    "test:connect-environments": "npm run build && node --test tests/connect-integration-resource-to-project.test.mjs"
   },
   "peerDependencies": {
     

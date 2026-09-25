@@ -8,6 +8,7 @@ import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export const Ownership = {
@@ -99,6 +100,45 @@ export type ImportResourceSecrets = {
   environmentOverrides?: EnvironmentOverrides | undefined;
 };
 
+export type ImportResourceWhen = {
+  /**
+   * Applies only when the token is minted for one of these roles.
+   */
+  role?: Array<string> | undefined;
+  /**
+   * Applies only when the token is minted for one of these environments: `production`, `preview`, `development`, or a custom environment slug. A custom environment also matches `preview`.
+   */
+  environment?: Array<string> | undefined;
+};
+
+export type ImportResourceClaims = string | number | boolean;
+
+export type ImportResourceClaimRules = {
+  when?: ImportResourceWhen | undefined;
+  /**
+   * Claims to set (string, number, or boolean), shallow-merged over earlier rules and over the default claims. `null` removes a claim. Reserved claims cannot be set; `aud` and `sub` can be overridden with a string but not removed.
+   */
+  claims: { [k: string]: string | number | boolean | null };
+};
+
+/**
+ * Custom claims embedded in the resource tokens Vercel mints for this resource.
+ */
+export type CustomClaims = {
+  /**
+   * Roles a deployment may request when minting a token. The selected role becomes the `sub` claim.
+   */
+  roles?: Array<string> | undefined;
+  /**
+   * Role used when the deployment does not request one. Required when `roles` is set.
+   */
+  defaultRole?: string | undefined;
+  /**
+   * Ordered rules resolved at mint time. Later rules win and shallow-merge over earlier ones.
+   */
+  claimRules?: Array<ImportResourceClaimRules> | undefined;
+};
+
 export type ImportResourceRequestBody = {
   ownership?: Ownership | undefined;
   productId: string;
@@ -109,6 +149,10 @@ export type ImportResourceRequestBody = {
   notification?: ImportResourceNotification | undefined;
   extras?: { [k: string]: any } | undefined;
   secrets?: Array<ImportResourceSecrets> | undefined;
+  /**
+   * Custom claims embedded in the resource tokens Vercel mints for this resource.
+   */
+  customClaims?: CustomClaims | undefined;
 };
 
 export type ImportResourceRequest = {
@@ -326,6 +370,97 @@ export function importResourceSecretsToJSON(
 }
 
 /** @internal */
+export type ImportResourceWhen$Outbound = {
+  role?: Array<string> | undefined;
+  environment?: Array<string> | undefined;
+};
+
+/** @internal */
+export const ImportResourceWhen$outboundSchema: z.ZodType<
+  ImportResourceWhen$Outbound,
+  z.ZodTypeDef,
+  ImportResourceWhen
+> = z.object({
+  role: z.array(z.string()).optional(),
+  environment: z.array(z.string()).optional(),
+});
+
+export function importResourceWhenToJSON(
+  importResourceWhen: ImportResourceWhen,
+): string {
+  return JSON.stringify(
+    ImportResourceWhen$outboundSchema.parse(importResourceWhen),
+  );
+}
+
+/** @internal */
+export type ImportResourceClaims$Outbound = string | number | boolean;
+
+/** @internal */
+export const ImportResourceClaims$outboundSchema: z.ZodType<
+  ImportResourceClaims$Outbound,
+  z.ZodTypeDef,
+  ImportResourceClaims
+> = smartUnion([z.string(), z.number(), z.boolean()]);
+
+export function importResourceClaimsToJSON(
+  importResourceClaims: ImportResourceClaims,
+): string {
+  return JSON.stringify(
+    ImportResourceClaims$outboundSchema.parse(importResourceClaims),
+  );
+}
+
+/** @internal */
+export type ImportResourceClaimRules$Outbound = {
+  when?: ImportResourceWhen$Outbound | undefined;
+  claims: { [k: string]: string | number | boolean | null };
+};
+
+/** @internal */
+export const ImportResourceClaimRules$outboundSchema: z.ZodType<
+  ImportResourceClaimRules$Outbound,
+  z.ZodTypeDef,
+  ImportResourceClaimRules
+> = z.object({
+  when: z.lazy(() => ImportResourceWhen$outboundSchema).optional(),
+  claims: z.record(
+    z.nullable(smartUnion([z.string(), z.number(), z.boolean()])),
+  ),
+});
+
+export function importResourceClaimRulesToJSON(
+  importResourceClaimRules: ImportResourceClaimRules,
+): string {
+  return JSON.stringify(
+    ImportResourceClaimRules$outboundSchema.parse(importResourceClaimRules),
+  );
+}
+
+/** @internal */
+export type CustomClaims$Outbound = {
+  roles?: Array<string> | undefined;
+  defaultRole?: string | undefined;
+  claimRules?: Array<ImportResourceClaimRules$Outbound> | undefined;
+};
+
+/** @internal */
+export const CustomClaims$outboundSchema: z.ZodType<
+  CustomClaims$Outbound,
+  z.ZodTypeDef,
+  CustomClaims
+> = z.object({
+  roles: z.array(z.string()).optional(),
+  defaultRole: z.string().optional(),
+  claimRules: z.array(z.lazy(() => ImportResourceClaimRules$outboundSchema))
+    .optional(),
+});
+
+export function customClaimsToJSON(customClaims: CustomClaims): string {
+  return JSON.stringify(CustomClaims$outboundSchema.parse(customClaims));
+}
+
+/** @internal */
 export type ImportResourceRequestBody$Outbound = {
   ownership?: string | undefined;
   productId: string;
@@ -336,6 +471,7 @@ export type ImportResourceRequestBody$Outbound = {
   notification?: ImportResourceNotification$Outbound | undefined;
   extras?: { [k: string]: any } | undefined;
   secrets?: Array<ImportResourceSecrets$Outbound> | undefined;
+  customClaims?: CustomClaims$Outbound | undefined;
 };
 
 /** @internal */
@@ -356,6 +492,7 @@ export const ImportResourceRequestBody$outboundSchema: z.ZodType<
   extras: z.record(z.any()).optional(),
   secrets: z.array(z.lazy(() => ImportResourceSecrets$outboundSchema))
     .optional(),
+  customClaims: z.lazy(() => CustomClaims$outboundSchema).optional(),
 });
 
 export function importResourceRequestBodyToJSON(

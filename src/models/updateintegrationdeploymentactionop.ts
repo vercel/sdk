@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { ClosedEnum } from "../types/enums.js";
+import { smartUnion } from "../types/smartUnion.js";
 
 export const UpdateIntegrationDeploymentActionStatus = {
   Running: "running",
@@ -14,6 +15,38 @@ export const UpdateIntegrationDeploymentActionStatus = {
 export type UpdateIntegrationDeploymentActionStatus = ClosedEnum<
   typeof UpdateIntegrationDeploymentActionStatus
 >;
+
+export type When = {
+  /**
+   * Applies only when the token is minted for one of these roles.
+   */
+  role?: Array<string> | undefined;
+  /**
+   * Applies only when the token is minted for one of these environments: `production`, `preview`, `development`, or a custom environment slug. A custom environment also matches `preview`.
+   */
+  environment?: Array<string> | undefined;
+};
+
+export type OutcomesClaims = string | number | boolean;
+
+export type ClaimRules = {
+  when?: When | undefined;
+  /**
+   * Claims to set (string, number, or boolean), shallow-merged over earlier rules and over the default claims. `null` removes a claim. Reserved claims cannot be set; `aud` and `sub` can be overridden with a string but not removed.
+   */
+  claims: { [k: string]: string | number | boolean | null };
+};
+
+/**
+ * Claim rules applied after the resource’s own rules when this deployment mints a resource token. Reserved claims cannot be set.
+ */
+export type Outcomes2 = {
+  kind: string;
+  /**
+   * Ordered rules resolved at mint time. Later rules win and shallow-merge over earlier ones.
+   */
+  claimRules: Array<ClaimRules>;
+};
 
 export type Secrets = {
   name: string;
@@ -25,13 +58,13 @@ export type Outcomes1 = {
   secrets: Array<Secrets>;
 };
 
-export type Outcomes = Outcomes1;
+export type Outcomes = Outcomes1 | Outcomes2;
 
 export type UpdateIntegrationDeploymentActionRequestBody = {
   status?: UpdateIntegrationDeploymentActionStatus | undefined;
   statusText?: string | undefined;
   statusUrl?: string | undefined;
-  outcomes?: Array<Outcomes1> | undefined;
+  outcomes?: Array<Outcomes1 | Outcomes2> | undefined;
 };
 
 export type UpdateIntegrationDeploymentActionRequest = {
@@ -46,6 +79,79 @@ export type UpdateIntegrationDeploymentActionRequest = {
 export const UpdateIntegrationDeploymentActionStatus$outboundSchema:
   z.ZodNativeEnum<typeof UpdateIntegrationDeploymentActionStatus> = z
     .nativeEnum(UpdateIntegrationDeploymentActionStatus);
+
+/** @internal */
+export type When$Outbound = {
+  role?: Array<string> | undefined;
+  environment?: Array<string> | undefined;
+};
+
+/** @internal */
+export const When$outboundSchema: z.ZodType<When$Outbound, z.ZodTypeDef, When> =
+  z.object({
+    role: z.array(z.string()).optional(),
+    environment: z.array(z.string()).optional(),
+  });
+
+export function whenToJSON(when: When): string {
+  return JSON.stringify(When$outboundSchema.parse(when));
+}
+
+/** @internal */
+export type OutcomesClaims$Outbound = string | number | boolean;
+
+/** @internal */
+export const OutcomesClaims$outboundSchema: z.ZodType<
+  OutcomesClaims$Outbound,
+  z.ZodTypeDef,
+  OutcomesClaims
+> = smartUnion([z.string(), z.number(), z.boolean()]);
+
+export function outcomesClaimsToJSON(outcomesClaims: OutcomesClaims): string {
+  return JSON.stringify(OutcomesClaims$outboundSchema.parse(outcomesClaims));
+}
+
+/** @internal */
+export type ClaimRules$Outbound = {
+  when?: When$Outbound | undefined;
+  claims: { [k: string]: string | number | boolean | null };
+};
+
+/** @internal */
+export const ClaimRules$outboundSchema: z.ZodType<
+  ClaimRules$Outbound,
+  z.ZodTypeDef,
+  ClaimRules
+> = z.object({
+  when: z.lazy(() => When$outboundSchema).optional(),
+  claims: z.record(
+    z.nullable(smartUnion([z.string(), z.number(), z.boolean()])),
+  ),
+});
+
+export function claimRulesToJSON(claimRules: ClaimRules): string {
+  return JSON.stringify(ClaimRules$outboundSchema.parse(claimRules));
+}
+
+/** @internal */
+export type Outcomes2$Outbound = {
+  kind: string;
+  claimRules: Array<ClaimRules$Outbound>;
+};
+
+/** @internal */
+export const Outcomes2$outboundSchema: z.ZodType<
+  Outcomes2$Outbound,
+  z.ZodTypeDef,
+  Outcomes2
+> = z.object({
+  kind: z.string(),
+  claimRules: z.array(z.lazy(() => ClaimRules$outboundSchema)),
+});
+
+export function outcomes2ToJSON(outcomes2: Outcomes2): string {
+  return JSON.stringify(Outcomes2$outboundSchema.parse(outcomes2));
+}
 
 /** @internal */
 export type Secrets$Outbound = {
@@ -88,14 +194,17 @@ export function outcomes1ToJSON(outcomes1: Outcomes1): string {
 }
 
 /** @internal */
-export type Outcomes$Outbound = Outcomes1$Outbound;
+export type Outcomes$Outbound = Outcomes1$Outbound | Outcomes2$Outbound;
 
 /** @internal */
 export const Outcomes$outboundSchema: z.ZodType<
   Outcomes$Outbound,
   z.ZodTypeDef,
   Outcomes
-> = z.lazy(() => Outcomes1$outboundSchema);
+> = smartUnion([
+  z.lazy(() => Outcomes1$outboundSchema),
+  z.lazy(() => Outcomes2$outboundSchema),
+]);
 
 export function outcomesToJSON(outcomes: Outcomes): string {
   return JSON.stringify(Outcomes$outboundSchema.parse(outcomes));
@@ -106,7 +215,7 @@ export type UpdateIntegrationDeploymentActionRequestBody$Outbound = {
   status?: string | undefined;
   statusText?: string | undefined;
   statusUrl?: string | undefined;
-  outcomes?: Array<Outcomes1$Outbound> | undefined;
+  outcomes?: Array<Outcomes1$Outbound | Outcomes2$Outbound> | undefined;
 };
 
 /** @internal */
@@ -119,7 +228,12 @@ export const UpdateIntegrationDeploymentActionRequestBody$outboundSchema:
     status: UpdateIntegrationDeploymentActionStatus$outboundSchema.optional(),
     statusText: z.string().optional(),
     statusUrl: z.string().optional(),
-    outcomes: z.array(z.lazy(() => Outcomes1$outboundSchema)).optional(),
+    outcomes: z.array(
+      smartUnion([
+        z.lazy(() => Outcomes1$outboundSchema),
+        z.lazy(() => Outcomes2$outboundSchema),
+      ]),
+    ).optional(),
   });
 
 export function updateIntegrationDeploymentActionRequestBodyToJSON(

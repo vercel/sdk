@@ -8,7 +8,7 @@ The payload of the event, if requested.
 import { OneHundredAndNinetyFive } from "@vercel/sdk/models/sourceimages.js";
 
 let value: OneHundredAndNinetyFive = {
-  logDrainUrl: "https://robust-taxicab.biz",
+  logDrainUrl: "https://unlawful-extension.org",
 };
 ```
 

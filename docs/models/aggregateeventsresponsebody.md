@@ -8,7 +8,9 @@ import { AggregateEventsResponseBody } from "@vercel/sdk/models/aggregateeventso
 let value: AggregateEventsResponseBody = {
   data: [
     {
+      affinityDisplacedProvider: "<value>",
       affinityOutcome: "<value>",
+      affinityPinnedProvider: "<value>",
       aiGatewayModelId: "<id>",
       aiModel: "<value>",
       aiModelType: "<value>",
@@ -46,6 +48,7 @@ let value: AggregateEventsResponseBody = {
       clientIpCountry: "<value>",
       clientJa4Digest: "<value>",
       clientSessionId: "<id>",
+      clientSessionIdSource: "<value>",
       clientUserAgent: "<value>",
       codingAgent: "<value>",
       commitSha: "<value>",

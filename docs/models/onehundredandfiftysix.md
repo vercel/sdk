@@ -12,16 +12,8 @@ let value: OneHundredAndFiftySix = {};
 
 ## Fields
 
-| Field                    | Type                     | Required                 | Description              |
-| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
-| `customEnvironmentSlugs` | *string*[]               | :heavy_minus_sign:       | N/A                      |
-| `edgeConfigId`           | *string*                 | :heavy_minus_sign:       | N/A                      |
-| `edgeConfigTokenId`      | *string*                 | :heavy_minus_sign:       | N/A                      |
-| `gitBranch`              | *string*                 | :heavy_minus_sign:       | N/A                      |
-| `id`                     | *string*                 | :heavy_minus_sign:       | N/A                      |
-| `ipAddress`              | *string*                 | :heavy_minus_sign:       | N/A                      |
-| `key`                    | *string*                 | :heavy_minus_sign:       | N/A                      |
-| `projectId`              | *string*                 | :heavy_minus_sign:       | N/A                      |
-| `projectName`            | *string*                 | :heavy_minus_sign:       | N/A                      |
-| `source`                 | *string*                 | :heavy_minus_sign:       | N/A                      |
-| `target`                 | *models.Target*          | :heavy_minus_sign:       | N/A                      |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `deletedUid`                                   | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `deletedUser`                                  | [models.DeletedUser](../models/deleteduser.md) | :heavy_minus_sign:                             | N/A                                            |
+| `emailDomain`                                  | *string*                                       | :heavy_minus_sign:                             | N/A                                            |

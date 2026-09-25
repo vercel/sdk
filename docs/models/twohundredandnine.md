@@ -8,8 +8,7 @@ The payload of the event, if requested.
 import { TwoHundredAndNine } from "@vercel/sdk/models/sourceimages.js";
 
 let value: TwoHundredAndNine = {
-  avatar: "https://picsum.photos/seed/h2ocMDELS/2103/1246",
-  organizationId: "<id>",
+  projectName: "<value>",
 };
 ```
 
@@ -17,5 +16,5 @@ let value: TwoHundredAndNine = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `avatar`           | *string*           | :heavy_check_mark: | N/A                |
-| `organizationId`   | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_minus_sign: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |

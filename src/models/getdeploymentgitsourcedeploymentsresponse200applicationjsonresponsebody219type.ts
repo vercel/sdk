@@ -321,6 +321,7 @@ export type GetDeploymentGitSourceDeployments18 = {
   org: string;
   ref: string;
   repo: string;
+  repoId?: string | undefined;
   repoPushedAt?: number | undefined;
   sha: string;
   type:
@@ -501,6 +502,7 @@ export type GetDeploymentGitSourceDeployments10 = {
   prId?: number | null | undefined;
   ref?: string | null | undefined;
   repo?: string | undefined;
+  repoId: string;
   repoPushedAt?: number | undefined;
   sha: string;
   type:
@@ -700,11 +702,11 @@ export type ResponseBodyGitSource =
   | GetDeploymentGitSource3
   | GetDeploymentGitSourceDeployments6
   | GetDeploymentGitSourceDeployments9
+  | GetDeploymentGitSourceDeployments10
   | GetDeploymentGitSource1
   | GetDeploymentGitSource5
   | GetDeploymentGitSourceDeployments7
   | GetDeploymentGitSourceDeployments8
-  | GetDeploymentGitSourceDeployments10
   | GetDeploymentGitSourceDeployments11;
 
 export const GetDeploymentResponseBodyDeploymentsResponse200ReadyState = {
@@ -991,11 +993,11 @@ export type GetDeploymentResponseBody3 = {
     | GetDeploymentGitSource3
     | GetDeploymentGitSourceDeployments6
     | GetDeploymentGitSourceDeployments9
+    | GetDeploymentGitSourceDeployments10
     | GetDeploymentGitSource1
     | GetDeploymentGitSource5
     | GetDeploymentGitSourceDeployments7
     | GetDeploymentGitSourceDeployments8
-    | GetDeploymentGitSourceDeployments10
     | GetDeploymentGitSourceDeployments11
     | undefined;
   /**
@@ -2326,6 +2328,7 @@ export const GetDeploymentGitSourceDeployments18$inboundSchema: z.ZodType<
   org: types.string(),
   ref: types.string(),
   repo: types.string(),
+  repoId: types.optional(types.string()),
   repoPushedAt: types.optional(types.number()),
   sha: types.string(),
   type:
@@ -2665,6 +2668,7 @@ export const GetDeploymentGitSourceDeployments10$inboundSchema: z.ZodType<
   prId: z.nullable(types.number()).optional(),
   ref: z.nullable(types.string()).optional(),
   repo: types.optional(types.string()),
+  repoId: types.string(),
   repoPushedAt: types.optional(types.number()),
   sha: types.string(),
   type:
@@ -3092,11 +3096,11 @@ export const ResponseBodyGitSource$inboundSchema: z.ZodType<
   z.lazy(() => GetDeploymentGitSource3$inboundSchema),
   z.lazy(() => GetDeploymentGitSourceDeployments6$inboundSchema),
   z.lazy(() => GetDeploymentGitSourceDeployments9$inboundSchema),
+  z.lazy(() => GetDeploymentGitSourceDeployments10$inboundSchema),
   z.lazy(() => GetDeploymentGitSource1$inboundSchema),
   z.lazy(() => GetDeploymentGitSource5$inboundSchema),
   z.lazy(() => GetDeploymentGitSourceDeployments7$inboundSchema),
   z.lazy(() => GetDeploymentGitSourceDeployments8$inboundSchema),
-  z.lazy(() => GetDeploymentGitSourceDeployments10$inboundSchema),
   z.lazy(() => GetDeploymentGitSourceDeployments11$inboundSchema),
 ]);
 
@@ -3364,11 +3368,11 @@ export const GetDeploymentResponseBody3$inboundSchema: z.ZodType<
       z.lazy(() => GetDeploymentGitSource3$inboundSchema),
       z.lazy(() => GetDeploymentGitSourceDeployments6$inboundSchema),
       z.lazy(() => GetDeploymentGitSourceDeployments9$inboundSchema),
+      z.lazy(() => GetDeploymentGitSourceDeployments10$inboundSchema),
       z.lazy(() => GetDeploymentGitSource1$inboundSchema),
       z.lazy(() => GetDeploymentGitSource5$inboundSchema),
       z.lazy(() => GetDeploymentGitSourceDeployments7$inboundSchema),
       z.lazy(() => GetDeploymentGitSourceDeployments8$inboundSchema),
-      z.lazy(() => GetDeploymentGitSourceDeployments10$inboundSchema),
       z.lazy(() => GetDeploymentGitSourceDeployments11$inboundSchema),
     ]),
   ),

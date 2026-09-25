@@ -8,7 +8,7 @@ The payload of the event, if requested.
 import { OneHundredAndThirtySeven } from "@vercel/sdk/models/usereventjobaction.js";
 
 let value: OneHundredAndThirtySeven = {
-  name: "<value>",
+  domain: "colossal-chainstay.name",
 };
 ```
 
@@ -16,6 +16,5 @@ let value: OneHundredAndThirtySeven = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `currency`         | *string*           | :heavy_minus_sign: | N/A                |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
-| `price`            | *number*           | :heavy_minus_sign: | N/A                |
+| `domain`           | *string*           | :heavy_check_mark: | N/A                |
+| `renew`            | *boolean*          | :heavy_minus_sign: | N/A                |

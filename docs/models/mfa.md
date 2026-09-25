@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Mfa } from "@vercel/sdk/models/fourhundredandthirteen.js";
+import { Mfa } from "@vercel/sdk/models/fourhundredandfourteen.js";
 
 let value: Mfa = {
   enabled: true,

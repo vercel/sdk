@@ -94,6 +94,7 @@ const value: models.GetDeploymentGitSource9 = {
 
 ```typescript
 const value: models.GetDeploymentGitSource10 = {
+  repoId: "<id>",
   sha: "<value>",
   type: "vercel",
 };

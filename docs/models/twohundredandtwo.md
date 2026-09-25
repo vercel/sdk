@@ -8,14 +8,12 @@ The payload of the event, if requested.
 import { TwoHundredAndTwo } from "@vercel/sdk/models/sourceimages.js";
 
 let value: TwoHundredAndTwo = {
-  enabled: true,
+  periods: [],
 };
 ```
 
 ## Fields
 
-| Field                     | Type                      | Required                  | Description               |
-| ------------------------- | ------------------------- | ------------------------- | ------------------------- |
-| `allowedIntegrationCount` | *number*                  | :heavy_minus_sign:        | N/A                       |
-| `allowedIntegrationIds`   | *string*[]                | :heavy_minus_sign:        | N/A                       |
-| `enabled`                 | *boolean*                 | :heavy_check_mark:        | N/A                       |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `periods`                                | [models.Periods](../models/periods.md)[] | :heavy_check_mark:                       | N/A                                      |

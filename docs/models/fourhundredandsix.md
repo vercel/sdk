@@ -8,12 +8,12 @@ The payload of the event, if requested.
 import { FourHundredAndSix } from "@vercel/sdk/models/payloadcity.js";
 
 let value: FourHundredAndSix = {
-  enabled: "off",
+  deletedCount: 3986.93,
 };
 ```
 
 ## Fields
 
-| Field                                                | Type                                                 | Required                                             | Description                                          |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `enabled`                                            | [models.PayloadEnabled](../models/payloadenabled.md) | :heavy_check_mark:                                   | N/A                                                  |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `deletedCount`     | *number*           | :heavy_check_mark: | N/A                |

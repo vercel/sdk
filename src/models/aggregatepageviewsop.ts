@@ -122,7 +122,9 @@ export type AggregatePageviewsRequest = {
 };
 
 export type Data2 = {
+  affinityDisplacedProvider: string;
   affinityOutcome: string;
+  affinityPinnedProvider: string;
   aiGatewayModelId: string;
   aiModel: string;
   aiModelType: string;
@@ -160,6 +162,7 @@ export type Data2 = {
   clientIpCountry: string;
   clientJa4Digest: string;
   clientSessionId: string;
+  clientSessionIdSource: string;
   clientUserAgent: string;
   codingAgent: string;
   commitSha: string;
@@ -363,7 +366,9 @@ export type Data2 = {
 };
 
 export type Data1 = {
+  affinityDisplacedProvider?: string | undefined;
   affinityOutcome?: string | undefined;
+  affinityPinnedProvider?: string | undefined;
   aiGatewayModelId?: string | undefined;
   aiModel?: string | undefined;
   aiModelType?: string | undefined;
@@ -401,6 +406,7 @@ export type Data1 = {
   clientIpCountry?: string | undefined;
   clientJa4Digest?: string | undefined;
   clientSessionId?: string | undefined;
+  clientSessionIdSource?: string | undefined;
   clientUserAgent?: string | undefined;
   codingAgent?: string | undefined;
   commitSha?: string | undefined;
@@ -722,7 +728,9 @@ export function aggregatePageviewsRequestToJSON(
 export const Data2$inboundSchema: z.ZodType<Data2, z.ZodTypeDef, unknown> =
   collectExtraKeys$(
     z.object({
+      affinityDisplacedProvider: types.string(),
       affinityOutcome: types.string(),
+      affinityPinnedProvider: types.string(),
       aiGatewayModelId: types.string(),
       aiModel: types.string(),
       aiModelType: types.string(),
@@ -760,6 +768,7 @@ export const Data2$inboundSchema: z.ZodType<Data2, z.ZodTypeDef, unknown> =
       clientIpCountry: types.string(),
       clientJa4Digest: types.string(),
       clientSessionId: types.string(),
+      clientSessionIdSource: types.string(),
       clientUserAgent: types.string(),
       codingAgent: types.string(),
       commitSha: types.string(),
@@ -977,7 +986,9 @@ export function data2FromJSON(
 /** @internal */
 export const Data1$inboundSchema: z.ZodType<Data1, z.ZodTypeDef, unknown> = z
   .object({
+    affinityDisplacedProvider: types.optional(types.string()),
     affinityOutcome: types.optional(types.string()),
+    affinityPinnedProvider: types.optional(types.string()),
     aiGatewayModelId: types.optional(types.string()),
     aiModel: types.optional(types.string()),
     aiModelType: types.optional(types.string()),
@@ -1015,6 +1026,7 @@ export const Data1$inboundSchema: z.ZodType<Data1, z.ZodTypeDef, unknown> = z
     clientIpCountry: types.optional(types.string()),
     clientJa4Digest: types.optional(types.string()),
     clientSessionId: types.optional(types.string()),
+    clientSessionIdSource: types.optional(types.string()),
     clientUserAgent: types.optional(types.string()),
     codingAgent: types.optional(types.string()),
     commitSha: types.optional(types.string()),

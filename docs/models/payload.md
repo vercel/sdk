@@ -18,11 +18,11 @@ const value: models.Payload2 = {
 };
 ```
 
-### `models.Three`
+### `models.Payload3`
 
 ```typescript
-const value: models.Three = {
-  action: "updated",
+const value: models.Payload3 = {
+  action: "unarchived",
   id: "<id>",
   projectId: "<id>",
   slug: "<value>",

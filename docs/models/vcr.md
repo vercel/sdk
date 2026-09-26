@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Vcr } from "@vercel/sdk/models/lasteditedbyprincipal2.js";
+import { Vcr } from "@vercel/sdk/models/lasteditedbyprincipal.js";
 
 let value: Vcr = {
   blockReason: "admin_override",

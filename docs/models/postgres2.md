@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Postgres2 } from "@vercel/sdk/models/sourceimages.js";
+import { Postgres2 } from "@vercel/sdk/models/payloadspeedinsightsfree.js";
 
 let value: Postgres2 = {
   blockReason: "hard_blocked",

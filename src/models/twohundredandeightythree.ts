@@ -9,17 +9,15 @@ import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
   PayloadCity,
   PayloadCity$inboundSchema,
   PayloadFactors,
   PayloadFactors$inboundSchema,
-} from "./payloadcity.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
-
-export type UserEventPayload351GeolocationNames = {
-  en: string;
-};
+  UserEventPayload351GeolocationNames,
+  UserEventPayload351GeolocationNames$inboundSchema,
+} from "./usereventpayload351geolocationnames.js";
 
 export type PayloadCountry = {
   names: UserEventPayload351GeolocationNames;
@@ -1221,25 +1219,14 @@ export type TwoHundredAndEightyFour = {
   projectName: string;
 };
 
-/** @internal */
-export const UserEventPayload351GeolocationNames$inboundSchema: z.ZodType<
-  UserEventPayload351GeolocationNames,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  en: types.string(),
-});
-
-export function userEventPayload351GeolocationNamesFromJSON(
-  jsonString: string,
-): SafeParseResult<UserEventPayload351GeolocationNames, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UserEventPayload351GeolocationNames$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserEventPayload351GeolocationNames' from JSON`,
-  );
-}
+/**
+ * The payload of the event, if requested.
+ */
+export type TwoHundredAndEightyThree = {
+  onCommit: boolean;
+  projectId: string;
+  projectName: string;
+};
 
 /** @internal */
 export const PayloadCountry$inboundSchema: z.ZodType<
@@ -1247,7 +1234,7 @@ export const PayloadCountry$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  names: z.lazy(() => UserEventPayload351GeolocationNames$inboundSchema),
+  names: UserEventPayload351GeolocationNames$inboundSchema,
 });
 
 export function payloadCountryFromJSON(
@@ -3991,5 +3978,26 @@ export function twoHundredAndEightyFourFromJSON(
     jsonString,
     (x) => TwoHundredAndEightyFour$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'TwoHundredAndEightyFour' from JSON`,
+  );
+}
+
+/** @internal */
+export const TwoHundredAndEightyThree$inboundSchema: z.ZodType<
+  TwoHundredAndEightyThree,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  onCommit: types.boolean(),
+  projectId: types.string(),
+  projectName: types.string(),
+});
+
+export function twoHundredAndEightyThreeFromJSON(
+  jsonString: string,
+): SafeParseResult<TwoHundredAndEightyThree, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TwoHundredAndEightyThree$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TwoHundredAndEightyThree' from JSON`,
   );
 }

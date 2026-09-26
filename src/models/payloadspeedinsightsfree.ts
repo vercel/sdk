@@ -11,16 +11,6 @@ import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
-/**
- * The payload of the event, if requested.
- */
-export type TwoHundredAndSixteen = {
-  enabled: boolean;
-  organizationId: string;
-  teamId: string;
-  teamSlug: string;
-};
-
 export const Trigger = {
   DirectorySyncUpdated: "directory_sync_updated",
   DomainDeleted: "domain_deleted",
@@ -439,7 +429,7 @@ export type Two1 = {
 
 export type Factors2 = Two1 | Two2;
 
-export const OneOrigin = {
+export const FactorsOrigin = {
   Apple: "apple",
   Bitbucket: "bitbucket",
   Chatgpt: "chatgpt",
@@ -455,19 +445,17 @@ export const OneOrigin = {
   Saml: "saml",
   Webauthn: "webauthn",
 } as const;
-export type OneOrigin = ClosedEnum<typeof OneOrigin>;
+export type FactorsOrigin = ClosedEnum<typeof FactorsOrigin>;
 
-export type One1 = {
+export type Factors1 = {
   legacy?: boolean | undefined;
-  origin: OneOrigin;
+  origin: FactorsOrigin;
   ssoType?: string | undefined;
   teamId?: string | undefined;
   username?: string | undefined;
 };
 
-export type Factors1 = One1;
-
-export type Factors = Array<One1> | Array<Two1 | Two2>;
+export type Factors = Array<Factors1> | Array<Two1 | Two2>;
 
 export type Names = {
   en: string;
@@ -505,7 +493,7 @@ export type Geolocation = {
  */
 export type OneHundredAndNinetyNine = {
   env?: string | undefined;
-  factors?: Array<One1> | Array<Two1 | Two2> | undefined;
+  factors?: Array<Factors1> | Array<Two1 | Two2> | undefined;
   geolocation?: Geolocation | null | undefined;
   /**
    * Browser login correlation ID. This is not an authentication credential.
@@ -1506,27 +1494,27 @@ export type SourceImages = {
   updatedAt: number;
 };
 
-/** @internal */
-export const TwoHundredAndSixteen$inboundSchema: z.ZodType<
-  TwoHundredAndSixteen,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  enabled: types.boolean(),
-  organizationId: types.string(),
-  teamId: types.string(),
-  teamSlug: types.string(),
-});
+export const UserEventPayload177NewOwnerFeatureBlocksSpeedInsightsFreeBlockReason =
+  {
+    AdminOverride: "admin_override",
+    HardBlocked: "hard_blocked",
+    LimitsExceeded: "limits_exceeded",
+  } as const;
+export type UserEventPayload177NewOwnerFeatureBlocksSpeedInsightsFreeBlockReason =
+  ClosedEnum<
+    typeof UserEventPayload177NewOwnerFeatureBlocksSpeedInsightsFreeBlockReason
+  >;
 
-export function twoHundredAndSixteenFromJSON(
-  jsonString: string,
-): SafeParseResult<TwoHundredAndSixteen, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TwoHundredAndSixteen$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TwoHundredAndSixteen' from JSON`,
-  );
-}
+/**
+ * Pauses Speed Insights free data-point ingestion when the team-wide free allocation is exhausted. The block lasts at least 14 days and is extended while rolling usage stays above half of the allocation.
+ */
+export type PayloadSpeedInsightsFree = {
+  blockedFrom?: number | undefined;
+  blockedUntil?: number | undefined;
+  blockReason:
+    UserEventPayload177NewOwnerFeatureBlocksSpeedInsightsFreeBlockReason;
+  updatedAt: number;
+};
 
 /** @internal */
 export const Trigger$inboundSchema: z.ZodNativeEnum<typeof Trigger> = z
@@ -2321,35 +2309,22 @@ export function factors2FromJSON(
 }
 
 /** @internal */
-export const OneOrigin$inboundSchema: z.ZodNativeEnum<typeof OneOrigin> = z
-  .nativeEnum(OneOrigin);
-
-/** @internal */
-export const One1$inboundSchema: z.ZodType<One1, z.ZodTypeDef, unknown> = z
-  .object({
-    legacy: types.optional(types.boolean()),
-    origin: OneOrigin$inboundSchema,
-    ssoType: types.optional(types.string()),
-    teamId: types.optional(types.string()),
-    username: types.optional(types.string()),
-  });
-
-export function one1FromJSON(
-  jsonString: string,
-): SafeParseResult<One1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => One1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'One1' from JSON`,
-  );
-}
+export const FactorsOrigin$inboundSchema: z.ZodNativeEnum<
+  typeof FactorsOrigin
+> = z.nativeEnum(FactorsOrigin);
 
 /** @internal */
 export const Factors1$inboundSchema: z.ZodType<
   Factors1,
   z.ZodTypeDef,
   unknown
-> = z.lazy(() => One1$inboundSchema);
+> = z.object({
+  legacy: types.optional(types.boolean()),
+  origin: FactorsOrigin$inboundSchema,
+  ssoType: types.optional(types.string()),
+  teamId: types.optional(types.string()),
+  username: types.optional(types.string()),
+});
 
 export function factors1FromJSON(
   jsonString: string,
@@ -2364,7 +2339,7 @@ export function factors1FromJSON(
 /** @internal */
 export const Factors$inboundSchema: z.ZodType<Factors, z.ZodTypeDef, unknown> =
   smartUnion([
-    z.array(z.lazy(() => One1$inboundSchema)),
+    z.array(z.lazy(() => Factors1$inboundSchema)),
     z.array(smartUnion([
       z.lazy(() => Two1$inboundSchema),
       z.lazy(() => Two2$inboundSchema),
@@ -2523,7 +2498,7 @@ export const OneHundredAndNinetyNine$inboundSchema: z.ZodType<
   env: types.optional(types.string()),
   factors: types.optional(
     smartUnion([
-      z.array(z.lazy(() => One1$inboundSchema)),
+      z.array(z.lazy(() => Factors1$inboundSchema)),
       z.array(smartUnion([
         z.lazy(() => Two1$inboundSchema),
         z.lazy(() => Two2$inboundSchema),
@@ -4147,5 +4122,36 @@ export function sourceImagesFromJSON(
     jsonString,
     (x) => SourceImages$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'SourceImages' from JSON`,
+  );
+}
+
+/** @internal */
+export const UserEventPayload177NewOwnerFeatureBlocksSpeedInsightsFreeBlockReason$inboundSchema:
+  z.ZodNativeEnum<
+    typeof UserEventPayload177NewOwnerFeatureBlocksSpeedInsightsFreeBlockReason
+  > = z.nativeEnum(
+    UserEventPayload177NewOwnerFeatureBlocksSpeedInsightsFreeBlockReason,
+  );
+
+/** @internal */
+export const PayloadSpeedInsightsFree$inboundSchema: z.ZodType<
+  PayloadSpeedInsightsFree,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  blockedFrom: types.optional(types.number()),
+  blockedUntil: types.optional(types.number()),
+  blockReason:
+    UserEventPayload177NewOwnerFeatureBlocksSpeedInsightsFreeBlockReason$inboundSchema,
+  updatedAt: types.number(),
+});
+
+export function payloadSpeedInsightsFreeFromJSON(
+  jsonString: string,
+): SafeParseResult<PayloadSpeedInsightsFree, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PayloadSpeedInsightsFree$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PayloadSpeedInsightsFree' from JSON`,
   );
 }

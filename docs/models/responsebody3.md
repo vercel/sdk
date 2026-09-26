@@ -3,33 +3,41 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBody3 } from "@vercel/sdk/models/getredirectsop.js";
+import { ResponseBody3 } from "@vercel/sdk/models/buycreditsop.js";
 
 let value: ResponseBody3 = {
-  pagination: {
-    numPages: 8356.94,
-    page: 4187.18,
-    perPage: 8377.18,
-  },
-  redirects: [
-    {
-      destination: "<value>",
-      source: "<value>",
+  orbSubscriptionIntent: {
+    configuration: {
+      options: {
+        addedResourceIds: [],
+        productAlias: "<value>",
+        removedResourceIds: [],
+      },
+      output: {
+        effectiveBehavior: "immediate",
+        orbPriceId: "<id>",
+        pricingSource: "orb",
+        productId: "<id>",
+      },
+      type: "adjust_plan_item_quantity",
     },
-  ],
-  version: {
-    createdBy: "<value>",
+    createdAt: "1717358285269",
     id: "<id>",
-    key: "<key>",
-    lastModified: 8198.95,
+    orbSubscriptionId: "<id>",
+    orbUpdate: {
+      appliedAt: "<value>",
+      mode: "async",
+      status: "succeeded",
+    },
+    ownerId: "<id>",
+    status: "succeeded",
+    updatedAt: "1735674038069",
   },
 };
 ```
 
 ## Fields
 
-| Field                                                                                                                  | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
-| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `pagination`                                                                                                           | [models.GetRedirectsResponseBodyBulkRedirectsPagination](../models/getredirectsresponsebodybulkredirectspagination.md) | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |
-| `redirects`                                                                                                            | [models.GetRedirectsResponseBodyRedirects](../models/getredirectsresponsebodyredirects.md)[]                           | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |
-| `version`                                                                                                              | [models.GetRedirectsResponseBodyVersion](../models/getredirectsresponsebodyversion.md)                                 | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |
+| Field                                                              | Type                                                               | Required                                                           | Description                                                        |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `orbSubscriptionIntent`                                            | [models.OrbSubscriptionIntent](../models/orbsubscriptionintent.md) | :heavy_check_mark:                                                 | N/A                                                                |

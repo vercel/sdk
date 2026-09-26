@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { KmsOperations } from "@vercel/sdk/models/sourceimages.js";
+import { KmsOperations } from "@vercel/sdk/models/payloadspeedinsightsfree.js";
 
 let value: KmsOperations = {
   blockReason: "limits_exceeded",

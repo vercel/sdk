@@ -5,7 +5,7 @@ A soft block indicates a temporary pause in data collection (ex limit exceeded f
 ## Example Usage
 
 ```typescript
-import { Monitoring } from "@vercel/sdk/models/sourceimages.js";
+import { Monitoring } from "@vercel/sdk/models/payloadspeedinsightsfree.js";
 
 let value: Monitoring = {
   blockReason: "hard_blocked",

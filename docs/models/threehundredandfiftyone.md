@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFiftyOne } from "@vercel/sdk/models/twohundredandeightyfour.js";
+import { ThreeHundredAndFiftyOne } from "@vercel/sdk/models/twohundredandeightythree.js";
 
 let value: ThreeHundredAndFiftyOne = {};
 ```
@@ -15,7 +15,7 @@ let value: ThreeHundredAndFiftyOne = {};
 | Field                                                        | Type                                                         | Required                                                     | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | `env`                                                        | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
-| `factors`                                                    | *models.PayloadFactors*[]                                    | :heavy_minus_sign:                                           | N/A                                                          |
+| `factors`                                                    | [models.PayloadFactors](../models/payloadfactors.md)[]       | :heavy_minus_sign:                                           | N/A                                                          |
 | `geolocation`                                                | [models.PayloadGeolocation](../models/payloadgeolocation.md) | :heavy_minus_sign:                                           | N/A                                                          |
 | `os`                                                         | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
 | `ssoType`                                                    | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |

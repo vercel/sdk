@@ -31,19 +31,19 @@ const value: models.CreateDeploymentCheckRunSource3 = {
 };
 ```
 
-### `models.CreateDeploymentCheckRunSource4`
+### `models.Source4`
 
 ```typescript
-const value: models.CreateDeploymentCheckRunSource4 = {};
+const value: models.Source4 = {};
 ```
 
-### `models.CreateDeploymentCheckRunSource5`
+### `models.Source5`
 
 ```typescript
-const value: models.CreateDeploymentCheckRunSource5 = {
+const value: models.Source5 = {
   origin: "api",
   selection: {
-    job: "Corporate Program Strategist",
+    job: "Forward Intranet Manager",
     kind: "task",
     task: "<value>",
   },

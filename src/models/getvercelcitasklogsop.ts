@@ -50,6 +50,10 @@ export type GetVercelCiTaskLogsRequest = {
    */
   level?: Array<GetVercelCiTaskLogsQueryParamLevel> | undefined;
   /**
+   * Only return log lines containing this text, ignoring case. Tasks without matching lines are left out, `limit` is ignored, and at most 1000 lines are returned.
+   */
+  search?: string | undefined;
+  /**
    * Maximum number of tasks to return (default: 10, max: 25).
    */
   limit?: number | undefined;
@@ -251,7 +255,7 @@ export type Tasks = {
 export type GetVercelCiTaskLogsResponseBody = {
   tasks: Array<Tasks>;
   /**
-   * Whether more tasks matched the filters than were returned.
+   * Whether more tasks matched the filters than were returned. With `search`, whether more than 1000 lines matched.
    */
   hasMore: boolean;
 };
@@ -273,6 +277,7 @@ export type GetVercelCiTaskLogsRequest$Outbound = {
   task?: Array<string> | undefined;
   conclusion?: Array<string> | undefined;
   level?: Array<string> | undefined;
+  search?: string | undefined;
   limit?: number | undefined;
   teamId?: string | undefined;
   slug?: string | undefined;
@@ -290,6 +295,7 @@ export const GetVercelCiTaskLogsRequest$outboundSchema: z.ZodType<
   conclusion: z.array(GetVercelCiTaskLogsQueryParamConclusion$outboundSchema)
     .optional(),
   level: z.array(GetVercelCiTaskLogsQueryParamLevel$outboundSchema).optional(),
+  search: z.string().optional(),
   limit: z.number().optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),

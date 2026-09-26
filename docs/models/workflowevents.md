@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { WorkflowEvents } from "@vercel/sdk/models/lasteditedbyprincipal2.js";
+import { WorkflowEvents } from "@vercel/sdk/models/lasteditedbyprincipal.js";
 
 let value: WorkflowEvents = {
   blockReason: "limits_exceeded",

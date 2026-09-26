@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { OldPasswordProtection } from "@vercel/sdk/models/fiftyfour.js";
+import { OldPasswordProtection } from "@vercel/sdk/models/fiftytwo.js";
 
 let value: OldPasswordProtection = {
   deploymentType: "all",

@@ -14,11 +14,11 @@ const value: models.One = {
 };
 ```
 
-### `models.Two`
+### `models.CreatedBy2`
 
 ```typescript
-const value: models.Two = {
-  environment: "development",
+const value: models.CreatedBy2 = {
+  environment: "<value>",
   id: "<id>",
   type: "project",
 };

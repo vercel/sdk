@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadWebAnalytics } from "@vercel/sdk/models/lasteditedbyprincipal2.js";
+import { PayloadWebAnalytics } from "@vercel/sdk/models/lasteditedbyprincipal.js";
 
 let value: PayloadWebAnalytics = {
   blockReason: "admin_override",

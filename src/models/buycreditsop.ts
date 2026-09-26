@@ -191,7 +191,7 @@ export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody
 /**
  * Configuration for the Orb subscription intent.
  */
-export type Configuration4 = {
+export type BuyCreditsConfiguration4 = {
   /**
    * Configuration input options for adjusting plan item quantity.
    */
@@ -322,7 +322,7 @@ export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody
 /**
  * Configuration for the Orb subscription intent.
  */
-export type Configuration3 = {
+export type BuyCreditsConfiguration3 = {
   /**
    * Configuration input options for decreasing plan item quantity.
    */
@@ -593,8 +593,8 @@ export type BuyCreditsConfiguration1 = {
 export type ResponseBodyConfiguration =
   | BuyCreditsConfiguration1
   | BuyCreditsConfiguration2
-  | Configuration3
-  | Configuration4;
+  | BuyCreditsConfiguration3
+  | BuyCreditsConfiguration4;
 
 export const BuyCreditsOrbUpdateMode = {
   Async: "async",
@@ -678,8 +678,8 @@ export type OrbSubscriptionIntent = {
   configuration:
     | BuyCreditsConfiguration1
     | BuyCreditsConfiguration2
-    | Configuration3
-    | Configuration4;
+    | BuyCreditsConfiguration3
+    | BuyCreditsConfiguration4;
   /**
    * The ISO 8601 date-time that the intent was created.
    */
@@ -711,7 +711,7 @@ export type OrbSubscriptionIntent = {
   updatedAt: string;
 };
 
-export type BuyCreditsResponseBody3 = {
+export type ResponseBody3 = {
   orbSubscriptionIntent: OrbSubscriptionIntent;
 };
 
@@ -1040,7 +1040,7 @@ export type ConfigurationOutput = {
 /**
  * The configuration for a credit purchase
  */
-export type BuyCreditsConfiguration4 = {
+export type Configuration4 = {
   options: BuyCreditsConfigurationBillingOptions;
   output: ConfigurationOutput;
   type: "orb_price_interval";
@@ -1108,7 +1108,7 @@ export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody
 /**
  * The configuration for a credit purchase
  */
-export type BuyCreditsConfiguration3 = {
+export type Configuration3 = {
   options: BuyCreditsConfigurationOptions;
   output:
     BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Output;
@@ -1207,8 +1207,8 @@ export type Configuration1 = {
 export type BuyCreditsResponseBodyConfiguration =
   | Configuration1
   | Configuration2
-  | BuyCreditsConfiguration3
-  | BuyCreditsConfiguration4
+  | Configuration3
+  | Configuration4
   | Configuration5
   | Configuration6
   | Configuration7;
@@ -1366,8 +1366,8 @@ export type PurchaseIntent = {
   configuration:
     | Configuration1
     | Configuration2
-    | BuyCreditsConfiguration3
-    | BuyCreditsConfiguration4
+    | Configuration3
+    | Configuration4
     | Configuration5
     | Configuration6
     | Configuration7;
@@ -1445,7 +1445,7 @@ export type BuyCreditsResponseBody1 = {
 export type BuyCreditsResponseBody =
   | BuyCreditsResponseBody1
   | BuyCreditsResponseBody2
-  | BuyCreditsResponseBody3;
+  | ResponseBody3;
 
 /** @internal */
 export const BuyCreditsType$outboundSchema: z.ZodNativeEnum<
@@ -1635,8 +1635,8 @@ export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponse
 }
 
 /** @internal */
-export const Configuration4$inboundSchema: z.ZodType<
-  Configuration4,
+export const BuyCreditsConfiguration4$inboundSchema: z.ZodType<
+  BuyCreditsConfiguration4,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1649,13 +1649,13 @@ export const Configuration4$inboundSchema: z.ZodType<
   type: types.literal("adjust_plan_item_quantity"),
 });
 
-export function configuration4FromJSON(
+export function buyCreditsConfiguration4FromJSON(
   jsonString: string,
-): SafeParseResult<Configuration4, SDKValidationError> {
+): SafeParseResult<BuyCreditsConfiguration4, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Configuration4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Configuration4' from JSON`,
+    (x) => BuyCreditsConfiguration4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BuyCreditsConfiguration4' from JSON`,
   );
 }
 
@@ -1763,8 +1763,8 @@ export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponse
 }
 
 /** @internal */
-export const Configuration3$inboundSchema: z.ZodType<
-  Configuration3,
+export const BuyCreditsConfiguration3$inboundSchema: z.ZodType<
+  BuyCreditsConfiguration3,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1777,13 +1777,13 @@ export const Configuration3$inboundSchema: z.ZodType<
   type: types.literal("decrease_plan_item_quantity"),
 });
 
-export function configuration3FromJSON(
+export function buyCreditsConfiguration3FromJSON(
   jsonString: string,
-): SafeParseResult<Configuration3, SDKValidationError> {
+): SafeParseResult<BuyCreditsConfiguration3, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Configuration3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Configuration3' from JSON`,
+    (x) => BuyCreditsConfiguration3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BuyCreditsConfiguration3' from JSON`,
   );
 }
 
@@ -2035,8 +2035,8 @@ export const ResponseBodyConfiguration$inboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => BuyCreditsConfiguration1$inboundSchema),
   z.lazy(() => BuyCreditsConfiguration2$inboundSchema),
-  z.lazy(() => Configuration3$inboundSchema),
-  z.lazy(() => Configuration4$inboundSchema),
+  z.lazy(() => BuyCreditsConfiguration3$inboundSchema),
+  z.lazy(() => BuyCreditsConfiguration4$inboundSchema),
 ]);
 
 export function responseBodyConfigurationFromJSON(
@@ -2169,8 +2169,8 @@ export const OrbSubscriptionIntent$inboundSchema: z.ZodType<
   configuration: z.union([
     z.lazy(() => BuyCreditsConfiguration1$inboundSchema),
     z.lazy(() => BuyCreditsConfiguration2$inboundSchema),
-    z.lazy(() => Configuration3$inboundSchema),
-    z.lazy(() => Configuration4$inboundSchema),
+    z.lazy(() => BuyCreditsConfiguration3$inboundSchema),
+    z.lazy(() => BuyCreditsConfiguration4$inboundSchema),
   ]),
   createdAt: types.string(),
   id: types.string(),
@@ -2197,21 +2197,21 @@ export function orbSubscriptionIntentFromJSON(
 }
 
 /** @internal */
-export const BuyCreditsResponseBody3$inboundSchema: z.ZodType<
-  BuyCreditsResponseBody3,
+export const ResponseBody3$inboundSchema: z.ZodType<
+  ResponseBody3,
   z.ZodTypeDef,
   unknown
 > = z.object({
   orbSubscriptionIntent: z.lazy(() => OrbSubscriptionIntent$inboundSchema),
 });
 
-export function buyCreditsResponseBody3FromJSON(
+export function responseBody3FromJSON(
   jsonString: string,
-): SafeParseResult<BuyCreditsResponseBody3, SDKValidationError> {
+): SafeParseResult<ResponseBody3, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => BuyCreditsResponseBody3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BuyCreditsResponseBody3' from JSON`,
+    (x) => ResponseBody3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBody3' from JSON`,
   );
 }
 
@@ -2694,8 +2694,8 @@ export function configurationOutputFromJSON(
 }
 
 /** @internal */
-export const BuyCreditsConfiguration4$inboundSchema: z.ZodType<
-  BuyCreditsConfiguration4,
+export const Configuration4$inboundSchema: z.ZodType<
+  Configuration4,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -2704,13 +2704,13 @@ export const BuyCreditsConfiguration4$inboundSchema: z.ZodType<
   type: types.literal("orb_price_interval"),
 });
 
-export function buyCreditsConfiguration4FromJSON(
+export function configuration4FromJSON(
   jsonString: string,
-): SafeParseResult<BuyCreditsConfiguration4, SDKValidationError> {
+): SafeParseResult<Configuration4, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => BuyCreditsConfiguration4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BuyCreditsConfiguration4' from JSON`,
+    (x) => Configuration4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Configuration4' from JSON`,
   );
 }
 
@@ -2831,8 +2831,8 @@ export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponse
 }
 
 /** @internal */
-export const BuyCreditsConfiguration3$inboundSchema: z.ZodType<
-  BuyCreditsConfiguration3,
+export const Configuration3$inboundSchema: z.ZodType<
+  Configuration3,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -2843,13 +2843,13 @@ export const BuyCreditsConfiguration3$inboundSchema: z.ZodType<
   type: types.literal("orb_plan_change"),
 });
 
-export function buyCreditsConfiguration3FromJSON(
+export function configuration3FromJSON(
   jsonString: string,
-): SafeParseResult<BuyCreditsConfiguration3, SDKValidationError> {
+): SafeParseResult<Configuration3, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => BuyCreditsConfiguration3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BuyCreditsConfiguration3' from JSON`,
+    (x) => Configuration3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Configuration3' from JSON`,
   );
 }
 
@@ -2988,8 +2988,8 @@ export const BuyCreditsResponseBodyConfiguration$inboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => Configuration1$inboundSchema),
   z.lazy(() => Configuration2$inboundSchema),
-  z.lazy(() => BuyCreditsConfiguration3$inboundSchema),
-  z.lazy(() => BuyCreditsConfiguration4$inboundSchema),
+  z.lazy(() => Configuration3$inboundSchema),
+  z.lazy(() => Configuration4$inboundSchema),
   z.lazy(() => Configuration5$inboundSchema),
   z.lazy(() => Configuration6$inboundSchema),
   z.lazy(() => Configuration7$inboundSchema),
@@ -3101,8 +3101,8 @@ export const PurchaseIntent$inboundSchema: z.ZodType<
   configuration: z.union([
     z.lazy(() => Configuration1$inboundSchema),
     z.lazy(() => Configuration2$inboundSchema),
-    z.lazy(() => BuyCreditsConfiguration3$inboundSchema),
-    z.lazy(() => BuyCreditsConfiguration4$inboundSchema),
+    z.lazy(() => Configuration3$inboundSchema),
+    z.lazy(() => Configuration4$inboundSchema),
     z.lazy(() => Configuration5$inboundSchema),
     z.lazy(() => Configuration6$inboundSchema),
     z.lazy(() => Configuration7$inboundSchema),
@@ -3181,7 +3181,7 @@ export const BuyCreditsResponseBody$inboundSchema: z.ZodType<
 > = smartUnion([
   z.lazy(() => BuyCreditsResponseBody1$inboundSchema),
   z.lazy(() => BuyCreditsResponseBody2$inboundSchema),
-  z.lazy(() => BuyCreditsResponseBody3$inboundSchema),
+  z.lazy(() => ResponseBody3$inboundSchema),
 ]);
 
 export function buyCreditsResponseBodyFromJSON(

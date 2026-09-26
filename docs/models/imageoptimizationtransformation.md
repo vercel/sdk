@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ImageOptimizationTransformation } from "@vercel/sdk/models/sourceimages.js";
+import { ImageOptimizationTransformation } from "@vercel/sdk/models/payloadspeedinsightsfree.js";
 
 let value: ImageOptimizationTransformation = {
   blockReason: "limits_exceeded",

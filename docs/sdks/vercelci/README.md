@@ -17,6 +17,7 @@
 * [listVercelCiTaskRuns](#listvercelcitaskruns) - List task runs for a job run
 * [getVercelCiInvocationLogs](#getvercelciinvocationlogs) - Get log lines for an invocation attempt
 * [getVercelCiTaskLogs](#getvercelcitasklogs) - Get log lines for the tasks of an invocation attempt
+* [searchVercelCiLogs](#searchvercelcilogs) - Search the task logs of several invocation attempts
 * [getVercelCiJobRunLogs](#getvercelcijobrunlogs) - Get log lines for a specific job run attempt
 * [getVercelCiTaskRunLogs](#getvercelcitaskrunlogs) - Get log lines for a specific task run attempt
 
@@ -1026,7 +1027,7 @@ run();
 
 ## getVercelCiTaskLogs
 
-Returns log lines for the tasks of an invocation attempt in a single request, grouped by task. Tasks can be narrowed by name and by conclusion, for example `conclusion=failed` to fetch only the logs of failed tasks.
+Returns log lines for the tasks of an invocation attempt in a single request, grouped by task. Tasks can be narrowed by name and by conclusion, for example `conclusion=failed` to fetch only the logs of failed tasks. With `search`, every matching task is searched at once and only tasks with matching lines are returned.
 
 ### Example Usage
 
@@ -1106,6 +1107,95 @@ run();
 | models.GetVercelCiTaskLogsVercelCiResponse429ResponseBody | 429                                                       | application/json                                          |
 | models.GetVercelCiTaskLogsVercelCiResponse500ResponseBody | 500                                                       | application/json                                          |
 | models.SDKError                                           | 4XX, 5XX                                                  | \*/\*                                                     |
+
+## searchVercelCiLogs
+
+Searches the task logs of up to 50 invocation attempts at once, for example the most recent runs of a branch from `GET /v2/vercel-ci/invocations`. Only invocations and tasks with matching lines are returned. When more than 1000 lines match, the newest are kept.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="searchVercelCiLogs" method="get" path="/v1/vercel-ci/log-search" -->
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await vercel.vercelCi.searchVercelCiLogs({
+    invocation: [
+      "<value 1>",
+      "<value 2>",
+    ],
+    search: "<value>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import { vercelCiSearchVercelCiLogs } from "@vercel/sdk/funcs/vercelCiSearchVercelCiLogs.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await vercelCiSearchVercelCiLogs(vercel, {
+    invocation: [
+      "<value 1>",
+      "<value 2>",
+    ],
+    search: "<value>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("vercelCiSearchVercelCiLogs failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.SearchVercelCiLogsRequest](../../models/searchvercelcilogsrequest.md)                                                                                                  | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.SearchVercelCiLogsResponseBody](../../models/searchvercelcilogsresponsebody.md)\>**
+
+### Errors
+
+| Error Type                                               | Status Code                                              | Content Type                                             |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| models.SearchVercelCiLogsVercelCiResponseBody            | 401                                                      | application/json                                         |
+| models.SearchVercelCiLogsVercelCiResponseResponseBody    | 403                                                      | application/json                                         |
+| models.SearchVercelCiLogsVercelCiResponse429ResponseBody | 429                                                      | application/json                                         |
+| models.SearchVercelCiLogsVercelCiResponse500ResponseBody | 500                                                      | application/json                                         |
+| models.SDKError                                          | 4XX, 5XX                                                 | \*/\*                                                    |
 
 ## getVercelCiJobRunLogs
 

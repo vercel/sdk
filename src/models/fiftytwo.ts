@@ -30,32 +30,17 @@ import {
   JobCommitVerification$inboundSchema,
   JobGitHashtagVercel,
   JobGitHashtagVercel$inboundSchema,
-  UserEventJobAction,
-  UserEventJobAction$inboundSchema,
+  JobNsnbSideEffect,
+  JobNsnbSideEffect$inboundSchema,
   UserEventJobDeployHook,
   UserEventJobDeployHook$inboundSchema,
   UserEventJobGitComments,
   UserEventJobGitComments$inboundSchema,
   UserEventJobHeadInfo,
   UserEventJobHeadInfo$inboundSchema,
-} from "./usereventjobaction.js";
-
-/**
- * Since March 2026 Records a successful NSNB auto-add result so later GitHub PR comments can deterministically explain why this SHA was allowed to deploy.
- */
-export type JobNsnbSideEffect = {
-  action: UserEventJobAction;
-  gitUserLogin: string;
-};
-
-export const UserEventJobPayloadProvider = {
-  Github: "github",
-  GithubCustomHost: "github-custom-host",
-  GithubLimited: "github-limited",
-} as const;
-export type UserEventJobPayloadProvider = ClosedEnum<
-  typeof UserEventJobPayloadProvider
->;
+  UserEventJobPayloadProvider,
+  UserEventJobPayloadProvider$inboundSchema,
+} from "./usereventjobpayloadprovider.js";
 
 export type Job3 = {
   authorized?: boolean | undefined;
@@ -1217,6 +1202,7 @@ export const PayloadPermissions = {
   ReadWriteIntegrationConfiguration: "read-write:integration-configuration",
   ReadWriteIntegrationResource: "read-write:integration-resource",
   ReadWriteKms: "read-write:kms",
+  ReadWriteMessageboard: "read-write:messageboard",
   ReadWriteProject: "read-write:project",
   ReadWriteProjectEnvVars: "read-write:project-env-vars",
   ReadWriteProjectEnvVarsNonProduction:
@@ -1246,6 +1232,7 @@ export const PayloadPermissions = {
   ReadIntegrationConfiguration: "read:integration-configuration",
   ReadIntegrationResource: "read:integration-resource",
   ReadKms: "read:kms",
+  ReadMessageboard: "read:messageboard",
   ReadMonitoring: "read:monitoring",
   ReadProject: "read:project",
   ReadProjectEnvVarsNonProduction: "read:project-env-vars-non-production",
@@ -1329,6 +1316,7 @@ export const UserEventPayload58Permissions = {
   ReadWriteIntegrationConfiguration: "read-write:integration-configuration",
   ReadWriteIntegrationResource: "read-write:integration-resource",
   ReadWriteKms: "read-write:kms",
+  ReadWriteMessageboard: "read-write:messageboard",
   ReadWriteProject: "read-write:project",
   ReadWriteProjectEnvVars: "read-write:project-env-vars",
   ReadWriteProjectEnvVarsNonProduction:
@@ -1358,6 +1346,7 @@ export const UserEventPayload58Permissions = {
   ReadIntegrationConfiguration: "read:integration-configuration",
   ReadIntegrationResource: "read:integration-resource",
   ReadKms: "read:kms",
+  ReadMessageboard: "read:messageboard",
   ReadMonitoring: "read:monitoring",
   ReadProject: "read:project",
   ReadProjectEnvVarsNonProduction: "read:project-env-vars-non-production",
@@ -1438,6 +1427,7 @@ export const UserEventPayloadPermissions = {
   ReadWriteIntegrationConfiguration: "read-write:integration-configuration",
   ReadWriteIntegrationResource: "read-write:integration-resource",
   ReadWriteKms: "read-write:kms",
+  ReadWriteMessageboard: "read-write:messageboard",
   ReadWriteProject: "read-write:project",
   ReadWriteProjectEnvVars: "read-write:project-env-vars",
   ReadWriteProjectEnvVarsNonProduction:
@@ -1467,6 +1457,7 @@ export const UserEventPayloadPermissions = {
   ReadIntegrationConfiguration: "read:integration-configuration",
   ReadIntegrationResource: "read:integration-resource",
   ReadKms: "read:kms",
+  ReadMessageboard: "read:messageboard",
   ReadMonitoring: "read:monitoring",
   ReadProject: "read:project",
   ReadProjectEnvVarsNonProduction: "read:project-env-vars-non-production",
@@ -1561,6 +1552,7 @@ export const NextPermissions = {
   ReadWriteIntegrationConfiguration: "read-write:integration-configuration",
   ReadWriteIntegrationResource: "read-write:integration-resource",
   ReadWriteKms: "read-write:kms",
+  ReadWriteMessageboard: "read-write:messageboard",
   ReadWriteProject: "read-write:project",
   ReadWriteProjectEnvVars: "read-write:project-env-vars",
   ReadWriteProjectEnvVarsNonProduction:
@@ -1590,6 +1582,7 @@ export const NextPermissions = {
   ReadIntegrationConfiguration: "read:integration-configuration",
   ReadIntegrationResource: "read:integration-resource",
   ReadKms: "read:kms",
+  ReadMessageboard: "read:messageboard",
   ReadMonitoring: "read:monitoring",
   ReadProject: "read:project",
   ReadProjectEnvVarsNonProduction: "read:project-env-vars-non-production",
@@ -1659,6 +1652,7 @@ export const Permissions = {
   ReadWriteIntegrationConfiguration: "read-write:integration-configuration",
   ReadWriteIntegrationResource: "read-write:integration-resource",
   ReadWriteKms: "read-write:kms",
+  ReadWriteMessageboard: "read-write:messageboard",
   ReadWriteProject: "read-write:project",
   ReadWriteProjectEnvVars: "read-write:project-env-vars",
   ReadWriteProjectEnvVarsNonProduction:
@@ -1688,6 +1682,7 @@ export const Permissions = {
   ReadIntegrationConfiguration: "read:integration-configuration",
   ReadIntegrationResource: "read:integration-resource",
   ReadKms: "read:kms",
+  ReadMessageboard: "read:messageboard",
   ReadMonitoring: "read:monitoring",
   ReadProject: "read:project",
   ReadProjectEnvVarsNonProduction: "read:project-env-vars-non-production",
@@ -1734,30 +1729,22 @@ export type FiftyFour = {
   username?: string | undefined;
 };
 
-/** @internal */
-export const JobNsnbSideEffect$inboundSchema: z.ZodType<
-  JobNsnbSideEffect,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  action: UserEventJobAction$inboundSchema,
-  gitUserLogin: types.string(),
-});
+/**
+ * The payload of the event, if requested.
+ */
+export type FiftyThree = {
+  alias?: string | undefined;
+  userId?: string | undefined;
+  username?: string | undefined;
+};
 
-export function jobNsnbSideEffectFromJSON(
-  jsonString: string,
-): SafeParseResult<JobNsnbSideEffect, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => JobNsnbSideEffect$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'JobNsnbSideEffect' from JSON`,
-  );
-}
-
-/** @internal */
-export const UserEventJobPayloadProvider$inboundSchema: z.ZodNativeEnum<
-  typeof UserEventJobPayloadProvider
-> = z.nativeEnum(UserEventJobPayloadProvider);
+/**
+ * The payload of the event, if requested.
+ */
+export type FiftyTwo = {
+  alias: string;
+  deploymentUrl: string;
+};
 
 /** @internal */
 export const Job3$inboundSchema: z.ZodType<Job3, z.ZodTypeDef, unknown> = z
@@ -1789,9 +1776,7 @@ export const Job3$inboundSchema: z.ZodType<Job3, z.ZodTypeDef, unknown> = z
     jobPairs: types.optional(z.array(z.array(types.string()))),
     jobProjectIds: types.optional(z.array(types.string())),
     linkedProjectId: types.optional(types.string()),
-    nsnbSideEffect: types.optional(
-      z.lazy(() => JobNsnbSideEffect$inboundSchema),
-    ),
+    nsnbSideEffect: types.optional(JobNsnbSideEffect$inboundSchema),
     org: types.string(),
     prId: types.number(),
     prIdOrZero: types.optional(types.number()),
@@ -4305,5 +4290,46 @@ export function fiftyFourFromJSON(
     jsonString,
     (x) => FiftyFour$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'FiftyFour' from JSON`,
+  );
+}
+
+/** @internal */
+export const FiftyThree$inboundSchema: z.ZodType<
+  FiftyThree,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  alias: types.optional(types.string()),
+  userId: types.optional(types.string()),
+  username: types.optional(types.string()),
+});
+
+export function fiftyThreeFromJSON(
+  jsonString: string,
+): SafeParseResult<FiftyThree, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FiftyThree$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FiftyThree' from JSON`,
+  );
+}
+
+/** @internal */
+export const FiftyTwo$inboundSchema: z.ZodType<
+  FiftyTwo,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  alias: types.string(),
+  deploymentUrl: types.string(),
+});
+
+export function fiftyTwoFromJSON(
+  jsonString: string,
+): SafeParseResult<FiftyTwo, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FiftyTwo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FiftyTwo' from JSON`,
   );
 }

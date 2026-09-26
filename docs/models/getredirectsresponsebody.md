@@ -26,26 +26,21 @@ const value: models.GetRedirectsResponseBody2 = {
 };
 ```
 
-### `models.ResponseBody3`
+### `models.GetRedirectsResponseBody3`
 
 ```typescript
-const value: models.ResponseBody3 = {
+const value: models.GetRedirectsResponseBody3 = {
   pagination: {
-    numPages: 8356.94,
-    page: 4187.18,
-    perPage: 8377.18,
+    numPages: 3298.42,
+    page: 104.86,
+    perPage: 39.09,
   },
-  redirects: [
-    {
-      destination: "<value>",
-      source: "<value>",
-    },
-  ],
+  redirects: [],
   version: {
     createdBy: "<value>",
     id: "<id>",
     key: "<key>",
-    lastModified: 8198.95,
+    lastModified: 2204.46,
   },
 };
 ```

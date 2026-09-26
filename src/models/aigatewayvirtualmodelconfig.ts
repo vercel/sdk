@@ -7,6 +7,11 @@ import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
+import {
+  AiGatewayEvaluationFallbackCondition,
+  AiGatewayEvaluationFallbackCondition$inboundSchema,
+} from "./aigatewayevaluationfallbackcondition.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -105,6 +110,27 @@ export type InferenceRegion = {
 };
 
 /**
+ * For kind=router: ordered candidates, bare slugs/references or `{ slug, ...attributes }`. For kind=alias: ordered fallback model slugs, optionally led by one conditional `{ model, when }` entry, used when the primary model's answers match `when`.
+ */
+export type Three = {
+  model: string;
+  when: AiGatewayEvaluationFallbackCondition;
+};
+
+/**
+ * For kind=router: ordered candidates, bare slugs/references or `{ slug, ...attributes }`. For kind=alias: ordered fallback model slugs, optionally led by one conditional `{ model, when }` entry, used when the primary model's answers match `when`.
+ */
+export type Two = {
+  /**
+   * Highest task level the member handles, in [0, 1]. Read by the capability selector.
+   */
+  capability?: number | undefined;
+  slug: string;
+};
+
+export type Models = Three | Two | string;
+
+/**
  * Per-request provider timeouts in ms, keyed by provider slug for BYOK credentials.
  */
 export type ProviderTimeouts = {
@@ -123,6 +149,24 @@ export const Selector = {
  * For kind=router: how to order candidates. Absent means declared order.
  */
 export type Selector = ClosedEnum<typeof Selector>;
+
+/**
+ * For kind=router: option slices keyed by selector name; each selector owns its slice's shape.
+ */
+export type SelectorOptions = {
+  /**
+   * For kind=router: option slices keyed by selector name; each selector owns its slice's shape.
+   */
+  cost?: { [k: string]: any } | undefined;
+  /**
+   * For kind=router: option slices keyed by selector name; each selector owns its slice's shape.
+   */
+  tps?: { [k: string]: any } | undefined;
+  /**
+   * For kind=router: option slices keyed by selector name; each selector owns its slice's shape.
+   */
+  ttft?: { [k: string]: any } | undefined;
+};
 
 /**
  * Service tier for providers that support it.
@@ -229,9 +273,9 @@ export type AiGatewayVirtualModelConfig = {
    */
   kind: string;
   /**
-   * For kind=router: ordered candidates, model slugs or router references. Otherwise: fallback models.
+   * For kind=router: ordered candidates, bare slugs/references or `{ slug, ...attributes }`. For kind=alias: ordered fallback model slugs, optionally led by one conditional `{ model, when }` entry, used when the primary model's answers match `when`.
    */
-  models?: Array<string> | undefined;
+  models?: Array<Three | Two | string> | undefined;
   /**
    * Canonical model slug this VMC maps to (e.g. "creator/model"). Not used by kind=router.
    */
@@ -264,6 +308,10 @@ export type AiGatewayVirtualModelConfig = {
    * For kind=router: how to order candidates. Absent means declared order.
    */
   selector?: Selector | undefined;
+  /**
+   * For kind=router: option slices keyed by selector name; each selector owns its slice's shape.
+   */
+  selectorOptions?: SelectorOptions | undefined;
   /**
    * Service tier for providers that support it.
    */
@@ -367,6 +415,58 @@ export function inferenceRegionFromJSON(
 }
 
 /** @internal */
+export const Three$inboundSchema: z.ZodType<Three, z.ZodTypeDef, unknown> = z
+  .object({
+    model: types.string(),
+    when: AiGatewayEvaluationFallbackCondition$inboundSchema,
+  });
+
+export function threeFromJSON(
+  jsonString: string,
+): SafeParseResult<Three, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Three$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Three' from JSON`,
+  );
+}
+
+/** @internal */
+export const Two$inboundSchema: z.ZodType<Two, z.ZodTypeDef, unknown> = z
+  .object({
+    capability: types.optional(types.number()),
+    slug: types.string(),
+  });
+
+export function twoFromJSON(
+  jsonString: string,
+): SafeParseResult<Two, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Two$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Two' from JSON`,
+  );
+}
+
+/** @internal */
+export const Models$inboundSchema: z.ZodType<Models, z.ZodTypeDef, unknown> =
+  smartUnion([
+    z.lazy(() => Three$inboundSchema),
+    z.lazy(() => Two$inboundSchema),
+    types.string(),
+  ]);
+
+export function modelsFromJSON(
+  jsonString: string,
+): SafeParseResult<Models, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Models$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Models' from JSON`,
+  );
+}
+
+/** @internal */
 export const ProviderTimeouts$inboundSchema: z.ZodType<
   ProviderTimeouts,
   z.ZodTypeDef,
@@ -388,6 +488,27 @@ export function providerTimeoutsFromJSON(
 /** @internal */
 export const Selector$inboundSchema: z.ZodNativeEnum<typeof Selector> = z
   .nativeEnum(Selector);
+
+/** @internal */
+export const SelectorOptions$inboundSchema: z.ZodType<
+  SelectorOptions,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  cost: types.optional(z.record(z.any())),
+  tps: types.optional(z.record(z.any())),
+  ttft: types.optional(z.record(z.any())),
+});
+
+export function selectorOptionsFromJSON(
+  jsonString: string,
+): SafeParseResult<SelectorOptions, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SelectorOptions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SelectorOptions' from JSON`,
+  );
+}
 
 /** @internal */
 export const ServiceTier$inboundSchema: z.ZodNativeEnum<typeof ServiceTier> = z
@@ -424,7 +545,15 @@ export const AiGatewayVirtualModelConfig$inboundSchema: z.ZodType<
   inferenceRegion: types.optional(z.lazy(() => InferenceRegion$inboundSchema)),
   instanceId: types.optional(types.string()),
   kind: types.string(),
-  models: types.optional(z.array(types.string())),
+  models: types.optional(
+    z.array(smartUnion([
+      z.lazy(() => Three$inboundSchema),
+      z.lazy(() =>
+        Two$inboundSchema
+      ),
+      types.string(),
+    ])),
+  ),
   modelSlug: types.optional(types.string()),
   observabilityTags: types.optional(z.array(types.string())),
   ownerId: types.string(),
@@ -435,6 +564,7 @@ export const AiGatewayVirtualModelConfig$inboundSchema: z.ZodType<
     z.lazy(() => ProviderTimeouts$inboundSchema),
   ),
   selector: types.optional(Selector$inboundSchema),
+  selectorOptions: types.optional(z.lazy(() => SelectorOptions$inboundSchema)),
   serviceTier: types.optional(ServiceTier$inboundSchema),
   sort: types.optional(Sort$inboundSchema),
   speed: types.optional(Speed$inboundSchema),

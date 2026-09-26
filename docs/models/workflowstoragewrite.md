@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { WorkflowStorageWrite } from "@vercel/sdk/models/lasteditedbyprincipal2.js";
+import { WorkflowStorageWrite } from "@vercel/sdk/models/lasteditedbyprincipal.js";
 
 let value: WorkflowStorageWrite = {
   blockReason: "admin_override",

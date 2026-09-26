@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { MicrofrontendsRequest } from "@vercel/sdk/models/sourceimages.js";
+import { MicrofrontendsRequest } from "@vercel/sdk/models/payloadspeedinsightsfree.js";
 
 let value: MicrofrontendsRequest = {
   blockReason: "admin_override",

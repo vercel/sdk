@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload355Previous } from "@vercel/sdk/models/payloadcity.js";
+import { UserEventPayload355Previous } from "@vercel/sdk/models/usereventpayload351geolocationnames.js";
 
 let value: UserEventPayload355Previous = {
   sampleRatePercent: 6960.29,

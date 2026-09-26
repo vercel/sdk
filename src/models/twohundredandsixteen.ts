@@ -16,15 +16,6 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 /**
  * The payload of the event, if requested.
  */
-export type TwoHundredAndEightyThree = {
-  onCommit: boolean;
-  projectId: string;
-  projectName: string;
-};
-
-/**
- * The payload of the event, if requested.
- */
 export type TwoHundredAndEightyTwo = {
   onPullRequest: boolean;
   projectId: string;
@@ -857,7 +848,7 @@ export type TwoHundredAndForty = {
 
 export type UserEventPayloadGitUserId = string | number;
 
-export const UserEventPayloadOrigin = {
+export const UserEventPayload239Origin = {
   AccountUpdate: "account-update",
   Bitbucket: "bitbucket",
   Dsync: "dsync",
@@ -878,7 +869,9 @@ export const UserEventPayloadOrigin = {
   Saml: "saml",
   Teams: "teams",
 } as const;
-export type UserEventPayloadOrigin = ClosedEnum<typeof UserEventPayloadOrigin>;
+export type UserEventPayload239Origin = ClosedEnum<
+  typeof UserEventPayload239Origin
+>;
 
 export type UserEventPayloadJoinedFrom = {
   commitId?: string | undefined;
@@ -887,7 +880,7 @@ export type UserEventPayloadJoinedFrom = {
   gitUserId?: string | number | undefined;
   gitUserLogin?: string | undefined;
   idpUserId?: string | undefined;
-  origin: UserEventPayloadOrigin;
+  origin: UserEventPayload239Origin;
   repoId?: string | undefined;
   repoPath?: string | undefined;
   ssoConnectedAt?: number | undefined;
@@ -1364,26 +1357,15 @@ export type TwoHundredAndSeventeen = {
   slug: string;
 };
 
-/** @internal */
-export const TwoHundredAndEightyThree$inboundSchema: z.ZodType<
-  TwoHundredAndEightyThree,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  onCommit: types.boolean(),
-  projectId: types.string(),
-  projectName: types.string(),
-});
-
-export function twoHundredAndEightyThreeFromJSON(
-  jsonString: string,
-): SafeParseResult<TwoHundredAndEightyThree, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TwoHundredAndEightyThree$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TwoHundredAndEightyThree' from JSON`,
-  );
-}
+/**
+ * The payload of the event, if requested.
+ */
+export type TwoHundredAndSixteen = {
+  enabled: boolean;
+  organizationId: string;
+  teamId: string;
+  teamSlug: string;
+};
 
 /** @internal */
 export const TwoHundredAndEightyTwo$inboundSchema: z.ZodType<
@@ -3156,9 +3138,9 @@ export function userEventPayloadGitUserIdFromJSON(
 }
 
 /** @internal */
-export const UserEventPayloadOrigin$inboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayloadOrigin
-> = z.nativeEnum(UserEventPayloadOrigin);
+export const UserEventPayload239Origin$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload239Origin
+> = z.nativeEnum(UserEventPayload239Origin);
 
 /** @internal */
 export const UserEventPayloadJoinedFrom$inboundSchema: z.ZodType<
@@ -3172,7 +3154,7 @@ export const UserEventPayloadJoinedFrom$inboundSchema: z.ZodType<
   gitUserId: types.optional(smartUnion([types.string(), types.number()])),
   gitUserLogin: types.optional(types.string()),
   idpUserId: types.optional(types.string()),
-  origin: UserEventPayloadOrigin$inboundSchema,
+  origin: UserEventPayload239Origin$inboundSchema,
   repoId: types.optional(types.string()),
   repoPath: types.optional(types.string()),
   ssoConnectedAt: types.optional(types.number()),
@@ -4064,5 +4046,27 @@ export function twoHundredAndSeventeenFromJSON(
     jsonString,
     (x) => TwoHundredAndSeventeen$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'TwoHundredAndSeventeen' from JSON`,
+  );
+}
+
+/** @internal */
+export const TwoHundredAndSixteen$inboundSchema: z.ZodType<
+  TwoHundredAndSixteen,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  enabled: types.boolean(),
+  organizationId: types.string(),
+  teamId: types.string(),
+  teamSlug: types.string(),
+});
+
+export function twoHundredAndSixteenFromJSON(
+  jsonString: string,
+): SafeParseResult<TwoHundredAndSixteen, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TwoHundredAndSixteen$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TwoHundredAndSixteen' from JSON`,
   );
 }

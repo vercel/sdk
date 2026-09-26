@@ -8,21 +8,14 @@ import { OrbSubscriptionIntent } from "@vercel/sdk/models/buycreditsop.js";
 let value: OrbSubscriptionIntent = {
   configuration: {
     options: {
-      addedResourceIds: [
-        "<value 1>",
-        "<value 2>",
-      ],
+      addedResourceIds: [],
       productAlias: "<value>",
-      removedResourceIds: [
-        "<value 1>",
-        "<value 2>",
-        "<value 3>",
-      ],
+      removedResourceIds: [],
     },
     output: {
-      effectiveBehavior: "end_of_term",
+      effectiveBehavior: "immediate",
       orbPriceId: "<id>",
-      pricingSource: "copper",
+      pricingSource: "orb",
       productId: "<id>",
     },
     type: "adjust_plan_item_quantity",

@@ -5,7 +5,7 @@ Pauses Speed Insights free data-point ingestion when the team-wide free allocati
 ## Example Usage
 
 ```typescript
-import { PayloadSpeedInsightsFree } from "@vercel/sdk/models/lasteditedbyprincipal2.js";
+import { PayloadSpeedInsightsFree } from "@vercel/sdk/models/payloadspeedinsightsfree.js";
 
 let value: PayloadSpeedInsightsFree = {
   blockReason: "limits_exceeded",

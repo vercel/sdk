@@ -9,25 +9,10 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
-  LastEditedByPrincipal2,
-  LastEditedByPrincipal2$inboundSchema,
-} from "./lasteditedbyprincipal2.js";
+  LastEditedByPrincipal,
+  LastEditedByPrincipal$inboundSchema,
+} from "./lasteditedbyprincipal.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-
-/**
- * The principal that last edited this env var, when the editor id resolves to a known user or app. Lets clients render the right avatar instead of assuming every editor is a user.
- */
-export type LastEditedByPrincipal1 = {
-  avatar?: string | undefined;
-  id: string;
-  name?: string | null | undefined;
-  type: "user";
-  username: string;
-};
-
-export type LastEditedByPrincipal =
-  | LastEditedByPrincipal1
-  | LastEditedByPrincipal2;
 
 /**
  * environments this env variable targets
@@ -108,10 +93,7 @@ export type OneHundredAndSixty = {
    * The last editor full name or username.
    */
   lastEditedByDisplayName?: string | undefined;
-  lastEditedByPrincipal?:
-    | LastEditedByPrincipal1
-    | LastEditedByPrincipal2
-    | undefined;
+  lastEditedByPrincipal?: LastEditedByPrincipal | undefined;
   /**
    * The unique identifier of the owner (team) the Shared Env Var was created for.
    */
@@ -1835,48 +1817,22 @@ export const UserEventJobAction = {
 } as const;
 export type UserEventJobAction = ClosedEnum<typeof UserEventJobAction>;
 
-/** @internal */
-export const LastEditedByPrincipal1$inboundSchema: z.ZodType<
-  LastEditedByPrincipal1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  avatar: types.optional(types.string()),
-  id: types.string(),
-  name: z.nullable(types.string()).optional(),
-  type: types.literal("user"),
-  username: types.string(),
-});
+/**
+ * Since March 2026 Records a successful NSNB auto-add result so later GitHub PR comments can deterministically explain why this SHA was allowed to deploy.
+ */
+export type JobNsnbSideEffect = {
+  action: UserEventJobAction;
+  gitUserLogin: string;
+};
 
-export function lastEditedByPrincipal1FromJSON(
-  jsonString: string,
-): SafeParseResult<LastEditedByPrincipal1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => LastEditedByPrincipal1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LastEditedByPrincipal1' from JSON`,
-  );
-}
-
-/** @internal */
-export const LastEditedByPrincipal$inboundSchema: z.ZodType<
-  LastEditedByPrincipal,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => LastEditedByPrincipal1$inboundSchema),
-  LastEditedByPrincipal2$inboundSchema,
-]);
-
-export function lastEditedByPrincipalFromJSON(
-  jsonString: string,
-): SafeParseResult<LastEditedByPrincipal, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => LastEditedByPrincipal$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LastEditedByPrincipal' from JSON`,
-  );
-}
+export const UserEventJobPayloadProvider = {
+  Github: "github",
+  GithubCustomHost: "github-custom-host",
+  GithubLimited: "github-limited",
+} as const;
+export type UserEventJobPayloadProvider = ClosedEnum<
+  typeof UserEventJobPayloadProvider
+>;
 
 /** @internal */
 export const UserEventPayloadTarget$inboundSchema: z.ZodNativeEnum<
@@ -1905,12 +1861,7 @@ export const OneHundredAndSixty$inboundSchema: z.ZodType<
   id: types.optional(types.string()),
   key: types.optional(types.string()),
   lastEditedByDisplayName: types.optional(types.string()),
-  lastEditedByPrincipal: types.optional(
-    z.union([
-      z.lazy(() => LastEditedByPrincipal1$inboundSchema),
-      LastEditedByPrincipal2$inboundSchema,
-    ]),
-  ),
+  lastEditedByPrincipal: types.optional(LastEditedByPrincipal$inboundSchema),
   ownerId: z.nullable(types.string()).optional(),
   projectId: types.optional(z.array(types.string())),
   target: types.optional(z.array(UserEventPayloadTarget$inboundSchema)),
@@ -4588,3 +4539,28 @@ export function userEventJobHeadInfoFromJSON(
 export const UserEventJobAction$inboundSchema: z.ZodNativeEnum<
   typeof UserEventJobAction
 > = z.nativeEnum(UserEventJobAction);
+
+/** @internal */
+export const JobNsnbSideEffect$inboundSchema: z.ZodType<
+  JobNsnbSideEffect,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  action: UserEventJobAction$inboundSchema,
+  gitUserLogin: types.string(),
+});
+
+export function jobNsnbSideEffectFromJSON(
+  jsonString: string,
+): SafeParseResult<JobNsnbSideEffect, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => JobNsnbSideEffect$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'JobNsnbSideEffect' from JSON`,
+  );
+}
+
+/** @internal */
+export const UserEventJobPayloadProvider$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventJobPayloadProvider
+> = z.nativeEnum(UserEventJobPayloadProvider);

@@ -5,7 +5,7 @@ Which rule blocked the deploy.
 ## Example Usage
 
 ```typescript
-import { RuleName } from "@vercel/sdk/models/usereventjobaction.js";
+import { RuleName } from "@vercel/sdk/models/usereventjobpayloadprovider.js";
 
 let value: RuleName = "deploymentSources";
 ```

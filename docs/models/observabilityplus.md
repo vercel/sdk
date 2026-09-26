@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ObservabilityPlus } from "@vercel/sdk/models/sourceimages.js";
+import { ObservabilityPlus } from "@vercel/sdk/models/payloadspeedinsightsfree.js";
 
 let value: ObservabilityPlus = {
   blockReason: "hard_blocked",

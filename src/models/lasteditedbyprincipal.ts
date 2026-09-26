@@ -8,7 +8,6 @@ import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
   Abuse,
   Abuse$inboundSchema,
@@ -44,6 +43,8 @@ import {
   PayloadEnablePreviewFeedback$inboundSchema,
   PayloadFavoriteProjectsAndSpaces,
   PayloadFavoriteProjectsAndSpaces$inboundSchema,
+  PayloadSpeedInsightsFree,
+  PayloadSpeedInsightsFree$inboundSchema,
   Postgres,
   Postgres$inboundSchema,
   Redis,
@@ -54,29 +55,8 @@ import {
   SourceImages$inboundSchema,
   UserEventPayloadDataCache,
   UserEventPayloadDataCache$inboundSchema,
-} from "./sourceimages.js";
-
-export const UserEventPayload177NewOwnerFeatureBlocksSpeedInsightsFreeBlockReason =
-  {
-    AdminOverride: "admin_override",
-    HardBlocked: "hard_blocked",
-    LimitsExceeded: "limits_exceeded",
-  } as const;
-export type UserEventPayload177NewOwnerFeatureBlocksSpeedInsightsFreeBlockReason =
-  ClosedEnum<
-    typeof UserEventPayload177NewOwnerFeatureBlocksSpeedInsightsFreeBlockReason
-  >;
-
-/**
- * Pauses Speed Insights free data-point ingestion when the team-wide free allocation is exhausted. The block lasts at least 14 days and is extended while rolling usage stays above half of the allocation.
- */
-export type PayloadSpeedInsightsFree = {
-  blockedFrom?: number | undefined;
-  blockedUntil?: number | undefined;
-  blockReason:
-    UserEventPayload177NewOwnerFeatureBlocksSpeedInsightsFreeBlockReason;
-  updatedAt: number;
-};
+} from "./payloadspeedinsightsfree.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export const UserEventPayload177NewOwnerFeatureBlocksTracingBlockReason = {
   AdminOverride: "admin_override",
@@ -1826,36 +1806,20 @@ export type LastEditedByPrincipal2 = {
   type: "app";
 };
 
-/** @internal */
-export const UserEventPayload177NewOwnerFeatureBlocksSpeedInsightsFreeBlockReason$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UserEventPayload177NewOwnerFeatureBlocksSpeedInsightsFreeBlockReason
-  > = z.nativeEnum(
-    UserEventPayload177NewOwnerFeatureBlocksSpeedInsightsFreeBlockReason,
-  );
+/**
+ * The principal that last edited this env var, when the editor id resolves to a known user or app. Lets clients render the right avatar instead of assuming every editor is a user.
+ */
+export type LastEditedByPrincipal1 = {
+  avatar?: string | undefined;
+  id: string;
+  name?: string | null | undefined;
+  type: "user";
+  username: string;
+};
 
-/** @internal */
-export const PayloadSpeedInsightsFree$inboundSchema: z.ZodType<
-  PayloadSpeedInsightsFree,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  blockedFrom: types.optional(types.number()),
-  blockedUntil: types.optional(types.number()),
-  blockReason:
-    UserEventPayload177NewOwnerFeatureBlocksSpeedInsightsFreeBlockReason$inboundSchema,
-  updatedAt: types.number(),
-});
-
-export function payloadSpeedInsightsFreeFromJSON(
-  jsonString: string,
-): SafeParseResult<PayloadSpeedInsightsFree, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PayloadSpeedInsightsFree$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PayloadSpeedInsightsFree' from JSON`,
-  );
-}
+export type LastEditedByPrincipal =
+  | LastEditedByPrincipal1
+  | LastEditedByPrincipal2;
 
 /** @internal */
 export const UserEventPayload177NewOwnerFeatureBlocksTracingBlockReason$inboundSchema:
@@ -2024,9 +1988,7 @@ export const PayloadFeatureBlocks$inboundSchema: z.ZodType<
   redis: types.optional(Redis$inboundSchema),
   sandboxStorage: types.optional(SandboxStorage$inboundSchema),
   sourceImages: types.optional(SourceImages$inboundSchema),
-  speedInsightsFree: types.optional(
-    z.lazy(() => PayloadSpeedInsightsFree$inboundSchema),
-  ),
+  speedInsightsFree: types.optional(PayloadSpeedInsightsFree$inboundSchema),
   tracing: types.optional(z.lazy(() => Tracing$inboundSchema)),
   vcr: types.optional(z.lazy(() => Vcr$inboundSchema)),
   webAnalytics: types.optional(z.lazy(() => PayloadWebAnalytics$inboundSchema)),
@@ -4759,5 +4721,48 @@ export function lastEditedByPrincipal2FromJSON(
     jsonString,
     (x) => LastEditedByPrincipal2$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'LastEditedByPrincipal2' from JSON`,
+  );
+}
+
+/** @internal */
+export const LastEditedByPrincipal1$inboundSchema: z.ZodType<
+  LastEditedByPrincipal1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  avatar: types.optional(types.string()),
+  id: types.string(),
+  name: z.nullable(types.string()).optional(),
+  type: types.literal("user"),
+  username: types.string(),
+});
+
+export function lastEditedByPrincipal1FromJSON(
+  jsonString: string,
+): SafeParseResult<LastEditedByPrincipal1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LastEditedByPrincipal1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LastEditedByPrincipal1' from JSON`,
+  );
+}
+
+/** @internal */
+export const LastEditedByPrincipal$inboundSchema: z.ZodType<
+  LastEditedByPrincipal,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => LastEditedByPrincipal1$inboundSchema),
+  z.lazy(() => LastEditedByPrincipal2$inboundSchema),
+]);
+
+export function lastEditedByPrincipalFromJSON(
+  jsonString: string,
+): SafeParseResult<LastEditedByPrincipal, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LastEditedByPrincipal$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LastEditedByPrincipal' from JSON`,
   );
 }

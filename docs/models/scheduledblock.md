@@ -5,7 +5,7 @@ Since June 2026. A hard block that is scheduled (the delay varies by source; see
 ## Example Usage
 
 ```typescript
-import { ScheduledBlock } from "@vercel/sdk/models/sourceimages.js";
+import { ScheduledBlock } from "@vercel/sdk/models/payloadspeedinsightsfree.js";
 
 let value: ScheduledBlock = {
   createdAt: 9648.38,

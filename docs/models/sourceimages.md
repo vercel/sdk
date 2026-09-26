@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { SourceImages } from "@vercel/sdk/models/sourceimages.js";
+import { SourceImages } from "@vercel/sdk/models/payloadspeedinsightsfree.js";
 
 let value: SourceImages = {
   blockReason: "admin_override",

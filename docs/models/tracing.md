@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Tracing } from "@vercel/sdk/models/lasteditedbyprincipal2.js";
+import { Tracing } from "@vercel/sdk/models/lasteditedbyprincipal.js";
 
 let value: Tracing = {
   blockReason: "hard_blocked",

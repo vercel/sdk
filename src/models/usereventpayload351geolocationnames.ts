@@ -1810,7 +1810,7 @@ export type ThreeHundredAndFiftyTwo = {
   zeitAccountType: string;
 };
 
-export const FactorsOrigin = {
+export const UserEventPayloadOrigin = {
   Apple: "apple",
   Bitbucket: "bitbucket",
   Chatgpt: "chatgpt",
@@ -1821,17 +1821,15 @@ export const FactorsOrigin = {
   Otp: "otp",
   Saml: "saml",
 } as const;
-export type FactorsOrigin = ClosedEnum<typeof FactorsOrigin>;
+export type UserEventPayloadOrigin = ClosedEnum<typeof UserEventPayloadOrigin>;
 
-export type UserEventFactors1 = {
+export type PayloadFactors = {
   legacy?: boolean | undefined;
-  origin: FactorsOrigin;
+  origin: UserEventPayloadOrigin;
   ssoType?: string | undefined;
   teamId?: string | undefined;
   username?: string | undefined;
 };
-
-export type PayloadFactors = UserEventFactors1;
 
 export type UserEventPayload351Names = {
   en: string;
@@ -1839,6 +1837,10 @@ export type UserEventPayload351Names = {
 
 export type PayloadCity = {
   names: UserEventPayload351Names;
+};
+
+export type UserEventPayload351GeolocationNames = {
+  en: string;
 };
 
 /** @internal */
@@ -4130,39 +4132,22 @@ export function threeHundredAndFiftyTwoFromJSON(
 }
 
 /** @internal */
-export const FactorsOrigin$inboundSchema: z.ZodNativeEnum<
-  typeof FactorsOrigin
-> = z.nativeEnum(FactorsOrigin);
-
-/** @internal */
-export const UserEventFactors1$inboundSchema: z.ZodType<
-  UserEventFactors1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  legacy: types.optional(types.boolean()),
-  origin: FactorsOrigin$inboundSchema,
-  ssoType: types.optional(types.string()),
-  teamId: types.optional(types.string()),
-  username: types.optional(types.string()),
-});
-
-export function userEventFactors1FromJSON(
-  jsonString: string,
-): SafeParseResult<UserEventFactors1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UserEventFactors1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserEventFactors1' from JSON`,
-  );
-}
+export const UserEventPayloadOrigin$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayloadOrigin
+> = z.nativeEnum(UserEventPayloadOrigin);
 
 /** @internal */
 export const PayloadFactors$inboundSchema: z.ZodType<
   PayloadFactors,
   z.ZodTypeDef,
   unknown
-> = z.lazy(() => UserEventFactors1$inboundSchema);
+> = z.object({
+  legacy: types.optional(types.boolean()),
+  origin: UserEventPayloadOrigin$inboundSchema,
+  ssoType: types.optional(types.string()),
+  teamId: types.optional(types.string()),
+  username: types.optional(types.string()),
+});
 
 export function payloadFactorsFromJSON(
   jsonString: string,
@@ -4209,5 +4194,25 @@ export function payloadCityFromJSON(
     jsonString,
     (x) => PayloadCity$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'PayloadCity' from JSON`,
+  );
+}
+
+/** @internal */
+export const UserEventPayload351GeolocationNames$inboundSchema: z.ZodType<
+  UserEventPayload351GeolocationNames,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  en: types.string(),
+});
+
+export function userEventPayload351GeolocationNamesFromJSON(
+  jsonString: string,
+): SafeParseResult<UserEventPayload351GeolocationNames, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UserEventPayload351GeolocationNames$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventPayload351GeolocationNames' from JSON`,
   );
 }

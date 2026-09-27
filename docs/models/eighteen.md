@@ -8,7 +8,10 @@ The payload of the event, if requested.
 import { Eighteen } from "@vercel/sdk/models/userevent.js";
 
 let value: Eighteen = {
-  change: "update",
+  apiKey: {
+    id: "<id>",
+    name: "<value>",
+  },
 };
 ```
 
@@ -16,7 +19,4 @@ let value: Eighteen = {
 
 | Field                                              | Type                                               | Required                                           | Description                                        |
 | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `change`                                           | [models.PayloadChange](../models/payloadchange.md) | :heavy_check_mark:                                 | N/A                                                |
-| `commitment`                                       | [models.Commitment](../models/commitment.md)       | :heavy_minus_sign:                                 | N/A                                                |
-| `previous`                                         | [models.Previous](../models/previous.md)           | :heavy_minus_sign:                                 | N/A                                                |
-| `settings`                                         | [models.Settings](../models/settings.md)           | :heavy_minus_sign:                                 | N/A                                                |
+| `apiKey`                                           | [models.PayloadApiKey](../models/payloadapikey.md) | :heavy_check_mark:                                 | N/A                                                |

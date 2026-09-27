@@ -384,6 +384,10 @@ export const Name = {
   MarketplaceFlexCommitOptIn: "marketplace-flex-commit-opt-in",
   MarketplaceIntegrationAllowlistUpdated:
     "marketplace-integration-allowlist-updated",
+  MessageboardCreated: "messageboard-created",
+  MessageboardPrivateCreated: "messageboard-private-created",
+  MessageboardPrivateSpaceCreated: "messageboard-private-space-created",
+  MessageboardSpaceCreated: "messageboard-space-created",
   MicrofrontendGroupAdded: "microfrontend-group-added",
   MicrofrontendGroupDeleted: "microfrontend-group-deleted",
   MicrofrontendGroupUpdated: "microfrontend-group-updated",
@@ -1143,6 +1147,10 @@ export const ReplacedBy = {
   MarketplaceFlexCommitOptIn: "marketplace-flex-commit-opt-in",
   MarketplaceIntegrationAllowlistUpdated:
     "marketplace-integration-allowlist-updated",
+  MessageboardCreated: "messageboard-created",
+  MessageboardPrivateCreated: "messageboard-private-created",
+  MessageboardPrivateSpaceCreated: "messageboard-private-space-created",
+  MessageboardSpaceCreated: "messageboard-space-created",
   MicrofrontendGroupAdded: "microfrontend-group-added",
   MicrofrontendGroupDeleted: "microfrontend-group-deleted",
   MicrofrontendGroupUpdated: "microfrontend-group-updated",

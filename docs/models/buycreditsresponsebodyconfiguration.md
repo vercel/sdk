@@ -29,12 +29,12 @@ const value: models.Configuration2 = {
 };
 ```
 
-### `models.BuyCreditsConfiguration3`
+### `models.Configuration3`
 
 ```typescript
-const value: models.BuyCreditsConfiguration3 = {
+const value: models.Configuration3 = {
   options: {
-    effectiveDate: {},
+    effectiveDate: "end_of_subscription_term",
     orbSubscriptionId: "<id>",
   },
   output: {
@@ -44,10 +44,10 @@ const value: models.BuyCreditsConfiguration3 = {
 };
 ```
 
-### `models.BuyCreditsConfiguration4`
+### `models.Configuration4`
 
 ```typescript
-const value: models.BuyCreditsConfiguration4 = {
+const value: models.Configuration4 = {
   options: {
     orbSubscriptionId: "<id>",
   },

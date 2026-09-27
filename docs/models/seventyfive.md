@@ -8,17 +8,13 @@ The payload of the event, if requested.
 import { SeventyFive } from "@vercel/sdk/models/fiftyfour.js";
 
 let value: SeventyFive = {
-  project: {
-    id: "<id>",
-    name: "<value>",
-  },
-  versionId: "<id>",
+  productAliases: [],
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `project`                                                                  | [models.UserEventPayload75Project](../models/usereventpayload75project.md) | :heavy_check_mark:                                                         | N/A                                                                        |
-| `versionId`                                                                | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `subscriptionId`   | *string*           | :heavy_minus_sign: | N/A                |
+| `productAliases`   | *string*[]         | :heavy_check_mark: | N/A                |

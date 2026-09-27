@@ -7,15 +7,13 @@ The payload of the event, if requested.
 ```typescript
 import { Eighty } from "@vercel/sdk/models/fiftyfour.js";
 
-let value: Eighty = {
-  dst: "<value>",
-  src: "<value>",
-};
+let value: Eighty = {};
 ```
 
 ## Fields
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `dst`              | *string*           | :heavy_check_mark: | N/A                |
-| `src`              | *string*           | :heavy_check_mark: | N/A                |
+| `cn`               | *string*           | :heavy_minus_sign: | N/A                |
+| `cns`              | *string*[]         | :heavy_minus_sign: | N/A                |
+| `id`               | *string*           | :heavy_minus_sign: | N/A                |

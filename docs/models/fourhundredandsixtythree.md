@@ -5,20 +5,29 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndSixtyThree } from "@vercel/sdk/models/fourhundredandfourteen.js";
+import { FourHundredAndSixtyThree } from "@vercel/sdk/models/fourhundredandsixteen.js";
 
 let value: FourHundredAndSixtyThree = {
-  deploymentId: "<id>",
-  projectId: "<id>",
-  runId: "<id>",
+  chatId: "<id>",
+  events: [],
+  inputTokens: 5922.14,
+  messageId: "<id>",
+  model: "Wrangler",
+  outputTokens: 5590.24,
+  timestamp: 8294.57,
+  useCase: "<value>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `deploymentId`     | *string*           | :heavy_check_mark: | N/A                |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_minus_sign: | N/A                |
-| `runId`            | *string*           | :heavy_check_mark: | N/A                |
+| Field                                  | Type                                   | Required                               | Description                            |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| `chatId`                               | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `events`                               | [models.Events](../models/events.md)[] | :heavy_check_mark:                     | N/A                                    |
+| `inputTokens`                          | *number*                               | :heavy_check_mark:                     | N/A                                    |
+| `messageId`                            | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `model`                                | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `outputTokens`                         | *number*                               | :heavy_check_mark:                     | N/A                                    |
+| `timestamp`                            | *number*                               | :heavy_check_mark:                     | N/A                                    |
+| `useCase`                              | *string*                               | :heavy_check_mark:                     | N/A                                    |

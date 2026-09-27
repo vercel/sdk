@@ -203,18 +203,14 @@ export type One2 = {
   resourceId: string;
 };
 
-export type CreateDrain11 = {
+export type One1 = {
   kind?: string | undefined;
   externalResourceId: string;
 };
 
-export type CreateDrainSource1 = CreateDrain11 | One2 | One3;
+export type CreateDrainSource1 = One1 | One2 | One3;
 
-export type CreateDrainSource =
-  | CreateDrain11
-  | One2
-  | One3
-  | CreateDrainSource2;
+export type CreateDrainSource = One1 | One2 | One3 | CreateDrainSource2;
 
 export type CreateDrainRequestBody = {
   name: string;
@@ -225,7 +221,7 @@ export type CreateDrainRequestBody = {
   delivery?: Delivery3 | Delivery1 | Delivery2 | undefined;
   sampling?: Array<CreateDrainSampling> | undefined;
   transforms?: Array<Transforms> | undefined;
-  source?: CreateDrain11 | One2 | One3 | CreateDrainSource2 | undefined;
+  source?: One1 | One2 | One3 | CreateDrainSource2 | undefined;
 };
 
 export type CreateDrainRequest = {
@@ -1423,28 +1419,25 @@ export function one2ToJSON(one2: One2): string {
 }
 
 /** @internal */
-export type CreateDrain11$Outbound = {
+export type One1$Outbound = {
   kind: string;
   externalResourceId: string;
 };
 
 /** @internal */
-export const CreateDrain11$outboundSchema: z.ZodType<
-  CreateDrain11$Outbound,
-  z.ZodTypeDef,
-  CreateDrain11
-> = z.object({
-  kind: z.string().default("integration"),
-  externalResourceId: z.string(),
-});
+export const One1$outboundSchema: z.ZodType<One1$Outbound, z.ZodTypeDef, One1> =
+  z.object({
+    kind: z.string().default("integration"),
+    externalResourceId: z.string(),
+  });
 
-export function createDrain11ToJSON(createDrain11: CreateDrain11): string {
-  return JSON.stringify(CreateDrain11$outboundSchema.parse(createDrain11));
+export function one1ToJSON(one1: One1): string {
+  return JSON.stringify(One1$outboundSchema.parse(one1));
 }
 
 /** @internal */
 export type CreateDrainSource1$Outbound =
-  | CreateDrain11$Outbound
+  | One1$Outbound
   | One2$Outbound
   | One3$Outbound;
 
@@ -1454,7 +1447,7 @@ export const CreateDrainSource1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateDrainSource1
 > = smartUnion([
-  z.lazy(() => CreateDrain11$outboundSchema),
+  z.lazy(() => One1$outboundSchema),
   z.lazy(() => One2$outboundSchema),
   z.lazy(() => One3$outboundSchema),
 ]);
@@ -1469,7 +1462,7 @@ export function createDrainSource1ToJSON(
 
 /** @internal */
 export type CreateDrainSource$Outbound =
-  | CreateDrain11$Outbound
+  | One1$Outbound
   | One2$Outbound
   | One3$Outbound
   | CreateDrainSource2$Outbound;
@@ -1481,7 +1474,7 @@ export const CreateDrainSource$outboundSchema: z.ZodType<
   CreateDrainSource
 > = smartUnion([
   smartUnion([
-    z.lazy(() => CreateDrain11$outboundSchema),
+    z.lazy(() => One1$outboundSchema),
     z.lazy(() => One2$outboundSchema),
     z.lazy(() => One3$outboundSchema),
   ]),
@@ -1511,7 +1504,7 @@ export type CreateDrainRequestBody$Outbound = {
   sampling?: Array<CreateDrainSampling$Outbound> | undefined;
   transforms?: Array<Transforms$Outbound> | undefined;
   source?:
-    | CreateDrain11$Outbound
+    | One1$Outbound
     | One2$Outbound
     | One3$Outbound
     | CreateDrainSource2$Outbound
@@ -1539,7 +1532,7 @@ export const CreateDrainRequestBody$outboundSchema: z.ZodType<
   transforms: z.array(z.lazy(() => Transforms$outboundSchema)).optional(),
   source: smartUnion([
     smartUnion([
-      z.lazy(() => CreateDrain11$outboundSchema),
+      z.lazy(() => One1$outboundSchema),
       z.lazy(() => One2$outboundSchema),
       z.lazy(() => One3$outboundSchema),
     ]),

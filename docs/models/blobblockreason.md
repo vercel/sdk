@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { BlobBlockReason } from "@vercel/sdk/models/sourceimages.js";
+import { BlobBlockReason } from "@vercel/sdk/models/payloadspeedinsightsfree.js";
 
 let value: BlobBlockReason = "admin_override";
 ```

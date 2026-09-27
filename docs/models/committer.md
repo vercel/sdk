@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Committer } from "@vercel/sdk/models/usereventjobaction.js";
+import { Committer } from "@vercel/sdk/models/usereventjobpayloadprovider.js";
 
 let value: Committer = {
   date: "2024-01-07",

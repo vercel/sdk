@@ -41,15 +41,14 @@ const value: models.BuyCreditsConfiguration2 = {
 };
 ```
 
-### `models.Configuration3`
+### `models.BuyCreditsConfiguration3`
 
 ```typescript
-const value: models.Configuration3 = {
+const value: models.BuyCreditsConfiguration3 = {
   options: {
     productAlias: "<value>",
     resourceIds: [
       "<value 1>",
-      "<value 2>",
     ],
   },
   output: {
@@ -62,26 +61,19 @@ const value: models.Configuration3 = {
 };
 ```
 
-### `models.Configuration4`
+### `models.BuyCreditsConfiguration4`
 
 ```typescript
-const value: models.Configuration4 = {
+const value: models.BuyCreditsConfiguration4 = {
   options: {
-    addedResourceIds: [
-      "<value 1>",
-      "<value 2>",
-    ],
+    addedResourceIds: [],
     productAlias: "<value>",
-    removedResourceIds: [
-      "<value 1>",
-      "<value 2>",
-      "<value 3>",
-    ],
+    removedResourceIds: [],
   },
   output: {
-    effectiveBehavior: "end_of_term",
+    effectiveBehavior: "immediate",
     orbPriceId: "<id>",
-    pricingSource: "copper",
+    pricingSource: "orb",
     productId: "<id>",
   },
   type: "adjust_plan_item_quantity",

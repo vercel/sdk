@@ -5,7 +5,7 @@ Since September 2026. The git SHA a non-cascading hard block of this owner auto-
 ## Example Usage
 
 ```typescript
-import { RegisteredShaBlock } from "@vercel/sdk/models/sourceimages.js";
+import { RegisteredShaBlock } from "@vercel/sdk/models/payloadspeedinsightsfree.js";
 
 let value: RegisteredShaBlock = {
   createdAt: "1730662995923",

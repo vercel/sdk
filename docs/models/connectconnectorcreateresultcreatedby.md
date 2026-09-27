@@ -14,11 +14,11 @@ const value: models.CreatedBy1 = {
 };
 ```
 
-### `models.CreatedBy2`
+### `models.ConnectConnectorCreateResultCreatedBy2`
 
 ```typescript
-const value: models.CreatedBy2 = {
-  environment: "<value>",
+const value: models.ConnectConnectorCreateResultCreatedBy2 = {
+  environment: "production",
   id: "<id>",
   type: "project",
 };

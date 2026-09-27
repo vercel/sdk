@@ -5,20 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndTen } from "@vercel/sdk/models/payloadcity.js";
+import { FourHundredAndTen } from "@vercel/sdk/models/usereventpayload353geolocationnames.js";
 
 let value: FourHundredAndTen = {
-  domain: "probable-intent.biz",
-  ips: [
-    "<value 1>",
-    "<value 2>",
-  ],
+  enabled: false,
+  scope: "dashboard",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `domain`           | *string*           | :heavy_check_mark: | N/A                |
-| `ips`              | *string*[]         | :heavy_check_mark: | N/A                |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `enabled`                                                                | *boolean*                                                                | :heavy_check_mark:                                                       | N/A                                                                      |
+| `scope`                                                                  | [models.UserEventPayload410Scope](../models/usereventpayload410scope.md) | :heavy_check_mark:                                                       | N/A                                                                      |

@@ -8,7 +8,10 @@ The payload of the event, if requested.
 import { SixtySeven } from "@vercel/sdk/models/fiftyfour.js";
 
 let value: SixtySeven = {
-  paymentMethodId: "<id>",
+  amount: 5488.88,
+  invoiceId: "<id>",
+  lineItemCount: 5954.02,
+  refundReason: "<value>",
 };
 ```
 
@@ -16,6 +19,7 @@ let value: SixtySeven = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `brand`            | *string*           | :heavy_minus_sign: | N/A                |
-| `last4`            | *string*           | :heavy_minus_sign: | N/A                |
-| `paymentMethodId`  | *string*           | :heavy_check_mark: | N/A                |
+| `amount`           | *number*           | :heavy_check_mark: | N/A                |
+| `invoiceId`        | *string*           | :heavy_check_mark: | N/A                |
+| `lineItemCount`    | *number*           | :heavy_check_mark: | N/A                |
+| `refundReason`     | *string*           | :heavy_check_mark: | N/A                |

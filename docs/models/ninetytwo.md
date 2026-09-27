@@ -8,12 +8,21 @@ The payload of the event, if requested.
 import { NinetyTwo } from "@vercel/sdk/models/fiftyfour.js";
 
 let value: NinetyTwo = {
-  githubLogin: "<value>",
+  configuration: {
+    id: "<id>",
+  },
+  newName: "<value>",
+  team: {
+    id: "<id>",
+    name: "<value>",
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `githubLogin`      | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `configuration`                                                                        | [models.UserEventPayload92Configuration](../models/usereventpayload92configuration.md) | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `newName`                                                                              | *string*                                                                               | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `team`                                                                                 | [models.UserEventPayload92Team](../models/usereventpayload92team.md)                   | :heavy_check_mark:                                                                     | N/A                                                                                    |

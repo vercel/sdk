@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { KmsOperations } from "@vercel/sdk/models/sourceimages.js";
+import { KmsOperations } from "@vercel/sdk/models/payloadspeedinsightsfree.js";
 
 let value: KmsOperations = {
   blockReason: "limits_exceeded",
@@ -17,5 +17,5 @@ let value: KmsOperations = {
 | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
 | `blockedFrom`                                                                                        | *number*                                                                                             | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
 | `blockedUntil`                                                                                       | *number*                                                                                             | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
-| `blockReason`                                                                                        | [models.UserEventPayload177NewOwnerBlockReason](../models/usereventpayload177newownerblockreason.md) | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
+| `blockReason`                                                                                        | [models.UserEventPayload179NewOwnerBlockReason](../models/usereventpayload179newownerblockreason.md) | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
 | `updatedAt`                                                                                          | *number*                                                                                             | :heavy_check_mark:                                                                                   | N/A                                                                                                  |

@@ -5,24 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFiftyNine } from "@vercel/sdk/models/usereventjobaction.js";
+import { OneHundredAndFiftyNine } from "@vercel/sdk/models/usereventjobpayloadprovider.js";
 
-let value: OneHundredAndFiftyNine = {
-  key: "<key>",
-  organizationId: "<id>",
-  provider: "<value>",
-  repository: "<value>",
-  visibility: "config",
-};
+let value: OneHundredAndFiftyNine = {};
 ```
 
 ## Fields
 
-| Field                                        | Type                                         | Required                                     | Description                                  |
-| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| `changedFields`                              | *string*[]                                   | :heavy_minus_sign:                           | N/A                                          |
-| `key`                                        | *string*                                     | :heavy_check_mark:                           | N/A                                          |
-| `organizationId`                             | *string*                                     | :heavy_check_mark:                           | N/A                                          |
-| `provider`                                   | *string*                                     | :heavy_check_mark:                           | N/A                                          |
-| `repository`                                 | *string*                                     | :heavy_check_mark:                           | N/A                                          |
-| `visibility`                                 | [models.Visibility](../models/visibility.md) | :heavy_check_mark:                           | N/A                                          |
+| Field                    | Type                     | Required                 | Description              |
+| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
+| `customEnvironmentSlugs` | *string*[]               | :heavy_minus_sign:       | N/A                      |
+| `edgeConfigId`           | *string*                 | :heavy_minus_sign:       | N/A                      |
+| `edgeConfigTokenId`      | *string*                 | :heavy_minus_sign:       | N/A                      |
+| `gitBranch`              | *string*                 | :heavy_minus_sign:       | N/A                      |
+| `id`                     | *string*                 | :heavy_minus_sign:       | N/A                      |
+| `ipAddress`              | *string*                 | :heavy_minus_sign:       | N/A                      |
+| `key`                    | *string*                 | :heavy_minus_sign:       | N/A                      |
+| `projectId`              | *string*                 | :heavy_minus_sign:       | N/A                      |
+| `projectName`            | *string*                 | :heavy_minus_sign:       | N/A                      |
+| `source`                 | *string*                 | :heavy_minus_sign:       | N/A                      |
+| `target`                 | *models.Target*          | :heavy_minus_sign:       | N/A                      |

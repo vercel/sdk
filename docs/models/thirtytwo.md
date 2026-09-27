@@ -8,15 +8,12 @@ The payload of the event, if requested.
 import { ThirtyTwo } from "@vercel/sdk/models/userevent.js";
 
 let value: ThirtyTwo = {
-  rule: {
-    id: "<id>",
-    type: "<value>",
-  },
+  regions: [],
 };
 ```
 
 ## Fields
 
-| Field                            | Type                             | Required                         | Description                      |
-| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
-| `rule`                           | [models.Rule](../models/rule.md) | :heavy_check_mark:               | N/A                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `regions`          | *string*[]         | :heavy_check_mark: | N/A                |

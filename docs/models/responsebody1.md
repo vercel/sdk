@@ -3,15 +3,12 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBody1 } from "@vercel/sdk/models/statusop.js";
+import { ResponseBody1 } from "@vercel/sdk/models/listaccessgroupsop.js";
 
-let value: ResponseBody1 = {
-  status: "<value>",
-};
+let value: ResponseBody1 = {};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `status`           | *string*           | :heavy_check_mark: | N/A                |
+| Field       | Type        | Required    | Description |
+| ----------- | ----------- | ----------- | ----------- |

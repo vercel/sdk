@@ -5,25 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFive } from "@vercel/sdk/models/sourceimages.js";
+import { TwoHundredAndFive } from "@vercel/sdk/models/payloadspeedinsightsfree.js";
 
 let value: TwoHundredAndFive = {
-  id: "<id>",
-  prev: {
-    fallbackEnvironment: "<value>",
-    name: "<value>",
-    slug: "<value>",
-  },
+  enabled: true,
 };
 ```
 
 ## Fields
 
-| Field                            | Type                             | Required                         | Description                      |
-| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
-| `enablePolyrepoBranchRouting`    | *boolean*                        | :heavy_minus_sign:               | N/A                              |
-| `fallbackEnvironment`            | *string*                         | :heavy_minus_sign:               | N/A                              |
-| `id`                             | *string*                         | :heavy_check_mark:               | N/A                              |
-| `name`                           | *string*                         | :heavy_minus_sign:               | N/A                              |
-| `prev`                           | [models.Prev](../models/prev.md) | :heavy_check_mark:               | N/A                              |
-| `slug`                           | *string*                         | :heavy_minus_sign:               | N/A                              |
+| Field                     | Type                      | Required                  | Description               |
+| ------------------------- | ------------------------- | ------------------------- | ------------------------- |
+| `allowedIntegrationCount` | *number*                  | :heavy_minus_sign:        | N/A                       |
+| `allowedIntegrationIds`   | *string*[]                | :heavy_minus_sign:        | N/A                       |
+| `enabled`                 | *boolean*                 | :heavy_check_mark:        | N/A                       |

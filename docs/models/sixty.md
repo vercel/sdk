@@ -14,8 +14,10 @@ let value: Sixty = {
 
 ## Fields
 
-| Field                 | Type                  | Required              | Description           |
-| --------------------- | --------------------- | --------------------- | --------------------- |
-| `appId`               | *string*              | :heavy_minus_sign:    | N/A                   |
-| `appName`             | *string*              | :heavy_check_mark:    | N/A                   |
-| `secretLastFourChars` | *string*              | :heavy_minus_sign:    | N/A                   |
+| Field                                | Type                                 | Required                             | Description                          |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| `after`                              | [models.After](../models/after.md)   | :heavy_minus_sign:                   | N/A                                  |
+| `appId`                              | *string*                             | :heavy_minus_sign:                   | N/A                                  |
+| `appName`                            | *string*                             | :heavy_check_mark:                   | N/A                                  |
+| `before`                             | [models.Before](../models/before.md) | :heavy_minus_sign:                   | N/A                                  |
+| `installationId`                     | *string*                             | :heavy_minus_sign:                   | N/A                                  |

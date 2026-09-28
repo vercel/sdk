@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Current } from "@vercel/sdk/models/twohundredandseventeen.js";
+import { Current } from "@vercel/sdk/models/twohundredandeighteen.js";
 
 let value: Current = {
   awsServiceName: "<value>",

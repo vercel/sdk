@@ -8,14 +8,14 @@ The payload of the event, if requested.
 import { NinetySeven } from "@vercel/sdk/models/fiftyfour.js";
 
 let value: NinetySeven = {
-  bitbucketAccountId: "<id>",
-  bitbucketLogin: "<value>",
+  gitlabLogin: "<value>",
+  gitlabUserId: 4466.53,
 };
 ```
 
 ## Fields
 
-| Field                | Type                 | Required             | Description          |
-| -------------------- | -------------------- | -------------------- | -------------------- |
-| `bitbucketAccountId` | *string*             | :heavy_check_mark:   | N/A                  |
-| `bitbucketLogin`     | *string*             | :heavy_check_mark:   | N/A                  |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `gitlabLogin`      | *string*           | :heavy_check_mark: | N/A                |
+| `gitlabUserId`     | *number*           | :heavy_check_mark: | N/A                |

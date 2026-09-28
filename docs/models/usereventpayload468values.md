@@ -1,0 +1,19 @@
+# UserEventPayload468Values
+
+## Example Usage
+
+```typescript
+import { UserEventPayload468Values } from "@vercel/sdk/models/fourhundredandsixteen.js";
+
+let value: UserEventPayload468Values = {
+  value: "<value>",
+  wildcards: false,
+};
+```
+
+## Fields
+
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `value`            | *string*           | :heavy_check_mark: | N/A                |
+| `wildcards`        | *boolean*          | :heavy_check_mark: | N/A                |

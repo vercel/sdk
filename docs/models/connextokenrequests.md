@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ConnexTokenRequests } from "@vercel/sdk/models/sourceimages.js";
+import { ConnexTokenRequests } from "@vercel/sdk/models/payloadspeedinsightsfree.js";
 
 let value: ConnexTokenRequests = {
   blockReason: "admin_override",

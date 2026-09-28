@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSeventyNine } from "@vercel/sdk/models/payloadcity.js";
+import { ThreeHundredAndSeventyNine } from "@vercel/sdk/models/usereventpayload353geolocationnames.js";
 
 let value: ThreeHundredAndSeventyNine = {
   enabled: false,
@@ -14,7 +14,7 @@ let value: ThreeHundredAndSeventyNine = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `domain`           | *string*           | :heavy_minus_sign: | N/A                |
-| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `enabled`                                                                | *boolean*                                                                | :heavy_check_mark:                                                       | N/A                                                                      |
+| `scope`                                                                  | [models.UserEventPayload379Scope](../models/usereventpayload379scope.md) | :heavy_minus_sign:                                                       | N/A                                                                      |

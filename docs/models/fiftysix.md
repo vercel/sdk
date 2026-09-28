@@ -7,14 +7,14 @@ The payload of the event, if requested.
 ```typescript
 import { FiftySix } from "@vercel/sdk/models/fiftyfour.js";
 
-let value: FiftySix = {
-  appName: "<value>",
-};
+let value: FiftySix = {};
 ```
 
 ## Fields
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `appId`            | *string*           | :heavy_minus_sign: | N/A                |
-| `appName`          | *string*           | :heavy_check_mark: | N/A                |
+| `alias`            | *string*           | :heavy_minus_sign: | N/A                |
+| `aliasId`          | *string*           | :heavy_minus_sign: | N/A                |
+| `userId`           | *string*           | :heavy_minus_sign: | N/A                |
+| `username`         | *string*           | :heavy_minus_sign: | N/A                |

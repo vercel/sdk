@@ -3,19 +3,19 @@
 
 ## Supported Types
 
-### `models.ResponseBody1`
+### `models.StatusResponseBody1`
 
 ```typescript
-const value: models.ResponseBody1 = {
+const value: models.StatusResponseBody1 = {
   status: "<value>",
 };
 ```
 
-### `models.ResponseBody2`
+### `models.StatusResponseBody2`
 
 ```typescript
-const value: models.ResponseBody2 = {
-  status: "enabled",
+const value: models.StatusResponseBody2 = {
+  status: "disabled",
 };
 ```
 

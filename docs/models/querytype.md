@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { QueryType } from "@vercel/sdk/models/sourceimages.js";
+import { QueryType } from "@vercel/sdk/models/payloadspeedinsightsfree.js";
 
 let value: QueryType = "user";
 ```

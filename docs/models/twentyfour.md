@@ -8,14 +8,30 @@ The payload of the event, if requested.
 import { TwentyFour } from "@vercel/sdk/models/userevent.js";
 
 let value: TwentyFour = {
-  amount: "961.56",
-  purchaseIntentId: "<id>",
+  added: [
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
+  ],
+  changed: [],
+  credential: {
+    id: "<id>",
+    name: "<value>",
+    providerSlug: "<value>",
+  },
+  removed: [
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
+  ],
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `amount`           | *string*           | :heavy_check_mark: | N/A                |
-| `purchaseIntentId` | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                      | Type                                                       | Required                                                   | Description                                                |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `added`                                                    | *string*[]                                                 | :heavy_check_mark:                                         | N/A                                                        |
+| `changed`                                                  | *string*[]                                                 | :heavy_check_mark:                                         | N/A                                                        |
+| `credential`                                               | [models.PayloadCredential](../models/payloadcredential.md) | :heavy_check_mark:                                         | N/A                                                        |
+| `removed`                                                  | *string*[]                                                 | :heavy_check_mark:                                         | N/A                                                        |

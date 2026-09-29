@@ -8,10 +8,7 @@ The payload of the event, if requested.
 import { TwoHundredAndEleven } from "@vercel/sdk/models/sourceimages.js";
 
 let value: TwoHundredAndEleven = {
-  name: "<value>",
-  organizationId: "<id>",
-  rootTeamId: "<id>",
-  slug: "<value>",
+  projectName: "<value>",
 };
 ```
 
@@ -19,7 +16,5 @@ let value: TwoHundredAndEleven = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
-| `organizationId`   | *string*           | :heavy_check_mark: | N/A                |
-| `rootTeamId`       | *string*           | :heavy_check_mark: | N/A                |
-| `slug`             | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_minus_sign: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |

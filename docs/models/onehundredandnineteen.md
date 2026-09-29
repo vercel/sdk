@@ -8,11 +8,11 @@ The payload of the event, if requested.
 import { OneHundredAndNineteen } from "@vercel/sdk/models/usereventjobaction.js";
 
 let value: OneHundredAndNineteen = {
-  domain: "friendly-laughter.net",
-  id: "<id>",
-  name: "<value>",
-  type: "<value>",
-  value: "<value>",
+  deploymentId: "<id>",
+  deploymentName: "<value>",
+  deploymentUrl: "https://impish-consistency.net",
+  projectId: "<id>",
+  projectName: "<value>",
 };
 ```
 
@@ -20,9 +20,8 @@ let value: OneHundredAndNineteen = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `domain`           | *string*           | :heavy_check_mark: | N/A                |
-| `id`               | *string*           | :heavy_check_mark: | N/A                |
-| `mxPriority`       | *number*           | :heavy_minus_sign: | N/A                |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
-| `type`             | *string*           | :heavy_check_mark: | N/A                |
-| `value`            | *string*           | :heavy_check_mark: | N/A                |
+| `deploymentId`     | *string*           | :heavy_check_mark: | N/A                |
+| `deploymentName`   | *string*           | :heavy_check_mark: | N/A                |
+| `deploymentUrl`    | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |

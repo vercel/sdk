@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetDeploymentHasDeploymentsResponseType } from "@vercel/sdk/models/getdeploymentservicestrigger.js";
+import { GetDeploymentHasDeploymentsResponseType } from "@vercel/sdk/models/getdeploymentservicesrouteprefixsource.js";
 
 let value: GetDeploymentHasDeploymentsResponseType = "header";
 ```

@@ -5,21 +5,18 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { SixtyFive } from "@vercel/sdk/models/fiftyfour.js";
+import { SixtyFive } from "@vercel/sdk/models/fiftysix.js";
 
 let value: SixtyFive = {
-  amount: 5100.81,
-  invoiceId: "<id>",
-  lineItemCount: 3227.67,
-  refundReason: "<value>",
+  autoExposeSystemEnvs: false,
+  projectName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `amount`           | *number*           | :heavy_check_mark: | N/A                |
-| `invoiceId`        | *string*           | :heavy_check_mark: | N/A                |
-| `lineItemCount`    | *number*           | :heavy_check_mark: | N/A                |
-| `refundReason`     | *string*           | :heavy_check_mark: | N/A                |
+| Field                  | Type                   | Required               | Description            |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `autoExposeSystemEnvs` | *boolean*              | :heavy_check_mark:     | N/A                    |
+| `projectId`            | *string*               | :heavy_minus_sign:     | N/A                    |
+| `projectName`          | *string*               | :heavy_check_mark:     | N/A                    |

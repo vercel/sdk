@@ -5,20 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndTwentyTwo } from "@vercel/sdk/models/twohundredandseventeen.js";
+import { TwoHundredAndTwentyTwo } from "@vercel/sdk/models/twohundredandtwenty.js";
 
 let value: TwoHundredAndTwentyTwo = {
-  cause: "<value>",
-  ownerId: "<id>",
-  source: "<value>",
+  mode: "organization",
+  organizationId: "<id>",
+  previousMode: "team",
+  teamId: "<id>",
+  teamName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `cause`            | *string*           | :heavy_check_mark: | N/A                |
-| `ownerId`          | *string*           | :heavy_check_mark: | N/A                |
-| `reason`           | *string*           | :heavy_minus_sign: | N/A                |
-| `source`           | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `mode`                                                                           | [models.UserEventPayloadMode](../models/usereventpayloadmode.md)                 | :heavy_check_mark:                                                               | N/A                                                                              |
+| `organizationId`                                                                 | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
+| `previousMode`                                                                   | [models.UserEventPayloadPreviousMode](../models/usereventpayloadpreviousmode.md) | :heavy_check_mark:                                                               | N/A                                                                              |
+| `teamId`                                                                         | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
+| `teamName`                                                                       | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |

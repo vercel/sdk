@@ -8,14 +8,13 @@ The payload of the event, if requested.
 import { OneHundredAndNinetySeven } from "@vercel/sdk/models/sourceimages.js";
 
 let value: OneHundredAndNinetySeven = {
-  login: "Jacky.Blanda50",
-  provider: "gitlab",
+  logDrainUrl: "https://blond-farmer.name/",
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `login`                                                                        | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `provider`                                                                     | [models.UserEventPayload197Provider](../models/usereventpayload197provider.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `integrationName`  | *string*           | :heavy_minus_sign: | N/A                |
+| `logDrainUrl`      | *string*           | :heavy_check_mark: | N/A                |

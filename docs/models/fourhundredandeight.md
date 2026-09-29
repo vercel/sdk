@@ -5,17 +5,13 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndEight } from "@vercel/sdk/models/payloadcity.js";
+import { FourHundredAndEight } from "@vercel/sdk/models/usereventpayload354geolocationnames.js";
 
-let value: FourHundredAndEight = {
-  enabled: false,
-  scope: "dashboard",
-};
+let value: FourHundredAndEight = {};
 ```
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `enabled`                                                                | *boolean*                                                                | :heavy_check_mark:                                                       | N/A                                                                      |
-| `scope`                                                                  | [models.UserEventPayload408Scope](../models/usereventpayload408scope.md) | :heavy_check_mark:                                                       | N/A                                                                      |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `remoteCaching`                                                  | [models.PayloadRemoteCaching](../models/payloadremotecaching.md) | :heavy_minus_sign:                                               | Represents configuration for remote caching                      |

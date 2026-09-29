@@ -184,6 +184,10 @@ export type GetProjectsResponseBodyProjectsBlock = {
     | GetProjectsResponseBodyProjectsRegisteredShaBlock
     | undefined;
   statusCode: number;
+  /**
+   * Plain thread ID, recorded separately from `caseId`.
+   */
+  threadId?: string | undefined;
 };
 
 export type GetProjectsHasProjectsResponse200ApplicationJSONResponseBody3ProjectsAbuseBlockHistoryValue =
@@ -272,6 +276,10 @@ export type GetProjectsBlockHistoryProjectsResponse4 = {
     | GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody1
     | GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody2;
   statusCode?: number | undefined;
+  /**
+   * Plain thread ID, recorded separately from `caseId`.
+   */
+  threadId?: string | undefined;
 };
 
 export type GetProjectsHasProjectsResponse200ApplicationJSONResponseBody3ProjectsValue =
@@ -350,6 +358,10 @@ export type GetProjectsBlockHistoryProjectsResponse3 = {
   route:
     | GetProjectsRouteProjectsResponse200ApplicationJson1
     | GetProjectsRouteProjectsResponse200ApplicationJson2;
+  /**
+   * Plain thread ID, recorded separately from `caseId`.
+   */
+  threadId?: string | undefined;
 };
 
 export type GetProjectsBlockHistoryProjectsResponse2 = {
@@ -360,6 +372,10 @@ export type GetProjectsBlockHistoryProjectsResponse2 = {
   createdAt: number;
   ineligibleForAppeal?: boolean | undefined;
   isCascading?: boolean | undefined;
+  /**
+   * Plain thread ID, recorded separately from `caseId`.
+   */
+  threadId?: string | undefined;
 };
 
 /**
@@ -387,6 +403,10 @@ export type GetProjectsBlockHistoryProjectsResponse1 = {
     | GetProjectsBlockHistoryProjectsResponseRegisteredShaBlock
     | undefined;
   statusCode: number;
+  /**
+   * Plain thread ID, recorded separately from `caseId`.
+   */
+  threadId?: string | undefined;
 };
 
 export type GetProjectsResponseBodyProjectsBlockHistory =
@@ -423,6 +443,10 @@ export type GetProjectsResponseBodyProjectsInterstitialHistory = {
   comment?: string | undefined;
   createdAt: number;
   reason?: string | undefined;
+  /**
+   * Plain thread ID, recorded separately from `caseId`.
+   */
+  threadId?: string | undefined;
 };
 
 export type GetProjectsResponseBodyProjectsAbuse = {
@@ -1723,6 +1747,7 @@ export const GetProjectsResponseBodyProjectsBlock$inboundSchema: z.ZodType<
     ),
   ),
   statusCode: types.number(),
+  threadId: types.optional(types.string()),
 });
 
 export function getProjectsResponseBodyProjectsBlockFromJSON(
@@ -2033,6 +2058,7 @@ export const GetProjectsBlockHistoryProjectsResponse4$inboundSchema: z.ZodType<
     ),
   ]),
   statusCode: types.optional(types.number()),
+  threadId: types.optional(types.string()),
 });
 
 export function getProjectsBlockHistoryProjectsResponse4FromJSON(
@@ -2349,6 +2375,7 @@ export const GetProjectsBlockHistoryProjectsResponse3$inboundSchema: z.ZodType<
       GetProjectsRouteProjectsResponse200ApplicationJson2$inboundSchema
     ),
   ]),
+  threadId: types.optional(types.string()),
 });
 
 export function getProjectsBlockHistoryProjectsResponse3FromJSON(
@@ -2380,6 +2407,7 @@ export const GetProjectsBlockHistoryProjectsResponse2$inboundSchema: z.ZodType<
   createdAt: types.number(),
   ineligibleForAppeal: types.optional(types.boolean()),
   isCascading: types.optional(types.boolean()),
+  threadId: types.optional(types.string()),
 });
 
 export function getProjectsBlockHistoryProjectsResponse2FromJSON(
@@ -2445,6 +2473,7 @@ export const GetProjectsBlockHistoryProjectsResponse1$inboundSchema: z.ZodType<
     ),
   ),
   statusCode: types.number(),
+  threadId: types.optional(types.string()),
 });
 
 export function getProjectsBlockHistoryProjectsResponse1FromJSON(
@@ -2538,6 +2567,7 @@ export const GetProjectsResponseBodyProjectsInterstitialHistory$inboundSchema:
     comment: types.optional(types.string()),
     createdAt: types.number(),
     reason: types.optional(types.string()),
+    threadId: types.optional(types.string()),
   });
 
 export function getProjectsResponseBodyProjectsInterstitialHistoryFromJSON(

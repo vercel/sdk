@@ -28,3 +28,4 @@ let value: UploadProjectAvatarBlockHistory4 = {
 | `isCascading`                                         | *boolean*                                             | :heavy_minus_sign:                                    | N/A                                                   |
 | `route`                                               | *models.UploadProjectAvatarBlockHistoryProjectsRoute* | :heavy_check_mark:                                    | N/A                                                   |
 | `statusCode`                                          | *number*                                              | :heavy_minus_sign:                                    | N/A                                                   |
+| `threadId`                                            | *string*                                              | :heavy_minus_sign:                                    | Plain thread ID, recorded separately from `caseId`.   |

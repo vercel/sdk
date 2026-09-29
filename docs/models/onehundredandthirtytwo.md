@@ -9,7 +9,6 @@ import { OneHundredAndThirtyTwo } from "@vercel/sdk/models/usereventjobaction.js
 
 let value: OneHundredAndThirtyTwo = {
   domain: "corny-sonar.name",
-  zone: true,
 };
 ```
 
@@ -18,4 +17,3 @@ let value: OneHundredAndThirtyTwo = {
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `domain`           | *string*           | :heavy_check_mark: | N/A                |
-| `zone`             | *boolean*          | :heavy_check_mark: | N/A                |

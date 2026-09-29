@@ -95,14 +95,29 @@ import {
   GetDeploymentServicesEnv$inboundSchema,
   GetDeploymentServicesRoutePrefixSource,
   GetDeploymentServicesRoutePrefixSource$inboundSchema,
-  GetDeploymentServicesSchedule,
-  GetDeploymentServicesSchedule$inboundSchema,
-  GetDeploymentServicesTopics,
-  GetDeploymentServicesTopics$inboundSchema,
-  GetDeploymentServicesTrigger,
-  GetDeploymentServicesTrigger$inboundSchema,
-} from "./getdeploymentservicestrigger.js";
+} from "./getdeploymentservicesrouteprefixsource.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type GetDeploymentServicesSchedule = string | Array<string>;
+
+export type GetDeploymentTopics2 = {
+  initialDelaySeconds?: number | undefined;
+  retryAfterSeconds?: number | undefined;
+  topic: string;
+};
+
+export type GetDeploymentServicesTopics =
+  | Array<string>
+  | Array<GetDeploymentTopics2>;
+
+export const GetDeploymentServicesTrigger = {
+  Queue: "queue",
+  Schedule: "schedule",
+  Workflow: "workflow",
+} as const;
+export type GetDeploymentServicesTrigger = ClosedEnum<
+  typeof GetDeploymentServicesTrigger
+>;
 
 export const GetDeploymentServicesType = {
   Cron: "cron",
@@ -131,10 +146,10 @@ export type GetDeploymentServices1 = {
   routePrefix?: string | undefined;
   routePrefixSource?: GetDeploymentServicesRoutePrefixSource | undefined;
   runtime?: string | undefined;
-  schedule?: GetDeploymentServicesSchedule | undefined;
+  schedule?: string | Array<string> | undefined;
   schema: "experimentalServices";
   subdomain?: string | undefined;
-  topics?: GetDeploymentServicesTopics | undefined;
+  topics?: Array<string> | Array<GetDeploymentTopics2> | undefined;
   trigger?: GetDeploymentServicesTrigger | undefined;
   type: GetDeploymentServicesType;
   workspace: string;
@@ -545,6 +560,69 @@ export type GetDeploymentResponseBody =
   | GetDeploymentResponseBody1;
 
 /** @internal */
+export const GetDeploymentServicesSchedule$inboundSchema: z.ZodType<
+  GetDeploymentServicesSchedule,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), z.array(types.string())]);
+
+export function getDeploymentServicesScheduleFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentServicesSchedule, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentServicesSchedule$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentServicesSchedule' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentTopics2$inboundSchema: z.ZodType<
+  GetDeploymentTopics2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  initialDelaySeconds: types.optional(types.number()),
+  retryAfterSeconds: types.optional(types.number()),
+  topic: types.string(),
+});
+
+export function getDeploymentTopics2FromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentTopics2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentTopics2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentTopics2' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentServicesTopics$inboundSchema: z.ZodType<
+  GetDeploymentServicesTopics,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.array(types.string()),
+  z.array(z.lazy(() => GetDeploymentTopics2$inboundSchema)),
+]);
+
+export function getDeploymentServicesTopicsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentServicesTopics, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentServicesTopics$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentServicesTopics' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentServicesTrigger$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentServicesTrigger
+> = z.nativeEnum(GetDeploymentServicesTrigger);
+
+/** @internal */
 export const GetDeploymentServicesType$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentServicesType
 > = z.nativeEnum(GetDeploymentServicesType);
@@ -570,10 +648,17 @@ export const GetDeploymentServices1$inboundSchema: z.ZodType<
     GetDeploymentServicesRoutePrefixSource$inboundSchema,
   ),
   runtime: types.optional(types.string()),
-  schedule: types.optional(GetDeploymentServicesSchedule$inboundSchema),
+  schedule: types.optional(
+    smartUnion([types.string(), z.array(types.string())]),
+  ),
   schema: types.literal("experimentalServices"),
   subdomain: types.optional(types.string()),
-  topics: types.optional(GetDeploymentServicesTopics$inboundSchema),
+  topics: types.optional(
+    smartUnion([
+      z.array(types.string()),
+      z.array(z.lazy(() => GetDeploymentTopics2$inboundSchema)),
+    ]),
+  ),
   trigger: types.optional(GetDeploymentServicesTrigger$inboundSchema),
   type: GetDeploymentServicesType$inboundSchema,
   workspace: types.string(),

@@ -8,12 +8,16 @@ The payload of the event, if requested.
 import { TwoHundredAndTwo } from "@vercel/sdk/models/sourceimages.js";
 
 let value: TwoHundredAndTwo = {
-  periods: [],
+  projectId: "<id>",
+  projectName: "<value>",
+  toDeploymentId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                    | Type                                     | Required                                 | Description                              |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| `periods`                                | [models.Periods](../models/periods.md)[] | :heavy_check_mark:                       | N/A                                      |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `toDeploymentId`   | *string*           | :heavy_check_mark: | N/A                |

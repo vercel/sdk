@@ -149,7 +149,7 @@ export type NamedSandbox = {
    */
   failoverRegions?: Array<FailoverRegions> | undefined;
   /**
-   * Digest-pinned reference of the container image the sandbox was created from, when it was created from an image ("{repository}@{manifestDigest}").
+   * Owner-qualified, digest-pinned reference of the container image the sandbox was created from ("{team}/{project}/{repository}@{manifestDigest}").
    */
   image?: string | undefined;
   /**

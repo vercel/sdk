@@ -8,22 +8,18 @@ The payload of the event, if requested.
 import { OneHundredAndTwentyEight } from "@vercel/sdk/models/usereventjobaction.js";
 
 let value: OneHundredAndTwentyEight = {
-  id: "<id>",
   name: "<value>",
-  nameservers: [
-    "<value 1>",
-  ],
-  previousServiceType: "<value>",
-  serviceType: "<value>",
+  ownerName: "<value>",
+  teamId: "<id>",
+  userId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                 | Type                  | Required              | Description           |
-| --------------------- | --------------------- | --------------------- | --------------------- |
-| `id`                  | *string*              | :heavy_check_mark:    | N/A                   |
-| `name`                | *string*              | :heavy_check_mark:    | N/A                   |
-| `nameservers`         | *string*[]            | :heavy_check_mark:    | N/A                   |
-| `previousServiceType` | *string*              | :heavy_check_mark:    | N/A                   |
-| `serviceType`         | *string*              | :heavy_check_mark:    | N/A                   |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `ownerName`        | *string*           | :heavy_check_mark: | N/A                |
+| `teamId`           | *string*           | :heavy_check_mark: | N/A                |
+| `userId`           | *string*           | :heavy_check_mark: | N/A                |

@@ -5,16 +5,20 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndThirtyFive } from "@vercel/sdk/models/fourhundredandfourteen.js";
+import { FourHundredAndThirtyFive } from "@vercel/sdk/models/fourhundredandseventeen.js";
 
 let value: FourHundredAndThirtyFive = {
-  remaining: 1907.99,
+  allowedMethods: [],
+  firstFactor: "<value>",
+  flowId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `context`                                                    | [models.Context](../models/context.md)                       | :heavy_minus_sign:                                           | Absent on events predating the field; those were all logins. |
-| `remaining`                                                  | *number*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| Field                                                  | Type                                                   | Required                                               | Description                                            |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| `allowedMethods`                                       | [models.AllowedMethods](../models/allowedmethods.md)[] | :heavy_check_mark:                                     | N/A                                                    |
+| `firstFactor`                                          | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
+| `flowId`                                               | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
+| `loginSessionId`                                       | *string*                                               | :heavy_minus_sign:                                     | N/A                                                    |

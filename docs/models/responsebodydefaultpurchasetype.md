@@ -5,7 +5,7 @@ The build machine tier included with the customer's plan. For most customers thi
 ## Example Usage
 
 ```typescript
-import { ResponseBodyDefaultPurchaseType } from "@vercel/sdk/models/createdeploymentmissingdeploymentsresponse200applicationjsonresponsebodytype.js";
+import { ResponseBodyDefaultPurchaseType } from "@vercel/sdk/models/createdeploymenthasdeploymentsresponse1.js";
 
 let value: ResponseBodyDefaultPurchaseType = "basic";
 ```

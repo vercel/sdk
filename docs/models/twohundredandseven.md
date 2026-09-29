@@ -8,25 +8,22 @@ The payload of the event, if requested.
 import { TwoHundredAndSeven } from "@vercel/sdk/models/sourceimages.js";
 
 let value: TwoHundredAndSeven = {
-  group: {
-    id: "<id>",
+  id: "<id>",
+  prev: {
+    fallbackEnvironment: "<value>",
     name: "<value>",
     slug: "<value>",
-  },
-  prev: {
-    project: {},
-  },
-  project: {
-    id: "<id>",
-    name: "<value>",
   },
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `group`                                                                      | [models.PayloadGroup](../models/payloadgroup.md)                             | :heavy_check_mark:                                                           | N/A                                                                          |
-| `prev`                                                                       | [models.PayloadPrev](../models/payloadprev.md)                               | :heavy_check_mark:                                                           | N/A                                                                          |
-| `project`                                                                    | [models.UserEventPayload207Project](../models/usereventpayload207project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field                            | Type                             | Required                         | Description                      |
+| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
+| `enablePolyrepoBranchRouting`    | *boolean*                        | :heavy_minus_sign:               | N/A                              |
+| `fallbackEnvironment`            | *string*                         | :heavy_minus_sign:               | N/A                              |
+| `id`                             | *string*                         | :heavy_check_mark:               | N/A                              |
+| `name`                           | *string*                         | :heavy_minus_sign:               | N/A                              |
+| `prev`                           | [models.Prev](../models/prev.md) | :heavy_check_mark:               | N/A                              |
+| `slug`                           | *string*                         | :heavy_minus_sign:               | N/A                              |

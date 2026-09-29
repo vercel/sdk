@@ -8,14 +8,18 @@ The payload of the event, if requested.
 import { OneHundredAndFiftyThree } from "@vercel/sdk/models/usereventjobaction.js";
 
 let value: OneHundredAndFiftyThree = {
-  email: "Wilmer29@yahoo.com",
-  name: "<value>",
+  edgeConfigId: "<id>",
+  edgeConfigSlug: "<value>",
+  edgeConfigTokenId: "<id>",
+  label: "<value>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `email`            | *string*           | :heavy_check_mark: | N/A                |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
+| Field               | Type                | Required            | Description         |
+| ------------------- | ------------------- | ------------------- | ------------------- |
+| `edgeConfigId`      | *string*            | :heavy_check_mark:  | N/A                 |
+| `edgeConfigSlug`    | *string*            | :heavy_check_mark:  | N/A                 |
+| `edgeConfigTokenId` | *string*            | :heavy_check_mark:  | N/A                 |
+| `label`             | *string*            | :heavy_check_mark:  | N/A                 |

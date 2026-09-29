@@ -7,13 +7,19 @@ The payload of the event, if requested.
 ```typescript
 import { OneHundredAndFiftySix } from "@vercel/sdk/models/usereventjobaction.js";
 
-let value: OneHundredAndFiftySix = {};
+let value: OneHundredAndFiftySix = {
+  previousRule: {
+    email: "Joana_Ondricka@hotmail.com",
+  },
+  team: {
+    id: "<id>",
+  },
+};
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `deletedUid`                                   | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `deletedUser`                                  | [models.DeletedUser](../models/deleteduser.md) | :heavy_minus_sign:                             | N/A                                            |
-| `emailDomain`                                  | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `previousRule`                                                         | [models.PreviousRule](../models/previousrule.md)                       | :heavy_check_mark:                                                     | N/A                                                                    |
+| `team`                                                                 | [models.UserEventPayload156Team](../models/usereventpayload156team.md) | :heavy_check_mark:                                                     | N/A                                                                    |

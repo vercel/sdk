@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayloadPassport } from "@vercel/sdk/models/twohundredandseventeen.js";
+import { UserEventPayloadPassport } from "@vercel/sdk/models/twohundredandtwenty.js";
 
 let value: UserEventPayloadPassport = {
   connectorId: "<id>",
@@ -16,4 +16,4 @@ let value: UserEventPayloadPassport = {
 | Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
 | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
 | `connectorId`                                                                              | *string*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
-| `deploymentType`                                                                           | [models.UserEventPayload238DeploymentType](../models/usereventpayload238deploymenttype.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `deploymentType`                                                                           | [models.UserEventPayload240DeploymentType](../models/usereventpayload240deploymenttype.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |

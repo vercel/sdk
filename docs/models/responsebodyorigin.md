@@ -5,7 +5,7 @@ Reference back to the entity on the platform that initiated the deployment.
 ## Example Usage
 
 ```typescript
-import { ResponseBodyOrigin } from "@vercel/sdk/models/createdeploymentmissingdeploymentsresponse200applicationjsonresponsebodytype.js";
+import { ResponseBodyOrigin } from "@vercel/sdk/models/createdeploymenthasdeploymentsresponse1.js";
 
 let value: ResponseBodyOrigin = {
   type: "id",

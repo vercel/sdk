@@ -47,8 +47,10 @@ import {
   ResponseBodyGitRepo$inboundSchema,
 } from "./createdeploymentgitsource1.js";
 import {
-  CreateDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBodyType,
-  CreateDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBodyType$inboundSchema,
+  CreateDeploymentHasDeploymentsResponse1,
+  CreateDeploymentHasDeploymentsResponse1$inboundSchema,
+  CreateDeploymentHasDeploymentsResponse2,
+  CreateDeploymentHasDeploymentsResponse2$inboundSchema,
   CreateDeploymentResponseBodyDeploymentsReadyState,
   CreateDeploymentResponseBodyDeploymentsReadyState$inboundSchema,
   CreateDeploymentResponseBodyGitSource,
@@ -71,8 +73,6 @@ import {
   CreateDeploymentResponseBodyReadySubstate$inboundSchema,
   CreateDeploymentServicesDeploymentsBuilder,
   CreateDeploymentServicesDeploymentsBuilder$inboundSchema,
-  CreateDeploymentServicesDeploymentsHas,
-  CreateDeploymentServicesDeploymentsHas$inboundSchema,
   CreateDeploymentServicesFunctions,
   CreateDeploymentServicesFunctions$inboundSchema,
   CreateDeploymentServicesHeaders,
@@ -95,8 +95,25 @@ import {
   ResponseBodySeatBlock$inboundSchema,
   ServicesBindings,
   ServicesBindings$inboundSchema,
-} from "./createdeploymentmissingdeploymentsresponse200applicationjsonresponsebodytype.js";
+} from "./createdeploymenthasdeploymentsresponse1.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type CreateDeploymentServicesDeploymentsHas =
+  | CreateDeploymentHasDeploymentsResponse1
+  | (CreateDeploymentHasDeploymentsResponse2 & { type: "cookie" })
+  | (CreateDeploymentHasDeploymentsResponse2 & { type: "header" })
+  | (CreateDeploymentHasDeploymentsResponse2 & { type: "query" });
+
+export const CreateDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBodyType =
+  {
+    Cookie: "cookie",
+    Header: "header",
+    Query: "query",
+  } as const;
+export type CreateDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBodyType =
+  ClosedEnum<
+    typeof CreateDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBodyType
+  >;
 
 export type CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2RedirectsMissing2Eq =
   | string
@@ -170,7 +187,14 @@ export type CreateDeploymentServicesDeploymentsMissing =
 export type CreateDeploymentServicesRedirects = {
   destination: string;
   env?: Array<string> | undefined;
-  has?: Array<CreateDeploymentServicesDeploymentsHas> | undefined;
+  has?:
+    | Array<
+      | CreateDeploymentHasDeploymentsResponse1
+      | (CreateDeploymentHasDeploymentsResponse2 & { type: "cookie" })
+      | (CreateDeploymentHasDeploymentsResponse2 & { type: "header" })
+      | (CreateDeploymentHasDeploymentsResponse2 & { type: "query" })
+    >
+    | undefined;
   missing?:
     | Array<
       | CreateDeploymentMissingDeploymentsResponse1
@@ -1021,6 +1045,32 @@ export type CreateDeploymentServicesProjectSettings = {
   sourceFilesOutsideRootDirectory?: boolean | undefined;
 };
 
+export type CreateDeploymentServicesEntrypoints = {
+  /**
+   * Runtime-specific entrypoint locator from `vercel.json`.
+   */
+  entrypoint: string;
+  /**
+   * Names of the schedules that dispatch to this entrypoint, in config order.
+   */
+  scheduleNames: Array<string>;
+  /**
+   * Project-relative source file that contains the entrypoint.
+   */
+  sourceFile: string;
+};
+
+/**
+ * Set when this build produces a function for schedule entrypoints.
+ */
+export type CreateDeploymentServicesScheduleFunction = {
+  entrypoints: Array<CreateDeploymentServicesEntrypoints>;
+  /**
+   * Function output path every schedule in this build targets.
+   */
+  outputPath: string;
+};
+
 export type CreateDeploymentServicesConfig = {
   buildCommand?: string | undefined;
   /**
@@ -1052,6 +1102,10 @@ export type CreateDeploymentServicesConfig = {
   outputDirectory?: string | undefined;
   projectSettings?: CreateDeploymentServicesProjectSettings | undefined;
   rust?: string | undefined;
+  /**
+   * Set when this build produces a function for schedule entrypoints.
+   */
+  scheduleFunction?: CreateDeploymentServicesScheduleFunction | undefined;
   /**
    * Owning service name; scopes per-function config such as the v2beta consumer.
    */
@@ -1546,6 +1600,43 @@ export type CreateDeploymentResponseBody =
   | CreateDeploymentResponseBody1;
 
 /** @internal */
+export const CreateDeploymentServicesDeploymentsHas$inboundSchema: z.ZodType<
+  CreateDeploymentServicesDeploymentsHas,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  CreateDeploymentHasDeploymentsResponse1$inboundSchema,
+  CreateDeploymentHasDeploymentsResponse2$inboundSchema.and(
+    z.object({ type: z.literal("cookie") }),
+  ),
+  CreateDeploymentHasDeploymentsResponse2$inboundSchema.and(
+    z.object({ type: z.literal("header") }),
+  ),
+  CreateDeploymentHasDeploymentsResponse2$inboundSchema.and(
+    z.object({ type: z.literal("query") }),
+  ),
+]);
+
+export function createDeploymentServicesDeploymentsHasFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateDeploymentServicesDeploymentsHas, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateDeploymentServicesDeploymentsHas$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentServicesDeploymentsHas' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBodyType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBodyType
+  > = z.nativeEnum(
+    CreateDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBodyType,
+  );
+
+/** @internal */
 export const CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2RedirectsMissing2Eq$inboundSchema:
   z.ZodType<
     CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2RedirectsMissing2Eq,
@@ -1823,7 +1914,20 @@ export const CreateDeploymentServicesRedirects$inboundSchema: z.ZodType<
   destination: types.string(),
   env: types.optional(z.array(types.string())),
   has: types.optional(
-    z.array(CreateDeploymentServicesDeploymentsHas$inboundSchema),
+    z.array(
+      z.union([
+        CreateDeploymentHasDeploymentsResponse1$inboundSchema,
+        CreateDeploymentHasDeploymentsResponse2$inboundSchema.and(
+          z.object({ type: z.literal("cookie") }),
+        ),
+        CreateDeploymentHasDeploymentsResponse2$inboundSchema.and(
+          z.object({ type: z.literal("header") }),
+        ),
+        CreateDeploymentHasDeploymentsResponse2$inboundSchema.and(
+          z.object({ type: z.literal("query") }),
+        ),
+      ]),
+    ),
   ),
   missing: types.optional(
     z.array(z.union([
@@ -3992,6 +4096,56 @@ export function createDeploymentServicesProjectSettingsFromJSON(
 }
 
 /** @internal */
+export const CreateDeploymentServicesEntrypoints$inboundSchema: z.ZodType<
+  CreateDeploymentServicesEntrypoints,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  entrypoint: types.string(),
+  scheduleNames: z.array(types.string()),
+  sourceFile: types.string(),
+});
+
+export function createDeploymentServicesEntrypointsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateDeploymentServicesEntrypoints, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateDeploymentServicesEntrypoints$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentServicesEntrypoints' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateDeploymentServicesScheduleFunction$inboundSchema: z.ZodType<
+  CreateDeploymentServicesScheduleFunction,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  entrypoints: z.array(
+    z.lazy(() => CreateDeploymentServicesEntrypoints$inboundSchema),
+  ),
+  outputPath: types.string(),
+});
+
+export function createDeploymentServicesScheduleFunctionFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateDeploymentServicesScheduleFunction,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateDeploymentServicesScheduleFunction$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateDeploymentServicesScheduleFunction' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateDeploymentServicesConfig$inboundSchema: z.ZodType<
   CreateDeploymentServicesConfig,
   z.ZodTypeDef,
@@ -4033,6 +4187,9 @@ export const CreateDeploymentServicesConfig$inboundSchema: z.ZodType<
     z.lazy(() => CreateDeploymentServicesProjectSettings$inboundSchema),
   ),
   rust: types.optional(types.string()),
+  scheduleFunction: types.optional(
+    z.lazy(() => CreateDeploymentServicesScheduleFunction$inboundSchema),
+  ),
   serviceName: types.optional(types.string()),
   zeroConfig: types.optional(types.boolean()),
 });

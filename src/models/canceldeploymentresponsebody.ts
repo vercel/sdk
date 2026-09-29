@@ -9,6 +9,34 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
+  Bindings,
+  Bindings$inboundSchema,
+  CancelDeploymentMissingDeploymentsResponse1,
+  CancelDeploymentMissingDeploymentsResponse1$inboundSchema,
+  CancelDeploymentMissingDeploymentsResponse2,
+  CancelDeploymentMissingDeploymentsResponse2$inboundSchema,
+  CancelDeploymentResourceConfig,
+  CancelDeploymentResourceConfig$inboundSchema,
+  CancelDeploymentRoutes,
+  CancelDeploymentRoutes$inboundSchema,
+  CancelDeploymentServicesDeploymentsHas,
+  CancelDeploymentServicesDeploymentsHas$inboundSchema,
+  ReadySubstate,
+  ReadySubstate$inboundSchema,
+  SeatBlock,
+  SeatBlock$inboundSchema,
+  ServicesBuilder,
+  ServicesBuilder$inboundSchema,
+  ServicesDestination,
+  ServicesDestination$inboundSchema,
+  ServicesFunctions,
+  ServicesFunctions$inboundSchema,
+  ServicesHeaders,
+  ServicesHeaders$inboundSchema,
+  ServicesRedirects,
+  ServicesRedirects$inboundSchema,
+} from "./canceldeploymentmissingdeploymentsresponse1.js";
+import {
   AliasAssignedAt,
   AliasAssignedAt$inboundSchema,
   AliasError,
@@ -75,34 +103,17 @@ import {
   ReadyState$inboundSchema,
 } from "./readystate.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-import {
-  Bindings,
-  Bindings$inboundSchema,
-  CancelDeploymentResourceConfig,
-  CancelDeploymentResourceConfig$inboundSchema,
-  CancelDeploymentRoutes,
-  CancelDeploymentRoutes$inboundSchema,
-  CancelDeploymentServicesDeploymentsHas,
-  CancelDeploymentServicesDeploymentsHas$inboundSchema,
-  CancelDeploymentServicesDeploymentsMissing,
-  CancelDeploymentServicesDeploymentsMissing$inboundSchema,
-  ReadySubstate,
-  ReadySubstate$inboundSchema,
-  SeatBlock,
-  SeatBlock$inboundSchema,
-  ServicesBuilder,
-  ServicesBuilder$inboundSchema,
-  ServicesDestination,
-  ServicesDestination$inboundSchema,
-  ServicesFunctions,
-  ServicesFunctions$inboundSchema,
-  ServicesHeaders,
-  ServicesHeaders$inboundSchema,
-  ServicesOp,
-  ServicesOp$inboundSchema,
-  ServicesRedirects,
-  ServicesRedirects$inboundSchema,
-} from "./servicesop.js";
+
+export type CancelDeploymentServicesDeploymentsMissing =
+  | CancelDeploymentMissingDeploymentsResponse1
+  | (CancelDeploymentMissingDeploymentsResponse2 & { type: "cookie" })
+  | (CancelDeploymentMissingDeploymentsResponse2 & { type: "header" })
+  | (CancelDeploymentMissingDeploymentsResponse2 & { type: "query" });
+
+export const ServicesOp = {
+  Set: "set",
+} as const;
+export type ServicesOp = ClosedEnum<typeof ServicesOp>;
 
 export const CancelDeploymentServicesDeploymentsResponseType = {
   RequestPath: "request.path",
@@ -122,7 +133,14 @@ export type Rewrites = {
   destination: ServicesDestination;
   env?: Array<string> | undefined;
   has?: Array<CancelDeploymentServicesDeploymentsHas> | undefined;
-  missing?: Array<CancelDeploymentServicesDeploymentsMissing> | undefined;
+  missing?:
+    | Array<
+      | CancelDeploymentMissingDeploymentsResponse1
+      | (CancelDeploymentMissingDeploymentsResponse2 & { type: "cookie" })
+      | (CancelDeploymentMissingDeploymentsResponse2 & { type: "header" })
+      | (CancelDeploymentMissingDeploymentsResponse2 & { type: "query" })
+    >
+    | undefined;
   respectOriginCacheControl?: boolean | undefined;
   source: string;
   statusCode?: number | undefined;
@@ -695,6 +713,32 @@ export type ServicesProjectSettings = {
   sourceFilesOutsideRootDirectory?: boolean | undefined;
 };
 
+export type Entrypoints = {
+  /**
+   * Runtime-specific entrypoint locator from `vercel.json`.
+   */
+  entrypoint: string;
+  /**
+   * Names of the schedules that dispatch to this entrypoint, in config order.
+   */
+  scheduleNames: Array<string>;
+  /**
+   * Project-relative source file that contains the entrypoint.
+   */
+  sourceFile: string;
+};
+
+/**
+ * Set when this build produces a function for schedule entrypoints.
+ */
+export type ScheduleFunction = {
+  entrypoints: Array<Entrypoints>;
+  /**
+   * Function output path every schedule in this build targets.
+   */
+  outputPath: string;
+};
+
 export type ServicesConfig = {
   buildCommand?: string | undefined;
   /**
@@ -724,6 +768,10 @@ export type ServicesConfig = {
   outputDirectory?: string | undefined;
   projectSettings?: ServicesProjectSettings | undefined;
   rust?: string | undefined;
+  /**
+   * Set when this build produces a function for schedule entrypoints.
+   */
+  scheduleFunction?: ScheduleFunction | undefined;
   /**
    * Owning service name; scopes per-function config such as the v2beta consumer.
    */
@@ -1075,6 +1123,42 @@ export type CancelDeploymentResponseBody = {
 };
 
 /** @internal */
+export const CancelDeploymentServicesDeploymentsMissing$inboundSchema:
+  z.ZodType<CancelDeploymentServicesDeploymentsMissing, z.ZodTypeDef, unknown> =
+    z.union([
+      CancelDeploymentMissingDeploymentsResponse1$inboundSchema,
+      CancelDeploymentMissingDeploymentsResponse2$inboundSchema.and(
+        z.object({ type: z.literal("cookie") }),
+      ),
+      CancelDeploymentMissingDeploymentsResponse2$inboundSchema.and(
+        z.object({ type: z.literal("header") }),
+      ),
+      CancelDeploymentMissingDeploymentsResponse2$inboundSchema.and(
+        z.object({ type: z.literal("query") }),
+      ),
+    ]);
+
+export function cancelDeploymentServicesDeploymentsMissingFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CancelDeploymentServicesDeploymentsMissing,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CancelDeploymentServicesDeploymentsMissing$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CancelDeploymentServicesDeploymentsMissing' from JSON`,
+  );
+}
+
+/** @internal */
+export const ServicesOp$inboundSchema: z.ZodNativeEnum<typeof ServicesOp> = z
+  .nativeEnum(ServicesOp);
+
+/** @internal */
 export const CancelDeploymentServicesDeploymentsResponseType$inboundSchema:
   z.ZodNativeEnum<typeof CancelDeploymentServicesDeploymentsResponseType> = z
     .nativeEnum(CancelDeploymentServicesDeploymentsResponseType);
@@ -1113,7 +1197,20 @@ export const Rewrites$inboundSchema: z.ZodType<
     z.array(CancelDeploymentServicesDeploymentsHas$inboundSchema),
   ),
   missing: types.optional(
-    z.array(CancelDeploymentServicesDeploymentsMissing$inboundSchema),
+    z.array(
+      z.union([
+        CancelDeploymentMissingDeploymentsResponse1$inboundSchema,
+        CancelDeploymentMissingDeploymentsResponse2$inboundSchema.and(
+          z.object({ type: z.literal("cookie") }),
+        ),
+        CancelDeploymentMissingDeploymentsResponse2$inboundSchema.and(
+          z.object({ type: z.literal("header") }),
+        ),
+        CancelDeploymentMissingDeploymentsResponse2$inboundSchema.and(
+          z.object({ type: z.literal("query") }),
+        ),
+      ]),
+    ),
   ),
   respectOriginCacheControl: types.optional(types.boolean()),
   source: types.string(),
@@ -2467,6 +2564,47 @@ export function servicesProjectSettingsFromJSON(
 }
 
 /** @internal */
+export const Entrypoints$inboundSchema: z.ZodType<
+  Entrypoints,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  entrypoint: types.string(),
+  scheduleNames: z.array(types.string()),
+  sourceFile: types.string(),
+});
+
+export function entrypointsFromJSON(
+  jsonString: string,
+): SafeParseResult<Entrypoints, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Entrypoints$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Entrypoints' from JSON`,
+  );
+}
+
+/** @internal */
+export const ScheduleFunction$inboundSchema: z.ZodType<
+  ScheduleFunction,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  entrypoints: z.array(z.lazy(() => Entrypoints$inboundSchema)),
+  outputPath: types.string(),
+});
+
+export function scheduleFunctionFromJSON(
+  jsonString: string,
+): SafeParseResult<ScheduleFunction, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ScheduleFunction$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ScheduleFunction' from JSON`,
+  );
+}
+
+/** @internal */
 export const ServicesConfig$inboundSchema: z.ZodType<
   ServicesConfig,
   z.ZodTypeDef,
@@ -2504,6 +2642,9 @@ export const ServicesConfig$inboundSchema: z.ZodType<
     z.lazy(() => ServicesProjectSettings$inboundSchema),
   ),
   rust: types.optional(types.string()),
+  scheduleFunction: types.optional(
+    z.lazy(() => ScheduleFunction$inboundSchema),
+  ),
   serviceName: types.optional(types.string()),
   zeroConfig: types.optional(types.boolean()),
 });

@@ -17,14 +17,15 @@ let value: GetProjectBlockHistory4 = {
 
 ## Fields
 
-| Field                                        | Type                                         | Required                                     | Description                                  |
-| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| `action`                                     | *"route-unblocked"*                          | :heavy_check_mark:                           | N/A                                          |
-| `actor`                                      | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `caseId`                                     | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `comment`                                    | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `createdAt`                                  | *number*                                     | :heavy_check_mark:                           | N/A                                          |
-| `ineligibleForAppeal`                        | *boolean*                                    | :heavy_minus_sign:                           | N/A                                          |
-| `isCascading`                                | *boolean*                                    | :heavy_minus_sign:                           | N/A                                          |
-| `route`                                      | *models.GetProjectBlockHistoryProjectsRoute* | :heavy_check_mark:                           | N/A                                          |
-| `statusCode`                                 | *number*                                     | :heavy_minus_sign:                           | N/A                                          |
+| Field                                               | Type                                                | Required                                            | Description                                         |
+| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| `action`                                            | *"route-unblocked"*                                 | :heavy_check_mark:                                  | N/A                                                 |
+| `actor`                                             | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `caseId`                                            | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `comment`                                           | *string*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `createdAt`                                         | *number*                                            | :heavy_check_mark:                                  | N/A                                                 |
+| `ineligibleForAppeal`                               | *boolean*                                           | :heavy_minus_sign:                                  | N/A                                                 |
+| `isCascading`                                       | *boolean*                                           | :heavy_minus_sign:                                  | N/A                                                 |
+| `route`                                             | *models.GetProjectBlockHistoryProjectsRoute*        | :heavy_check_mark:                                  | N/A                                                 |
+| `statusCode`                                        | *number*                                            | :heavy_minus_sign:                                  | N/A                                                 |
+| `threadId`                                          | *string*                                            | :heavy_minus_sign:                                  | Plain thread ID, recorded separately from `caseId`. |

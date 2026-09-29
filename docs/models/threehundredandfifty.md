@@ -5,26 +5,18 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFifty } from "@vercel/sdk/models/twohundredandeightyfour.js";
+import { ThreeHundredAndFifty } from "@vercel/sdk/models/twohundredandeightysix.js";
 
 let value: ThreeHundredAndFifty = {
-  max: 4293.35,
-  min: 2642.09,
-  scalingRules: {
-    "key": {
-      max: 7732.79,
-      min: 2712.29,
-    },
-  },
-  url: "https://frequent-cow.biz/",
+  newName: "<value>",
+  oldName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `max`                                                            | *number*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `min`                                                            | *number*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `scalingRules`                                                   | Record<string, [models.ScalingRules](../models/scalingrules.md)> | :heavy_check_mark:                                               | N/A                                                              |
-| `url`                                                            | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `newName`          | *string*           | :heavy_check_mark: | N/A                |
+| `oldName`          | *string*           | :heavy_check_mark: | N/A                |
+| `uid`              | *string*           | :heavy_minus_sign: | N/A                |

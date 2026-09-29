@@ -8,16 +8,19 @@ The payload of the event, if requested.
 import { TwoHundredAndFour } from "@vercel/sdk/models/sourceimages.js";
 
 let value: TwoHundredAndFour = {
-  id: "<id>",
-  name: "<value>",
-  slug: "<value>",
+  periods: [
+    {
+      endDate: "<value>",
+      percent: "<value>",
+      periodNumber: 4098.45,
+      startDate: "<value>",
+    },
+  ],
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *string*           | :heavy_check_mark: | N/A                |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
-| `slug`             | *string*           | :heavy_check_mark: | N/A                |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `periods`                                | [models.Periods](../models/periods.md)[] | :heavy_check_mark:                       | N/A                                      |

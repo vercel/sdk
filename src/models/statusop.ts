@@ -31,15 +31,15 @@ export type StatusResponseBodyStatus = ClosedEnum<
   typeof StatusResponseBodyStatus
 >;
 
-export type ResponseBody2 = {
+export type StatusResponseBody2 = {
   status: StatusResponseBodyStatus;
 };
 
-export type ResponseBody1 = {
+export type StatusResponseBody1 = {
   status: string;
 };
 
-export type StatusResponseBody = ResponseBody1 | ResponseBody2;
+export type StatusResponseBody = StatusResponseBody1 | StatusResponseBody2;
 
 /** @internal */
 export type StatusRequest$Outbound = {
@@ -67,40 +67,40 @@ export const StatusResponseBodyStatus$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(StatusResponseBodyStatus);
 
 /** @internal */
-export const ResponseBody2$inboundSchema: z.ZodType<
-  ResponseBody2,
+export const StatusResponseBody2$inboundSchema: z.ZodType<
+  StatusResponseBody2,
   z.ZodTypeDef,
   unknown
 > = z.object({
   status: StatusResponseBodyStatus$inboundSchema,
 });
 
-export function responseBody2FromJSON(
+export function statusResponseBody2FromJSON(
   jsonString: string,
-): SafeParseResult<ResponseBody2, SDKValidationError> {
+): SafeParseResult<StatusResponseBody2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ResponseBody2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBody2' from JSON`,
+    (x) => StatusResponseBody2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StatusResponseBody2' from JSON`,
   );
 }
 
 /** @internal */
-export const ResponseBody1$inboundSchema: z.ZodType<
-  ResponseBody1,
+export const StatusResponseBody1$inboundSchema: z.ZodType<
+  StatusResponseBody1,
   z.ZodTypeDef,
   unknown
 > = z.object({
   status: types.string(),
 });
 
-export function responseBody1FromJSON(
+export function statusResponseBody1FromJSON(
   jsonString: string,
-): SafeParseResult<ResponseBody1, SDKValidationError> {
+): SafeParseResult<StatusResponseBody1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ResponseBody1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBody1' from JSON`,
+    (x) => StatusResponseBody1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StatusResponseBody1' from JSON`,
   );
 }
 
@@ -110,8 +110,8 @@ export const StatusResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([
-  z.lazy(() => ResponseBody1$inboundSchema),
-  z.lazy(() => ResponseBody2$inboundSchema),
+  z.lazy(() => StatusResponseBody1$inboundSchema),
+  z.lazy(() => StatusResponseBody2$inboundSchema),
 ]);
 
 export function statusResponseBodyFromJSON(

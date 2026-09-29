@@ -67,7 +67,7 @@ export type CreatedByEnvironmentTarget = string | CreatedByEnvironment;
 /**
  * Principal that originally created the connector — either a Vercel user (interactive dashboard / CLI flow) or a Vercel deployment (OIDC-authenticated project, used by runtime auto-provisioning). See {@link ConnexPrincipal}. Optional: pre-existing rows from before this shape was introduced may carry no attribution at all.
  */
-export type CreatedBy2 = {
+export type ConnectConnectorCreateResultCreatedBy2 = {
   /**
    * Deployment environment of the project principal.
    */
@@ -99,7 +99,9 @@ export type CreatedBy1 = {
 /**
  * Principal that created the connector.
  */
-export type ConnectConnectorCreateResultCreatedBy = CreatedBy1 | CreatedBy2;
+export type ConnectConnectorCreateResultCreatedBy =
+  | CreatedBy1
+  | ConnectConnectorCreateResultCreatedBy2;
 
 /**
  * How the connector row was originally created. New create paths stamp this explicitly; older rows may omit it.
@@ -149,6 +151,7 @@ export const ConnectConnectorCreateResultType = {
   Custom: "custom",
   Discord: "discord",
   Github: "github",
+  GoogleDpop: "google-dpop",
   Linear: "linear",
   Linq: "linq",
   MicrosoftEntra: "microsoft-entra",
@@ -284,7 +287,7 @@ export type ConnectConnectorCreateResult = {
   /**
    * Principal that created the connector.
    */
-  createdBy?: CreatedBy1 | CreatedBy2 | undefined;
+  createdBy?: CreatedBy1 | ConnectConnectorCreateResultCreatedBy2 | undefined;
   /**
    * How the connector row was originally created. New create paths stamp this explicitly; older rows may omit it.
    */
@@ -341,6 +344,10 @@ export type ConnectConnectorCreateResult = {
    * Best-effort identifier of the third-party service this connector represents, independent of `type`. Examples: `'slack'`, `'mcp.linear.app'`, and `'auth.example.com'`. Always present in API responses.
    */
   service: string;
+  /**
+   * Provider logo from the known-service registry, matched by `service`. Often an SVG data URL. Absent when the service is not in the registry.
+   */
+  serviceIcon?: string | undefined;
   /**
    * Token subject types supported by the connector.
    */
@@ -459,8 +466,8 @@ export function createdByEnvironmentTargetFromJSON(
 }
 
 /** @internal */
-export const CreatedBy2$inboundSchema: z.ZodType<
-  CreatedBy2,
+export const ConnectConnectorCreateResultCreatedBy2$inboundSchema: z.ZodType<
+  ConnectConnectorCreateResultCreatedBy2,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -469,13 +476,14 @@ export const CreatedBy2$inboundSchema: z.ZodType<
   type: types.literal("project"),
 });
 
-export function createdBy2FromJSON(
+export function connectConnectorCreateResultCreatedBy2FromJSON(
   jsonString: string,
-): SafeParseResult<CreatedBy2, SDKValidationError> {
+): SafeParseResult<ConnectConnectorCreateResultCreatedBy2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreatedBy2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreatedBy2' from JSON`,
+    (x) =>
+      ConnectConnectorCreateResultCreatedBy2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ConnectConnectorCreateResultCreatedBy2' from JSON`,
   );
 }
 
@@ -506,7 +514,7 @@ export const ConnectConnectorCreateResultCreatedBy$inboundSchema: z.ZodType<
   unknown
 > = z.union([
   z.lazy(() => CreatedBy1$inboundSchema),
-  z.lazy(() => CreatedBy2$inboundSchema),
+  z.lazy(() => ConnectConnectorCreateResultCreatedBy2$inboundSchema),
 ]);
 
 export function connectConnectorCreateResultCreatedByFromJSON(
@@ -689,7 +697,7 @@ export const ConnectConnectorCreateResult$inboundSchema: z.ZodType<
   createdBy: types.optional(
     z.union([
       z.lazy(() => CreatedBy1$inboundSchema),
-      z.lazy(() => CreatedBy2$inboundSchema),
+      z.lazy(() => ConnectConnectorCreateResultCreatedBy2$inboundSchema),
     ]),
   ),
   creationMode: types.optional(
@@ -710,6 +718,7 @@ export const ConnectConnectorCreateResult$inboundSchema: z.ZodType<
   redirectUri: types.optional(types.string()),
   reinstallAt: types.optional(types.number()),
   service: types.string(),
+  serviceIcon: types.optional(types.string()),
   supportedSubjectTypes: z.array(types.string()),
   supportsIcon: ConnectConnectorCreateResultSupportsIcon$inboundSchema,
   supportsInstallation: types.boolean(),

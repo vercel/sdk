@@ -173,7 +173,7 @@ async function $do(
     | SDKValidationError
   >(
     M.json(202, z.any()),
-    M.fail([400, 401, 402, 403, 404, 410, 413, "4XX"]),
+    M.fail([400, 401, 402, 403, 404, 408, 410, 413, "4XX"]),
     M.fail("5XX"),
   )(response, req);
   if (!result.ok) {

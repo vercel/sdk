@@ -8,12 +8,17 @@ The payload of the event, if requested.
 import { OneHundredAndSeventyThree } from "@vercel/sdk/models/lasteditedbyprincipal2.js";
 
 let value: OneHundredAndSeventyThree = {
-  source: "enable",
+  newOwnerId: "<id>",
+  previousOwnerId: "<id>",
+  projectId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                | Type                                 | Required                             | Description                          |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `source`                             | [models.Source](../models/source.md) | :heavy_check_mark:                   | N/A                                  |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `newOwnerId`       | *string*           | :heavy_check_mark: | N/A                |
+| `previousOwnerId`  | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_minus_sign: | N/A                |

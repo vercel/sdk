@@ -5,24 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSixtyTwo } from "@vercel/sdk/models/twohundredandseventeen.js";
+import { TwoHundredAndSixtyTwo } from "@vercel/sdk/models/twohundredandtwenty.js";
 
 let value: TwoHundredAndSixtyTwo = {
-  project: {
-    id: "<id>",
-    newConnectConfigurations: null,
-    oldConnectConfigurations: [],
-  },
-  team: {
-    id: "<id>",
-    name: "<value>",
-  },
+  projectId: "<id>",
+  projectName: "<value>",
+  widget: null,
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `project`                                                                    | [models.UserEventPayload262Project](../models/usereventpayload262project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
-| `team`                                                                       | [models.UserEventPayload262Team](../models/usereventpayload262team.md)       | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field                                | Type                                 | Required                             | Description                          |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| `projectId`                          | *string*                             | :heavy_check_mark:                   | N/A                                  |
+| `projectName`                        | *string*                             | :heavy_check_mark:                   | N/A                                  |
+| `widget`                             | [models.Widget](../models/widget.md) | :heavy_check_mark:                   | N/A                                  |

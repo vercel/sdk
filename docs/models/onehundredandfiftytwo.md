@@ -8,19 +8,25 @@ The payload of the event, if requested.
 import { OneHundredAndFiftyTwo } from "@vercel/sdk/models/usereventjobaction.js";
 
 let value: OneHundredAndFiftyTwo = {
-  edgeConfigId: "<id>",
-  edgeConfigSlug: "<value>",
-  edgeConfigTokenIds: [
-    "<value 1>",
-    "<value 2>",
-  ],
+  edgeConfig: {
+    id: "<id>",
+    slug: "<value>",
+  },
+  fromAccount: {
+    id: "<id>",
+    type: "user",
+  },
+  toAccount: {
+    id: "<id>",
+    type: "user",
+  },
 };
 ```
 
 ## Fields
 
-| Field                 | Type                  | Required              | Description           |
-| --------------------- | --------------------- | --------------------- | --------------------- |
-| `edgeConfigId`        | *string*              | :heavy_check_mark:    | N/A                   |
-| `edgeConfigSlug`      | *string*              | :heavy_check_mark:    | N/A                   |
-| `edgeConfigTokenIds`  | *string*[]            | :heavy_check_mark:    | ids of deleted tokens |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `edgeConfig`                                   | [models.EdgeConfig](../models/edgeconfig.md)   | :heavy_check_mark:                             | N/A                                            |
+| `fromAccount`                                  | [models.FromAccount](../models/fromaccount.md) | :heavy_check_mark:                             | N/A                                            |
+| `toAccount`                                    | [models.ToAccount](../models/toaccount.md)     | :heavy_check_mark:                             | N/A                                            |

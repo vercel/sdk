@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyImages } from "@vercel/sdk/models/createdeploymentmissingdeploymentsresponse200applicationjsonresponsebodytype.js";
+import { ResponseBodyImages } from "@vercel/sdk/models/createdeploymenthasdeploymentsresponse1.js";
 
 let value: ResponseBodyImages = {};
 ```

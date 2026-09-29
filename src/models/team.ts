@@ -594,7 +594,7 @@ export type ResourceConfig = {
    */
   edgeConfigs?: number | undefined;
   /**
-   * The maximum size in kilobytes of an Edge Config. Only specified if a custom limit is set.
+   * The maximum size in kilobytes of a Global Config. Only specified if a custom limit is set.
    */
   edgeConfigSize?: number | undefined;
   /**

@@ -18,7 +18,7 @@ let value: GetNamedSandboxResponseBody = {
       "cle1",
     ],
     image:
-      "my-repo@sha256:2c4e8f9a1b3d5e7f091a2b3c4d5e6f708192a3b4c5d6e7f8091a2b3c4d5e6f708",
+      "my-team/my-project/my-repo@sha256:2c4e8f9a1b3d5e7f091a2b3c4d5e6f708192a3b4c5d6e7f8091a2b3c4d5e6f708",
     keepLastSnapshots: {
       count: 5,
       deleteEvicted: true,

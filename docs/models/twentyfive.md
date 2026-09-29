@@ -8,13 +8,7 @@ The payload of the event, if requested.
 import { TwentyFive } from "@vercel/sdk/models/userevent.js";
 
 let value: TwentyFive = {
-  added: [
-    "<value 1>",
-  ],
-  removed: [
-    "<value 1>",
-    "<value 2>",
-  ],
+  enabled: true,
 };
 ```
 
@@ -22,5 +16,4 @@ let value: TwentyFive = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `added`            | *string*[]         | :heavy_check_mark: | N/A                |
-| `removed`          | *string*[]         | :heavy_check_mark: | N/A                |
+| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |

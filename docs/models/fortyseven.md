@@ -7,13 +7,16 @@ The payload of the event, if requested.
 ```typescript
 import { FortySeven } from "@vercel/sdk/models/userevent.js";
 
-let value: FortySeven = {};
+let value: FortySeven = {
+  alias: "<value>",
+};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `alias`            | *string*           | :heavy_minus_sign: | N/A                |
-| `email`            | *string*           | :heavy_minus_sign: | N/A                |
-| `username`         | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                  | Type                                   | Required                               | Description                            |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| `alias`                                | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `name`                                 | *string*                               | :heavy_minus_sign:                     | N/A                                    |
+| `newTeam`                              | [models.NewTeam](../models/newteam.md) | :heavy_minus_sign:                     | N/A                                    |
+| `oldTeam`                              | [models.OldTeam](../models/oldteam.md) | :heavy_minus_sign:                     | N/A                                    |

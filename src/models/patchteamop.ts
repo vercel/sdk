@@ -246,6 +246,14 @@ export type PatchTeamDefaultExpirationSettings = {
    * The time period to keep errored deployments for
    */
   expirationErrored?: ExpirationErrored | undefined;
+  /**
+   * When true, opts the team out of the upcoming deployment-storage retention reduce (Medium/High cohorts). Does not change expiration settings.
+   */
+  keepCurrentRetention?: boolean | undefined;
+  /**
+   * Required when increasing any retention setting for a High cohort team after retention reduce and before metering. Confirms team-wide storage billing.
+   */
+  acknowledgeStorageBilling?: boolean | undefined;
 };
 
 export type PatchTeamEnvironments2 = {
@@ -843,6 +851,8 @@ export type PatchTeamDefaultExpirationSettings$Outbound = {
   expirationProduction?: string | undefined;
   expirationCanceled?: string | undefined;
   expirationErrored?: string | undefined;
+  keepCurrentRetention?: boolean | undefined;
+  acknowledgeStorageBilling?: boolean | undefined;
 };
 
 /** @internal */
@@ -855,6 +865,8 @@ export const PatchTeamDefaultExpirationSettings$outboundSchema: z.ZodType<
   expirationProduction: ExpirationProduction$outboundSchema.optional(),
   expirationCanceled: ExpirationCanceled$outboundSchema.optional(),
   expirationErrored: ExpirationErrored$outboundSchema.optional(),
+  keepCurrentRetention: z.boolean().optional(),
+  acknowledgeStorageBilling: z.boolean().optional(),
 });
 
 export function patchTeamDefaultExpirationSettingsToJSON(

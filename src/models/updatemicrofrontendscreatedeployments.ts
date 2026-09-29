@@ -84,6 +84,10 @@ export type UpdateMicrofrontendsBlock = {
    */
   registeredShaBlock?: UpdateMicrofrontendsRegisteredShaBlock | undefined;
   statusCode: number;
+  /**
+   * Plain thread ID, recorded separately from `caseId`.
+   */
+  threadId?: string | undefined;
 };
 
 export type UpdateMicrofrontendsHasProjectsResponse200Value = {
@@ -157,6 +161,10 @@ export type UpdateMicrofrontendsBlockHistory4 = {
     | UpdateMicrofrontendsRouteProjects1
     | UpdateMicrofrontendsRouteProjects2;
   statusCode?: number | undefined;
+  /**
+   * Plain thread ID, recorded separately from `caseId`.
+   */
+  threadId?: string | undefined;
 };
 
 export type UpdateMicrofrontendsHasProjectsResponse200ApplicationJSONResponseBodyValue =
@@ -231,6 +239,10 @@ export type UpdateMicrofrontendsBlockHistory3 = {
   isCascading?: boolean | undefined;
   reason: string;
   route: UpdateMicrofrontendsRoute1 | UpdateMicrofrontendsRoute2;
+  /**
+   * Plain thread ID, recorded separately from `caseId`.
+   */
+  threadId?: string | undefined;
 };
 
 export type UpdateMicrofrontendsBlockHistory2 = {
@@ -241,6 +253,10 @@ export type UpdateMicrofrontendsBlockHistory2 = {
   createdAt: number;
   ineligibleForAppeal?: boolean | undefined;
   isCascading?: boolean | undefined;
+  /**
+   * Plain thread ID, recorded separately from `caseId`.
+   */
+  threadId?: string | undefined;
 };
 
 /**
@@ -268,6 +284,10 @@ export type UpdateMicrofrontendsBlockHistory1 = {
     | UpdateMicrofrontendsBlockHistoryRegisteredShaBlock
     | undefined;
   statusCode: number;
+  /**
+   * Plain thread ID, recorded separately from `caseId`.
+   */
+  threadId?: string | undefined;
 };
 
 export type UpdateMicrofrontendsBlockHistory =
@@ -301,6 +321,10 @@ export type UpdateMicrofrontendsInterstitialHistory = {
   comment?: string | undefined;
   createdAt: number;
   reason?: string | undefined;
+  /**
+   * Plain thread ID, recorded separately from `caseId`.
+   */
+  threadId?: string | undefined;
 };
 
 export type UpdateMicrofrontendsAbuse = {
@@ -1630,6 +1654,7 @@ export const UpdateMicrofrontendsBlock$inboundSchema: z.ZodType<
     z.lazy(() => UpdateMicrofrontendsRegisteredShaBlock$inboundSchema),
   ),
   statusCode: types.number(),
+  threadId: types.optional(types.string()),
 });
 
 export function updateMicrofrontendsBlockFromJSON(
@@ -1891,6 +1916,7 @@ export const UpdateMicrofrontendsBlockHistory4$inboundSchema: z.ZodType<
     z.lazy(() => UpdateMicrofrontendsRouteProjects2$inboundSchema),
   ]),
   statusCode: types.optional(types.number()),
+  threadId: types.optional(types.string()),
 });
 
 export function updateMicrofrontendsBlockHistory4FromJSON(
@@ -2145,6 +2171,7 @@ export const UpdateMicrofrontendsBlockHistory3$inboundSchema: z.ZodType<
     z.lazy(() => UpdateMicrofrontendsRoute1$inboundSchema),
     z.lazy(() => UpdateMicrofrontendsRoute2$inboundSchema),
   ]),
+  threadId: types.optional(types.string()),
 });
 
 export function updateMicrofrontendsBlockHistory3FromJSON(
@@ -2170,6 +2197,7 @@ export const UpdateMicrofrontendsBlockHistory2$inboundSchema: z.ZodType<
   createdAt: types.number(),
   ineligibleForAppeal: types.optional(types.boolean()),
   isCascading: types.optional(types.boolean()),
+  threadId: types.optional(types.string()),
 });
 
 export function updateMicrofrontendsBlockHistory2FromJSON(
@@ -2230,6 +2258,7 @@ export const UpdateMicrofrontendsBlockHistory1$inboundSchema: z.ZodType<
     ),
   ),
   statusCode: types.number(),
+  threadId: types.optional(types.string()),
 });
 
 export function updateMicrofrontendsBlockHistory1FromJSON(
@@ -2304,6 +2333,7 @@ export const UpdateMicrofrontendsInterstitialHistory$inboundSchema: z.ZodType<
   comment: types.optional(types.string()),
   createdAt: types.number(),
   reason: types.optional(types.string()),
+  threadId: types.optional(types.string()),
 });
 
 export function updateMicrofrontendsInterstitialHistoryFromJSON(

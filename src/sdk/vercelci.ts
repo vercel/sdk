@@ -17,6 +17,7 @@ import { vercelCiListVercelCiJobRuns } from "../funcs/vercelCiListVercelCiJobRun
 import { vercelCiListVercelCiTaskDefinitions } from "../funcs/vercelCiListVercelCiTaskDefinitions.js";
 import { vercelCiListVercelCiTaskRuns } from "../funcs/vercelCiListVercelCiTaskRuns.js";
 import { vercelCiRetryVercelCiInvocation } from "../funcs/vercelCiRetryVercelCiInvocation.js";
+import { vercelCiSearchVercelCiLogs } from "../funcs/vercelCiSearchVercelCiLogs.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import {
   GetVercelCiInvocationLogsRequest,
@@ -78,6 +79,10 @@ import {
   RetryVercelCiInvocationRequest,
   RetryVercelCiInvocationResponseBody,
 } from "../models/retryvercelciinvocationop.js";
+import {
+  SearchVercelCiLogsRequest,
+  SearchVercelCiLogsResponseBody,
+} from "../models/searchvercelcilogsop.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class VercelCi extends ClientSDK {
@@ -289,13 +294,30 @@ export class VercelCi extends ClientSDK {
    * Get log lines for the tasks of an invocation attempt
    *
    * @remarks
-   * Returns log lines for the tasks of an invocation attempt in a single request, grouped by task. Tasks can be narrowed by name and by conclusion, for example `conclusion=failed` to fetch only the logs of failed tasks.
+   * Returns log lines for the tasks of an invocation attempt in a single request, grouped by task. Tasks can be narrowed by name and by conclusion, for example `conclusion=failed` to fetch only the logs of failed tasks. With `search`, every matching task is searched at once and only tasks with matching lines are returned.
    */
   async getVercelCiTaskLogs(
     request: GetVercelCiTaskLogsRequest,
     options?: RequestOptions,
   ): Promise<GetVercelCiTaskLogsResponseBody> {
     return unwrapAsync(vercelCiGetVercelCiTaskLogs(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Search the task logs of several invocation attempts
+   *
+   * @remarks
+   * Searches the task logs of up to 50 invocation attempts at once, for example the most recent runs of a branch from `GET /v2/vercel-ci/invocations`. Only invocations and tasks with matching lines are returned. When more than 1000 lines match, the newest are kept.
+   */
+  async searchVercelCiLogs(
+    request: SearchVercelCiLogsRequest,
+    options?: RequestOptions,
+  ): Promise<SearchVercelCiLogsResponseBody> {
+    return unwrapAsync(vercelCiSearchVercelCiLogs(
       this,
       request,
       options,

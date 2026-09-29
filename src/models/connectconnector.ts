@@ -67,7 +67,7 @@ export type Environment = string | Environment2;
 /**
  * Principal that originally created the connector — either a Vercel user (interactive dashboard / CLI flow) or a Vercel deployment (OIDC-authenticated project, used by runtime auto-provisioning). See {@link ConnexPrincipal}. Optional: pre-existing rows from before this shape was introduced may carry no attribution at all.
  */
-export type Two = {
+export type CreatedBy2 = {
   /**
    * Deployment environment of the project principal.
    */
@@ -99,7 +99,7 @@ export type One = {
 /**
  * Principal that created the connector.
  */
-export type CreatedBy = One | Two;
+export type CreatedBy = One | CreatedBy2;
 
 /**
  * How the connector row was originally created. New create paths stamp this explicitly; older rows may omit it.
@@ -145,6 +145,7 @@ export const ConnectConnectorType = {
   Custom: "custom",
   Discord: "discord",
   Github: "github",
+  GoogleDpop: "google-dpop",
   Linear: "linear",
   Linq: "linq",
   MicrosoftEntra: "microsoft-entra",
@@ -274,7 +275,7 @@ export type ConnectConnector = {
   /**
    * Principal that created the connector.
    */
-  createdBy?: One | Two | undefined;
+  createdBy?: One | CreatedBy2 | undefined;
   /**
    * How the connector row was originally created. New create paths stamp this explicitly; older rows may omit it.
    */
@@ -331,6 +332,10 @@ export type ConnectConnector = {
    * Best-effort identifier of the third-party service this connector represents, independent of `type`. Examples: `'slack'`, `'mcp.linear.app'`, and `'auth.example.com'`. Always present in API responses.
    */
   service: string;
+  /**
+   * Provider logo from the known-service registry, matched by `service`. Often an SVG data URL. Absent when the service is not in the registry.
+   */
+  serviceIcon?: string | undefined;
   /**
    * Token subject types supported by the connector.
    */
@@ -444,20 +449,23 @@ export function environmentFromJSON(
 }
 
 /** @internal */
-export const Two$inboundSchema: z.ZodType<Two, z.ZodTypeDef, unknown> = z
-  .object({
-    environment: smartUnion([types.string(), Environment2$inboundSchema]),
-    id: types.string(),
-    type: types.literal("project"),
-  });
+export const CreatedBy2$inboundSchema: z.ZodType<
+  CreatedBy2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  environment: smartUnion([types.string(), Environment2$inboundSchema]),
+  id: types.string(),
+  type: types.literal("project"),
+});
 
-export function twoFromJSON(
+export function createdBy2FromJSON(
   jsonString: string,
-): SafeParseResult<Two, SDKValidationError> {
+): SafeParseResult<CreatedBy2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Two$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Two' from JSON`,
+    (x) => CreatedBy2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreatedBy2' from JSON`,
   );
 }
 
@@ -483,7 +491,10 @@ export const CreatedBy$inboundSchema: z.ZodType<
   CreatedBy,
   z.ZodTypeDef,
   unknown
-> = z.union([z.lazy(() => One$inboundSchema), z.lazy(() => Two$inboundSchema)]);
+> = z.union([
+  z.lazy(() => One$inboundSchema),
+  z.lazy(() => CreatedBy2$inboundSchema),
+]);
 
 export function createdByFromJSON(
   jsonString: string,
@@ -647,7 +658,10 @@ export const ConnectConnector$inboundSchema: z.ZodType<
   connectionMethod: types.optional(types.string()),
   createdAt: types.number(),
   createdBy: types.optional(
-    z.union([z.lazy(() => One$inboundSchema), z.lazy(() => Two$inboundSchema)]),
+    z.union([
+      z.lazy(() => One$inboundSchema),
+      z.lazy(() => CreatedBy2$inboundSchema),
+    ]),
   ),
   creationMode: types.optional(CreationMode$inboundSchema),
   defaultInstallationId: types.optional(types.string()),
@@ -663,6 +677,7 @@ export const ConnectConnector$inboundSchema: z.ZodType<
   redirectUri: types.optional(types.string()),
   reinstallAt: types.optional(types.number()),
   service: types.string(),
+  serviceIcon: types.optional(types.string()),
   supportedSubjectTypes: z.array(types.string()),
   supportsIcon: SupportsIcon$inboundSchema,
   supportsInstallation: types.boolean(),

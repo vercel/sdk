@@ -42,7 +42,7 @@ import { Result } from "../types/fp.js";
  * Get log lines for the tasks of an invocation attempt
  *
  * @remarks
- * Returns log lines for the tasks of an invocation attempt in a single request, grouped by task. Tasks can be narrowed by name and by conclusion, for example `conclusion=failed` to fetch only the logs of failed tasks.
+ * Returns log lines for the tasks of an invocation attempt in a single request, grouped by task. Tasks can be narrowed by name and by conclusion, for example `conclusion=failed` to fetch only the logs of failed tasks. With `search`, every matching task is searched at once and only tasks with matching lines are returned.
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
  */
@@ -127,6 +127,7 @@ async function $do(
     "conclusion": payload.conclusion,
     "level": payload.level,
     "limit": payload.limit,
+    "search": payload.search,
     "slug": payload.slug,
     "task": payload.task,
     "teamId": payload.teamId,

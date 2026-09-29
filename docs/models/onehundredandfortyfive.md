@@ -10,6 +10,10 @@ import { OneHundredAndFortyFive } from "@vercel/sdk/models/usereventjobaction.js
 let value: OneHundredAndFortyFive = {
   projectId: "<id>",
   projectName: "<value>",
+  tags: [
+    "<value 1>",
+    "<value 2>",
+  ],
 };
 ```
 
@@ -19,3 +23,5 @@ let value: OneHundredAndFortyFive = {
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `projectId`        | *string*           | :heavy_check_mark: | N/A                |
 | `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `tags`             | *string*[]         | :heavy_check_mark: | N/A                |
+| `target`           | *string*           | :heavy_minus_sign: | N/A                |

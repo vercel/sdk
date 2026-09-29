@@ -8,7 +8,6 @@ The payload of the event, if requested.
 import { OneHundredAndTwentyFour } from "@vercel/sdk/models/usereventjobaction.js";
 
 let value: OneHundredAndTwentyFour = {
-  cdnEnabled: false,
   name: "<value>",
 };
 ```
@@ -17,5 +16,5 @@ let value: OneHundredAndTwentyFour = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `cdnEnabled`       | *boolean*          | :heavy_check_mark: | N/A                |
 | `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `zone`             | *boolean*          | :heavy_minus_sign: | N/A                |

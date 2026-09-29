@@ -62,6 +62,10 @@ export type UploadProjectAvatarBlock = {
    */
   registeredShaBlock?: UploadProjectAvatarRegisteredShaBlock | undefined;
   statusCode: number;
+  /**
+   * Plain thread ID, recorded separately from `caseId`.
+   */
+  threadId?: string | undefined;
 };
 
 export type UploadProjectAvatarHasProjectsResponse200Value = {
@@ -131,6 +135,10 @@ export type UploadProjectAvatarBlockHistory4 = {
   isCascading?: boolean | undefined;
   route: UploadProjectAvatarRouteProjects1 | UploadProjectAvatarRouteProjects2;
   statusCode?: number | undefined;
+  /**
+   * Plain thread ID, recorded separately from `caseId`.
+   */
+  threadId?: string | undefined;
 };
 
 export type UploadProjectAvatarHasProjectsResponse200ApplicationJSONResponseBodyValue =
@@ -205,6 +213,10 @@ export type UploadProjectAvatarBlockHistory3 = {
   isCascading?: boolean | undefined;
   reason: string;
   route: UploadProjectAvatarRoute1 | UploadProjectAvatarRoute2;
+  /**
+   * Plain thread ID, recorded separately from `caseId`.
+   */
+  threadId?: string | undefined;
 };
 
 export type UploadProjectAvatarBlockHistory2 = {
@@ -215,6 +227,10 @@ export type UploadProjectAvatarBlockHistory2 = {
   createdAt: number;
   ineligibleForAppeal?: boolean | undefined;
   isCascading?: boolean | undefined;
+  /**
+   * Plain thread ID, recorded separately from `caseId`.
+   */
+  threadId?: string | undefined;
 };
 
 /**
@@ -242,6 +258,10 @@ export type UploadProjectAvatarBlockHistory1 = {
     | UploadProjectAvatarBlockHistoryRegisteredShaBlock
     | undefined;
   statusCode: number;
+  /**
+   * Plain thread ID, recorded separately from `caseId`.
+   */
+  threadId?: string | undefined;
 };
 
 export type UploadProjectAvatarBlockHistory =
@@ -275,6 +295,10 @@ export type UploadProjectAvatarInterstitialHistory = {
   comment?: string | undefined;
   createdAt: number;
   reason?: string | undefined;
+  /**
+   * Plain thread ID, recorded separately from `caseId`.
+   */
+  threadId?: string | undefined;
 };
 
 export type UploadProjectAvatarAbuse = {
@@ -1597,6 +1621,7 @@ export const UploadProjectAvatarBlock$inboundSchema: z.ZodType<
     z.lazy(() => UploadProjectAvatarRegisteredShaBlock$inboundSchema),
   ),
   statusCode: types.number(),
+  threadId: types.optional(types.string()),
 });
 
 export function uploadProjectAvatarBlockFromJSON(
@@ -1857,6 +1882,7 @@ export const UploadProjectAvatarBlockHistory4$inboundSchema: z.ZodType<
     z.lazy(() => UploadProjectAvatarRouteProjects2$inboundSchema),
   ]),
   statusCode: types.optional(types.number()),
+  threadId: types.optional(types.string()),
 });
 
 export function uploadProjectAvatarBlockHistory4FromJSON(
@@ -2111,6 +2137,7 @@ export const UploadProjectAvatarBlockHistory3$inboundSchema: z.ZodType<
     z.lazy(() => UploadProjectAvatarRoute1$inboundSchema),
     z.lazy(() => UploadProjectAvatarRoute2$inboundSchema),
   ]),
+  threadId: types.optional(types.string()),
 });
 
 export function uploadProjectAvatarBlockHistory3FromJSON(
@@ -2136,6 +2163,7 @@ export const UploadProjectAvatarBlockHistory2$inboundSchema: z.ZodType<
   createdAt: types.number(),
   ineligibleForAppeal: types.optional(types.boolean()),
   isCascading: types.optional(types.boolean()),
+  threadId: types.optional(types.string()),
 });
 
 export function uploadProjectAvatarBlockHistory2FromJSON(
@@ -2196,6 +2224,7 @@ export const UploadProjectAvatarBlockHistory1$inboundSchema: z.ZodType<
     ),
   ),
   statusCode: types.number(),
+  threadId: types.optional(types.string()),
 });
 
 export function uploadProjectAvatarBlockHistory1FromJSON(
@@ -2270,6 +2299,7 @@ export const UploadProjectAvatarInterstitialHistory$inboundSchema: z.ZodType<
   comment: types.optional(types.string()),
   createdAt: types.number(),
   reason: types.optional(types.string()),
+  threadId: types.optional(types.string()),
 });
 
 export function uploadProjectAvatarInterstitialHistoryFromJSON(

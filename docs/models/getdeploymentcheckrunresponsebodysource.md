@@ -31,21 +31,19 @@ const value: models.GetDeploymentCheckRunSource3 = {
 };
 ```
 
-### `models.Source4`
+### `models.GetDeploymentCheckRunSource4`
 
 ```typescript
-const value: models.Source4 = {};
+const value: models.GetDeploymentCheckRunSource4 = {};
 ```
 
-### `models.Source5`
+### `models.GetDeploymentCheckRunSource5`
 
 ```typescript
-const value: models.Source5 = {
+const value: models.GetDeploymentCheckRunSource5 = {
   origin: "api",
   selection: {
-    job: "Forward Intranet Manager",
-    kind: "task",
-    task: "<value>",
+    kind: "invocation",
   },
   subKind: "vercel-ci-check",
 };

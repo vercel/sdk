@@ -152,6 +152,20 @@ export type BuyCreditsConfigurationBillingPricingSource = ClosedEnum<
 >;
 
 /**
+ * The canonical reference-product billing period at intent creation. Omitted for historical intents.
+ */
+export type BuyCreditsConfigurationBillingReferenceBillingPeriod = {
+  /**
+   * The exclusive end of the reference billing period.
+   */
+  endDate: string;
+  /**
+   * The inclusive start of the reference billing period.
+   */
+  startDate: string;
+};
+
+/**
  * Output returned after configuring an OrbSubscriptionIntent.
  */
 export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Output =
@@ -162,6 +176,10 @@ export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody
     changedResources?:
       | Array<BuyCreditsConfigurationBillingChangedResources>
       | undefined;
+    /**
+     * The Orb customer's timezone when the intent was created. Omitted for legacy intents.
+     */
+    customerTimezone?: string | undefined;
     /**
      * When the subscription change should take effect.
      */
@@ -186,12 +204,18 @@ export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody
      * The product ID associated with this intent.
      */
     productId: string;
+    /**
+     * The canonical reference-product billing period at intent creation. Omitted for historical intents.
+     */
+    referenceBillingPeriod?:
+      | BuyCreditsConfigurationBillingReferenceBillingPeriod
+      | undefined;
   };
 
 /**
  * Configuration for the Orb subscription intent.
  */
-export type Configuration4 = {
+export type BuyCreditsConfiguration4 = {
   /**
    * Configuration input options for adjusting plan item quantity.
    */
@@ -283,6 +307,20 @@ export type BuyCreditsConfigurationPricingSource = ClosedEnum<
 >;
 
 /**
+ * The canonical reference-product billing period at intent creation. Omitted for historical intents.
+ */
+export type BuyCreditsConfigurationReferenceBillingPeriod = {
+  /**
+   * The exclusive end of the reference billing period.
+   */
+  endDate: string;
+  /**
+   * The inclusive start of the reference billing period.
+   */
+  startDate: string;
+};
+
+/**
  * Output returned after configuring an OrbSubscriptionIntent.
  */
 export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutput =
@@ -293,6 +331,10 @@ export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody
     changedResources?:
       | Array<BuyCreditsConfigurationChangedResources>
       | undefined;
+    /**
+     * The Orb customer's timezone when the intent was created. Omitted for legacy intents.
+     */
+    customerTimezone?: string | undefined;
     /**
      * When the subscription change should take effect.
      */
@@ -317,12 +359,18 @@ export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody
      * The product ID associated with this intent.
      */
     productId: string;
+    /**
+     * The canonical reference-product billing period at intent creation. Omitted for historical intents.
+     */
+    referenceBillingPeriod?:
+      | BuyCreditsConfigurationReferenceBillingPeriod
+      | undefined;
   };
 
 /**
  * Configuration for the Orb subscription intent.
  */
-export type Configuration3 = {
+export type BuyCreditsConfiguration3 = {
   /**
    * Configuration input options for decreasing plan item quantity.
    */
@@ -414,6 +462,20 @@ export type ConfigurationPricingSource = ClosedEnum<
 >;
 
 /**
+ * The canonical reference-product billing period at intent creation. Omitted for historical intents.
+ */
+export type ConfigurationReferenceBillingPeriod = {
+  /**
+   * The exclusive end of the reference billing period.
+   */
+  endDate: string;
+  /**
+   * The inclusive start of the reference billing period.
+   */
+  startDate: string;
+};
+
+/**
  * Output returned after configuring an OrbSubscriptionIntent.
  */
 export type BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput = {
@@ -421,6 +483,10 @@ export type BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput = {
    * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
    */
   changedResources?: Array<ConfigurationChangedResources> | undefined;
+  /**
+   * The Orb customer's timezone when the intent was created. Omitted for legacy intents.
+   */
+  customerTimezone?: string | undefined;
   /**
    * When the subscription change should take effect.
    */
@@ -445,6 +511,10 @@ export type BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput = {
    * The product ID associated with this intent.
    */
   productId: string;
+  /**
+   * The canonical reference-product billing period at intent creation. Omitted for historical intents.
+   */
+  referenceBillingPeriod?: ConfigurationReferenceBillingPeriod | undefined;
 };
 
 /**
@@ -541,6 +611,20 @@ export const PricingSource = {
 export type PricingSource = ClosedEnum<typeof PricingSource>;
 
 /**
+ * The canonical reference-product billing period at intent creation. Omitted for historical intents.
+ */
+export type ReferenceBillingPeriod = {
+  /**
+   * The exclusive end of the reference billing period.
+   */
+  endDate: string;
+  /**
+   * The inclusive start of the reference billing period.
+   */
+  startDate: string;
+};
+
+/**
  * Output returned after configuring an OrbSubscriptionIntent.
  */
 export type BuyCreditsConfigurationBillingResponse200Output = {
@@ -548,6 +632,10 @@ export type BuyCreditsConfigurationBillingResponse200Output = {
    * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
    */
   changedResources?: Array<ChangedResources> | undefined;
+  /**
+   * The Orb customer's timezone when the intent was created. Omitted for legacy intents.
+   */
+  customerTimezone?: string | undefined;
   /**
    * When the subscription change should take effect.
    */
@@ -572,6 +660,10 @@ export type BuyCreditsConfigurationBillingResponse200Output = {
    * The product ID associated with this intent.
    */
   productId: string;
+  /**
+   * The canonical reference-product billing period at intent creation. Omitted for historical intents.
+   */
+  referenceBillingPeriod?: ReferenceBillingPeriod | undefined;
 };
 
 /**
@@ -593,8 +685,8 @@ export type BuyCreditsConfiguration1 = {
 export type ResponseBodyConfiguration =
   | BuyCreditsConfiguration1
   | BuyCreditsConfiguration2
-  | Configuration3
-  | Configuration4;
+  | BuyCreditsConfiguration3
+  | BuyCreditsConfiguration4;
 
 export const BuyCreditsOrbUpdateMode = {
   Async: "async",
@@ -678,8 +770,8 @@ export type OrbSubscriptionIntent = {
   configuration:
     | BuyCreditsConfiguration1
     | BuyCreditsConfiguration2
-    | Configuration3
-    | Configuration4;
+    | BuyCreditsConfiguration3
+    | BuyCreditsConfiguration4;
   /**
    * The ISO 8601 date-time that the intent was created.
    */
@@ -711,7 +803,7 @@ export type OrbSubscriptionIntent = {
   updatedAt: string;
 };
 
-export type BuyCreditsResponseBody3 = {
+export type ResponseBody3 = {
   orbSubscriptionIntent: OrbSubscriptionIntent;
 };
 
@@ -1040,7 +1132,7 @@ export type ConfigurationOutput = {
 /**
  * The configuration for a credit purchase
  */
-export type BuyCreditsConfiguration4 = {
+export type Configuration4 = {
   options: BuyCreditsConfigurationBillingOptions;
   output: ConfigurationOutput;
   type: "orb_price_interval";
@@ -1108,7 +1200,7 @@ export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody
 /**
  * The configuration for a credit purchase
  */
-export type BuyCreditsConfiguration3 = {
+export type Configuration3 = {
   options: BuyCreditsConfigurationOptions;
   output:
     BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Output;
@@ -1207,8 +1299,8 @@ export type Configuration1 = {
 export type BuyCreditsResponseBodyConfiguration =
   | Configuration1
   | Configuration2
-  | BuyCreditsConfiguration3
-  | BuyCreditsConfiguration4
+  | Configuration3
+  | Configuration4
   | Configuration5
   | Configuration6
   | Configuration7;
@@ -1366,8 +1458,8 @@ export type PurchaseIntent = {
   configuration:
     | Configuration1
     | Configuration2
-    | BuyCreditsConfiguration3
-    | BuyCreditsConfiguration4
+    | Configuration3
+    | Configuration4
     | Configuration5
     | Configuration6
     | Configuration7;
@@ -1445,7 +1537,7 @@ export type BuyCreditsResponseBody1 = {
 export type BuyCreditsResponseBody =
   | BuyCreditsResponseBody1
   | BuyCreditsResponseBody2
-  | BuyCreditsResponseBody3;
+  | ResponseBody3;
 
 /** @internal */
 export const BuyCreditsType$outboundSchema: z.ZodNativeEnum<
@@ -1599,6 +1691,33 @@ export const BuyCreditsConfigurationBillingPricingSource$inboundSchema:
     .nativeEnum(BuyCreditsConfigurationBillingPricingSource);
 
 /** @internal */
+export const BuyCreditsConfigurationBillingReferenceBillingPeriod$inboundSchema:
+  z.ZodType<
+    BuyCreditsConfigurationBillingReferenceBillingPeriod,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    endDate: types.string(),
+    startDate: types.string(),
+  });
+
+export function buyCreditsConfigurationBillingReferenceBillingPeriodFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  BuyCreditsConfigurationBillingReferenceBillingPeriod,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      BuyCreditsConfigurationBillingReferenceBillingPeriod$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'BuyCreditsConfigurationBillingReferenceBillingPeriod' from JSON`,
+  );
+}
+
+/** @internal */
 export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Output$inboundSchema:
   z.ZodType<
     BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Output,
@@ -1610,6 +1729,7 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBod
         BuyCreditsConfigurationBillingChangedResources$inboundSchema
       )),
     ),
+    customerTimezone: types.optional(types.string()),
     effectiveBehavior:
       BuyCreditsConfigurationBillingEffectiveBehavior$inboundSchema,
     metadata: types.optional(z.record(types.string())),
@@ -1617,6 +1737,11 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBod
     pendingSubscriptionChangeId: types.optional(types.string()),
     pricingSource: BuyCreditsConfigurationBillingPricingSource$inboundSchema,
     productId: types.string(),
+    referenceBillingPeriod: types.optional(
+      z.lazy(() =>
+        BuyCreditsConfigurationBillingReferenceBillingPeriod$inboundSchema
+      ),
+    ),
   });
 
 export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OutputFromJSON(
@@ -1635,8 +1760,8 @@ export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponse
 }
 
 /** @internal */
-export const Configuration4$inboundSchema: z.ZodType<
-  Configuration4,
+export const BuyCreditsConfiguration4$inboundSchema: z.ZodType<
+  BuyCreditsConfiguration4,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1649,13 +1774,13 @@ export const Configuration4$inboundSchema: z.ZodType<
   type: types.literal("adjust_plan_item_quantity"),
 });
 
-export function configuration4FromJSON(
+export function buyCreditsConfiguration4FromJSON(
   jsonString: string,
-): SafeParseResult<Configuration4, SDKValidationError> {
+): SafeParseResult<BuyCreditsConfiguration4, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Configuration4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Configuration4' from JSON`,
+    (x) => BuyCreditsConfiguration4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BuyCreditsConfiguration4' from JSON`,
   );
 }
 
@@ -1728,6 +1853,33 @@ export const BuyCreditsConfigurationPricingSource$inboundSchema:
   );
 
 /** @internal */
+export const BuyCreditsConfigurationReferenceBillingPeriod$inboundSchema:
+  z.ZodType<
+    BuyCreditsConfigurationReferenceBillingPeriod,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    endDate: types.string(),
+    startDate: types.string(),
+  });
+
+export function buyCreditsConfigurationReferenceBillingPeriodFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  BuyCreditsConfigurationReferenceBillingPeriod,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      BuyCreditsConfigurationReferenceBillingPeriod$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'BuyCreditsConfigurationReferenceBillingPeriod' from JSON`,
+  );
+}
+
+/** @internal */
 export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutput$inboundSchema:
   z.ZodType<
     BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutput,
@@ -1739,12 +1891,16 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBod
         z.lazy(() => BuyCreditsConfigurationChangedResources$inboundSchema),
       ),
     ),
+    customerTimezone: types.optional(types.string()),
     effectiveBehavior: BuyCreditsConfigurationEffectiveBehavior$inboundSchema,
     metadata: types.optional(z.record(types.string())),
     orbPriceId: types.string(),
     pendingSubscriptionChangeId: types.optional(types.string()),
     pricingSource: BuyCreditsConfigurationPricingSource$inboundSchema,
     productId: types.string(),
+    referenceBillingPeriod: types.optional(
+      z.lazy(() => BuyCreditsConfigurationReferenceBillingPeriod$inboundSchema),
+    ),
   });
 
 export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutputFromJSON(
@@ -1763,8 +1919,8 @@ export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponse
 }
 
 /** @internal */
-export const Configuration3$inboundSchema: z.ZodType<
-  Configuration3,
+export const BuyCreditsConfiguration3$inboundSchema: z.ZodType<
+  BuyCreditsConfiguration3,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1777,13 +1933,13 @@ export const Configuration3$inboundSchema: z.ZodType<
   type: types.literal("decrease_plan_item_quantity"),
 });
 
-export function configuration3FromJSON(
+export function buyCreditsConfiguration3FromJSON(
   jsonString: string,
-): SafeParseResult<Configuration3, SDKValidationError> {
+): SafeParseResult<BuyCreditsConfiguration3, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Configuration3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Configuration3' from JSON`,
+    (x) => BuyCreditsConfiguration3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BuyCreditsConfiguration3' from JSON`,
   );
 }
 
@@ -1849,6 +2005,27 @@ export const ConfigurationPricingSource$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(ConfigurationPricingSource);
 
 /** @internal */
+export const ConfigurationReferenceBillingPeriod$inboundSchema: z.ZodType<
+  ConfigurationReferenceBillingPeriod,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  endDate: types.string(),
+  startDate: types.string(),
+});
+
+export function configurationReferenceBillingPeriodFromJSON(
+  jsonString: string,
+): SafeParseResult<ConfigurationReferenceBillingPeriod, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ConfigurationReferenceBillingPeriod$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ConfigurationReferenceBillingPeriod' from JSON`,
+  );
+}
+
+/** @internal */
 export const BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput$inboundSchema:
   z.ZodType<
     BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput,
@@ -1858,12 +2035,16 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput$inbo
     changedResources: types.optional(
       z.array(z.lazy(() => ConfigurationChangedResources$inboundSchema)),
     ),
+    customerTimezone: types.optional(types.string()),
     effectiveBehavior: ConfigurationEffectiveBehavior$inboundSchema,
     metadata: types.optional(z.record(types.string())),
     orbPriceId: types.string(),
     pendingSubscriptionChangeId: types.optional(types.string()),
     pricingSource: ConfigurationPricingSource$inboundSchema,
     productId: types.string(),
+    referenceBillingPeriod: types.optional(
+      z.lazy(() => ConfigurationReferenceBillingPeriod$inboundSchema),
+    ),
   });
 
 export function buyCreditsConfigurationBillingResponse200ApplicationJSONOutputFromJSON(
@@ -1969,6 +2150,26 @@ export const PricingSource$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(PricingSource);
 
 /** @internal */
+export const ReferenceBillingPeriod$inboundSchema: z.ZodType<
+  ReferenceBillingPeriod,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  endDate: types.string(),
+  startDate: types.string(),
+});
+
+export function referenceBillingPeriodFromJSON(
+  jsonString: string,
+): SafeParseResult<ReferenceBillingPeriod, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ReferenceBillingPeriod$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ReferenceBillingPeriod' from JSON`,
+  );
+}
+
+/** @internal */
 export const BuyCreditsConfigurationBillingResponse200Output$inboundSchema:
   z.ZodType<
     BuyCreditsConfigurationBillingResponse200Output,
@@ -1978,12 +2179,16 @@ export const BuyCreditsConfigurationBillingResponse200Output$inboundSchema:
     changedResources: types.optional(
       z.array(z.lazy(() => ChangedResources$inboundSchema)),
     ),
+    customerTimezone: types.optional(types.string()),
     effectiveBehavior: EffectiveBehavior$inboundSchema,
     metadata: types.optional(z.record(types.string())),
     orbPriceId: types.string(),
     pendingSubscriptionChangeId: types.optional(types.string()),
     pricingSource: PricingSource$inboundSchema,
     productId: types.string(),
+    referenceBillingPeriod: types.optional(
+      z.lazy(() => ReferenceBillingPeriod$inboundSchema),
+    ),
   });
 
 export function buyCreditsConfigurationBillingResponse200OutputFromJSON(
@@ -2035,8 +2240,8 @@ export const ResponseBodyConfiguration$inboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => BuyCreditsConfiguration1$inboundSchema),
   z.lazy(() => BuyCreditsConfiguration2$inboundSchema),
-  z.lazy(() => Configuration3$inboundSchema),
-  z.lazy(() => Configuration4$inboundSchema),
+  z.lazy(() => BuyCreditsConfiguration3$inboundSchema),
+  z.lazy(() => BuyCreditsConfiguration4$inboundSchema),
 ]);
 
 export function responseBodyConfigurationFromJSON(
@@ -2169,8 +2374,8 @@ export const OrbSubscriptionIntent$inboundSchema: z.ZodType<
   configuration: z.union([
     z.lazy(() => BuyCreditsConfiguration1$inboundSchema),
     z.lazy(() => BuyCreditsConfiguration2$inboundSchema),
-    z.lazy(() => Configuration3$inboundSchema),
-    z.lazy(() => Configuration4$inboundSchema),
+    z.lazy(() => BuyCreditsConfiguration3$inboundSchema),
+    z.lazy(() => BuyCreditsConfiguration4$inboundSchema),
   ]),
   createdAt: types.string(),
   id: types.string(),
@@ -2197,21 +2402,21 @@ export function orbSubscriptionIntentFromJSON(
 }
 
 /** @internal */
-export const BuyCreditsResponseBody3$inboundSchema: z.ZodType<
-  BuyCreditsResponseBody3,
+export const ResponseBody3$inboundSchema: z.ZodType<
+  ResponseBody3,
   z.ZodTypeDef,
   unknown
 > = z.object({
   orbSubscriptionIntent: z.lazy(() => OrbSubscriptionIntent$inboundSchema),
 });
 
-export function buyCreditsResponseBody3FromJSON(
+export function responseBody3FromJSON(
   jsonString: string,
-): SafeParseResult<BuyCreditsResponseBody3, SDKValidationError> {
+): SafeParseResult<ResponseBody3, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => BuyCreditsResponseBody3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BuyCreditsResponseBody3' from JSON`,
+    (x) => ResponseBody3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBody3' from JSON`,
   );
 }
 
@@ -2694,8 +2899,8 @@ export function configurationOutputFromJSON(
 }
 
 /** @internal */
-export const BuyCreditsConfiguration4$inboundSchema: z.ZodType<
-  BuyCreditsConfiguration4,
+export const Configuration4$inboundSchema: z.ZodType<
+  Configuration4,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -2704,13 +2909,13 @@ export const BuyCreditsConfiguration4$inboundSchema: z.ZodType<
   type: types.literal("orb_price_interval"),
 });
 
-export function buyCreditsConfiguration4FromJSON(
+export function configuration4FromJSON(
   jsonString: string,
-): SafeParseResult<BuyCreditsConfiguration4, SDKValidationError> {
+): SafeParseResult<Configuration4, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => BuyCreditsConfiguration4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BuyCreditsConfiguration4' from JSON`,
+    (x) => Configuration4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Configuration4' from JSON`,
   );
 }
 
@@ -2831,8 +3036,8 @@ export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponse
 }
 
 /** @internal */
-export const BuyCreditsConfiguration3$inboundSchema: z.ZodType<
-  BuyCreditsConfiguration3,
+export const Configuration3$inboundSchema: z.ZodType<
+  Configuration3,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -2843,13 +3048,13 @@ export const BuyCreditsConfiguration3$inboundSchema: z.ZodType<
   type: types.literal("orb_plan_change"),
 });
 
-export function buyCreditsConfiguration3FromJSON(
+export function configuration3FromJSON(
   jsonString: string,
-): SafeParseResult<BuyCreditsConfiguration3, SDKValidationError> {
+): SafeParseResult<Configuration3, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => BuyCreditsConfiguration3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BuyCreditsConfiguration3' from JSON`,
+    (x) => Configuration3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Configuration3' from JSON`,
   );
 }
 
@@ -2988,8 +3193,8 @@ export const BuyCreditsResponseBodyConfiguration$inboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => Configuration1$inboundSchema),
   z.lazy(() => Configuration2$inboundSchema),
-  z.lazy(() => BuyCreditsConfiguration3$inboundSchema),
-  z.lazy(() => BuyCreditsConfiguration4$inboundSchema),
+  z.lazy(() => Configuration3$inboundSchema),
+  z.lazy(() => Configuration4$inboundSchema),
   z.lazy(() => Configuration5$inboundSchema),
   z.lazy(() => Configuration6$inboundSchema),
   z.lazy(() => Configuration7$inboundSchema),
@@ -3101,8 +3306,8 @@ export const PurchaseIntent$inboundSchema: z.ZodType<
   configuration: z.union([
     z.lazy(() => Configuration1$inboundSchema),
     z.lazy(() => Configuration2$inboundSchema),
-    z.lazy(() => BuyCreditsConfiguration3$inboundSchema),
-    z.lazy(() => BuyCreditsConfiguration4$inboundSchema),
+    z.lazy(() => Configuration3$inboundSchema),
+    z.lazy(() => Configuration4$inboundSchema),
     z.lazy(() => Configuration5$inboundSchema),
     z.lazy(() => Configuration6$inboundSchema),
     z.lazy(() => Configuration7$inboundSchema),
@@ -3181,7 +3386,7 @@ export const BuyCreditsResponseBody$inboundSchema: z.ZodType<
 > = smartUnion([
   z.lazy(() => BuyCreditsResponseBody1$inboundSchema),
   z.lazy(() => BuyCreditsResponseBody2$inboundSchema),
-  z.lazy(() => BuyCreditsResponseBody3$inboundSchema),
+  z.lazy(() => ResponseBody3$inboundSchema),
 ]);
 
 export function buyCreditsResponseBodyFromJSON(

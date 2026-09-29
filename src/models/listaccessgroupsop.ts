@@ -89,16 +89,14 @@ export type ResponseBodyPagination = {
   next: string | null;
 };
 
-export type ListAccessGroupsResponseBody2 = {
+export type ResponseBody2 = {
   accessGroups: Array<AccessGroups>;
   pagination: ResponseBodyPagination;
 };
 
-export type ListAccessGroupsResponseBody1 = {};
+export type ResponseBody1 = {};
 
-export type ListAccessGroupsResponseBody =
-  | ListAccessGroupsResponseBody2
-  | ListAccessGroupsResponseBody1;
+export type ListAccessGroupsResponseBody = ResponseBody2 | ResponseBody1;
 
 /** @internal */
 export type ListAccessGroupsRequest$Outbound = {
@@ -188,8 +186,8 @@ export function responseBodyPaginationFromJSON(
 }
 
 /** @internal */
-export const ListAccessGroupsResponseBody2$inboundSchema: z.ZodType<
-  ListAccessGroupsResponseBody2,
+export const ResponseBody2$inboundSchema: z.ZodType<
+  ResponseBody2,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -197,30 +195,30 @@ export const ListAccessGroupsResponseBody2$inboundSchema: z.ZodType<
   pagination: z.lazy(() => ResponseBodyPagination$inboundSchema),
 });
 
-export function listAccessGroupsResponseBody2FromJSON(
+export function responseBody2FromJSON(
   jsonString: string,
-): SafeParseResult<ListAccessGroupsResponseBody2, SDKValidationError> {
+): SafeParseResult<ResponseBody2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ListAccessGroupsResponseBody2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListAccessGroupsResponseBody2' from JSON`,
+    (x) => ResponseBody2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBody2' from JSON`,
   );
 }
 
 /** @internal */
-export const ListAccessGroupsResponseBody1$inboundSchema: z.ZodType<
-  ListAccessGroupsResponseBody1,
+export const ResponseBody1$inboundSchema: z.ZodType<
+  ResponseBody1,
   z.ZodTypeDef,
   unknown
 > = z.object({});
 
-export function listAccessGroupsResponseBody1FromJSON(
+export function responseBody1FromJSON(
   jsonString: string,
-): SafeParseResult<ListAccessGroupsResponseBody1, SDKValidationError> {
+): SafeParseResult<ResponseBody1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ListAccessGroupsResponseBody1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListAccessGroupsResponseBody1' from JSON`,
+    (x) => ResponseBody1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBody1' from JSON`,
   );
 }
 
@@ -230,8 +228,8 @@ export const ListAccessGroupsResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([
-  z.lazy(() => ListAccessGroupsResponseBody2$inboundSchema),
-  z.lazy(() => ListAccessGroupsResponseBody1$inboundSchema),
+  z.lazy(() => ResponseBody2$inboundSchema),
+  z.lazy(() => ResponseBody1$inboundSchema),
 ]);
 
 export function listAccessGroupsResponseBodyFromJSON(

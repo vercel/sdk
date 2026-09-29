@@ -100,7 +100,7 @@ export type GetRedirectsResponseBodyVersion = {
   redirectCount?: number | undefined;
 };
 
-export type ResponseBody3 = {
+export type GetRedirectsResponseBody3 = {
   pagination: GetRedirectsResponseBodyBulkRedirectsPagination;
   redirects: Array<GetRedirectsResponseBodyRedirects>;
   version: GetRedirectsResponseBodyVersion;
@@ -163,7 +163,7 @@ export type GetRedirectsResponseBody2 = {
 };
 
 export type GetRedirectsResponseBody =
-  | ResponseBody3
+  | GetRedirectsResponseBody3
   | GetRedirectsResponseBody2
   | { [k: string]: any };
 
@@ -322,8 +322,8 @@ export function getRedirectsResponseBodyVersionFromJSON(
 }
 
 /** @internal */
-export const ResponseBody3$inboundSchema: z.ZodType<
-  ResponseBody3,
+export const GetRedirectsResponseBody3$inboundSchema: z.ZodType<
+  GetRedirectsResponseBody3,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -336,13 +336,13 @@ export const ResponseBody3$inboundSchema: z.ZodType<
   version: z.lazy(() => GetRedirectsResponseBodyVersion$inboundSchema),
 });
 
-export function responseBody3FromJSON(
+export function getRedirectsResponseBody3FromJSON(
   jsonString: string,
-): SafeParseResult<ResponseBody3, SDKValidationError> {
+): SafeParseResult<GetRedirectsResponseBody3, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ResponseBody3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBody3' from JSON`,
+    (x) => GetRedirectsResponseBody3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetRedirectsResponseBody3' from JSON`,
   );
 }
 
@@ -452,7 +452,7 @@ export const GetRedirectsResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([
-  z.lazy(() => ResponseBody3$inboundSchema),
+  z.lazy(() => GetRedirectsResponseBody3$inboundSchema),
   z.lazy(() => GetRedirectsResponseBody2$inboundSchema),
   z.record(z.any()),
 ]);

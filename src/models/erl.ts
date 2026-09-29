@@ -35,6 +35,10 @@ export type GetProjectsBlockHistory3 = {
   isCascading?: boolean | undefined;
   reason: string;
   route: GetProjectsRoute1 | GetProjectsRoute2;
+  /**
+   * Plain thread ID, recorded separately from `caseId`.
+   */
+  threadId?: string | undefined;
 };
 
 export type GetProjectsBlockHistory2 = {
@@ -45,6 +49,10 @@ export type GetProjectsBlockHistory2 = {
   createdAt: number;
   ineligibleForAppeal?: boolean | undefined;
   isCascading?: boolean | undefined;
+  /**
+   * Plain thread ID, recorded separately from `caseId`.
+   */
+  threadId?: string | undefined;
 };
 
 /**
@@ -70,6 +78,10 @@ export type GetProjectsBlockHistory1 = {
    */
   registeredShaBlock?: GetProjectsBlockHistoryRegisteredShaBlock | undefined;
   statusCode: number;
+  /**
+   * Plain thread ID, recorded separately from `caseId`.
+   */
+  threadId?: string | undefined;
 };
 
 export type ResponseBodyBlockHistory =
@@ -103,6 +115,10 @@ export type ResponseBodyInterstitialHistory = {
   comment?: string | undefined;
   createdAt: number;
   reason?: string | undefined;
+  /**
+   * Plain thread ID, recorded separately from `caseId`.
+   */
+  threadId?: string | undefined;
 };
 
 export type ResponseBodyAbuse = {
@@ -1715,6 +1731,7 @@ export const GetProjectsBlockHistory3$inboundSchema: z.ZodType<
     GetProjectsRoute1$inboundSchema,
     GetProjectsRoute2$inboundSchema,
   ]),
+  threadId: types.optional(types.string()),
 });
 
 export function getProjectsBlockHistory3FromJSON(
@@ -1740,6 +1757,7 @@ export const GetProjectsBlockHistory2$inboundSchema: z.ZodType<
   createdAt: types.number(),
   ineligibleForAppeal: types.optional(types.boolean()),
   isCascading: types.optional(types.boolean()),
+  threadId: types.optional(types.string()),
 });
 
 export function getProjectsBlockHistory2FromJSON(
@@ -1797,6 +1815,7 @@ export const GetProjectsBlockHistory1$inboundSchema: z.ZodType<
     z.lazy(() => GetProjectsBlockHistoryRegisteredShaBlock$inboundSchema),
   ),
   statusCode: types.number(),
+  threadId: types.optional(types.string()),
 });
 
 export function getProjectsBlockHistory1FromJSON(
@@ -1871,6 +1890,7 @@ export const ResponseBodyInterstitialHistory$inboundSchema: z.ZodType<
   comment: types.optional(types.string()),
   createdAt: types.number(),
   reason: types.optional(types.string()),
+  threadId: types.optional(types.string()),
 });
 
 export function responseBodyInterstitialHistoryFromJSON(

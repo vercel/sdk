@@ -57,6 +57,7 @@ export const Name = {
   AdminAgenticProvisioningAccountUnlinked:
     "admin-agentic-provisioning-account-unlinked",
   AdminPlanUpdated: "admin-plan-updated",
+  AdminPreviewDeploymentSuffixClear: "admin-preview-deployment-suffix-clear",
   AdminSecondaryEmailAdded: "admin-secondary-email-added",
   AdminSecondaryEmailRemoved: "admin-secondary-email-removed",
   AdminTeamNameUpdate: "admin-team-name-update",
@@ -384,6 +385,10 @@ export const Name = {
   MarketplaceFlexCommitOptIn: "marketplace-flex-commit-opt-in",
   MarketplaceIntegrationAllowlistUpdated:
     "marketplace-integration-allowlist-updated",
+  MessageboardCreated: "messageboard-created",
+  MessageboardPrivateCreated: "messageboard-private-created",
+  MessageboardPrivateSpaceCreated: "messageboard-private-space-created",
+  MessageboardSpaceCreated: "messageboard-space-created",
   MicrofrontendGroupAdded: "microfrontend-group-added",
   MicrofrontendGroupDeleted: "microfrontend-group-deleted",
   MicrofrontendGroupUpdated: "microfrontend-group-updated",
@@ -681,6 +686,10 @@ export const Name = {
   TeamDefaultPassportUpdated: "team-default-passport-updated",
   TeamDelete: "team-delete",
   TeamDeploymentPolicyUpdated: "team-deployment-policy-updated",
+  TeamDeploymentStorageHighRetentionOptIn:
+    "team-deployment-storage-high-retention-opt-in",
+  TeamDeploymentStorageRetentionOptOut:
+    "team-deployment-storage-retention-opt-out",
   TeamDomainVerificationCreated: "team-domain-verification-created",
   TeamDomainVerificationDeleted: "team-domain-verification-deleted",
   TeamDomainVerificationVerified: "team-domain-verification-verified",
@@ -816,6 +825,7 @@ export const ReplacedBy = {
   AdminAgenticProvisioningAccountUnlinked:
     "admin-agentic-provisioning-account-unlinked",
   AdminPlanUpdated: "admin-plan-updated",
+  AdminPreviewDeploymentSuffixClear: "admin-preview-deployment-suffix-clear",
   AdminSecondaryEmailAdded: "admin-secondary-email-added",
   AdminSecondaryEmailRemoved: "admin-secondary-email-removed",
   AdminTeamNameUpdate: "admin-team-name-update",
@@ -1143,6 +1153,10 @@ export const ReplacedBy = {
   MarketplaceFlexCommitOptIn: "marketplace-flex-commit-opt-in",
   MarketplaceIntegrationAllowlistUpdated:
     "marketplace-integration-allowlist-updated",
+  MessageboardCreated: "messageboard-created",
+  MessageboardPrivateCreated: "messageboard-private-created",
+  MessageboardPrivateSpaceCreated: "messageboard-private-space-created",
+  MessageboardSpaceCreated: "messageboard-space-created",
   MicrofrontendGroupAdded: "microfrontend-group-added",
   MicrofrontendGroupDeleted: "microfrontend-group-deleted",
   MicrofrontendGroupUpdated: "microfrontend-group-updated",
@@ -1440,6 +1454,10 @@ export const ReplacedBy = {
   TeamDefaultPassportUpdated: "team-default-passport-updated",
   TeamDelete: "team-delete",
   TeamDeploymentPolicyUpdated: "team-deployment-policy-updated",
+  TeamDeploymentStorageHighRetentionOptIn:
+    "team-deployment-storage-high-retention-opt-in",
+  TeamDeploymentStorageRetentionOptOut:
+    "team-deployment-storage-retention-opt-out",
   TeamDomainVerificationCreated: "team-domain-verification-created",
   TeamDomainVerificationDeleted: "team-domain-verification-deleted",
   TeamDomainVerificationVerified: "team-domain-verification-verified",

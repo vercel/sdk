@@ -1035,6 +1035,10 @@ export type UpdateProjectBlock = {
    */
   registeredShaBlock?: UpdateProjectRegisteredShaBlock | undefined;
   statusCode: number;
+  /**
+   * Plain thread ID, recorded separately from `caseId`.
+   */
+  threadId?: string | undefined;
 };
 
 export type UpdateProjectHasProjectsResponse200Value = {
@@ -1104,6 +1108,10 @@ export type UpdateProjectBlockHistory4 = {
   isCascading?: boolean | undefined;
   route: UpdateProjectRouteProjects1 | UpdateProjectRouteProjects2;
   statusCode?: number | undefined;
+  /**
+   * Plain thread ID, recorded separately from `caseId`.
+   */
+  threadId?: string | undefined;
 };
 
 export type UpdateProjectHasProjectsResponse200ApplicationJSONResponseBodyValue =
@@ -1176,6 +1184,10 @@ export type UpdateProjectBlockHistory3 = {
   isCascading?: boolean | undefined;
   reason: string;
   route: UpdateProjectRoute1 | UpdateProjectRoute2;
+  /**
+   * Plain thread ID, recorded separately from `caseId`.
+   */
+  threadId?: string | undefined;
 };
 
 export type UpdateProjectBlockHistory2 = {
@@ -1186,6 +1198,10 @@ export type UpdateProjectBlockHistory2 = {
   createdAt: number;
   ineligibleForAppeal?: boolean | undefined;
   isCascading?: boolean | undefined;
+  /**
+   * Plain thread ID, recorded separately from `caseId`.
+   */
+  threadId?: string | undefined;
 };
 
 /**
@@ -1211,6 +1227,10 @@ export type UpdateProjectBlockHistory1 = {
    */
   registeredShaBlock?: UpdateProjectBlockHistoryRegisteredShaBlock | undefined;
   statusCode: number;
+  /**
+   * Plain thread ID, recorded separately from `caseId`.
+   */
+  threadId?: string | undefined;
 };
 
 export type UpdateProjectBlockHistory =
@@ -1244,6 +1264,10 @@ export type UpdateProjectInterstitialHistory = {
   comment?: string | undefined;
   createdAt: number;
   reason?: string | undefined;
+  /**
+   * Plain thread ID, recorded separately from `caseId`.
+   */
+  threadId?: string | undefined;
 };
 
 export type UpdateProjectAbuse = {
@@ -3134,6 +3158,7 @@ export const UpdateProjectBlock$inboundSchema: z.ZodType<
     z.lazy(() => UpdateProjectRegisteredShaBlock$inboundSchema),
   ),
   statusCode: types.number(),
+  threadId: types.optional(types.string()),
 });
 
 export function updateProjectBlockFromJSON(
@@ -3368,6 +3393,7 @@ export const UpdateProjectBlockHistory4$inboundSchema: z.ZodType<
     z.lazy(() => UpdateProjectRouteProjects2$inboundSchema),
   ]),
   statusCode: types.optional(types.number()),
+  threadId: types.optional(types.string()),
 });
 
 export function updateProjectBlockHistory4FromJSON(
@@ -3609,6 +3635,7 @@ export const UpdateProjectBlockHistory3$inboundSchema: z.ZodType<
     z.lazy(() => UpdateProjectRoute1$inboundSchema),
     z.lazy(() => UpdateProjectRoute2$inboundSchema),
   ]),
+  threadId: types.optional(types.string()),
 });
 
 export function updateProjectBlockHistory3FromJSON(
@@ -3634,6 +3661,7 @@ export const UpdateProjectBlockHistory2$inboundSchema: z.ZodType<
   createdAt: types.number(),
   ineligibleForAppeal: types.optional(types.boolean()),
   isCascading: types.optional(types.boolean()),
+  threadId: types.optional(types.string()),
 });
 
 export function updateProjectBlockHistory2FromJSON(
@@ -3692,6 +3720,7 @@ export const UpdateProjectBlockHistory1$inboundSchema: z.ZodType<
     z.lazy(() => UpdateProjectBlockHistoryRegisteredShaBlock$inboundSchema),
   ),
   statusCode: types.number(),
+  threadId: types.optional(types.string()),
 });
 
 export function updateProjectBlockHistory1FromJSON(
@@ -3766,6 +3795,7 @@ export const UpdateProjectInterstitialHistory$inboundSchema: z.ZodType<
   comment: types.optional(types.string()),
   createdAt: types.number(),
   reason: types.optional(types.string()),
+  threadId: types.optional(types.string()),
 });
 
 export function updateProjectInterstitialHistoryFromJSON(

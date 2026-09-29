@@ -124,490 +124,50 @@ export type AggregateEventsRequest = {
 };
 
 export type AggregateEventsData2 = {
-  affinityDisplacedProvider: string;
-  affinityOutcome: string;
-  affinityPinnedProvider: string;
-  aiGatewayModelId: string;
-  aiModel: string;
-  aiModelType: string;
-  aiProvider: string;
-  appName: string;
-  asnId: string;
-  asnName: string;
-  attributes: string;
-  attributionEventName: string;
-  attributionTarget: string;
-  authMethod: string;
-  billableRegion: string;
-  blobOperationLevel: string;
-  blobOperationType: string;
-  botCategory: string;
-  botCategoryLegacy: string;
-  botCheckResult: string;
-  botName: string;
-  botVerified: string;
   browserName: string;
-  cacheApi: string;
-  cacheCreation1hInputTokensCurrency: string;
-  cacheCreationInputTokensCurrency: string;
-  cachedInputTokensCurrency: string;
-  cacheHitLevel: string;
-  cacheHitState: string;
-  cacheHostname: string;
-  cacheOperation: string;
-  cachePath: string;
-  cacheReason: string;
-  cacheResult: string;
-  cacheTags: string;
-  cause: string;
-  clientIp: string;
-  clientIpCountry: string;
-  clientJa4Digest: string;
-  clientSessionId: string;
-  clientSessionIdSource: string;
-  clientUserAgent: string;
-  codingAgent: string;
-  commitSha: string;
-  consumerGroup: string;
-  contentCaptureInputs: string;
-  contentCaptureOutputs: string;
-  contentCaptureStatus: string;
-  contentType: string;
-  costCurrency: string;
   country: string;
-  dataCacheRegion: string;
-  deepAnalysisCheck: string;
-  deploymentId: string;
   deviceType: string;
-  direction: string;
-  edgeNetworkRegion: string;
-  edgeType: string;
-  entryId: string;
-  entryItemId: string;
-  entryName: string;
-  entryRevalidateSeconds: string;
   environment: string;
-  environmentId: string;
-  errorCode: string;
-  errorMessage: string;
   eventData: string;
   eventName: string;
-  eventType: string;
-  externalRewriteTargetHost: string;
-  externalRewriteTargetPath: string;
-  fetchIndex: string;
-  fetchType: string;
-  flagClientName: string;
-  flagEvaluationReason: string;
-  flagKey: string;
   flags: string;
-  flagVariant: string;
-  functionDispatcher: string;
-  functionRegion: string;
-  functionStartType: string;
-  gatewayCostCurrency: string;
-  generationId: string;
-  hipaaRequested: string;
-  httpAccept: string;
-  httpStatus: string;
-  imageSource: string;
-  imageTransformationRegion: string;
-  inferenceEndpointSlug: string;
-  inferenceGeoRegion: string;
-  inferenceProviderRegion: string;
-  inferenceScope: string;
-  invokeSource: string;
-  isAdditionalRequest: string;
-  isByok: string;
-  isPrefetchRequest: string;
-  isPrivateModel: string;
-  isrAction: string;
-  isrCacheRegion: string;
-  isRequestZdr: string;
-  isStreaming: string;
-  keyId: string;
-  keyName: string;
-  marketCostCurrency: string;
-  messageId: string;
-  metricName: string;
-  microfrontendsDefaultAppDeploymentId: string;
-  microfrontendsDefaultAppProjectId: string;
-  microfrontendsMatchedPath: string;
-  microfrontendsResponseReason: string;
-  middlewareAction: string;
-  middlewareActionTarget: string;
-  moderationApplied: string;
-  networkId: string;
-  networkTenancy: string;
-  notificationUrl: string;
-  optimizedFormatMimeType: string;
-  optimizedQuality: string;
-  optimizedWidthPixels: string;
-  originHostname: string;
-  originPath: string;
-  originRoute: string;
   osName: string;
-  pathType: string;
-  pathTypeVariant: string;
-  piiRedactionApplied: string;
-  pprState: string;
-  privatelinkDnsName: string;
-  privatelinkEndpointId: string;
-  privatelinkIpAddress: string;
   projectId: string;
   projectName: string;
-  provider: string;
-  providerAttemptCanonicalSlug: string;
-  providerAttemptCredentialType: string;
-  providerAttemptDevSafetyIdentifier: string;
-  providerAttemptError: string;
-  providerAttemptIsFinal: string;
-  providerAttemptModelIndex: string;
-  providerAttemptNumber: string;
-  providerAttemptRegion: string;
-  providerAttemptSafetyIdentifier: string;
-  providerAttemptStatusCode: string;
-  providerAttemptSuccess: string;
-  providerAttemptTimeout: string;
-  providerAttemptTotalInRequest: string;
-  pullRequestNumber: string;
-  pullRequestState: string;
-  queueName: string;
-  queueRegion: string;
-  quotaEntityId: string;
-  quotaEntityType: string;
-  quotaRequested: string;
-  reason: string;
-  redirectLocation: string;
   referrerHostname: string;
-  referrerUrl: string;
-  region: string;
-  reportingProjectId: string;
-  reportingProjectName: string;
-  repositoryName: string;
-  repositoryOwner: string;
-  requestApi: string;
-  requestedInferenceRegion: string;
-  requestExtension: string;
   requestHostname: string;
-  requestId: string;
-  requestMethod: string;
   requestPath: string;
-  requestResolvedIp: string;
-  reviewConclusion: string;
-  reviewStatus: string;
-  rewriteDestinationHostname: string;
   route: string;
-  ruleCategory: string;
-  runtime: string;
-  sandboxName: string;
-  sandboxSessionId: string;
-  scheduleEventType: string;
-  scheduleExecutionId: string;
-  scheduleExpressionType: string;
-  scheduleId: string;
-  scheduleName: string;
-  scheduleNamespace: string;
-  scheduleSource: string;
-  scheduleTarget: string;
-  scheduleTargetType: string;
-  scheduleTimezone: string;
-  scheduleTrack: string;
-  sdkKeyEnvironment: string;
-  sdkKeyId: string;
-  servedSpeed: string;
-  serverActionName: string;
-  service: string;
-  sessionId: string;
-  singleAtInput: string;
-  singleAtResolution: string;
-  skewProtection: string;
-  source: string;
-  sourceImage: string;
-  sourceImageHash: string;
-  sourceImageHostname: string;
-  sourceImagePathname: string;
-  specVersion: string;
-  spendAttribution: string;
-  spendReportDatePart: string;
-  spendReportGroupBy: string;
-  stepRunId: string;
-  storeId: string;
-  storeName: string;
-  surchargeCostCurrency: string;
-  tagName: string;
-  toolCallErrorType: string;
-  toolCallProvider: string;
-  toolCallStatusCode: string;
-  toolCallSuccess: string;
-  toolCallType: string;
-  trafficSource: string;
-  transcriptInputs: string;
-  transcriptOutputs: string;
-  transcriptStatus: string;
-  triggeringTag: string;
   utmCampaign: string;
   utmContent: string;
   utmMedium: string;
   utmSource: string;
   utmTerm: string;
-  vdcOperationOrigin: string;
-  videoAspectRatio: string;
-  videoResolution: string;
-  virtualModelKind: string;
-  virtualModelSlug: string;
   visitorId: string;
-  wafAction: string;
-  wafRuleId: string;
-  workflowEventType: string;
-  workflowName: string;
-  workflowRunId: string;
-  workflowStatus: string;
-  workflowStepName: string;
   additionalProperties?: { [k: string]: number | null } | undefined;
 };
 
 export type AggregateEventsData1 = {
-  affinityDisplacedProvider?: string | undefined;
-  affinityOutcome?: string | undefined;
-  affinityPinnedProvider?: string | undefined;
-  aiGatewayModelId?: string | undefined;
-  aiModel?: string | undefined;
-  aiModelType?: string | undefined;
-  aiProvider?: string | undefined;
-  appName?: string | undefined;
-  asnId?: string | undefined;
-  asnName?: string | undefined;
-  attributes?: string | undefined;
-  attributionEventName?: string | undefined;
-  attributionTarget?: string | undefined;
-  authMethod?: string | undefined;
-  billableRegion?: string | undefined;
-  blobOperationLevel?: string | undefined;
-  blobOperationType?: string | undefined;
-  botCategory?: string | undefined;
-  botCategoryLegacy?: string | undefined;
-  botCheckResult?: string | undefined;
-  botName?: string | undefined;
-  botVerified?: string | undefined;
   browserName?: string | undefined;
-  cacheApi?: string | undefined;
-  cacheCreation1hInputTokensCurrency?: string | undefined;
-  cacheCreationInputTokensCurrency?: string | undefined;
-  cachedInputTokensCurrency?: string | undefined;
-  cacheHitLevel?: string | undefined;
-  cacheHitState?: string | undefined;
-  cacheHostname?: string | undefined;
-  cacheOperation?: string | undefined;
-  cachePath?: string | undefined;
-  cacheReason?: string | undefined;
-  cacheResult?: string | undefined;
-  cacheTags?: string | undefined;
-  cause?: string | undefined;
-  clientIp?: string | undefined;
-  clientIpCountry?: string | undefined;
-  clientJa4Digest?: string | undefined;
-  clientSessionId?: string | undefined;
-  clientSessionIdSource?: string | undefined;
-  clientUserAgent?: string | undefined;
-  codingAgent?: string | undefined;
-  commitSha?: string | undefined;
-  consumerGroup?: string | undefined;
-  contentCaptureInputs?: string | undefined;
-  contentCaptureOutputs?: string | undefined;
-  contentCaptureStatus?: string | undefined;
-  contentType?: string | undefined;
-  costCurrency?: string | undefined;
   country?: string | undefined;
-  dataCacheRegion?: string | undefined;
-  deepAnalysisCheck?: string | undefined;
-  deploymentId?: string | undefined;
   deviceType?: string | undefined;
-  direction?: string | undefined;
-  edgeNetworkRegion?: string | undefined;
-  edgeType?: string | undefined;
-  entryId?: string | undefined;
-  entryItemId?: string | undefined;
-  entryName?: string | undefined;
-  entryRevalidateSeconds?: string | undefined;
   environment?: string | undefined;
-  environmentId?: string | undefined;
-  errorCode?: string | undefined;
-  errorMessage?: string | undefined;
   eventData?: string | undefined;
   eventName?: string | undefined;
-  eventType?: string | undefined;
-  externalRewriteTargetHost?: string | undefined;
-  externalRewriteTargetPath?: string | undefined;
-  fetchIndex?: string | undefined;
-  fetchType?: string | undefined;
-  flagClientName?: string | undefined;
-  flagEvaluationReason?: string | undefined;
-  flagKey?: string | undefined;
   flags?: string | undefined;
-  flagVariant?: string | undefined;
-  functionDispatcher?: string | undefined;
-  functionRegion?: string | undefined;
-  functionStartType?: string | undefined;
-  gatewayCostCurrency?: string | undefined;
-  generationId?: string | undefined;
-  hipaaRequested?: string | undefined;
-  httpAccept?: string | undefined;
-  httpStatus?: string | undefined;
-  imageSource?: string | undefined;
-  imageTransformationRegion?: string | undefined;
-  inferenceEndpointSlug?: string | undefined;
-  inferenceGeoRegion?: string | undefined;
-  inferenceProviderRegion?: string | undefined;
-  inferenceScope?: string | undefined;
-  invokeSource?: string | undefined;
-  isAdditionalRequest?: string | undefined;
-  isByok?: string | undefined;
-  isPrefetchRequest?: string | undefined;
-  isPrivateModel?: string | undefined;
-  isrAction?: string | undefined;
-  isrCacheRegion?: string | undefined;
-  isRequestZdr?: string | undefined;
-  isStreaming?: string | undefined;
-  keyId?: string | undefined;
-  keyName?: string | undefined;
-  marketCostCurrency?: string | undefined;
-  messageId?: string | undefined;
-  metricName?: string | undefined;
-  microfrontendsDefaultAppDeploymentId?: string | undefined;
-  microfrontendsDefaultAppProjectId?: string | undefined;
-  microfrontendsMatchedPath?: string | undefined;
-  microfrontendsResponseReason?: string | undefined;
-  middlewareAction?: string | undefined;
-  middlewareActionTarget?: string | undefined;
-  moderationApplied?: string | undefined;
-  networkId?: string | undefined;
-  networkTenancy?: string | undefined;
-  notificationUrl?: string | undefined;
-  optimizedFormatMimeType?: string | undefined;
-  optimizedQuality?: string | undefined;
-  optimizedWidthPixels?: string | undefined;
-  originHostname?: string | undefined;
-  originPath?: string | undefined;
-  originRoute?: string | undefined;
   osName?: string | undefined;
-  pathType?: string | undefined;
-  pathTypeVariant?: string | undefined;
-  piiRedactionApplied?: string | undefined;
-  pprState?: string | undefined;
-  privatelinkDnsName?: string | undefined;
-  privatelinkEndpointId?: string | undefined;
-  privatelinkIpAddress?: string | undefined;
   projectId?: string | undefined;
   projectName?: string | undefined;
-  provider?: string | undefined;
-  providerAttemptCanonicalSlug?: string | undefined;
-  providerAttemptCredentialType?: string | undefined;
-  providerAttemptDevSafetyIdentifier?: string | undefined;
-  providerAttemptError?: string | undefined;
-  providerAttemptIsFinal?: string | undefined;
-  providerAttemptModelIndex?: string | undefined;
-  providerAttemptNumber?: string | undefined;
-  providerAttemptRegion?: string | undefined;
-  providerAttemptSafetyIdentifier?: string | undefined;
-  providerAttemptStatusCode?: string | undefined;
-  providerAttemptSuccess?: string | undefined;
-  providerAttemptTimeout?: string | undefined;
-  providerAttemptTotalInRequest?: string | undefined;
-  pullRequestNumber?: string | undefined;
-  pullRequestState?: string | undefined;
-  queueName?: string | undefined;
-  queueRegion?: string | undefined;
-  quotaEntityId?: string | undefined;
-  quotaEntityType?: string | undefined;
-  quotaRequested?: string | undefined;
-  reason?: string | undefined;
-  redirectLocation?: string | undefined;
   referrerHostname?: string | undefined;
-  referrerUrl?: string | undefined;
-  region?: string | undefined;
-  reportingProjectId?: string | undefined;
-  reportingProjectName?: string | undefined;
-  repositoryName?: string | undefined;
-  repositoryOwner?: string | undefined;
-  requestApi?: string | undefined;
-  requestedInferenceRegion?: string | undefined;
-  requestExtension?: string | undefined;
   requestHostname?: string | undefined;
-  requestId?: string | undefined;
-  requestMethod?: string | undefined;
   requestPath?: string | undefined;
-  requestResolvedIp?: string | undefined;
-  reviewConclusion?: string | undefined;
-  reviewStatus?: string | undefined;
-  rewriteDestinationHostname?: string | undefined;
   route?: string | undefined;
-  ruleCategory?: string | undefined;
-  runtime?: string | undefined;
-  sandboxName?: string | undefined;
-  sandboxSessionId?: string | undefined;
-  scheduleEventType?: string | undefined;
-  scheduleExecutionId?: string | undefined;
-  scheduleExpressionType?: string | undefined;
-  scheduleId?: string | undefined;
-  scheduleName?: string | undefined;
-  scheduleNamespace?: string | undefined;
-  scheduleSource?: string | undefined;
-  scheduleTarget?: string | undefined;
-  scheduleTargetType?: string | undefined;
-  scheduleTimezone?: string | undefined;
-  scheduleTrack?: string | undefined;
-  sdkKeyEnvironment?: string | undefined;
-  sdkKeyId?: string | undefined;
-  servedSpeed?: string | undefined;
-  serverActionName?: string | undefined;
-  service?: string | undefined;
-  sessionId?: string | undefined;
-  singleAtInput?: string | undefined;
-  singleAtResolution?: string | undefined;
-  skewProtection?: string | undefined;
-  source?: string | undefined;
-  sourceImage?: string | undefined;
-  sourceImageHash?: string | undefined;
-  sourceImageHostname?: string | undefined;
-  sourceImagePathname?: string | undefined;
-  specVersion?: string | undefined;
-  spendAttribution?: string | undefined;
-  spendReportDatePart?: string | undefined;
-  spendReportGroupBy?: string | undefined;
-  stepRunId?: string | undefined;
-  storeId?: string | undefined;
-  storeName?: string | undefined;
-  surchargeCostCurrency?: string | undefined;
-  tagName?: string | undefined;
-  toolCallErrorType?: string | undefined;
-  toolCallProvider?: string | undefined;
-  toolCallStatusCode?: string | undefined;
-  toolCallSuccess?: string | undefined;
-  toolCallType?: string | undefined;
-  trafficSource?: string | undefined;
-  transcriptInputs?: string | undefined;
-  transcriptOutputs?: string | undefined;
-  transcriptStatus?: string | undefined;
-  triggeringTag?: string | undefined;
   utmCampaign?: string | undefined;
   utmContent?: string | undefined;
   utmMedium?: string | undefined;
   utmSource?: string | undefined;
   utmTerm?: string | undefined;
-  vdcOperationOrigin?: string | undefined;
-  videoAspectRatio?: string | undefined;
-  videoResolution?: string | undefined;
-  virtualModelKind?: string | undefined;
-  virtualModelSlug?: string | undefined;
   visitorId?: string | undefined;
-  wafAction?: string | undefined;
-  wafRuleId?: string | undefined;
-  workflowEventType?: string | undefined;
-  workflowName?: string | undefined;
-  workflowRunId?: string | undefined;
-  workflowStatus?: string | undefined;
-  workflowStepName?: string | undefined;
   timestamp: Date;
 };
 
@@ -747,246 +307,26 @@ export const AggregateEventsData2$inboundSchema: z.ZodType<
   unknown
 > = collectExtraKeys$(
   z.object({
-    affinityDisplacedProvider: types.string(),
-    affinityOutcome: types.string(),
-    affinityPinnedProvider: types.string(),
-    aiGatewayModelId: types.string(),
-    aiModel: types.string(),
-    aiModelType: types.string(),
-    aiProvider: types.string(),
-    appName: types.string(),
-    asnId: types.string(),
-    asnName: types.string(),
-    attributes: types.string(),
-    attributionEventName: types.string(),
-    attributionTarget: types.string(),
-    authMethod: types.string(),
-    billableRegion: types.string(),
-    blobOperationLevel: types.string(),
-    blobOperationType: types.string(),
-    botCategory: types.string(),
-    botCategoryLegacy: types.string(),
-    botCheckResult: types.string(),
-    botName: types.string(),
-    botVerified: types.string(),
     browserName: types.string(),
-    cacheApi: types.string(),
-    cacheCreation1hInputTokensCurrency: types.string(),
-    cacheCreationInputTokensCurrency: types.string(),
-    cachedInputTokensCurrency: types.string(),
-    cacheHitLevel: types.string(),
-    cacheHitState: types.string(),
-    cacheHostname: types.string(),
-    cacheOperation: types.string(),
-    cachePath: types.string(),
-    cacheReason: types.string(),
-    cacheResult: types.string(),
-    cacheTags: types.string(),
-    cause: types.string(),
-    clientIp: types.string(),
-    clientIpCountry: types.string(),
-    clientJa4Digest: types.string(),
-    clientSessionId: types.string(),
-    clientSessionIdSource: types.string(),
-    clientUserAgent: types.string(),
-    codingAgent: types.string(),
-    commitSha: types.string(),
-    consumerGroup: types.string(),
-    contentCaptureInputs: types.string(),
-    contentCaptureOutputs: types.string(),
-    contentCaptureStatus: types.string(),
-    contentType: types.string(),
-    costCurrency: types.string(),
     country: types.string(),
-    dataCacheRegion: types.string(),
-    deepAnalysisCheck: types.string(),
-    deploymentId: types.string(),
     deviceType: types.string(),
-    direction: types.string(),
-    edgeNetworkRegion: types.string(),
-    edgeType: types.string(),
-    entryId: types.string(),
-    entryItemId: types.string(),
-    entryName: types.string(),
-    entryRevalidateSeconds: types.string(),
     environment: types.string(),
-    environmentId: types.string(),
-    errorCode: types.string(),
-    errorMessage: types.string(),
     eventData: types.string(),
     eventName: types.string(),
-    eventType: types.string(),
-    externalRewriteTargetHost: types.string(),
-    externalRewriteTargetPath: types.string(),
-    fetchIndex: types.string(),
-    fetchType: types.string(),
-    flagClientName: types.string(),
-    flagEvaluationReason: types.string(),
-    flagKey: types.string(),
     flags: types.string(),
-    flagVariant: types.string(),
-    functionDispatcher: types.string(),
-    functionRegion: types.string(),
-    functionStartType: types.string(),
-    gatewayCostCurrency: types.string(),
-    generationId: types.string(),
-    hipaaRequested: types.string(),
-    httpAccept: types.string(),
-    httpStatus: types.string(),
-    imageSource: types.string(),
-    imageTransformationRegion: types.string(),
-    inferenceEndpointSlug: types.string(),
-    inferenceGeoRegion: types.string(),
-    inferenceProviderRegion: types.string(),
-    inferenceScope: types.string(),
-    invokeSource: types.string(),
-    isAdditionalRequest: types.string(),
-    isByok: types.string(),
-    isPrefetchRequest: types.string(),
-    isPrivateModel: types.string(),
-    isrAction: types.string(),
-    isrCacheRegion: types.string(),
-    isRequestZdr: types.string(),
-    isStreaming: types.string(),
-    keyId: types.string(),
-    keyName: types.string(),
-    marketCostCurrency: types.string(),
-    messageId: types.string(),
-    metricName: types.string(),
-    microfrontendsDefaultAppDeploymentId: types.string(),
-    microfrontendsDefaultAppProjectId: types.string(),
-    microfrontendsMatchedPath: types.string(),
-    microfrontendsResponseReason: types.string(),
-    middlewareAction: types.string(),
-    middlewareActionTarget: types.string(),
-    moderationApplied: types.string(),
-    networkId: types.string(),
-    networkTenancy: types.string(),
-    notificationUrl: types.string(),
-    optimizedFormatMimeType: types.string(),
-    optimizedQuality: types.string(),
-    optimizedWidthPixels: types.string(),
-    originHostname: types.string(),
-    originPath: types.string(),
-    originRoute: types.string(),
     osName: types.string(),
-    pathType: types.string(),
-    pathTypeVariant: types.string(),
-    piiRedactionApplied: types.string(),
-    pprState: types.string(),
-    privatelinkDnsName: types.string(),
-    privatelinkEndpointId: types.string(),
-    privatelinkIpAddress: types.string(),
     projectId: types.string(),
     projectName: types.string(),
-    provider: types.string(),
-    providerAttemptCanonicalSlug: types.string(),
-    providerAttemptCredentialType: types.string(),
-    providerAttemptDevSafetyIdentifier: types.string(),
-    providerAttemptError: types.string(),
-    providerAttemptIsFinal: types.string(),
-    providerAttemptModelIndex: types.string(),
-    providerAttemptNumber: types.string(),
-    providerAttemptRegion: types.string(),
-    providerAttemptSafetyIdentifier: types.string(),
-    providerAttemptStatusCode: types.string(),
-    providerAttemptSuccess: types.string(),
-    providerAttemptTimeout: types.string(),
-    providerAttemptTotalInRequest: types.string(),
-    pullRequestNumber: types.string(),
-    pullRequestState: types.string(),
-    queueName: types.string(),
-    queueRegion: types.string(),
-    quotaEntityId: types.string(),
-    quotaEntityType: types.string(),
-    quotaRequested: types.string(),
-    reason: types.string(),
-    redirectLocation: types.string(),
     referrerHostname: types.string(),
-    referrerUrl: types.string(),
-    region: types.string(),
-    reportingProjectId: types.string(),
-    reportingProjectName: types.string(),
-    repositoryName: types.string(),
-    repositoryOwner: types.string(),
-    requestApi: types.string(),
-    requestedInferenceRegion: types.string(),
-    requestExtension: types.string(),
     requestHostname: types.string(),
-    requestId: types.string(),
-    requestMethod: types.string(),
     requestPath: types.string(),
-    requestResolvedIp: types.string(),
-    reviewConclusion: types.string(),
-    reviewStatus: types.string(),
-    rewriteDestinationHostname: types.string(),
     route: types.string(),
-    ruleCategory: types.string(),
-    runtime: types.string(),
-    sandboxName: types.string(),
-    sandboxSessionId: types.string(),
-    scheduleEventType: types.string(),
-    scheduleExecutionId: types.string(),
-    scheduleExpressionType: types.string(),
-    scheduleId: types.string(),
-    scheduleName: types.string(),
-    scheduleNamespace: types.string(),
-    scheduleSource: types.string(),
-    scheduleTarget: types.string(),
-    scheduleTargetType: types.string(),
-    scheduleTimezone: types.string(),
-    scheduleTrack: types.string(),
-    sdkKeyEnvironment: types.string(),
-    sdkKeyId: types.string(),
-    servedSpeed: types.string(),
-    serverActionName: types.string(),
-    service: types.string(),
-    sessionId: types.string(),
-    singleAtInput: types.string(),
-    singleAtResolution: types.string(),
-    skewProtection: types.string(),
-    source: types.string(),
-    sourceImage: types.string(),
-    sourceImageHash: types.string(),
-    sourceImageHostname: types.string(),
-    sourceImagePathname: types.string(),
-    specVersion: types.string(),
-    spendAttribution: types.string(),
-    spendReportDatePart: types.string(),
-    spendReportGroupBy: types.string(),
-    stepRunId: types.string(),
-    storeId: types.string(),
-    storeName: types.string(),
-    surchargeCostCurrency: types.string(),
-    tagName: types.string(),
-    toolCallErrorType: types.string(),
-    toolCallProvider: types.string(),
-    toolCallStatusCode: types.string(),
-    toolCallSuccess: types.string(),
-    toolCallType: types.string(),
-    trafficSource: types.string(),
-    transcriptInputs: types.string(),
-    transcriptOutputs: types.string(),
-    transcriptStatus: types.string(),
-    triggeringTag: types.string(),
     utmCampaign: types.string(),
     utmContent: types.string(),
     utmMedium: types.string(),
     utmSource: types.string(),
     utmTerm: types.string(),
-    vdcOperationOrigin: types.string(),
-    videoAspectRatio: types.string(),
-    videoResolution: types.string(),
-    virtualModelKind: types.string(),
-    virtualModelSlug: types.string(),
     visitorId: types.string(),
-    wafAction: types.string(),
-    wafRuleId: types.string(),
-    workflowEventType: types.string(),
-    workflowName: types.string(),
-    workflowRunId: types.string(),
-    workflowStatus: types.string(),
-    workflowStepName: types.string(),
   }).catchall(types.number()),
   "additionalProperties",
   true,
@@ -1008,246 +348,26 @@ export const AggregateEventsData1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  affinityDisplacedProvider: types.optional(types.string()),
-  affinityOutcome: types.optional(types.string()),
-  affinityPinnedProvider: types.optional(types.string()),
-  aiGatewayModelId: types.optional(types.string()),
-  aiModel: types.optional(types.string()),
-  aiModelType: types.optional(types.string()),
-  aiProvider: types.optional(types.string()),
-  appName: types.optional(types.string()),
-  asnId: types.optional(types.string()),
-  asnName: types.optional(types.string()),
-  attributes: types.optional(types.string()),
-  attributionEventName: types.optional(types.string()),
-  attributionTarget: types.optional(types.string()),
-  authMethod: types.optional(types.string()),
-  billableRegion: types.optional(types.string()),
-  blobOperationLevel: types.optional(types.string()),
-  blobOperationType: types.optional(types.string()),
-  botCategory: types.optional(types.string()),
-  botCategoryLegacy: types.optional(types.string()),
-  botCheckResult: types.optional(types.string()),
-  botName: types.optional(types.string()),
-  botVerified: types.optional(types.string()),
   browserName: types.optional(types.string()),
-  cacheApi: types.optional(types.string()),
-  cacheCreation1hInputTokensCurrency: types.optional(types.string()),
-  cacheCreationInputTokensCurrency: types.optional(types.string()),
-  cachedInputTokensCurrency: types.optional(types.string()),
-  cacheHitLevel: types.optional(types.string()),
-  cacheHitState: types.optional(types.string()),
-  cacheHostname: types.optional(types.string()),
-  cacheOperation: types.optional(types.string()),
-  cachePath: types.optional(types.string()),
-  cacheReason: types.optional(types.string()),
-  cacheResult: types.optional(types.string()),
-  cacheTags: types.optional(types.string()),
-  cause: types.optional(types.string()),
-  clientIp: types.optional(types.string()),
-  clientIpCountry: types.optional(types.string()),
-  clientJa4Digest: types.optional(types.string()),
-  clientSessionId: types.optional(types.string()),
-  clientSessionIdSource: types.optional(types.string()),
-  clientUserAgent: types.optional(types.string()),
-  codingAgent: types.optional(types.string()),
-  commitSha: types.optional(types.string()),
-  consumerGroup: types.optional(types.string()),
-  contentCaptureInputs: types.optional(types.string()),
-  contentCaptureOutputs: types.optional(types.string()),
-  contentCaptureStatus: types.optional(types.string()),
-  contentType: types.optional(types.string()),
-  costCurrency: types.optional(types.string()),
   country: types.optional(types.string()),
-  dataCacheRegion: types.optional(types.string()),
-  deepAnalysisCheck: types.optional(types.string()),
-  deploymentId: types.optional(types.string()),
   deviceType: types.optional(types.string()),
-  direction: types.optional(types.string()),
-  edgeNetworkRegion: types.optional(types.string()),
-  edgeType: types.optional(types.string()),
-  entryId: types.optional(types.string()),
-  entryItemId: types.optional(types.string()),
-  entryName: types.optional(types.string()),
-  entryRevalidateSeconds: types.optional(types.string()),
   environment: types.optional(types.string()),
-  environmentId: types.optional(types.string()),
-  errorCode: types.optional(types.string()),
-  errorMessage: types.optional(types.string()),
   eventData: types.optional(types.string()),
   eventName: types.optional(types.string()),
-  eventType: types.optional(types.string()),
-  externalRewriteTargetHost: types.optional(types.string()),
-  externalRewriteTargetPath: types.optional(types.string()),
-  fetchIndex: types.optional(types.string()),
-  fetchType: types.optional(types.string()),
-  flagClientName: types.optional(types.string()),
-  flagEvaluationReason: types.optional(types.string()),
-  flagKey: types.optional(types.string()),
   flags: types.optional(types.string()),
-  flagVariant: types.optional(types.string()),
-  functionDispatcher: types.optional(types.string()),
-  functionRegion: types.optional(types.string()),
-  functionStartType: types.optional(types.string()),
-  gatewayCostCurrency: types.optional(types.string()),
-  generationId: types.optional(types.string()),
-  hipaaRequested: types.optional(types.string()),
-  httpAccept: types.optional(types.string()),
-  httpStatus: types.optional(types.string()),
-  imageSource: types.optional(types.string()),
-  imageTransformationRegion: types.optional(types.string()),
-  inferenceEndpointSlug: types.optional(types.string()),
-  inferenceGeoRegion: types.optional(types.string()),
-  inferenceProviderRegion: types.optional(types.string()),
-  inferenceScope: types.optional(types.string()),
-  invokeSource: types.optional(types.string()),
-  isAdditionalRequest: types.optional(types.string()),
-  isByok: types.optional(types.string()),
-  isPrefetchRequest: types.optional(types.string()),
-  isPrivateModel: types.optional(types.string()),
-  isrAction: types.optional(types.string()),
-  isrCacheRegion: types.optional(types.string()),
-  isRequestZdr: types.optional(types.string()),
-  isStreaming: types.optional(types.string()),
-  keyId: types.optional(types.string()),
-  keyName: types.optional(types.string()),
-  marketCostCurrency: types.optional(types.string()),
-  messageId: types.optional(types.string()),
-  metricName: types.optional(types.string()),
-  microfrontendsDefaultAppDeploymentId: types.optional(types.string()),
-  microfrontendsDefaultAppProjectId: types.optional(types.string()),
-  microfrontendsMatchedPath: types.optional(types.string()),
-  microfrontendsResponseReason: types.optional(types.string()),
-  middlewareAction: types.optional(types.string()),
-  middlewareActionTarget: types.optional(types.string()),
-  moderationApplied: types.optional(types.string()),
-  networkId: types.optional(types.string()),
-  networkTenancy: types.optional(types.string()),
-  notificationUrl: types.optional(types.string()),
-  optimizedFormatMimeType: types.optional(types.string()),
-  optimizedQuality: types.optional(types.string()),
-  optimizedWidthPixels: types.optional(types.string()),
-  originHostname: types.optional(types.string()),
-  originPath: types.optional(types.string()),
-  originRoute: types.optional(types.string()),
   osName: types.optional(types.string()),
-  pathType: types.optional(types.string()),
-  pathTypeVariant: types.optional(types.string()),
-  piiRedactionApplied: types.optional(types.string()),
-  pprState: types.optional(types.string()),
-  privatelinkDnsName: types.optional(types.string()),
-  privatelinkEndpointId: types.optional(types.string()),
-  privatelinkIpAddress: types.optional(types.string()),
   projectId: types.optional(types.string()),
   projectName: types.optional(types.string()),
-  provider: types.optional(types.string()),
-  providerAttemptCanonicalSlug: types.optional(types.string()),
-  providerAttemptCredentialType: types.optional(types.string()),
-  providerAttemptDevSafetyIdentifier: types.optional(types.string()),
-  providerAttemptError: types.optional(types.string()),
-  providerAttemptIsFinal: types.optional(types.string()),
-  providerAttemptModelIndex: types.optional(types.string()),
-  providerAttemptNumber: types.optional(types.string()),
-  providerAttemptRegion: types.optional(types.string()),
-  providerAttemptSafetyIdentifier: types.optional(types.string()),
-  providerAttemptStatusCode: types.optional(types.string()),
-  providerAttemptSuccess: types.optional(types.string()),
-  providerAttemptTimeout: types.optional(types.string()),
-  providerAttemptTotalInRequest: types.optional(types.string()),
-  pullRequestNumber: types.optional(types.string()),
-  pullRequestState: types.optional(types.string()),
-  queueName: types.optional(types.string()),
-  queueRegion: types.optional(types.string()),
-  quotaEntityId: types.optional(types.string()),
-  quotaEntityType: types.optional(types.string()),
-  quotaRequested: types.optional(types.string()),
-  reason: types.optional(types.string()),
-  redirectLocation: types.optional(types.string()),
   referrerHostname: types.optional(types.string()),
-  referrerUrl: types.optional(types.string()),
-  region: types.optional(types.string()),
-  reportingProjectId: types.optional(types.string()),
-  reportingProjectName: types.optional(types.string()),
-  repositoryName: types.optional(types.string()),
-  repositoryOwner: types.optional(types.string()),
-  requestApi: types.optional(types.string()),
-  requestedInferenceRegion: types.optional(types.string()),
-  requestExtension: types.optional(types.string()),
   requestHostname: types.optional(types.string()),
-  requestId: types.optional(types.string()),
-  requestMethod: types.optional(types.string()),
   requestPath: types.optional(types.string()),
-  requestResolvedIp: types.optional(types.string()),
-  reviewConclusion: types.optional(types.string()),
-  reviewStatus: types.optional(types.string()),
-  rewriteDestinationHostname: types.optional(types.string()),
   route: types.optional(types.string()),
-  ruleCategory: types.optional(types.string()),
-  runtime: types.optional(types.string()),
-  sandboxName: types.optional(types.string()),
-  sandboxSessionId: types.optional(types.string()),
-  scheduleEventType: types.optional(types.string()),
-  scheduleExecutionId: types.optional(types.string()),
-  scheduleExpressionType: types.optional(types.string()),
-  scheduleId: types.optional(types.string()),
-  scheduleName: types.optional(types.string()),
-  scheduleNamespace: types.optional(types.string()),
-  scheduleSource: types.optional(types.string()),
-  scheduleTarget: types.optional(types.string()),
-  scheduleTargetType: types.optional(types.string()),
-  scheduleTimezone: types.optional(types.string()),
-  scheduleTrack: types.optional(types.string()),
-  sdkKeyEnvironment: types.optional(types.string()),
-  sdkKeyId: types.optional(types.string()),
-  servedSpeed: types.optional(types.string()),
-  serverActionName: types.optional(types.string()),
-  service: types.optional(types.string()),
-  sessionId: types.optional(types.string()),
-  singleAtInput: types.optional(types.string()),
-  singleAtResolution: types.optional(types.string()),
-  skewProtection: types.optional(types.string()),
-  source: types.optional(types.string()),
-  sourceImage: types.optional(types.string()),
-  sourceImageHash: types.optional(types.string()),
-  sourceImageHostname: types.optional(types.string()),
-  sourceImagePathname: types.optional(types.string()),
-  specVersion: types.optional(types.string()),
-  spendAttribution: types.optional(types.string()),
-  spendReportDatePart: types.optional(types.string()),
-  spendReportGroupBy: types.optional(types.string()),
-  stepRunId: types.optional(types.string()),
-  storeId: types.optional(types.string()),
-  storeName: types.optional(types.string()),
-  surchargeCostCurrency: types.optional(types.string()),
-  tagName: types.optional(types.string()),
-  toolCallErrorType: types.optional(types.string()),
-  toolCallProvider: types.optional(types.string()),
-  toolCallStatusCode: types.optional(types.string()),
-  toolCallSuccess: types.optional(types.string()),
-  toolCallType: types.optional(types.string()),
-  trafficSource: types.optional(types.string()),
-  transcriptInputs: types.optional(types.string()),
-  transcriptOutputs: types.optional(types.string()),
-  transcriptStatus: types.optional(types.string()),
-  triggeringTag: types.optional(types.string()),
   utmCampaign: types.optional(types.string()),
   utmContent: types.optional(types.string()),
   utmMedium: types.optional(types.string()),
   utmSource: types.optional(types.string()),
   utmTerm: types.optional(types.string()),
-  vdcOperationOrigin: types.optional(types.string()),
-  videoAspectRatio: types.optional(types.string()),
-  videoResolution: types.optional(types.string()),
-  virtualModelKind: types.optional(types.string()),
-  virtualModelSlug: types.optional(types.string()),
   visitorId: types.optional(types.string()),
-  wafAction: types.optional(types.string()),
-  wafRuleId: types.optional(types.string()),
-  workflowEventType: types.optional(types.string()),
-  workflowName: types.optional(types.string()),
-  workflowRunId: types.optional(types.string()),
-  workflowStatus: types.optional(types.string()),
-  workflowStepName: types.optional(types.string()),
   timestamp: types.date(),
 });
 

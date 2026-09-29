@@ -53,6 +53,10 @@ export type GetMicrofrontendsInGroupBlock = {
    */
   registeredShaBlock?: GetMicrofrontendsInGroupRegisteredShaBlock | undefined;
   statusCode: number;
+  /**
+   * Plain thread ID, recorded separately from `caseId`.
+   */
+  threadId?: string | undefined;
 };
 
 export type GetMicrofrontendsInGroupHasMicrofrontendsResponse200Value = {
@@ -125,6 +129,10 @@ export type GetMicrofrontendsInGroupBlockHistory4 = {
   isCascading?: boolean | undefined;
   route: GetMicrofrontendsInGroupRoute1 | GetMicrofrontendsInGroupRoute2;
   statusCode?: number | undefined;
+  /**
+   * Plain thread ID, recorded separately from `caseId`.
+   */
+  threadId?: string | undefined;
 };
 
 export type GetMicrofrontendsInGroupHasMicrofrontendsResponse200ApplicationJSONResponseBodyValue =
@@ -203,6 +211,10 @@ export type GetMicrofrontendsInGroupBlockHistory3 = {
   route:
     | GetMicrofrontendsInGroupRouteMicrofrontends1
     | GetMicrofrontendsInGroupRouteMicrofrontends2;
+  /**
+   * Plain thread ID, recorded separately from `caseId`.
+   */
+  threadId?: string | undefined;
 };
 
 export type GetMicrofrontendsInGroupBlockHistory2 = {
@@ -213,6 +225,10 @@ export type GetMicrofrontendsInGroupBlockHistory2 = {
   createdAt: number;
   ineligibleForAppeal?: boolean | undefined;
   isCascading?: boolean | undefined;
+  /**
+   * Plain thread ID, recorded separately from `caseId`.
+   */
+  threadId?: string | undefined;
 };
 
 /**
@@ -240,6 +256,10 @@ export type GetMicrofrontendsInGroupBlockHistory1 = {
     | GetMicrofrontendsInGroupBlockHistoryRegisteredShaBlock
     | undefined;
   statusCode: number;
+  /**
+   * Plain thread ID, recorded separately from `caseId`.
+   */
+  threadId?: string | undefined;
 };
 
 export type GetMicrofrontendsInGroupBlockHistory =
@@ -273,6 +293,10 @@ export type GetMicrofrontendsInGroupInterstitialHistory = {
   comment?: string | undefined;
   createdAt: number;
   reason?: string | undefined;
+  /**
+   * Plain thread ID, recorded separately from `caseId`.
+   */
+  threadId?: string | undefined;
 };
 
 export type GetMicrofrontendsInGroupAbuse = {
@@ -1612,6 +1636,7 @@ export const GetMicrofrontendsInGroupBlock$inboundSchema: z.ZodType<
     z.lazy(() => GetMicrofrontendsInGroupRegisteredShaBlock$inboundSchema),
   ),
   statusCode: types.number(),
+  threadId: types.optional(types.string()),
 });
 
 export function getMicrofrontendsInGroupBlockFromJSON(
@@ -1868,6 +1893,7 @@ export const GetMicrofrontendsInGroupBlockHistory4$inboundSchema: z.ZodType<
     z.lazy(() => GetMicrofrontendsInGroupRoute2$inboundSchema),
   ]),
   statusCode: types.optional(types.number()),
+  threadId: types.optional(types.string()),
 });
 
 export function getMicrofrontendsInGroupBlockHistory4FromJSON(
@@ -2168,6 +2194,7 @@ export const GetMicrofrontendsInGroupBlockHistory3$inboundSchema: z.ZodType<
     z.lazy(() => GetMicrofrontendsInGroupRouteMicrofrontends1$inboundSchema),
     z.lazy(() => GetMicrofrontendsInGroupRouteMicrofrontends2$inboundSchema),
   ]),
+  threadId: types.optional(types.string()),
 });
 
 export function getMicrofrontendsInGroupBlockHistory3FromJSON(
@@ -2194,6 +2221,7 @@ export const GetMicrofrontendsInGroupBlockHistory2$inboundSchema: z.ZodType<
   createdAt: types.number(),
   ineligibleForAppeal: types.optional(types.boolean()),
   isCascading: types.optional(types.boolean()),
+  threadId: types.optional(types.string()),
 });
 
 export function getMicrofrontendsInGroupBlockHistory2FromJSON(
@@ -2254,6 +2282,7 @@ export const GetMicrofrontendsInGroupBlockHistory1$inboundSchema: z.ZodType<
     ),
   ),
   statusCode: types.number(),
+  threadId: types.optional(types.string()),
 });
 
 export function getMicrofrontendsInGroupBlockHistory1FromJSON(
@@ -2331,6 +2360,7 @@ export const GetMicrofrontendsInGroupInterstitialHistory$inboundSchema:
     comment: types.optional(types.string()),
     createdAt: types.number(),
     reason: types.optional(types.string()),
+    threadId: types.optional(types.string()),
   });
 
 export function getMicrofrontendsInGroupInterstitialHistoryFromJSON(

@@ -626,7 +626,7 @@ export type OidcProviders = {
  */
 export type TrustedSources = {
   /**
-   * Allow same-team Vercel CI access to preview deployments built from the same repository as the CI run. The deployment source repository, not the current project repository link, is authoritative. Defaults to enabled when not stored. Omitting this field preserves its stored value, including when trustedSources is cleared. Set true explicitly to re-enable.
+   * Allow same-team Vercel CI access to preview and production deployments built from the same repository as the CI run. The deployment source repository, not the current project repository link, is authoritative. Defaults to enabled when not stored. Omitting this field preserves its stored value, including when trustedSources is cleared. Set true explicitly to re-enable.
    */
   enableVercelCiSameRepository?: boolean | undefined;
   projects?: { [k: string]: UpdateProjectProjects } | undefined;

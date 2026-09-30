@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { SiftScores } from "@vercel/sdk/models/lasteditedbyprincipal2.js";
+import { SiftScores } from "@vercel/sdk/models/oldprojects.js";
 
 let value: SiftScores = {
   reasons: [

@@ -5,17 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFive } from "@vercel/sdk/models/sourceimages.js";
+import { TwoHundredAndFive } from "@vercel/sdk/models/redisoveragereason.js";
 
 let value: TwoHundredAndFive = {
-  enabled: true,
+  projectId: "<id>",
+  projectName: "<value>",
+  toDeploymentId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                     | Type                      | Required                  | Description               |
-| ------------------------- | ------------------------- | ------------------------- | ------------------------- |
-| `allowedIntegrationCount` | *number*                  | :heavy_minus_sign:        | N/A                       |
-| `allowedIntegrationIds`   | *string*[]                | :heavy_minus_sign:        | N/A                       |
-| `enabled`                 | *boolean*                 | :heavy_check_mark:        | N/A                       |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `toDeploymentId`   | *string*           | :heavy_check_mark: | N/A                |

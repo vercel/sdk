@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Env } from "@vercel/sdk/models/fourhundredandseventeen.js";
+import { Env } from "@vercel/sdk/models/fourhundredandtwenty.js";
 
 let value: Env = "preview";
 ```

@@ -151,6 +151,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           }
@@ -314,6 +317,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           }
@@ -444,6 +450,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "410": {
             "description": ""
@@ -578,6 +587,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "410": {
             "description": ""
@@ -806,6 +818,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           }
@@ -1008,6 +1023,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           }
@@ -1202,6 +1220,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           }
@@ -1328,6 +1349,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "410": {
             "description": ""
@@ -1463,6 +1487,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           }
@@ -1581,6 +1608,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           }
@@ -1685,6 +1715,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           }
@@ -1770,6 +1803,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "409": {
             "description": ""
@@ -2106,6 +2142,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "410": {
             "description": ""
@@ -2449,6 +2488,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "409": {
             "description": ""
           },
@@ -2511,6 +2553,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "410": {
             "description": ""
@@ -2715,6 +2760,9 @@
           "403": {
             "description": "The customer has reached their spend cap limit and has been paused. An owner can disable the cap or raise the limit in settings.\nThe Remote Caching usage limit has been reached for this account for this billing cycle.\nRemote Caching has been disabled for this team or user. An owner can enable it in the billing settings.\nYou do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           }
@@ -2881,6 +2929,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           }
@@ -2957,6 +3008,9 @@
           },
           "403": {
             "description": "The customer has reached their spend cap limit and has been paused. An owner can disable the cap or raise the limit in settings.\nThe Remote Caching usage limit has been reached for this account for this billing cycle.\nRemote Caching has been disabled for this team or user. An owner can enable it in the billing settings.\nYou do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "410": {
             "description": ""
@@ -3337,6 +3391,9 @@
           "403": {
             "description": "The customer has reached their spend cap limit and has been paused. An owner can disable the cap or raise the limit in settings.\nThe Remote Caching usage limit has been reached for this account for this billing cycle.\nRemote Caching has been disabled for this team or user. An owner can enable it in the billing settings.\nYou do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           }
@@ -3428,6 +3485,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           }
@@ -3456,7 +3516,7 @@
     },
     "/v1/billing/charges": {
       "get": {
-        "description": "Returns the billing charge data in FOCUS v1.3 JSONL format for a specified Vercel team, within a date range specified by `from` and `to` query parameters. Supports 1-day granularity with a maximum date range of 1 year. The response is streamed as newline-delimited JSON (JSONL) and can be optionally compressed with gzip if the `Accept-Encoding: gzip` header is provided. This is only available for Owner, Member, Developer, Security, Billing, and Enterprise Viewer roles for the supplied team.",
+        "description": "Returns the billing charge data in FOCUS v1.3 JSONL format for a specified Vercel team, within a date range specified by `from` and `to` query parameters. Supports 1-day granularity with a maximum date range of 1 year. The response is streamed as newline-delimited JSON (JSONL) and can be optionally compressed with gzip if the `Accept-Encoding: gzip` header is provided. `SkuId` is the stable product ID. For unmapped items, it is derived from the item identifier. This is only available for Owner, Member, Developer, Security, Billing, and Enterprise Viewer roles for the supplied team.",
         "operationId": "listBillingCharges",
         "security": [
           {
@@ -3581,6 +3641,10 @@
                       "type": "string",
                       "description": "Entity making the resource/service available for purchase (v1.3)"
                     },
+                    "SkuId": {
+                      "type": "string",
+                      "description": "Stable identifier for the charged product or item"
+                    },
                     "Tags": {
                       "additionalProperties": {
                         "type": "string"
@@ -3604,6 +3668,7 @@
                     "PricingUnit",
                     "ServiceName",
                     "ServiceProviderName",
+                    "SkuId",
                     "Tags"
                   ],
                   "type": "object",
@@ -5737,6 +5802,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           },
@@ -7009,6 +7077,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           },
@@ -7412,6 +7483,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           },
@@ -7657,6 +7731,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "410": {
             "description": ""
@@ -7992,6 +8069,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "410": {
             "description": ""
@@ -8904,6 +8984,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           },
@@ -9435,6 +9518,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "410": {
             "description": ""
@@ -10995,6 +11081,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "410": {
             "description": ""
@@ -12616,6 +12705,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           }
@@ -12715,6 +12807,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "409": {
             "description": ""
@@ -12816,6 +12911,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "409": {
             "description": ""
           },
@@ -12886,6 +12984,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "410": {
             "description": ""
@@ -12974,6 +13075,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "410": {
             "description": ""
@@ -16823,6 +16927,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "410": {
             "description": ""
@@ -49572,6 +49679,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           }
@@ -50827,6 +50937,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "410": {
             "description": ""
@@ -55343,6 +55456,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           }
@@ -56094,6 +56210,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           }
@@ -56267,6 +56386,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "410": {
             "description": ""
@@ -58609,6 +58731,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           }
@@ -59421,6 +59546,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           }
@@ -59709,6 +59837,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           }
@@ -59988,6 +60119,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           }
@@ -60071,6 +60205,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "410": {
             "description": ""
@@ -60852,6 +60989,9 @@
                                   "defaultVariantId": {
                                     "type": "string"
                                   },
+                                  "finalPromille": {
+                                    "type": "number"
+                                  },
                                   "rollFromVariantId": {
                                     "type": "string"
                                   },
@@ -61241,6 +61381,9 @@
                                         },
                                         "defaultVariantId": {
                                           "type": "string"
+                                        },
+                                        "finalPromille": {
+                                          "type": "number"
                                         },
                                         "rollFromVariantId": {
                                           "type": "string"
@@ -61960,7 +62103,7 @@
                                       },
                                       "slots": {
                                         "type": "array",
-                                        "description": "Each slot defines a promille and how long it is served for. After all slots expire, 100% is served indefinitely. The final implicit 100% slot does not need to be listed. Example: [[5_000, 21_600_000], [10_000, 28_800_000]] means 5‰ for 6h, then 10‰ for 8h, then 100% indefinitely.",
+                                        "description": "Each slot defines a promille and how long it is served for. After all slots expire, finalPromille is served indefinitely (100% when omitted). The final percentage does not need its own slot.",
                                         "items": {
                                           "type": "object",
                                           "additionalProperties": false,
@@ -61983,6 +62126,12 @@
                                           ]
                                         },
                                         "minItems": 1
+                                      },
+                                      "finalPromille": {
+                                        "type": "number",
+                                        "minimum": 0,
+                                        "maximum": 100000,
+                                        "description": "Traffic for rollToVariant after all slots expire (0-100_000, where 1_000 = 1%). Defaults to 100_000 (100%). Set 50_000 to end at 50%."
                                       }
                                     },
                                     "required": [
@@ -62105,7 +62254,7 @@
                                 },
                                 "slots": {
                                   "type": "array",
-                                  "description": "Each slot defines a promille and how long it is served for. After all slots expire, 100% is served indefinitely. The final implicit 100% slot does not need to be listed. Example: [[5_000, 21_600_000], [10_000, 28_800_000]] means 5‰ for 6h, then 10‰ for 8h, then 100% indefinitely.",
+                                  "description": "Each slot defines a promille and how long it is served for. After all slots expire, finalPromille is served indefinitely (100% when omitted). The final percentage does not need its own slot.",
                                   "items": {
                                     "type": "object",
                                     "additionalProperties": false,
@@ -62128,6 +62277,12 @@
                                     ]
                                   },
                                   "minItems": 1
+                                },
+                                "finalPromille": {
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "maximum": 100000,
+                                  "description": "Traffic for rollToVariant after all slots expire (0-100_000, where 1_000 = 1%). Defaults to 100_000 (100%). Set 50_000 to end at 50%."
                                 }
                               },
                               "required": [
@@ -62449,6 +62604,9 @@
                                       },
                                       "defaultVariantId": {
                                         "type": "string"
+                                      },
+                                      "finalPromille": {
+                                        "type": "number"
                                       },
                                       "rollFromVariantId": {
                                         "type": "string"
@@ -62839,6 +62997,9 @@
                                             },
                                             "defaultVariantId": {
                                               "type": "string"
+                                            },
+                                            "finalPromille": {
+                                              "type": "number"
                                             },
                                             "rollFromVariantId": {
                                               "type": "string"
@@ -63590,7 +63751,7 @@
                                       },
                                       "slots": {
                                         "type": "array",
-                                        "description": "Each slot defines a promille and how long it is served for. After all slots expire, 100% is served indefinitely. The final implicit 100% slot does not need to be listed. Example: [[5_000, 21_600_000], [10_000, 28_800_000]] means 5‰ for 6h, then 10‰ for 8h, then 100% indefinitely.",
+                                        "description": "Each slot defines a promille and how long it is served for. After all slots expire, finalPromille is served indefinitely (100% when omitted). The final percentage does not need its own slot.",
                                         "items": {
                                           "type": "object",
                                           "additionalProperties": false,
@@ -63613,6 +63774,12 @@
                                           ]
                                         },
                                         "minItems": 1
+                                      },
+                                      "finalPromille": {
+                                        "type": "number",
+                                        "minimum": 0,
+                                        "maximum": 100000,
+                                        "description": "Traffic for rollToVariant after all slots expire (0-100_000, where 1_000 = 1%). Defaults to 100_000 (100%). Set 50_000 to end at 50%."
                                       }
                                     },
                                     "required": [
@@ -63735,7 +63902,7 @@
                                 },
                                 "slots": {
                                   "type": "array",
-                                  "description": "Each slot defines a promille and how long it is served for. After all slots expire, 100% is served indefinitely. The final implicit 100% slot does not need to be listed. Example: [[5_000, 21_600_000], [10_000, 28_800_000]] means 5‰ for 6h, then 10‰ for 8h, then 100% indefinitely.",
+                                  "description": "Each slot defines a promille and how long it is served for. After all slots expire, finalPromille is served indefinitely (100% when omitted). The final percentage does not need its own slot.",
                                   "items": {
                                     "type": "object",
                                     "additionalProperties": false,
@@ -63758,6 +63925,12 @@
                                     ]
                                   },
                                   "minItems": 1
+                                },
+                                "finalPromille": {
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "maximum": 100000,
+                                  "description": "Traffic for rollToVariant after all slots expire (0-100_000, where 1_000 = 1%). Defaults to 100_000 (100%). Set 50_000 to end at 50%."
                                 }
                               },
                               "required": [
@@ -64094,6 +64267,9 @@
                                             },
                                             "defaultVariantId": {
                                               "type": "string"
+                                            },
+                                            "finalPromille": {
+                                              "type": "number"
                                             },
                                             "rollFromVariantId": {
                                               "type": "string"
@@ -64484,6 +64660,9 @@
                                                   },
                                                   "defaultVariantId": {
                                                     "type": "string"
+                                                  },
+                                                  "finalPromille": {
+                                                    "type": "number"
                                                   },
                                                   "rollFromVariantId": {
                                                     "type": "string"
@@ -65637,6 +65816,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           }
@@ -65750,6 +65932,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "410": {
             "description": ""
@@ -65950,6 +66135,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "410": {
             "description": ""
@@ -72632,6 +72820,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           }
@@ -77234,6 +77425,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           }
@@ -77481,6 +77675,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "410": {
             "description": ""
@@ -77755,6 +77952,9 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": ""
           },
           "409": {
             "description": ""
@@ -78411,6 +78611,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "410": {
             "description": ""
@@ -80870,6 +81073,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           }
@@ -81519,6 +81725,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "410": {
             "description": ""
@@ -89491,7 +89700,7 @@
                                   false,
                                   true
                                 ],
-                                "description": "Allow same-team Vercel CI access to preview deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value."
+                                "description": "Allow same-team Vercel CI access to preview and production deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value."
                               },
                               "oidcProviders": {
                                 "additionalProperties": {
@@ -89807,6 +90016,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "410": {
             "description": ""
@@ -90401,6 +90613,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           },
@@ -90710,6 +90925,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "408": {
             "description": ""
           },
@@ -90852,6 +91070,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           }
@@ -90936,6 +91157,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "410": {
             "description": ""
@@ -91119,6 +91343,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           }
@@ -91241,6 +91468,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "410": {
             "description": ""
@@ -91383,6 +91613,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "410": {
             "description": ""
@@ -93912,6 +94145,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "409": {
             "description": ""
           },
@@ -94873,6 +95109,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "409": {
             "description": ""
@@ -96395,6 +96634,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "408": {
             "description": ""
           },
@@ -96631,6 +96873,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "410": {
             "description": ""
@@ -101491,7 +101736,7 @@
                                   false,
                                   true
                                 ],
-                                "description": "Allow same-team Vercel CI access to preview deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value."
+                                "description": "Allow same-team Vercel CI access to preview and production deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value."
                               },
                               "oidcProviders": {
                                 "additionalProperties": {
@@ -106414,7 +106659,7 @@
                                       false,
                                       true
                                     ],
-                                    "description": "Allow same-team Vercel CI access to preview deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value."
+                                    "description": "Allow same-team Vercel CI access to preview and production deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value."
                                   },
                                   "oidcProviders": {
                                     "additionalProperties": {
@@ -114608,7 +114853,7 @@
                                       false,
                                       true
                                     ],
-                                    "description": "Allow same-team Vercel CI access to preview deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value."
+                                    "description": "Allow same-team Vercel CI access to preview and production deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value."
                                   },
                                   "oidcProviders": {
                                     "additionalProperties": {
@@ -114927,6 +115172,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "410": {
             "description": ""
@@ -123308,7 +123556,7 @@
                             false,
                             true
                           ],
-                          "description": "Allow same-team Vercel CI access to preview deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value."
+                          "description": "Allow same-team Vercel CI access to preview and production deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value."
                         },
                         "oidcProviders": {
                           "additionalProperties": {
@@ -124301,6 +124549,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "410": {
             "description": ""
@@ -132314,7 +132565,7 @@
                             false,
                             true
                           ],
-                          "description": "Allow same-team Vercel CI access to preview deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value."
+                          "description": "Allow same-team Vercel CI access to preview and production deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value."
                         },
                         "oidcProviders": {
                           "additionalProperties": {
@@ -132622,6 +132873,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "410": {
             "description": ""
@@ -140588,7 +140842,7 @@
                             false,
                             true
                           ],
-                          "description": "Allow same-team Vercel CI access to preview deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value."
+                          "description": "Allow same-team Vercel CI access to preview and production deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value."
                         },
                         "oidcProviders": {
                           "additionalProperties": {
@@ -141618,7 +141872,7 @@
                     "properties": {
                       "enableVercelCiSameRepository": {
                         "type": "boolean",
-                        "description": "Allow same-team Vercel CI access to preview deployments built from the same repository as the CI run. The deployment source repository, not the current project repository link, is authoritative. Defaults to enabled when not stored. Omitting this field preserves its stored value, including when trustedSources is cleared. Set true explicitly to re-enable."
+                        "description": "Allow same-team Vercel CI access to preview and production deployments built from the same repository as the CI run. The deployment source repository, not the current project repository link, is authoritative. Defaults to enabled when not stored. Omitting this field preserves its stored value, including when trustedSources is cleared. Set true explicitly to re-enable."
                       },
                       "projects": {
                         "type": "object",
@@ -142217,6 +142471,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "409": {
             "description": ""
@@ -150193,7 +150450,7 @@
                             false,
                             true
                           ],
-                          "description": "Allow same-team Vercel CI access to preview deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value."
+                          "description": "Allow same-team Vercel CI access to preview and production deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value."
                         },
                         "oidcProviders": {
                           "additionalProperties": {
@@ -150501,6 +150758,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "410": {
             "description": ""
@@ -150940,6 +151200,12 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
+          "409": {
+            "description": ""
+          },
           "410": {
             "description": ""
           },
@@ -151239,6 +151505,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "410": {
             "description": ""
@@ -151720,6 +151989,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           },
@@ -152003,6 +152275,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "410": {
             "description": ""
@@ -152317,6 +152592,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           }
@@ -152606,6 +152884,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           }
@@ -152765,6 +153046,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "409": {
             "description": "The project is currently being transferred"
@@ -153071,8 +153355,11 @@
           "403": {
             "description": "You do not have permission to access this resource.\nYou don't have access to the domain you are adding"
           },
+          "404": {
+            "description": ""
+          },
           "409": {
-            "description": "The domain is already assigned to another Vercel project\nCannot create project domain since owner already has `domain` on their account, but it's not verified yet.\nCannot create project domain since owner already has `domain` on their account, and it's verified.\nThe domain is not allowed to be used\nThe project is currently being transferred"
+            "description": "The domain is already assigned to another Vercel project\nThe domain is already assigned to a project on this account.\nThe domain is not allowed to be used\nThe project is currently being transferred"
           },
           "410": {
             "description": ""
@@ -153275,6 +153562,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "409": {
             "description": "The project is currently being transferred"
           },
@@ -153460,6 +153750,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "410": {
             "description": ""
@@ -155010,6 +155303,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "410": {
             "description": ""
@@ -157369,6 +157665,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "410": {
             "description": ""
@@ -162701,6 +163000,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "409": {
             "description": ""
           },
@@ -163209,6 +163511,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "409": {
             "description": ""
           },
@@ -163290,6 +163595,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "409": {
             "description": ""
@@ -171264,7 +171572,7 @@
                             false,
                             true
                           ],
-                          "description": "Allow same-team Vercel CI access to preview deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value."
+                          "description": "Allow same-team Vercel CI access to preview and production deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value."
                         },
                         "oidcProviders": {
                           "additionalProperties": {
@@ -171573,6 +171881,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "409": {
             "description": ""
           },
@@ -171683,6 +171994,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "409": {
             "description": ""
@@ -171910,6 +172224,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           },
@@ -171974,6 +172291,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "410": {
             "description": ""
@@ -174101,7 +174421,7 @@
     },
     "/v2/sandboxes/{name}": {
       "get": {
-        "description": "Retrieves a named sandbox by name, including its current sandbox and routes. If the sandbox is stopped and resume is true, a new sandbox will be created from the most recent snapshot.",
+        "description": "Retrieves a named sandbox by name, including its current sandbox and routes. If the sandbox is stopped and resume is true, a new sandbox will be created from the most recent snapshot. Returns 404 if the named sandbox or its configuration no longer exists.",
         "operationId": "getNamedSandbox",
         "security": [
           {
@@ -194298,6 +194618,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           }
@@ -200073,6 +200396,9 @@
           "403": {
             "description": "You do not have permission to access this resource.\nThe authenticated user must be a team owner to perform the action"
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           },
@@ -201113,6 +201439,9 @@
           "403": {
             "description": "You do not have permission to access this resource.\nNot authorized to update the team. Must be an OWNER."
           },
+          "404": {
+            "description": ""
+          },
           "409": {
             "description": ""
           },
@@ -201461,11 +201790,11 @@
                         ]
                       },
                       "keepCurrentRetention": {
-                        "description": "When true, opts the team out of the upcoming deployment-storage retention reduce (Medium/High cohorts). Does not change expiration settings.",
+                        "description": "When true, opts the team out of the upcoming deployment-storage retention reduce (Medium/High cohorts). Does not change expiration settings. High cohort also requires acknowledgeStorageBilling; metering starts on reduce day.",
                         "type": "boolean"
                       },
                       "acknowledgeStorageBilling": {
-                        "description": "Required when increasing any retention setting for a High cohort team after retention reduce and before metering. Confirms team-wide storage billing.",
+                        "description": "Required for High cohort keepCurrentRetention (deferred billing), and when increasing any retention setting for a High cohort team after retention reduce and before metering.",
                         "type": "boolean"
                       }
                     },
@@ -202152,6 +202481,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           }
@@ -202283,6 +202615,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource.\nThe authenticated user can't access the team"
+          },
+          "404": {
+            "description": ""
           },
           "409": {
             "description": ""
@@ -202695,6 +203030,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "410": {
             "description": ""
@@ -205834,7 +206172,7 @@
     },
     "/v2/{teamSlug}/{projectSlug}/{repositoryName}/tags/list": {
       "get": {
-        "description": "GET /v2/:teamSlug/:projectSlug/:repositoryName/tags/list List the tags in a repository.",
+        "description": "GET /v2/:teamSlug/:projectSlug/:repositoryName/tags/list List the tags in a repository. The `last` parameter accepts the opaque cursor from a previous response's `Link` header. Unparseable cursors return HTTP 400 with code `invalid_cursor`.",
         "operationId": "getByTeamSlugByProjectSlugByRepositoryNameTagsList",
         "security": [],
         "summary": "List image tags",
@@ -206382,6 +206720,9 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": ""
           },
           "410": {
             "description": ""
@@ -211544,6 +211885,9 @@
               }
             }
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           },
@@ -212322,6 +212666,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "410": {
             "description": ""
@@ -213997,6 +214344,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           }
@@ -214889,6 +215239,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           }
@@ -215203,6 +215556,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": ""
+          },
           "410": {
             "description": ""
           }
@@ -215260,6 +215616,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "410": {
             "description": ""
@@ -217417,6 +217776,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "410": {
             "description": ""
@@ -225238,6 +225600,105 @@
                   "teamId",
                   "toPlan"
                 ]
+              },
+              {
+                "properties": {
+                  "accessPolicy": {
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "name"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "accessPolicy"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "accessPolicy": {
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "name"
+                    ],
+                    "type": "object"
+                  },
+                  "previousName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "accessPolicy"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "accessPolicy": {
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "name"
+                    ],
+                    "type": "object"
+                  },
+                  "member": {
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "kind": {
+                        "type": "string",
+                        "enum": [
+                          "project",
+                          "team",
+                          "user"
+                        ]
+                      },
+                      "name": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "kind"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "accessPolicy",
+                  "member"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
               },
               {
                 "properties": {
@@ -246727,6 +247188,57 @@
                           "type": "object"
                         },
                         {
+                          "properties": {
+                            "teamPermissions": {
+                              "items": {
+                                "type": "string",
+                                "enum": [
+                                  "AiGatewayBudgetManager",
+                                  "AiGatewayCredits",
+                                  "AiGatewaySettings",
+                                  "AiGatewayTranscriptsManager",
+                                  "AiGatewayTranscriptsViewer",
+                                  "AiGatewayUser",
+                                  "ConnectorManager",
+                                  "CreateProject",
+                                  "EnvVariableManager",
+                                  "EnvironmentManager",
+                                  "FullProductionDeployment",
+                                  "IntegrationManager",
+                                  "OrgAdmin",
+                                  "OrgViewer",
+                                  "UsageViewer",
+                                  "V0Builder",
+                                  "V0Chatter",
+                                  "V0Viewer",
+                                  "WorkflowDecryptor"
+                                ]
+                              },
+                              "type": "array"
+                            },
+                            "teamRoles": {
+                              "items": {
+                                "type": "string",
+                                "enum": [
+                                  "BILLING",
+                                  "CONTRIBUTOR",
+                                  "DEVELOPER",
+                                  "MEMBER",
+                                  "OWNER",
+                                  "SECURITY",
+                                  "VIEWER",
+                                  "VIEWER_FOR_PLUS"
+                                ]
+                              },
+                              "type": "array"
+                            }
+                          },
+                          "required": [
+                            "teamRoles"
+                          ],
+                          "type": "object"
+                        },
+                        {
                           "type": "string",
                           "enum": [
                             "BILLING",
@@ -246754,6 +247266,57 @@
                           },
                           "required": [
                             "accessGroupId"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "properties": {
+                            "teamPermissions": {
+                              "items": {
+                                "type": "string",
+                                "enum": [
+                                  "AiGatewayBudgetManager",
+                                  "AiGatewayCredits",
+                                  "AiGatewaySettings",
+                                  "AiGatewayTranscriptsManager",
+                                  "AiGatewayTranscriptsViewer",
+                                  "AiGatewayUser",
+                                  "ConnectorManager",
+                                  "CreateProject",
+                                  "EnvVariableManager",
+                                  "EnvironmentManager",
+                                  "FullProductionDeployment",
+                                  "IntegrationManager",
+                                  "OrgAdmin",
+                                  "OrgViewer",
+                                  "UsageViewer",
+                                  "V0Builder",
+                                  "V0Chatter",
+                                  "V0Viewer",
+                                  "WorkflowDecryptor"
+                                ]
+                              },
+                              "type": "array"
+                            },
+                            "teamRoles": {
+                              "items": {
+                                "type": "string",
+                                "enum": [
+                                  "BILLING",
+                                  "CONTRIBUTOR",
+                                  "DEVELOPER",
+                                  "MEMBER",
+                                  "OWNER",
+                                  "SECURITY",
+                                  "VIEWER",
+                                  "VIEWER_FOR_PLUS"
+                                ]
+                              },
+                              "type": "array"
+                            }
+                          },
+                          "required": [
+                            "teamRoles"
                           ],
                           "type": "object"
                         },
@@ -249413,6 +249976,11 @@
               "agentic-provisioning-team-created",
               "ai-alert-investigation",
               "ai-code-review",
+              "ai-gateway-access-policy-created",
+              "ai-gateway-access-policy-deleted",
+              "ai-gateway-access-policy-member-added",
+              "ai-gateway-access-policy-member-removed",
+              "ai-gateway-access-policy-updated",
               "ai-gateway-api-key-created",
               "ai-gateway-api-key-deleted",
               "ai-gateway-api-key-quota-updated",
@@ -250333,6 +250901,11 @@
               "agentic-provisioning-team-created",
               "ai-alert-investigation",
               "ai-code-review",
+              "ai-gateway-access-policy-created",
+              "ai-gateway-access-policy-deleted",
+              "ai-gateway-access-policy-member-added",
+              "ai-gateway-access-policy-member-removed",
+              "ai-gateway-access-policy-updated",
               "ai-gateway-api-key-created",
               "ai-gateway-api-key-deleted",
               "ai-gateway-api-key-quota-updated",
@@ -251041,6 +251614,11 @@
                 "agentic-provisioning-team-created",
                 "ai-alert-investigation",
                 "ai-code-review",
+                "ai-gateway-access-policy-created",
+                "ai-gateway-access-policy-deleted",
+                "ai-gateway-access-policy-member-added",
+                "ai-gateway-access-policy-member-removed",
+                "ai-gateway-access-policy-updated",
                 "ai-gateway-api-key-created",
                 "ai-gateway-api-key-deleted",
                 "ai-gateway-api-key-quota-updated",
@@ -251906,6 +252484,9 @@
                         "defaultVariantId": {
                           "type": "string"
                         },
+                        "finalPromille": {
+                          "type": "number"
+                        },
                         "rollFromVariantId": {
                           "type": "string"
                         },
@@ -252295,6 +252876,9 @@
                               },
                               "defaultVariantId": {
                                 "type": "string"
+                              },
+                              "finalPromille": {
+                                "type": "number"
                               },
                               "rollFromVariantId": {
                                 "type": "string"
@@ -255220,7 +255804,59 @@
                         "accessGroupId"
                       ],
                       "type": "object",
-                      "description": "When \"Directory Sync\" is configured, this object contains a mapping of which Directory Group (by ID) should be assigned to which Vercel Team \"role\"."
+                      "description": "When \"Directory Sync\" is configured, this object contains a mapping of which Directory Group (by ID) should be assigned to which Vercel Team roles and permissions, or an access group. Bare team roles are deprecated in favor of DirectorySyncRolesMapping."
+                    },
+                    {
+                      "properties": {
+                        "teamPermissions": {
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "AiGatewayBudgetManager",
+                              "AiGatewayCredits",
+                              "AiGatewaySettings",
+                              "AiGatewayTranscriptsManager",
+                              "AiGatewayTranscriptsViewer",
+                              "AiGatewayUser",
+                              "ConnectorManager",
+                              "CreateProject",
+                              "EnvVariableManager",
+                              "EnvironmentManager",
+                              "FullProductionDeployment",
+                              "IntegrationManager",
+                              "OrgAdmin",
+                              "OrgViewer",
+                              "UsageViewer",
+                              "V0Builder",
+                              "V0Chatter",
+                              "V0Viewer",
+                              "WorkflowDecryptor"
+                            ]
+                          },
+                          "type": "array"
+                        },
+                        "teamRoles": {
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "BILLING",
+                              "CONTRIBUTOR",
+                              "DEVELOPER",
+                              "MEMBER",
+                              "OWNER",
+                              "SECURITY",
+                              "VIEWER",
+                              "VIEWER_FOR_PLUS"
+                            ]
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "required": [
+                        "teamRoles"
+                      ],
+                      "type": "object",
+                      "description": "When \"Directory Sync\" is configured, this object contains a mapping of which Directory Group (by ID) should be assigned to which Vercel Team roles and permissions, or an access group. Bare team roles are deprecated in favor of DirectorySyncRolesMapping."
                     },
                     {
                       "type": "string",
@@ -255238,7 +255874,7 @@
                   ]
                 },
                 "type": "object",
-                "description": "When \"Directory Sync\" is configured, this object contains a mapping of which Directory Group (by ID) should be assigned to which Vercel Team \"role\"."
+                "description": "When \"Directory Sync\" is configured, this object contains a mapping of which Directory Group (by ID) should be assigned to which Vercel Team roles and permissions, or an access group. Bare team roles are deprecated in favor of DirectorySyncRolesMapping."
               }
             },
             "required": [

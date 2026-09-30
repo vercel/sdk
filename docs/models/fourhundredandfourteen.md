@@ -5,18 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndFourteen } from "@vercel/sdk/models/usereventpayload354geolocationnames.js";
+import { FourHundredAndFourteen } from "@vercel/sdk/models/threehundredandfiftynine.js";
 
 let value: FourHundredAndFourteen = {
-  tokenTypes: [
-    "<value 1>",
-    "<value 2>",
-  ],
+  enabled: false,
+  scope: "log-drains",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `tokenTypes`       | *string*[]         | :heavy_check_mark: | N/A                |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `enabled`                                                                | *boolean*                                                                | :heavy_check_mark:                                                       | N/A                                                                      |
+| `scope`                                                                  | [models.UserEventPayload414Scope](../models/usereventpayload414scope.md) | :heavy_check_mark:                                                       | N/A                                                                      |

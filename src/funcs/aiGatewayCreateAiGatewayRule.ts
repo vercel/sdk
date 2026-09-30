@@ -165,7 +165,7 @@ async function $do(
     | SDKValidationError
   >(
     M.json(201, AiGatewayRule$inboundSchema),
-    M.fail([400, 401, 403, 409, 410, "4XX"]),
+    M.fail([400, 401, 403, 404, 409, 410, "4XX"]),
     M.fail([500, "5XX"]),
   )(response, req);
   if (!result.ok) {

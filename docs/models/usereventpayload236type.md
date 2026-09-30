@@ -1,17 +1,15 @@
 # UserEventPayload236Type
 
-The budget type
-
 ## Example Usage
 
 ```typescript
-import { UserEventPayload236Type } from "@vercel/sdk/models/budget.js";
+import { UserEventPayload236Type } from "@vercel/sdk/models/twohundredandtwentysix.js";
 
-let value: UserEventPayload236Type = "fixed";
+let value: UserEventPayload236Type = "header";
 ```
 
 ## Values
 
 ```typescript
-"fixed"
+"header"
 ```

@@ -10,6 +10,7 @@ import { vercelCiGetVercelCiJobRun } from "../funcs/vercelCiGetVercelCiJobRun.js
 import { vercelCiGetVercelCiJobRunLogs } from "../funcs/vercelCiGetVercelCiJobRunLogs.js";
 import { vercelCiGetVercelCiTaskLogs } from "../funcs/vercelCiGetVercelCiTaskLogs.js";
 import { vercelCiGetVercelCiTaskRunLogs } from "../funcs/vercelCiGetVercelCiTaskRunLogs.js";
+import { vercelCiListVercelCiBranches } from "../funcs/vercelCiListVercelCiBranches.js";
 import { vercelCiListVercelCiInvocationAttempts } from "../funcs/vercelCiListVercelCiInvocationAttempts.js";
 import { vercelCiListVercelCiInvocations } from "../funcs/vercelCiListVercelCiInvocations.js";
 import { vercelCiListVercelCiJobDefinitions } from "../funcs/vercelCiListVercelCiJobDefinitions.js";
@@ -51,6 +52,10 @@ import {
   GetVercelCiTaskRunLogsRequest,
   GetVercelCiTaskRunLogsResponseBody,
 } from "../models/getvercelcitaskrunlogsop.js";
+import {
+  ListVercelCiBranchesRequest,
+  ListVercelCiBranchesResponseBody,
+} from "../models/listvercelcibranchesop.js";
 import {
   ListVercelCiInvocationAttemptsRequest,
   ListVercelCiInvocationAttemptsResponseBody,
@@ -97,6 +102,23 @@ export class VercelCi extends ClientSDK {
     options?: RequestOptions,
   ): Promise<ListVercelCiInvocationsResponseBody> {
     return unwrapAsync(vercelCiListVercelCiInvocations(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List Vercel CI branch suggestions for a team
+   *
+   * @remarks
+   * List branches
+   */
+  async listVercelCiBranches(
+    request: ListVercelCiBranchesRequest,
+    options?: RequestOptions,
+  ): Promise<ListVercelCiBranchesResponseBody> {
+    return unwrapAsync(vercelCiListVercelCiBranches(
       this,
       request,
       options,

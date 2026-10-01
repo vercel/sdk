@@ -104,16 +104,22 @@ import {
   UpdateMicrofrontendsTargets$inboundSchema,
   UpdateMicrofrontendsTier,
   UpdateMicrofrontendsTier$inboundSchema,
-  UpdateMicrofrontendsTo,
-  UpdateMicrofrontendsTo$inboundSchema,
+  UpdateMicrofrontendsTo1,
+  UpdateMicrofrontendsTo1$inboundSchema,
+  UpdateMicrofrontendsTo2,
+  UpdateMicrofrontendsTo2$inboundSchema,
   UpdateMicrofrontendsTracing,
   UpdateMicrofrontendsTracing$inboundSchema,
   UpdateMicrofrontendsTrustedIps,
   UpdateMicrofrontendsTrustedIps$inboundSchema,
-} from "./updatemicrofrontendsto.js";
+} from "./updatemicrofrontendsto1.js";
+
+export type UpdateMicrofrontendsTo =
+  | UpdateMicrofrontendsTo1
+  | UpdateMicrofrontendsTo2;
 
 export type UpdateMicrofrontendsOidcProviders = {
-  to: UpdateMicrofrontendsTo;
+  to: UpdateMicrofrontendsTo1 | UpdateMicrofrontendsTo2;
   claims: { [k: string]: Array<string> };
   label?: string | undefined;
 };
@@ -216,7 +222,7 @@ export type UpdateMicrofrontendsProjects = {
 
 export type UpdateMicrofrontendsTrustedSources = {
   /**
-   * Allow same-team Vercel CI access to preview deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value.
+   * Allow same-team Vercel CI access to preview and production deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value.
    */
   enableVercelCiSameRepository?: boolean | undefined;
   oidcProviders?:
@@ -398,12 +404,35 @@ export type UpdateMicrofrontendsResponseBody = {
 };
 
 /** @internal */
+export const UpdateMicrofrontendsTo$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsTo,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  UpdateMicrofrontendsTo1$inboundSchema,
+  UpdateMicrofrontendsTo2$inboundSchema,
+]);
+
+export function updateMicrofrontendsToFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsTo, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsTo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsTo' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateMicrofrontendsOidcProviders$inboundSchema: z.ZodType<
   UpdateMicrofrontendsOidcProviders,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  to: UpdateMicrofrontendsTo$inboundSchema,
+  to: smartUnion([
+    UpdateMicrofrontendsTo1$inboundSchema,
+    UpdateMicrofrontendsTo2$inboundSchema,
+  ]),
   claims: z.record(z.array(types.string())),
   label: types.optional(types.string()),
 });

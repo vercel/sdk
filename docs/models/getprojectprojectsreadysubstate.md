@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectProjectsReadySubstate } from "@vercel/sdk/models/getprojectto1.js";
+import { GetProjectProjectsReadySubstate } from "@vercel/sdk/models/getprojecttopreset.js";
 
 let value: GetProjectProjectsReadySubstate = "ROLLING";
 ```

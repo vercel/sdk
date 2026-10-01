@@ -270,7 +270,7 @@ export class Sandboxes extends ClientSDK {
    * Get a named sandbox
    *
    * @remarks
-   * Retrieves a named sandbox by name, including its current sandbox and routes. If the sandbox is stopped and resume is true, a new sandbox will be created from the most recent snapshot.
+   * Retrieves a named sandbox by name, including its current sandbox and routes. If the sandbox is stopped and resume is true, a new sandbox will be created from the most recent snapshot. Returns 404 if the named sandbox or its configuration no longer exists.
    */
   async getNamedSandbox(
     request: GetNamedSandboxRequest,
@@ -287,7 +287,7 @@ export class Sandboxes extends ClientSDK {
    * Delete a sandbox
    *
    * @remarks
-   * Deletes a sandbox by name. If sandboxes are currently running, they will be stopped first. This operation deletes all sandbox entities with the given name and the named sandbox metadata.
+   * Deletes a sandbox by name. If sandboxes are currently running, they will be stopped first. This operation deletes all sandbox entities with the given name and the named sandbox metadata. Returns 404 if the sandbox does not exist or was deleted by a concurrent request.
    */
   async deleteSandbox(
     request: DeleteSandboxRequest,

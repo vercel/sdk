@@ -6,6 +6,10 @@
 import { ListProjectChecksResponseBody } from "@vercel/sdk/models/listprojectchecksop.js";
 
 let value: ListProjectChecksResponseBody = {
+  availableNativeChecks: [
+    "<value 1>",
+    "<value 2>",
+  ],
   checks: [
     {
       blocks: "deployment-alias",
@@ -36,4 +40,5 @@ let value: ListProjectChecksResponseBody = {
 
 | Field                                  | Type                                   | Required                               | Description                            |
 | -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| `availableNativeChecks`                | *string*[]                             | :heavy_check_mark:                     | N/A                                    |
 | `checks`                               | [models.Checks](../models/checks.md)[] | :heavy_check_mark:                     | N/A                                    |

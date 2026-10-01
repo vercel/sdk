@@ -105,16 +105,27 @@ import {
   GetProjectTargets$inboundSchema,
   GetProjectTier,
   GetProjectTier$inboundSchema,
-  GetProjectTo1,
-  GetProjectTo1$inboundSchema,
   GetProjectTo2,
   GetProjectTo2$inboundSchema,
+  GetProjectToPreset,
+  GetProjectToPreset$inboundSchema,
   GetProjectTracing,
   GetProjectTracing$inboundSchema,
   GetProjectTrustedIps,
   GetProjectTrustedIps$inboundSchema,
-} from "./getprojectto1.js";
+} from "./getprojecttopreset.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+/**
+ * The target envs on the current project that may be accessed.
+ */
+export type GetProjectTo1 = {
+  preset?: GetProjectToPreset | undefined;
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs: Array<string>;
+};
 
 export type GetProjectTo = GetProjectTo1 | GetProjectTo2;
 
@@ -218,7 +229,7 @@ export type GetProjectProjects = {
 
 export type GetProjectTrustedSources = {
   /**
-   * Allow same-team Vercel CI access to preview deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value.
+   * Allow same-team Vercel CI access to preview and production deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value.
    */
   enableVercelCiSameRepository?: boolean | undefined;
   oidcProviders?: { [k: string]: Array<GetProjectOidcProviders> } | undefined;
@@ -390,11 +401,34 @@ export type GetProjectResponseBody = {
 };
 
 /** @internal */
+export const GetProjectTo1$inboundSchema: z.ZodType<
+  GetProjectTo1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  preset: types.optional(GetProjectToPreset$inboundSchema),
+  slugs: z.array(types.string()),
+});
+
+export function getProjectTo1FromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectTo1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectTo1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectTo1' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetProjectTo$inboundSchema: z.ZodType<
   GetProjectTo,
   z.ZodTypeDef,
   unknown
-> = smartUnion([GetProjectTo1$inboundSchema, GetProjectTo2$inboundSchema]);
+> = smartUnion([
+  z.lazy(() => GetProjectTo1$inboundSchema),
+  GetProjectTo2$inboundSchema,
+]);
 
 export function getProjectToFromJSON(
   jsonString: string,
@@ -412,7 +446,10 @@ export const GetProjectOidcProviders$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  to: smartUnion([GetProjectTo1$inboundSchema, GetProjectTo2$inboundSchema]),
+  to: smartUnion([
+    z.lazy(() => GetProjectTo1$inboundSchema),
+    GetProjectTo2$inboundSchema,
+  ]),
   claims: z.record(z.array(types.string())),
   label: types.optional(types.string()),
 });

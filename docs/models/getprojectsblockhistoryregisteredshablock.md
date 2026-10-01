@@ -5,7 +5,7 @@ Since September 2026. Set on the live `abuse.block` only, by the consumer that a
 ## Example Usage
 
 ```typescript
-import { GetProjectsBlockHistoryRegisteredShaBlock } from "@vercel/sdk/models/erl.js";
+import { GetProjectsBlockHistoryRegisteredShaBlock } from "@vercel/sdk/models/getprojectsresponsebodyalgo.js";
 
 let value: GetProjectsBlockHistoryRegisteredShaBlock = {
   createdAt: "1725671681883",

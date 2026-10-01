@@ -179,9 +179,13 @@ export type UpdateFlagOutcome3 = {
    */
   defaultVariantId: string;
   /**
-   * Each slot defines a promille and how long it is served for. After all slots expire, 100% is served indefinitely. The final implicit 100% slot does not need to be listed. Example: [[5_000, 21_600_000], [10_000, 28_800_000]] means 5‰ for 6h, then 10‰ for 8h, then 100% indefinitely.
+   * Each slot defines a promille and how long it is served for. After all slots expire, finalPromille is served indefinitely (100% when omitted). The final percentage does not need its own slot.
    */
   slots: Array<UpdateFlagOutcomeSlots>;
+  /**
+   * Traffic for rollToVariant after all slots expire (0-100_000, where 1_000 = 1%). Defaults to 100_000 (100%). Set 50_000 to end at 50%.
+   */
+  finalPromille?: number | undefined;
 };
 
 export type UpdateFlagOutcomeBase = {
@@ -256,9 +260,13 @@ export type UpdateFlagFallthrough3 = {
    */
   defaultVariantId: string;
   /**
-   * Each slot defines a promille and how long it is served for. After all slots expire, 100% is served indefinitely. The final implicit 100% slot does not need to be listed. Example: [[5_000, 21_600_000], [10_000, 28_800_000]] means 5‰ for 6h, then 10‰ for 8h, then 100% indefinitely.
+   * Each slot defines a promille and how long it is served for. After all slots expire, finalPromille is served indefinitely (100% when omitted). The final percentage does not need its own slot.
    */
   slots: Array<UpdateFlagFallthroughSlots>;
+  /**
+   * Traffic for rollToVariant after all slots expire (0-100_000, where 1_000 = 1%). Defaults to 100_000 (100%). Set 50_000 to end at 50%.
+   */
+  finalPromille?: number | undefined;
 };
 
 export type UpdateFlagFallthroughBase = {
@@ -416,6 +424,7 @@ export type UpdateFlagFallthroughFeatureFlagsSlots = {
 export type UpdateFlagFallthroughFeatureFlags3 = {
   base: UpdateFlagFallthroughFeatureFlagsResponse200Base;
   defaultVariantId: string;
+  finalPromille?: number | undefined;
   rollFromVariantId: string;
   rollToVariantId: string;
   slots: Array<UpdateFlagFallthroughFeatureFlagsSlots>;
@@ -600,6 +609,7 @@ export type UpdateFlagOutcomeFeatureFlagsSlots = {
 export type UpdateFlagOutcomeFeatureFlags3 = {
   base: UpdateFlagOutcomeFeatureFlagsResponse200Base;
   defaultVariantId: string;
+  finalPromille?: number | undefined;
   rollFromVariantId: string;
   rollToVariantId: string;
   slots: Array<UpdateFlagOutcomeFeatureFlagsSlots>;
@@ -1187,6 +1197,7 @@ export type UpdateFlagOutcome3$Outbound = {
   rollToVariantId: string;
   defaultVariantId: string;
   slots: Array<UpdateFlagOutcomeSlots$Outbound>;
+  finalPromille?: number | undefined;
 };
 
 /** @internal */
@@ -1202,6 +1213,7 @@ export const UpdateFlagOutcome3$outboundSchema: z.ZodType<
   rollToVariantId: z.string(),
   defaultVariantId: z.string(),
   slots: z.array(z.lazy(() => UpdateFlagOutcomeSlots$outboundSchema)),
+  finalPromille: z.number().optional(),
 });
 
 export function updateFlagOutcome3ToJSON(
@@ -1407,6 +1419,7 @@ export type UpdateFlagFallthrough3$Outbound = {
   rollToVariantId: string;
   defaultVariantId: string;
   slots: Array<UpdateFlagFallthroughSlots$Outbound>;
+  finalPromille?: number | undefined;
 };
 
 /** @internal */
@@ -1422,6 +1435,7 @@ export const UpdateFlagFallthrough3$outboundSchema: z.ZodType<
   rollToVariantId: z.string(),
   defaultVariantId: z.string(),
   slots: z.array(z.lazy(() => UpdateFlagFallthroughSlots$outboundSchema)),
+  finalPromille: z.number().optional(),
 });
 
 export function updateFlagFallthrough3ToJSON(
@@ -1753,6 +1767,7 @@ export const UpdateFlagFallthroughFeatureFlags3$inboundSchema: z.ZodType<
     UpdateFlagFallthroughFeatureFlagsResponse200Base$inboundSchema
   ),
   defaultVariantId: types.string(),
+  finalPromille: types.optional(types.number()),
   rollFromVariantId: types.string(),
   rollToVariantId: types.string(),
   slots: z.array(
@@ -2271,6 +2286,7 @@ export const UpdateFlagOutcomeFeatureFlags3$inboundSchema: z.ZodType<
     UpdateFlagOutcomeFeatureFlagsResponse200Base$inboundSchema
   ),
   defaultVariantId: types.string(),
+  finalPromille: types.optional(types.number()),
   rollFromVariantId: types.string(),
   rollToVariantId: types.string(),
   slots: z.array(

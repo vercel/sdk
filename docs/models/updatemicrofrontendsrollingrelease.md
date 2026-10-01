@@ -5,7 +5,7 @@ Project-level rolling release configuration that defines how deployments should 
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsRollingRelease } from "@vercel/sdk/models/updatemicrofrontendsto.js";
+import { UpdateMicrofrontendsRollingRelease } from "@vercel/sdk/models/updatemicrofrontendsto1.js";
 
 let value: UpdateMicrofrontendsRollingRelease = {
   canaryResponseHeader: false,

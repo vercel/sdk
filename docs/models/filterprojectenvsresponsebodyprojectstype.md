@@ -5,11 +5,11 @@
 ```typescript
 import { FilterProjectEnvsResponseBodyProjectsType } from "@vercel/sdk/models/filterprojectenvsop.js";
 
-let value: FilterProjectEnvsResponseBodyProjectsType = "flags-secret";
+let value: FilterProjectEnvsResponseBodyProjectsType = "encrypted";
 ```
 
 ## Values
 
 ```typescript
-"flags-secret"
+"encrypted" | "plain" | "secret" | "sensitive" | "system"
 ```

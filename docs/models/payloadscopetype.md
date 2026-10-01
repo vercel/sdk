@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { PayloadScopeType } from "@vercel/sdk/models/userevent.js";
+import { PayloadScopeType } from "@vercel/sdk/models/via3.js";
 
-let value: PayloadScopeType = "project";
+let value: PayloadScopeType = "api-key";
 ```
 
 ## Values
 
 ```typescript
-"project" | "team" | "user"
+"api-key" | "project" | "team" | "user"
 ```

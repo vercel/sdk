@@ -5,14 +5,14 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndEighty } from "@vercel/sdk/models/twohundredandtwenty.js";
+import { TwoHundredAndEighty } from "@vercel/sdk/models/twohundredandtwentysix.js";
 
 let value: TwoHundredAndEighty = {
   next: {
-    functionZeroConfigFailover: false,
+    functionDefaultTimeout: 9659.32,
   },
   previous: {
-    functionZeroConfigFailover: null,
+    functionDefaultTimeout: null,
   },
   projectId: "<id>",
   projectName: "<value>",

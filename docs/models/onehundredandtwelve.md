@@ -5,32 +5,27 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndTwelve } from "@vercel/sdk/models/fiftysix.js";
+import { OneHundredAndTwelve } from "@vercel/sdk/models/nextscopes.js";
 
 let value: OneHundredAndTwelve = {
   job: {
-    headInfo: {
-      owner: "<value>",
+    deployHook: {
+      createdAt: 3393.49,
+      id: "<id>",
+      name: "<value>",
       ref: "<value>",
-      repoUuid: "<id>",
-      sha: "<value>",
-      slug: "<value>",
     },
+    state: "Arkansas",
+  },
+  project: {
     name: "<value>",
-    owner: "<value>",
-    provider: "bitbucket",
-    ref: "<value>",
-    repoUuid: "<id>",
-    sha: "<value>",
-    slug: "<value>",
-    type: "bitbucket-push",
-    workspaceUuid: "<id>",
   },
 };
 ```
 
 ## Fields
 
-| Field               | Type                | Required            | Description         |
-| ------------------- | ------------------- | ------------------- | ------------------- |
-| `job`               | *models.PayloadJob* | :heavy_check_mark:  | N/A                 |
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `job`                                                                        | [models.Job](../models/job.md)                                               | :heavy_check_mark:                                                           | N/A                                                                          |
+| `project`                                                                    | [models.UserEventPayload112Project](../models/usereventpayload112project.md) | :heavy_check_mark:                                                           | N/A                                                                          |

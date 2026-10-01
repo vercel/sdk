@@ -10,8 +10,8 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
-  Erl,
-  Erl$inboundSchema,
+  GetProjectsResponseBodyAlgo,
+  GetProjectsResponseBodyAlgo$inboundSchema,
   GetProjectsResponseBodyCreator,
   GetProjectsResponseBodyCreator$inboundSchema,
   GetProjectsResponseBodyHas,
@@ -58,16 +58,23 @@ import {
   ResponseBodyPasswordProtection$inboundSchema,
   ResponseBodyRollingRelease,
   ResponseBodyRollingRelease$inboundSchema,
-} from "./erl.js";
+} from "./getprojectsresponsebodyalgo.js";
 import {
   GetProjectsResponseBody3,
   GetProjectsResponseBody3$inboundSchema,
-} from "./getprojectsresponsebodyprojectsresponse200applicationjson2projectstype.js";
+} from "./getprojectsresponsebodyprojectsresponse200readysubstate.js";
 import {
   GetProjectsResponseBody2,
   GetProjectsResponseBody2$inboundSchema,
-} from "./getprojectsroute1.js";
+} from "./getprojectsroute2.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type Erl = {
+  algo: GetProjectsResponseBodyAlgo;
+  keys: Array<string>;
+  limit: number;
+  window: number;
+};
 
 export const GetProjectsLogHeadersProjectsResponse200ApplicationJSONResponseBody2 =
   {
@@ -696,7 +703,7 @@ export type GetProjectsResponseBodyProjectsProjects = {
 
 export type ResponseBodyTrustedSources = {
   /**
-   * Allow same-team Vercel CI access to preview deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value.
+   * Allow same-team Vercel CI access to preview and production deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value.
    */
   enableVercelCiSameRepository?: boolean | undefined;
   oidcProviders?: { [k: string]: Array<ResponseBodyOidcProviders> } | undefined;
@@ -783,6 +790,25 @@ export type GetProjectsResponseBody =
   | Array<GetProjectsResponseBody1>;
 
 /** @internal */
+export const Erl$inboundSchema: z.ZodType<Erl, z.ZodTypeDef, unknown> = z
+  .object({
+    algo: GetProjectsResponseBodyAlgo$inboundSchema,
+    keys: z.array(types.string()),
+    limit: types.number(),
+    window: types.number(),
+  });
+
+export function erlFromJSON(
+  jsonString: string,
+): SafeParseResult<Erl, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Erl$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Erl' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetProjectsLogHeadersProjectsResponse200ApplicationJSONResponseBody2$inboundSchema:
   z.ZodNativeEnum<
     typeof GetProjectsLogHeadersProjectsResponse200ApplicationJSONResponseBody2
@@ -824,7 +850,7 @@ export const GetProjectsResponseBodyMitigate$inboundSchema: z.ZodType<
 > = z.object({
   action:
     GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityFirewallRoutesAction$inboundSchema,
-  erl: types.optional(Erl$inboundSchema),
+  erl: types.optional(z.lazy(() => Erl$inboundSchema)),
   log_headers: types.optional(
     smartUnion([
       z.array(types.string()),

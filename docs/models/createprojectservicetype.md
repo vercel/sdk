@@ -5,7 +5,7 @@ Service kind (Service.type). Omitted for schemas that do not define one.
 ## Example Usage
 
 ```typescript
-import { CreateProjectServiceType } from "@vercel/sdk/models/createprojectprojectschecksstate.js";
+import { CreateProjectServiceType } from "@vercel/sdk/models/createprojectprojectschecksconclusion.js";
 
 let value: CreateProjectServiceType = "web";
 ```

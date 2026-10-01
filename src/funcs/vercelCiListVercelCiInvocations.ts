@@ -213,7 +213,7 @@ async function $do(
       500,
       ListVercelCiInvocationsVercelCiResponse500ResponseBody$inboundSchema,
     ),
-    M.fail([400, 410, "4XX"]),
+    M.fail([400, 404, 410, "4XX"]),
     M.fail([503, "5XX"]),
   )(response, req, { extraFields: responseFields });
   if (!result.ok) {

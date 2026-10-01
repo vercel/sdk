@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectBotFilter } from "@vercel/sdk/models/getprojectto1.js";
+import { GetProjectBotFilter } from "@vercel/sdk/models/getprojecttopreset.js";
 
 let value: GetProjectBotFilter = {
   active: true,

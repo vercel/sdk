@@ -169,26 +169,6 @@ export type FilterProjectEnvsResponseBodyProjectsContentHint =
   | FilterProjectEnvsContentHintProjectsResponse16
   | FilterProjectEnvsContentHintProjectsResponse17;
 
-export const FilterProjectEnvsResponseBodyProjectsResponse200ApplicationJSONType =
-  {
-    FlagsSecret: "flags-secret",
-  } as const;
-export type FilterProjectEnvsResponseBodyProjectsResponse200ApplicationJSONType =
-  ClosedEnum<
-    typeof FilterProjectEnvsResponseBodyProjectsResponse200ApplicationJSONType
-  >;
-
-/**
- * Similar to `contentHints`, but should not be exposed to the user.
- */
-export type FilterProjectEnvsResponseBodyProjectsInternalContentHint = {
-  /**
-   * Contains the `value` of the env variable, encrypted with a special key to make decryption possible in the subscriber Lambda.
-   */
-  encryptedValue: string;
-  type: FilterProjectEnvsResponseBodyProjectsResponse200ApplicationJSONType;
-};
-
 export const FilterProjectEnvsResponseBodyProjectsSecurityIssues = {
   FlagsSecretNeedsSplit: "flags-secret-needs-split",
   ReadableSecret: "readable-secret",
@@ -219,15 +199,15 @@ export type FilterProjectEnvsResponseBodyProjectsResponseTarget =
   | Array<FilterProjectEnvsTargetProjectsResponse1>
   | FilterProjectEnvsTargetProjectsResponse2;
 
-export const FilterProjectEnvsResponseBodyProjectsResponse200Type = {
+export const FilterProjectEnvsResponseBodyProjectsResponseType = {
   Encrypted: "encrypted",
   Plain: "plain",
   Secret: "secret",
   Sensitive: "sensitive",
   System: "system",
 } as const;
-export type FilterProjectEnvsResponseBodyProjectsResponse200Type = ClosedEnum<
-  typeof FilterProjectEnvsResponseBodyProjectsResponse200Type
+export type FilterProjectEnvsResponseBodyProjectsResponseType = ClosedEnum<
+  typeof FilterProjectEnvsResponseBodyProjectsResponseType
 >;
 
 /**
@@ -275,18 +255,7 @@ export type ResponseBodyEnvs = {
   edgeConfigTokenId?: string | null | undefined;
   gitBranch?: string | undefined;
   id?: string | undefined;
-  /**
-   * Similar to `contentHints`, but should not be exposed to the user.
-   */
-  internalContentHint?:
-    | FilterProjectEnvsResponseBodyProjectsInternalContentHint
-    | null
-    | undefined;
   key: string;
-  /**
-   * Legacy now-encryption ciphertext, present after migration swaps value/vsmValue
-   */
-  legacyValue?: string | undefined;
   securityIssues: Array<FilterProjectEnvsResponseBodyProjectsSecurityIssues>;
   /**
    * This is used to identify variables that have been migrated from type secret to sensitive.
@@ -297,7 +266,7 @@ export type ResponseBodyEnvs = {
     | Array<FilterProjectEnvsTargetProjectsResponse1>
     | FilterProjectEnvsTargetProjectsResponse2
     | undefined;
-  type: FilterProjectEnvsResponseBodyProjectsResponse200Type;
+  type: FilterProjectEnvsResponseBodyProjectsResponseType;
   updatedAt?: number | undefined;
   updatedBy?: string | null | undefined;
   value: string;
@@ -422,26 +391,6 @@ export type FilterProjectEnvsResponseBodyContentHint =
   | FilterProjectEnvsContentHintProjects16
   | FilterProjectEnvsContentHintProjects17;
 
-export const FilterProjectEnvsResponseBodyProjectsResponse200ApplicationJson2Type =
-  {
-    FlagsSecret: "flags-secret",
-  } as const;
-export type FilterProjectEnvsResponseBodyProjectsResponse200ApplicationJson2Type =
-  ClosedEnum<
-    typeof FilterProjectEnvsResponseBodyProjectsResponse200ApplicationJson2Type
-  >;
-
-/**
- * Similar to `contentHints`, but should not be exposed to the user.
- */
-export type FilterProjectEnvsResponseBodyInternalContentHint = {
-  /**
-   * Contains the `value` of the env variable, encrypted with a special key to make decryption possible in the subscriber Lambda.
-   */
-  encryptedValue: string;
-  type: FilterProjectEnvsResponseBodyProjectsResponse200ApplicationJson2Type;
-};
-
 export const FilterProjectEnvsResponseBodySecurityIssues = {
   FlagsSecretNeedsSplit: "flags-secret-needs-split",
   ReadableSecret: "readable-secret",
@@ -472,15 +421,15 @@ export type FilterProjectEnvsResponseBodyProjectsTarget =
   | Array<FilterProjectEnvsTargetProjects1>
   | FilterProjectEnvsTargetProjects2;
 
-export const FilterProjectEnvsResponseBodyProjectsResponseType = {
+export const FilterProjectEnvsResponseBodyProjectsType = {
   Encrypted: "encrypted",
   Plain: "plain",
   Secret: "secret",
   Sensitive: "sensitive",
   System: "system",
 } as const;
-export type FilterProjectEnvsResponseBodyProjectsResponseType = ClosedEnum<
-  typeof FilterProjectEnvsResponseBodyProjectsResponseType
+export type FilterProjectEnvsResponseBodyProjectsType = ClosedEnum<
+  typeof FilterProjectEnvsResponseBodyProjectsType
 >;
 
 /**
@@ -528,18 +477,7 @@ export type Envs = {
   edgeConfigTokenId?: string | null | undefined;
   gitBranch?: string | undefined;
   id?: string | undefined;
-  /**
-   * Similar to `contentHints`, but should not be exposed to the user.
-   */
-  internalContentHint?:
-    | FilterProjectEnvsResponseBodyInternalContentHint
-    | null
-    | undefined;
   key: string;
-  /**
-   * Legacy now-encryption ciphertext, present after migration swaps value/vsmValue
-   */
-  legacyValue?: string | undefined;
   securityIssues: Array<FilterProjectEnvsResponseBodySecurityIssues>;
   /**
    * This is used to identify variables that have been migrated from type secret to sensitive.
@@ -550,7 +488,7 @@ export type Envs = {
     | Array<FilterProjectEnvsTargetProjects1>
     | FilterProjectEnvsTargetProjects2
     | undefined;
-  type: FilterProjectEnvsResponseBodyProjectsResponseType;
+  type: FilterProjectEnvsResponseBodyProjectsType;
   updatedAt?: number | undefined;
   updatedBy?: string | null | undefined;
   value: string;
@@ -675,24 +613,6 @@ export type ResponseBodyContentHint =
   | FilterProjectEnvsContentHint16
   | FilterProjectEnvsContentHint17;
 
-export const FilterProjectEnvsResponseBodyProjectsType = {
-  FlagsSecret: "flags-secret",
-} as const;
-export type FilterProjectEnvsResponseBodyProjectsType = ClosedEnum<
-  typeof FilterProjectEnvsResponseBodyProjectsType
->;
-
-/**
- * Similar to `contentHints`, but should not be exposed to the user.
- */
-export type ResponseBodyInternalContentHint = {
-  /**
-   * Contains the `value` of the env variable, encrypted with a special key to make decryption possible in the subscriber Lambda.
-   */
-  encryptedValue: string;
-  type: FilterProjectEnvsResponseBodyProjectsType;
-};
-
 export const ResponseBodySecurityIssues = {
   FlagsSecretNeedsSplit: "flags-secret-needs-split",
   ReadableSecret: "readable-secret",
@@ -777,15 +697,7 @@ export type FilterProjectEnvsResponseBody1 = {
   edgeConfigTokenId?: string | null | undefined;
   gitBranch?: string | undefined;
   id?: string | undefined;
-  /**
-   * Similar to `contentHints`, but should not be exposed to the user.
-   */
-  internalContentHint?: ResponseBodyInternalContentHint | null | undefined;
   key: string;
-  /**
-   * Legacy now-encryption ciphertext, present after migration swaps value/vsmValue
-   */
-  legacyValue?: string | undefined;
   securityIssues: Array<ResponseBodySecurityIssues>;
   /**
    * This is used to identify variables that have been migrated from type secret to sensitive.
@@ -1359,41 +1271,6 @@ export function filterProjectEnvsResponseBodyProjectsContentHintFromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsResponseBodyProjectsResponse200ApplicationJSONType$inboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsResponseBodyProjectsResponse200ApplicationJSONType
-  > = z.nativeEnum(
-    FilterProjectEnvsResponseBodyProjectsResponse200ApplicationJSONType,
-  );
-
-/** @internal */
-export const FilterProjectEnvsResponseBodyProjectsInternalContentHint$inboundSchema:
-  z.ZodType<
-    FilterProjectEnvsResponseBodyProjectsInternalContentHint,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    encryptedValue: types.string(),
-    type:
-      FilterProjectEnvsResponseBodyProjectsResponse200ApplicationJSONType$inboundSchema,
-  });
-
-export function filterProjectEnvsResponseBodyProjectsInternalContentHintFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  FilterProjectEnvsResponseBodyProjectsInternalContentHint,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      FilterProjectEnvsResponseBodyProjectsInternalContentHint$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'FilterProjectEnvsResponseBodyProjectsInternalContentHint' from JSON`,
-  );
-}
-
-/** @internal */
 export const FilterProjectEnvsResponseBodyProjectsSecurityIssues$inboundSchema:
   z.ZodNativeEnum<typeof FilterProjectEnvsResponseBodyProjectsSecurityIssues> =
     z.nativeEnum(FilterProjectEnvsResponseBodyProjectsSecurityIssues);
@@ -1436,9 +1313,9 @@ export function filterProjectEnvsResponseBodyProjectsResponseTargetFromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsResponseBodyProjectsResponse200Type$inboundSchema:
-  z.ZodNativeEnum<typeof FilterProjectEnvsResponseBodyProjectsResponse200Type> =
-    z.nativeEnum(FilterProjectEnvsResponseBodyProjectsResponse200Type);
+export const FilterProjectEnvsResponseBodyProjectsResponseType$inboundSchema:
+  z.ZodNativeEnum<typeof FilterProjectEnvsResponseBodyProjectsResponseType> = z
+    .nativeEnum(FilterProjectEnvsResponseBodyProjectsResponseType);
 
 /** @internal */
 export const FilterProjectEnvsResponseBodyProjectsVisibility$inboundSchema:
@@ -1500,13 +1377,7 @@ export const ResponseBodyEnvs$inboundSchema: z.ZodType<
   edgeConfigTokenId: z.nullable(types.string()).optional(),
   gitBranch: types.optional(types.string()),
   id: types.optional(types.string()),
-  internalContentHint: z.nullable(
-    z.lazy(() =>
-      FilterProjectEnvsResponseBodyProjectsInternalContentHint$inboundSchema
-    ),
-  ).optional(),
   key: types.string(),
-  legacyValue: types.optional(types.string()),
   securityIssues: z.array(
     FilterProjectEnvsResponseBodyProjectsSecurityIssues$inboundSchema,
   ),
@@ -1518,7 +1389,7 @@ export const ResponseBodyEnvs$inboundSchema: z.ZodType<
       FilterProjectEnvsTargetProjectsResponse2$inboundSchema,
     ]),
   ),
-  type: FilterProjectEnvsResponseBodyProjectsResponse200Type$inboundSchema,
+  type: FilterProjectEnvsResponseBodyProjectsResponseType$inboundSchema,
   updatedAt: types.optional(types.number()),
   updatedBy: z.nullable(types.string()).optional(),
   value: types.string(),
@@ -1959,42 +1830,6 @@ export function filterProjectEnvsResponseBodyContentHintFromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsResponseBodyProjectsResponse200ApplicationJson2Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsResponseBodyProjectsResponse200ApplicationJson2Type
-  > = z.nativeEnum(
-    FilterProjectEnvsResponseBodyProjectsResponse200ApplicationJson2Type,
-  );
-
-/** @internal */
-export const FilterProjectEnvsResponseBodyInternalContentHint$inboundSchema:
-  z.ZodType<
-    FilterProjectEnvsResponseBodyInternalContentHint,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    encryptedValue: types.string(),
-    type:
-      FilterProjectEnvsResponseBodyProjectsResponse200ApplicationJson2Type$inboundSchema,
-  });
-
-export function filterProjectEnvsResponseBodyInternalContentHintFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  FilterProjectEnvsResponseBodyInternalContentHint,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      FilterProjectEnvsResponseBodyInternalContentHint$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'FilterProjectEnvsResponseBodyInternalContentHint' from JSON`,
-  );
-}
-
-/** @internal */
 export const FilterProjectEnvsResponseBodySecurityIssues$inboundSchema:
   z.ZodNativeEnum<typeof FilterProjectEnvsResponseBodySecurityIssues> = z
     .nativeEnum(FilterProjectEnvsResponseBodySecurityIssues);
@@ -2037,9 +1872,9 @@ export function filterProjectEnvsResponseBodyProjectsTargetFromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsResponseBodyProjectsResponseType$inboundSchema:
-  z.ZodNativeEnum<typeof FilterProjectEnvsResponseBodyProjectsResponseType> = z
-    .nativeEnum(FilterProjectEnvsResponseBodyProjectsResponseType);
+export const FilterProjectEnvsResponseBodyProjectsType$inboundSchema:
+  z.ZodNativeEnum<typeof FilterProjectEnvsResponseBodyProjectsType> = z
+    .nativeEnum(FilterProjectEnvsResponseBodyProjectsType);
 
 /** @internal */
 export const FilterProjectEnvsResponseBodyVisibility$inboundSchema:
@@ -2080,13 +1915,7 @@ export const Envs$inboundSchema: z.ZodType<Envs, z.ZodTypeDef, unknown> = z
     edgeConfigTokenId: z.nullable(types.string()).optional(),
     gitBranch: types.optional(types.string()),
     id: types.optional(types.string()),
-    internalContentHint: z.nullable(
-      z.lazy(() =>
-        FilterProjectEnvsResponseBodyInternalContentHint$inboundSchema
-      ),
-    ).optional(),
     key: types.string(),
-    legacyValue: types.optional(types.string()),
     securityIssues: z.array(
       FilterProjectEnvsResponseBodySecurityIssues$inboundSchema,
     ),
@@ -2098,7 +1927,7 @@ export const Envs$inboundSchema: z.ZodType<Envs, z.ZodTypeDef, unknown> = z
         FilterProjectEnvsTargetProjects2$inboundSchema,
       ]),
     ),
-    type: FilterProjectEnvsResponseBodyProjectsResponseType$inboundSchema,
+    type: FilterProjectEnvsResponseBodyProjectsType$inboundSchema,
     updatedAt: types.optional(types.number()),
     updatedBy: z.nullable(types.string()).optional(),
     value: types.string(),
@@ -2516,31 +2345,6 @@ export function responseBodyContentHintFromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsResponseBodyProjectsType$inboundSchema:
-  z.ZodNativeEnum<typeof FilterProjectEnvsResponseBodyProjectsType> = z
-    .nativeEnum(FilterProjectEnvsResponseBodyProjectsType);
-
-/** @internal */
-export const ResponseBodyInternalContentHint$inboundSchema: z.ZodType<
-  ResponseBodyInternalContentHint,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  encryptedValue: types.string(),
-  type: FilterProjectEnvsResponseBodyProjectsType$inboundSchema,
-});
-
-export function responseBodyInternalContentHintFromJSON(
-  jsonString: string,
-): SafeParseResult<ResponseBodyInternalContentHint, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ResponseBodyInternalContentHint$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBodyInternalContentHint' from JSON`,
-  );
-}
-
-/** @internal */
 export const ResponseBodySecurityIssues$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodySecurityIssues
 > = z.nativeEnum(ResponseBodySecurityIssues);
@@ -2623,11 +2427,7 @@ export const FilterProjectEnvsResponseBody1$inboundSchema: z.ZodType<
   edgeConfigTokenId: z.nullable(types.string()).optional(),
   gitBranch: types.optional(types.string()),
   id: types.optional(types.string()),
-  internalContentHint: z.nullable(
-    z.lazy(() => ResponseBodyInternalContentHint$inboundSchema),
-  ).optional(),
   key: types.string(),
-  legacyValue: types.optional(types.string()),
   securityIssues: z.array(ResponseBodySecurityIssues$inboundSchema),
   sunsetSecretId: types.optional(types.string()),
   system: types.optional(types.boolean()),

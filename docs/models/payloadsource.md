@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { PayloadSource } from "@vercel/sdk/models/usereventpayload354geolocationnames.js";
+import { PayloadSource } from "@vercel/sdk/models/oldprojects.js";
 
-let value: PayloadSource = "mail";
+let value: PayloadSource = "enable";
 ```
 
 ## Values
 
 ```typescript
-"account-update" | "bitbucket" | "dsync" | "feedback" | "github" | "gitlab" | "import" | "link" | "mail" | "nsnb-auto-approve" | "nsnb-hobby-upgrade" | "nsnb-invite" | "nsnb-redeploy" | "nsnb-redeploy-attribution-card" | "nsnb-request-access" | "nsnb-viewer-upgrade" | "organization-teams" | "saml" | "teams"
+"create" | "enable" | "upgrade"
 ```

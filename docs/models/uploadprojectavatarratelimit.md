@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarRateLimit } from "@vercel/sdk/models/uploadprojectavataroidcproviders.js";
+import { UploadProjectAvatarRateLimit } from "@vercel/sdk/models/uploadprojectavatarto.js";
 
 let value: UploadProjectAvatarRateLimit = {
   algo: "fixed_window",

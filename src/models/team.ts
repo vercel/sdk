@@ -105,6 +105,16 @@ export type DefaultPassport = {
 /**
  * Default job configuration applied to new projects created in this team.
  */
+export type FlagDefinitionsPresent = {
+  /**
+   * Default job configuration applied to new projects created in this team.
+   */
+  targets: Array<string>;
+};
+
+/**
+ * Default job configuration applied to new projects created in this team.
+ */
 export type Lint = {
   /**
    * Default job configuration applied to new projects created in this team.
@@ -136,6 +146,10 @@ export type Typecheck = {
  * Default job configuration applied to new projects created in this team.
  */
 export type DefaultProjectJobs = {
+  /**
+   * Default job configuration applied to new projects created in this team.
+   */
+  flagDefinitionsPresent?: FlagDefinitionsPresent | undefined;
   /**
    * Default job configuration applied to new projects created in this team.
    */
@@ -713,7 +727,7 @@ export type Directory = {
   type: string;
 };
 
-export const Roles2 = {
+export const Roles3 = {
   Billing: "BILLING",
   Contributor: "CONTRIBUTOR",
   Developer: "DEVELOPER",
@@ -723,16 +737,59 @@ export const Roles2 = {
   Viewer: "VIEWER",
   ViewerForPlus: "VIEWER_FOR_PLUS",
 } as const;
-export type Roles2 = ClosedEnum<typeof Roles2>;
+export type Roles3 = ClosedEnum<typeof Roles3>;
+
+export const RolesTeamPermissions = {
+  AiGatewayBudgetManager: "AiGatewayBudgetManager",
+  AiGatewayCredits: "AiGatewayCredits",
+  AiGatewaySettings: "AiGatewaySettings",
+  AiGatewayTranscriptsManager: "AiGatewayTranscriptsManager",
+  AiGatewayTranscriptsViewer: "AiGatewayTranscriptsViewer",
+  AiGatewayUser: "AiGatewayUser",
+  ConnectorManager: "ConnectorManager",
+  CreateProject: "CreateProject",
+  EnvVariableManager: "EnvVariableManager",
+  EnvironmentManager: "EnvironmentManager",
+  FullProductionDeployment: "FullProductionDeployment",
+  IntegrationManager: "IntegrationManager",
+  OrgAdmin: "OrgAdmin",
+  OrgViewer: "OrgViewer",
+  UsageViewer: "UsageViewer",
+  V0Builder: "V0Builder",
+  V0Chatter: "V0Chatter",
+  V0Viewer: "V0Viewer",
+  WorkflowDecryptor: "WorkflowDecryptor",
+} as const;
+export type RolesTeamPermissions = ClosedEnum<typeof RolesTeamPermissions>;
+
+export const RolesTeamRoles = {
+  Billing: "BILLING",
+  Contributor: "CONTRIBUTOR",
+  Developer: "DEVELOPER",
+  Member: "MEMBER",
+  Owner: "OWNER",
+  Security: "SECURITY",
+  Viewer: "VIEWER",
+  ViewerForPlus: "VIEWER_FOR_PLUS",
+} as const;
+export type RolesTeamRoles = ClosedEnum<typeof RolesTeamRoles>;
 
 /**
- * When "Directory Sync" is configured, this object contains a mapping of which Directory Group (by ID) should be assigned to which Vercel Team "role".
+ * When "Directory Sync" is configured, this object contains a mapping of which Directory Group (by ID) should be assigned to which Vercel Team roles and permissions, or an access group. Bare team roles are deprecated in favor of DirectorySyncRolesMapping.
+ */
+export type Roles2 = {
+  teamPermissions?: Array<RolesTeamPermissions> | undefined;
+  teamRoles: Array<RolesTeamRoles>;
+};
+
+/**
+ * When "Directory Sync" is configured, this object contains a mapping of which Directory Group (by ID) should be assigned to which Vercel Team roles and permissions, or an access group. Bare team roles are deprecated in favor of DirectorySyncRolesMapping.
  */
 export type Roles1 = {
   accessGroupId: string;
 };
 
-export type Roles = Roles1 | Roles2;
+export type Roles = Roles1 | Roles2 | Roles3;
 
 /**
  * When "Single Sign-On (SAML)" is configured, this object contains information regarding the configuration of the Identity Provider (IdP).
@@ -755,9 +812,9 @@ export type Saml = {
    */
   enforced: boolean;
   /**
-   * When "Directory Sync" is configured, this object contains a mapping of which Directory Group (by ID) should be assigned to which Vercel Team "role".
+   * When "Directory Sync" is configured, this object contains a mapping of which Directory Group (by ID) should be assigned to which Vercel Team roles and permissions, or an access group. Bare team roles are deprecated in favor of DirectorySyncRolesMapping.
    */
-  roles?: { [k: string]: Roles1 | Roles2 } | undefined;
+  roles?: { [k: string]: Roles1 | Roles2 | Roles3 } | undefined;
 };
 
 /**
@@ -1150,6 +1207,25 @@ export function defaultPassportFromJSON(
 }
 
 /** @internal */
+export const FlagDefinitionsPresent$inboundSchema: z.ZodType<
+  FlagDefinitionsPresent,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  targets: z.array(types.string()),
+});
+
+export function flagDefinitionsPresentFromJSON(
+  jsonString: string,
+): SafeParseResult<FlagDefinitionsPresent, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FlagDefinitionsPresent$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FlagDefinitionsPresent' from JSON`,
+  );
+}
+
+/** @internal */
 export const Lint$inboundSchema: z.ZodType<Lint, z.ZodTypeDef, unknown> = z
   .object({
     targets: z.array(types.string()),
@@ -1209,6 +1285,9 @@ export const DefaultProjectJobs$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  "flag-definitions-present": types.optional(
+    z.lazy(() => FlagDefinitionsPresent$inboundSchema),
+  ),
   lint: types.optional(z.lazy(() => Lint$inboundSchema)),
   "mfe-config-present": types.optional(
     z.lazy(() => MfeConfigPresent$inboundSchema),
@@ -1216,6 +1295,7 @@ export const DefaultProjectJobs$inboundSchema: z.ZodType<
   typecheck: types.optional(z.lazy(() => Typecheck$inboundSchema)),
 }).transform((v) => {
   return remap$(v, {
+    "flag-definitions-present": "flagDefinitionsPresent",
     "mfe-config-present": "mfeConfigPresent",
   });
 });
@@ -1934,8 +2014,37 @@ export function directoryFromJSON(
 }
 
 /** @internal */
-export const Roles2$inboundSchema: z.ZodNativeEnum<typeof Roles2> = z
-  .nativeEnum(Roles2);
+export const Roles3$inboundSchema: z.ZodNativeEnum<typeof Roles3> = z
+  .nativeEnum(Roles3);
+
+/** @internal */
+export const RolesTeamPermissions$inboundSchema: z.ZodNativeEnum<
+  typeof RolesTeamPermissions
+> = z.nativeEnum(RolesTeamPermissions);
+
+/** @internal */
+export const RolesTeamRoles$inboundSchema: z.ZodNativeEnum<
+  typeof RolesTeamRoles
+> = z.nativeEnum(RolesTeamRoles);
+
+/** @internal */
+export const Roles2$inboundSchema: z.ZodType<Roles2, z.ZodTypeDef, unknown> = z
+  .object({
+    teamPermissions: types.optional(
+      z.array(RolesTeamPermissions$inboundSchema),
+    ),
+    teamRoles: z.array(RolesTeamRoles$inboundSchema),
+  });
+
+export function roles2FromJSON(
+  jsonString: string,
+): SafeParseResult<Roles2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Roles2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Roles2' from JSON`,
+  );
+}
 
 /** @internal */
 export const Roles1$inboundSchema: z.ZodType<Roles1, z.ZodTypeDef, unknown> = z
@@ -1955,7 +2064,11 @@ export function roles1FromJSON(
 
 /** @internal */
 export const Roles$inboundSchema: z.ZodType<Roles, z.ZodTypeDef, unknown> =
-  smartUnion([z.lazy(() => Roles1$inboundSchema), Roles2$inboundSchema]);
+  smartUnion([
+    z.lazy(() => Roles1$inboundSchema),
+    z.lazy(() => Roles2$inboundSchema),
+    Roles3$inboundSchema,
+  ]);
 
 export function rolesFromJSON(
   jsonString: string,
@@ -1977,7 +2090,10 @@ export const Saml$inboundSchema: z.ZodType<Saml, z.ZodTypeDef, unknown> = z
     roles: types.optional(
       z.record(smartUnion([
         z.lazy(() => Roles1$inboundSchema),
-        Roles2$inboundSchema,
+        z.lazy(() =>
+          Roles2$inboundSchema
+        ),
+        Roles3$inboundSchema,
       ])),
     ),
   });

@@ -68,8 +68,6 @@ import {
   CreateProjectProjectsBuilds$inboundSchema,
   CreateProjectProjectsChecksConclusion,
   CreateProjectProjectsChecksConclusion$inboundSchema,
-  CreateProjectProjectsChecksState,
-  CreateProjectProjectsChecksState$inboundSchema,
   CreateProjectProjectsFramework,
   CreateProjectProjectsFramework$inboundSchema,
   CreateProjectProjectsResourceConfig,
@@ -112,8 +110,17 @@ import {
   RollingRelease$inboundSchema,
   SpeedInsights,
   SpeedInsights$inboundSchema,
-} from "./createprojectprojectschecksstate.js";
+} from "./createprojectprojectschecksconclusion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const CreateProjectProjectsChecksState = {
+  Completed: "completed",
+  Registered: "registered",
+  Running: "running",
+} as const;
+export type CreateProjectProjectsChecksState = ClosedEnum<
+  typeof CreateProjectProjectsChecksState
+>;
 
 export type CreateProjectProjectsResponseCreator = {
   email: string;
@@ -452,7 +459,7 @@ export type CreateProjectProjects = {
 
 export type CreateProjectTrustedSources = {
   /**
-   * Allow same-team Vercel CI access to preview deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value.
+   * Allow same-team Vercel CI access to preview and production deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value.
    */
   enableVercelCiSameRepository?: boolean | undefined;
   oidcProviders?:
@@ -623,6 +630,11 @@ export type CreateProjectResponseBody = {
   v0Created?: boolean | undefined;
   webAnalytics?: CreateProjectWebAnalytics | undefined;
 };
+
+/** @internal */
+export const CreateProjectProjectsChecksState$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectProjectsChecksState
+> = z.nativeEnum(CreateProjectProjectsChecksState);
 
 /** @internal */
 export const CreateProjectProjectsResponseCreator$inboundSchema: z.ZodType<

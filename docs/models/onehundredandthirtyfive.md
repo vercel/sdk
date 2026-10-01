@@ -5,21 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndThirtyFive } from "@vercel/sdk/models/usereventjobaction.js";
+import { OneHundredAndThirtyFive } from "@vercel/sdk/models/job4.js";
 
 let value: OneHundredAndThirtyFive = {
   domain: "posh-retention.name",
-  initiator: "user",
-  zone: false,
 };
 ```
 
 ## Fields
 
-| Field                                                    | Type                                                     | Required                                                 | Description                                              |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `domain`                                                 | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
-| `initiator`                                              | [models.PayloadInitiator](../models/payloadinitiator.md) | :heavy_check_mark:                                       | N/A                                                      |
-| `previousZone`                                           | *boolean*                                                | :heavy_minus_sign:                                       | N/A                                                      |
-| `source`                                                 | *string*                                                 | :heavy_minus_sign:                                       | N/A                                                      |
-| `zone`                                                   | *boolean*                                                | :heavy_check_mark:                                       | N/A                                                      |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `domain`           | *string*           | :heavy_check_mark: | N/A                |

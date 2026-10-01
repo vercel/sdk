@@ -5,23 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFiftyNine } from "@vercel/sdk/models/usereventjobaction.js";
+import { OneHundredAndFiftyNine } from "@vercel/sdk/models/job4.js";
 
-let value: OneHundredAndFiftyNine = {};
+let value: OneHundredAndFiftyNine = {
+  previousRule: {
+    email: "Jarod.Gorczany23@gmail.com",
+  },
+  team: {
+    id: "<id>",
+  },
+};
 ```
 
 ## Fields
 
-| Field                    | Type                     | Required                 | Description              |
-| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
-| `customEnvironmentSlugs` | *string*[]               | :heavy_minus_sign:       | N/A                      |
-| `edgeConfigId`           | *string*                 | :heavy_minus_sign:       | N/A                      |
-| `edgeConfigTokenId`      | *string*                 | :heavy_minus_sign:       | N/A                      |
-| `gitBranch`              | *string*                 | :heavy_minus_sign:       | N/A                      |
-| `id`                     | *string*                 | :heavy_minus_sign:       | N/A                      |
-| `ipAddress`              | *string*                 | :heavy_minus_sign:       | N/A                      |
-| `key`                    | *string*                 | :heavy_minus_sign:       | N/A                      |
-| `projectId`              | *string*                 | :heavy_minus_sign:       | N/A                      |
-| `projectName`            | *string*                 | :heavy_minus_sign:       | N/A                      |
-| `source`                 | *string*                 | :heavy_minus_sign:       | N/A                      |
-| `target`                 | *models.Target*          | :heavy_minus_sign:       | N/A                      |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `previousRule`                                                         | [models.PreviousRule](../models/previousrule.md)                       | :heavy_check_mark:                                                     | N/A                                                                    |
+| `team`                                                                 | [models.UserEventPayload159Team](../models/usereventpayload159team.md) | :heavy_check_mark:                                                     | N/A                                                                    |

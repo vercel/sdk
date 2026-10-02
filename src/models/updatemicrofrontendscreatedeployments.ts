@@ -71,6 +71,10 @@ export type UpdateMicrofrontendsRegisteredShaBlock = {
 };
 
 export type UpdateMicrofrontendsBlock = {
+  /**
+   * Since October 2026. The abuse agent run whose verdict led to this block. Absent on blocks made before the field existed, even agent-led ones.
+   */
+  abuseAgentRunId?: string | undefined;
   action: UpdateMicrofrontendsProjectsResponseAction;
   actor?: string | undefined;
   caseId?: string | undefined;
@@ -150,6 +154,10 @@ export type UpdateMicrofrontendsBlockHistoryProjectsRoute =
   | UpdateMicrofrontendsRouteProjects2;
 
 export type UpdateMicrofrontendsBlockHistory4 = {
+  /**
+   * Since October 2026. The abuse agent run whose verdict led to this block. Absent on blocks made before the field existed, even agent-led ones.
+   */
+  abuseAgentRunId?: string | undefined;
   action: "route-unblocked";
   actor?: string | undefined;
   caseId?: string | undefined;
@@ -230,6 +238,10 @@ export type UpdateMicrofrontendsBlockHistoryRoute =
   | UpdateMicrofrontendsRoute2;
 
 export type UpdateMicrofrontendsBlockHistory3 = {
+  /**
+   * Since October 2026. The abuse agent run whose verdict led to this block. Absent on blocks made before the field existed, even agent-led ones.
+   */
+  abuseAgentRunId?: string | undefined;
   action: "route-blocked";
   actor?: string | undefined;
   caseId?: string | undefined;
@@ -246,6 +258,10 @@ export type UpdateMicrofrontendsBlockHistory3 = {
 };
 
 export type UpdateMicrofrontendsBlockHistory2 = {
+  /**
+   * Since October 2026. The abuse agent run whose verdict led to this block. Absent on blocks made before the field existed, even agent-led ones.
+   */
+  abuseAgentRunId?: string | undefined;
   action: "unblocked";
   actor?: string | undefined;
   caseId?: string | undefined;
@@ -269,6 +285,10 @@ export type UpdateMicrofrontendsBlockHistoryRegisteredShaBlock = {
 };
 
 export type UpdateMicrofrontendsBlockHistory1 = {
+  /**
+   * Since October 2026. The abuse agent run whose verdict led to this block. Absent on blocks made before the field existed, even agent-led ones.
+   */
+  abuseAgentRunId?: string | undefined;
   action: "blocked";
   actor?: string | undefined;
   caseId?: string | undefined;
@@ -1642,6 +1662,7 @@ export const UpdateMicrofrontendsBlock$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  abuseAgentRunId: types.optional(types.string()),
   action: UpdateMicrofrontendsProjectsResponseAction$inboundSchema,
   actor: types.optional(types.string()),
   caseId: types.optional(types.string()),
@@ -1904,6 +1925,7 @@ export const UpdateMicrofrontendsBlockHistory4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  abuseAgentRunId: types.optional(types.string()),
   action: types.literal("route-unblocked"),
   actor: types.optional(types.string()),
   caseId: types.optional(types.string()),
@@ -2159,6 +2181,7 @@ export const UpdateMicrofrontendsBlockHistory3$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  abuseAgentRunId: types.optional(types.string()),
   action: types.literal("route-blocked"),
   actor: types.optional(types.string()),
   caseId: types.optional(types.string()),
@@ -2190,6 +2213,7 @@ export const UpdateMicrofrontendsBlockHistory2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  abuseAgentRunId: types.optional(types.string()),
   action: types.literal("unblocked"),
   actor: types.optional(types.string()),
   caseId: types.optional(types.string()),
@@ -2244,6 +2268,7 @@ export const UpdateMicrofrontendsBlockHistory1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  abuseAgentRunId: types.optional(types.string()),
   action: types.literal("blocked"),
   actor: types.optional(types.string()),
   caseId: types.optional(types.string()),

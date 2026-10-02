@@ -5,17 +5,28 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndEighteen } from "@vercel/sdk/models/usereventjobaction.js";
+import { OneHundredAndEighteen } from "@vercel/sdk/models/jobnsnbsideeffect.js";
 
 let value: OneHundredAndEighteen = {
-  mode: "none",
-  previousMode: "email-domain",
+  deployment: {
+    id: "<id>",
+    meta: {
+      "key": "<value>",
+      "key1": "<value>",
+      "key2": "<value>",
+    },
+    name: "<value>",
+    url: "https://french-simple.name",
+  },
+  deploymentId: "<id>",
+  url: "https://austere-smoke.org",
 };
 ```
 
 ## Fields
 
-| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| `mode`                                                         | [models.PayloadMode](../models/payloadmode.md)                 | :heavy_check_mark:                                             | N/A                                                            |
-| `previousMode`                                                 | [models.PayloadPreviousMode](../models/payloadpreviousmode.md) | :heavy_check_mark:                                             | N/A                                                            |
+| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `deployment`                                                                       | [models.UserEventPayload118Deployment](../models/usereventpayload118deployment.md) | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `deploymentId`                                                                     | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `url`                                                                              | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |

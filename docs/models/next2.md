@@ -3,13 +3,16 @@
 ## Example Usage
 
 ```typescript
-import { Next2 } from "@vercel/sdk/models/usereventpayload354geolocationnames.js";
+import { Next2 } from "@vercel/sdk/models/threehundredandsixty.js";
 
-let value: Next2 = "DEVELOPER";
+let value: Next2 = {
+  teamRoles: [],
+};
 ```
 
-## Values
+## Fields
 
-```typescript
-"BILLING" | "CONTRIBUTOR" | "DEVELOPER" | "MEMBER" | "OWNER" | "SECURITY" | "VIEWER" | "VIEWER_FOR_PLUS"
-```
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `teamPermissions`                                                | [models.NextTeamPermissions](../models/nextteampermissions.md)[] | :heavy_minus_sign:                                               | N/A                                                              |
+| `teamRoles`                                                      | [models.NextTeamRoles](../models/nextteamroles.md)[]             | :heavy_check_mark:                                               | N/A                                                              |

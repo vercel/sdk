@@ -1,29 +1,62 @@
 # BlockHistory
 
-Since June 2023
 
-## Example Usage
+## Supported Types
+
+### `models.BlockHistory1`
 
 ```typescript
-import { BlockHistory } from "@vercel/sdk/models/sourceimages.js";
-
-let value: BlockHistory = {
-  action: "unblocked",
-  createdAt: 5908.37,
+const value: models.BlockHistory1 = {
+  action: "blocked",
+  createdAt: 7635.45,
   reason: "<value>",
+  statusCode: 5035.25,
 };
 ```
 
-## Fields
+### `models.BlockHistory2`
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `action`                                                                   | [models.UserEventPayload179Action](../models/usereventpayload179action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
-| `actor`                                                                    | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
-| `caseId`                                                                   | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
-| `comment`                                                                  | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
-| `createdAt`                                                                | *number*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `ineligibleForAppeal`                                                      | *boolean*                                                                  | :heavy_minus_sign:                                                         | N/A                                                                        |
-| `reason`                                                                   | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `statusCode`                                                               | *number*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
-| `threadId`                                                                 | *string*                                                                   | :heavy_minus_sign:                                                         | Plain thread ID, recorded separately from `caseId`.                        |
+```typescript
+const value: models.BlockHistory2 = {
+  action: "unblocked",
+  createdAt: 1206.28,
+};
+```
+
+### `models.BlockHistory3`
+
+```typescript
+const value: models.BlockHistory3 = {
+  action: "route-blocked",
+  createdAt: 120.75,
+  reason: "<value>",
+  route: {
+    has: [
+      {
+        key: "x-vercel-ip-country",
+        type: "header",
+        value: {
+          eq: "<value>",
+        },
+      },
+    ],
+    mitigate: {
+      action: "block_legal_cwc",
+    },
+  },
+};
+```
+
+### `models.BlockHistory4`
+
+```typescript
+const value: models.BlockHistory4 = {
+  action: "route-unblocked",
+  createdAt: 6252.8,
+  route: {
+    src: "<value>",
+    status: 1752.63,
+  },
+};
+```
+

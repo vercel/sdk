@@ -1,11 +1,11 @@
 # RegisteredShaBlock
 
-Since September 2026. The git SHA a non-cascading hard block of this owner auto-registered in the lineage blocklist, so unblocking can disable the row that block created. Lives on the owner rather than a project block because this registration path runs only when the block did not cascade, leaving the owner's single project unblocked and with no block record to carry it. Absent means the block registered nothing, which includes the case where registration was skipped because the SHA already belonged to an earlier block. Unblock must clear only what is named here.
+Since September 2026. Set on the live `abuse.block` only, by the consumer that auto-registers this project's production git SHA in the lineage blocklist, so unblocking can disable the row this block created. Absent means this block registered nothing, which includes the case where registration was skipped because the SHA already belonged to an earlier block. Unblock must therefore clear only what is named here, never the project's current SHA, or it would disable another block's row.
 
 ## Example Usage
 
 ```typescript
-import { RegisteredShaBlock } from "@vercel/sdk/models/sourceimages.js";
+import { RegisteredShaBlock } from "@vercel/sdk/models/createprojectcontenthint8.js";
 
 let value: RegisteredShaBlock = {
   createdAt: "1730662995923",

@@ -45,6 +45,13 @@ export type ListDeploymentCheckRunsRunsChecksV2Conclusion = ClosedEnum<
   typeof ListDeploymentCheckRunsRunsChecksV2Conclusion
 >;
 
+export type ListDeploymentCheckRunsRunsChecksV2ExpectationRef = {
+  invocationAttempt: number;
+  invocationId: string;
+  jobDefinitionId: string;
+  jobRunAttempt: number;
+};
+
 export const ListDeploymentCheckRunsRunsChecksV2Requires = {
   BuildReady: "build-ready",
   DeploymentUrl: "deployment-url",
@@ -109,6 +116,13 @@ export type ListDeploymentCheckRunsRuns2 = {
   conclusionText?: string | undefined;
   createdAt: number;
   deploymentId: string;
+  expectationRef?:
+    | ListDeploymentCheckRunsRunsChecksV2ExpectationRef
+    | undefined;
+  /**
+   * Latest aggregate revision applied to this check run.
+   */
+  expectationRevision?: number | undefined;
   externalId?: string | undefined;
   externalUrl?: string | undefined;
   id: string;
@@ -149,6 +163,13 @@ export type ListDeploymentCheckRunsRunsConclusion = ClosedEnum<
   typeof ListDeploymentCheckRunsRunsConclusion
 >;
 
+export type ListDeploymentCheckRunsRunsExpectationRef = {
+  invocationAttempt: number;
+  invocationId: string;
+  jobDefinitionId: string;
+  jobRunAttempt: number;
+};
+
 export const ListDeploymentCheckRunsRunsRequires = {
   BuildReady: "build-ready",
   DeploymentUrl: "deployment-url",
@@ -174,9 +195,18 @@ export type ListDeploymentCheckRunsSourceChecksV2Origin = ClosedEnum<
   typeof ListDeploymentCheckRunsSourceChecksV2Origin
 >;
 
+export const ListDeploymentCheckRunsSelectionJob = {
+  Turborepo: "Turborepo",
+} as const;
+export type ListDeploymentCheckRunsSelectionJob = ClosedEnum<
+  typeof ListDeploymentCheckRunsSelectionJob
+>;
+
 export type ListDeploymentCheckRunsSelection3 = {
-  job: string;
-  kind: "task";
+  failIfNoMatch?: boolean | undefined;
+  filters: Array<string>;
+  job: ListDeploymentCheckRunsSelectionJob;
+  kind: "turborepo";
   task: string;
 };
 
@@ -302,6 +332,11 @@ export type ListDeploymentCheckRunsRuns1 = {
   conclusionText?: string | undefined;
   createdAt: number;
   deploymentId: string;
+  expectationRef?: ListDeploymentCheckRunsRunsExpectationRef | undefined;
+  /**
+   * Latest aggregate revision applied to this check run.
+   */
+  expectationRevision?: number | undefined;
   externalId?: string | undefined;
   externalUrl?: string | undefined;
   id: string;
@@ -368,6 +403,35 @@ export const ListDeploymentCheckRunsRunsChecksV2Blocks$inboundSchema:
 export const ListDeploymentCheckRunsRunsChecksV2Conclusion$inboundSchema:
   z.ZodNativeEnum<typeof ListDeploymentCheckRunsRunsChecksV2Conclusion> = z
     .nativeEnum(ListDeploymentCheckRunsRunsChecksV2Conclusion);
+
+/** @internal */
+export const ListDeploymentCheckRunsRunsChecksV2ExpectationRef$inboundSchema:
+  z.ZodType<
+    ListDeploymentCheckRunsRunsChecksV2ExpectationRef,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    invocationAttempt: types.number(),
+    invocationId: types.string(),
+    jobDefinitionId: types.string(),
+    jobRunAttempt: types.number(),
+  });
+
+export function listDeploymentCheckRunsRunsChecksV2ExpectationRefFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ListDeploymentCheckRunsRunsChecksV2ExpectationRef,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListDeploymentCheckRunsRunsChecksV2ExpectationRef$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ListDeploymentCheckRunsRunsChecksV2ExpectationRef' from JSON`,
+  );
+}
 
 /** @internal */
 export const ListDeploymentCheckRunsRunsChecksV2Requires$inboundSchema:
@@ -478,6 +542,12 @@ export const ListDeploymentCheckRunsRuns2$inboundSchema: z.ZodType<
   conclusionText: types.optional(types.string()),
   createdAt: types.number(),
   deploymentId: types.string(),
+  expectationRef: types.optional(
+    z.lazy(() =>
+      ListDeploymentCheckRunsRunsChecksV2ExpectationRef$inboundSchema
+    ),
+  ),
+  expectationRevision: types.optional(types.number()),
   externalId: types.optional(types.string()),
   externalUrl: types.optional(types.string()),
   id: types.string(),
@@ -520,6 +590,34 @@ export const ListDeploymentCheckRunsRunsConclusion$inboundSchema:
   );
 
 /** @internal */
+export const ListDeploymentCheckRunsRunsExpectationRef$inboundSchema: z.ZodType<
+  ListDeploymentCheckRunsRunsExpectationRef,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  invocationAttempt: types.number(),
+  invocationId: types.string(),
+  jobDefinitionId: types.string(),
+  jobRunAttempt: types.number(),
+});
+
+export function listDeploymentCheckRunsRunsExpectationRefFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ListDeploymentCheckRunsRunsExpectationRef,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListDeploymentCheckRunsRunsExpectationRef$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ListDeploymentCheckRunsRunsExpectationRef' from JSON`,
+  );
+}
+
+/** @internal */
 export const ListDeploymentCheckRunsRunsRequires$inboundSchema: z.ZodNativeEnum<
   typeof ListDeploymentCheckRunsRunsRequires
 > = z.nativeEnum(ListDeploymentCheckRunsRunsRequires);
@@ -535,13 +633,20 @@ export const ListDeploymentCheckRunsSourceChecksV2Origin$inboundSchema:
     .nativeEnum(ListDeploymentCheckRunsSourceChecksV2Origin);
 
 /** @internal */
+export const ListDeploymentCheckRunsSelectionJob$inboundSchema: z.ZodNativeEnum<
+  typeof ListDeploymentCheckRunsSelectionJob
+> = z.nativeEnum(ListDeploymentCheckRunsSelectionJob);
+
+/** @internal */
 export const ListDeploymentCheckRunsSelection3$inboundSchema: z.ZodType<
   ListDeploymentCheckRunsSelection3,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  job: types.string(),
-  kind: types.literal("task"),
+  failIfNoMatch: types.optional(types.boolean()),
+  filters: z.array(types.string()),
+  job: ListDeploymentCheckRunsSelectionJob$inboundSchema,
+  kind: types.literal("turborepo"),
   task: types.string(),
 });
 
@@ -799,6 +904,10 @@ export const ListDeploymentCheckRunsRuns1$inboundSchema: z.ZodType<
   conclusionText: types.optional(types.string()),
   createdAt: types.number(),
   deploymentId: types.string(),
+  expectationRef: types.optional(
+    z.lazy(() => ListDeploymentCheckRunsRunsExpectationRef$inboundSchema),
+  ),
+  expectationRevision: types.optional(types.number()),
   externalId: types.optional(types.string()),
   externalUrl: types.optional(types.string()),
   id: types.string(),

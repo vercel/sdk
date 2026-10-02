@@ -507,13 +507,17 @@ export type CreateProjectProjectsResponseAction = ClosedEnum<
 /**
  * Since September 2026. Set on the live `abuse.block` only, by the consumer that auto-registers this project's production git SHA in the lineage blocklist, so unblocking can disable the row this block created. Absent means this block registered nothing, which includes the case where registration was skipped because the SHA already belonged to an earlier block. Unblock must therefore clear only what is named here, never the project's current SHA, or it would disable another block's row.
  */
-export type CreateProjectRegisteredShaBlock = {
+export type RegisteredShaBlock = {
   createdAt: string;
   createdBy: string;
   sha: string;
 };
 
 export type Block = {
+  /**
+   * Since October 2026. The abuse agent run whose verdict led to this block. Absent on blocks made before the field existed, even agent-led ones.
+   */
+  abuseAgentRunId?: string | undefined;
   action: CreateProjectProjectsResponseAction;
   actor?: string | undefined;
   caseId?: string | undefined;
@@ -525,7 +529,7 @@ export type Block = {
   /**
    * Since September 2026. Set on the live `abuse.block` only, by the consumer that auto-registers this project's production git SHA in the lineage blocklist, so unblocking can disable the row this block created. Absent means this block registered nothing, which includes the case where registration was skipped because the SHA already belonged to an earlier block. Unblock must therefore clear only what is named here, never the project's current SHA, or it would disable another block's row.
    */
-  registeredShaBlock?: CreateProjectRegisteredShaBlock | undefined;
+  registeredShaBlock?: RegisteredShaBlock | undefined;
   statusCode: number;
   /**
    * Plain thread ID, recorded separately from `caseId`.
@@ -591,6 +595,10 @@ export type CreateProjectBlockHistoryRoute =
   | CreateProjectRoute2;
 
 export type BlockHistory4 = {
+  /**
+   * Since October 2026. The abuse agent run whose verdict led to this block. Absent on blocks made before the field existed, even agent-led ones.
+   */
+  abuseAgentRunId?: string | undefined;
   action: "route-unblocked";
   actor?: string | undefined;
   caseId?: string | undefined;
@@ -663,6 +671,10 @@ export type Route1 = {
 export type BlockHistoryRoute = Route1 | Route2;
 
 export type BlockHistory3 = {
+  /**
+   * Since October 2026. The abuse agent run whose verdict led to this block. Absent on blocks made before the field existed, even agent-led ones.
+   */
+  abuseAgentRunId?: string | undefined;
   action: "route-blocked";
   actor?: string | undefined;
   caseId?: string | undefined;
@@ -679,6 +691,10 @@ export type BlockHistory3 = {
 };
 
 export type BlockHistory2 = {
+  /**
+   * Since October 2026. The abuse agent run whose verdict led to this block. Absent on blocks made before the field existed, even agent-led ones.
+   */
+  abuseAgentRunId?: string | undefined;
   action: "unblocked";
   actor?: string | undefined;
   caseId?: string | undefined;
@@ -702,6 +718,10 @@ export type BlockHistoryRegisteredShaBlock = {
 };
 
 export type BlockHistory1 = {
+  /**
+   * Since October 2026. The abuse agent run whose verdict led to this block. Absent on blocks made before the field existed, even agent-led ones.
+   */
+  abuseAgentRunId?: string | undefined;
   action: "blocked";
   actor?: string | undefined;
   caseId?: string | undefined;
@@ -721,13 +741,13 @@ export type BlockHistory1 = {
   threadId?: string | undefined;
 };
 
-export type CreateProjectBlockHistory =
+export type BlockHistory =
   | BlockHistory1
   | BlockHistory2
   | BlockHistory3
   | BlockHistory4;
 
-export type CreateProjectHistory = {
+export type History = {
   at: number;
   by: string;
   byId: string;
@@ -758,12 +778,12 @@ export type InterstitialHistory = {
   threadId?: string | undefined;
 };
 
-export type CreateProjectAbuse = {
+export type Abuse = {
   block?: Block | undefined;
   blockHistory?:
     | Array<BlockHistory1 | BlockHistory2 | BlockHistory3 | BlockHistory4>
     | undefined;
-  history: Array<CreateProjectHistory>;
+  history: Array<History>;
   interstitial?: boolean | undefined;
   interstitialHistory?: Array<InterstitialHistory> | undefined;
   scanner?: string | undefined;
@@ -1334,7 +1354,7 @@ export type CreateProjectProjectsConfiguration = ClosedEnum<
   typeof CreateProjectProjectsConfiguration
 >;
 
-export type CreateProjectProjectsBuildQueue = {
+export type CreateProjectProjectsResponseBuildQueue = {
   configuration?: CreateProjectProjectsConfiguration | undefined;
 };
 
@@ -1358,7 +1378,7 @@ export type DefaultResourceConfig = {
     | undefined;
   buildMachineSelection?: CreateProjectBuildMachineSelection | undefined;
   buildMachineType?: CreateProjectBuildMachineType | undefined;
-  buildQueue?: CreateProjectProjectsBuildQueue | undefined;
+  buildQueue?: CreateProjectProjectsResponseBuildQueue | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
   enableFunctionsBeta?: boolean | undefined;
   fluid?: boolean | undefined;
@@ -2017,8 +2037,8 @@ export const CreateProjectProjectsResponseAction$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(CreateProjectProjectsResponseAction);
 
 /** @internal */
-export const CreateProjectRegisteredShaBlock$inboundSchema: z.ZodType<
-  CreateProjectRegisteredShaBlock,
+export const RegisteredShaBlock$inboundSchema: z.ZodType<
+  RegisteredShaBlock,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -2027,19 +2047,20 @@ export const CreateProjectRegisteredShaBlock$inboundSchema: z.ZodType<
   sha: types.string(),
 });
 
-export function createProjectRegisteredShaBlockFromJSON(
+export function registeredShaBlockFromJSON(
   jsonString: string,
-): SafeParseResult<CreateProjectRegisteredShaBlock, SDKValidationError> {
+): SafeParseResult<RegisteredShaBlock, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreateProjectRegisteredShaBlock$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateProjectRegisteredShaBlock' from JSON`,
+    (x) => RegisteredShaBlock$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RegisteredShaBlock' from JSON`,
   );
 }
 
 /** @internal */
 export const Block$inboundSchema: z.ZodType<Block, z.ZodTypeDef, unknown> = z
   .object({
+    abuseAgentRunId: types.optional(types.string()),
     action: CreateProjectProjectsResponseAction$inboundSchema,
     actor: types.optional(types.string()),
     caseId: types.optional(types.string()),
@@ -2049,7 +2070,7 @@ export const Block$inboundSchema: z.ZodType<Block, z.ZodTypeDef, unknown> = z
     isCascading: types.optional(types.boolean()),
     reason: types.string(),
     registeredShaBlock: types.optional(
-      z.lazy(() => CreateProjectRegisteredShaBlock$inboundSchema),
+      z.lazy(() => RegisteredShaBlock$inboundSchema),
     ),
     statusCode: types.number(),
     threadId: types.optional(types.string()),
@@ -2273,6 +2294,7 @@ export const BlockHistory4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  abuseAgentRunId: types.optional(types.string()),
   action: types.literal("route-unblocked"),
   actor: types.optional(types.string()),
   caseId: types.optional(types.string()),
@@ -2508,6 +2530,7 @@ export const BlockHistory3$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  abuseAgentRunId: types.optional(types.string()),
   action: types.literal("route-blocked"),
   actor: types.optional(types.string()),
   caseId: types.optional(types.string()),
@@ -2539,6 +2562,7 @@ export const BlockHistory2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  abuseAgentRunId: types.optional(types.string()),
   action: types.literal("unblocked"),
   actor: types.optional(types.string()),
   caseId: types.optional(types.string()),
@@ -2586,6 +2610,7 @@ export const BlockHistory1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  abuseAgentRunId: types.optional(types.string()),
   action: types.literal("blocked"),
   actor: types.optional(types.string()),
   caseId: types.optional(types.string()),
@@ -2612,8 +2637,8 @@ export function blockHistory1FromJSON(
 }
 
 /** @internal */
-export const CreateProjectBlockHistory$inboundSchema: z.ZodType<
-  CreateProjectBlockHistory,
+export const BlockHistory$inboundSchema: z.ZodType<
+  BlockHistory,
   z.ZodTypeDef,
   unknown
 > = z.union([
@@ -2623,36 +2648,33 @@ export const CreateProjectBlockHistory$inboundSchema: z.ZodType<
   z.lazy(() => BlockHistory4$inboundSchema),
 ]);
 
-export function createProjectBlockHistoryFromJSON(
+export function blockHistoryFromJSON(
   jsonString: string,
-): SafeParseResult<CreateProjectBlockHistory, SDKValidationError> {
+): SafeParseResult<BlockHistory, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreateProjectBlockHistory$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateProjectBlockHistory' from JSON`,
+    (x) => BlockHistory$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BlockHistory' from JSON`,
   );
 }
 
 /** @internal */
-export const CreateProjectHistory$inboundSchema: z.ZodType<
-  CreateProjectHistory,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  at: types.number(),
-  by: types.string(),
-  byId: types.string(),
-  reason: types.string(),
-  scanner: types.string(),
-});
+export const History$inboundSchema: z.ZodType<History, z.ZodTypeDef, unknown> =
+  z.object({
+    at: types.number(),
+    by: types.string(),
+    byId: types.string(),
+    reason: types.string(),
+    scanner: types.string(),
+  });
 
-export function createProjectHistoryFromJSON(
+export function historyFromJSON(
   jsonString: string,
-): SafeParseResult<CreateProjectHistory, SDKValidationError> {
+): SafeParseResult<History, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreateProjectHistory$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateProjectHistory' from JSON`,
+    (x) => History$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'History' from JSON`,
   );
 }
 
@@ -2687,38 +2709,35 @@ export function interstitialHistoryFromJSON(
 }
 
 /** @internal */
-export const CreateProjectAbuse$inboundSchema: z.ZodType<
-  CreateProjectAbuse,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  block: types.optional(z.lazy(() => Block$inboundSchema)),
-  blockHistory: types.optional(
-    z.array(z.union([
-      z.lazy(() => BlockHistory1$inboundSchema),
-      z.lazy(() =>
-        BlockHistory2$inboundSchema
-      ),
-      z.lazy(() => BlockHistory3$inboundSchema),
-      z.lazy(() => BlockHistory4$inboundSchema),
-    ])),
-  ),
-  history: z.array(z.lazy(() => CreateProjectHistory$inboundSchema)),
-  interstitial: types.optional(types.boolean()),
-  interstitialHistory: types.optional(
-    z.array(z.lazy(() => InterstitialHistory$inboundSchema)),
-  ),
-  scanner: types.optional(types.string()),
-  updatedAt: types.number(),
-});
+export const Abuse$inboundSchema: z.ZodType<Abuse, z.ZodTypeDef, unknown> = z
+  .object({
+    block: types.optional(z.lazy(() => Block$inboundSchema)),
+    blockHistory: types.optional(
+      z.array(z.union([
+        z.lazy(() => BlockHistory1$inboundSchema),
+        z.lazy(() =>
+          BlockHistory2$inboundSchema
+        ),
+        z.lazy(() => BlockHistory3$inboundSchema),
+        z.lazy(() => BlockHistory4$inboundSchema),
+      ])),
+    ),
+    history: z.array(z.lazy(() => History$inboundSchema)),
+    interstitial: types.optional(types.boolean()),
+    interstitialHistory: types.optional(
+      z.array(z.lazy(() => InterstitialHistory$inboundSchema)),
+    ),
+    scanner: types.optional(types.string()),
+    updatedAt: types.number(),
+  });
 
-export function createProjectAbuseFromJSON(
+export function abuseFromJSON(
   jsonString: string,
-): SafeParseResult<CreateProjectAbuse, SDKValidationError> {
+): SafeParseResult<Abuse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreateProjectAbuse$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateProjectAbuse' from JSON`,
+    (x) => Abuse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Abuse' from JSON`,
   );
 }
 
@@ -3663,8 +3682,8 @@ export const CreateProjectProjectsConfiguration$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(CreateProjectProjectsConfiguration);
 
 /** @internal */
-export const CreateProjectProjectsBuildQueue$inboundSchema: z.ZodType<
-  CreateProjectProjectsBuildQueue,
+export const CreateProjectProjectsResponseBuildQueue$inboundSchema: z.ZodType<
+  CreateProjectProjectsResponseBuildQueue,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -3673,13 +3692,19 @@ export const CreateProjectProjectsBuildQueue$inboundSchema: z.ZodType<
   ),
 });
 
-export function createProjectProjectsBuildQueueFromJSON(
+export function createProjectProjectsResponseBuildQueueFromJSON(
   jsonString: string,
-): SafeParseResult<CreateProjectProjectsBuildQueue, SDKValidationError> {
+): SafeParseResult<
+  CreateProjectProjectsResponseBuildQueue,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => CreateProjectProjectsBuildQueue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateProjectProjectsBuildQueue' from JSON`,
+    (x) =>
+      CreateProjectProjectsResponseBuildQueue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateProjectProjectsResponseBuildQueue' from JSON`,
   );
 }
 
@@ -3707,7 +3732,7 @@ export const DefaultResourceConfig$inboundSchema: z.ZodType<
   ),
   buildMachineType: types.optional(CreateProjectBuildMachineType$inboundSchema),
   buildQueue: types.optional(
-    z.lazy(() => CreateProjectProjectsBuildQueue$inboundSchema),
+    z.lazy(() => CreateProjectProjectsResponseBuildQueue$inboundSchema),
   ),
   elasticConcurrencyEnabled: types.optional(types.boolean()),
   enableFunctionsBeta: types.optional(types.boolean()),

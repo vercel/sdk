@@ -23,7 +23,7 @@ export type CreateEdgeConfigTokenRequest = {
    * The Team slug to perform the request on behalf of.
    */
   slug?: string | undefined;
-  requestBody?: CreateEdgeConfigTokenRequestBody | undefined;
+  requestBody: CreateEdgeConfigTokenRequestBody;
 };
 
 export type CreateEdgeConfigTokenResponseBody = {
@@ -60,7 +60,7 @@ export type CreateEdgeConfigTokenRequest$Outbound = {
   edgeConfigId: string;
   teamId?: string | undefined;
   slug?: string | undefined;
-  RequestBody?: CreateEdgeConfigTokenRequestBody$Outbound | undefined;
+  RequestBody: CreateEdgeConfigTokenRequestBody$Outbound;
 };
 
 /** @internal */
@@ -72,8 +72,7 @@ export const CreateEdgeConfigTokenRequest$outboundSchema: z.ZodType<
   edgeConfigId: z.string(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
-  requestBody: z.lazy(() => CreateEdgeConfigTokenRequestBody$outboundSchema)
-    .optional(),
+  requestBody: z.lazy(() => CreateEdgeConfigTokenRequestBody$outboundSchema),
 }).transform((v) => {
   return remap$(v, {
     requestBody: "RequestBody",

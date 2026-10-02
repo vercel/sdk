@@ -266,7 +266,7 @@ export type SamplingRules = {
 /**
  * Tracing configuration for this project
  */
-export type UpdateProjectTracing = {
+export type Tracing = {
   /**
    * Comma-separated list of drain endpoint domains
    */
@@ -577,7 +577,7 @@ export type UpdateProjectProjects = {
    */
   label?: string | undefined;
   /**
-   * Optional overrides for the default same-env-by-slug matching.
+   * Optional overrides for the default same-env-by-slug matching. An empty array denies all access and is only allowed for the current project.
    */
   customAllow?: Array<CustomAllow> | undefined;
 };
@@ -626,7 +626,7 @@ export type OidcProviders = {
  */
 export type TrustedSources = {
   /**
-   * Allow same-team Vercel CI access to preview deployments built from the same repository as the CI run. The deployment source repository, not the current project repository link, is authoritative. Defaults to enabled when not stored. Omitting this field preserves its stored value, including when trustedSources is cleared. Set true explicitly to re-enable.
+   * Allow same-team Vercel CI access to preview and production deployments built from the same repository as the CI run. The deployment source repository, not the current project repository link, is authoritative. Defaults to enabled when not stored. Omitting this field preserves its stored value, including when trustedSources is cleared. Set true explicitly to re-enable.
    */
   enableVercelCiSameRepository?: boolean | undefined;
   projects?: { [k: string]: UpdateProjectProjects } | undefined;
@@ -945,7 +945,7 @@ export type UpdateProjectRequestBody = {
   /**
    * Tracing configuration for this project
    */
-  tracing?: UpdateProjectTracing | null | undefined;
+  tracing?: Tracing | null | undefined;
   /**
    * OpenID Connect JSON Web Token generation configuration.
    */
@@ -1022,6 +1022,10 @@ export type UpdateProjectRegisteredShaBlock = {
 };
 
 export type UpdateProjectBlock = {
+  /**
+   * Since October 2026. The abuse agent run whose verdict led to this block. Absent on blocks made before the field existed, even agent-led ones.
+   */
+  abuseAgentRunId?: string | undefined;
   action: UpdateProjectProjectsResponse200Action;
   actor?: string | undefined;
   caseId?: string | undefined;
@@ -1099,6 +1103,10 @@ export type UpdateProjectBlockHistoryProjectsRoute =
   | UpdateProjectRouteProjects2;
 
 export type UpdateProjectBlockHistory4 = {
+  /**
+   * Since October 2026. The abuse agent run whose verdict led to this block. Absent on blocks made before the field existed, even agent-led ones.
+   */
+  abuseAgentRunId?: string | undefined;
   action: "route-unblocked";
   actor?: string | undefined;
   caseId?: string | undefined;
@@ -1175,6 +1183,10 @@ export type UpdateProjectBlockHistoryRoute =
   | UpdateProjectRoute2;
 
 export type UpdateProjectBlockHistory3 = {
+  /**
+   * Since October 2026. The abuse agent run whose verdict led to this block. Absent on blocks made before the field existed, even agent-led ones.
+   */
+  abuseAgentRunId?: string | undefined;
   action: "route-blocked";
   actor?: string | undefined;
   caseId?: string | undefined;
@@ -1191,6 +1203,10 @@ export type UpdateProjectBlockHistory3 = {
 };
 
 export type UpdateProjectBlockHistory2 = {
+  /**
+   * Since October 2026. The abuse agent run whose verdict led to this block. Absent on blocks made before the field existed, even agent-led ones.
+   */
+  abuseAgentRunId?: string | undefined;
   action: "unblocked";
   actor?: string | undefined;
   caseId?: string | undefined;
@@ -1214,6 +1230,10 @@ export type UpdateProjectBlockHistoryRegisteredShaBlock = {
 };
 
 export type UpdateProjectBlockHistory1 = {
+  /**
+   * Since October 2026. The abuse agent run whose verdict led to this block. Absent on blocks made before the field existed, even agent-led ones.
+   */
+  abuseAgentRunId?: string | undefined;
   action: "blocked";
   actor?: string | undefined;
   caseId?: string | undefined;
@@ -1809,29 +1829,25 @@ export function samplingRulesToJSON(samplingRules: SamplingRules): string {
 }
 
 /** @internal */
-export type UpdateProjectTracing$Outbound = {
+export type Tracing$Outbound = {
   domains?: string | undefined;
   ignorePaths?: Array<string> | undefined;
   samplingRules?: Array<SamplingRules$Outbound> | undefined;
 };
 
 /** @internal */
-export const UpdateProjectTracing$outboundSchema: z.ZodType<
-  UpdateProjectTracing$Outbound,
+export const Tracing$outboundSchema: z.ZodType<
+  Tracing$Outbound,
   z.ZodTypeDef,
-  UpdateProjectTracing
+  Tracing
 > = z.object({
   domains: z.string().optional(),
   ignorePaths: z.array(z.string()).optional(),
   samplingRules: z.array(z.lazy(() => SamplingRules$outboundSchema)).optional(),
 });
 
-export function updateProjectTracingToJSON(
-  updateProjectTracing: UpdateProjectTracing,
-): string {
-  return JSON.stringify(
-    UpdateProjectTracing$outboundSchema.parse(updateProjectTracing),
-  );
+export function tracingToJSON(tracing: Tracing): string {
+  return JSON.stringify(Tracing$outboundSchema.parse(tracing));
 }
 
 /** @internal */
@@ -2981,7 +2997,7 @@ export type UpdateProjectRequestBody$Outbound = {
   enableAffectedProjectsDeployments?: boolean | undefined;
   enableExternalRewriteCaching?: boolean | undefined;
   staticIps?: UpdateProjectStaticIps$Outbound | undefined;
-  tracing?: UpdateProjectTracing$Outbound | null | undefined;
+  tracing?: Tracing$Outbound | null | undefined;
   oidcTokenConfig?: UpdateProjectOidcTokenConfig$Outbound | undefined;
   passwordProtection?:
     | UpdateProjectPasswordProtection$Outbound
@@ -3041,8 +3057,7 @@ export const UpdateProjectRequestBody$outboundSchema: z.ZodType<
   enableAffectedProjectsDeployments: z.boolean().optional(),
   enableExternalRewriteCaching: z.boolean().optional(),
   staticIps: z.lazy(() => UpdateProjectStaticIps$outboundSchema).optional(),
-  tracing: z.nullable(z.lazy(() => UpdateProjectTracing$outboundSchema))
-    .optional(),
+  tracing: z.nullable(z.lazy(() => Tracing$outboundSchema)).optional(),
   oidcTokenConfig: z.lazy(() => UpdateProjectOidcTokenConfig$outboundSchema)
     .optional(),
   passwordProtection: z.nullable(
@@ -3146,6 +3161,7 @@ export const UpdateProjectBlock$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  abuseAgentRunId: types.optional(types.string()),
   action: UpdateProjectProjectsResponse200Action$inboundSchema,
   actor: types.optional(types.string()),
   caseId: types.optional(types.string()),
@@ -3381,6 +3397,7 @@ export const UpdateProjectBlockHistory4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  abuseAgentRunId: types.optional(types.string()),
   action: types.literal("route-unblocked"),
   actor: types.optional(types.string()),
   caseId: types.optional(types.string()),
@@ -3623,6 +3640,7 @@ export const UpdateProjectBlockHistory3$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  abuseAgentRunId: types.optional(types.string()),
   action: types.literal("route-blocked"),
   actor: types.optional(types.string()),
   caseId: types.optional(types.string()),
@@ -3654,6 +3672,7 @@ export const UpdateProjectBlockHistory2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  abuseAgentRunId: types.optional(types.string()),
   action: types.literal("unblocked"),
   actor: types.optional(types.string()),
   caseId: types.optional(types.string()),
@@ -3708,6 +3727,7 @@ export const UpdateProjectBlockHistory1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  abuseAgentRunId: types.optional(types.string()),
   action: types.literal("blocked"),
   actor: types.optional(types.string()),
   caseId: types.optional(types.string()),

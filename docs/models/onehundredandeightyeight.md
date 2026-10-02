@@ -5,28 +5,26 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndEightyEight } from "@vercel/sdk/models/sourceimages.js";
+import { OneHundredAndEightyEight } from "@vercel/sdk/models/lasteditedbyprincipal1.js";
 
 let value: OneHundredAndEightyEight = {
+  billingPlanId: "<id>",
   configurationId: "<id>",
   integrationId: "<id>",
-  integrationProductSlug: "<value>",
+  integrationName: "<value>",
   integrationSlug: "<value>",
-  resourceId: "<id>",
-  requestKind: "list_keys",
+  ownerId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `configurationId`                                            | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `errorCode`                                                  | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
-| `integrationId`                                              | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `integrationProductSlug`                                     | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `integrationSlug`                                            | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `resourceId`                                                 | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `pattern`                                                    | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
-| `requestKind`                                                | [models.PayloadRequestKind](../models/payloadrequestkind.md) | :heavy_check_mark:                                           | N/A                                                          |
-| `type`                                                       | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `billingPlanId`    | *string*           | :heavy_check_mark: | N/A                |
+| `billingPlanName`  | *string*           | :heavy_minus_sign: | N/A                |
+| `configurationId`  | *string*           | :heavy_check_mark: | N/A                |
+| `integrationId`    | *string*           | :heavy_check_mark: | N/A                |
+| `integrationName`  | *string*           | :heavy_check_mark: | N/A                |
+| `integrationSlug`  | *string*           | :heavy_check_mark: | N/A                |
+| `ownerId`          | *string*           | :heavy_check_mark: | N/A                |

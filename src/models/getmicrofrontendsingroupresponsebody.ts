@@ -103,17 +103,23 @@ import {
   GetMicrofrontendsInGroupTargets$inboundSchema,
   GetMicrofrontendsInGroupTier,
   GetMicrofrontendsInGroupTier$inboundSchema,
-  GetMicrofrontendsInGroupTo,
-  GetMicrofrontendsInGroupTo$inboundSchema,
+  GetMicrofrontendsInGroupTo1,
+  GetMicrofrontendsInGroupTo1$inboundSchema,
+  GetMicrofrontendsInGroupTo2,
+  GetMicrofrontendsInGroupTo2$inboundSchema,
   GetMicrofrontendsInGroupTracing,
   GetMicrofrontendsInGroupTracing$inboundSchema,
   GetMicrofrontendsInGroupTrustedIps,
   GetMicrofrontendsInGroupTrustedIps$inboundSchema,
-} from "./getmicrofrontendsingroupto.js";
+} from "./getmicrofrontendsingroupto1.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
+export type GetMicrofrontendsInGroupTo =
+  | GetMicrofrontendsInGroupTo1
+  | GetMicrofrontendsInGroupTo2;
+
 export type GetMicrofrontendsInGroupOidcProviders = {
-  to: GetMicrofrontendsInGroupTo;
+  to: GetMicrofrontendsInGroupTo1 | GetMicrofrontendsInGroupTo2;
   claims: { [k: string]: Array<string> };
   label?: string | undefined;
 };
@@ -198,7 +204,7 @@ export type GetMicrofrontendsInGroupMicrofrontendsTo =
   | GetMicrofrontendsInGroupToMicrofrontends2;
 
 /**
- * Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets.
+ * Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets. An empty array denies all access and is only allowed for the current project.
  */
 export type GetMicrofrontendsInGroupCustomAllow = {
   from: GetMicrofrontendsInGroupFrom1 | GetMicrofrontendsInGroupFrom2;
@@ -209,7 +215,7 @@ export type GetMicrofrontendsInGroupCustomAllow = {
 
 export type GetMicrofrontendsInGroupMicrofrontendsProjects = {
   /**
-   * Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets.
+   * Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets. An empty array denies all access and is only allowed for the current project.
    */
   customAllow?: Array<GetMicrofrontendsInGroupCustomAllow> | undefined;
   label?: string | undefined;
@@ -217,7 +223,7 @@ export type GetMicrofrontendsInGroupMicrofrontendsProjects = {
 
 export type GetMicrofrontendsInGroupTrustedSources = {
   /**
-   * Allow same-team Vercel CI access to preview deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value.
+   * Allow same-team Vercel CI access to preview and production deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value.
    */
   enableVercelCiSameRepository?: boolean | undefined;
   oidcProviders?:
@@ -416,12 +422,35 @@ export type GetMicrofrontendsInGroupResponseBody = {
 };
 
 /** @internal */
+export const GetMicrofrontendsInGroupTo$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupTo,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  GetMicrofrontendsInGroupTo1$inboundSchema,
+  GetMicrofrontendsInGroupTo2$inboundSchema,
+]);
+
+export function getMicrofrontendsInGroupToFromJSON(
+  jsonString: string,
+): SafeParseResult<GetMicrofrontendsInGroupTo, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetMicrofrontendsInGroupTo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMicrofrontendsInGroupTo' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetMicrofrontendsInGroupOidcProviders$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupOidcProviders,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  to: GetMicrofrontendsInGroupTo$inboundSchema,
+  to: smartUnion([
+    GetMicrofrontendsInGroupTo1$inboundSchema,
+    GetMicrofrontendsInGroupTo2$inboundSchema,
+  ]),
   claims: z.record(z.array(types.string())),
   label: types.optional(types.string()),
 });

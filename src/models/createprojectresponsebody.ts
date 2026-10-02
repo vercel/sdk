@@ -10,14 +10,14 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
+  Abuse,
+  Abuse$inboundSchema,
   Alias,
   Alias$inboundSchema,
   Analytics,
   Analytics$inboundSchema,
   Blobs,
   Blobs$inboundSchema,
-  CreateProjectAbuse,
-  CreateProjectAbuse$inboundSchema,
   CreateProjectConnectConfigurations,
   CreateProjectConnectConfigurations$inboundSchema,
   CreateProjectCreator,
@@ -68,8 +68,6 @@ import {
   CreateProjectProjectsBuilds$inboundSchema,
   CreateProjectProjectsChecksConclusion,
   CreateProjectProjectsChecksConclusion$inboundSchema,
-  CreateProjectProjectsChecksState,
-  CreateProjectProjectsChecksState$inboundSchema,
   CreateProjectProjectsFramework,
   CreateProjectProjectsFramework$inboundSchema,
   CreateProjectProjectsResourceConfig,
@@ -112,8 +110,17 @@ import {
   RollingRelease$inboundSchema,
   SpeedInsights,
   SpeedInsights$inboundSchema,
-} from "./createprojectprojectschecksstate.js";
+} from "./createprojectprojectschecksconclusion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const CreateProjectProjectsChecksState = {
+  Completed: "completed",
+  Registered: "registered",
+  Running: "running",
+} as const;
+export type CreateProjectProjectsChecksState = ClosedEnum<
+  typeof CreateProjectProjectsChecksState
+>;
 
 export type CreateProjectProjectsResponseCreator = {
   email: string;
@@ -435,7 +442,7 @@ export type CreateProjectProjectsTo =
   | CreateProjectToProjects2;
 
 /**
- * Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets.
+ * Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets. An empty array denies all access and is only allowed for the current project.
  */
 export type CreateProjectCustomAllow = {
   from: CreateProjectFrom1 | CreateProjectFrom2;
@@ -444,7 +451,7 @@ export type CreateProjectCustomAllow = {
 
 export type CreateProjectProjects = {
   /**
-   * Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets.
+   * Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets. An empty array denies all access and is only allowed for the current project.
    */
   customAllow?: Array<CreateProjectCustomAllow> | undefined;
   label?: string | undefined;
@@ -452,7 +459,7 @@ export type CreateProjectProjects = {
 
 export type CreateProjectTrustedSources = {
   /**
-   * Allow same-team Vercel CI access to preview deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value.
+   * Allow same-team Vercel CI access to preview and production deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value.
    */
   enableVercelCiSameRepository?: boolean | undefined;
   oidcProviders?:
@@ -507,7 +514,7 @@ export type CreateProjectWebAnalytics = {
  * The project was successfuly created
  */
 export type CreateProjectResponseBody = {
-  abuse?: CreateProjectAbuse | undefined;
+  abuse?: Abuse | undefined;
   accountId: string;
   alias: Array<Alias>;
   analytics?: Analytics | undefined;
@@ -623,6 +630,11 @@ export type CreateProjectResponseBody = {
   v0Created?: boolean | undefined;
   webAnalytics?: CreateProjectWebAnalytics | undefined;
 };
+
+/** @internal */
+export const CreateProjectProjectsChecksState$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectProjectsChecksState
+> = z.nativeEnum(CreateProjectProjectsChecksState);
 
 /** @internal */
 export const CreateProjectProjectsResponseCreator$inboundSchema: z.ZodType<
@@ -1302,7 +1314,7 @@ export const CreateProjectResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  abuse: types.optional(CreateProjectAbuse$inboundSchema),
+  abuse: types.optional(Abuse$inboundSchema),
   accountId: types.string(),
   alias: z.array(Alias$inboundSchema),
   analytics: types.optional(Analytics$inboundSchema),

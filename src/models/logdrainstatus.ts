@@ -1317,6 +1317,7 @@ export type CreateIntegrationStoreDirectIntegrationsCapabilities = {
   importResource?: boolean | undefined;
   maxAllowedTeams?: number | undefined;
   mcp?: boolean | undefined;
+  mcpConfiguration?: boolean | undefined;
   mcpReadonly?: boolean | undefined;
   nativeImportResource?: boolean | undefined;
   provisioning?: boolean | undefined;
@@ -4859,6 +4860,7 @@ export const CreateIntegrationStoreDirectIntegrationsCapabilities$inboundSchema:
     importResource: types.optional(types.boolean()),
     maxAllowedTeams: types.optional(types.number()),
     mcp: types.optional(types.boolean()),
+    mcpConfiguration: types.optional(types.boolean()),
     mcpReadonly: types.optional(types.boolean()),
     nativeImportResource: types.optional(types.boolean()),
     provisioning: types.optional(types.boolean()),

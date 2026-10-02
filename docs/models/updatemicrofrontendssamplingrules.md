@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsSamplingRules } from "@vercel/sdk/models/updatemicrofrontendsto.js";
+import { UpdateMicrofrontendsSamplingRules } from "@vercel/sdk/models/updatemicrofrontendsto1.js";
 
 let value: UpdateMicrofrontendsSamplingRules = {
   rate: 3084.24,

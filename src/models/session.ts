@@ -147,6 +147,10 @@ export type Session = {
    */
   updatedAt: number;
   /**
+   * Whether this sandbox is managed by v0 on the customer's behalf.
+   */
+  v0?: boolean | undefined;
+  /**
    * Number of vCPUs allocated to this sandbox.
    */
   vcpus: number;
@@ -210,6 +214,7 @@ export const Session$inboundSchema: z.ZodType<Session, z.ZodTypeDef, unknown> =
     stoppedAt: types.optional(types.number()),
     timeout: types.number(),
     updatedAt: types.number(),
+    v0: types.optional(types.boolean()),
     vcpus: types.number(),
   });
 

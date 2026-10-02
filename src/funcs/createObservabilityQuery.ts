@@ -149,7 +149,7 @@ async function $do(
     | SDKValidationError
   >(
     M.json(200, CreateObservabilityQueryResponseBody$inboundSchema),
-    M.fail([400, 401, 402, 403, 408, 410, 413, 422, "4XX"]),
+    M.fail([400, 401, 402, 403, 404, 408, 410, 413, 422, "4XX"]),
     M.fail([500, 503, "5XX"]),
   )(response, req);
   if (!result.ok) {

@@ -1,11 +1,9 @@
 # History
 
-(scanner history). Since November 2021. First element is newest.
-
 ## Example Usage
 
 ```typescript
-import { History } from "@vercel/sdk/models/sourceimages.js";
+import { History } from "@vercel/sdk/models/createprojectcontenthint8.js";
 
 let value: History = {
   at: 4164.1,

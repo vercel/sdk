@@ -5,7 +5,7 @@ Requested and authorized operations when `checkPermissions` is used. Legacy `inc
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarPermissions } from "@vercel/sdk/models/uploadprojectavataroidcproviders.js";
+import { UploadProjectAvatarPermissions } from "@vercel/sdk/models/uploadprojectavatarto.js";
 
 let value: UploadProjectAvatarPermissions = {};
 ```

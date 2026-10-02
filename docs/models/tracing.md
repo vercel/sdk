@@ -1,21 +1,19 @@
 # Tracing
 
+Tracing configuration for this project
+
 ## Example Usage
 
 ```typescript
-import { Tracing } from "@vercel/sdk/models/lasteditedbyprincipal2.js";
+import { Tracing } from "@vercel/sdk/models/updateprojectcreatoruser.js";
 
-let value: Tracing = {
-  blockReason: "hard_blocked",
-  updatedAt: 6097.09,
-};
+let value: Tracing = {};
 ```
 
 ## Fields
 
-| Field                                                                                                                                        | Type                                                                                                                                         | Required                                                                                                                                     | Description                                                                                                                                  |
-| -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| `blockedFrom`                                                                                                                                | *number*                                                                                                                                     | :heavy_minus_sign:                                                                                                                           | N/A                                                                                                                                          |
-| `blockedUntil`                                                                                                                               | *number*                                                                                                                                     | :heavy_minus_sign:                                                                                                                           | N/A                                                                                                                                          |
-| `blockReason`                                                                                                                                | [models.UserEventPayload179NewOwnerFeatureBlocksTracingBlockReason](../models/usereventpayload179newownerfeatureblockstracingblockreason.md) | :heavy_check_mark:                                                                                                                           | N/A                                                                                                                                          |
-| `updatedAt`                                                                                                                                  | *number*                                                                                                                                     | :heavy_check_mark:                                                                                                                           | N/A                                                                                                                                          |
+| Field                                                | Type                                                 | Required                                             | Description                                          |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| `domains`                                            | *string*                                             | :heavy_minus_sign:                                   | Comma-separated list of drain endpoint domains       |
+| `ignorePaths`                                        | *string*[]                                           | :heavy_minus_sign:                                   | Paths to ignore for tracing                          |
+| `samplingRules`                                      | [models.SamplingRules](../models/samplingrules.md)[] | :heavy_minus_sign:                                   | Sampling rules for trace collection                  |

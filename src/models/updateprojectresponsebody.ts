@@ -81,13 +81,19 @@ import {
   UpdateProjectProjectsPasswordProtection$inboundSchema,
   UpdateProjectProjectsResponseBuildMachineElasticReason,
   UpdateProjectProjectsResponseBuildMachineElasticReason$inboundSchema,
-  UpdateProjectProjectsResponseBuildMachineElasticTransition,
-  UpdateProjectProjectsResponseBuildMachineElasticTransition$inboundSchema,
+  UpdateProjectProjectsResponseDirection,
+  UpdateProjectProjectsResponseDirection$inboundSchema,
   UpdateProjectProtectionBypass,
   UpdateProjectProtectionBypass$inboundSchema,
   UpdateProjectProtectionConfig,
   UpdateProjectProtectionConfig$inboundSchema,
-} from "./updateprojectprojectsresponsebuildmachineelastictransition.js";
+} from "./updateprojectprojectsresponsedirection.js";
+
+export type UpdateProjectProjectsResponseBuildMachineElasticTransition = {
+  algorithmVersion: string;
+  at: number;
+  direction: UpdateProjectProjectsResponseDirection;
+};
 
 export const UpdateProjectProjectsResponseBuildMachineSelection = {
   Elastic: "elastic",
@@ -927,7 +933,7 @@ export type UpdateProjectSamplingRules = {
   requestPath?: string | undefined;
 };
 
-export type UpdateProjectProjectsTracing = {
+export type UpdateProjectTracing = {
   domains?: string | undefined;
   ignorePaths?: Array<string> | undefined;
   samplingRules?: Array<UpdateProjectSamplingRules> | undefined;
@@ -1108,7 +1114,7 @@ export type UpdateProjectProjectsResponseTo =
   | UpdateProjectToProjectsResponse2;
 
 /**
- * Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets.
+ * Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets. An empty array denies all access and is only allowed for the current project.
  */
 export type UpdateProjectCustomAllow = {
   from: UpdateProjectFrom1 | UpdateProjectFrom2;
@@ -1117,7 +1123,7 @@ export type UpdateProjectCustomAllow = {
 
 export type UpdateProjectProjectsProjects = {
   /**
-   * Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets.
+   * Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets. An empty array denies all access and is only allowed for the current project.
    */
   customAllow?: Array<UpdateProjectCustomAllow> | undefined;
   label?: string | undefined;
@@ -1125,7 +1131,7 @@ export type UpdateProjectProjectsProjects = {
 
 export type UpdateProjectTrustedSources = {
   /**
-   * Allow same-team Vercel CI access to preview deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value.
+   * Allow same-team Vercel CI access to preview and production deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value.
    */
   enableVercelCiSameRepository?: boolean | undefined;
   oidcProviders?:
@@ -1286,7 +1292,7 @@ export type UpdateProjectResponseBody = {
   staticIps?: UpdateProjectProjectsStaticIps | undefined;
   targets?: { [k: string]: UpdateProjectTargets | null } | undefined;
   tier?: UpdateProjectTier | undefined;
-  tracing?: UpdateProjectProjectsTracing | undefined;
+  tracing?: UpdateProjectTracing | undefined;
   transferCompletedAt?: number | undefined;
   transferredFromAccountId?: string | undefined;
   transferStartedAt?: number | undefined;
@@ -1303,6 +1309,33 @@ export type UpdateProjectResponseBody = {
   v0Created?: boolean | undefined;
   webAnalytics?: UpdateProjectWebAnalytics | undefined;
 };
+
+/** @internal */
+export const UpdateProjectProjectsResponseBuildMachineElasticTransition$inboundSchema:
+  z.ZodType<
+    UpdateProjectProjectsResponseBuildMachineElasticTransition,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    algorithmVersion: types.string(),
+    at: types.number(),
+    direction: UpdateProjectProjectsResponseDirection$inboundSchema,
+  });
+
+export function updateProjectProjectsResponseBuildMachineElasticTransitionFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateProjectProjectsResponseBuildMachineElasticTransition,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateProjectProjectsResponseBuildMachineElasticTransition$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectProjectsResponseBuildMachineElasticTransition' from JSON`,
+  );
+}
 
 /** @internal */
 export const UpdateProjectProjectsResponseBuildMachineSelection$inboundSchema:
@@ -1363,7 +1396,9 @@ export const UpdateProjectProjectsResourceConfig$inboundSchema: z.ZodType<
     UpdateProjectProjectsResponseBuildMachineElasticReason$inboundSchema,
   ),
   buildMachineElasticTransition: types.optional(
-    UpdateProjectProjectsResponseBuildMachineElasticTransition$inboundSchema,
+    z.lazy(() =>
+      UpdateProjectProjectsResponseBuildMachineElasticTransition$inboundSchema
+    ),
   ),
   buildMachineSelection: types.optional(
     UpdateProjectProjectsResponseBuildMachineSelection$inboundSchema,
@@ -2339,8 +2374,8 @@ export function updateProjectSamplingRulesFromJSON(
 }
 
 /** @internal */
-export const UpdateProjectProjectsTracing$inboundSchema: z.ZodType<
-  UpdateProjectProjectsTracing,
+export const UpdateProjectTracing$inboundSchema: z.ZodType<
+  UpdateProjectTracing,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -2351,13 +2386,13 @@ export const UpdateProjectProjectsTracing$inboundSchema: z.ZodType<
   ),
 });
 
-export function updateProjectProjectsTracingFromJSON(
+export function updateProjectTracingFromJSON(
   jsonString: string,
-): SafeParseResult<UpdateProjectProjectsTracing, SDKValidationError> {
+): SafeParseResult<UpdateProjectTracing, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UpdateProjectProjectsTracing$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateProjectProjectsTracing' from JSON`,
+    (x) => UpdateProjectTracing$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectTracing' from JSON`,
   );
 }
 
@@ -2960,9 +2995,7 @@ export const UpdateProjectResponseBody$inboundSchema: z.ZodType<
     z.record(types.nullable(z.lazy(() => UpdateProjectTargets$inboundSchema))),
   ),
   tier: types.optional(UpdateProjectTier$inboundSchema),
-  tracing: types.optional(
-    z.lazy(() => UpdateProjectProjectsTracing$inboundSchema),
-  ),
+  tracing: types.optional(z.lazy(() => UpdateProjectTracing$inboundSchema)),
   transferCompletedAt: types.optional(types.number()),
   transferredFromAccountId: types.optional(types.string()),
   transferStartedAt: types.optional(types.number()),

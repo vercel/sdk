@@ -24,8 +24,12 @@ const value: models.UpdateDeploymentCheckRunSelection2 = {
 
 ```typescript
 const value: models.UpdateDeploymentCheckRunSelection3 = {
-  job: "Investor Operations Officer",
-  kind: "task",
+  filters: [
+    "<value 1>",
+    "<value 2>",
+  ],
+  job: "Turborepo",
+  kind: "turborepo",
   task: "<value>",
 };
 ```

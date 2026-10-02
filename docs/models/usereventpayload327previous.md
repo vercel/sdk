@@ -1,0 +1,15 @@
+# UserEventPayload327Previous
+
+## Example Usage
+
+```typescript
+import { UserEventPayload327Previous } from "@vercel/sdk/models/twohundredandninetyfive.js";
+
+let value: UserEventPayload327Previous = {};
+```
+
+## Fields
+
+| Field                                                      | Type                                                       | Required                                                   | Description                                                |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `issuerMode`                                               | [models.PayloadIssuerMode](../models/payloadissuermode.md) | :heavy_minus_sign:                                         | N/A                                                        |

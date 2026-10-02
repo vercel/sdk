@@ -16,6 +16,7 @@ import { globalConfigGetEdgeConfigs } from "../funcs/globalConfigGetEdgeConfigs.
 import { globalConfigGetEdgeConfigSchema } from "../funcs/globalConfigGetEdgeConfigSchema.js";
 import { globalConfigGetEdgeConfigToken } from "../funcs/globalConfigGetEdgeConfigToken.js";
 import { globalConfigGetEdgeConfigTokens } from "../funcs/globalConfigGetEdgeConfigTokens.js";
+import { globalConfigPatchEdgeConfigItems } from "../funcs/globalConfigPatchEdgeConfigItems.js";
 import { globalConfigPatchEdgeConfigSchema } from "../funcs/globalConfigPatchEdgeConfigSchema.js";
 import { globalConfigRestoreEdgeConfigBackup } from "../funcs/globalConfigRestoreEdgeConfigBackup.js";
 import { globalConfigUpdateEdgeConfig } from "../funcs/globalConfigUpdateEdgeConfig.js";
@@ -58,6 +59,10 @@ import { GetEdgeConfigTokensRequest } from "../models/getedgeconfigtokensop.js";
 import { GlobalConfigItem } from "../models/globalconfigitem.js";
 import { GlobalConfigToken } from "../models/globalconfigtoken.js";
 import {
+  PatchEdgeConfigItemsRequest,
+  PatchEdgeConfigItemsResponseBody,
+} from "../models/patchedgeconfigitemsop.js";
+import {
   PatchEdgeConfigSchemaRequest,
   PatchEdgeConfigSchemaResponseBody,
 } from "../models/patchedgeconfigschemaop.js";
@@ -81,7 +86,7 @@ export class GlobalConfig extends ClientSDK {
   async getEdgeConfigs(
     request: GetEdgeConfigsRequest,
     options?: RequestOptions,
-  ): Promise<GetEdgeConfigsResponseBody> {
+  ): Promise<Array<GetEdgeConfigsResponseBody>> {
     return unwrapAsync(globalConfigGetEdgeConfigs(
       this,
       request,
@@ -175,6 +180,23 @@ export class GlobalConfig extends ClientSDK {
   }
 
   /**
+   * Update Global Config items in batch
+   *
+   * @remarks
+   * Update multiple Global Config Items in batch.
+   */
+  async patchEdgeConfigItems(
+    request: PatchEdgeConfigItemsRequest,
+    options?: RequestOptions,
+  ): Promise<PatchEdgeConfigItemsResponseBody> {
+    return unwrapAsync(globalConfigPatchEdgeConfigItems(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Get Global Config schema
    *
    * @remarks
@@ -234,7 +256,7 @@ export class GlobalConfig extends ClientSDK {
   async getEdgeConfigItem(
     request: GetEdgeConfigItemRequest,
     options?: RequestOptions,
-  ): Promise<GlobalConfigItem> {
+  ): Promise<GlobalConfigItem | undefined> {
     return unwrapAsync(globalConfigGetEdgeConfigItem(
       this,
       request,

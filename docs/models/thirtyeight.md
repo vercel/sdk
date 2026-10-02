@@ -5,18 +5,18 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThirtyEight } from "@vercel/sdk/models/userevent.js";
+import { ThirtyEight } from "@vercel/sdk/models/usereventvia4type.js";
 
 let value: ThirtyEight = {
-  virtualModelConfig: {
+  rule: {
     id: "<id>",
+    type: "<value>",
   },
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `changedFields`                                                            | [models.ChangedFields](../models/changedfields.md)[]                       | :heavy_minus_sign:                                                         | N/A                                                                        |
-| `virtualModelConfig`                                                       | [models.PayloadVirtualModelConfig](../models/payloadvirtualmodelconfig.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `rule`                                         | [models.PayloadRule](../models/payloadrule.md) | :heavy_check_mark:                             | N/A                                            |

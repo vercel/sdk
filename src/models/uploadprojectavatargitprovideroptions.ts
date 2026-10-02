@@ -49,6 +49,10 @@ export type UploadProjectAvatarRegisteredShaBlock = {
 };
 
 export type UploadProjectAvatarBlock = {
+  /**
+   * Since October 2026. The abuse agent run whose verdict led to this block. Absent on blocks made before the field existed, even agent-led ones.
+   */
+  abuseAgentRunId?: string | undefined;
   action: UploadProjectAvatarProjectsResponseAction;
   actor?: string | undefined;
   caseId?: string | undefined;
@@ -126,6 +130,10 @@ export type UploadProjectAvatarBlockHistoryProjectsRoute =
   | UploadProjectAvatarRouteProjects2;
 
 export type UploadProjectAvatarBlockHistory4 = {
+  /**
+   * Since October 2026. The abuse agent run whose verdict led to this block. Absent on blocks made before the field existed, even agent-led ones.
+   */
+  abuseAgentRunId?: string | undefined;
   action: "route-unblocked";
   actor?: string | undefined;
   caseId?: string | undefined;
@@ -204,6 +212,10 @@ export type UploadProjectAvatarBlockHistoryRoute =
   | UploadProjectAvatarRoute2;
 
 export type UploadProjectAvatarBlockHistory3 = {
+  /**
+   * Since October 2026. The abuse agent run whose verdict led to this block. Absent on blocks made before the field existed, even agent-led ones.
+   */
+  abuseAgentRunId?: string | undefined;
   action: "route-blocked";
   actor?: string | undefined;
   caseId?: string | undefined;
@@ -220,6 +232,10 @@ export type UploadProjectAvatarBlockHistory3 = {
 };
 
 export type UploadProjectAvatarBlockHistory2 = {
+  /**
+   * Since October 2026. The abuse agent run whose verdict led to this block. Absent on blocks made before the field existed, even agent-led ones.
+   */
+  abuseAgentRunId?: string | undefined;
   action: "unblocked";
   actor?: string | undefined;
   caseId?: string | undefined;
@@ -243,6 +259,10 @@ export type UploadProjectAvatarBlockHistoryRegisteredShaBlock = {
 };
 
 export type UploadProjectAvatarBlockHistory1 = {
+  /**
+   * Since October 2026. The abuse agent run whose verdict led to this block. Absent on blocks made before the field existed, even agent-led ones.
+   */
+  abuseAgentRunId?: string | undefined;
   action: "blocked";
   actor?: string | undefined;
   caseId?: string | undefined;
@@ -1609,6 +1629,7 @@ export const UploadProjectAvatarBlock$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  abuseAgentRunId: types.optional(types.string()),
   action: UploadProjectAvatarProjectsResponseAction$inboundSchema,
   actor: types.optional(types.string()),
   caseId: types.optional(types.string()),
@@ -1870,6 +1891,7 @@ export const UploadProjectAvatarBlockHistory4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  abuseAgentRunId: types.optional(types.string()),
   action: types.literal("route-unblocked"),
   actor: types.optional(types.string()),
   caseId: types.optional(types.string()),
@@ -2125,6 +2147,7 @@ export const UploadProjectAvatarBlockHistory3$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  abuseAgentRunId: types.optional(types.string()),
   action: types.literal("route-blocked"),
   actor: types.optional(types.string()),
   caseId: types.optional(types.string()),
@@ -2156,6 +2179,7 @@ export const UploadProjectAvatarBlockHistory2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  abuseAgentRunId: types.optional(types.string()),
   action: types.literal("unblocked"),
   actor: types.optional(types.string()),
   caseId: types.optional(types.string()),
@@ -2210,6 +2234,7 @@ export const UploadProjectAvatarBlockHistory1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  abuseAgentRunId: types.optional(types.string()),
   action: types.literal("blocked"),
   actor: types.optional(types.string()),
   caseId: types.optional(types.string()),

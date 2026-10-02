@@ -5,17 +5,16 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndEightyFour } from "@vercel/sdk/models/usereventpayload354geolocationnames.js";
+import { ThreeHundredAndEightyFour } from "@vercel/sdk/models/threehundredandsixty.js";
 
 let value: ThreeHundredAndEightyFour = {
-  enabled: "default-force",
-  environment: "preview",
+  enabled: true,
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `enabled`                                                                      | [models.Enabled](../models/enabled.md)                                         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `environment`                                                                  | [models.UserEventPayloadEnvironment](../models/usereventpayloadenvironment.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `enabled`                                                                | *boolean*                                                                | :heavy_check_mark:                                                       | N/A                                                                      |
+| `scope`                                                                  | [models.UserEventPayload384Scope](../models/usereventpayload384scope.md) | :heavy_minus_sign:                                                       | N/A                                                                      |

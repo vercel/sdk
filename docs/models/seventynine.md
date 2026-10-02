@@ -5,21 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { SeventyNine } from "@vercel/sdk/models/fiftysix.js";
+import { SeventyNine } from "@vercel/sdk/models/before.js";
 
 let value: SeventyNine = {
-  cns: [
-    "<value 1>",
-  ],
-  custom: true,
-  id: "<id>",
+  bulkRedirectsLimit: 3193.54,
+  prevBulkRedirectsLimit: 3187.48,
+  project: {
+    id: "<id>",
+    name: "<value>",
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `cns`              | *string*[]         | :heavy_check_mark: | N/A                |
-| `custom`           | *boolean*          | :heavy_check_mark: | N/A                |
-| `id`               | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `bulkRedirectsLimit`                                                   | *number*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `prevBulkRedirectsLimit`                                               | *number*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `project`                                                              | [models.UserEventPayloadProject](../models/usereventpayloadproject.md) | :heavy_check_mark:                                                     | N/A                                                                    |

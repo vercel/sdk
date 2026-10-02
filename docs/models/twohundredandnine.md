@@ -5,28 +5,18 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndNine } from "@vercel/sdk/models/sourceimages.js";
+import { TwoHundredAndNine } from "@vercel/sdk/models/usereventredisblockreason.js";
 
 let value: TwoHundredAndNine = {
-  group: {
-    id: "<id>",
-    name: "<value>",
-    slug: "<value>",
-  },
-  prev: {
-    project: {},
-  },
-  project: {
-    id: "<id>",
-    name: "<value>",
-  },
+  enabled: false,
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `group`                                                                      | [models.PayloadGroup](../models/payloadgroup.md)                             | :heavy_check_mark:                                                           | N/A                                                                          |
-| `prev`                                                                       | [models.PayloadPrev](../models/payloadprev.md)                               | :heavy_check_mark:                                                           | N/A                                                                          |
-| `project`                                                                    | [models.UserEventPayload209Project](../models/usereventpayload209project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field                          | Type                           | Required                       | Description                    |
+| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
+| `allowedIntegrationCount`      | *number*                       | :heavy_minus_sign:             | N/A                            |
+| `allowedIntegrationIds`        | *string*[]                     | :heavy_minus_sign:             | N/A                            |
+| `enabled`                      | *boolean*                      | :heavy_check_mark:             | N/A                            |
+| `resourceOnlyIntegrationCount` | *number*                       | :heavy_minus_sign:             | N/A                            |

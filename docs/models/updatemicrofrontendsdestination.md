@@ -5,7 +5,7 @@ Which tracing destination this rule applies to. `internal` is the hidden Vercel 
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsDestination } from "@vercel/sdk/models/updatemicrofrontendsto.js";
+import { UpdateMicrofrontendsDestination } from "@vercel/sdk/models/updatemicrofrontendsto1.js";
 
 let value: UpdateMicrofrontendsDestination = "internal";
 ```

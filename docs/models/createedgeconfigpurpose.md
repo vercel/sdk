@@ -3,19 +3,19 @@
 
 ## Supported Types
 
-### `models.CreateEdgeConfigPurpose1`
+### `models.Purpose1`
 
 ```typescript
-const value: models.CreateEdgeConfigPurpose1 = {
+const value: models.Purpose1 = {
   projectId: "<id>",
   type: "flags",
 };
 ```
 
-### `models.CreateEdgeConfigPurpose2`
+### `models.Purpose2`
 
 ```typescript
-const value: models.CreateEdgeConfigPurpose2 = {
+const value: models.Purpose2 = {
   resourceId: "<id>",
   type: "experimentation",
 };

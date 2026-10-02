@@ -68,8 +68,6 @@ import {
   UploadProjectAvatarMicrofrontends$inboundSchema,
   UploadProjectAvatarNodeVersion,
   UploadProjectAvatarNodeVersion$inboundSchema,
-  UploadProjectAvatarOidcProviders,
-  UploadProjectAvatarOidcProviders$inboundSchema,
   UploadProjectAvatarOidcTokenConfig,
   UploadProjectAvatarOidcTokenConfig$inboundSchema,
   UploadProjectAvatarOptionsAllowlist,
@@ -106,11 +104,19 @@ import {
   UploadProjectAvatarTargets$inboundSchema,
   UploadProjectAvatarTier,
   UploadProjectAvatarTier$inboundSchema,
+  UploadProjectAvatarTo,
+  UploadProjectAvatarTo$inboundSchema,
   UploadProjectAvatarTracing,
   UploadProjectAvatarTracing$inboundSchema,
   UploadProjectAvatarTrustedIps,
   UploadProjectAvatarTrustedIps$inboundSchema,
-} from "./uploadprojectavataroidcproviders.js";
+} from "./uploadprojectavatarto.js";
+
+export type UploadProjectAvatarOidcProviders = {
+  to: UploadProjectAvatarTo;
+  claims: { [k: string]: Array<string> };
+  label?: string | undefined;
+};
 
 export const UploadProjectAvatarFromProjectsPreset = {
   AllCustom: "all-custom",
@@ -210,7 +216,7 @@ export type UploadProjectAvatarProjects = {
 
 export type UploadProjectAvatarTrustedSources = {
   /**
-   * Allow same-team Vercel CI access to preview deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value.
+   * Allow same-team Vercel CI access to preview and production deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value.
    */
   enableVercelCiSameRepository?: boolean | undefined;
   oidcProviders?:
@@ -382,6 +388,27 @@ export type UploadProjectAvatarResponseBody = {
   v0Created?: boolean | undefined;
   webAnalytics?: UploadProjectAvatarWebAnalytics | undefined;
 };
+
+/** @internal */
+export const UploadProjectAvatarOidcProviders$inboundSchema: z.ZodType<
+  UploadProjectAvatarOidcProviders,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  to: UploadProjectAvatarTo$inboundSchema,
+  claims: z.record(z.array(types.string())),
+  label: types.optional(types.string()),
+});
+
+export function uploadProjectAvatarOidcProvidersFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadProjectAvatarOidcProviders, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadProjectAvatarOidcProviders$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadProjectAvatarOidcProviders' from JSON`,
+  );
+}
 
 /** @internal */
 export const UploadProjectAvatarFromProjectsPreset$inboundSchema:
@@ -582,7 +609,9 @@ export const UploadProjectAvatarTrustedSources$inboundSchema: z.ZodType<
 > = z.object({
   enableVercelCiSameRepository: types.optional(types.boolean()),
   oidcProviders: types.optional(
-    z.record(z.array(UploadProjectAvatarOidcProviders$inboundSchema)),
+    z.record(z.array(z.lazy(() =>
+      UploadProjectAvatarOidcProviders$inboundSchema
+    ))),
   ),
   projects: types.optional(
     z.record(z.lazy(() => UploadProjectAvatarProjects$inboundSchema)),

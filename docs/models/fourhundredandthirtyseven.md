@@ -5,24 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndThirtySeven } from "@vercel/sdk/models/fourhundredandseventeen.js";
+import { FourHundredAndThirtySeven } from "@vercel/sdk/models/fourhundredandtwentyone.js";
 
 let value: FourHundredAndThirtySeven = {
-  next: {
-    enabled: true,
-    totpVerified: true,
-  },
-  previous: {
-    enabled: true,
-    totpVerified: false,
-  },
+  actorId: "<id>",
+  actorType: "admin",
+  autoBlockPrevented: true,
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `method`                                                                       | [models.PayloadMethod](../models/payloadmethod.md)                             | :heavy_minus_sign:                                                             | N/A                                                                            |
-| `next`                                                                         | [models.UserEventPayload437Next](../models/usereventpayload437next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload437Previous](../models/usereventpayload437previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `actorId`                                                                        | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
+| `actorType`                                                                      | [models.UserEventPayload437ActorType](../models/usereventpayload437actortype.md) | :heavy_check_mark:                                                               | N/A                                                                              |
+| `autoBlockPrevented`                                                             | *boolean*                                                                        | :heavy_check_mark:                                                               | N/A                                                                              |
+| `preventUntil`                                                                   | *number*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `reason`                                                                         | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |

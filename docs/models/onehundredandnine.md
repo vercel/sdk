@@ -5,27 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndNine } from "@vercel/sdk/models/fiftysix.js";
+import { OneHundredAndNine } from "@vercel/sdk/models/before.js";
 
 let value: OneHundredAndNine = {
-  job: {
-    deployHook: {
-      createdAt: 3393.49,
-      id: "<id>",
-      name: "<value>",
-      ref: "<value>",
-    },
-    state: "Ohio",
+  oldPasswordProtection: {
+    deploymentType: "prod_deployment_urls_and_all_previews",
   },
-  project: {
-    name: "<value>",
+  passwordProtection: {
+    deploymentType: "all_except_custom_domains",
   },
+  scope: "team",
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `job`                                                                        | [models.Job](../models/job.md)                                               | :heavy_check_mark:                                                           | N/A                                                                          |
-| `project`                                                                    | [models.UserEventPayload109Project](../models/usereventpayload109project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `oldPasswordProtection`                                                                      | [models.OldPasswordProtection](../models/oldpasswordprotection.md)                           | :heavy_check_mark:                                                                           | N/A                                                                                          |
+| `passwordChanged`                                                                            | *boolean*                                                                                    | :heavy_minus_sign:                                                                           | N/A                                                                                          |
+| `passwordProtection`                                                                         | [models.UserEventPayloadPasswordProtection](../models/usereventpayloadpasswordprotection.md) | :heavy_check_mark:                                                                           | N/A                                                                                          |
+| `scope`                                                                                      | [models.PayloadScope](../models/payloadscope.md)                                             | :heavy_check_mark:                                                                           | N/A                                                                                          |

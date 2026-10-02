@@ -5,7 +5,7 @@
 ```typescript
 import {
   UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction,
-} from "@vercel/sdk/models/updatemicrofrontendsto.js";
+} from "@vercel/sdk/models/updatemicrofrontendsto1.js";
 
 let value:
   UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction =

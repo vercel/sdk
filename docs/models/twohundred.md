@@ -5,15 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundred } from "@vercel/sdk/models/sourceimages.js";
+import { TwoHundred } from "@vercel/sdk/models/usereventredisblockreason.js";
 
 let value: TwoHundred = {
-  provider: "bitbucket",
+  issuerId: "<id>",
+  issuerName: "<value>",
+  kind: "<value>",
+  policyKey: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `provider`                                                                     | [models.UserEventPayload200Provider](../models/usereventpayload200provider.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `issuerId`         | *string*           | :heavy_check_mark: | N/A                |
+| `issuerName`       | *string*           | :heavy_check_mark: | N/A                |
+| `kind`             | *string*           | :heavy_check_mark: | N/A                |
+| `policyKey`        | *string*           | :heavy_check_mark: | N/A                |

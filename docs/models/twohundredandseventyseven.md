@@ -5,15 +5,12 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSeventySeven } from "@vercel/sdk/models/twohundredandtwenty.js";
+import { TwoHundredAndSeventySeven } from "@vercel/sdk/models/twohundredandtwentyseven.js";
 
 let value: TwoHundredAndSeventySeven = {
-  next: {
-    functionDefaultTimeout: 2203.45,
-  },
-  previous: {
-    functionDefaultTimeout: 8810.21,
-  },
+  customEnvironmentId: "<id>",
+  customEnvironmentSlug: "<value>",
+  enableSchedulesByDefault: true,
   projectId: "<id>",
   projectName: "<value>",
 };
@@ -21,9 +18,10 @@ let value: TwoHundredAndSeventySeven = {
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `next`                                                                         | [models.UserEventPayload277Next](../models/usereventpayload277next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload277Previous](../models/usereventpayload277previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                      | Type                       | Required                   | Description                |
+| -------------------------- | -------------------------- | -------------------------- | -------------------------- |
+| `customEnvironmentId`      | *string*                   | :heavy_check_mark:         | N/A                        |
+| `customEnvironmentSlug`    | *string*                   | :heavy_check_mark:         | N/A                        |
+| `enableSchedulesByDefault` | *boolean*                  | :heavy_check_mark:         | N/A                        |
+| `projectId`                | *string*                   | :heavy_check_mark:         | N/A                        |
+| `projectName`              | *string*                   | :heavy_check_mark:         | N/A                        |

@@ -5,21 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFortyTwo } from "@vercel/sdk/models/twohundredandeightysix.js";
+import { ThreeHundredAndFortyTwo } from "@vercel/sdk/models/twohundredandninetyfive.js";
 
 let value: ThreeHundredAndFortyTwo = {
-  driveName: "<value>",
   projectId: "<id>",
   projectName: "<value>",
-  region: "<value>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `driveName`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `region`           | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `prevProjectWebAnalytics`                                              | [models.PrevProjectWebAnalytics](../models/prevprojectwebanalytics.md) | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `projectId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `projectName`                                                          | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `projectWebAnalytics`                                                  | [models.ProjectWebAnalytics](../models/projectwebanalytics.md)         | :heavy_minus_sign:                                                     | N/A                                                                    |

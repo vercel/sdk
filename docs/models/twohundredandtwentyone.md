@@ -5,21 +5,27 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndTwentyOne } from "@vercel/sdk/models/twohundredandtwenty.js";
+import { TwoHundredAndTwentyOne } from "@vercel/sdk/models/usereventredisblockreason.js";
 
 let value: TwoHundredAndTwentyOne = {
-  enforced: false,
+  enabled: false,
+  enforcedTeamIds: [
+    "<value 1>",
+  ],
   organizationId: "<id>",
-  organizationSlug: "<value>",
-  previousEnforced: true,
+  previousEnabled: false,
+  trigger: "directory_sync_updated",
+  unenforcedTeamIds: [],
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `enforced`         | *boolean*          | :heavy_check_mark: | N/A                |
-| `organizationId`   | *string*           | :heavy_check_mark: | N/A                |
-| `organizationSlug` | *string*           | :heavy_check_mark: | N/A                |
-| `previousEnforced` | *boolean*          | :heavy_check_mark: | N/A                |
+| Field                                  | Type                                   | Required                               | Description                            |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| `enabled`                              | *boolean*                              | :heavy_check_mark:                     | N/A                                    |
+| `enforcedTeamIds`                      | *string*[]                             | :heavy_check_mark:                     | N/A                                    |
+| `organizationId`                       | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `previousEnabled`                      | *boolean*                              | :heavy_check_mark:                     | N/A                                    |
+| `trigger`                              | [models.Trigger](../models/trigger.md) | :heavy_check_mark:                     | N/A                                    |
+| `unenforcedTeamIds`                    | *string*[]                             | :heavy_check_mark:                     | N/A                                    |

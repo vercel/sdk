@@ -5,24 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndEightyTwo } from "@vercel/sdk/models/sourceimages.js";
+import { OneHundredAndEightyTwo } from "@vercel/sdk/models/oldenvvar.js";
 
 let value: OneHundredAndEightyTwo = {
-  integration: {
-    configurationId: "<id>",
-    id: "<id>",
-    name: "<value>",
-    slug: "<value>",
-  },
-  originTeamId: "<id>",
-  originTeamName: "<value>",
+  configurationId: "<id>",
+  integrationId: "<id>",
+  integrationName: "<value>",
+  integrationSlug: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `integration`                                                | [models.PayloadIntegration](../models/payloadintegration.md) | :heavy_check_mark:                                           | N/A                                                          |
-| `originTeamId`                                               | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `originTeamName`                                             | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `configurationId`  | *string*           | :heavy_check_mark: | N/A                |
+| `integrationId`    | *string*           | :heavy_check_mark: | N/A                |
+| `integrationName`  | *string*           | :heavy_check_mark: | N/A                |
+| `integrationSlug`  | *string*           | :heavy_check_mark: | N/A                |

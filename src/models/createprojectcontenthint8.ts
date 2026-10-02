@@ -514,6 +514,10 @@ export type CreateProjectRegisteredShaBlock = {
 };
 
 export type Block = {
+  /**
+   * Since October 2026. The abuse agent run whose verdict led to this block. Absent on blocks made before the field existed, even agent-led ones.
+   */
+  abuseAgentRunId?: string | undefined;
   action: CreateProjectProjectsResponseAction;
   actor?: string | undefined;
   caseId?: string | undefined;
@@ -591,6 +595,10 @@ export type CreateProjectBlockHistoryRoute =
   | CreateProjectRoute2;
 
 export type BlockHistory4 = {
+  /**
+   * Since October 2026. The abuse agent run whose verdict led to this block. Absent on blocks made before the field existed, even agent-led ones.
+   */
+  abuseAgentRunId?: string | undefined;
   action: "route-unblocked";
   actor?: string | undefined;
   caseId?: string | undefined;
@@ -663,6 +671,10 @@ export type Route1 = {
 export type BlockHistoryRoute = Route1 | Route2;
 
 export type BlockHistory3 = {
+  /**
+   * Since October 2026. The abuse agent run whose verdict led to this block. Absent on blocks made before the field existed, even agent-led ones.
+   */
+  abuseAgentRunId?: string | undefined;
   action: "route-blocked";
   actor?: string | undefined;
   caseId?: string | undefined;
@@ -679,6 +691,10 @@ export type BlockHistory3 = {
 };
 
 export type BlockHistory2 = {
+  /**
+   * Since October 2026. The abuse agent run whose verdict led to this block. Absent on blocks made before the field existed, even agent-led ones.
+   */
+  abuseAgentRunId?: string | undefined;
   action: "unblocked";
   actor?: string | undefined;
   caseId?: string | undefined;
@@ -702,6 +718,10 @@ export type BlockHistoryRegisteredShaBlock = {
 };
 
 export type BlockHistory1 = {
+  /**
+   * Since October 2026. The abuse agent run whose verdict led to this block. Absent on blocks made before the field existed, even agent-led ones.
+   */
+  abuseAgentRunId?: string | undefined;
   action: "blocked";
   actor?: string | undefined;
   caseId?: string | undefined;
@@ -2040,6 +2060,7 @@ export function createProjectRegisteredShaBlockFromJSON(
 /** @internal */
 export const Block$inboundSchema: z.ZodType<Block, z.ZodTypeDef, unknown> = z
   .object({
+    abuseAgentRunId: types.optional(types.string()),
     action: CreateProjectProjectsResponseAction$inboundSchema,
     actor: types.optional(types.string()),
     caseId: types.optional(types.string()),
@@ -2273,6 +2294,7 @@ export const BlockHistory4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  abuseAgentRunId: types.optional(types.string()),
   action: types.literal("route-unblocked"),
   actor: types.optional(types.string()),
   caseId: types.optional(types.string()),
@@ -2508,6 +2530,7 @@ export const BlockHistory3$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  abuseAgentRunId: types.optional(types.string()),
   action: types.literal("route-blocked"),
   actor: types.optional(types.string()),
   caseId: types.optional(types.string()),
@@ -2539,6 +2562,7 @@ export const BlockHistory2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  abuseAgentRunId: types.optional(types.string()),
   action: types.literal("unblocked"),
   actor: types.optional(types.string()),
   caseId: types.optional(types.string()),
@@ -2586,6 +2610,7 @@ export const BlockHistory1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  abuseAgentRunId: types.optional(types.string()),
   action: types.literal("blocked"),
   actor: types.optional(types.string()),
   caseId: types.optional(types.string()),

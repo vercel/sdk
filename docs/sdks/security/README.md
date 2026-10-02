@@ -16,6 +16,7 @@
 * [addBypassIp](#addbypassip) - Create System Bypass Rule
 * [removeBypassIp](#removebypassip) - Remove System Bypass Rule
 * [getSecurityFirewallEvents](#getsecurityfirewallevents) - Read Firewall Actions by Project
+* [getSecurityFirewallEventsSummary](#getsecurityfirewalleventssummary) - Read Firewall Actions Summary by Project
 * [generateFirewallRule](#generatefirewallrule) - Generate a firewall rule from natural language
 
 ## updateAttackChallengeMode
@@ -862,7 +863,7 @@ run();
 
 ## getSecurityFirewallEvents
 
-Retrieve firewall actions for a project Rule names are resolved against the project's *current* active firewall configuration and the team's active rulesets, so a rule that has since been renamed reports its new name and one that has been deleted reports `null`. System rules such as `sys_dos_mitigation` and `ip_blocking` have no configured name and always report `null`.
+Retrieve firewall actions for a project Rule names are resolved against the project's *current* active firewall configuration and the team's active rulesets, so a rule that has since been renamed reports its new name and one that has been deleted reports `null`. System rules such as `sys_dos_mitigation` and `ip_blocking` have no configured name and always report `null`. Filters (`ip`, `isActive`, `action`, `actionType`, `ruleKind`, `ruleId`, `hosts`) are ANDed across params and ORed within a repeated param. They are applied to the policies before `limit`/`cursor`, so pages only count matching policies. A policy with no matching requests yields no action row, so a page can hold fewer than `limit` actions; only `pagination.next` signals the end. A `cursor` is only valid with the filters it was issued for.
 
 ### Example Usage
 
@@ -930,6 +931,83 @@ run();
 ### Response
 
 **Promise\<[models.GetSecurityFirewallEventsResponseBody](../../models/getsecurityfirewalleventsresponsebody.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
+
+## getSecurityFirewallEventsSummary
+
+Aggregate counts over the firewall actions matched by the same filters as `GET /v1/security/firewall/events`, without fetching any rows. Counts are of policies (mitigations), including ones that matched no requests.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="getSecurityFirewallEventsSummary" method="get" path="/v1/security/firewall/events/summary" -->
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await vercel.security.getSecurityFirewallEventsSummary({
+    projectId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import { securityGetSecurityFirewallEventsSummary } from "@vercel/sdk/funcs/securityGetSecurityFirewallEventsSummary.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await securityGetSecurityFirewallEventsSummary(vercel, {
+    projectId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("securityGetSecurityFirewallEventsSummary failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.GetSecurityFirewallEventsSummaryRequest](../../models/getsecurityfirewalleventssummaryrequest.md)                                                                      | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.GetSecurityFirewallEventsSummaryResponseBody](../../models/getsecurityfirewalleventssummaryresponsebody.md)\>**
 
 ### Errors
 

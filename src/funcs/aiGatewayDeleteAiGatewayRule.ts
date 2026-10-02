@@ -92,7 +92,7 @@ async function $do(
   const payload = parsed.value;
   const body = null;
 
-  const path = pathToFunc("/v1/ai-gateway/rules")();
+  const path = pathToFunc("/ai-gateway/rules")();
 
   const query = encodeFormQuery({
     "ruleId": payload.ruleId,

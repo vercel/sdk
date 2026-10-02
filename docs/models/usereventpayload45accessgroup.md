@@ -1,0 +1,19 @@
+# UserEventPayload45AccessGroup
+
+## Example Usage
+
+```typescript
+import { UserEventPayload45AccessGroup } from "@vercel/sdk/models/usereventvia4type.js";
+
+let value: UserEventPayload45AccessGroup = {
+  id: "<id>",
+  name: "<value>",
+};
+```
+
+## Fields
+
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `id`               | *string*           | :heavy_check_mark: | N/A                |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |

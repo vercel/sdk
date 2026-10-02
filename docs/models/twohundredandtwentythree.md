@@ -5,21 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndTwentyThree } from "@vercel/sdk/models/twohundredandtwenty.js";
+import { TwoHundredAndTwentyThree } from "@vercel/sdk/models/usereventredisblockreason.js";
 
 let value: TwoHundredAndTwentyThree = {
-  cause: "<value>",
-  ownerId: "<id>",
-  source: "<value>",
+  organizationId: "<id>",
+  slug: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                      | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `blockReason`                              | *string*                                   | :heavy_minus_sign:                         | N/A                                        |
-| `cause`                                    | *string*                                   | :heavy_check_mark:                         | N/A                                        |
-| `ownerId`                                  | *string*                                   | :heavy_check_mark:                         | N/A                                        |
-| `siftRoute`                                | [models.SiftRoute](../models/siftroute.md) | :heavy_minus_sign:                         | N/A                                        |
-| `source`                                   | *string*                                   | :heavy_check_mark:                         | N/A                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `organizationId`   | *string*           | :heavy_check_mark: | N/A                |
+| `slug`             | *string*           | :heavy_check_mark: | N/A                |

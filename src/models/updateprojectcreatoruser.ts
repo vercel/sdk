@@ -626,7 +626,7 @@ export type OidcProviders = {
  */
 export type TrustedSources = {
   /**
-   * Allow same-team Vercel CI access to preview deployments built from the same repository as the CI run. The deployment source repository, not the current project repository link, is authoritative. Defaults to enabled when not stored. Omitting this field preserves its stored value, including when trustedSources is cleared. Set true explicitly to re-enable.
+   * Allow same-team Vercel CI access to preview and production deployments built from the same repository as the CI run. The deployment source repository, not the current project repository link, is authoritative. Defaults to enabled when not stored. Omitting this field preserves its stored value, including when trustedSources is cleared. Set true explicitly to re-enable.
    */
   enableVercelCiSameRepository?: boolean | undefined;
   projects?: { [k: string]: UpdateProjectProjects } | undefined;
@@ -1022,6 +1022,10 @@ export type UpdateProjectRegisteredShaBlock = {
 };
 
 export type UpdateProjectBlock = {
+  /**
+   * Since October 2026. The abuse agent run whose verdict led to this block. Absent on blocks made before the field existed, even agent-led ones.
+   */
+  abuseAgentRunId?: string | undefined;
   action: UpdateProjectProjectsResponse200Action;
   actor?: string | undefined;
   caseId?: string | undefined;
@@ -1099,6 +1103,10 @@ export type UpdateProjectBlockHistoryProjectsRoute =
   | UpdateProjectRouteProjects2;
 
 export type UpdateProjectBlockHistory4 = {
+  /**
+   * Since October 2026. The abuse agent run whose verdict led to this block. Absent on blocks made before the field existed, even agent-led ones.
+   */
+  abuseAgentRunId?: string | undefined;
   action: "route-unblocked";
   actor?: string | undefined;
   caseId?: string | undefined;
@@ -1175,6 +1183,10 @@ export type UpdateProjectBlockHistoryRoute =
   | UpdateProjectRoute2;
 
 export type UpdateProjectBlockHistory3 = {
+  /**
+   * Since October 2026. The abuse agent run whose verdict led to this block. Absent on blocks made before the field existed, even agent-led ones.
+   */
+  abuseAgentRunId?: string | undefined;
   action: "route-blocked";
   actor?: string | undefined;
   caseId?: string | undefined;
@@ -1191,6 +1203,10 @@ export type UpdateProjectBlockHistory3 = {
 };
 
 export type UpdateProjectBlockHistory2 = {
+  /**
+   * Since October 2026. The abuse agent run whose verdict led to this block. Absent on blocks made before the field existed, even agent-led ones.
+   */
+  abuseAgentRunId?: string | undefined;
   action: "unblocked";
   actor?: string | undefined;
   caseId?: string | undefined;
@@ -1214,6 +1230,10 @@ export type UpdateProjectBlockHistoryRegisteredShaBlock = {
 };
 
 export type UpdateProjectBlockHistory1 = {
+  /**
+   * Since October 2026. The abuse agent run whose verdict led to this block. Absent on blocks made before the field existed, even agent-led ones.
+   */
+  abuseAgentRunId?: string | undefined;
   action: "blocked";
   actor?: string | undefined;
   caseId?: string | undefined;
@@ -3146,6 +3166,7 @@ export const UpdateProjectBlock$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  abuseAgentRunId: types.optional(types.string()),
   action: UpdateProjectProjectsResponse200Action$inboundSchema,
   actor: types.optional(types.string()),
   caseId: types.optional(types.string()),
@@ -3381,6 +3402,7 @@ export const UpdateProjectBlockHistory4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  abuseAgentRunId: types.optional(types.string()),
   action: types.literal("route-unblocked"),
   actor: types.optional(types.string()),
   caseId: types.optional(types.string()),
@@ -3623,6 +3645,7 @@ export const UpdateProjectBlockHistory3$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  abuseAgentRunId: types.optional(types.string()),
   action: types.literal("route-blocked"),
   actor: types.optional(types.string()),
   caseId: types.optional(types.string()),
@@ -3654,6 +3677,7 @@ export const UpdateProjectBlockHistory2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  abuseAgentRunId: types.optional(types.string()),
   action: types.literal("unblocked"),
   actor: types.optional(types.string()),
   caseId: types.optional(types.string()),
@@ -3708,6 +3732,7 @@ export const UpdateProjectBlockHistory1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  abuseAgentRunId: types.optional(types.string()),
   action: types.literal("blocked"),
   actor: types.optional(types.string()),
   caseId: types.optional(types.string()),

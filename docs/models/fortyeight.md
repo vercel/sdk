@@ -5,20 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FortyEight } from "@vercel/sdk/models/userevent.js";
+import { FortyEight } from "@vercel/sdk/models/usereventvia4type.js";
 
-let value: FortyEight = {
-  alias: "<value>",
-  aliasId: "<id>",
-  deploymentId: "<id>",
-};
+let value: FortyEight = {};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `alias`            | *string*           | :heavy_check_mark: | N/A                |
-| `aliasId`          | *string*           | :heavy_check_mark: | N/A                |
-| `deploymentId`     | *string*           | :heavy_check_mark: | N/A                |
-| `name`             | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                        | Type                                         | Required                                     | Description                                  |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| `alias`                                      | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
+| `aliasId`                                    | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
+| `aliasUpdatedAt`                             | *number*                                     | :heavy_minus_sign:                           | N/A                                          |
+| `deployment`                                 | [models.Deployment](../models/deployment.md) | :heavy_minus_sign:                           | N/A                                          |
+| `deploymentId`                               | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
+| `deploymentUrl`                              | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
+| `oldDeploymentId`                            | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
+| `redirect`                                   | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
+| `redirectStatusCode`                         | *number*                                     | :heavy_minus_sign:                           | N/A                                          |
+| `ruleCount`                                  | *number*                                     | :heavy_minus_sign:                           | N/A                                          |
+| `system`                                     | *boolean*                                    | :heavy_minus_sign:                           | N/A                                          |
+| `target`                                     | *string*                                     | :heavy_minus_sign:                           | N/A                                          |

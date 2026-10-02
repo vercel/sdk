@@ -23,22 +23,20 @@ export type CreateEdgeConfigRequest = {
    * The Team slug to perform the request on behalf of.
    */
   slug?: string | undefined;
-  requestBody?: CreateEdgeConfigRequestBody | undefined;
+  requestBody: CreateEdgeConfigRequestBody;
 };
 
-export type CreateEdgeConfigPurpose2 = {
+export type Purpose2 = {
   resourceId: string;
   type: "experimentation";
 };
 
-export type CreateEdgeConfigPurpose1 = {
+export type Purpose1 = {
   projectId: string;
   type: "flags";
 };
 
-export type CreateEdgeConfigPurpose =
-  | CreateEdgeConfigPurpose1
-  | CreateEdgeConfigPurpose2;
+export type CreateEdgeConfigPurpose = Purpose1 | Purpose2;
 
 export type CreateEdgeConfigSchema = {};
 
@@ -64,7 +62,7 @@ export type CreateEdgeConfigResponseBody = {
   digest: string;
   id: string;
   ownerId: string;
-  purpose?: CreateEdgeConfigPurpose1 | CreateEdgeConfigPurpose2 | undefined;
+  purpose?: Purpose1 | Purpose2 | undefined;
   schema?: CreateEdgeConfigSchema | undefined;
   /**
    * Name for the Global Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores).
@@ -113,7 +111,7 @@ export function createEdgeConfigRequestBodyToJSON(
 export type CreateEdgeConfigRequest$Outbound = {
   teamId?: string | undefined;
   slug?: string | undefined;
-  RequestBody?: CreateEdgeConfigRequestBody$Outbound | undefined;
+  RequestBody: CreateEdgeConfigRequestBody$Outbound;
 };
 
 /** @internal */
@@ -124,8 +122,7 @@ export const CreateEdgeConfigRequest$outboundSchema: z.ZodType<
 > = z.object({
   teamId: z.string().optional(),
   slug: z.string().optional(),
-  requestBody: z.lazy(() => CreateEdgeConfigRequestBody$outboundSchema)
-    .optional(),
+  requestBody: z.lazy(() => CreateEdgeConfigRequestBody$outboundSchema),
 }).transform((v) => {
   return remap$(v, {
     requestBody: "RequestBody",
@@ -141,8 +138,8 @@ export function createEdgeConfigRequestToJSON(
 }
 
 /** @internal */
-export const CreateEdgeConfigPurpose2$inboundSchema: z.ZodType<
-  CreateEdgeConfigPurpose2,
+export const Purpose2$inboundSchema: z.ZodType<
+  Purpose2,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -150,19 +147,19 @@ export const CreateEdgeConfigPurpose2$inboundSchema: z.ZodType<
   type: types.literal("experimentation"),
 });
 
-export function createEdgeConfigPurpose2FromJSON(
+export function purpose2FromJSON(
   jsonString: string,
-): SafeParseResult<CreateEdgeConfigPurpose2, SDKValidationError> {
+): SafeParseResult<Purpose2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreateEdgeConfigPurpose2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateEdgeConfigPurpose2' from JSON`,
+    (x) => Purpose2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Purpose2' from JSON`,
   );
 }
 
 /** @internal */
-export const CreateEdgeConfigPurpose1$inboundSchema: z.ZodType<
-  CreateEdgeConfigPurpose1,
+export const Purpose1$inboundSchema: z.ZodType<
+  Purpose1,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -170,13 +167,13 @@ export const CreateEdgeConfigPurpose1$inboundSchema: z.ZodType<
   type: types.literal("flags"),
 });
 
-export function createEdgeConfigPurpose1FromJSON(
+export function purpose1FromJSON(
   jsonString: string,
-): SafeParseResult<CreateEdgeConfigPurpose1, SDKValidationError> {
+): SafeParseResult<Purpose1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreateEdgeConfigPurpose1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateEdgeConfigPurpose1' from JSON`,
+    (x) => Purpose1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Purpose1' from JSON`,
   );
 }
 
@@ -186,8 +183,8 @@ export const CreateEdgeConfigPurpose$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => CreateEdgeConfigPurpose1$inboundSchema),
-  z.lazy(() => CreateEdgeConfigPurpose2$inboundSchema),
+  z.lazy(() => Purpose1$inboundSchema),
+  z.lazy(() => Purpose2$inboundSchema),
 ]);
 
 export function createEdgeConfigPurposeFromJSON(
@@ -252,8 +249,8 @@ export const CreateEdgeConfigResponseBody$inboundSchema: z.ZodType<
   ownerId: types.string(),
   purpose: types.optional(
     z.union([
-      z.lazy(() => CreateEdgeConfigPurpose1$inboundSchema),
-      z.lazy(() => CreateEdgeConfigPurpose2$inboundSchema),
+      z.lazy(() => Purpose1$inboundSchema),
+      z.lazy(() => Purpose2$inboundSchema),
     ]),
   ),
   schema: types.optional(z.lazy(() => CreateEdgeConfigSchema$inboundSchema)),

@@ -7,7 +7,7 @@ What to do when the gate trips: pause the rollout, or roll it back.
 ```typescript
 import {
   GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsRollingReleaseAction,
-} from "@vercel/sdk/models/responsebodytrustedips.js";
+} from "@vercel/sdk/models/getprojectstrustedips1.js";
 
 let value:
   GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsRollingReleaseAction =

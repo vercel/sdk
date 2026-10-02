@@ -5,21 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFortySeven } from "@vercel/sdk/models/twohundredandtwenty.js";
+import { TwoHundredAndFortySeven } from "@vercel/sdk/models/twohundredandtwentyseven.js";
 
-let value: TwoHundredAndFortySeven = {
-  privateLinkEndpoint: {
-    id: "<id>",
-    name: "<value>",
-  },
-  projectId: "<id>",
-};
+let value: TwoHundredAndFortySeven = {};
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `privateLinkEndpoint`                                                        | [models.PayloadPrivateLinkEndpoint](../models/payloadprivatelinkendpoint.md) | :heavy_check_mark:                                                           | N/A                                                                          |
-| `projectId`                                                                  | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
-| `projectName`                                                                | *string*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `currency`         | *string*           | :heavy_minus_sign: | N/A                |
+| `enabled`          | *boolean*          | :heavy_minus_sign: | N/A                |
+| `price`            | *number*           | :heavy_minus_sign: | N/A                |

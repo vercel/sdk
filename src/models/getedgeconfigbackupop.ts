@@ -26,7 +26,7 @@ export type GetEdgeConfigBackupRequest = {
   slug?: string | undefined;
 };
 
-export type ResponseBodyItems = {
+export type GetEdgeConfigBackupResponseBodyItems = {
   createdAt: number;
   description?: string | undefined;
   updatedAt: number;
@@ -35,7 +35,7 @@ export type ResponseBodyItems = {
 
 export type ResponseBodyBackup = {
   digest: string;
-  items: { [k: string]: ResponseBodyItems };
+  items: { [k: string]: GetEdgeConfigBackupResponseBodyItems };
   /**
    * Name for the Global Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores).
    */
@@ -66,7 +66,7 @@ export type GetEdgeConfigBackupResponseBody2 = {
   user: ResponseBodyUser;
 };
 
-export type GetEdgeConfigBackupResponseBodyItems = {
+export type ResponseBodyItems = {
   createdAt: number;
   description?: string | undefined;
   updatedAt: number;
@@ -75,7 +75,7 @@ export type GetEdgeConfigBackupResponseBodyItems = {
 
 export type Backup = {
   digest: string;
-  items: { [k: string]: GetEdgeConfigBackupResponseBodyItems };
+  items: { [k: string]: ResponseBodyItems };
   /**
    * Name for the Global Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores).
    */
@@ -142,8 +142,8 @@ export function getEdgeConfigBackupRequestToJSON(
 }
 
 /** @internal */
-export const ResponseBodyItems$inboundSchema: z.ZodType<
-  ResponseBodyItems,
+export const GetEdgeConfigBackupResponseBodyItems$inboundSchema: z.ZodType<
+  GetEdgeConfigBackupResponseBodyItems,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -153,13 +153,14 @@ export const ResponseBodyItems$inboundSchema: z.ZodType<
   value: types.nullable(GlobalConfigItemValue$inboundSchema),
 });
 
-export function responseBodyItemsFromJSON(
+export function getEdgeConfigBackupResponseBodyItemsFromJSON(
   jsonString: string,
-): SafeParseResult<ResponseBodyItems, SDKValidationError> {
+): SafeParseResult<GetEdgeConfigBackupResponseBodyItems, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ResponseBodyItems$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBodyItems' from JSON`,
+    (x) =>
+      GetEdgeConfigBackupResponseBodyItems$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetEdgeConfigBackupResponseBodyItems' from JSON`,
   );
 }
 
@@ -170,7 +171,9 @@ export const ResponseBodyBackup$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   digest: types.string(),
-  items: z.record(z.lazy(() => ResponseBodyItems$inboundSchema)),
+  items: z.record(
+    z.lazy(() => GetEdgeConfigBackupResponseBodyItems$inboundSchema),
+  ),
   slug: types.string(),
   updatedAt: types.number(),
 });
@@ -254,8 +257,8 @@ export function getEdgeConfigBackupResponseBody2FromJSON(
 }
 
 /** @internal */
-export const GetEdgeConfigBackupResponseBodyItems$inboundSchema: z.ZodType<
-  GetEdgeConfigBackupResponseBodyItems,
+export const ResponseBodyItems$inboundSchema: z.ZodType<
+  ResponseBodyItems,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -265,14 +268,13 @@ export const GetEdgeConfigBackupResponseBodyItems$inboundSchema: z.ZodType<
   value: types.nullable(GlobalConfigItemValue$inboundSchema),
 });
 
-export function getEdgeConfigBackupResponseBodyItemsFromJSON(
+export function responseBodyItemsFromJSON(
   jsonString: string,
-): SafeParseResult<GetEdgeConfigBackupResponseBodyItems, SDKValidationError> {
+): SafeParseResult<ResponseBodyItems, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      GetEdgeConfigBackupResponseBodyItems$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetEdgeConfigBackupResponseBodyItems' from JSON`,
+    (x) => ResponseBodyItems$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyItems' from JSON`,
   );
 }
 
@@ -280,9 +282,7 @@ export function getEdgeConfigBackupResponseBodyItemsFromJSON(
 export const Backup$inboundSchema: z.ZodType<Backup, z.ZodTypeDef, unknown> = z
   .object({
     digest: types.string(),
-    items: z.record(
-      z.lazy(() => GetEdgeConfigBackupResponseBodyItems$inboundSchema),
-    ),
+    items: z.record(z.lazy(() => ResponseBodyItems$inboundSchema)),
     slug: types.string(),
     updatedAt: types.number(),
   });

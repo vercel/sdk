@@ -5,32 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSixteen } from "@vercel/sdk/models/sourceimages.js";
+import { TwoHundredAndSixteen } from "@vercel/sdk/models/usereventredisblockreason.js";
 
 let value: TwoHundredAndSixteen = {
-  copiedDomains: [
-    "<value 1>",
-    "<value 2>",
-    "<value 3>",
-  ],
-  enabledOrganizationEmu: false,
-  enabledTeamIds: [
-    "<value 1>",
-    "<value 2>",
-  ],
+  avatar: "https://loremflickr.com/2281/2722?lock=4042619903274734",
   organizationId: "<id>",
-  teamId: "<id>",
-  teamSlug: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                    | Type                     | Required                 | Description              |
-| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
-| `copiedDomains`          | *string*[]               | :heavy_check_mark:       | N/A                      |
-| `enabledOrganizationEmu` | *boolean*                | :heavy_check_mark:       | N/A                      |
-| `enabledTeamIds`         | *string*[]               | :heavy_check_mark:       | N/A                      |
-| `organizationId`         | *string*                 | :heavy_check_mark:       | N/A                      |
-| `teamId`                 | *string*                 | :heavy_check_mark:       | N/A                      |
-| `teamSlug`               | *string*                 | :heavy_check_mark:       | N/A                      |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `avatar`           | *string*           | :heavy_check_mark: | N/A                |
+| `organizationId`   | *string*           | :heavy_check_mark: | N/A                |

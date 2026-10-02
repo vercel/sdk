@@ -81,13 +81,19 @@ import {
   UpdateProjectProjectsPasswordProtection$inboundSchema,
   UpdateProjectProjectsResponseBuildMachineElasticReason,
   UpdateProjectProjectsResponseBuildMachineElasticReason$inboundSchema,
-  UpdateProjectProjectsResponseBuildMachineElasticTransition,
-  UpdateProjectProjectsResponseBuildMachineElasticTransition$inboundSchema,
+  UpdateProjectProjectsResponseDirection,
+  UpdateProjectProjectsResponseDirection$inboundSchema,
   UpdateProjectProtectionBypass,
   UpdateProjectProtectionBypass$inboundSchema,
   UpdateProjectProtectionConfig,
   UpdateProjectProtectionConfig$inboundSchema,
-} from "./updateprojectprojectsresponsebuildmachineelastictransition.js";
+} from "./updateprojectprojectsresponsedirection.js";
+
+export type UpdateProjectProjectsResponseBuildMachineElasticTransition = {
+  algorithmVersion: string;
+  at: number;
+  direction: UpdateProjectProjectsResponseDirection;
+};
 
 export const UpdateProjectProjectsResponseBuildMachineSelection = {
   Elastic: "elastic",
@@ -1125,7 +1131,7 @@ export type UpdateProjectProjectsProjects = {
 
 export type UpdateProjectTrustedSources = {
   /**
-   * Allow same-team Vercel CI access to preview deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value.
+   * Allow same-team Vercel CI access to preview and production deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value.
    */
   enableVercelCiSameRepository?: boolean | undefined;
   oidcProviders?:
@@ -1305,6 +1311,33 @@ export type UpdateProjectResponseBody = {
 };
 
 /** @internal */
+export const UpdateProjectProjectsResponseBuildMachineElasticTransition$inboundSchema:
+  z.ZodType<
+    UpdateProjectProjectsResponseBuildMachineElasticTransition,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    algorithmVersion: types.string(),
+    at: types.number(),
+    direction: UpdateProjectProjectsResponseDirection$inboundSchema,
+  });
+
+export function updateProjectProjectsResponseBuildMachineElasticTransitionFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateProjectProjectsResponseBuildMachineElasticTransition,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateProjectProjectsResponseBuildMachineElasticTransition$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectProjectsResponseBuildMachineElasticTransition' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateProjectProjectsResponseBuildMachineSelection$inboundSchema:
   z.ZodNativeEnum<typeof UpdateProjectProjectsResponseBuildMachineSelection> = z
     .nativeEnum(UpdateProjectProjectsResponseBuildMachineSelection);
@@ -1363,7 +1396,9 @@ export const UpdateProjectProjectsResourceConfig$inboundSchema: z.ZodType<
     UpdateProjectProjectsResponseBuildMachineElasticReason$inboundSchema,
   ),
   buildMachineElasticTransition: types.optional(
-    UpdateProjectProjectsResponseBuildMachineElasticTransition$inboundSchema,
+    z.lazy(() =>
+      UpdateProjectProjectsResponseBuildMachineElasticTransition$inboundSchema
+    ),
   ),
   buildMachineSelection: types.optional(
     UpdateProjectProjectsResponseBuildMachineSelection$inboundSchema,

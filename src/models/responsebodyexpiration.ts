@@ -169,6 +169,10 @@ export type GetProjectsResponseBodyProjectsRegisteredShaBlock = {
 };
 
 export type GetProjectsResponseBodyProjectsBlock = {
+  /**
+   * Since October 2026. The abuse agent run whose verdict led to this block. Absent on blocks made before the field existed, even agent-led ones.
+   */
+  abuseAgentRunId?: string | undefined;
   action: GetProjectsResponseBodyProjectsResponse200ApplicationJson3Action;
   actor?: string | undefined;
   caseId?: string | undefined;
@@ -265,6 +269,10 @@ export type GetProjectsBlockHistoryProjectsResponse200ApplicationJSONResponseBod
   | GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody2;
 
 export type GetProjectsBlockHistoryProjectsResponse4 = {
+  /**
+   * Since October 2026. The abuse agent run whose verdict led to this block. Absent on blocks made before the field existed, even agent-led ones.
+   */
+  abuseAgentRunId?: string | undefined;
   action: "route-unblocked";
   actor?: string | undefined;
   caseId?: string | undefined;
@@ -347,6 +355,10 @@ export type GetProjectsBlockHistoryProjectsResponse200ApplicationJSONRoute =
   | GetProjectsRouteProjectsResponse200ApplicationJson2;
 
 export type GetProjectsBlockHistoryProjectsResponse3 = {
+  /**
+   * Since October 2026. The abuse agent run whose verdict led to this block. Absent on blocks made before the field existed, even agent-led ones.
+   */
+  abuseAgentRunId?: string | undefined;
   action: "route-blocked";
   actor?: string | undefined;
   caseId?: string | undefined;
@@ -365,6 +377,10 @@ export type GetProjectsBlockHistoryProjectsResponse3 = {
 };
 
 export type GetProjectsBlockHistoryProjectsResponse2 = {
+  /**
+   * Since October 2026. The abuse agent run whose verdict led to this block. Absent on blocks made before the field existed, even agent-led ones.
+   */
+  abuseAgentRunId?: string | undefined;
   action: "unblocked";
   actor?: string | undefined;
   caseId?: string | undefined;
@@ -388,6 +404,10 @@ export type GetProjectsBlockHistoryProjectsResponseRegisteredShaBlock = {
 };
 
 export type GetProjectsBlockHistoryProjectsResponse1 = {
+  /**
+   * Since October 2026. The abuse agent run whose verdict led to this block. Absent on blocks made before the field existed, even agent-led ones.
+   */
+  abuseAgentRunId?: string | undefined;
   action: "blocked";
   actor?: string | undefined;
   caseId?: string | undefined;
@@ -1732,6 +1752,7 @@ export const GetProjectsResponseBodyProjectsBlock$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  abuseAgentRunId: types.optional(types.string()),
   action:
     GetProjectsResponseBodyProjectsResponse200ApplicationJson3Action$inboundSchema,
   actor: types.optional(types.string()),
@@ -2042,6 +2063,7 @@ export const GetProjectsBlockHistoryProjectsResponse4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  abuseAgentRunId: types.optional(types.string()),
   action: types.literal("route-unblocked"),
   actor: types.optional(types.string()),
   caseId: types.optional(types.string()),
@@ -2359,6 +2381,7 @@ export const GetProjectsBlockHistoryProjectsResponse3$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  abuseAgentRunId: types.optional(types.string()),
   action: types.literal("route-blocked"),
   actor: types.optional(types.string()),
   caseId: types.optional(types.string()),
@@ -2400,6 +2423,7 @@ export const GetProjectsBlockHistoryProjectsResponse2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  abuseAgentRunId: types.optional(types.string()),
   action: types.literal("unblocked"),
   actor: types.optional(types.string()),
   caseId: types.optional(types.string()),
@@ -2459,6 +2483,7 @@ export const GetProjectsBlockHistoryProjectsResponse1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  abuseAgentRunId: types.optional(types.string()),
   action: types.literal("blocked"),
   actor: types.optional(types.string()),
   caseId: types.optional(types.string()),

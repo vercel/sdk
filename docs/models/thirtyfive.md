@@ -5,18 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThirtyFive } from "@vercel/sdk/models/userevent.js";
+import { ThirtyFive } from "@vercel/sdk/models/usereventvia4type.js";
 
 let value: ThirtyFive = {
-  rule: {
-    id: "<id>",
-    type: "<value>",
-  },
+  regions: [
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
+  ],
 };
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `rule`                                         | [models.PayloadRule](../models/payloadrule.md) | :heavy_check_mark:                             | N/A                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `regions`          | *string*[]         | :heavy_check_mark: | N/A                |

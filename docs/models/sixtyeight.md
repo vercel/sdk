@@ -5,21 +5,18 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { SixtyEight } from "@vercel/sdk/models/fiftysix.js";
+import { SixtyEight } from "@vercel/sdk/models/before.js";
 
 let value: SixtyEight = {
-  amount: 1265.72,
-  invoiceId: "<id>",
-  newInvoiceId: "<id>",
-  settlementMethod: "refunded-paid",
+  autoExposeSystemEnvs: true,
+  projectName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                    | Type                                                     | Required                                                 | Description                                              |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `amount`                                                 | *number*                                                 | :heavy_check_mark:                                       | N/A                                                      |
-| `invoiceId`                                              | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
-| `newInvoiceId`                                           | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
-| `settlementMethod`                                       | [models.SettlementMethod](../models/settlementmethod.md) | :heavy_check_mark:                                       | N/A                                                      |
+| Field                  | Type                   | Required               | Description            |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `autoExposeSystemEnvs` | *boolean*              | :heavy_check_mark:     | N/A                    |
+| `projectId`            | *string*               | :heavy_minus_sign:     | N/A                    |
+| `projectName`          | *string*               | :heavy_check_mark:     | N/A                    |

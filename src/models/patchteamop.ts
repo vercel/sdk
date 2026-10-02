@@ -247,11 +247,11 @@ export type PatchTeamDefaultExpirationSettings = {
    */
   expirationErrored?: ExpirationErrored | undefined;
   /**
-   * When true, opts the team out of the upcoming deployment-storage retention reduce (Medium/High cohorts). Does not change expiration settings.
+   * When true, opts the team out of the upcoming deployment-storage retention reduce (Medium/High cohorts). Does not change expiration settings. High cohort also requires acknowledgeStorageBilling; metering starts on reduce day.
    */
   keepCurrentRetention?: boolean | undefined;
   /**
-   * Required when increasing any retention setting for a High cohort team after retention reduce and before metering. Confirms team-wide storage billing.
+   * Required for High cohort keepCurrentRetention (deferred billing), and when increasing any retention setting for a High cohort team after retention reduce and before metering.
    */
   acknowledgeStorageBilling?: boolean | undefined;
 };

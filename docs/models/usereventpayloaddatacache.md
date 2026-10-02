@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayloadDataCache } from "@vercel/sdk/models/sourceimages.js";
+import { UserEventPayloadDataCache } from "@vercel/sdk/models/usereventredisblockreason.js";
 
 let value: UserEventPayloadDataCache = {
   blockReason: "admin_override",

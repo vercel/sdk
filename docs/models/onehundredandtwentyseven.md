@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndTwentySeven } from "@vercel/sdk/models/usereventjobaction.js";
+import { OneHundredAndTwentySeven } from "@vercel/sdk/models/usereventjobpayloadaction.js";
 
 let value: OneHundredAndTwentySeven = {
   name: "<value>",
@@ -14,8 +14,7 @@ let value: OneHundredAndTwentySeven = {
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `name`                                                                       | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
-| `newTeam`                                                                    | [models.UserEventPayload127NewTeam](../models/usereventpayload127newteam.md) | :heavy_minus_sign:                                                           | N/A                                                                          |
-| `oldTeam`                                                                    | [models.UserEventPayload127OldTeam](../models/usereventpayload127oldteam.md) | :heavy_minus_sign:                                                           | N/A                                                                          |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `zone`             | *boolean*          | :heavy_minus_sign: | N/A                |

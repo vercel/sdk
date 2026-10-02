@@ -5,28 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { Ninety } from "@vercel/sdk/models/fiftysix.js";
+import { Ninety } from "@vercel/sdk/models/before.js";
 
 let value: Ninety = {
-  configuration: {
-    id: "<id>",
-  },
-  project: {
-    id: "<id>",
-  },
-  team: {
-    id: "<id>",
-    name: "<value>",
-  },
+  count: 160.09,
+  documents: [
+    {
+      documentId: "<id>",
+      fingerprint: "<value>",
+      slug: "<value>",
+      title: "<value>",
+    },
+  ],
 };
 ```
 
 ## Fields
 
-| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `buildsEnabled`                                                                    | *boolean*                                                                          | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `configuration`                                                                    | [models.UserEventPayloadConfiguration](../models/usereventpayloadconfiguration.md) | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `passive`                                                                          | *boolean*                                                                          | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `project`                                                                          | [models.UserEventPayload90Project](../models/usereventpayload90project.md)         | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `team`                                                                             | [models.PayloadTeam](../models/payloadteam.md)                                     | :heavy_check_mark:                                                                 | N/A                                                                                |
+| Field                                        | Type                                         | Required                                     | Description                                  |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| `count`                                      | *number*                                     | :heavy_check_mark:                           | N/A                                          |
+| `documents`                                  | [models.Documents](../models/documents.md)[] | :heavy_check_mark:                           | N/A                                          |

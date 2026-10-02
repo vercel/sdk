@@ -5,18 +5,30 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThirtyFour } from "@vercel/sdk/models/userevent.js";
+import { ThirtyFour } from "@vercel/sdk/models/usereventvia4type.js";
 
 let value: ThirtyFour = {
-  rule: {
-    id: "<id>",
-    type: "<value>",
+  moderationPolicyCount: 1619.73,
+  piiRedaction: {
+    from: false,
+    to: true,
   },
+  policiesAdded: [
+    "<value 1>",
+  ],
+  policiesModified: [],
+  policiesRemoved: [
+    "<value 1>",
+  ],
 };
 ```
 
 ## Fields
 
-| Field                            | Type                             | Required                         | Description                      |
-| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
-| `rule`                           | [models.Rule](../models/rule.md) | :heavy_check_mark:               | N/A                              |
+| Field                                            | Type                                             | Required                                         | Description                                      |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| `moderationPolicyCount`                          | *number*                                         | :heavy_check_mark:                               | N/A                                              |
+| `piiRedaction`                                   | [models.PiiRedaction](../models/piiredaction.md) | :heavy_check_mark:                               | N/A                                              |
+| `policiesAdded`                                  | *string*[]                                       | :heavy_check_mark:                               | N/A                                              |
+| `policiesModified`                               | *string*[]                                       | :heavy_check_mark:                               | N/A                                              |
+| `policiesRemoved`                                | *string*[]                                       | :heavy_check_mark:                               | N/A                                              |

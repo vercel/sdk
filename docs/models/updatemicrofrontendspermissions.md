@@ -5,7 +5,7 @@ Requested and authorized operations when `checkPermissions` is used. Legacy `inc
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsPermissions } from "@vercel/sdk/models/updatemicrofrontendsto.js";
+import { UpdateMicrofrontendsPermissions } from "@vercel/sdk/models/updatemicrofrontendsto1.js";
 
 let value: UpdateMicrofrontendsPermissions = {};
 ```

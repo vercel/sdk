@@ -5,7 +5,7 @@ The checks to evaluate. An empty array means nothing is evaluated.
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupChecks } from "@vercel/sdk/models/getmicrofrontendsingroupto.js";
+import { GetMicrofrontendsInGroupChecks } from "@vercel/sdk/models/getmicrofrontendsingroupto1.js";
 
 let value: GetMicrofrontendsInGroupChecks = {
   excludePaths: [

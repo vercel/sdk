@@ -31,6 +31,7 @@ import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import { VercelError } from "../models/vercelerror.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
+import * as types$ from "../types/primitives.js";
 
 /**
  * Get a Global Config item
@@ -46,7 +47,7 @@ export function globalConfigGetEdgeConfigItem(
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    GlobalConfigItem,
+    GlobalConfigItem | undefined,
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -71,7 +72,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      GlobalConfigItem,
+      GlobalConfigItem | undefined,
       | VercelError
       | ResponseValidationError
       | ConnectionError
@@ -167,7 +168,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    GlobalConfigItem,
+    GlobalConfigItem | undefined,
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -177,7 +178,8 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, GlobalConfigItem$inboundSchema),
+    M.json(200, types$.optional(GlobalConfigItem$inboundSchema)),
+    M.nil(204, types$.optional(GlobalConfigItem$inboundSchema)),
     M.fail([400, 401, 403, 404, 410, "4XX"]),
     M.fail("5XX"),
   )(response, req);

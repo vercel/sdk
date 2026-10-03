@@ -5,11 +5,10 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSeventyFour } from "@vercel/sdk/models/twohundredandtwenty.js";
+import { TwoHundredAndSeventyFour } from "@vercel/sdk/models/twohundredandtwentyseven.js";
 
 let value: TwoHundredAndSeventyFour = {
-  customEnvironmentId: "<id>",
-  customEnvironmentSlug: "<value>",
+  autoAssignCustomDomains: true,
   projectId: "<id>",
   projectName: "<value>",
 };
@@ -17,10 +16,8 @@ let value: TwoHundredAndSeventyFour = {
 
 ## Fields
 
-| Field                      | Type                       | Required                   | Description                |
-| -------------------------- | -------------------------- | -------------------------- | -------------------------- |
-| `customEnvironmentId`      | *string*                   | :heavy_check_mark:         | N/A                        |
-| `customEnvironmentSlug`    | *string*                   | :heavy_check_mark:         | N/A                        |
-| `enableSchedulesByDefault` | *boolean*                  | :heavy_minus_sign:         | N/A                        |
-| `projectId`                | *string*                   | :heavy_check_mark:         | N/A                        |
-| `projectName`              | *string*                   | :heavy_check_mark:         | N/A                        |
+| Field                     | Type                      | Required                  | Description               |
+| ------------------------- | ------------------------- | ------------------------- | ------------------------- |
+| `autoAssignCustomDomains` | *boolean*                 | :heavy_check_mark:        | N/A                       |
+| `projectId`               | *string*                  | :heavy_check_mark:        | N/A                       |
+| `projectName`             | *string*                  | :heavy_check_mark:        | N/A                       |

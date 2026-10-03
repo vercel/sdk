@@ -1,23 +1,15 @@
 # Purpose
 
-
-## Supported Types
-
-### `models.Purpose1`
+## Example Usage
 
 ```typescript
-const value: models.Purpose1 = {
-  projectId: "<id>",
-  type: "flags",
-};
+import { Purpose } from "@vercel/sdk/models/headinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationglobalconfigop.js";
+
+let value: Purpose = "flags";
 ```
 
-### `models.Purpose2`
+## Values
 
 ```typescript
-const value: models.Purpose2 = {
-  resourceId: "<id>",
-  type: "experimentation",
-};
+"experimentation" | "flags"
 ```
-

@@ -66,6 +66,7 @@ export type ListFlagVersionsFallthroughSlots = {
 export type ListFlagVersionsFallthrough3 = {
   base: ListFlagVersionsFallthroughFeatureFlagsBase;
   defaultVariantId: string;
+  finalPromille?: number | undefined;
   rollFromVariantId: string;
   rollToVariantId: string;
   slots: Array<ListFlagVersionsFallthroughSlots>;
@@ -254,6 +255,7 @@ export type ListFlagVersionsOutcomeSlots = {
 export type ListFlagVersionsOutcome3 = {
   base: ListFlagVersionsOutcomeFeatureFlagsBase;
   defaultVariantId: string;
+  finalPromille?: number | undefined;
   rollFromVariantId: string;
   rollToVariantId: string;
   slots: Array<ListFlagVersionsOutcomeSlots>;
@@ -521,6 +523,7 @@ export const ListFlagVersionsFallthrough3$inboundSchema: z.ZodType<
 > = z.object({
   base: z.lazy(() => ListFlagVersionsFallthroughFeatureFlagsBase$inboundSchema),
   defaultVariantId: types.string(),
+  finalPromille: types.optional(types.number()),
   rollFromVariantId: types.string(),
   rollToVariantId: types.string(),
   slots: z.array(z.lazy(() => ListFlagVersionsFallthroughSlots$inboundSchema)),
@@ -1020,6 +1023,7 @@ export const ListFlagVersionsOutcome3$inboundSchema: z.ZodType<
 > = z.object({
   base: z.lazy(() => ListFlagVersionsOutcomeFeatureFlagsBase$inboundSchema),
   defaultVariantId: types.string(),
+  finalPromille: types.optional(types.number()),
   rollFromVariantId: types.string(),
   rollToVariantId: types.string(),
   slots: z.array(z.lazy(() => ListFlagVersionsOutcomeSlots$inboundSchema)),

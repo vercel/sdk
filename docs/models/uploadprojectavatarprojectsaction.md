@@ -1,15 +1,17 @@
 # UploadProjectAvatarProjectsAction
 
+What to do when the gate trips: pause the rollout, or roll it back.
+
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarProjectsAction } from "@vercel/sdk/models/uploadprojectavatargitprovideroptions.js";
+import { UploadProjectAvatarProjectsAction } from "@vercel/sdk/models/uploadprojectavatarresponsebody.js";
 
-let value: UploadProjectAvatarProjectsAction = "remove-deployment-interstitial";
+let value: UploadProjectAvatarProjectsAction = "rollback";
 ```
 
 ## Values
 
 ```typescript
-"add-deployment-interstitial" | "add-project-interstitial" | "remove-deployment-interstitial" | "remove-project-interstitial"
+"pause" | "rollback"
 ```

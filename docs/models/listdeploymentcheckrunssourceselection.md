@@ -24,8 +24,9 @@ const value: models.ListDeploymentCheckRunsSelection2 = {
 
 ```typescript
 const value: models.ListDeploymentCheckRunsSelection3 = {
-  job: "Senior Identity Officer",
-  kind: "task",
+  filters: [],
+  job: "Turborepo",
+  kind: "turborepo",
   task: "<value>",
 };
 ```

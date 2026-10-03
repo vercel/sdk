@@ -5,7 +5,7 @@ List of domains associated with this environment
 ## Example Usage
 
 ```typescript
-import { UpdateProjectDomains } from "@vercel/sdk/models/updateprojectprojectsresponsebuildmachineelastictransition.js";
+import { UpdateProjectDomains } from "@vercel/sdk/models/updateprojectsourcesprojects1.js";
 
 let value: UpdateProjectDomains = {
   apexName: "<value>",

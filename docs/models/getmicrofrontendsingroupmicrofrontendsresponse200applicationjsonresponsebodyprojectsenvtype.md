@@ -5,7 +5,7 @@
 ```typescript
 import {
   GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsEnvType,
-} from "@vercel/sdk/models/getmicrofrontendsingroupgitprovideroptions.js";
+} from "@vercel/sdk/models/getmicrofrontendsingrouplatestdeployments.js";
 
 let value:
   GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsEnvType =

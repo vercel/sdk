@@ -3,13 +3,16 @@
 ## Example Usage
 
 ```typescript
-import { Previous2 } from "@vercel/sdk/models/usereventpayload354geolocationnames.js";
+import { Previous2 } from "@vercel/sdk/models/threehundredandsixty.js";
 
-let value: Previous2 = "CONTRIBUTOR";
+let value: Previous2 = {
+  teamRoles: [],
+};
 ```
 
-## Values
+## Fields
 
-```typescript
-"BILLING" | "CONTRIBUTOR" | "DEVELOPER" | "MEMBER" | "OWNER" | "SECURITY" | "VIEWER" | "VIEWER_FOR_PLUS"
-```
+| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `teamPermissions`                                                                          | [models.UserEventPreviousTeamPermissions](../models/usereventpreviousteampermissions.md)[] | :heavy_minus_sign:                                                                         | N/A                                                                                        |
+| `teamRoles`                                                                                | [models.UserEventPreviousTeamRoles](../models/usereventpreviousteamroles.md)[]             | :heavy_check_mark:                                                                         | N/A                                                                                        |

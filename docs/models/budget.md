@@ -15,8 +15,8 @@ let value: Budget = {
 
 ## Fields
 
-| Field                                              | Type                                               | Required                                           | Description                                        |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `alertThresholds`                                  | *number*[]                                         | :heavy_minus_sign:                                 | N/A                                                |
-| `limitAmount`                                      | *number*                                           | :heavy_check_mark:                                 | Spend cap, in dollars.                             |
-| `refreshPeriod`                                    | [models.RefreshPeriod](../models/refreshperiod.md) | :heavy_check_mark:                                 | N/A                                                |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `alertThresholds`                                                | *number*[]                                                       | :heavy_minus_sign:                                               | N/A                                                              |
+| `limitAmount`                                                    | *number*                                                         | :heavy_check_mark:                                               | Spend cap, in dollars.                                           |
+| `refreshPeriod`                                                  | [models.PayloadRefreshPeriod](../models/payloadrefreshperiod.md) | :heavy_check_mark:                                               | N/A                                                              |

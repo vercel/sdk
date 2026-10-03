@@ -287,7 +287,7 @@ export type CancelDeploymentDeploymentsResourceConfig = {
 /**
  * Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured
  */
-export type CancelDeploymentConfig = {
+export type Config = {
   functionMemoryType: FunctionMemoryType;
   functionTimeout: number | null;
   functionType: FunctionType;
@@ -2113,30 +2113,27 @@ export function cancelDeploymentDeploymentsResourceConfigFromJSON(
 }
 
 /** @internal */
-export const CancelDeploymentConfig$inboundSchema: z.ZodType<
-  CancelDeploymentConfig,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  functionMemoryType: FunctionMemoryType$inboundSchema,
-  functionTimeout: types.nullable(types.number()),
-  functionType: FunctionType$inboundSchema,
-  isUsingActiveCPU: types.optional(types.boolean()),
-  resourceConfig: types.optional(
-    z.lazy(() => CancelDeploymentDeploymentsResourceConfig$inboundSchema),
-  ),
-  secureComputeFallbackRegion: types.nullable(types.string()),
-  secureComputePrimaryRegion: types.nullable(types.string()),
-  version: types.optional(types.number()),
-});
+export const Config$inboundSchema: z.ZodType<Config, z.ZodTypeDef, unknown> = z
+  .object({
+    functionMemoryType: FunctionMemoryType$inboundSchema,
+    functionTimeout: types.nullable(types.number()),
+    functionType: FunctionType$inboundSchema,
+    isUsingActiveCPU: types.optional(types.boolean()),
+    resourceConfig: types.optional(
+      z.lazy(() => CancelDeploymentDeploymentsResourceConfig$inboundSchema),
+    ),
+    secureComputeFallbackRegion: types.nullable(types.string()),
+    secureComputePrimaryRegion: types.nullable(types.string()),
+    version: types.optional(types.number()),
+  });
 
-export function cancelDeploymentConfigFromJSON(
+export function configFromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentConfig, SDKValidationError> {
+): SafeParseResult<Config, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CancelDeploymentConfig$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentConfig' from JSON`,
+    (x) => Config$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Config' from JSON`,
   );
 }
 

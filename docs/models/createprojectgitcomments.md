@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectGitComments } from "@vercel/sdk/models/createprojectprojectschecksstate.js";
+import { CreateProjectGitComments } from "@vercel/sdk/models/internalroutes1.js";
 
 let value: CreateProjectGitComments = {
   onCommit: true,

@@ -48,6 +48,10 @@ export type Drive = {
    * The last time the drive was updated, in milliseconds since the epoch.
    */
   updatedAt: number;
+  /**
+   * Whether this drive is managed by v0 on the customer's behalf.
+   */
+  v0?: boolean | undefined;
 };
 
 /** @internal */
@@ -62,6 +66,7 @@ export const Drive$inboundSchema: z.ZodType<Drive, z.ZodTypeDef, unknown> = z
     projectId: types.string(),
     region: types.string(),
     updatedAt: types.number(),
+    v0: types.optional(types.boolean()),
   });
 
 export function driveFromJSON(

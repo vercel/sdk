@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayloadData } from "@vercel/sdk/models/fiftysix.js";
+import { UserEventPayloadData } from "@vercel/sdk/models/fiftyeight.js";
 
 let value: UserEventPayloadData = {
   planSlug: "v0_business",
@@ -15,4 +15,4 @@ let value: UserEventPayloadData = {
 | Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
 | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
 | `planSlug`                                                               | [models.PlanSlug](../models/planslug.md)                                 | :heavy_check_mark:                                                       | N/A                                                                      |
-| `reason`                                                                 | [models.UserEventPayload72Reason](../models/usereventpayload72reason.md) | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `reason`                                                                 | [models.UserEventPayload75Reason](../models/usereventpayload75reason.md) | :heavy_minus_sign:                                                       | N/A                                                                      |

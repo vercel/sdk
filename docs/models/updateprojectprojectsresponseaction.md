@@ -1,16 +1,17 @@
 # UpdateProjectProjectsResponseAction
 
+What to do when the gate trips: pause the rollout, or roll it back.
+
 ## Example Usage
 
 ```typescript
-import { UpdateProjectProjectsResponseAction } from "@vercel/sdk/models/updateprojectcreatoruser.js";
+import { UpdateProjectProjectsResponseAction } from "@vercel/sdk/models/updateprojectratelimit.js";
 
-let value: UpdateProjectProjectsResponseAction =
-  "remove-deployment-interstitial";
+let value: UpdateProjectProjectsResponseAction = "rollback";
 ```
 
 ## Values
 
 ```typescript
-"add-deployment-interstitial" | "add-project-interstitial" | "remove-deployment-interstitial" | "remove-project-interstitial"
+"pause" | "rollback"
 ```

@@ -47,6 +47,13 @@ export const RunsConclusion = {
 } as const;
 export type RunsConclusion = ClosedEnum<typeof RunsConclusion>;
 
+export type RunsExpectationRef = {
+  invocationAttempt: number;
+  invocationId: string;
+  jobDefinitionId: string;
+  jobRunAttempt: number;
+};
+
 export const ListCheckRunsRunsRequires = {
   BuildReady: "build-ready",
   DeploymentUrl: "deployment-url",
@@ -112,6 +119,11 @@ export type Runs2 = {
   conclusionText?: string | undefined;
   createdAt: number;
   deploymentId: string;
+  expectationRef?: RunsExpectationRef | undefined;
+  /**
+   * Latest aggregate revision applied to this check run.
+   */
+  expectationRevision?: number | undefined;
   externalId?: string | undefined;
   externalUrl?: string | undefined;
   id: string;
@@ -148,6 +160,13 @@ export type ListCheckRunsRunsConclusion = ClosedEnum<
   typeof ListCheckRunsRunsConclusion
 >;
 
+export type ListCheckRunsRunsExpectationRef = {
+  invocationAttempt: number;
+  invocationId: string;
+  jobDefinitionId: string;
+  jobRunAttempt: number;
+};
+
 export const RunsRequires = {
   BuildReady: "build-ready",
   DeploymentUrl: "deployment-url",
@@ -169,9 +188,18 @@ export type ListCheckRunsSourceChecksV2Response200Origin = ClosedEnum<
   typeof ListCheckRunsSourceChecksV2Response200Origin
 >;
 
+export const ListCheckRunsSelectionJob = {
+  Turborepo: "Turborepo",
+} as const;
+export type ListCheckRunsSelectionJob = ClosedEnum<
+  typeof ListCheckRunsSelectionJob
+>;
+
 export type ListCheckRunsSelection3 = {
-  job: string;
-  kind: "task";
+  failIfNoMatch?: boolean | undefined;
+  filters: Array<string>;
+  job: ListCheckRunsSelectionJob;
+  kind: "turborepo";
   task: string;
 };
 
@@ -297,6 +325,11 @@ export type Runs1 = {
   conclusionText?: string | undefined;
   createdAt: number;
   deploymentId: string;
+  expectationRef?: ListCheckRunsRunsExpectationRef | undefined;
+  /**
+   * Latest aggregate revision applied to this check run.
+   */
+  expectationRevision?: number | undefined;
   externalId?: string | undefined;
   externalUrl?: string | undefined;
   id: string;
@@ -361,6 +394,28 @@ export const ListCheckRunsRunsBlocks$inboundSchema: z.ZodNativeEnum<
 export const RunsConclusion$inboundSchema: z.ZodNativeEnum<
   typeof RunsConclusion
 > = z.nativeEnum(RunsConclusion);
+
+/** @internal */
+export const RunsExpectationRef$inboundSchema: z.ZodType<
+  RunsExpectationRef,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  invocationAttempt: types.number(),
+  invocationId: types.string(),
+  jobDefinitionId: types.string(),
+  jobRunAttempt: types.number(),
+});
+
+export function runsExpectationRefFromJSON(
+  jsonString: string,
+): SafeParseResult<RunsExpectationRef, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RunsExpectationRef$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RunsExpectationRef' from JSON`,
+  );
+}
 
 /** @internal */
 export const ListCheckRunsRunsRequires$inboundSchema: z.ZodNativeEnum<
@@ -454,6 +509,10 @@ export const Runs2$inboundSchema: z.ZodType<Runs2, z.ZodTypeDef, unknown> = z
     conclusionText: types.optional(types.string()),
     createdAt: types.number(),
     deploymentId: types.string(),
+    expectationRef: types.optional(
+      z.lazy(() => RunsExpectationRef$inboundSchema),
+    ),
+    expectationRevision: types.optional(types.number()),
     externalId: types.optional(types.string()),
     externalUrl: types.optional(types.string()),
     id: types.string(),
@@ -492,6 +551,28 @@ export const ListCheckRunsRunsConclusion$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(ListCheckRunsRunsConclusion);
 
 /** @internal */
+export const ListCheckRunsRunsExpectationRef$inboundSchema: z.ZodType<
+  ListCheckRunsRunsExpectationRef,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  invocationAttempt: types.number(),
+  invocationId: types.string(),
+  jobDefinitionId: types.string(),
+  jobRunAttempt: types.number(),
+});
+
+export function listCheckRunsRunsExpectationRefFromJSON(
+  jsonString: string,
+): SafeParseResult<ListCheckRunsRunsExpectationRef, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListCheckRunsRunsExpectationRef$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListCheckRunsRunsExpectationRef' from JSON`,
+  );
+}
+
+/** @internal */
 export const RunsRequires$inboundSchema: z.ZodNativeEnum<typeof RunsRequires> =
   z.nativeEnum(RunsRequires);
 
@@ -505,13 +586,20 @@ export const ListCheckRunsSourceChecksV2Response200Origin$inboundSchema:
     .nativeEnum(ListCheckRunsSourceChecksV2Response200Origin);
 
 /** @internal */
+export const ListCheckRunsSelectionJob$inboundSchema: z.ZodNativeEnum<
+  typeof ListCheckRunsSelectionJob
+> = z.nativeEnum(ListCheckRunsSelectionJob);
+
+/** @internal */
 export const ListCheckRunsSelection3$inboundSchema: z.ZodType<
   ListCheckRunsSelection3,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  job: types.string(),
-  kind: types.literal("task"),
+  failIfNoMatch: types.optional(types.boolean()),
+  filters: z.array(types.string()),
+  job: ListCheckRunsSelectionJob$inboundSchema,
+  kind: types.literal("turborepo"),
   task: types.string(),
 });
 
@@ -765,6 +853,10 @@ export const Runs1$inboundSchema: z.ZodType<Runs1, z.ZodTypeDef, unknown> = z
     conclusionText: types.optional(types.string()),
     createdAt: types.number(),
     deploymentId: types.string(),
+    expectationRef: types.optional(
+      z.lazy(() => ListCheckRunsRunsExpectationRef$inboundSchema),
+    ),
+    expectationRevision: types.optional(types.number()),
     externalId: types.optional(types.string()),
     externalUrl: types.optional(types.string()),
     id: types.string(),

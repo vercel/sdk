@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Trigger } from "@vercel/sdk/models/sourceimages.js";
+import { Trigger } from "@vercel/sdk/models/lasteditedbyprincipal1.js";
 
 let value: Trigger = "domain_verified";
 ```

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectProjectsBranchMatcher } from "@vercel/sdk/models/createprojectprojectschecksstate.js";
+import { CreateProjectProjectsBranchMatcher } from "@vercel/sdk/models/createprojecttoprojects1.js";
 
 let value: CreateProjectProjectsBranchMatcher = {
   pattern: "<value>",

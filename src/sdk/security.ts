@@ -11,6 +11,7 @@ import { securityGetBypassIp } from "../funcs/securityGetBypassIp.js";
 import { securityGetFirewallConfig } from "../funcs/securityGetFirewallConfig.js";
 import { securityGetSecurityFirewallConfig } from "../funcs/securityGetSecurityFirewallConfig.js";
 import { securityGetSecurityFirewallEvents } from "../funcs/securityGetSecurityFirewallEvents.js";
+import { securityGetSecurityFirewallEventsSummary } from "../funcs/securityGetSecurityFirewallEventsSummary.js";
 import { securityPutFirewallConfig } from "../funcs/securityPutFirewallConfig.js";
 import { securityRemoveBypassIp } from "../funcs/securityRemoveBypassIp.js";
 import { securityUpdateAttackChallengeMode } from "../funcs/securityUpdateAttackChallengeMode.js";
@@ -49,6 +50,10 @@ import {
   GetSecurityFirewallEventsRequest,
   GetSecurityFirewallEventsResponseBody,
 } from "../models/getsecurityfirewalleventsop.js";
+import {
+  GetSecurityFirewallEventsSummaryRequest,
+  GetSecurityFirewallEventsSummaryResponseBody,
+} from "../models/getsecurityfirewalleventssummaryop.js";
 import {
   PutFirewallConfigRequest,
   PutFirewallConfigResponseBody,
@@ -259,13 +264,30 @@ export class Security extends ClientSDK {
    * Read Firewall Actions by Project
    *
    * @remarks
-   * Retrieve firewall actions for a project Rule names are resolved against the project's *current* active firewall configuration and the team's active rulesets, so a rule that has since been renamed reports its new name and one that has been deleted reports `null`. System rules such as `sys_dos_mitigation` and `ip_blocking` have no configured name and always report `null`.
+   * Retrieve firewall actions for a project Rule names are resolved against the project's *current* active firewall configuration and the team's active rulesets, so a rule that has since been renamed reports its new name and one that has been deleted reports `null`. System rules such as `sys_dos_mitigation` and `ip_blocking` have no configured name and always report `null`. Filters (`ip`, `isActive`, `action`, `actionType`, `ruleKind`, `ruleId`, `hosts`) are ANDed across params and ORed within a repeated param. They are applied to the policies before `limit`/`cursor`, so pages only count matching policies. A policy with no matching requests yields no action row, so a page can hold fewer than `limit` actions; only `pagination.next` signals the end. A `cursor` is only valid with the filters it was issued for.
    */
   async getSecurityFirewallEvents(
     request: GetSecurityFirewallEventsRequest,
     options?: RequestOptions,
   ): Promise<GetSecurityFirewallEventsResponseBody> {
     return unwrapAsync(securityGetSecurityFirewallEvents(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Read Firewall Actions Summary by Project
+   *
+   * @remarks
+   * Aggregate counts over the firewall actions matched by the same filters as `GET /v1/security/firewall/events`, without fetching any rows. Counts are of policies (mitigations), including ones that matched no requests.
+   */
+  async getSecurityFirewallEventsSummary(
+    request: GetSecurityFirewallEventsSummaryRequest,
+    options?: RequestOptions,
+  ): Promise<GetSecurityFirewallEventsSummaryResponseBody> {
+    return unwrapAsync(securityGetSecurityFirewallEventsSummary(
       this,
       request,
       options,

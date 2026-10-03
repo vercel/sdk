@@ -34,7 +34,7 @@ import { Result } from "../types/fp.js";
  * Get a named sandbox
  *
  * @remarks
- * Retrieves a named sandbox by name, including its current sandbox and routes. If the sandbox is stopped and resume is true, a new sandbox will be created from the most recent snapshot.
+ * Retrieves a named sandbox by name, including its current sandbox and routes. If the sandbox is stopped and resume is true, a new sandbox will be created from the most recent snapshot. Returns 404 if the named sandbox or its configuration no longer exists.
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
  */

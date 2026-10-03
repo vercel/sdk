@@ -170,7 +170,7 @@ export type PresetConfiguration = {
    */
   triggers?: boolean | undefined;
   /**
-   * Trigger driver type. Resolved automatically from the service or known service registry when not provided. Only set when using the newly decoupled triggers resolution flow.
+   * Trigger driver type. Resolved automatically from the known service connection method when not provided. Only set when using the newly decoupled triggers resolution flow.
    */
   triggerType?: string | undefined;
   /**
@@ -350,7 +350,7 @@ export type FullConfiguration = {
    */
   triggers?: boolean | undefined;
   /**
-   * Trigger driver type. Resolved automatically from the service or known service registry when not provided. Only set when using the newly decoupled triggers resolution flow.
+   * Trigger driver type. Resolved automatically from the known service connection method when not provided. Only set when using the newly decoupled triggers resolution flow.
    */
   triggerType?: string | undefined;
   /**

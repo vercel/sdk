@@ -229,6 +229,10 @@ export type NamedSandbox = {
    */
   updatedAt: number;
   /**
+   * Whether this sandbox is managed by v0 on the customer's behalf.
+   */
+  v0?: boolean | undefined;
+  /**
    * Number of virtual CPUs allocated.
    */
   vcpus?: number | undefined;
@@ -354,6 +358,7 @@ export const NamedSandbox$inboundSchema: z.ZodType<
   totalEgressBytes: types.optional(types.number()),
   totalIngressBytes: types.optional(types.number()),
   updatedAt: types.number(),
+  v0: types.optional(types.boolean()),
   vcpus: types.optional(types.number()),
 });
 

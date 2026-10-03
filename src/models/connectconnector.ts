@@ -145,7 +145,6 @@ export const ConnectConnectorType = {
   Custom: "custom",
   Discord: "discord",
   Github: "github",
-  GoogleDpop: "google-dpop",
   Linear: "linear",
   Linq: "linq",
   MicrosoftEntra: "microsoft-entra",

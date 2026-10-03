@@ -116,6 +116,7 @@ export type Checks = {
 };
 
 export type ListProjectChecksResponseBody = {
+  availableNativeChecks: Array<string>;
   checks: Array<Checks>;
 };
 
@@ -297,6 +298,7 @@ export const ListProjectChecksResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  availableNativeChecks: z.array(types.string()),
   checks: z.array(z.lazy(() => Checks$inboundSchema)),
 });
 

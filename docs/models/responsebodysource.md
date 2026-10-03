@@ -43,8 +43,13 @@ const value: models.Source4 = {};
 const value: models.Source5 = {
   origin: "api",
   selection: {
-    job: "Forward Intranet Manager",
-    kind: "task",
+    filters: [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
+    job: "Turborepo",
+    kind: "turborepo",
     task: "<value>",
   },
   subKind: "vercel-ci-check",

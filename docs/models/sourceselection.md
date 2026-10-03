@@ -24,8 +24,9 @@ const value: models.GetDeploymentCheckRunSelection2 = {
 
 ```typescript
 const value: models.GetDeploymentCheckRunSelection3 = {
-  job: "Senior Data Administrator",
-  kind: "task",
+  filters: [],
+  job: "Turborepo",
+  kind: "turborepo",
   task: "<value>",
 };
 ```

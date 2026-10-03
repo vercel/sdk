@@ -47,7 +47,6 @@ import {
   BatchRemoveProjectEnvRequest,
   BatchRemoveProjectEnvResponseBody,
 } from "../models/batchremoveprojectenvop.js";
-import { CreateProjectRequest } from "../models/createprojectcontenthint8.js";
 import {
   CreateProjectEnvRequest,
   CreateProjectEnvResponseBody,
@@ -82,9 +81,10 @@ import {
   GetProjectEnvRequest,
   GetProjectEnvResponseBody,
 } from "../models/getprojectenvop.js";
-import { GetProjectRequest } from "../models/getprojectgitprovideroptions.js";
+import { GetProjectRequest } from "../models/getprojectreadysubstate.js";
 import { GetProjectResponseBody } from "../models/getprojectresponsebody.js";
 import { GetProjectsResponseBody } from "../models/getprojectsresponsebody.js";
+import { GetProjectsRequest } from "../models/getprojectsresponsebodyprojectsresponse200applicationjson3creator.js";
 import {
   GetProjectTokenRequest,
   GetProjectTokenResponseBody,
@@ -93,6 +93,7 @@ import {
   GetProjectTraceRequest,
   GetProjectTraceResponseBody,
 } from "../models/getprojecttraceop.js";
+import { CreateProjectRequest } from "../models/internalroutes1.js";
 import {
   ListPromoteAliasesRequest,
   ListPromoteAliasesResponseBody,
@@ -112,11 +113,9 @@ import {
 } from "../models/removeprojectenvop.js";
 import { RequestPromoteRequest } from "../models/requestpromoteop.js";
 import { RequestRollbackRequest } from "../models/requestrollbackop.js";
-import { GetProjectsRequest } from "../models/responsebodyexpiration.js";
 import { UnpauseProjectRequest } from "../models/unpauseprojectop.js";
-import { UpdateMicrofrontendsRequest } from "../models/updatemicrofrontendscreatedeployments.js";
+import { UpdateMicrofrontendsRequest } from "../models/updatemicrofrontendsprojectsresponse200type.js";
 import { UpdateMicrofrontendsResponseBody } from "../models/updatemicrofrontendsresponsebody.js";
-import { UpdateProjectRequest } from "../models/updateprojectcreatoruser.js";
 import {
   UpdateProjectDomainRequest,
   UpdateProjectDomainResponseBody,
@@ -127,7 +126,8 @@ import {
 } from "../models/updateprojectprotectionbypassop.js";
 import { UpdateProjectResponseBody } from "../models/updateprojectresponsebody.js";
 import { UpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequest } from "../models/updateprojectsbyprojectidrollbackbydeploymentidupdatedescriptionop.js";
-import { UploadProjectAvatarRequest } from "../models/uploadprojectavatargitprovideroptions.js";
+import { UpdateProjectRequest } from "../models/updateprojectsourcesprojects1.js";
+import { UploadProjectAvatarRequest } from "../models/uploadprojectavatarlatestdeployments.js";
 import { UploadProjectAvatarResponseBody } from "../models/uploadprojectavatarresponsebody.js";
 import {
   VerifyProjectDomainRequest,

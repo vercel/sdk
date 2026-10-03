@@ -3,29 +3,15 @@
 ## Example Usage
 
 ```typescript
-import { Teams } from "@vercel/sdk/models/lasteditedbyprincipal2.js";
+import { Teams } from "@vercel/sdk/models/lasteditedbyprincipal1.js";
 
 let value: Teams = {
-  confirmed: true,
-  confirmedAt: 3009.16,
-  created: 4453.66,
-  createdAt: 9426.6,
-  role: "SECURITY",
-  teamId: "<id>",
+  teamRoles: [],
 };
 ```
 
 ## Fields
 
-| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `accessRequestedAt`                                                                      | *number*                                                                                 | :heavy_minus_sign:                                                                       | N/A                                                                                      |
-| `confirmed`                                                                              | *true*                                                                                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `confirmedAt`                                                                            | *number*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `created`                                                                                | *number*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `createdAt`                                                                              | *number*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `joinedFrom`                                                                             | [models.UserEventPayload179JoinedFrom](../models/usereventpayload179joinedfrom.md)       | :heavy_minus_sign:                                                                       | N/A                                                                                      |
-| `role`                                                                                   | [models.UserEventPayload179Role](../models/usereventpayload179role.md)                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `teamId`                                                                                 | *string*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `teamPermissions`                                                                        | [models.UserEventPayloadTeamPermissions](../models/usereventpayloadteampermissions.md)[] | :heavy_minus_sign:                                                                       | N/A                                                                                      |
-| `teamRoles`                                                                              | [models.UserEventPayloadTeamRoles](../models/usereventpayloadteamroles.md)[]             | :heavy_minus_sign:                                                                       | N/A                                                                                      |
+| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `teamRoles`                                                                        | [models.UserEventPayload218TeamRoles](../models/usereventpayload218teamroles.md)[] | :heavy_check_mark:                                                                 | N/A                                                                                |

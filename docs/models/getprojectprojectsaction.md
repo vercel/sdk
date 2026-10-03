@@ -1,15 +1,17 @@
 # GetProjectProjectsAction
 
+What to do when the gate trips: pause the rollout, or roll it back.
+
 ## Example Usage
 
 ```typescript
-import { GetProjectProjectsAction } from "@vercel/sdk/models/getprojectgitprovideroptions.js";
+import { GetProjectProjectsAction } from "@vercel/sdk/models/getprojectresponsebody.js";
 
-let value: GetProjectProjectsAction = "remove-deployment-interstitial";
+let value: GetProjectProjectsAction = "rollback";
 ```
 
 ## Values
 
 ```typescript
-"add-deployment-interstitial" | "add-project-interstitial" | "remove-deployment-interstitial" | "remove-project-interstitial"
+"pause" | "rollback"
 ```

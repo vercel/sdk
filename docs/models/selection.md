@@ -24,8 +24,11 @@ const value: models.Selection2 = {
 
 ```typescript
 const value: models.Selection3 = {
-  job: "Future Paradigm Producer",
-  kind: "task",
+  filters: [
+    "<value 1>",
+  ],
+  job: "Turborepo",
+  kind: "turborepo",
   task: "<value>",
 };
 ```

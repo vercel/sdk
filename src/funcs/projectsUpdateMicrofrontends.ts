@@ -23,7 +23,7 @@ import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import {
   UpdateMicrofrontendsRequest,
   UpdateMicrofrontendsRequest$outboundSchema,
-} from "../models/updatemicrofrontendscreatedeployments.js";
+} from "../models/updatemicrofrontendsprojectsresponse200type.js";
 import {
   UpdateMicrofrontendsResponseBody,
   UpdateMicrofrontendsResponseBody$inboundSchema,
@@ -174,7 +174,7 @@ async function $do(
     | SDKValidationError
   >(
     M.json(200, UpdateMicrofrontendsResponseBody$inboundSchema),
-    M.fail([400, 401, 403, 409, 410, "4XX"]),
+    M.fail([400, 401, 403, 404, 409, 410, "4XX"]),
     M.fail([500, "5XX"]),
   )(response, req);
   if (!result.ok) {

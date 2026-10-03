@@ -1,17 +1,15 @@
 # UpdateProjectProjectsResponse200ApplicationJSONAction
 
-What to do when the gate trips: pause the rollout, or roll it back.
-
 ## Example Usage
 
 ```typescript
-import { UpdateProjectProjectsResponse200ApplicationJSONAction } from "@vercel/sdk/models/updateprojectresponsebody.js";
+import { UpdateProjectProjectsResponse200ApplicationJSONAction } from "@vercel/sdk/models/updateprojectratelimit.js";
 
-let value: UpdateProjectProjectsResponse200ApplicationJSONAction = "pause";
+let value: UpdateProjectProjectsResponse200ApplicationJSONAction = "deny";
 ```
 
 ## Values
 
 ```typescript
-"pause" | "rollback"
+"challenge" | "deny" | "log"
 ```

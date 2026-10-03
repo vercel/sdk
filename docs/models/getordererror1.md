@@ -33,10 +33,10 @@ const value: models.GetOrder1DomainsRegistrarResponse2003 = {
 };
 ```
 
-### `models.GetOrder14`
+### `models.GetOrder1DomainsRegistrarResponse2004`
 
 ```typescript
-const value: models.GetOrder14 = {
+const value: models.GetOrder1DomainsRegistrarResponse2004 = {
   code: "incorrect-auth-code",
 };
 ```

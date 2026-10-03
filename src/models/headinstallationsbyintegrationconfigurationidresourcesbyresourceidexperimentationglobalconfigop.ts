@@ -19,15 +19,11 @@ export type HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdEx
     resourceId: string;
   };
 
-export const HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigPurpose =
-  {
-    Experimentation: "experimentation",
-    Flags: "flags",
-  } as const;
-export type HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigPurpose =
-  ClosedEnum<
-    typeof HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigPurpose
-  >;
+export const Purpose = {
+  Experimentation: "experimentation",
+  Flags: "flags",
+} as const;
+export type Purpose = ClosedEnum<typeof Purpose>;
 
 /**
  * The Global Config data
@@ -36,9 +32,7 @@ export type HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdEx
   {
     digest: string;
     items: { [k: string]: GlobalConfigItemValue | null };
-    purpose?:
-      | HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigPurpose
-      | undefined;
+    purpose?: Purpose | undefined;
     updatedAt: number;
   };
 
@@ -73,12 +67,8 @@ export function headInstallationsByIntegrationConfigurationIdResourcesByResource
 }
 
 /** @internal */
-export const HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigPurpose$inboundSchema:
-  z.ZodNativeEnum<
-    typeof HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigPurpose
-  > = z.nativeEnum(
-    HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigPurpose,
-  );
+export const Purpose$inboundSchema: z.ZodNativeEnum<typeof Purpose> = z
+  .nativeEnum(Purpose);
 
 /** @internal */
 export const HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponseBody$inboundSchema:
@@ -89,9 +79,7 @@ export const HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdE
   > = z.object({
     digest: types.string(),
     items: z.record(types.nullable(GlobalConfigItemValue$inboundSchema)),
-    purpose: types.optional(
-      HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigPurpose$inboundSchema,
-    ),
+    purpose: types.optional(Purpose$inboundSchema),
     updatedAt: types.number(),
   });
 

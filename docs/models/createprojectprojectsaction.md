@@ -1,15 +1,17 @@
 # CreateProjectProjectsAction
 
+What to do when the gate trips: pause the rollout, or roll it back.
+
 ## Example Usage
 
 ```typescript
-import { CreateProjectProjectsAction } from "@vercel/sdk/models/createprojectcontenthint8.js";
+import { CreateProjectProjectsAction } from "@vercel/sdk/models/createprojecttoprojects1.js";
 
-let value: CreateProjectProjectsAction = "add-deployment-interstitial";
+let value: CreateProjectProjectsAction = "pause";
 ```
 
 ## Values
 
 ```typescript
-"add-deployment-interstitial" | "add-project-interstitial" | "remove-deployment-interstitial" | "remove-project-interstitial"
+"pause" | "rollback"
 ```

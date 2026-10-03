@@ -95,7 +95,7 @@ async function $do(
   const payload = parsed.value;
   const body = null;
 
-  const path = pathToFunc("/v1/ai-gateway/rules")();
+  const path = pathToFunc("/ai-gateway/rules")();
 
   const query = encodeFormQuery({
     "slug": payload.slug,
@@ -165,7 +165,7 @@ async function $do(
     | SDKValidationError
   >(
     M.json(201, AiGatewayRule$inboundSchema),
-    M.fail([400, 401, 403, 409, 410, "4XX"]),
+    M.fail([400, 401, 403, 404, 409, 410, "4XX"]),
     M.fail([500, "5XX"]),
   )(response, req);
   if (!result.ok) {

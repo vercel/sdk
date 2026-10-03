@@ -5,7 +5,7 @@ Service kind (Service.type). Omitted for schemas that do not define one.
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsServiceType } from "@vercel/sdk/models/updatemicrofrontendsto.js";
+import { UpdateMicrofrontendsServiceType } from "@vercel/sdk/models/updatemicrofrontendsresponsebody.js";
 
 let value: UpdateMicrofrontendsServiceType = "job";
 ```

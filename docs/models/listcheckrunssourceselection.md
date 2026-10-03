@@ -24,8 +24,12 @@ const value: models.ListCheckRunsSelection2 = {
 
 ```typescript
 const value: models.ListCheckRunsSelection3 = {
-  job: "Customer Division Representative",
-  kind: "task",
+  filters: [
+    "<value 1>",
+    "<value 2>",
+  ],
+  job: "Turborepo",
+  kind: "turborepo",
   task: "<value>",
 };
 ```

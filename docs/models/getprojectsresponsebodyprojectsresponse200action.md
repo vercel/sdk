@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyProjectsResponse200Action } from "@vercel/sdk/models/responsebodyexpiration.js";
+import { GetProjectsResponseBodyProjectsResponse200Action } from "@vercel/sdk/models/getprojectsresponsebody.js";
 
-let value: GetProjectsResponseBodyProjectsResponse200Action = "delete";
+let value: GetProjectsResponseBodyProjectsResponse200Action = "log";
 ```
 
 ## Values
 
 ```typescript
-"accept" | "cancel" | "delete"
+"challenge" | "deny" | "log"
 ```

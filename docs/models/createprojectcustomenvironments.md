@@ -5,7 +5,7 @@ Internal representation of a custom environment with all required properties
 ## Example Usage
 
 ```typescript
-import { CreateProjectCustomEnvironments } from "@vercel/sdk/models/createprojectcontenthint8.js";
+import { CreateProjectCustomEnvironments } from "@vercel/sdk/models/internalroutes1.js";
 
 let value: CreateProjectCustomEnvironments = {
   createdAt: 125.4,

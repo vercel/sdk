@@ -174,7 +174,7 @@ async function $do(
     M.jsonErr(403, CreateApiKeysResponse403ResponseBody$inboundSchema),
     M.jsonErr(429, CreateApiKeysResponse429ResponseBody$inboundSchema),
     M.jsonErr(500, CreateApiKeysResponse500ResponseBody$inboundSchema),
-    M.fail([400, 409, 410, "4XX"]),
+    M.fail([400, 404, 409, 410, "4XX"]),
     M.fail("5XX"),
   )(response, req, { extraFields: responseFields });
   if (!result.ok) {

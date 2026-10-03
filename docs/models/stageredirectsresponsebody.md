@@ -18,7 +18,7 @@ let value: StageRedirectsResponseBody = {
 
 ## Fields
 
-| Field                                                              | Type                                                               | Required                                                           | Description                                                        |
-| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| `alias`                                                            | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
-| `version`                                                          | [models.StageRedirectsVersion](../models/stageredirectsversion.md) | :heavy_check_mark:                                                 | N/A                                                                |
+| Field                                  | Type                                   | Required                               | Description                            |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| `alias`                                | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `version`                              | [models.Version](../models/version.md) | :heavy_check_mark:                     | N/A                                    |

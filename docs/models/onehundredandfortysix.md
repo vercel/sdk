@@ -5,12 +5,10 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFortySix } from "@vercel/sdk/models/usereventjobaction.js";
+import { OneHundredAndFortySix } from "@vercel/sdk/models/jobnsnbsideeffect.js";
 
 let value: OneHundredAndFortySix = {
-  path: "/tmp",
-  projectId: "<id>",
-  projectName: "<value>",
+  drainUrl: "https://unwritten-meatloaf.org/",
 };
 ```
 
@@ -18,6 +16,5 @@ let value: OneHundredAndFortySix = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `path`             | *string*           | :heavy_check_mark: | N/A                |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `drainUrl`         | *string*           | :heavy_check_mark: | N/A                |
+| `integrationName`  | *string*           | :heavy_minus_sign: | N/A                |

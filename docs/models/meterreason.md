@@ -5,11 +5,11 @@
 ```typescript
 import { MeterReason } from "@vercel/sdk/models/team.js";
 
-let value: MeterReason = "low_scheduled";
+let value: MeterReason = "medium_scheduled";
 ```
 
 ## Values
 
 ```typescript
-"high_retention_opt_in" | "low_scheduled" | "medium_scheduled"
+"low_scheduled" | "medium_scheduled" | "retention_opt_out"
 ```

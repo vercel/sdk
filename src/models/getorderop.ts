@@ -246,7 +246,7 @@ export type GetOrder15 = {
   code: "claims-notice-required";
 };
 
-export type GetOrder14 = {
+export type GetOrder1DomainsRegistrarResponse2004 = {
   code: "incorrect-auth-code";
 };
 
@@ -276,7 +276,7 @@ export type GetOrderError1 =
   | GetOrder1DomainsRegistrarResponse2001
   | GetOrder1DomainsRegistrarResponse2002
   | GetOrder1DomainsRegistrarResponse2003
-  | GetOrder14
+  | GetOrder1DomainsRegistrarResponse2004
   | GetOrder15
   | GetOrder16
   | GetOrder17
@@ -289,7 +289,7 @@ export type GetOrderDomainsError =
   | GetOrder1DomainsRegistrarResponse2001
   | GetOrder1DomainsRegistrarResponse2002
   | GetOrder1DomainsRegistrarResponse2003
-  | GetOrder14
+  | GetOrder1DomainsRegistrarResponse2004
   | GetOrder15
   | GetOrder16
   | GetOrder17
@@ -314,7 +314,7 @@ export type Domains2 = {
     | GetOrder1DomainsRegistrarResponse2001
     | GetOrder1DomainsRegistrarResponse2002
     | GetOrder1DomainsRegistrarResponse2003
-    | GetOrder14
+    | GetOrder1DomainsRegistrarResponse2004
     | GetOrder15
     | GetOrder16
     | GetOrder17
@@ -504,7 +504,7 @@ export type One5 = {
   details: GetOrder1Details;
 };
 
-export type One4 = {
+export type GetOrder14 = {
   code: "unexpected-error";
 };
 
@@ -536,14 +536,20 @@ export type GetOrder11 = {
   code: "payment-failed";
 };
 
-export type Error1 = GetOrder11 | GetOrder12 | GetOrder13 | One4 | One5 | One6;
+export type Error1 =
+  | GetOrder11
+  | GetOrder12
+  | GetOrder13
+  | GetOrder14
+  | One5
+  | One6;
 
 export type GetOrderError =
   | Error2
   | GetOrder11
   | GetOrder12
   | GetOrder13
-  | One4
+  | GetOrder14
   | One5
   | One6;
 
@@ -562,7 +568,7 @@ export type GetOrderResponseBody = {
     | GetOrder11
     | GetOrder12
     | GetOrder13
-    | One4
+    | GetOrder14
     | One5
     | One6
     | undefined;
@@ -1248,21 +1254,22 @@ export function getOrder15FromJSON(
 }
 
 /** @internal */
-export const GetOrder14$inboundSchema: z.ZodType<
-  GetOrder14,
+export const GetOrder1DomainsRegistrarResponse2004$inboundSchema: z.ZodType<
+  GetOrder1DomainsRegistrarResponse2004,
   z.ZodTypeDef,
   unknown
 > = z.object({
   code: types.literal("incorrect-auth-code"),
 });
 
-export function getOrder14FromJSON(
+export function getOrder1DomainsRegistrarResponse2004FromJSON(
   jsonString: string,
-): SafeParseResult<GetOrder14, SDKValidationError> {
+): SafeParseResult<GetOrder1DomainsRegistrarResponse2004, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetOrder14$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetOrder14' from JSON`,
+    (x) =>
+      GetOrder1DomainsRegistrarResponse2004$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetOrder1DomainsRegistrarResponse2004' from JSON`,
   );
 }
 
@@ -1390,7 +1397,7 @@ export const GetOrderError1$inboundSchema: z.ZodType<
   z.lazy(() => GetOrder1DomainsRegistrarResponse2001$inboundSchema),
   z.lazy(() => GetOrder1DomainsRegistrarResponse2002$inboundSchema),
   z.lazy(() => GetOrder1DomainsRegistrarResponse2003$inboundSchema),
-  z.lazy(() => GetOrder14$inboundSchema),
+  z.lazy(() => GetOrder1DomainsRegistrarResponse2004$inboundSchema),
   z.lazy(() => GetOrder15$inboundSchema),
   z.lazy(() => GetOrder16$inboundSchema),
   z.lazy(() => GetOrder17$inboundSchema),
@@ -1420,7 +1427,7 @@ export const GetOrderDomainsError$inboundSchema: z.ZodType<
     z.lazy(() => GetOrder1DomainsRegistrarResponse2001$inboundSchema),
     z.lazy(() => GetOrder1DomainsRegistrarResponse2002$inboundSchema),
     z.lazy(() => GetOrder1DomainsRegistrarResponse2003$inboundSchema),
-    z.lazy(() => GetOrder14$inboundSchema),
+    z.lazy(() => GetOrder1DomainsRegistrarResponse2004$inboundSchema),
     z.lazy(() => GetOrder15$inboundSchema),
     z.lazy(() => GetOrder16$inboundSchema),
     z.lazy(() => GetOrder17$inboundSchema),
@@ -1458,7 +1465,7 @@ export const Domains2$inboundSchema: z.ZodType<
         z.lazy(() => GetOrder1DomainsRegistrarResponse2001$inboundSchema),
         z.lazy(() => GetOrder1DomainsRegistrarResponse2002$inboundSchema),
         z.lazy(() => GetOrder1DomainsRegistrarResponse2003$inboundSchema),
-        z.lazy(() => GetOrder14$inboundSchema),
+        z.lazy(() => GetOrder1DomainsRegistrarResponse2004$inboundSchema),
         z.lazy(() => GetOrder15$inboundSchema),
         z.lazy(() => GetOrder16$inboundSchema),
         z.lazy(() => GetOrder17$inboundSchema),
@@ -2004,18 +2011,21 @@ export function one5FromJSON(
 }
 
 /** @internal */
-export const One4$inboundSchema: z.ZodType<One4, z.ZodTypeDef, unknown> = z
-  .object({
-    code: types.literal("unexpected-error"),
-  });
+export const GetOrder14$inboundSchema: z.ZodType<
+  GetOrder14,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  code: types.literal("unexpected-error"),
+});
 
-export function one4FromJSON(
+export function getOrder14FromJSON(
   jsonString: string,
-): SafeParseResult<One4, SDKValidationError> {
+): SafeParseResult<GetOrder14, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => One4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'One4' from JSON`,
+    (x) => GetOrder14$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetOrder14' from JSON`,
   );
 }
 
@@ -2140,7 +2150,7 @@ export const Error1$inboundSchema: z.ZodType<Error1, z.ZodTypeDef, unknown> = z
     z.lazy(() => GetOrder11$inboundSchema),
     z.lazy(() => GetOrder12$inboundSchema),
     z.lazy(() => GetOrder13$inboundSchema),
-    z.lazy(() => One4$inboundSchema),
+    z.lazy(() => GetOrder14$inboundSchema),
     z.lazy(() => One5$inboundSchema),
     z.lazy(() => One6$inboundSchema),
   ]);
@@ -2166,7 +2176,7 @@ export const GetOrderError$inboundSchema: z.ZodType<
     z.lazy(() => GetOrder11$inboundSchema),
     z.lazy(() => GetOrder12$inboundSchema),
     z.lazy(() => GetOrder13$inboundSchema),
-    z.lazy(() => One4$inboundSchema),
+    z.lazy(() => GetOrder14$inboundSchema),
     z.lazy(() => One5$inboundSchema),
     z.lazy(() => One6$inboundSchema),
   ]),
@@ -2204,7 +2214,7 @@ export const GetOrderResponseBody$inboundSchema: z.ZodType<
         z.lazy(() => GetOrder11$inboundSchema),
         z.lazy(() => GetOrder12$inboundSchema),
         z.lazy(() => GetOrder13$inboundSchema),
-        z.lazy(() => One4$inboundSchema),
+        z.lazy(() => GetOrder14$inboundSchema),
         z.lazy(() => One5$inboundSchema),
         z.lazy(() => One6$inboundSchema),
       ]),

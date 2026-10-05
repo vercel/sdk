@@ -42,7 +42,7 @@ export type StageRedirectsRequest = {
   requestBody?: StageRedirectsRequestBody | undefined;
 };
 
-export type StageRedirectsVersion = {
+export type Version = {
   /**
    * The staging link for previewing redirects in this version.
    */
@@ -77,7 +77,7 @@ export type StageRedirectsVersion = {
 
 export type StageRedirectsResponseBody = {
   alias: string | null;
-  version: StageRedirectsVersion;
+  version: Version;
 };
 
 /** @internal */
@@ -186,29 +186,26 @@ export function stageRedirectsRequestToJSON(
 }
 
 /** @internal */
-export const StageRedirectsVersion$inboundSchema: z.ZodType<
-  StageRedirectsVersion,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  alias: types.optional(types.string()),
-  createdBy: types.string(),
-  id: types.string(),
-  isLive: types.optional(types.boolean()),
-  isStaging: types.optional(types.boolean()),
-  key: types.string(),
-  lastModified: types.number(),
-  name: types.optional(types.string()),
-  redirectCount: types.optional(types.number()),
-});
+export const Version$inboundSchema: z.ZodType<Version, z.ZodTypeDef, unknown> =
+  z.object({
+    alias: types.optional(types.string()),
+    createdBy: types.string(),
+    id: types.string(),
+    isLive: types.optional(types.boolean()),
+    isStaging: types.optional(types.boolean()),
+    key: types.string(),
+    lastModified: types.number(),
+    name: types.optional(types.string()),
+    redirectCount: types.optional(types.number()),
+  });
 
-export function stageRedirectsVersionFromJSON(
+export function versionFromJSON(
   jsonString: string,
-): SafeParseResult<StageRedirectsVersion, SDKValidationError> {
+): SafeParseResult<Version, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => StageRedirectsVersion$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'StageRedirectsVersion' from JSON`,
+    (x) => Version$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Version' from JSON`,
   );
 }
 
@@ -219,7 +216,7 @@ export const StageRedirectsResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   alias: types.nullable(types.string()),
-  version: z.lazy(() => StageRedirectsVersion$inboundSchema),
+  version: z.lazy(() => Version$inboundSchema),
 });
 
 export function stageRedirectsResponseBodyFromJSON(

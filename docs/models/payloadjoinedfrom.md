@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadJoinedFrom } from "@vercel/sdk/models/twohundredandtwenty.js";
+import { PayloadJoinedFrom } from "@vercel/sdk/models/twohundredandtwentyseven.js";
 
 let value: PayloadJoinedFrom = {
   origin: "saml",
@@ -20,7 +20,7 @@ let value: PayloadJoinedFrom = {
 | `gitUserId`                                                                | *models.PayloadGitUserId*                                                  | :heavy_minus_sign:                                                         | N/A                                                                        |
 | `gitUserLogin`                                                             | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
 | `idpUserId`                                                                | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
-| `origin`                                                                   | [models.UserEventPayload242Origin](../models/usereventpayload242origin.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| `origin`                                                                   | [models.UserEventPayload246Origin](../models/usereventpayload246origin.md) | :heavy_check_mark:                                                         | N/A                                                                        |
 | `repoId`                                                                   | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
 | `repoPath`                                                                 | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
 | `ssoConnectedAt`                                                           | *number*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |

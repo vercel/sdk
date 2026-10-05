@@ -38,10 +38,10 @@ const value: models.GetOrder13 = {
 };
 ```
 
-### `models.One4`
+### `models.GetOrder14`
 
 ```typescript
-const value: models.One4 = {
+const value: models.GetOrder14 = {
   code: "unexpected-error",
 };
 ```

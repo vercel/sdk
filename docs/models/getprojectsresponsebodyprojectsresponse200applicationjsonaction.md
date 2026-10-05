@@ -3,14 +3,14 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyProjectsResponse200ApplicationJSONAction } from "@vercel/sdk/models/getprojectsroute1.js";
+import { GetProjectsResponseBodyProjectsResponse200ApplicationJSONAction } from "@vercel/sdk/models/getprojectsresponsebody.js";
 
 let value: GetProjectsResponseBodyProjectsResponse200ApplicationJSONAction =
-  "blocked";
+  "challenge";
 ```
 
 ## Values
 
 ```typescript
-"blocked"
+"challenge" | "deny" | "log"
 ```

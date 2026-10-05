@@ -247,11 +247,11 @@ export type PatchTeamDefaultExpirationSettings = {
    */
   expirationErrored?: ExpirationErrored | undefined;
   /**
-   * When true, opts the team out of the upcoming deployment-storage retention reduce (Medium/High cohorts). Does not change expiration settings.
+   * When true, opts a Pro team out of the upcoming deployment-storage retention reduce. Does not change expiration settings. Unmetered teams also require acknowledgeStorageBilling.
    */
   keepCurrentRetention?: boolean | undefined;
   /**
-   * Required when increasing any retention setting for a High cohort team after retention reduce and before metering. Confirms team-wide storage billing.
+   * Required with keepCurrentRetention for unmetered Pro teams; acknowledges that keeping current retention will incur storage billing on a later date.
    */
   acknowledgeStorageBilling?: boolean | undefined;
 };

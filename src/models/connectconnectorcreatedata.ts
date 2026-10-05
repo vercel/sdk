@@ -583,6 +583,14 @@ export type ServerConfig = {
    */
   grantTypesSupported?: Array<string> | undefined;
   /**
+   * Supported authorization grant profiles. urn:ietf:params:oauth:grant-profile:id-jag advertises XAA resource support.
+   */
+  authorizationGrantProfilesSupported?: Array<string> | undefined;
+  /**
+   * Token types supported for identity chaining. urn:ietf:params:oauth:token-type:id-jag advertises XAA IdP support.
+   */
+  identityChainingRequestedTokenTypesSupported?: Array<string> | undefined;
+  /**
    * OAuth response modes supported by the server.
    */
   responseModesSupported?: Array<string> | undefined;
@@ -1411,6 +1419,8 @@ export type ServerConfig$Outbound = {
   token_endpoint_auth_signing_alg_values_supported?: Array<string> | undefined;
   scopes_supported?: Array<string> | undefined;
   grant_types_supported?: Array<string> | undefined;
+  authorization_grant_profiles_supported?: Array<string> | undefined;
+  identity_chaining_requested_token_types_supported?: Array<string> | undefined;
   response_modes_supported?: Array<string> | undefined;
   subject_types_supported?: Array<string> | undefined;
   id_token_signing_alg_values_supported?: Array<string> | undefined;
@@ -1455,6 +1465,8 @@ export const ServerConfig$outboundSchema: z.ZodType<
   tokenEndpointAuthSigningAlgValuesSupported: z.array(z.string()).optional(),
   scopesSupported: z.array(z.string()).optional(),
   grantTypesSupported: z.array(z.string()).optional(),
+  authorizationGrantProfilesSupported: z.array(z.string()).optional(),
+  identityChainingRequestedTokenTypesSupported: z.array(z.string()).optional(),
   responseModesSupported: z.array(z.string()).optional(),
   subjectTypesSupported: z.array(z.string()).optional(),
   idTokenSigningAlgValuesSupported: z.array(z.string()).optional(),
@@ -1495,6 +1507,10 @@ export const ServerConfig$outboundSchema: z.ZodType<
         "token_endpoint_auth_signing_alg_values_supported",
       scopesSupported: "scopes_supported",
       grantTypesSupported: "grant_types_supported",
+      authorizationGrantProfilesSupported:
+        "authorization_grant_profiles_supported",
+      identityChainingRequestedTokenTypesSupported:
+        "identity_chaining_requested_token_types_supported",
       responseModesSupported: "response_modes_supported",
       subjectTypesSupported: "subject_types_supported",
       idTokenSigningAlgValuesSupported: "id_token_signing_alg_values_supported",

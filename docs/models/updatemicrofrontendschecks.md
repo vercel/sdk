@@ -5,7 +5,7 @@ The checks to evaluate. An empty array means nothing is evaluated.
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsChecks } from "@vercel/sdk/models/updatemicrofrontendsto.js";
+import { UpdateMicrofrontendsChecks } from "@vercel/sdk/models/updatemicrofrontendsresponsebody.js";
 
 let value: UpdateMicrofrontendsChecks = {
   excludePaths: [

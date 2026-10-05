@@ -5,19 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndThirtyNine } from "@vercel/sdk/models/twohundredandeightysix.js";
+import { ThreeHundredAndThirtyNine } from "@vercel/sdk/models/twohundredandninetyfive.js";
 
 let value: ThreeHundredAndThirtyNine = {
-  gitProvider: "<value>",
-  gitProviderGroupDescriptor: "<value>",
-  gitScope: "<value>",
+  projectId: "<id>",
+  projectName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                        | Type                         | Required                     | Description                  |
-| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-| `gitProvider`                | *string*                     | :heavy_check_mark:           | N/A                          |
-| `gitProviderGroupDescriptor` | *string*                     | :heavy_check_mark:           | N/A                          |
-| `gitScope`                   | *string*                     | :heavy_check_mark:           | N/A                          |
+| Field                                              | Type                                               | Required                                           | Description                                        |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| `addedAddresses`                                   | *string*[]                                         | :heavy_minus_sign:                                 | N/A                                                |
+| `oldTrustedIps`                                    | [models.OldTrustedIps](../models/oldtrustedips.md) | :heavy_minus_sign:                                 | N/A                                                |
+| `projectId`                                        | *string*                                           | :heavy_check_mark:                                 | N/A                                                |
+| `projectName`                                      | *string*                                           | :heavy_check_mark:                                 | N/A                                                |
+| `removedAddresses`                                 | *string*[]                                         | :heavy_minus_sign:                                 | N/A                                                |
+| `trustedIps`                                       | [models.TrustedIps](../models/trustedips.md)       | :heavy_minus_sign:                                 | N/A                                                |

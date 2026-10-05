@@ -8,12 +8,14 @@ The payload of the event, if requested.
 import { ThirtyTwo } from "@vercel/sdk/models/userevent.js";
 
 let value: ThirtyTwo = {
-  regions: [],
+  privateModel: {
+    slug: "<value>",
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `regions`          | *string*[]         | :heavy_check_mark: | N/A                |
+| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `privateModel`                                                 | [models.PayloadPrivateModel](../models/payloadprivatemodel.md) | :heavy_check_mark:                                             | N/A                                                            |

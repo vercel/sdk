@@ -20,11 +20,16 @@ let value: GetSecurityFirewallEventsResponseBody = {
       startTime: "<value>",
     },
   ],
+  pagination: {
+    hasMore: true,
+    next: "<value>",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `actions`                                                                                  | [models.GetSecurityFirewallEventsActions](../models/getsecurityfirewalleventsactions.md)[] | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `actions`                                                                                      | [models.GetSecurityFirewallEventsActions](../models/getsecurityfirewalleventsactions.md)[]     | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| `pagination`                                                                                   | [models.GetSecurityFirewallEventsPagination](../models/getsecurityfirewalleventspagination.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |

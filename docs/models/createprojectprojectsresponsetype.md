@@ -5,7 +5,7 @@ The type of environment (production, preview, or development)
 ## Example Usage
 
 ```typescript
-import { CreateProjectProjectsResponseType } from "@vercel/sdk/models/createprojectcontenthint8.js";
+import { CreateProjectProjectsResponseType } from "@vercel/sdk/models/internalroutes1.js";
 
 let value: CreateProjectProjectsResponseType = "production";
 ```

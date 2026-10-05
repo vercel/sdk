@@ -5,15 +5,54 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
+import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
+export const GetSecurityFirewallEventsQueryParamSort = {
+  StartTimeDesc: "startTime:desc",
+  StartTimeAsc: "startTime:asc",
+} as const;
+export type GetSecurityFirewallEventsQueryParamSort = ClosedEnum<
+  typeof GetSecurityFirewallEventsQueryParamSort
+>;
+
+export const QueryParamAction = {
+  Deny: "deny",
+  Challenge: "challenge",
+  Log: "log",
+  RateLimit: "rate_limit",
+  Bypass: "bypass",
+} as const;
+export type QueryParamAction = ClosedEnum<typeof QueryParamAction>;
+
+export const ActionType = {
+  SystemAction: "system-action",
+  CustomerAction: "customer-action",
+} as const;
+export type ActionType = ClosedEnum<typeof ActionType>;
+
+export const RuleKind = {
+  System: "system",
+  Custom: "custom",
+} as const;
+export type RuleKind = ClosedEnum<typeof RuleKind>;
+
 export type GetSecurityFirewallEventsRequest = {
+  sort?: GetSecurityFirewallEventsQueryParamSort | undefined;
+  limit?: number | undefined;
+  cursor?: string | undefined;
   projectId: string;
   startTimestamp?: number | undefined;
   endTimestamp?: number | undefined;
   hosts?: string | undefined;
+  ip?: Array<string> | undefined;
+  isActive?: boolean | undefined;
+  action?: Array<QueryParamAction> | undefined;
+  actionType?: Array<ActionType> | undefined;
+  ruleKind?: RuleKind | undefined;
+  ruleId?: Array<string> | undefined;
   /**
    * The Team identifier to perform the request on behalf of.
    */
@@ -37,16 +76,52 @@ export type GetSecurityFirewallEventsActions = {
   startTime: string;
 };
 
+export type GetSecurityFirewallEventsPagination = {
+  hasMore: boolean;
+  /**
+   * Pass as `cursor` to fetch the next page; null when there are no more.
+   */
+  next: string | null;
+};
+
 export type GetSecurityFirewallEventsResponseBody = {
   actions: Array<GetSecurityFirewallEventsActions>;
+  pagination: GetSecurityFirewallEventsPagination;
 };
 
 /** @internal */
+export const GetSecurityFirewallEventsQueryParamSort$outboundSchema:
+  z.ZodNativeEnum<typeof GetSecurityFirewallEventsQueryParamSort> = z
+    .nativeEnum(GetSecurityFirewallEventsQueryParamSort);
+
+/** @internal */
+export const QueryParamAction$outboundSchema: z.ZodNativeEnum<
+  typeof QueryParamAction
+> = z.nativeEnum(QueryParamAction);
+
+/** @internal */
+export const ActionType$outboundSchema: z.ZodNativeEnum<typeof ActionType> = z
+  .nativeEnum(ActionType);
+
+/** @internal */
+export const RuleKind$outboundSchema: z.ZodNativeEnum<typeof RuleKind> = z
+  .nativeEnum(RuleKind);
+
+/** @internal */
 export type GetSecurityFirewallEventsRequest$Outbound = {
+  sort?: string | undefined;
+  limit?: number | undefined;
+  cursor?: string | undefined;
   projectId: string;
   startTimestamp?: number | undefined;
   endTimestamp?: number | undefined;
   hosts?: string | undefined;
+  ip?: Array<string> | undefined;
+  isActive?: boolean | undefined;
+  action?: Array<string> | undefined;
+  actionType?: Array<string> | undefined;
+  ruleKind?: string | undefined;
+  ruleId?: Array<string> | undefined;
   teamId?: string | undefined;
   slug?: string | undefined;
 };
@@ -57,10 +132,19 @@ export const GetSecurityFirewallEventsRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetSecurityFirewallEventsRequest
 > = z.object({
+  sort: GetSecurityFirewallEventsQueryParamSort$outboundSchema.optional(),
+  limit: z.number().optional(),
+  cursor: z.string().optional(),
   projectId: z.string(),
   startTimestamp: z.number().optional(),
   endTimestamp: z.number().optional(),
   hosts: z.string().optional(),
+  ip: z.array(z.string()).optional(),
+  isActive: z.boolean().optional(),
+  action: z.array(QueryParamAction$outboundSchema).optional(),
+  actionType: z.array(ActionType$outboundSchema).optional(),
+  ruleKind: RuleKind$outboundSchema.optional(),
+  ruleId: z.array(z.string()).optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
@@ -109,6 +193,27 @@ export function getSecurityFirewallEventsActionsFromJSON(
 }
 
 /** @internal */
+export const GetSecurityFirewallEventsPagination$inboundSchema: z.ZodType<
+  GetSecurityFirewallEventsPagination,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  hasMore: types.boolean(),
+  next: types.nullable(types.string()),
+});
+
+export function getSecurityFirewallEventsPaginationFromJSON(
+  jsonString: string,
+): SafeParseResult<GetSecurityFirewallEventsPagination, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetSecurityFirewallEventsPagination$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetSecurityFirewallEventsPagination' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetSecurityFirewallEventsResponseBody$inboundSchema: z.ZodType<
   GetSecurityFirewallEventsResponseBody,
   z.ZodTypeDef,
@@ -117,6 +222,7 @@ export const GetSecurityFirewallEventsResponseBody$inboundSchema: z.ZodType<
   actions: z.array(
     z.lazy(() => GetSecurityFirewallEventsActions$inboundSchema),
   ),
+  pagination: z.lazy(() => GetSecurityFirewallEventsPagination$inboundSchema),
 });
 
 export function getSecurityFirewallEventsResponseBodyFromJSON(

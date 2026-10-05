@@ -35,6 +35,7 @@ export type Slots = {
 export type Fallthrough3 = {
   base: FallthroughBase;
   defaultVariantId: string;
+  finalPromille?: number | undefined;
   rollFromVariantId: string;
   rollToVariantId: string;
   slots: Array<Slots>;
@@ -201,6 +202,7 @@ export type OutcomeSlots = {
 export type Outcome3 = {
   base: FlagOutcomeBase;
   defaultVariantId: string;
+  finalPromille?: number | undefined;
   rollFromVariantId: string;
   rollToVariantId: string;
   slots: Array<OutcomeSlots>;
@@ -393,6 +395,7 @@ export const Fallthrough3$inboundSchema: z.ZodType<
 > = z.object({
   base: z.lazy(() => FallthroughBase$inboundSchema),
   defaultVariantId: types.string(),
+  finalPromille: types.optional(types.number()),
   rollFromVariantId: types.string(),
   rollToVariantId: types.string(),
   slots: z.array(z.lazy(() => Slots$inboundSchema)),
@@ -839,6 +842,7 @@ export const Outcome3$inboundSchema: z.ZodType<
 > = z.object({
   base: z.lazy(() => FlagOutcomeBase$inboundSchema),
   defaultVariantId: types.string(),
+  finalPromille: types.optional(types.number()),
   rollFromVariantId: types.string(),
   rollToVariantId: types.string(),
   slots: z.array(z.lazy(() => OutcomeSlots$inboundSchema)),

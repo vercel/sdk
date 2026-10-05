@@ -21,13 +21,13 @@ import {
 import { ResponseValidationError } from "../models/responsevalidationerror.js";
 import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import {
-  UpdateProjectRequest,
-  UpdateProjectRequest$outboundSchema,
-} from "../models/updateprojectcreatoruser.js";
-import {
   UpdateProjectResponseBody,
   UpdateProjectResponseBody$inboundSchema,
 } from "../models/updateprojectresponsebody.js";
+import {
+  UpdateProjectRequest,
+  UpdateProjectRequest$outboundSchema,
+} from "../models/updateprojectsourcesprojects1.js";
 import { VercelError } from "../models/vercelerror.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";

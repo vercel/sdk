@@ -5,7 +5,7 @@
 ```typescript
 import {
   GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsAliasChecksConclusion,
-} from "@vercel/sdk/models/responsebodyexpiration.js";
+} from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson3creator.js";
 
 let value:
   GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsAliasChecksConclusion =

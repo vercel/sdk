@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectTypecheck } from "@vercel/sdk/models/getprojectto1.js";
+import { GetProjectTypecheck } from "@vercel/sdk/models/getprojectreadysubstate.js";
 
 let value: GetProjectTypecheck = {
   targets: [

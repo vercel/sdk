@@ -11,5 +11,5 @@ let value: Cohort = "high";
 ## Values
 
 ```typescript
-"high" | "low" | "medium"
+"already_metered" | "extreme" | "high" | "low" | "medium" | "medium_plus" | "metered_opt_in"
 ```

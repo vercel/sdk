@@ -49,6 +49,13 @@ export type GetDeploymentCheckRunResponseBodyChecksV2Conclusion = ClosedEnum<
   typeof GetDeploymentCheckRunResponseBodyChecksV2Conclusion
 >;
 
+export type GetDeploymentCheckRunResponseBodyChecksV2ExpectationRef = {
+  invocationAttempt: number;
+  invocationId: string;
+  jobDefinitionId: string;
+  jobRunAttempt: number;
+};
+
 export const GetDeploymentCheckRunResponseBodyChecksV2Requires = {
   BuildReady: "build-ready",
   DeploymentUrl: "deployment-url",
@@ -114,6 +121,13 @@ export type GetDeploymentCheckRunResponseBody2 = {
   conclusionText?: string | undefined;
   createdAt: number;
   deploymentId: string;
+  expectationRef?:
+    | GetDeploymentCheckRunResponseBodyChecksV2ExpectationRef
+    | undefined;
+  /**
+   * Latest aggregate revision applied to this check run.
+   */
+  expectationRevision?: number | undefined;
   externalId?: string | undefined;
   externalUrl?: string | undefined;
   id: string;
@@ -154,6 +168,13 @@ export type GetDeploymentCheckRunResponseBodyConclusion = ClosedEnum<
   typeof GetDeploymentCheckRunResponseBodyConclusion
 >;
 
+export type GetDeploymentCheckRunResponseBodyExpectationRef = {
+  invocationAttempt: number;
+  invocationId: string;
+  jobDefinitionId: string;
+  jobRunAttempt: number;
+};
+
 export const GetDeploymentCheckRunResponseBodyRequires = {
   BuildReady: "build-ready",
   DeploymentUrl: "deployment-url",
@@ -179,9 +200,16 @@ export type GetDeploymentCheckRunSourceChecksV2Origin = ClosedEnum<
   typeof GetDeploymentCheckRunSourceChecksV2Origin
 >;
 
+export const SelectionJob = {
+  Turborepo: "Turborepo",
+} as const;
+export type SelectionJob = ClosedEnum<typeof SelectionJob>;
+
 export type GetDeploymentCheckRunSelection3 = {
-  job: string;
-  kind: "task";
+  failIfNoMatch?: boolean | undefined;
+  filters: Array<string>;
+  job: SelectionJob;
+  kind: "turborepo";
   task: string;
 };
 
@@ -307,6 +335,11 @@ export type GetDeploymentCheckRunResponseBody1 = {
   conclusionText?: string | undefined;
   createdAt: number;
   deploymentId: string;
+  expectationRef?: GetDeploymentCheckRunResponseBodyExpectationRef | undefined;
+  /**
+   * Latest aggregate revision applied to this check run.
+   */
+  expectationRevision?: number | undefined;
   externalId?: string | undefined;
   externalUrl?: string | undefined;
   id: string;
@@ -371,6 +404,34 @@ export const GetDeploymentCheckRunResponseBodyChecksV2Blocks$inboundSchema:
 export const GetDeploymentCheckRunResponseBodyChecksV2Conclusion$inboundSchema:
   z.ZodNativeEnum<typeof GetDeploymentCheckRunResponseBodyChecksV2Conclusion> =
     z.nativeEnum(GetDeploymentCheckRunResponseBodyChecksV2Conclusion);
+
+/** @internal */
+export const GetDeploymentCheckRunResponseBodyChecksV2ExpectationRef$inboundSchema:
+  z.ZodType<
+    GetDeploymentCheckRunResponseBodyChecksV2ExpectationRef,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    invocationAttempt: types.number(),
+    invocationId: types.string(),
+    jobDefinitionId: types.string(),
+    jobRunAttempt: types.number(),
+  });
+
+export function getDeploymentCheckRunResponseBodyChecksV2ExpectationRefFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetDeploymentCheckRunResponseBodyChecksV2ExpectationRef,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentCheckRunResponseBodyChecksV2ExpectationRef$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentCheckRunResponseBodyChecksV2ExpectationRef' from JSON`,
+  );
+}
 
 /** @internal */
 export const GetDeploymentCheckRunResponseBodyChecksV2Requires$inboundSchema:
@@ -481,6 +542,12 @@ export const GetDeploymentCheckRunResponseBody2$inboundSchema: z.ZodType<
   conclusionText: types.optional(types.string()),
   createdAt: types.number(),
   deploymentId: types.string(),
+  expectationRef: types.optional(
+    z.lazy(() =>
+      GetDeploymentCheckRunResponseBodyChecksV2ExpectationRef$inboundSchema
+    ),
+  ),
+  expectationRevision: types.optional(types.number()),
   externalId: types.optional(types.string()),
   externalUrl: types.optional(types.string()),
   id: types.string(),
@@ -523,6 +590,35 @@ export const GetDeploymentCheckRunResponseBodyConclusion$inboundSchema:
     .nativeEnum(GetDeploymentCheckRunResponseBodyConclusion);
 
 /** @internal */
+export const GetDeploymentCheckRunResponseBodyExpectationRef$inboundSchema:
+  z.ZodType<
+    GetDeploymentCheckRunResponseBodyExpectationRef,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    invocationAttempt: types.number(),
+    invocationId: types.string(),
+    jobDefinitionId: types.string(),
+    jobRunAttempt: types.number(),
+  });
+
+export function getDeploymentCheckRunResponseBodyExpectationRefFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetDeploymentCheckRunResponseBodyExpectationRef,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentCheckRunResponseBodyExpectationRef$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetDeploymentCheckRunResponseBodyExpectationRef' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetDeploymentCheckRunResponseBodyRequires$inboundSchema:
   z.ZodNativeEnum<typeof GetDeploymentCheckRunResponseBodyRequires> = z
     .nativeEnum(GetDeploymentCheckRunResponseBodyRequires);
@@ -538,13 +634,19 @@ export const GetDeploymentCheckRunSourceChecksV2Origin$inboundSchema:
     .nativeEnum(GetDeploymentCheckRunSourceChecksV2Origin);
 
 /** @internal */
+export const SelectionJob$inboundSchema: z.ZodNativeEnum<typeof SelectionJob> =
+  z.nativeEnum(SelectionJob);
+
+/** @internal */
 export const GetDeploymentCheckRunSelection3$inboundSchema: z.ZodType<
   GetDeploymentCheckRunSelection3,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  job: types.string(),
-  kind: types.literal("task"),
+  failIfNoMatch: types.optional(types.boolean()),
+  filters: z.array(types.string()),
+  job: SelectionJob$inboundSchema,
+  kind: types.literal("turborepo"),
   task: types.string(),
 });
 
@@ -805,6 +907,10 @@ export const GetDeploymentCheckRunResponseBody1$inboundSchema: z.ZodType<
   conclusionText: types.optional(types.string()),
   createdAt: types.number(),
   deploymentId: types.string(),
+  expectationRef: types.optional(
+    z.lazy(() => GetDeploymentCheckRunResponseBodyExpectationRef$inboundSchema),
+  ),
+  expectationRevision: types.optional(types.number()),
   externalId: types.optional(types.string()),
   externalUrl: types.optional(types.string()),
   id: types.string(),

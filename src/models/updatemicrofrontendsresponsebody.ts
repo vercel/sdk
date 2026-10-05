@@ -3,21 +3,31 @@
  */
 
 import * as z from "zod/v3";
+import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
+import { ACLAction, ACLAction$inboundSchema } from "./aclaction.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
-  UpdateMicrofrontendsAbuse,
-  UpdateMicrofrontendsAbuse$inboundSchema,
   UpdateMicrofrontendsAlias,
   UpdateMicrofrontendsAlias$inboundSchema,
+  UpdateMicrofrontendsAliasAssigned,
+  UpdateMicrofrontendsAliasAssigned$inboundSchema,
+  UpdateMicrofrontendsAliasError,
+  UpdateMicrofrontendsAliasError$inboundSchema,
   UpdateMicrofrontendsAnalytics,
   UpdateMicrofrontendsAnalytics$inboundSchema,
   UpdateMicrofrontendsBlobs,
   UpdateMicrofrontendsBlobs$inboundSchema,
+  UpdateMicrofrontendsBuilds,
+  UpdateMicrofrontendsBuilds$inboundSchema,
+  UpdateMicrofrontendsChecksConclusion,
+  UpdateMicrofrontendsChecksConclusion$inboundSchema,
+  UpdateMicrofrontendsChecksState,
+  UpdateMicrofrontendsChecksState$inboundSchema,
   UpdateMicrofrontendsConnectConfigurations,
   UpdateMicrofrontendsConnectConfigurations$inboundSchema,
   UpdateMicrofrontendsCreator,
@@ -46,8 +56,6 @@ import {
   UpdateMicrofrontendsFramework$inboundSchema,
   UpdateMicrofrontendsGitComments,
   UpdateMicrofrontendsGitComments$inboundSchema,
-} from "./updatemicrofrontendscreatedeployments.js";
-import {
   UpdateMicrofrontendsGitProviderOptions,
   UpdateMicrofrontendsGitProviderOptions$inboundSchema,
   UpdateMicrofrontendsInternalRoutes,
@@ -60,60 +68,2587 @@ import {
   UpdateMicrofrontendsLastAliasRequest$inboundSchema,
   UpdateMicrofrontendsLastRollbackTarget,
   UpdateMicrofrontendsLastRollbackTarget$inboundSchema,
-  UpdateMicrofrontendsLatestDeployments,
-  UpdateMicrofrontendsLatestDeployments$inboundSchema,
-  UpdateMicrofrontendsLink,
-  UpdateMicrofrontendsLink$inboundSchema,
-  UpdateMicrofrontendsMicrofrontends,
-  UpdateMicrofrontendsMicrofrontends$inboundSchema,
-  UpdateMicrofrontendsNodeVersion,
-  UpdateMicrofrontendsNodeVersion$inboundSchema,
-  UpdateMicrofrontendsOidcTokenConfig,
-  UpdateMicrofrontendsOidcTokenConfig$inboundSchema,
-  UpdateMicrofrontendsOptionsAllowlist,
-  UpdateMicrofrontendsOptionsAllowlist$inboundSchema,
-  UpdateMicrofrontendsPassport,
-  UpdateMicrofrontendsPassport$inboundSchema,
-  UpdateMicrofrontendsPasswordProtection,
-  UpdateMicrofrontendsPasswordProtection$inboundSchema,
-  UpdateMicrofrontendsPermissions,
-  UpdateMicrofrontendsPermissions$inboundSchema,
-  UpdateMicrofrontendsProtectionBypass,
-  UpdateMicrofrontendsProtectionBypass$inboundSchema,
-  UpdateMicrofrontendsProtectionConfig,
-  UpdateMicrofrontendsProtectionConfig$inboundSchema,
-  UpdateMicrofrontendsResourceConfig,
-  UpdateMicrofrontendsResourceConfig$inboundSchema,
-  UpdateMicrofrontendsRollbackDescription,
-  UpdateMicrofrontendsRollbackDescription$inboundSchema,
-  UpdateMicrofrontendsRollingRelease,
-  UpdateMicrofrontendsRollingRelease$inboundSchema,
-  UpdateMicrofrontendsSandbox,
-  UpdateMicrofrontendsSandbox$inboundSchema,
-  UpdateMicrofrontendsSecurity,
-  UpdateMicrofrontendsSecurity$inboundSchema,
-  UpdateMicrofrontendsServices,
-  UpdateMicrofrontendsServices$inboundSchema,
-  UpdateMicrofrontendsSpeedInsights,
-  UpdateMicrofrontendsSpeedInsights$inboundSchema,
-  UpdateMicrofrontendsSsoProtection,
-  UpdateMicrofrontendsSsoProtection$inboundSchema,
-  UpdateMicrofrontendsStaticIps,
-  UpdateMicrofrontendsStaticIps$inboundSchema,
-  UpdateMicrofrontendsTargets,
-  UpdateMicrofrontendsTargets$inboundSchema,
-  UpdateMicrofrontendsTier,
-  UpdateMicrofrontendsTier$inboundSchema,
-  UpdateMicrofrontendsTo,
-  UpdateMicrofrontendsTo$inboundSchema,
-  UpdateMicrofrontendsTracing,
-  UpdateMicrofrontendsTracing$inboundSchema,
-  UpdateMicrofrontendsTrustedIps,
-  UpdateMicrofrontendsTrustedIps$inboundSchema,
-} from "./updatemicrofrontendsto.js";
+  UpdateMicrofrontendsOidcTokenClaims,
+  UpdateMicrofrontendsOidcTokenClaims$inboundSchema,
+  UpdateMicrofrontendsPlan,
+  UpdateMicrofrontendsPlan$inboundSchema,
+  UpdateMicrofrontendsProjectsBranchMatcher,
+  UpdateMicrofrontendsProjectsBranchMatcher$inboundSchema,
+  UpdateMicrofrontendsProjectsCreator,
+  UpdateMicrofrontendsProjectsCreator$inboundSchema,
+  UpdateMicrofrontendsProjectsResponse200Type,
+  UpdateMicrofrontendsProjectsResponse200Type$inboundSchema,
+  UpdateMicrofrontendsReadyState,
+  UpdateMicrofrontendsReadyState$inboundSchema,
+  UpdateMicrofrontendsReadySubstate,
+  UpdateMicrofrontendsReadySubstate$inboundSchema,
+} from "./updatemicrofrontendsprojectsresponse200type.js";
+
+export type UpdateMicrofrontendsLatestDeployments = {
+  alias?: Array<string> | undefined;
+  aliasAssigned?: UpdateMicrofrontendsAliasAssigned | null | undefined;
+  aliasError?: UpdateMicrofrontendsAliasError | null | undefined;
+  aliasFinal?: string | null | undefined;
+  automaticAliases?: Array<string> | undefined;
+  branchMatcher?: UpdateMicrofrontendsProjectsBranchMatcher | undefined;
+  buildingAt?: number | undefined;
+  builds?: Array<UpdateMicrofrontendsBuilds> | undefined;
+  checksConclusion?: UpdateMicrofrontendsChecksConclusion | undefined;
+  checksState?: UpdateMicrofrontendsChecksState | undefined;
+  connectBuildsEnabled?: boolean | undefined;
+  connectConfigurationId?: string | undefined;
+  createdAt: number;
+  createdIn: string;
+  creator: UpdateMicrofrontendsProjectsCreator | null;
+  deletedAt?: number | undefined;
+  deploymentHostname: string;
+  forced?: boolean | undefined;
+  id: string;
+  meta?: { [k: string]: string } | undefined;
+  monorepoManager?: string | null | undefined;
+  name: string;
+  oidcTokenClaims?: UpdateMicrofrontendsOidcTokenClaims | undefined;
+  plan: UpdateMicrofrontendsPlan;
+  /**
+   * Whether or not preview comments are enabled for the deployment
+   */
+  previewCommentsEnabled?: boolean | undefined;
+  private: boolean;
+  readyAt?: number | undefined;
+  readyState: UpdateMicrofrontendsReadyState;
+  readySubstate?: UpdateMicrofrontendsReadySubstate | undefined;
+  requestedAt?: number | undefined;
+  target?: string | null | undefined;
+  teamId?: string | null | undefined;
+  type: UpdateMicrofrontendsProjectsResponse200Type;
+  url: string;
+  /**
+   * Present for user creators; omitted for app/integration/system creators.
+   */
+  userId?: string | undefined;
+  withCache?: boolean | undefined;
+};
+
+export type UpdateMicrofrontendsLinkProjectsResponse200ApplicationJSONResponseBody8DeployHooks =
+  {
+    createdAt?: number | undefined;
+    id: string;
+    name: string;
+    ref: string;
+    url: string;
+  };
+
+export type UpdateMicrofrontendsLink8 = {
+  createdAt?: number | undefined;
+  deployHooks: Array<
+    UpdateMicrofrontendsLinkProjectsResponse200ApplicationJSONResponseBody8DeployHooks
+  >;
+  gitCredentialId: string;
+  /**
+   * Owner (namespace) slug, e.g. `acme`.
+   */
+  owner: string;
+  /**
+   * Origin namespace id (`ns_…`) of the owner.
+   */
+  ownerId: string;
+  productionBranch: string;
+  repo: string;
+  /**
+   * Origin repository id.
+   */
+  repoId: string;
+  sourceless?: boolean | undefined;
+  type: "cursor-origin";
+  updatedAt?: number | undefined;
+};
+
+export type UpdateMicrofrontendsLinkProjectsResponse200ApplicationJSONResponseBody7DeployHooks =
+  {
+    createdAt?: number | undefined;
+    id: string;
+    name: string;
+    ref: string;
+    url: string;
+  };
+
+export type UpdateMicrofrontendsLink7 = {
+  createdAt?: number | undefined;
+  deployHooks: Array<
+    UpdateMicrofrontendsLinkProjectsResponse200ApplicationJSONResponseBody7DeployHooks
+  >;
+  gitCredentialId: string;
+  org: string;
+  productionBranch: string;
+  repo: string;
+  repoId: string;
+  sourceless?: boolean | undefined;
+  type: "v0";
+  updatedAt?: number | undefined;
+};
+
+export type UpdateMicrofrontendsLinkProjectsResponse200ApplicationJSONResponseBodyDeployHooks =
+  {
+    createdAt?: number | undefined;
+    id: string;
+    name: string;
+    ref: string;
+    url: string;
+  };
+
+export type UpdateMicrofrontendsLink6 = {
+  createdAt?: number | undefined;
+  deployHooks: Array<
+    UpdateMicrofrontendsLinkProjectsResponse200ApplicationJSONResponseBodyDeployHooks
+  >;
+  gitCredentialId: string;
+  org: string;
+  productionBranch: string;
+  repo: string;
+  repoId: string;
+  sourceless?: boolean | undefined;
+  type: "vercel";
+  updatedAt?: number | undefined;
+};
+
+export type UpdateMicrofrontendsLinkProjectsResponse200ApplicationJSONDeployHooks =
+  {
+    createdAt?: number | undefined;
+    id: string;
+    name: string;
+    ref: string;
+    url: string;
+  };
+
+export type UpdateMicrofrontendsLink5 = {
+  createdAt?: number | undefined;
+  deployHooks: Array<
+    UpdateMicrofrontendsLinkProjectsResponse200ApplicationJSONDeployHooks
+  >;
+  gitCredentialId: string;
+  name: string;
+  owner: string;
+  productionBranch: string;
+  slug: string;
+  sourceless?: boolean | undefined;
+  type: "bitbucket";
+  updatedAt?: number | undefined;
+  uuid: string;
+  workspaceUuid: string;
+};
+
+export type UpdateMicrofrontendsLinkProjectsResponse200DeployHooks = {
+  createdAt?: number | undefined;
+  id: string;
+  name: string;
+  ref: string;
+  url: string;
+};
+
+export type UpdateMicrofrontendsLink4 = {
+  createdAt?: number | undefined;
+  deployHooks: Array<UpdateMicrofrontendsLinkProjectsResponse200DeployHooks>;
+  gitCredentialId: string;
+  productionBranch: string;
+  projectId: string;
+  projectName: string;
+  projectNamespace: string;
+  projectNameWithNamespace: string;
+  /**
+   * A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes. This is the id of the top level group that a namespace belongs to. Gitlab supports group nesting (up to 20 levels).
+   */
+  projectOwnerId?: number | undefined;
+  projectUrl: string;
+  sourceless?: boolean | undefined;
+  type: "gitlab";
+  updatedAt?: number | undefined;
+};
+
+export type UpdateMicrofrontendsLinkProjectsResponseDeployHooks = {
+  createdAt?: number | undefined;
+  id: string;
+  name: string;
+  ref: string;
+  url: string;
+};
+
+export type UpdateMicrofrontendsLink3 = {
+  createdAt?: number | undefined;
+  deployHooks: Array<UpdateMicrofrontendsLinkProjectsResponseDeployHooks>;
+  gitCredentialId: string;
+  host: string;
+  org: string;
+  productionBranch: string;
+  repo?: string | undefined;
+  repoId?: number | undefined;
+  /**
+   * A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes.
+   */
+  repoOwnerId?: number | undefined;
+  sourceless?: boolean | undefined;
+  type: "github-custom-host";
+  updatedAt?: number | undefined;
+};
+
+export type UpdateMicrofrontendsLinkProjectsDeployHooks = {
+  createdAt?: number | undefined;
+  id: string;
+  name: string;
+  ref: string;
+  url: string;
+};
+
+export type UpdateMicrofrontendsLink2 = {
+  createdAt?: number | undefined;
+  deployHooks: Array<UpdateMicrofrontendsLinkProjectsDeployHooks>;
+  gitCredentialId: string;
+  org: string;
+  productionBranch: string;
+  repo?: string | undefined;
+  repoId?: number | undefined;
+  /**
+   * A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes.
+   */
+  repoOwnerId?: number | undefined;
+  sourceless?: boolean | undefined;
+  type: "github-limited";
+  updatedAt?: number | undefined;
+};
+
+export type UpdateMicrofrontendsLinkDeployHooks = {
+  createdAt?: number | undefined;
+  id: string;
+  name: string;
+  ref: string;
+  url: string;
+};
+
+export type UpdateMicrofrontendsLink1 = {
+  createdAt?: number | undefined;
+  deployHooks: Array<UpdateMicrofrontendsLinkDeployHooks>;
+  gitCredentialId: string;
+  org: string;
+  productionBranch: string;
+  repo?: string | undefined;
+  repoId?: number | undefined;
+  /**
+   * A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes.
+   */
+  repoOwnerId?: number | undefined;
+  sourceless?: boolean | undefined;
+  type: "github";
+  updatedAt?: number | undefined;
+};
+
+export type UpdateMicrofrontendsLink =
+  | UpdateMicrofrontendsLink1
+  | UpdateMicrofrontendsLink2
+  | UpdateMicrofrontendsLink3
+  | UpdateMicrofrontendsLink4
+  | UpdateMicrofrontendsLink5
+  | UpdateMicrofrontendsLink6
+  | UpdateMicrofrontendsLink7
+  | UpdateMicrofrontendsLink8;
+
+export type UpdateMicrofrontendsMicrofrontends3 = {
+  enabled: false;
+  freeProjectForLegacyLimits?: boolean | undefined;
+  groupIds: Array<any>;
+  updatedAt: number;
+};
+
+export type UpdateMicrofrontendsMicrofrontends2 = {
+  /**
+   * A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`
+   */
+  defaultRoute?: string | undefined;
+  /**
+   * Whether to add microfrontends routing to aliases. This means domains in this project will route as a microfrontend.
+   */
+  doNotRouteWithMicrofrontendsRouting?: boolean | undefined;
+  /**
+   * Whether microfrontends are enabled for this project.
+   */
+  enabled: true;
+  /**
+   * Whether the project was part of the legacy limits for hobby and pro-trial before billing was added. This field is only set when the team is upgraded to a paid plan and we are backfilling the subscription status. We cap the subscription to 2 projects and set this field for the 3rd project. When this field is set, the project is not charged for and we do not call any billing APIs for this project.
+   */
+  freeProjectForLegacyLimits?: boolean | undefined;
+  /**
+   * The group IDs of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together.
+   */
+  groupIds: Array<string>;
+  isDefaultApp?: false | undefined;
+  /**
+   * Whether observability data should be routed to this microfrontend project or a root project.
+   */
+  routeObservabilityToThisProject?: boolean | undefined;
+  /**
+   * Timestamp when the microfrontends settings were last updated.
+   */
+  updatedAt: number;
+};
+
+export type UpdateMicrofrontendsMicrofrontends1 = {
+  /**
+   * A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`
+   */
+  defaultRoute?: string | undefined;
+  /**
+   * Whether microfrontends are enabled for this project.
+   */
+  enabled: true;
+  /**
+   * Whether the project was part of the legacy limits for hobby and pro-trial before billing was added. This field is only set when the team is upgraded to a paid plan and we are backfilling the subscription status. We cap the subscription to 2 projects and set this field for the 3rd project. When this field is set, the project is not charged for and we do not call any billing APIs for this project.
+   */
+  freeProjectForLegacyLimits?: boolean | undefined;
+  /**
+   * The group IDs of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together.
+   */
+  groupIds: Array<string>;
+  isDefaultApp: true;
+  /**
+   * Timestamp when the microfrontends settings were last updated.
+   */
+  updatedAt: number;
+};
+
+export type UpdateMicrofrontendsMicrofrontends =
+  | UpdateMicrofrontendsMicrofrontends1
+  | UpdateMicrofrontendsMicrofrontends2
+  | UpdateMicrofrontendsMicrofrontends3;
+
+export const UpdateMicrofrontendsNodeVersion = {
+  TenDotX: "10.x",
+  TwelveDotX: "12.x",
+  FourteenDotX: "14.x",
+  SixteenDotX: "16.x",
+  EighteenDotX: "18.x",
+  TwentyDotX: "20.x",
+  TwentyTwoDotX: "22.x",
+  TwentyFourDotX: "24.x",
+  EightDot10DotX: "8.10.x",
+} as const;
+export type UpdateMicrofrontendsNodeVersion = ClosedEnum<
+  typeof UpdateMicrofrontendsNodeVersion
+>;
+
+/**
+ * - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`
+ */
+export const UpdateMicrofrontendsIssuerMode = {
+  Global: "global",
+  Team: "team",
+} as const;
+/**
+ * - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`
+ */
+export type UpdateMicrofrontendsIssuerMode = ClosedEnum<
+  typeof UpdateMicrofrontendsIssuerMode
+>;
+
+export type UpdateMicrofrontendsOidcTokenConfig = {
+  /**
+   * Whether or not to generate OpenID Connect JSON Web Tokens.
+   */
+  enabled?: boolean | undefined;
+  /**
+   * - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`
+   */
+  issuerMode?: UpdateMicrofrontendsIssuerMode | undefined;
+};
+
+export type UpdateMicrofrontendsPaths = {
+  value: string;
+};
+
+export type UpdateMicrofrontendsOptionsAllowlist = {
+  paths: Array<UpdateMicrofrontendsPaths>;
+};
+
+export const UpdateMicrofrontendsDeploymentType = {
+  All: "all",
+  AllExceptCustomDomains: "all_except_custom_domains",
+  Preview: "preview",
+  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+} as const;
+export type UpdateMicrofrontendsDeploymentType = ClosedEnum<
+  typeof UpdateMicrofrontendsDeploymentType
+>;
+
+export type UpdateMicrofrontendsPassport = {
+  connectorId: string;
+  deploymentType: UpdateMicrofrontendsDeploymentType;
+};
+
+export type UpdateMicrofrontendsPasswordProtection = {};
+
+/**
+ * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+ */
+export type UpdateMicrofrontendsPermissions = {
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  accessGroup?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  agent?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  aiGatewayApiKey?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  aiGatewayApiKeyBypassAll?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  aiGatewayApiKeyOwnedBySelf?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  aiGatewayApiKeySpendAttribution?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  aiGatewayApiKeyZdrExemption?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  aiGatewayBudget?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  aiGatewayCredits?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  aiGatewayGuardrails?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  aiGatewayPrivateModels?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  aiGatewayRules?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  aiGatewaySettings?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  aiGatewayTranscripts?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  aiGatewayTranscriptsSettings?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  aiGatewayUsage?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  aiGatewayVirtualModelConfigs?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  alertRules?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  alerts?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  aliasGlobal?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  aliasProject?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  aliasProtectionBypass?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  analytics?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  analyticsSampling?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  analyticsUsage?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  apiKey?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  apiKeyAiGateway?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  apiKeyOwnedBySelf?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  auditLog?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  automation?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  billingAddress?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  billingInformation?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  billingInvoice?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  billingInvoiceEmailRecipient?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  billingInvoiceLanguage?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  billingPlan?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  billingPurchaseOrder?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  billingRefund?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  billingTaxId?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  blob?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  blobStoreTokenSet?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  budget?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  buildMachine?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  buildMachineDefault?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  bulkRedirects?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  cacheArtifact?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  cacheArtifactUsageEvent?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  ciInvocations?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  ciLogs?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  codeChecks?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  codeOwners?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  concurrentBuilds?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  connect?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  connectConfiguration?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  connectConfigurationLink?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  connectLogs?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  connexClient?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  connexClientProject?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  connexContact?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  connexInstallation?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  connexToken?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  cursorOriginInstallation?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  dataCacheBillingSettings?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  dataCacheNamespace?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  defaultDeploymentProtection?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  deployment?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  deploymentBuildLogs?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  deploymentCheck?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  deploymentCheckPreview?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  deploymentCheckReRunFromProductionBranch?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  deploymentPolicy?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  deploymentPreview?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  deploymentPrivate?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  deploymentProductionGit?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  deploymentPromote?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  deploymentProtectionException?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  deploymentRollback?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  deploymentV0?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  domain?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  domainAcceptDelegation?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  domainAuthCodes?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  domainCertificate?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  domainCheckConfig?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  domainMove?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  domainPurchase?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  domainRecord?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  domainTransferIn?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  drain?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  edgeCacheNamespace?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  edgeConfig?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  edgeConfigItem?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  edgeConfigSchema?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  edgeConfigToken?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  endpointVerification?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  environments?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  event?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  fileUpload?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  flagsExplorerSubscription?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  gitCredentialGrant?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  gitRepository?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  imageOptimizationNewPrice?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  integration?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  integrationAccount?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  integrationConfiguration?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  integrationConfigurationProjects?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  integrationConfigurationRole?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  integrationConfigurationTransfer?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  integrationDeploymentAction?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  integrationEvent?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  integrationLog?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  integrationPullRequest?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  integrationResource?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  integrationResourceData?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  integrationResourceReplCommand?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  integrationResourceSecrets?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  integrationSSOSession?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  integrationStoreTokenSet?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  integrationStrict?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  integrationVercelConfigurationOverride?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  ipBlocking?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  job?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  jobGlobal?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  kmsIssuer?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  kmsProjectGrant?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  logDrain?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  logs?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  logsPreset?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  marketplaceBillingData?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  marketplaceExperimentationEdgeConfigData?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  marketplaceExperimentationItem?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  marketplaceFlexCommit?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  marketplaceInstallationMember?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  marketplaceInvoice?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  marketplaceSettings?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  messageboard?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  messageboardSpace?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  messageboardTask?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  monitoring?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  monitoringAlert?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  monitoringChart?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  monitoringQuery?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  monitoringSettings?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  notificationCustomerBudget?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  notificationDeploymentFailed?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  notificationDomainConfiguration?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  notificationDomainExpire?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  notificationDomainMoved?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  notificationDomainPurchase?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  notificationDomainRenewal?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  notificationDomainTransfer?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  notificationDomainUnverified?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  notificationMonitoringAlert?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  notificationPaymentFailed?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  notificationPreferences?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  notificationStatementOfReasons?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  notificationUsageAlert?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  oauth2Application?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  oauth2Connection?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  observabilityConfiguration?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  observabilityData?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  observabilityFunnel?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  observabilityNotebook?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  oidcFederationPolicy?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  onDemandBuild?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  onDemandConcurrency?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  openTelemetryEndpoint?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  optionsAllowlist?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  organization?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  organizationDomain?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  organizationTeam?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  ownEvent?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  pageIntegrity?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  passwordProtection?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  passwordProtectionInvoiceItem?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  paymentMethod?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  permissions?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  postgres?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  postgresStoreTokenSet?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  previewDeploymentSuffix?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  privateCloudAccount?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  privateLinkEndpoint?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  productionAliasProtectionBypass?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  productionShareableLink?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  project?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  projectAccessGroup?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  projectAnalyticsSampling?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  projectAnalyticsUsage?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  projectCheck?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  projectCheckRun?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  projectDeploymentExpiration?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  projectDeploymentHook?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  projectDeploymentProtectionStrict?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  projectDomain?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  projectDomainCheckConfig?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  projectDomainMove?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  projectDomainVerify?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  projectEnvVars?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  projectEnvVarsProduction?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  projectEnvVarsUnownedByIntegration?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  projectEvent?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  projectFlags?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  projectFlagsProduction?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  projectFlagsSDKKey?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  projectFromV0?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  projectId?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  projectIntegrationConfiguration?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  projectLink?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  projectMember?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  projectMonitoring?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  projectOIDCToken?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  projectPermissions?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  projectProductionBranch?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  projectProtectionBypass?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  projectRollingRelease?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  projectRoutes?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  projectSetting?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  projectSupportCase?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  projectSupportCaseComment?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  projectTier?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  projectTransfer?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  projectTransferIn?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  projectTransferOut?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  projectTransferRequest?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  projectUsage?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  proTrialOnboarding?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  rateLimit?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  redis?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  redisStoreTokenSet?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  remoteCaching?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  repository?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  samlConfig?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  schedule?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  seawallConfig?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  secret?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  securityConfig?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  securityPlusConfiguration?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  sensitiveEnvironmentVariablePolicy?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  setting?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  shareableLink?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  shareableLinkStrict?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  sharedEnvVarConnection?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  sharedEnvVars?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  sharedEnvVarsProduction?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  skewProtection?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  space?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  spaceRun?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  storeIsLocked?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  storeTokenSetSensitive?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  storeTransfer?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  supportCase?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  supportCaseComment?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  team?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  teamAccessRequest?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  teamFellowMembership?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  teamGitExclusivity?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  teamInvite?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  teamInviteCode?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  teamInviteLink?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  teamJoin?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  teamMemberMfaStatus?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  teamMicrofrontends?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  teamOwnMembership?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  teamOwnMembershipDisconnectSAML?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  teamSudo?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  teamTokenInvalidation?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  token?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  toolbarComment?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  trustedIps?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  trustedSources?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  usage?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  usageCycle?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  user?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  userConnection?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  userMfaConfiguration?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  userPreference?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  userSudo?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  v0Chat?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  vcrRepository?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  vercelAppInstallation?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  vercelAppInstallationRequest?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  vercelAuth?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  vercelRun?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  vpcPeeringConnection?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  webAnalytics?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  webAnalyticsPlan?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  webAuthn?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  webhook?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  webhookEvent?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  workflowRunData?: Array<ACLAction> | undefined;
+};
+
+export type UpdateMicrofrontendsProtectionBypass2 = {
+  createdAt: number;
+  createdBy: string;
+  /**
+   * When there was only one bypass, it was automatically set as an env var on deployments. With multiple bypasses, there is always one bypass that is selected as the default, and gets set as an env var on deployments. As this is a new field, undefined means that the bypass is the env var. If there are any automation bypasses, exactly one must be the env var.
+   */
+  isEnvVar?: boolean | undefined;
+  /**
+   * Optional note about the bypass to be displayed in the UI
+   */
+  note?: string | undefined;
+  scope: "automation-bypass";
+};
+
+export type UpdateMicrofrontendsProtectionBypass1 = {
+  configurationId: string;
+  createdAt: number;
+  createdBy: string;
+  integrationId: string;
+  scope: "integration-automation-bypass";
+};
+
+export type UpdateMicrofrontendsProtectionBypass =
+  | UpdateMicrofrontendsProtectionBypass1
+  | UpdateMicrofrontendsProtectionBypass2;
+
+export type UpdateMicrofrontendsSandboxUrls = {
+  inheritDeploymentProtection?: boolean | undefined;
+};
+
+export type UpdateMicrofrontendsProtectionConfig = {
+  sandboxUrls?: UpdateMicrofrontendsSandboxUrls | undefined;
+};
+
+export const UpdateMicrofrontendsProjectsBuildMachineElasticReason = {
+  BasicFloor: "basic-floor",
+  BuildTimeoutFailure: "build-timeout-failure",
+  EnospcFailure: "enospc-failure",
+  EnterpriseFloor: "enterprise-floor",
+  HighPeakDisk: "high-peak-disk",
+  HighPeakMemory: "high-peak-memory",
+  LongBuildDuration: "long-build-duration",
+  OomFailure: "oom-failure",
+  ShortBuildDuration: "short-build-duration",
+  SustainedHighCpu: "sustained-high-cpu",
+} as const;
+export type UpdateMicrofrontendsProjectsBuildMachineElasticReason = ClosedEnum<
+  typeof UpdateMicrofrontendsProjectsBuildMachineElasticReason
+>;
+
+export const UpdateMicrofrontendsProjectsDirection = {
+  Downgrade: "downgrade",
+  Upgrade: "upgrade",
+} as const;
+export type UpdateMicrofrontendsProjectsDirection = ClosedEnum<
+  typeof UpdateMicrofrontendsProjectsDirection
+>;
+
+export type UpdateMicrofrontendsProjectsBuildMachineElasticTransition = {
+  algorithmVersion: string;
+  at: number;
+  direction: UpdateMicrofrontendsProjectsDirection;
+};
+
+export const UpdateMicrofrontendsProjectsBuildMachineSelection = {
+  Elastic: "elastic",
+  Fixed: "fixed",
+} as const;
+export type UpdateMicrofrontendsProjectsBuildMachineSelection = ClosedEnum<
+  typeof UpdateMicrofrontendsProjectsBuildMachineSelection
+>;
+
+export const UpdateMicrofrontendsProjectsBuildMachineType = {
+  Basic: "basic",
+  Enhanced: "enhanced",
+  Standard: "standard",
+  Turbo: "turbo",
+} as const;
+export type UpdateMicrofrontendsProjectsBuildMachineType = ClosedEnum<
+  typeof UpdateMicrofrontendsProjectsBuildMachineType
+>;
+
+export const UpdateMicrofrontendsProjectsConfiguration = {
+  SkipNamespaceQueue: "SKIP_NAMESPACE_QUEUE",
+  WaitForNamespaceQueue: "WAIT_FOR_NAMESPACE_QUEUE",
+} as const;
+export type UpdateMicrofrontendsProjectsConfiguration = ClosedEnum<
+  typeof UpdateMicrofrontendsProjectsConfiguration
+>;
+
+export type UpdateMicrofrontendsProjectsBuildQueue = {
+  configuration?: UpdateMicrofrontendsProjectsConfiguration | undefined;
+};
+
+export const UpdateMicrofrontendsProjectsFunctionDefaultMemoryType = {
+  Performance: "performance",
+  PerformanceXl: "performance_xl",
+  Standard: "standard",
+  StandardLegacy: "standard_legacy",
+} as const;
+export type UpdateMicrofrontendsProjectsFunctionDefaultMemoryType = ClosedEnum<
+  typeof UpdateMicrofrontendsProjectsFunctionDefaultMemoryType
+>;
+
+export type UpdateMicrofrontendsResourceConfig = {
+  buildMachineElasticLastUpdated?: number | undefined;
+  buildMachineElasticReason?:
+    | UpdateMicrofrontendsProjectsBuildMachineElasticReason
+    | undefined;
+  buildMachineElasticTransition?:
+    | UpdateMicrofrontendsProjectsBuildMachineElasticTransition
+    | undefined;
+  buildMachineSelection?:
+    | UpdateMicrofrontendsProjectsBuildMachineSelection
+    | undefined;
+  buildMachineType?: UpdateMicrofrontendsProjectsBuildMachineType | undefined;
+  buildQueue?: UpdateMicrofrontendsProjectsBuildQueue | undefined;
+  elasticConcurrencyEnabled?: boolean | undefined;
+  enableFunctionsBeta?: boolean | undefined;
+  fluid?: boolean | undefined;
+  functionDefaultMemoryType?:
+    | UpdateMicrofrontendsProjectsFunctionDefaultMemoryType
+    | undefined;
+  functionDefaultRegions: Array<string>;
+  functionDefaultTimeout?: number | undefined;
+  functionZeroConfigFailover?: boolean | undefined;
+  isNSNBDisabled?: boolean | undefined;
+};
+
+/**
+ * Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback.
+ */
+export type UpdateMicrofrontendsRollbackDescription = {
+  /**
+   * Timestamp of when the rollback was requested.
+   */
+  createdAt: number;
+  /**
+   * User-supplied explanation of why they rolled back the project. Limited to 250 characters.
+   */
+  description: string;
+  /**
+   * The user who rolled back the project.
+   */
+  userId: string;
+  /**
+   * The username of the user who rolled back the project.
+   */
+  username: string;
+};
+
+/**
+ * What to do when the gate trips: pause the rollout, or roll it back.
+ */
+export const UpdateMicrofrontendsProjectsAction = {
+  Pause: "pause",
+  Rollback: "rollback",
+} as const;
+/**
+ * What to do when the gate trips: pause the rollout, or roll it back.
+ */
+export type UpdateMicrofrontendsProjectsAction = ClosedEnum<
+  typeof UpdateMicrofrontendsProjectsAction
+>;
+
+/**
+ * The metric this check evaluates.
+ */
+export const UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyRollingReleaseType =
+  {
+    ErrorRate5xx: "error-rate-5xx",
+  } as const;
+/**
+ * The metric this check evaluates.
+ */
+export type UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyRollingReleaseType =
+  ClosedEnum<
+    typeof UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyRollingReleaseType
+  >;
+
+/**
+ * The checks to evaluate. An empty array means nothing is evaluated.
+ */
+export type UpdateMicrofrontendsChecks = {
+  /**
+   * Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted.
+   */
+  excludePaths?: Array<string> | undefined;
+  /**
+   * Response status codes to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted.
+   */
+  excludeStatusCodes?: Array<number> | undefined;
+  /**
+   * Seconds of ingest lag to allow for: the query's upper bound is `now() - this value`, so the check never reads a window that is still filling. Defaults to `30` when omitted.
+   */
+  ingestWatermarkSeconds?: number | undefined;
+  /**
+   * Minimum number of requests required in the window before the check can fail. Below this, the check is inconclusive rather than failing, so low-traffic stages don't gate on noise. Defaults to `100` when omitted.
+   */
+  minSampleSize?: number | undefined;
+  /**
+   * The metric this check evaluates.
+   */
+  type:
+    UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyRollingReleaseType;
+};
+
+/**
+ * Automated gating configuration. Omitted (the default) means no gating is configured, which is equivalent to `enabled: false`.
+ */
+export type UpdateMicrofrontendsGate = {
+  /**
+   * What to do when the gate trips: pause the rollout, or roll it back.
+   */
+  action: UpdateMicrofrontendsProjectsAction;
+  /**
+   * The checks to evaluate. An empty array means nothing is evaluated.
+   */
+  checks: Array<UpdateMicrofrontendsChecks>;
+  /**
+   * When true, a tripped gate is only reported — {@link action} is not taken.
+   */
+  dryRun: boolean;
+  /**
+   * Whether automated gating is enabled for this project's rollouts.
+   */
+  enabled: boolean;
+  /**
+   * How many failing evaluations within {@link windowSize} trip the gate. Defaults to `3` when omitted.
+   */
+  failureThreshold?: number | undefined;
+  /**
+   * How many of the most recent evaluations {@link failureThreshold} is counted against. Defaults to `5` when omitted.
+   */
+  windowSize?: number | undefined;
+};
+
+/**
+ * An array of all the stages required during a deployment release. Each stage defines a target percentage and advancement rules. The final stage must always have targetPercentage: 100.
+ */
+export type UpdateMicrofrontendsStages = {
+  /**
+   * Duration in minutes for automatic advancement to the next stage
+   */
+  duration?: number | undefined;
+  /**
+   * Whether to linearly shift traffic over the duration of this stage
+   */
+  linearShift?: boolean | undefined;
+  /**
+   * Whether or not this stage requires manual approval to proceed
+   */
+  requireApproval?: boolean | undefined;
+  /**
+   * The percentage of traffic to serve to the canary deployment (0-100)
+   */
+  targetPercentage: number;
+};
+
+/**
+ * Project-level rolling release configuration that defines how deployments should be gradually rolled out
+ */
+export type UpdateMicrofrontendsRollingRelease = {
+  /**
+   * Whether the request served by a canary deployment should return a header indicating a canary was served. Defaults to `false` when omitted.
+   */
+  canaryResponseHeader?: boolean | undefined;
+  /**
+   * Automated gating configuration. Omitted (the default) means no gating is configured, which is equivalent to `enabled: false`.
+   */
+  gate?: UpdateMicrofrontendsGate | undefined;
+  /**
+   * An array of all the stages required during a deployment release. Each stage defines a target percentage and advancement rules. The final stage must always have targetPercentage: 100.
+   */
+  stages?: Array<UpdateMicrofrontendsStages> | null | undefined;
+  /**
+   * The environment that the release targets, currently only supports production. Adding in case we want to configure with alias groups or custom environments.
+   */
+  target: string;
+};
+
+export const UpdateMicrofrontendsFailoverRegions = {
+  Arn1: "arn1",
+  Bom1: "bom1",
+  Cdg1: "cdg1",
+  Cle1: "cle1",
+  Cpt1: "cpt1",
+  Dub1: "dub1",
+  Fra1: "fra1",
+  Gru1: "gru1",
+  Hkg1: "hkg1",
+  Hnd1: "hnd1",
+  Iad1: "iad1",
+  Icn1: "icn1",
+  Kix1: "kix1",
+  Lhr1: "lhr1",
+  Pdx1: "pdx1",
+  Sfo1: "sfo1",
+  Sin1: "sin1",
+  Syd1: "syd1",
+  Yul1: "yul1",
+} as const;
+export type UpdateMicrofrontendsFailoverRegions = ClosedEnum<
+  typeof UpdateMicrofrontendsFailoverRegions
+>;
+
+export const UpdateMicrofrontendsRegion = {
+  Arn1: "arn1",
+  Bom1: "bom1",
+  Cdg1: "cdg1",
+  Cle1: "cle1",
+  Cpt1: "cpt1",
+  Dub1: "dub1",
+  Fra1: "fra1",
+  Gru1: "gru1",
+  Hkg1: "hkg1",
+  Hnd1: "hnd1",
+  Iad1: "iad1",
+  Icn1: "icn1",
+  Kix1: "kix1",
+  Lhr1: "lhr1",
+  Pdx1: "pdx1",
+  Sfo1: "sfo1",
+  Sin1: "sin1",
+  Syd1: "syd1",
+  Yul1: "yul1",
+} as const;
+export type UpdateMicrofrontendsRegion = ClosedEnum<
+  typeof UpdateMicrofrontendsRegion
+>;
+
+export type UpdateMicrofrontendsSandbox = {
+  failoverRegions?: Array<UpdateMicrofrontendsFailoverRegions> | undefined;
+  region?: UpdateMicrofrontendsRegion | undefined;
+};
+
+export const UpdateMicrofrontendsLogHeaders2 = {
+  Wildcard: "*",
+} as const;
+export type UpdateMicrofrontendsLogHeaders2 = ClosedEnum<
+  typeof UpdateMicrofrontendsLogHeaders2
+>;
+
+export type UpdateMicrofrontendsLogHeaders =
+  | Array<string>
+  | UpdateMicrofrontendsLogHeaders2;
+
+export const UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction =
+  {
+    Challenge: "challenge",
+    Deny: "deny",
+    Log: "log",
+  } as const;
+export type UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction =
+  ClosedEnum<
+    typeof UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction
+  >;
+
+export type UpdateMicrofrontendsAiBots = {
+  action?:
+    | UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction
+    | undefined;
+  active: boolean;
+};
+
+export const UpdateMicrofrontendsProjectsResponse200Action = {
+  Challenge: "challenge",
+  Deny: "deny",
+  Log: "log",
+} as const;
+export type UpdateMicrofrontendsProjectsResponse200Action = ClosedEnum<
+  typeof UpdateMicrofrontendsProjectsResponse200Action
+>;
+
+export type UpdateMicrofrontendsBotFilter = {
+  action?: UpdateMicrofrontendsProjectsResponse200Action | undefined;
+  active: boolean;
+};
+
+export const UpdateMicrofrontendsProjectsResponse200ApplicationJSONAction = {
+  Challenge: "challenge",
+  Deny: "deny",
+  Log: "log",
+} as const;
+export type UpdateMicrofrontendsProjectsResponse200ApplicationJSONAction =
+  ClosedEnum<
+    typeof UpdateMicrofrontendsProjectsResponse200ApplicationJSONAction
+  >;
+
+export type UpdateMicrofrontendsOwasp = {
+  action?:
+    | UpdateMicrofrontendsProjectsResponse200ApplicationJSONAction
+    | undefined;
+  active: boolean;
+};
+
+export const UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyAction =
+  {
+    Challenge: "challenge",
+    Deny: "deny",
+    Log: "log",
+  } as const;
+export type UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyAction =
+  ClosedEnum<
+    typeof UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyAction
+  >;
+
+export type UpdateMicrofrontendsTrafficSources = {
+  action?:
+    | UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyAction
+    | undefined;
+  active: boolean;
+};
+
+export const UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodySecurityAction =
+  {
+    Challenge: "challenge",
+    Deny: "deny",
+    Log: "log",
+  } as const;
+export type UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodySecurityAction =
+  ClosedEnum<
+    typeof UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodySecurityAction
+  >;
+
+export type UpdateMicrofrontendsVercelRuleset = {
+  action?:
+    | UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodySecurityAction
+    | undefined;
+  active: boolean;
+};
+
+export type UpdateMicrofrontendsManagedRules = {
+  aiBots: UpdateMicrofrontendsAiBots;
+  botFilter: UpdateMicrofrontendsBotFilter;
+  owasp: UpdateMicrofrontendsOwasp;
+  trafficSources: UpdateMicrofrontendsTrafficSources;
+  vercelRuleset: UpdateMicrofrontendsVercelRuleset;
+};
+
+export const UpdateMicrofrontendsProjectsResponseAction = {
+  Allow: "allow",
+  Bypass: "bypass",
+  Challenge: "challenge",
+  Deny: "deny",
+  Log: "log",
+  RateLimit: "rate_limit",
+  Redirect: "redirect",
+} as const;
+export type UpdateMicrofrontendsProjectsResponseAction = ClosedEnum<
+  typeof UpdateMicrofrontendsProjectsResponseAction
+>;
+
+export const UpdateMicrofrontendsLogHeadersProjects2 = {
+  Wildcard: "*",
+} as const;
+export type UpdateMicrofrontendsLogHeadersProjects2 = ClosedEnum<
+  typeof UpdateMicrofrontendsLogHeadersProjects2
+>;
+
+export type UpdateMicrofrontendsProjectsLogHeaders =
+  | Array<string>
+  | UpdateMicrofrontendsLogHeadersProjects2;
+
+export const UpdateMicrofrontendsAlgo = {
+  FixedWindow: "fixed_window",
+  TokenBucket: "token_bucket",
+} as const;
+export type UpdateMicrofrontendsAlgo = ClosedEnum<
+  typeof UpdateMicrofrontendsAlgo
+>;
+
+export type UpdateMicrofrontendsRateLimit = {
+  algo: UpdateMicrofrontendsAlgo;
+  keys: Array<string>;
+  limit: number;
+  window: number;
+};
+
+export type UpdateMicrofrontendsRedirect = {
+  location: string;
+  permanent: boolean;
+};
+
+export type UpdateMicrofrontendsRulesets = {
+  action: UpdateMicrofrontendsProjectsResponseAction;
+  actionDuration?: string | null | undefined;
+  bypassSystem?: boolean | null | undefined;
+  logHeaders?:
+    | Array<string>
+    | UpdateMicrofrontendsLogHeadersProjects2
+    | undefined;
+  rateLimit?: UpdateMicrofrontendsRateLimit | null | undefined;
+  redirect?: UpdateMicrofrontendsRedirect | null | undefined;
+};
+
+export type UpdateMicrofrontendsSecurity = {
+  attackModeActiveUntil?: number | null | undefined;
+  attackModeEnabled?: boolean | undefined;
+  attackModeUpdatedAt?: number | undefined;
+  botIdEnabled?: boolean | undefined;
+  firewallBypassIps?: Array<string> | undefined;
+  firewallConfigVersion?: number | undefined;
+  firewallEnabled?: boolean | undefined;
+  firewallSeawallEnabled?: boolean | undefined;
+  firewallUpdatedAt?: number | undefined;
+  ja3Enabled?: boolean | undefined;
+  ja4Enabled?: boolean | undefined;
+  logHeaders?: Array<string> | UpdateMicrofrontendsLogHeaders2 | undefined;
+  managedRules?: UpdateMicrofrontendsManagedRules | null | undefined;
+  /**
+   * Whether Page Integrity is enabled for this project. Used by the metadata service to gate DynamoDB lookups against the page-integrity-inventory table.
+   */
+  pageIntegrityEnabled?: boolean | undefined;
+  rulesets?: { [k: string]: UpdateMicrofrontendsRulesets } | undefined;
+};
+
+/**
+ * Framework slug, when the service has one (omitted otherwise).
+ */
+export const UpdateMicrofrontendsProjectsFramework = {
+  ActixWeb: "actix-web",
+  Angular: "angular",
+  Ash: "ash",
+  Astro: "astro",
+  Axum: "axum",
+  Blitzjs: "blitzjs",
+  Brunch: "brunch",
+  Bun: "bun",
+  Container: "container",
+  CreateReactApp: "create-react-app",
+  Django: "django",
+  Docusaurus: "docusaurus",
+  Docusaurus2: "docusaurus-2",
+  Dojo: "dojo",
+  Eleventy: "eleventy",
+  Elysia: "elysia",
+  Ember: "ember",
+  Eve: "eve",
+  Express: "express",
+  FactoryEve: "factory-eve",
+  Fastapi: "fastapi",
+  Fasthtml: "fasthtml",
+  Fastify: "fastify",
+  Flask: "flask",
+  Gatsby: "gatsby",
+  Go: "go",
+  Gridsome: "gridsome",
+  H3: "h3",
+  Hexo: "hexo",
+  Hono: "hono",
+  Hugo: "hugo",
+  Hydrogen: "hydrogen",
+  IonicAngular: "ionic-angular",
+  IonicReact: "ionic-react",
+  Jekyll: "jekyll",
+  Koa: "koa",
+  Mastra: "mastra",
+  Middleman: "middleman",
+  Nestjs: "nestjs",
+  Nextjs: "nextjs",
+  Nitro: "nitro",
+  Node: "node",
+  Nuxtjs: "nuxtjs",
+  Parcel: "parcel",
+  Polymer: "polymer",
+  Preact: "preact",
+  Python: "python",
+  ReactRouter: "react-router",
+  Redwoodjs: "redwoodjs",
+  Remix: "remix",
+  Ruby: "ruby",
+  Rust: "rust",
+  Saber: "saber",
+  Sanity: "sanity",
+  SanityV2: "sanity-v2",
+  Sapper: "sapper",
+  Scully: "scully",
+  Services: "services",
+  Solidstart: "solidstart",
+  Solidstart1: "solidstart-1",
+  Stencil: "stencil",
+  Storybook: "storybook",
+  Svelte: "svelte",
+  Sveltekit: "sveltekit",
+  Sveltekit1: "sveltekit-1",
+  TanstackStart: "tanstack-start",
+  TanstackStartLovable: "tanstack-start-lovable",
+  Umijs: "umijs",
+  Vite: "vite",
+  Vitepress: "vitepress",
+  Vue: "vue",
+  Vuepress: "vuepress",
+  Xmcp: "xmcp",
+  Zola: "zola",
+} as const;
+/**
+ * Framework slug, when the service has one (omitted otherwise).
+ */
+export type UpdateMicrofrontendsProjectsFramework = ClosedEnum<
+  typeof UpdateMicrofrontendsProjectsFramework
+>;
+
+/**
+ * Service kind (Service.type). Omitted for schemas that do not define one.
+ */
+export const UpdateMicrofrontendsServiceType = {
+  Cron: "cron",
+  Job: "job",
+  Web: "web",
+  Worker: "worker",
+} as const;
+/**
+ * Service kind (Service.type). Omitted for schemas that do not define one.
+ */
+export type UpdateMicrofrontendsServiceType = ClosedEnum<
+  typeof UpdateMicrofrontendsServiceType
+>;
+
+export type UpdateMicrofrontendsServices = {
+  /**
+   * Framework slug, when the service has one (omitted otherwise).
+   */
+  framework?: UpdateMicrofrontendsProjectsFramework | undefined;
+  /**
+   * Generic runtime, e.g. 'node' | 'python' | 'go' | 'ruby' | 'rust' (Service.runtime). Omitted for static builds.
+   */
+  runtime?: string | undefined;
+  /**
+   * Service name from the deployment (Service.name).
+   */
+  serviceName: string;
+  /**
+   * Service kind (Service.type). Omitted for schemas that do not define one.
+   */
+  serviceType?: UpdateMicrofrontendsServiceType | undefined;
+};
+
+export type UpdateMicrofrontendsSpeedInsights = {
+  canceledAt?: number | undefined;
+  /**
+   * When the first free (not Speed Insights Plus) production data point was observed, in ms. Set once by subscriber-analytics-events; projects that already had data before this field shipped get it backfilled on their next batch, so it reads "first free data point observed", not necessarily "first ever".
+   */
+  dataReceivedAt?: number | undefined;
+  disabledAt?: number | undefined;
+  enabledAt?: number | undefined;
+  hasData?: boolean | undefined;
+  id: string;
+  paidAt?: number | undefined;
+};
+
+export const UpdateMicrofrontendsApril2026SecurityIncidentMigrationAppliedFrom =
+  {
+    All: "all",
+    AllExceptCustomDomains: "all_except_custom_domains",
+    Preview: "preview",
+    ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+  } as const;
+export type UpdateMicrofrontendsApril2026SecurityIncidentMigrationAppliedFrom =
+  ClosedEnum<
+    typeof UpdateMicrofrontendsApril2026SecurityIncidentMigrationAppliedFrom
+  >;
+
+export const UpdateMicrofrontendsCve55182MigrationAppliedFrom = {
+  All: "all",
+  AllExceptCustomDomains: "all_except_custom_domains",
+  Preview: "preview",
+  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+} as const;
+export type UpdateMicrofrontendsCve55182MigrationAppliedFrom = ClosedEnum<
+  typeof UpdateMicrofrontendsCve55182MigrationAppliedFrom
+>;
+
+export const UpdateMicrofrontendsProjectsDeploymentType = {
+  All: "all",
+  AllExceptCustomDomains: "all_except_custom_domains",
+  Preview: "preview",
+  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+} as const;
+export type UpdateMicrofrontendsProjectsDeploymentType = ClosedEnum<
+  typeof UpdateMicrofrontendsProjectsDeploymentType
+>;
+
+export type UpdateMicrofrontendsSsoProtection = {
+  april2026SecurityIncidentMigrationAppliedFrom?:
+    | UpdateMicrofrontendsApril2026SecurityIncidentMigrationAppliedFrom
+    | null
+    | undefined;
+  cve55182MigrationAppliedFrom?:
+    | UpdateMicrofrontendsCve55182MigrationAppliedFrom
+    | null
+    | undefined;
+  deploymentType: UpdateMicrofrontendsProjectsDeploymentType;
+};
+
+export type UpdateMicrofrontendsStaticIps = {
+  builds: boolean;
+  enabled: boolean;
+  regions: Array<string>;
+};
+
+export type UpdateMicrofrontendsProjectsAliasAssigned = number | boolean;
+
+export type UpdateMicrofrontendsProjectsAliasError = {
+  code: string;
+  message: string;
+};
+
+/**
+ * The type of matching to perform
+ */
+export const UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyTargetsType =
+  {
+    EndsWith: "endsWith",
+    Equals: "equals",
+    StartsWith: "startsWith",
+  } as const;
+/**
+ * The type of matching to perform
+ */
+export type UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyTargetsType =
+  ClosedEnum<
+    typeof UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyTargetsType
+  >;
+
+export type UpdateMicrofrontendsProjectsResponseBranchMatcher = {
+  /**
+   * The pattern to match against branch names
+   */
+  pattern: string;
+  /**
+   * The type of matching to perform
+   */
+  type:
+    UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyTargetsType;
+};
+
+export type UpdateMicrofrontendsProjectsBuilds = {
+  dest?: string | undefined;
+  src?: string | undefined;
+  use: string;
+};
+
+export const UpdateMicrofrontendsProjectsChecksConclusion = {
+  Canceled: "canceled",
+  Failed: "failed",
+  Skipped: "skipped",
+  Succeeded: "succeeded",
+} as const;
+export type UpdateMicrofrontendsProjectsChecksConclusion = ClosedEnum<
+  typeof UpdateMicrofrontendsProjectsChecksConclusion
+>;
+
+export const UpdateMicrofrontendsProjectsChecksState = {
+  Completed: "completed",
+  Registered: "registered",
+  Running: "running",
+} as const;
+export type UpdateMicrofrontendsProjectsChecksState = ClosedEnum<
+  typeof UpdateMicrofrontendsProjectsChecksState
+>;
+
+export type UpdateMicrofrontendsProjectsResponseCreator = {
+  email: string;
+  githubLogin?: string | undefined;
+  gitlabLogin?: string | undefined;
+  uid: string;
+  username: string;
+};
+
+export type UpdateMicrofrontendsProjectsOidcTokenClaims = {
+  aud: string;
+  customEnvironmentId?: string | undefined;
+  deploymentId?: string | undefined;
+  environment: string;
+  iss: string;
+  mfeGroupIds?: Array<string> | undefined;
+  owner: string;
+  ownerId: string;
+  plan?: string | undefined;
+  project: string;
+  projectId: string;
+  scope: string;
+  sub: string;
+};
+
+export const UpdateMicrofrontendsProjectsPlan = {
+  Enterprise: "enterprise",
+  Hobby: "hobby",
+  Pro: "pro",
+} as const;
+export type UpdateMicrofrontendsProjectsPlan = ClosedEnum<
+  typeof UpdateMicrofrontendsProjectsPlan
+>;
+
+export const UpdateMicrofrontendsProjectsReadyState = {
+  Blocked: "BLOCKED",
+  Building: "BUILDING",
+  Canceled: "CANCELED",
+  Error: "ERROR",
+  Initializing: "INITIALIZING",
+  Queued: "QUEUED",
+  Ready: "READY",
+} as const;
+export type UpdateMicrofrontendsProjectsReadyState = ClosedEnum<
+  typeof UpdateMicrofrontendsProjectsReadyState
+>;
+
+export const UpdateMicrofrontendsProjectsReadySubstate = {
+  Promoted: "PROMOTED",
+  Rolling: "ROLLING",
+  Staged: "STAGED",
+} as const;
+export type UpdateMicrofrontendsProjectsReadySubstate = ClosedEnum<
+  typeof UpdateMicrofrontendsProjectsReadySubstate
+>;
+
+export const UpdateMicrofrontendsProjectsResponse200ApplicationJSONType = {
+  Lambdas: "LAMBDAS",
+} as const;
+export type UpdateMicrofrontendsProjectsResponse200ApplicationJSONType =
+  ClosedEnum<typeof UpdateMicrofrontendsProjectsResponse200ApplicationJSONType>;
+
+export type UpdateMicrofrontendsTargets = {
+  alias?: Array<string> | undefined;
+  aliasAssigned?: number | boolean | null | undefined;
+  aliasError?: UpdateMicrofrontendsProjectsAliasError | null | undefined;
+  aliasFinal?: string | null | undefined;
+  automaticAliases?: Array<string> | undefined;
+  branchMatcher?: UpdateMicrofrontendsProjectsResponseBranchMatcher | undefined;
+  buildingAt?: number | undefined;
+  builds?: Array<UpdateMicrofrontendsProjectsBuilds> | undefined;
+  checksConclusion?: UpdateMicrofrontendsProjectsChecksConclusion | undefined;
+  checksState?: UpdateMicrofrontendsProjectsChecksState | undefined;
+  connectBuildsEnabled?: boolean | undefined;
+  connectConfigurationId?: string | undefined;
+  createdAt: number;
+  createdIn: string;
+  creator: UpdateMicrofrontendsProjectsResponseCreator | null;
+  deletedAt?: number | undefined;
+  deploymentHostname: string;
+  forced?: boolean | undefined;
+  id: string;
+  meta?: { [k: string]: string } | undefined;
+  monorepoManager?: string | null | undefined;
+  name: string;
+  oidcTokenClaims?: UpdateMicrofrontendsProjectsOidcTokenClaims | undefined;
+  plan: UpdateMicrofrontendsProjectsPlan;
+  /**
+   * Whether or not preview comments are enabled for the deployment
+   */
+  previewCommentsEnabled?: boolean | undefined;
+  private: boolean;
+  readyAt?: number | undefined;
+  readyState: UpdateMicrofrontendsProjectsReadyState;
+  readySubstate?: UpdateMicrofrontendsProjectsReadySubstate | undefined;
+  requestedAt?: number | undefined;
+  target?: string | null | undefined;
+  teamId?: string | null | undefined;
+  type: UpdateMicrofrontendsProjectsResponse200ApplicationJSONType;
+  url: string;
+  /**
+   * Present for user creators; omitted for app/integration/system creators.
+   */
+  userId?: string | undefined;
+  withCache?: boolean | undefined;
+};
+
+export const UpdateMicrofrontendsTier = {
+  Priority: "priority",
+} as const;
+export type UpdateMicrofrontendsTier = ClosedEnum<
+  typeof UpdateMicrofrontendsTier
+>;
+
+/**
+ * Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery type when project tracing is computed; absent on configs persisted before this field existed.
+ */
+export const UpdateMicrofrontendsDestination = {
+  External: "external",
+  Internal: "internal",
+} as const;
+/**
+ * Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery type when project tracing is computed; absent on configs persisted before this field existed.
+ */
+export type UpdateMicrofrontendsDestination = ClosedEnum<
+  typeof UpdateMicrofrontendsDestination
+>;
+
+export const UpdateMicrofrontendsProjectsEnv = {
+  Preview: "preview",
+  Production: "production",
+} as const;
+export type UpdateMicrofrontendsProjectsEnv = ClosedEnum<
+  typeof UpdateMicrofrontendsProjectsEnv
+>;
+
+export type UpdateMicrofrontendsSamplingRules = {
+  /**
+   * Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery type when project tracing is computed; absent on configs persisted before this field existed.
+   */
+  destination?: UpdateMicrofrontendsDestination | undefined;
+  env?: UpdateMicrofrontendsProjectsEnv | undefined;
+  rate: number;
+  requestPath?: string | undefined;
+};
+
+export type UpdateMicrofrontendsTracing = {
+  domains?: string | undefined;
+  ignorePaths?: Array<string> | undefined;
+  samplingRules?: Array<UpdateMicrofrontendsSamplingRules> | undefined;
+};
+
+export const UpdateMicrofrontendsTrustedIpsProjectsDeploymentType = {
+  All: "all",
+  AllExceptCustomDomains: "all_except_custom_domains",
+  Preview: "preview",
+  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+  Production: "production",
+} as const;
+export type UpdateMicrofrontendsTrustedIpsProjectsDeploymentType = ClosedEnum<
+  typeof UpdateMicrofrontendsTrustedIpsProjectsDeploymentType
+>;
+
+export type UpdateMicrofrontendsTrustedIps2 = {
+  deploymentType: UpdateMicrofrontendsTrustedIpsProjectsDeploymentType;
+};
+
+export type UpdateMicrofrontendsTrustedIpsAddresses = {
+  note?: string | undefined;
+  value: string;
+};
+
+export const UpdateMicrofrontendsTrustedIpsDeploymentType = {
+  All: "all",
+  AllExceptCustomDomains: "all_except_custom_domains",
+  Preview: "preview",
+  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+  Production: "production",
+} as const;
+export type UpdateMicrofrontendsTrustedIpsDeploymentType = ClosedEnum<
+  typeof UpdateMicrofrontendsTrustedIpsDeploymentType
+>;
+
+export const UpdateMicrofrontendsTrustedIpsProtectionMode = {
+  Additional: "additional",
+  Exclusive: "exclusive",
+} as const;
+export type UpdateMicrofrontendsTrustedIpsProtectionMode = ClosedEnum<
+  typeof UpdateMicrofrontendsTrustedIpsProtectionMode
+>;
+
+export type UpdateMicrofrontendsTrustedIps1 = {
+  addresses: Array<UpdateMicrofrontendsTrustedIpsAddresses>;
+  deploymentType: UpdateMicrofrontendsTrustedIpsDeploymentType;
+  protectionMode: UpdateMicrofrontendsTrustedIpsProtectionMode;
+};
+
+export type UpdateMicrofrontendsTrustedIps =
+  | UpdateMicrofrontendsTrustedIps1
+  | UpdateMicrofrontendsTrustedIps2;
+
+export const UpdateMicrofrontendsToProjectsPreset = {
+  AllCustom: "all-custom",
+} as const;
+export type UpdateMicrofrontendsToProjectsPreset = ClosedEnum<
+  typeof UpdateMicrofrontendsToProjectsPreset
+>;
+
+/**
+ * The target envs on the current project that may be accessed.
+ */
+export type UpdateMicrofrontendsTo2 = {
+  preset: UpdateMicrofrontendsToProjectsPreset;
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs?: Array<string> | undefined;
+};
+
+export const UpdateMicrofrontendsToPreset = {
+  AllCustom: "all-custom",
+} as const;
+export type UpdateMicrofrontendsToPreset = ClosedEnum<
+  typeof UpdateMicrofrontendsToPreset
+>;
+
+/**
+ * The target envs on the current project that may be accessed.
+ */
+export type UpdateMicrofrontendsTo1 = {
+  preset?: UpdateMicrofrontendsToPreset | undefined;
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs: Array<string>;
+};
+
+export type UpdateMicrofrontendsTo =
+  | UpdateMicrofrontendsTo1
+  | UpdateMicrofrontendsTo2;
 
 export type UpdateMicrofrontendsOidcProviders = {
-  to: UpdateMicrofrontendsTo;
+  to: UpdateMicrofrontendsTo1 | UpdateMicrofrontendsTo2;
   claims: { [k: string]: Array<string> };
   label?: string | undefined;
 };
@@ -199,7 +2734,7 @@ export type UpdateMicrofrontendsProjectsTo =
   | UpdateMicrofrontendsToProjects2;
 
 /**
- * Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets.
+ * Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets. An empty array denies all access and is only allowed for the current project.
  */
 export type UpdateMicrofrontendsCustomAllow = {
   from: UpdateMicrofrontendsFrom1 | UpdateMicrofrontendsFrom2;
@@ -208,7 +2743,7 @@ export type UpdateMicrofrontendsCustomAllow = {
 
 export type UpdateMicrofrontendsProjects = {
   /**
-   * Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets.
+   * Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets. An empty array denies all access and is only allowed for the current project.
    */
   customAllow?: Array<UpdateMicrofrontendsCustomAllow> | undefined;
   label?: string | undefined;
@@ -216,7 +2751,7 @@ export type UpdateMicrofrontendsProjects = {
 
 export type UpdateMicrofrontendsTrustedSources = {
   /**
-   * Allow same-team Vercel CI access to preview deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value.
+   * Allow same-team Vercel CI access to preview and production deployments built from the CI run's repository, using the deployment source rather than the current project repository link. Defaults to enabled when not stored; omitted or null Trusted Sources updates preserve the stored value.
    */
   enableVercelCiSameRepository?: boolean | undefined;
   oidcProviders?:
@@ -270,7 +2805,6 @@ export type UpdateMicrofrontendsWebAnalytics = {
 };
 
 export type UpdateMicrofrontendsResponseBody = {
-  abuse?: UpdateMicrofrontendsAbuse | undefined;
   accountId: string;
   alias: Array<UpdateMicrofrontendsAlias>;
   analytics?: UpdateMicrofrontendsAnalytics | undefined;
@@ -334,9 +2868,22 @@ export type UpdateMicrofrontendsResponseBody = {
     | null
     | undefined;
   latestDeployments?: Array<UpdateMicrofrontendsLatestDeployments> | undefined;
-  link?: UpdateMicrofrontendsLink | undefined;
+  link?:
+    | UpdateMicrofrontendsLink1
+    | UpdateMicrofrontendsLink2
+    | UpdateMicrofrontendsLink3
+    | UpdateMicrofrontendsLink4
+    | UpdateMicrofrontendsLink5
+    | UpdateMicrofrontendsLink6
+    | UpdateMicrofrontendsLink7
+    | UpdateMicrofrontendsLink8
+    | undefined;
   live?: boolean | undefined;
-  microfrontends?: UpdateMicrofrontendsMicrofrontends | undefined;
+  microfrontends?:
+    | UpdateMicrofrontendsMicrofrontends1
+    | UpdateMicrofrontendsMicrofrontends2
+    | UpdateMicrofrontendsMicrofrontends3
+    | undefined;
   name: string;
   nodeVersion: UpdateMicrofrontendsNodeVersion;
   oidcTokenConfig?: UpdateMicrofrontendsOidcTokenConfig | undefined;
@@ -355,9 +2902,11 @@ export type UpdateMicrofrontendsResponseBody = {
   permissions?: UpdateMicrofrontendsPermissions | undefined;
   productionDeploymentsFastLane?: boolean | undefined;
   protectedSourcemaps?: boolean | undefined;
-  protectionBypass?:
-    | { [k: string]: UpdateMicrofrontendsProtectionBypass }
-    | undefined;
+  protectionBypass?: {
+    [k: string]:
+      | UpdateMicrofrontendsProtectionBypass1
+      | UpdateMicrofrontendsProtectionBypass2;
+  } | undefined;
   protectionConfig?: UpdateMicrofrontendsProtectionConfig | undefined;
   resourceConfig: UpdateMicrofrontendsResourceConfig;
   /**
@@ -388,7 +2937,11 @@ export type UpdateMicrofrontendsResponseBody = {
   transferredFromAccountId?: string | undefined;
   transferStartedAt?: number | undefined;
   transferToAccountId?: string | undefined;
-  trustedIps?: UpdateMicrofrontendsTrustedIps | null | undefined;
+  trustedIps?:
+    | UpdateMicrofrontendsTrustedIps1
+    | UpdateMicrofrontendsTrustedIps2
+    | null
+    | undefined;
   trustedSources?: UpdateMicrofrontendsTrustedSources | null | undefined;
   updatedAt?: number | undefined;
   usageStatus?: UpdateMicrofrontendsUsageStatus | undefined;
@@ -398,12 +2951,2584 @@ export type UpdateMicrofrontendsResponseBody = {
 };
 
 /** @internal */
+export const UpdateMicrofrontendsLatestDeployments$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsLatestDeployments,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  alias: types.optional(z.array(types.string())),
+  aliasAssigned: z.nullable(UpdateMicrofrontendsAliasAssigned$inboundSchema)
+    .optional(),
+  aliasError: z.nullable(UpdateMicrofrontendsAliasError$inboundSchema)
+    .optional(),
+  aliasFinal: z.nullable(types.string()).optional(),
+  automaticAliases: types.optional(z.array(types.string())),
+  branchMatcher: types.optional(
+    UpdateMicrofrontendsProjectsBranchMatcher$inboundSchema,
+  ),
+  buildingAt: types.optional(types.number()),
+  builds: types.optional(z.array(UpdateMicrofrontendsBuilds$inboundSchema)),
+  checksConclusion: types.optional(
+    UpdateMicrofrontendsChecksConclusion$inboundSchema,
+  ),
+  checksState: types.optional(UpdateMicrofrontendsChecksState$inboundSchema),
+  connectBuildsEnabled: types.optional(types.boolean()),
+  connectConfigurationId: types.optional(types.string()),
+  createdAt: types.number(),
+  createdIn: types.string(),
+  creator: types.nullable(UpdateMicrofrontendsProjectsCreator$inboundSchema),
+  deletedAt: types.optional(types.number()),
+  deploymentHostname: types.string(),
+  forced: types.optional(types.boolean()),
+  id: types.string(),
+  meta: types.optional(z.record(types.string())),
+  monorepoManager: z.nullable(types.string()).optional(),
+  name: types.string(),
+  oidcTokenClaims: types.optional(
+    UpdateMicrofrontendsOidcTokenClaims$inboundSchema,
+  ),
+  plan: UpdateMicrofrontendsPlan$inboundSchema,
+  previewCommentsEnabled: types.optional(types.boolean()),
+  private: types.boolean(),
+  readyAt: types.optional(types.number()),
+  readyState: UpdateMicrofrontendsReadyState$inboundSchema,
+  readySubstate: types.optional(
+    UpdateMicrofrontendsReadySubstate$inboundSchema,
+  ),
+  requestedAt: types.optional(types.number()),
+  target: z.nullable(types.string()).optional(),
+  teamId: z.nullable(types.string()).optional(),
+  type: UpdateMicrofrontendsProjectsResponse200Type$inboundSchema,
+  url: types.string(),
+  userId: types.optional(types.string()),
+  withCache: types.optional(types.boolean()),
+});
+
+export function updateMicrofrontendsLatestDeploymentsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsLatestDeployments, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsLatestDeployments$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsLatestDeployments' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsLinkProjectsResponse200ApplicationJSONResponseBody8DeployHooks$inboundSchema:
+  z.ZodType<
+    UpdateMicrofrontendsLinkProjectsResponse200ApplicationJSONResponseBody8DeployHooks,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    createdAt: types.optional(types.number()),
+    id: types.string(),
+    name: types.string(),
+    ref: types.string(),
+    url: types.string(),
+  });
+
+export function updateMicrofrontendsLinkProjectsResponse200ApplicationJSONResponseBody8DeployHooksFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateMicrofrontendsLinkProjectsResponse200ApplicationJSONResponseBody8DeployHooks,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsLinkProjectsResponse200ApplicationJSONResponseBody8DeployHooks$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsLinkProjectsResponse200ApplicationJSONResponseBody8DeployHooks' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsLink8$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsLink8,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createdAt: types.optional(types.number()),
+  deployHooks: z.array(
+    z.lazy(() =>
+      UpdateMicrofrontendsLinkProjectsResponse200ApplicationJSONResponseBody8DeployHooks$inboundSchema
+    ),
+  ),
+  gitCredentialId: types.string(),
+  owner: types.string(),
+  ownerId: types.string(),
+  productionBranch: types.string(),
+  repo: types.string(),
+  repoId: types.string(),
+  sourceless: types.optional(types.boolean()),
+  type: types.literal("cursor-origin"),
+  updatedAt: types.optional(types.number()),
+});
+
+export function updateMicrofrontendsLink8FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsLink8, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsLink8$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsLink8' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsLinkProjectsResponse200ApplicationJSONResponseBody7DeployHooks$inboundSchema:
+  z.ZodType<
+    UpdateMicrofrontendsLinkProjectsResponse200ApplicationJSONResponseBody7DeployHooks,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    createdAt: types.optional(types.number()),
+    id: types.string(),
+    name: types.string(),
+    ref: types.string(),
+    url: types.string(),
+  });
+
+export function updateMicrofrontendsLinkProjectsResponse200ApplicationJSONResponseBody7DeployHooksFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateMicrofrontendsLinkProjectsResponse200ApplicationJSONResponseBody7DeployHooks,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsLinkProjectsResponse200ApplicationJSONResponseBody7DeployHooks$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsLinkProjectsResponse200ApplicationJSONResponseBody7DeployHooks' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsLink7$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsLink7,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createdAt: types.optional(types.number()),
+  deployHooks: z.array(
+    z.lazy(() =>
+      UpdateMicrofrontendsLinkProjectsResponse200ApplicationJSONResponseBody7DeployHooks$inboundSchema
+    ),
+  ),
+  gitCredentialId: types.string(),
+  org: types.string(),
+  productionBranch: types.string(),
+  repo: types.string(),
+  repoId: types.string(),
+  sourceless: types.optional(types.boolean()),
+  type: types.literal("v0"),
+  updatedAt: types.optional(types.number()),
+});
+
+export function updateMicrofrontendsLink7FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsLink7, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsLink7$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsLink7' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsLinkProjectsResponse200ApplicationJSONResponseBodyDeployHooks$inboundSchema:
+  z.ZodType<
+    UpdateMicrofrontendsLinkProjectsResponse200ApplicationJSONResponseBodyDeployHooks,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    createdAt: types.optional(types.number()),
+    id: types.string(),
+    name: types.string(),
+    ref: types.string(),
+    url: types.string(),
+  });
+
+export function updateMicrofrontendsLinkProjectsResponse200ApplicationJSONResponseBodyDeployHooksFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateMicrofrontendsLinkProjectsResponse200ApplicationJSONResponseBodyDeployHooks,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsLinkProjectsResponse200ApplicationJSONResponseBodyDeployHooks$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsLinkProjectsResponse200ApplicationJSONResponseBodyDeployHooks' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsLink6$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsLink6,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createdAt: types.optional(types.number()),
+  deployHooks: z.array(
+    z.lazy(() =>
+      UpdateMicrofrontendsLinkProjectsResponse200ApplicationJSONResponseBodyDeployHooks$inboundSchema
+    ),
+  ),
+  gitCredentialId: types.string(),
+  org: types.string(),
+  productionBranch: types.string(),
+  repo: types.string(),
+  repoId: types.string(),
+  sourceless: types.optional(types.boolean()),
+  type: types.literal("vercel"),
+  updatedAt: types.optional(types.number()),
+});
+
+export function updateMicrofrontendsLink6FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsLink6, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsLink6$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsLink6' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsLinkProjectsResponse200ApplicationJSONDeployHooks$inboundSchema:
+  z.ZodType<
+    UpdateMicrofrontendsLinkProjectsResponse200ApplicationJSONDeployHooks,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    createdAt: types.optional(types.number()),
+    id: types.string(),
+    name: types.string(),
+    ref: types.string(),
+    url: types.string(),
+  });
+
+export function updateMicrofrontendsLinkProjectsResponse200ApplicationJSONDeployHooksFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateMicrofrontendsLinkProjectsResponse200ApplicationJSONDeployHooks,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsLinkProjectsResponse200ApplicationJSONDeployHooks$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsLinkProjectsResponse200ApplicationJSONDeployHooks' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsLink5$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsLink5,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createdAt: types.optional(types.number()),
+  deployHooks: z.array(
+    z.lazy(() =>
+      UpdateMicrofrontendsLinkProjectsResponse200ApplicationJSONDeployHooks$inboundSchema
+    ),
+  ),
+  gitCredentialId: types.string(),
+  name: types.string(),
+  owner: types.string(),
+  productionBranch: types.string(),
+  slug: types.string(),
+  sourceless: types.optional(types.boolean()),
+  type: types.literal("bitbucket"),
+  updatedAt: types.optional(types.number()),
+  uuid: types.string(),
+  workspaceUuid: types.string(),
+});
+
+export function updateMicrofrontendsLink5FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsLink5, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsLink5$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsLink5' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsLinkProjectsResponse200DeployHooks$inboundSchema:
+  z.ZodType<
+    UpdateMicrofrontendsLinkProjectsResponse200DeployHooks,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    createdAt: types.optional(types.number()),
+    id: types.string(),
+    name: types.string(),
+    ref: types.string(),
+    url: types.string(),
+  });
+
+export function updateMicrofrontendsLinkProjectsResponse200DeployHooksFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateMicrofrontendsLinkProjectsResponse200DeployHooks,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsLinkProjectsResponse200DeployHooks$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsLinkProjectsResponse200DeployHooks' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsLink4$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsLink4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createdAt: types.optional(types.number()),
+  deployHooks: z.array(
+    z.lazy(() =>
+      UpdateMicrofrontendsLinkProjectsResponse200DeployHooks$inboundSchema
+    ),
+  ),
+  gitCredentialId: types.string(),
+  productionBranch: types.string(),
+  projectId: types.string(),
+  projectName: types.string(),
+  projectNamespace: types.string(),
+  projectNameWithNamespace: types.string(),
+  projectOwnerId: types.optional(types.number()),
+  projectUrl: types.string(),
+  sourceless: types.optional(types.boolean()),
+  type: types.literal("gitlab"),
+  updatedAt: types.optional(types.number()),
+});
+
+export function updateMicrofrontendsLink4FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsLink4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsLink4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsLink4' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsLinkProjectsResponseDeployHooks$inboundSchema:
+  z.ZodType<
+    UpdateMicrofrontendsLinkProjectsResponseDeployHooks,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    createdAt: types.optional(types.number()),
+    id: types.string(),
+    name: types.string(),
+    ref: types.string(),
+    url: types.string(),
+  });
+
+export function updateMicrofrontendsLinkProjectsResponseDeployHooksFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateMicrofrontendsLinkProjectsResponseDeployHooks,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsLinkProjectsResponseDeployHooks$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateMicrofrontendsLinkProjectsResponseDeployHooks' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsLink3$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsLink3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createdAt: types.optional(types.number()),
+  deployHooks: z.array(
+    z.lazy(() =>
+      UpdateMicrofrontendsLinkProjectsResponseDeployHooks$inboundSchema
+    ),
+  ),
+  gitCredentialId: types.string(),
+  host: types.string(),
+  org: types.string(),
+  productionBranch: types.string(),
+  repo: types.optional(types.string()),
+  repoId: types.optional(types.number()),
+  repoOwnerId: types.optional(types.number()),
+  sourceless: types.optional(types.boolean()),
+  type: types.literal("github-custom-host"),
+  updatedAt: types.optional(types.number()),
+});
+
+export function updateMicrofrontendsLink3FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsLink3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsLink3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsLink3' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsLinkProjectsDeployHooks$inboundSchema:
+  z.ZodType<
+    UpdateMicrofrontendsLinkProjectsDeployHooks,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    createdAt: types.optional(types.number()),
+    id: types.string(),
+    name: types.string(),
+    ref: types.string(),
+    url: types.string(),
+  });
+
+export function updateMicrofrontendsLinkProjectsDeployHooksFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateMicrofrontendsLinkProjectsDeployHooks,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsLinkProjectsDeployHooks$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateMicrofrontendsLinkProjectsDeployHooks' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsLink2$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsLink2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createdAt: types.optional(types.number()),
+  deployHooks: z.array(
+    z.lazy(() => UpdateMicrofrontendsLinkProjectsDeployHooks$inboundSchema),
+  ),
+  gitCredentialId: types.string(),
+  org: types.string(),
+  productionBranch: types.string(),
+  repo: types.optional(types.string()),
+  repoId: types.optional(types.number()),
+  repoOwnerId: types.optional(types.number()),
+  sourceless: types.optional(types.boolean()),
+  type: types.literal("github-limited"),
+  updatedAt: types.optional(types.number()),
+});
+
+export function updateMicrofrontendsLink2FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsLink2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsLink2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsLink2' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsLinkDeployHooks$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsLinkDeployHooks,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createdAt: types.optional(types.number()),
+  id: types.string(),
+  name: types.string(),
+  ref: types.string(),
+  url: types.string(),
+});
+
+export function updateMicrofrontendsLinkDeployHooksFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsLinkDeployHooks, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsLinkDeployHooks$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsLinkDeployHooks' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsLink1$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsLink1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createdAt: types.optional(types.number()),
+  deployHooks: z.array(
+    z.lazy(() => UpdateMicrofrontendsLinkDeployHooks$inboundSchema),
+  ),
+  gitCredentialId: types.string(),
+  org: types.string(),
+  productionBranch: types.string(),
+  repo: types.optional(types.string()),
+  repoId: types.optional(types.number()),
+  repoOwnerId: types.optional(types.number()),
+  sourceless: types.optional(types.boolean()),
+  type: types.literal("github"),
+  updatedAt: types.optional(types.number()),
+});
+
+export function updateMicrofrontendsLink1FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsLink1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsLink1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsLink1' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsLink$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsLink,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => UpdateMicrofrontendsLink1$inboundSchema),
+  z.lazy(() => UpdateMicrofrontendsLink2$inboundSchema),
+  z.lazy(() => UpdateMicrofrontendsLink3$inboundSchema),
+  z.lazy(() => UpdateMicrofrontendsLink4$inboundSchema),
+  z.lazy(() => UpdateMicrofrontendsLink5$inboundSchema),
+  z.lazy(() => UpdateMicrofrontendsLink6$inboundSchema),
+  z.lazy(() => UpdateMicrofrontendsLink7$inboundSchema),
+  z.lazy(() => UpdateMicrofrontendsLink8$inboundSchema),
+]);
+
+export function updateMicrofrontendsLinkFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsLink, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsLink$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsLink' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsMicrofrontends3$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsMicrofrontends3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  enabled: types.literal(false),
+  freeProjectForLegacyLimits: types.optional(types.boolean()),
+  groupIds: z.array(z.any()),
+  updatedAt: types.number(),
+});
+
+export function updateMicrofrontendsMicrofrontends3FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsMicrofrontends3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsMicrofrontends3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsMicrofrontends3' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsMicrofrontends2$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsMicrofrontends2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  defaultRoute: types.optional(types.string()),
+  doNotRouteWithMicrofrontendsRouting: types.optional(types.boolean()),
+  enabled: types.literal(true),
+  freeProjectForLegacyLimits: types.optional(types.boolean()),
+  groupIds: z.array(types.string()),
+  isDefaultApp: types.optional(types.literal(false)),
+  routeObservabilityToThisProject: types.optional(types.boolean()),
+  updatedAt: types.number(),
+});
+
+export function updateMicrofrontendsMicrofrontends2FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsMicrofrontends2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsMicrofrontends2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsMicrofrontends2' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsMicrofrontends1$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsMicrofrontends1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  defaultRoute: types.optional(types.string()),
+  enabled: types.literal(true),
+  freeProjectForLegacyLimits: types.optional(types.boolean()),
+  groupIds: z.array(types.string()),
+  isDefaultApp: types.literal(true),
+  updatedAt: types.number(),
+});
+
+export function updateMicrofrontendsMicrofrontends1FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsMicrofrontends1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsMicrofrontends1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsMicrofrontends1' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsMicrofrontends$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsMicrofrontends,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => UpdateMicrofrontendsMicrofrontends1$inboundSchema),
+  z.lazy(() => UpdateMicrofrontendsMicrofrontends2$inboundSchema),
+  z.lazy(() => UpdateMicrofrontendsMicrofrontends3$inboundSchema),
+]);
+
+export function updateMicrofrontendsMicrofrontendsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsMicrofrontends, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsMicrofrontends$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsMicrofrontends' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsNodeVersion$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateMicrofrontendsNodeVersion
+> = z.nativeEnum(UpdateMicrofrontendsNodeVersion);
+
+/** @internal */
+export const UpdateMicrofrontendsIssuerMode$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateMicrofrontendsIssuerMode
+> = z.nativeEnum(UpdateMicrofrontendsIssuerMode);
+
+/** @internal */
+export const UpdateMicrofrontendsOidcTokenConfig$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsOidcTokenConfig,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  enabled: types.optional(types.boolean()),
+  issuerMode: types.optional(UpdateMicrofrontendsIssuerMode$inboundSchema),
+});
+
+export function updateMicrofrontendsOidcTokenConfigFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsOidcTokenConfig, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsOidcTokenConfig$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsOidcTokenConfig' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsPaths$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsPaths,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  value: types.string(),
+});
+
+export function updateMicrofrontendsPathsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsPaths, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsPaths$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsPaths' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsOptionsAllowlist$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsOptionsAllowlist,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  paths: z.array(z.lazy(() => UpdateMicrofrontendsPaths$inboundSchema)),
+});
+
+export function updateMicrofrontendsOptionsAllowlistFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsOptionsAllowlist, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsOptionsAllowlist$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsOptionsAllowlist' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsDeploymentType$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateMicrofrontendsDeploymentType
+> = z.nativeEnum(UpdateMicrofrontendsDeploymentType);
+
+/** @internal */
+export const UpdateMicrofrontendsPassport$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsPassport,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  connectorId: types.string(),
+  deploymentType: UpdateMicrofrontendsDeploymentType$inboundSchema,
+});
+
+export function updateMicrofrontendsPassportFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsPassport, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsPassport$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsPassport' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsPasswordProtection$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsPasswordProtection,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+export function updateMicrofrontendsPasswordProtectionFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsPasswordProtection, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsPasswordProtection$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsPasswordProtection' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsPermissions$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsPermissions,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  accessGroup: types.optional(z.array(ACLAction$inboundSchema)),
+  agent: types.optional(z.array(ACLAction$inboundSchema)),
+  aiGatewayApiKey: types.optional(z.array(ACLAction$inboundSchema)),
+  aiGatewayApiKeyBypassAll: types.optional(z.array(ACLAction$inboundSchema)),
+  aiGatewayApiKeyOwnedBySelf: types.optional(z.array(ACLAction$inboundSchema)),
+  aiGatewayApiKeySpendAttribution: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  aiGatewayApiKeyZdrExemption: types.optional(z.array(ACLAction$inboundSchema)),
+  aiGatewayBudget: types.optional(z.array(ACLAction$inboundSchema)),
+  aiGatewayCredits: types.optional(z.array(ACLAction$inboundSchema)),
+  aiGatewayGuardrails: types.optional(z.array(ACLAction$inboundSchema)),
+  aiGatewayPrivateModels: types.optional(z.array(ACLAction$inboundSchema)),
+  aiGatewayRules: types.optional(z.array(ACLAction$inboundSchema)),
+  aiGatewaySettings: types.optional(z.array(ACLAction$inboundSchema)),
+  aiGatewayTranscripts: types.optional(z.array(ACLAction$inboundSchema)),
+  aiGatewayTranscriptsSettings: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  aiGatewayUsage: types.optional(z.array(ACLAction$inboundSchema)),
+  aiGatewayVirtualModelConfigs: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  alertRules: types.optional(z.array(ACLAction$inboundSchema)),
+  alerts: types.optional(z.array(ACLAction$inboundSchema)),
+  aliasGlobal: types.optional(z.array(ACLAction$inboundSchema)),
+  aliasProject: types.optional(z.array(ACLAction$inboundSchema)),
+  aliasProtectionBypass: types.optional(z.array(ACLAction$inboundSchema)),
+  analytics: types.optional(z.array(ACLAction$inboundSchema)),
+  analyticsSampling: types.optional(z.array(ACLAction$inboundSchema)),
+  analyticsUsage: types.optional(z.array(ACLAction$inboundSchema)),
+  apiKey: types.optional(z.array(ACLAction$inboundSchema)),
+  apiKeyAiGateway: types.optional(z.array(ACLAction$inboundSchema)),
+  apiKeyOwnedBySelf: types.optional(z.array(ACLAction$inboundSchema)),
+  auditLog: types.optional(z.array(ACLAction$inboundSchema)),
+  automation: types.optional(z.array(ACLAction$inboundSchema)),
+  billingAddress: types.optional(z.array(ACLAction$inboundSchema)),
+  billingInformation: types.optional(z.array(ACLAction$inboundSchema)),
+  billingInvoice: types.optional(z.array(ACLAction$inboundSchema)),
+  billingInvoiceEmailRecipient: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  billingInvoiceLanguage: types.optional(z.array(ACLAction$inboundSchema)),
+  billingPlan: types.optional(z.array(ACLAction$inboundSchema)),
+  billingPurchaseOrder: types.optional(z.array(ACLAction$inboundSchema)),
+  billingRefund: types.optional(z.array(ACLAction$inboundSchema)),
+  billingTaxId: types.optional(z.array(ACLAction$inboundSchema)),
+  blob: types.optional(z.array(ACLAction$inboundSchema)),
+  blobStoreTokenSet: types.optional(z.array(ACLAction$inboundSchema)),
+  budget: types.optional(z.array(ACLAction$inboundSchema)),
+  buildMachine: types.optional(z.array(ACLAction$inboundSchema)),
+  buildMachineDefault: types.optional(z.array(ACLAction$inboundSchema)),
+  bulkRedirects: types.optional(z.array(ACLAction$inboundSchema)),
+  cacheArtifact: types.optional(z.array(ACLAction$inboundSchema)),
+  cacheArtifactUsageEvent: types.optional(z.array(ACLAction$inboundSchema)),
+  ciInvocations: types.optional(z.array(ACLAction$inboundSchema)),
+  ciLogs: types.optional(z.array(ACLAction$inboundSchema)),
+  codeChecks: types.optional(z.array(ACLAction$inboundSchema)),
+  codeOwners: types.optional(z.array(ACLAction$inboundSchema)),
+  concurrentBuilds: types.optional(z.array(ACLAction$inboundSchema)),
+  connect: types.optional(z.array(ACLAction$inboundSchema)),
+  connectConfiguration: types.optional(z.array(ACLAction$inboundSchema)),
+  connectConfigurationLink: types.optional(z.array(ACLAction$inboundSchema)),
+  connectLogs: types.optional(z.array(ACLAction$inboundSchema)),
+  connexClient: types.optional(z.array(ACLAction$inboundSchema)),
+  connexClientProject: types.optional(z.array(ACLAction$inboundSchema)),
+  connexContact: types.optional(z.array(ACLAction$inboundSchema)),
+  connexInstallation: types.optional(z.array(ACLAction$inboundSchema)),
+  connexToken: types.optional(z.array(ACLAction$inboundSchema)),
+  cursorOriginInstallation: types.optional(z.array(ACLAction$inboundSchema)),
+  dataCacheBillingSettings: types.optional(z.array(ACLAction$inboundSchema)),
+  dataCacheNamespace: types.optional(z.array(ACLAction$inboundSchema)),
+  defaultDeploymentProtection: types.optional(z.array(ACLAction$inboundSchema)),
+  deployment: types.optional(z.array(ACLAction$inboundSchema)),
+  deploymentBuildLogs: types.optional(z.array(ACLAction$inboundSchema)),
+  deploymentCheck: types.optional(z.array(ACLAction$inboundSchema)),
+  deploymentCheckPreview: types.optional(z.array(ACLAction$inboundSchema)),
+  deploymentCheckReRunFromProductionBranch: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  deploymentPolicy: types.optional(z.array(ACLAction$inboundSchema)),
+  deploymentPreview: types.optional(z.array(ACLAction$inboundSchema)),
+  deploymentPrivate: types.optional(z.array(ACLAction$inboundSchema)),
+  deploymentProductionGit: types.optional(z.array(ACLAction$inboundSchema)),
+  deploymentPromote: types.optional(z.array(ACLAction$inboundSchema)),
+  deploymentProtectionException: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  deploymentRollback: types.optional(z.array(ACLAction$inboundSchema)),
+  deploymentV0: types.optional(z.array(ACLAction$inboundSchema)),
+  domain: types.optional(z.array(ACLAction$inboundSchema)),
+  domainAcceptDelegation: types.optional(z.array(ACLAction$inboundSchema)),
+  domainAuthCodes: types.optional(z.array(ACLAction$inboundSchema)),
+  domainCertificate: types.optional(z.array(ACLAction$inboundSchema)),
+  domainCheckConfig: types.optional(z.array(ACLAction$inboundSchema)),
+  domainMove: types.optional(z.array(ACLAction$inboundSchema)),
+  domainPurchase: types.optional(z.array(ACLAction$inboundSchema)),
+  domainRecord: types.optional(z.array(ACLAction$inboundSchema)),
+  domainTransferIn: types.optional(z.array(ACLAction$inboundSchema)),
+  drain: types.optional(z.array(ACLAction$inboundSchema)),
+  edgeCacheNamespace: types.optional(z.array(ACLAction$inboundSchema)),
+  edgeConfig: types.optional(z.array(ACLAction$inboundSchema)),
+  edgeConfigItem: types.optional(z.array(ACLAction$inboundSchema)),
+  edgeConfigSchema: types.optional(z.array(ACLAction$inboundSchema)),
+  edgeConfigToken: types.optional(z.array(ACLAction$inboundSchema)),
+  endpointVerification: types.optional(z.array(ACLAction$inboundSchema)),
+  environments: types.optional(z.array(ACLAction$inboundSchema)),
+  event: types.optional(z.array(ACLAction$inboundSchema)),
+  fileUpload: types.optional(z.array(ACLAction$inboundSchema)),
+  flagsExplorerSubscription: types.optional(z.array(ACLAction$inboundSchema)),
+  gitCredentialGrant: types.optional(z.array(ACLAction$inboundSchema)),
+  gitRepository: types.optional(z.array(ACLAction$inboundSchema)),
+  imageOptimizationNewPrice: types.optional(z.array(ACLAction$inboundSchema)),
+  integration: types.optional(z.array(ACLAction$inboundSchema)),
+  integrationAccount: types.optional(z.array(ACLAction$inboundSchema)),
+  integrationConfiguration: types.optional(z.array(ACLAction$inboundSchema)),
+  integrationConfigurationProjects: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  integrationConfigurationRole: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  integrationConfigurationTransfer: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  integrationDeploymentAction: types.optional(z.array(ACLAction$inboundSchema)),
+  integrationEvent: types.optional(z.array(ACLAction$inboundSchema)),
+  integrationLog: types.optional(z.array(ACLAction$inboundSchema)),
+  integrationPullRequest: types.optional(z.array(ACLAction$inboundSchema)),
+  integrationResource: types.optional(z.array(ACLAction$inboundSchema)),
+  integrationResourceData: types.optional(z.array(ACLAction$inboundSchema)),
+  integrationResourceReplCommand: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  integrationResourceSecrets: types.optional(z.array(ACLAction$inboundSchema)),
+  integrationSSOSession: types.optional(z.array(ACLAction$inboundSchema)),
+  integrationStoreTokenSet: types.optional(z.array(ACLAction$inboundSchema)),
+  integrationStrict: types.optional(z.array(ACLAction$inboundSchema)),
+  integrationVercelConfigurationOverride: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  ipBlocking: types.optional(z.array(ACLAction$inboundSchema)),
+  job: types.optional(z.array(ACLAction$inboundSchema)),
+  jobGlobal: types.optional(z.array(ACLAction$inboundSchema)),
+  kmsIssuer: types.optional(z.array(ACLAction$inboundSchema)),
+  kmsProjectGrant: types.optional(z.array(ACLAction$inboundSchema)),
+  logDrain: types.optional(z.array(ACLAction$inboundSchema)),
+  logs: types.optional(z.array(ACLAction$inboundSchema)),
+  logsPreset: types.optional(z.array(ACLAction$inboundSchema)),
+  marketplaceBillingData: types.optional(z.array(ACLAction$inboundSchema)),
+  marketplaceExperimentationEdgeConfigData: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  marketplaceExperimentationItem: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  marketplaceFlexCommit: types.optional(z.array(ACLAction$inboundSchema)),
+  marketplaceInstallationMember: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  marketplaceInvoice: types.optional(z.array(ACLAction$inboundSchema)),
+  marketplaceSettings: types.optional(z.array(ACLAction$inboundSchema)),
+  messageboard: types.optional(z.array(ACLAction$inboundSchema)),
+  messageboardSpace: types.optional(z.array(ACLAction$inboundSchema)),
+  messageboardTask: types.optional(z.array(ACLAction$inboundSchema)),
+  Monitoring: types.optional(z.array(ACLAction$inboundSchema)),
+  monitoringAlert: types.optional(z.array(ACLAction$inboundSchema)),
+  monitoringChart: types.optional(z.array(ACLAction$inboundSchema)),
+  monitoringQuery: types.optional(z.array(ACLAction$inboundSchema)),
+  monitoringSettings: types.optional(z.array(ACLAction$inboundSchema)),
+  notificationCustomerBudget: types.optional(z.array(ACLAction$inboundSchema)),
+  notificationDeploymentFailed: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  notificationDomainConfiguration: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  notificationDomainExpire: types.optional(z.array(ACLAction$inboundSchema)),
+  notificationDomainMoved: types.optional(z.array(ACLAction$inboundSchema)),
+  notificationDomainPurchase: types.optional(z.array(ACLAction$inboundSchema)),
+  notificationDomainRenewal: types.optional(z.array(ACLAction$inboundSchema)),
+  notificationDomainTransfer: types.optional(z.array(ACLAction$inboundSchema)),
+  notificationDomainUnverified: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  NotificationMonitoringAlert: types.optional(z.array(ACLAction$inboundSchema)),
+  notificationPaymentFailed: types.optional(z.array(ACLAction$inboundSchema)),
+  notificationPreferences: types.optional(z.array(ACLAction$inboundSchema)),
+  notificationStatementOfReasons: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  notificationUsageAlert: types.optional(z.array(ACLAction$inboundSchema)),
+  oauth2Application: types.optional(z.array(ACLAction$inboundSchema)),
+  oauth2Connection: types.optional(z.array(ACLAction$inboundSchema)),
+  observabilityConfiguration: types.optional(z.array(ACLAction$inboundSchema)),
+  observabilityData: types.optional(z.array(ACLAction$inboundSchema)),
+  observabilityFunnel: types.optional(z.array(ACLAction$inboundSchema)),
+  observabilityNotebook: types.optional(z.array(ACLAction$inboundSchema)),
+  oidcFederationPolicy: types.optional(z.array(ACLAction$inboundSchema)),
+  onDemandBuild: types.optional(z.array(ACLAction$inboundSchema)),
+  onDemandConcurrency: types.optional(z.array(ACLAction$inboundSchema)),
+  openTelemetryEndpoint: types.optional(z.array(ACLAction$inboundSchema)),
+  optionsAllowlist: types.optional(z.array(ACLAction$inboundSchema)),
+  organization: types.optional(z.array(ACLAction$inboundSchema)),
+  organizationDomain: types.optional(z.array(ACLAction$inboundSchema)),
+  organizationTeam: types.optional(z.array(ACLAction$inboundSchema)),
+  ownEvent: types.optional(z.array(ACLAction$inboundSchema)),
+  pageIntegrity: types.optional(z.array(ACLAction$inboundSchema)),
+  passwordProtection: types.optional(z.array(ACLAction$inboundSchema)),
+  passwordProtectionInvoiceItem: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  paymentMethod: types.optional(z.array(ACLAction$inboundSchema)),
+  permissions: types.optional(z.array(ACLAction$inboundSchema)),
+  postgres: types.optional(z.array(ACLAction$inboundSchema)),
+  postgresStoreTokenSet: types.optional(z.array(ACLAction$inboundSchema)),
+  previewDeploymentSuffix: types.optional(z.array(ACLAction$inboundSchema)),
+  privateCloudAccount: types.optional(z.array(ACLAction$inboundSchema)),
+  privateLinkEndpoint: types.optional(z.array(ACLAction$inboundSchema)),
+  productionAliasProtectionBypass: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  productionShareableLink: types.optional(z.array(ACLAction$inboundSchema)),
+  project: types.optional(z.array(ACLAction$inboundSchema)),
+  projectAccessGroup: types.optional(z.array(ACLAction$inboundSchema)),
+  projectAnalyticsSampling: types.optional(z.array(ACLAction$inboundSchema)),
+  projectAnalyticsUsage: types.optional(z.array(ACLAction$inboundSchema)),
+  projectCheck: types.optional(z.array(ACLAction$inboundSchema)),
+  projectCheckRun: types.optional(z.array(ACLAction$inboundSchema)),
+  projectDeploymentExpiration: types.optional(z.array(ACLAction$inboundSchema)),
+  projectDeploymentHook: types.optional(z.array(ACLAction$inboundSchema)),
+  projectDeploymentProtectionStrict: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  projectDomain: types.optional(z.array(ACLAction$inboundSchema)),
+  projectDomainCheckConfig: types.optional(z.array(ACLAction$inboundSchema)),
+  projectDomainMove: types.optional(z.array(ACLAction$inboundSchema)),
+  projectDomainVerify: types.optional(z.array(ACLAction$inboundSchema)),
+  projectEnvVars: types.optional(z.array(ACLAction$inboundSchema)),
+  projectEnvVarsProduction: types.optional(z.array(ACLAction$inboundSchema)),
+  projectEnvVarsUnownedByIntegration: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  projectEvent: types.optional(z.array(ACLAction$inboundSchema)),
+  projectFlags: types.optional(z.array(ACLAction$inboundSchema)),
+  projectFlagsProduction: types.optional(z.array(ACLAction$inboundSchema)),
+  projectFlagsSdkKey: types.optional(z.array(ACLAction$inboundSchema)),
+  projectFromV0: types.optional(z.array(ACLAction$inboundSchema)),
+  projectId: types.optional(z.array(ACLAction$inboundSchema)),
+  projectIntegrationConfiguration: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  projectLink: types.optional(z.array(ACLAction$inboundSchema)),
+  projectMember: types.optional(z.array(ACLAction$inboundSchema)),
+  projectMonitoring: types.optional(z.array(ACLAction$inboundSchema)),
+  projectOIDCToken: types.optional(z.array(ACLAction$inboundSchema)),
+  projectPermissions: types.optional(z.array(ACLAction$inboundSchema)),
+  projectProductionBranch: types.optional(z.array(ACLAction$inboundSchema)),
+  projectProtectionBypass: types.optional(z.array(ACLAction$inboundSchema)),
+  projectRollingRelease: types.optional(z.array(ACLAction$inboundSchema)),
+  projectRoutes: types.optional(z.array(ACLAction$inboundSchema)),
+  projectSetting: types.optional(z.array(ACLAction$inboundSchema)),
+  projectSupportCase: types.optional(z.array(ACLAction$inboundSchema)),
+  projectSupportCaseComment: types.optional(z.array(ACLAction$inboundSchema)),
+  projectTier: types.optional(z.array(ACLAction$inboundSchema)),
+  projectTransfer: types.optional(z.array(ACLAction$inboundSchema)),
+  projectTransferIn: types.optional(z.array(ACLAction$inboundSchema)),
+  projectTransferOut: types.optional(z.array(ACLAction$inboundSchema)),
+  projectTransferRequest: types.optional(z.array(ACLAction$inboundSchema)),
+  projectUsage: types.optional(z.array(ACLAction$inboundSchema)),
+  proTrialOnboarding: types.optional(z.array(ACLAction$inboundSchema)),
+  rateLimit: types.optional(z.array(ACLAction$inboundSchema)),
+  redis: types.optional(z.array(ACLAction$inboundSchema)),
+  redisStoreTokenSet: types.optional(z.array(ACLAction$inboundSchema)),
+  remoteCaching: types.optional(z.array(ACLAction$inboundSchema)),
+  repository: types.optional(z.array(ACLAction$inboundSchema)),
+  samlConfig: types.optional(z.array(ACLAction$inboundSchema)),
+  schedule: types.optional(z.array(ACLAction$inboundSchema)),
+  seawallConfig: types.optional(z.array(ACLAction$inboundSchema)),
+  secret: types.optional(z.array(ACLAction$inboundSchema)),
+  securityConfig: types.optional(z.array(ACLAction$inboundSchema)),
+  securityPlusConfiguration: types.optional(z.array(ACLAction$inboundSchema)),
+  sensitiveEnvironmentVariablePolicy: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  setting: types.optional(z.array(ACLAction$inboundSchema)),
+  shareableLink: types.optional(z.array(ACLAction$inboundSchema)),
+  shareableLinkStrict: types.optional(z.array(ACLAction$inboundSchema)),
+  sharedEnvVarConnection: types.optional(z.array(ACLAction$inboundSchema)),
+  sharedEnvVars: types.optional(z.array(ACLAction$inboundSchema)),
+  sharedEnvVarsProduction: types.optional(z.array(ACLAction$inboundSchema)),
+  skewProtection: types.optional(z.array(ACLAction$inboundSchema)),
+  space: types.optional(z.array(ACLAction$inboundSchema)),
+  spaceRun: types.optional(z.array(ACLAction$inboundSchema)),
+  storeIsLocked: types.optional(z.array(ACLAction$inboundSchema)),
+  storeTokenSetSensitive: types.optional(z.array(ACLAction$inboundSchema)),
+  storeTransfer: types.optional(z.array(ACLAction$inboundSchema)),
+  supportCase: types.optional(z.array(ACLAction$inboundSchema)),
+  supportCaseComment: types.optional(z.array(ACLAction$inboundSchema)),
+  team: types.optional(z.array(ACLAction$inboundSchema)),
+  teamAccessRequest: types.optional(z.array(ACLAction$inboundSchema)),
+  teamFellowMembership: types.optional(z.array(ACLAction$inboundSchema)),
+  teamGitExclusivity: types.optional(z.array(ACLAction$inboundSchema)),
+  teamInvite: types.optional(z.array(ACLAction$inboundSchema)),
+  teamInviteCode: types.optional(z.array(ACLAction$inboundSchema)),
+  teamInviteLink: types.optional(z.array(ACLAction$inboundSchema)),
+  teamJoin: types.optional(z.array(ACLAction$inboundSchema)),
+  teamMemberMfaStatus: types.optional(z.array(ACLAction$inboundSchema)),
+  teamMicrofrontends: types.optional(z.array(ACLAction$inboundSchema)),
+  teamOwnMembership: types.optional(z.array(ACLAction$inboundSchema)),
+  teamOwnMembershipDisconnectSAML: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  teamSudo: types.optional(z.array(ACLAction$inboundSchema)),
+  teamTokenInvalidation: types.optional(z.array(ACLAction$inboundSchema)),
+  token: types.optional(z.array(ACLAction$inboundSchema)),
+  toolbarComment: types.optional(z.array(ACLAction$inboundSchema)),
+  trustedIps: types.optional(z.array(ACLAction$inboundSchema)),
+  trustedSources: types.optional(z.array(ACLAction$inboundSchema)),
+  usage: types.optional(z.array(ACLAction$inboundSchema)),
+  usageCycle: types.optional(z.array(ACLAction$inboundSchema)),
+  user: types.optional(z.array(ACLAction$inboundSchema)),
+  userConnection: types.optional(z.array(ACLAction$inboundSchema)),
+  userMfaConfiguration: types.optional(z.array(ACLAction$inboundSchema)),
+  userPreference: types.optional(z.array(ACLAction$inboundSchema)),
+  userSudo: types.optional(z.array(ACLAction$inboundSchema)),
+  v0Chat: types.optional(z.array(ACLAction$inboundSchema)),
+  vcrRepository: types.optional(z.array(ACLAction$inboundSchema)),
+  vercelAppInstallation: types.optional(z.array(ACLAction$inboundSchema)),
+  vercelAppInstallationRequest: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
+  vercelAuth: types.optional(z.array(ACLAction$inboundSchema)),
+  vercelRun: types.optional(z.array(ACLAction$inboundSchema)),
+  vpcPeeringConnection: types.optional(z.array(ACLAction$inboundSchema)),
+  webAnalytics: types.optional(z.array(ACLAction$inboundSchema)),
+  webAnalyticsPlan: types.optional(z.array(ACLAction$inboundSchema)),
+  webAuthn: types.optional(z.array(ACLAction$inboundSchema)),
+  webhook: types.optional(z.array(ACLAction$inboundSchema)),
+  "webhook-event": types.optional(z.array(ACLAction$inboundSchema)),
+  workflowRunData: types.optional(z.array(ACLAction$inboundSchema)),
+}).transform((v) => {
+  return remap$(v, {
+    "Monitoring": "monitoring",
+    "NotificationMonitoringAlert": "notificationMonitoringAlert",
+    "projectFlagsSdkKey": "projectFlagsSDKKey",
+    "webhook-event": "webhookEvent",
+  });
+});
+
+export function updateMicrofrontendsPermissionsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsPermissions, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsPermissions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsPermissions' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsProtectionBypass2$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsProtectionBypass2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createdAt: types.number(),
+  createdBy: types.string(),
+  isEnvVar: types.optional(types.boolean()),
+  note: types.optional(types.string()),
+  scope: types.literal("automation-bypass"),
+});
+
+export function updateMicrofrontendsProtectionBypass2FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsProtectionBypass2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsProtectionBypass2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsProtectionBypass2' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsProtectionBypass1$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsProtectionBypass1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  configurationId: types.string(),
+  createdAt: types.number(),
+  createdBy: types.string(),
+  integrationId: types.string(),
+  scope: types.literal("integration-automation-bypass"),
+});
+
+export function updateMicrofrontendsProtectionBypass1FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsProtectionBypass1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsProtectionBypass1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsProtectionBypass1' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsProtectionBypass$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsProtectionBypass,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => UpdateMicrofrontendsProtectionBypass1$inboundSchema),
+  z.lazy(() => UpdateMicrofrontendsProtectionBypass2$inboundSchema),
+]);
+
+export function updateMicrofrontendsProtectionBypassFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsProtectionBypass, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsProtectionBypass$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsProtectionBypass' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsSandboxUrls$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsSandboxUrls,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  inheritDeploymentProtection: types.optional(types.boolean()),
+});
+
+export function updateMicrofrontendsSandboxUrlsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsSandboxUrls, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsSandboxUrls$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsSandboxUrls' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsProtectionConfig$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsProtectionConfig,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  sandboxUrls: types.optional(
+    z.lazy(() => UpdateMicrofrontendsSandboxUrls$inboundSchema),
+  ),
+});
+
+export function updateMicrofrontendsProtectionConfigFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsProtectionConfig, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsProtectionConfig$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsProtectionConfig' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsProjectsBuildMachineElasticReason$inboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateMicrofrontendsProjectsBuildMachineElasticReason
+  > = z.nativeEnum(UpdateMicrofrontendsProjectsBuildMachineElasticReason);
+
+/** @internal */
+export const UpdateMicrofrontendsProjectsDirection$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateMicrofrontendsProjectsDirection> = z.nativeEnum(
+    UpdateMicrofrontendsProjectsDirection,
+  );
+
+/** @internal */
+export const UpdateMicrofrontendsProjectsBuildMachineElasticTransition$inboundSchema:
+  z.ZodType<
+    UpdateMicrofrontendsProjectsBuildMachineElasticTransition,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    algorithmVersion: types.string(),
+    at: types.number(),
+    direction: UpdateMicrofrontendsProjectsDirection$inboundSchema,
+  });
+
+export function updateMicrofrontendsProjectsBuildMachineElasticTransitionFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateMicrofrontendsProjectsBuildMachineElasticTransition,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsProjectsBuildMachineElasticTransition$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsProjectsBuildMachineElasticTransition' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsProjectsBuildMachineSelection$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateMicrofrontendsProjectsBuildMachineSelection> = z
+    .nativeEnum(UpdateMicrofrontendsProjectsBuildMachineSelection);
+
+/** @internal */
+export const UpdateMicrofrontendsProjectsBuildMachineType$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateMicrofrontendsProjectsBuildMachineType> = z
+    .nativeEnum(UpdateMicrofrontendsProjectsBuildMachineType);
+
+/** @internal */
+export const UpdateMicrofrontendsProjectsConfiguration$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateMicrofrontendsProjectsConfiguration> = z
+    .nativeEnum(UpdateMicrofrontendsProjectsConfiguration);
+
+/** @internal */
+export const UpdateMicrofrontendsProjectsBuildQueue$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsProjectsBuildQueue,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  configuration: types.optional(
+    UpdateMicrofrontendsProjectsConfiguration$inboundSchema,
+  ),
+});
+
+export function updateMicrofrontendsProjectsBuildQueueFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsProjectsBuildQueue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsProjectsBuildQueue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsProjectsBuildQueue' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsProjectsFunctionDefaultMemoryType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateMicrofrontendsProjectsFunctionDefaultMemoryType
+  > = z.nativeEnum(UpdateMicrofrontendsProjectsFunctionDefaultMemoryType);
+
+/** @internal */
+export const UpdateMicrofrontendsResourceConfig$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsResourceConfig,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  buildMachineElasticLastUpdated: types.optional(types.number()),
+  buildMachineElasticReason: types.optional(
+    UpdateMicrofrontendsProjectsBuildMachineElasticReason$inboundSchema,
+  ),
+  buildMachineElasticTransition: types.optional(
+    z.lazy(() =>
+      UpdateMicrofrontendsProjectsBuildMachineElasticTransition$inboundSchema
+    ),
+  ),
+  buildMachineSelection: types.optional(
+    UpdateMicrofrontendsProjectsBuildMachineSelection$inboundSchema,
+  ),
+  buildMachineType: types.optional(
+    UpdateMicrofrontendsProjectsBuildMachineType$inboundSchema,
+  ),
+  buildQueue: types.optional(
+    z.lazy(() => UpdateMicrofrontendsProjectsBuildQueue$inboundSchema),
+  ),
+  elasticConcurrencyEnabled: types.optional(types.boolean()),
+  enableFunctionsBeta: types.optional(types.boolean()),
+  fluid: types.optional(types.boolean()),
+  functionDefaultMemoryType: types.optional(
+    UpdateMicrofrontendsProjectsFunctionDefaultMemoryType$inboundSchema,
+  ),
+  functionDefaultRegions: z.array(types.string()),
+  functionDefaultTimeout: types.optional(types.number()),
+  functionZeroConfigFailover: types.optional(types.boolean()),
+  isNSNBDisabled: types.optional(types.boolean()),
+});
+
+export function updateMicrofrontendsResourceConfigFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsResourceConfig, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsResourceConfig$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsResourceConfig' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsRollbackDescription$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsRollbackDescription,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createdAt: types.number(),
+  description: types.string(),
+  userId: types.string(),
+  username: types.string(),
+});
+
+export function updateMicrofrontendsRollbackDescriptionFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateMicrofrontendsRollbackDescription,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsRollbackDescription$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateMicrofrontendsRollbackDescription' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsProjectsAction$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateMicrofrontendsProjectsAction
+> = z.nativeEnum(UpdateMicrofrontendsProjectsAction);
+
+/** @internal */
+export const UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyRollingReleaseType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyRollingReleaseType
+  > = z.nativeEnum(
+    UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyRollingReleaseType,
+  );
+
+/** @internal */
+export const UpdateMicrofrontendsChecks$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsChecks,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  excludePaths: types.optional(z.array(types.string())),
+  excludeStatusCodes: types.optional(z.array(types.number())),
+  ingestWatermarkSeconds: types.optional(types.number()),
+  minSampleSize: types.optional(types.number()),
+  type:
+    UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyRollingReleaseType$inboundSchema,
+});
+
+export function updateMicrofrontendsChecksFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsChecks, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsChecks$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsChecks' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsGate$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsGate,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  action: UpdateMicrofrontendsProjectsAction$inboundSchema,
+  checks: z.array(z.lazy(() => UpdateMicrofrontendsChecks$inboundSchema)),
+  dryRun: types.boolean(),
+  enabled: types.boolean(),
+  failureThreshold: types.optional(types.number()),
+  windowSize: types.optional(types.number()),
+});
+
+export function updateMicrofrontendsGateFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsGate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsGate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsGate' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsStages$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsStages,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  duration: types.optional(types.number()),
+  linearShift: types.optional(types.boolean()),
+  requireApproval: types.optional(types.boolean()),
+  targetPercentage: types.number(),
+});
+
+export function updateMicrofrontendsStagesFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsStages, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsStages$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsStages' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsRollingRelease$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsRollingRelease,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  canaryResponseHeader: types.optional(types.boolean()),
+  gate: types.optional(z.lazy(() => UpdateMicrofrontendsGate$inboundSchema)),
+  stages: z.nullable(
+    z.array(z.lazy(() => UpdateMicrofrontendsStages$inboundSchema)),
+  ).optional(),
+  target: types.string(),
+});
+
+export function updateMicrofrontendsRollingReleaseFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsRollingRelease, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsRollingRelease$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsRollingRelease' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsFailoverRegions$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateMicrofrontendsFailoverRegions
+> = z.nativeEnum(UpdateMicrofrontendsFailoverRegions);
+
+/** @internal */
+export const UpdateMicrofrontendsRegion$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateMicrofrontendsRegion
+> = z.nativeEnum(UpdateMicrofrontendsRegion);
+
+/** @internal */
+export const UpdateMicrofrontendsSandbox$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsSandbox,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  failoverRegions: types.optional(
+    z.array(UpdateMicrofrontendsFailoverRegions$inboundSchema),
+  ),
+  region: types.optional(UpdateMicrofrontendsRegion$inboundSchema),
+});
+
+export function updateMicrofrontendsSandboxFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsSandbox, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsSandbox$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsSandbox' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsLogHeaders2$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateMicrofrontendsLogHeaders2
+> = z.nativeEnum(UpdateMicrofrontendsLogHeaders2);
+
+/** @internal */
+export const UpdateMicrofrontendsLogHeaders$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsLogHeaders,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.array(types.string()),
+  UpdateMicrofrontendsLogHeaders2$inboundSchema,
+]);
+
+export function updateMicrofrontendsLogHeadersFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsLogHeaders, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsLogHeaders$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsLogHeaders' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction$inboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction
+  > = z.nativeEnum(
+    UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction,
+  );
+
+/** @internal */
+export const UpdateMicrofrontendsAiBots$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsAiBots,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  action: types.optional(
+    UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction$inboundSchema,
+  ),
+  active: types.boolean(),
+});
+
+export function updateMicrofrontendsAiBotsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsAiBots, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsAiBots$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsAiBots' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsProjectsResponse200Action$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateMicrofrontendsProjectsResponse200Action> = z
+    .nativeEnum(UpdateMicrofrontendsProjectsResponse200Action);
+
+/** @internal */
+export const UpdateMicrofrontendsBotFilter$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsBotFilter,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  action: types.optional(
+    UpdateMicrofrontendsProjectsResponse200Action$inboundSchema,
+  ),
+  active: types.boolean(),
+});
+
+export function updateMicrofrontendsBotFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsBotFilter, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsBotFilter$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsBotFilter' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsProjectsResponse200ApplicationJSONAction$inboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateMicrofrontendsProjectsResponse200ApplicationJSONAction
+  > = z.nativeEnum(
+    UpdateMicrofrontendsProjectsResponse200ApplicationJSONAction,
+  );
+
+/** @internal */
+export const UpdateMicrofrontendsOwasp$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsOwasp,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  action: types.optional(
+    UpdateMicrofrontendsProjectsResponse200ApplicationJSONAction$inboundSchema,
+  ),
+  active: types.boolean(),
+});
+
+export function updateMicrofrontendsOwaspFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsOwasp, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsOwasp$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsOwasp' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyAction$inboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyAction
+  > = z.nativeEnum(
+    UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyAction,
+  );
+
+/** @internal */
+export const UpdateMicrofrontendsTrafficSources$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsTrafficSources,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  action: types.optional(
+    UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyAction$inboundSchema,
+  ),
+  active: types.boolean(),
+});
+
+export function updateMicrofrontendsTrafficSourcesFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsTrafficSources, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsTrafficSources$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsTrafficSources' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodySecurityAction$inboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodySecurityAction
+  > = z.nativeEnum(
+    UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodySecurityAction,
+  );
+
+/** @internal */
+export const UpdateMicrofrontendsVercelRuleset$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsVercelRuleset,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  action: types.optional(
+    UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodySecurityAction$inboundSchema,
+  ),
+  active: types.boolean(),
+});
+
+export function updateMicrofrontendsVercelRulesetFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsVercelRuleset, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsVercelRuleset$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsVercelRuleset' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsManagedRules$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsManagedRules,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  ai_bots: z.lazy(() => UpdateMicrofrontendsAiBots$inboundSchema),
+  bot_filter: z.lazy(() => UpdateMicrofrontendsBotFilter$inboundSchema),
+  owasp: z.lazy(() => UpdateMicrofrontendsOwasp$inboundSchema),
+  traffic_sources: z.lazy(() =>
+    UpdateMicrofrontendsTrafficSources$inboundSchema
+  ),
+  vercel_ruleset: z.lazy(() => UpdateMicrofrontendsVercelRuleset$inboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    "ai_bots": "aiBots",
+    "bot_filter": "botFilter",
+    "traffic_sources": "trafficSources",
+    "vercel_ruleset": "vercelRuleset",
+  });
+});
+
+export function updateMicrofrontendsManagedRulesFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsManagedRules, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsManagedRules$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsManagedRules' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsProjectsResponseAction$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateMicrofrontendsProjectsResponseAction> = z
+    .nativeEnum(UpdateMicrofrontendsProjectsResponseAction);
+
+/** @internal */
+export const UpdateMicrofrontendsLogHeadersProjects2$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateMicrofrontendsLogHeadersProjects2> = z
+    .nativeEnum(UpdateMicrofrontendsLogHeadersProjects2);
+
+/** @internal */
+export const UpdateMicrofrontendsProjectsLogHeaders$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsProjectsLogHeaders,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.array(types.string()),
+  UpdateMicrofrontendsLogHeadersProjects2$inboundSchema,
+]);
+
+export function updateMicrofrontendsProjectsLogHeadersFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsProjectsLogHeaders, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsProjectsLogHeaders$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsProjectsLogHeaders' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsAlgo$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateMicrofrontendsAlgo
+> = z.nativeEnum(UpdateMicrofrontendsAlgo);
+
+/** @internal */
+export const UpdateMicrofrontendsRateLimit$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsRateLimit,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  algo: UpdateMicrofrontendsAlgo$inboundSchema,
+  keys: z.array(types.string()),
+  limit: types.number(),
+  window: types.number(),
+});
+
+export function updateMicrofrontendsRateLimitFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsRateLimit, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsRateLimit$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsRateLimit' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsRedirect$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsRedirect,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  location: types.string(),
+  permanent: types.boolean(),
+});
+
+export function updateMicrofrontendsRedirectFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsRedirect, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsRedirect$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsRedirect' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsRulesets$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsRulesets,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  action: UpdateMicrofrontendsProjectsResponseAction$inboundSchema,
+  actionDuration: z.nullable(types.string()).optional(),
+  bypassSystem: z.nullable(types.boolean()).optional(),
+  logHeaders: types.optional(
+    smartUnion([
+      z.array(types.string()),
+      UpdateMicrofrontendsLogHeadersProjects2$inboundSchema,
+    ]),
+  ),
+  rateLimit: z.nullable(
+    z.lazy(() => UpdateMicrofrontendsRateLimit$inboundSchema),
+  ).optional(),
+  redirect: z.nullable(z.lazy(() => UpdateMicrofrontendsRedirect$inboundSchema))
+    .optional(),
+});
+
+export function updateMicrofrontendsRulesetsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsRulesets, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsRulesets$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsRulesets' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsSecurity$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsSecurity,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  attackModeActiveUntil: z.nullable(types.number()).optional(),
+  attackModeEnabled: types.optional(types.boolean()),
+  attackModeUpdatedAt: types.optional(types.number()),
+  botIdEnabled: types.optional(types.boolean()),
+  firewallBypassIps: types.optional(z.array(types.string())),
+  firewallConfigVersion: types.optional(types.number()),
+  firewallEnabled: types.optional(types.boolean()),
+  firewallSeawallEnabled: types.optional(types.boolean()),
+  firewallUpdatedAt: types.optional(types.number()),
+  ja3Enabled: types.optional(types.boolean()),
+  ja4Enabled: types.optional(types.boolean()),
+  log_headers: types.optional(
+    smartUnion([
+      z.array(types.string()),
+      UpdateMicrofrontendsLogHeaders2$inboundSchema,
+    ]),
+  ),
+  managedRules: z.nullable(
+    z.lazy(() => UpdateMicrofrontendsManagedRules$inboundSchema),
+  ).optional(),
+  pageIntegrityEnabled: types.optional(types.boolean()),
+  rulesets: types.optional(
+    z.record(z.lazy(() => UpdateMicrofrontendsRulesets$inboundSchema)),
+  ),
+}).transform((v) => {
+  return remap$(v, {
+    "log_headers": "logHeaders",
+  });
+});
+
+export function updateMicrofrontendsSecurityFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsSecurity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsSecurity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsSecurity' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsProjectsFramework$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateMicrofrontendsProjectsFramework> = z.nativeEnum(
+    UpdateMicrofrontendsProjectsFramework,
+  );
+
+/** @internal */
+export const UpdateMicrofrontendsServiceType$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateMicrofrontendsServiceType
+> = z.nativeEnum(UpdateMicrofrontendsServiceType);
+
+/** @internal */
+export const UpdateMicrofrontendsServices$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsServices,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  framework: types.optional(
+    UpdateMicrofrontendsProjectsFramework$inboundSchema,
+  ),
+  runtime: types.optional(types.string()),
+  serviceName: types.string(),
+  serviceType: types.optional(UpdateMicrofrontendsServiceType$inboundSchema),
+});
+
+export function updateMicrofrontendsServicesFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsServices, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsServices$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsServices' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsSpeedInsights$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsSpeedInsights,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  canceledAt: types.optional(types.number()),
+  dataReceivedAt: types.optional(types.number()),
+  disabledAt: types.optional(types.number()),
+  enabledAt: types.optional(types.number()),
+  hasData: types.optional(types.boolean()),
+  id: types.string(),
+  paidAt: types.optional(types.number()),
+});
+
+export function updateMicrofrontendsSpeedInsightsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsSpeedInsights, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsSpeedInsights$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsSpeedInsights' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsApril2026SecurityIncidentMigrationAppliedFrom$inboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateMicrofrontendsApril2026SecurityIncidentMigrationAppliedFrom
+  > = z.nativeEnum(
+    UpdateMicrofrontendsApril2026SecurityIncidentMigrationAppliedFrom,
+  );
+
+/** @internal */
+export const UpdateMicrofrontendsCve55182MigrationAppliedFrom$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateMicrofrontendsCve55182MigrationAppliedFrom> = z
+    .nativeEnum(UpdateMicrofrontendsCve55182MigrationAppliedFrom);
+
+/** @internal */
+export const UpdateMicrofrontendsProjectsDeploymentType$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateMicrofrontendsProjectsDeploymentType> = z
+    .nativeEnum(UpdateMicrofrontendsProjectsDeploymentType);
+
+/** @internal */
+export const UpdateMicrofrontendsSsoProtection$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsSsoProtection,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  april2026SecurityIncidentMigrationAppliedFrom: z.nullable(
+    UpdateMicrofrontendsApril2026SecurityIncidentMigrationAppliedFrom$inboundSchema,
+  ).optional(),
+  cve55182MigrationAppliedFrom: z.nullable(
+    UpdateMicrofrontendsCve55182MigrationAppliedFrom$inboundSchema,
+  ).optional(),
+  deploymentType: UpdateMicrofrontendsProjectsDeploymentType$inboundSchema,
+});
+
+export function updateMicrofrontendsSsoProtectionFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsSsoProtection, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsSsoProtection$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsSsoProtection' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsStaticIps$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsStaticIps,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  builds: types.boolean(),
+  enabled: types.boolean(),
+  regions: z.array(types.string()),
+});
+
+export function updateMicrofrontendsStaticIpsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsStaticIps, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsStaticIps$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsStaticIps' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsProjectsAliasAssigned$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsProjectsAliasAssigned,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.number(), types.boolean()]);
+
+export function updateMicrofrontendsProjectsAliasAssignedFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateMicrofrontendsProjectsAliasAssigned,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsProjectsAliasAssigned$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateMicrofrontendsProjectsAliasAssigned' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsProjectsAliasError$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsProjectsAliasError,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  code: types.string(),
+  message: types.string(),
+});
+
+export function updateMicrofrontendsProjectsAliasErrorFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsProjectsAliasError, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsProjectsAliasError$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsProjectsAliasError' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyTargetsType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyTargetsType
+  > = z.nativeEnum(
+    UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyTargetsType,
+  );
+
+/** @internal */
+export const UpdateMicrofrontendsProjectsResponseBranchMatcher$inboundSchema:
+  z.ZodType<
+    UpdateMicrofrontendsProjectsResponseBranchMatcher,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    pattern: types.string(),
+    type:
+      UpdateMicrofrontendsProjectsResponse200ApplicationJSONResponseBodyTargetsType$inboundSchema,
+  });
+
+export function updateMicrofrontendsProjectsResponseBranchMatcherFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateMicrofrontendsProjectsResponseBranchMatcher,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsProjectsResponseBranchMatcher$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateMicrofrontendsProjectsResponseBranchMatcher' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsProjectsBuilds$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsProjectsBuilds,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  dest: types.optional(types.string()),
+  src: types.optional(types.string()),
+  use: types.string(),
+});
+
+export function updateMicrofrontendsProjectsBuildsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsProjectsBuilds, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsProjectsBuilds$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsProjectsBuilds' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsProjectsChecksConclusion$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateMicrofrontendsProjectsChecksConclusion> = z
+    .nativeEnum(UpdateMicrofrontendsProjectsChecksConclusion);
+
+/** @internal */
+export const UpdateMicrofrontendsProjectsChecksState$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateMicrofrontendsProjectsChecksState> = z
+    .nativeEnum(UpdateMicrofrontendsProjectsChecksState);
+
+/** @internal */
+export const UpdateMicrofrontendsProjectsResponseCreator$inboundSchema:
+  z.ZodType<
+    UpdateMicrofrontendsProjectsResponseCreator,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    email: types.string(),
+    githubLogin: types.optional(types.string()),
+    gitlabLogin: types.optional(types.string()),
+    uid: types.string(),
+    username: types.string(),
+  });
+
+export function updateMicrofrontendsProjectsResponseCreatorFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateMicrofrontendsProjectsResponseCreator,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsProjectsResponseCreator$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateMicrofrontendsProjectsResponseCreator' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsProjectsOidcTokenClaims$inboundSchema:
+  z.ZodType<
+    UpdateMicrofrontendsProjectsOidcTokenClaims,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    aud: types.string(),
+    custom_environment_id: types.optional(types.string()),
+    deployment_id: types.optional(types.string()),
+    environment: types.string(),
+    iss: types.string(),
+    mfe_group_ids: types.optional(z.array(types.string())),
+    owner: types.string(),
+    owner_id: types.string(),
+    plan: types.optional(types.string()),
+    project: types.string(),
+    project_id: types.string(),
+    scope: types.string(),
+    sub: types.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "custom_environment_id": "customEnvironmentId",
+      "deployment_id": "deploymentId",
+      "mfe_group_ids": "mfeGroupIds",
+      "owner_id": "ownerId",
+      "project_id": "projectId",
+    });
+  });
+
+export function updateMicrofrontendsProjectsOidcTokenClaimsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateMicrofrontendsProjectsOidcTokenClaims,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsProjectsOidcTokenClaims$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateMicrofrontendsProjectsOidcTokenClaims' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsProjectsPlan$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateMicrofrontendsProjectsPlan
+> = z.nativeEnum(UpdateMicrofrontendsProjectsPlan);
+
+/** @internal */
+export const UpdateMicrofrontendsProjectsReadyState$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateMicrofrontendsProjectsReadyState> = z.nativeEnum(
+    UpdateMicrofrontendsProjectsReadyState,
+  );
+
+/** @internal */
+export const UpdateMicrofrontendsProjectsReadySubstate$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateMicrofrontendsProjectsReadySubstate> = z
+    .nativeEnum(UpdateMicrofrontendsProjectsReadySubstate);
+
+/** @internal */
+export const UpdateMicrofrontendsProjectsResponse200ApplicationJSONType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateMicrofrontendsProjectsResponse200ApplicationJSONType
+  > = z.nativeEnum(UpdateMicrofrontendsProjectsResponse200ApplicationJSONType);
+
+/** @internal */
+export const UpdateMicrofrontendsTargets$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsTargets,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  alias: types.optional(z.array(types.string())),
+  aliasAssigned: z.nullable(smartUnion([types.number(), types.boolean()]))
+    .optional(),
+  aliasError: z.nullable(
+    z.lazy(() => UpdateMicrofrontendsProjectsAliasError$inboundSchema),
+  ).optional(),
+  aliasFinal: z.nullable(types.string()).optional(),
+  automaticAliases: types.optional(z.array(types.string())),
+  branchMatcher: types.optional(
+    z.lazy(() =>
+      UpdateMicrofrontendsProjectsResponseBranchMatcher$inboundSchema
+    ),
+  ),
+  buildingAt: types.optional(types.number()),
+  builds: types.optional(
+    z.array(z.lazy(() => UpdateMicrofrontendsProjectsBuilds$inboundSchema)),
+  ),
+  checksConclusion: types.optional(
+    UpdateMicrofrontendsProjectsChecksConclusion$inboundSchema,
+  ),
+  checksState: types.optional(
+    UpdateMicrofrontendsProjectsChecksState$inboundSchema,
+  ),
+  connectBuildsEnabled: types.optional(types.boolean()),
+  connectConfigurationId: types.optional(types.string()),
+  createdAt: types.number(),
+  createdIn: types.string(),
+  creator: types.nullable(
+    z.lazy(() => UpdateMicrofrontendsProjectsResponseCreator$inboundSchema),
+  ),
+  deletedAt: types.optional(types.number()),
+  deploymentHostname: types.string(),
+  forced: types.optional(types.boolean()),
+  id: types.string(),
+  meta: types.optional(z.record(types.string())),
+  monorepoManager: z.nullable(types.string()).optional(),
+  name: types.string(),
+  oidcTokenClaims: types.optional(
+    z.lazy(() => UpdateMicrofrontendsProjectsOidcTokenClaims$inboundSchema),
+  ),
+  plan: UpdateMicrofrontendsProjectsPlan$inboundSchema,
+  previewCommentsEnabled: types.optional(types.boolean()),
+  private: types.boolean(),
+  readyAt: types.optional(types.number()),
+  readyState: UpdateMicrofrontendsProjectsReadyState$inboundSchema,
+  readySubstate: types.optional(
+    UpdateMicrofrontendsProjectsReadySubstate$inboundSchema,
+  ),
+  requestedAt: types.optional(types.number()),
+  target: z.nullable(types.string()).optional(),
+  teamId: z.nullable(types.string()).optional(),
+  type:
+    UpdateMicrofrontendsProjectsResponse200ApplicationJSONType$inboundSchema,
+  url: types.string(),
+  userId: types.optional(types.string()),
+  withCache: types.optional(types.boolean()),
+});
+
+export function updateMicrofrontendsTargetsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsTargets, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsTargets$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsTargets' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsTier$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateMicrofrontendsTier
+> = z.nativeEnum(UpdateMicrofrontendsTier);
+
+/** @internal */
+export const UpdateMicrofrontendsDestination$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateMicrofrontendsDestination
+> = z.nativeEnum(UpdateMicrofrontendsDestination);
+
+/** @internal */
+export const UpdateMicrofrontendsProjectsEnv$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateMicrofrontendsProjectsEnv
+> = z.nativeEnum(UpdateMicrofrontendsProjectsEnv);
+
+/** @internal */
+export const UpdateMicrofrontendsSamplingRules$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsSamplingRules,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  destination: types.optional(UpdateMicrofrontendsDestination$inboundSchema),
+  env: types.optional(UpdateMicrofrontendsProjectsEnv$inboundSchema),
+  rate: types.number(),
+  requestPath: types.optional(types.string()),
+});
+
+export function updateMicrofrontendsSamplingRulesFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsSamplingRules, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsSamplingRules$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsSamplingRules' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsTracing$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsTracing,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  domains: types.optional(types.string()),
+  ignorePaths: types.optional(z.array(types.string())),
+  samplingRules: types.optional(
+    z.array(z.lazy(() => UpdateMicrofrontendsSamplingRules$inboundSchema)),
+  ),
+});
+
+export function updateMicrofrontendsTracingFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsTracing, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsTracing$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsTracing' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsTrustedIpsProjectsDeploymentType$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateMicrofrontendsTrustedIpsProjectsDeploymentType> =
+    z.nativeEnum(UpdateMicrofrontendsTrustedIpsProjectsDeploymentType);
+
+/** @internal */
+export const UpdateMicrofrontendsTrustedIps2$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsTrustedIps2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  deploymentType:
+    UpdateMicrofrontendsTrustedIpsProjectsDeploymentType$inboundSchema,
+});
+
+export function updateMicrofrontendsTrustedIps2FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsTrustedIps2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsTrustedIps2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsTrustedIps2' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsTrustedIpsAddresses$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsTrustedIpsAddresses,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  note: types.optional(types.string()),
+  value: types.string(),
+});
+
+export function updateMicrofrontendsTrustedIpsAddressesFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateMicrofrontendsTrustedIpsAddresses,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsTrustedIpsAddresses$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateMicrofrontendsTrustedIpsAddresses' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsTrustedIpsDeploymentType$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateMicrofrontendsTrustedIpsDeploymentType> = z
+    .nativeEnum(UpdateMicrofrontendsTrustedIpsDeploymentType);
+
+/** @internal */
+export const UpdateMicrofrontendsTrustedIpsProtectionMode$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateMicrofrontendsTrustedIpsProtectionMode> = z
+    .nativeEnum(UpdateMicrofrontendsTrustedIpsProtectionMode);
+
+/** @internal */
+export const UpdateMicrofrontendsTrustedIps1$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsTrustedIps1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  addresses: z.array(
+    z.lazy(() => UpdateMicrofrontendsTrustedIpsAddresses$inboundSchema),
+  ),
+  deploymentType: UpdateMicrofrontendsTrustedIpsDeploymentType$inboundSchema,
+  protectionMode: UpdateMicrofrontendsTrustedIpsProtectionMode$inboundSchema,
+});
+
+export function updateMicrofrontendsTrustedIps1FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsTrustedIps1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsTrustedIps1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsTrustedIps1' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsTrustedIps$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsTrustedIps,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => UpdateMicrofrontendsTrustedIps1$inboundSchema),
+  z.lazy(() => UpdateMicrofrontendsTrustedIps2$inboundSchema),
+]);
+
+export function updateMicrofrontendsTrustedIpsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsTrustedIps, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsTrustedIps$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsTrustedIps' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsToProjectsPreset$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateMicrofrontendsToProjectsPreset> = z.nativeEnum(
+    UpdateMicrofrontendsToProjectsPreset,
+  );
+
+/** @internal */
+export const UpdateMicrofrontendsTo2$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsTo2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  preset: UpdateMicrofrontendsToProjectsPreset$inboundSchema,
+  slugs: types.optional(z.array(types.string())),
+});
+
+export function updateMicrofrontendsTo2FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsTo2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsTo2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsTo2' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsToPreset$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateMicrofrontendsToPreset
+> = z.nativeEnum(UpdateMicrofrontendsToPreset);
+
+/** @internal */
+export const UpdateMicrofrontendsTo1$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsTo1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  preset: types.optional(UpdateMicrofrontendsToPreset$inboundSchema),
+  slugs: z.array(types.string()),
+});
+
+export function updateMicrofrontendsTo1FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsTo1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsTo1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsTo1' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsTo$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsTo,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => UpdateMicrofrontendsTo1$inboundSchema),
+  z.lazy(() => UpdateMicrofrontendsTo2$inboundSchema),
+]);
+
+export function updateMicrofrontendsToFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsTo, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsTo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsTo' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateMicrofrontendsOidcProviders$inboundSchema: z.ZodType<
   UpdateMicrofrontendsOidcProviders,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  to: UpdateMicrofrontendsTo$inboundSchema,
+  to: smartUnion([
+    z.lazy(() => UpdateMicrofrontendsTo1$inboundSchema),
+    z.lazy(() => UpdateMicrofrontendsTo2$inboundSchema),
+  ]),
   claims: z.record(z.array(types.string())),
   label: types.optional(types.string()),
 });
@@ -694,7 +5819,6 @@ export const UpdateMicrofrontendsResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  abuse: types.optional(UpdateMicrofrontendsAbuse$inboundSchema),
   accountId: types.string(),
   alias: z.array(UpdateMicrofrontendsAlias$inboundSchema),
   analytics: types.optional(UpdateMicrofrontendsAnalytics$inboundSchema),
@@ -763,70 +5887,113 @@ export const UpdateMicrofrontendsResponseBody$inboundSchema: z.ZodType<
     UpdateMicrofrontendsLastRollbackTarget$inboundSchema,
   ).optional(),
   latestDeployments: types.optional(
-    z.array(UpdateMicrofrontendsLatestDeployments$inboundSchema),
+    z.array(z.lazy(() => UpdateMicrofrontendsLatestDeployments$inboundSchema)),
   ),
-  link: types.optional(UpdateMicrofrontendsLink$inboundSchema),
+  link: types.optional(
+    z.union([
+      z.lazy(() => UpdateMicrofrontendsLink1$inboundSchema),
+      z.lazy(() => UpdateMicrofrontendsLink2$inboundSchema),
+      z.lazy(() => UpdateMicrofrontendsLink3$inboundSchema),
+      z.lazy(() => UpdateMicrofrontendsLink4$inboundSchema),
+      z.lazy(() => UpdateMicrofrontendsLink5$inboundSchema),
+      z.lazy(() => UpdateMicrofrontendsLink6$inboundSchema),
+      z.lazy(() => UpdateMicrofrontendsLink7$inboundSchema),
+      z.lazy(() => UpdateMicrofrontendsLink8$inboundSchema),
+    ]),
+  ),
   live: types.optional(types.boolean()),
   microfrontends: types.optional(
-    UpdateMicrofrontendsMicrofrontends$inboundSchema,
+    smartUnion([
+      z.lazy(() => UpdateMicrofrontendsMicrofrontends1$inboundSchema),
+      z.lazy(() => UpdateMicrofrontendsMicrofrontends2$inboundSchema),
+      z.lazy(() => UpdateMicrofrontendsMicrofrontends3$inboundSchema),
+    ]),
   ),
   name: types.string(),
   nodeVersion: UpdateMicrofrontendsNodeVersion$inboundSchema,
   oidcTokenConfig: types.optional(
-    UpdateMicrofrontendsOidcTokenConfig$inboundSchema,
+    z.lazy(() => UpdateMicrofrontendsOidcTokenConfig$inboundSchema),
   ),
   optionsAllowlist: z.nullable(
-    UpdateMicrofrontendsOptionsAllowlist$inboundSchema,
+    z.lazy(() => UpdateMicrofrontendsOptionsAllowlist$inboundSchema),
   ).optional(),
   outputDirectory: z.nullable(types.string()).optional(),
   passiveConnectConfigurationId: z.nullable(types.string()).optional(),
-  passport: z.nullable(UpdateMicrofrontendsPassport$inboundSchema).optional(),
+  passport: z.nullable(z.lazy(() => UpdateMicrofrontendsPassport$inboundSchema))
+    .optional(),
   passwordProtection: z.nullable(
-    UpdateMicrofrontendsPasswordProtection$inboundSchema,
+    z.lazy(() => UpdateMicrofrontendsPasswordProtection$inboundSchema),
   ).optional(),
   paused: types.optional(types.boolean()),
-  permissions: types.optional(UpdateMicrofrontendsPermissions$inboundSchema),
+  permissions: types.optional(
+    z.lazy(() => UpdateMicrofrontendsPermissions$inboundSchema),
+  ),
   productionDeploymentsFastLane: types.optional(types.boolean()),
   protectedSourcemaps: types.optional(types.boolean()),
   protectionBypass: types.optional(
-    z.record(UpdateMicrofrontendsProtectionBypass$inboundSchema),
+    z.record(z.union([
+      z.lazy(() => UpdateMicrofrontendsProtectionBypass1$inboundSchema),
+      z.lazy(() =>
+        UpdateMicrofrontendsProtectionBypass2$inboundSchema
+      ),
+    ])),
   ),
   protectionConfig: types.optional(
-    UpdateMicrofrontendsProtectionConfig$inboundSchema,
+    z.lazy(() => UpdateMicrofrontendsProtectionConfig$inboundSchema),
   ),
-  resourceConfig: UpdateMicrofrontendsResourceConfig$inboundSchema,
+  resourceConfig: z.lazy(() =>
+    UpdateMicrofrontendsResourceConfig$inboundSchema
+  ),
   rollbackDescription: types.optional(
-    UpdateMicrofrontendsRollbackDescription$inboundSchema,
+    z.lazy(() => UpdateMicrofrontendsRollbackDescription$inboundSchema),
   ),
-  rollingRelease: z.nullable(UpdateMicrofrontendsRollingRelease$inboundSchema)
-    .optional(),
+  rollingRelease: z.nullable(
+    z.lazy(() => UpdateMicrofrontendsRollingRelease$inboundSchema),
+  ).optional(),
   rootDirectory: z.nullable(types.string()).optional(),
-  sandbox: types.optional(UpdateMicrofrontendsSandbox$inboundSchema),
-  security: types.optional(UpdateMicrofrontendsSecurity$inboundSchema),
+  sandbox: types.optional(
+    z.lazy(() => UpdateMicrofrontendsSandbox$inboundSchema),
+  ),
+  security: types.optional(
+    z.lazy(() => UpdateMicrofrontendsSecurity$inboundSchema),
+  ),
   serverlessFunctionZeroConfigFailover: types.optional(types.boolean()),
-  services: types.optional(z.array(UpdateMicrofrontendsServices$inboundSchema)),
+  services: types.optional(
+    z.array(z.lazy(() => UpdateMicrofrontendsServices$inboundSchema)),
+  ),
   skewProtectionAllowedDomains: types.optional(z.array(types.string())),
   skewProtectionBoundaryAt: types.optional(types.number()),
   skewProtectionMaxAge: types.optional(types.number()),
   skipGitConnectDuringLink: types.optional(types.boolean()),
   sourceFilesOutsideRootDirectory: types.optional(types.boolean()),
   speedInsights: types.optional(
-    UpdateMicrofrontendsSpeedInsights$inboundSchema,
+    z.lazy(() => UpdateMicrofrontendsSpeedInsights$inboundSchema),
   ),
-  ssoProtection: z.nullable(UpdateMicrofrontendsSsoProtection$inboundSchema)
-    .optional(),
-  staticIps: types.optional(UpdateMicrofrontendsStaticIps$inboundSchema),
+  ssoProtection: z.nullable(
+    z.lazy(() => UpdateMicrofrontendsSsoProtection$inboundSchema),
+  ).optional(),
+  staticIps: types.optional(
+    z.lazy(() => UpdateMicrofrontendsStaticIps$inboundSchema),
+  ),
   targets: types.optional(
-    z.record(types.nullable(UpdateMicrofrontendsTargets$inboundSchema)),
+    z.record(types.nullable(z.lazy(() =>
+      UpdateMicrofrontendsTargets$inboundSchema
+    ))),
   ),
   tier: types.optional(UpdateMicrofrontendsTier$inboundSchema),
-  tracing: types.optional(UpdateMicrofrontendsTracing$inboundSchema),
+  tracing: types.optional(
+    z.lazy(() => UpdateMicrofrontendsTracing$inboundSchema),
+  ),
   transferCompletedAt: types.optional(types.number()),
   transferredFromAccountId: types.optional(types.string()),
   transferStartedAt: types.optional(types.number()),
   transferToAccountId: types.optional(types.string()),
-  trustedIps: z.nullable(UpdateMicrofrontendsTrustedIps$inboundSchema)
-    .optional(),
+  trustedIps: z.nullable(
+    smartUnion([
+      z.lazy(() => UpdateMicrofrontendsTrustedIps1$inboundSchema),
+      z.lazy(() => UpdateMicrofrontendsTrustedIps2$inboundSchema),
+    ]),
+  ).optional(),
   trustedSources: z.nullable(
     z.lazy(() => UpdateMicrofrontendsTrustedSources$inboundSchema),
   ).optional(),

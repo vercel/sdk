@@ -53,8 +53,6 @@ import {
   CancelDeploymentAttribution$inboundSchema,
   CancelDeploymentChecks,
   CancelDeploymentChecks$inboundSchema,
-  CancelDeploymentConfig,
-  CancelDeploymentConfig$inboundSchema,
   CancelDeploymentCreator,
   CancelDeploymentCreator$inboundSchema,
   CancelDeploymentCustomEnvironment,
@@ -75,6 +73,8 @@ import {
   ChecksConclusion$inboundSchema,
   ChecksState,
   ChecksState$inboundSchema,
+  Config,
+  Config$inboundSchema,
   Crons,
   Crons$inboundSchema,
   Duration,
@@ -962,7 +962,7 @@ export type CancelDeploymentResponseBody = {
   /**
    * Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured
    */
-  config?: CancelDeploymentConfig | undefined;
+  config?: Config | undefined;
   connectBuildsEnabled?: boolean | undefined;
   connectConfigurationId?: string | undefined;
   /**
@@ -2904,7 +2904,7 @@ export const CancelDeploymentResponseBody$inboundSchema: z.ZodType<
   checks: types.optional(CancelDeploymentChecks$inboundSchema),
   checksConclusion: types.optional(ChecksConclusion$inboundSchema),
   checksState: types.optional(ChecksState$inboundSchema),
-  config: types.optional(CancelDeploymentConfig$inboundSchema),
+  config: types.optional(Config$inboundSchema),
   connectBuildsEnabled: types.optional(types.boolean()),
   connectConfigurationId: types.optional(types.string()),
   createdAt: types.number(),

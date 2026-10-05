@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectProjectsResponseBuildQueue } from "@vercel/sdk/models/createprojectprojectschecksstate.js";
+import { CreateProjectProjectsResponseBuildQueue } from "@vercel/sdk/models/internalroutes1.js";
 
 let value: CreateProjectProjectsResponseBuildQueue = {};
 ```
 
 ## Fields
 
-| Field                                                                                                        | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
-| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| `configuration`                                                                                              | [models.CreateProjectProjectsResponseConfiguration](../models/createprojectprojectsresponseconfiguration.md) | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |
+| Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `configuration`                                                                              | [models.CreateProjectProjectsConfiguration](../models/createprojectprojectsconfiguration.md) | :heavy_minus_sign:                                                                           | N/A                                                                                          |

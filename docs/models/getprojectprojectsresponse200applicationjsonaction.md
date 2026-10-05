@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectProjectsResponse200ApplicationJSONAction } from "@vercel/sdk/models/getprojectto1.js";
+import { GetProjectProjectsResponse200ApplicationJSONAction } from "@vercel/sdk/models/getprojectresponsebody.js";
 
-let value: GetProjectProjectsResponse200ApplicationJSONAction = "rate_limit";
+let value: GetProjectProjectsResponse200ApplicationJSONAction = "log";
 ```
 
 ## Values
 
 ```typescript
-"allow" | "bypass" | "challenge" | "deny" | "log" | "rate_limit" | "redirect"
+"challenge" | "deny" | "log"
 ```

@@ -3,15 +3,15 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsSecurityAction } from "@vercel/sdk/models/getprojectsroute1.js";
+import { GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsSecurityAction } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson2projectssecuritymanagedrulesowaspaction.js";
 
 let value:
   GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsSecurityAction =
-    "log";
+    "deny";
 ```
 
 ## Values
 
 ```typescript
-"allow" | "bypass" | "challenge" | "deny" | "log" | "rate_limit" | "redirect"
+"challenge" | "deny" | "log"
 ```

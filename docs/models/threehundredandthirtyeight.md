@@ -5,9 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndThirtyEight } from "@vercel/sdk/models/twohundredandeightysix.js";
+import { ThreeHundredAndThirtyEight } from "@vercel/sdk/models/twohundredandninetyfive.js";
 
 let value: ThreeHundredAndThirtyEight = {
+  next: {
+    project: {
+      staticIps: {
+        enabled: true,
+      },
+    },
+  },
+  previous: {
+    project: {
+      staticIps: {
+        enabled: false,
+      },
+    },
+  },
   projectId: "<id>",
   projectName: "<value>",
 };
@@ -15,9 +29,9 @@ let value: ThreeHundredAndThirtyEight = {
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `prevProjectWebAnalytics`                                              | [models.PrevProjectWebAnalytics](../models/prevprojectwebanalytics.md) | :heavy_minus_sign:                                                     | N/A                                                                    |
-| `projectId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
-| `projectName`                                                          | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
-| `projectWebAnalytics`                                                  | [models.ProjectWebAnalytics](../models/projectwebanalytics.md)         | :heavy_minus_sign:                                                     | N/A                                                                    |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `next`                                                                         | [models.UserEventPayload338Next](../models/usereventpayload338next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload338Previous](../models/usereventpayload338previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |

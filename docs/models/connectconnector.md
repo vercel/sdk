@@ -20,7 +20,7 @@ let value: ConnectConnector = {
   supportsInstallation: true,
   supportsRevocation: false,
   supportsTriggers: true,
-  type: "linq",
+  type: "microsoft-entra",
   typeName: "<value>",
   uid: "<id>",
   updatedAt: 2319.25,

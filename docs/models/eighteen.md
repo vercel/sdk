@@ -8,7 +8,7 @@ The payload of the event, if requested.
 import { Eighteen } from "@vercel/sdk/models/userevent.js";
 
 let value: Eighteen = {
-  apiKey: {
+  accessPolicy: {
     id: "<id>",
     name: "<value>",
   },
@@ -17,6 +17,7 @@ let value: Eighteen = {
 
 ## Fields
 
-| Field                                              | Type                                               | Required                                           | Description                                        |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `apiKey`                                           | [models.PayloadApiKey](../models/payloadapikey.md) | :heavy_check_mark:                                 | N/A                                                |
+| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `accessPolicy`                                                 | [models.PayloadAccessPolicy](../models/payloadaccesspolicy.md) | :heavy_check_mark:                                             | N/A                                                            |
+| `previousName`                                                 | *string*                                                       | :heavy_minus_sign:                                             | N/A                                                            |

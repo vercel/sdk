@@ -16,16 +16,16 @@ import {
   GetProjectsResponseBody$inboundSchema,
 } from "../models/getprojectsresponsebody.js";
 import {
+  GetProjectsRequest,
+  GetProjectsRequest$outboundSchema,
+} from "../models/getprojectsresponsebodyprojectsresponse200applicationjson3creator.js";
+import {
   ConnectionError,
   InvalidRequestError,
   RequestAbortedError,
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/httpclienterrors.js";
-import {
-  GetProjectsRequest,
-  GetProjectsRequest$outboundSchema,
-} from "../models/responsebodyexpiration.js";
 import { ResponseValidationError } from "../models/responsevalidationerror.js";
 import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import { VercelError } from "../models/vercelerror.js";
@@ -180,7 +180,7 @@ async function $do(
     | SDKValidationError
   >(
     M.json(200, GetProjectsResponseBody$inboundSchema),
-    M.fail([400, 401, 403, 410, "4XX"]),
+    M.fail([400, 401, 403, 404, 410, "4XX"]),
     M.fail("5XX"),
   )(response, req);
   if (!result.ok) {

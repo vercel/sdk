@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectDefaultResourceConfig } from "@vercel/sdk/models/getprojectgitprovideroptions.js";
+import { GetProjectDefaultResourceConfig } from "@vercel/sdk/models/getprojectreadysubstate.js";
 
 let value: GetProjectDefaultResourceConfig = {
   functionDefaultRegions: [

@@ -34,7 +34,7 @@ import { Result } from "../types/fp.js";
  * Read Firewall Actions by Project
  *
  * @remarks
- * Retrieve firewall actions for a project Rule names are resolved against the project's *current* active firewall configuration and the team's active rulesets, so a rule that has since been renamed reports its new name and one that has been deleted reports `null`. System rules such as `sys_dos_mitigation` and `ip_blocking` have no configured name and always report `null`.
+ * Retrieve firewall actions for a project Rule names are resolved against the project's *current* active firewall configuration and the team's active rulesets, so a rule that has since been renamed reports its new name and one that has been deleted reports `null`. System rules such as `sys_dos_mitigation` and `ip_blocking` have no configured name and always report `null`. Filters (`ip`, `isActive`, `action`, `actionType`, `ruleKind`, `ruleId`, `hosts`) are ANDed across params and ORed within a repeated param. They are applied to the policies before `limit`/`cursor`, so pages only count matching policies. A policy with no matching requests yields no action row, so a page can hold fewer than `limit` actions; only `pagination.next` signals the end. A `cursor` is only valid with the filters it was issued for.
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
  */
@@ -96,10 +96,19 @@ async function $do(
   const path = pathToFunc("/v1/security/firewall/events")();
 
   const query = encodeFormQuery({
+    "action": payload.action,
+    "actionType": payload.actionType,
+    "cursor": payload.cursor,
     "endTimestamp": payload.endTimestamp,
     "hosts": payload.hosts,
+    "ip": payload.ip,
+    "isActive": payload.isActive,
+    "limit": payload.limit,
     "projectId": payload.projectId,
+    "ruleId": payload.ruleId,
+    "ruleKind": payload.ruleKind,
     "slug": payload.slug,
+    "sort": payload.sort,
     "startTimestamp": payload.startTimestamp,
     "teamId": payload.teamId,
   });

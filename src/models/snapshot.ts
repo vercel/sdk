@@ -102,6 +102,10 @@ export type Snapshot = {
    * The last time the snapshot was updated, in milliseconds since the epoch.
    */
   updatedAt: number;
+  /**
+   * Whether this snapshot is managed by v0 on the customer's behalf.
+   */
+  v0?: boolean | undefined;
 };
 
 /** @internal */
@@ -138,6 +142,7 @@ export const Snapshot$inboundSchema: z.ZodType<
   sourceSessionId: types.string(),
   status: SnapshotStatus$inboundSchema,
   updatedAt: types.number(),
+  v0: types.optional(types.boolean()),
 });
 
 export function snapshotFromJSON(

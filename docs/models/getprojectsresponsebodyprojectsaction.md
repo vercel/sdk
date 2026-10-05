@@ -1,17 +1,15 @@
 # GetProjectsResponseBodyProjectsAction
 
-What to do when the gate trips: pause the rollout, or roll it back.
-
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyProjectsAction } from "@vercel/sdk/models/erl.js";
+import { GetProjectsResponseBodyProjectsAction } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson3creator.js";
 
-let value: GetProjectsResponseBodyProjectsAction = "rollback";
+let value: GetProjectsResponseBodyProjectsAction = "cancel";
 ```
 
 ## Values
 
 ```typescript
-"pause" | "rollback"
+"accept" | "cancel" | "delete"
 ```

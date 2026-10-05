@@ -3,15 +3,19 @@
 ## Example Usage
 
 ```typescript
-import { One4 } from "@vercel/sdk/models/getorderop.js";
+import { One4 } from "@vercel/sdk/models/patchedgeconfigitemsop.js";
 
 let value: One4 = {
-  code: "unexpected-error",
+  operation: "delete",
+  key: "<key>",
 };
 ```
 
 ## Fields
 
-| Field                | Type                 | Required             | Description          |
-| -------------------- | -------------------- | -------------------- | -------------------- |
-| `code`               | *"unexpected-error"* | :heavy_check_mark:   | N/A                  |
+| Field                                                                                                        | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `operation`                                                                                                  | [models.PatchEdgeConfigItems1GlobalConfigOperation](../models/patchedgeconfigitems1globalconfigoperation.md) | :heavy_check_mark:                                                                                           | N/A                                                                                                          |
+| `key`                                                                                                        | *string*                                                                                                     | :heavy_check_mark:                                                                                           | N/A                                                                                                          |
+| `value`                                                                                                      | *any*                                                                                                        | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |
+| `description`                                                                                                | *string*                                                                                                     | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |

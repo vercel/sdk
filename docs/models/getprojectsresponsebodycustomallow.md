@@ -1,11 +1,11 @@
 # GetProjectsResponseBodyCustomAllow
 
-Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets.
+Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets. An empty array denies all access and is only allowed for the current project.
 
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyCustomAllow } from "@vercel/sdk/models/getprojectsroute1.js";
+import { GetProjectsResponseBodyCustomAllow } from "@vercel/sdk/models/getprojectslink7.js";
 
 let value: GetProjectsResponseBodyCustomAllow = {
   from: {

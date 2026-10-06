@@ -5,12 +5,12 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndThirtySeven } from "@vercel/sdk/models/fourhundredandtwentyone.js";
+import { FourHundredAndThirtySeven } from "@vercel/sdk/models/fourhundredandtwentytwo.js";
 
 let value: FourHundredAndThirtySeven = {
   actorId: "<id>",
   actorType: "admin",
-  autoBlockPrevented: true,
+  enabled: true,
 };
 ```
 
@@ -20,6 +20,4 @@ let value: FourHundredAndThirtySeven = {
 | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
 | `actorId`                                                                        | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
 | `actorType`                                                                      | [models.UserEventPayload437ActorType](../models/usereventpayload437actortype.md) | :heavy_check_mark:                                                               | N/A                                                                              |
-| `autoBlockPrevented`                                                             | *boolean*                                                                        | :heavy_check_mark:                                                               | N/A                                                                              |
-| `preventUntil`                                                                   | *number*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `reason`                                                                         | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `enabled`                                                                        | *boolean*                                                                        | :heavy_check_mark:                                                               | N/A                                                                              |

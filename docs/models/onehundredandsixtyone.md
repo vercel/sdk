@@ -7,13 +7,17 @@ The payload of the event, if requested.
 ```typescript
 import { OneHundredAndSixtyOne } from "@vercel/sdk/models/jobnsnbsideeffect.js";
 
-let value: OneHundredAndSixtyOne = {};
+let value: OneHundredAndSixtyOne = {
+  team: {
+    id: "<id>",
+  },
+};
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `deletedUid`                                   | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `deletedUser`                                  | [models.DeletedUser](../models/deleteduser.md) | :heavy_minus_sign:                             | N/A                                            |
-| `emailDomain`                                  | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `nextRule`                                                             | [models.NextRule](../models/nextrule.md)                               | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `previousRule`                                                         | [models.PayloadPreviousRule](../models/payloadpreviousrule.md)         | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `team`                                                                 | [models.UserEventPayload161Team](../models/usereventpayload161team.md) | :heavy_check_mark:                                                     | N/A                                                                    |

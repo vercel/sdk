@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ProjectMembership } from "@vercel/sdk/models/twohundredandninetyfive.js";
+import { ProjectMembership } from "@vercel/sdk/models/twohundredandninetysix.js";
 
 let value: ProjectMembership = {
   createdAt: 32.99,
@@ -17,6 +17,6 @@ let value: ProjectMembership = {
 | Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | `createdAt`                                                            | *number*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
-| `role`                                                                 | [models.UserEventPayload306Role](../models/usereventpayload306role.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| `role`                                                                 | [models.UserEventPayload307Role](../models/usereventpayload307role.md) | :heavy_check_mark:                                                     | N/A                                                                    |
 | `uid`                                                                  | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
 | `username`                                                             | *string*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |

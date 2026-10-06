@@ -408,6 +408,7 @@ export type GetVercelCiInvocationTreeDefinition = {
   jobRunAttempt: number;
   taskDefinitionId: string;
   name: string;
+  packageDirectory?: string | undefined;
   operation:
     | GetVercelCiInvocationTreeOperation1
     | GetVercelCiInvocationTreeOperation2;
@@ -452,6 +453,13 @@ export type GetVercelCiInvocationTreeVercelCiResponseCompleted = {
     | GetVercelCiInvocationTreeConclusion4;
 };
 
+export type GetVercelCiInvocationTreeDeploymentBinding = {
+  deploymentId: string;
+  deploymentCreatedAt: number;
+  eventAt: number;
+  readyState?: string | undefined;
+};
+
 export type GetVercelCiInvocationTreeRun = {
   invocationId: string;
   invocationAttempt: number;
@@ -462,6 +470,7 @@ export type GetVercelCiInvocationTreeRun = {
   createdAt: number;
   started?: GetVercelCiInvocationTreeVercelCiStarted | undefined;
   completed?: GetVercelCiInvocationTreeVercelCiResponseCompleted | undefined;
+  deploymentBinding?: GetVercelCiInvocationTreeDeploymentBinding | undefined;
 };
 
 export type GetVercelCiInvocationTreeTasks = {
@@ -1349,6 +1358,7 @@ export const GetVercelCiInvocationTreeDefinition$inboundSchema: z.ZodType<
   jobRunAttempt: types.number(),
   taskDefinitionId: types.string(),
   name: types.string(),
+  packageDirectory: types.optional(types.string()),
   operation: z.union([
     z.lazy(() => GetVercelCiInvocationTreeOperation1$inboundSchema),
     z.lazy(() => GetVercelCiInvocationTreeOperation2$inboundSchema),
@@ -1555,6 +1565,32 @@ export function getVercelCiInvocationTreeVercelCiResponseCompletedFromJSON(
 }
 
 /** @internal */
+export const GetVercelCiInvocationTreeDeploymentBinding$inboundSchema:
+  z.ZodType<GetVercelCiInvocationTreeDeploymentBinding, z.ZodTypeDef, unknown> =
+    z.object({
+      deploymentId: types.string(),
+      deploymentCreatedAt: types.number(),
+      eventAt: types.number(),
+      readyState: types.optional(types.string()),
+    });
+
+export function getVercelCiInvocationTreeDeploymentBindingFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetVercelCiInvocationTreeDeploymentBinding,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetVercelCiInvocationTreeDeploymentBinding$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetVercelCiInvocationTreeDeploymentBinding' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetVercelCiInvocationTreeRun$inboundSchema: z.ZodType<
   GetVercelCiInvocationTreeRun,
   z.ZodTypeDef,
@@ -1574,6 +1610,9 @@ export const GetVercelCiInvocationTreeRun$inboundSchema: z.ZodType<
     z.lazy(() =>
       GetVercelCiInvocationTreeVercelCiResponseCompleted$inboundSchema
     ),
+  ),
+  deploymentBinding: types.optional(
+    z.lazy(() => GetVercelCiInvocationTreeDeploymentBinding$inboundSchema),
   ),
 });
 

@@ -5,17 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndForty } from "@vercel/sdk/models/fourhundredandtwentyone.js";
+import { FourHundredAndForty } from "@vercel/sdk/models/fourhundredandtwentytwo.js";
 
 let value: FourHundredAndForty = {
-  action: "remove-passkey",
-  reason: "<value>",
+  allowedMethods: [
+    "webauthn",
+  ],
+  firstFactor: "<value>",
+  flowId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `action`                                                                   | [models.UserEventPayload440Action](../models/usereventpayload440action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
-| `reason`                                                                   | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field                                                  | Type                                                   | Required                                               | Description                                            |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| `allowedMethods`                                       | [models.AllowedMethods](../models/allowedmethods.md)[] | :heavy_check_mark:                                     | N/A                                                    |
+| `firstFactor`                                          | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
+| `flowId`                                               | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
+| `loginSessionId`                                       | *string*                                               | :heavy_minus_sign:                                     | N/A                                                    |

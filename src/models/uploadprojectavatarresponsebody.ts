@@ -2746,6 +2746,7 @@ export type UploadProjectAvatarResponseBody = {
   autoAssignCustomDomainsUpdatedBy?: string | undefined;
   autoExposeSystemEnvs?: boolean | undefined;
   avatar?: string | null | undefined;
+  avatarDarkMode?: string | null | undefined;
   blobs?: UploadProjectAvatarBlobs | undefined;
   buildCommand?: string | null | undefined;
   commandForIgnoringBuildStep?: string | null | undefined;
@@ -5657,6 +5658,7 @@ export const UploadProjectAvatarResponseBody$inboundSchema: z.ZodType<
   autoAssignCustomDomainsUpdatedBy: types.optional(types.string()),
   autoExposeSystemEnvs: types.optional(types.boolean()),
   avatar: z.nullable(types.string()).optional(),
+  avatarDarkMode: z.nullable(types.string()).optional(),
   blobs: types.optional(UploadProjectAvatarBlobs$inboundSchema),
   buildCommand: z.nullable(types.string()).optional(),
   commandForIgnoringBuildStep: z.nullable(types.string()).optional(),

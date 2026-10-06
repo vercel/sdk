@@ -5,14 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndSixtyThree } from "@vercel/sdk/models/fourhundredandtwentyone.js";
+import { FourHundredAndSixtyThree } from "@vercel/sdk/models/fourhundredandtwentytwo.js";
 
 let value: FourHundredAndSixtyThree = {
   configuration: {
     id: "<id>",
   },
   peering: {
+    accountId: "<id>",
     id: "<id>",
+    region: "<value>",
+    vpcId: "<id>",
   },
   team: {
     id: "<id>",
@@ -26,5 +29,5 @@ let value: FourHundredAndSixtyThree = {
 | Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
 | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
 | `configuration`                                                                          | [models.UserEventPayload463Configuration](../models/usereventpayload463configuration.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `peering`                                                                                | [models.PayloadPeering](../models/payloadpeering.md)                                     | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `peering`                                                                                | [models.Peering](../models/peering.md)                                                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
 | `team`                                                                                   | [models.UserEventPayload463Team](../models/usereventpayload463team.md)                   | :heavy_check_mark:                                                                       | N/A                                                                                      |

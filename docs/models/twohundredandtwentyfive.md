@@ -8,18 +8,16 @@ The payload of the event, if requested.
 import { TwoHundredAndTwentyFive } from "@vercel/sdk/models/lasteditedbyprincipal1.js";
 
 let value: TwoHundredAndTwentyFive = {
-  enforced: false,
+  billingPlan: "platform",
   organizationId: "<id>",
-  organizationSlug: "<value>",
-  previousEnforced: true,
+  teamId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `enforced`         | *boolean*          | :heavy_check_mark: | N/A                |
-| `organizationId`   | *string*           | :heavy_check_mark: | N/A                |
-| `organizationSlug` | *string*           | :heavy_check_mark: | N/A                |
-| `previousEnforced` | *boolean*          | :heavy_check_mark: | N/A                |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `billingPlan`                                  | [models.BillingPlan](../models/billingplan.md) | :heavy_check_mark:                             | N/A                                            |
+| `organizationId`                               | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `teamId`                                       | *string*                                       | :heavy_check_mark:                             | N/A                                            |

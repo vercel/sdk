@@ -5,25 +5,18 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndEightyOne } from "@vercel/sdk/models/twohundredandtwentyseven.js";
+import { TwoHundredAndEightyOne } from "@vercel/sdk/models/twohundredandtwentyeight.js";
 
 let value: TwoHundredAndEightyOne = {
-  next: {
-    functionDefaultTimeout: 4667.2,
-  },
-  previous: {
-    functionDefaultTimeout: 7431.24,
-  },
+  enableFunctionsBeta: true,
   projectId: "<id>",
-  projectName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `next`                                                                         | [models.UserEventPayload281Next](../models/usereventpayload281next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload281Previous](../models/usereventpayload281previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                 | Type                  | Required              | Description           |
+| --------------------- | --------------------- | --------------------- | --------------------- |
+| `enableFunctionsBeta` | *boolean*             | :heavy_check_mark:    | N/A                   |
+| `projectId`           | *string*              | :heavy_check_mark:    | N/A                   |
+| `projectName`         | *string*              | :heavy_minus_sign:    | N/A                   |

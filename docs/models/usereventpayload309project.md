@@ -3,10 +3,9 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload309Project } from "@vercel/sdk/models/twohundredandninetyfive.js";
+import { UserEventPayload309Project } from "@vercel/sdk/models/twohundredandninetysix.js";
 
 let value: UserEventPayload309Project = {
-  id: "<id>",
   name: "<value>",
 };
 ```
@@ -15,5 +14,5 @@ let value: UserEventPayload309Project = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *string*           | :heavy_check_mark: | N/A                |
+| `id`               | *string*           | :heavy_minus_sign: | N/A                |
 | `name`             | *string*           | :heavy_check_mark: | N/A                |

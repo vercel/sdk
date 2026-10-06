@@ -8,8 +8,10 @@ The payload of the event, if requested.
 import { TwoHundredAndTwentyThree } from "@vercel/sdk/models/lasteditedbyprincipal1.js";
 
 let value: TwoHundredAndTwentyThree = {
+  enabled: true,
   organizationId: "<id>",
-  slug: "<value>",
+  teamId: "<id>",
+  teamSlug: "<value>",
 };
 ```
 
@@ -17,5 +19,7 @@ let value: TwoHundredAndTwentyThree = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
+| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
 | `organizationId`   | *string*           | :heavy_check_mark: | N/A                |
-| `slug`             | *string*           | :heavy_check_mark: | N/A                |
+| `teamId`           | *string*           | :heavy_check_mark: | N/A                |
+| `teamSlug`         | *string*           | :heavy_check_mark: | N/A                |

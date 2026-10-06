@@ -9,11 +9,15 @@ import { OneHundredAndSeventyOne } from "@vercel/sdk/models/lasteditedbyprincipa
 
 let value: OneHundredAndSeventyOne = {
   configVersion: "<value>",
+  projectId: "<id>",
+  projectName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                         | Type                          | Required                      | Description                   |
-| ----------------------------- | ----------------------------- | ----------------------------- | ----------------------------- |
-| `configVersion`               | *models.PayloadConfigVersion* | :heavy_check_mark:            | N/A                           |
+| Field                  | Type                   | Required               | Description            |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `configVersion`        | *models.ConfigVersion* | :heavy_check_mark:     | N/A                    |
+| `projectId`            | *string*               | :heavy_check_mark:     | N/A                    |
+| `projectName`          | *string*               | :heavy_check_mark:     | N/A                    |

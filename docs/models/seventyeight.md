@@ -5,20 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { SeventyEight } from "@vercel/sdk/models/fiftyeight.js";
+import { SeventyEight } from "@vercel/sdk/models/fiftynine.js";
 
 let value: SeventyEight = {
-  productAliases: [
-    "<value 1>",
-    "<value 2>",
-    "<value 3>",
-  ],
+  action: "mutate",
+  data: {
+    "key": "<value>",
+    "key1": "<value>",
+    "key2": "<value>",
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `subscriptionId`   | *string*           | :heavy_minus_sign: | N/A                |
-| `productAliases`   | *string*[]         | :heavy_check_mark: | N/A                |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `subscriptionId`                                                         | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `action`                                                                 | [models.UserEventPayload78Action](../models/usereventpayload78action.md) | :heavy_check_mark:                                                       | N/A                                                                      |
+| `data`                                                                   | Record<string, *any*>                                                    | :heavy_check_mark:                                                       | N/A                                                                      |

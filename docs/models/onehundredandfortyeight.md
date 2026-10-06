@@ -10,7 +10,7 @@ import { OneHundredAndFortyEight } from "@vercel/sdk/models/jobnsnbsideeffect.js
 let value: OneHundredAndFortyEight = {
   projectId: "<id>",
   projectName: "<value>",
-  tags: [],
+  srcImages: [],
 };
 ```
 
@@ -20,5 +20,4 @@ let value: OneHundredAndFortyEight = {
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `projectId`        | *string*           | :heavy_check_mark: | N/A                |
 | `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `tags`             | *string*[]         | :heavy_check_mark: | N/A                |
-| `target`           | *string*           | :heavy_minus_sign: | N/A                |
+| `srcImages`        | *string*[]         | :heavy_check_mark: | N/A                |

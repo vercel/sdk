@@ -195,7 +195,7 @@ export type ListCheckRunsSelectionJob = ClosedEnum<
   typeof ListCheckRunsSelectionJob
 >;
 
-export type ListCheckRunsSelection3 = {
+export type ListCheckRunsSelection4 = {
   failIfNoMatch?: boolean | undefined;
   filters: Array<string>;
   job: ListCheckRunsSelectionJob;
@@ -203,9 +203,13 @@ export type ListCheckRunsSelection3 = {
   task: string;
 };
 
-export type ListCheckRunsSelection2 = {
+export type ListCheckRunsSelection3 = {
   job: string;
   kind: "job";
+};
+
+export type ListCheckRunsSelection2 = {
+  kind: "deployment";
 };
 
 export type ListCheckRunsSelection1 = {
@@ -215,7 +219,8 @@ export type ListCheckRunsSelection1 = {
 export type ListCheckRunsSourceSelection =
   | ListCheckRunsSelection1
   | ListCheckRunsSelection2
-  | ListCheckRunsSelection3;
+  | ListCheckRunsSelection3
+  | ListCheckRunsSelection4;
 
 export const ListCheckRunsSourceChecksV2Response200SubKind = {
   VercelCiCheck: "vercel-ci-check",
@@ -232,7 +237,8 @@ export type ListCheckRunsSource5 = {
   selection:
     | ListCheckRunsSelection1
     | ListCheckRunsSelection2
-    | ListCheckRunsSelection3;
+    | ListCheckRunsSelection3
+    | ListCheckRunsSelection4;
   subKind: ListCheckRunsSourceChecksV2Response200SubKind;
 };
 
@@ -591,8 +597,8 @@ export const ListCheckRunsSelectionJob$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(ListCheckRunsSelectionJob);
 
 /** @internal */
-export const ListCheckRunsSelection3$inboundSchema: z.ZodType<
-  ListCheckRunsSelection3,
+export const ListCheckRunsSelection4$inboundSchema: z.ZodType<
+  ListCheckRunsSelection4,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -601,6 +607,26 @@ export const ListCheckRunsSelection3$inboundSchema: z.ZodType<
   job: ListCheckRunsSelectionJob$inboundSchema,
   kind: types.literal("turborepo"),
   task: types.string(),
+});
+
+export function listCheckRunsSelection4FromJSON(
+  jsonString: string,
+): SafeParseResult<ListCheckRunsSelection4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListCheckRunsSelection4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListCheckRunsSelection4' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListCheckRunsSelection3$inboundSchema: z.ZodType<
+  ListCheckRunsSelection3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  job: types.string(),
+  kind: types.literal("job"),
 });
 
 export function listCheckRunsSelection3FromJSON(
@@ -619,8 +645,7 @@ export const ListCheckRunsSelection2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  job: types.string(),
-  kind: types.literal("job"),
+  kind: types.literal("deployment"),
 });
 
 export function listCheckRunsSelection2FromJSON(
@@ -661,6 +686,7 @@ export const ListCheckRunsSourceSelection$inboundSchema: z.ZodType<
   z.lazy(() => ListCheckRunsSelection1$inboundSchema),
   z.lazy(() => ListCheckRunsSelection2$inboundSchema),
   z.lazy(() => ListCheckRunsSelection3$inboundSchema),
+  z.lazy(() => ListCheckRunsSelection4$inboundSchema),
 ]);
 
 export function listCheckRunsSourceSelectionFromJSON(
@@ -689,6 +715,7 @@ export const ListCheckRunsSource5$inboundSchema: z.ZodType<
     z.lazy(() => ListCheckRunsSelection1$inboundSchema),
     z.lazy(() => ListCheckRunsSelection2$inboundSchema),
     z.lazy(() => ListCheckRunsSelection3$inboundSchema),
+    z.lazy(() => ListCheckRunsSelection4$inboundSchema),
   ]),
   subKind: ListCheckRunsSourceChecksV2Response200SubKind$inboundSchema,
 });

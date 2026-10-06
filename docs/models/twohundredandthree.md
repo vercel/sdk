@@ -8,14 +8,13 @@ The payload of the event, if requested.
 import { TwoHundredAndThree } from "@vercel/sdk/models/lasteditedbyprincipal1.js";
 
 let value: TwoHundredAndThree = {
-  login: "Madison_Runte43",
-  provider: "bitbucket",
+  logDrainUrl: "https://our-ruin.name",
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `login`                                                                        | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `provider`                                                                     | [models.UserEventPayload203Provider](../models/usereventpayload203provider.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `integrationName`  | *string*           | :heavy_minus_sign: | N/A                |
+| `logDrainUrl`      | *string*           | :heavy_check_mark: | N/A                |

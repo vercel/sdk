@@ -15,8 +15,7 @@ const value: models.ListCheckRunsSelection1 = {
 
 ```typescript
 const value: models.ListCheckRunsSelection2 = {
-  job: "Lead Usability Manager",
-  kind: "job",
+  kind: "deployment",
 };
 ```
 
@@ -24,9 +23,17 @@ const value: models.ListCheckRunsSelection2 = {
 
 ```typescript
 const value: models.ListCheckRunsSelection3 = {
+  job: "Customer Division Representative",
+  kind: "job",
+};
+```
+
+### `models.ListCheckRunsSelection4`
+
+```typescript
+const value: models.ListCheckRunsSelection4 = {
   filters: [
     "<value 1>",
-    "<value 2>",
   ],
   job: "Turborepo",
   kind: "turborepo",

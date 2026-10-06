@@ -9,13 +9,15 @@ import { OneHundredAndThirtySeven } from "@vercel/sdk/models/jobnsnbsideeffect.j
 
 let value: OneHundredAndThirtySeven = {
   domain: "colossal-chainstay.name",
-  zone: false,
+  echMode: "enabled",
+  previousEchMode: "enabled",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `domain`           | *string*           | :heavy_check_mark: | N/A                |
-| `zone`             | *boolean*          | :heavy_check_mark: | N/A                |
+| Field                                                  | Type                                                   | Required                                               | Description                                            |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| `domain`                                               | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
+| `echMode`                                              | [models.EchMode](../models/echmode.md)                 | :heavy_check_mark:                                     | N/A                                                    |
+| `previousEchMode`                                      | [models.PreviousEchMode](../models/previousechmode.md) | :heavy_check_mark:                                     | N/A                                                    |

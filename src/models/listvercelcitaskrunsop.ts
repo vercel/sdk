@@ -198,6 +198,13 @@ export type ListVercelCiTaskRunsCompleted = {
     | ListVercelCiTaskRunsConclusion4;
 };
 
+export type DeploymentBinding = {
+  deploymentId: string;
+  deploymentCreatedAt: number;
+  eventAt: number;
+  readyState?: string | undefined;
+};
+
 export type TaskRuns = {
   invocationId: string;
   invocationAttempt: number;
@@ -208,6 +215,7 @@ export type TaskRuns = {
   createdAt: number;
   started?: ListVercelCiTaskRunsStarted | undefined;
   completed?: ListVercelCiTaskRunsCompleted | undefined;
+  deploymentBinding?: DeploymentBinding | undefined;
 };
 
 /**
@@ -576,6 +584,28 @@ export function listVercelCiTaskRunsCompletedFromJSON(
 }
 
 /** @internal */
+export const DeploymentBinding$inboundSchema: z.ZodType<
+  DeploymentBinding,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  deploymentId: types.string(),
+  deploymentCreatedAt: types.number(),
+  eventAt: types.number(),
+  readyState: types.optional(types.string()),
+});
+
+export function deploymentBindingFromJSON(
+  jsonString: string,
+): SafeParseResult<DeploymentBinding, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeploymentBinding$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeploymentBinding' from JSON`,
+  );
+}
+
+/** @internal */
 export const TaskRuns$inboundSchema: z.ZodType<
   TaskRuns,
   z.ZodTypeDef,
@@ -593,6 +623,9 @@ export const TaskRuns$inboundSchema: z.ZodType<
   ),
   completed: types.optional(
     z.lazy(() => ListVercelCiTaskRunsCompleted$inboundSchema),
+  ),
+  deploymentBinding: types.optional(
+    z.lazy(() => DeploymentBinding$inboundSchema),
   ),
 });
 

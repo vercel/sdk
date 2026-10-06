@@ -15,8 +15,7 @@ const value: models.GetDeploymentCheckRunSelection1 = {
 
 ```typescript
 const value: models.GetDeploymentCheckRunSelection2 = {
-  job: "International Interactions Architect",
-  kind: "job",
+  kind: "deployment",
 };
 ```
 
@@ -24,7 +23,18 @@ const value: models.GetDeploymentCheckRunSelection2 = {
 
 ```typescript
 const value: models.GetDeploymentCheckRunSelection3 = {
-  filters: [],
+  job: "Senior Data Administrator",
+  kind: "job",
+};
+```
+
+### `models.GetDeploymentCheckRunSelection4`
+
+```typescript
+const value: models.GetDeploymentCheckRunSelection4 = {
+  filters: [
+    "<value 1>",
+  ],
   job: "Turborepo",
   kind: "turborepo",
   task: "<value>",

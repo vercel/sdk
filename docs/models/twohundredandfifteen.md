@@ -8,7 +8,8 @@ The payload of the event, if requested.
 import { TwoHundredAndFifteen } from "@vercel/sdk/models/lasteditedbyprincipal1.js";
 
 let value: TwoHundredAndFifteen = {
-  projectName: "<value>",
+  alertId: "<id>",
+  alertName: "<value>",
 };
 ```
 
@@ -16,5 +17,5 @@ let value: TwoHundredAndFifteen = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_minus_sign: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `alertId`          | *string*           | :heavy_check_mark: | N/A                |
+| `alertName`        | *string*           | :heavy_check_mark: | N/A                |

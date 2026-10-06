@@ -8,18 +8,14 @@ The payload of the event, if requested.
 import { OneHundredAndFiftyNine } from "@vercel/sdk/models/jobnsnbsideeffect.js";
 
 let value: OneHundredAndFiftyNine = {
-  previousRule: {
-    email: "Jarod.Gorczany23@gmail.com",
-  },
-  team: {
-    id: "<id>",
-  },
+  email: "Jarod.Gorczany23@gmail.com",
+  name: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `previousRule`                                                         | [models.PreviousRule](../models/previousrule.md)                       | :heavy_check_mark:                                                     | N/A                                                                    |
-| `team`                                                                 | [models.UserEventPayload159Team](../models/usereventpayload159team.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `email`            | *string*           | :heavy_check_mark: | N/A                |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |

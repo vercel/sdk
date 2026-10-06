@@ -6,8 +6,7 @@
 import { GetDeploymentCheckRunSelection2 } from "@vercel/sdk/models/getdeploymentcheckrunop.js";
 
 let value: GetDeploymentCheckRunSelection2 = {
-  job: "International Interactions Architect",
-  kind: "job",
+  kind: "deployment",
 };
 ```
 
@@ -15,5 +14,4 @@ let value: GetDeploymentCheckRunSelection2 = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `job`              | *string*           | :heavy_check_mark: | N/A                |
-| `kind`             | *"job"*            | :heavy_check_mark: | N/A                |
+| `kind`             | *"deployment"*     | :heavy_check_mark: | N/A                |

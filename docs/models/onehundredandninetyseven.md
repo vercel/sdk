@@ -8,8 +8,10 @@ The payload of the event, if requested.
 import { OneHundredAndNinetySeven } from "@vercel/sdk/models/lasteditedbyprincipal1.js";
 
 let value: OneHundredAndNinetySeven = {
+  algorithm: "<value>",
   issuerId: "<id>",
   issuerName: "<value>",
+  origin: "<value>",
 };
 ```
 
@@ -17,6 +19,8 @@ let value: OneHundredAndNinetySeven = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
+| `algorithm`        | *string*           | :heavy_check_mark: | N/A                |
 | `issuerId`         | *string*           | :heavy_check_mark: | N/A                |
 | `issuerName`       | *string*           | :heavy_check_mark: | N/A                |
 | `managedBy`        | *string*           | :heavy_minus_sign: | N/A                |
+| `origin`           | *string*           | :heavy_check_mark: | N/A                |

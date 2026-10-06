@@ -8,7 +8,8 @@ The payload of the event, if requested.
 import { TwoHundredAndFour } from "@vercel/sdk/models/lasteditedbyprincipal1.js";
 
 let value: TwoHundredAndFour = {
-  provider: "github-custom-host",
+  login: "Josh84",
+  provider: "saml",
 };
 ```
 
@@ -16,4 +17,5 @@ let value: TwoHundredAndFour = {
 
 | Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
 | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `login`                                                                        | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
 | `provider`                                                                     | [models.UserEventPayload204Provider](../models/usereventpayload204provider.md) | :heavy_check_mark:                                                             | N/A                                                                            |

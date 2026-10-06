@@ -8,12 +8,12 @@ The payload of the event, if requested.
 import { TwoHundredAndEight } from "@vercel/sdk/models/lasteditedbyprincipal1.js";
 
 let value: TwoHundredAndEight = {
-  periods: [],
+  invoiceCollection: true,
 };
 ```
 
 ## Fields
 
-| Field                                    | Type                                     | Required                                 | Description                              |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| `periods`                                | [models.Periods](../models/periods.md)[] | :heavy_check_mark:                       | N/A                                      |
+| Field               | Type                | Required            | Description         |
+| ------------------- | ------------------- | ------------------- | ------------------- |
+| `invoiceCollection` | *boolean*           | :heavy_check_mark:  | N/A                 |

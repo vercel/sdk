@@ -9,22 +9,20 @@ import { OneHundredAndEightyFour } from "@vercel/sdk/models/lasteditedbyprincipa
 
 let value: OneHundredAndEightyFour = {
   configurationId: "<id>",
-  confirmedScopes: [],
   integrationId: "<id>",
-  integrationName: "<value>",
   integrationSlug: "<value>",
-  ownerId: "<id>",
+  newOwner: null,
+  userId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `configurationId`  | *string*           | :heavy_check_mark: | N/A                |
-| `confirmedScopes`  | *string*[]         | :heavy_check_mark: | N/A                |
-| `integrationId`    | *string*           | :heavy_check_mark: | N/A                |
-| `integrationName`  | *string*           | :heavy_check_mark: | N/A                |
-| `integrationSlug`  | *string*           | :heavy_check_mark: | N/A                |
-| `ownerId`          | *string*           | :heavy_check_mark: | N/A                |
-| `projectIds`       | *string*[]         | :heavy_minus_sign: | N/A                |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `configurationId`                        | *string*                                 | :heavy_check_mark:                       | N/A                                      |
+| `integrationId`                          | *string*                                 | :heavy_check_mark:                       | N/A                                      |
+| `integrationName`                        | *string*                                 | :heavy_minus_sign:                       | N/A                                      |
+| `integrationSlug`                        | *string*                                 | :heavy_check_mark:                       | N/A                                      |
+| `newOwner`                               | [models.NewOwner](../models/newowner.md) | :heavy_check_mark:                       | N/A                                      |
+| `userId`                                 | *string*                                 | :heavy_check_mark:                       | N/A                                      |

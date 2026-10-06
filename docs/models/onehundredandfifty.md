@@ -8,6 +8,7 @@ The payload of the event, if requested.
 import { OneHundredAndFifty } from "@vercel/sdk/models/jobnsnbsideeffect.js";
 
 let value: OneHundredAndFifty = {
+  path: "/opt/lib",
   projectId: "<id>",
   projectName: "<value>",
 };
@@ -17,5 +18,6 @@ let value: OneHundredAndFifty = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
+| `path`             | *string*           | :heavy_check_mark: | N/A                |
 | `projectId`        | *string*           | :heavy_check_mark: | N/A                |
 | `projectName`      | *string*           | :heavy_check_mark: | N/A                |

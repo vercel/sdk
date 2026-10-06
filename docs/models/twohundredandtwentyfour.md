@@ -8,16 +8,14 @@ The payload of the event, if requested.
 import { TwoHundredAndTwentyFour } from "@vercel/sdk/models/lasteditedbyprincipal1.js";
 
 let value: TwoHundredAndTwentyFour = {
-  billingPlan: "platform",
   organizationId: "<id>",
-  teamId: "<id>",
+  slug: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `billingPlan`                                  | [models.BillingPlan](../models/billingplan.md) | :heavy_check_mark:                             | N/A                                            |
-| `organizationId`                               | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `teamId`                                       | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `organizationId`   | *string*           | :heavy_check_mark: | N/A                |
+| `slug`             | *string*           | :heavy_check_mark: | N/A                |

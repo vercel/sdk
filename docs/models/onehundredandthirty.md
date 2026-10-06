@@ -8,14 +8,14 @@ The payload of the event, if requested.
 import { OneHundredAndThirty } from "@vercel/sdk/models/jobnsnbsideeffect.js";
 
 let value: OneHundredAndThirty = {
+  cdnEnabled: true,
   name: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `name`                                                                       | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
-| `newTeam`                                                                    | [models.UserEventPayload130NewTeam](../models/usereventpayload130newteam.md) | :heavy_minus_sign:                                                           | N/A                                                                          |
-| `oldTeam`                                                                    | [models.UserEventPayload130OldTeam](../models/usereventpayload130oldteam.md) | :heavy_minus_sign:                                                           | N/A                                                                          |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `cdnEnabled`       | *boolean*          | :heavy_check_mark: | N/A                |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |

@@ -31,6 +31,7 @@ let value: GetVercelCiInvocationTreeDefinition = {
 | `jobRunAttempt`                             | *number*                                    | :heavy_check_mark:                          | N/A                                         |
 | `taskDefinitionId`                          | *string*                                    | :heavy_check_mark:                          | N/A                                         |
 | `name`                                      | *string*                                    | :heavy_check_mark:                          | N/A                                         |
+| `packageDirectory`                          | *string*                                    | :heavy_minus_sign:                          | N/A                                         |
 | `operation`                                 | *models.GetVercelCiInvocationTreeOperation* | :heavy_check_mark:                          | N/A                                         |
 | `dependencyTaskDefinitionIds`               | *string*[]                                  | :heavy_check_mark:                          | N/A                                         |
 | `createdAt`                                 | *number*                                    | :heavy_check_mark:                          | N/A                                         |

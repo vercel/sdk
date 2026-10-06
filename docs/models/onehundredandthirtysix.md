@@ -9,15 +9,11 @@ import { OneHundredAndThirtySix } from "@vercel/sdk/models/jobnsnbsideeffect.js"
 
 let value: OneHundredAndThirtySix = {
   domain: "authentic-maestro.org",
-  echMode: "auto",
-  previousEchMode: "disabled",
 };
 ```
 
 ## Fields
 
-| Field                                                  | Type                                                   | Required                                               | Description                                            |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `domain`                                               | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
-| `echMode`                                              | [models.EchMode](../models/echmode.md)                 | :heavy_check_mark:                                     | N/A                                                    |
-| `previousEchMode`                                      | [models.PreviousEchMode](../models/previousechmode.md) | :heavy_check_mark:                                     | N/A                                                    |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `domain`           | *string*           | :heavy_check_mark: | N/A                |

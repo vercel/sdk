@@ -5,17 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndFifteen } from "@vercel/sdk/models/threehundredandsixty.js";
+import { FourHundredAndFifteen } from "@vercel/sdk/models/threehundredandsixtyone.js";
 
 let value: FourHundredAndFifteen = {
-  enabled: true,
-  scope: "dashboard",
+  enabled: "default",
 };
 ```
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `enabled`                                                                | *boolean*                                                                | :heavy_check_mark:                                                       | N/A                                                                      |
-| `scope`                                                                  | [models.UserEventPayload415Scope](../models/usereventpayload415scope.md) | :heavy_check_mark:                                                       | N/A                                                                      |
+| Field                                                | Type                                                 | Required                                             | Description                                          |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| `enabled`                                            | [models.PayloadEnabled](../models/payloadenabled.md) | :heavy_check_mark:                                   | N/A                                                  |

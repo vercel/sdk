@@ -8,8 +8,8 @@ The payload of the event, if requested.
 import { OneHundredAndTwentyNine } from "@vercel/sdk/models/jobnsnbsideeffect.js";
 
 let value: OneHundredAndTwentyNine = {
-  cdnEnabled: false,
   name: "<value>",
+  price: 5420.57,
 };
 ```
 
@@ -17,5 +17,6 @@ let value: OneHundredAndTwentyNine = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `cdnEnabled`       | *boolean*          | :heavy_check_mark: | N/A                |
+| `currency`         | *string*           | :heavy_minus_sign: | N/A                |
 | `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `price`            | *number*           | :heavy_check_mark: | N/A                |

@@ -45,6 +45,9 @@ export type Source2 = {
 
 export type Source1 = {
   kind?: string | undefined;
+  integrationId?: string | undefined;
+  integrationConfigurationId?: string | undefined;
+  resourceId?: string | undefined;
   externalResourceId?: string | undefined;
 };
 
@@ -213,6 +216,9 @@ export function source2ToJSON(source2: Source2): string {
 /** @internal */
 export type Source1$Outbound = {
   kind: string;
+  integrationId?: string | undefined;
+  integrationConfigurationId?: string | undefined;
+  resourceId?: string | undefined;
   externalResourceId?: string | undefined;
 };
 
@@ -223,6 +229,9 @@ export const Source1$outboundSchema: z.ZodType<
   Source1
 > = z.object({
   kind: z.string().default("integration"),
+  integrationId: z.string().optional(),
+  integrationConfigurationId: z.string().optional(),
+  resourceId: z.string().optional(),
   externalResourceId: z.string().optional(),
 });
 

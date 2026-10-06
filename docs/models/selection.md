@@ -15,8 +15,7 @@ const value: models.Selection1 = {
 
 ```typescript
 const value: models.Selection2 = {
-  job: "Product Assurance Executive",
-  kind: "job",
+  kind: "deployment",
 };
 ```
 
@@ -24,9 +23,16 @@ const value: models.Selection2 = {
 
 ```typescript
 const value: models.Selection3 = {
-  filters: [
-    "<value 1>",
-  ],
+  job: "Future Paradigm Producer",
+  kind: "job",
+};
+```
+
+### `models.Selection4`
+
+```typescript
+const value: models.Selection4 = {
+  filters: [],
   job: "Turborepo",
   kind: "turborepo",
   task: "<value>",

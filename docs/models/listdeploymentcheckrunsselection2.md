@@ -6,8 +6,7 @@
 import { ListDeploymentCheckRunsSelection2 } from "@vercel/sdk/models/listdeploymentcheckrunsop.js";
 
 let value: ListDeploymentCheckRunsSelection2 = {
-  job: "Corporate Usability Architect",
-  kind: "job",
+  kind: "deployment",
 };
 ```
 
@@ -15,5 +14,4 @@ let value: ListDeploymentCheckRunsSelection2 = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `job`              | *string*           | :heavy_check_mark: | N/A                |
-| `kind`             | *"job"*            | :heavy_check_mark: | N/A                |
+| `kind`             | *"deployment"*     | :heavy_check_mark: | N/A                |

@@ -2813,6 +2813,7 @@ export type UpdateMicrofrontendsResponseBody = {
   autoAssignCustomDomainsUpdatedBy?: string | undefined;
   autoExposeSystemEnvs?: boolean | undefined;
   avatar?: string | null | undefined;
+  avatarDarkMode?: string | null | undefined;
   blobs?: UpdateMicrofrontendsBlobs | undefined;
   buildCommand?: string | null | undefined;
   commandForIgnoringBuildStep?: string | null | undefined;
@@ -5827,6 +5828,7 @@ export const UpdateMicrofrontendsResponseBody$inboundSchema: z.ZodType<
   autoAssignCustomDomainsUpdatedBy: types.optional(types.string()),
   autoExposeSystemEnvs: types.optional(types.boolean()),
   avatar: z.nullable(types.string()).optional(),
+  avatarDarkMode: z.nullable(types.string()).optional(),
   blobs: types.optional(UpdateMicrofrontendsBlobs$inboundSchema),
   buildCommand: z.nullable(types.string()).optional(),
   commandForIgnoringBuildStep: z.nullable(types.string()).optional(),

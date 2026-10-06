@@ -24,6 +24,7 @@ let value: ListUserEventsResponseBody = {
       id: "uev_bfmMjiMnXfnPbT97dGdpJbCN",
       payload: {
         paymentMethodId: "<id>",
+        subscriptionId: "<id>",
       },
       principalId: "<id>",
       text: "You logged in via GitHub",

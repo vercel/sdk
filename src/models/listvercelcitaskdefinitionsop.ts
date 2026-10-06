@@ -189,6 +189,7 @@ export type TaskDefinitions = {
   jobRunAttempt: number;
   taskDefinitionId: string;
   name: string;
+  packageDirectory?: string | undefined;
   operation: Operation1 | Operation2;
   dependencyTaskDefinitionIds: Array<string>;
   createdAt: number;
@@ -500,6 +501,7 @@ export const TaskDefinitions$inboundSchema: z.ZodType<
   jobRunAttempt: types.number(),
   taskDefinitionId: types.string(),
   name: types.string(),
+  packageDirectory: types.optional(types.string()),
   operation: z.union([
     z.lazy(() => Operation1$inboundSchema),
     z.lazy(() => Operation2$inboundSchema),

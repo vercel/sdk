@@ -186,7 +186,7 @@ async function $do(
   >(
     M.json(200, ConnectConnectorUpdateResult$inboundSchema),
     M.jsonErr([400, 401, 403, 404, 409, 410, 422], ConnectError$inboundSchema),
-    M.jsonErr(502, ConnectError$inboundSchema),
+    M.jsonErr([500, 502], ConnectError$inboundSchema),
     M.fail("4XX"),
     M.fail([501, 504, "5XX"]),
   )(response, req, { extraFields: responseFields });

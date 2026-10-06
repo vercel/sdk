@@ -8,26 +8,18 @@ The payload of the event, if requested.
 import { TwoHundredAndEighteen } from "@vercel/sdk/models/lasteditedbyprincipal1.js";
 
 let value: TwoHundredAndEighteen = {
-  directoryGroupId: "<id>",
-  directoryId: "<id>",
-  groupName: "<value>",
-  next: {
-    organizationPermissions: [],
-    teamRoles: [
-      "BILLING",
-    ],
-    teams: {},
-  },
+  name: "<value>",
   organizationId: "<id>",
+  rootTeamId: "<id>",
+  slug: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `directoryGroupId`                             | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `directoryId`                                  | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `groupName`                                    | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `next`                                         | [models.PayloadNext](../models/payloadnext.md) | :heavy_check_mark:                             | N/A                                            |
-| `organizationId`                               | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `organizationId`   | *string*           | :heavy_check_mark: | N/A                |
+| `rootTeamId`       | *string*           | :heavy_check_mark: | N/A                |
+| `slug`             | *string*           | :heavy_check_mark: | N/A                |

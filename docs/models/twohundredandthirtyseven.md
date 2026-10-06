@@ -5,19 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndThirtySeven } from "@vercel/sdk/models/twohundredandtwentyseven.js";
+import { TwoHundredAndThirtySeven } from "@vercel/sdk/models/twohundredandtwentyeight.js";
 
 let value: TwoHundredAndThirtySeven = {
-  headerName: "<value>",
   projectId: "<id>",
-  type: "header",
+  resourceUrl: "https://worthy-embossing.net",
+  type: "script",
 };
 ```
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `headerName`                                                           | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
-| `projectId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
-| `type`                                                                 | [models.UserEventPayload237Type](../models/usereventpayload237type.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `projectId`                                                      | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `resourceUrl`                                                    | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `type`                                                           | [models.UserEventPayloadType](../models/usereventpayloadtype.md) | :heavy_check_mark:                                               | N/A                                                              |

@@ -8,7 +8,7 @@ The payload of the event, if requested.
 import { OneHundredAndFortyOne } from "@vercel/sdk/models/jobnsnbsideeffect.js";
 
 let value: OneHundredAndFortyOne = {
-  destinationId: "<id>",
+  destinationId: null,
   destinationName: "<value>",
   name: "<value>",
 };

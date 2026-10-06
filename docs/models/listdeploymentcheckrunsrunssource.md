@@ -43,8 +43,7 @@ const value: models.ListDeploymentCheckRunsSource4 = {};
 const value: models.ListDeploymentCheckRunsSource5 = {
   origin: "api",
   selection: {
-    job: "Product Markets Facilitator",
-    kind: "job",
+    kind: "deployment",
   },
   subKind: "vercel-ci-check",
 };

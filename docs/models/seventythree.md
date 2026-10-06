@@ -5,17 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { SeventyThree } from "@vercel/sdk/models/fiftyeight.js";
+import { SeventyThree } from "@vercel/sdk/models/fiftynine.js";
 
 let value: SeventyThree = {
-  changedFields: [
-    "language",
-  ],
+  paymentMethodId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                              | Type                                                               | Required                                                           | Description                                                        |
-| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| `changedFields`                                                    | [models.PayloadChangedFields](../models/payloadchangedfields.md)[] | :heavy_check_mark:                                                 | N/A                                                                |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `brand`            | *string*           | :heavy_minus_sign: | N/A                |
+| `last4`            | *string*           | :heavy_minus_sign: | N/A                |
+| `paymentMethodId`  | *string*           | :heavy_check_mark: | N/A                |

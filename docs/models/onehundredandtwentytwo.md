@@ -8,20 +8,14 @@ The payload of the event, if requested.
 import { OneHundredAndTwentyTwo } from "@vercel/sdk/models/jobnsnbsideeffect.js";
 
 let value: OneHundredAndTwentyTwo = {
-  deploymentId: "<id>",
-  deploymentName: "<value>",
-  deploymentUrl: null,
-  projectId: "<id>",
-  projectName: "<value>",
+  mode: "none",
+  previousMode: "all",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `deploymentId`     | *string*           | :heavy_check_mark: | N/A                |
-| `deploymentName`   | *string*           | :heavy_check_mark: | N/A                |
-| `deploymentUrl`    | *string*           | :heavy_check_mark: | N/A                |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `mode`                                                         | [models.PayloadMode](../models/payloadmode.md)                 | :heavy_check_mark:                                             | N/A                                                            |
+| `previousMode`                                                 | [models.PayloadPreviousMode](../models/payloadpreviousmode.md) | :heavy_check_mark:                                             | N/A                                                            |

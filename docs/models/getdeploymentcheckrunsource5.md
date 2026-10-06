@@ -10,7 +10,7 @@ import { GetDeploymentCheckRunSource5 } from "@vercel/sdk/models/getdeploymentch
 let value: GetDeploymentCheckRunSource5 = {
   origin: "api",
   selection: {
-    kind: "invocation",
+    kind: "deployment",
   },
   subKind: "vercel-ci-check",
 };

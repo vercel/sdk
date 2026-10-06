@@ -827,6 +827,10 @@ export type ConnectConnectorUpdateDataTypeOauth = {
    */
   defaultAudience?: string | undefined;
   /**
+   * Default RFC 8707 resource sent on authorization and token requests when a token request omits one. An empty string clears the default.
+   */
+  defaultResource?: string | undefined;
+  /**
    * Default token lifetime in seconds to use when the token response omits expires_in.
    */
   defaultTokenExpiresIn?: number | undefined;
@@ -1895,6 +1899,7 @@ export type ConnectConnectorUpdateDataTypeOauth$Outbound = {
     | ConnectConnectorUpdateDataForwardedClaims$Outbound
     | undefined;
   defaultAudience?: string | undefined;
+  defaultResource?: string | undefined;
   defaultTokenExpiresIn?: number | undefined;
   authorizationUrlParams?: { [k: string]: string } | undefined;
   jwtBearer?: ConnectConnectorUpdateDataJwtBearer$Outbound | undefined;
@@ -1933,6 +1938,7 @@ export const ConnectConnectorUpdateDataTypeOauth$outboundSchema: z.ZodType<
     ConnectConnectorUpdateDataForwardedClaims$outboundSchema
   ).optional(),
   defaultAudience: z.string().optional(),
+  defaultResource: z.string().optional(),
   defaultTokenExpiresIn: z.number().optional(),
   authorizationUrlParams: z.record(z.string()).optional(),
   jwtBearer: z.lazy(() => ConnectConnectorUpdateDataJwtBearer$outboundSchema)

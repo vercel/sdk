@@ -201,6 +201,7 @@ export type CreateProjectResponseBody = {
   autoAssignCustomDomainsUpdatedBy?: string | undefined;
   autoExposeSystemEnvs?: boolean | undefined;
   avatar?: string | null | undefined;
+  avatarDarkMode?: string | null | undefined;
   blobs?: Blobs | undefined;
   buildCommand?: string | null | undefined;
   commandForIgnoringBuildStep?: string | null | undefined;
@@ -464,6 +465,7 @@ export const CreateProjectResponseBody$inboundSchema: z.ZodType<
   autoAssignCustomDomainsUpdatedBy: types.optional(types.string()),
   autoExposeSystemEnvs: types.optional(types.boolean()),
   avatar: z.nullable(types.string()).optional(),
+  avatarDarkMode: z.nullable(types.string()).optional(),
   blobs: types.optional(Blobs$inboundSchema),
   buildCommand: z.nullable(types.string()).optional(),
   commandForIgnoringBuildStep: z.nullable(types.string()).optional(),

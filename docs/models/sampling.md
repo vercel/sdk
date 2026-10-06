@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Sampling } from "@vercel/sdk/models/fourhundredandtwentyone.js";
+import { Sampling } from "@vercel/sdk/models/fourhundredandtwentytwo.js";
 
 let value: Sampling = {
   rate: 1983.19,
@@ -18,4 +18,4 @@ let value: Sampling = {
 | `env`                                                                  | [models.Env](../models/env.md)                                         | :heavy_minus_sign:                                                     | N/A                                                                    |
 | `rate`                                                                 | *number*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
 | `requestPath`                                                          | *string*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
-| `type`                                                                 | [models.UserEventPayload423Type](../models/usereventpayload423type.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| `type`                                                                 | [models.UserEventPayload424Type](../models/usereventpayload424type.md) | :heavy_check_mark:                                                     | N/A                                                                    |

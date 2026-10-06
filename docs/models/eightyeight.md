@@ -5,27 +5,14 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { EightyEight } from "@vercel/sdk/models/fiftyeight.js";
+import { EightyEight } from "@vercel/sdk/models/fiftynine.js";
 
-let value: EightyEight = {
-  gitOwnerName: "<value>",
-  gitRepositoryName: "<value>",
-  next: {
-    autoAddReviewers: false,
-    enabled: false,
-  },
-  previous: {
-    autoAddReviewers: false,
-    enabled: true,
-  },
-};
+let value: EightyEight = {};
 ```
 
 ## Fields
 
-| Field                                                  | Type                                                   | Required                                               | Description                                            |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `gitOwnerName`                                         | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
-| `gitRepositoryName`                                    | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
-| `next`                                                 | [models.Next](../models/next.md)                       | :heavy_check_mark:                                     | N/A                                                    |
-| `previous`                                             | [models.PayloadPrevious](../models/payloadprevious.md) | :heavy_check_mark:                                     | N/A                                                    |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `cn`               | *string*           | :heavy_minus_sign: | N/A                |
+| `cns`              | *string*[]         | :heavy_minus_sign: | N/A                |

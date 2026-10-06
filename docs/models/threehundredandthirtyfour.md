@@ -5,15 +5,11 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndThirtyFour } from "@vercel/sdk/models/twohundredandninetyfive.js";
+import { ThreeHundredAndThirtyFour } from "@vercel/sdk/models/twohundredandninetysix.js";
 
 let value: ThreeHundredAndThirtyFour = {
-  next: {
-    skewProtectionBoundaryAt: 1045.89,
-  },
+  next: {},
   previous: {},
-  projectId: "<id>",
-  projectName: "<value>",
 };
 ```
 
@@ -23,5 +19,5 @@ let value: ThreeHundredAndThirtyFour = {
 | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
 | `next`                                                                         | [models.UserEventPayload334Next](../models/usereventpayload334next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
 | `previous`                                                                     | [models.UserEventPayload334Previous](../models/usereventpayload334previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectId`                                                                    | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `projectName`                                                                  | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |

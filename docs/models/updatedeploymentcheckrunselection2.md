@@ -6,8 +6,7 @@
 import { UpdateDeploymentCheckRunSelection2 } from "@vercel/sdk/models/updatedeploymentcheckrunop.js";
 
 let value: UpdateDeploymentCheckRunSelection2 = {
-  job: "Dynamic Integration Assistant",
-  kind: "job",
+  kind: "deployment",
 };
 ```
 
@@ -15,5 +14,4 @@ let value: UpdateDeploymentCheckRunSelection2 = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `job`              | *string*           | :heavy_check_mark: | N/A                |
-| `kind`             | *"job"*            | :heavy_check_mark: | N/A                |
+| `kind`             | *"deployment"*     | :heavy_check_mark: | N/A                |

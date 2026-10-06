@@ -8,15 +8,19 @@ The payload of the event, if requested.
 import { TwoHundredAndNine } from "@vercel/sdk/models/lasteditedbyprincipal1.js";
 
 let value: TwoHundredAndNine = {
-  enabled: false,
+  periods: [
+    {
+      endDate: "<value>",
+      percent: "<value>",
+      periodNumber: 4098.45,
+      startDate: "<value>",
+    },
+  ],
 };
 ```
 
 ## Fields
 
-| Field                          | Type                           | Required                       | Description                    |
-| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
-| `allowedIntegrationCount`      | *number*                       | :heavy_minus_sign:             | N/A                            |
-| `allowedIntegrationIds`        | *string*[]                     | :heavy_minus_sign:             | N/A                            |
-| `enabled`                      | *boolean*                      | :heavy_check_mark:             | N/A                            |
-| `resourceOnlyIntegrationCount` | *number*                       | :heavy_minus_sign:             | N/A                            |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `periods`                                | [models.Periods](../models/periods.md)[] | :heavy_check_mark:                       | N/A                                      |

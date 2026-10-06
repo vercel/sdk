@@ -293,6 +293,7 @@ run();
 * [createConnector](docs/sdks/connect/README.md#createconnector) - Create a connector
 * [updateConnector](docs/sdks/connect/README.md#updateconnector) - Update a connector
 * [replaceConnectorTriggerDestinations](docs/sdks/connect/README.md#replaceconnectortriggerdestinations) - Update connector trigger destinations
+* [ejectManagedConnector](docs/sdks/connect/README.md#ejectmanagedconnector) - Eject a managed connector
 * [listConnectorProjectConnections](docs/sdks/connect/README.md#listconnectorprojectconnections) - List projects for a connector
 * [getConnectorProjectConnection](docs/sdks/connect/README.md#getconnectorprojectconnection) - Get a connector project connection
 * [upsertConnectorProjectConnection](docs/sdks/connect/README.md#upsertconnectorprojectconnection) - Create or update a connector project connection
@@ -822,6 +823,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`connectCreateConnector`](docs/sdks/connect/README.md#createconnector) - Create a connector
 - [`connectDeleteConnector`](docs/sdks/connect/README.md#deleteconnector) - Delete a connector
 - [`connectDeleteConnectorProjectConnection`](docs/sdks/connect/README.md#deleteconnectorprojectconnection) - Disconnect a connector from a project
+- [`connectEjectManagedConnector`](docs/sdks/connect/README.md#ejectmanagedconnector) - Eject a managed connector
 - [`connectGetConnector`](docs/sdks/connect/README.md#getconnector) - Get a connector
 - [`connectGetConnectorProjectConnection`](docs/sdks/connect/README.md#getconnectorprojectconnection) - Get a connector project connection
 - [`connectListConnectorProjectConnections`](docs/sdks/connect/README.md#listconnectorprojectconnections) - List projects for a connector
@@ -1363,106 +1365,106 @@ run();
 
 
 **Inherit from [`VercelError`](./src/models/vercelerror.ts)**:
-* [`HttpApiDecodeError`](./src/models/httpapidecodeerror.ts): The request did not match the expected schema. Status code `400`. Applicable to 19 of 434 methods.*
-* [`Unauthorized`](./src/models/unauthorized.ts): Unauthorized. Status code `401`. Applicable to 19 of 434 methods.*
-* [`NotAuthorizedForScope`](./src/models/notauthorizedforscope.ts): Status code `403`. Applicable to 19 of 434 methods.*
-* [`TooManyRequests`](./src/models/toomanyrequests.ts): TooManyRequests. Status code `429`. Applicable to 19 of 434 methods.*
-* [`InternalServerError`](./src/models/internalservererror.ts): InternalServerError. Status code `500`. Applicable to 19 of 434 methods.*
-* [`ConnectError`](./src/models/connecterror.ts): Error response returned by a Connect API operation. Applicable to 11 of 434 methods.*
-* [`Forbidden`](./src/models/forbidden.ts): Status code `403`. Applicable to 10 of 434 methods.*
-* [`TldNotSupported`](./src/models/tldnotsupported.ts): The TLD is not currently supported. Status code `400`. Applicable to 8 of 434 methods.*
-* [`DomainTooShort`](./src/models/domaintooshort.ts): The domain name (excluding the TLD) is too short. Status code `400`. Applicable to 6 of 434 methods.*
-* [`BadRequest`](./src/models/badrequest.ts): There was something wrong with the request. Status code `400`. Applicable to 5 of 434 methods.*
-* [`DomainNotRegistered`](./src/models/domainnotregistered.ts): The domain is not registered with Vercel. Status code `400`. Applicable to 5 of 434 methods.*
-* [`DomainNotFound`](./src/models/domainnotfound.ts): The domain was not found in our system. Status code `404`. Applicable to 5 of 434 methods.*
-* [`ExpectedPriceMismatch`](./src/models/expectedpricemismatch.ts): The expected price passed does not match the actual price. Status code `400`. Applicable to 4 of 434 methods.*
-* [`DomainNotAvailable`](./src/models/domainnotavailable.ts): The domain is not available. Status code `400`. Applicable to 4 of 434 methods.*
-* [`NotFound`](./src/models/notfound.ts): NotFound. Status code `404`. Applicable to 3 of 434 methods.*
-* [`OrderTooExpensive`](./src/models/ordertooexpensive.ts): The total price of the order is too high. Status code `400`. Applicable to 2 of 434 methods.*
-* [`InvalidAdditionalContactInfo`](./src/models/invalidadditionalcontactinfo.ts): Additional contact information provided for the TLD is invalid. Status code `400`. Applicable to 2 of 434 methods.*
-* [`AdditionalContactInfoRequired`](./src/models/additionalcontactinforequired.ts): Additional contact information is required for the TLD. Status code `400`. Applicable to 2 of 434 methods.*
-* [`EmojiTldNotSupported`](./src/models/emojitldnotsupported.ts): The TLD does not support emoji domain names. Status code `400`. Applicable to 2 of 434 methods.*
-* [`LanguageCodeRequired`](./src/models/languagecoderequired.ts): A language code is required for punycode domains. Status code `400`. Applicable to 2 of 434 methods.*
-* [`TooManyDomains`](./src/models/toomanydomains.ts): The number of domains in the order is too high. Status code `400`. Applicable to 1 of 434 methods.*
-* [`DuplicateDomains`](./src/models/duplicatedomains.ts): Duplicate domains were provided. Status code `400`. Applicable to 1 of 434 methods.*
-* [`DomainAlreadyOwned`](./src/models/domainalreadyowned.ts): The domain is already owned by another team or user. Status code `400`. Applicable to 1 of 434 methods.*
-* [`DNSSECEnabled`](./src/models/dnssecenabled.ts): The operation cannot be completed because DNSSEC is enabled for the domain. Status code `400`. Applicable to 1 of 434 methods.*
-* [`DomainAlreadyRenewing`](./src/models/domainalreadyrenewing.ts): The domain is already renewing. Status code `400`. Applicable to 1 of 434 methods.*
-* [`DomainNotRenewable`](./src/models/domainnotrenewable.ts): The domain is not renewable. Status code `400`. Applicable to 1 of 434 methods.*
-* [`BoughtTooRecently`](./src/models/boughttoorecently.ts): The domain was bought too recently to determine verification status. Status code `400`. Applicable to 1 of 434 methods.*
-* [`CreateApiKeysResponseResponseBody`](./src/models/createapikeysresponseresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 434 methods.*
-* [`ListVercelCiInvocationsVercelCiResponseBody`](./src/models/listvercelciinvocationsvercelciresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 434 methods.*
-* [`ListVercelCiBranchesVercelCiResponseBody`](./src/models/listvercelcibranchesvercelciresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 434 methods.*
-* [`ListVercelCiInvocationAttemptsVercelCiResponseBody`](./src/models/listvercelciinvocationattemptsvercelciresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 434 methods.*
-* [`GetVercelCiInvocationTreeVercelCiResponseBody`](./src/models/getvercelciinvocationtreevercelciresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 434 methods.*
-* [`GetVercelCiInvocationVercelCiResponseBody`](./src/models/getvercelciinvocationvercelciresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 434 methods.*
-* [`RetryVercelCiInvocationVercelCiResponseBody`](./src/models/retryvercelciinvocationvercelciresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 434 methods.*
-* [`ListVercelCiJobDefinitionsVercelCiResponseBody`](./src/models/listvercelcijobdefinitionsvercelciresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 434 methods.*
-* [`GetVercelCiJobDefinitionVercelCiResponseBody`](./src/models/getvercelcijobdefinitionvercelciresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 434 methods.*
-* [`ListVercelCiJobRunsVercelCiResponseBody`](./src/models/listvercelcijobrunsvercelciresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 434 methods.*
-* [`GetVercelCiJobRunVercelCiResponseBody`](./src/models/getvercelcijobrunvercelciresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 434 methods.*
-* [`ListVercelCiTaskDefinitionsVercelCiResponseBody`](./src/models/listvercelcitaskdefinitionsvercelciresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 434 methods.*
-* [`ListVercelCiTaskRunsVercelCiResponseBody`](./src/models/listvercelcitaskrunsvercelciresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 434 methods.*
-* [`GetVercelCiInvocationLogsVercelCiResponseBody`](./src/models/getvercelciinvocationlogsvercelciresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 434 methods.*
-* [`GetVercelCiTaskLogsVercelCiResponseBody`](./src/models/getvercelcitasklogsvercelciresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 434 methods.*
-* [`SearchVercelCiLogsVercelCiResponseBody`](./src/models/searchvercelcilogsvercelciresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 434 methods.*
-* [`GetVercelCiJobRunLogsVercelCiResponseBody`](./src/models/getvercelcijobrunlogsvercelciresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 434 methods.*
-* [`GetVercelCiTaskRunLogsVercelCiResponseBody`](./src/models/getvercelcitaskrunlogsvercelciresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 434 methods.*
-* [`CreateApiKeysResponse403ResponseBody`](./src/models/createapikeysresponse403responsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 434 methods.*
-* [`ListVercelCiInvocationsVercelCiResponseResponseBody`](./src/models/listvercelciinvocationsvercelciresponseresponsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 434 methods.*
-* [`ListVercelCiBranchesVercelCiResponseResponseBody`](./src/models/listvercelcibranchesvercelciresponseresponsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 434 methods.*
-* [`ListVercelCiInvocationAttemptsVercelCiResponseResponseBody`](./src/models/listvercelciinvocationattemptsvercelciresponseresponsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 434 methods.*
-* [`GetVercelCiInvocationTreeVercelCiResponseResponseBody`](./src/models/getvercelciinvocationtreevercelciresponseresponsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 434 methods.*
-* [`GetVercelCiInvocationVercelCiResponseResponseBody`](./src/models/getvercelciinvocationvercelciresponseresponsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 434 methods.*
-* [`RetryVercelCiInvocationVercelCiResponseResponseBody`](./src/models/retryvercelciinvocationvercelciresponseresponsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 434 methods.*
-* [`ListVercelCiJobDefinitionsVercelCiResponseResponseBody`](./src/models/listvercelcijobdefinitionsvercelciresponseresponsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 434 methods.*
-* [`GetVercelCiJobDefinitionVercelCiResponseResponseBody`](./src/models/getvercelcijobdefinitionvercelciresponseresponsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 434 methods.*
-* [`ListVercelCiJobRunsVercelCiResponseResponseBody`](./src/models/listvercelcijobrunsvercelciresponseresponsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 434 methods.*
-* [`GetVercelCiJobRunVercelCiResponseResponseBody`](./src/models/getvercelcijobrunvercelciresponseresponsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 434 methods.*
-* [`ListVercelCiTaskDefinitionsVercelCiResponseResponseBody`](./src/models/listvercelcitaskdefinitionsvercelciresponseresponsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 434 methods.*
-* [`ListVercelCiTaskRunsVercelCiResponseResponseBody`](./src/models/listvercelcitaskrunsvercelciresponseresponsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 434 methods.*
-* [`GetVercelCiInvocationLogsVercelCiResponseResponseBody`](./src/models/getvercelciinvocationlogsvercelciresponseresponsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 434 methods.*
-* [`GetVercelCiTaskLogsVercelCiResponseResponseBody`](./src/models/getvercelcitasklogsvercelciresponseresponsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 434 methods.*
-* [`SearchVercelCiLogsVercelCiResponseResponseBody`](./src/models/searchvercelcilogsvercelciresponseresponsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 434 methods.*
-* [`GetVercelCiJobRunLogsVercelCiResponseResponseBody`](./src/models/getvercelcijobrunlogsvercelciresponseresponsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 434 methods.*
-* [`GetVercelCiTaskRunLogsVercelCiResponseResponseBody`](./src/models/getvercelcitaskrunlogsvercelciresponseresponsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 434 methods.*
-* [`DomainCannotBeTransferedOutUntil`](./src/models/domaincannotbetransferedoutuntil.ts): The domain cannot be transfered out until the specified date. Status code `409`. Applicable to 1 of 434 methods.*
-* [`CreateApiKeysResponse429ResponseBody`](./src/models/createapikeysresponse429responsebody.ts): . Status code `429`. Applicable to 1 of 434 methods.*
-* [`ListVercelCiInvocationsVercelCiResponse429ResponseBody`](./src/models/listvercelciinvocationsvercelciresponse429responsebody.ts): . Status code `429`. Applicable to 1 of 434 methods.*
-* [`ListVercelCiBranchesVercelCiResponse429ResponseBody`](./src/models/listvercelcibranchesvercelciresponse429responsebody.ts): . Status code `429`. Applicable to 1 of 434 methods.*
-* [`ListVercelCiInvocationAttemptsVercelCiResponse429ResponseBody`](./src/models/listvercelciinvocationattemptsvercelciresponse429responsebody.ts): . Status code `429`. Applicable to 1 of 434 methods.*
-* [`GetVercelCiInvocationTreeVercelCiResponse429ResponseBody`](./src/models/getvercelciinvocationtreevercelciresponse429responsebody.ts): . Status code `429`. Applicable to 1 of 434 methods.*
-* [`GetVercelCiInvocationVercelCiResponse429ResponseBody`](./src/models/getvercelciinvocationvercelciresponse429responsebody.ts): . Status code `429`. Applicable to 1 of 434 methods.*
-* [`RetryVercelCiInvocationVercelCiResponse429ResponseBody`](./src/models/retryvercelciinvocationvercelciresponse429responsebody.ts): . Status code `429`. Applicable to 1 of 434 methods.*
-* [`ListVercelCiJobDefinitionsVercelCiResponse429ResponseBody`](./src/models/listvercelcijobdefinitionsvercelciresponse429responsebody.ts): . Status code `429`. Applicable to 1 of 434 methods.*
-* [`GetVercelCiJobDefinitionVercelCiResponse429ResponseBody`](./src/models/getvercelcijobdefinitionvercelciresponse429responsebody.ts): . Status code `429`. Applicable to 1 of 434 methods.*
-* [`ListVercelCiJobRunsVercelCiResponse429ResponseBody`](./src/models/listvercelcijobrunsvercelciresponse429responsebody.ts): . Status code `429`. Applicable to 1 of 434 methods.*
-* [`GetVercelCiJobRunVercelCiResponse429ResponseBody`](./src/models/getvercelcijobrunvercelciresponse429responsebody.ts): . Status code `429`. Applicable to 1 of 434 methods.*
-* [`ListVercelCiTaskDefinitionsVercelCiResponse429ResponseBody`](./src/models/listvercelcitaskdefinitionsvercelciresponse429responsebody.ts): . Status code `429`. Applicable to 1 of 434 methods.*
-* [`ListVercelCiTaskRunsVercelCiResponse429ResponseBody`](./src/models/listvercelcitaskrunsvercelciresponse429responsebody.ts): . Status code `429`. Applicable to 1 of 434 methods.*
-* [`GetVercelCiInvocationLogsVercelCiResponse429ResponseBody`](./src/models/getvercelciinvocationlogsvercelciresponse429responsebody.ts): . Status code `429`. Applicable to 1 of 434 methods.*
-* [`GetVercelCiTaskLogsVercelCiResponse429ResponseBody`](./src/models/getvercelcitasklogsvercelciresponse429responsebody.ts): . Status code `429`. Applicable to 1 of 434 methods.*
-* [`SearchVercelCiLogsVercelCiResponse429ResponseBody`](./src/models/searchvercelcilogsvercelciresponse429responsebody.ts): . Status code `429`. Applicable to 1 of 434 methods.*
-* [`GetVercelCiJobRunLogsVercelCiResponse429ResponseBody`](./src/models/getvercelcijobrunlogsvercelciresponse429responsebody.ts): . Status code `429`. Applicable to 1 of 434 methods.*
-* [`GetVercelCiTaskRunLogsVercelCiResponse429ResponseBody`](./src/models/getvercelcitaskrunlogsvercelciresponse429responsebody.ts): . Status code `429`. Applicable to 1 of 434 methods.*
-* [`CreateApiKeysResponse500ResponseBody`](./src/models/createapikeysresponse500responsebody.ts): . Status code `500`. Applicable to 1 of 434 methods.*
-* [`ListVercelCiInvocationsVercelCiResponse500ResponseBody`](./src/models/listvercelciinvocationsvercelciresponse500responsebody.ts): . Status code `500`. Applicable to 1 of 434 methods.*
-* [`ListVercelCiBranchesVercelCiResponse500ResponseBody`](./src/models/listvercelcibranchesvercelciresponse500responsebody.ts): . Status code `500`. Applicable to 1 of 434 methods.*
-* [`ListVercelCiInvocationAttemptsVercelCiResponse500ResponseBody`](./src/models/listvercelciinvocationattemptsvercelciresponse500responsebody.ts): . Status code `500`. Applicable to 1 of 434 methods.*
-* [`GetVercelCiInvocationTreeVercelCiResponse500ResponseBody`](./src/models/getvercelciinvocationtreevercelciresponse500responsebody.ts): . Status code `500`. Applicable to 1 of 434 methods.*
-* [`GetVercelCiInvocationVercelCiResponse500ResponseBody`](./src/models/getvercelciinvocationvercelciresponse500responsebody.ts): . Status code `500`. Applicable to 1 of 434 methods.*
-* [`RetryVercelCiInvocationVercelCiResponse500ResponseBody`](./src/models/retryvercelciinvocationvercelciresponse500responsebody.ts): . Status code `500`. Applicable to 1 of 434 methods.*
-* [`ListVercelCiJobDefinitionsVercelCiResponse500ResponseBody`](./src/models/listvercelcijobdefinitionsvercelciresponse500responsebody.ts): . Status code `500`. Applicable to 1 of 434 methods.*
-* [`GetVercelCiJobDefinitionVercelCiResponse500ResponseBody`](./src/models/getvercelcijobdefinitionvercelciresponse500responsebody.ts): . Status code `500`. Applicable to 1 of 434 methods.*
-* [`ListVercelCiJobRunsVercelCiResponse500ResponseBody`](./src/models/listvercelcijobrunsvercelciresponse500responsebody.ts): . Status code `500`. Applicable to 1 of 434 methods.*
-* [`GetVercelCiJobRunVercelCiResponse500ResponseBody`](./src/models/getvercelcijobrunvercelciresponse500responsebody.ts): . Status code `500`. Applicable to 1 of 434 methods.*
-* [`ListVercelCiTaskDefinitionsVercelCiResponse500ResponseBody`](./src/models/listvercelcitaskdefinitionsvercelciresponse500responsebody.ts): . Status code `500`. Applicable to 1 of 434 methods.*
-* [`ListVercelCiTaskRunsVercelCiResponse500ResponseBody`](./src/models/listvercelcitaskrunsvercelciresponse500responsebody.ts): . Status code `500`. Applicable to 1 of 434 methods.*
-* [`GetVercelCiInvocationLogsVercelCiResponse500ResponseBody`](./src/models/getvercelciinvocationlogsvercelciresponse500responsebody.ts): . Status code `500`. Applicable to 1 of 434 methods.*
-* [`GetVercelCiTaskLogsVercelCiResponse500ResponseBody`](./src/models/getvercelcitasklogsvercelciresponse500responsebody.ts): . Status code `500`. Applicable to 1 of 434 methods.*
-* [`SearchVercelCiLogsVercelCiResponse500ResponseBody`](./src/models/searchvercelcilogsvercelciresponse500responsebody.ts): . Status code `500`. Applicable to 1 of 434 methods.*
-* [`GetVercelCiJobRunLogsVercelCiResponse500ResponseBody`](./src/models/getvercelcijobrunlogsvercelciresponse500responsebody.ts): . Status code `500`. Applicable to 1 of 434 methods.*
-* [`GetVercelCiTaskRunLogsVercelCiResponse500ResponseBody`](./src/models/getvercelcitaskrunlogsvercelciresponse500responsebody.ts): . Status code `500`. Applicable to 1 of 434 methods.*
+* [`HttpApiDecodeError`](./src/models/httpapidecodeerror.ts): The request did not match the expected schema. Status code `400`. Applicable to 19 of 435 methods.*
+* [`Unauthorized`](./src/models/unauthorized.ts): Unauthorized. Status code `401`. Applicable to 19 of 435 methods.*
+* [`NotAuthorizedForScope`](./src/models/notauthorizedforscope.ts): Status code `403`. Applicable to 19 of 435 methods.*
+* [`TooManyRequests`](./src/models/toomanyrequests.ts): TooManyRequests. Status code `429`. Applicable to 19 of 435 methods.*
+* [`InternalServerError`](./src/models/internalservererror.ts): InternalServerError. Status code `500`. Applicable to 19 of 435 methods.*
+* [`ConnectError`](./src/models/connecterror.ts): Error response returned by a Connect API operation. Applicable to 11 of 435 methods.*
+* [`Forbidden`](./src/models/forbidden.ts): Status code `403`. Applicable to 10 of 435 methods.*
+* [`TldNotSupported`](./src/models/tldnotsupported.ts): The TLD is not currently supported. Status code `400`. Applicable to 8 of 435 methods.*
+* [`DomainTooShort`](./src/models/domaintooshort.ts): The domain name (excluding the TLD) is too short. Status code `400`. Applicable to 6 of 435 methods.*
+* [`BadRequest`](./src/models/badrequest.ts): There was something wrong with the request. Status code `400`. Applicable to 5 of 435 methods.*
+* [`DomainNotRegistered`](./src/models/domainnotregistered.ts): The domain is not registered with Vercel. Status code `400`. Applicable to 5 of 435 methods.*
+* [`DomainNotFound`](./src/models/domainnotfound.ts): The domain was not found in our system. Status code `404`. Applicable to 5 of 435 methods.*
+* [`ExpectedPriceMismatch`](./src/models/expectedpricemismatch.ts): The expected price passed does not match the actual price. Status code `400`. Applicable to 4 of 435 methods.*
+* [`DomainNotAvailable`](./src/models/domainnotavailable.ts): The domain is not available. Status code `400`. Applicable to 4 of 435 methods.*
+* [`NotFound`](./src/models/notfound.ts): NotFound. Status code `404`. Applicable to 3 of 435 methods.*
+* [`OrderTooExpensive`](./src/models/ordertooexpensive.ts): The total price of the order is too high. Status code `400`. Applicable to 2 of 435 methods.*
+* [`InvalidAdditionalContactInfo`](./src/models/invalidadditionalcontactinfo.ts): Additional contact information provided for the TLD is invalid. Status code `400`. Applicable to 2 of 435 methods.*
+* [`AdditionalContactInfoRequired`](./src/models/additionalcontactinforequired.ts): Additional contact information is required for the TLD. Status code `400`. Applicable to 2 of 435 methods.*
+* [`EmojiTldNotSupported`](./src/models/emojitldnotsupported.ts): The TLD does not support emoji domain names. Status code `400`. Applicable to 2 of 435 methods.*
+* [`LanguageCodeRequired`](./src/models/languagecoderequired.ts): A language code is required for punycode domains. Status code `400`. Applicable to 2 of 435 methods.*
+* [`TooManyDomains`](./src/models/toomanydomains.ts): The number of domains in the order is too high. Status code `400`. Applicable to 1 of 435 methods.*
+* [`DuplicateDomains`](./src/models/duplicatedomains.ts): Duplicate domains were provided. Status code `400`. Applicable to 1 of 435 methods.*
+* [`DomainAlreadyOwned`](./src/models/domainalreadyowned.ts): The domain is already owned by another team or user. Status code `400`. Applicable to 1 of 435 methods.*
+* [`DNSSECEnabled`](./src/models/dnssecenabled.ts): The operation cannot be completed because DNSSEC is enabled for the domain. Status code `400`. Applicable to 1 of 435 methods.*
+* [`DomainAlreadyRenewing`](./src/models/domainalreadyrenewing.ts): The domain is already renewing. Status code `400`. Applicable to 1 of 435 methods.*
+* [`DomainNotRenewable`](./src/models/domainnotrenewable.ts): The domain is not renewable. Status code `400`. Applicable to 1 of 435 methods.*
+* [`BoughtTooRecently`](./src/models/boughttoorecently.ts): The domain was bought too recently to determine verification status. Status code `400`. Applicable to 1 of 435 methods.*
+* [`CreateApiKeysResponseResponseBody`](./src/models/createapikeysresponseresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 435 methods.*
+* [`ListVercelCiInvocationsVercelCiResponseBody`](./src/models/listvercelciinvocationsvercelciresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 435 methods.*
+* [`ListVercelCiBranchesVercelCiResponseBody`](./src/models/listvercelcibranchesvercelciresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 435 methods.*
+* [`ListVercelCiInvocationAttemptsVercelCiResponseBody`](./src/models/listvercelciinvocationattemptsvercelciresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 435 methods.*
+* [`GetVercelCiInvocationTreeVercelCiResponseBody`](./src/models/getvercelciinvocationtreevercelciresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 435 methods.*
+* [`GetVercelCiInvocationVercelCiResponseBody`](./src/models/getvercelciinvocationvercelciresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 435 methods.*
+* [`RetryVercelCiInvocationVercelCiResponseBody`](./src/models/retryvercelciinvocationvercelciresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 435 methods.*
+* [`ListVercelCiJobDefinitionsVercelCiResponseBody`](./src/models/listvercelcijobdefinitionsvercelciresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 435 methods.*
+* [`GetVercelCiJobDefinitionVercelCiResponseBody`](./src/models/getvercelcijobdefinitionvercelciresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 435 methods.*
+* [`ListVercelCiJobRunsVercelCiResponseBody`](./src/models/listvercelcijobrunsvercelciresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 435 methods.*
+* [`GetVercelCiJobRunVercelCiResponseBody`](./src/models/getvercelcijobrunvercelciresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 435 methods.*
+* [`ListVercelCiTaskDefinitionsVercelCiResponseBody`](./src/models/listvercelcitaskdefinitionsvercelciresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 435 methods.*
+* [`ListVercelCiTaskRunsVercelCiResponseBody`](./src/models/listvercelcitaskrunsvercelciresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 435 methods.*
+* [`GetVercelCiInvocationLogsVercelCiResponseBody`](./src/models/getvercelciinvocationlogsvercelciresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 435 methods.*
+* [`GetVercelCiTaskLogsVercelCiResponseBody`](./src/models/getvercelcitasklogsvercelciresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 435 methods.*
+* [`SearchVercelCiLogsVercelCiResponseBody`](./src/models/searchvercelcilogsvercelciresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 435 methods.*
+* [`GetVercelCiJobRunLogsVercelCiResponseBody`](./src/models/getvercelcijobrunlogsvercelciresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 435 methods.*
+* [`GetVercelCiTaskRunLogsVercelCiResponseBody`](./src/models/getvercelcitaskrunlogsvercelciresponsebody.ts): The request is not authorized. Status code `401`. Applicable to 1 of 435 methods.*
+* [`CreateApiKeysResponse403ResponseBody`](./src/models/createapikeysresponse403responsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 435 methods.*
+* [`ListVercelCiInvocationsVercelCiResponseResponseBody`](./src/models/listvercelciinvocationsvercelciresponseresponsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 435 methods.*
+* [`ListVercelCiBranchesVercelCiResponseResponseBody`](./src/models/listvercelcibranchesvercelciresponseresponsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 435 methods.*
+* [`ListVercelCiInvocationAttemptsVercelCiResponseResponseBody`](./src/models/listvercelciinvocationattemptsvercelciresponseresponsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 435 methods.*
+* [`GetVercelCiInvocationTreeVercelCiResponseResponseBody`](./src/models/getvercelciinvocationtreevercelciresponseresponsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 435 methods.*
+* [`GetVercelCiInvocationVercelCiResponseResponseBody`](./src/models/getvercelciinvocationvercelciresponseresponsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 435 methods.*
+* [`RetryVercelCiInvocationVercelCiResponseResponseBody`](./src/models/retryvercelciinvocationvercelciresponseresponsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 435 methods.*
+* [`ListVercelCiJobDefinitionsVercelCiResponseResponseBody`](./src/models/listvercelcijobdefinitionsvercelciresponseresponsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 435 methods.*
+* [`GetVercelCiJobDefinitionVercelCiResponseResponseBody`](./src/models/getvercelcijobdefinitionvercelciresponseresponsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 435 methods.*
+* [`ListVercelCiJobRunsVercelCiResponseResponseBody`](./src/models/listvercelcijobrunsvercelciresponseresponsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 435 methods.*
+* [`GetVercelCiJobRunVercelCiResponseResponseBody`](./src/models/getvercelcijobrunvercelciresponseresponsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 435 methods.*
+* [`ListVercelCiTaskDefinitionsVercelCiResponseResponseBody`](./src/models/listvercelcitaskdefinitionsvercelciresponseresponsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 435 methods.*
+* [`ListVercelCiTaskRunsVercelCiResponseResponseBody`](./src/models/listvercelcitaskrunsvercelciresponseresponsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 435 methods.*
+* [`GetVercelCiInvocationLogsVercelCiResponseResponseBody`](./src/models/getvercelciinvocationlogsvercelciresponseresponsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 435 methods.*
+* [`GetVercelCiTaskLogsVercelCiResponseResponseBody`](./src/models/getvercelcitasklogsvercelciresponseresponsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 435 methods.*
+* [`SearchVercelCiLogsVercelCiResponseResponseBody`](./src/models/searchvercelcilogsvercelciresponseresponsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 435 methods.*
+* [`GetVercelCiJobRunLogsVercelCiResponseResponseBody`](./src/models/getvercelcijobrunlogsvercelciresponseresponsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 435 methods.*
+* [`GetVercelCiTaskRunLogsVercelCiResponseResponseBody`](./src/models/getvercelcitaskrunlogsvercelciresponseresponsebody.ts): You do not have permission to access this resource. Status code `403`. Applicable to 1 of 435 methods.*
+* [`DomainCannotBeTransferedOutUntil`](./src/models/domaincannotbetransferedoutuntil.ts): The domain cannot be transfered out until the specified date. Status code `409`. Applicable to 1 of 435 methods.*
+* [`CreateApiKeysResponse429ResponseBody`](./src/models/createapikeysresponse429responsebody.ts): . Status code `429`. Applicable to 1 of 435 methods.*
+* [`ListVercelCiInvocationsVercelCiResponse429ResponseBody`](./src/models/listvercelciinvocationsvercelciresponse429responsebody.ts): . Status code `429`. Applicable to 1 of 435 methods.*
+* [`ListVercelCiBranchesVercelCiResponse429ResponseBody`](./src/models/listvercelcibranchesvercelciresponse429responsebody.ts): . Status code `429`. Applicable to 1 of 435 methods.*
+* [`ListVercelCiInvocationAttemptsVercelCiResponse429ResponseBody`](./src/models/listvercelciinvocationattemptsvercelciresponse429responsebody.ts): . Status code `429`. Applicable to 1 of 435 methods.*
+* [`GetVercelCiInvocationTreeVercelCiResponse429ResponseBody`](./src/models/getvercelciinvocationtreevercelciresponse429responsebody.ts): . Status code `429`. Applicable to 1 of 435 methods.*
+* [`GetVercelCiInvocationVercelCiResponse429ResponseBody`](./src/models/getvercelciinvocationvercelciresponse429responsebody.ts): . Status code `429`. Applicable to 1 of 435 methods.*
+* [`RetryVercelCiInvocationVercelCiResponse429ResponseBody`](./src/models/retryvercelciinvocationvercelciresponse429responsebody.ts): . Status code `429`. Applicable to 1 of 435 methods.*
+* [`ListVercelCiJobDefinitionsVercelCiResponse429ResponseBody`](./src/models/listvercelcijobdefinitionsvercelciresponse429responsebody.ts): . Status code `429`. Applicable to 1 of 435 methods.*
+* [`GetVercelCiJobDefinitionVercelCiResponse429ResponseBody`](./src/models/getvercelcijobdefinitionvercelciresponse429responsebody.ts): . Status code `429`. Applicable to 1 of 435 methods.*
+* [`ListVercelCiJobRunsVercelCiResponse429ResponseBody`](./src/models/listvercelcijobrunsvercelciresponse429responsebody.ts): . Status code `429`. Applicable to 1 of 435 methods.*
+* [`GetVercelCiJobRunVercelCiResponse429ResponseBody`](./src/models/getvercelcijobrunvercelciresponse429responsebody.ts): . Status code `429`. Applicable to 1 of 435 methods.*
+* [`ListVercelCiTaskDefinitionsVercelCiResponse429ResponseBody`](./src/models/listvercelcitaskdefinitionsvercelciresponse429responsebody.ts): . Status code `429`. Applicable to 1 of 435 methods.*
+* [`ListVercelCiTaskRunsVercelCiResponse429ResponseBody`](./src/models/listvercelcitaskrunsvercelciresponse429responsebody.ts): . Status code `429`. Applicable to 1 of 435 methods.*
+* [`GetVercelCiInvocationLogsVercelCiResponse429ResponseBody`](./src/models/getvercelciinvocationlogsvercelciresponse429responsebody.ts): . Status code `429`. Applicable to 1 of 435 methods.*
+* [`GetVercelCiTaskLogsVercelCiResponse429ResponseBody`](./src/models/getvercelcitasklogsvercelciresponse429responsebody.ts): . Status code `429`. Applicable to 1 of 435 methods.*
+* [`SearchVercelCiLogsVercelCiResponse429ResponseBody`](./src/models/searchvercelcilogsvercelciresponse429responsebody.ts): . Status code `429`. Applicable to 1 of 435 methods.*
+* [`GetVercelCiJobRunLogsVercelCiResponse429ResponseBody`](./src/models/getvercelcijobrunlogsvercelciresponse429responsebody.ts): . Status code `429`. Applicable to 1 of 435 methods.*
+* [`GetVercelCiTaskRunLogsVercelCiResponse429ResponseBody`](./src/models/getvercelcitaskrunlogsvercelciresponse429responsebody.ts): . Status code `429`. Applicable to 1 of 435 methods.*
+* [`CreateApiKeysResponse500ResponseBody`](./src/models/createapikeysresponse500responsebody.ts): . Status code `500`. Applicable to 1 of 435 methods.*
+* [`ListVercelCiInvocationsVercelCiResponse500ResponseBody`](./src/models/listvercelciinvocationsvercelciresponse500responsebody.ts): . Status code `500`. Applicable to 1 of 435 methods.*
+* [`ListVercelCiBranchesVercelCiResponse500ResponseBody`](./src/models/listvercelcibranchesvercelciresponse500responsebody.ts): . Status code `500`. Applicable to 1 of 435 methods.*
+* [`ListVercelCiInvocationAttemptsVercelCiResponse500ResponseBody`](./src/models/listvercelciinvocationattemptsvercelciresponse500responsebody.ts): . Status code `500`. Applicable to 1 of 435 methods.*
+* [`GetVercelCiInvocationTreeVercelCiResponse500ResponseBody`](./src/models/getvercelciinvocationtreevercelciresponse500responsebody.ts): . Status code `500`. Applicable to 1 of 435 methods.*
+* [`GetVercelCiInvocationVercelCiResponse500ResponseBody`](./src/models/getvercelciinvocationvercelciresponse500responsebody.ts): . Status code `500`. Applicable to 1 of 435 methods.*
+* [`RetryVercelCiInvocationVercelCiResponse500ResponseBody`](./src/models/retryvercelciinvocationvercelciresponse500responsebody.ts): . Status code `500`. Applicable to 1 of 435 methods.*
+* [`ListVercelCiJobDefinitionsVercelCiResponse500ResponseBody`](./src/models/listvercelcijobdefinitionsvercelciresponse500responsebody.ts): . Status code `500`. Applicable to 1 of 435 methods.*
+* [`GetVercelCiJobDefinitionVercelCiResponse500ResponseBody`](./src/models/getvercelcijobdefinitionvercelciresponse500responsebody.ts): . Status code `500`. Applicable to 1 of 435 methods.*
+* [`ListVercelCiJobRunsVercelCiResponse500ResponseBody`](./src/models/listvercelcijobrunsvercelciresponse500responsebody.ts): . Status code `500`. Applicable to 1 of 435 methods.*
+* [`GetVercelCiJobRunVercelCiResponse500ResponseBody`](./src/models/getvercelcijobrunvercelciresponse500responsebody.ts): . Status code `500`. Applicable to 1 of 435 methods.*
+* [`ListVercelCiTaskDefinitionsVercelCiResponse500ResponseBody`](./src/models/listvercelcitaskdefinitionsvercelciresponse500responsebody.ts): . Status code `500`. Applicable to 1 of 435 methods.*
+* [`ListVercelCiTaskRunsVercelCiResponse500ResponseBody`](./src/models/listvercelcitaskrunsvercelciresponse500responsebody.ts): . Status code `500`. Applicable to 1 of 435 methods.*
+* [`GetVercelCiInvocationLogsVercelCiResponse500ResponseBody`](./src/models/getvercelciinvocationlogsvercelciresponse500responsebody.ts): . Status code `500`. Applicable to 1 of 435 methods.*
+* [`GetVercelCiTaskLogsVercelCiResponse500ResponseBody`](./src/models/getvercelcitasklogsvercelciresponse500responsebody.ts): . Status code `500`. Applicable to 1 of 435 methods.*
+* [`SearchVercelCiLogsVercelCiResponse500ResponseBody`](./src/models/searchvercelcilogsvercelciresponse500responsebody.ts): . Status code `500`. Applicable to 1 of 435 methods.*
+* [`GetVercelCiJobRunLogsVercelCiResponse500ResponseBody`](./src/models/getvercelcijobrunlogsvercelciresponse500responsebody.ts): . Status code `500`. Applicable to 1 of 435 methods.*
+* [`GetVercelCiTaskRunLogsVercelCiResponse500ResponseBody`](./src/models/getvercelcitaskrunlogsvercelciresponse500responsebody.ts): . Status code `500`. Applicable to 1 of 435 methods.*
 * [`ResponseValidationError`](./src/models/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>

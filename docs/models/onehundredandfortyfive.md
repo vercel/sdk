@@ -8,8 +8,7 @@ The payload of the event, if requested.
 import { OneHundredAndFortyFive } from "@vercel/sdk/models/jobnsnbsideeffect.js";
 
 let value: OneHundredAndFortyFive = {
-  drainName: "<value>",
-  drainUrl: "https://grandiose-daddy.info",
+  name: "<value>",
 };
 ```
 
@@ -17,6 +16,4 @@ let value: OneHundredAndFortyFive = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `drainName`        | *string*           | :heavy_check_mark: | N/A                |
-| `drainUrl`         | *string*           | :heavy_check_mark: | N/A                |
-| `integrationName`  | *string*           | :heavy_minus_sign: | N/A                |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |

@@ -831,6 +831,10 @@ export type TypeOauth = {
    */
   defaultAudience?: string | undefined;
   /**
+   * Default RFC 8707 resource sent on authorization and token requests when a token request omits one. An empty string clears the default.
+   */
+  defaultResource?: string | undefined;
+  /**
    * Default token lifetime in seconds to use when the token response omits expires_in.
    */
   defaultTokenExpiresIn?: number | undefined;
@@ -1701,6 +1705,7 @@ export type TypeOauth$Outbound = {
   clientCredentials?: ClientCredentials$Outbound | undefined;
   forwardedClaims?: ForwardedClaims$Outbound | undefined;
   defaultAudience?: string | undefined;
+  defaultResource?: string | undefined;
   defaultTokenExpiresIn?: number | undefined;
   authorizationUrlParams?: { [k: string]: string } | undefined;
   jwtBearer?: JwtBearer$Outbound | undefined;
@@ -1727,6 +1732,7 @@ export const TypeOauth$outboundSchema: z.ZodType<
   clientCredentials: z.lazy(() => ClientCredentials$outboundSchema).optional(),
   forwardedClaims: z.lazy(() => ForwardedClaims$outboundSchema).optional(),
   defaultAudience: z.string().optional(),
+  defaultResource: z.string().optional(),
   defaultTokenExpiresIn: z.number().optional(),
   authorizationUrlParams: z.record(z.string()).optional(),
   jwtBearer: z.lazy(() => JwtBearer$outboundSchema).optional(),

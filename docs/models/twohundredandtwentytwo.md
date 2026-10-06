@@ -9,17 +9,28 @@ import { TwoHundredAndTwentyTwo } from "@vercel/sdk/models/lasteditedbyprincipal
 
 let value: TwoHundredAndTwentyTwo = {
   enabled: true,
+  enforcedTeamIds: [
+    "<value 1>",
+    "<value 2>",
+  ],
   organizationId: "<id>",
-  teamId: "<id>",
-  teamSlug: "<value>",
+  previousEnabled: false,
+  trigger: "team_removed",
+  unenforcedTeamIds: [
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
+  ],
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
-| `organizationId`   | *string*           | :heavy_check_mark: | N/A                |
-| `teamId`           | *string*           | :heavy_check_mark: | N/A                |
-| `teamSlug`         | *string*           | :heavy_check_mark: | N/A                |
+| Field                                  | Type                                   | Required                               | Description                            |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| `enabled`                              | *boolean*                              | :heavy_check_mark:                     | N/A                                    |
+| `enforcedTeamIds`                      | *string*[]                             | :heavy_check_mark:                     | N/A                                    |
+| `organizationId`                       | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `previousEnabled`                      | *boolean*                              | :heavy_check_mark:                     | N/A                                    |
+| `trigger`                              | [models.Trigger](../models/trigger.md) | :heavy_check_mark:                     | N/A                                    |
+| `unenforcedTeamIds`                    | *string*[]                             | :heavy_check_mark:                     | N/A                                    |

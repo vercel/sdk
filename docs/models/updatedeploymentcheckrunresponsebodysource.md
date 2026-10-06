@@ -43,12 +43,8 @@ const value: models.UpdateDeploymentCheckRunSource4 = {};
 const value: models.UpdateDeploymentCheckRunSource5 = {
   origin: "api",
   selection: {
-    filters: [
-      "<value 1>",
-    ],
-    job: "Turborepo",
-    kind: "turborepo",
-    task: "<value>",
+    job: "Central Group Architect",
+    kind: "job",
   },
   subKind: "vercel-ci-check",
 };

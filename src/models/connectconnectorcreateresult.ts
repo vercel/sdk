@@ -360,6 +360,10 @@ export type ConnectConnectorCreateResult = {
    */
   supportsInstallation: boolean;
   /**
+   * Whether this managed connector can disconnect from its manager.
+   */
+  supportsManagedEjection?: boolean | undefined;
+  /**
    * Whether Connect can revoke tokens for this connector.
    */
   supportsRevocation: boolean;
@@ -721,6 +725,7 @@ export const ConnectConnectorCreateResult$inboundSchema: z.ZodType<
   supportedSubjectTypes: z.array(types.string()),
   supportsIcon: ConnectConnectorCreateResultSupportsIcon$inboundSchema,
   supportsInstallation: types.boolean(),
+  supportsManagedEjection: types.optional(types.boolean()),
   supportsRevocation: types.boolean(),
   supportsTriggers: types.boolean(),
   target: types.optional(types.string()),

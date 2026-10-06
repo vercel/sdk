@@ -202,7 +202,7 @@ export type ListDeploymentCheckRunsSelectionJob = ClosedEnum<
   typeof ListDeploymentCheckRunsSelectionJob
 >;
 
-export type ListDeploymentCheckRunsSelection3 = {
+export type ListDeploymentCheckRunsSelection4 = {
   failIfNoMatch?: boolean | undefined;
   filters: Array<string>;
   job: ListDeploymentCheckRunsSelectionJob;
@@ -210,9 +210,13 @@ export type ListDeploymentCheckRunsSelection3 = {
   task: string;
 };
 
-export type ListDeploymentCheckRunsSelection2 = {
+export type ListDeploymentCheckRunsSelection3 = {
   job: string;
   kind: "job";
+};
+
+export type ListDeploymentCheckRunsSelection2 = {
+  kind: "deployment";
 };
 
 export type ListDeploymentCheckRunsSelection1 = {
@@ -222,7 +226,8 @@ export type ListDeploymentCheckRunsSelection1 = {
 export type ListDeploymentCheckRunsSourceSelection =
   | ListDeploymentCheckRunsSelection1
   | ListDeploymentCheckRunsSelection2
-  | ListDeploymentCheckRunsSelection3;
+  | ListDeploymentCheckRunsSelection3
+  | ListDeploymentCheckRunsSelection4;
 
 export const ListDeploymentCheckRunsSourceChecksV2SubKind = {
   VercelCiCheck: "vercel-ci-check",
@@ -239,7 +244,8 @@ export type ListDeploymentCheckRunsSource5 = {
   selection:
     | ListDeploymentCheckRunsSelection1
     | ListDeploymentCheckRunsSelection2
-    | ListDeploymentCheckRunsSelection3;
+    | ListDeploymentCheckRunsSelection3
+    | ListDeploymentCheckRunsSelection4;
   subKind: ListDeploymentCheckRunsSourceChecksV2SubKind;
 };
 
@@ -638,8 +644,8 @@ export const ListDeploymentCheckRunsSelectionJob$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(ListDeploymentCheckRunsSelectionJob);
 
 /** @internal */
-export const ListDeploymentCheckRunsSelection3$inboundSchema: z.ZodType<
-  ListDeploymentCheckRunsSelection3,
+export const ListDeploymentCheckRunsSelection4$inboundSchema: z.ZodType<
+  ListDeploymentCheckRunsSelection4,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -648,6 +654,26 @@ export const ListDeploymentCheckRunsSelection3$inboundSchema: z.ZodType<
   job: ListDeploymentCheckRunsSelectionJob$inboundSchema,
   kind: types.literal("turborepo"),
   task: types.string(),
+});
+
+export function listDeploymentCheckRunsSelection4FromJSON(
+  jsonString: string,
+): SafeParseResult<ListDeploymentCheckRunsSelection4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListDeploymentCheckRunsSelection4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListDeploymentCheckRunsSelection4' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListDeploymentCheckRunsSelection3$inboundSchema: z.ZodType<
+  ListDeploymentCheckRunsSelection3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  job: types.string(),
+  kind: types.literal("job"),
 });
 
 export function listDeploymentCheckRunsSelection3FromJSON(
@@ -666,8 +692,7 @@ export const ListDeploymentCheckRunsSelection2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  job: types.string(),
-  kind: types.literal("job"),
+  kind: types.literal("deployment"),
 });
 
 export function listDeploymentCheckRunsSelection2FromJSON(
@@ -708,6 +733,7 @@ export const ListDeploymentCheckRunsSourceSelection$inboundSchema: z.ZodType<
   z.lazy(() => ListDeploymentCheckRunsSelection1$inboundSchema),
   z.lazy(() => ListDeploymentCheckRunsSelection2$inboundSchema),
   z.lazy(() => ListDeploymentCheckRunsSelection3$inboundSchema),
+  z.lazy(() => ListDeploymentCheckRunsSelection4$inboundSchema),
 ]);
 
 export function listDeploymentCheckRunsSourceSelectionFromJSON(
@@ -737,6 +763,7 @@ export const ListDeploymentCheckRunsSource5$inboundSchema: z.ZodType<
     z.lazy(() => ListDeploymentCheckRunsSelection1$inboundSchema),
     z.lazy(() => ListDeploymentCheckRunsSelection2$inboundSchema),
     z.lazy(() => ListDeploymentCheckRunsSelection3$inboundSchema),
+    z.lazy(() => ListDeploymentCheckRunsSelection4$inboundSchema),
   ]),
   subKind: ListDeploymentCheckRunsSourceChecksV2SubKind$inboundSchema,
 });

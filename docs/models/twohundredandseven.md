@@ -8,12 +8,16 @@ The payload of the event, if requested.
 import { TwoHundredAndSeven } from "@vercel/sdk/models/lasteditedbyprincipal1.js";
 
 let value: TwoHundredAndSeven = {
-  invoiceCollection: true,
+  projectId: "<id>",
+  projectName: "<value>",
+  toDeploymentId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field               | Type                | Required            | Description         |
-| ------------------- | ------------------- | ------------------- | ------------------- |
-| `invoiceCollection` | *boolean*           | :heavy_check_mark:  | N/A                 |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `toDeploymentId`   | *string*           | :heavy_check_mark: | N/A                |

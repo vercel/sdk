@@ -9,17 +9,13 @@ import { OneHundredAndThirtyOne } from "@vercel/sdk/models/jobnsnbsideeffect.js"
 
 let value: OneHundredAndThirtyOne = {
   name: "<value>",
-  ownerName: "<value>",
-  teamId: "<id>",
-  userId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
-| `ownerName`        | *string*           | :heavy_check_mark: | N/A                |
-| `teamId`           | *string*           | :heavy_check_mark: | N/A                |
-| `userId`           | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `name`                                                                       | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
+| `newTeam`                                                                    | [models.UserEventPayload131NewTeam](../models/usereventpayload131newteam.md) | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `oldTeam`                                                                    | [models.UserEventPayload131OldTeam](../models/usereventpayload131oldteam.md) | :heavy_minus_sign:                                                           | N/A                                                                          |

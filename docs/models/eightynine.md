@@ -5,21 +5,27 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { EightyNine } from "@vercel/sdk/models/fiftyeight.js";
+import { EightyNine } from "@vercel/sdk/models/fiftynine.js";
 
 let value: EightyNine = {
-  documentId: "<id>",
-  fingerprint: "<value>",
-  slug: "<value>",
-  title: "<value>",
+  gitOwnerName: "<value>",
+  gitRepositoryName: "<value>",
+  next: {
+    autoAddReviewers: true,
+    enabled: true,
+  },
+  previous: {
+    autoAddReviewers: false,
+    enabled: true,
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `documentId`       | *string*           | :heavy_check_mark: | N/A                |
-| `fingerprint`      | *string*           | :heavy_check_mark: | N/A                |
-| `slug`             | *string*           | :heavy_check_mark: | N/A                |
-| `title`            | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                  | Type                                                   | Required                                               | Description                                            |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| `gitOwnerName`                                         | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
+| `gitRepositoryName`                                    | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
+| `next`                                                 | [models.Next](../models/next.md)                       | :heavy_check_mark:                                     | N/A                                                    |
+| `previous`                                             | [models.PayloadPrevious](../models/payloadprevious.md) | :heavy_check_mark:                                     | N/A                                                    |

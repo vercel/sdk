@@ -8,12 +8,20 @@ The payload of the event, if requested.
 import { OneHundredAndThirtyFive } from "@vercel/sdk/models/jobnsnbsideeffect.js";
 
 let value: OneHundredAndThirtyFive = {
-  domain: "posh-retention.name",
+  customNameservers: [
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
+  ],
+  domain: "overcooked-making.name",
+  prevCustomNameservers: [],
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `domain`           | *string*           | :heavy_check_mark: | N/A                |
+| Field                   | Type                    | Required                | Description             |
+| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
+| `customNameservers`     | *string*[]              | :heavy_check_mark:      | N/A                     |
+| `domain`                | *string*                | :heavy_check_mark:      | N/A                     |
+| `prevCustomNameservers` | *string*[]              | :heavy_check_mark:      | N/A                     |

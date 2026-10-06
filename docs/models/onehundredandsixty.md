@@ -8,6 +8,9 @@ The payload of the event, if requested.
 import { OneHundredAndSixty } from "@vercel/sdk/models/jobnsnbsideeffect.js";
 
 let value: OneHundredAndSixty = {
+  previousRule: {
+    email: "Alivia_Torp79@hotmail.com",
+  },
   team: {
     id: "<id>",
   },
@@ -18,6 +21,5 @@ let value: OneHundredAndSixty = {
 
 | Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `nextRule`                                                             | [models.NextRule](../models/nextrule.md)                               | :heavy_minus_sign:                                                     | N/A                                                                    |
-| `previousRule`                                                         | [models.PayloadPreviousRule](../models/payloadpreviousrule.md)         | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `previousRule`                                                         | [models.PreviousRule](../models/previousrule.md)                       | :heavy_check_mark:                                                     | N/A                                                                    |
 | `team`                                                                 | [models.UserEventPayload160Team](../models/usereventpayload160team.md) | :heavy_check_mark:                                                     | N/A                                                                    |

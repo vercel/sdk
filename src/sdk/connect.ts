@@ -5,6 +5,7 @@
 import { connectCreateConnector } from "../funcs/connectCreateConnector.js";
 import { connectDeleteConnector } from "../funcs/connectDeleteConnector.js";
 import { connectDeleteConnectorProjectConnection } from "../funcs/connectDeleteConnectorProjectConnection.js";
+import { connectEjectManagedConnector } from "../funcs/connectEjectManagedConnector.js";
 import { connectGetConnector } from "../funcs/connectGetConnector.js";
 import { connectGetConnectorProjectConnection } from "../funcs/connectGetConnectorProjectConnection.js";
 import { connectListConnectorProjectConnections } from "../funcs/connectListConnectorProjectConnections.js";
@@ -24,6 +25,7 @@ import { ConnectProjectConnectorConnectionList } from "../models/connectprojectc
 import { CreateConnectorRequest } from "../models/createconnectorop.js";
 import { DeleteConnectorRequest } from "../models/deleteconnectorop.js";
 import { DeleteConnectorProjectConnectionRequest } from "../models/deleteconnectorprojectconnectionop.js";
+import { EjectManagedConnectorRequest } from "../models/ejectmanagedconnectorop.js";
 import { GetConnectorRequest } from "../models/getconnectorop.js";
 import { GetConnectorProjectConnectionRequest } from "../models/getconnectorprojectconnectionop.js";
 import { ListConnectorProjectConnectionsRequest } from "../models/listconnectorprojectconnectionsop.js";
@@ -131,6 +133,23 @@ export class Connect extends ClientSDK {
     options?: RequestOptions,
   ): Promise<ConnectConnector> {
     return unwrapAsync(connectReplaceConnectorTriggerDestinations(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Eject a managed connector
+   *
+   * @remarks
+   * Disconnect a managed connector from its provider-side manager.
+   */
+  async ejectManagedConnector(
+    request: EjectManagedConnectorRequest,
+    options?: RequestOptions,
+  ): Promise<ConnectConnector> {
+    return unwrapAsync(connectEjectManagedConnector(
       this,
       request,
       options,

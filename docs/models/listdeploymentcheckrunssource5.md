@@ -10,8 +10,7 @@ import { ListDeploymentCheckRunsSource5 } from "@vercel/sdk/models/listdeploymen
 let value: ListDeploymentCheckRunsSource5 = {
   origin: "api",
   selection: {
-    job: "Product Markets Facilitator",
-    kind: "job",
+    kind: "deployment",
   },
   subKind: "vercel-ci-check",
 };

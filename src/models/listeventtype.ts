@@ -483,6 +483,7 @@ export const Name = {
   ProjectAutoAssignCustomProductionDomainsUpdated:
     "project-auto-assign-custom-production-domains-updated",
   ProjectAutomationBypass: "project-automation-bypass",
+  ProjectAvatarDarkModeUpdate: "project-avatar-dark-mode-update",
   ProjectAvatarUpdate: "project-avatar-update",
   ProjectBuildCommandUpdated: "project-build-command-updated",
   ProjectBuildLogsAndSourceProtectionUpdated:
@@ -1259,6 +1260,7 @@ export const ReplacedBy = {
   ProjectAutoAssignCustomProductionDomainsUpdated:
     "project-auto-assign-custom-production-domains-updated",
   ProjectAutomationBypass: "project-automation-bypass",
+  ProjectAvatarDarkModeUpdate: "project-avatar-dark-mode-update",
   ProjectAvatarUpdate: "project-avatar-update",
   ProjectBuildCommandUpdated: "project-build-command-updated",
   ProjectBuildLogsAndSourceProtectionUpdated:

@@ -70,6 +70,13 @@ export type ListDeploymentCheckRunsRunsChecksV2Status = ClosedEnum<
   typeof ListDeploymentCheckRunsRunsChecksV2Status
 >;
 
+export type ListDeploymentCheckRunsRunsChecksV2TaskSummary = {
+  failed: number;
+  pending: number;
+  succeeded: number;
+  total: number;
+};
+
 export const ListDeploymentCheckRunsSourceChecksV2Response200SubKind = {
   VercelCiSentinel: "vercel-ci-sentinel",
 } as const;
@@ -133,6 +140,7 @@ export type ListDeploymentCheckRunsRuns2 = {
   requires?: ListDeploymentCheckRunsRunsChecksV2Requires | undefined;
   status: ListDeploymentCheckRunsRunsChecksV2Status;
   targets?: Array<string> | undefined;
+  taskSummary?: ListDeploymentCheckRunsRunsChecksV2TaskSummary | undefined;
   timeout: number;
   updatedAt: number;
   source:
@@ -187,6 +195,13 @@ export const ListDeploymentCheckRunsRunsStatus = {
 export type ListDeploymentCheckRunsRunsStatus = ClosedEnum<
   typeof ListDeploymentCheckRunsRunsStatus
 >;
+
+export type ListDeploymentCheckRunsRunsTaskSummary = {
+  failed: number;
+  pending: number;
+  succeeded: number;
+  total: number;
+};
 
 export const ListDeploymentCheckRunsSourceChecksV2Origin = {
   Api: "api",
@@ -353,6 +368,7 @@ export type ListDeploymentCheckRunsRuns1 = {
   requires?: ListDeploymentCheckRunsRunsRequires | undefined;
   status: ListDeploymentCheckRunsRunsStatus;
   targets?: Array<string> | undefined;
+  taskSummary?: ListDeploymentCheckRunsRunsTaskSummary | undefined;
   timeout: number;
   updatedAt: number;
   checkId: string;
@@ -448,6 +464,35 @@ export const ListDeploymentCheckRunsRunsChecksV2Requires$inboundSchema:
 export const ListDeploymentCheckRunsRunsChecksV2Status$inboundSchema:
   z.ZodNativeEnum<typeof ListDeploymentCheckRunsRunsChecksV2Status> = z
     .nativeEnum(ListDeploymentCheckRunsRunsChecksV2Status);
+
+/** @internal */
+export const ListDeploymentCheckRunsRunsChecksV2TaskSummary$inboundSchema:
+  z.ZodType<
+    ListDeploymentCheckRunsRunsChecksV2TaskSummary,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    failed: types.number(),
+    pending: types.number(),
+    succeeded: types.number(),
+    total: types.number(),
+  });
+
+export function listDeploymentCheckRunsRunsChecksV2TaskSummaryFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ListDeploymentCheckRunsRunsChecksV2TaskSummary,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListDeploymentCheckRunsRunsChecksV2TaskSummary$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ListDeploymentCheckRunsRunsChecksV2TaskSummary' from JSON`,
+  );
+}
 
 /** @internal */
 export const ListDeploymentCheckRunsSourceChecksV2Response200SubKind$inboundSchema:
@@ -566,6 +611,9 @@ export const ListDeploymentCheckRunsRuns2$inboundSchema: z.ZodType<
   ),
   status: ListDeploymentCheckRunsRunsChecksV2Status$inboundSchema,
   targets: types.optional(z.array(types.string())),
+  taskSummary: types.optional(
+    z.lazy(() => ListDeploymentCheckRunsRunsChecksV2TaskSummary$inboundSchema),
+  ),
   timeout: types.number(),
   updatedAt: types.number(),
   source: z.union([
@@ -632,6 +680,29 @@ export const ListDeploymentCheckRunsRunsRequires$inboundSchema: z.ZodNativeEnum<
 export const ListDeploymentCheckRunsRunsStatus$inboundSchema: z.ZodNativeEnum<
   typeof ListDeploymentCheckRunsRunsStatus
 > = z.nativeEnum(ListDeploymentCheckRunsRunsStatus);
+
+/** @internal */
+export const ListDeploymentCheckRunsRunsTaskSummary$inboundSchema: z.ZodType<
+  ListDeploymentCheckRunsRunsTaskSummary,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  failed: types.number(),
+  pending: types.number(),
+  succeeded: types.number(),
+  total: types.number(),
+});
+
+export function listDeploymentCheckRunsRunsTaskSummaryFromJSON(
+  jsonString: string,
+): SafeParseResult<ListDeploymentCheckRunsRunsTaskSummary, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListDeploymentCheckRunsRunsTaskSummary$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListDeploymentCheckRunsRunsTaskSummary' from JSON`,
+  );
+}
 
 /** @internal */
 export const ListDeploymentCheckRunsSourceChecksV2Origin$inboundSchema:
@@ -945,6 +1016,9 @@ export const ListDeploymentCheckRunsRuns1$inboundSchema: z.ZodType<
   requires: types.optional(ListDeploymentCheckRunsRunsRequires$inboundSchema),
   status: ListDeploymentCheckRunsRunsStatus$inboundSchema,
   targets: types.optional(z.array(types.string())),
+  taskSummary: types.optional(
+    z.lazy(() => ListDeploymentCheckRunsRunsTaskSummary$inboundSchema),
+  ),
   timeout: types.number(),
   updatedAt: types.number(),
   checkId: types.string(),

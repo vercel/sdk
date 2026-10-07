@@ -1,0 +1,27 @@
+# UserEventPayload418Next
+
+
+## Supported Types
+
+### `models.Next1`
+
+```typescript
+const value: models.Next1 = {
+  accessGroupId: "<id>",
+};
+```
+
+### `models.Next2`
+
+```typescript
+const value: models.Next2 = {
+  teamRoles: [],
+};
+```
+
+### `models.Next3`
+
+```typescript
+const value: models.Next3 = "CONTRIBUTOR";
+```
+

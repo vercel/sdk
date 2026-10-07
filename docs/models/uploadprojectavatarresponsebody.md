@@ -94,7 +94,7 @@ let value: UploadProjectAvatarResponseBody = {
             503,
           ],
           ingestWatermarkSeconds: 30,
-          minSampleSize: 100,
+          significanceLevel: 0.05,
           type: "error-rate-5xx",
         },
       ],

@@ -997,6 +997,10 @@ export type Team = {
   inviteCode?: string | undefined;
   ipBuckets?: Array<IpBuckets> | undefined;
   /**
+   * Property indicating that this Team data contains full information. Limited Team data has `limited: true`.
+   */
+  limited: false;
+  /**
    * The membership of the authenticated User in relation to the Team.
    */
   membership?: Membership | undefined;
@@ -2274,6 +2278,7 @@ export const Team$inboundSchema: z.ZodType<Team, z.ZodTypeDef, unknown> =
       integrationTokensInvalidatedAt: types.optional(types.number()),
       inviteCode: types.optional(types.string()),
       ipBuckets: types.optional(z.array(z.lazy(() => IpBuckets$inboundSchema))),
+      limited: types.literal(false),
       membership: types.optional(z.lazy(() => Membership$inboundSchema)),
       name: types.nullable(types.string()),
       nsnbConfig: types.optional(z.lazy(() => NsnbConfig$inboundSchema)),

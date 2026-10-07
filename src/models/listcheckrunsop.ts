@@ -72,6 +72,13 @@ export type ListCheckRunsRunsStatus = ClosedEnum<
   typeof ListCheckRunsRunsStatus
 >;
 
+export type RunsTaskSummary = {
+  failed: number;
+  pending: number;
+  succeeded: number;
+  total: number;
+};
+
 export const ListCheckRunsSourceChecksV2SubKind = {
   VercelCiSentinel: "vercel-ci-sentinel",
 } as const;
@@ -134,6 +141,7 @@ export type Runs2 = {
   requires?: ListCheckRunsRunsRequires | undefined;
   status: ListCheckRunsRunsStatus;
   targets?: Array<string> | undefined;
+  taskSummary?: RunsTaskSummary | undefined;
   timeout: number;
   updatedAt: number;
   source: ListCheckRunsSourceChecksV21 | ListCheckRunsSourceChecksV22;
@@ -180,6 +188,13 @@ export const RunsStatus = {
   Running: "running",
 } as const;
 export type RunsStatus = ClosedEnum<typeof RunsStatus>;
+
+export type ListCheckRunsRunsTaskSummary = {
+  failed: number;
+  pending: number;
+  succeeded: number;
+  total: number;
+};
 
 export const ListCheckRunsSourceChecksV2Response200Origin = {
   Api: "api",
@@ -346,6 +361,7 @@ export type Runs1 = {
   requires?: RunsRequires | undefined;
   status: RunsStatus;
   targets?: Array<string> | undefined;
+  taskSummary?: ListCheckRunsRunsTaskSummary | undefined;
   timeout: number;
   updatedAt: number;
   checkId: string;
@@ -432,6 +448,28 @@ export const ListCheckRunsRunsRequires$inboundSchema: z.ZodNativeEnum<
 export const ListCheckRunsRunsStatus$inboundSchema: z.ZodNativeEnum<
   typeof ListCheckRunsRunsStatus
 > = z.nativeEnum(ListCheckRunsRunsStatus);
+
+/** @internal */
+export const RunsTaskSummary$inboundSchema: z.ZodType<
+  RunsTaskSummary,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  failed: types.number(),
+  pending: types.number(),
+  succeeded: types.number(),
+  total: types.number(),
+});
+
+export function runsTaskSummaryFromJSON(
+  jsonString: string,
+): SafeParseResult<RunsTaskSummary, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RunsTaskSummary$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RunsTaskSummary' from JSON`,
+  );
+}
 
 /** @internal */
 export const ListCheckRunsSourceChecksV2SubKind$inboundSchema: z.ZodNativeEnum<
@@ -529,6 +567,7 @@ export const Runs2$inboundSchema: z.ZodType<Runs2, z.ZodTypeDef, unknown> = z
     requires: types.optional(ListCheckRunsRunsRequires$inboundSchema),
     status: ListCheckRunsRunsStatus$inboundSchema,
     targets: types.optional(z.array(types.string())),
+    taskSummary: types.optional(z.lazy(() => RunsTaskSummary$inboundSchema)),
     timeout: types.number(),
     updatedAt: types.number(),
     source: z.union([
@@ -585,6 +624,28 @@ export const RunsRequires$inboundSchema: z.ZodNativeEnum<typeof RunsRequires> =
 /** @internal */
 export const RunsStatus$inboundSchema: z.ZodNativeEnum<typeof RunsStatus> = z
   .nativeEnum(RunsStatus);
+
+/** @internal */
+export const ListCheckRunsRunsTaskSummary$inboundSchema: z.ZodType<
+  ListCheckRunsRunsTaskSummary,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  failed: types.number(),
+  pending: types.number(),
+  succeeded: types.number(),
+  total: types.number(),
+});
+
+export function listCheckRunsRunsTaskSummaryFromJSON(
+  jsonString: string,
+): SafeParseResult<ListCheckRunsRunsTaskSummary, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListCheckRunsRunsTaskSummary$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListCheckRunsRunsTaskSummary' from JSON`,
+  );
+}
 
 /** @internal */
 export const ListCheckRunsSourceChecksV2Response200Origin$inboundSchema:
@@ -894,6 +955,9 @@ export const Runs1$inboundSchema: z.ZodType<Runs1, z.ZodTypeDef, unknown> = z
     requires: types.optional(RunsRequires$inboundSchema),
     status: RunsStatus$inboundSchema,
     targets: types.optional(z.array(types.string())),
+    taskSummary: types.optional(
+      z.lazy(() => ListCheckRunsRunsTaskSummary$inboundSchema),
+    ),
     timeout: types.number(),
     updatedAt: types.number(),
     checkId: types.string(),

@@ -74,6 +74,13 @@ export type GetDeploymentCheckRunResponseBodyChecksV2Status = ClosedEnum<
   typeof GetDeploymentCheckRunResponseBodyChecksV2Status
 >;
 
+export type GetDeploymentCheckRunResponseBodyChecksV2TaskSummary = {
+  failed: number;
+  pending: number;
+  succeeded: number;
+  total: number;
+};
+
 export const GetDeploymentCheckRunSourceChecksV2Response200SubKind = {
   VercelCiSentinel: "vercel-ci-sentinel",
 } as const;
@@ -138,6 +145,9 @@ export type GetDeploymentCheckRunResponseBody2 = {
   requires?: GetDeploymentCheckRunResponseBodyChecksV2Requires | undefined;
   status: GetDeploymentCheckRunResponseBodyChecksV2Status;
   targets?: Array<string> | undefined;
+  taskSummary?:
+    | GetDeploymentCheckRunResponseBodyChecksV2TaskSummary
+    | undefined;
   timeout: number;
   updatedAt: number;
   source:
@@ -192,6 +202,13 @@ export const GetDeploymentCheckRunResponseBodyStatus = {
 export type GetDeploymentCheckRunResponseBodyStatus = ClosedEnum<
   typeof GetDeploymentCheckRunResponseBodyStatus
 >;
+
+export type GetDeploymentCheckRunResponseBodyTaskSummary = {
+  failed: number;
+  pending: number;
+  succeeded: number;
+  total: number;
+};
 
 export const GetDeploymentCheckRunSourceChecksV2Origin = {
   Api: "api",
@@ -356,6 +373,7 @@ export type GetDeploymentCheckRunResponseBody1 = {
   requires?: GetDeploymentCheckRunResponseBodyRequires | undefined;
   status: GetDeploymentCheckRunResponseBodyStatus;
   targets?: Array<string> | undefined;
+  taskSummary?: GetDeploymentCheckRunResponseBodyTaskSummary | undefined;
   timeout: number;
   updatedAt: number;
   checkId: string;
@@ -448,6 +466,35 @@ export const GetDeploymentCheckRunResponseBodyChecksV2Requires$inboundSchema:
 export const GetDeploymentCheckRunResponseBodyChecksV2Status$inboundSchema:
   z.ZodNativeEnum<typeof GetDeploymentCheckRunResponseBodyChecksV2Status> = z
     .nativeEnum(GetDeploymentCheckRunResponseBodyChecksV2Status);
+
+/** @internal */
+export const GetDeploymentCheckRunResponseBodyChecksV2TaskSummary$inboundSchema:
+  z.ZodType<
+    GetDeploymentCheckRunResponseBodyChecksV2TaskSummary,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    failed: types.number(),
+    pending: types.number(),
+    succeeded: types.number(),
+    total: types.number(),
+  });
+
+export function getDeploymentCheckRunResponseBodyChecksV2TaskSummaryFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetDeploymentCheckRunResponseBodyChecksV2TaskSummary,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentCheckRunResponseBodyChecksV2TaskSummary$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetDeploymentCheckRunResponseBodyChecksV2TaskSummary' from JSON`,
+  );
+}
 
 /** @internal */
 export const GetDeploymentCheckRunSourceChecksV2Response200SubKind$inboundSchema:
@@ -566,6 +613,11 @@ export const GetDeploymentCheckRunResponseBody2$inboundSchema: z.ZodType<
   ),
   status: GetDeploymentCheckRunResponseBodyChecksV2Status$inboundSchema,
   targets: types.optional(z.array(types.string())),
+  taskSummary: types.optional(
+    z.lazy(() =>
+      GetDeploymentCheckRunResponseBodyChecksV2TaskSummary$inboundSchema
+    ),
+  ),
   timeout: types.number(),
   updatedAt: types.number(),
   source: z.union([
@@ -633,6 +685,35 @@ export const GetDeploymentCheckRunResponseBodyRequires$inboundSchema:
 export const GetDeploymentCheckRunResponseBodyStatus$inboundSchema:
   z.ZodNativeEnum<typeof GetDeploymentCheckRunResponseBodyStatus> = z
     .nativeEnum(GetDeploymentCheckRunResponseBodyStatus);
+
+/** @internal */
+export const GetDeploymentCheckRunResponseBodyTaskSummary$inboundSchema:
+  z.ZodType<
+    GetDeploymentCheckRunResponseBodyTaskSummary,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    failed: types.number(),
+    pending: types.number(),
+    succeeded: types.number(),
+    total: types.number(),
+  });
+
+export function getDeploymentCheckRunResponseBodyTaskSummaryFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetDeploymentCheckRunResponseBodyTaskSummary,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentCheckRunResponseBodyTaskSummary$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetDeploymentCheckRunResponseBodyTaskSummary' from JSON`,
+  );
+}
 
 /** @internal */
 export const GetDeploymentCheckRunSourceChecksV2Origin$inboundSchema:
@@ -950,6 +1031,9 @@ export const GetDeploymentCheckRunResponseBody1$inboundSchema: z.ZodType<
   ),
   status: GetDeploymentCheckRunResponseBodyStatus$inboundSchema,
   targets: types.optional(z.array(types.string())),
+  taskSummary: types.optional(
+    z.lazy(() => GetDeploymentCheckRunResponseBodyTaskSummary$inboundSchema),
+  ),
   timeout: types.number(),
   updatedAt: types.number(),
   checkId: types.string(),

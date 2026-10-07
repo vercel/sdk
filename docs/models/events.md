@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Events } from "@vercel/sdk/models/fourhundredandtwentytwo.js";
+import { Events } from "@vercel/sdk/models/fourhundredandtwentythree.js";
 
 let value: Events = {
   cacheCreationInputTokens: 8264.37,

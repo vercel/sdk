@@ -1781,9 +1781,9 @@ export type GetMicrofrontendsInGroupChecks = {
    */
   ingestWatermarkSeconds?: number | undefined;
   /**
-   * Minimum number of requests required in the window before the check can fail. Below this, the check is inconclusive rather than failing, so low-traffic stages don't gate on noise. Defaults to `100` when omitted.
+   * A run fails only when the canary's error rate is higher and its one-sided Fisher p-value is below this significance level. Defaults to `0.05`; lower values require stronger evidence.
    */
-  minSampleSize?: number | undefined;
+  significanceLevel?: number | undefined;
   /**
    * The metric this check evaluates.
    */
@@ -4386,7 +4386,7 @@ export const GetMicrofrontendsInGroupChecks$inboundSchema: z.ZodType<
   excludePaths: types.optional(z.array(types.string())),
   excludeStatusCodes: types.optional(z.array(types.number())),
   ingestWatermarkSeconds: types.optional(types.number()),
-  minSampleSize: types.optional(types.number()),
+  significanceLevel: types.optional(types.number()),
   type:
     GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsRollingReleaseType$inboundSchema,
 });

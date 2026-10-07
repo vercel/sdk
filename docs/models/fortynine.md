@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FortyNine } from "@vercel/sdk/models/userevent.js";
+import { FortyNine } from "@vercel/sdk/models/via.js";
 
 let value: FortyNine = {
   aliasCount: 8401.55,

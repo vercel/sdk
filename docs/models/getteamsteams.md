@@ -17,6 +17,7 @@ const value: models.Team = {
   emailDomain: "example.com",
   id: "team_nllPyCtREAqxxdyFKbbMDlxd",
   inviteCode: "hasihf9e89",
+  limited: false,
   name: "My Team",
   orgRootTeamId: "team_nllPyCtREAqxxdyFKbbMDlxd",
   parentId: "org_nllPyCtREAqxxdyFKbbMDlxd",

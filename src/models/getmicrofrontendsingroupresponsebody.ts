@@ -13,10 +13,18 @@ import { ACLAction, ACLAction$inboundSchema } from "./aclaction.js";
 import {
   GetMicrofrontendsInGroupAlias,
   GetMicrofrontendsInGroupAlias$inboundSchema,
+  GetMicrofrontendsInGroupAliasError,
+  GetMicrofrontendsInGroupAliasError$inboundSchema,
   GetMicrofrontendsInGroupAnalytics,
   GetMicrofrontendsInGroupAnalytics$inboundSchema,
   GetMicrofrontendsInGroupBlobs,
   GetMicrofrontendsInGroupBlobs$inboundSchema,
+  GetMicrofrontendsInGroupBuilds,
+  GetMicrofrontendsInGroupBuilds$inboundSchema,
+  GetMicrofrontendsInGroupChecksConclusion,
+  GetMicrofrontendsInGroupChecksConclusion$inboundSchema,
+  GetMicrofrontendsInGroupChecksState,
+  GetMicrofrontendsInGroupChecksState$inboundSchema,
   GetMicrofrontendsInGroupConnectConfigurations,
   GetMicrofrontendsInGroupConnectConfigurations$inboundSchema,
   GetMicrofrontendsInGroupCreator,
@@ -57,10 +65,79 @@ import {
   GetMicrofrontendsInGroupLastAliasRequest$inboundSchema,
   GetMicrofrontendsInGroupLastRollbackTarget,
   GetMicrofrontendsInGroupLastRollbackTarget$inboundSchema,
-  GetMicrofrontendsInGroupLatestDeployments,
-  GetMicrofrontendsInGroupLatestDeployments$inboundSchema,
-} from "./getmicrofrontendsingrouplatestdeployments.js";
+  GetMicrofrontendsInGroupMicrofrontendsAliasAssigned,
+  GetMicrofrontendsInGroupMicrofrontendsAliasAssigned$inboundSchema,
+  GetMicrofrontendsInGroupMicrofrontendsBranchMatcher,
+  GetMicrofrontendsInGroupMicrofrontendsBranchMatcher$inboundSchema,
+  GetMicrofrontendsInGroupMicrofrontendsCreator,
+  GetMicrofrontendsInGroupMicrofrontendsCreator$inboundSchema,
+  GetMicrofrontendsInGroupOidcTokenClaims,
+  GetMicrofrontendsInGroupOidcTokenClaims$inboundSchema,
+  GetMicrofrontendsInGroupPlan,
+  GetMicrofrontendsInGroupPlan$inboundSchema,
+  GetMicrofrontendsInGroupReadyState,
+  GetMicrofrontendsInGroupReadyState$inboundSchema,
+  GetMicrofrontendsInGroupReadySubstate,
+  GetMicrofrontendsInGroupReadySubstate$inboundSchema,
+} from "./getmicrofrontendsingroupreadysubstate.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const GetMicrofrontendsInGroupMicrofrontendsResponse200Type = {
+  Lambdas: "LAMBDAS",
+} as const;
+export type GetMicrofrontendsInGroupMicrofrontendsResponse200Type = ClosedEnum<
+  typeof GetMicrofrontendsInGroupMicrofrontendsResponse200Type
+>;
+
+export type GetMicrofrontendsInGroupLatestDeployments = {
+  alias?: Array<string> | undefined;
+  aliasAssigned?:
+    | GetMicrofrontendsInGroupMicrofrontendsAliasAssigned
+    | null
+    | undefined;
+  aliasError?: GetMicrofrontendsInGroupAliasError | null | undefined;
+  aliasFinal?: string | null | undefined;
+  automaticAliases?: Array<string> | undefined;
+  branchMatcher?:
+    | GetMicrofrontendsInGroupMicrofrontendsBranchMatcher
+    | undefined;
+  buildingAt?: number | undefined;
+  builds?: Array<GetMicrofrontendsInGroupBuilds> | undefined;
+  checksConclusion?: GetMicrofrontendsInGroupChecksConclusion | undefined;
+  checksState?: GetMicrofrontendsInGroupChecksState | undefined;
+  connectBuildsEnabled?: boolean | undefined;
+  connectConfigurationId?: string | undefined;
+  createdAt: number;
+  createdIn: string;
+  creator: GetMicrofrontendsInGroupMicrofrontendsCreator | null;
+  deletedAt?: number | undefined;
+  deploymentHostname: string;
+  forced?: boolean | undefined;
+  id: string;
+  meta?: { [k: string]: string } | undefined;
+  monorepoManager?: string | null | undefined;
+  name: string;
+  oidcTokenClaims?: GetMicrofrontendsInGroupOidcTokenClaims | undefined;
+  plan: GetMicrofrontendsInGroupPlan;
+  /**
+   * Whether or not preview comments are enabled for the deployment
+   */
+  previewCommentsEnabled?: boolean | undefined;
+  private: boolean;
+  readyAt?: number | undefined;
+  readyState: GetMicrofrontendsInGroupReadyState;
+  readySubstate?: GetMicrofrontendsInGroupReadySubstate | undefined;
+  requestedAt?: number | undefined;
+  target?: string | null | undefined;
+  teamId?: string | null | undefined;
+  type: GetMicrofrontendsInGroupMicrofrontendsResponse200Type;
+  url: string;
+  /**
+   * Present for user creators; omitted for app/integration/system creators.
+   */
+  userId?: string | undefined;
+  withCache?: boolean | undefined;
+};
 
 export type GetMicrofrontendsInGroupLinkMicrofrontendsResponse200ApplicationJSONResponseBodyDeployHooks =
   {
@@ -2939,6 +3016,87 @@ export type GetMicrofrontendsInGroupProjects = {
 export type GetMicrofrontendsInGroupResponseBody = {
   projects: Array<GetMicrofrontendsInGroupProjects>;
 };
+
+/** @internal */
+export const GetMicrofrontendsInGroupMicrofrontendsResponse200Type$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetMicrofrontendsInGroupMicrofrontendsResponse200Type
+  > = z.nativeEnum(GetMicrofrontendsInGroupMicrofrontendsResponse200Type);
+
+/** @internal */
+export const GetMicrofrontendsInGroupLatestDeployments$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupLatestDeployments,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  alias: types.optional(z.array(types.string())),
+  aliasAssigned: z.nullable(
+    GetMicrofrontendsInGroupMicrofrontendsAliasAssigned$inboundSchema,
+  ).optional(),
+  aliasError: z.nullable(GetMicrofrontendsInGroupAliasError$inboundSchema)
+    .optional(),
+  aliasFinal: z.nullable(types.string()).optional(),
+  automaticAliases: types.optional(z.array(types.string())),
+  branchMatcher: types.optional(
+    GetMicrofrontendsInGroupMicrofrontendsBranchMatcher$inboundSchema,
+  ),
+  buildingAt: types.optional(types.number()),
+  builds: types.optional(z.array(GetMicrofrontendsInGroupBuilds$inboundSchema)),
+  checksConclusion: types.optional(
+    GetMicrofrontendsInGroupChecksConclusion$inboundSchema,
+  ),
+  checksState: types.optional(
+    GetMicrofrontendsInGroupChecksState$inboundSchema,
+  ),
+  connectBuildsEnabled: types.optional(types.boolean()),
+  connectConfigurationId: types.optional(types.string()),
+  createdAt: types.number(),
+  createdIn: types.string(),
+  creator: types.nullable(
+    GetMicrofrontendsInGroupMicrofrontendsCreator$inboundSchema,
+  ),
+  deletedAt: types.optional(types.number()),
+  deploymentHostname: types.string(),
+  forced: types.optional(types.boolean()),
+  id: types.string(),
+  meta: types.optional(z.record(types.string())),
+  monorepoManager: z.nullable(types.string()).optional(),
+  name: types.string(),
+  oidcTokenClaims: types.optional(
+    GetMicrofrontendsInGroupOidcTokenClaims$inboundSchema,
+  ),
+  plan: GetMicrofrontendsInGroupPlan$inboundSchema,
+  previewCommentsEnabled: types.optional(types.boolean()),
+  private: types.boolean(),
+  readyAt: types.optional(types.number()),
+  readyState: GetMicrofrontendsInGroupReadyState$inboundSchema,
+  readySubstate: types.optional(
+    GetMicrofrontendsInGroupReadySubstate$inboundSchema,
+  ),
+  requestedAt: types.optional(types.number()),
+  target: z.nullable(types.string()).optional(),
+  teamId: z.nullable(types.string()).optional(),
+  type: GetMicrofrontendsInGroupMicrofrontendsResponse200Type$inboundSchema,
+  url: types.string(),
+  userId: types.optional(types.string()),
+  withCache: types.optional(types.boolean()),
+});
+
+export function getMicrofrontendsInGroupLatestDeploymentsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetMicrofrontendsInGroupLatestDeployments,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMicrofrontendsInGroupLatestDeployments$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetMicrofrontendsInGroupLatestDeployments' from JSON`,
+  );
+}
 
 /** @internal */
 export const GetMicrofrontendsInGroupLinkMicrofrontendsResponse200ApplicationJSONResponseBodyDeployHooks$inboundSchema:
@@ -5973,7 +6131,9 @@ export const GetMicrofrontendsInGroupProjects$inboundSchema: z.ZodType<
     GetMicrofrontendsInGroupLastRollbackTarget$inboundSchema,
   ).optional(),
   latestDeployments: types.optional(
-    z.array(GetMicrofrontendsInGroupLatestDeployments$inboundSchema),
+    z.array(
+      z.lazy(() => GetMicrofrontendsInGroupLatestDeployments$inboundSchema),
+    ),
   ),
   link: types.optional(
     z.union([

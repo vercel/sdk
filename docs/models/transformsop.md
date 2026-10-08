@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TransformsOp } from "@vercel/sdk/models/canceldeploymentmissingdeploymentsresponse1.js";
+import { TransformsOp } from "@vercel/sdk/models/canceldeploymentmissingdeploymentsresponse2.js";
 
 let value: TransformsOp = "set";
 ```

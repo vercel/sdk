@@ -5,11 +5,11 @@
 ```typescript
 import { UserEventPayload179Action } from "@vercel/sdk/models/lasteditedbyprincipal2.js";
 
-let value: UserEventPayload179Action = "disable";
+let value: UserEventPayload179Action = "challenge";
 ```
 
 ## Values
 
 ```typescript
-"disable" | "enable"
+"challenge" | "deny" | "log"
 ```

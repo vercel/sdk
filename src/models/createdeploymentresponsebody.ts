@@ -47,8 +47,6 @@ import {
   ResponseBodyGitRepo$inboundSchema,
 } from "./createdeploymentgitsource1.js";
 import {
-  CreateDeploymentHasDeploymentsResponse1,
-  CreateDeploymentHasDeploymentsResponse1$inboundSchema,
   CreateDeploymentHasDeploymentsResponse2,
   CreateDeploymentHasDeploymentsResponse2$inboundSchema,
   CreateDeploymentResponseBodyDeploymentsReadyState,
@@ -95,8 +93,38 @@ import {
   ResponseBodySeatBlock$inboundSchema,
   ServicesBindings,
   ServicesBindings$inboundSchema,
-} from "./createdeploymenthasdeploymentsresponse1.js";
+} from "./createdeploymenthasdeploymentsresponse2.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Eq =
+  | string
+  | number;
+
+export type CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services22 =
+  {
+    eq?: string | number | undefined;
+    gt?: number | undefined;
+    gte?: number | undefined;
+    inc?: Array<string> | undefined;
+    lt?: number | undefined;
+    lte?: number | undefined;
+    neq?: string | undefined;
+    ninc?: Array<string> | undefined;
+    pre?: string | undefined;
+    re?: string | undefined;
+    suf?: string | undefined;
+  };
+
+export type CreateDeploymentHasDeploymentsResponse200ApplicationJSONValue =
+  | string
+  | CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services22;
+
+export type CreateDeploymentHasDeploymentsResponse1 = {
+  type: "host";
+  value:
+    | string
+    | CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services22;
+};
 
 export type CreateDeploymentServicesDeploymentsHas =
   | CreateDeploymentHasDeploymentsResponse1
@@ -878,6 +906,39 @@ export type CreateDeploymentServices2 = {
   trailingSlash?: boolean | undefined;
 };
 
+export const CreateDeploymentServicesMemory = {
+  OneGi: "1Gi",
+  TwoGi: "2Gi",
+  FourGi: "4Gi",
+  EightGi: "8Gi",
+} as const;
+export type CreateDeploymentServicesMemory = ClosedEnum<
+  typeof CreateDeploymentServicesMemory
+>;
+
+export type CreateDeploymentServicesRequests = {
+  memory: CreateDeploymentServicesMemory;
+};
+
+export type CreateDeploymentServicesResources = {
+  requests: CreateDeploymentServicesRequests;
+};
+
+/**
+ * Set when this build produces the named daemon.
+ */
+export type CreateDeploymentServicesDaemon = {
+  command?: Array<string> | undefined;
+  entrypoint: string;
+  /**
+   * Replica counts by region.
+   */
+  replicas: { [k: string]: number };
+  resources?: CreateDeploymentServicesResources | undefined;
+  root: string;
+  name: string;
+};
+
 export type CreateDeploymentServicesExcludeFiles = string | Array<string>;
 
 export const CreateDeploymentServicesDeploymentsResponseMode = {
@@ -1079,6 +1140,10 @@ export type CreateDeploymentServicesConfig = {
   buildpack?: string | undefined;
   bundle?: boolean | undefined;
   bunVersion?: string | undefined;
+  /**
+   * Set when this build produces the named daemon.
+   */
+  daemon?: CreateDeploymentServicesDaemon | undefined;
   debug?: boolean | undefined;
   devCommand?: string | undefined;
   excludeFiles?: string | Array<string> | undefined;
@@ -1600,12 +1665,129 @@ export type CreateDeploymentResponseBody =
   | CreateDeploymentResponseBody1;
 
 /** @internal */
+export const CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Eq$inboundSchema:
+  z.ZodType<
+    CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Eq,
+    z.ZodTypeDef,
+    unknown
+  > = smartUnion([types.string(), types.number()]);
+
+export function createDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2EqFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Eq,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Eq$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Eq' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services22$inboundSchema:
+  z.ZodType<
+    CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services22,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    eq: types.optional(smartUnion([types.string(), types.number()])),
+    gt: types.optional(types.number()),
+    gte: types.optional(types.number()),
+    inc: types.optional(z.array(types.string())),
+    lt: types.optional(types.number()),
+    lte: types.optional(types.number()),
+    neq: types.optional(types.string()),
+    ninc: types.optional(z.array(types.string())),
+    pre: types.optional(types.string()),
+    re: types.optional(types.string()),
+    suf: types.optional(types.string()),
+  });
+
+export function createDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services22FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services22,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services22$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services22' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateDeploymentHasDeploymentsResponse200ApplicationJSONValue$inboundSchema:
+  z.ZodType<
+    CreateDeploymentHasDeploymentsResponse200ApplicationJSONValue,
+    z.ZodTypeDef,
+    unknown
+  > = smartUnion([
+    types.string(),
+    z.lazy(() =>
+      CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services22$inboundSchema
+    ),
+  ]);
+
+export function createDeploymentHasDeploymentsResponse200ApplicationJSONValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateDeploymentHasDeploymentsResponse200ApplicationJSONValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateDeploymentHasDeploymentsResponse200ApplicationJSONValue$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentHasDeploymentsResponse200ApplicationJSONValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateDeploymentHasDeploymentsResponse1$inboundSchema: z.ZodType<
+  CreateDeploymentHasDeploymentsResponse1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("host"),
+  value: smartUnion([
+    types.string(),
+    z.lazy(() =>
+      CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services22$inboundSchema
+    ),
+  ]),
+});
+
+export function createDeploymentHasDeploymentsResponse1FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateDeploymentHasDeploymentsResponse1,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateDeploymentHasDeploymentsResponse1$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateDeploymentHasDeploymentsResponse1' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateDeploymentServicesDeploymentsHas$inboundSchema: z.ZodType<
   CreateDeploymentServicesDeploymentsHas,
   z.ZodTypeDef,
   unknown
 > = z.union([
-  CreateDeploymentHasDeploymentsResponse1$inboundSchema,
+  z.lazy(() => CreateDeploymentHasDeploymentsResponse1$inboundSchema),
   CreateDeploymentHasDeploymentsResponse2$inboundSchema.and(
     z.object({ type: z.literal("cookie") }),
   ),
@@ -1914,20 +2096,18 @@ export const CreateDeploymentServicesRedirects$inboundSchema: z.ZodType<
   destination: types.string(),
   env: types.optional(z.array(types.string())),
   has: types.optional(
-    z.array(
-      z.union([
-        CreateDeploymentHasDeploymentsResponse1$inboundSchema,
-        CreateDeploymentHasDeploymentsResponse2$inboundSchema.and(
-          z.object({ type: z.literal("cookie") }),
-        ),
-        CreateDeploymentHasDeploymentsResponse2$inboundSchema.and(
-          z.object({ type: z.literal("header") }),
-        ),
-        CreateDeploymentHasDeploymentsResponse2$inboundSchema.and(
-          z.object({ type: z.literal("query") }),
-        ),
-      ]),
-    ),
+    z.array(z.union([
+      z.lazy(() => CreateDeploymentHasDeploymentsResponse1$inboundSchema),
+      CreateDeploymentHasDeploymentsResponse2$inboundSchema.and(
+        z.object({ type: z.literal("cookie") }),
+      ),
+      CreateDeploymentHasDeploymentsResponse2$inboundSchema.and(
+        z.object({ type: z.literal("header") }),
+      ),
+      CreateDeploymentHasDeploymentsResponse2$inboundSchema.and(
+        z.object({ type: z.literal("query") }),
+      ),
+    ])),
   ),
   missing: types.optional(
     z.array(z.union([
@@ -3747,6 +3927,75 @@ export function createDeploymentServices2FromJSON(
 }
 
 /** @internal */
+export const CreateDeploymentServicesMemory$inboundSchema: z.ZodNativeEnum<
+  typeof CreateDeploymentServicesMemory
+> = z.nativeEnum(CreateDeploymentServicesMemory);
+
+/** @internal */
+export const CreateDeploymentServicesRequests$inboundSchema: z.ZodType<
+  CreateDeploymentServicesRequests,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  memory: CreateDeploymentServicesMemory$inboundSchema,
+});
+
+export function createDeploymentServicesRequestsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateDeploymentServicesRequests, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateDeploymentServicesRequests$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentServicesRequests' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateDeploymentServicesResources$inboundSchema: z.ZodType<
+  CreateDeploymentServicesResources,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  requests: z.lazy(() => CreateDeploymentServicesRequests$inboundSchema),
+});
+
+export function createDeploymentServicesResourcesFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateDeploymentServicesResources, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateDeploymentServicesResources$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentServicesResources' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateDeploymentServicesDaemon$inboundSchema: z.ZodType<
+  CreateDeploymentServicesDaemon,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  command: types.optional(z.array(types.string())),
+  entrypoint: types.string(),
+  replicas: z.record(types.number()),
+  resources: types.optional(
+    z.lazy(() => CreateDeploymentServicesResources$inboundSchema),
+  ),
+  root: types.string(),
+  name: types.string(),
+});
+
+export function createDeploymentServicesDaemonFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateDeploymentServicesDaemon, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateDeploymentServicesDaemon$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentServicesDaemon' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateDeploymentServicesExcludeFiles$inboundSchema: z.ZodType<
   CreateDeploymentServicesExcludeFiles,
   z.ZodTypeDef,
@@ -4155,6 +4404,9 @@ export const CreateDeploymentServicesConfig$inboundSchema: z.ZodType<
   buildpack: types.optional(types.string()),
   bundle: types.optional(types.boolean()),
   bunVersion: types.optional(types.string()),
+  daemon: types.optional(
+    z.lazy(() => CreateDeploymentServicesDaemon$inboundSchema),
+  ),
   debug: types.optional(types.boolean()),
   devCommand: types.optional(types.string()),
   excludeFiles: types.optional(

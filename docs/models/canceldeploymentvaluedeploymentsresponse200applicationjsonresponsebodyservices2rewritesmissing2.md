@@ -5,7 +5,7 @@
 ```typescript
 import {
   CancelDeploymentValueDeploymentsResponse200ApplicationJSONResponseBodyServices2RewritesMissing2,
-} from "@vercel/sdk/models/canceldeploymentmissingdeploymentsresponse1.js";
+} from "@vercel/sdk/models/canceldeploymentresponsebody.js";
 
 let value:
   CancelDeploymentValueDeploymentsResponse200ApplicationJSONResponseBodyServices2RewritesMissing2 =

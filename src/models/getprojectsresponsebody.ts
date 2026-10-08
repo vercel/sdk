@@ -10,8 +10,6 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
-  GetProjectsLink7,
-  GetProjectsLink7$inboundSchema,
   GetProjectsLink8,
   GetProjectsLink8$inboundSchema,
   GetProjectsResponseBody2,
@@ -38,12 +36,36 @@ import {
   ResponseBodyIpBuckets$inboundSchema,
   ResponseBodyLatestDeployments,
   ResponseBodyLatestDeployments$inboundSchema,
-} from "./getprojectslink7.js";
+} from "./getprojectslink8.js";
 import {
   GetProjectsResponseBody3,
   GetProjectsResponseBody3$inboundSchema,
-} from "./getprojectsresponsebodyprojectsresponse200applicationjson2checksstate.js";
+} from "./getprojectsresponsebodyprojectsresponse200applicationjson2builds.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type GetProjectsLinkProjectsResponse200ApplicationJSONResponseBody1DeployHooks =
+  {
+    createdAt?: number | undefined;
+    id: string;
+    name: string;
+    ref: string;
+    url: string;
+  };
+
+export type GetProjectsLink7 = {
+  createdAt?: number | undefined;
+  deployHooks: Array<
+    GetProjectsLinkProjectsResponse200ApplicationJSONResponseBody1DeployHooks
+  >;
+  gitCredentialId: string;
+  org: string;
+  productionBranch: string;
+  repo: string;
+  repoId: string;
+  sourceless?: boolean | undefined;
+  type: "v0";
+  updatedAt?: number | undefined;
+};
 
 export type GetProjectsLinkProjectsResponse200ApplicationJSONResponseBodyDeployHooks =
   {
@@ -1328,6 +1350,67 @@ export type GetProjectsResponseBody =
   | Array<GetProjectsResponseBody1>;
 
 /** @internal */
+export const GetProjectsLinkProjectsResponse200ApplicationJSONResponseBody1DeployHooks$inboundSchema:
+  z.ZodType<
+    GetProjectsLinkProjectsResponse200ApplicationJSONResponseBody1DeployHooks,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    createdAt: types.optional(types.number()),
+    id: types.string(),
+    name: types.string(),
+    ref: types.string(),
+    url: types.string(),
+  });
+
+export function getProjectsLinkProjectsResponse200ApplicationJSONResponseBody1DeployHooksFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetProjectsLinkProjectsResponse200ApplicationJSONResponseBody1DeployHooks,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetProjectsLinkProjectsResponse200ApplicationJSONResponseBody1DeployHooks$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsLinkProjectsResponse200ApplicationJSONResponseBody1DeployHooks' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectsLink7$inboundSchema: z.ZodType<
+  GetProjectsLink7,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createdAt: types.optional(types.number()),
+  deployHooks: z.array(
+    z.lazy(() =>
+      GetProjectsLinkProjectsResponse200ApplicationJSONResponseBody1DeployHooks$inboundSchema
+    ),
+  ),
+  gitCredentialId: types.string(),
+  org: types.string(),
+  productionBranch: types.string(),
+  repo: types.string(),
+  repoId: types.string(),
+  sourceless: types.optional(types.boolean()),
+  type: types.literal("v0"),
+  updatedAt: types.optional(types.number()),
+});
+
+export function getProjectsLink7FromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsLink7, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectsLink7$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsLink7' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetProjectsLinkProjectsResponse200ApplicationJSONResponseBodyDeployHooks$inboundSchema:
   z.ZodType<
     GetProjectsLinkProjectsResponse200ApplicationJSONResponseBodyDeployHooks,
@@ -1692,7 +1775,7 @@ export const ResponseBodyLink$inboundSchema: z.ZodType<
   z.lazy(() => GetProjectsLink4$inboundSchema),
   z.lazy(() => GetProjectsLink5$inboundSchema),
   z.lazy(() => GetProjectsLink6$inboundSchema),
-  GetProjectsLink7$inboundSchema,
+  z.lazy(() => GetProjectsLink7$inboundSchema),
   GetProjectsLink8$inboundSchema,
 ]);
 
@@ -3517,7 +3600,7 @@ export const GetProjectsResponseBody1$inboundSchema: z.ZodType<
       z.lazy(() => GetProjectsLink4$inboundSchema),
       z.lazy(() => GetProjectsLink5$inboundSchema),
       z.lazy(() => GetProjectsLink6$inboundSchema),
-      GetProjectsLink7$inboundSchema,
+      z.lazy(() => GetProjectsLink7$inboundSchema),
       GetProjectsLink8$inboundSchema,
     ]),
   ),

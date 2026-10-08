@@ -24,7 +24,7 @@ import {
   GetMicrofrontendsGroupsRequest,
   GetMicrofrontendsGroupsResponseBody,
 } from "../models/getmicrofrontendsgroupsop.js";
-import { GetMicrofrontendsInGroupRequest } from "../models/getmicrofrontendsingrouplatestdeployments.js";
+import { GetMicrofrontendsInGroupRequest } from "../models/getmicrofrontendsingroupreadysubstate.js";
 import { GetMicrofrontendsInGroupResponseBody } from "../models/getmicrofrontendsingroupresponsebody.js";
 import { unwrapAsync } from "../types/fp.js";
 

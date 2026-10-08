@@ -5,13 +5,11 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { Sixteen } from "@vercel/sdk/models/via.js";
+import { Sixteen } from "@vercel/sdk/models/via3.js";
 
 let value: Sixteen = {
-  fromPlan: "pro",
-  resourceId: "<id>",
-  teamId: "<id>",
-  toPlan: "hobby",
+  blockCode: "<value>",
+  reason: "<value>",
 };
 ```
 
@@ -23,7 +21,5 @@ let value: Sixteen = {
 | `providerAccount`                                                            | *string*                                                                     | :heavy_minus_sign:                                                           | Present on new events only. Equivalent to `stripeAccount` when absent.       |
 | `stripeAccount`                                                              | *string*                                                                     | :heavy_minus_sign:                                                           | Present when `provider` is "stripe". Equivalent to `providerAccount`.        |
 | `stripeOrganisation`                                                         | *string*                                                                     | :heavy_minus_sign:                                                           | Present when `provider` is "stripe".                                         |
-| `fromPlan`                                                                   | [models.FromPlan](../models/fromplan.md)                                     | :heavy_check_mark:                                                           | N/A                                                                          |
-| `resourceId`                                                                 | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
-| `teamId`                                                                     | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
-| `toPlan`                                                                     | [models.ToPlan](../models/toplan.md)                                         | :heavy_check_mark:                                                           | N/A                                                                          |
+| `blockCode`                                                                  | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
+| `reason`                                                                     | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |

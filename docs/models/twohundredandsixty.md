@@ -8,6 +8,7 @@ The payload of the event, if requested.
 import { TwoHundredAndSixty } from "@vercel/sdk/models/siftroute.js";
 
 let value: TwoHundredAndSixty = {
+  directoryListing: false,
   projectId: "<id>",
   projectName: "<value>",
 };
@@ -17,6 +18,6 @@ let value: TwoHundredAndSixty = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `avatar`           | *string*           | :heavy_minus_sign: | N/A                |
+| `directoryListing` | *boolean*          | :heavy_check_mark: | N/A                |
 | `projectId`        | *string*           | :heavy_check_mark: | N/A                |
 | `projectName`      | *string*           | :heavy_check_mark: | N/A                |

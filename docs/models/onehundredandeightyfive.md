@@ -8,27 +8,34 @@ The payload of the event, if requested.
 import { OneHundredAndEightyFive } from "@vercel/sdk/models/lasteditedbyprincipal2.js";
 
 let value: OneHundredAndEightyFive = {
-  configurationId: "<id>",
-  confirmedScopes: [
-    "<value 1>",
-    "<value 2>",
-    "<value 3>",
-  ],
-  integrationId: "<id>",
-  integrationName: "<value>",
-  integrationSlug: "<value>",
-  ownerId: "<id>",
+  actorAccountId: "<id>",
+  actorLogin: null,
+  destinationBranch: "<value>",
+  destinationRepo: "<value>",
+  installationId: "<id>",
+  outcome: "failure",
+  provider: "gitlab",
+  resultCommitSha: "<value>",
+  sourceCommitSha: "<value>",
+  sourceRepo: "<value>",
+  usedAppToken: false,
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `configurationId`  | *string*           | :heavy_check_mark: | N/A                |
-| `confirmedScopes`  | *string*[]         | :heavy_check_mark: | N/A                |
-| `integrationId`    | *string*           | :heavy_check_mark: | N/A                |
-| `integrationName`  | *string*           | :heavy_check_mark: | N/A                |
-| `integrationSlug`  | *string*           | :heavy_check_mark: | N/A                |
-| `ownerId`          | *string*           | :heavy_check_mark: | N/A                |
-| `projectIds`       | *string*[]         | :heavy_minus_sign: | N/A                |
+| Field                                                                                                                                             | Type                                                                                                                                              | Required                                                                                                                                          | Description                                                                                                                                       |
+| ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `actorAccountId`                                                                                                                                  | *string*                                                                                                                                          | :heavy_check_mark:                                                                                                                                | Stable account id on `provider`.                                                                                                                  |
+| `actorLogin`                                                                                                                                      | *string*                                                                                                                                          | :heavy_check_mark:                                                                                                                                | Display name only. Logins are mutable; join on `actorAccountId`.                                                                                  |
+| `destinationBranch`                                                                                                                               | *string*                                                                                                                                          | :heavy_check_mark:                                                                                                                                | Branch actually pushed to, or the requested one if blocked.                                                                                       |
+| `destinationRepo`                                                                                                                                 | *string*                                                                                                                                          | :heavy_check_mark:                                                                                                                                | "owner/name", or the raw request value if blocked before it resolved.                                                                             |
+| `failureCode`                                                                                                                                     | *string*                                                                                                                                          | :heavy_minus_sign:                                                                                                                                | Sanitized code, never a raw error message.                                                                                                        |
+| `failureStage`                                                                                                                                    | [models.FailureStage](../models/failurestage.md)                                                                                                  | :heavy_minus_sign:                                                                                                                                | Mirrors `PushFailureStage` in `@api/git-push-repo`.                                                                                               |
+| `installationId`                                                                                                                                  | *string*                                                                                                                                          | :heavy_check_mark:                                                                                                                                | Set only when an App installation token was minted (GitHub only).                                                                                 |
+| `outcome`                                                                                                                                         | [models.Outcome](../models/outcome.md)                                                                                                            | :heavy_check_mark:                                                                                                                                | N/A                                                                                                                                               |
+| `provider`                                                                                                                                        | [models.UserEventPayload185Provider](../models/usereventpayload185provider.md)                                                                    | :heavy_check_mark:                                                                                                                                | N/A                                                                                                                                               |
+| `resultCommitSha`                                                                                                                                 | *string*                                                                                                                                          | :heavy_check_mark:                                                                                                                                | N/A                                                                                                                                               |
+| `sourceCommitSha`                                                                                                                                 | *string*                                                                                                                                          | :heavy_check_mark:                                                                                                                                | N/A                                                                                                                                               |
+| `sourceRepo`                                                                                                                                      | *string*                                                                                                                                          | :heavy_check_mark:                                                                                                                                | Source repository, "owner/name". Null when the pushed content was generated in-request (push-files-to-repo) rather than copied from a repository. |
+| `usedAppToken`                                                                                                                                    | *boolean*                                                                                                                                         | :heavy_check_mark:                                                                                                                                | N/A                                                                                                                                               |

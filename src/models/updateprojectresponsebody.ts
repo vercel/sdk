@@ -71,13 +71,11 @@ import {
   UpdateProjectProtectionBypass$inboundSchema,
   UpdateProjectProtectionConfig,
   UpdateProjectProtectionConfig$inboundSchema,
-  UpdateProjectRateLimit,
-  UpdateProjectRateLimit$inboundSchema,
   UpdateProjectRollbackDescription,
   UpdateProjectRollbackDescription$inboundSchema,
   UpdateProjectRollingRelease,
   UpdateProjectRollingRelease$inboundSchema,
-} from "./updateprojectratelimit.js";
+} from "./updateprojectprojectslogheaders.js";
 import {
   UpdateProjectAlias,
   UpdateProjectAlias$inboundSchema,
@@ -99,7 +97,20 @@ import {
   UpdateProjectDefaultResourceConfig$inboundSchema,
   UpdateProjectDeploymentExpiration,
   UpdateProjectDeploymentExpiration$inboundSchema,
-} from "./updateprojectsourcesprojects1.js";
+} from "./updateprojectsourcesprojects2.js";
+
+export const UpdateProjectAlgo = {
+  FixedWindow: "fixed_window",
+  TokenBucket: "token_bucket",
+} as const;
+export type UpdateProjectAlgo = ClosedEnum<typeof UpdateProjectAlgo>;
+
+export type UpdateProjectRateLimit = {
+  algo: UpdateProjectAlgo;
+  keys: Array<string>;
+  limit: number;
+  window: number;
+};
 
 export type UpdateProjectRedirect = {
   location: string;
@@ -899,6 +910,33 @@ export type UpdateProjectResponseBody = {
 };
 
 /** @internal */
+export const UpdateProjectAlgo$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectAlgo
+> = z.nativeEnum(UpdateProjectAlgo);
+
+/** @internal */
+export const UpdateProjectRateLimit$inboundSchema: z.ZodType<
+  UpdateProjectRateLimit,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  algo: UpdateProjectAlgo$inboundSchema,
+  keys: z.array(types.string()),
+  limit: types.number(),
+  window: types.number(),
+});
+
+export function updateProjectRateLimitFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectRateLimit, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectRateLimit$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectRateLimit' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateProjectRedirect$inboundSchema: z.ZodType<
   UpdateProjectRedirect,
   z.ZodTypeDef,
@@ -928,7 +966,8 @@ export const UpdateProjectRulesets$inboundSchema: z.ZodType<
   actionDuration: z.nullable(types.string()).optional(),
   bypassSystem: z.nullable(types.boolean()).optional(),
   logHeaders: types.optional(UpdateProjectProjectsLogHeaders$inboundSchema),
-  rateLimit: z.nullable(UpdateProjectRateLimit$inboundSchema).optional(),
+  rateLimit: z.nullable(z.lazy(() => UpdateProjectRateLimit$inboundSchema))
+    .optional(),
   redirect: z.nullable(z.lazy(() => UpdateProjectRedirect$inboundSchema))
     .optional(),
 });

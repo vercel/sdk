@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyAliasError } from "@vercel/sdk/models/getprojectslink7.js";
+import { GetProjectsResponseBodyAliasError } from "@vercel/sdk/models/getprojectslink8.js";
 
 let value: GetProjectsResponseBodyAliasError = {
   code: "<value>",

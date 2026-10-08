@@ -53,6 +53,8 @@ const vercel = new Vercel({
 
 async function run() {
   const result = await vercel.projects.getProjects({
+    since: 1540095775941,
+    until: 1540095775951,
     gitForkProtection: "1",
     repoUrl: "https://github.com/vercel/next.js",
     elasticConcurrencyEnabled: "1",
@@ -85,6 +87,8 @@ const vercel = new VercelCore({
 
 async function run() {
   const res = await projectsGetProjects(vercel, {
+    since: 1540095775941,
+    until: 1540095775951,
     gitForkProtection: "1",
     repoUrl: "https://github.com/vercel/next.js",
     elasticConcurrencyEnabled: "1",

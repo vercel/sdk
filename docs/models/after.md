@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { After } from "@vercel/sdk/models/sixty.js";
+import { After } from "@vercel/sdk/models/payloadscopes.js";
 
 let value: After = {};
 ```
@@ -12,5 +12,5 @@ let value: After = {};
 
 | Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
 | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `permissions`                                                                        | [models.UserEventPayload63Permissions](../models/usereventpayload63permissions.md)[] | :heavy_minus_sign:                                                                   | N/A                                                                                  |
+| `permissions`                                                                        | [models.UserEventPayload66Permissions](../models/usereventpayload66permissions.md)[] | :heavy_minus_sign:                                                                   | N/A                                                                                  |
 | `resources`                                                                          | [models.UserEventPayloadResources](../models/usereventpayloadresources.md)           | :heavy_minus_sign:                                                                   | N/A                                                                                  |

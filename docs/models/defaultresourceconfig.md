@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DefaultResourceConfig } from "@vercel/sdk/models/internalroutes1.js";
+import { DefaultResourceConfig } from "@vercel/sdk/models/internalroutesmitigate.js";
 
 let value: DefaultResourceConfig = {
   functionDefaultRegions: [
@@ -32,3 +32,4 @@ let value: DefaultResourceConfig = {
 | `functionDefaultTimeout`                                                                                     | *number*                                                                                                     | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |
 | `functionZeroConfigFailover`                                                                                 | *boolean*                                                                                                    | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |
 | `isNSNBDisabled`                                                                                             | *boolean*                                                                                                    | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |
+| `elasticBuildMachine`                                                                                        | [models.ElasticBuildMachine](../models/elasticbuildmachine.md)                                               | :heavy_minus_sign:                                                                                           | Internal assignment, intentionally excluded from API input/output schemas.                                   |

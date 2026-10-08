@@ -8,16 +8,14 @@ The payload of the event, if requested.
 import { OneHundredAndSeventySeven } from "@vercel/sdk/models/lasteditedbyprincipal2.js";
 
 let value: OneHundredAndSeventySeven = {
-  consumerProjectId: "<id>",
-  projectId: "<id>",
+  configVersion: 9573.49,
 };
 ```
 
 ## Fields
 
-| Field                 | Type                  | Required              | Description           |
-| --------------------- | --------------------- | --------------------- | --------------------- |
-| `consumerProjectId`   | *string*              | :heavy_check_mark:    | N/A                   |
-| `consumerProjectName` | *string*              | :heavy_minus_sign:    | N/A                   |
-| `projectId`           | *string*              | :heavy_check_mark:    | N/A                   |
-| `projectName`         | *string*              | :heavy_minus_sign:    | N/A                   |
+| Field                                                | Type                                                 | Required                                             | Description                                          |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| `configChangeCount`                                  | *number*                                             | :heavy_minus_sign:                                   | N/A                                                  |
+| `configChanges`                                      | [models.ConfigChanges](../models/configchanges.md)[] | :heavy_minus_sign:                                   | N/A                                                  |
+| `configVersion`                                      | *models.UserEventPayloadConfigVersion*               | :heavy_check_mark:                                   | N/A                                                  |

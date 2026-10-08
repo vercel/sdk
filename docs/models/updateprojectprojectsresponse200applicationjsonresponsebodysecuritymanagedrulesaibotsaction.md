@@ -5,7 +5,7 @@
 ```typescript
 import {
   UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAiBotsAction,
-} from "@vercel/sdk/models/updateprojectratelimit.js";
+} from "@vercel/sdk/models/updateprojectprojectslogheaders.js";
 
 let value:
   UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAiBotsAction =

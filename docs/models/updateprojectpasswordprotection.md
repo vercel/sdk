@@ -5,7 +5,7 @@ Allows to protect project deployments with a password
 ## Example Usage
 
 ```typescript
-import { UpdateProjectPasswordProtection } from "@vercel/sdk/models/updateprojectsourcesprojects1.js";
+import { UpdateProjectPasswordProtection } from "@vercel/sdk/models/updateprojectsourcesprojects2.js";
 
 let value: UpdateProjectPasswordProtection = {
   deploymentType: "preview",

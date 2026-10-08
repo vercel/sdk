@@ -12,7 +12,7 @@ let value: ListEventType = {
     "deployment",
   ],
   description: "mummify medium whirlwind vanish via glaring yum",
-  name: "project-custom-environment-deleted",
+  name: "project-custom-environment-created",
 };
 ```
 

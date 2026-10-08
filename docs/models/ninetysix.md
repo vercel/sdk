@@ -5,14 +5,10 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { NinetySix } from "@vercel/sdk/models/sixty.js";
+import { NinetySix } from "@vercel/sdk/models/payloadscopes.js";
 
 let value: NinetySix = {
   configuration: {
-    id: "<id>",
-  },
-  newName: "<value>",
-  team: {
     id: "<id>",
     name: "<value>",
   },
@@ -21,8 +17,6 @@ let value: NinetySix = {
 
 ## Fields
 
-| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `configuration`                                                                        | [models.UserEventPayload96Configuration](../models/usereventpayload96configuration.md) | :heavy_check_mark:                                                                     | N/A                                                                                    |
-| `newName`                                                                              | *string*                                                                               | :heavy_check_mark:                                                                     | N/A                                                                                    |
-| `team`                                                                                 | [models.UserEventPayload96Team](../models/usereventpayload96team.md)                   | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| Field                                              | Type                                               | Required                                           | Description                                        |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| `configuration`                                    | [models.Configuration](../models/configuration.md) | :heavy_check_mark:                                 | N/A                                                |

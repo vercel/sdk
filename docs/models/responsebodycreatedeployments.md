@@ -5,7 +5,7 @@ Whether the Vercel bot should automatically create GitHub deployments https://do
 ## Example Usage
 
 ```typescript
-import { ResponseBodyCreateDeployments } from "@vercel/sdk/models/getprojectslink7.js";
+import { ResponseBodyCreateDeployments } from "@vercel/sdk/models/getprojectslink8.js";
 
 let value: ResponseBodyCreateDeployments = "enabled";
 ```

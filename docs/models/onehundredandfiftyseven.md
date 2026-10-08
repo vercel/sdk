@@ -8,18 +8,18 @@ The payload of the event, if requested.
 import { OneHundredAndFiftySeven } from "@vercel/sdk/models/usereventjobaction.js";
 
 let value: OneHundredAndFiftySeven = {
+  edgeConfigDigest: "<value>",
   edgeConfigId: "<id>",
   edgeConfigSlug: "<value>",
-  edgeConfigTokenId: "<id>",
-  label: "<value>",
+  edgeConfigBackupVersionId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field               | Type                | Required            | Description         |
-| ------------------- | ------------------- | ------------------- | ------------------- |
-| `edgeConfigId`      | *string*            | :heavy_check_mark:  | N/A                 |
-| `edgeConfigSlug`    | *string*            | :heavy_check_mark:  | N/A                 |
-| `edgeConfigTokenId` | *string*            | :heavy_check_mark:  | N/A                 |
-| `label`             | *string*            | :heavy_check_mark:  | N/A                 |
+| Field                       | Type                        | Required                    | Description                 |
+| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
+| `edgeConfigDigest`          | *string*                    | :heavy_check_mark:          | N/A                         |
+| `edgeConfigId`              | *string*                    | :heavy_check_mark:          | N/A                         |
+| `edgeConfigSlug`            | *string*                    | :heavy_check_mark:          | N/A                         |
+| `edgeConfigBackupVersionId` | *string*                    | :heavy_check_mark:          | N/A                         |

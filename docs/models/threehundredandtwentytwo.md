@@ -5,18 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndTwentyTwo } from "@vercel/sdk/models/twohundredandninetyseven.js";
+import { ThreeHundredAndTwentyTwo } from "@vercel/sdk/models/threehundredandone.js";
 
 let value: ThreeHundredAndTwentyTwo = {
-  consent: "refused",
-  projectName: "<value>",
+  oldPasswordProtection: {
+    deploymentType: "prod_deployment_urls_and_all_previews",
+  },
+  passwordProtection: "prod_deployment_urls_and_all_previews",
 };
 ```
 
 ## Fields
 
-| Field                                  | Type                                   | Required                               | Description                            |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| `consent`                              | [models.Consent](../models/consent.md) | :heavy_check_mark:                     | N/A                                    |
-| `projectId`                            | *string*                               | :heavy_minus_sign:                     | N/A                                    |
-| `projectName`                          | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| Field                                 | Type                                  | Required                              | Description                           |
+| ------------------------------------- | ------------------------------------- | ------------------------------------- | ------------------------------------- |
+| `oldPasswordProtection`               | *models.PayloadOldPasswordProtection* | :heavy_check_mark:                    | N/A                                   |
+| `passwordChanged`                     | *boolean*                             | :heavy_minus_sign:                    | N/A                                   |
+| `passwordProtection`                  | *models.PayloadPasswordProtection*    | :heavy_check_mark:                    | N/A                                   |
+| `projectId`                           | *string*                              | :heavy_minus_sign:                    | N/A                                   |
+| `projectName`                         | *string*                              | :heavy_minus_sign:                    | N/A                                   |

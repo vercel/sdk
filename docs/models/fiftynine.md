@@ -5,16 +5,20 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FiftyNine } from "@vercel/sdk/models/via.js";
+import { FiftyNine } from "@vercel/sdk/models/via3.js";
 
-let value: FiftyNine = {};
+let value: FiftyNine = {
+  action: "removed",
+  alias: "<value>",
+  projectName: "<value>",
+};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `alias`            | *string*           | :heavy_minus_sign: | N/A                |
-| `aliasId`          | *string*           | :heavy_minus_sign: | N/A                |
-| `userId`           | *string*           | :heavy_minus_sign: | N/A                |
-| `username`         | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `action`                                                                 | [models.UserEventPayload59Action](../models/usereventpayload59action.md) | :heavy_check_mark:                                                       | N/A                                                                      |
+| `alias`                                                                  | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
+| `projectId`                                                              | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `projectName`                                                            | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |

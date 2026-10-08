@@ -5,12 +5,13 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndThirty } from "@vercel/sdk/models/siftroute.js";
+import { TwoHundredAndThirty } from "@vercel/sdk/models/lasteditedbyprincipal2.js";
 
 let value: TwoHundredAndThirty = {
-  cause: "<value>",
-  ownerId: "<id>",
-  source: "<value>",
+  enforced: false,
+  organizationId: "<id>",
+  organizationSlug: "<value>",
+  previousEnforced: false,
 };
 ```
 
@@ -18,7 +19,7 @@ let value: TwoHundredAndThirty = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `blockReason`      | *string*           | :heavy_minus_sign: | N/A                |
-| `cause`            | *string*           | :heavy_check_mark: | N/A                |
-| `ownerId`          | *string*           | :heavy_check_mark: | N/A                |
-| `source`           | *string*           | :heavy_check_mark: | N/A                |
+| `enforced`         | *boolean*          | :heavy_check_mark: | N/A                |
+| `organizationId`   | *string*           | :heavy_check_mark: | N/A                |
+| `organizationSlug` | *string*           | :heavy_check_mark: | N/A                |
+| `previousEnforced` | *boolean*          | :heavy_check_mark: | N/A                |

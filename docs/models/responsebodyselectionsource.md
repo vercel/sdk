@@ -5,7 +5,7 @@ The setting which selected the build machine when the deployment was created. Fr
 ## Example Usage
 
 ```typescript
-import { ResponseBodySelectionSource } from "@vercel/sdk/models/createdeploymenthasdeploymentsresponse1.js";
+import { ResponseBodySelectionSource } from "@vercel/sdk/models/createdeploymenthasdeploymentsresponse2.js";
 
 let value: ResponseBodySelectionSource = "team-setting";
 ```

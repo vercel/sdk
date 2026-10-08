@@ -8,27 +8,14 @@ The payload of the event, if requested.
 import { OneHundredAndTwentySix } from "@vercel/sdk/models/usereventjobaction.js";
 
 let value: OneHundredAndTwentySix = {
-  action: "add",
-  domain: "fixed-lender.org",
-  id: "<id>",
-  initiator: "system",
-  name: "<value>",
-  type: "<value>",
-  value: "<value>",
+  mode: "all",
+  previousMode: "all",
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `action`                                                                   | [models.UserEventPayload126Action](../models/usereventpayload126action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
-| `domain`                                                                   | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `id`                                                                       | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `initiator`                                                                | [models.Initiator](../models/initiator.md)                                 | :heavy_check_mark:                                                         | N/A                                                                        |
-| `mxPriority`                                                               | *number*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
-| `name`                                                                     | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `previousValue`                                                            | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
-| `source`                                                                   | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
-| `type`                                                                     | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `value`                                                                    | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `mode`                                                         | [models.PayloadMode](../models/payloadmode.md)                 | :heavy_check_mark:                                             | N/A                                                            |
+| `previousMode`                                                 | [models.PayloadPreviousMode](../models/payloadpreviousmode.md) | :heavy_check_mark:                                             | N/A                                                            |

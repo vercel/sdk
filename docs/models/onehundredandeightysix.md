@@ -8,21 +8,19 @@ The payload of the event, if requested.
 import { OneHundredAndEightySix } from "@vercel/sdk/models/lasteditedbyprincipal2.js";
 
 let value: OneHundredAndEightySix = {
-  integration: {
-    configurationId: "<id>",
-    id: "<id>",
-    name: "<value>",
-    slug: "<value>",
-  },
-  destinationTeamId: "<id>",
-  destinationTeamName: "<value>",
+  fromDeploymentId: "<id>",
+  projectId: "<id>",
+  projectName: "<value>",
+  toDeploymentId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `integration`                                  | [models.Integration](../models/integration.md) | :heavy_check_mark:                             | N/A                                            |
-| `destinationTeamId`                            | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `destinationTeamName`                          | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `fromDeploymentId` | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `reason`           | *string*           | :heavy_minus_sign: | N/A                |
+| `toDeploymentId`   | *string*           | :heavy_check_mark: | N/A                |

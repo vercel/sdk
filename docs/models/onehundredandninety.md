@@ -8,21 +8,21 @@ The payload of the event, if requested.
 import { OneHundredAndNinety } from "@vercel/sdk/models/lasteditedbyprincipal2.js";
 
 let value: OneHundredAndNinety = {
-  configurationId: "<id>",
-  integrationId: "<id>",
-  integrationName: "<value>",
-  integrationSlug: "<value>",
-  ownerId: "<id>",
+  integration: {
+    configurationId: "<id>",
+    id: "<id>",
+    name: "<value>",
+    slug: "<value>",
+  },
+  destinationTeamId: "<id>",
+  destinationTeamName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field               | Type                | Required            | Description         |
-| ------------------- | ------------------- | ------------------- | ------------------- |
-| `configurationId`   | *string*            | :heavy_check_mark:  | N/A                 |
-| `integrationId`     | *string*            | :heavy_check_mark:  | N/A                 |
-| `integrationName`   | *string*            | :heavy_check_mark:  | N/A                 |
-| `integrationSlug`   | *string*            | :heavy_check_mark:  | N/A                 |
-| `ownerId`           | *string*            | :heavy_check_mark:  | N/A                 |
-| `projectIds`        | *models.ProjectIds* | :heavy_minus_sign:  | N/A                 |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `integration`                                  | [models.Integration](../models/integration.md) | :heavy_check_mark:                             | N/A                                            |
+| `destinationTeamId`                            | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `destinationTeamName`                          | *string*                                       | :heavy_check_mark:                             | N/A                                            |

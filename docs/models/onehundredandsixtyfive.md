@@ -8,21 +8,16 @@ The payload of the event, if requested.
 import { OneHundredAndSixtyFive } from "@vercel/sdk/models/usereventjobaction.js";
 
 let value: OneHundredAndSixtyFive = {
-  key: "<key>",
-  organizationId: "<id>",
-  provider: "<value>",
-  repository: "<value>",
-  visibility: "config",
+  team: {
+    id: "<id>",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                        | Type                                         | Required                                     | Description                                  |
-| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| `changedFields`                              | *string*[]                                   | :heavy_minus_sign:                           | N/A                                          |
-| `key`                                        | *string*                                     | :heavy_check_mark:                           | N/A                                          |
-| `organizationId`                             | *string*                                     | :heavy_check_mark:                           | N/A                                          |
-| `provider`                                   | *string*                                     | :heavy_check_mark:                           | N/A                                          |
-| `repository`                                 | *string*                                     | :heavy_check_mark:                           | N/A                                          |
-| `visibility`                                 | [models.Visibility](../models/visibility.md) | :heavy_check_mark:                           | N/A                                          |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `nextRule`                                                             | [models.NextRule](../models/nextrule.md)                               | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `previousRule`                                                         | [models.PayloadPreviousRule](../models/payloadpreviousrule.md)         | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `team`                                                                 | [models.UserEventPayload165Team](../models/usereventpayload165team.md) | :heavy_check_mark:                                                     | N/A                                                                    |

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectProjectsResponse200ApplicationJSONResponseBodyEnvType } from "@vercel/sdk/models/getprojectreadysubstate.js";
+import { GetProjectProjectsResponse200ApplicationJSONResponseBodyEnvType } from "@vercel/sdk/models/getprojectplan.js";
 
 let value: GetProjectProjectsResponse200ApplicationJSONResponseBodyEnvType =
   "flags-secret";

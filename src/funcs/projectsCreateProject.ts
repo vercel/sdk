@@ -25,7 +25,7 @@ import {
 import {
   CreateProjectRequest,
   CreateProjectRequest$outboundSchema,
-} from "../models/internalroutes1.js";
+} from "../models/internalroutesmitigate.js";
 import { ResponseValidationError } from "../models/responsevalidationerror.js";
 import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import { VercelError } from "../models/vercelerror.js";

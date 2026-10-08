@@ -37,6 +37,10 @@ export type Drive = {
    */
   name: string;
   /**
+   * The ID of the source drive when this drive is a fork.
+   */
+  parentDriveId?: string | undefined;
+  /**
    * The project that owns the drive.
    */
   projectId: string;
@@ -44,6 +48,10 @@ export type Drive = {
    * The region where the drive is stored.
    */
   region: string;
+  /**
+   * The ID of the original drive at the root of this fork.
+   */
+  rootDriveId?: string | undefined;
   /**
    * The last time the drive was updated, in milliseconds since the epoch.
    */
@@ -63,8 +71,10 @@ export const Drive$inboundSchema: z.ZodType<Drive, z.ZodTypeDef, unknown> = z
     id: types.string(),
     maxSizeBytes: types.number(),
     name: types.string(),
+    parentDriveId: types.optional(types.string()),
     projectId: types.string(),
     region: types.string(),
+    rootDriveId: types.optional(types.string()),
     updatedAt: types.number(),
     v0: types.optional(types.boolean()),
   });

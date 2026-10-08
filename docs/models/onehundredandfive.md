@@ -5,22 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFive } from "@vercel/sdk/models/sixty.js";
+import { OneHundredAndFive } from "@vercel/sdk/models/payloadscopes.js";
 
 let value: OneHundredAndFive = {
-  prevPurchasedAmount: 1236.74,
-  project: {
-    id: "<id>",
-    name: "<value>",
-  },
-  purchasedAmount: 8074.56,
+  gitlabLogin: "<value>",
+  gitlabUserId: 1236.74,
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `prevPurchasedAmount`                                                        | *number*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
-| `project`                                                                    | [models.UserEventPayload105Project](../models/usereventpayload105project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
-| `purchasedAmount`                                                            | *number*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `gitlabLogin`      | *string*           | :heavy_check_mark: | N/A                |
+| `gitlabUserId`     | *number*           | :heavy_check_mark: | N/A                |

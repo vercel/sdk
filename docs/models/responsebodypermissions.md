@@ -5,7 +5,7 @@ Requested and authorized operations when `checkPermissions` is used. Legacy `inc
 ## Example Usage
 
 ```typescript
-import { ResponseBodyPermissions } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson2checksstate.js";
+import { ResponseBodyPermissions } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson2builds.js";
 
 let value: ResponseBodyPermissions = {};
 ```

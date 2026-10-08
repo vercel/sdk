@@ -5,21 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { Ten } from "@vercel/sdk/models/via.js";
+import { Ten } from "@vercel/sdk/models/via3.js";
 
 let value: Ten = {
-  accountRequestId: "<id>",
-  teamId: "<id>",
+  boardId: "<id>",
+  fields: [
+    "<value 1>",
+  ],
+  operationId: "<id>",
+  spaceId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `provider`                                                             | [models.Provider](../models/provider.md)                               | :heavy_minus_sign:                                                     | Present on new events only. Equivalent to "stripe" when absent.        |
-| `providerAccount`                                                      | *string*                                                               | :heavy_minus_sign:                                                     | Present on new events only. Equivalent to `stripeAccount` when absent. |
-| `stripeAccount`                                                        | *string*                                                               | :heavy_minus_sign:                                                     | Present when `provider` is "stripe". Equivalent to `providerAccount`.  |
-| `stripeOrganisation`                                                   | *string*                                                               | :heavy_minus_sign:                                                     | Present when `provider` is "stripe".                                   |
-| `accountRequestId`                                                     | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
-| `teamId`                                                               | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `boardId`          | *string*           | :heavy_check_mark: | N/A                |
+| `fields`           | *string*[]         | :heavy_check_mark: | N/A                |
+| `operationId`      | *string*           | :heavy_check_mark: | N/A                |
+| `spaceId`          | *string*           | :heavy_check_mark: | N/A                |

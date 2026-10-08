@@ -5,7 +5,7 @@ Present when `scope` is `'project'`.
 ## Example Usage
 
 ```typescript
-import { ProjectScope } from "@vercel/sdk/models/fourhundredandtwentythree.js";
+import { ProjectScope } from "@vercel/sdk/models/fourhundredandtwentyseven.js";
 
 let value: ProjectScope = "project-only";
 ```

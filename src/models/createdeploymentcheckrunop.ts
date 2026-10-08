@@ -141,6 +141,7 @@ export type CreateDeploymentCheckRunResponseBody2 = {
   ownerId: string;
   projectId?: string | undefined;
   requires?: CreateDeploymentCheckRunResponseBodyRequires | undefined;
+  startedAt?: number | undefined;
   status: CreateDeploymentCheckRunResponseBodyStatus;
   targets?: Array<string> | undefined;
   taskSummary?: ResponseBodyTaskSummary | undefined;
@@ -349,6 +350,7 @@ export type CreateDeploymentCheckRunResponseBody1 = {
   ownerId: string;
   projectId?: string | undefined;
   requires?: ResponseBodyRequires | undefined;
+  startedAt?: number | undefined;
   status: ResponseBodyStatus;
   targets?: Array<string> | undefined;
   taskSummary?: TaskSummary | undefined;
@@ -608,6 +610,7 @@ export const CreateDeploymentCheckRunResponseBody2$inboundSchema: z.ZodType<
   requires: types.optional(
     CreateDeploymentCheckRunResponseBodyRequires$inboundSchema,
   ),
+  startedAt: types.optional(types.number()),
   status: CreateDeploymentCheckRunResponseBodyStatus$inboundSchema,
   targets: types.optional(z.array(types.string())),
   taskSummary: types.optional(
@@ -997,6 +1000,7 @@ export const CreateDeploymentCheckRunResponseBody1$inboundSchema: z.ZodType<
   ownerId: types.string(),
   projectId: types.optional(types.string()),
   requires: types.optional(ResponseBodyRequires$inboundSchema),
+  startedAt: types.optional(types.number()),
   status: ResponseBodyStatus$inboundSchema,
   targets: types.optional(z.array(types.string())),
   taskSummary: types.optional(z.lazy(() => TaskSummary$inboundSchema)),

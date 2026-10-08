@@ -5,7 +5,7 @@ Configuration for matching git branches to this environment
 ## Example Usage
 
 ```typescript
-import { CreateProjectBranchMatcher } from "@vercel/sdk/models/internalroutes1.js";
+import { CreateProjectBranchMatcher } from "@vercel/sdk/models/internalroutesmitigate.js";
 
 let value: CreateProjectBranchMatcher = {
   pattern: "<value>",

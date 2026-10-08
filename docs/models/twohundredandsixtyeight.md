@@ -8,16 +8,18 @@ The payload of the event, if requested.
 import { TwoHundredAndSixtyEight } from "@vercel/sdk/models/siftroute.js";
 
 let value: TwoHundredAndSixtyEight = {
+  next: {},
+  previous: {},
   projectId: "<id>",
   projectName: "<value>",
-  widget: "analytics-visitors",
 };
 ```
 
 ## Fields
 
-| Field                                | Type                                 | Required                             | Description                          |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `projectId`                          | *string*                             | :heavy_check_mark:                   | N/A                                  |
-| `projectName`                        | *string*                             | :heavy_check_mark:                   | N/A                                  |
-| `widget`                             | [models.Widget](../models/widget.md) | :heavy_check_mark:                   | N/A                                  |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `next`                                                                         | [models.UserEventPayload268Next](../models/usereventpayload268next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload268Previous](../models/usereventpayload268previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |

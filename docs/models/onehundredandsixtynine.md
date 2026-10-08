@@ -5,20 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSixtyNine } from "@vercel/sdk/models/lasteditedbyprincipal2.js";
+import { OneHundredAndSixtyNine } from "@vercel/sdk/models/usereventjobaction.js";
 
 let value: OneHundredAndSixtyNine = {
-  projectId: "<id>",
-  scope: "<value>",
-  source: "<value>",
+  key: "<key>",
+  organizationId: "<id>",
+  provider: "<value>",
+  repository: "<value>",
+  visibility: "secret",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `expiresAt`        | *number*           | :heavy_minus_sign: | N/A                |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `scope`            | *string*           | :heavy_check_mark: | N/A                |
-| `source`           | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                      | Type                                                       | Required                                                   | Description                                                |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `changedFields`                                            | *string*[]                                                 | :heavy_minus_sign:                                         | N/A                                                        |
+| `key`                                                      | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| `organizationId`                                           | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| `provider`                                                 | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| `repository`                                               | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| `visibility`                                               | [models.PayloadVisibility](../models/payloadvisibility.md) | :heavy_check_mark:                                         | N/A                                                        |

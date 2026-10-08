@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { EnvironmentVariables } from "@vercel/sdk/models/internalroutes1.js";
+import { EnvironmentVariables } from "@vercel/sdk/models/internalroutesmitigate.js";
 
 let value: EnvironmentVariables = {
   key: "<key>",

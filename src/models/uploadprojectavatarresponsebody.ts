@@ -14,10 +14,20 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
   UploadProjectAvatarAlias,
   UploadProjectAvatarAlias$inboundSchema,
+  UploadProjectAvatarAliasAssigned,
+  UploadProjectAvatarAliasAssigned$inboundSchema,
+  UploadProjectAvatarAliasError,
+  UploadProjectAvatarAliasError$inboundSchema,
   UploadProjectAvatarAnalytics,
   UploadProjectAvatarAnalytics$inboundSchema,
   UploadProjectAvatarBlobs,
   UploadProjectAvatarBlobs$inboundSchema,
+  UploadProjectAvatarBuilds,
+  UploadProjectAvatarBuilds$inboundSchema,
+  UploadProjectAvatarChecksConclusion,
+  UploadProjectAvatarChecksConclusion$inboundSchema,
+  UploadProjectAvatarChecksState,
+  UploadProjectAvatarChecksState$inboundSchema,
   UploadProjectAvatarConnectConfigurations,
   UploadProjectAvatarConnectConfigurations$inboundSchema,
   UploadProjectAvatarCreator,
@@ -58,9 +68,71 @@ import {
   UploadProjectAvatarLastAliasRequest$inboundSchema,
   UploadProjectAvatarLastRollbackTarget,
   UploadProjectAvatarLastRollbackTarget$inboundSchema,
-  UploadProjectAvatarLatestDeployments,
-  UploadProjectAvatarLatestDeployments$inboundSchema,
-} from "./uploadprojectavatarlatestdeployments.js";
+  UploadProjectAvatarOidcTokenClaims,
+  UploadProjectAvatarOidcTokenClaims$inboundSchema,
+  UploadProjectAvatarPlan,
+  UploadProjectAvatarPlan$inboundSchema,
+  UploadProjectAvatarProjectsBranchMatcher,
+  UploadProjectAvatarProjectsBranchMatcher$inboundSchema,
+  UploadProjectAvatarProjectsCreator,
+  UploadProjectAvatarProjectsCreator$inboundSchema,
+  UploadProjectAvatarReadyState,
+  UploadProjectAvatarReadyState$inboundSchema,
+  UploadProjectAvatarReadySubstate,
+  UploadProjectAvatarReadySubstate$inboundSchema,
+} from "./uploadprojectavatarreadysubstate.js";
+
+export const UploadProjectAvatarProjectsResponse200Type = {
+  Lambdas: "LAMBDAS",
+} as const;
+export type UploadProjectAvatarProjectsResponse200Type = ClosedEnum<
+  typeof UploadProjectAvatarProjectsResponse200Type
+>;
+
+export type UploadProjectAvatarLatestDeployments = {
+  alias?: Array<string> | undefined;
+  aliasAssigned?: UploadProjectAvatarAliasAssigned | null | undefined;
+  aliasError?: UploadProjectAvatarAliasError | null | undefined;
+  aliasFinal?: string | null | undefined;
+  automaticAliases?: Array<string> | undefined;
+  branchMatcher?: UploadProjectAvatarProjectsBranchMatcher | undefined;
+  buildingAt?: number | undefined;
+  builds?: Array<UploadProjectAvatarBuilds> | undefined;
+  checksConclusion?: UploadProjectAvatarChecksConclusion | undefined;
+  checksState?: UploadProjectAvatarChecksState | undefined;
+  connectBuildsEnabled?: boolean | undefined;
+  connectConfigurationId?: string | undefined;
+  createdAt: number;
+  createdIn: string;
+  creator: UploadProjectAvatarProjectsCreator | null;
+  deletedAt?: number | undefined;
+  deploymentHostname: string;
+  forced?: boolean | undefined;
+  id: string;
+  meta?: { [k: string]: string } | undefined;
+  monorepoManager?: string | null | undefined;
+  name: string;
+  oidcTokenClaims?: UploadProjectAvatarOidcTokenClaims | undefined;
+  plan: UploadProjectAvatarPlan;
+  /**
+   * Whether or not preview comments are enabled for the deployment
+   */
+  previewCommentsEnabled?: boolean | undefined;
+  private: boolean;
+  readyAt?: number | undefined;
+  readyState: UploadProjectAvatarReadyState;
+  readySubstate?: UploadProjectAvatarReadySubstate | undefined;
+  requestedAt?: number | undefined;
+  target?: string | null | undefined;
+  teamId?: string | null | undefined;
+  type: UploadProjectAvatarProjectsResponse200Type;
+  url: string;
+  /**
+   * Present for user creators; omitted for app/integration/system creators.
+   */
+  userId?: string | undefined;
+  withCache?: boolean | undefined;
+};
 
 export type UploadProjectAvatarLinkProjectsResponse200ApplicationJSONResponseBody8DeployHooks =
   {
@@ -2875,6 +2947,74 @@ export type UploadProjectAvatarResponseBody = {
   v0Created?: boolean | undefined;
   webAnalytics?: UploadProjectAvatarWebAnalytics | undefined;
 };
+
+/** @internal */
+export const UploadProjectAvatarProjectsResponse200Type$inboundSchema:
+  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsResponse200Type> = z
+    .nativeEnum(UploadProjectAvatarProjectsResponse200Type);
+
+/** @internal */
+export const UploadProjectAvatarLatestDeployments$inboundSchema: z.ZodType<
+  UploadProjectAvatarLatestDeployments,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  alias: types.optional(z.array(types.string())),
+  aliasAssigned: z.nullable(UploadProjectAvatarAliasAssigned$inboundSchema)
+    .optional(),
+  aliasError: z.nullable(UploadProjectAvatarAliasError$inboundSchema)
+    .optional(),
+  aliasFinal: z.nullable(types.string()).optional(),
+  automaticAliases: types.optional(z.array(types.string())),
+  branchMatcher: types.optional(
+    UploadProjectAvatarProjectsBranchMatcher$inboundSchema,
+  ),
+  buildingAt: types.optional(types.number()),
+  builds: types.optional(z.array(UploadProjectAvatarBuilds$inboundSchema)),
+  checksConclusion: types.optional(
+    UploadProjectAvatarChecksConclusion$inboundSchema,
+  ),
+  checksState: types.optional(UploadProjectAvatarChecksState$inboundSchema),
+  connectBuildsEnabled: types.optional(types.boolean()),
+  connectConfigurationId: types.optional(types.string()),
+  createdAt: types.number(),
+  createdIn: types.string(),
+  creator: types.nullable(UploadProjectAvatarProjectsCreator$inboundSchema),
+  deletedAt: types.optional(types.number()),
+  deploymentHostname: types.string(),
+  forced: types.optional(types.boolean()),
+  id: types.string(),
+  meta: types.optional(z.record(types.string())),
+  monorepoManager: z.nullable(types.string()).optional(),
+  name: types.string(),
+  oidcTokenClaims: types.optional(
+    UploadProjectAvatarOidcTokenClaims$inboundSchema,
+  ),
+  plan: UploadProjectAvatarPlan$inboundSchema,
+  previewCommentsEnabled: types.optional(types.boolean()),
+  private: types.boolean(),
+  readyAt: types.optional(types.number()),
+  readyState: UploadProjectAvatarReadyState$inboundSchema,
+  readySubstate: types.optional(UploadProjectAvatarReadySubstate$inboundSchema),
+  requestedAt: types.optional(types.number()),
+  target: z.nullable(types.string()).optional(),
+  teamId: z.nullable(types.string()).optional(),
+  type: UploadProjectAvatarProjectsResponse200Type$inboundSchema,
+  url: types.string(),
+  userId: types.optional(types.string()),
+  withCache: types.optional(types.boolean()),
+});
+
+export function uploadProjectAvatarLatestDeploymentsFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadProjectAvatarLatestDeployments, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UploadProjectAvatarLatestDeployments$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadProjectAvatarLatestDeployments' from JSON`,
+  );
+}
 
 /** @internal */
 export const UploadProjectAvatarLinkProjectsResponse200ApplicationJSONResponseBody8DeployHooks$inboundSchema:
@@ -5718,7 +5858,7 @@ export const UploadProjectAvatarResponseBody$inboundSchema: z.ZodType<
     UploadProjectAvatarLastRollbackTarget$inboundSchema,
   ).optional(),
   latestDeployments: types.optional(
-    z.array(UploadProjectAvatarLatestDeployments$inboundSchema),
+    z.array(z.lazy(() => UploadProjectAvatarLatestDeployments$inboundSchema)),
   ),
   link: types.optional(
     z.union([

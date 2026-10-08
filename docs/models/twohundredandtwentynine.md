@@ -5,20 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndTwentyNine } from "@vercel/sdk/models/siftroute.js";
+import { TwoHundredAndTwentyNine } from "@vercel/sdk/models/lasteditedbyprincipal2.js";
 
 let value: TwoHundredAndTwentyNine = {
-  cause: "<value>",
-  ownerId: "<id>",
-  source: "<value>",
+  billingPlan: "platform",
+  organizationId: "<id>",
+  teamId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `cause`            | *string*           | :heavy_check_mark: | N/A                |
-| `ownerId`          | *string*           | :heavy_check_mark: | N/A                |
-| `reason`           | *string*           | :heavy_minus_sign: | N/A                |
-| `source`           | *string*           | :heavy_check_mark: | N/A                |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `billingPlan`                                  | [models.BillingPlan](../models/billingplan.md) | :heavy_check_mark:                             | N/A                                            |
+| `organizationId`                               | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `teamId`                                       | *string*                                       | :heavy_check_mark:                             | N/A                                            |

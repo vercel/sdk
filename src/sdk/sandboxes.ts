@@ -9,6 +9,8 @@ import { sandboxesDeleteDrive } from "../funcs/sandboxesDeleteDrive.js";
 import { sandboxesDeleteSandbox } from "../funcs/sandboxesDeleteSandbox.js";
 import { sandboxesDeleteSessionSnapshot } from "../funcs/sandboxesDeleteSessionSnapshot.js";
 import { sandboxesExtendSessionTimeout } from "../funcs/sandboxesExtendSessionTimeout.js";
+import { sandboxesForkDrive } from "../funcs/sandboxesForkDrive.js";
+import { sandboxesGetDrive } from "../funcs/sandboxesGetDrive.js";
 import { sandboxesGetNamedSandbox } from "../funcs/sandboxesGetNamedSandbox.js";
 import { sandboxesGetOrCreateDrive } from "../funcs/sandboxesGetOrCreateDrive.js";
 import { sandboxesGetSession } from "../funcs/sandboxesGetSession.js";
@@ -53,6 +55,11 @@ import {
   ExtendSessionTimeoutRequest,
   ExtendSessionTimeoutResponseBody,
 } from "../models/extendsessiontimeoutop.js";
+import {
+  ForkDriveRequest,
+  ForkDriveResponseBody,
+} from "../models/forkdriveop.js";
+import { GetDriveRequest, GetDriveResponseBody } from "../models/getdriveop.js";
 import {
   GetNamedSandboxRequest,
   GetNamedSandboxResponseBody,
@@ -148,6 +155,23 @@ export class Sandboxes extends ClientSDK {
   }
 
   /**
+   * Get a drive
+   *
+   * @remarks
+   * Gets an existing drive by project and name or drive ID. Returns 404 if doesn't exist.
+   */
+  async getDrive(
+    request: GetDriveRequest,
+    options?: RequestOptions,
+  ): Promise<GetDriveResponseBody> {
+    return unwrapAsync(sandboxesGetDrive(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Get or create a drive
    *
    * @remarks
@@ -175,6 +199,23 @@ export class Sandboxes extends ClientSDK {
     options?: RequestOptions,
   ): Promise<DeleteDriveResponseBody> {
     return unwrapAsync(sandboxesDeleteDrive(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Fork a drive
+   *
+   * @remarks
+   * Fork the provided drive into a new one with the provided name, inheriting the region and max size.
+   */
+  async forkDrive(
+    request: ForkDriveRequest,
+    options?: RequestOptions,
+  ): Promise<ForkDriveResponseBody> {
+    return unwrapAsync(sandboxesForkDrive(
       this,
       request,
       options,

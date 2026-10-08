@@ -8,19 +8,12 @@ The payload of the event, if requested.
 import { TwoHundredAndNine } from "@vercel/sdk/models/lasteditedbyprincipal2.js";
 
 let value: TwoHundredAndNine = {
-  periods: [
-    {
-      endDate: "<value>",
-      percent: "<value>",
-      periodNumber: 4098.45,
-      startDate: "<value>",
-    },
-  ],
+  provider: "github-custom-host",
 };
 ```
 
 ## Fields
 
-| Field                                    | Type                                     | Required                                 | Description                              |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| `periods`                                | [models.Periods](../models/periods.md)[] | :heavy_check_mark:                       | N/A                                      |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `provider`                                                                     | [models.UserEventPayload209Provider](../models/usereventpayload209provider.md) | :heavy_check_mark:                                                             | N/A                                                                            |

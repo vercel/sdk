@@ -119,6 +119,7 @@ export type TeamLimitedMembership = {
   createdAt: number;
   entitlements?: Array<TeamLimitedEntitlements> | undefined;
   joinedFrom?: TeamLimitedJoinedFrom | undefined;
+  organizationId?: string | undefined;
   role: TeamLimitedRole;
   teamId?: string | undefined;
   teamPermissions?: Array<TeamLimitedTeamPermissions> | undefined;
@@ -381,6 +382,7 @@ export const TeamLimitedMembership$inboundSchema: z.ZodType<
     z.array(z.lazy(() => TeamLimitedEntitlements$inboundSchema)),
   ),
   joinedFrom: types.optional(z.lazy(() => TeamLimitedJoinedFrom$inboundSchema)),
+  organizationId: types.optional(types.string()),
   role: TeamLimitedRole$inboundSchema,
   teamId: types.optional(types.string()),
   teamPermissions: types.optional(

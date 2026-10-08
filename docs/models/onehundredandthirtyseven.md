@@ -8,16 +8,14 @@ The payload of the event, if requested.
 import { OneHundredAndThirtySeven } from "@vercel/sdk/models/usereventjobaction.js";
 
 let value: OneHundredAndThirtySeven = {
-  domain: "colossal-chainstay.name",
-  echMode: "enabled",
-  previousEchMode: "enabled",
+  domainId: "<id>",
+  name: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                  | Type                                                   | Required                                               | Description                                            |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `domain`                                               | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
-| `echMode`                                              | [models.EchMode](../models/echmode.md)                 | :heavy_check_mark:                                     | N/A                                                    |
-| `previousEchMode`                                      | [models.PreviousEchMode](../models/previousechmode.md) | :heavy_check_mark:                                     | N/A                                                    |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `domainId`         | *string*           | :heavy_check_mark: | N/A                |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |

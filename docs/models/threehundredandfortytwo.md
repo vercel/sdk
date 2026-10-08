@@ -5,38 +5,27 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFortyTwo } from "@vercel/sdk/models/twohundredandninetyseven.js";
+import { ThreeHundredAndFortyTwo } from "@vercel/sdk/models/threehundredandone.js";
 
 let value: ThreeHundredAndFortyTwo = {
-  addedProjects: [
-    {
-      id: "<id>",
-      name: "<value>",
-    },
-  ],
-  addedProviders: [
-    "<value 1>",
-    "<value 2>",
-    "<value 3>",
-  ],
+  next: {
+    skewProtectionAllowedDomains: [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
+  },
+  previous: {},
   projectId: "<id>",
   projectName: "<value>",
-  removedProjects: [],
-  removedProviders: [
-    "<value 1>",
-    "<value 2>",
-  ],
 };
 ```
 
 ## Fields
 
-| Field                                                    | Type                                                     | Required                                                 | Description                                              |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `addedProjects`                                          | [models.AddedProjects](../models/addedprojects.md)[]     | :heavy_check_mark:                                       | N/A                                                      |
-| `addedProviders`                                         | *string*[]                                               | :heavy_check_mark:                                       | N/A                                                      |
-| `enableVercelCiSameRepository`                           | *boolean*                                                | :heavy_minus_sign:                                       | N/A                                                      |
-| `projectId`                                              | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
-| `projectName`                                            | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
-| `removedProjects`                                        | [models.RemovedProjects](../models/removedprojects.md)[] | :heavy_check_mark:                                       | N/A                                                      |
-| `removedProviders`                                       | *string*[]                                               | :heavy_check_mark:                                       | N/A                                                      |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `next`                                                                         | [models.UserEventPayload342Next](../models/usereventpayload342next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload342Previous](../models/usereventpayload342previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |

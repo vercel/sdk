@@ -5,18 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FortyNine } from "@vercel/sdk/models/via.js";
+import { FortyNine } from "@vercel/sdk/models/via3.js";
 
 let value: FortyNine = {
-  aliasCount: 8401.55,
-  projectId: "<id>",
+  accessGroup: {
+    id: "<id>",
+  },
+  user: {
+    id: "<id>",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `aliasCount`                                               | *number*                                                   | :heavy_check_mark:                                         | N/A                                                        |
-| `deployment`                                               | [models.PayloadDeployment](../models/payloaddeployment.md) | :heavy_minus_sign:                                         | N/A                                                        |
-| `projectId`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `accessGroup`                                                                      | [models.UserEventPayload49AccessGroup](../models/usereventpayload49accessgroup.md) | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `directoryType`                                                                    | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `user`                                                                             | [models.UserEventPayload49User](../models/usereventpayload49user.md)               | :heavy_check_mark:                                                                 | N/A                                                                                |

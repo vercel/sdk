@@ -7,17 +7,14 @@ The payload of the event, if requested.
 ```typescript
 import { TwoHundredAndSeventyThree } from "@vercel/sdk/models/siftroute.js";
 
-let value: TwoHundredAndSeventyThree = {
-  action: "disabled",
-  projectId: "<id>",
-  projectName: "<value>",
-};
+let value: TwoHundredAndSeventyThree = {};
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `action`                                                                   | [models.UserEventPayload273Action](../models/usereventpayload273action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
-| `projectId`                                                                | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `projectName`                                                              | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `certId`           | *string*           | :heavy_minus_sign: | N/A                |
+| `origin`           | *string*           | :heavy_minus_sign: | N/A                |
+| `projectId`        | *string*           | :heavy_minus_sign: | N/A                |
+| `projectName`      | *string*           | :heavy_minus_sign: | N/A                |

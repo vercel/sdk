@@ -8,20 +8,14 @@ The payload of the event, if requested.
 import { OneHundredAndThirtyFive } from "@vercel/sdk/models/usereventjobaction.js";
 
 let value: OneHundredAndThirtyFive = {
-  customNameservers: [
-    "<value 1>",
-    "<value 2>",
-    "<value 3>",
-  ],
-  domain: "overcooked-making.name",
-  prevCustomNameservers: [],
+  name: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                   | Type                    | Required                | Description             |
-| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
-| `customNameservers`     | *string*[]              | :heavy_check_mark:      | N/A                     |
-| `domain`                | *string*                | :heavy_check_mark:      | N/A                     |
-| `prevCustomNameservers` | *string*[]              | :heavy_check_mark:      | N/A                     |
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `name`                                                                       | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
+| `newTeam`                                                                    | [models.UserEventPayload135NewTeam](../models/usereventpayload135newteam.md) | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `oldTeam`                                                                    | [models.UserEventPayload135OldTeam](../models/usereventpayload135oldteam.md) | :heavy_minus_sign:                                                           | N/A                                                                          |

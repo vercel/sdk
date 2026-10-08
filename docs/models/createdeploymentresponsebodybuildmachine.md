@@ -5,7 +5,7 @@ Build machine configuration recorded for this deployment's build. See {@link Dep
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentResponseBodyBuildMachine } from "@vercel/sdk/models/createdeploymenthasdeploymentsresponse1.js";
+import { CreateDeploymentResponseBodyBuildMachine } from "@vercel/sdk/models/createdeploymenthasdeploymentsresponse2.js";
 
 let value: CreateDeploymentResponseBodyBuildMachine = {};
 ```

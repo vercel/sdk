@@ -5,24 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFourteen } from "@vercel/sdk/models/twohundredandninetyseven.js";
+import { ThreeHundredAndFourteen } from "@vercel/sdk/models/threehundredandone.js";
 
 let value: ThreeHundredAndFourteen = {
-  destinationAccountId: "<id>",
-  destinationAccountName: "<value>",
-  originAccountName: "<value>",
-  projectId: "<id>",
-  projectName: "<value>",
+  project: {
+    name: "<value>",
+  },
+  removedMembership: {
+    createdAt: 6671.86,
+    role: "PROJECT_GUEST",
+    uid: "<id>",
+  },
 };
 ```
 
 ## Fields
 
-| Field                    | Type                     | Required                 | Description              |
-| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
-| `destinationAccountId`   | *string*                 | :heavy_check_mark:       | N/A                      |
-| `destinationAccountName` | *string*                 | :heavy_check_mark:       | N/A                      |
-| `originAccountName`      | *string*                 | :heavy_check_mark:       | N/A                      |
-| `projectId`              | *string*                 | :heavy_check_mark:       | N/A                      |
-| `projectName`            | *string*                 | :heavy_check_mark:       | N/A                      |
-| `transferId`             | *string*                 | :heavy_minus_sign:       | N/A                      |
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `project`                                                                    | [models.UserEventPayload314Project](../models/usereventpayload314project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
+| `removedMembership`                                                          | [models.RemovedMembership](../models/removedmembership.md)                   | :heavy_check_mark:                                                           | N/A                                                                          |

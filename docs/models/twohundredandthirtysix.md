@@ -8,20 +8,28 @@ The payload of the event, if requested.
 import { TwoHundredAndThirtySix } from "@vercel/sdk/models/siftroute.js";
 
 let value: TwoHundredAndThirtySix = {
-  justification: "<value>",
-  previousStatus: "<value>",
+  next: {
+    allowUnsafeScriptSrcKeywords: false,
+    enabled: true,
+    enforcePercentage: 6832.99,
+    mode: "<value>",
+    newResourceBlockingPolicy: "block",
+  },
+  previous: {
+    allowUnsafeScriptSrcKeywords: true,
+    enabled: true,
+    enforcePercentage: 680.53,
+    mode: "<value>",
+    newResourceBlockingPolicy: "allow",
+  },
   projectId: "<id>",
-  url: "https://dirty-plugin.name",
 };
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `approvalScope`                                                  | [models.ApprovalScope](../models/approvalscope.md)               | :heavy_minus_sign:                                               | N/A                                                              |
-| `justification`                                                  | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `kind`                                                           | [models.UserEventPayloadKind](../models/usereventpayloadkind.md) | :heavy_minus_sign:                                               | N/A                                                              |
-| `previousStatus`                                                 | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `projectId`                                                      | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `url`                                                            | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `next`                                                                   | [models.UserEventPayloadNext](../models/usereventpayloadnext.md)         | :heavy_check_mark:                                                       | N/A                                                                      |
+| `previous`                                                               | [models.UserEventPayloadPrevious](../models/usereventpayloadprevious.md) | :heavy_check_mark:                                                       | N/A                                                                      |
+| `projectId`                                                              | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |

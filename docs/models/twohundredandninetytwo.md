@@ -8,7 +8,7 @@ The payload of the event, if requested.
 import { TwoHundredAndNinetyTwo } from "@vercel/sdk/models/siftroute.js";
 
 let value: TwoHundredAndNinetyTwo = {
-  onCommit: true,
+  newProjectName: "<value>",
   projectId: "<id>",
   projectName: "<value>",
 };
@@ -18,6 +18,6 @@ let value: TwoHundredAndNinetyTwo = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `onCommit`         | *boolean*          | :heavy_check_mark: | N/A                |
+| `newProjectName`   | *string*           | :heavy_check_mark: | N/A                |
 | `projectId`        | *string*           | :heavy_check_mark: | N/A                |
 | `projectName`      | *string*           | :heavy_check_mark: | N/A                |

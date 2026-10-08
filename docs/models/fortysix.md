@@ -5,22 +5,20 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FortySix } from "@vercel/sdk/models/via.js";
+import { FortySix } from "@vercel/sdk/models/via3.js";
 
 let value: FortySix = {
   accessGroup: {
     id: "<id>",
+    name: "<value>",
   },
-  user: {
-    id: "<id>",
-  },
+  author: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `accessGroup`                                                                      | [models.UserEventPayload46AccessGroup](../models/usereventpayload46accessgroup.md) | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `directoryType`                                                                    | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `user`                                                                             | [models.UserEventPayload46User](../models/usereventpayload46user.md)               | :heavy_check_mark:                                                                 | N/A                                                                                |
+| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `accessGroup`                                                | [models.PayloadAccessGroup](../models/payloadaccessgroup.md) | :heavy_check_mark:                                           | N/A                                                          |
+| `author`                                                     | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |

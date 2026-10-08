@@ -5,20 +5,13 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FiftySix } from "@vercel/sdk/models/via.js";
+import { FiftySix } from "@vercel/sdk/models/via3.js";
 
-let value: FiftySix = {
-  action: "created",
-  alias: "<value>",
-  projectName: "<value>",
-};
+let value: FiftySix = {};
 ```
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `action`                                                                 | [models.UserEventPayload56Action](../models/usereventpayload56action.md) | :heavy_check_mark:                                                       | N/A                                                                      |
-| `alias`                                                                  | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
-| `projectId`                                                              | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
-| `projectName`                                                            | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `alias`            | *string*           | :heavy_minus_sign: | N/A                |

@@ -139,6 +139,7 @@ export type Runs2 = {
   ownerId: string;
   projectId?: string | undefined;
   requires?: ListCheckRunsRunsRequires | undefined;
+  startedAt?: number | undefined;
   status: ListCheckRunsRunsStatus;
   targets?: Array<string> | undefined;
   taskSummary?: RunsTaskSummary | undefined;
@@ -359,6 +360,7 @@ export type Runs1 = {
   ownerId: string;
   projectId?: string | undefined;
   requires?: RunsRequires | undefined;
+  startedAt?: number | undefined;
   status: RunsStatus;
   targets?: Array<string> | undefined;
   taskSummary?: ListCheckRunsRunsTaskSummary | undefined;
@@ -565,6 +567,7 @@ export const Runs2$inboundSchema: z.ZodType<Runs2, z.ZodTypeDef, unknown> = z
     ownerId: types.string(),
     projectId: types.optional(types.string()),
     requires: types.optional(ListCheckRunsRunsRequires$inboundSchema),
+    startedAt: types.optional(types.number()),
     status: ListCheckRunsRunsStatus$inboundSchema,
     targets: types.optional(z.array(types.string())),
     taskSummary: types.optional(z.lazy(() => RunsTaskSummary$inboundSchema)),
@@ -953,6 +956,7 @@ export const Runs1$inboundSchema: z.ZodType<Runs1, z.ZodTypeDef, unknown> = z
     ownerId: types.string(),
     projectId: types.optional(types.string()),
     requires: types.optional(RunsRequires$inboundSchema),
+    startedAt: types.optional(types.number()),
     status: RunsStatus$inboundSchema,
     targets: types.optional(z.array(types.string())),
     taskSummary: types.optional(

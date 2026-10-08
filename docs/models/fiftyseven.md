@@ -5,17 +5,14 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FiftySeven } from "@vercel/sdk/models/via.js";
+import { FiftySeven } from "@vercel/sdk/models/via3.js";
 
-let value: FiftySeven = {
-  alias: "<value>",
-  deploymentUrl: "https://husky-gripper.biz/",
-};
+let value: FiftySeven = {};
 ```
 
 ## Fields
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `alias`            | *string*           | :heavy_check_mark: | N/A                |
-| `deploymentUrl`    | *string*           | :heavy_check_mark: | N/A                |
+| `alias`            | *string*           | :heavy_minus_sign: | N/A                |
+| `email`            | *string*           | :heavy_minus_sign: | N/A                |

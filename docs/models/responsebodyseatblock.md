@@ -5,7 +5,7 @@ NSNB Blocked metadata
 ## Example Usage
 
 ```typescript
-import { ResponseBodySeatBlock } from "@vercel/sdk/models/createdeploymenthasdeploymentsresponse1.js";
+import { ResponseBodySeatBlock } from "@vercel/sdk/models/createdeploymenthasdeploymentsresponse2.js";
 
 let value: ResponseBodySeatBlock = {
   blockCode: "COMMIT_AUTHOR_REQUIRED",

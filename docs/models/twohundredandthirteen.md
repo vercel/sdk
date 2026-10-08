@@ -8,21 +8,12 @@ The payload of the event, if requested.
 import { TwoHundredAndThirteen } from "@vercel/sdk/models/lasteditedbyprincipal2.js";
 
 let value: TwoHundredAndThirteen = {
-  group: {
-    id: "<id>",
-    name: "<value>",
-    slug: "<value>",
-  },
-  project: {
-    id: "<id>",
-    name: "<value>",
-  },
+  periods: [],
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `group`                                                                      | [models.Group](../models/group.md)                                           | :heavy_check_mark:                                                           | N/A                                                                          |
-| `project`                                                                    | [models.UserEventPayload213Project](../models/usereventpayload213project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `periods`                                | [models.Periods](../models/periods.md)[] | :heavy_check_mark:                       | N/A                                      |

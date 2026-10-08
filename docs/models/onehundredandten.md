@@ -5,24 +5,16 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndTen } from "@vercel/sdk/models/sixty.js";
+import { OneHundredAndTen } from "@vercel/sdk/models/payloadscopes.js";
 
 let value: OneHundredAndTen = {
-  oldPasswordProtection: {
-    deploymentType: "prod_deployment_urls_and_all_previews",
-  },
-  passwordProtection: {
-    deploymentType: "all",
-  },
-  scope: "team",
+  metricName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  |
-| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `oldPasswordProtection`                                                                      | [models.OldPasswordProtection](../models/oldpasswordprotection.md)                           | :heavy_check_mark:                                                                           | N/A                                                                                          |
-| `passwordChanged`                                                                            | *boolean*                                                                                    | :heavy_minus_sign:                                                                           | N/A                                                                                          |
-| `passwordProtection`                                                                         | [models.UserEventPayloadPasswordProtection](../models/usereventpayloadpasswordprotection.md) | :heavy_check_mark:                                                                           | N/A                                                                                          |
-| `scope`                                                                                      | [models.PayloadScope](../models/payloadscope.md)                                             | :heavy_check_mark:                                                                           | N/A                                                                                          |
+| Field                  | Type                   | Required               | Description            |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `metricName`           | *string*               | :heavy_check_mark:     | N/A                    |
+| `additionalProperties` | Record<string, *any*>  | :heavy_minus_sign:     | N/A                    |

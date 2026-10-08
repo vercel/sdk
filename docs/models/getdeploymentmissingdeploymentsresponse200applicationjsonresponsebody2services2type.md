@@ -5,7 +5,7 @@
 ```typescript
 import {
   GetDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody2Services2Type,
-} from "@vercel/sdk/models/getdeploymentservicesrouteprefixsource.js";
+} from "@vercel/sdk/models/getdeploymentservicesmiddlewareruntime.js";
 
 let value:
   GetDeploymentMissingDeploymentsResponse200ApplicationJSONResponseBody2Services2Type =

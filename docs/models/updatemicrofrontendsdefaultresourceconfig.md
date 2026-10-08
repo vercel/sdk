@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsDefaultResourceConfig } from "@vercel/sdk/models/updatemicrofrontendsprojectsresponse200type.js";
+import { UpdateMicrofrontendsDefaultResourceConfig } from "@vercel/sdk/models/updatemicrofrontendsreadystate.js";
 
 let value: UpdateMicrofrontendsDefaultResourceConfig = {
   functionDefaultRegions: [
@@ -30,3 +30,4 @@ let value: UpdateMicrofrontendsDefaultResourceConfig = {
 | `functionDefaultTimeout`                                                                                                   | *number*                                                                                                                   | :heavy_minus_sign:                                                                                                         | N/A                                                                                                                        |
 | `functionZeroConfigFailover`                                                                                               | *boolean*                                                                                                                  | :heavy_minus_sign:                                                                                                         | N/A                                                                                                                        |
 | `isNSNBDisabled`                                                                                                           | *boolean*                                                                                                                  | :heavy_minus_sign:                                                                                                         | N/A                                                                                                                        |
+| `elasticBuildMachine`                                                                                                      | [models.UpdateMicrofrontendsElasticBuildMachine](../models/updatemicrofrontendselasticbuildmachine.md)                     | :heavy_minus_sign:                                                                                                         | Internal assignment, intentionally excluded from API input/output schemas.                                                 |

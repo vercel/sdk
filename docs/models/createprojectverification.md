@@ -5,7 +5,7 @@ A list of verification challenges, one of which must be completed to verify the 
 ## Example Usage
 
 ```typescript
-import { CreateProjectVerification } from "@vercel/sdk/models/internalroutes1.js";
+import { CreateProjectVerification } from "@vercel/sdk/models/internalroutesmitigate.js";
 
 let value: CreateProjectVerification = {
   domain: "nautical-yak.info",

@@ -8,9 +8,7 @@ The payload of the event, if requested.
 import { TwoHundredAndTwenty } from "@vercel/sdk/models/lasteditedbyprincipal2.js";
 
 let value: TwoHundredAndTwenty = {
-  directoryGroupId: "<id>",
-  directoryId: "<id>",
-  organizationId: "<id>",
+  projectName: "<value>",
 };
 ```
 
@@ -18,6 +16,5 @@ let value: TwoHundredAndTwenty = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `directoryGroupId` | *string*           | :heavy_check_mark: | N/A                |
-| `directoryId`      | *string*           | :heavy_check_mark: | N/A                |
-| `organizationId`   | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_minus_sign: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |

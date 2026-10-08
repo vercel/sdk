@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Settings } from "@vercel/sdk/models/via.js";
+import { Settings } from "@vercel/sdk/models/via3.js";
 
 let value: Settings = {
   maximumMonthlySpend: "<value>",

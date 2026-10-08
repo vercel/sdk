@@ -8,8 +8,10 @@ The payload of the event, if requested.
 import { OneHundredAndEightyNine } from "@vercel/sdk/models/lasteditedbyprincipal2.js";
 
 let value: OneHundredAndEightyNine = {
-  billingPlanId: "<id>",
   configurationId: "<id>",
+  confirmedScopes: [
+    "<value 1>",
+  ],
   integrationId: "<id>",
   integrationName: "<value>",
   integrationSlug: "<value>",
@@ -21,10 +23,10 @@ let value: OneHundredAndEightyNine = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `billingPlanId`    | *string*           | :heavy_check_mark: | N/A                |
-| `billingPlanName`  | *string*           | :heavy_minus_sign: | N/A                |
 | `configurationId`  | *string*           | :heavy_check_mark: | N/A                |
+| `confirmedScopes`  | *string*[]         | :heavy_check_mark: | N/A                |
 | `integrationId`    | *string*           | :heavy_check_mark: | N/A                |
 | `integrationName`  | *string*           | :heavy_check_mark: | N/A                |
 | `integrationSlug`  | *string*           | :heavy_check_mark: | N/A                |
 | `ownerId`          | *string*           | :heavy_check_mark: | N/A                |
+| `projectIds`       | *string*[]         | :heavy_minus_sign: | N/A                |

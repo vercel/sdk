@@ -5,7 +5,7 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupDeploymentSources } from "@vercel/sdk/models/getmicrofrontendsingrouplatestdeployments.js";
+import { GetMicrofrontendsInGroupDeploymentSources } from "@vercel/sdk/models/getmicrofrontendsingroupreadysubstate.js";
 
 let value: GetMicrofrontendsInGroupDeploymentSources = {
   enabled: false,

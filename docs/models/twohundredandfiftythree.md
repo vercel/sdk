@@ -7,28 +7,12 @@ The payload of the event, if requested.
 ```typescript
 import { TwoHundredAndFiftyThree } from "@vercel/sdk/models/siftroute.js";
 
-let value: TwoHundredAndFiftyThree = {
-  current: {
-    awsServiceName: "<value>",
-    id: "<id>",
-    name: "<value>",
-    projectId: "<id>",
-    vercelRegion: "<value>",
-  },
-  prev: {
-    awsServiceName: "<value>",
-    id: "<id>",
-    name: "<value>",
-    projectId: "<id>",
-    vercelRegion: "<value>",
-  },
-};
+let value: TwoHundredAndFiftyThree = {};
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `current`                                                        | [models.Current](../models/current.md)                           | :heavy_check_mark:                                               | N/A                                                              |
-| `prev`                                                           | [models.UserEventPayloadPrev](../models/usereventpayloadprev.md) | :heavy_check_mark:                                               | N/A                                                              |
-| `projectName`                                                    | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
+| Field                             | Type                              | Required                          | Description                       |
+| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| `previewDeploymentSuffix`         | *string*                          | :heavy_minus_sign:                | N/A                               |
+| `previousPreviewDeploymentSuffix` | *string*                          | :heavy_minus_sign:                | N/A                               |

@@ -5,31 +5,25 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSixtyFive } from "@vercel/sdk/models/threehundredandsixtytwo.js";
+import { ThreeHundredAndSixtyFive } from "@vercel/sdk/models/threehundredandone.js";
 
 let value: ThreeHundredAndSixtyFive = {
-  budget: {
-    budgetItem: {
-      createdAt: 8520.81,
-      fixedBudget: 5764.15,
-      id: "<id>",
-      isActive: false,
-      notifiedAt: [
-        9290.56,
-        7882.45,
-      ],
-      previousSpend: [],
-      teamId: "<id>",
-      type: "fixed",
-    },
-  },
+  bitbucketEmail: "<value>",
+  bitbucketLogin: "<value>",
+  bitbucketName: "<value>",
+  email: "Nico.Weimann@gmail.com",
+  zeitAccount: "<value>",
+  zeitAccountType: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `budget`                                                                   | [models.UserEventPayload365Budget](../models/usereventpayload365budget.md) | :heavy_check_mark:                                                         | N/A                                                                        |
-| `projectId`                                                                | *string*                                                                   | :heavy_minus_sign:                                                         | Stored for project budgets. Same value as `budget.scopeId`.                |
-| `projectName`                                                              | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `bitbucketEmail`   | *string*           | :heavy_check_mark: | N/A                |
+| `bitbucketLogin`   | *string*           | :heavy_check_mark: | N/A                |
+| `bitbucketName`    | *string*           | :heavy_check_mark: | N/A                |
+| `email`            | *string*           | :heavy_check_mark: | N/A                |
+| `zeitAccount`      | *string*           | :heavy_check_mark: | N/A                |
+| `zeitAccountType`  | *string*           | :heavy_check_mark: | N/A                |

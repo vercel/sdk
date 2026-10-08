@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateProjectDefaultResourceConfig } from "@vercel/sdk/models/updateprojectsourcesprojects1.js";
+import { UpdateProjectDefaultResourceConfig } from "@vercel/sdk/models/updateprojectsourcesprojects2.js";
 
 let value: UpdateProjectDefaultResourceConfig = {
   functionDefaultRegions: [],
@@ -28,3 +28,4 @@ let value: UpdateProjectDefaultResourceConfig = {
 | `functionDefaultTimeout`                                                                                                     | *number*                                                                                                                     | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |
 | `functionZeroConfigFailover`                                                                                                 | *boolean*                                                                                                                    | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |
 | `isNSNBDisabled`                                                                                                             | *boolean*                                                                                                                    | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |
+| `elasticBuildMachine`                                                                                                        | [models.UpdateProjectElasticBuildMachine](../models/updateprojectelasticbuildmachine.md)                                     | :heavy_minus_sign:                                                                                                           | Internal assignment, intentionally excluded from API input/output schemas.                                                   |

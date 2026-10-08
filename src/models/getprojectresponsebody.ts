@@ -77,12 +77,28 @@ import {
   GetProjectProjectsBranchMatcher$inboundSchema,
   GetProjectProjectsCreator,
   GetProjectProjectsCreator$inboundSchema,
-  GetProjectReadyState,
-  GetProjectReadyState$inboundSchema,
-  GetProjectReadySubstate,
-  GetProjectReadySubstate$inboundSchema,
-} from "./getprojectreadysubstate.js";
+} from "./getprojectplan.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const GetProjectReadyState = {
+  Blocked: "BLOCKED",
+  Building: "BUILDING",
+  Canceled: "CANCELED",
+  Error: "ERROR",
+  Initializing: "INITIALIZING",
+  Queued: "QUEUED",
+  Ready: "READY",
+} as const;
+export type GetProjectReadyState = ClosedEnum<typeof GetProjectReadyState>;
+
+export const GetProjectReadySubstate = {
+  Promoted: "PROMOTED",
+  Rolling: "ROLLING",
+  Staged: "STAGED",
+} as const;
+export type GetProjectReadySubstate = ClosedEnum<
+  typeof GetProjectReadySubstate
+>;
 
 export const GetProjectProjectsResponse200Type = {
   Lambdas: "LAMBDAS",
@@ -2900,6 +2916,16 @@ export type GetProjectResponseBody = {
   v0Created?: boolean | undefined;
   webAnalytics?: GetProjectWebAnalytics | undefined;
 };
+
+/** @internal */
+export const GetProjectReadyState$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectReadyState
+> = z.nativeEnum(GetProjectReadyState);
+
+/** @internal */
+export const GetProjectReadySubstate$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectReadySubstate
+> = z.nativeEnum(GetProjectReadySubstate);
 
 /** @internal */
 export const GetProjectProjectsResponse200Type$inboundSchema: z.ZodNativeEnum<

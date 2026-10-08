@@ -8,21 +8,16 @@ The payload of the event, if requested.
 import { OneHundredAndTwentyFive } from "@vercel/sdk/models/usereventjobaction.js";
 
 let value: OneHundredAndTwentyFive = {
-  domain: "grouchy-compromise.com",
-  id: "<id>",
-  name: "<value>",
-  type: "<value>",
-  value: "<value>",
+  mode: "none",
+  previousMode: "none",
+  scope: "organization",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `domain`           | *string*           | :heavy_check_mark: | N/A                |
-| `id`               | *string*           | :heavy_check_mark: | N/A                |
-| `mxPriority`       | *number*           | :heavy_minus_sign: | N/A                |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
-| `type`             | *string*           | :heavy_check_mark: | N/A                |
-| `value`            | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `mode`                                                                   | [models.UserEventPayload125Mode](../models/usereventpayload125mode.md)   | :heavy_check_mark:                                                       | N/A                                                                      |
+| `previousMode`                                                           | [models.PreviousMode](../models/previousmode.md)                         | :heavy_check_mark:                                                       | N/A                                                                      |
+| `scope`                                                                  | [models.UserEventPayload125Scope](../models/usereventpayload125scope.md) | :heavy_check_mark:                                                       | N/A                                                                      |

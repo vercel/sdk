@@ -5,7 +5,7 @@ The setting which selected the build machine when the deployment was created. Fr
 ## Example Usage
 
 ```typescript
-import { GetDeploymentResponseBodySelectionSource } from "@vercel/sdk/models/getdeploymentservicesdeploymentsmiddlewarematcher.js";
+import { GetDeploymentResponseBodySelectionSource } from "@vercel/sdk/models/getdeploymentmaxdurationdeploymentsresponse2002.js";
 
 let value: GetDeploymentResponseBodySelectionSource = "team-entitlement";
 ```

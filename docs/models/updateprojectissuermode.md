@@ -5,7 +5,7 @@ team: `https://oidc.vercel.com/[team_slug]` global: `https://oidc.vercel.com`
 ## Example Usage
 
 ```typescript
-import { UpdateProjectIssuerMode } from "@vercel/sdk/models/updateprojectsourcesprojects1.js";
+import { UpdateProjectIssuerMode } from "@vercel/sdk/models/updateprojectsourcesprojects2.js";
 
 let value: UpdateProjectIssuerMode = "team";
 ```

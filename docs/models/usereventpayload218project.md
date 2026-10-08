@@ -3,18 +3,18 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload218Project } from "@vercel/sdk/models/usereventpayload172next.js";
+import { UserEventPayload218Project } from "@vercel/sdk/models/lasteditedbyprincipal2.js";
 
 let value: UserEventPayload218Project = {
-  staticIps: {
-    enabled: true,
-  },
+  id: "<id>",
+  name: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                      | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `id`                                       | *string*                                   | :heavy_minus_sign:                         | N/A                                        |
-| `staticIps`                                | [models.StaticIps](../models/staticips.md) | :heavy_check_mark:                         | N/A                                        |
+| Field                   | Type                    | Required                | Description             |
+| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
+| `id`                    | *string*                | :heavy_check_mark:      | N/A                     |
+| `microfrontends`        | *models.Microfrontends* | :heavy_minus_sign:      | N/A                     |
+| `name`                  | *string*                | :heavy_check_mark:      | N/A                     |

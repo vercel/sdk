@@ -5,7 +5,7 @@ Allowlist entry for GitHub and Bitbucket, whose repos are identified by a flat `
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsSources1 } from "@vercel/sdk/models/updatemicrofrontendsprojectsresponse200type.js";
+import { UpdateMicrofrontendsSources1 } from "@vercel/sdk/models/updatemicrofrontendsreadystate.js";
 
 let value: UpdateMicrofrontendsSources1 = {
   org: "<value>",

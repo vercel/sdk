@@ -138,6 +138,7 @@ export type ListDeploymentCheckRunsRuns2 = {
   ownerId: string;
   projectId?: string | undefined;
   requires?: ListDeploymentCheckRunsRunsChecksV2Requires | undefined;
+  startedAt?: number | undefined;
   status: ListDeploymentCheckRunsRunsChecksV2Status;
   targets?: Array<string> | undefined;
   taskSummary?: ListDeploymentCheckRunsRunsChecksV2TaskSummary | undefined;
@@ -366,6 +367,7 @@ export type ListDeploymentCheckRunsRuns1 = {
   ownerId: string;
   projectId?: string | undefined;
   requires?: ListDeploymentCheckRunsRunsRequires | undefined;
+  startedAt?: number | undefined;
   status: ListDeploymentCheckRunsRunsStatus;
   targets?: Array<string> | undefined;
   taskSummary?: ListDeploymentCheckRunsRunsTaskSummary | undefined;
@@ -609,6 +611,7 @@ export const ListDeploymentCheckRunsRuns2$inboundSchema: z.ZodType<
   requires: types.optional(
     ListDeploymentCheckRunsRunsChecksV2Requires$inboundSchema,
   ),
+  startedAt: types.optional(types.number()),
   status: ListDeploymentCheckRunsRunsChecksV2Status$inboundSchema,
   targets: types.optional(z.array(types.string())),
   taskSummary: types.optional(
@@ -1014,6 +1017,7 @@ export const ListDeploymentCheckRunsRuns1$inboundSchema: z.ZodType<
   ownerId: types.string(),
   projectId: types.optional(types.string()),
   requires: types.optional(ListDeploymentCheckRunsRunsRequires$inboundSchema),
+  startedAt: types.optional(types.number()),
   status: ListDeploymentCheckRunsRunsStatus$inboundSchema,
   targets: types.optional(z.array(types.string())),
   taskSummary: types.optional(

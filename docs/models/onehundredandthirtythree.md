@@ -8,8 +8,8 @@ The payload of the event, if requested.
 import { OneHundredAndThirtyThree } from "@vercel/sdk/models/usereventjobaction.js";
 
 let value: OneHundredAndThirtyThree = {
-  domainId: "<id>",
   name: "<value>",
+  price: 6417.25,
 };
 ```
 
@@ -17,5 +17,6 @@ let value: OneHundredAndThirtyThree = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `domainId`         | *string*           | :heavy_check_mark: | N/A                |
+| `currency`         | *string*           | :heavy_minus_sign: | N/A                |
 | `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `price`            | *number*           | :heavy_check_mark: | N/A                |

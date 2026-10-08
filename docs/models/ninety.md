@@ -5,13 +5,11 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { Ninety } from "@vercel/sdk/models/sixty.js";
+import { Ninety } from "@vercel/sdk/models/payloadscopes.js";
 
 let value: Ninety = {
-  documentId: "<id>",
-  fingerprint: "<value>",
-  slug: "<value>",
-  title: "<value>",
+  dst: "<value>",
+  src: "<value>",
 };
 ```
 
@@ -19,7 +17,5 @@ let value: Ninety = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `documentId`       | *string*           | :heavy_check_mark: | N/A                |
-| `fingerprint`      | *string*           | :heavy_check_mark: | N/A                |
-| `slug`             | *string*           | :heavy_check_mark: | N/A                |
-| `title`            | *string*           | :heavy_check_mark: | N/A                |
+| `dst`              | *string*           | :heavy_check_mark: | N/A                |
+| `src`              | *string*           | :heavy_check_mark: | N/A                |

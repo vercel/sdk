@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectCrons } from "@vercel/sdk/models/getprojectreadysubstate.js";
+import { GetProjectCrons } from "@vercel/sdk/models/getprojectplan.js";
 
 let value: GetProjectCrons = {
   definitions: [

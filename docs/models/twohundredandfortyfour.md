@@ -8,18 +8,19 @@ The payload of the event, if requested.
 import { TwoHundredAndFortyFour } from "@vercel/sdk/models/siftroute.js";
 
 let value: TwoHundredAndFortyFour = {
-  next: {},
-  previous: {},
+  justification: "<value>",
+  previousStatus: "<value>",
   projectId: "<id>",
-  projectName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `next`                                                                         | [models.UserEventPayload244Next](../models/usereventpayload244next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload244Previous](../models/usereventpayload244previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `headerName`                                   | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `justification`                                | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `kind`                                         | [models.PayloadKind](../models/payloadkind.md) | :heavy_minus_sign:                             | N/A                                            |
+| `previousStatus`                               | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `projectId`                                    | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `url`                                          | *string*                                       | :heavy_minus_sign:                             | N/A                                            |

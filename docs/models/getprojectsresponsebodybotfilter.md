@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyBotFilter } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson2projectssecuritymanagedrulesowaspaction.js";
+import { GetProjectsResponseBodyBotFilter } from "@vercel/sdk/models/getprojectslink8.js";
 
 let value: GetProjectsResponseBodyBotFilter = {
   active: true,

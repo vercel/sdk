@@ -8,20 +8,16 @@ The payload of the event, if requested.
 import { OneHundredAndSeventyFive } from "@vercel/sdk/models/lasteditedbyprincipal2.js";
 
 let value: OneHundredAndSeventyFive = {
+  configVersion: 7329.81,
   projectId: "<id>",
-  ruleGroups: {
-    "key": {
-      active: false,
-    },
-  },
-  rulesetName: "<value>",
+  projectName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `projectId`                                                  | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `ruleGroups`                                                 | Record<string, [models.RuleGroups](../models/rulegroups.md)> | :heavy_check_mark:                                           | N/A                                                          |
-| `rulesetName`                                                | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| Field                  | Type                   | Required               | Description            |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `configVersion`        | *models.ConfigVersion* | :heavy_check_mark:     | N/A                    |
+| `projectId`            | *string*               | :heavy_check_mark:     | N/A                    |
+| `projectName`          | *string*               | :heavy_check_mark:     | N/A                    |

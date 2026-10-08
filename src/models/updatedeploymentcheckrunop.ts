@@ -174,6 +174,7 @@ export type UpdateDeploymentCheckRunResponseBody2 = {
   ownerId: string;
   projectId?: string | undefined;
   requires?: UpdateDeploymentCheckRunResponseBodyChecksV2Requires | undefined;
+  startedAt?: number | undefined;
   status: UpdateDeploymentCheckRunResponseBodyChecksV2Status;
   targets?: Array<string> | undefined;
   taskSummary?:
@@ -406,6 +407,7 @@ export type UpdateDeploymentCheckRunResponseBody1 = {
   ownerId: string;
   projectId?: string | undefined;
   requires?: UpdateDeploymentCheckRunResponseBodyRequires | undefined;
+  startedAt?: number | undefined;
   status: UpdateDeploymentCheckRunResponseBodyStatus;
   targets?: Array<string> | undefined;
   taskSummary?: UpdateDeploymentCheckRunResponseBodyTaskSummary | undefined;
@@ -724,6 +726,7 @@ export const UpdateDeploymentCheckRunResponseBody2$inboundSchema: z.ZodType<
   requires: types.optional(
     UpdateDeploymentCheckRunResponseBodyChecksV2Requires$inboundSchema,
   ),
+  startedAt: types.optional(types.number()),
   status: UpdateDeploymentCheckRunResponseBodyChecksV2Status$inboundSchema,
   targets: types.optional(z.array(types.string())),
   taskSummary: types.optional(
@@ -1159,6 +1162,7 @@ export const UpdateDeploymentCheckRunResponseBody1$inboundSchema: z.ZodType<
   requires: types.optional(
     UpdateDeploymentCheckRunResponseBodyRequires$inboundSchema,
   ),
+  startedAt: types.optional(types.number()),
   status: UpdateDeploymentCheckRunResponseBodyStatus$inboundSchema,
   targets: types.optional(z.array(types.string())),
   taskSummary: types.optional(

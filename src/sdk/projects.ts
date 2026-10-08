@@ -81,10 +81,10 @@ import {
   GetProjectEnvRequest,
   GetProjectEnvResponseBody,
 } from "../models/getprojectenvop.js";
-import { GetProjectRequest } from "../models/getprojectreadysubstate.js";
+import { GetProjectRequest } from "../models/getprojectplan.js";
 import { GetProjectResponseBody } from "../models/getprojectresponsebody.js";
 import { GetProjectsResponseBody } from "../models/getprojectsresponsebody.js";
-import { GetProjectsRequest } from "../models/getprojectsresponsebodyprojectsresponse200applicationjson3creator.js";
+import { GetProjectsRequest } from "../models/getprojectsresponsebodyprojectsresponse200applicationjson3checksconclusion.js";
 import {
   GetProjectTokenRequest,
   GetProjectTokenResponseBody,
@@ -93,7 +93,7 @@ import {
   GetProjectTraceRequest,
   GetProjectTraceResponseBody,
 } from "../models/getprojecttraceop.js";
-import { CreateProjectRequest } from "../models/internalroutes1.js";
+import { CreateProjectRequest } from "../models/internalroutesmitigate.js";
 import {
   ListPromoteAliasesRequest,
   ListPromoteAliasesResponseBody,
@@ -114,7 +114,7 @@ import {
 import { RequestPromoteRequest } from "../models/requestpromoteop.js";
 import { RequestRollbackRequest } from "../models/requestrollbackop.js";
 import { UnpauseProjectRequest } from "../models/unpauseprojectop.js";
-import { UpdateMicrofrontendsRequest } from "../models/updatemicrofrontendsprojectsresponse200type.js";
+import { UpdateMicrofrontendsRequest } from "../models/updatemicrofrontendsreadystate.js";
 import { UpdateMicrofrontendsResponseBody } from "../models/updatemicrofrontendsresponsebody.js";
 import {
   UpdateProjectDomainRequest,
@@ -126,8 +126,8 @@ import {
 } from "../models/updateprojectprotectionbypassop.js";
 import { UpdateProjectResponseBody } from "../models/updateprojectresponsebody.js";
 import { UpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequest } from "../models/updateprojectsbyprojectidrollbackbydeploymentidupdatedescriptionop.js";
-import { UpdateProjectRequest } from "../models/updateprojectsourcesprojects1.js";
-import { UploadProjectAvatarRequest } from "../models/uploadprojectavatarlatestdeployments.js";
+import { UpdateProjectRequest } from "../models/updateprojectsourcesprojects2.js";
+import { UploadProjectAvatarRequest } from "../models/uploadprojectavatarreadysubstate.js";
 import { UploadProjectAvatarResponseBody } from "../models/uploadprojectavatarresponsebody.js";
 import {
   VerifyProjectDomainRequest,

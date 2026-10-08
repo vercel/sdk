@@ -5,25 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndEighteen } from "@vercel/sdk/models/usereventjobaction.js";
+import { OneHundredAndEighteen } from "@vercel/sdk/models/payloadscopes.js";
 
 let value: OneHundredAndEighteen = {
-  gitCommitterName: "<value>",
-  gitUserPlatform: "<value>",
+  checkId: "<id>",
+  checkName: "<value>",
+  projectId: "<id>",
   projectName: "<value>",
-  sha: "<value>",
-  source: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `gitCommitterName`                                                         | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `gitUserPlatform`                                                          | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `projectId`                                                                | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
-| `projectName`                                                              | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `reason`                                                                   | [models.UserEventPayload118Reason](../models/usereventpayload118reason.md) | :heavy_minus_sign:                                                         | N/A                                                                        |
-| `sha`                                                                      | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `source`                                                                   | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `checkId`          | *string*           | :heavy_check_mark: | N/A                |
+| `checkName`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |

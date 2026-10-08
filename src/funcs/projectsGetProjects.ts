@@ -18,7 +18,7 @@ import {
 import {
   GetProjectsRequest,
   GetProjectsRequest$outboundSchema,
-} from "../models/getprojectsresponsebodyprojectsresponse200applicationjson3creator.js";
+} from "../models/getprojectsresponsebodyprojectsresponse200applicationjson3checksconclusion.js";
 import {
   ConnectionError,
   InvalidRequestError,
@@ -112,9 +112,11 @@ async function $do(
     "repoId": payload.repoId,
     "repoUrl": payload.repoUrl,
     "search": payload.search,
+    "since": payload.since,
     "slug": payload.slug,
     "staticIpsEnabled": payload.staticIpsEnabled,
     "teamId": payload.teamId,
+    "until": payload.until,
   });
 
   const headers = new Headers(compactMap({

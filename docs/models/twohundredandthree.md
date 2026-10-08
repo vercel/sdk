@@ -8,7 +8,8 @@ The payload of the event, if requested.
 import { TwoHundredAndThree } from "@vercel/sdk/models/lasteditedbyprincipal2.js";
 
 let value: TwoHundredAndThree = {
-  logDrainUrl: "https://our-ruin.name",
+  issuerId: "<id>",
+  issuerName: "<value>",
 };
 ```
 
@@ -16,5 +17,6 @@ let value: TwoHundredAndThree = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `integrationName`  | *string*           | :heavy_minus_sign: | N/A                |
-| `logDrainUrl`      | *string*           | :heavy_check_mark: | N/A                |
+| `issuerId`         | *string*           | :heavy_check_mark: | N/A                |
+| `issuerName`       | *string*           | :heavy_check_mark: | N/A                |
+| `keyId`            | *string*           | :heavy_minus_sign: | N/A                |

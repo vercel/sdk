@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectAliasError } from "@vercel/sdk/models/createprojecttoprojects1.js";
+import { CreateProjectAliasError } from "@vercel/sdk/models/createprojecttoprojects2.js";
 
 let value: CreateProjectAliasError = {
   code: "<value>",

@@ -8,16 +8,14 @@ The payload of the event, if requested.
 import { OneHundredAndTwentyOne } from "@vercel/sdk/models/usereventjobaction.js";
 
 let value: OneHundredAndTwentyOne = {
-  mode: "none",
-  previousMode: "none",
-  scope: "organization",
+  url: "https://warped-turret.info/",
 };
 ```
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `mode`                                                                   | [models.UserEventPayload121Mode](../models/usereventpayload121mode.md)   | :heavy_check_mark:                                                       | N/A                                                                      |
-| `previousMode`                                                           | [models.PreviousMode](../models/previousmode.md)                         | :heavy_check_mark:                                                       | N/A                                                                      |
-| `scope`                                                                  | [models.UserEventPayload121Scope](../models/usereventpayload121scope.md) | :heavy_check_mark:                                                       | N/A                                                                      |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `newTeam`                                                              | [models.UserEventPayloadNewTeam](../models/usereventpayloadnewteam.md) | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `oldTeam`                                                              | [models.UserEventPayloadOldTeam](../models/usereventpayloadoldteam.md) | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `url`                                                                  | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |

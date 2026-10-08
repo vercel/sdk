@@ -8,25 +8,16 @@ The payload of the event, if requested.
 import { OneHundredAndFiftySix } from "@vercel/sdk/models/usereventjobaction.js";
 
 let value: OneHundredAndFiftySix = {
-  edgeConfig: {
-    id: "<id>",
-    slug: "<value>",
-  },
-  fromAccount: {
-    id: "<id>",
-    type: "user",
-  },
-  toAccount: {
-    id: "<id>",
-    type: "user",
-  },
+  edgeConfigDigest: "<value>",
+  edgeConfigId: "<id>",
+  edgeConfigSlug: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `edgeConfig`                                   | [models.EdgeConfig](../models/edgeconfig.md)   | :heavy_check_mark:                             | N/A                                            |
-| `fromAccount`                                  | [models.FromAccount](../models/fromaccount.md) | :heavy_check_mark:                             | N/A                                            |
-| `toAccount`                                    | [models.ToAccount](../models/toaccount.md)     | :heavy_check_mark:                             | N/A                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `edgeConfigDigest` | *string*           | :heavy_check_mark: | N/A                |
+| `edgeConfigId`     | *string*           | :heavy_check_mark: | N/A                |
+| `edgeConfigSlug`   | *string*           | :heavy_check_mark: | N/A                |

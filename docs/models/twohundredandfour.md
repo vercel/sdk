@@ -8,14 +8,19 @@ The payload of the event, if requested.
 import { TwoHundredAndFour } from "@vercel/sdk/models/lasteditedbyprincipal2.js";
 
 let value: TwoHundredAndFour = {
-  login: "Josh84",
-  provider: "saml",
+  issuerId: "<id>",
+  issuerName: "<value>",
+  kind: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `login`                                                                        | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `provider`                                                                     | [models.UserEventPayload204Provider](../models/usereventpayload204provider.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `clientId`         | *string*           | :heavy_minus_sign: | N/A                |
+| `environments`     | *string*[]         | :heavy_minus_sign: | N/A                |
+| `issuerId`         | *string*           | :heavy_check_mark: | N/A                |
+| `issuerName`       | *string*           | :heavy_check_mark: | N/A                |
+| `kind`             | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_minus_sign: | N/A                |

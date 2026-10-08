@@ -5,22 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndFiftyOne } from "@vercel/sdk/models/fourhundredandtwentythree.js";
+import { FourHundredAndFiftyOne } from "@vercel/sdk/models/fourhundredandtwentyseven.js";
 
 let value: FourHundredAndFiftyOne = {
-  email: "Florencio.Wunsch65@hotmail.com",
-  prevEmail: "<value>",
-  actorId: "<id>",
-  actorType: "admin",
+  enabled: false,
+  totpVerified: true,
 };
 ```
 
 ## Fields
 
-| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `email`                                                                          | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
-| `prevEmail`                                                                      | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
-| `actorId`                                                                        | *string*                                                                         | :heavy_check_mark:                                                               | Okta user id.                                                                    |
-| `actorName`                                                                      | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `actorType`                                                                      | [models.UserEventPayload451ActorType](../models/usereventpayload451actortype.md) | :heavy_check_mark:                                                               | N/A                                                                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
+| `totpVerified`     | *boolean*          | :heavy_check_mark: | N/A                |

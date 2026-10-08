@@ -8,32 +8,14 @@ The payload of the event, if requested.
 import { TwoHundredAndNineteen } from "@vercel/sdk/models/lasteditedbyprincipal2.js";
 
 let value: TwoHundredAndNineteen = {
-  directoryGroupId: "<id>",
-  directoryId: "<id>",
-  groupName: "<value>",
-  next: {
-    organizationPermissions: [
-      "OrgAdmin",
-    ],
-    teamRoles: [
-      "MEMBER",
-    ],
-    teams: {
-      "key": {
-        teamRoles: [],
-      },
-    },
-  },
-  organizationId: "<id>",
+  alertId: "<id>",
+  alertName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `directoryGroupId`                             | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `directoryId`                                  | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `groupName`                                    | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `next`                                         | [models.PayloadNext](../models/payloadnext.md) | :heavy_check_mark:                             | N/A                                            |
-| `organizationId`                               | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `alertId`          | *string*           | :heavy_check_mark: | N/A                |
+| `alertName`        | *string*           | :heavy_check_mark: | N/A                |

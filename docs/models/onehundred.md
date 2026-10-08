@@ -5,20 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundred } from "@vercel/sdk/models/sixty.js";
+import { OneHundred } from "@vercel/sdk/models/payloadscopes.js";
 
 let value: OneHundred = {
-  gitlabEmail: "<value>",
-  gitlabLogin: "<value>",
+  configuration: {
+    id: "<id>",
+  },
+  newName: "<value>",
+  team: {
+    id: "<id>",
+    name: "<value>",
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `gitlabEmail`      | *string*           | :heavy_check_mark: | N/A                |
-| `gitlabLogin`      | *string*           | :heavy_check_mark: | N/A                |
-| `gitlabName`       | *string*           | :heavy_minus_sign: | N/A                |
-| `zeitAccount`      | *string*           | :heavy_minus_sign: | N/A                |
-| `zeitAccountType`  | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `configuration`                                                                          | [models.UserEventPayload100Configuration](../models/usereventpayload100configuration.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `newName`                                                                                | *string*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `team`                                                                                   | [models.UserEventPayload100Team](../models/usereventpayload100team.md)                   | :heavy_check_mark:                                                                       | N/A                                                                                      |

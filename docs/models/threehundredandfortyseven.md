@@ -5,19 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFortySeven } from "@vercel/sdk/models/twohundredandninetyseven.js";
+import { ThreeHundredAndFortySeven } from "@vercel/sdk/models/threehundredandone.js";
 
 let value: ThreeHundredAndFortySeven = {
-  alias: "<value>",
-  sandboxName: "<value>",
+  projectId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `alias`            | *string*           | :heavy_check_mark: | N/A                |
-| `projectId`        | *string*           | :heavy_minus_sign: | N/A                |
-| `sandboxId`        | *string*           | :heavy_minus_sign: | N/A                |
-| `sandboxName`      | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `projectId`                                                                          | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `projectName`                                                                        | *string*                                                                             | :heavy_minus_sign:                                                                   | Display name for Activity links. Optional for events stored before it was published. |
+| `reasonCode`                                                                         | [models.PayloadReasonCode](../models/payloadreasoncode.md)                           | :heavy_minus_sign:                                                                   | N/A                                                                                  |

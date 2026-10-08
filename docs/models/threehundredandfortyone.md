@@ -5,9 +5,13 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFortyOne } from "@vercel/sdk/models/twohundredandninetyseven.js";
+import { ThreeHundredAndFortyOne } from "@vercel/sdk/models/threehundredandone.js";
 
 let value: ThreeHundredAndFortyOne = {
+  next: {
+    skewProtectionMaxAge: 2418.45,
+  },
+  previous: {},
   projectId: "<id>",
   projectName: "<value>",
 };
@@ -15,11 +19,9 @@ let value: ThreeHundredAndFortyOne = {
 
 ## Fields
 
-| Field                                              | Type                                               | Required                                           | Description                                        |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `addedAddresses`                                   | *string*[]                                         | :heavy_minus_sign:                                 | N/A                                                |
-| `oldTrustedIps`                                    | [models.OldTrustedIps](../models/oldtrustedips.md) | :heavy_minus_sign:                                 | N/A                                                |
-| `projectId`                                        | *string*                                           | :heavy_check_mark:                                 | N/A                                                |
-| `projectName`                                      | *string*                                           | :heavy_check_mark:                                 | N/A                                                |
-| `removedAddresses`                                 | *string*[]                                         | :heavy_minus_sign:                                 | N/A                                                |
-| `trustedIps`                                       | [models.TrustedIps](../models/trustedips.md)       | :heavy_minus_sign:                                 | N/A                                                |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `next`                                                                         | [models.UserEventPayload341Next](../models/usereventpayload341next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload341Previous](../models/usereventpayload341previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |

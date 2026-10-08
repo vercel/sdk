@@ -5,19 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndTwenty } from "@vercel/sdk/models/threehundredandsixtytwo.js";
+import { FourHundredAndTwenty } from "@vercel/sdk/models/threehundredandsixtysix.js";
 
 let value: FourHundredAndTwenty = {
-  tokenTypes: [
-    "<value 1>",
-    "<value 2>",
-    "<value 3>",
-  ],
+  enabled: "on",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `tokenTypes`       | *string*[]         | :heavy_check_mark: | N/A                |
+| Field                                                | Type                                                 | Required                                             | Description                                          |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| `enabled`                                            | [models.PayloadEnabled](../models/payloadenabled.md) | :heavy_check_mark:                                   | N/A                                                  |

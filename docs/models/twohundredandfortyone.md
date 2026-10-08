@@ -8,19 +8,16 @@ The payload of the event, if requested.
 import { TwoHundredAndFortyOne } from "@vercel/sdk/models/siftroute.js";
 
 let value: TwoHundredAndFortyOne = {
-  justification: "<value>",
-  pattern: "<value>",
   projectId: "<id>",
-  projectName: "<value>",
+  resourceUrl: "https://enlightened-instruction.biz",
+  type: "script",
 };
 ```
 
 ## Fields
 
-| Field                  | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `justification`        | *string*               | :heavy_check_mark:     | N/A                    |
-| `pattern`              | *string*               | :heavy_check_mark:     | N/A                    |
-| `projectId`            | *string*               | :heavy_check_mark:     | N/A                    |
-| `projectName`          | *string*               | :heavy_check_mark:     | N/A                    |
-| `additionalProperties` | Record<string, *any*>  | :heavy_minus_sign:     | N/A                    |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `projectId`                                                      | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `resourceUrl`                                                    | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `type`                                                           | [models.UserEventPayloadType](../models/usereventpayloadtype.md) | :heavy_check_mark:                                               | N/A                                                              |

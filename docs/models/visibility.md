@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { Visibility } from "@vercel/sdk/models/usereventjobaction.js";
+import { Visibility } from "@vercel/sdk/models/via3.js";
 
-let value: Visibility = "config";
+let value: Visibility = "private";
 ```
 
 ## Values
 
 ```typescript
-"config" | "secret"
+"private" | "team"
 ```

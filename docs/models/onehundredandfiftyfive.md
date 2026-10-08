@@ -8,8 +8,8 @@ The payload of the event, if requested.
 import { OneHundredAndFiftyFive } from "@vercel/sdk/models/usereventjobaction.js";
 
 let value: OneHundredAndFiftyFive = {
-  edgeConfigId: "<id>",
-  edgeConfigSlug: "<value>",
+  projectId: "<id>",
+  projectName: "<value>",
 };
 ```
 
@@ -17,6 +17,5 @@ let value: OneHundredAndFiftyFive = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `edgeConfigDigest` | *string*           | :heavy_minus_sign: | N/A                |
-| `edgeConfigId`     | *string*           | :heavy_check_mark: | N/A                |
-| `edgeConfigSlug`   | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |

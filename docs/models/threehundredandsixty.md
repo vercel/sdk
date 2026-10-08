@@ -5,27 +5,18 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSixty } from "@vercel/sdk/models/twohundredandninetyseven.js";
+import { ThreeHundredAndSixty } from "@vercel/sdk/models/threehundredandone.js";
 
-let value: ThreeHundredAndSixty = {};
+let value: ThreeHundredAndSixty = {
+  newName: "<value>",
+  oldName: "<value>",
+};
 ```
 
 ## Fields
 
-| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `env`                                                        | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
-| `factors`                                                    | [models.PayloadFactors](../models/payloadfactors.md)[]       | :heavy_minus_sign:                                           | N/A                                                          |
-| `geolocation`                                                | [models.PayloadGeolocation](../models/payloadgeolocation.md) | :heavy_minus_sign:                                           | N/A                                                          |
-| `os`                                                         | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
-| `ssoType`                                                    | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
-| `userAgent`                                                  | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
-| `username`                                                   | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
-| `viaApple`                                                   | *boolean*                                                    | :heavy_minus_sign:                                           | N/A                                                          |
-| `viaBitbucket`                                               | *boolean*                                                    | :heavy_minus_sign:                                           | N/A                                                          |
-| `viaGithub`                                                  | *boolean*                                                    | :heavy_minus_sign:                                           | N/A                                                          |
-| `viaGitlab`                                                  | *boolean*                                                    | :heavy_minus_sign:                                           | N/A                                                          |
-| `viaGoogle`                                                  | *boolean*                                                    | :heavy_minus_sign:                                           | N/A                                                          |
-| `viaOTP`                                                     | *boolean*                                                    | :heavy_minus_sign:                                           | N/A                                                          |
-| `viaPasskey`                                                 | *boolean*                                                    | :heavy_minus_sign:                                           | N/A                                                          |
-| `viaSamlSso`                                                 | *boolean*                                                    | :heavy_minus_sign:                                           | N/A                                                          |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `newName`          | *string*           | :heavy_check_mark: | N/A                |
+| `oldName`          | *string*           | :heavy_check_mark: | N/A                |
+| `uid`              | *string*           | :heavy_minus_sign: | N/A                |

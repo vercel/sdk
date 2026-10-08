@@ -5,20 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndNinetySeven } from "@vercel/sdk/models/threehundredandsixtytwo.js";
+import { ThreeHundredAndNinetySeven } from "@vercel/sdk/models/threehundredandsixtysix.js";
 
-let value: ThreeHundredAndNinetySeven = {
-  entitlement: "<value>",
-  user: {
-    id: "<id>",
-    username: "Christopher.Cummings69",
-  },
-};
+let value: ThreeHundredAndNinetySeven = {};
 ```
 
 ## Fields
 
 | Field                                          | Type                                           | Required                                       | Description                                    |
 | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `entitlement`                                  | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `user`                                         | [models.PayloadUser](../models/payloaduser.md) | :heavy_check_mark:                             | N/A                                            |
+| `directoryType`                                | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `entitlements`                                 | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
+| `invitationRole`                               | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `invitedEmail`                                 | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `invitedUid`                                   | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `invitedUser`                                  | [models.InvitedUser](../models/inviteduser.md) | :heavy_minus_sign:                             | N/A                                            |
+| `origin`                                       | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `ssoType`                                      | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `teamSlug`                                     | *string*                                       | :heavy_minus_sign:                             | N/A                                            |

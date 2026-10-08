@@ -5,13 +5,18 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FiftyThree } from "@vercel/sdk/models/via.js";
+import { FiftyThree } from "@vercel/sdk/models/via3.js";
 
-let value: FiftyThree = {};
+let value: FiftyThree = {
+  alias: "<value>",
+};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `alias`            | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                  | Type                                   | Required                               | Description                            |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| `alias`                                | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `name`                                 | *string*                               | :heavy_minus_sign:                     | N/A                                    |
+| `newTeam`                              | [models.NewTeam](../models/newteam.md) | :heavy_minus_sign:                     | N/A                                    |
+| `oldTeam`                              | [models.OldTeam](../models/oldteam.md) | :heavy_minus_sign:                     | N/A                                    |

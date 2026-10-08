@@ -47,8 +47,6 @@ import {
   CreateProjectTargets$inboundSchema,
   CreateProjectTier,
   CreateProjectTier$inboundSchema,
-  CreateProjectToProjects1,
-  CreateProjectToProjects1$inboundSchema,
   CreateProjectToProjects2,
   CreateProjectToProjects2$inboundSchema,
   CreateProjectTracing,
@@ -75,7 +73,7 @@ import {
   RollingRelease$inboundSchema,
   SpeedInsights,
   SpeedInsights$inboundSchema,
-} from "./createprojecttoprojects1.js";
+} from "./createprojecttoprojects2.js";
 import {
   Alias,
   Alias$inboundSchema,
@@ -113,8 +111,26 @@ import {
   Features$inboundSchema,
   GitProviderOptions,
   GitProviderOptions$inboundSchema,
-} from "./internalroutes1.js";
+} from "./internalroutesmitigate.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const CreateProjectToProjectsResponsePreset = {
+  AllCustom: "all-custom",
+} as const;
+export type CreateProjectToProjectsResponsePreset = ClosedEnum<
+  typeof CreateProjectToProjectsResponsePreset
+>;
+
+/**
+ * The target envs on the current project that may be accessed.
+ */
+export type CreateProjectToProjects1 = {
+  preset?: CreateProjectToProjectsResponsePreset | undefined;
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs: Array<string>;
+};
 
 export type CreateProjectProjectsTo =
   | CreateProjectToProjects1
@@ -311,12 +327,38 @@ export type CreateProjectResponseBody = {
 };
 
 /** @internal */
+export const CreateProjectToProjectsResponsePreset$inboundSchema:
+  z.ZodNativeEnum<typeof CreateProjectToProjectsResponsePreset> = z.nativeEnum(
+    CreateProjectToProjectsResponsePreset,
+  );
+
+/** @internal */
+export const CreateProjectToProjects1$inboundSchema: z.ZodType<
+  CreateProjectToProjects1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  preset: types.optional(CreateProjectToProjectsResponsePreset$inboundSchema),
+  slugs: z.array(types.string()),
+});
+
+export function createProjectToProjects1FromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectToProjects1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectToProjects1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectToProjects1' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateProjectProjectsTo$inboundSchema: z.ZodType<
   CreateProjectProjectsTo,
   z.ZodTypeDef,
   unknown
 > = smartUnion([
-  CreateProjectToProjects1$inboundSchema,
+  z.lazy(() => CreateProjectToProjects1$inboundSchema),
   CreateProjectToProjects2$inboundSchema,
 ]);
 
@@ -338,7 +380,7 @@ export const CreateProjectCustomAllow$inboundSchema: z.ZodType<
 > = z.object({
   from: CreateProjectFrom$inboundSchema,
   to: smartUnion([
-    CreateProjectToProjects1$inboundSchema,
+    z.lazy(() => CreateProjectToProjects1$inboundSchema),
     CreateProjectToProjects2$inboundSchema,
   ]),
 });

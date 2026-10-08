@@ -8,11 +8,7 @@ The payload of the event, if requested.
 import { OneHundredAndFortyNine } from "@vercel/sdk/models/usereventjobaction.js";
 
 let value: OneHundredAndFortyNine = {
-  projectId: "<id>",
-  projectName: "<value>",
-  tags: [
-    "<value 1>",
-  ],
+  name: "<value>",
 };
 ```
 
@@ -20,7 +16,4 @@ let value: OneHundredAndFortyNine = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `tags`             | *string*[]         | :heavy_check_mark: | N/A                |
-| `target`           | *string*           | :heavy_minus_sign: | N/A                |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |

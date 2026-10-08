@@ -5,7 +5,7 @@
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarGitSources } from "@vercel/sdk/models/uploadprojectavatarlatestdeployments.js";
+import { UploadProjectAvatarGitSources } from "@vercel/sdk/models/uploadprojectavatarreadysubstate.js";
 
 let value: UploadProjectAvatarGitSources = {
   enabled: false,

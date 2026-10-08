@@ -85,18 +85,139 @@ import {
   ResponseBodyProjectSettings$inboundSchema,
   ResponseBodyReadyState,
   ResponseBodyReadyState$inboundSchema,
-} from "./getdeploymentservicesdeploymentsmiddlewarematcher.js";
+} from "./getdeploymentmaxdurationdeploymentsresponse2002.js";
 import {
   GetDeploymentServices2,
   GetDeploymentServices2$inboundSchema,
-  GetDeploymentServicesBuilder,
-  GetDeploymentServicesBuilder$inboundSchema,
-  GetDeploymentServicesEnv,
-  GetDeploymentServicesEnv$inboundSchema,
-  GetDeploymentServicesRoutePrefixSource,
-  GetDeploymentServicesRoutePrefixSource$inboundSchema,
-} from "./getdeploymentservicesrouteprefixsource.js";
+  GetDeploymentServicesDaemon,
+  GetDeploymentServicesDaemon$inboundSchema,
+  GetDeploymentServicesDeploymentsFunctions,
+  GetDeploymentServicesDeploymentsFunctions$inboundSchema,
+  GetDeploymentServicesExcludeFiles,
+  GetDeploymentServicesExcludeFiles$inboundSchema,
+  GetDeploymentServicesIncludeFiles,
+  GetDeploymentServicesIncludeFiles$inboundSchema,
+  GetDeploymentServicesMiddlewareMatcher,
+  GetDeploymentServicesMiddlewareMatcher$inboundSchema,
+  GetDeploymentServicesMiddlewareRuntime,
+  GetDeploymentServicesMiddlewareRuntime$inboundSchema,
+} from "./getdeploymentservicesmiddlewareruntime.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type GetDeploymentServicesDeploymentsProjectSettings = {
+  autoExposeSystemEnvs?: boolean | undefined;
+  buildCommand?: string | null | undefined;
+  commandForIgnoringBuildStep?: string | null | undefined;
+  createdAt?: number | undefined;
+  devCommand?: string | null | undefined;
+  directoryListing?: boolean | undefined;
+  framework?: string | null | undefined;
+  gitForkProtection?: boolean | undefined;
+  installCommand?: string | null | undefined;
+  monorepoManager?: string | null | undefined;
+  nodeVersion?: string | undefined;
+  outputDirectory?: string | null | undefined;
+  rootDirectory?: string | null | undefined;
+  sourceFilesOutsideRootDirectory?: boolean | undefined;
+};
+
+export type GetDeploymentServicesEntrypoints = {
+  /**
+   * Runtime-specific entrypoint locator from `vercel.json`.
+   */
+  entrypoint: string;
+  /**
+   * Names of the schedules that dispatch to this entrypoint, in config order.
+   */
+  scheduleNames: Array<string>;
+  /**
+   * Project-relative source file that contains the entrypoint.
+   */
+  sourceFile: string;
+};
+
+/**
+ * Set when this build produces a function for schedule entrypoints.
+ */
+export type GetDeploymentServicesScheduleFunction = {
+  entrypoints: Array<GetDeploymentServicesEntrypoints>;
+  /**
+   * Function output path every schedule in this build targets.
+   */
+  outputPath: string;
+};
+
+export type GetDeploymentServicesDeploymentsConfig = {
+  buildCommand?: string | undefined;
+  /**
+   * Buildpack runtime slug (e.g. "ruby").
+   */
+  buildpack?: string | undefined;
+  bundle?: boolean | undefined;
+  bunVersion?: string | undefined;
+  /**
+   * Set when this build produces the named daemon.
+   */
+  daemon?: GetDeploymentServicesDaemon | undefined;
+  debug?: boolean | undefined;
+  devCommand?: string | undefined;
+  excludeFiles?: GetDeploymentServicesExcludeFiles | undefined;
+  framework?: string | null | undefined;
+  functions?:
+    | { [k: string]: GetDeploymentServicesDeploymentsFunctions }
+    | undefined;
+  helpers?: boolean | undefined;
+  import?: { [k: string]: string } | undefined;
+  includeFiles?: GetDeploymentServicesIncludeFiles | undefined;
+  installCommand?: string | undefined;
+  ldsflags?: string | undefined;
+  maxLambdaSize?: string | undefined;
+  middleware?: boolean | undefined;
+  middlewareMatcher?: GetDeploymentServicesMiddlewareMatcher | undefined;
+  /**
+   * Enforced runtime for explicitly configured Routing Middleware.
+   */
+  middlewareRuntime?: GetDeploymentServicesMiddlewareRuntime | undefined;
+  nodeVersion?: string | undefined;
+  outputDirectory?: string | undefined;
+  projectSettings?: GetDeploymentServicesDeploymentsProjectSettings | undefined;
+  rust?: string | undefined;
+  /**
+   * Set when this build produces a function for schedule entrypoints.
+   */
+  scheduleFunction?: GetDeploymentServicesScheduleFunction | undefined;
+  /**
+   * Owning service name; scopes per-function config such as the v2beta consumer.
+   */
+  serviceName?: string | undefined;
+  zeroConfig?: boolean | undefined;
+};
+
+export type GetDeploymentServicesBuilder = {
+  config?: GetDeploymentServicesDeploymentsConfig | undefined;
+  src?: string | undefined;
+  use: string;
+};
+
+export const GetDeploymentServicesDeploymentsResponseType = {
+  ServiceRef: "service-ref",
+} as const;
+export type GetDeploymentServicesDeploymentsResponseType = ClosedEnum<
+  typeof GetDeploymentServicesDeploymentsResponseType
+>;
+
+export type GetDeploymentServicesEnv = {
+  service: string;
+  type: GetDeploymentServicesDeploymentsResponseType;
+};
+
+export const GetDeploymentServicesRoutePrefixSource = {
+  Configured: "configured",
+  Generated: "generated",
+} as const;
+export type GetDeploymentServicesRoutePrefixSource = ClosedEnum<
+  typeof GetDeploymentServicesRoutePrefixSource
+>;
 
 export type GetDeploymentServicesSchedule = string | Array<string>;
 
@@ -560,6 +681,198 @@ export type GetDeploymentResponseBody =
   | GetDeploymentResponseBody1;
 
 /** @internal */
+export const GetDeploymentServicesDeploymentsProjectSettings$inboundSchema:
+  z.ZodType<
+    GetDeploymentServicesDeploymentsProjectSettings,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    autoExposeSystemEnvs: types.optional(types.boolean()),
+    buildCommand: z.nullable(types.string()).optional(),
+    commandForIgnoringBuildStep: z.nullable(types.string()).optional(),
+    createdAt: types.optional(types.number()),
+    devCommand: z.nullable(types.string()).optional(),
+    directoryListing: types.optional(types.boolean()),
+    framework: z.nullable(types.string()).optional(),
+    gitForkProtection: types.optional(types.boolean()),
+    installCommand: z.nullable(types.string()).optional(),
+    monorepoManager: z.nullable(types.string()).optional(),
+    nodeVersion: types.optional(types.string()),
+    outputDirectory: z.nullable(types.string()).optional(),
+    rootDirectory: z.nullable(types.string()).optional(),
+    sourceFilesOutsideRootDirectory: types.optional(types.boolean()),
+  });
+
+export function getDeploymentServicesDeploymentsProjectSettingsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetDeploymentServicesDeploymentsProjectSettings,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentServicesDeploymentsProjectSettings$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetDeploymentServicesDeploymentsProjectSettings' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentServicesEntrypoints$inboundSchema: z.ZodType<
+  GetDeploymentServicesEntrypoints,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  entrypoint: types.string(),
+  scheduleNames: z.array(types.string()),
+  sourceFile: types.string(),
+});
+
+export function getDeploymentServicesEntrypointsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentServicesEntrypoints, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentServicesEntrypoints$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentServicesEntrypoints' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentServicesScheduleFunction$inboundSchema: z.ZodType<
+  GetDeploymentServicesScheduleFunction,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  entrypoints: z.array(
+    z.lazy(() => GetDeploymentServicesEntrypoints$inboundSchema),
+  ),
+  outputPath: types.string(),
+});
+
+export function getDeploymentServicesScheduleFunctionFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentServicesScheduleFunction, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentServicesScheduleFunction$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentServicesScheduleFunction' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentServicesDeploymentsConfig$inboundSchema: z.ZodType<
+  GetDeploymentServicesDeploymentsConfig,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  buildCommand: types.optional(types.string()),
+  buildpack: types.optional(types.string()),
+  bundle: types.optional(types.boolean()),
+  bunVersion: types.optional(types.string()),
+  daemon: types.optional(GetDeploymentServicesDaemon$inboundSchema),
+  debug: types.optional(types.boolean()),
+  devCommand: types.optional(types.string()),
+  excludeFiles: types.optional(GetDeploymentServicesExcludeFiles$inboundSchema),
+  framework: z.nullable(types.string()).optional(),
+  functions: types.optional(
+    z.record(GetDeploymentServicesDeploymentsFunctions$inboundSchema),
+  ),
+  helpers: types.optional(types.boolean()),
+  import: types.optional(z.record(types.string())),
+  includeFiles: types.optional(GetDeploymentServicesIncludeFiles$inboundSchema),
+  installCommand: types.optional(types.string()),
+  ldsflags: types.optional(types.string()),
+  maxLambdaSize: types.optional(types.string()),
+  middleware: types.optional(types.boolean()),
+  middlewareMatcher: types.optional(
+    GetDeploymentServicesMiddlewareMatcher$inboundSchema,
+  ),
+  middlewareRuntime: types.optional(
+    GetDeploymentServicesMiddlewareRuntime$inboundSchema,
+  ),
+  nodeVersion: types.optional(types.string()),
+  outputDirectory: types.optional(types.string()),
+  projectSettings: types.optional(
+    z.lazy(() => GetDeploymentServicesDeploymentsProjectSettings$inboundSchema),
+  ),
+  rust: types.optional(types.string()),
+  scheduleFunction: types.optional(
+    z.lazy(() => GetDeploymentServicesScheduleFunction$inboundSchema),
+  ),
+  serviceName: types.optional(types.string()),
+  zeroConfig: types.optional(types.boolean()),
+});
+
+export function getDeploymentServicesDeploymentsConfigFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentServicesDeploymentsConfig, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentServicesDeploymentsConfig$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentServicesDeploymentsConfig' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentServicesBuilder$inboundSchema: z.ZodType<
+  GetDeploymentServicesBuilder,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  config: types.optional(
+    z.lazy(() => GetDeploymentServicesDeploymentsConfig$inboundSchema),
+  ),
+  src: types.optional(types.string()),
+  use: types.string(),
+});
+
+export function getDeploymentServicesBuilderFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentServicesBuilder, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentServicesBuilder$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentServicesBuilder' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentServicesDeploymentsResponseType$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentServicesDeploymentsResponseType> = z
+    .nativeEnum(GetDeploymentServicesDeploymentsResponseType);
+
+/** @internal */
+export const GetDeploymentServicesEnv$inboundSchema: z.ZodType<
+  GetDeploymentServicesEnv,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  service: types.string(),
+  type: GetDeploymentServicesDeploymentsResponseType$inboundSchema,
+});
+
+export function getDeploymentServicesEnvFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentServicesEnv, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentServicesEnv$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentServicesEnv' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentServicesRoutePrefixSource$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentServicesRoutePrefixSource> = z.nativeEnum(
+    GetDeploymentServicesRoutePrefixSource,
+  );
+
+/** @internal */
 export const GetDeploymentServicesSchedule$inboundSchema: z.ZodType<
   GetDeploymentServicesSchedule,
   z.ZodTypeDef,
@@ -634,9 +947,11 @@ export const GetDeploymentServices1$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   buildCommand: types.optional(types.string()),
-  builder: GetDeploymentServicesBuilder$inboundSchema,
+  builder: z.lazy(() => GetDeploymentServicesBuilder$inboundSchema),
   entrypoint: types.optional(types.string()),
-  env: types.optional(z.record(GetDeploymentServicesEnv$inboundSchema)),
+  env: types.optional(
+    z.record(z.lazy(() => GetDeploymentServicesEnv$inboundSchema)),
+  ),
   framework: types.optional(types.string()),
   group: types.optional(types.string()),
   handlerFunction: types.optional(types.string()),

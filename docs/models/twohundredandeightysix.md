@@ -8,22 +8,15 @@ The payload of the event, if requested.
 import { TwoHundredAndEightySix } from "@vercel/sdk/models/siftroute.js";
 
 let value: TwoHundredAndEightySix = {
-  next: {
-    functionZeroConfigFailover: false,
-  },
-  previous: {
-    functionZeroConfigFailover: false,
-  },
+  enableFunctionsBeta: false,
   projectId: "<id>",
-  projectName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `next`                                                                         | [models.UserEventPayload286Next](../models/usereventpayload286next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload286Previous](../models/usereventpayload286previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                 | Type                  | Required              | Description           |
+| --------------------- | --------------------- | --------------------- | --------------------- |
+| `enableFunctionsBeta` | *boolean*             | :heavy_check_mark:    | N/A                   |
+| `projectId`           | *string*              | :heavy_check_mark:    | N/A                   |
+| `projectName`         | *string*              | :heavy_minus_sign:    | N/A                   |

@@ -7,7 +7,7 @@ The type of matching to perform
 ```typescript
 import {
   UpdateProjectProjectsResponse200ApplicationJSONResponseBodyCustomEnvironmentsType,
-} from "@vercel/sdk/models/updateprojectsourcesprojects1.js";
+} from "@vercel/sdk/models/updateprojectsourcesprojects2.js";
 
 let value:
   UpdateProjectProjectsResponse200ApplicationJSONResponseBodyCustomEnvironmentsType =

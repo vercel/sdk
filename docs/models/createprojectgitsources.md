@@ -5,7 +5,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectGitSources } from "@vercel/sdk/models/internalroutes1.js";
+import { CreateProjectGitSources } from "@vercel/sdk/models/internalroutesmitigate.js";
 
 let value: CreateProjectGitSources = {
   enabled: true,

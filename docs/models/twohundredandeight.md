@@ -8,12 +8,14 @@ The payload of the event, if requested.
 import { TwoHundredAndEight } from "@vercel/sdk/models/lasteditedbyprincipal2.js";
 
 let value: TwoHundredAndEight = {
-  invoiceCollection: true,
+  login: "Hyman.Bashirian0",
+  provider: "github",
 };
 ```
 
 ## Fields
 
-| Field               | Type                | Required            | Description         |
-| ------------------- | ------------------- | ------------------- | ------------------- |
-| `invoiceCollection` | *boolean*           | :heavy_check_mark:  | N/A                 |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `login`                                                                        | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `provider`                                                                     | [models.UserEventPayload208Provider](../models/usereventpayload208provider.md) | :heavy_check_mark:                                                             | N/A                                                                            |

@@ -8,20 +8,24 @@ The payload of the event, if requested.
 import { OneHundredAndEightyEight } from "@vercel/sdk/models/lasteditedbyprincipal2.js";
 
 let value: OneHundredAndEightyEight = {
-  configurations: [
-    {
-      configurationId: "<id>",
-      integrationId: "<id>",
-      integrationSlug: "<value>",
-    },
-  ],
-  ownerId: "<id>",
+  configurationId: "<id>",
+  integrationId: "<id>",
+  integrationSlug: "<value>",
+  newOwner: {
+    id: "<id>",
+    username: "Neal76",
+  },
+  userId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                  | Type                                                   | Required                                               | Description                                            |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `configurations`                                       | [models.Configurations](../models/configurations.md)[] | :heavy_check_mark:                                     | N/A                                                    |
-| `ownerId`                                              | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `configurationId`                        | *string*                                 | :heavy_check_mark:                       | N/A                                      |
+| `integrationId`                          | *string*                                 | :heavy_check_mark:                       | N/A                                      |
+| `integrationName`                        | *string*                                 | :heavy_minus_sign:                       | N/A                                      |
+| `integrationSlug`                        | *string*                                 | :heavy_check_mark:                       | N/A                                      |
+| `newOwner`                               | [models.NewOwner](../models/newowner.md) | :heavy_check_mark:                       | N/A                                      |
+| `userId`                                 | *string*                                 | :heavy_check_mark:                       | N/A                                      |

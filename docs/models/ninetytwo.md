@@ -5,18 +5,14 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { NinetyTwo } from "@vercel/sdk/models/sixty.js";
+import { NinetyTwo } from "@vercel/sdk/models/payloadscopes.js";
 
-let value: NinetyTwo = {
-  configuration: {
-    id: "<id>",
-    name: "<value>",
-  },
-};
+let value: NinetyTwo = {};
 ```
 
 ## Fields
 
-| Field                                              | Type                                               | Required                                           | Description                                        |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `configuration`                                    | [models.Configuration](../models/configuration.md) | :heavy_check_mark:                                 | N/A                                                |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `cn`               | *string*           | :heavy_minus_sign: | N/A                |
+| `cns`              | *string*[]         | :heavy_minus_sign: | N/A                |

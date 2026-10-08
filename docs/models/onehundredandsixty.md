@@ -8,18 +8,25 @@ The payload of the event, if requested.
 import { OneHundredAndSixty } from "@vercel/sdk/models/usereventjobaction.js";
 
 let value: OneHundredAndSixty = {
-  previousRule: {
-    email: "Alivia_Torp79@hotmail.com",
-  },
-  team: {
+  edgeConfig: {
     id: "<id>",
+    slug: "<value>",
+  },
+  fromAccount: {
+    id: "<id>",
+    type: "user",
+  },
+  toAccount: {
+    id: "<id>",
+    type: "team",
   },
 };
 ```
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `previousRule`                                                         | [models.PreviousRule](../models/previousrule.md)                       | :heavy_check_mark:                                                     | N/A                                                                    |
-| `team`                                                                 | [models.UserEventPayload160Team](../models/usereventpayload160team.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `edgeConfig`                                   | [models.EdgeConfig](../models/edgeconfig.md)   | :heavy_check_mark:                             | N/A                                            |
+| `fromAccount`                                  | [models.FromAccount](../models/fromaccount.md) | :heavy_check_mark:                             | N/A                                            |
+| `toAccount`                                    | [models.ToAccount](../models/toaccount.md)     | :heavy_check_mark:                             | N/A                                            |

@@ -33,13 +33,13 @@ export function smartUnion<
 > {
   return z.unknown().transform((input, ctx) => {
     const candidates: Candidate[] = [];
-    const errors: z.ZodIssue[][] = options.map(() => []);
+    const errors: z.ZodIssue[][] = [];
 
     const parentUnrecognizedCtr = startCountingUnrecognized();
     const parentZeroDefaultCtr = startCountingDefaultToZeroValue();
 
     // Filter out invalid options
-    for (const [i, option] of options.entries()) {
+    for (const option of options) {
       const unrecognizedCtr = startCountingUnrecognized();
       const zeroDefaultCtr = startCountingDefaultToZeroValue();
       const result = option.safeParse(input);
@@ -54,7 +54,7 @@ export function smartUnion<
         });
         continue;
       }
-      errors[i]!.push(...result.error.issues);
+      errors.push(result.error.issues);
     }
 
     // No valid options

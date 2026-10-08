@@ -5,7 +5,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsDeploymentSources } from "@vercel/sdk/models/updatemicrofrontendsprojectsresponse200type.js";
+import { UpdateMicrofrontendsDeploymentSources } from "@vercel/sdk/models/updatemicrofrontendsreadystate.js";
 
 let value: UpdateMicrofrontendsDeploymentSources = {
   enabled: false,

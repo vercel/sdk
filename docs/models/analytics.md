@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Analytics } from "@vercel/sdk/models/internalroutes1.js";
+import { Analytics } from "@vercel/sdk/models/internalroutesmitigate.js";
 
 let value: Analytics = {
   disabledAt: 7758.36,

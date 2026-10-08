@@ -5,20 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { SeventySeven } from "@vercel/sdk/models/sixty.js";
+import { SeventySeven } from "@vercel/sdk/models/payloadscopes.js";
 
 let value: SeventySeven = {
-  action: "resume_plan",
-  data: {
-    planSlug: "v0_business",
-  },
+  paymentMethodId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `subscriptionId`                                                         | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
-| `action`                                                                 | [models.UserEventPayload77Action](../models/usereventpayload77action.md) | :heavy_check_mark:                                                       | N/A                                                                      |
-| `data`                                                                   | [models.PayloadData](../models/payloaddata.md)                           | :heavy_check_mark:                                                       | N/A                                                                      |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `brand`            | *string*           | :heavy_minus_sign: | N/A                |
+| `last4`            | *string*           | :heavy_minus_sign: | N/A                |
+| `paymentMethodId`  | *string*           | :heavy_check_mark: | N/A                |

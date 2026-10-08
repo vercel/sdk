@@ -8,16 +8,18 @@ The payload of the event, if requested.
 import { TwoHundredAndThirtySeven } from "@vercel/sdk/models/siftroute.js";
 
 let value: TwoHundredAndThirtySeven = {
+  headerName: "<value>",
+  justification: "<value>",
+  previousStatus: "<value>",
   projectId: "<id>",
-  resourceUrl: "https://worthy-embossing.net",
-  type: "script",
 };
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `projectId`                                                      | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `resourceUrl`                                                    | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `type`                                                           | [models.UserEventPayloadType](../models/usereventpayloadtype.md) | :heavy_check_mark:                                               | N/A                                                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `headerName`       | *string*           | :heavy_check_mark: | N/A                |
+| `justification`    | *string*           | :heavy_check_mark: | N/A                |
+| `previousStatus`   | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |

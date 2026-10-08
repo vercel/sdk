@@ -1,17 +1,15 @@
 # UserEventPayload242Type
 
-The budget type
-
 ## Example Usage
 
 ```typescript
-import { UserEventPayload242Type } from "@vercel/sdk/models/onehundredandninetytwo.js";
+import { UserEventPayload242Type } from "@vercel/sdk/models/siftroute.js";
 
-let value: UserEventPayload242Type = "fixed";
+let value: UserEventPayload242Type = "header";
 ```
 
 ## Values
 
 ```typescript
-"fixed"
+"header"
 ```

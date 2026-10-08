@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ClientAuthenticationUsed } from "@vercel/sdk/models/fourhundredandtwentythree.js";
+import { ClientAuthenticationUsed } from "@vercel/sdk/models/fourhundredandtwentyseven.js";
 
 let value: ClientAuthenticationUsed = {
   method: "none",

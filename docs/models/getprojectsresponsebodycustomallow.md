@@ -5,7 +5,7 @@ Optional overrides for the default same-env-by-slug matching. Provide explicit r
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyCustomAllow } from "@vercel/sdk/models/getprojectslink7.js";
+import { GetProjectsResponseBodyCustomAllow } from "@vercel/sdk/models/getprojectslink8.js";
 
 let value: GetProjectsResponseBodyCustomAllow = {
   from: {

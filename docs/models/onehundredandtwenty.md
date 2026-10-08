@@ -5,23 +5,32 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndTwenty } from "@vercel/sdk/models/usereventjobaction.js";
+import { OneHundredAndTwenty } from "@vercel/sdk/models/payloadscopes.js";
 
 let value: OneHundredAndTwenty = {
-  projectName: "<value>",
-  ruleName: "deploymentSources",
-  ruleProvenance: "default",
-  source: "<value>",
+  job: {
+    headInfo: {
+      owner: "<value>",
+      ref: "<value>",
+      repoUuid: "<id>",
+      sha: "<value>",
+      slug: "<value>",
+    },
+    name: "<value>",
+    owner: "<value>",
+    provider: "bitbucket",
+    ref: "<value>",
+    repoUuid: "<id>",
+    sha: "<value>",
+    slug: "<value>",
+    type: "bitbucket-push",
+    workspaceUuid: "<id>",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                                                                                                                                                           | Type                                                                                                                                                                                            | Required                                                                                                                                                                                        | Description                                                                                                                                                                                     |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `deploymentId`                                                                                                                                                                                  | *string*                                                                                                                                                                                        | :heavy_minus_sign:                                                                                                                                                                              | The blocked deployment's id (e.g. `dpl_…`). When present, the message links it to the deployment details (inspector) page. Optional so events emitted before this field was added still render. |
-| `projectId`                                                                                                                                                                                     | *string*                                                                                                                                                                                        | :heavy_minus_sign:                                                                                                                                                                              | N/A                                                                                                                                                                                             |
-| `projectName`                                                                                                                                                                                   | *string*                                                                                                                                                                                        | :heavy_check_mark:                                                                                                                                                                              | N/A                                                                                                                                                                                             |
-| `ruleName`                                                                                                                                                                                      | [models.RuleName](../models/rulename.md)                                                                                                                                                        | :heavy_check_mark:                                                                                                                                                                              | Which rule blocked the deploy.                                                                                                                                                                  |
-| `ruleProvenance`                                                                                                                                                                                | [models.RuleProvenance](../models/ruleprovenance.md)                                                                                                                                            | :heavy_check_mark:                                                                                                                                                                              | Team-level or project-level rule.                                                                                                                                                               |
-| `source`                                                                                                                                                                                        | *string*                                                                                                                                                                                        | :heavy_check_mark:                                                                                                                                                                              | Classified deploy source, e.g. 'cli', 'git', 'integration'.                                                                                                                                     |
+| Field               | Type                | Required            | Description         |
+| ------------------- | ------------------- | ------------------- | ------------------- |
+| `job`               | *models.PayloadJob* | :heavy_check_mark:  | N/A                 |

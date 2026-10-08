@@ -5,27 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { EightyNine } from "@vercel/sdk/models/sixty.js";
+import { EightyNine } from "@vercel/sdk/models/payloadscopes.js";
 
 let value: EightyNine = {
-  gitOwnerName: "<value>",
-  gitRepositoryName: "<value>",
-  next: {
-    autoAddReviewers: true,
-    enabled: true,
-  },
-  previous: {
-    autoAddReviewers: false,
-    enabled: true,
-  },
+  id: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                  | Type                                                   | Required                                               | Description                                            |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `gitOwnerName`                                         | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
-| `gitRepositoryName`                                    | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
-| `next`                                                 | [models.Next](../models/next.md)                       | :heavy_check_mark:                                     | N/A                                                    |
-| `previous`                                             | [models.PayloadPrevious](../models/payloadprevious.md) | :heavy_check_mark:                                     | N/A                                                    |
+| Field                                                | Type                                                 | Required                                             | Description                                          |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| `id`                                                 | *string*                                             | :heavy_check_mark:                                   | N/A                                                  |
+| `newTeam`                                            | [models.PayloadNewTeam](../models/payloadnewteam.md) | :heavy_minus_sign:                                   | N/A                                                  |
+| `oldTeam`                                            | [models.PayloadOldTeam](../models/payloadoldteam.md) | :heavy_minus_sign:                                   | N/A                                                  |

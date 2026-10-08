@@ -8,18 +8,18 @@ The payload of the event, if requested.
 import { OneHundredAndThirtyNine } from "@vercel/sdk/models/usereventjobaction.js";
 
 let value: OneHundredAndThirtyNine = {
-  domain: "well-to-do-exhaust.net",
-  initiator: "user",
-  zone: false,
+  customNameservers: [
+    "<value 1>",
+  ],
+  domain: "some-tool.net",
+  prevCustomNameservers: [],
 };
 ```
 
 ## Fields
 
-| Field                                                    | Type                                                     | Required                                                 | Description                                              |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `domain`                                                 | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
-| `initiator`                                              | [models.PayloadInitiator](../models/payloadinitiator.md) | :heavy_check_mark:                                       | N/A                                                      |
-| `previousZone`                                           | *boolean*                                                | :heavy_minus_sign:                                       | N/A                                                      |
-| `source`                                                 | *string*                                                 | :heavy_minus_sign:                                       | N/A                                                      |
-| `zone`                                                   | *boolean*                                                | :heavy_check_mark:                                       | N/A                                                      |
+| Field                   | Type                    | Required                | Description             |
+| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
+| `customNameservers`     | *string*[]              | :heavy_check_mark:      | N/A                     |
+| `domain`                | *string*                | :heavy_check_mark:      | N/A                     |
+| `prevCustomNameservers` | *string*[]              | :heavy_check_mark:      | N/A                     |

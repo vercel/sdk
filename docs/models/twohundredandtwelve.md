@@ -8,22 +8,12 @@ The payload of the event, if requested.
 import { TwoHundredAndTwelve } from "@vercel/sdk/models/lasteditedbyprincipal2.js";
 
 let value: TwoHundredAndTwelve = {
-  id: "<id>",
-  prev: {
-    fallbackEnvironment: "<value>",
-    name: "<value>",
-    slug: "<value>",
-  },
+  invoiceCollection: false,
 };
 ```
 
 ## Fields
 
-| Field                            | Type                             | Required                         | Description                      |
-| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
-| `enablePolyrepoBranchRouting`    | *boolean*                        | :heavy_minus_sign:               | N/A                              |
-| `fallbackEnvironment`            | *string*                         | :heavy_minus_sign:               | N/A                              |
-| `id`                             | *string*                         | :heavy_check_mark:               | N/A                              |
-| `name`                           | *string*                         | :heavy_minus_sign:               | N/A                              |
-| `prev`                           | [models.Prev](../models/prev.md) | :heavy_check_mark:               | N/A                              |
-| `slug`                           | *string*                         | :heavy_minus_sign:               | N/A                              |
+| Field               | Type                | Required            | Description         |
+| ------------------- | ------------------- | ------------------- | ------------------- |
+| `invoiceCollection` | *boolean*           | :heavy_check_mark:  | N/A                 |

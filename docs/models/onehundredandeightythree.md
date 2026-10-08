@@ -8,18 +8,12 @@ The payload of the event, if requested.
 import { OneHundredAndEightyThree } from "@vercel/sdk/models/lasteditedbyprincipal2.js";
 
 let value: OneHundredAndEightyThree = {
-  configurationId: "<id>",
-  integrationId: "<id>",
-  integrationName: "<value>",
-  integrationSlug: "<value>",
+  action: "disable",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `configurationId`  | *string*           | :heavy_check_mark: | N/A                |
-| `integrationId`    | *string*           | :heavy_check_mark: | N/A                |
-| `integrationName`  | *string*           | :heavy_check_mark: | N/A                |
-| `integrationSlug`  | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `action`                                                                   | [models.UserEventPayload183Action](../models/usereventpayload183action.md) | :heavy_check_mark:                                                         | N/A                                                                        |

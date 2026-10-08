@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { FunctionDefaultMemoryType } from "@vercel/sdk/models/internalroutes1.js";
+import { FunctionDefaultMemoryType } from "@vercel/sdk/models/internalroutesmitigate.js";
 
 let value: FunctionDefaultMemoryType = "standard_legacy";
 ```

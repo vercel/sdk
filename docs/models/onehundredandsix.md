@@ -5,16 +5,18 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSix } from "@vercel/sdk/models/sixty.js";
+import { OneHundredAndSix } from "@vercel/sdk/models/payloadscopes.js";
 
 let value: OneHundredAndSix = {
-  metricName: "<value>",
+  bitbucketEmail: "<value>",
+  bitbucketLogin: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                  | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `metricName`           | *string*               | :heavy_check_mark:     | N/A                    |
-| `additionalProperties` | Record<string, *any*>  | :heavy_minus_sign:     | N/A                    |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `bitbucketEmail`   | *string*           | :heavy_check_mark: | N/A                |
+| `bitbucketLogin`   | *string*           | :heavy_check_mark: | N/A                |
+| `bitbucketName`    | *string*           | :heavy_minus_sign: | N/A                |

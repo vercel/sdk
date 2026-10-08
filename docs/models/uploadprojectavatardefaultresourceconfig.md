@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarDefaultResourceConfig } from "@vercel/sdk/models/uploadprojectavatarlatestdeployments.js";
+import { UploadProjectAvatarDefaultResourceConfig } from "@vercel/sdk/models/uploadprojectavatarreadysubstate.js";
 
 let value: UploadProjectAvatarDefaultResourceConfig = {
   functionDefaultRegions: [
@@ -32,3 +32,4 @@ let value: UploadProjectAvatarDefaultResourceConfig = {
 | `functionDefaultTimeout`                                                                                                 | *number*                                                                                                                 | :heavy_minus_sign:                                                                                                       | N/A                                                                                                                      |
 | `functionZeroConfigFailover`                                                                                             | *boolean*                                                                                                                | :heavy_minus_sign:                                                                                                       | N/A                                                                                                                      |
 | `isNSNBDisabled`                                                                                                         | *boolean*                                                                                                                | :heavy_minus_sign:                                                                                                       | N/A                                                                                                                      |
+| `elasticBuildMachine`                                                                                                    | [models.UploadProjectAvatarElasticBuildMachine](../models/uploadprojectavatarelasticbuildmachine.md)                     | :heavy_minus_sign:                                                                                                       | Internal assignment, intentionally excluded from API input/output schemas.                                               |

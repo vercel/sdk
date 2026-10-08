@@ -5,7 +5,7 @@ Enforced runtime for explicitly configured Routing Middleware.
 ## Example Usage
 
 ```typescript
-import { GetDeploymentServicesDeploymentsMiddlewareRuntime } from "@vercel/sdk/models/getdeploymentservicesrouteprefixsource.js";
+import { GetDeploymentServicesDeploymentsMiddlewareRuntime } from "@vercel/sdk/models/getdeploymentservicesmiddlewareruntime.js";
 
 let value: GetDeploymentServicesDeploymentsMiddlewareRuntime = "nodejs";
 ```

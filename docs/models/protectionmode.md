@@ -5,7 +5,7 @@ exclusive: ip match is enough to bypass deployment protection (regardless of oth
 ## Example Usage
 
 ```typescript
-import { ProtectionMode } from "@vercel/sdk/models/updateprojectsourcesprojects1.js";
+import { ProtectionMode } from "@vercel/sdk/models/updateprojectsourcesprojects2.js";
 
 let value: ProtectionMode = "exclusive";
 ```

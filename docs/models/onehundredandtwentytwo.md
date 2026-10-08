@@ -8,14 +8,22 @@ The payload of the event, if requested.
 import { OneHundredAndTwentyTwo } from "@vercel/sdk/models/usereventjobaction.js";
 
 let value: OneHundredAndTwentyTwo = {
-  mode: "none",
-  previousMode: "all",
+  gitCommitterName: "<value>",
+  gitUserPlatform: "<value>",
+  projectName: "<value>",
+  sha: "<value>",
+  source: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| `mode`                                                         | [models.PayloadMode](../models/payloadmode.md)                 | :heavy_check_mark:                                             | N/A                                                            |
-| `previousMode`                                                 | [models.PayloadPreviousMode](../models/payloadpreviousmode.md) | :heavy_check_mark:                                             | N/A                                                            |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `gitCommitterName`                                                         | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `gitUserPlatform`                                                          | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `projectId`                                                                | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `projectName`                                                              | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `reason`                                                                   | [models.UserEventPayload122Reason](../models/usereventpayload122reason.md) | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `sha`                                                                      | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `source`                                                                   | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |

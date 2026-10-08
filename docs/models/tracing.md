@@ -5,7 +5,7 @@ Tracing configuration for this project
 ## Example Usage
 
 ```typescript
-import { Tracing } from "@vercel/sdk/models/updateprojectsourcesprojects1.js";
+import { Tracing } from "@vercel/sdk/models/updateprojectsourcesprojects2.js";
 
 let value: Tracing = {};
 ```

@@ -5,27 +5,27 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { NinetyThree } from "@vercel/sdk/models/sixty.js";
+import { NinetyThree } from "@vercel/sdk/models/payloadscopes.js";
 
 let value: NinetyThree = {
-  configuration: {
-    id: "<id>",
+  gitOwnerName: "<value>",
+  gitRepositoryName: "<value>",
+  next: {
+    autoAddReviewers: true,
+    enabled: false,
   },
-  project: {
-    id: "<id>",
-  },
-  team: {
-    id: "<id>",
-    name: "<value>",
+  previous: {
+    autoAddReviewers: false,
+    enabled: false,
   },
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `buildsEnabled`                                                            | *boolean*                                                                  | :heavy_minus_sign:                                                         | N/A                                                                        |
-| `configuration`                                                            | [models.PayloadConfiguration](../models/payloadconfiguration.md)           | :heavy_check_mark:                                                         | N/A                                                                        |
-| `project`                                                                  | [models.UserEventPayload93Project](../models/usereventpayload93project.md) | :heavy_check_mark:                                                         | N/A                                                                        |
-| `team`                                                                     | [models.UserEventPayload93Team](../models/usereventpayload93team.md)       | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field                                                  | Type                                                   | Required                                               | Description                                            |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| `gitOwnerName`                                         | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
+| `gitRepositoryName`                                    | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
+| `next`                                                 | [models.Next](../models/next.md)                       | :heavy_check_mark:                                     | N/A                                                    |
+| `previous`                                             | [models.PayloadPrevious](../models/payloadprevious.md) | :heavy_check_mark:                                     | N/A                                                    |

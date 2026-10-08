@@ -8,18 +8,25 @@ The payload of the event, if requested.
 import { TwoHundredAndEighteen } from "@vercel/sdk/models/lasteditedbyprincipal2.js";
 
 let value: TwoHundredAndEighteen = {
-  name: "<value>",
-  organizationId: "<id>",
-  rootTeamId: "<id>",
-  slug: "<value>",
+  group: {
+    id: "<id>",
+    name: "<value>",
+    slug: "<value>",
+  },
+  prev: {
+    project: {},
+  },
+  project: {
+    id: "<id>",
+    name: "<value>",
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
-| `organizationId`   | *string*           | :heavy_check_mark: | N/A                |
-| `rootTeamId`       | *string*           | :heavy_check_mark: | N/A                |
-| `slug`             | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `group`                                                                      | [models.PayloadGroup](../models/payloadgroup.md)                             | :heavy_check_mark:                                                           | N/A                                                                          |
+| `prev`                                                                       | [models.PayloadPrev](../models/payloadprev.md)                               | :heavy_check_mark:                                                           | N/A                                                                          |
+| `project`                                                                    | [models.UserEventPayload218Project](../models/usereventpayload218project.md) | :heavy_check_mark:                                                           | N/A                                                                          |

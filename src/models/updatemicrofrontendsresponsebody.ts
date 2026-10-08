@@ -76,13 +76,25 @@ import {
   UpdateMicrofrontendsProjectsBranchMatcher$inboundSchema,
   UpdateMicrofrontendsProjectsCreator,
   UpdateMicrofrontendsProjectsCreator$inboundSchema,
-  UpdateMicrofrontendsProjectsResponse200Type,
-  UpdateMicrofrontendsProjectsResponse200Type$inboundSchema,
   UpdateMicrofrontendsReadyState,
   UpdateMicrofrontendsReadyState$inboundSchema,
-  UpdateMicrofrontendsReadySubstate,
-  UpdateMicrofrontendsReadySubstate$inboundSchema,
-} from "./updatemicrofrontendsprojectsresponse200type.js";
+} from "./updatemicrofrontendsreadystate.js";
+
+export const UpdateMicrofrontendsReadySubstate = {
+  Promoted: "PROMOTED",
+  Rolling: "ROLLING",
+  Staged: "STAGED",
+} as const;
+export type UpdateMicrofrontendsReadySubstate = ClosedEnum<
+  typeof UpdateMicrofrontendsReadySubstate
+>;
+
+export const UpdateMicrofrontendsProjectsResponse200Type = {
+  Lambdas: "LAMBDAS",
+} as const;
+export type UpdateMicrofrontendsProjectsResponse200Type = ClosedEnum<
+  typeof UpdateMicrofrontendsProjectsResponse200Type
+>;
 
 export type UpdateMicrofrontendsLatestDeployments = {
   alias?: Array<string> | undefined;
@@ -2950,6 +2962,16 @@ export type UpdateMicrofrontendsResponseBody = {
   v0Created?: boolean | undefined;
   webAnalytics?: UpdateMicrofrontendsWebAnalytics | undefined;
 };
+
+/** @internal */
+export const UpdateMicrofrontendsReadySubstate$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateMicrofrontendsReadySubstate
+> = z.nativeEnum(UpdateMicrofrontendsReadySubstate);
+
+/** @internal */
+export const UpdateMicrofrontendsProjectsResponse200Type$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateMicrofrontendsProjectsResponse200Type> = z
+    .nativeEnum(UpdateMicrofrontendsProjectsResponse200Type);
 
 /** @internal */
 export const UpdateMicrofrontendsLatestDeployments$inboundSchema: z.ZodType<

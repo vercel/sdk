@@ -5,15 +5,13 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndThirteen } from "@vercel/sdk/models/threehundredandsixtytwo.js";
+import { FourHundredAndThirteen } from "@vercel/sdk/models/threehundredandsixtysix.js";
 
-let value: FourHundredAndThirteen = {
-  consent: "refused",
-};
+let value: FourHundredAndThirteen = {};
 ```
 
 ## Fields
 
-| Field                                                | Type                                                 | Required                                             | Description                                          |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `consent`                                            | [models.PayloadConsent](../models/payloadconsent.md) | :heavy_check_mark:                                   | N/A                                                  |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `inviteCode`       | *string*           | :heavy_minus_sign: | N/A                |

@@ -8,14 +8,19 @@ The payload of the event, if requested.
 import { TwoHundredAndFortyFive } from "@vercel/sdk/models/siftroute.js";
 
 let value: TwoHundredAndFortyFive = {
-  next: {},
-  previous: {},
+  justification: "<value>",
+  pattern: "<value>",
+  projectId: "<id>",
+  projectName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `next`                                                                         | [models.UserEventPayload245Next](../models/usereventpayload245next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload245Previous](../models/usereventpayload245previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                  | Type                   | Required               | Description            |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `justification`        | *string*               | :heavy_check_mark:     | N/A                    |
+| `pattern`              | *string*               | :heavy_check_mark:     | N/A                    |
+| `projectId`            | *string*               | :heavy_check_mark:     | N/A                    |
+| `projectName`          | *string*               | :heavy_check_mark:     | N/A                    |
+| `additionalProperties` | Record<string, *any*>  | :heavy_minus_sign:     | N/A                    |

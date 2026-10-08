@@ -8,29 +8,14 @@ The payload of the event, if requested.
 import { TwoHundredAndTwentyOne } from "@vercel/sdk/models/lasteditedbyprincipal2.js";
 
 let value: TwoHundredAndTwentyOne = {
-  copiedDomains: [
-    "<value 1>",
-    "<value 2>",
-    "<value 3>",
-  ],
-  enabledOrganizationEmu: true,
-  enabledTeamIds: [
-    "<value 1>",
-    "<value 2>",
-  ],
+  avatar: "https://loremflickr.com/1040/2481?lock=1732728078952810",
   organizationId: "<id>",
-  teamId: "<id>",
-  teamSlug: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                    | Type                     | Required                 | Description              |
-| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
-| `copiedDomains`          | *string*[]               | :heavy_check_mark:       | N/A                      |
-| `enabledOrganizationEmu` | *boolean*                | :heavy_check_mark:       | N/A                      |
-| `enabledTeamIds`         | *string*[]               | :heavy_check_mark:       | N/A                      |
-| `organizationId`         | *string*                 | :heavy_check_mark:       | N/A                      |
-| `teamId`                 | *string*                 | :heavy_check_mark:       | N/A                      |
-| `teamSlug`               | *string*                 | :heavy_check_mark:       | N/A                      |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `avatar`           | *string*           | :heavy_check_mark: | N/A                |
+| `organizationId`   | *string*           | :heavy_check_mark: | N/A                |

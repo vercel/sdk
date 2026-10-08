@@ -8,7 +8,7 @@ The payload of the event, if requested.
 import { TwoHundredAndSeventySeven } from "@vercel/sdk/models/siftroute.js";
 
 let value: TwoHundredAndSeventySeven = {
-  previewDeploymentsEnabled: true,
+  action: "disabled",
   projectId: "<id>",
   projectName: "<value>",
 };
@@ -16,8 +16,8 @@ let value: TwoHundredAndSeventySeven = {
 
 ## Fields
 
-| Field                       | Type                        | Required                    | Description                 |
-| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
-| `previewDeploymentsEnabled` | *boolean*                   | :heavy_check_mark:          | N/A                         |
-| `projectId`                 | *string*                    | :heavy_check_mark:          | N/A                         |
-| `projectName`               | *string*                    | :heavy_check_mark:          | N/A                         |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `action`                                                                   | [models.UserEventPayload277Action](../models/usereventpayload277action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| `projectId`                                                                | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `projectName`                                                              | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
